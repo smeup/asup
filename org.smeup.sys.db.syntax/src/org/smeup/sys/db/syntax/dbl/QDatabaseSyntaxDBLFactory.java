@@ -90,6 +90,15 @@ public interface QDatabaseSyntaxDBLFactory extends EFactory {
 	QFetchStatement createFetchStatement();
 
 	/**
+	 * Returns a new object of class '<em>Get Descriptor Statement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Get Descriptor Statement</em>'.
+	 * @generated
+	 */
+	QGetDescriptorStatement createGetDescriptorStatement();
+
+	/**
 	 * Returns a new object of class '<em>Into Clause</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

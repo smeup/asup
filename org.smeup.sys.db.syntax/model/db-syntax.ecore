@@ -380,6 +380,15 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="singleRowClause" eType="#//dbl/SingleRowFetchClause"
           containment="true"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="GetDescriptorStatement" eSuperTypes="#//BindingStatement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptorName" lowerBound="1"
+          eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptorScope" lowerBound="1"
+          eType="#//dbl/DescriptorScope"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+          eType="#//dbl/Option"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="IntoClause">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptorName" lowerBound="1"
           eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>

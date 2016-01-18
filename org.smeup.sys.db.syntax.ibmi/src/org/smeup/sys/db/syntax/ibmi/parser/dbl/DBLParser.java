@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g 2016-01-15 17:43:12
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g 2016-01-18 15:21:30
 
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
 
@@ -92,13 +92,13 @@ public class DBLParser extends Parser {
 		"TIMETZ", "TIMFMT", "TIMSEP", "TINYINT", "TO", "TRANSACTION", "TRUE", 
 		"U", "UNCOMMITTED", "UNICODE_ESC", "UNION", "UNIQUE", "UNKNOWN", "USER", 
 		"USING", "USING_DESCRIPTOR", "USRPRF", "V", "VALUE", "VALUES", "VARBINARY", 
-		"VARBIT", "VARCHAR", "VARIABLE", "VARYING", "VAR_INFO", "VIEW", "VIEW_NAME", 
-		"Variable", "W", "WHEN", "WHERE", "WITH", "WITHOUT", "WITHOUT_HOLD", "WITH_DEFAULT", 
-		"WITH_HOLD", "WITH_MAX", "WORK", "WRITE", "White_Space", "X", "Y", "Z", 
-		"ZONE", "':'"
+		"VARBIT", "VARCHAR", "VARIABLE", "VARIABLES", "VARYING", "VAR_INFO", "VIEW", 
+		"VIEW_NAME", "Variable", "W", "WHEN", "WHERE", "WITH", "WITHOUT", "WITHOUT_HOLD", 
+		"WITH_DEFAULT", "WITH_HOLD", "WITH_MAX", "WORK", "WRITE", "White_Space", 
+		"X", "Y", "Z", "ZONE", "':'"
 	};
 	public static final int EOF=-1;
-	public static final int T__407=407;
+	public static final int T__408=408;
 	public static final int A=4;
 	public static final int AFTER=5;
 	public static final int ALIAS=6;
@@ -481,27 +481,28 @@ public class DBLParser extends Parser {
 	public static final int VARBIT=383;
 	public static final int VARCHAR=384;
 	public static final int VARIABLE=385;
-	public static final int VARYING=386;
-	public static final int VAR_INFO=387;
-	public static final int VIEW=388;
-	public static final int VIEW_NAME=389;
-	public static final int Variable=390;
-	public static final int W=391;
-	public static final int WHEN=392;
-	public static final int WHERE=393;
-	public static final int WITH=394;
-	public static final int WITHOUT=395;
-	public static final int WITHOUT_HOLD=396;
-	public static final int WITH_DEFAULT=397;
-	public static final int WITH_HOLD=398;
-	public static final int WITH_MAX=399;
-	public static final int WORK=400;
-	public static final int WRITE=401;
-	public static final int White_Space=402;
-	public static final int X=403;
-	public static final int Y=404;
-	public static final int Z=405;
-	public static final int ZONE=406;
+	public static final int VARIABLES=386;
+	public static final int VARYING=387;
+	public static final int VAR_INFO=388;
+	public static final int VIEW=389;
+	public static final int VIEW_NAME=390;
+	public static final int Variable=391;
+	public static final int W=392;
+	public static final int WHEN=393;
+	public static final int WHERE=394;
+	public static final int WITH=395;
+	public static final int WITHOUT=396;
+	public static final int WITHOUT_HOLD=397;
+	public static final int WITH_DEFAULT=398;
+	public static final int WITH_HOLD=399;
+	public static final int WITH_MAX=400;
+	public static final int WORK=401;
+	public static final int WRITE=402;
+	public static final int White_Space=403;
+	public static final int X=404;
+	public static final int Y=405;
+	public static final int Z=406;
+	public static final int ZONE=407;
 
 	// delegates
 	public Parser[] getDelegates() {
@@ -3128,7 +3129,7 @@ public class DBLParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: NUMERIC, precision_param
+					// elements: precision_param, NUMERIC
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -5368,7 +5369,7 @@ public class DBLParser extends Parser {
 		RewriteRuleTokenStream stream_S_STMT=new RewriteRuleTokenStream(adaptor,"token S_STMT");
 		RewriteRuleTokenStream stream_DFTRDBCOL=new RewriteRuleTokenStream(adaptor,"token DFTRDBCOL");
 		RewriteRuleTokenStream stream_S_NAMING=new RewriteRuleTokenStream(adaptor,"token S_NAMING");
-		RewriteRuleTokenStream stream_407=new RewriteRuleTokenStream(adaptor,"token 407");
+		RewriteRuleTokenStream stream_408=new RewriteRuleTokenStream(adaptor,"token 408");
 		RewriteRuleTokenStream stream_S_HMS=new RewriteRuleTokenStream(adaptor,"token S_HMS");
 		RewriteRuleTokenStream stream_Variable=new RewriteRuleTokenStream(adaptor,"token Variable");
 		RewriteRuleTokenStream stream_S_ISO=new RewriteRuleTokenStream(adaptor,"token S_ISO");
@@ -8046,7 +8047,7 @@ public class DBLParser extends Parser {
 						alt68=2;
 						}
 						break;
-					case 407:
+					case 408:
 						{
 						alt68=3;
 						}
@@ -8102,8 +8103,8 @@ public class DBLParser extends Parser {
 						case 3 :
 							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:742:36: ':'
 							{
-							v=(Token)match(input,407,FOLLOW_407_in_options_assign7067); if (state.failed) return retval; 
-							if ( state.backtracking==0 ) stream_407.add(v);
+							v=(Token)match(input,408,FOLLOW_408_in_options_assign7067); if (state.failed) return retval; 
+							if ( state.backtracking==0 ) stream_408.add(v);
 
 							}
 							break;
@@ -9689,7 +9690,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: using_variable, USING, using_variable, c
+			// elements: c, using_variable, USING, using_variable
 			// token labels: c
 			// rule labels: retval
 			// token list labels: 
@@ -9951,7 +9952,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: c, d, c, c, DESCRIPTOR, v2
+			// elements: DESCRIPTOR, v2, c, c, c, d
 			// token labels: c, d, v2
 			// rule labels: retval
 			// token list labels: 
@@ -10151,7 +10152,7 @@ public class DBLParser extends Parser {
 			if ( state.backtracking==0 ) stream_Variable.add(v);
 
 			// AST REWRITE
-			// elements: FROM, s, v, into_clause
+			// elements: s, into_clause, v, FROM
 			// token labels: s, v
 			// rule labels: retval
 			// token list labels: 
@@ -10351,16 +10352,16 @@ public class DBLParser extends Parser {
 			if ( state.backtracking==0 ) stream_Identifier.add(s);
 
 			// AST REWRITE
-			// elements: CURSOR, sc, FOR, c, s, d, h
-			// token labels: c, s, d
+			// elements: CURSOR, d, h, s, FOR, c, sc
+			// token labels: s, c, d
 			// rule labels: sc, h, retval
 			// token list labels: 
 			// rule list labels: 
 			// wildcard labels: 
 			if ( state.backtracking==0 ) {
 			retval.tree = root_0;
-			RewriteRuleTokenStream stream_c=new RewriteRuleTokenStream(adaptor,"token c",c);
 			RewriteRuleTokenStream stream_s=new RewriteRuleTokenStream(adaptor,"token s",s);
+			RewriteRuleTokenStream stream_c=new RewriteRuleTokenStream(adaptor,"token c",c);
 			RewriteRuleTokenStream stream_d=new RewriteRuleTokenStream(adaptor,"token d",d);
 			RewriteRuleSubtreeStream stream_sc=new RewriteRuleSubtreeStream(adaptor,"rule sc",sc!=null?sc.getTree():null);
 			RewriteRuleSubtreeStream stream_h=new RewriteRuleSubtreeStream(adaptor,"rule h",h!=null?h.getTree():null);
@@ -10896,7 +10897,7 @@ public class DBLParser extends Parser {
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) stream_using_clause.add(using_clause215.getTree());
 					// AST REWRITE
-					// elements: s, using_clause
+					// elements: using_clause, s
 					// token labels: s
 					// rule labels: retval
 					// token list labels: 
@@ -11056,7 +11057,7 @@ public class DBLParser extends Parser {
 			if ( state.backtracking==0 ) stream_Descriptor_Name.add(d);
 
 			// AST REWRITE
-			// elements: s, DESCRIPTOR, d, USING
+			// elements: DESCRIPTOR, d, USING, s
 			// token labels: d
 			// rule labels: s, retval
 			// token list labels: 
@@ -11224,7 +11225,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: fetch_into, c, fetch_position
+			// elements: fetch_position, c, fetch_into
 			// token labels: c
 			// rule labels: retval
 			// token list labels: 
@@ -11534,7 +11535,7 @@ public class DBLParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: RELATIVE, NUMBER, RELATIVE, v
+					// elements: NUMBER, RELATIVE, v, RELATIVE
 					// token labels: v
 					// rule labels: retval
 					// token list labels: 
@@ -11824,7 +11825,7 @@ public class DBLParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: INTO, into_variable, into_variable
+					// elements: into_variable, INTO, into_variable
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -11878,7 +11879,7 @@ public class DBLParser extends Parser {
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) stream_into_descriptor.add(into_descriptor231.getTree());
 					// AST REWRITE
-					// elements: INTO, into_descriptor
+					// elements: into_descriptor, INTO
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -12125,7 +12126,7 @@ public class DBLParser extends Parser {
 					if ( state.backtracking==0 ) stream_Variable.add(v);
 
 					// AST REWRITE
-					// elements: v, DESCRIPTOR
+					// elements: DESCRIPTOR, v
 					// token labels: v
 					// rule labels: retval
 					// token list labels: 
@@ -12342,7 +12343,7 @@ public class DBLParser extends Parser {
 			if ( state.backtracking==0 ) stream_Variable.add(ds);
 
 			// AST REWRITE
-			// elements: v, INTO, INTO, FOR, NUMBER, ds, mi, FOR, mi, ds
+			// elements: NUMBER, ds, FOR, INTO, ds, FOR, mi, INTO, v, mi
 			// token labels: v, ds
 			// rule labels: mi, retval
 			// token list labels: 
@@ -12625,7 +12626,7 @@ public class DBLParser extends Parser {
 					if ( state.backtracking==0 ) stream_Descriptor_Name.add(d);
 
 					// AST REWRITE
-					// elements: DESCRIPTOR, d
+					// elements: d, DESCRIPTOR
 					// token labels: d
 					// rule labels: retval
 					// token list labels: 
@@ -12877,7 +12878,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: USING, INTO, USING, t, t, d, INTO, v
+			// elements: USING, d, t, v, USING, INTO, t, INTO
 			// token labels: d, v
 			// rule labels: t, retval
 			// token list labels: 
@@ -13494,7 +13495,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: field_type, Identifier, with_default, c, not_null
+			// elements: c, with_default, not_null, Identifier, field_type
 			// token labels: c
 			// rule labels: retval
 			// token list labels: 
@@ -13944,7 +13945,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: d, l, DESCRIPTOR, s
+			// elements: l, s, DESCRIPTOR, d
 			// token labels: d
 			// rule labels: s, l, retval
 			// token list labels: 
@@ -14466,7 +14467,7 @@ public class DBLParser extends Parser {
 			if ( state.backtracking==0 ) stream_Descriptor_Name.add(d);
 
 			// AST REWRITE
-			// elements: s, DESCRIPTOR, d
+			// elements: DESCRIPTOR, s, d
 			// token labels: d
 			// rule labels: s, retval
 			// token list labels: 
@@ -14637,7 +14638,7 @@ public class DBLParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_info.add(info284.getTree());
 			// AST REWRITE
-			// elements: info, d, DESCRIPTOR, s
+			// elements: s, d, DESCRIPTOR, info
 			// token labels: d
 			// rule labels: s, retval
 			// token list labels: 
@@ -14712,7 +14713,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "info"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1035:1: info : ( header_info | var_settings );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1035:1: info : ( header_info | item_info );
 	public final DBLParser.info_return info() throws RecognitionException {
 		DBLParser.info_return retval = new DBLParser.info_return();
 		retval.start = input.LT(1);
@@ -14721,13 +14722,13 @@ public class DBLParser extends Parser {
 		CommonTree root_0 = null;
 
 		ParserRuleReturnScope header_info285 =null;
-		ParserRuleReturnScope var_settings286 =null;
+		ParserRuleReturnScope item_info286 =null;
 
 
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 74) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1036:2: ( header_info | var_settings )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1036:2: ( header_info | item_info )
 			int alt116=2;
 			int LA116_0 = input.LA(1);
 			if ( (LA116_0==Variable) ) {
@@ -14760,16 +14761,16 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1039:2: var_settings
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1039:2: item_info
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_var_settings_in_info9292);
-					var_settings286=var_settings();
+					pushFollow(FOLLOW_item_info_in_info9292);
+					item_info286=item_info();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, var_settings286.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, item_info286.getTree());
 
 					}
 					break;
@@ -14797,51 +14798,180 @@ public class DBLParser extends Parser {
 	// $ANTLR end "info"
 
 
-	public static class var_settings_return extends ParserRuleReturnScope {
+	public static class header_info_return extends ParserRuleReturnScope {
 		CommonTree tree;
 		@Override
 		public CommonTree getTree() { return tree; }
 	};
 
 
-	// $ANTLR start "var_settings"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1042:1: var_settings : ( VALUE i= NUMBER var_item_info -> ^( VAR_INFO $i var_item_info ) | VALUE v= Variable var_item_info -> ^( VAR_INFO ^( VARIABLE $v) var_item_info ) );
-	public final DBLParser.var_settings_return var_settings() throws RecognitionException {
-		DBLParser.var_settings_return retval = new DBLParser.var_settings_return();
+	// $ANTLR start "header_info"
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1042:1: header_info : variable_assign ( ',' variable_assign )* -> ^( HEADER_INFO ^( VARIABLES variable_assign ( variable_assign )* ) ) ;
+	public final DBLParser.header_info_return header_info() throws RecognitionException {
+		DBLParser.header_info_return retval = new DBLParser.header_info_return();
 		retval.start = input.LT(1);
-		int var_settings_StartIndex = input.index();
+		int header_info_StartIndex = input.index();
+
+		CommonTree root_0 = null;
+
+		Token char_literal288=null;
+		ParserRuleReturnScope variable_assign287 =null;
+		ParserRuleReturnScope variable_assign289 =null;
+
+		CommonTree char_literal288_tree=null;
+		RewriteRuleTokenStream stream_COMMA=new RewriteRuleTokenStream(adaptor,"token COMMA");
+		RewriteRuleSubtreeStream stream_variable_assign=new RewriteRuleSubtreeStream(adaptor,"rule variable_assign");
+
+		try {
+			if ( state.backtracking>0 && alreadyParsedRule(input, 75) ) { return retval; }
+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1043:2: ( variable_assign ( ',' variable_assign )* -> ^( HEADER_INFO ^( VARIABLES variable_assign ( variable_assign )* ) ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1044:2: variable_assign ( ',' variable_assign )*
+			{
+			pushFollow(FOLLOW_variable_assign_in_header_info9306);
+			variable_assign287=variable_assign();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) stream_variable_assign.add(variable_assign287.getTree());
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1044:18: ( ',' variable_assign )*
+			loop117:
+			while (true) {
+				int alt117=2;
+				int LA117_0 = input.LA(1);
+				if ( (LA117_0==COMMA) ) {
+					alt117=1;
+				}
+
+				switch (alt117) {
+				case 1 :
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1044:19: ',' variable_assign
+					{
+					char_literal288=(Token)match(input,COMMA,FOLLOW_COMMA_in_header_info9309); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_COMMA.add(char_literal288);
+
+					pushFollow(FOLLOW_variable_assign_in_header_info9311);
+					variable_assign289=variable_assign();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) stream_variable_assign.add(variable_assign289.getTree());
+					}
+					break;
+
+				default :
+					break loop117;
+				}
+			}
+
+			// AST REWRITE
+			// elements: variable_assign, variable_assign
+			// token labels: 
+			// rule labels: retval
+			// token list labels: 
+			// rule list labels: 
+			// wildcard labels: 
+			if ( state.backtracking==0 ) {
+			retval.tree = root_0;
+			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
+
+			root_0 = (CommonTree)adaptor.nil();
+			// 1044:40: -> ^( HEADER_INFO ^( VARIABLES variable_assign ( variable_assign )* ) )
+			{
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1044:43: ^( HEADER_INFO ^( VARIABLES variable_assign ( variable_assign )* ) )
+				{
+				CommonTree root_1 = (CommonTree)adaptor.nil();
+				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(HEADER_INFO, "HEADER_INFO"), root_1);
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1044:57: ^( VARIABLES variable_assign ( variable_assign )* )
+				{
+				CommonTree root_2 = (CommonTree)adaptor.nil();
+				root_2 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VARIABLES, "VARIABLES"), root_2);
+				adaptor.addChild(root_2, stream_variable_assign.nextTree());
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1044:85: ( variable_assign )*
+				while ( stream_variable_assign.hasNext() ) {
+					adaptor.addChild(root_2, stream_variable_assign.nextTree());
+				}
+				stream_variable_assign.reset();
+
+				adaptor.addChild(root_1, root_2);
+				}
+
+				adaptor.addChild(root_0, root_1);
+				}
+
+			}
+
+
+			retval.tree = root_0;
+			}
+
+			}
+
+			retval.stop = input.LT(-1);
+
+			if ( state.backtracking==0 ) {
+			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+			}
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+			retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+		}
+		finally {
+			// do for sure before leaving
+			if ( state.backtracking>0 ) { memoize(input, 75, header_info_StartIndex); }
+
+		}
+		return retval;
+	}
+	// $ANTLR end "header_info"
+
+
+	public static class item_info_return extends ParserRuleReturnScope {
+		CommonTree tree;
+		@Override
+		public CommonTree getTree() { return tree; }
+	};
+
+
+	// $ANTLR start "item_info"
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1047:1: item_info : ( VALUE i= NUMBER var_item_info -> ^( ITEM_INFO $i var_item_info ) | VALUE v= Variable var_item_info -> ^( ITEM_INFO ^( VARIABLE $v) var_item_info ) );
+	public final DBLParser.item_info_return item_info() throws RecognitionException {
+		DBLParser.item_info_return retval = new DBLParser.item_info_return();
+		retval.start = input.LT(1);
+		int item_info_StartIndex = input.index();
 
 		CommonTree root_0 = null;
 
 		Token i=null;
 		Token v=null;
-		Token VALUE287=null;
-		Token VALUE289=null;
-		ParserRuleReturnScope var_item_info288 =null;
-		ParserRuleReturnScope var_item_info290 =null;
+		Token VALUE290=null;
+		Token VALUE292=null;
+		ParserRuleReturnScope var_item_info291 =null;
+		ParserRuleReturnScope var_item_info293 =null;
 
 		CommonTree i_tree=null;
 		CommonTree v_tree=null;
-		CommonTree VALUE287_tree=null;
-		CommonTree VALUE289_tree=null;
+		CommonTree VALUE290_tree=null;
+		CommonTree VALUE292_tree=null;
 		RewriteRuleTokenStream stream_NUMBER=new RewriteRuleTokenStream(adaptor,"token NUMBER");
 		RewriteRuleTokenStream stream_Variable=new RewriteRuleTokenStream(adaptor,"token Variable");
 		RewriteRuleTokenStream stream_VALUE=new RewriteRuleTokenStream(adaptor,"token VALUE");
 		RewriteRuleSubtreeStream stream_var_item_info=new RewriteRuleSubtreeStream(adaptor,"rule var_item_info");
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 75) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 76) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1043:2: ( VALUE i= NUMBER var_item_info -> ^( VAR_INFO $i var_item_info ) | VALUE v= Variable var_item_info -> ^( VAR_INFO ^( VARIABLE $v) var_item_info ) )
-			int alt117=2;
-			int LA117_0 = input.LA(1);
-			if ( (LA117_0==VALUE) ) {
-				int LA117_1 = input.LA(2);
-				if ( (LA117_1==NUMBER) ) {
-					alt117=1;
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1048:2: ( VALUE i= NUMBER var_item_info -> ^( ITEM_INFO $i var_item_info ) | VALUE v= Variable var_item_info -> ^( ITEM_INFO ^( VARIABLE $v) var_item_info ) )
+			int alt118=2;
+			int LA118_0 = input.LA(1);
+			if ( (LA118_0==VALUE) ) {
+				int LA118_1 = input.LA(2);
+				if ( (LA118_1==NUMBER) ) {
+					alt118=1;
 				}
-				else if ( (LA117_1==Variable) ) {
-					alt117=2;
+				else if ( (LA118_1==Variable) ) {
+					alt118=2;
 				}
 
 				else {
@@ -14850,7 +14980,7 @@ public class DBLParser extends Parser {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 117, 1, input);
+							new NoViableAltException("", 118, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -14862,27 +14992,27 @@ public class DBLParser extends Parser {
 			else {
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 117, 0, input);
+					new NoViableAltException("", 118, 0, input);
 				throw nvae;
 			}
 
-			switch (alt117) {
+			switch (alt118) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1044:2: VALUE i= NUMBER var_item_info
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1049:2: VALUE i= NUMBER var_item_info
 					{
-					VALUE287=(Token)match(input,VALUE,FOLLOW_VALUE_in_var_settings9306); if (state.failed) return retval; 
-					if ( state.backtracking==0 ) stream_VALUE.add(VALUE287);
+					VALUE290=(Token)match(input,VALUE,FOLLOW_VALUE_in_item_info9341); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_VALUE.add(VALUE290);
 
-					i=(Token)match(input,NUMBER,FOLLOW_NUMBER_in_var_settings9310); if (state.failed) return retval; 
+					i=(Token)match(input,NUMBER,FOLLOW_NUMBER_in_item_info9345); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_NUMBER.add(i);
 
-					pushFollow(FOLLOW_var_item_info_in_var_settings9312);
-					var_item_info288=var_item_info();
+					pushFollow(FOLLOW_var_item_info_in_item_info9347);
+					var_item_info291=var_item_info();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) stream_var_item_info.add(var_item_info288.getTree());
+					if ( state.backtracking==0 ) stream_var_item_info.add(var_item_info291.getTree());
 					// AST REWRITE
-					// elements: i, var_item_info
+					// elements: var_item_info, i
 					// token labels: i
 					// rule labels: retval
 					// token list labels: 
@@ -14894,12 +15024,12 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1044:31: -> ^( VAR_INFO $i var_item_info )
+					// 1049:31: -> ^( ITEM_INFO $i var_item_info )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1044:34: ^( VAR_INFO $i var_item_info )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1049:34: ^( ITEM_INFO $i var_item_info )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
-						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VAR_INFO, "VAR_INFO"), root_1);
+						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(ITEM_INFO, "ITEM_INFO"), root_1);
 						adaptor.addChild(root_1, stream_i.nextNode());
 						adaptor.addChild(root_1, stream_var_item_info.nextTree());
 						adaptor.addChild(root_0, root_1);
@@ -14914,19 +15044,19 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1046:2: VALUE v= Variable var_item_info
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1051:2: VALUE v= Variable var_item_info
 					{
-					VALUE289=(Token)match(input,VALUE,FOLLOW_VALUE_in_var_settings9329); if (state.failed) return retval; 
-					if ( state.backtracking==0 ) stream_VALUE.add(VALUE289);
+					VALUE292=(Token)match(input,VALUE,FOLLOW_VALUE_in_item_info9364); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_VALUE.add(VALUE292);
 
-					v=(Token)match(input,Variable,FOLLOW_Variable_in_var_settings9333); if (state.failed) return retval; 
+					v=(Token)match(input,Variable,FOLLOW_Variable_in_item_info9368); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_Variable.add(v);
 
-					pushFollow(FOLLOW_var_item_info_in_var_settings9335);
-					var_item_info290=var_item_info();
+					pushFollow(FOLLOW_var_item_info_in_item_info9370);
+					var_item_info293=var_item_info();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) stream_var_item_info.add(var_item_info290.getTree());
+					if ( state.backtracking==0 ) stream_var_item_info.add(var_item_info293.getTree());
 					// AST REWRITE
 					// elements: v, var_item_info
 					// token labels: v
@@ -14940,13 +15070,13 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1046:33: -> ^( VAR_INFO ^( VARIABLE $v) var_item_info )
+					// 1051:33: -> ^( ITEM_INFO ^( VARIABLE $v) var_item_info )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1046:36: ^( VAR_INFO ^( VARIABLE $v) var_item_info )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1051:36: ^( ITEM_INFO ^( VARIABLE $v) var_item_info )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
-						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VAR_INFO, "VAR_INFO"), root_1);
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1046:47: ^( VARIABLE $v)
+						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(ITEM_INFO, "ITEM_INFO"), root_1);
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1051:48: ^( VARIABLE $v)
 						{
 						CommonTree root_2 = (CommonTree)adaptor.nil();
 						root_2 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VARIABLE, "VARIABLE"), root_2);
@@ -14982,12 +15112,12 @@ public class DBLParser extends Parser {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 75, var_settings_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 76, item_info_StartIndex); }
 
 		}
 		return retval;
 	}
-	// $ANTLR end "var_settings"
+	// $ANTLR end "item_info"
 
 
 	public static class var_item_info_return extends ParserRuleReturnScope {
@@ -14998,133 +15128,11 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "var_item_info"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1049:1: var_item_info : variable_assign ( ',' variable_assign )* -> ^( VALUES variable_assign ( variable_assign )* ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1054:1: var_item_info : variable_assign ( ',' variable_assign )* -> ^( VARIABLES variable_assign ( variable_assign )* ) ;
 	public final DBLParser.var_item_info_return var_item_info() throws RecognitionException {
 		DBLParser.var_item_info_return retval = new DBLParser.var_item_info_return();
 		retval.start = input.LT(1);
 		int var_item_info_StartIndex = input.index();
-
-		CommonTree root_0 = null;
-
-		Token char_literal292=null;
-		ParserRuleReturnScope variable_assign291 =null;
-		ParserRuleReturnScope variable_assign293 =null;
-
-		CommonTree char_literal292_tree=null;
-		RewriteRuleTokenStream stream_COMMA=new RewriteRuleTokenStream(adaptor,"token COMMA");
-		RewriteRuleSubtreeStream stream_variable_assign=new RewriteRuleSubtreeStream(adaptor,"rule variable_assign");
-
-		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 76) ) { return retval; }
-
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1050:2: ( variable_assign ( ',' variable_assign )* -> ^( VALUES variable_assign ( variable_assign )* ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1051:2: variable_assign ( ',' variable_assign )*
-			{
-			pushFollow(FOLLOW_variable_assign_in_var_item_info9363);
-			variable_assign291=variable_assign();
-			state._fsp--;
-			if (state.failed) return retval;
-			if ( state.backtracking==0 ) stream_variable_assign.add(variable_assign291.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1051:19: ( ',' variable_assign )*
-			loop118:
-			while (true) {
-				int alt118=2;
-				int LA118_0 = input.LA(1);
-				if ( (LA118_0==COMMA) ) {
-					alt118=1;
-				}
-
-				switch (alt118) {
-				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1051:20: ',' variable_assign
-					{
-					char_literal292=(Token)match(input,COMMA,FOLLOW_COMMA_in_var_item_info9367); if (state.failed) return retval; 
-					if ( state.backtracking==0 ) stream_COMMA.add(char_literal292);
-
-					pushFollow(FOLLOW_variable_assign_in_var_item_info9369);
-					variable_assign293=variable_assign();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) stream_variable_assign.add(variable_assign293.getTree());
-					}
-					break;
-
-				default :
-					break loop118;
-				}
-			}
-
-			// AST REWRITE
-			// elements: variable_assign, variable_assign
-			// token labels: 
-			// rule labels: retval
-			// token list labels: 
-			// rule list labels: 
-			// wildcard labels: 
-			if ( state.backtracking==0 ) {
-			retval.tree = root_0;
-			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
-
-			root_0 = (CommonTree)adaptor.nil();
-			// 1051:42: -> ^( VALUES variable_assign ( variable_assign )* )
-			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1051:45: ^( VALUES variable_assign ( variable_assign )* )
-				{
-				CommonTree root_1 = (CommonTree)adaptor.nil();
-				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VALUES, "VALUES"), root_1);
-				adaptor.addChild(root_1, stream_variable_assign.nextTree());
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1051:70: ( variable_assign )*
-				while ( stream_variable_assign.hasNext() ) {
-					adaptor.addChild(root_1, stream_variable_assign.nextTree());
-				}
-				stream_variable_assign.reset();
-
-				adaptor.addChild(root_0, root_1);
-				}
-
-			}
-
-
-			retval.tree = root_0;
-			}
-
-			}
-
-			retval.stop = input.LT(-1);
-
-			if ( state.backtracking==0 ) {
-			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-			}
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-			retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-		}
-		finally {
-			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 76, var_item_info_StartIndex); }
-
-		}
-		return retval;
-	}
-	// $ANTLR end "var_item_info"
-
-
-	public static class header_info_return extends ParserRuleReturnScope {
-		CommonTree tree;
-		@Override
-		public CommonTree getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "header_info"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1054:1: header_info : variable_assign ( ',' variable_assign )* -> ^( HEADER_INFO variable_assign ( variable_assign )* ) ;
-	public final DBLParser.header_info_return header_info() throws RecognitionException {
-		DBLParser.header_info_return retval = new DBLParser.header_info_return();
-		retval.start = input.LT(1);
-		int header_info_StartIndex = input.index();
 
 		CommonTree root_0 = null;
 
@@ -15139,15 +15147,15 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 77) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1055:2: ( variable_assign ( ',' variable_assign )* -> ^( HEADER_INFO variable_assign ( variable_assign )* ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1055:2: ( variable_assign ( ',' variable_assign )* -> ^( VARIABLES variable_assign ( variable_assign )* ) )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1056:2: variable_assign ( ',' variable_assign )*
 			{
-			pushFollow(FOLLOW_variable_assign_in_header_info9395);
+			pushFollow(FOLLOW_variable_assign_in_var_item_info9398);
 			variable_assign294=variable_assign();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_variable_assign.add(variable_assign294.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1056:18: ( ',' variable_assign )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1056:19: ( ',' variable_assign )*
 			loop119:
 			while (true) {
 				int alt119=2;
@@ -15158,12 +15166,12 @@ public class DBLParser extends Parser {
 
 				switch (alt119) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1056:19: ',' variable_assign
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1056:20: ',' variable_assign
 					{
-					char_literal295=(Token)match(input,COMMA,FOLLOW_COMMA_in_header_info9398); if (state.failed) return retval; 
+					char_literal295=(Token)match(input,COMMA,FOLLOW_COMMA_in_var_item_info9402); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_COMMA.add(char_literal295);
 
-					pushFollow(FOLLOW_variable_assign_in_header_info9400);
+					pushFollow(FOLLOW_variable_assign_in_var_item_info9404);
 					variable_assign296=variable_assign();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -15188,12 +15196,12 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1056:40: -> ^( HEADER_INFO variable_assign ( variable_assign )* )
+			// 1056:42: -> ^( VARIABLES variable_assign ( variable_assign )* )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1056:43: ^( HEADER_INFO variable_assign ( variable_assign )* )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1056:45: ^( VARIABLES variable_assign ( variable_assign )* )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
-				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(HEADER_INFO, "HEADER_INFO"), root_1);
+				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VARIABLES, "VARIABLES"), root_1);
 				adaptor.addChild(root_1, stream_variable_assign.nextTree());
 				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1056:73: ( variable_assign )*
 				while ( stream_variable_assign.hasNext() ) {
@@ -15226,12 +15234,12 @@ public class DBLParser extends Parser {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 77, header_info_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 77, var_item_info_StartIndex); }
 
 		}
 		return retval;
 	}
-	// $ANTLR end "header_info"
+	// $ANTLR end "var_item_info"
 
 
 	public static class variable_assign_return extends ParserRuleReturnScope {
@@ -15242,7 +15250,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "variable_assign"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1059:1: variable_assign : v= Variable EQUAL variable_value -> ^( VALUES ^( VARIABLE $v) variable_value ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1061:1: variable_assign : v= Variable EQUAL variable_value -> ^( VALUE ^( VARIABLE $v) variable_value ) ;
 	public final DBLParser.variable_assign_return variable_assign() throws RecognitionException {
 		DBLParser.variable_assign_return retval = new DBLParser.variable_assign_return();
 		retval.start = input.LT(1);
@@ -15263,22 +15271,22 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 78) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1060:2: (v= Variable EQUAL variable_value -> ^( VALUES ^( VARIABLE $v) variable_value ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1061:2: v= Variable EQUAL variable_value
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1062:2: (v= Variable EQUAL variable_value -> ^( VALUE ^( VARIABLE $v) variable_value ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1063:2: v= Variable EQUAL variable_value
 			{
-			v=(Token)match(input,Variable,FOLLOW_Variable_in_variable_assign9427); if (state.failed) return retval; 
+			v=(Token)match(input,Variable,FOLLOW_Variable_in_variable_assign9435); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_Variable.add(v);
 
-			EQUAL297=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_variable_assign9429); if (state.failed) return retval; 
+			EQUAL297=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_variable_assign9437); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_EQUAL.add(EQUAL297);
 
-			pushFollow(FOLLOW_variable_value_in_variable_assign9431);
+			pushFollow(FOLLOW_variable_value_in_variable_assign9439);
 			variable_value298=variable_value();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_variable_value.add(variable_value298.getTree());
 			// AST REWRITE
-			// elements: v, variable_value
+			// elements: variable_value, v
 			// token labels: v
 			// rule labels: retval
 			// token list labels: 
@@ -15290,13 +15298,13 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1061:34: -> ^( VALUES ^( VARIABLE $v) variable_value )
+			// 1063:34: -> ^( VALUE ^( VARIABLE $v) variable_value )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1061:37: ^( VALUES ^( VARIABLE $v) variable_value )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1063:37: ^( VALUE ^( VARIABLE $v) variable_value )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
-				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VALUES, "VALUES"), root_1);
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1061:46: ^( VARIABLE $v)
+				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VALUE, "VALUE"), root_1);
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1063:45: ^( VARIABLE $v)
 				{
 				CommonTree root_2 = (CommonTree)adaptor.nil();
 				root_2 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VARIABLE, "VARIABLE"), root_2);
@@ -15346,7 +15354,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "variable_value"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1064:1: variable_value : (c= COUNT -> ^( VALUE $c) |p= PRECISION -> ^( VALUE $p) |n= NAME -> ^( VALUE $n) |i= Identifier -> ^( VALUE $i) );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1066:1: variable_value : (c= COUNT -> ^( VALUE $c) |p= PRECISION -> ^( VALUE $p) |n= NAME -> ^( VALUE $n) |i= Identifier -> ^( VALUE $i) );
 	public final DBLParser.variable_value_return variable_value() throws RecognitionException {
 		DBLParser.variable_value_return retval = new DBLParser.variable_value_return();
 		retval.start = input.LT(1);
@@ -15371,7 +15379,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 79) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1066:2: (c= COUNT -> ^( VALUE $c) |p= PRECISION -> ^( VALUE $p) |n= NAME -> ^( VALUE $n) |i= Identifier -> ^( VALUE $i) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1068:2: (c= COUNT -> ^( VALUE $c) |p= PRECISION -> ^( VALUE $p) |n= NAME -> ^( VALUE $n) |i= Identifier -> ^( VALUE $i) )
 			int alt120=4;
 			switch ( input.LA(1) ) {
 			case COUNT:
@@ -15402,9 +15410,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt120) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1067:2: c= COUNT
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1069:2: c= COUNT
 					{
-					c=(Token)match(input,COUNT,FOLLOW_COUNT_in_variable_value9465); if (state.failed) return retval; 
+					c=(Token)match(input,COUNT,FOLLOW_COUNT_in_variable_value9473); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_COUNT.add(c);
 
 					// AST REWRITE
@@ -15420,9 +15428,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1067:12: -> ^( VALUE $c)
+					// 1069:12: -> ^( VALUE $c)
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1067:15: ^( VALUE $c)
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1069:15: ^( VALUE $c)
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VALUE, "VALUE"), root_1);
@@ -15439,9 +15447,9 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1069:2: p= PRECISION
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1071:2: p= PRECISION
 					{
-					p=(Token)match(input,PRECISION,FOLLOW_PRECISION_in_variable_value9484); if (state.failed) return retval; 
+					p=(Token)match(input,PRECISION,FOLLOW_PRECISION_in_variable_value9492); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_PRECISION.add(p);
 
 					// AST REWRITE
@@ -15457,9 +15465,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1069:16: -> ^( VALUE $p)
+					// 1071:16: -> ^( VALUE $p)
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1069:19: ^( VALUE $p)
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1071:19: ^( VALUE $p)
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VALUE, "VALUE"), root_1);
@@ -15476,9 +15484,9 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1071:2: n= NAME
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1073:2: n= NAME
 					{
-					n=(Token)match(input,NAME,FOLLOW_NAME_in_variable_value9503); if (state.failed) return retval; 
+					n=(Token)match(input,NAME,FOLLOW_NAME_in_variable_value9511); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_NAME.add(n);
 
 					// AST REWRITE
@@ -15494,9 +15502,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1071:11: -> ^( VALUE $n)
+					// 1073:11: -> ^( VALUE $n)
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1071:14: ^( VALUE $n)
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1073:14: ^( VALUE $n)
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VALUE, "VALUE"), root_1);
@@ -15513,9 +15521,9 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 4 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1073:2: i= Identifier
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1075:2: i= Identifier
 					{
-					i=(Token)match(input,Identifier,FOLLOW_Identifier_in_variable_value9522); if (state.failed) return retval; 
+					i=(Token)match(input,Identifier,FOLLOW_Identifier_in_variable_value9530); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_Identifier.add(i);
 
 					// AST REWRITE
@@ -15531,9 +15539,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1073:17: -> ^( VALUE $i)
+					// 1075:17: -> ^( VALUE $i)
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1073:20: ^( VALUE $i)
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1075:20: ^( VALUE $i)
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VALUE, "VALUE"), root_1);
@@ -15581,7 +15589,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "set_descriptor"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1080:1: set_descriptor : SET ( SQL )* DESCRIPTOR (s= descriptor_scope )* d= Descriptor_Name value_settings -> ^( SET_DESCRIPTOR_STATEMENT ^( DESCRIPTOR $d) ( $s)* value_settings ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1082:1: set_descriptor : SET ( SQL )* DESCRIPTOR (s= descriptor_scope )* d= Descriptor_Name value_settings -> ^( SET_DESCRIPTOR_STATEMENT ^( DESCRIPTOR $d) ( $s)* value_settings ) ;
 	public final DBLParser.set_descriptor_return set_descriptor() throws RecognitionException {
 		DBLParser.set_descriptor_return retval = new DBLParser.set_descriptor_return();
 		retval.start = input.LT(1);
@@ -15610,13 +15618,13 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 80) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1081:2: ( SET ( SQL )* DESCRIPTOR (s= descriptor_scope )* d= Descriptor_Name value_settings -> ^( SET_DESCRIPTOR_STATEMENT ^( DESCRIPTOR $d) ( $s)* value_settings ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1082:2: SET ( SQL )* DESCRIPTOR (s= descriptor_scope )* d= Descriptor_Name value_settings
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1083:2: ( SET ( SQL )* DESCRIPTOR (s= descriptor_scope )* d= Descriptor_Name value_settings -> ^( SET_DESCRIPTOR_STATEMENT ^( DESCRIPTOR $d) ( $s)* value_settings ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1084:2: SET ( SQL )* DESCRIPTOR (s= descriptor_scope )* d= Descriptor_Name value_settings
 			{
-			SET299=(Token)match(input,SET,FOLLOW_SET_in_set_descriptor9551); if (state.failed) return retval; 
+			SET299=(Token)match(input,SET,FOLLOW_SET_in_set_descriptor9559); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_SET.add(SET299);
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1082:6: ( SQL )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1084:6: ( SQL )*
 			loop121:
 			while (true) {
 				int alt121=2;
@@ -15627,9 +15635,9 @@ public class DBLParser extends Parser {
 
 				switch (alt121) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1082:7: SQL
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1084:7: SQL
 					{
-					SQL300=(Token)match(input,SQL,FOLLOW_SQL_in_set_descriptor9554); if (state.failed) return retval; 
+					SQL300=(Token)match(input,SQL,FOLLOW_SQL_in_set_descriptor9562); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_SQL.add(SQL300);
 
 					}
@@ -15640,10 +15648,10 @@ public class DBLParser extends Parser {
 				}
 			}
 
-			DESCRIPTOR301=(Token)match(input,DESCRIPTOR,FOLLOW_DESCRIPTOR_in_set_descriptor9558); if (state.failed) return retval; 
+			DESCRIPTOR301=(Token)match(input,DESCRIPTOR,FOLLOW_DESCRIPTOR_in_set_descriptor9566); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_DESCRIPTOR.add(DESCRIPTOR301);
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1082:24: (s= descriptor_scope )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1084:24: (s= descriptor_scope )*
 			loop122:
 			while (true) {
 				int alt122=2;
@@ -15654,9 +15662,9 @@ public class DBLParser extends Parser {
 
 				switch (alt122) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1082:25: s= descriptor_scope
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1084:25: s= descriptor_scope
 					{
-					pushFollow(FOLLOW_descriptor_scope_in_set_descriptor9563);
+					pushFollow(FOLLOW_descriptor_scope_in_set_descriptor9571);
 					s=descriptor_scope();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -15669,16 +15677,16 @@ public class DBLParser extends Parser {
 				}
 			}
 
-			d=(Token)match(input,Descriptor_Name,FOLLOW_Descriptor_Name_in_set_descriptor9570); if (state.failed) return retval; 
+			d=(Token)match(input,Descriptor_Name,FOLLOW_Descriptor_Name_in_set_descriptor9578); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_Descriptor_Name.add(d);
 
-			pushFollow(FOLLOW_value_settings_in_set_descriptor9572);
+			pushFollow(FOLLOW_value_settings_in_set_descriptor9580);
 			value_settings302=value_settings();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_value_settings.add(value_settings302.getTree());
 			// AST REWRITE
-			// elements: value_settings, DESCRIPTOR, d, s
+			// elements: s, value_settings, DESCRIPTOR, d
 			// token labels: d
 			// rule labels: s, retval
 			// token list labels: 
@@ -15691,13 +15699,13 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1082:80: -> ^( SET_DESCRIPTOR_STATEMENT ^( DESCRIPTOR $d) ( $s)* value_settings )
+			// 1084:80: -> ^( SET_DESCRIPTOR_STATEMENT ^( DESCRIPTOR $d) ( $s)* value_settings )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1082:83: ^( SET_DESCRIPTOR_STATEMENT ^( DESCRIPTOR $d) ( $s)* value_settings )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1084:83: ^( SET_DESCRIPTOR_STATEMENT ^( DESCRIPTOR $d) ( $s)* value_settings )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(SET_DESCRIPTOR_STATEMENT, "SET_DESCRIPTOR_STATEMENT"), root_1);
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1082:110: ^( DESCRIPTOR $d)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1084:110: ^( DESCRIPTOR $d)
 				{
 				CommonTree root_2 = (CommonTree)adaptor.nil();
 				root_2 = (CommonTree)adaptor.becomeRoot(stream_DESCRIPTOR.nextNode(), root_2);
@@ -15705,7 +15713,7 @@ public class DBLParser extends Parser {
 				adaptor.addChild(root_1, root_2);
 				}
 
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1082:128: ( $s)*
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1084:128: ( $s)*
 				while ( stream_s.hasNext() ) {
 					adaptor.addChild(root_1, stream_s.nextTree());
 				}
@@ -15753,7 +15761,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "value_settings"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1085:1: value_settings : ( VALUE i= NUMBER value_item_info -> ^( ITEM_INFO $i value_item_info ) | VALUE v= Variable value_item_info -> ^( ITEM_INFO ^( VARIABLE $v) value_item_info ) );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1087:1: value_settings : ( VALUE i= NUMBER value_item_info -> ^( ITEM_INFO $i value_item_info ) | VALUE v= Variable value_item_info -> ^( ITEM_INFO ^( VARIABLE $v) value_item_info ) );
 	public final DBLParser.value_settings_return value_settings() throws RecognitionException {
 		DBLParser.value_settings_return retval = new DBLParser.value_settings_return();
 		retval.start = input.LT(1);
@@ -15780,7 +15788,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 81) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1086:2: ( VALUE i= NUMBER value_item_info -> ^( ITEM_INFO $i value_item_info ) | VALUE v= Variable value_item_info -> ^( ITEM_INFO ^( VARIABLE $v) value_item_info ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1088:2: ( VALUE i= NUMBER value_item_info -> ^( ITEM_INFO $i value_item_info ) | VALUE v= Variable value_item_info -> ^( ITEM_INFO ^( VARIABLE $v) value_item_info ) )
 			int alt123=2;
 			int LA123_0 = input.LA(1);
 			if ( (LA123_0==VALUE) ) {
@@ -15816,21 +15824,21 @@ public class DBLParser extends Parser {
 
 			switch (alt123) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1087:2: VALUE i= NUMBER value_item_info
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1089:2: VALUE i= NUMBER value_item_info
 					{
-					VALUE303=(Token)match(input,VALUE,FOLLOW_VALUE_in_value_settings9605); if (state.failed) return retval; 
+					VALUE303=(Token)match(input,VALUE,FOLLOW_VALUE_in_value_settings9613); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_VALUE.add(VALUE303);
 
-					i=(Token)match(input,NUMBER,FOLLOW_NUMBER_in_value_settings9609); if (state.failed) return retval; 
+					i=(Token)match(input,NUMBER,FOLLOW_NUMBER_in_value_settings9617); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_NUMBER.add(i);
 
-					pushFollow(FOLLOW_value_item_info_in_value_settings9611);
+					pushFollow(FOLLOW_value_item_info_in_value_settings9619);
 					value_item_info304=value_item_info();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) stream_value_item_info.add(value_item_info304.getTree());
 					// AST REWRITE
-					// elements: value_item_info, i
+					// elements: i, value_item_info
 					// token labels: i
 					// rule labels: retval
 					// token list labels: 
@@ -15842,9 +15850,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1087:33: -> ^( ITEM_INFO $i value_item_info )
+					// 1089:33: -> ^( ITEM_INFO $i value_item_info )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1087:36: ^( ITEM_INFO $i value_item_info )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1089:36: ^( ITEM_INFO $i value_item_info )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(ITEM_INFO, "ITEM_INFO"), root_1);
@@ -15862,15 +15870,15 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1089:2: VALUE v= Variable value_item_info
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1091:2: VALUE v= Variable value_item_info
 					{
-					VALUE305=(Token)match(input,VALUE,FOLLOW_VALUE_in_value_settings9628); if (state.failed) return retval; 
+					VALUE305=(Token)match(input,VALUE,FOLLOW_VALUE_in_value_settings9636); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_VALUE.add(VALUE305);
 
-					v=(Token)match(input,Variable,FOLLOW_Variable_in_value_settings9632); if (state.failed) return retval; 
+					v=(Token)match(input,Variable,FOLLOW_Variable_in_value_settings9640); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_Variable.add(v);
 
-					pushFollow(FOLLOW_value_item_info_in_value_settings9634);
+					pushFollow(FOLLOW_value_item_info_in_value_settings9642);
 					value_item_info306=value_item_info();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -15888,13 +15896,13 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1089:35: -> ^( ITEM_INFO ^( VARIABLE $v) value_item_info )
+					// 1091:35: -> ^( ITEM_INFO ^( VARIABLE $v) value_item_info )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1089:38: ^( ITEM_INFO ^( VARIABLE $v) value_item_info )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1091:38: ^( ITEM_INFO ^( VARIABLE $v) value_item_info )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(ITEM_INFO, "ITEM_INFO"), root_1);
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1089:50: ^( VARIABLE $v)
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1091:50: ^( VARIABLE $v)
 						{
 						CommonTree root_2 = (CommonTree)adaptor.nil();
 						root_2 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VARIABLE, "VARIABLE"), root_2);
@@ -15946,7 +15954,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "value_item_info"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1092:1: value_item_info : item_info_assign ( ',' item_info_assign )* -> ^( VALUES item_info_assign ( item_info_assign )* ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1094:1: value_item_info : item_info_assign ( ',' item_info_assign )* -> ^( VALUES item_info_assign ( item_info_assign )* ) ;
 	public final DBLParser.value_item_info_return value_item_info() throws RecognitionException {
 		DBLParser.value_item_info_return retval = new DBLParser.value_item_info_return();
 		retval.start = input.LT(1);
@@ -15965,15 +15973,15 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 82) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1093:2: ( item_info_assign ( ',' item_info_assign )* -> ^( VALUES item_info_assign ( item_info_assign )* ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1094:2: item_info_assign ( ',' item_info_assign )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1095:2: ( item_info_assign ( ',' item_info_assign )* -> ^( VALUES item_info_assign ( item_info_assign )* ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1096:2: item_info_assign ( ',' item_info_assign )*
 			{
-			pushFollow(FOLLOW_item_info_assign_in_value_item_info9662);
+			pushFollow(FOLLOW_item_info_assign_in_value_item_info9670);
 			item_info_assign307=item_info_assign();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_item_info_assign.add(item_info_assign307.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1094:20: ( ',' item_info_assign )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1096:20: ( ',' item_info_assign )*
 			loop124:
 			while (true) {
 				int alt124=2;
@@ -15984,12 +15992,12 @@ public class DBLParser extends Parser {
 
 				switch (alt124) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1094:21: ',' item_info_assign
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1096:21: ',' item_info_assign
 					{
-					char_literal308=(Token)match(input,COMMA,FOLLOW_COMMA_in_value_item_info9666); if (state.failed) return retval; 
+					char_literal308=(Token)match(input,COMMA,FOLLOW_COMMA_in_value_item_info9674); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_COMMA.add(char_literal308);
 
-					pushFollow(FOLLOW_item_info_assign_in_value_item_info9668);
+					pushFollow(FOLLOW_item_info_assign_in_value_item_info9676);
 					item_info_assign309=item_info_assign();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -16014,14 +16022,14 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1094:44: -> ^( VALUES item_info_assign ( item_info_assign )* )
+			// 1096:44: -> ^( VALUES item_info_assign ( item_info_assign )* )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1094:47: ^( VALUES item_info_assign ( item_info_assign )* )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1096:47: ^( VALUES item_info_assign ( item_info_assign )* )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VALUES, "VALUES"), root_1);
 				adaptor.addChild(root_1, stream_item_info_assign.nextTree());
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1094:73: ( item_info_assign )*
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1096:73: ( item_info_assign )*
 				while ( stream_item_info_assign.hasNext() ) {
 					adaptor.addChild(root_1, stream_item_info_assign.nextTree());
 				}
@@ -16068,7 +16076,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "item_info_assign"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1097:1: item_info_assign : i= Identifier EQUAL v= Variable -> ^( VALUE ^( ITEM $i) ^( VALUE ^( VARIABLE $v) ) ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1099:1: item_info_assign : i= Identifier EQUAL v= Variable -> ^( VALUE ^( ITEM $i) ^( VALUE ^( VARIABLE $v) ) ) ;
 	public final DBLParser.item_info_assign_return item_info_assign() throws RecognitionException {
 		DBLParser.item_info_assign_return retval = new DBLParser.item_info_assign_return();
 		retval.start = input.LT(1);
@@ -16090,16 +16098,16 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 83) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1098:2: (i= Identifier EQUAL v= Variable -> ^( VALUE ^( ITEM $i) ^( VALUE ^( VARIABLE $v) ) ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1099:2: i= Identifier EQUAL v= Variable
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1100:2: (i= Identifier EQUAL v= Variable -> ^( VALUE ^( ITEM $i) ^( VALUE ^( VARIABLE $v) ) ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1101:2: i= Identifier EQUAL v= Variable
 			{
-			i=(Token)match(input,Identifier,FOLLOW_Identifier_in_item_info_assign9698); if (state.failed) return retval; 
+			i=(Token)match(input,Identifier,FOLLOW_Identifier_in_item_info_assign9706); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_Identifier.add(i);
 
-			EQUAL310=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_item_info_assign9700); if (state.failed) return retval; 
+			EQUAL310=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_item_info_assign9708); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_EQUAL.add(EQUAL310);
 
-			v=(Token)match(input,Variable,FOLLOW_Variable_in_item_info_assign9706); if (state.failed) return retval; 
+			v=(Token)match(input,Variable,FOLLOW_Variable_in_item_info_assign9714); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_Variable.add(v);
 
 			// AST REWRITE
@@ -16116,13 +16124,13 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1099:36: -> ^( VALUE ^( ITEM $i) ^( VALUE ^( VARIABLE $v) ) )
+			// 1101:36: -> ^( VALUE ^( ITEM $i) ^( VALUE ^( VARIABLE $v) ) )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1099:39: ^( VALUE ^( ITEM $i) ^( VALUE ^( VARIABLE $v) ) )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1101:39: ^( VALUE ^( ITEM $i) ^( VALUE ^( VARIABLE $v) ) )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VALUE, "VALUE"), root_1);
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1099:47: ^( ITEM $i)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1101:47: ^( ITEM $i)
 				{
 				CommonTree root_2 = (CommonTree)adaptor.nil();
 				root_2 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(ITEM, "ITEM"), root_2);
@@ -16130,11 +16138,11 @@ public class DBLParser extends Parser {
 				adaptor.addChild(root_1, root_2);
 				}
 
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1099:58: ^( VALUE ^( VARIABLE $v) )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1101:58: ^( VALUE ^( VARIABLE $v) )
 				{
 				CommonTree root_2 = (CommonTree)adaptor.nil();
 				root_2 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VALUE, "VALUE"), root_2);
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1099:66: ^( VARIABLE $v)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1101:66: ^( VARIABLE $v)
 				{
 				CommonTree root_3 = (CommonTree)adaptor.nil();
 				root_3 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VARIABLE, "VARIABLE"), root_3);
@@ -16186,7 +16194,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "get_diagnostic"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1104:1: get_diagnostic : GET DIAGNOSTICS condition_information -> ^( GET_DIAGNOSTICS_STATEMENT condition_information ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1106:1: get_diagnostic : GET DIAGNOSTICS condition_information -> ^( GET_DIAGNOSTICS_STATEMENT condition_information ) ;
 	public final DBLParser.get_diagnostic_return get_diagnostic() throws RecognitionException {
 		DBLParser.get_diagnostic_return retval = new DBLParser.get_diagnostic_return();
 		retval.start = input.LT(1);
@@ -16207,16 +16215,16 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 84) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1105:2: ( GET DIAGNOSTICS condition_information -> ^( GET_DIAGNOSTICS_STATEMENT condition_information ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1106:2: GET DIAGNOSTICS condition_information
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1107:2: ( GET DIAGNOSTICS condition_information -> ^( GET_DIAGNOSTICS_STATEMENT condition_information ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1108:2: GET DIAGNOSTICS condition_information
 			{
-			GET311=(Token)match(input,GET,FOLLOW_GET_in_get_diagnostic9747); if (state.failed) return retval; 
+			GET311=(Token)match(input,GET,FOLLOW_GET_in_get_diagnostic9755); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_GET.add(GET311);
 
-			DIAGNOSTICS312=(Token)match(input,DIAGNOSTICS,FOLLOW_DIAGNOSTICS_in_get_diagnostic9749); if (state.failed) return retval; 
+			DIAGNOSTICS312=(Token)match(input,DIAGNOSTICS,FOLLOW_DIAGNOSTICS_in_get_diagnostic9757); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_DIAGNOSTICS.add(DIAGNOSTICS312);
 
-			pushFollow(FOLLOW_condition_information_in_get_diagnostic9751);
+			pushFollow(FOLLOW_condition_information_in_get_diagnostic9759);
 			condition_information313=condition_information();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -16233,9 +16241,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1106:40: -> ^( GET_DIAGNOSTICS_STATEMENT condition_information )
+			// 1108:40: -> ^( GET_DIAGNOSTICS_STATEMENT condition_information )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1106:43: ^( GET_DIAGNOSTICS_STATEMENT condition_information )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1108:43: ^( GET_DIAGNOSTICS_STATEMENT condition_information )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(GET_DIAGNOSTICS_STATEMENT, "GET_DIAGNOSTICS_STATEMENT"), root_1);
@@ -16281,7 +16289,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "condition_information"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1109:1: condition_information : ( CONDITION i= NUMBER condition_information_items -> ^( CONDITION $i condition_information_items ) | CONDITION v= Variable condition_information_items -> ^( CONDITION ^( VARIABLE $v) condition_information_items ) );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1111:1: condition_information : ( CONDITION i= NUMBER condition_information_items -> ^( CONDITION $i condition_information_items ) | CONDITION v= Variable condition_information_items -> ^( CONDITION ^( VARIABLE $v) condition_information_items ) );
 	public final DBLParser.condition_information_return condition_information() throws RecognitionException {
 		DBLParser.condition_information_return retval = new DBLParser.condition_information_return();
 		retval.start = input.LT(1);
@@ -16308,7 +16316,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 85) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1110:2: ( CONDITION i= NUMBER condition_information_items -> ^( CONDITION $i condition_information_items ) | CONDITION v= Variable condition_information_items -> ^( CONDITION ^( VARIABLE $v) condition_information_items ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1112:2: ( CONDITION i= NUMBER condition_information_items -> ^( CONDITION $i condition_information_items ) | CONDITION v= Variable condition_information_items -> ^( CONDITION ^( VARIABLE $v) condition_information_items ) )
 			int alt125=2;
 			int LA125_0 = input.LA(1);
 			if ( (LA125_0==CONDITION) ) {
@@ -16344,15 +16352,15 @@ public class DBLParser extends Parser {
 
 			switch (alt125) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1111:2: CONDITION i= NUMBER condition_information_items
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1113:2: CONDITION i= NUMBER condition_information_items
 					{
-					CONDITION314=(Token)match(input,CONDITION,FOLLOW_CONDITION_in_condition_information9774); if (state.failed) return retval; 
+					CONDITION314=(Token)match(input,CONDITION,FOLLOW_CONDITION_in_condition_information9782); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_CONDITION.add(CONDITION314);
 
-					i=(Token)match(input,NUMBER,FOLLOW_NUMBER_in_condition_information9778); if (state.failed) return retval; 
+					i=(Token)match(input,NUMBER,FOLLOW_NUMBER_in_condition_information9786); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_NUMBER.add(i);
 
-					pushFollow(FOLLOW_condition_information_items_in_condition_information9780);
+					pushFollow(FOLLOW_condition_information_items_in_condition_information9788);
 					condition_information_items315=condition_information_items();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -16370,9 +16378,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1111:49: -> ^( CONDITION $i condition_information_items )
+					// 1113:49: -> ^( CONDITION $i condition_information_items )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1111:52: ^( CONDITION $i condition_information_items )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1113:52: ^( CONDITION $i condition_information_items )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot(stream_CONDITION.nextNode(), root_1);
@@ -16390,15 +16398,15 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1113:2: CONDITION v= Variable condition_information_items
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1115:2: CONDITION v= Variable condition_information_items
 					{
-					CONDITION316=(Token)match(input,CONDITION,FOLLOW_CONDITION_in_condition_information9797); if (state.failed) return retval; 
+					CONDITION316=(Token)match(input,CONDITION,FOLLOW_CONDITION_in_condition_information9805); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_CONDITION.add(CONDITION316);
 
-					v=(Token)match(input,Variable,FOLLOW_Variable_in_condition_information9801); if (state.failed) return retval; 
+					v=(Token)match(input,Variable,FOLLOW_Variable_in_condition_information9809); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_Variable.add(v);
 
-					pushFollow(FOLLOW_condition_information_items_in_condition_information9803);
+					pushFollow(FOLLOW_condition_information_items_in_condition_information9811);
 					condition_information_items317=condition_information_items();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -16416,13 +16424,13 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1113:51: -> ^( CONDITION ^( VARIABLE $v) condition_information_items )
+					// 1115:51: -> ^( CONDITION ^( VARIABLE $v) condition_information_items )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1113:54: ^( CONDITION ^( VARIABLE $v) condition_information_items )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1115:54: ^( CONDITION ^( VARIABLE $v) condition_information_items )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot(stream_CONDITION.nextNode(), root_1);
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1113:66: ^( VARIABLE $v)
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1115:66: ^( VARIABLE $v)
 						{
 						CommonTree root_2 = (CommonTree)adaptor.nil();
 						root_2 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VARIABLE, "VARIABLE"), root_2);
@@ -16474,7 +16482,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "condition_information_items"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1116:1: condition_information_items : variable_assign ( ',' variable_assign )* -> ^( CONDITION_ITEMS variable_assign ( variable_assign )* ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1118:1: condition_information_items : variable_assign ( ',' variable_assign )* -> ^( CONDITION_ITEMS variable_assign ( variable_assign )* ) ;
 	public final DBLParser.condition_information_items_return condition_information_items() throws RecognitionException {
 		DBLParser.condition_information_items_return retval = new DBLParser.condition_information_items_return();
 		retval.start = input.LT(1);
@@ -16493,15 +16501,15 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 86) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1117:2: ( variable_assign ( ',' variable_assign )* -> ^( CONDITION_ITEMS variable_assign ( variable_assign )* ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1118:2: variable_assign ( ',' variable_assign )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1119:2: ( variable_assign ( ',' variable_assign )* -> ^( CONDITION_ITEMS variable_assign ( variable_assign )* ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1120:2: variable_assign ( ',' variable_assign )*
 			{
-			pushFollow(FOLLOW_variable_assign_in_condition_information_items9832);
+			pushFollow(FOLLOW_variable_assign_in_condition_information_items9840);
 			variable_assign318=variable_assign();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_variable_assign.add(variable_assign318.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1118:18: ( ',' variable_assign )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1120:18: ( ',' variable_assign )*
 			loop126:
 			while (true) {
 				int alt126=2;
@@ -16512,12 +16520,12 @@ public class DBLParser extends Parser {
 
 				switch (alt126) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1118:19: ',' variable_assign
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1120:19: ',' variable_assign
 					{
-					char_literal319=(Token)match(input,COMMA,FOLLOW_COMMA_in_condition_information_items9835); if (state.failed) return retval; 
+					char_literal319=(Token)match(input,COMMA,FOLLOW_COMMA_in_condition_information_items9843); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_COMMA.add(char_literal319);
 
-					pushFollow(FOLLOW_variable_assign_in_condition_information_items9837);
+					pushFollow(FOLLOW_variable_assign_in_condition_information_items9845);
 					variable_assign320=variable_assign();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -16542,14 +16550,14 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1118:41: -> ^( CONDITION_ITEMS variable_assign ( variable_assign )* )
+			// 1120:41: -> ^( CONDITION_ITEMS variable_assign ( variable_assign )* )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1118:44: ^( CONDITION_ITEMS variable_assign ( variable_assign )* )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1120:44: ^( CONDITION_ITEMS variable_assign ( variable_assign )* )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(CONDITION_ITEMS, "CONDITION_ITEMS"), root_1);
 				adaptor.addChild(root_1, stream_variable_assign.nextTree());
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1118:78: ( variable_assign )*
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1120:78: ( variable_assign )*
 				while ( stream_variable_assign.hasNext() ) {
 					adaptor.addChild(root_1, stream_variable_assign.nextTree());
 				}
@@ -16596,7 +16604,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "query_expression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1127:1: query_expression : query_expression_body ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1129:1: query_expression : query_expression_body ;
 	public final DBLParser.query_expression_return query_expression() throws RecognitionException {
 		DBLParser.query_expression_return retval = new DBLParser.query_expression_return();
 		retval.start = input.LT(1);
@@ -16610,13 +16618,13 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 87) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1128:3: ( query_expression_body )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1128:5: query_expression_body
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1130:3: ( query_expression_body )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1130:5: query_expression_body
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_query_expression_body_in_query_expression9866);
+			pushFollow(FOLLOW_query_expression_body_in_query_expression9874);
 			query_expression_body321=query_expression_body();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -16654,7 +16662,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "query_expression_body"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1130:1: query_expression_body : ( non_join_query_expression | joined_table );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1132:1: query_expression_body : ( non_join_query_expression | joined_table );
 	public final DBLParser.query_expression_body_return query_expression_body() throws RecognitionException {
 		DBLParser.query_expression_body_return retval = new DBLParser.query_expression_body_return();
 		retval.start = input.LT(1);
@@ -16669,7 +16677,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 88) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1131:3: ( non_join_query_expression | joined_table )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1133:3: ( non_join_query_expression | joined_table )
 			int alt127=2;
 			int LA127_0 = input.LA(1);
 			if ( (LA127_0==LEFT_PAREN||LA127_0==SELECT) ) {
@@ -16695,12 +16703,12 @@ public class DBLParser extends Parser {
 
 			switch (alt127) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1131:5: non_join_query_expression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1133:5: non_join_query_expression
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_non_join_query_expression_in_query_expression_body9878);
+					pushFollow(FOLLOW_non_join_query_expression_in_query_expression_body9886);
 					non_join_query_expression322=non_join_query_expression();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -16709,12 +16717,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1132:5: joined_table
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1134:5: joined_table
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_joined_table_in_query_expression_body9884);
+					pushFollow(FOLLOW_joined_table_in_query_expression_body9892);
 					joined_table323=joined_table();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -16754,7 +16762,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "non_join_query_expression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1134:1: non_join_query_expression : ( non_join_query_term | joined_table ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term ) ( ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term )* ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1136:1: non_join_query_expression : ( non_join_query_term | joined_table ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term ) ( ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term )* ;
 	public final DBLParser.non_join_query_expression_return non_join_query_expression() throws RecognitionException {
 		DBLParser.non_join_query_expression_return retval = new DBLParser.non_join_query_expression_return();
 		retval.start = input.LT(1);
@@ -16779,13 +16787,13 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 89) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1135:3: ( ( non_join_query_term | joined_table ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term ) ( ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1135:5: ( non_join_query_term | joined_table ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term ) ( ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1137:3: ( ( non_join_query_term | joined_table ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term ) ( ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1137:5: ( non_join_query_term | joined_table ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term ) ( ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1135:5: ( non_join_query_term | joined_table ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1137:5: ( non_join_query_term | joined_table ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term )
 			int alt129=2;
 			int LA129_0 = input.LA(1);
 			if ( (LA129_0==LEFT_PAREN||LA129_0==SELECT) ) {
@@ -16811,9 +16819,9 @@ public class DBLParser extends Parser {
 
 			switch (alt129) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1135:6: non_join_query_term
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1137:6: non_join_query_term
 					{
-					pushFollow(FOLLOW_non_join_query_term_in_non_join_query_expression9897);
+					pushFollow(FOLLOW_non_join_query_term_in_non_join_query_expression9905);
 					non_join_query_term324=non_join_query_term();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -16822,9 +16830,9 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1135:28: joined_table ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1137:28: joined_table ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term
 					{
-					pushFollow(FOLLOW_joined_table_in_non_join_query_expression9901);
+					pushFollow(FOLLOW_joined_table_in_non_join_query_expression9909);
 					joined_table325=joined_table();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -16843,7 +16851,7 @@ public class DBLParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1135:59: ( ALL | DISTINCT )?
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1137:59: ( ALL | DISTINCT )?
 					int alt128=2;
 					int LA128_0 = input.LA(1);
 					if ( (LA128_0==ALL||LA128_0==DISTINCT) ) {
@@ -16870,7 +16878,7 @@ public class DBLParser extends Parser {
 
 					}
 
-					pushFollow(FOLLOW_query_term_in_non_join_query_expression9919);
+					pushFollow(FOLLOW_query_term_in_non_join_query_expression9927);
 					query_term328=query_term();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -16881,7 +16889,7 @@ public class DBLParser extends Parser {
 
 			}
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1136:5: ( ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1138:5: ( ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term )*
 			loop131:
 			while (true) {
 				int alt131=2;
@@ -16892,7 +16900,7 @@ public class DBLParser extends Parser {
 
 				switch (alt131) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1136:6: ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1138:6: ( UNION | EXCEPT ) ^ ( ALL | DISTINCT )? query_term
 					{
 					set329=input.LT(1);
 					set329=input.LT(1);
@@ -16907,7 +16915,7 @@ public class DBLParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1136:24: ( ALL | DISTINCT )?
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1138:24: ( ALL | DISTINCT )?
 					int alt130=2;
 					int LA130_0 = input.LA(1);
 					if ( (LA130_0==ALL||LA130_0==DISTINCT) ) {
@@ -16934,7 +16942,7 @@ public class DBLParser extends Parser {
 
 					}
 
-					pushFollow(FOLLOW_query_term_in_non_join_query_expression9943);
+					pushFollow(FOLLOW_query_term_in_non_join_query_expression9951);
 					query_term331=query_term();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -16980,7 +16988,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "query_term"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1138:1: query_term : ( non_join_query_term | joined_table );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1140:1: query_term : ( non_join_query_term | joined_table );
 	public final DBLParser.query_term_return query_term() throws RecognitionException {
 		DBLParser.query_term_return retval = new DBLParser.query_term_return();
 		retval.start = input.LT(1);
@@ -16995,7 +17003,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 90) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1139:3: ( non_join_query_term | joined_table )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1141:3: ( non_join_query_term | joined_table )
 			int alt132=2;
 			int LA132_0 = input.LA(1);
 			if ( (LA132_0==LEFT_PAREN||LA132_0==SELECT) ) {
@@ -17021,12 +17029,12 @@ public class DBLParser extends Parser {
 
 			switch (alt132) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1139:5: non_join_query_term
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1141:5: non_join_query_term
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_non_join_query_term_in_query_term9957);
+					pushFollow(FOLLOW_non_join_query_term_in_query_term9965);
 					non_join_query_term332=non_join_query_term();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -17035,12 +17043,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1140:5: joined_table
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1142:5: joined_table
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_joined_table_in_query_term9963);
+					pushFollow(FOLLOW_joined_table_in_query_term9971);
 					joined_table333=joined_table();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -17080,7 +17088,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "non_join_query_term"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1142:1: non_join_query_term : ( non_join_query_primary | joined_table INTERSECT ^ ( ALL | DISTINCT )? query_primary ) ( INTERSECT ^ ( ALL | DISTINCT )? query_primary )* ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1144:1: non_join_query_term : ( non_join_query_primary | joined_table INTERSECT ^ ( ALL | DISTINCT )? query_primary ) ( INTERSECT ^ ( ALL | DISTINCT )? query_primary )* ;
 	public final DBLParser.non_join_query_term_return non_join_query_term() throws RecognitionException {
 		DBLParser.non_join_query_term_return retval = new DBLParser.non_join_query_term_return();
 		retval.start = input.LT(1);
@@ -17105,13 +17113,13 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 91) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1143:3: ( ( non_join_query_primary | joined_table INTERSECT ^ ( ALL | DISTINCT )? query_primary ) ( INTERSECT ^ ( ALL | DISTINCT )? query_primary )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1143:5: ( non_join_query_primary | joined_table INTERSECT ^ ( ALL | DISTINCT )? query_primary ) ( INTERSECT ^ ( ALL | DISTINCT )? query_primary )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1145:3: ( ( non_join_query_primary | joined_table INTERSECT ^ ( ALL | DISTINCT )? query_primary ) ( INTERSECT ^ ( ALL | DISTINCT )? query_primary )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1145:5: ( non_join_query_primary | joined_table INTERSECT ^ ( ALL | DISTINCT )? query_primary ) ( INTERSECT ^ ( ALL | DISTINCT )? query_primary )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1143:5: ( non_join_query_primary | joined_table INTERSECT ^ ( ALL | DISTINCT )? query_primary )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1145:5: ( non_join_query_primary | joined_table INTERSECT ^ ( ALL | DISTINCT )? query_primary )
 			int alt134=2;
 			int LA134_0 = input.LA(1);
 			if ( (LA134_0==LEFT_PAREN||LA134_0==SELECT) ) {
@@ -17130,9 +17138,9 @@ public class DBLParser extends Parser {
 
 			switch (alt134) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1143:7: non_join_query_primary
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1145:7: non_join_query_primary
 					{
-					pushFollow(FOLLOW_non_join_query_primary_in_non_join_query_term9977);
+					pushFollow(FOLLOW_non_join_query_primary_in_non_join_query_term9985);
 					non_join_query_primary334=non_join_query_primary();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -17141,21 +17149,21 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1143:32: joined_table INTERSECT ^ ( ALL | DISTINCT )? query_primary
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1145:32: joined_table INTERSECT ^ ( ALL | DISTINCT )? query_primary
 					{
-					pushFollow(FOLLOW_joined_table_in_non_join_query_term9981);
+					pushFollow(FOLLOW_joined_table_in_non_join_query_term9989);
 					joined_table335=joined_table();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, joined_table335.getTree());
 
-					INTERSECT336=(Token)match(input,INTERSECT,FOLLOW_INTERSECT_in_non_join_query_term9983); if (state.failed) return retval;
+					INTERSECT336=(Token)match(input,INTERSECT,FOLLOW_INTERSECT_in_non_join_query_term9991); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					INTERSECT336_tree = (CommonTree)adaptor.create(INTERSECT336);
 					root_0 = (CommonTree)adaptor.becomeRoot(INTERSECT336_tree, root_0);
 					}
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1143:56: ( ALL | DISTINCT )?
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1145:56: ( ALL | DISTINCT )?
 					int alt133=2;
 					int LA133_0 = input.LA(1);
 					if ( (LA133_0==ALL||LA133_0==DISTINCT) ) {
@@ -17182,7 +17190,7 @@ public class DBLParser extends Parser {
 
 					}
 
-					pushFollow(FOLLOW_query_primary_in_non_join_query_term9993);
+					pushFollow(FOLLOW_query_primary_in_non_join_query_term10001);
 					query_primary338=query_primary();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -17193,7 +17201,7 @@ public class DBLParser extends Parser {
 
 			}
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1144:5: ( INTERSECT ^ ( ALL | DISTINCT )? query_primary )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1146:5: ( INTERSECT ^ ( ALL | DISTINCT )? query_primary )*
 			loop136:
 			while (true) {
 				int alt136=2;
@@ -17204,15 +17212,15 @@ public class DBLParser extends Parser {
 
 				switch (alt136) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1144:6: INTERSECT ^ ( ALL | DISTINCT )? query_primary
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1146:6: INTERSECT ^ ( ALL | DISTINCT )? query_primary
 					{
-					INTERSECT339=(Token)match(input,INTERSECT,FOLLOW_INTERSECT_in_non_join_query_term10001); if (state.failed) return retval;
+					INTERSECT339=(Token)match(input,INTERSECT,FOLLOW_INTERSECT_in_non_join_query_term10009); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					INTERSECT339_tree = (CommonTree)adaptor.create(INTERSECT339);
 					root_0 = (CommonTree)adaptor.becomeRoot(INTERSECT339_tree, root_0);
 					}
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1144:17: ( ALL | DISTINCT )?
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1146:17: ( ALL | DISTINCT )?
 					int alt135=2;
 					int LA135_0 = input.LA(1);
 					if ( (LA135_0==ALL||LA135_0==DISTINCT) ) {
@@ -17239,7 +17247,7 @@ public class DBLParser extends Parser {
 
 					}
 
-					pushFollow(FOLLOW_query_primary_in_non_join_query_term10011);
+					pushFollow(FOLLOW_query_primary_in_non_join_query_term10019);
 					query_primary341=query_primary();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -17285,7 +17293,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "query_primary"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1146:1: query_primary : ( non_join_query_primary | joined_table );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1148:1: query_primary : ( non_join_query_primary | joined_table );
 	public final DBLParser.query_primary_return query_primary() throws RecognitionException {
 		DBLParser.query_primary_return retval = new DBLParser.query_primary_return();
 		retval.start = input.LT(1);
@@ -17300,7 +17308,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 92) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1147:3: ( non_join_query_primary | joined_table )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1149:3: ( non_join_query_primary | joined_table )
 			int alt137=2;
 			int LA137_0 = input.LA(1);
 			if ( (LA137_0==LEFT_PAREN||LA137_0==SELECT) ) {
@@ -17319,12 +17327,12 @@ public class DBLParser extends Parser {
 
 			switch (alt137) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1147:5: non_join_query_primary
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1149:5: non_join_query_primary
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_non_join_query_primary_in_query_primary10025);
+					pushFollow(FOLLOW_non_join_query_primary_in_query_primary10033);
 					non_join_query_primary342=non_join_query_primary();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -17333,12 +17341,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1148:5: joined_table
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1150:5: joined_table
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_joined_table_in_query_primary10031);
+					pushFollow(FOLLOW_joined_table_in_query_primary10039);
 					joined_table343=joined_table();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -17378,7 +17386,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "non_join_query_primary"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1150:1: non_join_query_primary : ( simple_table | LEFT_PAREN non_join_query_expression RIGHT_PAREN );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1152:1: non_join_query_primary : ( simple_table | LEFT_PAREN non_join_query_expression RIGHT_PAREN );
 	public final DBLParser.non_join_query_primary_return non_join_query_primary() throws RecognitionException {
 		DBLParser.non_join_query_primary_return retval = new DBLParser.non_join_query_primary_return();
 		retval.start = input.LT(1);
@@ -17397,7 +17405,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 93) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1151:3: ( simple_table | LEFT_PAREN non_join_query_expression RIGHT_PAREN )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1153:3: ( simple_table | LEFT_PAREN non_join_query_expression RIGHT_PAREN )
 			int alt138=2;
 			int LA138_0 = input.LA(1);
 			if ( (LA138_0==SELECT) ) {
@@ -17416,12 +17424,12 @@ public class DBLParser extends Parser {
 
 			switch (alt138) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1151:5: simple_table
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1153:5: simple_table
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_simple_table_in_non_join_query_primary10043);
+					pushFollow(FOLLOW_simple_table_in_non_join_query_primary10051);
 					simple_table344=simple_table();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -17430,24 +17438,24 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1152:5: LEFT_PAREN non_join_query_expression RIGHT_PAREN
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1154:5: LEFT_PAREN non_join_query_expression RIGHT_PAREN
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					LEFT_PAREN345=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_non_join_query_primary10049); if (state.failed) return retval;
+					LEFT_PAREN345=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_non_join_query_primary10057); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					LEFT_PAREN345_tree = (CommonTree)adaptor.create(LEFT_PAREN345);
 					adaptor.addChild(root_0, LEFT_PAREN345_tree);
 					}
 
-					pushFollow(FOLLOW_non_join_query_expression_in_non_join_query_primary10051);
+					pushFollow(FOLLOW_non_join_query_expression_in_non_join_query_primary10059);
 					non_join_query_expression346=non_join_query_expression();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, non_join_query_expression346.getTree());
 
-					RIGHT_PAREN347=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_non_join_query_primary10053); if (state.failed) return retval;
+					RIGHT_PAREN347=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_non_join_query_primary10061); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					RIGHT_PAREN347_tree = (CommonTree)adaptor.create(RIGHT_PAREN347);
 					adaptor.addChild(root_0, RIGHT_PAREN347_tree);
@@ -17487,7 +17495,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "simple_table"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1154:1: simple_table options {k=1; } : query_specification ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1156:1: simple_table options {k=1; } : query_specification ;
 	public final DBLParser.simple_table_return simple_table() throws RecognitionException {
 		DBLParser.simple_table_return retval = new DBLParser.simple_table_return();
 		retval.start = input.LT(1);
@@ -17501,13 +17509,13 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 94) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1156:3: ( query_specification )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1156:5: query_specification
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1158:3: ( query_specification )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1158:5: query_specification
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_query_specification_in_simple_table10074);
+			pushFollow(FOLLOW_query_specification_in_simple_table10082);
 			query_specification348=query_specification();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -17545,7 +17553,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "query_specification"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1158:1: query_specification : SELECT ( set_qualifier )? select_list ( from_clause )? ( where_clause )? ( groupby_clause )? ( having_clause )? ( orderby_clause )? ( limit_clause )? -> ^( SELECT ( from_clause )? ( set_qualifier )? select_list ( where_clause )? ( groupby_clause )? ( having_clause )? ( orderby_clause )? ( limit_clause )? ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1160:1: query_specification : SELECT ( set_qualifier )? select_list ( from_clause )? ( where_clause )? ( groupby_clause )? ( having_clause )? ( orderby_clause )? ( limit_clause )? -> ^( SELECT ( from_clause )? ( set_qualifier )? select_list ( where_clause )? ( groupby_clause )? ( having_clause )? ( orderby_clause )? ( limit_clause )? ) ;
 	public final DBLParser.query_specification_return query_specification() throws RecognitionException {
 		DBLParser.query_specification_return retval = new DBLParser.query_specification_return();
 		retval.start = input.LT(1);
@@ -17577,13 +17585,13 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 95) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1159:3: ( SELECT ( set_qualifier )? select_list ( from_clause )? ( where_clause )? ( groupby_clause )? ( having_clause )? ( orderby_clause )? ( limit_clause )? -> ^( SELECT ( from_clause )? ( set_qualifier )? select_list ( where_clause )? ( groupby_clause )? ( having_clause )? ( orderby_clause )? ( limit_clause )? ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1159:5: SELECT ( set_qualifier )? select_list ( from_clause )? ( where_clause )? ( groupby_clause )? ( having_clause )? ( orderby_clause )? ( limit_clause )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:3: ( SELECT ( set_qualifier )? select_list ( from_clause )? ( where_clause )? ( groupby_clause )? ( having_clause )? ( orderby_clause )? ( limit_clause )? -> ^( SELECT ( from_clause )? ( set_qualifier )? select_list ( where_clause )? ( groupby_clause )? ( having_clause )? ( orderby_clause )? ( limit_clause )? ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:5: SELECT ( set_qualifier )? select_list ( from_clause )? ( where_clause )? ( groupby_clause )? ( having_clause )? ( orderby_clause )? ( limit_clause )?
 			{
-			SELECT349=(Token)match(input,SELECT,FOLLOW_SELECT_in_query_specification10086); if (state.failed) return retval; 
+			SELECT349=(Token)match(input,SELECT,FOLLOW_SELECT_in_query_specification10094); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_SELECT.add(SELECT349);
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1159:12: ( set_qualifier )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:12: ( set_qualifier )?
 			int alt139=2;
 			int LA139_0 = input.LA(1);
 			if ( (LA139_0==ALL||LA139_0==DISTINCT) ) {
@@ -17591,9 +17599,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt139) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1159:12: set_qualifier
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:12: set_qualifier
 					{
-					pushFollow(FOLLOW_set_qualifier_in_query_specification10088);
+					pushFollow(FOLLOW_set_qualifier_in_query_specification10096);
 					set_qualifier350=set_qualifier();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -17603,12 +17611,12 @@ public class DBLParser extends Parser {
 
 			}
 
-			pushFollow(FOLLOW_select_list_in_query_specification10091);
+			pushFollow(FOLLOW_select_list_in_query_specification10099);
 			select_list351=select_list();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_select_list.add(select_list351.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1159:39: ( from_clause )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:39: ( from_clause )?
 			int alt140=2;
 			int LA140_0 = input.LA(1);
 			if ( (LA140_0==FROM) ) {
@@ -17616,9 +17624,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt140) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1159:39: from_clause
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:39: from_clause
 					{
-					pushFollow(FOLLOW_from_clause_in_query_specification10093);
+					pushFollow(FOLLOW_from_clause_in_query_specification10101);
 					from_clause352=from_clause();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -17628,7 +17636,7 @@ public class DBLParser extends Parser {
 
 			}
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1159:52: ( where_clause )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:52: ( where_clause )?
 			int alt141=2;
 			int LA141_0 = input.LA(1);
 			if ( (LA141_0==WHERE) ) {
@@ -17636,9 +17644,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt141) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1159:52: where_clause
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:52: where_clause
 					{
-					pushFollow(FOLLOW_where_clause_in_query_specification10096);
+					pushFollow(FOLLOW_where_clause_in_query_specification10104);
 					where_clause353=where_clause();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -17648,7 +17656,7 @@ public class DBLParser extends Parser {
 
 			}
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1159:66: ( groupby_clause )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:66: ( groupby_clause )?
 			int alt142=2;
 			int LA142_0 = input.LA(1);
 			if ( (LA142_0==GROUP) ) {
@@ -17656,9 +17664,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt142) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1159:66: groupby_clause
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:66: groupby_clause
 					{
-					pushFollow(FOLLOW_groupby_clause_in_query_specification10099);
+					pushFollow(FOLLOW_groupby_clause_in_query_specification10107);
 					groupby_clause354=groupby_clause();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -17668,7 +17676,7 @@ public class DBLParser extends Parser {
 
 			}
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1159:82: ( having_clause )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:82: ( having_clause )?
 			int alt143=2;
 			int LA143_0 = input.LA(1);
 			if ( (LA143_0==HAVING) ) {
@@ -17676,9 +17684,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt143) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1159:82: having_clause
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:82: having_clause
 					{
-					pushFollow(FOLLOW_having_clause_in_query_specification10102);
+					pushFollow(FOLLOW_having_clause_in_query_specification10110);
 					having_clause355=having_clause();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -17688,7 +17696,7 @@ public class DBLParser extends Parser {
 
 			}
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1160:5: ( orderby_clause )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1162:5: ( orderby_clause )?
 			int alt144=2;
 			int LA144_0 = input.LA(1);
 			if ( (LA144_0==ORDER) ) {
@@ -17696,9 +17704,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt144) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1160:5: orderby_clause
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1162:5: orderby_clause
 					{
-					pushFollow(FOLLOW_orderby_clause_in_query_specification10109);
+					pushFollow(FOLLOW_orderby_clause_in_query_specification10117);
 					orderby_clause356=orderby_clause();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -17708,7 +17716,7 @@ public class DBLParser extends Parser {
 
 			}
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1160:21: ( limit_clause )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1162:21: ( limit_clause )?
 			int alt145=2;
 			int LA145_0 = input.LA(1);
 			if ( (LA145_0==LIMIT) ) {
@@ -17716,9 +17724,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt145) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1160:21: limit_clause
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1162:21: limit_clause
 					{
-					pushFollow(FOLLOW_limit_clause_in_query_specification10112);
+					pushFollow(FOLLOW_limit_clause_in_query_specification10120);
 					limit_clause357=limit_clause();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -17729,7 +17737,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: having_clause, orderby_clause, select_list, limit_clause, groupby_clause, where_clause, set_qualifier, SELECT, from_clause
+			// elements: where_clause, set_qualifier, SELECT, groupby_clause, having_clause, limit_clause, select_list, from_clause, orderby_clause
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -17740,50 +17748,50 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1161:5: -> ^( SELECT ( from_clause )? ( set_qualifier )? select_list ( where_clause )? ( groupby_clause )? ( having_clause )? ( orderby_clause )? ( limit_clause )? )
+			// 1163:5: -> ^( SELECT ( from_clause )? ( set_qualifier )? select_list ( where_clause )? ( groupby_clause )? ( having_clause )? ( orderby_clause )? ( limit_clause )? )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:8: ^( SELECT ( from_clause )? ( set_qualifier )? select_list ( where_clause )? ( groupby_clause )? ( having_clause )? ( orderby_clause )? ( limit_clause )? )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1163:8: ^( SELECT ( from_clause )? ( set_qualifier )? select_list ( where_clause )? ( groupby_clause )? ( having_clause )? ( orderby_clause )? ( limit_clause )? )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(stream_SELECT.nextNode(), root_1);
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:17: ( from_clause )?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1163:17: ( from_clause )?
 				if ( stream_from_clause.hasNext() ) {
 					adaptor.addChild(root_1, stream_from_clause.nextTree());
 				}
 				stream_from_clause.reset();
 
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:30: ( set_qualifier )?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1163:30: ( set_qualifier )?
 				if ( stream_set_qualifier.hasNext() ) {
 					adaptor.addChild(root_1, stream_set_qualifier.nextTree());
 				}
 				stream_set_qualifier.reset();
 
 				adaptor.addChild(root_1, stream_select_list.nextTree());
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:57: ( where_clause )?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1163:57: ( where_clause )?
 				if ( stream_where_clause.hasNext() ) {
 					adaptor.addChild(root_1, stream_where_clause.nextTree());
 				}
 				stream_where_clause.reset();
 
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1161:71: ( groupby_clause )?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1163:71: ( groupby_clause )?
 				if ( stream_groupby_clause.hasNext() ) {
 					adaptor.addChild(root_1, stream_groupby_clause.nextTree());
 				}
 				stream_groupby_clause.reset();
 
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1162:5: ( having_clause )?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1164:5: ( having_clause )?
 				if ( stream_having_clause.hasNext() ) {
 					adaptor.addChild(root_1, stream_having_clause.nextTree());
 				}
 				stream_having_clause.reset();
 
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1162:20: ( orderby_clause )?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1164:20: ( orderby_clause )?
 				if ( stream_orderby_clause.hasNext() ) {
 					adaptor.addChild(root_1, stream_orderby_clause.nextTree());
 				}
 				stream_orderby_clause.reset();
 
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1162:36: ( limit_clause )?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1164:36: ( limit_clause )?
 				if ( stream_limit_clause.hasNext() ) {
 					adaptor.addChild(root_1, stream_limit_clause.nextTree());
 				}
@@ -17830,7 +17838,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "select_list"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1164:1: select_list : ( MULTIPLY -> ^( SEL_LIST ALL ) | derived_column ( COMMA derived_column )* -> ^( SEL_LIST ( derived_column )+ ) );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1166:1: select_list : ( MULTIPLY -> ^( SEL_LIST ALL ) | derived_column ( COMMA derived_column )* -> ^( SEL_LIST ( derived_column )+ ) );
 	public final DBLParser.select_list_return select_list() throws RecognitionException {
 		DBLParser.select_list_return retval = new DBLParser.select_list_return();
 		retval.start = input.LT(1);
@@ -17852,7 +17860,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 96) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1165:3: ( MULTIPLY -> ^( SEL_LIST ALL ) | derived_column ( COMMA derived_column )* -> ^( SEL_LIST ( derived_column )+ ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1167:3: ( MULTIPLY -> ^( SEL_LIST ALL ) | derived_column ( COMMA derived_column )* -> ^( SEL_LIST ( derived_column )+ ) )
 			int alt147=2;
 			int LA147_0 = input.LA(1);
 			if ( (LA147_0==MULTIPLY) ) {
@@ -17871,9 +17879,9 @@ public class DBLParser extends Parser {
 
 			switch (alt147) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1165:5: MULTIPLY
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1167:5: MULTIPLY
 					{
-					MULTIPLY358=(Token)match(input,MULTIPLY,FOLLOW_MULTIPLY_in_select_list10162); if (state.failed) return retval; 
+					MULTIPLY358=(Token)match(input,MULTIPLY,FOLLOW_MULTIPLY_in_select_list10170); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_MULTIPLY.add(MULTIPLY358);
 
 					// AST REWRITE
@@ -17888,9 +17896,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1165:14: -> ^( SEL_LIST ALL )
+					// 1167:14: -> ^( SEL_LIST ALL )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1165:17: ^( SEL_LIST ALL )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1167:17: ^( SEL_LIST ALL )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(SEL_LIST, "SEL_LIST"), root_1);
@@ -17907,14 +17915,14 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1166:5: derived_column ( COMMA derived_column )*
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1168:5: derived_column ( COMMA derived_column )*
 					{
-					pushFollow(FOLLOW_derived_column_in_select_list10176);
+					pushFollow(FOLLOW_derived_column_in_select_list10184);
 					derived_column359=derived_column();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) stream_derived_column.add(derived_column359.getTree());
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1166:20: ( COMMA derived_column )*
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1168:20: ( COMMA derived_column )*
 					loop146:
 					while (true) {
 						int alt146=2;
@@ -17925,12 +17933,12 @@ public class DBLParser extends Parser {
 
 						switch (alt146) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1166:21: COMMA derived_column
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1168:21: COMMA derived_column
 							{
-							COMMA360=(Token)match(input,COMMA,FOLLOW_COMMA_in_select_list10179); if (state.failed) return retval; 
+							COMMA360=(Token)match(input,COMMA,FOLLOW_COMMA_in_select_list10187); if (state.failed) return retval; 
 							if ( state.backtracking==0 ) stream_COMMA.add(COMMA360);
 
-							pushFollow(FOLLOW_derived_column_in_select_list10181);
+							pushFollow(FOLLOW_derived_column_in_select_list10189);
 							derived_column361=derived_column();
 							state._fsp--;
 							if (state.failed) return retval;
@@ -17955,9 +17963,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1166:44: -> ^( SEL_LIST ( derived_column )+ )
+					// 1168:44: -> ^( SEL_LIST ( derived_column )+ )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1166:47: ^( SEL_LIST ( derived_column )+ )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1168:47: ^( SEL_LIST ( derived_column )+ )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(SEL_LIST, "SEL_LIST"), root_1);
@@ -18012,7 +18020,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "set_qualifier"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1168:1: set_qualifier : ( DISTINCT -> ^( SET_QUALIFIER DISTINCT ) | ALL -> ^( SET_QUALIFIER ALL ) );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1170:1: set_qualifier : ( DISTINCT -> ^( SET_QUALIFIER DISTINCT ) | ALL -> ^( SET_QUALIFIER ALL ) );
 	public final DBLParser.set_qualifier_return set_qualifier() throws RecognitionException {
 		DBLParser.set_qualifier_return retval = new DBLParser.set_qualifier_return();
 		retval.start = input.LT(1);
@@ -18031,7 +18039,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 97) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1169:3: ( DISTINCT -> ^( SET_QUALIFIER DISTINCT ) | ALL -> ^( SET_QUALIFIER ALL ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1171:3: ( DISTINCT -> ^( SET_QUALIFIER DISTINCT ) | ALL -> ^( SET_QUALIFIER ALL ) )
 			int alt148=2;
 			int LA148_0 = input.LA(1);
 			if ( (LA148_0==DISTINCT) ) {
@@ -18050,9 +18058,9 @@ public class DBLParser extends Parser {
 
 			switch (alt148) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1169:5: DISTINCT
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1171:5: DISTINCT
 					{
-					DISTINCT362=(Token)match(input,DISTINCT,FOLLOW_DISTINCT_in_set_qualifier10204); if (state.failed) return retval; 
+					DISTINCT362=(Token)match(input,DISTINCT,FOLLOW_DISTINCT_in_set_qualifier10212); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_DISTINCT.add(DISTINCT362);
 
 					// AST REWRITE
@@ -18067,9 +18075,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1169:14: -> ^( SET_QUALIFIER DISTINCT )
+					// 1171:14: -> ^( SET_QUALIFIER DISTINCT )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1169:17: ^( SET_QUALIFIER DISTINCT )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1171:17: ^( SET_QUALIFIER DISTINCT )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(SET_QUALIFIER, "SET_QUALIFIER"), root_1);
@@ -18086,9 +18094,9 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1170:5: ALL
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1172:5: ALL
 					{
-					ALL363=(Token)match(input,ALL,FOLLOW_ALL_in_set_qualifier10218); if (state.failed) return retval; 
+					ALL363=(Token)match(input,ALL,FOLLOW_ALL_in_set_qualifier10226); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_ALL.add(ALL363);
 
 					// AST REWRITE
@@ -18103,9 +18111,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1170:9: -> ^( SET_QUALIFIER ALL )
+					// 1172:9: -> ^( SET_QUALIFIER ALL )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1170:12: ^( SET_QUALIFIER ALL )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1172:12: ^( SET_QUALIFIER ALL )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(SET_QUALIFIER, "SET_QUALIFIER"), root_1);
@@ -18153,7 +18161,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "derived_column"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1172:1: derived_column : boolean_value_expression ( as_clause )? -> ^( COLUMN boolean_value_expression ( as_clause )? ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1174:1: derived_column : boolean_value_expression ( as_clause )? -> ^( COLUMN boolean_value_expression ( as_clause )? ) ;
 	public final DBLParser.derived_column_return derived_column() throws RecognitionException {
 		DBLParser.derived_column_return retval = new DBLParser.derived_column_return();
 		retval.start = input.LT(1);
@@ -18170,15 +18178,15 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 98) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1173:3: ( boolean_value_expression ( as_clause )? -> ^( COLUMN boolean_value_expression ( as_clause )? ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1173:5: boolean_value_expression ( as_clause )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1175:3: ( boolean_value_expression ( as_clause )? -> ^( COLUMN boolean_value_expression ( as_clause )? ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1175:5: boolean_value_expression ( as_clause )?
 			{
-			pushFollow(FOLLOW_boolean_value_expression_in_derived_column10238);
+			pushFollow(FOLLOW_boolean_value_expression_in_derived_column10246);
 			boolean_value_expression364=boolean_value_expression();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_boolean_value_expression.add(boolean_value_expression364.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1173:30: ( as_clause )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1175:30: ( as_clause )?
 			int alt149=2;
 			int LA149_0 = input.LA(1);
 			if ( (LA149_0==AS||LA149_0==Identifier) ) {
@@ -18186,9 +18194,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt149) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1173:30: as_clause
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1175:30: as_clause
 					{
-					pushFollow(FOLLOW_as_clause_in_derived_column10240);
+					pushFollow(FOLLOW_as_clause_in_derived_column10248);
 					as_clause365=as_clause();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -18199,7 +18207,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: boolean_value_expression, as_clause
+			// elements: as_clause, boolean_value_expression
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -18210,14 +18218,14 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1173:41: -> ^( COLUMN boolean_value_expression ( as_clause )? )
+			// 1175:41: -> ^( COLUMN boolean_value_expression ( as_clause )? )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1173:44: ^( COLUMN boolean_value_expression ( as_clause )? )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1175:44: ^( COLUMN boolean_value_expression ( as_clause )? )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(COLUMN, "COLUMN"), root_1);
 				adaptor.addChild(root_1, stream_boolean_value_expression.nextTree());
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1173:78: ( as_clause )?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1175:78: ( as_clause )?
 				if ( stream_as_clause.hasNext() ) {
 					adaptor.addChild(root_1, stream_as_clause.nextTree());
 				}
@@ -18264,7 +18272,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "column_reference"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1176:1: column_reference : b= Identifier -> ^( COLUMN_NAME $b) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1178:1: column_reference : b= Identifier -> ^( COLUMN_NAME $b) ;
 	public final DBLParser.column_reference_return column_reference() throws RecognitionException {
 		DBLParser.column_reference_return retval = new DBLParser.column_reference_return();
 		retval.start = input.LT(1);
@@ -18280,10 +18288,10 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 99) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1177:2: (b= Identifier -> ^( COLUMN_NAME $b) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1177:4: b= Identifier
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1179:2: (b= Identifier -> ^( COLUMN_NAME $b) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1179:4: b= Identifier
 			{
-			b=(Token)match(input,Identifier,FOLLOW_Identifier_in_column_reference10268); if (state.failed) return retval; 
+			b=(Token)match(input,Identifier,FOLLOW_Identifier_in_column_reference10276); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_Identifier.add(b);
 
 			// AST REWRITE
@@ -18299,9 +18307,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1177:17: -> ^( COLUMN_NAME $b)
+			// 1179:17: -> ^( COLUMN_NAME $b)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1177:20: ^( COLUMN_NAME $b)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1179:20: ^( COLUMN_NAME $b)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(COLUMN_NAME, "COLUMN_NAME"), root_1);
@@ -18347,7 +18355,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "as_clause"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1180:1: as_clause : ( AS )? column_reference ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1182:1: as_clause : ( AS )? column_reference ;
 	public final DBLParser.as_clause_return as_clause() throws RecognitionException {
 		DBLParser.as_clause_return retval = new DBLParser.as_clause_return();
 		retval.start = input.LT(1);
@@ -18363,13 +18371,13 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 100) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1181:3: ( ( AS )? column_reference )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1181:5: ( AS )? column_reference
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1183:3: ( ( AS )? column_reference )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1183:5: ( AS )? column_reference
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1181:5: ( AS )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1183:5: ( AS )?
 			int alt150=2;
 			int LA150_0 = input.LA(1);
 			if ( (LA150_0==AS) ) {
@@ -18377,9 +18385,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt150) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1181:6: AS
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1183:6: AS
 					{
-					AS366=(Token)match(input,AS,FOLLOW_AS_in_as_clause10292); if (state.failed) return retval;
+					AS366=(Token)match(input,AS,FOLLOW_AS_in_as_clause10300); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					AS366_tree = (CommonTree)adaptor.create(AS366);
 					adaptor.addChild(root_0, AS366_tree);
@@ -18390,7 +18398,7 @@ public class DBLParser extends Parser {
 
 			}
 
-			pushFollow(FOLLOW_column_reference_in_as_clause10296);
+			pushFollow(FOLLOW_column_reference_in_as_clause10304);
 			column_reference367=column_reference();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -18428,7 +18436,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "column_reference_list"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1183:1: column_reference_list : column_reference ( COMMA column_reference )* -> ( column_reference )+ ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1185:1: column_reference_list : column_reference ( COMMA column_reference )* -> ( column_reference )+ ;
 	public final DBLParser.column_reference_list_return column_reference_list() throws RecognitionException {
 		DBLParser.column_reference_list_return retval = new DBLParser.column_reference_list_return();
 		retval.start = input.LT(1);
@@ -18447,15 +18455,15 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 101) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1184:2: ( column_reference ( COMMA column_reference )* -> ( column_reference )+ )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1184:4: column_reference ( COMMA column_reference )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1186:2: ( column_reference ( COMMA column_reference )* -> ( column_reference )+ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1186:4: column_reference ( COMMA column_reference )*
 			{
-			pushFollow(FOLLOW_column_reference_in_column_reference_list10307);
+			pushFollow(FOLLOW_column_reference_in_column_reference_list10315);
 			column_reference368=column_reference();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_column_reference.add(column_reference368.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1184:21: ( COMMA column_reference )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1186:21: ( COMMA column_reference )*
 			loop151:
 			while (true) {
 				int alt151=2;
@@ -18474,12 +18482,12 @@ public class DBLParser extends Parser {
 
 				switch (alt151) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1184:22: COMMA column_reference
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1186:22: COMMA column_reference
 					{
-					COMMA369=(Token)match(input,COMMA,FOLLOW_COMMA_in_column_reference_list10310); if (state.failed) return retval; 
+					COMMA369=(Token)match(input,COMMA,FOLLOW_COMMA_in_column_reference_list10318); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_COMMA.add(COMMA369);
 
-					pushFollow(FOLLOW_column_reference_in_column_reference_list10312);
+					pushFollow(FOLLOW_column_reference_in_column_reference_list10320);
 					column_reference370=column_reference();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -18504,7 +18512,7 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1184:47: -> ( column_reference )+
+			// 1186:47: -> ( column_reference )+
 			{
 				if ( !(stream_column_reference.hasNext()) ) {
 					throw new RewriteEarlyExitException();
@@ -18552,7 +18560,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "table"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1186:1: table : ( Identifier | qualified_identifier );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1188:1: table : ( Identifier | qualified_identifier );
 	public final DBLParser.table_return table() throws RecognitionException {
 		DBLParser.table_return retval = new DBLParser.table_return();
 		retval.start = input.LT(1);
@@ -18568,7 +18576,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 102) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1187:3: ( Identifier | qualified_identifier )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1189:3: ( Identifier | qualified_identifier )
 			int alt152=2;
 			int LA152_0 = input.LA(1);
 			if ( (LA152_0==Identifier) ) {
@@ -18604,12 +18612,12 @@ public class DBLParser extends Parser {
 
 			switch (alt152) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1187:5: Identifier
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1189:5: Identifier
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					Identifier371=(Token)match(input,Identifier,FOLLOW_Identifier_in_table10330); if (state.failed) return retval;
+					Identifier371=(Token)match(input,Identifier,FOLLOW_Identifier_in_table10338); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					Identifier371_tree = (CommonTree)adaptor.create(Identifier371);
 					adaptor.addChild(root_0, Identifier371_tree);
@@ -18618,12 +18626,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1189:5: qualified_identifier
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1191:5: qualified_identifier
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_qualified_identifier_in_table10342);
+					pushFollow(FOLLOW_qualified_identifier_in_table10350);
 					qualified_identifier372=qualified_identifier();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -18663,7 +18671,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "qualified_identifier"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1192:1: qualified_identifier : l= Identifier DIVIDE f= Identifier ( LEFT_PAREN m= Identifier RIGHT_PAREN )? -> ^( QUALIFIED $l $f ( $m)? ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1194:1: qualified_identifier : l= Identifier DIVIDE f= Identifier ( LEFT_PAREN m= Identifier RIGHT_PAREN )? -> ^( QUALIFIED $l $f ( $m)? ) ;
 	public final DBLParser.qualified_identifier_return qualified_identifier() throws RecognitionException {
 		DBLParser.qualified_identifier_return retval = new DBLParser.qualified_identifier_return();
 		retval.start = input.LT(1);
@@ -18692,19 +18700,19 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 103) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1193:3: (l= Identifier DIVIDE f= Identifier ( LEFT_PAREN m= Identifier RIGHT_PAREN )? -> ^( QUALIFIED $l $f ( $m)? ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1193:5: l= Identifier DIVIDE f= Identifier ( LEFT_PAREN m= Identifier RIGHT_PAREN )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1195:3: (l= Identifier DIVIDE f= Identifier ( LEFT_PAREN m= Identifier RIGHT_PAREN )? -> ^( QUALIFIED $l $f ( $m)? ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1195:5: l= Identifier DIVIDE f= Identifier ( LEFT_PAREN m= Identifier RIGHT_PAREN )?
 			{
-			l=(Token)match(input,Identifier,FOLLOW_Identifier_in_qualified_identifier10357); if (state.failed) return retval; 
+			l=(Token)match(input,Identifier,FOLLOW_Identifier_in_qualified_identifier10365); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_Identifier.add(l);
 
-			DIVIDE373=(Token)match(input,DIVIDE,FOLLOW_DIVIDE_in_qualified_identifier10359); if (state.failed) return retval; 
+			DIVIDE373=(Token)match(input,DIVIDE,FOLLOW_DIVIDE_in_qualified_identifier10367); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_DIVIDE.add(DIVIDE373);
 
-			f=(Token)match(input,Identifier,FOLLOW_Identifier_in_qualified_identifier10363); if (state.failed) return retval; 
+			f=(Token)match(input,Identifier,FOLLOW_Identifier_in_qualified_identifier10371); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_Identifier.add(f);
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1193:38: ( LEFT_PAREN m= Identifier RIGHT_PAREN )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1195:38: ( LEFT_PAREN m= Identifier RIGHT_PAREN )?
 			int alt153=2;
 			int LA153_0 = input.LA(1);
 			if ( (LA153_0==LEFT_PAREN) ) {
@@ -18712,15 +18720,15 @@ public class DBLParser extends Parser {
 			}
 			switch (alt153) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1193:39: LEFT_PAREN m= Identifier RIGHT_PAREN
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1195:39: LEFT_PAREN m= Identifier RIGHT_PAREN
 					{
-					LEFT_PAREN374=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_qualified_identifier10366); if (state.failed) return retval; 
+					LEFT_PAREN374=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_qualified_identifier10374); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_LEFT_PAREN.add(LEFT_PAREN374);
 
-					m=(Token)match(input,Identifier,FOLLOW_Identifier_in_qualified_identifier10370); if (state.failed) return retval; 
+					m=(Token)match(input,Identifier,FOLLOW_Identifier_in_qualified_identifier10378); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_Identifier.add(m);
 
-					RIGHT_PAREN375=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_qualified_identifier10372); if (state.failed) return retval; 
+					RIGHT_PAREN375=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_qualified_identifier10380); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_RIGHT_PAREN.add(RIGHT_PAREN375);
 
 					}
@@ -18729,7 +18737,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: l, f, m
+			// elements: m, l, f
 			// token labels: f, l, m
 			// rule labels: retval
 			// token list labels: 
@@ -18743,15 +18751,15 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1193:77: -> ^( QUALIFIED $l $f ( $m)? )
+			// 1195:77: -> ^( QUALIFIED $l $f ( $m)? )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1193:80: ^( QUALIFIED $l $f ( $m)? )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1195:80: ^( QUALIFIED $l $f ( $m)? )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(QUALIFIED, "QUALIFIED"), root_1);
 				adaptor.addChild(root_1, stream_l.nextNode());
 				adaptor.addChild(root_1, stream_f.nextNode());
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1193:99: ( $m)?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1195:99: ( $m)?
 				if ( stream_m.hasNext() ) {
 					adaptor.addChild(root_1, stream_m.nextNode());
 				}
@@ -18798,7 +18806,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "member"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1196:1: member : l= Identifier DIVIDE f= Identifier LEFT_PAREN m= Identifier RIGHT_PAREN -> ^( MEMBER $l $f $m) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1198:1: member : l= Identifier DIVIDE f= Identifier LEFT_PAREN m= Identifier RIGHT_PAREN -> ^( MEMBER $l $f $m) ;
 	public final DBLParser.member_return member() throws RecognitionException {
 		DBLParser.member_return retval = new DBLParser.member_return();
 		retval.start = input.LT(1);
@@ -18827,25 +18835,25 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 104) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1196:8: (l= Identifier DIVIDE f= Identifier LEFT_PAREN m= Identifier RIGHT_PAREN -> ^( MEMBER $l $f $m) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1197:2: l= Identifier DIVIDE f= Identifier LEFT_PAREN m= Identifier RIGHT_PAREN
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1198:8: (l= Identifier DIVIDE f= Identifier LEFT_PAREN m= Identifier RIGHT_PAREN -> ^( MEMBER $l $f $m) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1199:2: l= Identifier DIVIDE f= Identifier LEFT_PAREN m= Identifier RIGHT_PAREN
 			{
-			l=(Token)match(input,Identifier,FOLLOW_Identifier_in_member10407); if (state.failed) return retval; 
+			l=(Token)match(input,Identifier,FOLLOW_Identifier_in_member10415); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_Identifier.add(l);
 
-			DIVIDE376=(Token)match(input,DIVIDE,FOLLOW_DIVIDE_in_member10409); if (state.failed) return retval; 
+			DIVIDE376=(Token)match(input,DIVIDE,FOLLOW_DIVIDE_in_member10417); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_DIVIDE.add(DIVIDE376);
 
-			f=(Token)match(input,Identifier,FOLLOW_Identifier_in_member10413); if (state.failed) return retval; 
+			f=(Token)match(input,Identifier,FOLLOW_Identifier_in_member10421); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_Identifier.add(f);
 
-			LEFT_PAREN377=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_member10415); if (state.failed) return retval; 
+			LEFT_PAREN377=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_member10423); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_LEFT_PAREN.add(LEFT_PAREN377);
 
-			m=(Token)match(input,Identifier,FOLLOW_Identifier_in_member10419); if (state.failed) return retval; 
+			m=(Token)match(input,Identifier,FOLLOW_Identifier_in_member10427); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_Identifier.add(m);
 
-			RIGHT_PAREN378=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_member10421); if (state.failed) return retval; 
+			RIGHT_PAREN378=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_member10429); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_RIGHT_PAREN.add(RIGHT_PAREN378);
 
 			// AST REWRITE
@@ -18863,9 +18871,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1197:71: -> ^( MEMBER $l $f $m)
+			// 1199:71: -> ^( MEMBER $l $f $m)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1197:74: ^( MEMBER $l $f $m)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1199:74: ^( MEMBER $l $f $m)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(MEMBER, "MEMBER"), root_1);
@@ -18913,7 +18921,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "from_clause"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1200:1: from_clause : FROM ^ table_reference_list ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1202:1: from_clause : FROM ^ table_reference_list ;
 	public final DBLParser.from_clause_return from_clause() throws RecognitionException {
 		DBLParser.from_clause_return retval = new DBLParser.from_clause_return();
 		retval.start = input.LT(1);
@@ -18929,19 +18937,19 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 105) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1201:3: ( FROM ^ table_reference_list )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1201:5: FROM ^ table_reference_list
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1203:3: ( FROM ^ table_reference_list )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1203:5: FROM ^ table_reference_list
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			FROM379=(Token)match(input,FROM,FOLLOW_FROM_in_from_clause10456); if (state.failed) return retval;
+			FROM379=(Token)match(input,FROM,FOLLOW_FROM_in_from_clause10464); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			FROM379_tree = (CommonTree)adaptor.create(FROM379);
 			root_0 = (CommonTree)adaptor.becomeRoot(FROM379_tree, root_0);
 			}
 
-			pushFollow(FOLLOW_table_reference_list_in_from_clause10459);
+			pushFollow(FOLLOW_table_reference_list_in_from_clause10467);
 			table_reference_list380=table_reference_list();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -18979,7 +18987,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "table_reference_list"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1203:1: table_reference_list : table_reference ( COMMA table_reference )* -> ( table_reference )+ ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1205:1: table_reference_list : table_reference ( COMMA table_reference )* -> ( table_reference )+ ;
 	public final DBLParser.table_reference_list_return table_reference_list() throws RecognitionException {
 		DBLParser.table_reference_list_return retval = new DBLParser.table_reference_list_return();
 		retval.start = input.LT(1);
@@ -18998,15 +19006,15 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 106) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1204:3: ( table_reference ( COMMA table_reference )* -> ( table_reference )+ )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1204:4: table_reference ( COMMA table_reference )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1206:3: ( table_reference ( COMMA table_reference )* -> ( table_reference )+ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1206:4: table_reference ( COMMA table_reference )*
 			{
-			pushFollow(FOLLOW_table_reference_in_table_reference_list10470);
+			pushFollow(FOLLOW_table_reference_in_table_reference_list10478);
 			table_reference381=table_reference();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_table_reference.add(table_reference381.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1204:20: ( COMMA table_reference )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1206:20: ( COMMA table_reference )*
 			loop154:
 			while (true) {
 				int alt154=2;
@@ -19017,12 +19025,12 @@ public class DBLParser extends Parser {
 
 				switch (alt154) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1204:21: COMMA table_reference
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1206:21: COMMA table_reference
 					{
-					COMMA382=(Token)match(input,COMMA,FOLLOW_COMMA_in_table_reference_list10473); if (state.failed) return retval; 
+					COMMA382=(Token)match(input,COMMA,FOLLOW_COMMA_in_table_reference_list10481); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_COMMA.add(COMMA382);
 
-					pushFollow(FOLLOW_table_reference_in_table_reference_list10475);
+					pushFollow(FOLLOW_table_reference_in_table_reference_list10483);
 					table_reference383=table_reference();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -19047,7 +19055,7 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1204:45: -> ( table_reference )+
+			// 1206:45: -> ( table_reference )+
 			{
 				if ( !(stream_table_reference.hasNext()) ) {
 					throw new RewriteEarlyExitException();
@@ -19095,7 +19103,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "table_reference"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1206:1: table_reference : ( table_primary | joined_table );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1208:1: table_reference : ( table_primary | joined_table );
 	public final DBLParser.table_reference_return table_reference() throws RecognitionException {
 		DBLParser.table_reference_return retval = new DBLParser.table_reference_return();
 		retval.start = input.LT(1);
@@ -19110,7 +19118,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 107) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1207:3: ( table_primary | joined_table )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1209:3: ( table_primary | joined_table )
 			int alt155=2;
 			int LA155_0 = input.LA(1);
 			if ( (LA155_0==Identifier) ) {
@@ -19872,12 +19880,12 @@ public class DBLParser extends Parser {
 
 			switch (alt155) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1207:5: table_primary
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1209:5: table_primary
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_table_primary_in_table_reference10494);
+					pushFollow(FOLLOW_table_primary_in_table_reference10502);
 					table_primary384=table_primary();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -19886,12 +19894,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1208:5: joined_table
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1210:5: joined_table
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_joined_table_in_table_reference10500);
+					pushFollow(FOLLOW_joined_table_in_table_reference10508);
 					joined_table385=joined_table();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -19931,7 +19939,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "joined_table"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1210:1: joined_table : table_primary ( cross_join | qualified_join | natural_join | union_join )+ ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1212:1: joined_table : table_primary ( cross_join | qualified_join | natural_join | union_join )+ ;
 	public final DBLParser.joined_table_return joined_table() throws RecognitionException {
 		DBLParser.joined_table_return retval = new DBLParser.joined_table_return();
 		retval.start = input.LT(1);
@@ -19949,19 +19957,19 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 108) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1211:3: ( table_primary ( cross_join | qualified_join | natural_join | union_join )+ )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1211:5: table_primary ( cross_join | qualified_join | natural_join | union_join )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1213:3: ( table_primary ( cross_join | qualified_join | natural_join | union_join )+ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1213:5: table_primary ( cross_join | qualified_join | natural_join | union_join )+
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_table_primary_in_joined_table10512);
+			pushFollow(FOLLOW_table_primary_in_joined_table10520);
 			table_primary386=table_primary();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, table_primary386.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1211:19: ( cross_join | qualified_join | natural_join | union_join )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1213:19: ( cross_join | qualified_join | natural_join | union_join )+
 			int cnt156=0;
 			loop156:
 			while (true) {
@@ -19998,9 +20006,9 @@ public class DBLParser extends Parser {
 				}
 				switch (alt156) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1211:20: cross_join
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1213:20: cross_join
 					{
-					pushFollow(FOLLOW_cross_join_in_joined_table10515);
+					pushFollow(FOLLOW_cross_join_in_joined_table10523);
 					cross_join387=cross_join();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -20009,9 +20017,9 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1211:33: qualified_join
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1213:33: qualified_join
 					{
-					pushFollow(FOLLOW_qualified_join_in_joined_table10519);
+					pushFollow(FOLLOW_qualified_join_in_joined_table10527);
 					qualified_join388=qualified_join();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -20020,9 +20028,9 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1211:50: natural_join
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1213:50: natural_join
 					{
-					pushFollow(FOLLOW_natural_join_in_joined_table10523);
+					pushFollow(FOLLOW_natural_join_in_joined_table10531);
 					natural_join389=natural_join();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -20031,9 +20039,9 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 4 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1211:65: union_join
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1213:65: union_join
 					{
-					pushFollow(FOLLOW_union_join_in_joined_table10527);
+					pushFollow(FOLLOW_union_join_in_joined_table10535);
 					union_join390=union_join();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -20083,7 +20091,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "joined_table_prim"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1213:1: joined_table_prim : ( cross_join | qualified_join | natural_join | union_join );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1215:1: joined_table_prim : ( cross_join | qualified_join | natural_join | union_join );
 	public final DBLParser.joined_table_prim_return joined_table_prim() throws RecognitionException {
 		DBLParser.joined_table_prim_return retval = new DBLParser.joined_table_prim_return();
 		retval.start = input.LT(1);
@@ -20100,7 +20108,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 109) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1214:3: ( cross_join | qualified_join | natural_join | union_join )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1216:3: ( cross_join | qualified_join | natural_join | union_join )
 			int alt157=4;
 			switch ( input.LA(1) ) {
 			case CROSS:
@@ -20135,12 +20143,12 @@ public class DBLParser extends Parser {
 			}
 			switch (alt157) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1214:5: cross_join
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1216:5: cross_join
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_cross_join_in_joined_table_prim10541);
+					pushFollow(FOLLOW_cross_join_in_joined_table_prim10549);
 					cross_join391=cross_join();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -20149,12 +20157,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1215:5: qualified_join
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1217:5: qualified_join
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_qualified_join_in_joined_table_prim10547);
+					pushFollow(FOLLOW_qualified_join_in_joined_table_prim10555);
 					qualified_join392=qualified_join();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -20163,12 +20171,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1216:5: natural_join
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1218:5: natural_join
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_natural_join_in_joined_table_prim10553);
+					pushFollow(FOLLOW_natural_join_in_joined_table_prim10561);
 					natural_join393=natural_join();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -20177,12 +20185,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 4 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1217:5: union_join
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1219:5: union_join
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_union_join_in_joined_table_prim10559);
+					pushFollow(FOLLOW_union_join_in_joined_table_prim10567);
 					union_join394=union_join();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -20222,7 +20230,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "cross_join"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1219:1: cross_join : CROSS JOIN r= table_primary -> ^( JOIN CROSS $r) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1221:1: cross_join : CROSS JOIN r= table_primary -> ^( JOIN CROSS $r) ;
 	public final DBLParser.cross_join_return cross_join() throws RecognitionException {
 		DBLParser.cross_join_return retval = new DBLParser.cross_join_return();
 		retval.start = input.LT(1);
@@ -20243,22 +20251,22 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 110) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1220:3: ( CROSS JOIN r= table_primary -> ^( JOIN CROSS $r) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1220:5: CROSS JOIN r= table_primary
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1222:3: ( CROSS JOIN r= table_primary -> ^( JOIN CROSS $r) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1222:5: CROSS JOIN r= table_primary
 			{
-			CROSS395=(Token)match(input,CROSS,FOLLOW_CROSS_in_cross_join10571); if (state.failed) return retval; 
+			CROSS395=(Token)match(input,CROSS,FOLLOW_CROSS_in_cross_join10579); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_CROSS.add(CROSS395);
 
-			JOIN396=(Token)match(input,JOIN,FOLLOW_JOIN_in_cross_join10573); if (state.failed) return retval; 
+			JOIN396=(Token)match(input,JOIN,FOLLOW_JOIN_in_cross_join10581); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_JOIN.add(JOIN396);
 
-			pushFollow(FOLLOW_table_primary_in_cross_join10577);
+			pushFollow(FOLLOW_table_primary_in_cross_join10585);
 			r=table_primary();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_table_primary.add(r.getTree());
 			// AST REWRITE
-			// elements: CROSS, r, JOIN
+			// elements: CROSS, JOIN, r
 			// token labels: 
 			// rule labels: r, retval
 			// token list labels: 
@@ -20270,9 +20278,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1220:32: -> ^( JOIN CROSS $r)
+			// 1222:32: -> ^( JOIN CROSS $r)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1220:35: ^( JOIN CROSS $r)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1222:35: ^( JOIN CROSS $r)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(stream_JOIN.nextNode(), root_1);
@@ -20319,7 +20327,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "qualified_join"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1222:1: qualified_join : (t= join_type )? JOIN r= table_primary s= join_specification -> ^( JOIN ( $t)? $r $s) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1224:1: qualified_join : (t= join_type )? JOIN r= table_primary s= join_specification -> ^( JOIN ( $t)? $r $s) ;
 	public final DBLParser.qualified_join_return qualified_join() throws RecognitionException {
 		DBLParser.qualified_join_return retval = new DBLParser.qualified_join_return();
 		retval.start = input.LT(1);
@@ -20341,10 +20349,10 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 111) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1223:3: ( (t= join_type )? JOIN r= table_primary s= join_specification -> ^( JOIN ( $t)? $r $s) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1223:5: (t= join_type )? JOIN r= table_primary s= join_specification
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1225:3: ( (t= join_type )? JOIN r= table_primary s= join_specification -> ^( JOIN ( $t)? $r $s) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1225:5: (t= join_type )? JOIN r= table_primary s= join_specification
 			{
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1223:5: (t= join_type )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1225:5: (t= join_type )?
 			int alt158=2;
 			int LA158_0 = input.LA(1);
 			if ( (LA158_0==FULL||LA158_0==INNER||LA158_0==LEFT||LA158_0==RIGHT) ) {
@@ -20352,9 +20360,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt158) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1223:6: t= join_type
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1225:6: t= join_type
 					{
-					pushFollow(FOLLOW_join_type_in_qualified_join10603);
+					pushFollow(FOLLOW_join_type_in_qualified_join10611);
 					t=join_type();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -20364,21 +20372,21 @@ public class DBLParser extends Parser {
 
 			}
 
-			JOIN397=(Token)match(input,JOIN,FOLLOW_JOIN_in_qualified_join10607); if (state.failed) return retval; 
+			JOIN397=(Token)match(input,JOIN,FOLLOW_JOIN_in_qualified_join10615); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_JOIN.add(JOIN397);
 
-			pushFollow(FOLLOW_table_primary_in_qualified_join10611);
+			pushFollow(FOLLOW_table_primary_in_qualified_join10619);
 			r=table_primary();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_table_primary.add(r.getTree());
-			pushFollow(FOLLOW_join_specification_in_qualified_join10615);
+			pushFollow(FOLLOW_join_specification_in_qualified_join10623);
 			s=join_specification();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_join_specification.add(s.getTree());
 			// AST REWRITE
-			// elements: s, t, JOIN, r
+			// elements: t, r, JOIN, s
 			// token labels: 
 			// rule labels: r, s, t, retval
 			// token list labels: 
@@ -20392,13 +20400,13 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1223:62: -> ^( JOIN ( $t)? $r $s)
+			// 1225:62: -> ^( JOIN ( $t)? $r $s)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1223:65: ^( JOIN ( $t)? $r $s)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1225:65: ^( JOIN ( $t)? $r $s)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(stream_JOIN.nextNode(), root_1);
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1223:73: ( $t)?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1225:73: ( $t)?
 				if ( stream_t.hasNext() ) {
 					adaptor.addChild(root_1, stream_t.nextTree());
 				}
@@ -20447,7 +20455,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "natural_join"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1225:1: natural_join : NATURAL (t= join_type )? JOIN r= table_primary -> ^( JOIN NATURAL ( $t)? $r) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1227:1: natural_join : NATURAL (t= join_type )? JOIN r= table_primary -> ^( JOIN NATURAL ( $t)? $r) ;
 	public final DBLParser.natural_join_return natural_join() throws RecognitionException {
 		DBLParser.natural_join_return retval = new DBLParser.natural_join_return();
 		retval.start = input.LT(1);
@@ -20470,13 +20478,13 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 112) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1226:3: ( NATURAL (t= join_type )? JOIN r= table_primary -> ^( JOIN NATURAL ( $t)? $r) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1226:5: NATURAL (t= join_type )? JOIN r= table_primary
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1228:3: ( NATURAL (t= join_type )? JOIN r= table_primary -> ^( JOIN NATURAL ( $t)? $r) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1228:5: NATURAL (t= join_type )? JOIN r= table_primary
 			{
-			NATURAL398=(Token)match(input,NATURAL,FOLLOW_NATURAL_in_natural_join10643); if (state.failed) return retval; 
+			NATURAL398=(Token)match(input,NATURAL,FOLLOW_NATURAL_in_natural_join10651); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_NATURAL.add(NATURAL398);
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1226:13: (t= join_type )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1228:13: (t= join_type )?
 			int alt159=2;
 			int LA159_0 = input.LA(1);
 			if ( (LA159_0==FULL||LA159_0==INNER||LA159_0==LEFT||LA159_0==RIGHT) ) {
@@ -20484,9 +20492,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt159) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1226:14: t= join_type
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1228:14: t= join_type
 					{
-					pushFollow(FOLLOW_join_type_in_natural_join10648);
+					pushFollow(FOLLOW_join_type_in_natural_join10656);
 					t=join_type();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -20496,16 +20504,16 @@ public class DBLParser extends Parser {
 
 			}
 
-			JOIN399=(Token)match(input,JOIN,FOLLOW_JOIN_in_natural_join10652); if (state.failed) return retval; 
+			JOIN399=(Token)match(input,JOIN,FOLLOW_JOIN_in_natural_join10660); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_JOIN.add(JOIN399);
 
-			pushFollow(FOLLOW_table_primary_in_natural_join10656);
+			pushFollow(FOLLOW_table_primary_in_natural_join10664);
 			r=table_primary();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_table_primary.add(r.getTree());
 			// AST REWRITE
-			// elements: NATURAL, r, JOIN, t
+			// elements: r, JOIN, t, NATURAL
 			// token labels: 
 			// rule labels: r, t, retval
 			// token list labels: 
@@ -20518,14 +20526,14 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1226:49: -> ^( JOIN NATURAL ( $t)? $r)
+			// 1228:49: -> ^( JOIN NATURAL ( $t)? $r)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1226:52: ^( JOIN NATURAL ( $t)? $r)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1228:52: ^( JOIN NATURAL ( $t)? $r)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(stream_JOIN.nextNode(), root_1);
 				adaptor.addChild(root_1, stream_NATURAL.nextNode());
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1226:68: ( $t)?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1228:68: ( $t)?
 				if ( stream_t.hasNext() ) {
 					adaptor.addChild(root_1, stream_t.nextTree());
 				}
@@ -20573,7 +20581,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "union_join"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1228:1: union_join : UNION JOIN r= table_primary -> ^( JOIN UNION $r) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1230:1: union_join : UNION JOIN r= table_primary -> ^( JOIN UNION $r) ;
 	public final DBLParser.union_join_return union_join() throws RecognitionException {
 		DBLParser.union_join_return retval = new DBLParser.union_join_return();
 		retval.start = input.LT(1);
@@ -20594,22 +20602,22 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 113) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1229:3: ( UNION JOIN r= table_primary -> ^( JOIN UNION $r) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1229:5: UNION JOIN r= table_primary
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1231:3: ( UNION JOIN r= table_primary -> ^( JOIN UNION $r) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1231:5: UNION JOIN r= table_primary
 			{
-			UNION400=(Token)match(input,UNION,FOLLOW_UNION_in_union_join10683); if (state.failed) return retval; 
+			UNION400=(Token)match(input,UNION,FOLLOW_UNION_in_union_join10691); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_UNION.add(UNION400);
 
-			JOIN401=(Token)match(input,JOIN,FOLLOW_JOIN_in_union_join10685); if (state.failed) return retval; 
+			JOIN401=(Token)match(input,JOIN,FOLLOW_JOIN_in_union_join10693); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_JOIN.add(JOIN401);
 
-			pushFollow(FOLLOW_table_primary_in_union_join10689);
+			pushFollow(FOLLOW_table_primary_in_union_join10697);
 			r=table_primary();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_table_primary.add(r.getTree());
 			// AST REWRITE
-			// elements: UNION, r, JOIN
+			// elements: JOIN, UNION, r
 			// token labels: 
 			// rule labels: r, retval
 			// token list labels: 
@@ -20621,9 +20629,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1229:32: -> ^( JOIN UNION $r)
+			// 1231:32: -> ^( JOIN UNION $r)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1229:35: ^( JOIN UNION $r)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1231:35: ^( JOIN UNION $r)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(stream_JOIN.nextNode(), root_1);
@@ -20670,7 +20678,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "join_type"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1231:1: join_type : ( INNER |t= outer_join_type OUTER -> ^( OUTER $t) |t= outer_join_type -> ^( OUTER $t) );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1233:1: join_type : ( INNER |t= outer_join_type OUTER -> ^( OUTER $t) |t= outer_join_type -> ^( OUTER $t) );
 	public final DBLParser.join_type_return join_type() throws RecognitionException {
 		DBLParser.join_type_return retval = new DBLParser.join_type_return();
 		retval.start = input.LT(1);
@@ -20690,7 +20698,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 114) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1232:3: ( INNER |t= outer_join_type OUTER -> ^( OUTER $t) |t= outer_join_type -> ^( OUTER $t) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1234:3: ( INNER |t= outer_join_type OUTER -> ^( OUTER $t) |t= outer_join_type -> ^( OUTER $t) )
 			int alt160=3;
 			int LA160_0 = input.LA(1);
 			if ( (LA160_0==INNER) ) {
@@ -20729,12 +20737,12 @@ public class DBLParser extends Parser {
 
 			switch (alt160) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1232:5: INNER
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1234:5: INNER
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					INNER402=(Token)match(input,INNER,FOLLOW_INNER_in_join_type10712); if (state.failed) return retval;
+					INNER402=(Token)match(input,INNER,FOLLOW_INNER_in_join_type10720); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					INNER402_tree = (CommonTree)adaptor.create(INNER402);
 					adaptor.addChild(root_0, INNER402_tree);
@@ -20743,18 +20751,18 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1233:5: t= outer_join_type OUTER
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1235:5: t= outer_join_type OUTER
 					{
-					pushFollow(FOLLOW_outer_join_type_in_join_type10720);
+					pushFollow(FOLLOW_outer_join_type_in_join_type10728);
 					t=outer_join_type();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) stream_outer_join_type.add(t.getTree());
-					OUTER403=(Token)match(input,OUTER,FOLLOW_OUTER_in_join_type10722); if (state.failed) return retval; 
+					OUTER403=(Token)match(input,OUTER,FOLLOW_OUTER_in_join_type10730); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_OUTER.add(OUTER403);
 
 					// AST REWRITE
-					// elements: t, OUTER
+					// elements: OUTER, t
 					// token labels: 
 					// rule labels: t, retval
 					// token list labels: 
@@ -20766,9 +20774,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1233:29: -> ^( OUTER $t)
+					// 1235:29: -> ^( OUTER $t)
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1233:32: ^( OUTER $t)
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1235:32: ^( OUTER $t)
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot(stream_OUTER.nextNode(), root_1);
@@ -20785,9 +20793,9 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1234:5: t= outer_join_type
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1236:5: t= outer_join_type
 					{
-					pushFollow(FOLLOW_outer_join_type_in_join_type10739);
+					pushFollow(FOLLOW_outer_join_type_in_join_type10747);
 					t=outer_join_type();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -20805,9 +20813,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1234:23: -> ^( OUTER $t)
+					// 1236:23: -> ^( OUTER $t)
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1234:26: ^( OUTER $t)
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1236:26: ^( OUTER $t)
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(OUTER, "OUTER"), root_1);
@@ -20855,7 +20863,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "outer_join_type"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1236:1: outer_join_type : ( LEFT | RIGHT | FULL );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1238:1: outer_join_type : ( LEFT | RIGHT | FULL );
 	public final DBLParser.outer_join_type_return outer_join_type() throws RecognitionException {
 		DBLParser.outer_join_type_return retval = new DBLParser.outer_join_type_return();
 		retval.start = input.LT(1);
@@ -20870,7 +20878,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 115) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1237:3: ( LEFT | RIGHT | FULL )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1239:3: ( LEFT | RIGHT | FULL )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:
 			{
 			root_0 = (CommonTree)adaptor.nil();
@@ -20920,7 +20928,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "join_specification"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1241:1: join_specification : ( join_condition | named_columns_join );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1243:1: join_specification : ( join_condition | named_columns_join );
 	public final DBLParser.join_specification_return join_specification() throws RecognitionException {
 		DBLParser.join_specification_return retval = new DBLParser.join_specification_return();
 		retval.start = input.LT(1);
@@ -20935,7 +20943,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 116) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1242:3: ( join_condition | named_columns_join )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1244:3: ( join_condition | named_columns_join )
 			int alt161=2;
 			int LA161_0 = input.LA(1);
 			if ( (LA161_0==ON) ) {
@@ -20954,12 +20962,12 @@ public class DBLParser extends Parser {
 
 			switch (alt161) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1242:5: join_condition
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1244:5: join_condition
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_join_condition_in_join_specification10784);
+					pushFollow(FOLLOW_join_condition_in_join_specification10792);
 					join_condition405=join_condition();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -20968,12 +20976,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1243:5: named_columns_join
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1245:5: named_columns_join
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_named_columns_join_in_join_specification10790);
+					pushFollow(FOLLOW_named_columns_join_in_join_specification10798);
 					named_columns_join406=named_columns_join();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -21013,7 +21021,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "join_condition"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1245:1: join_condition : ON ^ search_condition ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1247:1: join_condition : ON ^ search_condition ;
 	public final DBLParser.join_condition_return join_condition() throws RecognitionException {
 		DBLParser.join_condition_return retval = new DBLParser.join_condition_return();
 		retval.start = input.LT(1);
@@ -21029,19 +21037,19 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 117) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1246:3: ( ON ^ search_condition )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1246:5: ON ^ search_condition
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1248:3: ( ON ^ search_condition )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1248:5: ON ^ search_condition
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			ON407=(Token)match(input,ON,FOLLOW_ON_in_join_condition10802); if (state.failed) return retval;
+			ON407=(Token)match(input,ON,FOLLOW_ON_in_join_condition10810); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			ON407_tree = (CommonTree)adaptor.create(ON407);
 			root_0 = (CommonTree)adaptor.becomeRoot(ON407_tree, root_0);
 			}
 
-			pushFollow(FOLLOW_search_condition_in_join_condition10805);
+			pushFollow(FOLLOW_search_condition_in_join_condition10813);
 			search_condition408=search_condition();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -21079,7 +21087,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "named_columns_join"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1248:1: named_columns_join : USING LEFT_PAREN f= column_reference_list RIGHT_PAREN -> ^( USING $f) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1250:1: named_columns_join : USING LEFT_PAREN f= column_reference_list RIGHT_PAREN -> ^( USING $f) ;
 	public final DBLParser.named_columns_join_return named_columns_join() throws RecognitionException {
 		DBLParser.named_columns_join_return retval = new DBLParser.named_columns_join_return();
 		retval.start = input.LT(1);
@@ -21103,25 +21111,25 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 118) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1249:3: ( USING LEFT_PAREN f= column_reference_list RIGHT_PAREN -> ^( USING $f) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1249:5: USING LEFT_PAREN f= column_reference_list RIGHT_PAREN
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1251:3: ( USING LEFT_PAREN f= column_reference_list RIGHT_PAREN -> ^( USING $f) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1251:5: USING LEFT_PAREN f= column_reference_list RIGHT_PAREN
 			{
-			USING409=(Token)match(input,USING,FOLLOW_USING_in_named_columns_join10817); if (state.failed) return retval; 
+			USING409=(Token)match(input,USING,FOLLOW_USING_in_named_columns_join10825); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_USING.add(USING409);
 
-			LEFT_PAREN410=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_named_columns_join10819); if (state.failed) return retval; 
+			LEFT_PAREN410=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_named_columns_join10827); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_LEFT_PAREN.add(LEFT_PAREN410);
 
-			pushFollow(FOLLOW_column_reference_list_in_named_columns_join10823);
+			pushFollow(FOLLOW_column_reference_list_in_named_columns_join10831);
 			f=column_reference_list();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_column_reference_list.add(f.getTree());
-			RIGHT_PAREN411=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_named_columns_join10825); if (state.failed) return retval; 
+			RIGHT_PAREN411=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_named_columns_join10833); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_RIGHT_PAREN.add(RIGHT_PAREN411);
 
 			// AST REWRITE
-			// elements: USING, f
+			// elements: f, USING
 			// token labels: 
 			// rule labels: f, retval
 			// token list labels: 
@@ -21133,9 +21141,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1249:58: -> ^( USING $f)
+			// 1251:58: -> ^( USING $f)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1249:61: ^( USING $f)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1251:61: ^( USING $f)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(stream_USING.nextNode(), root_1);
@@ -21181,7 +21189,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "table_primary"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1251:1: table_primary : table ( ( AS )? a= Identifier )? -> ^( TABLE table ( $a)? ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1253:1: table_primary : table ( ( AS )? a= Identifier )? -> ^( TABLE table ( $a)? ) ;
 	public final DBLParser.table_primary_return table_primary() throws RecognitionException {
 		DBLParser.table_primary_return retval = new DBLParser.table_primary_return();
 		retval.start = input.LT(1);
@@ -21202,15 +21210,15 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 119) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1252:3: ( table ( ( AS )? a= Identifier )? -> ^( TABLE table ( $a)? ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1252:5: table ( ( AS )? a= Identifier )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1254:3: ( table ( ( AS )? a= Identifier )? -> ^( TABLE table ( $a)? ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1254:5: table ( ( AS )? a= Identifier )?
 			{
-			pushFollow(FOLLOW_table_in_table_primary10846);
+			pushFollow(FOLLOW_table_in_table_primary10854);
 			table412=table();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_table.add(table412.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1252:11: ( ( AS )? a= Identifier )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1254:11: ( ( AS )? a= Identifier )?
 			int alt163=2;
 			int LA163_0 = input.LA(1);
 			if ( (LA163_0==AS||LA163_0==Identifier) ) {
@@ -21218,9 +21226,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt163) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1252:12: ( AS )? a= Identifier
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1254:12: ( AS )? a= Identifier
 					{
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1252:12: ( AS )?
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1254:12: ( AS )?
 					int alt162=2;
 					int LA162_0 = input.LA(1);
 					if ( (LA162_0==AS) ) {
@@ -21228,9 +21236,9 @@ public class DBLParser extends Parser {
 					}
 					switch (alt162) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1252:13: AS
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1254:13: AS
 							{
-							AS413=(Token)match(input,AS,FOLLOW_AS_in_table_primary10850); if (state.failed) return retval; 
+							AS413=(Token)match(input,AS,FOLLOW_AS_in_table_primary10858); if (state.failed) return retval; 
 							if ( state.backtracking==0 ) stream_AS.add(AS413);
 
 							}
@@ -21238,7 +21246,7 @@ public class DBLParser extends Parser {
 
 					}
 
-					a=(Token)match(input,Identifier,FOLLOW_Identifier_in_table_primary10856); if (state.failed) return retval; 
+					a=(Token)match(input,Identifier,FOLLOW_Identifier_in_table_primary10864); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_Identifier.add(a);
 
 					}
@@ -21259,14 +21267,14 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1252:33: -> ^( TABLE table ( $a)? )
+			// 1254:33: -> ^( TABLE table ( $a)? )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1252:36: ^( TABLE table ( $a)? )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1254:36: ^( TABLE table ( $a)? )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(TABLE, "TABLE"), root_1);
 				adaptor.addChild(root_1, stream_table.nextTree());
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1252:50: ( $a)?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1254:50: ( $a)?
 				if ( stream_a.hasNext() ) {
 					adaptor.addChild(root_1, stream_a.nextNode());
 				}
@@ -21313,7 +21321,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "where_clause"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1254:1: where_clause : WHERE ^ search_condition ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1256:1: where_clause : WHERE ^ search_condition ;
 	public final DBLParser.where_clause_return where_clause() throws RecognitionException {
 		DBLParser.where_clause_return retval = new DBLParser.where_clause_return();
 		retval.start = input.LT(1);
@@ -21329,19 +21337,19 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 120) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1255:3: ( WHERE ^ search_condition )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1255:5: WHERE ^ search_condition
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1257:3: ( WHERE ^ search_condition )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1257:5: WHERE ^ search_condition
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			WHERE414=(Token)match(input,WHERE,FOLLOW_WHERE_in_where_clause10884); if (state.failed) return retval;
+			WHERE414=(Token)match(input,WHERE,FOLLOW_WHERE_in_where_clause10892); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			WHERE414_tree = (CommonTree)adaptor.create(WHERE414);
 			root_0 = (CommonTree)adaptor.becomeRoot(WHERE414_tree, root_0);
 			}
 
-			pushFollow(FOLLOW_search_condition_in_where_clause10887);
+			pushFollow(FOLLOW_search_condition_in_where_clause10895);
 			search_condition415=search_condition();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -21379,7 +21387,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "routine_invocation"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1263:1: routine_invocation : ( Identifier LEFT_PAREN ( funcArgs )? RIGHT_PAREN -> ^( FUNCTION[$Identifier.text] ( funcArgs )? ) | COUNT LEFT_PAREN funcArgs RIGHT_PAREN -> ^( COUNT_VAL funcArgs ) | COUNT LEFT_PAREN MULTIPLY RIGHT_PAREN -> ^( COUNT_ROWS ) );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1265:1: routine_invocation : ( Identifier LEFT_PAREN ( funcArgs )? RIGHT_PAREN -> ^( FUNCTION[$Identifier.text] ( funcArgs )? ) | COUNT LEFT_PAREN funcArgs RIGHT_PAREN -> ^( COUNT_VAL funcArgs ) | COUNT LEFT_PAREN MULTIPLY RIGHT_PAREN -> ^( COUNT_ROWS ) );
 	public final DBLParser.routine_invocation_return routine_invocation() throws RecognitionException {
 		DBLParser.routine_invocation_return retval = new DBLParser.routine_invocation_return();
 		retval.start = input.LT(1);
@@ -21420,7 +21428,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 121) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1264:2: ( Identifier LEFT_PAREN ( funcArgs )? RIGHT_PAREN -> ^( FUNCTION[$Identifier.text] ( funcArgs )? ) | COUNT LEFT_PAREN funcArgs RIGHT_PAREN -> ^( COUNT_VAL funcArgs ) | COUNT LEFT_PAREN MULTIPLY RIGHT_PAREN -> ^( COUNT_ROWS ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1266:2: ( Identifier LEFT_PAREN ( funcArgs )? RIGHT_PAREN -> ^( FUNCTION[$Identifier.text] ( funcArgs )? ) | COUNT LEFT_PAREN funcArgs RIGHT_PAREN -> ^( COUNT_VAL funcArgs ) | COUNT LEFT_PAREN MULTIPLY RIGHT_PAREN -> ^( COUNT_ROWS ) )
 			int alt165=3;
 			int LA165_0 = input.LA(1);
 			if ( (LA165_0==Identifier) ) {
@@ -21478,15 +21486,15 @@ public class DBLParser extends Parser {
 
 			switch (alt165) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1264:4: Identifier LEFT_PAREN ( funcArgs )? RIGHT_PAREN
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1266:4: Identifier LEFT_PAREN ( funcArgs )? RIGHT_PAREN
 					{
-					Identifier416=(Token)match(input,Identifier,FOLLOW_Identifier_in_routine_invocation10900); if (state.failed) return retval; 
+					Identifier416=(Token)match(input,Identifier,FOLLOW_Identifier_in_routine_invocation10908); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_Identifier.add(Identifier416);
 
-					LEFT_PAREN417=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_routine_invocation10902); if (state.failed) return retval; 
+					LEFT_PAREN417=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_routine_invocation10910); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_LEFT_PAREN.add(LEFT_PAREN417);
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1264:26: ( funcArgs )?
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1266:26: ( funcArgs )?
 					int alt164=2;
 					int LA164_0 = input.LA(1);
 					if ( (LA164_0==CASE||LA164_0==COUNT||LA164_0==Character_String_Literal||LA164_0==Identifier||LA164_0==LEFT_PAREN||LA164_0==MINUS||LA164_0==NOT||LA164_0==NULL||LA164_0==NUMBER||LA164_0==PLUS||LA164_0==REAL_NUMBER) ) {
@@ -21494,9 +21502,9 @@ public class DBLParser extends Parser {
 					}
 					switch (alt164) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1264:26: funcArgs
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1266:26: funcArgs
 							{
-							pushFollow(FOLLOW_funcArgs_in_routine_invocation10904);
+							pushFollow(FOLLOW_funcArgs_in_routine_invocation10912);
 							funcArgs418=funcArgs();
 							state._fsp--;
 							if (state.failed) return retval;
@@ -21506,7 +21514,7 @@ public class DBLParser extends Parser {
 
 					}
 
-					RIGHT_PAREN419=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_routine_invocation10907); if (state.failed) return retval; 
+					RIGHT_PAREN419=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_routine_invocation10915); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_RIGHT_PAREN.add(RIGHT_PAREN419);
 
 					// AST REWRITE
@@ -21521,13 +21529,13 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1264:48: -> ^( FUNCTION[$Identifier.text] ( funcArgs )? )
+					// 1266:48: -> ^( FUNCTION[$Identifier.text] ( funcArgs )? )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1264:51: ^( FUNCTION[$Identifier.text] ( funcArgs )? )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1266:51: ^( FUNCTION[$Identifier.text] ( funcArgs )? )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(FUNCTION, (Identifier416!=null?Identifier416.getText():null)), root_1);
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1264:80: ( funcArgs )?
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1266:80: ( funcArgs )?
 						if ( stream_funcArgs.hasNext() ) {
 							adaptor.addChild(root_1, stream_funcArgs.nextTree());
 						}
@@ -21545,20 +21553,20 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1265:4: COUNT LEFT_PAREN funcArgs RIGHT_PAREN
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1267:4: COUNT LEFT_PAREN funcArgs RIGHT_PAREN
 					{
-					COUNT420=(Token)match(input,COUNT,FOLLOW_COUNT_in_routine_invocation10922); if (state.failed) return retval; 
+					COUNT420=(Token)match(input,COUNT,FOLLOW_COUNT_in_routine_invocation10930); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_COUNT.add(COUNT420);
 
-					LEFT_PAREN421=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_routine_invocation10924); if (state.failed) return retval; 
+					LEFT_PAREN421=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_routine_invocation10932); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_LEFT_PAREN.add(LEFT_PAREN421);
 
-					pushFollow(FOLLOW_funcArgs_in_routine_invocation10926);
+					pushFollow(FOLLOW_funcArgs_in_routine_invocation10934);
 					funcArgs422=funcArgs();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) stream_funcArgs.add(funcArgs422.getTree());
-					RIGHT_PAREN423=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_routine_invocation10928); if (state.failed) return retval; 
+					RIGHT_PAREN423=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_routine_invocation10936); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_RIGHT_PAREN.add(RIGHT_PAREN423);
 
 					// AST REWRITE
@@ -21573,9 +21581,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1265:42: -> ^( COUNT_VAL funcArgs )
+					// 1267:42: -> ^( COUNT_VAL funcArgs )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1265:45: ^( COUNT_VAL funcArgs )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1267:45: ^( COUNT_VAL funcArgs )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(COUNT_VAL, "COUNT_VAL"), root_1);
@@ -21592,18 +21600,18 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1266:4: COUNT LEFT_PAREN MULTIPLY RIGHT_PAREN
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1268:4: COUNT LEFT_PAREN MULTIPLY RIGHT_PAREN
 					{
-					COUNT424=(Token)match(input,COUNT,FOLLOW_COUNT_in_routine_invocation10941); if (state.failed) return retval; 
+					COUNT424=(Token)match(input,COUNT,FOLLOW_COUNT_in_routine_invocation10949); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_COUNT.add(COUNT424);
 
-					LEFT_PAREN425=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_routine_invocation10943); if (state.failed) return retval; 
+					LEFT_PAREN425=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_routine_invocation10951); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_LEFT_PAREN.add(LEFT_PAREN425);
 
-					MULTIPLY426=(Token)match(input,MULTIPLY,FOLLOW_MULTIPLY_in_routine_invocation10945); if (state.failed) return retval; 
+					MULTIPLY426=(Token)match(input,MULTIPLY,FOLLOW_MULTIPLY_in_routine_invocation10953); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_MULTIPLY.add(MULTIPLY426);
 
-					RIGHT_PAREN427=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_routine_invocation10947); if (state.failed) return retval; 
+					RIGHT_PAREN427=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_routine_invocation10955); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_RIGHT_PAREN.add(RIGHT_PAREN427);
 
 					// AST REWRITE
@@ -21618,9 +21626,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1266:42: -> ^( COUNT_ROWS )
+					// 1268:42: -> ^( COUNT_ROWS )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1266:45: ^( COUNT_ROWS )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1268:45: ^( COUNT_ROWS )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(COUNT_ROWS, "COUNT_ROWS"), root_1);
@@ -21667,7 +21675,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "funcArgs"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1268:1: funcArgs : boolean_value_expression ( COMMA boolean_value_expression )* -> ( boolean_value_expression )+ ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1270:1: funcArgs : boolean_value_expression ( COMMA boolean_value_expression )* -> ( boolean_value_expression )+ ;
 	public final DBLParser.funcArgs_return funcArgs() throws RecognitionException {
 		DBLParser.funcArgs_return retval = new DBLParser.funcArgs_return();
 		retval.start = input.LT(1);
@@ -21686,15 +21694,15 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 122) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1269:3: ( boolean_value_expression ( COMMA boolean_value_expression )* -> ( boolean_value_expression )+ )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1269:5: boolean_value_expression ( COMMA boolean_value_expression )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1271:3: ( boolean_value_expression ( COMMA boolean_value_expression )* -> ( boolean_value_expression )+ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1271:5: boolean_value_expression ( COMMA boolean_value_expression )*
 			{
-			pushFollow(FOLLOW_boolean_value_expression_in_funcArgs10964);
+			pushFollow(FOLLOW_boolean_value_expression_in_funcArgs10972);
 			boolean_value_expression428=boolean_value_expression();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_boolean_value_expression.add(boolean_value_expression428.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1269:30: ( COMMA boolean_value_expression )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1271:30: ( COMMA boolean_value_expression )*
 			loop166:
 			while (true) {
 				int alt166=2;
@@ -21705,12 +21713,12 @@ public class DBLParser extends Parser {
 
 				switch (alt166) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1269:31: COMMA boolean_value_expression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1271:31: COMMA boolean_value_expression
 					{
-					COMMA429=(Token)match(input,COMMA,FOLLOW_COMMA_in_funcArgs10967); if (state.failed) return retval; 
+					COMMA429=(Token)match(input,COMMA,FOLLOW_COMMA_in_funcArgs10975); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_COMMA.add(COMMA429);
 
-					pushFollow(FOLLOW_boolean_value_expression_in_funcArgs10969);
+					pushFollow(FOLLOW_boolean_value_expression_in_funcArgs10977);
 					boolean_value_expression430=boolean_value_expression();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -21735,7 +21743,7 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1269:64: -> ( boolean_value_expression )+
+			// 1271:64: -> ( boolean_value_expression )+
 			{
 				if ( !(stream_boolean_value_expression.hasNext()) ) {
 					throw new RewriteEarlyExitException();
@@ -21783,7 +21791,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "groupby_clause"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1276:1: groupby_clause : GROUP BY g= grouping_element_list -> ^( GROUP_BY $g) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1278:1: groupby_clause : GROUP BY g= grouping_element_list -> ^( GROUP_BY $g) ;
 	public final DBLParser.groupby_clause_return groupby_clause() throws RecognitionException {
 		DBLParser.groupby_clause_return retval = new DBLParser.groupby_clause_return();
 		retval.start = input.LT(1);
@@ -21804,16 +21812,16 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 123) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1277:3: ( GROUP BY g= grouping_element_list -> ^( GROUP_BY $g) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1277:5: GROUP BY g= grouping_element_list
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1279:3: ( GROUP BY g= grouping_element_list -> ^( GROUP_BY $g) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1279:5: GROUP BY g= grouping_element_list
 			{
-			GROUP431=(Token)match(input,GROUP,FOLLOW_GROUP_in_groupby_clause10990); if (state.failed) return retval; 
+			GROUP431=(Token)match(input,GROUP,FOLLOW_GROUP_in_groupby_clause10998); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_GROUP.add(GROUP431);
 
-			BY432=(Token)match(input,BY,FOLLOW_BY_in_groupby_clause10992); if (state.failed) return retval; 
+			BY432=(Token)match(input,BY,FOLLOW_BY_in_groupby_clause11000); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_BY.add(BY432);
 
-			pushFollow(FOLLOW_grouping_element_list_in_groupby_clause10996);
+			pushFollow(FOLLOW_grouping_element_list_in_groupby_clause11004);
 			g=grouping_element_list();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -21831,9 +21839,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1277:38: -> ^( GROUP_BY $g)
+			// 1279:38: -> ^( GROUP_BY $g)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1277:41: ^( GROUP_BY $g)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1279:41: ^( GROUP_BY $g)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(GROUP_BY, "GROUP_BY"), root_1);
@@ -21879,7 +21887,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "grouping_element_list"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1279:1: grouping_element_list : grouping_element ( COMMA grouping_element )* -> ( grouping_element )+ ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1281:1: grouping_element_list : grouping_element ( COMMA grouping_element )* -> ( grouping_element )+ ;
 	public final DBLParser.grouping_element_list_return grouping_element_list() throws RecognitionException {
 		DBLParser.grouping_element_list_return retval = new DBLParser.grouping_element_list_return();
 		retval.start = input.LT(1);
@@ -21898,15 +21906,15 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 124) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1280:3: ( grouping_element ( COMMA grouping_element )* -> ( grouping_element )+ )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1280:5: grouping_element ( COMMA grouping_element )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1282:3: ( grouping_element ( COMMA grouping_element )* -> ( grouping_element )+ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1282:5: grouping_element ( COMMA grouping_element )*
 			{
-			pushFollow(FOLLOW_grouping_element_in_grouping_element_list11017);
+			pushFollow(FOLLOW_grouping_element_in_grouping_element_list11025);
 			grouping_element433=grouping_element();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_grouping_element.add(grouping_element433.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1280:22: ( COMMA grouping_element )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1282:22: ( COMMA grouping_element )*
 			loop167:
 			while (true) {
 				int alt167=2;
@@ -21917,12 +21925,12 @@ public class DBLParser extends Parser {
 
 				switch (alt167) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1280:23: COMMA grouping_element
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1282:23: COMMA grouping_element
 					{
-					COMMA434=(Token)match(input,COMMA,FOLLOW_COMMA_in_grouping_element_list11020); if (state.failed) return retval; 
+					COMMA434=(Token)match(input,COMMA,FOLLOW_COMMA_in_grouping_element_list11028); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_COMMA.add(COMMA434);
 
-					pushFollow(FOLLOW_grouping_element_in_grouping_element_list11022);
+					pushFollow(FOLLOW_grouping_element_in_grouping_element_list11030);
 					grouping_element435=grouping_element();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -21947,7 +21955,7 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1280:48: -> ( grouping_element )+
+			// 1282:48: -> ( grouping_element )+
 			{
 				if ( !(stream_grouping_element.hasNext()) ) {
 					throw new RewriteEarlyExitException();
@@ -21995,7 +22003,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "grouping_element"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1282:1: grouping_element : ( ordinary_grouping_set | rollup_list | cube_list | empty_grouping_set );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1284:1: grouping_element : ( ordinary_grouping_set | rollup_list | cube_list | empty_grouping_set );
 	public final DBLParser.grouping_element_return grouping_element() throws RecognitionException {
 		DBLParser.grouping_element_return retval = new DBLParser.grouping_element_return();
 		retval.start = input.LT(1);
@@ -22012,7 +22020,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 125) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1283:3: ( ordinary_grouping_set | rollup_list | cube_list | empty_grouping_set )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1285:3: ( ordinary_grouping_set | rollup_list | cube_list | empty_grouping_set )
 			int alt168=4;
 			switch ( input.LA(1) ) {
 			case Identifier:
@@ -22063,12 +22071,12 @@ public class DBLParser extends Parser {
 			}
 			switch (alt168) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1283:5: ordinary_grouping_set
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1285:5: ordinary_grouping_set
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_ordinary_grouping_set_in_grouping_element11041);
+					pushFollow(FOLLOW_ordinary_grouping_set_in_grouping_element11049);
 					ordinary_grouping_set436=ordinary_grouping_set();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -22077,12 +22085,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1284:5: rollup_list
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1286:5: rollup_list
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_rollup_list_in_grouping_element11047);
+					pushFollow(FOLLOW_rollup_list_in_grouping_element11055);
 					rollup_list437=rollup_list();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -22091,12 +22099,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1285:5: cube_list
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1287:5: cube_list
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_cube_list_in_grouping_element11053);
+					pushFollow(FOLLOW_cube_list_in_grouping_element11061);
 					cube_list438=cube_list();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -22105,12 +22113,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 4 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1286:5: empty_grouping_set
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1288:5: empty_grouping_set
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_empty_grouping_set_in_grouping_element11059);
+					pushFollow(FOLLOW_empty_grouping_set_in_grouping_element11067);
 					empty_grouping_set439=empty_grouping_set();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -22150,7 +22158,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "ordinary_grouping_set"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1288:1: ordinary_grouping_set : ( column_reference_list | LEFT_PAREN ! column_reference_list RIGHT_PAREN !);
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1290:1: ordinary_grouping_set : ( column_reference_list | LEFT_PAREN ! column_reference_list RIGHT_PAREN !);
 	public final DBLParser.ordinary_grouping_set_return ordinary_grouping_set() throws RecognitionException {
 		DBLParser.ordinary_grouping_set_return retval = new DBLParser.ordinary_grouping_set_return();
 		retval.start = input.LT(1);
@@ -22169,7 +22177,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 126) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1289:3: ( column_reference_list | LEFT_PAREN ! column_reference_list RIGHT_PAREN !)
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1291:3: ( column_reference_list | LEFT_PAREN ! column_reference_list RIGHT_PAREN !)
 			int alt169=2;
 			int LA169_0 = input.LA(1);
 			if ( (LA169_0==Identifier) ) {
@@ -22188,12 +22196,12 @@ public class DBLParser extends Parser {
 
 			switch (alt169) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1289:5: column_reference_list
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1291:5: column_reference_list
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_column_reference_list_in_ordinary_grouping_set11071);
+					pushFollow(FOLLOW_column_reference_list_in_ordinary_grouping_set11079);
 					column_reference_list440=column_reference_list();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -22202,19 +22210,19 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1290:5: LEFT_PAREN ! column_reference_list RIGHT_PAREN !
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1292:5: LEFT_PAREN ! column_reference_list RIGHT_PAREN !
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					LEFT_PAREN441=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_ordinary_grouping_set11077); if (state.failed) return retval;
-					pushFollow(FOLLOW_column_reference_list_in_ordinary_grouping_set11080);
+					LEFT_PAREN441=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_ordinary_grouping_set11085); if (state.failed) return retval;
+					pushFollow(FOLLOW_column_reference_list_in_ordinary_grouping_set11088);
 					column_reference_list442=column_reference_list();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, column_reference_list442.getTree());
 
-					RIGHT_PAREN443=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_ordinary_grouping_set11082); if (state.failed) return retval;
+					RIGHT_PAREN443=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_ordinary_grouping_set11090); if (state.failed) return retval;
 					}
 					break;
 
@@ -22249,7 +22257,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "rollup_list"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1292:1: rollup_list : ROLLUP LEFT_PAREN c= ordinary_grouping_set RIGHT_PAREN -> ^( ROLLUP $c) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1294:1: rollup_list : ROLLUP LEFT_PAREN c= ordinary_grouping_set RIGHT_PAREN -> ^( ROLLUP $c) ;
 	public final DBLParser.rollup_list_return rollup_list() throws RecognitionException {
 		DBLParser.rollup_list_return retval = new DBLParser.rollup_list_return();
 		retval.start = input.LT(1);
@@ -22273,21 +22281,21 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 127) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1293:3: ( ROLLUP LEFT_PAREN c= ordinary_grouping_set RIGHT_PAREN -> ^( ROLLUP $c) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1293:5: ROLLUP LEFT_PAREN c= ordinary_grouping_set RIGHT_PAREN
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1295:3: ( ROLLUP LEFT_PAREN c= ordinary_grouping_set RIGHT_PAREN -> ^( ROLLUP $c) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1295:5: ROLLUP LEFT_PAREN c= ordinary_grouping_set RIGHT_PAREN
 			{
-			ROLLUP444=(Token)match(input,ROLLUP,FOLLOW_ROLLUP_in_rollup_list11095); if (state.failed) return retval; 
+			ROLLUP444=(Token)match(input,ROLLUP,FOLLOW_ROLLUP_in_rollup_list11103); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_ROLLUP.add(ROLLUP444);
 
-			LEFT_PAREN445=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_rollup_list11097); if (state.failed) return retval; 
+			LEFT_PAREN445=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_rollup_list11105); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_LEFT_PAREN.add(LEFT_PAREN445);
 
-			pushFollow(FOLLOW_ordinary_grouping_set_in_rollup_list11101);
+			pushFollow(FOLLOW_ordinary_grouping_set_in_rollup_list11109);
 			c=ordinary_grouping_set();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_ordinary_grouping_set.add(c.getTree());
-			RIGHT_PAREN446=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_rollup_list11103); if (state.failed) return retval; 
+			RIGHT_PAREN446=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_rollup_list11111); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_RIGHT_PAREN.add(RIGHT_PAREN446);
 
 			// AST REWRITE
@@ -22303,9 +22311,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1293:59: -> ^( ROLLUP $c)
+			// 1295:59: -> ^( ROLLUP $c)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1293:62: ^( ROLLUP $c)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1295:62: ^( ROLLUP $c)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(stream_ROLLUP.nextNode(), root_1);
@@ -22351,7 +22359,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "cube_list"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1295:1: cube_list : CUBE LEFT_PAREN c= ordinary_grouping_set RIGHT_PAREN -> ^( CUBE $c) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1297:1: cube_list : CUBE LEFT_PAREN c= ordinary_grouping_set RIGHT_PAREN -> ^( CUBE $c) ;
 	public final DBLParser.cube_list_return cube_list() throws RecognitionException {
 		DBLParser.cube_list_return retval = new DBLParser.cube_list_return();
 		retval.start = input.LT(1);
@@ -22375,21 +22383,21 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 128) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1296:3: ( CUBE LEFT_PAREN c= ordinary_grouping_set RIGHT_PAREN -> ^( CUBE $c) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1296:5: CUBE LEFT_PAREN c= ordinary_grouping_set RIGHT_PAREN
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1298:3: ( CUBE LEFT_PAREN c= ordinary_grouping_set RIGHT_PAREN -> ^( CUBE $c) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1298:5: CUBE LEFT_PAREN c= ordinary_grouping_set RIGHT_PAREN
 			{
-			CUBE447=(Token)match(input,CUBE,FOLLOW_CUBE_in_cube_list11124); if (state.failed) return retval; 
+			CUBE447=(Token)match(input,CUBE,FOLLOW_CUBE_in_cube_list11132); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_CUBE.add(CUBE447);
 
-			LEFT_PAREN448=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_cube_list11126); if (state.failed) return retval; 
+			LEFT_PAREN448=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_cube_list11134); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_LEFT_PAREN.add(LEFT_PAREN448);
 
-			pushFollow(FOLLOW_ordinary_grouping_set_in_cube_list11130);
+			pushFollow(FOLLOW_ordinary_grouping_set_in_cube_list11138);
 			c=ordinary_grouping_set();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_ordinary_grouping_set.add(c.getTree());
-			RIGHT_PAREN449=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_cube_list11132); if (state.failed) return retval; 
+			RIGHT_PAREN449=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_cube_list11140); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_RIGHT_PAREN.add(RIGHT_PAREN449);
 
 			// AST REWRITE
@@ -22405,9 +22413,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1296:57: -> ^( CUBE $c)
+			// 1298:57: -> ^( CUBE $c)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1296:60: ^( CUBE $c)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1298:60: ^( CUBE $c)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(stream_CUBE.nextNode(), root_1);
@@ -22453,7 +22461,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "empty_grouping_set"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1298:1: empty_grouping_set : LEFT_PAREN RIGHT_PAREN -> ^( EMPTY_GROUPING_SET ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1300:1: empty_grouping_set : LEFT_PAREN RIGHT_PAREN -> ^( EMPTY_GROUPING_SET ) ;
 	public final DBLParser.empty_grouping_set_return empty_grouping_set() throws RecognitionException {
 		DBLParser.empty_grouping_set_return retval = new DBLParser.empty_grouping_set_return();
 		retval.start = input.LT(1);
@@ -22472,13 +22480,13 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 129) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1299:3: ( LEFT_PAREN RIGHT_PAREN -> ^( EMPTY_GROUPING_SET ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1299:5: LEFT_PAREN RIGHT_PAREN
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1301:3: ( LEFT_PAREN RIGHT_PAREN -> ^( EMPTY_GROUPING_SET ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1301:5: LEFT_PAREN RIGHT_PAREN
 			{
-			LEFT_PAREN450=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_empty_grouping_set11153); if (state.failed) return retval; 
+			LEFT_PAREN450=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_empty_grouping_set11161); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_LEFT_PAREN.add(LEFT_PAREN450);
 
-			RIGHT_PAREN451=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_empty_grouping_set11155); if (state.failed) return retval; 
+			RIGHT_PAREN451=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_empty_grouping_set11163); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_RIGHT_PAREN.add(RIGHT_PAREN451);
 
 			// AST REWRITE
@@ -22493,9 +22501,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1299:28: -> ^( EMPTY_GROUPING_SET )
+			// 1301:28: -> ^( EMPTY_GROUPING_SET )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1299:31: ^( EMPTY_GROUPING_SET )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1301:31: ^( EMPTY_GROUPING_SET )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(EMPTY_GROUPING_SET, "EMPTY_GROUPING_SET"), root_1);
@@ -22540,7 +22548,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "having_clause"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1301:1: having_clause : HAVING ^ boolean_value_expression ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1303:1: having_clause : HAVING ^ boolean_value_expression ;
 	public final DBLParser.having_clause_return having_clause() throws RecognitionException {
 		DBLParser.having_clause_return retval = new DBLParser.having_clause_return();
 		retval.start = input.LT(1);
@@ -22556,19 +22564,19 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 130) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1302:3: ( HAVING ^ boolean_value_expression )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1302:5: HAVING ^ boolean_value_expression
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1304:3: ( HAVING ^ boolean_value_expression )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1304:5: HAVING ^ boolean_value_expression
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			HAVING452=(Token)match(input,HAVING,FOLLOW_HAVING_in_having_clause11173); if (state.failed) return retval;
+			HAVING452=(Token)match(input,HAVING,FOLLOW_HAVING_in_having_clause11181); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			HAVING452_tree = (CommonTree)adaptor.create(HAVING452);
 			root_0 = (CommonTree)adaptor.becomeRoot(HAVING452_tree, root_0);
 			}
 
-			pushFollow(FOLLOW_boolean_value_expression_in_having_clause11176);
+			pushFollow(FOLLOW_boolean_value_expression_in_having_clause11184);
 			boolean_value_expression453=boolean_value_expression();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -22606,7 +22614,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "orderby_clause"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1310:1: orderby_clause : ORDER BY sort_specifier_list -> ^( ORDER_BY sort_specifier_list ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1312:1: orderby_clause : ORDER BY sort_specifier_list -> ^( ORDER_BY sort_specifier_list ) ;
 	public final DBLParser.orderby_clause_return orderby_clause() throws RecognitionException {
 		DBLParser.orderby_clause_return retval = new DBLParser.orderby_clause_return();
 		retval.start = input.LT(1);
@@ -22627,16 +22635,16 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 131) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1311:3: ( ORDER BY sort_specifier_list -> ^( ORDER_BY sort_specifier_list ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1311:5: ORDER BY sort_specifier_list
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1313:3: ( ORDER BY sort_specifier_list -> ^( ORDER_BY sort_specifier_list ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1313:5: ORDER BY sort_specifier_list
 			{
-			ORDER454=(Token)match(input,ORDER,FOLLOW_ORDER_in_orderby_clause11190); if (state.failed) return retval; 
+			ORDER454=(Token)match(input,ORDER,FOLLOW_ORDER_in_orderby_clause11198); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_ORDER.add(ORDER454);
 
-			BY455=(Token)match(input,BY,FOLLOW_BY_in_orderby_clause11192); if (state.failed) return retval; 
+			BY455=(Token)match(input,BY,FOLLOW_BY_in_orderby_clause11200); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_BY.add(BY455);
 
-			pushFollow(FOLLOW_sort_specifier_list_in_orderby_clause11194);
+			pushFollow(FOLLOW_sort_specifier_list_in_orderby_clause11202);
 			sort_specifier_list456=sort_specifier_list();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -22653,9 +22661,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1311:34: -> ^( ORDER_BY sort_specifier_list )
+			// 1313:34: -> ^( ORDER_BY sort_specifier_list )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1311:37: ^( ORDER_BY sort_specifier_list )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1313:37: ^( ORDER_BY sort_specifier_list )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(ORDER_BY, "ORDER_BY"), root_1);
@@ -22701,7 +22709,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "sort_specifier_list"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1313:1: sort_specifier_list : sort_specifier ( COMMA sort_specifier )* -> ^( SORT_SPECIFIERS ( sort_specifier )+ ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1315:1: sort_specifier_list : sort_specifier ( COMMA sort_specifier )* -> ^( SORT_SPECIFIERS ( sort_specifier )+ ) ;
 	public final DBLParser.sort_specifier_list_return sort_specifier_list() throws RecognitionException {
 		DBLParser.sort_specifier_list_return retval = new DBLParser.sort_specifier_list_return();
 		retval.start = input.LT(1);
@@ -22720,15 +22728,15 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 132) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1314:3: ( sort_specifier ( COMMA sort_specifier )* -> ^( SORT_SPECIFIERS ( sort_specifier )+ ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1314:5: sort_specifier ( COMMA sort_specifier )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1316:3: ( sort_specifier ( COMMA sort_specifier )* -> ^( SORT_SPECIFIERS ( sort_specifier )+ ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1316:5: sort_specifier ( COMMA sort_specifier )*
 			{
-			pushFollow(FOLLOW_sort_specifier_in_sort_specifier_list11214);
+			pushFollow(FOLLOW_sort_specifier_in_sort_specifier_list11222);
 			sort_specifier457=sort_specifier();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_sort_specifier.add(sort_specifier457.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1314:20: ( COMMA sort_specifier )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1316:20: ( COMMA sort_specifier )*
 			loop170:
 			while (true) {
 				int alt170=2;
@@ -22739,12 +22747,12 @@ public class DBLParser extends Parser {
 
 				switch (alt170) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1314:21: COMMA sort_specifier
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1316:21: COMMA sort_specifier
 					{
-					COMMA458=(Token)match(input,COMMA,FOLLOW_COMMA_in_sort_specifier_list11217); if (state.failed) return retval; 
+					COMMA458=(Token)match(input,COMMA,FOLLOW_COMMA_in_sort_specifier_list11225); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_COMMA.add(COMMA458);
 
-					pushFollow(FOLLOW_sort_specifier_in_sort_specifier_list11219);
+					pushFollow(FOLLOW_sort_specifier_in_sort_specifier_list11227);
 					sort_specifier459=sort_specifier();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -22769,9 +22777,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1314:44: -> ^( SORT_SPECIFIERS ( sort_specifier )+ )
+			// 1316:44: -> ^( SORT_SPECIFIERS ( sort_specifier )+ )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1314:47: ^( SORT_SPECIFIERS ( sort_specifier )+ )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1316:47: ^( SORT_SPECIFIERS ( sort_specifier )+ )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(SORT_SPECIFIERS, "SORT_SPECIFIERS"), root_1);
@@ -22824,7 +22832,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "sort_specifier"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1316:1: sort_specifier : fn= column_reference (a= order_specification )? (o= null_ordering )? -> ^( SORT_KEY $fn ( $a)? ( $o)? ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1318:1: sort_specifier : fn= column_reference (a= order_specification )? (o= null_ordering )? -> ^( SORT_KEY $fn ( $a)? ( $o)? ) ;
 	public final DBLParser.sort_specifier_return sort_specifier() throws RecognitionException {
 		DBLParser.sort_specifier_return retval = new DBLParser.sort_specifier_return();
 		retval.start = input.LT(1);
@@ -22843,15 +22851,15 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 133) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1317:3: (fn= column_reference (a= order_specification )? (o= null_ordering )? -> ^( SORT_KEY $fn ( $a)? ( $o)? ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1317:5: fn= column_reference (a= order_specification )? (o= null_ordering )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1319:3: (fn= column_reference (a= order_specification )? (o= null_ordering )? -> ^( SORT_KEY $fn ( $a)? ( $o)? ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1319:5: fn= column_reference (a= order_specification )? (o= null_ordering )?
 			{
-			pushFollow(FOLLOW_column_reference_in_sort_specifier11244);
+			pushFollow(FOLLOW_column_reference_in_sort_specifier11252);
 			fn=column_reference();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_column_reference.add(fn.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1317:26: (a= order_specification )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1319:26: (a= order_specification )?
 			int alt171=2;
 			int LA171_0 = input.LA(1);
 			if ( (LA171_0==ASC||LA171_0==DESC) ) {
@@ -22859,9 +22867,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt171) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1317:26: a= order_specification
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1319:26: a= order_specification
 					{
-					pushFollow(FOLLOW_order_specification_in_sort_specifier11248);
+					pushFollow(FOLLOW_order_specification_in_sort_specifier11256);
 					a=order_specification();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -22871,7 +22879,7 @@ public class DBLParser extends Parser {
 
 			}
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1317:49: (o= null_ordering )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1319:49: (o= null_ordering )?
 			int alt172=2;
 			int LA172_0 = input.LA(1);
 			if ( (LA172_0==NULL) ) {
@@ -22879,9 +22887,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt172) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1317:49: o= null_ordering
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1319:49: o= null_ordering
 					{
-					pushFollow(FOLLOW_null_ordering_in_sort_specifier11253);
+					pushFollow(FOLLOW_null_ordering_in_sort_specifier11261);
 					o=null_ordering();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -22892,7 +22900,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: a, fn, o
+			// elements: fn, o, a
 			// token labels: 
 			// rule labels: a, fn, retval, o
 			// token list labels: 
@@ -22906,20 +22914,20 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_o=new RewriteRuleSubtreeStream(adaptor,"rule o",o!=null?o.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1317:65: -> ^( SORT_KEY $fn ( $a)? ( $o)? )
+			// 1319:65: -> ^( SORT_KEY $fn ( $a)? ( $o)? )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1317:68: ^( SORT_KEY $fn ( $a)? ( $o)? )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1319:68: ^( SORT_KEY $fn ( $a)? ( $o)? )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(SORT_KEY, "SORT_KEY"), root_1);
 				adaptor.addChild(root_1, stream_fn.nextTree());
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1317:84: ( $a)?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1319:84: ( $a)?
 				if ( stream_a.hasNext() ) {
 					adaptor.addChild(root_1, stream_a.nextTree());
 				}
 				stream_a.reset();
 
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1317:88: ( $o)?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1319:88: ( $o)?
 				if ( stream_o.hasNext() ) {
 					adaptor.addChild(root_1, stream_o.nextTree());
 				}
@@ -22966,7 +22974,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "order_specification"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1319:1: order_specification : ( ASC -> ^( ORDER ASC ) | DESC -> ^( ORDER DESC ) );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1321:1: order_specification : ( ASC -> ^( ORDER ASC ) | DESC -> ^( ORDER DESC ) );
 	public final DBLParser.order_specification_return order_specification() throws RecognitionException {
 		DBLParser.order_specification_return retval = new DBLParser.order_specification_return();
 		retval.start = input.LT(1);
@@ -22985,7 +22993,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 134) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1320:3: ( ASC -> ^( ORDER ASC ) | DESC -> ^( ORDER DESC ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1322:3: ( ASC -> ^( ORDER ASC ) | DESC -> ^( ORDER DESC ) )
 			int alt173=2;
 			int LA173_0 = input.LA(1);
 			if ( (LA173_0==ASC) ) {
@@ -23004,9 +23012,9 @@ public class DBLParser extends Parser {
 
 			switch (alt173) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1320:5: ASC
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1322:5: ASC
 					{
-					ASC460=(Token)match(input,ASC,FOLLOW_ASC_in_order_specification11283); if (state.failed) return retval; 
+					ASC460=(Token)match(input,ASC,FOLLOW_ASC_in_order_specification11291); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_ASC.add(ASC460);
 
 					// AST REWRITE
@@ -23021,9 +23029,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1320:9: -> ^( ORDER ASC )
+					// 1322:9: -> ^( ORDER ASC )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1320:12: ^( ORDER ASC )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1322:12: ^( ORDER ASC )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(ORDER, "ORDER"), root_1);
@@ -23040,9 +23048,9 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1321:5: DESC
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1323:5: DESC
 					{
-					DESC461=(Token)match(input,DESC,FOLLOW_DESC_in_order_specification11297); if (state.failed) return retval; 
+					DESC461=(Token)match(input,DESC,FOLLOW_DESC_in_order_specification11305); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_DESC.add(DESC461);
 
 					// AST REWRITE
@@ -23057,9 +23065,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1321:10: -> ^( ORDER DESC )
+					// 1323:10: -> ^( ORDER DESC )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1321:13: ^( ORDER DESC )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1323:13: ^( ORDER DESC )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(ORDER, "ORDER"), root_1);
@@ -23107,7 +23115,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "limit_clause"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1323:1: limit_clause : LIMIT e= numeric_value_expression -> ^( LIMIT $e) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1325:1: limit_clause : LIMIT e= numeric_value_expression -> ^( LIMIT $e) ;
 	public final DBLParser.limit_clause_return limit_clause() throws RecognitionException {
 		DBLParser.limit_clause_return retval = new DBLParser.limit_clause_return();
 		retval.start = input.LT(1);
@@ -23125,13 +23133,13 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 135) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1324:3: ( LIMIT e= numeric_value_expression -> ^( LIMIT $e) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1324:5: LIMIT e= numeric_value_expression
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1326:3: ( LIMIT e= numeric_value_expression -> ^( LIMIT $e) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1326:5: LIMIT e= numeric_value_expression
 			{
-			LIMIT462=(Token)match(input,LIMIT,FOLLOW_LIMIT_in_limit_clause11317); if (state.failed) return retval; 
+			LIMIT462=(Token)match(input,LIMIT,FOLLOW_LIMIT_in_limit_clause11325); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_LIMIT.add(LIMIT462);
 
-			pushFollow(FOLLOW_numeric_value_expression_in_limit_clause11321);
+			pushFollow(FOLLOW_numeric_value_expression_in_limit_clause11329);
 			e=numeric_value_expression();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -23149,9 +23157,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1324:38: -> ^( LIMIT $e)
+			// 1326:38: -> ^( LIMIT $e)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1324:41: ^( LIMIT $e)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1326:41: ^( LIMIT $e)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(stream_LIMIT.nextNode(), root_1);
@@ -23197,7 +23205,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "null_ordering"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1326:1: null_ordering : ( NULL FIRST -> ^( NULL_ORDER FIRST ) | NULL LAST -> ^( NULL_ORDER LAST ) );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1328:1: null_ordering : ( NULL FIRST -> ^( NULL_ORDER FIRST ) | NULL LAST -> ^( NULL_ORDER LAST ) );
 	public final DBLParser.null_ordering_return null_ordering() throws RecognitionException {
 		DBLParser.null_ordering_return retval = new DBLParser.null_ordering_return();
 		retval.start = input.LT(1);
@@ -23221,7 +23229,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 136) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1327:3: ( NULL FIRST -> ^( NULL_ORDER FIRST ) | NULL LAST -> ^( NULL_ORDER LAST ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1329:3: ( NULL FIRST -> ^( NULL_ORDER FIRST ) | NULL LAST -> ^( NULL_ORDER LAST ) )
 			int alt174=2;
 			int LA174_0 = input.LA(1);
 			if ( (LA174_0==NULL) ) {
@@ -23257,12 +23265,12 @@ public class DBLParser extends Parser {
 
 			switch (alt174) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1327:5: NULL FIRST
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1329:5: NULL FIRST
 					{
-					NULL463=(Token)match(input,NULL,FOLLOW_NULL_in_null_ordering11342); if (state.failed) return retval; 
+					NULL463=(Token)match(input,NULL,FOLLOW_NULL_in_null_ordering11350); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_NULL.add(NULL463);
 
-					FIRST464=(Token)match(input,FIRST,FOLLOW_FIRST_in_null_ordering11344); if (state.failed) return retval; 
+					FIRST464=(Token)match(input,FIRST,FOLLOW_FIRST_in_null_ordering11352); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_FIRST.add(FIRST464);
 
 					// AST REWRITE
@@ -23277,9 +23285,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1327:16: -> ^( NULL_ORDER FIRST )
+					// 1329:16: -> ^( NULL_ORDER FIRST )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1327:19: ^( NULL_ORDER FIRST )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1329:19: ^( NULL_ORDER FIRST )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(NULL_ORDER, "NULL_ORDER"), root_1);
@@ -23296,12 +23304,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1328:5: NULL LAST
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1330:5: NULL LAST
 					{
-					NULL465=(Token)match(input,NULL,FOLLOW_NULL_in_null_ordering11358); if (state.failed) return retval; 
+					NULL465=(Token)match(input,NULL,FOLLOW_NULL_in_null_ordering11366); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_NULL.add(NULL465);
 
-					LAST466=(Token)match(input,LAST,FOLLOW_LAST_in_null_ordering11360); if (state.failed) return retval; 
+					LAST466=(Token)match(input,LAST,FOLLOW_LAST_in_null_ordering11368); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_LAST.add(LAST466);
 
 					// AST REWRITE
@@ -23316,9 +23324,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1328:15: -> ^( NULL_ORDER LAST )
+					// 1330:15: -> ^( NULL_ORDER LAST )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1328:18: ^( NULL_ORDER LAST )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1330:18: ^( NULL_ORDER LAST )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(NULL_ORDER, "NULL_ORDER"), root_1);
@@ -23366,7 +23374,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "search_condition"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1337:1: search_condition : boolean_value_expression ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1339:1: search_condition : boolean_value_expression ;
 	public final DBLParser.search_condition_return search_condition() throws RecognitionException {
 		DBLParser.search_condition_return retval = new DBLParser.search_condition_return();
 		retval.start = input.LT(1);
@@ -23380,13 +23388,13 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 137) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1338:2: ( boolean_value_expression )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1338:4: boolean_value_expression
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1340:2: ( boolean_value_expression )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1340:4: boolean_value_expression
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_boolean_value_expression_in_search_condition11382);
+			pushFollow(FOLLOW_boolean_value_expression_in_search_condition11390);
 			boolean_value_expression467=boolean_value_expression();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -23424,7 +23432,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "param_clause"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1340:1: param_clause : WITH LEFT_PAREN param ( COMMA param )* RIGHT_PAREN -> ^( PARAMS ( param )+ ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1342:1: param_clause : WITH LEFT_PAREN param ( COMMA param )* RIGHT_PAREN -> ^( PARAMS ( param )+ ) ;
 	public final DBLParser.param_clause_return param_clause() throws RecognitionException {
 		DBLParser.param_clause_return retval = new DBLParser.param_clause_return();
 		retval.start = input.LT(1);
@@ -23452,21 +23460,21 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 138) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1341:3: ( WITH LEFT_PAREN param ( COMMA param )* RIGHT_PAREN -> ^( PARAMS ( param )+ ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1341:5: WITH LEFT_PAREN param ( COMMA param )* RIGHT_PAREN
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1343:3: ( WITH LEFT_PAREN param ( COMMA param )* RIGHT_PAREN -> ^( PARAMS ( param )+ ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1343:5: WITH LEFT_PAREN param ( COMMA param )* RIGHT_PAREN
 			{
-			WITH468=(Token)match(input,WITH,FOLLOW_WITH_in_param_clause11393); if (state.failed) return retval; 
+			WITH468=(Token)match(input,WITH,FOLLOW_WITH_in_param_clause11401); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_WITH.add(WITH468);
 
-			LEFT_PAREN469=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_param_clause11395); if (state.failed) return retval; 
+			LEFT_PAREN469=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_param_clause11403); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_LEFT_PAREN.add(LEFT_PAREN469);
 
-			pushFollow(FOLLOW_param_in_param_clause11397);
+			pushFollow(FOLLOW_param_in_param_clause11405);
 			param470=param();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_param.add(param470.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1341:27: ( COMMA param )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1343:27: ( COMMA param )*
 			loop175:
 			while (true) {
 				int alt175=2;
@@ -23477,12 +23485,12 @@ public class DBLParser extends Parser {
 
 				switch (alt175) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1341:28: COMMA param
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1343:28: COMMA param
 					{
-					COMMA471=(Token)match(input,COMMA,FOLLOW_COMMA_in_param_clause11400); if (state.failed) return retval; 
+					COMMA471=(Token)match(input,COMMA,FOLLOW_COMMA_in_param_clause11408); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_COMMA.add(COMMA471);
 
-					pushFollow(FOLLOW_param_in_param_clause11402);
+					pushFollow(FOLLOW_param_in_param_clause11410);
 					param472=param();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -23495,7 +23503,7 @@ public class DBLParser extends Parser {
 				}
 			}
 
-			RIGHT_PAREN473=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_param_clause11406); if (state.failed) return retval; 
+			RIGHT_PAREN473=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_param_clause11414); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_RIGHT_PAREN.add(RIGHT_PAREN473);
 
 			// AST REWRITE
@@ -23510,9 +23518,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1341:54: -> ^( PARAMS ( param )+ )
+			// 1343:54: -> ^( PARAMS ( param )+ )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1341:57: ^( PARAMS ( param )+ )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1343:57: ^( PARAMS ( param )+ )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(PARAMS, "PARAMS"), root_1);
@@ -23565,7 +23573,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "param"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1343:1: param : k= Character_String_Literal EQUAL v= numeric_value_expression -> ^( PARAM $k $v) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1345:1: param : k= Character_String_Literal EQUAL v= numeric_value_expression -> ^( PARAM $k $v) ;
 	public final DBLParser.param_return param() throws RecognitionException {
 		DBLParser.param_return retval = new DBLParser.param_return();
 		retval.start = input.LT(1);
@@ -23586,22 +23594,22 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 139) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1344:3: (k= Character_String_Literal EQUAL v= numeric_value_expression -> ^( PARAM $k $v) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1344:5: k= Character_String_Literal EQUAL v= numeric_value_expression
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1346:3: (k= Character_String_Literal EQUAL v= numeric_value_expression -> ^( PARAM $k $v) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1346:5: k= Character_String_Literal EQUAL v= numeric_value_expression
 			{
-			k=(Token)match(input,Character_String_Literal,FOLLOW_Character_String_Literal_in_param11429); if (state.failed) return retval; 
+			k=(Token)match(input,Character_String_Literal,FOLLOW_Character_String_Literal_in_param11437); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_Character_String_Literal.add(k);
 
-			EQUAL474=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_param11431); if (state.failed) return retval; 
+			EQUAL474=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_param11439); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_EQUAL.add(EQUAL474);
 
-			pushFollow(FOLLOW_numeric_value_expression_in_param11435);
+			pushFollow(FOLLOW_numeric_value_expression_in_param11443);
 			v=numeric_value_expression();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_numeric_value_expression.add(v.getTree());
 			// AST REWRITE
-			// elements: v, k
+			// elements: k, v
 			// token labels: k
 			// rule labels: v, retval
 			// token list labels: 
@@ -23614,9 +23622,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1344:65: -> ^( PARAM $k $v)
+			// 1346:65: -> ^( PARAM $k $v)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1344:68: ^( PARAM $k $v)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1346:68: ^( PARAM $k $v)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(PARAM, "PARAM"), root_1);
@@ -23663,7 +23671,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "method_specifier"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1346:1: method_specifier : USING m= Identifier -> ^( USING[$m.text] ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1348:1: method_specifier : USING m= Identifier -> ^( USING[$m.text] ) ;
 	public final DBLParser.method_specifier_return method_specifier() throws RecognitionException {
 		DBLParser.method_specifier_return retval = new DBLParser.method_specifier_return();
 		retval.start = input.LT(1);
@@ -23682,13 +23690,13 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 140) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1347:3: ( USING m= Identifier -> ^( USING[$m.text] ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1347:5: USING m= Identifier
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1349:3: ( USING m= Identifier -> ^( USING[$m.text] ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1349:5: USING m= Identifier
 			{
-			USING475=(Token)match(input,USING,FOLLOW_USING_in_method_specifier11459); if (state.failed) return retval; 
+			USING475=(Token)match(input,USING,FOLLOW_USING_in_method_specifier11467); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_USING.add(USING475);
 
-			m=(Token)match(input,Identifier,FOLLOW_Identifier_in_method_specifier11463); if (state.failed) return retval; 
+			m=(Token)match(input,Identifier,FOLLOW_Identifier_in_method_specifier11471); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_Identifier.add(m);
 
 			// AST REWRITE
@@ -23703,9 +23711,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1347:24: -> ^( USING[$m.text] )
+			// 1349:24: -> ^( USING[$m.text] )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1347:27: ^( USING[$m.text] )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1349:27: ^( USING[$m.text] )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(USING, (m!=null?m.getText():null)), root_1);
@@ -23750,7 +23758,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "boolean_value_expression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1354:1: boolean_value_expression : and_predicate ( OR ^ and_predicate )* ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1356:1: boolean_value_expression : and_predicate ( OR ^ and_predicate )* ;
 	public final DBLParser.boolean_value_expression_return boolean_value_expression() throws RecognitionException {
 		DBLParser.boolean_value_expression_return retval = new DBLParser.boolean_value_expression_return();
 		retval.start = input.LT(1);
@@ -23767,19 +23775,19 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 141) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1355:2: ( and_predicate ( OR ^ and_predicate )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1355:4: and_predicate ( OR ^ and_predicate )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1357:2: ( and_predicate ( OR ^ and_predicate )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1357:4: and_predicate ( OR ^ and_predicate )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_and_predicate_in_boolean_value_expression11483);
+			pushFollow(FOLLOW_and_predicate_in_boolean_value_expression11491);
 			and_predicate476=and_predicate();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, and_predicate476.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1355:18: ( OR ^ and_predicate )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1357:18: ( OR ^ and_predicate )*
 			loop176:
 			while (true) {
 				int alt176=2;
@@ -23790,15 +23798,15 @@ public class DBLParser extends Parser {
 
 				switch (alt176) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1355:19: OR ^ and_predicate
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1357:19: OR ^ and_predicate
 					{
-					OR477=(Token)match(input,OR,FOLLOW_OR_in_boolean_value_expression11486); if (state.failed) return retval;
+					OR477=(Token)match(input,OR,FOLLOW_OR_in_boolean_value_expression11494); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					OR477_tree = (CommonTree)adaptor.create(OR477);
 					root_0 = (CommonTree)adaptor.becomeRoot(OR477_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_and_predicate_in_boolean_value_expression11489);
+					pushFollow(FOLLOW_and_predicate_in_boolean_value_expression11497);
 					and_predicate478=and_predicate();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -23844,7 +23852,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "and_predicate"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1357:1: and_predicate : boolean_factor ( AND ^ boolean_factor )* ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1359:1: and_predicate : boolean_factor ( AND ^ boolean_factor )* ;
 	public final DBLParser.and_predicate_return and_predicate() throws RecognitionException {
 		DBLParser.and_predicate_return retval = new DBLParser.and_predicate_return();
 		retval.start = input.LT(1);
@@ -23861,19 +23869,19 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 142) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1358:3: ( boolean_factor ( AND ^ boolean_factor )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1358:5: boolean_factor ( AND ^ boolean_factor )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1360:3: ( boolean_factor ( AND ^ boolean_factor )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1360:5: boolean_factor ( AND ^ boolean_factor )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_boolean_factor_in_and_predicate11502);
+			pushFollow(FOLLOW_boolean_factor_in_and_predicate11510);
 			boolean_factor479=boolean_factor();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, boolean_factor479.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1358:20: ( AND ^ boolean_factor )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1360:20: ( AND ^ boolean_factor )*
 			loop177:
 			while (true) {
 				int alt177=2;
@@ -23884,15 +23892,15 @@ public class DBLParser extends Parser {
 
 				switch (alt177) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1358:21: AND ^ boolean_factor
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1360:21: AND ^ boolean_factor
 					{
-					AND480=(Token)match(input,AND,FOLLOW_AND_in_and_predicate11505); if (state.failed) return retval;
+					AND480=(Token)match(input,AND,FOLLOW_AND_in_and_predicate11513); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					AND480_tree = (CommonTree)adaptor.create(AND480);
 					root_0 = (CommonTree)adaptor.becomeRoot(AND480_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_boolean_factor_in_and_predicate11508);
+					pushFollow(FOLLOW_boolean_factor_in_and_predicate11516);
 					boolean_factor481=boolean_factor();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -23938,7 +23946,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "boolean_factor"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1360:1: boolean_factor : ( boolean_test | NOT boolean_test -> ^( NOT boolean_test ) );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1362:1: boolean_factor : ( boolean_test | NOT boolean_test -> ^( NOT boolean_test ) );
 	public final DBLParser.boolean_factor_return boolean_factor() throws RecognitionException {
 		DBLParser.boolean_factor_return retval = new DBLParser.boolean_factor_return();
 		retval.start = input.LT(1);
@@ -23957,7 +23965,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 143) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1361:3: ( boolean_test | NOT boolean_test -> ^( NOT boolean_test ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1363:3: ( boolean_test | NOT boolean_test -> ^( NOT boolean_test ) )
 			int alt178=2;
 			int LA178_0 = input.LA(1);
 			if ( (LA178_0==CASE||LA178_0==COUNT||LA178_0==Character_String_Literal||LA178_0==Identifier||LA178_0==LEFT_PAREN||LA178_0==MINUS||LA178_0==NULL||LA178_0==NUMBER||LA178_0==PLUS||LA178_0==REAL_NUMBER) ) {
@@ -23976,12 +23984,12 @@ public class DBLParser extends Parser {
 
 			switch (alt178) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1361:5: boolean_test
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1363:5: boolean_test
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_boolean_test_in_boolean_factor11521);
+					pushFollow(FOLLOW_boolean_test_in_boolean_factor11529);
 					boolean_test482=boolean_test();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -23990,12 +23998,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1362:5: NOT boolean_test
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1364:5: NOT boolean_test
 					{
-					NOT483=(Token)match(input,NOT,FOLLOW_NOT_in_boolean_factor11527); if (state.failed) return retval; 
+					NOT483=(Token)match(input,NOT,FOLLOW_NOT_in_boolean_factor11535); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_NOT.add(NOT483);
 
-					pushFollow(FOLLOW_boolean_test_in_boolean_factor11529);
+					pushFollow(FOLLOW_boolean_test_in_boolean_factor11537);
 					boolean_test484=boolean_test();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -24012,9 +24020,9 @@ public class DBLParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 1362:22: -> ^( NOT boolean_test )
+					// 1364:22: -> ^( NOT boolean_test )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1362:25: ^( NOT boolean_test )
+						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1364:25: ^( NOT boolean_test )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot(stream_NOT.nextNode(), root_1);
@@ -24062,7 +24070,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "boolean_test"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1364:1: boolean_test : boolean_primary ( is_clause )? ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1366:1: boolean_test : boolean_primary ( is_clause )? ;
 	public final DBLParser.boolean_test_return boolean_test() throws RecognitionException {
 		DBLParser.boolean_test_return retval = new DBLParser.boolean_test_return();
 		retval.start = input.LT(1);
@@ -24077,19 +24085,19 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 144) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1365:3: ( boolean_primary ( is_clause )? )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1365:5: boolean_primary ( is_clause )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1367:3: ( boolean_primary ( is_clause )? )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1367:5: boolean_primary ( is_clause )?
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_boolean_primary_in_boolean_test11549);
+			pushFollow(FOLLOW_boolean_primary_in_boolean_test11557);
 			boolean_primary485=boolean_primary();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, boolean_primary485.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1365:21: ( is_clause )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1367:21: ( is_clause )?
 			int alt179=2;
 			int LA179_0 = input.LA(1);
 			if ( (LA179_0==IS) ) {
@@ -24097,9 +24105,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt179) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1365:21: is_clause
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1367:21: is_clause
 					{
-					pushFollow(FOLLOW_is_clause_in_boolean_test11551);
+					pushFollow(FOLLOW_is_clause_in_boolean_test11559);
 					is_clause486=is_clause();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -24142,7 +24150,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "is_clause"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1367:1: is_clause : IS ( NOT )? t= truth_value -> ^( IS ( NOT )? $t) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1369:1: is_clause : IS ( NOT )? t= truth_value -> ^( IS ( NOT )? $t) ;
 	public final DBLParser.is_clause_return is_clause() throws RecognitionException {
 		DBLParser.is_clause_return retval = new DBLParser.is_clause_return();
 		retval.start = input.LT(1);
@@ -24163,13 +24171,13 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 145) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1368:3: ( IS ( NOT )? t= truth_value -> ^( IS ( NOT )? $t) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1368:5: IS ( NOT )? t= truth_value
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1370:3: ( IS ( NOT )? t= truth_value -> ^( IS ( NOT )? $t) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1370:5: IS ( NOT )? t= truth_value
 			{
-			IS487=(Token)match(input,IS,FOLLOW_IS_in_is_clause11564); if (state.failed) return retval; 
+			IS487=(Token)match(input,IS,FOLLOW_IS_in_is_clause11572); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_IS.add(IS487);
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1368:8: ( NOT )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1370:8: ( NOT )?
 			int alt180=2;
 			int LA180_0 = input.LA(1);
 			if ( (LA180_0==NOT) ) {
@@ -24177,9 +24185,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt180) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1368:8: NOT
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1370:8: NOT
 					{
-					NOT488=(Token)match(input,NOT,FOLLOW_NOT_in_is_clause11566); if (state.failed) return retval; 
+					NOT488=(Token)match(input,NOT,FOLLOW_NOT_in_is_clause11574); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_NOT.add(NOT488);
 
 					}
@@ -24187,13 +24195,13 @@ public class DBLParser extends Parser {
 
 			}
 
-			pushFollow(FOLLOW_truth_value_in_is_clause11571);
+			pushFollow(FOLLOW_truth_value_in_is_clause11579);
 			t=truth_value();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_truth_value.add(t.getTree());
 			// AST REWRITE
-			// elements: NOT, IS, t
+			// elements: t, NOT, IS
 			// token labels: 
 			// rule labels: t, retval
 			// token list labels: 
@@ -24205,13 +24213,13 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1368:27: -> ^( IS ( NOT )? $t)
+			// 1370:27: -> ^( IS ( NOT )? $t)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1368:30: ^( IS ( NOT )? $t)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1370:30: ^( IS ( NOT )? $t)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(stream_IS.nextNode(), root_1);
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1368:35: ( NOT )?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1370:35: ( NOT )?
 				if ( stream_NOT.hasNext() ) {
 					adaptor.addChild(root_1, stream_NOT.nextNode());
 				}
@@ -24259,7 +24267,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "truth_value"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1370:1: truth_value : ( TRUE | FALSE | UNKNOWN );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1372:1: truth_value : ( TRUE | FALSE | UNKNOWN );
 	public final DBLParser.truth_value_return truth_value() throws RecognitionException {
 		DBLParser.truth_value_return retval = new DBLParser.truth_value_return();
 		retval.start = input.LT(1);
@@ -24274,7 +24282,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 146) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1371:3: ( TRUE | FALSE | UNKNOWN )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1373:3: ( TRUE | FALSE | UNKNOWN )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:
 			{
 			root_0 = (CommonTree)adaptor.nil();
@@ -24324,7 +24332,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "boolean_primary"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1373:1: boolean_primary : ( predicate | numeric_value_expression | LEFT_PAREN ! boolean_value_expression RIGHT_PAREN !| case_expression );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1375:1: boolean_primary : ( predicate | numeric_value_expression | LEFT_PAREN ! boolean_value_expression RIGHT_PAREN !| case_expression );
 	public final DBLParser.boolean_primary_return boolean_primary() throws RecognitionException {
 		DBLParser.boolean_primary_return retval = new DBLParser.boolean_primary_return();
 		retval.start = input.LT(1);
@@ -24345,7 +24353,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 147) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1374:3: ( predicate | numeric_value_expression | LEFT_PAREN ! boolean_value_expression RIGHT_PAREN !| case_expression )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1376:3: ( predicate | numeric_value_expression | LEFT_PAREN ! boolean_value_expression RIGHT_PAREN !| case_expression )
 			int alt181=4;
 			switch ( input.LA(1) ) {
 			case Character_String_Literal:
@@ -24541,12 +24549,12 @@ public class DBLParser extends Parser {
 			}
 			switch (alt181) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1374:5: predicate
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1376:5: predicate
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_predicate_in_boolean_primary11615);
+					pushFollow(FOLLOW_predicate_in_boolean_primary11623);
 					predicate490=predicate();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -24555,12 +24563,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1375:5: numeric_value_expression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1377:5: numeric_value_expression
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_numeric_value_expression_in_boolean_primary11621);
+					pushFollow(FOLLOW_numeric_value_expression_in_boolean_primary11629);
 					numeric_value_expression491=numeric_value_expression();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -24569,28 +24577,28 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1376:5: LEFT_PAREN ! boolean_value_expression RIGHT_PAREN !
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1378:5: LEFT_PAREN ! boolean_value_expression RIGHT_PAREN !
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					LEFT_PAREN492=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_boolean_primary11627); if (state.failed) return retval;
-					pushFollow(FOLLOW_boolean_value_expression_in_boolean_primary11630);
+					LEFT_PAREN492=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_boolean_primary11635); if (state.failed) return retval;
+					pushFollow(FOLLOW_boolean_value_expression_in_boolean_primary11638);
 					boolean_value_expression493=boolean_value_expression();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, boolean_value_expression493.getTree());
 
-					RIGHT_PAREN494=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_boolean_primary11632); if (state.failed) return retval;
+					RIGHT_PAREN494=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_boolean_primary11640); if (state.failed) return retval;
 					}
 					break;
 				case 4 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1377:5: case_expression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1379:5: case_expression
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_case_expression_in_boolean_primary11639);
+					pushFollow(FOLLOW_case_expression_in_boolean_primary11647);
 					case_expression495=case_expression();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -24630,7 +24638,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "predicate"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1384:1: predicate : ( comparison_predicate | in_predicate | like_predicate | null_predicate );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1386:1: predicate : ( comparison_predicate | in_predicate | like_predicate | null_predicate );
 	public final DBLParser.predicate_return predicate() throws RecognitionException {
 		DBLParser.predicate_return retval = new DBLParser.predicate_return();
 		retval.start = input.LT(1);
@@ -24647,7 +24655,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 148) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1385:3: ( comparison_predicate | in_predicate | like_predicate | null_predicate )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1387:3: ( comparison_predicate | in_predicate | like_predicate | null_predicate )
 			int alt182=4;
 			switch ( input.LA(1) ) {
 			case Character_String_Literal:
@@ -24768,12 +24776,12 @@ public class DBLParser extends Parser {
 			}
 			switch (alt182) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1385:5: comparison_predicate
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1387:5: comparison_predicate
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_comparison_predicate_in_predicate11653);
+					pushFollow(FOLLOW_comparison_predicate_in_predicate11661);
 					comparison_predicate496=comparison_predicate();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -24782,12 +24790,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1386:5: in_predicate
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1388:5: in_predicate
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_in_predicate_in_predicate11659);
+					pushFollow(FOLLOW_in_predicate_in_predicate11667);
 					in_predicate497=in_predicate();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -24796,12 +24804,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1387:5: like_predicate
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1389:5: like_predicate
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_like_predicate_in_predicate11665);
+					pushFollow(FOLLOW_like_predicate_in_predicate11673);
 					like_predicate498=like_predicate();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -24810,12 +24818,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 4 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1388:5: null_predicate
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1390:5: null_predicate
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_null_predicate_in_predicate11671);
+					pushFollow(FOLLOW_null_predicate_in_predicate11679);
 					null_predicate499=null_predicate();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -24855,7 +24863,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "comparison_predicate"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1396:1: comparison_predicate options {k=1; } : l= numeric_value_expression c= comp_op r= numeric_value_expression -> ^( $c $l $r) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1398:1: comparison_predicate options {k=1; } : l= numeric_value_expression c= comp_op r= numeric_value_expression -> ^( $c $l $r) ;
 	public final DBLParser.comparison_predicate_return comparison_predicate() throws RecognitionException {
 		DBLParser.comparison_predicate_return retval = new DBLParser.comparison_predicate_return();
 		retval.start = input.LT(1);
@@ -24873,26 +24881,26 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 149) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1398:2: (l= numeric_value_expression c= comp_op r= numeric_value_expression -> ^( $c $l $r) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1398:4: l= numeric_value_expression c= comp_op r= numeric_value_expression
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1400:2: (l= numeric_value_expression c= comp_op r= numeric_value_expression -> ^( $c $l $r) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1400:4: l= numeric_value_expression c= comp_op r= numeric_value_expression
 			{
-			pushFollow(FOLLOW_numeric_value_expression_in_comparison_predicate11695);
+			pushFollow(FOLLOW_numeric_value_expression_in_comparison_predicate11703);
 			l=numeric_value_expression();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_numeric_value_expression.add(l.getTree());
-			pushFollow(FOLLOW_comp_op_in_comparison_predicate11699);
+			pushFollow(FOLLOW_comp_op_in_comparison_predicate11707);
 			c=comp_op();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_comp_op.add(c.getTree());
-			pushFollow(FOLLOW_numeric_value_expression_in_comparison_predicate11703);
+			pushFollow(FOLLOW_numeric_value_expression_in_comparison_predicate11711);
 			r=numeric_value_expression();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_numeric_value_expression.add(r.getTree());
 			// AST REWRITE
-			// elements: c, r, l
+			// elements: l, r, c
 			// token labels: 
 			// rule labels: r, c, l, retval
 			// token list labels: 
@@ -24906,9 +24914,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1398:68: -> ^( $c $l $r)
+			// 1400:68: -> ^( $c $l $r)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1398:71: ^( $c $l $r)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1400:71: ^( $c $l $r)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(stream_c.nextNode(), root_1);
@@ -24955,7 +24963,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "comp_op"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1400:1: comp_op : ( EQUAL | NOT_EQUAL | LTH | LEQ | GTH | GEQ );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1402:1: comp_op : ( EQUAL | NOT_EQUAL | LTH | LEQ | GTH | GEQ );
 	public final DBLParser.comp_op_return comp_op() throws RecognitionException {
 		DBLParser.comp_op_return retval = new DBLParser.comp_op_return();
 		retval.start = input.LT(1);
@@ -24970,7 +24978,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 150) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1401:3: ( EQUAL | NOT_EQUAL | LTH | LEQ | GTH | GEQ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1403:3: ( EQUAL | NOT_EQUAL | LTH | LEQ | GTH | GEQ )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:
 			{
 			root_0 = (CommonTree)adaptor.nil();
@@ -25020,7 +25028,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "in_predicate"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1414:1: in_predicate : v= numeric_value_expression ( NOT )? IN a= in_predicate_value -> ^( IN $v $a ( NOT )? ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1416:1: in_predicate : v= numeric_value_expression ( NOT )? IN a= in_predicate_value -> ^( IN $v $a ( NOT )? ) ;
 	public final DBLParser.in_predicate_return in_predicate() throws RecognitionException {
 		DBLParser.in_predicate_return retval = new DBLParser.in_predicate_return();
 		retval.start = input.LT(1);
@@ -25043,15 +25051,15 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 151) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1414:14: (v= numeric_value_expression ( NOT )? IN a= in_predicate_value -> ^( IN $v $a ( NOT )? ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1414:16: v= numeric_value_expression ( NOT )? IN a= in_predicate_value
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1416:14: (v= numeric_value_expression ( NOT )? IN a= in_predicate_value -> ^( IN $v $a ( NOT )? ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1416:16: v= numeric_value_expression ( NOT )? IN a= in_predicate_value
 			{
-			pushFollow(FOLLOW_numeric_value_expression_in_in_predicate11771);
+			pushFollow(FOLLOW_numeric_value_expression_in_in_predicate11779);
 			v=numeric_value_expression();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_numeric_value_expression.add(v.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1414:44: ( NOT )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1416:44: ( NOT )?
 			int alt183=2;
 			int LA183_0 = input.LA(1);
 			if ( (LA183_0==NOT) ) {
@@ -25059,9 +25067,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt183) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1414:44: NOT
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1416:44: NOT
 					{
-					NOT501=(Token)match(input,NOT,FOLLOW_NOT_in_in_predicate11774); if (state.failed) return retval; 
+					NOT501=(Token)match(input,NOT,FOLLOW_NOT_in_in_predicate11782); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_NOT.add(NOT501);
 
 					}
@@ -25069,16 +25077,16 @@ public class DBLParser extends Parser {
 
 			}
 
-			IN502=(Token)match(input,IN,FOLLOW_IN_in_in_predicate11777); if (state.failed) return retval; 
+			IN502=(Token)match(input,IN,FOLLOW_IN_in_in_predicate11785); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_IN.add(IN502);
 
-			pushFollow(FOLLOW_in_predicate_value_in_in_predicate11781);
+			pushFollow(FOLLOW_in_predicate_value_in_in_predicate11789);
 			a=in_predicate_value();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_in_predicate_value.add(a.getTree());
 			// AST REWRITE
-			// elements: v, a, NOT, IN
+			// elements: v, a, IN, NOT
 			// token labels: 
 			// rule labels: a, v, retval
 			// token list labels: 
@@ -25091,15 +25099,15 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1414:73: -> ^( IN $v $a ( NOT )? )
+			// 1416:73: -> ^( IN $v $a ( NOT )? )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1414:76: ^( IN $v $a ( NOT )? )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1416:76: ^( IN $v $a ( NOT )? )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(stream_IN.nextNode(), root_1);
 				adaptor.addChild(root_1, stream_v.nextTree());
 				adaptor.addChild(root_1, stream_a.nextTree());
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1414:87: ( NOT )?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1416:87: ( NOT )?
 				if ( stream_NOT.hasNext() ) {
 					adaptor.addChild(root_1, stream_NOT.nextNode());
 				}
@@ -25146,7 +25154,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "in_predicate_value"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1415:1: in_predicate_value : LEFT_PAREN ! in_value_list RIGHT_PAREN !;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1417:1: in_predicate_value : LEFT_PAREN ! in_value_list RIGHT_PAREN !;
 	public final DBLParser.in_predicate_value_return in_predicate_value() throws RecognitionException {
 		DBLParser.in_predicate_value_return retval = new DBLParser.in_predicate_value_return();
 		retval.start = input.LT(1);
@@ -25164,20 +25172,20 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 152) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1416:3: ( LEFT_PAREN ! in_value_list RIGHT_PAREN !)
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1416:5: LEFT_PAREN ! in_value_list RIGHT_PAREN !
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1418:3: ( LEFT_PAREN ! in_value_list RIGHT_PAREN !)
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1418:5: LEFT_PAREN ! in_value_list RIGHT_PAREN !
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			LEFT_PAREN503=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_in_predicate_value11805); if (state.failed) return retval;
-			pushFollow(FOLLOW_in_value_list_in_in_predicate_value11808);
+			LEFT_PAREN503=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_in_predicate_value11813); if (state.failed) return retval;
+			pushFollow(FOLLOW_in_value_list_in_in_predicate_value11816);
 			in_value_list504=in_value_list();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, in_value_list504.getTree());
 
-			RIGHT_PAREN505=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_in_predicate_value11811); if (state.failed) return retval;
+			RIGHT_PAREN505=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_in_predicate_value11819); if (state.failed) return retval;
 			}
 
 			retval.stop = input.LT(-1);
@@ -25210,7 +25218,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "in_value_list"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1418:1: in_value_list : numeric_value_expression ( COMMA numeric_value_expression )* -> ( numeric_value_expression )+ ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1420:1: in_value_list : numeric_value_expression ( COMMA numeric_value_expression )* -> ( numeric_value_expression )+ ;
 	public final DBLParser.in_value_list_return in_value_list() throws RecognitionException {
 		DBLParser.in_value_list_return retval = new DBLParser.in_value_list_return();
 		retval.start = input.LT(1);
@@ -25229,15 +25237,15 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 153) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1419:3: ( numeric_value_expression ( COMMA numeric_value_expression )* -> ( numeric_value_expression )+ )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1419:5: numeric_value_expression ( COMMA numeric_value_expression )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1421:3: ( numeric_value_expression ( COMMA numeric_value_expression )* -> ( numeric_value_expression )+ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1421:5: numeric_value_expression ( COMMA numeric_value_expression )*
 			{
-			pushFollow(FOLLOW_numeric_value_expression_in_in_value_list11823);
+			pushFollow(FOLLOW_numeric_value_expression_in_in_value_list11831);
 			numeric_value_expression506=numeric_value_expression();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_numeric_value_expression.add(numeric_value_expression506.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1419:31: ( COMMA numeric_value_expression )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1421:31: ( COMMA numeric_value_expression )*
 			loop184:
 			while (true) {
 				int alt184=2;
@@ -25248,12 +25256,12 @@ public class DBLParser extends Parser {
 
 				switch (alt184) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1419:33: COMMA numeric_value_expression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1421:33: COMMA numeric_value_expression
 					{
-					COMMA507=(Token)match(input,COMMA,FOLLOW_COMMA_in_in_value_list11828); if (state.failed) return retval; 
+					COMMA507=(Token)match(input,COMMA,FOLLOW_COMMA_in_in_value_list11836); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_COMMA.add(COMMA507);
 
-					pushFollow(FOLLOW_numeric_value_expression_in_in_value_list11830);
+					pushFollow(FOLLOW_numeric_value_expression_in_in_value_list11838);
 					numeric_value_expression508=numeric_value_expression();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -25278,7 +25286,7 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1419:68: -> ( numeric_value_expression )+
+			// 1421:68: -> ( numeric_value_expression )+
 			{
 				if ( !(stream_numeric_value_expression.hasNext()) ) {
 					throw new RewriteEarlyExitException();
@@ -25326,7 +25334,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "like_predicate"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1426:1: like_predicate : f= column_reference ( NOT )? LIKE s= Character_String_Literal -> ^( LIKE ( NOT )? $f $s) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1428:1: like_predicate : f= column_reference ( NOT )? LIKE s= Character_String_Literal -> ^( LIKE ( NOT )? $f $s) ;
 	public final DBLParser.like_predicate_return like_predicate() throws RecognitionException {
 		DBLParser.like_predicate_return retval = new DBLParser.like_predicate_return();
 		retval.start = input.LT(1);
@@ -25350,15 +25358,15 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 154) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1427:3: (f= column_reference ( NOT )? LIKE s= Character_String_Literal -> ^( LIKE ( NOT )? $f $s) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1427:5: f= column_reference ( NOT )? LIKE s= Character_String_Literal
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1429:3: (f= column_reference ( NOT )? LIKE s= Character_String_Literal -> ^( LIKE ( NOT )? $f $s) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1429:5: f= column_reference ( NOT )? LIKE s= Character_String_Literal
 			{
-			pushFollow(FOLLOW_column_reference_in_like_predicate11852);
+			pushFollow(FOLLOW_column_reference_in_like_predicate11860);
 			f=column_reference();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_column_reference.add(f.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1427:24: ( NOT )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1429:24: ( NOT )?
 			int alt185=2;
 			int LA185_0 = input.LA(1);
 			if ( (LA185_0==NOT) ) {
@@ -25366,9 +25374,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt185) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1427:24: NOT
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1429:24: NOT
 					{
-					NOT509=(Token)match(input,NOT,FOLLOW_NOT_in_like_predicate11854); if (state.failed) return retval; 
+					NOT509=(Token)match(input,NOT,FOLLOW_NOT_in_like_predicate11862); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_NOT.add(NOT509);
 
 					}
@@ -25376,14 +25384,14 @@ public class DBLParser extends Parser {
 
 			}
 
-			LIKE510=(Token)match(input,LIKE,FOLLOW_LIKE_in_like_predicate11857); if (state.failed) return retval; 
+			LIKE510=(Token)match(input,LIKE,FOLLOW_LIKE_in_like_predicate11865); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_LIKE.add(LIKE510);
 
-			s=(Token)match(input,Character_String_Literal,FOLLOW_Character_String_Literal_in_like_predicate11861); if (state.failed) return retval; 
+			s=(Token)match(input,Character_String_Literal,FOLLOW_Character_String_Literal_in_like_predicate11869); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_Character_String_Literal.add(s);
 
 			// AST REWRITE
-			// elements: LIKE, f, NOT, s
+			// elements: NOT, s, LIKE, f
 			// token labels: s
 			// rule labels: f, retval
 			// token list labels: 
@@ -25396,13 +25404,13 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1427:61: -> ^( LIKE ( NOT )? $f $s)
+			// 1429:61: -> ^( LIKE ( NOT )? $f $s)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1427:64: ^( LIKE ( NOT )? $f $s)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1429:64: ^( LIKE ( NOT )? $f $s)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(stream_LIKE.nextNode(), root_1);
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1427:71: ( NOT )?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1429:71: ( NOT )?
 				if ( stream_NOT.hasNext() ) {
 					adaptor.addChild(root_1, stream_NOT.nextNode());
 				}
@@ -25451,7 +25459,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "null_predicate"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1435:1: null_predicate : f= numeric_value_expression IS (n= NOT )? NULL -> ^( IS $f NULL ( $n)? ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1437:1: null_predicate : f= numeric_value_expression IS (n= NOT )? NULL -> ^( IS $f NULL ( $n)? ) ;
 	public final DBLParser.null_predicate_return null_predicate() throws RecognitionException {
 		DBLParser.null_predicate_return retval = new DBLParser.null_predicate_return();
 		retval.start = input.LT(1);
@@ -25475,18 +25483,18 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 155) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1436:3: (f= numeric_value_expression IS (n= NOT )? NULL -> ^( IS $f NULL ( $n)? ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1436:5: f= numeric_value_expression IS (n= NOT )? NULL
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1438:3: (f= numeric_value_expression IS (n= NOT )? NULL -> ^( IS $f NULL ( $n)? ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1438:5: f= numeric_value_expression IS (n= NOT )? NULL
 			{
-			pushFollow(FOLLOW_numeric_value_expression_in_null_predicate11892);
+			pushFollow(FOLLOW_numeric_value_expression_in_null_predicate11900);
 			f=numeric_value_expression();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_numeric_value_expression.add(f.getTree());
-			IS511=(Token)match(input,IS,FOLLOW_IS_in_null_predicate11894); if (state.failed) return retval; 
+			IS511=(Token)match(input,IS,FOLLOW_IS_in_null_predicate11902); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_IS.add(IS511);
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1436:35: (n= NOT )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1438:35: (n= NOT )?
 			int alt186=2;
 			int LA186_0 = input.LA(1);
 			if ( (LA186_0==NOT) ) {
@@ -25494,9 +25502,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt186) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1436:36: n= NOT
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1438:36: n= NOT
 					{
-					n=(Token)match(input,NOT,FOLLOW_NOT_in_null_predicate11899); if (state.failed) return retval; 
+					n=(Token)match(input,NOT,FOLLOW_NOT_in_null_predicate11907); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_NOT.add(n);
 
 					}
@@ -25504,11 +25512,11 @@ public class DBLParser extends Parser {
 
 			}
 
-			NULL512=(Token)match(input,NULL,FOLLOW_NULL_in_null_predicate11903); if (state.failed) return retval; 
+			NULL512=(Token)match(input,NULL,FOLLOW_NULL_in_null_predicate11911); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_NULL.add(NULL512);
 
 			// AST REWRITE
-			// elements: n, IS, NULL, f
+			// elements: IS, NULL, f, n
 			// token labels: n
 			// rule labels: f, retval
 			// token list labels: 
@@ -25521,15 +25529,15 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1436:49: -> ^( IS $f NULL ( $n)? )
+			// 1438:49: -> ^( IS $f NULL ( $n)? )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1436:52: ^( IS $f NULL ( $n)? )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1438:52: ^( IS $f NULL ( $n)? )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(stream_IS.nextNode(), root_1);
 				adaptor.addChild(root_1, stream_f.nextTree());
 				adaptor.addChild(root_1, stream_NULL.nextNode());
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1436:66: ( $n)?
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1438:66: ( $n)?
 				if ( stream_n.hasNext() ) {
 					adaptor.addChild(root_1, stream_n.nextNode());
 				}
@@ -25576,7 +25584,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "numeric_value_expression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1444:1: numeric_value_expression : term ( ( PLUS | MINUS ) ^ term )* ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1446:1: numeric_value_expression : term ( ( PLUS | MINUS ) ^ term )* ;
 	public final DBLParser.numeric_value_expression_return numeric_value_expression() throws RecognitionException {
 		DBLParser.numeric_value_expression_return retval = new DBLParser.numeric_value_expression_return();
 		retval.start = input.LT(1);
@@ -25593,19 +25601,19 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 156) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1445:2: ( term ( ( PLUS | MINUS ) ^ term )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1445:4: term ( ( PLUS | MINUS ) ^ term )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1447:2: ( term ( ( PLUS | MINUS ) ^ term )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1447:4: term ( ( PLUS | MINUS ) ^ term )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_term_in_numeric_value_expression11931);
+			pushFollow(FOLLOW_term_in_numeric_value_expression11939);
 			term513=term();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, term513.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1445:9: ( ( PLUS | MINUS ) ^ term )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1447:9: ( ( PLUS | MINUS ) ^ term )*
 			loop187:
 			while (true) {
 				int alt187=2;
@@ -25616,7 +25624,7 @@ public class DBLParser extends Parser {
 
 				switch (alt187) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1445:10: ( PLUS | MINUS ) ^ term
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1447:10: ( PLUS | MINUS ) ^ term
 					{
 					set514=input.LT(1);
 					set514=input.LT(1);
@@ -25631,7 +25639,7 @@ public class DBLParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					pushFollow(FOLLOW_term_in_numeric_value_expression11941);
+					pushFollow(FOLLOW_term_in_numeric_value_expression11949);
 					term515=term();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -25677,7 +25685,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "term"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1447:1: term : numeric_primary ( ( MULTIPLY | DIVIDE | MODULAR ) ^ numeric_primary )* ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1449:1: term : numeric_primary ( ( MULTIPLY | DIVIDE | MODULAR ) ^ numeric_primary )* ;
 	public final DBLParser.term_return term() throws RecognitionException {
 		DBLParser.term_return retval = new DBLParser.term_return();
 		retval.start = input.LT(1);
@@ -25694,19 +25702,19 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 157) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1448:3: ( numeric_primary ( ( MULTIPLY | DIVIDE | MODULAR ) ^ numeric_primary )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1448:5: numeric_primary ( ( MULTIPLY | DIVIDE | MODULAR ) ^ numeric_primary )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1450:3: ( numeric_primary ( ( MULTIPLY | DIVIDE | MODULAR ) ^ numeric_primary )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1450:5: numeric_primary ( ( MULTIPLY | DIVIDE | MODULAR ) ^ numeric_primary )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_numeric_primary_in_term11954);
+			pushFollow(FOLLOW_numeric_primary_in_term11962);
 			numeric_primary516=numeric_primary();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, numeric_primary516.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1448:21: ( ( MULTIPLY | DIVIDE | MODULAR ) ^ numeric_primary )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1450:21: ( ( MULTIPLY | DIVIDE | MODULAR ) ^ numeric_primary )*
 			loop188:
 			while (true) {
 				int alt188=2;
@@ -25717,7 +25725,7 @@ public class DBLParser extends Parser {
 
 				switch (alt188) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1448:22: ( MULTIPLY | DIVIDE | MODULAR ) ^ numeric_primary
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1450:22: ( MULTIPLY | DIVIDE | MODULAR ) ^ numeric_primary
 					{
 					set517=input.LT(1);
 					set517=input.LT(1);
@@ -25732,7 +25740,7 @@ public class DBLParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					pushFollow(FOLLOW_numeric_primary_in_term11966);
+					pushFollow(FOLLOW_numeric_primary_in_term11974);
 					numeric_primary518=numeric_primary();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -25778,7 +25786,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "array"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1450:1: array : LEFT_PAREN literal ( COMMA literal )* RIGHT_PAREN -> ( literal )+ ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1452:1: array : LEFT_PAREN literal ( COMMA literal )* RIGHT_PAREN -> ( literal )+ ;
 	public final DBLParser.array_return array() throws RecognitionException {
 		DBLParser.array_return retval = new DBLParser.array_return();
 		retval.start = input.LT(1);
@@ -25803,18 +25811,18 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 158) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1451:3: ( LEFT_PAREN literal ( COMMA literal )* RIGHT_PAREN -> ( literal )+ )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1451:5: LEFT_PAREN literal ( COMMA literal )* RIGHT_PAREN
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1453:3: ( LEFT_PAREN literal ( COMMA literal )* RIGHT_PAREN -> ( literal )+ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1453:5: LEFT_PAREN literal ( COMMA literal )* RIGHT_PAREN
 			{
-			LEFT_PAREN519=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_array11979); if (state.failed) return retval; 
+			LEFT_PAREN519=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_array11987); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_LEFT_PAREN.add(LEFT_PAREN519);
 
-			pushFollow(FOLLOW_literal_in_array11981);
+			pushFollow(FOLLOW_literal_in_array11989);
 			literal520=literal();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_literal.add(literal520.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1451:24: ( COMMA literal )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1453:24: ( COMMA literal )*
 			loop189:
 			while (true) {
 				int alt189=2;
@@ -25825,12 +25833,12 @@ public class DBLParser extends Parser {
 
 				switch (alt189) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1451:25: COMMA literal
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1453:25: COMMA literal
 					{
-					COMMA521=(Token)match(input,COMMA,FOLLOW_COMMA_in_array11984); if (state.failed) return retval; 
+					COMMA521=(Token)match(input,COMMA,FOLLOW_COMMA_in_array11992); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_COMMA.add(COMMA521);
 
-					pushFollow(FOLLOW_literal_in_array11986);
+					pushFollow(FOLLOW_literal_in_array11994);
 					literal522=literal();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -25843,7 +25851,7 @@ public class DBLParser extends Parser {
 				}
 			}
 
-			RIGHT_PAREN523=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_array11991); if (state.failed) return retval; 
+			RIGHT_PAREN523=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_array11999); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_RIGHT_PAREN.add(RIGHT_PAREN523);
 
 			// AST REWRITE
@@ -25858,7 +25866,7 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1451:54: -> ( literal )+
+			// 1453:54: -> ( literal )+
 			{
 				if ( !(stream_literal.hasNext()) ) {
 					throw new RewriteEarlyExitException();
@@ -25906,7 +25914,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "numeric_primary"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1453:1: numeric_primary : ( literal | column_reference | LEFT_PAREN ! numeric_value_expression RIGHT_PAREN !| routine_invocation );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1455:1: numeric_primary : ( literal | column_reference | LEFT_PAREN ! numeric_value_expression RIGHT_PAREN !| routine_invocation );
 	public final DBLParser.numeric_primary_return numeric_primary() throws RecognitionException {
 		DBLParser.numeric_primary_return retval = new DBLParser.numeric_primary_return();
 		retval.start = input.LT(1);
@@ -25927,7 +25935,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 159) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1454:3: ( literal | column_reference | LEFT_PAREN ! numeric_value_expression RIGHT_PAREN !| routine_invocation )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1456:3: ( literal | column_reference | LEFT_PAREN ! numeric_value_expression RIGHT_PAREN !| routine_invocation )
 			int alt190=4;
 			switch ( input.LA(1) ) {
 			case Character_String_Literal:
@@ -25983,12 +25991,12 @@ public class DBLParser extends Parser {
 			}
 			switch (alt190) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1454:5: literal
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1456:5: literal
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_literal_in_numeric_primary12008);
+					pushFollow(FOLLOW_literal_in_numeric_primary12016);
 					literal524=literal();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -25997,12 +26005,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1455:4: column_reference
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1457:4: column_reference
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_column_reference_in_numeric_primary12013);
+					pushFollow(FOLLOW_column_reference_in_numeric_primary12021);
 					column_reference525=column_reference();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -26011,28 +26019,28 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1456:4: LEFT_PAREN ! numeric_value_expression RIGHT_PAREN !
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1458:4: LEFT_PAREN ! numeric_value_expression RIGHT_PAREN !
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					LEFT_PAREN526=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_numeric_primary12018); if (state.failed) return retval;
-					pushFollow(FOLLOW_numeric_value_expression_in_numeric_primary12021);
+					LEFT_PAREN526=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_numeric_primary12026); if (state.failed) return retval;
+					pushFollow(FOLLOW_numeric_value_expression_in_numeric_primary12029);
 					numeric_value_expression527=numeric_value_expression();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, numeric_value_expression527.getTree());
 
-					RIGHT_PAREN528=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_numeric_primary12023); if (state.failed) return retval;
+					RIGHT_PAREN528=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_numeric_primary12031); if (state.failed) return retval;
 					}
 					break;
 				case 4 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1457:4: routine_invocation
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1459:4: routine_invocation
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_routine_invocation_in_numeric_primary12029);
+					pushFollow(FOLLOW_routine_invocation_in_numeric_primary12037);
 					routine_invocation529=routine_invocation();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -26072,7 +26080,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "literal"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1459:1: literal : ( string_value_expr | signed_numerical_literal | NULL );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1461:1: literal : ( string_value_expr | signed_numerical_literal | NULL );
 	public final DBLParser.literal_return literal() throws RecognitionException {
 		DBLParser.literal_return retval = new DBLParser.literal_return();
 		retval.start = input.LT(1);
@@ -26089,7 +26097,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 160) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1460:3: ( string_value_expr | signed_numerical_literal | NULL )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1462:3: ( string_value_expr | signed_numerical_literal | NULL )
 			int alt191=3;
 			switch ( input.LA(1) ) {
 			case Character_String_Literal:
@@ -26118,12 +26126,12 @@ public class DBLParser extends Parser {
 			}
 			switch (alt191) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1460:5: string_value_expr
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1462:5: string_value_expr
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_string_value_expr_in_literal12040);
+					pushFollow(FOLLOW_string_value_expr_in_literal12048);
 					string_value_expr530=string_value_expr();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -26132,12 +26140,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1461:5: signed_numerical_literal
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1463:5: signed_numerical_literal
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_signed_numerical_literal_in_literal12046);
+					pushFollow(FOLLOW_signed_numerical_literal_in_literal12054);
 					signed_numerical_literal531=signed_numerical_literal();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -26146,12 +26154,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1462:5: NULL
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1464:5: NULL
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					NULL532=(Token)match(input,NULL,FOLLOW_NULL_in_literal12052); if (state.failed) return retval;
+					NULL532=(Token)match(input,NULL,FOLLOW_NULL_in_literal12060); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					NULL532_tree = (CommonTree)adaptor.create(NULL532);
 					adaptor.addChild(root_0, NULL532_tree);
@@ -26191,7 +26199,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "string_value_expr"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1464:1: string_value_expr : Character_String_Literal ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1466:1: string_value_expr : Character_String_Literal ;
 	public final DBLParser.string_value_expr_return string_value_expr() throws RecognitionException {
 		DBLParser.string_value_expr_return retval = new DBLParser.string_value_expr_return();
 		retval.start = input.LT(1);
@@ -26206,13 +26214,13 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 161) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1465:3: ( Character_String_Literal )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1465:5: Character_String_Literal
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1467:3: ( Character_String_Literal )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1467:5: Character_String_Literal
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			Character_String_Literal533=(Token)match(input,Character_String_Literal,FOLLOW_Character_String_Literal_in_string_value_expr12064); if (state.failed) return retval;
+			Character_String_Literal533=(Token)match(input,Character_String_Literal,FOLLOW_Character_String_Literal_in_string_value_expr12072); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			Character_String_Literal533_tree = (CommonTree)adaptor.create(Character_String_Literal533);
 			adaptor.addChild(root_0, Character_String_Literal533_tree);
@@ -26250,7 +26258,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "signed_numerical_literal"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1467:1: signed_numerical_literal : ( sign )? unsigned_numerical_literal ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1469:1: signed_numerical_literal : ( sign )? unsigned_numerical_literal ;
 	public final DBLParser.signed_numerical_literal_return signed_numerical_literal() throws RecognitionException {
 		DBLParser.signed_numerical_literal_return retval = new DBLParser.signed_numerical_literal_return();
 		retval.start = input.LT(1);
@@ -26265,13 +26273,13 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 162) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1468:3: ( ( sign )? unsigned_numerical_literal )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1468:5: ( sign )? unsigned_numerical_literal
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1470:3: ( ( sign )? unsigned_numerical_literal )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1470:5: ( sign )? unsigned_numerical_literal
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1468:5: ( sign )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1470:5: ( sign )?
 			int alt192=2;
 			int LA192_0 = input.LA(1);
 			if ( (LA192_0==MINUS||LA192_0==PLUS) ) {
@@ -26279,9 +26287,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt192) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1468:5: sign
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1470:5: sign
 					{
-					pushFollow(FOLLOW_sign_in_signed_numerical_literal12076);
+					pushFollow(FOLLOW_sign_in_signed_numerical_literal12084);
 					sign534=sign();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -26292,7 +26300,7 @@ public class DBLParser extends Parser {
 
 			}
 
-			pushFollow(FOLLOW_unsigned_numerical_literal_in_signed_numerical_literal12079);
+			pushFollow(FOLLOW_unsigned_numerical_literal_in_signed_numerical_literal12087);
 			unsigned_numerical_literal535=unsigned_numerical_literal();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -26330,7 +26338,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "unsigned_numerical_literal"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1470:1: unsigned_numerical_literal : ( NUMBER | REAL_NUMBER );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1472:1: unsigned_numerical_literal : ( NUMBER | REAL_NUMBER );
 	public final DBLParser.unsigned_numerical_literal_return unsigned_numerical_literal() throws RecognitionException {
 		DBLParser.unsigned_numerical_literal_return retval = new DBLParser.unsigned_numerical_literal_return();
 		retval.start = input.LT(1);
@@ -26345,7 +26353,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 163) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1471:3: ( NUMBER | REAL_NUMBER )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1473:3: ( NUMBER | REAL_NUMBER )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:
 			{
 			root_0 = (CommonTree)adaptor.nil();
@@ -26395,7 +26403,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "sign"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1474:1: sign : ( PLUS | MINUS );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1476:1: sign : ( PLUS | MINUS );
 	public final DBLParser.sign_return sign() throws RecognitionException {
 		DBLParser.sign_return retval = new DBLParser.sign_return();
 		retval.start = input.LT(1);
@@ -26410,7 +26418,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 164) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1475:3: ( PLUS | MINUS )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1477:3: ( PLUS | MINUS )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:
 			{
 			root_0 = (CommonTree)adaptor.nil();
@@ -26460,7 +26468,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "case_expression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1482:1: case_expression : case_specification ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1484:1: case_expression : case_specification ;
 	public final DBLParser.case_expression_return case_expression() throws RecognitionException {
 		DBLParser.case_expression_return retval = new DBLParser.case_expression_return();
 		retval.start = input.LT(1);
@@ -26474,13 +26482,13 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 165) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1483:3: ( case_specification )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1483:5: case_specification
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1485:3: ( case_specification )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1485:5: case_specification
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_case_specification_in_case_expression12127);
+			pushFollow(FOLLOW_case_specification_in_case_expression12135);
 			case_specification538=case_specification();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -26518,7 +26526,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "case_abbreviation"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1485:1: case_abbreviation : ( NULLIF LEFT_PAREN numeric_value_expression COMMA boolean_value_expression RIGHT_PAREN | COALESCE LEFT_PAREN numeric_value_expression ( COMMA boolean_value_expression )+ RIGHT_PAREN );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1487:1: case_abbreviation : ( NULLIF LEFT_PAREN numeric_value_expression COMMA boolean_value_expression RIGHT_PAREN | COALESCE LEFT_PAREN numeric_value_expression ( COMMA boolean_value_expression )+ RIGHT_PAREN );
 	public final DBLParser.case_abbreviation_return case_abbreviation() throws RecognitionException {
 		DBLParser.case_abbreviation_return retval = new DBLParser.case_abbreviation_return();
 		retval.start = input.LT(1);
@@ -26551,7 +26559,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 166) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1486:3: ( NULLIF LEFT_PAREN numeric_value_expression COMMA boolean_value_expression RIGHT_PAREN | COALESCE LEFT_PAREN numeric_value_expression ( COMMA boolean_value_expression )+ RIGHT_PAREN )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1488:3: ( NULLIF LEFT_PAREN numeric_value_expression COMMA boolean_value_expression RIGHT_PAREN | COALESCE LEFT_PAREN numeric_value_expression ( COMMA boolean_value_expression )+ RIGHT_PAREN )
 			int alt194=2;
 			int LA194_0 = input.LA(1);
 			if ( (LA194_0==NULLIF) ) {
@@ -26570,42 +26578,42 @@ public class DBLParser extends Parser {
 
 			switch (alt194) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1486:5: NULLIF LEFT_PAREN numeric_value_expression COMMA boolean_value_expression RIGHT_PAREN
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1488:5: NULLIF LEFT_PAREN numeric_value_expression COMMA boolean_value_expression RIGHT_PAREN
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					NULLIF539=(Token)match(input,NULLIF,FOLLOW_NULLIF_in_case_abbreviation12139); if (state.failed) return retval;
+					NULLIF539=(Token)match(input,NULLIF,FOLLOW_NULLIF_in_case_abbreviation12147); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					NULLIF539_tree = (CommonTree)adaptor.create(NULLIF539);
 					adaptor.addChild(root_0, NULLIF539_tree);
 					}
 
-					LEFT_PAREN540=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_case_abbreviation12141); if (state.failed) return retval;
+					LEFT_PAREN540=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_case_abbreviation12149); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					LEFT_PAREN540_tree = (CommonTree)adaptor.create(LEFT_PAREN540);
 					adaptor.addChild(root_0, LEFT_PAREN540_tree);
 					}
 
-					pushFollow(FOLLOW_numeric_value_expression_in_case_abbreviation12143);
+					pushFollow(FOLLOW_numeric_value_expression_in_case_abbreviation12151);
 					numeric_value_expression541=numeric_value_expression();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, numeric_value_expression541.getTree());
 
-					COMMA542=(Token)match(input,COMMA,FOLLOW_COMMA_in_case_abbreviation12145); if (state.failed) return retval;
+					COMMA542=(Token)match(input,COMMA,FOLLOW_COMMA_in_case_abbreviation12153); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					COMMA542_tree = (CommonTree)adaptor.create(COMMA542);
 					adaptor.addChild(root_0, COMMA542_tree);
 					}
 
-					pushFollow(FOLLOW_boolean_value_expression_in_case_abbreviation12147);
+					pushFollow(FOLLOW_boolean_value_expression_in_case_abbreviation12155);
 					boolean_value_expression543=boolean_value_expression();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, boolean_value_expression543.getTree());
 
-					RIGHT_PAREN544=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_case_abbreviation12150); if (state.failed) return retval;
+					RIGHT_PAREN544=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_case_abbreviation12158); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					RIGHT_PAREN544_tree = (CommonTree)adaptor.create(RIGHT_PAREN544);
 					adaptor.addChild(root_0, RIGHT_PAREN544_tree);
@@ -26614,30 +26622,30 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1487:5: COALESCE LEFT_PAREN numeric_value_expression ( COMMA boolean_value_expression )+ RIGHT_PAREN
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1489:5: COALESCE LEFT_PAREN numeric_value_expression ( COMMA boolean_value_expression )+ RIGHT_PAREN
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					COALESCE545=(Token)match(input,COALESCE,FOLLOW_COALESCE_in_case_abbreviation12156); if (state.failed) return retval;
+					COALESCE545=(Token)match(input,COALESCE,FOLLOW_COALESCE_in_case_abbreviation12164); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					COALESCE545_tree = (CommonTree)adaptor.create(COALESCE545);
 					adaptor.addChild(root_0, COALESCE545_tree);
 					}
 
-					LEFT_PAREN546=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_case_abbreviation12158); if (state.failed) return retval;
+					LEFT_PAREN546=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_case_abbreviation12166); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					LEFT_PAREN546_tree = (CommonTree)adaptor.create(LEFT_PAREN546);
 					adaptor.addChild(root_0, LEFT_PAREN546_tree);
 					}
 
-					pushFollow(FOLLOW_numeric_value_expression_in_case_abbreviation12160);
+					pushFollow(FOLLOW_numeric_value_expression_in_case_abbreviation12168);
 					numeric_value_expression547=numeric_value_expression();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, numeric_value_expression547.getTree());
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1487:50: ( COMMA boolean_value_expression )+
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1489:50: ( COMMA boolean_value_expression )+
 					int cnt193=0;
 					loop193:
 					while (true) {
@@ -26649,15 +26657,15 @@ public class DBLParser extends Parser {
 
 						switch (alt193) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1487:52: COMMA boolean_value_expression
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1489:52: COMMA boolean_value_expression
 							{
-							COMMA548=(Token)match(input,COMMA,FOLLOW_COMMA_in_case_abbreviation12164); if (state.failed) return retval;
+							COMMA548=(Token)match(input,COMMA,FOLLOW_COMMA_in_case_abbreviation12172); if (state.failed) return retval;
 							if ( state.backtracking==0 ) {
 							COMMA548_tree = (CommonTree)adaptor.create(COMMA548);
 							adaptor.addChild(root_0, COMMA548_tree);
 							}
 
-							pushFollow(FOLLOW_boolean_value_expression_in_case_abbreviation12166);
+							pushFollow(FOLLOW_boolean_value_expression_in_case_abbreviation12174);
 							boolean_value_expression549=boolean_value_expression();
 							state._fsp--;
 							if (state.failed) return retval;
@@ -26675,7 +26683,7 @@ public class DBLParser extends Parser {
 						cnt193++;
 					}
 
-					RIGHT_PAREN550=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_case_abbreviation12172); if (state.failed) return retval;
+					RIGHT_PAREN550=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_case_abbreviation12180); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					RIGHT_PAREN550_tree = (CommonTree)adaptor.create(RIGHT_PAREN550);
 					adaptor.addChild(root_0, RIGHT_PAREN550_tree);
@@ -26715,7 +26723,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "case_specification"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1489:1: case_specification : ( simple_case | searched_case );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1491:1: case_specification : ( simple_case | searched_case );
 	public final DBLParser.case_specification_return case_specification() throws RecognitionException {
 		DBLParser.case_specification_return retval = new DBLParser.case_specification_return();
 		retval.start = input.LT(1);
@@ -26730,7 +26738,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 167) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1490:3: ( simple_case | searched_case )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1492:3: ( simple_case | searched_case )
 			int alt195=2;
 			int LA195_0 = input.LA(1);
 			if ( (LA195_0==CASE) ) {
@@ -26766,12 +26774,12 @@ public class DBLParser extends Parser {
 
 			switch (alt195) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1490:5: simple_case
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1492:5: simple_case
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_simple_case_in_case_specification12184);
+					pushFollow(FOLLOW_simple_case_in_case_specification12192);
 					simple_case551=simple_case();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -26780,12 +26788,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1491:5: searched_case
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1493:5: searched_case
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_searched_case_in_case_specification12190);
+					pushFollow(FOLLOW_searched_case_in_case_specification12198);
 					searched_case552=searched_case();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -26825,7 +26833,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "simple_case"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1493:1: simple_case : CASE numeric_value_expression ( simple_when_clause )+ ( else_clause )? END ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1495:1: simple_case : CASE numeric_value_expression ( simple_when_clause )+ ( else_clause )? END ;
 	public final DBLParser.simple_case_return simple_case() throws RecognitionException {
 		DBLParser.simple_case_return retval = new DBLParser.simple_case_return();
 		retval.start = input.LT(1);
@@ -26845,25 +26853,25 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 168) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1494:3: ( CASE numeric_value_expression ( simple_when_clause )+ ( else_clause )? END )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1494:5: CASE numeric_value_expression ( simple_when_clause )+ ( else_clause )? END
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1496:3: ( CASE numeric_value_expression ( simple_when_clause )+ ( else_clause )? END )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1496:5: CASE numeric_value_expression ( simple_when_clause )+ ( else_clause )? END
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			CASE553=(Token)match(input,CASE,FOLLOW_CASE_in_simple_case12202); if (state.failed) return retval;
+			CASE553=(Token)match(input,CASE,FOLLOW_CASE_in_simple_case12210); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			CASE553_tree = (CommonTree)adaptor.create(CASE553);
 			adaptor.addChild(root_0, CASE553_tree);
 			}
 
-			pushFollow(FOLLOW_numeric_value_expression_in_simple_case12204);
+			pushFollow(FOLLOW_numeric_value_expression_in_simple_case12212);
 			numeric_value_expression554=numeric_value_expression();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, numeric_value_expression554.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1494:35: ( simple_when_clause )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1496:35: ( simple_when_clause )+
 			int cnt196=0;
 			loop196:
 			while (true) {
@@ -26875,9 +26883,9 @@ public class DBLParser extends Parser {
 
 				switch (alt196) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1494:37: simple_when_clause
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1496:37: simple_when_clause
 					{
-					pushFollow(FOLLOW_simple_when_clause_in_simple_case12208);
+					pushFollow(FOLLOW_simple_when_clause_in_simple_case12216);
 					simple_when_clause555=simple_when_clause();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -26895,7 +26903,7 @@ public class DBLParser extends Parser {
 				cnt196++;
 			}
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1494:59: ( else_clause )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1496:59: ( else_clause )?
 			int alt197=2;
 			int LA197_0 = input.LA(1);
 			if ( (LA197_0==ELSE) ) {
@@ -26903,9 +26911,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt197) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1494:61: else_clause
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1496:61: else_clause
 					{
-					pushFollow(FOLLOW_else_clause_in_simple_case12215);
+					pushFollow(FOLLOW_else_clause_in_simple_case12223);
 					else_clause556=else_clause();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -26916,7 +26924,7 @@ public class DBLParser extends Parser {
 
 			}
 
-			END557=(Token)match(input,END,FOLLOW_END_in_simple_case12221); if (state.failed) return retval;
+			END557=(Token)match(input,END,FOLLOW_END_in_simple_case12229); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			END557_tree = (CommonTree)adaptor.create(END557);
 			adaptor.addChild(root_0, END557_tree);
@@ -26954,7 +26962,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "searched_case"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1496:1: searched_case : CASE ^ ( searched_when_clause )+ ( else_clause )? END !;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1498:1: searched_case : CASE ^ ( searched_when_clause )+ ( else_clause )? END !;
 	public final DBLParser.searched_case_return searched_case() throws RecognitionException {
 		DBLParser.searched_case_return retval = new DBLParser.searched_case_return();
 		retval.start = input.LT(1);
@@ -26973,19 +26981,19 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 169) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1497:3: ( CASE ^ ( searched_when_clause )+ ( else_clause )? END !)
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1497:5: CASE ^ ( searched_when_clause )+ ( else_clause )? END !
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1499:3: ( CASE ^ ( searched_when_clause )+ ( else_clause )? END !)
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1499:5: CASE ^ ( searched_when_clause )+ ( else_clause )? END !
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			CASE558=(Token)match(input,CASE,FOLLOW_CASE_in_searched_case12233); if (state.failed) return retval;
+			CASE558=(Token)match(input,CASE,FOLLOW_CASE_in_searched_case12241); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			CASE558_tree = (CommonTree)adaptor.create(CASE558);
 			root_0 = (CommonTree)adaptor.becomeRoot(CASE558_tree, root_0);
 			}
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1497:11: ( searched_when_clause )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1499:11: ( searched_when_clause )+
 			int cnt198=0;
 			loop198:
 			while (true) {
@@ -26997,9 +27005,9 @@ public class DBLParser extends Parser {
 
 				switch (alt198) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1497:12: searched_when_clause
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1499:12: searched_when_clause
 					{
-					pushFollow(FOLLOW_searched_when_clause_in_searched_case12237);
+					pushFollow(FOLLOW_searched_when_clause_in_searched_case12245);
 					searched_when_clause559=searched_when_clause();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -27017,7 +27025,7 @@ public class DBLParser extends Parser {
 				cnt198++;
 			}
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1497:35: ( else_clause )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1499:35: ( else_clause )?
 			int alt199=2;
 			int LA199_0 = input.LA(1);
 			if ( (LA199_0==ELSE) ) {
@@ -27025,9 +27033,9 @@ public class DBLParser extends Parser {
 			}
 			switch (alt199) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1497:36: else_clause
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1499:36: else_clause
 					{
-					pushFollow(FOLLOW_else_clause_in_searched_case12242);
+					pushFollow(FOLLOW_else_clause_in_searched_case12250);
 					else_clause560=else_clause();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -27038,7 +27046,7 @@ public class DBLParser extends Parser {
 
 			}
 
-			END561=(Token)match(input,END,FOLLOW_END_in_searched_case12246); if (state.failed) return retval;
+			END561=(Token)match(input,END,FOLLOW_END_in_searched_case12254); if (state.failed) return retval;
 			}
 
 			retval.stop = input.LT(-1);
@@ -27071,7 +27079,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "simple_when_clause"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1499:1: simple_when_clause : WHEN numeric_value_expression THEN result ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1501:1: simple_when_clause : WHEN numeric_value_expression THEN result ;
 	public final DBLParser.simple_when_clause_return simple_when_clause() throws RecognitionException {
 		DBLParser.simple_when_clause_return retval = new DBLParser.simple_when_clause_return();
 		retval.start = input.LT(1);
@@ -27090,31 +27098,31 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 170) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1499:20: ( WHEN numeric_value_expression THEN result )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1499:22: WHEN numeric_value_expression THEN result
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1501:20: ( WHEN numeric_value_expression THEN result )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1501:22: WHEN numeric_value_expression THEN result
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			WHEN562=(Token)match(input,WHEN,FOLLOW_WHEN_in_simple_when_clause12257); if (state.failed) return retval;
+			WHEN562=(Token)match(input,WHEN,FOLLOW_WHEN_in_simple_when_clause12265); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			WHEN562_tree = (CommonTree)adaptor.create(WHEN562);
 			adaptor.addChild(root_0, WHEN562_tree);
 			}
 
-			pushFollow(FOLLOW_numeric_value_expression_in_simple_when_clause12259);
+			pushFollow(FOLLOW_numeric_value_expression_in_simple_when_clause12267);
 			numeric_value_expression563=numeric_value_expression();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, numeric_value_expression563.getTree());
 
-			THEN564=(Token)match(input,THEN,FOLLOW_THEN_in_simple_when_clause12261); if (state.failed) return retval;
+			THEN564=(Token)match(input,THEN,FOLLOW_THEN_in_simple_when_clause12269); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			THEN564_tree = (CommonTree)adaptor.create(THEN564);
 			adaptor.addChild(root_0, THEN564_tree);
 			}
 
-			pushFollow(FOLLOW_result_in_simple_when_clause12263);
+			pushFollow(FOLLOW_result_in_simple_when_clause12271);
 			result565=result();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -27152,7 +27160,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "searched_when_clause"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1500:1: searched_when_clause : WHEN c= search_condition THEN r= result -> ^( WHEN $c $r) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1502:1: searched_when_clause : WHEN c= search_condition THEN r= result -> ^( WHEN $c $r) ;
 	public final DBLParser.searched_when_clause_return searched_when_clause() throws RecognitionException {
 		DBLParser.searched_when_clause_return retval = new DBLParser.searched_when_clause_return();
 		retval.start = input.LT(1);
@@ -27175,21 +27183,21 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 171) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1501:3: ( WHEN c= search_condition THEN r= result -> ^( WHEN $c $r) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1501:5: WHEN c= search_condition THEN r= result
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1503:3: ( WHEN c= search_condition THEN r= result -> ^( WHEN $c $r) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1503:5: WHEN c= search_condition THEN r= result
 			{
-			WHEN566=(Token)match(input,WHEN,FOLLOW_WHEN_in_searched_when_clause12273); if (state.failed) return retval; 
+			WHEN566=(Token)match(input,WHEN,FOLLOW_WHEN_in_searched_when_clause12281); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_WHEN.add(WHEN566);
 
-			pushFollow(FOLLOW_search_condition_in_searched_when_clause12277);
+			pushFollow(FOLLOW_search_condition_in_searched_when_clause12285);
 			c=search_condition();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_search_condition.add(c.getTree());
-			THEN567=(Token)match(input,THEN,FOLLOW_THEN_in_searched_when_clause12279); if (state.failed) return retval; 
+			THEN567=(Token)match(input,THEN,FOLLOW_THEN_in_searched_when_clause12287); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_THEN.add(THEN567);
 
-			pushFollow(FOLLOW_result_in_searched_when_clause12283);
+			pushFollow(FOLLOW_result_in_searched_when_clause12291);
 			r=result();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -27208,9 +27216,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1501:43: -> ^( WHEN $c $r)
+			// 1503:43: -> ^( WHEN $c $r)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1501:46: ^( WHEN $c $r)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1503:46: ^( WHEN $c $r)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(stream_WHEN.nextNode(), root_1);
@@ -27257,7 +27265,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "else_clause"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1503:1: else_clause : ELSE r= result -> ^( ELSE $r) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1505:1: else_clause : ELSE r= result -> ^( ELSE $r) ;
 	public final DBLParser.else_clause_return else_clause() throws RecognitionException {
 		DBLParser.else_clause_return retval = new DBLParser.else_clause_return();
 		retval.start = input.LT(1);
@@ -27275,19 +27283,19 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 172) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1504:3: ( ELSE r= result -> ^( ELSE $r) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1504:5: ELSE r= result
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1506:3: ( ELSE r= result -> ^( ELSE $r) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1506:5: ELSE r= result
 			{
-			ELSE568=(Token)match(input,ELSE,FOLLOW_ELSE_in_else_clause12307); if (state.failed) return retval; 
+			ELSE568=(Token)match(input,ELSE,FOLLOW_ELSE_in_else_clause12315); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_ELSE.add(ELSE568);
 
-			pushFollow(FOLLOW_result_in_else_clause12311);
+			pushFollow(FOLLOW_result_in_else_clause12319);
 			r=result();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_result.add(r.getTree());
 			// AST REWRITE
-			// elements: ELSE, r
+			// elements: r, ELSE
 			// token labels: 
 			// rule labels: r, retval
 			// token list labels: 
@@ -27299,9 +27307,9 @@ public class DBLParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 1504:19: -> ^( ELSE $r)
+			// 1506:19: -> ^( ELSE $r)
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1504:22: ^( ELSE $r)
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1506:22: ^( ELSE $r)
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(stream_ELSE.nextNode(), root_1);
@@ -27347,7 +27355,7 @@ public class DBLParser extends Parser {
 
 
 	// $ANTLR start "result"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1506:1: result : ( numeric_value_expression | NULL );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1508:1: result : ( numeric_value_expression | NULL );
 	public final DBLParser.result_return result() throws RecognitionException {
 		DBLParser.result_return retval = new DBLParser.result_return();
 		retval.start = input.LT(1);
@@ -27363,7 +27371,7 @@ public class DBLParser extends Parser {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 173) ) { return retval; }
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1507:3: ( numeric_value_expression | NULL )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1509:3: ( numeric_value_expression | NULL )
 			int alt200=2;
 			int LA200_0 = input.LA(1);
 			if ( (LA200_0==COUNT||LA200_0==Character_String_Literal||LA200_0==Identifier||LA200_0==LEFT_PAREN||LA200_0==MINUS||LA200_0==NUMBER||LA200_0==PLUS||LA200_0==REAL_NUMBER) ) {
@@ -27389,12 +27397,12 @@ public class DBLParser extends Parser {
 
 			switch (alt200) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1507:5: numeric_value_expression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1509:5: numeric_value_expression
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_numeric_value_expression_in_result12332);
+					pushFollow(FOLLOW_numeric_value_expression_in_result12340);
 					numeric_value_expression569=numeric_value_expression();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -27403,12 +27411,12 @@ public class DBLParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1507:32: NULL
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1509:32: NULL
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					NULL570=(Token)match(input,NULL,FOLLOW_NULL_in_result12336); if (state.failed) return retval;
+					NULL570=(Token)match(input,NULL,FOLLOW_NULL_in_result12344); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					NULL570_tree = (CommonTree)adaptor.create(NULL570);
 					adaptor.addChild(root_0, NULL570_tree);
@@ -27529,10 +27537,10 @@ public class DBLParser extends Parser {
 
 	// $ANTLR start synpred244_DBL
 	public final void synpred244_DBL_fragment() throws RecognitionException {
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1131:5: ( non_join_query_expression )
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1131:5: non_join_query_expression
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1133:5: ( non_join_query_expression )
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1133:5: non_join_query_expression
 		{
-		pushFollow(FOLLOW_non_join_query_expression_in_synpred244_DBL9878);
+		pushFollow(FOLLOW_non_join_query_expression_in_synpred244_DBL9886);
 		non_join_query_expression();
 		state._fsp--;
 		if (state.failed) return;
@@ -27544,10 +27552,10 @@ public class DBLParser extends Parser {
 
 	// $ANTLR start synpred245_DBL
 	public final void synpred245_DBL_fragment() throws RecognitionException {
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1135:6: ( non_join_query_term )
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1135:6: non_join_query_term
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1137:6: ( non_join_query_term )
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1137:6: non_join_query_term
 		{
-		pushFollow(FOLLOW_non_join_query_term_in_synpred245_DBL9897);
+		pushFollow(FOLLOW_non_join_query_term_in_synpred245_DBL9905);
 		non_join_query_term();
 		state._fsp--;
 		if (state.failed) return;
@@ -27559,10 +27567,10 @@ public class DBLParser extends Parser {
 
 	// $ANTLR start synpred253_DBL
 	public final void synpred253_DBL_fragment() throws RecognitionException {
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1139:5: ( non_join_query_term )
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1139:5: non_join_query_term
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1141:5: ( non_join_query_term )
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1141:5: non_join_query_term
 		{
-		pushFollow(FOLLOW_non_join_query_term_in_synpred253_DBL9957);
+		pushFollow(FOLLOW_non_join_query_term_in_synpred253_DBL9965);
 		non_join_query_term();
 		state._fsp--;
 		if (state.failed) return;
@@ -27574,12 +27582,12 @@ public class DBLParser extends Parser {
 
 	// $ANTLR start synpred274_DBL
 	public final void synpred274_DBL_fragment() throws RecognitionException {
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1184:22: ( COMMA column_reference )
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1184:22: COMMA column_reference
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1186:22: ( COMMA column_reference )
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1186:22: COMMA column_reference
 		{
-		match(input,COMMA,FOLLOW_COMMA_in_synpred274_DBL10310); if (state.failed) return;
+		match(input,COMMA,FOLLOW_COMMA_in_synpred274_DBL10318); if (state.failed) return;
 
-		pushFollow(FOLLOW_column_reference_in_synpred274_DBL10312);
+		pushFollow(FOLLOW_column_reference_in_synpred274_DBL10320);
 		column_reference();
 		state._fsp--;
 		if (state.failed) return;
@@ -27591,10 +27599,10 @@ public class DBLParser extends Parser {
 
 	// $ANTLR start synpred317_DBL
 	public final void synpred317_DBL_fragment() throws RecognitionException {
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1374:5: ( predicate )
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1374:5: predicate
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1376:5: ( predicate )
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1376:5: predicate
 		{
-		pushFollow(FOLLOW_predicate_in_synpred317_DBL11615);
+		pushFollow(FOLLOW_predicate_in_synpred317_DBL11623);
 		predicate();
 		state._fsp--;
 		if (state.failed) return;
@@ -27606,10 +27614,10 @@ public class DBLParser extends Parser {
 
 	// $ANTLR start synpred318_DBL
 	public final void synpred318_DBL_fragment() throws RecognitionException {
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1375:5: ( numeric_value_expression )
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1375:5: numeric_value_expression
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1377:5: ( numeric_value_expression )
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1377:5: numeric_value_expression
 		{
-		pushFollow(FOLLOW_numeric_value_expression_in_synpred318_DBL11621);
+		pushFollow(FOLLOW_numeric_value_expression_in_synpred318_DBL11629);
 		numeric_value_expression();
 		state._fsp--;
 		if (state.failed) return;
@@ -27621,17 +27629,17 @@ public class DBLParser extends Parser {
 
 	// $ANTLR start synpred319_DBL
 	public final void synpred319_DBL_fragment() throws RecognitionException {
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1376:5: ( LEFT_PAREN boolean_value_expression RIGHT_PAREN )
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1376:5: LEFT_PAREN boolean_value_expression RIGHT_PAREN
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1378:5: ( LEFT_PAREN boolean_value_expression RIGHT_PAREN )
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1378:5: LEFT_PAREN boolean_value_expression RIGHT_PAREN
 		{
-		match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_synpred319_DBL11627); if (state.failed) return;
+		match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_synpred319_DBL11635); if (state.failed) return;
 
-		pushFollow(FOLLOW_boolean_value_expression_in_synpred319_DBL11630);
+		pushFollow(FOLLOW_boolean_value_expression_in_synpred319_DBL11638);
 		boolean_value_expression();
 		state._fsp--;
 		if (state.failed) return;
 
-		match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_synpred319_DBL11632); if (state.failed) return;
+		match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_synpred319_DBL11640); if (state.failed) return;
 
 		}
 
@@ -27640,10 +27648,10 @@ public class DBLParser extends Parser {
 
 	// $ANTLR start synpred320_DBL
 	public final void synpred320_DBL_fragment() throws RecognitionException {
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1385:5: ( comparison_predicate )
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1385:5: comparison_predicate
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1387:5: ( comparison_predicate )
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1387:5: comparison_predicate
 		{
-		pushFollow(FOLLOW_comparison_predicate_in_synpred320_DBL11653);
+		pushFollow(FOLLOW_comparison_predicate_in_synpred320_DBL11661);
 		comparison_predicate();
 		state._fsp--;
 		if (state.failed) return;
@@ -27655,10 +27663,10 @@ public class DBLParser extends Parser {
 
 	// $ANTLR start synpred321_DBL
 	public final void synpred321_DBL_fragment() throws RecognitionException {
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1386:5: ( in_predicate )
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1386:5: in_predicate
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1388:5: ( in_predicate )
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1388:5: in_predicate
 		{
-		pushFollow(FOLLOW_in_predicate_in_synpred321_DBL11659);
+		pushFollow(FOLLOW_in_predicate_in_synpred321_DBL11667);
 		in_predicate();
 		state._fsp--;
 		if (state.failed) return;
@@ -27670,10 +27678,10 @@ public class DBLParser extends Parser {
 
 	// $ANTLR start synpred322_DBL
 	public final void synpred322_DBL_fragment() throws RecognitionException {
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1387:5: ( like_predicate )
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1387:5: like_predicate
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1389:5: ( like_predicate )
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1389:5: like_predicate
 		{
-		pushFollow(FOLLOW_like_predicate_in_synpred322_DBL11665);
+		pushFollow(FOLLOW_like_predicate_in_synpred322_DBL11673);
 		like_predicate();
 		state._fsp--;
 		if (state.failed) return;
@@ -27685,10 +27693,10 @@ public class DBLParser extends Parser {
 
 	// $ANTLR start synpred353_DBL
 	public final void synpred353_DBL_fragment() throws RecognitionException {
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1507:5: ( numeric_value_expression )
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1507:5: numeric_value_expression
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1509:5: ( numeric_value_expression )
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1509:5: numeric_value_expression
 		{
-		pushFollow(FOLLOW_numeric_value_expression_in_synpred353_DBL12332);
+		pushFollow(FOLLOW_numeric_value_expression_in_synpred353_DBL12340);
 		numeric_value_expression();
 		state._fsp--;
 		if (state.failed) return;
@@ -27958,7 +27966,7 @@ public class DBLParser extends Parser {
 	public static final BitSet FOLLOW_type_length_in_bit_type5435 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_VARBIT_in_varbit_type5452 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0008000000000000L});
 	public static final BitSet FOLLOW_type_length_in_varbit_type5454 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_BIT_in_varbit_type5465 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000004L});
+	public static final BitSet FOLLOW_BIT_in_varbit_type5465 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
 	public static final BitSet FOLLOW_VARYING_in_varbit_type5467 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0008000000000000L});
 	public static final BitSet FOLLOW_type_length_in_varbit_type5469 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_INT1_in_int1_type5486 = new BitSet(new long[]{0x0000000000000002L});
@@ -27990,7 +27998,7 @@ public class DBLParser extends Parser {
 	public static final BitSet FOLLOW_type_length_in_char_type5745 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_VARCHAR_in_varchar_type5762 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0008000000000000L});
 	public static final BitSet FOLLOW_type_length_in_varchar_type5764 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_CHARACTER_in_varchar_type5775 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000004L});
+	public static final BitSet FOLLOW_CHARACTER_in_varchar_type5775 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
 	public static final BitSet FOLLOW_VARYING_in_varchar_type5777 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0008000000000000L});
 	public static final BitSet FOLLOW_type_length_in_varchar_type5779 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_NCHAR_in_nchar_type5796 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0008000000000000L});
@@ -28001,24 +28009,24 @@ public class DBLParser extends Parser {
 	public static final BitSet FOLLOW_NVARCHAR_in_nvarchar_type5830 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0008000000000000L});
 	public static final BitSet FOLLOW_type_length_in_nvarchar_type5832 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_NATIONAL_in_nvarchar_type5843 = new BitSet(new long[]{0x0000008000000000L});
-	public static final BitSet FOLLOW_CHARACTER_in_nvarchar_type5845 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000004L});
+	public static final BitSet FOLLOW_CHARACTER_in_nvarchar_type5845 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
 	public static final BitSet FOLLOW_VARYING_in_nvarchar_type5847 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0008000000000000L});
 	public static final BitSet FOLLOW_type_length_in_nvarchar_type5849 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_TIMETZ_in_timetz_type5866 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TIME_in_timetz_type5872 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000400L});
+	public static final BitSet FOLLOW_TIME_in_timetz_type5872 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
 	public static final BitSet FOLLOW_WITH_in_timetz_type5874 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000008000000000L});
-	public static final BitSet FOLLOW_TIME_in_timetz_type5876 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000400000L});
+	public static final BitSet FOLLOW_TIME_in_timetz_type5876 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000800000L});
 	public static final BitSet FOLLOW_ZONE_in_timetz_type5878 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_TIMESTAMPTZ_in_timestamptz_type5894 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TIMESTAMP_in_timestamptz_type5900 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000400L});
+	public static final BitSet FOLLOW_TIMESTAMP_in_timestamptz_type5900 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
 	public static final BitSet FOLLOW_WITH_in_timestamptz_type5902 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000008000000000L});
-	public static final BitSet FOLLOW_TIME_in_timestamptz_type5904 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000400000L});
+	public static final BitSet FOLLOW_TIME_in_timestamptz_type5904 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000800000L});
 	public static final BitSet FOLLOW_ZONE_in_timestamptz_type5906 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_BINARY_in_binary_type5922 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0008000000000000L});
 	public static final BitSet FOLLOW_type_length_in_binary_type5924 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_VARBINARY_in_varbinary_type5937 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0008000000000000L});
 	public static final BitSet FOLLOW_type_length_in_varbinary_type5939 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_BINARY_in_varbinary_type5946 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000004L});
+	public static final BitSet FOLLOW_BINARY_in_varbinary_type5946 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
 	public static final BitSet FOLLOW_VARYING_in_varbinary_type5948 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0008000000000000L});
 	public static final BitSet FOLLOW_type_length_in_varbinary_type5950 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_BLOB_in_blob_type5963 = new BitSet(new long[]{0x0000000000000002L});
@@ -28108,7 +28116,7 @@ public class DBLParser extends Parser {
 	public static final BitSet FOLLOW_S_STMT_in_options_assign6515 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_S_LIST_in_options_assign6517 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_DFTRDBCOL_in_options_assign6539 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
-	public static final BitSet FOLLOW_EQUAL_in_options_assign6541 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000800L,0x0000000000000040L});
+	public static final BitSet FOLLOW_EQUAL_in_options_assign6541 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000800L,0x0000000000000080L});
 	public static final BitSet FOLLOW_S_NONE_in_options_assign6546 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_Variable_in_options_assign6548 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_DLYPRP_in_options_assign6570 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
@@ -28128,7 +28136,7 @@ public class DBLParser extends Parser {
 	public static final BitSet FOLLOW_S_YES_in_options_assign6670 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_S_NO_in_options_assign6672 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_LANGID_in_options_assign6694 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
-	public static final BitSet FOLLOW_EQUAL_in_options_assign6696 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000006L,0x0000000000000040L});
+	public static final BitSet FOLLOW_EQUAL_in_options_assign6696 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000006L,0x0000000000000080L});
 	public static final BitSet FOLLOW_S_JOB_in_options_assign6701 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_S_JOBRUN_in_options_assign6703 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_Variable_in_options_assign6705 = new BitSet(new long[]{0x0000000000000002L});
@@ -28153,7 +28161,7 @@ public class DBLParser extends Parser {
 	public static final BitSet FOLLOW_S_DB2_in_options_assign6858 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_S_STD_in_options_assign6860 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_SQLPATH_in_options_assign6882 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
-	public static final BitSet FOLLOW_EQUAL_in_options_assign6884 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L,0x0000000000000040L});
+	public static final BitSet FOLLOW_EQUAL_in_options_assign6884 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L,0x0000000000000080L});
 	public static final BitSet FOLLOW_S_LIBL_in_options_assign6889 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_Variable_in_options_assign6891 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_CNULRQD_in_options_assign6913 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
@@ -28161,17 +28169,17 @@ public class DBLParser extends Parser {
 	public static final BitSet FOLLOW_S_YES_in_options_assign6920 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_S_NO_in_options_assign6922 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_SRTSEQ_in_options_assign6944 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
-	public static final BitSet FOLLOW_EQUAL_in_options_assign6946 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x2004000000000000L,0x0000000000000076L,0x0000000000000040L});
+	public static final BitSet FOLLOW_EQUAL_in_options_assign6946 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x2004000000000000L,0x0000000000000076L,0x0000000000000080L});
 	public static final BitSet FOLLOW_S_JOB_in_options_assign6951 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_S_HEX_in_options_assign6953 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_S_JOBRUN_in_options_assign6955 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_S_LANGIDUNQ_in_options_assign6957 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_S_LANGIDSHR_in_options_assign6959 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_S_CURLIB_in_options_assign6961 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_S_LIBL_in_options_assign6964 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L,0x0000000000000040L});
+	public static final BitSet FOLLOW_S_LIBL_in_options_assign6964 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L,0x0000000000000080L});
 	public static final BitSet FOLLOW_Variable_in_options_assign6968 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_TGTRLS_in_options_assign6990 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
-	public static final BitSet FOLLOW_EQUAL_in_options_assign6992 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_EQUAL_in_options_assign6992 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
 	public static final BitSet FOLLOW_Variable_in_options_assign6997 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_TIMFMT_in_options_assign7019 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
 	public static final BitSet FOLLOW_EQUAL_in_options_assign7021 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0xD000000000000000L,0x0000000004000001L});
@@ -28181,10 +28189,10 @@ public class DBLParser extends Parser {
 	public static final BitSet FOLLOW_S_USA_in_options_assign7032 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_S_JIS_in_options_assign7034 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_TIMSEP_in_options_assign7056 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
-	public static final BitSet FOLLOW_EQUAL_in_options_assign7058 = new BitSet(new long[]{0x0002000000000000L,0x0000000010000000L,0x0000000000000000L,0x0000000000000000L,0x0001A00000000000L,0x0000000000004002L,0x0000000000800000L});
+	public static final BitSet FOLLOW_EQUAL_in_options_assign7058 = new BitSet(new long[]{0x0002000000000000L,0x0000000010000000L,0x0000000000000000L,0x0000000000000000L,0x0001A00000000000L,0x0000000000004002L,0x0000000001000000L});
 	public static final BitSet FOLLOW_S_JOB_in_options_assign7063 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_S_COLON_in_options_assign7065 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_407_in_options_assign7067 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_408_in_options_assign7067 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_S_PERIOD_in_options_assign7069 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_DOT_in_options_assign7071 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_S_COMMA_in_options_assign7073 = new BitSet(new long[]{0x0000000000000002L});
@@ -28219,38 +28227,38 @@ public class DBLParser extends Parser {
 	public static final BitSet FOLLOW_read_write_in_read_operation7339 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_READ_in_read_only7352 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000020000000L});
 	public static final BitSet FOLLOW_ONLY_in_read_only7354 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_READ_in_read_write7374 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000020000L});
+	public static final BitSet FOLLOW_READ_in_read_write7374 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000040000L});
 	public static final BitSet FOLLOW_WRITE_in_read_write7376 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_EXECUTE_in_execute_statement7407 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
 	public static final BitSet FOLLOW_Identifier_in_execute_statement7411 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_EXECUTE_in_execute_immediate_statement7450 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000400000L});
-	public static final BitSet FOLLOW_IMMEDIATE_in_execute_immediate_statement7452 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_IMMEDIATE_in_execute_immediate_statement7452 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
 	public static final BitSet FOLLOW_Variable_in_execute_immediate_statement7456 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_open_using_in_open_statement7501 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_open_using_descriptor_in_open_statement7509 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_OPEN_in_open_using7530 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
 	public static final BitSet FOLLOW_Identifier_in_open_using7534 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0100000000000000L});
-	public static final BitSet FOLLOW_USING_in_open_using7536 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_USING_in_open_using7536 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
 	public static final BitSet FOLLOW_using_variable_in_open_using7538 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_open_using7541 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_COMMA_in_open_using7541 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
 	public static final BitSet FOLLOW_using_variable_in_open_using7543 = new BitSet(new long[]{0x0002000000000002L});
 	public static final BitSet FOLLOW_Variable_in_using_variable7582 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_OPEN_in_open_using_descriptor7607 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
 	public static final BitSet FOLLOW_Identifier_in_open_using_descriptor7611 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0100000000000000L});
 	public static final BitSet FOLLOW_USING_in_open_using_descriptor7614 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_DESCRIPTOR_in_open_using_descriptor7616 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_DESCRIPTOR_in_open_using_descriptor7616 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
 	public static final BitSet FOLLOW_Variable_in_open_using_descriptor7621 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_Descriptor_Name_in_open_using_descriptor7625 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_PREPARE_in_prepare_statement7751 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
 	public static final BitSet FOLLOW_Identifier_in_prepare_statement7755 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000001000000008L});
 	public static final BitSet FOLLOW_into_clause_in_prepare_statement7758 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
-	public static final BitSet FOLLOW_FROM_in_prepare_statement7762 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_FROM_in_prepare_statement7762 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
 	public static final BitSet FOLLOW_Variable_in_prepare_statement7766 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_DECLARE_in_declare_cursor_statement7816 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
 	public static final BitSet FOLLOW_Identifier_in_declare_cursor_statement7820 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000001L,0x0000000000000000L,0x0000000000004000L,0x0000000000008000L});
 	public static final BitSet FOLLOW_DYNAMIC_in_declare_cursor_statement7825 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L,0x0000000000000000L,0x0000000000004000L,0x0000000000008000L});
 	public static final BitSet FOLLOW_scroll_in_declare_cursor_statement7832 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-	public static final BitSet FOLLOW_CURSOR_in_declare_cursor_statement7836 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000001L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000C00L});
+	public static final BitSet FOLLOW_CURSOR_in_declare_cursor_statement7836 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000001L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000001800L});
 	public static final BitSet FOLLOW_hold_in_declare_cursor_statement7841 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000001L});
 	public static final BitSet FOLLOW_FOR_in_declare_cursor_statement7845 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
 	public static final BitSet FOLLOW_Identifier_in_declare_cursor_statement7849 = new BitSet(new long[]{0x0000000000000002L});
@@ -28284,40 +28292,40 @@ public class DBLParser extends Parser {
 	public static final BitSet FOLLOW_BEFORE_in_fetch_position8183 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_AFTER_in_fetch_position8185 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_CURRENT_in_fetch_position8187 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_RELATIVE_in_fetch_position8207 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000800000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_RELATIVE_in_fetch_position8207 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000800000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
 	public static final BitSet FOLLOW_Variable_in_fetch_position8212 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_NUMBER_in_fetch_position8216 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_single_fetch_in_fetch_into8286 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_multiple_row_fetch_in_fetch_into8294 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_INTO_in_single_fetch8313 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_INTO_in_single_fetch8313 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
 	public static final BitSet FOLLOW_into_variable_in_single_fetch8315 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_single_fetch8319 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_COMMA_in_single_fetch8319 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
 	public static final BitSet FOLLOW_into_variable_in_single_fetch8321 = new BitSet(new long[]{0x0002000000000002L});
 	public static final BitSet FOLLOW_INTO_in_single_fetch8348 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000400000000L});
 	public static final BitSet FOLLOW_into_descriptor_in_single_fetch8350 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_Variable_in_into_variable8382 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_SQL_in_into_descriptor8408 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_DESCRIPTOR_in_into_descriptor8410 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_DESCRIPTOR_in_into_descriptor8410 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
 	public static final BitSet FOLLOW_Variable_in_into_descriptor8414 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_SQL_in_into_descriptor8437 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
 	public static final BitSet FOLLOW_DESCRIPTOR_in_into_descriptor8439 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L});
 	public static final BitSet FOLLOW_Descriptor_Name_in_into_descriptor8443 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FOR_in_multiple_row_fetch8477 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000800000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_FOR_in_multiple_row_fetch8477 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000800000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
 	public static final BitSet FOLLOW_Variable_in_multiple_row_fetch8482 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000001000L});
 	public static final BitSet FOLLOW_NUMBER_in_multiple_row_fetch8484 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000001000L});
 	public static final BitSet FOLLOW_ROWS_in_multiple_row_fetch8487 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000001000000000L,0x0000000000000000L,0x0000000000000000L,0x0100000000000000L});
 	public static final BitSet FOLLOW_multiple_row_in_multiple_row_fetch8492 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000001000000000L});
-	public static final BitSet FOLLOW_INTO_in_multiple_row_fetch8496 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_INTO_in_multiple_row_fetch8496 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
 	public static final BitSet FOLLOW_Variable_in_multiple_row_fetch8500 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_USING_in_multiple_row8598 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_DESCRIPTOR_in_multiple_row8600 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_DESCRIPTOR_in_multiple_row8600 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
 	public static final BitSet FOLLOW_Variable_in_multiple_row8604 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_USING_in_multiple_row8626 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
 	public static final BitSet FOLLOW_DESCRIPTOR_in_multiple_row8628 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L});
 	public static final BitSet FOLLOW_Descriptor_Name_in_multiple_row8632 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_CLOSE_in_close_statement8664 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
 	public static final BitSet FOLLOW_Identifier_in_close_statement8668 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_INTO_in_into_clause8709 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_INTO_in_into_clause8709 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
 	public static final BitSet FOLLOW_Identifier_in_into_clause8714 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0100000000000000L});
 	public static final BitSet FOLLOW_Variable_in_into_clause8718 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0100000000000000L});
 	public static final BitSet FOLLOW_USING_in_into_clause8722 = new BitSet(new long[]{0x0000000080020100L,0x0000000000000000L,0x0000800000000000L,0x0000000000000080L,0x0000020000000000L});
@@ -28339,8 +28347,8 @@ public class DBLParser extends Parser {
 	public static final BitSet FOLLOW_FOR_in_field_element8888 = new BitSet(new long[]{0x0000400000000000L});
 	public static final BitSet FOLLOW_COLUMN_in_field_element8890 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
 	public static final BitSet FOLLOW_Identifier_in_field_element8894 = new BitSet(new long[]{0x000000C27E000000L,0xE000000020001810L,0x00000007E4000000L,0x1000000003000A00L,0x0000000080000000L,0xC000279000000000L,0x0000000000000001L});
-	public static final BitSet FOLLOW_field_type_in_field_element8898 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000008000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000400L});
-	public static final BitSet FOLLOW_not_null_in_field_element8901 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000400L});
+	public static final BitSet FOLLOW_field_type_in_field_element8898 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000008000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_not_null_in_field_element8901 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
 	public static final BitSet FOLLOW_with_default_in_field_element8906 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_NOT_in_not_null8956 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000100000L});
 	public static final BitSet FOLLOW_NULL_in_not_null8958 = new BitSet(new long[]{0x0000000000000002L});
@@ -28351,15 +28359,15 @@ public class DBLParser extends Parser {
 	public static final BitSet FOLLOW_SQL_in_allocate_descriptor9026 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L,0x0000000000000000L,0x0000000000000000L,0x0000000400000000L});
 	public static final BitSet FOLLOW_DESCRIPTOR_in_allocate_descriptor9030 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L,0x0100000000001000L});
 	public static final BitSet FOLLOW_descriptor_scope_in_allocate_descriptor9035 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L,0x0100000000001000L});
-	public static final BitSet FOLLOW_Descriptor_Name_in_allocate_descriptor9042 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000400L});
-	public static final BitSet FOLLOW_descriptor_limits_in_allocate_descriptor9047 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000400L});
+	public static final BitSet FOLLOW_Descriptor_Name_in_allocate_descriptor9042 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_descriptor_limits_in_allocate_descriptor9047 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
 	public static final BitSet FOLLOW_LOCAL_in_descriptor_scope9084 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_GLOBAL_in_descriptor_scope9101 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_WITH_in_descriptor_limits9122 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x2000000000000000L});
 	public static final BitSet FOLLOW_MAX_in_descriptor_limits9124 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000800000L});
 	public static final BitSet FOLLOW_NUMBER_in_descriptor_limits9128 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_WITH_in_descriptor_limits9143 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x2000000000000000L});
-	public static final BitSet FOLLOW_MAX_in_descriptor_limits9145 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_MAX_in_descriptor_limits9145 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
 	public static final BitSet FOLLOW_Variable_in_descriptor_limits9150 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_DEALLOCATE_in_deallocate_descriptor9179 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L,0x0000000000000000L,0x0000000000000000L,0x0000000400000000L});
 	public static final BitSet FOLLOW_SQL_in_deallocate_descriptor9182 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L,0x0000000000000000L,0x0000000000000000L,0x0000000400000000L});
@@ -28370,341 +28378,341 @@ public class DBLParser extends Parser {
 	public static final BitSet FOLLOW_SQL_in_get_descriptor9235 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L,0x0000000000000000L,0x0000000000000000L,0x0000000400000000L});
 	public static final BitSet FOLLOW_DESCRIPTOR_in_get_descriptor9239 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L,0x0100000000001000L});
 	public static final BitSet FOLLOW_descriptor_scope_in_get_descriptor9244 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L,0x0100000000001000L});
-	public static final BitSet FOLLOW_Descriptor_Name_in_get_descriptor9251 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x1000000000000000L,0x0000000000000040L});
+	public static final BitSet FOLLOW_Descriptor_Name_in_get_descriptor9251 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x1000000000000000L,0x0000000000000080L});
 	public static final BitSet FOLLOW_info_in_get_descriptor9253 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_header_info_in_info9286 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_var_settings_in_info9292 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VALUE_in_var_settings9306 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000800000L});
-	public static final BitSet FOLLOW_NUMBER_in_var_settings9310 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
-	public static final BitSet FOLLOW_var_item_info_in_var_settings9312 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VALUE_in_var_settings9329 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
-	public static final BitSet FOLLOW_Variable_in_var_settings9333 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
-	public static final BitSet FOLLOW_var_item_info_in_var_settings9335 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variable_assign_in_var_item_info9363 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_var_item_info9367 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
-	public static final BitSet FOLLOW_variable_assign_in_var_item_info9369 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_variable_assign_in_header_info9395 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_header_info9398 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
-	public static final BitSet FOLLOW_variable_assign_in_header_info9400 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_Variable_in_variable_assign9427 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
-	public static final BitSet FOLLOW_EQUAL_in_variable_assign9429 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000000L,0x0000040000000000L,0x0000100000000040L});
-	public static final BitSet FOLLOW_variable_value_in_variable_assign9431 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_COUNT_in_variable_value9465 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PRECISION_in_variable_value9484 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NAME_in_variable_value9503 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Identifier_in_variable_value9522 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SET_in_set_descriptor9551 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L,0x0000000000000000L,0x0000000000000000L,0x0000000400000000L});
-	public static final BitSet FOLLOW_SQL_in_set_descriptor9554 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L,0x0000000000000000L,0x0000000000000000L,0x0000000400000000L});
-	public static final BitSet FOLLOW_DESCRIPTOR_in_set_descriptor9558 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L,0x0100000000001000L});
-	public static final BitSet FOLLOW_descriptor_scope_in_set_descriptor9563 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L,0x0100000000001000L});
-	public static final BitSet FOLLOW_Descriptor_Name_in_set_descriptor9570 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x1000000000000000L});
-	public static final BitSet FOLLOW_value_settings_in_set_descriptor9572 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VALUE_in_value_settings9605 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000800000L});
-	public static final BitSet FOLLOW_NUMBER_in_value_settings9609 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_value_item_info_in_value_settings9611 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VALUE_in_value_settings9628 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
-	public static final BitSet FOLLOW_Variable_in_value_settings9632 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_value_item_info_in_value_settings9634 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_item_info_assign_in_value_item_info9662 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_value_item_info9666 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_item_info_assign_in_value_item_info9668 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_Identifier_in_item_info_assign9698 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
-	public static final BitSet FOLLOW_EQUAL_in_item_info_assign9700 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
-	public static final BitSet FOLLOW_Variable_in_item_info_assign9706 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_GET_in_get_diagnostic9747 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
-	public static final BitSet FOLLOW_DIAGNOSTICS_in_get_diagnostic9749 = new BitSet(new long[]{0x0020000000000000L});
-	public static final BitSet FOLLOW_condition_information_in_get_diagnostic9751 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_CONDITION_in_condition_information9774 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000800000L});
-	public static final BitSet FOLLOW_NUMBER_in_condition_information9778 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
-	public static final BitSet FOLLOW_condition_information_items_in_condition_information9780 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_CONDITION_in_condition_information9797 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
-	public static final BitSet FOLLOW_Variable_in_condition_information9801 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
-	public static final BitSet FOLLOW_condition_information_items_in_condition_information9803 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variable_assign_in_condition_information_items9832 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_condition_information_items9835 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
-	public static final BitSet FOLLOW_variable_assign_in_condition_information_items9837 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_query_expression_body_in_query_expression9866 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_non_join_query_expression_in_query_expression_body9878 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_joined_table_in_query_expression_body9884 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_non_join_query_term_in_non_join_query_expression9897 = new BitSet(new long[]{0x0000000000000002L,0x0000100000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0010000000000000L});
-	public static final BitSet FOLLOW_joined_table_in_non_join_query_expression9901 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0010000000000000L});
-	public static final BitSet FOLLOW_set_in_non_join_query_expression9903 = new BitSet(new long[]{0x0000000000000100L,0x0000000002000000L,0x0008040000000000L,0x0000000000000000L,0x0000000000010000L});
-	public static final BitSet FOLLOW_query_term_in_non_join_query_expression9919 = new BitSet(new long[]{0x0000000000000002L,0x0000100000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0010000000000000L});
-	public static final BitSet FOLLOW_set_in_non_join_query_expression9927 = new BitSet(new long[]{0x0000000000000100L,0x0000000002000000L,0x0008040000000000L,0x0000000000000000L,0x0000000000010000L});
-	public static final BitSet FOLLOW_query_term_in_non_join_query_expression9943 = new BitSet(new long[]{0x0000000000000002L,0x0000100000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0010000000000000L});
-	public static final BitSet FOLLOW_non_join_query_term_in_query_term9957 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_joined_table_in_query_term9963 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_non_join_query_primary_in_non_join_query_term9977 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000800000000L});
-	public static final BitSet FOLLOW_joined_table_in_non_join_query_term9981 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000800000000L});
-	public static final BitSet FOLLOW_INTERSECT_in_non_join_query_term9983 = new BitSet(new long[]{0x0000000000000100L,0x0000000002000000L,0x0008040000000000L,0x0000000000000000L,0x0000000000010000L});
-	public static final BitSet FOLLOW_query_primary_in_non_join_query_term9993 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000800000000L});
-	public static final BitSet FOLLOW_INTERSECT_in_non_join_query_term10001 = new BitSet(new long[]{0x0000000000000100L,0x0000000002000000L,0x0008040000000000L,0x0000000000000000L,0x0000000000010000L});
-	public static final BitSet FOLLOW_query_primary_in_non_join_query_term10011 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000800000000L});
-	public static final BitSet FOLLOW_non_join_query_primary_in_query_primary10025 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_joined_table_in_query_primary10031 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simple_table_in_non_join_query_primary10043 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_non_join_query_primary10049 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008040000000000L,0x0000000000000000L,0x0000000000010000L});
-	public static final BitSet FOLLOW_non_join_query_expression_in_non_join_query_primary10051 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_non_join_query_primary10053 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_query_specification_in_simple_table10074 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SELECT_in_query_specification10086 = new BitSet(new long[]{0x0200002000000100L,0x0000000002000002L,0x8008040000000000L,0x2000080000908010L});
-	public static final BitSet FOLLOW_set_qualifier_in_query_specification10088 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908010L});
-	public static final BitSet FOLLOW_select_list_in_query_specification10091 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0080000000022008L,0x0000000800000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000200L});
-	public static final BitSet FOLLOW_from_clause_in_query_specification10093 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0080000000022000L,0x0000000800000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000200L});
-	public static final BitSet FOLLOW_where_clause_in_query_specification10096 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0080000000022000L,0x0000000800000000L});
-	public static final BitSet FOLLOW_groupby_clause_in_query_specification10099 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0080000000020000L,0x0000000800000000L});
-	public static final BitSet FOLLOW_having_clause_in_query_specification10102 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0080000000000000L,0x0000000800000000L});
-	public static final BitSet FOLLOW_orderby_clause_in_query_specification10109 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0080000000000000L});
-	public static final BitSet FOLLOW_limit_clause_in_query_specification10112 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_MULTIPLY_in_select_list10162 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_derived_column_in_select_list10176 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_select_list10179 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
-	public static final BitSet FOLLOW_derived_column_in_select_list10181 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_DISTINCT_in_set_qualifier10204 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ALL_in_set_qualifier10218 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_boolean_value_expression_in_derived_column10238 = new BitSet(new long[]{0x0000000000040002L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_as_clause_in_derived_column10240 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Identifier_in_column_reference10268 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AS_in_as_clause10292 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_column_reference_in_as_clause10296 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_column_reference_in_column_reference_list10307 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_column_reference_list10310 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_column_reference_in_column_reference_list10312 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_Identifier_in_table10330 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_qualified_identifier_in_table10342 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Identifier_in_qualified_identifier10357 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-	public static final BitSet FOLLOW_DIVIDE_in_qualified_identifier10359 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_Identifier_in_qualified_identifier10363 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0008000000000000L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_qualified_identifier10366 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_Identifier_in_qualified_identifier10370 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_qualified_identifier10372 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Identifier_in_member10407 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-	public static final BitSet FOLLOW_DIVIDE_in_member10409 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_Identifier_in_member10413 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_member10415 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_Identifier_in_member10419 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_member10421 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FROM_in_from_clause10456 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_table_reference_list_in_from_clause10459 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_table_reference_in_table_reference_list10470 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_table_reference_list10473 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_table_reference_in_table_reference_list10475 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_table_primary_in_table_reference10494 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_joined_table_in_table_reference10500 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_table_primary_in_joined_table10512 = new BitSet(new long[]{0x2000000000000000L,0x0000000000000000L,0x0004100008000010L,0x0000000000000400L,0x0000000000000080L,0x0010000000000000L});
-	public static final BitSet FOLLOW_cross_join_in_joined_table10515 = new BitSet(new long[]{0x2000000000000002L,0x0000000000000000L,0x0004100008000010L,0x0000000000000400L,0x0000000000000080L,0x0010000000000000L});
-	public static final BitSet FOLLOW_qualified_join_in_joined_table10519 = new BitSet(new long[]{0x2000000000000002L,0x0000000000000000L,0x0004100008000010L,0x0000000000000400L,0x0000000000000080L,0x0010000000000000L});
-	public static final BitSet FOLLOW_natural_join_in_joined_table10523 = new BitSet(new long[]{0x2000000000000002L,0x0000000000000000L,0x0004100008000010L,0x0000000000000400L,0x0000000000000080L,0x0010000000000000L});
-	public static final BitSet FOLLOW_union_join_in_joined_table10527 = new BitSet(new long[]{0x2000000000000002L,0x0000000000000000L,0x0004100008000010L,0x0000000000000400L,0x0000000000000080L,0x0010000000000000L});
-	public static final BitSet FOLLOW_cross_join_in_joined_table_prim10541 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_qualified_join_in_joined_table_prim10547 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_natural_join_in_joined_table_prim10553 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_union_join_in_joined_table_prim10559 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_CROSS_in_cross_join10571 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000100000000000L});
-	public static final BitSet FOLLOW_JOIN_in_cross_join10573 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_table_primary_in_cross_join10577 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_join_type_in_qualified_join10603 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000100000000000L});
-	public static final BitSet FOLLOW_JOIN_in_qualified_join10607 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_table_primary_in_qualified_join10611 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000010000000L,0x0000000000000000L,0x0100000000000000L});
-	public static final BitSet FOLLOW_join_specification_in_qualified_join10615 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NATURAL_in_natural_join10643 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0004100008000010L,0x0000000000000000L,0x0000000000000080L});
-	public static final BitSet FOLLOW_join_type_in_natural_join10648 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000100000000000L});
-	public static final BitSet FOLLOW_JOIN_in_natural_join10652 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_table_primary_in_natural_join10656 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_UNION_in_union_join10683 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000100000000000L});
-	public static final BitSet FOLLOW_JOIN_in_union_join10685 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_table_primary_in_union_join10689 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_INNER_in_join_type10712 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_outer_join_type_in_join_type10720 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_OUTER_in_join_type10722 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_outer_join_type_in_join_type10739 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_join_condition_in_join_specification10784 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_named_columns_join_in_join_specification10790 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ON_in_join_condition10802 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
-	public static final BitSet FOLLOW_search_condition_in_join_condition10805 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_USING_in_named_columns_join10817 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_named_columns_join10819 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_column_reference_list_in_named_columns_join10823 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_named_columns_join10825 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_table_in_table_primary10846 = new BitSet(new long[]{0x0000000000040002L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_AS_in_table_primary10850 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_Identifier_in_table_primary10856 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_WHERE_in_where_clause10884 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
-	public static final BitSet FOLLOW_search_condition_in_where_clause10887 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Identifier_in_routine_invocation10900 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_routine_invocation10902 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_funcArgs_in_routine_invocation10904 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_routine_invocation10907 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_COUNT_in_routine_invocation10922 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_routine_invocation10924 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
-	public static final BitSet FOLLOW_funcArgs_in_routine_invocation10926 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_routine_invocation10928 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_COUNT_in_routine_invocation10941 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_routine_invocation10943 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000010L});
-	public static final BitSet FOLLOW_MULTIPLY_in_routine_invocation10945 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_routine_invocation10947 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_boolean_value_expression_in_funcArgs10964 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_funcArgs10967 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
-	public static final BitSet FOLLOW_boolean_value_expression_in_funcArgs10969 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_GROUP_in_groupby_clause10990 = new BitSet(new long[]{0x0000000100000000L});
-	public static final BitSet FOLLOW_BY_in_groupby_clause10992 = new BitSet(new long[]{0x4000000000000000L,0x0000000000000000L,0x0008040000000000L,0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_grouping_element_list_in_groupby_clause10996 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_grouping_element_in_grouping_element_list11017 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_grouping_element_list11020 = new BitSet(new long[]{0x4000000000000000L,0x0000000000000000L,0x0008040000000000L,0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_grouping_element_in_grouping_element_list11022 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_ordinary_grouping_set_in_grouping_element11041 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_rollup_list_in_grouping_element11047 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_cube_list_in_grouping_element11053 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_empty_grouping_set_in_grouping_element11059 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_column_reference_list_in_ordinary_grouping_set11071 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_ordinary_grouping_set11077 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_column_reference_list_in_ordinary_grouping_set11080 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_ordinary_grouping_set11082 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ROLLUP_in_rollup_list11095 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_rollup_list11097 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008040000000000L});
-	public static final BitSet FOLLOW_ordinary_grouping_set_in_rollup_list11101 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_rollup_list11103 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_CUBE_in_cube_list11124 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_cube_list11126 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008040000000000L});
-	public static final BitSet FOLLOW_ordinary_grouping_set_in_cube_list11130 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_cube_list11132 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_empty_grouping_set11153 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_empty_grouping_set11155 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_HAVING_in_having_clause11173 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
-	public static final BitSet FOLLOW_boolean_value_expression_in_having_clause11176 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ORDER_in_orderby_clause11190 = new BitSet(new long[]{0x0000000100000000L});
-	public static final BitSet FOLLOW_BY_in_orderby_clause11192 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_sort_specifier_list_in_orderby_clause11194 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_sort_specifier_in_sort_specifier_list11214 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_sort_specifier_list11217 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_sort_specifier_in_sort_specifier_list11219 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_column_reference_in_sort_specifier11244 = new BitSet(new long[]{0x0000000000080002L,0x0000000000020000L,0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_order_specification_in_sort_specifier11248 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_null_ordering_in_sort_specifier11253 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ASC_in_order_specification11283 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DESC_in_order_specification11297 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LIMIT_in_limit_clause11317 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_limit_clause11321 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NULL_in_null_ordering11342 = new BitSet(new long[]{0x0000000000000000L,0x1000000000000000L});
-	public static final BitSet FOLLOW_FIRST_in_null_ordering11344 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NULL_in_null_ordering11358 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0002000000000000L});
-	public static final BitSet FOLLOW_LAST_in_null_ordering11360 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_boolean_value_expression_in_search_condition11382 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_WITH_in_param_clause11393 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_param_clause11395 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-	public static final BitSet FOLLOW_param_in_param_clause11397 = new BitSet(new long[]{0x0002000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_COMMA_in_param_clause11400 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-	public static final BitSet FOLLOW_param_in_param_clause11402 = new BitSet(new long[]{0x0002000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_param_clause11406 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Character_String_Literal_in_param11429 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
-	public static final BitSet FOLLOW_EQUAL_in_param11431 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_param11435 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_USING_in_method_specifier11459 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_Identifier_in_method_specifier11463 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_and_predicate_in_boolean_value_expression11483 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000400000000L});
-	public static final BitSet FOLLOW_OR_in_boolean_value_expression11486 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
-	public static final BitSet FOLLOW_and_predicate_in_boolean_value_expression11489 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000400000000L});
-	public static final BitSet FOLLOW_boolean_factor_in_and_predicate11502 = new BitSet(new long[]{0x0000000000010002L});
-	public static final BitSet FOLLOW_AND_in_and_predicate11505 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
-	public static final BitSet FOLLOW_boolean_factor_in_and_predicate11508 = new BitSet(new long[]{0x0000000000010002L});
-	public static final BitSet FOLLOW_boolean_test_in_boolean_factor11521 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NOT_in_boolean_factor11527 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_item_info_in_info9292 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variable_assign_in_header_info9306 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_COMMA_in_header_info9309 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_variable_assign_in_header_info9311 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_VALUE_in_item_info9341 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_NUMBER_in_item_info9345 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_var_item_info_in_item_info9347 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VALUE_in_item_info9364 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_Variable_in_item_info9368 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_var_item_info_in_item_info9370 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variable_assign_in_var_item_info9398 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_COMMA_in_var_item_info9402 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_variable_assign_in_var_item_info9404 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_Variable_in_variable_assign9435 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
+	public static final BitSet FOLLOW_EQUAL_in_variable_assign9437 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000000L,0x0000040000000000L,0x0000100000000040L});
+	public static final BitSet FOLLOW_variable_value_in_variable_assign9439 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_COUNT_in_variable_value9473 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_PRECISION_in_variable_value9492 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NAME_in_variable_value9511 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Identifier_in_variable_value9530 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SET_in_set_descriptor9559 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L,0x0000000000000000L,0x0000000000000000L,0x0000000400000000L});
+	public static final BitSet FOLLOW_SQL_in_set_descriptor9562 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L,0x0000000000000000L,0x0000000000000000L,0x0000000400000000L});
+	public static final BitSet FOLLOW_DESCRIPTOR_in_set_descriptor9566 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L,0x0100000000001000L});
+	public static final BitSet FOLLOW_descriptor_scope_in_set_descriptor9571 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L,0x0100000000001000L});
+	public static final BitSet FOLLOW_Descriptor_Name_in_set_descriptor9578 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x1000000000000000L});
+	public static final BitSet FOLLOW_value_settings_in_set_descriptor9580 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VALUE_in_value_settings9613 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_NUMBER_in_value_settings9617 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_value_item_info_in_value_settings9619 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VALUE_in_value_settings9636 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_Variable_in_value_settings9640 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_value_item_info_in_value_settings9642 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_item_info_assign_in_value_item_info9670 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_COMMA_in_value_item_info9674 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_item_info_assign_in_value_item_info9676 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_Identifier_in_item_info_assign9706 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
+	public static final BitSet FOLLOW_EQUAL_in_item_info_assign9708 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_Variable_in_item_info_assign9714 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_GET_in_get_diagnostic9755 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_DIAGNOSTICS_in_get_diagnostic9757 = new BitSet(new long[]{0x0020000000000000L});
+	public static final BitSet FOLLOW_condition_information_in_get_diagnostic9759 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_CONDITION_in_condition_information9782 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_NUMBER_in_condition_information9786 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_condition_information_items_in_condition_information9788 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_CONDITION_in_condition_information9805 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_Variable_in_condition_information9809 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_condition_information_items_in_condition_information9811 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variable_assign_in_condition_information_items9840 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_COMMA_in_condition_information_items9843 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_variable_assign_in_condition_information_items9845 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_query_expression_body_in_query_expression9874 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_non_join_query_expression_in_query_expression_body9886 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_joined_table_in_query_expression_body9892 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_non_join_query_term_in_non_join_query_expression9905 = new BitSet(new long[]{0x0000000000000002L,0x0000100000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0010000000000000L});
+	public static final BitSet FOLLOW_joined_table_in_non_join_query_expression9909 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0010000000000000L});
+	public static final BitSet FOLLOW_set_in_non_join_query_expression9911 = new BitSet(new long[]{0x0000000000000100L,0x0000000002000000L,0x0008040000000000L,0x0000000000000000L,0x0000000000010000L});
+	public static final BitSet FOLLOW_query_term_in_non_join_query_expression9927 = new BitSet(new long[]{0x0000000000000002L,0x0000100000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0010000000000000L});
+	public static final BitSet FOLLOW_set_in_non_join_query_expression9935 = new BitSet(new long[]{0x0000000000000100L,0x0000000002000000L,0x0008040000000000L,0x0000000000000000L,0x0000000000010000L});
+	public static final BitSet FOLLOW_query_term_in_non_join_query_expression9951 = new BitSet(new long[]{0x0000000000000002L,0x0000100000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0010000000000000L});
+	public static final BitSet FOLLOW_non_join_query_term_in_query_term9965 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_joined_table_in_query_term9971 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_non_join_query_primary_in_non_join_query_term9985 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000800000000L});
+	public static final BitSet FOLLOW_joined_table_in_non_join_query_term9989 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000800000000L});
+	public static final BitSet FOLLOW_INTERSECT_in_non_join_query_term9991 = new BitSet(new long[]{0x0000000000000100L,0x0000000002000000L,0x0008040000000000L,0x0000000000000000L,0x0000000000010000L});
+	public static final BitSet FOLLOW_query_primary_in_non_join_query_term10001 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000800000000L});
+	public static final BitSet FOLLOW_INTERSECT_in_non_join_query_term10009 = new BitSet(new long[]{0x0000000000000100L,0x0000000002000000L,0x0008040000000000L,0x0000000000000000L,0x0000000000010000L});
+	public static final BitSet FOLLOW_query_primary_in_non_join_query_term10019 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000800000000L});
+	public static final BitSet FOLLOW_non_join_query_primary_in_query_primary10033 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_joined_table_in_query_primary10039 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simple_table_in_non_join_query_primary10051 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_non_join_query_primary10057 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008040000000000L,0x0000000000000000L,0x0000000000010000L});
+	public static final BitSet FOLLOW_non_join_query_expression_in_non_join_query_primary10059 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_non_join_query_primary10061 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_query_specification_in_simple_table10082 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SELECT_in_query_specification10094 = new BitSet(new long[]{0x0200002000000100L,0x0000000002000002L,0x8008040000000000L,0x2000080000908010L});
+	public static final BitSet FOLLOW_set_qualifier_in_query_specification10096 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908010L});
+	public static final BitSet FOLLOW_select_list_in_query_specification10099 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0080000000022008L,0x0000000800000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000400L});
+	public static final BitSet FOLLOW_from_clause_in_query_specification10101 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0080000000022000L,0x0000000800000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000400L});
+	public static final BitSet FOLLOW_where_clause_in_query_specification10104 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0080000000022000L,0x0000000800000000L});
+	public static final BitSet FOLLOW_groupby_clause_in_query_specification10107 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0080000000020000L,0x0000000800000000L});
+	public static final BitSet FOLLOW_having_clause_in_query_specification10110 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0080000000000000L,0x0000000800000000L});
+	public static final BitSet FOLLOW_orderby_clause_in_query_specification10117 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0080000000000000L});
+	public static final BitSet FOLLOW_limit_clause_in_query_specification10120 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_MULTIPLY_in_select_list10170 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_derived_column_in_select_list10184 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_COMMA_in_select_list10187 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
+	public static final BitSet FOLLOW_derived_column_in_select_list10189 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_DISTINCT_in_set_qualifier10212 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ALL_in_set_qualifier10226 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_boolean_value_expression_in_derived_column10246 = new BitSet(new long[]{0x0000000000040002L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_as_clause_in_derived_column10248 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Identifier_in_column_reference10276 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AS_in_as_clause10300 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_column_reference_in_as_clause10304 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_column_reference_in_column_reference_list10315 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_COMMA_in_column_reference_list10318 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_column_reference_in_column_reference_list10320 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_Identifier_in_table10338 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_qualified_identifier_in_table10350 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Identifier_in_qualified_identifier10365 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+	public static final BitSet FOLLOW_DIVIDE_in_qualified_identifier10367 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_Identifier_in_qualified_identifier10371 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0008000000000000L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_qualified_identifier10374 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_Identifier_in_qualified_identifier10378 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_qualified_identifier10380 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Identifier_in_member10415 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+	public static final BitSet FOLLOW_DIVIDE_in_member10417 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_Identifier_in_member10421 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_member10423 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_Identifier_in_member10427 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_member10429 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FROM_in_from_clause10464 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_table_reference_list_in_from_clause10467 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_table_reference_in_table_reference_list10478 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_COMMA_in_table_reference_list10481 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_table_reference_in_table_reference_list10483 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_table_primary_in_table_reference10502 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_joined_table_in_table_reference10508 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_table_primary_in_joined_table10520 = new BitSet(new long[]{0x2000000000000000L,0x0000000000000000L,0x0004100008000010L,0x0000000000000400L,0x0000000000000080L,0x0010000000000000L});
+	public static final BitSet FOLLOW_cross_join_in_joined_table10523 = new BitSet(new long[]{0x2000000000000002L,0x0000000000000000L,0x0004100008000010L,0x0000000000000400L,0x0000000000000080L,0x0010000000000000L});
+	public static final BitSet FOLLOW_qualified_join_in_joined_table10527 = new BitSet(new long[]{0x2000000000000002L,0x0000000000000000L,0x0004100008000010L,0x0000000000000400L,0x0000000000000080L,0x0010000000000000L});
+	public static final BitSet FOLLOW_natural_join_in_joined_table10531 = new BitSet(new long[]{0x2000000000000002L,0x0000000000000000L,0x0004100008000010L,0x0000000000000400L,0x0000000000000080L,0x0010000000000000L});
+	public static final BitSet FOLLOW_union_join_in_joined_table10535 = new BitSet(new long[]{0x2000000000000002L,0x0000000000000000L,0x0004100008000010L,0x0000000000000400L,0x0000000000000080L,0x0010000000000000L});
+	public static final BitSet FOLLOW_cross_join_in_joined_table_prim10549 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_qualified_join_in_joined_table_prim10555 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_natural_join_in_joined_table_prim10561 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_union_join_in_joined_table_prim10567 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_CROSS_in_cross_join10579 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000100000000000L});
+	public static final BitSet FOLLOW_JOIN_in_cross_join10581 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_table_primary_in_cross_join10585 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_join_type_in_qualified_join10611 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000100000000000L});
+	public static final BitSet FOLLOW_JOIN_in_qualified_join10615 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_table_primary_in_qualified_join10619 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000010000000L,0x0000000000000000L,0x0100000000000000L});
+	public static final BitSet FOLLOW_join_specification_in_qualified_join10623 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NATURAL_in_natural_join10651 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0004100008000010L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_join_type_in_natural_join10656 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000100000000000L});
+	public static final BitSet FOLLOW_JOIN_in_natural_join10660 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_table_primary_in_natural_join10664 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_UNION_in_union_join10691 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000100000000000L});
+	public static final BitSet FOLLOW_JOIN_in_union_join10693 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_table_primary_in_union_join10697 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_INNER_in_join_type10720 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_outer_join_type_in_join_type10728 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000004000000000L});
+	public static final BitSet FOLLOW_OUTER_in_join_type10730 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_outer_join_type_in_join_type10747 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_join_condition_in_join_specification10792 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_named_columns_join_in_join_specification10798 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ON_in_join_condition10810 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
+	public static final BitSet FOLLOW_search_condition_in_join_condition10813 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_USING_in_named_columns_join10825 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_named_columns_join10827 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_column_reference_list_in_named_columns_join10831 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_named_columns_join10833 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_table_in_table_primary10854 = new BitSet(new long[]{0x0000000000040002L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_AS_in_table_primary10858 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_Identifier_in_table_primary10864 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_WHERE_in_where_clause10892 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
+	public static final BitSet FOLLOW_search_condition_in_where_clause10895 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Identifier_in_routine_invocation10908 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_routine_invocation10910 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_funcArgs_in_routine_invocation10912 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_routine_invocation10915 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_COUNT_in_routine_invocation10930 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_routine_invocation10932 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
+	public static final BitSet FOLLOW_funcArgs_in_routine_invocation10934 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_routine_invocation10936 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_COUNT_in_routine_invocation10949 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_routine_invocation10951 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000010L});
+	public static final BitSet FOLLOW_MULTIPLY_in_routine_invocation10953 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_routine_invocation10955 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_boolean_value_expression_in_funcArgs10972 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_COMMA_in_funcArgs10975 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
+	public static final BitSet FOLLOW_boolean_value_expression_in_funcArgs10977 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_GROUP_in_groupby_clause10998 = new BitSet(new long[]{0x0000000100000000L});
+	public static final BitSet FOLLOW_BY_in_groupby_clause11000 = new BitSet(new long[]{0x4000000000000000L,0x0000000000000000L,0x0008040000000000L,0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_grouping_element_list_in_groupby_clause11004 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_grouping_element_in_grouping_element_list11025 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_COMMA_in_grouping_element_list11028 = new BitSet(new long[]{0x4000000000000000L,0x0000000000000000L,0x0008040000000000L,0x0000000000000000L,0x0000000000000800L});
+	public static final BitSet FOLLOW_grouping_element_in_grouping_element_list11030 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_ordinary_grouping_set_in_grouping_element11049 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_rollup_list_in_grouping_element11055 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_cube_list_in_grouping_element11061 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_empty_grouping_set_in_grouping_element11067 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_column_reference_list_in_ordinary_grouping_set11079 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_ordinary_grouping_set11085 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_column_reference_list_in_ordinary_grouping_set11088 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_ordinary_grouping_set11090 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ROLLUP_in_rollup_list11103 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_rollup_list11105 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008040000000000L});
+	public static final BitSet FOLLOW_ordinary_grouping_set_in_rollup_list11109 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_rollup_list11111 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_CUBE_in_cube_list11132 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_cube_list11134 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008040000000000L});
+	public static final BitSet FOLLOW_ordinary_grouping_set_in_cube_list11138 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_cube_list11140 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_empty_grouping_set11161 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_empty_grouping_set11163 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_HAVING_in_having_clause11181 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
+	public static final BitSet FOLLOW_boolean_value_expression_in_having_clause11184 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ORDER_in_orderby_clause11198 = new BitSet(new long[]{0x0000000100000000L});
+	public static final BitSet FOLLOW_BY_in_orderby_clause11200 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_sort_specifier_list_in_orderby_clause11202 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_sort_specifier_in_sort_specifier_list11222 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_COMMA_in_sort_specifier_list11225 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_sort_specifier_in_sort_specifier_list11227 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_column_reference_in_sort_specifier11252 = new BitSet(new long[]{0x0000000000080002L,0x0000000000020000L,0x0000000000000000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_order_specification_in_sort_specifier11256 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_null_ordering_in_sort_specifier11261 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ASC_in_order_specification11291 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DESC_in_order_specification11305 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LIMIT_in_limit_clause11325 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_limit_clause11329 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NULL_in_null_ordering11350 = new BitSet(new long[]{0x0000000000000000L,0x1000000000000000L});
+	public static final BitSet FOLLOW_FIRST_in_null_ordering11352 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NULL_in_null_ordering11366 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0002000000000000L});
+	public static final BitSet FOLLOW_LAST_in_null_ordering11368 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_boolean_value_expression_in_search_condition11390 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_WITH_in_param_clause11401 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_param_clause11403 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+	public static final BitSet FOLLOW_param_in_param_clause11405 = new BitSet(new long[]{0x0002000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_COMMA_in_param_clause11408 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+	public static final BitSet FOLLOW_param_in_param_clause11410 = new BitSet(new long[]{0x0002000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_param_clause11414 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Character_String_Literal_in_param11437 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
+	public static final BitSet FOLLOW_EQUAL_in_param11439 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_param11443 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_USING_in_method_specifier11467 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_Identifier_in_method_specifier11471 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_and_predicate_in_boolean_value_expression11491 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000400000000L});
+	public static final BitSet FOLLOW_OR_in_boolean_value_expression11494 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
+	public static final BitSet FOLLOW_and_predicate_in_boolean_value_expression11497 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000400000000L});
+	public static final BitSet FOLLOW_boolean_factor_in_and_predicate11510 = new BitSet(new long[]{0x0000000000010002L});
+	public static final BitSet FOLLOW_AND_in_and_predicate11513 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
+	public static final BitSet FOLLOW_boolean_factor_in_and_predicate11516 = new BitSet(new long[]{0x0000000000010002L});
 	public static final BitSet FOLLOW_boolean_test_in_boolean_factor11529 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_boolean_primary_in_boolean_test11549 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000002000000000L});
-	public static final BitSet FOLLOW_is_clause_in_boolean_test11551 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_IS_in_is_clause11564 = new BitSet(new long[]{0x0000000000000000L,0x0020000000000000L,0x0000000000000000L,0x0000000000008000L,0x0000000000000000L,0x0041000000000000L});
-	public static final BitSet FOLLOW_NOT_in_is_clause11566 = new BitSet(new long[]{0x0000000000000000L,0x0020000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0041000000000000L});
-	public static final BitSet FOLLOW_truth_value_in_is_clause11571 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_predicate_in_boolean_primary11615 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_boolean_primary11621 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_boolean_primary11627 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
-	public static final BitSet FOLLOW_boolean_value_expression_in_boolean_primary11630 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_boolean_primary11632 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_case_expression_in_boolean_primary11639 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_comparison_predicate_in_predicate11653 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_in_predicate_in_predicate11659 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_like_predicate_in_predicate11665 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_null_predicate_in_predicate11671 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_comparison_predicate11695 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L,0x0810000000008100L,0x0000000000010000L});
-	public static final BitSet FOLLOW_comp_op_in_comparison_predicate11699 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_comparison_predicate11703 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_in_predicate11771 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000800000L,0x0000000000008000L});
-	public static final BitSet FOLLOW_NOT_in_in_predicate11774 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000800000L});
-	public static final BitSet FOLLOW_IN_in_in_predicate11777 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
-	public static final BitSet FOLLOW_in_predicate_value_in_in_predicate11781 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_in_predicate_value11805 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_in_value_list_in_in_predicate_value11808 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_in_predicate_value11811 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_in_value_list11823 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_in_value_list11828 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_in_value_list11830 = new BitSet(new long[]{0x0002000000000002L});
-	public static final BitSet FOLLOW_column_reference_in_like_predicate11852 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0040000000000000L,0x0000000000008000L});
-	public static final BitSet FOLLOW_NOT_in_like_predicate11854 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0040000000000000L});
-	public static final BitSet FOLLOW_LIKE_in_like_predicate11857 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-	public static final BitSet FOLLOW_Character_String_Literal_in_like_predicate11861 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_null_predicate11892 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000002000000000L});
-	public static final BitSet FOLLOW_IS_in_null_predicate11894 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000108000L});
-	public static final BitSet FOLLOW_NOT_in_null_predicate11899 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_NULL_in_null_predicate11903 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_term_in_numeric_value_expression11931 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x8000000000000000L,0x0000080000000000L});
-	public static final BitSet FOLLOW_set_in_numeric_value_expression11934 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_term_in_numeric_value_expression11941 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x8000000000000000L,0x0000080000000000L});
-	public static final BitSet FOLLOW_numeric_primary_in_term11954 = new BitSet(new long[]{0x0000000000000002L,0x0000000004000000L,0x0000000000000000L,0x0000000000000012L});
-	public static final BitSet FOLLOW_set_in_term11957 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_numeric_primary_in_term11966 = new BitSet(new long[]{0x0000000000000002L,0x0000000004000000L,0x0000000000000000L,0x0000000000000012L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_array11979 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L,0x8000000000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_literal_in_array11981 = new BitSet(new long[]{0x0002000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_COMMA_in_array11984 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L,0x8000000000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_literal_in_array11986 = new BitSet(new long[]{0x0002000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_array11991 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_literal_in_numeric_primary12008 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_column_reference_in_numeric_primary12013 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_numeric_primary12018 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_numeric_primary12021 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_numeric_primary12023 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_routine_invocation_in_numeric_primary12029 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_string_value_expr_in_literal12040 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_signed_numerical_literal_in_literal12046 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NULL_in_literal12052 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Character_String_Literal_in_string_value_expr12064 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_sign_in_signed_numerical_literal12076 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x2000000000800000L});
-	public static final BitSet FOLLOW_unsigned_numerical_literal_in_signed_numerical_literal12079 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_case_specification_in_case_expression12127 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NULLIF_in_case_abbreviation12139 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_case_abbreviation12141 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_case_abbreviation12143 = new BitSet(new long[]{0x0002000000000000L});
-	public static final BitSet FOLLOW_COMMA_in_case_abbreviation12145 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
-	public static final BitSet FOLLOW_boolean_value_expression_in_case_abbreviation12147 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_case_abbreviation12150 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_COALESCE_in_case_abbreviation12156 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_case_abbreviation12158 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_case_abbreviation12160 = new BitSet(new long[]{0x0002000000000000L});
-	public static final BitSet FOLLOW_COMMA_in_case_abbreviation12164 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
-	public static final BitSet FOLLOW_boolean_value_expression_in_case_abbreviation12166 = new BitSet(new long[]{0x0002000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_case_abbreviation12172 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_simple_case_in_case_specification12184 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_searched_case_in_case_specification12190 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_CASE_in_simple_case12202 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_simple_case12204 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_simple_when_clause_in_simple_case12208 = new BitSet(new long[]{0x0000000000000000L,0x0000014000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_else_clause_in_simple_case12215 = new BitSet(new long[]{0x0000000000000000L,0x0000010000000000L});
-	public static final BitSet FOLLOW_END_in_simple_case12221 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_CASE_in_searched_case12233 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_searched_when_clause_in_searched_case12237 = new BitSet(new long[]{0x0000000000000000L,0x0000014000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_else_clause_in_searched_case12242 = new BitSet(new long[]{0x0000000000000000L,0x0000010000000000L});
-	public static final BitSet FOLLOW_END_in_searched_case12246 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_WHEN_in_simple_when_clause12257 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_simple_when_clause12259 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_THEN_in_simple_when_clause12261 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_result_in_simple_when_clause12263 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_WHEN_in_searched_when_clause12273 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
-	public static final BitSet FOLLOW_search_condition_in_searched_when_clause12277 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_THEN_in_searched_when_clause12279 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_result_in_searched_when_clause12283 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ELSE_in_else_clause12307 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
-	public static final BitSet FOLLOW_result_in_else_clause12311 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_result12332 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NULL_in_result12336 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NOT_in_boolean_factor11535 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_boolean_test_in_boolean_factor11537 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_boolean_primary_in_boolean_test11557 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000002000000000L});
+	public static final BitSet FOLLOW_is_clause_in_boolean_test11559 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_IS_in_is_clause11572 = new BitSet(new long[]{0x0000000000000000L,0x0020000000000000L,0x0000000000000000L,0x0000000000008000L,0x0000000000000000L,0x0041000000000000L});
+	public static final BitSet FOLLOW_NOT_in_is_clause11574 = new BitSet(new long[]{0x0000000000000000L,0x0020000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0041000000000000L});
+	public static final BitSet FOLLOW_truth_value_in_is_clause11579 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_predicate_in_boolean_primary11623 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_boolean_primary11629 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_boolean_primary11635 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
+	public static final BitSet FOLLOW_boolean_value_expression_in_boolean_primary11638 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_boolean_primary11640 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_case_expression_in_boolean_primary11647 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_comparison_predicate_in_predicate11661 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_in_predicate_in_predicate11667 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_like_predicate_in_predicate11673 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_null_predicate_in_predicate11679 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_comparison_predicate11703 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L,0x0810000000008100L,0x0000000000010000L});
+	public static final BitSet FOLLOW_comp_op_in_comparison_predicate11707 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_comparison_predicate11711 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_in_predicate11779 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000800000L,0x0000000000008000L});
+	public static final BitSet FOLLOW_NOT_in_in_predicate11782 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_IN_in_in_predicate11785 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
+	public static final BitSet FOLLOW_in_predicate_value_in_in_predicate11789 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_in_predicate_value11813 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_in_value_list_in_in_predicate_value11816 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_in_predicate_value11819 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_in_value_list11831 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_COMMA_in_in_value_list11836 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_in_value_list11838 = new BitSet(new long[]{0x0002000000000002L});
+	public static final BitSet FOLLOW_column_reference_in_like_predicate11860 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0040000000000000L,0x0000000000008000L});
+	public static final BitSet FOLLOW_NOT_in_like_predicate11862 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0040000000000000L});
+	public static final BitSet FOLLOW_LIKE_in_like_predicate11865 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+	public static final BitSet FOLLOW_Character_String_Literal_in_like_predicate11869 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_null_predicate11900 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000002000000000L});
+	public static final BitSet FOLLOW_IS_in_null_predicate11902 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000108000L});
+	public static final BitSet FOLLOW_NOT_in_null_predicate11907 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000100000L});
+	public static final BitSet FOLLOW_NULL_in_null_predicate11911 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_term_in_numeric_value_expression11939 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x8000000000000000L,0x0000080000000000L});
+	public static final BitSet FOLLOW_set_in_numeric_value_expression11942 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_term_in_numeric_value_expression11949 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x8000000000000000L,0x0000080000000000L});
+	public static final BitSet FOLLOW_numeric_primary_in_term11962 = new BitSet(new long[]{0x0000000000000002L,0x0000000004000000L,0x0000000000000000L,0x0000000000000012L});
+	public static final BitSet FOLLOW_set_in_term11965 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_numeric_primary_in_term11974 = new BitSet(new long[]{0x0000000000000002L,0x0000000004000000L,0x0000000000000000L,0x0000000000000012L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_array11987 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L,0x8000000000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_literal_in_array11989 = new BitSet(new long[]{0x0002000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_COMMA_in_array11992 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L,0x8000000000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_literal_in_array11994 = new BitSet(new long[]{0x0002000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_array11999 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_literal_in_numeric_primary12016 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_column_reference_in_numeric_primary12021 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_numeric_primary12026 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_numeric_primary12029 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_numeric_primary12031 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_routine_invocation_in_numeric_primary12037 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_string_value_expr_in_literal12048 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_signed_numerical_literal_in_literal12054 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NULL_in_literal12060 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Character_String_Literal_in_string_value_expr12072 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_sign_in_signed_numerical_literal12084 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x2000000000800000L});
+	public static final BitSet FOLLOW_unsigned_numerical_literal_in_signed_numerical_literal12087 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_case_specification_in_case_expression12135 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NULLIF_in_case_abbreviation12147 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_case_abbreviation12149 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_case_abbreviation12151 = new BitSet(new long[]{0x0002000000000000L});
+	public static final BitSet FOLLOW_COMMA_in_case_abbreviation12153 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
+	public static final BitSet FOLLOW_boolean_value_expression_in_case_abbreviation12155 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_case_abbreviation12158 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_COALESCE_in_case_abbreviation12164 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_case_abbreviation12166 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_case_abbreviation12168 = new BitSet(new long[]{0x0002000000000000L});
+	public static final BitSet FOLLOW_COMMA_in_case_abbreviation12172 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
+	public static final BitSet FOLLOW_boolean_value_expression_in_case_abbreviation12174 = new BitSet(new long[]{0x0002000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_case_abbreviation12180 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_simple_case_in_case_specification12192 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_searched_case_in_case_specification12198 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_CASE_in_simple_case12210 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_simple_case12212 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000200L});
+	public static final BitSet FOLLOW_simple_when_clause_in_simple_case12216 = new BitSet(new long[]{0x0000000000000000L,0x0000014000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000200L});
+	public static final BitSet FOLLOW_else_clause_in_simple_case12223 = new BitSet(new long[]{0x0000000000000000L,0x0000010000000000L});
+	public static final BitSet FOLLOW_END_in_simple_case12229 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_CASE_in_searched_case12241 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000200L});
+	public static final BitSet FOLLOW_searched_when_clause_in_searched_case12245 = new BitSet(new long[]{0x0000000000000000L,0x0000014000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000200L});
+	public static final BitSet FOLLOW_else_clause_in_searched_case12250 = new BitSet(new long[]{0x0000000000000000L,0x0000010000000000L});
+	public static final BitSet FOLLOW_END_in_searched_case12254 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_WHEN_in_simple_when_clause12265 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_simple_when_clause12267 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000004000000000L});
+	public static final BitSet FOLLOW_THEN_in_simple_when_clause12269 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_result_in_simple_when_clause12271 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_WHEN_in_searched_when_clause12281 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
+	public static final BitSet FOLLOW_search_condition_in_searched_when_clause12285 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000004000000000L});
+	public static final BitSet FOLLOW_THEN_in_searched_when_clause12287 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_result_in_searched_when_clause12291 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ELSE_in_else_clause12315 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000900000L});
+	public static final BitSet FOLLOW_result_in_else_clause12319 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_result12340 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NULL_in_result12344 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_open_statement_in_synpred67_DBL6033 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_open_statement_in_synpred72_DBL6073 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_CNULRQD_in_synpred92_DBL6313 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
@@ -28713,18 +28721,18 @@ public class DBLParser extends Parser {
 	public static final BitSet FOLLOW_CNULRQD_in_synpred149_DBL6913 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
 	public static final BitSet FOLLOW_EQUAL_in_synpred149_DBL6915 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000010000400L});
 	public static final BitSet FOLLOW_set_in_synpred149_DBL6919 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_non_join_query_expression_in_synpred244_DBL9878 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_non_join_query_term_in_synpred245_DBL9897 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_non_join_query_term_in_synpred253_DBL9957 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_COMMA_in_synpred274_DBL10310 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_column_reference_in_synpred274_DBL10312 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_predicate_in_synpred317_DBL11615 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_synpred318_DBL11621 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LEFT_PAREN_in_synpred319_DBL11627 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
-	public static final BitSet FOLLOW_boolean_value_expression_in_synpred319_DBL11630 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
-	public static final BitSet FOLLOW_RIGHT_PAREN_in_synpred319_DBL11632 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_comparison_predicate_in_synpred320_DBL11653 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_in_predicate_in_synpred321_DBL11659 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_like_predicate_in_synpred322_DBL11665 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_numeric_value_expression_in_synpred353_DBL12332 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_non_join_query_expression_in_synpred244_DBL9886 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_non_join_query_term_in_synpred245_DBL9905 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_non_join_query_term_in_synpred253_DBL9965 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_COMMA_in_synpred274_DBL10318 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000040000000000L});
+	public static final BitSet FOLLOW_column_reference_in_synpred274_DBL10320 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_predicate_in_synpred317_DBL11623 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_synpred318_DBL11629 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LEFT_PAREN_in_synpred319_DBL11635 = new BitSet(new long[]{0x0200002000000000L,0x0000000000000002L,0x8008040000000000L,0x2000080000908000L});
+	public static final BitSet FOLLOW_boolean_value_expression_in_synpred319_DBL11638 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_RIGHT_PAREN_in_synpred319_DBL11640 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_comparison_predicate_in_synpred320_DBL11661 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_in_predicate_in_synpred321_DBL11667 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_like_predicate_in_synpred322_DBL11673 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_numeric_value_expression_in_synpred353_DBL12340 = new BitSet(new long[]{0x0000000000000002L});
 }

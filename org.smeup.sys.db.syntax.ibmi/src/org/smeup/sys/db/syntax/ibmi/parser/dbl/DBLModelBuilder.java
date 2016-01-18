@@ -36,6 +36,7 @@ import org.smeup.sys.db.syntax.dbl.QDescribeStatement;
 import org.smeup.sys.db.syntax.dbl.QExecuteImmediateStatement;
 import org.smeup.sys.db.syntax.dbl.QExecuteStatement;
 import org.smeup.sys.db.syntax.dbl.QFetchStatement;
+import org.smeup.sys.db.syntax.dbl.QGetDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QIntoClause;
 import org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause;
 import org.smeup.sys.db.syntax.dbl.QOpenStatement;
@@ -147,6 +148,10 @@ public class DBLModelBuilder {
 		case DBLLexer.DEALLOCATE_DESCRIPTOR_STATEMENT:
 			result = manageDeallocateDescriptorStatement(tree);
 			break;		
+		
+		case DBLLexer.GET_DESCRIPTOR_STATEMENT:
+			result = manageGetDescriptorStatement(tree);
+			break;			
 			
 
 		default:
@@ -232,6 +237,157 @@ public class DBLModelBuilder {
 
 		return allocateDescriptorStatement;
 	}
+	
+	private QBindingStatement manageGetDescriptorStatement(Tree tree) {
+		
+		QGetDescriptorStatement getDescriptorStatement = QDatabaseSyntaxDBLFactory.eINSTANCE.createGetDescriptorStatement();
+		getDescriptorStatement.setDescriptorScope(DescriptorScope.NONE);
+		
+		Tree fieldToken = null;
+
+		for (int i = 0; i < tree.getChildCount(); i++) {
+			fieldToken = tree.getChild(i);
+
+			switch (fieldToken.getType()) {
+
+			case DBLLexer.DESCRIPTOR:
+
+				getDescriptorStatement.setDescriptorName(fieldToken.getChild(0).getText());
+
+				break;
+				
+			case DBLLexer.DESCRIPTOR_SCOPE:
+				
+				if (fieldToken.getChildCount() > 0) {				
+					if (fieldToken.getChild(0).getText().equalsIgnoreCase(DescriptorScope.LOCAL.getLiteral())) {
+						getDescriptorStatement.setDescriptorScope(DescriptorScope.LOCAL);
+					} else if (fieldToken.getChild(0).getText().equalsIgnoreCase(DescriptorScope.GLOBAL.getLiteral())) {
+						getDescriptorStatement.setDescriptorScope(DescriptorScope.GLOBAL);
+					} 
+				}
+
+				break;
+
+				
+			case DBLLexer.HEADER_INFO:
+				
+				/**
+				 * Expected tree format:
+				 * 
+				 * HEADER_INFO  ___ VARIABLES ___ VALUE ___ VARIABLE
+				 *                           |          |__ VALUE
+				 *                           |	
+				 *                           |___ VALUE ___ VARIABLE
+				 *                                      |__ VALUE
+				 */
+				
+				if (fieldToken.getChildCount() > 0) {
+					
+					if (fieldToken.getChild(0).getType() == DBLLexer.VARIABLES) {
+						
+						//Node VARIABLES
+						
+						for (int j = 0; j < fieldToken.getChild(0).getChildCount(); j++) {					
+							
+							// Node VALUE
+							Tree value = fieldToken.getChild(0).getChild(j);
+							
+							QOption varValue = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
+							
+							for (int k = 0; k < value.getChildCount(); k++) {
+								
+								switch (value.getChild(k).getType()) {
+								case DBLLexer.VARIABLE:
+									
+									// Node VARIABLE
+									if (value.getChild(k).getChildCount() > 0)
+										varValue.setName(value.getChild(k).getChild(0).getText());
+								break;
+								
+								case DBLLexer.VALUE:
+									
+									// Node VALUE
+									if (value.getChild(k).getChildCount() > 0)
+										varValue.setValue(value.getChild(k).getChild(0).getText());
+								break;	
+								}								
+							}
+						
+							getDescriptorStatement.getVariables().add(varValue);
+						}
+					}	
+				}
+
+				break;
+				
+			case DBLLexer.ITEM_INFO:
+				/**
+				 * Expected tree format:
+				 * 
+				 * ITEM_INFO ____ VARIABLE  
+				 *           |
+				 *           |___ VARIABLES ___ VALUE ___ VARIABLE
+				 *                           |          |__ VALUE
+				 *                           |	
+				 *                           |___ VALUE ___ VARIABLE
+				 *                                      |__ VALUE
+				 */
+				if (fieldToken.getChildCount() > 0) {
+					
+					for (int j = 0; j < fieldToken.getChildCount(); j++) {
+						
+						switch(fieldToken.getChild(j).getType()) {
+						
+						case DBLLexer.VARIABLE:
+							
+							getDescriptorStatement.setValue(fieldToken.getChild(j).getChild(0).getText());
+							
+							break;
+						
+						case DBLLexer.VARIABLES:
+							
+							//Node VARIABLES
+							
+							for (int j1 = 0; j1 < fieldToken.getChild(0).getChildCount(); j1++) {					
+								
+								// Node VALUE
+								Tree value = fieldToken.getChild(0).getChild(j1);
+								
+								QOption varValue = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
+								
+								for (int k = 0; k < value.getChildCount(); k++) {
+									
+									switch (value.getChild(k).getType()) {
+									case DBLLexer.VARIABLE:
+										
+										// Node VARIABLE
+										if (value.getChild(k).getChildCount() > 0)
+											varValue.setName(value.getChild(k).getChild(0).getText());
+									break;
+									
+									case DBLLexer.VALUE:
+										
+										// Node VALUE
+										if (value.getChild(k).getChildCount() > 0)
+											varValue.setValue(value.getChild(k).getChild(0).getText());
+									break;	
+									}								
+								}
+							
+								getDescriptorStatement.getVariables().add(varValue);
+							}
+							
+							break;
+						}
+					}
+				}
+			
+			break;
+			}
+		}
+		return getDescriptorStatement;
+	}
+
 	
 	private QBindingStatement manageDeallocateDescriptorStatement(Tree tree) {
 		

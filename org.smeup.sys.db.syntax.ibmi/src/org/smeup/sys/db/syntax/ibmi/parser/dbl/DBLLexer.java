@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g 2016-01-15 17:43:13
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g 2016-01-18 15:21:31
 
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
 import org.smeup.sys.db.syntax.DataBaseSyntaxRuntimeException;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class DBLLexer extends Lexer {
 	public static final int EOF=-1;
-	public static final int T__407=407;
+	public static final int T__408=408;
 	public static final int A=4;
 	public static final int AFTER=5;
 	public static final int ALIAS=6;
@@ -395,27 +395,28 @@ public class DBLLexer extends Lexer {
 	public static final int VARBIT=383;
 	public static final int VARCHAR=384;
 	public static final int VARIABLE=385;
-	public static final int VARYING=386;
-	public static final int VAR_INFO=387;
-	public static final int VIEW=388;
-	public static final int VIEW_NAME=389;
-	public static final int Variable=390;
-	public static final int W=391;
-	public static final int WHEN=392;
-	public static final int WHERE=393;
-	public static final int WITH=394;
-	public static final int WITHOUT=395;
-	public static final int WITHOUT_HOLD=396;
-	public static final int WITH_DEFAULT=397;
-	public static final int WITH_HOLD=398;
-	public static final int WITH_MAX=399;
-	public static final int WORK=400;
-	public static final int WRITE=401;
-	public static final int White_Space=402;
-	public static final int X=403;
-	public static final int Y=404;
-	public static final int Z=405;
-	public static final int ZONE=406;
+	public static final int VARIABLES=386;
+	public static final int VARYING=387;
+	public static final int VAR_INFO=388;
+	public static final int VIEW=389;
+	public static final int VIEW_NAME=390;
+	public static final int Variable=391;
+	public static final int W=392;
+	public static final int WHEN=393;
+	public static final int WHERE=394;
+	public static final int WITH=395;
+	public static final int WITHOUT=396;
+	public static final int WITHOUT_HOLD=397;
+	public static final int WITH_DEFAULT=398;
+	public static final int WITH_HOLD=399;
+	public static final int WITH_MAX=400;
+	public static final int WORK=401;
+	public static final int WRITE=402;
+	public static final int White_Space=403;
+	public static final int X=404;
+	public static final int Y=405;
+	public static final int Z=406;
+	public static final int ZONE=407;
 
 
 		@Override
@@ -453,10 +454,10 @@ public class DBLLexer extends Lexer {
 	}
 	@Override public String getGrammarFileName() { return "C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g"; }
 
-	// $ANTLR start "T__407"
-	public final void mT__407() throws RecognitionException {
+	// $ANTLR start "T__408"
+	public final void mT__408() throws RecognitionException {
 		try {
-			int _type = T__407;
+			int _type = T__408;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:33:8: ( ':' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:33:10: ':'
@@ -471,7 +472,7 @@ public class DBLLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "T__407"
+	// $ANTLR end "T__408"
 
 	// $ANTLR start "A"
 	public final void mA() throws RecognitionException {
@@ -8744,8 +8745,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = ASSIGN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1510:9: ( ':=' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1510:11: ':='
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1512:9: ( ':=' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1512:11: ':='
 			{
 			match(":="); 
 
@@ -8765,8 +8766,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = EQUAL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1511:8: ( '=' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1511:10: '='
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1513:8: ( '=' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1513:10: '='
 			{
 			match('='); 
 			}
@@ -8785,8 +8786,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = SEMI_COLON;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1512:12: ( ';' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1512:15: ';'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1514:12: ( ';' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1514:15: ';'
 			{
 			match(';'); 
 			}
@@ -8805,8 +8806,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = COMMA;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1513:7: ( ',' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1513:9: ','
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1515:7: ( ',' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1515:9: ','
 			{
 			match(','); 
 			}
@@ -8825,7 +8826,7 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = NOT_EQUAL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1514:12: ( '<>' | '!=' | '~=' | '^=' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1516:12: ( '<>' | '!=' | '~=' | '^=' )
 			int alt1=4;
 			switch ( input.LA(1) ) {
 			case '<':
@@ -8855,28 +8856,28 @@ public class DBLLexer extends Lexer {
 			}
 			switch (alt1) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1514:14: '<>'
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1516:14: '<>'
 					{
 					match("<>"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1514:21: '!='
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1516:21: '!='
 					{
 					match("!="); 
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1514:28: '~='
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1516:28: '~='
 					{
 					match("~="); 
 
 					}
 					break;
 				case 4 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1514:34: '^='
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1516:34: '^='
 					{
 					match("^="); 
 
@@ -8898,8 +8899,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = LTH;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1515:5: ( '<' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1515:7: '<'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1517:5: ( '<' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1517:7: '<'
 			{
 			match('<'); 
 			}
@@ -8918,8 +8919,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = LEQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1516:5: ( '<=' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1516:7: '<='
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1518:5: ( '<=' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1518:7: '<='
 			{
 			match("<="); 
 
@@ -8939,8 +8940,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = GTH;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1517:7: ( '>' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1517:9: '>'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1519:7: ( '>' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1519:9: '>'
 			{
 			match('>'); 
 			}
@@ -8959,8 +8960,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = GEQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1518:7: ( '>=' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1518:9: '>='
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1520:7: ( '>=' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1520:9: '>='
 			{
 			match(">="); 
 
@@ -8980,8 +8981,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = LEFT_PAREN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1519:12: ( '(' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1519:15: '('
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1521:12: ( '(' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1521:15: '('
 			{
 			match('('); 
 			}
@@ -9000,8 +9001,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = RIGHT_PAREN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1520:13: ( ')' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1520:15: ')'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1522:13: ( ')' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1522:15: ')'
 			{
 			match(')'); 
 			}
@@ -9020,8 +9021,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = PLUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1521:7: ( '+' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1521:9: '+'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1523:7: ( '+' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1523:9: '+'
 			{
 			match('+'); 
 			}
@@ -9040,8 +9041,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = MINUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1522:7: ( '-' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1522:9: '-'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1524:7: ( '-' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1524:9: '-'
 			{
 			match('-'); 
 			}
@@ -9060,8 +9061,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = MULTIPLY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1523:9: ( '*' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1523:11: '*'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1525:9: ( '*' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1525:11: '*'
 			{
 			match('*'); 
 			}
@@ -9080,8 +9081,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = DIVIDE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1524:9: ( '/' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1524:11: '/'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1526:9: ( '/' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1526:11: '/'
 			{
 			match('/'); 
 			}
@@ -9100,8 +9101,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = MODULAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1525:9: ( '%' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1525:11: '%'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1527:9: ( '%' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1527:11: '%'
 			{
 			match('%'); 
 			}
@@ -9120,8 +9121,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = DOT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1526:5: ( '.' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1526:7: '.'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1528:5: ( '.' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1528:7: '.'
 			{
 			match('.'); 
 			}
@@ -9140,10 +9141,10 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = NUMBER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1527:8: ( ( Digit )+ )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1527:10: ( Digit )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1529:8: ( ( Digit )+ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1529:10: ( Digit )+
 			{
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1527:10: ( Digit )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1529:10: ( Digit )+
 			int cnt2=0;
 			loop2:
 			while (true) {
@@ -9190,7 +9191,7 @@ public class DBLLexer extends Lexer {
 	// $ANTLR start "Digit"
 	public final void mDigit() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1530:7: ( '0' .. '9' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1532:7: ( '0' .. '9' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
@@ -9215,14 +9216,14 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = REAL_NUMBER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1531:5: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1533:5: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
 			int alt9=3;
 			alt9 = dfa9.predict(input);
 			switch (alt9) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1531:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )?
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1533:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )?
 					{
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1531:9: ( '0' .. '9' )+
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1533:9: ( '0' .. '9' )+
 					int cnt3=0;
 					loop3:
 					while (true) {
@@ -9256,7 +9257,7 @@ public class DBLLexer extends Lexer {
 					}
 
 					match('.'); 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1531:25: ( '0' .. '9' )*
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1533:25: ( '0' .. '9' )*
 					loop4:
 					while (true) {
 						int alt4=2;
@@ -9285,7 +9286,7 @@ public class DBLLexer extends Lexer {
 						}
 					}
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1531:37: ( EXPONENT )?
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1533:37: ( EXPONENT )?
 					int alt5=2;
 					int LA5_0 = input.LA(1);
 					if ( (LA5_0=='E'||LA5_0=='e') ) {
@@ -9293,7 +9294,7 @@ public class DBLLexer extends Lexer {
 					}
 					switch (alt5) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1531:37: EXPONENT
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1533:37: EXPONENT
 							{
 							mEXPONENT(); 
 
@@ -9305,10 +9306,10 @@ public class DBLLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1532:9: '.' ( '0' .. '9' )+ ( EXPONENT )?
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1534:9: '.' ( '0' .. '9' )+ ( EXPONENT )?
 					{
 					match('.'); 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1532:13: ( '0' .. '9' )+
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1534:13: ( '0' .. '9' )+
 					int cnt6=0;
 					loop6:
 					while (true) {
@@ -9341,7 +9342,7 @@ public class DBLLexer extends Lexer {
 						cnt6++;
 					}
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1532:25: ( EXPONENT )?
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1534:25: ( EXPONENT )?
 					int alt7=2;
 					int LA7_0 = input.LA(1);
 					if ( (LA7_0=='E'||LA7_0=='e') ) {
@@ -9349,7 +9350,7 @@ public class DBLLexer extends Lexer {
 					}
 					switch (alt7) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1532:25: EXPONENT
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1534:25: EXPONENT
 							{
 							mEXPONENT(); 
 
@@ -9361,9 +9362,9 @@ public class DBLLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1533:9: ( '0' .. '9' )+ EXPONENT
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1535:9: ( '0' .. '9' )+ EXPONENT
 					{
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1533:9: ( '0' .. '9' )+
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1535:9: ( '0' .. '9' )+
 					int cnt8=0;
 					loop8:
 					while (true) {
@@ -9416,7 +9417,7 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = COMMENT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1536:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1538:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
 			int alt13=2;
 			int LA13_0 = input.LA(1);
 			if ( (LA13_0=='/') ) {
@@ -9450,11 +9451,11 @@ public class DBLLexer extends Lexer {
 
 			switch (alt13) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1536:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1538:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
 					{
 					match("//"); 
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1536:14: (~ ( '\\n' | '\\r' ) )*
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1538:14: (~ ( '\\n' | '\\r' ) )*
 					loop10:
 					while (true) {
 						int alt10=2;
@@ -9483,7 +9484,7 @@ public class DBLLexer extends Lexer {
 						}
 					}
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1536:28: ( '\\r' )?
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1538:28: ( '\\r' )?
 					int alt11=2;
 					int LA11_0 = input.LA(1);
 					if ( (LA11_0=='\r') ) {
@@ -9491,7 +9492,7 @@ public class DBLLexer extends Lexer {
 					}
 					switch (alt11) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1536:28: '\\r'
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1538:28: '\\r'
 							{
 							match('\r'); 
 							}
@@ -9504,11 +9505,11 @@ public class DBLLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1537:9: '/*' ( options {greedy=false; } : . )* '*/'
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1539:9: '/*' ( options {greedy=false; } : . )* '*/'
 					{
 					match("/*"); 
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1537:14: ( options {greedy=false; } : . )*
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1539:14: ( options {greedy=false; } : . )*
 					loop12:
 					while (true) {
 						int alt12=2;
@@ -9529,7 +9530,7 @@ public class DBLLexer extends Lexer {
 
 						switch (alt12) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1537:42: .
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1539:42: .
 							{
 							matchAny(); 
 							}
@@ -9561,8 +9562,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = Descriptor_Name;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1541:2: ( '\\'' Identifier '\\'' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1541:4: '\\'' Identifier '\\''
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1543:2: ( '\\'' Identifier '\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1543:4: '\\'' Identifier '\\''
 			{
 			match('\''); 
 			mIdentifier(); 
@@ -9584,8 +9585,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = Identifier;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1550:3: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | Digit | CHAR_SPECIAL )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1550:5: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | Digit | CHAR_SPECIAL )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1552:3: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | Digit | CHAR_SPECIAL )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1552:5: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | Digit | CHAR_SPECIAL )*
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -9595,7 +9596,7 @@ public class DBLLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1550:29: ( 'a' .. 'z' | 'A' .. 'Z' | Digit | CHAR_SPECIAL )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1552:29: ( 'a' .. 'z' | 'A' .. 'Z' | Digit | CHAR_SPECIAL )*
 			loop14:
 			while (true) {
 				int alt14=2;
@@ -9640,11 +9641,11 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = Variable;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1560:3: ( ':' ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL )+ )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1560:5: ':' ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1562:3: ( ':' ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL )+ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1562:5: ':' ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL )+
 			{
 			match(':'); 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1560:8: ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1562:8: ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL )+
 			int cnt15=0;
 			loop15:
 			while (true) {
@@ -9692,7 +9693,7 @@ public class DBLLexer extends Lexer {
 	// $ANTLR start "Control_Characters"
 	public final void mControl_Characters() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1571:37: ( '\\u0001' .. '\\u001F' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1573:37: ( '\\u0001' .. '\\u001F' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:
 			{
 			if ( (input.LA(1) >= '\u0001' && input.LA(1) <= '\u001F') ) {
@@ -9715,7 +9716,7 @@ public class DBLLexer extends Lexer {
 	// $ANTLR start "Extended_Control_Characters"
 	public final void mExtended_Control_Characters() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1573:37: ( '\\u0080' .. '\\u009F' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1575:37: ( '\\u0080' .. '\\u009F' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:
 			{
 			if ( (input.LA(1) >= '\u0080' && input.LA(1) <= '\u009F') ) {
@@ -9740,7 +9741,7 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = Character_String_Literal;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1574:5: ( Quote ( ESC_SEQ |~ ( '\\\\' | Quote ) )* Quote | Double_Quote ( ESC_SEQ |~ ( '\\\\' | Double_Quote ) )* Double_Quote )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1576:5: ( Quote ( ESC_SEQ |~ ( '\\\\' | Quote ) )* Quote | Double_Quote ( ESC_SEQ |~ ( '\\\\' | Double_Quote ) )* Double_Quote )
 			int alt18=2;
 			int LA18_0 = input.LA(1);
 			if ( (LA18_0=='\'') ) {
@@ -9758,11 +9759,11 @@ public class DBLLexer extends Lexer {
 
 			switch (alt18) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1574:7: Quote ( ESC_SEQ |~ ( '\\\\' | Quote ) )* Quote
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1576:7: Quote ( ESC_SEQ |~ ( '\\\\' | Quote ) )* Quote
 					{
 					mQuote(); 
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1574:13: ( ESC_SEQ |~ ( '\\\\' | Quote ) )*
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1576:13: ( ESC_SEQ |~ ( '\\\\' | Quote ) )*
 					loop16:
 					while (true) {
 						int alt16=3;
@@ -9776,14 +9777,14 @@ public class DBLLexer extends Lexer {
 
 						switch (alt16) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1574:15: ESC_SEQ
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1576:15: ESC_SEQ
 							{
 							mESC_SEQ(); 
 
 							}
 							break;
 						case 2 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1574:25: ~ ( '\\\\' | Quote )
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1576:25: ~ ( '\\\\' | Quote )
 							{
 							if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '&')||(input.LA(1) >= '(' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
 								input.consume();
@@ -9807,11 +9808,11 @@ public class DBLLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1576:7: Double_Quote ( ESC_SEQ |~ ( '\\\\' | Double_Quote ) )* Double_Quote
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1578:7: Double_Quote ( ESC_SEQ |~ ( '\\\\' | Double_Quote ) )* Double_Quote
 					{
 					mDouble_Quote(); 
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1576:20: ( ESC_SEQ |~ ( '\\\\' | Double_Quote ) )*
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1578:20: ( ESC_SEQ |~ ( '\\\\' | Double_Quote ) )*
 					loop17:
 					while (true) {
 						int alt17=3;
@@ -9825,14 +9826,14 @@ public class DBLLexer extends Lexer {
 
 						switch (alt17) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1576:22: ESC_SEQ
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1578:22: ESC_SEQ
 							{
 							mESC_SEQ(); 
 
 							}
 							break;
 						case 2 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1576:32: ~ ( '\\\\' | Double_Quote )
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1578:32: ~ ( '\\\\' | Double_Quote )
 							{
 							if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
 								input.consume();
@@ -9871,8 +9872,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = Quote;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1580:3: ( '\\'' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1580:5: '\\''
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1582:3: ( '\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1582:5: '\\''
 			{
 			match('\''); 
 			}
@@ -9891,8 +9892,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = Double_Quote;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1582:3: ( '\"' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1582:5: '\"'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1584:3: ( '\"' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1584:5: '\"'
 			{
 			match('\"'); 
 			}
@@ -9909,8 +9910,8 @@ public class DBLLexer extends Lexer {
 	// $ANTLR start "EXPONENT"
 	public final void mEXPONENT() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1585:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1585:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1587:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1587:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
 			{
 			if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
 				input.consume();
@@ -9920,7 +9921,7 @@ public class DBLLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1585:22: ( '+' | '-' )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1587:22: ( '+' | '-' )?
 			int alt19=2;
 			int LA19_0 = input.LA(1);
 			if ( (LA19_0=='+'||LA19_0=='-') ) {
@@ -9943,7 +9944,7 @@ public class DBLLexer extends Lexer {
 
 			}
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1585:33: ( '0' .. '9' )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1587:33: ( '0' .. '9' )+
 			int cnt20=0;
 			loop20:
 			while (true) {
@@ -9988,7 +9989,7 @@ public class DBLLexer extends Lexer {
 	// $ANTLR start "HEX_DIGIT"
 	public final void mHEX_DIGIT() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1587:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1589:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'F')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
@@ -10011,7 +10012,7 @@ public class DBLLexer extends Lexer {
 	// $ANTLR start "ESC_SEQ"
 	public final void mESC_SEQ() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1590:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1592:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
 			int alt21=3;
 			int LA21_0 = input.LA(1);
 			if ( (LA21_0=='\\') ) {
@@ -10066,7 +10067,7 @@ public class DBLLexer extends Lexer {
 
 			switch (alt21) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1590:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1592:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
 					{
 					match('\\'); 
 					if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -10080,14 +10081,14 @@ public class DBLLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1591:9: UNICODE_ESC
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1593:9: UNICODE_ESC
 					{
 					mUNICODE_ESC(); 
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1592:9: OCTAL_ESC
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1594:9: OCTAL_ESC
 					{
 					mOCTAL_ESC(); 
 
@@ -10105,7 +10106,7 @@ public class DBLLexer extends Lexer {
 	// $ANTLR start "OCTAL_ESC"
 	public final void mOCTAL_ESC() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1596:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1598:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
 			int alt22=3;
 			int LA22_0 = input.LA(1);
 			if ( (LA22_0=='\\') ) {
@@ -10163,7 +10164,7 @@ public class DBLLexer extends Lexer {
 
 			switch (alt22) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1596:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1598:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
 					{
 					match('\\'); 
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '3') ) {
@@ -10193,7 +10194,7 @@ public class DBLLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1597:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1599:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
 					{
 					match('\\'); 
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '7') ) {
@@ -10215,7 +10216,7 @@ public class DBLLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1598:9: '\\\\' ( '0' .. '7' )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1600:9: '\\\\' ( '0' .. '7' )
 					{
 					match('\\'); 
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '7') ) {
@@ -10240,8 +10241,8 @@ public class DBLLexer extends Lexer {
 	// $ANTLR start "UNICODE_ESC"
 	public final void mUNICODE_ESC() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1602:5: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1602:9: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1604:5: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1604:9: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
 			{
 			match('\\'); 
 			match('u'); 
@@ -10265,7 +10266,7 @@ public class DBLLexer extends Lexer {
 	// $ANTLR start "CHAR_SPECIAL"
 	public final void mCHAR_SPECIAL() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1607:3: ( ( '\\u00A7' | '$' | '_' | '.' | '^' | '\\u00e0' | '\\u00e8' | '\\u00e9' | '\\u00ec' | '\\u00f2' | '\\u00f9' | '\"' | '?' | '\\u00a3' | '&' | '*' | '/' | '=' | '>' | '<' | '+' | '-' | '!' | '\\\\' | '%' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1609:3: ( ( '\\u00A7' | '$' | '_' | '.' | '^' | '\\u00e0' | '\\u00e8' | '\\u00e9' | '\\u00ec' | '\\u00f2' | '\\u00f9' | '\"' | '?' | '\\u00a3' | '&' | '*' | '/' | '=' | '>' | '<' | '+' | '-' | '!' | '\\\\' | '%' ) )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:
 			{
 			if ( (input.LA(1) >= '!' && input.LA(1) <= '\"')||(input.LA(1) >= '$' && input.LA(1) <= '&')||(input.LA(1) >= '*' && input.LA(1) <= '+')||(input.LA(1) >= '-' && input.LA(1) <= '/')||(input.LA(1) >= '<' && input.LA(1) <= '?')||input.LA(1)=='\\'||(input.LA(1) >= '^' && input.LA(1) <= '_')||input.LA(1)=='\u00A3'||input.LA(1)=='\u00A7'||input.LA(1)=='\u00E0'||(input.LA(1) >= '\u00E8' && input.LA(1) <= '\u00E9')||input.LA(1)=='\u00EC'||input.LA(1)=='\u00F2'||input.LA(1)=='\u00F9' ) {
@@ -10290,8 +10291,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = Space;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1641:7: ( ' ' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1641:9: ' '
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1643:7: ( ' ' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1643:9: ' '
 			{
 			match(' '); 
 
@@ -10313,10 +10314,10 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = White_Space;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1645:13: ( ( Control_Characters | Extended_Control_Characters )+ )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1645:15: ( Control_Characters | Extended_Control_Characters )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1647:13: ( ( Control_Characters | Extended_Control_Characters )+ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1647:15: ( Control_Characters | Extended_Control_Characters )+
 			{
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1645:15: ( Control_Characters | Extended_Control_Characters )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1647:15: ( Control_Characters | Extended_Control_Characters )+
 			int cnt23=0;
 			loop23:
 			while (true) {
@@ -10368,8 +10369,8 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = BAD;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1649:5: ( . )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1649:7: .
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1651:5: ( . )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1651:7: .
 			{
 			matchAny(); 
 
@@ -10388,14 +10389,14 @@ public class DBLLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1:8: ( T__407 | AFTER | AS | ALIAS | ALL | ALLOCATE | ALLOW | ALWBLK | ALWCPYDTA | CLOSQLCSR | CNULRQD | AND | ANY | ASC | BEFORE | BOTH | BY | CALL | CASE | CASCADE | CHARACTER | CLOSE | COALESCE | COLUMN | COUNT | CREATE | COMMIT | COMMITTED | CONDITION | CONNECT | CONNECTION | CROSS | CUBE | CURRENT | CURSOR | DATFMT | DATSEP | DBGVIEW | DEALLOCATE | DEFAULT | DECLARE | DECMPT | DFTRDBCOL | DESC | DESCRIBE | DESCRIPTOR | DIAGNOSTICS | DISTINCT | DISCONNECT | DLYPRP | DROP | DYNAMIC | DYNDFTCOL | DYNUSRPRF | END | ELSE | EVENTF | EXCEPT | EXCLUSIVE | EXECUTE | EXTERNAL | FALSE | FETCH | FIRST | FOR | FORMAT | FULL | FROM | GET | GLOBAL | GROUP | HAVING | HOLD | IN | INDEX | INNER | INSERT | INTERSECT | INTO | IMMEDIATE | IS | ISOLATION | JOIN | LABELS | LANGID | LAST | LEFT | LEVEL | LIKE | LIMIT | LOCAL | LOCATION | LOCK | MAX | MODE | NAME | NAMES | NAMING | NATIONAL | NATURAL | NEXT | NO | NOT | NULL | NULLIF | ON | ONLY | OPEN | OPTION | OPTLOB | OR | ORDER | OUTER | OUTPUT | PRECISION | PREPARE | PRIOR | RDBCNNMTH | READ | RELATIVE | RELEASE | RENAME | REPEATABLE | REPLACE | RESET | RESTRICT | RIGHT | ROLLBACK | ROLLUP | ROWS | SET | SELECT | SCROLL | SHARE | SERIALIZABLE | SYSTEM | SQL | SQLCURRULE | SQLPATH | SRTSEQ | TABLE | TGTRLS | THEN | TIMFMT | TIMSEP | TO | TRANSACTION | TRUE | UNCOMMITTED | UNION | UNIQUE | UNKNOWN | USING | USER | USRPRF | VALUE | VALUES | VARYING | WHEN | WHERE | WITH | WITHOUT | WORK | WRITE | VIEW | ZONE | S_ALL | S_ALLREAD | S_BLANK | S_CHG | S_COLON | S_COMMA | S_CS | S_CURLIB | S_DASH | S_DB2 | S_DMY | S_DUW | S_ENDACTGRP | S_ENDMOD | S_ENDPGM | S_ENDSQL | S_ENDJOB | S_EUR | S_HEX | S_HMS | S_ISO | S_JIS | S_JUL | S_JOB | S_JOBRUN | S_LANGIDSHR | S_LANGIDUNQ | S_LIBL | S_LIST | S_MDY | S_NAMING | S_NO | S_NONE | S_OPTIMIZE | S_OWNER | S_PERIOD | S_PRINT | S_READ | S_RR | S_RUW | S_SLASH | S_SOURCE | S_SQL | S_STD | S_STMT | S_SYS | S_SYSVAL | S_USA | S_USER | S_YES | S_YMD | BOOLEAN | BOOL | BIT | VARBIT | INT1 | INT2 | INT4 | INT8 | TINYINT | SMALLINT | INT | INTEGER | BIGINT | FLOAT4 | FLOAT8 | REAL | FLOAT | DOUBLE | NUMERIC | DECIMAL | DEC | CHAR | VARCHAR | NCHAR | NVARCHAR | DATE | TIME | TIMETZ | TIMESTAMP | TIMESTAMPTZ | TEXT | BINARY | VARBINARY | BLOB | BYTEA | INET4 | ASSIGN | EQUAL | SEMI_COLON | COMMA | NOT_EQUAL | LTH | LEQ | GTH | GEQ | LEFT_PAREN | RIGHT_PAREN | PLUS | MINUS | MULTIPLY | DIVIDE | MODULAR | DOT | NUMBER | REAL_NUMBER | COMMENT | Descriptor_Name | Identifier | Variable | Character_String_Literal | Quote | Double_Quote | Space | White_Space | BAD )
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1:8: ( T__408 | AFTER | AS | ALIAS | ALL | ALLOCATE | ALLOW | ALWBLK | ALWCPYDTA | CLOSQLCSR | CNULRQD | AND | ANY | ASC | BEFORE | BOTH | BY | CALL | CASE | CASCADE | CHARACTER | CLOSE | COALESCE | COLUMN | COUNT | CREATE | COMMIT | COMMITTED | CONDITION | CONNECT | CONNECTION | CROSS | CUBE | CURRENT | CURSOR | DATFMT | DATSEP | DBGVIEW | DEALLOCATE | DEFAULT | DECLARE | DECMPT | DFTRDBCOL | DESC | DESCRIBE | DESCRIPTOR | DIAGNOSTICS | DISTINCT | DISCONNECT | DLYPRP | DROP | DYNAMIC | DYNDFTCOL | DYNUSRPRF | END | ELSE | EVENTF | EXCEPT | EXCLUSIVE | EXECUTE | EXTERNAL | FALSE | FETCH | FIRST | FOR | FORMAT | FULL | FROM | GET | GLOBAL | GROUP | HAVING | HOLD | IN | INDEX | INNER | INSERT | INTERSECT | INTO | IMMEDIATE | IS | ISOLATION | JOIN | LABELS | LANGID | LAST | LEFT | LEVEL | LIKE | LIMIT | LOCAL | LOCATION | LOCK | MAX | MODE | NAME | NAMES | NAMING | NATIONAL | NATURAL | NEXT | NO | NOT | NULL | NULLIF | ON | ONLY | OPEN | OPTION | OPTLOB | OR | ORDER | OUTER | OUTPUT | PRECISION | PREPARE | PRIOR | RDBCNNMTH | READ | RELATIVE | RELEASE | RENAME | REPEATABLE | REPLACE | RESET | RESTRICT | RIGHT | ROLLBACK | ROLLUP | ROWS | SET | SELECT | SCROLL | SHARE | SERIALIZABLE | SYSTEM | SQL | SQLCURRULE | SQLPATH | SRTSEQ | TABLE | TGTRLS | THEN | TIMFMT | TIMSEP | TO | TRANSACTION | TRUE | UNCOMMITTED | UNION | UNIQUE | UNKNOWN | USING | USER | USRPRF | VALUE | VALUES | VARYING | WHEN | WHERE | WITH | WITHOUT | WORK | WRITE | VIEW | ZONE | S_ALL | S_ALLREAD | S_BLANK | S_CHG | S_COLON | S_COMMA | S_CS | S_CURLIB | S_DASH | S_DB2 | S_DMY | S_DUW | S_ENDACTGRP | S_ENDMOD | S_ENDPGM | S_ENDSQL | S_ENDJOB | S_EUR | S_HEX | S_HMS | S_ISO | S_JIS | S_JUL | S_JOB | S_JOBRUN | S_LANGIDSHR | S_LANGIDUNQ | S_LIBL | S_LIST | S_MDY | S_NAMING | S_NO | S_NONE | S_OPTIMIZE | S_OWNER | S_PERIOD | S_PRINT | S_READ | S_RR | S_RUW | S_SLASH | S_SOURCE | S_SQL | S_STD | S_STMT | S_SYS | S_SYSVAL | S_USA | S_USER | S_YES | S_YMD | BOOLEAN | BOOL | BIT | VARBIT | INT1 | INT2 | INT4 | INT8 | TINYINT | SMALLINT | INT | INTEGER | BIGINT | FLOAT4 | FLOAT8 | REAL | FLOAT | DOUBLE | NUMERIC | DECIMAL | DEC | CHAR | VARCHAR | NCHAR | NVARCHAR | DATE | TIME | TIMETZ | TIMESTAMP | TIMESTAMPTZ | TEXT | BINARY | VARBINARY | BLOB | BYTEA | INET4 | ASSIGN | EQUAL | SEMI_COLON | COMMA | NOT_EQUAL | LTH | LEQ | GTH | GEQ | LEFT_PAREN | RIGHT_PAREN | PLUS | MINUS | MULTIPLY | DIVIDE | MODULAR | DOT | NUMBER | REAL_NUMBER | COMMENT | Descriptor_Name | Identifier | Variable | Character_String_Literal | Quote | Double_Quote | Space | White_Space | BAD )
 		int alt24=282;
 		alt24 = dfa24.predict(input);
 		switch (alt24) {
 			case 1 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1:10: T__407
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1:10: T__408
 				{
-				mT__407(); 
+				mT__408(); 
 
 				}
 				break;
@@ -12424,7 +12425,7 @@ public class DBLLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "1530:1: REAL_NUMBER : ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT );";
+			return "1532:1: REAL_NUMBER : ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT );";
 		}
 	}
 
@@ -14403,7 +14404,7 @@ public class DBLLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "1:1: Tokens : ( T__407 | AFTER | AS | ALIAS | ALL | ALLOCATE | ALLOW | ALWBLK | ALWCPYDTA | CLOSQLCSR | CNULRQD | AND | ANY | ASC | BEFORE | BOTH | BY | CALL | CASE | CASCADE | CHARACTER | CLOSE | COALESCE | COLUMN | COUNT | CREATE | COMMIT | COMMITTED | CONDITION | CONNECT | CONNECTION | CROSS | CUBE | CURRENT | CURSOR | DATFMT | DATSEP | DBGVIEW | DEALLOCATE | DEFAULT | DECLARE | DECMPT | DFTRDBCOL | DESC | DESCRIBE | DESCRIPTOR | DIAGNOSTICS | DISTINCT | DISCONNECT | DLYPRP | DROP | DYNAMIC | DYNDFTCOL | DYNUSRPRF | END | ELSE | EVENTF | EXCEPT | EXCLUSIVE | EXECUTE | EXTERNAL | FALSE | FETCH | FIRST | FOR | FORMAT | FULL | FROM | GET | GLOBAL | GROUP | HAVING | HOLD | IN | INDEX | INNER | INSERT | INTERSECT | INTO | IMMEDIATE | IS | ISOLATION | JOIN | LABELS | LANGID | LAST | LEFT | LEVEL | LIKE | LIMIT | LOCAL | LOCATION | LOCK | MAX | MODE | NAME | NAMES | NAMING | NATIONAL | NATURAL | NEXT | NO | NOT | NULL | NULLIF | ON | ONLY | OPEN | OPTION | OPTLOB | OR | ORDER | OUTER | OUTPUT | PRECISION | PREPARE | PRIOR | RDBCNNMTH | READ | RELATIVE | RELEASE | RENAME | REPEATABLE | REPLACE | RESET | RESTRICT | RIGHT | ROLLBACK | ROLLUP | ROWS | SET | SELECT | SCROLL | SHARE | SERIALIZABLE | SYSTEM | SQL | SQLCURRULE | SQLPATH | SRTSEQ | TABLE | TGTRLS | THEN | TIMFMT | TIMSEP | TO | TRANSACTION | TRUE | UNCOMMITTED | UNION | UNIQUE | UNKNOWN | USING | USER | USRPRF | VALUE | VALUES | VARYING | WHEN | WHERE | WITH | WITHOUT | WORK | WRITE | VIEW | ZONE | S_ALL | S_ALLREAD | S_BLANK | S_CHG | S_COLON | S_COMMA | S_CS | S_CURLIB | S_DASH | S_DB2 | S_DMY | S_DUW | S_ENDACTGRP | S_ENDMOD | S_ENDPGM | S_ENDSQL | S_ENDJOB | S_EUR | S_HEX | S_HMS | S_ISO | S_JIS | S_JUL | S_JOB | S_JOBRUN | S_LANGIDSHR | S_LANGIDUNQ | S_LIBL | S_LIST | S_MDY | S_NAMING | S_NO | S_NONE | S_OPTIMIZE | S_OWNER | S_PERIOD | S_PRINT | S_READ | S_RR | S_RUW | S_SLASH | S_SOURCE | S_SQL | S_STD | S_STMT | S_SYS | S_SYSVAL | S_USA | S_USER | S_YES | S_YMD | BOOLEAN | BOOL | BIT | VARBIT | INT1 | INT2 | INT4 | INT8 | TINYINT | SMALLINT | INT | INTEGER | BIGINT | FLOAT4 | FLOAT8 | REAL | FLOAT | DOUBLE | NUMERIC | DECIMAL | DEC | CHAR | VARCHAR | NCHAR | NVARCHAR | DATE | TIME | TIMETZ | TIMESTAMP | TIMESTAMPTZ | TEXT | BINARY | VARBINARY | BLOB | BYTEA | INET4 | ASSIGN | EQUAL | SEMI_COLON | COMMA | NOT_EQUAL | LTH | LEQ | GTH | GEQ | LEFT_PAREN | RIGHT_PAREN | PLUS | MINUS | MULTIPLY | DIVIDE | MODULAR | DOT | NUMBER | REAL_NUMBER | COMMENT | Descriptor_Name | Identifier | Variable | Character_String_Literal | Quote | Double_Quote | Space | White_Space | BAD );";
+			return "1:1: Tokens : ( T__408 | AFTER | AS | ALIAS | ALL | ALLOCATE | ALLOW | ALWBLK | ALWCPYDTA | CLOSQLCSR | CNULRQD | AND | ANY | ASC | BEFORE | BOTH | BY | CALL | CASE | CASCADE | CHARACTER | CLOSE | COALESCE | COLUMN | COUNT | CREATE | COMMIT | COMMITTED | CONDITION | CONNECT | CONNECTION | CROSS | CUBE | CURRENT | CURSOR | DATFMT | DATSEP | DBGVIEW | DEALLOCATE | DEFAULT | DECLARE | DECMPT | DFTRDBCOL | DESC | DESCRIBE | DESCRIPTOR | DIAGNOSTICS | DISTINCT | DISCONNECT | DLYPRP | DROP | DYNAMIC | DYNDFTCOL | DYNUSRPRF | END | ELSE | EVENTF | EXCEPT | EXCLUSIVE | EXECUTE | EXTERNAL | FALSE | FETCH | FIRST | FOR | FORMAT | FULL | FROM | GET | GLOBAL | GROUP | HAVING | HOLD | IN | INDEX | INNER | INSERT | INTERSECT | INTO | IMMEDIATE | IS | ISOLATION | JOIN | LABELS | LANGID | LAST | LEFT | LEVEL | LIKE | LIMIT | LOCAL | LOCATION | LOCK | MAX | MODE | NAME | NAMES | NAMING | NATIONAL | NATURAL | NEXT | NO | NOT | NULL | NULLIF | ON | ONLY | OPEN | OPTION | OPTLOB | OR | ORDER | OUTER | OUTPUT | PRECISION | PREPARE | PRIOR | RDBCNNMTH | READ | RELATIVE | RELEASE | RENAME | REPEATABLE | REPLACE | RESET | RESTRICT | RIGHT | ROLLBACK | ROLLUP | ROWS | SET | SELECT | SCROLL | SHARE | SERIALIZABLE | SYSTEM | SQL | SQLCURRULE | SQLPATH | SRTSEQ | TABLE | TGTRLS | THEN | TIMFMT | TIMSEP | TO | TRANSACTION | TRUE | UNCOMMITTED | UNION | UNIQUE | UNKNOWN | USING | USER | USRPRF | VALUE | VALUES | VARYING | WHEN | WHERE | WITH | WITHOUT | WORK | WRITE | VIEW | ZONE | S_ALL | S_ALLREAD | S_BLANK | S_CHG | S_COLON | S_COMMA | S_CS | S_CURLIB | S_DASH | S_DB2 | S_DMY | S_DUW | S_ENDACTGRP | S_ENDMOD | S_ENDPGM | S_ENDSQL | S_ENDJOB | S_EUR | S_HEX | S_HMS | S_ISO | S_JIS | S_JUL | S_JOB | S_JOBRUN | S_LANGIDSHR | S_LANGIDUNQ | S_LIBL | S_LIST | S_MDY | S_NAMING | S_NO | S_NONE | S_OPTIMIZE | S_OWNER | S_PERIOD | S_PRINT | S_READ | S_RR | S_RUW | S_SLASH | S_SOURCE | S_SQL | S_STD | S_STMT | S_SYS | S_SYSVAL | S_USA | S_USER | S_YES | S_YMD | BOOLEAN | BOOL | BIT | VARBIT | INT1 | INT2 | INT4 | INT8 | TINYINT | SMALLINT | INT | INTEGER | BIGINT | FLOAT4 | FLOAT8 | REAL | FLOAT | DOUBLE | NUMERIC | DECIMAL | DEC | CHAR | VARCHAR | NCHAR | NVARCHAR | DATE | TIME | TIMETZ | TIMESTAMP | TIMESTAMPTZ | TEXT | BINARY | VARBINARY | BLOB | BYTEA | INET4 | ASSIGN | EQUAL | SEMI_COLON | COMMA | NOT_EQUAL | LTH | LEQ | GTH | GEQ | LEFT_PAREN | RIGHT_PAREN | PLUS | MINUS | MULTIPLY | DIVIDE | MODULAR | DOT | NUMBER | REAL_NUMBER | COMMENT | Descriptor_Name | Identifier | Variable | Character_String_Literal | Quote | Double_Quote | Space | White_Space | BAD );";
 		}
 		@Override
 		public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {

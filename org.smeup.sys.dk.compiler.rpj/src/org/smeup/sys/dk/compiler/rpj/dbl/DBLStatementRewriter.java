@@ -38,9 +38,11 @@ import org.smeup.sys.db.syntax.dbl.QDescribeStatement;
 import org.smeup.sys.db.syntax.dbl.QExecuteImmediateStatement;
 import org.smeup.sys.db.syntax.dbl.QExecuteStatement;
 import org.smeup.sys.db.syntax.dbl.QFetchStatement;
+import org.smeup.sys.db.syntax.dbl.QGetDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QIntoClause;
 import org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause;
 import org.smeup.sys.db.syntax.dbl.QOpenStatement;
+import org.smeup.sys.db.syntax.dbl.QOption;
 import org.smeup.sys.db.syntax.dbl.QPrepareStatement;
 import org.smeup.sys.db.syntax.dbl.QSetOptionStatement;
 import org.smeup.sys.db.syntax.dbl.QSetTransactionStatement;
@@ -187,6 +189,8 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 				result = manageAllocateDescriptorStatement((QAllocateDescriptorStatement) bindingStatement);
 			else if (bindingStatement instanceof QDeallocateDescriptorStatement)
 				result = manageDeallocateDescriptorStatement((QDeallocateDescriptorStatement) bindingStatement);
+			else if (bindingStatement instanceof QGetDescriptorStatement)
+				result = manageGetDescriptorStatement((QGetDescriptorStatement) bindingStatement);
 
 		} else {
 			// TODO: manage parser error
@@ -260,6 +264,40 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 		return methodExec;
 	}
+	
+	private QStatement manageGetDescriptorStatement(QGetDescriptorStatement bindingStatement) {
+
+		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+		methodExec.setObject(bindingStatement.getDescriptorName());
+		methodExec.setMethod("getDescriptor");
+		
+		// Scope
+		methodExec.getParameters().add(bindingStatement.getDescriptorScope().getLiteral());
+		
+		// Value
+		if (bindingStatement.getValue() != null) {
+			methodExec.getParameters().add(bindingStatement.getValue());
+		} else {
+			methodExec.getParameters().add("");
+		}
+		
+		String varNames = "";
+		String varValues = "";
+		
+		for (QOption variable: bindingStatement.getVariables()) {
+			varNames += variable.getName() + " ";
+			varValues += variable.getValue() + " ";
+		}
+		
+		// Var names list
+		methodExec.getParameters().add(varNames.trim());
+		
+		// Var values list
+		methodExec.getParameters().add(varValues.trim());
+
+		return methodExec;
+	}
+
 	
 	private QStatement manageDeallocateDescriptorStatement(QDeallocateDescriptorStatement bindingStatement) {
 

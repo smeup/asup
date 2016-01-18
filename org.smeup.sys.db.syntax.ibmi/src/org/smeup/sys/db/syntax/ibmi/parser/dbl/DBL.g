@@ -112,8 +112,8 @@ tokens {
   FOR_COLUMN;
   NOT_NULL;
   USING_DESCRIPTOR;
-  VALUES;
   VARIABLE;
+  VARIABLES;
   VAR_INFO;
   VIEW_NAME;
   WITH_DEFAULT;
@@ -1036,29 +1036,31 @@ info
 	:
 	header_info
 	|
-	var_settings
+	item_info
+	;
+		
+header_info
+	:
+	variable_assign (',' variable_assign)*-> ^(HEADER_INFO ^(VARIABLES variable_assign variable_assign*))
 	;	
 	
-var_settings
+item_info
 	:
-	VALUE i=NUMBER var_item_info -> ^(VAR_INFO $i var_item_info)
+	VALUE i=NUMBER var_item_info -> ^(ITEM_INFO $i var_item_info)
 	|
-	VALUE v=Variable var_item_info -> ^(VAR_INFO ^(VARIABLE $v) var_item_info) 
+	VALUE v=Variable var_item_info -> ^(ITEM_INFO ^(VARIABLE $v) var_item_info) 
 	;
 
 var_item_info
 	:
-	variable_assign  (',' variable_assign)* -> ^(VALUES variable_assign variable_assign*)
+	variable_assign  (',' variable_assign)* -> ^(VARIABLES variable_assign variable_assign*)
 	;	
 
-header_info
-	:
-	variable_assign (',' variable_assign)*-> ^(HEADER_INFO variable_assign variable_assign*)
-	;	
+	
 
 variable_assign
 	:
-	v=Variable EQUAL variable_value -> ^(VALUES ^(VARIABLE $v) variable_value) 
+	v=Variable EQUAL variable_value -> ^(VALUE ^(VARIABLE $v) variable_value) 
 	;	
 
 variable_value

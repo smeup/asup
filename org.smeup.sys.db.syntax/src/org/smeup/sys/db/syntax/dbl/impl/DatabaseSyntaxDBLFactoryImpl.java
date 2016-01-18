@@ -66,6 +66,7 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 			case QDatabaseSyntaxDBLPackage.EXECUTE_IMMEDIATE_STATEMENT: return (EObject)createExecuteImmediateStatement();
 			case QDatabaseSyntaxDBLPackage.EXECUTE_STATEMENT: return (EObject)createExecuteStatement();
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT: return (EObject)createFetchStatement();
+			case QDatabaseSyntaxDBLPackage.GET_DESCRIPTOR_STATEMENT: return (EObject)createGetDescriptorStatement();
 			case QDatabaseSyntaxDBLPackage.INTO_CLAUSE: return (EObject)createIntoClause();
 			case QDatabaseSyntaxDBLPackage.SINGLE_ROW_FETCH_CLAUSE: return (EObject)createSingleRowFetchClause();
 			case QDatabaseSyntaxDBLPackage.MULTIPLE_ROW_FETCH_CLAUSE: return (EObject)createMultipleRowFetchClause();
@@ -202,6 +203,16 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 	public QFetchStatement createFetchStatement() {
 		FetchStatementImpl fetchStatement = new FetchStatementImpl();
 		return fetchStatement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QGetDescriptorStatement createGetDescriptorStatement() {
+		GetDescriptorStatementImpl getDescriptorStatement = new GetDescriptorStatementImpl();
+		return getDescriptorStatement;
 	}
 
 	/**
