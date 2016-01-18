@@ -49,35 +49,4 @@ public class BaseLibraryManagerImpl implements QLibraryManager {
 		QResourceWriter<QLibrary> libraryWriter = resourceManager.getResourceWriter(job, QLibrary.class, systemLibrary);
 		return libraryWriter;
 	}
-
-	/*
-	 * @Override public Class<?> loadClass(QJob job, String library, String
-	 * name) throws OperatingSystemException {
-	 * 
-	 * // prepareBundleMap();
-	 * 
-	 * // load bundle library Long bundleId = bundleMap.get(library);
-	 * if(bundleId == null) { for(Bundle bundle: bundleContext.getBundles()) {
-	 * System.out.println(bundle); bundleMap.put(bundle.getSymbolicName(),
-	 * bundle.getBundleId()); } bundleId = bundleMap.get(library); if(bundleId
-	 * == null) throw new
-	 * OperatingSystemException("Bundle "+library+" not found"); } Bundle
-	 * bundleLibrary = bundleContext.getBundle(bundleId); Bundle bundleLibrary =
-	 * Platform.getBundle(library); if(bundleLibrary == null) throw new
-	 * OperatingSystemException("Bundle "+library+" not found");
-	 * 
-	 * // load class try { return bundleLibrary.loadClass(name); } catch
-	 * (ClassNotFoundException e) { throw new OperatingSystemException(e); }
-	 * catch (ClassCastException e) { throw new
-	 * OperatingSystemRuntimeException(e); }
-	 * 
-	 * }
-	 */
-
-	/*
-	 * private void prepareBundleMap() { if(this.bundleMap == null) {
-	 * this.bundleMap = new HashMap<String, Long>(); for(Bundle bundle:
-	 * bundleContext.getBundles()) { bundleMap.put(bundle.getSymbolicName(),
-	 * bundle.getBundleId()); } } }
-	 */
 }

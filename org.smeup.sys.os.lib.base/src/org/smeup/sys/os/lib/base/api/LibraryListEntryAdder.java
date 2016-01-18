@@ -58,7 +58,7 @@ public class LibraryListEntryAdder {
 
 		switch (libraryListPosition.asEnum()) {
 		case FIRST:
-			lists.addFirst(job.getLibraries(), library.trimR());
+			lists.addAfter(job.getLibraries(), job.getSystem().getSystemLibrary(), library.trimR());
 			break;
 		case LAST:
 			lists.addLast(job.getLibraries(), library.trimR());

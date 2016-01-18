@@ -2,7 +2,7 @@ package org.smeup.sys.os.lib.base.api.tools;
 
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
-import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
@@ -29,7 +29,6 @@ public class CurrentLibraryChangeHelper {
 	}
 
 	public void changeCurrentLibrary(QEnum<CURRENTLIBRARYEnum, QCharacter> currentLibrary) {
-		QResourceWriter<QLibrary> libraryWriter = libraryManager.getLibraryWriter(job);
 
 		switch (currentLibrary.asEnum()) {
 		case SAME:
@@ -41,7 +40,8 @@ public class CurrentLibraryChangeHelper {
 
 		case OTHER:
 			String libName = currentLibrary.asData().trimR();
-			QLibrary qLibrary = libraryWriter.lookup(libName);
+			QResourceReader<QLibrary> libraryReader = libraryManager.getLibraryReader(job);
+			QLibrary qLibrary = libraryReader.lookup(libName);
 
 			if (qLibrary == null)
 				throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] { libName });

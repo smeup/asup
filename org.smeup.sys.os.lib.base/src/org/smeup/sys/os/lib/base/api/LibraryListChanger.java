@@ -53,20 +53,20 @@ public class LibraryListChanger {
 			break;
 
 		case NONE:
-			job.getLibraries().removeAll(job.getLibraries());
+			job.getLibraries().clear();
+			job.getLibraries().add(job.getSystem().getSystemLibrary());
 			break;
 
 		case OTHER:
-			librariesForCurrentThread.count();
 			List<String> newLibList = new ArrayList<String>();
 			for (QEnum<LIBRARIESFORCURRENTTHREADEnum, QCharacter> libEnum : librariesForCurrentThread) {
 				String lib = libEnum.asData().trimR();
-				if (!lib.equals("")) {
+				if (!lib.isEmpty()) 
 					newLibList.add(lib);
-				}
 			}
 			if (newLibList.size() > 0) {
-				job.getLibraries().removeAll(job.getLibraries());
+				job.getLibraries().clear();
+				job.getLibraries().add(job.getSystem().getSystemLibrary());
 				job.getLibraries().addAll(newLibList);
 			}
 			break;

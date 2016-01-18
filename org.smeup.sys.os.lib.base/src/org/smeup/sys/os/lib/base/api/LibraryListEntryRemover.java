@@ -41,6 +41,9 @@ public class LibraryListEntryRemover {
 	public void main(@DataDef(length = 10) QCharacter library) {
 		String libName = library.trimR();
 
+		if(libName.equals(job.getSystem().getSystemLibrary()))
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2104, new String[] { libName });
+		
 		if (!exists(libName))
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] { libName });
 
