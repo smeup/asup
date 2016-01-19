@@ -39,11 +39,13 @@ import org.smeup.sys.db.syntax.dbl.QExecuteImmediateStatement;
 import org.smeup.sys.db.syntax.dbl.QExecuteStatement;
 import org.smeup.sys.db.syntax.dbl.QFetchStatement;
 import org.smeup.sys.db.syntax.dbl.QGetDescriptorStatement;
+import org.smeup.sys.db.syntax.dbl.QGetDiagnosticsStatement;
 import org.smeup.sys.db.syntax.dbl.QIntoClause;
 import org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause;
 import org.smeup.sys.db.syntax.dbl.QOpenStatement;
 import org.smeup.sys.db.syntax.dbl.QOption;
 import org.smeup.sys.db.syntax.dbl.QPrepareStatement;
+import org.smeup.sys.db.syntax.dbl.QSetDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QSetOptionStatement;
 import org.smeup.sys.db.syntax.dbl.QSetTransactionStatement;
 import org.smeup.sys.db.syntax.dbl.QSingleRowFetchClause;
@@ -191,6 +193,10 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 				result = manageDeallocateDescriptorStatement((QDeallocateDescriptorStatement) bindingStatement);
 			else if (bindingStatement instanceof QGetDescriptorStatement)
 				result = manageGetDescriptorStatement((QGetDescriptorStatement) bindingStatement);
+			else if (bindingStatement instanceof QSetDescriptorStatement)
+				result = manageSetDescriptorStatement((QSetDescriptorStatement) bindingStatement);
+			else if (bindingStatement instanceof QGetDiagnosticsStatement)
+				result = manageGetDiagnosticsStatement((QGetDiagnosticsStatement) bindingStatement);
 
 		} else {
 			// TODO: manage parser error
@@ -294,6 +300,66 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 		
 		// Var values list
 		methodExec.getParameters().add(varValues.trim());
+
+		return methodExec;
+	}
+	
+	private QStatement manageSetDescriptorStatement(QSetDescriptorStatement bindingStatement) {
+
+		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+		methodExec.setObject(bindingStatement.getDescriptorName());
+		methodExec.setMethod("setDescriptor");
+		
+		// Value
+		if (bindingStatement.getValue() != null) {
+			methodExec.getParameters().add(bindingStatement.getValue());
+		} else {
+			methodExec.getParameters().add("");
+		}
+		
+		String itemNames = "";
+		String itemValues = "";
+		
+		for (QOption item: bindingStatement.getItems()) {
+			itemNames += item.getName() + " ";
+			itemValues += item.getValue() + " ";
+		}
+		
+		// Item names list
+		methodExec.getParameters().add(itemNames.trim());
+		
+		// Item values list
+		methodExec.getParameters().add(itemValues.trim());
+
+		return methodExec;
+	}
+	
+	private QStatement manageGetDiagnosticsStatement(QGetDiagnosticsStatement bindingStatement) {
+
+		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+		methodExec.setObject(null);
+		methodExec.setMethod("getDiagnostics");
+		
+		// Condition
+		if (bindingStatement.getConditionInfo().getCondition() != null) {
+			methodExec.getParameters().add(bindingStatement.getConditionInfo().getCondition());
+		} else {
+			methodExec.getParameters().add("");
+		}
+		
+		String itemNames = "";
+		String itemValues = "";
+		
+		for (QOption item: bindingStatement.getConditionInfo().getConditionItems()) {
+			itemNames += item.getName() + " ";
+			itemValues += item.getValue() + " ";
+		}
+		
+		// ConditionItem names list
+		methodExec.getParameters().add(itemNames.trim());
+		
+		// ConditionItem values list
+		methodExec.getParameters().add(itemValues.trim());
 
 		return methodExec;
 	}

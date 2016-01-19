@@ -325,6 +325,15 @@
           eType="#//dbl/DescriptorScope"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="withMax" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CloseStatement" eSuperTypes="#//BindingStatement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="cursor" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ConditionInfoClause">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" lowerBound="1"
+          eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="conditionItems" upperBound="-1"
+          eType="#//dbl/Option"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="CursorType">
       <eLiterals name="NOTSCROLL" value="10" literal="NOTSCROLL"/>
       <eLiterals name="SCROLL" value="20"/>
@@ -389,6 +398,9 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
           eType="#//dbl/Option"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="GetDiagnosticsStatement" eSuperTypes="#//BindingStatement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="conditionInfo" eType="#//dbl/ConditionInfoClause"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="IntoClause">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptorName" lowerBound="1"
           eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
@@ -419,6 +431,13 @@
     <eClassifiers xsi:type="ecore:EEnum" name="RWOperation">
       <eLiterals name="READ_ONLY" literal="READ_ONLY"/>
       <eLiterals name="READ_WRITE" value="1"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SetDescriptorStatement" eSuperTypes="#//BindingStatement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptorName" lowerBound="1"
+          eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
+          eType="#//dbl/Option"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="SetTransactionStatement" eSuperTypes="#//BindingStatement">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="isolationLevel" eType="#//dbl/IsolationLevel"/>
@@ -453,9 +472,6 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="into" eType="#//dbl/IntoClause"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="statementName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="CloseStatement" eSuperTypes="#//BindingStatement">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="cursor" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Option">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>

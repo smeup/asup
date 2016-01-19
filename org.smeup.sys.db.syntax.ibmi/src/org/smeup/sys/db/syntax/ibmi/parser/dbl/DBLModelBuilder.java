@@ -29,6 +29,7 @@ import org.smeup.sys.db.syntax.dbl.IsolationLevel;
 import org.smeup.sys.db.syntax.dbl.OpenUsingType;
 import org.smeup.sys.db.syntax.dbl.QAllocateDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QCloseStatement;
+import org.smeup.sys.db.syntax.dbl.QConditionInfoClause;
 import org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLFactory;
 import org.smeup.sys.db.syntax.dbl.QDeallocateDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QDeclareCursorStatement;
@@ -37,11 +38,13 @@ import org.smeup.sys.db.syntax.dbl.QExecuteImmediateStatement;
 import org.smeup.sys.db.syntax.dbl.QExecuteStatement;
 import org.smeup.sys.db.syntax.dbl.QFetchStatement;
 import org.smeup.sys.db.syntax.dbl.QGetDescriptorStatement;
+import org.smeup.sys.db.syntax.dbl.QGetDiagnosticsStatement;
 import org.smeup.sys.db.syntax.dbl.QIntoClause;
 import org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause;
 import org.smeup.sys.db.syntax.dbl.QOpenStatement;
 import org.smeup.sys.db.syntax.dbl.QOption;
 import org.smeup.sys.db.syntax.dbl.QPrepareStatement;
+import org.smeup.sys.db.syntax.dbl.QSetDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QSetOptionStatement;
 import org.smeup.sys.db.syntax.dbl.QSetTransactionStatement;
 import org.smeup.sys.db.syntax.dbl.QSingleRowFetchClause;
@@ -152,7 +155,14 @@ public class DBLModelBuilder {
 		case DBLLexer.GET_DESCRIPTOR_STATEMENT:
 			result = manageGetDescriptorStatement(tree);
 			break;			
-			
+		
+		case DBLLexer.SET_DESCRIPTOR_STATEMENT:
+			result = manageSetDescriptorStatement(tree);
+			break;				
+		
+		case DBLLexer.GET_DIAGNOSTICS_STATEMENT:
+			result = manageGetDiagnosticsStatement(tree);
+			break;					
 
 		default:
 			break;
@@ -386,6 +396,97 @@ public class DBLModelBuilder {
 			}
 		}
 		return getDescriptorStatement;
+	}
+	
+	private QBindingStatement manageSetDescriptorStatement(Tree tree) {
+		
+		QSetDescriptorStatement setDescriptorStatement = QDatabaseSyntaxDBLFactory.eINSTANCE.createSetDescriptorStatement();		
+		
+		Tree fieldToken = null;
+
+		for (int i = 0; i < tree.getChildCount(); i++) {
+			fieldToken = tree.getChild(i);
+
+			switch (fieldToken.getType()) {
+
+			case DBLLexer.DESCRIPTOR:
+
+				setDescriptorStatement.setDescriptorName(fieldToken.getChild(0).getText());
+
+				break;				
+							
+			case DBLLexer.ITEM_INFO:
+				/**
+				 * Expected tree format:
+				 * 
+				 * ITEM_INFO ____ VARIABLE  
+				 *           |
+				 *           |___ ITEMS ______ ITEM _____ NAME
+				 *                         |          |__ VALUE __ VARIABLE
+				 *                         |	
+				 *                         |__ ITEM _____ NAME
+				 *                                    |__ VALUE
+				 */
+				if (fieldToken.getChildCount() > 0) {
+					
+					for (int j = 0; j < fieldToken.getChildCount(); j++) {
+						
+						switch(fieldToken.getChild(j).getType()) {
+						
+						case DBLLexer.VARIABLE:
+							
+							setDescriptorStatement.setValue(fieldToken.getChild(j).getChild(0).getText());
+							
+							break;
+						
+						case DBLLexer.ITEMS:
+							
+							//Node ITEMS
+							
+							for (int j1 = 0; j1 < fieldToken.getChild(0).getChildCount(); j1++) {					
+								
+								// Node ITEM
+								Tree item = fieldToken.getChild(0).getChild(j1);
+								
+								QOption itemValue = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
+								
+								for (int k = 0; k < item.getChildCount(); k++) {
+									
+									switch (item.getChild(k).getType()) {
+									
+									case DBLLexer.NAME:
+										
+										// Node NAME
+										if (item.getChild(k).getChildCount() > 0)
+											itemValue.setName(item.getChild(k).getChild(0).getText());
+									break;
+									
+									case DBLLexer.VALUE:
+										
+										// Node VALUE
+										if (item.getChild(k).getChildCount() > 0)
+											if (item.getChild(k).getChild(0).getType() == DBLLexer.VARIABLE) {
+												// Node VARIABLE: get child text as variable name
+												itemValue.setValue(item.getChild(k).getChild(0).getChild(0).getText());
+											} else {													
+												itemValue.setValue(item.getChild(k).getChild(0).getText());
+											}
+									break;	
+									}								
+								}
+							
+								setDescriptorStatement.getItems().add(itemValue);
+							}
+							
+							break;
+						}
+					}
+				}
+			
+			break;
+			}
+		}
+		return setDescriptorStatement;
 	}
 
 	
@@ -996,6 +1097,74 @@ public class DBLModelBuilder {
 		return setTransactionStatement;
 
 	}
+	
+	private QBindingStatement manageGetDiagnosticsStatement(Tree tree) {
+		
+		QGetDiagnosticsStatement getDiagnosticsStatement = QDatabaseSyntaxDBLFactory.eINSTANCE.createGetDiagnosticsStatement();
+		QConditionInfoClause conditionInfoClause = QDatabaseSyntaxDBLFactory.eINSTANCE.createConditionInfoClause();
+		
+		Tree conditionInfoNode = tree.getChild(0);
+		
+		if (conditionInfoNode.getType() == DBLLexer.CONDITION_INFO) {
+			
+			Tree conditionInfoChild = null;
+			for (int i = 0; i < conditionInfoNode.getChildCount(); i++) {
+				conditionInfoChild = conditionInfoNode.getChild(i);
+				
+				switch(conditionInfoChild.getType()) {
+				
+				case DBLLexer.VARIABLE:
+						conditionInfoClause.setCondition(conditionInfoChild.getChild(0).getText());
+					break;
+				
+				case DBLLexer.NUMBER:
+					conditionInfoClause.setCondition(conditionInfoChild.getText());
+					break;
+				
+				case DBLLexer.CONDITION_ITEMS:
+					
+					Tree valueNode = null;
+					for (int j = 0; j < conditionInfoChild.getChildCount(); j++) {						
+						valueNode = conditionInfoChild.getChild(j);
+						
+						Tree valueNodeChild = null;
+						for (int j2 = 0; j2 < valueNode.getChildCount(); j2++) {
+														
+							valueNodeChild = valueNode.getChild(j2);
+							
+							QOption conditionItem = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
+							
+							switch (valueNodeChild.getType()) {
+							
+							case DBLLexer.VARIABLE:
+								
+								conditionItem.setName(valueNodeChild.getChild(0).getText());
+								break;
+							case DBLLexer.VALUE:
+								
+								conditionItem.setValue(valueNodeChild.getChild(0).getText());
+								break;
+							
+							}
+							
+							conditionInfoClause.getConditionItems().add(conditionItem);
+						}
+						
+					}
+					
+					break;
+				
+				}
+				
+			}
+		}
+		
+		
+		getDiagnosticsStatement.setConditionInfo(conditionInfoClause);
+		
+		return getDiagnosticsStatement;
+	}
+	
 
 	// Utility methods
 
@@ -1003,28 +1172,53 @@ public class DBLModelBuilder {
 	 * Identity DECLARE CURSOR statements with nested SQL query For example:
 	 * 
 	 * DECLARE c1 CURSOR FOR (SELECT A, B, C FROM FILE)
+	 * DECLARE c1 CURSOR FOR SELECT A, B, C FROM FILE
 	 */
 	private boolean isDeclareStatementWithSelect(String statement) {
-		return statement.matches("^[\\s]*[dD][eE][cC][lL][aA][rR][eE].*[fF][oO][rR][\\s]*[(].*");
+		
+		boolean result = false;
+		
+		if (statement.matches("^[\\s]*[dD][eE][cC][lL][aA][rR][eE].*[fF][oO][rR][\\s]*[(].*[)]")
+			||
+			statement.matches("^[\\s]*[dD][eE][cC][lL][aA][rR][eE].*[fF][oO][rR][\\s]*[sS][eE][lL][eE][cC][tT].*")) {
+			
+			result = true;
+		}
+		
+		return result;
 	}
 
 	/**
 	 * Example:
 	 *
 	 * Input: DECLARE c1 CURSOR FOR (SELECT A, B, C FROM FILE)
+	 * 
+	 *        oppure
+	 *        
+	 *        DECLARE c1 CURSOR FOR SELECT A, B, C FROM FILE 
 	 *
 	 * Output: [DECLARE c1 CURSOR FOR s1 , SELECT A, B, C FROM FILE]
 	 *
-	 * @param viewText
+	 * @param statement
 	 * @return
 	 */
-	private String[] splitDeclareViewStatement(String viewText) {
+	private String[] splitDeclareViewStatement(String statement) {
 
 		String[] response = new String[2];
-		String[] tokens = viewText.split("[\\s]*[fF][oO][rR][\\s]*[(]", Pattern.CASE_INSENSITIVE);
-
-		response[0] = tokens[0] + " FOR s1";
-		response[1] = tokens[1].substring(0, tokens[1].length() - 1);
+		
+		if (statement.matches("^[\\s]*[dD][eE][cC][lL][aA][rR][eE].*[fF][oO][rR][\\s]*[(].*[)]")) {
+		
+			String[] tokens = statement.split("[\\s]*[fF][oO][rR][\\s]*[(]", Pattern.CASE_INSENSITIVE);
+	
+			response[0] = tokens[0] + " FOR s1";
+			response[1] = tokens[1].substring(0, tokens[1].length() - 1);
+			
+		} else if (statement.matches("^[\\s]*[dD][eE][cC][lL][aA][rR][eE].*[fF][oO][rR][\\s]*[sS][eE][lL][eE][cC][tT].*")) {
+			
+			String[] tokens = statement.split("[\\s]*[sS][eE][lL][eE][cC][tT]", Pattern.CASE_INSENSITIVE);
+			response[0] = tokens[0] + " FOR s1";
+			response[1] = "SELECT" + tokens[1];
+		}
 
 		return response;
 	}
@@ -1067,7 +1261,17 @@ public class DBLModelBuilder {
 
 		String test = "DECLARE c1 CURSOR FOR (SELECT A, B, C FROM FILE)";
 
-		System.out.println("Test: " + test);
+		System.out.println("Test1: " + test);
+		if (builder.isDeclareStatementWithSelect(test)) {
+			System.out.println("Stetement identified");
+			String[] parts = builder.splitDeclareViewStatement(test);
+			for (String part : parts)
+				System.out.println(part);
+		}
+		
+		test = "DECLARE c1 CURSOR FOR SELECT A, B, C FROM FILE";
+
+		System.out.println("Test2: " + test);
 		if (builder.isDeclareStatementWithSelect(test)) {
 			System.out.println("Stetement identified");
 			String[] parts = builder.splitDeclareViewStatement(test);
@@ -1075,8 +1279,9 @@ public class DBLModelBuilder {
 				System.out.println(part);
 		}
 
+
 		test = "EXECUTE IMMEDIATE (INSERT INTO WORK_TABLE SELECT * FROM EMPROJACT)";
-		System.out.println("Test: " + test);
+		System.out.println("Test3: " + test);
 		if (builder.isExecuteImmediateStatementWithSelect(test)) {
 			System.out.println("Stetement identified");
 			String[] parts = builder.splitExecuteImmediateStatement(test);

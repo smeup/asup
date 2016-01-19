@@ -37,6 +37,7 @@ tokens {
   COLUMN;
   COLUMNS_LIST;
   COLUMN_NAME;
+  CONDITION_INFO;
   CONDITION_ITEMS;
   COUNT_VAL;
   COUNT_ROWS;
@@ -65,6 +66,7 @@ tokens {
   ISOLATION_LEVEL;
   ITEM;
   ITEM_INFO;
+  ITEMS;
   MEMBER;
   MULTIPLE_ROW_FETCH;
   NEW_NAME;
@@ -121,6 +123,7 @@ tokens {
   WITH_MAX;
   WITHOUT_HOLD;
 }
+
 
 @header {
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
@@ -1093,12 +1096,14 @@ value_settings
 
 value_item_info
 	:
-	item_info_assign  (',' item_info_assign)* -> ^(VALUES item_info_assign item_info_assign*)
+	item_info_assign  (',' item_info_assign)* -> ^(ITEMS item_info_assign item_info_assign*)
 	;	
 
 item_info_assign
 	:
-	i = Identifier EQUAL v = Variable -> ^(VALUE ^(ITEM $i) ^(VALUE ^(VARIABLE $v))) 
+	i = Identifier EQUAL v = Variable -> ^(ITEM ^(NAME $i) ^(VALUE ^(VARIABLE $v))) 
+	|
+	i = Identifier EQUAL c = Identifier -> ^(ITEM ^(NAME $i) ^(VALUE $c)) 
 	;	
 
 /* GET DIAGNOSTIC STATEMENT */
@@ -1110,9 +1115,9 @@ get_diagnostic
 
 condition_information
 	:
-	CONDITION i=NUMBER condition_information_items -> ^(CONDITION $i condition_information_items)
+	CONDITION i=NUMBER condition_information_items -> ^(CONDITION_INFO $i condition_information_items)
 	|
-	CONDITION v=Variable condition_information_items -> ^(CONDITION ^(VARIABLE $v) condition_information_items)
+	CONDITION v=Variable condition_information_items -> ^(CONDITION_INFO ^(VARIABLE $v) condition_information_items)
 	;	
 
 condition_information_items

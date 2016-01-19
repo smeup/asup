@@ -60,6 +60,8 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case QDatabaseSyntaxDBLPackage.ALLOCATE_DESCRIPTOR_STATEMENT: return (EObject)createAllocateDescriptorStatement();
+			case QDatabaseSyntaxDBLPackage.CLOSE_STATEMENT: return (EObject)createCloseStatement();
+			case QDatabaseSyntaxDBLPackage.CONDITION_INFO_CLAUSE: return (EObject)createConditionInfoClause();
 			case QDatabaseSyntaxDBLPackage.DEALLOCATE_DESCRIPTOR_STATEMENT: return (EObject)createDeallocateDescriptorStatement();
 			case QDatabaseSyntaxDBLPackage.DECLARE_CURSOR_STATEMENT: return (EObject)createDeclareCursorStatement();
 			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT: return (EObject)createDescribeStatement();
@@ -67,14 +69,15 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 			case QDatabaseSyntaxDBLPackage.EXECUTE_STATEMENT: return (EObject)createExecuteStatement();
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT: return (EObject)createFetchStatement();
 			case QDatabaseSyntaxDBLPackage.GET_DESCRIPTOR_STATEMENT: return (EObject)createGetDescriptorStatement();
+			case QDatabaseSyntaxDBLPackage.GET_DIAGNOSTICS_STATEMENT: return (EObject)createGetDiagnosticsStatement();
 			case QDatabaseSyntaxDBLPackage.INTO_CLAUSE: return (EObject)createIntoClause();
 			case QDatabaseSyntaxDBLPackage.SINGLE_ROW_FETCH_CLAUSE: return (EObject)createSingleRowFetchClause();
 			case QDatabaseSyntaxDBLPackage.MULTIPLE_ROW_FETCH_CLAUSE: return (EObject)createMultipleRowFetchClause();
+			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT: return (EObject)createSetDescriptorStatement();
 			case QDatabaseSyntaxDBLPackage.SET_TRANSACTION_STATEMENT: return (EObject)createSetTransactionStatement();
 			case QDatabaseSyntaxDBLPackage.SET_OPTION_STATEMENT: return (EObject)createSetOptionStatement();
 			case QDatabaseSyntaxDBLPackage.OPEN_STATEMENT: return (EObject)createOpenStatement();
 			case QDatabaseSyntaxDBLPackage.PREPARE_STATEMENT: return (EObject)createPrepareStatement();
-			case QDatabaseSyntaxDBLPackage.CLOSE_STATEMENT: return (EObject)createCloseStatement();
 			case QDatabaseSyntaxDBLPackage.OPTION: return (EObject)createOption();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -220,6 +223,16 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public QGetDiagnosticsStatement createGetDiagnosticsStatement() {
+		GetDiagnosticsStatementImpl getDiagnosticsStatement = new GetDiagnosticsStatementImpl();
+		return getDiagnosticsStatement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public QIntoClause createIntoClause() {
 		IntoClauseImpl intoClause = new IntoClauseImpl();
 		return intoClause;
@@ -243,6 +256,16 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 	public QMultipleRowFetchClause createMultipleRowFetchClause() {
 		MultipleRowFetchClauseImpl multipleRowFetchClause = new MultipleRowFetchClauseImpl();
 		return multipleRowFetchClause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QSetDescriptorStatement createSetDescriptorStatement() {
+		SetDescriptorStatementImpl setDescriptorStatement = new SetDescriptorStatementImpl();
+		return setDescriptorStatement;
 	}
 
 	/**
@@ -293,6 +316,16 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 	public QCloseStatement createCloseStatement() {
 		CloseStatementImpl closeStatement = new CloseStatementImpl();
 		return closeStatement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QConditionInfoClause createConditionInfoClause() {
+		ConditionInfoClauseImpl conditionInfoClause = new ConditionInfoClauseImpl();
+		return conditionInfoClause;
 	}
 
 	/**

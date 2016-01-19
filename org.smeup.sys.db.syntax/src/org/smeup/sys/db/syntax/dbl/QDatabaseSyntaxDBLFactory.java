@@ -99,6 +99,15 @@ public interface QDatabaseSyntaxDBLFactory extends EFactory {
 	QGetDescriptorStatement createGetDescriptorStatement();
 
 	/**
+	 * Returns a new object of class '<em>Get Diagnostics Statement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Get Diagnostics Statement</em>'.
+	 * @generated
+	 */
+	QGetDiagnosticsStatement createGetDiagnosticsStatement();
+
+	/**
 	 * Returns a new object of class '<em>Into Clause</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -124,6 +133,15 @@ public interface QDatabaseSyntaxDBLFactory extends EFactory {
 	 * @generated
 	 */
 	QMultipleRowFetchClause createMultipleRowFetchClause();
+
+	/**
+	 * Returns a new object of class '<em>Set Descriptor Statement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Set Descriptor Statement</em>'.
+	 * @generated
+	 */
+	QSetDescriptorStatement createSetDescriptorStatement();
 
 	/**
 	 * Returns a new object of class '<em>Set Transaction Statement</em>'.
@@ -169,6 +187,15 @@ public interface QDatabaseSyntaxDBLFactory extends EFactory {
 	 * @generated
 	 */
 	QCloseStatement createCloseStatement();
+
+	/**
+	 * Returns a new object of class '<em>Condition Info Clause</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Condition Info Clause</em>'.
+	 * @generated
+	 */
+	QConditionInfoClause createConditionInfoClause();
 
 	/**
 	 * Returns a new object of class '<em>Option</em>'.
