@@ -35,7 +35,7 @@ public @Supported class MessageRetriever {
 			@Supported @DataDef(length = 7) QCharacter messageIdentifier,
 			@Supported @DataDef(qualified = true) MESSAGEFILE messageFile,
 			@Supported @DataDef(length = 512) QCharacter messageDataFieldValues,
-			@Supported @DataDef(length = 1) QCharacter cLVarFor1stLevelText,
+			@Supported @DataDef(length = 132) QCharacter cLVarFor1stLevelText,
 			@Supported @DataDef(precision = 5) QDecimal cLVarForMSGLEN50,
 			@Supported @DataDef(length = 1) QCharacter cLVarFor2ndLevelText,
 			@Supported @DataDef(precision = 5) QDecimal cLVarForSECLVLLEN50,

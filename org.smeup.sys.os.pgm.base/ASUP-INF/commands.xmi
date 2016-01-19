@@ -24203,7 +24203,7 @@
           name="cLVarFor1stLevelText">
         <definition
             xsi:type="il-data-def:CharacterDef"
-            length="1"/>
+            length="132"/>
       </dataTerm>
     </parameters>
     <parameters
