@@ -122,9 +122,20 @@
         <details key="precision" value="10"/>
       </eAnnotations>
     </eOperations>
+    <eOperations name="getThreadCPUUsage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+      <eAnnotations source="il-data" references="il-data.ecore#//def/DecimalDef">
+        <details key="precision" value="10"/>
+        <details key="scale" value="2"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getThreadStatus" eType="#//ThreadStatus">
       <eAnnotations source="il-data" references="il-data.ecore#//def/CharacterDef">
         <details key="length" value="12"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isInterrupted" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="il-data" references="il-data.ecore#//def/CharacterDef">
+        <details key="length" value="10"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="isNative" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">

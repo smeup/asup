@@ -22,11 +22,11 @@ import org.smeup.sys.mi.core.util.QThreads;
 public class BaseThreadsImpl implements QThreads {
 
 	private ThreadGroup rootThreadGroup = null;
-
+	
 	@Override
 	public List<Thread> listThreads() {
-		final ThreadGroup rootThreadGroup = getRootThreadGroup();
-		final ThreadMXBean thbean = ManagementFactory.getThreadMXBean();
+		ThreadGroup rootThreadGroup = getRootThreadGroup();
+		ThreadMXBean thbean = ManagementFactory.getThreadMXBean();
 
 		int size = thbean.getThreadCount();
 		int n = 0;
@@ -42,7 +42,7 @@ public class BaseThreadsImpl implements QThreads {
 
 	@Override
 	public List<Thread> listThreads(String threadGroup) {
-		final ThreadGroup group = lookupThreadGroup(threadGroup);
+		ThreadGroup group = lookupThreadGroup(threadGroup);
 		if (group == null)
 			return null;
 		return listThreads(group);
@@ -65,7 +65,7 @@ public class BaseThreadsImpl implements QThreads {
 
 	@Override
 	public List<ThreadGroup> listThreadGroups() {
-		final ThreadGroup root = getRootThreadGroup();
+		ThreadGroup root = getRootThreadGroup();
 		int size = root.activeGroupCount();
 		int n = 0;
 		ThreadGroup[] groups = null;
@@ -82,8 +82,8 @@ public class BaseThreadsImpl implements QThreads {
 
 	@Override
 	public List<ThreadInfo> listThreadInfos() {
-		final ThreadMXBean thbean = ManagementFactory.getThreadMXBean();
-		final long[] threadIds = thbean.getAllThreadIds();
+		ThreadMXBean thbean = ManagementFactory.getThreadMXBean();
+		long[] threadIds = thbean.getAllThreadIds();
 
 		ThreadInfo[] infos;
 		if (!thbean.isObjectMonitorUsageSupported() || !thbean.isSynchronizerUsageSupported())
@@ -91,7 +91,7 @@ public class BaseThreadsImpl implements QThreads {
 		else
 			infos = thbean.getThreadInfo(threadIds, true, false);
 
-		final ThreadInfo[] notNulls = new ThreadInfo[infos.length];
+		ThreadInfo[] notNulls = new ThreadInfo[infos.length];
 		int nNotNulls = 0;
 		for (ThreadInfo info : infos)
 			if (info != null)
@@ -105,10 +105,10 @@ public class BaseThreadsImpl implements QThreads {
 
 	@Override
 	public Thread lookupBlockingThread(Thread thread) {
-		final ThreadInfo info = lookupThreadInfo(thread);
+		ThreadInfo info = lookupThreadInfo(thread);
 		if (info == null)
 			return null;
-		final long id = info.getLockOwnerId();
+		long id = info.getLockOwnerId();
 		if (id == -1)
 			return null;
 		return lookupThread(id);
@@ -117,7 +117,7 @@ public class BaseThreadsImpl implements QThreads {
 	@Override
 	public Thread lookupLockingThread(Object object) {
 
-		final long identity = System.identityHashCode(object);
+		long identity = System.identityHashCode(object);
 
 		ThreadInfo info = null;
 		MonitorInfo[] monitors = null;
@@ -164,12 +164,12 @@ public class BaseThreadsImpl implements QThreads {
 
 	@Override
 	public ThreadInfo lookupThreadInfo(long id) {
-		final ThreadMXBean thbean = ManagementFactory.getThreadMXBean();
+		ThreadMXBean thbean = ManagementFactory.getThreadMXBean();
 
 		if (!thbean.isObjectMonitorUsageSupported() || !thbean.isSynchronizerUsageSupported())
 			return thbean.getThreadInfo(id);
 
-		final ThreadInfo[] infos = thbean.getThreadInfo(new long[] { id }, true, false);
+		ThreadInfo[] infos = thbean.getThreadInfo(new long[] { id }, true, false);
 		if (infos.length == 0)
 			return null;
 		return infos[0];
@@ -191,15 +191,22 @@ public class BaseThreadsImpl implements QThreads {
 	}
 
 	private ThreadGroup getRootThreadGroup() {
+
 		if (rootThreadGroup != null)
 			return rootThreadGroup;
 
-		ThreadGroup threadGroup = Thread.currentThread().getThreadGroup();
-		ThreadGroup parentThreadGroup;
-		while ((parentThreadGroup = threadGroup.getParent()) != null)
-			threadGroup = parentThreadGroup;
+		synchronized (this) {
+			if (rootThreadGroup == null) {
+				ThreadGroup threadGroup = Thread.currentThread().getThreadGroup();
+				ThreadGroup parentThreadGroup = null;
+				while ((parentThreadGroup = threadGroup.getParent()) != null)
+					threadGroup = parentThreadGroup;
 
-		rootThreadGroup = threadGroup;
-		return threadGroup;
+				rootThreadGroup = threadGroup;
+			}
+		}
+
+		return rootThreadGroup;
 	}
+
 }

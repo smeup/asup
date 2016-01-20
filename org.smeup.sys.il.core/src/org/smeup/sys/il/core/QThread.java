@@ -33,6 +33,15 @@ public interface QThread extends QObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
+	 *        annotation="il-data precision='10' scale='2'"
+	 * @generated
+	 */
+	double getThreadCPUUsage();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
 	 *        annotation="il-data precision='10'"
 	 * @generated
 	 */
@@ -64,6 +73,15 @@ public interface QThread extends QObject {
 	 * @generated
 	 */
 	ThreadStatus getThreadStatus();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 *        annotation="il-data length='10'"
+	 * @generated
+	 */
+	boolean isInterrupted();
 
 	/**
 	 * <!-- begin-user-doc -->

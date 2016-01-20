@@ -1,3 +1,14 @@
+/**
+ *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
+ */
 package org.smeup.sys.il.core.base;
 
 import java.util.concurrent.TimeUnit;
@@ -9,10 +20,12 @@ import org.smeup.sys.il.core.ThreadStatus;
 public class BaseThreadImpl extends Thread implements QThread {
 
 	private static final long serialVersionUID = 1L;
-	private volatile ReentrantLock lock = new ReentrantLock();	
+	private final ReentrantLock lock = new ReentrantLock();
+	private BaseThreadManagerImpl threadManager = null;
 
-	protected BaseThreadImpl(Runnable runnable, String name, boolean daemon) {
+	protected BaseThreadImpl(BaseThreadManagerImpl threadManager, Runnable runnable, String name, boolean daemon) {
 		super(runnable, name);
+		this.threadManager = threadManager;
 		setDaemon(daemon);
 	}
 
@@ -23,23 +36,21 @@ public class BaseThreadImpl extends Thread implements QThread {
 
 	@Override
 	public boolean checkRunnable() {
-		
+
 		try {
-			while(true) {
-				if (Thread.currentThread().isInterrupted())
+			while (true) {
+				if (isInterrupted())
 					return false;
 
-				synchronized (lock) {
-					if(!lock.isLocked())
-						return true;
+				if (!isSuspended())
+					return true;
 
-					if(lock.tryLock(100, TimeUnit.MILLISECONDS)) {
-						lock.unlock();
-						return true;
-					}					
+				if (lock.tryLock(100, TimeUnit.MILLISECONDS)) {
+					lock.unlock();
+					return true;
 				}
 			}
-		} catch (InterruptedException e) {				
+		} catch (InterruptedException e) {
 			return false;
 		}
 	}
@@ -80,14 +91,22 @@ public class BaseThreadImpl extends Thread implements QThread {
 	}
 
 	protected void unlock() {
-	    synchronized (lock) {
-			lock.unlock();			
-		}		
+		if(lock.isLocked())
+			lock.unlock();
 	}
 
 	protected void lock() {
-	    synchronized (lock) {
-			lock.lock();			
-		}		
+		lock.lock();
 	}
+	
+	@Override
+	public double getThreadCPUUsage() {
+
+		BaseThreadTime threadTime = threadManager.getThreadTime(getJavaThread());
+		if (threadTime == null)
+			return 0;
+
+		return threadTime.getCPUUsage();
+	}
+
 }

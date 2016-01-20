@@ -11,27 +11,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Writer;
-
 import java.lang.Iterable;
-
 import java.lang.annotation.Annotation;
-
 import java.lang.reflect.Type;
-
 import java.net.URI;
 import java.net.URL;
-
 import java.util.Dictionary;
 import java.util.Map;
 import java.util.Properties;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.mi.core.QMachineInterfaceCoreFactory;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;

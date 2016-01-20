@@ -907,7 +907,11 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 		addEOperation(threadEClass, ecorePackage.getEInt(), "getThreadPriority", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(threadEClass, ecorePackage.getEDouble(), "getThreadCPUUsage", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(threadEClass, this.getThreadStatus(), "getThreadStatus", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(threadEClass, ecorePackage.getEBoolean(), "isInterrupted", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(threadEClass, ecorePackage.getEBoolean(), "isNative", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1019,16 +1023,17 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		  (threadEClass.getEOperations().get(5), 
 		   source, 
 		   new String[] {
-			 "length", "12"
+			 "precision", "10",
+			 "scale", "2"
 		   },
 		   new URI[] {
-			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/DecimalDef")
 		   });	
 		addAnnotation
 		  (threadEClass.getEOperations().get(6), 
 		   source, 
 		   new String[] {
-			 "length", "10"
+			 "length", "12"
 		   },
 		   new URI[] {
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
@@ -1044,6 +1049,24 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		   });	
 		addAnnotation
 		  (threadEClass.getEOperations().get(8), 
+		   source, 
+		   new String[] {
+			 "length", "10"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (threadEClass.getEOperations().get(9), 
+		   source, 
+		   new String[] {
+			 "length", "10"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (threadEClass.getEOperations().get(10), 
 		   source, 
 		   new String[] {
 			 "length", "10"
