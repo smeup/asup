@@ -30,6 +30,7 @@ import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QDataWriter;
+import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
@@ -46,7 +47,6 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 	private QDataManager dataManager;
 	@Inject
 	private QFrameManager frameManager;
-	
 	@Inject
 	private QStrings strings;
 	
@@ -118,13 +118,16 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 				data.accept(dataWriter.set(eEnumerator.getName()));
 				streamWrite(data + "|");
 			} else if (value instanceof Number) {
-				QCharacter character = null;
-				if(dataTerm.getDefinition() instanceof QDecimalDef)
-					character = dataContainer.getDataContext().getDataFactory().createCharacter(((QDecimalDef) dataTerm.getDefinition()).getPrecision(), false, true);
-				else
-					character = dataContainer.getDataContext().getDataFactory().createCharacter(((QCharacterDef) dataTerm.getDefinition()).getLength(), false, true);	
-				character.move(value.toString());
-				streamWrite(character + "|");
+				if(dataTerm.getDefinition() instanceof QDecimalDef) {
+					QDecimal decimal = dataContainer.getDataContext().getDataFactory().createData((QDecimalDef) dataTerm.getDefinition(), true);
+					decimal.eval(((Number) value).doubleValue());
+					streamWrite(strings.rSet(decimal.toString(), decimal.getLength()) + "|");					
+				}
+				else  {
+					QCharacter character = dataContainer.getDataContext().getDataFactory().createCharacter(((QCharacterDef) dataTerm.getDefinition()).getLength(), false, true);
+					character.move(value.toString());
+					streamWrite(character + "|");
+				}
 			} else {
 				data.accept(dataWriter.set(value.toString()));
 				streamWrite(data + "|");
