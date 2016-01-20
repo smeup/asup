@@ -598,13 +598,36 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public double getMemorySize() {		
-		QJobRunInfo jobRunInfo = getJobRunInfo();
-		if(jobRunInfo == null)
+	public long getMemorySize() {		
+		if(getJobRunInfo() == null)
 			return 0;
 		
-		long memorySize = jobRunInfo.getMemorySize()/1024/1024;
-		return (int) memorySize;
+		long memorySize = getJobRunInfo().getMemorySize()/1024/1024;
+		return memorySize;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getPriority() {
+		if(getJobThread() == null)
+			return 0;
+
+		return getJobThread().getThreadPriority();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public double getCPUUsage() {
+		if(getJobThread() == null)
+			return 0;
+		
+		return getJobThread().getThreadCPUUsage();
 	}
 
 	/**

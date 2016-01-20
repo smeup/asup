@@ -692,7 +692,11 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 
 		addEOperation(jobEClass, this.getJobStatus(), "getJobStatus", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(jobEClass, ecorePackage.getEDouble(), "getMemorySize", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(jobEClass, ecorePackage.getEDouble(), "getCPUUsage", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(jobEClass, ecorePackage.getELong(), "getMemorySize", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(jobEClass, ecorePackage.getEInt(), "getPriority", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(jobEClass, ecorePackage.getEBoolean(), "isActive", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -852,13 +856,24 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		  (jobEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
-			 "length", "10"
+			 "precision", "10",
+			 "scale", "2"
 		   },
 		   new URI[] {
-			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/DecimalDef")
 		   });	
 		addAnnotation
 		  (jobEClass.getEOperations().get(2), 
+		   source, 
+		   new String[] {
+			 "precision", "10",
+			 "scale", "0"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/DecimalDef")
+		   });	
+		addAnnotation
+		  (jobEClass.getEOperations().get(3), 
 		   source, 
 		   new String[] {
 			 "length", "10"
@@ -867,7 +882,16 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
 		   });	
 		addAnnotation
-		  (jobEClass.getEOperations().get(3), 
+		  (jobEClass.getEOperations().get(4), 
+		   source, 
+		   new String[] {
+			 "length", "10"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (jobEClass.getEOperations().get(5), 
 		   source, 
 		   new String[] {
 			 "length", "10"

@@ -49,6 +49,7 @@ import org.smeup.sys.il.esam.QDisplay;
 import org.smeup.sys.il.esam.QPrint;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.QProgram;
@@ -67,7 +68,7 @@ public class RPJProgramSupport {
 	private QProgramManager programManager;
 	@Inject
 	private QResourceManager resourceManager;
-	
+
 	@Inject
 	public QJob job;
 
@@ -191,8 +192,7 @@ public class RPJProgramSupport {
 				return thread.checkRunnable();
 			else
 				return !Thread.currentThread().isInterrupted();
-		}
-		else {
+		} else {
 			countRunnable++;
 			return true;
 		}
@@ -327,7 +327,7 @@ public class RPJProgramSupport {
 	}
 
 	public void qCall(String program, QData[] parameters) {
-		qCall(program, parameters, (QIndicator)null);
+		qCall(program, parameters, (QIndicator) null);
 	}
 
 	public void qCall(QString program, QData[] parameters, QIndicator error) {
@@ -339,11 +339,12 @@ public class RPJProgramSupport {
 		try {
 			if(error != null)
 				error.eval(false);
-			programManager.callProgram(job, getProgram(program.trim()), parameters);
-		} catch (RuntimeException e) {
-			// TODO
+			programManager.callProgram(job,	 getProgram(program.trim()), parameters);
+		} catch (Exception e) {
 			if(error != null)
 				error.eval(true);
+			else
+				throw new OperatingSystemMessageException("00211", e.getMessage(), 40);
 		}
 	}
 
@@ -355,40 +356,40 @@ public class RPJProgramSupport {
 		try {
 			qError().eval(false);
 			programManager.callProgram(job, getProgram(program.trim()), parameters);
-		} catch (RuntimeException e) {
+		} catch (Exception e) {
 			// TODO
 			qError().eval(true);
 		}
 	}
 
 	private QProgram getProgram(String name) {
-		
+
 		QProgram program = null;
-		
+
 		QContext jobContext = job.getContext();
 		RPJProgramCache programCache = jobContext.get(RPJProgramCache.class);
-		if(programCache == null) {
+		if (programCache == null) {
 			synchronized (job) {
 				programCache = jobContext.get(RPJProgramCache.class);
-				if(programCache == null) {
+				if (programCache == null) {
 					programCache = new RPJProgramCache();
 					jobContext.set(RPJProgramCache.class, programCache);
 				}
 			}
 		}
-		
+
 		program = programCache.get(name);
-		if(program == null) {
+		if (program == null) {
 			QResourceReader<QProgram> programReader = resourceManager.getResourceReader(job, QProgram.class, org.smeup.sys.il.memo.Scope.LIBRARY_LIST);
 			program = programReader.lookup(name);
-			if(program == null)
-				throw new OperatingSystemRuntimeException("Program not found: "+name);
+			if (program == null)
+				throw new OperatingSystemRuntimeException("Program not found: " + name);
 			programCache.put(name, program);
 		}
-		
+
 		return program;
 	}
-	
+
 	public QBufferedData qChar(QBinary numeric) {
 		return qBox(Long.toString(numeric.asLong()));
 	}
@@ -943,7 +944,7 @@ public class RPJProgramSupport {
 
 		if (numElements == null)
 			numElements = list.capacity();
-		
+
 		QDecimal result = null;
 		for (int i = startIndex; i <= numElements; i++) {
 			if (list.get(i).eq(argument)) {
@@ -967,7 +968,7 @@ public class RPJProgramSupport {
 
 		if (numElements == null)
 			numElements = list.capacity();
-		
+
 		QDecimal result = null;
 		for (int i = startIndex.i(); i <= numElements; i++) {
 			if (list.get(i).eq(argument)) {

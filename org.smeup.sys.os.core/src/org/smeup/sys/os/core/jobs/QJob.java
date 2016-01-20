@@ -204,10 +204,28 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
+	 *        annotation="il-data precision='10' scale='0'"
+	 * @generated
+	 */
+	long getMemorySize();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
 	 *        annotation="il-data length='10'"
 	 * @generated
 	 */
-	double getMemorySize();
+	int getPriority();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 *        annotation="il-data precision='10' scale='2'"
+	 * @generated
+	 */
+	double getCPUUsage();
 
 	/**
 	 * Returns the value of the '<em><b>Job Type</b></em>' attribute.

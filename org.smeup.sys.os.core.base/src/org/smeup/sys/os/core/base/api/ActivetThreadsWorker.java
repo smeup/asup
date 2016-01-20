@@ -55,7 +55,7 @@ public class ActivetThreadsWorker {
 		}
 
 		objectWriter.initialize();
-	
+		
 		for (QThread thread :threadManager.listThreads())
 			try {
 				objectWriter.write(thread);

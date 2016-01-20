@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.os.core.impl;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -514,6 +515,10 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		initEAttribute(getSystem_TemporaryLibrary(), ecorePackage.getEString(), "temporaryLibrary", null, 1, 1, QSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSystem_VariableContainer(), theOperatingSystemEnvironmentPackage.getEnvironmentVariableContainer(), null, "variableContainer", null, 0, 1, QSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		addEOperation(systemEClass, ecorePackage.getEInt(), "getAvailableProcessors", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(systemEClass, ecorePackage.getEDouble(), "getLoadAverage", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(systemManagerEClass, QSystemManager.class, "SystemManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(systemManagerEClass, this.getSystem(), "getSystem", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -535,6 +540,39 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// il-data
+		createIldataAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>il-data</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createIldataAnnotations() {
+		String source = "il-data";	
+		addAnnotation
+		  (systemEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "precision", "10"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/DecimalDef")
+		   });	
+		addAnnotation
+		  (systemEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "precision", "10",
+			 "scale", "2"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/DecimalDef")
+		   });
 	}
 
 } //OperatingSystemCorePackageImpl

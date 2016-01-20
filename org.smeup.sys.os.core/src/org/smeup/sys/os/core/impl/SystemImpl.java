@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.os.core.impl;
 
+import java.lang.management.ManagementFactory;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -527,6 +529,24 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemCorePackage.SYSTEM__VARIABLE_CONTAINER, newVariableContainer, newVariableContainer));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getAvailableProcessors() {
+		return ManagementFactory.getOperatingSystemMXBean().getAvailableProcessors();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public double getLoadAverage() {
+		return ManagementFactory.getOperatingSystemMXBean().getSystemLoadAverage();
 	}
 
 	/**

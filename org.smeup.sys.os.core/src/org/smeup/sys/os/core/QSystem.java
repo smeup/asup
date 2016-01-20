@@ -311,4 +311,22 @@ public interface QSystem extends QObjectLockable, QObjectNameable, QContextProvi
 	 */
 	void setVariableContainer(QEnvironmentVariableContainer value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 *        annotation="il-data precision='10'"
+	 * @generated
+	 */
+	int getAvailableProcessors();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 *        annotation="il-data precision='10' scale='2'"
+	 * @generated
+	 */
+	double getLoadAverage();
+
 } // QSystem

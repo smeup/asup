@@ -281,6 +281,9 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	private void callProgram(QJob job, QCallableProgram<?> callableProgram, QData[] params) {
 
+		if(job.getJobThread() != null && !job.getJobThread().checkRunnable())
+			return;
+		
 		synchronized (callableProgram) {
 
 			// retrieve program stack from job
@@ -320,8 +323,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 							jobRunInfo = QOperatingSystemJobsFactory.eINSTANCE.createJobRunInfo();
 							job.setJobRunInfo(jobRunInfo);
 						}
-
-						jobRunInfo.setMemorySize(jobRunInfo.getMemorySize() - programInfo.getMemorySize());
+						else
+							jobRunInfo.setMemorySize(jobRunInfo.getMemorySize() - programInfo.getMemorySize());
 					}
 				}
 

@@ -41,6 +41,17 @@
   <eClassifiers xsi:type="ecore:EDataType" name="MessageVariableList" instanceClassName="java.lang.Object[]"/>
   <eClassifiers xsi:type="ecore:EDataType" name="MessageException" instanceClassName="org.smeup.sys.os.core.OperatingSystemMessageException"/>
   <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="../../org.smeup.sys.il.lock/model/il-lock.ecore#//ObjectLockable ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
+    <eOperations name="getAvailableProcessors" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/DecimalDef">
+        <details key="precision" value="10"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getLoadAverage" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/DecimalDef">
+        <details key="precision" value="10"/>
+        <details key="scale" value="2"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"
         transient="true" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="creationInfo" eType="#//CreationInfo"
@@ -82,7 +93,19 @@
           <details key="length" value="20"/>
         </eAnnotations>
       </eOperations>
-      <eOperations name="getMemorySize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+      <eOperations name="getCPUUsage" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/DecimalDef">
+          <details key="precision" value="10"/>
+          <details key="scale" value="2"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="getMemorySize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/DecimalDef">
+          <details key="precision" value="10"/>
+          <details key="scale" value="0"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="getPriority" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
         <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
           <details key="length" value="10"/>
         </eAnnotations>
