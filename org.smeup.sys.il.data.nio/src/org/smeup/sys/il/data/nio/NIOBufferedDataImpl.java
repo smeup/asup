@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.ByteBuffer;
+import java.util.Arrays;
 
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.QArray;
@@ -253,12 +254,17 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public void movea(QArray<?> value, int startIndex) {
-		movel(value.get(startIndex));
+		movea(value, startIndex, false);
 	}
 
 	@Override
 	public void movea(QArray<?> value, int startIndex, boolean clear) {
-		movel(value.get(startIndex), true);
+//		movel(value.get(startIndex), true);
+		// TODO verify me
+		int position = ((value.getLength() / value.capacity()) * (startIndex - 1));
+		byte[] bytes = value.asBytes();
+		bytes = Arrays.copyOfRange(bytes, position, bytes.length);
+		NIOBufferHelper.movel(getBuffer(), getPosition(), value.getSize(), bytes, clear, getFiller());
 	}
 
 	@Override
