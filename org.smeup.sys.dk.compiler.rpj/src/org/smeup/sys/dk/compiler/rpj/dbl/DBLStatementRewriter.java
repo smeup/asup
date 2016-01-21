@@ -60,6 +60,17 @@ import org.smeup.sys.il.flow.QStatement;
 
 public class DBLStatementRewriter extends RPJStatementRewriter {
 
+	public static final String GET_DESCRIPTOR_METHOD = "getDescriptor";
+	public static final String ALLOCATE_DESCRIPTOR_METHOD = "allocateDescriptor";
+	public static final String CLOSE_METHOD = "close";
+	public static final String OPEN_METHOD = "open";
+	public static final String SET_TRANSACTION_METHOD = "setTransaction";
+	public static final String DESCRIBE_METHOD = "describe";
+	public static final String EXECUTE_IMMEDIATE_METHOD = "%execute";
+	public static final String SELECT_METHOD = "%select";
+	public static final String SET_OPTION_METHOD = "setOption";
+
+	
 	private QCallableUnit callableUnit;
 	private QBindingParser bindingParser;
 	private QQueryParser queryParser;
@@ -80,15 +91,11 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 		String RELATIVE = "realative";
 	}
 
-	public static final String SET_TRANSACTION_METHOD = "SET_TRANSACTION_METHOD";
-	public static final String DESCRIBE_METHOD = "DESCRIBE_METHOD";
-
-	public static final String EXECUTE_IMMEDIATE_METHOD = "%execute";
-	public static final String SELECT_METHOD = "%select";
-
+	
 	/*************** Public static parameters definitions */
 
 	public static final String NONE = "*OMIT";
+	
 
 	public static interface ISOLATION_LEVEL {
 		String SERIALIZABLE = "SERIALIZABLE";
@@ -241,7 +248,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
 		methodExec.setObject(bindingStatement.getCursor());
-		methodExec.setMethod("open");
+		methodExec.setMethod(OPEN_METHOD);
 
 		return methodExec;
 	}
@@ -250,7 +257,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
 		methodExec.setObject(bindingStatement.getCursor());
-		methodExec.setMethod("close");
+		methodExec.setMethod(CLOSE_METHOD);
 
 		return methodExec;
 	}
@@ -259,7 +266,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
 		methodExec.setObject(bindingStatement.getDescriptorName());
-		methodExec.setMethod("allocateDescriptor");
+		methodExec.setMethod(ALLOCATE_DESCRIPTOR_METHOD);
 		
 		//Scope
 		methodExec.getParameters().add(bindingStatement.getDescriptorScope().getLiteral());
@@ -275,7 +282,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
 		methodExec.setObject(bindingStatement.getDescriptorName());
-		methodExec.setMethod("getDescriptor");
+		methodExec.setMethod(GET_DESCRIPTOR_METHOD);
 		
 		// Scope
 		methodExec.getParameters().add(bindingStatement.getDescriptorScope().getLiteral());
@@ -607,17 +614,33 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 		return methodExec;
 	}
 	
-	//TODO: manage Set Option statement
+	
 	private QStatement manageSetOptionStatement(QSetOptionStatement bindingStatement) {
-		System.out.println("Manage SET OPTION");
+		
+		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+		methodExec.setMethod(SET_OPTION_METHOD);
+		
+		String optionNames = "";
+		String optionValues = "";
+		
+		for (QOption option: bindingStatement.getOptions()) {
+			optionNames += option.getName() + " ";
+			optionValues += option.getValue() + " ";
+		}
+		
+		// Option names list
+		methodExec.getParameters().add(optionNames.trim());
+		
+		// Option values list
+		methodExec.getParameters().add(optionValues.trim());
+
 		
 		
 		return null;
 	}
 	
 
-	private QStatement manageSetTransactionStatement(QSetTransactionStatement bindingStatement) {
-		System.out.println("Manage SET TRANSACTION");
+	private QStatement manageSetTransactionStatement(QSetTransactionStatement bindingStatement) {		
 
 		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
 

@@ -142,9 +142,16 @@ qualified
 
 primaryExpression
 	:	'(' logicalExpression ')' -> ^(BLOCK[$primaryExpression.text] logicalExpression)
+		|		
+		array 
 		|
-		value		
+		value
 	;
+
+array
+	:
+	value value+ -> ^(BI_FUNCTION["\%ARRAY"] value value+)
+	;	
 
 value
 	:
