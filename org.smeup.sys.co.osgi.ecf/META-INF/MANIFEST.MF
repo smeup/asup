@@ -18,8 +18,8 @@ Require-Bundle: org.eclipse.equinox.common,
  org.eclipse.ecf.osgi.services.distribution,
  org.eclipse.ecf.osgi.services.remoteserviceadmin,
  org.eclipse.ecf.remoteservice.asyncproxy,
- org.eclipse.ecf.server.generic;bundle-version="7.0.0",
- org.eclipse.ecf.sharedobject;bundle-version="2.5.0"
+ org.eclipse.ecf.server.generic,
+ org.eclipse.ecf.sharedobject
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.osgi.framework,
