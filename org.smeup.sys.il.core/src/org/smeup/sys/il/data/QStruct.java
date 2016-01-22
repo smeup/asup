@@ -34,4 +34,12 @@ public interface QStruct<D extends QData> extends QData {
 	 */
 	List<D> getElements();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	List<String> getElementNames();
+
 } // QStruct

@@ -961,7 +961,9 @@
     <eTypeParameters name="D">
       <eBounds eClassifier="#//Data"/>
     </eTypeParameters>
-    <eOperations name="getDelegate" lowerBound="1" eType="#//Data"/>
+    <eOperations name="getDelegate" lowerBound="1">
+      <eGenericType eTypeParameter="#//DataDelegator/D"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataFactory" abstract="true" interface="true">
     <eOperations name="createArray" lowerBound="1">
@@ -2971,6 +2973,7 @@
     <eOperations name="getElements" lowerBound="1" upperBound="-1">
       <eGenericType eTypeParameter="#//Struct/D"/>
     </eOperations>
+    <eOperations name="getElementNames" lowerBound="1" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SortDirection">
     <eLiterals name="Ascend" value="10" literal="A"/>

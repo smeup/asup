@@ -3987,6 +3987,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g1 = createEGenericType(structEClass_D);
 		initEOperation(op, g1);
 
+		addEOperation(structEClass, ecorePackage.getEString(), "getElementNames", 1, -1, IS_UNIQUE, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(initStrategyEEnum, InitStrategy.class, "InitStrategy");
 		addEEnumLiteral(initStrategyEEnum, InitStrategy.BASE);

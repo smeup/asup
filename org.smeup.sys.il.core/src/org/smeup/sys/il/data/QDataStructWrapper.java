@@ -286,6 +286,11 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
+	public List<String> getElementNames() {
+		return delegate.getElementNames();
+	}
+
+	@Override
 	public <E extends Enum<E>> boolean gt(E value) {
 		return delegate.gt(value);
 	}
@@ -1154,5 +1159,4 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	public boolean isStoreOwner() {
 		return delegate.isStoreOwner();
 	}
-
 }

@@ -63,4 +63,9 @@ public class NIODataStructImpl extends NIOAbstractDataStruct {
 	public List<QBufferedData> getElements() {
 		return new ArrayList<QBufferedData>(_elements.values());
 	}
+
+	@Override
+	public List<String> getElementNames() {
+		return new ArrayList<String>(_elements.keySet());
+	}
 }

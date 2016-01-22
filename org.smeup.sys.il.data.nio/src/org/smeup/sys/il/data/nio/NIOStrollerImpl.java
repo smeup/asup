@@ -192,6 +192,11 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
+	public List<String> getElementNames() {
+		return current().getElementNames();
+	}
+
+	@Override
 	public <E extends Enum<E>> boolean gt(E value) {
 		return current().gt(value);
 	}

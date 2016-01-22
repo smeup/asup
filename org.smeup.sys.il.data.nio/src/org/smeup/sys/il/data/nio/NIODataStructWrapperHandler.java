@@ -99,4 +99,15 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 	
 		assign(element, position);
 	}
+
+	@Override
+	public List<String> getElementNames() {
+		
+		List<String> elementNames = new ArrayList<String>();
+		
+		for (Field field : NIOStructHelper.getFields(_wrapped.getClass()))
+			elementNames.add(field.getName());
+		
+		return elementNames;
+	}
 }

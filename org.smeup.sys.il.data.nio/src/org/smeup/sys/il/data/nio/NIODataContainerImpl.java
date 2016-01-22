@@ -153,10 +153,8 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			// root data
 			if (data == null) {
 				data = getOrCreateData(qualifier);
-				if (data == null) {
-					System.err.println("Unexpected condition: c59tb45b94t4er9");
+				if (data == null) 
 					break;
-				}
 			} else {
 
 				if (!(data instanceof QStruct))
@@ -325,7 +323,8 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		QData data = datas.get(key);
 		if (data == null) {
 			QDataTerm<?> dataTerm = getDataTerm(key);
-			data = getOrCreateData(key, dataTerm);
+			if(dataTerm != null)
+				data = getOrCreateData(key, dataTerm);
 		}
 
 		return data;
