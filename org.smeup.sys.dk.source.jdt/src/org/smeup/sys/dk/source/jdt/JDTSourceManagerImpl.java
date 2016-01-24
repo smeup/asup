@@ -93,7 +93,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 		IProject iProject = root.getProject(project.getName());
 		if (iProject.exists()) {
 			try {
-				iProject.delete(true, null);
+				iProject.delete(true, true, null);
 			} catch (CoreException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
