@@ -20,6 +20,14 @@ import org.smeup.sys.il.core.QObjectNameable;
  */
 public interface QResourceWriter<T extends QObjectNameable> extends QResourceReader<T> {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" objectRequired="true" nameRequired="true"
+	 * @generated
+	 */
+	T copy(T object, String name);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model objectRequired="true"
 	 * @generated

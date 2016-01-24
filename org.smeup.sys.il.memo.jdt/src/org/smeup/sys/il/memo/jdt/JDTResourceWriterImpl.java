@@ -17,6 +17,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectNameable;
@@ -91,5 +92,19 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 			throw new IntegratedLanguageMemoryRuntimeException(e);
 		}
 		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public T copy(T object, String name) {
+
+		EObject eObject = EcoreUtil.copy((EObject)object);
+
+		// new name
+		eObject.eSet(eObject.eClass().getEStructuralFeature("name"), name);
+		
+		save((T)eObject);
+		
+		return (T)eObject;
 	}
 }

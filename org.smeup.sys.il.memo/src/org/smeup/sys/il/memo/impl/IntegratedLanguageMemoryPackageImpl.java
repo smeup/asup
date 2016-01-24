@@ -18,6 +18,9 @@ import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
+import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage;
@@ -154,6 +157,9 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 
 		// Initialize simple dependencies
 		QIntegratedLanguageExpressionPackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataDefPackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataTermPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theIntegratedLanguageMemoryPackage.createPackageContents();
@@ -690,6 +696,13 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		initEOperation(op, g1);
 
 		initEClass(resourceWriterEClass, QResourceWriter.class, "ResourceWriter", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(resourceWriterEClass, null, "copy", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(resourceWriterEClass_T);
+		addEParameter(op, g1, "object", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(resourceWriterEClass_T);
+		initEOperation(op, g1);
 
 		op = addEOperation(resourceWriterEClass, null, "delete", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(resourceWriterEClass_T);

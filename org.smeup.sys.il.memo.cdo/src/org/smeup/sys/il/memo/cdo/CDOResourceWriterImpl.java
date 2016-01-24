@@ -19,6 +19,7 @@ import org.eclipse.emf.cdo.util.CDOUtil;
 import org.eclipse.emf.cdo.util.CommitException;
 import org.eclipse.emf.cdo.view.CDOView;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
@@ -163,5 +164,19 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 		if (resource == null)
 			resource = transaction.getOrCreateResource(CDO_OMAC + "/" + getName() + "/" + klass.getName());
 		return resource;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public T copy(T object, String name) {
+
+		EObject eObject = EcoreUtil.copy((EObject)object);
+
+		// new name
+		eObject.eSet(eObject.eClass().getEStructuralFeature("name"), name);
+		
+		save((T)eObject);
+		
+		return (T)eObject;
 	}
 }

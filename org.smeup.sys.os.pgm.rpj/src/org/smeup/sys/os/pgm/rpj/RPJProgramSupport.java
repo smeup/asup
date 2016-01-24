@@ -440,8 +440,9 @@ public class RPJProgramSupport {
 		QDecimal decimal = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.PACKED, true);
 		int i = 0;
 		int s = base.qSubst(start).trimR().length();
+		String string = base.qSubst(start).trimR();
 		while (true) {
-			i = base.qSubst(start).trimR().indexOf(comparator, s);
+			i = string.indexOf(comparator, s);
 			if (i == -1)
 				break;
 			s--;
@@ -450,7 +451,7 @@ public class RPJProgramSupport {
 		if (s > 0)
 			decimal.eval(s - 1);
 		else
-			decimal.eval(base.qSubst(start).trimR().length());
+			decimal.eval(string.length());
 
 		return decimal;
 	}
@@ -612,14 +613,6 @@ public class RPJProgramSupport {
 
 	public void qDealloc(QPointer pointer) {
 		// TODO
-	}
-
-	public QIndicator qTestn(QString string) {
-
-		QIndicator indicator = dataContext.getDataFactory().createIndicator(true);
-		string.testn(indicator);
-
-		return indicator;
 	}
 
 	public QDecimal qSize(QBufferedData bufferedData) {

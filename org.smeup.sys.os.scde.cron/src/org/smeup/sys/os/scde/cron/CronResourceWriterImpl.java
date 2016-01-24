@@ -14,6 +14,8 @@ package org.smeup.sys.os.scde.cron;
 import java.security.SecureRandom;
 import java.util.UUID;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.ResourceEventType;
@@ -95,5 +97,18 @@ public class CronResourceWriterImpl extends CronResourceReaderImpl implements QR
 	@Override
 	public void rename(QScheduleEntry oldObject, QScheduleEntry newObject) {
 		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public QScheduleEntry copy(QScheduleEntry object, String name) {
+
+		EObject eObject = EcoreUtil.copy((EObject)object);
+
+		// new name
+		eObject.eSet(eObject.eClass().getEStructuralFeature("name"), name);
+		
+		save((QScheduleEntry)eObject);
+		
+		return (QScheduleEntry)eObject;
 	}
 }

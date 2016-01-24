@@ -266,6 +266,13 @@
     <eTypeParameters name="T">
       <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
     </eTypeParameters>
+    <eOperations name="copy" lowerBound="1">
+      <eGenericType eTypeParameter="#//ResourceWriter/T"/>
+      <eParameters name="object" lowerBound="1">
+        <eGenericType eTypeParameter="#//ResourceWriter/T"/>
+      </eParameters>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eOperations name="delete">
       <eParameters name="object" lowerBound="1">
         <eGenericType eTypeParameter="#//ResourceWriter/T"/>
