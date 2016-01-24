@@ -133,6 +133,14 @@ public interface QContext {
 	<T extends Object> void registerAdapterFactory(QAdapterFactory factory, Class<T> adapterType);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	String resolveAlias(String value);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model klassRequired="true" objectRequired="true"
 	 * @generated

@@ -52,4 +52,12 @@ public interface QContextDescription {
 	 */
 	String getSystemLibrary();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	String getTemporaryLibrary();
+
 } // QContextDescription

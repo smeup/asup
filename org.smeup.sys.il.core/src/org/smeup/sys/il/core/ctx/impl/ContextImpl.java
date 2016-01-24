@@ -217,6 +217,17 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String resolveAlias(String value) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public <T> void set(Class<T> klass, T object) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT

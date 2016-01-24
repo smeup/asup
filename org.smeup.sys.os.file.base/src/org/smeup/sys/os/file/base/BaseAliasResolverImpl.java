@@ -29,15 +29,10 @@ public class BaseAliasResolverImpl implements QAliasResolver {
 				Table table = connection.getCatalogMetaData().getTable(connection.getContext().getContextDescription(), tableRef.getName());
 				if (table != null)
 					tableRef.setDatabaseTable(table);
+			} else {
+				String schemaName = tableRef.getDatabaseTable().getSchema().getName();
+				tableRef.getDatabaseTable().getSchema().setName(connection.getContext().resolveAlias(schemaName));
 			}
-			else if (tableRef.getDatabaseTable().getSchema().getName().equalsIgnoreCase("QTEMP")) {
-				tableRef.getDatabaseTable().getSchema().setName("Q_"+connection.getContext().getID());
-			}
-			/*
-			 * for (Object column : tableRef.getValueExprColumns()) {
-			 * System.out.println("  Columns :  " + ((ValueExpressionColumn)
-			 * column).getName()); }
-			 */
 		}
 
 	}

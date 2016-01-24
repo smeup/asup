@@ -457,6 +457,9 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "adapterType", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(contextEClass, ecorePackage.getEString(), "resolveAlias", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(contextEClass, null, "set", 1, 1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "T");
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
@@ -481,6 +484,8 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		addEOperation(contextDescriptionEClass, ecorePackage.getEString(), "getName", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(contextDescriptionEClass, ecorePackage.getEString(), "getSystemLibrary", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(contextDescriptionEClass, ecorePackage.getEString(), "getTemporaryLibrary", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(contextProviderEClass, QContextProvider.class, "ContextProvider", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

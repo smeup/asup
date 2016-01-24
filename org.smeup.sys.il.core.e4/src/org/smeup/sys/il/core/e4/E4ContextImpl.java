@@ -43,13 +43,14 @@ import org.smeup.sys.il.core.ctx.impl.ContextImpl;
 public abstract class E4ContextImpl extends ContextImpl {
 
 	private static final String ADAPTER_FACTORIES_NAME = "org.asup.fw.core.e4.context.adapterFactories";
+	private static final String QTEMP = "QTEMP";
 
 	private static Boolean postConstruct = null;
 
 	private BundleContext bundleContext;
 	private QContextDescription contextDescription;
 	private String contextID;
-	
+
 	public E4ContextImpl(BundleContext bundleContext, String contextID, QContextDescription contextDescription) {
 		this.bundleContext = bundleContext;
 		this.contextID = contextID;
@@ -57,6 +58,7 @@ public abstract class E4ContextImpl extends ContextImpl {
 	}
 
 	abstract IEclipseContext getEclipseContext();
+
 	abstract void removeEclipseContext();
 
 	protected void initializeContext(IEclipseContext eclipseContext) {
@@ -122,32 +124,31 @@ public abstract class E4ContextImpl extends ContextImpl {
 			return null;
 		}
 	}
-	
-	
+
 	@Override
 	public Class<?> loadClassByName(String className) {
-						
+
 		BundleContext bundleContext = FrameworkUtil.getBundle(QObject.class).getBundleContext();
-		
+
 		Class<?> class_ = null;
-		BundleWiring bundleWiring = null;		
-		
+		BundleWiring bundleWiring = null;
+
 		for (Bundle bundle : bundleContext.getBundles()) {
 
 			try {
 				bundleWiring = bundle.adapt(BundleWiring.class);
-				if (bundleWiring != null) {				
+				if (bundleWiring != null) {
 					class_ = bundleWiring.getClassLoader().loadClass(className);
 					break;
 				}
-				
+
 			} catch (ClassNotFoundException e) {
 				continue;
-			} 
+			}
 		}
 
 		return class_;
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -158,7 +159,7 @@ public abstract class E4ContextImpl extends ContextImpl {
 		adapterFactories.clear();
 
 		getEclipseContext().dispose();
-		
+
 		removeEclipseContext();
 	}
 
@@ -260,31 +261,35 @@ public abstract class E4ContextImpl extends ContextImpl {
 	public QContext createChildContext(final String name, ContextInjectionStrategy injectionStrategy) {
 
 		QContextDescription contextDescription = new QContextDescription() {
-			
+
 			@Override
 			public String getSystemLibrary() {
 				return getContextDescription().getSystemLibrary();
 			}
-			
+
 			@Override
 			public String getName() {
 				return name;
 			}
-			
+
 			@Override
 			public List<String> getLibraryPath() {
 				return getContextDescription().getLibraryPath();
 			}
-			
+
 			@Override
 			public String getCurrentLibrary() {
 				return getContextDescription().getCurrentLibrary();
+			}
+
+			@Override
+			public String getTemporaryLibrary() {
+				return getContextDescription().getTemporaryLibrary();
 			}
 		};
 
 		return createChildContext(contextDescription, injectionStrategy);
 	}
-
 
 	@Override
 	public QContext createChildContext(QContextDescription contextDescription, ContextInjectionStrategy injectionStrategy) {
@@ -298,7 +303,7 @@ public abstract class E4ContextImpl extends ContextImpl {
 
 		return null;
 	}
-	
+
 	private QContext createLocalContext(QContextDescription contextDescription) {
 
 		IEclipseContext eclipseChildContext = getEclipseContext().createChild();
@@ -382,5 +387,18 @@ public abstract class E4ContextImpl extends ContextImpl {
 	@Override
 	public QContextDescription getContextDescription() {
 		return this.contextDescription;
+	}
+
+	@Override
+	public String resolveAlias(String value) {
+
+		String newValue = null;
+		if (value.equalsIgnoreCase(QTEMP))
+			newValue = getContextDescription().getTemporaryLibrary();
+
+		if (newValue != null && !newValue.isEmpty())
+			return newValue;
+		else
+			return value;
 	}
 }

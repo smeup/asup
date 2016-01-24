@@ -295,6 +295,9 @@
           </eGenericType>
         </eParameters>
       </eOperations>
+      <eOperations name="resolveAlias" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
       <eOperations name="set" lowerBound="1">
         <eTypeParameters name="T"/>
         <eParameters name="klass" lowerBound="1">
@@ -320,6 +323,7 @@
       <eOperations name="getLibraryPath" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eOperations name="getName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eOperations name="getSystemLibrary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eOperations name="getTemporaryLibrary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="ContextInjectionStrategy">
       <eLiterals name="Local" value="10" literal="LOCAL"/>
