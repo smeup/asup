@@ -22,6 +22,6 @@ public interface QDataDelegator<D extends QData> {
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
-	QData getDelegate();
+	D getDelegate();
 
 } // QDataDelegator

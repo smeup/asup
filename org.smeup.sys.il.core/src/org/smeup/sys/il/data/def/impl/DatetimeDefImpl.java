@@ -327,6 +327,9 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 			case YMD:
 				length = 8;
 				break;
+			case YYMD:
+				length = 10;
+				break;
 			}
 		case TIME:
 			// TODO

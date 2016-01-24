@@ -506,7 +506,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 			if (statement.getParameters() != null)
 				for (String parameter : statement.getParameters()) {
-
+					
 					QExpression expression = expressionParser.parseExpression(parameter);
 					Expression jdtExpression = buildExpression(ast, expression, null);
 					methodInvocation.arguments().add(jdtExpression);

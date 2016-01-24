@@ -1917,24 +1917,6 @@
       </entry>
     </prototypes>
     <prototypes
-        name="%testn">
-      <definition
-          xsi:type="il-data-def:IndicatorDef"/>
-      <entry>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              like=""
-              name="string">
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:StringDef"/>
-          </delegate>
-        </parameters>
-      </entry>
-    </prototypes>
-    <prototypes
         name="%xfoot">
       <entry>
         <parameters>

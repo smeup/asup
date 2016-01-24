@@ -893,6 +893,14 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 		delegate.testn(numeric);
 	}
 
+	public void testn(QIndicator numeric, QIndicator blank) {
+		delegate.testn(numeric, blank);
+	}
+
+	public void testn(QIndicator numeric, QIndicator blank, QIndicator blankNumeric) {
+		delegate.testn(numeric, blank, blankNumeric);
+	}
+
 	@Override
 	public QPointer qAddr() {
 		return delegate.qAddr();

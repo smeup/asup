@@ -934,11 +934,36 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 
 	@Override
 	public void testn(QIndicator numeric) {
-		numeric.eval(true);
+		testn(numeric, null);
+	}
+
+	@Override
+	public void testn(QIndicator numeric, QIndicator blank) {
+		testn(numeric, blank, null);
+	}
+
+	@Override
+	public void testn(QIndicator numeric, QIndicator blank, QIndicator blankNumeric) {
+
+		boolean isNumeric = false;
 		try {
 			Double.parseDouble(asString());
+			isNumeric = true;
 		} catch (Exception e) {
 			numeric.eval(false);
+		}
+
+		if(numeric != null)
+			numeric.eval(isNumeric);
+		
+		boolean isBlank = isEmpty(); 
+		if(blank != null)
+			blank.eval(isBlank);
+		
+		if(blankNumeric != null) {
+			blankNumeric.eval(false);
+			if(isNumeric && isBlank)
+				blankNumeric.eval(true);
 		}
 	}
 

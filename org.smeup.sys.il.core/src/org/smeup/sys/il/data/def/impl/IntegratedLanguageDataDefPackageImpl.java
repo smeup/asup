@@ -1639,6 +1639,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		addEEnumLiteral(dateFormatEEnum, DateFormat.MDY);
 		addEEnumLiteral(dateFormatEEnum, DateFormat.DMY);
 		addEEnumLiteral(dateFormatEEnum, DateFormat.YMD);
+		addEEnumLiteral(dateFormatEEnum, DateFormat.YYMD);
 		addEEnumLiteral(dateFormatEEnum, DateFormat.JUL);
 		addEEnumLiteral(dateFormatEEnum, DateFormat.ISO);
 		addEEnumLiteral(dateFormatEEnum, DateFormat.USA);

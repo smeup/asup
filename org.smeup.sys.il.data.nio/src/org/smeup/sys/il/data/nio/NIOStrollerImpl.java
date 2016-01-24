@@ -660,6 +660,16 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 		current().testn(numeric);
 	}
 
+	@Override
+	public void testn(QIndicator numeric, QIndicator blank) {
+		current().testn(numeric, blank);
+	}
+
+	@Override
+	public void testn(QIndicator numeric, QIndicator blank, QIndicator numericBlank) {
+		current().testn(numeric, blank, numericBlank);
+	}
+
 	public QNumeric qScan(QCharacter source) {
 		return current().qScan(source);
 	}

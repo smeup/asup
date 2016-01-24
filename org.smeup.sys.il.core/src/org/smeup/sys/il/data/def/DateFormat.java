@@ -53,6 +53,14 @@ public enum DateFormat implements Enumerator {
 	YMD(30, "YMD", "*YMD"),
 
 	/**
+	 * The '<em><b>YYMD</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #YYMD_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	YYMD(31, "YYMD", "*YYMD"), /**
 	 * The '<em><b>JUL</b></em>' literal object.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -158,6 +166,21 @@ public enum DateFormat implements Enumerator {
 	public static final int YMD_VALUE = 30;
 
 	/**
+	 * The '<em><b>YYMD</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>YYMD</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #YYMD
+	 * @model literal="*YYMD"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int YYMD_VALUE = 31;
+
+	/**
 	 * The '<em><b>JUL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -257,6 +280,7 @@ public enum DateFormat implements Enumerator {
 			MDY,
 			DMY,
 			YMD,
+			YYMD,
 			JUL,
 			ISO,
 			USA,
@@ -312,6 +336,7 @@ public enum DateFormat implements Enumerator {
 			case MDY_VALUE: return MDY;
 			case DMY_VALUE: return DMY;
 			case YMD_VALUE: return YMD;
+			case YYMD_VALUE: return YYMD;
 			case JUL_VALUE: return JUL;
 			case ISO_VALUE: return ISO;
 			case USA_VALUE: return USA;

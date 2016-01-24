@@ -276,6 +276,14 @@ public interface QString extends QBufferedData, QScanner, QCattable<QString>, QL
 	String trim();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model numericRequired="true"
+	 * @generated
+	 */
+	void testn(QIndicator numeric);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true"
 	 * @generated
@@ -587,13 +595,6 @@ public interface QString extends QBufferedData, QScanner, QCattable<QString>, QL
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model numericRequired="true"
-	 * @generated
-	 */
-	void testn(QIndicator numeric);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true"
 	 * @generated
 	 */
@@ -620,4 +621,20 @@ public interface QString extends QBufferedData, QScanner, QCattable<QString>, QL
 	 * @generated
 	 */
 	String s();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model numericRequired="true" blankRequired="true"
+	 * @generated
+	 */
+	void testn(QIndicator numeric, QIndicator blank);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model numericRequired="true" blankRequired="true" blankNumericRequired="true"
+	 * @generated
+	 */
+	void testn(QIndicator numeric, QIndicator blank, QIndicator blankNumeric);
 } // QString

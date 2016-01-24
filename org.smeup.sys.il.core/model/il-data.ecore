@@ -2705,10 +2705,19 @@
     <eOperations name="qTriml" lowerBound="1" eType="#//Character"/>
     <eOperations name="qTrimr" lowerBound="1" eType="#//Character"/>
     <eOperations name="s" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="trim" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="testn" lowerBound="1">
       <eParameters name="numeric" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
-    <eOperations name="trim" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="testn" lowerBound="1">
+      <eParameters name="numeric" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="blank" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="testn" lowerBound="1">
+      <eParameters name="numeric" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="blank" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="blankNumeric" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
     <eOperations name="trimL" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="trimR" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="xlate">
@@ -3145,6 +3154,7 @@
       <eLiterals name="MDY" value="10" literal="*MDY"/>
       <eLiterals name="DMY" value="20" literal="*DMY"/>
       <eLiterals name="YMD" value="30" literal="*YMD"/>
+      <eLiterals name="YYMD" value="31" literal="*YYMD"/>
       <eLiterals name="JUL" value="40" literal="*JUL"/>
       <eLiterals name="ISO" value="50" literal="*ISO"/>
       <eLiterals name="USA" value="60" literal="*USA"/>
