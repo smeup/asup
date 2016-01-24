@@ -29,6 +29,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
@@ -48,7 +49,9 @@ import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.QAccessFactory;
 import org.smeup.sys.il.esam.QAccessManager;
 import org.smeup.sys.il.esam.QDataSet;
+import org.smeup.sys.il.esam.QDisplay;
 import org.smeup.sys.il.esam.QKSDataSet;
+import org.smeup.sys.il.esam.QPrint;
 import org.smeup.sys.il.esam.QSMDataSet;
 import org.smeup.sys.il.esam.annotation.FileDef;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -101,7 +104,7 @@ public class BaseCallableInjector {
 
 		QDataTerm<?> programStatusTerm = dataContainer.createDataTerm("*pgmstatus", BaseProgramStatusImpl.class, new ArrayList<Annotation>());
 		QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
-		if(program != null) {
+		if (program != null) {
 			programStatus.getProgramName().eval(program.getName());
 			programStatus.getProgramLibrary().eval(program.getLibrary());
 		}
@@ -115,16 +118,16 @@ public class BaseCallableInjector {
 
 			Map<String, Object> unitModules = new HashMap<String, Object>();
 			Map<String, QRecord> records = new HashMap<String, QRecord>();
-			
+
 			P delegate = injectData(null, klass, dataContainer, accessFactory, unitModules, records);
-			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();				
+			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();
 			programInfo.setMemorySize(dataContainer.getMemorySize());
-			
+
 			QCallableProgram<P> callableProgram = new BaseCallableProgramDelegator<P>(dataContext, program, programStatus, delegate, programInfo);
 
 			QDataContext dataContext = getDataContext();
 			dataContext.getContext().invoke(callableProgram.getRawProgram(), PostConstruct.class);
-			
+
 			return callableProgram;
 		} catch (Exception e) {
 			throw new OperatingSystemRuntimeException(e);
@@ -184,12 +187,14 @@ public class BaseCallableInjector {
 
 		QContext context = dataContainer.getDataContext().getContext();
 
-		List<InjectableField> datas = new ArrayList<InjectableField>();		
+		List<InjectableField> datas = new ArrayList<InjectableField>();
 		List<InjectableField> dataStructures = new ArrayList<InjectableField>();
 		List<InjectableField> dataSets = new LinkedList<InjectableField>();
+		List<InjectableField> displays = new LinkedList<InjectableField>();
+		List<InjectableField> prints = new LinkedList<InjectableField>();
 		List<InjectableField> infoFields = new ArrayList<InjectableField>();
 		List<InjectableField> pointers = new ArrayList<InjectableField>();
-		
+
 		for (Field field : klass.getDeclaredFields()) {
 
 			// TODO
@@ -234,12 +239,24 @@ public class BaseCallableInjector {
 					continue;
 				dataSets.add(injectableField);
 			}
+			// Display
+			else if (QDisplay.class.isAssignableFrom(fieldClass)) {
+				if (argsType[0] instanceof WildcardType)
+					continue;
+				displays.add(injectableField);
+			}
+			// Print
+			else if (QPrint.class.isAssignableFrom(fieldClass)) {
+				if (argsType[0] instanceof WildcardType)
+					continue;
+				prints.add(injectableField);
+			}
 			// DataStruct
 			else if (QDataStruct.class.isAssignableFrom(fieldClass))
 				dataStructures.add(injectableField);
 			// Pointers
 			else if (QPointer.class.isAssignableFrom(fieldClass))
-				pointers.add(injectableField);			
+				pointers.add(injectableField);
 			// Data
 			else if (QData.class.isAssignableFrom(fieldClass))
 				datas.add(injectableField);
@@ -345,8 +362,36 @@ public class BaseCallableInjector {
 
 			field.setValue(callable, dataSet);
 		}
+
+		// display
+		for (InjectableField field : displays) {
+			Class<?> classDisplay = (Class<?>) field.getArguments()[0];
+			Object display = classDisplay.newInstance();
+			injectFields(owner, classDisplay, display, dataContainer, accessFactory, unitModules, records);
+			boolean userOpen = false;
+			// from annotation
+			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
+			if (fileDef != null) 
+				userOpen = fileDef.userOpen();
+			
+			field.setValue(callable, new BaseDisplayDelegator<Object>(display, userOpen));
+		}
+
+		// print
+		for (InjectableField field : prints) {
+			Class<?> classPrint = (Class<?>) field.getArguments()[0];
+			Object print = classPrint.newInstance();
+			injectFields(owner, classPrint, print, dataContainer, accessFactory, unitModules, records);
+			boolean userOpen = false;
+			// from annotation
+			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
+			if (fileDef != null) 
+				userOpen = fileDef.userOpen();
+			
+			field.setValue(callable, new BasePrintDelegator<Object>(print, userOpen));
+		}
 		
-		// pointers
+		// pointer
 		for (InjectableField field : pointers) {
 
 			QDataTerm<?> dataTerm = dataContainer.createDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
@@ -387,6 +432,25 @@ public class BaseCallableInjector {
 			field.setValue(callable, data);
 		}
 
+		// dataSet
+		for (InjectableField field : dataSets) {
+			QDataSet<?> dataSet = (QDataSet<?>) field.getValue(callable);
+			for(String fieldName: dataSet.get().getElementNames()) {
+				QData data = dataContainer.getData(fieldName);
+				if(data instanceof QBufferedData) {
+					QBufferedData bufferedData = (QBufferedData)data;
+					QBufferedData bufferedDataTo = dataSet.get().getElement(fieldName);
+					
+					if(bufferedData.getStore() == null)
+						"".toCharArray();
+					if(bufferedDataTo == null)
+						"".toCharArray();
+					if(!bufferedData.getStore().equals(bufferedDataTo.getStore()))
+						bufferedData.assign(bufferedDataTo);
+				}
+			}			
+		}
+
 		// recordInfo
 		for (InjectableField field : infoFields) {
 
@@ -397,7 +461,7 @@ public class BaseCallableInjector {
 				System.err.println("Unexpected condition " + fileDef.info() + ": asggsu676rf7qwf7");
 			else {
 				field.getField().setAccessible(true);
-				((QDataSet<?>) field.getField().get(callable)).getInfoStruct().assign(infoStruct);
+				((QDataSet<?>) field.getValue(callable)).getInfoStruct().assign(infoStruct);
 				field.getField().setAccessible(false);
 			}
 		}
@@ -428,7 +492,7 @@ public class BaseCallableInjector {
 
 		if (classRecord.getSuperclass() != null && classRecord.getSuperclass().getSuperclass() == QRecordWrapper.class)
 			return (Class<? extends QRecord>) classRecord.getSuperclass();
-		
+
 		// logical
 		boolean extended = false;
 		for (Field field : classRecord.getDeclaredFields()) {
@@ -487,6 +551,18 @@ public class BaseCallableInjector {
 				e.printStackTrace();
 			}
 			field.setAccessible(false);
+		}
+
+		protected Object getValue(Object owner) {
+			field.setAccessible(true);
+			try {
+				return field.get(owner);
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				e.printStackTrace();
+				return null;
+			} finally {
+				field.setAccessible(false);
+			}
 		}
 
 		@Override

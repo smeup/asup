@@ -329,7 +329,6 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				}
 
 			} catch (OperatingSystemMessageException | OperatingSystemRuntimeException e) {
-				e.printStackTrace();
 				throw e;
 			} catch (Exception e) {
 				Throwable cause = e.getCause();
