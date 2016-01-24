@@ -14,6 +14,15 @@
       </eGenericType>
       <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
     </eOperations>
+    <eOperations name="createTemporaryLibrary" lowerBound="1">
+      <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
+    </eOperations>
+    <eOperations name="destroyTemporaryLibrary" lowerBound="1">
+      <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
+    </eOperations>
+    <eOperations name="destroyAllTemporaryLibrary" lowerBound="1">
+      <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Library" eSuperTypes="../../org.smeup.sys.os.type/model/os-type.ecore#//TypedObject">
     <eOperations name="isRootLibrary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>

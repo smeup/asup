@@ -41,4 +41,28 @@ public interface QLibraryManager {
 	 * @generated
 	 */
 	QResourceWriter<QLibrary> getLibraryWriter(QJob job);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model jobRequired="true"
+	 * @generated
+	 */
+	void createTemporaryLibrary(QJob job);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model jobRequired="true"
+	 * @generated
+	 */
+	void destroyTemporaryLibrary(QJob job);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model jobRequired="true"
+	 * @generated
+	 */
+	void destroyAllTemporaryLibrary(QJob job);
 } // QLibraryManager

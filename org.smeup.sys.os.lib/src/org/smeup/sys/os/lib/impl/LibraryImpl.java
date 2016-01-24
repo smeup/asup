@@ -27,7 +27,6 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  * <em><b>QLibrary</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.lib.impl.LibraryImpl#getBasePackage <em>Base Package</em>}</li>
  *   <li>{@link org.smeup.sys.os.lib.impl.LibraryImpl#getDependencies <em>Dependencies</em>}</li>
@@ -35,6 +34,7 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  *   <li>{@link org.smeup.sys.os.lib.impl.LibraryImpl#getParentLibrary <em>Parent Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.lib.impl.LibraryImpl#isSynchronized <em>Synchronized</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
