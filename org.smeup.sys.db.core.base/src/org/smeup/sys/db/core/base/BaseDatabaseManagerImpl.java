@@ -320,11 +320,11 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 			statement = connection.createStatement(true);
 			statement.execute(command);
 		} finally {
+			catalogContainer.removeSchema(schema);
+			
 			if (statement != null)
 				statement.close();
 		}
-
-		catalogContainer.removeSchema(schema);
 	}
 
 	@Override
