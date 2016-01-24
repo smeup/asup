@@ -90,6 +90,9 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 			case YMD:
 				length = 8;
 				break;
+			case YYMD:
+				length = 10;
+				break;
 			}
 			break;
 		case TIME:
@@ -358,6 +361,9 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 			break;
 		case YMD:
 			format = "yy-MM-dd";
+			break;
+		case YYMD:
+			format = "yyyy-MM-dd";
 			break;
 		}
 
