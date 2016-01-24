@@ -19,7 +19,9 @@ import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.lib.QLibrary;
+import org.smeup.sys.os.lib.QLibraryManager;
 import org.smeup.sys.os.lib.QOperatingSystemLibraryFactory;
 import org.smeup.sys.os.usrprf.QOperatingSystemUserProfileFactory;
 import org.smeup.sys.os.usrprf.QUserProfile;
@@ -28,20 +30,22 @@ import org.smeup.sys.rt.core.QApplication;
 
 public class BaseSystemActivator {
 
+	private QJob jobKernel;
+	
 	@ComponentStarted
-	public void start(QApplication application, QResourceManager resourceManager, QSystemManager systemManager) {
-
+	public void start(QApplication application, QResourceManager resourceManager, QLibraryManager libraryManager, QSystemManager systemManager, QJobLogManager jobLogManager) {
+		
 		QSystem system = systemManager.getSystem();
 		QContext systemContext = application.getContext().createChildContext(system.getName());
 		system.setContext(systemContext);
 
-		QJob job = systemManager.start();
-
+		jobKernel = systemManager.start();
+		
 		BaseBundleListener bundleListener = systemContext.make(BaseBundleListener.class);
-		bundleListener.init(job);
+		bundleListener.init(jobKernel);
 
 		// Library
-		QResourceWriter<QLibrary> resourceLibrary = resourceManager.getResourceWriter(job, QLibrary.class, system.getSystemLibrary());
+		QResourceWriter<QLibrary> resourceLibrary = resourceManager.getResourceWriter(jobKernel, QLibrary.class, system.getSystemLibrary());
 		if (!resourceLibrary.exists(system.getSystemLibrary())) {
 			QLibrary library = QOperatingSystemLibraryFactory.eINSTANCE.createLibrary();
 			library.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(system));
@@ -51,7 +55,7 @@ public class BaseSystemActivator {
 		}
 
 		// System
-		QResourceWriter<QSystem> systemWriter = resourceManager.getResourceWriter(job, QSystem.class, system.getSystemLibrary());
+		QResourceWriter<QSystem> systemWriter = resourceManager.getResourceWriter(jobKernel, QSystem.class, system.getSystemLibrary());
 		QSystem persistedSystem = systemWriter.lookup(system.getName());
 		if (persistedSystem != null) {
 			QEnvironmentVariableContainer variableContainer = persistedSystem.getVariableContainer();
@@ -60,21 +64,27 @@ public class BaseSystemActivator {
 				systemWriter.save(system, true);
 			}
 		}
-		QResourceWriter<QUserProfile> userProfileWriter = resourceManager.getResourceWriter(job, QUserProfile.class, system.getSystemLibrary());
+		QResourceWriter<QUserProfile> userProfileWriter = resourceManager.getResourceWriter(jobKernel, QUserProfile.class, system.getSystemLibrary());
 
 		if (!userProfileWriter.exists(system.getSystemUser())) {
 			// User Profile
 			QUserProfile userProfile = QOperatingSystemUserProfileFactory.eINSTANCE.createUserProfile();
 			userProfile.setName(system.getSystemUser());
-			userProfile.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(job));
+			userProfile.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(jobKernel));
 			userProfile.setText("As.UP System User Profile");
-			QResourceWriter<QUserProfile> resourceUserProfile = resourceManager.getResourceWriter(job, QUserProfile.class, system.getSystemLibrary());
+			QResourceWriter<QUserProfile> resourceUserProfile = resourceManager.getResourceWriter(jobKernel, QUserProfile.class, system.getSystemLibrary());
 			resourceUserProfile.save(userProfile);
 		}
 
 		application.getContext().set(QSystem.class, system);
 
-		application.getContext().set(QJob.class, job);
-
-	}
+		application.getContext().set(QJob.class, jobKernel);
+		
+		try {
+			libraryManager.destroyAllTemporaryLibrary(jobKernel);
+		}
+		catch(Exception e) {
+			jobLogManager.warning(jobKernel, e.getMessage());
+		}		
+	}	
 }

@@ -17,6 +17,8 @@ import javax.annotation.PostConstruct;
 
 import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QSystem;
+import org.smeup.sys.os.core.QSystemEvent;
+import org.smeup.sys.os.core.SystemEventType;
 import org.smeup.sys.os.core.base.BaseSystemManagerImpl;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -49,14 +51,33 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 	@Override
 	public QJob start() {
 
+		QSystemEvent systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
+		systemEvent.setSource(getSystem());
+		systemEvent.setType(SystemEventType.STARTING);
+		fireEvent(systemEvent);
+		
 		this.startupJob = createJob(JobType.KERNEL, "QASUP", "KERNEL_E4");
 
+		systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
+		systemEvent.setSource(getSystem());
+		systemEvent.setType(SystemEventType.STARTED);
+		fireEvent(systemEvent);
+		
 		return startupJob;
 	}
 
 	@Override
 	public void stop() {
+
+		QSystemEvent systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
+		systemEvent.setType(SystemEventType.STOPPING);
+		fireEvent(systemEvent);
+		
 		this.system = null;
+		
+		systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
+		systemEvent.setType(SystemEventType.STOPPED);
+		fireEvent(systemEvent);
 	}
 
 	protected QJob getStartupJob() {

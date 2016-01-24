@@ -74,7 +74,7 @@ public class E4ApplicationStarter {
 
 			@Override
 			public String getSystemLibrary() {
-				return getSystemLibrary();
+				return "";
 			}
 
 			@Override
@@ -89,7 +89,12 @@ public class E4ApplicationStarter {
 
 			@Override
 			public String getCurrentLibrary() {
-				return getSystemLibrary();
+				return "";
+			}
+
+			@Override
+			public String getTemporaryLibrary() {
+				return "";
 			}
 		};
 		QContext contextApplication = new E4ContextRootImpl(bundleContext, UUID.randomUUID().toString(), contextDescription);

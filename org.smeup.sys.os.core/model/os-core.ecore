@@ -75,10 +75,32 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="variableContainer" eType="#//env/EnvironmentVariableContainer"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SystemEvent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//System"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//SystemEventType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SystemEventType">
+    <eLiterals name="Starting" value="10" literal="STARTING"/>
+    <eLiterals name="Started" value="20" literal="STARTED"/>
+    <eLiterals name="StatusChanged" value="30" literal="STATUS_CHG"/>
+    <eLiterals name="Stopping" value="40" literal="STOPPING"/>
+    <eLiterals name="Stopped" value="50" literal="STOPPED"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SystemListener" abstract="true" interface="true">
+    <eOperations name="handleEvent">
+      <eParameters name="event" lowerBound="1" eType="#//SystemEvent"/>
+    </eOperations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SystemManager" abstract="true" interface="true">
     <eOperations name="getSystem" eType="#//System"/>
     <eOperations name="start" lowerBound="1" eType="#//jobs/Job"/>
     <eOperations name="stop"/>
+    <eOperations name="registerListener">
+      <eParameters name="listener" lowerBound="1" eType="#//SystemListener"/>
+    </eOperations>
+    <eOperations name="updateStatus">
+      <eParameters name="status" lowerBound="1" eType="#//SystemStatus"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SystemStatus">
     <eLiterals name="Activating" value="10" literal="ACT"/>

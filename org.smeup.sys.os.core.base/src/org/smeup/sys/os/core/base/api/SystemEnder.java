@@ -20,19 +20,24 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
+import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.rt.core.QApplicationManager;
 
 @Program(name = "QWCCSDSC") 
-public class PowerManager {
+public class SystemEnder {
 
 	@Inject
 	private QApplicationManager applicationManager;
+	@Inject
+	private QSystemManager systemManager;
 
 	@Main
 	public void main(@Supported @DataDef(length = 4) QEnum<RESTARTEnum, QCharacter> restart) {
 		
+		systemManager.stop();
+		
 		switch (restart.asEnum()) {
-		case NO:
+		case NO:			
 			applicationManager.stop();
 			break;
 		case YES:

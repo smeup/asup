@@ -45,4 +45,20 @@ public interface QSystemManager {
 	 */
 	void stop();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model listenerRequired="true"
+	 * @generated
+	 */
+	void registerListener(QSystemListener listener);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model statusRequired="true"
+	 * @generated
+	 */
+	void updateStatus(SystemStatus status);
+
 } // QSystemManager

@@ -122,7 +122,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemManager()
 	 * @generated
 	 */
-	int SYSTEM_MANAGER = 3;
+	int SYSTEM_MANAGER = 5;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.QExceptionManager <em>Exception Manager</em>}' class.
@@ -261,6 +261,62 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	int SYSTEM_FEATURE_COUNT = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 10;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.impl.SystemEventImpl <em>System Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.impl.SystemEventImpl
+	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemEvent()
+	 * @generated
+	 */
+	int SYSTEM_EVENT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_EVENT__SOURCE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_EVENT__TYPE = 1;
+
+	/**
+	 * The number of structural features of the '<em>System Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_EVENT_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.QSystemListener <em>System Listener</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.QSystemListener
+	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemListener()
+	 * @generated
+	 */
+	int SYSTEM_LISTENER = 4;
+
+	/**
+	 * The number of structural features of the '<em>System Listener</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_LISTENER_FEATURE_COUNT = 0;
+
+	/**
 	 * The number of structural features of the '<em>System Manager</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -270,6 +326,16 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	int SYSTEM_MANAGER_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.SystemEventType <em>System Event Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.SystemEventType
+	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemEventType()
+	 * @generated
+	 */
+	int SYSTEM_EVENT_TYPE = 6;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.SystemStatus <em>System Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -277,7 +343,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemStatus()
 	 * @generated
 	 */
-	int SYSTEM_STATUS = 4;
+	int SYSTEM_STATUS = 7;
 
 	/**
 	 * The meta object id for the '<em>Message Variable List</em>' data type.
@@ -286,7 +352,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getMessageVariableList()
 	 * @generated
 	 */
-	int MESSAGE_VARIABLE_LIST = 5;
+	int MESSAGE_VARIABLE_LIST = 8;
 
 	/**
 	 * The meta object id for the '<em>Message Exception</em>' data type.
@@ -296,7 +362,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getMessageException()
 	 * @generated
 	 */
-	int MESSAGE_EXCEPTION = 6;
+	int MESSAGE_EXCEPTION = 9;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.QCreationInfo <em>Creation Info</em>}'.
@@ -458,6 +524,48 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	EReference getSystem_VariableContainer();
 
 	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.os.core.QSystemEvent <em>System Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>System Event</em>'.
+	 * @see org.smeup.sys.os.core.QSystemEvent
+	 * @generated
+	 */
+	EClass getSystemEvent();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.smeup.sys.os.core.QSystemEvent#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source</em>'.
+	 * @see org.smeup.sys.os.core.QSystemEvent#getSource()
+	 * @see #getSystemEvent()
+	 * @generated
+	 */
+	EReference getSystemEvent_Source();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.QSystemEvent#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see org.smeup.sys.os.core.QSystemEvent#getType()
+	 * @see #getSystemEvent()
+	 * @generated
+	 */
+	EAttribute getSystemEvent_Type();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.os.core.QSystemListener <em>System Listener</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>System Listener</em>'.
+	 * @see org.smeup.sys.os.core.QSystemListener
+	 * @generated
+	 */
+	EClass getSystemListener();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.QSystemManager <em>System Manager</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -466,6 +574,16 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSystemManager();
+
+	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.os.core.SystemEventType <em>System Event Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>System Event Type</em>'.
+	 * @see org.smeup.sys.os.core.SystemEventType
+	 * @generated
+	 */
+	EEnum getSystemEventType();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.QExceptionManager <em>Exception Manager</em>}'.
@@ -651,6 +769,42 @@ public interface QOperatingSystemCorePackage extends EPackage {
 		EReference SYSTEM__VARIABLE_CONTAINER = eINSTANCE.getSystem_VariableContainer();
 
 		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.impl.SystemEventImpl <em>System Event</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.core.impl.SystemEventImpl
+		 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemEvent()
+		 * @generated
+		 */
+		EClass SYSTEM_EVENT = eINSTANCE.getSystemEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SYSTEM_EVENT__SOURCE = eINSTANCE.getSystemEvent_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SYSTEM_EVENT__TYPE = eINSTANCE.getSystemEvent_Type();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.QSystemListener <em>System Listener</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.core.QSystemListener
+		 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemListener()
+		 * @generated
+		 */
+		EClass SYSTEM_LISTENER = eINSTANCE.getSystemListener();
+
+		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.QSystemManager <em>System Manager</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -659,6 +813,16 @@ public interface QOperatingSystemCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass SYSTEM_MANAGER = eINSTANCE.getSystemManager();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.SystemEventType <em>System Event Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.core.SystemEventType
+		 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemEventType()
+		 * @generated
+		 */
+		EEnum SYSTEM_EVENT_TYPE = eINSTANCE.getSystemEventType();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.QExceptionManager <em>Exception Manager</em>}' class.

@@ -86,7 +86,7 @@ public class E4EquinoxApplicationImpl implements IApplication {
 	private Object waitForStopOrRestart(QApplicationManager applicationManager) {
 		for(;;) {
 			try {
-			    TimeUnit.SECONDS.sleep(5);
+			    TimeUnit.SECONDS.sleep(100);
 			    if (applicationManager.restartCalled()) {
 			    	return EXIT_RESTART;
 			    }

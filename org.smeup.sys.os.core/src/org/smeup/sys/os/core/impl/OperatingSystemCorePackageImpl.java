@@ -30,7 +30,10 @@ import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.QSystem;
+import org.smeup.sys.os.core.QSystemEvent;
+import org.smeup.sys.os.core.QSystemListener;
 import org.smeup.sys.os.core.QSystemManager;
+import org.smeup.sys.os.core.SystemEventType;
 import org.smeup.sys.os.core.SystemStatus;
 import org.smeup.sys.os.core.env.QOperatingSystemEnvironmentPackage;
 import org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentPackageImpl;
@@ -63,7 +66,28 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass systemEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass systemListenerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass systemManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum systemEventTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -320,9 +344,54 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSystemEvent() {
+		return systemEventEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSystemEvent_Source() {
+		return (EReference)systemEventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSystemEvent_Type() {
+		return (EAttribute)systemEventEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSystemListener() {
+		return systemListenerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EClass getSystemManager() {
 		return systemManagerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getSystemEventType() {
+		return systemEventTypeEEnum;
 	}
 
 	/**
@@ -410,9 +479,16 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		createEAttribute(systemEClass, SYSTEM__TEMPORARY_LIBRARY);
 		createEReference(systemEClass, SYSTEM__VARIABLE_CONTAINER);
 
+		systemEventEClass = createEClass(SYSTEM_EVENT);
+		createEReference(systemEventEClass, SYSTEM_EVENT__SOURCE);
+		createEAttribute(systemEventEClass, SYSTEM_EVENT__TYPE);
+
+		systemListenerEClass = createEClass(SYSTEM_LISTENER);
+
 		systemManagerEClass = createEClass(SYSTEM_MANAGER);
 
 		// Create enums
+		systemEventTypeEEnum = createEEnum(SYSTEM_EVENT_TYPE);
 		systemStatusEEnum = createEEnum(SYSTEM_STATUS);
 
 		// Create data types
@@ -519,6 +595,15 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 
 		addEOperation(systemEClass, ecorePackage.getEDouble(), "getLoadAverage", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(systemEventEClass, QSystemEvent.class, "SystemEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSystemEvent_Source(), this.getSystem(), null, "source", null, 0, 1, QSystemEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSystemEvent_Type(), this.getSystemEventType(), "type", null, 1, 1, QSystemEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(systemListenerEClass, QSystemListener.class, "SystemListener", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(systemListenerEClass, null, "handleEvent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSystemEvent(), "event", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(systemManagerEClass, QSystemManager.class, "SystemManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(systemManagerEClass, this.getSystem(), "getSystem", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -527,7 +612,20 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 
 		addEOperation(systemManagerEClass, null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(systemManagerEClass, null, "registerListener", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSystemListener(), "listener", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(systemManagerEClass, null, "updateStatus", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSystemStatus(), "status", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		// Initialize enums and add enum literals
+		initEEnum(systemEventTypeEEnum, SystemEventType.class, "SystemEventType");
+		addEEnumLiteral(systemEventTypeEEnum, SystemEventType.STARTING);
+		addEEnumLiteral(systemEventTypeEEnum, SystemEventType.STARTED);
+		addEEnumLiteral(systemEventTypeEEnum, SystemEventType.STATUS_CHANGED);
+		addEEnumLiteral(systemEventTypeEEnum, SystemEventType.STOPPING);
+		addEEnumLiteral(systemEventTypeEEnum, SystemEventType.STOPPED);
+
 		initEEnum(systemStatusEEnum, SystemStatus.class, "SystemStatus");
 		addEEnumLiteral(systemStatusEEnum, SystemStatus.ACTIVATING);
 		addEEnumLiteral(systemStatusEEnum, SystemStatus.STARTED);

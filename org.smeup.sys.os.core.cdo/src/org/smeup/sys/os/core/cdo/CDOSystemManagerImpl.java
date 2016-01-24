@@ -29,8 +29,11 @@ import org.smeup.sys.il.lock.QObjectLocker;
 import org.smeup.sys.il.memo.cdo.CDOResourceHelper;
 import org.smeup.sys.il.memo.cdo.CDOSessionHelper;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.QSystem;
+import org.smeup.sys.os.core.QSystemEvent;
+import org.smeup.sys.os.core.SystemEventType;
 import org.smeup.sys.os.core.SystemStatus;
 import org.smeup.sys.os.core.base.BaseSystemManagerImpl;
 import org.smeup.sys.os.core.jobs.JobType;
@@ -73,6 +76,11 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 
 		while (!locker.tryLock(QSystem.LOCK_TIMEOUT, LockType.WRITE));
 
+		QSystemEvent systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
+		systemEvent.setSource(getSystem());
+		systemEvent.setType(SystemEventType.STARTING);
+		fireEvent(systemEvent);
+
 		// create job kernel
 		this.startupJob = createJob(JobType.KERNEL, transactionSystem.getSystemUser(), "KERNEL_CDO");
 
@@ -100,6 +108,11 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 		} catch (CommitException e) {
 			throw new OperatingSystemRuntimeException(e);
 		} finally {
+
+			systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
+			systemEvent.setType(SystemEventType.STARTED);
+			fireEvent(systemEvent);
+
 			locker.unlock(LockType.WRITE);
 		}
 
@@ -108,7 +121,7 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 
 	@Override
 	public void stop() {
-
+		
 		// acquire system lock
 		QObjectLocker<QSystem> locker = lockManager.getLocker(startupJob.getContext(), transactionSystem);
 
@@ -118,6 +131,11 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 			return;
 		}
 
+		QSystemEvent systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
+		systemEvent.setSource(getSystem());
+		systemEvent.setType(SystemEventType.STOPPING);
+		fireEvent(systemEvent);
+
 		// update system status
 		try {
 			transactionSystem.setStatus(SystemStatus.STOPPED);
@@ -125,13 +143,17 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 		} catch (CommitException e) {
 			throw new OperatingSystemRuntimeException(e);
 		} finally {
+
+			systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
+			systemEvent.setType(SystemEventType.STOPPED);
+			fireEvent(systemEvent);
+
 			locker.unlock(LockType.WRITE);
 		}
 
 		// close session
 		transaction.close();
 		session.close();
-
 	}
 
 	@Override

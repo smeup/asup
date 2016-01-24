@@ -18,6 +18,8 @@ import org.smeup.sys.os.core.QCreationInfo;
 import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.QSystem;
+import org.smeup.sys.os.core.QSystemEvent;
+import org.smeup.sys.os.core.SystemEventType;
 import org.smeup.sys.os.core.SystemStatus;
 
 /**
@@ -66,6 +68,7 @@ public class OperatingSystemCoreFactoryImpl extends EFactoryImpl implements QOpe
 		switch (eClass.getClassifierID()) {
 			case QOperatingSystemCorePackage.CREATION_INFO: return (EObject)createCreationInfo();
 			case QOperatingSystemCorePackage.SYSTEM: return (EObject)createSystem();
+			case QOperatingSystemCorePackage.SYSTEM_EVENT: return (EObject)createSystemEvent();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -79,6 +82,8 @@ public class OperatingSystemCoreFactoryImpl extends EFactoryImpl implements QOpe
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case QOperatingSystemCorePackage.SYSTEM_EVENT_TYPE:
+				return createSystemEventTypeFromString(eDataType, initialValue);
 			case QOperatingSystemCorePackage.SYSTEM_STATUS:
 				return createSystemStatusFromString(eDataType, initialValue);
 			case QOperatingSystemCorePackage.MESSAGE_VARIABLE_LIST:
@@ -98,6 +103,8 @@ public class OperatingSystemCoreFactoryImpl extends EFactoryImpl implements QOpe
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case QOperatingSystemCorePackage.SYSTEM_EVENT_TYPE:
+				return convertSystemEventTypeToString(eDataType, instanceValue);
 			case QOperatingSystemCorePackage.SYSTEM_STATUS:
 				return convertSystemStatusToString(eDataType, instanceValue);
 			case QOperatingSystemCorePackage.MESSAGE_VARIABLE_LIST:
@@ -129,6 +136,36 @@ public class OperatingSystemCoreFactoryImpl extends EFactoryImpl implements QOpe
 	public QSystem createSystem() {
 		SystemImpl system = new SystemImpl();
 		return system;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QSystemEvent createSystemEvent() {
+		SystemEventImpl systemEvent = new SystemEventImpl();
+		return systemEvent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SystemEventType createSystemEventTypeFromString(EDataType eDataType, String initialValue) {
+		SystemEventType result = SystemEventType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSystemEventTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

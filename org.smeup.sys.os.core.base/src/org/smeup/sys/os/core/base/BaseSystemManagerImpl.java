@@ -14,13 +14,19 @@ package org.smeup.sys.os.core.base;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextDescription;
+import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
+import org.smeup.sys.os.core.QSystemEvent;
+import org.smeup.sys.os.core.QSystemListener;
 import org.smeup.sys.os.core.QSystemManager;
+import org.smeup.sys.os.core.SystemEventType;
+import org.smeup.sys.os.core.SystemStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
@@ -30,6 +36,18 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 	protected static final SimpleDateFormat YYMMDD = new SimpleDateFormat("yyMMdd");
 	protected static final SimpleDateFormat YYYYMMDD = new SimpleDateFormat("yyyyMMdd");
 	protected static final SimpleDateFormat HHMMSS = new SimpleDateFormat("HHmmss");
+
+	private List<QSystemListener> listeners = new ArrayList<QSystemListener>();
+
+	@Override
+	public void registerListener(QSystemListener listener) {
+		this.listeners.add(listener);
+	}
+
+	protected void fireEvent(QSystemEvent systemEvent) {
+		for (QSystemListener jobListener : this.listeners)
+			jobListener.handleEvent(systemEvent);
+	}
 
 	protected QJob createJob(JobType jobType, String user, String jobName) {
 
@@ -75,6 +93,11 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 			public String getCurrentLibrary() {
 				return job.getCurrentLibrary();
 			}
+
+			@Override
+			public String getTemporaryLibrary() {
+				return "QTMP"+new DecimalFormat("######").format(job.getJobNumber());
+			}
 		};
 
 		QContext jobContext = getSystem().getContext().createChildContext(contextDescription, ContextInjectionStrategy.LOCAL);
@@ -87,7 +110,17 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 
 		return job;
 	}
-
+	
 	protected abstract int nextJobID();
 
+
+	@Override
+	public void updateStatus(SystemStatus status) {
+		
+		QSystemEvent systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
+		systemEvent.setSource(getSystem());
+		systemEvent.setType(SystemEventType.STATUS_CHANGED);
+		
+		fireEvent(systemEvent);
+	}
 }
