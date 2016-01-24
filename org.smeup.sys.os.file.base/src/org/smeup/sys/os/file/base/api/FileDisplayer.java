@@ -28,12 +28,12 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QPhysicalFile;
-import org.smeup.sys.os.file.base.api.FileFinder.FILE;
 import org.smeup.sys.os.file.base.api.tools.Displayer;
 
 @Program(name = "QNFBROWS")
@@ -50,23 +50,20 @@ public class FileDisplayer {
 	private QJob job;
 	@Inject
 	private QExceptionManager exceptionManager;
-	
-	@Main 
-	public void main(@DataDef(qualified = true) FILE file,
-			                @DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
-		
 
-		FileFinder fileFinder = new FileFinder(job, resourceManager);
-		QFile qFile = fileFinder.lookup(file);
-		
-		if(qFile == null)
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF9812, new String[] {file.nameGeneric.trimR(), file.library.asData().trimR()});		
+	@Main
+	public void main(@DataDef(qualified = true) FileRef file, @DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
 
-		if (!(qFile instanceof QPhysicalFile)) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF8056, new String[] {file.nameGeneric.trimR(), file.library.asData().trimR()});	
-		}
-		
-		display((QPhysicalFile)qFile, output);
+		QResourceReader<QFile> fileReader = resourceManager.getResourceReader(job, QFile.class, file.library.asEnum(), file.library.asData().trimR());
+		QFile qFile = fileReader.lookup(file.name.trimR());
+
+		if (qFile == null)
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF9812, file);
+
+		if (!(qFile instanceof QPhysicalFile))
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF8056, file);
+
+		display((QPhysicalFile) qFile, output);
 	}
 
 	private void display(QPhysicalFile qFile, QEnum<OUTPUTEnum, QCharacter> output) {
@@ -75,9 +72,9 @@ public class FileDisplayer {
 			connection = job.getContext().getAdapter(job, QConnection.class);
 
 			Table table = connection.getCatalogMetaData().getTable(qFile.getLibrary(), qFile.getName());
-		
+
 			QObjectWriter objectWriter = null;
-			
+
 			switch (output.asEnum()) {
 			case PRINT:
 				objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
@@ -86,13 +83,12 @@ public class FileDisplayer {
 				objectWriter = outputManager.getDefaultWriter(job.getContext());
 				break;
 			}
-			
-			
+
 			QDefinitionWriter definitionWriter = connection.getContext().get(QDefinitionWriter.class);
 			String sql = definitionWriter.selectData(table);
-			
+
 			QStatement statement = null;
-			ResultSet resultSet =  null;
+			ResultSet resultSet = null;
 			try {
 				statement = connection.createStatement(true);
 				resultSet = statement.executeQuery(sql);
@@ -108,8 +104,6 @@ public class FileDisplayer {
 		}
 	}
 
-
-	
 	public static enum OUTPUTEnum {
 		@Special(value = "*")
 		TERM_STAR, @Special(value = "P")

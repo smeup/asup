@@ -9,7 +9,9 @@ package org.smeup.sys.os.file.base.api;
 
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
+import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
+import org.smeup.sys.il.memo.Scope;
 
 public class FileRef extends QDataStructWrapper {
 
@@ -18,7 +20,6 @@ public class FileRef extends QDataStructWrapper {
 	@DataDef(length = 10)
 	public QCharacter name;
 
-	@DataDef(length = 10)
-	public QCharacter library;
-
+	@DataDef(length = 10, value = "*LIBL")
+	public QEnum<Scope, QCharacter> library;
 }

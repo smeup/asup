@@ -38,19 +38,18 @@ import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.file.QDatabaseFile;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.base.api.tools.Displayer;
-import org.smeup.sys.os.file.base.api.tools.FileStructureDuplicator;
-import org.smeup.sys.os.file.base.api.tools.FileStructureDuplicator.LibraryNotFoundException;
 
 @Program(name = "QCPEX0FL")
 public @ToDo class FileCopier {
 	public static enum QCPFMSG {
-		CPF2802, CPF2801, CPF2861, CPF9810 
+		CPF2802, CPF2801, CPF2861, CPF9810
 	}
 
 	@Inject
@@ -63,45 +62,38 @@ public @ToDo class FileCopier {
 	private QOutputManager outputManager;
 	@Inject
 	private QExceptionManager exceptionManager;
-	
-	@Main 
-	public void main(
-			@Supported @DataDef(qualified = true) FROMFILE fromFile,
-			@Supported @DataDef(qualified = true) TOFILE toFile,
-			@Supported @DataDef(length = 10) QEnum<FROMMEMBEREnum, QCharacter> fromMember,
-			@Supported @DataDef(length = 10) QEnum<TOMEMBERORLABELEnum, QCharacter> toMemberOrLabel,
-			@Supported @DataDef(length = 1) QEnum<REPLACEORADDRECORDSEnum, QCharacter> replaceOrAddRecords,
-			@Supported @DataDef(length = 1) QEnum<CREATEFILEEnum, QCharacter> createFile,
+
+	@Main
+	public void main(@Supported @DataDef(qualified = true) FileRef fromFile, @Supported @DataDef(qualified = true) TOFILE toFile,
+			@Supported @DataDef(length = 10) QEnum<FROMMEMBEREnum, QCharacter> fromMember, @Supported @DataDef(length = 10) QEnum<TOMEMBERORLABELEnum, QCharacter> toMemberOrLabel,
+			@Supported @DataDef(length = 1) QEnum<REPLACEORADDRECORDSEnum, QCharacter> replaceOrAddRecords, @Supported @DataDef(length = 1) QEnum<CREATEFILEEnum, QCharacter> createFile,
 			@Unsupported @DataDef(length = 1) QEnum<PRINTFORMATEnum, QCharacter> printFormat,
 			@Unsupported @DataDef(dimension = 3, length = 1) QScroller<QEnum<WHICHRECORDSTOPRINTEnum, QCharacter>> whichRecordsToPrint,
 			@Unsupported @DataDef(length = 10) QEnum<RECORDFORMATOFLOGICALFILEEnum, QCharacter> recordFormatOfLogicalFile,
 			@Supported @DataDef(binaryType = BinaryType.INTEGER) QEnum<COPYFROMRECORDNUMBEREnum, QBinary> copyFromRecordNumber,
-			@Supported @DataDef(binaryType = BinaryType.INTEGER) QEnum<COPYTORECORDNUMBEREnum, QBinary> copyToRecordNumber,
-			@ToDo COPYFROMRECORDKEY copyFromRecordKey,
-			@ToDo COPYTORECORDKEY copyToRecordKey,
-			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<NUMBEROFRECORDSTOCOPYEnum, QBinary> numberOfRecordsToCopy,
-			@ToDo INCLUDERECORDSBYCHARTEST includeRecordsByCharTest,
-			@ToDo @DataDef(dimension = 50) QStroller<INCLUDERECORDSBYFIELDTEST> includeRecordsByFieldTest,
+			@Supported @DataDef(binaryType = BinaryType.INTEGER) QEnum<COPYTORECORDNUMBEREnum, QBinary> copyToRecordNumber, @ToDo COPYFROMRECORDKEY copyFromRecordKey,
+			@ToDo COPYTORECORDKEY copyToRecordKey, @ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<NUMBEROFRECORDSTOCOPYEnum, QBinary> numberOfRecordsToCopy,
+			@ToDo INCLUDERECORDSBYCHARTEST includeRecordsByCharTest, @ToDo @DataDef(dimension = 50) QStroller<INCLUDERECORDSBYFIELDTEST> includeRecordsByFieldTest,
 			@ToDo @DataDef(dimension = 2, length = 1) QScroller<QEnum<RECORDFORMATFIELDMAPPINGEnum, QCharacter>> recordFormatFieldMapping,
-			@ToDo @DataDef(dimension = 2, length = 1) QScroller<QEnum<SOURCEUPDATEOPTIONSEnum, QCharacter>> sourceUpdateOptions,
-			@ToDo SOURCESEQUENCENUMBERING sourceSequenceNumbering,
+			@ToDo @DataDef(dimension = 2, length = 1) QScroller<QEnum<SOURCEUPDATEOPTIONSEnum, QCharacter>> sourceUpdateOptions, @ToDo SOURCESEQUENCENUMBERING sourceSequenceNumbering,
 			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<ERRORSALLOWEDEnum, QBinary> errorsAllowed,
 			@ToDo @DataDef(length = 1) QEnum<COMPRESSOUTDELETEDRECORDSEnum, QCharacter> compressOutDeletedRecords) {
 
-		FileFinder fileFinder = new FileFinder(job, resourceManager);
-		
-		QResourceReader<QFile> fileReader = fileFinder.writerFor(fromFile.library);
-		
+		QResourceReader<QFile> fileReader = resourceManager.getResourceReader(job, QFile.class, fromFile.library.asEnum(), fromFile.library.asData().trimR());
 		QFile qFileFrom = fileReader.lookup(fromFile.name.trimR());
-		if(qFileFrom == null)
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF2802, new String[] {fromFile.name.trimR(), fromFile.library.asData().trimR()});	
-		if(!(qFileFrom instanceof QDatabaseFile))
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF2801, new String[] {fromFile.name.trimR(), fromFile.library.asData().trimR()});	
-		
+
+		if (qFileFrom == null)
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2802, new String[] { fromFile.name.trimR(), fromFile.library.asData().trimR() });
+
+		if (!(qFileFrom instanceof QDatabaseFile))
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2801, new String[] { fromFile.name.trimR(), fromFile.library.asData().trimR() });
+
 		//
 		QConnection connection = job.getContext().getAdapter(job, QConnection.class);
 		FileDataDuplicator fileDataDuplicator = new FileDataDuplicator(connection, qFileFrom);
-		if (toFile.name.asEnum().equals(TOFILE.NAMEEnum.PRINT)) {
+
+		switch (toFile.name.asEnum()) {
+		case PRINT:
 			QObjectWriter objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
 			String sql = fileDataDuplicator.fileFromResultsetQry(copyFromRecordNumber.asData().asInteger(), copyToRecordNumber.asData().asInteger());
 			QStatement statement = null;
@@ -116,20 +108,24 @@ public @ToDo class FileCopier {
 				connection.close(rs);
 				connection.close(statement);
 			}
-		} else {
-			String toFileName = toFile.name.asData().trimR();
-			//
-			QResourceWriter<QFile> fileWriter = fileFinder.writerFor(toFile.library);
-			QFile qFileTo = fileWriter.lookup(toFileName);
-			if(qFileTo == null) {
-				if (createFile.asEnum().equals(CREATEFILEEnum.NO)) {
-					throw exceptionManager.prepareException(job, QCPFMSG.CPF2861, new String[] {toFileName, toFile.library.asData().trimR()});	
-				} else {
-					try {
-						qFileTo = new FileStructureDuplicator(job, jobLogManager).createFile(qFileFrom, toFileName, fileWriter);
-					} catch (LibraryNotFoundException e) {
-						throw exceptionManager.prepareException(job, QCPFMSG.CPF9810, new String[] {toFile.library.asData().trimR()});	
-					}
+
+			break;
+
+		case OTHER:
+
+			QResourceWriter<QFile> fileWriter = resourceManager.getResourceWriter(job, QFile.class, toFile.library.asEnum(), toFile.library.asData().trimR());
+			if(fileWriter == null)
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF9810, toFile);
+			
+			QFile qFileTo = fileWriter.lookup(toFile.name.asData().trimR());
+			if (qFileTo == null) {
+				switch (createFile.asEnum()) {
+				case NO:
+					throw exceptionManager.prepareException(job, QCPFMSG.CPF2861, toFile);
+				case YES:
+					qFileTo = fileWriter.copy(qFileFrom, toFile.name.asData().trimR());
+					jobLogManager.info(job, "File " + toFile + " created");
+					break;
 				}
 			}
 			//
@@ -137,29 +133,20 @@ public @ToDo class FileCopier {
 			if (replaceOrAddRecords.asEnum().equals(REPLACEORADDRECORDSEnum.REPLACE)) {
 				fileDataDuplicator.clearFileTo();
 			}
-			fileDataDuplicator.duplicateData(copyFromRecordNumber.asData().asInteger(), copyToRecordNumber.asData().asInteger());	
+			fileDataDuplicator.duplicateData(copyFromRecordNumber.asData().asInteger(), copyToRecordNumber.asData().asInteger());
+
+			break;
 		}
-	}
-
-
-	public static class FROMFILE extends QDataStructWrapper {
-		private static final long serialVersionUID = 1L;
-		
-		@DataDef(length = 10)
-		public QCharacter name;
-		
-		@DataDef(length = 10)
-		public QEnum<LIBRARYEnum, QCharacter> library;
 	}
 
 	public static class TOFILE extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
-		
+
 		@DataDef(length = 10)
 		public QEnum<NAMEEnum, QCharacter> name;
-		
+
 		@DataDef(length = 10)
-		public QEnum<LIBRARYEnum, QCharacter> library;
+		public QEnum<Scope, QCharacter> library;
 
 		public static enum NAMEEnum {
 			@Special(value = "*LIST")
@@ -198,10 +185,11 @@ public @ToDo class FileCopier {
 	}
 
 	public static enum WHICHRECORDSTOPRINTEnum {
-		@Special(value = "N") NONE, 
-		@Special(value = "E") EXCLD, 
-		@Special(value = "C") COPIED, 
-		@Special(value = "R") ERROR
+		@Special(value = "N")
+		NONE, @Special(value = "E")
+		EXCLD, @Special(value = "C")
+		COPIED, @Special(value = "R")
+		ERROR
 	}
 
 	public static enum RECORDFORMATOFLOGICALFILEEnum {

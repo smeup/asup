@@ -27,12 +27,12 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QPhysicalFile;
-import org.smeup.sys.os.file.base.api.FileFinder.FILE;
 
 @Program(name = "QDBCLRPF")
 public class PhysicalFileClearer {
@@ -49,13 +49,14 @@ public class PhysicalFileClearer {
 
 	
 	@Main
-	public void main(@DataDef(qualified = true) FILE file, @DataDef(length = 10) QEnum<Member, QCharacter> member) {
+	public void main(@DataDef(qualified = true) FileRef file, @DataDef(length = 10) QEnum<Member, QCharacter> member) {
 
-		FileFinder fileFinder = new FileFinder(job, resourceManager);
-		QFile qFile = fileFinder.lookup(file);
 
+		QResourceReader<QFile> fileReader = resourceManager.getResourceReader(job, QFile.class, file.library.asEnum(), file.library.asData().trimR());
+		QFile qFile = fileReader.lookup(file.name.trimR());
+		
 		if (qFile == null)
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF3142, new String[] {file.nameGeneric.trimR(), member.asData().trimR(),  file.library.asData().trimR()});		
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF3142, file);		
 		
 		QConnection connection = job.getContext().getAdapter(job, QConnection.class);
 
@@ -64,7 +65,7 @@ public class PhysicalFileClearer {
 				Table table = connection.getCatalogMetaData().getTable(qFile.getLibrary(), qFile.getName());
 				deleteData(connection, table);
 			} else {
-				throw exceptionManager.prepareException(job, QCPFMSG.CPF3136, new String[] {file.nameGeneric.trimR(), member.asData().trimR(), file.library.asData().trimR()});		
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF3136, new String[] {file.name.trimR(), member.asData().trimR(), file.library.asData().trimR()});		
 			}
 		} catch (SQLException e) {
 			throw new OperatingSystemRuntimeException(e);

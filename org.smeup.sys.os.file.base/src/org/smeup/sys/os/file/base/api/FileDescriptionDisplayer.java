@@ -29,6 +29,7 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
@@ -41,19 +42,20 @@ import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QLogicalFile;
 import org.smeup.sys.os.file.QPhysicalFile;
 import org.smeup.sys.os.file.QPrinterFile;
-import org.smeup.sys.os.file.base.api.FileFinder.FILE;
 import org.smeup.sys.os.file.base.api.tools.Displayer;
-import org.smeup.sys.os.file.base.api.tools.FileStructureDuplicator;
-import org.smeup.sys.os.file.base.api.tools.FileStructureDuplicator.LibraryNotFoundException;
 
 @Program(name = "QWHDSPFD")
 public @Supported class FileDescriptionDisplayer {
 	public static enum QCPFMSG {
-		CPF3012,    //File &1 non trovato nella libreria &2.
-		CPF3020,    //Nessun file di &1 in &2 ha il FILEATR specificato. 
-		CPF3083,    //Il valore &4, specificato nel parametro TYPE, non è  consentito per &3, file &1 nella libreria &2. I tipi *SPOOL, *SELECT e *JOIN non sono consentiti per un file fisico.
-		CPF3064,    //Liberia &1 non trovata
-		CPF3081,    //Il valore &4 specificato nel parametro TYPE non è consentito per &3, file &1 nella libreria &2    
+		CPF3012, // File &1 non trovato nella libreria &2.
+		CPF3020, // Nessun file di &1 in &2 ha il FILEATR specificato.
+		CPF3083, // Il valore &4, specificato nel parametro TYPE, non è
+					// consentito per &3, file &1 nella libreria &2. I tipi
+					// *SPOOL, *SELECT e *JOIN non sono consentiti per un file
+					// fisico.
+		CPF3064, // Liberia &1 non trovata
+		CPF3081, // Il valore &4 specificato nel parametro TYPE non è consentito
+					// per &3, file &1 nella libreria &2
 	}
 
 	@Inject
@@ -70,31 +72,27 @@ public @Supported class FileDescriptionDisplayer {
 	private QDefinitionWriter definitionWriter;
 	@Inject
 	private QSourceManager sourceManager;
-	
-	@Main 
-	public void main(
-			@Supported @DataDef(qualified = true) FILE file,
-			@Supported @DataDef(dimension = 10, length = 8)  QScroller<QEnum<TypeOfFileInformationEnum, QCharacter>> typeOfInformation,
-			@Supported @DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output,
-			@Supported @DataDef(dimension = 12, length = 5) QScroller<QEnum<FILEATTRIBUTESEnum, QCharacter>> fileAttributes,
-			@Supported @DataDef(qualified = true) FILE fileToReceiveOutput,
-			@Unsupported OUTPUTMEMBEROPTIONS outputMemberOptions,
+
+	@Main
+	public void main(@Supported @DataDef(qualified = true) FileRef file, @Supported @DataDef(dimension = 10, length = 8) QScroller<QEnum<TypeOfFileInformationEnum, QCharacter>> typeOfInformation,
+			@Supported @DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output, @Supported @DataDef(dimension = 12, length = 5) QScroller<QEnum<FILEATTRIBUTESEnum, QCharacter>> fileAttributes,
+			@Supported @DataDef(qualified = true) FileRef fileToReceiveOutput, @Unsupported OUTPUTMEMBEROPTIONS outputMemberOptions,
 			@Unsupported @DataDef(length = 1) QEnum<SYSTEMEnum, QCharacter> system) {
 
-		FileFinder fileFinder = new FileFinder(job, resourceManager);
-		QFile qFile = fileFinder.lookup(file);
-		
-		if(qFile == null)
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF3012, new String[] {file.nameGeneric.trimR(), file.library.asData().trimR()});		
+		QResourceReader<QFile> fileReader = resourceManager.getResourceReader(job, QFile.class, file.library.asEnum(), file.library.asData().trimR());
+		QFile qFile = fileReader.lookup(file.name.trimR());
+
+		if (qFile == null)
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF3012, new String[] { file.toString() });
 
 		checkType(fileAttributes, qFile);
-		
+
 		QObjectWriter objectWriter = null;
 
 		switch (output.asEnum()) {
 		case OUTFILE:
 			TypeOfFileInformationEnum informationType = typeOfInformation.first().asEnum();
-			QFile qFileTo = createDestinationFile(fileFinder, fileToReceiveOutput, informationType);
+			QFile qFileTo = createDestinationFile(fileToReceiveOutput, informationType);
 			writeInfosTo(qFileTo, informationType.assignments(new RichQFile(qFile)));
 			break;
 
@@ -105,18 +103,16 @@ public @Supported class FileDescriptionDisplayer {
 			objectWriter = outputManager.getDefaultWriter(job.getContext());
 			break;
 		}
-		
+
 		if (objectWriter != null) {
 			TypeOfFileInformationEnum informationType = typeOfInformation.first().asEnum();
-			writeInfosTo(objectWriter, informationType.assignments(new RichQFile(qFile)));			
+			writeInfosTo(objectWriter, informationType.assignments(new RichQFile(qFile)));
 		}
 	}
-
 
 	private void writeInfosTo(QObjectWriter objectWriter, LinkedHashMap<String, Object>[] assignments) {
 		new Displayer(objectWriter).display(Arrays.asList(assignments));
 	}
-
 
 	private void writeInfosTo(final QFile qFileTo, final LinkedHashMap<String, Object> assignments[]) {
 		QConnection connection = job.getContext().getAdapter(job, QConnection.class);
@@ -125,10 +121,10 @@ public @Supported class FileDescriptionDisplayer {
 		try (QPreparedStatement stmt = connection.prepareStatement(sqlInsert);) {
 			for (LinkedHashMap<String, Object> assignment : assignments) {
 				int i = 1;
-				for (Object value: assignment.values()) {
+				for (Object value : assignment.values()) {
 					stmt.setObject(i++, value);
 				}
-				stmt.execute();				
+				stmt.execute();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -136,20 +132,19 @@ public @Supported class FileDescriptionDisplayer {
 		}
 	}
 
-	private QFile createDestinationFile(FileFinder fileFinder, 
-										FILE toFile, 
-										TypeOfFileInformationEnum typeofinformationEnum) {
-		QResourceWriter<QFile> fileWriter = fileFinder.writerFor(toFile.library);
-		String toFileName = toFile.nameGeneric.trimR();
-		QFile qFileTo = fileWriter.lookup(toFileName);
-		if(qFileTo == null) {
-			QFile qFileFrom = fileFinder.lookup(typeofinformationEnum.baseOutputFileName(), "QSYS");
-			try {
-				qFileTo = new FileStructureDuplicator(job, jobLogManager).createFile(qFileFrom, toFileName, fileWriter);
-			} catch (LibraryNotFoundException e) {
-				throw exceptionManager.prepareException(job, QCPFMSG.CPF3064, toFile.library.asData().trimR());
-			}
-		}	
+	private QFile createDestinationFile(FileRef toFile, TypeOfFileInformationEnum typeofinformationEnum) {
+
+		QResourceReader<QFile> fileReader = resourceManager.getResourceReader(job, QFile.class, toFile.library.asEnum(), toFile.library.asData().trimR());
+		QFile qFileTo = fileReader.lookup(toFile.name.trimR());
+		if (qFileTo == null) {
+			QFile qFileFrom = fileReader.lookup(typeofinformationEnum.baseOutputFileName());
+			
+			QResourceWriter<QFile> fileWriter = resourceManager.getResourceWriter(job, QFile.class, toFile.library.asEnum(), toFile.library.asData().trimR());
+			qFileTo = fileWriter.copy(qFileFrom, toFile.name.trimR());
+			
+			jobLogManager.info(job, "File " + toFile + " created");
+		}
+		
 		return qFileTo;
 	}
 
@@ -159,17 +154,14 @@ public @Supported class FileDescriptionDisplayer {
 				return;
 			}
 		}
-		
-		throw exceptionManager.prepareException(job, QCPFMSG.CPF3020, new String[] {file.getName(), file.getLibrary()});				
-	}
 
+		throw exceptionManager.prepareException(job, QCPFMSG.CPF3020, new String[] { file.getName(), file.getLibrary() });
+	}
 
 	public static enum OUTPUTEnum {
 		@Special(value = "*")
-		TERM_STAR, 
-		@Special(value = "L")
-		PRINT, 
-		@Special(value = "N")
+		TERM_STAR, @Special(value = "L")
+		PRINT, @Special(value = "N")
 		OUTFILE
 	}
 
@@ -179,45 +171,44 @@ public @Supported class FileDescriptionDisplayer {
 			public boolean includes(QFile arg0) {
 				return true;
 			}
-		}, 
+		},
 		DSPF {
 			@Override
 			public boolean includes(QFile file) {
 				return file instanceof QDisplayFile;
 			}
-		}, 
+		},
 		PRTF {
 			@Override
 			public boolean includes(QFile file) {
 				return file instanceof QPrinterFile;
 			}
-		}, 
-		PF  {
+		},
+		PF {
 			@Override
 			public boolean includes(QFile file) {
 				return file instanceof QPhysicalFile;
 			}
-		},	
+		},
 		LF {
 			@Override
 			public boolean includes(QFile file) {
 				return file instanceof QLogicalFile;
 			}
 		},
-		DKTF, TAPF,	CMNF, BSCF, MXDF,SAVF, DDMF, ICFF; 
+		DKTF, TAPF, CMNF, BSCF, MXDF, SAVF, DDMF, ICFF;
 
 		public boolean includes(QFile file) {
 			throw new RuntimeException("Unsupported type " + this.name());
 		};
 	}
 
-
 	public static class OUTPUTMEMBEROPTIONS extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
-		
+
 		@DataDef(length = 10, value = "*FIRST")
 		public QEnum<MEMBERTORECEIVEOUTPUTEnum, QCharacter> memberToReceiveOutput;
-		
+
 		@DataDef(length = 1, value = "*REPLACE")
 		public QEnum<REPLACEORADDRECORDSEnum, QCharacter> replaceOrAddRecords;
 
@@ -227,21 +218,17 @@ public @Supported class FileDescriptionDisplayer {
 
 		public static enum REPLACEORADDRECORDSEnum {
 			@Special(value = "R")
-			REPLACE, 
-			@Special(value = "A")
+			REPLACE, @Special(value = "A")
 			ADD
 		}
 	}
 
 	public static enum SYSTEMEnum {
 		@Special(value = "L")
-		LCL,
-		@Special(value = "R")
-		RMT, 
-		@Special(value = "A")
+		LCL, @Special(value = "R")
+		RMT, @Special(value = "A")
 		ALL
 	}
-	
 
 	public class RichQFile {
 		public final QFile qFile;
@@ -249,7 +236,7 @@ public @Supported class FileDescriptionDisplayer {
 		public RichQFile(QFile qFile) {
 			this.qFile = qFile;
 		}
-		
+
 		public OperatingSystemMessageException createException(QCPFMSG cpf, String[] variables) {
 			return exceptionManager.prepareException(job, cpf, variables);
 		}
@@ -263,8 +250,7 @@ public @Supported class FileDescriptionDisplayer {
 			QConnection connection = job.getContext().getAdapter(job, QConnection.class);
 			Table table = connection.getCatalogMetaData().getTable(qFile.getLibrary(), qFile.getName());
 
-			try (QStatement statement = connection.createStatement(true); 
- 				ResultSet resultSet = statement.executeQuery(definitionWriter.countRecords(table))) {
+			try (QStatement statement = connection.createStatement(true); ResultSet resultSet = statement.executeQuery(definitionWriter.countRecords(table))) {
 				if (resultSet.next()) {
 					return resultSet.getInt(1);
 				} else {
@@ -273,12 +259,12 @@ public @Supported class FileDescriptionDisplayer {
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
 			}
-		}
-
+		}	
+		
 		public QDatabaseFile findFile(String table) {
-			return (QDatabaseFile)new FileFinder(job, resourceManager).lookup(table, this.qFile.getLibrary());			
+			QResourceReader<QFile> fileReader = resourceManager.getResourceReader(job, QFile.class, qFile.getLibrary());
+			return (QDatabaseFile) fileReader.lookup(table);			
 		}
 	}
-	
-}
 
+}
