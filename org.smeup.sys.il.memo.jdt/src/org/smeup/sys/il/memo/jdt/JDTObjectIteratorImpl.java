@@ -15,8 +15,6 @@ import java.util.Iterator;
 
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
-import org.smeup.sys.il.memo.QResourceEvent;
-import org.smeup.sys.il.memo.ResourceEventType;
 
 public class JDTObjectIteratorImpl<T extends QObjectNameable> implements QObjectIterator<T> {
 
@@ -24,12 +22,10 @@ public class JDTObjectIteratorImpl<T extends QObjectNameable> implements QObject
 	private Iterator<T> iterator;
 
 	private T nextObject = null;
-	private QResourceEvent<T> resourceEvent;
-
-	public JDTObjectIteratorImpl(Class<T> klass, Iterator<T> iterator, QResourceEvent<T> resourceEvent) {
+	
+	public JDTObjectIteratorImpl(Class<T> klass, Iterator<T> iterator) {
 		this.klass = klass;
 		this.iterator = iterator;
-		this.resourceEvent = resourceEvent;
 		doNext();
 	}
 
@@ -46,12 +42,8 @@ public class JDTObjectIteratorImpl<T extends QObjectNameable> implements QObject
 	@Override
 	public T next() {
 		T object = nextObject;
-
 		doNext();
-
-		if (object != null)
-			resourceEvent.getResource().fireEvent(resourceEvent, ResourceEventType.POST_LOAD, object);
-
+		
 		return object;
 	}
 

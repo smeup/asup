@@ -28,15 +28,6 @@ public interface QIntegratedLanguageMemoryFactory extends EFactory {
 	QIntegratedLanguageMemoryFactory eINSTANCE = org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Resource Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Resource Event</em>'.
-	 * @generated
-	 */
-	<T extends QObjectNameable> QResourceEvent<T> createResourceEvent();
-
-	/**
 	 * Returns a new object of class '<em>Resource Notifier</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

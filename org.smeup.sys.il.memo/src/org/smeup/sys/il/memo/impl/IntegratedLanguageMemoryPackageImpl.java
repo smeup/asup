@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.memo.impl;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EGenericType;
@@ -31,7 +30,6 @@ import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceNotifier;
 import org.smeup.sys.il.memo.QResourceProvider;
 import org.smeup.sys.il.memo.QResourceReader;
-import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.il.memo.Scope;
@@ -85,12 +83,6 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass resourceReaderEClass = null;
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass resourceSetReaderEClass = null;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -208,53 +200,8 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getResource_Name() {
-		return (EAttribute)resourceEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getResourceEvent() {
 		return resourceEventEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getResourceEvent_Source() {
-		return (EReference)resourceEventEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getResourceEvent_Type() {
-		return (EAttribute)resourceEventEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getResourceEvent_Resource() {
-		return (EReference)resourceEventEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getResourceEvent_AdditionalInfo() {
-		return (EReference)resourceEventEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -300,24 +247,6 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 	 */
 	public EClass getResourceReader() {
 		return resourceReaderEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getResourceSetReader() {
-		return resourceSetReaderEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getResourceSetReader_Resources() {
-		return (EAttribute)resourceSetReaderEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -378,13 +307,8 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		resourceEClass = createEClass(RESOURCE);
 		createEReference(resourceEClass, RESOURCE__CONTEXT_PROVIDER);
 		createEReference(resourceEClass, RESOURCE__NOTIFIER);
-		createEAttribute(resourceEClass, RESOURCE__NAME);
 
 		resourceEventEClass = createEClass(RESOURCE_EVENT);
-		createEReference(resourceEventEClass, RESOURCE_EVENT__SOURCE);
-		createEAttribute(resourceEventEClass, RESOURCE_EVENT__TYPE);
-		createEReference(resourceEventEClass, RESOURCE_EVENT__RESOURCE);
-		createEReference(resourceEventEClass, RESOURCE_EVENT__ADDITIONAL_INFO);
 
 		resourceListenerEClass = createEClass(RESOURCE_LISTENER);
 
@@ -395,9 +319,6 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		resourceProviderEClass = createEClass(RESOURCE_PROVIDER);
 
 		resourceReaderEClass = createEClass(RESOURCE_READER);
-
-		resourceSetReaderEClass = createEClass(RESOURCE_SET_READER);
-		createEAttribute(resourceSetReaderEClass, RESOURCE_SET_READER__RESOURCES);
 
 		resourceWriterEClass = createEClass(RESOURCE_WRITER);
 
@@ -440,7 +361,6 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		ETypeParameter resourceListenerEClass_T = addETypeParameter(resourceListenerEClass, "T");
 		ETypeParameter resourceNotifierEClass_T = addETypeParameter(resourceNotifierEClass, "T");
 		ETypeParameter resourceReaderEClass_T = addETypeParameter(resourceReaderEClass, "T");
-		ETypeParameter resourceSetReaderEClass_T = addETypeParameter(resourceSetReaderEClass, "T");
 		ETypeParameter resourceWriterEClass_T = addETypeParameter(resourceWriterEClass, "T");
 
 		// Set bounds for type parameters
@@ -455,21 +375,15 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
 		resourceReaderEClass_T.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
-		resourceSetReaderEClass_T.getEBounds().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
 		resourceWriterEClass_T.getEBounds().add(g1);
 
 		// Add supertypes to classes
-		resourceEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNameable());
+		resourceEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		resourceManagerEClass.getESuperTypes().add(this.getResourceProvider());
 		g1 = createEGenericType(this.getResource());
 		EGenericType g2 = createEGenericType(resourceReaderEClass_T);
 		g1.getETypeArguments().add(g2);
 		resourceReaderEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(this.getResourceReader());
-		g2 = createEGenericType(resourceSetReaderEClass_T);
-		g1.getETypeArguments().add(g2);
-		resourceSetReaderEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getResourceReader());
 		g2 = createEGenericType(resourceWriterEClass_T);
 		g1.getETypeArguments().add(g2);
@@ -482,26 +396,26 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		g2 = createEGenericType(resourceEClass_T);
 		g1.getETypeArguments().add(g2);
 		initEReference(getResource_Notifier(), g1, null, "notifier", null, 0, 1, QResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResource_Name(), ecorePackage.getEString(), "name", null, 1, 1, QResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = addEOperation(resourceEClass, null, "fireEvent", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getResourceEvent());
-		g2 = createEGenericType(resourceEClass_T);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "event", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getResourceEventType(), "eventType", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(resourceEClass_T);
-		addEParameter(op, g1, "object", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEClass(resourceEventEClass, QResourceEvent.class, "ResourceEvent", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(resourceEventEClass, QResourceEvent.class, "ResourceEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(resourceEventEClass_T);
-		initEReference(getResourceEvent_Source(), g1, null, "source", null, 0, 1, QResourceEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResourceEvent_Type(), this.getResourceEventType(), "type", null, 1, 1, QResourceEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		addEOperation(resourceEventEClass, this.getResourceEventType(), "getEventType", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		EOperation op = addEOperation(resourceEventEClass, null, "getResource", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getResource());
 		g2 = createEGenericType(resourceEventEClass_T);
 		g1.getETypeArguments().add(g2);
-		initEReference(getResourceEvent_Resource(), g1, null, "resource", null, 0, 1, QResourceEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResourceEvent_AdditionalInfo(), theIntegratedLanguageCorePackage.getObject(), null, "additionalInfo", null, 0, 1, QResourceEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEOperation(op, g1);
+
+		addEOperation(resourceEventEClass, ecorePackage.getEString(), "getResourceName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(resourceEventEClass, null, "getSource", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(resourceEventEClass_T);
+		initEOperation(op, g1);
+
+		addEOperation(resourceEventEClass, ecorePackage.getEString(), "getNewName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(resourceEventEClass, ecorePackage.getEString(), "getOldName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(resourceListenerEClass, QResourceListener.class, "ResourceListener", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -536,6 +450,68 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getResourceProvider(), "provider", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(resourceManagerEClass, null, "getResourceReader", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "T");
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
+		t1.getEBounds().add(g1);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getScope(), "scope", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getResourceReader());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(resourceManagerEClass, null, "getResourceReader", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "T");
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
+		t1.getEBounds().add(g1);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getScope(), "scope", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "resource", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getResourceReader());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(resourceManagerEClass, null, "getResourceWriter", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "T");
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
+		t1.getEBounds().add(g1);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getScope(), "scope", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getResourceWriter());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(resourceManagerEClass, null, "getResourceWriter", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "T");
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
+		t1.getEBounds().add(g1);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getScope(), "scope", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "resource", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getResourceWriter());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
 		initEClass(resourceNotifierEClass, QResourceNotifier.class, "ResourceNotifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(resourceNotifierEClass, null, "fireEvent", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -567,7 +543,7 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "resource", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getResourceReader());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
@@ -582,28 +558,12 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getScope(), "scope", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "resources", 1, -1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getResourceReader());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
-		op = addEOperation(resourceProviderEClass, null, "getResourceReader", 0, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "T");
-		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
-		t1.getEBounds().add(g1);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEJavaClass());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getScope(), "scope", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getResourceSetReader());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
 		op = addEOperation(resourceProviderEClass, null, "getResourceWriter", 0, 1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "T");
 		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
@@ -613,38 +573,7 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getResourceWriter());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(resourceProviderEClass, null, "getResourceWriter", 0, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "T");
-		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
-		t1.getEBounds().add(g1);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEJavaClass());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getScope(), "scope", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getResourceWriter());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(resourceProviderEClass, null, "getResourceWriter", 0, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "T");
-		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
-		t1.getEBounds().add(g1);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEJavaClass());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getScope(), "scope", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "resource", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getResourceWriter());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
@@ -674,28 +603,7 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		g1 = createEGenericType(resourceReaderEClass_T);
 		initEOperation(op, g1);
 
-		initEClass(resourceSetReaderEClass, QResourceSetReader.class, "ResourceSetReader", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getResourceSetReader_Resources(), ecorePackage.getEString(), "resources", null, 1, -1, QResourceSetReader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		op = addEOperation(resourceSetReaderEClass, ecorePackage.getEBoolean(), "exists", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "container", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(resourceSetReaderEClass, null, "find", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "resource", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "nameFilter", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectIterator());
-		g2 = createEGenericType(resourceSetReaderEClass_T);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(resourceSetReaderEClass, null, "lookup", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "resource", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(resourceSetReaderEClass_T);
-		initEOperation(op, g1);
-
-		initEClass(resourceWriterEClass, QResourceWriter.class, "ResourceWriter", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(resourceWriterEClass, QResourceWriter.class, "ResourceWriter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(resourceWriterEClass, null, "copy", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(resourceWriterEClass_T);
@@ -719,15 +627,15 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 
 		op = addEOperation(resourceWriterEClass, null, "rename", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(resourceWriterEClass_T);
-		addEParameter(op, g1, "oldObject", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(resourceWriterEClass_T);
-		addEParameter(op, g1, "newObject", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, g1, "object", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "newName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(resourceWriterEClass, ecorePackage.getEString(), "getResourceName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(resourceEventTypeEEnum, ResourceEventType.class, "ResourceEventType");
 		addEEnumLiteral(resourceEventTypeEEnum, ResourceEventType.PRE_SAVE);
 		addEEnumLiteral(resourceEventTypeEEnum, ResourceEventType.POST_SAVE);
-		addEEnumLiteral(resourceEventTypeEEnum, ResourceEventType.POST_LOAD);
 		addEEnumLiteral(resourceEventTypeEEnum, ResourceEventType.PRE_DELETE);
 		addEEnumLiteral(resourceEventTypeEEnum, ResourceEventType.POST_DELETE);
 		addEEnumLiteral(resourceEventTypeEEnum, ResourceEventType.PRE_RENAME);

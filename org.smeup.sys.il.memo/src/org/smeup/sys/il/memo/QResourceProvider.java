@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.memo;
 
+import java.util.List;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 
@@ -23,49 +24,25 @@ public interface QResourceProvider {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model contextProviderRequired="true" klassRequired="true" nameRequired="true"
+	 * @model contextProviderRequired="true" klassRequired="true" resourceRequired="true"
 	 * @generated
 	 */
-	<T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String name);
+	<T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String resource);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model contextProviderRequired="true" klassRequired="true" nameRequired="true"
+	 * @model contextProviderRequired="true" klassRequired="true" resourcesRequired="true" resourcesMany="true"
 	 * @generated
 	 */
-	<T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope, String name);
+	<T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, List<String> resources);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model contextProviderRequired="true" klassRequired="true"
+	 * @model contextProviderRequired="true" klassRequired="true" resourceRequired="true"
 	 * @generated
 	 */
-	<T extends QObjectNameable> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model contextProviderRequired="true" klassRequired="true" nameRequired="true"
-	 * @generated
-	 */
-	<T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String name);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model contextProviderRequired="true" klassRequired="true"
-	 * @generated
-	 */
-	<T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model contextProviderRequired="true" klassRequired="true" nameRequired="true"
-	 * @generated
-	 */
-	<T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope, String name);
+	<T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String resource);
 
 } // QResourceProvider

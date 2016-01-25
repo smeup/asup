@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.il.memo;
 
-import org.smeup.sys.il.core.QNameable;
+import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 
@@ -20,7 +20,6 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  * <ul>
  *   <li>{@link org.smeup.sys.il.memo.QResource#getContextProvider <em>Context Provider</em>}</li>
  *   <li>{@link org.smeup.sys.il.memo.QResource#getNotifier <em>Notifier</em>}</li>
- *   <li>{@link org.smeup.sys.il.memo.QResource#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -28,7 +27,7 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  * @model abstract="true"
  * @generated
  */
-public interface QResource<T extends QObjectNameable> extends QNameable {
+public interface QResource<T extends QObjectNameable> extends QObject {
 	/**
 	 * Returns the value of the '<em><b>Context Provider</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -72,49 +71,13 @@ public interface QResource<T extends QObjectNameable> extends QNameable {
 	QResourceNotifier<T> getNotifier();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.memo.QResource#getNotifier
-	 * <em>Notifier</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Notifier</em>' reference.
+	 * Sets the value of the '{@link org.smeup.sys.il.memo.QResource#getNotifier <em>Notifier</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Notifier</em>' reference.
 	 * @see #getNotifier()
 	 * @generated
 	 */
 	void setNotifier(QResourceNotifier<T> value);
-
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage#getResource_Name()
-	 * @model required="true"
-	 * @generated
-	 */
-	String getName();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.memo.QResource#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model eventRequired="true" eventTypeRequired="true" objectRequired="true"
-	 * @generated
-	 */
-	void fireEvent(QResourceEvent<T> event, ResourceEventType eventType, T object);
 
 } // QResource

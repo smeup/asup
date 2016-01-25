@@ -14,7 +14,6 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
-import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -102,7 +101,7 @@ public @ToDo class ObjectChecker {
 
 	private void checkLibrary(String libName) {
 
-		QResourceSetReader<QLibrary> resourceReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.ALL);
+		QResourceReader<QLibrary> resourceReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.ALL);
 		if (!resourceReader.exists(libName))
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF9810, new String[] { libName });
 	}

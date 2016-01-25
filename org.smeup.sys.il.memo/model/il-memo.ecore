@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="memo" nsURI="http://www.smeup.org/asup/il/memo" nsPrefix="il-memo">
-  <eClassifiers xsi:type="ecore:EClass" name="Resource" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Nameable">
+  <eClassifiers xsi:type="ecore:EClass" name="Resource" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
     <eTypeParameters name="T">
       <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
     </eTypeParameters>
-    <eOperations name="fireEvent">
-      <eParameters name="event" lowerBound="1">
-        <eGenericType eClassifier="#//ResourceEvent">
-          <eTypeArguments eTypeParameter="#//Resource/T"/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="eventType" lowerBound="1" eType="#//ResourceEventType"/>
-      <eParameters name="object" lowerBound="1">
-        <eGenericType eTypeParameter="#//Resource/T"/>
-      </eParameters>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contextProvider" lowerBound="1"
         eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"
         transient="true" resolveProxies="false"/>
@@ -24,27 +13,27 @@
         <eTypeArguments eTypeParameter="#//Resource/T"/>
       </eGenericType>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ResourceEvent">
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceEvent" abstract="true" interface="true">
     <eTypeParameters name="T">
       <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
     </eTypeParameters>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="source">
-      <eGenericType eTypeParameter="#//ResourceEvent/T"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//ResourceEventType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="resource">
+    <eOperations name="getEventType" lowerBound="1" eType="#//ResourceEventType"/>
+    <eOperations name="getResource" lowerBound="1">
       <eGenericType eClassifier="#//Resource">
         <eTypeArguments eTypeParameter="#//ResourceEvent/T"/>
       </eGenericType>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="additionalInfo" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
+    </eOperations>
+    <eOperations name="getResourceName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getSource" lowerBound="1">
+      <eGenericType eTypeParameter="#//ResourceEvent/T"/>
+    </eOperations>
+    <eOperations name="getNewName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getOldName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ResourceEventType">
     <eLiterals name="PreSave" value="10" literal="PRESAVE"/>
     <eLiterals name="PostSave" value="20" literal="POSTSAVE"/>
-    <eLiterals name="PostLoad" value="30" literal="POSTLOAD"/>
     <eLiterals name="PreDelete" value="60" literal="PREDLT"/>
     <eLiterals name="PostDelete" value="70" literal="POSTDLT"/>
     <eLiterals name="PreRename" value="80" literal="PRERNM"/>
@@ -90,6 +79,68 @@
       </eParameters>
       <eParameters name="provider" lowerBound="1" eType="#//ResourceProvider"/>
     </eOperations>
+    <eOperations name="getResourceReader">
+      <eGenericType eClassifier="#//ResourceReader">
+        <eTypeArguments eTypeParameter="#//ResourceManager/getResourceReader/T"/>
+      </eGenericType>
+      <eTypeParameters name="T">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
+      </eTypeParameters>
+      <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
+      <eParameters name="klass" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//ResourceManager/getResourceReader/T"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="scope" eType="#//Scope"/>
+    </eOperations>
+    <eOperations name="getResourceReader">
+      <eGenericType eClassifier="#//ResourceReader">
+        <eTypeArguments eTypeParameter="#//ResourceManager/getResourceReader.1/T"/>
+      </eGenericType>
+      <eTypeParameters name="T">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
+      </eTypeParameters>
+      <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
+      <eParameters name="klass" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//ResourceManager/getResourceReader.1/T"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="scope" eType="#//Scope"/>
+      <eParameters name="resource" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getResourceWriter">
+      <eGenericType eClassifier="#//ResourceWriter">
+        <eTypeArguments eTypeParameter="#//ResourceManager/getResourceWriter/T"/>
+      </eGenericType>
+      <eTypeParameters name="T">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
+      </eTypeParameters>
+      <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
+      <eParameters name="klass" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//ResourceManager/getResourceWriter/T"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="scope" eType="#//Scope"/>
+    </eOperations>
+    <eOperations name="getResourceWriter">
+      <eGenericType eClassifier="#//ResourceWriter">
+        <eTypeArguments eTypeParameter="#//ResourceManager/getResourceWriter.1/T"/>
+      </eGenericType>
+      <eTypeParameters name="T">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
+      </eTypeParameters>
+      <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
+      <eParameters name="klass" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//ResourceManager/getResourceWriter.1/T"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="scope" eType="#//Scope"/>
+      <eParameters name="resource" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResourceNotifier">
     <eTypeParameters name="T">
@@ -129,7 +180,7 @@
           <eTypeArguments eTypeParameter="#//ResourceProvider/getResourceReader/T"/>
         </eGenericType>
       </eParameters>
-      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="resource" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="getResourceReader">
       <eGenericType eClassifier="#//ResourceReader">
@@ -144,23 +195,7 @@
           <eTypeArguments eTypeParameter="#//ResourceProvider/getResourceReader.1/T"/>
         </eGenericType>
       </eParameters>
-      <eParameters name="scope" eType="#//Scope"/>
-      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="getResourceReader">
-      <eGenericType eClassifier="#//ResourceSetReader">
-        <eTypeArguments eTypeParameter="#//ResourceProvider/getResourceReader.2/T"/>
-      </eGenericType>
-      <eTypeParameters name="T">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
-      </eTypeParameters>
-      <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
-      <eParameters name="klass" lowerBound="1">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-          <eTypeArguments eTypeParameter="#//ResourceProvider/getResourceReader.2/T"/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="scope" eType="#//Scope"/>
+      <eParameters name="resources" lowerBound="1" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="getResourceWriter">
       <eGenericType eClassifier="#//ResourceWriter">
@@ -175,38 +210,7 @@
           <eTypeArguments eTypeParameter="#//ResourceProvider/getResourceWriter/T"/>
         </eGenericType>
       </eParameters>
-      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="getResourceWriter">
-      <eGenericType eClassifier="#//ResourceWriter">
-        <eTypeArguments eTypeParameter="#//ResourceProvider/getResourceWriter.1/T"/>
-      </eGenericType>
-      <eTypeParameters name="T">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
-      </eTypeParameters>
-      <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
-      <eParameters name="klass" lowerBound="1">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-          <eTypeArguments eTypeParameter="#//ResourceProvider/getResourceWriter.1/T"/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="scope" eType="#//Scope"/>
-    </eOperations>
-    <eOperations name="getResourceWriter">
-      <eGenericType eClassifier="#//ResourceWriter">
-        <eTypeArguments eTypeParameter="#//ResourceProvider/getResourceWriter.2/T"/>
-      </eGenericType>
-      <eTypeParameters name="T">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
-      </eTypeParameters>
-      <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
-      <eParameters name="klass" lowerBound="1">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-          <eTypeArguments eTypeParameter="#//ResourceProvider/getResourceWriter.2/T"/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="scope" eType="#//Scope"/>
-      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="resource" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResourceReader" abstract="true">
@@ -236,33 +240,7 @@
       <eTypeArguments eTypeParameter="#//ResourceReader/T"/>
     </eGenericSuperTypes>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ResourceSetReader" abstract="true">
-    <eTypeParameters name="T">
-      <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
-    </eTypeParameters>
-    <eOperations name="exists" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="container" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="find">
-      <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectIterator">
-        <eTypeArguments eTypeParameter="#//ResourceSetReader/T"/>
-      </eGenericType>
-      <eParameters name="resource" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="nameFilter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="lookup">
-      <eGenericType eTypeParameter="#//ResourceSetReader/T"/>
-      <eParameters name="resource" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resources" lowerBound="1"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eGenericSuperTypes eClassifier="#//ResourceReader">
-      <eTypeArguments eTypeParameter="#//ResourceSetReader/T"/>
-    </eGenericSuperTypes>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ResourceWriter" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceWriter" abstract="true" interface="true">
     <eTypeParameters name="T">
       <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
     </eTypeParameters>
@@ -290,13 +268,12 @@
       <eParameters name="replace" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="rename">
-      <eParameters name="oldObject" lowerBound="1">
+      <eParameters name="object" lowerBound="1">
         <eGenericType eTypeParameter="#//ResourceWriter/T"/>
       </eParameters>
-      <eParameters name="newObject" lowerBound="1">
-        <eGenericType eTypeParameter="#//ResourceWriter/T"/>
-      </eParameters>
+      <eParameters name="newName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="getResourceName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eGenericSuperTypes eClassifier="#//ResourceReader">
       <eTypeArguments eTypeParameter="#//ResourceWriter/T"/>
     </eGenericSuperTypes>

@@ -15,22 +15,18 @@ import java.util.Queue;
 
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
-import org.smeup.sys.il.memo.QResourceEvent;
 import org.smeup.sys.il.memo.QResourceReader;
-import org.smeup.sys.il.memo.ResourceEventType;
 
 public class JDTResourceReaderIteratorImpl<T extends QObjectNameable> implements QObjectIterator<T> {
 
 	private Queue<QResourceReader<T>> readers;
 	private QObjectIterator<T> currentIterator;
 	private String namePrefix;
-	private T nextObject = null;
-	private QResourceEvent<T> resourceEvent;
+	private T nextObject = null;	
 
-	public JDTResourceReaderIteratorImpl(Queue<QResourceReader<T>> readers, String namePrefix, QResourceEvent<T> resourceEvent) {
+	public JDTResourceReaderIteratorImpl(Queue<QResourceReader<T>> readers, String namePrefix) {
 		this.readers = readers;
 		this.namePrefix = namePrefix;
-		this.resourceEvent = resourceEvent;
 		this.currentIterator = readers.poll().find(namePrefix);
 		doNext();
 	}
@@ -51,8 +47,6 @@ public class JDTResourceReaderIteratorImpl<T extends QObjectNameable> implements
 		T object = nextObject;
 		doNext();
 
-		if (object != null)
-			resourceEvent.getResource().fireEvent(resourceEvent, ResourceEventType.POST_LOAD, object);
 		return object;
 	}
 

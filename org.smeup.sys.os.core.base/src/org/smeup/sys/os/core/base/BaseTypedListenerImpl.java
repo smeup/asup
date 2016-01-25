@@ -36,7 +36,7 @@ public class BaseTypedListenerImpl implements QResourceListener<QTypedObject> {
 
 	@Override
 	public void handleEvent(QResourceEvent<QTypedObject> event) {
-		switch (event.getType()) {
+		switch (event.getEventType()) {
 		case PRE_SAVE:
 			QResource<QTypedObject> resource = event.getResource();
 			QTypedObject typedObject = event.getSource();
@@ -44,7 +44,7 @@ public class BaseTypedListenerImpl implements QResourceListener<QTypedObject> {
 			EObject eObject = (EObject) typedObject;
 
 			// library
-			eObject.eSet(QOperatingSystemTypePackage.eINSTANCE.getTypedObject_Library(), resource.getName());
+			eObject.eSet(QOperatingSystemTypePackage.eINSTANCE.getTypedObject_Library(), event.getResourceName());
 
 			QJob job = resource.getContextProvider().getContext().get(QJob.class);
 

@@ -35,12 +35,12 @@ public class FluxLibraryListenerImpl implements QResourceListener<QLibrary> {
 	@Override
 	public void handleEvent(QResourceEvent<QLibrary> event) {
 
-		if (event.getType() != ResourceEventType.PRE_SAVE)
+		if (event.getEventType() != ResourceEventType.PRE_SAVE)
 			return;
 
 		QLibrary library = event.getSource();
 		
-		switch (event.getType()) {
+		switch (event.getEventType()) {
 		case PRE_SAVE:
 			
 			Repository repository = org.eclipse.flux.core.Activator.getDefault().getRepository();

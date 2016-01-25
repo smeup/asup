@@ -15,7 +15,7 @@ import org.smeup.sys.il.core.QObjectNameable;
  *
  *
  * @see org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage#getResourceWriter()
- * @model abstract="true"
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface QResourceWriter<T extends QObjectNameable> extends QResourceReader<T> {
@@ -51,9 +51,17 @@ public interface QResourceWriter<T extends QObjectNameable> extends QResourceRea
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model oldObjectRequired="true" newObjectRequired="true"
+	 * @model objectRequired="true" newNameRequired="true"
 	 * @generated
 	 */
-	void rename(T oldObject, T newObject);
+	void rename(T object, String newName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	String getResourceName();
 
 } // QResourceWriter

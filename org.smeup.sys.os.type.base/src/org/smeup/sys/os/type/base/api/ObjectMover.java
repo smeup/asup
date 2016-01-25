@@ -97,7 +97,7 @@ public @ToDo class ObjectMover {
 		QResourceWriter<QTypedObject> resourceWriterFrom = resourceWriter(type, oldObject.getLibrary());
 		if ((oldObject instanceof QPhysicalFile)) {
 			new ObjectDataDuplicator(job.getContext().getAdapter(job, QConnection.class)).duplicateData(oldObject, duplicatedObject);
-			new IndexList(job, oldObject).adjustIndexes(resourceWriterFrom, destinationLibObjectWriter, oldObject.getName());
+			new IndexList(job, oldObject).adjustIndexes(resourceWriterFrom, destinationLibObjectWriter, toLibrary.asData().trimR(), oldObject.getName());
 		}
 
 		resourceWriterFrom.delete(oldObject);

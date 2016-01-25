@@ -8,6 +8,7 @@
 package org.smeup.sys.il.memo;
 
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.ctx.QContextProvider;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,5 +36,37 @@ public interface QResourceManager extends QResourceProvider {
 	 * @generated
 	 */
 	<T extends QObjectNameable> void registerProvider(Class<T> klass, QResourceProvider provider);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextProviderRequired="true" klassRequired="true"
+	 * @generated
+	 */
+	<T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextProviderRequired="true" klassRequired="true" resourceRequired="true"
+	 * @generated
+	 */
+	<T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope, String resource);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextProviderRequired="true" klassRequired="true"
+	 * @generated
+	 */
+	<T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextProviderRequired="true" klassRequired="true" resourceRequired="true"
+	 * @generated
+	 */
+	<T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope, String resource);
 
 } // QResourceManager

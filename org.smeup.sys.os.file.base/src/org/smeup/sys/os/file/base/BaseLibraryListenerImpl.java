@@ -45,7 +45,7 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 	@Override
 	public void handleEvent(QResourceEvent<QLibrary> event) {
 
-		if (event.getType() != ResourceEventType.PRE_SAVE && event.getType() != ResourceEventType.PRE_DELETE)
+		if (event.getEventType() != ResourceEventType.PRE_SAVE && event.getEventType() != ResourceEventType.PRE_DELETE)
 			return;
 
 		QLibrary library = event.getSource();
@@ -57,7 +57,7 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 		if (connection == null)
 			throw new OperatingSystemRuntimeException("Database connection not found: " + jobContext);
 
-		switch (event.getType()) {
+		switch (event.getEventType()) {
 
 		case PRE_SAVE:
 

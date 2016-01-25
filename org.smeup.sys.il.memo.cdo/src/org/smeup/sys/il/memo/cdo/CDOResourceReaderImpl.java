@@ -23,29 +23,37 @@ import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
-import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
-import org.smeup.sys.il.memo.QResourceEvent;
-import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.il.memo.impl.ResourceReaderImpl;
 
 public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceReaderImpl<T> {
 
+	private static final long serialVersionUID = 1L;
+
 	private CDONet4jSession session;
 	private CDOView view;
-	private QResourceEvent<T> resourceEvent;
 	private Class<T> klass;
 	private String klassName;
 	private EClass eClass;
+	private String resource;
 
-	public CDOResourceReaderImpl(QContextProvider contextProvider, Class<T> klass, CDONet4jSession session) {
+	public CDOResourceReaderImpl(QContextProvider contextProvider, CDONet4jSession session, Class<T> klass, String resource) {
 		setContextProvider(contextProvider);
 		this.session = session;
+
+		this.resource = resource;
 		this.klass = klass;
+
 		this.klassName = CDOResourceHelper.getModelName(klass);
 		EPackage ePackage = CDOResourceHelper.getEPackage(session, klass);
 		this.eClass = CDOResourceHelper.getEClass(ePackage, klass);
-		this.resourceEvent = QIntegratedLanguageMemoryFactory.eINSTANCE.createResourceEvent();
-		this.resourceEvent.setResource(this);
+	}
+
+	public String getResourceName() {
+		return this.resource;
+	}
+
+	protected Class<T> getResourceClass() {
+		return this.klass;
 	}
 
 	protected CDONet4jSession getSession() {
@@ -67,14 +75,12 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 		CDOQuery query = getView(getContextProvider().getContext()).createQuery("ocl", queryString.toString(), eClass);
 		query.setMaxResults(1);
 		// library
-		query.setParameter("library", getName());
+		query.setParameter("library", getResourceName());
 		// name
 		query.setParameter("name", name);
 
 		try {
 			T object = query.getResultValue(klass);
-			if (object != null)
-				fireEvent(resourceEvent, ResourceEventType.POST_LOAD, object);
 
 			return object;
 		} catch (Exception e) {
@@ -105,7 +111,7 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 		CDOQuery query = getView(getContextProvider().getContext()).createQuery("ocl", queryString.toString(), eClass);
 
 		// parameters
-		query.setParameter("library", getName());
+		query.setParameter("library", getResourceName());
 		if (nameFilter != null)
 			if (nameFilter.endsWith("*"))
 				query.setParameter("nameFilter", nameFilter.substring(0, nameFilter.length() - 1));
@@ -114,7 +120,7 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 
 		CloseableIterator<T> iterator = query.getResultAsync(klass);
 
-		return new CDOObjectIterator<T>(iterator, resourceEvent);
+		return new CDOObjectIterator<T>(iterator);
 	}
 
 	protected CDOView getView(QContext context) {
@@ -137,10 +143,10 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 		return view;
 	}
 
-	private class JobToViewMap extends HashMap<String, CDOView>  {
+	private class JobToViewMap extends HashMap<String, CDOView> {
 
 		private static final long serialVersionUID = 1L;
-		
+
 	}
 
 	private class CDOSingleObjectIterator implements QObjectIterator<T> {
@@ -166,9 +172,6 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 			T old = object;
 			object = null;
 
-			if (old != null)
-				fireEvent(resourceEvent, ResourceEventType.POST_LOAD, old);
-
 			return old;
 		}
 
@@ -176,5 +179,5 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 		public void remove() {
 
 		}
-	}	
+	}
 }

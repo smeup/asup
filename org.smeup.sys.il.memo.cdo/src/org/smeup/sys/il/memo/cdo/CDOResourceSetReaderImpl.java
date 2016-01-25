@@ -25,88 +25,67 @@ import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.ctx.QContextProvider;
-import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
-import org.smeup.sys.il.memo.QResourceEvent;
-import org.smeup.sys.il.memo.ResourceEventType;
-import org.smeup.sys.il.memo.impl.ResourceSetReaderImpl;
+import org.smeup.sys.il.memo.impl.ResourceReaderImpl;
 
-public class CDOResourceSetReaderImpl<T extends QObjectNameable> extends ResourceSetReaderImpl<T> {
+public class CDOResourceSetReaderImpl<T extends QObjectNameable> extends ResourceReaderImpl<T> {
+
+	private static final long serialVersionUID = 1L;
 
 	private CDONet4jSession session;
 	private CDOView view;
-	private QResourceEvent<T> resourceEvent;
 	private Class<T> klass;
 	private String klassName;
 	private EClass eClass;
 
+	private List<String> resources;
+
 	private static Map<Thread, Map<String, CDOView>> views = new HashMap<Thread, Map<String, CDOView>>();
 
-	public CDOResourceSetReaderImpl(QContextProvider contextProvider, Class<T> klass, CDONet4jSession session) {
+	public CDOResourceSetReaderImpl(QContextProvider contextProvider, CDONet4jSession session, Class<T> klass, List<String> resources) {
 		setContextProvider(contextProvider);
 		this.session = session;
 		this.klass = klass;
+		this.resources = resources;
+
 		this.klassName = CDOResourceHelper.getModelName(klass);
 		EPackage ePackage = CDOResourceHelper.getEPackage(session, klass);
 		this.eClass = CDOResourceHelper.getEClass(ePackage, klass);
+	}
 
-		this.resourceEvent = QIntegratedLanguageMemoryFactory.eINSTANCE.createResourceEvent();
-		this.resourceEvent.setResource(this);
+	private List<String> getResources() {
+		return this.resources;
 	}
 
 	@Override
 	public T lookup(String name) {
-		return lookup(null, name);
-	}
-
-	@Override
-	public T lookup(String library, String name) {
 
 		T object = null;
 		int objectIndex = Integer.MAX_VALUE;
 
 		QContextDescription contextDescription = contextProvider.getContext().getContextDescription();
-		
+
 		List<String> libraries = contextDescription.getLibraryPath();
 
 		// select
-		String queryString = buildLookupOCLQuery(klassName, library);
+		String queryString = buildLookupOCLQuery(klassName);
 
 		CDOQuery query = getView().createQuery("ocl", queryString.toString(), eClass);
 		// object name
 		query.setParameter("name", name);
 
-		// single library
-		if (library != null) {
-			query.setMaxResults(1);
+		query.setMaxResults(libraries.size());
 
-			query.setParameter("library", library);
-			object = query.getResultValue(klass);
-		} else {
-			query.setMaxResults(libraries.size());
-
-			// set object by position
-			List<T> objects = query.getResult(klass);
-			for (T o : objects)
-				if (libraries.indexOf(o) < objectIndex)
-					object = o;
-		}
-
-		if (object == null)
-			return null;
-
-		// notify
-		fireEvent(resourceEvent, ResourceEventType.POST_LOAD, object);
+		// set object by position
+		List<T> objects = query.getResult(klass);
+		for (T o : objects)
+			if (libraries.indexOf(o) < objectIndex)
+				object = o;
 
 		return object;
 	}
 
 	@Override
 	public QObjectIterator<T> find(String nameFilter) {
-		return find(null, nameFilter);
-	}
-
-	@Override
-	public QObjectIterator<T> find(String library, String nameFilter) {
 
 		StringBuffer queryString = new StringBuffer();
 		queryString.append(klassName + ".allInstances()");
@@ -119,9 +98,6 @@ public class CDOResourceSetReaderImpl<T extends QObjectNameable> extends Resourc
 			else
 				queryString.append(" and o.name = nameFilter");
 
-		if (library != null)
-			queryString.append(" and o.library = library");
-
 		// queryString.append(" and getLibraryPriority() > 1");
 
 		queryString.append(")");
@@ -131,10 +107,6 @@ public class CDOResourceSetReaderImpl<T extends QObjectNameable> extends Resourc
 		// query
 		CDOQuery query = getView().createQuery("ocl", queryString.toString(), eClass);
 
-		// library
-		if (library != null)
-			query.setParameter("library", library);
-
 		// name filter
 		if (nameFilter != null)
 			if (nameFilter.endsWith("*"))
@@ -143,18 +115,13 @@ public class CDOResourceSetReaderImpl<T extends QObjectNameable> extends Resourc
 				query.setParameter("nameFilter", nameFilter);
 
 		CloseableIterator<T> iterator = query.getResultAsync(klass);
-		return new CDOObjectIterator<T>(iterator, resourceEvent);
+		return new CDOObjectIterator<T>(iterator);
 
 	}
 
 	@Override
-	public boolean exists(String name) {
-		return exists(null, name);
-	}
-
-	@Override
-	public boolean exists(String library, String name) {
-		return lookup(library, name) != null;
+	public boolean exists(String library) {
+		return lookup(library) != null;
 	}
 
 	private String buildInLibraries(List<String> libraries) {
@@ -189,18 +156,17 @@ public class CDOResourceSetReaderImpl<T extends QObjectNameable> extends Resourc
 		return view;
 	}
 
-	private String buildLookupOCLQuery(String className, String library) {
+	private String buildLookupOCLQuery(String className) {
 		// select
 		StringBuffer queryString = new StringBuffer();
 		queryString.append(className + ".allInstances()");
 		queryString.append("->select(o:" + className + "| o.name = name");
 		queryString.append(" and (" + buildInLibraries(getResources()) + ")");
-		if (library != null)
-			queryString.append(" and o.library = library");
 		queryString.append(")");
 
 		queryString.append("->sortedBy(library)");
 
 		return queryString.toString();
 	}
+
 }

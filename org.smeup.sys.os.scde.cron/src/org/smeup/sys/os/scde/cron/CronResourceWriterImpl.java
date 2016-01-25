@@ -17,23 +17,29 @@ import java.util.UUID;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResourceHelper;
 import org.smeup.sys.il.memo.QResourceWriter;
-import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.os.scde.QScheduleEntry;
 
-public class CronResourceWriterImpl extends CronResourceReaderImpl implements QResourceWriter<QScheduleEntry>{
-	
-	public CronResourceWriterImpl(QContextProvider contextProvider, String container) {
-		super(contextProvider, container);		
+public class CronResourceWriterImpl extends CronResourceReaderImpl implements QResourceWriter<QScheduleEntry> {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public CronResourceWriterImpl(QContextProvider contextProvider, String resource) {
+		super(contextProvider, resource);
 	}
 
 	@Override
 	public synchronized void delete(QScheduleEntry scheduleEntry) {
-		fireEvent(resourceEvent, ResourceEventType.PRE_DELETE, scheduleEntry);
-		
+
+		QResourceHelper.firePreDeleteEvent(this, scheduleEntry);
+
 		cronWrapper.removeCronTask(scheduleEntry.getEntryNumber());
-		
-		fireEvent(resourceEvent, ResourceEventType.POST_DELETE, scheduleEntry);
+
+		QResourceHelper.firePostDeleteEvent(this, scheduleEntry);
 	}
 
 	@Override
@@ -43,9 +49,9 @@ public class CronResourceWriterImpl extends CronResourceReaderImpl implements QR
 
 	@Override
 	public synchronized void save(QScheduleEntry scheduleEntry, boolean replace) {
-		
-		fireEvent(resourceEvent, ResourceEventType.PRE_SAVE, scheduleEntry);
-		
+
+		QResourceHelper.firePreSaveEvent(this, scheduleEntry);
+
 		if (exists(scheduleEntry.getName())) {
 			if (replace) {
 				delete(scheduleEntry);
@@ -53,62 +59,56 @@ public class CronResourceWriterImpl extends CronResourceReaderImpl implements QR
 				return;
 			}
 		}
-		
+
 		String cronMap = cronAdapter.getCronTimeMask(scheduleEntry);
-		
+
 		String entryNumber = buildUniqueID(6);
 		scheduleEntry.setEntryNumber(entryNumber);
-		
-		cronWrapper.addCronTask(scheduleEntry.getName(),
-								scheduleEntry.getDescription(),
-								scheduleEntry.getEntryNumber(),
-								cronMap, 
-								scheduleEntry.getUser(), 
-								scheduleEntry.getCommandToRun()
-								);	
-		
-		fireEvent(resourceEvent, ResourceEventType.POST_SAVE, scheduleEntry);
+
+		cronWrapper.addCronTask(scheduleEntry.getName(), scheduleEntry.getDescription(), scheduleEntry.getEntryNumber(), cronMap, scheduleEntry.getUser(), scheduleEntry.getCommandToRun());
+
+		QResourceHelper.firePostSaveEvent(this, scheduleEntry);
 	}
-	
+
 	private String buildUniqueID(int length) {
-	  UUID idOne = UUID.randomUUID();
-	  UUID idTwo = UUID.randomUUID();
-	  UUID idThree = UUID.randomUUID();
-	  UUID idFour = UUID.randomUUID();
+		UUID idOne = UUID.randomUUID();
+		UUID idTwo = UUID.randomUUID();
+		UUID idThree = UUID.randomUUID();
+		UUID idFour = UUID.randomUUID();
 
-	  String time = idOne.toString().replace("-", "");
-	  String time2 = idTwo.toString().replace("-", "");
-	  String time3 = idThree.toString().replace("-", "");
-	  String time4 = idFour.toString().replace("-", "");
+		String time = idOne.toString().replace("-", "");
+		String time2 = idTwo.toString().replace("-", "");
+		String time3 = idThree.toString().replace("-", "");
+		String time4 = idFour.toString().replace("-", "");
 
-	  StringBuffer data = new StringBuffer();
-	  data.append(time);
-	  data.append(time2);
-	  data.append(time3);
-	  data.append(time4);
+		StringBuffer data = new StringBuffer();
+		data.append(time);
+		data.append(time2);
+		data.append(time3);
+		data.append(time4);
 
-	  SecureRandom random = new SecureRandom();
-	  int beginIndex = random.nextInt(100);       
-	  int endIndex = beginIndex + length;            
+		SecureRandom random = new SecureRandom();
+		int beginIndex = random.nextInt(100);
+		int endIndex = beginIndex + length;
 
-	  return data.substring(beginIndex, endIndex);	  
+		return data.substring(beginIndex, endIndex);
 	}
 
 	@Override
-	public void rename(QScheduleEntry oldObject, QScheduleEntry newObject) {
+	public void rename(QScheduleEntry oldObject, String newName) {
 		throw new UnsupportedOperationException();
 	}
-	
+
 	@Override
 	public QScheduleEntry copy(QScheduleEntry object, String name) {
 
-		EObject eObject = EcoreUtil.copy((EObject)object);
+		EObject eObject = EcoreUtil.copy((EObject) object);
 
 		// new name
 		eObject.eSet(eObject.eClass().getEStructuralFeature("name"), name);
-		
-		save((QScheduleEntry)eObject);
-		
-		return (QScheduleEntry)eObject;
+
+		save((QScheduleEntry) eObject);
+
+		return (QScheduleEntry) eObject;
 	}
 }

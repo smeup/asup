@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.memo;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
@@ -79,7 +78,7 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__CONTEXT_PROVIDER = QIntegratedLanguageCorePackage.NAMEABLE_FEATURE_COUNT + 0;
+	int RESOURCE__CONTEXT_PROVIDER = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Notifier</b></em>' reference.
@@ -88,16 +87,7 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__NOTIFIER = QIntegratedLanguageCorePackage.NAMEABLE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE__NAME = QIntegratedLanguageCorePackage.NAMEABLE_FEATURE_COUNT + 2;
+	int RESOURCE__NOTIFIER = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
@@ -106,53 +96,17 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = QIntegratedLanguageCorePackage.NAMEABLE_FEATURE_COUNT + 3;
+	int RESOURCE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.memo.impl.ResourceEventImpl <em>Resource Event</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.il.memo.QResourceEvent <em>Resource Event</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.memo.impl.ResourceEventImpl
+	 * @see org.smeup.sys.il.memo.QResourceEvent
 	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceEvent()
 	 * @generated
 	 */
 	int RESOURCE_EVENT = 1;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_EVENT__SOURCE = 0;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_EVENT__TYPE = 1;
-
-	/**
-	 * The feature id for the '<em><b>Resource</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_EVENT__RESOURCE = 2;
-
-	/**
-	 * The feature id for the '<em><b>Additional Info</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_EVENT__ADDITIONAL_INFO = 3;
 
 	/**
 	 * The number of structural features of the '<em>Resource Event</em>' class.
@@ -161,7 +115,7 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_EVENT_FEATURE_COUNT = 4;
+	int RESOURCE_EVENT_FEATURE_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.memo.QResourceListener <em>Resource Listener</em>}' class.
@@ -268,15 +222,6 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	int RESOURCE_READER__NOTIFIER = RESOURCE__NOTIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_READER__NAME = RESOURCE__NAME;
-
-	/**
 	 * The number of structural features of the '<em>Resource Reader</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -286,69 +231,14 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	int RESOURCE_READER_FEATURE_COUNT = RESOURCE_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.memo.impl.ResourceSetReaderImpl <em>Resource Set Reader</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.il.memo.QResourceWriter <em>Resource Writer</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.memo.impl.ResourceSetReaderImpl
-	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceSetReader()
-	 * @generated
-	 */
-	int RESOURCE_SET_READER = 7;
-
-	/**
-	 * The feature id for the '<em><b>Context Provider</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_SET_READER__CONTEXT_PROVIDER = RESOURCE_READER__CONTEXT_PROVIDER;
-
-	/**
-	 * The feature id for the '<em><b>Notifier</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_SET_READER__NOTIFIER = RESOURCE_READER__NOTIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_SET_READER__NAME = RESOURCE_READER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Resources</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_SET_READER__RESOURCES = RESOURCE_READER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Resource Set Reader</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_SET_READER_FEATURE_COUNT = RESOURCE_READER_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.memo.impl.ResourceWriterImpl <em>Resource Writer</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.memo.impl.ResourceWriterImpl
+	 * @see org.smeup.sys.il.memo.QResourceWriter
 	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceWriter()
 	 * @generated
 	 */
-	int RESOURCE_WRITER = 8;
+	int RESOURCE_WRITER = 7;
 
 	/**
 	 * The feature id for the '<em><b>Context Provider</b></em>' reference.
@@ -369,15 +259,6 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	int RESOURCE_WRITER__NOTIFIER = RESOURCE_READER__NOTIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_WRITER__NAME = RESOURCE_READER__NAME;
-
-	/**
 	 * The number of structural features of the '<em>Resource Writer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -394,7 +275,7 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceEventType()
 	 * @generated
 	 */
-	int RESOURCE_EVENT_TYPE = 9;
+	int RESOURCE_EVENT_TYPE = 8;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.memo.Scope <em>Scope</em>}' enum.
@@ -404,7 +285,7 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getScope()
 	 * @generated
 	 */
-	int SCOPE = 10;
+	int SCOPE = 9;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.memo.QResource <em>Resource</em>}'.
@@ -439,17 +320,6 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	EReference getResource_Notifier();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.memo.QResource#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.smeup.sys.il.memo.QResource#getName()
-	 * @see #getResource()
-	 * @generated
-	 */
-	EAttribute getResource_Name();
-
-	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.memo.QResourceEvent <em>Resource Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -458,50 +328,6 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getResourceEvent();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.smeup.sys.il.memo.QResourceEvent#getSource <em>Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Source</em>'.
-	 * @see org.smeup.sys.il.memo.QResourceEvent#getSource()
-	 * @see #getResourceEvent()
-	 * @generated
-	 */
-	EReference getResourceEvent_Source();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.memo.QResourceEvent#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see org.smeup.sys.il.memo.QResourceEvent#getType()
-	 * @see #getResourceEvent()
-	 * @generated
-	 */
-	EAttribute getResourceEvent_Type();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.smeup.sys.il.memo.QResourceEvent#getResource <em>Resource</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Resource</em>'.
-	 * @see org.smeup.sys.il.memo.QResourceEvent#getResource()
-	 * @see #getResourceEvent()
-	 * @generated
-	 */
-	EReference getResourceEvent_Resource();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.smeup.sys.il.memo.QResourceEvent#getAdditionalInfo <em>Additional Info</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Additional Info</em>'.
-	 * @see org.smeup.sys.il.memo.QResourceEvent#getAdditionalInfo()
-	 * @see #getResourceEvent()
-	 * @generated
-	 */
-	EReference getResourceEvent_AdditionalInfo();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.memo.QResourceListener <em>Resource Listener</em>}'.
@@ -552,27 +378,6 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getResourceReader();
-
-	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.memo.QResourceSetReader <em>Resource Set Reader</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Resource Set Reader</em>'.
-	 * @see org.smeup.sys.il.memo.QResourceSetReader
-	 * @generated
-	 */
-	EClass getResourceSetReader();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link org.smeup.sys.il.memo.QResourceSetReader#getResources <em>Resources</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Resources</em>'.
-	 * @see org.smeup.sys.il.memo.QResourceSetReader#getResources()
-	 * @see #getResourceSetReader()
-	 * @generated
-	 */
-	EAttribute getResourceSetReader_Resources();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.memo.QResourceWriter <em>Resource Writer</em>}'.
@@ -650,49 +455,14 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 		 */
 		EReference RESOURCE__NOTIFIER = eINSTANCE.getResource_Notifier();
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '{@link org.smeup.sys.il.memo.QResourceEvent <em>Resource Event</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESOURCE__NAME = eINSTANCE.getResource_Name();
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.memo.impl.ResourceEventImpl <em>Resource Event</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.memo.impl.ResourceEventImpl
+		 * @see org.smeup.sys.il.memo.QResourceEvent
 		 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceEvent()
 		 * @generated
 		 */
 		EClass RESOURCE_EVENT = eINSTANCE.getResourceEvent();
-		/**
-		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RESOURCE_EVENT__SOURCE = eINSTANCE.getResourceEvent_Source();
-		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESOURCE_EVENT__TYPE = eINSTANCE.getResourceEvent_Type();
-		/**
-		 * The meta object literal for the '<em><b>Resource</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RESOURCE_EVENT__RESOURCE = eINSTANCE.getResourceEvent_Resource();
-		/**
-		 * The meta object literal for the '<em><b>Additional Info</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RESOURCE_EVENT__ADDITIONAL_INFO = eINSTANCE.getResourceEvent_AdditionalInfo();
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.memo.QResourceListener <em>Resource Listener</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -739,26 +509,10 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 		 */
 		EClass RESOURCE_READER = eINSTANCE.getResourceReader();
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.memo.impl.ResourceSetReaderImpl <em>Resource Set Reader</em>}' class.
+		 * The meta object literal for the '{@link org.smeup.sys.il.memo.QResourceWriter <em>Resource Writer</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.memo.impl.ResourceSetReaderImpl
-		 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceSetReader()
-		 * @generated
-		 */
-		EClass RESOURCE_SET_READER = eINSTANCE.getResourceSetReader();
-		/**
-		 * The meta object literal for the '<em><b>Resources</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESOURCE_SET_READER__RESOURCES = eINSTANCE.getResourceSetReader_Resources();
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.memo.impl.ResourceWriterImpl <em>Resource Writer</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.memo.impl.ResourceWriterImpl
+		 * @see org.smeup.sys.il.memo.QResourceWriter
 		 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceWriter()
 		 * @generated
 		 */

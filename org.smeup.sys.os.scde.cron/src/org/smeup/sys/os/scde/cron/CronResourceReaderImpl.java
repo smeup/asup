@@ -17,21 +17,32 @@ import java.util.List;
 
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.impl.ResourceReaderImpl;
 import org.smeup.sys.os.scde.QScheduleEntry;
-import org.smeup.sys.os.scde.base.SCDEAbstractResourceReaderImpl;
 
-public class CronResourceReaderImpl extends SCDEAbstractResourceReaderImpl {
+public class CronResourceReaderImpl extends ResourceReaderImpl<QScheduleEntry> {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	protected CronSystemWrapper cronWrapper;
 	protected CronAdapter cronAdapter;
-
-	public CronResourceReaderImpl(QContextProvider contextProvider, String name) {
-		super(contextProvider, name);
+	private String reasource;
+	
+	public CronResourceReaderImpl(QContextProvider contextProvider, String resource) {
+		setContextProvider(contextProvider);
+		this.reasource = resource;
 		
 		this.cronWrapper = new CronSystemWrapper();
 		this.cronAdapter = new CronAdapter();
 	}
 
+	public String getResourceName() {
+		return this.reasource;
+	}
+	
 	@Override
 	public boolean exists(String name) {
 		

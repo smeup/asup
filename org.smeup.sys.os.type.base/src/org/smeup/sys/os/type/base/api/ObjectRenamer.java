@@ -13,8 +13,6 @@ package org.smeup.sys.os.type.base.api;
 
 import javax.inject.Inject;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.il.data.QCharacter;
@@ -77,12 +75,10 @@ public @Supported class ObjectRenamer {
 		}
 		
 		QTypedObject objToRename = (QTypedObject) resourceReader.lookup(oldObjectName);
-		QTypedObject duplicatedObject = (QTypedObject) EcoreUtil.copy((EObject) objToRename);
-		duplicatedObject.setName(newName);
 		
 		QResourceWriter<QTypedObject>resourceWriter = resourceWriter(type,  objToRename.getLibrary());
-		resourceWriter.rename(objToRename, duplicatedObject);
-		new IndexList(job, objToRename).adjustIndexes(resourceWriter, newName);
+		resourceWriter.rename(objToRename, newName);
+		new IndexList(job, objToRename).adjustIndexes(resourceWriter, resourceWriter, objToRename.getLibrary(), newName);
 	}
 
 

@@ -17,7 +17,6 @@ import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
-import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.dtaara.QDataArea;
@@ -78,7 +77,7 @@ public class ExistingDataAreaSpecification extends QDataStructWrapper {
 	}
 
 	private void checkLibrary(QResourceManager resourceManager, QJob job, String libraryName, String dataAreaName) throws LibraryNotFoundException {
-		QResourceSetReader<QLibrary> resourceReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.ALL);
+		QResourceReader<QLibrary> resourceReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.ALL);
 		if (!resourceReader.exists(libraryName)) {
 			throw new LibraryNotFoundException(dataAreaName, libraryName);
 		}

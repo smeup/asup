@@ -24,13 +24,10 @@ import org.osgi.framework.FrameworkUtil;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
-import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceProvider;
 import org.smeup.sys.il.memo.QResourceReader;
-import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.il.memo.QResourceWriter;
-import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.il.memo.impl.ResourceReaderImpl;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QCreationInfo;
@@ -70,23 +67,6 @@ public class BaseTypeRegistryImpl<TP extends QTypedObject> implements QTypeRegis
 		}
 
 		this.resourceManager.registerProvider(QType.class, this);
-	}
-	
-	@Override
-	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope, String name) {
-
-		switch (scope) {
-		case ALL:
-		case CURRENT_LIBRARY:
-		case LIBRARY_LIST:
-		case USER_LIBRARY_LIST:
-		case ALL_USER:
-			return getResourceReader(contextProvider, klass, scope);
-		case OTHER:
-			return getResourceReader(contextProvider, klass, name);
-		}
-		
-		throw new IntegratedLanguageMemoryRuntimeException("Invalid scope: "+scope); 
 	}
 
 	@Override
@@ -225,6 +205,15 @@ public class BaseTypeRegistryImpl<TP extends QTypedObject> implements QTypeRegis
 
 	private class TypeResourceReader extends ResourceReaderImpl<QType<?>> {
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public TypeResourceReader(QContextProvider contextProvider) {
+			setContextProvider(contextProvider);
+		}
+		
 		@Override
 		public boolean exists(String name) {
 			return lookup(name) != null;
@@ -246,55 +235,20 @@ public class BaseTypeRegistryImpl<TP extends QTypedObject> implements QTypeRegis
 		}
 	}
 
-	private class TypeResourceSetReader extends TypeResourceReader implements QResourceSetReader<QType<?>> {
-
-		@Override
-		public List<String> getResources() {
-			return null;
-		}
-
-		@Override
-		public QType<?> lookup(String library, String name) {
-			return lookup(name);
-		}
-
-		@Override
-		public boolean exists(String library, String name) {
-			return exists(name);
-		}
-
-		@Override
-		public QObjectIterator<QType<?>> find(String library, String nameFilter) {
-			return find(nameFilter);
-		}
-
+	@SuppressWarnings({ "unchecked"})
+	@Override
+	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String resource) {
+		return (QResourceReader<T>) new TypeResourceReader(contextProvider);
 	}
 
 	@SuppressWarnings({ "unchecked"})
 	@Override
-	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String container) {
-		return (QResourceReader<T>) new TypeResourceReader();
-	}
-
-	@SuppressWarnings({ "unchecked"})
-	@Override
-	public <T extends QObjectNameable> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope) {
-		return (QResourceSetReader<T>) new TypeResourceSetReader();
+	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, List<String> resources) {
+		return (QResourceReader<T>) new TypeResourceReader(contextProvider);
 	}
 
 	@Override
-	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String container) {
+	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String resource) {
 		throw new OperatingSystemRuntimeException("Not writable object: " + QType.class);
 	}
-
-	@Override
-	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider context, Class<T> klass, Scope scope) {
-		throw new OperatingSystemRuntimeException("Not writable object: " + QType.class);
-	}
-
-	@Override
-	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope, String name) {
-		throw new OperatingSystemRuntimeException("Not writable object: " + QType.class);		
-	}
-
 }

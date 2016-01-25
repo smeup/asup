@@ -46,12 +46,8 @@ public class IndexList {
 		}
 		return indexNames;
 	}
-
-	public void adjustIndexes(QResourceWriter<QTypedObject> resourceWriter, String newName) {
-		adjustIndexes(resourceWriter, resourceWriter, newName);
-	}
 	
-	public void adjustIndexes(QResourceWriter<QTypedObject> resourceWriterFrom, QResourceWriter<QTypedObject> resourceWriterTo, String newName) {
+	public void adjustIndexes(QResourceWriter<QTypedObject> resourceWriterFrom, QResourceWriter<QTypedObject> resourceWriterTo, String newLibrary, String newName) {
 		for (String indexName : indexNames) {
 			QLogicalFile logical = (QLogicalFile) resourceWriterFrom.lookup(indexName);
 			String creationStmt = logical.getCreationStatement();
@@ -75,7 +71,7 @@ public class IndexList {
 				if(!objToRename.getName().equals(newName)) {
 					newSQL = creationStmt.replace(objToRename.getName(), newName);
 				} else {
-					newSQL = creationStmt.replace(objToRename.getLibrary(), resourceWriterTo.getName());					
+					newSQL = creationStmt.replace(objToRename.getLibrary(), newLibrary);					
 				}
 				logical.setCreationStatement(newSQL);
 			}

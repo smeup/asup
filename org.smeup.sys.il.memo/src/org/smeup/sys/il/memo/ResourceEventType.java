@@ -42,14 +42,6 @@ public enum ResourceEventType implements Enumerator {
 	POST_SAVE(20, "PostSave", "POSTSAVE"),
 
 	/**
-	 * The '<em><b>Post Load</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #POST_LOAD_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	POST_LOAD(30, "PostLoad", "POSTLOAD"), /**
 	 * The '<em><b>Pre Delete</b></em>' literal object.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #PRE_DELETE_VALUE
@@ -113,21 +105,6 @@ public enum ResourceEventType implements Enumerator {
 	 * @ordered
 	 */
 	public static final int POST_SAVE_VALUE = 20;
-
-	/**
-	 * The '<em><b>Post Load</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Post Load</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #POST_LOAD
-	 * @model name="PostLoad" literal="POSTLOAD"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int POST_LOAD_VALUE = 30;
 
 	/**
 	 * The '<em><b>Pre Delete</b></em>' literal value.
@@ -197,7 +174,6 @@ public enum ResourceEventType implements Enumerator {
 	private static final ResourceEventType[] VALUES_ARRAY = new ResourceEventType[] {
 			PRE_SAVE,
 			POST_SAVE,
-			POST_LOAD,
 			PRE_DELETE,
 			POST_DELETE,
 			PRE_RENAME,
@@ -250,7 +226,6 @@ public enum ResourceEventType implements Enumerator {
 		switch (value) {
 			case PRE_SAVE_VALUE: return PRE_SAVE;
 			case POST_SAVE_VALUE: return POST_SAVE;
-			case POST_LOAD_VALUE: return POST_LOAD;
 			case PRE_DELETE_VALUE: return PRE_DELETE;
 			case POST_DELETE_VALUE: return POST_DELETE;
 			case PRE_RENAME_VALUE: return PRE_RENAME;

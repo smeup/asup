@@ -15,17 +15,13 @@ import org.eclipse.net4j.util.collection.CloseableIterator;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
-import org.smeup.sys.il.memo.QResourceEvent;
-import org.smeup.sys.il.memo.ResourceEventType;
 
 public class CDOObjectIterator<T extends QObjectNameable> implements QObjectIterator<T> {
 
 	private CloseableIterator<T> iterator;
-	private QResourceEvent<T> resourceEvent;
 
-	public CDOObjectIterator(CloseableIterator<T> iterator, QResourceEvent<T> resourceEvent) {
+	public CDOObjectIterator(CloseableIterator<T> iterator) {
 		this.iterator = iterator;
-		this.resourceEvent = resourceEvent;
 	}
 
 	@Override
@@ -45,10 +41,6 @@ public class CDOObjectIterator<T extends QObjectNameable> implements QObjectIter
 	@Override
 	public T next() {
 		T object = iterator.next();
-
-		if (object != null)
-			resourceEvent.getResource().fireEvent(resourceEvent, ResourceEventType.POST_LOAD, object);
-
 		return object;
 	}
 

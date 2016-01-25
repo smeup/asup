@@ -24,42 +24,92 @@ import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
-import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
-import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.QResourceHelper;
 import org.smeup.sys.il.memo.QResourceWriter;
-import org.smeup.sys.il.memo.ResourceEventType;
 
 public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourceReaderImpl<T> implements QResourceWriter<T> {
+
+	private static final long serialVersionUID = 1L;
 
 	public static final String CDO_OMAC = "os/omac";
 
 	private CDOResource resource;
 	private CDOTransaction transaction;
-	private QResourceEvent<T> resourceEvent = QIntegratedLanguageMemoryFactory.eINSTANCE.createResourceEvent();
-	private Class<T> klass;
 
-	public CDOResourceWriterImpl(QContextProvider contextProvider, Class<T> klass, CDONet4jSession session) {
-		super(contextProvider, klass, session);
-		this.klass = klass;
-		resourceEvent.setResource(this);
+	public CDOResourceWriterImpl(QContextProvider contextProvider, CDONet4jSession session, Class<T> klass, String resource) {
+		super(contextProvider, session, klass, resource);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public void rename(T oldObject, T newObject) {
+	public void rename(T object, String newName) {
 		try {
-			resourceEvent.setAdditionalInfo(newObject);
-			fireEvent(resourceEvent, ResourceEventType.PRE_RENAME, oldObject);
-			
-			doSave(newObject, true, false);
-			doDelete(oldObject, false);
 
-			fireEvent(resourceEvent, ResourceEventType.POST_RENAME, oldObject);
+			QResourceHelper.firePreRenameEvent(this, object, newName);
+
+			String oldName = object.getName();
+
+			T newObject = (T) EcoreUtil.copy((EObject) object);
+			EObject eObject = (EObject) newObject;
+
+			// new name
+			eObject.eSet(eObject.eClass().getEStructuralFeature("name"), newName);
+
+			doSave(newObject, true, false);
+			doDelete(object, false);
+
+			QResourceHelper.firePostRenameEvent(this, newObject, oldName);
 		} catch (Exception e) {
 			throw new IntegratedLanguageMemoryRuntimeException(e);
 		}
-		
-	}	
-	
+	}
+
+	@Override
+	public void delete(T object) {
+		doDelete(object, true);
+	}
+
+	@Override
+	public void save(T object) {
+		save(object, false);
+	}
+
+	@Override
+	public void save(T object, boolean replace) {
+		doSave(object, replace, true);
+	}
+
+	@Override
+	protected CDOView getView(QContext context) {
+		return getTransaction();
+	}
+
+	protected CDOTransaction getTransaction() {
+		if (transaction == null)
+			transaction = getSession().openTransaction();
+		return transaction;
+	}
+
+	private CDOResource getResource(CDOTransaction transaction) {
+		if (resource == null)
+			resource = transaction.getOrCreateResource(CDO_OMAC + "/" + getResourceName() + "/" + getResourceClass().getName());
+		return resource;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public T copy(T object, String name) {
+
+		EObject eObject = EcoreUtil.copy((EObject) object);
+
+		// new name
+		eObject.eSet(eObject.eClass().getEStructuralFeature("name"), name);
+
+		save((T) eObject);
+
+		return (T) eObject;
+	}
+
 	private void doDelete(T object, boolean fireEvent) {
 		CDOTransaction transaction = getTransaction();
 		CDOResource resource = getResource(transaction);
@@ -70,14 +120,14 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 
 		resource.getContents().remove(object);
 		try {
-			if (fireEvent) {
-				fireEvent(resourceEvent, ResourceEventType.PRE_DELETE, object);
-			}
+
+			if (fireEvent)
+				QResourceHelper.firePreDeleteEvent(this, object);
 
 			transaction.commit();
-			if (fireEvent) {
-				fireEvent(resourceEvent, ResourceEventType.POST_DELETE, object);
-			}
+			if (fireEvent)
+				QResourceHelper.firePostDeleteEvent(this, object);
+
 		} catch (CommitException e) {
 			throw new IntegratedLanguageMemoryRuntimeException(e);
 		} catch (RuntimeException e) {
@@ -118,13 +168,14 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 
 		// commit and notify event
 		try {
-			if (fireEvent) {
-				fireEvent(resourceEvent, ResourceEventType.PRE_SAVE, object);
-			}
+			if (fireEvent)
+				QResourceHelper.firePreSaveEvent(this, object);
+
 			transaction.commit();
-			if (fireEvent) {
-				fireEvent(resourceEvent, ResourceEventType.POST_SAVE, object);
-			}
+
+			if (fireEvent)
+				QResourceHelper.firePostSaveEvent(this, object);
+
 		} catch (Exception e) {
 			// unlock resource
 			if (insert)
@@ -132,51 +183,5 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 
 			throw new IntegratedLanguageMemoryRuntimeException(e);
 		}
-	}
-
-	@Override
-	public void delete(T object) {
-		doDelete(object, true);
-	}
-
-	@Override
-	public void save(T object) {
-		save(object, false);
-	}
-
-	@Override
-	public void save(T object, boolean replace) {
-		doSave(object, replace, true);
-	}
-
-	@Override
-	protected CDOView getView(QContext context) {
-		return getTransaction();
-	}
-
-	protected CDOTransaction getTransaction() {
-		if (transaction == null)
-			transaction = getSession().openTransaction();
-		return transaction;
-	}
-
-	private CDOResource getResource(CDOTransaction transaction) {
-		if (resource == null)
-			resource = transaction.getOrCreateResource(CDO_OMAC + "/" + getName() + "/" + klass.getName());
-		return resource;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public T copy(T object, String name) {
-
-		EObject eObject = EcoreUtil.copy((EObject)object);
-
-		// new name
-		eObject.eSet(eObject.eClass().getEStructuralFeature("name"), name);
-		
-		save((T)eObject);
-		
-		return (T)eObject;
 	}
 }

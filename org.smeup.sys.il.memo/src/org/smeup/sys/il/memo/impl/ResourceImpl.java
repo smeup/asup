@@ -12,14 +12,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage;
 import org.smeup.sys.il.memo.QResource;
-import org.smeup.sys.il.memo.QResourceEvent;
 import org.smeup.sys.il.memo.QResourceNotifier;
-import org.smeup.sys.il.memo.ResourceEventType;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -29,13 +27,17 @@ import org.smeup.sys.il.memo.ResourceEventType;
  * <ul>
  *   <li>{@link org.smeup.sys.il.memo.impl.ResourceImpl#getContextProvider <em>Context Provider</em>}</li>
  *   <li>{@link org.smeup.sys.il.memo.impl.ResourceImpl#getNotifier <em>Notifier</em>}</li>
- *   <li>{@link org.smeup.sys.il.memo.impl.ResourceImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class ResourceImpl<T extends QObjectNameable> extends MinimalEObjectImpl.Container implements QResource<T> {
+public abstract class ResourceImpl<T extends QObjectNameable> extends ObjectImpl implements QResource<T> {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The cached value of the '{@link #getContextProvider() <em>Context Provider</em>}' reference.
@@ -49,32 +51,13 @@ public abstract class ResourceImpl<T extends QObjectNameable> extends MinimalEOb
 
 	/**
 	 * The cached value of the '{@link #getNotifier() <em>Notifier</em>}' reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getNotifier()
 	 * @generated
 	 * @ordered
 	 */
 	protected QResourceNotifier<T> notifier;
-
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -115,10 +98,10 @@ public abstract class ResourceImpl<T extends QObjectNameable> extends MinimalEOb
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	@SuppressWarnings("unchecked")
 	public QResourceNotifier<T> getNotifier() {
 		if (notifier != null && ((EObject)notifier).eIsProxy()) {
@@ -133,7 +116,8 @@ public abstract class ResourceImpl<T extends QObjectNameable> extends MinimalEOb
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public QResourceNotifier<T> basicGetNotifier() {
@@ -141,56 +125,15 @@ public abstract class ResourceImpl<T extends QObjectNameable> extends MinimalEOb
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setNotifier(QResourceNotifier<T> newNotifier) {
 		QResourceNotifier<T> oldNotifier = notifier;
 		notifier = newNotifier;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageMemoryPackage.RESOURCE__NOTIFIER, oldNotifier, notifier));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageMemoryPackage.RESOURCE__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated NOT
-	 */
-	@Override
-	public void fireEvent(QResourceEvent<T> event, ResourceEventType eventType, T object) {
-		// check for listeners
-		QResourceNotifier<T> resourceNotifier = getNotifier();
-		if (resourceNotifier == null)
-			return;
-
-		// set event information
-		event.setSource(object);
-		event.setType(eventType);
-
-		// notify event
-		resourceNotifier.fireEvent(event);
 	}
 
 	/**
@@ -205,8 +148,6 @@ public abstract class ResourceImpl<T extends QObjectNameable> extends MinimalEOb
 			case QIntegratedLanguageMemoryPackage.RESOURCE__NOTIFIER:
 				if (resolve) return getNotifier();
 				return basicGetNotifier();
-			case QIntegratedLanguageMemoryPackage.RESOURCE__NAME:
-				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -225,9 +166,6 @@ public abstract class ResourceImpl<T extends QObjectNameable> extends MinimalEOb
 			case QIntegratedLanguageMemoryPackage.RESOURCE__NOTIFIER:
 				setNotifier((QResourceNotifier<T>)newValue);
 				return;
-			case QIntegratedLanguageMemoryPackage.RESOURCE__NAME:
-				setName((String)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -245,9 +183,6 @@ public abstract class ResourceImpl<T extends QObjectNameable> extends MinimalEOb
 			case QIntegratedLanguageMemoryPackage.RESOURCE__NOTIFIER:
 				setNotifier((QResourceNotifier<T>)null);
 				return;
-			case QIntegratedLanguageMemoryPackage.RESOURCE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -263,26 +198,8 @@ public abstract class ResourceImpl<T extends QObjectNameable> extends MinimalEOb
 				return contextProvider != null;
 			case QIntegratedLanguageMemoryPackage.RESOURCE__NOTIFIER:
 				return notifier != null;
-			case QIntegratedLanguageMemoryPackage.RESOURCE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
 	}
 
 } // QResourceImpl

@@ -11,11 +11,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.memo.*;
 
@@ -63,7 +60,6 @@ public class IntegratedLanguageMemoryFactoryImpl extends EFactoryImpl implements
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case QIntegratedLanguageMemoryPackage.RESOURCE_EVENT: return (EObject)createResourceEvent();
 			case QIntegratedLanguageMemoryPackage.RESOURCE_NOTIFIER: return (EObject)createResourceNotifier();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -102,16 +98,6 @@ public class IntegratedLanguageMemoryFactoryImpl extends EFactoryImpl implements
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public <T extends QObjectNameable> QResourceEvent<T> createResourceEvent() {
-		ResourceEventImpl<T> resourceEvent = new ResourceEventImpl<T>();
-		return resourceEvent;
 	}
 
 	/**

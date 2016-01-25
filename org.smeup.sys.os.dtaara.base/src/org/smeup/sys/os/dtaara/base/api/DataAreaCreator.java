@@ -25,12 +25,12 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.memo.QResourceManager;
-import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.mi.core.util.QStrings;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.dtaara.DataAreaType;
 import org.smeup.sys.os.dtaara.QDataArea;
 import org.smeup.sys.os.dtaara.QOperatingSystemDataAreaFactory;
@@ -38,7 +38,6 @@ import org.smeup.sys.os.dtaara.base.api.tools.DataAreaEditor;
 import org.smeup.sys.os.dtaara.base.api.tools.DataAreaEditor.DataTooLongException;
 import org.smeup.sys.os.dtaara.base.api.tools.DataAreaEditor.InvalidBooleanValueException;
 import org.smeup.sys.os.dtaara.base.api.tools.DataAreaEditor.TypeAndValueMismatchException;
-import org.smeup.sys.os.lib.QLibrary;
 
 @Program(name = "QWCCCRVC")
 public class DataAreaCreator {
@@ -56,6 +55,8 @@ public class DataAreaCreator {
 
 	@Inject
 	private QExceptionManager exceptionManager;
+	@Inject
+	private QJobLogManager jobLogManager;
 	@Inject
 	private QResourceManager resourceManager;
 	@Inject
@@ -80,14 +81,15 @@ public class DataAreaCreator {
 		switch (dataArea.asData().library.asEnum()) {
 		case CURLIB:
 			resourceWriter = resourceManager.getResourceWriter(job, QDataArea.class, Scope.CURRENT_LIBRARY);
-			libName = resourceWriter.getName();
 			break;
 		case OTHER:
 			resourceWriter = resourceManager.getResourceWriter(job, QDataArea.class, libName);
 			break;
 		}
 
-		checkLibrary(libName, areaName);
+		if (!resourceWriter.exists(libName))
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1021, new String[] { libName, areaName });
+
 		checkExistence(areaName, libName);
 
 		QDataArea newDataArea = QOperatingSystemDataAreaFactory.eINSTANCE.createDataArea();
@@ -108,7 +110,7 @@ public class DataAreaCreator {
 
 		resourceWriter.save(newDataArea);
 
-		exceptionManager.prepareException(job, QCPFMSG.CPC0904, new String[] { areaName, libName });
+		jobLogManager.info(job, exceptionManager.prepareException(job, QCPFMSG.CPC0904, new String[] { areaName, libName }).getMessageText());
 	}
 
 	private String descriptionFrom(QEnum<DESCRIZIONETESTOEnum, QCharacter> descrizioneTesto) {
@@ -124,13 +126,6 @@ public class DataAreaCreator {
 	private void checkExistence(String areaName, String libName) {
 		if (resourceWriter.exists(areaName)) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF1023, new String[] { areaName, libName });
-		}
-	}
-
-	private void checkLibrary(String libName, String areaName) {
-		QResourceSetReader<QLibrary> resourceReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.ALL);
-		if (!resourceReader.exists(libName)) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1021, new String[] { libName, areaName });
 		}
 	}
 

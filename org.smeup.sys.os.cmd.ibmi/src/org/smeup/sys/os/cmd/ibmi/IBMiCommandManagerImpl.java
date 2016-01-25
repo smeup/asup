@@ -57,7 +57,8 @@ import org.smeup.sys.il.data.def.QMultipleCompoundDataDef;
 import org.smeup.sys.il.data.def.QUnaryCompoundDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.memo.QResourceManager;
-import org.smeup.sys.il.memo.QResourceSetReader;
+import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.cmd.CommandParameterOrder;
 import org.smeup.sys.os.cmd.QCallableCommand;
 import org.smeup.sys.os.cmd.QCommand;
@@ -65,7 +66,6 @@ import org.smeup.sys.os.cmd.QCommandParameter;
 import org.smeup.sys.os.cmd.QOperatingSystemCommandFactory;
 import org.smeup.sys.os.cmd.base.BaseCommandManagerImpl;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
@@ -118,7 +118,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 		CLCommand clCommand = clRow.getCommand();
 
 		// lookup command
-		QResourceSetReader<QCommand> commandResource = resourceManager.getResourceReader(job, QCommand.class, Scope.LIBRARY_LIST);
+		QResourceReader<QCommand> commandResource = resourceManager.getResourceReader(job, QCommand.class, Scope.LIBRARY_LIST);
 		QCommand qCommand = commandResource.lookup(clCommand.getName());
 		
 		// unknown command

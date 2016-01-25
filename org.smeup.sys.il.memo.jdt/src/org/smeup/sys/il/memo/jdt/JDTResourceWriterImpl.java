@@ -23,30 +23,32 @@ import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
+import org.smeup.sys.il.memo.QResourceHelper;
 import org.smeup.sys.il.memo.QResourceWriter;
-import org.smeup.sys.il.memo.ResourceEventType;
 
 public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourceReaderImpl<T> implements QResourceWriter<T> {
 
-	public JDTResourceWriterImpl(QContextProvider contextProvider, QSourceManager sourceManager, String container, Class<T> klass) {
-		super(contextProvider, sourceManager, container, klass);
+	private static final long serialVersionUID = 1L;
+
+	public JDTResourceWriterImpl(QContextProvider contextProvider, QSourceManager sourceManager, String resource, Class<T> klass) {
+		super(contextProvider, sourceManager, klass, resource);
 	}
 
 	@Override
 	public synchronized void delete(T object) {
 		try {
-			fireEvent(resourceEvent, ResourceEventType.PRE_DELETE, object);
+			QResourceHelper.firePreDeleteEvent(this, object);
 
 			doDelete(object);
 			
-			fireEvent(resourceEvent, ResourceEventType.POST_DELETE, object);
+			QResourceHelper.firePostDeleteEvent(this, object);
 		} catch (IOException e) {
 			throw new IntegratedLanguageMemoryRuntimeException(e);
 		}
 	}
 
 	private void doDelete(T object) throws IOException {
-		QSourceEntry entry = sourceManager.getObjectEntry(getContextProvider().getContext(), getName(), klass, object.getName());
+		QSourceEntry entry = sourceManager.getObjectEntry(getContextProvider().getContext(), getResourceName(), klass, object.getName());
 		if (entry == null)
 			throw new IntegratedLanguageMemoryRuntimeException("Object " + object.getName() + " not found");
 
@@ -61,11 +63,11 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 	@Override
 	public synchronized void save(T object, boolean replace) {
 		try {
-			fireEvent(resourceEvent, ResourceEventType.PRE_SAVE, object);
+			QResourceHelper.firePreSaveEvent(this, object);;
 			
 			doSave(object, replace);
 			
-			fireEvent(resourceEvent, ResourceEventType.POST_SAVE, object);
+			QResourceHelper.firePostSaveEvent(this, object);
 		} catch (IOException e) {
 			throw new IntegratedLanguageMemoryRuntimeException(e);
 		}
@@ -75,23 +77,31 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 		ByteArrayOutputStream outpuStream = new ByteArrayOutputStream();
 		emfConverter.writeToStream((EObject) object, outpuStream);
 
-		sourceManager.createObjectEntry(getContextProvider().getContext(), getName(), klass, object.getName(), replace, new ByteArrayInputStream(outpuStream.toByteArray()));
+		sourceManager.createObjectEntry(getContextProvider().getContext(), getResourceName(), klass, object.getName(), replace, new ByteArrayInputStream(outpuStream.toByteArray()));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public void rename(T oldObject, T newObject) {
+	public void rename(T object, String newName) {
 		try {
-			resourceEvent.setAdditionalInfo(newObject);
-			fireEvent(resourceEvent, ResourceEventType.PRE_RENAME, oldObject);
-			
-			doSave(newObject, true);
-			doDelete(oldObject);
 
-			fireEvent(resourceEvent, ResourceEventType.POST_RENAME, oldObject);
-		} catch (IOException e) {
+			QResourceHelper.firePreRenameEvent(this, object, newName);
+
+			String oldName = object.getName();
+
+			T newObject = (T) EcoreUtil.copy((EObject) object);
+			EObject eObject = (EObject) newObject;
+
+			// new name
+			eObject.eSet(eObject.eClass().getEStructuralFeature("name"), newName);
+
+			doSave(newObject, true);
+			doDelete(object);
+
+			QResourceHelper.firePreRenameEvent(this, newObject, oldName);
+		} catch (Exception e) {
 			throw new IntegratedLanguageMemoryRuntimeException(e);
 		}
-		
 	}
 
 	@SuppressWarnings("unchecked")

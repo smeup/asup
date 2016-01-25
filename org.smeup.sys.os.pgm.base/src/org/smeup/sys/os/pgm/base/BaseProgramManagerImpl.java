@@ -28,7 +28,7 @@ import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
-import org.smeup.sys.il.memo.QResourceSetReader;
+import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.mi.core.util.QStrings;
 import org.smeup.sys.os.core.OperatingSystemMessageException;
@@ -354,11 +354,12 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	private QProgram getProgram(QJob job, String library, String name) {
 
 		// check program
-		if (library != null && library.equalsIgnoreCase("*LIBL"))
-			library = null;
+		Scope scope = Scope.get(library);
+		if (scope == null)
+			scope = Scope.LIBRARY_LIST;
 
-		QResourceSetReader<QProgram> programReader = resourceManager.getResourceReader(job, QProgram.class, Scope.ALL);		
-		QProgram program = programReader.lookup(library, name);
+		QResourceReader<QProgram> programReader = resourceManager.getResourceReader(job, QProgram.class, scope, library);		
+		QProgram program = programReader.lookup(name);
 		if (program == null) {
 			jobLogManager.error(job, "Program not found: " + name);
 			throw new OperatingSystemRuntimeException(job.getJobName() + "(" + job.getJobNumber() + ")" + "\t" + "Program not found: " + name, null);
