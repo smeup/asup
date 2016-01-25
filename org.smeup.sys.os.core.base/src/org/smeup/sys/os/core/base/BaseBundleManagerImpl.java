@@ -337,8 +337,6 @@ public class BaseBundleManagerImpl implements QBundleManager {
 			Class<?> klass = null;
 			try {
 				String resourceURI = resource.replace(".class", "").replace('/', '.');
-				if (resourceURI.contains("$"))
-					continue;
 				klass = bundle.loadClass(resourceURI);
 			} catch (ClassNotFoundException e) {
 				continue;
