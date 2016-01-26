@@ -75,6 +75,10 @@ public class UserProfileRetriever {
 		cLVarForJOBD10.eval(qUserProfile.getJobDescription());
 		cLVarForSTATUS10.eval(qUserProfile.isEnabled() ? "*ENABLED" : "*DISABLED");
 
+		// TODO to implement 
+		cLVarForLMTCPB10.eval("*NO");
+		
+		
 		setInitialProgram(cLVarForINLPGM10, cLVarForINLPGMLIB10, qUserProfile);
 	}
 
