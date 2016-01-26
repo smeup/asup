@@ -12,7 +12,6 @@
 package org.smeup.sys.os.type.base;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -24,6 +23,7 @@ import org.osgi.framework.FrameworkUtil;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResourceHelper;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceProvider;
 import org.smeup.sys.il.memo.QResourceReader;
@@ -47,7 +47,7 @@ public class BaseTypeRegistryImpl<TP extends QTypedObject> implements QTypeRegis
 
 	@SuppressWarnings("unchecked")
 	@PostConstruct
-	public void init(QTypeContainer typeContainer) {
+	private void init(QTypeContainer typeContainer) {
 
 		this.types = new ArrayList<QType<?>>();
 
@@ -97,35 +97,6 @@ public class BaseTypeRegistryImpl<TP extends QTypedObject> implements QTypeRegis
 				return type;
 
 		return null;
-	}
-
-	private class TypeIterator implements QObjectIterator<QType<?>> {
-
-		private Iterator<QType<?>> iterator;
-
-		protected TypeIterator(Iterator<QType<?>> iterator) {
-			this.iterator = iterator;
-		}
-
-		@Override
-		public void close() {
-
-		}
-
-		@Override
-		public boolean hasNext() {
-			return iterator.hasNext();
-		}
-
-		@Override
-		public QType<?> next() {
-			return iterator.next();
-		}
-
-		@Override
-		public void remove() {
-		}
-
 	}
 
 	private class InternalType<T extends QTypedObject> extends TypeImpl<T> {
@@ -226,7 +197,7 @@ public class BaseTypeRegistryImpl<TP extends QTypedObject> implements QTypeRegis
 			for (QType<?> type : list())
 				types.add(type);
 
-			return new TypeIterator(types.iterator());
+			return QResourceHelper.wrapIterator(types);
 		}
 
 		@Override

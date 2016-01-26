@@ -13,14 +13,22 @@ package org.smeup.sys.os.scde.cron;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceProvider;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.os.scde.QScheduleEntry;
 
 public class CronResourceProviderImpl implements QResourceProvider {
 	
+	@PostConstruct
+	private void init(QResourceManager resourceManager) {
+		resourceManager.registerProvider(QScheduleEntry.class, this);
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

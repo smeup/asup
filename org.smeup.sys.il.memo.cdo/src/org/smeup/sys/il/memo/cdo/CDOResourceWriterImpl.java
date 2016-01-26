@@ -55,8 +55,8 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 			// new name
 			eObject.eSet(eObject.eClass().getEStructuralFeature("name"), newName);
 
-			doSave(newObject, true, false);
-			doDelete(object, false);
+			doSave(newObject, true);
+			doDelete(object);
 
 			QResourceHelper.firePostRenameEvent(this, newObject, oldName);
 		} catch (Exception e) {
@@ -66,7 +66,12 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 
 	@Override
 	public void delete(T object) {
-		doDelete(object, true);
+
+		QResourceHelper.firePreDeleteEvent(this, object);
+
+		doDelete(object);
+		
+		QResourceHelper.firePostDeleteEvent(this, object);
 	}
 
 	@Override
@@ -76,7 +81,12 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 
 	@Override
 	public void save(T object, boolean replace) {
-		doSave(object, replace, true);
+
+		QResourceHelper.firePreSaveEvent(this, object);
+		
+		doSave(object, replace);
+		
+		QResourceHelper.firePostSaveEvent(this, object);
 	}
 
 	@Override
@@ -110,7 +120,7 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 		return (T) eObject;
 	}
 
-	private void doDelete(T object, boolean fireEvent) {
+	private void doDelete(T object) {
 		CDOTransaction transaction = getTransaction();
 		CDOResource resource = getResource(transaction);
 
@@ -120,14 +130,7 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 
 		resource.getContents().remove(object);
 		try {
-
-			if (fireEvent)
-				QResourceHelper.firePreDeleteEvent(this, object);
-
 			transaction.commit();
-			if (fireEvent)
-				QResourceHelper.firePostDeleteEvent(this, object);
-
 		} catch (CommitException e) {
 			throw new IntegratedLanguageMemoryRuntimeException(e);
 		} catch (RuntimeException e) {
@@ -135,7 +138,7 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 		}
 	}
 
-	private void doSave(T object, boolean replace, boolean fireEvent) {
+	private void doSave(T object, boolean replace) {
 
 		CDOTransaction transaction = getTransaction();
 		CDOResource resource = getResource(transaction);
@@ -168,13 +171,7 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 
 		// commit and notify event
 		try {
-			if (fireEvent)
-				QResourceHelper.firePreSaveEvent(this, object);
-
 			transaction.commit();
-
-			if (fireEvent)
-				QResourceHelper.firePostSaveEvent(this, object);
 
 		} catch (Exception e) {
 			// unlock resource

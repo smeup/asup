@@ -12,11 +12,11 @@
 package org.smeup.sys.os.scde.cron;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResourceHelper;
 import org.smeup.sys.il.memo.impl.ResourceReaderImpl;
 import org.smeup.sys.os.scde.QScheduleEntry;
 
@@ -65,8 +65,7 @@ public class CronResourceReaderImpl extends ResourceReaderImpl<QScheduleEntry> {
 			listScheduleEntry.add(cronAdapter.getScheduleEntry(cronTask));
 		}
 		
-		return new ScheduleEntryIterator(listScheduleEntry);
-		
+		return QResourceHelper.wrapIterator(listScheduleEntry);	
 	}
 
 	@Override
@@ -81,37 +80,5 @@ public class CronResourceReaderImpl extends ResourceReaderImpl<QScheduleEntry> {
 		}
 		
 		return entry;		
-	}
-	
-	
-	private class ScheduleEntryIterator implements QObjectIterator<QScheduleEntry> {
-		
-		private Iterator<QScheduleEntry> entryIterator;
-
-		public ScheduleEntryIterator(List<QScheduleEntry> entryList) {
-			entryIterator = entryList.iterator();
-		}
-
-		@Override
-		public void close() {
-
-		}
-
-		@Override
-		public boolean hasNext() {
-			
-			return entryIterator.hasNext();
-		}
-
-		@Override
-		public QScheduleEntry next() {
-
-			return entryIterator.next();
-		}
-
-		@Override
-		public void remove() {
-			entryIterator.remove();			
-		}		
 	}
 }
