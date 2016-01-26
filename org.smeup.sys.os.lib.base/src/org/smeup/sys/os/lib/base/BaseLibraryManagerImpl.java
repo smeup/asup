@@ -11,6 +11,9 @@
  */
 package org.smeup.sys.os.lib.base;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.QObjectIterator;
@@ -19,14 +22,23 @@ import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.file.QFile;
+import org.smeup.sys.os.file.QPhysicalFile;
 import org.smeup.sys.os.lib.LibraryType;
 import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.lib.QLibraryManager;
 import org.smeup.sys.os.lib.QOperatingSystemLibraryFactory;
+import org.smeup.sys.os.type.QType;
+import org.smeup.sys.os.type.QTypeRegistry;
+import org.smeup.sys.os.type.QTypedObject;
 
 public class BaseLibraryManagerImpl implements QLibraryManager {
 
+	@Inject
 	private QResourceManager resourceManager;
+	
+	@Inject
+	private QTypeRegistry typeRegistry;
 
 	private String systemLibrary;
 
@@ -34,10 +46,8 @@ public class BaseLibraryManagerImpl implements QLibraryManager {
 	// private Map<String, Long> bundleMap;
 
 	@Inject
-	public BaseLibraryManagerImpl(QSystemManager systemManager, QResourceManager resourceManager) {
-
+	public BaseLibraryManagerImpl(QSystemManager systemManager) {
 		this.systemLibrary = systemManager.getSystem().getSystemLibrary();
-		this.resourceManager = resourceManager;
 	}
 
 	@Override
@@ -95,6 +105,52 @@ public class BaseLibraryManagerImpl implements QLibraryManager {
 				libraryIterator.close();
 		}
 		
+	}
+
+	@Override
+	public void clearLibrary(QJob job, String name) {
+
+		for (QType<?> type : typeRegistry.list()) {
+
+			if(!type.isPersistent())
+
+			if (QFile.class.isAssignableFrom(type.getTypedClass()))
+				deleteFileType(job, type, name);
+			else
+				deleteType(job, type, name);
+		}		
 	}	
 	
+	private <T extends QTypedObject> void deleteType(QJob job, QType<T> type, String library) {
+
+		QResourceWriter<T> typeWriter = resourceManager.getResourceWriter(job, type.getTypedClass(), library);
+
+		try (QObjectIterator<T> typedObjects = typeWriter.find(null);) {
+			while (typedObjects.hasNext()) {
+				T typedObject = typedObjects.next();
+				typeWriter.delete(typedObject);
+			}
+		}
+
+	}
+
+	private <T extends QTypedObject> void deleteFileType(QJob job, QType<T> type, String library) {
+
+		QResourceWriter<T> typeWriter = resourceManager.getResourceWriter(job, type.getTypedClass(), library);
+
+		List<T> physicalFiles = new ArrayList<T>();
+
+		try (QObjectIterator<T> typedObjects = typeWriter.find(null);) {
+			while (typedObjects.hasNext()) {
+				T typedObject = typedObjects.next();
+
+				if (typedObject instanceof QPhysicalFile)
+					physicalFiles.add(typedObject);
+				else
+					typeWriter.delete(typedObject);
+			}
+		}
+		for (T physicalFile : physicalFiles)
+			typeWriter.delete(physicalFile);
+	}
 }

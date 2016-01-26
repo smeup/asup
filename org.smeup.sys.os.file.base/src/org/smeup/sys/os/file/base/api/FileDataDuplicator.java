@@ -66,7 +66,6 @@ public class FileDataDuplicator {
 		try (QPreparedStatement stmt = connection.prepareStatement(sql);) {
 			stmt.execute();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new OperatingSystemRuntimeException(e);
 		}
 	}

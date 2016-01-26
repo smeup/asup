@@ -19,15 +19,12 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
-import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.lib.QLibraryManager;
-import org.smeup.sys.os.lib.base.api.tools.LibraryHandler;
-import org.smeup.sys.os.type.QTypeRegistry;
 
 @Program(name = "QLICLLIB")
 public class LibraryDeleter {
@@ -40,10 +37,6 @@ public class LibraryDeleter {
 	private QJob job;
 	@Inject
 	private QLibraryManager libraryManager;
-	@Inject
-	private QTypeRegistry typeRegistry;
-	@Inject
-	private QResourceManager resourceManager;
 	@Inject
 	private QJobLogManager jobLogManager;
 	@Inject
@@ -58,8 +51,6 @@ public class LibraryDeleter {
 
 		if (qLibrary == null)
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] { library.trimR() });
-
-		new LibraryHandler(qLibrary, job, typeRegistry, resourceManager).clear();
 
 		libraryWriter.delete(qLibrary);
 
