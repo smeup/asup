@@ -65,4 +65,12 @@ public interface QLibraryManager {
 	 * @generated
 	 */
 	void destroyAllTemporaryLibrary(QJob job);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model jobRequired="true" nameRequired="true"
+	 * @generated
+	 */
+	void clearLibrary(QJob job, String name);
 } // QLibraryManager

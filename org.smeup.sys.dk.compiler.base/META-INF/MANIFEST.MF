@@ -8,7 +8,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.smeup.sys.dk.compiler,
  org.smeup.sys.dk.source,
  org.smeup.sys.os.lib,
- org.smeup.sys.os.file
+ org.smeup.sys.os.file,
+ org.smeup.sys.os.file.base
 Export-Package: org.smeup.sys.dk.compiler.base
 Import-Package: org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.ecore.xmi.impl

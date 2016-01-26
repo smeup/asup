@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.il.memo.jdt;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -18,6 +19,7 @@ import javax.inject.Inject;
 import org.smeup.sys.dk.source.jdt.JDTSourceManagerImpl;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResourceHelper;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceProvider;
 import org.smeup.sys.il.memo.QResourceReader;
@@ -45,9 +47,13 @@ public class JDTResourceProviderImpl implements QResourceProvider {
 	@Override
 	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, List<String> resources) {
 
-		QResourceReader<T> resourceReader = new JDTResourceSetReaderImpl<T>(contextProvider, sourceManager, klass, resources);
+		List<QResourceReader<T>> readers = new ArrayList<QResourceReader<T>>();
+		for (String resource: resources) {
+			JDTResourceReaderImpl<T> resourceReader = new JDTResourceReaderImpl<T>(contextProvider, sourceManager, klass, resource);
+			readers.add(resourceReader);
+		}
 
-		return resourceReader;
+		return QResourceHelper.wrapReader(readers);
 	}
 	
 	@Override

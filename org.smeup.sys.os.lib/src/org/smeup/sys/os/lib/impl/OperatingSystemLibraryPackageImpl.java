@@ -292,6 +292,10 @@ public class OperatingSystemLibraryPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(libraryManagerEClass, null, "destroyAllTemporaryLibrary", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(libraryManagerEClass, null, "clearLibrary", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(libraryEClass, QLibrary.class, "Library", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLibrary_BasePackage(), ecorePackage.getEString(), "basePackage", null, 0, 1, QLibrary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLibrary_Dependencies(), ecorePackage.getEString(), "dependencies", null, 0, -1, QLibrary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -36,7 +36,7 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 	private QServerSocketConfig socketConfig;
 	
 	@PostConstruct
-	public void init(QServerSocketConfig socketConfig) {
+	private void init(QServerSocketConfig socketConfig) {
 		this.socketConfig = socketConfig;
 		resourceManager.registerProvider(QObjectNameable.class, this);
 	}
@@ -83,6 +83,7 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 		if (session == null) {
 			session = CDOSessionHelper.openSession(socketConfig.getAddress()+":"+socketConfig.getPort(), application.getName());
 			session.options().getNet4jProtocol().setTimeout(60000);
+			contextProvider.getContext().set(CDONet4jSession.class, session);
 		}
 		return session;
 	}

@@ -73,9 +73,8 @@ public class BaseResourceManagerImpl implements QResourceManager {
 		providers.put(klass, provider);
 	}
 
-
 	@Override
-	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope, String name) {
+	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope, String resource) {
 
 		switch (scope) {
 		case ALL:
@@ -85,14 +84,14 @@ public class BaseResourceManagerImpl implements QResourceManager {
 		case ALL_USER:
 			return getResourceReader(contextProvider, klass, scope);
 		case OTHER:
-			return getResourceReader(contextProvider, klass, name);
+			return getResourceReader(contextProvider, klass, resource);
 		}
 		
 		throw new IntegratedLanguageMemoryRuntimeException("Invalid scope: "+scope); 
 	}
 
 	@Override
-	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope, String name) {
+	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope, String resource) {
 		
 		switch (scope) {
 		case ALL:
@@ -102,17 +101,17 @@ public class BaseResourceManagerImpl implements QResourceManager {
 		case USER_LIBRARY_LIST:
 			return getResourceWriter(contextProvider, klass, scope);
 		case OTHER:
-			return getResourceWriter(contextProvider, klass, name);
+			return getResourceWriter(contextProvider, klass, resource);
 		}
 				
 		throw new IntegratedLanguageMemoryRuntimeException("Invalid scope: "+scope); 
 	}
 	
 	@Override
-	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String name) {
+	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String resource) {
 
 		QResourceProvider resourceProvider = getResourceProvider(klass);
-		QResourceReader<T> resourceReader = resourceProvider.getResourceReader(contextProvider, klass, name);
+		QResourceReader<T> resourceReader = resourceProvider.getResourceReader(contextProvider, klass, resource);
 		prepareListener(resourceReader, klass);
 
 		return resourceReader;
@@ -186,7 +185,6 @@ public class BaseResourceManagerImpl implements QResourceManager {
 		} else
 			resource.setNotifier(notifier);
 	}
-	
 
 	private List<String> resources(QContextProvider contextProvider, Scope scope) {
 		
