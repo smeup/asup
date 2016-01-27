@@ -420,12 +420,9 @@ public class RPJProgramSupport {
 		int s = 0;
 		while (true) {
 			i = base.qSubst(start).trimR().indexOf(comparator, s);
-			if (i == -1)
-				break;
-			else {
+			if (i != -1)
 				s++;
-				break;
-			}
+			break;
 		}
 
 		if (s > 0)
@@ -446,12 +443,9 @@ public class RPJProgramSupport {
 		String string = base.qSubst(start).trimR();
 		while (true) {
 			i = string.indexOf(comparator, s);
-			if (i == -1)
-				break;
-			else {
+			if (i != -1)
 				s--;
-				break;
-			}
+			break;
 		}
 
 		if (s > 0)
