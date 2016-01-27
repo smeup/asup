@@ -359,6 +359,11 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	}
 
 	@Override
+	public boolean ne(byte value) {
+		return !eq(value);
+	}
+
+	@Override
 	public boolean ge(String value) {
 
 		return compareString(value) >= 0;
