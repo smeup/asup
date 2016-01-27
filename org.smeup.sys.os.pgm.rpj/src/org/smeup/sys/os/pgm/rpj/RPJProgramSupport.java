@@ -422,7 +422,10 @@ public class RPJProgramSupport {
 			i = base.qSubst(start).trimR().indexOf(comparator, s);
 			if (i == -1)
 				break;
-			s++;
+			else {
+				s++;
+				break;
+			}
 		}
 
 		if (s > 0)
@@ -445,7 +448,10 @@ public class RPJProgramSupport {
 			i = string.indexOf(comparator, s);
 			if (i == -1)
 				break;
-			s--;
+			else {
+				s--;
+				break;
+			}
 		}
 
 		if (s > 0)
