@@ -9,6 +9,7 @@ package org.smeup.sys.il.core.ctx;
 
 import java.lang.annotation.Annotation;
 
+import java.util.List;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 
 /**
@@ -139,6 +140,14 @@ public interface QContext {
 	 * @generated
 	 */
 	String resolveAlias(String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valuesMany="true"
+	 * @generated
+	 */
+	List<String> resolveAliases(List<String> values);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

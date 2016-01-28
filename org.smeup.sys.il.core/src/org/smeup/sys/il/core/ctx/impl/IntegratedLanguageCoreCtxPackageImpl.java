@@ -460,6 +460,9 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		op = addEOperation(contextEClass, ecorePackage.getEString(), "resolveAlias", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(contextEClass, ecorePackage.getEString(), "resolveAliases", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "values", 0, -1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(contextEClass, null, "set", 1, 1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "T");
 		g1 = createEGenericType(ecorePackage.getEJavaClass());

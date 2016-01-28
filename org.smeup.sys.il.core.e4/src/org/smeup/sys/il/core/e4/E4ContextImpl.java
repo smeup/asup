@@ -401,4 +401,15 @@ public abstract class E4ContextImpl extends ContextImpl {
 		else
 			return value;
 	}
+
+	@Override
+	public List<String> resolveAliases(List<String> values) {
+		
+		List<String> newValues = new ArrayList<String>();
+
+		for(String value:values)
+			newValues.add(resolveAlias(value));
+			
+		return newValues;
+	}
 }
