@@ -22,9 +22,11 @@ import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
+import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.lib.QLibraryManager;
 import org.smeup.sys.os.lib.base.api.tools.CurrentLibraryChangeHelper;
 
@@ -57,11 +59,15 @@ public class LibraryListChanger {
 			job.getLibraries().add(job.getSystem().getSystemLibrary());
 			break;
 
-		case OTHER:
+		case OTHER: {
+			QResourceReader<QLibrary> libraryReader = libraryManager.getLibraryReader(job);
+			
 			List<String> newLibList = new ArrayList<String>();
 			for (QEnum<LIBRARIESFORCURRENTTHREADEnum, QCharacter> libEnum : librariesForCurrentThread) {
 				String lib = libEnum.asData().trimR();
-				if (!lib.isEmpty()) 
+				if (lib.isEmpty())
+					continue;
+				if(libraryReader.exists(lib))
 					newLibList.add(lib);
 			}
 			if (newLibList.size() > 0) {
@@ -70,6 +76,7 @@ public class LibraryListChanger {
 				job.getLibraries().addAll(newLibList);
 			}
 			break;
+		}
 		}
 
 		new CurrentLibraryChangeHelper(job, libraryManager, jobLogManager, exceptionManager).changeCurrentLibrary(currentLibrary);
