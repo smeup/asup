@@ -87,9 +87,6 @@ public class DataAreaCreator {
 			break;
 		}
 
-		if (!resourceWriter.exists(libName))
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1021, new String[] { libName, areaName });
-
 		checkExistence(areaName, libName);
 
 		QDataArea newDataArea = QOperatingSystemDataAreaFactory.eINSTANCE.createDataArea();
