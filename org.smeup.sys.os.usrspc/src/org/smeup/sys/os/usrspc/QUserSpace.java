@@ -15,11 +15,11 @@ import org.smeup.sys.os.type.QTypedObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.usrspc.QUserSpace#getHeader <em>Header</em>}</li>
  *   <li>{@link org.smeup.sys.os.usrspc.QUserSpace#getContent <em>Content</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.usrspc.QOperatingSystemUserSpacePackage#getUserSpace()
  * @model

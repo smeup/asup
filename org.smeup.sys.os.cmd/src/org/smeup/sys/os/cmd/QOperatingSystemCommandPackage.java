@@ -142,15 +142,6 @@ public interface QOperatingSystemCommandPackage extends EPackage {
 	int COMMAND__FACETS = QOperatingSystemTypePackage.TYPED_OBJECT__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int COMMAND__LIBRARY = QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *

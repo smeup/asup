@@ -26,10 +26,10 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  * <em><b>Message File</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.msgf.impl.MessageFileImpl#getMessages <em>Messages</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

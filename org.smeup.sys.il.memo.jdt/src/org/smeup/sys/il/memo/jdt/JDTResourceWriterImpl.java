@@ -12,17 +12,17 @@
  */
 package org.smeup.sys.il.memo.jdt;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
+import org.smeup.sys.il.memo.QResource;
 import org.smeup.sys.il.memo.QResourceHelper;
 import org.smeup.sys.il.memo.QResourceWriter;
 
@@ -30,8 +30,16 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 
 	private static final long serialVersionUID = 1L;
 
-	public JDTResourceWriterImpl(QContextProvider contextProvider, QSourceManager sourceManager, String resource, Class<T> klass) {
-		super(contextProvider, sourceManager, klass, resource);
+	private QResource resource;
+	
+	public JDTResourceWriterImpl(QContextProvider contextProvider, QSourceManager sourceManager, QResource resource, Class<T> klass, QProject project) {
+		super(contextProvider, sourceManager, klass, project);
+		this.resource = resource;
+	}
+
+	@Override
+	public QResource getResource() {
+		return resource;
 	}
 
 	@Override
@@ -48,7 +56,7 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 	}
 
 	private void doDelete(T object) throws IOException {
-		QSourceEntry entry = sourceManager.getObjectEntry(getContextProvider().getContext(), getResourceName(), klass, object.getName());
+		QSourceEntry entry = sourceManager.getObjectEntry(getContextProvider().getContext(), getProject(), klass, object.getName());
 		if (entry == null)
 			throw new IntegratedLanguageMemoryRuntimeException("Object " + object.getName() + " not found");
 
@@ -63,7 +71,7 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 	@Override
 	public synchronized void save(T object, boolean replace) {
 		try {
-			QResourceHelper.firePreSaveEvent(this, object);;
+			QResourceHelper.firePreSaveEvent(this, object);
 			
 			doSave(object, replace);
 			
@@ -74,10 +82,7 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 	}
 
 	private void doSave(T object, boolean replace) throws IOException {
-		ByteArrayOutputStream outpuStream = new ByteArrayOutputStream();
-		emfConverter.writeToStream((EObject) object, outpuStream);
-
-		sourceManager.createObjectEntry(getContextProvider().getContext(), getResourceName(), klass, object.getName(), replace, new ByteArrayInputStream(outpuStream.toByteArray()));
+		sourceManager.createObjectEntry(getContextProvider().getContext(), getProject(), klass, object.getName(), replace, object);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -98,7 +103,7 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 			doSave(newObject, true);
 			doDelete(object);
 
-			QResourceHelper.firePreRenameEvent(this, newObject, oldName);
+			QResourceHelper.firePostRenameEvent(this, newObject, oldName);
 		} catch (Exception e) {
 			throw new IntegratedLanguageMemoryRuntimeException(e);
 		}

@@ -14,6 +14,8 @@ import org.smeup.sys.os.file.QPhysicalFile;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>QPhysical File</b></em>'. <!-- end-user-doc -->
+ * <p>
+ * </p>
  *
  * @generated
  */

@@ -27,10 +27,10 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <em><b>Display File</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.impl.DisplayFileImpl#getDisplayFormats <em>Display Formats</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

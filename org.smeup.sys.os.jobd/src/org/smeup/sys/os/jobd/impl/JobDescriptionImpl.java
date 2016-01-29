@@ -27,7 +27,6 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  * <em><b>QJob Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.jobd.impl.JobDescriptionImpl#getJobQueue <em>Job Queue</em>}</li>
  *   <li>{@link org.smeup.sys.os.jobd.impl.JobDescriptionImpl#getJobPriorityOnJobq <em>Job Priority On Jobq</em>}</li>
@@ -36,6 +35,7 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  *   <li>{@link org.smeup.sys.os.jobd.impl.JobDescriptionImpl#getUser <em>User</em>}</li>
  *   <li>{@link org.smeup.sys.os.jobd.impl.JobDescriptionImpl#getLibraries <em>Libraries</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

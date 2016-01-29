@@ -28,11 +28,11 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <em><b>File Format Key</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.impl.FileFormatKeyImpl#isUnique <em>Unique</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.impl.FileFormatKeyImpl#getKeyFields <em>Key Fields</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

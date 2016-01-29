@@ -15,10 +15,10 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.QDisplayFile#getDisplayFormats <em>Display Formats</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getDisplayFile()
  * @model

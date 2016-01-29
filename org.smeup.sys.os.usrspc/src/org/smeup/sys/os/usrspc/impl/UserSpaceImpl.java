@@ -24,11 +24,11 @@ import org.smeup.sys.os.usrspc.QUserSpace;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.usrspc.impl.UserSpaceImpl#getHeader <em>Header</em>}</li>
  *   <li>{@link org.smeup.sys.os.usrspc.impl.UserSpaceImpl#getContent <em>Content</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

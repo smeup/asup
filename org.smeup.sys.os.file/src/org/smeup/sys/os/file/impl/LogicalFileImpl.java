@@ -23,11 +23,11 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <em><b>QLogical File</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.impl.LogicalFileImpl#getCreationStatement <em>Creation Statement</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.impl.LogicalFileImpl#getTables <em>Tables</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

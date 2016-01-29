@@ -86,15 +86,6 @@ public interface QOperatingSystemModulePackage extends EPackage {
 	int MODULE__FACETS = QOperatingSystemTypePackage.TYPED_OBJECT__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int MODULE__LIBRARY = QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 

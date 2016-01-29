@@ -49,7 +49,7 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 			return;
 
 		QLibrary library = event.getSource();
-		QContextProvider contextProvider = event.getResource().getContextProvider();
+		QContextProvider contextProvider = event.getContextProvider();
 		
 		QContext jobContext = contextProvider.getContext();
 

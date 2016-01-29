@@ -16,11 +16,11 @@ import org.smeup.sys.os.type.QTypedContainer;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.module.QModuleContainer#getBasePackage <em>Base Package</em>}</li>
  *   <li>{@link org.smeup.sys.os.module.QModuleContainer#isScanPackage <em>Scan Package</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.module.QOperatingSystemModulePackage#getModuleContainer()
  * @model

@@ -16,7 +16,6 @@ import org.smeup.sys.os.type.QTypedObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.usrprf.QUserProfile#getJobDescription <em>Job Description</em>}</li>
  *   <li>{@link org.smeup.sys.os.usrprf.QUserProfile#getInitialProgram <em>Initial Program</em>}</li>
@@ -25,6 +24,7 @@ import org.smeup.sys.os.type.QTypedObject;
  *   <li>{@link org.smeup.sys.os.usrprf.QUserProfile#getUserClass <em>User Class</em>}</li>
  *   <li>{@link org.smeup.sys.os.usrprf.QUserProfile#isEnabled <em>Enabled</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.usrprf.QOperatingSystemUserProfilePackage#getUserProfile()
  * @model

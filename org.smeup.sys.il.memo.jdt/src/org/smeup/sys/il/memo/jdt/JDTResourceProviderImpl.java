@@ -16,9 +16,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.jdt.JDTSourceManagerImpl;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResource;
 import org.smeup.sys.il.memo.QResourceHelper;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceProvider;
@@ -28,9 +30,10 @@ import org.smeup.sys.il.memo.QResourceWriter;
 public class JDTResourceProviderImpl implements QResourceProvider {
 
 	private JDTSourceManagerImpl sourceManager;
-
+	
 	@Inject
 	public JDTResourceProviderImpl(QResourceManager resourceManager) {
+
 		this.sourceManager = new JDTSourceManagerImpl("asup-obj");
 		
 		resourceManager.registerProvider(QObjectNameable.class, this);
@@ -39,7 +42,11 @@ public class JDTResourceProviderImpl implements QResourceProvider {
 	@Override
 	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String resource) {
 
-		QResourceReader<T> resourceReader = new JDTResourceReaderImpl<T>(contextProvider, sourceManager, klass, resource);
+		QProject project = sourceManager.getProject(contextProvider.getContext(), resource);
+		if(project == null)
+			return null;
+		
+		QResourceReader<T> resourceReader = new JDTResourceReaderImpl<T>(contextProvider, sourceManager, klass, project);
 
 		return resourceReader;
 	}
@@ -49,7 +56,11 @@ public class JDTResourceProviderImpl implements QResourceProvider {
 
 		List<QResourceReader<T>> readers = new ArrayList<QResourceReader<T>>();
 		for (String resource: resources) {
-			JDTResourceReaderImpl<T> resourceReader = new JDTResourceReaderImpl<T>(contextProvider, sourceManager, klass, resource);
+			QProject project = sourceManager.getProject(contextProvider.getContext(), resource);
+			if(project == null)
+				continue;
+			
+			JDTResourceReaderImpl<T> resourceReader = new JDTResourceReaderImpl<T>(contextProvider, sourceManager, klass, project);
 			readers.add(resourceReader);
 		}
 
@@ -57,9 +68,21 @@ public class JDTResourceProviderImpl implements QResourceProvider {
 	}
 	
 	@Override
-	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String resource) {
+	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, final String resource) {
 
-		QResourceWriter<T> resourceWriter = new JDTResourceWriterImpl<T>(contextProvider, sourceManager, resource, klass);
+		QProject project = sourceManager.getProject(contextProvider.getContext(), resource);
+		if(project == null)
+			return null;
+
+		QResource qResource = new QResource() {
+		
+			@Override
+			public String getName() {
+				return resource;
+			}
+		};
+		
+		QResourceWriter<T> resourceWriter = new JDTResourceWriterImpl<T>(contextProvider, sourceManager, qResource, klass, project);
 
 		return resourceWriter;
 	}

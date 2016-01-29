@@ -24,11 +24,11 @@ import org.smeup.sys.os.dtaq.QOperatingSystemDataQueuePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueEntryImpl#getKey <em>Key</em>}</li>
  *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueEntryImpl#getValue <em>Value</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

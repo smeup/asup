@@ -86,15 +86,6 @@ public interface QOperatingSystemJobDescriptionPackage extends EPackage {
 	int JOB_DESCRIPTION__FACETS = QOperatingSystemTypePackage.TYPED_OBJECT__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int JOB_DESCRIPTION__LIBRARY = QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *

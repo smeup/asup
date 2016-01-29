@@ -20,7 +20,6 @@ import org.smeup.sys.os.usrprf.UserClass;
  * <em><b>QUser Profile</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.usrprf.impl.UserProfileImpl#getJobDescription <em>Job Description</em>}</li>
  *   <li>{@link org.smeup.sys.os.usrprf.impl.UserProfileImpl#getInitialProgram <em>Initial Program</em>}</li>
@@ -29,6 +28,7 @@ import org.smeup.sys.os.usrprf.UserClass;
  *   <li>{@link org.smeup.sys.os.usrprf.impl.UserProfileImpl#getUserClass <em>User Class</em>}</li>
  *   <li>{@link org.smeup.sys.os.usrprf.impl.UserProfileImpl#isEnabled <em>Enabled</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

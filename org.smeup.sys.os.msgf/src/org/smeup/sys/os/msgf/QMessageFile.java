@@ -16,10 +16,10 @@ import org.smeup.sys.os.type.QTypedObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.msgf.QMessageFile#getMessages <em>Messages</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.msgf.QOperatingSystemMessageFilePackage#getMessageFile()
  * @model

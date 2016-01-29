@@ -24,11 +24,11 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  * <em><b>Module</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.module.impl.ModuleImpl#getAddress <em>Address</em>}</li>
  *   <li>{@link org.smeup.sys.os.module.impl.ModuleImpl#getSource <em>Source</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

@@ -63,7 +63,7 @@ public class BaseFileListenerImpl implements QResourceListener<QFile> {
 			return;
 		}
 
-		QContextProvider contextProvider = event.getResource().getContextProvider();
+		QContextProvider contextProvider = event.getContextProvider();
 
 		// file.setLibrary(((QResourceReader<QFile>)
 		// event.getResource()).getContainer());
@@ -71,7 +71,7 @@ public class BaseFileListenerImpl implements QResourceListener<QFile> {
 		QContext jobContext = contextProvider.getContext();
 		QConnection connection = jobContext.getAdapter(contextProvider, QConnection.class);
 
-		Schema schema = connection.getCatalogMetaData().getSchema(file.getLibrary());
+		Schema schema = connection.getCatalogMetaData().getSchema(event.getResource().getName());
 		if (schema == null)
 			throw new OperatingSystemRuntimeException("Schema not found: " + file.getLibrary());
 

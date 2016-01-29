@@ -32,10 +32,10 @@ import org.smeup.sys.os.dtaq.QOperatingSystemDataQueuePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueContentImpl#getEntries <em>Entries</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

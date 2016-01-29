@@ -17,7 +17,6 @@ import org.smeup.sys.os.type.QTypedRef;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.jobd.QJobDescription#getJobQueue <em>Job Queue</em>}</li>
  *   <li>{@link org.smeup.sys.os.jobd.QJobDescription#getJobPriorityOnJobq <em>Job Priority On Jobq</em>}</li>
@@ -26,6 +25,7 @@ import org.smeup.sys.os.type.QTypedRef;
  *   <li>{@link org.smeup.sys.os.jobd.QJobDescription#getUser <em>User</em>}</li>
  *   <li>{@link org.smeup.sys.os.jobd.QJobDescription#getLibraries <em>Libraries</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.jobd.QOperatingSystemJobDescriptionPackage#getJobDescription()
  * @model

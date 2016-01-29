@@ -17,6 +17,7 @@ import java.util.UUID;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResource;
 import org.smeup.sys.il.memo.QResourceHelper;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.scde.QScheduleEntry;
@@ -110,5 +111,11 @@ public class CronResourceWriterImpl extends CronResourceReaderImpl implements QR
 		save((QScheduleEntry) eObject);
 
 		return (QScheduleEntry) eObject;
+	}
+
+	@Override
+	public QResource getResource() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -17,7 +17,6 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.msgf.QMessageDescription#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.msgf.QMessageDescription#getSeverity <em>Severity</em>}</li>
@@ -25,6 +24,7 @@ import org.smeup.sys.il.core.QObject;
  *   <li>{@link org.smeup.sys.os.msgf.QMessageDescription#getMessageText <em>Message Text</em>}</li>
  *   <li>{@link org.smeup.sys.os.msgf.QMessageDescription#getMessageDataFields <em>Message Data Fields</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.msgf.QOperatingSystemMessageFilePackage#getMessageDescription()
  * @model

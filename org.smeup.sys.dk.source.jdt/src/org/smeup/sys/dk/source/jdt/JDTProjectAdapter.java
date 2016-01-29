@@ -21,7 +21,6 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.smeup.sys.dk.source.QProject;
-import org.smeup.sys.dk.source.QSourceNode;
 
 public class JDTProjectAdapter implements QProject {
 
@@ -83,11 +82,6 @@ public class JDTProjectAdapter implements QProject {
 	@Override
 	public QProject getProject() {
 		return this;
-	}
-
-	@Override
-	public QSourceNode getParent() {
-		return null;
 	}
 
 	@Override

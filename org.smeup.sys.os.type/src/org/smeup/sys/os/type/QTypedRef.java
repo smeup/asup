@@ -15,11 +15,11 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.type.QTypedRef#getLibrary <em>Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.QTypedRef#getName <em>Name</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.type.QOperatingSystemTypePackage#getTypedRef()
  * @model
