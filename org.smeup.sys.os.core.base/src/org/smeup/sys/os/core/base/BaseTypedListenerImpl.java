@@ -14,14 +14,11 @@ package org.smeup.sys.os.core.base;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import org.eclipse.emf.ecore.EObject;
-import org.smeup.sys.il.memo.QResource;
 import org.smeup.sys.il.memo.QResourceEvent;
 import org.smeup.sys.il.memo.QResourceListener;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 import org.smeup.sys.os.type.QTypedObject;
 
 public class BaseTypedListenerImpl implements QResourceListener<QTypedObject> {
@@ -40,14 +37,9 @@ public class BaseTypedListenerImpl implements QResourceListener<QTypedObject> {
 		case PRE_SAVE:
 			QTypedObject typedObject = event.getSource();
 
-			// library
-			EObject eObject = (EObject) typedObject;
-			eObject.eSet(QOperatingSystemTypePackage.eINSTANCE.getTypedObject_Library(), event.getResourceName());
-
 			// creation info
 			if (typedObject.getCreationInfo() == null) {
-				QResource<QTypedObject> resource = event.getResource();
-				QJob job = resource.getContextProvider().getContext().get(QJob.class);
+				QJob job = event.getContextProvider().getContext().get(QJob.class);
 				typedObject.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(job));
 			}
 			break;

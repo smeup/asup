@@ -89,15 +89,6 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int FILE__FACETS = QOperatingSystemTypePackage.TYPED_OBJECT__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int FILE__LIBRARY = QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -161,15 +152,6 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int DATABASE_FILE__FACETS = FILE__FACETS;
-
-	/**
-	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int DATABASE_FILE__LIBRARY = FILE__LIBRARY;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -876,15 +858,6 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int DISPLAY_FILE__FACETS = FILE__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int DISPLAY_FILE__LIBRARY = FILE__LIBRARY;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -1316,7 +1289,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_MEMBER__FILE = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
+	int FILE_MEMBER__FILE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1325,7 +1298,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_MEMBER__NAME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
+	int FILE_MEMBER__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Rows</b></em>' containment reference list.
@@ -1333,7 +1306,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_MEMBER__ROWS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
+	int FILE_MEMBER__ROWS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute. <!--
@@ -1342,7 +1315,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_MEMBER__TEXT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 3;
+	int FILE_MEMBER__TEXT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute. <!--
@@ -1351,7 +1324,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_MEMBER__TYPE = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 4;
+	int FILE_MEMBER__TYPE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>File Member</em>' class.
@@ -1359,7 +1332,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_MEMBER_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 5;
+	int FILE_MEMBER_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>File Member Manager</em>' class.
@@ -1525,15 +1498,6 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int LOGICAL_FILE__FACETS = DATABASE_FILE__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int LOGICAL_FILE__LIBRARY = DATABASE_FILE__LIBRARY;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -1611,15 +1575,6 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int PHYSICAL_FILE__FACETS = DATABASE_FILE__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int PHYSICAL_FILE__LIBRARY = DATABASE_FILE__LIBRARY;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -1678,15 +1633,6 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int PRINTER_FILE__FACETS = FILE__FACETS;
-
-	/**
-	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int PRINTER_FILE__LIBRARY = FILE__LIBRARY;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2006,15 +1952,6 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int SOURCE_FILE__FACETS = FILE__FACETS;
-
-	/**
-	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int SOURCE_FILE__LIBRARY = FILE__LIBRARY;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--

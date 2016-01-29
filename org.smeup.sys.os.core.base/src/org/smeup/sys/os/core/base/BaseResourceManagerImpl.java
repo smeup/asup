@@ -23,7 +23,6 @@ import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
-import org.smeup.sys.il.memo.QResource;
 import org.smeup.sys.il.memo.QResourceListener;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceNotifier;
@@ -110,9 +109,12 @@ public class BaseResourceManagerImpl implements QResourceManager {
 	@Override
 	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String resource) {
 
+		resource = contextProvider.getContext().resolveAlias(resource); 
+		
 		QResourceProvider resourceProvider = getResourceProvider(klass);
 		QResourceReader<T> resourceReader = resourceProvider.getResourceReader(contextProvider, klass, resource);
-		prepareListener(resourceReader, klass);
+		if(resourceReader != null)
+			prepareListener(resourceReader, klass);
 
 		return resourceReader;
 	}
@@ -125,9 +127,12 @@ public class BaseResourceManagerImpl implements QResourceManager {
 	@Override
 	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, List<String> resources) {
 
+		resources = contextProvider.getContext().resolveAliases(resources);
+		
 		QResourceProvider resourceProvider = getResourceProvider(klass);
 		QResourceReader<T> resourceReader = resourceProvider.getResourceReader(contextProvider, klass, resources);
-		prepareListener(resourceReader, klass);
+		if(resourceReader != null)
+			prepareListener(resourceReader, klass);
 
 		return resourceReader;
 	}
@@ -152,11 +157,14 @@ public class BaseResourceManagerImpl implements QResourceManager {
 	}
 	
 	@Override
-	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String name) {
+	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String resource) {
 
+		resource = contextProvider.getContext().resolveAlias(resource);
+		
 		QResourceProvider resourceProvider = getResourceProvider(klass);
-		QResourceWriter<T> resourceWriter = resourceProvider.getResourceWriter(contextProvider, klass, name);
-		prepareListener(resourceWriter, klass);
+		QResourceWriter<T> resourceWriter = resourceProvider.getResourceWriter(contextProvider, klass, resource);
+		if(resourceWriter != null)
+			prepareListener(resourceWriter, klass);
 
 		return resourceWriter;
 	}
@@ -172,7 +180,7 @@ public class BaseResourceManagerImpl implements QResourceManager {
 	}
 
 	@SuppressWarnings("unchecked")
-	private <T extends QObjectNameable> void prepareListener(QResource<T> resource, Class<T> klass) {
+	private <T extends QObjectNameable> void prepareListener(QResourceReader<T> resource, Class<T> klass) {
 
 		QResourceNotifier<T> notifier = (QResourceNotifier<T>) notifiers.get(klass);
 		if (notifier == null) {
@@ -190,6 +198,12 @@ public class BaseResourceManagerImpl implements QResourceManager {
 		
 		List<String> resources = new ArrayList<>();
 
+		if(contextProvider == null)
+			"".toCharArray();
+		if(contextProvider.getContext() == null)
+			"".toCharArray();
+		if(contextProvider.getContext().getContextDescription() == null)
+			"".toCharArray();
 		QContextDescription contextDescription = contextProvider.getContext().getContextDescription();
 		
 		// set scope libraries

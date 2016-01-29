@@ -129,7 +129,7 @@ public interface QDevelopmentKitSourcePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_NODE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
+	int SOURCE_NODE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.source.QSourceEntry <em>Source Entry</em>}' class.

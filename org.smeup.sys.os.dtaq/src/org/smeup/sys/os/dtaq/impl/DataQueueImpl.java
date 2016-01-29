@@ -33,7 +33,6 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueImpl#getLockRead <em>Lock Read</em>}</li>
  *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueImpl#getLockWrite <em>Lock Write</em>}</li>
@@ -43,6 +42,7 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueImpl#isSenderInfo <em>Sender Info</em>}</li>
  *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueImpl#getContent <em>Content</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

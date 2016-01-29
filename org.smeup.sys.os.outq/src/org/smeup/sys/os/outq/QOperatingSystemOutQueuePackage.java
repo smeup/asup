@@ -90,15 +90,6 @@ public interface QOperatingSystemOutQueuePackage extends EPackage {
 	int OUT_QUEUE__FACETS = QOperatingSystemTypePackage.TYPED_OBJECT__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Library</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OUT_QUEUE__LIBRARY = QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

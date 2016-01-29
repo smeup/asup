@@ -8,7 +8,8 @@
 package org.smeup.sys.dk.source;
 
 import java.net.URI;
-import org.smeup.sys.il.core.QObject;
+
+import org.smeup.sys.il.core.QObjectNameable;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +21,7 @@ import org.smeup.sys.il.core.QObject;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QSourceNode extends QObject {
+public interface QSourceNode extends QObjectNameable {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -29,14 +30,6 @@ public interface QSourceNode extends QObject {
 	 * @generated
 	 */
 	URI getLocation();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
-	QSourceNode getParent();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -53,14 +46,6 @@ public interface QSourceNode extends QObject {
 	 * @generated
 	 */
 	boolean isRoot();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
-	String getName();
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -953,7 +953,7 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		g2.getETypeArguments().add(g3);
 		fileFormatFieldEClass.getEGenericSuperTypes().add(g1);
 		fileFormatKeyEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		fileMemberEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		fileMemberEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		fileMemberRowEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		fileOverrideEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		logicalFileEClass.getESuperTypes().add(this.getDatabaseFile());

@@ -93,7 +93,9 @@ public class JDTFileMemberManagerImpl implements QFileMemberManager {
 	public QFileMember lookup(QContextProvider contextProvider, Scope scope, String library, String file, String name) {
 
 		QResourceReader<QFile> fileReader = resourceManager.getResourceReader(contextProvider, QFile.class, scope, library);
-
+		if(fileReader == null)
+			return null;
+		
 		QFileMember fileMember = null;
 		try (QObjectIterator<QFile> fileList = fileReader.find(file);) {
 			while (fileList.hasNext()) {

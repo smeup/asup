@@ -34,22 +34,16 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 	private Class<T> klass;
 	private String klassName;
 	private EClass eClass;
-	private String resource;
 
 	public CDOResourceReaderImpl(QContextProvider contextProvider, CDONet4jSession session, Class<T> klass, String resource) {
 		setContextProvider(contextProvider);
 		this.session = session;
 
-		this.resource = resource;
 		this.klass = klass;
 
 		this.klassName = CDOResourceHelper.getModelName(klass);
 		EPackage ePackage = CDOResourceHelper.getEPackage(session, klass);
 		this.eClass = CDOResourceHelper.getEClass(ePackage, klass);
-	}
-
-	public String getResourceName() {
-		return this.resource;
 	}
 
 	protected Class<T> getResourceClass() {
@@ -75,7 +69,7 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 		CDOQuery query = getView(getContextProvider().getContext()).createQuery("ocl", queryString.toString(), eClass);
 		query.setMaxResults(1);
 		// library
-		query.setParameter("library", getResourceName());
+//		query.setParameter("library", getResourceName());
 		// name
 		query.setParameter("name", name);
 
@@ -111,7 +105,7 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 		CDOQuery query = getView(getContextProvider().getContext()).createQuery("ocl", queryString.toString(), eClass);
 
 		// parameters
-		query.setParameter("library", getResourceName());
+//		query.setParameter("library", getResourceName());
 		if (nameFilter != null)
 			if (nameFilter.endsWith("*"))
 				query.setParameter("nameFilter", nameFilter.substring(0, nameFilter.length() - 1));
@@ -126,18 +120,21 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 	protected CDOView getView(QContext context) {
 
 		if (view == null) {
+			synchronized (context) {
+				if (view == null) {
+					@SuppressWarnings("unchecked")
+					JobToViewMap typedViews = context.get(JobToViewMap.class);
+					if (typedViews == null) {
+						typedViews = new JobToViewMap();
+						context.set(JobToViewMap.class, typedViews);
+					} else
+						view = typedViews.get(klass.getName());
 
-			@SuppressWarnings("unchecked")
-			JobToViewMap typedViews = context.get(JobToViewMap.class);
-			if (typedViews == null) {
-				typedViews = new JobToViewMap();
-				context.set(JobToViewMap.class, typedViews);
-			} else
-				view = typedViews.get(klass.getName());
-
-			if (view == null) {
-				view = getSession().openView();
-				typedViews.put(klass.getName(), view);
+					if (view == null) {
+						view = getSession().openView();
+						typedViews.put(klass.getName(), view);
+					}
+				}
 			}
 		}
 		return view;

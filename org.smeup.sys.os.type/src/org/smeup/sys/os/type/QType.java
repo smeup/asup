@@ -16,11 +16,11 @@ package org.smeup.sys.os.type;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.type.QType#getTypedClassName <em>Typed Class Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.QType#isPersistent <em>Persistent</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.type.QOperatingSystemTypePackage#getType()
  * @model

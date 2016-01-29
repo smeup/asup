@@ -8,6 +8,7 @@
 package org.smeup.sys.il.memo;
 
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.ctx.QContextProvider;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -26,6 +27,14 @@ public interface QResourceEvent<T extends QObjectNameable> {
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
+	QContextProvider getContextProvider();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
 	ResourceEventType getEventType();
 
 	/**
@@ -34,15 +43,7 @@ public interface QResourceEvent<T extends QObjectNameable> {
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
-	QResource<T> getResource();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" required="true"
-	 * @generated
-	 */
-	String getResourceName();
+	QResource getResource();
 
 	/**
 	 * <!-- begin-user-doc -->

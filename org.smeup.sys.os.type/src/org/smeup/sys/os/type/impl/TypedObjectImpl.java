@@ -9,14 +9,19 @@ package org.smeup.sys.os.type.impl;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
+import org.smeup.sys.il.core.QNameable;
 import org.smeup.sys.il.core.impl.ObjectNameableImpl;
 import org.smeup.sys.il.core.meta.QFacet;
 import org.smeup.sys.os.core.QCreationInfo;
@@ -28,15 +33,14 @@ import org.smeup.sys.os.type.QTypedObject;
  * <em><b>QTyped Object</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.type.impl.TypedObjectImpl#getApplication <em>Application</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.impl.TypedObjectImpl#getFacets <em>Facets</em>}</li>
- *   <li>{@link org.smeup.sys.os.type.impl.TypedObjectImpl#getLibrary <em>Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.impl.TypedObjectImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.impl.TypedObjectImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.impl.TypedObjectImpl#getCreationInfo <em>Creation Info</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -44,8 +48,7 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 
 	/**
 	 * The default value of the '{@link #getApplication() <em>Application</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getApplication()
 	 * @generated
 	 * @ordered
@@ -54,8 +57,7 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 
 	/**
 	 * The cached value of the '{@link #getApplication() <em>Application</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getApplication()
 	 * @generated
 	 * @ordered
@@ -64,33 +66,12 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 
 	/**
 	 * The cached value of the '{@link #getFacets() <em>Facets</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFacets()
 	 * @generated
 	 * @ordered
 	 */
 	protected EList<QFacet> facets;
-
-	/**
-	 * The default value of the '{@link #getLibrary() <em>Library</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLibrary()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String LIBRARY_EDEFAULT = "";
-
-	/**
-	 * The cached value of the '{@link #getLibrary() <em>Library</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLibrary()
-	 * @generated
-	 * @ordered
-	 */
-	protected String library = LIBRARY_EDEFAULT;
 
 	/**
 	 *
@@ -161,8 +142,7 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -171,8 +151,7 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -184,8 +163,7 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public List<QFacet> getFacets() {
@@ -307,23 +285,26 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * 
+	 * @generated NOT
 	 */
 	@Override
 	public String getLibrary() {
-		return library;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setLibrary(String newLibrary) {
-		String oldLibrary = library;
-		library = newLibrary;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY, oldLibrary, library));
+		Resource resource = eResource();
+		if(resource == null)
+			if(getClass().getSimpleName().equalsIgnoreCase("UserProfileImpl"))
+				return "QSYS";
+			else
+				throw new IntegratedLanguageCoreRuntimeException("Invalid library for object: " + this);
+		
+		if(resource instanceof QNameable)
+			return ((QNameable)resource).getName();
+		
+		URI uri = resource.getURI();		
+		if(uri.segmentCount() == 0)
+			throw new IntegratedLanguageCoreRuntimeException("Invalid library for object: " + this);
+		
+		return uri.segment(0);		
 	}
 
 	/**
@@ -337,8 +318,6 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 				return getApplication();
 			case QOperatingSystemTypePackage.TYPED_OBJECT__FACETS:
 				return getFacets();
-			case QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY:
-				return getLibrary();
 			case QOperatingSystemTypePackage.TYPED_OBJECT__NAME:
 				return getName();
 			case QOperatingSystemTypePackage.TYPED_OBJECT__TEXT:
@@ -363,9 +342,6 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 			case QOperatingSystemTypePackage.TYPED_OBJECT__FACETS:
 				getFacets().clear();
 				getFacets().addAll((Collection<? extends QFacet>)newValue);
-				return;
-			case QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY:
-				setLibrary((String)newValue);
 				return;
 			case QOperatingSystemTypePackage.TYPED_OBJECT__NAME:
 				setName((String)newValue);
@@ -393,9 +369,6 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 			case QOperatingSystemTypePackage.TYPED_OBJECT__FACETS:
 				getFacets().clear();
 				return;
-			case QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY:
-				setLibrary(LIBRARY_EDEFAULT);
-				return;
 			case QOperatingSystemTypePackage.TYPED_OBJECT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -420,8 +393,6 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 				return APPLICATION_EDEFAULT == null ? application != null : !APPLICATION_EDEFAULT.equals(application);
 			case QOperatingSystemTypePackage.TYPED_OBJECT__FACETS:
 				return facets != null && !facets.isEmpty();
-			case QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY:
-				return LIBRARY_EDEFAULT == null ? library != null : !LIBRARY_EDEFAULT.equals(library);
 			case QOperatingSystemTypePackage.TYPED_OBJECT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case QOperatingSystemTypePackage.TYPED_OBJECT__TEXT:
@@ -443,8 +414,6 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (application: ");
 		result.append(application);
-		result.append(", library: ");
-		result.append(library);
 		result.append(", name: ");
 		result.append(name);
 		result.append(", text: ");

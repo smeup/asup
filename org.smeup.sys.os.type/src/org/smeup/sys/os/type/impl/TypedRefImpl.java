@@ -20,11 +20,11 @@ import org.smeup.sys.os.type.QTypedRef;
  * <em><b>QTyped Reference</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.type.impl.TypedRefImpl#getLibrary <em>Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.impl.TypedRefImpl#getName <em>Name</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

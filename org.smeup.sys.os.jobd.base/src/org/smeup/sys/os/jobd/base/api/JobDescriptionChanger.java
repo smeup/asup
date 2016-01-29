@@ -11,8 +11,6 @@
  */
 package org.smeup.sys.os.jobd.base.api;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.Supported;
@@ -30,8 +28,8 @@ import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.il.memo.Scope;
+import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.jobd.QJobDescription;
@@ -185,8 +183,7 @@ public class JobDescriptionChanger {
 		}
 
 		// INLLIBL
-		List<String> libraries = qJobDescription.getLibraries();
-		qJobDescription.getLibraries().clear();
+		boolean first = true;
 		for (QEnum<InitialLibraryListEnum, QCharacter> initialLibrary : initialLibraryList) {
 
 			if (initialLibrary.asData().isEmpty())
@@ -197,12 +194,17 @@ public class JobDescriptionChanger {
 				qJobDescription.getLibraries().clear();
 				break;
 			case SAME:
-				qJobDescription.getLibraries().addAll(libraries);
 				break;
 			case SYSVAL:
 				// TODO
 				break;
 			case OTHER:
+
+				if(first) {
+					qJobDescription.getLibraries().clear();
+					first = false;
+				}
+
 				qJobDescription.getLibraries().add(initialLibrary.asData().asString());
 				break;
 			}

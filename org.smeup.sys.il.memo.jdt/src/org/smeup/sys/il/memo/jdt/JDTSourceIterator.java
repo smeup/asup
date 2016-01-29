@@ -12,7 +12,6 @@
 package org.smeup.sys.il.memo.jdt;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Iterator;
 
 import org.smeup.sys.dk.source.QSourceEntry;
@@ -20,12 +19,12 @@ import org.smeup.sys.il.core.QObjectNameable;
 
 public class JDTSourceIterator<T extends QObjectNameable> implements Iterator<T> {
 
+	private Class<T> klass;
 	private Iterator<QSourceEntry> entries;
-	private EMFConverter emfConverter;
-
-	public JDTSourceIterator(EMFConverter emfConverter, Iterator<QSourceEntry> entries) {
+	
+	public JDTSourceIterator(Class<T> klass, Iterator<QSourceEntry> entries) {
+		this.klass = klass;
 		this.entries = entries;
-		this.emfConverter = emfConverter;
 	}
 
 	@Override
@@ -33,16 +32,16 @@ public class JDTSourceIterator<T extends QObjectNameable> implements Iterator<T>
 		return entries.hasNext();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public T next() {
 
 		T typedObject = null;
 		QSourceEntry entry = entries.next();
 		try {
-			InputStream inputStream = entry.getInputStream();
-			typedObject = (T) emfConverter.convertToEObject(inputStream);
-			inputStream.close();
+//			InputStream inputStream = entry.getInputStream();
+//			typedObject = (T) jdtResource.convertToEObject(inputStream);
+//			inputStream.close();
+			typedObject = entry.load(klass);
 		} catch (IOException e) {
 			System.err.println(e.getMessage() + " location: " + entry);
 			typedObject = next();
@@ -55,5 +54,4 @@ public class JDTSourceIterator<T extends QObjectNameable> implements Iterator<T>
 	public void remove() {
 		entries.remove();
 	}
-
 }

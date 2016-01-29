@@ -24,6 +24,7 @@ import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
+import org.smeup.sys.il.memo.QResource;
 import org.smeup.sys.il.memo.QResourceHelper;
 import org.smeup.sys.il.memo.QResourceWriter;
 
@@ -102,7 +103,7 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 
 	private CDOResource getResource(CDOTransaction transaction) {
 		if (resource == null)
-			resource = transaction.getOrCreateResource(CDO_OMAC + "/" + getResourceName() + "/" + getResourceClass().getName());
+			resource = transaction.getOrCreateResource(CDO_OMAC + "/" + getResource().getName() + "/" + getResourceClass().getName());
 		return resource;
 	}
 
@@ -180,5 +181,11 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 
 			throw new IntegratedLanguageMemoryRuntimeException(e);
 		}
+	}
+
+	@Override
+	public QResource getResource() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

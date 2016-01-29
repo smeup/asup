@@ -35,6 +35,14 @@ public interface QResourceWriter<T extends QObjectNameable> extends QResourceRea
 	void delete(T object);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QResource getResource();
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model objectRequired="true"
 	 * @generated
@@ -55,13 +63,5 @@ public interface QResourceWriter<T extends QObjectNameable> extends QResourceRea
 	 * @generated
 	 */
 	void rename(T object, String newName);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" required="true"
-	 * @generated
-	 */
-	String getResourceName();
 
 } // QResourceWriter

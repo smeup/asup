@@ -29,12 +29,10 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.URIUtil;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QProjectDef;
 import org.smeup.sys.dk.source.QSourceEntry;
@@ -49,17 +47,16 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	public static int EVENT_BUILD_ENTRY = 40;
 	public static int EVENT_INSTALL_ENTRY = 60;
 
-	private String bundlePath;
-	private ResourceSet resourceSet;
+	private String bundlePath;	
 
 	public JDTSourceManagerImpl() {
 		this("asup-src");
 	}
 
 	public JDTSourceManagerImpl(String bundlePath) {
-		ResourcesPlugin.getWorkspace().getDescription().setAutoBuilding(false);
 		this.bundlePath = bundlePath;
-		this.resourceSet = new ResourceSetImpl();
+		
+		ResourcesPlugin.getWorkspace().getDescription().setAutoBuilding(false);
 	}
 
 	@Override
@@ -102,34 +99,43 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	}
 
 	@Override
-	public <T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, String project, Class<T> type, String name, boolean replace, T content) throws IOException {
+	public <T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, String projectName, Class<T> type, String name, boolean replace, T content) throws IOException {
 
-		URI uri = EcoreUtil.getURI((EObject) content);
+		QProject project = getProject(context, projectName);
+		if (project == null)
+			throw new IOException("Invalid project: " + projectName);
 
-		Resource resource = resourceSet.createResource(uri);
-		resource.getContents().add((EObject)content);
+		return createObjectEntry(context, project, type, name, replace, content);
+	}
 
-		ByteArrayOutputStream output = new ByteArrayOutputStream();
-		resource.save(output, Collections.EMPTY_MAP);
+	@Override
+	public <T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, QProject project, Class<T> klass, String name, boolean replace, T content) throws IOException {
+
+		ByteArrayOutputStream output = getObjectSerializer(context).serialize(project, klass, name, content);
 		
-		QSourceEntry sourceEntry = createObjectEntry(context, project, type, name, replace, new ByteArrayInputStream(output.toByteArray()));
-		
+		QSourceEntry sourceEntry = createObjectEntry(context, project, klass, name, replace, new ByteArrayInputStream(output.toByteArray()));
 		return sourceEntry;
+
 	}
 
 	@Override
 	public <T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, String projectName, Class<T> type, String name, boolean replace, InputStream content) throws IOException {
 
 		QProject project = getProject(context, projectName);
-		if(project == null)
-			throw new IOException("Invalid project: "+projectName);
-		
-		return createEntry(project, type, name + ".XMI", replace, content);
+		if (project == null)
+			throw new IOException("Invalid project: " + projectName);
+
+		return createObjectEntry(context, project, type, name, replace, content);
+	}
+
+	@Override
+	public <T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, QProject project, Class<T> type, String name, boolean replace, InputStream content) throws IOException {
+		return createEntry(context, project, type, name + ".XMI", replace, content);
 	}
 
 	@Override
 	public QSourceEntry createChildEntry(QContext context, QSourceNode parent, String name, boolean replace, InputStream content) throws IOException {
-		return createEntry(parent, null, name, replace, content);
+		return createEntry(context, parent, null, name, replace, content);
 	}
 
 	@Override
@@ -141,14 +147,13 @@ public class JDTSourceManagerImpl implements QSourceManager {
 			return null;
 
 		IProject project = (IProject) resource;
-		
-/*		try {
-			project.refreshLocal(IContainer.DEPTH_INFINITE, null);
-		} catch (CoreException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}*/
-		
+
+		/*
+		 * try { project.refreshLocal(IContainer.DEPTH_INFINITE, null); } catch
+		 * (CoreException e1) { // TODO Auto-generated catch block
+		 * e1.printStackTrace(); }
+		 */
+
 		return new JDTProjectAdapter(project);
 	}
 
@@ -158,8 +163,13 @@ public class JDTSourceManagerImpl implements QSourceManager {
 		QProject projectEntry = getProject(context, project);
 		if (projectEntry == null)
 			return null;
-		
-		return getChildEntry(context, projectEntry, type, name + ".XMI");
+
+		return getObjectEntry(context, projectEntry, type, name);
+	}
+
+	@Override
+	public <T extends QObjectNameable> QSourceEntry getObjectEntry(QContext context, QProject project, Class<T> type, String name) {
+		return getChildEntry(context, project, type, name + ".XMI");
 	}
 
 	@Override
@@ -181,10 +191,16 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T extends QObjectNameable> List<QSourceEntry> listObjectEntries(QContext context, String projectName, Class<T> type, String nameFilter) {
+
 		QProject project = getProject(context, projectName);
 		if (project == null)
 			return (List<QSourceEntry>) Collections.EMPTY_LIST;
 
+		return listObjectEntries(context, project, type, nameFilter);
+	}
+
+	@Override
+	public <T extends QObjectNameable> List<QSourceEntry> listObjectEntries(QContext context, QProject project, Class<T> type, String nameFilter) {
 		return listChildEntries(context, project, type, nameFilter);
 	}
 
@@ -227,7 +243,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 		}
 	}
 
-	private <T extends QObjectNameable> QSourceEntry createEntry(QSourceNode parent, Class<T> type, String name, boolean replace, InputStream content) throws IOException {
+	private <T extends QObjectNameable> QSourceEntry createEntry(QContext context, QSourceNode parent, Class<T> type, String name, boolean replace, InputStream content) throws IOException {
 
 		IFolder folder = getFolder(parent, type, true);
 		IFile file = folder.getFile(name);
@@ -251,7 +267,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 			}
 		}
 
-		return new JDTSourceEntryFileAdapter(parent.getProject(), file);
+		return new JDTSourceEntryFileAdapter(getObjectSerializer(context), parent.getProject(), file);
 	}
 
 	private <T extends QObjectNameable> QSourceEntry getChildEntry(QContext context, QSourceNode parent, Class<T> type, String name) {
@@ -263,7 +279,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 		if (!file.exists())
 			return null;
 
-		return new JDTSourceEntryFileAdapter(parent.getProject(), file);
+		return new JDTSourceEntryFileAdapter(getObjectSerializer(context), parent.getProject(), file);
 	}
 
 	private <T extends QObjectNameable> List<QSourceEntry> listChildEntries(QContext context, QSourceNode parent, Class<T> type, String nameFilter) {
@@ -305,7 +321,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 
 				}
 
-				entries.add(new JDTSourceEntryFileAdapter(parent.getProject(), (IFile) resource));
+				entries.add(new JDTSourceEntryFileAdapter(getObjectSerializer(context), parent.getProject(), (IFile) resource));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -318,8 +334,13 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	private <T extends QObjectNameable> IFolder getFolder(QSourceNode parent, Class<T> type, boolean create) {
 
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-		IProject project = root.getProject(parent.getProject().getName());
+		if(parent == null)
+			"".toCharArray();
+		if(parent.getProject() == null)
+			"".toCharArray();
 		
+		IProject project = root.getProject(parent.getProject().getName());
+
 		// TODO da eliminare
 		if (parent.isRoot() && type == null)
 			return project.getFolder("src");
@@ -367,5 +388,26 @@ public class JDTSourceManagerImpl implements QSourceManager {
 				folder.create(true, true, null);
 			}
 		}
+	}
+	
+	private JDTObjectSerializer getObjectSerializer(QContext context) {
+		
+		JDTObjectSerializer objectSerializer = context.get(JDTObjectSerializer.class);
+		if(objectSerializer == null) {
+			synchronized (context) {
+				objectSerializer = context.get(JDTObjectSerializer.class);
+				if(objectSerializer == null) {
+
+					ResourceSet resourceSet = new ResourceSetImpl();
+					resourceSet.getLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, true);
+					Resource.Factory resourceFatory = new JDTResourceFactory();
+					resourceSet.getResourceFactoryRegistry().getContentTypeToFactoryMap().put("asup", resourceFatory);
+					
+					objectSerializer = new JDTObjectSerializer(resourceSet);
+					context.set(JDTObjectSerializer.class, objectSerializer);
+				}
+			}
+		}
+		return objectSerializer;
 	}
 }

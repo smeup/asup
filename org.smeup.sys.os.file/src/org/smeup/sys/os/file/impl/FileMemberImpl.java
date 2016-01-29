@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.smeup.sys.il.core.impl.ObjectImpl;
+import org.smeup.sys.il.core.impl.ObjectNameableImpl;
 import org.smeup.sys.os.file.QFileMember;
 import org.smeup.sys.os.file.QFileMemberRow;
 import org.smeup.sys.os.file.QFileMembered;
@@ -30,7 +30,6 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <em><b>Member</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getFile <em>File</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getName <em>Name</em>}</li>
@@ -38,10 +37,11 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  *   <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getType <em>Type</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
-public class FileMemberImpl extends ObjectImpl implements QFileMember {
+public class FileMemberImpl extends ObjectNameableImpl implements QFileMember {
 	/**
 	 *
 	 */

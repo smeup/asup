@@ -26,10 +26,10 @@ import org.smeup.sys.os.type.impl.TypedContainerImpl;
  * <em><b>Command Container</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.cmd.impl.CommandContainerImpl#getTypeName <em>Type Name</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

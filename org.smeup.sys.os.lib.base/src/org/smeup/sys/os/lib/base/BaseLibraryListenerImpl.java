@@ -46,7 +46,7 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 		if (event.getEventType() != ResourceEventType.PRE_SAVE && event.getEventType() != ResourceEventType.PRE_DELETE)
 			return;
 
-		QContextProvider contextProvider = event.getResource().getContextProvider();
+		QContextProvider contextProvider = event.getContextProvider();
 		QLibrary library = event.getSource();
 
 		QProject project = null;

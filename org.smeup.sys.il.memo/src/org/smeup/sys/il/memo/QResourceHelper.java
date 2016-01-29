@@ -18,6 +18,7 @@ import java.util.Queue;
 
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.memo.impl.ResourceReaderImpl;
 
 public class QResourceHelper {
@@ -48,11 +49,6 @@ public class QResourceHelper {
 			}
 
 			@Override
-			public String getResourceName() {
-				return resourceWriter.getResourceName();
-			}
-
-			@Override
 			public T getSource() {
 				return source;
 			}
@@ -68,8 +64,13 @@ public class QResourceHelper {
 			}
 
 			@Override
-			public QResource<T> getResource() {
-				return resourceWriter;
+			public QResource getResource() {
+				return resourceWriter.getResource();
+			}
+
+			@Override
+			public QContextProvider getContextProvider() {
+				return resourceWriter.getContextProvider();
 			}
 		};
 
@@ -87,11 +88,6 @@ public class QResourceHelper {
 			}
 
 			@Override
-			public String getResourceName() {
-				return resourceWriter.getResourceName();
-			}
-
-			@Override
 			public T getSource() {
 				return source;
 			}
@@ -107,8 +103,13 @@ public class QResourceHelper {
 			}
 
 			@Override
-			public QResource<T> getResource() {
-				return resourceWriter;
+			public QResource getResource() {
+				return resourceWriter.getResource();
+			}
+
+			@Override
+			public QContextProvider getContextProvider() {
+				return resourceWriter.getContextProvider();
 			}
 		};
 
@@ -123,11 +124,6 @@ public class QResourceHelper {
 			@Override
 			public ResourceEventType getEventType() {
 				return ResourceEventType.PRE_RENAME;
-			}
-
-			@Override
-			public String getResourceName() {
-				return resourceWriter.getResourceName();
 			}
 
 			@Override
@@ -146,8 +142,13 @@ public class QResourceHelper {
 			}
 
 			@Override
-			public QResource<T> getResource() {
-				return resourceWriter;
+			public QResource getResource() {
+				return resourceWriter.getResource();
+			}
+
+			@Override
+			public QContextProvider getContextProvider() {
+				return resourceWriter.getContextProvider();
 			}
 		};
 
@@ -162,11 +163,6 @@ public class QResourceHelper {
 			@Override
 			public ResourceEventType getEventType() {
 				return ResourceEventType.POST_RENAME;
-			}
-
-			@Override
-			public String getResourceName() {
-				return resourceWriter.getResourceName();
 			}
 
 			@Override
@@ -185,8 +181,13 @@ public class QResourceHelper {
 			}
 
 			@Override
-			public QResource<T> getResource() {
-				return resourceWriter;
+			public QResource getResource() {
+				return resourceWriter.getResource();
+			}
+
+			@Override
+			public QContextProvider getContextProvider() {
+				return resourceWriter.getContextProvider();
 			}
 		};
 
@@ -205,11 +206,6 @@ public class QResourceHelper {
 			}
 
 			@Override
-			public String getResourceName() {
-				return resourceWriter.getResourceName();
-			}
-
-			@Override
 			public T getSource() {
 				return source;
 			}
@@ -225,8 +221,13 @@ public class QResourceHelper {
 			}
 
 			@Override
-			public QResource<T> getResource() {
-				return resourceWriter;
+			public QResource getResource() {
+				return resourceWriter.getResource();
+			}
+
+			@Override
+			public QContextProvider getContextProvider() {
+				return resourceWriter.getContextProvider();
 			}
 		};
 
@@ -245,11 +246,6 @@ public class QResourceHelper {
 			}
 
 			@Override
-			public String getResourceName() {
-				return resourceWriter.getResourceName();
-			}
-
-			@Override
 			public T getSource() {
 				return source;
 			}
@@ -265,8 +261,13 @@ public class QResourceHelper {
 			}
 
 			@Override
-			public QResource<T> getResource() {
-				return resourceWriter;
+			public QResource getResource() {
+				return resourceWriter.getResource();
+			}
+
+			@Override
+			public QContextProvider getContextProvider() {
+				return resourceWriter.getContextProvider();
 			}
 		};
 

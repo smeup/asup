@@ -18,6 +18,8 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>QFile</b></em>'. <!-- end-user-doc -->
+ * <p>
+ * </p>
  *
  * @generated
  */

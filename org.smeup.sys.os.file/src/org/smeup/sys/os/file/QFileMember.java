@@ -9,7 +9,7 @@ package org.smeup.sys.os.file;
 
 import java.util.List;
 
-import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.core.QObjectNameable;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -17,7 +17,6 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.QFileMember#getFile <em>File</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.QFileMember#getName <em>Name</em>}</li>
@@ -25,12 +24,13 @@ import org.smeup.sys.il.core.QObject;
  *   <li>{@link org.smeup.sys.os.file.QFileMember#getText <em>Text</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.QFileMember#getType <em>Type</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getFileMember()
  * @model
  * @generated
  */
-public interface QFileMember extends QObject {
+public interface QFileMember extends QObjectNameable {
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute. <!--
 	 * begin-user-doc -->

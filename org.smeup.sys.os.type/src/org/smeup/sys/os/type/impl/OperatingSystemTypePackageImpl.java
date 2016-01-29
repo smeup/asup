@@ -196,21 +196,12 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTypedObject_Library() {
-		return (EAttribute)typedObjectEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public EReference getTypedObject_CreationInfo() {
-		return (EReference)typedObjectEClass.getEStructuralFeatures().get(5);
+		return (EReference)typedObjectEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -255,7 +246,7 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 	 */
 	@Override
 	public EAttribute getTypedObject_Name() {
-		return (EAttribute)typedObjectEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)typedObjectEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -264,7 +255,7 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 	 */
 	@Override
 	public EAttribute getTypedObject_Text() {
-		return (EAttribute)typedObjectEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)typedObjectEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -314,7 +305,6 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 		typedObjectEClass = createEClass(TYPED_OBJECT);
 		createEAttribute(typedObjectEClass, TYPED_OBJECT__APPLICATION);
 		createEReference(typedObjectEClass, TYPED_OBJECT__FACETS);
-		createEAttribute(typedObjectEClass, TYPED_OBJECT__LIBRARY);
 		createEAttribute(typedObjectEClass, TYPED_OBJECT__NAME);
 		createEAttribute(typedObjectEClass, TYPED_OBJECT__TEXT);
 		createEReference(typedObjectEClass, TYPED_OBJECT__CREATION_INFO);
@@ -422,12 +412,13 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 		initEClass(typedObjectEClass, QTypedObject.class, "TypedObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTypedObject_Application(), ecorePackage.getEString(), "application", null, 0, 1, QTypedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTypedObject_Facets(), theIntegratedLanguageCoreMetaPackage.getFacet(), null, "facets", null, 0, -1, QTypedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTypedObject_Library(), ecorePackage.getEString(), "library", "", 0, 1, QTypedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTypedObject_Name(), ecorePackage.getEString(), "name", null, 1, 1, QTypedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTypedObject_Text(), ecorePackage.getEString(), "text", null, 0, 1, QTypedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTypedObject_CreationInfo(), theOperatingSystemCorePackage.getCreationInfo(), null, "creationInfo", null, 0, 1, QTypedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(typedObjectEClass, ecorePackage.getEString(), "getAttribute", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(typedObjectEClass, ecorePackage.getEString(), "getLibrary", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(typedRefEClass, QTypedRef.class, "TypedRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTypedRef_Library(), ecorePackage.getEString(), "library", null, 1, 1, QTypedRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -454,7 +445,16 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 	protected void createIldataAnnotations() {
 		String source = "il-data";	
 		addAnnotation
-		  (getTypedObject_Application(), 
+		  (typedObjectEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "length", "5"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (typedObjectEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
 			 "length", "10"
@@ -463,7 +463,7 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
 		   });	
 		addAnnotation
-		  (getTypedObject_Library(), 
+		  (getTypedObject_Application(), 
 		   source, 
 		   new String[] {
 			 "length", "10"

@@ -7,9 +7,12 @@
  */
 package org.smeup.sys.il.memo.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.expr.LogicalOperator;
@@ -19,17 +22,31 @@ import org.smeup.sys.il.expr.QRelationalExpression;
 import org.smeup.sys.il.expr.QTermExpression;
 import org.smeup.sys.il.expr.impl.ExpressionVisitorImpl;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage;
+import org.smeup.sys.il.memo.QResourceNotifier;
 import org.smeup.sys.il.memo.QResourceReader;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>QResource</b></em>'. <!-- end-user-doc -->
  * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.smeup.sys.il.memo.impl.ResourceReaderImpl#getNotifier <em>Notifier</em>}</li>
+ * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class ResourceReaderImpl<T extends QObjectNameable> extends ResourceImpl<T> implements QResourceReader<T> {
+public abstract class ResourceReaderImpl<T extends QObjectNameable> extends ResourceHandlerImpl<T> implements QResourceReader<T> {
+	/**
+	 * The cached value of the '{@link #getNotifier() <em>Notifier</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNotifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected QResourceNotifier<T> notifier;
 	/**
 	 * 
 	 */
@@ -50,6 +67,45 @@ public abstract class ResourceReaderImpl<T extends QObjectNameable> extends Reso
 	@Override
 	protected EClass eStaticClass() {
 		return QIntegratedLanguageMemoryPackage.Literals.RESOURCE_READER;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	public QResourceNotifier<T> getNotifier() {
+		if (notifier != null && ((EObject)notifier).eIsProxy()) {
+			InternalEObject oldNotifier = (InternalEObject)notifier;
+			notifier = (QResourceNotifier<T>)eResolveProxy(oldNotifier);
+			if (notifier != oldNotifier) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, QIntegratedLanguageMemoryPackage.RESOURCE_READER__NOTIFIER, oldNotifier, notifier));
+			}
+		}
+		return notifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QResourceNotifier<T> basicGetNotifier() {
+		return notifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNotifier(QResourceNotifier<T> newNotifier) {
+		QResourceNotifier<T> oldNotifier = notifier;
+		notifier = newNotifier;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageMemoryPackage.RESOURCE_READER__NOTIFIER, oldNotifier, notifier));
 	}
 
 	/**
@@ -93,6 +149,66 @@ public abstract class ResourceReaderImpl<T extends QObjectNameable> extends Reso
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case QIntegratedLanguageMemoryPackage.RESOURCE_READER__NOTIFIER:
+				if (resolve) return getNotifier();
+				return basicGetNotifier();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case QIntegratedLanguageMemoryPackage.RESOURCE_READER__NOTIFIER:
+				setNotifier((QResourceNotifier<T>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case QIntegratedLanguageMemoryPackage.RESOURCE_READER__NOTIFIER:
+				setNotifier((QResourceNotifier<T>)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case QIntegratedLanguageMemoryPackage.RESOURCE_READER__NOTIFIER:
+				return notifier != null;
+		}
+		return super.eIsSet(featureID);
 	}
 
 	/**

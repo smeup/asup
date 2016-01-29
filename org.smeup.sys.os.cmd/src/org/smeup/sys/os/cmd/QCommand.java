@@ -16,7 +16,6 @@ import org.smeup.sys.os.type.QTypedObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.cmd.QCommand#getAddress <em>Address</em>}</li>
  *   <li>{@link org.smeup.sys.os.cmd.QCommand#isAllowBatch <em>Allow Batch</em>}</li>
@@ -27,6 +26,7 @@ import org.smeup.sys.os.type.QTypedObject;
  *   <li>{@link org.smeup.sys.os.cmd.QCommand#getStatus <em>Status</em>}</li>
  *   <li>{@link org.smeup.sys.os.cmd.QCommand#getTypeName <em>Type Name</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.cmd.QOperatingSystemCommandPackage#getCommand()
  * @model

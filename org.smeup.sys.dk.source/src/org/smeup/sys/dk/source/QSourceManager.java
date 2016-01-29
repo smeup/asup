@@ -46,10 +46,26 @@ public interface QSourceManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" exceptions="org.smeup.sys.mi.core.JavaIOException" contextRequired="true" projectRequired="true" typeRequired="true" nameRequired="true" replaceRequired="true" contentDataType="org.smeup.sys.mi.core.JavaInputStream" contentRequired="true"
+	 * @generated
+	 */
+	<T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, QProject project, Class<T> type, String name, boolean replace, InputStream content) throws IOException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" exceptions="org.smeup.sys.mi.core.JavaIOException" contextRequired="true" projectRequired="true" typeRequired="true" nameRequired="true" replaceRequired="true" contentRequired="true"
 	 * @generated
 	 */
 	<T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, String project, Class<T> type, String name, boolean replace, T content) throws IOException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" exceptions="org.smeup.sys.mi.core.JavaIOException" contextRequired="true" projectRequired="true" typeRequired="true" nameRequired="true" replaceRequired="true" contentRequired="true"
+	 * @generated
+	 */
+	<T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, QProject project, Class<T> type, String name, boolean replace, T content) throws IOException;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -78,6 +94,14 @@ public interface QSourceManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" contextRequired="true" projectRequired="true" typeRequired="true" nameRequired="true"
+	 * @generated
+	 */
+	<T extends QObjectNameable> QSourceEntry getObjectEntry(QContext context, QProject project, Class<T> type, String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" contextRequired="true" projectRequired="true"
 	 * @generated
 	 */
@@ -98,6 +122,14 @@ public interface QSourceManager {
 	 * @generated
 	 */
 	<T extends QObjectNameable> List<QSourceEntry> listObjectEntries(QContext context, String project, Class<T> type, String nameFilter);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextRequired="true" projectRequired="true" typeRequired="true"
+	 * @generated
+	 */
+	<T extends QObjectNameable> List<QSourceEntry> listObjectEntries(QContext context, QProject project, Class<T> type, String nameFilter);
 
 	/**
 	 * <!-- begin-user-doc -->

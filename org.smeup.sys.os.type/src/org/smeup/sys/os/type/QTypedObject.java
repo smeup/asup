@@ -18,15 +18,14 @@ import org.smeup.sys.os.core.QCreationInfo;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.type.QTypedObject#getApplication <em>Application</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.QTypedObject#getFacets <em>Facets</em>}</li>
- *   <li>{@link org.smeup.sys.os.type.QTypedObject#getLibrary <em>Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.QTypedObject#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.QTypedObject#getText <em>Text</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.QTypedObject#getCreationInfo <em>Creation Info</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.type.QOperatingSystemTypePackage#getTypedObject()
  * @model abstract="true"
@@ -89,18 +88,9 @@ public interface QTypedObject extends QObjectNameable {
 	String getLibrary();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.type.QTypedObject#getLibrary <em>Library</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Library</em>' attribute.
-	 * @see #getLibrary()
-	 * @generated
-	 */
-	void setLibrary(String value);
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation"
+	 *        annotation="il-data length='5'"
 	 * @generated
 	 */
 	String getAttribute();

@@ -12,11 +12,10 @@
 package org.smeup.sys.il.memo.jdt;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectIterator;
@@ -31,50 +30,51 @@ public class JDTResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 	
 	protected QSourceManager sourceManager;
 	protected Class<T> klass;
-	protected EMFConverter emfConverter;
-	private String resource;
 
-	public JDTResourceReaderImpl(QContextProvider contextProvider, QSourceManager sourceManager, Class<T> klass, String resource) {
+	private QProject project;
+	
+	public JDTResourceReaderImpl(QContextProvider contextProvider, QSourceManager sourceManager, Class<T> klass, QProject project) {
 		setContextProvider(contextProvider);
-		this.resource = resource;
-		
+
+		this.project = project;
+		if(project == null)
+			"".toCharArray();
 		this.sourceManager = sourceManager;
 		this.klass = klass;
-		String uri = "asup://" + contextProvider.getContext().getContextDescription().getName() + "/" + getResourceName() + "/" + klass.getSimpleName().toLowerCase().substring(1);
-		this.emfConverter = new EMFConverter(new ResourceSetImpl(), uri);
 	}
-
-	public String getResourceName() {
-		return this.resource;
+	
+	protected QProject getProject() {
+		return project;
 	}
 	
 	@Override
 	public boolean exists(String name) {
-		return sourceManager.getObjectEntry(getContextProvider().getContext(), getResourceName(), klass, name) != null;
+		return sourceManager.getObjectEntry(getContextProvider().getContext(), getProject(), klass, name) != null;
 	}
 
 	@Override
 	public QObjectIterator<T> find(String nameFilter) {
 
-		List<QSourceEntry> entries = sourceManager.listObjectEntries(getContextProvider().getContext(), getResourceName(), klass, nameFilter);
+		List<QSourceEntry> entries = sourceManager.listObjectEntries(getContextProvider().getContext(), getProject(), klass, nameFilter);
 		if (entries == null)
 			entries = new ArrayList<>();
 
-		return new JDTObjectIteratorImpl<T>(klass, new JDTSourceIterator(emfConverter, entries.iterator()));
+		return new JDTObjectIteratorImpl<T>(klass, new JDTSourceIterator(klass, entries.iterator()));
 	}
 
 	@Override
 	public T lookup(String name) {
 
-		QSourceEntry entry = sourceManager.getObjectEntry(getContextProvider().getContext(), getResourceName(), klass, name);
+		QSourceEntry entry = sourceManager.getObjectEntry(getContextProvider().getContext(), getProject(), klass, name);
 		if (entry == null)
 			return null;
 
 		T object = null;
 		try {
-			InputStream inputStream = entry.getInputStream();
-			object = (T) emfConverter.convertToEObject(inputStream);
-			inputStream.close();
+			object = entry.load(klass);
+//			InputStream inputStream = entry.getInputStream();
+//			object = (T) emfConverter.convertToEObject(inputStream);
+//			inputStream.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

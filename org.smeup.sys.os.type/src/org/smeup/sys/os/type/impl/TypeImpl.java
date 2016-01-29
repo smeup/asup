@@ -20,11 +20,11 @@ import org.smeup.sys.os.type.QTypedObject;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.type.impl.TypeImpl#getTypedClassName <em>Typed Class Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.impl.TypeImpl#isPersistent <em>Persistent</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
