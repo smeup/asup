@@ -20,9 +20,11 @@ import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDatetime;
+import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.DatetimeType;
+import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.def.TimeFormat;
 
 public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
@@ -254,8 +256,46 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 
 	@Override
 	public <E extends Enum<E>> QNumeric qDiff(QDatetime value, E format) {
-		// TODO Auto-generated method stub
-		return null;
+
+		QDecimal number = getDataContext().getDataFactory().createDecimal(10, 0, DecimalType.ZONED, true);
+
+		long diff = this.asDate().getTime() - value.asDate().getTime();
+		
+		switch(format.name()){
+		case "MS":
+		case "MSECONDS":
+			number.eval(diff);
+			break;
+		case "S":
+		case "SECONDS":
+			number.eval(diff / 1000);
+			break;
+		case "MN":
+		case "MINUTES":
+			number.eval(diff / (60 * 1000));
+			break;
+		case "H":
+		case "HOURS":
+			number.eval(diff / (60 * 60 * 1000));
+			break;
+		case "D":
+		case "DAYS":
+			number.eval(diff / (24 * 60 * 60 * 1000));
+			break;
+		case "M":
+		case "MONTHS":
+			// TODO
+			number.eval(diff / (30 * 24 * 60 * 60 * 1000));
+			break;
+		case "Y":
+		case "YEARS":
+			// TODO
+			number.eval(diff / (365 * 30 * 24 * 60 * 60 * 1000));
+			break;
+		}
+		
+		return number;
+		
 	}
 
 	@Override
