@@ -24,9 +24,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
+import org.smeup.sys.dk.compiler.QDerived;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
-import org.smeup.sys.il.core.QDerived;
-import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QRemap;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QDataContext;
@@ -415,7 +414,7 @@ public class RPJCallableUnitLinker {
 
 				appendElements(qDataTerm, fileFormat);
 
-				QDerived derived = QIntegratedLanguageCoreFactory.eINSTANCE.createDerived();
+				QDerived derived = QDevelopmentKitCompilerFactory.eINSTANCE.createDerived();
 				fileFormat.getFacets().add(derived);
 
 				qDataTerm.getDefinition().getElements().add(fileFormat);
@@ -429,7 +428,7 @@ public class RPJCallableUnitLinker {
 
 				appendElements(qDataTerm, fileFormat);
 
-				QDerived derived = QIntegratedLanguageCoreFactory.eINSTANCE.createDerived();
+				QDerived derived = QDevelopmentKitCompilerFactory.eINSTANCE.createDerived();
 				fileFormat.getFacets().add(derived);
 
 				qDataTerm.getDefinition().getElements().add(fileFormat);
@@ -460,7 +459,7 @@ public class RPJCallableUnitLinker {
 
 			element = (QDataTerm<?>) EcoreUtil.copy((EObject) element);
 
-			QDerived derived = QIntegratedLanguageCoreFactory.eINSTANCE.createDerived();
+			QDerived derived = QDevelopmentKitCompilerFactory.eINSTANCE.createDerived();
 			element.getFacets().add(derived);
 
 			qDataTerm.getDefinition().getElements().add(pos, element);

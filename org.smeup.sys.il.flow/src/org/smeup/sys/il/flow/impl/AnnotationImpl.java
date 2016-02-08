@@ -5,40 +5,45 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.impl;
+package org.smeup.sys.il.flow.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.smeup.sys.il.core.QDerived;
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+
 import org.smeup.sys.il.core.meta.impl.FacetImpl;
 
+import org.smeup.sys.il.flow.QAnnotation;
+import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
+
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Derived</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Annotation</b></em>'.
+ * <!-- end-user-doc -->
  *
  * @generated
  */
-public class DerivedImpl extends FacetImpl implements QDerived {
+public abstract class AnnotationImpl extends FacetImpl implements QAnnotation {
 	/**
-	 *
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DerivedImpl() {
+	protected AnnotationImpl() {
 		super();
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QIntegratedLanguageCorePackage.Literals.DERIVED;
+		return QIntegratedLanguageFlowPackage.Literals.ANNOTATION;
 	}
 
-} // DerivedImpl
+} //AnnotationImpl

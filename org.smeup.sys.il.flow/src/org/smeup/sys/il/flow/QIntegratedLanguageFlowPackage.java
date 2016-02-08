@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 
 /**
@@ -60,6 +61,25 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	QIntegratedLanguageFlowPackage eINSTANCE = org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.AnnotationImpl <em>Annotation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.flow.impl.AnnotationImpl
+	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getAnnotation()
+	 * @generated
+	 */
+	int ANNOTATION = 0;
+
+	/**
+	 * The number of structural features of the '<em>Annotation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.AnnotationCommandImpl <em>Annotation Command</em>}' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -67,7 +87,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getAnnotationCommand()
 	 * @generated
 	 */
-	int ANNOTATION_COMMAND = 0;
+	int ANNOTATION_COMMAND = 1;
 
 	/**
 	 * The feature id for the '<em><b>Command</b></em>' attribute. <!--
@@ -76,7 +96,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANNOTATION_COMMAND__COMMAND = QIntegratedLanguageCorePackage.ANNOTATION_FEATURE_COUNT + 0;
+	int ANNOTATION_COMMAND__COMMAND = ANNOTATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Annotation Command</em>' class.
@@ -84,7 +104,72 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANNOTATION_COMMAND_FEATURE_COUNT = QIntegratedLanguageCorePackage.ANNOTATION_FEATURE_COUNT + 1;
+	int ANNOTATION_COMMAND_FEATURE_COUNT = ANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.AnnotationScopeImpl <em>Annotation Scope</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.flow.impl.AnnotationScopeImpl
+	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getAnnotationScope()
+	 * @generated
+	 */
+	int ANNOTATION_SCOPE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_SCOPE__NAME = ANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Annotation Scope</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_SCOPE_FEATURE_COUNT = ANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.AnnotationTestImpl <em>Annotation Test</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.flow.impl.AnnotationTestImpl
+	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getAnnotationTest()
+	 * @generated
+	 */
+	int ANNOTATION_TEST = 3;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_TEST__EXPRESSION = ANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_TEST__MESSAGE = ANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Annotation Test</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_TEST_FEATURE_COUNT = ANNOTATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.StatementImpl <em>Statement</em>}' class.
@@ -93,7 +178,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getStatement()
 	 * @generated
 	 */
-	int STATEMENT = 35;
+	int STATEMENT = 39;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -110,7 +195,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getBlock()
 	 * @generated
 	 */
-	int BLOCK = 1;
+	int BLOCK = 4;
 
 	/**
 	 * The number of structural features of the '<em>Statement</em>' class. <!--
@@ -153,7 +238,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getBreak()
 	 * @generated
 	 */
-	int BREAK = 2;
+	int BREAK = 5;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -179,7 +264,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getUnit()
 	 * @generated
 	 */
-	int UNIT = 37;
+	int UNIT = 41;
 
 	/**
 	 * The meta object id for the '
@@ -191,7 +276,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getCallableUnit()
 	 * @generated
 	 */
-	int CALLABLE_UNIT = 4;
+	int CALLABLE_UNIT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.CommandExecImpl <em>Command Exec</em>}' class.
@@ -200,7 +285,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getCommandExec()
 	 * @generated
 	 */
-	int COMMAND_EXEC = 5;
+	int COMMAND_EXEC = 8;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.ContinueImpl <em>Continue</em>}' class.
@@ -209,7 +294,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getContinue()
 	 * @generated
 	 */
-	int CONTINUE = 6;
+	int CONTINUE = 9;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.IterationImpl <em>Iteration</em>}' class.
@@ -218,7 +303,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getIteration()
 	 * @generated
 	 */
-	int ITERATION = 17;
+	int ITERATION = 21;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.EvalImpl <em>Eval</em>}' class.
@@ -227,7 +312,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getEval()
 	 * @generated
 	 */
-	int EVAL = 10;
+	int EVAL = 14;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.IfImpl <em>If</em>}' class.
@@ -236,7 +321,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getIf()
 	 * @generated
 	 */
-	int IF = 15;
+	int IF = 19;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.InvokeImpl <em>Invoke</em>}' class.
@@ -245,7 +330,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getInvoke()
 	 * @generated
 	 */
-	int INVOKE = 16;
+	int INVOKE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -262,7 +347,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getJump()
 	 * @generated
 	 */
-	int JUMP = 18;
+	int JUMP = 22;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.LabelImpl <em>Label</em>}' class.
@@ -271,7 +356,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getLabel()
 	 * @generated
 	 */
-	int LABEL = 19;
+	int LABEL = 23;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.MonitorImpl <em>Monitor</em>}' class.
@@ -280,7 +365,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getMonitor()
 	 * @generated
 	 */
-	int MONITOR = 22;
+	int MONITOR = 26;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.ProgramImpl <em>Program</em>}' class.
@@ -289,7 +374,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getProgram()
 	 * @generated
 	 */
-	int PROGRAM = 27;
+	int PROGRAM = 31;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.ReturnImpl <em>Return</em>}' class.
@@ -298,7 +383,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getReturn()
 	 * @generated
 	 */
-	int RETURN = 30;
+	int RETURN = 34;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.WhileImpl <em>While</em>}' class.
@@ -307,7 +392,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getWhile()
 	 * @generated
 	 */
-	int WHILE = 40;
+	int WHILE = 44;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.ForImpl <em>For</em>}' class.
@@ -316,7 +401,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getFor()
 	 * @generated
 	 */
-	int FOR = 14;
+	int FOR = 18;
 
 	/**
 	 * The number of structural features of the '<em>Invoke</em>' class. <!--
@@ -334,7 +419,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getCall()
 	 * @generated
 	 */
-	int CALL = 3;
+	int CALL = 6;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -533,13 +618,41 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	int CONTINUE_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.ConversionImpl <em>Conversion</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.flow.impl.ConversionImpl
+	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getConversion()
+	 * @generated
+	 */
+	int CONVERSION = 10;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERSION__STATUS = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Conversion</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERSION_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.UnitSectionImpl <em>Unit Section</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.flow.impl.UnitSectionImpl
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getUnitSection()
 	 * @generated
 	 */
-	int UNIT_SECTION = 38;
+	int UNIT_SECTION = 42;
 
 	/**
 	 * The number of structural features of the '<em>Unit Section</em>' class.
@@ -556,7 +669,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getDataSection()
 	 * @generated
 	 */
-	int DATA_SECTION = 7;
+	int DATA_SECTION = 11;
 
 	/**
 	 * The feature id for the '<em><b>Datas</b></em>' containment reference list.
@@ -581,7 +694,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getEntry()
 	 * @generated
 	 */
-	int ENTRY = 8;
+	int ENTRY = 12;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -616,7 +729,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getEntryParameter()
 	 * @generated
 	 */
-	int ENTRY_PARAMETER = 9;
+	int ENTRY_PARAMETER = 13;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -711,7 +824,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getFileSection()
 	 * @generated
 	 */
-	int FILE_SECTION = 11;
+	int FILE_SECTION = 15;
 
 	/**
 	 * The feature id for the '<em><b>Data Sets</b></em>' containment reference list.
@@ -776,7 +889,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getFlowData()
 	 * @generated
 	 */
-	int FLOW_DATA = 12;
+	int FLOW_DATA = 16;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -889,7 +1002,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getFlowSection()
 	 * @generated
 	 */
-	int FLOW_SECTION = 13;
+	int FLOW_SECTION = 17;
 
 	/**
 	 * The feature id for the '<em><b>Parameter Lists</b></em>' containment reference list.
@@ -1122,7 +1235,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getMethodExec()
 	 * @generated
 	 */
-	int METHOD_EXEC = 20;
+	int METHOD_EXEC = 24;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -1174,7 +1287,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getModule()
 	 * @generated
 	 */
-	int MODULE = 21;
+	int MODULE = 25;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -1284,7 +1397,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getOnError()
 	 * @generated
 	 */
-	int ON_ERROR = 23;
+	int ON_ERROR = 27;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -1329,7 +1442,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getParameterList()
 	 * @generated
 	 */
-	int PARAMETER_LIST = 24;
+	int PARAMETER_LIST = 28;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -1372,7 +1485,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getProcedure()
 	 * @generated
 	 */
-	int PROCEDURE = 25;
+	int PROCEDURE = 29;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -1465,7 +1578,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getProcedureExec()
 	 * @generated
 	 */
-	int PROCEDURE_EXEC = 26;
+	int PROCEDURE_EXEC = 30;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -1592,7 +1705,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getPrototype()
 	 * @generated
 	 */
-	int PROTOTYPE = 28;
+	int PROTOTYPE = 32;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -1713,7 +1826,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getReset()
 	 * @generated
 	 */
-	int RESET = 29;
+	int RESET = 33;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -1774,7 +1887,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getRoutine()
 	 * @generated
 	 */
-	int ROUTINE = 31;
+	int ROUTINE = 35;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -1818,7 +1931,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getRoutineExec()
 	 * @generated
 	 */
-	int ROUTINE_EXEC = 32;
+	int ROUTINE_EXEC = 36;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -1855,7 +1968,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getSetupSection()
 	 * @generated
 	 */
-	int SETUP_SECTION = 33;
+	int SETUP_SECTION = 37;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1925,7 +2038,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getSQLExec()
 	 * @generated
 	 */
-	int SQL_EXEC = 34;
+	int SQL_EXEC = 38;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -1961,7 +2074,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getStatementVisitor()
 	 * @generated
 	 */
-	int STATEMENT_VISITOR = 36;
+	int STATEMENT_VISITOR = 40;
 
 	/**
 	 * The number of structural features of the '<em>Statement Visitor</em>' class.
@@ -1978,7 +2091,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getUntil()
 	 * @generated
 	 */
-	int UNTIL = 39;
+	int UNTIL = 43;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -2051,6 +2164,16 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	int WHILE_FEATURE_COUNT = ITERATION_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.flow.ConversionStatus <em>Conversion Status</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.flow.ConversionStatus
+	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getConversionStatus()
+	 * @generated
+	 */
+	int CONVERSION_STATUS = 45;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.EvalOperator
 	 * <em>Eval Operator</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
@@ -2059,7 +2182,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getEvalOperator()
 	 * @generated
 	 */
-	int EVAL_OPERATOR = 41;
+	int EVAL_OPERATOR = 46;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.PassingType
@@ -2070,7 +2193,17 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getPassingType()
 	 * @generated
 	 */
-	int PASSING_TYPE = 42;
+	int PASSING_TYPE = 47;
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.flow.QAnnotation <em>Annotation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Annotation</em>'.
+	 * @see org.smeup.sys.il.flow.QAnnotation
+	 * @generated
+	 */
+	EClass getAnnotation();
 
 	/**
 	 * Returns the meta object for class '
@@ -2093,6 +2226,59 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAnnotationCommand_Command();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.flow.QAnnotationScope <em>Annotation Scope</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Annotation Scope</em>'.
+	 * @see org.smeup.sys.il.flow.QAnnotationScope
+	 * @generated
+	 */
+	EClass getAnnotationScope();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.flow.QAnnotationScope#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.smeup.sys.il.flow.QAnnotationScope#getName()
+	 * @see #getAnnotationScope()
+	 * @generated
+	 */
+	EAttribute getAnnotationScope_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.flow.QAnnotationTest <em>Annotation Test</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Annotation Test</em>'.
+	 * @see org.smeup.sys.il.flow.QAnnotationTest
+	 * @generated
+	 */
+	EClass getAnnotationTest();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.flow.QAnnotationTest#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Expression</em>'.
+	 * @see org.smeup.sys.il.flow.QAnnotationTest#getExpression()
+	 * @see #getAnnotationTest()
+	 * @generated
+	 */
+	EAttribute getAnnotationTest_Expression();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.flow.QAnnotationTest#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see org.smeup.sys.il.flow.QAnnotationTest#getMessage()
+	 * @see #getAnnotationTest()
+	 * @generated
+	 */
+	EAttribute getAnnotationTest_Message();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.flow.QBlock <em>Block</em>}'.
@@ -2257,6 +2443,27 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getContinue();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.flow.QConversion <em>Conversion</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Conversion</em>'.
+	 * @see org.smeup.sys.il.flow.QConversion
+	 * @generated
+	 */
+	EClass getConversion();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.flow.QConversion#getStatus <em>Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Status</em>'.
+	 * @see org.smeup.sys.il.flow.QConversion#getStatus()
+	 * @see #getConversion()
+	 * @generated
+	 */
+	EAttribute getConversion_Status();
 
 	/**
 	 * Returns the meta object for class '
@@ -3152,6 +3359,16 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	EClass getWhile();
 
 	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.il.flow.ConversionStatus <em>Conversion Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Conversion Status</em>'.
+	 * @see org.smeup.sys.il.flow.ConversionStatus
+	 * @generated
+	 */
+	EEnum getConversionStatus();
+
+	/**
 	 * Returns the meta object for enum '
 	 * {@link org.smeup.sys.il.flow.EvalOperator <em>Eval Operator</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -3227,6 +3444,16 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.flow.impl.AnnotationImpl <em>Annotation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.flow.impl.AnnotationImpl
+		 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getAnnotation()
+		 * @generated
+		 */
+		EClass ANNOTATION = eINSTANCE.getAnnotation();
+
+		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.flow.impl.AnnotationCommandImpl <em>Annotation Command</em>}' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
@@ -3242,6 +3469,50 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ANNOTATION_COMMAND__COMMAND = eINSTANCE.getAnnotationCommand_Command();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.flow.impl.AnnotationScopeImpl <em>Annotation Scope</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.flow.impl.AnnotationScopeImpl
+		 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getAnnotationScope()
+		 * @generated
+		 */
+		EClass ANNOTATION_SCOPE = eINSTANCE.getAnnotationScope();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANNOTATION_SCOPE__NAME = eINSTANCE.getAnnotationScope_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.flow.impl.AnnotationTestImpl <em>Annotation Test</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.flow.impl.AnnotationTestImpl
+		 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getAnnotationTest()
+		 * @generated
+		 */
+		EClass ANNOTATION_TEST = eINSTANCE.getAnnotationTest();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANNOTATION_TEST__EXPRESSION = eINSTANCE.getAnnotationTest_Expression();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANNOTATION_TEST__MESSAGE = eINSTANCE.getAnnotationTest_Message();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.flow.impl.BlockImpl <em>Block</em>}' class.
@@ -3375,6 +3646,24 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONTINUE = eINSTANCE.getContinue();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.flow.impl.ConversionImpl <em>Conversion</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.flow.impl.ConversionImpl
+		 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getConversion()
+		 * @generated
+		 */
+		EClass CONVERSION = eINSTANCE.getConversion();
+
+		/**
+		 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONVERSION__STATUS = eINSTANCE.getConversion_Status();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.flow.impl.DataSectionImpl <em>Data Section</em>}' class.
@@ -4072,6 +4361,16 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 		 * @generated
 		 */
 		EClass WHILE = eINSTANCE.getWhile();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.flow.ConversionStatus <em>Conversion Status</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.flow.ConversionStatus
+		 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getConversionStatus()
+		 * @generated
+		 */
+		EEnum CONVERSION_STATUS = eINSTANCE.getConversionStatus();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.flow.EvalOperator <em>Eval Operator</em>}' enum.

@@ -35,6 +35,24 @@ public interface QIntegratedLanguageFlowFactory extends EFactory {
 	QAnnotationCommand createAnnotationCommand();
 
 	/**
+	 * Returns a new object of class '<em>Annotation Scope</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Annotation Scope</em>'.
+	 * @generated
+	 */
+	QAnnotationScope createAnnotationScope();
+
+	/**
+	 * Returns a new object of class '<em>Annotation Test</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Annotation Test</em>'.
+	 * @generated
+	 */
+	QAnnotationTest createAnnotationTest();
+
+	/**
 	 * Returns a new object of class '<em>Block</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -78,6 +96,15 @@ public interface QIntegratedLanguageFlowFactory extends EFactory {
 	 * @generated
 	 */
 	QContinue createContinue();
+
+	/**
+	 * Returns a new object of class '<em>Conversion</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Conversion</em>'.
+	 * @generated
+	 */
+	QConversion createConversion();
 
 	/**
 	 * Returns a new object of class '<em>Data Section</em>'. <!--

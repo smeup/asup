@@ -17,13 +17,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.smeup.sys.il.core.ConversionStatus;
 import org.smeup.sys.il.core.FormatType;
-import org.smeup.sys.il.core.QAnnotation;
-import org.smeup.sys.il.core.QAnnotationScope;
-import org.smeup.sys.il.core.QAnnotationTest;
-import org.smeup.sys.il.core.QConversion;
-import org.smeup.sys.il.core.QDerived;
 import org.smeup.sys.il.core.QFormat;
 import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
@@ -64,37 +58,6 @@ import org.smeup.sys.mi.core.util.QMachineInterfaceUtilPackage;
  * @generated
  */
 public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements QIntegratedLanguageCorePackage {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass annotationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass annotationScopeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass annotationTestEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass conversionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass derivedEClass = null;
-
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -180,12 +143,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass threadManagerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum conversionStatusEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -284,87 +241,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(QIntegratedLanguageCorePackage.eNS_URI, theIntegratedLanguageCorePackage);
 		return theIntegratedLanguageCorePackage;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getAnnotation() {
-		return annotationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAnnotationScope() {
-		return annotationScopeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAnnotationScope_Name() {
-		return (EAttribute)annotationScopeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getAnnotationTest() {
-		return annotationTestEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getAnnotationTest_Expression() {
-		return (EAttribute)annotationTestEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getAnnotationTest_Message() {
-		return (EAttribute)annotationTestEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getConversion() {
-		return conversionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getConversion_Status() {
-		return (EAttribute)conversionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getDerived() {
-		return derivedEClass;
 	}
 
 	/**
@@ -624,15 +500,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	@Override
-	public EEnum getConversionStatus() {
-		return conversionStatusEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EEnum getFormatType() {
 		return formatTypeEEnum;
 	}
@@ -673,20 +540,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		isCreated = true;
 
 		// Create classes and their features
-		annotationEClass = createEClass(ANNOTATION);
-
-		annotationScopeEClass = createEClass(ANNOTATION_SCOPE);
-		createEAttribute(annotationScopeEClass, ANNOTATION_SCOPE__NAME);
-
-		annotationTestEClass = createEClass(ANNOTATION_TEST);
-		createEAttribute(annotationTestEClass, ANNOTATION_TEST__EXPRESSION);
-		createEAttribute(annotationTestEClass, ANNOTATION_TEST__MESSAGE);
-
-		conversionEClass = createEClass(CONVERSION);
-		createEAttribute(conversionEClass, CONVERSION__STATUS);
-
-		derivedEClass = createEClass(DERIVED);
-
 		formatEClass = createEClass(FORMAT);
 		createEAttribute(formatEClass, FORMAT__EXPRESSION);
 		createEAttribute(formatEClass, FORMAT__TYPE);
@@ -730,7 +583,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		threadManagerEClass = createEClass(THREAD_MANAGER);
 
 		// Create enums
-		conversionStatusEEnum = createEEnum(CONVERSION_STATUS);
 		formatTypeEEnum = createEEnum(FORMAT_TYPE);
 		threadStatusEEnum = createEEnum(THREAD_STATUS);
 	}
@@ -782,11 +634,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		objectIteratorEClass_T.getEBounds().add(g1);
 
 		// Add supertypes to classes
-		annotationEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
-		annotationScopeEClass.getESuperTypes().add(this.getAnnotation());
-		annotationTestEClass.getESuperTypes().add(this.getAnnotation());
-		conversionEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
-		derivedEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		formatEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		namedNodeEClass.getESuperTypes().add(this.getNode());
 		namedNodeEClass.getESuperTypes().add(this.getNameable());
@@ -810,20 +657,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		threadManagerEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(annotationEClass, QAnnotation.class, "Annotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(annotationScopeEClass, QAnnotationScope.class, "AnnotationScope", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAnnotationScope_Name(), ecorePackage.getEString(), "name", null, 0, 1, QAnnotationScope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(annotationTestEClass, QAnnotationTest.class, "AnnotationTest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAnnotationTest_Expression(), ecorePackage.getEString(), "expression", null, 0, 1, QAnnotationTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAnnotationTest_Message(), ecorePackage.getEString(), "message", null, 0, 1, QAnnotationTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(conversionEClass, QConversion.class, "Conversion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getConversion_Status(), this.getConversionStatus(), "status", null, 1, 1, QConversion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(derivedEClass, QDerived.class, "Derived", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(formatEClass, QFormat.class, "Format", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFormat_Expression(), ecorePackage.getEString(), "expression", null, 0, 1, QFormat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFormat_Type(), this.getFormatType(), "type", null, 1, 1, QFormat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -953,12 +786,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getThread(), "thread", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(conversionStatusEEnum, ConversionStatus.class, "ConversionStatus");
-		addEEnumLiteral(conversionStatusEEnum, ConversionStatus.POSSIBLE);
-		addEEnumLiteral(conversionStatusEEnum, ConversionStatus.SUPPORTED);
-		addEEnumLiteral(conversionStatusEEnum, ConversionStatus.UNSUPPORTED);
-		addEEnumLiteral(conversionStatusEEnum, ConversionStatus.TODO);
-
 		initEEnum(formatTypeEEnum, FormatType.class, "FormatType");
 		addEEnumLiteral(formatTypeEEnum, FormatType.COMMUNICATIONS_NAME);
 		addEEnumLiteral(formatTypeEEnum, FormatType.COMMAND_STRING);

@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="flow" nsURI="http://www.smeup.org/asup/il/flow" nsPrefix="il-flow">
-  <eClassifiers xsi:type="ecore:EClass" name="AnnotationCommand" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Annotation">
+  <eClassifiers xsi:type="ecore:EClass" name="Annotation" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//meta/Facet"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AnnotationCommand" eSuperTypes="#//Annotation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AnnotationScope" eSuperTypes="#//Annotation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AnnotationTest" eSuperTypes="#//Annotation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Block" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
@@ -34,6 +42,16 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Continue" eSuperTypes="#//Statement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Conversion" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//meta/Facet">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" lowerBound="1"
+        eType="#//ConversionStatus"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ConversionStatus">
+    <eLiterals name="Possible" literal="POS"/>
+    <eLiterals name="Supported" value="10" literal="SUP"/>
+    <eLiterals name="Unsupported" value="20" literal="UNS"/>
+    <eLiterals name="Todo" value="30" literal="TODO"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataSection" eSuperTypes="#//UnitSection">
     <eStructuralFeatures xsi:type="ecore:EReference" name="datas" upperBound="-1"
         containment="true">
@@ -209,8 +227,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SetupSection" eSuperTypes="#//UnitSection">
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
-        eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Annotation"
-        containment="true"/>
+        eType="#//Annotation" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="application" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="encoding" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="expressionType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

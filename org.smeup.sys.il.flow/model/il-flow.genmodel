@@ -24,8 +24,16 @@
       <genEnumLiterals ecoreEnumLiteral="il-flow.ecore#//PassingType/ByReference"/>
       <genEnumLiterals ecoreEnumLiteral="il-flow.ecore#//PassingType/ByValue"/>
     </genEnums>
+    <genClasses image="false" ecoreClass="il-flow.ecore#//Annotation"/>
     <genClasses ecoreClass="il-flow.ecore#//AnnotationCommand">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//AnnotationCommand/command"/>
+    </genClasses>
+    <genClasses ecoreClass="il-flow.ecore#//AnnotationScope">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//AnnotationScope/name"/>
+    </genClasses>
+    <genClasses ecoreClass="il-flow.ecore#//AnnotationTest">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//AnnotationTest/expression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//AnnotationTest/message"/>
     </genClasses>
     <genClasses ecoreClass="il-flow.ecore#//Block">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-flow.ecore#//Block/statements"/>

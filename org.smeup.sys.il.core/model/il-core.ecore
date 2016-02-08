@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="core" nsURI="http://www.smeup.org/asup/il/core" nsPrefix="il-core">
-  <eClassifiers xsi:type="ecore:EClass" name="Annotation" abstract="true" eSuperTypes="#//meta/Facet"/>
-  <eClassifiers xsi:type="ecore:EClass" name="AnnotationScope" eSuperTypes="#//Annotation">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AnnotationTest" eSuperTypes="#//Annotation">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Conversion" eSuperTypes="#//meta/Facet">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" lowerBound="1"
-        eType="#//ConversionStatus"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ConversionStatus">
-    <eLiterals name="Possible" literal="POS"/>
-    <eLiterals name="Supported" value="10" literal="SUP"/>
-    <eLiterals name="Unsupported" value="20" literal="UNS"/>
-    <eLiterals name="Todo" value="30" literal="TODO"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Derived" eSuperTypes="#//meta/Facet"/>
   <eClassifiers xsi:type="ecore:EClass" name="Format" eSuperTypes="#//meta/Facet">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//FormatType"/>

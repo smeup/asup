@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
-import org.smeup.sys.il.core.QDerived;
-import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
+import org.smeup.sys.dk.compiler.QDerived;
+import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.def.QBinaryDef;
@@ -173,7 +173,7 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 			element.accept(elementVisitor);
 			@SuppressWarnings("unchecked")
 			E elementTerm = (E) EcoreUtil.copy((EObject) element);
-			QDerived derived = QIntegratedLanguageCoreFactory.eINSTANCE.createDerived();
+			QDerived derived = QDevelopmentKitCompilerFactory.eINSTANCE.createDerived();
 			elementTerm.getFacets().add(derived);
 			target.getElements().add(elementTerm);
 		}

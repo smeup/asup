@@ -26,6 +26,7 @@ import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
 import org.smeup.sys.dk.compiler.QCompilerManager;
 import org.smeup.sys.dk.compiler.QConversionUnit;
+import org.smeup.sys.dk.compiler.QDerived;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage;
 import org.smeup.sys.dk.compiler.QUnitConverter;
@@ -86,6 +87,13 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass compilerManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass derivedEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -326,6 +334,15 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDerived() {
+		return derivedEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EClass getUnitConverter() {
 		return unitConverterEClass;
@@ -466,6 +483,8 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 
 		compilerManagerEClass = createEClass(COMPILER_MANAGER);
 
+		derivedEClass = createEClass(DERIVED);
+
 		unitConverterEClass = createEClass(UNIT_CONVERTER);
 
 		unitConverterRegistryEClass = createEClass(UNIT_CONVERTER_REGISTRY);
@@ -529,6 +548,7 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		conversionUnitEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
 		conversionUnitEClass.getESuperTypes().add(theMachineInterfaceCorePackage.getJavaCloseable());
 		compilerLinkerEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
+		derivedEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getPluginRegistry());
 		EGenericType g2 = createEGenericType(this.getUnitConverter());
 		g1.getETypeArguments().add(g2);
@@ -729,6 +749,8 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getCompilationSetup(), "setup", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaOutputStream(), "output", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
+
+		initEClass(derivedEClass, QDerived.class, "Derived", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(unitConverterEClass, QUnitConverter.class, "UnitConverter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

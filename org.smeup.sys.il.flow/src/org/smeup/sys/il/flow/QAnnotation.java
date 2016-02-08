@@ -5,18 +5,19 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core;
+package org.smeup.sys.il.flow;
 
 import org.smeup.sys.il.core.meta.QFacet;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Derived</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Annotation</b></em>'.
+ * <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getDerived()
- * @model
+ * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getAnnotation()
+ * @model abstract="true"
  * @generated
  */
-public interface QDerived extends QFacet {
-} // QDerived
+public interface QAnnotation extends QFacet {
+} // QAnnotation

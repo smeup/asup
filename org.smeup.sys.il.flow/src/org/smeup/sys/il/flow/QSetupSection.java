@@ -9,8 +9,6 @@ package org.smeup.sys.il.flow;
 
 import java.util.List;
 
-import org.smeup.sys.il.core.QAnnotation;
-
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Setup Section</b></em>'. <!-- end-user-doc -->
@@ -34,7 +32,7 @@ import org.smeup.sys.il.core.QAnnotation;
 public interface QSetupSection extends QUnitSection {
 	/**
 	 * Returns the value of the '<em><b>Annotations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.il.core.QAnnotation}.
+	 * The list contents are of type {@link org.smeup.sys.il.flow.QAnnotation}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Annotations</em>' containment reference list

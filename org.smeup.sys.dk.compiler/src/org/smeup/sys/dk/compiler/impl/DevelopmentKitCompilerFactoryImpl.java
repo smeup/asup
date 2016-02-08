@@ -65,6 +65,7 @@ public class DevelopmentKitCompilerFactoryImpl extends EFactoryImpl implements Q
 			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP: return (EObject)createCompilationSetup();
 			case QDevelopmentKitCompilerPackage.COMPILATION_TRASH_CAN: return (EObject)createCompilationTrashCan();
 			case QDevelopmentKitCompilerPackage.COMPILER_LINKER: return (EObject)createCompilerLinker();
+			case QDevelopmentKitCompilerPackage.DERIVED: return (EObject)createDerived();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -147,6 +148,16 @@ public class DevelopmentKitCompilerFactoryImpl extends EFactoryImpl implements Q
 	public QCompilerLinker createCompilerLinker() {
 		CompilerLinkerImpl compilerLinker = new CompilerLinkerImpl();
 		return compilerLinker;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QDerived createDerived() {
+		DerivedImpl derived = new DerivedImpl();
+		return derived;
 	}
 
 	/**

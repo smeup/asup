@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.il.core.term.QTerm;
+import org.smeup.sys.il.flow.*;
 import org.smeup.sys.il.flow.EvalOperator;
 import org.smeup.sys.il.flow.PassingType;
 import org.smeup.sys.il.flow.QAnnotationCommand;
@@ -96,11 +97,14 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND: return (EObject)createAnnotationCommand();
+			case QIntegratedLanguageFlowPackage.ANNOTATION_SCOPE: return (EObject)createAnnotationScope();
+			case QIntegratedLanguageFlowPackage.ANNOTATION_TEST: return (EObject)createAnnotationTest();
 			case QIntegratedLanguageFlowPackage.BLOCK: return (EObject)createBlock();
 			case QIntegratedLanguageFlowPackage.BREAK: return (EObject)createBreak();
 			case QIntegratedLanguageFlowPackage.CALL: return (EObject)createCall();
 			case QIntegratedLanguageFlowPackage.COMMAND_EXEC: return (EObject)createCommandExec();
 			case QIntegratedLanguageFlowPackage.CONTINUE: return (EObject)createContinue();
+			case QIntegratedLanguageFlowPackage.CONVERSION: return (EObject)createConversion();
 			case QIntegratedLanguageFlowPackage.DATA_SECTION: return (EObject)createDataSection();
 			case QIntegratedLanguageFlowPackage.ENTRY: return (EObject)createEntry();
 			case QIntegratedLanguageFlowPackage.ENTRY_PARAMETER: return (EObject)createEntryParameter();
@@ -141,6 +145,8 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case QIntegratedLanguageFlowPackage.CONVERSION_STATUS:
+				return createConversionStatusFromString(eDataType, initialValue);
 			case QIntegratedLanguageFlowPackage.EVAL_OPERATOR:
 				return createEvalOperatorFromString(eDataType, initialValue);
 			case QIntegratedLanguageFlowPackage.PASSING_TYPE:
@@ -157,6 +163,8 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case QIntegratedLanguageFlowPackage.CONVERSION_STATUS:
+				return convertConversionStatusToString(eDataType, instanceValue);
 			case QIntegratedLanguageFlowPackage.EVAL_OPERATOR:
 				return convertEvalOperatorToString(eDataType, instanceValue);
 			case QIntegratedLanguageFlowPackage.PASSING_TYPE:
@@ -174,6 +182,26 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 	public QAnnotationCommand createAnnotationCommand() {
 		AnnotationCommandImpl annotationCommand = new AnnotationCommandImpl();
 		return annotationCommand;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QAnnotationScope createAnnotationScope() {
+		AnnotationScopeImpl annotationScope = new AnnotationScopeImpl();
+		return annotationScope;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QAnnotationTest createAnnotationTest() {
+		AnnotationTestImpl annotationTest = new AnnotationTestImpl();
+		return annotationTest;
 	}
 
 	/**
@@ -224,6 +252,16 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 	public QContinue createContinue() {
 		ContinueImpl continue_ = new ContinueImpl();
 		return continue_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QConversion createConversion() {
+		ConversionImpl conversion = new ConversionImpl();
+		return conversion;
 	}
 
 	/**
@@ -494,6 +532,26 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 	public QWhile createWhile() {
 		WhileImpl while_ = new WhileImpl();
 		return while_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConversionStatus createConversionStatusFromString(EDataType eDataType, String initialValue) {
+		ConversionStatus result = ConversionStatus.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertConversionStatusToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

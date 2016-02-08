@@ -13,12 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.smeup.sys.il.core.ConversionStatus;
 import org.smeup.sys.il.core.FormatType;
-import org.smeup.sys.il.core.QAnnotationScope;
-import org.smeup.sys.il.core.QAnnotationTest;
-import org.smeup.sys.il.core.QConversion;
-import org.smeup.sys.il.core.QDerived;
 import org.smeup.sys.il.core.QFormat;
 import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
@@ -72,10 +67,6 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case QIntegratedLanguageCorePackage.ANNOTATION_SCOPE: return (EObject)createAnnotationScope();
-			case QIntegratedLanguageCorePackage.ANNOTATION_TEST: return (EObject)createAnnotationTest();
-			case QIntegratedLanguageCorePackage.CONVERSION: return (EObject)createConversion();
-			case QIntegratedLanguageCorePackage.DERIVED: return (EObject)createDerived();
 			case QIntegratedLanguageCorePackage.FORMAT: return (EObject)createFormat();
 			case QIntegratedLanguageCorePackage.OBJECT: return (EObject)createObject();
 			case QIntegratedLanguageCorePackage.OBJECT_NAMEABLE: return (EObject)createObjectNameable();
@@ -95,8 +86,6 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case QIntegratedLanguageCorePackage.CONVERSION_STATUS:
-				return createConversionStatusFromString(eDataType, initialValue);
 			case QIntegratedLanguageCorePackage.FORMAT_TYPE:
 				return createFormatTypeFromString(eDataType, initialValue);
 			case QIntegratedLanguageCorePackage.THREAD_STATUS:
@@ -113,8 +102,6 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case QIntegratedLanguageCorePackage.CONVERSION_STATUS:
-				return convertConversionStatusToString(eDataType, instanceValue);
 			case QIntegratedLanguageCorePackage.FORMAT_TYPE:
 				return convertFormatTypeToString(eDataType, instanceValue);
 			case QIntegratedLanguageCorePackage.THREAD_STATUS:
@@ -122,46 +109,6 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public QAnnotationScope createAnnotationScope() {
-		AnnotationScopeImpl annotationScope = new AnnotationScopeImpl();
-		return annotationScope;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QAnnotationTest createAnnotationTest() {
-		AnnotationTestImpl annotationTest = new AnnotationTestImpl();
-		return annotationTest;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QConversion createConversion() {
-		ConversionImpl conversion = new ConversionImpl();
-		return conversion;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QDerived createDerived() {
-		DerivedImpl derived = new DerivedImpl();
-		return derived;
 	}
 
 	/**
@@ -232,24 +179,6 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 	public QSpecialElement createSpecialElement() {
 		SpecialElementImpl specialElement = new SpecialElementImpl();
 		return specialElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ConversionStatus createConversionStatusFromString(EDataType eDataType, String initialValue) {
-		ConversionStatus result = ConversionStatus.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertConversionStatusToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

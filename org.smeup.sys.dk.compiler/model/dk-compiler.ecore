@@ -190,6 +190,7 @@
       <eParameters name="output" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaOutputStream"/>
     </eOperations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Derived" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//meta/Facet"/>
   <eClassifiers xsi:type="ecore:EEnum" name="EntryType">
     <eLiterals name="Main" value="10" literal="MAIN"/>
     <eLiterals name="Entry" value="20" literal="ENT"/>

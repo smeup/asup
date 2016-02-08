@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.smeup.sys.il.core.QAnnotation;
+import org.smeup.sys.il.flow.QAnnotation;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
 import org.smeup.sys.il.flow.QSetupSection;
 

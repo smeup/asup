@@ -7,8 +7,6 @@
  */
 package org.smeup.sys.il.flow;
 
-import org.smeup.sys.il.core.QAnnotation;
-
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Annotation Command</b></em>'. <!-- end-user-doc -->

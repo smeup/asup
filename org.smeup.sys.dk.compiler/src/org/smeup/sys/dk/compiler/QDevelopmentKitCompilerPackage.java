@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
@@ -213,7 +212,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getUnitConverter()
 	 * @generated
 	 */
-	int UNIT_CONVERTER = 6;
+	int UNIT_CONVERTER = 7;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.QUnitConverterRegistry <em>Unit Converter Registry</em>}' class.
@@ -223,7 +222,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getUnitConverterRegistry()
 	 * @generated
 	 */
-	int UNIT_CONVERTER_REGISTRY = 7;
+	int UNIT_CONVERTER_REGISTRY = 8;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.impl.CompilerLinkerImpl <em>Compiler Linker</em>}' class.
@@ -272,6 +271,25 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	int COMPILER_MANAGER_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.impl.DerivedImpl <em>Derived</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.compiler.impl.DerivedImpl
+	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getDerived()
+	 * @generated
+	 */
+	int DERIVED = 6;
+
+	/**
+	 * The number of structural features of the '<em>Derived</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Unit Converter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -297,7 +315,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getEntryType()
 	 * @generated
 	 */
-	int ENTRY_TYPE = 9;
+	int ENTRY_TYPE = 10;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.InternalType <em>Internal Type</em>}' enum.
@@ -307,7 +325,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getInternalType()
 	 * @generated
 	 */
-	int INTERNAL_TYPE = 10;
+	int INTERNAL_TYPE = 11;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.OptimizationType <em>Optimization Type</em>}' enum.
@@ -317,7 +335,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getOptimizationType()
 	 * @generated
 	 */
-	int OPTIMIZATION_TYPE = 11;
+	int OPTIMIZATION_TYPE = 12;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.UnitScope <em>Unit Scope</em>}' enum.
@@ -327,7 +345,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getUnitScope()
 	 * @generated
 	 */
-	int UNIT_SCOPE = 12;
+	int UNIT_SCOPE = 13;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.CaseSensitiveType <em>Case Sensitive Type</em>}' enum.
@@ -337,7 +355,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getCaseSensitiveType()
 	 * @generated
 	 */
-	int CASE_SENSITIVE_TYPE = 8;
+	int CASE_SENSITIVE_TYPE = 9;
 
 
 	/**
@@ -455,6 +473,16 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getCompilerManager();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.dk.compiler.QDerived <em>Derived</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Derived</em>'.
+	 * @see org.smeup.sys.dk.compiler.QDerived
+	 * @generated
+	 */
+	EClass getDerived();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.dk.compiler.QUnitConverter <em>Unit Converter</em>}'.
@@ -677,6 +705,16 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 		 * @generated
 		 */
 		EClass COMPILER_MANAGER = eINSTANCE.getCompilerManager();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.dk.compiler.impl.DerivedImpl <em>Derived</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.dk.compiler.impl.DerivedImpl
+		 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getDerived()
+		 * @generated
+		 */
+		EClass DERIVED = eINSTANCE.getDerived();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.dk.compiler.QUnitConverter <em>Unit Converter</em>}' class.
