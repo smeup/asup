@@ -16,11 +16,11 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.source.QProjectDef#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.dk.source.QProjectDef#getText <em>Text</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.dk.source.QDevelopmentKitSourcePackage#getProjectDef()
  * @model

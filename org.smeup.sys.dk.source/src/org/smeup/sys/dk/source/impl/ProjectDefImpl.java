@@ -24,11 +24,11 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.source.impl.ProjectDefImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.dk.source.impl.ProjectDefImpl#getText <em>Text</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -142,10 +142,10 @@ public interface QSourceManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model contextRequired="true" entryRequired="true"
+	 * @model contextRequired="true" nodeRequired="true"
 	 * @generated
 	 */
-	void refreshEntry(QContext context, QSourceEntry entry);
+	void refreshNode(QContext context, QSourceNode node);
 
 	/**
 	 * <!-- begin-user-doc -->

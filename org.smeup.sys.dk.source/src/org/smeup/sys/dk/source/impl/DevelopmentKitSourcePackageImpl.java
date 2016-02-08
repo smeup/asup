@@ -449,9 +449,9 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 		op = addEOperation(sourceManagerEClass, this.getProject(), "listProjects", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(sourceManagerEClass, null, "refreshEntry", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(sourceManagerEClass, null, "refreshNode", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getSourceEntry(), "entry", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSourceNode(), "node", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(sourceManagerEClass, null, "removeEntry", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);

@@ -210,9 +210,9 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	}
 
 	@Override
-	public void refreshEntry(QContext context, QSourceEntry entry) {
+	public void refreshNode(QContext context, QSourceNode node) {
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-		for (IContainer container : root.findContainersForLocationURI(entry.getLocation())) {
+		for (IContainer container : root.findContainersForLocationURI(node.getLocation())) {
 			try {
 				container.refreshLocal(IContainer.DEPTH_INFINITE, null);
 			} catch (CoreException e) {
@@ -334,10 +334,6 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	private <T extends QObjectNameable> IFolder getFolder(QSourceNode parent, Class<T> type, boolean create) {
 
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-		if(parent == null)
-			"".toCharArray();
-		if(parent.getProject() == null)
-			"".toCharArray();
 		
 		IProject project = root.getProject(parent.getProject().getName());
 

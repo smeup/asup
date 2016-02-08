@@ -84,7 +84,7 @@ public class NIODataManagerImpl implements QDataManager {
 		Map<String, QDataTerm<?>> dataTerms = new LinkedHashMap<String, QDataTerm<?>>();
 
 		for (QSlot slot : frame.getSlots()) {
-
+			
 			// cardinality
 			QCardinality cardinality = slot.getCardinality();
 

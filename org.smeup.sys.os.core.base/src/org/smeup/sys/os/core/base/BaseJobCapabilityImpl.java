@@ -49,6 +49,6 @@ public class BaseJobCapabilityImpl implements QJobCapability {
 	@Override
 	public String getObjectID() {
 		org.eclipse.emf.common.util.URI uri = org.eclipse.emf.common.util.URI.createURI(getObjectAddress().toString());
-		return uri.lastSegment();
+		return uri.fragment();
 	}
 }

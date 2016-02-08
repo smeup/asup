@@ -60,7 +60,6 @@ public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
 			while (threadManager.currentThread().checkRunnable()) {
 				socket = serverSocket.accept();
 
-
 				BaseShellSocketHandler shellHandler = new BaseShellSocketHandler(socket);
 				QContext connectionContext = application.getContext().createChildContext(shellHandler.toString(), ContextInjectionStrategy.REMOTE);
 				connectionContext.inject(shellHandler);

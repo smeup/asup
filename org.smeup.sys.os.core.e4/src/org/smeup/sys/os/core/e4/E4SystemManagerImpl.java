@@ -55,8 +55,7 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 		QSystemEvent systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
 		systemEvent.setSource(getSystem());
 		systemEvent.setType(SystemEventType.STARTING);
-		fireEvent(systemEvent);
-		
+		fireEvent(systemEvent);		
 
 		// create job kernel
 		// create job kernel

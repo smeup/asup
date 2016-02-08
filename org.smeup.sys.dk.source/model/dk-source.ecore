@@ -174,9 +174,9 @@
     <eOperations name="listProjects" upperBound="-1" eType="#//Project">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
     </eOperations>
-    <eOperations name="refreshEntry">
+    <eOperations name="refreshNode">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
-      <eParameters name="entry" lowerBound="1" eType="#//SourceEntry"/>
+      <eParameters name="node" lowerBound="1" eType="#//SourceNode"/>
     </eOperations>
     <eOperations name="removeEntry" eExceptions="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaIOException">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>

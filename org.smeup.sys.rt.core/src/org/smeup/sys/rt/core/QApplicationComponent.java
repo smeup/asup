@@ -51,7 +51,7 @@ public interface QApplicationComponent extends QObjectNameable, QContextProvider
 	List<QServiceHook> getHooks();
 
 	/**
-	 * Returns the value of the '<em><b>Modules</b></em>' reference list.
+	 * Returns the value of the '<em><b>Modules</b></em>' containment reference list.
 	 * The list contents are of type {@link org.smeup.sys.rt.core.QApplicationModule}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -59,9 +59,9 @@ public interface QApplicationComponent extends QObjectNameable, QContextProvider
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Modules</em>' reference list.
+	 * @return the value of the '<em>Modules</em>' containment reference list.
 	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getApplicationComponent_Modules()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	List<QApplicationModule> getModules();

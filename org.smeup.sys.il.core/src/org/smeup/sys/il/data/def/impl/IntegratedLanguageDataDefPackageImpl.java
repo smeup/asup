@@ -1187,6 +1187,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		// Obtain other dependent packages
 		QIntegratedLanguageDataPackage theIntegratedLanguageDataPackage = (QIntegratedLanguageDataPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI);
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
+		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 
 		// Create type parameters
@@ -1318,6 +1319,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		g2 = createEGenericType(compoundDataDefEClass_D);
 		g1.getETypeArguments().add(g2);
 		compoundDataDefEClass.getEGenericSuperTypes().add(g1);
+		dataDefEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		g1 = createEGenericType(this.getUnaryAtomicBufferedDataDef());
 		g2 = createEGenericType(dataAreaDefEClass_D);
 		g1.getETypeArguments().add(g2);

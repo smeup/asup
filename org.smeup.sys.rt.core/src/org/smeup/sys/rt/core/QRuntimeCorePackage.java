@@ -158,7 +158,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	int APPLICATION_COMPONENT__HOOKS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Modules</b></em>' reference list.
+	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -574,10 +574,10 @@ public interface QRuntimeCorePackage extends EPackage {
 	EReference getApplicationComponent_Hooks();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.smeup.sys.rt.core.QApplicationComponent#getModules <em>Modules</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.rt.core.QApplicationComponent#getModules <em>Modules</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Modules</em>'.
+	 * @return the meta object for the containment reference list '<em>Modules</em>'.
 	 * @see org.smeup.sys.rt.core.QApplicationComponent#getModules()
 	 * @see #getApplicationComponent()
 	 * @generated
@@ -901,7 +901,7 @@ public interface QRuntimeCorePackage extends EPackage {
 		EReference APPLICATION_COMPONENT__HOOKS = eINSTANCE.getApplicationComponent_Hooks();
 
 		/**
-		 * The meta object literal for the '<em><b>Modules</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Modules</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

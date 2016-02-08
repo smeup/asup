@@ -10,5 +10,6 @@ Require-Bundle: org.smeup.sys.os.lib,
  org.smeup.sys.dk.core,
  org.smeup.sys.os.cmd,
  org.smeup.sys.il.core,
- org.smeup.sys.dk.source
+ org.smeup.sys.dk.source,
+ org.smeup.sys.rt.core
 Bundle-ActivationPolicy: lazy

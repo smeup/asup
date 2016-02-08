@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.smeup.sys.il.core.QObject;
@@ -77,7 +76,7 @@ public class ApplicationComponentImpl extends ObjectNameableImpl implements QApp
 	protected EList<QServiceHook> hooks;
 
 	/**
-	 * The cached value of the '{@link #getModules() <em>Modules</em>}' reference list.
+	 * The cached value of the '{@link #getModules() <em>Modules</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getModules()
@@ -146,7 +145,7 @@ public class ApplicationComponentImpl extends ObjectNameableImpl implements QApp
 	@Override
 	public List<QApplicationModule> getModules() {
 		if (modules == null) {
-			modules = new EObjectResolvingEList<QApplicationModule>(QApplicationModule.class, this, QRuntimeCorePackage.APPLICATION_COMPONENT__MODULES);
+			modules = new EObjectContainmentEList<QApplicationModule>(QApplicationModule.class, this, QRuntimeCorePackage.APPLICATION_COMPONENT__MODULES);
 		}
 		return modules;
 	}
@@ -211,6 +210,8 @@ public class ApplicationComponentImpl extends ObjectNameableImpl implements QApp
 				return ((InternalEList<?>)getConfigs()).basicRemove(otherEnd, msgs);
 			case QRuntimeCorePackage.APPLICATION_COMPONENT__HOOKS:
 				return ((InternalEList<?>)getHooks()).basicRemove(otherEnd, msgs);
+			case QRuntimeCorePackage.APPLICATION_COMPONENT__MODULES:
+				return ((InternalEList<?>)getModules()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
