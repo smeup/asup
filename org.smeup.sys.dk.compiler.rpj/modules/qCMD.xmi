@@ -5,7 +5,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:il-core="http://www.smeup.org/asup/il/core"
     xmlns:il-data="http://www.smeup.org/asup/il/data"
-    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
+        xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" 
+    xmlns:il-data-term="http://www.smeup.org/asup/il/data/term"
+
     xmlns:il-flow="http://www.smeup.org/asup/il/flow"
     xmlns:db-esam="http://www.smeup.org/asup/db/esam"
     xsi:schemaLocation="

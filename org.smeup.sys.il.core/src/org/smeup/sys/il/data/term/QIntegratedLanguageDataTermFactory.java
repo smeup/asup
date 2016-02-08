@@ -25,6 +25,51 @@ public interface QIntegratedLanguageDataTermFactory extends EFactory {
 	QIntegratedLanguageDataTermFactory eINSTANCE = org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Format</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Format</em>'.
+	 * @generated
+	 */
+	QFormat createFormat();
+
+	/**
+	 * Returns a new object of class '<em>Overlay</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Overlay</em>'.
+	 * @generated
+	 */
+	QOverlay createOverlay();
+
+	/**
+	 * Returns a new object of class '<em>Remap</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Remap</em>'.
+	 * @generated
+	 */
+	QRemap createRemap();
+
+	/**
+	 * Returns a new object of class '<em>Special</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Special</em>'.
+	 * @generated
+	 */
+	QSpecial createSpecial();
+
+	/**
+	 * Returns a new object of class '<em>Special Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Special Element</em>'.
+	 * @generated
+	 */
+	QSpecialElement createSpecialElement();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

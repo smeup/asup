@@ -5,9 +5,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:il-core="http://www.smeup.org/asup/il/core"
     xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta"
-    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
+        xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" 
+    xmlns:il-data-term="http://www.smeup.org/asup/il/data/term"
+
     xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore"
+    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/data/term ../../org.smeup.sys.il.core/model/il-data.ecore#//term http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore"
     typeName="*DTAARA">
   <contents
       xsi:type="os-cmd:Command"
@@ -26,7 +28,7 @@
               xsi:type="os-cmd:CommandData"
               name="dataArea">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LDA"
                   unary="true"
@@ -47,7 +49,7 @@
                   xsi:type="os-cmd:CommandData"
                   name="name">
                 <facets
-                    xsi:type="il-core:Format"
+                    xsi:type="il-data-term:Format"
                     type="NAME"/>
                 <definition
                     xsi:type="il-data-def:CharacterDef"
@@ -57,10 +59,10 @@
                   xsi:type="os-cmd:CommandData"
                   name="library">
                 <facets
-                    xsi:type="il-core:Format"
+                    xsi:type="il-data-term:Format"
                     type="NAME"/>
                 <facets
-                    xsi:type="il-core:Special">
+                    xsi:type="il-data-term:Special">
                   <elements
                       name="*LIBL"
                       value="*LIBL"/>
@@ -81,7 +83,7 @@
               initialized="true"
               name="substringSpecifications">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*ALL"
                   unary="true"
@@ -149,7 +151,7 @@
       <dataTerm
           name="dataArea">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*LDA"
               unary="true"
@@ -172,7 +174,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <cardinality
                 min="1"/>
@@ -184,10 +186,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*CURLIB"
                   value="*CURLIB"/>
@@ -209,7 +211,7 @@
           name="tipo"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*DEC"
               value="D"/>
@@ -293,7 +295,7 @@
               xsi:type="os-cmd:CommandData"
               name="nome">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -303,10 +305,10 @@
               xsi:type="os-cmd:CommandData"
               name="libreria">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -329,9 +331,9 @@
       <dataTerm
           name="ubicazioneRemota">
         <facets
-            xsi:type="il-core:Format"/>
+            xsi:type="il-data-term:Format"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*RDB"
               value="*RDB"/>
@@ -349,7 +351,7 @@
       <dataTerm
           name="databaseRelazionale">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <definition
             xsi:type="il-data-def:CharacterDef"
@@ -364,10 +366,10 @@
       <dataTerm
           name="descrizioneUnitaAPPC">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*LOC"
               value="*LOC"/>
@@ -387,9 +389,9 @@
       <dataTerm
           name="ubicazioneLocale">
         <facets
-            xsi:type="il-core:Format"/>
+            xsi:type="il-data-term:Format"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*LOC"
               value="*LOC"/>
@@ -412,9 +414,9 @@
       <dataTerm
           name="modalita">
         <facets
-            xsi:type="il-core:Format"/>
+            xsi:type="il-data-term:Format"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NETATR"
               value="*NETATR"/>
@@ -434,9 +436,9 @@
       <dataTerm
           name="reteRemota">
         <facets
-            xsi:type="il-core:Format"/>
+            xsi:type="il-data-term:Format"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*LOC"
               value="*LOC"/>
@@ -461,7 +463,7 @@
       <dataTerm
           name="descrizioneTesto">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*BLANK"
               value=""/>
@@ -481,10 +483,10 @@
       <dataTerm
           name="autorizzazione">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*LIBCRTAUT"
               value="*LIBCRTAUT"/>
@@ -532,10 +534,10 @@
               xsi:type="os-cmd:CommandData"
               name="nameGeneric">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="GENERIC"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*ALL"
                   value="*ALL"/>
@@ -550,10 +552,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -596,7 +598,7 @@
       <dataTerm
           name="dataArea">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*LDA"
               unary="true"
@@ -619,7 +621,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <cardinality
                 min="1"/>
@@ -631,10 +633,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -659,7 +661,7 @@
           name="output"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>
@@ -682,7 +684,7 @@
           name="outputFormat"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CHAR"
               value="C"/>
@@ -706,7 +708,7 @@
           name="system"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*LCL"
               value="L"/>
@@ -743,7 +745,7 @@
               xsi:type="os-cmd:CommandData"
               name="dataArea">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LDA"
                   unary="true"
@@ -764,7 +766,7 @@
                   xsi:type="os-cmd:CommandData"
                   name="name">
                 <facets
-                    xsi:type="il-core:Format"
+                    xsi:type="il-data-term:Format"
                     type="NAME"/>
                 <definition
                     xsi:type="il-data-def:CharacterDef"
@@ -774,10 +776,10 @@
                   xsi:type="os-cmd:CommandData"
                   name="library">
                 <facets
-                    xsi:type="il-core:Format"
+                    xsi:type="il-data-term:Format"
                     type="NAME"/>
                 <facets
-                    xsi:type="il-core:Special">
+                    xsi:type="il-data-term:Special">
                   <elements
                       name="*LIBL"
                       value="*LIBL"/>
@@ -797,7 +799,7 @@
               xsi:type="os-cmd:CommandData"
               name="substringSpecifications">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*ALL"
                   unary="true"
@@ -871,10 +873,10 @@
               xsi:type="os-cmd:CommandData"
               name="nameGeneric">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="GENERIC"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*ALL"
                   value="*ALL"/>
@@ -889,10 +891,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>

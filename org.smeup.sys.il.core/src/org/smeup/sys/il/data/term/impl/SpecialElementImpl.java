@@ -5,13 +5,14 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.impl;
+package org.smeup.sys.il.data.term.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.QSpecialElement;
+import org.smeup.sys.il.core.impl.NamedNodeImpl;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
+import org.smeup.sys.il.data.term.QSpecialElement;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -20,10 +21,10 @@ import org.smeup.sys.il.core.QSpecialElement;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.impl.SpecialElementImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.impl.SpecialElementImpl#getText <em>Text</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.impl.SpecialElementImpl#isUnary <em>Unary</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.impl.SpecialElementImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.impl.SpecialElementImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.impl.SpecialElementImpl#getText <em>Text</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.impl.SpecialElementImpl#isUnary <em>Unary</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.impl.SpecialElementImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -120,7 +121,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QIntegratedLanguageCorePackage.Literals.SPECIAL_ELEMENT;
+		return QIntegratedLanguageDataTermPackage.Literals.SPECIAL_ELEMENT;
 	}
 
 	/**
@@ -141,7 +142,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__NAME, oldName, name));
 	}
 
 	/**
@@ -162,7 +163,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 		String oldText = text;
 		text = newText;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__TEXT, oldText, text));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__TEXT, oldText, text));
 	}
 
 	/**
@@ -183,7 +184,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 		boolean oldUnary = unary;
 		unary = newUnary;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__UNARY, oldUnary, unary));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__UNARY, oldUnary, unary));
 	}
 
 	/**
@@ -204,7 +205,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__VALUE, oldValue, value));
 	}
 
 	/**
@@ -214,13 +215,13 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__NAME:
+			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__NAME:
 				return getName();
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__TEXT:
+			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__TEXT:
 				return getText();
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__UNARY:
+			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__UNARY:
 				return isUnary();
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__VALUE:
+			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__VALUE:
 				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -233,16 +234,16 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__NAME:
+			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__NAME:
 				setName((String)newValue);
 				return;
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__TEXT:
+			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__TEXT:
 				setText((String)newValue);
 				return;
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__UNARY:
+			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__UNARY:
 				setUnary((Boolean)newValue);
 				return;
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__VALUE:
+			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__VALUE:
 				setValue((String)newValue);
 				return;
 		}
@@ -256,16 +257,16 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__NAME:
+			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__TEXT:
+			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__TEXT:
 				setText(TEXT_EDEFAULT);
 				return;
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__UNARY:
+			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__UNARY:
 				setUnary(UNARY_EDEFAULT);
 				return;
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__VALUE:
+			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -279,13 +280,13 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__NAME:
+			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__TEXT:
+			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__TEXT:
 				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__UNARY:
+			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__UNARY:
 				return unary != UNARY_EDEFAULT;
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__VALUE:
+			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);

@@ -5,9 +5,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:il-core="http://www.smeup.org/asup/il/core"
     xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta"
-    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
+        xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" 
+    xmlns:il-data-term="http://www.smeup.org/asup/il/data/term"
+
     xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore"
+    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/data/term ../../org.smeup.sys.il.core/model/il-data.ecore#//term http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore"
     typeName="*DSPF">
   <contents
       xsi:type="os-cmd:Command"
@@ -31,10 +33,10 @@
               xsi:type="os-cmd:CommandData"
               name="nameGeneric">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="GENERIC"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*ALL"
                   value="*ALL"/>
@@ -49,10 +51,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -86,10 +88,10 @@
       <dataTerm
           name="displayDevice">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -123,7 +125,7 @@
             max="256"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="-1"/>
@@ -144,7 +146,7 @@
           name="enhancedDisplay"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="S"/>
@@ -171,7 +173,7 @@
           name="restoreDisplay"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="S"/>
@@ -198,7 +200,7 @@
           name="deferWrite"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="S"/>
@@ -231,7 +233,7 @@
               xsi:type="os-cmd:CommandData"
               name="graphicCharacterSet">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*SAME"
                   value="-4"/>
@@ -275,7 +277,7 @@
           name="decimalFormat"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="S"/>
@@ -302,7 +304,7 @@
           name="sFLENDText"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="S"/>
@@ -329,7 +331,7 @@
           name="userSpecifiedDBCSData"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="S"/>
@@ -356,7 +358,7 @@
           name="dBCSExtensionCharacters"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="S"/>
@@ -382,7 +384,7 @@
       <dataTerm
           name="maximumFileWaitTime">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="-2"/>
@@ -408,7 +410,7 @@
       <dataTerm
           name="maximumRecordWaitTime">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="-2"/>
@@ -442,10 +444,10 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*SAME"
                   value="*SAME"/>
@@ -463,10 +465,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -492,7 +494,7 @@
           name="shareOpenDataPath"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="S"/>
@@ -519,7 +521,7 @@
           name="recordFormatLevelCheck"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="S"/>
@@ -545,7 +547,7 @@
       <dataTerm
           name="textDescription">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -587,7 +589,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <cardinality
                 min="1"/>
@@ -599,10 +601,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*CURLIB"
                   value="*CURLIB"/>
@@ -632,10 +634,10 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*NONE"
                   value="*NONE"/>
@@ -650,10 +652,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -678,10 +680,10 @@
       <dataTerm
           name="sourceMember">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*FILE"
               value="*FILE"/>
@@ -702,7 +704,7 @@
           name="sourceListingOptions"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SRC"
               value="1"/>
@@ -787,10 +789,10 @@
       <dataTerm
           name="displayDevice">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NONE"
               value="*NONE"/>
@@ -836,7 +838,7 @@
           name="enhancedDisplay"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*YES"
               value="Y"/>
@@ -860,7 +862,7 @@
           name="restoreDisplay"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="N"/>
@@ -884,7 +886,7 @@
           name="deferWrite"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*YES"
               value="Y"/>
@@ -914,7 +916,7 @@
               xsi:type="os-cmd:CommandData"
               name="graphicCharacterSet">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*DEVD"
                   value="0"/>
@@ -955,7 +957,7 @@
           name="decimalFormat"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*FILE"
               value="F"/>
@@ -979,7 +981,7 @@
           name="sFLENDText"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*FILE"
               value="F"/>
@@ -1003,7 +1005,7 @@
           name="userSpecifiedDBCSData"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="N"/>
@@ -1027,7 +1029,7 @@
           name="dBCSExtensionCharacters"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*YES"
               value="Y"/>
@@ -1050,7 +1052,7 @@
       <dataTerm
           name="maximumFileWaitTime">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*IMMED"
               value="-1"/>
@@ -1073,7 +1075,7 @@
       <dataTerm
           name="maximumRecordWaitTime">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NOMAX"
               value="-3"/>
@@ -1104,10 +1106,10 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*NONE"
                   value="*NONE"/>
@@ -1122,10 +1124,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -1151,7 +1153,7 @@
           name="shareOpenDataPath"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="N"/>
@@ -1182,10 +1184,10 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*JOB"
                   value="*JOB"/>
@@ -1207,10 +1209,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -1235,7 +1237,7 @@
       <dataTerm
           name="languageID">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOB"
               value="*JOB"/>
@@ -1256,7 +1258,7 @@
           name="recordFormatLevelCheck"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*YES"
               value="Y"/>
@@ -1279,10 +1281,10 @@
       <dataTerm
           name="authority">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*LIBCRTAUT"
               value="*LIBCRTAUT"/>
@@ -1315,7 +1317,7 @@
           name="replaceFile"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*YES"
               value="Y"/>
@@ -1338,7 +1340,7 @@
       <dataTerm
           name="textDescription">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SRCMBRTXT"
               value="*SRCMBRTXT"/>
@@ -1371,7 +1373,7 @@
       <dataTerm
           name="fileBeingOverridden">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <cardinality
             min="1"/>
@@ -1396,10 +1398,10 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*FILE"
                   value="*FILE"/>
@@ -1414,10 +1416,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -1442,10 +1444,10 @@
       <dataTerm
           name="device">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*REQUESTER"
               value="*REQUESTER"/>
@@ -1472,7 +1474,7 @@
               xsi:type="os-cmd:CommandData"
               name="graphicCharacterSet">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*DEVD"
                   value="0"/>
@@ -1513,7 +1515,7 @@
           name="decimalFormat"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*FILE"
               value="X'00'"/>
@@ -1535,7 +1537,7 @@
           name="sFLENDText"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*MSG"
               value="X'80'"/>
@@ -1557,7 +1559,7 @@
           name="userSpecifiedDBCSData"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="N"/>
@@ -1579,7 +1581,7 @@
           name="dBCSExtensionCharacters"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*YES"
               value="Y"/>
@@ -1600,7 +1602,7 @@
       <dataTerm
           name="maximumFileWaitTime">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*IMMED"
               value="-1"/>
@@ -1625,7 +1627,7 @@
             max="32767"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NOMAX"
               value="-2"/>
@@ -1647,7 +1649,7 @@
           name="recordFormatLevelCheck"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="N"/>
@@ -1666,7 +1668,7 @@
           name="secureFromOtherOverrides"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="N"/>
@@ -1690,7 +1692,7 @@
           name="overrideScope"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*ACTGRPDFN"
               value="A"/>
@@ -1722,10 +1724,10 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*NONE"
                   value="*NONE"/>
@@ -1740,10 +1742,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -1769,7 +1771,7 @@
           name="shareOpenDataPath"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*YES"
               value="Y"/>
@@ -1791,7 +1793,7 @@
           name="openScope"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*ACTGRPDFN"
               value="A"/>
@@ -1830,10 +1832,10 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*PRV"
                   value="*PRV      *PRV"/>
@@ -1848,10 +1850,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -1879,10 +1881,10 @@
       <dataTerm
           name="sourceMember">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*PRV"
               value="*PRV"/>
@@ -1905,10 +1907,10 @@
       <dataTerm
           name="sourceType">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="SNAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="X'40'"/>
@@ -2199,7 +2201,7 @@
           name="option"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*BLANK"
               value="X'40'"/>
@@ -2227,7 +2229,7 @@
       <dataTerm
           name="textDescription">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*BLANK"
               value="X'40'"/>

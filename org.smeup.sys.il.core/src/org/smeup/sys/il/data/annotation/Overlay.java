@@ -5,22 +5,21 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.annotation;
+package org.smeup.sys.il.data.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.smeup.sys.il.core.QObject;
-
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.FIELD, ElementType.PARAMETER })
-public @interface Domain {
+public @interface Overlay {
 
-	Class<? extends QObject> name();
+	String name() default NAME_OWNER;
 
-	boolean restricted() default false;
+	int position() default 0;
 
-	String[] specials() default {};
+	public static final String NAME_OWNER = "*OWNER";
+	public static final String NAME_PGM_STATUS = "*PGMSTATUS";
 }

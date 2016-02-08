@@ -7,7 +7,6 @@ Bundle-ClassPath: .
 Bundle-Vendor: %prividerName
 Bundle-Localization: plugin
 Export-Package: org.smeup.sys.il.core,
- org.smeup.sys.il.core.annotation,
  org.smeup.sys.il.core.ctx,
  org.smeup.sys.il.core.ctx.impl,
  org.smeup.sys.il.core.impl,

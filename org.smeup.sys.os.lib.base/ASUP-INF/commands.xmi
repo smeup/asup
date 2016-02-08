@@ -5,9 +5,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:il-core="http://www.smeup.org/asup/il/core"
     xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta"
-    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
+        xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" 
+    xmlns:il-data-term="http://www.smeup.org/asup/il/data/term"
+
     xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore"
+    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/data/term ../../org.smeup.sys.il.core/model/il-data.ecore#//term http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore"
     typeName="*LIB">
   <contents
       xsi:type="os-cmd:Command"
@@ -23,7 +25,7 @@
       <dataTerm
           name="library">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <cardinality
             min="1"/>
@@ -40,7 +42,7 @@
       <dataTerm
           name="libraryListPosition">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*FIRST"
               unary="true"
@@ -59,7 +61,7 @@
               name="listPosition"
               restricted="true">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*AFTER"
                   value="A"/>
@@ -80,7 +82,7 @@
               xsi:type="os-cmd:CommandData"
               name="referenceLibrary">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <cardinality
                 min="1"/>
@@ -109,10 +111,10 @@
       <dataTerm
           name="currentLibrary">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CRTDFT"
               value="X'40404040404040404040'"/>
@@ -142,10 +144,10 @@
       <dataTerm
           name="library">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURLIB"
               value="*CURLIB"/>
@@ -166,10 +168,10 @@
           name="libraryType"
           restricted="true">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -195,7 +197,7 @@
       <dataTerm
           name="textDescription">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -218,10 +220,10 @@
       <dataTerm
           name="createAuthority">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -257,7 +259,7 @@
           name="createObjectAuditing"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -293,7 +295,7 @@
           name="synchronizedLib"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="N"/>
@@ -329,10 +331,10 @@
       <dataTerm
           name="librariesForCurrentThread">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               unary="true"
@@ -364,10 +366,10 @@
       <dataTerm
           name="currentLibrary">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -400,7 +402,7 @@
       <dataTerm
           name="library">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <cardinality
             min="1"/>
@@ -418,7 +420,7 @@
           name="option"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*ADD"
               value="S"/>
@@ -451,10 +453,10 @@
       <dataTerm
           name="library">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURLIB"
               value="*CURLIB"/>
@@ -474,10 +476,10 @@
       <dataTerm
           name="aSPDevice">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>
@@ -513,7 +515,7 @@
       <dataTerm
           name="existingLibrary">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <cardinality
             min="1"/>
@@ -530,7 +532,7 @@
       <dataTerm
           name="newLibrary">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <cardinality
             min="1"/>
@@ -548,7 +550,7 @@
           name="createLibrary"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*YES"
               value="*YES"/>
@@ -572,7 +574,7 @@
           name="duplicateData"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*YES"
               value="*YES"/>
@@ -596,7 +598,7 @@
           name="duplicateConstraints"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*YES"
               value="*YES"/>
@@ -620,7 +622,7 @@
           name="duplicateTriggers"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*YES"
               value="*YES"/>
@@ -644,7 +646,7 @@
           name="duplicateFileIdentifiers"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="*NO"/>
@@ -679,7 +681,7 @@
       <dataTerm
           name="library">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <cardinality
             min="1"/>
@@ -697,10 +699,10 @@
           name="libraryType"
           restricted="true">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*PROD"
               value="PROD"/>
@@ -726,7 +728,7 @@
       <dataTerm
           name="textDescription">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*BLANK"
               value=""/>
@@ -746,10 +748,10 @@
       <dataTerm
           name="authority">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*LIBCRTAUT"
               value="*LIBCRTAUT"/>
@@ -785,7 +787,7 @@
             max="32"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*ASPDEV"
               value="0"/>
@@ -805,10 +807,10 @@
       <dataTerm
           name="aSPDevice">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*ASP"
               value="*ASP"/>
@@ -834,10 +836,10 @@
       <dataTerm
           name="createAuthority">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SYSVAL"
               value="*SYSVAL"/>
@@ -870,7 +872,7 @@
           name="createObjectAuditing"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SYSVAL"
               value="*SYSVAL"/>
@@ -903,7 +905,7 @@
           name="synchronizedLib"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="N"/>
@@ -935,7 +937,7 @@
       <dataTerm
           name="library">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <cardinality
             min="1"/>
@@ -952,10 +954,10 @@
       <dataTerm
           name="aSPDevice">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>
@@ -991,10 +993,10 @@
       <dataTerm
           name="library">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*LIBL"
               unary="true"
@@ -1035,10 +1037,10 @@
       <dataTerm
           name="aSPDevice">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>
@@ -1068,7 +1070,7 @@
           name="output"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>
@@ -1101,7 +1103,7 @@
       <dataTerm
           name="library">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <cardinality
             min="1"/>
@@ -1119,7 +1121,7 @@
           name="output"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>
@@ -1153,7 +1155,7 @@
           name="output"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>
@@ -1197,7 +1199,7 @@
       <dataTerm
           name="library">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <cardinality
             min="1"/>
@@ -1224,10 +1226,10 @@
       <dataTerm
           name="savedLibrary">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="GENERIC"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NONSYS"
               unary="true"
@@ -1265,10 +1267,10 @@
       <dataTerm
           name="device">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAVF"
               unary="true"
@@ -1298,7 +1300,7 @@
       <dataTerm
           name="volumeIdentifier">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*MOUNTED"
               unary="true"
@@ -1331,7 +1333,7 @@
             max="16777215"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SEARCH"
               value="-2"/>
@@ -1351,7 +1353,7 @@
       <dataTerm
           name="label">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAVLIB"
               value="*SAVLIB"/>
@@ -1372,7 +1374,7 @@
           name="endOfMediaOption"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*REWIND"
               value="X'40'"/>
@@ -1398,10 +1400,10 @@
       <dataTerm
           name="startingLibrary">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*FIRST"
               value="*FIRST"/>
@@ -1427,7 +1429,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <cardinality
                 min="1"/>
@@ -1439,10 +1441,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -1473,7 +1475,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <cardinality
                 min="1"/>
@@ -1485,10 +1487,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -1513,7 +1515,7 @@
       <dataTerm
           name="opticalFile">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="PNAME"/>
         <default
             value="*"/>
@@ -1530,10 +1532,10 @@
       <dataTerm
           name="librariesToOmit">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="GENERIC"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NONE"
               unary="true"
@@ -1559,7 +1561,7 @@
           name="option"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*ALL"
               value="M"/>
@@ -1589,7 +1591,7 @@
           name="dataBaseMemberOption"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*MATCH"
               value="M"/>
@@ -1618,10 +1620,10 @@
       <dataTerm
           name="deferID">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*DFT"
               value="*DFT"/>
@@ -1645,7 +1647,7 @@
           name="spooledFileData"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NEW"
               value="3"/>
@@ -1669,7 +1671,7 @@
           name="privateAuthorities"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="0"/>
@@ -1716,7 +1718,7 @@
           name="allowObjectDifferences"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NONE"
               unary="true"
@@ -1757,7 +1759,7 @@
       <dataTerm
           name="forceObjectConversion">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SYSVAL"
               unary="true"
@@ -1776,7 +1778,7 @@
               name="convertDuringRestore"
               restricted="true">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*YES"
                   value="Y"/>
@@ -1792,7 +1794,7 @@
               name="objectsToConvert"
               restricted="true">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*RQD"
                   value="R"/>
@@ -1817,10 +1819,10 @@
       <dataTerm
           name="restoreToLibrary">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAVLIB"
               value="*SAVLIB"/>
@@ -1840,10 +1842,10 @@
       <dataTerm
           name="restoreToASPDevice">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAVASPDEV"
               value="*SAVASPDEV"/>
@@ -1867,7 +1869,7 @@
             max="32"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAVASP"
               value="-1"/>
@@ -1888,7 +1890,7 @@
           name="output"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NONE"
               value="N"/>
@@ -1920,7 +1922,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <cardinality
                 min="1"/>
@@ -1932,10 +1934,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -1965,10 +1967,10 @@
               xsi:type="os-cmd:CommandData"
               name="memberToReceiveOutput">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*FIRST"
                   value="*FIRST"/>
@@ -1984,7 +1986,7 @@
               name="replaceOrAddRecords"
               restricted="true">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*REPLACE"
                   value="R"/>
@@ -2010,7 +2012,7 @@
           name="typeOfOutputInformation"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*OBJ"
               value="O"/>
@@ -2047,10 +2049,10 @@
                   xsi:type="os-cmd:CommandData"
                   name="nameGeneric">
                 <facets
-                    xsi:type="il-core:Format"
+                    xsi:type="il-data-term:Format"
                     type="GENERIC"/>
                 <facets
-                    xsi:type="il-core:Special">
+                    xsi:type="il-data-term:Special">
                   <elements
                       name="*NONE"
                       value="*NONE"/>
@@ -2068,10 +2070,10 @@
                   xsi:type="os-cmd:CommandData"
                   name="library">
                 <facets
-                    xsi:type="il-core:Format"
+                    xsi:type="il-data-term:Format"
                     type="GENERIC"/>
                 <facets
-                    xsi:type="il-core:Special">
+                    xsi:type="il-data-term:Special">
                   <elements
                       name="*ALL"
                       value="*ALL"/>
@@ -2088,7 +2090,7 @@
               xsi:type="os-cmd:CommandData"
               name="objectType">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*ALL"
                   value="*ALL"/>
@@ -2121,7 +2123,7 @@
       <dataTerm
           name="library">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <cardinality
             min="1"/>
@@ -2376,10 +2378,10 @@
       <dataTerm
           name="library">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="GENERIC"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NONSYS"
               unary="true"
@@ -2417,10 +2419,10 @@
       <dataTerm
           name="device">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAVF"
               unary="true"
@@ -2450,7 +2452,7 @@
       <dataTerm
           name="volumeIdentifier">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*MOUNTED"
               unary="true"
@@ -2479,7 +2481,7 @@
             max="16777215"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*END"
               value="-3"/>
@@ -2499,7 +2501,7 @@
       <dataTerm
           name="label">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*LIB"
               value="*LIB"/>
@@ -2519,7 +2521,7 @@
       <dataTerm
           name="fileExpirationDate">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*PERM"
               value="0999999"/>
@@ -2539,7 +2541,7 @@
           name="endOfMediaOption"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*REWIND"
               value="X'40'"/>
@@ -2565,10 +2567,10 @@
       <dataTerm
           name="startingLibrary">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*FIRST"
               value="*FIRST"/>
@@ -2594,7 +2596,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <cardinality
                 min="1"/>
@@ -2606,10 +2608,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -2640,7 +2642,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <cardinality
                 min="1"/>
@@ -2652,10 +2654,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -2680,7 +2682,7 @@
       <dataTerm
           name="opticalFile">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="PNAME"/>
         <default
             value="*"/>
@@ -2698,7 +2700,7 @@
           name="useOptimumBlock"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*YES"
               value="Y"/>
@@ -2722,7 +2724,7 @@
           name="targetRelease"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               value="C"/>
@@ -2755,7 +2757,7 @@
           name="updateHistory"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*YES"
               value="Y"/>
@@ -2779,7 +2781,7 @@
           name="clear"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NONE"
               value="N"/>
@@ -2809,7 +2811,7 @@
           name="objectPreCheck"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="N"/>
@@ -2833,7 +2835,7 @@
           name="saveActive"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="N"/>
@@ -2871,7 +2873,7 @@
                 max="99999"
                 min="0"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*NOMAX"
                   value="-1"/>
@@ -2890,7 +2892,7 @@
                 max="99999"
                 min="0"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LOCKWAIT"
                   value="-2"/>
@@ -2915,7 +2917,7 @@
                 max="99999"
                 min="0"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LOCKWAIT"
                   value="-2"/>
@@ -2946,10 +2948,10 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*NONE"
                   value="*NONE"/>
@@ -2967,10 +2969,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -2995,10 +2997,10 @@
       <dataTerm
           name="synchronizationID">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NONE"
               value="*NONE"/>
@@ -3019,7 +3021,7 @@
           name="saveAccessPaths"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SYSVAL"
               value="S"/>
@@ -3046,7 +3048,7 @@
           name="saveFileData"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*YES"
               value="Y"/>
@@ -3070,7 +3072,7 @@
           name="spooledFileData"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NONE"
               value="0"/>
@@ -3094,7 +3096,7 @@
           name="queueData"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NONE"
               value="N"/>
@@ -3118,7 +3120,7 @@
           name="privateAuthorities"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="0"/>
@@ -3142,7 +3144,7 @@
           name="storage"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*KEEP"
               value="K"/>
@@ -3166,7 +3168,7 @@
           name="dataCompression"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*DEV"
               value="D"/>
@@ -3202,7 +3204,7 @@
           name="dataCompaction"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*DEV"
               value="D"/>
@@ -3225,10 +3227,10 @@
       <dataTerm
           name="librariesToOmit">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="GENERIC"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NONE"
               unary="true"
@@ -3257,7 +3259,7 @@
       <dataTerm
           name="objectsToOmit">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*USRSPC"
               unary="true"
@@ -3278,10 +3280,10 @@
                   xsi:type="os-cmd:CommandData"
                   name="nameGeneric">
                 <facets
-                    xsi:type="il-core:Format"
+                    xsi:type="il-data-term:Format"
                     type="GENERIC"/>
                 <facets
-                    xsi:type="il-core:Special">
+                    xsi:type="il-data-term:Special">
                   <elements
                       name="*NONE"
                       value="*NONE"/>
@@ -3299,10 +3301,10 @@
                   xsi:type="os-cmd:CommandData"
                   name="library">
                 <facets
-                    xsi:type="il-core:Format"
+                    xsi:type="il-data-term:Format"
                     type="GENERIC"/>
                 <facets
-                    xsi:type="il-core:Special">
+                    xsi:type="il-data-term:Special">
                   <elements
                       name="*ALL"
                       value="*ALL"/>
@@ -3319,7 +3321,7 @@
               xsi:type="os-cmd:CommandData"
               name="objectType">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*ALL"
                   value="*ALL"/>
@@ -3341,10 +3343,10 @@
       <dataTerm
           name="aSPDevice">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>
@@ -3371,7 +3373,7 @@
           name="output"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NONE"
               value="N"/>
@@ -3403,7 +3405,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <cardinality
                 min="1"/>
@@ -3415,10 +3417,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -3448,10 +3450,10 @@
               xsi:type="os-cmd:CommandData"
               name="memberToReceiveOutput">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*FIRST"
                   value="*FIRST"/>
@@ -3467,7 +3469,7 @@
               name="replaceOrAddRecords"
               restricted="true">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*REPLACE"
                   value="R"/>
@@ -3493,7 +3495,7 @@
           name="typeOfOutputInformation"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*OBJ"
               value="O"/>
@@ -3528,7 +3530,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <cardinality
                 min="1"/>
@@ -3540,10 +3542,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -3585,10 +3587,10 @@
               xsi:type="os-cmd:CommandData"
               name="nameGeneric">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="GENERIC"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -3626,7 +3628,7 @@
             max="32"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*ALL"
               value="-1"/>
@@ -3646,10 +3648,10 @@
       <dataTerm
           name="aSPDevice">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>

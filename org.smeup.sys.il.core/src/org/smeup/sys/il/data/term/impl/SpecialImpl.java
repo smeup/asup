@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.impl;
+package org.smeup.sys.il.data.term.impl;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,10 +18,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.QSpecial;
-import org.smeup.sys.il.core.QSpecialElement;
 import org.smeup.sys.il.core.meta.impl.FacetImpl;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
+import org.smeup.sys.il.data.term.QSpecial;
+import org.smeup.sys.il.data.term.QSpecialElement;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -30,8 +30,8 @@ import org.smeup.sys.il.core.meta.impl.FacetImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.impl.SpecialImpl#getClassDelegate <em>Class Delegate</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.impl.SpecialImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.impl.SpecialImpl#getClassDelegate <em>Class Delegate</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.impl.SpecialImpl#getElements <em>Elements</em>}</li>
  * </ul>
  *
  * @generated
@@ -85,7 +85,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QIntegratedLanguageCorePackage.Literals.SPECIAL;
+		return QIntegratedLanguageDataTermPackage.Literals.SPECIAL;
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 		String oldClassDelegate = classDelegate;
 		classDelegate = newClassDelegate;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.SPECIAL__CLASS_DELEGATE, oldClassDelegate, classDelegate));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.SPECIAL__CLASS_DELEGATE, oldClassDelegate, classDelegate));
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	@Override
 	public List<QSpecialElement> getElements() {
 		if (elements == null) {
-			elements = new EObjectContainmentEList<QSpecialElement>(QSpecialElement.class, this, QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS);
+			elements = new EObjectContainmentEList<QSpecialElement>(QSpecialElement.class, this, QIntegratedLanguageDataTermPackage.SPECIAL__ELEMENTS);
 		}
 		return elements;
 	}
@@ -128,7 +128,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__ELEMENTS:
 				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -141,9 +141,9 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.SPECIAL__CLASS_DELEGATE:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__CLASS_DELEGATE:
 				return getClassDelegate();
-			case QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__ELEMENTS:
 				return getElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -157,10 +157,10 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.SPECIAL__CLASS_DELEGATE:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__CLASS_DELEGATE:
 				setClassDelegate((String)newValue);
 				return;
-			case QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__ELEMENTS:
 				getElements().clear();
 				getElements().addAll((Collection<? extends QSpecialElement>)newValue);
 				return;
@@ -175,10 +175,10 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.SPECIAL__CLASS_DELEGATE:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__CLASS_DELEGATE:
 				setClassDelegate(CLASS_DELEGATE_EDEFAULT);
 				return;
-			case QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__ELEMENTS:
 				getElements().clear();
 				return;
 		}
@@ -192,9 +192,9 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.SPECIAL__CLASS_DELEGATE:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__CLASS_DELEGATE:
 				return CLASS_DELEGATE_EDEFAULT == null ? classDelegate != null : !CLASS_DELEGATE_EDEFAULT.equals(classDelegate);
-			case QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__ELEMENTS:
 				return elements != null && !elements.isEmpty();
 		}
 		return super.eIsSet(featureID);

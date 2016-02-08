@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core;
+package org.smeup.sys.il.data.term;
 
 import org.smeup.sys.il.core.meta.QFacet;
 
@@ -17,18 +17,18 @@ import org.smeup.sys.il.core.meta.QFacet;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.QFormat#getExpression <em>Expression</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.QFormat#getType <em>Type</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.QFormat#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.QFormat#getType <em>Type</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getFormat()
+ * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getFormat()
  * @model
  * @generated
  */
 public interface QFormat extends QFacet {
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute. The literals
-	 * are from the enumeration {@link org.smeup.sys.il.core.FormatType}. <!--
+	 * are from the enumeration {@link org.smeup.sys.il.data.term.FormatType}. <!--
 	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' attribute isn't clear, there really
@@ -37,7 +37,7 @@ public interface QFormat extends QFacet {
 	 * <!-- end-user-doc -->
 	 *
 	 * @return the value of the '<em>Type</em>' attribute.
-	 * @see org.smeup.sys.il.core.FormatType
+	 * @see org.smeup.sys.il.data.term.FormatType
 	 * @see #setType(FormatType)
 	 * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getFormat_Type()
 	 * @model required="true"
@@ -46,10 +46,10 @@ public interface QFormat extends QFacet {
 	FormatType getType();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.QFormat#getType <em>Type</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.data.term.QFormat#getType <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' attribute.
-	 * @see org.smeup.sys.il.core.FormatType
+	 * @see org.smeup.sys.il.data.term.FormatType
 	 * @see #getType()
 	 * @generated
 	 */
@@ -73,7 +73,7 @@ public interface QFormat extends QFacet {
 	String getExpression();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.QFormat#getExpression <em>Expression</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.data.term.QFormat#getExpression <em>Expression</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Expression</em>' attribute.
 	 * @see #getExpression()

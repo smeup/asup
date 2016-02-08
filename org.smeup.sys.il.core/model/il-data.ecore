@@ -1385,7 +1385,7 @@
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="set" eType="#//DataWriter">
-      <eParameters name="value" lowerBound="1" eType="ecore:EClass il-core.ecore#//SpecialElement"/>
+      <eParameters name="value" lowerBound="1" eType="#//term/SpecialElement"/>
     </eOperations>
     <eOperations name="set" eType="#//DataWriter">
       <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
@@ -3483,6 +3483,41 @@
           </eGenericType>
         </eParameters>
       </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Format" eSuperTypes="il-core.ecore#//meta/Facet">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1"
+          eType="#//term/FormatType"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="FormatType">
+      <eLiterals name="CommunicationsName" value="30" literal="CNAME"/>
+      <eLiterals name="CommandString" value="60" literal="SCMD"/>
+      <eLiterals name="Generic" value="50" literal="GENERIC"/>
+      <eLiterals name="Name" value="10" literal="NAME"/>
+      <eLiterals name="PathName" value="40" literal="PNAME"/>
+      <eLiterals name="RegularExpression" value="70" literal="REGEXP"/>
+      <eLiterals name="SimpleName" value="20" literal="SNAME"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Overlay" eSuperTypes="il-core.ecore#//meta/Facet">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Remap" eSuperTypes="il-core.ecore#//meta/Facet">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Special" eSuperTypes="il-core.ecore#//meta/Facet">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="classDelegate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+          eType="#//term/SpecialElement" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SpecialElement" eSuperTypes="il-core.ecore#//NamedNode">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="unary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

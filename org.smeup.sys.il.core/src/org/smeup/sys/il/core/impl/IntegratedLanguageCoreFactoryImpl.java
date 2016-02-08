@@ -13,16 +13,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.smeup.sys.il.core.FormatType;
-import org.smeup.sys.il.core.QFormat;
 import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectNameable;
-import org.smeup.sys.il.core.QOverlay;
-import org.smeup.sys.il.core.QRemap;
-import org.smeup.sys.il.core.QSpecial;
-import org.smeup.sys.il.core.QSpecialElement;
 import org.smeup.sys.il.core.ThreadStatus;
 
 /**
@@ -67,13 +61,8 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case QIntegratedLanguageCorePackage.FORMAT: return (EObject)createFormat();
 			case QIntegratedLanguageCorePackage.OBJECT: return (EObject)createObject();
 			case QIntegratedLanguageCorePackage.OBJECT_NAMEABLE: return (EObject)createObjectNameable();
-			case QIntegratedLanguageCorePackage.OVERLAY: return (EObject)createOverlay();
-			case QIntegratedLanguageCorePackage.REMAP: return (EObject)createRemap();
-			case QIntegratedLanguageCorePackage.SPECIAL: return (EObject)createSpecial();
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT: return (EObject)createSpecialElement();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -86,8 +75,6 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case QIntegratedLanguageCorePackage.FORMAT_TYPE:
-				return createFormatTypeFromString(eDataType, initialValue);
 			case QIntegratedLanguageCorePackage.THREAD_STATUS:
 				return createThreadStatusFromString(eDataType, initialValue);
 			default:
@@ -102,23 +89,11 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case QIntegratedLanguageCorePackage.FORMAT_TYPE:
-				return convertFormatTypeToString(eDataType, instanceValue);
 			case QIntegratedLanguageCorePackage.THREAD_STATUS:
 				return convertThreadStatusToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QFormat createFormat() {
-		FormatImpl format = new FormatImpl();
-		return format;
 	}
 
 	/**
@@ -139,64 +114,6 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 	public QObjectNameable createObjectNameable() {
 		ObjectNameableImpl objectNameable = new ObjectNameableImpl();
 		return objectNameable;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QOverlay createOverlay() {
-		OverlayImpl overlay = new OverlayImpl();
-		return overlay;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QRemap createRemap() {
-		RemapImpl remap = new RemapImpl();
-		return remap;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QSpecial createSpecial() {
-		SpecialImpl special = new SpecialImpl();
-		return special;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QSpecialElement createSpecialElement() {
-		SpecialElementImpl specialElement = new SpecialElementImpl();
-		return specialElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FormatType createFormatTypeFromString(EDataType eDataType, String initialValue) {
-		FormatType result = FormatType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertFormatTypeToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.annotation;
+package org.smeup.sys.il.data.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -14,12 +14,5 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.FIELD, ElementType.PARAMETER })
-public @interface Overlay {
-
-	String name() default NAME_OWNER;
-
-	int position() default 0;
-
-	public static final String NAME_OWNER = "*OWNER";
-	public static final String NAME_PGM_STATUS = "*PGMSTATUS";
+public @interface Optional {
 }

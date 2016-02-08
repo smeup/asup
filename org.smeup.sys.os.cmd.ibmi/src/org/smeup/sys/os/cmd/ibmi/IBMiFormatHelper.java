@@ -11,8 +11,8 @@
  */
 package org.smeup.sys.os.cmd.ibmi;
 
-import org.smeup.sys.il.core.FormatType;
-import org.smeup.sys.il.core.QFormat;
+import org.smeup.sys.il.data.term.FormatType;
+import org.smeup.sys.il.data.term.QFormat;
 
 public class IBMiFormatHelper {
 

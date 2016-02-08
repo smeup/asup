@@ -8,7 +8,6 @@
 package org.smeup.sys.il.core.impl;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EGenericType;
@@ -17,8 +16,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.smeup.sys.il.core.FormatType;
-import org.smeup.sys.il.core.QFormat;
 import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.QNameable;
@@ -28,10 +25,6 @@ import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectContainer;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
-import org.smeup.sys.il.core.QOverlay;
-import org.smeup.sys.il.core.QRemap;
-import org.smeup.sys.il.core.QSpecial;
-import org.smeup.sys.il.core.QSpecialElement;
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.core.ThreadStatus;
@@ -58,12 +51,6 @@ import org.smeup.sys.mi.core.util.QMachineInterfaceUtilPackage;
  * @generated
  */
 public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements QIntegratedLanguageCorePackage {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass formatEClass = null;
-
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -107,30 +94,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	private EClass objectNameableEClass = null;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass overlayEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass remapEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass specialEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass specialElementEClass = null;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -143,12 +106,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass threadManagerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum formatTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -248,33 +205,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	@Override
-	public EClass getFormat() {
-		return formatEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getFormat_Expression() {
-		return (EAttribute)formatEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getFormat_Type() {
-		return (EAttribute)formatEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getNameable() {
 		return nameableEClass;
 	}
@@ -352,132 +282,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getOverlay() {
-		return overlayEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getOverlay_Name() {
-		return (EAttribute)overlayEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getOverlay_Position() {
-		return (EAttribute)overlayEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getRemap() {
-		return remapEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getRemap_Name() {
-		return (EAttribute)remapEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getRemap_Index() {
-		return (EAttribute)remapEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getSpecial() {
-		return specialEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSpecial_ClassDelegate() {
-		return (EAttribute)specialEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getSpecial_Elements() {
-		return (EReference)specialEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getSpecialElement() {
-		return specialElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSpecialElement_Name() {
-		return (EAttribute)specialElementEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSpecialElement_Text() {
-		return (EAttribute)specialElementEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSpecialElement_Unary() {
-		return (EAttribute)specialElementEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSpecialElement_Value() {
-		return (EAttribute)specialElementEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -493,15 +297,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 */
 	public EClass getThreadManager() {
 		return threadManagerEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EEnum getFormatType() {
-		return formatTypeEEnum;
 	}
 
 	/**
@@ -540,10 +335,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		isCreated = true;
 
 		// Create classes and their features
-		formatEClass = createEClass(FORMAT);
-		createEAttribute(formatEClass, FORMAT__EXPRESSION);
-		createEAttribute(formatEClass, FORMAT__TYPE);
-
 		nameableEClass = createEClass(NAMEABLE);
 
 		namedNodeEClass = createEClass(NAMED_NODE);
@@ -560,30 +351,11 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 		objectNameableEClass = createEClass(OBJECT_NAMEABLE);
 
-		overlayEClass = createEClass(OVERLAY);
-		createEAttribute(overlayEClass, OVERLAY__NAME);
-		createEAttribute(overlayEClass, OVERLAY__POSITION);
-
-		remapEClass = createEClass(REMAP);
-		createEAttribute(remapEClass, REMAP__NAME);
-		createEAttribute(remapEClass, REMAP__INDEX);
-
-		specialEClass = createEClass(SPECIAL);
-		createEAttribute(specialEClass, SPECIAL__CLASS_DELEGATE);
-		createEReference(specialEClass, SPECIAL__ELEMENTS);
-
-		specialElementEClass = createEClass(SPECIAL_ELEMENT);
-		createEAttribute(specialElementEClass, SPECIAL_ELEMENT__NAME);
-		createEAttribute(specialElementEClass, SPECIAL_ELEMENT__TEXT);
-		createEAttribute(specialElementEClass, SPECIAL_ELEMENT__UNARY);
-		createEAttribute(specialElementEClass, SPECIAL_ELEMENT__VALUE);
-
 		threadEClass = createEClass(THREAD);
 
 		threadManagerEClass = createEClass(THREAD_MANAGER);
 
 		// Create enums
-		formatTypeEEnum = createEEnum(FORMAT_TYPE);
 		threadStatusEEnum = createEEnum(THREAD_STATUS);
 	}
 
@@ -634,7 +406,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		objectIteratorEClass_T.getEBounds().add(g1);
 
 		// Add supertypes to classes
-		formatEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		namedNodeEClass.getESuperTypes().add(this.getNode());
 		namedNodeEClass.getESuperTypes().add(this.getNameable());
 		objectContainerEClass.getESuperTypes().add(this.getObject());
@@ -646,10 +417,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		objectIteratorEClass.getEGenericSuperTypes().add(g1);
 		objectNameableEClass.getESuperTypes().add(this.getObject());
 		objectNameableEClass.getESuperTypes().add(this.getNameable());
-		overlayEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
-		remapEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
-		specialEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
-		specialElementEClass.getESuperTypes().add(this.getNamedNode());
 		threadEClass.getESuperTypes().add(this.getObject());
 		g1 = createEGenericType(theMachineInterfaceUtilPackage.getSingleton());
 		g2 = createEGenericType(this.getThreadManager());
@@ -657,10 +424,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		threadManagerEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(formatEClass, QFormat.class, "Format", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFormat_Expression(), ecorePackage.getEString(), "expression", null, 0, 1, QFormat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFormat_Type(), this.getFormatType(), "type", null, 1, 1, QFormat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(nameableEClass, QNameable.class, "Nameable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(nameableEClass, ecorePackage.getEString(), "getName", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -709,24 +472,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		addEOperation(objectIteratorEClass, null, "remove", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(objectNameableEClass, QObjectNameable.class, "ObjectNameable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(overlayEClass, QOverlay.class, "Overlay", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOverlay_Name(), ecorePackage.getEString(), "name", null, 0, 1, QOverlay.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOverlay_Position(), ecorePackage.getEInt(), "position", null, 0, 1, QOverlay.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(remapEClass, QRemap.class, "Remap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRemap_Name(), ecorePackage.getEString(), "name", null, 1, 1, QRemap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRemap_Index(), ecorePackage.getEString(), "index", null, 1, 1, QRemap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(specialEClass, QSpecial.class, "Special", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSpecial_ClassDelegate(), ecorePackage.getEString(), "classDelegate", null, 0, 1, QSpecial.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSpecial_Elements(), this.getSpecialElement(), null, "elements", null, 0, -1, QSpecial.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(specialElementEClass, QSpecialElement.class, "SpecialElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSpecialElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, QSpecialElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSpecialElement_Text(), ecorePackage.getEString(), "text", null, 0, 1, QSpecialElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSpecialElement_Unary(), ecorePackage.getEBoolean(), "unary", null, 0, 1, QSpecialElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSpecialElement_Value(), ecorePackage.getEString(), "value", null, 0, 1, QSpecialElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(threadEClass, QThread.class, "Thread", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -786,15 +531,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getThread(), "thread", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(formatTypeEEnum, FormatType.class, "FormatType");
-		addEEnumLiteral(formatTypeEEnum, FormatType.COMMUNICATIONS_NAME);
-		addEEnumLiteral(formatTypeEEnum, FormatType.COMMAND_STRING);
-		addEEnumLiteral(formatTypeEEnum, FormatType.GENERIC);
-		addEEnumLiteral(formatTypeEEnum, FormatType.NAME);
-		addEEnumLiteral(formatTypeEEnum, FormatType.PATH_NAME);
-		addEEnumLiteral(formatTypeEEnum, FormatType.REGULAR_EXPRESSION);
-		addEEnumLiteral(formatTypeEEnum, FormatType.SIMPLE_NAME);
-
 		initEEnum(threadStatusEEnum, ThreadStatus.class, "ThreadStatus");
 		addEEnumLiteral(threadStatusEEnum, ThreadStatus.NEW);
 		addEEnumLiteral(threadStatusEEnum, ThreadStatus.RUNNABLE);

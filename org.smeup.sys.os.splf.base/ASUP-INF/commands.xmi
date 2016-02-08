@@ -5,9 +5,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:il-core="http://www.smeup.org/asup/il/core"
     xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta"
-    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
+        xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" 
+    xmlns:il-data-term="http://www.smeup.org/asup/il/data/term"
+
     xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore"
+    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/data/term ../../org.smeup.sys.il.core/model/il-data.ecore#//term http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore"
     typeName="*SPLF">
   <contents
       xsi:type="os-cmd:Command"
@@ -28,10 +30,10 @@
               xsi:type="os-cmd:CommandData"
               name="user">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="GENERIC"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*CURRENT"
                   value="*CURRENT"/>
@@ -49,10 +51,10 @@
               xsi:type="os-cmd:CommandData"
               name="printDevice">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*ALL"
                   value="*ALL"/>
@@ -70,7 +72,7 @@
               xsi:type="os-cmd:CommandData"
               name="formType">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*ALL"
                   value="*ALL"/>
@@ -88,7 +90,7 @@
               xsi:type="os-cmd:CommandData"
               name="userData">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*ALL"
                   value="*ALL"/>
@@ -107,7 +109,7 @@
                 max="32"
                 min="1"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*ALL"
                   value="0"/>
@@ -125,10 +127,10 @@
               xsi:type="os-cmd:CommandData"
               name="spooledFile">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="GENERIC"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*ALL"
                   value="*ALL"/>
@@ -150,7 +152,7 @@
       <dataTerm
           name="jobName">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*ALL"
               unary="true"
@@ -165,7 +167,7 @@
               xsi:type="os-cmd:CommandData"
               name="nameGeneric">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="GENERIC"/>
             <cardinality
                 min="1"/>
@@ -177,10 +179,10 @@
               xsi:type="os-cmd:CommandData"
               name="user">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="GENERIC"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*ALL"
                   value="*ALL"/>
@@ -199,7 +201,7 @@
                 max="999999"
                 min="000000"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*ALL"
                   value="*ALL"/>
@@ -231,7 +233,7 @@
                   xsi:type="os-cmd:CommandData"
                   name="beginningTime">
                 <facets
-                    xsi:type="il-core:Special">
+                    xsi:type="il-data-term:Special">
                   <elements
                       name="*AVAIL"
                       value="000000"/>
@@ -246,7 +248,7 @@
                   xsi:type="os-cmd:CommandData"
                   name="beginningDate">
                 <facets
-                    xsi:type="il-core:Special">
+                    xsi:type="il-data-term:Special">
                   <elements
                       name="*BEGIN"
                       value="0000000"/>
@@ -267,7 +269,7 @@
                   xsi:type="os-cmd:CommandData"
                   name="endingTime">
                 <facets
-                    xsi:type="il-core:Special">
+                    xsi:type="il-data-term:Special">
                   <elements
                       name="*AVAIL"
                       value="235959"/>
@@ -282,7 +284,7 @@
                   xsi:type="os-cmd:CommandData"
                   name="endingDate">
                 <facets
-                    xsi:type="il-core:Special">
+                    xsi:type="il-data-term:Special">
                   <elements
                       name="*END"
                       value="0000000"/>
@@ -305,10 +307,10 @@
       <dataTerm
           name="aSPDevice">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>
@@ -335,7 +337,7 @@
           name="output"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>
@@ -359,7 +361,7 @@
           name="displayFormat"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*INLENV"
               value="*INLENV"/>
@@ -386,7 +388,7 @@
           name="assistanceLevel"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*PRV"
               value="*PRV"/>

@@ -5,12 +5,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.smeup.sys.il.core.QOverlay;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.il.data.term.QOverlay;
 import org.smeup.sys.il.data.term.impl.DataTermImpl;
 
 public class RPJDataStructureHelper {

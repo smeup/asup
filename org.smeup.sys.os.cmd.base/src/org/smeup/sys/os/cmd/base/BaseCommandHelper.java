@@ -14,9 +14,6 @@ package org.smeup.sys.os.cmd.base;
 import java.util.List;
 import java.util.ListIterator;
 
-import org.smeup.sys.il.core.QFormat;
-import org.smeup.sys.il.core.QSpecial;
-import org.smeup.sys.il.core.QSpecialElement;
 import org.smeup.sys.il.core.meta.QCardinality;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
@@ -26,6 +23,9 @@ import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QMultipleCompoundDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.il.data.term.QFormat;
+import org.smeup.sys.il.data.term.QSpecial;
+import org.smeup.sys.il.data.term.QSpecialElement;
 
 public class BaseCommandHelper {
 

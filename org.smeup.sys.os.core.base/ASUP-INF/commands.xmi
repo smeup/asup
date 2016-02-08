@@ -6,9 +6,11 @@
     xmlns:dk-core="http://www.smeup.com/asup/dk/core"
     xmlns:il-core="http://www.smeup.org/asup/il/core"
     xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta"
-    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
+    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" 
+    xmlns:il-data-term="http://www.smeup.org/asup/il/data/term"
+
     xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
-    xsi:schemaLocation="http://www.smeup.com/asup/dk/core ../../org.smeup.sys.dk.core/model/dk.core.ecore http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore">
+    xsi:schemaLocation="http://www.smeup.com/asup/dk/core ../../org.smeup.sys.dk.core/model/dk.core.ecore http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/data/term ../../org.smeup.sys.il.core/model/il-data.ecore#//term http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore">
   <contents
       xsi:type="os-cmd:Command"
       name="ADDENVVAR"
@@ -34,7 +36,7 @@
       <dataTerm
           name="initialValue">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NULL"
               value="*NULL"/>
@@ -58,7 +60,7 @@
             max="65535"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOB"
               value="0"/>
@@ -81,7 +83,7 @@
           name="level"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOB"
               value="*JOB"/>
@@ -104,7 +106,7 @@
           name="replaceExistingEntry"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="N"/>
@@ -148,7 +150,7 @@
       <dataTerm
           name="initialValue">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -175,7 +177,7 @@
             max="65535"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOB"
               value="0"/>
@@ -198,7 +200,7 @@
           name="level"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOB"
               value="*JOB"/>
@@ -229,7 +231,7 @@
       <dataTerm
           name="jobName">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               unary="true"
@@ -244,7 +246,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -254,7 +256,7 @@
               xsi:type="os-cmd:CommandData"
               name="user">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -286,7 +288,7 @@
             max="9"
             min="0"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*"/>
@@ -310,7 +312,7 @@
             max="9"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*"/>
@@ -330,10 +332,10 @@
       <dataTerm
           name="printDevice">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -362,7 +364,7 @@
       <dataTerm
           name="outputQueue">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               unary="true"
@@ -389,7 +391,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -399,10 +401,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -431,7 +433,7 @@
             max="99"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="0"/>
@@ -451,7 +453,7 @@
       <dataTerm
           name="jobQueue">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               unary="true"
@@ -466,7 +468,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -476,10 +478,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -504,7 +506,7 @@
       <dataTerm
           name="printText">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -539,7 +541,7 @@
                 max="4"
                 min="0"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*SAME"
                   value="*"/>
@@ -558,7 +560,7 @@
                 max="99"
                 min="0"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*SAME"
                   value="-2"/>
@@ -574,7 +576,7 @@
               name="text"
               restricted="true">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*SAME"
                   value="*"/>
@@ -606,7 +608,7 @@
           name="logCLProgramCommands"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*"/>
@@ -633,7 +635,7 @@
           name="jobLogOutput"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -666,7 +668,7 @@
           name="jobMessageQueueFullAction"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*"/>
@@ -699,7 +701,7 @@
           name="inquiryMessageReply"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*"/>
@@ -729,7 +731,7 @@
           name="breakMessageHandling"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -759,7 +761,7 @@
           name="statusMessage"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -792,7 +794,7 @@
           name="dDMConversation"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*"/>
@@ -818,7 +820,7 @@
       <dataTerm
           name="scheduleDate">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="0000000"/>
@@ -867,7 +869,7 @@
       <dataTerm
           name="scheduleTime">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="888888"/>
@@ -889,7 +891,7 @@
       <dataTerm
           name="jobDate">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="0000000"/>
@@ -908,7 +910,7 @@
           name="dateFormat"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="-1"/>
@@ -944,7 +946,7 @@
           name="dateSeparator"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*"/>
@@ -986,7 +988,7 @@
           name="timeSeparator"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*"/>
@@ -1023,7 +1025,7 @@
       <dataTerm
           name="jobSwitches">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -1047,7 +1049,7 @@
             max="9999999"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="0"/>
@@ -1068,7 +1070,7 @@
           name="eligibleForPurge"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*"/>
@@ -1098,7 +1100,7 @@
             max="9999999"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="0"/>
@@ -1122,7 +1124,7 @@
           name="deviceRecoveryAction"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -1161,7 +1163,7 @@
           name="timeSliceEndPool"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -1191,7 +1193,7 @@
           name="printKeyFormat"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -1226,7 +1228,7 @@
       <dataTerm
           name="sortSequence">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               unary="true"
@@ -1261,7 +1263,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -1271,10 +1273,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -1299,7 +1301,7 @@
       <dataTerm
           name="languageID">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*"/>
@@ -1325,7 +1327,7 @@
       <dataTerm
           name="countryOrRegionID">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*"/>
@@ -1355,7 +1357,7 @@
             max="65535"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="0"/>
@@ -1385,7 +1387,7 @@
           name="decimalFormat"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*"/>
@@ -1418,7 +1420,7 @@
           name="characterIdentifierControl"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -1451,7 +1453,7 @@
           name="spooledFileAction"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -1480,10 +1482,10 @@
       <dataTerm
           name="wORKLOADCAPPINGGROUP">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="SNAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="*SAME"/>
@@ -1507,7 +1509,7 @@
           name="duplicateJobOption"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SELECT"
               value="*SELECT"/>
@@ -1575,7 +1577,7 @@
       <dataTerm
           name="jobName">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               unary="true"
@@ -1590,7 +1592,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -1600,7 +1602,7 @@
               xsi:type="os-cmd:CommandData"
               name="user">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -1629,7 +1631,7 @@
           name="output"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>
@@ -1664,7 +1666,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -1674,10 +1676,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -1707,10 +1709,10 @@
               xsi:type="os-cmd:CommandData"
               name="memberToReceiveOutput">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*FIRST"
                   value="*FIRST"/>
@@ -1726,7 +1728,7 @@
               name="replaceOrAddRecords"
               restricted="true">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*REPLACE"
                   value="REPLACE"/>
@@ -1760,7 +1762,7 @@
       <dataTerm
           name="jobName">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               unary="true"
@@ -1775,7 +1777,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -1785,7 +1787,7 @@
               xsi:type="os-cmd:CommandData"
               name="user">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -1813,7 +1815,7 @@
           name="output"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>
@@ -1851,7 +1853,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -1861,10 +1863,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -1894,10 +1896,10 @@
               xsi:type="os-cmd:CommandData"
               name="memberToReceiveOutput">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*FIRST"
                   value="*FIRST"/>
@@ -1913,7 +1915,7 @@
               name="replaceOrAddRecords"
               restricted="true">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*REPLACE"
                   value="REPLACE"/>
@@ -1946,7 +1948,7 @@
       <dataTerm
           name="jobName">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               unary="true"
@@ -1959,7 +1961,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -1969,7 +1971,7 @@
               xsi:type="os-cmd:CommandData"
               name="user">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -1998,7 +2000,7 @@
           name="howToEnd"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CNTRLD"
               value="C"/>
@@ -2040,7 +2042,7 @@
           name="deleteSpooledFiles"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="N"/>
@@ -2063,7 +2065,7 @@
       <dataTerm
           name="maximumLogEntries">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="-2"/>
@@ -2087,7 +2089,7 @@
           name="additionalInteractiveJobs"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NONE"
               value="NON"/>
@@ -2114,7 +2116,7 @@
           name="duplicateJobOption"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SELECT"
               value="*SELECT"/>
@@ -2146,7 +2148,7 @@
       <dataTerm
           name="jobName">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               unary="true"
@@ -2159,7 +2161,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -2169,7 +2171,7 @@
               xsi:type="os-cmd:CommandData"
               name="user">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -2199,7 +2201,7 @@
           name="howToEnd"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CNTRLD"
               value="C"/>
@@ -2243,7 +2245,7 @@
           name="deleteSpooledFiles"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="N"/>
@@ -2267,7 +2269,7 @@
       <dataTerm
           name="maximumLogEntries">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SAME"
               value="-2"/>
@@ -2292,7 +2294,7 @@
           name="additionalInteractiveJobs"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NONE"
               value="NON"/>
@@ -2319,7 +2321,7 @@
           name="duplicateJobOption"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SELECT"
               value="*SELECT"/>
@@ -2371,7 +2373,7 @@
           name="restart"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="*NO"/>
@@ -2404,10 +2406,10 @@
       <dataTerm
           name="activationGroup">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*ELIGIBLE"
               value="*ELIGIBLE"/>
@@ -2426,7 +2428,7 @@
           name="closeOption"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NORMAL"
               value="N"/>
@@ -2460,7 +2462,7 @@
           name="programLevel"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>
@@ -2484,7 +2486,7 @@
           name="closeOption"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NORMAL"
               value="N"/>
@@ -2549,7 +2551,7 @@
           name="level"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOB"
               value="*JOB"/>
@@ -3320,7 +3322,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <default
                 value="QRPGSRC"/>
@@ -3332,10 +3334,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -3360,7 +3362,7 @@
       <dataTerm
           name="sourceMember">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <default
             value="*PGM"/>
@@ -3387,7 +3389,7 @@
           name="log"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NOLIST"
               value="*NOLIST"/>
@@ -3420,7 +3422,7 @@
       <dataTerm
           name="commandToRun">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="SCMD"/>
         <definition
             xsi:type="il-data-def:CharacterDef"
@@ -3435,10 +3437,10 @@
       <dataTerm
           name="jobName">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOBD"
               value="*JOBD"/>
@@ -3458,7 +3460,7 @@
       <dataTerm
           name="jobDescription">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*USRPRF"
               unary="true"
@@ -3473,7 +3475,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -3483,10 +3485,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -3511,7 +3513,7 @@
       <dataTerm
           name="jobQueue">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOBD"
               unary="true"
@@ -3526,7 +3528,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -3536,10 +3538,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -3568,7 +3570,7 @@
             max="9"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOBD"
               value="*"/>
@@ -3592,7 +3594,7 @@
             max="9"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOBD"
               value="*"/>
@@ -3612,10 +3614,10 @@
       <dataTerm
           name="printDevice">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               value="*CURRENT"/>
@@ -3644,7 +3646,7 @@
       <dataTerm
           name="outputQueue">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               unary="true"
@@ -3671,7 +3673,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -3681,10 +3683,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -3709,10 +3711,10 @@
       <dataTerm
           name="user">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               value="*CURRENT"/>
@@ -3735,7 +3737,7 @@
       <dataTerm
           name="accountingCode">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               value="*CURRENT"/>
@@ -3761,7 +3763,7 @@
       <dataTerm
           name="printText">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               value="*CURRENT"/>
@@ -3790,7 +3792,7 @@
       <dataTerm
           name="routingData">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOBD"
               value="*JOBD"/>
@@ -3813,7 +3815,7 @@
       <dataTerm
           name="requestDataOrCommand">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CMD"
               value="*CMD"/>
@@ -3843,7 +3845,7 @@
           name="systemLibraryList"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               value="*CURRENT"/>
@@ -3866,10 +3868,10 @@
       <dataTerm
           name="currentLibrary">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               value="*CURRENT"/>
@@ -3895,10 +3897,10 @@
       <dataTerm
           name="initialLibraryList">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               unary="true"
@@ -3938,10 +3940,10 @@
       <dataTerm
           name="initialASPGroup">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               value="*CURRENT"/>
@@ -3976,7 +3978,7 @@
                 max="4"
                 min="0"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*JOBD"
                   value="*"/>
@@ -3995,7 +3997,7 @@
                 max="99"
                 min="0"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*JOBD"
                   value="-2"/>
@@ -4011,7 +4013,7 @@
               name="text"
               restricted="true">
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*JOBD"
                   value="*"/>
@@ -4043,7 +4045,7 @@
           name="logCLProgramCommands"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOBD"
               value="*"/>
@@ -4070,7 +4072,7 @@
           name="jobLogOutput"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOBD"
               value="*JOBD"/>
@@ -4106,7 +4108,7 @@
             max="64"
             min="2"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOBD"
               value="1"/>
@@ -4130,7 +4132,7 @@
           name="jobMessageQueueFullAction"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOBD"
               value="D"/>
@@ -4163,7 +4165,7 @@
           name="inquiryMessageReply"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOBD"
               value="*"/>
@@ -4193,7 +4195,7 @@
           name="holdOnJobQueue"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOBD"
               value="*"/>
@@ -4219,7 +4221,7 @@
       <dataTerm
           name="scheduleDate">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               value="0000001"/>
@@ -4265,7 +4267,7 @@
       <dataTerm
           name="scheduleTime">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               value="999999"/>
@@ -4285,7 +4287,7 @@
       <dataTerm
           name="jobDate">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOBD"
               value="0020000"/>
@@ -4307,7 +4309,7 @@
       <dataTerm
           name="jobSwitches">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOBD"
               value="*JOBD"/>
@@ -4328,7 +4330,7 @@
           name="allowDisplayByWRKSBMJOB"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*YES"
               value="Y"/>
@@ -4351,7 +4353,7 @@
       <dataTerm
           name="submittedFor">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               unary="true"
@@ -4366,7 +4368,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -4376,7 +4378,7 @@
               xsi:type="os-cmd:CommandData"
               name="user">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -4404,7 +4406,7 @@
       <dataTerm
           name="messageQueue">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*USRPRF"
               unary="true"
@@ -4427,7 +4429,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -4437,10 +4439,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -4465,7 +4467,7 @@
       <dataTerm
           name="sortSequence">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               unary="true"
@@ -4500,7 +4502,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -4510,10 +4512,10 @@
               xsi:type="os-cmd:CommandData"
               name="library">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*LIBL"
                   value="*LIBL"/>
@@ -4538,7 +4540,7 @@
       <dataTerm
           name="languageID">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               value="*"/>
@@ -4564,7 +4566,7 @@
       <dataTerm
           name="countryOrRegionID">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               value="*"/>
@@ -4594,7 +4596,7 @@
             max="65535"
             min="1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               value="0"/>
@@ -4624,7 +4626,7 @@
           name="copyEnvironmentVariables"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="N"/>
@@ -4648,7 +4650,7 @@
           name="allowMultipleThreads"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOBD"
               value="*"/>
@@ -4675,7 +4677,7 @@
           name="spooledFileAction"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*CURRENT"
               value="*CURRENT"/>
@@ -4718,7 +4720,7 @@
           name="output"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>
@@ -4742,7 +4744,7 @@
           name="resetStatusStatistics"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NO"
               value="N"/>
@@ -4765,10 +4767,10 @@
       <dataTerm
           name="subsystem">
         <facets
-            xsi:type="il-core:Format"
+            xsi:type="il-data-term:Format"
             type="NAME"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*ALL"
               unary="true"
@@ -4800,7 +4802,7 @@
             max="99.9"
             min="0.1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NONE"
               value="-1.0"/>
@@ -4825,7 +4827,7 @@
             max="999.9"
             min="0.1"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*NONE"
               value="-1.0"/>
@@ -4847,7 +4849,7 @@
           name="sequence"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SBS"
               value="1"/>
@@ -4918,10 +4920,10 @@
               xsi:type="os-cmd:CommandData"
               name="nameGeneric">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="GENERIC"/>
             <facets
-                xsi:type="il-core:Special">
+                xsi:type="il-data-term:Special">
               <elements
                   name="*ALL"
                   value="*ALL"/>
@@ -4953,7 +4955,7 @@
             max="999"
             min="5"/>
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*PRV"
               value="-1"/>
@@ -4990,7 +4992,7 @@
           name="output"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>
@@ -5022,7 +5024,7 @@
           name="level"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*JOB"
               value="*JOB"/>
@@ -5055,7 +5057,7 @@
       <dataTerm
           name="jobName">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               unary="true"
@@ -5070,7 +5072,7 @@
               xsi:type="os-cmd:CommandData"
               name="name">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -5080,7 +5082,7 @@
               xsi:type="os-cmd:CommandData"
               name="user">
             <facets
-                xsi:type="il-core:Format"
+                xsi:type="il-data-term:Format"
                 type="NAME"/>
             <definition
                 xsi:type="il-data-def:CharacterDef"
@@ -5109,7 +5111,7 @@
           name="output"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*"
               value="*"/>
@@ -5133,7 +5135,7 @@
           name="option"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SELECT"
               value="13"/>
@@ -5205,7 +5207,7 @@
           name="duplicateJobOption"
           restricted="true">
         <facets
-            xsi:type="il-core:Special">
+            xsi:type="il-data-term:Special">
           <elements
               name="*SELECT"
               value="*SELECT"/>

@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="core" nsURI="http://www.smeup.org/asup/il/core" nsPrefix="il-core">
-  <eClassifiers xsi:type="ecore:EClass" name="Format" eSuperTypes="#//meta/Facet">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//FormatType"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="FormatType">
-    <eLiterals name="CommunicationsName" value="30" literal="CNAME"/>
-    <eLiterals name="CommandString" value="60" literal="SCMD"/>
-    <eLiterals name="Generic" value="50" literal="GENERIC"/>
-    <eLiterals name="Name" value="10" literal="NAME"/>
-    <eLiterals name="PathName" value="40" literal="PNAME"/>
-    <eLiterals name="RegularExpression" value="70" literal="REGEXP"/>
-    <eLiterals name="SimpleName" value="20" literal="SNAME"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Nameable" abstract="true" interface="true">
     <eOperations name="getName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -65,25 +52,6 @@
     <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectNameable" eSuperTypes="#//Object #//Nameable"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Overlay" eSuperTypes="#//meta/Facet">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Remap" eSuperTypes="#//meta/Facet">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Special" eSuperTypes="#//meta/Facet">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="classDelegate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
-        eType="#//SpecialElement" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SpecialElement" eSuperTypes="#//NamedNode">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Thread" abstract="true" interface="true"
       eSuperTypes="#//Object">
     <eOperations name="checkRunnable" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>

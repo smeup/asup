@@ -28,9 +28,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.osgi.framework.FrameworkUtil;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
-import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
-import org.smeup.sys.il.core.QOverlay;
-import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
@@ -61,6 +58,7 @@ import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.SortDirection;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.DataType;
+import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.DateFormat;
@@ -95,6 +93,8 @@ import org.smeup.sys.il.data.def.TimeFormat;
 import org.smeup.sys.il.data.def.impl.EnumDefImpl;
 import org.smeup.sys.il.data.def.impl.ListDefImpl;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermFactory;
+import org.smeup.sys.il.data.term.QOverlay;
 
 public class NIODataFactoryImpl implements QDataFactory {
 
@@ -791,7 +791,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 					Object object = method.invoke(annotation, new Object[] {});
 					if (object instanceof Overlay) {
 						Overlay overlay = (Overlay) object;
-						QOverlay qOverlay = QIntegratedLanguageCoreFactory.eINSTANCE.createOverlay();
+						QOverlay qOverlay = QIntegratedLanguageDataTermFactory.eINSTANCE.createOverlay();
 						if (!overlay.name().equalsIgnoreCase(Overlay.NAME_OWNER))
 							// TODO remove lowerCase
 							qOverlay.setName(overlay.name().toLowerCase());

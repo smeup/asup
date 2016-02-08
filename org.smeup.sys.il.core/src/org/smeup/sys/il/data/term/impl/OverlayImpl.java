@@ -5,14 +5,14 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.impl;
+package org.smeup.sys.il.data.term.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.QOverlay;
 import org.smeup.sys.il.core.meta.impl.FacetImpl;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
+import org.smeup.sys.il.data.term.QOverlay;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -21,8 +21,8 @@ import org.smeup.sys.il.core.meta.impl.FacetImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.impl.OverlayImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.impl.OverlayImpl#getPosition <em>Position</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.impl.OverlayImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.impl.OverlayImpl#getPosition <em>Position</em>}</li>
  * </ul>
  *
  * @generated
@@ -83,7 +83,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QIntegratedLanguageCorePackage.Literals.OVERLAY;
+		return QIntegratedLanguageDataTermPackage.Literals.OVERLAY;
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.OVERLAY__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.OVERLAY__NAME, oldName, name));
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 		int oldPosition = position;
 		position = newPosition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.OVERLAY__POSITION, oldPosition, position));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.OVERLAY__POSITION, oldPosition, position));
 	}
 
 	/**
@@ -135,9 +135,9 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.OVERLAY__NAME:
+			case QIntegratedLanguageDataTermPackage.OVERLAY__NAME:
 				return getName();
-			case QIntegratedLanguageCorePackage.OVERLAY__POSITION:
+			case QIntegratedLanguageDataTermPackage.OVERLAY__POSITION:
 				return getPosition();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -150,10 +150,10 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.OVERLAY__NAME:
+			case QIntegratedLanguageDataTermPackage.OVERLAY__NAME:
 				setName((String)newValue);
 				return;
-			case QIntegratedLanguageCorePackage.OVERLAY__POSITION:
+			case QIntegratedLanguageDataTermPackage.OVERLAY__POSITION:
 				setPosition((Integer)newValue);
 				return;
 		}
@@ -167,10 +167,10 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.OVERLAY__NAME:
+			case QIntegratedLanguageDataTermPackage.OVERLAY__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case QIntegratedLanguageCorePackage.OVERLAY__POSITION:
+			case QIntegratedLanguageDataTermPackage.OVERLAY__POSITION:
 				setPosition(POSITION_EDEFAULT);
 				return;
 		}
@@ -184,9 +184,9 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.OVERLAY__NAME:
+			case QIntegratedLanguageDataTermPackage.OVERLAY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case QIntegratedLanguageCorePackage.OVERLAY__POSITION:
+			case QIntegratedLanguageDataTermPackage.OVERLAY__POSITION:
 				return position != POSITION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

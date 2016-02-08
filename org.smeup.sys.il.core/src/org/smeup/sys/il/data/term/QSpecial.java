@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core;
+package org.smeup.sys.il.data.term;
 
 import java.util.List;
 
@@ -19,11 +19,11 @@ import org.smeup.sys.il.core.meta.QFacet;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.QSpecial#getClassDelegate <em>Class Delegate</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.QSpecial#getElements <em>Elements</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.QSpecial#getClassDelegate <em>Class Delegate</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.QSpecial#getElements <em>Elements</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getSpecial()
+ * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getSpecial()
  * @model
  * @generated
  */
@@ -46,7 +46,7 @@ public interface QSpecial extends QFacet {
 	String getClassDelegate();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.QSpecial#getClassDelegate <em>Class Delegate</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.data.term.QSpecial#getClassDelegate <em>Class Delegate</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @param value the new value of the '<em>Class Delegate</em>' attribute.
@@ -57,7 +57,7 @@ public interface QSpecial extends QFacet {
 
 	/**
 	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.il.core.QSpecialElement}.
+	 * The list contents are of type {@link org.smeup.sys.il.data.term.QSpecialElement}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Elements</em>' containment reference list
@@ -65,7 +65,7 @@ public interface QSpecial extends QFacet {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Elements</em>' containment reference list.
-	 * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getSpecial_Elements()
+	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getSpecial_Elements()
 	 * @model containment="true"
 	 * @generated
 	 */

@@ -18,7 +18,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.QThread;
-import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
@@ -41,6 +40,7 @@ import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Module;
+import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.annotation.Module.Scope;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.DecimalType;

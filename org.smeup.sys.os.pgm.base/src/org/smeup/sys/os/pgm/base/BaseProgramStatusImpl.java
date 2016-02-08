@@ -1,10 +1,10 @@
 package org.smeup.sys.os.pgm.base;
 
-import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.annotation.DataDef;
+import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.os.pgm.QProgramStatus;
 
 public class BaseProgramStatusImpl extends QDataStructWrapper implements QProgramStatus {

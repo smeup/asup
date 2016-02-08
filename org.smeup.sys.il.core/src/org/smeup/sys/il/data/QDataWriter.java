@@ -8,7 +8,8 @@
 package org.smeup.sys.il.data;
 
 import java.lang.String;
-import org.smeup.sys.il.core.QSpecialElement;
+
+import org.smeup.sys.il.data.term.QSpecialElement;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

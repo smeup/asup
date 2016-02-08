@@ -31,11 +31,17 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl;
 import org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl;
 import org.smeup.sys.il.data.term.DataTermType;
+import org.smeup.sys.il.data.term.FormatType;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QDataTermContainer;
 import org.smeup.sys.il.data.term.QDataTermVisitor;
+import org.smeup.sys.il.data.term.QFormat;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermFactory;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
+import org.smeup.sys.il.data.term.QOverlay;
+import org.smeup.sys.il.data.term.QRemap;
+import org.smeup.sys.il.data.term.QSpecial;
+import org.smeup.sys.il.data.term.QSpecialElement;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
@@ -63,10 +69,52 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 	private EClass dataTermVisitorEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass formatEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass overlayEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass remapEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass specialEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass specialElementEClass = null;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum dataTermTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum formatTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -272,12 +320,174 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFormat() {
+		return formatEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFormat_Expression() {
+		return (EAttribute)formatEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFormat_Type() {
+		return (EAttribute)formatEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOverlay() {
+		return overlayEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOverlay_Name() {
+		return (EAttribute)overlayEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOverlay_Position() {
+		return (EAttribute)overlayEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRemap() {
+		return remapEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRemap_Name() {
+		return (EAttribute)remapEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRemap_Index() {
+		return (EAttribute)remapEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSpecial() {
+		return specialEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSpecial_ClassDelegate() {
+		return (EAttribute)specialEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSpecial_Elements() {
+		return (EReference)specialEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSpecialElement() {
+		return specialElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSpecialElement_Name() {
+		return (EAttribute)specialElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSpecialElement_Text() {
+		return (EAttribute)specialElementEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSpecialElement_Unary() {
+		return (EAttribute)specialElementEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSpecialElement_Value() {
+		return (EAttribute)specialElementEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public EEnum getDataTermType() {
 		return dataTermTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getFormatType() {
+		return formatTypeEEnum;
 	}
 
 	/**
@@ -323,8 +533,31 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 
 		dataTermVisitorEClass = createEClass(DATA_TERM_VISITOR);
 
+		formatEClass = createEClass(FORMAT);
+		createEAttribute(formatEClass, FORMAT__EXPRESSION);
+		createEAttribute(formatEClass, FORMAT__TYPE);
+
+		overlayEClass = createEClass(OVERLAY);
+		createEAttribute(overlayEClass, OVERLAY__NAME);
+		createEAttribute(overlayEClass, OVERLAY__POSITION);
+
+		remapEClass = createEClass(REMAP);
+		createEAttribute(remapEClass, REMAP__NAME);
+		createEAttribute(remapEClass, REMAP__INDEX);
+
+		specialEClass = createEClass(SPECIAL);
+		createEAttribute(specialEClass, SPECIAL__CLASS_DELEGATE);
+		createEReference(specialEClass, SPECIAL__ELEMENTS);
+
+		specialElementEClass = createEClass(SPECIAL_ELEMENT);
+		createEAttribute(specialElementEClass, SPECIAL_ELEMENT__NAME);
+		createEAttribute(specialElementEClass, SPECIAL_ELEMENT__TEXT);
+		createEAttribute(specialElementEClass, SPECIAL_ELEMENT__UNARY);
+		createEAttribute(specialElementEClass, SPECIAL_ELEMENT__VALUE);
+
 		// Create enums
 		dataTermTypeEEnum = createEEnum(DATA_TERM_TYPE);
+		formatTypeEEnum = createEEnum(FORMAT_TYPE);
 	}
 
 	/**
@@ -373,6 +606,11 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 		EGenericType g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);
 		dataTermContainerEClass.getEGenericSuperTypes().add(g1);
+		formatEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
+		overlayEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
+		remapEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
+		specialEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
+		specialElementEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNamedNode());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataTermEClass, QDataTerm.class, "DataTerm", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -409,12 +647,43 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "term", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(formatEClass, QFormat.class, "Format", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFormat_Expression(), ecorePackage.getEString(), "expression", null, 0, 1, QFormat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFormat_Type(), this.getFormatType(), "type", null, 1, 1, QFormat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(overlayEClass, QOverlay.class, "Overlay", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOverlay_Name(), ecorePackage.getEString(), "name", null, 0, 1, QOverlay.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOverlay_Position(), ecorePackage.getEInt(), "position", null, 0, 1, QOverlay.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(remapEClass, QRemap.class, "Remap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRemap_Name(), ecorePackage.getEString(), "name", null, 1, 1, QRemap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRemap_Index(), ecorePackage.getEString(), "index", null, 1, 1, QRemap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(specialEClass, QSpecial.class, "Special", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSpecial_ClassDelegate(), ecorePackage.getEString(), "classDelegate", null, 0, 1, QSpecial.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSpecial_Elements(), this.getSpecialElement(), null, "elements", null, 0, -1, QSpecial.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(specialElementEClass, QSpecialElement.class, "SpecialElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSpecialElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, QSpecialElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSpecialElement_Text(), ecorePackage.getEString(), "text", null, 0, 1, QSpecialElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSpecialElement_Unary(), ecorePackage.getEBoolean(), "unary", null, 0, 1, QSpecialElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSpecialElement_Value(), ecorePackage.getEString(), "value", null, 0, 1, QSpecialElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(dataTermTypeEEnum, DataTermType.class, "DataTermType");
 		addEEnumLiteral(dataTermTypeEEnum, DataTermType.UNARY_ATOMIC);
 		addEEnumLiteral(dataTermTypeEEnum, DataTermType.UNARY_COMPOUND);
 		addEEnumLiteral(dataTermTypeEEnum, DataTermType.MULTIPLE_ATOMIC);
 		addEEnumLiteral(dataTermTypeEEnum, DataTermType.MULTIPLE_COMPOUND);
+
+		initEEnum(formatTypeEEnum, FormatType.class, "FormatType");
+		addEEnumLiteral(formatTypeEEnum, FormatType.COMMUNICATIONS_NAME);
+		addEEnumLiteral(formatTypeEEnum, FormatType.COMMAND_STRING);
+		addEEnumLiteral(formatTypeEEnum, FormatType.GENERIC);
+		addEEnumLiteral(formatTypeEEnum, FormatType.NAME);
+		addEEnumLiteral(formatTypeEEnum, FormatType.PATH_NAME);
+		addEEnumLiteral(formatTypeEEnum, FormatType.REGULAR_EXPRESSION);
+		addEEnumLiteral(formatTypeEEnum, FormatType.SIMPLE_NAME);
 	}
 
 } // IntegratedLanguageDataTermPackageImpl

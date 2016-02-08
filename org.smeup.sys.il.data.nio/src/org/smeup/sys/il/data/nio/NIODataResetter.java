@@ -11,8 +11,6 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import org.smeup.sys.il.core.QSpecial;
-import org.smeup.sys.il.core.QSpecialElement;
 import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataArea;
@@ -23,6 +21,8 @@ import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QDataAreaDef;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.il.data.term.QSpecial;
+import org.smeup.sys.il.data.term.QSpecialElement;
 import org.smeup.sys.il.data.term.impl.DataTermVisitorImpl;
 
 public class NIODataResetter extends DataTermVisitorImpl {

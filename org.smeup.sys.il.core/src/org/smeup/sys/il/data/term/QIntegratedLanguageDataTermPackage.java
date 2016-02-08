@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 
 /**
@@ -208,13 +210,235 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	int DATA_TERM_VISITOR_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.term.impl.FormatImpl <em>Format</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.term.impl.FormatImpl
+	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getFormat()
+	 * @generated
+	 */
+	int FORMAT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORMAT__EXPRESSION = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORMAT__TYPE = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Format</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORMAT_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.term.impl.OverlayImpl <em>Overlay</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.term.impl.OverlayImpl
+	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getOverlay()
+	 * @generated
+	 */
+	int OVERLAY = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OVERLAY__NAME = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OVERLAY__POSITION = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Overlay</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OVERLAY_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.term.impl.RemapImpl <em>Remap</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.term.impl.RemapImpl
+	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getRemap()
+	 * @generated
+	 */
+	int REMAP = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMAP__NAME = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Index</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMAP__INDEX = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Remap</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMAP_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.term.impl.SpecialImpl <em>Special</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.term.impl.SpecialImpl
+	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getSpecial()
+	 * @generated
+	 */
+	int SPECIAL = 6;
+
+	/**
+	 * The feature id for the '<em><b>Class Delegate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL__CLASS_DELEGATE = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL__ELEMENTS = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Special</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.term.impl.SpecialElementImpl <em>Special Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.term.impl.SpecialElementImpl
+	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getSpecialElement()
+	 * @generated
+	 */
+	int SPECIAL_ELEMENT = 7;
+
+	/**
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_ELEMENT__FACETS = QIntegratedLanguageCorePackage.NAMED_NODE__FACETS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_ELEMENT__NAME = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_ELEMENT__TEXT = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Unary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_ELEMENT__UNARY = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_ELEMENT__VALUE = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Special Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_ELEMENT_FEATURE_COUNT = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 4;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.term.DataTermType <em>Data Term Type</em>}' enum.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.data.term.DataTermType
 	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getDataTermType()
 	 * @generated
 	 */
-	int DATA_TERM_TYPE = 3;
+	int DATA_TERM_TYPE = 8;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.term.FormatType <em>Format Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.term.FormatType
+	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getFormatType()
+	 * @generated
+	 */
+	int FORMAT_TYPE = 9;
 
 	/**
 	 * Returns the meta object for class '
@@ -359,6 +583,188 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	EClass getDataTermVisitor();
 
 	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.term.QFormat <em>Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Format</em>'.
+	 * @see org.smeup.sys.il.data.term.QFormat
+	 * @generated
+	 */
+	EClass getFormat();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QFormat#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Expression</em>'.
+	 * @see org.smeup.sys.il.data.term.QFormat#getExpression()
+	 * @see #getFormat()
+	 * @generated
+	 */
+	EAttribute getFormat_Expression();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QFormat#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see org.smeup.sys.il.data.term.QFormat#getType()
+	 * @see #getFormat()
+	 * @generated
+	 */
+	EAttribute getFormat_Type();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.term.QOverlay <em>Overlay</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Overlay</em>'.
+	 * @see org.smeup.sys.il.data.term.QOverlay
+	 * @generated
+	 */
+	EClass getOverlay();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QOverlay#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.smeup.sys.il.data.term.QOverlay#getName()
+	 * @see #getOverlay()
+	 * @generated
+	 */
+	EAttribute getOverlay_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QOverlay#getPosition <em>Position</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position</em>'.
+	 * @see org.smeup.sys.il.data.term.QOverlay#getPosition()
+	 * @see #getOverlay()
+	 * @generated
+	 */
+	EAttribute getOverlay_Position();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.term.QRemap <em>Remap</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Remap</em>'.
+	 * @see org.smeup.sys.il.data.term.QRemap
+	 * @generated
+	 */
+	EClass getRemap();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QRemap#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.smeup.sys.il.data.term.QRemap#getName()
+	 * @see #getRemap()
+	 * @generated
+	 */
+	EAttribute getRemap_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QRemap#getIndex <em>Index</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Index</em>'.
+	 * @see org.smeup.sys.il.data.term.QRemap#getIndex()
+	 * @see #getRemap()
+	 * @generated
+	 */
+	EAttribute getRemap_Index();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.term.QSpecial <em>Special</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Special</em>'.
+	 * @see org.smeup.sys.il.data.term.QSpecial
+	 * @generated
+	 */
+	EClass getSpecial();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QSpecial#getClassDelegate <em>Class Delegate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Class Delegate</em>'.
+	 * @see org.smeup.sys.il.data.term.QSpecial#getClassDelegate()
+	 * @see #getSpecial()
+	 * @generated
+	 */
+	EAttribute getSpecial_ClassDelegate();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.il.data.term.QSpecial#getElements <em>Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Elements</em>'.
+	 * @see org.smeup.sys.il.data.term.QSpecial#getElements()
+	 * @see #getSpecial()
+	 * @generated
+	 */
+	EReference getSpecial_Elements();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.term.QSpecialElement <em>Special Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Special Element</em>'.
+	 * @see org.smeup.sys.il.data.term.QSpecialElement
+	 * @generated
+	 */
+	EClass getSpecialElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QSpecialElement#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.smeup.sys.il.data.term.QSpecialElement#getName()
+	 * @see #getSpecialElement()
+	 * @generated
+	 */
+	EAttribute getSpecialElement_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QSpecialElement#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see org.smeup.sys.il.data.term.QSpecialElement#getText()
+	 * @see #getSpecialElement()
+	 * @generated
+	 */
+	EAttribute getSpecialElement_Text();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QSpecialElement#isUnary <em>Unary</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unary</em>'.
+	 * @see org.smeup.sys.il.data.term.QSpecialElement#isUnary()
+	 * @see #getSpecialElement()
+	 * @generated
+	 */
+	EAttribute getSpecialElement_Unary();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QSpecialElement#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.smeup.sys.il.data.term.QSpecialElement#getValue()
+	 * @see #getSpecialElement()
+	 * @generated
+	 */
+	EAttribute getSpecialElement_Value();
+
+	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.il.data.term.DataTermType <em>Data Term Type</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Data Term Type</em>'.
@@ -366,6 +772,16 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getDataTermType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.il.data.term.FormatType <em>Format Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Format Type</em>'.
+	 * @see org.smeup.sys.il.data.term.FormatType
+	 * @generated
+	 */
+	EEnum getFormatType();
 
 	/**
 	 * Returns the factory that creates the instances of the model. <!--
@@ -495,6 +911,152 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 		EClass DATA_TERM_VISITOR = eINSTANCE.getDataTermVisitor();
 
 		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.term.impl.FormatImpl <em>Format</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.term.impl.FormatImpl
+		 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getFormat()
+		 * @generated
+		 */
+		EClass FORMAT = eINSTANCE.getFormat();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FORMAT__EXPRESSION = eINSTANCE.getFormat_Expression();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FORMAT__TYPE = eINSTANCE.getFormat_Type();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.term.impl.OverlayImpl <em>Overlay</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.term.impl.OverlayImpl
+		 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getOverlay()
+		 * @generated
+		 */
+		EClass OVERLAY = eINSTANCE.getOverlay();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OVERLAY__NAME = eINSTANCE.getOverlay_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Position</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OVERLAY__POSITION = eINSTANCE.getOverlay_Position();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.term.impl.RemapImpl <em>Remap</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.term.impl.RemapImpl
+		 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getRemap()
+		 * @generated
+		 */
+		EClass REMAP = eINSTANCE.getRemap();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REMAP__NAME = eINSTANCE.getRemap_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Index</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REMAP__INDEX = eINSTANCE.getRemap_Index();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.term.impl.SpecialImpl <em>Special</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.term.impl.SpecialImpl
+		 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getSpecial()
+		 * @generated
+		 */
+		EClass SPECIAL = eINSTANCE.getSpecial();
+
+		/**
+		 * The meta object literal for the '<em><b>Class Delegate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPECIAL__CLASS_DELEGATE = eINSTANCE.getSpecial_ClassDelegate();
+
+		/**
+		 * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPECIAL__ELEMENTS = eINSTANCE.getSpecial_Elements();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.term.impl.SpecialElementImpl <em>Special Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.term.impl.SpecialElementImpl
+		 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getSpecialElement()
+		 * @generated
+		 */
+		EClass SPECIAL_ELEMENT = eINSTANCE.getSpecialElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPECIAL_ELEMENT__NAME = eINSTANCE.getSpecialElement_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPECIAL_ELEMENT__TEXT = eINSTANCE.getSpecialElement_Text();
+
+		/**
+		 * The meta object literal for the '<em><b>Unary</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPECIAL_ELEMENT__UNARY = eINSTANCE.getSpecialElement_Unary();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPECIAL_ELEMENT__VALUE = eINSTANCE.getSpecialElement_Value();
+
+		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.term.DataTermType <em>Data Term Type</em>}' enum.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
@@ -503,6 +1065,16 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum DATA_TERM_TYPE = eINSTANCE.getDataTermType();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.term.FormatType <em>Format Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.term.FormatType
+		 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getFormatType()
+		 * @generated
+		 */
+		EEnum FORMAT_TYPE = eINSTANCE.getFormatType();
 
 	}
 

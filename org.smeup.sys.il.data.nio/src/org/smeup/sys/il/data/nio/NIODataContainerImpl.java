@@ -22,10 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QNode;
-import org.smeup.sys.il.core.QOverlay;
-import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
@@ -39,8 +36,11 @@ import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.annotation.DataDef;
+import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermFactory;
+import org.smeup.sys.il.data.term.QOverlay;
 import org.smeup.sys.il.data.term.impl.DataTermImpl;
 
 public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, Serializable {
@@ -97,7 +97,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 			if (annotation instanceof Overlay) {
 				Overlay overlay = (Overlay) annotation;
-				QOverlay qOverlay = QIntegratedLanguageCoreFactory.eINSTANCE.createOverlay();
+				QOverlay qOverlay = QIntegratedLanguageDataTermFactory.eINSTANCE.createOverlay();
 				// TODO remove lowerCase
 				qOverlay.setName(overlay.name().toLowerCase());
 				qOverlay.setPosition(overlay.position());
@@ -122,7 +122,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 				QData data = createData(dataTerm, false);
 				QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 				if(overlay == null) {
-					overlay = QIntegratedLanguageCoreFactory.eINSTANCE.createOverlay();
+					overlay = QIntegratedLanguageDataTermFactory.eINSTANCE.createOverlay();
 					overlay.setName("*PREVIOUS");
 					dataTerm.getFacets().add(overlay);
 				}

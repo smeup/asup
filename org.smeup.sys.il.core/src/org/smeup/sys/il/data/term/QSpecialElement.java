@@ -5,7 +5,9 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core;
+package org.smeup.sys.il.data.term;
+
+import org.smeup.sys.il.core.QNamedNode;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -15,13 +17,13 @@ package org.smeup.sys.il.core;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.QSpecialElement#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.QSpecialElement#getText <em>Text</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.QSpecialElement#isUnary <em>Unary</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.QSpecialElement#getValue <em>Value</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.QSpecialElement#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.QSpecialElement#getText <em>Text</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.QSpecialElement#isUnary <em>Unary</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.QSpecialElement#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getSpecialElement()
+ * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getSpecialElement()
  * @model
  * @generated
  */
@@ -45,7 +47,7 @@ public interface QSpecialElement extends QNamedNode {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.QSpecialElement#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.data.term.QSpecialElement#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
@@ -71,7 +73,7 @@ public interface QSpecialElement extends QNamedNode {
 	String getText();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.QSpecialElement#getText <em>Text</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.data.term.QSpecialElement#getText <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Text</em>' attribute.
 	 * @see #getText()
@@ -97,7 +99,7 @@ public interface QSpecialElement extends QNamedNode {
 	boolean isUnary();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.QSpecialElement#isUnary <em>Unary</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.data.term.QSpecialElement#isUnary <em>Unary</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Unary</em>' attribute.
 	 * @see #isUnary()
@@ -123,7 +125,7 @@ public interface QSpecialElement extends QNamedNode {
 	String getValue();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.QSpecialElement#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.data.term.QSpecialElement#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
 	 * @see #getValue()

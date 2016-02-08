@@ -11,7 +11,6 @@ import java.lang.String;
 import java.math.BigDecimal;
 
 import org.eclipse.emf.ecore.EClass;
-import org.smeup.sys.il.core.QSpecialElement;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
@@ -29,6 +28,7 @@ import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.term.QSpecialElement;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

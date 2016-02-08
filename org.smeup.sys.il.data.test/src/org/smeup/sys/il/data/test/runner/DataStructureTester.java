@@ -19,7 +19,6 @@ import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
-import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
@@ -31,6 +30,7 @@ import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.data.annotation.DataDef;
+import org.smeup.sys.il.data.annotation.Overlay;
 
 @Test(category = "IL.DATA", object = "DataStructure")
 public class DataStructureTester {

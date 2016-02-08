@@ -5,14 +5,14 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.impl;
+package org.smeup.sys.il.data.term.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.QRemap;
 import org.smeup.sys.il.core.meta.impl.FacetImpl;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
+import org.smeup.sys.il.data.term.QRemap;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -21,8 +21,8 @@ import org.smeup.sys.il.core.meta.impl.FacetImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.impl.RemapImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.impl.RemapImpl#getIndex <em>Index</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.impl.RemapImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.impl.RemapImpl#getIndex <em>Index</em>}</li>
  * </ul>
  *
  * @generated
@@ -83,7 +83,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QIntegratedLanguageCorePackage.Literals.REMAP;
+		return QIntegratedLanguageDataTermPackage.Literals.REMAP;
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.REMAP__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.REMAP__NAME, oldName, name));
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 		String oldIndex = index;
 		index = newIndex;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.REMAP__INDEX, oldIndex, index));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.REMAP__INDEX, oldIndex, index));
 	}
 
 	/**
@@ -135,9 +135,9 @@ public class RemapImpl extends FacetImpl implements QRemap {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.REMAP__NAME:
+			case QIntegratedLanguageDataTermPackage.REMAP__NAME:
 				return getName();
-			case QIntegratedLanguageCorePackage.REMAP__INDEX:
+			case QIntegratedLanguageDataTermPackage.REMAP__INDEX:
 				return getIndex();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -150,10 +150,10 @@ public class RemapImpl extends FacetImpl implements QRemap {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.REMAP__NAME:
+			case QIntegratedLanguageDataTermPackage.REMAP__NAME:
 				setName((String)newValue);
 				return;
-			case QIntegratedLanguageCorePackage.REMAP__INDEX:
+			case QIntegratedLanguageDataTermPackage.REMAP__INDEX:
 				setIndex((String)newValue);
 				return;
 		}
@@ -167,10 +167,10 @@ public class RemapImpl extends FacetImpl implements QRemap {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.REMAP__NAME:
+			case QIntegratedLanguageDataTermPackage.REMAP__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case QIntegratedLanguageCorePackage.REMAP__INDEX:
+			case QIntegratedLanguageDataTermPackage.REMAP__INDEX:
 				setIndex(INDEX_EDEFAULT);
 				return;
 		}
@@ -184,9 +184,9 @@ public class RemapImpl extends FacetImpl implements QRemap {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.REMAP__NAME:
+			case QIntegratedLanguageDataTermPackage.REMAP__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case QIntegratedLanguageCorePackage.REMAP__INDEX:
+			case QIntegratedLanguageDataTermPackage.REMAP__INDEX:
 				return INDEX_EDEFAULT == null ? index != null : !INDEX_EDEFAULT.equals(index);
 		}
 		return super.eIsSet(featureID);
