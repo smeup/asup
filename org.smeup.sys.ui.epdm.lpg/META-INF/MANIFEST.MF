@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.smeup.sys.ui.epdm.lpg;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Name: As.UP UI Extended PDM LPG
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

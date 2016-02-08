@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="auth" nsURI="http://www.smeup.org/asup/rt/auth" nsPrefix="rt-auth">
+  <eClassifiers xsi:type="ecore:EClass" name="Authentication" abstract="true" interface="true"
+      eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AuthenticationManager" abstract="true"
+      interface="true">
+    <eOperations name="authenticate">
+      <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Identity">
+        <eTypeArguments eClassifier="#//Authentication"/>
+      </eGenericType>
+      <eParameters name="authentication" lowerBound="1" eType="#//Authentication"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AuthenticationUserPassword" abstract="true"
+      eSuperTypes="#//Authentication">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="user" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

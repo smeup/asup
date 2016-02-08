@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.smeup.sys.co.osgi.ecf;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -20,7 +20,7 @@ Require-Bundle: org.eclipse.equinox.common,
  org.eclipse.ecf.remoteservice.asyncproxy,
  org.eclipse.ecf.server.generic,
  org.eclipse.ecf.sharedobject
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.osgi.framework,
  org.osgi.service.remoteserviceadmin

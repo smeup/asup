@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: As.UP Database Core JTDS
 Bundle-SymbolicName: org.smeup.sys.db.core.jtds;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-ClassPath: .,
  lib/jtds-1.2.7.jar
 Bundle-Activator: org.smeup.sys.db.core.jtds.JtdsActivator$Activator
@@ -15,7 +15,7 @@ Export-Package: net.sourceforge.jtds.jdbc,
  net.sourceforge.jtds.util,
  org.smeup.sys.db.core.jtds
 Require-Bundle: org.smeup.sys.db.core.base
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.net4j.db,
  org.eclipse.net4j.db.ddl,

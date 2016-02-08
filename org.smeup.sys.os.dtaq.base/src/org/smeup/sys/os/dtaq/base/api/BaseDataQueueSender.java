@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -19,7 +19,7 @@ import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
-import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.dtaq.QDataQueueManager;
 
 @Program(name = "QSNDDTAQ")
@@ -28,7 +28,7 @@ public class BaseDataQueueSender {
 	@Inject
 	private QDataQueueManager dataQueueManager;
 	@Inject
-	private QJob job;
+	private QJobCapability jobCapability;
 
 	@Main
 	public void main(@DataDef(length = 10) QCharacter name, @DataDef(length = 10) QCharacter library, @DataDef(precision = 5, packed = true) QDecimal dataLength, QPointer data) {
@@ -36,6 +36,6 @@ public class BaseDataQueueSender {
 		String content = data.qStr(dataLength.asInteger()).asString();
 //		System.out.println("dtaq-snd("+name.trimR()+"):\t" + content);
 		
-		dataQueueManager.writeDataQueue(job.getJobID(), library.trimR(), name.trimR(), null, content);
+		dataQueueManager.writeDataQueue(jobCapability, library.trimR(), name.trimR(), null, content);
 	}
 }

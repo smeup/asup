@@ -100,7 +100,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProgramManager" abstract="true" interface="true">
     <eOperations name="callProgram">
-      <eParameters name="contextID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="capability" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
       <eParameters name="library" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="program" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="params" eType="#//ParameterList"/>

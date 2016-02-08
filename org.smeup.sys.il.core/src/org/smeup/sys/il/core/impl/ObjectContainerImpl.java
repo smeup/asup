@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,10 +25,10 @@ import org.smeup.sys.il.core.QObjectContainer;
  * <em><b>Object Container</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.impl.ObjectContainerImpl#getContents <em>Contents</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

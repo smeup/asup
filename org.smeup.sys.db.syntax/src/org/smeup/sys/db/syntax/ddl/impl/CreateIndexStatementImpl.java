@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,13 +24,13 @@ import org.smeup.sys.db.syntax.impl.DefinitionStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CreateIndexStatementImpl#getIndexName <em>Index Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CreateIndexStatementImpl#getOnTable <em>On Table</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CreateIndexStatementImpl#getSortBy <em>Sort By</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CreateIndexStatementImpl#isUnique <em>Unique</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

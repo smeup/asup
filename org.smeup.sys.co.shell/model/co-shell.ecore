@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="shell" nsURI="http://www.smeup.org/asup/co/shell" nsPrefix="co-shell">
-  <eClassifiers xsi:type="ecore:EClass" name="ShellCredentials" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Credentials"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ShellCredentials" eSuperTypes="../../org.smeup.sys.rt.auth/model/rt-auth.ecore#//AuthenticationUserPassword"/>
   <eClassifiers xsi:type="ecore:EClass" name="ShellData">
     <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//term/DataTerm">
       <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//def/BufferedDataDef">
@@ -12,8 +12,27 @@
   <eClassifiers xsi:type="ecore:EClass" name="ShellOutputWrapper" abstract="true"
       interface="true" eSuperTypes="../../org.smeup.sys.co.core/model/co-core.ecore#//OutputWrapper"/>
   <eClassifiers xsi:type="ecore:EClass" name="ShellManager" abstract="true" interface="true">
+    <eOperations name="connect" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability">
+      <eParameters name="identity" lowerBound="1">
+        <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Identity">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="decodeCommand" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataContainer">
+      <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
+      <eParameters name="command" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="disconnect">
+      <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
+    </eOperations>
+    <eOperations name="encodeCommand" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
+      <eParameters name="container" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataContainer"/>
+      <eParameters name="showDefaults" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
     <eOperations name="executeCommand" lowerBound="1">
-      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
       <eParameters name="command" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="variables">
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
@@ -22,17 +41,8 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="decodeCommand" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataContainer">
-      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="command" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="encodeCommand" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="container" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataContainer"/>
-      <eParameters name="showDefaults" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
     <eOperations name="setDefaultWriter">
-      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
   </eClassifiers>

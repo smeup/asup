@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -74,7 +73,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_DEF__FORMULAS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
+	int DATA_DEF__FORMULAS = 0;
 
 	/**
 	 * The number of structural features of the '<em>Data Def</em>' class. <!--
@@ -83,7 +82,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_DEF_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
+	int DATA_DEF_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.UnaryDataDefImpl <em>Unary Data Def</em>}' class.

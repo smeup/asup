@@ -121,11 +121,11 @@ public class ScheduleEntryCreator {
 		String userName = "";
 		switch(user.asEnum()) {
 		case CURRENT:
-				userName = job.getJobUser();
+				userName = job.getJobReference().getJobUser();
 			break;
 		case JOBD:
 				//TODO: estrarre user dalla jobd (per ora come CURRENT)
-			userName = job.getJobUser();
+			userName = job.getJobReference().getJobUser();
 			break;
 		case OTHER:
 				userName = user.asData().asString(); 

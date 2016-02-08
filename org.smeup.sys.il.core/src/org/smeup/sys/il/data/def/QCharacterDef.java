@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,11 +15,11 @@ import org.smeup.sys.il.data.QCharacter;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.QCharacterDef#getLength <em>Length</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.QCharacterDef#isVarying <em>Varying</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getCharacterDef()
  * @model

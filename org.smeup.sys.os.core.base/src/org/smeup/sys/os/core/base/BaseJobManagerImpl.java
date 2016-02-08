@@ -1,44 +1,50 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
  *  http://www.eclipse.org/legal/epl-v10.html
  *
  *
- * Contributors:
- *   Franco Lombardo - Initial API and implementation 
- *   Mattia Rocchi   - Further implementation
+ * Contributors: 
+ *   Mattia Rocchi - Initial API and implementation
  */
 package org.smeup.sys.os.core.base;
 
+import java.net.URISyntaxException;
+import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.smeup.sys.il.core.ctx.QCredentials;
+import javax.inject.Inject;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.smeup.sys.il.core.ctx.QIdentity;
+import org.smeup.sys.il.core.out.QObjectWriter;
+import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.os.core.jobs.JobEventType;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobEvent;
 import org.smeup.sys.os.core.jobs.QJobListener;
 import org.smeup.sys.os.core.jobs.QJobManager;
+import org.smeup.sys.os.core.jobs.QJobReference;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
-import org.smeup.sys.rt.core.QApplication;
-import org.smeup.sys.rt.core.auth.QAuthenticationManager;
-import org.smeup.sys.rt.core.auth.QAuthenticationToken;
 
-public abstract class BaseJobManagerImpl implements QJobManager, QAuthenticationManager {
+public abstract class BaseJobManagerImpl implements QJobManager {
 
 	private static final int MILLIS_IN_ONE_DAY = 1000 * 60 * 60 * 24;
 
+	@Inject
+	private QOutputManager outputManager;
+	
 	private List<QJobListener> listeners = new ArrayList<QJobListener>();
-
-	public BaseJobManagerImpl(QApplication application) {
-		application.getContext().set(QAuthenticationManager.class, this);
-	}
 
 	@Override
 	public void registerListener(QJobListener listener) {
@@ -48,6 +54,30 @@ public abstract class BaseJobManagerImpl implements QJobManager, QAuthentication
 	protected void fireEvent(QJobEvent jobEvent) {
 		for (QJobListener jobListener : this.listeners)
 			jobListener.handleEvent(jobEvent);
+	}
+
+	@Override
+	public QJobCapability spawn(QJob credential) {		
+		return spawn(credential, null);
+	}
+	
+	@Override
+	public QJobCapability spawn(final QJob parent, String jobName) {
+		
+		QIdentity<?>  identity= parent.getContext().get(QIdentity.class);
+		QJobCapability jobCapability = create(identity, jobName);
+		
+		return jobCapability;
+	}
+
+	@Override
+	public QJob lookup(QJobCapability capability) {
+		return lookup(capability.getObjectID());
+	}
+
+	@Override
+	public QJob lookup(String contextID, QJobReference jobReference) {
+		return lookup(contextID, jobReference.getJobName(),jobReference.getJobUser(), jobReference.getJobNumber());
 	}
 
 	@Override
@@ -77,8 +107,17 @@ public abstract class BaseJobManagerImpl implements QJobManager, QAuthentication
 	}
 
 	@Override
-	public void close(QJob job) {
+	public QJob close(QJobCapability jobCapability) {
 
+		QJob job = lookup(jobCapability);
+		close(job);
+		
+		return job;
+	}
+
+	@Override
+	public void close(QJob job) {
+		
 		QJobEvent jobEvent = QOperatingSystemJobsFactory.eINSTANCE.createJobEvent();
 		jobEvent.setSource(job);
 		jobEvent.setType(JobEventType.STOPPING);
@@ -92,9 +131,8 @@ public abstract class BaseJobManagerImpl implements QJobManager, QAuthentication
 
 		for (QJobListener jobListener : this.listeners)
 			jobListener.handleEvent(jobEvent);
-
 	}
-
+	
 	@Override
 	public void updateStatus(QJob job, JobStatus status) {
 		
@@ -105,27 +143,19 @@ public abstract class BaseJobManagerImpl implements QJobManager, QAuthentication
 		fireEvent(jobEvent);
 	}
 
-	@Override
-	public QAuthenticationToken createAuthenticationToken(QCredentials credentials) {
-		final QJob job = create(credentials.getUser(), credentials.getPassword());
-
-		return new QAuthenticationToken() {
-
-			@Override
-			public String getID() {
-				return job.getJobID();
-			}
-
-			@Override
-			public Boolean isValid() {
-				return job != null && lookup(job.getJobID()) != null;
-			}
-		};
-	}
-
-	@Override
-	public void deleteAuthenticationToken(QAuthenticationToken authToken) {
-		// TODO Auto-generated method stub
+	protected QJobCapability createJobCapability(QJob job, Principal principal) {
+		
+		// capability
+		URI address = EcoreUtil.getURI((EObject)job);
+		QJobCapability jobCapability;
+		try {
+			jobCapability = new BaseJobCapabilityImpl(job.getJobReference(), principal, new java.net.URI(address.toString()));
+			return jobCapability;
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	private Date toDate(String resumeTime) {
@@ -160,5 +190,19 @@ public abstract class BaseJobManagerImpl implements QJobManager, QAuthentication
 
 	private long nrOfMillisUntilTime(Date resumeDate) {
 		return (resumeDate.getTime() - new Date().getTime());
+	}
+
+	@Override
+	public void registerWriter(QJobCapability capability, String name, QObjectWriter writer) {
+
+		QJob job = lookup(capability);
+		outputManager.registerWriter(job.getContext(), name, writer);
+	}
+
+	@Override
+	public void setDefaultWriter(QJobCapability capability, String name) {
+		
+		QJob job = lookup(capability);
+		outputManager.setDefaultWriter(job.getContext(), name);
 	}
 }

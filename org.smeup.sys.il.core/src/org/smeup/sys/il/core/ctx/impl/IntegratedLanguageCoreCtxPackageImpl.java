@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.core.ctx.impl;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EGenericType;
@@ -18,10 +17,11 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
 import org.smeup.sys.il.core.ctx.QAdapterFactory;
+import org.smeup.sys.il.core.ctx.QCapability;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.ctx.QContextProvider;
-import org.smeup.sys.il.core.ctx.QCredentials;
+import org.smeup.sys.il.core.ctx.QIdentity;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxFactory;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.ctx.QPluginRegistry;
@@ -73,10 +73,11 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 	private EClass contextProviderEClass = null;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass credentialsEClass = null;
+	private EClass capabilityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -89,6 +90,13 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	private EClass pluginRegistryFactoryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass identityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -219,30 +227,12 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EClass getCredentials() {
-		return credentialsEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getCredentials_User() {
-		return (EAttribute)credentialsEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getCredentials_Password() {
-		return (EAttribute)credentialsEClass.getEStructuralFeatures().get(1);
+	public EClass getCapability() {
+		return capabilityEClass;
 	}
 
 	/**
@@ -261,6 +251,15 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 	@Override
 	public EClass getPluginRegistryFactory() {
 		return pluginRegistryFactoryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getIdentity() {
+		return identityEClass;
 	}
 
 	/**
@@ -301,19 +300,19 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		// Create classes and their features
 		adapterFactoryEClass = createEClass(ADAPTER_FACTORY);
 
+		capabilityEClass = createEClass(CAPABILITY);
+
 		contextEClass = createEClass(CONTEXT);
 
 		contextDescriptionEClass = createEClass(CONTEXT_DESCRIPTION);
 
 		contextProviderEClass = createEClass(CONTEXT_PROVIDER);
 
-		credentialsEClass = createEClass(CREDENTIALS);
-		createEAttribute(credentialsEClass, CREDENTIALS__USER);
-		createEAttribute(credentialsEClass, CREDENTIALS__PASSWORD);
-
 		pluginRegistryEClass = createEClass(PLUGIN_REGISTRY);
 
 		pluginRegistryFactoryEClass = createEClass(PLUGIN_REGISTRY_FACTORY);
+
+		identityEClass = createEClass(IDENTITY);
 
 		// Create enums
 		contextInjectionStrategyEEnum = createEEnum(CONTEXT_INJECTION_STRATEGY);
@@ -342,32 +341,48 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
+		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 
 		// Create type parameters
+		ETypeParameter capabilityEClass_T = addETypeParameter(capabilityEClass, "T");
 		ETypeParameter pluginRegistryEClass_T = addETypeParameter(pluginRegistryEClass, "T");
+		ETypeParameter identityEClass_T = addETypeParameter(identityEClass, "T");
 
 		// Set bounds for type parameters
+		EGenericType g1 = createEGenericType(theIntegratedLanguageCorePackage.getObject());
+		capabilityEClass_T.getEBounds().add(g1);
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObject());
+		identityEClass_T.getEBounds().add(g1);
 
 		// Add supertypes to classes
-		credentialsEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		capabilityEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		g1 = createEGenericType(this.getCapability());
+		EGenericType g2 = createEGenericType(identityEClass_T);
+		g1.getETypeArguments().add(g2);
+		identityEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(adapterFactoryEClass, QAdapterFactory.class, "AdapterFactory", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		EOperation op = addEOperation(adapterFactoryEClass, null, "getAdapter", 0, 1, IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "T");
-		EGenericType g1 = createEGenericType(ecorePackage.getEJavaObject());
+		g1 = createEGenericType(ecorePackage.getEJavaObject());
 		t1.getEBounds().add(g1);
 		addEParameter(op, this.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEJavaObject(), "adaptable", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
-		EGenericType g2 = createEGenericType(t1);
+		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "adapterType", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
 		initEOperation(op, g1);
+
+		initEClass(capabilityEClass, QCapability.class, "Capability", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(capabilityEClass, theMachineInterfaceCorePackage.getJavaURI(), "getObjectAddress", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(capabilityEClass, ecorePackage.getEString(), "getObjectID", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(contextEClass, QContext.class, "Context", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -494,10 +509,6 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 
 		addEOperation(contextProviderEClass, this.getContext(), "getContext", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(credentialsEClass, QCredentials.class, "Credentials", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCredentials_User(), ecorePackage.getEString(), "user", null, 1, 1, QCredentials.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCredentials_Password(), ecorePackage.getEString(), "password", null, 1, 1, QCredentials.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(pluginRegistryEClass, QPluginRegistry.class, "PluginRegistry", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(pluginRegistryEClass, null, "lookup", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -527,6 +538,10 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
+
+		initEClass(identityEClass, QIdentity.class, "Identity", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(identityEClass, theMachineInterfaceCorePackage.getJavaPrincipal(), "getJavaPrincipal", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(contextInjectionStrategyEEnum, ContextInjectionStrategy.class, "ContextInjectionStrategy");

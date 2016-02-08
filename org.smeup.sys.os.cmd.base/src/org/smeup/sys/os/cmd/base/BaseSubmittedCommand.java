@@ -1,3 +1,14 @@
+/**
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
+ */
 package org.smeup.sys.os.cmd.base;
 
 import java.lang.reflect.Field;
@@ -8,24 +19,24 @@ import java.util.Map;
 
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.os.cmd.QCommandManager;
-import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 
 public class BaseSubmittedCommand implements Runnable {
 
-	private QJob job;
+	private QCommandManager commandManager;
+	private QJobCapability jobCapability;
 	private String commandString;
 	private Object caller;
 
-	protected BaseSubmittedCommand(QJob job, String commandString, Object caller) {
-		this.job = job;
+	protected BaseSubmittedCommand(QCommandManager commandManager, QJobCapability jobCapability, String commandString, Object caller) {
+		this.commandManager = commandManager;
+		this.jobCapability = jobCapability;
 		this.commandString = commandString;
 		this.caller = caller;
 	}
 
 	@Override
 	public void run() {
-
-		job.getJobThread().checkRunnable();
 		
 		Map<String, Object> variables = null;
 		if (caller != null) {
@@ -60,6 +71,6 @@ public class BaseSubmittedCommand implements Runnable {
 			}
 		}
 
-		job.getContext().get(QCommandManager.class).executeCommand(job.getJobID(), commandString, variables);
+		commandManager.executeCommand(jobCapability, commandString, variables);
 	}
 }

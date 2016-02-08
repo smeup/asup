@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,6 +52,15 @@ public interface QOperatingSystemJobsFactory extends EFactory {
 	 * @generated
 	 */
 	QJobLogEntry createJobLogEntry();
+
+	/**
+	 * Returns a new object of class '<em>Job Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Job Reference</em>'.
+	 * @generated
+	 */
+	QJobReference createJobReference();
 
 	/**
 	 * Returns a new object of class '<em>Job Run Info</em>'.

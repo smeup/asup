@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g 2015-05-26 20:06:35
+// $ANTLR 3.5.1 /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g 2015-05-26 20:06:35
 
   package org.smeup.sys.dk.parser.ibmi.cl.antlr;
 
@@ -51,15 +51,15 @@ public class CLLexer extends Lexer {
 	public CLLexer(CharStream input, RecognizerSharedState state) {
 		super(input,state);
 	}
-	@Override public String getGrammarFileName() { return "/home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g"; }
+	@Override public String getGrammarFileName() { return "/home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g"; }
 
 	// $ANTLR start "LABEL"
 	public final void mLABEL() throws RecognitionException {
 		try {
 			int _type = LABEL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:155:7: ( TOKEN ':' )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:155:9: TOKEN ':'
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:155:7: ( TOKEN ':' )
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:155:9: TOKEN ':'
 			{
 			mTOKEN(); 
 
@@ -80,8 +80,8 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = FUN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:158:5: ( '%' TOKEN )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:159:4: '%' TOKEN
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:158:5: ( '%' TOKEN )
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:159:4: '%' TOKEN
 			{
 			match('%'); 
 			mTOKEN(); 
@@ -102,15 +102,15 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = STRING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:162:8: ({...}? => APOS ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | ':' | ESCAPE )+ APOS )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:4: {...}? => APOS ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | ':' | ESCAPE )+ APOS
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:162:8: ({...}? => APOS ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | ':' | ESCAPE )+ APOS )
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:4: {...}? => APOS ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | ':' | ESCAPE )+ APOS
 			{
 			if ( !(((openBraces - closeBraces) == 0)) ) {
 				throw new FailedPredicateException(input, "STRING", "(openBraces - closeBraces) == 0");
 			}
 			mAPOS(); 
 
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:46: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | ':' | ESCAPE )+
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:46: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | ':' | ESCAPE )+
 			int cnt1=0;
 			loop1:
 			while (true) {
@@ -246,50 +246,50 @@ public class CLLexer extends Lexer {
 				}
 				switch (alt1) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:47: 'a' .. 'z'
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:47: 'a' .. 'z'
 					{
 					matchRange('a','z'); 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:56: 'A' .. 'Z'
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:56: 'A' .. 'Z'
 					{
 					matchRange('A','Z'); 
 					}
 					break;
 				case 3 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:65: '0' .. '9'
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:65: '0' .. '9'
 					{
 					matchRange('0','9'); 
 					}
 					break;
 				case 4 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:74: CHAR_SPECIAL
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:74: CHAR_SPECIAL
 					{
 					mCHAR_SPECIAL(); 
 
 					}
 					break;
 				case 5 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:87: ' '
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:87: ' '
 					{
 					match(' '); 
 					}
 					break;
 				case 6 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:91: '%'
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:91: '%'
 					{
 					match('%'); 
 					}
 					break;
 				case 7 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:95: ':'
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:95: ':'
 					{
 					match(':'); 
 					}
 					break;
 				case 8 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:99: ESCAPE
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:99: ESCAPE
 					{
 					mESCAPE(); 
 
@@ -322,13 +322,13 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = TOKEN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:166:6: ({...}? => ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+ )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:166:8: {...}? => ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:166:6: ({...}? => ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+ )
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:166:8: {...}? => ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+
 			{
 			if ( !(((openBraces - closeBraces) == 0)) ) {
 				throw new FailedPredicateException(input, "TOKEN", "(openBraces - closeBraces) == 0");
 			}
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:166:44: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:166:44: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+
 			int cnt2=0;
 			loop2:
 			while (true) {
@@ -340,7 +340,7 @@ public class CLLexer extends Lexer {
 
 				switch (alt2) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:
 					{
 					if ( (input.LA(1) >= '!' && input.LA(1) <= '\"')||input.LA(1)=='$'||input.LA(1)=='&'||(input.LA(1) >= '*' && input.LA(1) <= '9')||(input.LA(1) >= '<' && input.LA(1) <= '?')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='\\'||(input.LA(1) >= '^' && input.LA(1) <= '_')||(input.LA(1) >= 'a' && input.LA(1) <= 'z')||input.LA(1)=='\u00A3'||input.LA(1)=='\u00A7'||input.LA(1)=='\u00E0'||(input.LA(1) >= '\u00E8' && input.LA(1) <= '\u00E9')||input.LA(1)=='\u00EC'||input.LA(1)=='\u00F2'||input.LA(1)=='\u00F9' ) {
 						input.consume();
@@ -377,12 +377,12 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = PAREN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:6: ( OPEN_BRACE ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | APOS | ' ' | PAREN | '%' | ':' )* CLOSE_BRACE )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:8: OPEN_BRACE ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | APOS | ' ' | PAREN | '%' | ':' )* CLOSE_BRACE
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:6: ( OPEN_BRACE ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | APOS | ' ' | PAREN | '%' | ':' )* CLOSE_BRACE )
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:8: OPEN_BRACE ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | APOS | ' ' | PAREN | '%' | ':' )* CLOSE_BRACE
 			{
 			mOPEN_BRACE(); 
 
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:19: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | APOS | ' ' | PAREN | '%' | ':' )*
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:19: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | APOS | ' ' | PAREN | '%' | ':' )*
 			loop3:
 			while (true) {
 				int alt3=10;
@@ -518,58 +518,58 @@ public class CLLexer extends Lexer {
 				}
 				switch (alt3) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:20: 'a' .. 'z'
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:20: 'a' .. 'z'
 					{
 					matchRange('a','z'); 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:29: 'A' .. 'Z'
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:29: 'A' .. 'Z'
 					{
 					matchRange('A','Z'); 
 					}
 					break;
 				case 3 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:38: '0' .. '9'
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:38: '0' .. '9'
 					{
 					matchRange('0','9'); 
 					}
 					break;
 				case 4 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:47: CHAR_SPECIAL
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:47: CHAR_SPECIAL
 					{
 					mCHAR_SPECIAL(); 
 
 					}
 					break;
 				case 5 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:60: APOS
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:60: APOS
 					{
 					mAPOS(); 
 
 					}
 					break;
 				case 6 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:65: ' '
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:65: ' '
 					{
 					match(' '); 
 					}
 					break;
 				case 7 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:69: PAREN
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:69: PAREN
 					{
 					mPAREN(); 
 
 					}
 					break;
 				case 8 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:75: '%'
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:75: '%'
 					{
 					match('%'); 
 					}
 					break;
 				case 9 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:79: ':'
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:79: ':'
 					{
 					match(':'); 
 					}
@@ -598,8 +598,8 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = OPEN_BRACE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:173:3: ( '(' )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:174:3: '('
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:173:3: ( '(' )
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:174:3: '('
 			{
 			match('('); 
 			openBraces++;
@@ -619,8 +619,8 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = CLOSE_BRACE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:178:3: ( ')' )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:179:3: ')'
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:178:3: ( ')' )
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:179:3: ')'
 			{
 			match(')'); 
 			closeBraces++;
@@ -640,7 +640,7 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = COMMENT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:183:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:183:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
 			int alt7=2;
 			int LA7_0 = input.LA(1);
 			if ( (LA7_0=='/') ) {
@@ -674,11 +674,11 @@ public class CLLexer extends Lexer {
 
 			switch (alt7) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:183:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:183:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
 					{
 					match("//"); 
 
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:183:14: (~ ( '\\n' | '\\r' ) )*
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:183:14: (~ ( '\\n' | '\\r' ) )*
 					loop4:
 					while (true) {
 						int alt4=2;
@@ -689,7 +689,7 @@ public class CLLexer extends Lexer {
 
 						switch (alt4) {
 						case 1 :
-							// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:
+							// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:
 							{
 							if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '\uFFFF') ) {
 								input.consume();
@@ -707,7 +707,7 @@ public class CLLexer extends Lexer {
 						}
 					}
 
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:183:28: ( '\\r' )?
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:183:28: ( '\\r' )?
 					int alt5=2;
 					int LA5_0 = input.LA(1);
 					if ( (LA5_0=='\r') ) {
@@ -715,7 +715,7 @@ public class CLLexer extends Lexer {
 					}
 					switch (alt5) {
 						case 1 :
-							// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:183:28: '\\r'
+							// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:183:28: '\\r'
 							{
 							match('\r'); 
 							}
@@ -728,11 +728,11 @@ public class CLLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:184:9: '/*' ( options {greedy=false; } : . )* '*/'
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:184:9: '/*' ( options {greedy=false; } : . )* '*/'
 					{
 					match("/*"); 
 
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:184:14: ( options {greedy=false; } : . )*
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:184:14: ( options {greedy=false; } : . )*
 					loop6:
 					while (true) {
 						int alt6=2;
@@ -753,7 +753,7 @@ public class CLLexer extends Lexer {
 
 						switch (alt6) {
 						case 1 :
-							// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:184:42: .
+							// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:184:42: .
 							{
 							matchAny(); 
 							}
@@ -785,10 +785,10 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = CR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:187:4: ( ( '\\r' )? '\\n' )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:188:3: ( '\\r' )? '\\n'
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:187:4: ( ( '\\r' )? '\\n' )
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:188:3: ( '\\r' )? '\\n'
 			{
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:188:3: ( '\\r' )?
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:188:3: ( '\\r' )?
 			int alt8=2;
 			int LA8_0 = input.LA(1);
 			if ( (LA8_0=='\r') ) {
@@ -796,7 +796,7 @@ public class CLLexer extends Lexer {
 			}
 			switch (alt8) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:188:4: '\\r'
+					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:188:4: '\\r'
 					{
 					match('\r'); 
 					}
@@ -821,8 +821,8 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:191:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:191:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:
 			{
 			if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
 				input.consume();
@@ -848,8 +848,8 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = ESCAPE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:199:8: ( APOS APOS )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:200:2: APOS APOS
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:199:8: ( APOS APOS )
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:200:2: APOS APOS
 			{
 			mAPOS(); 
 
@@ -871,8 +871,8 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = APOS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:203:6: ( '\\'' )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:204:2: '\\''
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:203:6: ( '\\'' )
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:204:2: '\\''
 			{
 			match('\''); 
 			}
@@ -889,8 +889,8 @@ public class CLLexer extends Lexer {
 	// $ANTLR start "CHAR_SPECIAL"
 	public final void mCHAR_SPECIAL() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:210:3: ( ( '\\u00A7' | '$' | '_' | '.' | '^' | '\\u00e0' | '\\u00e8' | '\\u00e9' | '\\u00ec' | '\\u00f2' | '\\u00f9' | '\"' | '?' | ',' | '\\u00a3' | '&' | '*' | '/' | '=' | '>' | '<' | '+' | '-' | '!' | '\\\\' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:210:3: ( ( '\\u00A7' | '$' | '_' | '.' | '^' | '\\u00e0' | '\\u00e8' | '\\u00e9' | '\\u00ec' | '\\u00f2' | '\\u00f9' | '\"' | '?' | ',' | '\\u00a3' | '&' | '*' | '/' | '=' | '>' | '<' | '+' | '-' | '!' | '\\\\' ) )
+			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:
 			{
 			if ( (input.LA(1) >= '!' && input.LA(1) <= '\"')||input.LA(1)=='$'||input.LA(1)=='&'||(input.LA(1) >= '*' && input.LA(1) <= '/')||(input.LA(1) >= '<' && input.LA(1) <= '?')||input.LA(1)=='\\'||(input.LA(1) >= '^' && input.LA(1) <= '_')||input.LA(1)=='\u00A3'||input.LA(1)=='\u00A7'||input.LA(1)=='\u00E0'||(input.LA(1) >= '\u00E8' && input.LA(1) <= '\u00E9')||input.LA(1)=='\u00EC'||input.LA(1)=='\u00F2'||input.LA(1)=='\u00F9' ) {
 				input.consume();
@@ -911,89 +911,89 @@ public class CLLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:8: ( LABEL | FUN | STRING | TOKEN | PAREN | OPEN_BRACE | CLOSE_BRACE | COMMENT | CR | WS | ESCAPE | APOS )
+		// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:8: ( LABEL | FUN | STRING | TOKEN | PAREN | OPEN_BRACE | CLOSE_BRACE | COMMENT | CR | WS | ESCAPE | APOS )
 		int alt9=12;
 		alt9 = dfa9.predict(input);
 		switch (alt9) {
 			case 1 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:10: LABEL
+				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:10: LABEL
 				{
 				mLABEL(); 
 
 				}
 				break;
 			case 2 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:16: FUN
+				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:16: FUN
 				{
 				mFUN(); 
 
 				}
 				break;
 			case 3 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:20: STRING
+				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:20: STRING
 				{
 				mSTRING(); 
 
 				}
 				break;
 			case 4 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:27: TOKEN
+				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:27: TOKEN
 				{
 				mTOKEN(); 
 
 				}
 				break;
 			case 5 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:33: PAREN
+				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:33: PAREN
 				{
 				mPAREN(); 
 
 				}
 				break;
 			case 6 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:39: OPEN_BRACE
+				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:39: OPEN_BRACE
 				{
 				mOPEN_BRACE(); 
 
 				}
 				break;
 			case 7 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:50: CLOSE_BRACE
+				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:50: CLOSE_BRACE
 				{
 				mCLOSE_BRACE(); 
 
 				}
 				break;
 			case 8 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:62: COMMENT
+				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:62: COMMENT
 				{
 				mCOMMENT(); 
 
 				}
 				break;
 			case 9 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:70: CR
+				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:70: CR
 				{
 				mCR(); 
 
 				}
 				break;
 			case 10 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:73: WS
+				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:73: WS
 				{
 				mWS(); 
 
 				}
 				break;
 			case 11 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:76: ESCAPE
+				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:76: ESCAPE
 				{
 				mESCAPE(); 
 
 				}
 				break;
 			case 12 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.7.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:83: APOS
+				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:83: APOS
 				{
 				mAPOS(); 
 

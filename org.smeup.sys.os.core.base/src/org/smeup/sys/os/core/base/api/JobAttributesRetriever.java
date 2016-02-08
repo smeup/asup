@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.smeup.sys.il.data.def.TimeFormat;
 import org.smeup.sys.mi.core.util.QStrings;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobReference;
 
 @Program(name = "QCLRTVJA")
 public class JobAttributesRetriever {
@@ -66,10 +67,11 @@ public class JobAttributesRetriever {
 			@ToDo @DataDef(length = 10) QCharacter cLVarForSBMMSGQLIB10, @ToDo @DataDef(length = 5) QCharacter cLVarForDDMCNV5, @ToDo @DataDef(length = 10) QCharacter cLVarForTSEPOOL10,
 			@ToDo @DataDef(length = 20) QCharacter cLVarForTHDRSCAFN20, @ToDo @DataDef(length = 10) QCharacter cLVarForRSCAFNGRP10) {
 
-		cLVarForJOB10.eval(job.getJobName());
+		QJobReference jobReference = job.getJobReference(); 
+		cLVarForJOB10.eval(jobReference.getJobName());
 		cLVarForUSER10.eval(job.getCreationInfo().getCreationUser());
-		cLVarForNBR6.eval("" + job.getJobNumber());
-		cLVarForCURUSER10.eval(job.getJobUser());
+		cLVarForNBR6.eval("" + jobReference.getJobNumber());
+		cLVarForCURUSER10.eval(jobReference.getJobUser());
 		cLVarForTYPE1.eval(varFor(job.getJobType()));
 		cLVarForSUBTYPE1.eval("*");
 		fillLibraries(clVarForSYSLIBL);

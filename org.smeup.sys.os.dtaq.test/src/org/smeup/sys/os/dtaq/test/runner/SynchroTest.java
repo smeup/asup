@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.smeup.sys.os.cmd.QCallableCommand;
 import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.OperatingSystemException;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.dtaq.DataQueueType;
 import org.smeup.sys.os.dtaq.QDataQueue;
@@ -51,6 +52,8 @@ public class SynchroTest {
 	private QTestAsserter testAsserter;
 	@Inject
 	private QJob job;
+	@Inject
+	private QJobCapability jobCapability;
 
 	private Object lockWaitObj = new Object();
 
@@ -79,22 +82,22 @@ public class SynchroTest {
 		// Create a test library (if none)
 		if (checkObj(job, QLibrary.class, "QSYS", testLib) == false) {
 			String cmd = "CRTLIB LIB(" + testLib + ")";
-			QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), cmd, null, true);
-			commandManager.executeCommand(job.getJobID(), callableCommand);
+			QCallableCommand callableCommand = commandManager.prepareCommand(job, cmd, null, true);
+			commandManager.executeCommand(job, callableCommand);
 			callableCommand.close();
 		}
 
 		// Assert: create queues (if none, else clear existent)
 		if (checkObj(job, QDataQueue.class, testLib, fifoDtaq) == false) {
-			dataQueueManager.createDataQueue(job.getJobID(), testLib, fifoDtaq, DataQueueType.FIFO, 32000);
+			dataQueueManager.createDataQueue(jobCapability, testLib, fifoDtaq, DataQueueType.FIFO, 32000);
 			testAsserter.assertTrue("Create FIFO DTAQ " + testLib + "/" + fifoDtaq, checkObj(job, QDataQueue.class, testLib, fifoDtaq));
 		} else
-			dataQueueManager.clearDataQueue(job.getJobID(), testLib, fifoDtaq);
+			dataQueueManager.clearDataQueue(jobCapability, testLib, fifoDtaq);
 
 		String writeVal = "TEST DTAQ 1";
 
 		// Write test data in DTAQ
-		dataQueueManager.writeDataQueue(job.getJobID(), testLib, fifoDtaq, null, writeVal);
+		dataQueueManager.writeDataQueue(jobCapability, testLib, fifoDtaq, null, writeVal);
 
 		// Start timed read lock (10 secs)
 		long delay = 10000;
@@ -113,14 +116,14 @@ public class SynchroTest {
 		// Read from queue waiting for 20 secs
 		long waitFor = 20000;
 		long startTime = System.currentTimeMillis();
-		String readVal = dataQueueManager.readDataQueue(job.getJobID(), testLib, fifoDtaq, waitFor, null, null);
+		String readVal = dataQueueManager.readDataQueue(jobCapability, testLib, fifoDtaq, waitFor, null, null);
 		long endTime = System.currentTimeMillis();
 
 		testAsserter.assertTrue("Wait unlock when reading", (endTime - startTime) < waitFor && (endTime - startTime) > delay);
 		testAsserter.assertEquals("Read from queue with wait for data", writeVal, readVal);
 
 		// Delete queues
-		dataQueueManager.deleteDataQueue(job.getJobID(), testLib, fifoDtaq);
+		dataQueueManager.deleteDataQueue(jobCapability, testLib, fifoDtaq);
 		testAsserter.assertTrue("Delete FIFO DTAQ " + testLib + "/" + fifoDtaq, checkObj(job, QDataQueue.class, testLib, fifoDtaq) == false);
 	}
 
@@ -138,22 +141,22 @@ public class SynchroTest {
 		// Create a test library (if none)
 		if (checkObj(job, QLibrary.class, "QSYS", testLib) == false) {
 			String cmd = "CRTLIB LIB(" + testLib + ")";
-			QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), cmd, null, true);
-			commandManager.executeCommand(job.getJobID(), callableCommand);
+			QCallableCommand callableCommand = commandManager.prepareCommand(job, cmd, null, true);
+			commandManager.executeCommand(job, callableCommand);
 			callableCommand.close();
 		}
 
 		// Assert: create queues (if none, else clear existent)
 		if (checkObj(job, QDataQueue.class, testLib, fifoDtaq_1) == false) {
-			dataQueueManager.createDataQueue(job.getJobID(), testLib, fifoDtaq_1, DataQueueType.FIFO, 32000);
+			dataQueueManager.createDataQueue(jobCapability, testLib, fifoDtaq_1, DataQueueType.FIFO, 32000);
 			testAsserter.assertTrue("Create FIFO DTAQ " + testLib + "/" + fifoDtaq_1, checkObj(job, QDataQueue.class, testLib, fifoDtaq_1));
 		} else
-			dataQueueManager.clearDataQueue(job.getJobID(), testLib, fifoDtaq_1);
+			dataQueueManager.clearDataQueue(jobCapability, testLib, fifoDtaq_1);
 
 		String writeVal = "TEST DTAQ 1";
 
 		// Wite test data in DTAQ
-		dataQueueManager.writeDataQueue(job.getJobID(), testLib, fifoDtaq_1, null, writeVal);
+		dataQueueManager.writeDataQueue(jobCapability, testLib, fifoDtaq_1, null, writeVal);
 
 		// Start timed read lock (20 secs)
 		long delay = 20000;
@@ -172,14 +175,14 @@ public class SynchroTest {
 		// Read from queue waiting for 10 secs
 		long waitFor = 10000;
 		long startTime = System.currentTimeMillis();
-		String readVal = dataQueueManager.readDataQueue(job.getJobID(), testLib, fifoDtaq_1, waitFor, null, null);
+		String readVal = dataQueueManager.readDataQueue(jobCapability, testLib, fifoDtaq_1, waitFor, null, null);
 		long endTime = System.currentTimeMillis();
 
 		testAsserter.assertTrue("Wait until timeout occour", (endTime - startTime) > waitFor && (endTime - startTime) < delay);
 		testAsserter.assertNull("Read null from queue (cause timout)", readVal);
 
 		// Delete queues
-		dataQueueManager.deleteDataQueue(job.getJobID(), testLib, fifoDtaq_1);
+		dataQueueManager.deleteDataQueue(jobCapability, testLib, fifoDtaq_1);
 		testAsserter.assertTrue("Delete FIFO DTAQ " + testLib + "/" + fifoDtaq_1, checkObj(job, QDataQueue.class, testLib, fifoDtaq_1) == false);
 	}
 
@@ -206,14 +209,14 @@ public class SynchroTest {
 		public void run() {
 
 			// Create new job
-			QJob childJob = jobManager.create(job);
+			QJobCapability childJob = jobManager.spawn(job);
 
 			// Get the queue
-			QResourceWriter<QDataQueue> resource = resourceManager.getResourceWriter(childJob, QDataQueue.class, lib);
+			QResourceWriter<QDataQueue> resource = resourceManager.getResourceWriter(job, QDataQueue.class, lib);
 			QDataQueue dataQueue = resource.lookup(queue);
 
 			// Lock it for reading
-			QObjectLocker<QDataQueueContent> locker = lockManager.getLocker(childJob.getContext(), dataQueue.getContent());
+			QObjectLocker<QDataQueueContent> locker = lockManager.getLocker(job.getContext(), dataQueue.getContent());
 			locker.lock(LockType.READ);
 
 			// Notify lock success to caller class

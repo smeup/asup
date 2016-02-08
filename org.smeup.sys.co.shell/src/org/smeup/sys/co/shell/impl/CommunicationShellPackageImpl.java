@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,9 @@ import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
+import org.smeup.sys.os.core.QOperatingSystemCorePackage;
+import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
+import org.smeup.sys.rt.auth.QRuntimeAuthenticationPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -103,7 +106,8 @@ public class CommunicationShellPackageImpl extends EPackageImpl implements QComm
 
 		// Initialize simple dependencies
 		QCommunicationCorePackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
+		QOperatingSystemCorePackage.eINSTANCE.eClass();
+		QRuntimeAuthenticationPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theCommunicationShellPackage.createPackageContents();
@@ -217,10 +221,12 @@ public class CommunicationShellPackageImpl extends EPackageImpl implements QComm
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
+		QRuntimeAuthenticationPackage theRuntimeAuthenticationPackage = (QRuntimeAuthenticationPackage)EPackage.Registry.INSTANCE.getEPackage(QRuntimeAuthenticationPackage.eNS_URI);
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
 		QCommunicationCorePackage theCommunicationCorePackage = (QCommunicationCorePackage)EPackage.Registry.INSTANCE.getEPackage(QCommunicationCorePackage.eNS_URI);
+		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
+		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QIntegratedLanguageDataPackage theIntegratedLanguageDataPackage = (QIntegratedLanguageDataPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI);
 
 		// Create type parameters
@@ -228,7 +234,7 @@ public class CommunicationShellPackageImpl extends EPackageImpl implements QComm
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		shellCredentialsEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getCredentials());
+		shellCredentialsEClass.getESuperTypes().add(theRuntimeAuthenticationPackage.getAuthenticationUserPassword());
 		EGenericType g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		EGenericType g2 = createEGenericType(theIntegratedLanguageDataDefPackage.getBufferedDataDef());
 		g1.getETypeArguments().add(g2);
@@ -246,8 +252,26 @@ public class CommunicationShellPackageImpl extends EPackageImpl implements QComm
 
 		initEClass(shellManagerEClass, QShellManager.class, "ShellManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = addEOperation(shellManagerEClass, null, "executeCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(shellManagerEClass, theOperatingSystemJobsPackage.getJobCapability(), "connect", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getIdentity());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "identity", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(shellManagerEClass, theIntegratedLanguageDataPackage.getDataContainer(), "decodeCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "command", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(shellManagerEClass, null, "disconnect", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(shellManagerEClass, ecorePackage.getEString(), "encodeCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getDataContainer(), "container", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "showDefaults", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(shellManagerEClass, null, "executeCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "command", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEMap());
 		g2 = createEGenericType(ecorePackage.getEString());
@@ -256,17 +280,8 @@ public class CommunicationShellPackageImpl extends EPackageImpl implements QComm
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "variables", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(shellManagerEClass, theIntegratedLanguageDataPackage.getDataContainer(), "decodeCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "command", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(shellManagerEClass, ecorePackage.getEString(), "encodeCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageDataPackage.getDataContainer(), "container", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "showDefaults", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = addEOperation(shellManagerEClass, null, "setDefaultWriter", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource

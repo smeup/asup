@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,12 +17,12 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJobLogEntry#getGravity <em>Gravity</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJobLogEntry#getMessage <em>Message</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJobLogEntry#getCreationDate <em>Creation Date</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJobLogEntry()
  * @model

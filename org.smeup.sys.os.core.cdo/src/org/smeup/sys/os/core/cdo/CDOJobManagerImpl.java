@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.emf.cdo.view.CDOQuery;
 import org.eclipse.emf.ecore.EObject;
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.QThreadManager;
+import org.smeup.sys.il.core.ctx.QIdentity;
 import org.smeup.sys.il.lock.LockType;
 import org.smeup.sys.il.lock.QLockManager;
 import org.smeup.sys.il.lock.QObjectLocker;
@@ -40,15 +41,14 @@ import org.smeup.sys.os.core.jobs.JobEventType;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobEvent;
 import org.smeup.sys.os.core.jobs.QJobListener;
-import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
 import org.smeup.sys.os.jobd.QJobDescription;
 import org.smeup.sys.os.usrprf.QUserProfile;
-import org.smeup.sys.rt.core.QApplication;
 
-public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager {
+public class CDOJobManagerImpl extends BaseJobManagerImpl {
 
 	private CDOSystemManagerImpl systemManager;
 	private QResourceManager resourceManager;
@@ -61,8 +61,7 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager
 	private List<QJobListener> listeners = new ArrayList<QJobListener>();
 
 	@Inject
-	public CDOJobManagerImpl(QApplication application, QThreadManager threadManager, QSystemManager systemManager, QResourceManager resourceManager, QLockManager lockManager) {
-		super(application);
+	public CDOJobManagerImpl(QThreadManager threadManager, QSystemManager systemManager, QResourceManager resourceManager, QLockManager lockManager) {
 		
 		this.systemManager = (CDOSystemManagerImpl) systemManager;
 		this.resourceManager = resourceManager;
@@ -72,23 +71,23 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager
 		QThread thread = threadManager.createThread("job-closer", new CDOJobCloser(threadManager, this), true);
 		threadManager.start(thread);		
 	}
-	
+
 	@Override
-	public QJob create(String user, String password) {
-		return create(user, password, null);
+	public QJobCapability create(QIdentity<?> identity) {
+		return create(identity, null);
 	}
-	
+
 	@Override
-	public QJob create(String user, String password, String jobName) {
+	public QJobCapability create(QIdentity<?> identity, String jobName) {
 
 		QJob startupJob = systemManager.getStartupJob();
 		QResourceReader<QUserProfile> userResource = resourceManager.getResourceReader(startupJob, QUserProfile.class, systemManager.getSystem().getSystemLibrary());
 
 		// check credential
-		QUserProfile userProfile = userResource.lookup(user);
+		QUserProfile userProfile = userResource.lookup(identity.getJavaPrincipal().getName());
 
 		if (userProfile == null)
-			throw new OperatingSystemRuntimeException("User " + user + " not found");
+			throw new OperatingSystemRuntimeException("User " + identity.getJavaPrincipal().getName() + " not found");
 
 		// acquire system lock
 		QObjectLocker<QSystem> locker = lockManager.getLocker(startupJob.getContext(), systemManager.getTransactionSystem());
@@ -100,7 +99,7 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager
 		try {
 			// System.out.println("lock system "+systemManager.getSystem().getName()+" jobManager");
 
-			QJob job = systemManager.createJob(JobType.BATCH, userProfile.getName(), jobName);
+			QJob job = systemManager.createJob(JobType.BATCH, identity.getJavaPrincipal(), jobName);
 
 			// add job description libraries
 			if (userProfile.getJobDescription() != null) {
@@ -131,21 +130,17 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager
 
 			activeJobs.put(job.getJobID(), job);
 
-			return job;
+			QJobCapability jobCapability = createJobCapability(job, identity.getJavaPrincipal());
+			job.getContext().set(QJobCapability.class, jobCapability);
+			
+			job.getContext().set(QIdentity.class, identity);
+			
+			return jobCapability;
 		} catch (CommitException e) {
 			throw new OperatingSystemRuntimeException(e);
 		} finally {
 			locker.unlock(LockType.WRITE);
 		}
-	}
-
-	public QJob create(QJob credential) {
-		return create(credential, null);
-	}
-	
-	@Override
-	public QJob create(QJob credential, String jobName) {
-		return create(credential.getJobUser(), "*SAME");
 	}
 
 	@Override
@@ -182,7 +177,7 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager
 		List<QJob> jobs = query.getResult(QJob.class);
 		return jobs;
 	}
-
+	
 	@Override
 	public QJob lookup(String contextID) {
 
@@ -224,10 +219,12 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager
 	}
 
 	@Override
-	public void close(QJob job) {
-		super.close(job);
+	public QJob close(QJobCapability jobCapability) {
+		QJob job = super.close(jobCapability);
 		
 		this.activeJobs.remove(job.getJobID());
+		
+		return job;
 	}
 
 	@Override

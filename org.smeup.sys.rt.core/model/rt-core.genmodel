@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2016 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
     modelDirectory="/org.smeup.sys.rt.core/src" modelPluginID="org.smeup.sys.rt.core"
     modelName="As.UP Runtime Core" editPluginClass="org.smeup.sys.rt.core.provider.AsUPRuntimeCoreEditPlugin"
     rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" featureMapWrapperInterface="" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="7.0" copyrightFields="false" editPluginID="org.smeup.sys.rt.core.edit"
-    editorPluginID="org.smeup.sys.rt.core.editor" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
+    editorPluginID="org.smeup.sys.rt.core.editor" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//data"
     interfaceNamePattern="Q{0}" classNamePattern="" importOrganizing="true">
   <foreignModel>rt-core.ecore</foreignModel>
   <genPackages prefix="RuntimeCore" basePackage="org.smeup.sys.rt" disposableProviderFactory="true"
@@ -128,20 +128,5 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//Plugin/version"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//Plugin/vendor"/>
     </genClasses>
-    <nestedGenPackages prefix="RuntimeCoreAuth" basePackage="org.smeup.sys.rt.core"
-        disposableProviderFactory="true" adapterFactory="false" ecorePackage="rt-core.ecore#//auth">
-      <genClasses image="false" ecoreClass="rt-core.ecore#//auth/AuthenticationToken">
-        <genOperations ecoreOperation="rt-core.ecore#//auth/AuthenticationToken/getID"/>
-        <genOperations ecoreOperation="rt-core.ecore#//auth/AuthenticationToken/isValid"/>
-      </genClasses>
-      <genClasses image="false" ecoreClass="rt-core.ecore#//auth/AuthenticationManager">
-        <genOperations ecoreOperation="rt-core.ecore#//auth/AuthenticationManager/createAuthenticationToken">
-          <genParameters ecoreParameter="rt-core.ecore#//auth/AuthenticationManager/createAuthenticationToken/credentials"/>
-        </genOperations>
-        <genOperations ecoreOperation="rt-core.ecore#//auth/AuthenticationManager/deleteAuthenticationToken">
-          <genParameters ecoreParameter="rt-core.ecore#//auth/AuthenticationManager/deleteAuthenticationToken/authToken"/>
-        </genOperations>
-      </genClasses>
-    </nestedGenPackages>
   </genPackages>
 </genmodel:GenModel>

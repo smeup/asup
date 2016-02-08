@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.smeup.sys.dk.compiler;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -10,7 +10,7 @@ Export-Package: org.smeup.sys.dk.compiler,
  org.smeup.sys.dk.compiler.anz,
  org.smeup.sys.dk.compiler.anz.impl,
  org.smeup.sys.dk.compiler.impl
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.emf.ecore.xmi.impl,
  org.osgi.framework;version="1.7.0",

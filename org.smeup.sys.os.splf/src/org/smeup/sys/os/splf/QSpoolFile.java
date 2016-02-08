@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@ package org.smeup.sys.os.splf;
 import java.util.List;
 
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.os.core.jobs.QJobReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,9 +22,7 @@ import org.smeup.sys.il.core.QObjectNameable;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.splf.QSpoolFile#getFileName <em>File Name</em>}</li>
- *   <li>{@link org.smeup.sys.os.splf.QSpoolFile#getJobName <em>Job Name</em>}</li>
- *   <li>{@link org.smeup.sys.os.splf.QSpoolFile#getJobNumber <em>Job Number</em>}</li>
- *   <li>{@link org.smeup.sys.os.splf.QSpoolFile#getJobUser <em>Job User</em>}</li>
+ *   <li>{@link org.smeup.sys.os.splf.QSpoolFile#getJobReference <em>Job Reference</em>}</li>
  *   <li>{@link org.smeup.sys.os.splf.QSpoolFile#getOutQueue <em>Out Queue</em>}</li>
  *   <li>{@link org.smeup.sys.os.splf.QSpoolFile#getRows <em>Rows</em>}</li>
  *   <li>{@link org.smeup.sys.os.splf.QSpoolFile#getSpoolID <em>Spool ID</em>}</li>
@@ -62,82 +61,30 @@ public interface QSpoolFile extends QObjectNameable {
 	void setFileName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Job Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Job Reference</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Job Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Job Reference</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Job Name</em>' attribute.
-	 * @see #setJobName(String)
-	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFile_JobName()
-	 * @model annotation="il-data length='10'"
+	 * @return the value of the '<em>Job Reference</em>' containment reference.
+	 * @see #setJobReference(QJobReference)
+	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFile_JobReference()
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getJobName();
+	QJobReference getJobReference();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.splf.QSpoolFile#getJobName <em>Job Name</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.os.splf.QSpoolFile#getJobReference <em>Job Reference</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Job Name</em>' attribute.
-	 * @see #getJobName()
+	 * @param value the new value of the '<em>Job Reference</em>' containment reference.
+	 * @see #getJobReference()
 	 * @generated
 	 */
-	void setJobName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Job Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Job Number</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Job Number</em>' attribute.
-	 * @see #setJobNumber(int)
-	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFile_JobNumber()
-	 * @model annotation="il-data precision='6'"
-	 * @generated
-	 */
-	int getJobNumber();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.splf.QSpoolFile#getJobNumber <em>Job Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Job Number</em>' attribute.
-	 * @see #getJobNumber()
-	 * @generated
-	 */
-	void setJobNumber(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Job User</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Job User</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Job User</em>' attribute.
-	 * @see #setJobUser(String)
-	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFile_JobUser()
-	 * @model annotation="il-data length='10'"
-	 * @generated
-	 */
-	String getJobUser();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.splf.QSpoolFile#getJobUser <em>Job User</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Job User</em>' attribute.
-	 * @see #getJobUser()
-	 * @generated
-	 */
-	void setJobUser(String value);
+	void setJobReference(QJobReference value);
 
 	/**
 	 * Returns the value of the '<em><b>Out Queue</b></em>' attribute.

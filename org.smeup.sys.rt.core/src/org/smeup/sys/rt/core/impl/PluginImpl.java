@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,13 +24,13 @@ import org.smeup.sys.rt.core.QRuntimeCorePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.impl.PluginImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.PluginImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.PluginImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.PluginImpl#getVendor <em>Vendor</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

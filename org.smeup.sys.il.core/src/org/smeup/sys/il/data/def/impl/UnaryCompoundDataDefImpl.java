@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,13 +29,13 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <em><b>Unary Compound Data Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.UnaryCompoundDataDefImpl#getClassDelegator <em>Class Delegator</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.UnaryCompoundDataDefImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.UnaryCompoundDataDefImpl#getPrefix <em>Prefix</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.UnaryCompoundDataDefImpl#isQualified <em>Qualified</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

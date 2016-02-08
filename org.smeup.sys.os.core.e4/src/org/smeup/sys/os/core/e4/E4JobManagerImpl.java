@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import javax.inject.Inject;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.QThreadManager;
+import org.smeup.sys.il.core.ctx.QIdentity;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 import org.smeup.sys.il.expr.QPredicateExpression;
@@ -35,11 +36,11 @@ import org.smeup.sys.os.core.base.BaseJobManagerImpl;
 import org.smeup.sys.os.core.jobs.JobEventType;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobEvent;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
 import org.smeup.sys.os.jobd.QJobDescription;
 import org.smeup.sys.os.usrprf.QUserProfile;
-import org.smeup.sys.rt.core.QApplication;
 
 public class E4JobManagerImpl extends BaseJobManagerImpl {
 
@@ -51,9 +52,7 @@ public class E4JobManagerImpl extends BaseJobManagerImpl {
 	private QExpressionParser expressionParser;
 
 	@Inject
-	public E4JobManagerImpl(QApplication application, QThreadManager threadManager, QSystemManager systemManager, QResourceManager resourceManager) {
-		
-		super(application);
+	public E4JobManagerImpl(QThreadManager threadManager, QSystemManager systemManager, QResourceManager resourceManager) {
 		
 		this.systemManager = (E4SystemManagerImpl) systemManager;
 		this.resourceManager = resourceManager;
@@ -102,26 +101,26 @@ public class E4JobManagerImpl extends BaseJobManagerImpl {
 	}
 
 	@Override
-	public QJob create(String user, String password) {
-		return create(user, password, null);
+	public QJobCapability create(QIdentity<?> identity) {
+		return create(identity, null);
 	}
 
 	@Override
-	public QJob create(String user, String password, String jobName) {
+	public QJobCapability create(QIdentity<?> identity, String jobName) {
 
 		QJob startupJob = systemManager.getStartupJob();
 		QResourceReader<QUserProfile> userResource = resourceManager.getResourceReader(startupJob, QUserProfile.class, systemManager.getSystem().getSystemLibrary());
 
 		// check credential
-		QUserProfile userProfile = userResource.lookup(user);
+		QUserProfile userProfile = userResource.lookup(identity.getJavaPrincipal().getName());
 
 		if (userProfile == null)
-			throw new OperatingSystemRuntimeException("User " + user + " not found");
+			throw new OperatingSystemRuntimeException("User " + identity.getJavaPrincipal().getName() + " not found");
 
 		if (!userProfile.isEnabled())
-			throw new OperatingSystemRuntimeException("User " + user + " is disabled");
+			throw new OperatingSystemRuntimeException("User " + userProfile.getName() + " is disabled");
 
-		QJob job = systemManager.createJob(JobType.BATCH, userProfile.getName(), jobName);
+		QJob job = systemManager.createJob(JobType.BATCH, identity.getJavaPrincipal(), jobName);
 		
 		// add job description libraries
 		if (userProfile.getJobDescription() != null) {
@@ -146,17 +145,12 @@ public class E4JobManagerImpl extends BaseJobManagerImpl {
 		
 		activeJobs.put(job.getJobID(), job);
 
-		return job;
-	}
-
-	@Override
-	public QJob create(QJob credential) {
-		return create(credential, null);
-	}
-
-	@Override
-	public QJob create(QJob credential, String jobName) {
-		return create(credential.getJobUser(), "*SAME", jobName);
+		QJobCapability jobCapability = createJobCapability(job, identity.getJavaPrincipal()); 
+		job.getContext().set(QJobCapability.class, jobCapability);
+		
+		job.getContext().set(QIdentity.class, identity);
+		
+		return jobCapability;
 	}
 
 	@Override
@@ -165,9 +159,11 @@ public class E4JobManagerImpl extends BaseJobManagerImpl {
 	}
 
 	@Override
-	public void close(QJob job) {
-		super.close(job);
+	public QJob close(QJobCapability jobCapability) {
+		QJob job = super.close(jobCapability);
 
 		this.activeJobs.remove(job.getJobID());
+		
+		return job;
 	}
 }

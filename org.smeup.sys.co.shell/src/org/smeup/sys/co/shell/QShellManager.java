@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,10 @@
 package org.smeup.sys.co.shell;
 
 import java.util.Map;
+
+import org.smeup.sys.il.core.ctx.QIdentity;
 import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,33 +27,49 @@ public interface QShellManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model contextIDRequired="true" commandRequired="true"
+	 * @model required="true" identityRequired="true"
 	 * @generated
 	 */
-	void executeCommand(String contextID, String command, Map<String, Object> variables);
+	QJobCapability connect(QIdentity<?> identity);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" contextIDRequired="true" commandRequired="true"
+	 * @model required="true" capabilityRequired="true" commandRequired="true"
 	 * @generated
 	 */
-	QDataContainer decodeCommand(String contextID, String command);
+	QDataContainer decodeCommand(QJobCapability capability, String command);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" contextIDRequired="true" containerRequired="true"
+	 * @model capabilityRequired="true"
 	 * @generated
 	 */
-	String encodeCommand(String contextID, QDataContainer container, boolean showDefaults);
+	void disconnect(QJobCapability capability);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model contextIDRequired="true" nameRequired="true"
+	 * @model required="true" capabilityRequired="true" containerRequired="true"
 	 * @generated
 	 */
-	void setDefaultWriter(String contextID, String name);
+	String encodeCommand(QJobCapability capability, QDataContainer container, boolean showDefaults);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model capabilityRequired="true" commandRequired="true"
+	 * @generated
+	 */
+	void executeCommand(QJobCapability capability, String command, Map<String, Object> variables);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model capabilityRequired="true" nameRequired="true"
+	 * @generated
+	 */
+	void setDefaultWriter(QJobCapability capability, String name);
 
 } // QShellManager

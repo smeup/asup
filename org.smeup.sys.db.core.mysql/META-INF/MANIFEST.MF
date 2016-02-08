@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: As.UP Database Core MySql
 Bundle-SymbolicName: org.smeup.sys.db.core.mysql;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-ClassPath: lib/mariadb-java-client-1.1.8.jar, .
 Bundle-Vendor: www.smeup.com
 Require-Bundle: org.smeup.sys.db.core.base,
  org.eclipse.net4j.db
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.eclipse.net4j.db.mysql,
  org.osgi.service.jdbc
 Bundle-ActivationPolicy: lazy

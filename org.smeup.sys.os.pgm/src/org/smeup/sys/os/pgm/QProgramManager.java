@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@ package org.smeup.sys.os.pgm;
 
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -26,7 +27,7 @@ public interface QProgramManager {
 	 * @model programRequired="true" paramsDataType="org.smeup.sys.os.pgm.ParameterList"
 	 * @generated
 	 */
-	void callProgram(String contextID, String library, String program, QData[] params);
+	void callProgram(QJobCapability capability, String library, String program, QData[] params);
 
 	/**
 	 * <!-- begin-user-doc -->

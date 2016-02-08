@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.smeup.sys.os.cmd.QCallableCommand;
 import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.OperatingSystemException;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.dtaq.DataQueueSearchType;
 import org.smeup.sys.os.dtaq.DataQueueType;
 import org.smeup.sys.os.dtaq.QDataQueue;
@@ -42,6 +43,8 @@ public class KeyedQueueTest {
 	private QTestAsserter testAsserter;
 	@Inject
 	private QJob job;
+	@Inject
+	private QJobCapability jobCapability;
 
 	@TestStarted
 	public void runTest()  {
@@ -69,17 +72,17 @@ public class KeyedQueueTest {
 		// Create a test library (if none)
 		if (checkObj(job, QLibrary.class, "QSYS", testLib) == false) {
 			String cmd = "CRTLIB LIB(" + testLib + ")";
-			QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), cmd, null, true);
-			commandManager.executeCommand(job.getJobID(), callableCommand);
+			QCallableCommand callableCommand = commandManager.prepareCommand(job, cmd, null, true);
+			commandManager.executeCommand(job, callableCommand);
 			callableCommand.close();
 		}
 
 		// Create Keyed Queue
 		if (checkObj(job, QDataQueue.class, testLib, keyedDtaq) == false) {
-			dataQueueManager.createDataQueue(job.getJobID(), testLib, keyedDtaq, DataQueueType.KEYED, 32000);
+			dataQueueManager.createDataQueue(jobCapability, testLib, keyedDtaq, DataQueueType.KEYED, 32000);
 			testAsserter.assertTrue("Create KEYED DTAQ ", checkObj(job, QDataQueue.class, testLib, keyedDtaq));
 		} else
-			dataQueueManager.clearDataQueue(job.getJobID(), testLib, keyedDtaq);
+			dataQueueManager.clearDataQueue(jobCapability, testLib, keyedDtaq);
 
 		// Test Data
 		String key1 = "TEST_KEY_1";
@@ -90,31 +93,31 @@ public class KeyedQueueTest {
 
 		// Write in queue
 
-		dataQueueManager.writeDataQueue(job.getJobID(), testLib, keyedDtaq, key1, writeVal1);
-		dataQueueManager.writeDataQueue(job.getJobID(), testLib, keyedDtaq, key1, writeVal2);
-		dataQueueManager.writeDataQueue(job.getJobID(), testLib, keyedDtaq, key1, writeVal3);
+		dataQueueManager.writeDataQueue(jobCapability, testLib, keyedDtaq, key1, writeVal1);
+		dataQueueManager.writeDataQueue(jobCapability, testLib, keyedDtaq, key1, writeVal2);
+		dataQueueManager.writeDataQueue(jobCapability, testLib, keyedDtaq, key1, writeVal3);
 
-		dataQueueManager.writeDataQueue(job.getJobID(), testLib, keyedDtaq, key2, writeVal1);
-		dataQueueManager.writeDataQueue(job.getJobID(), testLib, keyedDtaq, key2, writeVal2);
-		dataQueueManager.writeDataQueue(job.getJobID(), testLib, keyedDtaq, key2, writeVal3);
+		dataQueueManager.writeDataQueue(jobCapability, testLib, keyedDtaq, key2, writeVal1);
+		dataQueueManager.writeDataQueue(jobCapability, testLib, keyedDtaq, key2, writeVal2);
+		dataQueueManager.writeDataQueue(jobCapability, testLib, keyedDtaq, key2, writeVal3);
 
 		// Read in shuffle order
 		String[] readedKey1 = new String[3];
 		String[] readedKey2 = new String[3];
-		readedKey1[0] = dataQueueManager.readDataQueue(job.getJobID(), testLib, keyedDtaq, -1, key1, DataQueueSearchType.EQUAL);
-		readedKey2[0] = dataQueueManager.readDataQueue(job.getJobID(), testLib, keyedDtaq, -1, key2, DataQueueSearchType.EQUAL);
-		readedKey1[1] = dataQueueManager.readDataQueue(job.getJobID(), testLib, keyedDtaq, -1, key1, DataQueueSearchType.EQUAL);
-		readedKey1[2] = dataQueueManager.readDataQueue(job.getJobID(), testLib, keyedDtaq, -1, key1, DataQueueSearchType.EQUAL);
-		readedKey2[1] = dataQueueManager.readDataQueue(job.getJobID(), testLib, keyedDtaq, -1, key2, DataQueueSearchType.EQUAL);
-		readedKey2[2] = dataQueueManager.readDataQueue(job.getJobID(), testLib, keyedDtaq, -1, key2, DataQueueSearchType.EQUAL);
+		readedKey1[0] = dataQueueManager.readDataQueue(jobCapability, testLib, keyedDtaq, -1, key1, DataQueueSearchType.EQUAL);
+		readedKey2[0] = dataQueueManager.readDataQueue(jobCapability, testLib, keyedDtaq, -1, key2, DataQueueSearchType.EQUAL);
+		readedKey1[1] = dataQueueManager.readDataQueue(jobCapability, testLib, keyedDtaq, -1, key1, DataQueueSearchType.EQUAL);
+		readedKey1[2] = dataQueueManager.readDataQueue(jobCapability, testLib, keyedDtaq, -1, key1, DataQueueSearchType.EQUAL);
+		readedKey2[1] = dataQueueManager.readDataQueue(jobCapability, testLib, keyedDtaq, -1, key2, DataQueueSearchType.EQUAL);
+		readedKey2[2] = dataQueueManager.readDataQueue(jobCapability, testLib, keyedDtaq, -1, key2, DataQueueSearchType.EQUAL);
 
 		testAsserter.assertTrue("Read multiple key1 value from keyed DTAQ as FIFO", writeVal1.equals(readedKey1[0]) && writeVal2.equals(readedKey1[1]) && writeVal3.equals(readedKey1[2]));
 
 		testAsserter.assertTrue("Read multiple key2 value from keyed DTAQ as FIFO", writeVal1.equals(readedKey2[0]) && writeVal2.equals(readedKey2[1]) && writeVal3.equals(readedKey2[2]));
 
 		// Clear and delete TestQueue
-		dataQueueManager.clearDataQueue(job.getJobID(), testLib, keyedDtaq);
-		dataQueueManager.deleteDataQueue(job.getJobID(), testLib, keyedDtaq);
+		dataQueueManager.clearDataQueue(jobCapability, testLib, keyedDtaq);
+		dataQueueManager.deleteDataQueue(jobCapability, testLib, keyedDtaq);
 		testAsserter.assertTrue("Delete KEYED DTAQ ", checkObj(job, QDataQueue.class, testLib, keyedDtaq) == false);
 	}
 
@@ -136,17 +139,17 @@ public class KeyedQueueTest {
 
 			resourceManager.getResourceWriter(job, QLibrary.class, "QSYS").save(null);
 
-			QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), cmd, null, true);
-			commandManager.executeCommand(job.getJobID(), callableCommand);
+			QCallableCommand callableCommand = commandManager.prepareCommand(job, cmd, null, true);
+			commandManager.executeCommand(job, callableCommand);
 			callableCommand.close();
 		}
 
 		// Create Keyed Queue
 		if (checkObj(job, QDataQueue.class, testLib, keyedDtaq) == false) {
-			dataQueueManager.createDataQueue(job.getJobID(), testLib, keyedDtaq, DataQueueType.KEYED, 32000);
+			dataQueueManager.createDataQueue(jobCapability, testLib, keyedDtaq, DataQueueType.KEYED, 32000);
 			testAsserter.assertTrue("Create KEYED DTAQ ", checkObj(job, QDataQueue.class, testLib, keyedDtaq));
 		} else
-			dataQueueManager.clearDataQueue(job.getJobID(), testLib, keyedDtaq);
+			dataQueueManager.clearDataQueue(jobCapability, testLib, keyedDtaq);
 
 		// Test Data
 		String key1 = "A";
@@ -159,10 +162,10 @@ public class KeyedQueueTest {
 
 		// Write in queue
 
-		dataQueueManager.writeDataQueue(job.getJobID(), testLib, keyedDtaq, key1, writeVal1);
-		dataQueueManager.writeDataQueue(job.getJobID(), testLib, keyedDtaq, key2, writeVal2);
-		dataQueueManager.writeDataQueue(job.getJobID(), testLib, keyedDtaq, key3, writeVal3);
-		dataQueueManager.writeDataQueue(job.getJobID(), testLib, keyedDtaq, key3, writeVal4);
+		dataQueueManager.writeDataQueue(jobCapability, testLib, keyedDtaq, key1, writeVal1);
+		dataQueueManager.writeDataQueue(jobCapability, testLib, keyedDtaq, key2, writeVal2);
+		dataQueueManager.writeDataQueue(jobCapability, testLib, keyedDtaq, key3, writeVal3);
+		dataQueueManager.writeDataQueue(jobCapability, testLib, keyedDtaq, key3, writeVal4);
 
 		/*
 		 * Queue state:
@@ -174,24 +177,24 @@ public class KeyedQueueTest {
 		String[] readedKey1 = new String[3];
 
 		// key=C e GE --> Expected VALUE 2
-		readedKey1[0] = dataQueueManager.readDataQueue(job.getJobID(), testLib, keyedDtaq, -1, "C", DataQueueSearchType.GREATER_THAN_OR_EQUAL);
+		readedKey1[0] = dataQueueManager.readDataQueue(jobCapability, testLib, keyedDtaq, -1, "C", DataQueueSearchType.GREATER_THAN_OR_EQUAL);
 		testAsserter.assertEquals("GREATER_THEN_OR_EQUAL read from keyed DTAQ", writeVal2, readedKey1[0]);
 
 		// key=D e LE --> Expected VALUE 1
-		readedKey1[1] = dataQueueManager.readDataQueue(job.getJobID(), testLib, keyedDtaq, -1, "D", DataQueueSearchType.LESS_THAN_OR_EQUAL);
+		readedKey1[1] = dataQueueManager.readDataQueue(jobCapability, testLib, keyedDtaq, -1, "D", DataQueueSearchType.LESS_THAN_OR_EQUAL);
 		testAsserter.assertEquals("LESS_THEN_OR_EQUAL read from keyed DTAQ", writeVal1, readedKey1[1]);
 
 		// key=E e EQ --> Expected VALUE 3
-		readedKey1[2] = dataQueueManager.readDataQueue(job.getJobID(), testLib, keyedDtaq, -1, "2", DataQueueSearchType.NOT_EQUAL);
+		readedKey1[2] = dataQueueManager.readDataQueue(jobCapability, testLib, keyedDtaq, -1, "2", DataQueueSearchType.NOT_EQUAL);
 		testAsserter.assertEquals("EQUAL read from keyed DTAQ", writeVal3, readedKey1[2]);
 
 		// key=E e NE --> Expected VALUE 4
-		readedKey1[2] = dataQueueManager.readDataQueue(job.getJobID(), testLib, keyedDtaq, -1, "2", DataQueueSearchType.NOT_EQUAL);
+		readedKey1[2] = dataQueueManager.readDataQueue(jobCapability, testLib, keyedDtaq, -1, "2", DataQueueSearchType.NOT_EQUAL);
 		testAsserter.assertEquals("EQUAL read from keyed DTAQ", writeVal4, readedKey1[2]);
 
 		// Clear and delete TestQueue
-		dataQueueManager.clearDataQueue(job.getJobID(), testLib, keyedDtaq);
-		dataQueueManager.deleteDataQueue(job.getJobID(), testLib, keyedDtaq);
+		dataQueueManager.clearDataQueue(jobCapability, testLib, keyedDtaq);
+		dataQueueManager.deleteDataQueue(jobCapability, testLib, keyedDtaq);
 		testAsserter.assertTrue("Delete KEYED DTAQ ", checkObj(job, QDataQueue.class, testLib, keyedDtaq) == false);
 	}
 

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: As.UP Integrated Language Embedded SQL
 Bundle-SymbolicName: org.smeup.sys.db.esql;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: www.smeup.com
 Bundle-Localization: plugin
@@ -16,5 +16,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.smeup.sys.il.data;visibility:=reexport,
  org.smeup.sys.mi.core;visibility:=reexport,
  org.smeup.sys.db.core
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

@@ -3,21 +3,9 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="splf" nsURI="http://www.smeup.org/asup/os/splf" nsPrefix="os-splf">
   <eClassifiers xsi:type="ecore:EClass" name="SpoolFile" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
-        <details key="length" value="10"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
-      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/DecimalDef">
-        <details key="precision" value="6"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobUser" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
-        <details key="length" value="10"/>
-      </eAnnotations>
-    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jobReference" lowerBound="1"
+        eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobReference"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="outQueue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
         <details key="length" value="10"/>

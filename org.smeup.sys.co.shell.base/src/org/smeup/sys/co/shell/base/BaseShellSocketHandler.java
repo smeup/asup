@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -20,11 +20,13 @@ import java.net.Socket;
 import javax.inject.Inject;
 
 import org.smeup.sys.co.shell.QCommunicationShellFactory;
+import org.smeup.sys.co.shell.QShellCredentials;
 import org.smeup.sys.co.shell.QShellManager;
 import org.smeup.sys.co.shell.QShellOutputWrapper;
-import org.smeup.sys.il.core.ctx.QCredentials;
-import org.smeup.sys.rt.core.auth.QAuthenticationManager;
-import org.smeup.sys.rt.core.auth.QAuthenticationToken;
+import org.smeup.sys.il.core.ctx.QIdentity;
+import org.smeup.sys.os.core.jobs.QJobCapability;
+import org.smeup.sys.rt.auth.QAuthentication;
+import org.smeup.sys.rt.auth.QAuthenticationManager;
 
 public class BaseShellSocketHandler implements Runnable {
 
@@ -36,8 +38,7 @@ public class BaseShellSocketHandler implements Runnable {
 	private QShellOutputWrapper shellOutputWrapper;
 
 	private Socket socket;
-	private QAuthenticationToken authenticationToken;
-	private String user;
+	private QJobCapability jobCapability;
 	
 	private static String WELCOME = 
 			  "------------------------------------------\n" 
@@ -76,7 +77,7 @@ public class BaseShellSocketHandler implements Runnable {
 					outputStreamWriter.write(WELCOME);
 				} else {
 					try {
-						if (authenticationToken == null) {
+						if (jobCapability == null) {
 							login(outputStreamWriter, request);
 						} else {
 							nextLoop = executeCommand(request);
@@ -89,12 +90,16 @@ public class BaseShellSocketHandler implements Runnable {
 					}
 				}
 				
-				checkValidSession();
-				
 				writePrompt(outputStreamWriter);
 
 				outputStreamWriter.flush();
 			}
+
+			if (jobCapability != null) {
+				shellOutputWrapper.unregister(jobCapability.getObjectID());
+				jobCapability = null;				
+			}
+
 			outputStreamWriter.write("\nGoodbye\n");
 			outputStreamWriter.flush();
 		} catch (Exception e) {
@@ -111,38 +116,45 @@ public class BaseShellSocketHandler implements Runnable {
 	}
 
 	private void login(OutputStreamWriter outputStreamWriter, String request) {
-		authenticationToken = authenticate(request);
+		QIdentity<?> identity = authenticate(request);
+		 
+		jobCapability = shellManager.connect(identity);
 		
-		shellOutputWrapper.register(authenticationToken.getID(), outputStreamWriter);
-		shellManager.setDefaultWriter(authenticationToken.getID(), "S");
-	}
-
-	private void checkValidSession() {
-		if (authenticationToken != null && !authenticationToken.isValid()) {
-			shellOutputWrapper.unregister(authenticationToken.getID());
-			authenticationManager.deleteAuthenticationToken(authenticationToken);
-			authenticationToken = null;				
-		}
+		shellOutputWrapper.register(jobCapability.getObjectID(), outputStreamWriter);
+		shellManager.setDefaultWriter(jobCapability, "S");
 	}
 
 	private void writePrompt(OutputStreamWriter outputStreamWriter)	throws IOException {
-		if (authenticationToken != null)
-			outputStreamWriter.write(user.toLowerCase() + "> ");
+		if (jobCapability != null)
+			outputStreamWriter.write(jobCapability.getJavaPrincipal().getName().toLowerCase() + "> ");
 		else
 			outputStreamWriter.write(LOGIN);
 	}
 
+	private QIdentity<QAuthentication> authenticate(String command) {
 
-	private QAuthenticationToken authenticate(String command) {
 		// retrieve user
-		user = cleanup(command);
+		command = cleanup(command);
 
-		System.out.println("Connection request for user " + user);
+		String tokens[] = command.split(" ");
+
+		QShellCredentials credentials = QCommunicationShellFactory.eINSTANCE.createShellCredentials();
+		switch (tokens.length) {
+		case 1:
+			credentials.setUser(tokens[0]);
+			break;
+		case 2:		
+			credentials.setUser(tokens[0]);
+			credentials.setPassword(tokens[1]);
+			break;
+		default:
+			return null;
+
+		}
+		System.out.println("Connection request for user " + credentials.getUser());
 		
-		QCredentials credentials = QCommunicationShellFactory.eINSTANCE.createShellCredentials();
-		credentials.setUser(user);
 		// connect
-		return authenticationManager.createAuthenticationToken(credentials);
+		return authenticationManager.authenticate(credentials);
 	}
 
 	private String cleanup(String command) {
@@ -162,7 +174,7 @@ public class BaseShellSocketHandler implements Runnable {
 		}
 		
 		System.out.println("Executing " + command + "...");
-		shellManager.executeCommand(authenticationToken.getID(), command, null);
+		shellManager.executeCommand(jobCapability, command, null);
 		System.out.println(command + " terminated");
 		
 		return nextLoop;

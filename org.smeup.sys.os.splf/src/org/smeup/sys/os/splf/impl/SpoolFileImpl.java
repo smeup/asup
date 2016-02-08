@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.il.core.impl.ObjectNameableImpl;
+import org.smeup.sys.os.core.jobs.QJobReference;
 import org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage;
 import org.smeup.sys.os.splf.QSpoolFile;
 import org.smeup.sys.os.splf.QSpoolFileRow;
@@ -31,9 +32,7 @@ import org.smeup.sys.os.splf.QSpoolFileRow;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.splf.impl.SpoolFileImpl#getFileName <em>File Name</em>}</li>
- *   <li>{@link org.smeup.sys.os.splf.impl.SpoolFileImpl#getJobName <em>Job Name</em>}</li>
- *   <li>{@link org.smeup.sys.os.splf.impl.SpoolFileImpl#getJobNumber <em>Job Number</em>}</li>
- *   <li>{@link org.smeup.sys.os.splf.impl.SpoolFileImpl#getJobUser <em>Job User</em>}</li>
+ *   <li>{@link org.smeup.sys.os.splf.impl.SpoolFileImpl#getJobReference <em>Job Reference</em>}</li>
  *   <li>{@link org.smeup.sys.os.splf.impl.SpoolFileImpl#getOutQueue <em>Out Queue</em>}</li>
  *   <li>{@link org.smeup.sys.os.splf.impl.SpoolFileImpl#getRows <em>Rows</em>}</li>
  *   <li>{@link org.smeup.sys.os.splf.impl.SpoolFileImpl#getSpoolID <em>Spool ID</em>}</li>
@@ -69,64 +68,14 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 	protected String fileName = FILE_NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getJobName() <em>Job Name</em>}' attribute.
+	 * The cached value of the '{@link #getJobReference() <em>Job Reference</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getJobName()
+	 * @see #getJobReference()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String JOB_NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getJobName() <em>Job Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getJobName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String jobName = JOB_NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getJobNumber() <em>Job Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getJobNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int JOB_NUMBER_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getJobNumber() <em>Job Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getJobNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected int jobNumber = JOB_NUMBER_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getJobUser() <em>Job User</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getJobUser()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String JOB_USER_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getJobUser() <em>Job User</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getJobUser()
-	 * @generated
-	 * @ordered
-	 */
-	protected String jobUser = JOB_USER_EDEFAULT;
+	protected QJobReference jobReference;
 
 	/**
 	 * The default value of the '{@link #getOutQueue() <em>Out Queue</em>}' attribute.
@@ -243,8 +192,8 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getJobName() {
-		return jobName;
+	public QJobReference getJobReference() {
+		return jobReference;
 	}
 
 	/**
@@ -252,11 +201,14 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setJobName(String newJobName) {
-		String oldJobName = jobName;
-		jobName = newJobName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NAME, oldJobName, jobName));
+	public NotificationChain basicSetJobReference(QJobReference newJobReference, NotificationChain msgs) {
+		QJobReference oldJobReference = jobReference;
+		jobReference = newJobReference;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_REFERENCE, oldJobReference, newJobReference);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -264,41 +216,18 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getJobNumber() {
-		return jobNumber;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setJobNumber(int newJobNumber) {
-		int oldJobNumber = jobNumber;
-		jobNumber = newJobNumber;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NUMBER, oldJobNumber, jobNumber));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getJobUser() {
-		return jobUser;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setJobUser(String newJobUser) {
-		String oldJobUser = jobUser;
-		jobUser = newJobUser;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_USER, oldJobUser, jobUser));
+	public void setJobReference(QJobReference newJobReference) {
+		if (newJobReference != jobReference) {
+			NotificationChain msgs = null;
+			if (jobReference != null)
+				msgs = ((InternalEObject)jobReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_REFERENCE, null, msgs);
+			if (newJobReference != null)
+				msgs = ((InternalEObject)newJobReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_REFERENCE, null, msgs);
+			msgs = basicSetJobReference(newJobReference, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_REFERENCE, newJobReference, newJobReference));
 	}
 
 	/**
@@ -399,6 +328,8 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_REFERENCE:
+				return basicSetJobReference(null, msgs);
 			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__ROWS:
 				return ((InternalEList<?>)getRows()).basicRemove(otherEnd, msgs);
 		}
@@ -415,12 +346,8 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 		switch (featureID) {
 			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__FILE_NAME:
 				return getFileName();
-			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NAME:
-				return getJobName();
-			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NUMBER:
-				return getJobNumber();
-			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_USER:
-				return getJobUser();
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_REFERENCE:
+				return getJobReference();
 			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__OUT_QUEUE:
 				return getOutQueue();
 			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__ROWS:
@@ -445,14 +372,8 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__FILE_NAME:
 				setFileName((String)newValue);
 				return;
-			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NAME:
-				setJobName((String)newValue);
-				return;
-			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NUMBER:
-				setJobNumber((Integer)newValue);
-				return;
-			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_USER:
-				setJobUser((String)newValue);
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_REFERENCE:
+				setJobReference((QJobReference)newValue);
 				return;
 			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__OUT_QUEUE:
 				setOutQueue((String)newValue);
@@ -482,14 +403,8 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__FILE_NAME:
 				setFileName(FILE_NAME_EDEFAULT);
 				return;
-			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NAME:
-				setJobName(JOB_NAME_EDEFAULT);
-				return;
-			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NUMBER:
-				setJobNumber(JOB_NUMBER_EDEFAULT);
-				return;
-			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_USER:
-				setJobUser(JOB_USER_EDEFAULT);
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_REFERENCE:
+				setJobReference((QJobReference)null);
 				return;
 			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__OUT_QUEUE:
 				setOutQueue(OUT_QUEUE_EDEFAULT);
@@ -517,12 +432,8 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 		switch (featureID) {
 			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__FILE_NAME:
 				return FILE_NAME_EDEFAULT == null ? fileName != null : !FILE_NAME_EDEFAULT.equals(fileName);
-			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NAME:
-				return JOB_NAME_EDEFAULT == null ? jobName != null : !JOB_NAME_EDEFAULT.equals(jobName);
-			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NUMBER:
-				return jobNumber != JOB_NUMBER_EDEFAULT;
-			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_USER:
-				return JOB_USER_EDEFAULT == null ? jobUser != null : !JOB_USER_EDEFAULT.equals(jobUser);
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_REFERENCE:
+				return jobReference != null;
 			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__OUT_QUEUE:
 				return OUT_QUEUE_EDEFAULT == null ? outQueue != null : !OUT_QUEUE_EDEFAULT.equals(outQueue);
 			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__ROWS:
@@ -547,12 +458,6 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (fileName: ");
 		result.append(fileName);
-		result.append(", jobName: ");
-		result.append(jobName);
-		result.append(", jobNumber: ");
-		result.append(jobNumber);
-		result.append(", jobUser: ");
-		result.append(jobUser);
 		result.append(", outQueue: ");
 		result.append(outQueue);
 		result.append(", spoolID: ");

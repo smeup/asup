@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.dtaq.DataQueueSearchType;
 import org.smeup.sys.os.dtaq.DataQueueType;
@@ -41,17 +42,17 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 	}
 	
 	@Override
-	public void writeDataQueue(String contextID, String library, String name, String key, QString value) {
+	public void writeDataQueue(QJobCapability capability, String library, String name, String key, QString value) {
 		dataQueueManager.writeToQueue(library, name, value.asString());
 	}
 	
 	
-	public void writeDataQueue(String ContextID, String library, String name, String key, String aValue) {
+	public void writeDataQueue(QJobCapability capability, String library, String name, String key, String aValue) {
 		dataQueueManager.writeToQueue(library, name, aValue);
 	}
 
 	@Override
-	public String readDataQueue(String ContextID, String library, String name, long aTimeout, String key, DataQueueSearchType searchType) {
+	public String readDataQueue(QJobCapability capability, String library, String name, long aTimeout, String key, DataQueueSearchType searchType) {
 		// TODO
 		if (aTimeout < 0)
 			aTimeout = 30000;
@@ -60,14 +61,14 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 	}
 
 	@Override
-	public String peekDataQueue(String ContextID, String library, String name, long aTimeout, String key, DataQueueSearchType searchType) {
+	public String peekDataQueue(QJobCapability capability, String library, String name, long aTimeout, String key, DataQueueSearchType searchType) {
 		return dataQueueManager.peekFromQueue(library, name, aTimeout);		
 	}
 
 	@Override
-	public void createDataQueue(String contextID, String library, String name, DataQueueType aType, int aMaxEntryLength) {
+	public void createDataQueue(QJobCapability capability, String library, String name, DataQueueType aType, int aMaxEntryLength) {
 
-		QJob job = jobManager.lookup(contextID);
+		QJob job = jobManager.lookup(capability);
 		QResourceWriter<QDataQueue> resource = resourceManager.getResourceWriter(job, QDataQueue.class, library);
 		QDataQueue dataQueue = resource.lookup(name);
 		if (dataQueue == null) {
@@ -79,7 +80,7 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 
 			resource.save(dataQueue);
 
-			System.out.println(contextID + "\t" + "Queue " + name + " created");
+			System.out.println(capability + "\t" + "Queue " + name + " created");
 
 			dataQueueManager.createQueue(library, name);
 		} else
@@ -88,14 +89,14 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 	}
 
 	@Override
-	public void clearDataQueue(String ContextID, String library, String name) {
+	public void clearDataQueue(QJobCapability capability, String library, String name) {
 		dataQueueManager.clearQueue(library, name);
 	}
 
 	@Override
-	public void deleteDataQueue(String ContextID, String library, String name) {
+	public void deleteDataQueue(QJobCapability capability, String library, String name) {
 
-		QJob job = jobManager.lookup(ContextID);
+		QJob job = jobManager.lookup(capability);
 
 		QResourceWriter<QDataQueue> resource = resourceManager.getResourceWriter(job, QDataQueue.class, library);
 		QDataQueue vDtaq = resource.lookup(name);

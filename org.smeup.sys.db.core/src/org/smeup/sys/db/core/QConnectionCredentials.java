@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.db.core;
 
-import org.smeup.sys.il.core.ctx.QCredentials;
+import org.smeup.sys.rt.auth.QAuthenticationUserPassword;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -18,5 +18,5 @@ import org.smeup.sys.il.core.ctx.QCredentials;
  * @model
  * @generated
  */
-public interface QConnectionCredentials extends QCredentials {
+public interface QConnectionCredentials extends QAuthenticationUserPassword {
 } // QConnectionCredentials

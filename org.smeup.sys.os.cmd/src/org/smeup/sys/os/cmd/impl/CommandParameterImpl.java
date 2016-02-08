@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.smeup.sys.os.cmd.QOperatingSystemCommandPackage;
  * <em><b>QCommand Parameter</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.cmd.impl.CommandParameterImpl#isAllowVariable <em>Allow Variable</em>}</li>
  *   <li>{@link org.smeup.sys.os.cmd.impl.CommandParameterImpl#getDataTerm <em>Data Term</em>}</li>
@@ -35,7 +36,6 @@ import org.smeup.sys.os.cmd.QOperatingSystemCommandPackage;
  *   <li>{@link org.smeup.sys.os.cmd.impl.CommandParameterImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.smeup.sys.os.cmd.impl.CommandParameterImpl#isHidden <em>Hidden</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

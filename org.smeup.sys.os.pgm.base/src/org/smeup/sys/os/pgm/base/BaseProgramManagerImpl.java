@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -35,8 +35,10 @@ import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
+import org.smeup.sys.os.core.jobs.QJobReference;
 import org.smeup.sys.os.core.jobs.QJobRunInfo;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
 import org.smeup.sys.os.pgm.QActivationGroup;
@@ -69,9 +71,9 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	}
 
 	@Override
-	public void callProgram(String contextID, String library, String name, QData[] params) {
+	public void callProgram(QJobCapability jobCapability, String library, String name, QData[] params) {
 
-		QJob job = jobManager.lookup(contextID);
+		QJob job = jobManager.lookup(jobCapability);
 		callProgram(job, library, name, params);
 	}
 
@@ -362,8 +364,9 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		QResourceReader<QProgram> programReader = resourceManager.getResourceReader(job, QProgram.class, scope, library);		
 		QProgram program = programReader.lookup(name);
 		if (program == null) {
+			QJobReference jobReference = job.getJobReference();
 			jobLogManager.error(job, "Program not found: " + name);
-			throw new OperatingSystemRuntimeException(job.getJobName() + "(" + job.getJobNumber() + ")" + "\t" + "Program not found: " + name, null);
+			throw new OperatingSystemRuntimeException(jobReference.getJobName() + "(" + jobReference.getJobNumber() + ")" + "\t" + "Program not found: " + name, null);
 		}
 
 		return program;
@@ -375,7 +378,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		if (callableProgram.getEntry() != null)
 			text += formatStackParameters(callableProgram.getEntry());
 		text += ")";
-		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
+		QJobReference jobReference = job.getJobReference();
+		System.out.println(jobReference.getJobName() + "(" + jobReference.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
 	}
 
 	protected void printReceiveStack(QJob job, QProgramStack programStack, QCallableProgram<?> callableProgram) {
@@ -384,7 +388,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			text += formatStackParameters(callableProgram.getEntry());
 		text += ")";
 		text += callableProgram.isOpen() ? "(RT)" : "(LR)";
-		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
+		QJobReference jobReference = job.getJobReference();
+		System.out.println(jobReference.getJobName() + "(" + jobReference.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
 	}
 
 	private String formatStackParameters(QData[] entry) {

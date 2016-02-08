@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -67,9 +67,9 @@ public class JDTProjectUtil {
 		attributes.putValue("Bundle-ManifestVersion", "2");
 		attributes.putValue("Bundle-Name", projectDef.getText());
 		attributes.putValue("Bundle-SymbolicName", projectDef.getName());		
-		attributes.putValue("Bundle-Version", "0.7.0.qualifier");
+		attributes.putValue("Bundle-Version", "0.8.0.qualifier");
 		attributes.putValue("Require-Bundle", "org.smeup.sys.il.data, org.smeup.sys.il.esam");
-		attributes.putValue("Bundle-RequiredExecutionEnvironment", "JavaSE-1.7");
+		attributes.putValue("Bundle-RequiredExecutionEnvironment", "JavaSE-1.8");
 		attributes.putValue("Export-Package", ".");
 		
 		ByteArrayOutputStream stream = new ByteArrayOutputStream();

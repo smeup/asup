@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,13 +18,13 @@ import org.smeup.sys.db.syntax.QDefinitionStatement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QCreateIndexStatement#getIndexName <em>Index Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QCreateIndexStatement#getOnTable <em>On Table</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QCreateIndexStatement#getSortBy <em>Sort By</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QCreateIndexStatement#isUnique <em>Unique</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.syntax.ddl.QDatabaseSyntaxDDLPackage#getCreateIndexStatement()
  * @model

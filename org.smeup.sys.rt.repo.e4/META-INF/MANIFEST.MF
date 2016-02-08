@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: As.UP Runtime Repository E4
 Bundle-SymbolicName: org.smeup.sys.rt.repo.e4
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.smeup.sys.rt.repo,
  org.eclipse.equinox.p2.core,
  org.eclipse.equinox.p2.repository,

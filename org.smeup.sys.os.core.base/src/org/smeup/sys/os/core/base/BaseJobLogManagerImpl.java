@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.smeup.sys.os.core.jobs.QJobLog;
 import org.smeup.sys.os.core.jobs.QJobLogEntry;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
+import org.smeup.sys.os.core.jobs.QJobReference;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
 
 public class BaseJobLogManagerImpl implements QJobLogManager {
@@ -104,6 +105,12 @@ public class BaseJobLogManagerImpl implements QJobLogManager {
 			jobLog = job.getContext().get(QJobLog.class);
 
 		return jobLog;
+	}
+
+
+	@Override
+	public QJobLog lookup(String contextID, QJobReference jobReference) {
+		return lookup(contextID, jobReference.getJobName(), jobReference.getJobUser(), jobReference.getJobNumber());
 	}
 
 	@Override

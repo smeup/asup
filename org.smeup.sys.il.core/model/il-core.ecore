@@ -212,6 +212,14 @@
         </eParameters>
       </eOperations>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Capability" abstract="true" interface="true"
+        eSuperTypes="#//Object">
+      <eTypeParameters name="T">
+        <eBounds eClassifier="#//Object"/>
+      </eTypeParameters>
+      <eOperations name="getObjectAddress" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaURI"/>
+      <eOperations name="getObjectID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Context" abstract="true">
       <eOperations name="close" lowerBound="1"/>
       <eOperations name="createChildContext" lowerBound="1" eType="#//ctx/Context">
@@ -335,12 +343,6 @@
     <eClassifiers xsi:type="ecore:EClass" name="ContextProvider" abstract="true" interface="true">
       <eOperations name="getContext" lowerBound="1" eType="#//ctx/Context"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Credentials" abstract="true" eSuperTypes="#//Object">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="user" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="PluginRegistry" abstract="true" interface="true">
       <eTypeParameters name="T"/>
       <eOperations name="lookup" lowerBound="1">
@@ -369,6 +371,15 @@
           </eGenericType>
         </eParameters>
       </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Identity" abstract="true" interface="true">
+      <eTypeParameters name="T">
+        <eBounds eClassifier="#//Object"/>
+      </eTypeParameters>
+      <eOperations name="getJavaPrincipal" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaPrincipal"/>
+      <eGenericSuperTypes eClassifier="#//ctx/Capability">
+        <eTypeArguments eTypeParameter="#//ctx/Identity/T"/>
+      </eGenericSuperTypes>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="meta" nsURI="http://www.smeup.org/asup/il/core/meta" nsPrefix="il-core-meta">
@@ -465,12 +476,6 @@
         <eParameters name="object" lowerBound="1" eType="#//Object"/>
       </eOperations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="WritableObject" abstract="true" interface="true">
-      <eOperations name="getObjectToWrite" eType="#//Object"/>
-      <eOperations name="setObject">
-        <eParameters name="object" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
-      </eOperations>
-    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ObjectWriterFactory" abstract="true"
         interface="true">
       <eOperations name="createObjectWriter" lowerBound="1" eType="#//out/ObjectWriter">
@@ -499,13 +504,6 @@
       <eOperations name="setDefaultWriter">
         <eParameters name="context" lowerBound="1" eType="#//ctx/Context"/>
         <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eOperations>
-      <eOperations name="getWritableObject" lowerBound="1" eType="#//out/WritableObject">
-        <eParameters name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eOperations>
-      <eOperations name="getWritableObject" lowerBound="1" eType="#//out/WritableObject">
-        <eParameters name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        <eParameters name="columnLength" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       </eOperations>
     </eClassifiers>
   </eSubpackages>

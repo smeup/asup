@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,12 +16,12 @@ import org.smeup.sys.db.syntax.QBindingStatement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QOpenStatement#getCursor <em>Cursor</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QOpenStatement#getUsing <em>Using</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QOpenStatement#getUsingType <em>Using Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getOpenStatement()
  * @model

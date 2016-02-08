@@ -22,14 +22,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataQueueManager" abstract="true" interface="true">
     <eOperations name="writeDataQueue" lowerBound="1">
-      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
       <eParameters name="library" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//String"/>
     </eOperations>
     <eOperations name="readDataQueue" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
       <eParameters name="library" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="timeout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
@@ -37,12 +37,12 @@
       <eParameters name="searchType" eType="#//DataQueueSearchType"/>
     </eOperations>
     <eOperations name="clearDataQueue" lowerBound="1">
-      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
       <eParameters name="library" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="peekDataQueue" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
       <eParameters name="library" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="timeout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
@@ -50,21 +50,21 @@
       <eParameters name="searchType" eType="#//DataQueueSearchType"/>
     </eOperations>
     <eOperations name="createDataQueue" lowerBound="1">
-      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
       <eParameters name="library" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="type" lowerBound="1" eType="#//DataQueueType"/>
       <eParameters name="maxEntryLength" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
     <eOperations name="writeDataQueue" lowerBound="1">
-      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
       <eParameters name="library" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="deleteDataQueue">
-      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
       <eParameters name="library" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>

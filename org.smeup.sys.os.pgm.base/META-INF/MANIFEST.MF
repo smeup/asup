@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: As.UP Operating System Program Base
 Bundle-SymbolicName: org.smeup.sys.os.pgm.base
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Export-Package: org.smeup.sys.os.pgm.base,
  org.smeup.sys.os.pgm.base.api
@@ -11,5 +11,5 @@ Require-Bundle: org.smeup.sys.os.pgm,
  org.smeup.sys.dk.core,
  org.smeup.sys.il.esam,
  org.smeup.sys.os.file
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,8 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 
+import org.smeup.sys.os.core.QOperatingSystemCorePackage;
+import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.splf.QOperatingSystemSpoolFileFactory;
 import org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage;
 import org.smeup.sys.os.splf.QSpoolFile;
@@ -116,8 +118,7 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 		isInited = true;
 
 		// Initialize simple dependencies
-		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
+		QOperatingSystemCorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theOperatingSystemSpoolFilePackage.createPackageContents();
@@ -157,26 +158,8 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSpoolFile_JobName() {
-		return (EAttribute)spoolFileEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSpoolFile_JobNumber() {
-		return (EAttribute)spoolFileEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSpoolFile_JobUser() {
-		return (EAttribute)spoolFileEClass.getEStructuralFeatures().get(3);
+	public EReference getSpoolFile_JobReference() {
+		return (EReference)spoolFileEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -185,7 +168,7 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getSpoolFile_OutQueue() {
-		return (EAttribute)spoolFileEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)spoolFileEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -194,7 +177,7 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getSpoolFile_Rows() {
-		return (EReference)spoolFileEClass.getEStructuralFeatures().get(5);
+		return (EReference)spoolFileEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -203,7 +186,7 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getSpoolFile_SpoolID() {
-		return (EAttribute)spoolFileEClass.getEStructuralFeatures().get(6);
+		return (EAttribute)spoolFileEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -212,7 +195,7 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getSpoolFile_UserData() {
-		return (EAttribute)spoolFileEClass.getEStructuralFeatures().get(7);
+		return (EAttribute)spoolFileEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -290,9 +273,7 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 		// Create classes and their features
 		spoolFileEClass = createEClass(SPOOL_FILE);
 		createEAttribute(spoolFileEClass, SPOOL_FILE__FILE_NAME);
-		createEAttribute(spoolFileEClass, SPOOL_FILE__JOB_NAME);
-		createEAttribute(spoolFileEClass, SPOOL_FILE__JOB_NUMBER);
-		createEAttribute(spoolFileEClass, SPOOL_FILE__JOB_USER);
+		createEReference(spoolFileEClass, SPOOL_FILE__JOB_REFERENCE);
 		createEAttribute(spoolFileEClass, SPOOL_FILE__OUT_QUEUE);
 		createEReference(spoolFileEClass, SPOOL_FILE__ROWS);
 		createEAttribute(spoolFileEClass, SPOOL_FILE__SPOOL_ID);
@@ -332,6 +313,7 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 
 		// Obtain other dependent packages
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
+		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
@@ -353,9 +335,7 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 		// Initialize classes and features; add operations and parameters
 		initEClass(spoolFileEClass, QSpoolFile.class, "SpoolFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSpoolFile_FileName(), ecorePackage.getEString(), "fileName", null, 0, 1, QSpoolFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSpoolFile_JobName(), ecorePackage.getEString(), "jobName", null, 0, 1, QSpoolFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSpoolFile_JobNumber(), ecorePackage.getEInt(), "jobNumber", null, 0, 1, QSpoolFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSpoolFile_JobUser(), ecorePackage.getEString(), "jobUser", null, 0, 1, QSpoolFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSpoolFile_JobReference(), theOperatingSystemJobsPackage.getJobReference(), null, "jobReference", null, 1, 1, QSpoolFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSpoolFile_OutQueue(), ecorePackage.getEString(), "outQueue", null, 0, 1, QSpoolFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSpoolFile_Rows(), this.getSpoolFileRow(), this.getSpoolFileRow_SpoolFile(), "rows", null, 0, -1, QSpoolFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSpoolFile_SpoolID(), ecorePackage.getEString(), "spoolID", null, 1, 1, QSpoolFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -389,33 +369,6 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 	 */
 	protected void createIldataAnnotations() {
 		String source = "il-data";	
-		addAnnotation
-		  (getSpoolFile_JobName(), 
-		   source, 
-		   new String[] {
-			 "length", "10"
-		   },
-		   new URI[] {
-			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
-		   });	
-		addAnnotation
-		  (getSpoolFile_JobNumber(), 
-		   source, 
-		   new String[] {
-			 "precision", "6"
-		   },
-		   new URI[] {
-			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/DecimalDef")
-		   });	
-		addAnnotation
-		  (getSpoolFile_JobUser(), 
-		   source, 
-		   new String[] {
-			 "length", "10"
-		   },
-		   new URI[] {
-			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
-		   });	
 		addAnnotation
 		  (getSpoolFile_OutQueue(), 
 		   source, 

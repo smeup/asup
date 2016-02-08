@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="source" nsURI="http://www.smeup.org/asup/dk/source" nsPrefix="dk-source">
   <eClassifiers xsi:type="ecore:EClass" name="Project" abstract="true" interface="true"
-      eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable #//SourceNode">
+      eSuperTypes="#//SourceNode">
     <eOperations name="getText" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProjectDef" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">

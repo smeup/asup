@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,9 +55,9 @@ import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.core.QViewDef;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
+import org.smeup.sys.rt.auth.QRuntimeAuthenticationPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -295,8 +295,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		isInited = true;
 
 		// Initialize simple dependencies
-		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
+		QRuntimeAuthenticationPackage.eINSTANCE.eClass();
 		SQLSchemaPackage.eINSTANCE.eClass();
 		SQLConstraintsPackage.eINSTANCE.eClass();
 		SQLDataTypesPackage.eINSTANCE.eClass();
@@ -972,6 +971,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		SQLConstraintsPackage theSQLConstraintsPackage = (SQLConstraintsPackage)EPackage.Registry.INSTANCE.getEPackage(SQLConstraintsPackage.eNS_URI);
 		SQLTablesPackage theSQLTablesPackage = (SQLTablesPackage)EPackage.Registry.INSTANCE.getEPackage(SQLTablesPackage.eNS_URI);
 		SQLSchemaPackage theSQLSchemaPackage = (SQLSchemaPackage)EPackage.Registry.INSTANCE.getEPackage(SQLSchemaPackage.eNS_URI);
+		QRuntimeAuthenticationPackage theRuntimeAuthenticationPackage = (QRuntimeAuthenticationPackage)EPackage.Registry.INSTANCE.getEPackage(QRuntimeAuthenticationPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
@@ -983,7 +983,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 
 		// Add supertypes to classes
 		connectionEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
-		connectionCredentialsEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getCredentials());
+		connectionCredentialsEClass.getESuperTypes().add(theRuntimeAuthenticationPackage.getAuthenticationUserPassword());
 		databaseContainerEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		indexDefEClass.getESuperTypes().add(this.getDatabaseObjectDef());
 		indexColumnDefEClass.getESuperTypes().add(this.getDatabaseObjectDef());

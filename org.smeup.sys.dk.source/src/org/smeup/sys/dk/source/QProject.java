@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.dk.source;
 
-import org.smeup.sys.il.core.QObjectNameable;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +18,7 @@ import org.smeup.sys.il.core.QObjectNameable;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QProject extends QObjectNameable, QSourceNode {
+public interface QProject extends QSourceNode {
 
 	/**
 	 * <!-- begin-user-doc -->

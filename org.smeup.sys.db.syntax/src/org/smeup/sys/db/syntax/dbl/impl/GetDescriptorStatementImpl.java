@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,13 +33,13 @@ import org.smeup.sys.db.syntax.impl.BindingStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.GetDescriptorStatementImpl#getDescriptorName <em>Descriptor Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.GetDescriptorStatementImpl#getDescriptorScope <em>Descriptor Scope</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.GetDescriptorStatementImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.GetDescriptorStatementImpl#getVariables <em>Variables</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

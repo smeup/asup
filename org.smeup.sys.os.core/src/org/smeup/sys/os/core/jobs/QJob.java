@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getCreationInfo <em>Creation Info</em>}</li>
@@ -30,12 +31,10 @@ import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getDateFormat <em>Date Format</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getDateSeparator <em>Date Separator</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobID <em>Job ID</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobName <em>Job Name</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobNumber <em>Job Number</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobReference <em>Job Reference</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobRunInfo <em>Job Run Info</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobThread <em>Job Thread</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobType <em>Job Type</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobUser <em>Job User</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getLibraries <em>Libraries</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getMessages <em>Messages</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getSwitches <em>Switches</em>}</li>
@@ -43,7 +42,6 @@ import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getTimeSeparator <em>Time Separator</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getVariableContainer <em>Variable Container</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob()
  * @model
@@ -106,60 +104,30 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	void setJobID(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Job Name</b></em>' attribute. <!--
-	 * begin-user-doc -->
+	 * Returns the value of the '<em><b>Job Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Job Name</em>' attribute isn't clear, there
-	 * really should be more of a description here...
+	 * If the meaning of the '<em>Job Reference</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the value of the '<em>Job Name</em>' attribute.
-	 * @see #setJobName(String)
-	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_JobName()
-	 * @model annotation="il-data length='10'"
+	 * @return the value of the '<em>Job Reference</em>' containment reference.
+	 * @see #setJobReference(QJobReference)
+	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_JobReference()
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getJobName();
+	QJobReference getJobReference();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getJobName
-	 * <em>Job Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Job Name</em>' attribute.
-	 * @see #getJobName()
-	 * @generated
-	 */
-	void setJobName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Job Number</b></em>' attribute. <!--
-	 * begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Job Number</em>' attribute isn't clear, there
-	 * really should be more of a description here...
-	 * </p>
+	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getJobReference <em>Job Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the value of the '<em>Job Number</em>' attribute.
-	 * @see #setJobNumber(int)
-	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_JobNumber()
-	 * @model annotation="il-data precision='6'"
+	 * @param value the new value of the '<em>Job Reference</em>' containment reference.
+	 * @see #getJobReference()
 	 * @generated
 	 */
-	int getJobNumber();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getJobNumber <em>Job Number</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @param value the new value of the '<em>Job Number</em>' attribute.
-	 * @see #getJobNumber()
-	 * @generated
-	 */
-	void setJobNumber(int value);
+	void setJobReference(QJobReference value);
 
 	/**
 	 * Returns the value of the '<em><b>Job Run Info</b></em>' containment reference.
@@ -257,35 +225,6 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 * @generated
 	 */
 	void setJobType(JobType value);
-
-	/**
-	 * Returns the value of the '<em><b>Job User</b></em>' attribute. <!--
-	 * begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Job User</em>' attribute isn't clear, there
-	 * really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 *
-	 * @return the value of the '<em>Job User</em>' attribute.
-	 * @see #setJobUser(String)
-	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_JobUser()
-	 * @model annotation="il-data length='10'"
-	 * @generated
-	 */
-	String getJobUser();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getJobUser
-	 * <em>Job User</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Job User</em>' attribute.
-	 * @see #getJobUser()
-	 * @generated
-	 */
-	void setJobUser(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Libraries</b></em>' attribute list.

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: As.UP Eclipse Tools
 Bundle-SymbolicName: org.smeup.sys.ui.epdm.emf;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: org.smeup.sys.ui.epdm.emf.Activator
 Bundle-Vendor: www.smeup.com
 Require-Bundle: org.eclipse.ui,
@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore.xmi,
  org.smeup.sys.rt.core,
  org.smeup.sys.os.cmd
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.smeup.sys.ui.epdm.emf,
  org.smeup.sys.ui.epdm.emf.actions

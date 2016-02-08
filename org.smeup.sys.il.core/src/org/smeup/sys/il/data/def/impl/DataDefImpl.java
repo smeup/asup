@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QDataDef;
@@ -24,14 +24,14 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  * <em><b>Data Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.DataDefImpl#getFormulas <em>Formulas</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements QDataDef<D> {
+public abstract class DataDefImpl<D extends QData> extends MinimalEObjectImpl.Container implements QDataDef<D> {
 	/**
 	 * The cached value of the '{@link #getFormulas() <em>Formulas</em>}' attribute list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

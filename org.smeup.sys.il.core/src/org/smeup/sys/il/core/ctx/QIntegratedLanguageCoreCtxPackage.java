@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.core.ctx;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
@@ -82,7 +81,46 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getContext()
 	 * @generated
 	 */
-	int CONTEXT = 1;
+	int CONTEXT = 2;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.QContextDescription <em>Context Description</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.ctx.QContextDescription
+	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getContextDescription()
+	 * @generated
+	 */
+	int CONTEXT_DESCRIPTION = 3;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.QContextProvider <em>Context Provider</em>}' class.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @see org.smeup.sys.il.core.ctx.QContextProvider
+	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getContextProvider()
+	 * @generated
+	 */
+	int CONTEXT_PROVIDER = 4;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.QCapability <em>Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.ctx.QCapability
+	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getCapability()
+	 * @generated
+	 */
+	int CAPABILITY = 1;
+
+	/**
+	 * The number of structural features of the '<em>Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Context</em>' class. <!--
@@ -94,16 +132,6 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	int CONTEXT_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.QContextDescription <em>Context Description</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.ctx.QContextDescription
-	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getContextDescription()
-	 * @generated
-	 */
-	int CONTEXT_DESCRIPTION = 2;
-
-	/**
 	 * The number of structural features of the '<em>Context Description</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -113,60 +141,12 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	int CONTEXT_DESCRIPTION_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.QContextProvider <em>Context Provider</em>}' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see org.smeup.sys.il.core.ctx.QContextProvider
-	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getContextProvider()
-	 * @generated
-	 */
-	int CONTEXT_PROVIDER = 3;
-
-	/**
 	 * The number of structural features of the '<em>Context Provider</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int CONTEXT_PROVIDER_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '
-	 * {@link org.smeup.sys.il.core.ctx.impl.CredentialsImpl
-	 * <em>Credentials</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 *
-	 * @see org.smeup.sys.il.core.ctx.impl.CredentialsImpl
-	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getCredentials()
-	 * @generated
-	 */
-	int CREDENTIALS = 4;
-
-	/**
-	 * The feature id for the '<em><b>User</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int CREDENTIALS__USER = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Password</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int CREDENTIALS__PASSWORD = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Credentials</em>' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CREDENTIALS_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.QPluginRegistry <em>Plugin Registry</em>}' class.
@@ -206,6 +186,25 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	int PLUGIN_REGISTRY_FACTORY_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.QIdentity <em>Identity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.ctx.QIdentity
+	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getIdentity()
+	 * @generated
+	 */
+	int IDENTITY = 7;
+
+	/**
+	 * The number of structural features of the '<em>Identity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.ContextInjectionStrategy <em>Context Injection Strategy</em>}' enum.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -213,7 +212,7 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getContextInjectionStrategy()
 	 * @generated
 	 */
-	int CONTEXT_INJECTION_STRATEGY = 7;
+	int CONTEXT_INJECTION_STRATEGY = 8;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.ctx.QAdapterFactory <em>Adapter Factory</em>}'.
@@ -258,33 +257,14 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	EClass getContextProvider();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.core.ctx.QCredentials <em>Credentials</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Credentials</em>'.
-	 * @see org.smeup.sys.il.core.ctx.QCredentials
+	 * Returns the meta object for class '{@link org.smeup.sys.il.core.ctx.QCapability <em>Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Capability</em>'.
+	 * @see org.smeup.sys.il.core.ctx.QCapability
 	 * @generated
 	 */
-	EClass getCredentials();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.ctx.QCredentials#getUser <em>User</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>User</em>'.
-	 * @see org.smeup.sys.il.core.ctx.QCredentials#getUser()
-	 * @see #getCredentials()
-	 * @generated
-	 */
-	EAttribute getCredentials_User();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.ctx.QCredentials#getPassword <em>Password</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Password</em>'.
-	 * @see org.smeup.sys.il.core.ctx.QCredentials#getPassword()
-	 * @see #getCredentials()
-	 * @generated
-	 */
-	EAttribute getCredentials_Password();
+	EClass getCapability();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.ctx.QPluginRegistry <em>Plugin Registry</em>}'.
@@ -304,6 +284,16 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPluginRegistryFactory();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.core.ctx.QIdentity <em>Identity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Identity</em>'.
+	 * @see org.smeup.sys.il.core.ctx.QIdentity
+	 * @generated
+	 */
+	EClass getIdentity();
 
 	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.il.core.ctx.ContextInjectionStrategy <em>Context Injection Strategy</em>}'.
@@ -377,28 +367,14 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 		EClass CONTEXT_PROVIDER = eINSTANCE.getContextProvider();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.impl.CredentialsImpl <em>Credentials</em>}' class.
-		 * <!-- begin-user-doc --> <!--
-		 * end-user-doc -->
-		 * @see org.smeup.sys.il.core.ctx.impl.CredentialsImpl
-		 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getCredentials()
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.QCapability <em>Capability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.core.ctx.QCapability
+		 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getCapability()
 		 * @generated
 		 */
-		EClass CREDENTIALS = eINSTANCE.getCredentials();
-
-		/**
-		 * The meta object literal for the '<em><b>User</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CREDENTIALS__USER = eINSTANCE.getCredentials_User();
-
-		/**
-		 * The meta object literal for the '<em><b>Password</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CREDENTIALS__PASSWORD = eINSTANCE.getCredentials_Password();
+		EClass CAPABILITY = eINSTANCE.getCapability();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.QPluginRegistry <em>Plugin Registry</em>}' class.
@@ -419,6 +395,16 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PLUGIN_REGISTRY_FACTORY = eINSTANCE.getPluginRegistryFactory();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.QIdentity <em>Identity</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.core.ctx.QIdentity
+		 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getIdentity()
+		 * @generated
+		 */
+		EClass IDENTITY = eINSTANCE.getIdentity();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.ContextInjectionStrategy <em>Context Injection Strategy</em>}' enum.

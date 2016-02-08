@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -21,8 +21,8 @@ import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.os.cmd.QCallableCommand;
 import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.cmd.QCommandParameter;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.pgm.QProgramManager;
@@ -45,10 +45,10 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 	}
 
 	@Override
-	public void executeCommand(String contextID, QCallableCommand callableCommand) {
+	public void executeCommand(QJob job, QCallableCommand callableCommand) {
 
 		// TODO create a dataContainer visitor with replaced variables 
-		jobLogManager.info(jobManager.lookup(contextID), callableCommand.getCommandString());
+		jobLogManager.info(job, callableCommand.getCommandString());
 
 		@SuppressWarnings("resource")
 		QDataContainer dataContainer = callableCommand.getDataContainer();
@@ -60,39 +60,52 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 			parameters[position] = dataContainer.getData(dataContainer.getTerms().get(position));
 		}
 
-		programManager.callProgram(contextID, null, callableCommand.getCommand().getProgram(), parameters);
+		programManager.callProgram(job, null, callableCommand.getCommand().getProgram(), parameters);
 	}
 	
 	@Override
-	public void executeCommand(String contextID, String command, Map<String, Object> variables) {
+	public void executeCommand(QJobCapability jobCapability, String command, Map<String, Object> variables) {
+		
+		QJob jobLocal = jobManager.lookup(jobCapability);
+		
 		try {
-			QCallableCommand callableCommand = prepareCommand(contextID, command, variables, true);
-			executeCommand(contextID, callableCommand);
+			QCallableCommand callableCommand = prepareCommand(jobLocal, command, variables, true);
+			executeCommand(jobLocal, callableCommand);
 			callableCommand.close();
 		} catch (Exception e) {
-			jobLogManager.error(jobManager.lookup(contextID), e.getMessage());
+			jobLogManager.error(jobManager.lookup(jobCapability), e.getMessage());
 		}
 	}
 
 	@Override
-	public QJob submitJob(String contextID, String command, String jobName, Object caller) {
-
-		QJob credential = jobManager.lookup(contextID);
-		if (credential == null)
-			throw new OperatingSystemRuntimeException("Invalid contextID");
+	public QJobCapability submitCommand(QJob job, String command, String jobName, Object caller) {
 		
-		QJob job = null;
+		QJobCapability jobCapability = null;
 		if(jobName != null) 
-			job = jobManager.create(credential, jobName);
+			jobCapability = jobManager.spawn(job, jobName);
 		else
-			job = jobManager.create(credential);
+			jobCapability = jobManager.spawn(job);
 		
 		// Submit command
-		String threadName = "job/" + job.getJobNumber() + "-" + job.getJobUser() + "-" + job.getJobName();
-		QThread thread = threadManager.createThread(threadName, new BaseSubmittedCommand(job, command, caller));
+		String threadName = "job/" + jobCapability.getObjectID();
+		QThread thread = threadManager.createThread(threadName, new BaseSubmittedCommand(this, jobCapability, command, caller));
 		job.setJobThread(thread);
 		threadManager.start(thread);		
 
-		return job;
+		return jobCapability;
+	}
+
+	@Override
+	public QDataContainer decodeCommand(QJobCapability capability, String command) {
+		
+		QJob job = jobManager.lookup(capability);
+		try(QCallableCommand callableCommand = prepareCommand(job, command, null, false);) {
+			return callableCommand.getDataContainer();
+		}
+	}
+
+	@Override
+	public String encodeCommand(QJobCapability capability, QDataContainer container, boolean showDefaults) {
+		return BaseCommandHelper.encodeCommand(container, showDefaults);
 	}
 }

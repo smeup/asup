@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.smeup.sys.il.core.QNode;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.QServiceRef#getClassName <em>Class Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QServiceRef#getInterfaceName <em>Interface Name</em>}</li>
@@ -24,7 +25,6 @@ import org.smeup.sys.il.core.QNode;
  *   <li>{@link org.smeup.sys.rt.core.QServiceRef#getStatus <em>Status</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QServiceRef#getServices <em>Services</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getServiceRef()
  * @model

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import java.net.URL;
 
 import java.nio.charset.Charset;
 
+import java.security.Principal;
 import java.util.Dictionary;
 import java.util.Iterator;
 import java.util.List;
@@ -109,6 +110,13 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * @generated
 	 */
 	private EClass javaNumberEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass javaPrincipalEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -379,6 +387,15 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getJavaPrincipal() {
+		return javaPrincipalEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getJavaThread() {
 		return javaThreadEClass;
 	}
@@ -580,6 +597,8 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 
 		javaNumberEClass = createEClass(JAVA_NUMBER);
 
+		javaPrincipalEClass = createEClass(JAVA_PRINCIPAL);
+
 		javaRunnableEClass = createEClass(JAVA_RUNNABLE);
 
 		javaThreadEClass = createEClass(JAVA_THREAD);
@@ -662,6 +681,8 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		initEClass(javaListEClass, List.class, "JavaList", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<E>");
 
 		initEClass(javaNumberEClass, Number.class, "JavaNumber", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(javaPrincipalEClass, Principal.class, "JavaPrincipal", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(javaRunnableEClass, Runnable.class, "JavaRunnable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 

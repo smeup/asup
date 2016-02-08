@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.smeup.sys.dk.core.QDevelopmentKitCorePackage;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
@@ -29,6 +28,7 @@ import org.smeup.sys.os.core.QCreationInfo;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
+import org.smeup.sys.os.core.QRunManager;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.QSystemEvent;
 import org.smeup.sys.os.core.QSystemListener;
@@ -101,6 +101,13 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass runManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum systemStatusEEnum = null;
 
 	/**
@@ -164,7 +171,6 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		isInited = true;
 
 		// Initialize simple dependencies
-		QDevelopmentKitCorePackage.eINSTANCE.eClass();
 		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 		QIntegratedLanguageLockPackage.eINSTANCE.eClass();
 
@@ -408,6 +414,15 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getRunManager() {
+		return runManagerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EEnum getSystemStatus() {
 		return systemStatusEEnum;
@@ -466,6 +481,8 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		createEAttribute(creationInfoEClass, CREATION_INFO__CREATION_SYSTEM);
 
 		exceptionManagerEClass = createEClass(EXCEPTION_MANAGER);
+
+		runManagerEClass = createEClass(RUN_MANAGER);
 
 		systemEClass = createEClass(SYSTEM);
 		createEReference(systemEClass, SYSTEM__CONTEXT);
@@ -578,6 +595,22 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		addEParameter(op, ecorePackage.getEString(), "messageFileName", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "messageFileLib", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getMessageVariableList(), "variables", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(runManagerEClass, QRunManager.class, "RunManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(runManagerEClass, theOperatingSystemJobsPackage.getJobManager(), "locate", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(runManagerEClass, null, "locate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "S");
+		g1 = createEGenericType(ecorePackage.getEJavaObject());
+		t1.getEBounds().add(g1);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		EGenericType g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		initEOperation(op, g1);
 
 		initEClass(systemEClass, QSystem.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSystem_Context(), theIntegratedLanguageCoreCtxPackage.getContext(), null, "context", null, 0, 1, QSystem.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

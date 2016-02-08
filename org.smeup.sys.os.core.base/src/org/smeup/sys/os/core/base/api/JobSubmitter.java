@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -12,12 +12,10 @@
 package org.smeup.sys.os.core.base.api;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.ToDo;
-import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -35,6 +33,7 @@ import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.pgm.QCallableProgram;
 import org.smeup.sys.os.pgm.QProgramManager;
@@ -51,8 +50,6 @@ public class JobSubmitter {
 	private QCommandManager commandManager;
 	@Inject
 	private QProgramManager programManager;
-	@Inject
-	private QOutputManager outputManager;
 	@Inject
 	private QResourceManager resourceManager;
 
@@ -87,31 +84,26 @@ public class JobSubmitter {
 			caller = callableProgram.getRawProgram();
 
 		// Job spawn
-		QJob jobSubmitted = null;
+		QJobCapability jobSubmitted = null;
 
 		switch (jobName.asEnum()) {
 		// TODO
 		case JOBD: {
 			QResourceReader<QUserProfile> userProfileReader = resourceManager.getResourceReader(job, QUserProfile.class, Scope.ALL);
-			QUserProfile userProfile = userProfileReader.lookup(job.getJobUser());
-			jobSubmitted = commandManager.submitJob(job.getJobID(), commandToRun.trimR(), userProfile.getJobDescription(), caller);
+			QUserProfile userProfile = userProfileReader.lookup(job.getJobReference().getJobUser());
+			jobSubmitted = commandManager.submitCommand(job, commandToRun.trimR(), userProfile.getJobDescription(), caller);
 			break;
 		}
 		case OTHER:
 			if (!jobName.isEmpty()) {
-				jobSubmitted = commandManager.submitJob(job.getJobID(), commandToRun.trimR(), jobName.asData().trimR(), caller);
-
-				// TODO remove -> QJobListener
-				if (jobSubmitted.getJobName().startsWith("LO_"))
-					outputManager.setDefaultWriter(job.getContext(), "L");
+				jobSubmitted = commandManager.submitCommand(job, commandToRun.trimR(), jobName.asData().trimR(), caller);
 			} else
-				jobSubmitted = commandManager.submitJob(job.getJobID(), commandToRun.trimR(), null, caller);
+				jobSubmitted = commandManager.submitCommand(job, commandToRun.trimR(), null, caller);
 			break;
 		}
 
 		// add message to queue
-		NumberFormat numberFormat = new DecimalFormat("000000");
-		job.getMessages().add(numberFormat.format(jobSubmitted.getJobNumber()));
+		job.getMessages().add(new DecimalFormat("000000").format(jobSubmitted.getJobReference().getJobNumber()));
 
 		jobLogManager.info(job, "Job submitted:" + jobSubmitted);
 	}

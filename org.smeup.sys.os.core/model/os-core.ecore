@@ -40,6 +40,21 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="MessageVariableList" instanceClassName="java.lang.Object[]"/>
   <eClassifiers xsi:type="ecore:EDataType" name="MessageException" instanceClassName="org.smeup.sys.os.core.OperatingSystemMessageException"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunManager" abstract="true" interface="true">
+    <eOperations name="locate" eType="#//jobs/JobManager"/>
+    <eOperations name="locate">
+      <eGenericType eTypeParameter="#//RunManager/locate.1/S"/>
+      <eTypeParameters name="S">
+        <eBounds eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+      </eTypeParameters>
+      <eParameters name="capability" eType="#//jobs/JobCapability"/>
+      <eParameters name="klass" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//RunManager/locate.1/S"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="../../org.smeup.sys.il.lock/model/il-lock.ecore#//ObjectLockable ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
     <eOperations name="getAvailableProcessors" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
       <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/DecimalDef">
@@ -167,26 +182,13 @@
           <details key="length" value="13"/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
-          <details key="length" value="10"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
-        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/DecimalDef">
-          <details key="precision" value="6"/>
-        </eAnnotations>
-      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="jobReference" lowerBound="1"
+          eType="#//jobs/JobReference" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="jobRunInfo" lowerBound="1"
           eType="#//jobs/JobRunInfo" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="jobThread" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Thread"
           transient="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobType" eType="#//jobs/JobType"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobUser" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
-          <details key="length" value="10"/>
-        </eAnnotations>
-      </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="libraries" upperBound="-1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="messages" upperBound="-1"
@@ -207,6 +209,12 @@
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="variableContainer" eType="#//env/EnvironmentVariableContainer"
           containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="JobCapability" abstract="true" interface="true">
+      <eOperations name="getJobReference" lowerBound="1" eType="#//jobs/JobReference"/>
+      <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Identity">
+        <eTypeArguments eClassifier="#//jobs/Job"/>
+      </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobEvent">
       <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//jobs/Job"/>
@@ -243,6 +251,11 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobLogManager" abstract="true" interface="true">
+      <eOperations name="addEntry">
+        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
+        <eParameters name="gravity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
       <eOperations name="info">
         <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
         <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -260,34 +273,42 @@
       </eOperations>
       <eOperations name="lookup" eType="#//jobs/JobLog">
         <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eParameters name="jobReference" lowerBound="1" eType="#//jobs/JobReference"/>
+      </eOperations>
+      <eOperations name="lookup" eType="#//jobs/JobLog">
+        <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         <eParameters name="user" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         <eParameters name="number" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       </eOperations>
-      <eOperations name="addEntry">
-        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
-        <eParameters name="gravity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-        <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobManager" abstract="true" interface="true">
+      <eOperations name="close" eType="#//jobs/Job">
+        <eParameters name="capability" lowerBound="1" eType="#//jobs/JobCapability"/>
+      </eOperations>
       <eOperations name="close">
         <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
       </eOperations>
-      <eOperations name="create" lowerBound="1" eType="#//jobs/Job">
-        <eParameters name="user" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        <eParameters name="password" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eOperations name="create" lowerBound="1" eType="#//jobs/JobCapability">
+        <eParameters name="identity" lowerBound="1">
+          <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Identity">
+            <eTypeArguments/>
+          </eGenericType>
+        </eParameters>
       </eOperations>
-      <eOperations name="create" lowerBound="1" eType="#//jobs/Job">
-        <eParameters name="user" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        <eParameters name="password" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eOperations name="create" lowerBound="1" eType="#//jobs/JobCapability">
+        <eParameters name="identity" lowerBound="1">
+          <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Identity">
+            <eTypeArguments/>
+          </eGenericType>
+        </eParameters>
         <eParameters name="jobName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
-      <eOperations name="create" lowerBound="1" eType="#//jobs/Job">
-        <eParameters name="credential" lowerBound="1" eType="#//jobs/Job"/>
+      <eOperations name="spawn" lowerBound="1" eType="#//jobs/JobCapability">
+        <eParameters name="parent" lowerBound="1" eType="#//jobs/Job"/>
       </eOperations>
-      <eOperations name="create" lowerBound="1" eType="#//jobs/Job">
-        <eParameters name="credential" lowerBound="1" eType="#//jobs/Job"/>
+      <eOperations name="spawn" lowerBound="1" eType="#//jobs/JobCapability">
+        <eParameters name="parent" lowerBound="1" eType="#//jobs/Job"/>
         <eParameters name="jobName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="delay">
@@ -297,6 +318,10 @@
         <eParameters name="resumeTime" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="getActiveJobs" lowerBound="1" upperBound="-1" eType="#//jobs/Job"/>
+      <eOperations name="lookup" eType="#//jobs/Job">
+        <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eParameters name="jobReference" lowerBound="1" eType="#//jobs/JobReference"/>
+      </eOperations>
       <eOperations name="lookup" eType="#//jobs/Job">
         <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -314,15 +339,47 @@
         <eParameters name="jobID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="lookup" eType="#//jobs/Job">
+        <eParameters name="capability" lowerBound="1" eType="#//jobs/JobCapability"/>
+      </eOperations>
+      <eOperations name="lookup" eType="#//jobs/Job">
         <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="registerListener">
         <eParameters name="listener" lowerBound="1" eType="#//jobs/JobListener"/>
       </eOperations>
+      <eOperations name="registerWriter">
+        <eParameters name="capability" lowerBound="1" eType="#//jobs/JobCapability"/>
+        <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eParameters name="writer" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//out/ObjectWriter"/>
+      </eOperations>
+      <eOperations name="setDefaultWriter">
+        <eParameters name="capability" lowerBound="1" eType="#//jobs/JobCapability"/>
+        <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
       <eOperations name="updateStatus">
         <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
         <eParameters name="status" lowerBound="1" eType="#//jobs/JobStatus"/>
       </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="JobReference" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobNumber" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/DecimalDef">
+          <details key="precision" value="6"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobUser" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="10"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobName" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="10"/>
+        </eAnnotations>
+      </eStructuralFeatures>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobRunInfo" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="memorySize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>

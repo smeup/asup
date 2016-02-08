@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.smeup.sys.os.type.QTypedObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.dtaq.QDataQueue#getDataQueueType <em>Data Queue Type</em>}</li>
  *   <li>{@link org.smeup.sys.os.dtaq.QDataQueue#getKeyLength <em>Key Length</em>}</li>
@@ -25,7 +26,6 @@ import org.smeup.sys.os.type.QTypedObject;
  *   <li>{@link org.smeup.sys.os.dtaq.QDataQueue#isSenderInfo <em>Sender Info</em>}</li>
  *   <li>{@link org.smeup.sys.os.dtaq.QDataQueue#getContent <em>Content</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.dtaq.QOperatingSystemDataQueuePackage#getDataQueue()
  * @model

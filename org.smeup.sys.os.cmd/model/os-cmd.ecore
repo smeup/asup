@@ -73,8 +73,31 @@
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CommandManager" abstract="true" interface="true">
+    <eOperations name="decodeCommand" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataContainer">
+      <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
+      <eParameters name="command" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="encodeCommand" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
+      <eParameters name="container" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataContainer"/>
+      <eParameters name="showDefaults" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="executeCommand" lowerBound="1">
+      <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
+      <eParameters name="command" lowerBound="1" eType="#//CallableCommand"/>
+    </eOperations>
+    <eOperations name="executeCommand" lowerBound="1">
+      <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
+      <eParameters name="command" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="variables">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
     <eOperations name="prepareCommand" lowerBound="1" eType="#//CallableCommand">
-      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
       <eParameters name="command" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="variables">
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
@@ -84,22 +107,8 @@
       </eParameters>
       <eParameters name="controlRequiredParms" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
-    <eOperations name="executeCommand" lowerBound="1">
-      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="command" lowerBound="1" eType="#//CallableCommand"/>
-    </eOperations>
-    <eOperations name="executeCommand" lowerBound="1">
-      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="command" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="variables">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
-          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
-        </eGenericType>
-      </eParameters>
-    </eOperations>
-    <eOperations name="submitJob" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job">
-      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="submitCommand" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability">
+      <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
       <eParameters name="command" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="jobName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="caller" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>

@@ -146,7 +146,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="catalog" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="persistent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConnectionCredentials" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Credentials"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectionCredentials" eSuperTypes="../../org.smeup.sys.rt.auth/model/rt-auth.ecore#//AuthenticationUserPassword"/>
   <eClassifiers xsi:type="ecore:EClass" name="ConnectionManager" abstract="true">
     <eOperations name="createConnection" eType="#//Connection" eExceptions="#//DatabaseException">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>

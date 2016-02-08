@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.smeup.sys.dk.core.QDevelopmentKitCorePackage;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
@@ -112,7 +111,6 @@ public class OperatingSystemEnvironmentPackageImpl extends EPackageImpl implemen
 		isInited = true;
 
 		// Initialize simple dependencies
-		QDevelopmentKitCorePackage.eINSTANCE.eClass();
 		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 		QIntegratedLanguageLockPackage.eINSTANCE.eClass();
 

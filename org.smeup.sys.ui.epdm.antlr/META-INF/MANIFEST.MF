@@ -2,10 +2,10 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: As.UP UI Extended PDM AntLR
 Bundle-SymbolicName: org.smeup.sys.ui.epdm.antlr;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: org.smeup.sys.ui.epdm.antlr.Activator
 Bundle-Vendor: www.smeup.com
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  lib/antlr-3.5.1-complete-no-st3.jar,

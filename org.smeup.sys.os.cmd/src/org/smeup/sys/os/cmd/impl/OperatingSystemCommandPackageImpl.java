@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -611,8 +611,31 @@ public class OperatingSystemCommandPackageImpl extends EPackageImpl implements Q
 
 		initEClass(commandManagerEClass, QCommandManager.class, "CommandManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		op = addEOperation(commandManagerEClass, theIntegratedLanguageDataPackage.getDataContainer(), "decodeCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "command", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(commandManagerEClass, ecorePackage.getEString(), "encodeCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getDataContainer(), "container", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "showDefaults", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(commandManagerEClass, null, "executeCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCallableCommand(), "command", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(commandManagerEClass, null, "executeCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "command", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEString());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "variables", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(commandManagerEClass, this.getCallableCommand(), "prepareCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "command", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEMap());
 		g2 = createEGenericType(ecorePackage.getEString());
@@ -622,22 +645,8 @@ public class OperatingSystemCommandPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, g1, "variables", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "controlRequiredParms", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(commandManagerEClass, null, "executeCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCallableCommand(), "command", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(commandManagerEClass, null, "executeCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "command", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(ecorePackage.getEString());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "variables", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(commandManagerEClass, theOperatingSystemJobsPackage.getJob(), "submitJob", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(commandManagerEClass, theOperatingSystemJobsPackage.getJobCapability(), "submitCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "command", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "jobName", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEJavaObject(), "caller", 0, 1, IS_UNIQUE, IS_ORDERED);

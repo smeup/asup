@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.smeup.sys.os.cmd.QCallableCommand;
 import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.dtaq.DataQueueType;
 import org.smeup.sys.os.dtaq.QDataQueue;
 import org.smeup.sys.os.dtaq.QDataQueueManager;
@@ -41,6 +42,8 @@ public class WaitTest {
 	private QTestAsserter testAsserter;
 	@Inject
 	private QJob job;
+	@Inject
+	private QJobCapability jobCapability;
 
 	@TestStarted
 	public void doTest() {
@@ -52,18 +55,18 @@ public class WaitTest {
 	
 			// Create a test library (if none)
 			if (checkObj(job, QLibrary.class, "QSYS", testLib) == false) {
-				String cmd = "CRTLIB LIB(" + testLib + ") TEXT('TEMPORARY LIB: '" + job.getJobID() + "')";
-				QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), cmd, null, true);
-				commandManager.executeCommand(job.getJobID(), callableCommand);
+				String cmd = "CRTLIB LIB(" + testLib + ") TEXT('TEMPORARY LIB: '" + jobCapability + "')";
+				QCallableCommand callableCommand = commandManager.prepareCommand(job, cmd, null, true);
+				commandManager.executeCommand(job, callableCommand);
 				callableCommand.close();
 			}
 	
 			// Assert: create queues (if none, else clear existent)
 			if (checkObj(job, QDataQueue.class, testLib, fifoDtaq) == false) {
-				dataQueueManager.createDataQueue(job.getJobID(), testLib, fifoDtaq, DataQueueType.FIFO, 32000);
+				dataQueueManager.createDataQueue(jobCapability, testLib, fifoDtaq, DataQueueType.FIFO, 32000);
 				testAsserter.assertTrue("Create FIFO DTAQ ", checkObj(job, QDataQueue.class, testLib, fifoDtaq));
 			} else
-				dataQueueManager.clearDataQueue(job.getJobID(), testLib, fifoDtaq);
+				dataQueueManager.clearDataQueue(jobCapability, testLib, fifoDtaq);
 	
 			String writeVal = "TEST DTAQ 1";
 	
@@ -75,14 +78,14 @@ public class WaitTest {
 			// Read from queue waiting for 20 secs
 			long waitFor = 20000;
 			long startTime = System.currentTimeMillis();
-			String readVal = dataQueueManager.readDataQueue(job.getJobID(), testLib, fifoDtaq, waitFor, null, null);
+			String readVal = dataQueueManager.readDataQueue(jobCapability, testLib, fifoDtaq, waitFor, null, null);
 			long endTime = System.currentTimeMillis();
 	
 			testAsserter.assertTrue("Interrupt wait before timeout if data available", (endTime - startTime) < waitFor);
 			testAsserter.assertEquals("Read from queue with wait for data", writeVal, readVal);
 	
 			// Delete queues
-			dataQueueManager.deleteDataQueue(job.getJobID(), testLib, fifoDtaq);
+			dataQueueManager.deleteDataQueue(jobCapability, testLib, fifoDtaq);
 			testAsserter.assertTrue("Delete FIFO DTAQ ", checkObj(job, QDataQueue.class, testLib, fifoDtaq) == false);
 		} catch(Exception exc) {
 			testAsserter.fail("Exception in class WaitTest:" + exc.getMessage());
@@ -120,7 +123,7 @@ public class WaitTest {
 					lockObj.wait(delay);
 				}
 
-				dataQueueManager.writeDataQueue(job.getJobID(), lib, queue, key, value);
+				dataQueueManager.writeDataQueue(jobCapability, lib, queue, key, value);
 				
 			} catch (InterruptedException e) {
 				throw new OperatingSystemRuntimeException(e);

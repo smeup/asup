@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -38,6 +38,6 @@ public class ProgramCaller {
 		for (int i = 1; i <= params.length; i++)
 			params[i - 1] = parameters.get(i);
 
-		programManager.callProgram(job.getJobID(), program.library.asData().trimR(), program.name.trimR(), params);
+		programManager.callProgram(job, program.library.asData().trimR(), program.name.trimR(), params);
 	}
 }

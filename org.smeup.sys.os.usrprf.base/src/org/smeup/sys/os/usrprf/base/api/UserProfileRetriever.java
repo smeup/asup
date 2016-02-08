@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -62,11 +62,17 @@ public class UserProfileRetriever {
 			@ToDo @DataDef(length = 10) QCharacter cLVarForCHRIDCTL10, @ToDo @DataDef(length = 10) QCharacter cLVarForLCLPWDMGT10, @ToDo @DataDef(length = 10) QCharacter cLVarForPWDCHGBLK10) {
 
 		QResourceReader<QUserProfile> resourceReader = resourceManager.getResourceReader(job, QUserProfile.class, job.getSystem().getSystemLibrary());
-		String userProfileToSearch = name(userProfile);
-		QUserProfile qUserProfile = resourceReader.lookup(userProfileToSearch);
-		if (qUserProfile == null) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF2204, new String[] { userProfileToSearch });
+
+		QUserProfile qUserProfile = null;
+		switch (userProfile.asEnum()) {
+		case CURRENT:
+			qUserProfile = resourceReader.lookup(job.getJobReference().getJobUser());
+		case OTHER:
+			qUserProfile = resourceReader.lookup(userProfile.asData().trimR());
 		}
+
+		if (qUserProfile == null)
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2204, userProfile);
 
 		//
 		cLVarForRTNUSRPRF10.eval(qUserProfile.getName());
@@ -91,17 +97,6 @@ public class UserProfileRetriever {
 			cLVarForINLPGM10.eval("*NONE");
 			cLVarForINLPGMLIB10.eval("");
 		}
-	}
-
-	private String name(QEnum<USERPROFILEEnum, QCharacter> userProfile) {
-		switch (userProfile.asEnum()) {
-		case CURRENT:
-			return job.getJobUser();
-
-		case OTHER:
-			return userProfile.asData().trimR();
-		}
-		throw new RuntimeException("Wrong user profile" + userProfile);
 	}
 
 	public static enum USERPROFILEEnum {

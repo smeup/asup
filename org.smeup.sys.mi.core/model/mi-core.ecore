@@ -35,6 +35,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="JavaNumber" instanceClassName="java.lang.Number"
       abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EDataType" name="JavaOutputStream" instanceClassName="java.io.OutputStream"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaPrincipal" instanceClassName="java.security.Principal"
+      abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EDataType" name="JavaProperties" instanceClassName="java.util.Properties"/>
   <eClassifiers xsi:type="ecore:EClass" name="JavaRunnable" instanceClassName="java.lang.Runnable"
       abstract="true" interface="true"/>

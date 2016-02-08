@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.os.core.e4;
 
+import java.security.Principal;
 import java.util.Calendar;
 
 import javax.annotation.PostConstruct;
@@ -56,7 +57,17 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 		systemEvent.setType(SystemEventType.STARTING);
 		fireEvent(systemEvent);
 		
-		this.startupJob = createJob(JobType.KERNEL, "QASUP", "KERNEL_E4");
+
+		// create job kernel
+		// create job kernel
+		Principal principal = new Principal() {			
+			@Override
+			public String getName() {
+				return getSystem().getSystemUser();
+			}
+		};
+
+		this.startupJob = createJob(JobType.KERNEL, principal, "KERNEL_E4");
 
 		systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
 		systemEvent.setSource(getSystem());
@@ -91,7 +102,7 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 	}
 
 	@Override
-	protected QJob createJob(JobType jobType, String user, String jobName) {
-		return super.createJob(jobType, user, jobName);
+	protected QJob createJob(JobType jobType, Principal principal, String jobName) {
+		return super.createJob(jobType, principal, jobName);
 	}
 }

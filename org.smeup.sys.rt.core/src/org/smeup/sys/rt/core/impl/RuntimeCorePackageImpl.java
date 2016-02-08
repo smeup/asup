@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
+import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 import org.smeup.sys.rt.core.QApplication;
 import org.smeup.sys.rt.core.QApplicationComponent;
@@ -32,8 +33,6 @@ import org.smeup.sys.rt.core.QRuntimeCorePackage;
 import org.smeup.sys.rt.core.QServiceHook;
 import org.smeup.sys.rt.core.QServiceRef;
 import org.smeup.sys.rt.core.ServiceStatus;
-import org.smeup.sys.rt.core.auth.QRuntimeCoreAuthPackage;
-import org.smeup.sys.rt.core.auth.impl.RuntimeCoreAuthPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -167,17 +166,13 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 
 		// Initialize simple dependencies
 		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
-
-		// Obtain or create and register interdependencies
-		RuntimeCoreAuthPackageImpl theRuntimeCoreAuthPackage = (RuntimeCoreAuthPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QRuntimeCoreAuthPackage.eNS_URI) instanceof RuntimeCoreAuthPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QRuntimeCoreAuthPackage.eNS_URI) : QRuntimeCoreAuthPackage.eINSTANCE);
+		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theRuntimeCorePackage.createPackageContents();
-		theRuntimeCoreAuthPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theRuntimeCorePackage.initializePackageContents();
-		theRuntimeCoreAuthPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theRuntimeCorePackage.freeze();
@@ -579,14 +574,10 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		QRuntimeCoreAuthPackage theRuntimeCoreAuthPackage = (QRuntimeCoreAuthPackage)EPackage.Registry.INSTANCE.getEPackage(QRuntimeCoreAuthPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 		QIntegratedLanguageCoreMetaPackage theIntegratedLanguageCoreMetaPackage = (QIntegratedLanguageCoreMetaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI);
-
-		// Add subpackages
-		getESubpackages().add(theRuntimeCoreAuthPackage);
 
 		// Create type parameters
 

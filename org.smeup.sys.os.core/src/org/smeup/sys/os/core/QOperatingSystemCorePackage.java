@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -112,7 +112,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystem()
 	 * @generated
 	 */
-	int SYSTEM = 2;
+	int SYSTEM = 3;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.QSystemManager <em>System Manager</em>}' class.
@@ -122,7 +122,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemManager()
 	 * @generated
 	 */
-	int SYSTEM_MANAGER = 5;
+	int SYSTEM_MANAGER = 6;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.QExceptionManager <em>Exception Manager</em>}' class.
@@ -142,6 +142,25 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @ordered
 	 */
 	int EXCEPTION_MANAGER_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.QRunManager <em>Run Manager</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.QRunManager
+	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getRunManager()
+	 * @generated
+	 */
+	int RUN_MANAGER = 2;
+
+	/**
+	 * The number of structural features of the '<em>Run Manager</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUN_MANAGER_FEATURE_COUNT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Lock Read</b></em>' containment reference.
@@ -268,7 +287,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemEvent()
 	 * @generated
 	 */
-	int SYSTEM_EVENT = 3;
+	int SYSTEM_EVENT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -305,7 +324,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemListener()
 	 * @generated
 	 */
-	int SYSTEM_LISTENER = 4;
+	int SYSTEM_LISTENER = 5;
 
 	/**
 	 * The number of structural features of the '<em>System Listener</em>' class.
@@ -333,7 +352,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemEventType()
 	 * @generated
 	 */
-	int SYSTEM_EVENT_TYPE = 6;
+	int SYSTEM_EVENT_TYPE = 7;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.SystemStatus <em>System Status</em>}' enum.
@@ -343,7 +362,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemStatus()
 	 * @generated
 	 */
-	int SYSTEM_STATUS = 7;
+	int SYSTEM_STATUS = 8;
 
 	/**
 	 * The meta object id for the '<em>Message Variable List</em>' data type.
@@ -352,7 +371,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getMessageVariableList()
 	 * @generated
 	 */
-	int MESSAGE_VARIABLE_LIST = 8;
+	int MESSAGE_VARIABLE_LIST = 9;
 
 	/**
 	 * The meta object id for the '<em>Message Exception</em>' data type.
@@ -362,7 +381,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getMessageException()
 	 * @generated
 	 */
-	int MESSAGE_EXCEPTION = 9;
+	int MESSAGE_EXCEPTION = 10;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.QCreationInfo <em>Creation Info</em>}'.
@@ -594,6 +613,16 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getExceptionManager();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.os.core.QRunManager <em>Run Manager</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Run Manager</em>'.
+	 * @see org.smeup.sys.os.core.QRunManager
+	 * @generated
+	 */
+	EClass getRunManager();
 
 	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.os.core.SystemStatus <em>System Status</em>}'.
@@ -833,6 +862,16 @@ public interface QOperatingSystemCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass EXCEPTION_MANAGER = eINSTANCE.getExceptionManager();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.QRunManager <em>Run Manager</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.core.QRunManager
+		 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getRunManager()
+		 * @generated
+		 */
+		EClass RUN_MANAGER = eINSTANCE.getRunManager();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.SystemStatus <em>System Status</em>}' enum.

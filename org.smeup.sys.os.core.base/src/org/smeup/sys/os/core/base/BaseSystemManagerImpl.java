@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -11,8 +11,8 @@
  */
 package org.smeup.sys.os.core.base;
 
+import java.security.Principal;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +29,7 @@ import org.smeup.sys.os.core.SystemEventType;
 import org.smeup.sys.os.core.SystemStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobReference;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
 
 public abstract class BaseSystemManagerImpl implements QSystemManager {
@@ -36,7 +37,7 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 	protected static final SimpleDateFormat YYMMDD = new SimpleDateFormat("yyMMdd");
 	protected static final SimpleDateFormat YYYYMMDD = new SimpleDateFormat("yyyyMMdd");
 	protected static final SimpleDateFormat HHMMSS = new SimpleDateFormat("HHmmss");
-
+	
 	private List<QSystemListener> listeners = new ArrayList<QSystemListener>();
 
 	@Override
@@ -49,29 +50,29 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 			jobListener.handleEvent(systemEvent);
 	}
 
-	protected QJob createJob(JobType jobType, String user, String jobName) {
+	protected QJob createJob(JobType jobType, Principal principal, String jobName) {
 
 		// job
 		final QJob job = QOperatingSystemJobsFactory.eINSTANCE.createJob();
-
+		
 		job.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(getSystem()));
 		job.setJobType(jobType);
 		job.setSystem(getSystem());
-		job.setJobUser(user);
-		job.setJobNumber(nextJobID());
-		// Calendar CALENDAR = Calendar.getInstance();
-		// YYYYMMDD.format(CALENDAR.getTime())+"/"+HHMMSS.format(CALENDAR.getTime();
-		NumberFormat numberFormat = new DecimalFormat("000000");
+		
+		// reference
+		QJobReference jobReference = QOperatingSystemJobsFactory.eINSTANCE.createJobReference(); 
+		jobReference.setJobUser(principal.getName());
+		jobReference.setJobNumber(nextJobID());
 		if (jobName == null)
-			job.setJobName("QAS" + numberFormat.format(job.getJobNumber()));
+			jobReference.setJobName("QAS" + new DecimalFormat("000000").format(jobReference.getJobNumber()));
 		else
-			job.setJobName(jobName);
-
+			jobReference.setJobName(jobName);
+		job.setJobReference(jobReference);
+		
 		// system libraries
 		job.getLibraries().add(getSystem().getSystemLibrary());
 
 		// job context
-
 		QContextDescription contextDescription = new QContextDescription() {
 
 			@Override
@@ -81,7 +82,7 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 
 			@Override
 			public String getName() {
-				return job.getJobName();
+				return job.getJobReference().getJobName();
 			}
 
 			@Override
@@ -96,21 +97,18 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 
 			@Override
 			public String getTemporaryLibrary() {
-				return "QTMP"+new DecimalFormat("######").format(job.getJobNumber());
+				return "QTMP"+new DecimalFormat("000000").format(job.getJobReference().getJobNumber());
 			}
 		};
 
 		QContext jobContext = getSystem().getContext().createChildContext(contextDescription, ContextInjectionStrategy.LOCAL);
 		job.setJobID(jobContext.getID());
 		job.setContext(jobContext);
-
 		jobContext.set(QJob.class, job);
-
-		//
-
+		
 		return job;
 	}
-	
+
 	protected abstract int nextJobID();
 
 

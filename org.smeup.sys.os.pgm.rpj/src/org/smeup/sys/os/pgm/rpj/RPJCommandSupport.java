@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -45,8 +45,8 @@ public class RPJCommandSupport {
 		Map<String, Object> variables = new HashMap<String, Object>();
 		loadVariables(caller.getClass(), caller, variables);
 		
-		QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), command, variables, true);		
-		commandManager.executeCommand(job.getJobID(), callableCommand);
+		QCallableCommand callableCommand = commandManager.prepareCommand(job, command, variables, true);		
+		commandManager.executeCommand(job, callableCommand);
 		callableCommand.close();
 	}
 	

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,13 +21,13 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.QApplicationComponent#getConfigs <em>Configs</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplicationComponent#getHooks <em>Hooks</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplicationComponent#getModules <em>Modules</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplicationComponent#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getApplicationComponent()
  * @model

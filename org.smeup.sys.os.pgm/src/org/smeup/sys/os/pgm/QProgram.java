@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.smeup.sys.os.type.QTypedObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.pgm.QProgram#getActivationGroup <em>Activation Group</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.QProgram#getAddress <em>Address</em>}</li>
@@ -24,7 +25,6 @@ import org.smeup.sys.os.type.QTypedObject;
  *   <li>{@link org.smeup.sys.os.pgm.QProgram#getCreationParams <em>Creation Params</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.QProgram#getSource <em>Source</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getProgram()
  * @model

@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -88,8 +88,8 @@ public class FileMemberRunner {
 				continue;
 
 			try {
-				QCallableCommand command = commandManager.prepareCommand(job.getJobID(), line.trim(), null, true);
-				commandManager.executeCommand(job.getJobID(), command);
+				QCallableCommand command = commandManager.prepareCommand(job, line.trim(), null, true);
+				commandManager.executeCommand(job, command);
 				command.close();
 			} catch (Exception e) {
 				jobLogManager.error(job, e.getMessage());

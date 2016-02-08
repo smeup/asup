@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobReference;
 import org.smeup.sys.os.core.jobs.QJobRunInfo;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 
@@ -36,6 +37,7 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  * <em><b>QJob</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getCreationInfo <em>Creation Info</em>}</li>
@@ -43,12 +45,10 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getDateFormat <em>Date Format</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getDateSeparator <em>Date Separator</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobID <em>Job ID</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobName <em>Job Name</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobNumber <em>Job Number</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobReference <em>Job Reference</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobRunInfo <em>Job Run Info</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobThread <em>Job Thread</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobType <em>Job Type</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobUser <em>Job User</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getLibraries <em>Libraries</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getMessages <em>Messages</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getSwitches <em>Switches</em>}</li>
@@ -56,7 +56,6 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getTimeSeparator <em>Time Separator</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getVariableContainer <em>Variable Container</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -162,40 +161,14 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	protected String jobID = JOB_ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getJobName() <em>Job Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getJobName()
+	 * The cached value of the '{@link #getJobReference() <em>Job Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJobReference()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String JOB_NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getJobName() <em>Job Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getJobName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String jobName = JOB_NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getJobNumber() <em>Job Number</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getJobNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int JOB_NUMBER_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getJobNumber() <em>Job Number</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getJobNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected int jobNumber = JOB_NUMBER_EDEFAULT;
+	protected QJobReference jobReference;
 
 	/**
 	 * The cached value of the '{@link #getJobRunInfo() <em>Job Run Info</em>}' containment reference.
@@ -234,24 +207,6 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * @ordered
 	 */
 	protected JobType jobType = JOB_TYPE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getJobUser() <em>Job User</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getJobUser()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String JOB_USER_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getJobUser() <em>Job User</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getJobUser()
-	 * @generated
-	 * @ordered
-	 */
-	protected String jobUser = JOB_USER_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getLibraries() <em>Libraries</em>}' attribute list.
@@ -404,66 +359,46 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getJobName() {
-		return jobName;
+	public QJobReference getJobReference() {
+		return jobReference;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setJobName(String newJobName) {
-		String oldJobName = jobName;
-		jobName = newJobName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemJobsPackage.JOB__JOB_NAME, oldJobName, jobName));
+	public NotificationChain basicSetJobReference(QJobReference newJobReference, NotificationChain msgs) {
+		QJobReference oldJobReference = jobReference;
+		jobReference = newJobReference;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QOperatingSystemJobsPackage.JOB__JOB_REFERENCE, oldJobReference, newJobReference);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getJobUser() {
-		return jobUser;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setJobUser(String newJobUser) {
-		String oldJobUser = jobUser;
-		jobUser = newJobUser;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemJobsPackage.JOB__JOB_USER, oldJobUser, jobUser));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int getJobNumber() {
-		return jobNumber;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setJobNumber(int newJobNumber) {
-		int oldJobNumber = jobNumber;
-		jobNumber = newJobNumber;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemJobsPackage.JOB__JOB_NUMBER, oldJobNumber, jobNumber));
+	public void setJobReference(QJobReference newJobReference) {
+		if (newJobReference != jobReference) {
+			NotificationChain msgs = null;
+			if (jobReference != null)
+				msgs = ((InternalEObject)jobReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemJobsPackage.JOB__JOB_REFERENCE, null, msgs);
+			if (newJobReference != null)
+				msgs = ((InternalEObject)newJobReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemJobsPackage.JOB__JOB_REFERENCE, null, msgs);
+			msgs = basicSetJobReference(newJobReference, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemJobsPackage.JOB__JOB_REFERENCE, newJobReference, newJobReference));
 	}
 
 	/**
@@ -917,6 +852,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return basicSetContext(null, msgs);
 			case QOperatingSystemJobsPackage.JOB__CREATION_INFO:
 				return basicSetCreationInfo(null, msgs);
+			case QOperatingSystemJobsPackage.JOB__JOB_REFERENCE:
+				return basicSetJobReference(null, msgs);
 			case QOperatingSystemJobsPackage.JOB__JOB_RUN_INFO:
 				return basicSetJobRunInfo(null, msgs);
 			case QOperatingSystemJobsPackage.JOB__VARIABLE_CONTAINER:
@@ -944,18 +881,14 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return getDateSeparator();
 			case QOperatingSystemJobsPackage.JOB__JOB_ID:
 				return getJobID();
-			case QOperatingSystemJobsPackage.JOB__JOB_NAME:
-				return getJobName();
-			case QOperatingSystemJobsPackage.JOB__JOB_NUMBER:
-				return getJobNumber();
+			case QOperatingSystemJobsPackage.JOB__JOB_REFERENCE:
+				return getJobReference();
 			case QOperatingSystemJobsPackage.JOB__JOB_RUN_INFO:
 				return getJobRunInfo();
 			case QOperatingSystemJobsPackage.JOB__JOB_THREAD:
 				return getJobThread();
 			case QOperatingSystemJobsPackage.JOB__JOB_TYPE:
 				return getJobType();
-			case QOperatingSystemJobsPackage.JOB__JOB_USER:
-				return getJobUser();
 			case QOperatingSystemJobsPackage.JOB__LIBRARIES:
 				return getLibraries();
 			case QOperatingSystemJobsPackage.JOB__MESSAGES:
@@ -999,11 +932,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 			case QOperatingSystemJobsPackage.JOB__JOB_ID:
 				setJobID((String)newValue);
 				return;
-			case QOperatingSystemJobsPackage.JOB__JOB_NAME:
-				setJobName((String)newValue);
-				return;
-			case QOperatingSystemJobsPackage.JOB__JOB_NUMBER:
-				setJobNumber((Integer)newValue);
+			case QOperatingSystemJobsPackage.JOB__JOB_REFERENCE:
+				setJobReference((QJobReference)newValue);
 				return;
 			case QOperatingSystemJobsPackage.JOB__JOB_RUN_INFO:
 				setJobRunInfo((QJobRunInfo)newValue);
@@ -1013,9 +943,6 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return;
 			case QOperatingSystemJobsPackage.JOB__JOB_TYPE:
 				setJobType((JobType)newValue);
-				return;
-			case QOperatingSystemJobsPackage.JOB__JOB_USER:
-				setJobUser((String)newValue);
 				return;
 			case QOperatingSystemJobsPackage.JOB__LIBRARIES:
 				getLibraries().clear();
@@ -1066,11 +993,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 			case QOperatingSystemJobsPackage.JOB__JOB_ID:
 				setJobID(JOB_ID_EDEFAULT);
 				return;
-			case QOperatingSystemJobsPackage.JOB__JOB_NAME:
-				setJobName(JOB_NAME_EDEFAULT);
-				return;
-			case QOperatingSystemJobsPackage.JOB__JOB_NUMBER:
-				setJobNumber(JOB_NUMBER_EDEFAULT);
+			case QOperatingSystemJobsPackage.JOB__JOB_REFERENCE:
+				setJobReference((QJobReference)null);
 				return;
 			case QOperatingSystemJobsPackage.JOB__JOB_RUN_INFO:
 				setJobRunInfo((QJobRunInfo)null);
@@ -1080,9 +1004,6 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return;
 			case QOperatingSystemJobsPackage.JOB__JOB_TYPE:
 				setJobType(JOB_TYPE_EDEFAULT);
-				return;
-			case QOperatingSystemJobsPackage.JOB__JOB_USER:
-				setJobUser(JOB_USER_EDEFAULT);
 				return;
 			case QOperatingSystemJobsPackage.JOB__LIBRARIES:
 				getLibraries().clear();
@@ -1125,18 +1046,14 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return DATE_SEPARATOR_EDEFAULT == null ? dateSeparator != null : !DATE_SEPARATOR_EDEFAULT.equals(dateSeparator);
 			case QOperatingSystemJobsPackage.JOB__JOB_ID:
 				return JOB_ID_EDEFAULT == null ? jobID != null : !JOB_ID_EDEFAULT.equals(jobID);
-			case QOperatingSystemJobsPackage.JOB__JOB_NAME:
-				return JOB_NAME_EDEFAULT == null ? jobName != null : !JOB_NAME_EDEFAULT.equals(jobName);
-			case QOperatingSystemJobsPackage.JOB__JOB_NUMBER:
-				return jobNumber != JOB_NUMBER_EDEFAULT;
+			case QOperatingSystemJobsPackage.JOB__JOB_REFERENCE:
+				return jobReference != null;
 			case QOperatingSystemJobsPackage.JOB__JOB_RUN_INFO:
 				return jobRunInfo != null;
 			case QOperatingSystemJobsPackage.JOB__JOB_THREAD:
 				return jobThread != null;
 			case QOperatingSystemJobsPackage.JOB__JOB_TYPE:
 				return jobType != JOB_TYPE_EDEFAULT;
-			case QOperatingSystemJobsPackage.JOB__JOB_USER:
-				return JOB_USER_EDEFAULT == null ? jobUser != null : !JOB_USER_EDEFAULT.equals(jobUser);
 			case QOperatingSystemJobsPackage.JOB__LIBRARIES:
 				return libraries != null && !libraries.isEmpty();
 			case QOperatingSystemJobsPackage.JOB__MESSAGES:
@@ -1170,14 +1087,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 		result.append(dateSeparator);
 		result.append(", jobID: ");
 		result.append(jobID);
-		result.append(", jobName: ");
-		result.append(jobName);
-		result.append(", jobNumber: ");
-		result.append(jobNumber);
 		result.append(", jobType: ");
 		result.append(jobType);
-		result.append(", jobUser: ");
-		result.append(jobUser);
 		result.append(", libraries: ");
 		result.append(libraries);
 		result.append(", messages: ");

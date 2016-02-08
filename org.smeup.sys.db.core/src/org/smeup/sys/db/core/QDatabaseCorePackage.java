@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
+import org.smeup.sys.rt.auth.QRuntimeAuthenticationPackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -281,7 +282,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION_CREDENTIALS__USER = QIntegratedLanguageCoreCtxPackage.CREDENTIALS__USER;
+	int CONNECTION_CREDENTIALS__USER = QRuntimeAuthenticationPackage.AUTHENTICATION_USER_PASSWORD__USER;
 
 	/**
 	 * The feature id for the '<em><b>Password</b></em>' attribute. <!--
@@ -290,7 +291,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION_CREDENTIALS__PASSWORD = QIntegratedLanguageCoreCtxPackage.CREDENTIALS__PASSWORD;
+	int CONNECTION_CREDENTIALS__PASSWORD = QRuntimeAuthenticationPackage.AUTHENTICATION_USER_PASSWORD__PASSWORD;
 
 	/**
 	 * The number of structural features of the '<em>Connection Credentials</em>' class.
@@ -298,7 +299,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION_CREDENTIALS_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.CREDENTIALS_FEATURE_COUNT + 0;
+	int CONNECTION_CREDENTIALS_FEATURE_COUNT = QRuntimeAuthenticationPackage.AUTHENTICATION_USER_PASSWORD_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.core.impl.ConnectionManagerImpl <em>Connection Manager</em>}' class.

@@ -14,12 +14,4 @@
             genModel="model/rt-core.genmodel"/>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated rt-core -->
-      <package
-            uri="http://www.smeup.org/asup/rt/core/auth"
-            class="org.smeup.sys.rt.core.auth.QRuntimeCoreAuthPackage"
-            genModel="model/rt-core.genmodel"/>
-   </extension>
-
 </plugin>

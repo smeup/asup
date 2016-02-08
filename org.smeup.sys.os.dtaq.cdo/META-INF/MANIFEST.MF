@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: As.UP Operating System DataQueue CDO
 Bundle-SymbolicName: org.smeup.sys.os.type.dtaq.cdo
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.smeup.sys.os.dtaq
 Export-Package: org.smeup.sys.os.dtaq.cdo

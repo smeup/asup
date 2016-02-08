@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,10 +15,10 @@ package org.smeup.sys.il.core;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.QAnnotationScope#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getAnnotationScope()
  * @model

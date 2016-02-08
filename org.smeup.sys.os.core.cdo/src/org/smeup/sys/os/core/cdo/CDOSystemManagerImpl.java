@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -10,6 +10,8 @@
  *   Mattia Rocchi - Initial API and implementation
  */
 package org.smeup.sys.os.core.cdo;
+
+import java.security.Principal;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -41,6 +43,8 @@ import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.rt.core.ComponentStarted;
 
 public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
+	
+
 	@Inject
 	private QLockManager lockManager;
 	
@@ -82,7 +86,13 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 		fireEvent(systemEvent);
 
 		// create job kernel
-		this.startupJob = createJob(JobType.KERNEL, transactionSystem.getSystemUser(), "KERNEL_CDO");
+		Principal principal = new Principal() {			
+			@Override
+			public String getName() {
+				return getSystem().getSystemUser();
+			}
+		};
+		this.startupJob = createJob(JobType.KERNEL, principal, "KERNEL_CDO");
 
 		// save
 		CDOResource resource = transaction.getOrCreateResource(CDO_CORE);
@@ -258,7 +268,7 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 	}
 
 	@Override
-	protected QJob createJob(JobType jobType, String user, String jobName){
-		return super.createJob(jobType, user, jobName);
+	protected QJob createJob(JobType jobType, Principal principal, String jobName) {
+		return super.createJob(jobType, principal, jobName);
 	}
 }

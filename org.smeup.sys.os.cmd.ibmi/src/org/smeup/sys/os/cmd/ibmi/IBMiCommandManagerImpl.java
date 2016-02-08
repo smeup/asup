@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import java.util.StringTokenizer;
 
 import javax.inject.Inject;
 
-import org.smeup.sys.co.shell.QShellManager;
 import org.smeup.sys.dk.core.DevelopmentStatusType;
 import org.smeup.sys.dk.core.QDevelopmentKitCoreFactory;
 import org.smeup.sys.dk.core.QDevelopmentStatus;
@@ -40,7 +39,6 @@ import org.smeup.sys.il.core.QFormat;
 import org.smeup.sys.il.core.QSpecial;
 import org.smeup.sys.il.core.QSpecialElement;
 import org.smeup.sys.il.core.QThreadManager;
-import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
@@ -67,44 +65,33 @@ import org.smeup.sys.os.cmd.QOperatingSystemCommandFactory;
 import org.smeup.sys.os.cmd.base.BaseCommandManagerImpl;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.pgm.QProgramManager;
-import org.smeup.sys.rt.core.QApplication;
 
-public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QShellManager {
-
-	private QOutputManager outputManager;
+public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 	protected QJobManager jobManager;
 	protected QDataManager dataManager;
 	protected ParserInterface<?> clParameterParser;
 	protected ParserInterface<?> clParser;
-
+	
 	@Inject
-	public IBMiCommandManagerImpl(QThreadManager threadManager, QResourceManager resourceManager, QJobManager jobManager, QJobLogManager jobLogManager, QDataManager dataManager, QProgramManager programManager,
-			QOutputManager outputManager, QApplication application) {
+	public IBMiCommandManagerImpl(QThreadManager threadManager, QResourceManager resourceManager, QJobManager jobManager, QJobLogManager jobLogManager, QDataManager dataManager, QProgramManager programManager) {
 		super(threadManager, resourceManager, jobManager, jobLogManager, programManager);
 		this.jobManager = jobManager;
 		this.dataManager = dataManager;
-		this.outputManager = outputManager;
 		this.clParameterParser = ParserFactory.getInstance().getParser(ParserFactory.ScriptType.CL_PARAMETER);
 		this.clParser = ParserFactory.getInstance().getParser(ParserFactory.ScriptType.CL);
-
-		application.getContext().set(QShellManager.class, this);
 	}
 
 	@SuppressWarnings("resource")
 	@Override
-	public QCallableCommand prepareCommand(String contextID, String command, Map<String, Object> variables, boolean controlRequiredParms) {
+	public QCallableCommand prepareCommand(QJob job, String command, Map<String, Object> variables, boolean controlRequiredParms) {
 
 		if (command == null || command.trim().equals(""))
 			throw new OperatingSystemRuntimeException("Empty command line", null);
-
-		// retrieve job
-		QJob job = jobManager.lookup(contextID);
-		if (job == null)
-			throw new OperatingSystemRuntimeException("Invalid contextID");
 
 		CLObject result = null;
 		result = (CLObject) clParser.parse(command + "\n");
@@ -213,7 +200,17 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 		}
 		return callableCommand;
 	}
+	
+	@Override
+	public void executeCommand(QJobCapability jobCapability, String command, Map<String, Object> variables) {
 
+		QJob jobLocal = jobManager.lookup(jobCapability);
+		
+		QCallableCommand callableCommand = prepareCommand(jobLocal, command, variables, true);
+		executeCommand(jobLocal, callableCommand);
+		callableCommand.close();
+	}
+	
 	private QData assignValue(QDataTerm<?> dataTerm, QDataContainer dataContainer, QDataWriter writer, String value, Map<String, Object> variables) {
 
 		String tokValue = null;
@@ -687,39 +684,5 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 			adapter.eval(value);
 		} else
 			data.accept(writer.set(value.toString()));
-	}
-
-	@Override
-	public void executeCommand(String contextID, String command, Map<String, Object> variables) {
-
-		QCallableCommand callableCommand = prepareCommand(contextID, command, variables, true);
-		executeCommand(contextID, callableCommand);
-		callableCommand.close();
-	}
-
-	@SuppressWarnings("resource")
-	@Override
-	public QDataContainer decodeCommand(String contextID, String command) {
-
-		QCallableCommand callableCommand = prepareCommand(contextID, command, null, false);
-		return callableCommand.getDataContainer();
-	}
-
-	@Override
-	public String encodeCommand(String contextID, QDataContainer dataContainer, boolean showDefaults) {
-
-		return IBMiCommandEncoder.encodeCommand(contextID, dataContainer, showDefaults);
-	}
-
-	@Override
-	public void setDefaultWriter(String contextID, String name) {
-
-		// retrieve job
-		QJob job = jobManager.lookup(contextID);
-		if (job == null)
-			throw new OperatingSystemRuntimeException("Invalid contextID");
-
-		outputManager.setDefaultWriter(job.getContext(), name);
-
 	}
 }

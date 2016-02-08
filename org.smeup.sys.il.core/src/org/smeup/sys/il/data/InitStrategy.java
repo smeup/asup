@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -99,6 +99,8 @@ public enum InitStrategy implements Enumerator {
 	 * Returns the '<em><b>Init Strategy</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static InitStrategy get(String literal) {
@@ -115,6 +117,8 @@ public enum InitStrategy implements Enumerator {
 	 * Returns the '<em><b>Init Strategy</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static InitStrategy getByName(String name) {
@@ -131,6 +135,8 @@ public enum InitStrategy implements Enumerator {
 	 * Returns the '<em><b>Init Strategy</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static InitStrategy get(int value) {

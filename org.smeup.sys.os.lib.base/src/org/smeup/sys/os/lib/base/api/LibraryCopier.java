@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.os.cmd.QCallableCommand;
 import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -82,9 +83,13 @@ public @Supported class LibraryCopier {
 			break;
 		}
 
+		// TODO
 		String command = "CRTDUPOBJ OBJ(*ALL)" + " FROMLIB(" + existingLibrary.trimR() + ")" + " OBJTYPE(*ALL)" + " TOLIB(" + newLibName + ")" + " NEWOBJ(*OBJ)" + " DATA("
 				+ duplicateData.asData().trimR() + ")";
-		commandManager.executeCommand(job.getJobID(), command, null);
+		
+		QCallableCommand callableCommand = commandManager.prepareCommand(job, command, null, true);
+		commandManager.executeCommand(job, callableCommand);
+		callableCommand.close();
 	}
 
 	public static enum CREATELIBRARYEnum {

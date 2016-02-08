@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.smeup.sys.il.data.def.QDataDef;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getBased <em>Based</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getCardinality <em>Cardinality</em>}</li>
@@ -31,7 +32,6 @@ import org.smeup.sys.il.data.def.QDataDef;
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#isRestricted <em>Restricted</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getText <em>Text</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTerm()
  * @model abstract="true"

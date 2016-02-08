@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: As.UP Operating System Core
 Bundle-SymbolicName: org.smeup.sys.os.core;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: www.smeup.com
 Bundle-Localization: plugin
@@ -21,5 +21,5 @@ Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  org.smeup.sys.il.data;visibility:=reexport,
  org.smeup.sys.il.expr;visibility:=reexport,
  org.smeup.sys.il.memo;visibility:=reexport
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

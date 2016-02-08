@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,9 @@
 package org.smeup.sys.co.shell.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.smeup.sys.co.shell.QCommunicationShellPackage;
 import org.smeup.sys.co.shell.QShellCredentials;
-
-import org.smeup.sys.il.core.ctx.impl.CredentialsImpl;
+import org.smeup.sys.rt.auth.impl.AuthenticationUserPasswordImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +19,7 @@ import org.smeup.sys.il.core.ctx.impl.CredentialsImpl;
  *
  * @generated
  */
-public class ShellCredentialsImpl extends CredentialsImpl implements QShellCredentials {
+public class ShellCredentialsImpl extends AuthenticationUserPasswordImpl implements QShellCredentials {
 	/**
 	 * 
 	 */

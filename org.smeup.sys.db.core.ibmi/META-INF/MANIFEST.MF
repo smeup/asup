@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: As.UP Database Core IBMi
 Bundle-SymbolicName: org.smeup.sys.db.core.ibmi
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: www.smeup.com
 Export-Package: org.smeup.sys.db.core.ibmi
@@ -10,5 +10,5 @@ Require-Bundle: org.smeup.sys.db.core;visibility:=reexport,
  org.smeup.sys.et.jt400,
  org.eclipse.datatools.enablement.ibm.db2.iseries;bundle-version="1.0.2",
  org.eclipse.datatools.enablement.ibm.db2.iseries.dbdefinition;bundle-version="1.0.3"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.osgi.service.jdbc

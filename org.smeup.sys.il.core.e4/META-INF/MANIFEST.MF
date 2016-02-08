@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: As.UP Integrated Language Core E4
 Bundle-SymbolicName: org.smeup.sys.il.core.e4
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.e4.core.contexts,

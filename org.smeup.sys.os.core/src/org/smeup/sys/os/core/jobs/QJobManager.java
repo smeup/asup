@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,8 @@
 package org.smeup.sys.os.core.jobs;
 
 import java.util.List;
+import org.smeup.sys.il.core.ctx.QIdentity;
+import org.smeup.sys.il.core.out.QObjectWriter;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -20,11 +22,52 @@ import java.util.List;
  */
 public interface QJobManager {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model capabilityRequired="true"
+	 * @generated
+	 */
+	QJob close(QJobCapability capability);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model jobRequired="true"
 	 * @generated
 	 */
 	void close(QJob job);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" identityRequired="true"
+	 * @generated
+	 */
+	QJobCapability create(QIdentity<?> identity);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" identityRequired="true" jobNameRequired="true"
+	 * @generated
+	 */
+	QJobCapability create(QIdentity<?> identity, String jobName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" parentRequired="true"
+	 * @generated
+	 */
+	QJobCapability spawn(QJob parent);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" parentRequired="true" jobNameRequired="true"
+	 * @generated
+	 */
+	QJobCapability spawn(QJob parent, String jobName);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -32,36 +75,6 @@ public interface QJobManager {
 	 * @generated
 	 */
 	void updateStatus(QJob job, JobStatus status);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" userRequired="true" passwordRequired="true"
-	 * @generated
-	 */
-	QJob create(String user, String password);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" userRequired="true" passwordRequired="true" jobNameRequired="true"
-	 * @generated
-	 */
-	QJob create(String user, String password, String jobName);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" credentialRequired="true"
-	 * @generated
-	 */
-	QJob create(QJob credential);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" credentialRequired="true" jobNameRequired="true"
-	 * @generated
-	 */
-	QJob create(QJob credential, String jobName);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,6 +98,14 @@ public interface QJobManager {
 	 * @generated
 	 */
 	List<QJob> getActiveJobs();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextIDRequired="true" jobReferenceRequired="true"
+	 * @generated
+	 */
+	QJob lookup(String contextID, QJobReference jobReference);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -113,6 +134,14 @@ public interface QJobManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model capabilityRequired="true"
+	 * @generated
+	 */
+	QJob lookup(QJobCapability capability);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model contextIDRequired="true"
 	 * @generated
 	 */
@@ -125,5 +154,21 @@ public interface QJobManager {
 	 * @generated
 	 */
 	void registerListener(QJobListener listener);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model capabilityRequired="true" nameRequired="true" writerRequired="true"
+	 * @generated
+	 */
+	void registerWriter(QJobCapability capability, String name, QObjectWriter writer);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model capabilityRequired="true" nameRequired="true"
+	 * @generated
+	 */
+	void setDefaultWriter(QJobCapability capability, String name);
 
 } // QJobManager

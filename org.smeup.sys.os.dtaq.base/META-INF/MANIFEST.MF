@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: As.UP Operating System DataQueue Base
 Bundle-SymbolicName: org.smeup.sys.os.dtaq.base
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: www.smeup.com
 Bundle-Localization: plugin
 Export-Package: org.smeup.sys.os.dtaq.base.data
 Require-Bundle: org.smeup.sys.os.dtaq
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: javax.inject;version="1.0.0"

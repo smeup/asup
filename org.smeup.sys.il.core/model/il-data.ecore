@@ -3073,7 +3073,7 @@
         <eTypeArguments eTypeParameter="#//def/CompoundDataDef/D"/>
       </eGenericSuperTypes>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="DataDef" abstract="true" eSuperTypes="il-core.ecore#//Object">
+    <eClassifiers xsi:type="ecore:EClass" name="DataDef" abstract="true">
       <eTypeParameters name="D">
         <eBounds eClassifier="#//Data"/>
       </eTypeParameters>

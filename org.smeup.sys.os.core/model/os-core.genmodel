@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2016 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
     modelDirectory="/org.smeup.sys.os.core/src" modelPluginID="org.smeup.sys.os.core"
     runtimeJar="true" modelName="As.UP Operating System Core" rootExtendsInterface=""
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" suppressEMFTypes="true"
     booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.dk.core/model/dk.core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//data ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
+    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//data ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>os-core.ecore</foreignModel>
   <genPackages prefix="OperatingSystemCore" basePackage="org.smeup.sys.os" disposableProviderFactory="true"
       adapterFactory="false" fileExtensions="" ecorePackage="os-core.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="os-core.ecore#//SystemEventType">
+      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//SystemEventType/Starting"/>
+      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//SystemEventType/Started"/>
+      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//SystemEventType/StatusChanged"/>
+      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//SystemEventType/Stopping"/>
+      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//SystemEventType/Stopped"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="os-core.ecore#//SystemStatus">
       <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//SystemStatus/Activating"/>
       <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//SystemStatus/Started"/>
@@ -22,27 +29,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//CreationInfo/creationDate"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//CreationInfo/creationUser"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//CreationInfo/creationSystem"/>
-    </genClasses>
-    <genClasses ecoreClass="os-core.ecore#//EnvironmentVariable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//EnvironmentVariable/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//EnvironmentVariable/value"/>
-    </genClasses>
-    <genClasses ecoreClass="os-core.ecore#//System">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//System/context"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//System/creationInfo"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/installPath"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/lastJobNumber"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/status"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/systemLibrary"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/systemUser"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/temporaryLibrary"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//System/variables"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="os-core.ecore#//SystemManager">
-      <genOperations ecoreOperation="os-core.ecore#//SystemManager/getSystem"/>
-      <genOperations ecoreOperation="os-core.ecore#//SystemManager/start"/>
-      <genOperations ecoreOperation="os-core.ecore#//SystemManager/stop"/>
     </genClasses>
     <genClasses image="false" ecoreClass="os-core.ecore#//ExceptionManager">
       <genOperations ecoreOperation="os-core.ecore#//ExceptionManager/prepareException">
@@ -70,11 +56,49 @@
         <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException.3/variables"/>
       </genOperations>
     </genClasses>
+    <genClasses image="false" ecoreClass="os-core.ecore#//RunManager">
+      <genOperations ecoreOperation="os-core.ecore#//RunManager/locate"/>
+    </genClasses>
+    <genClasses ecoreClass="os-core.ecore#//System">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//System/context"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//System/creationInfo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/installPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/lastJobNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/systemLibrary"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/systemUser"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/temporaryLibrary"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//System/variableContainer"/>
+      <genOperations ecoreOperation="os-core.ecore#//System/getAvailableProcessors"/>
+      <genOperations ecoreOperation="os-core.ecore#//System/getLoadAverage"/>
+    </genClasses>
+    <genClasses ecoreClass="os-core.ecore#//SystemEvent">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference os-core.ecore#//SystemEvent/source"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//SystemEvent/type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="os-core.ecore#//SystemListener">
+      <genOperations ecoreOperation="os-core.ecore#//SystemListener/handleEvent">
+        <genParameters ecoreParameter="os-core.ecore#//SystemListener/handleEvent/event"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="os-core.ecore#//SystemManager">
+      <genOperations ecoreOperation="os-core.ecore#//SystemManager/getSystem"/>
+      <genOperations ecoreOperation="os-core.ecore#//SystemManager/start"/>
+      <genOperations ecoreOperation="os-core.ecore#//SystemManager/stop"/>
+      <genOperations ecoreOperation="os-core.ecore#//SystemManager/registerListener">
+        <genParameters ecoreParameter="os-core.ecore#//SystemManager/registerListener/listener"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-core.ecore#//SystemManager/updateStatus">
+        <genParameters ecoreParameter="os-core.ecore#//SystemManager/updateStatus/status"/>
+      </genOperations>
+    </genClasses>
     <nestedGenPackages prefix="OperatingSystemJobs" basePackage="org.smeup.sys.os.core"
         disposableProviderFactory="true" adapterFactory="false" ecorePackage="os-core.ecore#//jobs">
       <genEnums typeSafeEnumCompatible="false" ecoreEnum="os-core.ecore#//jobs/JobEventType">
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobEventType/Starting"/>
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobEventType/Started"/>
+        <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobEventType/StatusChanged"/>
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobEventType/Stopping"/>
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobEventType/Stopped"/>
       </genEnums>
@@ -85,6 +109,7 @@
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobStatus/MessageWaiting"/>
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobStatus/LockWaiting"/>
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobStatus/EventWaiting"/>
+        <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobStatus/Hold"/>
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobStatus/EndOfJob"/>
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobStatus/End"/>
       </genEnums>
@@ -93,21 +118,20 @@
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobType/Interactive"/>
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobType/Batch"/>
       </genEnums>
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="os-core.ecore#//jobs/JobThreadStatus">
-        <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobThreadStatus/Run"/>
-        <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobThreadStatus/Waiting"/>
-        <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobThreadStatus/End"/>
-      </genEnums>
       <genClasses ecoreClass="os-core.ecore#//jobs/Job">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//jobs/Job/context"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//jobs/Job/creationInfo"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/currentLibrary"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/dateFormat"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/dateSeparator"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference os-core.ecore#//jobs/Job/jobCapability"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/jobID"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/jobName"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/jobNumber"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/jobStatus"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//jobs/Job/jobRunInfo"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference os-core.ecore#//jobs/Job/jobThread"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/jobType"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/jobUser"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/libraries"/>
@@ -116,8 +140,15 @@
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference os-core.ecore#//jobs/Job/system"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/timeSeparator"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//jobs/Job/variables"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//jobs/Job/variableContainer"/>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/Job/getJobStatus"/>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/Job/getCPUUsage"/>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/Job/getMemorySize"/>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/Job/getPriority"/>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/Job/isActive"/>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/Job/isRouted"/>
       </genClasses>
+      <genClasses ecoreClass="os-core.ecore#//jobs/JobCapability"/>
       <genClasses ecoreClass="os-core.ecore#//jobs/JobEvent">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference os-core.ecore#//jobs/JobEvent/source"/>
@@ -171,20 +202,18 @@
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/close/job"/>
         </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/create">
-          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/create/user"/>
-          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/create/password"/>
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/create/capability"/>
         </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/create.1">
-          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/create.1/user"/>
-          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/create.1/password"/>
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/create.1/capability"/>
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/create.1/jobName"/>
         </genOperations>
-        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/create.2">
-          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/create.2/credential"/>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/spawn">
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/spawn/credential"/>
         </genOperations>
-        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/create.3">
-          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/create.3/credential"/>
-          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/create.3/jobName"/>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/spawn.1">
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/spawn.1/credential"/>
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/spawn.1/jobName"/>
         </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/delay">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/delay/millis"/>
@@ -210,7 +239,10 @@
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookupActiveJob/jobID"/>
         </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/lookup.2">
-          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookup.2/contextID"/>
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookup.2/capability"/>
+        </genOperations>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/lookup.3">
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookup.3/contextID"/>
         </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/registerListener">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/registerListener/listener"/>
@@ -220,9 +252,8 @@
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/updateStatus/status"/>
         </genOperations>
       </genClasses>
-      <genClasses image="false" ecoreClass="os-core.ecore#//jobs/JobThread">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/JobThread/threadID"/>
-        <genOperations ecoreOperation="os-core.ecore#//jobs/JobThread/getThreadStatus"/>
+      <genClasses ecoreClass="os-core.ecore#//jobs/JobRunInfo">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/JobRunInfo/memorySize"/>
       </genClasses>
     </nestedGenPackages>
     <nestedGenPackages prefix="OperatingSystemEnvironment" basePackage="org.smeup.sys.os.core"
@@ -231,32 +262,41 @@
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//env/EnvironmentLevel/System"/>
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//env/EnvironmentLevel/Job"/>
       </genEnums>
+      <genClasses ecoreClass="os-core.ecore#//env/EnvironmentVariable">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//env/EnvironmentVariable/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//env/EnvironmentVariable/value"/>
+      </genClasses>
+      <genClasses ecoreClass="os-core.ecore#//env/EnvironmentVariableContainer">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//env/EnvironmentVariableContainer/variables"/>
+      </genClasses>
       <genClasses image="false" ecoreClass="os-core.ecore#//env/EnvironmentVariableManager">
         <genOperations ecoreOperation="os-core.ecore#//env/EnvironmentVariableManager/addVariable">
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/addVariable/job"/>
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/addVariable/level"/>
-          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/addVariable/variable"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/addVariable/name"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/addVariable/value"/>
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/addVariable/replace"/>
         </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//env/EnvironmentVariableManager/changeVariable">
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/changeVariable/job"/>
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/changeVariable/level"/>
-          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/changeVariable/variable"/>
-          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/changeVariable/replace"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/changeVariable/name"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/changeVariable/value"/>
         </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//env/EnvironmentVariableManager/listVariables">
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/listVariables/job"/>
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/listVariables/level"/>
         </genOperations>
+        <genOperations ecoreOperation="os-core.ecore#//env/EnvironmentVariableManager/lookupVariable">
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/lookupVariable/job"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/lookupVariable/level"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/lookupVariable/name"/>
+        </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//env/EnvironmentVariableManager/removeVariable">
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/removeVariable/job"/>
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/removeVariable/level"/>
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/removeVariable/name"/>
-          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/removeVariable/replace"/>
         </genOperations>
-      </genClasses>
-      <genClasses ecoreClass="os-core.ecore#//env/EnvironmentVariableContainer">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//env/EnvironmentVariableContainer/variables"/>
       </genClasses>
     </nestedGenPackages>
   </genPackages>

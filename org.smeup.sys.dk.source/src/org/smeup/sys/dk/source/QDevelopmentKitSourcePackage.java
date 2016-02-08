@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,15 +67,6 @@ public interface QDevelopmentKitSourcePackage extends EPackage {
 	int PROJECT = 0;
 
 	/**
-	 * The number of structural features of the '<em>Project</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROJECT_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.source.impl.ProjectDefImpl <em>Project Def</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -84,6 +75,34 @@ public interface QDevelopmentKitSourcePackage extends EPackage {
 	 * @generated
 	 */
 	int PROJECT_DEF = 1;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.source.QSourceNode <em>Source Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.source.QSourceNode
+	 * @see org.smeup.sys.dk.source.impl.DevelopmentKitSourcePackageImpl#getSourceNode()
+	 * @generated
+	 */
+	int SOURCE_NODE = 4;
+
+	/**
+	 * The number of structural features of the '<em>Source Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE_NODE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Project</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_FEATURE_COUNT = SOURCE_NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -111,25 +130,6 @@ public interface QDevelopmentKitSourcePackage extends EPackage {
 	 * @ordered
 	 */
 	int PROJECT_DEF_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.dk.source.QSourceNode <em>Source Node</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.dk.source.QSourceNode
-	 * @see org.smeup.sys.dk.source.impl.DevelopmentKitSourcePackageImpl#getSourceNode()
-	 * @generated
-	 */
-	int SOURCE_NODE = 4;
-
-	/**
-	 * The number of structural features of the '<em>Source Node</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SOURCE_NODE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.source.QSourceEntry <em>Source Entry</em>}' class.

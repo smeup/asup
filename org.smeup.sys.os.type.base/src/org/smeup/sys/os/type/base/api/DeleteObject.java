@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -30,15 +30,5 @@ public class DeleteObject {
 	@Main
 	public void main(@DataDef(length = 5000) QCharacter objectLink) throws IOException {
 
-		/*
-		 * URI uri = URI.createURI(objectLink.trimR()); String library =
-		 * uri.scheme().toUpperCase(); String type = uri.host(); String name =
-		 * uri.lastSegment();
-		 * 
-		 * QSourceEntry sourceEntry = sourceManager.getObjectEntry(job, library,
-		 * type, name); if(sourceEntry != null) sourceManager.removeEntry(job,
-		 * sourceEntry); else throw new
-		 * OperatingSystemRuntimeException("OPT1862");
-		 */
 	}
 }

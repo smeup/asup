@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,8 +17,6 @@ import org.smeup.sys.rt.core.QRuntimeCorePackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Bundle Visitor</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

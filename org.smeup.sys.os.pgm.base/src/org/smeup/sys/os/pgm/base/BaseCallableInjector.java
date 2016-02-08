@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -59,6 +59,7 @@ import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobReference;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileManager;
 import org.smeup.sys.os.file.QFileOverride;
@@ -108,9 +109,10 @@ public class BaseCallableInjector {
 			programStatus.getProgramName().eval(program.getName());
 			programStatus.getProgramLibrary().eval(program.getLibrary());
 		}
-		programStatus.getUserName().eval(job.getJobUser());
-		programStatus.getJobNumber().eval(job.getJobNumber());
-		programStatus.getJobName().eval(job.getJobName());
+		QJobReference jobReference = job.getJobReference();
+		programStatus.getUserName().eval(jobReference.getJobUser());
+		programStatus.getJobNumber().eval(jobReference.getJobNumber());
+		programStatus.getJobName().eval(jobReference.getJobName());
 		programStatus.getStatusCode().clear();
 
 		try {

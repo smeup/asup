@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -605,7 +605,7 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		initEClass(programManagerEClass, QProgramManager.class, "ProgramManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(programManagerEClass, null, "callProgram", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "contextID", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "library", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "program", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getParameterList(), "params", 0, 1, IS_UNIQUE, IS_ORDERED);

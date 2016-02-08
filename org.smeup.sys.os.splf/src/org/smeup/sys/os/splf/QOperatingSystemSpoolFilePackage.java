@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 Sme.UP and others.
+ * Copyright (c) 2012, 2016 Sme.UP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,31 +84,13 @@ public interface QOperatingSystemSpoolFilePackage extends EPackage {
 	int SPOOL_FILE__FILE_NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Job Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Job Reference</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPOOL_FILE__JOB_NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Job Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPOOL_FILE__JOB_NUMBER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Job User</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPOOL_FILE__JOB_USER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
+	int SPOOL_FILE__JOB_REFERENCE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Out Queue</b></em>' attribute.
@@ -117,7 +99,7 @@ public interface QOperatingSystemSpoolFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPOOL_FILE__OUT_QUEUE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 4;
+	int SPOOL_FILE__OUT_QUEUE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Rows</b></em>' containment reference list.
@@ -126,7 +108,7 @@ public interface QOperatingSystemSpoolFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPOOL_FILE__ROWS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 5;
+	int SPOOL_FILE__ROWS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Spool ID</b></em>' attribute.
@@ -135,7 +117,7 @@ public interface QOperatingSystemSpoolFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPOOL_FILE__SPOOL_ID = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 6;
+	int SPOOL_FILE__SPOOL_ID = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>User Data</b></em>' attribute.
@@ -144,7 +126,7 @@ public interface QOperatingSystemSpoolFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPOOL_FILE__USER_DATA = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 7;
+	int SPOOL_FILE__USER_DATA = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Spool File</em>' class.
@@ -153,7 +135,7 @@ public interface QOperatingSystemSpoolFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPOOL_FILE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 8;
+	int SPOOL_FILE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.splf.impl.SpoolFileRowImpl <em>Spool File Row</em>}' class.
@@ -352,37 +334,15 @@ public interface QOperatingSystemSpoolFilePackage extends EPackage {
 	EAttribute getSpoolFile_FileName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.splf.QSpoolFile#getJobName <em>Job Name</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.smeup.sys.os.splf.QSpoolFile#getJobReference <em>Job Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Job Name</em>'.
-	 * @see org.smeup.sys.os.splf.QSpoolFile#getJobName()
+	 * @return the meta object for the containment reference '<em>Job Reference</em>'.
+	 * @see org.smeup.sys.os.splf.QSpoolFile#getJobReference()
 	 * @see #getSpoolFile()
 	 * @generated
 	 */
-	EAttribute getSpoolFile_JobName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.splf.QSpoolFile#getJobNumber <em>Job Number</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Job Number</em>'.
-	 * @see org.smeup.sys.os.splf.QSpoolFile#getJobNumber()
-	 * @see #getSpoolFile()
-	 * @generated
-	 */
-	EAttribute getSpoolFile_JobNumber();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.splf.QSpoolFile#getJobUser <em>Job User</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Job User</em>'.
-	 * @see org.smeup.sys.os.splf.QSpoolFile#getJobUser()
-	 * @see #getSpoolFile()
-	 * @generated
-	 */
-	EAttribute getSpoolFile_JobUser();
+	EReference getSpoolFile_JobReference();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.splf.QSpoolFile#getOutQueue <em>Out Queue</em>}'.
@@ -521,28 +481,12 @@ public interface QOperatingSystemSpoolFilePackage extends EPackage {
 		EAttribute SPOOL_FILE__FILE_NAME = eINSTANCE.getSpoolFile_FileName();
 
 		/**
-		 * The meta object literal for the '<em><b>Job Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Job Reference</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SPOOL_FILE__JOB_NAME = eINSTANCE.getSpoolFile_JobName();
-
-		/**
-		 * The meta object literal for the '<em><b>Job Number</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SPOOL_FILE__JOB_NUMBER = eINSTANCE.getSpoolFile_JobNumber();
-
-		/**
-		 * The meta object literal for the '<em><b>Job User</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SPOOL_FILE__JOB_USER = eINSTANCE.getSpoolFile_JobUser();
+		EReference SPOOL_FILE__JOB_REFERENCE = eINSTANCE.getSpoolFile_JobReference();
 
 		/**
 		 * The meta object literal for the '<em><b>Out Queue</b></em>' attribute feature.

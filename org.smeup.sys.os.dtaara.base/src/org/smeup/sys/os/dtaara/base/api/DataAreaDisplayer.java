@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -18,7 +18,6 @@ import javax.inject.Inject;
 import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
-import org.smeup.sys.il.core.out.QWritableObject;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -66,14 +65,6 @@ public class DataAreaDisplayer {
 			QObjectWriter objectWriter = findOutputWriter(output);
 			objectWriter.initialize();
 			objectWriter.write(area);
-			objectWriter.flush();
-
-			String label = "Data area";
-			QWritableObject objectToWrite = outputManager.getWritableObject(label, Math.max(label.length(), area.getContentLength()));
-			objectToWrite.setObject(area.getContent());
-
-			objectWriter.initialize();
-			objectWriter.write(objectToWrite.getObjectToWrite());
 			objectWriter.flush();
 		} catch (DataAreaNotFoundException e) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF1015, new String[] { e.dataAreaName, e.libraryName });

@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QObjectWriterFactory;
 import org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry;
 import org.smeup.sys.il.core.out.QOutputManager;
-import org.smeup.sys.il.core.out.QWritableObject;
 
 public class BaseOutputManagerImpl implements QOutputManager {
 
@@ -94,15 +93,5 @@ public class BaseOutputManagerImpl implements QOutputManager {
 
 		private static final long serialVersionUID = 1L;
 
-	}
-
-	@Override
-	public QWritableObject getWritableObject(String label) {
-		return new BaseWritableObject(label);
-	}
-
-	@Override
-	public QWritableObject getWritableObject(String label, int columnLength) {
-		return new BaseWritableObject(label, columnLength);	
 	}
 }

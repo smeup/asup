@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+import org.smeup.sys.os.core.jobs.QJobReference;
 import org.smeup.sys.os.splf.QSpoolFile;
 import org.smeup.sys.os.splf.QSpoolFileRow;
 import org.smeup.sys.os.splf.QSpoolFileWriter;
@@ -65,7 +66,8 @@ public class BaseSpoolFileWriterImpl implements QSpoolFileWriter {
 	}
 
 	private String columnNameFor(QSpoolFile spoolFile) {
-		return spoolFile.getJobUser() + "_" + spoolFile.getJobName() + "_" + spoolFile.getJobNumber();
+		QJobReference jobReference = spoolFile.getJobReference();
+		return jobReference.getJobUser() + "_" + jobReference.getJobName() + "_" + jobReference.getJobNumber();
 	}
 
 	private EClass createBaseObjectEClass(String columnName) {
