@@ -711,7 +711,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		// Add supertypes to classes
 		jobEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		jobEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
-		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getIdentity());
+		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getCapability());
 		EGenericType g2 = createEGenericType(this.getJob());
 		g1.getETypeArguments().add(g2);
 		jobCapabilityEClass.getEGenericSuperTypes().add(g1);

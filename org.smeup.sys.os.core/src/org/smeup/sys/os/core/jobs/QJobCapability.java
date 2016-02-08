@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.os.core.jobs;
 
-import org.smeup.sys.il.core.ctx.QIdentity;
+import org.smeup.sys.il.core.ctx.QCapability;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +19,7 @@ import org.smeup.sys.il.core.ctx.QIdentity;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QJobCapability extends QIdentity<QJob> {
+public interface QJobCapability extends QCapability<QJob> {
 
 	/**
 	 * <!-- begin-user-doc -->

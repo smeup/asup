@@ -202,7 +202,7 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IDENTITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 0;
+	int IDENTITY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.ContextInjectionStrategy <em>Context Injection Strategy</em>}' enum.

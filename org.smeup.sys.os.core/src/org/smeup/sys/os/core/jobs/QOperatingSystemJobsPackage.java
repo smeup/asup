@@ -244,7 +244,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB_CAPABILITY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.IDENTITY_FEATURE_COUNT + 0;
+	int JOB_CAPABILITY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.CAPABILITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.impl.JobLogImpl <em>Job Log</em>}' class.

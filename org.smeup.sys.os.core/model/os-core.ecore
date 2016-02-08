@@ -212,7 +212,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobCapability" abstract="true" interface="true">
       <eOperations name="getJobReference" lowerBound="1" eType="#//jobs/JobReference"/>
-      <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Identity">
+      <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Capability">
         <eTypeArguments eClassifier="#//jobs/Job"/>
       </eGenericSuperTypes>
     </eClassifiers>

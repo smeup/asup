@@ -12,7 +12,6 @@
 package org.smeup.sys.os.core.base;
 
 import java.net.URISyntaxException;
-import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -143,13 +142,13 @@ public abstract class BaseJobManagerImpl implements QJobManager {
 		fireEvent(jobEvent);
 	}
 
-	protected QJobCapability createJobCapability(QJob job, Principal principal) {
+	protected QJobCapability createJobCapability(QJob job) {
 		
 		// capability
 		URI address = EcoreUtil.getURI((EObject)job);
 		QJobCapability jobCapability;
 		try {
-			jobCapability = new BaseJobCapabilityImpl(job.getJobReference(), principal, new java.net.URI(address.toString()));
+			jobCapability = new BaseJobCapabilityImpl(job.getJobReference(), new java.net.URI(address.toString()));
 			return jobCapability;
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block

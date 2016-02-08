@@ -372,14 +372,12 @@
         </eParameters>
       </eOperations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Identity" abstract="true" interface="true">
+    <eClassifiers xsi:type="ecore:EClass" name="Identity" abstract="true" interface="true"
+        eSuperTypes="#//Object">
       <eTypeParameters name="T">
         <eBounds eClassifier="#//Object"/>
       </eTypeParameters>
       <eOperations name="getJavaPrincipal" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaPrincipal"/>
-      <eGenericSuperTypes eClassifier="#//ctx/Capability">
-        <eTypeArguments eTypeParameter="#//ctx/Identity/T"/>
-      </eGenericSuperTypes>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="meta" nsURI="http://www.smeup.org/asup/il/core/meta" nsPrefix="il-core-meta">

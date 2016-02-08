@@ -357,10 +357,7 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 
 		// Add supertypes to classes
 		capabilityEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		g1 = createEGenericType(this.getCapability());
-		EGenericType g2 = createEGenericType(identityEClass_T);
-		g1.getETypeArguments().add(g2);
-		identityEClass.getEGenericSuperTypes().add(g1);
+		identityEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(adapterFactoryEClass, QAdapterFactory.class, "AdapterFactory", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -372,7 +369,7 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		addEParameter(op, this.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEJavaObject(), "adaptable", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
-		g2 = createEGenericType(t1);
+		EGenericType g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "adapterType", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);

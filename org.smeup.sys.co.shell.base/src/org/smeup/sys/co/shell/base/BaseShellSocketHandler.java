@@ -126,7 +126,7 @@ public class BaseShellSocketHandler implements Runnable {
 
 	private void writePrompt(OutputStreamWriter outputStreamWriter)	throws IOException {
 		if (jobCapability != null)
-			outputStreamWriter.write(jobCapability.getJavaPrincipal().getName().toLowerCase() + "> ");
+			outputStreamWriter.write(jobCapability.getJobReference().getJobUser().toLowerCase() + "> ");
 		else
 			outputStreamWriter.write(LOGIN);
 	}

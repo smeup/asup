@@ -12,7 +12,6 @@
 package org.smeup.sys.os.core.base;
 
 import java.net.URI;
-import java.security.Principal;
 
 import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobReference;
@@ -22,18 +21,11 @@ public class BaseJobCapabilityImpl implements QJobCapability {
 	private static final long serialVersionUID = 1L;
 	
 	private QJobReference jobReference;
-	private Principal principal;
 	private URI address;
 	
-	protected BaseJobCapabilityImpl(QJobReference jobReference, Principal principal, URI address) {
+	protected BaseJobCapabilityImpl(QJobReference jobReference, URI address) {
 		this.jobReference = jobReference;
-		this.principal = principal;
 		this.address = address;
-	}
-	
-	@Override
-	public Principal getJavaPrincipal() {
-		return principal;
 	}
 
 	@Override

@@ -21,7 +21,7 @@ import org.smeup.sys.il.core.QObject;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QIdentity<T extends QObject> extends QCapability<T> {
+public interface QIdentity<T extends QObject> extends QObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

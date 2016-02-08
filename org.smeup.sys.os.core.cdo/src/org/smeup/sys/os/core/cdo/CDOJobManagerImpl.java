@@ -130,7 +130,7 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl {
 
 			activeJobs.put(job.getJobID(), job);
 
-			QJobCapability jobCapability = createJobCapability(job, identity.getJavaPrincipal());
+			QJobCapability jobCapability = createJobCapability(job);
 			job.getContext().set(QJobCapability.class, jobCapability);
 			
 			job.getContext().set(QIdentity.class, identity);
