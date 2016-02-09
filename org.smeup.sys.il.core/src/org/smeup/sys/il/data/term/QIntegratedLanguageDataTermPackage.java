@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 
@@ -411,7 +410,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIAL_ELEMENT__FACETS = QIntegratedLanguageCorePackage.NAMED_NODE__FACETS;
+	int SPECIAL_ELEMENT__FACETS = QIntegratedLanguageCoreTermPackage.NAMED_NODE__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -420,7 +419,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIAL_ELEMENT__NAME = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 0;
+	int SPECIAL_ELEMENT__NAME = QIntegratedLanguageCoreTermPackage.NAMED_NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -429,7 +428,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIAL_ELEMENT__TEXT = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 1;
+	int SPECIAL_ELEMENT__TEXT = QIntegratedLanguageCoreTermPackage.NAMED_NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Unary</b></em>' attribute.
@@ -438,7 +437,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIAL_ELEMENT__UNARY = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 2;
+	int SPECIAL_ELEMENT__UNARY = QIntegratedLanguageCoreTermPackage.NAMED_NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -447,7 +446,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIAL_ELEMENT__VALUE = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 3;
+	int SPECIAL_ELEMENT__VALUE = QIntegratedLanguageCoreTermPackage.NAMED_NODE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Special Element</em>' class.
@@ -456,7 +455,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIAL_ELEMENT_FEATURE_COUNT = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 4;
+	int SPECIAL_ELEMENT_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.NAMED_NODE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.term.DataTermType <em>Data Term Type</em>}' enum.

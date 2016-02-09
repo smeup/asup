@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.smeup.sys.il.core.QNode;
+import org.smeup.sys.il.core.term.QNode;
 import org.smeup.sys.il.flow.QBlock;
 import org.smeup.sys.il.flow.QBreak;
 import org.smeup.sys.il.flow.QCall;

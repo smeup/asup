@@ -9,8 +9,6 @@ package org.smeup.sys.il.core.term;
 
 import java.net.URI;
 
-import org.smeup.sys.il.core.QNamedNode;
-
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Term</b></em>'. <!-- end-user-doc -->

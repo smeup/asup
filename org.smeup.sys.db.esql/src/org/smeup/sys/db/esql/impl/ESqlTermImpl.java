@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.db.esql.QESqlTerm;
 import org.smeup.sys.db.esql.QIntegratedLanguageEmbeddedSQLPackage;
-import org.smeup.sys.il.core.impl.NamedNodeImpl;
+import org.smeup.sys.il.core.term.impl.NamedNodeImpl;
 
 /**
  * <!-- begin-user-doc -->

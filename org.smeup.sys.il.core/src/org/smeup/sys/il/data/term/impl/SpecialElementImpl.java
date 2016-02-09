@@ -10,7 +10,7 @@ package org.smeup.sys.il.data.term.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.smeup.sys.il.core.impl.NamedNodeImpl;
+import org.smeup.sys.il.core.term.impl.NamedNodeImpl;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.data.term.QSpecialElement;
 

@@ -68,31 +68,13 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	int NAMEABLE = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.NodeImpl <em>Node</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.impl.NodeImpl
-	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getNode()
-	 * @generated
-	 */
-	int NODE = 2;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.NamedNodeImpl <em>Named Node</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.impl.NamedNodeImpl
-	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getNamedNode()
-	 * @generated
-	 */
-	int NAMED_NODE = 1;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.ObjectImpl <em>Object</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.core.impl.ObjectImpl
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObject()
 	 * @generated
 	 */
-	int OBJECT = 3;
+	int OBJECT = 1;
 
 	/**
 	 * The number of structural features of the '<em>Nameable</em>' class. <!--
@@ -102,39 +84,6 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMEABLE_FEATURE_COUNT = 0;
-
-	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__FACETS = 0;
-
-	/**
-	 * The number of structural features of the '<em>Node</em>' class. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int NODE_FEATURE_COUNT = 1;
-
-	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_NODE__FACETS = NODE__FACETS;
-
-	/**
-	 * The number of structural features of the '<em>Named Node</em>' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Object</em>' class. <!--
@@ -153,7 +102,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectContainer()
 	 * @generated
 	 */
-	int OBJECT_CONTAINER = 4;
+	int OBJECT_CONTAINER = 2;
 
 	/**
 	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
@@ -179,7 +128,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectIterator()
 	 * @generated
 	 */
-	int OBJECT_ITERATOR = 5;
+	int OBJECT_ITERATOR = 3;
 
 	/**
 	 * The number of structural features of the '<em>Object Iterator</em>' class.
@@ -197,7 +146,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectNameable()
 	 * @generated
 	 */
-	int OBJECT_NAMEABLE = 6;
+	int OBJECT_NAMEABLE = 4;
 
 	/**
 	 * The number of structural features of the '<em>Object Nameable</em>' class.
@@ -215,7 +164,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectRegistry()
 	 * @generated
 	 */
-	int OBJECT_REGISTRY = 7;
+	int OBJECT_REGISTRY = 5;
 
 	/**
 	 * The number of structural features of the '<em>Object Registry</em>' class.
@@ -234,7 +183,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectRegistryFactory()
 	 * @generated
 	 */
-	int OBJECT_REGISTRY_FACTORY = 8;
+	int OBJECT_REGISTRY_FACTORY = 6;
 
 	/**
 	 * The number of structural features of the '<em>Object Registry Factory</em>' class.
@@ -253,7 +202,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThread()
 	 * @generated
 	 */
-	int THREAD = 9;
+	int THREAD = 7;
 
 	/**
 	 * The number of structural features of the '<em>Thread</em>' class.
@@ -272,7 +221,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThreadManager()
 	 * @generated
 	 */
-	int THREAD_MANAGER = 10;
+	int THREAD_MANAGER = 8;
 
 	/**
 	 * The number of structural features of the '<em>Thread Manager</em>' class.
@@ -291,7 +240,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThreadStatus()
 	 * @generated
 	 */
-	int THREAD_STATUS = 11;
+	int THREAD_STATUS = 9;
 
 	/**
 	 * Returns the meta object for class '
@@ -303,39 +252,6 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getNameable();
-
-	/**
-	 * Returns the meta object for class '
-	 * {@link org.smeup.sys.il.core.QNamedNode <em>Named Node</em>}'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @return the meta object for class '<em>Named Node</em>'.
-	 * @see org.smeup.sys.il.core.QNamedNode
-	 * @generated
-	 */
-	EClass getNamedNode();
-
-	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.core.QNode <em>Node</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Node</em>'.
-	 * @see org.smeup.sys.il.core.QNode
-	 * @generated
-	 */
-	EClass getNode();
-
-	/**
-	 * Returns the meta object for the containment reference list '
-	 * {@link org.asup.il.flow.QNode#getFacets <em>Facets</em>}'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @return the meta object for the containment reference list '
-	 *         <em>Facets</em>'.
-	 * @see org.asup.il.flow.QNode#getFacets()
-	 * @see #getNode()
-	 * @generated
-	 */
-	EReference getNode_Facets();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.QObject <em>Object</em>}'.
@@ -463,31 +379,6 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass NAMEABLE = eINSTANCE.getNameable();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.impl.NamedNodeImpl <em>Named Node</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.core.impl.NamedNodeImpl
-		 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getNamedNode()
-		 * @generated
-		 */
-		EClass NAMED_NODE = eINSTANCE.getNamedNode();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.impl.NodeImpl <em>Node</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.core.impl.NodeImpl
-		 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getNode()
-		 * @generated
-		 */
-		EClass NODE = eINSTANCE.getNode();
-
-		/**
-		 * The meta object literal for the '<em><b>Facets</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference NODE__FACETS = eINSTANCE.getNode_Facets();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.impl.ObjectImpl <em>Object</em>}' class.

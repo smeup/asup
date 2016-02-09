@@ -12,7 +12,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.smeup.sys.il.core.impl.NodeImpl;
+import org.smeup.sys.il.core.term.impl.NodeImpl;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
 import org.smeup.sys.il.flow.QOnError;
 import org.smeup.sys.il.flow.QStatement;

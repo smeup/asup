@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.il.expr;
 
-import org.smeup.sys.il.core.QNode;
+import org.smeup.sys.il.core.term.QNode;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

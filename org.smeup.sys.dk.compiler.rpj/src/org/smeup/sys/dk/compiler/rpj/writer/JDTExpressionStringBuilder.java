@@ -22,7 +22,7 @@ import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.Block;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.rpj.RPJCompilerMessage;
-import org.smeup.sys.il.core.QNamedNode;
+import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QCharacter;

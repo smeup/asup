@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
+import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 import org.smeup.sys.rt.core.QApplication;
@@ -577,6 +578,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
+		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
 		QIntegratedLanguageCoreMetaPackage theIntegratedLanguageCoreMetaPackage = (QIntegratedLanguageCoreMetaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI);
 
 		// Create type parameters
@@ -590,7 +592,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		applicationComponentEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
 		applicationModuleEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		serviceHookEClass.getESuperTypes().add(this.getServiceRef());
-		serviceRefEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNode());
+		serviceRefEClass.getESuperTypes().add(theIntegratedLanguageCoreTermPackage.getNode());
 		pluginEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 
 		// Initialize classes and features; add operations and parameters

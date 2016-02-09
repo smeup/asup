@@ -10,7 +10,6 @@ package org.smeup.sys.il.core.term.impl;
 import java.net.URI;
 
 import org.eclipse.emf.ecore.EClass;
-import org.smeup.sys.il.core.impl.NamedNodeImpl;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.il.core.term.QTerm;
 

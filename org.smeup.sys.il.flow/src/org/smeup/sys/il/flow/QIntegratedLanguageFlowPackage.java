@@ -12,8 +12,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
+import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 
 /**
@@ -186,7 +186,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATEMENT__FACETS = QIntegratedLanguageCorePackage.NODE__FACETS;
+	int STATEMENT__FACETS = QIntegratedLanguageCoreTermPackage.NODE__FACETS;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.BlockImpl <em>Block</em>}' class.
@@ -204,7 +204,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATEMENT_FEATURE_COUNT = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 0;
+	int STATEMENT_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -480,7 +480,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNIT__FACETS = QIntegratedLanguageCorePackage.NAMED_NODE__FACETS;
+	int UNIT__FACETS = QIntegratedLanguageCoreTermPackage.NAMED_NODE__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -489,7 +489,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNIT__NAME = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 0;
+	int UNIT__NAME = QIntegratedLanguageCoreTermPackage.NAMED_NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Main</b></em>' containment reference. <!--
@@ -498,7 +498,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNIT__MAIN = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 1;
+	int UNIT__MAIN = QIntegratedLanguageCoreTermPackage.NAMED_NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Unit</em>' class. <!--
@@ -507,7 +507,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNIT_FEATURE_COUNT = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 2;
+	int UNIT_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.NAMED_NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -702,7 +702,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY__FACETS = QIntegratedLanguageCorePackage.NODE__FACETS;
+	int ENTRY__FACETS = QIntegratedLanguageCoreTermPackage.NODE__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -710,7 +710,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY__PARAMETERS = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 0;
+	int ENTRY__PARAMETERS = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Entry</em>' class. <!--
@@ -719,7 +719,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 1;
+	int ENTRY_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.EntryParameterImpl <em>Entry Parameter</em>}' class.
@@ -737,7 +737,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY_PARAMETER__FACETS = QIntegratedLanguageCorePackage.NAMED_NODE__FACETS;
+	int ENTRY_PARAMETER__FACETS = QIntegratedLanguageCoreTermPackage.NAMED_NODE__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Delegate</b></em>' containment reference.
@@ -745,7 +745,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY_PARAMETER__DELEGATE = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 0;
+	int ENTRY_PARAMETER__DELEGATE = QIntegratedLanguageCoreTermPackage.NAMED_NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Nullable</b></em>' attribute. <!--
@@ -754,7 +754,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY_PARAMETER__NULLABLE = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 1;
+	int ENTRY_PARAMETER__NULLABLE = QIntegratedLanguageCoreTermPackage.NAMED_NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Passing Type</b></em>' attribute. <!--
@@ -763,7 +763,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY_PARAMETER__PASSING_TYPE = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 2;
+	int ENTRY_PARAMETER__PASSING_TYPE = QIntegratedLanguageCoreTermPackage.NAMED_NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Entry Parameter</em>' class.
@@ -771,7 +771,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY_PARAMETER_FEATURE_COUNT = QIntegratedLanguageCorePackage.NAMED_NODE_FEATURE_COUNT + 3;
+	int ENTRY_PARAMETER_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.NAMED_NODE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -1405,7 +1405,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ON_ERROR__FACETS = QIntegratedLanguageCorePackage.NODE__FACETS;
+	int ON_ERROR__FACETS = QIntegratedLanguageCoreTermPackage.NODE__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Body</b></em>' containment reference. <!--
@@ -1414,7 +1414,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ON_ERROR__BODY = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 0;
+	int ON_ERROR__BODY = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Error</b></em>' attribute. <!--
@@ -1423,7 +1423,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ON_ERROR__ERROR = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 1;
+	int ON_ERROR__ERROR = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>On Error</em>' class. <!--
@@ -1432,7 +1432,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ON_ERROR_FEATURE_COUNT = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 2;
+	int ON_ERROR_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.ParameterListImpl <em>Parameter List</em>}' class.
@@ -1450,7 +1450,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_LIST__FACETS = QIntegratedLanguageCorePackage.NODE__FACETS;
+	int PARAMETER_LIST__FACETS = QIntegratedLanguageCoreTermPackage.NODE__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1459,7 +1459,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_LIST__NAME = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 0;
+	int PARAMETER_LIST__NAME = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' attribute list. <!--
@@ -1468,7 +1468,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_LIST__PARAMETERS = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 1;
+	int PARAMETER_LIST__PARAMETERS = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Parameter List</em>' class.
@@ -1476,7 +1476,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_LIST_FEATURE_COUNT = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 2;
+	int PARAMETER_LIST_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.ProcedureImpl <em>Procedure</em>}' class.

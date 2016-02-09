@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.impl;
+package org.smeup.sys.il.core.term.impl;
 
 import java.util.Collection;
 import java.util.List;
@@ -15,12 +15,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.QNode;
+import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.core.meta.QFacet;
+import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
+import org.smeup.sys.il.core.term.QNode;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -29,12 +29,12 @@ import org.smeup.sys.il.core.meta.QFacet;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.impl.NodeImpl#getFacets <em>Facets</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.term.impl.NodeImpl#getFacets <em>Facets</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class NodeImpl extends MinimalEObjectImpl.Container implements QNode {
+public abstract class NodeImpl extends ObjectImpl implements QNode {
 	/**
 	 *
 	 */
@@ -63,7 +63,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QIntegratedLanguageCorePackage.Literals.NODE;
+		return QIntegratedLanguageCoreTermPackage.Literals.NODE;
 	}
 
 	/**
@@ -73,7 +73,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 	@Override
 	public List<QFacet> getFacets() {
 		if (facets == null) {
-			facets = new EObjectContainmentEList<QFacet>(QFacet.class, this, QIntegratedLanguageCorePackage.NODE__FACETS);
+			facets = new EObjectContainmentEList<QFacet>(QFacet.class, this, QIntegratedLanguageCoreTermPackage.NODE__FACETS);
 		}
 		return facets;
 	}
@@ -132,7 +132,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.NODE__FACETS:
+			case QIntegratedLanguageCoreTermPackage.NODE__FACETS:
 				return ((InternalEList<?>)getFacets()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -145,7 +145,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.NODE__FACETS:
+			case QIntegratedLanguageCoreTermPackage.NODE__FACETS:
 				return getFacets();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -159,7 +159,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.NODE__FACETS:
+			case QIntegratedLanguageCoreTermPackage.NODE__FACETS:
 				getFacets().clear();
 				getFacets().addAll((Collection<? extends QFacet>)newValue);
 				return;
@@ -174,7 +174,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.NODE__FACETS:
+			case QIntegratedLanguageCoreTermPackage.NODE__FACETS:
 				getFacets().clear();
 				return;
 		}
@@ -188,7 +188,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.NODE__FACETS:
+			case QIntegratedLanguageCoreTermPackage.NODE__FACETS:
 				return facets != null && !facets.isEmpty();
 		}
 		return super.eIsSet(featureID);

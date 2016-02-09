@@ -5,11 +5,11 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.impl;
+package org.smeup.sys.il.core.term.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.QNamedNode;
+import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
+import org.smeup.sys.il.core.term.QNamedNode;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -37,7 +37,7 @@ public abstract class NamedNodeImpl extends NodeImpl implements QNamedNode {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QIntegratedLanguageCorePackage.Literals.NAMED_NODE;
+		return QIntegratedLanguageCoreTermPackage.Literals.NAMED_NODE;
 	}
 
 	/**

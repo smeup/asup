@@ -118,7 +118,7 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ServiceHook" eSuperTypes="#//ServiceRef"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ServiceRef" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Node">
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceRef" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//term/Node">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="className" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="interfaceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

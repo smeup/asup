@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.db.esql.QIntegratedLanguageEmbeddedSQLPackage;
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
@@ -1717,7 +1716,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		// Obtain other dependent packages
 		QIntegratedLanguageCoreMetaPackage theIntegratedLanguageCoreMetaPackage = (QIntegratedLanguageCoreMetaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI);
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
-		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
 		QIntegratedLanguageEsamPackage theIntegratedLanguageEsamPackage = (QIntegratedLanguageEsamPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageEsamPackage.eNS_URI);
 		QIntegratedLanguageEmbeddedSQLPackage theIntegratedLanguageEmbeddedSQLPackage = (QIntegratedLanguageEmbeddedSQLPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageEmbeddedSQLPackage.eNS_URI);
@@ -1743,8 +1741,8 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		continueEClass.getESuperTypes().add(this.getStatement());
 		conversionEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		dataSectionEClass.getESuperTypes().add(this.getUnitSection());
-		entryEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNode());
-		entryParameterEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNamedNode());
+		entryEClass.getESuperTypes().add(theIntegratedLanguageCoreTermPackage.getNode());
+		entryParameterEClass.getESuperTypes().add(theIntegratedLanguageCoreTermPackage.getNamedNode());
 		evalEClass.getESuperTypes().add(this.getInvoke());
 		fileSectionEClass.getESuperTypes().add(this.getUnitSection());
 		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
@@ -1763,8 +1761,8 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		methodExecEClass.getESuperTypes().add(this.getInvoke());
 		moduleEClass.getESuperTypes().add(this.getCallableUnit());
 		monitorEClass.getESuperTypes().add(this.getStatement());
-		onErrorEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNode());
-		parameterListEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNode());
+		onErrorEClass.getESuperTypes().add(theIntegratedLanguageCoreTermPackage.getNode());
+		parameterListEClass.getESuperTypes().add(theIntegratedLanguageCoreTermPackage.getNode());
 		procedureEClass.getESuperTypes().add(this.getCallableUnit());
 		procedureExecEClass.getESuperTypes().add(this.getInvoke());
 		programEClass.getESuperTypes().add(this.getCallableUnit());
@@ -1780,8 +1778,8 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		routineExecEClass.getESuperTypes().add(this.getInvoke());
 		setupSectionEClass.getESuperTypes().add(this.getUnitSection());
 		sqlExecEClass.getESuperTypes().add(this.getInvoke());
-		statementEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNode());
-		unitEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNamedNode());
+		statementEClass.getESuperTypes().add(theIntegratedLanguageCoreTermPackage.getNode());
+		unitEClass.getESuperTypes().add(theIntegratedLanguageCoreTermPackage.getNamedNode());
 		untilEClass.getESuperTypes().add(this.getIteration());
 		whileEClass.getESuperTypes().add(this.getIteration());
 

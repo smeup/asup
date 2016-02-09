@@ -8,7 +8,7 @@
 package org.smeup.sys.il.flow.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.smeup.sys.il.core.impl.NodeImpl;
+import org.smeup.sys.il.core.term.impl.NodeImpl;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
 import org.smeup.sys.il.flow.QStatement;
 import org.smeup.sys.il.flow.QStatementVisitor;

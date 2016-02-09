@@ -23,16 +23,6 @@
     <genClasses image="false" ecoreClass="il-core.ecore#//Nameable">
       <genOperations ecoreOperation="il-core.ecore#//Nameable/getName"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="il-core.ecore#//NamedNode"/>
-    <genClasses image="false" ecoreClass="il-core.ecore#//Node">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-core.ecore#//Node/facets"/>
-      <genOperations ecoreOperation="il-core.ecore#//Node/getParent"/>
-      <genOperations ecoreOperation="il-core.ecore#//Node/isChild"/>
-      <genOperations ecoreOperation="il-core.ecore#//Node/getFacet">
-        <genParameters ecoreParameter="il-core.ecore#//Node/getFacet/klass"/>
-        <genTypeParameters ecoreTypeParameter="il-core.ecore#//Node/getFacet/F"/>
-      </genOperations>
-    </genClasses>
     <genClasses ecoreClass="il-core.ecore#//Object"/>
     <genClasses image="false" ecoreClass="il-core.ecore#//ObjectContainer">
       <genTypeParameters ecoreTypeParameter="il-core.ecore#//ObjectContainer/T"/>
@@ -302,6 +292,16 @@
     </nestedGenPackages>
     <nestedGenPackages prefix="IntegratedLanguageCoreTerm" basePackage="org.smeup.sys.il.core"
         disposableProviderFactory="true" adapterFactory="false" ecorePackage="il-core.ecore#//term">
+      <genClasses image="false" ecoreClass="il-core.ecore#//term/NamedNode"/>
+      <genClasses image="false" ecoreClass="il-core.ecore#//term/Node">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-core.ecore#//term/Node/facets"/>
+        <genOperations ecoreOperation="il-core.ecore#//term/Node/getParent"/>
+        <genOperations ecoreOperation="il-core.ecore#//term/Node/isChild"/>
+        <genOperations ecoreOperation="il-core.ecore#//term/Node/getFacet">
+          <genParameters ecoreParameter="il-core.ecore#//term/Node/getFacet/klass"/>
+          <genTypeParameters ecoreTypeParameter="il-core.ecore#//term/Node/getFacet/F"/>
+        </genOperations>
+      </genClasses>
       <genClasses image="false" ecoreClass="il-core.ecore#//term/Term">
         <genOperations ecoreOperation="il-core.ecore#//term/Term/getText"/>
         <genOperations ecoreOperation="il-core.ecore#//term/Term/getURI"/>

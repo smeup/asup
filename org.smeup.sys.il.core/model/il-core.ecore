@@ -4,24 +4,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Nameable" abstract="true" interface="true">
     <eOperations name="getName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="NamedNode" abstract="true" eSuperTypes="#//Node #//Nameable"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Node" abstract="true">
-    <eOperations name="getParent" lowerBound="1" eType="#//Node"/>
-    <eOperations name="isChild" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="getFacet">
-      <eGenericType eTypeParameter="#//Node/getFacet/F"/>
-      <eTypeParameters name="F">
-        <eBounds eClassifier="#//meta/Facet"/>
-      </eTypeParameters>
-      <eParameters name="klass" lowerBound="1">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-          <eTypeArguments eTypeParameter="#//Node/getFacet/F"/>
-        </eGenericType>
-      </eParameters>
-    </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="facets" upperBound="-1"
-        eType="#//meta/Facet" containment="true"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Object"/>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectContainer" abstract="true" eSuperTypes="#//Object">
     <eTypeParameters name="T">
@@ -452,8 +434,26 @@
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="term" nsURI="http://www.smeup.org/asup/il/core/term" nsPrefix="il-core-term">
+    <eClassifiers xsi:type="ecore:EClass" name="NamedNode" abstract="true" eSuperTypes="#//term/Node #//Nameable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Node" abstract="true" eSuperTypes="#//Object">
+      <eOperations name="getParent" lowerBound="1" eType="#//term/Node"/>
+      <eOperations name="isChild" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eOperations name="getFacet">
+        <eGenericType eTypeParameter="#//term/Node/getFacet/F"/>
+        <eTypeParameters name="F">
+          <eBounds eClassifier="#//meta/Facet"/>
+        </eTypeParameters>
+        <eParameters name="klass" lowerBound="1">
+          <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+            <eTypeArguments eTypeParameter="#//term/Node/getFacet/F"/>
+          </eGenericType>
+        </eParameters>
+      </eOperations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="facets" upperBound="-1"
+          eType="#//meta/Facet" containment="true"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Term" abstract="true" interface="true"
-        eSuperTypes="#//NamedNode">
+        eSuperTypes="#//term/NamedNode">
       <eOperations name="getText" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eOperations name="getURI" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaURI"/>
     </eClassifiers>

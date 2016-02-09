@@ -8,7 +8,8 @@
 package org.smeup.sys.rt.core;
 
 import java.util.List;
-import org.smeup.sys.il.core.QNode;
+
+import org.smeup.sys.il.core.term.QNode;
 
 /**
  * <!-- begin-user-doc -->

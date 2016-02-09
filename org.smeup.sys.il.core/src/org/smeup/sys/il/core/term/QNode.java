@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core;
+package org.smeup.sys.il.core.term;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,7 +19,7 @@ import org.smeup.sys.il.core.meta.QFacet;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.core.QNode#getFacets <em>Facets</em>}</li>
+ * <li>{@link org.smeup.sys.il.core.term.QNode#getFacets <em>Facets</em>}</li>
  * </ul>
  * </p>
  *

@@ -64,7 +64,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//Expression" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Node">
+  <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//term/Node">
     <eOperations name="accept">
       <eParameters name="visitor" lowerBound="1" eType="#//ExpressionVisitor"/>
     </eOperations>

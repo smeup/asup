@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
+import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -304,7 +305,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REF__FACETS = QIntegratedLanguageCorePackage.NODE__FACETS;
+	int SERVICE_REF__FACETS = QIntegratedLanguageCoreTermPackage.NODE__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
@@ -313,7 +314,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REF__CLASS_NAME = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 0;
+	int SERVICE_REF__CLASS_NAME = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Interface Name</b></em>' attribute.
@@ -322,7 +323,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REF__INTERFACE_NAME = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 1;
+	int SERVICE_REF__INTERFACE_NAME = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Remote Export</b></em>' attribute.
@@ -331,7 +332,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REF__REMOTE_EXPORT = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 2;
+	int SERVICE_REF__REMOTE_EXPORT = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute.
@@ -340,7 +341,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REF__STATUS = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 3;
+	int SERVICE_REF__STATUS = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Services</b></em>' containment reference list.
@@ -349,7 +350,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REF__SERVICES = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 4;
+	int SERVICE_REF__SERVICES = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Service Ref</em>' class.
@@ -358,7 +359,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REF_FEATURE_COUNT = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 5;
+	int SERVICE_REF_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.rt.core.impl.ServiceHookImpl <em>Service Hook</em>}' class.

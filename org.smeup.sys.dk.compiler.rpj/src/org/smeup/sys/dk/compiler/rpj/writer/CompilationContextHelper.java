@@ -15,7 +15,7 @@ package org.smeup.sys.dk.compiler.rpj.writer;
 import java.util.Date;
 
 import org.smeup.sys.dk.compiler.QCompilationUnit;
-import org.smeup.sys.il.core.QNamedNode;
+import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
 import org.smeup.sys.il.data.def.QPointerDef;
 import org.smeup.sys.il.data.term.QDataTerm;

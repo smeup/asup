@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.il.data.term;
 
-import org.smeup.sys.il.core.QNamedNode;
+import org.smeup.sys.il.core.term.QNamedNode;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

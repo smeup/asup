@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
@@ -23,6 +24,8 @@ import org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage;
 import org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermFactory;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
+import org.smeup.sys.il.core.term.QNamedNode;
+import org.smeup.sys.il.core.term.QNode;
 import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.core.term.QTermContainer;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
@@ -39,6 +42,20 @@ import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
  * @generated
  */
 public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implements QIntegratedLanguageCoreTermPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass namedNodeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass nodeEClass = null;
+
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -138,6 +155,33 @@ public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getNamedNode() {
+		return namedNodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getNode() {
+		return nodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNode_Facets() {
+		return (EReference)nodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -182,6 +226,11 @@ public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implemen
 		isCreated = true;
 
 		// Create classes and their features
+		namedNodeEClass = createEClass(NAMED_NODE);
+
+		nodeEClass = createEClass(NODE);
+		createEReference(nodeEClass, NODE__FACETS);
+
 		termEClass = createEClass(TERM);
 
 		termContainerEClass = createEClass(TERM_CONTAINER);
@@ -211,6 +260,7 @@ public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implemen
 
 		// Obtain other dependent packages
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
+		QIntegratedLanguageCoreMetaPackage theIntegratedLanguageCoreMetaPackage = (QIntegratedLanguageCoreMetaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 
 		// Create type parameters
@@ -221,9 +271,32 @@ public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implemen
 		termContainerEClass_T.getEBounds().add(g1);
 
 		// Add supertypes to classes
-		termEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNamedNode());
+		namedNodeEClass.getESuperTypes().add(this.getNode());
+		namedNodeEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNameable());
+		nodeEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		termEClass.getESuperTypes().add(this.getNamedNode());
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(namedNodeEClass, QNamedNode.class, "NamedNode", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(nodeEClass, QNode.class, "Node", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getNode_Facets(), theIntegratedLanguageCoreMetaPackage.getFacet(), null, "facets", null, 0, -1, QNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(nodeEClass, this.getNode(), "getParent", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(nodeEClass, ecorePackage.getEBoolean(), "isChild", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		EOperation op = addEOperation(nodeEClass, null, "getFacet", 0, 1, IS_UNIQUE, IS_ORDERED);
+		ETypeParameter t1 = addETypeParameter(op, "F");
+		g1 = createEGenericType(theIntegratedLanguageCoreMetaPackage.getFacet());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		EGenericType g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		initEOperation(op, g1);
+
 		initEClass(termEClass, QTerm.class, "Term", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(termEClass, ecorePackage.getEString(), "getText", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -232,7 +305,7 @@ public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implemen
 
 		initEClass(termContainerEClass, QTermContainer.class, "TermContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = addEOperation(termContainerEClass, null, "getTerms", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(termContainerEClass, null, "getTerms", 0, -1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(termContainerEClass_T);
 		initEOperation(op, g1);
 	}

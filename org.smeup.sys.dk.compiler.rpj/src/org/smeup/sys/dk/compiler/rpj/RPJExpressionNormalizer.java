@@ -15,7 +15,7 @@ import javax.inject.Inject;
 
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.rpj.writer.CompilationContextHelper;
-import org.smeup.sys.il.core.QNamedNode;
+import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.expr.AtomicType;
 import org.smeup.sys.il.expr.QArithmeticExpression;

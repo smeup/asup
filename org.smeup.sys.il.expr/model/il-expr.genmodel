@@ -5,7 +5,7 @@
     modelName="As.UP Integrated Language Expression" modelPluginClass="" rootExtendsInterface=""
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" suppressEMFTypes="true"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
-    language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
+    language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//data"
     interfaceNamePattern="Q{0}" classNamePattern="" importOrganizing="true">
   <foreignModel>il-expr.ecore</foreignModel>
   <genPackages prefix="IntegratedLanguageExpression" basePackage="org.smeup.sys.il"
@@ -88,7 +88,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-expr.ecore#//CompoundTermExpression/elements"/>
     </genClasses>
     <genClasses ecoreClass="il-expr.ecore#//Expression">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-expr.ecore#//Expression/expressionFormat"/>
       <genOperations ecoreOperation="il-expr.ecore#//Expression/accept">
         <genParameters ecoreParameter="il-expr.ecore#//Expression/accept/visitor"/>
       </genOperations>

@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-import org.smeup.sys.il.core.impl.NamedNodeImpl;
+import org.smeup.sys.il.core.term.impl.NamedNodeImpl;
 import org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage;
 import org.smeup.sys.il.esam.QKeyListTerm;
 

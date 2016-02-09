@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.il.flow;
 
-import org.smeup.sys.il.core.QNamedNode;
+import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.core.term.QTerm;
 
 /**

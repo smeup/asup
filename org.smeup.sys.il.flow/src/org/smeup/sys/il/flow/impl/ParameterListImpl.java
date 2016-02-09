@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-import org.smeup.sys.il.core.impl.NodeImpl;
+import org.smeup.sys.il.core.term.impl.NodeImpl;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
 import org.smeup.sys.il.flow.QParameterList;
 

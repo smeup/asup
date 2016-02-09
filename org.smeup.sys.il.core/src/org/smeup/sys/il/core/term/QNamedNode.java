@@ -5,14 +5,16 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core;
+package org.smeup.sys.il.core.term;
+
+import org.smeup.sys.il.core.QNameable;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Named Node</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getNamedNode()
+ * @see org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage#getNamedNode()
  * @model abstract="true"
  * @generated
  */

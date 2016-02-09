@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -94,7 +95,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXPRESSION__FACETS = QIntegratedLanguageCorePackage.NODE__FACETS;
+	int EXPRESSION__FACETS = QIntegratedLanguageCoreTermPackage.NODE__FACETS;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.impl.ArithmeticExpressionImpl <em>Arithmetic Expression</em>}' class.
@@ -192,7 +193,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXPRESSION_FEATURE_COUNT = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 0;
+	int EXPRESSION_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.

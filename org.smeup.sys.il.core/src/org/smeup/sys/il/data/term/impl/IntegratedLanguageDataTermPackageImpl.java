@@ -650,7 +650,7 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 		rangeEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		remapEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		specialEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
-		specialElementEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNamedNode());
+		specialElementEClass.getESuperTypes().add(theIntegratedLanguageCoreTermPackage.getNamedNode());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataTermEClass, QDataTerm.class, "DataTerm", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

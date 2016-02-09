@@ -19,8 +19,6 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.QNameable;
-import org.smeup.sys.il.core.QNamedNode;
-import org.smeup.sys.il.core.QNode;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectContainer;
 import org.smeup.sys.il.core.QObjectIterator;
@@ -58,18 +56,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass nameableEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass namedNodeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass nodeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -230,33 +216,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	@Override
-	public EClass getNamedNode() {
-		return namedNodeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getNode() {
-		return nodeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getNode_Facets() {
-		return (EReference)nodeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getObject() {
 		return objectEClass;
 	}
@@ -371,11 +330,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		// Create classes and their features
 		nameableEClass = createEClass(NAMEABLE);
 
-		namedNodeEClass = createEClass(NAMED_NODE);
-
-		nodeEClass = createEClass(NODE);
-		createEReference(nodeEClass, NODE__FACETS);
-
 		objectEClass = createEClass(OBJECT);
 
 		objectContainerEClass = createEClass(OBJECT_CONTAINER);
@@ -445,8 +399,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		objectIteratorEClass_T.getEBounds().add(g1);
 
 		// Add supertypes to classes
-		namedNodeEClass.getESuperTypes().add(this.getNode());
-		namedNodeEClass.getESuperTypes().add(this.getNameable());
 		objectContainerEClass.getESuperTypes().add(this.getObject());
 		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaIterator());
 		EGenericType g2 = createEGenericType(objectIteratorEClass_T);
@@ -467,33 +419,13 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 		addEOperation(nameableEClass, ecorePackage.getEString(), "getName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(namedNodeEClass, QNamedNode.class, "NamedNode", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(nodeEClass, QNode.class, "Node", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNode_Facets(), theIntegratedLanguageCoreMetaPackage.getFacet(), null, "facets", null, 0, -1, QNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(nodeEClass, this.getNode(), "getParent", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(nodeEClass, ecorePackage.getEBoolean(), "isChild", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		EOperation op = addEOperation(nodeEClass, null, "getFacet", 0, 1, IS_UNIQUE, IS_ORDERED);
-		ETypeParameter t1 = addETypeParameter(op, "F");
-		g1 = createEGenericType(theIntegratedLanguageCoreMetaPackage.getFacet());
-		t1.getEBounds().add(g1);
-		g1 = createEGenericType(ecorePackage.getEJavaClass());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(t1);
-		initEOperation(op, g1);
-
 		initEClass(objectEClass, QObject.class, "Object", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(objectContainerEClass, QObjectContainer.class, "ObjectContainer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(objectContainerEClass_T);
 		initEReference(getObjectContainer_Contents(), g1, null, "contents", null, 0, -1, QObjectContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(objectContainerEClass, null, "lookupByName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(objectContainerEClass, null, "lookupByName", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(objectContainerEClass_T);
 		initEOperation(op, g1);
@@ -532,7 +464,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		initEClass(objectRegistryFactoryEClass, QObjectRegistryFactory.class, "ObjectRegistryFactory", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(objectRegistryFactoryEClass, null, "createObjectRegistry", 1, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "T");
+		ETypeParameter t1 = addETypeParameter(op, "T");
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
