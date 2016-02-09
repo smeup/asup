@@ -17,7 +17,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.smeup.sys.il.core.term.impl.NodeImpl;
+import org.smeup.sys.il.core.QObjectRegistryKey;
+import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.rt.core.QRuntimeCorePackage;
 import org.smeup.sys.rt.core.QServiceRef;
 import org.smeup.sys.rt.core.ServiceStatus;
@@ -32,6 +33,7 @@ import org.smeup.sys.rt.core.ServiceStatus;
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getClassName <em>Class Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getInterfaceName <em>Interface Name</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getRegistryKey <em>Registry Key</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#isRemoteExport <em>Remote Export</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getServices <em>Services</em>}</li>
@@ -39,7 +41,7 @@ import org.smeup.sys.rt.core.ServiceStatus;
  *
  * @generated
  */
-public class ServiceRefImpl extends NodeImpl implements QServiceRef {
+public class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 	/**
 	 * 
 	 */
@@ -84,6 +86,16 @@ public class ServiceRefImpl extends NodeImpl implements QServiceRef {
 	 * @ordered
 	 */
 	protected String interfaceName = INTERFACE_NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getRegistryKey() <em>Registry Key</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRegistryKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected QObjectRegistryKey registryKey;
 
 	/**
 	 * The default value of the '{@link #isRemoteExport() <em>Remote Export</em>}' attribute.
@@ -205,6 +217,49 @@ public class ServiceRefImpl extends NodeImpl implements QServiceRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public QObjectRegistryKey getRegistryKey() {
+		return registryKey;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetRegistryKey(QObjectRegistryKey newRegistryKey, NotificationChain msgs) {
+		QObjectRegistryKey oldRegistryKey = registryKey;
+		registryKey = newRegistryKey;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY, oldRegistryKey, newRegistryKey);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRegistryKey(QObjectRegistryKey newRegistryKey) {
+		if (newRegistryKey != registryKey) {
+			NotificationChain msgs = null;
+			if (registryKey != null)
+				msgs = ((InternalEObject)registryKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY, null, msgs);
+			if (newRegistryKey != null)
+				msgs = ((InternalEObject)newRegistryKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY, null, msgs);
+			msgs = basicSetRegistryKey(newRegistryKey, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY, newRegistryKey, newRegistryKey));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public boolean isRemoteExport() {
 		return remoteExport;
@@ -267,6 +322,8 @@ public class ServiceRefImpl extends NodeImpl implements QServiceRef {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY:
+				return basicSetRegistryKey(null, msgs);
 			case QRuntimeCorePackage.SERVICE_REF__SERVICES:
 				return ((InternalEList<?>)getServices()).basicRemove(otherEnd, msgs);
 		}
@@ -285,6 +342,8 @@ public class ServiceRefImpl extends NodeImpl implements QServiceRef {
 				return getClassName();
 			case QRuntimeCorePackage.SERVICE_REF__INTERFACE_NAME:
 				return getInterfaceName();
+			case QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY:
+				return getRegistryKey();
 			case QRuntimeCorePackage.SERVICE_REF__REMOTE_EXPORT:
 				return isRemoteExport();
 			case QRuntimeCorePackage.SERVICE_REF__STATUS:
@@ -309,6 +368,9 @@ public class ServiceRefImpl extends NodeImpl implements QServiceRef {
 				return;
 			case QRuntimeCorePackage.SERVICE_REF__INTERFACE_NAME:
 				setInterfaceName((String)newValue);
+				return;
+			case QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY:
+				setRegistryKey((QObjectRegistryKey)newValue);
 				return;
 			case QRuntimeCorePackage.SERVICE_REF__REMOTE_EXPORT:
 				setRemoteExport((Boolean)newValue);
@@ -338,6 +400,9 @@ public class ServiceRefImpl extends NodeImpl implements QServiceRef {
 			case QRuntimeCorePackage.SERVICE_REF__INTERFACE_NAME:
 				setInterfaceName(INTERFACE_NAME_EDEFAULT);
 				return;
+			case QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY:
+				setRegistryKey((QObjectRegistryKey)null);
+				return;
 			case QRuntimeCorePackage.SERVICE_REF__REMOTE_EXPORT:
 				setRemoteExport(REMOTE_EXPORT_EDEFAULT);
 				return;
@@ -363,6 +428,8 @@ public class ServiceRefImpl extends NodeImpl implements QServiceRef {
 				return CLASS_NAME_EDEFAULT == null ? className != null : !CLASS_NAME_EDEFAULT.equals(className);
 			case QRuntimeCorePackage.SERVICE_REF__INTERFACE_NAME:
 				return INTERFACE_NAME_EDEFAULT == null ? interfaceName != null : !INTERFACE_NAME_EDEFAULT.equals(interfaceName);
+			case QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY:
+				return registryKey != null;
 			case QRuntimeCorePackage.SERVICE_REF__REMOTE_EXPORT:
 				return remoteExport != REMOTE_EXPORT_EDEFAULT;
 			case QRuntimeCorePackage.SERVICE_REF__STATUS:

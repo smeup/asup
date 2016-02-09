@@ -29,6 +29,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.core.QObjectRegistryKey;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.e4.E4ContextRootImpl;
@@ -40,7 +41,6 @@ import org.smeup.sys.rt.core.ComponentStarting;
 import org.smeup.sys.rt.core.QApplication;
 import org.smeup.sys.rt.core.QApplicationComponent;
 import org.smeup.sys.rt.core.QApplicationModule;
-import org.smeup.sys.rt.core.QPlugin;
 import org.smeup.sys.rt.core.QServiceHook;
 import org.smeup.sys.rt.core.QServiceRef;
 import org.smeup.sys.rt.core.ServiceRegistering;
@@ -226,14 +226,14 @@ public class E4ApplicationStarter {
 		// register on context
 		Dictionary<String, Object> dictionary = new Hashtable<String, Object>();
 
-		if (serviceRef.getFacet(QPlugin.class) != null) {
-			QPlugin plugin = serviceRef.getFacet(QPlugin.class);
+		if (serviceRef.getRegistryKey() != null) {
+			QObjectRegistryKey plugin = serviceRef.getRegistryKey();
 
 			// register on context
-			dictionary.put("org.smeup.sys.rt.core.plugin.name", plugin.getName());
-			dictionary.put("org.smeup.sys.rt.core.plugin.text", plugin.getText());
-			dictionary.put("org.smeup.sys.rt.core.plugin.vendor", plugin.getVendor());
-			dictionary.put("org.smeup.sys.rt.core.plugin.version", plugin.getVersion());
+			dictionary.put("org.smeup.sys.il.core.registry.name", plugin.getName());
+			dictionary.put("org.smeup.sys.il.core.registry.text", plugin.getText());
+			dictionary.put("org.smeup.sys.il.core.registry.vendor", plugin.getVendor());
+			dictionary.put("org.smeup.sys.il.core.registry.version", plugin.getVersion());
 
 		}
 

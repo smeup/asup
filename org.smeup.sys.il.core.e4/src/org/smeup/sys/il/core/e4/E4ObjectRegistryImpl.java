@@ -36,7 +36,7 @@ public class E4ObjectRegistryImpl<T> implements QObjectRegistry<T> {
 	public T lookup(String name) {
 
 		// search plugin
-		String serviceFilter = "(org.smeup.sys.rt.core.plugin.name=" + name + ")";
+		String serviceFilter = "(org.smeup.sys.il.core.registry.name=" + name + ")";
 
 		Collection<ServiceReference<T>> pluginReferences;
 		try {
@@ -86,7 +86,7 @@ public class E4ObjectRegistryImpl<T> implements QObjectRegistry<T> {
 	public T lookupByVendorVersion(String vendor, String version) {
 
 		// search plugin
-		String serviceFilter = "(&(org.smeup.sys.rt.core.plugin.vendor=" + vendor + ")" + "(org.smeup.sys.rt.core.plugin.version=" + version + "))";
+		String serviceFilter = "(&(org.smeup.sys.il.core.registry.vendor=" + vendor + ")" + "(org.smeup.sys.il.core.registry.version=" + version + "))";
 
 		Collection<ServiceReference<T>> pluginReferences;
 		try {

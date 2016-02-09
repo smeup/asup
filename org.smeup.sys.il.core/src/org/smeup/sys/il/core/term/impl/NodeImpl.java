@@ -15,9 +15,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.core.meta.QFacet;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.il.core.term.QNode;
@@ -34,7 +34,7 @@ import org.smeup.sys.il.core.term.QNode;
  *
  * @generated
  */
-public abstract class NodeImpl extends ObjectImpl implements QNode {
+public abstract class NodeImpl extends MinimalEObjectImpl.Container implements QNode {
 	/**
 	 *
 	 */

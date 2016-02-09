@@ -13,8 +13,6 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
-import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -299,22 +297,13 @@ public interface QRuntimeCorePackage extends EPackage {
 	int SERVICE_REF = 8;
 
 	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_REF__FACETS = QIntegratedLanguageCoreTermPackage.NODE__FACETS;
-
-	/**
 	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REF__CLASS_NAME = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 0;
+	int SERVICE_REF__CLASS_NAME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Interface Name</b></em>' attribute.
@@ -323,7 +312,16 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REF__INTERFACE_NAME = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 1;
+	int SERVICE_REF__INTERFACE_NAME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Registry Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_REF__REGISTRY_KEY = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Remote Export</b></em>' attribute.
@@ -332,7 +330,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REF__REMOTE_EXPORT = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 2;
+	int SERVICE_REF__REMOTE_EXPORT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute.
@@ -341,7 +339,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REF__STATUS = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 3;
+	int SERVICE_REF__STATUS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Services</b></em>' containment reference list.
@@ -350,7 +348,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REF__SERVICES = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 4;
+	int SERVICE_REF__SERVICES = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Service Ref</em>' class.
@@ -359,7 +357,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REF_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 5;
+	int SERVICE_REF_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.rt.core.impl.ServiceHookImpl <em>Service Hook</em>}' class.
@@ -370,15 +368,6 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 */
 	int SERVICE_HOOK = 7;
-
-	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_HOOK__FACETS = SERVICE_REF__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
@@ -397,6 +386,15 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICE_HOOK__INTERFACE_NAME = SERVICE_REF__INTERFACE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Registry Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_HOOK__REGISTRY_KEY = SERVICE_REF__REGISTRY_KEY;
 
 	/**
 	 * The feature id for the '<em><b>Remote Export</b></em>' attribute.
@@ -435,61 +433,6 @@ public interface QRuntimeCorePackage extends EPackage {
 	int SERVICE_HOOK_FEATURE_COUNT = SERVICE_REF_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.rt.core.impl.PluginImpl <em>Plugin</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.rt.core.impl.PluginImpl
-	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getPlugin()
-	 * @generated
-	 */
-	int PLUGIN = 9;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLUGIN__NAME = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLUGIN__TEXT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Version</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLUGIN__VERSION = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Vendor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLUGIN__VENDOR = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>Plugin</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLUGIN_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 4;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.rt.core.ServiceStatus <em>Service Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -497,7 +440,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getServiceStatus()
 	 * @generated
 	 */
-	int SERVICE_STATUS = 10;
+	int SERVICE_STATUS = 9;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.rt.core.QApplication <em>Application</em>}'.
@@ -722,6 +665,17 @@ public interface QRuntimeCorePackage extends EPackage {
 	EAttribute getServiceRef_InterfaceName();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.smeup.sys.rt.core.QServiceRef#getRegistryKey <em>Registry Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Registry Key</em>'.
+	 * @see org.smeup.sys.rt.core.QServiceRef#getRegistryKey()
+	 * @see #getServiceRef()
+	 * @generated
+	 */
+	EReference getServiceRef_RegistryKey();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.core.QServiceRef#isRemoteExport <em>Remote Export</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -753,60 +707,6 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getServiceRef_Services();
-
-	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.rt.core.QPlugin <em>Plugin</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Plugin</em>'.
-	 * @see org.smeup.sys.rt.core.QPlugin
-	 * @generated
-	 */
-	EClass getPlugin();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.core.QPlugin#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.smeup.sys.rt.core.QPlugin#getName()
-	 * @see #getPlugin()
-	 * @generated
-	 */
-	EAttribute getPlugin_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.core.QPlugin#getText <em>Text</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see org.smeup.sys.rt.core.QPlugin#getText()
-	 * @see #getPlugin()
-	 * @generated
-	 */
-	EAttribute getPlugin_Text();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.core.QPlugin#getVersion <em>Version</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Version</em>'.
-	 * @see org.smeup.sys.rt.core.QPlugin#getVersion()
-	 * @see #getPlugin()
-	 * @generated
-	 */
-	EAttribute getPlugin_Version();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.core.QPlugin#getVendor <em>Vendor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Vendor</em>'.
-	 * @see org.smeup.sys.rt.core.QPlugin#getVendor()
-	 * @see #getPlugin()
-	 * @generated
-	 */
-	EAttribute getPlugin_Vendor();
 
 	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.rt.core.ServiceStatus <em>Service Status</em>}'.
@@ -1028,6 +928,14 @@ public interface QRuntimeCorePackage extends EPackage {
 		EAttribute SERVICE_REF__INTERFACE_NAME = eINSTANCE.getServiceRef_InterfaceName();
 
 		/**
+		 * The meta object literal for the '<em><b>Registry Key</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SERVICE_REF__REGISTRY_KEY = eINSTANCE.getServiceRef_RegistryKey();
+
+		/**
 		 * The meta object literal for the '<em><b>Remote Export</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1050,48 +958,6 @@ public interface QRuntimeCorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference SERVICE_REF__SERVICES = eINSTANCE.getServiceRef_Services();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.rt.core.impl.PluginImpl <em>Plugin</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.rt.core.impl.PluginImpl
-		 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getPlugin()
-		 * @generated
-		 */
-		EClass PLUGIN = eINSTANCE.getPlugin();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PLUGIN__NAME = eINSTANCE.getPlugin_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PLUGIN__TEXT = eINSTANCE.getPlugin_Text();
-
-		/**
-		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PLUGIN__VERSION = eINSTANCE.getPlugin_Version();
-
-		/**
-		 * The meta object literal for the '<em><b>Vendor</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PLUGIN__VENDOR = eINSTANCE.getPlugin_Vendor();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.rt.core.ServiceStatus <em>Service Status</em>}' enum.

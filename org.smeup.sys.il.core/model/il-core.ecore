@@ -63,6 +63,12 @@
       </eParameters>
     </eOperations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectRegistryKey" eSuperTypes="#//Object">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vendor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Thread" abstract="true" interface="true"
       eSuperTypes="#//Object">
     <eOperations name="checkRunnable" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -435,7 +441,7 @@
   </eSubpackages>
   <eSubpackages name="term" nsURI="http://www.smeup.org/asup/il/core/term" nsPrefix="il-core-term">
     <eClassifiers xsi:type="ecore:EClass" name="NamedNode" abstract="true" eSuperTypes="#//term/Node #//Nameable"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Node" abstract="true" eSuperTypes="#//Object">
+    <eClassifiers xsi:type="ecore:EClass" name="Node" abstract="true">
       <eOperations name="getParent" lowerBound="1" eType="#//term/Node"/>
       <eOperations name="isChild" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eOperations name="getFacet">

@@ -10,7 +10,6 @@ package org.smeup.sys.il.core.term;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -73,7 +72,7 @@ public interface QIntegratedLanguageCoreTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__FACETS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
+	int NODE__FACETS = 0;
 
 	/**
 	 * The number of structural features of the '<em>Node</em>' class.
@@ -82,7 +81,7 @@ public interface QIntegratedLanguageCoreTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
+	int NODE_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.term.impl.NamedNodeImpl <em>Named Node</em>}' class.

@@ -273,7 +273,6 @@ public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implemen
 		// Add supertypes to classes
 		namedNodeEClass.getESuperTypes().add(this.getNode());
 		namedNodeEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNameable());
-		nodeEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		termEClass.getESuperTypes().add(this.getNamedNode());
 
 		// Initialize classes and features; add operations and parameters

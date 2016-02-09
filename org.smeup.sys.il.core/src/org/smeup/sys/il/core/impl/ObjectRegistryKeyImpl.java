@@ -5,18 +5,13 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.rt.core.impl;
+package org.smeup.sys.il.core.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.smeup.sys.il.core.meta.impl.FacetImpl;
-
-import org.smeup.sys.rt.core.QPlugin;
-import org.smeup.sys.rt.core.QRuntimeCorePackage;
+import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+import org.smeup.sys.il.core.QObjectRegistryKey;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,15 +21,15 @@ import org.smeup.sys.rt.core.QRuntimeCorePackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.rt.core.impl.PluginImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.impl.PluginImpl#getText <em>Text</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.impl.PluginImpl#getVersion <em>Version</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.impl.PluginImpl#getVendor <em>Vendor</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl#getText <em>Text</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl#getVersion <em>Version</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl#getVendor <em>Vendor</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class PluginImpl extends FacetImpl implements QPlugin {
+public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistryKey {
 	/**
 	 * 
 	 */
@@ -125,7 +120,7 @@ public class PluginImpl extends FacetImpl implements QPlugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PluginImpl() {
+	protected ObjectRegistryKeyImpl() {
 		super();
 	}
 
@@ -136,7 +131,7 @@ public class PluginImpl extends FacetImpl implements QPlugin {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QRuntimeCorePackage.Literals.PLUGIN;
+		return QIntegratedLanguageCorePackage.Literals.OBJECT_REGISTRY_KEY;
 	}
 
 	/**
@@ -157,7 +152,7 @@ public class PluginImpl extends FacetImpl implements QPlugin {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.PLUGIN__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__NAME, oldName, name));
 	}
 
 	/**
@@ -178,7 +173,7 @@ public class PluginImpl extends FacetImpl implements QPlugin {
 		String oldText = text;
 		text = newText;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.PLUGIN__TEXT, oldText, text));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__TEXT, oldText, text));
 	}
 
 	/**
@@ -199,7 +194,7 @@ public class PluginImpl extends FacetImpl implements QPlugin {
 		String oldVersion = version;
 		version = newVersion;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.PLUGIN__VERSION, oldVersion, version));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION, oldVersion, version));
 	}
 
 	/**
@@ -220,7 +215,7 @@ public class PluginImpl extends FacetImpl implements QPlugin {
 		String oldVendor = vendor;
 		vendor = newVendor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.PLUGIN__VENDOR, oldVendor, vendor));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VENDOR, oldVendor, vendor));
 	}
 
 	/**
@@ -231,13 +226,13 @@ public class PluginImpl extends FacetImpl implements QPlugin {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QRuntimeCorePackage.PLUGIN__NAME:
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__NAME:
 				return getName();
-			case QRuntimeCorePackage.PLUGIN__TEXT:
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__TEXT:
 				return getText();
-			case QRuntimeCorePackage.PLUGIN__VERSION:
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION:
 				return getVersion();
-			case QRuntimeCorePackage.PLUGIN__VENDOR:
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VENDOR:
 				return getVendor();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -251,16 +246,16 @@ public class PluginImpl extends FacetImpl implements QPlugin {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QRuntimeCorePackage.PLUGIN__NAME:
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__NAME:
 				setName((String)newValue);
 				return;
-			case QRuntimeCorePackage.PLUGIN__TEXT:
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__TEXT:
 				setText((String)newValue);
 				return;
-			case QRuntimeCorePackage.PLUGIN__VERSION:
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION:
 				setVersion((String)newValue);
 				return;
-			case QRuntimeCorePackage.PLUGIN__VENDOR:
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VENDOR:
 				setVendor((String)newValue);
 				return;
 		}
@@ -275,16 +270,16 @@ public class PluginImpl extends FacetImpl implements QPlugin {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QRuntimeCorePackage.PLUGIN__NAME:
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case QRuntimeCorePackage.PLUGIN__TEXT:
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__TEXT:
 				setText(TEXT_EDEFAULT);
 				return;
-			case QRuntimeCorePackage.PLUGIN__VERSION:
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION:
 				setVersion(VERSION_EDEFAULT);
 				return;
-			case QRuntimeCorePackage.PLUGIN__VENDOR:
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VENDOR:
 				setVendor(VENDOR_EDEFAULT);
 				return;
 		}
@@ -299,13 +294,13 @@ public class PluginImpl extends FacetImpl implements QPlugin {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QRuntimeCorePackage.PLUGIN__NAME:
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case QRuntimeCorePackage.PLUGIN__TEXT:
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__TEXT:
 				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
-			case QRuntimeCorePackage.PLUGIN__VERSION:
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION:
 				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
-			case QRuntimeCorePackage.PLUGIN__VENDOR:
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VENDOR:
 				return VENDOR_EDEFAULT == null ? vendor != null : !VENDOR_EDEFAULT.equals(vendor);
 		}
 		return super.eIsSet(featureID);
@@ -333,4 +328,4 @@ public class PluginImpl extends FacetImpl implements QPlugin {
 		return result.toString();
 	}
 
-} //PluginImpl
+} //ObjectRegistryKeyImpl

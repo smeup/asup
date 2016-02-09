@@ -118,15 +118,10 @@
     <genClasses ecoreClass="rt-core.ecore#//ServiceRef">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ServiceRef/className"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ServiceRef/interfaceName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rt-core.ecore#//ServiceRef/registryKey"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ServiceRef/remoteExport"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ServiceRef/status"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rt-core.ecore#//ServiceRef/services"/>
-    </genClasses>
-    <genClasses ecoreClass="rt-core.ecore#//Plugin">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//Plugin/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//Plugin/text"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//Plugin/version"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//Plugin/vendor"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

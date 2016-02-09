@@ -17,6 +17,7 @@ import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.QObjectRegistryKey;
 import org.smeup.sys.il.core.ThreadStatus;
 
 /**
@@ -63,6 +64,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 		switch (eClass.getClassifierID()) {
 			case QIntegratedLanguageCorePackage.OBJECT: return (EObject)createObject();
 			case QIntegratedLanguageCorePackage.OBJECT_NAMEABLE: return (EObject)createObjectNameable();
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY: return (EObject)createObjectRegistryKey();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -114,6 +116,16 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 	public QObjectNameable createObjectNameable() {
 		ObjectNameableImpl objectNameable = new ObjectNameableImpl();
 		return objectNameable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QObjectRegistryKey createObjectRegistryKey() {
+		ObjectRegistryKeyImpl objectRegistryKey = new ObjectRegistryKeyImpl();
+		return objectRegistryKey;
 	}
 
 	/**

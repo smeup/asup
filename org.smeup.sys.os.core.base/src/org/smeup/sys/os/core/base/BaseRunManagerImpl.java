@@ -17,7 +17,6 @@ import javax.inject.Inject;
 import org.smeup.sys.il.core.QObjectRegistry;
 import org.smeup.sys.il.core.QObjectRegistryFactory;
 import org.smeup.sys.os.core.QRunManager;
-import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobManager;
 
@@ -49,18 +48,15 @@ public class BaseRunManagerImpl implements QRunManager {
 	@Override
 	public <S> S locate(QJobCapability capability, Class<S> klass) {
 
-		QJob job = null;
+		QObjectRegistry<S> objectRegistry = objectRegistryFactory.createObjectRegistry(klass);
 
-		for(QJobManager jm: jobRegistry.list()) {
-			job = jm.lookup(capability);
-			if(job != null)
-				break;
+		S object = null;
+		for(S o: objectRegistry.list()) {
+			object = o;
+			break;
 		}
 		
-		if(job == null)
-			return null;
-		
-		return job.getContext().get(klass);
+		return object;
 	}
 
 }
