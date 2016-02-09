@@ -18,10 +18,10 @@ import org.smeup.sys.il.expr.QTermExpression;
  * <em><b>Term Expression</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.expr.impl.TermExpressionImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

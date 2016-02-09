@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.il.expr;
 
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
+import org.smeup.sys.il.core.QObjectRegistry;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -18,7 +18,7 @@ import org.smeup.sys.il.core.ctx.QPluginRegistry;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QExpressionParserRegistry extends QPluginRegistry<QExpressionParser> {
+public interface QExpressionParserRegistry extends QObjectRegistry<QExpressionParser> {
 
 	public static String DEFAULT_PARSER = "ASUP";
 } // QExpressionParserRegistry

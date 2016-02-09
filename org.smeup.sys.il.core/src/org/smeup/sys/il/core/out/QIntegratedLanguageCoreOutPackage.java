@@ -9,7 +9,7 @@ package org.smeup.sys.il.core.out;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
+import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -107,7 +107,7 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_WRITER_FACTORY_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.PLUGIN_REGISTRY_FEATURE_COUNT + 0;
+	int OBJECT_WRITER_FACTORY_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_REGISTRY_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.out.QOutputManager <em>Output Manager</em>}' class.

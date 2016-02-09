@@ -52,6 +52,35 @@
     <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectNameable" eSuperTypes="#//Object #//Nameable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectRegistry" abstract="true" interface="true">
+    <eTypeParameters name="T"/>
+    <eOperations name="lookup" lowerBound="1">
+      <eGenericType eTypeParameter="#//ObjectRegistry/T"/>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="list" lowerBound="1" upperBound="-1">
+      <eGenericType eTypeParameter="#//ObjectRegistry/T"/>
+    </eOperations>
+    <eOperations name="lookupByVendorVersion" lowerBound="1">
+      <eGenericType eTypeParameter="#//ObjectRegistry/T"/>
+      <eParameters name="vendor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="version" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectRegistryFactory" abstract="true"
+      interface="true">
+    <eOperations name="createObjectRegistry" lowerBound="1">
+      <eGenericType eClassifier="#//ObjectRegistry">
+        <eTypeArguments eTypeParameter="#//ObjectRegistryFactory/createObjectRegistry/T"/>
+      </eGenericType>
+      <eTypeParameters name="T"/>
+      <eParameters name="klass" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//ObjectRegistryFactory/createObjectRegistry/T"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Thread" abstract="true" interface="true"
       eSuperTypes="#//Object">
     <eOperations name="checkRunnable" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -294,35 +323,6 @@
     <eClassifiers xsi:type="ecore:EClass" name="ContextProvider" abstract="true" interface="true">
       <eOperations name="getContext" lowerBound="1" eType="#//ctx/Context"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="PluginRegistry" abstract="true" interface="true">
-      <eTypeParameters name="T"/>
-      <eOperations name="lookup" lowerBound="1">
-        <eGenericType eTypeParameter="#//ctx/PluginRegistry/T"/>
-        <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eOperations>
-      <eOperations name="list" lowerBound="1" upperBound="-1">
-        <eGenericType eTypeParameter="#//ctx/PluginRegistry/T"/>
-      </eOperations>
-      <eOperations name="lookupByVendorVersion" lowerBound="1">
-        <eGenericType eTypeParameter="#//ctx/PluginRegistry/T"/>
-        <eParameters name="vendor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        <eParameters name="version" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eOperations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="PluginRegistryFactory" abstract="true"
-        interface="true">
-      <eOperations name="createPluginRegistry" lowerBound="1">
-        <eGenericType eClassifier="#//ctx/PluginRegistry">
-          <eTypeArguments eTypeParameter="#//ctx/PluginRegistryFactory/createPluginRegistry/T"/>
-        </eGenericType>
-        <eTypeParameters name="T"/>
-        <eParameters name="klass" lowerBound="1">
-          <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-            <eTypeArguments eTypeParameter="#//ctx/PluginRegistryFactory/createPluginRegistry/T"/>
-          </eGenericType>
-        </eParameters>
-      </eOperations>
-    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Identity" abstract="true" interface="true"
         eSuperTypes="#//Object">
       <eTypeParameters name="T">
@@ -337,7 +337,7 @@
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="meta" nsURI="http://www.smeup.org/asup/il/core/meta" nsPrefix="il-core-meta">
-    <eClassifiers xsi:type="ecore:EClass" name="Cardinality" eSuperTypes="#//meta/Facet">
+    <eClassifiers xsi:type="ecore:EClass" name="Cardinality" eSuperTypes="#//Object">
       <eOperations name="isMandatory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eOperations name="isMultiple" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="max" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
@@ -351,13 +351,9 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" unique="false"
           upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Domain" eSuperTypes="#//meta/Facet">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Facet" abstract="true" eSuperTypes="#//Object"/>
     <eClassifiers xsi:type="ecore:EClass" name="Frame" abstract="true" interface="true"
-        eSuperTypes="#//Nameable">
+        eSuperTypes="#//ObjectNameable">
       <eTypeParameters name="O">
         <eBounds eClassifier="#//Object"/>
       </eTypeParameters>
@@ -409,7 +405,6 @@
         eSuperTypes="#//Nameable">
       <eOperations name="getCardinality" eType="#//meta/Cardinality"/>
       <eOperations name="getDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
-      <eOperations name="getDomain" eType="#//meta/Domain"/>
       <eOperations name="isTransient" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eOperations name="isVolatile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eOperations name="getValue" eType="#//Object">
@@ -433,7 +428,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ObjectWriterFactoryRegistry" abstract="true"
         interface="true">
-      <eGenericSuperTypes eClassifier="#//ctx/PluginRegistry">
+      <eGenericSuperTypes eClassifier="#//ObjectRegistry">
         <eTypeArguments eClassifier="#//out/ObjectWriterFactory"/>
       </eGenericSuperTypes>
     </eClassifiers>

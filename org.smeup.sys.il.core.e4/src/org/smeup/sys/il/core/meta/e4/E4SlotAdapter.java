@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.meta.QCardinality;
-import org.smeup.sys.il.core.meta.QDomain;
 import org.smeup.sys.il.core.meta.QSlot;
 
 public class E4SlotAdapter implements QSlot {
@@ -53,12 +52,6 @@ public class E4SlotAdapter implements QSlot {
 	public Object getDefaultValue() {
 		if (element instanceof EStructuralFeature) 
 			return ((EStructuralFeature)this.element).getDefaultValue();
-		return null;
-	}
-
-	@Override
-	public QDomain getDomain() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

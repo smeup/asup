@@ -17,32 +17,32 @@ import javax.inject.Inject;
 
 import org.smeup.sys.dk.compiler.QUnitConverter;
 import org.smeup.sys.dk.compiler.QUnitConverterRegistry;
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
-import org.smeup.sys.il.core.ctx.QPluginRegistryFactory;
+import org.smeup.sys.il.core.QObjectRegistry;
+import org.smeup.sys.il.core.QObjectRegistryFactory;
 
 public class BaseUnitConverterRegistryImpl implements QUnitConverterRegistry {
 
 	
-	private QPluginRegistry<QUnitConverter> pluginRegistry;
+	private QObjectRegistry<QUnitConverter> objectRegistry;
 	
 	@Inject
-	public BaseUnitConverterRegistryImpl(QPluginRegistryFactory pluginRegistryFactory) {
-		 this.pluginRegistry = pluginRegistryFactory.createPluginRegistry(QUnitConverter.class);
+	public BaseUnitConverterRegistryImpl(QObjectRegistryFactory objectRegistryFactory) {
+		 this.objectRegistry = objectRegistryFactory.createObjectRegistry(QUnitConverter.class);
 	}
 
 	@Override
 	public QUnitConverter lookup(String name) {
-		return this.pluginRegistry.lookup(name);
+		return this.objectRegistry.lookup(name);
 	}
 
 	@Override
 	public List<QUnitConverter> list() {
-		return this.pluginRegistry.list();
+		return this.objectRegistry.list();
 	}
 
 	@Override
 	public QUnitConverter lookupByVendorVersion(String vendor, String version) {
-		return this.pluginRegistry.lookupByVendorVersion(vendor, version);
+		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
 
 }

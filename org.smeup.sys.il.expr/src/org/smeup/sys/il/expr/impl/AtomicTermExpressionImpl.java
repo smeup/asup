@@ -21,10 +21,10 @@ import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
  * <em><b>Atomic Term Expression</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.expr.impl.AtomicTermExpressionImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

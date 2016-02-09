@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.core.meta;
 
+import org.smeup.sys.il.core.QObject;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Cardinality</b></em>'. <!-- end-user-doc -->
@@ -23,7 +25,7 @@ package org.smeup.sys.il.core.meta;
  * @model
  * @generated
  */
-public interface QCardinality extends QFacet {
+public interface QCardinality extends QObject {
 	/**
 	 * Returns the value of the '<em><b>Min</b></em>' attribute. <!--
 	 * begin-user-doc -->

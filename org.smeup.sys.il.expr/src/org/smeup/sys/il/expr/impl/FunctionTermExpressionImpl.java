@@ -17,8 +17,6 @@ import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Prototype Term Expression</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

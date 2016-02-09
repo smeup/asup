@@ -11,14 +11,14 @@
  */
 package org.smeup.sys.il.core.e4;
 
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
-import org.smeup.sys.il.core.ctx.QPluginRegistryFactory;
+import org.smeup.sys.il.core.QObjectRegistry;
+import org.smeup.sys.il.core.QObjectRegistryFactory;
 
-public class E4PluginRegistryFactoryImpl implements QPluginRegistryFactory {
+public class E4ObjectRegistryFactoryImpl implements QObjectRegistryFactory {
 
 	@Override
-	public <T> QPluginRegistry<T> createPluginRegistry(Class<T> klass) {
-		return new E4PluginRegistryImpl<T>(klass);
+	public <T> QObjectRegistry<T> createObjectRegistry(Class<T> klass) {
+		return new E4ObjectRegistryImpl<T>(klass);
 	}
 
 }

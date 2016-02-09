@@ -63,16 +63,7 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getFacet()
 	 * @generated
 	 */
-	int FACET = 3;
-
-	/**
-	 * The number of structural features of the '<em>Facet</em>' class. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int FACET_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
+	int FACET = 2;
 
 	/**
 	 * The meta object id for the '
@@ -93,7 +84,7 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CARDINALITY__MAX = FACET_FEATURE_COUNT + 0;
+	int CARDINALITY__MAX = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Min</b></em>' attribute. <!--
@@ -102,7 +93,7 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CARDINALITY__MIN = FACET_FEATURE_COUNT + 1;
+	int CARDINALITY__MIN = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Cardinality</em>' class.
@@ -110,7 +101,7 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CARDINALITY_FEATURE_COUNT = FACET_FEATURE_COUNT + 2;
+	int CARDINALITY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.meta.impl.DefaultImpl <em>Default</em>}' class.
@@ -149,40 +140,13 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	int DEFAULT_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.meta.impl.DomainImpl <em>Domain</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.meta.impl.DomainImpl
-	 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getDomain()
-	 * @generated
-	 */
-	int DOMAIN = 2;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+	 * The number of structural features of the '<em>Facet</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN__NAME = FACET_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Text</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int DOMAIN__TEXT = FACET_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Domain</em>' class. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int DOMAIN_FEATURE_COUNT = FACET_FEATURE_COUNT + 2;
+	int FACET_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.meta.QFrame <em>Frame</em>}' class.
@@ -191,7 +155,7 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getFrame()
 	 * @generated
 	 */
-	int FRAME = 4;
+	int FRAME = 3;
 
 	/**
 	 * The number of structural features of the '<em>Frame</em>' class. <!--
@@ -200,7 +164,7 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FRAME_FEATURE_COUNT = QIntegratedLanguageCorePackage.NAMEABLE_FEATURE_COUNT + 0;
+	int FRAME_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.meta.QFrameManager <em>Frame Manager</em>}' class.
@@ -209,7 +173,7 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getFrameManager()
 	 * @generated
 	 */
-	int FRAME_MANAGER = 5;
+	int FRAME_MANAGER = 4;
 
 	/**
 	 * The number of structural features of the '<em>Frame Manager</em>' class.
@@ -226,7 +190,7 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getSlot()
 	 * @generated
 	 */
-	int SLOT = 6;
+	int SLOT = 5;
 
 	/**
 	 * The number of structural features of the '<em>Slot</em>' class. <!--
@@ -296,41 +260,6 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDefault_Values();
-
-	/**
-	 * Returns the meta object for class '
-	 * {@link org.smeup.sys.il.core.meta.QDomain <em>Domain</em>}'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @return the meta object for class '<em>Domain</em>'.
-	 * @see org.smeup.sys.il.core.meta.QDomain
-	 * @generated
-	 */
-	EClass getDomain();
-
-	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.smeup.sys.il.core.meta.QDomain#getName <em>Name</em>}'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.smeup.sys.il.core.meta.QDomain#getName()
-	 * @see #getDomain()
-	 * @generated
-	 */
-	EAttribute getDomain_Name();
-
-	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.smeup.sys.il.core.meta.QDomain#getText <em>Text</em>}'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see org.smeup.sys.il.core.meta.QDomain#getText()
-	 * @see #getDomain()
-	 * @generated
-	 */
-	EAttribute getDomain_Text();
 
 	/**
 	 * Returns the meta object for class '
@@ -442,29 +371,6 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DEFAULT__VALUES = eINSTANCE.getDefault_Values();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.meta.impl.DomainImpl <em>Domain</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.core.meta.impl.DomainImpl
-		 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getDomain()
-		 * @generated
-		 */
-		EClass DOMAIN = eINSTANCE.getDomain();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DOMAIN__NAME = eINSTANCE.getDomain_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DOMAIN__TEXT = eINSTANCE.getDomain_Text();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.meta.impl.FacetImpl <em>Facet</em>}' class.

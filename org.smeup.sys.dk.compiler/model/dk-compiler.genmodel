@@ -192,6 +192,7 @@
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilerManager/writeStub/output"/>
       </genOperations>
     </genClasses>
+    <genClasses ecoreClass="dk-compiler.ecore#//Derived"/>
     <genClasses image="false" ecoreClass="dk-compiler.ecore#//UnitConverter">
       <genOperations ecoreOperation="dk-compiler.ecore#//UnitConverter/createConversionUnit">
         <genParameters ecoreParameter="dk-compiler.ecore#//UnitConverter/createConversionUnit/job"/>

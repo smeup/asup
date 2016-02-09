@@ -24,12 +24,12 @@ import org.smeup.sys.il.expr.RelationalOperator;
  * <em><b>Relational Expression</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.expr.impl.RelationalExpressionImpl#getLeftOperand <em>Left Operand</em>}</li>
  *   <li>{@link org.smeup.sys.il.expr.impl.RelationalExpressionImpl#getOperator <em>Operator</em>}</li>
  *   <li>{@link org.smeup.sys.il.expr.impl.RelationalExpressionImpl#getRightOperand <em>Right Operand</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

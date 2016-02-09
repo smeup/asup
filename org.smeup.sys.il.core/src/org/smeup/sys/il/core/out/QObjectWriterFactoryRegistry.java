@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.il.core.out;
 
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
+import org.smeup.sys.il.core.QObjectRegistry;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -18,5 +18,5 @@ import org.smeup.sys.il.core.ctx.QPluginRegistry;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QObjectWriterFactoryRegistry extends QPluginRegistry<QObjectWriterFactory> {
+public interface QObjectWriterFactoryRegistry extends QObjectRegistry<QObjectWriterFactory> {
 } // QObjectWriterFactoryRegistry

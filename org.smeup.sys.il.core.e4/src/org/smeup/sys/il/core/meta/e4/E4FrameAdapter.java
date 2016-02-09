@@ -21,18 +21,24 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.core.meta.QFrame;
 import org.smeup.sys.il.core.meta.QSlot;
 import org.smeup.sys.mi.core.util.QStrings;
 
-public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
+public class E4FrameAdapter<O extends QObject> extends ObjectImpl implements QFrame<O> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private EClass eClass;
 	private List<QSlot> slots;
 
 	private static final String nsPrefix = "il-data";
 
 	public E4FrameAdapter(EClass eClass) {
+		super();
 		this.eClass = eClass;
 	}
 

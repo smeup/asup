@@ -208,6 +208,44 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	int OBJECT_NAMEABLE_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.QObjectRegistry <em>Object Registry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.QObjectRegistry
+	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectRegistry()
+	 * @generated
+	 */
+	int OBJECT_REGISTRY = 7;
+
+	/**
+	 * The number of structural features of the '<em>Object Registry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_REGISTRY_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.QObjectRegistryFactory <em>Object Registry Factory</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.QObjectRegistryFactory
+	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectRegistryFactory()
+	 * @generated
+	 */
+	int OBJECT_REGISTRY_FACTORY = 8;
+
+	/**
+	 * The number of structural features of the '<em>Object Registry Factory</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_REGISTRY_FACTORY_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.QThread <em>Thread</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -215,7 +253,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThread()
 	 * @generated
 	 */
-	int THREAD = 7;
+	int THREAD = 9;
 
 	/**
 	 * The number of structural features of the '<em>Thread</em>' class.
@@ -234,7 +272,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThreadManager()
 	 * @generated
 	 */
-	int THREAD_MANAGER = 8;
+	int THREAD_MANAGER = 10;
 
 	/**
 	 * The number of structural features of the '<em>Thread Manager</em>' class.
@@ -253,7 +291,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThreadStatus()
 	 * @generated
 	 */
-	int THREAD_STATUS = 9;
+	int THREAD_STATUS = 11;
 
 	/**
 	 * Returns the meta object for class '
@@ -344,6 +382,26 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getObjectNameable();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.core.QObjectRegistry <em>Object Registry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Object Registry</em>'.
+	 * @see org.smeup.sys.il.core.QObjectRegistry
+	 * @generated
+	 */
+	EClass getObjectRegistry();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.core.QObjectRegistryFactory <em>Object Registry Factory</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Object Registry Factory</em>'.
+	 * @see org.smeup.sys.il.core.QObjectRegistryFactory
+	 * @generated
+	 */
+	EClass getObjectRegistryFactory();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.QThread <em>Thread</em>}'.
@@ -477,6 +535,26 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass OBJECT_NAMEABLE = eINSTANCE.getObjectNameable();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.QObjectRegistry <em>Object Registry</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.core.QObjectRegistry
+		 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectRegistry()
+		 * @generated
+		 */
+		EClass OBJECT_REGISTRY = eINSTANCE.getObjectRegistry();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.QObjectRegistryFactory <em>Object Registry Factory</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.core.QObjectRegistryFactory
+		 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectRegistryFactory()
+		 * @generated
+		 */
+		EClass OBJECT_REGISTRY_FACTORY = eINSTANCE.getObjectRegistryFactory();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.QThread <em>Thread</em>}' class.

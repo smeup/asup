@@ -18,16 +18,16 @@ import javax.inject.Inject;
 import org.smeup.sys.db.core.QConnectionConfig;
 import org.smeup.sys.db.syntax.QDefinitionParser;
 import org.smeup.sys.db.syntax.QDefinitionParserRegistry;
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
-import org.smeup.sys.il.core.ctx.QPluginRegistryFactory;
+import org.smeup.sys.il.core.QObjectRegistry;
+import org.smeup.sys.il.core.QObjectRegistryFactory;
 
 public class BaseDefinitionParserRegistryImpl implements QDefinitionParserRegistry {
 	
-	private QPluginRegistry<QDefinitionParser> pluginRegistry;
+	private QObjectRegistry<QDefinitionParser> objectRegistry;
 	
 	@Inject
-	public BaseDefinitionParserRegistryImpl(QPluginRegistryFactory pluginRegistryFactory) {
-		 this.pluginRegistry = pluginRegistryFactory.createPluginRegistry(QDefinitionParser.class);
+	public BaseDefinitionParserRegistryImpl(QObjectRegistryFactory objectRegistryFactory) {
+		 this.objectRegistry = objectRegistryFactory.createObjectRegistry(QDefinitionParser.class);
 	}
 
 	@Override
@@ -37,17 +37,17 @@ public class BaseDefinitionParserRegistryImpl implements QDefinitionParserRegist
 
 	@Override
 	public QDefinitionParser lookup(String name) {
-		return this.pluginRegistry.lookup(name);
+		return this.objectRegistry.lookup(name);
 	}
 
 	@Override
 	public List<QDefinitionParser> list() {
-		return this.pluginRegistry.list();
+		return this.objectRegistry.list();
 	}
 
 	@Override
 	public QDefinitionParser lookupByVendorVersion(String vendor, String version) {
-		return this.pluginRegistry.lookupByVendorVersion(vendor, version);
+		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
 
 }

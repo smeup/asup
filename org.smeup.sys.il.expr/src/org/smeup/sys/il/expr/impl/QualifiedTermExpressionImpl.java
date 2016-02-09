@@ -17,8 +17,6 @@ import org.smeup.sys.il.expr.QQualifiedTermExpression;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Qualified Term Expression</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

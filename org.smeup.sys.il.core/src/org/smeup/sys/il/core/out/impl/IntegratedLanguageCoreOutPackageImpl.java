@@ -254,7 +254,7 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getPluginRegistry());
+		EGenericType g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectRegistry());
 		EGenericType g2 = createEGenericType(this.getObjectWriterFactory());
 		g1.getETypeArguments().add(g2);
 		objectWriterFactoryRegistryEClass.getEGenericSuperTypes().add(g1);

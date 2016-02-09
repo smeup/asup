@@ -19,8 +19,6 @@ import org.smeup.sys.il.expr.neutral.NeutralExpressionMatcher;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Expression</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

@@ -18,17 +18,17 @@ import javax.inject.Inject;
 import org.smeup.sys.db.core.QConnectionConfig;
 import org.smeup.sys.db.syntax.QQueryWriter;
 import org.smeup.sys.db.syntax.QQueryWriterRegistry;
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
-import org.smeup.sys.il.core.ctx.QPluginRegistryFactory;
+import org.smeup.sys.il.core.QObjectRegistry;
+import org.smeup.sys.il.core.QObjectRegistryFactory;
 
 public class BaseQueryWriterRegistryImpl implements QQueryWriterRegistry {
 	
 	
-	private QPluginRegistry<QQueryWriter> pluginRegistry;
+	private QObjectRegistry<QQueryWriter> objectRegistry;
 	
 	@Inject
-	public BaseQueryWriterRegistryImpl(QPluginRegistryFactory pluginRegistryFactory) {
-		 this.pluginRegistry = pluginRegistryFactory.createPluginRegistry(QQueryWriter.class);
+	public BaseQueryWriterRegistryImpl(QObjectRegistryFactory objectRegistryFactory) {
+		 this.objectRegistry = objectRegistryFactory.createObjectRegistry(QQueryWriter.class);
 	}
 
 	@Override
@@ -38,17 +38,17 @@ public class BaseQueryWriterRegistryImpl implements QQueryWriterRegistry {
 
 	@Override
 	public QQueryWriter lookup(String name) {
-		return this.pluginRegistry.lookup(name);
+		return this.objectRegistry.lookup(name);
 	}
 
 	@Override
 	public List<QQueryWriter> list() {
-		return this.pluginRegistry.list();
+		return this.objectRegistry.list();
 	}
 
 	@Override
 	public QQueryWriter lookupByVendorVersion(String vendor, String version) {
-		return this.pluginRegistry.lookupByVendorVersion(vendor, version);
+		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
 
 

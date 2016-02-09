@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -479,7 +478,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXPRESSION_PARSER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.PLUGIN_REGISTRY_FEATURE_COUNT + 0;
+	int EXPRESSION_PARSER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_REGISTRY_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.QExpressionWriter <em>Expression Writer</em>}' class.
@@ -517,7 +516,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXPRESSION_WRITER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.PLUGIN_REGISTRY_FEATURE_COUNT + 0;
+	int EXPRESSION_WRITER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_REGISTRY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Expression Visitor</em>' class.

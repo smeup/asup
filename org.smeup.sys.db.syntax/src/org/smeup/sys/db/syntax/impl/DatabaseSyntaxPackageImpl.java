@@ -53,7 +53,7 @@ import org.smeup.sys.db.syntax.ddl.QDatabaseSyntaxDDLPackage;
 import org.smeup.sys.db.syntax.ddl.impl.DatabaseSyntaxDDLPackageImpl;
 import org.smeup.sys.db.syntax.dml.QDatabaseSyntaxDMLPackage;
 import org.smeup.sys.db.syntax.dml.impl.DatabaseSyntaxDMLPackageImpl;
-import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
+import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
@@ -681,7 +681,7 @@ public class DatabaseSyntaxPackageImpl extends EPackageImpl implements QDatabase
 		QDatabaseSyntaxDBLPackage theDatabaseSyntaxDBLPackage = (QDatabaseSyntaxDBLPackage)EPackage.Registry.INSTANCE.getEPackage(QDatabaseSyntaxDBLPackage.eNS_URI);
 		QDatabaseCorePackage theDatabaseCorePackage = (QDatabaseCorePackage)EPackage.Registry.INSTANCE.getEPackage(QDatabaseCorePackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
-		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
+		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		SQLTablesPackage theSQLTablesPackage = (SQLTablesPackage)EPackage.Registry.INSTANCE.getEPackage(SQLTablesPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		SQLSchemaPackage theSQLSchemaPackage = (SQLSchemaPackage)EPackage.Registry.INSTANCE.getEPackage(SQLSchemaPackage.eNS_URI);
@@ -699,32 +699,32 @@ public class DatabaseSyntaxPackageImpl extends EPackageImpl implements QDatabase
 
 		// Add supertypes to classes
 		bindingParserEClass.getESuperTypes().add(this.getStatementParser());
-		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getPluginRegistry());
+		EGenericType g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectRegistry());
 		EGenericType g2 = createEGenericType(this.getBindingParser());
 		g1.getETypeArguments().add(g2);
 		bindingParserRegistryEClass.getEGenericSuperTypes().add(g1);
 		definitionParserEClass.getESuperTypes().add(this.getStatementParser());
-		g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getPluginRegistry());
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectRegistry());
 		g2 = createEGenericType(this.getDefinitionParser());
 		g1.getETypeArguments().add(g2);
 		definitionParserRegistryEClass.getEGenericSuperTypes().add(g1);
 		definitionWriterEClass.getESuperTypes().add(this.getStatementWriter());
-		g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getPluginRegistry());
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectRegistry());
 		g2 = createEGenericType(this.getDefinitionWriter());
 		g1.getETypeArguments().add(g2);
 		definitionWriterRegistryEClass.getEGenericSuperTypes().add(g1);
 		nameHelperEClass.getESuperTypes().add(this.getSQLObjectNameHelper());
-		g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getPluginRegistry());
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectRegistry());
 		g2 = createEGenericType(this.getNameHelper());
 		g1.getETypeArguments().add(g2);
 		nameHelperRegistryEClass.getEGenericSuperTypes().add(g1);
 		queryWriterEClass.getESuperTypes().add(this.getStatementWriter());
-		g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getPluginRegistry());
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectRegistry());
 		g2 = createEGenericType(this.getQueryWriter());
 		g1.getETypeArguments().add(g2);
 		queryWriterRegistryEClass.getEGenericSuperTypes().add(g1);
 		queryParserEClass.getESuperTypes().add(this.getStatementParser());
-		g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getPluginRegistry());
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectRegistry());
 		g2 = createEGenericType(this.getQueryParser());
 		g1.getETypeArguments().add(g2);
 		queryParserRegistryEClass.getEGenericSuperTypes().add(g1);

@@ -22,7 +22,7 @@
     <eOperations name="lookup" lowerBound="1" eType="#//BindingParser">
       <eParameters name="connectionConfig" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.db.core/model/db-core.ecore#//ConnectionConfig"/>
     </eOperations>
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/PluginRegistry">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectRegistry">
       <eTypeArguments eClassifier="#//BindingParser"/>
     </eGenericSuperTypes>
   </eClassifiers>
@@ -48,7 +48,7 @@
     <eOperations name="lookup" lowerBound="1" eType="#//DefinitionParser">
       <eParameters name="connectionConfig" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.db.core/model/db-core.ecore#//ConnectionConfig"/>
     </eOperations>
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/PluginRegistry">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectRegistry">
       <eTypeArguments eClassifier="#//DefinitionParser"/>
     </eGenericSuperTypes>
   </eClassifiers>
@@ -147,7 +147,7 @@
     <eOperations name="lookup" lowerBound="1" eType="#//DefinitionWriter">
       <eParameters name="connectionConfig" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.db.core/model/db-core.ecore#//ConnectionConfig"/>
     </eOperations>
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/PluginRegistry">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectRegistry">
       <eTypeArguments eClassifier="#//DefinitionWriter"/>
     </eGenericSuperTypes>
   </eClassifiers>
@@ -165,7 +165,7 @@
     <eOperations name="lookup" lowerBound="1" eType="#//NameHelper">
       <eParameters name="connectionConfig" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.db.core/model/db-core.ecore#//ConnectionConfig"/>
     </eOperations>
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/PluginRegistry">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectRegistry">
       <eTypeArguments eClassifier="#//NameHelper"/>
     </eGenericSuperTypes>
   </eClassifiers>
@@ -180,7 +180,7 @@
     <eOperations name="lookup" lowerBound="1" eType="#//QueryWriter">
       <eParameters name="connectionConfig" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.db.core/model/db-core.ecore#//ConnectionConfig"/>
     </eOperations>
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/PluginRegistry">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectRegistry">
       <eTypeArguments eClassifier="#//QueryWriter"/>
     </eGenericSuperTypes>
   </eClassifiers>
@@ -198,7 +198,7 @@
     <eOperations name="lookup" lowerBound="1" eType="#//QueryParser">
       <eParameters name="connectionConfig" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.db.core/model/db-core.ecore#//ConnectionConfig"/>
     </eOperations>
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/PluginRegistry">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectRegistry">
       <eTypeArguments eClassifier="#//QueryParser"/>
     </eGenericSuperTypes>
   </eClassifiers>

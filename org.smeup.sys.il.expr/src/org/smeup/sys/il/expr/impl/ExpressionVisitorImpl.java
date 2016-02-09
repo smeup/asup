@@ -24,8 +24,6 @@ import org.smeup.sys.il.expr.QRelationalExpression;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Expression Visitor</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

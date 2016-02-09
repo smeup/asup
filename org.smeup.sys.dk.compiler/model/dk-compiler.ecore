@@ -223,7 +223,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnitConverterRegistry" abstract="true"
       interface="true">
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/PluginRegistry">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectRegistry">
       <eTypeArguments eClassifier="#//UnitConverter"/>
     </eGenericSuperTypes>
   </eClassifiers>

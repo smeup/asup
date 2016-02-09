@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
@@ -305,7 +306,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNIT_CONVERTER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.PLUGIN_REGISTRY_FEATURE_COUNT + 0;
+	int UNIT_CONVERTER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_REGISTRY_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.EntryType <em>Entry Type</em>}' enum.

@@ -24,12 +24,12 @@ import org.smeup.sys.il.expr.QLogicalExpression;
  * <em><b>Logic Expression</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.expr.impl.LogicalExpressionImpl#getLeftOperand <em>Left Operand</em>}</li>
  *   <li>{@link org.smeup.sys.il.expr.impl.LogicalExpressionImpl#getOperator <em>Operator</em>}</li>
  *   <li>{@link org.smeup.sys.il.expr.impl.LogicalExpressionImpl#getRightOperand <em>Right Operand</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

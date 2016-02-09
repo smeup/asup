@@ -15,32 +15,32 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
-import org.smeup.sys.il.core.ctx.QPluginRegistryFactory;
+import org.smeup.sys.il.core.QObjectRegistry;
+import org.smeup.sys.il.core.QObjectRegistryFactory;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 
 public class BaseExpressionParserRegistryImpl implements QExpressionParserRegistry {
 
-	private QPluginRegistry<QExpressionParser> pluginRegistry;
+	private QObjectRegistry<QExpressionParser> objectRegistry;
 
 	@Inject
-	public BaseExpressionParserRegistryImpl(QPluginRegistryFactory pluginRegistryFactory) {
-		this.pluginRegistry = pluginRegistryFactory.createPluginRegistry(QExpressionParser.class);
+	public BaseExpressionParserRegistryImpl(QObjectRegistryFactory objectRegistryFactory) {
+		this.objectRegistry = objectRegistryFactory.createObjectRegistry(QExpressionParser.class);
 	}
 
 	@Override
 	public QExpressionParser lookup(String name) {
-		return this.pluginRegistry.lookup(name);
+		return this.objectRegistry.lookup(name);
 	}
 
 	@Override
 	public List<QExpressionParser> list() {
-		return this.pluginRegistry.list();
+		return this.objectRegistry.list();
 	}
 
 	@Override
 	public QExpressionParser lookupByVendorVersion(String vendor, String version) {
-		return this.pluginRegistry.lookupByVendorVersion(vendor, version);
+		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
 }

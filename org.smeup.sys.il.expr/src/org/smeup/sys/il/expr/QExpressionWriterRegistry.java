@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.il.expr;
 
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
+import org.smeup.sys.il.core.QObjectRegistry;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,6 +19,6 @@ import org.smeup.sys.il.core.ctx.QPluginRegistry;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QExpressionWriterRegistry extends QPluginRegistry<QExpressionWriter> {
+public interface QExpressionWriterRegistry extends QObjectRegistry<QExpressionWriter> {
 	public static String DEFAULT_WRITER = "RPJ";
 } 

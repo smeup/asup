@@ -4,20 +4,20 @@
  *  which accompanies this distribution, and is available at
  *  http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.ctx;
+package org.smeup.sys.il.core;
 
 import java.util.List;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Plugin Registry</b></em>'. <!-- end-user-doc -->
+ * <em><b>Object Registry</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage#getPluginRegistry()
+ * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getObjectRegistry()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QPluginRegistry<T> {
+public interface QObjectRegistry<T> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" nameRequired="true"
@@ -39,4 +39,4 @@ public interface QPluginRegistry<T> {
 	 */
 	T lookupByVendorVersion(String vendor, String version);
 
-} // PluginRegistry
+} // ObjectRegistry

@@ -26,8 +26,6 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.core.ctx.QIdentity;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxFactory;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
-import org.smeup.sys.il.core.ctx.QPluginRegistryFactory;
 import org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl;
@@ -80,18 +78,6 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	private EClass capabilityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass pluginRegistryEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass pluginRegistryFactoryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -254,24 +240,6 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getPluginRegistry() {
-		return pluginRegistryEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getPluginRegistryFactory() {
-		return pluginRegistryFactoryEClass;
-	}
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -336,10 +304,6 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 
 		contextProviderEClass = createEClass(CONTEXT_PROVIDER);
 
-		pluginRegistryEClass = createEClass(PLUGIN_REGISTRY);
-
-		pluginRegistryFactoryEClass = createEClass(PLUGIN_REGISTRY_FACTORY);
-
 		identityEClass = createEClass(IDENTITY);
 
 		// Create enums
@@ -375,7 +339,6 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 
 		// Create type parameters
 		ETypeParameter capabilityEClass_T = addETypeParameter(capabilityEClass, "T");
-		ETypeParameter pluginRegistryEClass_T = addETypeParameter(pluginRegistryEClass, "T");
 		ETypeParameter identityEClass_T = addETypeParameter(identityEClass, "T");
 
 		// Set bounds for type parameters
@@ -535,36 +498,6 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		initEClass(contextProviderEClass, QContextProvider.class, "ContextProvider", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(contextProviderEClass, this.getContext(), "getContext", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(pluginRegistryEClass, QPluginRegistry.class, "PluginRegistry", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		op = addEOperation(pluginRegistryEClass, null, "lookup", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(pluginRegistryEClass_T);
-		initEOperation(op, g1);
-
-		op = addEOperation(pluginRegistryEClass, null, "list", 1, -1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(pluginRegistryEClass_T);
-		initEOperation(op, g1);
-
-		op = addEOperation(pluginRegistryEClass, null, "lookupByVendorVersion", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "vendor", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "version", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(pluginRegistryEClass_T);
-		initEOperation(op, g1);
-
-		initEClass(pluginRegistryFactoryEClass, QPluginRegistryFactory.class, "PluginRegistryFactory", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		op = addEOperation(pluginRegistryFactoryEClass, null, "createPluginRegistry", 1, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "T");
-		g1 = createEGenericType(ecorePackage.getEJavaClass());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getPluginRegistry());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
 
 		initEClass(identityEClass, QIdentity.class, "Identity", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

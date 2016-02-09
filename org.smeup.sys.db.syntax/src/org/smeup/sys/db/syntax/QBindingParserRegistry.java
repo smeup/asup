@@ -8,7 +8,7 @@
 package org.smeup.sys.db.syntax;
 
 import org.smeup.sys.db.core.QConnectionConfig;
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
+import org.smeup.sys.il.core.QObjectRegistry;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +20,7 @@ import org.smeup.sys.il.core.ctx.QPluginRegistry;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QBindingParserRegistry extends QPluginRegistry<QBindingParser> {
+public interface QBindingParserRegistry extends QObjectRegistry<QBindingParser> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -549,7 +549,7 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		conversionUnitEClass.getESuperTypes().add(theMachineInterfaceCorePackage.getJavaCloseable());
 		compilerLinkerEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		derivedEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
-		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getPluginRegistry());
+		EGenericType g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectRegistry());
 		EGenericType g2 = createEGenericType(this.getUnitConverter());
 		g1.getETypeArguments().add(g2);
 		unitConverterRegistryEClass.getEGenericSuperTypes().add(g1);

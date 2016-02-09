@@ -159,43 +159,6 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	int CONTEXT_PROVIDER_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.QPluginRegistry <em>Plugin Registry</em>}' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see org.smeup.sys.il.core.ctx.QPluginRegistry
-	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getPluginRegistry()
-	 * @generated
-	 */
-	int PLUGIN_REGISTRY = 5;
-
-	/**
-	 * The number of structural features of the '<em>Plugin Registry</em>' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLUGIN_REGISTRY_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.QPluginRegistryFactory <em>Plugin Registry Factory</em>}' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see org.smeup.sys.il.core.ctx.QPluginRegistryFactory
-	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getPluginRegistryFactory()
-	 * @generated
-	 */
-	int PLUGIN_REGISTRY_FACTORY = 6;
-
-	/**
-	 * The number of structural features of the '<em>Plugin Registry Factory</em>' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLUGIN_REGISTRY_FACTORY_FEATURE_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.QIdentity <em>Identity</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -203,7 +166,7 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getIdentity()
 	 * @generated
 	 */
-	int IDENTITY = 7;
+	int IDENTITY = 5;
 
 	/**
 	 * The number of structural features of the '<em>Identity</em>' class.
@@ -222,7 +185,7 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getContextInjectionStrategy()
 	 * @generated
 	 */
-	int CONTEXT_INJECTION_STRATEGY = 8;
+	int CONTEXT_INJECTION_STRATEGY = 6;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.CapabilityRight <em>Capability Right</em>}' enum.
@@ -232,7 +195,7 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getCapabilityRight()
 	 * @generated
 	 */
-	int CAPABILITY_RIGHT = 9;
+	int CAPABILITY_RIGHT = 7;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.ctx.QAdapterFactory <em>Adapter Factory</em>}'.
@@ -296,25 +259,6 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCapability_Rights();
-
-	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.core.ctx.QPluginRegistry <em>Plugin Registry</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Plugin Registry</em>'.
-	 * @see org.smeup.sys.il.core.ctx.QPluginRegistry
-	 * @generated
-	 */
-	EClass getPluginRegistry();
-
-	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.core.ctx.QPluginRegistryFactory <em>Plugin Registry Factory</em>}'.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @return the meta object for class '<em>Plugin Registry Factory</em>'.
-	 * @see org.smeup.sys.il.core.ctx.QPluginRegistryFactory
-	 * @generated
-	 */
-	EClass getPluginRegistryFactory();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.ctx.QIdentity <em>Identity</em>}'.
@@ -424,26 +368,6 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CAPABILITY__RIGHTS = eINSTANCE.getCapability_Rights();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.QPluginRegistry <em>Plugin Registry</em>}' class.
-		 * <!-- begin-user-doc --> <!--
-		 * end-user-doc -->
-		 * @see org.smeup.sys.il.core.ctx.QPluginRegistry
-		 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getPluginRegistry()
-		 * @generated
-		 */
-		EClass PLUGIN_REGISTRY = eINSTANCE.getPluginRegistry();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.QPluginRegistryFactory <em>Plugin Registry Factory</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.core.ctx.QPluginRegistryFactory
-		 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getPluginRegistryFactory()
-		 * @generated
-		 */
-		EClass PLUGIN_REGISTRY_FACTORY = eINSTANCE.getPluginRegistryFactory();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.QIdentity <em>Identity</em>}' class.

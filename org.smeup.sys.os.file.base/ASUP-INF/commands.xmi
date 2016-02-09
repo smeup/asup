@@ -3,13 +3,10 @@
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:il-core="http://www.smeup.org/asup/il/core"
-    xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta"
-        xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" 
+    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
     xmlns:il-data-term="http://www.smeup.org/asup/il/data/term"
-
     xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/data/term ../../org.smeup.sys.il.core/model/il-data.ecore#//term http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore"
+    xsi:schemaLocation="http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/data/term ../../org.smeup.sys.il.core/model/il-data.ecore#//term http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore"
     typeName="*FILE">
   <contents
       xsi:type="os-cmd:Command"
@@ -20413,9 +20410,9 @@
           <elements
               name="*NODGRP"/>
         </facets>
-        <facets
-            xsi:type="il-core-meta:Cardinality"
-            max="10"/>
+        <cardinality
+            max="0"
+            min="10"/>
         <default>
           <values>*ALL</values>
         </default>
@@ -20491,9 +20488,9 @@
           <elements
               name="*ICFF"/>
         </facets>
-        <facets
-            xsi:type="il-core-meta:Cardinality"
-            max="12"/>
+        <cardinality
+            max="0"
+            min="12"/>
         <default>
           <values>*ALL</values>
         </default>

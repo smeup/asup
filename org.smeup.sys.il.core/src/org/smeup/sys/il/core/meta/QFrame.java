@@ -8,9 +8,8 @@
 package org.smeup.sys.il.core.meta;
 
 import java.util.List;
-
-import org.smeup.sys.il.core.QNameable;
 import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.core.QObjectNameable;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -21,7 +20,7 @@ import org.smeup.sys.il.core.QObject;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QFrame<O extends QObject> extends QNameable {
+public interface QFrame<O extends QObject> extends QObjectNameable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

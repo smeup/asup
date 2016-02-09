@@ -50,13 +50,6 @@ public interface QSlot extends QNameable {
 	 * @model kind="operation"
 	 * @generated
 	 */
-	QDomain getDomain();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
 	boolean isTransient();
 
 	/**

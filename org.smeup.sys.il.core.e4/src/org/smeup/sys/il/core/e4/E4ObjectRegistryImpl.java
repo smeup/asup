@@ -20,14 +20,14 @@ import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.smeup.sys.il.core.QObject;
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
+import org.smeup.sys.il.core.QObjectRegistry;
 
-public class E4PluginRegistryImpl<T> implements QPluginRegistry<T> {
+public class E4ObjectRegistryImpl<T> implements QObjectRegistry<T> {
 
 	private BundleContext bundleContext;
 	private Class<T> klass;
 
-	public E4PluginRegistryImpl(Class<T> klass) {
+	public E4ObjectRegistryImpl(Class<T> klass) {
 		this.bundleContext = FrameworkUtil.getBundle(QObject.class).getBundleContext();
 		this.klass = klass;
 	}

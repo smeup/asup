@@ -16,7 +16,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
+import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.expr.ArithmeticOperator;
 import org.smeup.sys.il.expr.AssignmentOperator;
 import org.smeup.sys.il.expr.AtomicType;
@@ -243,6 +245,9 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 
 		// Initialize simple dependencies
 		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataDefPackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataTermPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theIntegratedLanguageExpressionPackage.createPackageContents();
@@ -741,7 +746,6 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 
 		// Obtain other dependent packages
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
-		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -755,11 +759,11 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		blockExpressionEClass.getESuperTypes().add(this.getExpression());
 		compoundTermExpressionEClass.getESuperTypes().add(this.getTermExpression());
 		expressionEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNode());
-		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getPluginRegistry());
+		EGenericType g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectRegistry());
 		EGenericType g2 = createEGenericType(this.getExpressionParser());
 		g1.getETypeArguments().add(g2);
 		expressionParserRegistryEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getPluginRegistry());
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectRegistry());
 		g2 = createEGenericType(this.getExpressionWriter());
 		g1.getETypeArguments().add(g2);
 		expressionWriterRegistryEClass.getEGenericSuperTypes().add(g1);

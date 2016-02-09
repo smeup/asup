@@ -13,12 +13,12 @@ package org.smeup.sys.il.expr;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.expr.QAssignmentExpression#getLeftOperand <em>Left Operand</em>}</li>
  *   <li>{@link org.smeup.sys.il.expr.QAssignmentExpression#getOperator <em>Operator</em>}</li>
  *   <li>{@link org.smeup.sys.il.expr.QAssignmentExpression#getRightOperand <em>Right Operand</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage#getAssignmentExpression()
  * @model

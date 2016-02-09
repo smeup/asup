@@ -15,10 +15,10 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.expr.QCompoundTermExpression#getElements <em>Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage#getCompoundTermExpression()
  * @model abstract="true"

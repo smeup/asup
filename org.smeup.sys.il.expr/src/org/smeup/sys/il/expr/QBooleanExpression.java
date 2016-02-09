@@ -13,10 +13,10 @@ package org.smeup.sys.il.expr;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.expr.QBooleanExpression#getOperand <em>Operand</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage#getBooleanExpression()
  * @model

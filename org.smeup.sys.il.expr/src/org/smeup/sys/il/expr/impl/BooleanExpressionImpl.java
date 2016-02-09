@@ -23,10 +23,10 @@ import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
  * <em><b>Boolean Expression</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.expr.impl.BooleanExpressionImpl#getOperand <em>Operand</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

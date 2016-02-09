@@ -12,11 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.smeup.sys.il.core.meta.QCardinality;
-import org.smeup.sys.il.core.meta.QDefault;
-import org.smeup.sys.il.core.meta.QDomain;
-import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
-import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
+import org.smeup.sys.il.core.meta.*;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
@@ -62,7 +58,6 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 		switch (eClass.getClassifierID()) {
 			case QIntegratedLanguageCoreMetaPackage.CARDINALITY: return (EObject)createCardinality();
 			case QIntegratedLanguageCoreMetaPackage.DEFAULT: return (EObject)createDefault();
-			case QIntegratedLanguageCoreMetaPackage.DOMAIN: return (EObject)createDomain();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -86,16 +81,6 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 	public QDefault createDefault() {
 		DefaultImpl default_ = new DefaultImpl();
 		return default_;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QDomain createDomain() {
-		DomainImpl domain = new DomainImpl();
-		return domain;
 	}
 
 	/**

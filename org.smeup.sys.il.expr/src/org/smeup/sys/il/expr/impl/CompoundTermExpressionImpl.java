@@ -25,10 +25,10 @@ import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
  * <em><b>Compound Term Expression</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.expr.impl.CompoundTermExpressionImpl#getElements <em>Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

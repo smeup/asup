@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
+import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -155,7 +155,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_PARSER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.PLUGIN_REGISTRY_FEATURE_COUNT + 0;
+	int BINDING_PARSER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_REGISTRY_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.impl.BindingParseResultImpl <em>Binding Parse Result</em>}' class.
@@ -249,7 +249,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEFINITION_PARSER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.PLUGIN_REGISTRY_FEATURE_COUNT + 0;
+	int DEFINITION_PARSER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_REGISTRY_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.impl.DefinitionParseErrorImpl <em>Definition Parse Error</em>}' class.
@@ -380,7 +380,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEFINITION_WRITER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.PLUGIN_REGISTRY_FEATURE_COUNT + 0;
+	int DEFINITION_WRITER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_REGISTRY_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.impl.DefinitionStatementImpl <em>Definition Statement</em>}' class.
@@ -496,7 +496,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NAME_HELPER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.PLUGIN_REGISTRY_FEATURE_COUNT + 0;
+	int NAME_HELPER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_REGISTRY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name Helper</b></em>' reference.
@@ -523,7 +523,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUERY_WRITER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.PLUGIN_REGISTRY_FEATURE_COUNT + 0;
+	int QUERY_WRITER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_REGISTRY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Query Parser</em>' class.
@@ -541,7 +541,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUERY_PARSER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.PLUGIN_REGISTRY_FEATURE_COUNT + 0;
+	int QUERY_PARSER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_REGISTRY_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.StatementType <em>Statement Type</em>}' enum.

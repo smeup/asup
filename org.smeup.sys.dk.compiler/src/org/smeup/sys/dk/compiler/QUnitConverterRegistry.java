@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.dk.compiler;
 
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
+import org.smeup.sys.il.core.QObjectRegistry;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,5 +19,5 @@ import org.smeup.sys.il.core.ctx.QPluginRegistry;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QUnitConverterRegistry extends QPluginRegistry<QUnitConverter> {
+public interface QUnitConverterRegistry extends QObjectRegistry<QUnitConverter> {
 } // QUnitConverterRegistry

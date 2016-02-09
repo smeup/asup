@@ -13,10 +13,10 @@ package org.smeup.sys.il.expr;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.expr.QTermExpression#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage#getTermExpression()
  * @model abstract="true"

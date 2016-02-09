@@ -20,7 +20,6 @@ import org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl;
 import org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl;
 import org.smeup.sys.il.core.meta.QCardinality;
 import org.smeup.sys.il.core.meta.QDefault;
-import org.smeup.sys.il.core.meta.QDomain;
 import org.smeup.sys.il.core.meta.QFacet;
 import org.smeup.sys.il.core.meta.QFrame;
 import org.smeup.sys.il.core.meta.QFrameManager;
@@ -56,12 +55,6 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	private EClass defaultEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass domainEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -232,33 +225,6 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	@Override
-	public EClass getDomain() {
-		return domainEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getDomain_Name() {
-		return (EAttribute)domainEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getDomain_Text() {
-		return (EAttribute)domainEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getFacet() {
 		return facetEClass;
 	}
@@ -325,10 +291,6 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 		createEAttribute(defaultEClass, DEFAULT__VALUE);
 		createEAttribute(defaultEClass, DEFAULT__VALUES);
 
-		domainEClass = createEClass(DOMAIN);
-		createEAttribute(domainEClass, DOMAIN__NAME);
-		createEAttribute(domainEClass, DOMAIN__TEXT);
-
 		facetEClass = createEClass(FACET);
 
 		frameEClass = createEClass(FRAME);
@@ -371,11 +333,10 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 		frameEClass_O.getEBounds().add(g1);
 
 		// Add supertypes to classes
-		cardinalityEClass.getESuperTypes().add(this.getFacet());
+		cardinalityEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		defaultEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		domainEClass.getESuperTypes().add(this.getFacet());
 		facetEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		frameEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNameable());
+		frameEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		slotEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNameable());
 
 		// Initialize classes and features; add operations and parameters
@@ -394,10 +355,6 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 		addEOperation(defaultEClass, null, "clear", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(defaultEClass, ecorePackage.getEBoolean(), "isEmpty", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(domainEClass, QDomain.class, "Domain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDomain_Name(), ecorePackage.getEString(), "name", null, 0, 1, QDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDomain_Text(), ecorePackage.getEString(), "text", null, 0, 1, QDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(facetEClass, QFacet.class, "Facet", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -454,8 +411,6 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 		addEOperation(slotEClass, this.getCardinality(), "getCardinality", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(slotEClass, ecorePackage.getEJavaObject(), "getDefaultValue", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(slotEClass, this.getDomain(), "getDomain", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(slotEClass, ecorePackage.getEBoolean(), "isTransient", 0, 1, IS_UNIQUE, IS_ORDERED);
 

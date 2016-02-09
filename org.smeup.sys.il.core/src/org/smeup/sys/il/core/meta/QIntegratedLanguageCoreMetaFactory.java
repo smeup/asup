@@ -43,15 +43,6 @@ public interface QIntegratedLanguageCoreMetaFactory extends EFactory {
 	QDefault createDefault();
 
 	/**
-	 * Returns a new object of class '<em>Domain</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Domain</em>'.
-	 * @generated
-	 */
-	QDomain createDomain();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

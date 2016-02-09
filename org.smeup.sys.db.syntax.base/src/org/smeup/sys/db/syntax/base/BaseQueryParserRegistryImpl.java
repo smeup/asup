@@ -18,17 +18,17 @@ import javax.inject.Inject;
 import org.smeup.sys.db.core.QConnectionConfig;
 import org.smeup.sys.db.syntax.QQueryParser;
 import org.smeup.sys.db.syntax.QQueryParserRegistry;
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
-import org.smeup.sys.il.core.ctx.QPluginRegistryFactory;
+import org.smeup.sys.il.core.QObjectRegistry;
+import org.smeup.sys.il.core.QObjectRegistryFactory;
 
 public class BaseQueryParserRegistryImpl implements QQueryParserRegistry {
 
 	
-	private QPluginRegistry<QQueryParser> pluginRegistry;
+	private QObjectRegistry<QQueryParser> objectRegistry;
 	
 	@Inject
-	public BaseQueryParserRegistryImpl(QPluginRegistryFactory pluginRegistryFactory) {
-		 this.pluginRegistry = pluginRegistryFactory.createPluginRegistry(QQueryParser.class);
+	public BaseQueryParserRegistryImpl(QObjectRegistryFactory objectRegistryFactory) {
+		 this.objectRegistry = objectRegistryFactory.createObjectRegistry(QQueryParser.class);
 	}
 
 	@Override
@@ -38,16 +38,16 @@ public class BaseQueryParserRegistryImpl implements QQueryParserRegistry {
 
 	@Override
 	public QQueryParser lookup(String name) {
-		return this.pluginRegistry.lookup(name);
+		return this.objectRegistry.lookup(name);
 	}
 
 	@Override
 	public List<QQueryParser> list() {
-		return this.pluginRegistry.list();
+		return this.objectRegistry.list();
 	}
 
 	@Override
 	public QQueryParser lookupByVendorVersion(String vendor, String version) {
-		return this.pluginRegistry.lookupByVendorVersion(vendor, version);
+		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
 }

@@ -5,23 +5,24 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.ctx;
+package org.smeup.sys.il.core;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Plugin Registry Factory</b></em>'. <!-- end-user-doc -->
+ * <em><b>Object Registry Factory</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage#getPluginRegistryFactory()
+ * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getObjectRegistryFactory()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QPluginRegistryFactory {
+public interface QObjectRegistryFactory {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" klassRequired="true"
 	 * @generated
 	 */
-	<T> QPluginRegistry<T> createPluginRegistry(Class<T> klass);
+	<T> QObjectRegistry<T> createObjectRegistry(Class<T> klass);
 
-} // QPluginRegistryFactory
+} // QObjectRegistryFactory

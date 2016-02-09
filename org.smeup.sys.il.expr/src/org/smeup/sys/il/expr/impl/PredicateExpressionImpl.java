@@ -14,8 +14,6 @@ import org.smeup.sys.il.expr.QPredicateExpression;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Predicate Expression</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

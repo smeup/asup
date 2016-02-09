@@ -15,33 +15,33 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
-import org.smeup.sys.il.core.ctx.QPluginRegistryFactory;
+import org.smeup.sys.il.core.QObjectRegistry;
+import org.smeup.sys.il.core.QObjectRegistryFactory;
 import org.smeup.sys.il.core.out.QObjectWriterFactory;
 import org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry;
 
 public class BaseObjectWriterFactoryRegistryImpl implements QObjectWriterFactoryRegistry {
 
-	private QPluginRegistry<QObjectWriterFactory> pluginRegistry;
+	private QObjectRegistry<QObjectWriterFactory> objectRegistry;
 
 	@Inject
-	public BaseObjectWriterFactoryRegistryImpl(QPluginRegistryFactory pluginRegistryFactory) {
-		this.pluginRegistry = pluginRegistryFactory.createPluginRegistry(QObjectWriterFactory.class);
+	public BaseObjectWriterFactoryRegistryImpl(QObjectRegistryFactory objectRegistryFactory) {
+		this.objectRegistry = objectRegistryFactory.createObjectRegistry(QObjectWriterFactory.class);
 	}
 
 	@Override
 	public QObjectWriterFactory lookup(String name) {
-		return this.pluginRegistry.lookup(name);
+		return this.objectRegistry.lookup(name);
 	}
 
 	@Override
 	public List<QObjectWriterFactory> list() {
-		return this.pluginRegistry.list();
+		return this.objectRegistry.list();
 	}
 
 	@Override
 	public QObjectWriterFactory lookupByVendorVersion(String vendor, String version) {
-		return this.pluginRegistry.lookupByVendorVersion(vendor, version);
+		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
 
 }

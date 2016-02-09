@@ -18,16 +18,16 @@ import javax.inject.Inject;
 import org.smeup.sys.db.core.QConnectionConfig;
 import org.smeup.sys.db.syntax.QNameHelper;
 import org.smeup.sys.db.syntax.QNameHelperRegistry;
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
-import org.smeup.sys.il.core.ctx.QPluginRegistryFactory;
+import org.smeup.sys.il.core.QObjectRegistry;
+import org.smeup.sys.il.core.QObjectRegistryFactory;
 
 public class BaseNameHelperRegistryImpl implements QNameHelperRegistry {
 	
-	private QPluginRegistry<QNameHelper> pluginRegistry;
+	private QObjectRegistry<QNameHelper> objectRegistry;
 	
 	@Inject
-	public BaseNameHelperRegistryImpl(QPluginRegistryFactory pluginRegistryFactory) {
-		 this.pluginRegistry = pluginRegistryFactory.createPluginRegistry(QNameHelper.class);
+	public BaseNameHelperRegistryImpl(QObjectRegistryFactory objectRegistryFactory) {
+		 this.objectRegistry = objectRegistryFactory.createObjectRegistry(QNameHelper.class);
 	}
 
 	@Override
@@ -37,17 +37,17 @@ public class BaseNameHelperRegistryImpl implements QNameHelperRegistry {
 
 	@Override
 	public QNameHelper lookup(String name) {
-		return this.pluginRegistry.lookup(name);
+		return this.objectRegistry.lookup(name);
 	}
 
 	@Override
 	public List<QNameHelper> list() {
-		return this.pluginRegistry.list();
+		return this.objectRegistry.list();
 	}
 
 	@Override
 	public QNameHelper lookupByVendorVersion(String vendor, String version) {
-		return this.pluginRegistry.lookupByVendorVersion(vendor, version);
+		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
 
 

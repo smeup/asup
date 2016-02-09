@@ -18,17 +18,17 @@ import javax.inject.Inject;
 import org.smeup.sys.db.core.QConnectionConfig;
 import org.smeup.sys.db.syntax.QDefinitionWriter;
 import org.smeup.sys.db.syntax.QDefinitionWriterRegistry;
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
-import org.smeup.sys.il.core.ctx.QPluginRegistryFactory;
+import org.smeup.sys.il.core.QObjectRegistry;
+import org.smeup.sys.il.core.QObjectRegistryFactory;
 
 public class BaseDefinitionWriterRegistryImpl implements QDefinitionWriterRegistry {
 
 	
-	private QPluginRegistry<QDefinitionWriter> pluginRegistry;
+	private QObjectRegistry<QDefinitionWriter> objectRegistry;
 	
 	@Inject
-	public BaseDefinitionWriterRegistryImpl(QPluginRegistryFactory pluginRegistryFactory) {
-		 this.pluginRegistry = pluginRegistryFactory.createPluginRegistry(QDefinitionWriter.class);
+	public BaseDefinitionWriterRegistryImpl(QObjectRegistryFactory objectRegistryFactory) {
+		 this.objectRegistry = objectRegistryFactory.createObjectRegistry(QDefinitionWriter.class);
 	}
 
 	@Override
@@ -38,16 +38,16 @@ public class BaseDefinitionWriterRegistryImpl implements QDefinitionWriterRegist
 
 	@Override
 	public QDefinitionWriter lookup(String name) {
-		return this.pluginRegistry.lookup(name);
+		return this.objectRegistry.lookup(name);
 	}
 
 	@Override
 	public List<QDefinitionWriter> list() {
-		return this.pluginRegistry.list();
+		return this.objectRegistry.list();
 	}
 
 	@Override
 	public QDefinitionWriter lookupByVendorVersion(String vendor, String version) {
-		return this.pluginRegistry.lookupByVendorVersion(vendor, version);
+		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
 }

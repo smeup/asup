@@ -12,37 +12,14 @@
   <foreignModel>il-core.ecore</foreignModel>
   <genPackages prefix="IntegratedLanguageCore" basePackage="org.smeup.sys.il" disposableProviderFactory="true"
       adapterFactory="false" ecorePackage="il-core.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-core.ecore#//ConversionStatus">
-      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//ConversionStatus/Possible"/>
-      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//ConversionStatus/Supported"/>
-      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//ConversionStatus/Unsupported"/>
-      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//ConversionStatus/Todo"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-core.ecore#//ThreadStatus">
+      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//ThreadStatus/New"/>
+      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//ThreadStatus/Runnable"/>
+      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//ThreadStatus/Blocked"/>
+      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//ThreadStatus/Waiting"/>
+      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//ThreadStatus/TimedWaiting"/>
+      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//ThreadStatus/Terminated"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-core.ecore#//FormatType">
-      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//FormatType/CommunicationsName"/>
-      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//FormatType/CommandString"/>
-      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//FormatType/Generic"/>
-      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//FormatType/Name"/>
-      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//FormatType/PathName"/>
-      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//FormatType/RegularExpression"/>
-      <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//FormatType/SimpleName"/>
-    </genEnums>
-    <genClasses image="false" ecoreClass="il-core.ecore#//Annotation"/>
-    <genClasses ecoreClass="il-core.ecore#//AnnotationScope">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//AnnotationScope/name"/>
-    </genClasses>
-    <genClasses ecoreClass="il-core.ecore#//AnnotationTest">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//AnnotationTest/expression"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//AnnotationTest/message"/>
-    </genClasses>
-    <genClasses ecoreClass="il-core.ecore#//Conversion">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//Conversion/status"/>
-    </genClasses>
-    <genClasses ecoreClass="il-core.ecore#//Derived"/>
-    <genClasses ecoreClass="il-core.ecore#//Format">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//Format/expression"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//Format/type"/>
-    </genClasses>
     <genClasses image="false" ecoreClass="il-core.ecore#//Nameable">
       <genOperations ecoreOperation="il-core.ecore#//Nameable/getName"/>
     </genClasses>
@@ -72,27 +49,35 @@
       <genOperations ecoreOperation="il-core.ecore#//ObjectIterator/remove"/>
     </genClasses>
     <genClasses image="false" ecoreClass="il-core.ecore#//ObjectNameable"/>
-    <genClasses ecoreClass="il-core.ecore#//Overlay">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//Overlay/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//Overlay/position"/>
+    <genClasses image="false" ecoreClass="il-core.ecore#//ObjectRegistry">
+      <genTypeParameters ecoreTypeParameter="il-core.ecore#//ObjectRegistry/T"/>
+      <genOperations ecoreOperation="il-core.ecore#//ObjectRegistry/lookup">
+        <genParameters ecoreParameter="il-core.ecore#//ObjectRegistry/lookup/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-core.ecore#//ObjectRegistry/list"/>
+      <genOperations ecoreOperation="il-core.ecore#//ObjectRegistry/lookupByVendorVersion">
+        <genParameters ecoreParameter="il-core.ecore#//ObjectRegistry/lookupByVendorVersion/vendor"/>
+        <genParameters ecoreParameter="il-core.ecore#//ObjectRegistry/lookupByVendorVersion/version"/>
+      </genOperations>
     </genClasses>
-    <genClasses ecoreClass="il-core.ecore#//Remap">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//Remap/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//Remap/index"/>
-    </genClasses>
-    <genClasses ecoreClass="il-core.ecore#//Special">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//Special/classDelegate"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-core.ecore#//Special/elements"/>
-    </genClasses>
-    <genClasses ecoreClass="il-core.ecore#//SpecialElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//SpecialElement/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//SpecialElement/text"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//SpecialElement/unary"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//SpecialElement/value"/>
+    <genClasses image="false" ecoreClass="il-core.ecore#//ObjectRegistryFactory">
+      <genOperations ecoreOperation="il-core.ecore#//ObjectRegistryFactory/createObjectRegistry">
+        <genParameters ecoreParameter="il-core.ecore#//ObjectRegistryFactory/createObjectRegistry/klass"/>
+        <genTypeParameters ecoreTypeParameter="il-core.ecore#//ObjectRegistryFactory/createObjectRegistry/T"/>
+      </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="il-core.ecore#//Thread">
       <genOperations ecoreOperation="il-core.ecore#//Thread/checkRunnable"/>
       <genOperations ecoreOperation="il-core.ecore#//Thread/getJavaThread"/>
+      <genOperations ecoreOperation="il-core.ecore#//Thread/getThreadID"/>
+      <genOperations ecoreOperation="il-core.ecore#//Thread/getThreadName"/>
+      <genOperations ecoreOperation="il-core.ecore#//Thread/getThreadPriority"/>
+      <genOperations ecoreOperation="il-core.ecore#//Thread/getThreadCPUUsage"/>
+      <genOperations ecoreOperation="il-core.ecore#//Thread/getThreadStatus"/>
+      <genOperations ecoreOperation="il-core.ecore#//Thread/isInterrupted"/>
+      <genOperations ecoreOperation="il-core.ecore#//Thread/isNative"/>
+      <genOperations ecoreOperation="il-core.ecore#//Thread/isSuspended"/>
+      <genOperations ecoreOperation="il-core.ecore#//Thread/isThreadDaemon"/>
     </genClasses>
     <genClasses image="false" ecoreClass="il-core.ecore#//ThreadManager">
       <genOperations ecoreOperation="il-core.ecore#//ThreadManager/createThread">
@@ -132,6 +117,11 @@
         <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//ctx/ContextInjectionStrategy/Local"/>
         <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//ctx/ContextInjectionStrategy/Remote"/>
       </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-core.ecore#//ctx/CapabilityRight">
+        <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//ctx/CapabilityRight/Read"/>
+        <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//ctx/CapabilityRight/Write"/>
+        <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//ctx/CapabilityRight/Execute"/>
+      </genEnums>
       <genClasses image="false" ecoreClass="il-core.ecore#//ctx/AdapterFactory">
         <genOperations ecoreOperation="il-core.ecore#//ctx/AdapterFactory/getAdapter">
           <genParameters ecoreParameter="il-core.ecore#//ctx/AdapterFactory/getAdapter/context"/>
@@ -139,6 +129,12 @@
           <genParameters ecoreParameter="il-core.ecore#//ctx/AdapterFactory/getAdapter/adapterType"/>
           <genTypeParameters ecoreTypeParameter="il-core.ecore#//ctx/AdapterFactory/getAdapter/T"/>
         </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="il-core.ecore#//ctx/Capability">
+        <genTypeParameters ecoreTypeParameter="il-core.ecore#//ctx/Capability/T"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//ctx/Capability/rights"/>
+        <genOperations ecoreOperation="il-core.ecore#//ctx/Capability/getObjectAddress"/>
+        <genOperations ecoreOperation="il-core.ecore#//ctx/Capability/getObjectID"/>
       </genClasses>
       <genClasses image="false" ecoreClass="il-core.ecore#//ctx/Context">
         <genOperations ecoreOperation="il-core.ecore#//ctx/Context/close"/>
@@ -167,6 +163,7 @@
         <genOperations ecoreOperation="il-core.ecore#//ctx/Context/inject">
           <genParameters ecoreParameter="il-core.ecore#//ctx/Context/inject/object"/>
         </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//ctx/Context/isClosed"/>
         <genOperations ecoreOperation="il-core.ecore#//ctx/Context/loadClass">
           <genParameters ecoreParameter="il-core.ecore#//ctx/Context/loadClass/address"/>
         </genOperations>
@@ -187,6 +184,12 @@
           <genParameters ecoreParameter="il-core.ecore#//ctx/Context/registerAdapterFactory/adapterType"/>
           <genTypeParameters ecoreTypeParameter="il-core.ecore#//ctx/Context/registerAdapterFactory/T"/>
         </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//ctx/Context/resolveAlias">
+          <genParameters ecoreParameter="il-core.ecore#//ctx/Context/resolveAlias/value"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//ctx/Context/resolveAliases">
+          <genParameters ecoreParameter="il-core.ecore#//ctx/Context/resolveAliases/values"/>
+        </genOperations>
         <genOperations ecoreOperation="il-core.ecore#//ctx/Context/set">
           <genParameters ecoreParameter="il-core.ecore#//ctx/Context/set/klass"/>
           <genParameters ecoreParameter="il-core.ecore#//ctx/Context/set/object"/>
@@ -203,30 +206,14 @@
         <genOperations ecoreOperation="il-core.ecore#//ctx/ContextDescription/getLibraryPath"/>
         <genOperations ecoreOperation="il-core.ecore#//ctx/ContextDescription/getName"/>
         <genOperations ecoreOperation="il-core.ecore#//ctx/ContextDescription/getSystemLibrary"/>
+        <genOperations ecoreOperation="il-core.ecore#//ctx/ContextDescription/getTemporaryLibrary"/>
       </genClasses>
       <genClasses image="false" ecoreClass="il-core.ecore#//ctx/ContextProvider">
         <genOperations ecoreOperation="il-core.ecore#//ctx/ContextProvider/getContext"/>
       </genClasses>
-      <genClasses image="false" ecoreClass="il-core.ecore#//ctx/Credentials">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//ctx/Credentials/user"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//ctx/Credentials/password"/>
-      </genClasses>
-      <genClasses image="false" ecoreClass="il-core.ecore#//ctx/PluginRegistry">
-        <genTypeParameters ecoreTypeParameter="il-core.ecore#//ctx/PluginRegistry/T"/>
-        <genOperations ecoreOperation="il-core.ecore#//ctx/PluginRegistry/lookup">
-          <genParameters ecoreParameter="il-core.ecore#//ctx/PluginRegistry/lookup/name"/>
-        </genOperations>
-        <genOperations ecoreOperation="il-core.ecore#//ctx/PluginRegistry/list"/>
-        <genOperations ecoreOperation="il-core.ecore#//ctx/PluginRegistry/lookupByVendorVersion">
-          <genParameters ecoreParameter="il-core.ecore#//ctx/PluginRegistry/lookupByVendorVersion/vendor"/>
-          <genParameters ecoreParameter="il-core.ecore#//ctx/PluginRegistry/lookupByVendorVersion/version"/>
-        </genOperations>
-      </genClasses>
-      <genClasses image="false" ecoreClass="il-core.ecore#//ctx/PluginRegistryFactory">
-        <genOperations ecoreOperation="il-core.ecore#//ctx/PluginRegistryFactory/createPluginRegistry">
-          <genParameters ecoreParameter="il-core.ecore#//ctx/PluginRegistryFactory/createPluginRegistry/klass"/>
-          <genTypeParameters ecoreTypeParameter="il-core.ecore#//ctx/PluginRegistryFactory/createPluginRegistry/T"/>
-        </genOperations>
+      <genClasses image="false" ecoreClass="il-core.ecore#//ctx/Identity">
+        <genTypeParameters ecoreTypeParameter="il-core.ecore#//ctx/Identity/T"/>
+        <genOperations ecoreOperation="il-core.ecore#//ctx/Identity/getJavaPrincipal"/>
       </genClasses>
     </nestedGenPackages>
     <nestedGenPackages prefix="IntegratedLanguageCoreMeta" basePackage="org.smeup.sys.il.core"
@@ -243,15 +230,18 @@
         <genOperations ecoreOperation="il-core.ecore#//meta/Default/clear"/>
         <genOperations ecoreOperation="il-core.ecore#//meta/Default/isEmpty"/>
       </genClasses>
-      <genClasses ecoreClass="il-core.ecore#//meta/Domain">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//meta/Domain/name"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//meta/Domain/text"/>
-      </genClasses>
       <genClasses image="false" ecoreClass="il-core.ecore#//meta/Facet"/>
       <genClasses image="false" ecoreClass="il-core.ecore#//meta/Frame">
         <genTypeParameters ecoreTypeParameter="il-core.ecore#//meta/Frame/O"/>
         <genOperations ecoreOperation="il-core.ecore#//meta/Frame/ako"/>
+        <genOperations ecoreOperation="il-core.ecore#//meta/Frame/getSlot">
+          <genParameters ecoreParameter="il-core.ecore#//meta/Frame/getSlot/name"/>
+        </genOperations>
         <genOperations ecoreOperation="il-core.ecore#//meta/Frame/getSlots"/>
+        <genOperations ecoreOperation="il-core.ecore#//meta/Frame/getValue">
+          <genParameters ecoreParameter="il-core.ecore#//meta/Frame/getValue/object"/>
+          <genParameters ecoreParameter="il-core.ecore#//meta/Frame/getValue/slot"/>
+        </genOperations>
       </genClasses>
       <genClasses image="false" ecoreClass="il-core.ecore#//meta/FrameManager">
         <genOperations ecoreOperation="il-core.ecore#//meta/FrameManager/getFrame">
@@ -266,14 +256,9 @@
           <genTypeParameters ecoreTypeParameter="il-core.ecore#//meta/FrameManager/createObject/O"/>
         </genOperations>
       </genClasses>
-      <genClasses ecoreClass="il-core.ecore#//meta/Range">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//meta/Range/max"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//meta/Range/min"/>
-      </genClasses>
       <genClasses image="false" ecoreClass="il-core.ecore#//meta/Slot">
         <genOperations ecoreOperation="il-core.ecore#//meta/Slot/getCardinality"/>
         <genOperations ecoreOperation="il-core.ecore#//meta/Slot/getDefaultValue"/>
-        <genOperations ecoreOperation="il-core.ecore#//meta/Slot/getDomain"/>
         <genOperations ecoreOperation="il-core.ecore#//meta/Slot/isTransient"/>
         <genOperations ecoreOperation="il-core.ecore#//meta/Slot/isVolatile"/>
         <genOperations ecoreOperation="il-core.ecore#//meta/Slot/getValue">
@@ -288,12 +273,6 @@
         <genOperations ecoreOperation="il-core.ecore#//out/ObjectWriter/initialize"/>
         <genOperations ecoreOperation="il-core.ecore#//out/ObjectWriter/write">
           <genParameters ecoreParameter="il-core.ecore#//out/ObjectWriter/write/object"/>
-        </genOperations>
-      </genClasses>
-      <genClasses image="false" ecoreClass="il-core.ecore#//out/WritableObject">
-        <genOperations ecoreOperation="il-core.ecore#//out/WritableObject/getObjectToWrite"/>
-        <genOperations ecoreOperation="il-core.ecore#//out/WritableObject/setObject">
-          <genParameters ecoreParameter="il-core.ecore#//out/WritableObject/setObject/object"/>
         </genOperations>
       </genClasses>
       <genClasses image="false" ecoreClass="il-core.ecore#//out/ObjectWriterFactory">
@@ -318,13 +297,6 @@
         <genOperations ecoreOperation="il-core.ecore#//out/OutputManager/setDefaultWriter">
           <genParameters ecoreParameter="il-core.ecore#//out/OutputManager/setDefaultWriter/context"/>
           <genParameters ecoreParameter="il-core.ecore#//out/OutputManager/setDefaultWriter/name"/>
-        </genOperations>
-        <genOperations ecoreOperation="il-core.ecore#//out/OutputManager/getWritableObject">
-          <genParameters ecoreParameter="il-core.ecore#//out/OutputManager/getWritableObject/label"/>
-        </genOperations>
-        <genOperations ecoreOperation="il-core.ecore#//out/OutputManager/getWritableObject.1">
-          <genParameters ecoreParameter="il-core.ecore#//out/OutputManager/getWritableObject.1/label"/>
-          <genParameters ecoreParameter="il-core.ecore#//out/OutputManager/getWritableObject.1/columnLength"/>
         </genOperations>
       </genClasses>
     </nestedGenPackages>
@@ -605,7 +577,6 @@
       <genOperations ecoreOperation="il-data.ecore#//BufferedData/fill">
         <genParameters ecoreParameter="il-data.ecore#//BufferedData/fill/value"/>
       </genOperations>
-      <genOperations ecoreOperation="il-data.ecore#//BufferedData/isNull"/>
       <genOperations ecoreOperation="il-data.ecore#//BufferedData/ge">
         <genParameters ecoreParameter="il-data.ecore#//BufferedData/ge/value"/>
       </genOperations>
@@ -626,6 +597,8 @@
       <genOperations ecoreOperation="il-data.ecore#//BufferedData/gt.2">
         <genParameters ecoreParameter="il-data.ecore#//BufferedData/gt.2/value"/>
       </genOperations>
+      <genOperations ecoreOperation="il-data.ecore#//BufferedData/isNull"/>
+      <genOperations ecoreOperation="il-data.ecore#//BufferedData/isStoreOwner"/>
       <genOperations ecoreOperation="il-data.ecore#//BufferedData/le">
         <genParameters ecoreParameter="il-data.ecore#//BufferedData/le/value"/>
       </genOperations>
@@ -1045,10 +1018,12 @@
         <genParameters ecoreParameter="il-data.ecore#//DataContainer/getData.1/dataTerm"/>
       </genOperations>
       <genOperations ecoreOperation="il-data.ecore#//DataContainer/getDataContext"/>
+      <genOperations ecoreOperation="il-data.ecore#//DataContainer/getDatas"/>
       <genOperations ecoreOperation="il-data.ecore#//DataContainer/getDataTerm">
         <genParameters ecoreParameter="il-data.ecore#//DataContainer/getDataTerm/key"/>
       </genOperations>
       <genOperations ecoreOperation="il-data.ecore#//DataContainer/getKeys"/>
+      <genOperations ecoreOperation="il-data.ecore#//DataContainer/getMemorySize"/>
       <genOperations ecoreOperation="il-data.ecore#//DataContainer/hasDefaultValue">
         <genParameters ecoreParameter="il-data.ecore#//DataContainer/hasDefaultValue/key"/>
       </genOperations>
@@ -2407,10 +2382,19 @@
       <genOperations ecoreOperation="il-data.ecore#//String/qTriml"/>
       <genOperations ecoreOperation="il-data.ecore#//String/qTrimr"/>
       <genOperations ecoreOperation="il-data.ecore#//String/s"/>
+      <genOperations ecoreOperation="il-data.ecore#//String/trim"/>
       <genOperations ecoreOperation="il-data.ecore#//String/testn">
         <genParameters ecoreParameter="il-data.ecore#//String/testn/numeric"/>
       </genOperations>
-      <genOperations ecoreOperation="il-data.ecore#//String/trim"/>
+      <genOperations ecoreOperation="il-data.ecore#//String/testn.1">
+        <genParameters ecoreParameter="il-data.ecore#//String/testn.1/numeric"/>
+        <genParameters ecoreParameter="il-data.ecore#//String/testn.1/blank"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-data.ecore#//String/testn.2">
+        <genParameters ecoreParameter="il-data.ecore#//String/testn.2/numeric"/>
+        <genParameters ecoreParameter="il-data.ecore#//String/testn.2/blank"/>
+        <genParameters ecoreParameter="il-data.ecore#//String/testn.2/blankNumeric"/>
+      </genOperations>
       <genOperations ecoreOperation="il-data.ecore#//String/trimL"/>
       <genOperations ecoreOperation="il-data.ecore#//String/trimR"/>
       <genOperations ecoreOperation="il-data.ecore#//String/xlate">
@@ -2653,6 +2637,7 @@
         <genParameters ecoreParameter="il-data.ecore#//Struct/getElement/name"/>
       </genOperations>
       <genOperations ecoreOperation="il-data.ecore#//Struct/getElements"/>
+      <genOperations ecoreOperation="il-data.ecore#//Struct/getElementNames"/>
     </genClasses>
     <nestedGenPackages prefix="IntegratedLanguageDataDef" basePackage="org.smeup.sys.il.data"
         disposableProviderFactory="true" adapterFactory="false" ecorePackage="il-data.ecore#//def">
@@ -2692,6 +2677,7 @@
         <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//def/DateFormat/MDY"/>
         <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//def/DateFormat/DMY"/>
         <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//def/DateFormat/YMD"/>
+        <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//def/DateFormat/YYMD"/>
         <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//def/DateFormat/JUL"/>
         <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//def/DateFormat/ISO"/>
         <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//def/DateFormat/USA"/>
@@ -2843,6 +2829,15 @@
         <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//term/DataTermType/MultipleAtomic"/>
         <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//term/DataTermType/MultipleCompound"/>
       </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-data.ecore#//term/FormatType">
+        <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//term/FormatType/CommunicationsName"/>
+        <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//term/FormatType/CommandString"/>
+        <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//term/FormatType/Generic"/>
+        <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//term/FormatType/Name"/>
+        <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//term/FormatType/PathName"/>
+        <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//term/FormatType/RegularExpression"/>
+        <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//term/FormatType/SimpleName"/>
+      </genEnums>
       <genClasses image="false" ecoreClass="il-data.ecore#//term/DataTerm">
         <genTypeParameters ecoreTypeParameter="il-data.ecore#//term/DataTerm/DD"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-data.ecore#//term/DataTerm/based"/>
@@ -2869,6 +2864,32 @@
           <genParameters ecoreParameter="il-data.ecore#//term/DataTermVisitor/visit/term"/>
         </genOperations>
       </genClasses>
+      <genClasses ecoreClass="il-data.ecore#//term/Format">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-data.ecore#//term/Format/expression"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-data.ecore#//term/Format/type"/>
+      </genClasses>
+      <genClasses ecoreClass="il-data.ecore#//term/Overlay">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-data.ecore#//term/Overlay/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-data.ecore#//term/Overlay/position"/>
+      </genClasses>
+      <genClasses ecoreClass="il-data.ecore#//term/Range">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-data.ecore#//term/Range/max"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-data.ecore#//term/Range/min"/>
+      </genClasses>
+      <genClasses ecoreClass="il-data.ecore#//term/Remap">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-data.ecore#//term/Remap/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-data.ecore#//term/Remap/index"/>
+      </genClasses>
+      <genClasses ecoreClass="il-data.ecore#//term/Special">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-data.ecore#//term/Special/classDelegate"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-data.ecore#//term/Special/elements"/>
+      </genClasses>
+      <genClasses ecoreClass="il-data.ecore#//term/SpecialElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-data.ecore#//term/SpecialElement/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-data.ecore#//term/SpecialElement/text"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-data.ecore#//term/SpecialElement/unary"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-data.ecore#//term/SpecialElement/value"/>
+      </genClasses>
     </nestedGenPackages>
-  </genPackages>  
+  </genPackages>
 </genmodel:GenModel>

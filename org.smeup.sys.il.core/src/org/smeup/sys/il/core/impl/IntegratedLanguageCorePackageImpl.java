@@ -25,6 +25,8 @@ import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectContainer;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.QObjectRegistry;
+import org.smeup.sys.il.core.QObjectRegistryFactory;
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.core.ThreadStatus;
@@ -92,6 +94,20 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass objectNameableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass objectRegistryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass objectRegistryFactoryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -286,6 +302,24 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getObjectRegistry() {
+		return objectRegistryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getObjectRegistryFactory() {
+		return objectRegistryFactoryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getThread() {
 		return threadEClass;
 	}
@@ -351,6 +385,10 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 		objectNameableEClass = createEClass(OBJECT_NAMEABLE);
 
+		objectRegistryEClass = createEClass(OBJECT_REGISTRY);
+
+		objectRegistryFactoryEClass = createEClass(OBJECT_REGISTRY_FACTORY);
+
 		threadEClass = createEClass(THREAD);
 
 		threadManagerEClass = createEClass(THREAD_MANAGER);
@@ -398,6 +436,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		// Create type parameters
 		ETypeParameter objectContainerEClass_T = addETypeParameter(objectContainerEClass, "T");
 		ETypeParameter objectIteratorEClass_T = addETypeParameter(objectIteratorEClass, "T");
+		ETypeParameter objectRegistryEClass_T = addETypeParameter(objectRegistryEClass, "T");
 
 		// Set bounds for type parameters
 		EGenericType g1 = createEGenericType(this.getObject());
@@ -472,6 +511,36 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		addEOperation(objectIteratorEClass, null, "remove", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(objectNameableEClass, QObjectNameable.class, "ObjectNameable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(objectRegistryEClass, QObjectRegistry.class, "ObjectRegistry", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(objectRegistryEClass, null, "lookup", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(objectRegistryEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(objectRegistryEClass, null, "list", 1, -1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(objectRegistryEClass_T);
+		initEOperation(op, g1);
+
+		op = addEOperation(objectRegistryEClass, null, "lookupByVendorVersion", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "vendor", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "version", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(objectRegistryEClass_T);
+		initEOperation(op, g1);
+
+		initEClass(objectRegistryFactoryEClass, QObjectRegistryFactory.class, "ObjectRegistryFactory", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(objectRegistryFactoryEClass, null, "createObjectRegistry", 1, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "T");
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getObjectRegistry());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
 
 		initEClass(threadEClass, QThread.class, "Thread", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

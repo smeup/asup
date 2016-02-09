@@ -24,12 +24,12 @@ import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
  * <em><b>Arithmetic Expression</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.expr.impl.ArithmeticExpressionImpl#getLeftOperand <em>Left Operand</em>}</li>
  *   <li>{@link org.smeup.sys.il.expr.impl.ArithmeticExpressionImpl#getOperator <em>Operator</em>}</li>
  *   <li>{@link org.smeup.sys.il.expr.impl.ArithmeticExpressionImpl#getRightOperand <em>Right Operand</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -23,10 +23,10 @@ import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
  * <em><b>Block Expression</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.expr.impl.BlockExpressionImpl#getExpression <em>Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
