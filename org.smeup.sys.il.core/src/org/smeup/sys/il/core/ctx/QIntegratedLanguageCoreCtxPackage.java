@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.core.ctx;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
@@ -114,13 +115,22 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	int CAPABILITY = 1;
 
 	/**
+	 * The feature id for the '<em><b>Rights</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__RIGHTS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Capability</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
+	int CAPABILITY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Context</em>' class. <!--
@@ -215,6 +225,16 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	int CONTEXT_INJECTION_STRATEGY = 8;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.CapabilityRight <em>Capability Right</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.ctx.CapabilityRight
+	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getCapabilityRight()
+	 * @generated
+	 */
+	int CAPABILITY_RIGHT = 9;
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.ctx.QAdapterFactory <em>Adapter Factory</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Adapter Factory</em>'.
@@ -267,6 +287,17 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	EClass getCapability();
 
 	/**
+	 * Returns the meta object for the attribute list '{@link org.smeup.sys.il.core.ctx.QCapability#getRights <em>Rights</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Rights</em>'.
+	 * @see org.smeup.sys.il.core.ctx.QCapability#getRights()
+	 * @see #getCapability()
+	 * @generated
+	 */
+	EAttribute getCapability_Rights();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.ctx.QPluginRegistry <em>Plugin Registry</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Plugin Registry</em>'.
@@ -304,6 +335,16 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getContextInjectionStrategy();
+
+	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.il.core.ctx.CapabilityRight <em>Capability Right</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Capability Right</em>'.
+	 * @see org.smeup.sys.il.core.ctx.CapabilityRight
+	 * @generated
+	 */
+	EEnum getCapabilityRight();
 
 	/**
 	 * Returns the factory that creates the instances of the model. <!--
@@ -377,6 +418,14 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 		EClass CAPABILITY = eINSTANCE.getCapability();
 
 		/**
+		 * The meta object literal for the '<em><b>Rights</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CAPABILITY__RIGHTS = eINSTANCE.getCapability_Rights();
+
+		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.QPluginRegistry <em>Plugin Registry</em>}' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
@@ -415,6 +464,16 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum CONTEXT_INJECTION_STRATEGY = eINSTANCE.getContextInjectionStrategy();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.CapabilityRight <em>Capability Right</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.core.ctx.CapabilityRight
+		 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getCapabilityRight()
+		 * @generated
+		 */
+		EEnum CAPABILITY_RIGHT = eINSTANCE.getCapabilityRight();
 
 	}
 

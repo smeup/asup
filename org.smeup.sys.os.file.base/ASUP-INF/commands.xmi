@@ -94,7 +94,7 @@
       <dataTerm
           name="destinationID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="4FFE"
             min="4001"/>
         <default
@@ -112,7 +112,7 @@
       <dataTerm
           name="transportPort">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="15"
             min="0"/>
         <default
@@ -397,7 +397,7 @@
       <dataTerm
           name="hopIdentifier">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="FEFFFFFFFFFF"
             min="020000000000"/>
         <facets
@@ -493,7 +493,7 @@
       <dataTerm
           name="radioSystemIdentifier">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="FFFFFE"
             min="000002"/>
         <default
@@ -2054,7 +2054,7 @@
       <dataTerm
           name="deleteReceiverDelayTime">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="1440"
             min="1"/>
         <default
@@ -2150,7 +2150,7 @@
       <dataTerm
           name="severityCodeFilter">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99"
             min="0"/>
         <default
@@ -2447,7 +2447,7 @@
       <dataTerm
           name="startingSequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -2497,7 +2497,7 @@
       <dataTerm
           name="endingSequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -2583,7 +2583,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <cardinality
@@ -2633,7 +2633,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <cardinality
@@ -3389,7 +3389,7 @@
       <dataTerm
           name="startingSequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -3439,7 +3439,7 @@
       <dataTerm
           name="endingSequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -3525,7 +3525,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <cardinality
@@ -3575,7 +3575,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <cardinality
@@ -4117,7 +4117,7 @@
       <dataTerm
           name="portNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="1"/>
         <facets
@@ -4548,7 +4548,7 @@
       <dataTerm
           name="destinationID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="4FFE"
             min="4001"/>
         <facets
@@ -4572,7 +4572,7 @@
       <dataTerm
           name="transportPort">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="15"
             min="0"/>
         <facets
@@ -4883,7 +4883,7 @@
       <dataTerm
           name="hopIdentifier">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="FEFFFFFFFFFF"
             min="020000000000"/>
         <facets
@@ -4988,7 +4988,7 @@
       <dataTerm
           name="radioSystemIdentifier">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="FFFFFE"
             min="000002"/>
         <facets
@@ -5479,7 +5479,7 @@
       <dataTerm
           name="manageReceiverDelayTime">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="1440"
             min="1"/>
         <facets
@@ -5503,7 +5503,7 @@
       <dataTerm
           name="deleteReceiverDelayTime">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="1440"
             min="1"/>
         <facets
@@ -5582,7 +5582,7 @@
       <dataTerm
           name="journalReceiverThreshold">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="1000000000"
             min="100000"/>
         <facets
@@ -5633,7 +5633,7 @@
       <dataTerm
           name="journalRecoveryCount">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="2000000000"
             min="10000"/>
         <facets
@@ -5693,7 +5693,7 @@
       <dataTerm
           name="journalRecoveryCount">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="2000000000"
             min="10000"/>
         <facets
@@ -5720,7 +5720,7 @@
       <dataTerm
           name="cacheWaitTime">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="600"
             min="1"/>
         <facets
@@ -5993,7 +5993,7 @@
       <dataTerm
           name="preferredStorageUnit">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="1"/>
         <facets
@@ -6602,7 +6602,7 @@
       <dataTerm
           name="generationSeverityLevel">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="30"
             min="0"/>
         <default
@@ -6620,7 +6620,7 @@
       <dataTerm
           name="flaggingSeverityLevel">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="30"
             min="0"/>
         <default
@@ -6850,7 +6850,7 @@
               xsi:type="os-cmd:CommandData"
               name="initialNumberOfRecords">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="2147483646"
                 min="1"/>
             <facets
@@ -6872,7 +6872,7 @@
               xsi:type="os-cmd:CommandData"
               name="incrementNumberOfRecords">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="32767"
                 min="0"/>
             <facets
@@ -6891,7 +6891,7 @@
               xsi:type="os-cmd:CommandData"
               name="maximumIncrements">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="32767"
                 min="0"/>
             <facets
@@ -6944,7 +6944,7 @@
       <dataTerm
           name="preferredStorageUnit">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="1"/>
         <facets
@@ -7076,7 +7076,7 @@
       <dataTerm
           name="maxDeletedRecordsAllowed">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="100"
             min="1"/>
         <facets
@@ -7220,7 +7220,7 @@
       <dataTerm
           name="codedCharacterSetID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="1"/>
         <facets
@@ -7872,7 +7872,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <definition
@@ -7890,7 +7890,7 @@
       <dataTerm
           name="queryProcessingTimeLimit">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="2147352578"
             min="0"/>
         <facets
@@ -7964,7 +7964,7 @@
               xsi:type="os-cmd:CommandData"
               name="numberOfTasks">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="9999"
                 min="2"/>
             <cardinality
@@ -8067,7 +8067,7 @@
       <dataTerm
           name="queryTemporaryStorageLimit">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="2147352578"
             min="0"/>
         <facets
@@ -8428,7 +8428,7 @@
       <dataTerm
           name="sendingTaskPriority">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99"
             min="1"/>
         <facets
@@ -8455,7 +8455,7 @@
       <dataTerm
           name="synchronousSendingTimeOut">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="3600"
             min="1"/>
         <facets
@@ -8782,7 +8782,7 @@
               xsi:type="os-cmd:CommandData"
               name="initialNumberOfRecords">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="2147483646"
                 min="1"/>
             <facets
@@ -8804,7 +8804,7 @@
               xsi:type="os-cmd:CommandData"
               name="incrementNumberOfRecords">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="32767"
                 min="0"/>
             <facets
@@ -8823,7 +8823,7 @@
               xsi:type="os-cmd:CommandData"
               name="maximumIncrements">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="32767"
                 min="0"/>
             <facets
@@ -8876,7 +8876,7 @@
       <dataTerm
           name="preferredStorageUnit">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="1"/>
         <facets
@@ -9008,7 +9008,7 @@
       <dataTerm
           name="maxDeletedRecordsAllowed">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="100"
             min="1"/>
         <facets
@@ -9035,7 +9035,7 @@
       <dataTerm
           name="codedCharacterSetID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="1"/>
         <facets
@@ -9410,7 +9410,7 @@
       <dataTerm
           name="startingSequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -9481,7 +9481,7 @@
       <dataTerm
           name="endingSequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -9613,7 +9613,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <definition
@@ -9697,7 +9697,7 @@
       <dataTerm
           name="commitCycleIdentifier">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -11542,7 +11542,7 @@
               xsi:type="os-cmd:CommandData"
               name="startingSequenceNumber">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="9999.99"
                 min="0.01"/>
             <default
@@ -11556,7 +11556,7 @@
               xsi:type="os-cmd:CommandData"
               name="incrementNumber">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="9999.99"
                 min="0.01"/>
             <default
@@ -11875,7 +11875,7 @@
       <dataTerm
           name="fromCCSID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65533"
             min="1"/>
         <facets
@@ -11899,7 +11899,7 @@
       <dataTerm
           name="toCCSID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65533"
             min="1"/>
         <facets
@@ -12698,7 +12698,7 @@
       <dataTerm
           name="streamFileCCSID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65533"
             min="1"/>
         <facets
@@ -12725,7 +12725,7 @@
       <dataTerm
           name="databaseFileCCSID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65533"
             min="1"/>
         <facets
@@ -12824,7 +12824,7 @@
       <dataTerm
           name="streamFileCodePage">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="32767"
             min="1"/>
         <facets
@@ -13075,7 +13075,7 @@
               xsi:type="os-cmd:CommandData"
               name="startingSequenceNumber">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="9999.99"
                 min="0.01"/>
             <default
@@ -13089,7 +13089,7 @@
               xsi:type="os-cmd:CommandData"
               name="incrementNumber">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="9999.99"
                 min="0.01"/>
             <default
@@ -13364,7 +13364,7 @@
       <dataTerm
           name="fromCCSID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65533"
             min="1"/>
         <facets
@@ -13388,7 +13388,7 @@
       <dataTerm
           name="toCCSID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65533"
             min="1"/>
         <facets
@@ -13412,7 +13412,7 @@
       <dataTerm
           name="streamFileCCSID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65533"
             min="1"/>
         <facets
@@ -13442,7 +13442,7 @@
       <dataTerm
           name="streamFileCodePage">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="32767"
             min="1"/>
         <facets
@@ -13943,7 +13943,7 @@
       <dataTerm
           name="databaseFileCCSID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65533"
             min="1"/>
         <facets
@@ -13967,7 +13967,7 @@
       <dataTerm
           name="streamFileCCSID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65533"
             min="1"/>
         <facets
@@ -14075,7 +14075,7 @@
       <dataTerm
           name="streamFileCodePage">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="32767"
             min="1"/>
         <facets
@@ -14387,7 +14387,7 @@
       <dataTerm
           name="portNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="1"/>
         <facets
@@ -15041,7 +15041,7 @@
       <dataTerm
           name="aSPNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="32"
             min="1"/>
         <facets
@@ -15260,7 +15260,7 @@
       <dataTerm
           name="manageReceiverDelayTime">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="1440"
             min="1"/>
         <default
@@ -15278,7 +15278,7 @@
       <dataTerm
           name="deleteReceiverDelayTime">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="1440"
             min="1"/>
         <default
@@ -15629,7 +15629,7 @@
       <dataTerm
           name="generationSeverityLevel">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="30"
             min="0"/>
         <default
@@ -15647,7 +15647,7 @@
       <dataTerm
           name="flaggingSeverityLevel">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="30"
             min="0"/>
         <default
@@ -15955,7 +15955,7 @@
       <dataTerm
           name="preferredStorageUnit">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="1"/>
         <facets
@@ -16506,7 +16506,7 @@
       <dataTerm
           name="generationSeverityLevel">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="30"
             min="0"/>
         <default
@@ -16524,7 +16524,7 @@
       <dataTerm
           name="flaggingSeverityLevel">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="30"
             min="0"/>
         <default
@@ -16771,7 +16771,7 @@
               xsi:type="os-cmd:CommandData"
               name="initialNumberOfRecords">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="2147483646"
                 min="1"/>
             <facets
@@ -16863,7 +16863,7 @@
       <dataTerm
           name="preferredStorageUnit">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="1"/>
         <facets
@@ -17004,7 +17004,7 @@
       <dataTerm
           name="maxDeletedRecordsAllowed">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="100"
             min="1"/>
         <facets
@@ -18046,7 +18046,7 @@
               xsi:type="os-cmd:CommandData"
               name="initialNumberOfRecords">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="2147483646"
                 min="1"/>
             <facets
@@ -18138,7 +18138,7 @@
       <dataTerm
           name="preferredStorageUnit">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="1"/>
         <facets
@@ -18279,7 +18279,7 @@
       <dataTerm
           name="maxDeletedRecordsAllowed">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="100"
             min="1"/>
         <facets
@@ -21127,7 +21127,7 @@
       <dataTerm
           name="startingSequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -21178,7 +21178,7 @@
       <dataTerm
           name="endingSequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -21400,7 +21400,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <definition
@@ -21464,7 +21464,7 @@
       <dataTerm
           name="commitCycleIdentifier">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -21771,7 +21771,7 @@
               xsi:type="os-cmd:CommandData"
               name="fieldDataFormat">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="8000"
                 min="1"/>
             <facets
@@ -21796,7 +21796,7 @@
               xsi:type="os-cmd:CommandData"
               name="variableLengthFieldLength">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="8000"
                 min="1"/>
             <facets
@@ -21813,7 +21813,7 @@
               xsi:type="os-cmd:CommandData"
               name="allocatedLength">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="8000"
                 min="1"/>
             <facets
@@ -22284,7 +22284,7 @@
       <dataTerm
           name="callLevel">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="999"
             min="1"/>
         <facets
@@ -22855,7 +22855,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <facets
@@ -23411,7 +23411,7 @@
       <dataTerm
           name="codedCharacterSetIdentifier">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65533"
             min="1"/>
         <facets
@@ -23549,7 +23549,7 @@
       <dataTerm
           name="port">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="1"/>
         <facets
@@ -23768,7 +23768,7 @@
       <dataTerm
           name="totalNumberOfRecords">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="4294967288"
             min="1"/>
         <facets
@@ -24626,7 +24626,7 @@
       <dataTerm
           name="uniqueKeyFields">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="120"
             min="1"/>
         <facets
@@ -25303,7 +25303,7 @@
               xsi:type="os-cmd:CommandData"
               name="length">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="32766"
                 min="0"/>
             <definition
@@ -25314,7 +25314,7 @@
               xsi:type="os-cmd:CommandData"
               name="decimalPositions">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="63"
                 min="0"/>
             <definition
@@ -25325,7 +25325,7 @@
               xsi:type="os-cmd:CommandData"
               name="mappedFieldCCSID">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="65535"
                 min="1"/>
             <facets
@@ -25425,7 +25425,7 @@
               xsi:type="os-cmd:CommandData"
               name="numberOfRecords">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="32767"
                 min="1"/>
             <definition
@@ -25574,7 +25574,7 @@
               xsi:type="os-cmd:CommandData"
               name="numberOfRecords">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="2147483647"
                 min="1"/>
             <definition
@@ -25724,7 +25724,7 @@
       <dataTerm
           name="finalOutputCCSID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="1"/>
         <facets
@@ -26108,7 +26108,7 @@
       <dataTerm
           name="eOFRetryDelayInSec">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99999"
             min="1"/>
         <facets
@@ -26701,7 +26701,7 @@
       <dataTerm
           name="timeLimit">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999"
             min="1"/>
         <facets
@@ -26725,7 +26725,7 @@
       <dataTerm
           name="selectionLimit">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="32767"
             min="1"/>
         <facets
@@ -28286,7 +28286,7 @@
       <dataTerm
           name="startingSequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -28337,7 +28337,7 @@
       <dataTerm
           name="endingSequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -28565,7 +28565,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <definition
@@ -28629,7 +28629,7 @@
       <dataTerm
           name="commitCycleIdentifier">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -28720,7 +28720,7 @@
               xsi:type="os-cmd:CommandData"
               name="fieldDataFormat">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="8000"
                 min="1"/>
             <facets
@@ -28742,7 +28742,7 @@
               xsi:type="os-cmd:CommandData"
               name="variableLengthFieldLength">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="8000"
                 min="1"/>
             <definition
@@ -28765,7 +28765,7 @@
               xsi:type="os-cmd:CommandData"
               name="delayTimeValue">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="99999"
                 min="1"/>
             <facets
@@ -28784,7 +28784,7 @@
               xsi:type="os-cmd:CommandData"
               name="maximumDelayTimeValue">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="99999"
                 min="1"/>
             <facets
@@ -28883,7 +28883,7 @@
       <dataTerm
           name="blockLength">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="4000"
             min="32"/>
         <facets
@@ -29532,7 +29532,7 @@
               xsi:type="os-cmd:CommandData"
               name="startingSequenceNumber">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="9999.99"
                 min="0.01"/>
             <default
@@ -29546,7 +29546,7 @@
               xsi:type="os-cmd:CommandData"
               name="incrementNumber">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="9999.99"
                 min="0.01"/>
             <default
@@ -29887,7 +29887,7 @@
       <dataTerm
           name="startingSequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -29937,7 +29937,7 @@
       <dataTerm
           name="endingSequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -29994,7 +29994,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <cardinality
@@ -31077,7 +31077,7 @@
       <dataTerm
           name="sequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999"
             min="1"/>
         <facets
@@ -31451,7 +31451,7 @@
       <dataTerm
           name="sequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999"
             min="1"/>
         <facets
@@ -31862,7 +31862,7 @@
       <dataTerm
           name="startingSequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -31939,7 +31939,7 @@
       <dataTerm
           name="endingSequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -32171,7 +32171,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <definition
@@ -32255,7 +32255,7 @@
       <dataTerm
           name="commitCycleIdentifier">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999999"
             min="1"/>
         <facets
@@ -32336,7 +32336,7 @@
       <dataTerm
           name="nullValueIndicatorsLength">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="8000"
             min="1"/>
         <definition
@@ -33342,7 +33342,7 @@
               xsi:type="os-cmd:CommandData"
               name="formLength">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="255"
                 min="1"/>
             <facets
@@ -33361,7 +33361,7 @@
               xsi:type="os-cmd:CommandData"
               name="formWidth">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="378"
                 min="1"/>
             <facets
@@ -33410,7 +33410,7 @@
       <dataTerm
           name="copies">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="1"/>
         <facets
@@ -34052,7 +34052,7 @@
       <dataTerm
           name="sequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999"
             min="1"/>
         <facets
@@ -34100,7 +34100,7 @@
       <dataTerm
           name="retentionPeriod">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="999"
             min="0"/>
         <default
@@ -34376,7 +34376,7 @@
       <dataTerm
           name="recordLength">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="120"
             min="40"/>
         <default
@@ -34406,7 +34406,7 @@
       <dataTerm
           name="sequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999"
             min="1"/>
         <facets
@@ -34454,7 +34454,7 @@
       <dataTerm
           name="retentionPeriod">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="999"
             min="0"/>
         <default
@@ -35452,7 +35452,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <facets
@@ -35503,7 +35503,7 @@
       <dataTerm
           name="forceRecordWrite">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="32767"
             min="0"/>
         <facets
@@ -35527,7 +35527,7 @@
       <dataTerm
           name="runTimeThreshold">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="2147483647"
             min="0"/>
         <facets
@@ -35551,7 +35551,7 @@
       <dataTerm
           name="storageThreshold">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="2147483647"
             min="0"/>
         <facets
@@ -35699,7 +35699,7 @@
       <dataTerm
           name="filterByLocalPortNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="0"/>
         <facets
@@ -35750,7 +35750,7 @@
       <dataTerm
           name="filterBySQLCODE">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99999"
             min="-99999"/>
         <facets
@@ -36021,7 +36021,7 @@
               xsi:type="os-cmd:CommandData"
               name="dFUOption">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="5"
                 min="1"/>
             <facets
@@ -36040,7 +36040,7 @@
               xsi:type="os-cmd:CommandData"
               name="runOption">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="2"
                 min="1"/>
             <facets
@@ -36357,7 +36357,7 @@
       <dataTerm
           name="domainNameServerPort">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="1"/>
         <default
@@ -36376,7 +36376,7 @@
       <dataTerm
           name="queryTimeout">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="100"
             min="1"/>
         <default
@@ -37139,7 +37139,7 @@
       <dataTerm
           name="timesToTryUDPQuery">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="100"
             min="1"/>
         <default
@@ -37158,7 +37158,7 @@
       <dataTerm
           name="uDPRetry">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="100"
             min="0"/>
         <default
@@ -37177,7 +37177,7 @@
       <dataTerm
           name="numberOfDots">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="10"
             min="0"/>
         <default
@@ -37196,7 +37196,7 @@
       <dataTerm
           name="uDPBufferSizeForEDNS">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="0"/>
         <default
@@ -37215,7 +37215,7 @@
       <dataTerm
           name="setEDNSVersion">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="0"/>
         <default
@@ -37734,7 +37734,7 @@
       <dataTerm
           name="numberOfDots">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="10"
             min="0"/>
         <default
@@ -37753,7 +37753,7 @@
       <dataTerm
           name="queryTimeout">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="100"
             min="1"/>
         <default
@@ -37772,7 +37772,7 @@
       <dataTerm
           name="uDPRetry">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="100"
             min="0"/>
         <default
@@ -39163,7 +39163,7 @@
       <dataTerm
           name="codedCharacterSetIdentifier">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65533"
             min="1"/>
         <facets
@@ -39301,7 +39301,7 @@
       <dataTerm
           name="port">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="1"/>
         <facets

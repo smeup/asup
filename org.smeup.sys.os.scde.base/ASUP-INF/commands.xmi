@@ -544,7 +544,7 @@
       <dataTerm
           name="entryNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="999999"
             min="000001"/>
         <facets

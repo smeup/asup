@@ -17,7 +17,6 @@ import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.core.meta.QDomain;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
-import org.smeup.sys.il.core.meta.QRange;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
@@ -64,7 +63,6 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 			case QIntegratedLanguageCoreMetaPackage.CARDINALITY: return (EObject)createCardinality();
 			case QIntegratedLanguageCoreMetaPackage.DEFAULT: return (EObject)createDefault();
 			case QIntegratedLanguageCoreMetaPackage.DOMAIN: return (EObject)createDomain();
-			case QIntegratedLanguageCoreMetaPackage.RANGE: return (EObject)createRange();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -98,16 +96,6 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 	public QDomain createDomain() {
 		DomainImpl domain = new DomainImpl();
 		return domain;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QRange createRange() {
-		RangeImpl range = new RangeImpl();
-		return range;
 	}
 
 	/**

@@ -57,7 +57,7 @@
     </parameters>
     <parameters allowVariable="true" name="SEV" position="5" status="POS">
       <dataTerm name="severityCode">
-        <facets xsi:type="il-core-meta:Range" max="99" min="0"/>
+        <facets xsi:type="il-data-term:Range" max="99" min="0"/>
         <default value="00"/>
         <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
       </dataTerm>
@@ -242,7 +242,7 @@
     </parameters>
     <parameters allowVariable="true" name="DMPLST" position="15" status="POS">
       <dataTerm name="dataToBeDumped">
-        <facets xsi:type="il-core-meta:Range" max="99" min="1"/>
+        <facets xsi:type="il-data-term:Range" max="99" min="1"/>
         <facets xsi:type="il-data-term:Special">
           <elements name="*NONE" unary="true" value="0"/>
           <elements name="*JOB" value="-4"/>
@@ -266,7 +266,7 @@
             <definition xsi:type="il-data-def:DatetimeDef"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="levelNumber">
-            <facets xsi:type="il-core-meta:Range" max="99" min="1"/>
+            <facets xsi:type="il-data-term:Range" max="99" min="1"/>
             <default value="1"/>
             <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
           </elements>
@@ -287,7 +287,7 @@
             <definition xsi:type="il-data-def:CharacterDef" length="1"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="resourceNameVariable">
-            <facets xsi:type="il-core-meta:Range" max="99" min="1"/>
+            <facets xsi:type="il-data-term:Range" max="99" min="1"/>
             <facets xsi:type="il-data-term:Special">
               <elements name="*NONE" value="0"/>
             </facets>
@@ -309,7 +309,7 @@
     </parameters>
     <parameters allowVariable="true" name="CCSID" position="19" status="POS">
       <dataTerm name="codedCharacterSetID">
-        <facets xsi:type="il-core-meta:Range" max="65535" min="1"/>
+        <facets xsi:type="il-data-term:Range" max="65535" min="1"/>
         <facets xsi:type="il-data-term:Special">
           <elements name="*JOB" value="0"/>
           <elements name="*HEX" value="65535"/>
@@ -371,7 +371,7 @@
     </parameters>
     <parameters allowVariable="true" name="SEV" position="5" status="POS">
       <dataTerm name="severityCode">
-        <facets xsi:type="il-core-meta:Range" max="99" min="0"/>
+        <facets xsi:type="il-data-term:Range" max="99" min="0"/>
         <facets xsi:type="il-data-term:Special">
           <elements name="*SAME" value="-1"/>
         </facets>
@@ -568,7 +568,7 @@
     </parameters>
     <parameters allowVariable="true" name="DMPLST" position="15" status="POS">
       <dataTerm name="dataToBeDumped">
-        <facets xsi:type="il-core-meta:Range" max="99" min="1"/>
+        <facets xsi:type="il-data-term:Range" max="99" min="1"/>
         <facets xsi:type="il-data-term:Special">
           <elements name="*SAME" unary="true" value="-3"/>
           <elements name="*NONE" unary="true" value="0"/>
@@ -600,7 +600,7 @@
             <definition xsi:type="il-data-def:CharacterDef" length="1"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="resourceNameVariable">
-            <facets xsi:type="il-core-meta:Range" max="99" min="1"/>
+            <facets xsi:type="il-data-term:Range" max="99" min="1"/>
             <facets xsi:type="il-data-term:Special">
               <elements name="*NONE" value="0"/>
             </facets>
@@ -623,7 +623,7 @@
     </parameters>
     <parameters allowVariable="true" name="CCSID" position="18" status="POS">
       <dataTerm name="codedCharacterSetID">
-        <facets xsi:type="il-core-meta:Range" max="65535" min="1"/>
+        <facets xsi:type="il-data-term:Range" max="65535" min="1"/>
         <facets xsi:type="il-data-term:Special">
           <elements name="*SAME" value="-1"/>
           <elements name="*HEX" value="65535"/>
@@ -675,7 +675,7 @@
     </parameters>
     <parameters allowVariable="true" name="CCSID" position="3" status="POS">
       <dataTerm name="codedCharacterSetID">
-        <facets xsi:type="il-core-meta:Range" max="65535" min="1"/>
+        <facets xsi:type="il-data-term:Range" max="65535" min="1"/>
         <facets xsi:type="il-data-term:Special">
           <elements name="*SAME" value="-1"/>
           <elements name="*HEX" value="65535"/>
@@ -755,7 +755,7 @@
     </parameters>
     <parameters allowVariable="true" name="CCSID" position="5" status="POS">
       <dataTerm name="codedCharacterSetID">
-        <facets xsi:type="il-core-meta:Range" max="65535" min="1"/>
+        <facets xsi:type="il-data-term:Range" max="65535" min="1"/>
         <facets xsi:type="il-data-term:Special">
           <elements name="*HEX" value="65535"/>
           <elements name="*MSGD" value="65534"/>

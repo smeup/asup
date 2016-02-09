@@ -168,7 +168,7 @@
               xsi:type="os-cmd:CommandData"
               name="lengthLinesPerPage">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="255.0"
                 min="0.001"/>
             <facets
@@ -188,7 +188,7 @@
               xsi:type="os-cmd:CommandData"
               name="widthPositionsPerLine">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="378.0"
                 min="0.001"/>
             <facets
@@ -324,7 +324,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetDown">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -347,7 +347,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetAcross">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <cardinality
@@ -375,7 +375,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetDown">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -401,7 +401,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetAcross">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <cardinality
@@ -422,7 +422,7 @@
       <dataTerm
           name="overflowLineNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="1"/>
         <facets
@@ -500,7 +500,7 @@
               xsi:type="os-cmd:CommandData"
               name="replacementCharacter">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="X'FE'"
                 min="X'40'"/>
             <facets
@@ -644,7 +644,7 @@
                   xsi:type="os-cmd:CommandData"
                   name="line">
                 <facets
-                    xsi:type="il-core-meta:Range"
+                    xsi:type="il-data-term:Range"
                     max="255"
                     min="1"/>
                 <cardinality
@@ -765,7 +765,7 @@
       <dataTerm
           name="sourceDrawer">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="1"/>
         <facets
@@ -795,7 +795,7 @@
       <dataTerm
           name="outputBin">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="1"/>
         <facets
@@ -1651,7 +1651,7 @@
               xsi:type="os-cmd:CommandData"
               name="pointSize">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999.9"
                 min="0.1"/>
             <facets
@@ -1857,7 +1857,7 @@
               xsi:type="os-cmd:CommandData"
               name="pointSize">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999.9"
                 min="0.1"/>
             <facets
@@ -1943,7 +1943,7 @@
               xsi:type="os-cmd:CommandData"
               name="pointSize">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999.9"
                 min="0.1"/>
             <facets
@@ -2183,7 +2183,7 @@
       <dataTerm
           name="pagesPerSide">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="4"
             min="1"/>
         <facets
@@ -2437,7 +2437,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetDown">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -2457,7 +2457,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetAcross">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -2547,7 +2547,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetDown">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -2567,7 +2567,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetAcross">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -2790,7 +2790,7 @@
               xsi:type="os-cmd:CommandData"
               name="referenceEdgeOffset">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -2813,7 +2813,7 @@
               xsi:type="os-cmd:CommandData"
               name="numberOfStaples">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="122"
                 min="1"/>
             <facets
@@ -2835,7 +2835,7 @@
               xsi:type="os-cmd:CommandData"
               name="stapleOffsets">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -2902,7 +2902,7 @@
               xsi:type="os-cmd:CommandData"
               name="numberOfStaples">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="122"
                 min="1"/>
             <facets
@@ -2924,7 +2924,7 @@
               xsi:type="os-cmd:CommandData"
               name="stapleOffsets">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -3101,7 +3101,7 @@
       <dataTerm
           name="copies">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="1"/>
         <facets
@@ -3150,7 +3150,7 @@
       <dataTerm
           name="daysUntilFileExpires">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="366"
             min="1"/>
         <definition
@@ -3217,7 +3217,7 @@
       <dataTerm
           name="maxSpooledOutputRecords">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99999999"
             min="1"/>
         <facets
@@ -3244,7 +3244,7 @@
       <dataTerm
           name="fileSeparators">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9"
             min="0"/>
         <facets
@@ -3818,7 +3818,7 @@
               xsi:type="os-cmd:CommandData"
               name="pointSize">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999.9"
                 min="0.1"/>
             <facets
@@ -4217,7 +4217,7 @@
       <dataTerm
           name="generationSeverityLevel">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="30"
             min="0"/>
         <default
@@ -4235,7 +4235,7 @@
       <dataTerm
           name="flaggingSeverityLevel">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="30"
             min="0"/>
         <default
@@ -4327,7 +4327,7 @@
               xsi:type="os-cmd:CommandData"
               name="lengthLinesPerPage">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="255.0"
                 min="0.001"/>
             <default
@@ -4341,7 +4341,7 @@
               xsi:type="os-cmd:CommandData"
               name="widthPositionsPerLine">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="378.0"
                 min="0.001"/>
             <default
@@ -4462,7 +4462,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetDown">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -4482,7 +4482,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetAcross">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <cardinality
@@ -4510,7 +4510,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetDown">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -4533,7 +4533,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetAcross">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <cardinality
@@ -4554,7 +4554,7 @@
       <dataTerm
           name="overflowLineNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="1"/>
         <default
@@ -4620,7 +4620,7 @@
               xsi:type="os-cmd:CommandData"
               name="replacementCharacter">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="X'FE'"
                 min="X'40'"/>
             <facets
@@ -4752,7 +4752,7 @@
                   xsi:type="os-cmd:CommandData"
                   name="line">
                 <facets
-                    xsi:type="il-core-meta:Range"
+                    xsi:type="il-data-term:Range"
                     max="255"
                     min="1"/>
                 <cardinality
@@ -4864,7 +4864,7 @@
       <dataTerm
           name="sourceDrawer">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="1"/>
         <facets
@@ -4891,7 +4891,7 @@
       <dataTerm
           name="outputBin">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="1"/>
         <facets
@@ -5741,7 +5741,7 @@
               xsi:type="os-cmd:CommandData"
               name="pointSize">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999.9"
                 min="0.1"/>
             <facets
@@ -5938,7 +5938,7 @@
               xsi:type="os-cmd:CommandData"
               name="pointSize">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999.9"
                 min="0.1"/>
             <facets
@@ -6021,7 +6021,7 @@
               xsi:type="os-cmd:CommandData"
               name="pointSize">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999.9"
                 min="0.1"/>
             <facets
@@ -6238,7 +6238,7 @@
       <dataTerm
           name="pagesPerSide">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="4"
             min="1"/>
         <default
@@ -6440,7 +6440,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetDown">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <default
@@ -6454,7 +6454,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetAcross">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <default
@@ -6534,7 +6534,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetDown">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <default
@@ -6548,7 +6548,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetAcross">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <default
@@ -6749,7 +6749,7 @@
               xsi:type="os-cmd:CommandData"
               name="referenceEdgeOffset">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -6769,7 +6769,7 @@
               xsi:type="os-cmd:CommandData"
               name="numberOfStaples">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="122"
                 min="1"/>
             <facets
@@ -6788,7 +6788,7 @@
               xsi:type="os-cmd:CommandData"
               name="stapleOffsets">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -6851,7 +6851,7 @@
               xsi:type="os-cmd:CommandData"
               name="numberOfStaples">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="122"
                 min="1"/>
             <facets
@@ -6870,7 +6870,7 @@
               xsi:type="os-cmd:CommandData"
               name="stapleOffsets">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -7056,7 +7056,7 @@
       <dataTerm
           name="copies">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="1"/>
         <default
@@ -7096,7 +7096,7 @@
       <dataTerm
           name="daysUntilFileExpires">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="366"
             min="1"/>
         <definition
@@ -7157,7 +7157,7 @@
       <dataTerm
           name="maxSpooledOutputRecords">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99999999"
             min="1"/>
         <facets
@@ -7181,7 +7181,7 @@
       <dataTerm
           name="fileSeparators">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9"
             min="0"/>
         <default
@@ -7701,7 +7701,7 @@
               xsi:type="os-cmd:CommandData"
               name="pointSize">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999.9"
                 min="0.1"/>
             <facets
@@ -8117,7 +8117,7 @@
               xsi:type="os-cmd:CommandData"
               name="pageLength">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="255.0"
                 min="0.001"/>
             <definition
@@ -8129,7 +8129,7 @@
               xsi:type="os-cmd:CommandData"
               name="pageWidth">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="378.0"
                 min="0.001"/>
             <definition
@@ -8236,7 +8236,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetDown">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -8256,7 +8256,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetAcross">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <cardinality
@@ -8282,7 +8282,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetDown">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -8305,7 +8305,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetAcross">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <cardinality
@@ -8326,7 +8326,7 @@
       <dataTerm
           name="overflowLineNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="1"/>
         <definition
@@ -8386,7 +8386,7 @@
               xsi:type="os-cmd:CommandData"
               name="replacementCharacter">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="X'FE'"
                 min="X'40'"/>
             <facets
@@ -8434,7 +8434,7 @@
       <dataTerm
           name="sourceDrawer">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="1"/>
         <facets
@@ -8459,7 +8459,7 @@
       <dataTerm
           name="outputBin">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="1"/>
         <facets
@@ -9305,7 +9305,7 @@
               xsi:type="os-cmd:CommandData"
               name="pointSize">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999.9"
                 min="0.1"/>
             <facets
@@ -9617,7 +9617,7 @@
               xsi:type="os-cmd:CommandData"
               name="pointSize">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999.9"
                 min="0.1"/>
             <facets
@@ -9698,7 +9698,7 @@
               xsi:type="os-cmd:CommandData"
               name="pointSize">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999.9"
                 min="0.1"/>
             <facets
@@ -9916,7 +9916,7 @@
       <dataTerm
           name="pagesPerSide">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="4"
             min="1"/>
         <facets
@@ -10098,7 +10098,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetDown">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <default
@@ -10112,7 +10112,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetAcross">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <default
@@ -10190,7 +10190,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetDown">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <default
@@ -10204,7 +10204,7 @@
               xsi:type="os-cmd:CommandData"
               name="offsetAcross">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <default
@@ -10392,7 +10392,7 @@
               xsi:type="os-cmd:CommandData"
               name="referenceEdgeOffset">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -10412,7 +10412,7 @@
               xsi:type="os-cmd:CommandData"
               name="numberOfStaples">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="122"
                 min="1"/>
             <facets
@@ -10431,7 +10431,7 @@
               xsi:type="os-cmd:CommandData"
               name="stapleOffsets">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -10490,7 +10490,7 @@
               xsi:type="os-cmd:CommandData"
               name="numberOfStaples">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="122"
                 min="1"/>
             <facets
@@ -10509,7 +10509,7 @@
               xsi:type="os-cmd:CommandData"
               name="stapleOffsets">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="57.79"
                 min="0.0"/>
             <facets
@@ -10683,7 +10683,7 @@
       <dataTerm
           name="copies">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="255"
             min="1"/>
         <definition
@@ -10740,7 +10740,7 @@
       <dataTerm
           name="maxSpooledOutputRecords">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99999999"
             min="1"/>
         <facets
@@ -10762,7 +10762,7 @@
       <dataTerm
           name="fileSeparators">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9"
             min="0"/>
         <definition
@@ -11115,7 +11115,7 @@
       <dataTerm
           name="daysUntilFileExpires">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="366"
             min="1"/>
         <definition
@@ -11307,7 +11307,7 @@
               xsi:type="os-cmd:CommandData"
               name="pointSize">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999.9"
                 min="0.1"/>
             <facets

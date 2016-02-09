@@ -105,7 +105,7 @@
               xsi:type="os-cmd:CommandData"
               name="aSP">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="32"
                 min="1"/>
             <facets
@@ -197,7 +197,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <facets

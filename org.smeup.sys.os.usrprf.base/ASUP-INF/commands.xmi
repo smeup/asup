@@ -500,7 +500,7 @@
       <dataTerm
           name="passwordExpirationInterval">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="366"
             min="1"/>
         <facets
@@ -530,7 +530,7 @@
       <dataTerm
           name="blockPasswordChange">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99"
             min="1"/>
         <facets
@@ -703,7 +703,7 @@
       <dataTerm
           name="highestSchedulePriority">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9"
             min="0"/>
         <facets
@@ -1070,7 +1070,7 @@
       <dataTerm
           name="severityCodeFilter">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99"
             min="0"/>
         <facets
@@ -1564,7 +1564,7 @@
       <dataTerm
           name="userIDNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="4294967294"
             min="1"/>
         <facets
@@ -1588,7 +1588,7 @@
       <dataTerm
           name="groupIDNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="4294967294"
             min="1"/>
         <facets
@@ -2199,7 +2199,7 @@
       <dataTerm
           name="passwordExpirationInterval">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="366"
             min="1"/>
         <facets
@@ -2226,7 +2226,7 @@
       <dataTerm
           name="blockPasswordChange">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99"
             min="1"/>
         <facets
@@ -2384,7 +2384,7 @@
       <dataTerm
           name="highestSchedulePriority">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9"
             min="0"/>
         <default
@@ -2708,7 +2708,7 @@
       <dataTerm
           name="severityCodeFilter">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99"
             min="0"/>
         <default
@@ -3158,7 +3158,7 @@
       <dataTerm
           name="userIDNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="4294967294"
             min="1"/>
         <facets
@@ -3182,7 +3182,7 @@
       <dataTerm
           name="groupIDNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="4294967294"
             min="1"/>
         <facets
@@ -3840,7 +3840,7 @@
       <dataTerm
           name="percentFull">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="100.0"
             min="0.01"/>
         <default
@@ -3959,7 +3959,7 @@
       <dataTerm
           name="sequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="16777215"
             min="1"/>
         <facets

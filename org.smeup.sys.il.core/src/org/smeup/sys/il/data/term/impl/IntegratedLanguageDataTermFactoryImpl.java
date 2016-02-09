@@ -62,6 +62,7 @@ public class IntegratedLanguageDataTermFactoryImpl extends EFactoryImpl implemen
 		switch (eClass.getClassifierID()) {
 			case QIntegratedLanguageDataTermPackage.FORMAT: return (EObject)createFormat();
 			case QIntegratedLanguageDataTermPackage.OVERLAY: return (EObject)createOverlay();
+			case QIntegratedLanguageDataTermPackage.RANGE: return (EObject)createRange();
 			case QIntegratedLanguageDataTermPackage.REMAP: return (EObject)createRemap();
 			case QIntegratedLanguageDataTermPackage.SPECIAL: return (EObject)createSpecial();
 			case QIntegratedLanguageDataTermPackage.SPECIAL_ELEMENT: return (EObject)createSpecialElement();
@@ -120,6 +121,16 @@ public class IntegratedLanguageDataTermFactoryImpl extends EFactoryImpl implemen
 	public QOverlay createOverlay() {
 		OverlayImpl overlay = new OverlayImpl();
 		return overlay;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QRange createRange() {
+		RangeImpl range = new RangeImpl();
+		return range;
 	}
 
 	/**

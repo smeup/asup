@@ -5,7 +5,9 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.meta;
+package org.smeup.sys.il.data.term;
+
+import org.smeup.sys.il.core.meta.QFacet;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -15,11 +17,11 @@ package org.smeup.sys.il.core.meta;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.meta.QRange#getMax <em>Max</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.meta.QRange#getMin <em>Min</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.QRange#getMax <em>Max</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.QRange#getMin <em>Min</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage#getRange()
+ * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getRange()
  * @model
  * @generated
  */
@@ -42,7 +44,7 @@ public interface QRange extends QFacet {
 	String getMin();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QRange#getMin <em>Min</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.data.term.QRange#getMin <em>Min</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Min</em>' attribute.
 	 * @see #getMin()
@@ -61,14 +63,14 @@ public interface QRange extends QFacet {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max</em>' attribute.
 	 * @see #setMax(String)
-	 * @see org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage#getRange_Max()
+	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getRange_Max()
 	 * @model default="1" required="true"
 	 * @generated
 	 */
 	String getMax();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QRange#getMax <em>Max</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.data.term.QRange#getMax <em>Max</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Max</em>' attribute.
 	 * @see #getMax()

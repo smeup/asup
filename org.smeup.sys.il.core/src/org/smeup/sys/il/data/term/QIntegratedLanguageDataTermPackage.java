@@ -284,6 +284,43 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	int OVERLAY_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.term.impl.RangeImpl <em>Range</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.term.impl.RangeImpl
+	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getRange()
+	 * @generated
+	 */
+	int RANGE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Max</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANGE__MAX = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Min</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANGE__MIN = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Range</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANGE_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.term.impl.RemapImpl <em>Remap</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -291,7 +328,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getRemap()
 	 * @generated
 	 */
-	int REMAP = 5;
+	int REMAP = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -328,7 +365,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getSpecial()
 	 * @generated
 	 */
-	int SPECIAL = 6;
+	int SPECIAL = 7;
 
 	/**
 	 * The feature id for the '<em><b>Class Delegate</b></em>' attribute.
@@ -365,7 +402,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getSpecialElement()
 	 * @generated
 	 */
-	int SPECIAL_ELEMENT = 7;
+	int SPECIAL_ELEMENT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -428,7 +465,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getDataTermType()
 	 * @generated
 	 */
-	int DATA_TERM_TYPE = 8;
+	int DATA_TERM_TYPE = 9;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.term.FormatType <em>Format Type</em>}' enum.
@@ -438,7 +475,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getFormatType()
 	 * @generated
 	 */
-	int FORMAT_TYPE = 9;
+	int FORMAT_TYPE = 10;
 
 	/**
 	 * Returns the meta object for class '
@@ -645,6 +682,38 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getOverlay_Position();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.term.QRange <em>Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Range</em>'.
+	 * @see org.smeup.sys.il.data.term.QRange
+	 * @generated
+	 */
+	EClass getRange();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QRange#getMax <em>Max</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max</em>'.
+	 * @see org.smeup.sys.il.data.term.QRange#getMax()
+	 * @see #getRange()
+	 * @generated
+	 */
+	EAttribute getRange_Max();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QRange#getMin <em>Min</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min</em>'.
+	 * @see org.smeup.sys.il.data.term.QRange#getMin()
+	 * @see #getRange()
+	 * @generated
+	 */
+	EAttribute getRange_Min();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.data.term.QRemap <em>Remap</em>}'.
@@ -961,6 +1030,32 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute OVERLAY__POSITION = eINSTANCE.getOverlay_Position();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.term.impl.RangeImpl <em>Range</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.term.impl.RangeImpl
+		 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getRange()
+		 * @generated
+		 */
+		EClass RANGE = eINSTANCE.getRange();
+
+		/**
+		 * The meta object literal for the '<em><b>Max</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RANGE__MAX = eINSTANCE.getRange_Max();
+
+		/**
+		 * The meta object literal for the '<em><b>Min</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RANGE__MIN = eINSTANCE.getRange_Min();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.term.impl.RemapImpl <em>Remap</em>}' class.

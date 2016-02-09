@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.core.ctx.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EGenericType;
@@ -15,6 +16,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+import org.smeup.sys.il.core.ctx.CapabilityRight;
 import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
 import org.smeup.sys.il.core.ctx.QAdapterFactory;
 import org.smeup.sys.il.core.ctx.QCapability;
@@ -103,6 +105,13 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	private EEnum contextInjectionStrategyEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum capabilityRightEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -236,6 +245,15 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCapability_Rights() {
+		return (EAttribute)capabilityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -272,6 +290,15 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getCapabilityRight() {
+		return capabilityRightEEnum;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -301,6 +328,7 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		adapterFactoryEClass = createEClass(ADAPTER_FACTORY);
 
 		capabilityEClass = createEClass(CAPABILITY);
+		createEAttribute(capabilityEClass, CAPABILITY__RIGHTS);
 
 		contextEClass = createEClass(CONTEXT);
 
@@ -316,6 +344,7 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 
 		// Create enums
 		contextInjectionStrategyEEnum = createEEnum(CONTEXT_INJECTION_STRATEGY);
+		capabilityRightEEnum = createEEnum(CAPABILITY_RIGHT);
 	}
 
 	/**
@@ -376,6 +405,7 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		initEOperation(op, g1);
 
 		initEClass(capabilityEClass, QCapability.class, "Capability", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCapability_Rights(), this.getCapabilityRight(), "rights", null, 0, -1, QCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(capabilityEClass, theMachineInterfaceCorePackage.getJavaURI(), "getObjectAddress", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -544,6 +574,11 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		initEEnum(contextInjectionStrategyEEnum, ContextInjectionStrategy.class, "ContextInjectionStrategy");
 		addEEnumLiteral(contextInjectionStrategyEEnum, ContextInjectionStrategy.LOCAL);
 		addEEnumLiteral(contextInjectionStrategyEEnum, ContextInjectionStrategy.REMOTE);
+
+		initEEnum(capabilityRightEEnum, CapabilityRight.class, "CapabilityRight");
+		addEEnumLiteral(capabilityRightEEnum, CapabilityRight.READ);
+		addEEnumLiteral(capabilityRightEEnum, CapabilityRight.WRITE);
+		addEEnumLiteral(capabilityRightEEnum, CapabilityRight.EXECUTE);
 	}
 
 } // IntegratedLanguageCoreCtxPackageImpl

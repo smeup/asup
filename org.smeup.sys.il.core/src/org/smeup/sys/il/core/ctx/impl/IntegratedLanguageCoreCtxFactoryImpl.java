@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.smeup.sys.il.core.ctx.*;
 import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxFactory;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
@@ -73,6 +74,8 @@ public class IntegratedLanguageCoreCtxFactoryImpl extends EFactoryImpl implement
 		switch (eDataType.getClassifierID()) {
 			case QIntegratedLanguageCoreCtxPackage.CONTEXT_INJECTION_STRATEGY:
 				return createContextInjectionStrategyFromString(eDataType, initialValue);
+			case QIntegratedLanguageCoreCtxPackage.CAPABILITY_RIGHT:
+				return createCapabilityRightFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -87,6 +90,8 @@ public class IntegratedLanguageCoreCtxFactoryImpl extends EFactoryImpl implement
 		switch (eDataType.getClassifierID()) {
 			case QIntegratedLanguageCoreCtxPackage.CONTEXT_INJECTION_STRATEGY:
 				return convertContextInjectionStrategyToString(eDataType, instanceValue);
+			case QIntegratedLanguageCoreCtxPackage.CAPABILITY_RIGHT:
+				return convertCapabilityRightToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -107,6 +112,26 @@ public class IntegratedLanguageCoreCtxFactoryImpl extends EFactoryImpl implement
 	 * @generated
 	 */
 	public String convertContextInjectionStrategyToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CapabilityRight createCapabilityRightFromString(EDataType eDataType, String initialValue) {
+		CapabilityRight result = CapabilityRight.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCapabilityRightToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -26,7 +26,6 @@ import org.smeup.sys.il.core.meta.QFrame;
 import org.smeup.sys.il.core.meta.QFrameManager;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
-import org.smeup.sys.il.core.meta.QRange;
 import org.smeup.sys.il.core.meta.QSlot;
 import org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage;
 import org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl;
@@ -81,12 +80,6 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	private EClass frameManagerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass rangeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -293,33 +286,6 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	@Override
-	public EClass getRange() {
-		return rangeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getRange_Max() {
-		return (EAttribute)rangeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getRange_Min() {
-		return (EAttribute)rangeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getSlot() {
 		return slotEClass;
 	}
@@ -369,10 +335,6 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 
 		frameManagerEClass = createEClass(FRAME_MANAGER);
 
-		rangeEClass = createEClass(RANGE);
-		createEAttribute(rangeEClass, RANGE__MAX);
-		createEAttribute(rangeEClass, RANGE__MIN);
-
 		slotEClass = createEClass(SLOT);
 	}
 
@@ -414,7 +376,6 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 		domainEClass.getESuperTypes().add(this.getFacet());
 		facetEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		frameEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNameable());
-		rangeEClass.getESuperTypes().add(this.getFacet());
 		slotEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNameable());
 
 		// Initialize classes and features; add operations and parameters
@@ -487,10 +448,6 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 		addEParameter(op, g1, "frame", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
 		initEOperation(op, g1);
-
-		initEClass(rangeEClass, QRange.class, "Range", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRange_Max(), ecorePackage.getEString(), "max", "1", 1, 1, QRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRange_Min(), ecorePackage.getEString(), "min", null, 1, 1, QRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(slotEClass, QSlot.class, "Slot", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

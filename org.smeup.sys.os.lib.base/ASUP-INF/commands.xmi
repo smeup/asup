@@ -783,7 +783,7 @@
       <dataTerm
           name="aSPNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="32"
             min="1"/>
         <facets
@@ -1329,7 +1329,7 @@
       <dataTerm
           name="sequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="16777215"
             min="1"/>
         <facets
@@ -1865,7 +1865,7 @@
       <dataTerm
           name="restoreToASPNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="32"
             min="1"/>
         <facets
@@ -2477,7 +2477,7 @@
       <dataTerm
           name="sequenceNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="16777215"
             min="1"/>
         <facets
@@ -2869,7 +2869,7 @@
               xsi:type="os-cmd:CommandData"
               name="objectLocks">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="99999"
                 min="0"/>
             <facets
@@ -2888,7 +2888,7 @@
               xsi:type="os-cmd:CommandData"
               name="pendingRecordChanges">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="99999"
                 min="0"/>
             <facets
@@ -2913,7 +2913,7 @@
               xsi:type="os-cmd:CommandData"
               name="otherPendingChanges">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="99999"
                 min="0"/>
             <facets
@@ -3624,7 +3624,7 @@
       <dataTerm
           name="aSPNumber">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="32"
             min="1"/>
         <facets

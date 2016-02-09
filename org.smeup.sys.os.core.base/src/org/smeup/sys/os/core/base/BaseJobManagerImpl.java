@@ -23,6 +23,7 @@ import javax.inject.Inject;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.smeup.sys.il.core.ctx.CapabilityRight;
 import org.smeup.sys.il.core.ctx.QIdentity;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
@@ -142,13 +143,13 @@ public abstract class BaseJobManagerImpl implements QJobManager {
 		fireEvent(jobEvent);
 	}
 
-	protected QJobCapability createJobCapability(QJob job) {
+	protected QJobCapability createJobCapability(QJob job, List<CapabilityRight> rights) {
 		
 		// capability
 		URI address = EcoreUtil.getURI((EObject)job);
 		QJobCapability jobCapability;
 		try {
-			jobCapability = new BaseJobCapabilityImpl(job.getJobReference(), new java.net.URI(address.toString()));
+			jobCapability = new BaseJobCapabilityImpl(job.getJobReference(), new java.net.URI(address.toString()), rights);
 			return jobCapability;
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block

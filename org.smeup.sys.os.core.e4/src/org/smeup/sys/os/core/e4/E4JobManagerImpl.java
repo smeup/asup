@@ -145,7 +145,7 @@ public class E4JobManagerImpl extends BaseJobManagerImpl {
 		
 		activeJobs.put(job.getJobID(), job);
 
-		QJobCapability jobCapability = createJobCapability(job); 
+		QJobCapability jobCapability = createJobCapability(job, null); 
 		job.getContext().set(QJobCapability.class, jobCapability);
 		
 		job.getContext().set(QIdentity.class, identity);

@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Runtime Authentication Base
+Bundle-SymbolicName: org.smeup.sys.rt.auth.base
+Bundle-Version: 0.8.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.smeup.sys.rt.auth

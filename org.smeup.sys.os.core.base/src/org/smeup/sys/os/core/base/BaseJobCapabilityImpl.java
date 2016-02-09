@@ -12,7 +12,9 @@
 package org.smeup.sys.os.core.base;
 
 import java.net.URI;
+import java.util.List;
 
+import org.smeup.sys.il.core.ctx.CapabilityRight;
 import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobReference;
 
@@ -22,10 +24,12 @@ public class BaseJobCapabilityImpl implements QJobCapability {
 	
 	private QJobReference jobReference;
 	private URI address;
+	private List<CapabilityRight> rights;
 	
-	protected BaseJobCapabilityImpl(QJobReference jobReference, URI address) {
+	protected BaseJobCapabilityImpl(QJobReference jobReference, URI address, List<CapabilityRight> rights) {
 		this.jobReference = jobReference;
 		this.address = address;
+		this.rights = rights;
 	}
 
 	@Override
@@ -42,5 +46,10 @@ public class BaseJobCapabilityImpl implements QJobCapability {
 	public String getObjectID() {
 		org.eclipse.emf.common.util.URI uri = org.eclipse.emf.common.util.URI.createURI(getObjectAddress().toString());
 		return uri.fragment();
+	}
+
+	@Override
+	public List<CapabilityRight> getRights() {
+		return rights;
 	}
 }

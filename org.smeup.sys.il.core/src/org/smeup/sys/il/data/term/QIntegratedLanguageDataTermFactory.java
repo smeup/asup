@@ -43,6 +43,15 @@ public interface QIntegratedLanguageDataTermFactory extends EFactory {
 	QOverlay createOverlay();
 
 	/**
+	 * Returns a new object of class '<em>Range</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Range</em>'.
+	 * @generated
+	 */
+	QRange createRange();
+
+	/**
 	 * Returns a new object of class '<em>Remap</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

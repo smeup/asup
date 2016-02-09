@@ -56,7 +56,7 @@
       <dataTerm
           name="codedCharacterSetID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="1"/>
         <facets
@@ -173,7 +173,7 @@
       <dataTerm
           name="codedCharacterSetID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="1"/>
         <facets
@@ -266,7 +266,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <definition
@@ -284,7 +284,7 @@
       <dataTerm
           name="jobPriorityonJOBQ">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9"
             min="0"/>
         <facets
@@ -308,7 +308,7 @@
       <dataTerm
           name="outputPriorityonOUTQ">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9"
             min="1"/>
         <facets
@@ -429,7 +429,7 @@
       <dataTerm
           name="runPriority">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99"
             min="1"/>
         <facets
@@ -537,7 +537,7 @@
               xsi:type="os-cmd:CommandData"
               name="level">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="4"
                 min="0"/>
             <facets
@@ -556,7 +556,7 @@
               xsi:type="os-cmd:CommandData"
               name="severity">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="99"
                 min="0"/>
             <facets
@@ -1045,7 +1045,7 @@
       <dataTerm
           name="timeSlice">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999"
             min="1"/>
         <facets
@@ -1096,7 +1096,7 @@
       <dataTerm
           name="defaultWaitTime">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9999999"
             min="1"/>
         <facets
@@ -1353,7 +1353,7 @@
       <dataTerm
           name="codedCharacterSetID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="1"/>
         <facets
@@ -1540,7 +1540,7 @@
       <dataTerm
           name="seconds">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="999999"
             min="1"/>
         <definition
@@ -1612,7 +1612,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <definition
@@ -1797,7 +1797,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <definition
@@ -1981,7 +1981,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <definition
@@ -2023,7 +2023,7 @@
       <dataTerm
           name="controlledEndDelayTime">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="999999"
             min="1"/>
         <default
@@ -2181,7 +2181,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <definition
@@ -2225,7 +2225,7 @@
       <dataTerm
           name="controlledEndDelayTime">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="999999"
             min="1"/>
         <default
@@ -3566,7 +3566,7 @@
       <dataTerm
           name="jobPriorityonJOBQ">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9"
             min="1"/>
         <facets
@@ -3590,7 +3590,7 @@
       <dataTerm
           name="outputPriorityonOUTQ">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9"
             min="1"/>
         <facets
@@ -3974,7 +3974,7 @@
               xsi:type="os-cmd:CommandData"
               name="level">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="4"
                 min="0"/>
             <facets
@@ -3993,7 +3993,7 @@
               xsi:type="os-cmd:CommandData"
               name="severity">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="99"
                 min="0"/>
             <facets
@@ -4104,7 +4104,7 @@
       <dataTerm
           name="jobMessageQueueMaximumSize">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="64"
             min="2"/>
         <facets
@@ -4388,7 +4388,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <definition
@@ -4592,7 +4592,7 @@
       <dataTerm
           name="codedCharacterSetID">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="65535"
             min="1"/>
         <facets
@@ -4798,7 +4798,7 @@
       <dataTerm
           name="cPUPercentLimit">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99.9"
             min="0.1"/>
         <facets
@@ -4823,7 +4823,7 @@
       <dataTerm
           name="responseTimeLimit">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="999.9"
             min="0.1"/>
         <facets
@@ -4951,7 +4951,7 @@
       <dataTerm
           name="automaticRefreshInterval">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="999"
             min="5"/>
         <facets
@@ -5092,7 +5092,7 @@
               xsi:type="os-cmd:CommandData"
               name="number">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="999999"
                 min="000000"/>
             <definition

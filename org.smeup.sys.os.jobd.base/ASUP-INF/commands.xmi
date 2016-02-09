@@ -153,7 +153,7 @@
       <dataTerm
           name="jobPriorityonJOBQ">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9"
             min="1"/>
         <facets
@@ -177,7 +177,7 @@
       <dataTerm
           name="outputPriorityonOUTQ">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9"
             min="1"/>
         <facets
@@ -302,7 +302,7 @@
       <dataTerm
           name="cLSyntaxCheck">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99"
             min="0"/>
         <facets
@@ -365,7 +365,7 @@
       <dataTerm
           name="endSeverity">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99"
             min="0"/>
         <facets
@@ -394,7 +394,7 @@
               xsi:type="os-cmd:CommandData"
               name="level">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="4"
                 min="0"/>
             <facets
@@ -413,7 +413,7 @@
               xsi:type="os-cmd:CommandData"
               name="severity">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="99"
                 min="0"/>
             <facets
@@ -758,7 +758,7 @@
       <dataTerm
           name="jobMessageQueueMaximumSize">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="64"
             min="2"/>
         <facets
@@ -1109,7 +1109,7 @@
       <dataTerm
           name="jobPriorityonJOBQ">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9"
             min="1"/>
         <default
@@ -1127,7 +1127,7 @@
       <dataTerm
           name="outputPriorityonOUTQ">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="9"
             min="1"/>
         <default
@@ -1234,7 +1234,7 @@
       <dataTerm
           name="cLSyntaxCheck">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99"
             min="0"/>
         <facets
@@ -1293,7 +1293,7 @@
       <dataTerm
           name="endSeverity">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="99"
             min="0"/>
         <default
@@ -1316,7 +1316,7 @@
               xsi:type="os-cmd:CommandData"
               name="level">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="4"
                 min="0"/>
             <default
@@ -1329,7 +1329,7 @@
               xsi:type="os-cmd:CommandData"
               name="severity">
             <facets
-                xsi:type="il-core-meta:Range"
+                xsi:type="il-data-term:Range"
                 max="99"
                 min="0"/>
             <default
@@ -1669,7 +1669,7 @@
       <dataTerm
           name="jobMessageQueueMaximumSize">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="64"
             min="2"/>
         <facets

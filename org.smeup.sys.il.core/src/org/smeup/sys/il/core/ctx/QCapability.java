@@ -8,6 +8,7 @@
 package org.smeup.sys.il.core.ctx;
 
 import java.net.URI;
+import java.util.List;
 import org.smeup.sys.il.core.QObject;
 
 /**
@@ -15,12 +16,36 @@ import org.smeup.sys.il.core.QObject;
  * A representation of the model object '<em><b>Capability</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.smeup.sys.il.core.ctx.QCapability#getRights <em>Rights</em>}</li>
+ * </ul>
  *
  * @see org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage#getCapability()
  * @model interface="true" abstract="true"
  * @generated
  */
 public interface QCapability<T extends QObject> extends QObject {
+
+	/**
+	 * Returns the value of the '<em><b>Rights</b></em>' attribute list.
+	 * The list contents are of type {@link org.smeup.sys.il.core.ctx.CapabilityRight}.
+	 * The literals are from the enumeration {@link org.smeup.sys.il.core.ctx.CapabilityRight}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Rights</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rights</em>' attribute list.
+	 * @see org.smeup.sys.il.core.ctx.CapabilityRight
+	 * @see org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage#getCapability_Rights()
+	 * @model
+	 * @generated
+	 */
+	List<CapabilityRight> getRights();
 
 	/**
 	 * <!-- begin-user-doc -->

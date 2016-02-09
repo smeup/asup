@@ -220,49 +220,13 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	int FRAME_MANAGER_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.meta.impl.RangeImpl <em>Range</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.meta.impl.RangeImpl
-	 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getRange()
-	 * @generated
-	 */
-	int RANGE = 6;
-
-	/**
-	 * The feature id for the '<em><b>Max</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int RANGE__MAX = FACET_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Min</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int RANGE__MIN = FACET_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Range</em>' class. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int RANGE_FEATURE_COUNT = FACET_FEATURE_COUNT + 2;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.meta.QSlot <em>Slot</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.core.meta.QSlot
 	 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getSlot()
 	 * @generated
 	 */
-	int SLOT = 7;
+	int SLOT = 6;
 
 	/**
 	 * The number of structural features of the '<em>Slot</em>' class. <!--
@@ -401,41 +365,6 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for class '
-	 * {@link org.smeup.sys.il.core.meta.QRange <em>Range</em>}'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @return the meta object for class '<em>Range</em>'.
-	 * @see org.smeup.sys.il.core.meta.QRange
-	 * @generated
-	 */
-	EClass getRange();
-
-	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.smeup.sys.il.core.meta.QRange#getMax <em>Max</em>}'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @return the meta object for the attribute '<em>Max</em>'.
-	 * @see org.smeup.sys.il.core.meta.QRange#getMax()
-	 * @see #getRange()
-	 * @generated
-	 */
-	EAttribute getRange_Max();
-
-	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.smeup.sys.il.core.meta.QRange#getMin <em>Min</em>}'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @return the meta object for the attribute '<em>Min</em>'.
-	 * @see org.smeup.sys.il.core.meta.QRange#getMin()
-	 * @see #getRange()
-	 * @generated
-	 */
-	EAttribute getRange_Min();
-
-	/**
-	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.core.meta.QSlot <em>Slot</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -566,29 +495,6 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 		 * @generated
 		 */
 		EClass FRAME_MANAGER = eINSTANCE.getFrameManager();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.meta.impl.RangeImpl <em>Range</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.core.meta.impl.RangeImpl
-		 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getRange()
-		 * @generated
-		 */
-		EClass RANGE = eINSTANCE.getRange();
-
-		/**
-		 * The meta object literal for the '<em><b>Max</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RANGE__MAX = eINSTANCE.getRange_Max();
-
-		/**
-		 * The meta object literal for the '<em><b>Min</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RANGE__MIN = eINSTANCE.getRange_Min();
 
 		/**
 		 * The meta object literal for the '

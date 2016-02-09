@@ -121,7 +121,7 @@
       <dataTerm
           name="maximumDevices">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="256"
             min="1"/>
         <facets
@@ -753,7 +753,7 @@
       <dataTerm
           name="generationSeverityLevel">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="30"
             min="0"/>
         <default
@@ -771,7 +771,7 @@
       <dataTerm
           name="flaggingSeverityLevel">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="30"
             min="0"/>
         <default
@@ -819,7 +819,7 @@
       <dataTerm
           name="maximumDevices">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="256"
             min="1"/>
         <default
@@ -1623,7 +1623,7 @@
       <dataTerm
           name="maximumRecordWaitTime">
         <facets
-            xsi:type="il-core-meta:Range"
+            xsi:type="il-data-term:Range"
             max="32767"
             min="1"/>
         <facets

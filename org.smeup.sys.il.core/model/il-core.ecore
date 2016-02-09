@@ -168,6 +168,8 @@
       </eTypeParameters>
       <eOperations name="getObjectAddress" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaURI"/>
       <eOperations name="getObjectID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="rights" upperBound="-1"
+          eType="#//ctx/CapabilityRight"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Context" abstract="true">
       <eOperations name="close" lowerBound="1"/>
@@ -328,6 +330,11 @@
       </eTypeParameters>
       <eOperations name="getJavaPrincipal" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaPrincipal"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="CapabilityRight">
+      <eLiterals name="Read" value="10" literal="READ"/>
+      <eLiterals name="Write" value="20" literal="WRITE"/>
+      <eLiterals name="Execute" value="30" literal="EXEC"/>
+    </eClassifiers>
   </eSubpackages>
   <eSubpackages name="meta" nsURI="http://www.smeup.org/asup/il/core/meta" nsPrefix="il-core-meta">
     <eClassifiers xsi:type="ecore:EClass" name="Cardinality" eSuperTypes="#//meta/Facet">
@@ -397,11 +404,6 @@
           </eGenericType>
         </eParameters>
       </eOperations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Range" eSuperTypes="#//meta/Facet">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="max" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          defaultValueLiteral="1"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="min" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Slot" abstract="true" interface="true"
         eSuperTypes="#//Nameable">

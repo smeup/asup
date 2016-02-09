@@ -39,6 +39,7 @@ import org.smeup.sys.il.data.term.QFormat;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermFactory;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.data.term.QOverlay;
+import org.smeup.sys.il.data.term.QRange;
 import org.smeup.sys.il.data.term.QRemap;
 import org.smeup.sys.il.data.term.QSpecial;
 import org.smeup.sys.il.data.term.QSpecialElement;
@@ -81,6 +82,13 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	private EClass overlayEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass rangeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -378,6 +386,33 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getRange() {
+		return rangeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRange_Max() {
+		return (EAttribute)rangeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRange_Min() {
+		return (EAttribute)rangeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRemap() {
 		return remapEClass;
 	}
@@ -541,6 +576,10 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 		createEAttribute(overlayEClass, OVERLAY__NAME);
 		createEAttribute(overlayEClass, OVERLAY__POSITION);
 
+		rangeEClass = createEClass(RANGE);
+		createEAttribute(rangeEClass, RANGE__MAX);
+		createEAttribute(rangeEClass, RANGE__MIN);
+
 		remapEClass = createEClass(REMAP);
 		createEAttribute(remapEClass, REMAP__NAME);
 		createEAttribute(remapEClass, REMAP__INDEX);
@@ -608,6 +647,7 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 		dataTermContainerEClass.getEGenericSuperTypes().add(g1);
 		formatEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		overlayEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
+		rangeEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		remapEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		specialEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		specialElementEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNamedNode());
@@ -654,6 +694,10 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 		initEClass(overlayEClass, QOverlay.class, "Overlay", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOverlay_Name(), ecorePackage.getEString(), "name", null, 0, 1, QOverlay.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOverlay_Position(), ecorePackage.getEInt(), "position", null, 0, 1, QOverlay.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(rangeEClass, QRange.class, "Range", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRange_Max(), ecorePackage.getEString(), "max", "1", 1, 1, QRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRange_Min(), ecorePackage.getEString(), "min", null, 1, 1, QRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(remapEClass, QRemap.class, "Remap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRemap_Name(), ecorePackage.getEString(), "name", null, 1, 1, QRemap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

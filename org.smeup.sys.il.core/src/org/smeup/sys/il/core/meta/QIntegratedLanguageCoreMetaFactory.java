@@ -52,15 +52,6 @@ public interface QIntegratedLanguageCoreMetaFactory extends EFactory {
 	QDomain createDomain();
 
 	/**
-	 * Returns a new object of class '<em>Range</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Range</em>'.
-	 * @generated
-	 */
-	QRange createRange();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
