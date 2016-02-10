@@ -17,6 +17,10 @@
       [Enter License Description here.]
    </license>
 
+   <includes
+         id="org.smeup.sys.ft.equinox"
+         version="0.0.0"/>
+
    <plugin
          id="org.eclipse.ecf.provider"
          download-size="0"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.smeup.sys.ft.type.base"
-      label="As.UP Operating System Types Base"
+      label="As.UP Operating System Type Base"
       version="0.8.0.qualifier"
       provider-name="www.smeup.com">
 
@@ -95,13 +95,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.smeup.sys.il.esam"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.smeup.sys.os.cmd"
          download-size="0"
          install-size="0"
@@ -110,13 +103,6 @@
 
    <plugin
          id="org.smeup.sys.os.cmd.base"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.smeup.sys.co.core"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -10,8 +10,11 @@ package org.smeup.sys.co.flux.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
 import org.smeup.sys.co.flux.*;
 
 /**
@@ -20,24 +23,24 @@ import org.smeup.sys.co.flux.*;
  * <!-- end-user-doc -->
  * @generated
  */
-public class FluxFactoryImpl extends EFactoryImpl implements QFluxFactory {
+public class CommunicationFluxFactoryImpl extends EFactoryImpl implements QCommunicationFluxFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static QFluxFactory init() {
+	public static QCommunicationFluxFactory init() {
 		try {
-			QFluxFactory theFluxFactory = (QFluxFactory)EPackage.Registry.INSTANCE.getEFactory(QFluxPackage.eNS_URI);
-			if (theFluxFactory != null) {
-				return theFluxFactory;
+			QCommunicationFluxFactory theCommunicationFluxFactory = (QCommunicationFluxFactory)EPackage.Registry.INSTANCE.getEFactory(QCommunicationFluxPackage.eNS_URI);
+			if (theCommunicationFluxFactory != null) {
+				return theCommunicationFluxFactory;
 			}
 		}
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new FluxFactoryImpl();
+		return new CommunicationFluxFactoryImpl();
 	}
 
 	/**
@@ -46,7 +49,7 @@ public class FluxFactoryImpl extends EFactoryImpl implements QFluxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FluxFactoryImpl() {
+	public CommunicationFluxFactoryImpl() {
 		super();
 	}
 
@@ -58,7 +61,7 @@ public class FluxFactoryImpl extends EFactoryImpl implements QFluxFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG: return (EObject)createFluxServerConnectionConfig();
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG: return (EObject)createFluxServerConnectionConfig();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -79,8 +82,8 @@ public class FluxFactoryImpl extends EFactoryImpl implements QFluxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QFluxPackage getFluxPackage() {
-		return (QFluxPackage)getEPackage();
+	public QCommunicationFluxPackage getCommunicationFluxPackage() {
+		return (QCommunicationFluxPackage)getEPackage();
 	}
 
 	/**
@@ -90,8 +93,8 @@ public class FluxFactoryImpl extends EFactoryImpl implements QFluxFactory {
 	 * @generated
 	 */
 	@Deprecated
-	public static QFluxPackage getPackage() {
-		return QFluxPackage.eINSTANCE;
+	public static QCommunicationFluxPackage getPackage() {
+		return QCommunicationFluxPackage.eINSTANCE;
 	}
 
-} //FluxFactoryImpl
+} //CommunicationFluxFactoryImpl

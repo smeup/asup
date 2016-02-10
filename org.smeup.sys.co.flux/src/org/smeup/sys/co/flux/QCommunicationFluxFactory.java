@@ -14,23 +14,23 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.smeup.sys.co.flux.QFluxPackage
+ * @see org.smeup.sys.co.flux.QCommunicationFluxPackage
  * @generated
  */
-public interface QFluxFactory extends EFactory {
+public interface QCommunicationFluxFactory extends EFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	QFluxFactory eINSTANCE = org.smeup.sys.co.flux.impl.FluxFactoryImpl.init();
+	QCommunicationFluxFactory eINSTANCE = org.smeup.sys.co.flux.impl.CommunicationFluxFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Server Connection Config</em>'.
+	 * Returns a new object of class '<em>Flux Server Connection Config</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Server Connection Config</em>'.
+	 * @return a new object of class '<em>Flux Server Connection Config</em>'.
 	 * @generated
 	 */
 	QFluxServerConnectionConfig createFluxServerConnectionConfig();
@@ -42,6 +42,6 @@ public interface QFluxFactory extends EFactory {
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	QFluxPackage getFluxPackage();
+	QCommunicationFluxPackage getCommunicationFluxPackage();
 
-} //QFluxFactory
+} //QCommunicationFluxFactory

@@ -17,6 +17,10 @@
       [Enter License Description here.]
    </license>
 
+   <includes
+         id="org.smeup.sys.ft.eclipse"
+         version="0.0.0"/>
+
    <plugin
          id="org.eclipse.net4j"
          download-size="0"

@@ -1,4 +1,14 @@
-package org.smeup.sys.co.flux.hook;
+/**
+ * Copyright (c) 2012, 2016 Sme.UP and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   Dario Foresti - Initial API and implementation
+ */
+package org.smeup.sys.co.flux.base;
 
 import org.eclipse.flux.client.IChannelListener;
 import org.eclipse.flux.client.MessageConnector;
@@ -7,10 +17,8 @@ import org.eclipse.flux.core.ChannelSwitcher;
 import org.eclipse.flux.core.KeepAliveConnector;
 import org.eclipse.flux.core.Repository;
 import org.eclipse.flux.core.ServiceDiscoveryConnector;
-import org.smeup.sys.co.flux.InitializeServiceEnvironment;
-import org.smeup.sys.co.flux.LiveEditUnits;
 
-public class FluxComponent {
+public class BaseFluxComponent {
 	public static final String JDT_SERVICE_ID = "org.smeup.sys.co.flux";
 	private static long WAIT_TIME_PERIOD = 100;
 

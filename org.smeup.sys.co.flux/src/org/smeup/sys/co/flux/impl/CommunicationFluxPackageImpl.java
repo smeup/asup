@@ -10,11 +10,20 @@ package org.smeup.sys.co.flux.impl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.smeup.sys.co.flux.QFluxFactory;
-import org.smeup.sys.co.flux.QFluxPackage;
+
+import org.smeup.sys.co.flux.QCommunicationFluxFactory;
+import org.smeup.sys.co.flux.QCommunicationFluxPackage;
 import org.smeup.sys.co.flux.QFluxServerConnectionConfig;
+
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+
+import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
+
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,13 +31,14 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class FluxPackageImpl extends EPackageImpl implements QFluxPackage {
+public class CommunicationFluxPackageImpl extends EPackageImpl implements QCommunicationFluxPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass fluxServerConnectionConfigEClass = null;
+
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
@@ -40,12 +50,12 @@ public class FluxPackageImpl extends EPackageImpl implements QFluxPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.smeup.sys.co.flux.QFluxPackage#eNS_URI
+	 * @see org.smeup.sys.co.flux.QCommunicationFluxPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private FluxPackageImpl() {
-		super(eNS_URI, QFluxFactory.eINSTANCE);
+	private CommunicationFluxPackageImpl() {
+		super(eNS_URI, QCommunicationFluxFactory.eINSTANCE);
 	}
 
 	/**
@@ -58,7 +68,7 @@ public class FluxPackageImpl extends EPackageImpl implements QFluxPackage {
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link QFluxPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link QCommunicationFluxPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -67,30 +77,33 @@ public class FluxPackageImpl extends EPackageImpl implements QFluxPackage {
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static QFluxPackage init() {
-		if (isInited) return (QFluxPackage)EPackage.Registry.INSTANCE.getEPackage(QFluxPackage.eNS_URI);
+	public static QCommunicationFluxPackage init() {
+		if (isInited) return (QCommunicationFluxPackage)EPackage.Registry.INSTANCE.getEPackage(QCommunicationFluxPackage.eNS_URI);
 
 		// Obtain or create and register package
-		FluxPackageImpl theFluxPackage = (FluxPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof FluxPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new FluxPackageImpl());
+		CommunicationFluxPackageImpl theCommunicationFluxPackage = (CommunicationFluxPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof CommunicationFluxPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new CommunicationFluxPackageImpl());
 
 		isInited = true;
 
 		// Initialize simple dependencies
 		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataDefPackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataTermPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
-		theFluxPackage.createPackageContents();
+		theCommunicationFluxPackage.createPackageContents();
 
 		// Initialize created meta-data
-		theFluxPackage.initializePackageContents();
+		theCommunicationFluxPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theFluxPackage.freeze();
+		theCommunicationFluxPackage.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(QFluxPackage.eNS_URI, theFluxPackage);
-		return theFluxPackage;
+		EPackage.Registry.INSTANCE.put(QCommunicationFluxPackage.eNS_URI, theCommunicationFluxPackage);
+		return theCommunicationFluxPackage;
 	}
 
 	/**
@@ -134,15 +147,6 @@ public class FluxPackageImpl extends EPackageImpl implements QFluxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getFluxServerConnectionConfig_UserName() {
-		return (EAttribute)fluxServerConnectionConfigEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getFluxServerConnectionConfig_Token() {
 		return (EAttribute)fluxServerConnectionConfigEClass.getEStructuralFeatures().get(3);
 	}
@@ -152,8 +156,17 @@ public class FluxPackageImpl extends EPackageImpl implements QFluxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QFluxFactory getFluxFactory() {
-		return (QFluxFactory)getEFactoryInstance();
+	public EAttribute getFluxServerConnectionConfig_UserName() {
+		return (EAttribute)fluxServerConnectionConfigEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QCommunicationFluxFactory getCommunicationFluxFactory() {
+		return (QCommunicationFluxFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -228,4 +241,4 @@ public class FluxPackageImpl extends EPackageImpl implements QFluxPackage {
 		createResource(eNS_URI);
 	}
 
-} //FluxPackageImpl
+} //CommunicationFluxPackageImpl

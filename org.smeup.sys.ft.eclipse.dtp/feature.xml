@@ -17,6 +17,10 @@
       [Enter License Description here.]
    </license>
 
+   <includes
+         id="org.smeup.sys.ft.eclipse"
+         version="0.0.0"/>
+
    <plugin
          id="org.eclipse.datatools.modelbase.sql"
          download-size="0"
@@ -96,27 +100,6 @@
 
    <plugin
          id="org.eclipse.datatools.sqltools.data.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.datatools.sqltools.result"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.help"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.lucene.core"
          download-size="0"
          install-size="0"
          version="0.0.0"

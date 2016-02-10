@@ -10,7 +10,7 @@
       <!-- @generated co-osgi -->
       <package
             uri="http://www.smeup.org/asup/co/osgi"
-            class="org.smeup.sys.co.osgi.QConnectorOSGIPackage"
+            class="org.smeup.sys.co.osgi.QCommunicationOSGIPackage"
             genModel="model/co-osgi.genmodel"/>
    </extension>
 

@@ -24,11 +24,11 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.smeup.sys.co.flux.QFluxFactory
+ * @see org.smeup.sys.co.flux.QCommunicationFluxFactory
  * @model kind="package"
  * @generated
  */
-public interface QFluxPackage extends EPackage {
+public interface QCommunicationFluxPackage extends EPackage {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
@@ -59,14 +59,14 @@ public interface QFluxPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	QFluxPackage eINSTANCE = org.smeup.sys.co.flux.impl.FluxPackageImpl.init();
+	QCommunicationFluxPackage eINSTANCE = org.smeup.sys.co.flux.impl.CommunicationFluxPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.co.flux.impl.FluxServerConnectionConfigImpl <em>Server Connection Config</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.co.flux.impl.FluxServerConnectionConfigImpl <em>Flux Server Connection Config</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.co.flux.impl.FluxServerConnectionConfigImpl
-	 * @see org.smeup.sys.co.flux.impl.FluxPackageImpl#getFluxServerConnectionConfig()
+	 * @see org.smeup.sys.co.flux.impl.CommunicationFluxPackageImpl#getFluxServerConnectionConfig()
 	 * @generated
 	 */
 	int FLUX_SERVER_CONNECTION_CONFIG = 0;
@@ -117,7 +117,7 @@ public interface QFluxPackage extends EPackage {
 	int FLUX_SERVER_CONNECTION_CONFIG__USER_NAME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the '<em>Server Connection Config</em>' class.
+	 * The number of structural features of the '<em>Flux Server Connection Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -127,10 +127,10 @@ public interface QFluxPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig <em>Server Connection Config</em>}'.
+	 * Returns the meta object for class '{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig <em>Flux Server Connection Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Server Connection Config</em>'.
+	 * @return the meta object for class '<em>Flux Server Connection Config</em>'.
 	 * @see org.smeup.sys.co.flux.QFluxServerConnectionConfig
 	 * @generated
 	 */
@@ -198,7 +198,7 @@ public interface QFluxPackage extends EPackage {
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	QFluxFactory getFluxFactory();
+	QCommunicationFluxFactory getCommunicationFluxFactory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -214,11 +214,11 @@ public interface QFluxPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.co.flux.impl.FluxServerConnectionConfigImpl <em>Server Connection Config</em>}' class.
+		 * The meta object literal for the '{@link org.smeup.sys.co.flux.impl.FluxServerConnectionConfigImpl <em>Flux Server Connection Config</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.smeup.sys.co.flux.impl.FluxServerConnectionConfigImpl
-		 * @see org.smeup.sys.co.flux.impl.FluxPackageImpl#getFluxServerConnectionConfig()
+		 * @see org.smeup.sys.co.flux.impl.CommunicationFluxPackageImpl#getFluxServerConnectionConfig()
 		 * @generated
 		 */
 		EClass FLUX_SERVER_CONNECTION_CONFIG = eINSTANCE.getFluxServerConnectionConfig();
@@ -265,4 +265,4 @@ public interface QFluxPackage extends EPackage {
 
 	}
 
-} //QFluxPackage
+} //QCommunicationFluxPackage

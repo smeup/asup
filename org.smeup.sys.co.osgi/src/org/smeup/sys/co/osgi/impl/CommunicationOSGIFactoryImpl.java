@@ -20,24 +20,24 @@ import org.smeup.sys.co.osgi.*;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConnectorOSGIFactoryImpl extends EFactoryImpl implements QConnectorOSGIFactory {
+public class CommunicationOSGIFactoryImpl extends EFactoryImpl implements QCommunicationOSGIFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static QConnectorOSGIFactory init() {
+	public static QCommunicationOSGIFactory init() {
 		try {
-			QConnectorOSGIFactory theConnectorOSGIFactory = (QConnectorOSGIFactory)EPackage.Registry.INSTANCE.getEFactory(QConnectorOSGIPackage.eNS_URI);
-			if (theConnectorOSGIFactory != null) {
-				return theConnectorOSGIFactory;
+			QCommunicationOSGIFactory theCommunicationOSGIFactory = (QCommunicationOSGIFactory)EPackage.Registry.INSTANCE.getEFactory(QCommunicationOSGIPackage.eNS_URI);
+			if (theCommunicationOSGIFactory != null) {
+				return theCommunicationOSGIFactory;
 			}
 		}
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new ConnectorOSGIFactoryImpl();
+		return new CommunicationOSGIFactoryImpl();
 	}
 
 	/**
@@ -46,7 +46,7 @@ public class ConnectorOSGIFactoryImpl extends EFactoryImpl implements QConnector
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConnectorOSGIFactoryImpl() {
+	public CommunicationOSGIFactoryImpl() {
 		super();
 	}
 
@@ -68,8 +68,8 @@ public class ConnectorOSGIFactoryImpl extends EFactoryImpl implements QConnector
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QConnectorOSGIPackage getConnectorOSGIPackage() {
-		return (QConnectorOSGIPackage)getEPackage();
+	public QCommunicationOSGIPackage getCommunicationOSGIPackage() {
+		return (QCommunicationOSGIPackage)getEPackage();
 	}
 
 	/**
@@ -79,8 +79,8 @@ public class ConnectorOSGIFactoryImpl extends EFactoryImpl implements QConnector
 	 * @generated
 	 */
 	@Deprecated
-	public static QConnectorOSGIPackage getPackage() {
-		return QConnectorOSGIPackage.eINSTANCE;
+	public static QCommunicationOSGIPackage getPackage() {
+		return QCommunicationOSGIPackage.eINSTANCE;
 	}
 
-} //ConnectorOSGIFactoryImpl
+} //CommunicationOSGIFactoryImpl

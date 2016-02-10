@@ -16,6 +16,7 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#getChannelID <em>Channel ID</em>}</li>
  *   <li>{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#getHost <em>Host</em>}</li>
@@ -23,9 +24,8 @@ import org.smeup.sys.il.core.QObject;
  *   <li>{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#getToken <em>Token</em>}</li>
  *   <li>{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#getUserName <em>User Name</em>}</li>
  * </ul>
- * </p>
  *
- * @see org.smeup.sys.co.flux.QFluxPackage#getFluxServerConnectionConfig()
+ * @see org.smeup.sys.co.flux.QCommunicationFluxPackage#getFluxServerConnectionConfig()
  * @model
  * @generated
  */
@@ -40,7 +40,7 @@ public interface QFluxServerConnectionConfig extends QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Channel ID</em>' attribute.
 	 * @see #setChannelID(String)
-	 * @see org.smeup.sys.co.flux.QFluxPackage#getFluxServerConnectionConfig_ChannelID()
+	 * @see org.smeup.sys.co.flux.QCommunicationFluxPackage#getFluxServerConnectionConfig_ChannelID()
 	 * @model
 	 * @generated
 	 */
@@ -66,7 +66,7 @@ public interface QFluxServerConnectionConfig extends QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Host</em>' attribute.
 	 * @see #setHost(String)
-	 * @see org.smeup.sys.co.flux.QFluxPackage#getFluxServerConnectionConfig_Host()
+	 * @see org.smeup.sys.co.flux.QCommunicationFluxPackage#getFluxServerConnectionConfig_Host()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -92,7 +92,7 @@ public interface QFluxServerConnectionConfig extends QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Lazy Start</em>' attribute.
 	 * @see #setLazyStart(boolean)
-	 * @see org.smeup.sys.co.flux.QFluxPackage#getFluxServerConnectionConfig_LazyStart()
+	 * @see org.smeup.sys.co.flux.QCommunicationFluxPackage#getFluxServerConnectionConfig_LazyStart()
 	 * @model
 	 * @generated
 	 */
@@ -118,7 +118,7 @@ public interface QFluxServerConnectionConfig extends QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Token</em>' attribute.
 	 * @see #setToken(String)
-	 * @see org.smeup.sys.co.flux.QFluxPackage#getFluxServerConnectionConfig_Token()
+	 * @see org.smeup.sys.co.flux.QCommunicationFluxPackage#getFluxServerConnectionConfig_Token()
 	 * @model
 	 * @generated
 	 */
@@ -144,7 +144,7 @@ public interface QFluxServerConnectionConfig extends QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>User Name</em>' attribute.
 	 * @see #setUserName(String)
-	 * @see org.smeup.sys.co.flux.QFluxPackage#getFluxServerConnectionConfig_UserName()
+	 * @see org.smeup.sys.co.flux.QCommunicationFluxPackage#getFluxServerConnectionConfig_UserName()
 	 * @model required="true"
 	 * @generated
 	 */

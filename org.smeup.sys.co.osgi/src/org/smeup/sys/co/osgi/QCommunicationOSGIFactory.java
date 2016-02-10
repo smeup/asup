@@ -14,17 +14,17 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.smeup.sys.co.osgi.QConnectorOSGIPackage
+ * @see org.smeup.sys.co.osgi.QCommunicationOSGIPackage
  * @generated
  */
-public interface QConnectorOSGIFactory extends EFactory {
+public interface QCommunicationOSGIFactory extends EFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	QConnectorOSGIFactory eINSTANCE = org.smeup.sys.co.osgi.impl.ConnectorOSGIFactoryImpl.init();
+	QCommunicationOSGIFactory eINSTANCE = org.smeup.sys.co.osgi.impl.CommunicationOSGIFactoryImpl.init();
 
 	/**
 	 * Returns the package supported by this factory.
@@ -33,6 +33,6 @@ public interface QConnectorOSGIFactory extends EFactory {
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	QConnectorOSGIPackage getConnectorOSGIPackage();
+	QCommunicationOSGIPackage getCommunicationOSGIPackage();
 
-} //QConnectorOSGIFactory
+} //QCommunicationOSGIFactory

@@ -15,7 +15,7 @@ import java.util.List;
  * <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.co.osgi.QConnectorOSGIPackage#getCommunicationManager()
+ * @see org.smeup.sys.co.osgi.QCommunicationOSGIPackage#getCommunicationManager()
  * @model interface="true" abstract="true"
  * @generated
  */

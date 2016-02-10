@@ -12,8 +12,8 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.co.osgi.QCommunicationManager;
-import org.smeup.sys.co.osgi.QConnectorOSGIFactory;
-import org.smeup.sys.co.osgi.QConnectorOSGIPackage;
+import org.smeup.sys.co.osgi.QCommunicationOSGIFactory;
+import org.smeup.sys.co.osgi.QCommunicationOSGIPackage;
 import org.smeup.sys.co.osgi.QEndPoint;
 
 /**
@@ -22,7 +22,7 @@ import org.smeup.sys.co.osgi.QEndPoint;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConnectorOSGIPackageImpl extends EPackageImpl implements QConnectorOSGIPackage {
+public class CommunicationOSGIPackageImpl extends EPackageImpl implements QCommunicationOSGIPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -47,12 +47,12 @@ public class ConnectorOSGIPackageImpl extends EPackageImpl implements QConnector
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.smeup.sys.co.osgi.QConnectorOSGIPackage#eNS_URI
+	 * @see org.smeup.sys.co.osgi.QCommunicationOSGIPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private ConnectorOSGIPackageImpl() {
-		super(eNS_URI, QConnectorOSGIFactory.eINSTANCE);
+	private CommunicationOSGIPackageImpl() {
+		super(eNS_URI, QCommunicationOSGIFactory.eINSTANCE);
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class ConnectorOSGIPackageImpl extends EPackageImpl implements QConnector
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link QConnectorOSGIPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link QCommunicationOSGIPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -74,27 +74,27 @@ public class ConnectorOSGIPackageImpl extends EPackageImpl implements QConnector
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static QConnectorOSGIPackage init() {
-		if (isInited) return (QConnectorOSGIPackage)EPackage.Registry.INSTANCE.getEPackage(QConnectorOSGIPackage.eNS_URI);
+	public static QCommunicationOSGIPackage init() {
+		if (isInited) return (QCommunicationOSGIPackage)EPackage.Registry.INSTANCE.getEPackage(QCommunicationOSGIPackage.eNS_URI);
 
 		// Obtain or create and register package
-		ConnectorOSGIPackageImpl theConnectorOSGIPackage = (ConnectorOSGIPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ConnectorOSGIPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ConnectorOSGIPackageImpl());
+		CommunicationOSGIPackageImpl theCommunicationOSGIPackage = (CommunicationOSGIPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof CommunicationOSGIPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new CommunicationOSGIPackageImpl());
 
 		isInited = true;
 
 		// Create package meta-data objects
-		theConnectorOSGIPackage.createPackageContents();
+		theCommunicationOSGIPackage.createPackageContents();
 
 		// Initialize created meta-data
-		theConnectorOSGIPackage.initializePackageContents();
+		theCommunicationOSGIPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theConnectorOSGIPackage.freeze();
+		theCommunicationOSGIPackage.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(QConnectorOSGIPackage.eNS_URI, theConnectorOSGIPackage);
-		return theConnectorOSGIPackage;
+		EPackage.Registry.INSTANCE.put(QCommunicationOSGIPackage.eNS_URI, theCommunicationOSGIPackage);
+		return theCommunicationOSGIPackage;
 	}
 
 	/**
@@ -120,8 +120,8 @@ public class ConnectorOSGIPackageImpl extends EPackageImpl implements QConnector
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QConnectorOSGIFactory getConnectorOSGIFactory() {
-		return (QConnectorOSGIFactory)getEFactoryInstance();
+	public QCommunicationOSGIFactory getCommunicationOSGIFactory() {
+		return (QCommunicationOSGIFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -203,4 +203,4 @@ public class ConnectorOSGIPackageImpl extends EPackageImpl implements QConnector
 		createResource(eNS_URI);
 	}
 
-} //ConnectorOSGIPackageImpl
+} //CommunicationOSGIPackageImpl

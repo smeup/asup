@@ -17,7 +17,7 @@ import java.util.Map;
  * <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.co.osgi.QConnectorOSGIPackage#getEndPoint()
+ * @see org.smeup.sys.co.osgi.QCommunicationOSGIPackage#getEndPoint()
  * @model interface="true" abstract="true"
  * @generated
  */

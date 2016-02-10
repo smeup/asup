@@ -10,7 +10,7 @@ package org.smeup.sys.co.flux.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.smeup.sys.co.flux.QFluxPackage;
+import org.smeup.sys.co.flux.QCommunicationFluxPackage;
 import org.smeup.sys.co.flux.QFluxServerConnectionConfig;
 import org.smeup.sys.il.core.impl.ObjectImpl;
 
@@ -20,6 +20,7 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.co.flux.impl.FluxServerConnectionConfigImpl#getChannelID <em>Channel ID</em>}</li>
  *   <li>{@link org.smeup.sys.co.flux.impl.FluxServerConnectionConfigImpl#getHost <em>Host</em>}</li>
@@ -27,7 +28,6 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
  *   <li>{@link org.smeup.sys.co.flux.impl.FluxServerConnectionConfigImpl#getToken <em>Token</em>}</li>
  *   <li>{@link org.smeup.sys.co.flux.impl.FluxServerConnectionConfigImpl#getUserName <em>User Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -153,7 +153,7 @@ public class FluxServerConnectionConfigImpl extends ObjectImpl implements QFluxS
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QFluxPackage.Literals.FLUX_SERVER_CONNECTION_CONFIG;
+		return QCommunicationFluxPackage.Literals.FLUX_SERVER_CONNECTION_CONFIG;
 	}
 
 	/**
@@ -174,7 +174,7 @@ public class FluxServerConnectionConfigImpl extends ObjectImpl implements QFluxS
 		String oldChannelID = channelID;
 		channelID = newChannelID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__CHANNEL_ID, oldChannelID, channelID));
+			eNotify(new ENotificationImpl(this, Notification.SET, QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__CHANNEL_ID, oldChannelID, channelID));
 	}
 
 	/**
@@ -195,7 +195,7 @@ public class FluxServerConnectionConfigImpl extends ObjectImpl implements QFluxS
 		String oldHost = host;
 		host = newHost;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__HOST, oldHost, host));
+			eNotify(new ENotificationImpl(this, Notification.SET, QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__HOST, oldHost, host));
 	}
 
 	/**
@@ -216,7 +216,7 @@ public class FluxServerConnectionConfigImpl extends ObjectImpl implements QFluxS
 		boolean oldLazyStart = lazyStart;
 		lazyStart = newLazyStart;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__LAZY_START, oldLazyStart, lazyStart));
+			eNotify(new ENotificationImpl(this, Notification.SET, QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__LAZY_START, oldLazyStart, lazyStart));
 	}
 
 	/**
@@ -237,7 +237,7 @@ public class FluxServerConnectionConfigImpl extends ObjectImpl implements QFluxS
 		String oldUserName = userName;
 		userName = newUserName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__USER_NAME, oldUserName, userName));
+			eNotify(new ENotificationImpl(this, Notification.SET, QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__USER_NAME, oldUserName, userName));
 	}
 
 	/**
@@ -258,7 +258,7 @@ public class FluxServerConnectionConfigImpl extends ObjectImpl implements QFluxS
 		String oldToken = token;
 		token = newToken;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__TOKEN, oldToken, token));
+			eNotify(new ENotificationImpl(this, Notification.SET, QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__TOKEN, oldToken, token));
 	}
 
 	/**
@@ -269,15 +269,15 @@ public class FluxServerConnectionConfigImpl extends ObjectImpl implements QFluxS
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__CHANNEL_ID:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__CHANNEL_ID:
 				return getChannelID();
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__HOST:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__HOST:
 				return getHost();
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__LAZY_START:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__LAZY_START:
 				return isLazyStart();
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__TOKEN:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__TOKEN:
 				return getToken();
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__USER_NAME:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__USER_NAME:
 				return getUserName();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -291,19 +291,19 @@ public class FluxServerConnectionConfigImpl extends ObjectImpl implements QFluxS
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__CHANNEL_ID:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__CHANNEL_ID:
 				setChannelID((String)newValue);
 				return;
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__HOST:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__HOST:
 				setHost((String)newValue);
 				return;
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__LAZY_START:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__LAZY_START:
 				setLazyStart((Boolean)newValue);
 				return;
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__TOKEN:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__TOKEN:
 				setToken((String)newValue);
 				return;
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__USER_NAME:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__USER_NAME:
 				setUserName((String)newValue);
 				return;
 		}
@@ -318,19 +318,19 @@ public class FluxServerConnectionConfigImpl extends ObjectImpl implements QFluxS
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__CHANNEL_ID:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__CHANNEL_ID:
 				setChannelID(CHANNEL_ID_EDEFAULT);
 				return;
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__HOST:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__HOST:
 				setHost(HOST_EDEFAULT);
 				return;
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__LAZY_START:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__LAZY_START:
 				setLazyStart(LAZY_START_EDEFAULT);
 				return;
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__TOKEN:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__TOKEN:
 				setToken(TOKEN_EDEFAULT);
 				return;
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__USER_NAME:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__USER_NAME:
 				setUserName(USER_NAME_EDEFAULT);
 				return;
 		}
@@ -345,15 +345,15 @@ public class FluxServerConnectionConfigImpl extends ObjectImpl implements QFluxS
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__CHANNEL_ID:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__CHANNEL_ID:
 				return CHANNEL_ID_EDEFAULT == null ? channelID != null : !CHANNEL_ID_EDEFAULT.equals(channelID);
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__HOST:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__HOST:
 				return HOST_EDEFAULT == null ? host != null : !HOST_EDEFAULT.equals(host);
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__LAZY_START:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__LAZY_START:
 				return lazyStart != LAZY_START_EDEFAULT;
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__TOKEN:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__TOKEN:
 				return TOKEN_EDEFAULT == null ? token != null : !TOKEN_EDEFAULT.equals(token);
-			case QFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__USER_NAME:
+			case QCommunicationFluxPackage.FLUX_SERVER_CONNECTION_CONFIG__USER_NAME:
 				return USER_NAME_EDEFAULT == null ? userName != null : !USER_NAME_EDEFAULT.equals(userName);
 		}
 		return super.eIsSet(featureID);

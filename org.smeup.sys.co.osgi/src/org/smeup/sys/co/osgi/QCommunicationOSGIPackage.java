@@ -22,11 +22,11 @@ import org.eclipse.emf.ecore.EPackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.smeup.sys.co.osgi.QConnectorOSGIFactory
+ * @see org.smeup.sys.co.osgi.QCommunicationOSGIFactory
  * @model kind="package"
  * @generated
  */
-public interface QConnectorOSGIPackage extends EPackage {
+public interface QCommunicationOSGIPackage extends EPackage {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
@@ -57,14 +57,14 @@ public interface QConnectorOSGIPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	QConnectorOSGIPackage eINSTANCE = org.smeup.sys.co.osgi.impl.ConnectorOSGIPackageImpl.init();
+	QCommunicationOSGIPackage eINSTANCE = org.smeup.sys.co.osgi.impl.CommunicationOSGIPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.co.osgi.QCommunicationManager <em>Communication Manager</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.co.osgi.QCommunicationManager
-	 * @see org.smeup.sys.co.osgi.impl.ConnectorOSGIPackageImpl#getCommunicationManager()
+	 * @see org.smeup.sys.co.osgi.impl.CommunicationOSGIPackageImpl#getCommunicationManager()
 	 * @generated
 	 */
 	int COMMUNICATION_MANAGER = 0;
@@ -83,7 +83,7 @@ public interface QConnectorOSGIPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.co.osgi.QEndPoint
-	 * @see org.smeup.sys.co.osgi.impl.ConnectorOSGIPackageImpl#getEndPoint()
+	 * @see org.smeup.sys.co.osgi.impl.CommunicationOSGIPackageImpl#getEndPoint()
 	 * @generated
 	 */
 	int END_POINT = 1;
@@ -124,7 +124,7 @@ public interface QConnectorOSGIPackage extends EPackage {
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	QConnectorOSGIFactory getConnectorOSGIFactory();
+	QCommunicationOSGIFactory getCommunicationOSGIFactory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,7 +145,7 @@ public interface QConnectorOSGIPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.smeup.sys.co.osgi.QCommunicationManager
-		 * @see org.smeup.sys.co.osgi.impl.ConnectorOSGIPackageImpl#getCommunicationManager()
+		 * @see org.smeup.sys.co.osgi.impl.CommunicationOSGIPackageImpl#getCommunicationManager()
 		 * @generated
 		 */
 		EClass COMMUNICATION_MANAGER = eINSTANCE.getCommunicationManager();
@@ -154,11 +154,11 @@ public interface QConnectorOSGIPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.smeup.sys.co.osgi.QEndPoint
-		 * @see org.smeup.sys.co.osgi.impl.ConnectorOSGIPackageImpl#getEndPoint()
+		 * @see org.smeup.sys.co.osgi.impl.CommunicationOSGIPackageImpl#getEndPoint()
 		 * @generated
 		 */
 		EClass END_POINT = eINSTANCE.getEndPoint();
 
 	}
 
-} //QConnectorOSGIPackage
+} //QCommunicationOSGIPackage

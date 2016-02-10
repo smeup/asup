@@ -2,12 +2,12 @@
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2014 Sme.UP and others.&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v10.html"
     modelDirectory="/org.smeup.sys.co.flux/src" modelPluginID="org.smeup.sys.co.flux"
-    modelName="As.UP Container Flux" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    modelName="As.UP Communication Flux" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
+    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//data/def ../../org.smeup.sys.il.core/model/il-core.genmodel#//data ../../org.smeup.sys.il.core/model/il-core.genmodel#//data/term"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>co-flux.ecore</foreignModel>
-  <genPackages prefix="Flux" basePackage="org.smeup.sys.co" disposableProviderFactory="true"
+  <genPackages prefix="CommunicationFlux" basePackage="org.smeup.sys.co" disposableProviderFactory="true"
       adapterFactory="false" utilityPackageSuffix="" ecorePackage="co-flux.ecore#/">
     <genClasses ecoreClass="co-flux.ecore#//FluxServerConnectionConfig">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute co-flux.ecore#//FluxServerConnectionConfig/channelID"/>

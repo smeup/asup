@@ -1,4 +1,14 @@
-package org.smeup.sys.co.flux;
+/**
+ * Copyright (c) 2012, 2016 Sme.UP and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   Dario Foresti - Initial API and implementation
+ */
+package org.smeup.sys.co.flux.base;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +18,6 @@ import org.eclipse.jdt.core.IProblemRequestor;
 import org.eclipse.jdt.core.compiler.IProblem;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.smeup.sys.co.flux.hook.FluxComponent;
 
 /**
  * Accepts computed compilation problems from JDT and forwards them to the message bus.
@@ -79,7 +88,7 @@ public class LiveEditProblemRequestor implements IProblemRequestor {
 
 			result.append("{");
 			result.append("\"id\":" + problem.getID());
-			result.append(",\"author\":" + FluxComponent.JDT_SERVICE_ID);
+			result.append(",\"author\":" + BaseFluxComponent.JDT_SERVICE_ID);
 			result.append(",\"description\":" + JSONObject.quote(problem.getMessage()));
 			result.append(",\"line\":" + problem.getSourceLineNumber());
 			result.append(",\"severity\":\"" + (problem.isError() ? "error" : "warning") + "\"");
