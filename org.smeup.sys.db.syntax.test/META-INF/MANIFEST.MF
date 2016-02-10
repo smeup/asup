@@ -5,8 +5,7 @@ Bundle-SymbolicName: org.smeup.sys.db.syntax.test
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.smeup.sys.dk.test.base,
- javax.inject,
- org.smeup.sys.dk.test.e4,
- org.smeup.sys.et.antlr,
+Require-Bundle: org.smeup.sys.et.antlr,
+ org.smeup.sys.dk.test.base,
  org.smeup.sys.db.syntax.ibmi
+Import-Package: javax.inject

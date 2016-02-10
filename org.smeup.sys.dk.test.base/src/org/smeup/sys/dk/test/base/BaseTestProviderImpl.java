@@ -9,14 +9,14 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.dk.test.e4;
+package org.smeup.sys.dk.test.base;
 
 import org.eclipse.osgi.framework.console.CommandProvider;
 import org.smeup.sys.dk.test.AssertionState;
 import org.smeup.sys.dk.test.QAssertionResult;
 import org.smeup.sys.dk.test.QTestResult;
 
-public abstract class E4TestProviderImpl implements CommandProvider {
+public abstract class BaseTestProviderImpl implements CommandProvider {
 
 	
 	protected void printTestResult(QTestResult testResult) {

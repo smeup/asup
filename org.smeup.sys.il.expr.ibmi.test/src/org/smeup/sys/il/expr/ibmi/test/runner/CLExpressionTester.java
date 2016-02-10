@@ -18,7 +18,7 @@ import javax.inject.Inject;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
-import org.smeup.sys.dk.test.e4.E4TestHelper;
+import org.smeup.sys.dk.test.base.BaseTestHelper;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 
@@ -36,7 +36,7 @@ public class CLExpressionTester {
 
 		QExpressionParser expressionParser = expressionParserRegistry.lookup("CL");
 
-		for (String expression : E4TestHelper.readTextResource(this, "/resources/cl/expressions.txt")){
+		for (String expression : BaseTestHelper.readTextResource(this, "/resources/cl/expressions.txt")){
 			try {
 				testAsserter.assertNotNull("Parse " + expression, expressionParser.parseExpression(expression.trim()));
 			} catch(Exception exc) {

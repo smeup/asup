@@ -21,9 +21,9 @@ import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.eclipse.osgi.framework.console.CommandInterpreter;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QConnectionManager;
-import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
+import org.smeup.sys.dk.test.base.BaseTestProviderImpl;
 
-public class PrintCommands extends E4TestProviderImpl {
+public class PrintCommands extends BaseTestProviderImpl {
 
 	@Inject
 	private QConnectionManager connectionManager;

@@ -5,11 +5,13 @@ Bundle-SymbolicName: org.smeup.sys.il.esam.test
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.smeup.sys.dk.test,
- org.smeup.sys.il.esam,
- org.smeup.sys.dk.test.e4,
- org.smeup.sys.db.core
+Require-Bundle: org.smeup.sys.il.esam,
+ org.smeup.sys.il.core,
+ org.smeup.sys.dk.test.base,
+ org.smeup.sys.db.core,
+ org.eclipse.osgi
+Import-Package: javax.inject
 Export-Package: org.smeup.sys.il.esam.test,
  org.smeup.sys.il.esam.test.dbf,
  org.smeup.sys.il.esam.test.runner
-Import-Package: javax.inject
+

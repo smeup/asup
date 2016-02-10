@@ -17,13 +17,13 @@ import org.eclipse.osgi.framework.console.CommandInterpreter;
 import org.smeup.sys.dk.test.QTestManager;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
-import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
+import org.smeup.sys.dk.test.base.BaseTestProviderImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.test.runner.DataStructureTester;
 import org.smeup.sys.il.data.test.runner.HexadecimalTester;
 import org.smeup.sys.rt.core.QApplication;
 
-public class LanguageDataTestProviderImpl extends E4TestProviderImpl {
+public class LanguageDataTestProviderImpl extends BaseTestProviderImpl {
 
 	@Inject
 	private QTestManager testManager;

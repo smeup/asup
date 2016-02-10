@@ -23,7 +23,7 @@ import org.smeup.sys.db.syntax.ibmi.parser.dbl.DBLParser;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
-import org.smeup.sys.dk.test.e4.E4TestHelper;
+import org.smeup.sys.dk.test.base.BaseTestHelper;
 
 @Test(category = "DB.SYNTAX", object = "DBL")
 public class DBLParserTest {
@@ -35,7 +35,7 @@ public class DBLParserTest {
 	@TestStarted
 	public void main() throws IOException {
 
-		for (String expression : E4TestHelper.readTextResource(this, "/resources/dbl/dbl.txt")) {
+		for (String expression : BaseTestHelper.readTextResource(this, "/resources/dbl/dbl.txt")) {
 			try{
 				
 				DBLLexer lex = new DBLLexer(new ANTLRStringStream(expression));

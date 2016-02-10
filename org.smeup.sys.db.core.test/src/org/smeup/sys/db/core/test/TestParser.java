@@ -33,11 +33,11 @@ import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
-import org.smeup.sys.dk.test.e4.E4TestHelper;
-import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
+import org.smeup.sys.dk.test.base.BaseTestHelper;
+import org.smeup.sys.dk.test.base.BaseTestProviderImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 
-public class TestParser extends E4TestProviderImpl {
+public class TestParser extends BaseTestProviderImpl {
 
 	@Inject
 	private QConnectionManager connectionManager;
@@ -128,7 +128,7 @@ public class TestParser extends E4TestProviderImpl {
 		@TestStarted
 		public void doTest(@Named("org.smeup.sys.db.core.test.script") String script) throws SQLException, IOException {
 
-			List<String> statements = E4TestHelper.readTextResource(this, script);
+			List<String> statements = BaseTestHelper.readTextResource(this, script);
 
 			testAsserter.resetTime();
 
@@ -158,7 +158,7 @@ public class TestParser extends E4TestProviderImpl {
 		@TestStarted
 		public void doTest(@Named("org.smeup.sys.db.core.test.script") String script) throws SQLException, IOException {
 
-			List<String> statements = E4TestHelper.readTextResource(this, script);
+			List<String> statements = BaseTestHelper.readTextResource(this, script);
 
 			testAsserter.resetTime();
 
@@ -189,7 +189,7 @@ public class TestParser extends E4TestProviderImpl {
 		@TestStarted
 		public void doTest(@Named("org.smeup.sys.db.core.test.script") String script) throws SQLException, IOException {
 
-			List<String> statements = E4TestHelper.readTextResource(this, script);
+			List<String> statements = BaseTestHelper.readTextResource(this, script);
 
 			testAsserter.resetTime();
 

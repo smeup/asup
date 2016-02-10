@@ -27,10 +27,6 @@
          id="org.smeup.sys.ft.runt.e4"
          version="0.0.0"/>
 
-   <includes
-         id="org.smeup.sys.ft.devk.e4"
-         version="0.0.0"/>
-
    <plugin
          id="org.smeup.sys.rt.core.test"
          download-size="0"

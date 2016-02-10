@@ -5,5 +5,4 @@ Bundle-SymbolicName: org.smeup.sys.il.lock.base
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.smeup.sys.il.lock,
- org.smeup.sys.rt.core
+Require-Bundle: org.smeup.sys.il.lock

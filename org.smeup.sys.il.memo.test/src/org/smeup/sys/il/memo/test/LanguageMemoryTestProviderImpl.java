@@ -8,7 +8,7 @@ import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
-import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
+import org.smeup.sys.dk.test.base.BaseTestProviderImpl;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -17,7 +17,7 @@ import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.rt.core.QApplication;
 
-public class LanguageMemoryTestProviderImpl extends E4TestProviderImpl {
+public class LanguageMemoryTestProviderImpl extends BaseTestProviderImpl {
 
 	@Inject
 	private QTestManager testManager;

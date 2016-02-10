@@ -18,11 +18,11 @@ import org.smeup.sys.dk.source.test.runner.SourceTester;
 import org.smeup.sys.dk.test.QTestManager;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
-import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
+import org.smeup.sys.dk.test.base.BaseTestProviderImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.rt.core.QApplication;
 
-public class DevelopmentKitSourceTestProviderImpl extends E4TestProviderImpl {
+public class DevelopmentKitSourceTestProviderImpl extends BaseTestProviderImpl {
 
 	@Inject
 	private QApplication application;

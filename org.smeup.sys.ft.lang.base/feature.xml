@@ -23,6 +23,18 @@
       [Enter License Description here.]
    </license>
 
+   <includes
+         id="org.smeup.sys.ft.eclipse.jdt"
+         version="0.0.0"/>
+
+   <includes
+         id="org.smeup.sys.ft.apache"
+         version="0.0.0"/>
+
+   <includes
+         id="org.smeup.sys.ft.eclipse"
+         version="0.0.0"/>
+
    <plugin
          id="org.smeup.sys.il.core"
          download-size="0"
@@ -112,33 +124,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.apache.commons.lang"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.commons.codec"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.commons.io"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.smeup.sys.et.json"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
          id="org.smeup.sys.il.memo"
          download-size="0"
          install-size="0"
@@ -154,6 +139,20 @@
 
    <plugin
          id="org.smeup.sys.mi.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.dk.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.dk.source.jdt"
          download-size="0"
          install-size="0"
          version="0.0.0"

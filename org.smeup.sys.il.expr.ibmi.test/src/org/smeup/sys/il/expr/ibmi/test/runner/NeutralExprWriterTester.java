@@ -18,7 +18,7 @@ import javax.inject.Inject;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
-import org.smeup.sys.dk.test.e4.E4TestHelper;
+import org.smeup.sys.dk.test.base.BaseTestHelper;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 import org.smeup.sys.il.expr.QExpressionWriter;
@@ -45,7 +45,7 @@ public class NeutralExprWriterTester {
 		
 		String preparedExpr = null;
 
-		for (String expression : E4TestHelper.readTextResource(this, "/resources/rpg/expressions.txt")) {
+		for (String expression : BaseTestHelper.readTextResource(this, "/resources/rpg/expressions.txt")) {
 			try{
 				
 				//Normalize expression for test input

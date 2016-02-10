@@ -6,18 +6,15 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import org.smeup.sys.il.lock.LockType;
 import org.smeup.sys.il.lock.QObjectLockable;
 import org.smeup.sys.il.lock.QObjectLocker;
-import org.smeup.sys.rt.core.QLogger;
 
 public class BaseLockerImpl<T extends QObjectLockable> implements QObjectLocker<T> {
 
 	private ReentrantReadWriteLock lock;
 
 	private T object;
-	private QLogger logger;
 
-	public BaseLockerImpl(T object, QLogger logger) {
+	public BaseLockerImpl(T object) {
 		this.object = object;
-		this.logger = logger;
 
 		this.lock = new ReentrantReadWriteLock();
 	}
@@ -51,7 +48,7 @@ public class BaseLockerImpl<T extends QObjectLockable> implements QObjectLocker<
 				return lock.writeLock().tryLock(time, TimeUnit.MILLISECONDS);
 			}
 		} catch (InterruptedException e) {
-			logger.warning(null, e);
+			System.err.println(e);
 		}
 
 		return false;

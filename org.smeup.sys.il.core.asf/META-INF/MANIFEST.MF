@@ -6,6 +6,6 @@ Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.smeup.sys.il.core.util.asf
-Bundle-ClassPath: .,
- lib/commons-io-2.4.jar
-Require-Bundle: org.smeup.sys.il.core
+Bundle-ClassPath: .
+Require-Bundle: org.smeup.sys.il.core,
+ org.apache.commons.io

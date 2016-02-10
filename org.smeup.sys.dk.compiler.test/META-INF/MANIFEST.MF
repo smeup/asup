@@ -5,11 +5,10 @@ Bundle-SymbolicName: org.smeup.sys.dk.compiler.test
 Bundle-Version: 0.8.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: www.smeup.com
-Require-Bundle: org.smeup.sys.dk.test.e4,
- org.smeup.sys.il.expr,
+Require-Bundle: org.smeup.sys.il.expr,
  org.smeup.sys.dk.compiler.rpj,
- org.smeup.sys.dk.test
-Import-Package: javax.inject,
+ org.smeup.sys.dk.test,
  org.smeup.sys.dk.test.base
+Import-Package: javax.inject
 Export-Package: org.smeup.sys.dk.compiler.test,
  org.smeup.sys.dk.compiler.test.runner

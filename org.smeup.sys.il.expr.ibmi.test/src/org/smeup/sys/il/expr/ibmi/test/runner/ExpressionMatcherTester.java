@@ -19,7 +19,7 @@ import javax.inject.Inject;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
-import org.smeup.sys.dk.test.e4.E4TestHelper;
+import org.smeup.sys.dk.test.base.BaseTestHelper;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
@@ -44,7 +44,7 @@ public class ExpressionMatcherTester {
 		StringTokenizer tokenizer = null;
 				
 
-		for (String line : E4TestHelper.readTextResource(this, "/resources/neutral/expr_match.txt")) {
+		for (String line : BaseTestHelper.readTextResource(this, "/resources/neutral/expr_match.txt")) {
 			
 			tokenizer = new StringTokenizer(line, "##");
 			input = tokenizer.nextToken();

@@ -6,9 +6,9 @@ Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: javax.inject,
- org.osgi.framework;version="1.8.0"
+ org.osgi.framework;version="1.8.0",
+ org.osgi.framework.wiring;version="1.2.0"
 Require-Bundle: org.smeup.sys.dk.core,
  org.smeup.sys.dk.test;visibility:=reexport,
- org.smeup.sys.rt.core,
- org.smeup.sys.rt.auth
+ org.eclipse.osgi
 Export-Package: org.smeup.sys.dk.test.base

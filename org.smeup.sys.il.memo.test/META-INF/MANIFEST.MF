@@ -9,11 +9,10 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.smeup.sys.il.memo.test,
  org.smeup.sys.il.memo.test.impl
-Require-Bundle: org.smeup.sys.il.memo,
- org.eclipse.core.runtime,
+Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.smeup.sys.il.core;visibility:=reexport,
- org.smeup.sys.dk.test.e4,
- org.smeup.sys.rt.core,
- org.smeup.sys.dk.test.base
+ org.smeup.sys.il.memo,
+ org.smeup.sys.dk.test.base,
+ org.smeup.sys.rt.core
 Bundle-ActivationPolicy: lazy

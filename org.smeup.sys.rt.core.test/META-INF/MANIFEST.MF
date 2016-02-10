@@ -6,4 +6,4 @@ Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.smeup.sys.rt.core;visibility:=reexport,
- org.smeup.sys.dk.test.e4
+ org.smeup.sys.dk.test

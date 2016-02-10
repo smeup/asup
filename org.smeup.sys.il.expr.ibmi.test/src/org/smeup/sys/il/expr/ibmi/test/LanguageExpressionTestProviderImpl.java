@@ -17,13 +17,13 @@ import org.eclipse.osgi.framework.console.CommandInterpreter;
 import org.smeup.sys.dk.test.QTestManager;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
-import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
+import org.smeup.sys.dk.test.base.BaseTestProviderImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.expr.ibmi.test.runner.CLExpressionTester;
 import org.smeup.sys.il.expr.ibmi.test.runner.RPGExpressionTester;
 import org.smeup.sys.rt.core.QApplication;
 
-public class LanguageExpressionTestProviderImpl extends E4TestProviderImpl {
+public class LanguageExpressionTestProviderImpl extends BaseTestProviderImpl {
 
 	@Inject
 	private QTestManager testManager;

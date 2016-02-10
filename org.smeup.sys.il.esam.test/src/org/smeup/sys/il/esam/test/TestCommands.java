@@ -19,7 +19,7 @@ import org.smeup.sys.db.core.QConnectionManager;
 import org.smeup.sys.dk.test.QTestManager;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
-import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
+import org.smeup.sys.dk.test.base.BaseTestProviderImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataManager;
@@ -31,7 +31,7 @@ import org.smeup.sys.il.esam.test.runner.KSDS_write;
 import org.smeup.sys.il.esam.test.runner.RRDS_read;
 import org.smeup.sys.il.esam.test.runner.RRDS_readp;
 
-public class TestCommands extends E4TestProviderImpl {
+public class TestCommands extends BaseTestProviderImpl {
 
 	@Inject
 	private QConnectionManager connectionManager;

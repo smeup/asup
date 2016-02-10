@@ -38,13 +38,13 @@ import org.smeup.sys.db.core.QSchemaDef;
 import org.smeup.sys.db.core.QTableColumnDef;
 import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.core.QViewDef;
-import org.smeup.sys.dk.test.e4.E4TestHelper;
-import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
+import org.smeup.sys.dk.test.base.BaseTestHelper;
+import org.smeup.sys.dk.test.base.BaseTestProviderImpl;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
 import org.smeup.sys.mi.core.util.QFiles;
 
-public class DefinitionCommands extends E4TestProviderImpl {
+public class DefinitionCommands extends BaseTestProviderImpl {
 
 	@Inject
 	private QConnectionManager connectionManager;
@@ -77,7 +77,7 @@ public class DefinitionCommands extends E4TestProviderImpl {
 			URL tableURL = tables.nextElement();
 			String fileName = files.getBaseName(tableURL.getFile());
 
-			QDatabaseObjectDef file = (QDatabaseObjectDef) E4TestHelper.load(tableURL);
+			QDatabaseObjectDef file = (QDatabaseObjectDef) BaseTestHelper.load(tableURL);
 
 			SQLObject sqlObject = null;
 			try {
@@ -96,7 +96,7 @@ public class DefinitionCommands extends E4TestProviderImpl {
 			URL viewURL = views.nextElement();
 			String fileName = files.getBaseName(viewURL.getFile());
 
-			QDatabaseObjectDef file = (QDatabaseObjectDef) E4TestHelper.load(viewURL);
+			QDatabaseObjectDef file = (QDatabaseObjectDef) BaseTestHelper.load(viewURL);
 
 			SQLObject sqlObject = null;
 			try {
@@ -115,7 +115,7 @@ public class DefinitionCommands extends E4TestProviderImpl {
 			URL indexURL = indices.nextElement();
 			String fileName = files.getBaseName(indexURL.getFile());
 
-			QDatabaseObjectDef file = (QDatabaseObjectDef) E4TestHelper.load(indexURL);
+			QDatabaseObjectDef file = (QDatabaseObjectDef) BaseTestHelper.load(indexURL);
 
 			SQLObject sqlObject = null;
 			try {

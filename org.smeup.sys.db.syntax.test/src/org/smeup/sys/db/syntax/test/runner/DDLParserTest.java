@@ -23,7 +23,7 @@ import org.smeup.sys.db.syntax.ibmi.parser.ddl.DDLParser;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
-import org.smeup.sys.dk.test.e4.E4TestHelper;
+import org.smeup.sys.dk.test.base.BaseTestHelper;
 
 @Test(category = "DB.SYNTAX", object = "DDL")
 public class DDLParserTest {
@@ -34,7 +34,7 @@ public class DDLParserTest {
 	@TestStarted
 	public void main() throws IOException {
 
-		for (String expression : E4TestHelper.readTextResource(this, "/resources/ddl/ddl.txt")) {
+		for (String expression : BaseTestHelper.readTextResource(this, "/resources/ddl/ddl.txt")) {
 			try{
 				
 				DDLLexer lex = new DDLLexer(new ANTLRStringStream(expression));

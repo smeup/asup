@@ -39,10 +39,10 @@ import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
-import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
+import org.smeup.sys.dk.test.base.BaseTestProviderImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 
-public class TestCommands extends E4TestProviderImpl {
+public class TestCommands extends BaseTestProviderImpl {
 
 	@Inject
 	private QConnectionManager connectionManager;

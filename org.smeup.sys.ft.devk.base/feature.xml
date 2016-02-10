@@ -28,10 +28,6 @@ v1.0
          id="org.smeup.sys.ft.lang.base"
          version="0.0.0"/>
 
-   <includes
-         id="org.smeup.sys.ft.netc.base"
-         version="0.0.0"/>
-
    <plugin
          id="org.smeup.sys.dk.test"
          download-size="0"
@@ -55,6 +51,13 @@ v1.0
 
    <plugin
          id="org.smeup.sys.dk.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.dk.source.jdt"
          download-size="0"
          install-size="0"
          version="0.0.0"
