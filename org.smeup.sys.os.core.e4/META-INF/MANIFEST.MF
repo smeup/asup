@@ -8,10 +8,11 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.smeup.sys.os.core.e4
 Import-Package: org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.ecore.xmi.impl
-Require-Bundle: org.smeup.sys.os.core,
- org.smeup.sys.os.core.base,
- org.smeup.sys.rt.core,
+Require-Bundle: org.smeup.sys.rt.core,
+ org.smeup.sys.os.core,
  org.smeup.sys.os.type,
  org.smeup.sys.os.usrprf,
  org.smeup.sys.os.jobd,
- org.smeup.sys.os.lib
+ org.smeup.sys.os.lib,
+ org.smeup.sys.os.core.base,
+ org.smeup.sys.il.memo

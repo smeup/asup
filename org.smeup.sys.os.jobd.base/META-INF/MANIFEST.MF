@@ -9,5 +9,4 @@ Export-Package: org.smeup.sys.os.jobd.base,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.smeup.sys.os.jobd,
- org.smeup.sys.dk.core,
- org.smeup.sys.os.lib
+ org.smeup.sys.il.memo

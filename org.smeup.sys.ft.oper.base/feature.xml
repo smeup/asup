@@ -21,6 +21,10 @@
          id="org.smeup.sys.ft.lang.base"
          version="0.0.0"/>
 
+   <includes
+         id="org.smeup.sys.ft.runt.e4"
+         version="0.0.0"/>
+
    <plugin
          id="org.smeup.sys.os.core.base"
          download-size="0"
@@ -30,6 +34,62 @@
 
    <plugin
          id="org.smeup.sys.os.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.os.lib"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.os.module"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.os.pgm"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.os.cmd"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.os.usrprf"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.os.msgf"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.os.type"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.os.jobd"
          download-size="0"
          install-size="0"
          version="0.0.0"

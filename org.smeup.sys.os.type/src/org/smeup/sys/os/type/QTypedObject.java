@@ -18,6 +18,7 @@ import org.smeup.sys.os.core.QCreationInfo;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.type.QTypedObject#getApplication <em>Application</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.QTypedObject#getFacets <em>Facets</em>}</li>
@@ -25,7 +26,6 @@ import org.smeup.sys.os.core.QCreationInfo;
  *   <li>{@link org.smeup.sys.os.type.QTypedObject#getText <em>Text</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.QTypedObject#getCreationInfo <em>Creation Info</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.type.QOperatingSystemTypePackage#getTypedObject()
  * @model abstract="true"

@@ -24,7 +24,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.smeup.sys.os.core.base,
  org.smeup.sys.rt.core,
  org.smeup.sys.os.lib,
- org.smeup.sys.il.memo.cdo
+ org.smeup.sys.il.memo.cdo,
+ org.smeup.sys.il.memo
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.eclipse.net4j.db,

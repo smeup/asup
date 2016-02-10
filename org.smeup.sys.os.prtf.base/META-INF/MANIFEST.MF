@@ -7,13 +7,7 @@ Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: 
  org.smeup.sys.os.prtf.base.api
-Require-Bundle: org.smeup.sys.os.file,
- org.smeup.sys.rt.core,
- org.smeup.sys.db.core,
- org.smeup.sys.db.syntax,
+Require-Bundle: org.smeup.sys.il.core,
+ org.smeup.sys.os.file,
  org.smeup.sys.os.core,
- org.smeup.sys.os.lib,
- org.smeup.sys.il.core,
- org.smeup.sys.os.cmd,
- org.smeup.sys.dk.core,
- org.smeup.sys.il.esam
+ org.smeup.sys.il.memo

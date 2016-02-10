@@ -17,6 +17,10 @@
       [Enter License Description here.]
    </license>
 
+   <includes
+         id="org.smeup.sys.ft.oper.base"
+         version="0.0.0"/>
+
    <plugin
          id="org.smeup.sys.os.jobd"
          download-size="0"

@@ -12,11 +12,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.smeup.sys.os.core;visibility:=reexport,
  org.smeup.sys.os.type;visibility:=reexport,
- org.smeup.sys.il.lock;visibility:=reexport,
- org.smeup.sys.mi.core;visibility:=reexport,
- org.smeup.sys.dk.core;visibility:=reexport,
- org.smeup.sys.il.data;visibility:=reexport,
  org.smeup.sys.il.core;visibility:=reexport,
- org.smeup.sys.il.expr;visibility:=reexport
+ org.smeup.sys.mi.core;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

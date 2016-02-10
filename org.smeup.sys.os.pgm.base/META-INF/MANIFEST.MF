@@ -8,8 +8,8 @@ Export-Package: org.smeup.sys.os.pgm.base,
  org.smeup.sys.os.pgm.base.api
 Bundle-ClassPath: .
 Require-Bundle: org.smeup.sys.os.pgm,
- org.smeup.sys.dk.core,
+ org.smeup.sys.os.file,
  org.smeup.sys.il.esam,
- org.smeup.sys.os.file
+ org.smeup.sys.il.memo
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

@@ -12,11 +12,11 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: javax.inject
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.smeup.sys.os.core,
- org.smeup.sys.dk.core,
- org.smeup.sys.os.cmd,
- org.smeup.sys.os.pgm,
- org.smeup.sys.rt.core,
- org.smeup.sys.os.module,
  org.smeup.sys.os.lib,
+ org.smeup.sys.os.module,
+ org.smeup.sys.os.pgm,
+ org.smeup.sys.os.cmd,
+ org.smeup.sys.os.msgf,
  org.smeup.sys.os.usrprf,
- org.smeup.sys.os.msgf
+ org.smeup.sys.rt.core,
+ org.smeup.sys.il.memo

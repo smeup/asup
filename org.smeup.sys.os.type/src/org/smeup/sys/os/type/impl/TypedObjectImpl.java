@@ -33,6 +33,7 @@ import org.smeup.sys.os.type.QTypedObject;
  * <em><b>QTyped Object</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.type.impl.TypedObjectImpl#getApplication <em>Application</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.impl.TypedObjectImpl#getFacets <em>Facets</em>}</li>
@@ -40,7 +41,6 @@ import org.smeup.sys.os.type.QTypedObject;
  *   <li>{@link org.smeup.sys.os.type.impl.TypedObjectImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.impl.TypedObjectImpl#getCreationInfo <em>Creation Info</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

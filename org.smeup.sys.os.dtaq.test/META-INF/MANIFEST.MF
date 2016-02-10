@@ -8,6 +8,7 @@ Bundle-Name: As.UP Operating System DataQueue Test
 Require-Bundle: org.smeup.sys.os.dtaq,
  org.smeup.sys.os.cmd,
  org.smeup.sys.os.lib,
- org.smeup.sys.dk.test.base
+ org.smeup.sys.dk.test.base,
+ org.smeup.sys.il.memo
 Export-Package: org.smeup.sys.os.dtaq.test,
  org.smeup.sys.os.dtaq.test.runner

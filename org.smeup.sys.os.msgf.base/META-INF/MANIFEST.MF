@@ -5,8 +5,7 @@ Bundle-SymbolicName: org.smeup.sys.os.msgf.base
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Require-Bundle: org.smeup.sys.os.msgf;visibility:=reexport,
- org.smeup.sys.rt.core,
- org.smeup.sys.dk.core
+ org.smeup.sys.il.memo
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.smeup.sys.os.msgf.base,
  org.smeup.sys.os.msgf.base.api

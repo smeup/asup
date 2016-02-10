@@ -115,6 +115,7 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 
 		// Initialize simple dependencies
 		QOperatingSystemCorePackage.eINSTANCE.eClass();
+		QDevelopmentKitCorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theOperatingSystemTypePackage.createPackageContents();

@@ -12,7 +12,6 @@
 package org.smeup.sys.os.jobd.base.api;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -28,14 +27,11 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.il.memo.Scope;
+import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.jobd.QJobDescription;
-import org.smeup.sys.os.lib.QLibrary;
-import org.smeup.sys.os.type.QOperatingSystemTypeFactory;
-import org.smeup.sys.os.type.QTypedRef;
 
 @Supported
 @Program(name = "QWDCDSG")
@@ -90,22 +86,14 @@ public class JobDescriptionDisplayer {
 		if (qJobDescription == null)
 			throw new OperatingSystemRuntimeException("Job description not found: " + jobDescription);
 
-		writeLibraries(objectWriter, qJobDescription.getLibraries());
+		try {
+			objectWriter.write(qJobDescription);
+		} catch (IOException e) {
+			jobLogManager.error(job, e.getMessage());
+		}
+		
 		objectWriter.flush();
 
-	}
-
-	private void writeLibraries(QObjectWriter objectWriter, List<String> libraries) {
-
-		for (String library : libraries) {
-			QTypedRef<QLibrary> qLibrary = QOperatingSystemTypeFactory.eINSTANCE.createTypedRef();
-			qLibrary.setName(library);
-			try {
-				objectWriter.write(qLibrary);
-			} catch (IOException e) {
-				jobLogManager.error(job, e.getMessage());
-			}
-		}
 	}
 
 	public static class JobDescription extends QDataStructWrapper {

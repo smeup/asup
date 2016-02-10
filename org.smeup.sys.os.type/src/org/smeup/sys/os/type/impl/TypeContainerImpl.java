@@ -17,8 +17,6 @@ import org.smeup.sys.os.type.QTypeContainer;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Type Container</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

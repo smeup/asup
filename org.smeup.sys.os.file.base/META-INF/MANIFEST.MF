@@ -9,15 +9,15 @@ Bundle-Localization: plugin
 Export-Package: org.smeup.sys.os.file.base,
  org.smeup.sys.os.file.base.api
 Require-Bundle: org.smeup.sys.os.file,
- org.smeup.sys.rt.core,
  org.smeup.sys.db.core,
  org.smeup.sys.db.syntax,
  org.smeup.sys.os.core,
- org.smeup.sys.os.lib,
  org.smeup.sys.il.core,
+ org.smeup.sys.il.esam,
  org.smeup.sys.os.cmd,
- org.smeup.sys.dk.core,
- org.smeup.sys.il.esam
+ org.smeup.sys.os.lib,
+ org.smeup.sys.rt.core,
+ org.smeup.sys.il.memo
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.smeup.sys.dk.source

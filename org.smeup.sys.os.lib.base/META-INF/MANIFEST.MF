@@ -6,10 +6,10 @@ Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.smeup.sys.os.lib,
- org.smeup.sys.os.file,
- org.smeup.sys.dk.core,
  org.smeup.sys.os.cmd,
+ org.smeup.sys.os.file,
  org.smeup.sys.il.core,
+ org.smeup.sys.rt.core,
  org.smeup.sys.dk.source,
- org.smeup.sys.rt.core
+ org.smeup.sys.il.memo
 Bundle-ActivationPolicy: lazy

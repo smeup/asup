@@ -19,8 +19,6 @@ import org.smeup.sys.os.type.QTypedObject;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Typed Container</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

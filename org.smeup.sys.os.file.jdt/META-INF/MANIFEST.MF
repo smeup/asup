@@ -6,5 +6,6 @@ Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Export-Package: org.smeup.sys.os.file.jdt;version="0.2.2.qualifier"
 Require-Bundle: org.smeup.sys.os.file,
- org.smeup.sys.dk.source
+ org.smeup.sys.dk.source,
+ org.smeup.sys.il.memo
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

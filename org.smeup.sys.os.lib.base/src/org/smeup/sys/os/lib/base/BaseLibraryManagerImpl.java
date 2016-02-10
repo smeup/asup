@@ -113,6 +113,7 @@ public class BaseLibraryManagerImpl implements QLibraryManager {
 		for (QType<?> type : typeRegistry.list()) {
 
 			if(!type.isPersistent())
+				continue;
 
 			if (QFile.class.isAssignableFrom(type.getTypedClass()))
 				deleteFileType(job, type, name);

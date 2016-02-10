@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.smeup.sys.os.usrspc.base
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Export-Package: org.smeup.sys.os.usrspc.base
-Require-Bundle: org.smeup.sys.os.usrspc
+Require-Bundle: org.smeup.sys.os.usrspc,
+ org.smeup.sys.il.memo
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
