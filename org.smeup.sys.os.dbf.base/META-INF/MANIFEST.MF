@@ -5,3 +5,4 @@ Bundle-SymbolicName: org.smeup.sys.os.dbf.base
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .

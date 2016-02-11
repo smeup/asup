@@ -15,6 +15,7 @@ Require-Bundle: org.eclipse.ui,
  org.smeup.sys.rt.core,
  org.smeup.sys.os.cmd
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
 Bundle-ActivationPolicy: lazy
 Export-Package: org.smeup.sys.ui.epdm.emf,
  org.smeup.sys.ui.epdm.emf.actions

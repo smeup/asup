@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.smeup.sys.os.core.e4
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
 Export-Package: org.smeup.sys.os.core.e4
 Import-Package: org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.ecore.xmi.impl

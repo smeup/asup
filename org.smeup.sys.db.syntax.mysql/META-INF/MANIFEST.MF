@@ -7,3 +7,4 @@ Bundle-Vendor: www.smeup.com
 Export-Package: org.smeup.sys.db.syntax.mysql
 Require-Bundle: org.smeup.sys.db.syntax.base
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .

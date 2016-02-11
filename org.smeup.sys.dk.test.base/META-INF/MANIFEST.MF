@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.smeup.sys.dk.test.base
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
 Import-Package: javax.inject,
  org.osgi.framework;version="1.8.0",
  org.osgi.framework.wiring;version="1.2.0"

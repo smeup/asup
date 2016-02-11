@@ -8,6 +8,7 @@ Export-Package: org.smeup.sys.rt.core.e4
 Require-Bundle: org.smeup.sys.rt.core,
  org.smeup.sys.il.core.e4
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.e4.core.contexts,
  org.eclipse.e4.core.di,

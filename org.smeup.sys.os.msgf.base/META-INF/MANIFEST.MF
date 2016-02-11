@@ -7,6 +7,7 @@ Bundle-Vendor: www.smeup.com
 Require-Bundle: org.smeup.sys.os.msgf;visibility:=reexport,
  org.smeup.sys.il.memo
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
 Export-Package: org.smeup.sys.os.msgf.base,
  org.smeup.sys.os.msgf.base.api
 Bundle-ActivationPolicy: lazy

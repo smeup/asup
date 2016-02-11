@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.smeup.sys.il.memo.jdt
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
 Import-Package: javax.inject
 Require-Bundle: org.smeup.sys.il.memo,
  org.smeup.sys.dk.source,

@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.smeup.sys.os.core.test
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
 Require-Bundle: org.smeup.sys.dk.test,
  org.smeup.sys.os.core,
  org.smeup.sys.dk.test.base

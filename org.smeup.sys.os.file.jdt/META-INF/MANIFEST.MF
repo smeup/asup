@@ -9,3 +9,4 @@ Require-Bundle: org.smeup.sys.os.file,
  org.smeup.sys.dk.source,
  org.smeup.sys.il.memo
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .

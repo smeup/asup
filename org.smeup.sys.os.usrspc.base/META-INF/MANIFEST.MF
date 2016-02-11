@@ -8,4 +8,5 @@ Export-Package: org.smeup.sys.os.usrspc.base
 Require-Bundle: org.smeup.sys.os.usrspc,
  org.smeup.sys.il.memo
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
 Bundle-ActivationPolicy: lazy

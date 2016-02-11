@@ -14,5 +14,6 @@ Require-Bundle: org.smeup.sys.os.dtaara;visibility:=reexport,
  org.smeup.sys.os.core,
  org.smeup.sys.il.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
 Bundle-ActivationPolicy: lazy
 Import-Package: org.smeup.sys.os.lib

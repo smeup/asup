@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.smeup.sys.dk.compiler.rpj
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
 Import-Package: org.eclipse.emf.ecore.xmi.impl,
  org.eclipse.jdt.core.dom
 Export-Package: org.smeup.sys.dk.compiler.rpj,

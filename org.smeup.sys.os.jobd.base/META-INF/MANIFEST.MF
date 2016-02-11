@@ -7,6 +7,7 @@ Bundle-Vendor: www.smeup.com
 Export-Package: org.smeup.sys.os.jobd.base,
  org.smeup.sys.os.jobd.base.api
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.smeup.sys.os.jobd,
  org.smeup.sys.il.memo

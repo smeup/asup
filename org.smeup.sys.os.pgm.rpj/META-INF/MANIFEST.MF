@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.smeup.sys.os.pgm.rpj
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
 Export-Package: org.smeup.sys.os.pgm.rpj
 Require-Bundle: org.smeup.sys.os.pgm,
  org.smeup.sys.os.cmd,

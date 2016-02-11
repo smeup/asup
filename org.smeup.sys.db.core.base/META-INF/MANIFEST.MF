@@ -14,5 +14,6 @@ Require-Bundle: org.smeup.sys.db.core;visibility:=reexport,
  org.eclipse.core.runtime,
  org.smeup.sys.rt.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
 Bundle-ActivationPolicy: lazy
 Import-Package: org.osgi.framework

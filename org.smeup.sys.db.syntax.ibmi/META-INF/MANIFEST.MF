@@ -13,3 +13,4 @@ Require-Bundle: org.smeup.sys.db.syntax.base,
  org.smeup.sys.db.syntax,
  org.smeup.sys.et.antlr
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
