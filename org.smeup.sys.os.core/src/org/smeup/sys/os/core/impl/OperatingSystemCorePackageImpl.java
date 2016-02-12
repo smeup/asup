@@ -541,7 +541,6 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		QOperatingSystemEnvironmentPackage theOperatingSystemEnvironmentPackage = (QOperatingSystemEnvironmentPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemEnvironmentPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
-		QIntegratedLanguageLockPackage theIntegratedLanguageLockPackage = (QIntegratedLanguageLockPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageLockPackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 
 		// Add subpackages
@@ -554,7 +553,6 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 
 		// Add supertypes to classes
 		creationInfoEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		systemEClass.getESuperTypes().add(theIntegratedLanguageLockPackage.getObjectLockable());
 		systemEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		systemEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
 

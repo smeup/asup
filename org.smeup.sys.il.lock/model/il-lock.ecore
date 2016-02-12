@@ -7,7 +7,7 @@
         <eTypeArguments eTypeParameter="#//LockManager/getLocker/T"/>
       </eGenericType>
       <eTypeParameters name="T">
-        <eBounds eClassifier="#//ObjectLockable"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
       </eTypeParameters>
       <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
       <eParameters name="object">
@@ -15,17 +15,9 @@
       </eParameters>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LockRead" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
-  <eClassifiers xsi:type="ecore:EClass" name="LockWrite" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ObjectLockable" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lockRead" lowerBound="1"
-        eType="#//LockRead" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lockWrite" lowerBound="1"
-        eType="#//LockWrite" containment="true"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectLocker" abstract="true" interface="true">
     <eTypeParameters name="T">
-      <eBounds eClassifier="#//ObjectLockable"/>
+      <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
     </eTypeParameters>
     <eOperations name="lock">
       <eParameters name="lockType" lowerBound="1" eType="#//LockType"/>

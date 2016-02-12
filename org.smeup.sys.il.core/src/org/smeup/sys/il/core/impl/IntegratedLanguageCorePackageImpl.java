@@ -21,6 +21,7 @@ import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.QNameable;
 import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.core.QObjectAdapter;
 import org.smeup.sys.il.core.QObjectContainer;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
@@ -64,6 +65,13 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass objectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass objectAdapterEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -230,6 +238,15 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getObjectAdapter() {
+		return objectAdapterEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -316,7 +333,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	public EAttribute getObjectRegistryKey_Version() {
-		return (EAttribute)objectRegistryKeyEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)objectRegistryKeyEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -325,7 +342,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	public EAttribute getObjectRegistryKey_Vendor() {
-		return (EAttribute)objectRegistryKeyEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)objectRegistryKeyEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -386,6 +403,8 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 		objectEClass = createEClass(OBJECT);
 
+		objectAdapterEClass = createEClass(OBJECT_ADAPTER);
+
 		objectContainerEClass = createEClass(OBJECT_CONTAINER);
 		createEReference(objectContainerEClass, OBJECT_CONTAINER__CONTENTS);
 
@@ -400,8 +419,8 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		objectRegistryKeyEClass = createEClass(OBJECT_REGISTRY_KEY);
 		createEAttribute(objectRegistryKeyEClass, OBJECT_REGISTRY_KEY__NAME);
 		createEAttribute(objectRegistryKeyEClass, OBJECT_REGISTRY_KEY__TEXT);
-		createEAttribute(objectRegistryKeyEClass, OBJECT_REGISTRY_KEY__VERSION);
 		createEAttribute(objectRegistryKeyEClass, OBJECT_REGISTRY_KEY__VENDOR);
+		createEAttribute(objectRegistryKeyEClass, OBJECT_REGISTRY_KEY__VERSION);
 
 		threadEClass = createEClass(THREAD);
 
@@ -459,6 +478,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		objectIteratorEClass_T.getEBounds().add(g1);
 
 		// Add supertypes to classes
+		objectEClass.getESuperTypes().add(theMachineInterfaceCorePackage.getJavaSerializable());
 		objectContainerEClass.getESuperTypes().add(this.getObject());
 		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaIterator());
 		EGenericType g2 = createEGenericType(objectIteratorEClass_T);
@@ -481,6 +501,10 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		addEOperation(nameableEClass, ecorePackage.getEString(), "getName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(objectEClass, QObject.class, "Object", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(objectEClass, ecorePackage.getEString(), "qURI", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(objectAdapterEClass, QObjectAdapter.class, "ObjectAdapter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(objectContainerEClass, QObjectContainer.class, "ObjectContainer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(objectContainerEClass_T);
@@ -538,8 +562,8 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		initEClass(objectRegistryKeyEClass, QObjectRegistryKey.class, "ObjectRegistryKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getObjectRegistryKey_Name(), ecorePackage.getEString(), "name", null, 1, 1, QObjectRegistryKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getObjectRegistryKey_Text(), ecorePackage.getEString(), "text", null, 0, 1, QObjectRegistryKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getObjectRegistryKey_Version(), ecorePackage.getEString(), "version", null, 0, 1, QObjectRegistryKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getObjectRegistryKey_Vendor(), ecorePackage.getEString(), "vendor", null, 0, 1, QObjectRegistryKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getObjectRegistryKey_Version(), ecorePackage.getEString(), "version", null, 0, 1, QObjectRegistryKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(threadEClass, QThread.class, "Thread", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

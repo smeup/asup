@@ -8,7 +8,8 @@
 package org.smeup.sys.os.dtaq;
 
 import java.util.List;
-import org.smeup.sys.il.lock.QObjectLockable;
+
+import org.smeup.sys.il.core.QObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -25,7 +26,7 @@ import org.smeup.sys.il.lock.QObjectLockable;
  * @model
  * @generated
  */
-public interface QDataQueueContent extends QObjectLockable {
+public interface QDataQueueContent extends QObject {
 
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.

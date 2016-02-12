@@ -11,30 +11,25 @@
  */
 package org.smeup.sys.os.core.base;
 
-import java.net.URI;
 import java.util.List;
 
 import org.smeup.sys.il.core.ctx.CapabilityRight;
+import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobReference;
 
-public class BaseJobCapabilityImpl implements QJobCapability {
+public class BaseJobCapabilityImpl extends ObjectImpl implements QJobCapability {
 
 	private static final long serialVersionUID = 1L;
 	
 	private QJobReference jobReference;
-	private URI address;
+	private String objectURI;
 	private List<CapabilityRight> rights;
 	
-	protected BaseJobCapabilityImpl(QJobReference jobReference, URI address, List<CapabilityRight> rights) {
+	protected BaseJobCapabilityImpl(QJobReference jobReference, String objectURI, List<CapabilityRight> rights) {
 		this.jobReference = jobReference;
-		this.address = address;
+		this.objectURI = objectURI;
 		this.rights = rights;
-	}
-
-	@Override
-	public URI getObjectAddress() {
-		return address;
 	}
 
 	@Override
@@ -43,9 +38,8 @@ public class BaseJobCapabilityImpl implements QJobCapability {
 	}
 
 	@Override
-	public String getObjectID() {
-		org.eclipse.emf.common.util.URI uri = org.eclipse.emf.common.util.URI.createURI(getObjectAddress().toString());
-		return uri.fragment();
+	public String getObjectURI() {
+		return objectURI;
 	}
 
 	@Override

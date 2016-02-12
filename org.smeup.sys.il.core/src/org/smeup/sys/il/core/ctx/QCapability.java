@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.core.ctx;
 
-import java.net.URI;
 import java.util.List;
 import org.smeup.sys.il.core.QObject;
 
@@ -50,17 +49,9 @@ public interface QCapability<T extends QObject> extends QObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation" dataType="org.smeup.sys.mi.core.JavaURI" required="true"
-	 * @generated
-	 */
-	URI getObjectAddress();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
-	String getObjectID();
+	String getObjectURI();
 
 } // QCapability

@@ -23,8 +23,8 @@ import org.smeup.sys.il.core.QObjectRegistryKey;
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl#getText <em>Text</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl#getVendor <em>Vendor</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl#getVersion <em>Version</em>}</li>
  * </ul>
  *
  * @generated
@@ -76,26 +76,6 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 	protected String text = TEXT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVersion()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String VERSION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVersion()
-	 * @generated
-	 * @ordered
-	 */
-	protected String version = VERSION_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getVendor() <em>Vendor</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -114,6 +94,26 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 	 * @ordered
 	 */
 	protected String vendor = VENDOR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VERSION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected String version = VERSION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -230,10 +230,10 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 				return getName();
 			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__TEXT:
 				return getText();
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION:
-				return getVersion();
 			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VENDOR:
 				return getVendor();
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION:
+				return getVersion();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -252,11 +252,11 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__TEXT:
 				setText((String)newValue);
 				return;
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION:
-				setVersion((String)newValue);
-				return;
 			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VENDOR:
 				setVendor((String)newValue);
+				return;
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION:
+				setVersion((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -276,11 +276,11 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__TEXT:
 				setText(TEXT_EDEFAULT);
 				return;
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION:
-				setVersion(VERSION_EDEFAULT);
-				return;
 			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VENDOR:
 				setVendor(VENDOR_EDEFAULT);
+				return;
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION:
+				setVersion(VERSION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -298,10 +298,10 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__TEXT:
 				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION:
-				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
 			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VENDOR:
 				return VENDOR_EDEFAULT == null ? vendor != null : !VENDOR_EDEFAULT.equals(vendor);
+			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION:
+				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -320,10 +320,10 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 		result.append(name);
 		result.append(", text: ");
 		result.append(text);
-		result.append(", version: ");
-		result.append(version);
 		result.append(", vendor: ");
 		result.append(vendor);
+		result.append(", version: ");
+		result.append(version);
 		result.append(')');
 		return result.toString();
 	}

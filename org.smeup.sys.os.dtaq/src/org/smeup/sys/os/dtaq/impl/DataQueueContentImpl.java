@@ -11,17 +11,12 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.smeup.sys.il.lock.impl.ObjectLockableImpl;
-
+import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.os.dtaq.QDataQueueContent;
 import org.smeup.sys.os.dtaq.QDataQueueEntry;
 import org.smeup.sys.os.dtaq.QOperatingSystemDataQueuePackage;
@@ -39,7 +34,7 @@ import org.smeup.sys.os.dtaq.QOperatingSystemDataQueuePackage;
  *
  * @generated
  */
-public class DataQueueContentImpl extends ObjectLockableImpl implements QDataQueueContent {
+public class DataQueueContentImpl extends ObjectImpl implements QDataQueueContent {
 	/**
 	 * 
 	 */

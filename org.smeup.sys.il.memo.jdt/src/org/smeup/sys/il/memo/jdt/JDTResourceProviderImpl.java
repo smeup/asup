@@ -26,15 +26,16 @@ import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceProvider;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.rt.core.QApplication;
 
 public class JDTResourceProviderImpl implements QResourceProvider {
 
 	private JDTSourceManagerImpl sourceManager;
 	
 	@Inject
-	public JDTResourceProviderImpl(QResourceManager resourceManager) {
+	public JDTResourceProviderImpl(QApplication application, QResourceManager resourceManager) {
 
-		this.sourceManager = new JDTSourceManagerImpl("asup-obj");
+		this.sourceManager = new JDTSourceManagerImpl(application, "asup-obj");
 		
 		resourceManager.registerProvider(QObjectNameable.class, this);
 	}

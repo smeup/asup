@@ -19,7 +19,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.data.InitStrategy;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
@@ -38,7 +38,7 @@ import org.smeup.sys.os.pgm.QProgram;
 import org.smeup.sys.os.pgm.QProgramInfo;
 import org.smeup.sys.os.pgm.QProgramStatus;
 
-public class BaseCallableProgramDelegator<P> extends MinimalEObjectImpl.Container implements QCallableProgram<P> {
+public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCallableProgram<P> {
 
 	private static final long serialVersionUID = 1L;
 

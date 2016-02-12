@@ -17,8 +17,8 @@ package org.smeup.sys.il.core;
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.QObjectRegistryKey#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.QObjectRegistryKey#getText <em>Text</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.QObjectRegistryKey#getVersion <em>Version</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.QObjectRegistryKey#getVendor <em>Vendor</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.QObjectRegistryKey#getVersion <em>Version</em>}</li>
  * </ul>
  *
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getObjectRegistryKey()

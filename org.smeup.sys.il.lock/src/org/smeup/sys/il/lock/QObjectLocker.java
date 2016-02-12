@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.lock;
 
+import org.smeup.sys.il.core.QObject;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Locker</b></em>'. <!-- end-user-doc -->
@@ -16,7 +18,7 @@ package org.smeup.sys.il.lock;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QObjectLocker<T extends QObjectLockable> {
+public interface QObjectLocker<T extends QObject> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model lockTypeRequired="true"

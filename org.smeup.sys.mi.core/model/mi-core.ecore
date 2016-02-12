@@ -40,6 +40,8 @@
   <eClassifiers xsi:type="ecore:EDataType" name="JavaProperties" instanceClassName="java.util.Properties"/>
   <eClassifiers xsi:type="ecore:EClass" name="JavaRunnable" instanceClassName="java.lang.Runnable"
       abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaSerializable" instanceClassName="java.io.Serializable"
+      abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EDataType" name="JavaThrowable" instanceClassName="java.lang.Throwable"/>
   <eClassifiers xsi:type="ecore:EClass" name="JavaThread" instanceClassName="java.lang.Thread"
       abstract="true" interface="true"/>

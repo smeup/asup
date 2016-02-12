@@ -25,24 +25,6 @@ public interface QIntegratedLanguageLockFactory extends EFactory {
 	QIntegratedLanguageLockFactory eINSTANCE = org.smeup.sys.il.lock.impl.IntegratedLanguageLockFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Lock Read</em>'.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Lock Read</em>'.
-	 * @generated
-	 */
-	QLockRead createLockRead();
-
-	/**
-	 * Returns a new object of class '<em>Lock Write</em>'.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
-	 * @return a new object of class '<em>Lock Write</em>'.
-	 * @generated
-	 */
-	QLockWrite createLockWrite();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

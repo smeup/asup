@@ -9,6 +9,7 @@ package org.smeup.sys.il.core.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.QObject;
 
@@ -39,6 +40,15 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements QObject 
 	@Override
 	protected EClass eStaticClass() {
 		return QIntegratedLanguageCorePackage.Literals.OBJECT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String qURI() {
+		return EcoreUtil.getURI(this).toString();
 	}
 
 } // ObjectImpl

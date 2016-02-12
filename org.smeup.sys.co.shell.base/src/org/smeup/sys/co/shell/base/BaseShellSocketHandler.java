@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.net.URI;
 
 import javax.inject.Inject;
 
@@ -96,7 +97,7 @@ public class BaseShellSocketHandler implements Runnable {
 			}
 
 			if (jobCapability != null) {
-				shellOutputWrapper.unregister(jobCapability.getObjectID());
+				shellOutputWrapper.unregister(URI.create(jobCapability.getObjectURI()).getFragment());
 				jobCapability = null;				
 			}
 
@@ -120,7 +121,7 @@ public class BaseShellSocketHandler implements Runnable {
 		 
 		jobCapability = shellManager.connect(identity);
 		
-		shellOutputWrapper.register(jobCapability.getObjectID(), outputStreamWriter);
+		shellOutputWrapper.register(URI.create(jobCapability.getObjectURI()).getFragment(), outputStreamWriter);
 		shellManager.setDefaultWriter(jobCapability, "S");
 	}
 

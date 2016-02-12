@@ -21,15 +21,19 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.smeup.sys.dk.source.QProject;
+import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.core.QObjectAdapter;
 
 public class JDTProjectAdapter implements QProject {
 
 	private static final long serialVersionUID = 1L;
 	
 	private IProject project;
+	private QObject qObject;
 	
 	public JDTProjectAdapter(IProject project) {
 		this.project = project;
+		this.qObject = QObjectAdapter.adapt(this);
 	}
 
 	protected IProject getIProject() {
@@ -87,5 +91,10 @@ public class JDTProjectAdapter implements QProject {
 	@Override
 	public boolean isRoot() {
 		return true;
+	}
+
+	@Override
+	public String qURI() {
+		return qObject.qURI();
 	}
 }

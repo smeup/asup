@@ -13,6 +13,8 @@ package org.smeup.sys.rt.auth.base;
 
 import java.security.Principal;
 
+import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.core.QObjectAdapter;
 import org.smeup.sys.il.core.ctx.QIdentity;
 import org.smeup.sys.rt.auth.QAuthentication;
 import org.smeup.sys.rt.auth.QAuthenticationManager;
@@ -29,7 +31,7 @@ public class BaseDummyAuthenticationManagerImpl implements QAuthenticationManage
 			return new QIdentity<QAuthentication>() {
 
 				private static final long serialVersionUID = 1L;
-
+				private QObject qObject = QObjectAdapter.adapt(this);
 				@Override
 				public Principal getJavaPrincipal() {
 					return new Principal() {
@@ -39,6 +41,11 @@ public class BaseDummyAuthenticationManagerImpl implements QAuthenticationManage
 							return authenticationUserPassword.getUser();
 						}
 					};
+				}
+
+				@Override
+				public String qURI() {
+					return this.qObject.qURI();
 				}
 			};
 		}

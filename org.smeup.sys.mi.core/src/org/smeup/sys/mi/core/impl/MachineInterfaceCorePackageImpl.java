@@ -11,10 +11,10 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.io.Writer;
 
 import java.lang.Iterable;
-
 import java.lang.Thread;
 import java.lang.annotation.Annotation;
 
@@ -124,6 +124,13 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * @generated
 	 */
 	private EClass javaRunnableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass javaSerializableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -513,6 +520,15 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getJavaSerializable() {
+		return javaSerializableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getJavaThrowable() {
 		return javaThrowableEDataType;
 	}
@@ -601,6 +617,8 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 
 		javaRunnableEClass = createEClass(JAVA_RUNNABLE);
 
+		javaSerializableEClass = createEClass(JAVA_SERIALIZABLE);
+
 		javaThreadEClass = createEClass(JAVA_THREAD);
 
 		javaThreadGroupEClass = createEClass(JAVA_THREAD_GROUP);
@@ -685,6 +703,8 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		initEClass(javaPrincipalEClass, Principal.class, "JavaPrincipal", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(javaRunnableEClass, Runnable.class, "JavaRunnable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(javaSerializableEClass, Serializable.class, "JavaSerializable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(javaThreadEClass, Thread.class, "JavaThread", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 

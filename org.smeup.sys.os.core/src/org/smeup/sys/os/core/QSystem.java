@@ -10,7 +10,6 @@ package org.smeup.sys.os.core;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
-import org.smeup.sys.il.lock.QObjectLockable;
 import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
 
 /**
@@ -38,7 +37,7 @@ import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
  * @model
  * @generated
  */
-public interface QSystem extends QObjectLockable, QObjectNameable, QContextProvider {
+public interface QSystem extends QObjectNameable, QContextProvider {
 
 	public static final long LOCK_TIMEOUT = 1000;
 	

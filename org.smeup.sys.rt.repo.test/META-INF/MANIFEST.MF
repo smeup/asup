@@ -7,6 +7,9 @@ Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .
 Require-Bundle: org.smeup.sys.rt.repo,
- org.smeup.sys.dk.test.base
+ org.smeup.sys.dk.test.base,
+ org.eclipse.equinox.p2.core,
+ org.eclipse.equinox.p2.operations,
+ org.eclipse.equinox.p2.engine;bundle-version="2.4.0"
 Export-Package: org.smeup.sys.rt.repo.test,
  org.smeup.sys.rt.repo.test.runner

@@ -4,7 +4,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="Nameable" abstract="true" interface="true">
     <eOperations name="getName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Object"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Object" eSuperTypes="../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaSerializable">
+    <eOperations name="qURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectAdapter" abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectContainer" abstract="true" eSuperTypes="#//Object">
     <eTypeParameters name="T">
       <eBounds eClassifier="#//Object"/>
@@ -183,8 +186,7 @@
       <eTypeParameters name="T">
         <eBounds eClassifier="#//Object"/>
       </eTypeParameters>
-      <eOperations name="getObjectAddress" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaURI"/>
-      <eOperations name="getObjectID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eOperations name="getObjectURI" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="rights" upperBound="-1"
           eType="#//ctx/CapabilityRight"/>
     </eClassifiers>

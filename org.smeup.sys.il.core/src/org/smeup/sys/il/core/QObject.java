@@ -15,8 +15,16 @@ import java.io.Serializable;
  *
  *
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getObject()
- * @model
- * @generated NOT
+ * @model superTypes="org.smeup.sys.mi.core.JavaSerializable"
+ * @generated
  */
 public interface QObject extends Serializable {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	String qURI();
 } // QObject

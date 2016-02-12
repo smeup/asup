@@ -3,11 +3,11 @@ package org.smeup.sys.il.lock.base;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.lock.LockType;
-import org.smeup.sys.il.lock.QObjectLockable;
 import org.smeup.sys.il.lock.QObjectLocker;
 
-public class BaseLockerImpl<T extends QObjectLockable> implements QObjectLocker<T> {
+public class BaseLockerImpl<T extends QObject> implements QObjectLocker<T> {
 
 	private ReentrantReadWriteLock lock;
 

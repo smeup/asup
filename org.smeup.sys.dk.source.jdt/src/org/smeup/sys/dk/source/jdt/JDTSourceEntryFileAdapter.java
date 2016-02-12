@@ -23,6 +23,8 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QSourceEntry;
+import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.core.QObjectAdapter;
 import org.smeup.sys.il.core.QObjectNameable;
 
 public class JDTSourceEntryFileAdapter implements QSourceEntry {
@@ -32,11 +34,13 @@ public class JDTSourceEntryFileAdapter implements QSourceEntry {
 	private transient JDTObjectSerializer serializer;
 	private QProject project;
 	private transient IFile file;
+	private QObject qObject;
 	
 	public JDTSourceEntryFileAdapter(JDTObjectSerializer serializer, QProject project, IFile file) {
 		this.serializer = serializer;
 		this.project = project;
 		this.file = file;
+		this.qObject = QObjectAdapter.adapt(this);
 	}
 	
 	@Override
@@ -99,5 +103,10 @@ public class JDTSourceEntryFileAdapter implements QSourceEntry {
 	@Override
 	public <T extends QObjectNameable> T load(Class<T> type) throws IOException {
 		return serializer.deserialize(getProject(), type, getName(), getInputStream());
+	}
+
+	@Override
+	public String qURI() {
+		return qObject.qURI();
 	}
 }

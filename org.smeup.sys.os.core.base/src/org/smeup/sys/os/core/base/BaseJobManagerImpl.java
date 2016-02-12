@@ -11,7 +11,7 @@
  */
 package org.smeup.sys.os.core.base;
 
-import java.net.URISyntaxException;
+import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,9 +20,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.core.ctx.CapabilityRight;
 import org.smeup.sys.il.core.ctx.QIdentity;
 import org.smeup.sys.il.core.out.QObjectWriter;
@@ -72,7 +69,7 @@ public abstract class BaseJobManagerImpl implements QJobManager {
 
 	@Override
 	public QJob lookup(QJobCapability capability) {
-		return lookup(capability.getObjectID());
+		return lookup(URI.create(capability.getObjectURI()).getFragment());
 	}
 
 	@Override
@@ -145,17 +142,9 @@ public abstract class BaseJobManagerImpl implements QJobManager {
 
 	protected QJobCapability createJobCapability(QJob job, List<CapabilityRight> rights) {
 		
-		// capability
-		URI address = EcoreUtil.getURI((EObject)job);
-		QJobCapability jobCapability;
-		try {
-			jobCapability = new BaseJobCapabilityImpl(job.getJobReference(), new java.net.URI(address.toString()), rights);
-			return jobCapability;
-		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+		// capability		
+		QJobCapability jobCapability = new BaseJobCapabilityImpl(job.getJobReference(), job.qURI(), rights);
+		return jobCapability;
 	}
 
 	private Date toDate(String resumeTime) {

@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -163,31 +162,13 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	int RUN_MANAGER_FEATURE_COUNT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Lock Read</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM__LOCK_READ = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE__LOCK_READ;
-
-	/**
-	 * The feature id for the '<em><b>Lock Write</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM__LOCK_WRITE = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE__LOCK_WRITE;
-
-	/**
 	 * The feature id for the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__CONTEXT = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 0;
+	int SYSTEM__CONTEXT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Creation Info</b></em>' containment reference.
@@ -196,7 +177,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__CREATION_INFO = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 1;
+	int SYSTEM__CREATION_INFO = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Install Path</b></em>' attribute.
@@ -205,7 +186,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__INSTALL_PATH = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 2;
+	int SYSTEM__INSTALL_PATH = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Last Job Number</b></em>' attribute.
@@ -214,7 +195,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__LAST_JOB_NUMBER = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 3;
+	int SYSTEM__LAST_JOB_NUMBER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -223,7 +204,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__NAME = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 4;
+	int SYSTEM__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute.
@@ -232,7 +213,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__STATUS = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 5;
+	int SYSTEM__STATUS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>System Library</b></em>' attribute.
@@ -241,7 +222,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__SYSTEM_LIBRARY = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 6;
+	int SYSTEM__SYSTEM_LIBRARY = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>System User</b></em>' attribute.
@@ -250,7 +231,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__SYSTEM_USER = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 7;
+	int SYSTEM__SYSTEM_USER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Temporary Library</b></em>' attribute.
@@ -259,7 +240,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__TEMPORARY_LIBRARY = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 8;
+	int SYSTEM__TEMPORARY_LIBRARY = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Variable Container</b></em>' containment reference.
@@ -268,7 +249,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__VARIABLE_CONTAINER = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 9;
+	int SYSTEM__VARIABLE_CONTAINER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>System</em>' class.
@@ -277,7 +258,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_FEATURE_COUNT = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 10;
+	int SYSTEM_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.impl.SystemEventImpl <em>System Event</em>}' class.

@@ -7,8 +7,6 @@
  */
 package org.smeup.sys.os.dtaq;
 
-import org.smeup.sys.il.lock.QObjectLockable;
-
 import org.smeup.sys.os.type.QTypedObject;
 
 /**
@@ -31,7 +29,7 @@ import org.smeup.sys.os.type.QTypedObject;
  * @model
  * @generated
  */
-public interface QDataQueue extends QTypedObject, QObjectLockable {
+public interface QDataQueue extends QTypedObject {
 	/**
 	 * Returns the value of the '<em><b>Data Queue Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.smeup.sys.os.dtaq.DataQueueType}.

@@ -9,22 +9,13 @@ package org.smeup.sys.os.dtaq.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
-import org.smeup.sys.il.lock.QLockRead;
-import org.smeup.sys.il.lock.QLockWrite;
-import org.smeup.sys.il.lock.QObjectLockable;
-
 import org.smeup.sys.os.dtaq.DataQueueType;
 import org.smeup.sys.os.dtaq.QDataQueue;
 import org.smeup.sys.os.dtaq.QDataQueueContent;
 import org.smeup.sys.os.dtaq.QOperatingSystemDataQueuePackage;
-
 import org.smeup.sys.os.type.impl.TypedObjectImpl;
 
 /**
@@ -35,8 +26,6 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueImpl#getLockRead <em>Lock Read</em>}</li>
- *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueImpl#getLockWrite <em>Lock Write</em>}</li>
  *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueImpl#getDataQueueType <em>Data Queue Type</em>}</li>
  *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueImpl#getKeyLength <em>Key Length</em>}</li>
  *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueImpl#getMaxEntryLength <em>Max Entry Length</em>}</li>
@@ -51,26 +40,6 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * The cached value of the '{@link #getLockRead() <em>Lock Read</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLockRead()
-	 * @generated
-	 * @ordered
-	 */
-	protected QLockRead lockRead;
-
-	/**
-	 * The cached value of the '{@link #getLockWrite() <em>Lock Write</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLockWrite()
-	 * @generated
-	 * @ordered
-	 */
-	protected QLockWrite lockWrite;
 
 	/**
 	 * The default value of the '{@link #getDataQueueType() <em>Data Queue Type</em>}' attribute.
@@ -179,96 +148,6 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 	@Override
 	protected EClass eStaticClass() {
 		return QOperatingSystemDataQueuePackage.Literals.DATA_QUEUE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QLockRead getLockRead() {
-		return lockRead;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetLockRead(QLockRead newLockRead, NotificationChain msgs) {
-		QLockRead oldLockRead = lockRead;
-		lockRead = newLockRead;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_READ, oldLockRead, newLockRead);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setLockRead(QLockRead newLockRead) {
-		if (newLockRead != lockRead) {
-			NotificationChain msgs = null;
-			if (lockRead != null)
-				msgs = ((InternalEObject)lockRead).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_READ, null, msgs);
-			if (newLockRead != null)
-				msgs = ((InternalEObject)newLockRead).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_READ, null, msgs);
-			msgs = basicSetLockRead(newLockRead, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_READ, newLockRead, newLockRead));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QLockWrite getLockWrite() {
-		return lockWrite;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetLockWrite(QLockWrite newLockWrite, NotificationChain msgs) {
-		QLockWrite oldLockWrite = lockWrite;
-		lockWrite = newLockWrite;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_WRITE, oldLockWrite, newLockWrite);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setLockWrite(QLockWrite newLockWrite) {
-		if (newLockWrite != lockWrite) {
-			NotificationChain msgs = null;
-			if (lockWrite != null)
-				msgs = ((InternalEObject)lockWrite).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_WRITE, null, msgs);
-			if (newLockWrite != null)
-				msgs = ((InternalEObject)newLockWrite).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_WRITE, null, msgs);
-			msgs = basicSetLockWrite(newLockWrite, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_WRITE, newLockWrite, newLockWrite));
 	}
 
 	/**
@@ -416,10 +295,6 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_READ:
-				return basicSetLockRead(null, msgs);
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_WRITE:
-				return basicSetLockWrite(null, msgs);
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__CONTENT:
 				return basicSetContent(null, msgs);
 		}
@@ -434,10 +309,6 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_READ:
-				return getLockRead();
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_WRITE:
-				return getLockWrite();
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__DATA_QUEUE_TYPE:
 				return getDataQueueType();
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__KEY_LENGTH:
@@ -460,12 +331,6 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_READ:
-				setLockRead((QLockRead)newValue);
-				return;
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_WRITE:
-				setLockWrite((QLockWrite)newValue);
-				return;
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__DATA_QUEUE_TYPE:
 				setDataQueueType((DataQueueType)newValue);
 				return;
@@ -493,12 +358,6 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_READ:
-				setLockRead((QLockRead)null);
-				return;
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_WRITE:
-				setLockWrite((QLockWrite)null);
-				return;
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__DATA_QUEUE_TYPE:
 				setDataQueueType(DATA_QUEUE_TYPE_EDEFAULT);
 				return;
@@ -526,10 +385,6 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_READ:
-				return lockRead != null;
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_WRITE:
-				return lockWrite != null;
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__DATA_QUEUE_TYPE:
 				return dataQueueType != DATA_QUEUE_TYPE_EDEFAULT;
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__KEY_LENGTH:
@@ -542,40 +397,6 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 				return content != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == QObjectLockable.class) {
-			switch (derivedFeatureID) {
-				case QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_READ: return QIntegratedLanguageLockPackage.OBJECT_LOCKABLE__LOCK_READ;
-				case QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_WRITE: return QIntegratedLanguageLockPackage.OBJECT_LOCKABLE__LOCK_WRITE;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == QObjectLockable.class) {
-			switch (baseFeatureID) {
-				case QIntegratedLanguageLockPackage.OBJECT_LOCKABLE__LOCK_READ: return QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_READ;
-				case QIntegratedLanguageLockPackage.OBJECT_LOCKABLE__LOCK_WRITE: return QOperatingSystemDataQueuePackage.DATA_QUEUE__LOCK_WRITE;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

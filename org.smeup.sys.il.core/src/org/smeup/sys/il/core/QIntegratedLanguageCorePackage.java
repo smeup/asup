@@ -93,7 +93,26 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_FEATURE_COUNT = 0;
+	int OBJECT_FEATURE_COUNT = QMachineInterfaceCorePackage.JAVA_SERIALIZABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.QObjectAdapter <em>Object Adapter</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.QObjectAdapter
+	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectAdapter()
+	 * @generated
+	 */
+	int OBJECT_ADAPTER = 2;
+
+	/**
+	 * The number of structural features of the '<em>Object Adapter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_ADAPTER_FEATURE_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.ObjectContainerImpl <em>Object Container</em>}' class.
@@ -103,7 +122,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectContainer()
 	 * @generated
 	 */
-	int OBJECT_CONTAINER = 2;
+	int OBJECT_CONTAINER = 3;
 
 	/**
 	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
@@ -129,7 +148,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectIterator()
 	 * @generated
 	 */
-	int OBJECT_ITERATOR = 3;
+	int OBJECT_ITERATOR = 4;
 
 	/**
 	 * The number of structural features of the '<em>Object Iterator</em>' class.
@@ -147,7 +166,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectNameable()
 	 * @generated
 	 */
-	int OBJECT_NAMEABLE = 4;
+	int OBJECT_NAMEABLE = 5;
 
 	/**
 	 * The number of structural features of the '<em>Object Nameable</em>' class.
@@ -165,7 +184,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectRegistry()
 	 * @generated
 	 */
-	int OBJECT_REGISTRY = 5;
+	int OBJECT_REGISTRY = 6;
 
 	/**
 	 * The number of structural features of the '<em>Object Registry</em>' class.
@@ -184,7 +203,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectRegistryFactory()
 	 * @generated
 	 */
-	int OBJECT_REGISTRY_FACTORY = 6;
+	int OBJECT_REGISTRY_FACTORY = 7;
 
 	/**
 	 * The number of structural features of the '<em>Object Registry Factory</em>' class.
@@ -203,7 +222,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectRegistryKey()
 	 * @generated
 	 */
-	int OBJECT_REGISTRY_KEY = 7;
+	int OBJECT_REGISTRY_KEY = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -224,22 +243,22 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	int OBJECT_REGISTRY_KEY__TEXT = OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Version</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECT_REGISTRY_KEY__VERSION = OBJECT_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Vendor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_REGISTRY_KEY__VENDOR = OBJECT_FEATURE_COUNT + 3;
+	int OBJECT_REGISTRY_KEY__VENDOR = OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_REGISTRY_KEY__VERSION = OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Object Registry Key</em>' class.
@@ -258,7 +277,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThread()
 	 * @generated
 	 */
-	int THREAD = 8;
+	int THREAD = 9;
 
 	/**
 	 * The number of structural features of the '<em>Thread</em>' class.
@@ -277,7 +296,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThreadManager()
 	 * @generated
 	 */
-	int THREAD_MANAGER = 9;
+	int THREAD_MANAGER = 10;
 
 	/**
 	 * The number of structural features of the '<em>Thread Manager</em>' class.
@@ -296,7 +315,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThreadStatus()
 	 * @generated
 	 */
-	int THREAD_STATUS = 10;
+	int THREAD_STATUS = 11;
 
 	/**
 	 * Returns the meta object for class '
@@ -317,6 +336,16 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getObject();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.core.QObjectAdapter <em>Object Adapter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Object Adapter</em>'.
+	 * @see org.smeup.sys.il.core.QObjectAdapter
+	 * @generated
+	 */
+	EClass getObjectAdapter();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.QObjectContainer <em>Object Container</em>}'.
@@ -498,6 +527,16 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass OBJECT = eINSTANCE.getObject();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.QObjectAdapter <em>Object Adapter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.core.QObjectAdapter
+		 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectAdapter()
+		 * @generated
+		 */
+		EClass OBJECT_ADAPTER = eINSTANCE.getObjectAdapter();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.impl.ObjectContainerImpl <em>Object Container</em>}' class.

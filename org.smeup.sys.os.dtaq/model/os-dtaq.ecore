@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dtaq" nsURI="http://www.smeup.org/asup/os/dtaq" nsPrefix="os-dtaq">
-  <eClassifiers xsi:type="ecore:EClass" name="DataQueue" eSuperTypes="../../org.smeup.sys.os.type/model/os-type.ecore#//TypedObject ../../org.smeup.sys.il.lock/model/il-lock.ecore#//ObjectLockable">
+  <eClassifiers xsi:type="ecore:EClass" name="DataQueue" eSuperTypes="../../org.smeup.sys.os.type/model/os-type.ecore#//TypedObject">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataQueueType" lowerBound="1"
         eType="#//DataQueueType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="keyLength" lowerBound="1"
@@ -12,7 +12,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="content" eType="#//DataQueueContent"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DataQueueContent" eSuperTypes="../../org.smeup.sys.il.lock/model/il-lock.ecore#//ObjectLockable">
+  <eClassifiers xsi:type="ecore:EClass" name="DataQueueContent" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
         eType="#//DataQueueEntry" containment="true"/>
   </eClassifiers>

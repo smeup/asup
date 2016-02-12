@@ -12,18 +12,17 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
+import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.lock.LockType;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockFactory;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.il.lock.QLockManager;
-import org.smeup.sys.il.lock.QLockRead;
-import org.smeup.sys.il.lock.QLockWrite;
-import org.smeup.sys.il.lock.QObjectLockable;
 import org.smeup.sys.il.lock.QObjectLocker;
 
 /**
@@ -37,24 +36,6 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass lockManagerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass lockReadEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass lockWriteEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass objectLockableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -115,6 +96,9 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 
 		// Initialize simple dependencies
 		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataDefPackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataTermPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theIntegratedLanguageLockPackage.createPackageContents();
@@ -138,51 +122,6 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 	@Override
 	public EClass getLockManager() {
 		return lockManagerEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getLockRead() {
-		return lockReadEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getLockWrite() {
-		return lockWriteEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getObjectLockable() {
-		return objectLockableEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getObjectLockable_LockRead() {
-		return (EReference)objectLockableEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getObjectLockable_LockWrite() {
-		return (EReference)objectLockableEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -232,14 +171,6 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 		// Create classes and their features
 		lockManagerEClass = createEClass(LOCK_MANAGER);
 
-		lockReadEClass = createEClass(LOCK_READ);
-
-		lockWriteEClass = createEClass(LOCK_WRITE);
-
-		objectLockableEClass = createEClass(OBJECT_LOCKABLE);
-		createEReference(objectLockableEClass, OBJECT_LOCKABLE__LOCK_READ);
-		createEReference(objectLockableEClass, OBJECT_LOCKABLE__LOCK_WRITE);
-
 		objectLockerEClass = createEClass(OBJECT_LOCKER);
 
 		// Create enums
@@ -269,27 +200,24 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
+		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 
 		// Create type parameters
 		ETypeParameter objectLockerEClass_T = addETypeParameter(objectLockerEClass, "T");
 
 		// Set bounds for type parameters
-		EGenericType g1 = createEGenericType(this.getObjectLockable());
+		EGenericType g1 = createEGenericType(theIntegratedLanguageCorePackage.getObject());
 		objectLockerEClass_T.getEBounds().add(g1);
 
 		// Add supertypes to classes
-		lockReadEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		lockWriteEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		objectLockableEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(lockManagerEClass, QLockManager.class, "LockManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		EOperation op = addEOperation(lockManagerEClass, null, "getLocker", 0, 1, IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "T");
-		g1 = createEGenericType(this.getObjectLockable());
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObject());
 		t1.getEBounds().add(g1);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
@@ -298,14 +226,6 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 		EGenericType g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
-
-		initEClass(lockReadEClass, QLockRead.class, "LockRead", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(lockWriteEClass, QLockWrite.class, "LockWrite", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(objectLockableEClass, QObjectLockable.class, "ObjectLockable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getObjectLockable_LockRead(), this.getLockRead(), null, "lockRead", null, 1, 1, QObjectLockable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getObjectLockable_LockWrite(), this.getLockWrite(), null, "lockWrite", null, 1, 1, QObjectLockable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(objectLockerEClass, QObjectLocker.class, "ObjectLocker", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

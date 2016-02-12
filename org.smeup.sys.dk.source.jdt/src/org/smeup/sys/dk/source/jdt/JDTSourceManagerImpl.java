@@ -20,6 +20,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
+import javax.inject.Inject;
+
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -40,6 +42,7 @@ import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.dk.source.QSourceNode;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.rt.core.QApplication;
 
 public class JDTSourceManagerImpl implements QSourceManager {
 
@@ -47,14 +50,18 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	public static int EVENT_BUILD_ENTRY = 40;
 	public static int EVENT_INSTALL_ENTRY = 60;
 
-	private String bundlePath;	
+	private String path;	
 
-	public JDTSourceManagerImpl() {
-		this("asup-src");
+	private QApplication application;
+	
+	@Inject
+	public JDTSourceManagerImpl(QApplication application) {
+		this(application, "asup-src");
 	}
 
-	public JDTSourceManagerImpl(String bundlePath) {
-		this.bundlePath = bundlePath;
+	public JDTSourceManagerImpl(QApplication application, String path) {
+		this.path = path;
+		this.application = application;
 		
 		ResourcesPlugin.getWorkspace().getDescription().setAutoBuilding(false);
 	}
@@ -344,7 +351,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 		java.net.URI location = URIUtil.removeFileExtension(parent.getLocation());
 
 		if (type != null) {
-			location = URIUtil.append(location, bundlePath);
+			location = URIUtil.append(location, path);
 			location = URIUtil.append(location, getFolderName(type));
 		}
 
@@ -399,7 +406,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 					Resource.Factory resourceFatory = new JDTResourceFactory();
 					resourceSet.getResourceFactoryRegistry().getContentTypeToFactoryMap().put("asup", resourceFatory);
 					
-					objectSerializer = new JDTObjectSerializer(resourceSet);
+					objectSerializer = new JDTObjectSerializer(application, resourceSet);
 					context.set(JDTObjectSerializer.class, objectSerializer);
 				}
 			}

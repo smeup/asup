@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.os.cmd.base;
 
+import java.net.URI;
 import java.util.Map;
 
 import org.smeup.sys.il.core.QThread;
@@ -87,7 +88,7 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 			jobCapability = jobManager.spawn(job);
 		
 		// Submit command
-		String threadName = "job/" + jobCapability.getObjectID();
+		String threadName = "job/" + URI.create(jobCapability.getObjectURI()).getFragment();
 		QThread thread = threadManager.createThread(threadName, new BaseSubmittedCommand(this, jobCapability, command, caller));
 		job.setJobThread(thread);
 		threadManager.start(thread);		

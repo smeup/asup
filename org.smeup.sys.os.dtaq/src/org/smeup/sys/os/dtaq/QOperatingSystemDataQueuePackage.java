@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 
 /**
@@ -114,31 +113,13 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 	int DATA_QUEUE__CREATION_INFO = QOperatingSystemTypePackage.TYPED_OBJECT__CREATION_INFO;
 
 	/**
-	 * The feature id for the '<em><b>Lock Read</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_QUEUE__LOCK_READ = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Lock Write</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_QUEUE__LOCK_WRITE = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Data Queue Type</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_QUEUE__DATA_QUEUE_TYPE = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 2;
+	int DATA_QUEUE__DATA_QUEUE_TYPE = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Key Length</b></em>' attribute. <!--
@@ -147,7 +128,7 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_QUEUE__KEY_LENGTH = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 3;
+	int DATA_QUEUE__KEY_LENGTH = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Max Entry Length</b></em>' attribute. <!--
@@ -156,7 +137,7 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_QUEUE__MAX_ENTRY_LENGTH = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 4;
+	int DATA_QUEUE__MAX_ENTRY_LENGTH = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Sender Info</b></em>' attribute. <!--
@@ -165,7 +146,7 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_QUEUE__SENDER_INFO = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 5;
+	int DATA_QUEUE__SENDER_INFO = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Content</b></em>' containment reference.
@@ -173,7 +154,7 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_QUEUE__CONTENT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 6;
+	int DATA_QUEUE__CONTENT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Data Queue</em>' class.
@@ -181,7 +162,7 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_QUEUE_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 7;
+	int DATA_QUEUE_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.dtaq.impl.DataQueueContentImpl <em>Data Queue Content</em>}' class.
@@ -194,30 +175,12 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 	int DATA_QUEUE_CONTENT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Lock Read</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_QUEUE_CONTENT__LOCK_READ = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE__LOCK_READ;
-
-	/**
-	 * The feature id for the '<em><b>Lock Write</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_QUEUE_CONTENT__LOCK_WRITE = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE__LOCK_WRITE;
-
-	/**
 	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_QUEUE_CONTENT__ENTRIES = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 0;
+	int DATA_QUEUE_CONTENT__ENTRIES = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Data Queue Content</em>' class.
@@ -225,7 +188,7 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_QUEUE_CONTENT_FEATURE_COUNT = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 1;
+	int DATA_QUEUE_CONTENT_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.dtaq.impl.DataQueueEntryImpl <em>Data Queue Entry</em>}' class.

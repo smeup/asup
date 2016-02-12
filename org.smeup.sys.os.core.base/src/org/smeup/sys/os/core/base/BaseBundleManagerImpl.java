@@ -140,7 +140,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 						try {
 							programWriter.save(program, true);
 						} catch (Exception e) {
-							System.err.println("Unexpected error: " + e.getMessage());
+							System.err.println("Unexpected error: " + e);
 						}
 					}
 				}
@@ -158,7 +158,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 						}
 						programWriter.save(program, true);
 					} catch (Exception e) {
-						System.err.println("Unexpected error: " + e.getMessage());
+						System.err.println("Unexpected error: " + e);
 					}
 				}
 			} else if (eObject instanceof QModuleContainer) {
@@ -172,7 +172,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 						try {
 							moduleWriter.save(module, true);
 						} catch (Exception e) {
-							System.err.println("Unexpected error: " + e.getMessage());
+							System.err.println("Unexpected error: " + e);
 						}
 					}
 				}
@@ -190,7 +190,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 						}
 						moduleWriter.save(module, true);
 					} catch (Exception e) {
-						System.err.println("Unexpected error: " + e.getMessage());
+						System.err.println("Unexpected error: " + e);
 					}
 				}
 			} else if (eObject instanceof QCommandContainer) {
@@ -208,7 +208,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 						commandWriter.save(command, true);
 
 					} catch (Exception e) {
-						System.err.println("Unexpected error: " + e.getMessage());
+						System.err.println("Unexpected error: " + e);
 					}
 				}
 			} else
@@ -261,7 +261,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 							try {
 								programWriter.delete(previousProgram);
 							} catch (Exception e) {
-								System.err.println("Unexpected error: " + e.getMessage());
+								System.err.println("Unexpected error: " + e);
 							}
 						}
 					}
@@ -274,7 +274,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 						try {
 							programWriter.delete(previousProgram);
 						} catch (Exception e) {
-							System.err.println("Unexpected error: " + e.getMessage());
+							System.err.println("Unexpected error: " + e);
 						}
 					}
 				}
@@ -291,7 +291,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 							try {
 								moduleWriter.delete(previousModule);
 							} catch (Exception e) {
-								System.err.println("Unexpected error: " + e.getMessage());
+								System.err.println("Unexpected error: " + e);
 							}
 						}
 					}
@@ -304,7 +304,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 						try {
 							moduleWriter.delete(previousModule);
 						} catch (Exception e) {
-							System.err.println("Unexpected error: " + e.getMessage());
+							System.err.println("Unexpected error: " + e);
 						}
 					}
 				}
@@ -318,7 +318,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 						try {
 							commandWriter.delete(previousCommand);
 						} catch (Exception e) {
-							System.err.println("Unexpected error: " + e.getMessage());
+							System.err.println("Unexpected error: " + e);
 						}
 					}
 				}

@@ -6,12 +6,12 @@ import org.eclipse.emf.cdo.CDOLock;
 import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.cdo.util.CDOUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.lock.LockType;
-import org.smeup.sys.il.lock.QObjectLockable;
 import org.smeup.sys.il.lock.QObjectLocker;
 import org.smeup.sys.rt.core.QLogger;
 
-public class CDOLockerImpl<T extends QObjectLockable> implements QObjectLocker<T> {
+public class CDOLockerImpl<T extends QObject> implements QObjectLocker<T> {
 
 	private T object;
 	private QLogger logger;

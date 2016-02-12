@@ -92,4 +92,9 @@ public class BaseThreadAdapter extends ObjectImpl implements QThread {
 
 		return threadTime.getCPUUsage();
 	}
+
+	@Override
+	public String qURI() {
+		return "asup://"+this.toString();
+	}
 }

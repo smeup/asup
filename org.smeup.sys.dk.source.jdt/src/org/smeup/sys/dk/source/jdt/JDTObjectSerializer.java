@@ -22,12 +22,15 @@ import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.rt.core.QApplication;
 
 public class JDTObjectSerializer {
 
+	private QApplication application;
 	private ResourceSet resourceSet;
 
-	public JDTObjectSerializer(ResourceSet resourceSet) {
+	public JDTObjectSerializer(QApplication application, ResourceSet resourceSet) {
+		this.application = application;
 		this.resourceSet = resourceSet;
 	}
 
@@ -83,7 +86,7 @@ public class JDTObjectSerializer {
 
 	private <T extends QObjectNameable> URI buildURI(QProject project, Class<T> klass, String name) {
 
-		String uri = "asup://" + "TODO" + "/" + project.getName() + "/" + klass.getSimpleName().toLowerCase().substring(1) + "#" + name;
+		String uri = "asup://" + application.getName() + "/" + project.getName() + "/" + klass.getSimpleName().toLowerCase().substring(1) + "#" + name;
 		URI eURI = URI.createURI(uri);
 		eURI.appendFragment(name);
 		return eURI;

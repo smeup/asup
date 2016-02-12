@@ -21,5 +21,4 @@ public class ASFURIsImpl implements QURIs {
 	public String getBaseName(URI uri) {
 		return org.apache.commons.io.FilenameUtils.getBaseName(uri.getRawPath());
 	}
-
 }

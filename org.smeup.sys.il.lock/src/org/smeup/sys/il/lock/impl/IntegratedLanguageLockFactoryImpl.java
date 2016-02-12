@@ -16,8 +16,6 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.il.lock.LockType;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockFactory;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
-import org.smeup.sys.il.lock.QLockRead;
-import org.smeup.sys.il.lock.QLockWrite;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
@@ -61,8 +59,6 @@ public class IntegratedLanguageLockFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case QIntegratedLanguageLockPackage.LOCK_READ: return (EObject)createLockRead();
-			case QIntegratedLanguageLockPackage.LOCK_WRITE: return (EObject)createLockWrite();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -94,26 +90,6 @@ public class IntegratedLanguageLockFactoryImpl extends EFactoryImpl implements Q
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QLockRead createLockRead() {
-		LockReadImpl lockRead = new LockReadImpl();
-		return lockRead;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QLockWrite createLockWrite() {
-		LockWriteImpl lockWrite = new LockWriteImpl();
-		return lockWrite;
 	}
 
 	/**

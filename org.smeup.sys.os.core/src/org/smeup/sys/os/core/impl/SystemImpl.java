@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.core.ctx.QContext;
-import org.smeup.sys.il.lock.impl.ObjectLockableImpl;
+import org.smeup.sys.il.core.impl.ObjectNameableImpl;
 import org.smeup.sys.os.core.QCreationInfo;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.QSystem;
@@ -44,7 +44,7 @@ import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
  *
  * @generated
  */
-public class SystemImpl extends ObjectLockableImpl implements QSystem {
+public class SystemImpl extends ObjectNameableImpl implements QSystem {
 	/**
 	 * 
 	 */

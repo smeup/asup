@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.lock;
 
+import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.ctx.QContext;
 
 /**
@@ -24,6 +25,6 @@ public interface QLockManager {
 	 * @model contextRequired="true"
 	 * @generated
 	 */
-	<T extends QObjectLockable> QObjectLocker<T> getLocker(QContext context, T object);
+	<T extends QObject> QObjectLocker<T> getLocker(QContext context, T object);
 
 } // QLockManager

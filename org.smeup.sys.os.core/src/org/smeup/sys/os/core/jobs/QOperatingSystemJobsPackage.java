@@ -238,6 +238,15 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB_CAPABILITY = 1;
 
 	/**
+	 * The feature id for the '<em><b>Rights</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_CAPABILITY__RIGHTS = QIntegratedLanguageCoreCtxPackage.CAPABILITY__RIGHTS;
+
+	/**
 	 * The number of structural features of the '<em>Job Capability</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

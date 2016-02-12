@@ -47,8 +47,6 @@ public class E4RepositoryManagerImpl implements QRepositoryManager {
 	@Inject
 	public IProvisioningAgentProvider agentProvider;
 
-	// private static String eclipse_site =
-	// "http://download.eclipse.org/releases/helios";
 	private static String asup_site = "http://smeup.github.io/org.smeup.sys.p2.site";
 
 	private IProvisioningAgent agent = null;
