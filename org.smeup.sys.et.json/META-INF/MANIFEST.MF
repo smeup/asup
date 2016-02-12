@@ -6,5 +6,7 @@ Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: lib/java-json.jar,
- .
-Export-Package: org.json
+ .,
+ lib/gson-2.5.jar
+Export-Package: com.google.gson,
+ org.json
