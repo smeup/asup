@@ -7,3 +7,5 @@ Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: lib/hazelcast-3.6.jar,
  .
+Export-Package: com.hazelcast.config,
+ com.hazelcast.core

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Integrated Language Lock Hazelcast
+Bundle-SymbolicName: org.smeup.sys.il.lock.haze
+Bundle-Version: 0.8.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.smeup.sys.il.lock;bundle-version="0.8.0",
+ org.smeup.sys.rt.core,
+ org.smeup.sys.et.haze
