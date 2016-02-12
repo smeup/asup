@@ -8,8 +8,6 @@ import org.smeup.sys.il.lock.LockType;
 import org.smeup.sys.il.lock.QObjectLocker;
 import org.smeup.sys.rt.core.QLogger;
 
-import com.hazelcast.config.Config;
-import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 
 public class HazelcastLockerImpl<T extends QObject> implements QObjectLocker<T> {
@@ -23,12 +21,10 @@ public class HazelcastLockerImpl<T extends QObject> implements QObjectLocker<T> 
 	private static final String WRITE_LOCK_EXT = "?lockType=WRITE";
 	
 
-	public HazelcastLockerImpl(T object, QLogger qLogger) {
+	public HazelcastLockerImpl(T object, QLogger qLogger, HazelcastInstance hazelcastInstance) {
 		this.object = object;
 		this.logger = qLogger;
-		
-		Config cfg = new Config();
-        hazelcastInstance = Hazelcast.newHazelcastInstance(cfg);
+		this.hazelcastInstance = hazelcastInstance;		
 	}
 
 	@Override
@@ -93,13 +89,29 @@ public class HazelcastLockerImpl<T extends QObject> implements QObjectLocker<T> 
 
 	@Override
 	public boolean isLocked(LockType lockType) {
-		// TODO Auto-generated method stub
-		return false;
+		Lock lock = null;		
+		switch (lockType) {
+		case READ:
+			lock = hazelcastInstance.getLock(object.qURI() + READ_LOCK_EXT);
+			break;
+		case WRITE:
+			lock = hazelcastInstance.getLock(object.qURI() + WRITE_LOCK_EXT);
+			break;
+		}
+		
+		boolean locked = false;
+		
+		locked = lock.tryLock();
+		
+		if (locked) lock.unlock();
+
+		return !locked;
+
 	}
 
 	@Override
 	public boolean isLockedByOther(LockType lockType) {
-		// TODO Auto-generated method stub
+		//TODO
 		return false;
 	}
 
