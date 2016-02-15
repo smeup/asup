@@ -83,6 +83,15 @@ public interface QRuntimeCorePackage extends EPackage {
 	int APPLICATION__COMPONENTS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Context</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION__CONTEXT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.rt.core.QApplicationManager <em>Application Manager</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -99,7 +108,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__HOOKS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+	int APPLICATION__HOOKS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -108,7 +117,16 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+	int APPLICATION__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION__PORT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -117,7 +135,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__TEXT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
+	int APPLICATION__TEXT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Application</em>' class.
@@ -126,7 +144,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 4;
+	int APPLICATION_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.rt.core.impl.ApplicationComponentImpl <em>Application Component</em>}' class.
@@ -464,6 +482,17 @@ public interface QRuntimeCorePackage extends EPackage {
 	EReference getApplication_Components();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.smeup.sys.rt.core.QApplication#getContext <em>Context</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Context</em>'.
+	 * @see org.smeup.sys.rt.core.QApplication#getContext()
+	 * @see #getApplication()
+	 * @generated
+	 */
+	EReference getApplication_Context();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.rt.core.QApplication#getHooks <em>Hooks</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -484,6 +513,17 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getApplication_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.core.QApplication#getPort <em>Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Port</em>'.
+	 * @see org.smeup.sys.rt.core.QApplication#getPort()
+	 * @see #getApplication()
+	 * @generated
+	 */
+	EAttribute getApplication_Port();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.core.QApplication#getText <em>Text</em>}'.
@@ -760,6 +800,14 @@ public interface QRuntimeCorePackage extends EPackage {
 		EReference APPLICATION__COMPONENTS = eINSTANCE.getApplication_Components();
 
 		/**
+		 * The meta object literal for the '<em><b>Context</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLICATION__CONTEXT = eINSTANCE.getApplication_Context();
+
+		/**
 		 * The meta object literal for the '<em><b>Hooks</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -774,6 +822,14 @@ public interface QRuntimeCorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute APPLICATION__NAME = eINSTANCE.getApplication_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Port</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPLICATION__PORT = eINSTANCE.getApplication_Port();
 
 		/**
 		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.

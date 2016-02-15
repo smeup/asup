@@ -43,4 +43,9 @@ public class BaseExpressionParserRegistryImpl implements QExpressionParserRegist
 	public QExpressionParser lookupByVendorVersion(String vendor, String version) {
 		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
+
+	@Override
+	public QExpressionParser lookupByPort(int port) {
+		return objectRegistry.lookupByPort(port);
+	}
 }

@@ -518,6 +518,11 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		g1 = createEGenericType(objectRegistryEClass_T);
 		initEOperation(op, g1);
 
+		op = addEOperation(objectRegistryEClass, null, "lookupByPort", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "port", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(objectRegistryEClass_T);
+		initEOperation(op, g1);
+
 		op = addEOperation(objectRegistryEClass, null, "lookupByVendorVersion", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "vendor", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "version", 1, 1, IS_UNIQUE, IS_ORDERED);

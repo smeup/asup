@@ -49,4 +49,9 @@ public class BaseBindingParserRegistryImpl implements QBindingParserRegistry {
 	public QBindingParser lookupByVendorVersion(String vendor, String version) {
 		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
+
+	@Override
+	public QBindingParser lookupByPort(int port) {
+		return objectRegistry.lookupByPort(port);
+	}	
 }

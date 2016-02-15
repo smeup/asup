@@ -13,6 +13,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -33,8 +34,10 @@ import org.smeup.sys.rt.core.QServiceHook;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationImpl#getComponents <em>Components</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationImpl#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationImpl#getHooks <em>Hooks</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationImpl#getPort <em>Port</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationImpl#getText <em>Text</em>}</li>
  * </ul>
  *
@@ -50,6 +53,15 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 	 * @ordered
 	 */
 	protected EList<QApplicationComponent> components;
+	/**
+	 * The cached value of the '{@link #getContext() <em>Context</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContext()
+	 * @generated
+	 * @ordered
+	 */
+	protected QContext context;
 	/**
 	 * 
 	 */
@@ -81,6 +93,24 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getPort() <em>Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PORT_EDEFAULT = 0;
+	/**
+	 * The cached value of the '{@link #getPort() <em>Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected int port = PORT_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -173,6 +203,27 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getPort() {
+		return port;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPort(int newPort) {
+		int oldPort = port;
+		port = newPort;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.APPLICATION__PORT, oldPort, port));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public String getText() {
 		return text;
@@ -199,9 +250,36 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 	 */
 	@Override
 	public QContext getContext() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		if (context != null && ((EObject)context).eIsProxy()) {
+			InternalEObject oldContext = (InternalEObject)context;
+			context = (QContext)eResolveProxy(oldContext);
+			if (context != oldContext) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, QRuntimeCorePackage.APPLICATION__CONTEXT, oldContext, context));
+			}
+		}
+		return context;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QContext basicGetContext() {
+		return context;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setContext(QContext newContext) {
+		QContext oldContext = context;
+		context = newContext;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.APPLICATION__CONTEXT, oldContext, context));
 	}
 
 	/**
@@ -230,10 +308,15 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 		switch (featureID) {
 			case QRuntimeCorePackage.APPLICATION__COMPONENTS:
 				return getComponents();
+			case QRuntimeCorePackage.APPLICATION__CONTEXT:
+				if (resolve) return getContext();
+				return basicGetContext();
 			case QRuntimeCorePackage.APPLICATION__HOOKS:
 				return getHooks();
 			case QRuntimeCorePackage.APPLICATION__NAME:
 				return getName();
+			case QRuntimeCorePackage.APPLICATION__PORT:
+				return getPort();
 			case QRuntimeCorePackage.APPLICATION__TEXT:
 				return getText();
 		}
@@ -253,12 +336,18 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 				getComponents().clear();
 				getComponents().addAll((Collection<? extends QApplicationComponent>)newValue);
 				return;
+			case QRuntimeCorePackage.APPLICATION__CONTEXT:
+				setContext((QContext)newValue);
+				return;
 			case QRuntimeCorePackage.APPLICATION__HOOKS:
 				getHooks().clear();
 				getHooks().addAll((Collection<? extends QServiceHook>)newValue);
 				return;
 			case QRuntimeCorePackage.APPLICATION__NAME:
 				setName((String)newValue);
+				return;
+			case QRuntimeCorePackage.APPLICATION__PORT:
+				setPort((Integer)newValue);
 				return;
 			case QRuntimeCorePackage.APPLICATION__TEXT:
 				setText((String)newValue);
@@ -278,11 +367,17 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 			case QRuntimeCorePackage.APPLICATION__COMPONENTS:
 				getComponents().clear();
 				return;
+			case QRuntimeCorePackage.APPLICATION__CONTEXT:
+				setContext((QContext)null);
+				return;
 			case QRuntimeCorePackage.APPLICATION__HOOKS:
 				getHooks().clear();
 				return;
 			case QRuntimeCorePackage.APPLICATION__NAME:
 				setName(NAME_EDEFAULT);
+				return;
+			case QRuntimeCorePackage.APPLICATION__PORT:
+				setPort(PORT_EDEFAULT);
 				return;
 			case QRuntimeCorePackage.APPLICATION__TEXT:
 				setText(TEXT_EDEFAULT);
@@ -301,10 +396,14 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 		switch (featureID) {
 			case QRuntimeCorePackage.APPLICATION__COMPONENTS:
 				return components != null && !components.isEmpty();
+			case QRuntimeCorePackage.APPLICATION__CONTEXT:
+				return context != null;
 			case QRuntimeCorePackage.APPLICATION__HOOKS:
 				return hooks != null && !hooks.isEmpty();
 			case QRuntimeCorePackage.APPLICATION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case QRuntimeCorePackage.APPLICATION__PORT:
+				return port != PORT_EDEFAULT;
 			case QRuntimeCorePackage.APPLICATION__TEXT:
 				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
 		}
@@ -323,6 +422,8 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", port: ");
+		result.append(port);
 		result.append(", text: ");
 		result.append(text);
 		result.append(')');

@@ -33,6 +33,14 @@ public interface QObjectRegistry<T> {
 	List<T> list();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" portRequired="true"
+	 * @generated
+	 */
+	T lookupByPort(int port);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" vendorRequired="true" versionRequired="true"
 	 * @generated

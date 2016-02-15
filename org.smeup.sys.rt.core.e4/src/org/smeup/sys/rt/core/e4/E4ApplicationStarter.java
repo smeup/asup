@@ -98,8 +98,8 @@ public class E4ApplicationStarter {
 			}
 		};
 		QContext contextApplication = new E4ContextRootImpl(bundleContext, UUID.randomUUID().toString(), contextDescription);
+		this.application.setContext(contextApplication);
 
-		QApplication application = new E4ApplicationImpl(this.application, contextApplication);
 		bundleContext.registerService(QApplication.class, application, null);
 
 		// hooks
@@ -247,6 +247,9 @@ public class E4ApplicationStarter {
 	private void registerService(QApplication application, QApplicationComponent component, QContext componentContext, String name, Object service, Dictionary<String, Object> properties,
 			boolean remoteExport) {
 
+		properties.put("org.smeup.sys.rt.core.application.name", application.getName());
+		properties.put("org.smeup.sys.rt.core.application.port", application.getPort());
+		
 		// Register component as service property
 		properties.put("org.smeup.sys.rt.core.component", component.getName().toLowerCase());
 

@@ -50,4 +50,8 @@ public class BaseDefinitionParserRegistryImpl implements QDefinitionParserRegist
 		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
 
+	@Override
+	public QDefinitionParser lookupByPort(int port) {
+		return objectRegistry.lookupByPort(port);
+	}
 }

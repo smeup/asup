@@ -33,7 +33,6 @@ import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.framework.wiring.BundleWiring;
 import org.smeup.sys.il.core.QObject;
-import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
 import org.smeup.sys.il.core.ctx.QAdapterFactory;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextDescription;
@@ -253,12 +252,7 @@ public abstract class E4ContextImpl extends ContextImpl {
 	}
 
 	@Override
-	public QContext createChildContext(String name) {
-		return createChildContext(name, ContextInjectionStrategy.LOCAL);
-	}
-
-	@Override
-	public QContext createChildContext(final String name, ContextInjectionStrategy injectionStrategy) {
+	public QContext createChildContext(final String name) {
 
 		QContextDescription contextDescription = new QContextDescription() {
 
@@ -288,20 +282,12 @@ public abstract class E4ContextImpl extends ContextImpl {
 			}
 		};
 
-		return createChildContext(contextDescription, injectionStrategy);
+		return createChildContext(contextDescription);
 	}
 
 	@Override
-	public QContext createChildContext(QContextDescription contextDescription, ContextInjectionStrategy injectionStrategy) {
-
-		switch (injectionStrategy) {
-		case LOCAL:
-			return createLocalContext(contextDescription);
-		case REMOTE:
-			return createRemoteContext(contextDescription);
-		}
-
-		return null;
+	public QContext createChildContext(QContextDescription contextDescription) {
+		return createLocalContext(contextDescription);
 	}
 
 	private QContext createLocalContext(QContextDescription contextDescription) {
@@ -315,6 +301,7 @@ public abstract class E4ContextImpl extends ContextImpl {
 		return contextChild;
 	}
 
+	@SuppressWarnings("unused")
 	private QContext createRemoteContext(QContextDescription contextDescription) {
 
 		IEclipseContext eclipseChildContext = getEclipseContext().createChild();

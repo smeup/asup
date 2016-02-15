@@ -51,5 +51,9 @@ public class BaseQueryWriterRegistryImpl implements QQueryWriterRegistry {
 		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
 
+	@Override
+	public QQueryWriter lookupByPort(int port) {
+		return objectRegistry.lookupByPort(port);
+	}
 
 }

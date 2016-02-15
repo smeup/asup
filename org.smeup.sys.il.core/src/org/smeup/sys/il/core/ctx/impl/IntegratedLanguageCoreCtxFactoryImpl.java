@@ -14,9 +14,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.il.core.ctx.*;
-import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
-import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxFactory;
-import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
@@ -72,8 +69,6 @@ public class IntegratedLanguageCoreCtxFactoryImpl extends EFactoryImpl implement
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case QIntegratedLanguageCoreCtxPackage.CONTEXT_INJECTION_STRATEGY:
-				return createContextInjectionStrategyFromString(eDataType, initialValue);
 			case QIntegratedLanguageCoreCtxPackage.CAPABILITY_RIGHT:
 				return createCapabilityRightFromString(eDataType, initialValue);
 			default:
@@ -88,31 +83,11 @@ public class IntegratedLanguageCoreCtxFactoryImpl extends EFactoryImpl implement
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case QIntegratedLanguageCoreCtxPackage.CONTEXT_INJECTION_STRATEGY:
-				return convertContextInjectionStrategyToString(eDataType, instanceValue);
 			case QIntegratedLanguageCoreCtxPackage.CAPABILITY_RIGHT:
 				return convertCapabilityRightToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ContextInjectionStrategy createContextInjectionStrategyFromString(EDataType eDataType, String initialValue) {
-		ContextInjectionStrategy result = ContextInjectionStrategy.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertContextInjectionStrategyToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

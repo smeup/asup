@@ -20,7 +20,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.lock.LockType;
@@ -188,7 +187,7 @@ public class BaseSystemManagerImpl implements QSystemManager {
 			}
 		};
 
-		QContext jobContext = system.getContext().createChildContext(contextDescription, ContextInjectionStrategy.LOCAL);
+		QContext jobContext = system.getContext().createChildContext(contextDescription);
 		job.setJobID(jobContext.getID());
 		job.setContext(jobContext);
 		jobContext.set(QJob.class, job);

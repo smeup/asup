@@ -45,4 +45,9 @@ public class BaseUnitConverterRegistryImpl implements QUnitConverterRegistry {
 		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
 
+	@Override
+	public QUnitConverter lookupByPort(int port) {
+		return objectRegistry.lookupByPort(port);
+	}
+
 }

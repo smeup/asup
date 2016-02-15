@@ -22,10 +22,8 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.smeup.sys.il.core.QObjectIterator;
-import org.smeup.sys.il.core.ctx.CapabilityRight;
 import org.smeup.sys.il.core.ctx.QIdentity;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
@@ -50,12 +48,14 @@ import org.smeup.sys.os.core.jobs.QJobReference;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
 import org.smeup.sys.os.jobd.QJobDescription;
 import org.smeup.sys.os.usrprf.QUserProfile;
-import org.smeup.sys.rt.core.ServiceRegistering;
+import org.smeup.sys.rt.core.QApplication;
 
 public class BaseJobManagerImpl implements QJobManager {
 
 	private static final int MILLIS_IN_ONE_DAY = 1000 * 60 * 60 * 24;
 
+	@Inject
+	private QApplication application;	
 	@Inject
 	private QResourceManager resourceManager;
 	@Inject
@@ -79,11 +79,6 @@ public class BaseJobManagerImpl implements QJobManager {
 	@PostConstruct
 	private void init() {
 		this.expressionParser = expressionParserRegistry.lookup(QExpressionParserRegistry.DEFAULT_PARSER);
-	}
-	
-	@ServiceRegistering
-	private void registering(@Named("org.smeup.sys.rt.core.service.remoteExport") boolean remoteExport) {
-		
 	}
 	
 	@Override
@@ -136,7 +131,9 @@ public class BaseJobManagerImpl implements QJobManager {
 		
 		activeJobs.put(job.getJobID(), job);
 
-		QJobCapability jobCapability = createJobCapability(job, null); 
+		// capability		
+		QJobCapability jobCapability = new BaseJobCapabilityImpl(job.getJobReference(), URI.create(job.qURI()), null, application.getPort());
+
 		job.getContext().set(QJobCapability.class, jobCapability);
 		
 		job.getContext().set(QIdentity.class, identity);
@@ -288,13 +285,6 @@ public class BaseJobManagerImpl implements QJobManager {
 			throw new RuntimeException("You must specify resume time");
 
 		delay(nrOfMillisUntilTime(resumeDate));
-	}
-
-	private QJobCapability createJobCapability(QJob job, List<CapabilityRight> rights) {
-		
-		// capability		
-		QJobCapability jobCapability = new BaseJobCapabilityImpl(job.getJobReference(), URI.create(job.qURI()), rights);
-		return jobCapability;
 	}
 
 	private Date toDate(String resumeTime) {

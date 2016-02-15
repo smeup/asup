@@ -50,4 +50,9 @@ public class BaseDefinitionWriterRegistryImpl implements QDefinitionWriterRegist
 	public QDefinitionWriter lookupByVendorVersion(String vendor, String version) {
 		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
+
+	@Override
+	public QDefinitionWriter lookupByPort(int port) {
+		return objectRegistry.lookupByPort(port);
+	}
 }

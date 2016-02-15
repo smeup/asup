@@ -49,14 +49,6 @@ public class BaseRunManagerImpl implements QRunManager {
 	public <S> S locate(QJobCapability capability, Class<S> klass) {
 
 		QObjectRegistry<S> objectRegistry = objectRegistryFactory.createObjectRegistry(klass);
-
-		S object = null;
-		for(S o: objectRegistry.list()) {
-			object = o;
-			break;
-		}
-		
-		return object;
+		return objectRegistry.lookupByPort(capability.getPort());
 	}
-
 }

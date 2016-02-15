@@ -26,11 +26,13 @@ public class BaseJobCapabilityImpl extends ObjectImpl implements QJobCapability 
 	private QJobReference jobReference;
 	private URI objectURI;
 	private List<CapabilityRight> rights;
+	private int port;
 	
-	protected BaseJobCapabilityImpl(QJobReference jobReference, URI objectURI, List<CapabilityRight> rights) {
+	protected BaseJobCapabilityImpl(QJobReference jobReference, URI objectURI, List<CapabilityRight> rights, int port) {
 		this.jobReference = jobReference;
 		this.objectURI = objectURI;
 		this.rights = rights;
+		this.port = port;
 	}
 
 	@Override
@@ -55,6 +57,6 @@ public class BaseJobCapabilityImpl extends ObjectImpl implements QJobCapability 
 
 	@Override
 	public int getPort() {
-		return objectURI.getPort();
+		return this.port;
 	}
 }

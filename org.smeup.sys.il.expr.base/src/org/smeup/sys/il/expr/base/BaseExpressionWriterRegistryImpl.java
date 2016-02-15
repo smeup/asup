@@ -43,4 +43,9 @@ public class BaseExpressionWriterRegistryImpl implements QExpressionWriterRegist
 	public QExpressionWriter lookupByVendorVersion(String vendor, String version) {
 		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
+
+	@Override
+	public QExpressionWriter lookupByPort(int port) {
+		return objectRegistry.lookupByPort(port);
+	}
 }

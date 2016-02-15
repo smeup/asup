@@ -45,6 +45,10 @@
     <eOperations name="list" lowerBound="1" upperBound="-1">
       <eGenericType eTypeParameter="#//ObjectRegistry/T"/>
     </eOperations>
+    <eOperations name="lookupByPort" lowerBound="1">
+      <eGenericType eTypeParameter="#//ObjectRegistry/T"/>
+      <eParameters name="port" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
     <eOperations name="lookupByVendorVersion" lowerBound="1">
       <eGenericType eTypeParameter="#//ObjectRegistry/T"/>
       <eParameters name="vendor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -196,12 +200,7 @@
         <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="createChildContext" lowerBound="1" eType="#//ctx/Context">
-        <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        <eParameters name="injectionStrategy" lowerBound="1" eType="#//ctx/ContextInjectionStrategy"/>
-      </eOperations>
-      <eOperations name="createChildContext" lowerBound="1" eType="#//ctx/Context">
         <eParameters name="contextDescription" lowerBound="1" eType="#//ctx/ContextDescription"/>
-        <eParameters name="injectionStrategy" lowerBound="1" eType="#//ctx/ContextInjectionStrategy"/>
       </eOperations>
       <eOperations name="get" lowerBound="1">
         <eGenericType eTypeParameter="#//ctx/Context/get/T"/>
@@ -305,10 +304,6 @@
       <eOperations name="getName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eOperations name="getSystemLibrary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eOperations name="getTemporaryLibrary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EEnum" name="ContextInjectionStrategy">
-      <eLiterals name="Local" value="10" literal="LOCAL"/>
-      <eLiterals name="Remote" value="20" literal="REMOTE"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ContextProvider" abstract="true" interface="true">
       <eOperations name="getContext" lowerBound="1" eType="#//ctx/Context"/>

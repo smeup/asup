@@ -61,6 +61,34 @@ public class E4ObjectRegistryImpl<T> implements QObjectRegistry<T> {
 	}
 
 	@Override
+	public T lookupByPort(int port) {
+
+		// search plugin
+		String serviceFilter = "(org.smeup.sys.rt.core.application.port=" + port + ")";
+
+		Collection<ServiceReference<T>> pluginReferences;
+		try {
+			pluginReferences = bundleContext.getServiceReferences(klass, serviceFilter);
+		} catch (InvalidSyntaxException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+		ServiceReference<T> pluginReference = null;
+		for (ServiceReference<T> pReference : pluginReferences) {
+			pluginReference = pReference;
+			break;
+		}
+
+		if (pluginReference == null)
+			return null;
+
+		T plugin = bundleContext.getService(pluginReference);
+
+		return plugin;
+	}
+
+	@Override
 	public List<T> list() {
 
 		List<T> plugins = new ArrayList<T>();

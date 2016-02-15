@@ -178,16 +178,6 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	int IDENTITY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.ContextInjectionStrategy <em>Context Injection Strategy</em>}' enum.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see org.smeup.sys.il.core.ctx.ContextInjectionStrategy
-	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getContextInjectionStrategy()
-	 * @generated
-	 */
-	int CONTEXT_INJECTION_STRATEGY = 6;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.CapabilityRight <em>Capability Right</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -195,7 +185,7 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getCapabilityRight()
 	 * @generated
 	 */
-	int CAPABILITY_RIGHT = 7;
+	int CAPABILITY_RIGHT = 6;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.ctx.QAdapterFactory <em>Adapter Factory</em>}'.
@@ -269,16 +259,6 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getIdentity();
-
-	/**
-	 * Returns the meta object for enum '{@link org.smeup.sys.il.core.ctx.ContextInjectionStrategy <em>Context Injection Strategy</em>}'.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @return the meta object for enum '<em>Context Injection Strategy</em>'.
-	 * @see org.smeup.sys.il.core.ctx.ContextInjectionStrategy
-	 * @generated
-	 */
-	EEnum getContextInjectionStrategy();
 
 	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.il.core.ctx.CapabilityRight <em>Capability Right</em>}'.
@@ -378,16 +358,6 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 		 * @generated
 		 */
 		EClass IDENTITY = eINSTANCE.getIdentity();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.ContextInjectionStrategy <em>Context Injection Strategy</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.core.ctx.ContextInjectionStrategy
-		 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getContextInjectionStrategy()
-		 * @generated
-		 */
-		EEnum CONTEXT_INJECTION_STRATEGY = eINSTANCE.getContextInjectionStrategy();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.CapabilityRight <em>Capability Right</em>}' enum.

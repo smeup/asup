@@ -44,4 +44,9 @@ public class BaseObjectWriterFactoryRegistryImpl implements QObjectWriterFactory
 		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
 
+	@Override
+	public QObjectWriterFactory lookupByPort(int port) {
+		return objectRegistry.lookupByPort(port);
+	}
+
 }

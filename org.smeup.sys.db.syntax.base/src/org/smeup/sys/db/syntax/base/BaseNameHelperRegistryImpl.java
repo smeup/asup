@@ -50,5 +50,8 @@ public class BaseNameHelperRegistryImpl implements QNameHelperRegistry {
 		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
 
-
+	@Override
+	public QNameHelper lookupByPort(int port) {
+		return objectRegistry.lookupByPort(port);
+	}
 }

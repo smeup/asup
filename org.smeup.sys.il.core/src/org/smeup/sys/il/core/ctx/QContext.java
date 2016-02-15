@@ -37,19 +37,12 @@ public interface QContext {
 	QContext createChildContext(String name) throws IntegratedLanguageCoreRuntimeException;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" nameRequired="true" injectionStrategyRequired="true"
-	 * @generated
-	 */
-	QContext createChildContext(String name, ContextInjectionStrategy injectionStrategy) throws IntegratedLanguageCoreRuntimeException;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" contextDescriptionRequired="true" injectionStrategyRequired="true"
+	 * @model required="true" contextDescriptionRequired="true"
 	 * @generated
 	 */
-	QContext createChildContext(QContextDescription contextDescription, ContextInjectionStrategy injectionStrategy);
+	QContext createChildContext(QContextDescription contextDescription);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

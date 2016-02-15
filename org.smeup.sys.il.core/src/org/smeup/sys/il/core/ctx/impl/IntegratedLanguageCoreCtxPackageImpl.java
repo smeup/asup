@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.CapabilityRight;
-import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
 import org.smeup.sys.il.core.ctx.QAdapterFactory;
 import org.smeup.sys.il.core.ctx.QCapability;
 import org.smeup.sys.il.core.ctx.QContext;
@@ -85,12 +84,6 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	private EClass identityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum contextInjectionStrategyEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -249,15 +242,6 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EEnum getContextInjectionStrategy() {
-		return contextInjectionStrategyEEnum;
-	}
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -307,7 +291,6 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		identityEClass = createEClass(IDENTITY);
 
 		// Create enums
-		contextInjectionStrategyEEnum = createEEnum(CONTEXT_INJECTION_STRATEGY);
 		capabilityRightEEnum = createEEnum(CAPABILITY_RIGHT);
 	}
 
@@ -382,12 +365,7 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(contextEClass, this.getContext(), "createChildContext", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getContextInjectionStrategy(), "injectionStrategy", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(contextEClass, this.getContext(), "createChildContext", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getContextDescription(), "contextDescription", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getContextInjectionStrategy(), "injectionStrategy", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(contextEClass, null, "get", 1, 1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "T");
@@ -504,10 +482,6 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		addEOperation(identityEClass, theMachineInterfaceCorePackage.getJavaPrincipal(), "getJavaPrincipal", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(contextInjectionStrategyEEnum, ContextInjectionStrategy.class, "ContextInjectionStrategy");
-		addEEnumLiteral(contextInjectionStrategyEEnum, ContextInjectionStrategy.LOCAL);
-		addEEnumLiteral(contextInjectionStrategyEEnum, ContextInjectionStrategy.REMOTE);
-
 		initEEnum(capabilityRightEEnum, CapabilityRight.class, "CapabilityRight");
 		addEEnumLiteral(capabilityRightEEnum, CapabilityRight.READ);
 		addEEnumLiteral(capabilityRightEEnum, CapabilityRight.WRITE);

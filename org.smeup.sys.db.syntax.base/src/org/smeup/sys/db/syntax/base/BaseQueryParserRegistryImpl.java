@@ -50,4 +50,9 @@ public class BaseQueryParserRegistryImpl implements QQueryParserRegistry {
 	public QQueryParser lookupByVendorVersion(String vendor, String version) {
 		return this.objectRegistry.lookupByVendorVersion(vendor, version);
 	}
+
+	@Override
+	public QQueryParser lookupByPort(int port) {
+		return objectRegistry.lookupByPort(port);
+	}
 }

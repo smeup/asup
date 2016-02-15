@@ -9,6 +9,7 @@ package org.smeup.sys.rt.core;
 
 import java.util.List;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 
 
@@ -22,8 +23,10 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.QApplication#getComponents <em>Components</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.QApplication#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplication#getHooks <em>Hooks</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplication#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.QApplication#getPort <em>Port</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplication#getText <em>Text</em>}</li>
  * </ul>
  *
@@ -48,6 +51,32 @@ public interface QApplication extends QObjectNameable, QContextProvider {
 	 * @generated
 	 */
 	List<QApplicationComponent> getComponents();
+
+	/**
+	 * Returns the value of the '<em><b>Context</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Context</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Context</em>' reference.
+	 * @see #setContext(QContext)
+	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getApplication_Context()
+	 * @model transient="true"
+	 * @generated
+	 */
+	QContext getContext();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.rt.core.QApplication#getContext <em>Context</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Context</em>' reference.
+	 * @see #getContext()
+	 * @generated
+	 */
+	void setContext(QContext value);
 
 	/**
 	 * Returns the value of the '<em><b>Hooks</b></em>' containment reference list.
@@ -91,6 +120,32 @@ public interface QApplication extends QObjectNameable, QContextProvider {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Port</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Port</em>' attribute.
+	 * @see #setPort(int)
+	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getApplication_Port()
+	 * @model
+	 * @generated
+	 */
+	int getPort();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.rt.core.QApplication#getPort <em>Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Port</em>' attribute.
+	 * @see #getPort()
+	 * @generated
+	 */
+	void setPort(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Text</b></em>' attribute.

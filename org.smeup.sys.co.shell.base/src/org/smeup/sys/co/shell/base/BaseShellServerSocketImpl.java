@@ -23,7 +23,6 @@ import org.smeup.sys.co.core.QServerSocket;
 import org.smeup.sys.co.core.QServerSocketConfig;
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.QThreadManager;
-import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.rt.core.ComponentStarted;
 import org.smeup.sys.rt.core.QApplication;
@@ -61,7 +60,7 @@ public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
 				socket = serverSocket.accept();
 
 				BaseShellSocketHandler shellHandler = new BaseShellSocketHandler(socket);
-				QContext connectionContext = application.getContext().createChildContext(shellHandler.toString(), ContextInjectionStrategy.REMOTE);
+				QContext connectionContext = application.getContext().createChildContext(shellHandler.toString());
 				connectionContext.inject(shellHandler);
 
 				// start thread handler
