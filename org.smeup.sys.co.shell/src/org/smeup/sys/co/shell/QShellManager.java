@@ -12,6 +12,7 @@ import java.util.Map;
 import org.smeup.sys.il.core.ctx.QIdentity;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.os.core.jobs.QJobCapability;
+import org.smeup.sys.os.core.jobs.QJobManager;
 
 /**
  * <!-- begin-user-doc -->
@@ -63,6 +64,22 @@ public interface QShellManager {
 	 * @generated
 	 */
 	void executeCommand(QJobCapability capability, String command, Map<String, Object> variables);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	QJobManager locate();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model klassRequired="true" SBounds="org.eclipse.emf.ecore.EJavaObject"
+	 * @generated
+	 */
+	<S extends Object> S locate(QJobCapability capability, Class<S> klass);
 
 	/**
 	 * <!-- begin-user-doc -->

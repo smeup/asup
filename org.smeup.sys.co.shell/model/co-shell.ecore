@@ -41,6 +41,19 @@
         </eGenericType>
       </eParameters>
     </eOperations>
+    <eOperations name="locate" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobManager"/>
+    <eOperations name="locate">
+      <eGenericType eTypeParameter="#//ShellManager/locate.1/S"/>
+      <eTypeParameters name="S">
+        <eBounds eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+      </eTypeParameters>
+      <eParameters name="capability" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
+      <eParameters name="klass" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//ShellManager/locate.1/S"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
     <eOperations name="setDefaultWriter">
       <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

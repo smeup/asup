@@ -13,61 +13,90 @@ package org.smeup.sys.co.shell.base;
 
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.co.shell.QShellManager;
+import org.smeup.sys.il.core.QObjectRegistry;
+import org.smeup.sys.il.core.QObjectRegistryFactory;
 import org.smeup.sys.il.core.ctx.QIdentity;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.os.cmd.QCommandManager;
-import org.smeup.sys.os.core.QRunManager;
 import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobManager;
 
 public class BaseShellManagerImpl implements QShellManager {
-	
+
+
 	@Inject
-	private QRunManager runManager;
+	private QObjectRegistryFactory objectRegistryFactory;
+	
+	private QObjectRegistry<QJobManager> jobRegistry;
+	
+	@PostConstruct
+	private void init() {
+		jobRegistry = objectRegistryFactory.createObjectRegistry(QJobManager.class);
+	}
 
 	@Override
 	public void executeCommand(QJobCapability jobCapability, String command, Map<String, Object> variables) {
 
-		QCommandManager commandManager = runManager.locate(jobCapability, QCommandManager.class);		
+		QCommandManager commandManager = locate(jobCapability, QCommandManager.class);		
 		commandManager.executeCommand(jobCapability, command, variables);
 	}
 
 	@Override
 	public QDataContainer decodeCommand(QJobCapability capability, String command) {
 
-		QCommandManager commandManager = runManager.locate(capability, QCommandManager.class);
+		QCommandManager commandManager = locate(capability, QCommandManager.class);
 		return commandManager.decodeCommand(capability, command);
 	}
 
 	@Override
 	public String encodeCommand(QJobCapability capability, QDataContainer dataContainer, boolean showDefaults) {
 		
-		QCommandManager commandManager = runManager.locate(capability, QCommandManager.class);
+		QCommandManager commandManager = locate(capability, QCommandManager.class);
 		return commandManager.encodeCommand(capability, dataContainer, showDefaults);
 	}
 
 	@Override
 	public void setDefaultWriter(QJobCapability jobCapability, String name) {
 		
-		QJobManager jobManager = runManager.locate(jobCapability, QJobManager.class);
+		QJobManager jobManager = locate(jobCapability, QJobManager.class);
 		jobManager.setDefaultWriter(jobCapability, name);
 	}
 
 	@Override
 	public QJobCapability connect(QIdentity<?> identity) {
 		
-		QJobManager jobManager = runManager.locate();
+		QJobManager jobManager = locate();
 		return jobManager.create(identity);
 	}
 
 	@Override
 	public void disconnect(QJobCapability capability) {
 		
-		QJobManager jobManager = runManager.locate(capability, QJobManager.class);
+		QJobManager jobManager = locate(capability, QJobManager.class);
 		jobManager.close(capability);
 	}
+	
+	@Override
+	public QJobManager locate() {
+		
+		QJobManager jobManager = null;
+		
+		for(QJobManager jm: jobRegistry.list()) {
+			jobManager = jm;
+			break;
+		}
+		
+		return jobManager;
+	}
 
+	@Override
+	public <S> S locate(QJobCapability capability, Class<S> klass) {
+
+		QObjectRegistry<S> objectRegistry = objectRegistryFactory.createObjectRegistry(klass);
+		return objectRegistry.lookupByPort(capability.getPort());
+	}
 }

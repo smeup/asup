@@ -65,6 +65,8 @@ public class E4ApplicationStarter {
 	public QApplication start() throws Exception {
 
 		println("");
+		
+		System.out.println(application.qURI());
 
 		println(">application " + application);
 
