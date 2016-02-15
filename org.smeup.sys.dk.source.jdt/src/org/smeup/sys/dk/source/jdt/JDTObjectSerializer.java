@@ -86,9 +86,12 @@ public class JDTObjectSerializer {
 
 	private <T extends QObjectNameable> URI buildURI(QProject project, Class<T> klass, String name) {
 
-		String uri = "asup://" + application.getName() + "/" + project.getName() + "/" + klass.getSimpleName().toLowerCase().substring(1) + "#" + name;
+		String uri = "asup://" + application.getName() + "/" + project.getName() + "/" + klass.getSimpleName().toLowerCase().substring(1);
 		URI eURI = URI.createURI(uri);
-		eURI.appendFragment(name);
+		
+		// TODO remove me
+		eURI = eURI.appendFragment(name);
+		
 		return eURI;
 	}
 }

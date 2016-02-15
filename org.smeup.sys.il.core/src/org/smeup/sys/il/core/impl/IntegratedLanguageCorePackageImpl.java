@@ -21,7 +21,6 @@ import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.QNameable;
 import org.smeup.sys.il.core.QObject;
-import org.smeup.sys.il.core.QObjectAdapter;
 import org.smeup.sys.il.core.QObjectContainer;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
@@ -65,13 +64,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass objectEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass objectAdapterEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -238,15 +230,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getObjectAdapter() {
-		return objectAdapterEClass;
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -403,8 +386,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 		objectEClass = createEClass(OBJECT);
 
-		objectAdapterEClass = createEClass(OBJECT_ADAPTER);
-
 		objectContainerEClass = createEClass(OBJECT_CONTAINER);
 		createEReference(objectContainerEClass, OBJECT_CONTAINER__CONTENTS);
 
@@ -478,7 +459,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		objectIteratorEClass_T.getEBounds().add(g1);
 
 		// Add supertypes to classes
-		objectEClass.getESuperTypes().add(theMachineInterfaceCorePackage.getJavaSerializable());
 		objectContainerEClass.getESuperTypes().add(this.getObject());
 		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaIterator());
 		EGenericType g2 = createEGenericType(objectIteratorEClass_T);
@@ -502,10 +482,6 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 		initEClass(objectEClass, QObject.class, "Object", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(objectEClass, ecorePackage.getEString(), "qURI", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(objectAdapterEClass, QObjectAdapter.class, "ObjectAdapter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(objectContainerEClass, QObjectContainer.class, "ObjectContainer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(objectContainerEClass_T);
 		initEReference(getObjectContainer_Contents(), g1, null, "contents", null, 0, -1, QObjectContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -528,6 +504,8 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		addEOperation(objectIteratorEClass, null, "remove", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(objectNameableEClass, QObjectNameable.class, "ObjectNameable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(objectNameableEClass, ecorePackage.getEString(), "qURI", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(objectRegistryEClass, QObjectRegistry.class, "ObjectRegistry", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

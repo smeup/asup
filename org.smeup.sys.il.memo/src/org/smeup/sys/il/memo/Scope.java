@@ -72,6 +72,14 @@ public enum Scope implements Enumerator {
 	 * @ordered
 	 */
 	ALL_USER(50, "AllUser", "*ALLUSR"), /**
+	 * The '<em><b>System Library</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SYSTEM_LIBRARY_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	SYSTEM_LIBRARY(90, "SystemLibrary", "*SYSLIB"), /**
 	 * The '<em><b>Other</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -157,6 +165,21 @@ public enum Scope implements Enumerator {
 	public static final int ALL_USER_VALUE = 50;
 
 	/**
+	 * The '<em><b>System Library</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>System Library</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #SYSTEM_LIBRARY
+	 * @model name="SystemLibrary" literal="*SYSLIB"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SYSTEM_LIBRARY_VALUE = 90;
+
+	/**
 	 * The '<em><b>Other</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -184,6 +207,7 @@ public enum Scope implements Enumerator {
 			CURRENT_LIBRARY,
 			USER_LIBRARY_LIST,
 			ALL_USER,
+			SYSTEM_LIBRARY,
 			OTHER,
 		};
 
@@ -199,6 +223,8 @@ public enum Scope implements Enumerator {
 	 * Returns the '<em><b>Scope</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static Scope get(String literal) {
@@ -215,6 +241,8 @@ public enum Scope implements Enumerator {
 	 * Returns the '<em><b>Scope</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static Scope getByName(String name) {
@@ -231,6 +259,8 @@ public enum Scope implements Enumerator {
 	 * Returns the '<em><b>Scope</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static Scope get(int value) {
@@ -240,6 +270,7 @@ public enum Scope implements Enumerator {
 			case CURRENT_LIBRARY_VALUE: return CURRENT_LIBRARY;
 			case USER_LIBRARY_LIST_VALUE: return USER_LIBRARY_LIST;
 			case ALL_USER_VALUE: return ALL_USER;
+			case SYSTEM_LIBRARY_VALUE: return SYSTEM_LIBRARY;
 			case OTHER_VALUE: return OTHER;
 		}
 		return null;

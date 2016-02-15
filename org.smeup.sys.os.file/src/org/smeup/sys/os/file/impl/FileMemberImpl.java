@@ -30,6 +30,7 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <em><b>Member</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getFile <em>File</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getName <em>Name</em>}</li>
@@ -37,7 +38,6 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  *   <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

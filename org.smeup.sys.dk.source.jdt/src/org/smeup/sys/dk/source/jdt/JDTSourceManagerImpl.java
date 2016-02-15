@@ -32,7 +32,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.URIUtil;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.smeup.sys.dk.source.QProject;
@@ -401,10 +400,12 @@ public class JDTSourceManagerImpl implements QSourceManager {
 				objectSerializer = context.get(JDTObjectSerializer.class);
 				if(objectSerializer == null) {
 
-					ResourceSet resourceSet = new ResourceSetImpl();
+					ResourceSetImpl resourceSet = new ResourceSetImpl();
 					resourceSet.getLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, true);
+					
 					Resource.Factory resourceFatory = new JDTResourceFactory();
 					resourceSet.getResourceFactoryRegistry().getContentTypeToFactoryMap().put("asup", resourceFatory);
+					
 					
 					objectSerializer = new JDTObjectSerializer(application, resourceSet);
 					context.set(JDTObjectSerializer.class, objectSerializer);

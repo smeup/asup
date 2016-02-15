@@ -135,14 +135,6 @@ public interface QAsserter {
 	 * @model
 	 * @generated
 	 */
-	void message(String message);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
 	void success(String message);
 
 } // QAssert

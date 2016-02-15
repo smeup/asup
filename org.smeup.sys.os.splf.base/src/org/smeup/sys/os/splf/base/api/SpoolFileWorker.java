@@ -32,6 +32,7 @@ import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.splf.QSpoolFile;
 
@@ -52,7 +53,7 @@ public @ToDo @Program(name = "QSPWRKF") class SpoolFileWorker {
 			@DataDef(length = 10) QEnum<ASPDEVICEEnum, QCharacter> aSPDevice, @DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output,
 			@DataDef(length = 7) QEnum<DISPLAYFORMATEnum, QCharacter> displayFormat, @DataDef(length = 10) QEnum<ASSISTANCELEVELEnum, QCharacter> assistanceLevel) {
 
-		QResourceReader<QSpoolFile> spoolFileReader = resourceManager.getResourceReader(job, QSpoolFile.class, job.getSystem().getSystemLibrary());
+		QResourceReader<QSpoolFile> spoolFileReader = resourceManager.getResourceReader(job, QSpoolFile.class, Scope.SYSTEM_LIBRARY);
 
 		QObjectWriter objectWriter = null;
 

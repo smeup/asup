@@ -34,7 +34,6 @@ import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.QExceptionManager;
-import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.file.QDatabaseFileField;
 import org.smeup.sys.os.file.QDatabaseFileFormat;
@@ -57,8 +56,6 @@ public @ToDo class FileCreator {
 	private QJob job;
 	@Inject
 	private QExceptionManager exceptionManager;
-	@Inject
-	private QSystemManager systemManager;
 	
 	public @Main void main(@Supported @DataDef(qualified = true) FILE file, @ToDo @DataDef(qualified = true) SOURCEFILE sourceFile,
 			@ToDo @DataDef(length = 10) QEnum<SOURCEMEMBEREnum, QCharacter> sourceMember, @Supported @DataDef(binaryType = BinaryType.SHORT) QBinary recordLengthIfNoDDS,
@@ -94,7 +91,7 @@ public @ToDo class FileCreator {
 			fileWriter = resourceManager.getResourceWriter(job, QFile.class, Scope.CURRENT_LIBRARY);
 			break;
 		case OTHER:
-			QResourceReader<QLibrary> libraryWriter = resourceManager.getResourceReader(job, QLibrary.class, systemManager.getSystem().getSystemLibrary());
+			QResourceReader<QLibrary> libraryWriter = resourceManager.getResourceReader(job, QLibrary.class, Scope.SYSTEM_LIBRARY);
 
 			if (!libraryWriter.exists(file.library.asData().trimR()))
 				throw exceptionManager.prepareException(job, QCPFMSG.CPF3204, new String[] {fileNameString, file.library.asData().trimR()});

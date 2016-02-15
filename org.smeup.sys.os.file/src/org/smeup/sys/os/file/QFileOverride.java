@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.os.file;
 
-import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.QObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -15,18 +15,18 @@ import org.smeup.sys.il.core.QObjectNameable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.QFileOverride#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.QFileOverride#getFileTo <em>File To</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.QFileOverride#getMemberTo <em>Member To</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getFileOverride()
  * @model
  * @generated
  */
-public interface QFileOverride extends QObjectNameable {
+public interface QFileOverride extends QObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
 	 * begin-user-doc -->
@@ -42,7 +42,6 @@ public interface QFileOverride extends QObjectNameable {
 	 * @model required="true"
 	 * @generated
 	 */
-	@Override
 	String getName();
 
 	/**

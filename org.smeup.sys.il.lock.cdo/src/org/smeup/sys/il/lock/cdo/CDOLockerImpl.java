@@ -1,3 +1,14 @@
+/**
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
+ */
 package org.smeup.sys.il.lock.cdo;
 
 import java.util.concurrent.TimeUnit;
@@ -6,23 +17,23 @@ import org.eclipse.emf.cdo.CDOLock;
 import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.cdo.util.CDOUtil;
 import org.eclipse.emf.ecore.EObject;
-import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.lock.LockType;
 import org.smeup.sys.il.lock.QObjectLocker;
 import org.smeup.sys.rt.core.QLogger;
 
-public class CDOLockerImpl<T extends QObject> implements QObjectLocker<T> {
+public class CDOLockerImpl<N extends QObjectNameable> implements QObjectLocker<N> {
 
-	private T object;
+	private N object;
 	private QLogger logger;
 
-	public CDOLockerImpl(T object, QLogger logger) {
+	public CDOLockerImpl(N object, QLogger logger) {
 		this.object = object;
 		this.logger = logger;
 	}
 
 	@Override
-	public T getObject() {
+	public N getObject() {
 		return object;
 	}
 
@@ -102,23 +113,5 @@ public class CDOLockerImpl<T extends QObject> implements QObjectLocker<T> {
 		}
 
 		return lock.isLocked();
-	}
-
-	@Override
-	public boolean isLockedByOther(LockType lockType) {
-
-		CDOObject cdoObject = CDOUtil.getCDOObject((EObject) object);
-
-		CDOLock lock = null;
-		switch (lockType) {
-		case READ:
-			lock = cdoObject.cdoReadLock();
-			break;
-		case WRITE:
-			lock = cdoObject.cdoWriteLock();
-			break;
-		}
-
-		return lock.isLockedByOthers();
 	}
 }

@@ -26,8 +26,7 @@ import org.smeup.sys.il.core.QObject;
 
 import org.smeup.sys.il.core.ctx.QContext;
 
-import org.smeup.sys.il.core.impl.ObjectNameableImpl;
-
+import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.rt.core.QApplicationComponent;
 import org.smeup.sys.rt.core.QApplicationModule;
 import org.smeup.sys.rt.core.QRuntimeCorePackage;
@@ -49,7 +48,7 @@ import org.smeup.sys.rt.core.QServiceHook;
  *
  * @generated
  */
-public class ApplicationComponentImpl extends ObjectNameableImpl implements QApplicationComponent {
+public class ApplicationComponentImpl extends ObjectImpl implements QApplicationComponent {
 	/**
 	 * 
 	 */

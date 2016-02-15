@@ -24,13 +24,13 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <em><b>Member Row</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.impl.FileMemberRowImpl#getSequence <em>Sequence</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.impl.FileMemberRowImpl#getDate <em>Date</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.impl.FileMemberRowImpl#getContent <em>Content</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.impl.FileMemberRowImpl#getFileMember <em>File Member</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

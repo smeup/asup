@@ -370,7 +370,9 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		initEClass(capabilityEClass, QCapability.class, "Capability", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCapability_Rights(), this.getCapabilityRight(), "rights", null, 0, -1, QCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(capabilityEClass, ecorePackage.getEString(), "getObjectURI", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(capabilityEClass, theMachineInterfaceCorePackage.getJavaURI(), "getObjectURI", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(capabilityEClass, ecorePackage.getEString(), "getObjectName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(contextEClass, QContext.class, "Context", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

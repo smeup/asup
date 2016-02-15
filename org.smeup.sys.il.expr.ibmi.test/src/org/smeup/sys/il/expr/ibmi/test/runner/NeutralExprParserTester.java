@@ -57,10 +57,7 @@ public class NeutralExprParserTester {
 				
 				// Build normalized expr
 				String result = normalizedExpressionWriter.writeExpression(expressionParser.parseExpression(preparedExpr));
-				
-				// Parse normalized expr
-				testAsserter.message("Inp:" + preparedExpr + " Norm:" + result);
-				
+								
 				NeutralExprLexer lex = new NeutralExprLexer(new ANTLRStringStream(result));
 				CommonTokenStream tokens = new CommonTokenStream(lex);
 				NeutralExprParser parser = new NeutralExprParser(tokens);

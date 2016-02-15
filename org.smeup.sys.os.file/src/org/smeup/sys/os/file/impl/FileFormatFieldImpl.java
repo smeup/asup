@@ -17,8 +17,6 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>File Format Field</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

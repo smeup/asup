@@ -145,7 +145,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_COMPONENT__CONFIGS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+	int APPLICATION_COMPONENT__CONFIGS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Hooks</b></em>' containment reference list.
@@ -154,7 +154,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_COMPONENT__HOOKS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+	int APPLICATION_COMPONENT__HOOKS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
@@ -163,7 +163,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_COMPONENT__MODULES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+	int APPLICATION_COMPONENT__MODULES = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -172,7 +172,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_COMPONENT__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
+	int APPLICATION_COMPONENT__NAME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Application Component</em>' class.
@@ -181,7 +181,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_COMPONENT_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 4;
+	int APPLICATION_COMPONENT_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.rt.core.impl.ApplicationModuleImpl <em>Application Module</em>}' class.
@@ -209,7 +209,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_MODULE__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+	int APPLICATION_MODULE__NAME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Services</b></em>' containment reference list.
@@ -218,7 +218,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_MODULE__SERVICES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+	int APPLICATION_MODULE__SERVICES = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Application Module</em>' class.
@@ -227,7 +227,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_MODULE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+	int APPLICATION_MODULE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.rt.core.QBundleManager <em>Bundle Manager</em>}' class.

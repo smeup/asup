@@ -12,7 +12,6 @@
 package org.smeup.sys.il.core.meta.e4;
 
 import org.eclipse.emf.ecore.ETypedElement;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.core.meta.QCardinality;
 
 public class E4CardinalityAdapter implements QCardinality {
@@ -53,10 +52,5 @@ public class E4CardinalityAdapter implements QCardinality {
 	@Override
 	public void setMax(int value) {
 		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public String qURI() {
-		return EcoreUtil.getURI(element).toString();
 	}
 }

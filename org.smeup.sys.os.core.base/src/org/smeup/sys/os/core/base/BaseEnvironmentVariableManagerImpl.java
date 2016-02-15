@@ -17,6 +17,7 @@ import javax.inject.Inject;
 
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.env.EnvironmentLevel;
 import org.smeup.sys.os.core.env.QEnvironmentVariable;
@@ -170,12 +171,12 @@ public class BaseEnvironmentVariableManagerImpl implements QEnvironmentVariableM
 	private void save(QJob job, EnvironmentLevel level) {
 		switch (level) {
 		case JOB:
-			QResourceWriter<QJob> jobWriter = resourceManager.getResourceWriter(job, QJob.class, job.getSystem().getSystemLibrary());
+			QResourceWriter<QJob> jobWriter = resourceManager.getResourceWriter(job, QJob.class, Scope.SYSTEM_LIBRARY);
 			jobWriter.save(job, true);
 			break;
 		case SYSTEM:
 			// save
-			QResourceWriter<QSystem> systemWriter = resourceManager.getResourceWriter(job, QSystem.class, job.getSystem().getSystemLibrary());
+			QResourceWriter<QSystem> systemWriter = resourceManager.getResourceWriter(job, QSystem.class, Scope.SYSTEM_LIBRARY);
 			systemWriter.save(job.getSystem(), true);
 			break;
 		}

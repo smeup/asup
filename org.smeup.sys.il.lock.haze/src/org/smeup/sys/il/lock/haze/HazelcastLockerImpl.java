@@ -3,17 +3,17 @@ package org.smeup.sys.il.lock.haze;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 
-import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.lock.LockType;
 import org.smeup.sys.il.lock.QObjectLocker;
 import org.smeup.sys.rt.core.QLogger;
 
 import com.hazelcast.core.HazelcastInstance;
 
-public class HazelcastLockerImpl<T extends QObject> implements QObjectLocker<T> {
+public class HazelcastLockerImpl<N extends QObjectNameable> implements QObjectLocker<N> {
 
 	
-	private T object;
+	private N object;
 	private QLogger logger;
 	private HazelcastInstance hazelcastInstance = null;
 	
@@ -21,7 +21,7 @@ public class HazelcastLockerImpl<T extends QObject> implements QObjectLocker<T> 
 	private static final String WRITE_LOCK_EXT = "?lockType=WRITE";
 	
 
-	public HazelcastLockerImpl(T object, QLogger qLogger, HazelcastInstance hazelcastInstance) {
+	public HazelcastLockerImpl(N object, QLogger qLogger, HazelcastInstance hazelcastInstance) {
 		this.object = object;
 		this.logger = qLogger;
 		this.hazelcastInstance = hazelcastInstance;		
@@ -110,13 +110,7 @@ public class HazelcastLockerImpl<T extends QObject> implements QObjectLocker<T> 
 	}
 
 	@Override
-	public boolean isLockedByOther(LockType lockType) {
-		//TODO
-		return false;
-	}
-
-	@Override
-	public T getObject() {		
+	public N getObject() {		
 		return object;
 	}
 }

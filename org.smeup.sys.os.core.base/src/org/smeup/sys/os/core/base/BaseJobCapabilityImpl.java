@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.os.core.base;
 
+import java.net.URI;
 import java.util.List;
 
 import org.smeup.sys.il.core.ctx.CapabilityRight;
@@ -23,10 +24,10 @@ public class BaseJobCapabilityImpl extends ObjectImpl implements QJobCapability 
 	private static final long serialVersionUID = 1L;
 	
 	private QJobReference jobReference;
-	private String objectURI;
+	private URI objectURI;
 	private List<CapabilityRight> rights;
 	
-	protected BaseJobCapabilityImpl(QJobReference jobReference, String objectURI, List<CapabilityRight> rights) {
+	protected BaseJobCapabilityImpl(QJobReference jobReference, URI objectURI, List<CapabilityRight> rights) {
 		this.jobReference = jobReference;
 		this.objectURI = objectURI;
 		this.rights = rights;
@@ -38,12 +39,22 @@ public class BaseJobCapabilityImpl extends ObjectImpl implements QJobCapability 
 	}
 
 	@Override
-	public String getObjectURI() {
+	public URI getObjectURI() {
 		return objectURI;
 	}
 
 	@Override
+	public String getObjectName() {
+		return objectURI.getFragment();
+	}
+	
+	@Override
 	public List<CapabilityRight> getRights() {
 		return rights;
+	}
+
+	@Override
+	public int getPort() {
+		return objectURI.getPort();
 	}
 }

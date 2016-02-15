@@ -8,7 +8,7 @@
 package org.smeup.sys.rt.core;
 
 import java.util.List;
-import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.QObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +27,7 @@ import org.smeup.sys.il.core.QObjectNameable;
  * @model
  * @generated
  */
-public interface QApplicationModule extends QObjectNameable {
+public interface QApplicationModule extends QObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -42,7 +42,6 @@ public interface QApplicationModule extends QObjectNameable {
 	 * @model id="true"
 	 * @generated
 	 */
-	@Override
 	String getName();
 
 	/**

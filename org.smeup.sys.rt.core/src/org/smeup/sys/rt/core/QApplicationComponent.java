@@ -10,8 +10,6 @@ package org.smeup.sys.rt.core;
 import java.util.List;
 
 import org.smeup.sys.il.core.QObject;
-import org.smeup.sys.il.core.QObjectNameable;
-
 import org.smeup.sys.il.core.ctx.QContextProvider;
 
 /**
@@ -33,7 +31,7 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  * @model
  * @generated
  */
-public interface QApplicationComponent extends QObjectNameable, QContextProvider {
+public interface QApplicationComponent extends QObject, QContextProvider {
 	/**
 	 * Returns the value of the '<em><b>Hooks</b></em>' containment reference list.
 	 * The list contents are of type {@link org.smeup.sys.rt.core.QServiceHook}.
@@ -80,7 +78,6 @@ public interface QApplicationComponent extends QObjectNameable, QContextProvider
 	 * @model required="true"
 	 * @generated
 	 */
-	@Override
 	String getName();
 
 	/**

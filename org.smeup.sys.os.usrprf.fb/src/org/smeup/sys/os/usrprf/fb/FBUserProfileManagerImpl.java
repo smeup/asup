@@ -16,8 +16,8 @@ import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
-import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.usrprf.QOperatingSystemUserProfileFactory;
 import org.smeup.sys.os.usrprf.QUserProfile;
@@ -36,8 +36,7 @@ public class FBUserProfileManagerImpl extends BaseUserProfileManagerImpl {
 	
 	public void init(QJob job) {
 
-		QSystem qSystem = job.getSystem();
-		QResourceWriter<QUserProfile> userProfileWriter = resourceManager.getResourceWriter(job, QUserProfile.class, qSystem.getSystemLibrary());
+		QResourceWriter<QUserProfile> userProfileWriter = resourceManager.getResourceWriter(job, QUserProfile.class, Scope.SYSTEM_LIBRARY);
 
 		String accessToken = "CAACEdEose0cBAJSVN4eICu5gZBnmZCPRTJj6nKPZChsKsizoA5BU5b5pZBXjiWPn1UYw59EWVarotfoHQ4psy29TApe5bCktZAd1UJmgmf9rwZA978AoMkcuJmHkxPT0kT42dGwJDgcpxvtSniT2QlEZBRUGCjhYuAaiU8cHLfFNenMmMda1vBJZBxVYgQFbCb4ZD";
 		FacebookClient facebookClient = new DefaultFacebookClient(accessToken);
@@ -49,7 +48,7 @@ public class FBUserProfileManagerImpl extends BaseUserProfileManagerImpl {
 			userProfile.setName(root.getId());
 			userProfile.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(job));
 			userProfile.setText("FB root  : " + root.getName());
-			QResourceWriter<QUserProfile> resourceUserProfile = resourceManager.getResourceWriter(job, QUserProfile.class, qSystem.getSystemLibrary());
+			QResourceWriter<QUserProfile> resourceUserProfile = resourceManager.getResourceWriter(job, QUserProfile.class, Scope.SYSTEM_LIBRARY);
 			resourceUserProfile.save(userProfile);
 		}
 

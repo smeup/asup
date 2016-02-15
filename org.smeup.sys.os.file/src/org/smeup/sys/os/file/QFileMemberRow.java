@@ -15,13 +15,13 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.QFileMemberRow#getSequence <em>Sequence</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.QFileMemberRow#getDate <em>Date</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.QFileMemberRow#getContent <em>Content</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.QFileMemberRow#getFileMember <em>File Member</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getFileMemberRow()
  * @model

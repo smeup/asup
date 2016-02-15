@@ -18,6 +18,7 @@ import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.scde.QScheduleEntry;
@@ -79,7 +80,7 @@ public class ScheduleEntryWorker {
 
 		objectWriter.initialize();
 		
-		QResourceReader<QScheduleEntry> resourceReader = resourceManager.getResourceReader(job, QScheduleEntry.class, job.getSystem().getSystemLibrary());
+		QResourceReader<QScheduleEntry> resourceReader = resourceManager.getResourceReader(job, QScheduleEntry.class, Scope.SYSTEM_LIBRARY);
 		QObjectIterator<QScheduleEntry> objectIterator = resourceReader.find(strJobName);
 
 		QObject qObject = null;

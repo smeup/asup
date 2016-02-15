@@ -33,10 +33,10 @@ import org.smeup.sys.il.data.annotation.Module;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.cmd.QCommand;
 import org.smeup.sys.os.cmd.QCommandContainer;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.module.QModule;
 import org.smeup.sys.os.module.QModuleContainer;
@@ -50,8 +50,6 @@ import org.smeup.sys.rt.core.QBundleVisitor;
 
 public class BaseBundleManagerImpl implements QBundleManager {
 
-	@Inject
-	private QSystemManager systemManager;
 	@Inject
 	private QResourceManager resourceManager;
 
@@ -130,7 +128,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 			EObject eObject = resource.getContents().get(0);
 
 			if (eObject instanceof QProgramContainer) {
-				QResourceWriter<QProgram> programWriter = resourceManager.getResourceWriter(job, QProgram.class, systemManager.getSystem().getSystemLibrary());
+				QResourceWriter<QProgram> programWriter = resourceManager.getResourceWriter(job, QProgram.class, Scope.SYSTEM_LIBRARY);
 				QProgramContainer programContainer = (QProgramContainer) eObject;
 
 				// package introspection
@@ -162,7 +160,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 					}
 				}
 			} else if (eObject instanceof QModuleContainer) {
-				QResourceWriter<QModule> moduleWriter = resourceManager.getResourceWriter(job, QModule.class, systemManager.getSystem().getSystemLibrary());
+				QResourceWriter<QModule> moduleWriter = resourceManager.getResourceWriter(job, QModule.class, Scope.SYSTEM_LIBRARY);
 				QModuleContainer moduleContainer = (QModuleContainer) eObject;
 
 				// package introspection
@@ -194,10 +192,9 @@ public class BaseBundleManagerImpl implements QBundleManager {
 					}
 				}
 			} else if (eObject instanceof QCommandContainer) {
-				QResourceWriter<QCommand> commandWriter = resourceManager.getResourceWriter(job, QCommand.class, systemManager.getSystem().getSystemLibrary());
+				QResourceWriter<QCommand> commandWriter = resourceManager.getResourceWriter(job, QCommand.class, Scope.SYSTEM_LIBRARY);
 				QCommandContainer commandContainer = (QCommandContainer) eObject;
-				List<QCommand> commands = new ArrayList<>(commandContainer.getContents());
-
+				List<QCommand> commands = new ArrayList<>(commandContainer.getContents());				
 				for (QCommand command : commands) {
 					try {
 						// if(command.getStatus() == CommandStatus.SUPPORTED ||
@@ -249,7 +246,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 			EObject eObject = resource.getContents().get(0);
 
 			if (eObject instanceof QProgramContainer) {
-				QResourceWriter<QProgram> programWriter = resourceManager.getResourceWriter(job, QProgram.class, systemManager.getSystem().getSystemLibrary());
+				QResourceWriter<QProgram> programWriter = resourceManager.getResourceWriter(job, QProgram.class, Scope.SYSTEM_LIBRARY);
 				QProgramContainer programContainer = (QProgramContainer) eObject;
 
 				// package introspection
@@ -279,7 +276,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 					}
 				}
 			} else if (eObject instanceof QModuleContainer) {
-				QResourceWriter<QModule> moduleWriter = resourceManager.getResourceWriter(job, QModule.class, systemManager.getSystem().getSystemLibrary());
+				QResourceWriter<QModule> moduleWriter = resourceManager.getResourceWriter(job, QModule.class, Scope.SYSTEM_LIBRARY);
 				QModuleContainer moduleContainer = (QModuleContainer) eObject;
 
 				// package introspection
@@ -309,7 +306,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 					}
 				}
 			} else if (eObject instanceof QCommandContainer) {
-				QResourceWriter<QCommand> commandWriter = resourceManager.getResourceWriter(job, QCommand.class, systemManager.getSystem().getSystemLibrary());
+				QResourceWriter<QCommand> commandWriter = resourceManager.getResourceWriter(job, QCommand.class, Scope.SYSTEM_LIBRARY);
 				QCommandContainer commandContainer = (QCommandContainer) eObject;
 				List<QCommand> commands = new ArrayList<>(commandContainer.getContents());
 				for (QCommand command : commands) {

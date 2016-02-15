@@ -19,11 +19,11 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <em><b>File Format Key Field</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.impl.FileFormatKeyFieldImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.impl.FileFormatKeyFieldImpl#isDescend <em>Descend</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

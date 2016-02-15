@@ -14,12 +14,12 @@ package org.smeup.sys.rt.core.e4;
 import java.util.List;
 
 import org.smeup.sys.il.core.ctx.QContext;
-import org.smeup.sys.il.core.impl.ObjectImpl;
+import org.smeup.sys.il.core.impl.ObjectNameableImpl;
 import org.smeup.sys.rt.core.QApplication;
 import org.smeup.sys.rt.core.QApplicationComponent;
 import org.smeup.sys.rt.core.QServiceHook;
 
-public class E4ApplicationImpl extends ObjectImpl implements QApplication {
+public class E4ApplicationImpl extends ObjectNameableImpl implements QApplication {
 
 	private static final long serialVersionUID = 1L;
 	private QApplication application;

@@ -1,26 +1,37 @@
+/**
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
+ */
 package org.smeup.sys.il.lock.base;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.lock.LockType;
 import org.smeup.sys.il.lock.QObjectLocker;
 
-public class BaseLockerImpl<T extends QObject> implements QObjectLocker<T> {
+public class BaseLockerImpl<N extends QObjectNameable> implements QObjectLocker<N> {
 
 	private ReentrantReadWriteLock lock;
 
-	private T object;
+	private N object;
 
-	public BaseLockerImpl(T object) {
+	public BaseLockerImpl(N object) {
 		this.object = object;
 
 		this.lock = new ReentrantReadWriteLock();
 	}
 
 	@Override
-	public T getObject() {
+	public N getObject() {
 		return object;
 	}
 
@@ -77,11 +88,4 @@ public class BaseLockerImpl<T extends QObject> implements QObjectLocker<T> {
 
 		return false;
 	}
-
-	@Override
-	public boolean isLockedByOther(LockType lockType) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

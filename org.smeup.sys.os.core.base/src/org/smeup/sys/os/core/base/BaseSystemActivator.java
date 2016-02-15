@@ -11,15 +11,20 @@
  */
 package org.smeup.sys.os.core.base;
 
+import org.smeup.sys.il.core.QThread;
+import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.Scope;
+import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
+import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.lib.QLibraryManager;
 import org.smeup.sys.os.lib.QOperatingSystemLibraryFactory;
@@ -30,22 +35,32 @@ import org.smeup.sys.rt.core.QApplication;
 
 public class BaseSystemActivator {
 
-	private QJob jobKernel;
-	
 	@ComponentStarted
-	public void start(QApplication application, QResourceManager resourceManager, QLibraryManager libraryManager, QSystemManager systemManager, QJobLogManager jobLogManager) {
+	public void start(QApplication application, QThreadManager threadManager, QResourceManager resourceManager, QJobManager jobManager, QLibraryManager libraryManager, QSystemManager systemManager, QJobLogManager jobLogManager) {
 		
-		QSystem system = systemManager.getSystem();
+		QResourceWriter<QSystem> systemWriter = resourceManager.getResourceWriter(application, QSystem.class, Scope.SYSTEM_LIBRARY);
+		
+		QSystem system = null; 
+		
+		if(system == null) {
+			system = QOperatingSystemCoreFactory.eINSTANCE.createSystem();
+			system.setName("localhost");
+			system.setSystemUser("QASUP");
+			system.setSystemLibrary("QSYS");
+			system.setTemporaryLibrary("QTEMP");
+			system.setInstallPath(System.getProperty("osgi.instance.area"));
+		}
+		
 		QContext systemContext = application.getContext().createChildContext(system.getName());
 		system.setContext(systemContext);
 
-		jobKernel = systemManager.start();
+		QJob jobKernel = systemManager.start(system);
 		
 		BaseBundleListener bundleListener = systemContext.make(BaseBundleListener.class);
 		bundleListener.init(jobKernel);
 
 		// Library
-		QResourceWriter<QLibrary> resourceLibrary = resourceManager.getResourceWriter(jobKernel, QLibrary.class, system.getSystemLibrary());
+		QResourceWriter<QLibrary> resourceLibrary = resourceManager.getResourceWriter(jobKernel, QLibrary.class, Scope.SYSTEM_LIBRARY);
 		if (!resourceLibrary.exists(system.getSystemLibrary())) {
 			QLibrary library = QOperatingSystemLibraryFactory.eINSTANCE.createLibrary();
 			library.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(system));
@@ -55,7 +70,6 @@ public class BaseSystemActivator {
 		}
 
 		// System
-		QResourceWriter<QSystem> systemWriter = resourceManager.getResourceWriter(jobKernel, QSystem.class, system.getSystemLibrary());
 		QSystem persistedSystem = systemWriter.lookup(system.getName());
 		if (persistedSystem != null) {
 			QEnvironmentVariableContainer variableContainer = persistedSystem.getVariableContainer();
@@ -77,7 +91,6 @@ public class BaseSystemActivator {
 		}
 
 		application.getContext().set(QSystem.class, system);
-
 		application.getContext().set(QJob.class, jobKernel);
 		
 		try {
@@ -86,5 +99,8 @@ public class BaseSystemActivator {
 		catch(Exception e) {
 			jobLogManager.warning(jobKernel, e.getMessage());
 		}		
+		
+		QThread thread = threadManager.createThread("job-closer", new BaseJobCloser(threadManager, jobManager), true);
+		threadManager.start(thread);				
 	}	
 }

@@ -204,11 +204,11 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 
 		// Create type parameters
-		ETypeParameter objectLockerEClass_T = addETypeParameter(objectLockerEClass, "T");
+		ETypeParameter objectLockerEClass_N = addETypeParameter(objectLockerEClass, "N");
 
 		// Set bounds for type parameters
-		EGenericType g1 = createEGenericType(theIntegratedLanguageCorePackage.getObject());
-		objectLockerEClass_T.getEBounds().add(g1);
+		EGenericType g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
+		objectLockerEClass_N.getEBounds().add(g1);
 
 		// Add supertypes to classes
 
@@ -216,8 +216,8 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 		initEClass(lockManagerEClass, QLockManager.class, "LockManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		EOperation op = addEOperation(lockManagerEClass, null, "getLocker", 0, 1, IS_UNIQUE, IS_ORDERED);
-		ETypeParameter t1 = addETypeParameter(op, "T");
-		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObject());
+		ETypeParameter t1 = addETypeParameter(op, "N");
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
 		t1.getEBounds().add(g1);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
@@ -242,11 +242,8 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(objectLockerEClass, ecorePackage.getEBoolean(), "isLocked", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getLockType(), "lockType", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(objectLockerEClass, ecorePackage.getEBoolean(), "isLockedByOther", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getLockType(), "lockType", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = addEOperation(objectLockerEClass, null, "getObject", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(objectLockerEClass_T);
+		g1 = createEGenericType(objectLockerEClass_N);
 		initEOperation(op, g1);
 
 		// Initialize enums and add enum literals

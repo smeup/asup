@@ -30,10 +30,10 @@ import org.smeup.sys.il.memo.QResourceReader;
  * <em><b>QResource</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.memo.impl.ResourceReaderImpl#getNotifier <em>Notifier</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -17,6 +17,7 @@ import org.smeup.sys.il.core.QObjectNameable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.QFileMember#getFile <em>File</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.QFileMember#getName <em>Name</em>}</li>
@@ -24,7 +25,6 @@ import org.smeup.sys.il.core.QObjectNameable;
  *   <li>{@link org.smeup.sys.os.file.QFileMember#getText <em>Text</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.QFileMember#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getFileMember()
  * @model

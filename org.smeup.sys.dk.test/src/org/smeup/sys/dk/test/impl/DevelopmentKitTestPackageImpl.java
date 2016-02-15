@@ -24,7 +24,6 @@ import org.smeup.sys.dk.test.QAssertionSuccess;
 import org.smeup.sys.dk.test.QCallableTest;
 import org.smeup.sys.dk.test.QDevelopmentKitTestFactory;
 import org.smeup.sys.dk.test.QDevelopmentKitTestPackage;
-import org.smeup.sys.dk.test.QMessage;
 import org.smeup.sys.dk.test.QSuiteTestRunner;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.QTestContainer;
@@ -75,13 +74,6 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	 * @generated
 	 */
 	private EClass callableTestEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass messageEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -292,15 +284,6 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getMessage() {
-		return messageEClass;
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -502,8 +485,6 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 
 		callableTestEClass = createEClass(CALLABLE_TEST);
 
-		messageEClass = createEClass(MESSAGE);
-
 		suiteTestRunnerEClass = createEClass(SUITE_TEST_RUNNER);
 
 		testAsserterEClass = createEClass(TEST_ASSERTER);
@@ -574,7 +555,6 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		EGenericType g2 = createEGenericType(this.getTestResult());
 		g1.getETypeArguments().add(g2);
 		callableTestEClass.getEGenericSuperTypes().add(g1);
-		messageEClass.getESuperTypes().add(this.getAssertionResult());
 		suiteTestRunnerEClass.getESuperTypes().add(this.getTestRunner());
 		testAsserterEClass.getESuperTypes().add(this.getAsserter());
 		testContainerEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
@@ -663,9 +643,6 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		op = addEOperation(asserterEClass, null, "fail", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "message", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(asserterEClass, null, "message", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "message", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = addEOperation(asserterEClass, null, "success", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "message", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -679,8 +656,6 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		initEClass(assertionSuccessEClass, QAssertionSuccess.class, "AssertionSuccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(callableTestEClass, QCallableTest.class, "CallableTest", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(messageEClass, QMessage.class, "Message", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(suiteTestRunnerEClass, QSuiteTestRunner.class, "SuiteTestRunner", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

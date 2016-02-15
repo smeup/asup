@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
-import java.net.URI;
 
 import javax.inject.Inject;
 
@@ -97,7 +96,7 @@ public class BaseShellSocketHandler implements Runnable {
 			}
 
 			if (jobCapability != null) {
-				shellOutputWrapper.unregister(URI.create(jobCapability.getObjectURI()).getFragment());
+				shellOutputWrapper.unregister(jobCapability.getObjectName());
 				jobCapability = null;				
 			}
 
@@ -121,7 +120,7 @@ public class BaseShellSocketHandler implements Runnable {
 		 
 		jobCapability = shellManager.connect(identity);
 		
-		shellOutputWrapper.register(URI.create(jobCapability.getObjectURI()).getFragment(), outputStreamWriter);
+		shellOutputWrapper.register(jobCapability.getObjectName(), outputStreamWriter);
 		shellManager.setDefaultWriter(jobCapability, "S");
 	}
 
@@ -135,7 +134,7 @@ public class BaseShellSocketHandler implements Runnable {
 	private QIdentity<QAuthentication> authenticate(String command) {
 
 		// retrieve user
-		command = cleanup(command);
+//		command = cleanup(command);
 
 		String tokens[] = command.split(" ");
 
@@ -158,6 +157,7 @@ public class BaseShellSocketHandler implements Runnable {
 		return authenticationManager.authenticate(credentials);
 	}
 
+	@SuppressWarnings("unused")
 	private String cleanup(String command) {
 		//Solves the problem of the first connection from Windows machines
 		return command.toUpperCase().replaceAll("[^A-Z0-9§$£_]", "");

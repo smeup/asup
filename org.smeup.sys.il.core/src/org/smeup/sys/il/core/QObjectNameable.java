@@ -18,4 +18,12 @@ package org.smeup.sys.il.core;
  */
 public interface QObjectNameable extends QObject, QNameable {
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	String qURI();
+
 } // QObjectNameable

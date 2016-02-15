@@ -43,15 +43,6 @@ public interface QDevelopmentKitTestFactory extends EFactory {
 	QAssertionSuccess createAssertionSuccess();
 
 	/**
-	 * Returns a new object of class '<em>Message</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Message</em>'.
-	 * @generated
-	 */
-	QMessage createMessage();
-
-	/**
 	 * Returns a new object of class '<em>Test Result</em>'.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->

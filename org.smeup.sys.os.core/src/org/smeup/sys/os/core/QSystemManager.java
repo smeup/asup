@@ -24,18 +24,10 @@ public interface QSystemManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation"
+	 * @model required="true" systemRequired="true"
 	 * @generated
 	 */
-	QSystem getSystem();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true"
-	 * @generated
-	 */
-	QJob start();
+	QJob start(QSystem system);
 
 	/**
 	 * <!-- begin-user-doc -->

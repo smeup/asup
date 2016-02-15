@@ -23,6 +23,7 @@ import org.smeup.sys.il.expr.QExpressionParserRegistry;
 import org.smeup.sys.il.expr.QPredicateExpression;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.splf.QSpoolFile;
@@ -45,7 +46,7 @@ public @Program(name = "QSPHNMLT") class SpoolFileDeleter {
 	@Main
 	public void main(@DataDef(length = 255) QCharacter spoolID, @DataDef(length = 10) QCharacter user) {
 
-		QResourceWriter<QSpoolFile> spoolFileWriter = resourceManager.getResourceWriter(job, QSpoolFile.class, job.getSystem().getSystemLibrary());
+		QResourceWriter<QSpoolFile> spoolFileWriter = resourceManager.getResourceWriter(job, QSpoolFile.class, Scope.SYSTEM_LIBRARY);
 
 		if (valid(spoolID)) {
 			deleteSpoolByID(spoolID, spoolFileWriter);

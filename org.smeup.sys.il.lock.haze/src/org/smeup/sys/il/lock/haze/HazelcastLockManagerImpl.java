@@ -1,6 +1,6 @@
 package org.smeup.sys.il.lock.haze;
 
-import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.lock.QLockManager;
 import org.smeup.sys.il.lock.QObjectLocker;
@@ -20,8 +20,8 @@ public class HazelcastLockManagerImpl implements QLockManager {
 	}	
 
 	@Override
-	public <T extends QObject> QObjectLocker<T> getLocker(QContext context, T object) {
-		return new HazelcastLockerImpl<T>(object, context.get(QLogger.class), hazelcastInstance);
+	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, N object) {
+		return new HazelcastLockerImpl<N>(object, context.get(QLogger.class), hazelcastInstance);
 	}
 
 }

@@ -5,7 +5,7 @@
     editorDirectory="/org.smeup.sys.il.core.editor/src" modelPluginID="org.smeup.sys.il.core"
     modelName="As.UP Integrated Language Core" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     rootImplementsInterface="" suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="7.0" suppressGenModelAnnotations="false" copyrightFields="false"
+    complianceLevel="8.0" suppressGenModelAnnotations="false" copyrightFields="false"
     editPluginID="org.smeup.sys.il.core.edit" editorPluginID="org.smeup.sys.il.core.editor"
     language="EN" usedGenPackages="../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" classNamePattern="" importOrganizing="true">
@@ -23,7 +23,10 @@
     <genClasses image="false" ecoreClass="il-core.ecore#//Nameable">
       <genOperations ecoreOperation="il-core.ecore#//Nameable/getName"/>
     </genClasses>
-    <genClasses ecoreClass="il-core.ecore#//Object"/>
+    <genClasses ecoreClass="il-core.ecore#//Object">
+      <genOperations ecoreOperation="il-core.ecore#//Object/qURI"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="il-core.ecore#//ObjectWrapper"/>
     <genClasses image="false" ecoreClass="il-core.ecore#//ObjectContainer">
       <genTypeParameters ecoreTypeParameter="il-core.ecore#//ObjectContainer/T"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-core.ecore#//ObjectContainer/contents"/>
@@ -55,6 +58,12 @@
         <genParameters ecoreParameter="il-core.ecore#//ObjectRegistryFactory/createObjectRegistry/klass"/>
         <genTypeParameters ecoreTypeParameter="il-core.ecore#//ObjectRegistryFactory/createObjectRegistry/T"/>
       </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="il-core.ecore#//ObjectRegistryKey">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//ObjectRegistryKey/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//ObjectRegistryKey/text"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//ObjectRegistryKey/vendor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//ObjectRegistryKey/version"/>
     </genClasses>
     <genClasses image="false" ecoreClass="il-core.ecore#//Thread">
       <genOperations ecoreOperation="il-core.ecore#//Thread/checkRunnable"/>
@@ -123,8 +132,7 @@
       <genClasses image="false" ecoreClass="il-core.ecore#//ctx/Capability">
         <genTypeParameters ecoreTypeParameter="il-core.ecore#//ctx/Capability/T"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//ctx/Capability/rights"/>
-        <genOperations ecoreOperation="il-core.ecore#//ctx/Capability/getObjectAddress"/>
-        <genOperations ecoreOperation="il-core.ecore#//ctx/Capability/getObjectID"/>
+        <genOperations ecoreOperation="il-core.ecore#//ctx/Capability/getObjectURI"/>
       </genClasses>
       <genClasses image="false" ecoreClass="il-core.ecore#//ctx/Context">
         <genOperations ecoreOperation="il-core.ecore#//ctx/Context/close"/>

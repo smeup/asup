@@ -20,7 +20,7 @@ import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
-import org.smeup.sys.os.core.QSystemManager;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QPhysicalFile;
@@ -40,25 +40,18 @@ public class BaseLibraryManagerImpl implements QLibraryManager {
 	@Inject
 	private QTypeRegistry typeRegistry;
 
-	private String systemLibrary;
-
 	// private BundleContext bundleContext;
 	// private Map<String, Long> bundleMap;
 
-	@Inject
-	public BaseLibraryManagerImpl(QSystemManager systemManager) {
-		this.systemLibrary = systemManager.getSystem().getSystemLibrary();
-	}
-
 	@Override
 	public QResourceReader<QLibrary> getLibraryReader(QJob job) {
-		QResourceReader<QLibrary> libraryReader = resourceManager.getResourceReader(job, QLibrary.class, systemLibrary);
+		QResourceReader<QLibrary> libraryReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.SYSTEM_LIBRARY);
 		return libraryReader;
 	}
 
 	@Override
 	public QResourceWriter<QLibrary> getLibraryWriter(QJob job) {
-		QResourceWriter<QLibrary> libraryWriter = resourceManager.getResourceWriter(job, QLibrary.class, systemLibrary);
+		QResourceWriter<QLibrary> libraryWriter = resourceManager.getResourceWriter(job, QLibrary.class, Scope.SYSTEM_LIBRARY);
 		return libraryWriter;
 	}
 
@@ -70,14 +63,14 @@ public class BaseLibraryManagerImpl implements QLibraryManager {
 		tempLibrary.setText("Temporary library for job: "+job.getJobID());
 		tempLibrary.setLibraryType(LibraryType.TEMPORARY);
 		
-		QResourceWriter<QLibrary> libraryWriter = resourceManager.getResourceWriter(job, QLibrary.class, systemLibrary);
+		QResourceWriter<QLibrary> libraryWriter = resourceManager.getResourceWriter(job, QLibrary.class, Scope.SYSTEM_LIBRARY);
 		libraryWriter.save(tempLibrary);
 	}
 
 	@Override
 	public void destroyTemporaryLibrary(QJob job) {
 		
-		QResourceWriter<QLibrary> libraryWriter = resourceManager.getResourceWriter(job, QLibrary.class, systemLibrary);
+		QResourceWriter<QLibrary> libraryWriter = resourceManager.getResourceWriter(job, QLibrary.class, Scope.SYSTEM_LIBRARY);
 		QLibrary tempLibrary = libraryWriter.lookup(job.getContext().getContextDescription().getTemporaryLibrary());
 		
 		if(tempLibrary != null)
@@ -87,7 +80,7 @@ public class BaseLibraryManagerImpl implements QLibraryManager {
 	@Override
 	public void destroyAllTemporaryLibrary(QJob job) {
 
-		QResourceWriter<QLibrary> libraryWriter = resourceManager.getResourceWriter(job, QLibrary.class, job.getSystem().getSystemLibrary());
+		QResourceWriter<QLibrary> libraryWriter = resourceManager.getResourceWriter(job, QLibrary.class, Scope.SYSTEM_LIBRARY);
 		QObjectIterator<QLibrary> libraryIterator = libraryWriter.find(null);
 
 		try {

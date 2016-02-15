@@ -130,13 +130,6 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass javaSerializableEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass javaThreadEClass = null;
 
 	/**
@@ -250,6 +243,13 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * @generated
 	 */
 	private EDataType javaWriterEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType javaSerializableEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -520,8 +520,8 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getJavaSerializable() {
-		return javaSerializableEClass;
+	public EDataType getJavaSerializable() {
+		return javaSerializableEDataType;
 	}
 
 	/**
@@ -617,8 +617,6 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 
 		javaRunnableEClass = createEClass(JAVA_RUNNABLE);
 
-		javaSerializableEClass = createEClass(JAVA_SERIALIZABLE);
-
 		javaThreadEClass = createEClass(JAVA_THREAD);
 
 		javaThreadGroupEClass = createEClass(JAVA_THREAD_GROUP);
@@ -640,6 +638,7 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		javaURIEDataType = createEDataType(JAVA_URI);
 		javaURLEDataType = createEDataType(JAVA_URL);
 		javaWriterEDataType = createEDataType(JAVA_WRITER);
+		javaSerializableEDataType = createEDataType(JAVA_SERIALIZABLE);
 	}
 
 	/**
@@ -704,8 +703,6 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 
 		initEClass(javaRunnableEClass, Runnable.class, "JavaRunnable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(javaSerializableEClass, Serializable.class, "JavaSerializable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(javaThreadEClass, Thread.class, "JavaThread", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(javaThreadGroupEClass, ThreadGroup.class, "JavaThreadGroup", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
@@ -727,6 +724,7 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		initEDataType(javaURIEDataType, URI.class, "JavaURI", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaURLEDataType, URL.class, "JavaURL", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaWriterEDataType, Writer.class, "JavaWriter", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(javaSerializableEDataType, Serializable.class, "JavaSerializable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

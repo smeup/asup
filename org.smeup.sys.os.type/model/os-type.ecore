@@ -69,7 +69,8 @@
         <details key="text" value="Per ora metto i facets sul typedObject, ma non ne sono tanto sicuro&#xA;Almeno però posso annotare gli oggetti tipizzati"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true">
       <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
         <details key="length" value="10"/>
       </eAnnotations>

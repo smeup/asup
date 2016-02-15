@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.il.lock;
 
-import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.core.QObjectNameable;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -18,7 +18,7 @@ import org.smeup.sys.il.core.QObject;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QObjectLocker<T extends QObject> {
+public interface QObjectLocker<N extends QObjectNameable> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model lockTypeRequired="true"
@@ -49,16 +49,9 @@ public interface QObjectLocker<T extends QObject> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model lockTypeRequired="true"
-	 * @generated
-	 */
-	boolean isLockedByOther(LockType lockType);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
 	 */
-	T getObject();
+	N getObject();
 
 } // QObjectLocker

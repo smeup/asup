@@ -535,9 +535,9 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		// Add supertypes to classes
 		applicationEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		applicationEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
-		applicationComponentEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
+		applicationComponentEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		applicationComponentEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
-		applicationModuleEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
+		applicationModuleEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		serviceHookEClass.getESuperTypes().add(this.getServiceRef());
 		serviceRefEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 

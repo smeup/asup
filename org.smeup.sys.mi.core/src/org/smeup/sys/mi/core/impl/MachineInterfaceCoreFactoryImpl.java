@@ -10,6 +10,7 @@ package org.smeup.sys.mi.core.impl;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.io.Writer;
 import java.lang.Iterable;
 import java.lang.annotation.Annotation;
@@ -113,6 +114,8 @@ public class MachineInterfaceCoreFactoryImpl extends EFactoryImpl implements QMa
 				return createJavaURLFromString(eDataType, initialValue);
 			case QMachineInterfaceCorePackage.JAVA_WRITER:
 				return createJavaWriterFromString(eDataType, initialValue);
+			case QMachineInterfaceCorePackage.JAVA_SERIALIZABLE:
+				return createJavaSerializableFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -154,6 +157,8 @@ public class MachineInterfaceCoreFactoryImpl extends EFactoryImpl implements QMa
 				return convertJavaURLToString(eDataType, instanceValue);
 			case QMachineInterfaceCorePackage.JAVA_WRITER:
 				return convertJavaWriterToString(eDataType, instanceValue);
+			case QMachineInterfaceCorePackage.JAVA_SERIALIZABLE:
+				return convertJavaSerializableToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -409,6 +414,24 @@ public class MachineInterfaceCoreFactoryImpl extends EFactoryImpl implements QMa
 	 * @generated
 	 */
 	public String convertJavaWriterToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Serializable createJavaSerializableFromString(EDataType eDataType, String initialValue) {
+		return (Serializable)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertJavaSerializableToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

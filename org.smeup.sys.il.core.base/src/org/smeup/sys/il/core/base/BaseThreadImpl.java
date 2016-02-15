@@ -14,23 +14,19 @@ package org.smeup.sys.il.core.base;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.smeup.sys.il.core.QObject;
-import org.smeup.sys.il.core.QObjectAdapter;
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.ThreadStatus;
 
-public class BaseThreadImpl extends Thread implements QThread, QObjectAdapter {
+public class BaseThreadImpl extends Thread implements QThread {
 
 	private static final long serialVersionUID = 1L;
 	private final ReentrantLock lock = new ReentrantLock();
 	private BaseThreadManagerImpl threadManager = null;
-	private QObject qObject;
 	
 	protected BaseThreadImpl(BaseThreadManagerImpl threadManager, Runnable runnable, String name, boolean daemon) {
 		super(runnable, name);
 		this.threadManager = threadManager;
 		setDaemon(daemon);
-		this.qObject = QObjectAdapter.adapt(this);
 	}
 
 	@Override
@@ -111,10 +107,5 @@ public class BaseThreadImpl extends Thread implements QThread, QObjectAdapter {
 			return 0;
 
 		return threadTime.getCPUUsage();
-	}
-
-	@Override
-	public String qURI() {
-		return qObject.qURI();
 	}
 }

@@ -27,6 +27,7 @@ import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
@@ -82,7 +83,7 @@ public class UserProfileChanger {
 			QEnum<EIMASSOCIATIONEnum, EIMASSOCIATION> eIMAssociation) {
 
 		QResourceWriter<QUserProfile> resourceWriter = null;
-		resourceWriter = resourceManager.getResourceWriter(job, QUserProfile.class, job.getSystem().getSystemLibrary());
+		resourceWriter = resourceManager.getResourceWriter(job, QUserProfile.class, Scope.SYSTEM_LIBRARY);
 
 		QUserProfile qUserProfile = resourceWriter.lookup(userProfile.trimR());
 		if (qUserProfile == null) {

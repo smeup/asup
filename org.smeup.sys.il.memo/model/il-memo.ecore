@@ -282,6 +282,7 @@
     <eLiterals name="CurrentLibrary" value="30" literal="*CURLIB"/>
     <eLiterals name="UserLibraryList" value="40" literal="*USRLIBL"/>
     <eLiterals name="AllUser" value="50" literal="*ALLUSR"/>
+    <eLiterals name="SystemLibrary" value="90" literal="*SYSLIB"/>
     <eLiterals name="Other" value="99" literal="*OTHER"/>
   </eClassifiers>
 </ecore:EPackage>

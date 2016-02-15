@@ -637,9 +637,8 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 
 		initEClass(systemManagerEClass, QSystemManager.class, "SystemManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(systemManagerEClass, this.getSystem(), "getSystem", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(systemManagerEClass, theOperatingSystemJobsPackage.getJob(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(systemManagerEClass, theOperatingSystemJobsPackage.getJob(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSystem(), "system", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(systemManagerEClass, null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
 

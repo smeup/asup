@@ -33,6 +33,7 @@ public class RespositoryTester {
 	@Inject
 	private QTestAsserter testAsserter;
 
+	@SuppressWarnings("unused")
 	@TestStarted
 	public void main() {
 

@@ -413,7 +413,7 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 		initEClass(typedObjectEClass, QTypedObject.class, "TypedObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTypedObject_Application(), ecorePackage.getEString(), "application", null, 0, 1, QTypedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTypedObject_Facets(), theIntegratedLanguageCoreMetaPackage.getFacet(), null, "facets", null, 0, -1, QTypedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTypedObject_Name(), ecorePackage.getEString(), "name", null, 1, 1, QTypedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTypedObject_Name(), ecorePackage.getEString(), "name", null, 1, 1, QTypedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTypedObject_Text(), ecorePackage.getEString(), "text", null, 0, 1, QTypedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTypedObject_CreationInfo(), theOperatingSystemCorePackage.getCreationInfo(), null, "creationInfo", null, 0, 1, QTypedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

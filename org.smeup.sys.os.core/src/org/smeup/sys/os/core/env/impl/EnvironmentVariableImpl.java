@@ -13,8 +13,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.smeup.sys.il.core.impl.ObjectNameableImpl;
-
+import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.os.core.env.QEnvironmentVariable;
 import org.smeup.sys.os.core.env.QOperatingSystemEnvironmentPackage;
 
@@ -32,7 +31,7 @@ import org.smeup.sys.os.core.env.QOperatingSystemEnvironmentPackage;
  *
  * @generated
  */
-public class EnvironmentVariableImpl extends ObjectNameableImpl implements QEnvironmentVariable {
+public class EnvironmentVariableImpl extends ObjectImpl implements QEnvironmentVariable {
 	/**
 	 * 
 	 */

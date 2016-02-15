@@ -8,6 +8,7 @@
 package org.smeup.sys.il.core.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.QObjectNameable;
 
@@ -38,6 +39,15 @@ public class ObjectNameableImpl extends ObjectImpl implements QObjectNameable {
 	@Override
 	protected EClass eStaticClass() {
 		return QIntegratedLanguageCorePackage.Literals.OBJECT_NAMEABLE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String qURI() {
+		return EcoreUtil.getURI(this).toString();
 	}
 
 	/**

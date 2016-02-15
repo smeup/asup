@@ -955,7 +955,7 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		fileFormatKeyEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		fileMemberEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		fileMemberRowEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		fileOverrideEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
+		fileOverrideEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		logicalFileEClass.getESuperTypes().add(this.getDatabaseFile());
 		physicalFileEClass.getESuperTypes().add(this.getDatabaseFile());
 		printerFileEClass.getESuperTypes().add(this.getFile());

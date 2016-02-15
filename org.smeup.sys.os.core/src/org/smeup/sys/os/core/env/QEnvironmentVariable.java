@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.os.core.env;
 
-import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.QObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +26,7 @@ import org.smeup.sys.il.core.QObjectNameable;
  * @model
  * @generated
  */
-public interface QEnvironmentVariable extends QObjectNameable {
+public interface QEnvironmentVariable extends QObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

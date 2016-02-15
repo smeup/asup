@@ -79,7 +79,7 @@ public interface QOperatingSystemEnvironmentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENVIRONMENT_VARIABLE__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+	int ENVIRONMENT_VARIABLE__NAME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -88,7 +88,7 @@ public interface QOperatingSystemEnvironmentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENVIRONMENT_VARIABLE__VALUE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+	int ENVIRONMENT_VARIABLE__VALUE = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Environment Variable</em>' class.
@@ -97,7 +97,7 @@ public interface QOperatingSystemEnvironmentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENVIRONMENT_VARIABLE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+	int ENVIRONMENT_VARIABLE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.env.impl.EnvironmentVariableContainerImpl <em>Environment Variable Container</em>}' class.

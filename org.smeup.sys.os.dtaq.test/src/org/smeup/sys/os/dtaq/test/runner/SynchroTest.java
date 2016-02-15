@@ -31,7 +31,6 @@ import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.dtaq.DataQueueType;
 import org.smeup.sys.os.dtaq.QDataQueue;
-import org.smeup.sys.os.dtaq.QDataQueueContent;
 import org.smeup.sys.os.dtaq.QDataQueueManager;
 import org.smeup.sys.os.lib.QLibrary;
 
@@ -209,6 +208,7 @@ public class SynchroTest {
 		public void run() {
 
 			// Create new job
+			@SuppressWarnings("unused")
 			QJobCapability childJob = jobManager.spawn(job);
 
 			// Get the queue
@@ -216,7 +216,7 @@ public class SynchroTest {
 			QDataQueue dataQueue = resource.lookup(queue);
 
 			// Lock it for reading
-			QObjectLocker<QDataQueueContent> locker = lockManager.getLocker(job.getContext(), dataQueue.getContent());
+			QObjectLocker<QDataQueue> locker = lockManager.getLocker(job.getContext(), dataQueue);
 			locker.lock(LockType.READ);
 
 			// Notify lock success to caller class

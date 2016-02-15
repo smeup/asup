@@ -4,20 +4,24 @@
   <eClassifiers xsi:type="ecore:EClass" name="LockManager" abstract="true" interface="true">
     <eOperations name="getLocker">
       <eGenericType eClassifier="#//ObjectLocker">
-        <eTypeArguments eTypeParameter="#//LockManager/getLocker/T"/>
+        <eTypeArguments eTypeParameter="#//LockManager/getLocker/N"/>
       </eGenericType>
-      <eTypeParameters name="T">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
+      <eTypeParameters name="N">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
       </eTypeParameters>
       <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
       <eParameters name="object">
-        <eGenericType eTypeParameter="#//LockManager/getLocker/T"/>
+        <eGenericType eTypeParameter="#//LockManager/getLocker/N"/>
       </eParameters>
     </eOperations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LockType">
+    <eLiterals name="Read" value="10" literal="READ"/>
+    <eLiterals name="Write" value="20" literal="WRITE"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectLocker" abstract="true" interface="true">
-    <eTypeParameters name="T">
-      <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
+    <eTypeParameters name="N">
+      <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
     </eTypeParameters>
     <eOperations name="lock">
       <eParameters name="lockType" lowerBound="1" eType="#//LockType"/>
@@ -32,15 +36,8 @@
     <eOperations name="isLocked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="lockType" lowerBound="1" eType="#//LockType"/>
     </eOperations>
-    <eOperations name="isLockedByOther" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="lockType" lowerBound="1" eType="#//LockType"/>
-    </eOperations>
     <eOperations name="getObject">
-      <eGenericType eTypeParameter="#//ObjectLocker/T"/>
+      <eGenericType eTypeParameter="#//ObjectLocker/N"/>
     </eOperations>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="LockType">
-    <eLiterals name="Read" value="10" literal="READ"/>
-    <eLiterals name="Write" value="20" literal="WRITE"/>
   </eClassifiers>
 </ecore:EPackage>

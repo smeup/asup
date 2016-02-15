@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.smeup.sys.il.core.impl.ObjectNameableImpl;
+import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileOverride;
 import org.smeup.sys.os.file.QOperatingSystemFilePackage;
@@ -22,16 +22,16 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <em><b>File Override</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.impl.FileOverrideImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.impl.FileOverrideImpl#getFileTo <em>File To</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.impl.FileOverrideImpl#getMemberTo <em>Member To</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class FileOverrideImpl extends ObjectNameableImpl implements QFileOverride {
+public class FileOverrideImpl extends ObjectImpl implements QFileOverride {
 	/**
 	 *
 	 */

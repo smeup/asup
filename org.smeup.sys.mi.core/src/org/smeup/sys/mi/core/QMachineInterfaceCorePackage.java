@@ -238,7 +238,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaThread()
 	 * @generated
 	 */
-	int JAVA_THREAD = 11;
+	int JAVA_THREAD = 10;
 
 	/**
 	 * The meta object id for the '{@link java.lang.ThreadGroup <em>Java Thread Group</em>}' class.
@@ -248,7 +248,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaThreadGroup()
 	 * @generated
 	 */
-	int JAVA_THREAD_GROUP = 12;
+	int JAVA_THREAD_GROUP = 11;
 
 	/**
 	 * The meta object id for the '{@link java.lang.management.ThreadInfo <em>Java Thread Info</em>}' class.
@@ -258,7 +258,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaThreadInfo()
 	 * @generated
 	 */
-	int JAVA_THREAD_INFO = 13;
+	int JAVA_THREAD_INFO = 12;
 
 	/**
 	 * The meta object id for the '<em>Java Annotation</em>' data type.
@@ -268,7 +268,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaAnnotation()
 	 * @generated
 	 */
-	int JAVA_ANNOTATION = 14;
+	int JAVA_ANNOTATION = 13;
 
 	/**
 	 * The meta object id for the '<em>Java Dictionary</em>' data type.
@@ -278,7 +278,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaDictionary()
 	 * @generated
 	 */
-	int JAVA_DICTIONARY = 15;
+	int JAVA_DICTIONARY = 14;
 
 	/**
 	 * The meta object id for the '<em>Java Exception</em>' data type.
@@ -288,7 +288,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaException()
 	 * @generated
 	 */
-	int JAVA_EXCEPTION = 16;
+	int JAVA_EXCEPTION = 15;
 
 	/**
 	 * The meta object id for the '<em>Java Input Stream</em>' data type.
@@ -298,7 +298,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaInputStream()
 	 * @generated
 	 */
-	int JAVA_INPUT_STREAM = 17;
+	int JAVA_INPUT_STREAM = 16;
 
 	/**
 	 * The meta object id for the '<em>Java IO Exception</em>' data type.
@@ -308,7 +308,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaIOException()
 	 * @generated
 	 */
-	int JAVA_IO_EXCEPTION = 18;
+	int JAVA_IO_EXCEPTION = 17;
 
 	/**
 	 * The meta object id for the '<em>Java Iterable</em>' data type.
@@ -318,7 +318,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaIterable()
 	 * @generated
 	 */
-	int JAVA_ITERABLE = 19;
+	int JAVA_ITERABLE = 18;
 
 	/**
 	 * The meta object id for the '<em>Java Map</em>' data type.
@@ -328,7 +328,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaMap()
 	 * @generated
 	 */
-	int JAVA_MAP = 20;
+	int JAVA_MAP = 19;
 
 	/**
 	 * The meta object id for the '<em>Java Output Stream</em>' data type.
@@ -338,7 +338,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaOutputStream()
 	 * @generated
 	 */
-	int JAVA_OUTPUT_STREAM = 21;
+	int JAVA_OUTPUT_STREAM = 20;
 
 	/**
 	 * The meta object id for the '<em>Java Properties</em>' data type.
@@ -348,7 +348,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaProperties()
 	 * @generated
 	 */
-	int JAVA_PROPERTIES = 22;
+	int JAVA_PROPERTIES = 21;
 
 	/**
 	 * The meta object id for the '{@link java.lang.Runnable <em>Java Runnable</em>}' class.
@@ -370,23 +370,14 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	int JAVA_RUNNABLE_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link java.io.Serializable <em>Java Serializable</em>}' class.
+	 * The meta object id for the '<em>Java Serializable</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.io.Serializable
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaSerializable()
 	 * @generated
 	 */
-	int JAVA_SERIALIZABLE = 10;
-
-	/**
-	 * The number of structural features of the '<em>Java Serializable</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JAVA_SERIALIZABLE_FEATURE_COUNT = 0;
+	int JAVA_SERIALIZABLE = 27;
 
 	/**
 	 * The number of structural features of the '<em>Java Thread</em>' class.
@@ -423,7 +414,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaThrowable()
 	 * @generated
 	 */
-	int JAVA_THROWABLE = 23;
+	int JAVA_THROWABLE = 22;
 
 	/**
 	 * The meta object id for the '<em>Java Type</em>' data type.
@@ -433,7 +424,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaType()
 	 * @generated
 	 */
-	int JAVA_TYPE = 24;
+	int JAVA_TYPE = 23;
 
 	/**
 	 * The meta object id for the '<em>Java URI</em>' data type.
@@ -443,7 +434,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaURI()
 	 * @generated
 	 */
-	int JAVA_URI = 25;
+	int JAVA_URI = 24;
 
 	/**
 	 * The meta object id for the '<em>Java URL</em>' data type.
@@ -453,7 +444,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaURL()
 	 * @generated
 	 */
-	int JAVA_URL = 26;
+	int JAVA_URL = 25;
 
 	/**
 	 * The meta object id for the '<em>Java Writer</em>' data type.
@@ -463,7 +454,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaWriter()
 	 * @generated
 	 */
-	int JAVA_WRITER = 27;
+	int JAVA_WRITER = 26;
 
 
 	/**
@@ -709,15 +700,15 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	EClass getJavaRunnable();
 
 	/**
-	 * Returns the meta object for class '{@link java.io.Serializable <em>Java Serializable</em>}'.
+	 * Returns the meta object for data type '{@link java.io.Serializable <em>Java Serializable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Java Serializable</em>'.
+	 * @return the meta object for data type '<em>Java Serializable</em>'.
 	 * @see java.io.Serializable
 	 * @model instanceClass="java.io.Serializable"
 	 * @generated
 	 */
-	EClass getJavaSerializable();
+	EDataType getJavaSerializable();
 
 	/**
 	 * Returns the meta object for data type '{@link java.lang.Throwable <em>Java Throwable</em>}'.
@@ -1017,14 +1008,14 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 		EClass JAVA_RUNNABLE = eINSTANCE.getJavaRunnable();
 
 		/**
-		 * The meta object literal for the '{@link java.io.Serializable <em>Java Serializable</em>}' class.
+		 * The meta object literal for the '<em>Java Serializable</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see java.io.Serializable
 		 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaSerializable()
 		 * @generated
 		 */
-		EClass JAVA_SERIALIZABLE = eINSTANCE.getJavaSerializable();
+		EDataType JAVA_SERIALIZABLE = eINSTANCE.getJavaSerializable();
 
 		/**
 		 * The meta object literal for the '<em>Java Throwable</em>' data type.

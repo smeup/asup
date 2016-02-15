@@ -24,10 +24,10 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <em><b>Database File</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.impl.DatabaseFileImpl#getDatabaseFormat <em>Database Format</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

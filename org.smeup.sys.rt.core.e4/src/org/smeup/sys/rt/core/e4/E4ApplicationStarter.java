@@ -244,7 +244,7 @@ public class E4ApplicationStarter {
 			registerService(application, component, componentContext, serviceRef.getClassName(), service, dictionary, serviceRef.isRemoteExport());
 	}
 
-	public void registerService(QApplication application, QApplicationComponent component, QContext componentContext, String name, Object service, Dictionary<String, Object> properties,
+	private void registerService(QApplication application, QApplicationComponent component, QContext componentContext, String name, Object service, Dictionary<String, Object> properties,
 			boolean remoteExport) {
 
 		// Register component as service property
@@ -281,6 +281,7 @@ public class E4ApplicationStarter {
 			}
 		}
 
+		contextService.invoke(service, ServiceRegistering.class);
 		bundleContext.registerService(name, service, properties);
 
 		contextService.close();

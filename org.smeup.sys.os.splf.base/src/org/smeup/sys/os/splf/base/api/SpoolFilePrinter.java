@@ -19,6 +19,7 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.splf.QSpoolFile;
@@ -39,7 +40,7 @@ public @Program(name = "QASSPLFP") class SpoolFilePrinter {
 	@Main
 	public void main(@DataDef(length = 255) QCharacter spoolID) {
 
-		QResourceReader<QSpoolFile> spoolFileReader = resourceManager.getResourceReader(job, QSpoolFile.class, job.getSystem().getSystemLibrary());
+		QResourceReader<QSpoolFile> spoolFileReader = resourceManager.getResourceReader(job, QSpoolFile.class, Scope.SYSTEM_LIBRARY);
 		QSpoolFile spoolFile = spoolFileReader.lookup(spoolID.trimR());
 
 		if (spoolFile == null) {

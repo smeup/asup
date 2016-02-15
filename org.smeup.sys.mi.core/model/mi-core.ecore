@@ -40,8 +40,6 @@
   <eClassifiers xsi:type="ecore:EDataType" name="JavaProperties" instanceClassName="java.util.Properties"/>
   <eClassifiers xsi:type="ecore:EClass" name="JavaRunnable" instanceClassName="java.lang.Runnable"
       abstract="true" interface="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="JavaSerializable" instanceClassName="java.io.Serializable"
-      abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EDataType" name="JavaThrowable" instanceClassName="java.lang.Throwable"/>
   <eClassifiers xsi:type="ecore:EClass" name="JavaThread" instanceClassName="java.lang.Thread"
       abstract="true" interface="true"/>
@@ -53,6 +51,7 @@
   <eClassifiers xsi:type="ecore:EDataType" name="JavaURI" instanceClassName="java.net.URI"/>
   <eClassifiers xsi:type="ecore:EDataType" name="JavaURL" instanceClassName="java.net.URL"/>
   <eClassifiers xsi:type="ecore:EDataType" name="JavaWriter" instanceClassName="java.io.Writer"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaSerializable" instanceClassName="java.io.Serializable"/>
   <eSubpackages name="util" nsURI="http://www.smeup.org/asup/mi/core/util" nsPrefix="mi-core-util">
     <eClassifiers xsi:type="ecore:EClass" name="Files" abstract="true" interface="true">
       <eOperations name="getBaseName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">

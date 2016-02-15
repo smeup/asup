@@ -80,6 +80,7 @@ public class BaseResourceManagerImpl implements QResourceManager {
 		case CURRENT_LIBRARY:
 		case LIBRARY_LIST:
 		case USER_LIBRARY_LIST:
+		case SYSTEM_LIBRARY:
 		case ALL_USER:
 			return getResourceReader(contextProvider, klass, scope);
 		case OTHER:
@@ -98,6 +99,7 @@ public class BaseResourceManagerImpl implements QResourceManager {
 		case CURRENT_LIBRARY:
 		case LIBRARY_LIST:
 		case USER_LIBRARY_LIST:
+		case SYSTEM_LIBRARY:
 			return getResourceWriter(contextProvider, klass, scope);
 		case OTHER:
 			return getResourceWriter(contextProvider, klass, resource);
@@ -144,6 +146,9 @@ public class BaseResourceManagerImpl implements QResourceManager {
 		switch (scope) {
 		case CURRENT_LIBRARY:
 			resource = contextProvider.getContext().getContextDescription().getCurrentLibrary();
+			break;
+		case SYSTEM_LIBRARY:
+			resource = contextProvider.getContext().getContextDescription().getSystemLibrary();
 			break;
 		case ALL:
 		case ALL_USER:
@@ -198,12 +203,6 @@ public class BaseResourceManagerImpl implements QResourceManager {
 		
 		List<String> resources = new ArrayList<>();
 
-		if(contextProvider == null)
-			"".toCharArray();
-		if(contextProvider.getContext() == null)
-			"".toCharArray();
-		if(contextProvider.getContext().getContextDescription() == null)
-			"".toCharArray();
 		QContextDescription contextDescription = contextProvider.getContext().getContextDescription();
 		
 		// set scope libraries
@@ -230,6 +229,9 @@ public class BaseResourceManagerImpl implements QResourceManager {
 
 		case CURRENT_LIBRARY:
 			resources.add(contextDescription.getCurrentLibrary());
+			break;
+		case SYSTEM_LIBRARY:
+			resources.add(contextDescription.getSystemLibrary());
 			break;
 		case ALL_USER:
 		case OTHER:

@@ -107,8 +107,9 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SystemManager" abstract="true" interface="true">
-    <eOperations name="getSystem" eType="#//System"/>
-    <eOperations name="start" lowerBound="1" eType="#//jobs/Job"/>
+    <eOperations name="start" lowerBound="1" eType="#//jobs/Job">
+      <eParameters name="system" lowerBound="1" eType="#//System"/>
+    </eOperations>
     <eOperations name="stop"/>
     <eOperations name="registerListener">
       <eParameters name="listener" lowerBound="1" eType="#//SystemListener"/>
@@ -212,6 +213,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobCapability" abstract="true" interface="true">
       <eOperations name="getJobReference" lowerBound="1" eType="#//jobs/JobReference"/>
+      <eOperations name="getPort" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Capability">
         <eTypeArguments eClassifier="#//jobs/Job"/>
       </eGenericSuperTypes>
@@ -406,7 +408,7 @@
       <eLiterals name="System" value="10" literal="*SYS"/>
       <eLiterals name="Job" value="20" literal="*JOB"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="EnvironmentVariable" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable">
+    <eClassifiers xsi:type="ecore:EClass" name="EnvironmentVariable" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           iD="true">

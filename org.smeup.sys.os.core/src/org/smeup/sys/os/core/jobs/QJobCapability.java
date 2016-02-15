@@ -28,4 +28,12 @@ public interface QJobCapability extends QCapability<QJob> {
 	 * @generated
 	 */
 	QJobReference getJobReference();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	int getPort();
 } // QJobCapability

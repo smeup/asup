@@ -273,7 +273,7 @@ public class OperatingSystemEnvironmentPackageImpl extends EPackageImpl implemen
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		environmentVariableEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
+		environmentVariableEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(environmentVariableEClass, QEnvironmentVariable.class, "EnvironmentVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

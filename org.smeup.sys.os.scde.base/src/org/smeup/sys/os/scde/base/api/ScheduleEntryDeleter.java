@@ -9,6 +9,7 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.scde.QScheduleEntry;
 
@@ -29,7 +30,7 @@ public class ScheduleEntryDeleter {
 	public @Main void main(@DataDef(length = 10) QCharacter jobName,
 			@DataDef(length = 6) QEnum<ENTRYNUMBEREnum, QCharacter> entryNumber) {
 		
-		QResourceWriter<QScheduleEntry> resourceWriter = resourceManager.getResourceWriter(job, QScheduleEntry.class, job.getSystem().getSystemLibrary());
+		QResourceWriter<QScheduleEntry> resourceWriter = resourceManager.getResourceWriter(job, QScheduleEntry.class, Scope.SYSTEM_LIBRARY);
 
 		String entryName = jobName.asString().trim();
 		

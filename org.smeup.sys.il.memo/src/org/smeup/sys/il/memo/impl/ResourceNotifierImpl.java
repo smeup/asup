@@ -20,8 +20,6 @@ import org.smeup.sys.il.memo.QResourceNotifier;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>QResource Notifier</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

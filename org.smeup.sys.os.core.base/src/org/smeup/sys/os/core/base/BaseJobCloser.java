@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.os.core.e4;
+package org.smeup.sys.os.core.base;
 
 import java.util.Date;
 import java.util.Iterator;
@@ -18,13 +18,14 @@ import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobManager;
 
-public class E4JobCloser implements Runnable {
+public class BaseJobCloser implements Runnable {
 
-	private E4JobManagerImpl jobManager;
+	private QJobManager jobManager;
 	private QThreadManager threadManager;
 	
-	public E4JobCloser(QThreadManager threadManager, E4JobManagerImpl jobManager) {
+	public BaseJobCloser(QThreadManager threadManager, QJobManager jobManager) {
 		this.threadManager = threadManager;
 		this.jobManager = jobManager;
 	}

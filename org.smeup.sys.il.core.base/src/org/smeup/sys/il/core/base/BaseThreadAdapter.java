@@ -15,10 +15,9 @@ import java.lang.management.ThreadInfo;
 
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.ThreadStatus;
-import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.mi.core.util.QThreads;
 
-public class BaseThreadAdapter extends ObjectImpl implements QThread {
+public class BaseThreadAdapter implements QThread {
 
 	private static final long serialVersionUID = 1L;
 	private Thread thread;
@@ -91,10 +90,5 @@ public class BaseThreadAdapter extends ObjectImpl implements QThread {
 			return 0;
 
 		return threadTime.getCPUUsage();
-	}
-
-	@Override
-	public String qURI() {
-		return "asup://"+this.toString();
 	}
 }

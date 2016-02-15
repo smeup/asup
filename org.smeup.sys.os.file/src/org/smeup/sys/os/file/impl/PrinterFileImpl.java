@@ -27,10 +27,10 @@ import org.smeup.sys.os.file.QPrinterFileFormat;
  * <em><b>Printer File</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.impl.PrinterFileImpl#getPrinterFormats <em>Printer Formats</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

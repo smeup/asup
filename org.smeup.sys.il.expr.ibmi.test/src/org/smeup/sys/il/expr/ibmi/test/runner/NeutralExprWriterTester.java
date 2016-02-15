@@ -52,10 +52,7 @@ public class NeutralExprWriterTester {
 				preparedExpr = rpgExpressionWriter.writeExpression(expressionParser.parseExpression(expression));
 				
 				// Build normalized expr
-				String result = normalizedExpressionWriter.writeExpression(expressionParser.parseExpression(preparedExpr));
-				
-				// Parse normalized expr
-				testAsserter.message("Inp:" + preparedExpr + " Norm:" + result);
+				normalizedExpressionWriter.writeExpression(expressionParser.parseExpression(preparedExpr));
 				
 			} catch(Exception exc) {
 				testAsserter.fail("In: \"" + expression + "\" Norm: \"" + preparedExpr + "\" Error: \"" +exc.getMessage() + "\"");

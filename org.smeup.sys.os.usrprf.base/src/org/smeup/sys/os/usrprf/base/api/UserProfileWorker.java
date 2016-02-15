@@ -26,6 +26,7 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.usrprf.QUserProfile;
 
@@ -46,7 +47,7 @@ public class UserProfileWorker {
 			@DataDef(qualified = true) USERPROFILE userProfileName,
 			@DataDef(length = 10) QEnum<ASSISTANCELEVELEnum, QCharacter> assistanceLevel) {
 		
-		QResourceReader<QUserProfile> userProfileReader = resourceManager.getResourceReader(job, QUserProfile.class, job.getSystem().getSystemLibrary());
+		QResourceReader<QUserProfile> userProfileReader = resourceManager.getResourceReader(job, QUserProfile.class, Scope.SYSTEM_LIBRARY);
 		
 		QObjectWriter objectWriter = outputManager.getDefaultWriter(job.getContext());
 		objectWriter.initialize();

@@ -25,10 +25,10 @@ import org.smeup.sys.il.memo.QResourceHandler;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.memo.impl.ResourceHandlerImpl#getContextProvider <em>Context Provider</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -17,10 +17,10 @@ import org.smeup.sys.il.expr.QPredicateExpression;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.memo.QResourceReader#getNotifier <em>Notifier</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage#getResourceReader()
  * @model abstract="true"

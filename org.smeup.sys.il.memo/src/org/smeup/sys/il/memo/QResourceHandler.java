@@ -18,10 +18,10 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.memo.QResourceHandler#getContextProvider <em>Context Provider</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage#getResourceHandler()
  * @model abstract="true"

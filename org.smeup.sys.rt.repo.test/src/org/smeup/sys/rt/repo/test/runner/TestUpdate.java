@@ -31,7 +31,7 @@ import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.rt.core.QApplicationManager;
 
 @Test(category = "RT.REPO", object = "CheckUpdates")
-public class TestRestart {
+public class TestUpdate {
 		
 	private static final String REPOSITORY_LOC = "http://smeup.github.io/application-e4";
 //  private static final String REPOSITORY_LOC = "http://smeup.github.io/application-e4";

@@ -23,6 +23,7 @@ import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLog;
@@ -91,7 +92,7 @@ public class BaseJobLogManagerImpl implements QJobLogManager {
 				jobLog.getEntries().add(entry);
 
 				// save
-				QResourceWriter<QJobLog> jobLogWriter = resourceManager.getResourceWriter(job, QJobLog.class, job.getSystem().getSystemLibrary());
+				QResourceWriter<QJobLog> jobLogWriter = resourceManager.getResourceWriter(job, QJobLog.class, Scope.SYSTEM_LIBRARY);
 				jobLogWriter.save(jobLog, true);
 			}
 		};
@@ -121,7 +122,7 @@ public class BaseJobLogManagerImpl implements QJobLogManager {
 		if (jobTarget == null)
 			return null;
 
-		QResourceReader<QJobLog> jobLogReader = resourceManager.getResourceReader(jobCaller, QJobLog.class, jobCaller.getSystem().getSystemLibrary());
+		QResourceReader<QJobLog> jobLogReader = resourceManager.getResourceReader(jobCaller, QJobLog.class, Scope.SYSTEM_LIBRARY);
 		QJobLog jobLog = jobLogReader.lookup(jobTarget.getJobID());
 
 		return jobLog;

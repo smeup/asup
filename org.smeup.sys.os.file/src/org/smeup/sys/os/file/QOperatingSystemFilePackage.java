@@ -1451,7 +1451,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_OVERRIDE__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+	int FILE_OVERRIDE__NAME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>File To</b></em>' reference. <!--
@@ -1460,7 +1460,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_OVERRIDE__FILE_TO = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+	int FILE_OVERRIDE__FILE_TO = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Member To</b></em>' attribute. <!--
@@ -1469,7 +1469,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_OVERRIDE__MEMBER_TO = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+	int FILE_OVERRIDE__MEMBER_TO = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>File Override</em>' class.
@@ -1477,7 +1477,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_OVERRIDE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
+	int FILE_OVERRIDE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Application</b></em>' attribute. <!--

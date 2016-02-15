@@ -87,7 +87,7 @@ public class CDODataQueueManagerImpl implements QDataQueueManager {
 					throw new OperatingSystemRuntimeException("Queue write error: key not defined while writing in keyed queue " + library + "/" + name);
 
 			// Try to lock queue content (no wait for lock)
-			QObjectLocker<QDataQueueContent> contentLocker = lockManager.getLocker(job.getContext(), dataQueue.getContent());
+			QObjectLocker<QDataQueue> contentLocker = lockManager.getLocker(job.getContext(), dataQueue);
 			boolean locked = contentLocker.tryLock(LOCK_TIMER, LockType.WRITE);
 
 			if (locked) {
@@ -182,11 +182,11 @@ public class CDODataQueueManagerImpl implements QDataQueueManager {
 
 	private String readFifoLifo(QJob job, QDataQueue dataQueue, long timeout, boolean deleteElement) {
 
-		QObjectLocker<QDataQueueContent> contentLocker = lockManager.getLocker(job.getContext(), dataQueue.getContent());
+		QObjectLocker<QDataQueue> contentLocker = lockManager.getLocker(job.getContext(), dataQueue);
 		
 		String result = null;
 
-		if (timeout == 0 && contentLocker.isLockedByOther(LockType.READ) == false) {
+		if (timeout == 0 && contentLocker.isLocked(LockType.READ) == false) {
 
 			// If queue is not locked by others, read queue without wait time
 			contentLocker.lock(LockType.READ);
@@ -216,7 +216,7 @@ public class CDODataQueueManagerImpl implements QDataQueueManager {
 
 			Object syncObj = new Object();
 
-			while (contentLocker.isLockedByOther(LockType.READ))
+			while (contentLocker.isLocked(LockType.READ))
 				synchronized (syncObj) {
 					try {
 						syncObj.wait(TIMER_STEP);
@@ -228,7 +228,7 @@ public class CDODataQueueManagerImpl implements QDataQueueManager {
 					}
 				}
 
-			if (timer > 0 && contentLocker.isLockedByOther(LockType.READ) == false) {
+			if (timer > 0 && contentLocker.isLocked(LockType.READ) == false) {
 
 				// Lock queue contain reading
 				contentLocker.lock(LockType.READ);
@@ -303,11 +303,11 @@ public class CDODataQueueManagerImpl implements QDataQueueManager {
 	 */
 	private String readKeyed(QJob job, QDataQueue dataQueue, long timeout, boolean deleteElement, String key, DataQueueSearchType searchType) {
 
-		QObjectLocker<QDataQueueContent> contentLocker = lockManager.getLocker(job.getContext(), dataQueue.getContent());
+		QObjectLocker<QDataQueue> contentLocker = lockManager.getLocker(job.getContext(), dataQueue);
 		
 		String result = null;
 
-		if (timeout == 0 && contentLocker.isLockedByOther(LockType.READ) == false) {
+		if (timeout == 0 && contentLocker.isLocked(LockType.READ) == false) {
 
 			// Read queue without wait time
 
@@ -338,7 +338,7 @@ public class CDODataQueueManagerImpl implements QDataQueueManager {
 			long timer = timeout == -1 ? Long.MAX_VALUE : timeout;
 
 			// Queue contain already locked: wait for unlock
-			while (contentLocker.isLockedByOther(LockType.READ))
+			while (contentLocker.isLocked(LockType.READ))
 				try {
 					wait(TIMER_STEP);
 					timer = timer - TIMER_STEP;
@@ -348,7 +348,7 @@ public class CDODataQueueManagerImpl implements QDataQueueManager {
 					e.printStackTrace();
 				}
 
-			if (timer > 0 && contentLocker.isLockedByOther(LockType.READ) == false) {
+			if (timer > 0 && contentLocker.isLocked(LockType.READ) == false) {
 
 				// Lock queue contain reading
 				contentLocker.lock(LockType.READ);

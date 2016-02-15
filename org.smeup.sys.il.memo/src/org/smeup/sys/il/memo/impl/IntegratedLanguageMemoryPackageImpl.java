@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
@@ -157,7 +156,6 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		// Initialize simple dependencies
 		QIntegratedLanguageExpressionPackage.eINSTANCE.eClass();
 		QIntegratedLanguageDataDefPackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 		QIntegratedLanguageDataTermPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -664,6 +662,7 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		addEEnumLiteral(scopeEEnum, Scope.CURRENT_LIBRARY);
 		addEEnumLiteral(scopeEEnum, Scope.USER_LIBRARY_LIST);
 		addEEnumLiteral(scopeEEnum, Scope.ALL_USER);
+		addEEnumLiteral(scopeEEnum, Scope.SYSTEM_LIBRARY);
 		addEEnumLiteral(scopeEEnum, Scope.OTHER);
 
 		// Create resource

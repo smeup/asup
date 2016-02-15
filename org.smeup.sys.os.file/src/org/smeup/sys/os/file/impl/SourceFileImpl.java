@@ -18,10 +18,10 @@ import org.smeup.sys.os.file.QSourceFile;
  * <em><b>Source File</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.impl.SourceFileImpl#getFileType <em>File Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

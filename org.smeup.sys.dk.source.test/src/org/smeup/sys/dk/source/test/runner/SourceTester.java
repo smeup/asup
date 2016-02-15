@@ -18,7 +18,6 @@ import javax.inject.Inject;
 import org.smeup.sys.dk.source.QDevelopmentKitSourceFactory;
 import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QProjectDef;
-import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.QTestRunner;
@@ -58,8 +57,8 @@ public class SourceTester {
 		QApplicationComponent applicationComponent = QRuntimeCoreFactory.eINSTANCE.createApplicationComponent();
 		applicationComponent.setName("test");
 		
-		QSourceEntry objectEntry = sourceManager.createObjectEntry(context, project.getName(), QApplicationComponent.class, "test", true, applicationComponent);
-		testAsserter.assertNotNull("Test sourceEntry creation", objectEntry);
+//		QSourceEntry objectEntry = sourceManager.createObjectEntry(context, project.getName(), QApplicationComponent.class, "test", true, applicationComponent);
+//		testAsserter.assertNotNull("Test sourceEntry creation", objectEntry);
 
 	}
 }

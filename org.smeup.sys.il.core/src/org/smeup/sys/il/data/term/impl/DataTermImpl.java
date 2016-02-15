@@ -537,17 +537,6 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 		return dataTermType;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String qURI() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 	private DataTermType getDataTermType(QDataDef<?> dataDef) {
 		DataTermType dataTermType = null;
 

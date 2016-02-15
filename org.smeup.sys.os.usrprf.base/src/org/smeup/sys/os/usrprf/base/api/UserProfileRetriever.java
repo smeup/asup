@@ -22,6 +22,7 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.usrprf.QUserProfile;
@@ -61,7 +62,7 @@ public class UserProfileRetriever {
 			@ToDo @DataDef(precision = 10) QDecimal cLVarForUID100, @ToDo @DataDef(precision = 10) QDecimal cLVarForGID100, @ToDo @DataDef(length = 160) QCharacter cLVarForSETJOBATR160,
 			@ToDo @DataDef(length = 10) QCharacter cLVarForCHRIDCTL10, @ToDo @DataDef(length = 10) QCharacter cLVarForLCLPWDMGT10, @ToDo @DataDef(length = 10) QCharacter cLVarForPWDCHGBLK10) {
 
-		QResourceReader<QUserProfile> resourceReader = resourceManager.getResourceReader(job, QUserProfile.class, job.getSystem().getSystemLibrary());
+		QResourceReader<QUserProfile> resourceReader = resourceManager.getResourceReader(job, QUserProfile.class, Scope.SYSTEM_LIBRARY);
 
 		QUserProfile qUserProfile = null;
 		switch (userProfile.asEnum()) {

@@ -27,7 +27,6 @@ import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QExceptionManager;
-import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.lib.LibraryType;
 import org.smeup.sys.os.lib.QLibrary;
@@ -40,8 +39,6 @@ public class LibraryCreator {
 		CPF2111
 	}
 
-	@Inject
-	private QSystemManager systemManager;
 	@Inject
 	private QResourceManager resourceManager;
 	@Inject
@@ -56,7 +53,7 @@ public class LibraryCreator {
 			@DataDef(length = 10) QEnum<CreateAuthorityEnum, QCharacter> createAuthority, @DataDef(length = 10) QEnum<CreateObjectAuditingEnum, QCharacter> createObjectAuditing,
 			@Supported @DataDef(length = 1) QEnum<SYNCHRONIZEDLIBEnum, QCharacter> synchronizedLib) {
 
-		QResourceWriter<QLibrary> libraryWriter = resourceManager.getResourceWriter(job, QLibrary.class, systemManager.getSystem().getSystemLibrary());
+		QResourceWriter<QLibrary> libraryWriter = resourceManager.getResourceWriter(job, QLibrary.class, job.getSystem().getSystemLibrary());
 
 		if (libraryWriter.exists(library.trimR()))
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF2111, new String[] { library.trimR() });
