@@ -10,24 +10,29 @@ package org.smeup.sys.co.osgi.ecf.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.smeup.sys.co.osgi.ecf.ECFConnectorOSGIPackage;
 import org.smeup.sys.co.osgi.ecf.ECFServerContainerConfig;
+import org.smeup.sys.il.core.impl.ObjectImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>ECF Server Container Config</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.co.osgi.ecf.impl.ECFServerContainerConfigImpl#getServerContainerType <em>Server Container Type</em>}</li>
  *   <li>{@link org.smeup.sys.co.osgi.ecf.impl.ECFServerContainerConfigImpl#getContainerId <em>Container Id</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class ECFServerContainerConfigImpl extends MinimalEObjectImpl.Container implements ECFServerContainerConfig {
+public class ECFServerContainerConfigImpl extends ObjectImpl implements ECFServerContainerConfig {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getServerContainerType() <em>Server Container Type</em>}' attribute.

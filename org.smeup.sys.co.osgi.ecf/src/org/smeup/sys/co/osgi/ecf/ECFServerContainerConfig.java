@@ -7,23 +7,25 @@
  */
 package org.smeup.sys.co.osgi.ecf;
 
+import org.smeup.sys.il.core.QObject;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>ECF Server Container Config</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.co.osgi.ecf.ECFServerContainerConfig#getServerContainerType <em>Server Container Type</em>}</li>
  *   <li>{@link org.smeup.sys.co.osgi.ecf.ECFServerContainerConfig#getContainerId <em>Container Id</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.co.osgi.ecf.ECFConnectorOSGIPackage#getECFServerContainerConfig()
  * @model
  * @generated
  */
-public interface ECFServerContainerConfig {
+public interface ECFServerContainerConfig extends QObject {
 	/**
 	 * Returns the value of the '<em><b>Server Container Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->

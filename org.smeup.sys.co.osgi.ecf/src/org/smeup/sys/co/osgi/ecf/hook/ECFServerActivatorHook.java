@@ -16,7 +16,6 @@ import java.util.Dictionary;
 import javax.inject.Named;
 
 import org.eclipse.ecf.osgi.services.distribution.IDistributionConstants;
-import org.smeup.sys.co.core.ConnectorCoreHelper;
 import org.smeup.sys.co.osgi.ecf.ECFServerContainerConfig;
 import org.smeup.sys.rt.core.ServiceRegistering;
 
@@ -33,7 +32,7 @@ public class ECFServerActivatorHook {
 		if (remoteExport) {
 			properties.put(IDistributionConstants.SERVICE_EXPORTED_INTERFACES, IDistributionConstants.SERVICE_EXPORTED_INTERFACES_WILDCARD);
 			properties.put(IDistributionConstants.SERVICE_EXPORTED_CONFIGS, config.getServerContainerType());
-			properties.put(IDistributionConstants.SERVICE_EXPORTED_CONTAINER_FACTORY_ARGUMENTS, ConnectorCoreHelper.resolveVariables(config.getContainerId()));
+//			properties.put(IDistributionConstants.SERVICE_EXPORTED_CONTAINER_FACTORY_ARGUMENTS, ConnectorCoreHelper.resolveVariables(config.getContainerId()));
 		}
 	}
 

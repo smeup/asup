@@ -10,6 +10,7 @@ package org.smeup.sys.co.osgi.ecf;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -76,7 +77,7 @@ public interface ECFConnectorOSGIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECF_SERVER_CONTAINER_CONFIG__SERVER_CONTAINER_TYPE = 0;
+	int ECF_SERVER_CONTAINER_CONFIG__SERVER_CONTAINER_TYPE = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Container Id</b></em>' attribute.
@@ -85,7 +86,7 @@ public interface ECFConnectorOSGIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECF_SERVER_CONTAINER_CONFIG__CONTAINER_ID = 1;
+	int ECF_SERVER_CONTAINER_CONFIG__CONTAINER_ID = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>ECF Server Container Config</em>' class.
@@ -94,7 +95,7 @@ public interface ECFConnectorOSGIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECF_SERVER_CONTAINER_CONFIG_FEATURE_COUNT = 2;
+	int ECF_SERVER_CONTAINER_CONFIG_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 
 	/**

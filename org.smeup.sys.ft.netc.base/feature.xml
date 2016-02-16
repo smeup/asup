@@ -17,6 +17,10 @@
       [Enter License Description here.]
    </license>
 
+   <includes
+         id="org.smeup.sys.ft.eclipse.ecf"
+         version="0.0.0"/>
+
    <plugin
          id="org.smeup.sys.co.core"
          download-size="0"
@@ -40,6 +44,20 @@
 
    <plugin
          id="org.smeup.sys.co.shell.base"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.co.osgi.ecf"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.co.osgi"
          download-size="0"
          install-size="0"
          version="0.0.0"

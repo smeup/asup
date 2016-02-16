@@ -287,9 +287,10 @@ public abstract class E4ContextImpl extends ContextImpl {
 
 	@Override
 	public QContext createChildContext(QContextDescription contextDescription) {
-		return createLocalContext(contextDescription);
+		return createRemoteContext(contextDescription);
 	}
 
+	@SuppressWarnings("unused")
 	private QContext createLocalContext(QContextDescription contextDescription) {
 
 		IEclipseContext eclipseChildContext = getEclipseContext().createChild();
@@ -301,31 +302,30 @@ public abstract class E4ContextImpl extends ContextImpl {
 		return contextChild;
 	}
 
-	@SuppressWarnings("unused")
 	private QContext createRemoteContext(QContextDescription contextDescription) {
 
 		IEclipseContext eclipseChildContext = getEclipseContext().createChild();
 
 		// bind remote service
 		try {
-			for (ServiceReference<?> serviceReference : bundleContext.getAllServiceReferences(null, null))
-				if (serviceReference.getProperty(Constants.SERVICE_IMPORTED) != null) {
+			for (ServiceReference<?> serviceReference : bundleContext.getAllServiceReferences(null, null)) {
+				if (serviceReference.getProperty(Constants.SERVICE_IMPORTED) == null)
+					continue;
 
-					Object object = null;
-					String className = ((String[]) serviceReference.getProperty("objectClass"))[0];
+				Object object = null;
+				String className = ((String[]) serviceReference.getProperty("objectClass"))[0];
+				
+				for (Bundle bundle : bundleContext.getBundles())
+					if (className.startsWith(bundle.getSymbolicName())) {
 
-					for (Bundle bundle : bundleContext.getBundles())
-						if (className.startsWith(bundle.getSymbolicName())) {
-							if (bundle.getSymbolicName().equals("org.asup.os.type"))
-								continue;
-							object = bundle.getBundleContext().getService(serviceReference);
-							if (object == null)
-								continue;
+						object = bundle.getBundleContext().getService(serviceReference);
+						if (object == null)
+							continue;
 
-							eclipseChildContext.set(className, object);
-							break;
-						}
-				}
+						eclipseChildContext.set(className, object);
+						break;
+					}
+			}
 		} catch (InvalidSyntaxException e) {
 			throw new RuntimeException(e);
 		}
@@ -391,12 +391,12 @@ public abstract class E4ContextImpl extends ContextImpl {
 
 	@Override
 	public List<String> resolveAliases(List<String> values) {
-		
+
 		List<String> newValues = new ArrayList<String>();
 
-		for(String value:values)
+		for (String value : values)
 			newValues.add(resolveAlias(value));
-			
+
 		return newValues;
 	}
 }

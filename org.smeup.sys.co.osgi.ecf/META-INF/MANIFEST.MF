@@ -7,6 +7,7 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.smeup.sys.co.osgi.ecf,
+ org.smeup.sys.co.osgi.ecf.hook,
  org.smeup.sys.co.osgi.ecf.impl
 Require-Bundle: org.eclipse.equinox.common,
  org.eclipse.core.runtime,
@@ -14,12 +15,14 @@ Require-Bundle: org.eclipse.equinox.common,
  org.smeup.sys.co.osgi;visibility:=reexport,
  org.smeup.sys.rt.core;visibility:=reexport,
  org.smeup.sys.il.core;visibility:=reexport,
+ org.smeup.sys.mi.core;visibility:=reexport,
  org.eclipse.ecf,
  org.eclipse.ecf.osgi.services.distribution,
  org.eclipse.ecf.osgi.services.remoteserviceadmin,
  org.eclipse.ecf.remoteservice.asyncproxy,
+ org.eclipse.ecf.sharedobject,
  org.eclipse.ecf.server.generic,
- org.eclipse.ecf.sharedobject
+ org.eclipse.ecf.provider.filetransfer
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.osgi.framework,

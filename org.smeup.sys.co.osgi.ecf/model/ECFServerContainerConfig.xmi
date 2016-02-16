@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<co-osgi-ecf:ECFServerContainerConfig
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:co-osgi-ecf="http://www.smeup.org/asup/co/osgi/ecf"
+    xsi:schemaLocation="http://www.smeup.org/asup/co/osgi/ecf co-osgi-ecf.ecore"
+    serverContainerType="ecf.generic.server"
+    containerId="ecftcp://${ip}:3773/server"/>

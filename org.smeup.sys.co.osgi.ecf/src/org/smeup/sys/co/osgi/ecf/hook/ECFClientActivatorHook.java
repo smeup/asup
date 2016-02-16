@@ -21,6 +21,7 @@ import java.util.Properties;
 import javax.inject.Inject;
 
 import org.eclipse.ecf.core.ContainerCreateException;
+import org.eclipse.ecf.core.IContainerFactory;
 import org.eclipse.ecf.server.generic.GenericServerContainerGroupCreateException;
 import org.eclipse.ecf.server.generic.IGenericServerContainerGroupFactory;
 import org.osgi.framework.BundleContext;
@@ -28,6 +29,7 @@ import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.remoteserviceadmin.EndpointDescription;
 import org.osgi.service.remoteserviceadmin.EndpointEvent;
 import org.osgi.service.remoteserviceadmin.EndpointEventListener;
+import org.osgi.util.tracker.ServiceTracker;
 import org.smeup.sys.co.osgi.QCommunicationManager;
 import org.smeup.sys.co.osgi.ecf.impl.ECFCommunicationManagerImpl;
 import org.smeup.sys.rt.core.ApplicationStarting;
@@ -53,6 +55,9 @@ public class ECFClientActivatorHook {
 		QCommunicationManager communicationManager = new ECFCommunicationManagerImpl();
 		bundleContext.registerService(QCommunicationManager.class, communicationManager, null);
 
+		IContainerFactory containerFactory = getContainerFactory(bundleContext);
+		containerFactory.createContainer("ecf.generic.client");
+		
 		/*
 		 * IGenericServerContainerGroup containerGroup =
 		 * genericServerFactory.createContainerGroup("192.168.42.34",3797);
@@ -62,6 +67,13 @@ public class ECFClientActivatorHook {
 		 */
 	}
 
+	private IContainerFactory getContainerFactory(BundleContext bundleContext) {
+
+		ServiceTracker<Object, Object> containerFactoryServiceTracker = new ServiceTracker<Object, Object>(bundleContext, IContainerFactory.class.getName(), null);
+		containerFactoryServiceTracker.open();
+		return (IContainerFactory) containerFactoryServiceTracker.getService();
+	}
+	
 	public static List<EndpointDescription> getEndPoints() {
 		return endpointListener.getEndpointDescriptions();
 	}

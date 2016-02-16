@@ -14,6 +14,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.co.osgi.ecf.ECFConnectorOSGIFactory;
 import org.smeup.sys.co.osgi.ecf.ECFConnectorOSGIPackage;
 import org.smeup.sys.co.osgi.ecf.ECFServerContainerConfig;
+import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -74,6 +76,10 @@ public class ECFConnectorOSGIPackageImpl extends EPackageImpl implements ECFConn
 		ECFConnectorOSGIPackageImpl theECFConnectorOSGIPackage = (ECFConnectorOSGIPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ECFConnectorOSGIPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ECFConnectorOSGIPackageImpl());
 
 		isInited = true;
+
+		// Initialize simple dependencies
+		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theECFConnectorOSGIPackage.createPackageContents();
@@ -173,11 +179,15 @@ public class ECFConnectorOSGIPackageImpl extends EPackageImpl implements ECFConn
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		ecfServerContainerConfigEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(ecfServerContainerConfigEClass, ECFServerContainerConfig.class, "ECFServerContainerConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
