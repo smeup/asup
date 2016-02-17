@@ -8,6 +8,7 @@
 package org.smeup.sys.il.core.ctx;
 
 import org.eclipse.emf.ecore.EFactory;
+import org.smeup.sys.il.core.QObject;
 
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
@@ -23,6 +24,15 @@ public interface QIntegratedLanguageCoreCtxFactory extends EFactory {
 	 * @generated
 	 */
 	QIntegratedLanguageCoreCtxFactory eINSTANCE = org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxFactoryImpl.init();
+
+	/**
+	 * Returns a new object of class '<em>Identity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Identity</em>'.
+	 * @generated
+	 */
+	<T extends QObject> QIdentity<T> createIdentity();
 
 	/**
 	 * Returns the package supported by this factory.

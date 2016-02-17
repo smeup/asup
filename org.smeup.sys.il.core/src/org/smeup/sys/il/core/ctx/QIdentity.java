@@ -18,7 +18,7 @@ import org.smeup.sys.il.core.QObject;
  *
  *
  * @see org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage#getIdentity()
- * @model interface="true" abstract="true"
+ * @model
  * @generated
  */
 public interface QIdentity<T extends QObject> extends QObject {

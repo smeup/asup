@@ -159,10 +159,10 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	int CONTEXT_PROVIDER_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.QIdentity <em>Identity</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.impl.IdentityImpl <em>Identity</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.ctx.QIdentity
+	 * @see org.smeup.sys.il.core.ctx.impl.IdentityImpl
 	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getIdentity()
 	 * @generated
 	 */
@@ -350,10 +350,10 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 		EAttribute CAPABILITY__RIGHTS = eINSTANCE.getCapability_Rights();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.QIdentity <em>Identity</em>}' class.
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.impl.IdentityImpl <em>Identity</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.core.ctx.QIdentity
+		 * @see org.smeup.sys.il.core.ctx.impl.IdentityImpl
 		 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getIdentity()
 		 * @generated
 		 */

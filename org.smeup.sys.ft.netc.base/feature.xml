@@ -29,13 +29,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.smeup.sys.co.core.base"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.smeup.sys.co.shell"
          download-size="0"
          install-size="0"
@@ -58,6 +51,34 @@
 
    <plugin
          id="org.smeup.sys.co.osgi"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.os.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.os.cmd"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.os.type"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.dk.core"
          download-size="0"
          install-size="0"
          version="0.0.0"

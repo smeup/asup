@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.ctx.*;
 
 /**
@@ -57,6 +58,7 @@ public class IntegratedLanguageCoreCtxFactoryImpl extends EFactoryImpl implement
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case QIntegratedLanguageCoreCtxPackage.IDENTITY: return (EObject)createIdentity();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -88,6 +90,16 @@ public class IntegratedLanguageCoreCtxFactoryImpl extends EFactoryImpl implement
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public <T extends QObject> QIdentity<T> createIdentity() {
+		IdentityImpl<T> identity = new IdentityImpl<T>();
+		return identity;
 	}
 
 	/**

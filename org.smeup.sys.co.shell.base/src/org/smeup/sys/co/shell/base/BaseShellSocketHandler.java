@@ -39,13 +39,9 @@ public class BaseShellSocketHandler implements Runnable {
 
 	private Socket socket;
 	private QJobCapability jobCapability;
-	
-	private static String WELCOME = 
-			  "------------------------------------------\n" 
-	        + "Welcome to the As.UP console\n\n" 
-			+ "Type your user name to login\n\n"
-			+ "Type SIGNOFF to disconnect from console\n" 
-			+ "------------------------------------------\n";
+
+	private static String WELCOME = "------------------------------------------\n" + "Welcome to the As.UP console\n\n" + "Type your user name to login\n\n"
+			+ "Type SIGNOFF to disconnect from console\n" + "------------------------------------------\n";
 
 	private static String LOGIN = "login> ";
 
@@ -55,9 +51,9 @@ public class BaseShellSocketHandler implements Runnable {
 
 	@Override
 	public void run() {
-		
+
 		BufferedReader bufferedReader = null;
-		
+
 		try {
 
 			OutputStreamWriter outputStreamWriter = new OutputStreamWriter(this.socket.getOutputStream());
@@ -67,37 +63,39 @@ public class BaseShellSocketHandler implements Runnable {
 
 			bufferedReader = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
 
-			boolean nextLoop = true;
-			while (nextLoop) {
+			while (true) {
 
 				String request = bufferedReader.readLine();
 
 				// hello
 				if (request.equalsIgnoreCase("HELLO")) {
 					outputStreamWriter.write(WELCOME);
+				} else if (request.equalsIgnoreCase("QUIT") || request.equalsIgnoreCase("EXIT") || request.equalsIgnoreCase("SIGNOFF")) {
+					break;
 				} else {
 					try {
-						if (jobCapability == null) {
+						if (jobCapability == null)
 							login(outputStreamWriter, request);
-						} else {
-							nextLoop = executeCommand(request);
-						}
+						else
+							shellManager.executeCommand(jobCapability, request, null);
 					} catch (Exception e) {
 						if (e.getCause() == null)
-							outputStreamWriter.write(e + "\n");
+							outputStreamWriter.write(e.getMessage() + "\n");
 						else
-							outputStreamWriter.write(e.getCause() + "\n");
+							outputStreamWriter.write(e.getCause().getMessage() + "\n");
 					}
 				}
-				
+
 				writePrompt(outputStreamWriter);
 
 				outputStreamWriter.flush();
 			}
 
 			if (jobCapability != null) {
+				shellManager.disconnect(jobCapability);
 				shellOutputWrapper.unregister(jobCapability.getObjectName());
-				jobCapability = null;				
+				
+				jobCapability = null;
 			}
 
 			outputStreamWriter.write("\nGoodbye\n");
@@ -111,20 +109,24 @@ public class BaseShellSocketHandler implements Runnable {
 				}
 				this.socket.close();
 			} catch (Exception e) {
-			}			
+			}
 		}
 	}
 
-	private void login(OutputStreamWriter outputStreamWriter, String request) {
+	private void login(OutputStreamWriter outputStreamWriter, String request) throws IOException {
 		QIdentity<?> identity = authenticate(request);
-		 
+
 		jobCapability = shellManager.connect(identity);
+		if(jobCapability == null) {
+			outputStreamWriter.write("Invalid jobCapability, jobManager not found\n");
+			return ;
+		}
 		
 		shellOutputWrapper.register(jobCapability.getObjectName(), outputStreamWriter);
 		shellManager.setDefaultWriter(jobCapability, "S");
 	}
 
-	private void writePrompt(OutputStreamWriter outputStreamWriter)	throws IOException {
+	private void writePrompt(OutputStreamWriter outputStreamWriter) throws IOException {
 		if (jobCapability != null)
 			outputStreamWriter.write(jobCapability.getJobReference().getJobUser().toLowerCase() + "> ");
 		else
@@ -134,7 +136,7 @@ public class BaseShellSocketHandler implements Runnable {
 	private QIdentity<QAuthentication> authenticate(String command) {
 
 		// retrieve user
-//		command = cleanup(command);
+		// command = cleanup(command);
 
 		String tokens[] = command.split(" ");
 
@@ -143,7 +145,7 @@ public class BaseShellSocketHandler implements Runnable {
 		case 1:
 			credentials.setUser(tokens[0]);
 			break;
-		case 2:		
+		case 2:
 			credentials.setUser(tokens[0]);
 			credentials.setPassword(tokens[1]);
 			break;
@@ -152,32 +154,8 @@ public class BaseShellSocketHandler implements Runnable {
 
 		}
 		System.out.println("Connection request for user " + credentials.getUser());
-		
+
 		// connect
 		return authenticationManager.authenticate(credentials);
-	}
-
-	@SuppressWarnings("unused")
-	private String cleanup(String command) {
-		//Solves the problem of the first connection from Windows machines
-		return command.toUpperCase().replaceAll("[^A-Z0-9§$£_]", "");
-	}
-
-	private boolean executeCommand(String command) {
-		boolean nextLoop = true;
-		if (command == null || command.trim().length() == 0) {
-			return nextLoop;
-		}
-		
-		if (command.equalsIgnoreCase("QUIT") || command.equalsIgnoreCase("EXIT")) {
-			nextLoop = false;
-			command = "SIGNOFF";
-		}
-		
-		System.out.println("Executing " + command + "...");
-		shellManager.executeCommand(jobCapability, command, null);
-		System.out.println(command + " terminated");
-		
-		return nextLoop;
 	}
 }

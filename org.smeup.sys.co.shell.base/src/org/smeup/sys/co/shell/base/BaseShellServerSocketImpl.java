@@ -12,6 +12,7 @@
 package org.smeup.sys.co.shell.base;
 
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
@@ -38,7 +39,7 @@ public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
 		this.application = application;
 		this.threadManager = threadManager;
 		this.config = config;
-		
+
 		QThread thread = threadManager.createThread("telnet", this);
 		threadManager.start(thread);
 	}
@@ -61,29 +62,38 @@ public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
 
 				BaseShellSocketHandler shellHandler = new BaseShellSocketHandler(socket);
 				QContext connectionContext = application.getContext().createChildContext(shellHandler.toString());
-				connectionContext.inject(shellHandler);
 
+				try {			
+					connectionContext.inject(shellHandler);
+				} catch (Exception e) {
+					OutputStreamWriter outputStreamWriter = new OutputStreamWriter(socket.getOutputStream());
+					outputStreamWriter.write(e.getMessage());
+					outputStreamWriter.flush();
+					socket.close();
+					continue;
+				}
+				
 				// start thread handler
 				QThread thread = threadManager.createThread("telnet/" + socket.getRemoteSocketAddress(), shellHandler);
-				threadManager.start(thread);				
+				threadManager.start(thread);
 			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			
+
 			try {
 				socket.close();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			
+
 			try {
 				serverSocket.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+
 			serverSocket = null;
 		}
 	}

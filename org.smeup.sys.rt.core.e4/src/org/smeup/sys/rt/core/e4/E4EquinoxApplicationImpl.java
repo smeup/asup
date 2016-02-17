@@ -32,6 +32,7 @@ import org.smeup.sys.rt.core.QRuntimeCorePackage;
 public class E4EquinoxApplicationImpl implements IApplication {
 
 	private QApplication application = null;
+	private QApplicationManager applicationManager;
 
 	@Override
 	public Object start(IApplicationContext context) throws Exception {
@@ -77,22 +78,20 @@ public class E4EquinoxApplicationImpl implements IApplication {
 		BundleContext bundleContext = FrameworkUtil.getBundle(QApplication.class).getBundleContext();
 		ServiceReference<QApplicationManager> applicationManagerReference = bundleContext.getServiceReference(QApplicationManager.class);
 
-		QApplicationManager applicationManager = bundleContext.getService(applicationManagerReference);
+		applicationManager = bundleContext.getService(applicationManagerReference);
 		applicationManager.start(application, System.out);
 		
-		return waitForStopOrRestart(applicationManager);
+		return waitForStopOrRestart();
 	}
 
-	private Object waitForStopOrRestart(QApplicationManager applicationManager) {
-		for(;;) {
+	private Object waitForStopOrRestart() {
+		while(true) {
 			try {
-			    TimeUnit.SECONDS.sleep(100);
-			    if (applicationManager.restartCalled()) {
+			    TimeUnit.MILLISECONDS.sleep(1000);
+			    if (applicationManager.restartCalled()) 
 			    	return EXIT_RESTART;
-			    }
-			    if (applicationManager.stopCalled()) {
+			    if (applicationManager.stopCalled()) 
 			    	return EXIT_OK;
-			    }
 			} catch (InterruptedException e) {
 			}
 		}
@@ -101,6 +100,7 @@ public class E4EquinoxApplicationImpl implements IApplication {
 	@Override
 	public void stop() {
 		System.out.println("Stopping " + application.getText());
+		applicationManager.stop();
 	}
 
 }

@@ -70,6 +70,9 @@ public class BaseShellManagerImpl implements QShellManager {
 	public QJobCapability connect(QIdentity<?> identity) {
 		
 		QJobManager jobManager = locate();
+		if(jobManager == null)
+			return null;
+		
 		return jobManager.create(identity);
 	}
 

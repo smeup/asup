@@ -308,8 +308,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="ContextProvider" abstract="true" interface="true">
       <eOperations name="getContext" lowerBound="1" eType="#//ctx/Context"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Identity" abstract="true" interface="true"
-        eSuperTypes="#//Object">
+    <eClassifiers xsi:type="ecore:EClass" name="Identity" eSuperTypes="#//Object">
       <eTypeParameters name="T">
         <eBounds eClassifier="#//Object"/>
       </eTypeParameters>
