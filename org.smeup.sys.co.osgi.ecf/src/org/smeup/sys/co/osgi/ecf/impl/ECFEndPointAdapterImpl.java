@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.osgi.service.remoteserviceadmin.EndpointDescription;
-import org.smeup.sys.co.osgi.QEndPoint;
+import org.smeup.sys.co.core.QEndPoint;
 
 public class ECFEndPointAdapterImpl implements QEndPoint {
 

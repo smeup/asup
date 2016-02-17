@@ -9,17 +9,24 @@ package org.smeup.sys.co.core.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.co.core.QCommunicationCoreFactory;
 import org.smeup.sys.co.core.QCommunicationCorePackage;
+import org.smeup.sys.co.core.QCommunicationManager;
+import org.smeup.sys.co.core.QEndPoint;
 import org.smeup.sys.co.core.QOutputWrapper;
 import org.smeup.sys.co.core.QServerSocket;
 import org.smeup.sys.co.core.QServerSocketConfig;
 import org.smeup.sys.co.core.QServerSocketManager;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
+import org.smeup.sys.os.core.QOperatingSystemCorePackage;
+import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -55,6 +62,20 @@ public class CommunicationCorePackageImpl extends EPackageImpl implements QCommu
 	 * @generated
 	 */
 	private EClass serverSocketManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass communicationManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass endPointEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -103,7 +124,7 @@ public class CommunicationCorePackageImpl extends EPackageImpl implements QCommu
 		isInited = true;
 
 		// Initialize simple dependencies
-		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
+		QOperatingSystemCorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theCommunicationCorePackage.createPackageContents();
@@ -179,6 +200,24 @@ public class CommunicationCorePackageImpl extends EPackageImpl implements QCommu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getCommunicationManager() {
+		return communicationManagerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEndPoint() {
+		return endPointEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public QCommunicationCoreFactory getCommunicationCoreFactory() {
 		return (QCommunicationCoreFactory)getEFactoryInstance();
 	}
@@ -211,6 +250,10 @@ public class CommunicationCorePackageImpl extends EPackageImpl implements QCommu
 		serverSocketEClass = createEClass(SERVER_SOCKET);
 
 		serverSocketManagerEClass = createEClass(SERVER_SOCKET_MANAGER);
+
+		communicationManagerEClass = createEClass(COMMUNICATION_MANAGER);
+
+		endPointEClass = createEClass(END_POINT);
 	}
 
 	/**
@@ -239,6 +282,8 @@ public class CommunicationCorePackageImpl extends EPackageImpl implements QCommu
 		// Obtain other dependent packages
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
+		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
+		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -279,6 +324,48 @@ public class CommunicationCorePackageImpl extends EPackageImpl implements QCommu
 
 		op = addEOperation(serverSocketManagerEClass, null, "startServerSocket", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getServerSocketConfig(), "config", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(communicationManagerEClass, QCommunicationManager.class, "CommunicationManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(communicationManagerEClass, this.getEndPoint(), "find", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(communicationManagerEClass, this.getEndPoint(), "lookup", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "endPointID", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(communicationManagerEClass, theOperatingSystemJobsPackage.getJobCapability(), "connect", 1, 1, IS_UNIQUE, IS_ORDERED);
+		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getIdentity());
+		EGenericType g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "identity", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(communicationManagerEClass, null, "disconnect", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(communicationManagerEClass, null, "locate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		ETypeParameter t1 = addETypeParameter(op, "S");
+		g1 = createEGenericType(ecorePackage.getEJavaObject());
+		t1.getEBounds().add(g1);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		initEOperation(op, g1);
+
+		initEClass(endPointEClass, QEndPoint.class, "EndPoint", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(endPointEClass, ecorePackage.getEString(), "getApplicationID", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(endPointEClass, ecorePackage.getEString(), "getEndPointID", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(endPointEClass, ecorePackage.getEString(), "getInterfaces", 1, -1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(endPointEClass, ecorePackage.getEStringToStringMapEntry(), "getProperties", 1, -1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(endPointEClass, ecorePackage.getELong(), "getServiceID", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

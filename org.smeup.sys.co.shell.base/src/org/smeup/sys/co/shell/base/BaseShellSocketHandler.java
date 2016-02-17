@@ -19,6 +19,7 @@ import java.net.Socket;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.co.core.QCommunicationManager;
 import org.smeup.sys.co.shell.QCommunicationShellFactory;
 import org.smeup.sys.co.shell.QShellCredentials;
 import org.smeup.sys.co.shell.QShellManager;
@@ -34,6 +35,8 @@ public class BaseShellSocketHandler implements Runnable {
 	private QAuthenticationManager authenticationManager;
 	@Inject
 	private QShellManager shellManager;
+	@Inject
+	private QCommunicationManager communicationManager;	
 	@Inject
 	private QShellOutputWrapper shellOutputWrapper;
 
@@ -92,7 +95,7 @@ public class BaseShellSocketHandler implements Runnable {
 			}
 
 			if (jobCapability != null) {
-				shellManager.disconnect(jobCapability);
+				communicationManager.disconnect(jobCapability);
 				shellOutputWrapper.unregister(jobCapability.getObjectName());
 				
 				jobCapability = null;
@@ -116,7 +119,7 @@ public class BaseShellSocketHandler implements Runnable {
 	private void login(OutputStreamWriter outputStreamWriter, String request) throws IOException {
 		QIdentity<?> identity = authenticate(request);
 
-		jobCapability = shellManager.connect(identity);
+		jobCapability = communicationManager.connect(identity);
 		if(jobCapability == null) {
 			outputStreamWriter.write("Invalid jobCapability, jobManager not found\n");
 			return ;

@@ -156,6 +156,45 @@ public interface QCommunicationCorePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.co.core.QCommunicationManager <em>Communication Manager</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.co.core.QCommunicationManager
+	 * @see org.smeup.sys.co.core.impl.CommunicationCorePackageImpl#getCommunicationManager()
+	 * @generated
+	 */
+	int COMMUNICATION_MANAGER = 4;
+
+	/**
+	 * The number of structural features of the '<em>Communication Manager</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_MANAGER_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.co.core.QEndPoint <em>End Point</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.co.core.QEndPoint
+	 * @see org.smeup.sys.co.core.impl.CommunicationCorePackageImpl#getEndPoint()
+	 * @generated
+	 */
+	int END_POINT = 5;
+
+	/**
+	 * The number of structural features of the '<em>End Point</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END_POINT_FEATURE_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.co.core.QOutputWrapper <em>Output Wrapper</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -216,6 +255,26 @@ public interface QCommunicationCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getServerSocketManager();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.co.core.QCommunicationManager <em>Communication Manager</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Communication Manager</em>'.
+	 * @see org.smeup.sys.co.core.QCommunicationManager
+	 * @generated
+	 */
+	EClass getCommunicationManager();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.co.core.QEndPoint <em>End Point</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>End Point</em>'.
+	 * @see org.smeup.sys.co.core.QEndPoint
+	 * @generated
+	 */
+	EClass getEndPoint();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -294,6 +353,26 @@ public interface QCommunicationCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass SERVER_SOCKET_MANAGER = eINSTANCE.getServerSocketManager();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.co.core.QCommunicationManager <em>Communication Manager</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.co.core.QCommunicationManager
+		 * @see org.smeup.sys.co.core.impl.CommunicationCorePackageImpl#getCommunicationManager()
+		 * @generated
+		 */
+		EClass COMMUNICATION_MANAGER = eINSTANCE.getCommunicationManager();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.co.core.QEndPoint <em>End Point</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.co.core.QEndPoint
+		 * @see org.smeup.sys.co.core.impl.CommunicationCorePackageImpl#getEndPoint()
+		 * @generated
+		 */
+		EClass END_POINT = eINSTANCE.getEndPoint();
 
 	}
 

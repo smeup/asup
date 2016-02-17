@@ -12,19 +12,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="ShellOutputWrapper" abstract="true"
       interface="true" eSuperTypes="../../org.smeup.sys.co.core/model/co-core.ecore#//OutputWrapper"/>
   <eClassifiers xsi:type="ecore:EClass" name="ShellManager" abstract="true" interface="true">
-    <eOperations name="connect" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability">
-      <eParameters name="identity" lowerBound="1">
-        <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Identity">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-    </eOperations>
     <eOperations name="decodeCommand" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataContainer">
       <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
       <eParameters name="command" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="disconnect">
-      <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
     </eOperations>
     <eOperations name="encodeCommand" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
@@ -38,19 +28,6 @@
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
           <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
           <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
-        </eGenericType>
-      </eParameters>
-    </eOperations>
-    <eOperations name="locate" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobManager"/>
-    <eOperations name="locate">
-      <eGenericType eTypeParameter="#//ShellManager/locate.1/S"/>
-      <eTypeParameters name="S">
-        <eBounds eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
-      </eTypeParameters>
-      <eParameters name="capability" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
-      <eParameters name="klass" lowerBound="1">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-          <eTypeArguments eTypeParameter="#//ShellManager/locate.1/S"/>
         </eGenericType>
       </eParameters>
     </eOperations>

@@ -20,11 +20,11 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.co.core.impl.ServerSocketConfigImpl#getAddress <em>Address</em>}</li>
  *   <li>{@link org.smeup.sys.co.core.impl.ServerSocketConfigImpl#getPort <em>Port</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

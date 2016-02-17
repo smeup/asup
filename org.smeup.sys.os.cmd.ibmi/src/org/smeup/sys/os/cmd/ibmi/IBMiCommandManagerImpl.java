@@ -65,7 +65,6 @@ import org.smeup.sys.os.cmd.QOperatingSystemCommandFactory;
 import org.smeup.sys.os.cmd.base.BaseCommandManagerImpl;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.pgm.QProgramManager;

@@ -30,7 +30,7 @@ import org.osgi.service.remoteserviceadmin.EndpointDescription;
 import org.osgi.service.remoteserviceadmin.EndpointEvent;
 import org.osgi.service.remoteserviceadmin.EndpointEventListener;
 import org.osgi.util.tracker.ServiceTracker;
-import org.smeup.sys.co.osgi.QCommunicationManager;
+import org.smeup.sys.co.core.QCommunicationManager;
 import org.smeup.sys.co.osgi.ecf.impl.ECFCommunicationManagerImpl;
 import org.smeup.sys.rt.core.ApplicationStarting;
 

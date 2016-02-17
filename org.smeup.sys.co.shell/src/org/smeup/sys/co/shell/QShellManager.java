@@ -9,10 +9,8 @@ package org.smeup.sys.co.shell;
 
 import java.util.Map;
 
-import org.smeup.sys.il.core.ctx.QIdentity;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.os.core.jobs.QJobCapability;
-import org.smeup.sys.os.core.jobs.QJobManager;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,26 +26,10 @@ public interface QShellManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" identityRequired="true"
-	 * @generated
-	 */
-	QJobCapability connect(QIdentity<?> identity);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model required="true" capabilityRequired="true" commandRequired="true"
 	 * @generated
 	 */
 	QDataContainer decodeCommand(QJobCapability capability, String command);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model capabilityRequired="true"
-	 * @generated
-	 */
-	void disconnect(QJobCapability capability);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -64,22 +46,6 @@ public interface QShellManager {
 	 * @generated
 	 */
 	void executeCommand(QJobCapability capability, String command, Map<String, Object> variables);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	QJobManager locate();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model klassRequired="true" SBounds="org.eclipse.emf.ecore.EJavaObject"
-	 * @generated
-	 */
-	<S extends Object> S locate(QJobCapability capability, Class<S> klass);
 
 	/**
 	 * <!-- begin-user-doc -->

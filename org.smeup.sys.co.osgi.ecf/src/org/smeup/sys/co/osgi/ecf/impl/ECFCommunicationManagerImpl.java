@@ -10,12 +10,30 @@ package org.smeup.sys.co.osgi.ecf.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+
 import org.osgi.service.remoteserviceadmin.EndpointDescription;
-import org.smeup.sys.co.osgi.QCommunicationManager;
-import org.smeup.sys.co.osgi.QEndPoint;
+import org.smeup.sys.co.core.QCommunicationManager;
+import org.smeup.sys.co.core.QEndPoint;
 import org.smeup.sys.co.osgi.ecf.hook.ECFClientActivatorHook;
+import org.smeup.sys.il.core.QObjectRegistry;
+import org.smeup.sys.il.core.QObjectRegistryFactory;
+import org.smeup.sys.il.core.ctx.QIdentity;
+import org.smeup.sys.os.core.jobs.QJobCapability;
+import org.smeup.sys.os.core.jobs.QJobManager;
 
 public class ECFCommunicationManagerImpl implements QCommunicationManager {
+
+	@Inject
+	private QObjectRegistryFactory objectRegistryFactory;
+	
+	private QObjectRegistry<QJobManager> jobRegistry;
+	
+	@PostConstruct
+	private void init() {
+		jobRegistry = objectRegistryFactory.createObjectRegistry(QJobManager.class);
+	}
 
 	@Override
 	public List<QEndPoint> find(String contextID) {
@@ -41,5 +59,44 @@ public class ECFCommunicationManagerImpl implements QCommunicationManager {
 			}
 
 		return endPoint;
+	}
+
+	@Override
+	public QJobCapability connect(QIdentity<?> identity) {
+		
+		QJobManager jobManager = locate();
+		if(jobManager == null)
+			return null;
+
+		QJobCapability jobCapability = jobManager.create(identity);
+		
+		return jobCapability;
+	}
+
+	@Override
+	public void disconnect(QJobCapability capability) {
+		
+		QJobManager jobManager = locate(capability, QJobManager.class);
+		jobManager.close(capability);
+	}
+
+	@Override
+	public <S> S locate(QJobCapability capability, Class<S> klass) {
+
+		QObjectRegistry<S> objectRegistry = objectRegistryFactory.createObjectRegistry(klass);
+		return objectRegistry.lookupByPort(capability.getPort());
+	}
+	
+	
+	private QJobManager locate() {
+		
+		QJobManager jobManager = null;
+		
+		for(QJobManager jm: jobRegistry.list()) {
+			jobManager = jm;
+			break;
+		}
+		
+		return jobManager;
 	}
 } // ECFCommunicationManagerImpl
