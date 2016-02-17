@@ -11,17 +11,17 @@
  */
 package org.smeup.sys.os.core.base;
 
+import javax.inject.Inject;
+
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
-import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.QSystemManager;
-import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
@@ -35,29 +35,23 @@ import org.smeup.sys.rt.core.QApplication;
 
 public class BaseSystemActivator {
 
+	@Inject
+	private QThreadManager threadManager;
+
 	@ComponentStarted
-	public void start(QApplication application, QThreadManager threadManager, QResourceManager resourceManager, QJobManager jobManager, QLibraryManager libraryManager, QSystemManager systemManager, QJobLogManager jobLogManager) {
-		
-		QResourceWriter<QSystem> systemWriter = resourceManager.getResourceWriter(application, QSystem.class, Scope.SYSTEM_LIBRARY);
-		
-		QSystem system = null; 
-		
-		if(system == null) {
-			system = QOperatingSystemCoreFactory.eINSTANCE.createSystem();
-			system.setName("localhost");
-			system.setSystemUser("QASUP");
-			system.setSystemLibrary("QSYS");
-			system.setTemporaryLibrary("QTEMP");
-			system.setInstallPath(System.getProperty("osgi.instance.area"));
-		}
+	public void start(QApplication application, QSystem system, QResourceManager resourceManager, QJobManager jobManager, QLibraryManager libraryManager, QSystemManager systemManager,
+			QJobLogManager jobLogManager) {
+
+		system.setName(resolveVariables(application, system.getName()));
+		system.setInstallPath(resolveVariables(application, system.getName()));
 		
 		QContext systemContext = application.getContext().createChildContext(system.getName());
 		system.setContext(systemContext);
-
-		QJob jobKernel = systemManager.start(system);
 		
-		BaseBundleListener bundleListener = systemContext.make(BaseBundleListener.class);
-		bundleListener.init(jobKernel);
+		QJob jobKernel = systemManager.start(system);
+
+		BaseBundleListener bundleListener = jobKernel.getContext().make(BaseBundleListener.class);
+		bundleListener.init();
 
 		// Library
 		QResourceWriter<QLibrary> resourceLibrary = resourceManager.getResourceWriter(jobKernel, QLibrary.class, Scope.SYSTEM_LIBRARY);
@@ -69,15 +63,6 @@ public class BaseSystemActivator {
 			resourceLibrary.save(library);
 		}
 
-		// System
-		QSystem persistedSystem = systemWriter.lookup(system.getName());
-		if (persistedSystem != null) {
-			QEnvironmentVariableContainer variableContainer = persistedSystem.getVariableContainer();
-			if(variableContainer != null) {
-				system.setVariableContainer(variableContainer);
-				systemWriter.save(system, true);
-			}
-		}
 		QResourceWriter<QUserProfile> userProfileWriter = resourceManager.getResourceWriter(jobKernel, QUserProfile.class, system.getSystemLibrary());
 
 		if (!userProfileWriter.exists(system.getSystemUser())) {
@@ -92,15 +77,25 @@ public class BaseSystemActivator {
 
 		application.getContext().set(QSystem.class, system);
 		application.getContext().set(QJob.class, jobKernel);
-		
+
 		try {
 			libraryManager.destroyAllTemporaryLibrary(jobKernel);
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			jobLogManager.warning(jobKernel, e.getMessage());
-		}		
-		
+		}
+
 		QThread thread = threadManager.createThread("job-closer", new BaseJobCloser(threadManager, jobManager), true);
-		threadManager.start(thread);				
-	}	
+		threadManager.start(thread);
+	}
+
+	public static String resolveVariables(QApplication application, String varString) {
+
+		String resolvedString = varString;
+		if (resolvedString.indexOf("${rt.core.application.name}") >= 0)
+			resolvedString = resolvedString.replace("${rt.core.application.name}", application.getName());
+		if (resolvedString.indexOf("${osgi.instance.area}") >= 0)
+			resolvedString = resolvedString.replace("${osgi.instance.area}", System.getProperty("osgi.instance.area"));
+
+		return resolvedString;
+	}
 }

@@ -196,9 +196,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="variableContainer" eType="#//env/EnvironmentVariableContainer"
           containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="JobCapability" abstract="true" interface="true">
-      <eOperations name="getJobReference" lowerBound="1" eType="#//jobs/JobReference"/>
-      <eOperations name="getPort" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eClassifiers xsi:type="ecore:EClass" name="JobCapability">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="jobReference" lowerBound="1"
+          eType="#//jobs/JobReference"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Capability">
         <eTypeArguments eClassifier="#//jobs/Job"/>
       </eGenericSuperTypes>

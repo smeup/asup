@@ -23,6 +23,8 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.ctx.QIdentity;
 import org.smeup.sys.il.core.out.QObjectWriter;
@@ -132,7 +134,10 @@ public class BaseJobManagerImpl implements QJobManager {
 		activeJobs.put(job.getJobID(), job);
 
 		// capability		
-		QJobCapability jobCapability = new BaseJobCapabilityImpl(job.getJobReference(), URI.create(job.qURI()), null, application.getPort());
+		QJobCapability jobCapability = QOperatingSystemJobsFactory.eINSTANCE.createJobCapability();
+		jobCapability.setJobReference((QJobReference) EcoreUtil.copy((EObject)job.getJobReference()));
+		jobCapability.setObjectURI(URI.create(job.qURI()));
+		jobCapability.setPort(application.getPort());
 
 		job.getContext().set(QJobCapability.class, jobCapability);
 		

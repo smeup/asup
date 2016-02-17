@@ -49,10 +49,10 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	public static int EVENT_BUILD_ENTRY = 40;
 	public static int EVENT_INSTALL_ENTRY = 60;
 
-	private String path;	
+	private String path;
 
 	private QApplication application;
-	
+
 	@Inject
 	public JDTSourceManagerImpl(QApplication application) {
 		this(application, "asup-src");
@@ -61,7 +61,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	public JDTSourceManagerImpl(QApplication application, String path) {
 		this.path = path;
 		this.application = application;
-		
+
 		ResourcesPlugin.getWorkspace().getDescription().setAutoBuilding(false);
 	}
 
@@ -82,6 +82,13 @@ public class JDTSourceManagerImpl implements QSourceManager {
 
 		try {
 			JDTProjectUtil.createAsupProject(project, projectDef);
+		} catch (CoreException e) {
+			throw new IOException(e);
+		}
+
+		try {
+			if(!project.isOpen())
+				project.open(null);
 		} catch (CoreException e) {
 			throw new IOException(e);
 		}
@@ -118,7 +125,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	public <T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, QProject project, Class<T> klass, String name, boolean replace, T content) throws IOException {
 
 		ByteArrayOutputStream output = getObjectSerializer(context).serialize(project, klass, name, content);
-		
+
 		QSourceEntry sourceEntry = createObjectEntry(context, project, klass, name, replace, new ByteArrayInputStream(output.toByteArray()));
 		return sourceEntry;
 
@@ -153,6 +160,12 @@ public class JDTSourceManagerImpl implements QSourceManager {
 			return null;
 
 		IProject project = (IProject) resource;
+		try {
+			if(!project.isOpen())
+				project.open(null);
+		} catch (CoreException e) {
+			return null;
+		}
 
 		/*
 		 * try { project.refreshLocal(IContainer.DEPTH_INFINITE, null); } catch
@@ -340,8 +353,14 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	private <T extends QObjectNameable> IFolder getFolder(QSourceNode parent, Class<T> type, boolean create) {
 
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-		
+
 		IProject project = root.getProject(parent.getProject().getName());
+		try {
+			if(!project.isOpen())
+				project.open(null);
+		} catch (CoreException e) {
+			return null;
+		}
 
 		// TODO da eliminare
 		if (parent.isRoot() && type == null)
@@ -374,7 +393,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 		return type.getSimpleName().substring(1);
 	}
 
-	private void mkDirs(IFile file) throws CoreException {
+	private void mkDirs(IResource file) throws CoreException {
 
 		IContainer parent = file.getParent();
 		if (parent != null && parent instanceof IFolder && !parent.exists()) {
@@ -391,22 +410,21 @@ public class JDTSourceManagerImpl implements QSourceManager {
 			}
 		}
 	}
-	
+
 	private JDTObjectSerializer getObjectSerializer(QContext context) {
-		
+
 		JDTObjectSerializer objectSerializer = context.get(JDTObjectSerializer.class);
-		if(objectSerializer == null) {
+		if (objectSerializer == null) {
 			synchronized (context) {
 				objectSerializer = context.get(JDTObjectSerializer.class);
-				if(objectSerializer == null) {
+				if (objectSerializer == null) {
 
 					ResourceSetImpl resourceSet = new ResourceSetImpl();
 					resourceSet.getLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, true);
-					
+
 					Resource.Factory resourceFatory = new JDTResourceFactory();
 					resourceSet.getResourceFactoryRegistry().getContentTypeToFactoryMap().put("asup", resourceFatory);
-					
-					
+
 					objectSerializer = new JDTObjectSerializer(application, resourceSet);
 					context.set(JDTObjectSerializer.class, objectSerializer);
 				}

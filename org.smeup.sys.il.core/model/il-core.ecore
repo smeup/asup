@@ -184,15 +184,15 @@
         </eParameters>
       </eOperations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Capability" abstract="true" interface="true"
-        eSuperTypes="#//Object">
+    <eClassifiers xsi:type="ecore:EClass" name="Capability" abstract="true" eSuperTypes="#//Object">
       <eTypeParameters name="T">
         <eBounds eClassifier="#//Object"/>
       </eTypeParameters>
-      <eOperations name="getObjectURI" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaURI"/>
       <eOperations name="getObjectName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="rights" upperBound="-1"
           eType="#//ctx/CapabilityRight"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectURI" lowerBound="1"
+          eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaURI"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Context" abstract="true">
       <eOperations name="close" lowerBound="1"/>

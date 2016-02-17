@@ -36,6 +36,15 @@ public interface QOperatingSystemJobsFactory extends EFactory {
 	QJob createJob();
 
 	/**
+	 * Returns a new object of class '<em>Job Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Job Capability</em>'.
+	 * @generated
+	 */
+	QJobCapability createJobCapability();
+
+	/**
 	 * Returns a new object of class '<em>Job Log</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

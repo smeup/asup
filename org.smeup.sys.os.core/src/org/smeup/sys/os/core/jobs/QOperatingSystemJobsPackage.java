@@ -228,10 +228,10 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 16;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.QJobCapability <em>Job Capability</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.impl.JobCapabilityImpl <em>Job Capability</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.os.core.jobs.QJobCapability
+	 * @see org.smeup.sys.os.core.jobs.impl.JobCapabilityImpl
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobCapability()
 	 * @generated
 	 */
@@ -247,13 +247,40 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB_CAPABILITY__RIGHTS = QIntegratedLanguageCoreCtxPackage.CAPABILITY__RIGHTS;
 
 	/**
+	 * The feature id for the '<em><b>Object URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_CAPABILITY__OBJECT_URI = QIntegratedLanguageCoreCtxPackage.CAPABILITY__OBJECT_URI;
+
+	/**
+	 * The feature id for the '<em><b>Job Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_CAPABILITY__JOB_REFERENCE = QIntegratedLanguageCoreCtxPackage.CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_CAPABILITY__PORT = QIntegratedLanguageCoreCtxPackage.CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Job Capability</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB_CAPABILITY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.CAPABILITY_FEATURE_COUNT + 0;
+	int JOB_CAPABILITY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.CAPABILITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.impl.JobLogImpl <em>Job Log</em>}' class.
@@ -735,6 +762,28 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	EClass getJobCapability();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.smeup.sys.os.core.jobs.QJobCapability#getJobReference <em>Job Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Job Reference</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobCapability#getJobReference()
+	 * @see #getJobCapability()
+	 * @generated
+	 */
+	EReference getJobCapability_JobReference();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJobCapability#getPort <em>Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Port</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobCapability#getPort()
+	 * @see #getJobCapability()
+	 * @generated
+	 */
+	EAttribute getJobCapability_Port();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.jobs.QJobLog <em>Job Log</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1126,14 +1175,30 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		EReference JOB__VARIABLE_CONTAINER = eINSTANCE.getJob_VariableContainer();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.QJobCapability <em>Job Capability</em>}' class.
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.impl.JobCapabilityImpl <em>Job Capability</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.os.core.jobs.QJobCapability
+		 * @see org.smeup.sys.os.core.jobs.impl.JobCapabilityImpl
 		 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobCapability()
 		 * @generated
 		 */
 		EClass JOB_CAPABILITY = eINSTANCE.getJobCapability();
+
+		/**
+		 * The meta object literal for the '<em><b>Job Reference</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOB_CAPABILITY__JOB_REFERENCE = eINSTANCE.getJobCapability_JobReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Port</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOB_CAPABILITY__PORT = eINSTANCE.getJobCapability_Port();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.impl.JobLogImpl <em>Job Log</em>}' class.

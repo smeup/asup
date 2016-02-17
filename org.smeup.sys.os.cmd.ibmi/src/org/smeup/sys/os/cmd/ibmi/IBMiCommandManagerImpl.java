@@ -201,16 +201,6 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		return callableCommand;
 	}
 	
-	@Override
-	public void executeCommand(QJobCapability jobCapability, String command, Map<String, Object> variables) {
-
-		QJob jobLocal = jobManager.lookup(jobCapability);
-		
-		QCallableCommand callableCommand = prepareCommand(jobLocal, command, variables, true);
-		executeCommand(jobLocal, callableCommand);
-		callableCommand.close();
-	}
-	
 	private QData assignValue(QDataTerm<?> dataTerm, QDataContainer dataContainer, QDataWriter writer, String value, Map<String, Object> variables) {
 
 		String tokValue = null;

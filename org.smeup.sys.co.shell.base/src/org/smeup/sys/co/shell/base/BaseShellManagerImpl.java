@@ -72,8 +72,10 @@ public class BaseShellManagerImpl implements QShellManager {
 		QJobManager jobManager = locate();
 		if(jobManager == null)
 			return null;
+
+		QJobCapability jobCapability = jobManager.create(identity);
 		
-		return jobManager.create(identity);
+		return jobCapability;
 	}
 
 	@Override

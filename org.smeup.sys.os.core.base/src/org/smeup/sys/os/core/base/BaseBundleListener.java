@@ -27,11 +27,10 @@ public class BaseBundleListener implements BundleListener, CommandProvider {
 
 	@Inject
 	private QBundleManager bundleManager;
-
+	@Inject
 	private QJob job;
 
-	public void init(QJob job) {
-		this.job = job;
+	public void init() {
 
 		BundleContext bundleContext = FrameworkUtil.getBundle(QSystem.class).getBundleContext();
 		bundleContext.addBundleListener(this);

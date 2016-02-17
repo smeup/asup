@@ -21,10 +21,11 @@ import org.smeup.sys.il.core.QObject;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.ctx.QCapability#getRights <em>Rights</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.ctx.QCapability#getObjectURI <em>Object URI</em>}</li>
  * </ul>
  *
  * @see org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage#getCapability()
- * @model interface="true" abstract="true"
+ * @model abstract="true"
  * @generated
  */
 public interface QCapability<T extends QObject> extends QObject {
@@ -48,12 +49,26 @@ public interface QCapability<T extends QObject> extends QObject {
 	List<CapabilityRight> getRights();
 
 	/**
+	 * Returns the value of the '<em><b>Object URI</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation" dataType="org.smeup.sys.mi.core.JavaURI" required="true"
+	 * @return the value of the '<em>Object URI</em>' attribute.
+	 * @see #setObjectURI(URI)
+	 * @see org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage#getCapability_ObjectURI()
+	 * @model dataType="org.smeup.sys.mi.core.JavaURI" required="true"
 	 * @generated
 	 */
 	URI getObjectURI();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.core.ctx.QCapability#getObjectURI <em>Object URI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Object URI</em>' attribute.
+	 * @see #getObjectURI()
+	 * @generated
+	 */
+	void setObjectURI(URI value);
 
 	/**
 	 * <!-- begin-user-doc -->

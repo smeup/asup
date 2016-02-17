@@ -105,10 +105,10 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	int CONTEXT_PROVIDER = 4;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.QCapability <em>Capability</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.impl.CapabilityImpl <em>Capability</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.ctx.QCapability
+	 * @see org.smeup.sys.il.core.ctx.impl.CapabilityImpl
 	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getCapability()
 	 * @generated
 	 */
@@ -124,13 +124,22 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	int CAPABILITY__RIGHTS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Object URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__OBJECT_URI = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Capability</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
+	int CAPABILITY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Context</em>' class. <!--
@@ -251,6 +260,17 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	EAttribute getCapability_Rights();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.ctx.QCapability#getObjectURI <em>Object URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Object URI</em>'.
+	 * @see org.smeup.sys.il.core.ctx.QCapability#getObjectURI()
+	 * @see #getCapability()
+	 * @generated
+	 */
+	EAttribute getCapability_ObjectURI();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.ctx.QIdentity <em>Identity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -332,10 +352,10 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 		EClass CONTEXT_PROVIDER = eINSTANCE.getContextProvider();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.QCapability <em>Capability</em>}' class.
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.impl.CapabilityImpl <em>Capability</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.core.ctx.QCapability
+		 * @see org.smeup.sys.il.core.ctx.impl.CapabilityImpl
 		 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getCapability()
 		 * @generated
 		 */
@@ -348,6 +368,14 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CAPABILITY__RIGHTS = eINSTANCE.getCapability_Rights();
+
+		/**
+		 * The meta object literal for the '<em><b>Object URI</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CAPABILITY__OBJECT_URI = eINSTANCE.getCapability_ObjectURI();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.impl.IdentityImpl <em>Identity</em>}' class.

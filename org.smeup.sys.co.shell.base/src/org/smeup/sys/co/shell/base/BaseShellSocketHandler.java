@@ -80,7 +80,7 @@ public class BaseShellSocketHandler implements Runnable {
 							shellManager.executeCommand(jobCapability, request, null);
 					} catch (Exception e) {
 						if (e.getCause() == null)
-							outputStreamWriter.write(e.getMessage() + "\n");
+							outputStreamWriter.write(e + "\n");
 						else
 							outputStreamWriter.write(e.getCause().getMessage() + "\n");
 					}
@@ -127,6 +127,7 @@ public class BaseShellSocketHandler implements Runnable {
 	}
 
 	private void writePrompt(OutputStreamWriter outputStreamWriter) throws IOException {
+		outputStreamWriter.flush();
 		if (jobCapability != null)
 			outputStreamWriter.write(jobCapability.getJobReference().getJobUser().toLowerCase() + "> ");
 		else

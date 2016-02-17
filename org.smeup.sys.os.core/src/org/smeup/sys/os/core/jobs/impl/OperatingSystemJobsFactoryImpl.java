@@ -63,6 +63,7 @@ public class OperatingSystemJobsFactoryImpl extends EFactoryImpl implements QOpe
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case QOperatingSystemJobsPackage.JOB: return (EObject)createJob();
+			case QOperatingSystemJobsPackage.JOB_CAPABILITY: return (EObject)createJobCapability();
 			case QOperatingSystemJobsPackage.JOB_EVENT: return (EObject)createJobEvent();
 			case QOperatingSystemJobsPackage.JOB_LOG: return (EObject)createJobLog();
 			case QOperatingSystemJobsPackage.JOB_LOG_ENTRY: return (EObject)createJobLogEntry();
@@ -120,6 +121,16 @@ public class OperatingSystemJobsFactoryImpl extends EFactoryImpl implements QOpe
 	public QJob createJob() {
 		JobImpl job = new JobImpl();
 		return job;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QJobCapability createJobCapability() {
+		JobCapabilityImpl jobCapability = new JobCapabilityImpl();
+		return jobCapability;
 	}
 
 	/**

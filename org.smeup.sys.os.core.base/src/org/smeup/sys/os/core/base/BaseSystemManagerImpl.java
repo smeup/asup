@@ -25,6 +25,9 @@ import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.lock.LockType;
 import org.smeup.sys.il.lock.QLockManager;
 import org.smeup.sys.il.lock.QObjectLocker;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.QSystem;
@@ -33,6 +36,7 @@ import org.smeup.sys.os.core.QSystemListener;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.SystemEventType;
 import org.smeup.sys.os.core.SystemStatus;
+import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobReference;
@@ -49,7 +53,9 @@ public class BaseSystemManagerImpl implements QSystemManager {
 	
 	@Inject
 	private QLockManager lockManager;
-
+	@Inject
+	private QResourceManager resourceManager;
+	
 	@Override
 	public void registerListener(QSystemListener listener) {
 		this.listeners.add(listener);
@@ -82,11 +88,8 @@ public class BaseSystemManagerImpl implements QSystemManager {
 			}
 		};
 
-		jobKernel = createJob(system, JobType.KERNEL, principal, "KERNEL");
-
 		// acquire system lock
-		QObjectLocker<QSystem> locker = lockManager.getLocker(jobKernel.getContext(), system);
-
+		QObjectLocker<QSystem> locker = lockManager.getLocker(system.getContext(), system);
 		while (!locker.tryLock(QSystem.LOCK_TIMEOUT, LockType.WRITE));
 
 		try {
@@ -94,9 +97,18 @@ public class BaseSystemManagerImpl implements QSystemManager {
 			systemEvent.setSource(system);
 			systemEvent.setType(SystemEventType.STARTING);
 			fireEvent(systemEvent);
-			
-			
-			
+		
+			jobKernel = createJob(system, JobType.KERNEL, principal, "KERNEL");
+
+			QResourceWriter<QSystem> systemWriter = resourceManager.getResourceWriter(jobKernel, QSystem.class, Scope.SYSTEM_LIBRARY);
+			QSystem persistedSystem = systemWriter.lookup(system.getName());
+			if (persistedSystem != null) {
+				QEnvironmentVariableContainer variableContainer = persistedSystem.getVariableContainer();
+				if (variableContainer != null) 
+					system.setVariableContainer(variableContainer);
+			}
+			systemWriter.save(system, true);
+
 			systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
 			systemEvent.setSource(system);
 			systemEvent.setType(SystemEventType.STARTED);

@@ -24,12 +24,9 @@ import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.QSystemEvent;
 import org.smeup.sys.os.core.QSystemListener;
 import org.smeup.sys.os.core.QSystemManager;
-import org.smeup.sys.rt.core.QApplication;
 
 public class BaseSystemListenerImpl implements QSystemListener {
 
-	@Inject
-	private QApplication application;	
 	@Inject
 	private QSystemManager systemManager;
 	@Inject
@@ -49,18 +46,18 @@ public class BaseSystemListenerImpl implements QSystemListener {
 		case STARTED:
 			break;
 		case STARTING:
-			QProject project = sourceManager.getProject(application.getContext(), system.getSystemLibrary());
+			QProject project = sourceManager.getProject(system.getContext(), system.getSystemLibrary());
 			if(project == null) {
 				QProjectDef projectDef = QDevelopmentKitSourceFactory.eINSTANCE.createProjectDef();
 				projectDef.setName(system.getSystemLibrary());
 				projectDef.setText("As.UP System Library");
 				try {
-					project = sourceManager.createProject(application.getContext(), projectDef, false);
+					project = sourceManager.createProject(system.getContext(), projectDef, false);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
-			sourceManager.refreshNode(application.getContext(), project);
+			sourceManager.refreshNode(system.getContext(), project);
 			break;
 		case STATUS_CHANGED:
 			break;

@@ -388,6 +388,24 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getJobCapability_JobReference() {
+		return (EReference)jobCapabilityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getJobCapability_Port() {
+		return (EAttribute)jobCapabilityEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EClass getJobLog() {
 		return jobLogEClass;
@@ -639,6 +657,8 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		createEReference(jobEClass, JOB__VARIABLE_CONTAINER);
 
 		jobCapabilityEClass = createEClass(JOB_CAPABILITY);
+		createEReference(jobCapabilityEClass, JOB_CAPABILITY__JOB_REFERENCE);
+		createEAttribute(jobCapabilityEClass, JOB_CAPABILITY__PORT);
 
 		jobEventEClass = createEClass(JOB_EVENT);
 		createEReference(jobEventEClass, JOB_EVENT__SOURCE);
@@ -751,11 +771,9 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 
 		addEOperation(jobEClass, ecorePackage.getEBoolean(), "isRouted", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(jobCapabilityEClass, QJobCapability.class, "JobCapability", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		addEOperation(jobCapabilityEClass, this.getJobReference(), "getJobReference", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(jobCapabilityEClass, ecorePackage.getEInt(), "getPort", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEClass(jobCapabilityEClass, QJobCapability.class, "JobCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getJobCapability_JobReference(), this.getJobReference(), null, "jobReference", null, 1, 1, QJobCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJobCapability_Port(), ecorePackage.getEInt(), "port", null, 0, 1, QJobCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jobEventEClass, QJobEvent.class, "JobEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getJobEvent_Source(), this.getJob(), null, "source", null, 0, 1, QJobEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

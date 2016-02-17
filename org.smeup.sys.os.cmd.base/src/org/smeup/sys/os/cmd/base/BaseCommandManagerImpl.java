@@ -27,7 +27,6 @@ import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.pgm.QProgramManager;
 
-
 public abstract class BaseCommandManagerImpl implements QCommandManager {
 
 	private QThreadManager threadManager;
@@ -35,7 +34,7 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 	protected QJobManager jobManager;
 	protected QJobLogManager jobLogManager;
 	protected QProgramManager programManager;
-	
+
 	public BaseCommandManagerImpl(QThreadManager threadManager, QResourceManager resourceManager, QJobManager jobManager, QJobLogManager jobLogManager, QProgramManager programManager) {
 		this.threadManager = threadManager;
 		this.resourceManager = resourceManager;
@@ -47,14 +46,14 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 	@Override
 	public void executeCommand(QJob job, QCallableCommand callableCommand) {
 
-		// TODO create a dataContainer visitor with replaced variables 
+		// TODO create a dataContainer visitor with replaced variables
 		jobLogManager.info(job, callableCommand.getCommandString());
 
 		@SuppressWarnings("resource")
 		QDataContainer dataContainer = callableCommand.getDataContainer();
 
 		QData[] parameters = new QData[callableCommand.getCommand().getParameters().size()];
-		
+
 		for (QCommandParameter commandParameter : callableCommand.getCommand().getParameters()) {
 			int position = commandParameter.getPosition() - 1;
 			parameters[position] = dataContainer.getData(dataContainer.getTerms().get(position));
@@ -62,44 +61,40 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 
 		programManager.callProgram(job, null, callableCommand.getCommand().getProgram(), parameters);
 	}
-	
+
 	@Override
 	public void executeCommand(QJobCapability jobCapability, String command, Map<String, Object> variables) {
-		
+
 		QJob jobLocal = jobManager.lookup(jobCapability);
-		
-		try {
-			QCallableCommand callableCommand = prepareCommand(jobLocal, command, variables, true);
-			executeCommand(jobLocal, callableCommand);
-			callableCommand.close();
-		} catch (Exception e) {
-			jobLogManager.error(jobManager.lookup(jobCapability), e.getMessage());
-		}
+
+		QCallableCommand callableCommand = prepareCommand(jobLocal, command, variables, true);
+		executeCommand(jobLocal, callableCommand);
+		callableCommand.close();
 	}
 
 	@Override
 	public QJobCapability submitCommand(QJob job, String command, String jobName, Object caller) {
-		
+
 		QJobCapability jobCapability = null;
-		if(jobName != null) 
+		if (jobName != null)
 			jobCapability = jobManager.spawn(job, jobName);
 		else
 			jobCapability = jobManager.spawn(job);
-		
+
 		// Submit command
 		String threadName = "job/" + jobCapability.getObjectName();
 		QThread thread = threadManager.createThread(threadName, new BaseSubmittedCommand(this, jobCapability, command, caller));
 		job.setJobThread(thread);
-		threadManager.start(thread);		
+		threadManager.start(thread);
 
 		return jobCapability;
 	}
 
 	@Override
 	public QDataContainer decodeCommand(QJobCapability capability, String command) {
-		
+
 		QJob job = jobManager.lookup(capability);
-		try(QCallableCommand callableCommand = prepareCommand(job, command, null, false);) {
+		try (QCallableCommand callableCommand = prepareCommand(job, command, null, false);) {
 			return callableCommand.getDataContainer();
 		}
 	}

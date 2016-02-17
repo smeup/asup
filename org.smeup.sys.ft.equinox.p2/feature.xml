@@ -17,10 +17,6 @@
       [Enter License Description here.]
    </license>
 
-   <includes
-         id="org.smeup.sys.ft.eclipse.ecf"
-         version="0.0.0"/>
-
    <plugin
          id="org.eclipse.equinox.p2.core"
          download-size="0"

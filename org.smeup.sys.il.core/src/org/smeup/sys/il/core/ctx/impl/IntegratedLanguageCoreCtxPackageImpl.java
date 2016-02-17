@@ -237,6 +237,15 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCapability_ObjectURI() {
+		return (EAttribute)capabilityEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getIdentity() {
 		return identityEClass;
 	}
@@ -281,6 +290,7 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 
 		capabilityEClass = createEClass(CAPABILITY);
 		createEAttribute(capabilityEClass, CAPABILITY__RIGHTS);
+		createEAttribute(capabilityEClass, CAPABILITY__OBJECT_URI);
 
 		contextEClass = createEClass(CONTEXT);
 
@@ -350,10 +360,9 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		g1 = createEGenericType(t1);
 		initEOperation(op, g1);
 
-		initEClass(capabilityEClass, QCapability.class, "Capability", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(capabilityEClass, QCapability.class, "Capability", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCapability_Rights(), this.getCapabilityRight(), "rights", null, 0, -1, QCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(capabilityEClass, theMachineInterfaceCorePackage.getJavaURI(), "getObjectURI", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEAttribute(getCapability_ObjectURI(), theMachineInterfaceCorePackage.getJavaURI(), "objectURI", null, 1, 1, QCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(capabilityEClass, ecorePackage.getEString(), "getObjectName", 1, 1, IS_UNIQUE, IS_ORDERED);
 

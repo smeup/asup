@@ -80,12 +80,6 @@ public class BaseOutputManagerImpl implements QOutputManager {
 
 	@Override
 	public void setDefaultWriter(QContext context, String name) {
-
-		JobToObjectWriterMap jobWriters = context.get(JobToObjectWriterMap.class);
-		if (jobWriters == null) {
-			jobWriters = new JobToObjectWriterMap();
-			context.set(JobToObjectWriterMap.class, jobWriters);
-		}
 		context.set(QObjectWriter.class, getObjectWriter(context, name));
 	}
 
