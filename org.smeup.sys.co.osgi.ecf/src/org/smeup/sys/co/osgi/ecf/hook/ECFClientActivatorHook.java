@@ -30,8 +30,6 @@ import org.osgi.service.remoteserviceadmin.EndpointDescription;
 import org.osgi.service.remoteserviceadmin.EndpointEvent;
 import org.osgi.service.remoteserviceadmin.EndpointEventListener;
 import org.osgi.util.tracker.ServiceTracker;
-import org.smeup.sys.co.core.QCommunicationManager;
-import org.smeup.sys.co.osgi.ecf.impl.ECFCommunicationManagerImpl;
 import org.smeup.sys.rt.core.ApplicationStarting;
 
 public class ECFClientActivatorHook {
@@ -51,9 +49,6 @@ public class ECFClientActivatorHook {
 		Dictionary<String, String> props = new Hashtable<String, String>();
 		props.put("endpoint.listener.scope", "(endpoint.id=*)");
 		bundleContext.registerService(EndpointEventListener.class, endpointListener, props);
-
-		QCommunicationManager communicationManager = new ECFCommunicationManagerImpl();
-		bundleContext.registerService(QCommunicationManager.class, communicationManager, null);
 
 		IContainerFactory containerFactory = getContainerFactory(bundleContext);
 		containerFactory.createContainer("ecf.generic.client");

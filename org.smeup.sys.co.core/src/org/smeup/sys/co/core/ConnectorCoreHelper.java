@@ -50,7 +50,7 @@ public class ConnectorCoreHelper {
 			hostName = InetAddress.getLocalHost().getHostName();
 			//hostName = InetAddress.getLocalHost().getCanonicalHostName();
 		} catch (UnknownHostException e) {
-			hostName = "localhost";
+			System.err.println(hostName);
 		}
 		return hostName;
 	}
