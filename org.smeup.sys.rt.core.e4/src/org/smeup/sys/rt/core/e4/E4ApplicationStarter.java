@@ -66,8 +66,6 @@ public class E4ApplicationStarter {
 
 		println("");
 		
-		System.out.println(application.qURI());
-
 		println(">application " + application);
 
 		final String name = bundleContext.getBundle().getSymbolicName();

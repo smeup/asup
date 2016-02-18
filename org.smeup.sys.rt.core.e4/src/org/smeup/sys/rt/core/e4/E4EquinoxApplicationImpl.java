@@ -38,17 +38,30 @@ public class E4EquinoxApplicationImpl implements IApplication {
 	public Object start(IApplicationContext context) throws Exception {
 
 		String applicationConfig = null;
-
+		String applicationName = null;
+		String applicationPort = null;
+		
 		String[] arguments = (String[]) context.getArguments().get(IApplicationContext.APPLICATION_ARGS);
-		for (int i = 0; i < arguments.length; i++)
-			if (arguments[i].equals("-asupConfig")) {
+		for (int i = 0; i < arguments.length; i++) {
+			if (arguments[i].equals("-asup.config")) {
 				applicationConfig = arguments[i + 1];
 				i++;
 				continue;
 			}
+			else if (arguments[i].equals("-asup.application.name")) {
+				applicationName = arguments[i + 1];
+				i++;
+				continue;
+			}
+			else if (arguments[i].equals("-asup.application.port")) {
+				applicationPort = arguments[i + 1];
+				i++;
+				continue;
+			}
+		}
 
 		if (applicationConfig == null) {
-			System.out.println("Configuration required: see -asupConfig parameter");
+			System.out.println("Configuration required: see -asup.config parameter");
 			return null;
 		}
 
@@ -73,6 +86,12 @@ public class E4EquinoxApplicationImpl implements IApplication {
 		resource.load(Collections.EMPTY_MAP);
 		application = (QApplication) resource.getContents().get(0);
 
+		if(applicationName != null)
+			application.setName(applicationName);
+		
+		if(applicationPort != null)
+			application.setPort(Integer.parseInt(applicationPort));
+		
 		System.out.println("Starting " + application);
 
 		BundleContext bundleContext = FrameworkUtil.getBundle(QApplication.class).getBundleContext();
