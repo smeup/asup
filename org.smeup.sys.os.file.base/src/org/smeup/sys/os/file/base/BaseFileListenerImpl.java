@@ -73,7 +73,7 @@ public class BaseFileListenerImpl implements QResourceListener<QFile> {
 
 		Schema schema = connection.getCatalogMetaData().getSchema(event.getResource().getName());
 		if (schema == null)
-			throw new OperatingSystemRuntimeException("Schema not found: " + file.getLibrary());
+			throw new OperatingSystemRuntimeException("Schema not found: " + event.getResource().getName());
 
 		try {
 			switch (event.getEventType()) {
