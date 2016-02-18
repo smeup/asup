@@ -71,7 +71,7 @@ public class HCObjectLockerImpl<N extends QObjectNameable> implements QObjectLoc
 		
 		boolean result = false;
 		try {
-			result = lock.tryLock(time, TimeUnit.SECONDS);
+			result = lock.tryLock(time, TimeUnit.MILLISECONDS);
 		} catch (InterruptedException e) {
 			logger.warning(null, e);
 			result = false;

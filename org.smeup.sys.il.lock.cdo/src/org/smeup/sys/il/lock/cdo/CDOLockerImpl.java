@@ -74,7 +74,7 @@ public class CDOLockerImpl<N extends QObjectNameable> implements QObjectLocker<N
 				break;
 			}
 
-			return lock.tryLock(time, TimeUnit.SECONDS);
+			return lock.tryLock(time, TimeUnit.MILLISECONDS);
 		} catch (InterruptedException e) {
 			logger.warning(null, e);
 		}
