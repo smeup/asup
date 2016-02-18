@@ -9,6 +9,7 @@ package org.smeup.sys.co.core;
 
 import java.io.IOException;
 import java.io.Writer;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,10 +25,10 @@ public interface QOutputWrapper {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException"
+	 * @model
 	 * @generated
 	 */
-	void flush(String contextID) throws IOException;
+	boolean contains(QJobCapability capability);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -35,7 +36,7 @@ public interface QOutputWrapper {
 	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException"
 	 * @generated
 	 */
-	void write(String contextID, String value) throws IOException;
+	void flush(QJobCapability capability) throws IOException;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -43,7 +44,7 @@ public interface QOutputWrapper {
 	 * @model writerDataType="org.smeup.sys.mi.core.JavaWriter"
 	 * @generated
 	 */
-	void register(String contextID, Writer writer);
+	void register(QJobCapability capability, Writer writer);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -51,14 +52,14 @@ public interface QOutputWrapper {
 	 * @model
 	 * @generated
 	 */
-	void unregister(String contextID);
+	void unregister(QJobCapability capability);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException"
 	 * @generated
 	 */
-	boolean contains(String contextID);
+	void write(QJobCapability capability, String content) throws IOException;
 
 } // QOutputWrapper

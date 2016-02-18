@@ -17,36 +17,36 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.smeup.sys.co.shell.QShellOutputWrapper;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 
 public class BaseShellOutputWrapperImpl implements QShellOutputWrapper {
 
 	private Map<String, Writer> writers = new HashMap<String, Writer>();
 
 	@Override
-	public void flush(String contextID) throws IOException {
-		if (writers.containsKey(contextID))
-			writers.get(contextID).flush();
+	public void flush(QJobCapability capability) throws IOException {
+		if (writers.containsKey(capability.getObjectURI().toString()))
+			writers.get(capability).flush();
 	}
 
 	@Override
-	public void write(String contextID, String value) throws IOException {
-		if (writers.containsKey(contextID))
-			writers.get(contextID).write(value);
+	public void write(QJobCapability capability, String content) throws IOException {
+		if (writers.containsKey(capability.getObjectURI().toString()))
+			writers.get(capability.getObjectURI().toString()).write(content);
 	}
 
 	@Override
-	public void register(String contextID, Writer writer) {
-		writers.put(contextID, writer);
+	public void register(QJobCapability capability, Writer writer) {
+		writers.put(capability.getObjectURI().toString(), writer);
 	}
 
 	@Override
-	public void unregister(String contextID) {
-		writers.remove(contextID);
+	public void unregister(QJobCapability capability) {
+		writers.remove(capability.getObjectURI().toString());
 	}
 
 	@Override
-	public boolean contains(String contextID) {
-		return writers.containsKey(contextID);
+	public boolean contains(QJobCapability capability) {
+		return writers.containsKey(capability.getObjectURI().toString());
 	}
-
 }

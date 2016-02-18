@@ -96,7 +96,7 @@ public class BaseShellSocketHandler implements Runnable {
 
 			if (jobCapability != null) {
 				communicationManager.disconnect(jobCapability);
-				shellOutputWrapper.unregister(jobCapability.getObjectName());
+				shellOutputWrapper.unregister(jobCapability);
 				
 				jobCapability = null;
 			}
@@ -125,7 +125,7 @@ public class BaseShellSocketHandler implements Runnable {
 			return ;
 		}
 		
-		shellOutputWrapper.register(jobCapability.getObjectName(), outputStreamWriter);
+		shellOutputWrapper.register(jobCapability, outputStreamWriter);
 		shellManager.setDefaultWriter(jobCapability, "S");
 	}
 

@@ -68,16 +68,7 @@ public interface QCommunicationCorePackage extends EPackage {
 	 * @see org.smeup.sys.co.core.impl.CommunicationCorePackageImpl#getOutputWrapper()
 	 * @generated
 	 */
-	int OUTPUT_WRAPPER = 0;
-
-	/**
-	 * The number of structural features of the '<em>Output Wrapper</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OUTPUT_WRAPPER_FEATURE_COUNT = 0;
+	int OUTPUT_WRAPPER = 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.co.core.impl.ServerSocketConfigImpl <em>Server Socket Config</em>}' class.
@@ -87,7 +78,74 @@ public interface QCommunicationCorePackage extends EPackage {
 	 * @see org.smeup.sys.co.core.impl.CommunicationCorePackageImpl#getServerSocketConfig()
 	 * @generated
 	 */
-	int SERVER_SOCKET_CONFIG = 1;
+	int SERVER_SOCKET_CONFIG = 3;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.co.core.QServerSocket <em>Server Socket</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.co.core.QServerSocket
+	 * @see org.smeup.sys.co.core.impl.CommunicationCorePackageImpl#getServerSocket()
+	 * @generated
+	 */
+	int SERVER_SOCKET = 4;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.co.core.QServerSocketManager <em>Server Socket Manager</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.co.core.QServerSocketManager
+	 * @see org.smeup.sys.co.core.impl.CommunicationCorePackageImpl#getServerSocketManager()
+	 * @generated
+	 */
+	int SERVER_SOCKET_MANAGER = 5;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.co.core.QCommunicationManager <em>Communication Manager</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.co.core.QCommunicationManager
+	 * @see org.smeup.sys.co.core.impl.CommunicationCorePackageImpl#getCommunicationManager()
+	 * @generated
+	 */
+	int COMMUNICATION_MANAGER = 0;
+
+	/**
+	 * The number of structural features of the '<em>Communication Manager</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_MANAGER_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.co.core.QEndPoint <em>End Point</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.co.core.QEndPoint
+	 * @see org.smeup.sys.co.core.impl.CommunicationCorePackageImpl#getEndPoint()
+	 * @generated
+	 */
+	int END_POINT = 1;
+
+	/**
+	 * The number of structural features of the '<em>End Point</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END_POINT_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of structural features of the '<em>Output Wrapper</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_WRAPPER_FEATURE_COUNT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Address</b></em>' attribute.
@@ -117,16 +175,6 @@ public interface QCommunicationCorePackage extends EPackage {
 	int SERVER_SOCKET_CONFIG_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.co.core.QServerSocket <em>Server Socket</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.co.core.QServerSocket
-	 * @see org.smeup.sys.co.core.impl.CommunicationCorePackageImpl#getServerSocket()
-	 * @generated
-	 */
-	int SERVER_SOCKET = 2;
-
-	/**
 	 * The number of structural features of the '<em>Server Socket</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -136,16 +184,6 @@ public interface QCommunicationCorePackage extends EPackage {
 	int SERVER_SOCKET_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.co.core.QServerSocketManager <em>Server Socket Manager</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.co.core.QServerSocketManager
-	 * @see org.smeup.sys.co.core.impl.CommunicationCorePackageImpl#getServerSocketManager()
-	 * @generated
-	 */
-	int SERVER_SOCKET_MANAGER = 3;
-
-	/**
 	 * The number of structural features of the '<em>Server Socket Manager</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -153,45 +191,6 @@ public interface QCommunicationCorePackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVER_SOCKET_MANAGER_FEATURE_COUNT = 0;
-
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.co.core.QCommunicationManager <em>Communication Manager</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.co.core.QCommunicationManager
-	 * @see org.smeup.sys.co.core.impl.CommunicationCorePackageImpl#getCommunicationManager()
-	 * @generated
-	 */
-	int COMMUNICATION_MANAGER = 4;
-
-	/**
-	 * The number of structural features of the '<em>Communication Manager</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_MANAGER_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.co.core.QEndPoint <em>End Point</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.co.core.QEndPoint
-	 * @see org.smeup.sys.co.core.impl.CommunicationCorePackageImpl#getEndPoint()
-	 * @generated
-	 */
-	int END_POINT = 5;
-
-	/**
-	 * The number of structural features of the '<em>End Point</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int END_POINT_FEATURE_COUNT = 0;
 
 
 	/**

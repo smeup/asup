@@ -20,7 +20,6 @@ import org.smeup.sys.co.shell.QCommunicationShellPackage;
 import org.smeup.sys.co.shell.QShellOutputWrapper;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectNameable;
-import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.meta.QFrame;
 import org.smeup.sys.il.core.meta.QFrameManager;
 import org.smeup.sys.il.core.meta.QSlot;
@@ -38,11 +37,18 @@ import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QDecimalDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.mi.core.util.QStrings;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 
 public class BaseShellObjectWriterImpl implements QObjectWriter {
 
 	@Inject
 	private QShellOutputWrapper outputWrapper;
+	@Inject
+	private QJob job;
+	@Inject
+	private QJobCapability jobCapability;
+
 	@Inject
 	private QDataManager dataManager;
 	@Inject
@@ -56,12 +62,6 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 
 	private QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 
-	private QContext context;
-
-	protected void setContext(QContext context) {
-		this.context = context;
-	}
-
 	@Override
 	public synchronized void write(QObject object) throws IOException {
 
@@ -72,7 +72,7 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 			streamWrite("\n");
 
 			this.qFrame = qFrame;
-			dataContainer = dataManager.createDataContainer(context, object, QCommunicationShellPackage.eINSTANCE.getShellData());
+			dataContainer = dataManager.createDataContainer(job.getContext(), object, QCommunicationShellPackage.eINSTANCE.getShellData());
 
 			for (QDataTerm<?> dataTerm : dataContainer.getTerms()) {
 
@@ -151,7 +151,7 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 	private void streamWrite(String data) throws IOException {
 
 		// if (outputWrapper.contains(contextID.getID())) {
-		outputWrapper.write(context.getID(), data);
+		outputWrapper.write(jobCapability, data);
 		/*
 		 * } else { System.err.println("Unexpected condition 98sedr2q38sedhrf");
 		 * sysout.write(data); }
@@ -161,7 +161,7 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 	private void streamFlush() throws IOException {
 
 		// if (outputWrapper.contains(contextID.getID())) {
-		outputWrapper.flush(context.getID());
+		outputWrapper.flush(jobCapability);
 		/*
 		 * } else{ System.err.println("Unexpected condition 38sedr2q38se8756hrf"
 		 * ); sysout.flush(); }

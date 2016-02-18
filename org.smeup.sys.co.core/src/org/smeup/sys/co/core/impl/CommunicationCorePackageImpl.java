@@ -241,6 +241,10 @@ public class CommunicationCorePackageImpl extends EPackageImpl implements QCommu
 		isCreated = true;
 
 		// Create classes and their features
+		communicationManagerEClass = createEClass(COMMUNICATION_MANAGER);
+
+		endPointEClass = createEClass(END_POINT);
+
 		outputWrapperEClass = createEClass(OUTPUT_WRAPPER);
 
 		serverSocketConfigEClass = createEClass(SERVER_SOCKET_CONFIG);
@@ -250,10 +254,6 @@ public class CommunicationCorePackageImpl extends EPackageImpl implements QCommu
 		serverSocketEClass = createEClass(SERVER_SOCKET);
 
 		serverSocketManagerEClass = createEClass(SERVER_SOCKET_MANAGER);
-
-		communicationManagerEClass = createEClass(COMMUNICATION_MANAGER);
-
-		endPointEClass = createEClass(END_POINT);
 	}
 
 	/**
@@ -280,10 +280,10 @@ public class CommunicationCorePackageImpl extends EPackageImpl implements QCommu
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
-		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
+		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
+		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -293,41 +293,9 @@ public class CommunicationCorePackageImpl extends EPackageImpl implements QCommu
 		serverSocketConfigEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(outputWrapperEClass, QOutputWrapper.class, "OutputWrapper", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		EOperation op = addEOperation(outputWrapperEClass, null, "flush", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "contextID", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
-
-		op = addEOperation(outputWrapperEClass, null, "write", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "contextID", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
-
-		op = addEOperation(outputWrapperEClass, null, "register", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "contextID", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theMachineInterfaceCorePackage.getJavaWriter(), "writer", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(outputWrapperEClass, null, "unregister", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "contextID", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(outputWrapperEClass, ecorePackage.getEBoolean(), "contains", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "contextID", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(serverSocketConfigEClass, QServerSocketConfig.class, "ServerSocketConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getServerSocketConfig_Address(), ecorePackage.getEString(), "address", null, 1, 1, QServerSocketConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getServerSocketConfig_Port(), ecorePackage.getEInt(), "port", null, 1, 1, QServerSocketConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(serverSocketEClass, QServerSocket.class, "ServerSocket", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(serverSocketManagerEClass, QServerSocketManager.class, "ServerSocketManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		op = addEOperation(serverSocketManagerEClass, null, "startServerSocket", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getServerSocketConfig(), "config", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(communicationManagerEClass, QCommunicationManager.class, "CommunicationManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(communicationManagerEClass, this.getEndPoint(), "find", 0, -1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(communicationManagerEClass, this.getEndPoint(), "find", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(communicationManagerEClass, this.getEndPoint(), "lookup", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -366,6 +334,38 @@ public class CommunicationCorePackageImpl extends EPackageImpl implements QCommu
 		addEOperation(endPointEClass, ecorePackage.getEStringToStringMapEntry(), "getProperties", 1, -1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(endPointEClass, ecorePackage.getELong(), "getServiceID", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(outputWrapperEClass, QOutputWrapper.class, "OutputWrapper", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(outputWrapperEClass, ecorePackage.getEBoolean(), "contains", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(outputWrapperEClass, null, "flush", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
+
+		op = addEOperation(outputWrapperEClass, null, "register", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaWriter(), "writer", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(outputWrapperEClass, null, "unregister", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(outputWrapperEClass, null, "write", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "content", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
+
+		initEClass(serverSocketConfigEClass, QServerSocketConfig.class, "ServerSocketConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getServerSocketConfig_Address(), ecorePackage.getEString(), "address", null, 1, 1, QServerSocketConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getServerSocketConfig_Port(), ecorePackage.getEInt(), "port", null, 1, 1, QServerSocketConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(serverSocketEClass, QServerSocket.class, "ServerSocket", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(serverSocketManagerEClass, QServerSocketManager.class, "ServerSocketManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(serverSocketManagerEClass, null, "startServerSocket", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getServerSocketConfig(), "config", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

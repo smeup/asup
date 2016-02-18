@@ -21,7 +21,6 @@ public class BaseShellObjectWriterFactoryImpl implements QObjectWriterFactory {
 	public QObjectWriter createObjectWriter(QContext context) {
 
 		BaseShellObjectWriterImpl objectWriter = context.make(BaseShellObjectWriterImpl.class);
-		objectWriter.setContext(context);
 		
 		return objectWriter;
 	}
