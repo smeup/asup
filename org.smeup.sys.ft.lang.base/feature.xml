@@ -158,4 +158,18 @@
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="org.smeup.sys.il.lock.hc"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.et.hazel"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>

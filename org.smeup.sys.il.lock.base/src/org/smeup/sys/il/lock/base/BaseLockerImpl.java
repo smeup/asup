@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.il.lock.base;
 
+import java.net.URI;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -22,17 +23,17 @@ public class BaseLockerImpl<N extends QObjectNameable> implements QObjectLocker<
 
 	private ReentrantReadWriteLock lock;
 
-	private N object;
+	private URI objectURI;
 
-	public BaseLockerImpl(N object) {
-		this.object = object;
+	public BaseLockerImpl(URI objectURI) {
+		this.objectURI = objectURI;
 
 		this.lock = new ReentrantReadWriteLock();
 	}
 
 	@Override
-	public N getObject() {
-		return object;
+	public URI getObjectURI() {
+		return objectURI;
 	}
 
 	@Override

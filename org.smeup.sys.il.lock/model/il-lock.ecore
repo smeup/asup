@@ -36,8 +36,6 @@
     <eOperations name="isLocked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="lockType" lowerBound="1" eType="#//LockType"/>
     </eOperations>
-    <eOperations name="getObject">
-      <eGenericType eTypeParameter="#//ObjectLocker/N"/>
-    </eOperations>
+    <eOperations name="getObjectURI" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaURI"/>
   </eClassifiers>
 </ecore:EPackage>

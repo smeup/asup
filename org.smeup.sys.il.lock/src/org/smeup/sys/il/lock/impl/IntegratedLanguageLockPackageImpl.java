@@ -24,6 +24,7 @@ import org.smeup.sys.il.lock.QIntegratedLanguageLockFactory;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.il.lock.QLockManager;
 import org.smeup.sys.il.lock.QObjectLocker;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -202,6 +203,7 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 		// Obtain other dependent packages
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
+		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 
 		// Create type parameters
 		ETypeParameter objectLockerEClass_N = addETypeParameter(objectLockerEClass, "N");
@@ -242,9 +244,7 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(objectLockerEClass, ecorePackage.getEBoolean(), "isLocked", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getLockType(), "lockType", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(objectLockerEClass, null, "getObject", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(objectLockerEClass_N);
-		initEOperation(op, g1);
+		addEOperation(objectLockerEClass, theMachineInterfaceCorePackage.getJavaURI(), "getObjectURI", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(lockTypeEEnum, LockType.class, "LockType");

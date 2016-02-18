@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: As.UP External Tool Hazelcast
-Bundle-SymbolicName: org.smeup.sys.et.haze
+Bundle-SymbolicName: org.smeup.sys.et.hazel
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-ClassPath: lib/hazelcast-3.6.jar,
- .
+Bundle-ClassPath: .,
+ lib/hazelcast-3.6.jar
 Export-Package: com.hazelcast.config,
  com.hazelcast.core

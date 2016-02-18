@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.il.lock.cdo;
 
+import java.net.URI;
 import java.util.concurrent.TimeUnit;
 
 import org.eclipse.emf.cdo.CDOLock;
@@ -25,16 +26,18 @@ import org.smeup.sys.rt.core.QLogger;
 public class CDOLockerImpl<N extends QObjectNameable> implements QObjectLocker<N> {
 
 	private N object;
+	private URI objectURI;
 	private QLogger logger;
 
 	public CDOLockerImpl(N object, QLogger logger) {
 		this.object = object;
+		this.objectURI = URI.create(object.qURI());
 		this.logger = logger;
 	}
 
 	@Override
-	public N getObject() {
-		return object;
+	public URI getObjectURI() {
+		return objectURI;
 	}
 
 	@Override
