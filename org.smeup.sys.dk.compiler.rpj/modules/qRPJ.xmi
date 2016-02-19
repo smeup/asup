@@ -4,7 +4,7 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:il-core="http://www.smeup.org/asup/il/core"
-        xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" 
+    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" 
     xmlns:il-data-term="http://www.smeup.org/asup/il/data/term"
 
     xmlns:il-esam="http://www.smeup.org/asup/il/esam"
@@ -632,7 +632,7 @@
             xsi:type="il-flow:FlowData"
             name="UYEAR">
           <facets
-              xsi:type="il-core:Overlay"
+              xsi:type="il-data-term:Overlay"
               name="UYEAR4"/>
           <definition
               xsi:type="il-data-def:DecimalDef"
