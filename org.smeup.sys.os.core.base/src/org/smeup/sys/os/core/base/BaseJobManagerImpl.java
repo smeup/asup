@@ -209,12 +209,10 @@ public class BaseJobManagerImpl implements QJobManager {
 	}
 
 	@Override
-	public QJob close(QJobCapability jobCapability) {
+	public void close(QJobCapability jobCapability) {
 
 		QJob job = lookup(jobCapability);
-		close(job);
-		
-		return job;
+		close(job);		
 	}
 
 	@Override

@@ -27,7 +27,7 @@ public interface QJobManager {
 	 * @model capabilityRequired="true"
 	 * @generated
 	 */
-	QJob close(QJobCapability capability);
+	void close(QJobCapability capability);
 
 	/**
 	 * <!-- begin-user-doc -->
