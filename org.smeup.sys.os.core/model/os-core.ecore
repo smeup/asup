@@ -196,13 +196,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="variableContainer" eType="#//env/EnvironmentVariableContainer"
           containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="JobCapability">
+    <eClassifiers xsi:type="ecore:EClass" name="JobCapability" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Capability">
       <eStructuralFeatures xsi:type="ecore:EReference" name="jobReference" lowerBound="1"
           eType="#//jobs/JobReference"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Capability">
-        <eTypeArguments eClassifier="#//jobs/Job"/>
-      </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobEvent">
       <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//jobs/Job"/>
@@ -271,7 +268,7 @@
       </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobManager" abstract="true" interface="true">
-      <eOperations name="close" eType="#//jobs/Job">
+      <eOperations name="close">
         <eParameters name="capability" lowerBound="1" eType="#//jobs/JobCapability"/>
       </eOperations>
       <eOperations name="close">

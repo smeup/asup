@@ -28,7 +28,7 @@ import org.smeup.sys.il.core.QObject;
  * @model abstract="true"
  * @generated
  */
-public interface QCapability<T extends QObject> extends QObject {
+public interface QCapability extends QObject {
 
 	/**
 	 * Returns the value of the '<em><b>Rights</b></em>' attribute list.

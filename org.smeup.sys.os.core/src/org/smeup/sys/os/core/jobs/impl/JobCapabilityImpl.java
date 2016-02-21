@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.core.ctx.impl.CapabilityImpl;
-import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobReference;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
@@ -33,7 +32,7 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  *
  * @generated
  */
-public class JobCapabilityImpl extends CapabilityImpl<QJob> implements QJobCapability {
+public class JobCapabilityImpl extends CapabilityImpl implements QJobCapability {
 	/**
 	 * 
 	 */

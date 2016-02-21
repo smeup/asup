@@ -185,9 +185,6 @@
       </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Capability" abstract="true" eSuperTypes="#//Object">
-      <eTypeParameters name="T">
-        <eBounds eClassifier="#//Object"/>
-      </eTypeParameters>
       <eOperations name="getObjectName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="rights" upperBound="-1"
           eType="#//ctx/CapabilityRight"/>
@@ -409,12 +406,6 @@
       <eOperations name="createObjectWriter" lowerBound="1" eType="#//out/ObjectWriter">
         <eParameters name="context" lowerBound="1" eType="#//ctx/Context"/>
       </eOperations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ObjectWriterFactoryRegistry" abstract="true"
-        interface="true">
-      <eGenericSuperTypes eClassifier="#//ObjectRegistry">
-        <eTypeArguments eClassifier="#//out/ObjectWriterFactory"/>
-      </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OutputManager" abstract="true" interface="true">
       <eOperations name="getDefaultWriter" lowerBound="1" eType="#//out/ObjectWriter">

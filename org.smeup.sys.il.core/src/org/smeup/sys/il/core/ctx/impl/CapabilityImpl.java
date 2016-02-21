@@ -16,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.ctx.CapabilityRight;
 import org.smeup.sys.il.core.ctx.QCapability;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
@@ -36,7 +35,7 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
  *
  * @generated
  */
-public abstract class CapabilityImpl<T extends QObject> extends ObjectImpl implements QCapability<T> {
+public abstract class CapabilityImpl extends ObjectImpl implements QCapability {
 	/**
 	 * 
 	 */
@@ -118,7 +117,6 @@ public abstract class CapabilityImpl<T extends QObject> extends ObjectImpl imple
 	 * @generated
 	 */
 	public void setObjectURI(URI newObjectURI) {
-
 		URI oldObjectURI = objectURI;
 		objectURI = newObjectURI;
 		if (eNotificationRequired())

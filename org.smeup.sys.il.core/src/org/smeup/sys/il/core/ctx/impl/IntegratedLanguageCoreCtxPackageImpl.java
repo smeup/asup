@@ -331,13 +331,10 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 
 		// Create type parameters
-		ETypeParameter capabilityEClass_T = addETypeParameter(capabilityEClass, "T");
 		ETypeParameter identityEClass_T = addETypeParameter(identityEClass, "T");
 
 		// Set bounds for type parameters
 		EGenericType g1 = createEGenericType(theIntegratedLanguageCorePackage.getObject());
-		capabilityEClass_T.getEBounds().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObject());
 		identityEClass_T.getEBounds().add(g1);
 
 		// Add supertypes to classes

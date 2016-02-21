@@ -26,7 +26,7 @@ import org.smeup.sys.il.core.ctx.QCapability;
  * @model
  * @generated
  */
-public interface QJobCapability extends QCapability<QJob> {
+public interface QJobCapability extends QCapability {
 
 	/**
 	 * Returns the value of the '<em><b>Job Reference</b></em>' reference.

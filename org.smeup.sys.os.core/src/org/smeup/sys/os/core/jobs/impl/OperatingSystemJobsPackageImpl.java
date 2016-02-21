@@ -731,10 +731,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		// Add supertypes to classes
 		jobEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		jobEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
-		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getCapability());
-		EGenericType g2 = createEGenericType(this.getJob());
-		g1.getETypeArguments().add(g2);
-		jobCapabilityEClass.getEGenericSuperTypes().add(g1);
+		jobCapabilityEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getCapability());
 		jobLogEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		jobLogEntryEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		jobReferenceEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
@@ -827,15 +824,15 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 
 		initEClass(jobManagerEClass, QJobManager.class, "JobManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(jobManagerEClass, this.getJob(), "close", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(jobManagerEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(jobManagerEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(jobManagerEClass, this.getJobCapability(), "create", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getIdentity());
-		g2 = createEGenericType();
+		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getIdentity());
+		EGenericType g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "identity", 1, 1, IS_UNIQUE, IS_ORDERED);
 
