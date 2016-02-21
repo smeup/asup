@@ -15,16 +15,17 @@ import java.util.HashMap;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.il.core.QObjectRegistry;
+import org.smeup.sys.il.core.QObjectRegistryFactory;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QObjectWriterFactory;
-import org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry;
 import org.smeup.sys.il.core.out.QOutputManager;
 
 public class BaseOutputManagerImpl implements QOutputManager {
 
 	@Inject
-	private QObjectWriterFactoryRegistry objectWriterFactoryRegistry;
+	private QObjectRegistryFactory objectRegistryFactory;
 
 	@Override
 	public QObjectWriter getDefaultWriter(QContext context) {
@@ -32,7 +33,7 @@ public class BaseOutputManagerImpl implements QOutputManager {
 		QObjectWriter objectWriter = context.get(QObjectWriter.class);
 
 		if (objectWriter == null) {
-
+			QObjectRegistry<QObjectWriterFactory> objectWriterFactoryRegistry = objectRegistryFactory.createObjectRegistry(QObjectWriterFactory.class);
 			QObjectWriterFactory objectWriterFactory = objectWriterFactoryRegistry.lookup("S");
 			objectWriter = objectWriterFactory.createObjectWriter(context);
 
@@ -60,6 +61,7 @@ public class BaseOutputManagerImpl implements QOutputManager {
 			if (name.equals("*"))
 				return getDefaultWriter(context);
 
+			QObjectRegistry<QObjectWriterFactory> objectWriterFactoryRegistry = objectRegistryFactory.createObjectRegistry(QObjectWriterFactory.class);
 			QObjectWriterFactory objectWriterFactory = objectWriterFactoryRegistry.lookup(name);
 			objectWriter = objectWriterFactory.createObjectWriter(context);
 			jobWriters.put(name, objectWriter);
