@@ -179,7 +179,7 @@ public class BaseCallableInjector {
 		return callable;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "resource" })
 	private void injectFields(Object owner, Class<?> klass, Object callable, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules, Map<String, QRecord> records)
 			throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 

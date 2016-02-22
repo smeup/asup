@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -148,7 +149,7 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTEXT_FEATURE_COUNT = 0;
+	int CONTEXT_FEATURE_COUNT = QMachineInterfaceCorePackage.JAVA_CLOSEABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Context Description</em>' class.

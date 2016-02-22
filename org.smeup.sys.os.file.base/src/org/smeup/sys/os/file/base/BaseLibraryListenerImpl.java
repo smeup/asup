@@ -42,6 +42,7 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 		resourceManager.registerListener(QLibrary.class, this);
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public void handleEvent(QResourceEvent<QLibrary> event) {
 

@@ -52,6 +52,7 @@ public class BaseConnectionManagerImpl extends ConnectionManagerImpl {
 		return createConnection(null, catalog, user, password);
 	}
 
+	@SuppressWarnings("resource")
 	private QConnection createConnection(QContext context, String catalog, String user, String password) throws SQLException {
 
 		if (!(databaseManager instanceof BaseDatabaseManagerImpl))
@@ -65,15 +66,10 @@ public class BaseConnectionManagerImpl extends ConnectionManagerImpl {
 
 		QContext contextChild = null;
 
-		if (context != null) 
+		if (context != null)
 			contextChild = context.createChildContext(connectionID);
-		else {
-			try {
-				contextChild = catalogContainer.getCatalogContext().createChildContext(connectionID);
-			} catch (UnsupportedOperationException e) {
-				throw new SQLException("Unable to open a database connection");
-			}			
-		}
+		else
+			contextChild = catalogContainer.getCatalogContext().createChildContext(connectionID);
 
 		QConnection connection = new BaseConnectionImpl(baseDatabaseManagerImpl.getDatabaseContainer(), contextChild);
 		connection.setCatalog(catalog);

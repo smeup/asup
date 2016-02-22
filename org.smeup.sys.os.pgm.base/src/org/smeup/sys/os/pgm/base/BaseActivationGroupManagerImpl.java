@@ -33,6 +33,7 @@ public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 		return getMapActivationGroup(job).get(name);
 	}
 
+	@SuppressWarnings("resource")
 	protected Map<String, QActivationGroup> getMapActivationGroup(QJob job) {
 
 		QContext jobContext = job.getContext();

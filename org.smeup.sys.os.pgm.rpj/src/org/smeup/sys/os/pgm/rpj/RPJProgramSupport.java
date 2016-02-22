@@ -362,6 +362,7 @@ public class RPJProgramSupport {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	private QProgram getProgram(String name) {
 
 		QProgram program = null;

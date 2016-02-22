@@ -737,6 +737,7 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * 
 	 * @generated NOT
 	 */
+	@SuppressWarnings("resource")
 	public boolean isActive() {
 		QContext context = getContext();
 		if (context == null)

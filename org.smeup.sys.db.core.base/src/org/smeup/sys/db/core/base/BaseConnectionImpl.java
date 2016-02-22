@@ -85,6 +85,8 @@ public class BaseConnectionImpl implements QConnection, Connection {
 		this.catalogConnections.clear();
 		this.currentCatalogConnection = null;
 		this.virtualCatalog = null;
+		
+		this.context.close();
 	}
 
 	@SuppressWarnings("resource")

@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.core.ctx;
 
+import java.io.Closeable;
 import java.lang.annotation.Annotation;
 
 import java.util.List;
@@ -18,16 +19,18 @@ import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
  *
  *
  * @see org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage#getContext()
- * @model abstract="true"
+ * @model abstract="true" superTypes="org.smeup.sys.mi.core.JavaCloseable"
  * @generated
  */
-public interface QContext {
+public interface QContext extends Closeable {
+
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
-	void close() throws IntegratedLanguageCoreRuntimeException;
+	void close();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

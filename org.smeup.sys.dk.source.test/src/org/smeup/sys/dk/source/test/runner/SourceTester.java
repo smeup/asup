@@ -57,6 +57,7 @@ public class SourceTester {
 		QApplicationComponent applicationComponent = QRuntimeCoreFactory.eINSTANCE.createApplicationComponent();
 		applicationComponent.setName("test");
 		
+		context.close();
 //		QSourceEntry objectEntry = sourceManager.createObjectEntry(context, project.getName(), QApplicationComponent.class, "test", true, applicationComponent);
 //		testAsserter.assertNotNull("Test sourceEntry creation", objectEntry);
 

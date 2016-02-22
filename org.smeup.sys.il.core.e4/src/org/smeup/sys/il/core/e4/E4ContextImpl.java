@@ -284,13 +284,12 @@ public abstract class E4ContextImpl extends ContextImpl {
 
 		return createChildContext(contextDescription);
 	}
-
+	
 	@Override
 	public QContext createChildContext(QContextDescription contextDescription) {
-		return createRemoteContext(contextDescription);
+		return createLocalContext(contextDescription);
 	}
 
-	@SuppressWarnings("unused")
 	private QContext createLocalContext(QContextDescription contextDescription) {
 
 		IEclipseContext eclipseChildContext = getEclipseContext().createChild();
@@ -302,6 +301,7 @@ public abstract class E4ContextImpl extends ContextImpl {
 		return contextChild;
 	}
 
+	@SuppressWarnings("unused")
 	private QContext createRemoteContext(QContextDescription contextDescription) {
 
 		IEclipseContext eclipseChildContext = getEclipseContext().createChild();
@@ -314,7 +314,8 @@ public abstract class E4ContextImpl extends ContextImpl {
 
 				Object object = null;
 				String className = ((String[]) serviceReference.getProperty("objectClass"))[0];
-				
+				if (eclipseChildContext.containsKey(className))
+					continue;
 				for (Bundle bundle : bundleContext.getBundles())
 					if (className.startsWith(bundle.getSymbolicName())) {
 

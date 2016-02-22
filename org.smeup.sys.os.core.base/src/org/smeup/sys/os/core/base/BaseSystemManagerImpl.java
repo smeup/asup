@@ -148,6 +148,7 @@ public class BaseSystemManagerImpl implements QSystemManager {
 		return createJob(jobKernel.getSystem(), jobType, principal, jobName);
 	}
 	
+	@SuppressWarnings("resource")
 	protected QJob createJob(QSystem system, JobType jobType, Principal principal, String jobName) {
 
 		// job

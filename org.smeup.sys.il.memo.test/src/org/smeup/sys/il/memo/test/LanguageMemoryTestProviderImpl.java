@@ -44,6 +44,7 @@ public class LanguageMemoryTestProviderImpl extends BaseTestProviderImpl {
 			e.printStackTrace();
 		}
 		
+		testContext.close();
 	}
 
 	@Test(category = "ILMEMO", object = "READ")

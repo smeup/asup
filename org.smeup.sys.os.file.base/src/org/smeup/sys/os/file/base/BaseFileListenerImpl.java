@@ -49,6 +49,7 @@ public class BaseFileListenerImpl implements QResourceListener<QFile> {
 		resourceManager.registerListener(QFile.class, this);
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public void handleEvent(QResourceEvent<QFile> event) {
 

@@ -17,7 +17,6 @@ import javax.inject.Inject;
 import org.eclipse.datatools.modelbase.sql.constraints.Index;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.il.core.ctx.QAdapterFactory;
-import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.esam.QAccessFactory;
@@ -39,9 +38,7 @@ public class JDBCAccessManagerImpl implements QAccessManager {
 	@Override
 	public QAccessFactory createFactory(QContextProvider contextProvider, QDataContext dataContext) {
 
-		QContext context = contextProvider.getContext();
-		
-		QConnection connection = context.getAdapter(contextProvider, QConnection.class);
+		QConnection connection = contextProvider.getContext().getAdapter(contextProvider, QConnection.class);
 
 		return new JDBCAccessFactoryImpl(contextProvider, connection, dataContext);
 	}

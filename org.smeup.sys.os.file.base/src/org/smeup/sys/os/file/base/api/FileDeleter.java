@@ -25,7 +25,6 @@ import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.core.QObjectIterator;
-import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -106,8 +105,7 @@ public @Supported class FileDeleter {
 
 	private boolean hasLogicals(QPhysicalFile qFile) {
 		try {
-			QContext jobContext = job.getContext();
-			QConnection connection = jobContext.getAdapter(job, QConnection.class);
+			QConnection connection = job.getContext().getAdapter(job, QConnection.class);
 			Table table = connection.getCatalogMetaData().getTable(qFile.getLibrary(), qFile.getName());
 			return databaseManager.hasLogicals(connection, table);
 		} catch (SQLException e) {

@@ -280,6 +280,7 @@ public class E4ApplicationStarter {
 					field.setAccessible(false);
 				}
 			} catch (Exception e) {
+				contextService.close();
 				throw new RuntimeException(e);
 			}
 		}
