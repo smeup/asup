@@ -13,13 +13,17 @@ package org.smeup.sys.co.shell.base;
 
 import java.io.IOException;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.eclipse.emf.common.util.Enumerator;
+import org.smeup.sys.co.core.QOutputWrapper;
 import org.smeup.sys.co.shell.QCommunicationShellPackage;
 import org.smeup.sys.co.shell.QShellOutputWrapper;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.QObjectRegistry;
+import org.smeup.sys.il.core.QObjectRegistryFactory;
 import org.smeup.sys.il.core.meta.QFrame;
 import org.smeup.sys.il.core.meta.QFrameManager;
 import org.smeup.sys.il.core.meta.QSlot;
@@ -43,25 +47,36 @@ import org.smeup.sys.os.core.jobs.QJobCapability;
 public class BaseShellObjectWriterImpl implements QObjectWriter {
 
 	@Inject
-	private QShellOutputWrapper outputWrapper;
-	@Inject
 	private QJob job;
 	@Inject
 	private QJobCapability jobCapability;
-
 	@Inject
 	private QDataManager dataManager;
 	@Inject
 	private QFrameManager frameManager;
 	@Inject
 	private QStrings strings;
+	@Inject
+	private QObjectRegistryFactory objectRegistryFactory;;
 	
 	private QFrame<?> qFrame = null;
-
 	private QDataContainer dataContainer = null;
-
 	private QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 
+	private QOutputWrapper outputWrapper;
+	
+	@PostConstruct
+	private void init() {
+		QObjectRegistry<QShellOutputWrapper> shellOutputWrapperRegistry = objectRegistryFactory.createObjectRegistry(QShellOutputWrapper.class);		
+
+		for(QShellOutputWrapper shellOutputWrapper: shellOutputWrapperRegistry.list()) {
+			if(shellOutputWrapper.contains(jobCapability)) {
+				outputWrapper = shellOutputWrapper;
+				break;
+			}
+		}
+	}
+	
 	@Override
 	public synchronized void write(QObject object) throws IOException {
 
@@ -149,23 +164,11 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 	}
 
 	private void streamWrite(String data) throws IOException {
-
-		// if (outputWrapper.contains(contextID.getID())) {
 		outputWrapper.write(jobCapability, data);
-		/*
-		 * } else { System.err.println("Unexpected condition 98sedr2q38sedhrf");
-		 * sysout.write(data); }
-		 */
 	}
 
 	private void streamFlush() throws IOException {
-
-		// if (outputWrapper.contains(contextID.getID())) {
 		outputWrapper.flush(jobCapability);
-		/*
-		 * } else{ System.err.println("Unexpected condition 38sedr2q38se8756hrf"
-		 * ); sysout.flush(); }
-		 */
 	}
 
 	@Override

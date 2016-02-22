@@ -32,14 +32,14 @@ import org.smeup.sys.rt.auth.QAuthenticationManager;
 public class BaseShellSocketHandler implements Runnable {
 
 	@Inject
-	private QAuthenticationManager authenticationManager;
-	@Inject
 	private QShellManager shellManager;
 	@Inject
 	private QCommunicationManager communicationManager;	
 	@Inject
 	private QShellOutputWrapper shellOutputWrapper;
-
+	@Inject
+	private QAuthenticationManager authenticationManager;
+	
 	private Socket socket;
 	private QJobCapability jobCapability;
 
@@ -48,7 +48,7 @@ public class BaseShellSocketHandler implements Runnable {
 
 	private static String LOGIN = "login> ";
 
-	public BaseShellSocketHandler(Socket socket) {
+	protected void setSocket(Socket socket) {
 		this.socket = socket;
 	}
 
@@ -158,6 +158,9 @@ public class BaseShellSocketHandler implements Runnable {
 
 		}
 		System.out.println("Connection request for user " + credentials.getUser());
+
+//		QObjectRegistry<QAuthenticationManager> authenticatioRegistry = objectRegistryFactory.createObjectRegistry(QAuthenticationManager.class);
+//		QAuthenticationManager authenticationManager = authenticatioRegistry.list().get(0);
 
 		// connect
 		return authenticationManager.authenticate(credentials);

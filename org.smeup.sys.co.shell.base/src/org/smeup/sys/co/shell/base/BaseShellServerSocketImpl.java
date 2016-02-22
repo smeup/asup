@@ -33,7 +33,7 @@ public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
 	private QApplication application;
 	private QThreadManager threadManager;
 	private QServerSocketConfig config;
-
+	
 	@ComponentStarted
 	public void init(QApplication application, QThreadManager threadManager, QServerSocketConfig config) {
 		this.application = application;
@@ -60,11 +60,18 @@ public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
 			while (threadManager.currentThread().checkRunnable()) {
 				socket = serverSocket.accept();
 
-				BaseShellSocketHandler shellHandler = new BaseShellSocketHandler(socket);
-				QContext connectionContext = application.getContext().createChildContext(shellHandler.toString());
 
-				try {			
-					connectionContext.inject(shellHandler);
+				try {
+					//TODO remove this child creation
+					QContext connectionContext = application.getContext().createChildContext(socket.getInetAddress().toString());
+					BaseShellSocketHandler shellHandler = connectionContext.make(BaseShellSocketHandler.class);
+					shellHandler.setSocket(socket);
+					connectionContext.close();
+					
+					// start thread handler
+					QThread thread = threadManager.createThread("telnet/" + socket.getRemoteSocketAddress(), shellHandler);
+					threadManager.start(thread);
+
 				} catch (Exception e) {
 					OutputStreamWriter outputStreamWriter = new OutputStreamWriter(socket.getOutputStream());
 					outputStreamWriter.write(e.getMessage());
@@ -72,10 +79,6 @@ public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
 					socket.close();
 					continue;
 				}
-				
-				// start thread handler
-				QThread thread = threadManager.createThread("telnet/" + socket.getRemoteSocketAddress(), shellHandler);
-				threadManager.start(thread);
 			}
 
 		} catch (IOException e) {

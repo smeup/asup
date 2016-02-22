@@ -16,12 +16,11 @@ import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QObjectWriterFactory;
 
 public class BaseShellObjectWriterFactoryImpl implements QObjectWriterFactory {
-
+	
 	@Override
 	public QObjectWriter createObjectWriter(QContext context) {
 
-		BaseShellObjectWriterImpl objectWriter = context.make(BaseShellObjectWriterImpl.class);
-		
+		BaseShellObjectWriterImpl objectWriter = context.make(BaseShellObjectWriterImpl.class);		
 		return objectWriter;
 	}
 }

@@ -25,13 +25,13 @@ public class BaseShellOutputWrapperImpl implements QShellOutputWrapper {
 
 	@Override
 	public void flush(QJobCapability capability) throws IOException {
-		if (writers.containsKey(capability.getObjectURI().toString()))
-			writers.get(capability).flush();
+		if (contains(capability))
+			writers.get(capability.getObjectURI().toString()).flush();
 	}
 
 	@Override
 	public void write(QJobCapability capability, String content) throws IOException {
-		if (writers.containsKey(capability.getObjectURI().toString()))
+		if (contains(capability))
 			writers.get(capability.getObjectURI().toString()).write(content);
 	}
 
