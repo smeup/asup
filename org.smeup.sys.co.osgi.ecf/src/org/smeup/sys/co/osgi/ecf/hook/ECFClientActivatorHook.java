@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
-import java.util.Properties;
 
 import javax.inject.Inject;
 
@@ -29,6 +28,8 @@ import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.remoteserviceadmin.EndpointDescription;
 import org.osgi.service.remoteserviceadmin.EndpointEvent;
 import org.osgi.service.remoteserviceadmin.EndpointEventListener;
+import org.osgi.service.remoteserviceadmin.RemoteServiceAdminEvent;
+import org.osgi.service.remoteserviceadmin.RemoteServiceAdminListener;
 import org.osgi.util.tracker.ServiceTracker;
 import org.smeup.sys.rt.core.ApplicationStarting;
 
@@ -38,13 +39,16 @@ public class ECFClientActivatorHook {
 	@Inject
 	private IGenericServerContainerGroupFactory genericServerFactory;
 
-	private static InternalEndPointListener endpointListener;
+	private static InternalEndPointEventListener endpointListener;
 
 	@ApplicationStarting
 	public void init() throws GenericServerContainerGroupCreateException, ContainerCreateException, IOException {
 
 		BundleContext bundleContext = FrameworkUtil.getBundle(this.getClass()).getBundleContext();
-		endpointListener = new InternalEndPointListener();
+		
+		bundleContext.registerService(RemoteServiceAdminListener.class.getName(),new InternalRemoteServiceAdminListener(),null);
+		
+		endpointListener = new InternalEndPointEventListener();
 
 		Dictionary<String, String> props = new Hashtable<String, String>();
 		props.put("endpoint.listener.scope", "(endpoint.id=*)");
@@ -52,18 +56,10 @@ public class ECFClientActivatorHook {
 
 		IContainerFactory containerFactory = getContainerFactory(bundleContext);
 		containerFactory.createContainer("ecf.generic.client");
-		
-		/*
-		 * IGenericServerContainerGroup containerGroup =
-		 * genericServerFactory.createContainerGroup("192.168.42.34",3797);
-		 * ISharedObjectContainer container =
-		 * containerGroup.createContainer("/server");
-		 * System.out.println(container); containerGroup.startListening();
-		 */
 	}
 
 	private IContainerFactory getContainerFactory(BundleContext bundleContext) {
-
+		
 		ServiceTracker<Object, Object> containerFactoryServiceTracker = new ServiceTracker<Object, Object>(bundleContext, IContainerFactory.class.getName(), null);
 		containerFactoryServiceTracker.open();
 		return (IContainerFactory) containerFactoryServiceTracker.getService();
@@ -73,36 +69,59 @@ public class ECFClientActivatorHook {
 		return endpointListener.getEndpointDescriptions();
 	}
 
-	Properties props = new Properties(); // setup a scope for the desired
-											// endpoints
-											// props.put("endpoint.listener.scope","(endpoint.id=*)");
+	private static class InternalRemoteServiceAdminListener implements RemoteServiceAdminListener {
 
-	private static class InternalEndPointListener implements EndpointEventListener {
+		@Override
+		public void remoteAdminEvent(RemoteServiceAdminEvent event) {
+
+			switch (event.getType()) {
+			case RemoteServiceAdminEvent.EXPORT_ERROR:
+			case RemoteServiceAdminEvent.EXPORT_REGISTRATION:
+			case RemoteServiceAdminEvent.EXPORT_UNREGISTRATION:
+			case RemoteServiceAdminEvent.EXPORT_UPDATE:
+			case RemoteServiceAdminEvent.EXPORT_WARNING:
+
+				break;
+			case RemoteServiceAdminEvent.IMPORT_ERROR:
+			case RemoteServiceAdminEvent.IMPORT_REGISTRATION:
+			case RemoteServiceAdminEvent.IMPORT_UNREGISTRATION:
+			case RemoteServiceAdminEvent.IMPORT_UPDATE:
+			case RemoteServiceAdminEvent.IMPORT_WARNING:
+
+				break;
+			}
+			
+		}
+		
+	}
+	
+	private static class InternalEndPointEventListener implements EndpointEventListener {
 
 		protected static List<EndpointDescription> endpointDescriptions = new ArrayList<EndpointDescription>();
 		
 		protected List<EndpointDescription> getEndpointDescriptions() {
-			return InternalEndPointListener.endpointDescriptions;
+			return InternalEndPointEventListener.endpointDescriptions;
 		}
 
 		@Override
 		public void endpointChanged(EndpointEvent event, String filter) {
-			
+						
 			switch (event.getType()) {
 			case EndpointEvent.ADDED:
-				InternalEndPointListener.endpointDescriptions.add(event.getEndpoint());
+				System.out.println("Added \t"+event.getEndpoint().getProperties().get("org.smeup.sys.rt.core.component"));
+				InternalEndPointEventListener.endpointDescriptions.add(event.getEndpoint());
 				break;
 			case EndpointEvent.MODIFIED:
-				
-				break;
 			case EndpointEvent.MODIFIED_ENDMATCH:
-				
+				System.out.println("Modified \t"+event.getEndpoint().getProperties().get("org.smeup.sys.rt.core.component"));
 				break;
 	
 			case EndpointEvent.REMOVED:
-				InternalEndPointListener.endpointDescriptions.remove(event.getEndpoint());
+				System.out.println("Removed \t"+event.getEndpoint().getProperties().get("org.smeup.sys.rt.core.component"));
+				InternalEndPointEventListener.endpointDescriptions.remove(event.getEndpoint());
 				break;
 			}			
+			
 		}
 	}
 }

@@ -11,17 +11,23 @@
  */
 package org.smeup.sys.co.osgi.ecf.hook;
 
+import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Dictionary;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.eclipse.ecf.osgi.services.distribution.IDistributionConstants;
 import org.smeup.sys.co.osgi.ecf.ECFServerContainerConfig;
+import org.smeup.sys.rt.core.QApplication;
 import org.smeup.sys.rt.core.ServiceRegistering;
 
 @SuppressWarnings("restriction")
 public class ECFServerActivatorHook {
+	
+	@Inject
+	private QApplication application;
 	
 	@ServiceRegistering
 	public void completeRegistration(@Named("org.smeup.sys.rt.core.service.name") String name, 
@@ -33,17 +39,15 @@ public class ECFServerActivatorHook {
 		if (remoteExport) {
 			properties.put(IDistributionConstants.SERVICE_EXPORTED_INTERFACES, IDistributionConstants.SERVICE_EXPORTED_INTERFACES_WILDCARD);
 			properties.put(IDistributionConstants.SERVICE_EXPORTED_CONFIGS, config.getServerContainerType());
-//			if(config.getContainerId() == null) {
-//				String containerID = "ecftcp://localhost:3282/"+application.getName();
-//				properties.put(IDistributionConstants.SERVICE_EXPORTED_CONTAINER_FACTORY_ARGUMENTS, containerID);
-
-/*			
+			
+			if(config.getContainerId() == null || config.getContainerId().isEmpty()) {
 				properties.put("ecf.generic.server.hostname", "localhost");
 				properties.put("ecf.generic.server.port", -1);				
 				properties.put("ecf.generic.server.path", "/"+application.getName());
-				properties.put("ecf.generic.server.bindAddress", InetAddress.getByName("172.16.2.129"));
-				*/
-//			}
+				properties.put("ecf.generic.server.bindAddress", InetAddress.getByName("0.0.0.0"));
+			}
+			else 
+				properties.put(IDistributionConstants.SERVICE_EXPORTED_CONTAINER_FACTORY_ARGUMENTS, config.getContainerId());				
 		}
 	}
 
