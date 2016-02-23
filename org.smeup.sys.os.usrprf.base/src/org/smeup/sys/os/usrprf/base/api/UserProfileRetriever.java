@@ -68,8 +68,10 @@ public class UserProfileRetriever {
 		switch (userProfile.asEnum()) {
 		case CURRENT:
 			qUserProfile = resourceReader.lookup(job.getJobReference().getJobUser());
+			break;
 		case OTHER:
 			qUserProfile = resourceReader.lookup(userProfile.asData().trimR());
+			break;
 		}
 
 		if (qUserProfile == null)
