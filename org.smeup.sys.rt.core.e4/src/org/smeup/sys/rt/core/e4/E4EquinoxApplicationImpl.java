@@ -29,7 +29,7 @@ import org.smeup.sys.rt.core.QApplication;
 import org.smeup.sys.rt.core.QApplicationManager;
 import org.smeup.sys.rt.core.QRuntimeCorePackage;
 
-public class E4EquinoxApplicationImpl implements IApplication {
+public abstract class E4EquinoxApplicationImpl implements IApplication {
 
 	private QApplication application = null;
 	private QApplicationManager applicationManager;
@@ -94,11 +94,11 @@ public class E4EquinoxApplicationImpl implements IApplication {
 		
 		System.out.println("Starting " + application);
 
-		BundleContext bundleContext = FrameworkUtil.getBundle(QApplication.class).getBundleContext();
+		BundleContext bundleContext = FrameworkUtil.getBundle(this.getClass()).getBundleContext();
 		ServiceReference<QApplicationManager> applicationManagerReference = bundleContext.getServiceReference(QApplicationManager.class);
 
 		applicationManager = bundleContext.getService(applicationManagerReference);
-		applicationManager.start(application, System.out);
+		applicationManager.start(this.getClass(), application, System.out);
 		
 		return waitForStopOrRestart();
 	}

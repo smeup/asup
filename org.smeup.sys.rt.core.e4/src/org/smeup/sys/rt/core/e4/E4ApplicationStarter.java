@@ -287,7 +287,10 @@ public class E4ApplicationStarter {
 
 		contextService.invoke(service, ServiceRegistering.class);
 		bundleContext.registerService(name, service, properties);
-
+		
+		// prevent external injection
+		application.getContext().set(name, service);
+		
 		contextService.close();
 	}
 

@@ -20,4 +20,5 @@ Require-Bundle: org.smeup.sys.os.core,
  org.smeup.sys.os.usrprf,
  org.smeup.sys.rt.core,
  org.smeup.sys.il.memo,
- org.smeup.sys.os.jobd
+ org.smeup.sys.os.jobd,
+ org.smeup.sys.il.lock

@@ -274,6 +274,7 @@
       <eOperations name="close">
         <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
       </eOperations>
+      <eOperations name="countActiveJobs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eOperations name="create" lowerBound="1" eType="#//jobs/JobCapability">
         <eParameters name="identity" lowerBound="1">
           <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Identity">

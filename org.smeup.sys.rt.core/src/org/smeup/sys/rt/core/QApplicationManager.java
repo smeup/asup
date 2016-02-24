@@ -23,10 +23,10 @@ public interface QApplicationManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" applicationRequired="true" outputDataType="org.smeup.sys.mi.core.JavaOutputStream"
+	 * @model required="true" contextRequired="true" applicationRequired="true" outputDataType="org.smeup.sys.mi.core.JavaOutputStream"
 	 * @generated
 	 */
-	QApplication start(QApplication application, OutputStream output);
+	QApplication start(Class<?> context, QApplication application, OutputStream output);
 
 	/**
 	 * <!-- begin-user-doc -->

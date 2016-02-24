@@ -24,7 +24,6 @@ import org.smeup.sys.co.core.QServerSocket;
 import org.smeup.sys.co.core.QServerSocketConfig;
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.QThreadManager;
-import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.rt.core.ComponentStarted;
 import org.smeup.sys.rt.core.QApplication;
 
@@ -33,7 +32,7 @@ public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
 	private QApplication application;
 	private QThreadManager threadManager;
 	private QServerSocketConfig config;
-	
+
 	@ComponentStarted
 	public void init(QApplication application, QThreadManager threadManager, QServerSocketConfig config) {
 		this.application = application;
@@ -49,6 +48,7 @@ public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
 
 		ServerSocket serverSocket = null;
 		Socket socket = null;
+
 		try {
 			String systemAddress = ConnectorCoreHelper.resolveVariables(config.getAddress());
 			InetAddress inetAddress = InetAddress.getByName(systemAddress);
@@ -60,15 +60,10 @@ public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
 			while (threadManager.currentThread().checkRunnable()) {
 				socket = serverSocket.accept();
 
-
 				try {
-					//TODO remove this child creation
-					QContext connectionContext = application.getContext().createChildContext(socket.getInetAddress().toString());
-					BaseShellSocketHandler shellHandler = connectionContext.make(BaseShellSocketHandler.class);
+					BaseShellSocketHandler shellHandler = application.getContext().make(BaseShellSocketHandler.class);
 					shellHandler.setSocket(socket);
-					connectionContext.close();
-					
-					// start thread handler
+
 					QThread thread = threadManager.createThread("telnet/" + socket.getRemoteSocketAddress(), shellHandler);
 					threadManager.start(thread);
 
@@ -86,13 +81,15 @@ public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
 		} finally {
 
 			try {
-				socket.close();
+				if (socket != null)
+					socket.close();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 
 			try {
-				serverSocket.close();
+				if (serverSocket != null)
+					serverSocket.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

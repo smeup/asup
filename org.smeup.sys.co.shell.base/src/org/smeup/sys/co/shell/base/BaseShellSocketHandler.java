@@ -69,7 +69,7 @@ public class BaseShellSocketHandler implements Runnable {
 			while (true) {
 
 				String request = bufferedReader.readLine();
-
+				
 				// hello
 				if (request.equalsIgnoreCase("HELLO")) {
 					outputStreamWriter.write(WELCOME);

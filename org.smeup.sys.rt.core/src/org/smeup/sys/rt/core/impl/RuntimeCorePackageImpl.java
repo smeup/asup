@@ -579,6 +579,10 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		initEClass(applicationManagerEClass, QApplicationManager.class, "ApplicationManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		EOperation op = addEOperation(applicationManagerEClass, this.getApplication(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		EGenericType g1 = createEGenericType(ecorePackage.getEJavaClass());
+		EGenericType g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getApplication(), "application", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaOutputStream(), "output", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -619,8 +623,8 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		addEParameter(op, theIntegratedLanguageCorePackage.getObject(), "object", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bundleVisitorEClass, null, "visitEnter", 0, 1, IS_UNIQUE, IS_ORDERED);
-		EGenericType g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectContainer());
-		EGenericType g2 = createEGenericType();
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectContainer());
+		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "container", 1, 1, IS_UNIQUE, IS_ORDERED);
 

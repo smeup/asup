@@ -14,5 +14,5 @@ Export-Package: org.smeup.sys.dk.parser.ibmi.cl,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.smeup.sys.il.expr,
  org.smeup.sys.et.antlr,
- org.smeup.sys.il.expr.base,
- org.smeup.sys.il.expr.ibmi
+ org.smeup.sys.il.expr.ibmi,
+ org.smeup.sys.il.expr.base

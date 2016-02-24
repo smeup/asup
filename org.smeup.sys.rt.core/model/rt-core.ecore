@@ -26,6 +26,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="ApplicationManager" abstract="true"
       interface="true">
     <eOperations name="start" lowerBound="1" eType="#//Application">
+      <eParameters name="context" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
       <eParameters name="application" lowerBound="1" eType="#//Application"/>
       <eParameters name="output" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaOutputStream"/>
     </eOperations>

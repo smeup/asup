@@ -40,6 +40,14 @@ public interface QJobManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	int countActiveJobs();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" identityRequired="true"
 	 * @generated
 	 */

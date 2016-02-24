@@ -91,10 +91,16 @@ public class ECFCommunicationManagerImpl implements QCommunicationManager {
 	private QJobManager locate() {
 		
 		QJobManager jobManager = null;
+		int activeJobs = Integer.MAX_VALUE;
 		
 		for(QJobManager jm: jobRegistry.list()) {
-			jobManager = jm;
-			break;
+			
+			int tempActiveJobs = jm.countActiveJobs();
+			
+			if(tempActiveJobs < activeJobs) {
+				jobManager = jm;
+				activeJobs = tempActiveJobs;
+			}
 		}
 		
 		return jobManager;

@@ -21,7 +21,6 @@ import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
-import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.env.QOperatingSystemEnvironmentPackage;
 import org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentPackageImpl;
@@ -187,8 +186,8 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		isInited = true;
 
 		// Initialize simple dependencies
+		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
 		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
-		QIntegratedLanguageLockPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
 		OperatingSystemCorePackageImpl theOperatingSystemCorePackage = (OperatingSystemCorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemCorePackage.eNS_URI) instanceof OperatingSystemCorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemCorePackage.eNS_URI) : QOperatingSystemCorePackage.eINSTANCE);
@@ -829,6 +828,8 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 
 		op = addEOperation(jobManagerEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(jobManagerEClass, ecorePackage.getEInt(), "countActiveJobs", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(jobManagerEClass, this.getJobCapability(), "create", 1, 1, IS_UNIQUE, IS_ORDERED);
 		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getIdentity());

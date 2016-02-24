@@ -24,11 +24,11 @@ public class E4ApplicationManagerImpl implements QApplicationManager {
 	private boolean stop = false;
 
 	@Override
-	public QApplication start(QApplication application, OutputStream output) {
+	public QApplication start(Class<?> context, QApplication application, OutputStream output) {
 
 		try {
 			// Start application
-			BundleContext bundleContext = FrameworkUtil.getBundle(this.getClass()).getBundleContext();
+			BundleContext bundleContext = FrameworkUtil.getBundle(context).getBundleContext();
 			return new E4ApplicationStarter(application, bundleContext, output).start();
 
 		} catch (Exception e) {

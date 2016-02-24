@@ -12,7 +12,7 @@ import org.osgi.framework.hooks.weaving.WovenClass;
 import org.osgi.framework.wiring.BundleWiring;
 
 public class ASMProgramLoader implements WeavingHook {
-
+	
 	@Override
 	public void weave(WovenClass wovenClass) {
 
