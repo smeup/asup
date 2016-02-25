@@ -10,6 +10,7 @@ package org.smeup.sys.il.expr.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.smeup.sys.il.expr.QArithmeticExpression;
+import org.smeup.sys.il.expr.QArrayExpression;
 import org.smeup.sys.il.expr.QAssignmentExpression;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QBlockExpression;
@@ -52,6 +53,14 @@ public abstract class ExpressionVisitorImpl extends MinimalEObjectImpl.Container
 	 */
 	@Override
 	public void endVisit(QAssignmentExpression expression) {
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void endVisit(QArrayExpression expression) {
 	}
 
 	/**
@@ -163,6 +172,15 @@ public abstract class ExpressionVisitorImpl extends MinimalEObjectImpl.Container
 	 */
 	@Override
 	public boolean visit(QArithmeticExpression expression) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean visit(QArrayExpression expression) {
 		return true;
 	}
 

@@ -80,6 +80,10 @@ public class RPGExpressionHelper implements BaseExpressionHelper {
 		case RPGExprLexer.BLOCK:
 			return ExpressionType.BLOCK;
 
+
+		case RPGExprLexer.ARRAY:
+			return ExpressionType.ARRAY;
+			
 		default:
 			System.err.println(node.getType());
 			return null;

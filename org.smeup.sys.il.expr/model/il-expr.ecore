@@ -19,6 +19,10 @@
     <eLiterals name="SignMinus" value="9" literal="SIGN_MINUS"/>
     <eLiterals name="SignPlus" value="10" literal="SIGN_PLUS"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ArrayExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        upperBound="-1" eType="#//Expression" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AssignmentExpression" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="leftOperand" lowerBound="1"
         eType="#//TermExpression" containment="true"/>
@@ -106,6 +110,7 @@
     <eLiterals name="Qualified" value="42" literal="QUAL"/>
     <eLiterals name="Function" value="43" literal="FUNC"/>
     <eLiterals name="Block" value="50" literal="BLC"/>
+    <eLiterals name="Array" value="60" literal="ARR"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExpressionWriter" abstract="true" interface="true">
     <eOperations name="writeExpression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
@@ -124,6 +129,9 @@
     </eOperations>
     <eOperations name="endVisit">
       <eParameters name="expression" lowerBound="1" eType="#//AssignmentExpression"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="expression" lowerBound="1" eType="#//ArrayExpression"/>
     </eOperations>
     <eOperations name="endVisit">
       <eParameters name="expression" lowerBound="1" eType="#//AtomicTermExpression"/>
@@ -148,6 +156,9 @@
     </eOperations>
     <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="expression" lowerBound="1" eType="#//ArithmeticExpression"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="expression" lowerBound="1" eType="#//ArrayExpression"/>
     </eOperations>
     <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="expression" lowerBound="1" eType="#//AssignmentExpression"/>

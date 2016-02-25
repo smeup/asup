@@ -16,6 +16,7 @@ import org.smeup.sys.il.expr.AssignmentOperator;
 import org.smeup.sys.il.expr.ExpressionType;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.QArithmeticExpression;
+import org.smeup.sys.il.expr.QArrayExpression;
 import org.smeup.sys.il.expr.QAssignmentExpression;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QBlockExpression;
@@ -57,6 +58,8 @@ public class BaseExpressionBuilder {
 			return qExpression = buildAsTerm(tree);
 		case BLOCK:
 			return qExpression = buildAsBlock(tree);
+		case ARRAY:
+			return qExpression = buildAsArray(tree);			
 		case BOOLEAN:
 		case LOGICAL:
 		case RELATIONAL:
@@ -126,6 +129,7 @@ public class BaseExpressionBuilder {
 
 		// right side
 		switch (rightExpType) {
+		case ARRAY:		
 		case ASSIGNMENT:
 			throw new IntegratedLanguageExpressionRuntimeException("Invalid assignment expression: " + expression);
 		case ARITHMETIC:
@@ -166,6 +170,7 @@ public class BaseExpressionBuilder {
 	private QPredicateExpression buildAsPredicate(Tree node) throws IntegratedLanguageExpressionRuntimeException {
 
 		switch (expressionHelper.getExpressionType(node)) {
+		case ARRAY:		
 		case ARITHMETIC:
 		case ASSIGNMENT:
 			throw new IntegratedLanguageExpressionRuntimeException("Attempted to analyze as predicate an incompatible expression: " + node);
@@ -204,6 +209,7 @@ public class BaseExpressionBuilder {
 	public QArithmeticExpression buildAsArithmetic(Tree node) {
 
 		switch (expressionHelper.getExpressionType(node)) {
+		case ARRAY:		
 		case LOGICAL:
 		case RELATIONAL:
 		case BOOLEAN:
@@ -222,9 +228,30 @@ public class BaseExpressionBuilder {
 		return null;
 	}
 
+	public QArrayExpression buildAsArray(Tree node) {
+
+		switch (expressionHelper.getExpressionType(node)) {
+		case BLOCK:
+		case ARITHMETIC:
+		case ASSIGNMENT:
+		case ATOMIC:
+		case FUNCTION:
+		case QUALIFIED:
+		case LOGICAL:
+		case RELATIONAL:
+		case BOOLEAN:
+			throw new IntegratedLanguageExpressionRuntimeException("Invalid block expression: " + node);
+		case ARRAY:
+			return (QArrayExpression) buildChildExpression(node);
+		}
+
+		throw new IntegratedLanguageExpressionRuntimeException("Attempted to analyze as block an incompatible expression: " + node);
+	}
+
 	public QBlockExpression buildAsBlock(Tree node) {
 
 		switch (expressionHelper.getExpressionType(node)) {
+		case ARRAY:
 		case ARITHMETIC:
 		case ASSIGNMENT:
 		case ATOMIC:
@@ -252,6 +279,7 @@ public class BaseExpressionBuilder {
 	private QTermExpression buildAsTerm(Tree node) throws IntegratedLanguageExpressionRuntimeException {
 
 		switch (expressionHelper.getExpressionType(node)) {
+		case ARRAY:		
 		case ARITHMETIC:
 		case ASSIGNMENT:
 		case LOGICAL:
@@ -303,6 +331,14 @@ public class BaseExpressionBuilder {
 
 			expression = atomicTermExpression;
 			break;
+		case ARRAY:
+			QArrayExpression arrayExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createArrayExpression();
+
+			for(int i=0; i<node.getChildCount(); i++) 
+				arrayExpression.getExpression().add(buildChildExpression(node.getChild(i)));
+
+			expression = arrayExpression;
+			break;			
 		case BLOCK:
 			QBlockExpression blockExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createBlockExpression();
 

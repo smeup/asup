@@ -13,6 +13,7 @@
 package org.smeup.sys.dk.compiler.rpj.writer;
 
 import java.util.Date;
+import java.util.List;
 
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.il.core.term.QNamedNode;
@@ -34,6 +35,8 @@ public class CompilationContextHelper {
 	public static boolean isPrimitive(QCompilationUnit compilationUnit, QExpression expression) {
 
 		switch (expression.getExpressionType()) {
+		case ARRAY:
+			return true;		
 		case ARITHMETIC:
 			return true;
 		case ASSIGNMENT:
@@ -94,6 +97,7 @@ public class CompilationContextHelper {
 	public static boolean isSpecial(QCompilationUnit compilationUnit, QExpression expression) {
 
 		switch (expression.getExpressionType()) {
+		case ARRAY:		
 		case ARITHMETIC:
 		case ASSIGNMENT:
 		case FUNCTION:
@@ -174,6 +178,8 @@ public class CompilationContextHelper {
 	public static Class<?> getJavaClass(QCompilationUnit compilationUnit, QExpression expression) {
 
 		switch (expression.getExpressionType()) {
+		case ARRAY:
+			return List.class;		
 		case ARITHMETIC:
 			return Integer.class;
 		case ASSIGNMENT:

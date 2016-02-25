@@ -68,7 +68,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getRelationalExpression()
 	 * @generated
 	 */
-	int RELATIONAL_EXPRESSION = 16;
+	int RELATIONAL_EXPRESSION = 17;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.ArithmeticOperator <em>Arithmetic Operator</em>}' enum.
@@ -78,7 +78,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getArithmeticOperator()
 	 * @generated
 	 */
-	int ARITHMETIC_OPERATOR = 18;
+	int ARITHMETIC_OPERATOR = 19;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.impl.ExpressionImpl <em>Expression</em>}' class.
@@ -87,7 +87,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 6;
+	int EXPRESSION = 7;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -115,7 +115,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getAssignmentExpression()
 	 * @generated
 	 */
-	int ASSIGNMENT_EXPRESSION = 1;
+	int ASSIGNMENT_EXPRESSION = 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.QExpressionParser <em>Expression Parser</em>}' class.
@@ -125,7 +125,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getExpressionParser()
 	 * @generated
 	 */
-	int EXPRESSION_PARSER = 7;
+	int EXPRESSION_PARSER = 8;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.impl.ExpressionVisitorImpl <em>Expression Visitor</em>}' class.
@@ -135,7 +135,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getExpressionVisitor()
 	 * @generated
 	 */
-	int EXPRESSION_VISITOR = 11;
+	int EXPRESSION_VISITOR = 12;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.impl.PredicateExpressionImpl <em>Predicate Expression</em>}' class.
@@ -145,7 +145,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getPredicateExpression()
 	 * @generated
 	 */
-	int PREDICATE_EXPRESSION = 14;
+	int PREDICATE_EXPRESSION = 15;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.impl.LogicalExpressionImpl <em>Logical Expression</em>}' class.
@@ -155,7 +155,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getLogicalExpression()
 	 * @generated
 	 */
-	int LOGICAL_EXPRESSION = 13;
+	int LOGICAL_EXPRESSION = 14;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.impl.TermExpressionImpl <em>Term Expression</em>}' class.
@@ -165,7 +165,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getTermExpression()
 	 * @generated
 	 */
-	int TERM_EXPRESSION = 17;
+	int TERM_EXPRESSION = 18;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.impl.AtomicTermExpressionImpl <em>Atomic Term Expression</em>}' class.
@@ -175,7 +175,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getAtomicTermExpression()
 	 * @generated
 	 */
-	int ATOMIC_TERM_EXPRESSION = 2;
+	int ATOMIC_TERM_EXPRESSION = 3;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.impl.CompoundTermExpressionImpl <em>Compound Term Expression</em>}' class.
@@ -185,7 +185,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getCompoundTermExpression()
 	 * @generated
 	 */
-	int COMPOUND_TERM_EXPRESSION = 5;
+	int COMPOUND_TERM_EXPRESSION = 6;
 
 	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
@@ -235,6 +235,43 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @ordered
 	 */
 	int ARITHMETIC_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.expr.impl.ArrayExpressionImpl <em>Array Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.expr.impl.ArrayExpressionImpl
+	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getArrayExpression()
+	 * @generated
+	 */
+	int ARRAY_EXPRESSION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRAY_EXPRESSION__FACETS = EXPRESSION__FACETS;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRAY_EXPRESSION__EXPRESSION = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Array Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRAY_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -352,7 +389,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getBlockExpression()
 	 * @generated
 	 */
-	int BLOCK_EXPRESSION = 4;
+	int BLOCK_EXPRESSION = 5;
 
 	/**
 	 * The number of structural features of the '<em>Predicate Expression</em>' class.
@@ -370,7 +407,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getBooleanExpression()
 	 * @generated
 	 */
-	int BOOLEAN_EXPRESSION = 3;
+	int BOOLEAN_EXPRESSION = 4;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -470,7 +507,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getExpressionParserRegistry()
 	 * @generated
 	 */
-	int EXPRESSION_PARSER_REGISTRY = 8;
+	int EXPRESSION_PARSER_REGISTRY = 9;
 
 	/**
 	 * The number of structural features of the '<em>Expression Parser Registry</em>' class.
@@ -489,7 +526,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getExpressionWriter()
 	 * @generated
 	 */
-	int EXPRESSION_WRITER = 9;
+	int EXPRESSION_WRITER = 10;
 
 	/**
 	 * The number of structural features of the '<em>Expression Writer</em>' class.
@@ -508,7 +545,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getExpressionWriterRegistry()
 	 * @generated
 	 */
-	int EXPRESSION_WRITER_REGISTRY = 10;
+	int EXPRESSION_WRITER_REGISTRY = 11;
 
 	/**
 	 * The number of structural features of the '<em>Expression Writer Registry</em>' class.
@@ -535,7 +572,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getFunctionTermExpression()
 	 * @generated
 	 */
-	int FUNCTION_TERM_EXPRESSION = 12;
+	int FUNCTION_TERM_EXPRESSION = 13;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -620,7 +657,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getQualifiedTermExpression()
 	 * @generated
 	 */
-	int QUALIFIED_TERM_EXPRESSION = 15;
+	int QUALIFIED_TERM_EXPRESSION = 16;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -705,7 +742,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getAssignmentOperator()
 	 * @generated
 	 */
-	int ASSIGNMENT_OPERATOR = 19;
+	int ASSIGNMENT_OPERATOR = 20;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.AtomicType
@@ -716,7 +753,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getAtomicType()
 	 * @generated
 	 */
-	int ATOMIC_TYPE = 20;
+	int ATOMIC_TYPE = 21;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.ExpressionType <em>Expression Type</em>}' enum.
@@ -726,7 +763,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getExpressionType()
 	 * @generated
 	 */
-	int EXPRESSION_TYPE = 21;
+	int EXPRESSION_TYPE = 22;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.LogicalOperator <em>Logical Operator</em>}' enum.
@@ -736,7 +773,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getLogicalOperator()
 	 * @generated
 	 */
-	int LOGICAL_OPERATOR = 22;
+	int LOGICAL_OPERATOR = 23;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -746,7 +783,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getRelationalOperator()
 	 * @generated
 	 */
-	int RELATIONAL_OPERATOR = 23;
+	int RELATIONAL_OPERATOR = 24;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.expr.QArithmeticExpression <em>Arithmetic Expression</em>}'.
@@ -787,6 +824,27 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getArithmeticExpression_RightOperand();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.expr.QArrayExpression <em>Array Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Array Expression</em>'.
+	 * @see org.smeup.sys.il.expr.QArrayExpression
+	 * @generated
+	 */
+	EClass getArrayExpression();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.il.expr.QArrayExpression#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Expression</em>'.
+	 * @see org.smeup.sys.il.expr.QArrayExpression#getExpression()
+	 * @see #getArrayExpression()
+	 * @generated
+	 */
+	EReference getArrayExpression_Expression();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.expr.QAssignmentExpression <em>Assignment Expression</em>}'.
@@ -1225,6 +1283,24 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ARITHMETIC_EXPRESSION__RIGHT_OPERAND = eINSTANCE.getArithmeticExpression_RightOperand();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.expr.impl.ArrayExpressionImpl <em>Array Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.expr.impl.ArrayExpressionImpl
+		 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getArrayExpression()
+		 * @generated
+		 */
+		EClass ARRAY_EXPRESSION = eINSTANCE.getArrayExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ARRAY_EXPRESSION__EXPRESSION = eINSTANCE.getArrayExpression_Expression();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.expr.impl.AssignmentExpressionImpl <em>Assignment Expression</em>}' class.

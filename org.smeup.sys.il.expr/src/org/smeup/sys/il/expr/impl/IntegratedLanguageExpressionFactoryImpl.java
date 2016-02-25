@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.smeup.sys.il.expr.*;
 import org.smeup.sys.il.expr.ArithmeticOperator;
 import org.smeup.sys.il.expr.AssignmentOperator;
 import org.smeup.sys.il.expr.AtomicType;
@@ -74,6 +75,7 @@ public class IntegratedLanguageExpressionFactoryImpl extends EFactoryImpl implem
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case QIntegratedLanguageExpressionPackage.ARITHMETIC_EXPRESSION: return (EObject)createArithmeticExpression();
+			case QIntegratedLanguageExpressionPackage.ARRAY_EXPRESSION: return (EObject)createArrayExpression();
 			case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION: return (EObject)createAssignmentExpression();
 			case QIntegratedLanguageExpressionPackage.ATOMIC_TERM_EXPRESSION: return (EObject)createAtomicTermExpression();
 			case QIntegratedLanguageExpressionPackage.BOOLEAN_EXPRESSION: return (EObject)createBooleanExpression();
@@ -143,6 +145,16 @@ public class IntegratedLanguageExpressionFactoryImpl extends EFactoryImpl implem
 	public QArithmeticExpression createArithmeticExpression() {
 		ArithmeticExpressionImpl arithmeticExpression = new ArithmeticExpressionImpl();
 		return arithmeticExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QArrayExpression createArrayExpression() {
+		ArrayExpressionImpl arrayExpression = new ArrayExpressionImpl();
+		return arrayExpression;
 	}
 
 	/**

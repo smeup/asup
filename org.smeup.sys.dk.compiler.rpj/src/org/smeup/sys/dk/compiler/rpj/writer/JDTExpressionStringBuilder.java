@@ -622,6 +622,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			break;
 		case BOOLEAN:
 			break;
+		case ARRAY:
+			break;			
 		}
 
 		return result;
@@ -753,14 +755,12 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QFunctionTermExpression expression) {
 
-		// if (expression.getValue().equalsIgnoreCase("*ALL"))
-		// expression.setValue("%all");
-
 		QPrototype prototype = compilationUnit.getMethod(expression.getValue());
 		if (prototype != null && !expression.getElements().isEmpty()) {
 			QExpression expressionChild = expression.getElements().get(0);
 
 			switch (expressionChild.getExpressionType()) {
+			case ARRAY:			
 			case ATOMIC:
 			case FUNCTION:
 			case QUALIFIED:

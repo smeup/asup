@@ -86,7 +86,15 @@ public enum ExpressionType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	BLOCK(50, "Block", "BLC");
+	BLOCK(50, "Block", "BLC"), /**
+	 * The '<em><b>Array</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ARRAY_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ARRAY(60, "Array", "ARR");
 
 	/**
 	 * The '<em><b>Arithmetic</b></em>' literal value.
@@ -224,6 +232,21 @@ public enum ExpressionType implements Enumerator {
 	public static final int BLOCK_VALUE = 50;
 
 	/**
+	 * The '<em><b>Array</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Array</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ARRAY
+	 * @model name="Array" literal="ARR"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ARRAY_VALUE = 60;
+
+	/**
 	 * An array of all the '<em><b>Expression Type</b></em>' enumerators. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -239,6 +262,7 @@ public enum ExpressionType implements Enumerator {
 			QUALIFIED,
 			FUNCTION,
 			BLOCK,
+			ARRAY,
 		};
 
 	/**
@@ -300,6 +324,7 @@ public enum ExpressionType implements Enumerator {
 			case QUALIFIED_VALUE: return QUALIFIED;
 			case FUNCTION_VALUE: return FUNCTION;
 			case BLOCK_VALUE: return BLOCK;
+			case ARRAY_VALUE: return ARRAY;
 		}
 		return null;
 	}

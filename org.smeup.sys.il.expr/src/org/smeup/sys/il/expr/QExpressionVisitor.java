@@ -25,6 +25,14 @@ public interface QExpressionVisitor {
 	void endVisit(QAssignmentExpression expression);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model expressionRequired="true"
+	 * @generated
+	 */
+	void endVisit(QArrayExpression expression);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model expressionRequired="true"
 	 * @generated
@@ -142,5 +150,13 @@ public interface QExpressionVisitor {
 	 * @generated
 	 */
 	boolean visit(QArithmeticExpression expression);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model expressionRequired="true"
+	 * @generated
+	 */
+	boolean visit(QArrayExpression expression);
 
 } // QExpressionVisitor

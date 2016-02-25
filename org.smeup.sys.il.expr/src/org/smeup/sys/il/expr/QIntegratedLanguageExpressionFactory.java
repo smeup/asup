@@ -34,6 +34,15 @@ public interface QIntegratedLanguageExpressionFactory extends EFactory {
 	QArithmeticExpression createArithmeticExpression();
 
 	/**
+	 * Returns a new object of class '<em>Array Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Array Expression</em>'.
+	 * @generated
+	 */
+	QArrayExpression createArrayExpression();
+
+	/**
 	 * Returns a new object of class '<em>Assignment Expression</em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 

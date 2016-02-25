@@ -24,6 +24,7 @@ import org.smeup.sys.il.expr.AtomicType;
 import org.smeup.sys.il.expr.ExpressionType;
 import org.smeup.sys.il.expr.LogicalOperator;
 import org.smeup.sys.il.expr.QArithmeticExpression;
+import org.smeup.sys.il.expr.QArrayExpression;
 import org.smeup.sys.il.expr.QAssignmentExpression;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QBlockExpression;
@@ -56,6 +57,13 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	 * @generated
 	 */
 	private EClass arithmeticExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass arrayExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -295,6 +303,24 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	@Override
 	public EReference getArithmeticExpression_RightOperand() {
 		return (EReference)arithmeticExpressionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getArrayExpression() {
+		return arrayExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getArrayExpression_Expression() {
+		return (EReference)arrayExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -662,6 +688,9 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		createEAttribute(arithmeticExpressionEClass, ARITHMETIC_EXPRESSION__OPERATOR);
 		createEReference(arithmeticExpressionEClass, ARITHMETIC_EXPRESSION__RIGHT_OPERAND);
 
+		arrayExpressionEClass = createEClass(ARRAY_EXPRESSION);
+		createEReference(arrayExpressionEClass, ARRAY_EXPRESSION__EXPRESSION);
+
 		assignmentExpressionEClass = createEClass(ASSIGNMENT_EXPRESSION);
 		createEReference(assignmentExpressionEClass, ASSIGNMENT_EXPRESSION__LEFT_OPERAND);
 		createEAttribute(assignmentExpressionEClass, ASSIGNMENT_EXPRESSION__OPERATOR);
@@ -751,6 +780,7 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 
 		// Add supertypes to classes
 		arithmeticExpressionEClass.getESuperTypes().add(this.getExpression());
+		arrayExpressionEClass.getESuperTypes().add(this.getExpression());
 		assignmentExpressionEClass.getESuperTypes().add(this.getExpression());
 		atomicTermExpressionEClass.getESuperTypes().add(this.getTermExpression());
 		booleanExpressionEClass.getESuperTypes().add(this.getPredicateExpression());
@@ -777,6 +807,9 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		initEReference(getArithmeticExpression_LeftOperand(), this.getExpression(), null, "leftOperand", null, 1, 1, QArithmeticExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getArithmeticExpression_Operator(), this.getArithmeticOperator(), "operator", null, 1, 1, QArithmeticExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getArithmeticExpression_RightOperand(), this.getExpression(), null, "rightOperand", null, 1, 1, QArithmeticExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(arrayExpressionEClass, QArrayExpression.class, "ArrayExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getArrayExpression_Expression(), this.getExpression(), null, "expression", null, 1, -1, QArrayExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(assignmentExpressionEClass, QAssignmentExpression.class, "AssignmentExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAssignmentExpression_LeftOperand(), this.getTermExpression(), null, "leftOperand", null, 1, 1, QAssignmentExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -840,6 +873,9 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		addEParameter(op, this.getAssignmentExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(expressionVisitorEClass, null, "endVisit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getArrayExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(expressionVisitorEClass, null, "endVisit", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getAtomicTermExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(expressionVisitorEClass, null, "endVisit", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -862,6 +898,9 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 
 		op = addEOperation(expressionVisitorEClass, ecorePackage.getEBoolean(), "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getArithmeticExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(expressionVisitorEClass, ecorePackage.getEBoolean(), "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getArrayExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(expressionVisitorEClass, ecorePackage.getEBoolean(), "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getAssignmentExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -948,6 +987,7 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		addEEnumLiteral(expressionTypeEEnum, ExpressionType.QUALIFIED);
 		addEEnumLiteral(expressionTypeEEnum, ExpressionType.FUNCTION);
 		addEEnumLiteral(expressionTypeEEnum, ExpressionType.BLOCK);
+		addEEnumLiteral(expressionTypeEEnum, ExpressionType.ARRAY);
 
 		initEEnum(logicalOperatorEEnum, LogicalOperator.class, "LogicalOperator");
 		addEEnumLiteral(logicalOperatorEEnum, LogicalOperator.AND);

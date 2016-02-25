@@ -122,6 +122,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		case RELATIONAL:
 		case ARITHMETIC:
 		case ASSIGNMENT:
+		case ARRAY:			
 			break;
 		}
 
@@ -141,6 +142,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 				}
 			}
 			break;
+		case ARRAY:
 		case ARITHMETIC:
 		case ASSIGNMENT:
 		case BLOCK:
@@ -367,6 +369,8 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 				}
 
 				break;
+			case ARRAY:
+				break;				
 			case BLOCK:
 				break;
 			case BOOLEAN:

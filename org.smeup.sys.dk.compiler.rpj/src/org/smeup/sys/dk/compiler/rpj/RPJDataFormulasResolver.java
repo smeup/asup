@@ -262,6 +262,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 			setProperty(target, propertyName, blockValue.getExpression());
 			break;
 
+		case ARRAY:
 		case ASSIGNMENT:
 		case BOOLEAN:
 		case ARITHMETIC:
@@ -311,6 +312,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 			dataValue = getDataValue(blockValue.getExpression());
 			break;
 
+		case ARRAY:
 		case ASSIGNMENT:
 		case BOOLEAN:
 		case ARITHMETIC:
