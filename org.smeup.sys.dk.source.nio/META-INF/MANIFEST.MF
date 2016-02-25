@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Development Kit Source NIO
+Bundle-SymbolicName: org.smeup.sys.dk.source.nio
+Bundle-Version: 0.8.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.smeup.sys.dk.source,
+ org.smeup.sys.rt.core,
+ org.eclipse.emf.ecore.xmi
+Export-Package: org.smeup.sys.dk.source.nio

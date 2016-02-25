@@ -22,7 +22,7 @@ import org.smeup.sys.rt.core.ServiceRegistering;
 
 @SuppressWarnings("restriction")
 public class ECFServerActivatorHook {
-		
+	
 	@ServiceRegistering
 	public void completeRegistration(@Named("org.smeup.sys.rt.core.service.name") String name, 
 									 @Named("org.smeup.sys.rt.core.service.object") Object service,

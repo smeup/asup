@@ -29,12 +29,10 @@ import com.hazelcast.core.HazelcastInstance;
 
 public class HCLockManagerImpl implements QLockManager {
 	
-	@Inject
-	private QApplication application;
-	
 	private HazelcastInstance hazelcastInstance;
 
-	public HCLockManagerImpl() {
+	@Inject
+	public HCLockManagerImpl(QApplication application) {
 		Config cfg = new Config();
 		cfg.setInstanceName(application.getName());
         hazelcastInstance = Hazelcast.newHazelcastInstance(cfg);
