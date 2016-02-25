@@ -8,15 +8,19 @@
  *
  * Contributors:
  *   Dario Foresti - Initial API and implementation
+ *   Rocchi Mattia - Contribution
  */
 package org.smeup.sys.il.lock.hc;
 
 import java.net.URI;
 
+import javax.inject.Inject;
+
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.lock.QLockManager;
 import org.smeup.sys.il.lock.QObjectLocker;
+import org.smeup.sys.rt.core.QApplication;
 import org.smeup.sys.rt.core.QLogger;
 
 import com.hazelcast.config.Config;
@@ -25,10 +29,14 @@ import com.hazelcast.core.HazelcastInstance;
 
 public class HCLockManagerImpl implements QLockManager {
 	
+	@Inject
+	private QApplication application;
+	
 	private HazelcastInstance hazelcastInstance;
 
 	public HCLockManagerImpl() {
 		Config cfg = new Config();
+		cfg.setInstanceName(application.getName());
         hazelcastInstance = Hazelcast.newHazelcastInstance(cfg);
 	}	
 
@@ -36,5 +44,4 @@ public class HCLockManagerImpl implements QLockManager {
 	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, N object) {
 		return new HCObjectLockerImpl<N>(URI.create(object.qURI()), context.get(QLogger.class), hazelcastInstance);
 	}
-
 }

@@ -45,10 +45,6 @@ import org.smeup.sys.rt.core.QApplication;
 
 public class JDTSourceManagerImpl implements QSourceManager {
 
-	public static int EVENT_CREATE_ENTRY = 30;
-	public static int EVENT_BUILD_ENTRY = 40;
-	public static int EVENT_INSTALL_ENTRY = 60;
-
 	private String path;
 
 	private QApplication application;
