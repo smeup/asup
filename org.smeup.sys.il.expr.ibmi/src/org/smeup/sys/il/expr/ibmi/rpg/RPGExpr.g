@@ -33,6 +33,7 @@ tokens
 	QUALIFIED;
 	BLOCK;
 	INDICATOR;	
+	ARRAY;
 }
 
 @parser::header {
@@ -143,14 +144,14 @@ qualified
 primaryExpression
 	:	'(' logicalExpression ')' -> ^(BLOCK[$primaryExpression.text] logicalExpression)
 		|		
-		array 
+		array
 		|
 		value
 	;
 
 array
 	:
-	value value+ -> ^(BI_FUNCTION["\%ARRAY"] value value+)
+	'[' value (':' value)+ ']' -> ^(ARRAY value value+)
 	;	
 
 value

@@ -82,13 +82,13 @@ public class CompileLPG implements IObjectActionDelegate {
 		try {
 			Bundle bundle = Platform.getBundle("org.asup.ui.pdmg.lpg.e4");
 
-			URL url = FileLocator.find(bundle, new Path("lpg_includes/lpg.exe"), Collections.EMPTY_MAP);	
+			URL url = FileLocator.find(bundle, new Path("lpg_includes/lpg.exe"), Collections.emptyMap());	
 			String executable = FileLocator.toFileURL(url).getPath().substring(1);
 			
 			String include = "-include-directory='.;..;"					 
-			 		 + FileLocator.toFileURL(FileLocator.find(bundle, new Path("lpg_includes/include/lexer"), Collections.EMPTY_MAP)).getPath().substring(1) + ";"
-					 + FileLocator.toFileURL(FileLocator.find(bundle, new Path("lpg_includes/include/query"), Collections.EMPTY_MAP)).getPath().substring(1) + ";"
-					 + FileLocator.toFileURL(FileLocator.find(bundle, new Path("lpg_includes/include/sql"), Collections.EMPTY_MAP)).getPath().substring(1) + ";"
+			 		 + FileLocator.toFileURL(FileLocator.find(bundle, new Path("lpg_includes/include/lexer"), Collections.emptyMap())).getPath().substring(1) + ";"
+					 + FileLocator.toFileURL(FileLocator.find(bundle, new Path("lpg_includes/include/query"), Collections.emptyMap())).getPath().substring(1) + ";"
+					 + FileLocator.toFileURL(FileLocator.find(bundle, new Path("lpg_includes/include/sql"), Collections.emptyMap())).getPath().substring(1) + ";"
 					 + "'";							 
 			
 			String src = new File(iLPGSourceFile.getLocationURI()).getAbsolutePath();			

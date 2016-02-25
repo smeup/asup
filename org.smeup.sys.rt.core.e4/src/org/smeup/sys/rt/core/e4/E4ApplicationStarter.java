@@ -147,7 +147,7 @@ public class E4ApplicationStarter {
 		}
 
 		messageLevel--;
-
+		
 		return application;
 	}
 
