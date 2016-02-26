@@ -9,6 +9,7 @@ package org.smeup.sys.db.esql.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
@@ -30,6 +31,7 @@ import org.smeup.sys.db.esql.QStatementTerm;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
@@ -123,6 +125,13 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 	 * @generated
 	 */
 	private EEnum fetchPositioningEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType cursorRecordEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -347,6 +356,15 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getCursorRecord() {
+		return cursorRecordEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public QIntegratedLanguageEmbeddedSQLFactory getIntegratedLanguageEmbeddedSQLFactory() {
 		return (QIntegratedLanguageEmbeddedSQLFactory)getEFactoryInstance();
 	}
@@ -398,6 +416,9 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 		// Create enums
 		cursorTypeEEnum = createEEnum(CURSOR_TYPE);
 		fetchPositioningEEnum = createEEnum(FETCH_POSITIONING);
+
+		// Create data types
+		cursorRecordEDataType = createEDataType(CURSOR_RECORD);
 	}
 
 	/**
@@ -449,6 +470,9 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 
 		EOperation op = addEOperation(cursorEClass, null, "next", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getBufferedData(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cursorEClass, null, "next", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCursorRecord(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(cursorEClass, null, "open", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -520,6 +544,9 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 		addEEnumLiteral(fetchPositioningEEnum, FetchPositioning.AFTER);
 		addEEnumLiteral(fetchPositioningEEnum, FetchPositioning.CURRENT);
 		addEEnumLiteral(fetchPositioningEEnum, FetchPositioning.RELATIVE);
+
+		// Initialize data types
+		initEDataType(cursorRecordEDataType, QBufferedData[].class, "CursorRecord", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

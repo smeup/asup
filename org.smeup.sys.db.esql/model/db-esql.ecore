@@ -8,6 +8,9 @@
     <eOperations name="next">
       <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//BufferedData"/>
     </eOperations>
+    <eOperations name="next">
+      <eParameters name="target" lowerBound="1" eType="#//CursorRecord"/>
+    </eOperations>
     <eOperations name="open"/>
     <eOperations name="openUsingDescriptor">
       <eParameters name="descriptorName" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//String"/>
@@ -17,6 +20,7 @@
     </eOperations>
     <eOperations name="close"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="CursorRecord" instanceClassName="org.smeup.sys.il.data.QBufferedData[]"/>
   <eClassifiers xsi:type="ecore:EClass" name="CursorTerm" eSuperTypes="#//ESqlTerm">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cursorType" eType="#//CursorType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hold" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>

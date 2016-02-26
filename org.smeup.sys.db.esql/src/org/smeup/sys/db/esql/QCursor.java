@@ -32,6 +32,14 @@ public interface QCursor extends QESqlObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model targetDataType="org.smeup.sys.db.esql.CursorRecord" targetRequired="true"
+	 * @generated
+	 */
+	void next(QBufferedData[] target);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */

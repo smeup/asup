@@ -9,6 +9,7 @@ package org.smeup.sys.db.esql;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
@@ -364,6 +365,16 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '<em>Cursor Record</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getCursorRecord()
+	 * @generated
+	 */
+	int CURSOR_RECORD = 12;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.esql.QCommunicationArea <em>Communication Area</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -537,6 +548,16 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getFetchPositioning();
+
+	/**
+	 * Returns the meta object for data type '<em>Cursor Record</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Cursor Record</em>'.
+	 * @model instanceClass="org.smeup.sys.il.data.QBufferedData[]"
+	 * @generated
+	 */
+	EDataType getCursorRecord();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -719,6 +740,15 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum FETCH_POSITIONING = eINSTANCE.getFetchPositioning();
+
+		/**
+		 * The meta object literal for the '<em>Cursor Record</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getCursorRecord()
+		 * @generated
+		 */
+		EDataType CURSOR_RECORD = eINSTANCE.getCursorRecord();
 
 	}
 

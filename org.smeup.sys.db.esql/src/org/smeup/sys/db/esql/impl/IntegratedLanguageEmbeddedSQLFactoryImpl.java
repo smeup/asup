@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.db.esql.*;
+import org.smeup.sys.il.data.QBufferedData;
 
 /**
  * <!-- begin-user-doc -->
@@ -78,6 +79,8 @@ public class IntegratedLanguageEmbeddedSQLFactoryImpl extends EFactoryImpl imple
 				return createCursorTypeFromString(eDataType, initialValue);
 			case QIntegratedLanguageEmbeddedSQLPackage.FETCH_POSITIONING:
 				return createFetchPositioningFromString(eDataType, initialValue);
+			case QIntegratedLanguageEmbeddedSQLPackage.CURSOR_RECORD:
+				return createCursorRecordFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -95,6 +98,8 @@ public class IntegratedLanguageEmbeddedSQLFactoryImpl extends EFactoryImpl imple
 				return convertCursorTypeToString(eDataType, instanceValue);
 			case QIntegratedLanguageEmbeddedSQLPackage.FETCH_POSITIONING:
 				return convertFetchPositioningToString(eDataType, instanceValue);
+			case QIntegratedLanguageEmbeddedSQLPackage.CURSOR_RECORD:
+				return convertCursorRecordToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -158,6 +163,24 @@ public class IntegratedLanguageEmbeddedSQLFactoryImpl extends EFactoryImpl imple
 	 */
 	public String convertFetchPositioningToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QBufferedData[] createCursorRecordFromString(EDataType eDataType, String initialValue) {
+		return (QBufferedData[])super.createFromString(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCursorRecordToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(instanceValue);
 	}
 
 	/**
