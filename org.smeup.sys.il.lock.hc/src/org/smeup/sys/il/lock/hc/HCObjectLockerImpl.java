@@ -24,7 +24,7 @@ import com.hazelcast.core.ILock;
 
 public class HCObjectLockerImpl<N extends QObjectNameable> implements QObjectLocker<N> {
 
-	private URI objectURI;
+	private URI address;
 	private QLogger logger;
 	private HazelcastInstance hazelcastInstance = null;
 	
@@ -32,8 +32,8 @@ public class HCObjectLockerImpl<N extends QObjectNameable> implements QObjectLoc
 	private static final String WRITE_LOCK_EXT = "?lockType=WRITE";
 	
 
-	public HCObjectLockerImpl(URI objectURI, QLogger qLogger, HazelcastInstance hazelcastInstance) {
-		this.objectURI = objectURI;
+	public HCObjectLockerImpl(URI address, QLogger qLogger, HazelcastInstance hazelcastInstance) {
+		this.address = address;
 		this.logger = qLogger;
 		this.hazelcastInstance = hazelcastInstance;		
 	}
@@ -44,10 +44,10 @@ public class HCObjectLockerImpl<N extends QObjectNameable> implements QObjectLoc
 		ILock lock = null;
 		switch (lockType) {
 		case READ:
-			lock = hazelcastInstance.getLock(objectURI + READ_LOCK_EXT);
+			lock = hazelcastInstance.getLock(address + READ_LOCK_EXT);
 			break;
 		case WRITE:
-			lock = hazelcastInstance.getLock(objectURI + WRITE_LOCK_EXT);
+			lock = hazelcastInstance.getLock(address + WRITE_LOCK_EXT);
 			break;
 		}
 		
@@ -62,10 +62,10 @@ public class HCObjectLockerImpl<N extends QObjectNameable> implements QObjectLoc
 		
 		switch (lockType) {
 		case READ:
-			lock = hazelcastInstance.getLock(objectURI + READ_LOCK_EXT);
+			lock = hazelcastInstance.getLock(address + READ_LOCK_EXT);
 			break;
 		case WRITE:
-			lock = hazelcastInstance.getLock(objectURI + WRITE_LOCK_EXT);
+			lock = hazelcastInstance.getLock(address + WRITE_LOCK_EXT);
 			break;
 		}
 		
@@ -86,10 +86,10 @@ public class HCObjectLockerImpl<N extends QObjectNameable> implements QObjectLoc
 		ILock lock = null;
 		switch (lockType) {
 		case READ:
-			lock = hazelcastInstance.getLock(objectURI + READ_LOCK_EXT);
+			lock = hazelcastInstance.getLock(address + READ_LOCK_EXT);
 			break;
 		case WRITE:
-			lock = hazelcastInstance.getLock(objectURI + WRITE_LOCK_EXT);
+			lock = hazelcastInstance.getLock(address + WRITE_LOCK_EXT);
 			break;
 		}
 		
@@ -103,10 +103,10 @@ public class HCObjectLockerImpl<N extends QObjectNameable> implements QObjectLoc
 		ILock lock = null;		
 		switch (lockType) {
 		case READ:
-			lock = hazelcastInstance.getLock(objectURI + READ_LOCK_EXT);
+			lock = hazelcastInstance.getLock(address + READ_LOCK_EXT);
 			break;
 		case WRITE:
-			lock = hazelcastInstance.getLock(objectURI + WRITE_LOCK_EXT);
+			lock = hazelcastInstance.getLock(address + WRITE_LOCK_EXT);
 			break;
 		}
 		
@@ -114,7 +114,7 @@ public class HCObjectLockerImpl<N extends QObjectNameable> implements QObjectLoc
 	}
 
 	@Override
-	public URI getObjectURI() {
-		return objectURI;
+	public URI getAddress() {
+		return address;
 	}
 }

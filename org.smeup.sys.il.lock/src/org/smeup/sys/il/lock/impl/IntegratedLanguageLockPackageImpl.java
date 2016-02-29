@@ -222,14 +222,30 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
 		t1.getEBounds().add(g1);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(t1);
-		addEParameter(op, g1, "object", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaURI(), "address", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getObjectLocker());
 		EGenericType g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
+		op = addEOperation(lockManagerEClass, null, "getLocker", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "N");
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
+		t1.getEBounds().add(g1);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "object", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getObjectLocker());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
 		initEClass(objectLockerEClass, QObjectLocker.class, "ObjectLocker", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(objectLockerEClass, theMachineInterfaceCorePackage.getJavaURI(), "getAddress", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(objectLockerEClass, ecorePackage.getEBoolean(), "isLocked", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getLockType(), "lockType", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(objectLockerEClass, null, "lock", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getLockType(), "lockType", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -240,11 +256,6 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(objectLockerEClass, null, "unlock", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getLockType(), "lockType", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(objectLockerEClass, ecorePackage.getEBoolean(), "isLocked", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getLockType(), "lockType", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(objectLockerEClass, theMachineInterfaceCorePackage.getJavaURI(), "getObjectURI", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(lockTypeEEnum, LockType.class, "LockType");

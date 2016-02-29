@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.il.lock.cdo;
 
+import java.net.URI;
+
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.lock.QLockManager;
@@ -20,8 +22,14 @@ import org.smeup.sys.rt.core.QLogger;
 public class CDOLockManagerImpl implements QLockManager {
 
 	@Override
-	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, N object) {
+	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, URI address) {
+		
+		N object = null;
 		return new CDOLockerImpl<N>(object, context.get(QLogger.class));
 	}
 
+	@Override
+	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, N object) {
+		return getLocker(context, object.qURI());
+	}
 }

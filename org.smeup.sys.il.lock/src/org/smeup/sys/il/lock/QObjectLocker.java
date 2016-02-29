@@ -21,6 +21,14 @@ import org.smeup.sys.il.core.QObjectNameable;
  */
 public interface QObjectLocker<N extends QObjectNameable> {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" dataType="org.smeup.sys.mi.core.JavaURI" required="true"
+	 * @generated
+	 */
+	URI getAddress();
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model lockTypeRequired="true"
 	 * @generated
@@ -47,13 +55,5 @@ public interface QObjectLocker<N extends QObjectNameable> {
 	 * @generated
 	 */
 	boolean isLocked(LockType lockType);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" dataType="org.smeup.sys.mi.core.JavaURI" required="true"
-	 * @generated
-	 */
-	URI getObjectURI();
 
 } // QObjectLocker

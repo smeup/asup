@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.lock;
 
+import java.net.URI;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 
@@ -20,6 +21,14 @@ import org.smeup.sys.il.core.ctx.QContext;
  * @generated
  */
 public interface QLockManager {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextRequired="true" addressDataType="org.smeup.sys.mi.core.JavaURI"
+	 * @generated
+	 */
+	<N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, URI address);
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

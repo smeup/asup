@@ -23,17 +23,17 @@ public class BaseLockerImpl<N extends QObjectNameable> implements QObjectLocker<
 
 	private ReentrantReadWriteLock lock;
 
-	private URI objectURI;
+	private URI address;
 
-	public BaseLockerImpl(URI objectURI) {
-		this.objectURI = objectURI;
+	public BaseLockerImpl(URI address) {
+		this.address = address;
 
 		this.lock = new ReentrantReadWriteLock();
 	}
 
 	@Override
-	public URI getObjectURI() {
-		return objectURI;
+	public URI getAddress() {
+		return address;
 	}
 
 	@Override

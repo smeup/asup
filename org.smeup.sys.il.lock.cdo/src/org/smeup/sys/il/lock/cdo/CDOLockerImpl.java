@@ -25,19 +25,18 @@ import org.smeup.sys.rt.core.QLogger;
 
 public class CDOLockerImpl<N extends QObjectNameable> implements QObjectLocker<N> {
 
-	private N object;
-	private URI objectURI;
+	private URI address;
+	private EObject object;
 	private QLogger logger;
 
 	public CDOLockerImpl(N object, QLogger logger) {
-		this.object = object;
-		this.objectURI = URI.create(object.qURI());
+		this.address = object.qURI();
 		this.logger = logger;
 	}
 
 	@Override
-	public URI getObjectURI() {
-		return objectURI;
+	public URI getAddress() {
+		return address;
 	}
 
 	@Override

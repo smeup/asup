@@ -10,8 +10,18 @@
         <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
       </eTypeParameters>
       <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="address" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaURI"/>
+    </eOperations>
+    <eOperations name="getLocker">
+      <eGenericType eClassifier="#//ObjectLocker">
+        <eTypeArguments eTypeParameter="#//LockManager/getLocker.1/N"/>
+      </eGenericType>
+      <eTypeParameters name="N">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
+      </eTypeParameters>
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
       <eParameters name="object">
-        <eGenericType eTypeParameter="#//LockManager/getLocker/N"/>
+        <eGenericType eTypeParameter="#//LockManager/getLocker.1/N"/>
       </eParameters>
     </eOperations>
   </eClassifiers>
@@ -23,6 +33,10 @@
     <eTypeParameters name="N">
       <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
     </eTypeParameters>
+    <eOperations name="getAddress" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaURI"/>
+    <eOperations name="isLocked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="lockType" lowerBound="1" eType="#//LockType"/>
+    </eOperations>
     <eOperations name="lock">
       <eParameters name="lockType" lowerBound="1" eType="#//LockType"/>
     </eOperations>
@@ -33,9 +47,5 @@
     <eOperations name="unlock">
       <eParameters name="lockType" lowerBound="1" eType="#//LockType"/>
     </eOperations>
-    <eOperations name="isLocked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="lockType" lowerBound="1" eType="#//LockType"/>
-    </eOperations>
-    <eOperations name="getObjectURI" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaURI"/>
   </eClassifiers>
 </ecore:EPackage>

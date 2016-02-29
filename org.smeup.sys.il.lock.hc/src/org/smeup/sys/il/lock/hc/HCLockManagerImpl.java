@@ -39,7 +39,12 @@ public class HCLockManagerImpl implements QLockManager {
 	}	
 
 	@Override
+	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, URI address) {
+		return new HCObjectLockerImpl<N>(address, context.get(QLogger.class), hazelcastInstance);
+	}
+	
+	@Override
 	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, N object) {
-		return new HCObjectLockerImpl<N>(URI.create(object.qURI()), context.get(QLogger.class), hazelcastInstance);
+		return getLocker(context, object.qURI());
 	}
 }

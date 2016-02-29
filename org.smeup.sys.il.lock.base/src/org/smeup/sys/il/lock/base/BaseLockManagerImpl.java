@@ -21,8 +21,12 @@ import org.smeup.sys.il.lock.QObjectLocker;
 public class BaseLockManagerImpl implements QLockManager {
 
 	@Override
-	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, N object) {
-		return new BaseLockerImpl<N>(URI.create(object.qURI()));
+	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, URI address) {
+		return new BaseLockerImpl<N>(address);
 	}
 
+	@Override
+	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, N object) {
+		return getLocker(context, object.qURI());
+	}
 }
