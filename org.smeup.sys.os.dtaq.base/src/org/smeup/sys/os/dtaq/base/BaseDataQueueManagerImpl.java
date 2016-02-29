@@ -25,16 +25,18 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 		dataQueueManager.writeToQueue(library, name, value.asString());
 	}	
 	
+	@Override
 	public void writeDataQueue(QJobCapability capability, String library, String name, String key, String aValue) {
 		dataQueueManager.writeToQueue(library, name, aValue);
 	}
 
 	@Override
 	public String readDataQueue(QJobCapability capability, String library, String name, long aTimeout, String key, DataQueueSearchType searchType) {
+		
 		// TODO
 		if (aTimeout < 0)
-			aTimeout = 30000;
-
+			aTimeout = 50000;
+		
 		return dataQueueManager.readFromQueue(library, name, aTimeout);
 	}
 

@@ -56,7 +56,7 @@ public class BaseDataQueueCreator {
 		QResourceWriter<QDataQueue> resource = resourceManager.getResourceWriter(job, QDataQueue.class, dataQueue.library.trimR());
 		QDataQueue qDataQueue = resource.lookup(dataQueue.name.trimR());
 		if (qDataQueue != null)
-			exceptionManager.prepareException(job, QCPFMSG.CPF9870, dataQueue);
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF9870, dataQueue);
 
 		qDataQueue = QOperatingSystemDataQueueFactory.eINSTANCE.createDataQueue();
 		qDataQueue.setName(dataQueue.name.trimR());
