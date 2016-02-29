@@ -24,7 +24,7 @@ import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobCapability;
-import org.smeup.sys.os.dtaq.DataQueueType;
+import org.smeup.sys.os.dtaq.DataQueueSequence;
 import org.smeup.sys.os.dtaq.QDataQueue;
 import org.smeup.sys.os.dtaq.QDataQueueManager;
 import org.smeup.sys.os.lib.QLibrary;
@@ -63,7 +63,7 @@ public class WaitTest {
 	
 			// Assert: create queues (if none, else clear existent)
 			if (checkObj(job, QDataQueue.class, testLib, fifoDtaq) == false) {
-				dataQueueManager.createDataQueue(jobCapability, testLib, fifoDtaq, DataQueueType.FIFO, 32000);
+				createDataQueue(testLib, fifoDtaq, DataQueueSequence.FIFO, 32000);
 				testAsserter.assertTrue("Create FIFO DTAQ ", checkObj(job, QDataQueue.class, testLib, fifoDtaq));
 			} else
 				dataQueueManager.clearDataQueue(jobCapability, testLib, fifoDtaq);
@@ -85,7 +85,7 @@ public class WaitTest {
 			testAsserter.assertEquals("Read from queue with wait for data", writeVal, readVal);
 	
 			// Delete queues
-			dataQueueManager.deleteDataQueue(jobCapability, testLib, fifoDtaq);
+			deleteDataQueue( testLib, fifoDtaq);
 			testAsserter.assertTrue("Delete FIFO DTAQ ", checkObj(job, QDataQueue.class, testLib, fifoDtaq) == false);
 		} catch(Exception exc) {
 			testAsserter.fail("Exception in class WaitTest:" + exc.getMessage());
@@ -131,4 +131,31 @@ public class WaitTest {
 		}
 	}
 
+	private void createDataQueue(String library, String name, DataQueueSequence dataQueueSeq, int maxLength) {
+		
+		String sequence = null;
+		switch (dataQueueSeq) {
+		case FIFO:
+			sequence = "*FIFO";
+			break;
+		case KEYED:
+			sequence = "*KEYED";
+			break;
+		case LIFO:
+			sequence = "*LIFO";
+			break;
+		}
+		
+		String cmd = "CRTDTAQ DTAQ(" + library + "/" + name + ") SEQ(" + sequence + ") MAXLEN(" + maxLength + ")";
+		QCallableCommand callableCommand = commandManager.prepareCommand(job, cmd, null, true);
+		commandManager.executeCommand(job, callableCommand);
+		callableCommand.close();
+	}
+
+	private void deleteDataQueue(String library, String name) {
+		String cmd = "DLTDTAQ DTAQ(" + library + "/" + name + ")";
+		QCallableCommand callableCommand = commandManager.prepareCommand(job, cmd, null, true);
+		commandManager.executeCommand(job, callableCommand);
+		callableCommand.close();
+	}
 }

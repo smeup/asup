@@ -11,41 +11,19 @@
  */
 package org.smeup.sys.os.dtaq.base;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-
 import org.smeup.sys.il.data.QString;
-import org.smeup.sys.il.memo.QResourceManager;
-import org.smeup.sys.il.memo.QResourceWriter;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobCapability;
-import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.dtaq.DataQueueSearchType;
-import org.smeup.sys.os.dtaq.DataQueueType;
-import org.smeup.sys.os.dtaq.QDataQueue;
 import org.smeup.sys.os.dtaq.QDataQueueManager;
-import org.smeup.sys.os.dtaq.QOperatingSystemDataQueueFactory;
 
 public class BaseDataQueueManagerImpl implements QDataQueueManager {
 
-	@Inject
-	private QResourceManager resourceManager;
-	@Inject
-	private QJobManager jobManager;
+	private BaseFifoQueueManager dataQueueManager = new BaseFifoQueueManager();
 
-	private BaseFifoQueueManager dataQueueManager;
-
-	@PostConstruct
-	public void init() {
-		dataQueueManager = new BaseFifoQueueManager();
-	}
-	
 	@Override
 	public void writeDataQueue(QJobCapability capability, String library, String name, String key, QString value) {
 		dataQueueManager.writeToQueue(library, name, value.asString());
-	}
-	
+	}	
 	
 	public void writeDataQueue(QJobCapability capability, String library, String name, String key, String aValue) {
 		dataQueueManager.writeToQueue(library, name, aValue);
@@ -66,42 +44,7 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 	}
 
 	@Override
-	public void createDataQueue(QJobCapability capability, String library, String name, DataQueueType aType, int aMaxEntryLength) {
-
-		QJob job = jobManager.lookup(capability);
-		QResourceWriter<QDataQueue> resource = resourceManager.getResourceWriter(job, QDataQueue.class, library);
-		QDataQueue dataQueue = resource.lookup(name);
-		if (dataQueue == null) {
-			// Queue do not exists. Create and register.
-			dataQueue = QOperatingSystemDataQueueFactory.eINSTANCE.createDataQueue();
-			dataQueue.setName(name);
-			dataQueue.setDataQueueType(aType);
-			dataQueue.setMaxEntryLength(aMaxEntryLength);
-
-			resource.save(dataQueue);
-
-			System.out.println(capability + "\t" + "Queue " + name + " created");
-
-			dataQueueManager.createQueue(library, name);
-		} else
-			throw new OperatingSystemRuntimeException("Queue " + name + " already exists in library " + library);
-		
-	}
-
-	@Override
 	public void clearDataQueue(QJobCapability capability, String library, String name) {
 		dataQueueManager.clearQueue(library, name);
-	}
-
-	@Override
-	public void deleteDataQueue(QJobCapability capability, String library, String name) {
-
-		QJob job = jobManager.lookup(capability);
-
-		QResourceWriter<QDataQueue> resource = resourceManager.getResourceWriter(job, QDataQueue.class, library);
-		QDataQueue vDtaq = resource.lookup(name);
-		resource.delete(vDtaq);
-
-		dataQueueManager.removeQueue(library, name);
 	}
 }

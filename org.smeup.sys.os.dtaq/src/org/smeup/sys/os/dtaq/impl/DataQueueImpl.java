@@ -8,13 +8,10 @@
 package org.smeup.sys.os.dtaq.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.smeup.sys.os.dtaq.DataQueueType;
+import org.smeup.sys.os.dtaq.DataQueueSequence;
 import org.smeup.sys.os.dtaq.QDataQueue;
-import org.smeup.sys.os.dtaq.QDataQueueContent;
 import org.smeup.sys.os.dtaq.QOperatingSystemDataQueuePackage;
 import org.smeup.sys.os.type.impl.TypedObjectImpl;
 
@@ -26,40 +23,39 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueImpl#getDataQueueType <em>Data Queue Type</em>}</li>
+ *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueImpl#getSequence <em>Sequence</em>}</li>
  *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueImpl#getKeyLength <em>Key Length</em>}</li>
  *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueImpl#getMaxEntryLength <em>Max Entry Length</em>}</li>
  *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueImpl#isSenderInfo <em>Sender Info</em>}</li>
- *   <li>{@link org.smeup.sys.os.dtaq.impl.DataQueueImpl#getContent <em>Content</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 	/**
+	 * The default value of the '{@link #getSequence() <em>Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSequence()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final DataQueueSequence SEQUENCE_EDEFAULT = DataQueueSequence.FIFO;
+
+	/**
+	 * The cached value of the '{@link #getSequence() <em>Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSequence()
+	 * @generated
+	 * @ordered
+	 */
+	protected DataQueueSequence sequence = SEQUENCE_EDEFAULT;
+
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * The default value of the '{@link #getDataQueueType() <em>Data Queue Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDataQueueType()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final DataQueueType DATA_QUEUE_TYPE_EDEFAULT = DataQueueType.FIFO;
-
-	/**
-	 * The cached value of the '{@link #getDataQueueType() <em>Data Queue Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDataQueueType()
-	 * @generated
-	 * @ordered
-	 */
-	protected DataQueueType dataQueueType = DATA_QUEUE_TYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getKeyLength() <em>Key Length</em>}' attribute.
@@ -122,16 +118,6 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 	protected boolean senderInfo = SENDER_INFO_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getContent() <em>Content</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContent()
-	 * @generated
-	 * @ordered
-	 */
-	protected QDataQueueContent content;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -155,9 +141,8 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public DataQueueType getDataQueueType() {
-		return dataQueueType;
+	public DataQueueSequence getSequence() {
+		return sequence;
 	}
 
 	/**
@@ -165,12 +150,11 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setDataQueueType(DataQueueType newDataQueueType) {
-		DataQueueType oldDataQueueType = dataQueueType;
-		dataQueueType = newDataQueueType == null ? DATA_QUEUE_TYPE_EDEFAULT : newDataQueueType;
+	public void setSequence(DataQueueSequence newSequence) {
+		DataQueueSequence oldSequence = sequence;
+		sequence = newSequence == null ? SEQUENCE_EDEFAULT : newSequence;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemDataQueuePackage.DATA_QUEUE__DATA_QUEUE_TYPE, oldDataQueueType, dataQueueType));
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemDataQueuePackage.DATA_QUEUE__SEQUENCE, oldSequence, sequence));
 	}
 
 	/**
@@ -248,77 +232,16 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 	 * @generated
 	 */
 	@Override
-	public QDataQueueContent getContent() {
-		return content;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetContent(QDataQueueContent newContent, NotificationChain msgs) {
-		QDataQueueContent oldContent = content;
-		content = newContent;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QOperatingSystemDataQueuePackage.DATA_QUEUE__CONTENT, oldContent, newContent);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setContent(QDataQueueContent newContent) {
-		if (newContent != content) {
-			NotificationChain msgs = null;
-			if (content != null)
-				msgs = ((InternalEObject)content).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemDataQueuePackage.DATA_QUEUE__CONTENT, null, msgs);
-			if (newContent != null)
-				msgs = ((InternalEObject)newContent).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemDataQueuePackage.DATA_QUEUE__CONTENT, null, msgs);
-			msgs = basicSetContent(newContent, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemDataQueuePackage.DATA_QUEUE__CONTENT, newContent, newContent));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__CONTENT:
-				return basicSetContent(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__DATA_QUEUE_TYPE:
-				return getDataQueueType();
+			case QOperatingSystemDataQueuePackage.DATA_QUEUE__SEQUENCE:
+				return getSequence();
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__KEY_LENGTH:
 				return getKeyLength();
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__MAX_ENTRY_LENGTH:
 				return getMaxEntryLength();
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__SENDER_INFO:
 				return isSenderInfo();
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__CONTENT:
-				return getContent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -331,8 +254,8 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__DATA_QUEUE_TYPE:
-				setDataQueueType((DataQueueType)newValue);
+			case QOperatingSystemDataQueuePackage.DATA_QUEUE__SEQUENCE:
+				setSequence((DataQueueSequence)newValue);
 				return;
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__KEY_LENGTH:
 				setKeyLength((Integer)newValue);
@@ -342,9 +265,6 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 				return;
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__SENDER_INFO:
 				setSenderInfo((Boolean)newValue);
-				return;
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__CONTENT:
-				setContent((QDataQueueContent)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -358,8 +278,8 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__DATA_QUEUE_TYPE:
-				setDataQueueType(DATA_QUEUE_TYPE_EDEFAULT);
+			case QOperatingSystemDataQueuePackage.DATA_QUEUE__SEQUENCE:
+				setSequence(SEQUENCE_EDEFAULT);
 				return;
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__KEY_LENGTH:
 				setKeyLength(KEY_LENGTH_EDEFAULT);
@@ -369,9 +289,6 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 				return;
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__SENDER_INFO:
 				setSenderInfo(SENDER_INFO_EDEFAULT);
-				return;
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__CONTENT:
-				setContent((QDataQueueContent)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -385,16 +302,14 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__DATA_QUEUE_TYPE:
-				return dataQueueType != DATA_QUEUE_TYPE_EDEFAULT;
+			case QOperatingSystemDataQueuePackage.DATA_QUEUE__SEQUENCE:
+				return sequence != SEQUENCE_EDEFAULT;
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__KEY_LENGTH:
 				return keyLength != KEY_LENGTH_EDEFAULT;
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__MAX_ENTRY_LENGTH:
 				return maxEntryLength != MAX_ENTRY_LENGTH_EDEFAULT;
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE__SENDER_INFO:
 				return senderInfo != SENDER_INFO_EDEFAULT;
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE__CONTENT:
-				return content != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -409,8 +324,8 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (dataQueueType: ");
-		result.append(dataQueueType);
+		result.append(" (sequence: ");
+		result.append(sequence);
 		result.append(", keyLength: ");
 		result.append(keyLength);
 		result.append(", maxEntryLength: ");

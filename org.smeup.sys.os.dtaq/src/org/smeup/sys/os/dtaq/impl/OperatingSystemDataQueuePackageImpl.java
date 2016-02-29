@@ -18,7 +18,7 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.dtaq.DataQueueSearchType;
-import org.smeup.sys.os.dtaq.DataQueueType;
+import org.smeup.sys.os.dtaq.DataQueueSequence;
 import org.smeup.sys.os.dtaq.QDataQueue;
 import org.smeup.sys.os.dtaq.QDataQueueContent;
 import org.smeup.sys.os.dtaq.QDataQueueEntry;
@@ -58,10 +58,11 @@ public class OperatingSystemDataQueuePackageImpl extends EPackageImpl implements
 	private EClass dataQueueManagerEClass = null;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum dataQueueTypeEEnum = null;
+	private EEnum dataQueueSequenceEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -142,11 +143,11 @@ public class OperatingSystemDataQueuePackageImpl extends EPackageImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EAttribute getDataQueue_DataQueueType() {
+	public EAttribute getDataQueue_Sequence() {
 		return (EAttribute)dataQueueEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -175,15 +176,6 @@ public class OperatingSystemDataQueuePackageImpl extends EPackageImpl implements
 	@Override
 	public EAttribute getDataQueue_SenderInfo() {
 		return (EAttribute)dataQueueEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getDataQueue_Content() {
-		return (EReference)dataQueueEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -242,12 +234,12 @@ public class OperatingSystemDataQueuePackageImpl extends EPackageImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EEnum getDataQueueType() {
-		return dataQueueTypeEEnum;
+	public EEnum getDataQueueSequence() {
+		return dataQueueSequenceEEnum;
 	}
 
 	/**
@@ -287,11 +279,10 @@ public class OperatingSystemDataQueuePackageImpl extends EPackageImpl implements
 
 		// Create classes and their features
 		dataQueueEClass = createEClass(DATA_QUEUE);
-		createEAttribute(dataQueueEClass, DATA_QUEUE__DATA_QUEUE_TYPE);
+		createEAttribute(dataQueueEClass, DATA_QUEUE__SEQUENCE);
 		createEAttribute(dataQueueEClass, DATA_QUEUE__KEY_LENGTH);
 		createEAttribute(dataQueueEClass, DATA_QUEUE__MAX_ENTRY_LENGTH);
 		createEAttribute(dataQueueEClass, DATA_QUEUE__SENDER_INFO);
-		createEReference(dataQueueEClass, DATA_QUEUE__CONTENT);
 
 		dataQueueContentEClass = createEClass(DATA_QUEUE_CONTENT);
 		createEReference(dataQueueContentEClass, DATA_QUEUE_CONTENT__ENTRIES);
@@ -303,7 +294,7 @@ public class OperatingSystemDataQueuePackageImpl extends EPackageImpl implements
 		dataQueueManagerEClass = createEClass(DATA_QUEUE_MANAGER);
 
 		// Create enums
-		dataQueueTypeEEnum = createEEnum(DATA_QUEUE_TYPE);
+		dataQueueSequenceEEnum = createEEnum(DATA_QUEUE_SEQUENCE);
 		dataQueueSearchTypeEEnum = createEEnum(DATA_QUEUE_SEARCH_TYPE);
 	}
 
@@ -346,11 +337,10 @@ public class OperatingSystemDataQueuePackageImpl extends EPackageImpl implements
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataQueueEClass, QDataQueue.class, "DataQueue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDataQueue_DataQueueType(), this.getDataQueueType(), "dataQueueType", null, 1, 1, QDataQueue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataQueue_Sequence(), this.getDataQueueSequence(), "sequence", null, 1, 1, QDataQueue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataQueue_KeyLength(), ecorePackage.getEInt(), "keyLength", null, 1, 1, QDataQueue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataQueue_MaxEntryLength(), ecorePackage.getEInt(), "maxEntryLength", null, 1, 1, QDataQueue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataQueue_SenderInfo(), ecorePackage.getEBoolean(), "senderInfo", null, 0, 1, QDataQueue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataQueue_Content(), this.getDataQueueContent(), null, "content", null, 0, 1, QDataQueue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataQueueContentEClass, QDataQueueContent.class, "DataQueueContent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataQueueContent_Entries(), this.getDataQueueEntry(), null, "entries", null, 0, -1, QDataQueueContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -361,22 +351,7 @@ public class OperatingSystemDataQueuePackageImpl extends EPackageImpl implements
 
 		initEClass(dataQueueManagerEClass, QDataQueueManager.class, "DataQueueManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = addEOperation(dataQueueManagerEClass, null, "writeDataQueue", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "library", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageDataPackage.getString(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(dataQueueManagerEClass, ecorePackage.getEString(), "readDataQueue", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "library", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getELong(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getDataQueueSearchType(), "searchType", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(dataQueueManagerEClass, null, "clearDataQueue", 1, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(dataQueueManagerEClass, null, "clearDataQueue", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "library", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -389,12 +364,13 @@ public class OperatingSystemDataQueuePackageImpl extends EPackageImpl implements
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataQueueSearchType(), "searchType", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataQueueManagerEClass, null, "createDataQueue", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(dataQueueManagerEClass, ecorePackage.getEString(), "readDataQueue", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "library", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getDataQueueType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "maxEntryLength", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getELong(), "timeout", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDataQueueSearchType(), "searchType", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataQueueManagerEClass, null, "writeDataQueue", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -403,16 +379,18 @@ public class OperatingSystemDataQueuePackageImpl extends EPackageImpl implements
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataQueueManagerEClass, null, "deleteDataQueue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(dataQueueManagerEClass, null, "writeDataQueue", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "library", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "library", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getString(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(dataQueueTypeEEnum, DataQueueType.class, "DataQueueType");
-		addEEnumLiteral(dataQueueTypeEEnum, DataQueueType.FIFO);
-		addEEnumLiteral(dataQueueTypeEEnum, DataQueueType.LIFO);
-		addEEnumLiteral(dataQueueTypeEEnum, DataQueueType.KEYED);
+		initEEnum(dataQueueSequenceEEnum, DataQueueSequence.class, "DataQueueSequence");
+		addEEnumLiteral(dataQueueSequenceEEnum, DataQueueSequence.FIFO);
+		addEEnumLiteral(dataQueueSequenceEEnum, DataQueueSequence.LIFO);
+		addEEnumLiteral(dataQueueSequenceEEnum, DataQueueSequence.KEYED);
 
 		initEEnum(dataQueueSearchTypeEEnum, DataQueueSearchType.class, "DataQueueSearchType");
 		addEEnumLiteral(dataQueueSearchTypeEEnum, DataQueueSearchType.EQUAL);

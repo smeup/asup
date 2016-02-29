@@ -24,7 +24,7 @@ import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.dtaq.DataQueueSearchType;
-import org.smeup.sys.os.dtaq.DataQueueType;
+import org.smeup.sys.os.dtaq.DataQueueSequence;
 import org.smeup.sys.os.dtaq.QDataQueue;
 import org.smeup.sys.os.dtaq.QDataQueueManager;
 import org.smeup.sys.os.lib.QLibrary;
@@ -42,7 +42,7 @@ public class CRUDTest {
 	private QTestAsserter testAsserter;
 	@Inject
 	private QJob job;
-	@Inject 
+	@Inject
 	private QJobCapability jobCapability;
 
 	@TestStarted
@@ -52,7 +52,7 @@ public class CRUDTest {
 		String fifoDtaq = "FIFO_DTAQ";
 		String lifoDtaq = "LIFO_DTAQ";
 		String keyedDtaq = "KEY_DTAQ";
-		
+
 		try {
 
 			// Create a test library (if none)
@@ -62,71 +62,99 @@ public class CRUDTest {
 				commandManager.executeCommand(job, callableCommand);
 				callableCommand.close();
 			}
-	
+
 			// Assert: create queues (if none else clear existent)
 			if (checkObj(job, QDataQueue.class, testLib, fifoDtaq) == false) {
-				dataQueueManager.createDataQueue(jobCapability, testLib, fifoDtaq, DataQueueType.FIFO, 32000);
+				createDataQueue(testLib, fifoDtaq, DataQueueSequence.FIFO, 32000);
 				testAsserter.assertTrue("Create FIFO DTAQ ", checkObj(job, QDataQueue.class, testLib, fifoDtaq));
 			} else
 				dataQueueManager.clearDataQueue(jobCapability, testLib, fifoDtaq);
-	
+
 			if (checkObj(job, QDataQueue.class, testLib, lifoDtaq) == false) {
-				dataQueueManager.createDataQueue(jobCapability, testLib, lifoDtaq, DataQueueType.LIFO, 32000);
+				createDataQueue(testLib, lifoDtaq, DataQueueSequence.LIFO, 32000);
 				testAsserter.assertTrue("Create LIFO DTAQ ", checkObj(job, QDataQueue.class, testLib, lifoDtaq));
 			} else
 				dataQueueManager.clearDataQueue(jobCapability, testLib, lifoDtaq);
-	
+
 			if (checkObj(job, QDataQueue.class, testLib, keyedDtaq) == false) {
-				dataQueueManager.createDataQueue(jobCapability, testLib, keyedDtaq, DataQueueType.KEYED, 32000);
+				createDataQueue(testLib, keyedDtaq, DataQueueSequence.KEYED, 32000);
 				testAsserter.assertTrue("Create KEYED DTAQ ", checkObj(job, QDataQueue.class, testLib, keyedDtaq));
 			} else
 				dataQueueManager.clearDataQueue(jobCapability, testLib, keyedDtaq);
-	
+
 			String writeVal1 = "TEST DTAQ 1";
 			String writeVal2 = "TEST DTAQ 2";
-	
+
 			// Write and read FIFO
-	
+
 			dataQueueManager.writeDataQueue(jobCapability, testLib, fifoDtaq, null, writeVal1);
 			dataQueueManager.writeDataQueue(jobCapability, testLib, fifoDtaq, null, writeVal2);
 			String readVal1 = dataQueueManager.readDataQueue(jobCapability, testLib, fifoDtaq, -1, null, null);
 			String readVal2 = dataQueueManager.readDataQueue(jobCapability, testLib, fifoDtaq, -1, null, null);
 			testAsserter.assertEquals("Read first DTAQ FIFO", writeVal1, readVal1);
 			testAsserter.assertEquals("Read second DTAQ FIFO", writeVal2, readVal2);
-	
+
 			// Write and read LIFO
-	
+
 			dataQueueManager.writeDataQueue(jobCapability, testLib, lifoDtaq, null, writeVal1);
 			dataQueueManager.writeDataQueue(jobCapability, testLib, lifoDtaq, null, writeVal2);
 			readVal1 = dataQueueManager.readDataQueue(jobCapability, testLib, lifoDtaq, -1, null, null);
 			readVal2 = dataQueueManager.readDataQueue(jobCapability, testLib, lifoDtaq, -1, null, null);
-	
+
 			testAsserter.assertEquals("Read DTAQ LIFO", writeVal2, readVal1);
 			testAsserter.assertEquals("Read DTAQ LIFO", writeVal1, readVal2);
-	
+
 			// Write and read KEYED
-	
+
 			String key = "TSTKEY";
-	
+
 			dataQueueManager.writeDataQueue(jobCapability, testLib, keyedDtaq, key, writeVal1);
 			dataQueueManager.writeDataQueue(jobCapability, testLib, keyedDtaq, key, writeVal2);
 			readVal1 = dataQueueManager.readDataQueue(jobCapability, testLib, keyedDtaq, -1, key, DataQueueSearchType.EQUAL);
 			readVal2 = dataQueueManager.readDataQueue(jobCapability, testLib, keyedDtaq, -1, key, DataQueueSearchType.EQUAL);
 			testAsserter.assertEquals("Read DTAQ KEYED", writeVal1, readVal1);
 			testAsserter.assertEquals("Read DTAQ KEYED", writeVal2, readVal2);
-	
+
 			// Delete queues
-			dataQueueManager.deleteDataQueue(jobCapability, testLib, fifoDtaq);
+			deleteDataQueue(testLib, fifoDtaq);
 			testAsserter.assertTrue("Delete FIFO DTAQ ", checkObj(job, QDataQueue.class, testLib, fifoDtaq) == false);
-	
-			dataQueueManager.deleteDataQueue(jobCapability, testLib, lifoDtaq);
+
+			deleteDataQueue(testLib, lifoDtaq);
 			testAsserter.assertTrue("Delete LIFO DTAQ ", checkObj(job, QDataQueue.class, testLib, lifoDtaq) == false);
-	
-			dataQueueManager.deleteDataQueue(jobCapability, testLib, keyedDtaq);
+
+			deleteDataQueue(testLib, keyedDtaq);
 			testAsserter.assertTrue("Delete KEYED DTAQ ", checkObj(job, QDataQueue.class, testLib, keyedDtaq) == false);
 		} catch (Exception exc) {
-			testAsserter.fail("Exception in CRUDTest class:"  + exc.getMessage());
+			testAsserter.fail("Exception in CRUDTest class:" + exc.getMessage());
 		}
+	}
+
+	private void createDataQueue(String library, String name, DataQueueSequence dataQueueSeq, int maxLength) {
+		
+		String sequence = null;
+		switch (dataQueueSeq) {
+		case FIFO:
+			sequence = "*FIFO";
+			break;
+		case KEYED:
+			sequence = "*KEYED";
+			break;
+		case LIFO:
+			sequence = "*LIFO";
+			break;
+		}
+		
+		String cmd = "CRTDTAQ DTAQ(" + library + "/" + name + ") SEQ(" + sequence + ") MAXLEN(" + maxLength + ")";
+		QCallableCommand callableCommand = commandManager.prepareCommand(job, cmd, null, true);
+		commandManager.executeCommand(job, callableCommand);
+		callableCommand.close();
+	}
+
+	private void deleteDataQueue(String library, String name) {
+		String cmd = "DLTDTAQ DTAQ(" + library + "/" + name + ")";
+		QCallableCommand callableCommand = commandManager.prepareCommand(job, cmd, null, true);
+		commandManager.executeCommand(job, callableCommand);
+		callableCommand.close();
 	}
 
 	private <T extends QObjectNameable> boolean checkObj(QJob job, Class<T> klass, String library, String name) {

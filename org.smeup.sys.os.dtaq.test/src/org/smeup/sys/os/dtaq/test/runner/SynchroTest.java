@@ -29,7 +29,7 @@ import org.smeup.sys.os.core.OperatingSystemException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobManager;
-import org.smeup.sys.os.dtaq.DataQueueType;
+import org.smeup.sys.os.dtaq.DataQueueSequence;
 import org.smeup.sys.os.dtaq.QDataQueue;
 import org.smeup.sys.os.dtaq.QDataQueueManager;
 import org.smeup.sys.os.lib.QLibrary;
@@ -88,7 +88,7 @@ public class SynchroTest {
 
 		// Assert: create queues (if none, else clear existent)
 		if (checkObj(job, QDataQueue.class, testLib, fifoDtaq) == false) {
-			dataQueueManager.createDataQueue(jobCapability, testLib, fifoDtaq, DataQueueType.FIFO, 32000);
+			createDataQueue(testLib, fifoDtaq, DataQueueSequence.FIFO, 32000);
 			testAsserter.assertTrue("Create FIFO DTAQ " + testLib + "/" + fifoDtaq, checkObj(job, QDataQueue.class, testLib, fifoDtaq));
 		} else
 			dataQueueManager.clearDataQueue(jobCapability, testLib, fifoDtaq);
@@ -122,7 +122,7 @@ public class SynchroTest {
 		testAsserter.assertEquals("Read from queue with wait for data", writeVal, readVal);
 
 		// Delete queues
-		dataQueueManager.deleteDataQueue(jobCapability, testLib, fifoDtaq);
+		deleteDataQueue(testLib, fifoDtaq);
 		testAsserter.assertTrue("Delete FIFO DTAQ " + testLib + "/" + fifoDtaq, checkObj(job, QDataQueue.class, testLib, fifoDtaq) == false);
 	}
 
@@ -147,7 +147,7 @@ public class SynchroTest {
 
 		// Assert: create queues (if none, else clear existent)
 		if (checkObj(job, QDataQueue.class, testLib, fifoDtaq_1) == false) {
-			dataQueueManager.createDataQueue(jobCapability, testLib, fifoDtaq_1, DataQueueType.FIFO, 32000);
+			createDataQueue(testLib, fifoDtaq_1, DataQueueSequence.FIFO, 32000);
 			testAsserter.assertTrue("Create FIFO DTAQ " + testLib + "/" + fifoDtaq_1, checkObj(job, QDataQueue.class, testLib, fifoDtaq_1));
 		} else
 			dataQueueManager.clearDataQueue(jobCapability, testLib, fifoDtaq_1);
@@ -181,7 +181,7 @@ public class SynchroTest {
 		testAsserter.assertNull("Read null from queue (cause timout)", readVal);
 
 		// Delete queues
-		dataQueueManager.deleteDataQueue(jobCapability, testLib, fifoDtaq_1);
+		deleteDataQueue(testLib, fifoDtaq_1);
 		testAsserter.assertTrue("Delete FIFO DTAQ " + testLib + "/" + fifoDtaq_1, checkObj(job, QDataQueue.class, testLib, fifoDtaq_1) == false);
 	}
 
@@ -237,6 +237,33 @@ public class SynchroTest {
 			// Unlock
 			locker.unlock(LockType.READ);
 		}
+	}	
 
+	private void createDataQueue(String library, String name, DataQueueSequence dataQueueSeq, int maxLength) {
+		
+		String sequence = null;
+		switch (dataQueueSeq) {
+		case FIFO:
+			sequence = "*FIFO";
+			break;
+		case KEYED:
+			sequence = "*KEYED";
+			break;
+		case LIFO:
+			sequence = "*LIFO";
+			break;
+		}
+		
+		String cmd = "CRTDTAQ DTAQ(" + library + "/" + name + ") SEQ(" + sequence + ") MAXLEN(" + maxLength + ")";
+		QCallableCommand callableCommand = commandManager.prepareCommand(job, cmd, null, true);
+		commandManager.executeCommand(job, callableCommand);
+		callableCommand.close();
 	}
+
+	private void deleteDataQueue(String library, String name) {
+		String cmd = "DLTDTAQ DTAQ(" + library + "/" + name + ")";
+		QCallableCommand callableCommand = commandManager.prepareCommand(job, cmd, null, true);
+		commandManager.executeCommand(job, callableCommand);
+		callableCommand.close();
+	}	
 }

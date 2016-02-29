@@ -25,7 +25,7 @@ import org.smeup.sys.os.core.OperatingSystemException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.dtaq.DataQueueSearchType;
-import org.smeup.sys.os.dtaq.DataQueueType;
+import org.smeup.sys.os.dtaq.DataQueueSequence;
 import org.smeup.sys.os.dtaq.QDataQueue;
 import org.smeup.sys.os.dtaq.QDataQueueManager;
 import org.smeup.sys.os.lib.QLibrary;
@@ -79,7 +79,7 @@ public class KeyedQueueTest {
 
 		// Create Keyed Queue
 		if (checkObj(job, QDataQueue.class, testLib, keyedDtaq) == false) {
-			dataQueueManager.createDataQueue(jobCapability, testLib, keyedDtaq, DataQueueType.KEYED, 32000);
+			createDataQueue(testLib, keyedDtaq, DataQueueSequence.KEYED, 32000);
 			testAsserter.assertTrue("Create KEYED DTAQ ", checkObj(job, QDataQueue.class, testLib, keyedDtaq));
 		} else
 			dataQueueManager.clearDataQueue(jobCapability, testLib, keyedDtaq);
@@ -117,7 +117,7 @@ public class KeyedQueueTest {
 
 		// Clear and delete TestQueue
 		dataQueueManager.clearDataQueue(jobCapability, testLib, keyedDtaq);
-		dataQueueManager.deleteDataQueue(jobCapability, testLib, keyedDtaq);
+		deleteDataQueue(testLib, keyedDtaq);
 		testAsserter.assertTrue("Delete KEYED DTAQ ", checkObj(job, QDataQueue.class, testLib, keyedDtaq) == false);
 	}
 
@@ -146,7 +146,7 @@ public class KeyedQueueTest {
 
 		// Create Keyed Queue
 		if (checkObj(job, QDataQueue.class, testLib, keyedDtaq) == false) {
-			dataQueueManager.createDataQueue(jobCapability, testLib, keyedDtaq, DataQueueType.KEYED, 32000);
+			createDataQueue(testLib, keyedDtaq, DataQueueSequence.KEYED, 32000);
 			testAsserter.assertTrue("Create KEYED DTAQ ", checkObj(job, QDataQueue.class, testLib, keyedDtaq));
 		} else
 			dataQueueManager.clearDataQueue(jobCapability, testLib, keyedDtaq);
@@ -194,12 +194,40 @@ public class KeyedQueueTest {
 
 		// Clear and delete TestQueue
 		dataQueueManager.clearDataQueue(jobCapability, testLib, keyedDtaq);
-		dataQueueManager.deleteDataQueue(jobCapability, testLib, keyedDtaq);
+		deleteDataQueue(testLib, keyedDtaq);
 		testAsserter.assertTrue("Delete KEYED DTAQ ", checkObj(job, QDataQueue.class, testLib, keyedDtaq) == false);
 	}
 
 	private <T extends QObjectNameable> boolean checkObj(QJob job, Class<T> klass, String library, String name) {
 		QResourceReader<?> resourceReader = resourceManager.getResourceReader(job, klass, library);
 		return resourceReader.exists(name);
+	}
+	
+	private void createDataQueue(String library, String name, DataQueueSequence dataQueueSeq, int maxLength) {
+		
+		String sequence = null;
+		switch (dataQueueSeq) {
+		case FIFO:
+			sequence = "*FIFO";
+			break;
+		case KEYED:
+			sequence = "*KEYED";
+			break;
+		case LIFO:
+			sequence = "*LIFO";
+			break;
+		}
+		
+		String cmd = "CRTDTAQ DTAQ(" + library + "/" + name + ") SEQ(" + sequence + ") MAXLEN(" + maxLength + ")";
+		QCallableCommand callableCommand = commandManager.prepareCommand(job, cmd, null, true);
+		commandManager.executeCommand(job, callableCommand);
+		callableCommand.close();
+	}
+
+	private void deleteDataQueue(String library, String name) {
+		String cmd = "DLTDTAQ DTAQ(" + library + "/" + name + ")";
+		QCallableCommand callableCommand = commandManager.prepareCommand(job, cmd, null, true);
+		commandManager.executeCommand(job, callableCommand);
+		callableCommand.close();
 	}
 }

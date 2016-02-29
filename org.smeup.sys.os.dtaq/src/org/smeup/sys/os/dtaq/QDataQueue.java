@@ -18,11 +18,10 @@ import org.smeup.sys.os.type.QTypedObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.os.dtaq.QDataQueue#getDataQueueType <em>Data Queue Type</em>}</li>
+ *   <li>{@link org.smeup.sys.os.dtaq.QDataQueue#getSequence <em>Sequence</em>}</li>
  *   <li>{@link org.smeup.sys.os.dtaq.QDataQueue#getKeyLength <em>Key Length</em>}</li>
  *   <li>{@link org.smeup.sys.os.dtaq.QDataQueue#getMaxEntryLength <em>Max Entry Length</em>}</li>
  *   <li>{@link org.smeup.sys.os.dtaq.QDataQueue#isSenderInfo <em>Sender Info</em>}</li>
- *   <li>{@link org.smeup.sys.os.dtaq.QDataQueue#getContent <em>Content</em>}</li>
  * </ul>
  *
  * @see org.smeup.sys.os.dtaq.QOperatingSystemDataQueuePackage#getDataQueue()
@@ -31,33 +30,33 @@ import org.smeup.sys.os.type.QTypedObject;
  */
 public interface QDataQueue extends QTypedObject {
 	/**
-	 * Returns the value of the '<em><b>Data Queue Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.smeup.sys.os.dtaq.DataQueueType}.
+	 * Returns the value of the '<em><b>Sequence</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.smeup.sys.os.dtaq.DataQueueSequence}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Data Queue Type</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Sequence</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Data Queue Type</em>' attribute.
-	 * @see org.smeup.sys.os.dtaq.DataQueueType
-	 * @see #setDataQueueType(DataQueueType)
-	 * @see org.smeup.sys.os.dtaq.QOperatingSystemDataQueuePackage#getDataQueue_DataQueueType()
+	 * @return the value of the '<em>Sequence</em>' attribute.
+	 * @see org.smeup.sys.os.dtaq.DataQueueSequence
+	 * @see #setSequence(DataQueueSequence)
+	 * @see org.smeup.sys.os.dtaq.QOperatingSystemDataQueuePackage#getDataQueue_Sequence()
 	 * @model required="true"
 	 * @generated
 	 */
-	DataQueueType getDataQueueType();
+	DataQueueSequence getSequence();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.dtaq.QDataQueue#getDataQueueType <em>Data Queue Type</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.os.dtaq.QDataQueue#getSequence <em>Sequence</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Data Queue Type</em>' attribute.
-	 * @see org.smeup.sys.os.dtaq.DataQueueType
-	 * @see #getDataQueueType()
+	 * @param value the new value of the '<em>Sequence</em>' attribute.
+	 * @see org.smeup.sys.os.dtaq.DataQueueSequence
+	 * @see #getSequence()
 	 * @generated
 	 */
-	void setDataQueueType(DataQueueType value);
+	void setSequence(DataQueueSequence value);
 
 	/**
 	 * Returns the value of the '<em><b>Key Length</b></em>' attribute.
@@ -136,31 +135,5 @@ public interface QDataQueue extends QTypedObject {
 	 * @generated
 	 */
 	void setSenderInfo(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Content</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Content</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Content</em>' containment reference.
-	 * @see #setContent(QDataQueueContent)
-	 * @see org.smeup.sys.os.dtaq.QOperatingSystemDataQueuePackage#getDataQueue_Content()
-	 * @model containment="true"
-	 * @generated
-	 */
-	QDataQueueContent getContent();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.dtaq.QDataQueue#getContent <em>Content</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Content</em>' containment reference.
-	 * @see #getContent()
-	 * @generated
-	 */
-	void setContent(QDataQueueContent value);
 
 } // QDataQueue

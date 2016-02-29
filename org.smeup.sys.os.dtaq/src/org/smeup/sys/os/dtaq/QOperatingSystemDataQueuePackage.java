@@ -113,13 +113,13 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 	int DATA_QUEUE__CREATION_INFO = QOperatingSystemTypePackage.TYPED_OBJECT__CREATION_INFO;
 
 	/**
-	 * The feature id for the '<em><b>Data Queue Type</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The feature id for the '<em><b>Sequence</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_QUEUE__DATA_QUEUE_TYPE = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 0;
+	int DATA_QUEUE__SEQUENCE = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Key Length</b></em>' attribute. <!--
@@ -149,20 +149,12 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 	int DATA_QUEUE__SENDER_INFO = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Content</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_QUEUE__CONTENT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 4;
-
-	/**
 	 * The number of structural features of the '<em>Data Queue</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_QUEUE_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 5;
+	int DATA_QUEUE_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.dtaq.impl.DataQueueContentImpl <em>Data Queue Content</em>}' class.
@@ -245,14 +237,14 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 	int DATA_QUEUE_MANAGER_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.dtaq.DataQueueType <em>Data Queue Type</em>}' enum.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see org.smeup.sys.os.dtaq.DataQueueType
-	 * @see org.smeup.sys.os.dtaq.impl.OperatingSystemDataQueuePackageImpl#getDataQueueType()
+	 * The meta object id for the '{@link org.smeup.sys.os.dtaq.DataQueueSequence <em>Data Queue Sequence</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.dtaq.DataQueueSequence
+	 * @see org.smeup.sys.os.dtaq.impl.OperatingSystemDataQueuePackageImpl#getDataQueueSequence()
 	 * @generated
 	 */
-	int DATA_QUEUE_TYPE = 4;
+	int DATA_QUEUE_SEQUENCE = 4;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.dtaq.DataQueueSearchType <em>Data Queue Search Type</em>}' enum.
@@ -276,14 +268,15 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 	EClass getDataQueue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.dtaq.QDataQueue#getDataQueueType <em>Data Queue Type</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Data Queue Type</em>'.
-	 * @see org.smeup.sys.os.dtaq.QDataQueue#getDataQueueType()
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.dtaq.QDataQueue#getSequence <em>Sequence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sequence</em>'.
+	 * @see org.smeup.sys.os.dtaq.QDataQueue#getSequence()
 	 * @see #getDataQueue()
 	 * @generated
 	 */
-	EAttribute getDataQueue_DataQueueType();
+	EAttribute getDataQueue_Sequence();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.dtaq.QDataQueue#getKeyLength <em>Key Length</em>}'.
@@ -317,16 +310,6 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDataQueue_SenderInfo();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.smeup.sys.os.dtaq.QDataQueue#getContent <em>Content</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Content</em>'.
-	 * @see org.smeup.sys.os.dtaq.QDataQueue#getContent()
-	 * @see #getDataQueue()
-	 * @generated
-	 */
-	EReference getDataQueue_Content();
 
 	/**
 	 * Returns the meta object for class '
@@ -395,13 +378,14 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 	EClass getDataQueueManager();
 
 	/**
-	 * Returns the meta object for enum '{@link org.smeup.sys.os.dtaq.DataQueueType <em>Data Queue Type</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Data Queue Type</em>'.
-	 * @see org.smeup.sys.os.dtaq.DataQueueType
+	 * Returns the meta object for enum '{@link org.smeup.sys.os.dtaq.DataQueueSequence <em>Data Queue Sequence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Data Queue Sequence</em>'.
+	 * @see org.smeup.sys.os.dtaq.DataQueueSequence
 	 * @generated
 	 */
-	EEnum getDataQueueType();
+	EEnum getDataQueueSequence();
 
 	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.os.dtaq.DataQueueSearchType <em>Data Queue Search Type</em>}'.
@@ -445,11 +429,12 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 		EClass DATA_QUEUE = eINSTANCE.getDataQueue();
 
 		/**
-		 * The meta object literal for the '<em><b>Data Queue Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Sequence</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATA_QUEUE__DATA_QUEUE_TYPE = eINSTANCE.getDataQueue_DataQueueType();
+		EAttribute DATA_QUEUE__SEQUENCE = eINSTANCE.getDataQueue_Sequence();
 
 		/**
 		 * The meta object literal for the '<em><b>Key Length</b></em>' attribute feature.
@@ -471,13 +456,6 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATA_QUEUE__SENDER_INFO = eINSTANCE.getDataQueue_SenderInfo();
-
-		/**
-		 * The meta object literal for the '<em><b>Content</b></em>' containment reference feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DATA_QUEUE__CONTENT = eINSTANCE.getDataQueue_Content();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.dtaq.impl.DataQueueContentImpl <em>Data Queue Content</em>}' class.
@@ -532,13 +510,14 @@ public interface QOperatingSystemDataQueuePackage extends EPackage {
 		EClass DATA_QUEUE_MANAGER = eINSTANCE.getDataQueueManager();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.os.dtaq.DataQueueType <em>Data Queue Type</em>}' enum.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.smeup.sys.os.dtaq.DataQueueType
-		 * @see org.smeup.sys.os.dtaq.impl.OperatingSystemDataQueuePackageImpl#getDataQueueType()
+		 * The meta object literal for the '{@link org.smeup.sys.os.dtaq.DataQueueSequence <em>Data Queue Sequence</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.dtaq.DataQueueSequence
+		 * @see org.smeup.sys.os.dtaq.impl.OperatingSystemDataQueuePackageImpl#getDataQueueSequence()
 		 * @generated
 		 */
-		EEnum DATA_QUEUE_TYPE = eINSTANCE.getDataQueueType();
+		EEnum DATA_QUEUE_SEQUENCE = eINSTANCE.getDataQueueSequence();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.dtaq.DataQueueSearchType <em>Data Queue Search Type</em>}' enum.

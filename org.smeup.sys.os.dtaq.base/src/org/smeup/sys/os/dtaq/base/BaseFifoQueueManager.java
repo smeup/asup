@@ -8,115 +8,84 @@
  *
  * Contributors:
  *   Dario Foresti - Initial API and implementation
+ *   Mattia Rocchi - Implementation
  */
 package org.smeup.sys.os.dtaq.base;
 
-import java.util.Hashtable;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 public class BaseFifoQueueManager {
 
-	Hashtable<String, BaseBlockingFifoQueue<String>> iQueueList = new Hashtable<String, BaseBlockingFifoQueue<String>>();
+	private Map<String, BaseBlockingFifoQueue<String>> queueList = new WeakHashMap<String, BaseBlockingFifoQueue<String>>();
 
 	public BaseFifoQueueManager() {
 
 	}
 
-	public void createQueue(String aLib, String aName) throws BaseFifoQueueException {
+	public void writeToQueue(String library, String name, String value) throws BaseFifoQueueException {
 
-		String vQueueKey = buildQueueKey(aLib, aName);
-		if (iQueueList.containsKey(vQueueKey) == false) {
-			BaseBlockingFifoQueue<String> vNewQueue = new BaseBlockingFifoQueue<String>(aLib, aName);
-			iQueueList.put(vQueueKey, vNewQueue);
-		} else
-			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_ALREADY_EXISTS);
-
-	}
-
-	public void removeQueue(String aLib, String aName) throws BaseFifoQueueException {
-		String vQueueKey = buildQueueKey(aLib, aName);
-		if (iQueueList.containsKey(vQueueKey))
-			iQueueList.remove(vQueueKey);
-		else
+		BaseBlockingFifoQueue<String> queue = getOrCreateQueue(library, name);
+		if (queue == null)
 			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
 
+		synchronized (queue) {
+			queue.push(value);
+		}
 	}
 
-	public void writeToQueue(String aLib, String aName, String aValue) throws BaseFifoQueueException {
-		String vQueueKey = buildQueueKey(aLib, aName);
-		if (iQueueList.containsKey(vQueueKey)) {
-
-			BaseBlockingFifoQueue<String> vFifoQueue = iQueueList.get(vQueueKey);
-
-			synchronized (vFifoQueue) {
-				vFifoQueue.push(aValue);
-			}
-		} else
-			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
-
-	}
-
-	public String readFromQueue(String aLib, String aName, long aTimeout) throws BaseFifoQueueException {
-		String vResult = null;
-
-		String vQueueKey = buildQueueKey(aLib, aName);
-		if (iQueueList.containsKey(vQueueKey))
-			try {
-				vResult = iQueueList.get(vQueueKey).pop(aTimeout);
-			} catch (InterruptedException vExc) {
-//				vExc.printStackTrace();
-			}
-		else
-			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
-
-		return vResult;
-	}
-
-	public String peekFromQueue(String aLib, String aName, long aTimeout) throws BaseFifoQueueException {
+	public String readFromQueue(String library, String name, long timeOut) throws BaseFifoQueueException {
 
 		String vResult = null;
 
-		String vQueueKey = buildQueueKey(aLib, aName);
-		if (iQueueList.containsKey(vQueueKey))
-			try {
-				vResult = iQueueList.get(vQueueKey).peek(aTimeout);
-			} catch (InterruptedException vExc) {
-				vExc.printStackTrace();
-			}
-		else
+		BaseBlockingFifoQueue<String> queue = getOrCreateQueue(library, name);
+		if (queue == null)
 			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
 
-		return vResult;
-
-	}
-
-	public void clearQueue(String aLib, String aName) throws BaseFifoQueueException {
-		String vQueueKey = buildQueueKey(aLib, aName);
-		if (iQueueList.containsKey(vQueueKey))
-			iQueueList.get(vQueueKey).clear();
-		else
-			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
-
-	}
-
-	private String buildQueueKey(String aLib, String aName) {
-		String vKey = aLib + aName;
-		return vKey.toUpperCase();
-	}
-
-	public static void main(String[] args) {
-		BaseFifoQueueManager vQueueManager = new BaseFifoQueueManager();
 		try {
-			vQueueManager.createQueue("testlib", "testqueue");
-			vQueueManager.writeToQueue("testlib", "testqueue", "Prova");
-			System.out.println("Lettura: " + vQueueManager.readFromQueue("testlib", "testqueue", -1));
-			System.out.println("Lettura: " + vQueueManager.readFromQueue("testlib", "testqueue", 3000));
-			vQueueManager.removeQueue("testlib", "testqueue");
-			System.out.println("Lettura: " + vQueueManager.readFromQueue("testlib", "testqueue", 3000));
-
-		} catch (BaseFifoQueueException vExc) {
-			// TODO Auto-generated catch block
+			vResult = queue.pop(timeOut);
+		} catch (InterruptedException vExc) {
 			vExc.printStackTrace();
 		}
 
+		return vResult;
+	}
+
+	public String peekFromQueue(String library, String name, long timeOut) throws BaseFifoQueueException {
+
+		String vResult = null;
+
+		BaseBlockingFifoQueue<String> queue = getOrCreateQueue(library, name);
+		if (queue == null)
+			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
+
+		try {
+			vResult = queue.peek(timeOut);
+		} catch (InterruptedException vExc) {
+			vExc.printStackTrace();
+		}
+
+		return vResult;
+	}
+
+	public void clearQueue(String library, String name) throws BaseFifoQueueException {
+
+		BaseBlockingFifoQueue<String> queue = getOrCreateQueue(library, name);
+		if (queue == null)
+			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
+
+		queue.clear();
+	}
+
+	private BaseBlockingFifoQueue<String> getOrCreateQueue(String library, String name) throws BaseFifoQueueException {
+
+		String queueKey = library.toUpperCase() + "/" + name.toUpperCase();
+		BaseBlockingFifoQueue<String> queue = queueList.get(queueKey);
+		if (queue == null) {
+			queue = new BaseBlockingFifoQueue<String>(library, name);
+			queueList.put(queueKey, queue);
+		}
+
+		return queue;
 	}
 }

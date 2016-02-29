@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.os.dtaq.DataQueueSearchType;
-import org.smeup.sys.os.dtaq.DataQueueType;
+import org.smeup.sys.os.dtaq.DataQueueSequence;
 import org.smeup.sys.os.dtaq.QDataQueue;
 import org.smeup.sys.os.dtaq.QDataQueueContent;
 import org.smeup.sys.os.dtaq.QDataQueueEntry;
@@ -73,8 +73,8 @@ public class OperatingSystemDataQueueFactoryImpl extends EFactoryImpl implements
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE_TYPE:
-				return createDataQueueTypeFromString(eDataType, initialValue);
+			case QOperatingSystemDataQueuePackage.DATA_QUEUE_SEQUENCE:
+				return createDataQueueSequenceFromString(eDataType, initialValue);
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE_SEARCH_TYPE:
 				return createDataQueueSearchTypeFromString(eDataType, initialValue);
 			default:
@@ -89,8 +89,8 @@ public class OperatingSystemDataQueueFactoryImpl extends EFactoryImpl implements
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case QOperatingSystemDataQueuePackage.DATA_QUEUE_TYPE:
-				return convertDataQueueTypeToString(eDataType, instanceValue);
+			case QOperatingSystemDataQueuePackage.DATA_QUEUE_SEQUENCE:
+				return convertDataQueueSequenceToString(eDataType, instanceValue);
 			case QOperatingSystemDataQueuePackage.DATA_QUEUE_SEARCH_TYPE:
 				return convertDataQueueSearchTypeToString(eDataType, instanceValue);
 			default:
@@ -129,20 +129,22 @@ public class OperatingSystemDataQueueFactoryImpl extends EFactoryImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataQueueType createDataQueueTypeFromString(EDataType eDataType, String initialValue) {
-		DataQueueType result = DataQueueType.get(initialValue);
+	public DataQueueSequence createDataQueueSequenceFromString(EDataType eDataType, String initialValue) {
+		DataQueueSequence result = DataQueueSequence.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertDataQueueTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertDataQueueSequenceToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

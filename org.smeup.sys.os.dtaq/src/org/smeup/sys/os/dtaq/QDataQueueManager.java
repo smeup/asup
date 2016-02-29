@@ -55,25 +55,9 @@ public interface QDataQueueManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model capabilityRequired="true" libraryRequired="true" nameRequired="true" typeRequired="true" maxEntryLengthRequired="true"
-	 * @generated
-	 */
-	void createDataQueue(QJobCapability capability, String library, String name, DataQueueType type, int maxEntryLength);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model capabilityRequired="true" libraryRequired="true" nameRequired="true" valueRequired="true"
 	 * @generated
 	 */
 	void writeDataQueue(QJobCapability capability, String library, String name, String key, String value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model capabilityRequired="true"
-	 * @generated
-	 */
-	void deleteDataQueue(QJobCapability capability, String library, String name);
 
 } // QDataQueueManager
