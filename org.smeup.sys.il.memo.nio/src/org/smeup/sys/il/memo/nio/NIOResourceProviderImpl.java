@@ -36,7 +36,7 @@ public class NIOResourceProviderImpl implements QResourceProvider {
 	public NIOResourceProviderImpl(QApplication application, QResourceManager resourceManager) {
 
 		this.sourceManager = new NIOSourceManagerImpl(application, "asup-obj");
-		
+		application.getContext().inject(this.sourceManager);
 		resourceManager.registerProvider(QObjectNameable.class, this);
 	}
 

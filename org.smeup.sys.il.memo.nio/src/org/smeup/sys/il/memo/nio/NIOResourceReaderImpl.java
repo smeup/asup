@@ -37,8 +37,6 @@ public class NIOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 		setContextProvider(contextProvider);
 
 		this.project = project;
-		if(project == null)
-			"".toCharArray();
 		this.sourceManager = sourceManager;
 		this.klass = klass;
 	}
@@ -72,9 +70,6 @@ public class NIOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 		T object = null;
 		try {
 			object = entry.load(klass);
-//			InputStream inputStream = entry.getInputStream();
-//			object = (T) emfConverter.convertToEObject(inputStream);
-//			inputStream.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

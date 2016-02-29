@@ -164,7 +164,7 @@ public abstract class E4ContextImpl extends ContextImpl {
 
 	@Override
 	public boolean isClosed() {
-		return getEclipseContext() != null;
+		return getEclipseContext() == null;
 	}
 
 	@SuppressWarnings("unchecked")

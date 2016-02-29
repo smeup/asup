@@ -12,6 +12,7 @@
 package org.smeup.sys.il.core.meta.e4;
 
 import java.lang.reflect.Method;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -150,7 +151,7 @@ public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
 	}
 
 	@Override
-	public String qURI() {
-		return EcoreUtil.getURI(eClass).toString();
+	public URI qURI() {
+		return URI.create(EcoreUtil.getURI(eClass).toString());
 	}
 }

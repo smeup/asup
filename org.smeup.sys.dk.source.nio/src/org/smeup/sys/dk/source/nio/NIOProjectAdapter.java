@@ -52,7 +52,7 @@ public class NIOProjectAdapter implements QProject {
 	}
 
 	@Override
-	public String qURI() {
-		return getLocation().toString();
+	public URI qURI() {
+		return getLocation();
 	}
 }

@@ -92,6 +92,7 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 			
 			databaseManager.createSchema(connection, library.getName(), schemaDef);
 		} else
+			// TODO remove
 			System.err.println("Schema already exists: " + library.getName());
 	}
 
@@ -100,8 +101,9 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 		// schema
 		Schema schema = connection.getCatalogMetaData().getSchema(library.getName());
 		if (schema == null)
-			throw new SQLException("Schema not found: " + library.getName());
-
-		databaseManager.dropSchema(connection, schema, true);
+			// TODO remove
+			System.err.println("Schema not found: " + library.getName());
+		else
+			databaseManager.dropSchema(connection, schema, true);
 	}
 }

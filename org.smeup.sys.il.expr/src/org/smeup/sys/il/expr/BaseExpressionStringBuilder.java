@@ -22,11 +22,6 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 		return result.toString();
 	}
 
-	public BaseExpressionStringBuilder reset() {
-		result = new StringBuffer();
-		return this;
-	}
-
 	@Override
 	public boolean visit(QBooleanExpression expression) {
 		expression.getOperand().accept(this);

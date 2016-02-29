@@ -38,9 +38,6 @@ public class NIOSourceIterator<T extends QObjectNameable> implements Iterator<T>
 		T typedObject = null;
 		QSourceEntry entry = entries.next();
 		try {
-//			InputStream inputStream = entry.getInputStream();
-//			typedObject = (T) jdtResource.convertToEObject(inputStream);
-//			inputStream.close();
 			typedObject = entry.load(klass);
 		} catch (IOException e) {
 			System.err.println(e.getMessage() + " location: " + entry);

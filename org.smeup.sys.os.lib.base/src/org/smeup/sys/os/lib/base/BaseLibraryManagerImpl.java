@@ -91,7 +91,6 @@ public class BaseLibraryManagerImpl implements QLibraryManager {
 				
 				libraryWriter.delete(library);
 			}
-			
 		}
 		finally {
 			if(libraryIterator != null)

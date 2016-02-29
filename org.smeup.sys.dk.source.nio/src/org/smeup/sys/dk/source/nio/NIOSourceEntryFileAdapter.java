@@ -100,7 +100,7 @@ public class NIOSourceEntryFileAdapter implements QSourceEntry {
 	}
 
 	@Override
-	public String qURI() {
-		return getLocation().toString();
+	public URI qURI() {
+		return getLocation();
 	}
 }

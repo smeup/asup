@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.core.impl;
 
+import java.net.URI;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
@@ -46,8 +48,8 @@ public class ObjectNameableImpl extends ObjectImpl implements QObjectNameable {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public String qURI() {
-		return EcoreUtil.getURI(this).toString();
+	public URI qURI() {
+		return URI.create(EcoreUtil.getURI(this).toString());
 	}
 
 	/**

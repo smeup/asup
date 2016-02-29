@@ -102,7 +102,7 @@ public class JDTSourceEntryFileAdapter implements QSourceEntry {
 	}
 
 	@Override
-	public String qURI() {
-		return getLocation().toString();
+	public URI qURI() {
+		return getLocation();
 	}
 }

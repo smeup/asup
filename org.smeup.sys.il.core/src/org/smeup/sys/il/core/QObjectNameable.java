@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.core;
 
+import java.net.URI;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>QObject Nameable</b></em>'. <!-- end-user-doc -->
@@ -21,9 +23,9 @@ public interface QObjectNameable extends QObject, QNameable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true"
+	 * @model dataType="org.smeup.sys.mi.core.JavaURI" required="true"
 	 * @generated
 	 */
-	String qURI();
+	URI qURI();
 
 } // QObjectNameable

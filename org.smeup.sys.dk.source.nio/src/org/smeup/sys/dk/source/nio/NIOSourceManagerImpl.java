@@ -15,6 +15,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.eclipse.core.runtime.URIUtil;
@@ -39,23 +41,35 @@ import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextDescription;
+import org.smeup.sys.il.lock.LockType;
+import org.smeup.sys.il.lock.QLockManager;
+import org.smeup.sys.il.lock.QObjectLocker;
 import org.smeup.sys.rt.core.QApplication;
+import org.smeup.sys.rt.core.QLogger;
 
 public class NIOSourceManagerImpl implements QSourceManager {
 
-	private String path;
+	@Inject
+	private QLockManager lockManager;
+	@Inject
+	private QLogger logger;
 
 	private QApplication application;
+	private String path;
 
 	@Inject
 	public NIOSourceManagerImpl(QApplication application) {
 		this(application, "asup-src");
 	}
 
-	@SuppressWarnings("resource")
 	public NIOSourceManagerImpl(QApplication application, String path) {
 		this.path = "/home/jamiro/xyz/" + path;
 		this.application = application;
+	}
+
+	@PostConstruct
+	@SuppressWarnings("resource")
+	private void init() {
 
 		QContext applicationContext = application.getContext();
 		QContextDescription applicationContextDescription = applicationContext.getContextDescription();
@@ -77,13 +91,23 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	public QProject createProject(QContext context, QProjectDef projectDef, boolean replace) throws IOException {
 
 		Path project = Paths.get(path, projectDef.getName());
-		if (Files.exists(project) && !replace)
-			throw new IOException("Project already exists: " + projectDef.getName());
 
-		if (Files.exists(project) && replace)
-			Files.delete(project);
+		QObjectLocker<QProject> projectLocker = lockManager.getLocker(context, project.toUri());
+		projectLocker.lock(LockType.WRITE);
 
-		project = Files.createDirectories(project);
+		try {
+			boolean exists = Files.exists(project);
+			if (exists && !replace)
+				throw new IOException("Project already exists: " + projectDef.getName());
+
+			if (exists)
+				Files.delete(project);
+
+			project = Files.createDirectories(project);
+
+		} finally {
+			projectLocker.unlock(LockType.WRITE);
+		}
 
 		return new NIOProjectAdapter(project);
 	}
@@ -91,10 +115,20 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	@Override
 	public void deleteProject(QContext context, QProject qProject) throws IOException {
 
-		Path project = Paths.get(path, qProject.getName());
-		if (Files.exists(project))
-			Files.delete(project);
+		Path project = Paths.get(qProject.getLocation());
+		if (!Files.exists(project))
+			return;
 
+		QObjectLocker<QProject> projectLocker = lockManager.getLocker(context, project.toUri());
+		projectLocker.lock(LockType.WRITE);
+
+		try {
+			Files.delete(project);
+		} catch (IOException e) {
+			logger.error(e);
+		} finally {
+			projectLocker.unlock(LockType.WRITE);
+		}
 	}
 
 	@Override
@@ -129,7 +163,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 
 	@Override
 	public <T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, QProject project, Class<T> type, String name, boolean replace, InputStream content) throws IOException {
-		return createEntry(context, project, type, name + ".xmi", replace, content);
+		return createEntry(context, project, type, name + ".XMI", replace, content);
 	}
 
 	@Override
@@ -159,7 +193,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 
 	@Override
 	public <T extends QObjectNameable> QSourceEntry getObjectEntry(QContext context, QProject project, Class<T> type, String name) {
-		return getChildEntry(context, project, type, name + ".xmi");
+		return getChildEntry(context, project, type, name + ".XMI");
 	}
 
 	@Override
@@ -216,34 +250,52 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	@Override
 	public void removeEntry(QContext context, QSourceEntry entry) throws IOException {
 
-		java.net.URI location = entry.getLocation(); // URIUtil.removeFileExtension(entry.getLocation());
-		location = URIUtil.makeRelative(location, entry.getProject().getLocation());
+		Path file = Paths.get(entry.getLocation());
 
-		Path file = Paths.get(location);
+		if (!Files.exists(file))
+			return;
 
-		if (Files.exists(file))
+		QObjectLocker<QProject> fileLocker = lockManager.getLocker(context, file.toUri());
+		fileLocker.lock(LockType.WRITE);
+		
+		try {
 			Files.delete(file);
+		} catch (IOException e) {
+			logger.error(e);
+		} finally {
+			fileLocker.unlock(LockType.WRITE);
+		}
+
 	}
 
 	private <T extends QObjectNameable> QSourceEntry createEntry(QContext context, QSourceNode parent, Class<T> type, String name, boolean replace, InputStream content) throws IOException {
 
-		Path folder = getFolder(parent, type, true);
+		Path folder = getFolder(context, parent, type, true);
 		Path file = folder.resolve(name);
 
-		if (Files.exists(file)) {
-			if (!replace)
+		QObjectLocker<QProject> fileLocker = lockManager.getLocker(context, file.toUri());
+		fileLocker.lock(LockType.WRITE);
+
+		try {
+			boolean exists = Files.exists(file);
+			if (exists && !replace)
 				throw new IOException("Source entry already exists: " + file.toUri());
 
-			Files.copy(content, file, StandardCopyOption.REPLACE_EXISTING);
-		} else
-			Files.copy(content, file);
+			if (exists)
+				Files.copy(content, file, StandardCopyOption.REPLACE_EXISTING);
+			else
+				Files.copy(content, file);
 
+		} finally {
+			fileLocker.unlock(LockType.WRITE);
+		}
 
 		return new NIOSourceEntryFileAdapter(getObjectSerializer(context), parent.getProject(), file);
 	}
 
 	private <T extends QObjectNameable> QSourceEntry getChildEntry(QContext context, QSourceNode parent, Class<T> type, String name) {
-		Path folder = getFolder(parent, type, true);
+
+		Path folder = getFolder(context, parent, type, false);
 		if (folder == null)
 			return null;
 
@@ -257,7 +309,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	private <T extends QObjectNameable> List<QSourceEntry> listChildEntries(QContext context, QSourceNode parent, Class<T> type, String nameFilter) {
 
 		List<QSourceEntry> entries = new ArrayList<QSourceEntry>();
-		Path folder = getFolder(parent, type, false);
+		Path folder = getFolder(context, parent, type, false);
 		if (folder == null)
 			return entries;
 
@@ -269,7 +321,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 				String resourceName = path.getFileName().toString();
 
 				// XMI extension
-				if (!resourceName.endsWith(".xmi"))
+				if (!resourceName.endsWith(".XMI"))
 					continue;
 
 				// remove extension
@@ -303,24 +355,27 @@ public class NIOSourceManagerImpl implements QSourceManager {
 		return entries;
 	}
 
-	private <T extends QObjectNameable> Path getFolder(QSourceNode parent, Class<T> type, boolean create) {
-
+	private <T extends QObjectNameable> Path getFolder(QContext context, QSourceNode parent, Class<T> type, boolean create) {
+		
 		java.net.URI location = URIUtil.removeFileExtension(parent.getLocation());
-
-		location = URIUtil.append(location, type.getSimpleName().substring(1));
+		if(type != null)
+			location = URIUtil.append(location, type.getSimpleName().substring(1));
 
 		Path folder = Paths.get(location);
+		if (Files.exists(folder))
+			return folder;
 
-		if (!Files.exists(folder))
-			if (create)
-				try {
-					Files.createDirectories(folder);
-				} catch (IOException e) {
-					e.printStackTrace();
-					return null;
-				}
-			else
-				return null;
+		if (!create)
+			return null;
+
+		try {
+			Files.createDirectories(folder);
+		} catch (FileAlreadyExistsException e) {
+			return folder;
+		} catch (IOException e) {
+			logger.error(e);
+			return null;
+		}
 
 		return folder;
 	}

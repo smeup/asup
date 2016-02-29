@@ -505,7 +505,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 		initEClass(objectNameableEClass, QObjectNameable.class, "ObjectNameable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(objectNameableEClass, ecorePackage.getEString(), "qURI", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(objectNameableEClass, theMachineInterfaceCorePackage.getJavaURI(), "qURI", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(objectRegistryEClass, QObjectRegistry.class, "ObjectRegistry", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

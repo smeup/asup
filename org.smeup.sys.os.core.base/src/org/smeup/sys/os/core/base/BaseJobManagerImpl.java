@@ -11,7 +11,6 @@
  */
 package org.smeup.sys.os.core.base;
 
-import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -136,7 +135,7 @@ public class BaseJobManagerImpl implements QJobManager {
 		// capability		
 		QJobCapability jobCapability = QOperatingSystemJobsFactory.eINSTANCE.createJobCapability();
 		jobCapability.setJobReference((QJobReference) EcoreUtil.copy((EObject)job.getJobReference()));
-		jobCapability.setObjectURI(URI.create(job.qURI()));
+		jobCapability.setObjectURI(job.qURI());
 		jobCapability.setPort(application.getPort());
 
 		job.getContext().set(QJobCapability.class, jobCapability);
@@ -265,7 +264,7 @@ public class BaseJobManagerImpl implements QJobManager {
 		QJobEvent jobEvent = QOperatingSystemJobsFactory.eINSTANCE.createJobEvent();
 		jobEvent.setSource(job);
 		jobEvent.setType(JobEventType.STATUS_CHANGED);
-		
+				
 		fireEvent(jobEvent);
 	}
 
