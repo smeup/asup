@@ -29,6 +29,7 @@ public class BaseFifoQueueManager {
 		if (queue == null)
 			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
 
+		// TODO remove synchronized?
 		synchronized (queue) {
 			queue.push(value);
 		}
@@ -44,8 +45,8 @@ public class BaseFifoQueueManager {
 
 		try {
 			vResult = queue.pop(timeOut);
-		} catch (InterruptedException vExc) {
-			vExc.printStackTrace();
+		} catch (InterruptedException e) {
+			System.err.println(e.getMessage());
 		}
 
 		return vResult;
@@ -61,8 +62,8 @@ public class BaseFifoQueueManager {
 
 		try {
 			vResult = queue.peek(timeOut);
-		} catch (InterruptedException vExc) {
-			vExc.printStackTrace();
+		} catch (InterruptedException e) {
+			System.err.println(e.getMessage());
 		}
 
 		return vResult;
@@ -82,8 +83,13 @@ public class BaseFifoQueueManager {
 		String queueKey = library.toUpperCase() + "/" + name.toUpperCase();
 		BaseBlockingFifoQueue<String> queue = queueList.get(queueKey);
 		if (queue == null) {
-			queue = new BaseBlockingFifoQueue<String>(library, name);
-			queueList.put(queueKey, queue);
+			synchronized (queueList) {
+				queue = queueList.get(queueKey);
+				if (queue == null) {
+					queue = new BaseBlockingFifoQueue<String>(library, name);
+					queueList.put(queueKey, queue);
+				}
+			}
 		}
 
 		return queue;
