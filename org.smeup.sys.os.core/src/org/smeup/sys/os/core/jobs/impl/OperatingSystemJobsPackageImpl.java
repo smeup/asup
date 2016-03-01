@@ -823,6 +823,9 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 
 		initEClass(jobManagerEClass, QJobManager.class, "JobManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		op = addEOperation(jobManagerEClass, ecorePackage.getEBoolean(), "checkCapability", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(jobManagerEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
 

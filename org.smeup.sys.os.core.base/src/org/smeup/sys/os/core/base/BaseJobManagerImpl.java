@@ -174,6 +174,12 @@ public class BaseJobManagerImpl implements QJobManager {
 		return activeJobs.get(contextID);
 	}
 
+
+	@Override
+	public boolean checkCapability(QJobCapability capability) {
+		return lookup(capability) != null;
+	}
+
 	@Override
 	public QJob lookupActiveJob(String contextID, String jobID) {
 
