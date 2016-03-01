@@ -12,19 +12,21 @@
  */
 package org.smeup.sys.os.dtaq.base;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.WeakHashMap;
 
 public class BaseFifoQueueManager {
 
-	private Map<String, BaseBlockingFifoQueue<String>> queueList = new WeakHashMap<String, BaseBlockingFifoQueue<String>>();
+	private Map<String, BaseBlockingFifoQueue<String>> queueList = new HashMap<String, BaseBlockingFifoQueue<String>>();
 
 	public BaseFifoQueueManager() {
 
 	}
 
 	public void writeToQueue(String library, String name, String value) throws BaseFifoQueueException {
-
+		
+		//System.out.println("WRTQUE " + name + ": " + value);
+		
 		BaseBlockingFifoQueue<String> queue = getOrCreateQueue(library, name);
 		if (queue == null)
 			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
@@ -45,6 +47,7 @@ public class BaseFifoQueueManager {
 
 		try {
 			vResult = queue.pop(timeOut);
+			//System.out.println("REAQUE " + name + ": " + vResult);
 		} catch (InterruptedException e) {
 			System.err.println(e.getMessage());
 		}
