@@ -20,18 +20,4 @@ public interface QCharacter extends QString {
 	 * @generated
 	 */
 	void eval(QIndicator value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void move(QDecimal value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model clearRequired="true"
-	 * @generated
-	 */
-	void move(QDecimal value, boolean clear);
 }

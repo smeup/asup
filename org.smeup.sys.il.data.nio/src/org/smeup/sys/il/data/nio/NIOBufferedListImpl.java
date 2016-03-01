@@ -24,7 +24,9 @@ import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDataVisitor;
+import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDecimal;
+import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
@@ -38,6 +40,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	private NIOBufferedListImpl<?> listOwner;
 	private D _model;
 	private SortDirection sortDirection = null;
+	private QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 
 	public NIOBufferedListImpl(QDataContext dataContext) {
 		super(dataContext);
@@ -179,8 +182,8 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 			sb.append(i + "[");
 			sb.append(new String(element.asBytes(), getDataContext().getCharset()));
 			sb.append("]");
-			
-			if(sb.length() > 5000)
+
+			if (sb.length() > 5000)
 				break;
 		}
 
@@ -231,6 +234,46 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	@Override
 	public void eval(QList<D> value) {
 		value.eval(this);
+	}
+
+	@Override
+	public void eval(int value) {
+		for (D element : this)
+			((QNumeric) element).eval(value);
+	}
+
+	@Override
+	public void eval(QBufferedList<D> value) {
+
+		int capacity = capacity();
+		if (value.capacity() < capacity)
+			capacity = value.capacity();
+
+		for (int e = 1; e <= capacity; e++) {
+			dataWriter.set(value.get(e));
+			get(e).accept(dataWriter);
+		}
+
+		for (int e = capacity + 1; e <= capacity(); e++)
+			get(e).clear();
+	}
+
+	@Override
+	public void eval(QNumeric value) {
+		for (D element : this)
+			((QNumeric) element).eval(value);
+	}
+
+	@Override
+	public void eval(QString value) {
+		for (D element : this)
+			((QString) element).eval(value);
+	}
+
+	@Override
+	public void eval(String value) {
+		for (D element : this)
+			((QString) element).eval(value);
 	}
 
 	@Override
@@ -348,7 +391,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	public <E extends Enum<E>> void movea(E value, boolean clear) {
 		movea(1, value, clear);
 	}
-	
+
 	@Override
 	public <E extends Enum<E>> void movea(QNumeric targetIndex, E value) {
 		movea(targetIndex.asInteger(), value, false);
@@ -359,7 +402,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 		for (int i = targetIndex; i <= capacity(); i++)
 			get(i).eval(value);
 	}
-	
+
 	@Override
 	public <E extends Enum<E>> void movea(int targetIndex, E value) {
 		movea(targetIndex, value, false);
@@ -369,7 +412,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	public <E extends Enum<E>> void movea(QNumeric targetIndex, E value, boolean clear) {
 		movea(targetIndex.asInteger(), value, clear);
 	}
-		
+
 	@Override
 	public void movea(QNumeric targetIndex, QBufferedData value) {
 		movea(targetIndex.i(), value);
@@ -489,7 +532,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	@Override
 	public void accept(QDataVisitor visitor) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

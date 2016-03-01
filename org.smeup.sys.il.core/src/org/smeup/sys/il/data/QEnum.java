@@ -36,7 +36,8 @@ public interface QEnum<E extends Enum<E>, D extends QBufferedData> extends QBuff
 	E asEnum();
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
 	 */

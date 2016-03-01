@@ -126,7 +126,7 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 	public void eval(byte value) {
 		_delegate.eval(value);
 	}
-
+	
 	@Override
 	public <E extends Enum<E>> boolean ge(E value) {
 		return _delegate.ge(value);
@@ -447,5 +447,21 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 	@Override
 	public boolean isStoreOwner() {
 		return _delegate.isStoreOwner();
+	}
+
+	public void move(boolean value) {
+		_delegate.move(value);
+	}
+
+	public void move(boolean value, boolean clear) {
+		_delegate.move(value, clear);
+	}
+
+	public void movel(boolean value) {
+		_delegate.movel(value);
+	}
+
+	public void movel(boolean value, boolean clear) {
+		_delegate.movel(value, clear);
 	}
 }

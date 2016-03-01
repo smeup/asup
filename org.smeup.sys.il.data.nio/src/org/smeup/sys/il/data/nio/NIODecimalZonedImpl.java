@@ -63,7 +63,7 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 		}
 	}
 	
-	private AS400ZonedDecimal getDecimal(int precision, int scale) {
+	protected static AS400ZonedDecimal getDecimal(int precision, int scale) {
 
 		try {
 			AS400ZonedDecimal decimal = zoneds[precision - 1][scale];

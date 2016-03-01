@@ -95,16 +95,6 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	}
 
 	@Override
-	public void move(QDecimal value) {
-		move(value, false);
-	}
-
-	@Override
-	public void move(QDecimal value, boolean clear) {
-		NIOBufferHelper.move(getBuffer(), getPosition(), _length, value.asBytes(), clear, INIT);
-	}
-
-	@Override
 	public <E extends Enum<E>> void move(E value) {
 		move(getPrimitive(value));
 	}

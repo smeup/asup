@@ -3,6 +3,7 @@ package org.smeup.sys.il.data.nio;
 import org.smeup.sys.il.data.QDataContext;
 
 import com.ibm.as400.access.AS400PackedDecimal;
+import com.ibm.as400.access.AS400ZonedDecimal;
 
 public class NIODecimalPackedImpl extends NIODecimalImpl {
 	private static final long serialVersionUID = 1L;
@@ -84,5 +85,11 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 			e.toString();
 			return null;
 		}
+	}
+
+	@Override
+	public byte[] asBytes() {		
+		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
+		return zoned.toBytes(readNumber());
 	}
 }

@@ -19,11 +19,8 @@ import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
-import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDecimal;
-import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QNumeric;
-import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.SortDirection;
 
 public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedListImpl<D> implements QArray<D> {
@@ -31,13 +28,12 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	private static final long serialVersionUID = 1L;
 
 	private D[] _elements;
-	private QDataWriter dataWriter;
+
 	@SuppressWarnings("unchecked")
 	public NIOArrayImpl(QDataContext dataContext, D model, int dimension, SortDirection sortDirection) {
 		super(dataContext, model, sortDirection);
 
 		this._elements = (D[]) Array.newInstance(model.getClass(), dimension);
-		dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 	}
 
 	@Override
@@ -141,46 +137,6 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	public <E extends Enum<E>> boolean eq(E value) {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public void eval(int value) {
-		for (D element : this)
-			((QNumeric) element).eval(value);
-	}
-
-	@Override
-	public void eval(QArray<D> value) {
-
-		int capacity = capacity();
-		if (value.capacity() < capacity)
-			capacity = value.capacity();
-
-		for (int e = 1; e <= capacity; e++) {
-			dataWriter.set(value.get(e));
-			get(e).accept(dataWriter);
-		}
-
-		for (int e = capacity + 1; e <= capacity(); e++)
-			get(e).clear();
-	}
-
-	@Override
-	public void eval(QNumeric value) {
-		for (D element : this)
-			((QNumeric) element).eval(value);
-	}
-
-	@Override
-	public void eval(QString value) {
-		for (D element : this)
-			((QString) element).eval(value);
-	}
-
-	@Override
-	public void eval(String value) {
-		for (D element : this)
-			((QString) element).eval(value);
 	}
 
 	@Override
@@ -522,4 +478,6 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	public QArray<QCharacter> qSubst(QNumeric start, QNumeric length) {
 		return qSubst(start, length.asInteger());
 	}
+	
+	
 }

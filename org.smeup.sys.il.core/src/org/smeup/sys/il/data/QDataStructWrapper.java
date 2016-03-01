@@ -600,16 +600,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public void move(QDecimal value) {
-		delegate.move(value);
-	}
-
-	@Override
-	public void move(QDecimal value, boolean clear) {
-		delegate.move(value, clear);
-	}
-
-	@Override
 	public void xlate(QString from, QString to, QString source) {
 		delegate.xlate(from, to, source);
 	}
@@ -1166,5 +1156,13 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 
 	public boolean isStoreOwner() {
 		return delegate.isStoreOwner();
+	}
+
+	public void move(boolean value, boolean clear) {
+		delegate.move(value, clear);
+	}
+
+	public void movel(boolean value, boolean clear) {
+		delegate.movel(value, clear);
 	}
 }

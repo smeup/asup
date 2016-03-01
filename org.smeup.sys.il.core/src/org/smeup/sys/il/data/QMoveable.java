@@ -113,6 +113,22 @@ public interface QMoveable {
 	 * @model
 	 * @generated
 	 */
+	void move(boolean value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model clearRequired="true"
+	 * @generated
+	 */
+	void move(boolean value, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	void movea(String value);
 
 	/**
@@ -254,5 +270,21 @@ public interface QMoveable {
 	 * @generated
 	 */
 	void movel(Number value, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void movel(boolean value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model clearRequired="true"
+	 * @generated
+	 */
+	void movel(boolean value, boolean clear);
 
 } // QMoveable

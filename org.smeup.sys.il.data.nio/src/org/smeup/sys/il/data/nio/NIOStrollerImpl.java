@@ -18,10 +18,10 @@ import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDatetime;
-import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
@@ -32,7 +32,7 @@ import org.smeup.sys.il.data.SortDirection;
 public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> implements QStroller<D> {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	public NIOStrollerImpl(QDataContext dataContext) {
 		super(dataContext);
 	}
@@ -244,17 +244,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	@Override
 	public void move(boolean value) {
 		current().move(value);
-	}
-
-	@Override
-	public void move(QDecimal value) {
-		move(value, false);
-	}
-
-	@Override
-	public void move(QDecimal value, boolean clear) {
-		NIOBufferedDataImpl bufferedData = (NIOBufferedDataImpl) current();
-		NIOBufferHelper.move(getBuffer(), bufferedData.getPosition(), bufferedData.getLength(), value.asBytes(), true, (byte) 64);
 	}
 
 	@Override
@@ -592,11 +581,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	@Override
 	public boolean eq(byte value) {
 		return current().eq(value);
-	}
-
-	@Override
-	public void eval(byte value) {
-		current().eval(value);
 	}
 
 	@Override
@@ -978,5 +962,157 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	@Override
 	public void evalr(QString value) {
 		current().evalr(value);		
+	}
+
+	public void assign(QBufferedData target) {
+		current().assign(target);
+	}
+
+	public byte[] asBytes() {
+		return current().asBytes();
+	}
+
+	public void assign(QBufferedData target, int position) {
+		current().assign(target, position);
+	}
+
+	public void clear() {
+		current().clear();
+	}
+
+	public boolean eq(QBufferedData value) {
+		return current().eq(value);
+	}
+
+	public boolean eq(QDataFiller value) {
+		return current().eq(value);
+	}
+
+	public void eval(QDataFiller value) {
+		current().eval(value);
+	}
+
+	public boolean ge(byte value) {
+		return current().ge(value);
+	}
+
+	public void move(QDataFiller value) {
+		current().move(value);
+	}
+
+	public boolean ge(QBufferedData value) {
+		return current().ge(value);
+	}
+
+	public void move(QDataFiller value, boolean clear) {
+		current().move(value, clear);
+	}
+
+	public boolean ge(QDataFiller value) {
+		return current().ge(value);
+	}
+
+	public void move(Number value) {
+		current().move(value);
+	}
+
+	public boolean gt(byte value) {
+		return current().gt(value);
+	}
+
+	public void move(Number value, boolean clear) {
+		current().move(value, clear);
+	}
+
+	public boolean gt(QBufferedData value) {
+		return current().gt(value);
+	}
+
+	public boolean gt(QDataFiller value) {
+		return current().gt(value);
+	}
+
+	public void move(boolean value, boolean clear) {
+		current().move(value, clear);
+	}
+
+	public void movea(String value) {
+		current().movea(value);
+	}
+
+	public boolean le(byte value) {
+		return current().le(value);
+	}
+
+	public boolean le(QBufferedData value) {
+		return current().le(value);
+	}
+
+	public void movea(String value, boolean clear) {
+		current().movea(value, clear);
+	}
+
+	public boolean le(QDataFiller value) {
+		return current().le(value);
+	}
+
+	public boolean lt(byte value) {
+		return current().lt(value);
+	}
+
+	public void movea(QArray<?> value, int startIndex) {
+		current().movea(value, startIndex);
+	}
+
+	public boolean lt(QBufferedData value) {
+		return current().lt(value);
+	}
+
+	public boolean lt(QDataFiller value) {
+		return current().lt(value);
+	}
+
+	public void movea(QArray<?> value, int startIndex, boolean clear) {
+		current().movea(value, startIndex, clear);
+	}
+
+	public boolean ne(byte value) {
+		return current().ne(value);
+	}
+
+	public void movea(QArray<?> value, QNumeric startIndex) {
+		current().movea(value, startIndex);
+	}
+
+	public boolean ne(QBufferedData value) {
+		return current().ne(value);
+	}
+
+	public boolean ne(QDataFiller value) {
+		return current().ne(value);
+	}
+
+	public void movea(QArray<?> value, QNumeric startIndex, boolean clear) {
+		current().movea(value, startIndex, clear);
+	}
+
+	public void movel(QDataFiller value) {
+		current().movel(value);
+	}
+
+	public void movel(QDataFiller value, boolean clear) {
+		current().movel(value, clear);
+	}
+
+	public void movel(Number value) {
+		current().movel(value);
+	}
+
+	public void movel(Number value, boolean clear) {
+		current().movel(value, clear);
+	}
+
+	public void movel(boolean value, boolean clear) {
+		current().movel(value, clear);
 	}
 }

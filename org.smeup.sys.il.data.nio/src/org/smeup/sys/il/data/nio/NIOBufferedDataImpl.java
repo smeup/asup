@@ -228,11 +228,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
-	public void move(QBufferedData value, boolean clear) {
-		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value.asBytes(), clear, getFiller());
-	}
-
-	@Override
 	public void move(String value) {
 		move(value, false);
 	}
@@ -258,6 +253,16 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
+	public void movel(QBufferedData value, boolean clear) {
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value.asBytes(), clear, getFiller());
+	}
+	
+	@Override
+	public void move(QBufferedData value, boolean clear) {
+		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value.asBytes(), clear, getFiller());
+	}
+
+	@Override
 	public void movea(QArray<?> value, int startIndex, boolean clear) {
 //		movel(value.get(startIndex), true);
 		// TODO verify me
@@ -273,13 +278,13 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
-	public void movea(String value) {
-		movea(value, false);
-	}
-
-	@Override
 	public void movea(String value, boolean clear) {
 		NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getDataContext().getCharset()), clear, getFiller());
+	}
+	
+	@Override
+	public void movea(String value) {
+		movea(value, false);
 	}
 
 	@Override
@@ -310,11 +315,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public void movel(QBufferedData value) {
 		movel(value, false);
-	}
-
-	@Override
-	public void movel(QBufferedData value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value.asBytes(), clear, getFiller());
 	}
 
 	@Override
@@ -649,5 +649,31 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	public void accept(QDataVisitor visitor) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void move(boolean value) {
+		move(value, false);
+	}
+
+	@Override
+	public void movel(boolean value) {
+		movel(value, false);		
+	}
+
+	@Override
+	public void move(boolean value, boolean clear) {
+		if(value)
+			NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), new byte[]{NIOIndicatorImpl.ON}, clear, getFiller());		
+		else
+			NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), new byte[]{NIOIndicatorImpl.OFF}, clear, getFiller());
+	}
+
+	@Override
+	public void movel(boolean value, boolean clear) {
+		if(value)
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), new byte[]{NIOIndicatorImpl.ON}, clear, getFiller());		
+		else
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), new byte[]{NIOIndicatorImpl.OFF}, clear, getFiller());		
 	}
 }
