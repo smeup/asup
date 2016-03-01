@@ -151,7 +151,7 @@ primaryExpression
 
 array
 	:
-	'[' value (':' value)+ ']' -> ^(ARRAY value value+)
+	'[' value (':' value)* ']' -> ^(ARRAY value value*)
 	;	
 
 value
