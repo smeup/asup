@@ -38,10 +38,11 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 
 		Number result = 0;
 		try {
+			byte[] bytes = NIOBufferHelper.readBytes(getBuffer(), getPosition(), getSize());
 			if (getScale() > 0)
-				result = packed.toDouble(asBytes());
+				result = packed.toDouble(bytes);
 			else
-				result = ((Double) packed.toDouble(asBytes())).longValue();
+				result = ((Double) packed.toDouble(bytes)).longValue();
 
 		} catch (Exception e) {
 			// TODO
