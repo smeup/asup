@@ -1,5 +1,6 @@
 package org.smeup.sys.il.data.nio;
 
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 
 import com.ibm.as400.access.AS400PackedDecimal;
@@ -9,12 +10,12 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	private static final long serialVersionUID = 1L;
 
 	private static final AS400PackedDecimal packeds[][] = new AS400PackedDecimal[50][50];
-	
+
 	private AS400PackedDecimal packed = null;
 
 	public NIODecimalPackedImpl(QDataContext dataContext, int precision, int scale) {
 		super(dataContext, precision, scale);
-		
+
 		packed = getDecimal(precision, scale);
 	}
 
@@ -45,15 +46,12 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 				result = ((Double) packed.toDouble(bytes)).longValue();
 
 		} catch (Exception e) {
-			// TODO
-			// System.err.println("Unexpected condition vv6666eqw5rqvcrqv: " +
-			// e);
-//			e.printStackTrace();
+			System.err.println("Unexpected condition 87g5r7xer6fv7fdsa: " + e.getMessage());
 		}
 
 		return result;
 	}
-	
+
 	@Override
 	public void writeNumber(Number number, String roundingMode) {
 
@@ -62,10 +60,10 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 
 			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.err.println("Unexpected condition ibvedsf8dsfas: " + e.getMessage());
 		}
 	}
-	
+
 	private AS400PackedDecimal getDecimal(int precision, int scale) {
 
 		try {
@@ -83,14 +81,40 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 
 			return decimal;
 		} catch (Exception e) {
-			e.toString();
+			System.err.println("Unexpected condition 8werv68w7erwer: " + e.getMessage());
 			return null;
 		}
 	}
 
 	@Override
-	public byte[] asBytes() {		
+	public byte[] asBytes() {
 		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
 		return zoned.toBytes(asDouble());
+	}
+
+	@Override
+	public void movel(QBufferedData value, boolean clear) {
+
+		try {
+			AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
+			double doubleValue = zoned.toDouble(value.asBytes());
+
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), packed.toBytes(doubleValue), clear, getFiller());
+		} catch (Exception e) {
+			System.err.println("Unexpected condition weirdsifzgxcgzx: " + e.getMessage());
+		}
+	}
+
+	@Override
+	public void move(QBufferedData value, boolean clear) {
+
+		try {
+			AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
+			double doubleValue = zoned.toDouble(value.asBytes());
+
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), packed.toBytes(doubleValue), clear, getFiller());
+		} catch (Exception e) {
+			System.err.println("Unexpected condition wei43t7dfgsdfv7s8dg: " + e.getMessage());
+		}
 	}
 }
