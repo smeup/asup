@@ -91,6 +91,6 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	@Override
 	public byte[] asBytes() {		
 		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
-		return zoned.toBytes((double)readNumber());
+		return zoned.toBytes(asDouble());
 	}
 }
