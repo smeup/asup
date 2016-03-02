@@ -124,27 +124,11 @@ public interface QMoveable {
 	void move(boolean value, boolean clear);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void movea(String value);
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
 	void movea(QArray<?> value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model clearRequired="true"
-	 * @generated
-	 */
-	void movea(String value, boolean clear);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

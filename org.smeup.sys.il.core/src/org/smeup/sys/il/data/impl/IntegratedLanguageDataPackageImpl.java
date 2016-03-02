@@ -1108,38 +1108,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		initEClass(arrayEClass, QArray.class, "Array", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(arrayEClass, null, "qSubarr", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "start", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType(arrayEClass_D);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(arrayEClass, null, "qSubarr", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "start", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getDecimal(), "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType(arrayEClass_D);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(arrayEClass, null, "qSubarr", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getDecimal(), "start", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getDecimal(), "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType(arrayEClass_D);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(arrayEClass, null, "qSubarr", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getDecimal(), "start", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType(arrayEClass_D);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
 		op = addEOperation(arrayEClass, null, "divide", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType(arrayEClass_D);
@@ -1187,6 +1155,12 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(arrayEClass, null, "divide", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "roundingMode", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getBufferedList());
+		g2 = createEGenericType(arrayEClass_D);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(arrayEClass, ecorePackage.getEBoolean(), "isContiguous", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1238,6 +1212,162 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getNumeric(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "roundingMode", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		ETypeParameter t1 = addETypeParameter(op, "E");
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "E");
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "E");
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
+		t1.getEBounds().add(g1);
+		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "E");
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
+		t1.getEBounds().add(g1);
+		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "E");
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
+		t1.getEBounds().add(g1);
+		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "E");
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
+		t1.getEBounds().add(g1);
+		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDataFiller(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDataFiller(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(arrayEClass, null, "mult", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType(arrayEClass_D);
@@ -1333,6 +1463,38 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(arrayEClass, null, "plus", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "roundingMode", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "qSubarr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "start", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType(arrayEClass_D);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(arrayEClass, null, "qSubarr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "start", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDecimal(), "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType(arrayEClass_D);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(arrayEClass, null, "qSubarr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDecimal(), "start", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDecimal(), "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType(arrayEClass_D);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(arrayEClass, null, "qSubarr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDecimal(), "start", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "elements", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType(arrayEClass_D);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
 
 		op = addEOperation(arrayEClass, null, "qSubst", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -1468,12 +1630,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		initEClass(bufferedListEClass, QBufferedList.class, "BufferedList", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(bufferedListEClass, null, "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getBufferedList());
-		g2 = createEGenericType(bufferedListEClass_D);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "value", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedListEClass, null, "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1484,188 +1640,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(bufferedListEClass, null, "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getString(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getBufferedData(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getBufferedData(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getDataFiller(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		ETypeParameter t1 = addETypeParameter(op, "E");
-		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
-		t1.getEBounds().add(g1);
-		g1 = createEGenericType(t1);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "E");
-		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
-		t1.getEBounds().add(g1);
-		g1 = createEGenericType(t1);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "E");
-		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
-		t1.getEBounds().add(g1);
-		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(t1);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "E");
-		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
-		t1.getEBounds().add(g1);
-		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(t1);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "E");
-		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
-		t1.getEBounds().add(g1);
-		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(t1);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "E");
-		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
-		t1.getEBounds().add(g1);
-		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(t1);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getDataFiller(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getBufferedData(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getBufferedData(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getBufferedData(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(bufferedListEClass, null, "sorta", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -2945,17 +2919,10 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(moveableEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(moveableEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(moveableEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(moveableEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
@@ -3981,12 +3948,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getString(), "source", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(strollerEClass, QStroller.class, "Stroller", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		op = addEOperation(strollerEClass, null, "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getStroller());
-		g2 = createEGenericType(strollerEClass_D);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(structEClass, QStruct.class, "Struct", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

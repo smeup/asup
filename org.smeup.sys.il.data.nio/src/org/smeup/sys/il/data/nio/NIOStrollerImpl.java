@@ -157,11 +157,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public void eval(QStroller<D> value) {
-		movea(value, false);
-	}
-
-	@Override
 	public void evalr(String value) {
 		current().evalr(value);
 	}
@@ -1024,20 +1019,12 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 		current().move(value, clear);
 	}
 
-	public void movea(String value) {
-		current().movea(value);
-	}
-
 	public boolean le(byte value) {
 		return current().le(value);
 	}
 
 	public boolean le(QBufferedData value) {
 		return current().le(value);
-	}
-
-	public void movea(String value, boolean clear) {
-		current().movea(value, clear);
 	}
 
 	public boolean le(QDataFiller value) {

@@ -251,16 +251,6 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 	}
 
 	@Override
-	public void movea(String value) {
-		_delegate.movea(value);
-	}
-
-	@Override
-	public void movea(String value, boolean clear) {
-		_delegate.movea(value, clear);
-	}
-
-	@Override
 	public <E extends Enum<E>> void movel(E value) {
 		_delegate.movel(value);
 	}

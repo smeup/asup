@@ -16,10 +16,15 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 import org.smeup.sys.il.data.QArray;
+import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDataVisitor;
+import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDecimal;
+import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.SortDirection;
 
@@ -28,7 +33,8 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	private static final long serialVersionUID = 1L;
 
 	private D[] _elements;
-
+	private QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
+	
 	@SuppressWarnings("unchecked")
 	public NIOArrayImpl(QDataContext dataContext, D model, int dimension, SortDirection sortDirection) {
 		super(dataContext, model, sortDirection);
@@ -478,6 +484,200 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	public QArray<QCharacter> qSubst(QNumeric start, QNumeric length) {
 		return qSubst(start, length.asInteger());
 	}
+
+	@Override
+	public void eval(QBufferedList<D> value) {
+
+		int capacity = capacity();
+		if (value.capacity() < capacity)
+			capacity = value.capacity();
+
+		for (int e = 1; e <= capacity; e++) {
+			dataWriter.set(value.get(e));
+			get(e).accept(dataWriter);
+		}
+
+		for (int e = capacity + 1; e <= capacity(); e++)
+			get(e).clear();
+	}	
+
+	// TODO ???
+	@Override
+	public void movel(QBufferedData value, boolean clear) {
+
+		if (value instanceof QArray<?>)
+			movea((QArray<?>) value, clear);
+		else
+			for (QBufferedData element : this)
+				element.movel(value, clear);
+	}
+
+	@Override
+	public void movea(QBufferedData value) {
+		movea(value, false);
+	}
+
+	@Override
+	public void movea(QDataFiller value) {
+		movea(1, value);
+	}
+
+	@Override
+	public void movea(int targetIndex, QDataFiller value) {
+		for (int i = targetIndex; i <= capacity(); i++)
+			get(i).accept(value);
+	}
+
+	@Override
+	public void movea(String value) {
+		movea(value, false);
+	}
+
+	@Override
+	public <E extends Enum<E>> void movea(E value) {
+		movea(1, value, false);
+	}
+
+	@Override
+	public <E extends Enum<E>> void movea(E value, boolean clear) {
+		movea(1, value, clear);
+	}
+
+	@Override
+	public <E extends Enum<E>> void movea(QNumeric targetIndex, E value) {
+		movea(targetIndex.asInteger(), value, false);
+	}
+
+	@Override
+	public <E extends Enum<E>> void movea(int targetIndex, E value, boolean clear) {
+		for (int i = targetIndex; i <= capacity(); i++)
+			get(i).eval(value);
+	}
+
+	@Override
+	public <E extends Enum<E>> void movea(int targetIndex, E value) {
+		movea(targetIndex, value, false);
+	}
+
+	@Override
+	public <E extends Enum<E>> void movea(QNumeric targetIndex, E value, boolean clear) {
+		movea(targetIndex.asInteger(), value, clear);
+	}
+
+	@Override
+	public void movea(QNumeric targetIndex, QBufferedData value) {
+		movea(targetIndex.i(), value);
+	}
+
+	@Override
+	public void movea(int targetIndex, QArray<?> value) {
+		movea(targetIndex, value, false);
+	}
+
+	@Override
+	public void movea(int targetIndex, QBufferedData value) {
+		movea(targetIndex, value, false);
+	}
+
+	@Override
+	public void movea(QNumeric targetIndex, QArray<?> value, boolean clear) {
+		movea(targetIndex.asInteger(), value, clear);
+	}
+
+	@Override
+	public void movea(int targetIndex, QBufferedData value, boolean clear) {
+		movea(targetIndex, value.asBytes(), clear, getFiller());
+	}
+
+	@Override
+	public void movea(int targetIndex, String value) {
+		movea(targetIndex, value, false);
+	}
+
+	@Override
+	public void movea(int targetIndex, String value, boolean clear) {
+		movea(targetIndex, value.getBytes(getDataContext().getCharset()), clear, NIOCharacterImpl.INIT);
+	}
+	@Override
+	public void movea(QNumeric targetIndex, QArray<?> value, int sourceIndex) {
+		movea(targetIndex.i(), value, sourceIndex);
+	}
+
+	@Override
+	public void movea(QNumeric targetIndex, QArray<?> value, QNumeric sourceIndex) {
+		movea(targetIndex.i(), value, sourceIndex.i());
+	}
+
+	@Override
+	public void movea(int targetIndex, QArray<?> value, QNumeric sourceIndex) {
+		movea(targetIndex, value, sourceIndex.i());
+	}
+
+	@Override
+	public void movea(int targetIndex, QArray<?> value, int sourceIndex) {
+		movea(targetIndex, value, sourceIndex, false);
+	}
+
+	@Override
+	public void movea(int targetIndex, QArray<?> value, boolean clear) {
+		movea(targetIndex, value, 1, clear);
+	}
+
+	@Override
+	public void movea(QArray<?> value, QNumeric sourceIndex) {
+		movea(value, sourceIndex.i());
+	}
+
+	@Override
+	public void movea(QArray<?> value, boolean clear) {
+		movea(1, value, 1, clear);
+	}
+
+	@Override
+	public void movea(QArray<?> value, QNumeric sourceIndex, boolean clear) {
+		movea(value, sourceIndex.i(), clear);
+	}
+
+	@Override
+	public void movea(QArray<?> value, int sourceIndex) {
+		movea(value, sourceIndex, false);
+	}
+
+	@Override
+	public void movea(QArray<?> value, int sourceIndex, boolean clear) {
+		movea(1, value, sourceIndex, clear);
+	}
+
+	@Override
+	public void movea(String value, boolean clear) {
+		NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getDataContext().getCharset()), clear, getFiller());		
+	}
+
+	@Override
+	public void movea(QBufferedData value, boolean clear) {
+		if (clear)
+			this.clear();
+		
+		NIOBufferHelper.movel(getBuffer(), getPosition(), value.getSize(), value.asBytes(), clear, getFiller());
+	}
 	
-	
+	private void movea(int targetIndex, byte[] value, boolean clear, byte filler) {
+		if (clear)
+			this.clear();
+
+		int position = ((this.getLength() / this.capacity()) * (targetIndex - 1));
+		NIOBufferHelper.movel(getBuffer(), position, value.length, value, clear, filler);
+	}
+
+	@Override
+	public void movea(int targetIndex, QArray<?> value, int sourceIndex, boolean clear) {
+
+		int positionSource = ((value.getLength() / value.capacity()) * (sourceIndex - 1));
+		int positionTarget = ((this.getLength() / this.capacity()) * (targetIndex - 1));
+
+		// TODO test me
+		byte[] bytes = value.asBytes();
+		bytes = Arrays.copyOfRange(bytes, positionSource, bytes.length);
+		NIOBufferHelper.movel(getBuffer(), positionTarget, value.getSize(), bytes, clear, getFiller());
+	}
 }

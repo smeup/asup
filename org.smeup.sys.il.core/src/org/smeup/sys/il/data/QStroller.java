@@ -17,11 +17,4 @@ package org.smeup.sys.il.data;
  * @generated
  */
 public interface QStroller<D extends QDataStruct> extends QScroller<D>, QDataStruct {
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void eval(QStroller<D> value);
 } // QStroller

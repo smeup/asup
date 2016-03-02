@@ -231,27 +231,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	public void move(String value) {
 		move(value, false);
 	}
-
-	@Override
-	public void movea(QArray<?> value) {
-		movea(value, false);
-	}
-
-	@Override
-	public void movea(QArray<?> value, QNumeric startIndex) {
-		movea(value, startIndex.i());
-	}
-
-	@Override
-	public void movea(QArray<?> value, QNumeric startIndex, boolean clear) {
-		movea(value, startIndex.i(), clear);
-	}
-
-	@Override
-	public void movea(QArray<?> value, int startIndex) {
-		movea(value, startIndex, false);
-	}
-
+	
 	@Override
 	public void movel(QBufferedData value, boolean clear) {
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value.asBytes(), clear, getFiller());
@@ -260,31 +240,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public void move(QBufferedData value, boolean clear) {
 		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value.asBytes(), clear, getFiller());
-	}
-
-	@Override
-	public void movea(QArray<?> value, int startIndex, boolean clear) {
-//		movel(value.get(startIndex), true);
-		// TODO verify me
-		int position = ((value.getLength() / value.capacity()) * (startIndex - 1));
-		byte[] bytes = value.asBytes();
-		bytes = Arrays.copyOfRange(bytes, position, bytes.length);
-		NIOBufferHelper.movel(getBuffer(), getPosition(), value.getSize(), bytes, clear, getFiller());
-	}
-
-	@Override
-	public void movea(QArray<?> value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), value.getLength(), value.asBytes(), clear, getFiller());
-	}
-
-	@Override
-	public void movea(String value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getDataContext().getCharset()), clear, getFiller());
-	}
-	
-	@Override
-	public void movea(String value) {
-		movea(value, false);
 	}
 
 	@Override
@@ -675,5 +630,40 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), new byte[]{NIOIndicatorImpl.ON}, clear, getFiller());		
 		else
 			NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), new byte[]{NIOIndicatorImpl.OFF}, clear, getFiller());		
+	}	
+
+	@Override
+	public void movea(QArray<?> value) {
+		movea(value, false);
+	}
+
+	@Override
+	public void movea(QArray<?> value, QNumeric startIndex) {
+		movea(value, startIndex.i());
+	}
+
+	@Override
+	public void movea(QArray<?> value, QNumeric startIndex, boolean clear) {
+		movea(value, startIndex.i(), clear);
+	}
+
+	@Override
+	public void movea(QArray<?> value, int startIndex) {
+		movea(value, startIndex, false);
+	}
+
+	@Override
+	public void movea(QArray<?> value, int startIndex, boolean clear) {
+//		movel(value.get(startIndex), true);
+		// TODO verify me
+		int position = ((value.getLength() / value.capacity()) * (startIndex - 1));
+		byte[] bytes = value.asBytes();
+		bytes = Arrays.copyOfRange(bytes, position, bytes.length);
+		NIOBufferHelper.movel(getBuffer(), getPosition(), value.getSize(), bytes, clear, getFiller());
+	}
+
+	@Override
+	public void movea(QArray<?> value, boolean clear) {
+		NIOBufferHelper.movel(getBuffer(), getPosition(), value.getLength(), value.asBytes(), clear, getFiller());
 	}
 }

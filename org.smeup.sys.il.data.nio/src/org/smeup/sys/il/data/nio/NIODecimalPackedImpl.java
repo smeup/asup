@@ -117,4 +117,30 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 			System.err.println("Unexpected condition wei43t7dfgsdfv7s8dg: " + e.getMessage());
 		}
 	}
+
+	@Override
+	public void move(String value, boolean clear) {
+
+		try {
+			AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
+			double doubleValue = zoned.toDouble(value.getBytes(getDataContext().getCharset()));
+
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), packed.toBytes(doubleValue), clear, getFiller());
+		} catch (Exception e) {
+			System.err.println("Unexpected condition wei43t7345er5wev7s8dg: " + e.getMessage());
+		}
+	}
+
+	@Override
+	public void movel(String value, boolean clear) {
+		
+		try {
+			AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
+			double doubleValue = zoned.toDouble(value.getBytes(getDataContext().getCharset()));
+
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), packed.toBytes(doubleValue), clear, getFiller());
+		} catch (Exception e) {
+			System.err.println("Unexpected condition weird567uyr6zgxcgzx: " + e.getMessage());
+		}
+	}
 }
