@@ -964,20 +964,8 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 		current().evalr(value);		
 	}
 
-	public void assign(QBufferedData target) {
-		current().assign(target);
-	}
-
 	public byte[] asBytes() {
 		return current().asBytes();
-	}
-
-	public void assign(QBufferedData target, int position) {
-		current().assign(target, position);
-	}
-
-	public void clear() {
-		current().clear();
 	}
 
 	public boolean eq(QBufferedData value) {
