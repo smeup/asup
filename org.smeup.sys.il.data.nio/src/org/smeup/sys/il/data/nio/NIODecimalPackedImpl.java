@@ -109,26 +109,38 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	public void move(QBufferedData value, boolean clear) {
 
 		try {
-			AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
-			double doubleValue = zoned.toDouble(value.asBytes());
+			   AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
+			   byte[] bytes = value.asBytes();
+			   
+			   double doubleValue;
+			   if(getPrecision()>bytes.length)
+			    doubleValue = zoned.toDouble(bytes);
+			   else
+			    doubleValue = zoned.toDouble(bytes, bytes.length-getPrecision());
 
-			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), packed.toBytes(doubleValue), clear, getFiller());
-		} catch (Exception e) {
-			System.err.println("Unexpected condition wei43t7dfgsdfv7s8dg: " + e.getMessage());
-		}
+			   NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), packed.toBytes(doubleValue), clear, getFiller());
+		  } catch (Exception e) {
+		   System.err.println("Unexpected condition wei43t7345er5wev7s8dg: " + e.getMessage());
+		  }
 	}
 
 	@Override
 	public void move(String value, boolean clear) {
 
 		try {
-			AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
-			double doubleValue = zoned.toDouble(value.getBytes(getDataContext().getCharset()));
+			   AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
+			   byte[] bytes = value.getBytes(getDataContext().getCharset());
+			   
+			   double doubleValue;
+			   if(getPrecision()>bytes.length)
+			    doubleValue = zoned.toDouble(bytes);
+			   else
+			    doubleValue = zoned.toDouble(bytes, bytes.length-getPrecision());
 
-			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), packed.toBytes(doubleValue), clear, getFiller());
-		} catch (Exception e) {
-			System.err.println("Unexpected condition wei43t7345er5wev7s8dg: " + e.getMessage());
-		}
+			   NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), packed.toBytes(doubleValue), clear, getFiller());
+		  } catch (Exception e) {
+		   System.err.println("Unexpected condition wei43t7345er5wev7s8dg: " + e.getMessage());
+		  }
 	}
 
 	@Override
