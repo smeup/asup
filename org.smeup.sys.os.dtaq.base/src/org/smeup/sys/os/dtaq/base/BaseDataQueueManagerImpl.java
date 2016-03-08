@@ -32,11 +32,6 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 
 	@Override
 	public String readDataQueue(QJobCapability capability, String library, String name, long aTimeout, String key, DataQueueSearchType searchType) {
-		
-		// TODO remove
-		if (aTimeout < 0)
-			aTimeout = 50000;
-		
 		return dataQueueManager.readFromQueue(library, name, aTimeout);
 	}
 
