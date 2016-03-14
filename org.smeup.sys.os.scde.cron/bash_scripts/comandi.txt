@@ -1,13 +1,10 @@
 - Edita tabella cron: crontab -e
 - Lista tesk schedulati: crontab -l
 - Visualizza log cron tab:   grep CRON /var/log/syslog
-- Chiamata a servlet rest con comano curl:
- 
- curl --data "user=FORDAR&fun=F(EXB;MUJ08_SE;EXE.CMD) 1(J1;CMD;WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL))" http://127.0.0.1:8282/SLWSService
  
  Per test da browser:
  
- http://127.0.0.1:8282/SLWSService?user=ASUP&fun=F(EXB;MUJ08_SE;EXE.CMD)%201(J1;CMD;WRKJOBSCDE)
+ http://127.0.0.1:9090/XMLStatelessService?server=&usr=ASUP&pwd=ASUP&env=0045&fun=F(EXB;MUJ08_SE;EXE.CMD)%201(J1;CMD;WRKACTJOB)
  
 
 Chiamata script per registrazione crontask:
@@ -15,13 +12,28 @@ Chiamata script per registrazione crontask:
 *** addcron ***
 
 	Parametri:	1) Maschera cron
-				2) Server
-				3) Id task
-				4) Utente
-				5) Comando (tra doppi apici)
-				6) Nome task				
-				7) Descrizione task (tra doppi apici)
-	Esempio: ./addcron "* * * * *" 127.0.0.1 123456 FORDAR "WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL)" WRKOBJ_PGM "Descrizione del task"
+				2) IP WebService
+				3) Porta WebService				
+				4) IP As.UP
+				5) Utente
+				6) Password
+				7) Ambiente
+				8) Comando (tra doppi apici)
+				9) Id task
+				10) Nome task				
+				11) Descrizione task (tra doppi apici)
+				
+	Esempio: 
+	
+		./addcron "* * * * *" asuptest.smeup.com 9090 MUAS01 ASUP ASUP 0045 "WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL)" der001 WRKOBJ_PGM "Schedulazione WRKOBJ"
+	
+	aggiunge una riga in crontab del tipo:
+	
+		* * * * * sh_call asuptest.smeup.com 9090 MUAS01 ASUP ASUP 0045 "WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL)" der001 WRKOBJ_PGM "Schedulazione WRKOBJ"
+	
+	che ogni minuto esegue il comando:
+	
+		curl --data "server=MUAS01&usr=ASUP&pwd=ASUP&&env=0045&fun=WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL)" http://asuptest.smeup.com:9090/XMLStatelessService
 
 *** removecron ***
 

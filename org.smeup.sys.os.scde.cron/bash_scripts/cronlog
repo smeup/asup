@@ -4,5 +4,3 @@ zgrep CRON /var/log/syslog.3.gz | zgrep call_ws
 zgrep CRON /var/log/syslog.2.gz | zgrep call_ws
 grep CRON /var/log/syslog.1 | grep call_ws
 grep CRON /var/log/syslog | grep call_ws 
-
-

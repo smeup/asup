@@ -1,5 +1,3 @@
 #! /bin/bash
-
-FUN="F(EXB;MUJ08_SE;EXE.CMD) 1(J1;CMD;$4)"
-
-curl --data "user=$3&fun=$FUN" http://$1:8282/SLWSService
+FUN="F(EXB;MUJ08_SE;EXE.CMD) 1(J1;CMD;$7)"
+curl --data "server=$3&usr=$4&pwd=$5&env=$6&fun=$FUN" http://$1:$2/XMLStatelessService
