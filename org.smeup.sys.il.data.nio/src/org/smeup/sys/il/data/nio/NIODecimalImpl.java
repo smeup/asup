@@ -11,9 +11,6 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
@@ -21,57 +18,28 @@ import org.smeup.sys.il.data.QDecimal;
 public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal {
 
 	private static final long serialVersionUID = 1L;
-	protected static final byte INIT = (byte) -16;
 
 	public NIODecimalImpl(QDataContext dataContext, int precision, int scale) {
 		super(dataContext);
 	}
 
 	@Override
-	protected byte getFiller() {
+	protected final byte getFiller() {
 		return INIT;
 	}
 
 	@Override
-	public int getLength() {
+	public final int getLength() {
 		return getPrecision();
 	}
 
 	@Override
-	public boolean isSigned() {
+	public final boolean isSigned() {
 		return true;
-	}
-
-	@Override
-	public void eval(BigInteger value, String roundingMode) {
-		writeNumber(value.doubleValue(), roundingMode);
-	}
-
-	@Override
-	public void eval(BigDecimal value, String roundingMode) {
-		writeNumber(value.doubleValue(), roundingMode);
-	}
-
-	@Override
-	public int compareNumber(Number value) {
-
-		double d1 = 0;
-		try {
-			d1 = asDouble();
-		} catch (NumberFormatException e) {
-			// TODO
-			// System.err.println("Unexpected condition ahf989af9h9hh9af: " +
-			// e);
-		}
-		double d2 = value.doubleValue();
-
-		int result = Double.compare(d1, d2);
-
-		return result;
 	}
 	
 	@Override
-	public void accept(QDataVisitor visitor) {
+	public final void accept(QDataVisitor visitor) {
 		visitor.visit(this);
 	}
 }

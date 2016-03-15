@@ -19,7 +19,7 @@ package org.smeup.sys.il.data;
  * @model
  * @generated
  */
-public interface QDataFiller extends QDataVisitor {
+public interface QDataFiller {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -27,7 +27,7 @@ public interface QDataFiller extends QDataVisitor {
 	 * @model valueRequired="true"
 	 * @generated
 	 */
-	QDataFiller set(QBufferedData value);
+	QDataFiller set(QBufferedElement value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -35,5 +35,5 @@ public interface QDataFiller extends QDataVisitor {
 	 * @model required="true"
 	 * @generated
 	 */
-	QBufferedData get();
+	QBufferedElement get();
 } // QDataFiller

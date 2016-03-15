@@ -15,13 +15,15 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import org.eclipse.emf.common.util.Enumerator;
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.Special;
 
-public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedData> extends NIOBufferedDelegatorImpl implements QEnum<E, D> {
+public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedData> extends NIOBufferedElementDelegatorImpl implements QEnum<E, D> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -31,7 +33,7 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedData> extends NIO
 		super(dataContext);
 	}
 
-	public NIOEnumImpl(QDataContext dataContext, Class<E> klass, QBufferedData delegate) {
+	public NIOEnumImpl(QDataContext dataContext, Class<E> klass, QBufferedElement delegate) {
 		super(dataContext, delegate);
 		this._klass = klass;
 	}
@@ -80,9 +82,8 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedData> extends NIO
 		return (D) getDelegate();
 	}
 
-	@SuppressWarnings("hiding")
 	@Override
-	public <E extends Enum<E>> void eval(E value) {
+	public QBufferedData eval(DataSpecial value) {
 
 		Field field = null;
 		try {
@@ -99,6 +100,8 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedData> extends NIO
 			throw new RuntimeException("Unknown value " + field.getName());
 
 		eval(special.value());
+		
+		return this;
 	}
 
 	@Override
@@ -127,5 +130,10 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedData> extends NIO
 
 		eval(special.value());
 
+	}
+	
+	@Override
+	public boolean eq(QBufferedElement value) {
+		return getDelegate().eq(value);
 	}
 }

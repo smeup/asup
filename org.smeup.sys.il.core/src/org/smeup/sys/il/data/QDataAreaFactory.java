@@ -26,6 +26,6 @@ public interface QDataAreaFactory {
 	 * @model required="true" dataContextRequired="true" argumentRequired="true" externalNameRequired="true"
 	 * @generated
 	 */
-	<D extends QBufferedData> QDataArea<D> createDataArea(QDataContext dataContext, D argument, String externalName);
+	<D extends QBufferedElement> QDataArea<D> createDataArea(QDataContext dataContext, D argument, String externalName);
 
 } // QDataAreaFactory

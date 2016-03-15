@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2012, 2016 Sme.UP and others.
+* *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -12,34 +12,41 @@
 package org.smeup.sys.il.data.nio;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QArray;
-import org.smeup.sys.il.data.QBufferedData;
-import org.smeup.sys.il.data.QBufferedList;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDataVisitor;
-import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDecimal;
-import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.SortDirection;
 
-public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedListImpl<D> implements QArray<D> {
+public class NIOArrayImpl<D extends NIOBufferedElementImpl> extends NIOBufferedListImpl<D> implements QArray<D> {
 
 	private static final long serialVersionUID = 1L;
 
 	private D[] _elements;
-	private QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
-	
+	private SortDirection sortDirection = null;
+
 	@SuppressWarnings("unchecked")
 	public NIOArrayImpl(QDataContext dataContext, D model, int dimension, SortDirection sortDirection) {
-		super(dataContext, model, sortDirection);
+		super(dataContext, model);
 
+		this.sortDirection = sortDirection;
 		this._elements = (D[]) Array.newInstance(model.getClass(), dimension);
+	}
+
+	protected final SortDirection getSortDirection() {
+		return this.sortDirection;
 	}
 
 	@Override
@@ -63,11 +70,6 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	@Override
 	public int capacity() {
 		return _elements.length;
-	}
-
-	@Override
-	public void clear() {
-		NIOBufferHelper.clear(this);
 	}
 
 	@Override
@@ -139,18 +141,6 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 		operationDivide(value, roundingMode);
 	}
 
-	@Override
-	public <E extends Enum<E>> boolean eq(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean ge(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public D get(int index) {
@@ -175,31 +165,8 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	}
 
 	@Override
-	protected byte getFiller() {
-		return getModel().getFiller();
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean gt(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public boolean isContiguous() {
 		return getListOwner() == null;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean le(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean lt(E value) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
@@ -330,12 +297,6 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 		operationMult(value, roundingMode);
 	}
 
-	@Override
-	public <E extends Enum<E>> boolean ne(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	private void operationDivide(Number value, String roundingMode) {
 		for (int i = 1; i <= this.capacity(); i++) {
 			((QNumeric) this.get(i)).divide(value.doubleValue());
@@ -462,7 +423,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 		newArray.setListOwner(this);
 		assign(newArray, start.intValue());
 
-		return (QArray<QCharacter>)newArray;
+		return (QArray<QCharacter>) newArray;
 	}
 
 	@Override
@@ -486,34 +447,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	}
 
 	@Override
-	public void eval(QBufferedList<D> value) {
-
-		int capacity = capacity();
-		if (value.capacity() < capacity)
-			capacity = value.capacity();
-
-		for (int e = 1; e <= capacity; e++) {
-			dataWriter.set(value.get(e));
-			get(e).accept(dataWriter);
-		}
-
-		for (int e = capacity + 1; e <= capacity(); e++)
-			get(e).clear();
-	}	
-
-	// TODO ???
-	@Override
-	public void movel(QBufferedData value, boolean clear) {
-
-		if (value instanceof QArray<?>)
-			movea((QArray<?>) value, clear);
-		else
-			for (QBufferedData element : this)
-				element.movel(value, clear);
-	}
-
-	@Override
-	public void movea(QBufferedData value) {
+	public void movea(QBufferedElement value) {
 		movea(value, false);
 	}
 
@@ -523,49 +457,12 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	}
 
 	@Override
-	public void movea(int targetIndex, QDataFiller value) {
-		for (int i = targetIndex; i <= capacity(); i++)
-			get(i).accept(value);
-	}
-
-	@Override
 	public void movea(String value) {
 		movea(value, false);
 	}
 
 	@Override
-	public <E extends Enum<E>> void movea(E value) {
-		movea(1, value, false);
-	}
-
-	@Override
-	public <E extends Enum<E>> void movea(E value, boolean clear) {
-		movea(1, value, clear);
-	}
-
-	@Override
-	public <E extends Enum<E>> void movea(QNumeric targetIndex, E value) {
-		movea(targetIndex.asInteger(), value, false);
-	}
-
-	@Override
-	public <E extends Enum<E>> void movea(int targetIndex, E value, boolean clear) {
-		for (int i = targetIndex; i <= capacity(); i++)
-			get(i).eval(value);
-	}
-
-	@Override
-	public <E extends Enum<E>> void movea(int targetIndex, E value) {
-		movea(targetIndex, value, false);
-	}
-
-	@Override
-	public <E extends Enum<E>> void movea(QNumeric targetIndex, E value, boolean clear) {
-		movea(targetIndex.asInteger(), value, clear);
-	}
-
-	@Override
-	public void movea(QNumeric targetIndex, QBufferedData value) {
+	public void movea(QNumeric targetIndex, QBufferedElement value) {
 		movea(targetIndex.i(), value);
 	}
 
@@ -575,7 +472,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	}
 
 	@Override
-	public void movea(int targetIndex, QBufferedData value) {
+	public void movea(int targetIndex, QBufferedElement value) {
 		movea(targetIndex, value, false);
 	}
 
@@ -585,7 +482,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	}
 
 	@Override
-	public void movea(int targetIndex, QBufferedData value, boolean clear) {
+	public void movea(int targetIndex, QBufferedElement value, boolean clear) {
 		movea(targetIndex, value.asBytes(), clear, getFiller());
 	}
 
@@ -598,6 +495,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	public void movea(int targetIndex, String value, boolean clear) {
 		movea(targetIndex, value.getBytes(getDataContext().getCharset()), clear, NIOCharacterImpl.INIT);
 	}
+
 	@Override
 	public void movea(QNumeric targetIndex, QArray<?> value, int sourceIndex) {
 		movea(targetIndex.i(), value, sourceIndex);
@@ -624,43 +522,18 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	}
 
 	@Override
-	public void movea(QArray<?> value, QNumeric sourceIndex) {
-		movea(value, sourceIndex.i());
-	}
-
-	@Override
-	public void movea(QArray<?> value, boolean clear) {
-		movea(1, value, 1, clear);
-	}
-
-	@Override
-	public void movea(QArray<?> value, QNumeric sourceIndex, boolean clear) {
-		movea(value, sourceIndex.i(), clear);
-	}
-
-	@Override
-	public void movea(QArray<?> value, int sourceIndex) {
-		movea(value, sourceIndex, false);
-	}
-
-	@Override
-	public void movea(QArray<?> value, int sourceIndex, boolean clear) {
-		movea(1, value, sourceIndex, clear);
-	}
-
-	@Override
 	public void movea(String value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getDataContext().getCharset()), clear, getFiller());		
+		NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getDataContext().getCharset()), clear, getFiller());
 	}
 
 	@Override
-	public void movea(QBufferedData value, boolean clear) {
+	public void movea(QBufferedElement value, boolean clear) {
 		if (clear)
 			this.clear();
-		
+
 		NIOBufferHelper.movel(getBuffer(), getPosition(), value.getSize(), value.asBytes(), clear, getFiller());
 	}
-	
+
 	private void movea(int targetIndex, byte[] value, boolean clear, byte filler) {
 		if (clear)
 			this.clear();
@@ -670,14 +543,229 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	}
 
 	@Override
+	public void movea(QArray<?> value, int sourceIndex) {
+		movea(1, value, sourceIndex, false);
+	}
+
+	@Override
+	public void movea(QArray<?> value, int sourceIndex, boolean clear) {
+		movea(1, value, sourceIndex, clear);
+	}
+
+	@Override
 	public void movea(int targetIndex, QArray<?> value, int sourceIndex, boolean clear) {
+
+		if (!value.isContiguous())
+			throw new UnsupportedOperationException("Invalid operation MOVEA with not contiguous array");
 
 		int positionSource = ((value.getLength() / value.capacity()) * (sourceIndex - 1));
 		int positionTarget = ((this.getLength() / this.capacity()) * (targetIndex - 1));
 
-		// TODO test me
-		byte[] bytes = value.asBytes();
-		bytes = Arrays.copyOfRange(bytes, positionSource, bytes.length);
+		NIOBufferedDataImpl arrayBuffer = NIOBufferHelper.getNIOBufferedDataImpl(value);
+
+		int length = getLength();
+		if (length > value.getLength())
+			length = value.getLength();
+
+		byte[] bytes = NIOBufferHelper.read(arrayBuffer.getBuffer(), arrayBuffer.getPosition() + positionSource, length);
 		NIOBufferHelper.movel(getBuffer(), positionTarget, value.getSize(), bytes, clear, getFiller());
+	}
+
+	@Override
+	public void sorta() {
+
+		int i = 0;
+
+		if (getListOwner() != null) {
+			List<byte[]> dataList = new ArrayList<byte[]>();
+
+			for (QBufferedElement elementTarget : getListOwner()) {
+				dataList.add(elementTarget.asBytes());
+			}
+
+			Collections.sort(dataList, new Comparator<byte[]>() {
+				@Override
+				public int compare(byte[] param1, byte[] param2) {
+
+					byte[] b1 = Arrays.copyOfRange(param1, getPosition(), getPosition() + getModel().getLength());
+					byte[] b2 = Arrays.copyOfRange(param2, getPosition(), getPosition() + getModel().getLength());
+
+					switch (getSortDirection()) {
+					case ASCEND:
+						return NIOBufferHelper.compareBytes(b1, b2, getFiller());
+					case DESCEND:
+						return NIOBufferHelper.compareBytes(b1, b2, getFiller()) * -1;
+					}
+
+					return NIOBufferHelper.compareBytes(b1, b2, getFiller());
+				}
+			});
+
+			for (byte[] bd : dataList) {
+
+				((NIOBufferedElementImpl) getListOwner().get(i + 1))._write(bd);
+				i++;
+			}
+
+		} else {
+
+			List<byte[]> dataList = new ArrayList<byte[]>();
+			for (QBufferedElement elementTarget : this) {
+				dataList.add(elementTarget.asBytes());
+			}
+
+			Collections.sort(dataList, new Comparator<byte[]>() {
+				@Override
+				public int compare(byte[] param1, byte[] param2) {
+
+					switch (getSortDirection()) {
+					case ASCEND:
+						return NIOBufferHelper.compareBytes(param1, param2, getFiller());
+					case DESCEND:
+						return NIOBufferHelper.compareBytes(param1, param2, getFiller()) * -1;
+					}
+
+					return NIOBufferHelper.compareBytes(param1, param2, getFiller());
+				}
+			});
+
+			for (byte[] bd : dataList) {
+				((NIOBufferedElementImpl) this.get(i + 1))._write(bd);
+				i++;
+			}
+		}
+	}
+
+	@Override
+	public void clear() {
+		for (D element : this)
+			element.clear();
+	}
+
+	@Override
+	public void movea(DataSpecial value) {
+		movea(value, false);
+	}
+
+	@Override
+	public void movea(DataSpecial value, boolean clear) {
+		movea(1, value, clear);
+	}
+
+	@Override
+	public void movea(int targetIndex, DataSpecial value) {
+		movea(targetIndex, value, false);
+	}
+
+	@Override
+	public void movea(int targetIndex, DataSpecial value, boolean clear) {
+		for (int i = targetIndex; i <= capacity(); i++)
+			get(i).movel(value, clear);
+	}
+
+	@Override
+	public void movea(QNumeric targetIndex, DataSpecial value) {
+		movea(targetIndex.asInteger(), value);
+	}
+
+	@Override
+	public void movea(QNumeric targetIndex, DataSpecial value, boolean clear) {
+		movea(targetIndex.asInteger(), value, clear);
+	}
+
+	@Override
+	public void movea(int targetIndex, QDataFiller value) {
+		for (int i = targetIndex; i <= capacity(); i++)
+			get(i).eval(value);
+	}
+
+	@Override
+	public void movea(QNumeric targetIndex, QDataFiller value) {
+		movea(targetIndex.asInteger(), value);
+	}
+
+	@Override
+	public void movea(QNumeric targetIndex, QBufferedElement value, boolean clear) {
+		movea(targetIndex.asInteger(), value, clear);
+	}
+
+	@Override
+	public void movea(QNumeric targetIndex, String value) {
+		movea(targetIndex.asInteger(), value);
+	}
+
+	@Override
+	public void movea(QNumeric targetIndex, String value, boolean clear) {
+		movea(targetIndex.asInteger(), value, clear);
+	}
+
+	@Override
+	public void movea(QArray<?> value) {
+		movea(value, false);
+	}
+
+	@Override
+	public void movea(QArray<?> value, boolean clear) {
+		movea(value, 1, clear);
+	}
+
+	@Override
+	public void movea(QArray<?> value, QNumeric sourceIndex) {
+		movea(value, sourceIndex.asInteger());
+	}
+
+	@Override
+	public void movea(QArray<?> value, QNumeric sourceIndex, boolean clear) {
+		movea(value, sourceIndex.asInteger(), clear);
+	}
+
+	@Override
+	public void move(QArray<?> value) {
+		movea(value, false);
+	}
+
+	@Override
+	public void move(QArray<?> value, boolean clear) {
+
+		int capacity = capacity();
+		if (value.capacity() < capacity)
+			capacity = value.capacity();
+
+		for (int e = 1; e <= capacity; e++) {
+			get(e).move(e, clear);
+		}
+
+		for (int e = capacity + 1; e <= capacity(); e++)
+			get(e).clear();
+	}
+
+	@Override
+	public void movel(QArray<?> value) {
+		movel(value, false);
+	}
+
+	@Override
+	public void movel(QArray<?> value, boolean clear) {
+
+		int capacity = capacity();
+		if (value.capacity() < capacity)
+			capacity = value.capacity();
+
+		for (int e = 1; e <= capacity; e++) {
+			get(e).movel(e, clear);
+		}
+
+		for (int e = capacity + 1; e <= capacity(); e++)
+			get(e).clear();
+	}
+
+	@Override
+	public void movea(int targetIndex, QArray<?> value, QNumeric sourceIndex, boolean clear) {
+		movea(targetIndex, value, sourceIndex.asInteger(), clear);
+	}
+
+	@Override
+	public void movea(QNumeric targetIndex, QArray<?> value) {
+		movea(targetIndex, value, false);
 	}
 }

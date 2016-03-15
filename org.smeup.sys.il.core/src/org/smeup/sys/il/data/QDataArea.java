@@ -18,7 +18,7 @@ package org.smeup.sys.il.data;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QDataArea<D extends QBufferedData> extends QBufferedData {
+public interface QDataArea<D extends QBufferedElement> extends QBufferedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -42,6 +42,14 @@ public interface QDataArea<D extends QBufferedData> extends QBufferedData {
 	 * @generated
 	 */
 	void in(QIndicator error);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void movea(QArray<? extends QString> value);
 
 	/**
 	 * <!-- begin-user-doc -->

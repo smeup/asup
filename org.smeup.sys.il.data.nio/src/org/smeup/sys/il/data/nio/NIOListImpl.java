@@ -42,55 +42,10 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 	}
 
 	public NIOListImpl(QDataContext dataContext, D model, int dimension) {
-		super(dataContext);
+		this(dataContext);
 		this._model = model;
 		this._dimension = dimension;
 		this._elements = new ArrayList<D>(_dimension);
-		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public D[] asArray() {
-
-		D[] array = (D[]) Array.newInstance(_model.getClass(), _dimension);
-
-		System.arraycopy(_elements.toArray(), 0, array, 0, _dimension);
-
-		return array;
-	}
-
-	@Override
-	public NIODataImpl copy() {
-
-		try {
-			NIOBufferedDelegatorImpl copy = null;
-
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			ObjectOutputStream oos = new ObjectOutputStream(baos);
-			oos.writeObject(this);
-			oos.close();
-
-			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-			ObjectInputStream ois = new ObjectInputStream(bais);
-			copy = (NIOBufferedDelegatorImpl) ois.readObject();
-			ois.close();
-			copy._dataContext = getDataContext();
-			return copy;
-		} catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	@Override
-	public boolean isEmpty() {
-
-		for (D element : this)
-			if (!element.isEmpty())
-				return false;
-
-		return true;
 	}
 
 	@Override
@@ -106,14 +61,61 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 		visitor.endVisit(this);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public void clear() {
+	public final D[] asArray() {
+
+		D[] array = (D[]) Array.newInstance(_model.getClass(), _dimension);
+
+		System.arraycopy(_elements.toArray(), 0, array, 0, _dimension);
+
+		return array;
+	}
+
+	@Override
+	public final int capacity() {
+		if (count() >= _dimension)
+			return count();
+		else
+			return _dimension;
+	}
+
+	@Override
+	public final void clear() {
 		for (D element : this)
 			element.clear();
 	}
 
 	@Override
-	public void eval(QList<D> value) {
+	protected final NIODataImpl copy() {
+
+		try {
+			NIOBufferedElementDelegatorImpl copy = null;
+
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ObjectOutputStream oos = new ObjectOutputStream(baos);
+			oos.writeObject(this);
+			oos.close();
+
+			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+			ObjectInputStream ois = new ObjectInputStream(bais);
+			copy = (NIOBufferedElementDelegatorImpl) ois.readObject();
+			ois.close();
+			copy._dataContext = getDataContext();
+			return copy;
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public final int count() {
+		return _elements.size();
+	}
+
+	@Override
+	public final void eval(QList<D> value) {
 
 		clear();
 
@@ -125,19 +127,9 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 		}
 	}
 
-	@Override
-	public <E extends Enum<E>> void eval(E value) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public Iterator<D> iterator() {
-		return _elements.iterator();
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
-	public D get(int index) {
+	public final D get(int index) {
 
 		D element = null;
 		if (_elements.size() >= index)
@@ -153,25 +145,27 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 	}
 
 	@Override
-	public D get(QNumeric index) {
+	public final D get(QNumeric index) {
 		return get(index.asInteger());
 	}
 
 	@Override
-	public int capacity() {
-		if (count() >= _dimension)
-			return count();
-		else
-			return _dimension;
+	public final boolean isEmpty() {
+
+		for (D element : this)
+			if (!element.isEmpty())
+				return false;
+
+		return true;
 	}
 
 	@Override
-	public int count() {
-		return _elements.size();
+	public final Iterator<D> iterator() {
+		return _elements.iterator();
 	}
 
 	@Override
-	public String toString() {
+	public final String toString() {
 
 		StringBuffer sb = new StringBuffer();
 		sb.append("[");
@@ -189,41 +183,5 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 
 		sb.append("]");
 		return sb.toString();
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean eq(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean ge(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean gt(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean le(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean lt(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean ne(E value) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 }

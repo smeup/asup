@@ -19,7 +19,7 @@ import java.lang.String;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QHexadecimal extends QBufferedData {
+public interface QHexadecimal extends QBufferedElement {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -14,11 +14,11 @@ package org.smeup.sys.il.data.nio;
 import java.util.Iterator;
 import java.util.List;
 
+import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
-import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDatetime;
@@ -27,18 +27,17 @@ import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
-import org.smeup.sys.il.data.SortDirection;
 
 public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> implements QStroller<D> {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	public NIOStrollerImpl(QDataContext dataContext) {
 		super(dataContext);
 	}
 
-	public NIOStrollerImpl(QDataContext dataContext, D model, int dimension, SortDirection sortDirection) {
-		super(dataContext, model, dimension, sortDirection);
+	public NIOStrollerImpl(QDataContext dataContext, D model, int dimension) {
+		super(dataContext, model, dimension);
 	}
 
 	@Override
@@ -47,8 +46,8 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public QDataStruct cat(QString factor1) {
-		return (QDataStruct) current().cat(factor1);
+	public void cat(QString factor1) {
+		current().cat(factor1);
 	}
 
 	@Override
@@ -72,8 +71,8 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public QDataStruct cat(String factor1) {
-		return (QDataStruct) current().cat(factor1);
+	public void cat(String factor1) {
+		current().cat(factor1);
 	}
 
 	@Override
@@ -113,22 +112,17 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 
 	@Override
 	public void cat(String factor1, String factor2, Number space, boolean clear) {
-		current().cat(factor1, factor2, space, clear);		
+		current().cat(factor1, factor2, space, clear);
 	}
 
 	@Override
 	public void cat(String factor1, QString factor2, Number space) {
-		current().cat(factor1, factor2, space);		
+		current().cat(factor1, factor2, space);
 	}
 
 	@Override
 	public void cat(String factor1, QString factor2, Number space, boolean clear) {
-		current().cat(factor1, factor2, space, clear);	
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean eq(E value) {
-		return current().eq(value);
+		current().cat(factor1, factor2, space, clear);
 	}
 
 	@Override
@@ -147,23 +141,8 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public <E extends Enum<E>> void eval(E value) {
-		current().eval(value);
-	}
-
-	@Override
-	public void eval(String value) {
-		current().eval(value);
-	}
-
-	@Override
 	public void evalr(String value) {
 		current().evalr(value);
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean ge(E value) {
-		return current().ge(value);
 	}
 
 	@Override
@@ -192,11 +171,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public <E extends Enum<E>> boolean gt(E value) {
-		return current().gt(value);
-	}
-
-	@Override
 	public boolean gt(QString value) {
 		return current().gt(value);
 	}
@@ -204,11 +178,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	@Override
 	public boolean gt(String value) {
 		return current().gt(value);
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean le(E value) {
-		return current().le(value);
 	}
 
 	@Override
@@ -222,11 +191,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public <E extends Enum<E>> boolean lt(E value) {
-		return current().lt(value);
-	}
-
-	@Override
 	public boolean lt(QString value) {
 		return current().lt(value);
 	}
@@ -234,111 +198,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	@Override
 	public boolean lt(String value) {
 		return current().lt(value);
-	}
-
-	@Override
-	public void move(boolean value) {
-		current().move(value);
-	}
-
-	@Override
-	public <E extends Enum<E>> void move(E value) {
-		current().move(value);
-	}
-
-	@Override
-	public <E extends Enum<E>> void move(E value, boolean clear) {
-		current().move(value, clear);
-	}
-
-	@Override
-	public void move(int value) {
-		current().move(value);
-	}
-
-	@Override
-	public void move(int value, boolean clear) {
-		current().move(value, clear);
-	}
-
-	@Override
-	public void move(QBufferedData value) {
-		current().move(value);
-	}
-
-	@Override
-	public void move(QBufferedData value, boolean clear) {
-		current().move(value, clear);
-	}
-
-	@Override
-	public void move(String value) {
-		current().move(value);
-	}
-
-	@Override
-	public void move(String value, boolean clear) {
-		current().move(value, clear);
-	}
-
-	@Override
-	public void movea(QArray<?> value) {
-		current().movea(value);
-	}
-
-	@Override
-	public void movea(QArray<?> value, boolean clear) {
-		current().movea(value, clear);
-	}
-
-	@Override
-	public void movel(boolean value) {
-		current().movel(value);
-	}
-
-	@Override
-	public <E extends Enum<E>> void movel(E value) {
-		current().movel(value);
-	}
-
-	@Override
-	public <E extends Enum<E>> void movel(E value, boolean clear) {
-		current().movel(value, clear);
-	}
-
-	@Override
-	public void movel(int value) {
-		current().movel(value);
-	}
-
-	@Override
-	public void movel(int value, boolean clear) {
-		current().movel(value, clear);
-	}
-
-	@Override
-	public void movel(QBufferedData value) {
-		current().movel(value);
-	}
-
-	@Override
-	public void movel(QBufferedData value, boolean clear) {
-		current().movel(value, clear);
-	}
-
-	@Override
-	public void movel(String value) {
-		current().movel(value);
-	}
-
-	@Override
-	public void movel(String value, boolean clear) {
-		current().movel(value, clear);
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean ne(E value) {
-		return current().ne(value);
 	}
 
 	@Override
@@ -388,20 +247,23 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 
 	@Override
 	public void xlate(String from, String to, QString source, Number start, boolean clear) {
-		current().xlate(from, to, source, start, clear);		
+		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
 	public void xlate(String from, String to, QString source, QNumeric start) {
-		current().xlate(from, to, source, start);	}
+		current().xlate(from, to, source, start);
+	}
 
 	@Override
 	public void xlate(String from, String to, QString source, QNumeric start, boolean clear) {
-		current().xlate(from, to, source, start, clear);	}
+		current().xlate(from, to, source, start, clear);
+	}
 
 	@Override
 	public void xlate(String from, QString to, QString source) {
-		current().xlate(from, to, source);	}
+		current().xlate(from, to, source);
+	}
 
 	@Override
 	public void xlate(String from, QString to, QString source, boolean clear) {
@@ -410,92 +272,92 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 
 	@Override
 	public void xlate(String from, QString to, QString source, Number start) {
-		current().xlate(from, to, source, start);	
+		current().xlate(from, to, source, start);
 	}
 
 	@Override
 	public void xlate(String from, QString to, QString source, Number start, boolean clear) {
-		current().xlate(from, to, source, start, clear);	
+		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
 	public void xlate(String from, QString to, QString source, QNumeric start) {
-		current().xlate(from, to, source, start);	
+		current().xlate(from, to, source, start);
 	}
 
 	@Override
 	public void xlate(String from, QString to, QString source, QNumeric start, boolean clear) {
-		current().xlate(from, to, source, start, clear);	
+		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source) {
-		current().xlate(from, to, source);	
+		current().xlate(from, to, source);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source, boolean clear) {
-		current().xlate(from, to, source, clear);	
+		current().xlate(from, to, source, clear);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source, Number start) {
-		current().xlate(from, to, source, start);	
+		current().xlate(from, to, source, start);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source, Number start, boolean clear) {
-		current().xlate(from, to, source, start, clear);	
+		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source, QNumeric start) {
-		current().xlate(from, to, source, start);	
+		current().xlate(from, to, source, start);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source, QNumeric start, boolean clear) {
-		current().xlate(from, to, source, start, clear);	
+		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
 	public void xlate(byte from, String to, QString source) {
-		current().xlate(from, to, source);	
+		current().xlate(from, to, source);
 	}
 
 	@Override
 	public void xlate(QString from, QString to, String source) {
-		current().xlate(from, to, source);	
+		current().xlate(from, to, source);
 	}
 
 	@Override
 	public void xlate(QString from, QString to, String source, boolean clear) {
-		current().xlate(from, to, source, clear);	
+		current().xlate(from, to, source, clear);
 	}
 
 	@Override
 	public void xlate(QString from, QString to, String source, Number start) {
-		current().xlate(from, to, source, start);	
+		current().xlate(from, to, source, start);
 	}
 
 	@Override
 	public void xlate(QString from, QString to, String source, Number start, boolean clear) {
-		current().xlate(from, to, source, start, clear);	
+		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
 	public void xlate(QString from, QString to, String source, QNumeric start) {
-		current().xlate(from, to, source, start);	
+		current().xlate(from, to, source, start);
 	}
 
 	@Override
 	public void xlate(QString from, QString to, String source, QNumeric start, boolean clear) {
-		current().xlate(from, to, source, start, clear);	
+		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
 	public void xlate(QString from, QString to, QString source, boolean clear) {
-		current().xlate(from, to, source, clear);	
+		current().xlate(from, to, source, clear);
 	}
 
 	@Override
@@ -505,49 +367,49 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 
 	@Override
 	public void xlate(QString from, QString to, QString source, Number start, boolean clear) {
-		current().xlate(from, to, source, start, clear);	
+		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
 	public void xlate(QString from, QString to, QString source, QNumeric start) {
-		current().xlate(from, to, source, start);	
+		current().xlate(from, to, source, start);
 	}
 
 	@Override
 	public void xlate(QString from, QString to, QString source, QNumeric start, boolean clear) {
-		current().xlate(from, to, source, start, clear);	
+		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
 	public void xlate(String from, String to, String source) {
-		current().xlate(from, to, source);	
+		current().xlate(from, to, source);
 	}
 
 	@Override
 	public void xlate(String from, String to, String source, boolean clear) {
-		current().xlate(from, to, source, clear);	
+		current().xlate(from, to, source, clear);
 	}
 
 	@Override
 	public void xlate(String from, String to, String source, Number start) {
-		current().xlate(from, to, source, start);	
+		current().xlate(from, to, source, start);
 	}
 
 	@Override
 	public void xlate(String from, String to, String source, Number start, boolean clear) {
-		current().xlate(from, to, source, start, clear);	
+		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
 	public void xlate(String from, String to, String source, QNumeric start) {
-		current().xlate(from, to, source, start);	
+		current().xlate(from, to, source, start);
 	}
 
 	@Override
 	public void xlate(String from, String to, String source, QNumeric start, boolean clear) {
-		current().xlate(from, to, source, start, clear);	
+		current().xlate(from, to, source, start, clear);
 	}
-	
+
 	@Override
 	public void cat(QString factor1, QString factor2, QNumeric space) {
 		current().cat(factor1, factor2, space);
@@ -571,11 +433,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	@Override
 	public boolean ne(QHexadecimal value) {
 		return current().ne(value);
-	}
-
-	@Override
-	public boolean eq(byte value) {
-		return current().eq(value);
 	}
 
 	@Override
@@ -617,7 +474,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	public QCharacter qSubst(Number start, QNumeric length) {
 		return current().qSubst(start, length);
 	}
-
 
 	@Override
 	public QCharacter qTrim() {
@@ -773,11 +629,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public <E extends Enum<E>> QDatetime qDate(E format) {
-		return current().qDate(format);
-	}
-	
-	@Override
 	public QNumeric qInt() {
 		return current().qInt();
 	}
@@ -816,7 +667,7 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	public QNumeric qLookup(QArray<?> array, Number start, Number elements) {
 		return current().qLookup(array, start, elements);
 	}
-	
+
 	@Override
 	public QNumeric qLookup(QArray<?> array, QNumeric start, QIndicator found) {
 		return current().qLookup(array, start, found);
@@ -889,12 +740,12 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 
 	@Override
 	public QNumeric qLookuplt(QArray<?> array, QNumeric start, QIndicator found) {
-		return current().qLookuplt(array, start, found);	
+		return current().qLookuplt(array, start, found);
 	}
 
 	@Override
 	public QNumeric qLookuplt(QArray<?> array, Number start, QIndicator found) {
-		return current().qLookuplt(array, start, found);	
+		return current().qLookuplt(array, start, found);
 	}
 
 	@Override
@@ -916,7 +767,7 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	public QNumeric qLookuplt(QArray<?> array, Number start, QNumeric elements, QIndicator found) {
 		return current().qLookuplt(array, start, elements, found);
 	}
-	
+
 	@Override
 	public QString qPlus(String factor1) {
 		return current().qPlus(factor1);
@@ -926,7 +777,7 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	public QString qPlus(QString factor1) {
 		return current().qPlus(factor1);
 	}
-	
+
 	@Override
 	public void accept(QDataVisitor visitor) {
 
@@ -950,144 +801,51 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public void eval(QString value) {
-		current().eval(value);		
-	}
-
-	@Override
 	public void evalr(QString value) {
-		current().evalr(value);		
+		current().evalr(value);
 	}
 
-	public byte[] asBytes() {
+	public byte[] _toBytes() {
 		return current().asBytes();
 	}
 
-	public boolean eq(QBufferedData value) {
-		return current().eq(value);
+	@Override
+	public boolean isVarying() {
+		return false;
 	}
 
-	public boolean eq(QDataFiller value) {
-		return current().eq(value);
+	@Override
+	public void movea(QArray<? extends QString> value) {
+		current().movea(value);
 	}
 
-	public void eval(QDataFiller value) {
-		current().eval(value);
+	@Override
+	public void movea(QArray<? extends QString> value, boolean clear) {
+		current().movea(value, clear);
 	}
 
-	public boolean ge(byte value) {
-		return current().ge(value);
+	@Override
+	public void movea(QArray<? extends QString> value, int startIndex) {
+		current().movea(value, startIndex);		
 	}
 
-	public void move(QDataFiller value) {
-		current().move(value);
-	}
-
-	public boolean ge(QBufferedData value) {
-		return current().ge(value);
-	}
-
-	public void move(QDataFiller value, boolean clear) {
-		current().move(value, clear);
-	}
-
-	public boolean ge(QDataFiller value) {
-		return current().ge(value);
-	}
-
-	public void move(Number value) {
-		current().move(value);
-	}
-
-	public boolean gt(byte value) {
-		return current().gt(value);
-	}
-
-	public void move(Number value, boolean clear) {
-		current().move(value, clear);
-	}
-
-	public boolean gt(QBufferedData value) {
-		return current().gt(value);
-	}
-
-	public boolean gt(QDataFiller value) {
-		return current().gt(value);
-	}
-
-	public void move(boolean value, boolean clear) {
-		current().move(value, clear);
-	}
-
-	public boolean le(byte value) {
-		return current().le(value);
-	}
-
-	public boolean le(QBufferedData value) {
-		return current().le(value);
-	}
-
-	public boolean le(QDataFiller value) {
-		return current().le(value);
-	}
-
-	public boolean lt(byte value) {
-		return current().lt(value);
-	}
-
-	public void movea(QArray<?> value, int startIndex) {
-		current().movea(value, startIndex);
-	}
-
-	public boolean lt(QBufferedData value) {
-		return current().lt(value);
-	}
-
-	public boolean lt(QDataFiller value) {
-		return current().lt(value);
-	}
-
-	public void movea(QArray<?> value, int startIndex, boolean clear) {
+	@Override
+	public void movea(QArray<? extends QString> value, int startIndex, boolean clear) {
 		current().movea(value, startIndex, clear);
 	}
 
-	public boolean ne(byte value) {
-		return current().ne(value);
+	@Override
+	public void movea(QArray<? extends QString> value, QNumeric startIndex) {
+		current().movea(value, startIndex);		
 	}
 
-	public void movea(QArray<?> value, QNumeric startIndex) {
-		current().movea(value, startIndex);
+	@Override
+	public void movea(QArray<? extends QString> value, QNumeric startIndex, boolean clear) {
+		current().movea(value, startIndex, clear);		
 	}
 
-	public boolean ne(QBufferedData value) {
-		return current().ne(value);
-	}
-
-	public boolean ne(QDataFiller value) {
-		return current().ne(value);
-	}
-
-	public void movea(QArray<?> value, QNumeric startIndex, boolean clear) {
-		current().movea(value, startIndex, clear);
-	}
-
-	public void movel(QDataFiller value) {
-		current().movel(value);
-	}
-
-	public void movel(QDataFiller value, boolean clear) {
-		current().movel(value, clear);
-	}
-
-	public void movel(Number value) {
-		current().movel(value);
-	}
-
-	public void movel(Number value, boolean clear) {
-		current().movel(value, clear);
-	}
-
-	public void movel(boolean value, boolean clear) {
-		current().movel(value, clear);
+	@Override
+	public QDatetime qDate(DatetimeFormat format) {
+		return current().qDate(format);
 	}
 }

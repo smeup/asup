@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.smeup.sys.dk.test.AssertionState;
 import org.smeup.sys.dk.test.QAssertionResult;
 import org.smeup.sys.dk.test.QDevelopmentKitTestPackage;
 import org.smeup.sys.dk.test.QTestResult;
@@ -31,7 +32,6 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
  * <ul>
  *   <li>{@link org.smeup.sys.dk.test.impl.TestResultImpl#getAssertResults <em>Assert Results</em>}</li>
  *   <li>{@link org.smeup.sys.dk.test.impl.TestResultImpl#getCategory <em>Category</em>}</li>
- *   <li>{@link org.smeup.sys.dk.test.impl.TestResultImpl#isFailed <em>Failed</em>}</li>
  *   <li>{@link org.smeup.sys.dk.test.impl.TestResultImpl#getObject <em>Object</em>}</li>
  *   <li>{@link org.smeup.sys.dk.test.impl.TestResultImpl#getRunner <em>Runner</em>}</li>
  *   <li>{@link org.smeup.sys.dk.test.impl.TestResultImpl#getTime <em>Time</em>}</li>
@@ -72,24 +72,6 @@ public class TestResultImpl extends ObjectImpl implements QTestResult {
 	 * @ordered
 	 */
 	protected String category = CATEGORY_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isFailed() <em>Failed</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #isFailed()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean FAILED_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isFailed() <em>Failed</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #isFailed()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean failed = FAILED_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getObject() <em>Object</em>}' attribute.
@@ -164,23 +146,11 @@ public class TestResultImpl extends ObjectImpl implements QTestResult {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public boolean isFailed() {
-		return failed;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setFailed(boolean newFailed) {
-		boolean oldFailed = failed;
-		failed = newFailed;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDevelopmentKitTestPackage.TEST_RESULT__FAILED, oldFailed, failed));
+		return getFailedCount() > 0;
 	}
 
 	/**
@@ -247,6 +217,36 @@ public class TestResultImpl extends ObjectImpl implements QTestResult {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getFailedCount() {
+		
+		int countFailed = 0;
+		for (QAssertionResult assertionResult : getAssertResults()) {
+			if (assertionResult.getAssertionState() == AssertionState.FAILED)
+				countFailed++;
+		}
+		return countFailed;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getSuccessCount() {
+		
+		int countSuccess = 0;
+		for (QAssertionResult assertionResult : getAssertResults()) {
+			if (assertionResult.getAssertionState() == AssertionState.SUCCESS)
+				countSuccess++;
+		}
+		return countSuccess;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -303,8 +303,6 @@ public class TestResultImpl extends ObjectImpl implements QTestResult {
 				return getAssertResults();
 			case QDevelopmentKitTestPackage.TEST_RESULT__CATEGORY:
 				return getCategory();
-			case QDevelopmentKitTestPackage.TEST_RESULT__FAILED:
-				return isFailed();
 			case QDevelopmentKitTestPackage.TEST_RESULT__OBJECT:
 				return getObject();
 			case QDevelopmentKitTestPackage.TEST_RESULT__RUNNER:
@@ -329,9 +327,6 @@ public class TestResultImpl extends ObjectImpl implements QTestResult {
 				return;
 			case QDevelopmentKitTestPackage.TEST_RESULT__CATEGORY:
 				setCategory((String)newValue);
-				return;
-			case QDevelopmentKitTestPackage.TEST_RESULT__FAILED:
-				setFailed((Boolean)newValue);
 				return;
 			case QDevelopmentKitTestPackage.TEST_RESULT__OBJECT:
 				setObject((String)newValue);
@@ -359,9 +354,6 @@ public class TestResultImpl extends ObjectImpl implements QTestResult {
 			case QDevelopmentKitTestPackage.TEST_RESULT__CATEGORY:
 				setCategory(CATEGORY_EDEFAULT);
 				return;
-			case QDevelopmentKitTestPackage.TEST_RESULT__FAILED:
-				setFailed(FAILED_EDEFAULT);
-				return;
 			case QDevelopmentKitTestPackage.TEST_RESULT__OBJECT:
 				setObject(OBJECT_EDEFAULT);
 				return;
@@ -386,8 +378,6 @@ public class TestResultImpl extends ObjectImpl implements QTestResult {
 				return assertResults != null && !assertResults.isEmpty();
 			case QDevelopmentKitTestPackage.TEST_RESULT__CATEGORY:
 				return CATEGORY_EDEFAULT == null ? category != null : !CATEGORY_EDEFAULT.equals(category);
-			case QDevelopmentKitTestPackage.TEST_RESULT__FAILED:
-				return failed != FAILED_EDEFAULT;
 			case QDevelopmentKitTestPackage.TEST_RESULT__OBJECT:
 				return OBJECT_EDEFAULT == null ? object != null : !OBJECT_EDEFAULT.equals(object);
 			case QDevelopmentKitTestPackage.TEST_RESULT__RUNNER:
@@ -409,8 +399,6 @@ public class TestResultImpl extends ObjectImpl implements QTestResult {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (category: ");
 		result.append(category);
-		result.append(", failed: ");
-		result.append(failed);
 		result.append(", object: ");
 		result.append(object);
 		result.append(", runner: ");

@@ -17,14 +17,16 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	private R record;	
 	
 	private QFileMember fileMember;
-	private QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
-
+	
 	private boolean open = false;
 	private int currentPosition = -1;
+	
+	private QDataWriter dataWriter;
 	
 	public BaseFileMemberDataSetImpl(BaseFileMemberProvider fileMemberProvider, R record, AccessMode accessMode, boolean userOpen) {
 		this.fileMemberProvider = fileMemberProvider;
 		this.record = record;
+		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 	}
 
 	@Override
@@ -351,7 +353,6 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 			dataWriter.set(fileMemberRow.getDate());
 			record.getElement("srcdat").accept(dataWriter);
-
 			return;
 		case 3:
 			dataWriter.set(fileMemberRow.getSequence());

@@ -88,22 +88,13 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	int ASSERTION_RESULT = 2;
 
 	/**
-	 * The feature id for the '<em><b>Assertion State</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSERTION_RESULT__ASSERTION_STATE = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Message</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int ASSERTION_RESULT__MESSAGE = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
+	int ASSERTION_RESULT__MESSAGE = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Time</b></em>' attribute. <!--
@@ -112,7 +103,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASSERTION_RESULT__TIME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
+	int ASSERTION_RESULT__TIME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Assertion Result</em>' class.
@@ -120,7 +111,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASSERTION_RESULT_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 3;
+	int ASSERTION_RESULT_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.impl.AssertionFailedImpl <em>Assertion Failed</em>}' class.
@@ -131,15 +122,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @generated
 	 */
 	int ASSERTION_FAILED = 1;
-
-	/**
-	 * The feature id for the '<em><b>Assertion State</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSERTION_FAILED__ASSERTION_STATE = ASSERTION_RESULT__ASSERTION_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Message</b></em>' attribute. <!--
@@ -176,15 +158,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @generated
 	 */
 	int ASSERTION_SUCCESS = 3;
-
-	/**
-	 * The feature id for the '<em><b>Assertion State</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSERTION_SUCCESS__ASSERTION_STATE = ASSERTION_RESULT__ASSERTION_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Message</b></em>' attribute. <!--
@@ -379,22 +352,13 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	int TEST_RESULT__CATEGORY = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Failed</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int TEST_RESULT__FAILED = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Object</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_RESULT__OBJECT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 3;
+	int TEST_RESULT__OBJECT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Runner</b></em>' attribute. <!--
@@ -403,7 +367,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_RESULT__RUNNER = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 4;
+	int TEST_RESULT__RUNNER = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Time</b></em>' attribute. <!--
@@ -412,7 +376,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_RESULT__TIME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 5;
+	int TEST_RESULT__TIME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Test Result</em>' class.
@@ -420,7 +384,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_RESULT_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 6;
+	int TEST_RESULT_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.impl.UnitTestRunnerImpl <em>Unit Test Runner</em>}' class.
@@ -514,17 +478,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAssertionResult();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.dk.test.QAssertionResult#getAssertionState <em>Assertion State</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Assertion State</em>'.
-	 * @see org.smeup.sys.dk.test.QAssertionResult#getAssertionState()
-	 * @see #getAssertionResult()
-	 * @generated
-	 */
-	EAttribute getAssertionResult_AssertionState();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.dk.test.QAssertionResult#getMessage <em>Message</em>}'.
@@ -635,18 +588,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTestResult();
-
-	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.smeup.sys.dk.test.QTestResult#isFailed <em>Failed</em>}'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the meta object for the attribute '<em>Failed</em>'.
-	 * @see org.smeup.sys.dk.test.QTestResult#isFailed()
-	 * @see #getTestResult()
-	 * @generated
-	 */
-	EAttribute getTestResult_Failed();
 
 	/**
 	 * Returns the meta object for the attribute '
@@ -809,14 +750,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 		EClass ASSERTION_RESULT = eINSTANCE.getAssertionResult();
 
 		/**
-		 * The meta object literal for the '<em><b>Assertion State</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ASSERTION_RESULT__ASSERTION_STATE = eINSTANCE.getAssertionResult_AssertionState();
-
-		/**
 		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
@@ -912,13 +845,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TEST_RESULT = eINSTANCE.getTestResult();
-
-		/**
-		 * The meta object literal for the '<em><b>Failed</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TEST_RESULT__FAILED = eINSTANCE.getTestResult_Failed();
 
 		/**
 		 * The meta object literal for the '<em><b>Object</b></em>' attribute feature.

@@ -38,7 +38,6 @@ public class JDTProjectAdapter implements QProject {
 	
 	@Override
 	public String getName() {
-		// URIUtil.lastSegment(project.getLocationURI());
 		return project.getName();
 	}
 

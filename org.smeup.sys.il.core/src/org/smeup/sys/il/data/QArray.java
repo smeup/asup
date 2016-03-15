@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.Enum;
 import java.lang.String;
 
 
@@ -20,7 +19,7 @@ import java.lang.String;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
+public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -149,14 +148,6 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void eval(QBufferedList<D> value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
@@ -261,58 +252,10 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> void movea(E value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model clearRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> void movea(E value, boolean clear);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model targetIndexRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> void movea(int targetIndex, E value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model targetIndexRequired="true" clearRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> void movea(int targetIndex, E value, boolean clear);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model targetIndexRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> void movea(QNumeric targetIndex, E value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model targetIndexRequired="true" clearRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> void movea(QNumeric targetIndex, E value, boolean clear);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
-	void movea(QBufferedData value);
+	void movea(DataSpecial value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -320,7 +263,39 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	 * @model clearRequired="true"
 	 * @generated
 	 */
-	void movea(QBufferedData value, boolean clear);
+	void movea(DataSpecial value, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true"
+	 * @generated
+	 */
+	void movea(int targetIndex, DataSpecial value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void movea(int targetIndex, DataSpecial value, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true"
+	 * @generated
+	 */
+	void movea(QNumeric targetIndex, DataSpecial value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void movea(QNumeric targetIndex, DataSpecial value, boolean clear);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -360,6 +335,62 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	 * @model targetIndexRequired="true"
 	 * @generated
 	 */
+	void movea(QNumeric targetIndex, QDataFiller value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void movea(QBufferedElement value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model clearRequired="true"
+	 * @generated
+	 */
+	void movea(QBufferedElement value, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true"
+	 * @generated
+	 */
+	void movea(int targetIndex, QBufferedElement value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void movea(int targetIndex, QBufferedElement value, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true"
+	 * @generated
+	 */
+	void movea(QNumeric targetIndex, QBufferedElement value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void movea(QNumeric targetIndex, QBufferedElement value, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true"
+	 * @generated
+	 */
 	void movea(int targetIndex, QArray<?> value);
 
 	/**
@@ -384,22 +415,6 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	 * @model targetIndexRequired="true"
 	 * @generated
 	 */
-	void movea(int targetIndex, QBufferedData value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model targetIndexRequired="true" clearRequired="true"
-	 * @generated
-	 */
-	void movea(int targetIndex, QBufferedData value, boolean clear);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model targetIndexRequired="true"
-	 * @generated
-	 */
 	void movea(int targetIndex, String value);
 
 	/**
@@ -416,7 +431,63 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	 * @model targetIndexRequired="true"
 	 * @generated
 	 */
-	void movea(QNumeric targetIndex, QBufferedData value);
+	void movea(QNumeric targetIndex, String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void movea(QNumeric targetIndex, String value, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void movea(QArray<?> value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model clearRequired="true"
+	 * @generated
+	 */
+	void movea(QArray<?> value, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model sourceIndexRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void movea(QArray<?> value, int sourceIndex, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model sourceIndexRequired="true"
+	 * @generated
+	 */
+	void movea(QArray<?> value, int sourceIndex);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model sourceIndexRequired="true"
+	 * @generated
+	 */
+	void movea(QArray<?> value, QNumeric sourceIndex);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model sourceIndexRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void movea(QArray<?> value, QNumeric sourceIndex, boolean clear);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -453,10 +524,58 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void move(QArray<?> value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model clearRequired="true"
+	 * @generated
+	 */
+	void move(QArray<?> value, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void movel(QArray<?> value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model clearRequired="true"
+	 * @generated
+	 */
+	void movel(QArray<?> value, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model targetIndexRequired="true" sourceIndexRequired="true"
 	 * @generated
 	 */
 	void movea(int targetIndex, QArray<?> value, QNumeric sourceIndex);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true" sourceIndexRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void movea(int targetIndex, QArray<?> value, QNumeric sourceIndex, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true"
+	 * @generated
+	 */
+	void movea(QNumeric targetIndex, QArray<?> value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -697,4 +816,12 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	 * @generated
 	 */
 	QArray<QCharacter> qSubst(Number start, QNumeric length);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void sorta();
 } // QArray

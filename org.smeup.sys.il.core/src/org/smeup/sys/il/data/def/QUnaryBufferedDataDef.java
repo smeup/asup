@@ -10,13 +10,14 @@ package org.smeup.sys.il.data.def;
 import org.smeup.sys.il.data.QBufferedElement;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Buffer Def</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Unary Buffered Data Def</b></em>'.
+ * <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getBufferDef()
- * @model
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getUnaryBufferedDataDef()
+ * @model abstract="true"
  * @generated
  */
-public interface QBufferDef extends QUnaryAtomicBufferedDataDef<QBufferedElement> {
-} // QBufferDef
+public interface QUnaryBufferedDataDef<D extends QBufferedElement> extends QUnaryDataDef<D>, QBufferedDataDef<D> {
+} // QUnaryBufferedDataDef

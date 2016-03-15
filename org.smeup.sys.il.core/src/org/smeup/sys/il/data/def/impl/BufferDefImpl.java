@@ -10,7 +10,7 @@ package org.smeup.sys.il.data.def.impl;
 import java.nio.Buffer;
 
 import org.eclipse.emf.ecore.EClass;
-import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QBufferDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
@@ -21,7 +21,7 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  *
  * @generated
  */
-public class BufferDefImpl extends UnaryAtomicBufferedDataDefImpl<QBufferedData> implements QBufferDef {
+public class BufferDefImpl extends UnaryAtomicBufferedDataDefImpl<QBufferedElement> implements QBufferDef {
 	/**
 	 *
 	 */
@@ -45,8 +45,8 @@ public class BufferDefImpl extends UnaryAtomicBufferedDataDefImpl<QBufferedData>
 	}
 
 	@Override
-	public Class<QBufferedData> getDataClass() {
-		return QBufferedData.class;
+	public Class<QBufferedElement> getDataClass() {
+		return QBufferedElement.class;
 	}
 
 	@Override

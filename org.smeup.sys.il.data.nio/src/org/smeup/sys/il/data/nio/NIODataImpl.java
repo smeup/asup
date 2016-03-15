@@ -28,5 +28,5 @@ public abstract class NIODataImpl implements QData {
 		return this._dataContext;
 	}
 
-	public abstract NIODataImpl copy();
+	protected abstract NIODataImpl copy();
 }

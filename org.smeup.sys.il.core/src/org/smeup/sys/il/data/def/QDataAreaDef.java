@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.il.data.def;
 
-import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +25,7 @@ import org.smeup.sys.il.data.QBufferedData;
  * @model
  * @generated
  */
-public interface QDataAreaDef<D extends QBufferedData> extends QUnaryAtomicBufferedDataDef<D>, QWrapperDef {
+public interface QDataAreaDef<D extends QBufferedElement> extends QUnaryBufferedDataDef<D>, QWrapperDef<D> {
 
 	/**
 	 * Returns the value of the '<em><b>External Name</b></em>' attribute.

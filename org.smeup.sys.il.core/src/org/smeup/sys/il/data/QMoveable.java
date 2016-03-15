@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.Enum;
 import java.lang.String;
 
 
@@ -22,6 +21,22 @@ import java.lang.String;
  */
 public interface QMoveable {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void move(DataSpecial value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model clearRequired="true"
+	 * @generated
+	 */
+	void move(DataSpecial value, boolean clear);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model
 	 * @generated
@@ -34,48 +49,6 @@ public interface QMoveable {
 	 * @generated
 	 */
 	void move(String value, boolean clear);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void move(int value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model clearRequired="true"
-	 * @generated
-	 */
-	void move(int value, boolean clear);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void move(QBufferedData value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model clearRequired="true"
-	 * @generated
-	 */
-	void move(QBufferedData value, boolean clear);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> void move(E value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model clearRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> void move(E value, boolean clear);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -113,7 +86,7 @@ public interface QMoveable {
 	 * @model
 	 * @generated
 	 */
-	void move(boolean value);
+	void move(QBufferedElement value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,53 +94,23 @@ public interface QMoveable {
 	 * @model clearRequired="true"
 	 * @generated
 	 */
-	void move(boolean value, boolean clear);
+	void move(QBufferedElement value, boolean clear);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
-	void movea(QArray<?> value);
+	void movel(DataSpecial value);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model clearRequired="true"
 	 * @generated
 	 */
-	void movea(QArray<?> value, boolean clear);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model startIndexRequired="true"
-	 * @generated
-	 */
-	void movea(QArray<?> value, int startIndex);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model startIndexRequired="true" clearRequired="true"
-	 * @generated
-	 */
-	void movea(QArray<?> value, int startIndex, boolean clear);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model startIndexRequired="true"
-	 * @generated
-	 */
-	void movea(QArray<?> value, QNumeric startIndex);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model startIndexRequired="true" clearRequired="true"
-	 * @generated
-	 */
-	void movea(QArray<?> value, QNumeric startIndex, boolean clear);
+	void movel(DataSpecial value, boolean clear);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -182,48 +125,6 @@ public interface QMoveable {
 	 * @generated
 	 */
 	void movel(String value, boolean clear);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void movel(int value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model clearRequired="true"
-	 * @generated
-	 */
-	void movel(int value, boolean clear);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void movel(QBufferedData value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model clearRequired="true"
-	 * @generated
-	 */
-	void movel(QBufferedData value, boolean clear);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> void movel(E value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model clearRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> void movel(E value, boolean clear);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -261,7 +162,7 @@ public interface QMoveable {
 	 * @model
 	 * @generated
 	 */
-	void movel(boolean value);
+	void movel(QBufferedElement value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -269,6 +170,6 @@ public interface QMoveable {
 	 * @model clearRequired="true"
 	 * @generated
 	 */
-	void movel(boolean value, boolean clear);
+	void movel(QBufferedElement value, boolean clear);
 
 } // QMoveable

@@ -16,7 +16,7 @@ package org.smeup.sys.il.data;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QAdapter extends QData, QBufferedDataDelegator {
+public interface QAdapter extends QData, QBufferedElementDelegator, QBufferedElement {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

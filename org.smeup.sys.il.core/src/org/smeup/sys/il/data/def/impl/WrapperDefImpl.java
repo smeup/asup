@@ -16,8 +16,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.smeup.sys.il.data.def.QBufferedDataDef;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+import org.smeup.sys.il.data.def.QUnaryBufferedDataDef;
 import org.smeup.sys.il.data.def.QWrapperDef;
 
 /**
@@ -33,7 +34,7 @@ import org.smeup.sys.il.data.def.QWrapperDef;
  *
  * @generated
  */
-public abstract class WrapperDefImpl extends MinimalEObjectImpl.Container implements QWrapperDef {
+public abstract class WrapperDefImpl<D extends QBufferedElement> extends MinimalEObjectImpl.Container implements QWrapperDef<D> {
 	/**
 	 * The cached value of the '{@link #getArgument() <em>Argument</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -42,7 +43,7 @@ public abstract class WrapperDefImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 * @ordered
 	 */
-	protected QBufferedDataDef<?> argument;
+	protected QUnaryBufferedDataDef<D> argument;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,7 +69,7 @@ public abstract class WrapperDefImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QBufferedDataDef<?> getArgument() {
+	public QUnaryBufferedDataDef<D> getArgument() {
 		return argument;
 	}
 
@@ -77,8 +78,8 @@ public abstract class WrapperDefImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetArgument(QBufferedDataDef<?> newArgument, NotificationChain msgs) {
-		QBufferedDataDef<?> oldArgument = argument;
+	public NotificationChain basicSetArgument(QUnaryBufferedDataDef<D> newArgument, NotificationChain msgs) {
+		QUnaryBufferedDataDef<D> oldArgument = argument;
 		argument = newArgument;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.WRAPPER_DEF__ARGUMENT, oldArgument, newArgument);
@@ -92,7 +93,7 @@ public abstract class WrapperDefImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setArgument(QBufferedDataDef<?> newArgument) {
+	public void setArgument(QUnaryBufferedDataDef<D> newArgument) {
 		if (newArgument != argument) {
 			NotificationChain msgs = null;
 			if (argument != null)
@@ -139,11 +140,12 @@ public abstract class WrapperDefImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case QIntegratedLanguageDataDefPackage.WRAPPER_DEF__ARGUMENT:
-				setArgument((QBufferedDataDef<?>)newValue);
+				setArgument((QUnaryBufferedDataDef<D>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -158,7 +160,7 @@ public abstract class WrapperDefImpl extends MinimalEObjectImpl.Container implem
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case QIntegratedLanguageDataDefPackage.WRAPPER_DEF__ARGUMENT:
-				setArgument((QBufferedDataDef<?>)null);
+				setArgument((QUnaryBufferedDataDef<D>)null);
 				return;
 		}
 		super.eUnset(featureID);

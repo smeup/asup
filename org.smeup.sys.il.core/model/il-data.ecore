@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="data" nsURI="http://www.smeup.org/asup/il/data" nsPrefix="il-data">
   <eClassifiers xsi:type="ecore:EClass" name="Adapter" abstract="true" interface="true"
-      eSuperTypes="#//Data #//BufferedDataDelegator">
+      eSuperTypes="#//Data #//BufferedElementDelegator #//BufferedElement">
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="#//Adapter"/>
     </eOperations>
@@ -12,7 +12,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Array" abstract="true" interface="true">
     <eTypeParameters name="D">
-      <eBounds eClassifier="#//BufferedData"/>
+      <eBounds eClassifier="#//BufferedElement"/>
     </eTypeParameters>
     <eOperations name="divide">
       <eParameters name="array" lowerBound="1">
@@ -63,13 +63,6 @@
     <eOperations name="divide">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="roundingMode" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="eval">
-      <eParameters name="value" lowerBound="1">
-        <eGenericType eClassifier="#//BufferedList">
-          <eTypeArguments eTypeParameter="#//Array/D"/>
-        </eGenericType>
-      </eParameters>
     </eOperations>
     <eOperations name="isContiguous" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="minus">
@@ -122,115 +115,87 @@
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="roundingMode" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="movea">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
+    <eOperations name="move">
       <eParameters name="value">
-        <eGenericType eTypeParameter="#//Array/movea/E"/>
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="movea">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
+    <eOperations name="move">
       <eParameters name="value">
-        <eGenericType eTypeParameter="#//Array/movea.1/E"/>
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
       </eParameters>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movea">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
+      <eParameters name="value" eType="#//DataSpecial"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value" eType="#//DataSpecial"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="movea">
       <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="value">
-        <eGenericType eTypeParameter="#//Array/movea.2/E"/>
-      </eParameters>
+      <eParameters name="value" eType="#//DataSpecial"/>
     </eOperations>
     <eOperations name="movea">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
       <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="value">
-        <eGenericType eTypeParameter="#//Array/movea.3/E"/>
-      </eParameters>
+      <eParameters name="value" eType="#//DataSpecial"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movea">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
       <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="value">
-        <eGenericType eTypeParameter="#//Array/movea.4/E"/>
-      </eParameters>
+      <eParameters name="value" eType="#//DataSpecial"/>
     </eOperations>
     <eOperations name="movea">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
       <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="value">
-        <eGenericType eTypeParameter="#//Array/movea.5/E"/>
-      </eParameters>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="movea">
-      <eParameters name="value" eType="#//BufferedData"/>
-    </eOperations>
-    <eOperations name="movea">
-      <eParameters name="value" eType="#//BufferedData"/>
+      <eParameters name="value" eType="#//DataSpecial"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movea">
       <eParameters name="value" eType="#//DataFiller"/>
     </eOperations>
     <eOperations name="movea">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="movea">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="movea">
       <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="value" eType="#//DataFiller"/>
     </eOperations>
     <eOperations name="movea">
-      <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="value">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
+      <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="value" eType="#//DataFiller"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value" eType="#//BufferedElement"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value" eType="#//BufferedElement"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movea">
       <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="value">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
+      <eParameters name="value" eType="#//BufferedElement"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="value" eType="#//BufferedElement"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movea">
       <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="value">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
+      <eParameters name="value" eType="#//BufferedElement"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="value" eType="#//BufferedElement"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movea">
-      <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="value" eType="#//BufferedData"/>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="movea">
-      <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="value" eType="#//BufferedData"/>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movea">
@@ -244,7 +209,87 @@
     </eOperations>
     <eOperations name="movea">
       <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="value" eType="#//BufferedData"/>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="sourceIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="sourceIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="sourceIndex" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="sourceIndex" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="sourceIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
     <eOperations name="movea">
       <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -263,7 +308,34 @@
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
-      <eParameters name="sourceIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="sourceIndex" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="sourceIndex" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movea">
       <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
@@ -283,14 +355,20 @@
       </eParameters>
       <eParameters name="sourceIndex" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
-    <eOperations name="movea">
-      <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eOperations name="movel">
       <eParameters name="value">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
-      <eParameters name="sourceIndex" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="movel">
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="mult">
       <eParameters name="array" lowerBound="1">
@@ -460,6 +538,7 @@
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
+    <eOperations name="sorta"/>
     <eGenericSuperTypes eClassifier="#//BufferedList">
       <eTypeArguments eTypeParameter="#//Array/D"/>
     </eGenericSuperTypes>
@@ -467,53 +546,71 @@
   <eClassifiers xsi:type="ecore:EClass" name="Binary" abstract="true" interface="true"
       eSuperTypes="#//Numeric"/>
   <eClassifiers xsi:type="ecore:EClass" name="BufferedData" abstract="true" interface="true"
-      eSuperTypes="#//Data #//Moveable #//Storable">
+      eSuperTypes="#//Data #//Storable">
+    <eOperations name="clear"/>
+    <eOperations name="getLength" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eOperations name="getSize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eOperations name="isEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isNull" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isStoreOwner" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="qAddr" lowerBound="1" eType="#//Pointer"/>
+    <eOperations name="qLen" lowerBound="1" eType="#//Numeric"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BufferedElementDelegator" abstract="true"
+      interface="true">
+    <eGenericSuperTypes eClassifier="#//DataDelegator">
+      <eTypeArguments eClassifier="#//BufferedElement"/>
+    </eGenericSuperTypes>
+    <eGenericSuperTypes eClassifier="#//BufferedElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BufferedElement" abstract="true" interface="true"
+      eSuperTypes="#//BufferedData #//Moveable">
     <eOperations name="asBytes" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     </eOperations>
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" eType="#//BufferedData"/>
+      <eParameters name="value" eType="#//DataSpecial"/>
     </eOperations>
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//DataFiller"/>
     </eOperations>
-    <eOperations name="eval">
-      <eParameters name="value" eType="#//DataFiller"/>
+    <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" eType="#//BufferedElement"/>
     </eOperations>
-    <eOperations name="eval">
+    <eOperations name="eval" eType="#//BufferedData">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     </eOperations>
-    <eOperations name="fill">
-      <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
+    <eOperations name="eval" eType="#//BufferedData">
+      <eParameters name="value" eType="#//DataSpecial"/>
+    </eOperations>
+    <eOperations name="eval" eType="#//BufferedData">
+      <eParameters name="value" eType="#//DataFiller"/>
     </eOperations>
     <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     </eOperations>
     <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" eType="#//BufferedData"/>
+      <eParameters name="value" eType="#//DataSpecial"/>
     </eOperations>
     <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//DataFiller"/>
     </eOperations>
-    <eOperations name="getLength" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eOperations name="getSize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eOperations name="getBufferedElementType" lowerBound="1" eType="#//BufferedElementType"/>
     <eOperations name="gt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     </eOperations>
     <eOperations name="gt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" eType="#//BufferedData"/>
+      <eParameters name="value" eType="#//DataSpecial"/>
     </eOperations>
     <eOperations name="gt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//DataFiller"/>
     </eOperations>
-    <eOperations name="isNull" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="isStoreOwner" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="le" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     </eOperations>
     <eOperations name="le" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" eType="#//BufferedData"/>
+      <eParameters name="value" eType="#//DataSpecial"/>
     </eOperations>
     <eOperations name="le" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//DataFiller"/>
@@ -522,37 +619,38 @@
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     </eOperations>
     <eOperations name="lt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" eType="#//BufferedData"/>
+      <eParameters name="value" eType="#//DataSpecial"/>
     </eOperations>
     <eOperations name="lt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//DataFiller"/>
     </eOperations>
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
-    </eOperations>
-    <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" eType="#//BufferedData"/>
+      <eParameters name="value" eType="#//DataSpecial"/>
     </eOperations>
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//DataFiller"/>
     </eOperations>
-    <eOperations name="qAddr" lowerBound="1" eType="#//Pointer"/>
-    <eOperations name="qLen" lowerBound="1" eType="#//Numeric"/>
+    <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BufferedDataDelegator" abstract="true"
-      interface="true">
-    <eOperations name="getDelegate" lowerBound="1" eType="#//BufferedData"/>
-    <eGenericSuperTypes eClassifier="#//DataDelegator">
-      <eTypeArguments eClassifier="#//BufferedData"/>
-    </eGenericSuperTypes>
-    <eGenericSuperTypes eClassifier="#//BufferedData"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="BufferedElementType">
+    <eLiterals name="String" value="10" literal="S"/>
+    <eLiterals name="Numeric" value="20" literal="N"/>
+    <eLiterals name="Datetime" value="30" literal="D"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BufferedList" abstract="true" interface="true">
     <eTypeParameters name="D">
-      <eBounds eClassifier="#//BufferedData"/>
+      <eBounds eClassifier="#//BufferedElement"/>
     </eTypeParameters>
+    <eOperations name="eval" eType="#//BufferedData">
+      <eParameters name="value" eType="#//DataSpecial"/>
+    </eOperations>
+    <eOperations name="eval" eType="#//BufferedData">
+      <eParameters name="value" eType="#//DataFiller"/>
+    </eOperations>
     <eOperations name="eval">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
@@ -563,16 +661,240 @@
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="#//String"/>
     </eOperations>
-    <eOperations name="sorta"/>
     <eGenericSuperTypes eClassifier="#//List">
       <eTypeArguments eTypeParameter="#//BufferedList/D"/>
     </eGenericSuperTypes>
     <eGenericSuperTypes eClassifier="#//BufferedData"/>
+    <eGenericSuperTypes eClassifier="#//Moveable"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Character" abstract="true" interface="true"
       eSuperTypes="#//String">
-    <eOperations name="eval">
-      <eParameters name="value" lowerBound="1" eType="#//Indicator"/>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Cattable" abstract="true" interface="true">
@@ -642,7 +964,6 @@
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="cat">
-      <eGenericType eTypeParameter="#//Cattable/D"/>
       <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="cat">
@@ -737,7 +1058,6 @@
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="cat" lowerBound="1">
-      <eGenericType eTypeParameter="#//Cattable/D"/>
       <eParameters name="factor1" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="cat">
@@ -757,69 +1077,11 @@
     <eOperations name="accept">
       <eParameters name="visitor" lowerBound="1" eType="#//DataVisitor"/>
     </eOperations>
-    <eOperations name="clear"/>
-    <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="value">
-        <eGenericType eTypeParameter="#//Data/eq/E"/>
-      </eParameters>
-    </eOperations>
-    <eOperations name="eval">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="value">
-        <eGenericType eTypeParameter="#//Data/eval/E"/>
-      </eParameters>
-    </eOperations>
-    <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="value">
-        <eGenericType eTypeParameter="#//Data/ge/E"/>
-      </eParameters>
-    </eOperations>
-    <eOperations name="gt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="value">
-        <eGenericType eTypeParameter="#//Data/gt/E"/>
-      </eParameters>
-    </eOperations>
-    <eOperations name="isEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="le" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="value">
-        <eGenericType eTypeParameter="#//Data/le/E"/>
-      </eParameters>
-    </eOperations>
-    <eOperations name="lt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="value">
-        <eGenericType eTypeParameter="#//Data/lt/E"/>
-      </eParameters>
-    </eOperations>
-    <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="value">
-        <eGenericType eTypeParameter="#//Data/ne/E"/>
-      </eParameters>
-    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataArea" abstract="true" interface="true"
-      eSuperTypes="#//BufferedData">
+      eSuperTypes="#//BufferedElement">
     <eTypeParameters name="D">
-      <eBounds eClassifier="#//BufferedData"/>
+      <eBounds eClassifier="#//BufferedElement"/>
     </eTypeParameters>
     <eOperations name="get" lowerBound="1">
       <eGenericType eTypeParameter="#//DataArea/D"/>
@@ -827,6 +1089,15 @@
     <eOperations name="in"/>
     <eOperations name="in">
       <eParameters name="error" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments>
+            <eUpperBound eClassifier="#//String"/>
+          </eTypeArguments>
+        </eGenericType>
+      </eParameters>
     </eOperations>
     <eOperations name="out"/>
     <eOperations name="out">
@@ -839,7 +1110,7 @@
         <eTypeArguments eTypeParameter="#//DataAreaFactory/createDataArea/D"/>
       </eGenericType>
       <eTypeParameters name="D">
-        <eBounds eClassifier="#//BufferedData"/>
+        <eBounds eClassifier="#//BufferedElement"/>
       </eTypeParameters>
       <eParameters name="dataContext" lowerBound="1" eType="#//DataContext"/>
       <eParameters name="argument" lowerBound="1">
@@ -918,7 +1189,6 @@
     <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
     <eOperations name="getDateFormat" lowerBound="1" eType="#//def/DateFormat"/>
     <eOperations name="getTimeFormat" lowerBound="1" eType="#//def/TimeFormat"/>
-    <eOperations name="getTemporaryString" lowerBound="1" eType="#//String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataDelegator" abstract="true" interface="true">
     <eTypeParameters name="D">
@@ -934,10 +1204,10 @@
         <eTypeArguments eTypeParameter="#//DataFactory/createArray/D"/>
       </eGenericType>
       <eTypeParameters name="D">
-        <eBounds eClassifier="#//BufferedData"/>
+        <eBounds eClassifier="#//BufferedElement"/>
       </eTypeParameters>
       <eParameters name="argument" lowerBound="1">
-        <eGenericType eClassifier="#//def/UnaryAtomicDataDef">
+        <eGenericType eClassifier="#//def/UnaryAtomicBufferedDataDef">
           <eTypeArguments eTypeParameter="#//DataFactory/createArray/D"/>
         </eGenericType>
       </eParameters>
@@ -980,10 +1250,10 @@
         <eTypeArguments eTypeParameter="#//DataFactory/createDataArea/D"/>
       </eGenericType>
       <eTypeParameters name="D">
-        <eBounds eClassifier="#//BufferedData"/>
+        <eBounds eClassifier="#//BufferedElement"/>
       </eTypeParameters>
       <eParameters name="argument" lowerBound="1">
-        <eGenericType eClassifier="#//def/BufferedDataDef">
+        <eGenericType eClassifier="#//def/UnaryBufferedDataDef">
           <eTypeArguments eTypeParameter="#//DataFactory/createDataArea/D"/>
         </eGenericType>
       </eParameters>
@@ -1047,7 +1317,7 @@
         <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eTypeParameters name="D">
-        <eBounds eClassifier="#//BufferedData"/>
+        <eBounds eClassifier="#//BufferedElement"/>
       </eTypeParameters>
       <eParameters name="classEnumerator">
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
@@ -1109,15 +1379,14 @@
         <eTypeArguments eTypeParameter="#//DataFactory/createScroller/D"/>
       </eGenericType>
       <eTypeParameters name="D">
-        <eBounds eClassifier="#//BufferedData"/>
+        <eBounds eClassifier="#//BufferedElement"/>
       </eTypeParameters>
       <eParameters name="argument" lowerBound="1">
-        <eGenericType eClassifier="#//def/AtomicDataDef">
+        <eGenericType eClassifier="#//def/UnaryAtomicBufferedDataDef">
           <eTypeArguments eTypeParameter="#//DataFactory/createScroller/D"/>
         </eGenericType>
       </eParameters>
       <eParameters name="dimension" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="sortDirection" lowerBound="1" eType="#//SortDirection"/>
       <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createStroller" lowerBound="1">
@@ -1134,7 +1403,6 @@
         </eGenericType>
       </eParameters>
       <eParameters name="dimension" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="sortDirection" lowerBound="1" eType="#//SortDirection"/>
       <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createTime" lowerBound="1" eType="#//Datetime">
@@ -1144,11 +1412,11 @@
       <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DataFiller" eSuperTypes="#//DataVisitor">
+  <eClassifiers xsi:type="ecore:EClass" name="DataFiller">
     <eOperations name="set" eType="#//DataFiller">
-      <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
+      <eParameters name="value" lowerBound="1" eType="#//BufferedElement"/>
     </eOperations>
-    <eOperations name="get" lowerBound="1" eType="#//BufferedData"/>
+    <eOperations name="get" lowerBound="1" eType="#//BufferedElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataManager" abstract="true" interface="true">
     <eOperations name="createDataContainer" lowerBound="1" eType="#//DataContainer">
@@ -1186,6 +1454,18 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataReader" eSuperTypes="#//DataVisitor"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="DataSpecial">
+    <eLiterals name="Null" literal="*NULL"/>
+    <eLiterals name="Omit" value="10" literal="*OMIT"/>
+    <eLiterals name="Loval" value="20" literal="*LOVAL"/>
+    <eLiterals name="Hival" value="30" literal="*HIVAL"/>
+    <eLiterals name="Blank" value="100" literal="*BLANK"/>
+    <eLiterals name="Blanks" value="110" literal="*BLANKS"/>
+    <eLiterals name="Off" value="200" literal="*OFF"/>
+    <eLiterals name="On" value="210" literal="*ON"/>
+    <eLiterals name="Zero" value="300" literal="*ZERO"/>
+    <eLiterals name="Zeros" value="310" literal="*ZEROS"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataStruct" abstract="true" interface="true"
       eSuperTypes="#//Character #//Record"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataVisitor" abstract="true">
@@ -1358,72 +1638,36 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Datetime" abstract="true" interface="true"
-      eSuperTypes="#//BufferedData">
+      eSuperTypes="#//BufferedElement">
     <eOperations name="adddur">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
       <eParameters name="duration" unique="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="format">
-        <eGenericType eTypeParameter="#//Datetime/adddur/E"/>
-      </eParameters>
+      <eParameters name="format" eType="#//DatetimeFormat"/>
       <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
     </eOperations>
     <eOperations name="adddur">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
       <eParameters name="duration" unique="false" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="format">
-        <eGenericType eTypeParameter="#//Datetime/adddur.1/E"/>
-      </eParameters>
+      <eParameters name="format" eType="#//DatetimeFormat"/>
       <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
     </eOperations>
     <eOperations name="adddur">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
       <eParameters name="duration" unique="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="format">
-        <eGenericType eTypeParameter="#//Datetime/adddur.2/E"/>
-      </eParameters>
+      <eParameters name="format" eType="#//DatetimeFormat"/>
     </eOperations>
     <eOperations name="adddur">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
       <eParameters name="duration" unique="false" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="format">
-        <eGenericType eTypeParameter="#//Datetime/adddur.3/E"/>
-      </eParameters>
+      <eParameters name="format" eType="#//DatetimeFormat"/>
     </eOperations>
     <eOperations name="asDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eOperations name="asTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     </eOperations>
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
     </eOperations>
-    <eOperations name="qDate" eType="#//Datetime">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="format">
-        <eGenericType eTypeParameter="#//Datetime/qDate/E"/>
-      </eParameters>
-    </eOperations>
     <eOperations name="qDiff" eType="#//Numeric">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
       <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
-      <eParameters name="format">
-        <eGenericType eTypeParameter="#//Datetime/qDiff/E"/>
-      </eParameters>
+      <eParameters name="format" eType="#//DatetimeFormat"/>
     </eOperations>
     <eOperations name="qEditd" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eParameters name="dateFormat" lowerBound="1" eType="#//def/DateFormat"/>
@@ -1431,54 +1675,39 @@
       <eParameters name="timeFormat" lowerBound="1" eType="#//def/TimeFormat"/>
       <eParameters name="timeSeparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="qSubdt" eType="#//Numeric">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="portion">
-        <eGenericType eTypeParameter="#//Datetime/qSubdt/E"/>
-      </eParameters>
-    </eOperations>
     <eOperations name="subdur">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
       <eParameters name="duration" unique="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="format">
-        <eGenericType eTypeParameter="#//Datetime/subdur/E"/>
-      </eParameters>
+      <eParameters name="format" eType="#//DatetimeFormat"/>
       <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
     </eOperations>
     <eOperations name="subdur">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
       <eParameters name="duration" unique="false" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="format">
-        <eGenericType eTypeParameter="#//Datetime/subdur.1/E"/>
-      </eParameters>
+      <eParameters name="format" eType="#//DatetimeFormat"/>
       <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
     </eOperations>
     <eOperations name="subdur">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
       <eParameters name="duration" unique="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="format">
-        <eGenericType eTypeParameter="#//Datetime/subdur.2/E"/>
-      </eParameters>
+      <eParameters name="format" eType="#//DatetimeFormat"/>
     </eOperations>
     <eOperations name="subdur">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
       <eParameters name="duration" unique="false" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="format">
-        <eGenericType eTypeParameter="#//Datetime/subdur.3/E"/>
-      </eParameters>
+      <eParameters name="format" eType="#//DatetimeFormat"/>
     </eOperations>
     <eOperations name="t" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eOperations name="time"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DatetimeFormat">
+    <eLiterals name="ISO" value="100" literal="*ISO"/>
+    <eLiterals name="Day" value="110" literal="*D"/>
+    <eLiterals name="Month" value="120" literal="*M"/>
+    <eLiterals name="Year" value="130" literal="*Y"/>
+    <eLiterals name="Days" value="140" literal="*DAYS"/>
+    <eLiterals name="Months" value="150" literal="*MONTHS"/>
+    <eLiterals name="Years" value="160" literal="*YEARS"/>
+    <eLiterals name="Milliseconds" value="170" literal="*MS"/>
+    <eLiterals name="Seconds" value="180" literal="*S"/>
+    <eLiterals name="Minutes" value="190" literal="*MN"/>
+    <eLiterals name="Hours" value="190" literal="*H"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Decimal" abstract="true" interface="true"
       eSuperTypes="#//Numeric">
@@ -1486,7 +1715,7 @@
     <eOperations name="getScale" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Enum" abstract="true" interface="true"
-      eSuperTypes="#//BufferedData">
+      eSuperTypes="#//BufferedElement">
     <eTypeParameters name="E">
       <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
     </eTypeParameters>
@@ -1516,7 +1745,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Graphic" abstract="true" interface="true"
       eSuperTypes="#//String"/>
   <eClassifiers xsi:type="ecore:EClass" name="Hexadecimal" abstract="true" interface="true"
-      eSuperTypes="#//BufferedData">
+      eSuperTypes="#//BufferedElement">
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="#//Hexadecimal"/>
     </eOperations>
@@ -1525,9 +1754,9 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Identity" abstract="true" interface="true"
-      eSuperTypes="#//BufferedData"/>
+      eSuperTypes="#//BufferedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Indicator" abstract="true" interface="true"
-      eSuperTypes="#//BufferedData">
+      eSuperTypes="#//Character">
     <eOperations name="asBoolean" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="b" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -1536,31 +1765,12 @@
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
-    <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="eval">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="eval">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="eval">
-      <eParameters name="value" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="eval">
-      <eParameters name="value" lowerBound="1" eType="#//String"/>
-    </eOperations>
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
-    <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="qTrim" lowerBound="1" eType="#//Character"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="InitStrategy">
     <eLiterals name="Base" value="10" literal="BASE"/>
@@ -1833,41 +2043,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Moveable" abstract="true" interface="true">
     <eOperations name="move">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="value" eType="#//DataSpecial"/>
     </eOperations>
     <eOperations name="move">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="move">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eOperations>
-    <eOperations name="move">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="move">
-      <eParameters name="value" eType="#//BufferedData"/>
-    </eOperations>
-    <eOperations name="move">
-      <eParameters name="value" eType="#//BufferedData"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="move">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="value">
-        <eGenericType eTypeParameter="#//Moveable/move.6/E"/>
-      </eParameters>
-    </eOperations>
-    <eOperations name="move">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="value">
-        <eGenericType eTypeParameter="#//Moveable/move.7/E"/>
-      </eParameters>
+      <eParameters name="value" eType="#//DataSpecial"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="move">
@@ -1878,6 +2057,13 @@
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="move">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="move">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="move">
       <eParameters name="value" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="move">
@@ -1885,97 +2071,17 @@
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="move">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="value" eType="#//BufferedElement"/>
     </eOperations>
     <eOperations name="move">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="movea">
-      <eParameters name="value">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-    </eOperations>
-    <eOperations name="movea">
-      <eParameters name="value">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="movea">
-      <eParameters name="value">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="startIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eOperations>
-    <eOperations name="movea">
-      <eParameters name="value">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="startIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="movea">
-      <eParameters name="value">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="startIndex" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="movea">
-      <eParameters name="value">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="startIndex" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="value" eType="#//BufferedElement"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movel">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="value" eType="#//DataSpecial"/>
     </eOperations>
     <eOperations name="movel">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="movel">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eOperations>
-    <eOperations name="movel">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="movel">
-      <eParameters name="value" eType="#//BufferedData"/>
-    </eOperations>
-    <eOperations name="movel">
-      <eParameters name="value" eType="#//BufferedData"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="movel">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="value">
-        <eGenericType eTypeParameter="#//Moveable/movel.6/E"/>
-      </eParameters>
-    </eOperations>
-    <eOperations name="movel">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="value">
-        <eGenericType eTypeParameter="#//Moveable/movel.7/E"/>
-      </eParameters>
+      <eParameters name="value" eType="#//DataSpecial"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movel">
@@ -1986,6 +2092,13 @@
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movel">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="movel">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="movel">
       <eParameters name="value" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="movel">
@@ -1993,15 +2106,15 @@
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movel">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="value" eType="#//BufferedElement"/>
     </eOperations>
     <eOperations name="movel">
-      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="value" eType="#//BufferedElement"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Numeric" abstract="true" interface="true"
-      eSuperTypes="#//BufferedData">
+      eSuperTypes="#//BufferedElement">
     <eOperations name="asDouble" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eOperations name="asInteger" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eOperations name="asLong" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
@@ -2101,6 +2214,13 @@
     </eOperations>
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="roundingMode" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="eval">
+      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="eval">
+      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="roundingMode" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="eval">
@@ -2220,14 +2340,6 @@
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
-    <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="value">
-        <eGenericType eTypeParameter="#//Numeric/ne.2/E"/>
-      </eParameters>
-    </eOperations>
     <eOperations name="plus" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     </eOperations>
@@ -2276,12 +2388,7 @@
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="qDate" eType="#//Datetime">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="format">
-        <eGenericType eTypeParameter="#//Numeric/qDate/E"/>
-      </eParameters>
+      <eParameters name="format" eType="#//DatetimeFormat"/>
     </eOperations>
     <eOperations name="qDiv" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
@@ -2385,14 +2492,18 @@
     <eOperations name="xfoot">
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
+          <eTypeArguments>
+            <eUpperBound eClassifier="#//Numeric"/>
+          </eTypeArguments>
         </eGenericType>
       </eParameters>
     </eOperations>
     <eOperations name="xfoot">
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
+          <eTypeArguments>
+            <eUpperBound eClassifier="#//Numeric"/>
+          </eTypeArguments>
         </eGenericType>
       </eParameters>
       <eParameters name="roundingMode" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -2416,6 +2527,7 @@
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="#//Pointer"/>
     </eOperations>
+    <eOperations name="isNull" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="minus" eType="#//Pointer">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     </eOperations>
@@ -2531,7 +2643,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Scroller" abstract="true" interface="true">
     <eTypeParameters name="D">
-      <eBounds eClassifier="#//BufferedData"/>
+      <eBounds eClassifier="#//BufferedElement"/>
     </eTypeParameters>
     <eOperations name="absolute">
       <eGenericType eTypeParameter="#//Scroller/D"/>
@@ -2555,6 +2667,7 @@
     <eGenericSuperTypes eClassifier="#//BufferedList">
       <eTypeArguments eTypeParameter="#//Scroller/D"/>
     </eGenericSuperTypes>
+    <eGenericSuperTypes eClassifier="#//BufferedElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Storable" abstract="true" interface="true">
     <eOperations name="assign">
@@ -2588,6 +2701,9 @@
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
+    <eOperations name="eval">
+      <eParameters name="value" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
     <eOperations name="evalr">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
@@ -2609,6 +2725,7 @@
     <eOperations name="gt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//String"/>
     </eOperations>
+    <eOperations name="isVarying" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="le" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
@@ -2623,6 +2740,67 @@
     </eOperations>
     <eOperations name="lt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//String"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments>
+            <eUpperBound eClassifier="#//String"/>
+          </eTypeArguments>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments>
+            <eUpperBound eClassifier="#//String"/>
+          </eTypeArguments>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments>
+            <eUpperBound eClassifier="#//String"/>
+          </eTypeArguments>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="startIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments>
+            <eUpperBound eClassifier="#//String"/>
+          </eTypeArguments>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="startIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments>
+            <eUpperBound eClassifier="#//String"/>
+          </eTypeArguments>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="startIndex" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments>
+            <eUpperBound eClassifier="#//String"/>
+          </eTypeArguments>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="startIndex" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -2634,12 +2812,7 @@
       <eParameters name="value" lowerBound="1" eType="#//Hexadecimal"/>
     </eOperations>
     <eOperations name="qDate" eType="#//Datetime">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="format">
-        <eGenericType eTypeParameter="#//String/qDate/E"/>
-      </eParameters>
+      <eParameters name="format" eType="#//DatetimeFormat"/>
     </eOperations>
     <eOperations name="qInt" eType="#//Numeric"/>
     <eOperations name="qInth" eType="#//Numeric"/>
@@ -2669,7 +2842,6 @@
     <eOperations name="qTriml" lowerBound="1" eType="#//Character"/>
     <eOperations name="qTrimr" lowerBound="1" eType="#//Character"/>
     <eOperations name="s" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eOperations name="trim" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="testn" lowerBound="1">
       <eParameters name="numeric" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
@@ -2682,236 +2854,10 @@
       <eParameters name="blank" lowerBound="1" eType="#//Indicator"/>
       <eParameters name="blankNumeric" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
+    <eOperations name="trim" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="trimL" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="trimR" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="#//String"/>
-    </eOperations>
-    <eGenericSuperTypes eClassifier="#//BufferedData"/>
+    <eGenericSuperTypes eClassifier="#//BufferedElement"/>
     <eGenericSuperTypes eClassifier="#//Scanner"/>
     <eGenericSuperTypes eClassifier="#//Cattable">
       <eTypeArguments eClassifier="#//String"/>
@@ -2987,7 +2933,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="BufferDef">
       <eGenericSuperTypes eClassifier="#//def/UnaryAtomicBufferedDataDef">
-        <eTypeArguments eClassifier="#//BufferedData"/>
+        <eTypeArguments eClassifier="#//BufferedElement"/>
       </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="BufferedDataDef" abstract="true" interface="true">
@@ -3050,13 +2996,15 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="DataAreaDef">
       <eTypeParameters name="D">
-        <eBounds eClassifier="#//BufferedData"/>
+        <eBounds eClassifier="#//BufferedElement"/>
       </eTypeParameters>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="externalName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eGenericSuperTypes eClassifier="#//def/UnaryAtomicBufferedDataDef">
+      <eGenericSuperTypes eClassifier="#//def/UnaryBufferedDataDef">
         <eTypeArguments eTypeParameter="#//def/DataAreaDef/D"/>
       </eGenericSuperTypes>
-      <eGenericSuperTypes eClassifier="#//def/WrapperDef"/>
+      <eGenericSuperTypes eClassifier="#//def/WrapperDef">
+        <eTypeArguments eTypeParameter="#//def/DataAreaDef/D"/>
+      </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="DataDefType">
       <eLiterals name="Adapter" value="10" literal="ADAPTER"/>
@@ -3137,7 +3085,7 @@
         <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eTypeParameters name="D">
-        <eBounds eClassifier="#//BufferedData"/>
+        <eBounds eClassifier="#//BufferedElement"/>
       </eTypeParameters>
       <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
           containment="true">
@@ -3188,8 +3136,7 @@
           <eTypeArguments/>
         </eBounds>
       </eTypeParameters>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="argument" lowerBound="1"
-          containment="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="argument" containment="true">
         <eGenericType eClassifier="#//def/UnaryAtomicDataDef">
           <eTypeArguments/>
         </eGenericType>
@@ -3279,11 +3226,9 @@
     <eClassifiers xsi:type="ecore:EClass" name="ScrollerDef">
       <eTypeParameters name="D">
         <eBounds eClassifier="#//Scroller">
-          <eTypeArguments eClassifier="#//BufferedData"/>
+          <eTypeArguments/>
         </eBounds>
       </eTypeParameters>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="order" eType="#//SortDirection"
-          defaultValueLiteral="A"/>
       <eGenericSuperTypes eClassifier="#//def/MultipleAtomicBufferedDataDef">
         <eTypeArguments eTypeParameter="#//def/ScrollerDef/D"/>
       </eGenericSuperTypes>
@@ -3300,8 +3245,6 @@
         </eBounds>
       </eTypeParameters>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="order" eType="#//SortDirection"
-          defaultValueLiteral="A"/>
       <eGenericSuperTypes eClassifier="#//def/MultipleCompoundDataDef">
         <eTypeArguments eTypeParameter="#//def/StrollerDef/D"/>
         <eTypeArguments eClassifier="#//term/DataTerm">
@@ -3335,7 +3278,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="UnaryAtomicBufferedDataDef" abstract="true">
       <eTypeParameters name="D">
-        <eBounds eClassifier="#//BufferedData"/>
+        <eBounds eClassifier="#//BufferedElement"/>
       </eTypeParameters>
       <eOperations name="setLength">
         <eParameters name="length" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -3345,6 +3288,17 @@
       </eGenericSuperTypes>
       <eGenericSuperTypes eClassifier="#//def/BufferedDataDef">
         <eTypeArguments eTypeParameter="#//def/UnaryAtomicBufferedDataDef/D"/>
+      </eGenericSuperTypes>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="UnaryBufferedDataDef" abstract="true">
+      <eTypeParameters name="D">
+        <eBounds eClassifier="#//BufferedElement"/>
+      </eTypeParameters>
+      <eGenericSuperTypes eClassifier="#//def/UnaryDataDef">
+        <eTypeArguments eTypeParameter="#//def/UnaryBufferedDataDef/D"/>
+      </eGenericSuperTypes>
+      <eGenericSuperTypes eClassifier="#//def/BufferedDataDef">
+        <eTypeArguments eTypeParameter="#//def/UnaryBufferedDataDef/D"/>
       </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="UnaryCompoundDataDef" abstract="true">
@@ -3375,10 +3329,13 @@
       </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="WrapperDef" abstract="true">
+      <eTypeParameters name="D">
+        <eBounds eClassifier="#//BufferedElement"/>
+      </eTypeParameters>
       <eStructuralFeatures xsi:type="ecore:EReference" name="argument" lowerBound="1"
           containment="true">
-        <eGenericType eClassifier="#//def/BufferedDataDef">
-          <eTypeArguments/>
+        <eGenericType eClassifier="#//def/UnaryBufferedDataDef">
+          <eTypeArguments eTypeParameter="#//def/WrapperDef/D"/>
         </eGenericType>
       </eStructuralFeatures>
     </eClassifiers>

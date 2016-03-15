@@ -237,7 +237,6 @@ public class BaseTestAsserterImpl implements QTestAsserter {
 		assertionFailed.setMessage(message);
 		assertionFailed.setTime(System.currentTimeMillis() - time);
 		testResult.getAssertResults().add(assertionFailed);
-		testResult.setFailed(true);
 		notifyAssertResult(assertionFailed);
 
 		resetTime();

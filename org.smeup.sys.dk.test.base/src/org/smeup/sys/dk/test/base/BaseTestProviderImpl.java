@@ -12,8 +12,6 @@
 package org.smeup.sys.dk.test.base;
 
 import org.eclipse.osgi.framework.console.CommandProvider;
-import org.smeup.sys.dk.test.AssertionState;
-import org.smeup.sys.dk.test.QAssertionResult;
 import org.smeup.sys.dk.test.QTestResult;
 
 public abstract class BaseTestProviderImpl implements CommandProvider {
@@ -24,20 +22,8 @@ public abstract class BaseTestProviderImpl implements CommandProvider {
 		System.out.println();
 		System.out.println(testResult);
 
-		int failedNr = 0;
-		int successNr = 0;
-		
-		for (QAssertionResult assertionResult : testResult.getAssertResults()) {
-			if (AssertionState.SUCCESS.equals(assertionResult.getAssertionState())) {
-				successNr++;
-			} else {
-				failedNr++;
-			}
-			System.out.println("\t" + assertionResult);
-		}
-		System.out.println("Success: " + successNr);
-		if(failedNr >0)
-			System.err.println("Failed: " + failedNr);
+		System.out.println("Success: " + testResult.getSuccessCount());
+		System.err.println("Failed: " + testResult.getFailedCount());
 	}
 	
 	@Override

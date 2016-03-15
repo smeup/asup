@@ -1,6 +1,18 @@
+/**
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
+ */
 package org.smeup.sys.il.data.nio;
 
-import org.smeup.sys.il.data.QBufferedData;
+import java.nio.ByteBuffer;
+
 import org.smeup.sys.il.data.QDataContext;
 
 import com.ibm.as400.access.AS400PackedDecimal;
@@ -35,124 +47,85 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	}
 
 	@Override
-	public Number readNumber() {
+	public Number _readNumber() {
 
 		Number result = 0;
-		try {
-			byte[] bytes = NIOBufferHelper.readBytes(getBuffer(), getPosition(), getSize());
-			if (getScale() > 0)
-				result = packed.toDouble(bytes);
-			else
-				result = ((Double) packed.toDouble(bytes)).longValue();
-
-		} catch (Exception e) {
-			System.err.println("Unexpected condition 87g5r7xer6fv7fdsa: " + e.getMessage());
-		}
+		byte[] bytes = NIOBufferHelper.read(getBuffer(), getPosition(), getSize());
+		if (getScale() > 0)
+			result = packed.toDouble(bytes);
+		else
+			result = ((Double) packed.toDouble(bytes)).longValue();
 
 		return result;
 	}
 
 	@Override
-	public void writeNumber(Number number, String roundingMode) {
+	public void _writeNumber(Number number, String roundingMode) {
 
-		try {
-			byte[] bytes = packed.toBytes(number.doubleValue());
-
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
-		} catch (Exception e) {
-			System.err.println("Unexpected condition ibvedsf8dsfas: " + e.getMessage());
-		}
+		byte[] bytes = packed.toBytes(number.doubleValue());
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
 	}
 
 	private AS400PackedDecimal getDecimal(int precision, int scale) {
 
-		try {
-			AS400PackedDecimal decimal = packeds[precision - 1][scale];
+		AS400PackedDecimal decimal = packeds[precision - 1][scale];
 
-			if (decimal == null)
-				synchronized (packeds) {
-					decimal = packeds[precision - 1][scale];
-					if (decimal == null) {
-						decimal = new AS400PackedDecimal(precision, scale);
-						decimal.setUseDouble(true);
-						packeds[precision - 1][scale] = decimal;
-					}
+		if (decimal == null)
+			synchronized (packeds) {
+				decimal = packeds[precision - 1][scale];
+				if (decimal == null) {
+					decimal = new AS400PackedDecimal(precision, scale);
+					decimal.setUseDouble(true);
+					packeds[precision - 1][scale] = decimal;
 				}
+			}
 
-			return decimal;
-		} catch (Exception e) {
-			System.err.println("Unexpected condition 8werv68w7erwer: " + e.getMessage());
-			return null;
-		}
+		return decimal;
 	}
 
 	@Override
-	public byte[] asBytes() {
+	protected void _fill(byte[] filler, boolean maxLength) {
+
+		ByteBuffer byteBuffer = ByteBuffer.allocate(getLength());
+		NIOBufferHelper.fill(byteBuffer, 0, getLength(), filler);
+
+		eval(NIODecimalZonedImpl.getDecimal(getPrecision(), getScale()).toDouble(byteBuffer.array()));
+	}
+
+	@Override
+	protected void _move(byte[] value, boolean clear) {
+
+		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
+
+		double doubleValue;
+		if (getPrecision() > value.length)
+			doubleValue = zoned.toDouble(value);
+		else
+			doubleValue = zoned.toDouble(value, value.length - getPrecision());
+
+		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), packed.toBytes(doubleValue), clear, getFiller());
+	}
+
+	@Override
+	protected void _movel(byte[] value, boolean clear) {
+
+		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
+		double doubleValue = zoned.toDouble(value);
+
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), packed.toBytes(doubleValue), clear, getFiller());
+	}
+
+	@Override
+	protected void _write(byte[] value) {
+		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
+		double doubleValue = zoned.toDouble(value);
+
+		eval(doubleValue);
+	}
+
+	@Override
+	public byte[] _toBytes() {
 		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
 		return zoned.toBytes(asDouble());
-	}
-
-	@Override
-	public void movel(QBufferedData value, boolean clear) {
-
-		try {
-			AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
-			double doubleValue = zoned.toDouble(value.asBytes());
-
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), packed.toBytes(doubleValue), clear, getFiller());
-		} catch (Exception e) {
-			System.err.println("Unexpected condition weirdsifzgxcgzx: " + e.getMessage());
-		}
-	}
-
-	@Override
-	public void move(QBufferedData value, boolean clear) {
-
-		try {
-			   AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
-			   byte[] bytes = value.asBytes();
-			   
-			   double doubleValue;
-			   if(getPrecision()>bytes.length)
-			    doubleValue = zoned.toDouble(bytes);
-			   else
-			    doubleValue = zoned.toDouble(bytes, bytes.length-getPrecision());
-
-			   NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), packed.toBytes(doubleValue), clear, getFiller());
-		  } catch (Exception e) {
-		   System.err.println("Unexpected condition wei43t7345er5wev7s8dg: " + e.getMessage());
-		  }
-	}
-
-	@Override
-	public void move(String value, boolean clear) {
-
-		try {
-			   AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
-			   byte[] bytes = value.getBytes(getDataContext().getCharset());
-			   
-			   double doubleValue;
-			   if(getPrecision()>bytes.length)
-			    doubleValue = zoned.toDouble(bytes);
-			   else
-			    doubleValue = zoned.toDouble(bytes, bytes.length-getPrecision());
-
-			   NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), packed.toBytes(doubleValue), clear, getFiller());
-		  } catch (Exception e) {
-		   System.err.println("Unexpected condition wei43t7345er5wev7s8dg: " + e.getMessage());
-		  }
-	}
-
-	@Override
-	public void movel(String value, boolean clear) {
-		
-		try {
-			AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
-			double doubleValue = zoned.toDouble(value.getBytes(getDataContext().getCharset()));
-
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), packed.toBytes(doubleValue), clear, getFiller());
-		} catch (Exception e) {
-			System.err.println("Unexpected condition weird567uyr6zgxcgzx: " + e.getMessage());
-		}
 	}
 }

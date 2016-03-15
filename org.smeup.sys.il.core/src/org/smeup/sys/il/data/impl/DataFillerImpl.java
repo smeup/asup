@@ -8,18 +8,9 @@
 package org.smeup.sys.il.data.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.smeup.sys.il.data.QBinary;
-import org.smeup.sys.il.data.QBufferedData;
-import org.smeup.sys.il.data.QCharacter;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDataFiller;
-import org.smeup.sys.il.data.QDataStruct;
-import org.smeup.sys.il.data.QDatetime;
-import org.smeup.sys.il.data.QDecimal;
-import org.smeup.sys.il.data.QFloating;
-import org.smeup.sys.il.data.QGraphic;
-import org.smeup.sys.il.data.QHexadecimal;
-import org.smeup.sys.il.data.QIdentity;
-import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 
 /**
@@ -29,14 +20,14 @@ import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
  *
  * @generated
  */
-public class DataFillerImpl extends DataVisitorImpl implements QDataFiller {
+public class DataFillerImpl extends MinimalEObjectImpl.Container implements QDataFiller {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated NOT
 	 */
-	public QBufferedData filler = null;
+	public QBufferedElement filler = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -57,13 +48,14 @@ public class DataFillerImpl extends DataVisitorImpl implements QDataFiller {
 		return QIntegratedLanguageDataPackage.Literals.DATA_FILLER;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated NOT
 	 */
 	@Override
-	public QDataFiller set(QBufferedData value) {
+	public QDataFiller set(QBufferedElement value) {
 		this.filler = value;
 		return this;
 	}
@@ -74,67 +66,8 @@ public class DataFillerImpl extends DataVisitorImpl implements QDataFiller {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public QBufferedData get() {
+	public QBufferedElement get() {
 		return filler;
 	}
 
-	@Override
-	public boolean visit(QBinary data) {
-		data.fill(filler);
-		return false;
-	}
-
-	@Override
-	public boolean visit(QCharacter data) {
-		data.fill(filler);
-		return false;
-	}
-
-	@Override
-	public boolean visit(QDataStruct data) {
-		data.fill(filler);
-		return false;
-	}
-
-	@Override
-	public boolean visit(QDatetime data) {
-		data.fill(filler);
-		return false;
-	}
-
-	@Override
-	public boolean visit(QDecimal data) {
-		data.fill(filler);
-		return false;
-	}
-
-	@Override
-	public boolean visit(QFloating data) {
-		data.fill(filler);
-		return false;
-	}
-
-	@Override
-	public boolean visit(QGraphic data) {
-		data.fill(filler);
-		return false;
-	}
-
-	@Override
-	public boolean visit(QHexadecimal data) {
-		data.fill(filler);
-		return false;
-	}
-
-	@Override
-	public boolean visit(QIdentity data) {
-		data.fill(filler);
-		return false;
-	}
-
-	@Override
-	public boolean visit(QIndicator data) {
-		data.fill(filler);
-		return false;
-	}
 } //DataFillerImpl

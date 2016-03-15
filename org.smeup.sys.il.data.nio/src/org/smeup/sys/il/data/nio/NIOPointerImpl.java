@@ -44,6 +44,11 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 
 	@Override
+	public boolean isNull() {
+		return _storage == null;
+	}
+
+	@Override
 	public void assign(QBufferedData target) {
 		NIOBufferHelper.assign(this, target);
 	}
@@ -91,53 +96,11 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 
 	@Override
-	public <E extends Enum<E>> boolean eq(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> void eval(E value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean ge(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean gt(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public boolean isEmpty() {
 		if (_storage == null)
 			return true;
 		else
 			return _storage.isEmpty();
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean le(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean lt(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean ne(E value) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override

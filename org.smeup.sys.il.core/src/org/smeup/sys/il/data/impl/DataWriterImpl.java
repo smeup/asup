@@ -11,6 +11,7 @@ import java.lang.String;
 import java.math.BigDecimal;
 
 import org.eclipse.emf.ecore.EClass;
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
@@ -189,13 +190,12 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 		return super.visit(data);
 	}
 
-	@SuppressWarnings("unchecked")
-	private <E extends Enum<E>> void visitIndicatorData(QIndicator indicator) {
+	private void visitIndicatorData(QIndicator indicator) {
 
 		if (object instanceof QString)
 			indicator.eval(((QString) object).asString());
-		else if (object instanceof Enum<?>)
-			indicator.eval((E) object);
+		else if (object instanceof DataSpecial)
+			indicator.eval((DataSpecial) object);
 		else if (object instanceof String) {
 			if (object.toString().equalsIgnoreCase("*OFF"))
 				indicator.eval(false);
@@ -208,13 +208,12 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 
 	}
 
-	@SuppressWarnings("unchecked")
-	private <E extends Enum<E>> void visitNumericData(QNumeric numeric) {
+	private void visitNumericData(QNumeric numeric) {
 
 		if (object instanceof QNumeric)
 			numeric.eval((QNumeric) object);
-		else if (object instanceof Enum<?>)
-			numeric.eval((E) object);
+		else if (object instanceof DataSpecial)
+			numeric.eval((DataSpecial) object);
 		else if (object instanceof BigDecimal)
 			numeric.eval((BigDecimal) object);
 		else if (object instanceof Integer)
@@ -231,8 +230,7 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 
 	}
 
-	@SuppressWarnings("unchecked")
-	private <E extends Enum<E>> void visitStringData(QString string) {
+	private void visitStringData(QString string) {
 
 		if (object == null)
 			string.clear();
@@ -243,8 +241,8 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 			if(s.startsWith("'*") && s.endsWith("'"))
 				s = s.substring(1).substring(0, s.lastIndexOf("'") - 1);
 			string.eval(s);
-		} else if (object instanceof Enum<?>)
-			string.eval((E) object);
+		} else if (object instanceof DataSpecial)
+			string.eval((DataSpecial) object);
 		else
 			string.eval(object.toString());
 

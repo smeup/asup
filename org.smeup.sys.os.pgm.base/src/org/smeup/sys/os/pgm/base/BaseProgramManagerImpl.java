@@ -20,6 +20,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QList;
@@ -407,13 +408,13 @@ public class BaseProgramManagerImpl implements QProgramManager {
 					continue;
 				}
 				paramValue = stringData.asString();
-			} else if (param instanceof QBufferedData) {
-				QBufferedData bufferedData = (QBufferedData) param;
-				if (bufferedData.isNull()) {
+			} else if (param instanceof QBufferedElement) {
+				QBufferedElement bufferedElement = (QBufferedElement) param;
+				if (bufferedElement.isNull()) {
 					text += "|";
 					continue;
 				}
-				paramValue = new String(bufferedData.asBytes());
+				paramValue = new String(bufferedElement.asBytes());
 			} else
 				paramValue = param.toString();
 

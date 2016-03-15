@@ -1,20 +1,19 @@
 package org.smeup.sys.os.dtaara.nio;
 
-import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QArray;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContext;
-import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIndicator;
-import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QString;
-import org.smeup.sys.il.data.nio.NIOBufferedDelegatorImpl;
+import org.smeup.sys.il.data.nio.NIOBufferedElementDelegatorImpl;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.dtaara.QDataAreaManager;
 
-public class NIODataAreaImpl<D extends QBufferedData> extends NIOBufferedDelegatorImpl implements QDataArea<D> {
+public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElementDelegatorImpl implements QDataArea<D> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -45,9 +44,7 @@ public class NIODataAreaImpl<D extends QBufferedData> extends NIOBufferedDelegat
 			qDataArea = dataAreaReader.lookup(externalName);
 		}		
 		
-		QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
-		dataWriter.set(qDataArea.getContent());	
-		get().accept(dataWriter);
+		get().movel(qDataArea.getContent(), true);
 	}
 
 	@Override
@@ -96,5 +93,24 @@ public class NIODataAreaImpl<D extends QBufferedData> extends NIOBufferedDelegat
 		} catch (RuntimeException e) {
 			error.eval(true);
 		}
+	}
+
+	@Override
+	public byte[] asBytes() {
+		return getDelegate().asBytes();
+	}
+
+	@Override
+	public void movea(QArray<? extends QString> value) {
+		
+		if(!(get() instanceof QString))
+			throw new UnsupportedOperationException();
+		
+		((QString)get()).movea(value);
+	}
+
+	@Override
+	public boolean eq(QBufferedElement value) {
+		return get().eq(value);
 	}
 }

@@ -20,7 +20,6 @@ import org.smeup.sys.il.core.QObject;
  * <ul>
  *   <li>{@link org.smeup.sys.dk.test.QTestResult#getAssertResults <em>Assert Results</em>}</li>
  *   <li>{@link org.smeup.sys.dk.test.QTestResult#getCategory <em>Category</em>}</li>
- *   <li>{@link org.smeup.sys.dk.test.QTestResult#isFailed <em>Failed</em>}</li>
  *   <li>{@link org.smeup.sys.dk.test.QTestResult#getObject <em>Object</em>}</li>
  *   <li>{@link org.smeup.sys.dk.test.QTestResult#getRunner <em>Runner</em>}</li>
  *   <li>{@link org.smeup.sys.dk.test.QTestResult#getTime <em>Time</em>}</li>
@@ -32,33 +31,17 @@ import org.smeup.sys.il.core.QObject;
  */
 public interface QTestResult extends QObject {
 	/**
-	 * Returns the value of the '<em><b>Failed</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Failed</em>' attribute isn't clear, there
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Failed</em>' attribute.
-	 * @see #setFailed(boolean)
-	 * @see org.smeup.sys.dk.test.QDevelopmentKitTestPackage#getTestResult_Failed()
-	 * @model default="false"
+	 * @model kind="operation"
+	 *        annotation="il-data length='5'"
 	 * @generated
 	 */
 	boolean isFailed();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.dk.test.QTestResult#isFailed
-	 * <em>Failed</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Failed</em>' attribute.
-	 * @see #isFailed()
-	 * @generated
-	 */
-	void setFailed(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Object</b></em>' attribute. <!--
@@ -143,6 +126,24 @@ public interface QTestResult extends QObject {
 	 * @generated
 	 */
 	void setTime(long value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 *        annotation="il-data precision='5' scale='0'"
+	 * @generated
+	 */
+	int getFailedCount();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 *        annotation="il-data precision='5' scale='0'"
+	 * @generated
+	 */
+	int getSuccessCount();
 
 	/**
 	 * Returns the value of the '<em><b>Assert Results</b></em>' containment reference list.

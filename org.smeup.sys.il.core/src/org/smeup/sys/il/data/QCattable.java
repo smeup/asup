@@ -203,7 +203,7 @@ public interface QCattable<D extends QData> {
 	 * @model factor1Required="true"
 	 * @generated
 	 */
-	D cat(String factor1);
+	void cat(String factor1);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -280,10 +280,10 @@ public interface QCattable<D extends QData> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" factor1Required="true"
+	 * @model factor1Required="true"
 	 * @generated
 	 */
-	D cat(QString factor1);
+	void cat(QString factor1);
 
 	/**
 	 * <!-- begin-user-doc -->

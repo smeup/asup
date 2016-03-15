@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.Enum;
 import java.lang.String;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -21,7 +20,7 @@ import java.math.BigInteger;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QNumeric extends QBufferedData {
+public interface QNumeric extends QBufferedElement {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true"
@@ -243,6 +242,22 @@ public interface QNumeric extends QBufferedData {
 	 * @generated
 	 */
 	void eval(QNumeric value, String roundingMode);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
+	 * @generated
+	 */
+	void eval(Number value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	void eval(Number value, String roundingMode);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -501,14 +516,6 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	@Override
-	<E extends Enum<E>> boolean ne(E value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -613,10 +620,10 @@ public interface QNumeric extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
+	 * @model
 	 * @generated
 	 */
-	<E extends Enum<E>> QDatetime qDate(E format);
+	QDatetime qDate(DatetimeFormat format);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -875,7 +882,7 @@ public interface QNumeric extends QBufferedData {
 	 * @model arrayRequired="true"
 	 * @generated
 	 */
-	void xfoot(QArray<?> array);
+	void xfoot(QArray<? extends QNumeric> array);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -883,7 +890,7 @@ public interface QNumeric extends QBufferedData {
 	 * @model arrayRequired="true" roundingModeRequired="true"
 	 * @generated
 	 */
-	void xfoot(QArray<?> array, String roundingMode);
+	void xfoot(QArray<? extends QNumeric> array, String roundingMode);
 
 	/**
 	 * <!-- begin-user-doc -->

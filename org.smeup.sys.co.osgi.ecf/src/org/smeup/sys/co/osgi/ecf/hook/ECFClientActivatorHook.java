@@ -108,16 +108,16 @@ public class ECFClientActivatorHook {
 						
 			switch (event.getType()) {
 			case EndpointEvent.ADDED:
-				System.out.println("Added \t"+event.getEndpoint().getProperties().get("org.smeup.sys.rt.core.component"));
+				System.out.println("Added \t"+event.getEndpoint().getProperties().get("org.smeup.sys.rt.core.component.name"));
 				InternalEndPointEventListener.endpointDescriptions.add(event.getEndpoint());
 				break;
 			case EndpointEvent.MODIFIED:
 			case EndpointEvent.MODIFIED_ENDMATCH:
-				System.out.println("Modified \t"+event.getEndpoint().getProperties().get("org.smeup.sys.rt.core.component"));
+				System.out.println("Modified \t"+event.getEndpoint().getProperties().get("org.smeup.sys.rt.core.component.name"));
 				break;
 	
 			case EndpointEvent.REMOVED:
-				System.out.println("Removed \t"+event.getEndpoint().getProperties().get("org.smeup.sys.rt.core.component"));
+				System.out.println("Removed \t"+event.getEndpoint().getProperties().get("org.smeup.sys.rt.core.component.name"));
 				InternalEndPointEventListener.endpointDescriptions.remove(event.getEndpoint());
 				break;
 			}			

@@ -530,7 +530,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 			dataTermType = getDataTermType(getDefinition());
 			break;
 		case WRAPPER:
-			dataTermType = getDataTermType(((QWrapperDef) getDefinition()).getArgument());
+			dataTermType = getDataTermType(((QWrapperDef<?>) getDefinition()).getArgument());
 			break;
 		}
 
@@ -772,7 +772,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 				QCompoundDataDef<?, ?> compoundDataDef = null;
 				// TODO
 				if (getDefinition() instanceof QWrapperDef) {
-					QWrapperDef wrapperDef = (QWrapperDef) getDefinition();
+					QWrapperDef<?> wrapperDef = (QWrapperDef<?>) getDefinition();
 					compoundDataDef = (QCompoundDataDef<?, ?>) wrapperDef.getArgument();
 				} else
 					compoundDataDef = (QCompoundDataDef<?, ?>) getDefinition();

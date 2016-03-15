@@ -19,9 +19,13 @@ import javax.inject.Inject;
 
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.data.DataSpecial;
+import org.smeup.sys.il.data.DatetimeFormat;
+import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
@@ -40,8 +44,8 @@ import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Module;
-import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.annotation.Module.Scope;
+import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.esam.QDataSet;
@@ -79,8 +83,6 @@ public class RPJProgramSupport {
 	@Overlay(name = "*PGMSTATUS")
 	private BaseProgramStatusImpl programStatus;
 
-	@DataDef(dimension = 99)
-	public QArray<QIndicator> qIN;
 	@DataDef
 	public QIndicator qINOF;
 	@DataDef
@@ -162,6 +164,9 @@ public class RPJProgramSupport {
 	@DataDef(length = 1024)
 	public QCharacter qLDA;
 
+	@DataDef(dimension = 99, length = 1)
+	public QArray<QIndicator> qIN;
+
 	private QDataFiller dataFiller = QIntegratedLanguageDataFactory.eINSTANCE.createDataFiller();
 
 	public Object getProgramOwner() {
@@ -198,20 +203,28 @@ public class RPJProgramSupport {
 		}
 	}
 
-	public static enum Specials {
-		ALL, NULL, OFF, ON, ZERO, ZEROS, BLANK, BLANKS, LOVAL, HIVAL, OMIT, MS, YEARS, Y, MONTHS, M, DAYS, D, ISO;
+	public static class Specials {
 
-		public boolean asBoolean() {
-			return this.toString().equals("ON");
-		}
+		public static DataSpecial NULL = DataSpecial.NULL;
+		public static DataSpecial OMIT = DataSpecial.OMIT;
 
-		public boolean b() {
-			return this.asBoolean();
-		}
+		public static DataSpecial OFF = DataSpecial.OFF;
+		public static DataSpecial ON = DataSpecial.ON;
+		public static DataSpecial ZERO = DataSpecial.ZERO;
+		public static DataSpecial ZEROS = DataSpecial.ZEROS;
+		public static DataSpecial BLANK = DataSpecial.BLANK;
+		public static DataSpecial BLANKS = DataSpecial.BLANKS;
+		public static DataSpecial LOVAL = DataSpecial.LOVAL;
+		public static DataSpecial HIVAL = DataSpecial.HIVAL;
 
-		public String asString() {
-			return this.toString();
-		}
+		public static DatetimeFormat ISO = DatetimeFormat.ISO;
+		public static DatetimeFormat MS = DatetimeFormat.MILLISECONDS;
+		public static DatetimeFormat Y = DatetimeFormat.YEAR;
+		public static DatetimeFormat YEARS = DatetimeFormat.YEARS;
+		public static DatetimeFormat M = DatetimeFormat.MONTH;
+		public static DatetimeFormat MONTHS = DatetimeFormat.MONTHS;
+		public static DatetimeFormat D = DatetimeFormat.DAY;
+		public static DatetimeFormat DAYS = DatetimeFormat.DAYS;
 	}
 
 	private static enum LookupOperator {
@@ -337,11 +350,11 @@ public class RPJProgramSupport {
 	public void qCall(String program, QData[] parameters, QIndicator error) {
 
 		try {
-			if(error != null)
+			if (error != null)
 				error.eval(false);
-			programManager.callProgram(job,	 getProgram(program.trim()), parameters);
+			programManager.callProgram(job, getProgram(program.trim()), parameters);
 		} catch (Exception e) {
-			if(error != null)
+			if (error != null)
 				error.eval(true);
 			else
 				throw new OperatingSystemMessageException("00211", e.getMessage(), 40);
@@ -855,15 +868,15 @@ public class RPJProgramSupport {
 	}
 
 	/* Lookup */
-	public <BD extends QBufferedData> QNumeric qLookup(Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	public QNumeric qLookup(DataSpecial argument, QArray<?> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
 	}
 
-	public <BD extends QBufferedData> QNumeric qLookupEQ(BD argument, QList<BD> list, QDecimal startIndex, Integer numElements) {
+	public QNumeric qLookupEQ(QBufferedElement argument, QArray<?> list, QDecimal startIndex, Integer numElements) {
 		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
 	}
 
-	public <BD extends QBufferedData> QNumeric qLookup(BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
+	public QNumeric qLookup(QBufferedElement argument, QArray<?> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
 	}
 
@@ -875,35 +888,35 @@ public class RPJProgramSupport {
 		return qLookup(LookupOperator.EQ, argument.toString(), list, startIndex, numElements);
 	}
 
-	public QDecimal qLookuplt(Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookuplt(DataSpecial argument, QArray<?> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.LT, argument, list, startIndex, numElements);
 	}
 
-	public <BD extends QBufferedData> QDecimal qLookuplt(BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookuplt(QBufferedElement argument, QArray<?> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.LT, argument, list, startIndex, numElements);
 	}
 
-	public QDecimal qLookuple(Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookuple(DataSpecial argument, QArray<?> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.LE, argument, list, startIndex, numElements);
 	}
 
-	public <BD extends QBufferedData> QDecimal qLookuple(BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookuple(QBufferedElement argument, QArray<?> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.LE, argument, list, startIndex, numElements);
 	}
 
-	public QDecimal qLookupgt(Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookupgt(DataSpecial argument, QArray<?> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.GT, argument, list, startIndex, numElements);
 	}
 
-	public <BD extends QBufferedData> QDecimal qLookupgt(BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookupgt(QBufferedElement argument, QArray<?> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.GT, argument, list, startIndex, numElements);
 	}
 
-	public QDecimal qLookupge(Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookupge(DataSpecial argument, QArray<?> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.GE, argument, list, startIndex, numElements);
 	}
 
-	public <BD extends QBufferedData> QDecimal qLookupge(BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookupge(QBufferedElement argument, QArray<?> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.GE, argument, list, startIndex, numElements);
 	}
 
@@ -931,8 +944,8 @@ public class RPJProgramSupport {
 		return result;
 	}
 
-	private <BD extends QBufferedData> QDecimal qLookup(LookupOperator operator, BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
-
+	private QDecimal qLookup(LookupOperator operator, QBufferedElement argument, QArray<?> list, Integer startIndex, Integer numElements) {
+		
 		if (startIndex == null)
 			startIndex = 1;
 
@@ -955,10 +968,10 @@ public class RPJProgramSupport {
 		return result;
 	}
 
-	private <BD extends QBufferedData> QDecimal qLookup(LookupOperator operator, BD argument, QList<BD> list, QNumeric startIndex, Integer numElements) {
+	private QDecimal qLookup(LookupOperator operator, QBufferedElement argument, QArray<?> list, QNumeric startIndex, Integer numElements) {
 
 		if (startIndex == null)
-			startIndex = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true).plus(1);
+			throw new IntegratedLanguageDataRuntimeException("Unexpected condition wsoerbwe7r6vwert");
 
 		if (numElements == null)
 			numElements = list.capacity();
@@ -981,7 +994,7 @@ public class RPJProgramSupport {
 		return result;
 	}
 
-	private QDecimal qLookup(LookupOperator operator, Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	private QDecimal qLookup(LookupOperator operator, DataSpecial argument, QArray<?> list, Integer startIndex, Integer numElements) {
 
 		if (startIndex == null)
 			startIndex = 1;
@@ -1140,7 +1153,7 @@ public class RPJProgramSupport {
 	}
 
 	public QArray<QCharacter> qArray(String string) {
-
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

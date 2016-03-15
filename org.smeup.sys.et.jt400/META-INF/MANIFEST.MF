@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: As.UP Extern Tool JT400
+Bundle-Name: As.UP External Tool JT400
 Bundle-SymbolicName: org.smeup.sys.et.jt400
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com

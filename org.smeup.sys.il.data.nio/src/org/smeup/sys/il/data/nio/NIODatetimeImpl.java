@@ -15,23 +15,29 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
+import org.smeup.sys.il.data.BufferedElementType;
+import org.smeup.sys.il.data.DataSpecial;
+import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.def.TimeFormat;
 
-public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
+public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime {
 
 	private static final long serialVersionUID = 1L;
-	//protected static final byte INIT = (byte) -16;
 	protected static final byte INIT = (byte) 64;
+	private static GregorianCalendar LOVAL = new GregorianCalendar(2039,12,31);
+	private static GregorianCalendar HIVAL = new GregorianCalendar(1940,01,01);
 
 	private DatetimeType _type;
 	private DateFormat _dateFormat;
@@ -57,6 +63,15 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 			this._timeFormat = timeFormat;
 	}
 
+	@Override
+	public boolean isEmpty() {
+
+		for (byte b : asBytes())
+			if (b != getFiller())
+				return false;
+		return true;
+	}
+	
 	@Override
 	public int getLength() {
 
@@ -114,36 +129,6 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 	}
 
 	@Override
-	public <E extends Enum<E>> void move(E value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public <E extends Enum<E>> void move(E value, boolean clear) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public <E extends Enum<E>> void movel(E value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public <E extends Enum<E>> void movel(E value, boolean clear) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public <E extends Enum<E>> void eval(E value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void eval(QDatetime value) {
 		movel(value, true);
 	}
@@ -154,45 +139,8 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 	}
 
 	@Override
-	public <E extends Enum<E>> boolean eq(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean ge(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean gt(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean le(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean lt(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean ne(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public long asTime() {
-		// TODO Auto-generated method stub
-		return 0;
+		return asDate().getTime();
 	}
 
 	@Override
@@ -201,107 +149,91 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 	}
 
 	@Override
-	public <E extends Enum<E>> void adddur(int duration, E format, QDatetime value) {
+	public void adddur(int duration, DatetimeFormat format, QDatetime value) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public <E extends Enum<E>> void adddur(QNumeric duration, E format, QDatetime value) {
+	public void adddur(QNumeric duration, DatetimeFormat format, QDatetime value) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public <E extends Enum<E>> void adddur(int duration, E format) {
+	public void adddur(int duration, DatetimeFormat format) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public <E extends Enum<E>> void adddur(QNumeric duration, E format) {
+	public void adddur(QNumeric duration, DatetimeFormat format) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public <E extends Enum<E>> void subdur(int duration, E format, QDatetime value) {
+	public void subdur(int duration, DatetimeFormat format, QDatetime value) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public <E extends Enum<E>> void subdur(QNumeric duration, E format, QDatetime value) {
+	public void subdur(QNumeric duration, DatetimeFormat format, QDatetime value) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public <E extends Enum<E>> void subdur(int duration, E format) {
+	public void subdur(int duration, DatetimeFormat format) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public <E extends Enum<E>> void subdur(QNumeric duration, E format) {
+	public void subdur(QNumeric duration, DatetimeFormat format) {
 		// TODO Auto-generated method stub
 
 	}
-	
-	@Override
-	public <E extends Enum<E>> QDatetime qDate(E format) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public <E extends Enum<E>> QNumeric qDiff(QDatetime value, E format) {
+	public QNumeric qDiff(QDatetime value, DatetimeFormat format) {
 
 		QDecimal number = getDataContext().getDataFactory().createDecimal(10, 0, DecimalType.ZONED, true);
 
 		long diff = this.asDate().getTime() - value.asDate().getTime();
 		
-		switch(format.name()){
-		case "MS":
-		case "MSECONDS":
-			number.eval(diff);
-			break;
-		case "S":
-		case "SECONDS":
-			number.eval(diff / 1000);
-			break;
-		case "MN":
-		case "MINUTES":
-			number.eval(diff / (60 * 1000));
-			break;
-		case "H":
-		case "HOURS":
-			number.eval(diff / (60 * 60 * 1000));
-			break;
-		case "D":
-		case "DAYS":
+		switch (format) {
+		case DAY:
+		case DAYS:
 			number.eval(diff / (24 * 60 * 60 * 1000));
 			break;
-		case "M":
-		case "MONTHS":
-			// TODO
+		case ISO:
+			break;
+		case MILLISECONDS:
+			number.eval(diff);
+			break;
+		case SECONDS:
+			number.eval(diff / 1000);
+			break;
+		case MINUTES:
+			number.eval(diff / (60 * 1000));
+			break;
+		case HOURS:
+			number.eval(diff / (60 * 60 * 1000));
+			break;
+		case MONTH:
+		case MONTHS:
 			number.eval(diff / (30 * 24 * 60 * 60 * 1000));
 			break;
-		case "Y":
-		case "YEARS":
-			// TODO
+		case YEAR:
+		case YEARS:
 			number.eval(diff / (365 * 30 * 24 * 60 * 60 * 1000));
 			break;
 		}
 		
 		return number;
 		
-	}
-
-	@Override
-	public <E extends Enum<E>> QNumeric qSubdt(E portion) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -317,19 +249,12 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 	}
 
 	@Override
-	public boolean eq(String value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public void accept(QDataVisitor visitor) {
 		visitor.visit(this);
 	}
 
 	@Override
-	public String toString() {		
-		//return getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(asDate());
+	public String toString() {
 		return new String(asBytes(), getDataContext().getCharset());
 	}
 
@@ -444,5 +369,105 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 		} 		
 
 		return format;
+	}
+
+	@Override
+	protected void _clear() {
+		String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(new GregorianCalendar(0001,01,01));
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), result.getBytes(getDataContext().getCharset()), true, getFiller());
+	}
+
+	@Override
+	protected void _write(byte[] value) {
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value, true, getFiller());
+	}
+
+	@Override
+	protected void _fill(byte[] value, boolean maxLength) {
+		NIOBufferHelper.fill(getBuffer(), getPosition(), getLength(), value);
+	}
+
+	@Override
+	protected void _move(byte[] value, boolean clear) {
+		NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value, clear, getFiller());
+	}
+
+	@Override
+	protected void _movel(byte[] value, boolean clear) {
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value, clear, getFiller());
+	}
+
+	@Override
+	protected byte[] _toBytes() {
+		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
+	}
+
+	protected NIOBufferedDataImpl _getTemporaryDatax() {
+		NIODataContextImpl nioDataContextImpl = (NIODataContextImpl)getDataContext();
+		return nioDataContextImpl.getTemporaryDatetimes(_type, _dateFormat, _timeFormat);
+	}
+
+	@Override
+	public BufferedElementType getBufferedElementType() {
+		return BufferedElementType.DATETIME;
+	}
+
+	@Override
+	protected byte[] _toBytes(DataSpecial value) {
+
+		byte[] bytes = null;
+		switch (value) {
+		case LOVAL: {
+			String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(LOVAL);
+			bytes = result.getBytes(getDataContext().getCharset());
+			break;
+		}
+		case HIVAL: {
+			String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(HIVAL);
+			bytes = result.getBytes(getDataContext().getCharset());
+			break;
+		}
+		case BLANK:
+		case BLANKS:
+		case OFF:
+		case ZERO:
+		case ZEROS: 
+		case ON:
+		case NULL:
+		case OMIT:
+			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237rvbwe87vb9stf");
+		}
+
+		return bytes;
+	}
+
+	@Override
+	protected byte[] _toBytes(String value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected byte[] _toBytes(QString value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected byte[] _toBytes(Number value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected byte[] _toBytes(QNumeric value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected byte[] _toBytes(QDatetime value) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

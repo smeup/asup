@@ -93,7 +93,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryDataDef()
 	 * @generated
 	 */
-	int UNARY_DATA_DEF = 31;
+	int UNARY_DATA_DEF = 32;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -601,6 +601,34 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	int COMPOUND_DATA_DEF_FEATURE_COUNT = DATA_DEF_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.UnaryBufferedDataDefImpl <em>Unary Buffered Data Def</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.def.impl.UnaryBufferedDataDefImpl
+	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryBufferedDataDef()
+	 * @generated
+	 */
+	int UNARY_BUFFERED_DATA_DEF = 30;
+
+	/**
+	 * The feature id for the '<em><b>Formulas</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_BUFFERED_DATA_DEF__FORMULAS = UNARY_DATA_DEF__FORMULAS;
+
+	/**
+	 * The number of structural features of the '<em>Unary Buffered Data Def</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_BUFFERED_DATA_DEF_FEATURE_COUNT = UNARY_DATA_DEF_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.DataAreaDefImpl <em>Data Area Def</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -617,7 +645,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_AREA_DEF__FORMULAS = UNARY_ATOMIC_BUFFERED_DATA_DEF__FORMULAS;
+	int DATA_AREA_DEF__FORMULAS = UNARY_BUFFERED_DATA_DEF__FORMULAS;
 
 	/**
 	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -626,7 +654,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_AREA_DEF__ARGUMENT = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 0;
+	int DATA_AREA_DEF__ARGUMENT = UNARY_BUFFERED_DATA_DEF_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>External Name</b></em>' attribute.
@@ -635,7 +663,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_AREA_DEF__EXTERNAL_NAME = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 1;
+	int DATA_AREA_DEF__EXTERNAL_NAME = UNARY_BUFFERED_DATA_DEF_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Data Area Def</em>' class.
@@ -644,7 +672,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_AREA_DEF_FEATURE_COUNT = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 2;
+	int DATA_AREA_DEF_FEATURE_COUNT = UNARY_BUFFERED_DATA_DEF_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.UnaryCompoundDataDefImpl <em>Unary Compound Data Def</em>}' class.
@@ -654,7 +682,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryCompoundDataDef()
 	 * @generated
 	 */
-	int UNARY_COMPOUND_DATA_DEF = 30;
+	int UNARY_COMPOUND_DATA_DEF = 31;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -1274,20 +1302,12 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCROLLER_DEF__ARGUMENT = MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT;
-
-	/**
-	 * The feature id for the '<em><b>Order</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCROLLER_DEF__ORDER = MULTIPLE_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 0;
+	int SCROLLER_DEF__ARGUMENT = MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT;
 
 	/**
 	 * The number of structural features of the '<em>Scroller Def</em>' class.
@@ -1295,7 +1315,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCROLLER_DEF_FEATURE_COUNT = MULTIPLE_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 1;
+	int SCROLLER_DEF_FEATURE_COUNT = MULTIPLE_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.StringDefImpl <em>String Def</em>}' class.
@@ -1398,21 +1418,12 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	int STROLLER_DEF__LENGTH = MULTIPLE_COMPOUND_DATA_DEF_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Order</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STROLLER_DEF__ORDER = MULTIPLE_COMPOUND_DATA_DEF_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Stroller Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STROLLER_DEF_FEATURE_COUNT = MULTIPLE_COMPOUND_DATA_DEF_FEATURE_COUNT + 2;
+	int STROLLER_DEF_FEATURE_COUNT = MULTIPLE_COMPOUND_DATA_DEF_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.WrapperDefImpl <em>Wrapper Def</em>}' class.
@@ -1422,7 +1433,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getWrapperDef()
 	 * @generated
 	 */
-	int WRAPPER_DEF = 32;
+	int WRAPPER_DEF = 33;
 
 	/**
 	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -1451,7 +1462,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getBinaryType()
 	 * @generated
 	 */
-	int BINARY_TYPE = 33;
+	int BINARY_TYPE = 34;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.DataDefType
@@ -1462,7 +1473,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDataDefType()
 	 * @generated
 	 */
-	int DATA_DEF_TYPE = 34;
+	int DATA_DEF_TYPE = 35;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.DatetimeType <em>Datetime Type</em>}' enum.
@@ -1471,7 +1482,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDatetimeType()
 	 * @generated
 	 */
-	int DATETIME_TYPE = 35;
+	int DATETIME_TYPE = 36;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.DateFormat
@@ -1482,7 +1493,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDateFormat()
 	 * @generated
 	 */
-	int DATE_FORMAT = 36;
+	int DATE_FORMAT = 37;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.DecimalType
@@ -1493,7 +1504,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDecimalType()
 	 * @generated
 	 */
-	int DECIMAL_TYPE = 37;
+	int DECIMAL_TYPE = 38;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.FloatingType <em>Floating Type</em>}' enum.
@@ -1502,7 +1513,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getFloatingType()
 	 * @generated
 	 */
-	int FLOATING_TYPE = 38;
+	int FLOATING_TYPE = 39;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.TimeFormat <em>Time Format</em>}' enum.
@@ -1512,7 +1523,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getTimeFormat()
 	 * @generated
 	 */
-	int TIME_FORMAT = 39;
+	int TIME_FORMAT = 40;
 
 	/**
 	 * Returns the meta object for class '
@@ -2040,17 +2051,6 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	EClass getScrollerDef();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.def.QScrollerDef#getOrder <em>Order</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Order</em>'.
-	 * @see org.smeup.sys.il.data.def.QScrollerDef#getOrder()
-	 * @see #getScrollerDef()
-	 * @generated
-	 */
-	EAttribute getScrollerDef_Order();
-
-	/**
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.data.def.QStringDef <em>String Def</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -2081,17 +2081,6 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	EAttribute getStrollerDef_Length();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.def.QStrollerDef#getOrder <em>Order</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Order</em>'.
-	 * @see org.smeup.sys.il.data.def.QStrollerDef#getOrder()
-	 * @see #getStrollerDef()
-	 * @generated
-	 */
-	EAttribute getStrollerDef_Order();
-
-	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.data.def.QUnaryAtomicDataDef <em>Unary Atomic Data Def</em>}'.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -2110,6 +2099,16 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getUnaryAtomicBufferedDataDef();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.def.QUnaryBufferedDataDef <em>Unary Buffered Data Def</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Unary Buffered Data Def</em>'.
+	 * @see org.smeup.sys.il.data.def.QUnaryBufferedDataDef
+	 * @generated
+	 */
+	EClass getUnaryBufferedDataDef();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.data.def.QUnaryCompoundDataDef <em>Unary Compound Data Def</em>}'.
@@ -2686,14 +2685,6 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		EClass SCROLLER_DEF = eINSTANCE.getScrollerDef();
 
 		/**
-		 * The meta object literal for the '<em><b>Order</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SCROLLER_DEF__ORDER = eINSTANCE.getScrollerDef_Order();
-
-		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.def.impl.StringDefImpl <em>String Def</em>}' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
@@ -2721,14 +2712,6 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		EAttribute STROLLER_DEF__LENGTH = eINSTANCE.getStrollerDef_Length();
 
 		/**
-		 * The meta object literal for the '<em><b>Order</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute STROLLER_DEF__ORDER = eINSTANCE.getStrollerDef_Order();
-
-		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.def.impl.UnaryAtomicDataDefImpl <em>Unary Atomic Data Def</em>}' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
@@ -2747,6 +2730,16 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * @generated
 		 */
 		EClass UNARY_ATOMIC_BUFFERED_DATA_DEF = eINSTANCE.getUnaryAtomicBufferedDataDef();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.def.impl.UnaryBufferedDataDefImpl <em>Unary Buffered Data Def</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.def.impl.UnaryBufferedDataDefImpl
+		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryBufferedDataDef()
+		 * @generated
+		 */
+		EClass UNARY_BUFFERED_DATA_DEF = eINSTANCE.getUnaryBufferedDataDef();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.def.impl.UnaryCompoundDataDefImpl <em>Unary Compound Data Def</em>}' class.

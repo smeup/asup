@@ -38,19 +38,16 @@ public class BaseUnitTestRunnerImpl extends UnitTestRunnerImpl {
 
 	@Override
 	public QTestResult call() {
-		
+
 		List<QTestRunnerListener> listeners = getListeners();
-		
-			
 
 		Class<?> testClass = context.loadClass(classURI);
 		if (testClass == null)
 			throw new DevelopmentKitTestRuntimeException("Invalid runner: " + classURI);
-		
-		//Notify test start
-		for (QTestRunnerListener listener: listeners){
+
+		// Notify test start
+		for (QTestRunnerListener listener : listeners)
 			listener.testStarted(testClass.getName());
-		}
 
 		// result
 		QTestResult testResult = QDevelopmentKitTestFactory.eINSTANCE.createTestResult();
@@ -61,40 +58,28 @@ public class BaseUnitTestRunnerImpl extends UnitTestRunnerImpl {
 
 		QTestAsserter testAsserter = new BaseTestAsserterImpl(testResult, getListeners());
 		context.set(QTestAsserter.class, testAsserter);
+		context.set(QTestResult.class, testResult);
 		context.set(QTestRunner.class, this);
 
 		Object testCase = context.make(testClass);
-		if(testCase == null)
-			"".toCharArray();
-		
+
 		// Call test initialization
-		try {
-			context.invoke(testCase, TestStarting.class);
-		} catch (Exception exc) {
-			testResult.setFailed(true);
-			return testResult;
-		}
+		context.invoke(testCase, TestStarting.class);
+		
 		// Call test procedure
 		long start = System.currentTimeMillis();
-		try {
-			testAsserter.resetTime();
-			context.invoke(testCase, TestStarted.class);
-		} catch (Exception exc) {
-			testResult.setFailed(true);
-		}
+		testAsserter.resetTime();
+		context.invoke(testCase, TestStarted.class);
 		long end = System.currentTimeMillis();
 		testResult.setTime(end - start);
 
 		// Call test destroyer
+		context.invoke(testCase, TestStopped.class);
 
-		if (testCase.getClass().getAnnotation(TestStopped.class) != null)
-			context.invoke(testCase, TestStopped.class);
-		
-		//Notify test start
-		for (QTestRunnerListener listener: listeners){
+		// Notify test start
+		for (QTestRunnerListener listener : listeners)
 			listener.testStopped(testClass.getName(), testResult);
-		}
-		
+
 		return testResult;
 	}
 

@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.il.data.QArray;
-import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QStroller;
@@ -219,7 +219,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public <D extends QBufferedData> QDataAreaDef<D> createDataAreaDef() {
+	public <D extends QBufferedElement> QDataAreaDef<D> createDataAreaDef() {
 		DataAreaDefImpl<D> dataAreaDef = new DataAreaDefImpl<D>();
 		return dataAreaDef;
 	}
@@ -329,7 +329,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	 * @generated
 	 */
 	@Override
-	public <D extends QScroller<QBufferedData>> QScrollerDef<D> createScrollerDef() {
+	public <D extends QScroller<?>> QScrollerDef<D> createScrollerDef() {
 		ScrollerDefImpl<D> scrollerDef = new ScrollerDefImpl<D>();
 		return scrollerDef;
 	}

@@ -247,12 +247,12 @@ public class E4ApplicationStarter {
 	private void registerService(QApplication application, QApplicationComponent component, QContext componentContext, String name, Object service, Dictionary<String, Object> properties,
 			boolean remoteExport) {
 
+		// service properties
 		properties.put("org.smeup.sys.rt.core.application.name", application.getName());
-		properties.put("org.smeup.sys.rt.core.application.port", application.getPort());
-		
-		// Register component as service property
-		properties.put("org.smeup.sys.rt.core.component", component.getName().toLowerCase());
+		properties.put("org.smeup.sys.rt.core.application.port", application.getPort());	
+		properties.put("org.smeup.sys.rt.core.component.name", component.getName());
 
+		// context properties
 		QContext contextService = componentContext.createChildContext(name);
 		contextService.set("org.smeup.sys.rt.core.service.name", name);
 		contextService.set("org.smeup.sys.rt.core.service.object", service);
@@ -267,6 +267,7 @@ public class E4ApplicationStarter {
 		for (Object hook : loadHooks(component))
 			contextService.invoke(hook, ServiceRegistering.class);
 
+		// singleton
 		if (service instanceof QSingleton<?>) {
 			Class<?> klass = service.getClass();
 			try {
@@ -288,7 +289,7 @@ public class E4ApplicationStarter {
 		contextService.invoke(service, ServiceRegistering.class);
 		bundleContext.registerService(name, service, properties);
 		
-		// prevent external injection
+		// prevent remote injection
 		application.getContext().set(name, service);
 		
 		contextService.close();

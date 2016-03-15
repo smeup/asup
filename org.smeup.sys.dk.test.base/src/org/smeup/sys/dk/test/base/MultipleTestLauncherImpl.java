@@ -35,7 +35,6 @@ public abstract class MultipleTestLauncherImpl extends BaseTestLauncherImpl {
 		Collection<Class<?>> testClasses = getTestClassList(object);	
 		
 		for (Class<?> testClass: testClasses){
-						
 			QTestRunner testRunner = testManager.prepareRunner(context, testClass);
 			QTestResult testResult;
 			try {

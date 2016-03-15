@@ -9,7 +9,7 @@ package org.smeup.sys.il.data;
 
 import java.util.List;
 
-public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDelegator {
+public abstract class QDataStructWrapper implements QDataStruct, QBufferedElementDelegator {
 
 	private static final long serialVersionUID = 1L;
 
@@ -41,8 +41,8 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public QDataStruct cat(QString factor1) {
-		return (QDataStruct) delegate.cat(factor1);
+	public void cat(QString factor1) {
+		delegate.cat(factor1);
 	}
 
 	@Override
@@ -66,8 +66,8 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public QDataStruct cat(String factor1) {
-		return (QDataStruct) delegate.cat(factor1);
+	public void cat(String factor1) {
+		delegate.cat(factor1);
 	}
 
 	@Override
@@ -206,12 +206,17 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public <E extends Enum<E>> boolean eq(E value) {
+	public boolean eq(DataSpecial value) {
 		return delegate.eq(value);
 	}
 
 	@Override
 	public boolean eq(QString value) {
+		return delegate.eq(value);
+	}
+
+	@Override
+	public boolean eq(QBufferedElement value) {
 		return delegate.eq(value);
 	}
 
@@ -236,8 +241,9 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public <E extends Enum<E>> void eval(E value) {
+	public QBufferedData eval(DataSpecial value) {
 		delegate.eval(value);
+		return this;
 	}
 
 	@Override
@@ -256,7 +262,7 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public <E extends Enum<E>> boolean ge(E value) {
+	public boolean ge(DataSpecial value) {
 		return delegate.ge(value);
 	}
 
@@ -291,7 +297,7 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public <E extends Enum<E>> boolean gt(E value) {
+	public boolean gt(DataSpecial value) {
 		return delegate.gt(value);
 	}
 
@@ -316,7 +322,7 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public <E extends Enum<E>> boolean le(E value) {
+	public boolean le(DataSpecial value) {
 		return delegate.le(value);
 	}
 
@@ -336,7 +342,7 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public <E extends Enum<E>> boolean lt(E value) {
+	public boolean lt(DataSpecial value) {
 		return delegate.lt(value);
 	}
 
@@ -351,27 +357,12 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public void move(boolean value) {
+	public void move(DataSpecial value) {
 		delegate.move(value);
 	}
 
 	@Override
-	public <E extends Enum<E>> void move(E value) {
-		delegate.move(value);
-	}
-
-	@Override
-	public <E extends Enum<E>> void move(E value, boolean clear) {
-		delegate.move(value, clear);
-	}
-
-	@Override
-	public void move(int value) {
-		delegate.move(value);
-	}
-
-	@Override
-	public void move(int value, boolean clear) {
+	public void move(DataSpecial value, boolean clear) {
 		delegate.move(value, clear);
 	}
 
@@ -384,17 +375,7 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	public void move(Number value, boolean clear) {
 		delegate.move(value);
 	}
-
-	@Override
-	public void move(QBufferedData value) {
-		delegate.move(value);
-	}
-
-	@Override
-	public void move(QBufferedData value, boolean clear) {
-		delegate.move(value, clear);
-	}
-
+	
 	@Override
 	public void move(String value) {
 		delegate.move(value);
@@ -406,37 +387,12 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public void movea(QArray<?> value) {
-		delegate.movea(value);
-	}
-
-	@Override
-	public void movea(QArray<?> value, boolean clear) {
-		delegate.movea(value, clear);
-	}
-
-	@Override
-	public void movel(boolean value) {
+	public void movel(DataSpecial value) {
 		delegate.movel(value);
 	}
 
 	@Override
-	public <E extends Enum<E>> void movel(E value) {
-		delegate.movel(value);
-	}
-
-	@Override
-	public <E extends Enum<E>> void movel(E value, boolean clear) {
-		delegate.movel(value, clear);
-	}
-
-	@Override
-	public void movel(int value) {
-		delegate.movel(value);
-	}
-
-	@Override
-	public void movel(int value, boolean clear) {
+	public void movel(DataSpecial value, boolean clear) {
 		delegate.movel(value, clear);
 	}
 
@@ -451,16 +407,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public void movel(QBufferedData value) {
-		delegate.movel(value);
-	}
-
-	@Override
-	public void movel(QBufferedData value, boolean clear) {
-		delegate.movel(value, clear);
-	}
-
-	@Override
 	public void movel(String value) {
 		delegate.movel(value);
 	}
@@ -471,7 +417,7 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public <E extends Enum<E>> boolean ne(E value) {
+	public boolean ne(DataSpecial value) {
 		return delegate.ne(value);
 	}
 
@@ -560,8 +506,9 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public void eval(byte value) {
+	public QBufferedData eval(byte value) {
 		delegate.eval(value);
+		return this;
 	}
 
 	@Override
@@ -577,16 +524,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	@Override
 	public boolean le(QHexadecimal value) {
 		return delegate.le(value);
-	}
-
-	@Override
-	public boolean eq(QBufferedData value) {
-		return delegate.eq(value);
-	}
-
-	@Override
-	public boolean ne(QBufferedData value) {
-		return delegate.ne(value);
 	}
 
 	@Override
@@ -849,7 +786,7 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 		return delegate.qScan(argument);
 	}
 
-	public <E extends Enum<E>> QDatetime qDate(E format) {
+	public QDatetime qDate(DatetimeFormat format) {
 		return delegate.qDate(format);
 	}
 	
@@ -928,21 +865,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 
 	public boolean lt(byte value) {
 		return delegate.lt(value);
-	}
-	public void movea(QArray<?> value, int startIndex) {
-		delegate.movea(value, startIndex);
-	}
-
-	public void movea(QArray<?> value, QNumeric startIndex) {
-		delegate.movea(value, startIndex);
-	}
-
-	public void movea(QArray<?> value, int startIndex, boolean clear) {
-		delegate.movea(value, startIndex, clear);
-	}
-
-	public void movea(QArray<?> value, QNumeric startIndex, boolean clear) {
-		delegate.movea(value, startIndex, clear);
 	}
 
 	@Override
@@ -1099,8 +1021,9 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 		return delegate.eq(value);
 	}
 
-	public void eval(QDataFiller value) {
+	public QBufferedData eval(QDataFiller value) {
 		delegate.eval(value);
+		return this;
 	}
 
 	public boolean ge(QDataFiller value) {
@@ -1123,36 +1046,87 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 		return delegate.ne(value);
 	}
 
-	@Override
-	public void fill(QBufferedData value) {
-		delegate.fill(value);
-	}
-
-	public boolean ge(QBufferedData value) {
-		return delegate.ge(value);
-	}
-
-	public boolean gt(QBufferedData value) {
-		return delegate.gt(value);
-	}
-
-	public boolean le(QBufferedData value) {
-		return delegate.le(value);
-	}
-
-	public boolean lt(QBufferedData value) {
-		return delegate.lt(value);
-	}
-
 	public boolean isStoreOwner() {
 		return delegate.isStoreOwner();
 	}
 
-	public void move(boolean value, boolean clear) {
+	public BufferedElementType getBufferedElementType() {
+		return delegate.getBufferedElementType();
+	}
+
+	public void move(QString value) {
+		delegate.move(value);
+	}
+
+	public void move(QString value, boolean clear) {
 		delegate.move(value, clear);
 	}
 
-	public void movel(boolean value, boolean clear) {
+	public void move(QNumeric value) {
+		delegate.move(value);
+	}
+
+	public void move(QNumeric value, boolean clear) {
+		delegate.move(value, clear);
+	}
+
+	public void movel(QString value) {
+		delegate.movel(value);
+	}
+
+	public void movel(QString value, boolean clear) {
 		delegate.movel(value, clear);
+	}
+
+	public void movel(QNumeric value) {
+		delegate.movel(value);
+	}
+
+	public void movel(QNumeric value, boolean clear) {
+		delegate.movel(value, clear);
+	}
+
+	public void movea(QArray<? extends QString> value) {
+		delegate.movea(value);
+	}
+
+	public void movea(QArray<? extends QString> value, boolean clear) {
+		delegate.movea(value, clear);
+	}
+
+	public void movea(QArray<? extends QString> value, int startIndex) {
+		delegate.movea(value, startIndex);
+	}
+
+	public void movea(QArray<? extends QString> value, int startIndex, boolean clear) {
+		delegate.movea(value, startIndex, clear);
+	}
+
+	public void movea(QArray<? extends QString> value, QNumeric startIndex) {
+		delegate.movea(value, startIndex);
+	}
+
+	public void movea(QArray<? extends QString> value, QNumeric startIndex, boolean clear) {
+		delegate.movea(value, startIndex, clear);
+	}
+
+	public void move(QBufferedElement value) {
+		delegate.move(value);
+	}
+
+	public void move(QBufferedElement value, boolean clear) {
+		delegate.move(value, clear);
+	}
+
+	public void movel(QBufferedElement value) {
+		delegate.movel(value);
+	}
+
+	public void movel(QBufferedElement value, boolean clear) {
+		delegate.movel(value, clear);
+	}
+
+	public boolean isVarying() {
+		return delegate.isVarying();
 	}
 }

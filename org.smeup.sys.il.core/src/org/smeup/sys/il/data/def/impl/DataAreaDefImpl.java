@@ -12,12 +12,12 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.def.DataDefType;
-import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.def.QDataAreaDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+import org.smeup.sys.il.data.def.QUnaryBufferedDataDef;
 import org.smeup.sys.il.data.def.QWrapperDef;
 
 /**
@@ -34,7 +34,7 @@ import org.smeup.sys.il.data.def.QWrapperDef;
  *
  * @generated
  */
-public class DataAreaDefImpl<D extends QBufferedData> extends UnaryAtomicBufferedDataDefImpl<D> implements QDataAreaDef<D> {
+public class DataAreaDefImpl<D extends QBufferedElement> extends UnaryBufferedDataDefImpl<D> implements QDataAreaDef<D> {
 	/**
 	 * 
 	 */
@@ -47,8 +47,7 @@ public class DataAreaDefImpl<D extends QBufferedData> extends UnaryAtomicBuffere
 	 * @generated
 	 * @ordered
 	 */
-	protected QBufferedDataDef<?> argument;
-
+	protected QUnaryBufferedDataDef<D> argument;
 	/**
 	 * The default value of the '{@link #getExternalName() <em>External Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -92,7 +91,7 @@ public class DataAreaDefImpl<D extends QBufferedData> extends UnaryAtomicBuffere
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QBufferedDataDef<?> getArgument() {
+	public QUnaryBufferedDataDef<D> getArgument() {
 		return argument;
 	}
 
@@ -101,8 +100,8 @@ public class DataAreaDefImpl<D extends QBufferedData> extends UnaryAtomicBuffere
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetArgument(QBufferedDataDef<?> newArgument, NotificationChain msgs) {
-		QBufferedDataDef<?> oldArgument = argument;
+	public NotificationChain basicSetArgument(QUnaryBufferedDataDef<D> newArgument, NotificationChain msgs) {
+		QUnaryBufferedDataDef<D> oldArgument = argument;
 		argument = newArgument;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT, oldArgument, newArgument);
@@ -116,7 +115,7 @@ public class DataAreaDefImpl<D extends QBufferedData> extends UnaryAtomicBuffere
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setArgument(QBufferedDataDef<?> newArgument) {
+	public void setArgument(QUnaryBufferedDataDef<D> newArgument) {
 		if (newArgument != argument) {
 			NotificationChain msgs = null;
 			if (argument != null)
@@ -186,11 +185,12 @@ public class DataAreaDefImpl<D extends QBufferedData> extends UnaryAtomicBuffere
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT:
-				setArgument((QBufferedDataDef<?>)newValue);
+				setArgument((QUnaryBufferedDataDef<D>)newValue);
 				return;
 			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__EXTERNAL_NAME:
 				setExternalName((String)newValue);
@@ -208,7 +208,7 @@ public class DataAreaDefImpl<D extends QBufferedData> extends UnaryAtomicBuffere
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT:
-				setArgument((QBufferedDataDef<?>)null);
+				setArgument((QUnaryBufferedDataDef<D>)null);
 				return;
 			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__EXTERNAL_NAME:
 				setExternalName(EXTERNAL_NAME_EDEFAULT);

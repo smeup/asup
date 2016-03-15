@@ -32,7 +32,7 @@ import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
-import org.smeup.sys.il.data.QBufferedDataDelegator;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataArea;
@@ -67,7 +67,6 @@ import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.def.FloatingType;
 import org.smeup.sys.il.data.def.QAdapterDef;
 import org.smeup.sys.il.data.def.QArrayDef;
-import org.smeup.sys.il.data.def.QAtomicDataDef;
 import org.smeup.sys.il.data.def.QBinaryDef;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
@@ -89,6 +88,7 @@ import org.smeup.sys.il.data.def.QScrollerDef;
 import org.smeup.sys.il.data.def.QStrollerDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
+import org.smeup.sys.il.data.def.QUnaryBufferedDataDef;
 import org.smeup.sys.il.data.def.TimeFormat;
 import org.smeup.sys.il.data.def.impl.EnumDefImpl;
 import org.smeup.sys.il.data.def.impl.ListDefImpl;
@@ -122,23 +122,18 @@ public class NIODataFactoryImpl implements QDataFactory {
 		// array
 		if (dataDef instanceof QArrayDef) {
 			QArrayDef<?> arrayDef = (QArrayDef<?>) dataDef;
-			QUnaryAtomicDataDef<QBufferedData> argument = (QUnaryAtomicDataDef<QBufferedData>) arrayDef.getArgument();
-
-			QBufferedData bufferedData = createArray(argument, arrayDef.getDimension(), arrayDef.getOrder(), initialize);
+			QBufferedData bufferedData = createArray(arrayDef.getArgument(), arrayDef.getDimension(), arrayDef.getOrder(), initialize);
 			data = (D) bufferedData;
 		}
 		// scroller
 		else if (dataDef instanceof QScrollerDef<?>) {
 			QScrollerDef<?> scrollerDef = (QScrollerDef<?>) dataDef;
-			QUnaryAtomicBufferedDataDef<?> argument = scrollerDef.getArgument();
-
-			data = (D) createScroller(argument, scrollerDef.getDimension(), scrollerDef.getOrder(), initialize);
+			data = (D) createScroller(scrollerDef.getArgument(), scrollerDef.getDimension(), initialize);
 		}
 		// dataStroller
 		else if (dataDef instanceof QStrollerDef<?>) {
 			QStrollerDef<?> strollerDef = (QStrollerDef<?>) dataDef;
-
-			data = (D) createStroller(null, strollerDef, strollerDef.getDimension(), strollerDef.getOrder(), initialize);
+			data = (D) createStroller(null, strollerDef, strollerDef.getDimension(), initialize);
 		}
 		// list
 		else if (dataDef instanceof QListDef<?>) {
@@ -206,7 +201,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@SuppressWarnings("unchecked")
-	private <E extends Enum<E>, BD extends QBufferedData, D extends QData> D _createData(QDataDef<D> dataDef, boolean initialize) {
+	private <E extends Enum<E>, BD extends QBufferedElement, D extends QData> D _createData(QDataDef<D> dataDef, boolean initialize) {
 
 		QEnumDef<E, BD> enumDef = (QEnumDef<E, BD>) dataDef;
 		return (D) createEnum(enumDef.getKlass(), createData(enumDef.getDelegate(), false), initialize);
@@ -252,9 +247,9 @@ public class NIODataFactoryImpl implements QDataFactory {
 		// dataArea
 		else if (QDataArea.class.isAssignableFrom(klass)) {
 
-			QDataAreaDef<?> dataAreaDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createDataAreaDef();
+			QDataAreaDef<QBufferedElement> dataAreaDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createDataAreaDef();
 			// argument
-			QBufferedDataDef<?> argument = (QBufferedDataDef<?>) createDataDef(arguments.get(0), annotations);
+			QUnaryBufferedDataDef<QBufferedElement> argument = (QUnaryBufferedDataDef<QBufferedElement>) createDataDef(arguments.get(0), annotations);
 			dataAreaDef.setArgument(argument);
 
 			dataDef = dataAreaDef;
@@ -299,12 +294,12 @@ public class NIODataFactoryImpl implements QDataFactory {
 		// enum
 		else if (QEnum.class.isAssignableFrom(klass)) {
 
-			class MyDef<E extends Enum<E>> extends EnumDefImpl<E, QBufferedData> {
+			class MyDef<E extends Enum<E>> extends EnumDefImpl<E, QBufferedElement> {
 				private static final long serialVersionUID = 1L;
 
 				public MyDef(Class<E> klass, List<Annotation> annotations, Type delegate) {
 
-					setDelegate((QBufferedDataDef<QBufferedData>) createDataDef(delegate, annotations));
+					setDelegate((QBufferedDataDef<QBufferedElement>) createDataDef(delegate, annotations));
 					setKlass(klass);
 				}
 
@@ -314,7 +309,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 				}
 
 				@Override
-				public Class<QBufferedData> getDataClass() {
+				public Class<QBufferedElement> getDataClass() {
 					return getDelegate().getDataClass();
 				}
 
@@ -343,7 +338,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public <D extends QBufferedData> QDataArea<D> createDataArea(QBufferedDataDef<D> argument, String externalName, boolean initialize) {
+	public <D extends QBufferedElement> QDataArea<D> createDataArea(QUnaryBufferedDataDef<D> argument, String externalName, boolean initialize) {
 
 		D argumentData = (D) createData(argument, initialize);
 		QDataArea<D> nioDataAreaImpl = dataAreaFactory.createDataArea(getDataContext(), argumentData, externalName);
@@ -353,9 +348,9 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public <D extends QBufferedData> QArray<D> createArray(QUnaryAtomicDataDef<D> argument, int dimension, SortDirection sortDirection, boolean initialize) {
+	public <D extends QBufferedElement> QArray<D> createArray(QUnaryAtomicBufferedDataDef<D> argument, int dimension, SortDirection sortDirection, boolean initialize) {
 
-		NIOBufferedDataImpl model = (NIOBufferedDataImpl) createData(argument, false);
+		NIOBufferedElementImpl model = (NIOBufferedElementImpl) createData(argument, false);
 
 		QArray<D> array = new NIOArrayImpl(getDataContext(), model, dimension, sortDirection);
 
@@ -367,11 +362,11 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public <D extends QBufferedData> QScroller<D> createScroller(QAtomicDataDef<D> argument, int dimension, SortDirection sortDirection, boolean initialize) {
+	public <D extends QBufferedElement> QScroller<D> createScroller(QUnaryAtomicBufferedDataDef<D> argument, int dimension, boolean initialize) {
 
-		QBufferedData model = createData(argument, false);
+		QBufferedElement model = createData(argument, false);
 
-		QScroller<D> scroller = new NIOScrollerImpl(getDataContext(), model, dimension, sortDirection);
+		QScroller<D> scroller = new NIOScrollerImpl(getDataContext(), model, dimension);
 
 		if (initialize)
 			initialize(scroller);
@@ -381,7 +376,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public <D extends QDataStruct> QStroller<D> createStroller(String name, QStrollerDef<?> argument, int dimension, SortDirection sortDirection, boolean initialize) {
+	public <D extends QDataStruct> QStroller<D> createStroller(String name, QStrollerDef<?> argument, int dimension, boolean initialize) {
 
 		QDataStruct model = null;
 
@@ -401,7 +396,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 			model = bufferedData;
 		}
 
-		QStroller<D> stroller = new NIOStrollerImpl(getDataContext(), model, dimension, sortDirection);
+		QStroller<D> stroller = new NIOStrollerImpl(getDataContext(), model, dimension);
 
 		if (initialize)
 			initialize(stroller);
@@ -606,7 +601,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public <E extends Enum<E>, D extends QBufferedData> QEnum<E, D> createEnum(Class<E> classEnumerator, D dataDelegate, boolean initialize) {
+	public <E extends Enum<E>, D extends QBufferedElement> QEnum<E, D> createEnum(Class<E> classEnumerator, D dataDelegate, boolean initialize) {
 		return new NIOEnumImpl<E, D>(getDataContext(), classEnumerator, dataDelegate);
 	}
 
@@ -709,12 +704,8 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	private void initialize(QData data) {
 
-		NIOBufferedDataImpl nioBufferedData = null;
-		if (data instanceof NIOBufferedDataImpl)
-			nioBufferedData = (NIOBufferedDataImpl) data;
-		else if (data instanceof QBufferedDataDelegator)
-			nioBufferedData = (NIOBufferedDataImpl) ((QBufferedDataDelegator) data).getDelegate();
-		else
+		NIOBufferedDataImpl nioBufferedData = NIOBufferHelper.getNIOBufferedDataImpl(data);
+		if(nioBufferedData == null)
 			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: khsd87sd74c2dn");
 		nioBufferedData.allocate();
 	}

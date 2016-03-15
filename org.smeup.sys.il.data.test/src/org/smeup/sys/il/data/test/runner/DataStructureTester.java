@@ -25,9 +25,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QDataStructWrapper;
-import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDecimal;
-import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Overlay;
@@ -112,9 +110,8 @@ public class DataStructureTester {
 			character.movel(multElement, true);
 		testAsserter.assertEquals("Movel elements", true, true);
 
-		QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 		for (QCharacter multElement : dataStruct.multiple)
-			character.accept(dataWriter.set(multElement));
+			character.eval(multElement);
 		testAsserter.assertEquals("Evaluation elements", true, true);
 
 		dataFactory.createDataStruct(£MU_B£QQ50P_1.class, 0, true);

@@ -19,10 +19,12 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.def.BinaryType;
 
+import com.ibm.as400.access.AS400ZonedDecimal;
+
 public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 	private static final long serialVersionUID = 1L;
-	private static byte FILLER = (byte) 0;
+	private static byte INIT = (byte) 0;
 
 	private BinaryType _type;
 	private boolean _unsigned;
@@ -39,7 +41,7 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 	@Override
 	protected byte getFiller() {
-		return FILLER;
+		return INIT;
 	}
 
 	@Override
@@ -51,6 +53,22 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	public int getLength() {
 		switch (_type) {
 		case BYTE:
+			return 3;
+		case SHORT:
+			return 5;
+		case INTEGER:
+			return 10;
+		case LONG:
+			return 20;
+		}
+
+		throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: sdbfsdsd456dfhg");
+	}
+
+	@Override
+	public int getSize() {
+		switch (_type) {
+		case BYTE:
 			return 1;
 		case SHORT:
 			return 2;
@@ -60,16 +78,11 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 			return 8;
 		}
 
-		throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: sdbfsdsd456dfhg");
+		throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: sdbf6wq76ert");
 	}
 
 	@Override
-	public int getSize() {
-		return getLength();
-	}
-
-	@Override
-	public Number readNumber() {
+	public Number _readNumber() {
 
 		ByteBuffer buffer = getBuffer();
 		int position = getPosition();
@@ -90,7 +103,7 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	}
 
 	@Override
-	public void writeNumber(Number number, String roundingMode) {
+	public void _writeNumber(Number number, String roundingMode) {
 
 		ByteBuffer buffer = getBuffer();
 		int position = getPosition();
@@ -115,38 +128,40 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	}
 
 	@Override
-	public int compareNumber(Number value) {
-
-		ByteBuffer buffer = getBuffer();
-		int position = getPosition();
-
-		try {
-
-			switch (_type) {
-			case BYTE:
-				return ((Byte) buffer.get(position)).compareTo((Byte) value);
-			case SHORT:
-				return ((Short) buffer.getShort(position)).compareTo((Short) value);
-			case INTEGER:
-				return ((Integer) buffer.getInt(position)).compareTo((Integer) value);
-			case LONG:
-				return ((Long) buffer.getLong(position)).compareTo((Long) value);
-			}
-		} catch (ClassCastException e) {
-			System.err.println(e.getMessage());
-			return -1;
-		}
-
-		throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: sv8df5sd7fsd6");
-	}
-
-	@Override
-	public double asDouble() {
-		return asInteger();
-	}
-	
-	@Override
 	public void accept(QDataVisitor visitor) {
 		visitor.visit(this);
+	}
+
+	@Override
+	public byte[] _toBytes() {
+		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getLength(), 0);
+		return zoned.toBytes(asDouble());
+	}
+
+	@Override
+	protected void _fill(byte[] filler, boolean maxLength) {
+
+		ByteBuffer byteBuffer = ByteBuffer.allocate(getLength());
+		NIOBufferHelper.fill(byteBuffer, 0, getLength(), filler);
+
+		eval(NIODecimalZonedImpl.getDecimal(getLength(), 0).toDouble(byteBuffer.array()));
+	}
+
+	@Override
+	protected void _move(byte[] value, boolean clear) {
+		// TODO
+		NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value, clear, getFiller());
+	}
+
+	@Override
+	protected void _movel(byte[] value, boolean clear) {
+		// TODO
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value, clear, getFiller());
+	}
+
+	@Override
+	protected void _write(byte[] value) {
+		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getLength(), 0);
+		eval(zoned.toDouble(value));
 	}
 }

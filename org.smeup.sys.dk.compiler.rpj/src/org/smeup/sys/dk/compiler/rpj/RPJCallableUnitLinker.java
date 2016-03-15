@@ -65,7 +65,6 @@ import org.smeup.sys.os.file.QSourceFile;
 import org.smeup.sys.os.file.impl.FileFormatImpl;
 import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.module.QModule;
-import org.smeup.sys.os.pgm.rpj.RPJProgramSupport.Specials;
 import org.smeup.sys.rt.core.QLogger;
 
 public class RPJCallableUnitLinker {
@@ -397,7 +396,7 @@ public class RPJCallableUnitLinker {
 
 					// TODO
 					if (externalFile.getRule() != null) {
-						if (!externalFile.getRule().toUpperCase().equals(Specials.ALL))
+						if (!externalFile.getRule().equalsIgnoreCase("*ALL"))
 							throw new OperatingSystemRuntimeException("Invalid format rule: " + externalFile.getRule());
 					}
 

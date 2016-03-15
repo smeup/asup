@@ -29,15 +29,15 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 	}
 
 	@Override
-	public void clear() {
-		super.clear();
+	protected void _clear() {
+		super._clear();
+		
 		for (QBufferedData element : this.getElements())
 			element.clear();
 	}
 
 	@Override
 	public boolean isEmpty() {
-
 		for (QBufferedData element : this.getElements())
 			if (!element.isEmpty())
 				return false;
@@ -49,5 +49,4 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 	public void accept(QDataVisitor visitor) {
 		visitor.visit(this);
 	}
-
 }

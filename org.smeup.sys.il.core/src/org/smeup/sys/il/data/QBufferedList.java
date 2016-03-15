@@ -19,15 +19,31 @@ import java.lang.String;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBufferedData {
+public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBufferedData, QMoveable {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
+	 * @model
 	 * @generated
 	 */
-	void eval(int value);
+	QBufferedData eval(DataSpecial value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	QBufferedData eval(QDataFiller value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
+	 * @generated
+	 */
+	void eval(Number value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -52,11 +68,4 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 	 * @generated
 	 */
 	void eval(QString value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void sorta();
 } // QBufferedList

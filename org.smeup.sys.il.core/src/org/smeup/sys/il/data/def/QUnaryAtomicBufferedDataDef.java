@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.il.data.def;
 
-import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -18,7 +18,7 @@ import org.smeup.sys.il.data.QBufferedData;
  * @model abstract="true"
  * @generated
  */
-public interface QUnaryAtomicBufferedDataDef<D extends QBufferedData> extends QUnaryAtomicDataDef<D>, QBufferedDataDef<D> {
+public interface QUnaryAtomicBufferedDataDef<D extends QBufferedElement> extends QUnaryAtomicDataDef<D>, QBufferedDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc -->

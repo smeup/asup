@@ -14,68 +14,309 @@ package org.smeup.sys.il.data.nio;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 
+import org.smeup.sys.il.data.BufferedElementType;
+import org.smeup.sys.il.data.DataSpecial;
+import org.smeup.sys.il.data.DatetimeFormat;
+import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.DecimalType;
 
-public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNumeric {
+public abstract class NIONumericImpl extends NIOBufferedElementImpl implements QNumeric {
 
 	private static final long serialVersionUID = 1L;
-
+	protected static final byte INIT = (byte) -16;
+	protected static final byte LOVAL = (byte) -16;
+	protected static final byte HIVAL = (byte) 9;
+	
 	public NIONumericImpl(QDataContext dataContext) {
 		super(dataContext);
 	}
-
+	
 	@Override
-	public void clear() {
+	protected void _clear() {
 		eval(0);
 	}
 
 	@Override
-	public double asDouble() {
-		return readNumber().doubleValue();
+	protected final byte[] _toBytes(DataSpecial value) {
+
+		byte[] bytes = new byte[getLength()];
+		switch (value) {
+		case LOVAL:
+			Arrays.fill(bytes, NIONumericImpl.LOVAL);
+			break;
+		case BLANK:
+		case BLANKS:
+			Arrays.fill(bytes, NIOCharacterImpl.INIT);
+			break;
+		case OFF:
+		case ZERO:
+		case ZEROS:
+			Arrays.fill(bytes, NIODecimalZonedImpl.INIT);
+			break;
+		case ON:
+			Arrays.fill(bytes, NIOIndicatorImpl.ON);
+			break;
+		case HIVAL:
+			Arrays.fill(bytes, NIONumericImpl.HIVAL);
+			break;
+		case NULL:
+		case OMIT:
+			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237rvbwe87vb9stf");
+		}
+
+		return bytes;
+	}
+	
+	@Override
+	protected final byte[] _toBytes(Number value) {
+		return _toBytes(value.toString());
 	}
 
 	@Override
-	public int asInteger() {
-		return readNumber().intValue();
+	protected final byte[] _toBytes(QDatetime value) {
+		return value.asBytes();
 	}
 
 	@Override
-	public long asLong() {
-		return readNumber().longValue();
+	protected final byte[] _toBytes(QNumeric value) {
+		return value.asBytes();
 	}
 
 	@Override
-	public short asShort() {
-		return readNumber().shortValue();
-	}
-
-	public abstract int compareNumber(Number value);
-
-	@Override
-	public <E extends Enum<E>> boolean eq(E value) {
-		return eq(getPrimitive(value));
+	protected final byte[] _toBytes(QString value) {
+		return value.asBytes();
 	}
 
 	@Override
-	public boolean eq(Number value) {
+	protected final byte[] _toBytes(String value) {
+		return value.getBytes(getDataContext().getCharset());
+	}
+
+	protected abstract void _writeNumber(Number number, String roundingMode);
+	
+	protected abstract Number _readNumber();
+
+	@Override
+	public final double asDouble() {
+		return _readNumber().doubleValue();
+	}
+
+	@Override
+	public final int asInteger() {
+		return _readNumber().intValue();
+	}
+
+	@Override
+	public final long asLong() {
+		return _readNumber().longValue();
+	}
+
+	@Override
+	public final short asShort() {
+		return _readNumber().shortValue();
+	}
+
+	protected final int compareNumber(Number value) {
+		double d1 = asDouble();
+		double d2 = value.doubleValue();
+
+		int result = Double.compare(d1, d2);
+
+		return result;
+	}
+
+	@Override
+	public final double d() {
+		return asDouble();
+	}
+
+	@Override
+	public final QNumeric divide(double value) {
+		return divide(value, (String) null);
+	}
+
+	@Override
+	public final QNumeric divide(double value, QNumeric remainderTarget) {
+		eval(asDouble() / value);
+		remainderTarget.eval(asDouble() % value);
+		return this;
+	}
+
+	@Override
+	public final QNumeric divide(double value, String haslRounding) {
+		eval(asDouble() / value);
+		return this;
+	}
+
+	@Override
+	public final QNumeric divide(int value) {
+		return divide(value, (String) null);
+	}
+
+	@Override
+	public final QNumeric divide(int value, QNumeric remainderTarget) {
+		eval(asDouble() / value);
+		remainderTarget.eval(asDouble() % value);
+		return this;
+	}
+
+	@Override
+	public final QNumeric divide(int value, String roundingMode) {
+		eval(asDouble() / value);
+		return this;
+	}
+
+	@Override
+	public final QNumeric divide(long value) {
+		return divide(value, (String) null);
+	}
+
+	@Override
+	public final QNumeric divide(long value, QNumeric remainderTarget) {
+		eval(asDouble() / value);
+		remainderTarget.eval(asDouble() % value);
+		return this;
+	}
+
+	@Override
+	public final QNumeric divide(long value, String roundingMode) {
+		eval(asDouble() / value);
+		return this;
+	}
+
+	@Override
+	public final QNumeric divide(QNumeric value) {
+		return divide(value, (String) null);
+	}
+
+	@Override
+	public final QNumeric divide(QNumeric value, QNumeric remainderTarget) {
+		eval(asDouble() / value.asDouble());
+		remainderTarget.eval(asDouble() % value.asDouble());
+		return this;
+	}
+
+	@Override
+	public final QNumeric divide(QNumeric value, String roundingMode) {
+		eval(asDouble() / value.asDouble());
+		return this;
+	}
+
+	@Override
+	public final QNumeric divide(short value) {
+		return divide(value, (String) null);
+	}
+
+	@Override
+	public final QNumeric divide(short value, QNumeric remainderTarget) {
+		eval(asDouble() / value);
+		remainderTarget.eval(asDouble() % value);
+		return this;
+	}
+
+	@Override
+	public final QNumeric divide(short value, String roundingMode) {
+		eval(asDouble() / value);
+		return this;
+	}
+
+	@Override
+	public final boolean eq(Number value) {
 		return compareNumber(value) == 0;
 	}
 
 	@Override
-	public boolean eq(QNumeric value) {
+	public final boolean eq(QNumeric value) {
 		return compareNumber(value.asDouble()) == 0;
 	}
 
 	@Override
-	public <E extends Enum<E>> boolean ge(E value) {
-		return ge(getPrimitive(value));
+	public final void eval(Number value) {
+		eval(value, null);
+	}
+
+	@Override
+	public final void eval(Number value, String roundingMode) {
+		_writeNumber(value, null);		
+	}
+
+	@Override
+	public final void eval(BigDecimal value) {
+		eval(value, (String) null);
+	}
+
+	@Override
+	public final void eval(BigDecimal value, String roundingMode) {
+		_writeNumber(value, roundingMode);
+	}
+
+	@Override
+	public final void eval(BigInteger value) {
+		eval(value, (String) null);
+	}
+
+	@Override
+	public final void eval(BigInteger value, String roundingMode) {
+		_writeNumber(value, roundingMode);
+	}
+
+	@Override
+	public final void eval(double value) {
+		eval(value, (String) null);
+	}
+
+	@Override
+	public final void eval(double value, String roundingMode) {
+		_writeNumber(value, roundingMode);
+	}
+
+	@Override
+	public final void eval(int value) {
+		eval(value, (String) null);
+	}
+
+	@Override
+	public final void eval(int value, String roundingMode) {
+		_writeNumber(value, roundingMode);
+	}
+
+	@Override
+	public final void eval(long value) {
+		eval(value, (String) null);
+	}
+
+	@Override
+	public final void eval(long value, String roundingMode) {
+		_writeNumber(value, roundingMode);
+	}
+
+	@Override
+	public final void eval(QNumeric value) {
+		eval(value, (String) null);
+	}
+
+	@Override
+	public final void eval(QNumeric value, String roundingMode) {
+		_writeNumber(value.asDouble(), roundingMode);
+	}
+
+	@Override
+	public final void eval(short value) {
+		eval(value, (String) null);
+	}
+
+	@Override
+	public final void eval(short value, String roundingMode) {
+		_writeNumber(value, roundingMode);
 	}
 
 	@Override
@@ -84,588 +325,469 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	}
 
 	@Override
-	public boolean ge(QNumeric value) {
+	public final boolean ge(QNumeric value) {
 		return compareNumber(value.asDouble()) >= 0;
 	}
 
-	private <E extends Enum<E>> Integer getPrimitive(E value) {
-		if (value.name().equals("ZEROS"))
-			return 0;
-		else if (value.name().equals("ZERO"))
-			return 0;
-		else if (value.name().equals("LOVAL"))
-			return Integer.MIN_VALUE;
-		else if (value.name().equals("HIVAL"))
-			return Integer.MAX_VALUE;
-
-		return 0;
+	@Override
+	public final BufferedElementType getBufferedElementType() {
+		return BufferedElementType.NUMERIC;
 	}
 
 	@Override
-	public <E extends Enum<E>> boolean gt(E value) {
-		return gt(getPrimitive(value));
-	}
-
-	@Override
-	public boolean gt(Number value) {
+	public final boolean gt(Number value) {
 		return compareNumber(value) > 0;
 	}
 
 	@Override
-	public boolean gt(QNumeric value) {
+	public final boolean gt(QNumeric value) {
 		return compareNumber(value.asDouble()) > 0;
 	}
 
 	@Override
-	public <E extends Enum<E>> boolean le(E value) {
-		return le(getPrimitive(value));
+	public final int i() {
+		return asInteger();
 	}
 
 	@Override
-	public boolean le(Number value) {
+	public final boolean isEmpty() {
+
+		for (byte b : asBytes())
+			if (b != getFiller())
+				return false;
+		return true;
+	}
+
+	@Override
+	public final long l() {
+		return asLong();
+	}
+
+	@Override
+	public final boolean le(Number value) {
 		return compareNumber(value) <= 0;
 	}
 
 	@Override
-	public boolean le(QNumeric value) {
+	public final boolean le(QNumeric value) {
 		return compareNumber(value.asDouble()) <= 0;
 	}
 
 	@Override
-	public int getLength() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean lt(E value) {
-		return lt(getPrimitive(value));
-	}
-
-	@Override
-	public boolean lt(Number value) {
+	public final boolean lt(Number value) {
 		return compareNumber(value) < 0;
 	}
 
 	@Override
-	public boolean lt(QNumeric value) {
+	public final boolean lt(QNumeric value) {
 		return compareNumber(value.asDouble()) < 0;
 	}
 
 	@Override
-	public QNumeric divide(short value) {
-		return divide(value, (String) null);
-	}
-
-	@Override
-	public QNumeric divide(short value, String roundingMode) {
-		eval(asDouble() / value);
-		return this;
-	}
-
-	@Override
-	public QNumeric divide(short value, QNumeric remainderTarget) {
-		eval(asDouble() / value);
-		remainderTarget.eval(asDouble() % value);
-		return this;
-	}
-
-	@Override
-	public QNumeric divide(long value) {
-		return divide(value, (String) null);
-	}
-
-	@Override
-	public QNumeric divide(long value, String roundingMode) {
-		eval(asDouble() / value);
-		return this;
-	}
-
-	@Override
-	public QNumeric divide(long value, QNumeric remainderTarget) {
-		eval(asDouble() / value);
-		remainderTarget.eval(asDouble() % value);
-		return this;
-	}
-
-	@Override
-	public QNumeric divide(int value) {
-		return divide(value, (String) null);
-	}
-
-	@Override
-	public QNumeric divide(int value, String roundingMode) {
-		eval(asDouble() / value);
-		return this;
-	}
-
-	@Override
-	public QNumeric divide(int value, QNumeric remainderTarget) {
-		eval(asDouble() / value);
-		remainderTarget.eval(asDouble() % value);
-		return this;
-	}
-
-	@Override
-	public QNumeric divide(double value) {
-		return divide(value, (String) null);
-	}
-
-	@Override
-	public QNumeric divide(double value, String haslRounding) {
-		eval(asDouble() / value);
-		return this;
-	}
-
-	@Override
-	public QNumeric divide(double value, QNumeric remainderTarget) {
-		eval(asDouble() / value);
-		remainderTarget.eval(asDouble() % value);
-		return this;
-	}
-
-	@Override
-	public QNumeric divide(QNumeric value) {
-		return divide(value, (String) null);
-	}
-
-	@Override
-	public QNumeric divide(QNumeric value, String roundingMode) {
-		eval(asDouble() / value.asDouble());
-		return this;
-	}
-
-	@Override
-	public QNumeric divide(QNumeric value, QNumeric remainderTarget) {
-		eval(asDouble() / value.asDouble());
-		remainderTarget.eval(asDouble() % value.asDouble());
-		return this;
-	}
-
-	@Override
-	public QNumeric minus(int value) {
+	public final QNumeric minus(double value) {
 		return minus(value, null);
 	}
 
 	@Override
-	public QNumeric minus(int value, String roundingMode) {
+	public final QNumeric minus(double value, String roundingMode) {
 		eval(asDouble() - value);
 		return this;
 	}
 
 	@Override
-	public QNumeric minus(long value) {
+	public final QNumeric minus(int value) {
 		return minus(value, null);
 	}
 
 	@Override
-	public QNumeric minus(long value, String roundingMode) {
+	public final QNumeric minus(int value, String roundingMode) {
 		eval(asDouble() - value);
 		return this;
 	}
 
 	@Override
-	public QNumeric minus(QNumeric value) {
+	public final QNumeric minus(long value) {
 		return minus(value, null);
 	}
 
 	@Override
-	public QNumeric minus(QNumeric value, String roundingMode) {
+	public final QNumeric minus(long value, String roundingMode) {
+		eval(asDouble() - value);
+		return this;
+	}
+
+	@Override
+	public final QNumeric minus(QNumeric value) {
+		return minus(value, null);
+	}
+
+	@Override
+	public final QNumeric minus(QNumeric value, String roundingMode) {
 		eval(asDouble() - value.asDouble());
 		return this;
 	}
 
 	@Override
-	public QNumeric minus(short value) {
+	public final QNumeric minus(short value) {
 		return minus(value, null);
 	}
 
 	@Override
-	public QNumeric minus(short value, String roundingMode) {
+	public final QNumeric minus(short value, String roundingMode) {
 		eval(asDouble() - value);
 		return this;
 	}
 
 	@Override
-	public QNumeric minus(double value) {
-		return minus(value, null);
-	}
-
-	@Override
-	public QNumeric minus(double value, String roundingMode) {
-		eval(asDouble() - value);
-		return this;
-	}
-
-	@Override
-	public <E extends Enum<E>> void move(E value) {
-		move(getPrimitive(value));
-	}
-
-	@Override
-	public <E extends Enum<E>> void move(E value, boolean clear) {
-		move(getPrimitive(value), clear);
-	}
-
-	@Override
-	public void move(String value, boolean clear) {
-		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value.getBytes(getDataContext().getCharset()), clear, getFiller());
-	}
-
-	@Override
-	public <E extends Enum<E>> void movel(E value) {
-		movel(getPrimitive(value));
-	}
-
-	@Override
-	public <E extends Enum<E>> void movel(E value, boolean clear) {
-		movel(getPrimitive(value), clear);
-	}
-
-	@Override
-	public void movel(String value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value.getBytes(getDataContext().getCharset()), clear, getFiller());
-	}
-
-	@Override
-	public QNumeric mult(int value) {
+	public final QNumeric mult(double value) {
 		return mult(value, null);
 	}
 
 	@Override
-	public QNumeric mult(int value, String roundingMode) {
+	public final QNumeric mult(double value, String roundingMode) {
 		eval(asDouble() * value);
 		return this;
 	}
 
 	@Override
-	public QNumeric mult(long value) {
+	public final QNumeric mult(int value) {
 		return mult(value, null);
 	}
 
 	@Override
-	public QNumeric mult(long value, String roundingMode) {
+	public final QNumeric mult(int value, String roundingMode) {
 		eval(asDouble() * value);
 		return this;
 	}
 
 	@Override
-	public QNumeric mult(QNumeric value) {
+	public final QNumeric mult(long value) {
 		return mult(value, null);
 	}
 
 	@Override
-	public QNumeric mult(QNumeric value, String roundingMode) {
+	public final QNumeric mult(long value, String roundingMode) {
+		eval(asDouble() * value);
+		return this;
+	}
+
+	@Override
+	public final QNumeric mult(QNumeric value) {
+		return mult(value, null);
+	}
+
+	@Override
+	public final QNumeric mult(QNumeric value, String roundingMode) {
 		eval(asDouble() * value.asDouble());
 		return this;
 	}
 
 	@Override
-	public QNumeric mult(short value) {
+	public final QNumeric mult(short value) {
 		return mult(value, null);
 	}
 
 	@Override
-	public QNumeric mult(short value, String roundingMode) {
+	public final QNumeric mult(short value, String roundingMode) {
 		eval(asDouble() * value);
 		return this;
 	}
 
 	@Override
-	public QNumeric mult(double value) {
-		return mult(value, null);
-	}
-
-	@Override
-	public QNumeric mult(double value, String roundingMode) {
-		eval(asDouble() * value);
-		return this;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean ne(E value) {
+	public final boolean ne(Number value) {
 		return !eq(value);
 	}
 
 	@Override
-	public boolean ne(Number value) {
+	public final boolean ne(QNumeric value) {
 		return !eq(value);
 	}
 
 	@Override
-	public boolean ne(QNumeric value) {
-		return !eq(value);
-	}
-
-	@Override
-	public QNumeric plus(int value) {
+	public final QNumeric plus(double value) {
 		return plus(value, null);
 	}
 
 	@Override
-	public QNumeric plus(int value, String roundingMode) {
+	public final QNumeric plus(double value, String roundingMode) {
 		eval(asDouble() + value);
 		return this;
 	}
 
 	@Override
-	public QNumeric plus(long value) {
+	public final QNumeric plus(int value) {
 		return plus(value, null);
 	}
 
 	@Override
-	public QNumeric plus(long value, String roundingMode) {
+	public final QNumeric plus(int value, String roundingMode) {
 		eval(asDouble() + value);
 		return this;
 	}
 
 	@Override
-	public QNumeric plus(QNumeric value) {
+	public final QNumeric plus(long value) {
 		return plus(value, null);
 	}
 
 	@Override
-	public QNumeric plus(QNumeric value, String roundingMode) {
+	public final QNumeric plus(long value, String roundingMode) {
+		eval(asDouble() + value);
+		return this;
+	}
+
+	@Override
+	public final QNumeric plus(QNumeric value) {
+		return plus(value, null);
+	}
+
+	@Override
+	public final QNumeric plus(QNumeric value, String roundingMode) {
 		eval(asDouble() + value.asDouble());
 		return this;
 	}
 
 	@Override
-	public QNumeric plus(short value) {
+	public final QNumeric plus(short value) {
 		return plus(value, null);
 	}
 
 	@Override
-	public QNumeric plus(short value, String roundingMode) {
+	public final QNumeric plus(short value, String roundingMode) {
 		eval(asDouble() + value);
 		return this;
 	}
 
 	@Override
-	public QNumeric plus(double value) {
-		return plus(value, null);
-	}
-
-	@Override
-	public QNumeric plus(double value, String roundingMode) {
-		eval(asDouble() + value);
-		return this;
-	}
-
-	@Override
-	public QNumeric power(int value) {
+	public final QNumeric power(int value) {
 		eval(asLong() ^ value);
 		return this;
 	}
 
 	@Override
-	public QNumeric power(long value) {
+	public final QNumeric power(long value) {
 		eval(asLong() ^ value);
 		return this;
 	}
 
 	@Override
-	public QNumeric power(QNumeric value) {
+	public final QNumeric power(QNumeric value) {
 		eval(asLong() ^ value.asLong());
 		return this;
 	}
 
 	@Override
-	public QNumeric power(short value) {
+	public final QNumeric power(short value) {
 		eval(asLong() ^ value);
 		return this;
 	}
 
-	public abstract Number readNumber();
-
 	@Override
-	public String toString() {
-		try {
-			return readNumber().toString();
-		} catch (Exception e) {
-			// TODO
-			return "";
-		}
-	}
-
-	public abstract void writeNumber(Number number, String roundingMode);
-
-	@Override
-	public double d() {
-		return asDouble();
+	public final QDatetime qDate(DatetimeFormat format) {
+		throw new IntegratedLanguageDataRuntimeException("Unexpected condition ew8978wre8qwetr");
 	}
 
 	@Override
-	public int i() {
-		return asInteger();
-	}
-
-	@Override
-	public long l() {
-		return asLong();
-	}
-
-	@Override
-	protected byte getFiller() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public <E extends Enum<E>> void eval(E value) {
-		Integer number = getPrimitive(value);
-		eval(number);
-	}
-
-	@Override
-	public void eval(double value) {
-		eval(value, (String) null);
-	}
-
-	@Override
-	public void eval(int value) {
-		eval(value, (String) null);
-	}
-
-	@Override
-	public void eval(long value) {
-		eval(value, (String) null);
-	}
-
-	@Override
-	public void eval(QNumeric value) {
-		// TODO remove me
-		if (value == null) {
-			clear();
-			return;
-		}
-		eval(value, (String) null);
-	}
-
-	@Override
-	public void eval(short value) {
-		eval(value, (String) null);
-	}
-
-	@Override
-	public void eval(BigInteger value) {
-
-	}
-
-	@Override
-	public void eval(BigDecimal value) {
-		eval(value, (String) null);
-	}
-
-	@Override
-	public void eval(double value, String roundingMode) {
-		try {
-			writeNumber(value, roundingMode);
-		} catch (Exception e) {
-			System.out.println("Unexpcted condition: bq5804q956943534");
-		}
-	}
-
-	@Override
-	public void eval(short value, String roundingMode) {
-		try {
-			writeNumber(value, roundingMode);
-		} catch (Exception e) {
-			System.out.println("Unexpcted condition: bq5804q956943534");
-		}
-	}
-
-	@Override
-	public void eval(long value, String roundingMode) {
-		try {
-			writeNumber(value, roundingMode);
-		} catch (Exception e) {
-			System.out.println("Unexpcted condition: bq5804q956943534");
-		}
-	}
-
-	@Override
-	public void eval(int value, String roundingMode) {
-		try {
-			writeNumber(value, roundingMode);
-		} catch (Exception e) {
-			System.out.println("Unexpcted condition: bq5804q956943534");
-		}
-	}
-
-	@Override
-	public void eval(QNumeric value, String roundingMode) {
-		writeNumber(value.asDouble(), roundingMode);
-	}
-
-	@Override
-	public void eval(BigInteger value, String roundingMode) {
-		writeNumber(value, roundingMode);
-	}
-
-	@Override
-	public void eval(BigDecimal value, String roundingMode) {
-		writeNumber(value, roundingMode);
-	}
-	
-	@Override
-	public <E extends Enum<E>> QDatetime qDate(E format) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qDiv(short value) {
+	public final QNumeric qDiv(double value) {
 		return qDivOperation(value, null);
 	}
 
 	@Override
-	public QNumeric qDiv(short value, QNumeric remainderTarget) {
+	public final QNumeric qDiv(double value, QNumeric remainderTarget) {
 		return qDivOperation(value, remainderTarget);
 	}
 
 	@Override
-	public QNumeric qDiv(long value) {
+	public final QNumeric qDiv(int value) {
 		return qDivOperation(value, null);
 	}
 
 	@Override
-	public QNumeric qDiv(long value, QNumeric remainderTarget) {
+	public final QNumeric qDiv(int value, QNumeric remainderTarget) {
 		return qDivOperation(value, remainderTarget);
 	}
 
 	@Override
-	public QNumeric qDiv(int value) {
+	public final QNumeric qDiv(long value) {
 		return qDivOperation(value, null);
 	}
 
 	@Override
-	public QNumeric qDiv(int value, QNumeric remainderTarget) {
+	public final QNumeric qDiv(long value, QNumeric remainderTarget) {
 		return qDivOperation(value, remainderTarget);
 	}
 
 	@Override
-	public QNumeric qDiv(double value) {
-		return qDivOperation(value, null);
-	}
-
-	@Override
-	public QNumeric qDiv(double value, QNumeric remainderTarget) {
-		return qDivOperation(value, remainderTarget);
-	}
-
-	@Override
-	public QNumeric qDiv(QNumeric value) {
+	public final QNumeric qDiv(QNumeric value) {
 		return qDivOperation(value.asDouble(), null);
 	}
 
 	@Override
-	public QNumeric qDiv(QNumeric value, QNumeric remainderTarget) {
+	public final QNumeric qDiv(QNumeric value, QNumeric remainderTarget) {
 		return qDivOperation(value.asDouble(), remainderTarget);
 	}
 
 	@Override
-	public QNumeric qUns() {
+	public final QNumeric qDiv(short value) {
+		return qDivOperation(value, null);
+	}
+
+	@Override
+	public final QNumeric qDiv(short value, QNumeric remainderTarget) {
+		return qDivOperation(value, remainderTarget);
+	}
+
+	private QNumeric qDivOperation(Number value, QNumeric remainderTarget) {
+		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
+		number.eval(asDouble() / value.doubleValue());
+		if (remainderTarget != null)
+			remainderTarget.eval(asDouble() % value.doubleValue());
+		return number;
+	}
+
+	@Override
+	public final QNumeric qInt() {
+		return qIntOperation(this.asDouble(), false);
+	}
+
+	@Override
+	public final QNumeric qInth() {
+		return qIntOperation(this.asDouble(), true);
+	}
+
+	private QNumeric qIntOperation(Number value, boolean roundingMode) {
+		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 0, DecimalType.ZONED, true);
+		number.eval(value.doubleValue());
+		return number;
+	}
+
+	@Override
+	public final QNumeric qMinus(double value) {
+		return qMinusOperation(value);
+	}
+
+	@Override
+	public final QNumeric qMinus(int value) {
+		return qMinusOperation(value);
+	}
+
+	@Override
+	public final QNumeric qMinus(long value) {
+		return qMinusOperation(value);
+	}
+
+	@Override
+	public final QNumeric qMinus(QNumeric value) {
+		return qMinusOperation(value.asDouble());
+	}
+
+	@Override
+	public final QNumeric qMinus(short value) {
+		return qMinusOperation(value);
+	}
+
+	private QNumeric qMinusOperation(Number value) {
+		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
+		number.eval(asDouble() - value.doubleValue());
+		return number;
+	}
+
+	@Override
+	public final QNumeric qMult(double value) {
+		return qMultOperation(value);
+	}
+
+	@Override
+	public final QNumeric qMult(int value) {
+		return qMultOperation(value);
+	}
+
+	@Override
+	public final QNumeric qMult(long value) {
+		return qMultOperation(value);
+	}
+
+	@Override
+	public final QNumeric qMult(QNumeric value) {
+		return qMultOperation(value.asDouble());
+	}
+
+	@Override
+	public final QNumeric qMult(short value) {
+		return qMultOperation(value);
+	}
+
+	private QNumeric qMultOperation(Number value) {
+		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
+		number.eval(asDouble() * value.doubleValue());
+		return number;
+	}
+
+	@Override
+	public final QNumeric qPlus(double value) {
+		return qPlusOperation(value);
+	}
+
+	@Override
+	public final QNumeric qPlus(int value) {
+		return qPlusOperation(value);
+	}
+
+	@Override
+	public final QNumeric qPlus(long value) {
+		return qPlusOperation(value);
+	}
+
+	@Override
+	public final QNumeric qPlus(QNumeric value) {
+		return qPlusOperation(value.asDouble());
+	}
+
+	@Override
+	public final QNumeric qPlus(short value) {
+		return qPlusOperation(value);
+	}
+
+	private QNumeric qPlusOperation(Number value) {
+		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
+		number.eval(asDouble() + value.doubleValue());
+		return number;
+	}
+
+	@Override
+	public final QNumeric qRem(double value) {
+		return qRemOperation(value);
+	}
+
+	@Override
+	public final QNumeric qRem(int value) {
+		return qRemOperation(value);
+	}
+
+	@Override
+	public final QNumeric qRem(long value) {
+		return qRemOperation(value);
+	}
+
+	@Override
+	public final QNumeric qRem(QNumeric value) {
+		return qRemOperation(value.asDouble());
+	}
+
+	@Override
+	public final QNumeric qRem(short value) {
+		return qRemOperation(value);
+	}
+	
+
+	private QNumeric qRemOperation(Number value) {
+		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
+		number.eval(asDouble() % value.doubleValue());
+		return number;
+	}
+	
+	@Override
+	public final QNumeric qUns() {
 
 		NIONumericImpl number = (NIONumericImpl) copy();
 		number.allocate();
@@ -679,156 +801,9 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	}
 
 	@Override
-	public QNumeric qInt() {
-		return qIntOperation(this.asDouble(), false);
-	}
-
-	@Override
-	public QNumeric qInth() {
-		return qIntOperation(this.asDouble(), true);
-	}
-
-	private QNumeric qIntOperation(Number value, boolean roundingMode) {
-		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 0, DecimalType.ZONED, true);
-		number.eval(value.doubleValue());
-		return number;
-	}
-
-	private QNumeric qDivOperation(Number value, QNumeric remainderTarget) {
-		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
-		number.eval(asDouble() / value.doubleValue());
-		if (remainderTarget != null)
-			remainderTarget.eval(asDouble() % value.doubleValue());
-		return number;
-	}
-
-	@Override
-	public QNumeric qMinus(short value) {
-		return qMinusOperation(value);
-	}
-
-	@Override
-	public QNumeric qMinus(long value) {
-		return qMinusOperation(value);
-	}
-
-	@Override
-	public QNumeric qMinus(int value) {
-		return qMinusOperation(value);
-	}
-
-	@Override
-	public QNumeric qMinus(double value) {
-		return qMinusOperation(value);
-	}
-
-	@Override
-	public QNumeric qMinus(QNumeric value) {
-		return qMinusOperation(value.asDouble());
-	}
-
-	private QNumeric qMinusOperation(Number value) {
-		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
-		number.eval(asDouble() - value.doubleValue());
-		return number;
-	}
-
-	@Override
-	public QNumeric qMult(short value) {
-		return qMultOperation(value);
-	}
-
-	@Override
-	public QNumeric qMult(long value) {
-		return qMultOperation(value);
-	}
-
-	@Override
-	public QNumeric qMult(int value) {
-		return qMultOperation(value);
-	}
-
-	@Override
-	public QNumeric qMult(double value) {
-		return qMultOperation(value);
-	}
-
-	@Override
-	public QNumeric qMult(QNumeric value) {
-		return qMultOperation(value.asDouble());
-	}
-
-	private QNumeric qMultOperation(Number value) {
-		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
-		number.eval(asDouble() * value.doubleValue());
-		return number;
-	}
-
-	@Override
-	public QNumeric qPlus(short value) {
-		return qPlusOperation(value);
-	}
-
-	@Override
-	public QNumeric qPlus(long value) {
-		return qPlusOperation(value);
-	}
-
-	@Override
-	public QNumeric qPlus(int value) {
-		return qPlusOperation(value);
-	}
-
-	@Override
-	public QNumeric qPlus(double value) {
-		return qPlusOperation(value);
-	}
-
-	@Override
-	public QNumeric qPlus(QNumeric value) {
-		return qPlusOperation(value.asDouble());
-	}
-
-	private QNumeric qPlusOperation(Number value) {
-		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
-		number.eval(asDouble() + value.doubleValue());
-		return number;
-	}
-
-	@Override
-	public QNumeric qRem(int value) {
-		return qRemOperation(value);
-	}
-
-	@Override
-	public QNumeric qRem(long value) {
-		return qRemOperation(value);
-	}
-
-	@Override
-	public QNumeric qRem(QNumeric value) {
-		return qRemOperation(value.asDouble());
-	}
-
-	@Override
-	public QNumeric qRem(short value) {
-		return qRemOperation(value);
-	}
-
-	@Override
-	public QNumeric qRem(double value) {
-		return qRemOperation(value);
-	}
-
-	private QNumeric qRemOperation(Number value) {
-		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
-		number.eval(asDouble() % value.doubleValue());
-		return number;
-	}
-
-	@Override
 	public void time() {
 
+		// TODO verify
 		Calendar CALENDAR = Calendar.getInstance();
 		if (getLength() == 14) {
 			eval(Long.parseLong(new SimpleDateFormat("HHmmssddMMyyyy").format(CALENDAR.getTime())));
@@ -841,16 +816,22 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	}
 
 	@Override
-	public void xfoot(QArray<?> array) {
+	public final String toString() {
+		try {
+			return _readNumber().toString();
+		} catch (Exception e) {
+			return "error";
+		}
+	}
+
+	@Override
+	public final void xfoot(QArray<? extends QNumeric> array) {
 		xfoot(array, null);
 	}
 
 	@Override
-	public void xfoot(QArray<?> array, String roundingMode) {
-		for (int i = 1; i <= array.capacity(); i++) {
-			if (i > array.capacity())
-				break;
-			((QNumeric) this).plus((QNumeric) array.get(i));
-		}
+	public final void xfoot(QArray<? extends QNumeric> array, String roundingMode) {
+		for (QNumeric numeric: array) 
+			this.plus(numeric, roundingMode);
 	}
 }

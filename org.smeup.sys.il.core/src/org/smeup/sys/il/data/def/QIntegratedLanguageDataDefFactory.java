@@ -9,7 +9,7 @@ package org.smeup.sys.il.data.def;
 
 import org.eclipse.emf.ecore.EFactory;
 import org.smeup.sys.il.data.QArray;
-import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QStroller;
@@ -81,7 +81,7 @@ public interface QIntegratedLanguageDataDefFactory extends EFactory {
 	 * @return a new object of class '<em>Data Area Def</em>'.
 	 * @generated
 	 */
-	<D extends QBufferedData> QDataAreaDef<D> createDataAreaDef();
+	<D extends QBufferedElement> QDataAreaDef<D> createDataAreaDef();
 
 	/**
 	 * Returns a new object of class '<em>Data Struct Def</em>'. <!--
@@ -180,7 +180,7 @@ public interface QIntegratedLanguageDataDefFactory extends EFactory {
 	 * @return a new object of class '<em>Scroller Def</em>'.
 	 * @generated
 	 */
-	<D extends QScroller<QBufferedData>> QScrollerDef<D> createScrollerDef();
+	<D extends QScroller<?>> QScrollerDef<D> createScrollerDef();
 
 	/**
 	 * Returns a new object of class '<em>String Def</em>'.

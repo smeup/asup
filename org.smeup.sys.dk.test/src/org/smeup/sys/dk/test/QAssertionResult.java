@@ -17,7 +17,6 @@ import org.smeup.sys.il.core.QObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.dk.test.QAssertionResult#getAssertionState <em>Assertion State</em>}</li>
  *   <li>{@link org.smeup.sys.dk.test.QAssertionResult#getMessage <em>Message</em>}</li>
  *   <li>{@link org.smeup.sys.dk.test.QAssertionResult#getTime <em>Time</em>}</li>
  * </ul>
@@ -80,27 +79,11 @@ public interface QAssertionResult extends QObject {
 	void setTime(long value);
 
 	/**
-	 * Returns the value of the '<em><b>Assertion State</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.smeup.sys.dk.test.AssertionState}.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the value of the '<em>Assertion State</em>' attribute.
-	 * @see org.smeup.sys.dk.test.AssertionState
-	 * @see #setAssertionState(AssertionState)
-	 * @see org.smeup.sys.dk.test.QDevelopmentKitTestPackage#getAssertionResult_AssertionState()
-	 * @model
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
 	 * @generated
 	 */
 	AssertionState getAssertionState();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.dk.test.QAssertionResult#getAssertionState <em>Assertion State</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Assertion State</em>' attribute.
-	 * @see org.smeup.sys.dk.test.AssertionState
-	 * @see #getAssertionState()
-	 * @generated
-	 */
-	void setAssertionState(AssertionState value);
 
 } // QAssertionResult

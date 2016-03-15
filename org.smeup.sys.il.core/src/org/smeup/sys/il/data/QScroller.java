@@ -16,7 +16,7 @@ package org.smeup.sys.il.data;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QScroller<D extends QBufferedData> extends QBufferedList<D> {
+public interface QScroller<D extends QBufferedElement> extends QBufferedList<D>, QBufferedElement {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model positionRequired="true"

@@ -73,12 +73,4 @@ public interface QDataContext extends QContextProvider {
 	 * @generated
 	 */
 	Charset getCharset();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" required="true"
-	 * @generated
-	 */
-	QString getTemporaryString();
 } // QDataContext

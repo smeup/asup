@@ -1,3 +1,14 @@
+/**
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
+ */
 package org.smeup.sys.il.data.nio;
 
 import org.smeup.sys.il.data.QDataContext;
@@ -33,55 +44,62 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 	}
 
 	@Override
-	public Number readNumber() {
+	public Number _readNumber() {
 
 		Number result = 0;
-		try {
-			if (getScale() > 0)
-				result = zoned.toDouble(asBytes());
-			else
-				result = ((Double) zoned.toDouble(asBytes())).longValue();
-
-		} catch (Exception e) {
-			// TODO
-			// System.err.println("Unexpected condition vv6666eqw5rqvcrqv: " +
-			// e);
-		}
+		if (getScale() > 0)
+			result = zoned.toDouble(asBytes());
+		else
+			result = ((Double) zoned.toDouble(asBytes())).longValue();
 
 		return result;
 	}
 	
 	@Override
-	public void writeNumber(Number number, String roundingMode) {
+	public void _writeNumber(Number number, String roundingMode) {
 
-		try {
-			byte[] bytes = zoned.toBytes(number.doubleValue());
-			
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
-		} catch (Exception e) {
-//			e.printStackTrace();
-		}
+		byte[] bytes = zoned.toBytes(number.doubleValue());		
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
 	}
 	
 	protected static AS400ZonedDecimal getDecimal(int precision, int scale) {
 
-		try {
-			AS400ZonedDecimal decimal = zoneds[precision - 1][scale];
-
-			if (decimal == null)
-				synchronized (zoneds) {
-					decimal = zoneds[precision - 1][scale];
-					if (decimal == null) {
-						decimal = new AS400ZonedDecimal(precision, scale);
-						decimal.setUseDouble(true);
-						zoneds[precision - 1][scale] = decimal;
-					}
+		AS400ZonedDecimal decimal = zoneds[precision - 1][scale];
+		if (decimal == null)
+			synchronized (zoneds) {
+				decimal = zoneds[precision - 1][scale];
+				if (decimal == null) {
+					decimal = new AS400ZonedDecimal(precision, scale);
+					decimal.setUseDouble(true);
+					zoneds[precision - 1][scale] = decimal;
 				}
+			}
 
-			return decimal;
-		} catch (Exception e) {
-			e.toString();
-			return null;
-		}
+		return decimal;
+	}
+
+	@Override
+	protected void _fill(byte[] filler, boolean maxLength) {
+		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), filler);
+	}
+
+	@Override
+	protected void _move(byte[] value, boolean clear) {
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value, clear, getFiller());		
+	}
+
+	@Override
+	protected void _movel(byte[] value, boolean clear) {
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value, clear, getFiller());		
+	}
+
+	@Override
+	protected void _write(byte[] value) {
+		NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value, true, getFiller());		
+	}
+
+	@Override
+	protected byte[] _toBytes() {
+		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
 	}
 }

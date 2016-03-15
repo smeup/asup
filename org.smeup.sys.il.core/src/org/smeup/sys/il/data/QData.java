@@ -8,7 +8,6 @@
 package org.smeup.sys.il.data;
 
 import java.io.Serializable;
-import java.lang.Enum;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -37,58 +36,9 @@ public interface QData extends Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> boolean eq(E value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> void eval(E value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> boolean ge(E value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> boolean gt(E value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
 	 */
 	boolean isEmpty();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> boolean le(E value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> boolean lt(E value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
-	 * @generated
-	 */
-	<E extends Enum<E>> boolean ne(E value);
 
 } // QData

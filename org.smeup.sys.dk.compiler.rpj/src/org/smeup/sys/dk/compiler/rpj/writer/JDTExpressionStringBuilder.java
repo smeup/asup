@@ -66,7 +66,6 @@ import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.mi.core.util.QStrings;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.pgm.rpj.RPJProgramSupport.Specials;
 import org.smeup.sys.rt.core.QLogger;
 
 public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
@@ -161,12 +160,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			break;
 		case SPECIAL:
 			source = Enum.class;
-			if (Specials.NULL.name().equalsIgnoreCase(strings.removeFirstChar(expression.getValue())))
-				value = "null";
-			else if (Specials.OMIT.name().equalsIgnoreCase(strings.removeFirstChar(expression.getValue())))
-				value = "null";
-			else
-				value = "qRPJ.qSP." + strings.removeFirstChar(expression.getValue()).toUpperCase();
+			value = "qRPJ.qSP." + strings.removeFirstChar(expression.getValue()).toUpperCase();
 			break;
 		case STRING:
 
@@ -327,9 +321,6 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			if (expression.getOperand() instanceof QAtomicTermExpression) {
 
 				QAtomicTermExpression atomicTermExpression = (QAtomicTermExpression) expression.getOperand();
-				// Mirandola
-				// if (atomicTermExpression.isSpecial() &&
-				// !atomicTermExpression.isFunction())
 				if (atomicTermExpression.getValue().equalsIgnoreCase("*ON")) {
 					buffer.append("true");
 					return false;

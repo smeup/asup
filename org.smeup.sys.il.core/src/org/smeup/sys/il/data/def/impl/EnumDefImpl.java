@@ -12,7 +12,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.def.QEnumDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
@@ -30,7 +30,7 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  *
  * @generated
  */
-public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> extends UnaryAtomicBufferedDataDefImpl<D> implements QEnumDef<E, D> {
+public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedElement> extends UnaryAtomicBufferedDataDefImpl<D> implements QEnumDef<E, D> {
 	/**
 	 *
 	 */

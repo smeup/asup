@@ -15,7 +15,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QHexadecimal;
 
-public class NIOHexadecimalImpl extends NIOBufferedDataImpl implements QHexadecimal {
+public class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexadecimal {
 
 	private static final long serialVersionUID = 1L;
 	private static byte INIT = (byte) -1;
@@ -49,13 +49,6 @@ public class NIOHexadecimalImpl extends NIOBufferedDataImpl implements QHexadeci
 		return _length;
 	}
 
-	/*
-	 * @Override public void reset() { if (_value != null)
-	 * NIOBufferHelper.movel(getBuffer(), getPosition(), _length, _value, true,
-	 * INIT); else Arrays.fill(getBuffer().array(), getPosition(), getPosition()
-	 * + _length, INIT); }
-	 */
-
 	@Override
 	public void eval(String value) {
 
@@ -66,36 +59,6 @@ public class NIOHexadecimalImpl extends NIOBufferedDataImpl implements QHexadeci
 			bytes[i] = (byte) Integer.parseInt(hex, 16);
 		}
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, getFiller());
-	}
-
-	@Override
-	public <E extends Enum<E>> void eval(E value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public <E extends Enum<E>> void move(E value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public <E extends Enum<E>> void move(E value, boolean clear) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public <E extends Enum<E>> void movel(E value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public <E extends Enum<E>> void movel(E value, boolean clear) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -129,43 +92,7 @@ public class NIOHexadecimalImpl extends NIOBufferedDataImpl implements QHexadeci
 	}
 
 	@Override
-	public <E extends Enum<E>> boolean eq(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean ge(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean gt(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean le(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean lt(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean ne(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-	@Override
 	public void accept(QDataVisitor visitor) {
-		visitor.visit(this);
+		visitor.visit((QHexadecimal) this);
 	}
 }

@@ -15,10 +15,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDataStruct;
-import org.smeup.sys.il.data.QDecimal;
+import org.smeup.sys.il.data.QDatetime;
+import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.impl.DataWriterImpl;
+import org.smeup.sys.il.esam.IntegratedLanguageEsamRuntimeException;
 
 public class JDBCDataWriterImpl extends DataWriterImpl {
 
@@ -40,15 +43,24 @@ public class JDBCDataWriterImpl extends DataWriterImpl {
 		int c = 1;
 		for (QBufferedData bufferedData : data.getElements()) {
 			try {
-
-				if (bufferedData instanceof QString) {
+				if((bufferedData instanceof QBufferedElement))
+					throw new IntegratedLanguageEsamRuntimeException("Invalid buffered data: "+bufferedData);
+				
+				QBufferedElement bufferedElement = (QBufferedElement)bufferedData;
+				switch (bufferedElement.getBufferedElementType()) {
+				case DATETIME:
+					QDatetime datetime = (QDatetime)bufferedData;
+					resultSet.updateDate(c, new java.sql.Date(datetime.asTime()));
+					break;
+				case NUMERIC:
+					QNumeric numeric = (QNumeric) bufferedData;
+					resultSet.updateDouble(c, numeric.asDouble());
+					break;
+				case STRING:
 					QString string = (QString) bufferedData;
-					resultSet.updateString(c, string.toString());
-				} else if (bufferedData instanceof QDecimal) {
-					QDecimal decimal = (QDecimal) bufferedData;
-					resultSet.updateDouble(c, decimal.asDouble());
-				} else
-					resultSet.updateBytes(c, bufferedData.asBytes());
+					resultSet.updateString(c, string.asString());
+					break;
+				}
 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

@@ -239,11 +239,11 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAssertionResult_AssertionState() {
+	@Override
+	public EAttribute getAssertionResult_Message() {
 		return (EAttribute)assertionResultEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -252,17 +252,8 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	 * @generated
 	 */
 	@Override
-	public EAttribute getAssertionResult_Message() {
-		return (EAttribute)assertionResultEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getAssertionResult_Time() {
-		return (EAttribute)assertionResultEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)assertionResultEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -351,7 +342,7 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTestResult_Failed() {
+	public EAttribute getTestResult_Object() {
 		return (EAttribute)testResultEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -360,7 +351,7 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTestResult_Object() {
+	public EAttribute getTestResult_Runner() {
 		return (EAttribute)testResultEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -369,17 +360,8 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTestResult_Runner() {
-		return (EAttribute)testResultEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getTestResult_Time() {
-		return (EAttribute)testResultEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)testResultEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -477,7 +459,6 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		assertionFailedEClass = createEClass(ASSERTION_FAILED);
 
 		assertionResultEClass = createEClass(ASSERTION_RESULT);
-		createEAttribute(assertionResultEClass, ASSERTION_RESULT__ASSERTION_STATE);
 		createEAttribute(assertionResultEClass, ASSERTION_RESULT__MESSAGE);
 		createEAttribute(assertionResultEClass, ASSERTION_RESULT__TIME);
 
@@ -499,7 +480,6 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		testResultEClass = createEClass(TEST_RESULT);
 		createEReference(testResultEClass, TEST_RESULT__ASSERT_RESULTS);
 		createEAttribute(testResultEClass, TEST_RESULT__CATEGORY);
-		createEAttribute(testResultEClass, TEST_RESULT__FAILED);
 		createEAttribute(testResultEClass, TEST_RESULT__OBJECT);
 		createEAttribute(testResultEClass, TEST_RESULT__RUNNER);
 		createEAttribute(testResultEClass, TEST_RESULT__TIME);
@@ -649,9 +629,10 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		initEClass(assertionFailedEClass, QAssertionFailed.class, "AssertionFailed", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(assertionResultEClass, QAssertionResult.class, "AssertionResult", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAssertionResult_AssertionState(), this.getAssertionState(), "assertionState", null, 0, 1, QAssertionResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAssertionResult_Message(), ecorePackage.getEString(), "message", null, 0, 1, QAssertionResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAssertionResult_Time(), ecorePackage.getELong(), "time", null, 0, 1, QAssertionResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(assertionResultEClass, this.getAssertionState(), "getAssertionState", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(assertionSuccessEClass, QAssertionSuccess.class, "AssertionSuccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -695,10 +676,15 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		initEClass(testResultEClass, QTestResult.class, "TestResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTestResult_AssertResults(), this.getAssertionResult(), null, "assertResults", null, 0, -1, QTestResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTestResult_Category(), ecorePackage.getEString(), "category", null, 0, 1, QTestResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTestResult_Failed(), ecorePackage.getEBoolean(), "failed", "false", 0, 1, QTestResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTestResult_Object(), ecorePackage.getEString(), "object", null, 0, 1, QTestResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTestResult_Runner(), ecorePackage.getEString(), "runner", null, 1, 1, QTestResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTestResult_Time(), ecorePackage.getELong(), "time", null, 0, 1, QTestResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(testResultEClass, ecorePackage.getEInt(), "getFailedCount", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(testResultEClass, ecorePackage.getEInt(), "getSuccessCount", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(testResultEClass, ecorePackage.getEBoolean(), "isFailed", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(testRunnerEClass, QTestRunner.class, "TestRunner", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -773,6 +759,35 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		   source, 
 		   new String[] {
 			 "length", "128"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (testResultEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "precision", "5",
+			 "scale", "0"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/DecimalDef")
+		   });	
+		addAnnotation
+		  (testResultEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "precision", "5",
+			 "scale", "0"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/DecimalDef")
+		   });	
+		addAnnotation
+		  (testResultEClass.getEOperations().get(2), 
+		   source, 
+		   new String[] {
+			 "length", "5"
 		   },
 		   new URI[] {
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")

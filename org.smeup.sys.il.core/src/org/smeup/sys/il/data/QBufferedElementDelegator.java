@@ -12,17 +12,10 @@ package org.smeup.sys.il.data;
  * <em><b>Buffered Data Delegator</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.QIntegratedLanguageDataPackage#getBufferedDataDelegator()
+ * @see org.smeup.sys.il.data.QIntegratedLanguageDataPackage#getBufferedElementDelegator()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QBufferedDataDelegator extends QDataDelegator<QBufferedData>, QBufferedData {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model kind="operation" required="true"
-	 * @generated
-	 */
-	@Override
-	QBufferedData getDelegate();
+public interface QBufferedElementDelegator extends QDataDelegator<QBufferedElement>, QBufferedElement {
 
-} // QBufferedDataDelegator
+} // QBufferedElementDelegator

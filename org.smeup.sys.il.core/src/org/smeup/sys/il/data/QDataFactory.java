@@ -18,11 +18,12 @@ import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.def.FloatingType;
-import org.smeup.sys.il.data.def.QAtomicDataDef;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.def.QStrollerDef;
+import org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
+import org.smeup.sys.il.data.def.QUnaryBufferedDataDef;
 import org.smeup.sys.il.data.def.TimeFormat;
 import org.smeup.sys.il.data.term.QDataTerm;
 
@@ -42,7 +43,7 @@ public interface QDataFactory {
 	 * @model required="true" argumentRequired="true" dimensionRequired="true" sortDirectionRequired="true" initializeRequired="true"
 	 * @generated
 	 */
-	<D extends QBufferedData> QArray<D> createArray(QUnaryAtomicDataDef<D> argument, int dimension, SortDirection sortDirection, boolean initialize);
+	<D extends QBufferedElement> QArray<D> createArray(QUnaryAtomicBufferedDataDef<D> argument, int dimension, SortDirection sortDirection, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -78,7 +79,7 @@ public interface QDataFactory {
 	 * @model required="true" argumentRequired="true" externalNameRequired="true" initializeRequired="true"
 	 * @generated
 	 */
-	<D extends QBufferedData> QDataArea<D> createDataArea(QBufferedDataDef<D> argument, String externalName, boolean initialize);
+	<D extends QBufferedElement> QDataArea<D> createDataArea(QUnaryBufferedDataDef<D> argument, String externalName, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -122,7 +123,7 @@ public interface QDataFactory {
 	 * @model required="true" dataDelegateRequired="true" initializeRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
-	<E extends Enum<E>, D extends QBufferedData> QEnum<E, D> createEnum(Class<E> classEnumerator, D dataDelegate, boolean initialize);
+	<E extends Enum<E>, D extends QBufferedElement> QEnum<E, D> createEnum(Class<E> classEnumerator, D dataDelegate, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -179,18 +180,18 @@ public interface QDataFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" dimensionRequired="true" sortDirectionRequired="true" initializeRequired="true"
+	 * @model required="true" argumentRequired="true" dimensionRequired="true" initializeRequired="true"
 	 * @generated
 	 */
-	<D extends QBufferedData> QScroller<D> createScroller(QAtomicDataDef<D> argument, int dimension, SortDirection sortDirection, boolean initialize);
+	<D extends QBufferedElement> QScroller<D> createScroller(QUnaryAtomicBufferedDataDef<D> argument, int dimension, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" dimensionRequired="true" sortDirectionRequired="true" initializeRequired="true"
+	 * @model required="true" argumentRequired="true" dimensionRequired="true" initializeRequired="true"
 	 * @generated
 	 */
-	<D extends QDataStruct> QStroller<D> createStroller(String name, QStrollerDef<?> argument, int dimension, SortDirection sortDirection, boolean initialize);
+	<D extends QDataStruct> QStroller<D> createStroller(String name, QStrollerDef<?> argument, int dimension, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

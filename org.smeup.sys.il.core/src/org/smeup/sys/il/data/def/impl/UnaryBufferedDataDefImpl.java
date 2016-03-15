@@ -8,37 +8,32 @@
 package org.smeup.sys.il.data.def.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.smeup.sys.il.data.QBufferedElement;
+
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
-import org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef;
+import org.smeup.sys.il.data.def.QUnaryBufferedDataDef;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Unary Atomic Buffered Data Def</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Unary Buffered Data Def</b></em>'.
+ * <!-- end-user-doc -->
  *
  * @generated
  */
-public abstract class UnaryAtomicBufferedDataDefImpl<D extends QBufferedElement> extends UnaryAtomicDataDefImpl<D> implements QUnaryAtomicBufferedDataDef<D> {
+public abstract class UnaryBufferedDataDefImpl<D extends QBufferedElement> extends UnaryDataDefImpl<D> implements QUnaryBufferedDataDef<D> {
 	/**
-	 *
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected UnaryAtomicBufferedDataDefImpl() {
+	protected UnaryBufferedDataDefImpl() {
 		super();
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return QIntegratedLanguageDataDefPackage.Literals.UNARY_ATOMIC_BUFFERED_DATA_DEF;
 	}
 
 	/**
@@ -46,17 +41,16 @@ public abstract class UnaryAtomicBufferedDataDefImpl<D extends QBufferedElement>
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLength(int length) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	@Override
+	protected EClass eStaticClass() {
+		return QIntegratedLanguageDataDefPackage.Literals.UNARY_BUFFERED_DATA_DEF;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public int getLength() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -74,4 +68,4 @@ public abstract class UnaryAtomicBufferedDataDefImpl<D extends QBufferedElement>
 		throw new UnsupportedOperationException();
 	}
 
-} // UnaryAtomicBufferedDataDefImpl
+} //UnaryBufferedDataDefImpl

@@ -16,5 +16,5 @@ package org.smeup.sys.il.data;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QIdentity extends QBufferedData {
+public interface QIdentity extends QBufferedElement {
 } // QIdentifier

@@ -7,10 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.String;
-
-
-
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Indicator</b></em>'. <!-- end-user-doc -->
@@ -20,7 +16,7 @@ import java.lang.String;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QIndicator extends QBufferedData {
+public interface QIndicator extends QCharacter {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true"
@@ -61,59 +57,6 @@ public interface QIndicator extends QBufferedData {
 	 * @model valueRequired="true"
 	 * @generated
 	 */
-	boolean eq(String value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void eval(boolean value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void eval(String value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void eval(QIndicator value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void eval(QString value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
 	boolean ne(QIndicator value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	boolean ne(String value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true"
-	 * @generated
-	 */
-	QCharacter qTrim();
 
 } // QIndicator

@@ -13,26 +13,78 @@ package org.smeup.sys.il.data.nio;
 
 import java.util.Iterator;
 
+import org.smeup.sys.il.data.BufferedElementType;
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QScroller;
-import org.smeup.sys.il.data.SortDirection;
 
-public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImpl<D> implements QScroller<D> {
+public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedListImpl<D> implements QScroller<D> {
 
 	private static final long serialVersionUID = 1L;
 
 	private int _dimension;
 	private int _lastIndex;
 
+	D _current = current();
+	
 	public NIOScrollerImpl(QDataContext dataContext) {
 		super(dataContext);
 	}
 
-	public NIOScrollerImpl(QDataContext dataContext, D model, int dimension, SortDirection sortDirection) {
-		super(dataContext, model, sortDirection);
+	public NIOScrollerImpl(QDataContext dataContext, D model, int dimension) {
+		super(dataContext, model);
 		_dimension = dimension;
+	}
+
+	@Override
+	public D absolute(int position) {
+		return get(position);
+	}
+
+	@Override
+	public void accept(QDataVisitor visitor) {
+
+		if (visitor.visit(this)) {
+
+			Iterator<D> datas = this.iterator();
+			while (datas.hasNext())
+				datas.next().accept(visitor);
+			
+			visitor.endVisit(this);
+		}
+	}
+
+	@Override
+	public NIOScrollerImpl<D> allocate() {
+		super.allocate();
+
+		absolute(1);
+		
+		return this;
+	}
+
+	@Override
+	public D[] asArray() {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public byte[] asBytes() {
+		return current().asBytes();
+	}
+
+	@Override
+	public int capacity() {
+		return _dimension;
+	}
+
+	@Override
+	public void clear() {
+		current().clear();
 	}
 
 	@Override
@@ -41,19 +93,63 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 	}
 
 	@Override
-	public NIOScrollerImpl<D> allocate() {
-		super.allocate();
-
-		clear();
-
-		absolute(1);
-		
-		return this;
+	public D current() {
+		return (D) getModel();
 	}
 
 	@Override
-	public int capacity() {
-		return _dimension;
+	public boolean eq(byte value) {
+		return current().eq(value);
+	}
+
+	@Override
+	public boolean eq(DataSpecial value) {
+		return current().eq(value);
+	}
+	
+	@Override
+	public boolean eq(QDataFiller value) {
+		return current().eq(value);
+	}
+
+	@Override
+	public boolean eq(QBufferedElement value) {
+		return current().eq(value);
+	}
+
+	@Override
+	public QBufferedData eval(byte value) {
+		return current().eval(value);
+	}
+
+	@Override
+	public QBufferedData eval(DataSpecial value) {
+		return current().eval(value);
+	}
+
+	@Override
+	public QBufferedData eval(QDataFiller value) {
+		return current().eval(value);
+	}
+
+	@Override
+	public D first() {
+		return get(1);
+	}
+
+	@Override
+	public boolean ge(byte value) {
+		return current().ge(value);
+	}
+
+	@Override
+	public boolean ge(DataSpecial value) {
+		return current().ge(value);
+	}
+
+	@Override
+	public boolean ge(QDataFiller value) {
+		return current().ge(value);
 	}
 
 	@Override
@@ -77,23 +173,173 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 	}
 
 	@Override
-	public D absolute(int position) {
-		return get(position);
+	public BufferedElementType getBufferedElementType() {
+		return current().getBufferedElementType();
 	}
 
 	@Override
-	public D current() {
-		return (D) getModel();
+	public boolean gt(byte value) {
+		return current().gt(value);
 	}
 
 	@Override
-	public D first() {
-		return get(1);
+	public boolean gt(DataSpecial value) {
+		return current().gt(value);
+	}
+
+	@Override
+	public boolean gt(QDataFiller value) {
+		return current().gt(value);
 	}
 
 	@Override
 	public D last() {
 		return get(_dimension);
+	}
+
+	@Override
+	public boolean le(byte value) {
+		return current().le(value);
+	}
+
+	@Override
+	public boolean le(DataSpecial value) {
+		return current().le(value);
+	}
+
+	@Override
+	public boolean le(QDataFiller value) {
+		return current().le(value);
+	}
+
+	@Override
+	public boolean lt(byte value) {
+		return current().lt(value);
+	}
+
+	@Override
+	public boolean lt(DataSpecial value) {
+		return current().lt(value);
+	}
+
+	@Override
+	public boolean lt(QDataFiller value) {
+		return current().lt(value);
+	}
+
+	@Override
+	public void move(DataSpecial value) {
+		current().move(value);
+	}
+
+	@Override
+	public void move(DataSpecial value, boolean clear) {
+		current().move(value, clear);
+	}
+
+	@Override
+	public void move(Number value) {
+		current().move(value);
+	}
+	
+	@Override
+	public void move(Number value, boolean clear) {
+		current().move(value, clear);
+	}
+
+	@Override
+	public void move(QBufferedElement value) {
+		current().move(value);
+	}
+
+	@Override
+	public void move(QBufferedElement value, boolean clear) {
+		current().move(value, clear);
+	}
+
+	@Override
+	public void move(QDataFiller value) {
+		current().move(value);
+	}
+
+	@Override
+	public void move(QDataFiller value, boolean clear) {
+		current().move(value, clear);
+	}
+
+	@Override
+	public void move(String value) {
+		current().move(value);
+	}
+
+	@Override
+	public void move(String value, boolean clear) {
+		current().move(value, clear);
+	}
+
+	@Override
+	public void movel(DataSpecial value) {
+		current().movel(value);
+	}
+
+	@Override
+	public void movel(DataSpecial value, boolean clear) {
+		current().movel(value, clear);
+	}
+
+	@Override
+	public void movel(Number value) {
+		current().movel(value);
+	}
+
+	@Override
+	public void movel(Number value, boolean clear) {
+		current().movel(value, clear);
+	}
+
+	@Override
+	public void movel(QBufferedElement value) {
+		current().movel(value);
+	}
+
+	@Override
+	public void movel(QBufferedElement value, boolean clear) {
+		current().movel(value, clear);
+	}
+
+	@Override
+	public void movel(QDataFiller value) {
+		current().movel(value);
+	}
+
+	@Override
+	public void movel(QDataFiller value, boolean clear) {
+		current().movel(value, clear);
+	}
+
+	@Override
+	public void movel(String value) {
+		current().movel(value);
+	}
+
+	@Override
+	public void movel(String value, boolean clear) {
+		current().movel(value, clear);
+	}
+
+	@Override
+	public boolean ne(byte value) {
+		return current().ne(value);
+	}
+
+	@Override
+	public boolean ne(DataSpecial value) {
+		return current().ne(value);
+	}
+
+	@Override
+	public boolean ne(QDataFiller value) {
+		return current().ne(value);
 	}
 
 	@Override
@@ -104,63 +350,5 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 	@Override
 	public D previous() {
 		return get(_lastIndex - 1);
-	}
-
-	@Override
-	protected byte getFiller() {
-		return ((NIOBufferedDataImpl)getModel()).getFiller();
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean eq(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean ge(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean gt(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean le(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean lt(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public <E extends Enum<E>> boolean ne(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public D[] asArray() {
-		throw new UnsupportedOperationException();
-	}
-	
-	@Override
-	public void accept(QDataVisitor visitor) {
-
-		if (visitor.visit(this)) {
-
-			Iterator<D> datas = this.iterator();
-			while (datas.hasNext())
-				datas.next().accept(visitor);
-			visitor.endVisit(this);
-		}
 	}
 }

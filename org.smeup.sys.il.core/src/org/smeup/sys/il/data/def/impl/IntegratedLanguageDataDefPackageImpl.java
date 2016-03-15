@@ -65,6 +65,7 @@ import org.smeup.sys.il.data.def.QStringDef;
 import org.smeup.sys.il.data.def.QStrollerDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
+import org.smeup.sys.il.data.def.QUnaryBufferedDataDef;
 import org.smeup.sys.il.data.def.QUnaryCompoundDataDef;
 import org.smeup.sys.il.data.def.QUnaryDataDef;
 import org.smeup.sys.il.data.def.QWrapperDef;
@@ -260,6 +261,13 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	private EClass unaryAtomicBufferedDataDefEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass unaryBufferedDataDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -869,15 +877,6 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getScrollerDef_Order() {
-		return (EAttribute)scrollerDefEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -905,15 +904,6 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getStrollerDef_Order() {
-		return (EAttribute)strollerDefEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -929,6 +919,15 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 	@Override
 	public EClass getUnaryAtomicBufferedDataDef() {
 		return unaryAtomicBufferedDataDefEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getUnaryBufferedDataDef() {
+		return unaryBufferedDataDefEClass;
 	}
 
 	/**
@@ -1133,17 +1132,17 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		pointerDefEClass = createEClass(POINTER_DEF);
 
 		scrollerDefEClass = createEClass(SCROLLER_DEF);
-		createEAttribute(scrollerDefEClass, SCROLLER_DEF__ORDER);
 
 		stringDefEClass = createEClass(STRING_DEF);
 
 		strollerDefEClass = createEClass(STROLLER_DEF);
 		createEAttribute(strollerDefEClass, STROLLER_DEF__LENGTH);
-		createEAttribute(strollerDefEClass, STROLLER_DEF__ORDER);
 
 		unaryAtomicDataDefEClass = createEClass(UNARY_ATOMIC_DATA_DEF);
 
 		unaryAtomicBufferedDataDefEClass = createEClass(UNARY_ATOMIC_BUFFERED_DATA_DEF);
+
+		unaryBufferedDataDefEClass = createEClass(UNARY_BUFFERED_DATA_DEF);
 
 		unaryCompoundDataDefEClass = createEClass(UNARY_COMPOUND_DATA_DEF);
 
@@ -1210,9 +1209,11 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		ETypeParameter strollerDefEClass_D = addETypeParameter(strollerDefEClass, "D");
 		ETypeParameter unaryAtomicDataDefEClass_D = addETypeParameter(unaryAtomicDataDefEClass, "D");
 		ETypeParameter unaryAtomicBufferedDataDefEClass_D = addETypeParameter(unaryAtomicBufferedDataDefEClass, "D");
+		ETypeParameter unaryBufferedDataDefEClass_D = addETypeParameter(unaryBufferedDataDefEClass, "D");
 		ETypeParameter unaryCompoundDataDefEClass_D = addETypeParameter(unaryCompoundDataDefEClass, "D");
 		ETypeParameter unaryCompoundDataDefEClass_E = addETypeParameter(unaryCompoundDataDefEClass, "E");
 		ETypeParameter unaryDataDefEClass_D = addETypeParameter(unaryDataDefEClass, "D");
+		ETypeParameter wrapperDefEClass_D = addETypeParameter(wrapperDefEClass, "D");
 
 		// Set bounds for type parameters
 		EGenericType g1 = createEGenericType(theIntegratedLanguageDataPackage.getArray());
@@ -1233,11 +1234,11 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		compoundDataDefEClass_E.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getData());
 		dataDefEClass_D.getEBounds().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedData());
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedElement());
 		dataAreaDefEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
 		enumDefEClass_E.getEBounds().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedData());
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedElement());
 		enumDefEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getList());
 		g2 = createEGenericType();
@@ -1264,7 +1265,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		g1.getETypeArguments().add(g2);
 		multipleDataDefEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getScroller());
-		g2 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedData());
+		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		scrollerDefEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getStroller());
@@ -1273,8 +1274,10 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		strollerDefEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getData());
 		unaryAtomicDataDefEClass_D.getEBounds().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedData());
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedElement());
 		unaryAtomicBufferedDataDefEClass_D.getEBounds().add(g1);
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedElement());
+		unaryBufferedDataDefEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getStruct());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -1285,6 +1288,8 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		unaryCompoundDataDefEClass_E.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getData());
 		unaryDataDefEClass_D.getEBounds().add(g1);
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedElement());
+		wrapperDefEClass_D.getEBounds().add(g1);
 
 		// Add supertypes to classes
 		g1 = createEGenericType(this.getUnaryAtomicDataDef());
@@ -1304,7 +1309,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		g1.getETypeArguments().add(g2);
 		binaryDefEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getUnaryAtomicBufferedDataDef());
-		g2 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedData());
+		g2 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedElement());
 		g1.getETypeArguments().add(g2);
 		bufferDefEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getDataDef());
@@ -1320,11 +1325,13 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		g1.getETypeArguments().add(g2);
 		compoundDataDefEClass.getEGenericSuperTypes().add(g1);
 		dataDefEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		g1 = createEGenericType(this.getUnaryAtomicBufferedDataDef());
+		g1 = createEGenericType(this.getUnaryBufferedDataDef());
 		g2 = createEGenericType(dataAreaDefEClass_D);
 		g1.getETypeArguments().add(g2);
 		dataAreaDefEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getWrapperDef());
+		g2 = createEGenericType(dataAreaDefEClass_D);
+		g1.getETypeArguments().add(g2);
 		dataAreaDefEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getUnaryCompoundDataDef());
 		g2 = createEGenericType(theIntegratedLanguageDataPackage.getDataStruct());
@@ -1449,6 +1456,14 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		g1.getETypeArguments().add(g2);
 		unaryAtomicBufferedDataDefEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getUnaryDataDef());
+		g2 = createEGenericType(unaryBufferedDataDefEClass_D);
+		g1.getETypeArguments().add(g2);
+		unaryBufferedDataDefEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getBufferedDataDef());
+		g2 = createEGenericType(unaryBufferedDataDefEClass_D);
+		g1.getETypeArguments().add(g2);
+		unaryBufferedDataDefEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getUnaryDataDef());
 		g2 = createEGenericType(unaryCompoundDataDefEClass_D);
 		g1.getETypeArguments().add(g2);
 		unaryCompoundDataDefEClass.getEGenericSuperTypes().add(g1);
@@ -1551,7 +1566,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		g1 = createEGenericType(this.getUnaryAtomicDataDef());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
-		initEReference(getListDef_Argument(), g1, null, "argument", null, 1, 1, QListDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getListDef_Argument(), g1, null, "argument", null, 0, 1, QListDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(multipleAtomicDataDefEClass, QMultipleAtomicDataDef.class, "MultipleAtomicDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1577,13 +1592,11 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		initEClass(pointerDefEClass, QPointerDef.class, "PointerDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(scrollerDefEClass, QScrollerDef.class, "ScrollerDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getScrollerDef_Order(), theIntegratedLanguageDataPackage.getSortDirection(), "order", "A", 0, 1, QScrollerDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stringDefEClass, QStringDef.class, "StringDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(strollerDefEClass, QStrollerDef.class, "StrollerDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStrollerDef_Length(), ecorePackage.getEInt(), "length", null, 0, 1, QStrollerDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStrollerDef_Order(), theIntegratedLanguageDataPackage.getSortDirection(), "order", "A", 0, 1, QStrollerDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(unaryAtomicDataDefEClass, QUnaryAtomicDataDef.class, "UnaryAtomicDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1592,13 +1605,15 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		op = addEOperation(unaryAtomicBufferedDataDefEClass, null, "setLength", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "length", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(unaryBufferedDataDefEClass, QUnaryBufferedDataDef.class, "UnaryBufferedDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(unaryCompoundDataDefEClass, QUnaryCompoundDataDef.class, "UnaryCompoundDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(unaryDataDefEClass, QUnaryDataDef.class, "UnaryDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(wrapperDefEClass, QWrapperDef.class, "WrapperDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(this.getBufferedDataDef());
-		g2 = createEGenericType();
+		g1 = createEGenericType(this.getUnaryBufferedDataDef());
+		g2 = createEGenericType(wrapperDefEClass_D);
 		g1.getETypeArguments().add(g2);
 		initEReference(getWrapperDef_Argument(), g1, null, "argument", null, 1, 1, QWrapperDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

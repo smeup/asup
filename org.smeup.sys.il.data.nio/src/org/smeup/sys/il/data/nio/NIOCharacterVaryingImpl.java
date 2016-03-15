@@ -11,98 +11,92 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import org.smeup.sys.il.data.QBufferedData;
+import java.nio.ByteBuffer;
+
 import org.smeup.sys.il.data.QDataContext;
-import org.smeup.sys.il.data.QString;
 
 public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 
 	private static final long serialVersionUID = 1L;
-
-	protected short __length;
-
-	public NIOCharacterVaryingImpl(QDataContext dataContext) {
-		super(dataContext);
-	}
 
 	public NIOCharacterVaryingImpl(QDataContext dataContext, int size) {
 		super(dataContext, size);
 	}
 
 	@Override
-	public void clear() {
-		super.clear();
-		this.__length = 0;
+	protected NIOBufferedDataImpl allocate() {
+		super.allocate();
+		
+		ByteBuffer buffer = getBuffer();
+		NIOBufferHelper.prepare(buffer, getPosition(), 2);
+		buffer.putShort((short) 0);
+		
+		return this;
 	}
-
+	
 	@Override
-	public byte[] asBytes() {
-		return NIOBufferHelper.readBytes(getBuffer(), getPosition(), getLength());
-	}
-
-	@Override
-	public void eval(boolean value) {
-		this.__length = 1;
-		super.eval(value);
-	}
-
-	@Override
-	public void eval(QString value) {
-
-		if (value == null) {
-			clear();
-			return;
-		}
-
-		this.__length = (value.getLength() > getSize() ? (short) getSize() : (short) value.getLength());
-
-		super.eval(value);
-	}
-
-	@Override
-	public void eval(String value) {
-
-		if (value == null) {
-			clear();
-			return;
-		}
-
-		this.__length = (value.length() > getSize() ? (short) getSize() : (short) value.length());
-
-		super.eval(value);
+	public int getSize() {
+		return _length + 2;
 	}
 
 	@Override
 	public int getLength() {
-		return this.__length;
+		ByteBuffer buffer = getBuffer();
+		NIOBufferHelper.prepare(buffer, getPosition(), 2);
+		return buffer.getShort();
 	}
 
 	@Override
-	public void move(QBufferedData value, boolean clear) {
-		NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value.asBytes(), clear, getFiller());
+	public final boolean isVarying() {
+		return true;
+	}
+	
+	@Override
+	protected void _clear() {
+
+		ByteBuffer buffer = getBuffer();
+		NIOBufferHelper.prepare(buffer, getPosition(), 2);
+		buffer.putShort((short) 0);
+		
+		NIOBufferHelper.clear(getBuffer(), getPosition() + 2, _length, getFiller());
 	}
 
 	@Override
-	public void move(String value, boolean clear) {
-		NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value.getBytes(getDataContext().getCharset()), clear, getFiller());
+	protected void _write(byte[] value) {
+		
+		ByteBuffer buffer = getBuffer();
+		NIOBufferHelper.prepare(buffer, getPosition(), 2);
+		if (value.length > _length) 
+			buffer.putShort((short) _length);
+		else 
+			buffer.putShort((short) value.length);
+		
+		if(value.length > _length)
+			NIOBufferHelper.movel(getBuffer(), getPosition() + 2, _length, value, true, getFiller());
+		else
+			NIOBufferHelper.movel(getBuffer(), getPosition() + 2, value.length, value, true, getFiller());
 	}
 
 	@Override
-	public void movel(QBufferedData value, boolean clear) {
-
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value.asBytes(), clear, getFiller());
+	protected void _move(byte[] value, boolean clear) {
+		NIOBufferHelper.move(getBuffer(), getPosition() + 2, getLength(), value, clear, getFiller());
 	}
 
 	@Override
-	public void movel(String value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value.getBytes(getDataContext().getCharset()), clear, getFiller());
+	protected void _movel(byte[] value, boolean clear) {
+		NIOBufferHelper.movel(getBuffer(), getPosition() + 2, getLength(), value, clear, getFiller());
 	}
 
 	@Override
-	public void eval(byte value) {
+	protected byte[] _toBytes() {
+		return NIOBufferHelper.read(getBuffer(), getPosition() + 2, getLength());
+	}
 
-		this.__length = 1;
-
-		super.eval(value);
+	@Override
+	protected void _fill(byte[] value, boolean maxLength) {
+		if(maxLength)
+			NIOBufferHelper.fill(getBuffer(), getPosition()+2, _length, value);
+		else
+			NIOBufferHelper.fill(getBuffer(), getPosition()+2, getLength(), value);
 	}
 }

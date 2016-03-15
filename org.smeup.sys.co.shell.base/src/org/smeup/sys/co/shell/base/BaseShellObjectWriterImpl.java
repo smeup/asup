@@ -124,10 +124,6 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 				QObjectNameable qValue = (QObjectNameable) value;
 				data.accept(dataWriter.set(qValue.getName()));
 				streamWrite(data + "|");
-			} else if (value instanceof QObject) {
-				QObject qValue = (QObject) value;
-				data.accept(dataWriter.set(qValue.toString()));
-				streamWrite(data + "|");
 			} else if (value instanceof Enumerator) {
 				Enumerator eEnumerator = (Enumerator) value;
 				data.accept(dataWriter.set(eEnumerator.getName()));

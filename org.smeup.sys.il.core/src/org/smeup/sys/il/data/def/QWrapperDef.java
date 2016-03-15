@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.data.def;
 
+import org.smeup.sys.il.data.QBufferedElement;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +26,7 @@ package org.smeup.sys.il.data.def;
  * @model abstract="true"
  * @generated
  */
-public interface QWrapperDef {
+public interface QWrapperDef<D extends QBufferedElement> {
 	/**
 	 * Returns the value of the '<em><b>Argument</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -34,12 +36,12 @@ public interface QWrapperDef {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference.
-	 * @see #setArgument(QBufferedDataDef)
+	 * @see #setArgument(QUnaryBufferedDataDef)
 	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getWrapperDef_Argument()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	QBufferedDataDef<?> getArgument();
+	QUnaryBufferedDataDef<D> getArgument();
 
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.il.data.def.QWrapperDef#getArgument <em>Argument</em>}' containment reference.
@@ -49,6 +51,6 @@ public interface QWrapperDef {
 	 * @see #getArgument()
 	 * @generated
 	 */
-	void setArgument(QBufferedDataDef<?> value);
+	void setArgument(QUnaryBufferedDataDef<D> value);
 
 } // QWrapperDef
