@@ -2765,6 +2765,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(dataWriterEClass, this.getDataWriter(), "set", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEJavaObject(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(dataWriterEClass, this.getDataWriter(), "set", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDataSpecial(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(datetimeEClass, QDatetime.class, "Datetime", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(datetimeEClass, null, "adddur", 0, 1, IS_UNIQUE, IS_ORDERED);

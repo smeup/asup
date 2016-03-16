@@ -118,6 +118,17 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 		return this;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QDataWriter set(DataSpecial value) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
 	@Override
 	public boolean visit(QAdapter data) {
 		data.eval(object);

@@ -314,6 +314,7 @@ public class RPJProgramSupport {
 		if (character == null)
 			qCharacter = dataContext.getDataFactory().createCharacter(0, false, false);
 		else
+			// TODO use cache
 			qCharacter = dataContext.getDataFactory().createCharacter(character.length(), false, true);
 
 		qCharacter.eval(character);

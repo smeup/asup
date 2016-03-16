@@ -71,6 +71,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	@Override
 	public QDataTerm<?> createDataTerm(String name, Type type, List<Annotation> annotations) {
 
+		if(annotations == null)
+			annotations = new ArrayList<Annotation>();
+		
 		QDataTerm<QDataDef<?>> dataTerm = new DataTermImpl<QDataDef<?>>() {
 			private static final long serialVersionUID = 1L;
 		};
@@ -86,7 +89,8 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 				QDefault _default = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createDefault();
 				if (!dataDef.value().isEmpty())
 					_default.setValue(dataDef.value());
-				_default.getValues().addAll(Arrays.asList(dataDef.values()));
+				else
+					_default.getValues().addAll(Arrays.asList(dataDef.values()));
 
 				if (!_default.isEmpty())
 					dataTerm.setDefault(_default);

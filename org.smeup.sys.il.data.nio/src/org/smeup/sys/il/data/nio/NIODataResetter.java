@@ -12,6 +12,9 @@
 package org.smeup.sys.il.data.nio;
 
 import org.smeup.sys.il.core.meta.QDefault;
+import org.smeup.sys.il.data.DataSpecial;
+import org.smeup.sys.il.data.QBufferedElement;
+import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataWriter;
@@ -51,34 +54,38 @@ public class NIODataResetter extends DataTermVisitorImpl {
 				break;
 			}
 
-			QList<?> list = (QList<?>) data;
-			
-			if (default_.getValue() != null){
-			
-				//Default defined as single value
+			QBufferedList<?> list = (QBufferedList<?>) data;
+
+			if (default_.getValue() != null) {
+
+				// Default defined as single value
 				QSpecialElement specialElement = getSpecialElement(term, default_.getValue());
-				if (specialElement != null) {					
+				if (specialElement != null) {
 					list.accept(dataWriter.set(specialElement));
-					
 				} else {
-					list.accept(dataWriter.set(default_.getValue()));
+					DataSpecial dataSpecial = DataSpecial.get(default_.getValue());
+					if (dataSpecial != null)
+						list.eval(dataSpecial);
+					else
+						list.accept(dataWriter.set(default_.getValue()));
 				}
-			} else {
-				
-				// Default defined as multiple values
-				if (!default_.getValues().isEmpty()) {
-				
-					int i = 1;
-					for (String value : default_.getValues()) {
-		
-						QSpecialElement specialElement = getSpecialElement(term, value);
-						if (specialElement != null) {
-							list.get(i).accept(dataWriter.set(specialElement));					
-						} else
+			}
+			// Default defined as multiple values
+			else if (!default_.getValues().isEmpty()) {
+				int i = 1;
+				for (String value : default_.getValues()) {
+
+					QSpecialElement specialElement = getSpecialElement(term, value);
+					if (specialElement != null) {
+						list.get(i).accept(dataWriter.set(specialElement));
+					} else {
+						DataSpecial dataSpecial = DataSpecial.get(value);
+						if (dataSpecial != null)
+							list.get(i).eval(dataSpecial);
+						else
 							list.get(i).accept(dataWriter.set(value));
-		
-						i++;
 					}
+					i++;
 				}
 			}
 
@@ -86,7 +93,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 		case MULTIPLE_COMPOUND:
 			result = true;
 
-			list = (QList<?>) data;
+			list = (QBufferedList<?>) data;
 			default_ = term.getDefault();
 			if (default_ != null) {
 				int i = 1;
@@ -100,8 +107,13 @@ public class NIODataResetter extends DataTermVisitorImpl {
 							for (int e = i; e <= list.capacity(); e++)
 								list.get(e).accept(dataWriter.set(specialElement));
 						result = false;
-					} else
-						list.get(i).accept(dataWriter.set(value));
+					} else {
+						DataSpecial dataSpecial = DataSpecial.get(value);
+						if (dataSpecial != null)
+							list.get(i).eval(dataSpecial);
+						else
+							list.get(i).accept(dataWriter.set(value));
+					}
 
 					i++;
 				}
@@ -130,8 +142,14 @@ public class NIODataResetter extends DataTermVisitorImpl {
 			QSpecialElement specialElement = getSpecialElement(term, default_.getValue());
 			if (specialElement != null)
 				data.accept(dataWriter.set(specialElement));
-			else
-				data.accept(dataWriter.set(default_.getValue()));
+			else {
+				DataSpecial dataSpecial = DataSpecial.get(default_.getValue());
+				if (dataSpecial != null) {
+					QBufferedElement bufferedElement = (QBufferedElement) data;
+					bufferedElement.eval(dataSpecial);
+				} else
+					data.accept(dataWriter.set(default_.getValue()));
+			}
 
 			break;
 		case UNARY_COMPOUND:
@@ -139,17 +157,16 @@ public class NIODataResetter extends DataTermVisitorImpl {
 
 			default_ = term.getDefault();
 			QStruct<?> struct = null;
-			
+
 			// elements
 			QCompoundDataDef<?, ?> compoundDef = null;
 
 			// TODO
-			if(data instanceof QDataArea<?>) {
-				QDataArea<?> dataArea = (QDataArea<?>)data;
+			if (data instanceof QDataArea<?>) {
+				QDataArea<?> dataArea = (QDataArea<?>) data;
 				struct = (QStruct<?>) dataArea.get();
-				compoundDef = (QCompoundDataDef<?, ?>) ((QDataAreaDef<?>)term.getDefinition()).getArgument();
-			}
-			else { 
+				compoundDef = (QCompoundDataDef<?, ?>) ((QDataAreaDef<?>) term.getDefinition()).getArgument();
+			} else {
 				struct = (QStruct<?>) data;
 				compoundDef = (QCompoundDataDef<?, ?>) term.getDefinition();
 			}
@@ -159,12 +176,18 @@ public class NIODataResetter extends DataTermVisitorImpl {
 				if (specialElement != null) {
 					struct.accept(dataWriter.set(specialElement));
 					result = false;
-				} else
-					data.accept(dataWriter.set(default_.getValue()));
+				} else {
+					DataSpecial dataSpecial = DataSpecial.get(default_.getValue());
+					if (dataSpecial != null) {
+						QBufferedElement bufferedElement = (QBufferedElement) data;
+						bufferedElement.eval(dataSpecial);
+					} else
+						data.accept(dataWriter.set(default_.getValue()));
+				}
 			}
 
 			if (result) {
-				
+
 				for (QDataTerm<?> child : compoundDef.getElements()) {
 					NIODataResetter childResetter = new NIODataResetter(struct.getElement(child.getName()));
 					child.accept(childResetter);
@@ -177,6 +200,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 		}
 
 		return result;
+
 	}
 
 	private QSpecialElement getSpecialElement(QDataTerm<?> dataTerm, String value) {

@@ -101,10 +101,10 @@ public class NIODataFactoryImpl implements QDataFactory {
 	private QDataAreaFactory dataAreaFactory;
 	private QDataContext dataContext;
 	private QDataWriter dataWriter;
-	
+
 	protected NIODataFactoryImpl(QDataContext dataContext, QDataAreaFactory dataAreaFactory) {
 		this.dataContext = dataContext;
-		this.dataWriter  = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
+		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 		this.dataAreaFactory = dataAreaFactory;
 	}
 
@@ -273,7 +273,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 			// argument
 			QDataDef<?> argumentDef = createDataDef(arguments.get(0), annotations);
-			scrollerDef.setArgument((QUnaryAtomicBufferedDataDef<?>) argumentDef);			
+			scrollerDef.setArgument((QUnaryAtomicBufferedDataDef<?>) argumentDef);
 
 			dataDef = scrollerDef;
 		}
@@ -331,7 +331,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 		if (dataDef == null)
 			throw new IntegratedLanguageCoreRuntimeException("Unknown class: " + klass);
-		
+
 		injectAnnotations(annotations, dataDef);
 
 		return dataDef;
@@ -414,7 +414,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@Override
 	public <D extends QDataStruct> D createDataStruct(Class<D> classDelegator, int length, boolean initialize) {
-		
+
 		// data structure
 		D dataStructure = null;
 
@@ -462,10 +462,10 @@ public class NIODataFactoryImpl implements QDataFactory {
 				QDecimal overlayedNextPos = overlayedToNextPos.get(overlayedData);
 				if (overlayedNextPos == null) {
 					overlayedNextPos = createDecimal(5, 0, DecimalType.PACKED, true);
-					overlayedNextPos.plus(overlayedData.getPosition()+1);
+					overlayedNextPos.plus(overlayedData.getPosition() + 1);
 					overlayedToNextPos.put(overlayedData, overlayedNextPos);
 				}
-				
+
 				if (overlay.position() >= 1)
 					overlayedNextPos.eval(overlay.position());
 
@@ -498,7 +498,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 				QData dataElement = dataStructure.getElement(field.getName());
 				if (dataElement == null)
-					continue;
+					continue; // TODO throw Exception
 
 				// default
 				if (dataElement instanceof QList<?>) {
@@ -517,11 +517,9 @@ public class NIODataFactoryImpl implements QDataFactory {
 								value = value.substring(1).substring(0, value.lastIndexOf("'") - 1);
 
 								dataElement.accept(dataWriter.set(value));
-							} 
-							else if(value.startsWith("*")) {
+							} else if (value.startsWith("*")) {
 								dataElement.accept(dataWriter.set(value));
-							}
-							else
+							} else
 								dataElement.accept(dataWriter.set(value));
 						} else {
 							dataElement.accept(dataWriter.set(annotationDef.value()));
@@ -544,7 +542,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 		Map<QBufferedData, QDecimal> overlayedToNextPos = new HashMap<QBufferedData, QDecimal>();
 
 		for (QDataTerm<?> dataTerm : dataTerms) {
-			
+
 			QBufferedData dataElement = (QBufferedData) createData(dataTerm, false);
 
 			QOverlay overlay = dataTerm.getFacet(QOverlay.class);
@@ -559,24 +557,24 @@ public class NIODataFactoryImpl implements QDataFactory {
 				dataStructureDelegate.addElement(dataTerm.getName(), dataElement, ownerNextPos);
 				ownerNextPos += dataElement.getSize();
 			} else {
-				
+
 				NIOBufferedDataImpl overlayedData = null;
-				if(overlay.getName().equalsIgnoreCase(name))
+				if (overlay.getName().equalsIgnoreCase(name))
 					overlayedData = dataStructureDelegate;
 				else
 					// TODO remove lowerCase
-					overlayedData = (NIOBufferedDataImpl) dataStructureDelegate.getElement(overlay.getName().toLowerCase());				
-				
+					overlayedData = (NIOBufferedDataImpl) dataStructureDelegate.getElement(overlay.getName().toLowerCase());
+
 				if (overlayedData == null)
 					throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: s87rfysd8fsd");
 
 				QDecimal overlayedNextPos = overlayedToNextPos.get(overlayedData);
 				if (overlayedNextPos == null) {
 					overlayedNextPos = createDecimal(5, 0, DecimalType.PACKED, true);
-					overlayedNextPos.plus(overlayedData.getPosition()+1);
+					overlayedNextPos.plus(overlayedData.getPosition() + 1);
 					overlayedToNextPos.put(overlayedData, overlayedNextPos);
 				}
-				
+
 				if (overlay.getPosition() >= 1)
 					overlayedNextPos.eval(overlay.getPosition());
 
@@ -705,7 +703,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	private void initialize(QData data) {
 
 		NIOBufferedDataImpl nioBufferedData = NIOBufferHelper.getNIOBufferedDataImpl(data);
-		if(nioBufferedData == null)
+		if (nioBufferedData == null)
 			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: khsd87sd74c2dn");
 		nioBufferedData.allocate();
 	}
@@ -741,16 +739,15 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 		// merge annotations by reflection
 		for (Annotation annotation : annotations) {
-			
-			if(annotation instanceof DataDef) {
-				DataDef dataDef = (DataDef)annotation;
-				if(dataDef.packed()) {
-					if(eObject instanceof QMultipleAtomicBufferedDataDef<?>) {
+
+			if (annotation instanceof DataDef) {
+				DataDef dataDef = (DataDef) annotation;
+				if (dataDef.packed()) {
+					if (eObject instanceof QMultipleAtomicBufferedDataDef<?>) {
 						QMultipleAtomicBufferedDataDef<?> multipleAtomicBufferedDataDef = (QMultipleAtomicBufferedDataDef<?>) eObject;
 						QDecimalDef decimalDef = (QDecimalDef) multipleAtomicBufferedDataDef.getArgument();
 						decimalDef.setType(DecimalType.PACKED);
-					}
-					else {
+					} else {
 						QDecimalDef decimalDef = (QDecimalDef) eObject;
 						decimalDef.setType(DecimalType.PACKED);
 					}
@@ -820,24 +817,24 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@Override
 	public QPointer createPointer(final int bufferLength) {
-		
-		if(bufferLength < 0)
+
+		if (bufferLength < 0)
 			throw new IntegratedLanguageDataRuntimeException("Invalid bufferLength");
-		
+
 		return new NIOPointerImpl(getDataContext(), new NIOStorageImpl(bufferLength));
 	}
 
 	@Override
 	public QPointer createPointer(QPointer pointer, int newSize) {
 
-		NIOPointerImpl oldPointer = (NIOPointerImpl)pointer;
+		NIOPointerImpl oldPointer = (NIOPointerImpl) pointer;
 		ByteBuffer oldBuffer = oldPointer.getBuffer();
-		
-		NIOPointerImpl newPointer = (NIOPointerImpl) createPointer(newSize);		
+
+		NIOPointerImpl newPointer = (NIOPointerImpl) createPointer(newSize);
 		ByteBuffer newBuffer = newPointer.getBuffer();
-		
-		NIOBufferHelper.movel(newBuffer, 0, newSize, oldBuffer.array(), false, (byte)0);
-		
+
+		NIOBufferHelper.movel(newBuffer, 0, newSize, oldBuffer.array(), false, (byte) 0);
+
 		return newPointer;
 	}
 

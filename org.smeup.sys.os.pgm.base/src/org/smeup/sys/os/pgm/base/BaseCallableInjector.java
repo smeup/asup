@@ -11,7 +11,6 @@
  */
 package org.smeup.sys.os.pgm.base;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -103,7 +102,8 @@ public class BaseCallableInjector {
 
 		QDataContainer dataContainer = dataManager.createDataContainer(dataContext, new HashMap<String, QDataTerm<?>>());
 
-		QDataTerm<?> programStatusTerm = dataContainer.createDataTerm("*pgmstatus", BaseProgramStatusImpl.class, new ArrayList<Annotation>());
+		// create programStatus
+		QDataTerm<?> programStatusTerm = dataContainer.createDataTerm("*pgmstatus", BaseProgramStatusImpl.class, null);
 		QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
 		if (program != null) {
 			programStatus.getProgramName().eval(program.getName());
@@ -173,8 +173,6 @@ public class BaseCallableInjector {
 			owner = callable;
 
 		injectFields(owner, klass, callable, dataContainer, accessFactory, unitModules, records);
-
-		// injectSmeupData(callable);
 
 		return callable;
 	}
