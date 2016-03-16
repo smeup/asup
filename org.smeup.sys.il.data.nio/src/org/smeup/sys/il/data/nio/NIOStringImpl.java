@@ -326,7 +326,10 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	public final void eval(boolean value) {
-		eval(DataSpecial.ON);
+		if(value)
+			eval(DataSpecial.ON);
+		else
+			eval(DataSpecial.OFF);
 	}
 
 	@Override
