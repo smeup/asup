@@ -48,7 +48,7 @@ public class NIOBufferHelper {
 			buffer.put(bytes);
 
 			if (clear) {
-				for (int i = buffer.position(); i < buffer.limit(); i++)
+				while(buffer.hasRemaining())
 					buffer.put(filler);
 			}
 		}
@@ -77,29 +77,28 @@ public class NIOBufferHelper {
 	public static void clear(ByteBuffer buffer, int position, int length, byte filler) {
 		assert buffer != null;
 
-		prepare(buffer, position, length);
-
-		for (int i = position; i < buffer.limit(); i++)
-			buffer.put(filler);
+		Arrays.fill(buffer.array(), position, position+length, filler);
 	}
 
 	public static void prepare(ByteBuffer buffer, int position, int length) {
 		assert buffer != null;
 
 		if (position > 0) {
-			buffer.position(position);
 			
 			// overflow
 			if (position + length > buffer.capacity())
 				buffer.limit(buffer.capacity());
 			else
 				buffer.limit(position + length);
+			
+			buffer.position(position);			
 		} else {
-			buffer.position(0);
 			if (length > buffer.capacity())
 				buffer.limit(buffer.capacity());
 			else
 				buffer.limit(length);
+			
+			buffer.position(0);
 		}
 	}
 
