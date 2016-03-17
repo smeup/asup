@@ -257,7 +257,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			value.append(")");
 
 		}
-		// plus, minus, multiple, cat ..
+		// plus, minus, multiple, divide ..
 		else if (expression.getRightOperand() != null) {
 
 			Class<?> target = CompilationContextHelper.getJavaClass(compilationUnit, expression.getLeftOperand());
