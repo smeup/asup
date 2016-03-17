@@ -143,20 +143,27 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 		ByteBuffer byteBuffer = ByteBuffer.allocate(getLength());
 		NIOBufferHelper.fill(byteBuffer, 0, getLength(), filler);
+		_write(byteBuffer.array());
+	}
 
-		eval(NIODecimalZonedImpl.getDecimal(getLength(), 0).toDouble(byteBuffer.array()));
+	@Override
+	protected void _fillr(byte[] filler, boolean maxLength) {
+
+		ByteBuffer byteBuffer = ByteBuffer.allocate(getLength());
+		NIOBufferHelper.fillr(byteBuffer, 0, getLength(), filler);
+		_write(byteBuffer.array());
 	}
 
 	@Override
 	protected void _move(byte[] value, boolean clear) {
-		// TODO
-		NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value, clear, getFiller());
+		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getLength(), 0);
+		eval(zoned.toDouble(value));
 	}
 
 	@Override
 	protected void _movel(byte[] value, boolean clear) {
-		// TODO
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value, clear, getFiller());
+		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getLength(), 0);
+		eval(zoned.toDouble(value));
 	}
 
 	@Override

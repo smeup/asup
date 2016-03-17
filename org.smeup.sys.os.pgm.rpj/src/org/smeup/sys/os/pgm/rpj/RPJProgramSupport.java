@@ -668,48 +668,6 @@ public class RPJProgramSupport {
 		return array.qSubarr(start, elements);
 	}
 
-	public QString qTrim(String source) {
-		return qTrim(qBox(source));
-	}
-
-	public QString qTrim(QString source) {
-
-		String str = source.trim();
-		QCharacter character = dataContext.getDataFactory().createCharacter(str.length(), false, true);
-		character.eval(str);
-
-		return character;
-
-	}
-
-	public QString qTriml(String source) {
-		return qTriml(qBox(source));
-	}
-
-	public QString qTriml(QString source) {
-
-		String str = source.trimL();
-		QCharacter character = dataContext.getDataFactory().createCharacter(str.length(), false, true);
-		character.eval(str);
-
-		return character;
-
-	}
-
-	public QString qTrimr(String source) {
-		return qTrimr(qBox(source));
-	}
-
-	public QString qTrimr(QString source) {
-
-		String str = source.trimR();
-		int length = str.length();
-		QCharacter character = dataContext.getDataFactory().createCharacter(length, false, true);
-		character.eval(str);
-
-		return character;
-	}
-
 	public QString qCat(String string1, String string2) {
 		return qCat(qBox(string1), qBox(string1));
 	}

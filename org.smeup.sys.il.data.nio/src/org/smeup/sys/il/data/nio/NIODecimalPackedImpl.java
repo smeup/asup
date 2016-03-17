@@ -91,6 +91,15 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 
 		eval(NIODecimalZonedImpl.getDecimal(getPrecision(), getScale()).toDouble(byteBuffer.array()));
 	}
+	
+	@Override
+	protected void _fillr(byte[] filler, boolean maxLength) {
+
+		ByteBuffer byteBuffer = ByteBuffer.allocate(getLength());
+		NIOBufferHelper.fillr(byteBuffer, 0, getLength(), filler);
+
+		eval(NIODecimalZonedImpl.getDecimal(getPrecision(), getScale()).toDouble(byteBuffer.array()));
+	}
 
 	@Override
 	protected void _move(byte[] value, boolean clear) {

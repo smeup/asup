@@ -388,6 +388,11 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	}
 
 	@Override
+	protected void _fillr(byte[] value, boolean maxLength) {
+		NIOBufferHelper.fillr(getBuffer(), getPosition(), getLength(), value);
+	}
+	
+	@Override
 	protected void _move(byte[] value, boolean clear) {
 		NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value, clear, getFiller());
 	}

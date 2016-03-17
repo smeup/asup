@@ -60,7 +60,7 @@ public class JobDisplayer {
 			objectWriter.write(jobFound);
 			objectWriter.flush();
 		} catch (JobNotFoundException e) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1070, new String[] { jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trim() });
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1070, new String[] { jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trimR() });
 		} catch (IOException e) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF9871);
 		}

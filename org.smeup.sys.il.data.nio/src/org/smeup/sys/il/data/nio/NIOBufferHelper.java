@@ -22,6 +22,7 @@ import org.smeup.sys.il.data.QBufferedElementDelegator;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QStorable;
+import org.smeup.sys.il.data.QString;
 
 public class NIOBufferHelper {
 
@@ -127,6 +128,39 @@ public class NIOBufferHelper {
 		assert buffer != null;
 
 		Arrays.fill(buffer.array(), position, position+length, filler);
+	}
+	
+
+	public static void fillr(ByteBuffer buffer, int position, int length, byte[] filler) {
+		assert buffer != null;
+
+		if(filler.length == 1) {
+			fill(buffer, position, length, filler[0]);
+			return;
+		}
+
+		int remainder = length % filler.length; 
+		if(remainder == 0) {
+			fill(buffer, position, length, filler);
+			return;
+		}
+
+		prepare(buffer, position, length);
+		if(remainder == length) {
+			buffer.put(filler, filler.length - length, length);
+			return;
+		}
+
+		buffer.put(filler, filler.length-remainder, remainder);		
+		while(true) {
+			int remaining = buffer.remaining();
+			if(remaining > filler.length)
+				buffer.put(filler);
+			else {
+				buffer.put(filler, 0, remaining);
+				break;
+			}
+		}
 	}
 
 	public static void assign(QStorable storable, QBufferedData target) {
@@ -304,5 +338,39 @@ public class NIOBufferHelper {
 		NIOBufferHelper.fill(byteBuffer, 0, length, value.get().asBytes());
 
 		return compareBytes(bufferedElement, byteBuffer.array());
+	}
+	
+	public static byte[] trim(QString string) {
+		
+		byte[] bytes = string.asBytes();
+		int i = 0;
+		while (i < bytes.length && (bytes[i] == NIOStringImpl.INIT || bytes[i] == 0))
+			i++;
+		
+		int f = bytes.length - 1;
+		while (f >= 0 && (bytes[f] == NIOStringImpl.INIT || bytes[f] == 0))
+			f--;
+		
+		return Arrays.copyOfRange(bytes, i, f+1);
+	}
+	
+	public static byte[] trimL(QString string) {
+		
+		byte[] bytes = string.asBytes();
+		int i = 0;
+		while (i < bytes.length && (bytes[i] == NIOStringImpl.INIT || bytes[i] == 0))
+			i++;
+		
+		return Arrays.copyOfRange(bytes, i, bytes.length);
+	}
+	
+	public static byte[] trimR(QString string) {
+
+		byte[] bytes = string.asBytes();
+		int i = bytes.length - 1;
+		while (i >= 0 && (bytes[i] == NIOStringImpl.INIT || bytes[i] == 0))
+			i--;
+		
+		return Arrays.copyOfRange(bytes, 0, i+1);
 	}
 }

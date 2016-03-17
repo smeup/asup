@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.nio.ByteBuffer;
+
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
@@ -41,8 +43,6 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 		visitor.visit(this);
 	}
 
-
-
 	@Override
 	public int getLength() {
 		return _length;
@@ -51,6 +51,26 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	@Override
 	public int getSize() {
 		return _length;
+	}
+
+	@Override
+	public void evalr(QString value) {
+
+		byte[] bytes = value.asBytes();
+		if (bytes.length > _length) {
+			_move(bytes, false);
+		} else
+			_move(bytes, true);
+	}
+
+	@Override
+	public void evalr(String value) {
+
+		byte[] bytes = value.getBytes(getDataContext().getCharset());
+		if (bytes.length > _length) {
+			_move(bytes, false);
+		} else
+			_move(bytes, true);
 	}
 
 	@Override
@@ -111,23 +131,25 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	@Override
 	public QNumeric qScan(String source, Number start, QIndicator found) {
 
-		getDataContext().found().eval(false);
-
 		// TODO use cache
 		QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+
+		// default
 		if (start == null)
 			start = 1;
-
-		int i = source.indexOf(asString(), start.intValue() - 1);
-		if (i < 0)
-			number.eval(0);
-		else {
+		
+		int i = source.indexOf(asString(), start.intValue() - 1);		
+		if (i >= 0) {
 			number.eval(i + 1);
 			getDataContext().found().eval(true);
 		}
+		else {
+			getDataContext().found().eval(false);
+		}
+		
 		if (found != null)
-			found.eval(number.ge(1));
-
+			found.eval(getDataContext().found());
+		
 		return number;
 	}
 
@@ -318,7 +340,7 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 		for (char c : source.toCharArray()) {
 			int i = from.indexOf(c);
 			if (startId >= start.intValue() && (to.length() >= i && i >= 0)) {
-				if(i+1 > to.length())
+				if (i + 1 > to.length())
 					break;
 				sb.append(to.substring(i, i + 1));
 			} else {
@@ -330,6 +352,49 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	}
 
 	@Override
+	protected void cat(byte[] factor1, byte[] factor2, Number space, boolean clear) {
+		
+		ByteBuffer buffer = getBuffer();
+		NIOBufferHelper.prepare(buffer, getPosition(), getLength());
+
+		int remaining = buffer.remaining();
+		if(remaining > factor1.length) {
+			buffer.put(factor1);
+			remaining = remaining - factor1.length;
+		}
+		else {
+			buffer.put(factor1, 0, remaining);
+			return;
+		}
+
+		if(space != null) {
+			int s = space.intValue();
+			if(s>remaining) {
+				for(int i=0; i<remaining;i++)
+					buffer.put(getFiller());
+				return;
+			}
+			else {
+				for(int i=0; i<s; i++)
+					buffer.put(getFiller());
+				
+				remaining = remaining - s;
+			}
+		}
+
+		if(remaining > factor2.length)
+			buffer.put(factor2);
+		else {
+			buffer.put(factor2, 0, remaining);
+			return;
+		}
+
+		if(clear)
+			while(buffer.hasRemaining())
+				buffer.put(getFiller());
+	}
+
+	@Override
 	protected void _clear() {
 		NIOBufferHelper.clear(getBuffer(), getPosition(), getSize(), getFiller());
 	}
@@ -338,12 +403,17 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	protected void _fill(byte[] value, boolean maxLength) {
 		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), value);
 	}
-	
+
+	@Override
+	protected void _fillr(byte[] value, boolean maxLength) {
+		NIOBufferHelper.fillr(getBuffer(), getPosition(), getSize(), value);
+	}
+
 	@Override
 	protected void _write(byte[] value) {
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value, true, getFiller());
 	}
-	
+
 	@Override
 	protected void _move(byte[] value, boolean clear) {
 		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value, clear, getFiller());

@@ -1,6 +1,5 @@
 package org.smeup.sys.il.data.nio;
 
-import java.nio.ByteBuffer;
 import java.util.Arrays;
 
 import org.smeup.sys.il.data.BufferedElementType;
@@ -99,215 +98,179 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	public final String asString() {
 		return new String(asBytes(), getDataContext().getCharset());
 	}
+	
 	@Override
 	public final void cat(QString factor1) {
-		cat(factor1, false);
+		cat(this.asBytes(), factor1.asBytes(), null, false);
 	}
 
 	@Override
 	public final void cat(QString factor1, boolean clear) {
-		if (clear)
-			this.clear();
-		
-		eval(trimR() + factor1.asString());
+		cat(this.asBytes(), factor1.asBytes(), null, clear); 
 	}
 
 	@Override
 	public final void cat(QString factor1, Number space) {
-		cat(factor1.asString(), space, false);
+		cat(NIOBufferHelper.trimR(this), factor1.asBytes(), space, false);
 	}
 
 	@Override
 	public final void cat(QString factor1, Number space, boolean clear) {
-		cat(factor1.asString(), space, clear);
+		cat(NIOBufferHelper.trimR(this), factor1.asBytes(), space, clear);
 	}
 
 	@Override
 	public final void cat(QString factor1, QNumeric space) {
-		cat(factor1.asString(), space.i(), false);
+		cat(NIOBufferHelper.trimR(this), factor1.asBytes(), space.asInteger(), false);
 	}
 
 	@Override
 	public final void cat(QString factor1, QNumeric space, boolean clear) {
-		cat(factor1.asString(), space.i(), clear);
+		cat(NIOBufferHelper.trimR(this), factor1.asBytes(), space.asInteger(), clear);
 	}
 
 	@Override
 	public final void cat(QString factor1, QString factor2) {
-		cat(factor1.asString(), factor2.asString(), (Number) null, false);
+		cat(factor1.asBytes(), factor2.asBytes(), null, false);
 	}
 
 	@Override
 	public final void cat(QString factor1, QString factor2, boolean clear) {
-		cat(factor1.asString(), factor2.asString(), (Number) null, clear);
+		cat(factor1.asBytes(), factor2.asBytes(), null, clear);
 	}
 
 	@Override
 	public final void cat(QString factor1, QString factor2, Number space) {
-		cat(factor1.asString(), factor2.asString(), space, false);
+		cat(NIOBufferHelper.trimR(factor1), factor2.asBytes(), space, false);
 	}
 
 	@Override
 	public final void cat(QString factor1, QString factor2, Number space, boolean clear) {
-		cat(factor1.asString(), factor2.asString(), space, clear);
+		cat(NIOBufferHelper.trimR(factor1), factor2.asBytes(), space, clear);
 	}
 
 	@Override
 	public final void cat(QString factor1, QString factor2, QNumeric space) {
-		cat(factor1.asString(), factor2.asString(), space.i(), false);
+		cat(NIOBufferHelper.trimR(factor1), factor2.asBytes(), space.i(), false);
 	}
 
 	@Override
 	public final void cat(QString factor1, QString factor2, QNumeric space, boolean clear) {
-		cat(factor1.asString(), factor2.asString(), space.i(), clear);
+		cat(NIOBufferHelper.trimR(factor1), factor2.asBytes(), space.i(), clear);
 	}
 
 	@Override
 	public final void cat(QString factor1, String factor2) {
-		cat(factor1.asString(), factor2, (Number) null, false);
+		cat(factor1.asBytes(), factor2.getBytes(getDataContext().getCharset()), null, false);
 	}
 
 	@Override
 	public final void cat(QString factor1, String factor2, boolean clear) {
-		cat(factor1.asString(), factor2, (Number) null, clear);
+		cat(factor1.asBytes(), factor2.getBytes(getDataContext().getCharset()), null, clear);
 	}
 
 	@Override
 	public final void cat(QString factor1, String factor2, Number space) {
-		cat(factor1.asString(), factor2, space, false);
+		cat(NIOBufferHelper.trimR(factor1), factor2.getBytes(getDataContext().getCharset()), space, false);
 	}
 
 	@Override
 	public final void cat(QString factor1, String factor2, Number space, boolean clear) {
-		cat(factor1.asString(), factor2, space, clear);
+		cat(NIOBufferHelper.trimR(factor1), factor2.getBytes(getDataContext().getCharset()), space, clear);
 	}
 
 	@Override
 	public final void cat(String factor1) {
-		cat(factor1, false);
+		cat(this.asBytes(), factor1.getBytes(getDataContext().getCharset()), null, false);
 	}
 
 	@Override
 	public final void cat(String factor1, boolean clear) {
-		cat(factor1, (String) null, (Number) null, clear);
+		cat(this.asBytes(), factor1.getBytes(getDataContext().getCharset()), null, clear);
 	}
 
 	@Override
 	public final void cat(String factor1, Number space) {
-		cat(factor1, space, false);
+		cat(NIOBufferHelper.trimR(this), factor1.getBytes(getDataContext().getCharset()), space, false);
 	}
 
 	@Override
 	public final void cat(String factor1, Number space, boolean clear) {
-		cat(factor1, (String) null, space, clear);
+		cat(NIOBufferHelper.trimR(this), factor1.getBytes(getDataContext().getCharset()), space, clear);
 	}
 
 	@Override
 	public final void cat(String factor1, QNumeric space) {
-		cat(factor1, space.i(), false);
+		cat(NIOBufferHelper.trimR(this), factor1.getBytes(getDataContext().getCharset()), space.asInteger(), false);
 	}
 
 	@Override
 	public final void cat(String factor1, QNumeric space, boolean clear) {
-		cat(factor1, space.i(), clear);
+		cat(NIOBufferHelper.trimR(this), factor1.getBytes(getDataContext().getCharset()), space.asInteger(), clear);
 	}
 
 	@Override
 	public final void cat(String factor1, QString factor2) {
-		cat(factor1, factor2.asString(), (Number) null, false);
+		cat(factor1.getBytes(getDataContext().getCharset()), factor2.asBytes(), null, false);
 	}
 
 	@Override
 	public final void cat(String factor1, QString factor2, boolean clear) {
-		cat(factor1, factor2.asString(), (Number) null, clear);
+		cat(factor1.getBytes(getDataContext().getCharset()), factor2.asBytes(), null, clear);
 	}
 
 	@Override
 	public final void cat(String factor1, QString factor2, Number space) {
-		cat(factor1, factor2.asString(), space, false);
+		cat(QStrings.qINSTANCE.trimR(factor1).getBytes(getDataContext().getCharset()), factor2.asBytes(), space, false);
 	}
 
 	@Override
 	public final void cat(String factor1, QString factor2, Number space, boolean clear) {
-		cat(factor1, factor2.asString(), space, clear);
+		cat(QStrings.qINSTANCE.trimR(factor1).getBytes(getDataContext().getCharset()), factor2.asBytes(), space, clear);
 	}
 
 	@Override
 	public final void cat(String factor1, QString factor2, QNumeric space) {
-		cat(factor1, factor2.asString(), space.i(), false);
+		cat(QStrings.qINSTANCE.trimR(factor1).getBytes(getDataContext().getCharset()), factor2.asBytes(), space.asInteger(), false);
 	}
 
 	@Override
 	public final void cat(String factor1, QString factor2, QNumeric space, boolean clear) {
-		cat(factor1, factor2.asString(), space.i(), clear);
+		cat(QStrings.qINSTANCE.trimR(factor1).getBytes(getDataContext().getCharset()), factor2.asBytes(), space.asInteger(), clear);
 	}
 
 	@Override
 	public final void cat(String factor1, String factor2) {
-		cat(factor1, factor2, (Number) null, false);
+		cat(factor1.getBytes(getDataContext().getCharset()), factor2.getBytes(getDataContext().getCharset()), null, false);
 	}
 
 	@Override
 	public final void cat(String factor1, String factor2, boolean clear) {
-		cat(factor1, factor2, (Number) null, clear);
+		cat(factor1.getBytes(getDataContext().getCharset()), factor2.getBytes(getDataContext().getCharset()), null, clear);
 	}
 
 	@Override
 	public final void cat(String factor1, String factor2, Number space) {
-		cat(factor1, factor2, space, false);
+		cat(QStrings.qINSTANCE.trimR(factor1).getBytes(getDataContext().getCharset()), factor2.getBytes(getDataContext().getCharset()), space, false);
 	}
 
 	@Override
 	public final void cat(String factor1, String factor2, QNumeric space) {
-		cat(factor1, factor2, space.i(), false);
+		cat(QStrings.qINSTANCE.trimR(factor1).getBytes(getDataContext().getCharset()), factor2.getBytes(getDataContext().getCharset()), space.asInteger(), false);
 	}
 
 	@Override
 	public final void cat(String factor1, String factor2, QNumeric space, boolean clear) {
-		cat(factor1, factor2, space.i(), clear);
+		cat(QStrings.qINSTANCE.trimR(factor1).getBytes(getDataContext().getCharset()), factor2.getBytes(getDataContext().getCharset()), space.asInteger(), clear);
 	}
 
 	@Override
-	public final void cat(String factor1, String factor2, Number space, boolean clear) {
-		if (factor2 == null) {
-			if (space == null)
-				eval(this + factor1);
-			else {
-				String value = trimR();
-				int length = value.length() + space.intValue();
-				NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getDataContext().getCharset()), clear, INIT);
-				NIOBufferHelper.movel(getBuffer(), getPosition() + length, getLength(), factor1.getBytes(getDataContext().getCharset()), clear, INIT);
-			}
-		} else {
-			if (space == null)
-				eval(factor1 + factor2);
-			else {
-				// TODO trim?!?
-				String value = factor1.trim();
-				int length = value.length() + space.intValue();
-				NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getDataContext().getCharset()), clear, INIT);
-				NIOBufferHelper.movel(getBuffer(), getPosition() + length, getLength(), factor2.getBytes(getDataContext().getCharset()), clear, INIT);
-			}
-		}
-
+	public void cat(String factor1, String factor2, Number space, boolean clear) {
+		cat(QStrings.qINSTANCE.trimR(factor1).getBytes(getDataContext().getCharset()), factor2.getBytes(getDataContext().getCharset()), space, clear);
 	}
 
-	@SuppressWarnings("unused")
-	private void cat(byte[] factor1, byte[] factor2, Number space, boolean clear) {
+	protected abstract void cat(byte[] factor1, byte[] factor2, Number space, boolean clear);
 		
-		ByteBuffer buffer = getBuffer();
-		NIOBufferHelper.prepare(buffer, getPosition(), getSize());
-		buffer.put(factor1);
-		for(int i=0; i<space.intValue();i++)
-			buffer.put(getFiller());
-		
-		buffer.put(factor2);
-
-		if(clear)
-			for (int i = buffer.position(); i < buffer.limit(); i++)
-				buffer.put(getFiller());
-	}
-	
 	@Override
 	public final boolean eq(QHexadecimal value) {
 		// TODO verify
@@ -345,18 +308,6 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	@Override
 	public void eval(String value) {
 		_write(value.getBytes(getDataContext().getCharset()));
-	}
-
-	@Override
-	public final void evalr(QString value) {
-		// TODO verify
-		move(value, true);
-	}
-
-	@Override
-	public final void evalr(String value) {
-		// TODO verify
-		move(value, true);
 	}
 
 	@Override
@@ -560,12 +511,11 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	@Override
 	public QCharacter qTrim() {
 
-		// TODO remove double encoding
 		// TODO cache? 
-		String str = trim();
-		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), str.length());
+		byte[] bytes = NIOBufferHelper.trim(this);
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length);
 		character.allocate();
-		character.eval(str);
+		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes, false, getFiller());
 
 		return character;
 	}
@@ -573,12 +523,11 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	@Override
 	public QCharacter qTriml() {
 
-		// TODO remove double encoding
 		// TODO cache? 
-		String str = trimL();
-		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), str.length());
+		byte[] bytes = NIOBufferHelper.trimL(this);
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length);
 		character.allocate();
-		character.eval(str);
+		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes, false, getFiller());
 
 		return character;
 	}
@@ -586,12 +535,11 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	@Override
 	public QCharacter qTrimr() {
 		
-		// TODO remove double encoding
 		// TODO cache? 
-		String str = trimR();
-		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), str.length());
+		byte[] bytes = NIOBufferHelper.trimR(this);
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length);
 		character.allocate();
-		character.eval(str);
+		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes, false, getFiller());
 
 		return character;
 	}
@@ -643,16 +591,16 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	
 	@Override
 	public final String trim() {
-		return asString().trim();
+		return new String(NIOBufferHelper.trim(this), getDataContext().getCharset());
 	}
 
 	@Override
 	public final String trimL() {
-		return QStrings.qINSTANCE.trimL(asString());
+		return new String(NIOBufferHelper.trimL(this), getDataContext().getCharset());
 	}
 
 	@Override
 	public final String trimR() {
-		return QStrings.qINSTANCE.trimR(asString());
+		return new String(NIOBufferHelper.trimR(this), getDataContext().getCharset());
 	}
 }

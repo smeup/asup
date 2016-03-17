@@ -32,9 +32,13 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 
 	protected abstract void _fill(byte[] filler, boolean maxLength);
 
+	protected abstract void _fillr(byte[] filler, boolean maxLength);
+
 	protected abstract void _move(byte[] value, boolean clear);
 
 	protected abstract void _movel(byte[] value, boolean clear);
+
+	protected abstract void _write(byte[] value);
 
 	// external representation data, the length is current length
 	protected abstract byte[] _toBytes();
@@ -56,8 +60,6 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 
 	// external representation data, the length is string encoded length
 	protected abstract byte[] _toBytes(String value);
-
-	protected abstract void _write(byte[] value);
 
 	@Override
 	public final byte[] asBytes() {
@@ -118,8 +120,8 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	}
 
 	@Override
-	public final QBufferedData eval(DataSpecial special) {
-		_fill(_toBytes(special), true);
+	public final QBufferedData eval(DataSpecial value) {
+		_fill(_toBytes(value), true);
 		return this;
 	}
 
@@ -237,7 +239,7 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 
 	@Override
 	public final void move(QDataFiller value, boolean clear) {
-		_fill(value.get().asBytes(), false);
+		_fillr(value.get().asBytes(), false);
 	}
 
 	@Override

@@ -34,7 +34,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	private static final long serialVersionUID = 1L;
 	protected static final byte INIT = (byte) -16;
 	protected static final byte LOVAL = (byte) -16;
-	protected static final byte HIVAL = (byte) 9;
+	protected static final byte HIVAL = (byte) -7;
 	
 	public NIONumericImpl(QDataContext dataContext) {
 		super(dataContext);

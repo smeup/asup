@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
@@ -69,7 +70,12 @@ public class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicator {
 
 	@Override
 	public void eval(String value) {
-		eval(!value.equals("0"));
+		if (value.equals("0"))
+			eval(false);
+		else if (value.equals("1"))
+			eval(true);
+		else
+			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237etxvq86rea invalid value "+value);
 	}
 
 	@Override
@@ -81,20 +87,20 @@ public class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicator {
 	public QCharacter qTrim() {
 		return this;
 	}
-	
+
 	@Override
 	public QCharacter qTriml() {
 		return this;
 	}
-	
+
 	@Override
 	public QCharacter qTrimr() {
 		return this;
 	}
-	
+
 	@Override
 	public void accept(QDataVisitor visitor) {
-		visitor.visit((QIndicator)this);
+		visitor.visit((QIndicator) this);
 	}
 
 	@Override

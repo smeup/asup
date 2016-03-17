@@ -53,7 +53,7 @@ public class JobEnder {
 			QJob jobToTerminate = jobName.findJob(job, jobManager);
 			jobManager.close(jobToTerminate);
 		} catch (JobNotFoundException e) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, new String[] { jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trim() });
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, new String[] { jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trimR() });
 		}
 	}
 
