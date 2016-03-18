@@ -562,26 +562,29 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	@Override
 	public final void testn(QIndicator numeric, QIndicator blank, QIndicator blankNumeric) {
 
-		boolean isNumeric = false;
-		try {
-			Double.parseDouble(asString());
-			isNumeric = true;
-		} catch (Exception e) {
-			numeric.eval(false);
-		}
-
-		if (numeric != null)
-			numeric.eval(isNumeric);
-
 		boolean isBlank = eq(DataSpecial.BLANKS);
 		if (blank != null)
 			blank.eval(isBlank);
 
-		if (blankNumeric != null) {
-			blankNumeric.eval(false);
-			if (isNumeric && isBlank)
-				blankNumeric.eval(true);
-		}
+		boolean isBlankNumeric = false;
+		if(!isBlank)
+			isBlankNumeric = asString().startsWith(" ");
+			if (blankNumeric != null) {
+				blankNumeric.eval(isBlankNumeric);
+			}
+		
+		boolean isNumeric = false;
+		if(!isBlank && ! isBlankNumeric)
+			try {
+				Double.parseDouble(asString());
+				isNumeric = true;
+			} catch (Exception e) {
+				isNumeric = false;
+			}
+
+		if (numeric != null)
+			numeric.eval(isNumeric);
+
 	}
 
 	@Override

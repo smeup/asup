@@ -295,7 +295,7 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 
 	@Override
 	public void xlate(String from, String to, QString source, Number start, boolean clear) {
-		xlate(from, to, source.asString(), start, false);
+		xlate(from, to, source.asString(), start, clear);
 	}
 
 	@Override
@@ -336,17 +336,16 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	@Override
 	public void xlate(String from, String to, String source, Number start, boolean clear) {
 		StringBuffer sb = new StringBuffer();
-		int startId = 1;
+		int startId = 0;
 		for (char c : source.toCharArray()) {
-			int i = from.indexOf(c);
-			if (startId >= start.intValue() && (to.length() >= i && i >= 0)) {
-				if (i + 1 > to.length())
-					break;
-				sb.append(to.substring(i, i + 1));
-			} else {
-				sb.append(c);
-			}
+			if(startId > getLength())
+				break;
 			startId++;
+			int i = from.indexOf(c);
+			if(startId<start.intValue() || (i < 0) || (i + 1 > to.length()))
+				sb.append(c);
+			else
+				sb.append(to.substring(i, i + 1));
 		}
 		movel(sb.toString(), clear);
 	}
