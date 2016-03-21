@@ -35,7 +35,7 @@ public class ParseDML {
 	@TestStarted
 	public void main() throws SQLException, IOException {
 
-		for (String sql : BaseTestHelper.readTextResource(this, "dml.txt")) {
+		for (String sql : BaseTestHelper.readTextResource(this, "/resources/dml.txt")) {
 			SQLQueryParseResult parseResult = null;
 			try {
 				parseResult = queryParser.parseQuery(sql);

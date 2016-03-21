@@ -438,6 +438,43 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	int TEST_UNIT_RUNNER_FEATURE_COUNT = TEST_RUNNER_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.test.impl.TestContainerImpl <em>Test Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.test.impl.TestContainerImpl
+	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestContainer()
+	 * @generated
+	 */
+	int TEST_CONTAINER = 14;
+
+	/**
+	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CONTAINER__CONTENTS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CONTAINER__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Test Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CONTAINER_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.AssertionState <em>Assertion State</em>}' enum.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -445,7 +482,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getAssertionState()
 	 * @generated
 	 */
-	int ASSERTION_STATE = 14;
+	int ASSERTION_STATE = 15;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.TestRunnerEventType <em>Test Runner Event Type</em>}' enum.
@@ -455,7 +492,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestRunnerEventType()
 	 * @generated
 	 */
-	int TEST_RUNNER_EVENT_TYPE = 15;
+	int TEST_RUNNER_EVENT_TYPE = 16;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.dk.test.QAsserter <em>Asserter</em>}'.
@@ -690,6 +727,27 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTestUnitRunner();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.dk.test.QTestContainer <em>Test Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Test Container</em>'.
+	 * @see org.smeup.sys.dk.test.QTestContainer
+	 * @generated
+	 */
+	EClass getTestContainer();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.dk.test.QTestContainer#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.smeup.sys.dk.test.QTestContainer#getName()
+	 * @see #getTestContainer()
+	 * @generated
+	 */
+	EAttribute getTestContainer_Name();
 
 	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.dk.test.AssertionState <em>Assertion State</em>}'.
@@ -934,6 +992,24 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TEST_UNIT_RUNNER = eINSTANCE.getTestUnitRunner();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.dk.test.impl.TestContainerImpl <em>Test Container</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.dk.test.impl.TestContainerImpl
+		 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestContainer()
+		 * @generated
+		 */
+		EClass TEST_CONTAINER = eINSTANCE.getTestContainer();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_CONTAINER__NAME = eINSTANCE.getTestContainer_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.dk.test.AssertionState <em>Assertion State</em>}' enum.

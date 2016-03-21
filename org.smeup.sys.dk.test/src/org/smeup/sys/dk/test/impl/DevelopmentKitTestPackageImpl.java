@@ -25,6 +25,7 @@ import org.smeup.sys.dk.test.QAssertionSuccess;
 import org.smeup.sys.dk.test.QDevelopmentKitTestFactory;
 import org.smeup.sys.dk.test.QDevelopmentKitTestPackage;
 import org.smeup.sys.dk.test.QTestAsserter;
+import org.smeup.sys.dk.test.QTestContainer;
 import org.smeup.sys.dk.test.QTestManager;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
@@ -135,6 +136,13 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	 * @generated
 	 */
 	private EClass testUnitRunnerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass testContainerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -424,6 +432,24 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTestContainer() {
+		return testContainerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTestContainer_Name() {
+		return (EAttribute)testContainerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -505,6 +531,9 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 
 		testUnitRunnerEClass = createEClass(TEST_UNIT_RUNNER);
 
+		testContainerEClass = createEClass(TEST_CONTAINER);
+		createEAttribute(testContainerEClass, TEST_CONTAINER__NAME);
+
 		// Create enums
 		assertionStateEEnum = createEEnum(ASSERTION_STATE);
 		testRunnerEventTypeEEnum = createEEnum(TEST_RUNNER_EVENT_TYPE);
@@ -562,6 +591,12 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		g2 = createEGenericType(this.getTestResult());
 		g1.getETypeArguments().add(g2);
 		testUnitRunnerEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
+		testContainerEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectContainer());
+		g2 = createEGenericType(this.getTestResult());
+		g1.getETypeArguments().add(g2);
+		testContainerEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(asserterEClass, QAsserter.class, "Asserter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -731,6 +766,9 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 
 		initEClass(testUnitRunnerEClass, QTestUnitRunner.class, "TestUnitRunner", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(testContainerEClass, QTestContainer.class, "TestContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTestContainer_Name(), ecorePackage.getEString(), "name", null, 1, 1, QTestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(assertionStateEEnum, AssertionState.class, "AssertionState");
 		addEEnumLiteral(assertionStateEEnum, AssertionState.SUCCESS);
@@ -760,6 +798,15 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	 */
 	protected void createIldataAnnotations() {
 		String source = "il-data";	
+		addAnnotation
+		  (assertionResultEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+			 "length", "20"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
 		addAnnotation
 		  (getAssertionResult_Message(), 
 		   source, 

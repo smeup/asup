@@ -61,6 +61,15 @@ public interface QDevelopmentKitTestFactory extends EFactory {
 	QTestResult createTestResult();
 
 	/**
+	 * Returns a new object of class '<em>Test Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Test Container</em>'.
+	 * @generated
+	 */
+	QTestContainer createTestContainer();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

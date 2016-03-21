@@ -35,7 +35,7 @@ public class ParseDDL {
 	@TestStarted
 	public void main() throws SQLException, IOException {
 
-		for (String sql : BaseTestHelper.readTextResource(this, "ddl.txt")) {
+		for (String sql : BaseTestHelper.readTextResource(this, "/resources/ddl.txt")) {
 
 			QDefinitionParseResult parseResult = null;
 			try {

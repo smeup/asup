@@ -35,7 +35,7 @@ public class ParseDBL {
 	@TestStarted
 	public void main() throws SQLException, IOException {
 
-		for (String sql : BaseTestHelper.readTextResource(this, "dbl.txt")) {
+		for (String sql : BaseTestHelper.readTextResource(this, "/resources/dbl.txt")) {
 
 			QBindingParseResult parseResult = null;
 			try {

@@ -25,7 +25,7 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 		dataQueueManager.writeToQueue(library, name, value.asString());
 	}	
 	
-	@Override
+	@Override	
 	public void writeDataQueue(QJobCapability capability, String library, String name, String key, String aValue) {
 		dataQueueManager.writeToQueue(library, name, aValue);
 	}
