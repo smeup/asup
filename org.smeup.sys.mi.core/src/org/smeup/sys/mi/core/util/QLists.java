@@ -23,7 +23,7 @@ public interface QLists {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model listType="org.smeup.sys.mi.core.JavaList" listRequired="true" elementRequired="true"
+	 * @model listType="org.smeup.sys.mi.core.JavaList<E>" listRequired="true" listMany="false" elementRequired="true"
 	 * @generated
 	 */
 	<E> void addFirst(List<E> list, E element);
@@ -31,7 +31,7 @@ public interface QLists {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model listType="org.smeup.sys.mi.core.JavaList" listRequired="true" elementRequired="true"
+	 * @model listType="org.smeup.sys.mi.core.JavaList<E>" listRequired="true" listMany="false" elementRequired="true"
 	 * @generated
 	 */
 	<E> void addLast(List<E> list, E element);
@@ -39,7 +39,7 @@ public interface QLists {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model listType="org.smeup.sys.mi.core.JavaList" listRequired="true" oldElementRequired="true" newElementRequired="true"
+	 * @model listType="org.smeup.sys.mi.core.JavaList<E>" listRequired="true" listMany="false" oldElementRequired="true" newElementRequired="true"
 	 * @generated
 	 */
 	<E> void addBefore(List<E> list, E oldElement, E newElement);
@@ -47,7 +47,7 @@ public interface QLists {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model listType="org.smeup.sys.mi.core.JavaList" listRequired="true" oldElementRequired="true" newElementRequired="true"
+	 * @model listType="org.smeup.sys.mi.core.JavaList<E>" listRequired="true" listMany="false" oldElementRequired="true" newElementRequired="true"
 	 * @generated
 	 */
 	<E> void addAfter(List<E> list, E oldElement, E newElement);

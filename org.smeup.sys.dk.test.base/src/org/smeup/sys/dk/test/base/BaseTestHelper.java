@@ -7,7 +7,8 @@
  *
  *
  * Contributors:
- *   Mattia Rocchi - Initial API and implementation
+ *   Mattia Rocchi  - Initial API and implementation
+ *   Dario  Foresti - Implementation
  */
 package org.smeup.sys.dk.test.base;
 
@@ -17,7 +18,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
@@ -27,6 +30,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
+import org.osgi.framework.wiring.BundleWiring;
+import org.smeup.sys.dk.test.annotation.Test;
 
 public class BaseTestHelper {
 
@@ -44,10 +49,10 @@ public class BaseTestHelper {
 
 		return eObject;
 	}
-	
-	public static List<String> readTextResource(Object caller, String resource) throws IOException {
 
-		Bundle bundle = FrameworkUtil.getBundle(caller.getClass());
+	public static List<String> readTextResource(Object context, String resource) throws IOException {
+
+		Bundle bundle = FrameworkUtil.getBundle(context.getClass());
 		URL entry = bundle.getEntry(resource);
 		List<String> sourceSQL = readLinesFromInputStream(entry.openStream());
 
@@ -66,5 +71,46 @@ public class BaseTestHelper {
 		}
 		in.close();
 		return linee;
+	}
+
+	public static Collection<Class<?>> findTestClasses(Object context, String resourcePath) {
+
+		List<Class<?>> testRunnerList = new ArrayList<Class<?>>();
+
+		Bundle bundle = FrameworkUtil.getBundle(context.getClass());
+
+		BundleWiring bundleWiring = bundle.adapt(BundleWiring.class);
+
+		String bundlePath = "/" + bundle.getSymbolicName().replace('.', '/') + resourcePath;
+
+		for (String resource : bundleWiring.listResources(bundlePath, "*.*", BundleWiring.LISTRESOURCES_LOCAL)) {
+			Class<?> klass = null;
+			try {
+				String resourceURI = resource.replace(".class", "").replace('/', '.');
+				if (resourceURI.contains("$"))
+					continue;
+				klass = bundle.loadClass(resourceURI);
+			} catch (ClassNotFoundException e) {
+				continue;
+			}
+
+			Test annotation = klass.getAnnotation(Test.class);
+			if (annotation == null)
+				continue;
+
+			testRunnerList.add(klass);
+
+		}
+		Comparator<Class<?>> comparator = new Comparator<Class<?>>() {
+
+			@Override
+			public int compare(Class<?> o1, Class<?> o2) {
+				return o1.getName().compareTo(o2.getName());
+			}
+		};
+		
+		Collections.sort(testRunnerList, comparator );
+		
+		return testRunnerList;
 	}
 }

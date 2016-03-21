@@ -21,7 +21,7 @@ import org.smeup.sys.os.core.jobs.QJobLog;
 import org.smeup.sys.os.core.jobs.QJobLogEntry;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 
-@Test(category = "OSCORE", object = "JOBLOG")
+@Test(category = "OS.CORE", object = "JOBLOG")
 public class JobLogTest {
 
 	@Inject

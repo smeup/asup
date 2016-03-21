@@ -43,6 +43,15 @@ public interface QDevelopmentKitTestFactory extends EFactory {
 	QAssertionSuccess createAssertionSuccess();
 
 	/**
+	 * Returns a new object of class '<em>Test Runner Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Test Runner Event</em>'.
+	 * @generated
+	 */
+	QTestRunnerEvent createTestRunnerEvent();
+
+	/**
 	 * Returns a new object of class '<em>Test Result</em>'.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
@@ -59,14 +68,5 @@ public interface QDevelopmentKitTestFactory extends EFactory {
 	 * @generated
 	 */
 	QDevelopmentKitTestPackage getDevelopmentKitTestPackage();
-
-	/**
-	 * Returns a new object of class '<em>Test Container</em>'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return a new object of class '<em>Test Container</em>'.
-	 * @generated
-	 */
-	QTestContainer createTestContainer();
 
 } // QFrameworkTestFactory

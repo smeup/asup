@@ -19,28 +19,12 @@ package org.smeup.sys.dk.test;
  * @generated
  */
 public interface QTestRunnerListener {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void assertionResultAdded(String testClass, QAssertionResult assertionResult);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model eventRequired="true"
 	 * @generated
 	 */
-	void testStarted(String testClass);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void testStopped(String testClass, QTestResult result);
-
+	void handleEvent(QTestRunnerEvent event);
 } // QTestRunnerListener

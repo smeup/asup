@@ -13,13 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.smeup.sys.dk.test.AssertionState;
-import org.smeup.sys.dk.test.QAssertionFailed;
-import org.smeup.sys.dk.test.QAssertionSuccess;
-import org.smeup.sys.dk.test.QDevelopmentKitTestFactory;
-import org.smeup.sys.dk.test.QDevelopmentKitTestPackage;
-import org.smeup.sys.dk.test.QTestContainer;
-import org.smeup.sys.dk.test.QTestResult;
+import org.smeup.sys.dk.test.*;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
@@ -65,7 +59,7 @@ public class DevelopmentKitTestFactoryImpl extends EFactoryImpl implements QDeve
 		switch (eClass.getClassifierID()) {
 			case QDevelopmentKitTestPackage.ASSERTION_FAILED: return (EObject)createAssertionFailed();
 			case QDevelopmentKitTestPackage.ASSERTION_SUCCESS: return (EObject)createAssertionSuccess();
-			case QDevelopmentKitTestPackage.TEST_CONTAINER: return (EObject)createTestContainer();
+			case QDevelopmentKitTestPackage.TEST_RUNNER_EVENT: return (EObject)createTestRunnerEvent();
 			case QDevelopmentKitTestPackage.TEST_RESULT: return (EObject)createTestResult();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -81,6 +75,8 @@ public class DevelopmentKitTestFactoryImpl extends EFactoryImpl implements QDeve
 		switch (eDataType.getClassifierID()) {
 			case QDevelopmentKitTestPackage.ASSERTION_STATE:
 				return createAssertionStateFromString(eDataType, initialValue);
+			case QDevelopmentKitTestPackage.TEST_RUNNER_EVENT_TYPE:
+				return createTestRunnerEventTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -95,6 +91,8 @@ public class DevelopmentKitTestFactoryImpl extends EFactoryImpl implements QDeve
 		switch (eDataType.getClassifierID()) {
 			case QDevelopmentKitTestPackage.ASSERTION_STATE:
 				return convertAssertionStateToString(eDataType, instanceValue);
+			case QDevelopmentKitTestPackage.TEST_RUNNER_EVENT_TYPE:
+				return convertTestRunnerEventTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -121,13 +119,13 @@ public class DevelopmentKitTestFactoryImpl extends EFactoryImpl implements QDeve
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public QTestResult createTestResult() {
-		TestResultImpl testResult = new TestResultImpl();
-		return testResult;
+	public QTestRunnerEvent createTestRunnerEvent() {
+		TestRunnerEventImpl testRunnerEvent = new TestRunnerEventImpl();
+		return testRunnerEvent;
 	}
 
 	/**
@@ -135,9 +133,9 @@ public class DevelopmentKitTestFactoryImpl extends EFactoryImpl implements QDeve
 	 * @generated
 	 */
 	@Override
-	public QTestContainer createTestContainer() {
-		TestContainerImpl testContainer = new TestContainerImpl();
-		return testContainer;
+	public QTestResult createTestResult() {
+		TestResultImpl testResult = new TestResultImpl();
+		return testResult;
 	}
 
 	/**
@@ -155,6 +153,26 @@ public class DevelopmentKitTestFactoryImpl extends EFactoryImpl implements QDeve
 	 * @generated
 	 */
 	public String convertAssertionStateToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TestRunnerEventType createTestRunnerEventTypeFromString(EDataType eDataType, String initialValue) {
+		TestRunnerEventType result = TestRunnerEventType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertTestRunnerEventTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

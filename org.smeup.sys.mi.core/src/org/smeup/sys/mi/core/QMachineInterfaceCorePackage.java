@@ -174,10 +174,10 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	int JAVA_ITERATOR_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link java.util.List<E> <em>Java List</em>}' class.
+	 * The meta object id for the '{@link java.util.List <em>Java List</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see java.util.List<E>
+	 * @see java.util.List
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaList()
 	 * @generated
 	 */
@@ -524,12 +524,12 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	EClass getJavaIterator();
 
 	/**
-	 * Returns the meta object for class '{@link java.util.List<E> <em>Java List</em>}'.
+	 * Returns the meta object for class '{@link java.util.List <em>Java List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Java List</em>'.
-	 * @see java.util.List<E>
-	 * @model instanceClass="java.util.List<E>"
+	 * @see java.util.List
+	 * @model instanceClass="java.util.List" typeParameters="E"
 	 * @generated
 	 */
 	EClass getJavaList();
@@ -848,10 +848,10 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 		EClass JAVA_ITERATOR = eINSTANCE.getJavaIterator();
 
 		/**
-		 * The meta object literal for the '{@link java.util.List<E> <em>Java List</em>}' class.
+		 * The meta object literal for the '{@link java.util.List <em>Java List</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see java.util.List<E>
+		 * @see java.util.List
 		 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaList()
 		 * @generated
 		 */

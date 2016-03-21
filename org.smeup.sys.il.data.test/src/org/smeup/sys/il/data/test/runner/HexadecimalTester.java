@@ -13,7 +13,7 @@ package org.smeup.sys.il.data.test.runner;
 
 import javax.inject.Inject;
 
-import org.smeup.sys.dk.test.QTestRunner;
+import org.smeup.sys.dk.test.QTestUnitRunner;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.il.data.QCharacter;
@@ -27,7 +27,7 @@ public class HexadecimalTester {
 	@Inject
 	private QDataManager dataManager;
 	@Inject
-	private QTestRunner testRunner;
+	private QTestUnitRunner testRunner;
 
 	@TestStarted
 	public void main() {

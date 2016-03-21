@@ -11,25 +11,19 @@
  */
 package org.smeup.sys.dk.test.base;
 
-import java.util.List;
-
 import org.smeup.sys.dk.test.QAssertionFailed;
-import org.smeup.sys.dk.test.QAssertionResult;
 import org.smeup.sys.dk.test.QAssertionSuccess;
 import org.smeup.sys.dk.test.QDevelopmentKitTestFactory;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.QTestResult;
-import org.smeup.sys.dk.test.QTestRunnerListener;
 
 public class BaseTestAsserterImpl implements QTestAsserter {
 
 	private QTestResult testResult;
-	private List<QTestRunnerListener> testListeners;
 	private long time;
 
-	public BaseTestAsserterImpl(QTestResult testResult, List<QTestRunnerListener> testListeners) {
+	public BaseTestAsserterImpl(QTestResult testResult) {
 		this.testResult = testResult;
-		this.testListeners = testListeners;
 		resetTime();
 	}
 
@@ -237,7 +231,6 @@ public class BaseTestAsserterImpl implements QTestAsserter {
 		assertionFailed.setMessage(message);
 		assertionFailed.setTime(System.currentTimeMillis() - time);
 		testResult.getAssertResults().add(assertionFailed);
-		notifyAssertResult(assertionFailed);
 
 		resetTime();
 	}
@@ -257,7 +250,6 @@ public class BaseTestAsserterImpl implements QTestAsserter {
 		assertionSuccess.setMessage(message);
 		assertionSuccess.setTime(System.currentTimeMillis() - time);
 		testResult.getAssertResults().add(assertionSuccess);
-		notifyAssertResult(assertionSuccess);
 
 		resetTime();
 	}
@@ -278,11 +270,6 @@ public class BaseTestAsserterImpl implements QTestAsserter {
 		if (message != null && message.length() > 0)
 			formatted = message + " ";
 		return formatted + "expected:<" + expected + "> but was:<" + actual + ">";
-	}
-
-	public void notifyAssertResult(QAssertionResult assertionResult) {
-		for (QTestRunnerListener testListener : testListeners)
-			testListener.assertionResultAdded(testResult.getRunner(), assertionResult);
 	}
 
 	@Override

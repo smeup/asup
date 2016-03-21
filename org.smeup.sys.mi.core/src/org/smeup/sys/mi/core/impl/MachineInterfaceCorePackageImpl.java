@@ -673,6 +673,7 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		// Create type parameters
 		addETypeParameter(javaCallableEClass, "V");
 		addETypeParameter(javaIteratorEClass, "T");
+		addETypeParameter(javaListEClass, "E");
 		addETypeParameter(javaDictionaryEDataType, "K");
 		addETypeParameter(javaDictionaryEDataType, "V");
 		addETypeParameter(javaMapEDataType, "K");
@@ -695,7 +696,7 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 
 		initEClass(javaIteratorEClass, Iterator.class, "JavaIterator", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(javaListEClass, List.class, "JavaList", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<E>");
+		initEClass(javaListEClass, List.class, "JavaList", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(javaNumberEClass, Number.class, "JavaNumber", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 

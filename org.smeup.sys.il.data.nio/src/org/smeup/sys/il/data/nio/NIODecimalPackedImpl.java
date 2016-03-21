@@ -12,6 +12,7 @@
 package org.smeup.sys.il.data.nio;
 
 import java.nio.ByteBuffer;
+import java.util.BitSet;
 
 import org.smeup.sys.il.data.QDataContext;
 
@@ -29,6 +30,15 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 		super(dataContext, precision, scale);
 
 		packed = getDecimal(precision, scale);
+	}
+
+	@Override
+	public NIODecimalPackedImpl allocate() {
+		super.allocate();
+		
+		_clear();
+
+		return this;
 	}
 
 	@Override

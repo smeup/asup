@@ -8,14 +8,15 @@
 package org.smeup.sys.il.core.ctx;
 
 import java.io.Closeable;
+
 import java.lang.annotation.Annotation;
 
 import java.util.List;
-import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Context</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Context</b></em>'.
+ * <!-- end-user-doc -->
  *
  *
  * @see org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage#getContext()
@@ -23,7 +24,6 @@ import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
  * @generated
  */
 public interface QContext extends Closeable {
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -33,11 +33,12 @@ public interface QContext extends Closeable {
 	void close();
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" nameRequired="true"
 	 * @generated
 	 */
-	QContext createChildContext(String name) throws IntegratedLanguageCoreRuntimeException;
+	QContext createChildContext(String name);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -48,7 +49,8 @@ public interface QContext extends Closeable {
 	QContext createChildContext(QContextDescription contextDescription);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" clazzRequired="true"
 	 * @generated
 	 */
@@ -71,18 +73,20 @@ public interface QContext extends Closeable {
 	QContextDescription getContextDescription();
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
 	 */
 	String getID();
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model objectRequired="true"
 	 * @generated
 	 */
-	void inject(Object object) throws IntegratedLanguageCoreRuntimeException;
+	void inject(Object object);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -93,7 +97,8 @@ public interface QContext extends Closeable {
 	boolean isClosed();
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" addressRequired="true"
 	 * @generated
 	 */
@@ -108,18 +113,20 @@ public interface QContext extends Closeable {
 	Class<?> loadClassByName(String className);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model objectRequired="true" qualifierRequired="true" ABounds="org.smeup.sys.mi.core.JavaAnnotation"
 	 * @generated
 	 */
-	<A extends Annotation> void invoke(Object object, Class<A> qualifier) throws IntegratedLanguageCoreRuntimeException;
+	<A extends Annotation> void invoke(Object object, Class<A> qualifier);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" klassRequired="true"
 	 * @generated
 	 */
-	<T> T make(Class<T> klass) throws IntegratedLanguageCoreRuntimeException;
+	<T> T make(Class<T> klass);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -146,17 +153,19 @@ public interface QContext extends Closeable {
 	List<String> resolveAliases(List<String> values);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model klassRequired="true" objectRequired="true"
 	 * @generated
 	 */
-	<T> void set(Class<T> klass, T object) throws IntegratedLanguageCoreRuntimeException;
+	<T> void set(Class<T> klass, T object);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model nameRequired="true" objectRequired="true"
 	 * @generated
 	 */
-	<T> void set(String name, T object) throws IntegratedLanguageCoreRuntimeException;
+	<T> void set(String name, T object);
 
 } // QContext

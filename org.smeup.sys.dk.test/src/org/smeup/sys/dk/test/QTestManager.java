@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.dk.test;
 
+import java.util.List;
 import org.smeup.sys.il.core.ctx.QContext;
 
 /**
@@ -23,10 +24,18 @@ public interface QTestManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model componentRequired="true"
+	 * @generated
+	 */
+	List<QTestSuiteRunner> prepareSuiteRunner(QContext context, QTestRunnerMaker testMaker, String component);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" klassRequired="true"
 	 * @generated
 	 */
-	QTestRunner prepareRunner(QContext context, Class<?> klass) throws DevelopmentKitTestRuntimeException;
+	QTestUnitRunner prepareUnitRunner(QContext context, QTestRunnerMaker testMaker, Class<?> klass);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -34,6 +43,6 @@ public interface QTestManager {
 	 * @model required="true" classURIRequired="true"
 	 * @generated
 	 */
-	QTestRunner prepareRunner(QContext context, String classURI);
+	QTestUnitRunner prepareUnitRunner(QContext context, QTestRunnerMaker testMaker, String classURI);
 
 } // QTestManager

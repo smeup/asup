@@ -190,7 +190,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	private <P> QCallableProgram<P> prepareCallableProgram(QJob job, QProgram program, Class<P> klass) {
 
-		BaseCallableInjector callableInjector = job.getContext().make(BaseCallableInjector.class);
+		BaseCallableInjector callableInjector = new BaseCallableInjector(job.getContext());
+		job.getContext().inject(callableInjector);
 		QCallableProgram<P> callableProgram = callableInjector.prepareCallable(program, klass);
 
 		QProgramInfo programInfo = callableProgram.getProgramInfo();

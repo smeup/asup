@@ -1,4 +1,3 @@
-package org.smeup.sys.dk.compiler.test;
 /**
  *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
@@ -10,16 +9,26 @@ package org.smeup.sys.dk.compiler.test;
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
+package org.smeup.sys.dk.compiler.test;
 
+import javax.inject.Inject;
 
+import org.smeup.sys.dk.test.QTestManager;
+import org.smeup.sys.dk.test.QTestSuiteLauncher;
+import org.smeup.sys.dk.test.QTestSuiteRunner;
 import org.smeup.sys.dk.test.annotation.Test;
-import org.smeup.sys.dk.test.base.DirectoryTestLauncherImpl;
-
-/*
- * Extends DirectoryTestLauncherImpl class and setting test category by class annotation
- */
+import org.smeup.sys.dk.test.base.BaseTestSuiteDirectoryRunnerImpl;
+import org.smeup.sys.il.core.ctx.QContext;
 
 @Test(category = "DK.COMPILER")
-public class DKCompilerTestLauncherImpl extends DirectoryTestLauncherImpl{	
-}
+public class DKCompilerTestLauncherImpl implements QTestSuiteLauncher {
 
+	@Inject
+	private QTestManager testManager;
+	
+	@Override
+	public QTestSuiteRunner createSuite(QContext context) {
+		return new BaseTestSuiteDirectoryRunnerImpl(context, testManager) {
+		};
+	}
+}

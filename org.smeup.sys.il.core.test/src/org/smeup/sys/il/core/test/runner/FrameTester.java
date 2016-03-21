@@ -27,10 +27,8 @@ public class FrameTester {
 	@Inject
 	public QFrameManager frameManager;
 
-	public @TestStarted void main() {
-
+	@TestStarted
+	public void main() {
 		testAsserter.assertNotNull("FrameManager", frameManager);
-
 	}
-
 }

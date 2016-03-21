@@ -16,7 +16,7 @@ import java.io.IOException;
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.test.QTestAsserter;
-import org.smeup.sys.dk.test.QTestRunner;
+import org.smeup.sys.dk.test.QTestUnitRunner;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.il.data.QArray;
@@ -38,7 +38,7 @@ public class DataStructureTester {
 	@Inject
 	private QTestAsserter testAsserter;
 	@Inject
-	private QTestRunner testRunner;
+	private QTestUnitRunner testRunner;
 
 	private static int DIM = 9999;
 

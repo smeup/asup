@@ -7,43 +7,31 @@
  */
 package org.smeup.sys.dk.test;
 
-import java.util.List;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Test Runner</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Test Runner</b></em>'.
+ * <!-- end-user-doc -->
  *
  *
  * @see org.smeup.sys.dk.test.QDevelopmentKitTestPackage#getTestRunner()
- * @model abstract="true"
+ * @model interface="true" abstract="true"
  * @generated
  */
-public interface QTestRunner extends QCallableTest, QContextProvider {
+public interface QTestRunner extends QContextProvider {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model listenerRequired="true"
 	 * @generated
 	 */
 	void registerListener(QTestRunnerListener listener);
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Listeners</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
-	List<QTestRunnerListener> getListeners();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
+	 * @model listenerRequired="true"
 	 * @generated
 	 */
 	void removeListener(QTestRunnerListener listener);

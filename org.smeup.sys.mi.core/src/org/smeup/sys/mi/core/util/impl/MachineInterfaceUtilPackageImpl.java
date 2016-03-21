@@ -316,19 +316,28 @@ public class MachineInterfaceUtilPackageImpl extends EPackageImpl implements QMa
 
 		op = addEOperation(listsEClass, null, "addFirst", 0, 1, IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "E");
-		addEParameter(op, theMachineInterfaceCorePackage.getJavaList(), "list", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaList());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "list", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
 		addEParameter(op, g1, "element", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(listsEClass, null, "addLast", 0, 1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "E");
-		addEParameter(op, theMachineInterfaceCorePackage.getJavaList(), "list", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaList());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "list", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
 		addEParameter(op, g1, "element", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(listsEClass, null, "addBefore", 0, 1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "E");
-		addEParameter(op, theMachineInterfaceCorePackage.getJavaList(), "list", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaList());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "list", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
 		addEParameter(op, g1, "oldElement", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
@@ -336,7 +345,10 @@ public class MachineInterfaceUtilPackageImpl extends EPackageImpl implements QMa
 
 		op = addEOperation(listsEClass, null, "addAfter", 0, 1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "E");
-		addEParameter(op, theMachineInterfaceCorePackage.getJavaList(), "list", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaList());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "list", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
 		addEParameter(op, g1, "oldElement", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);

@@ -58,7 +58,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		_buffer = ByteBuffer.allocate(getSize());
 
 		NIOBufferHelper.fill(_buffer, 0, _buffer.capacity(), getFiller());
-
+		
 		return this;
 	}
 

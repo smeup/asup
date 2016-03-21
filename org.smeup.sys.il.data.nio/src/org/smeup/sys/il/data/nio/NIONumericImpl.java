@@ -14,11 +14,9 @@ package org.smeup.sys.il.data.nio;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
 
 import org.smeup.sys.il.data.BufferedElementType;
-import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
@@ -32,50 +30,16 @@ import org.smeup.sys.il.data.def.DecimalType;
 public abstract class NIONumericImpl extends NIOBufferedElementImpl implements QNumeric {
 
 	private static final long serialVersionUID = 1L;
-	protected static final byte INIT = (byte) -16;
-	protected static final byte LOVAL = (byte) -16;
-	protected static final byte HIVAL = (byte) -7;
 	
 	public NIONumericImpl(QDataContext dataContext) {
 		super(dataContext);
 	}
-	
+
 	@Override
 	protected void _clear() {
 		eval(0);
 	}
 
-	@Override
-	protected final byte[] _toBytes(DataSpecial value) {
-
-		byte[] bytes = new byte[getLength()];
-		switch (value) {
-		case LOVAL:
-			Arrays.fill(bytes, NIONumericImpl.LOVAL);
-			break;
-		case BLANK:
-		case BLANKS:
-			Arrays.fill(bytes, NIOCharacterImpl.INIT);
-			break;
-		case OFF:
-		case ZERO:
-		case ZEROS:
-			Arrays.fill(bytes, NIODecimalZonedImpl.INIT);
-			break;
-		case ON:
-			Arrays.fill(bytes, NIOIndicatorImpl.ON);
-			break;
-		case HIVAL:
-			Arrays.fill(bytes, NIONumericImpl.HIVAL);
-			break;
-		case NULL:
-		case OMIT:
-			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237rvbwe87vb9stf");
-		}
-
-		return bytes;
-	}
-	
 	@Override
 	protected final byte[] _toBytes(Number value) {
 		return _toBytes(value.toString());

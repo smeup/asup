@@ -6,7 +6,6 @@ Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .
-Require-Bundle: org.smeup.sys.et.antlr,
- org.smeup.sys.dk.test.base,
- org.smeup.sys.db.syntax.ibmi
+Require-Bundle: org.smeup.sys.db.syntax,
+ org.smeup.sys.dk.test.base
 Import-Package: javax.inject

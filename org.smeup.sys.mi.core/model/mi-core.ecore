@@ -26,8 +26,10 @@
       abstract="true" interface="true">
     <eTypeParameters name="T"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="JavaList" instanceTypeName="java.util.List&lt;E>"
-      abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaList" instanceClassName="java.util.List"
+      abstract="true" interface="true">
+    <eTypeParameters name="E"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="JavaMap" instanceClassName="java.util.Map">
     <eTypeParameters name="K"/>
     <eTypeParameters name="V"/>
@@ -67,21 +69,33 @@
     <eClassifiers xsi:type="ecore:EClass" name="Lists" abstract="true" interface="true">
       <eOperations name="addFirst">
         <eTypeParameters name="E"/>
-        <eParameters name="list" lowerBound="1" eType="#//JavaList"/>
+        <eParameters name="list" lowerBound="1">
+          <eGenericType eClassifier="#//JavaList">
+            <eTypeArguments eTypeParameter="#//util/Lists/addFirst/E"/>
+          </eGenericType>
+        </eParameters>
         <eParameters name="element" lowerBound="1">
           <eGenericType eTypeParameter="#//util/Lists/addFirst/E"/>
         </eParameters>
       </eOperations>
       <eOperations name="addLast">
         <eTypeParameters name="E"/>
-        <eParameters name="list" lowerBound="1" eType="#//JavaList"/>
+        <eParameters name="list" lowerBound="1">
+          <eGenericType eClassifier="#//JavaList">
+            <eTypeArguments eTypeParameter="#//util/Lists/addLast/E"/>
+          </eGenericType>
+        </eParameters>
         <eParameters name="element" lowerBound="1">
           <eGenericType eTypeParameter="#//util/Lists/addLast/E"/>
         </eParameters>
       </eOperations>
       <eOperations name="addBefore">
         <eTypeParameters name="E"/>
-        <eParameters name="list" lowerBound="1" eType="#//JavaList"/>
+        <eParameters name="list" lowerBound="1">
+          <eGenericType eClassifier="#//JavaList">
+            <eTypeArguments eTypeParameter="#//util/Lists/addBefore/E"/>
+          </eGenericType>
+        </eParameters>
         <eParameters name="oldElement" lowerBound="1">
           <eGenericType eTypeParameter="#//util/Lists/addBefore/E"/>
         </eParameters>
@@ -91,7 +105,11 @@
       </eOperations>
       <eOperations name="addAfter">
         <eTypeParameters name="E"/>
-        <eParameters name="list" lowerBound="1" eType="#//JavaList"/>
+        <eParameters name="list" lowerBound="1">
+          <eGenericType eClassifier="#//JavaList">
+            <eTypeArguments eTypeParameter="#//util/Lists/addAfter/E"/>
+          </eGenericType>
+        </eParameters>
         <eParameters name="oldElement" lowerBound="1">
           <eGenericType eTypeParameter="#//util/Lists/addAfter/E"/>
         </eParameters>

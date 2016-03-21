@@ -15,25 +15,26 @@ import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.dk.test.AssertionState;
 import org.smeup.sys.dk.test.QAsserter;
 import org.smeup.sys.dk.test.QAssertionFailed;
 import org.smeup.sys.dk.test.QAssertionResult;
 import org.smeup.sys.dk.test.QAssertionSuccess;
-import org.smeup.sys.dk.test.QCallableTest;
 import org.smeup.sys.dk.test.QDevelopmentKitTestFactory;
 import org.smeup.sys.dk.test.QDevelopmentKitTestPackage;
-import org.smeup.sys.dk.test.QSuiteTestRunner;
 import org.smeup.sys.dk.test.QTestAsserter;
-import org.smeup.sys.dk.test.QTestContainer;
-import org.smeup.sys.dk.test.QTestLauncher;
-import org.smeup.sys.dk.test.QTestLauncherListener;
 import org.smeup.sys.dk.test.QTestManager;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
+import org.smeup.sys.dk.test.QTestRunnerEvent;
 import org.smeup.sys.dk.test.QTestRunnerListener;
-import org.smeup.sys.dk.test.QUnitTestRunner;
+import org.smeup.sys.dk.test.QTestRunnerMaker;
+import org.smeup.sys.dk.test.QTestUnitRunner;
+import org.smeup.sys.dk.test.TestRunnerEventType;
+import org.smeup.sys.dk.test.QTestSuiteLauncher;
+import org.smeup.sys.dk.test.QTestSuiteRunner;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
@@ -73,32 +74,7 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass callableTestEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass suiteTestRunnerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass testAsserterEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass testContainerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass testRunnerListenerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -119,30 +95,59 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	private EClass testRunnerEClass = null;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass unitTestRunnerEClass = null;
+	private EClass testRunnerEventEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass testLauncherEClass = null;
+	private EClass testRunnerListenerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass testLauncherListenerEClass = null;
+	private EClass testRunnerMakerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass testSuiteRunnerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass testSuiteLauncherEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass testUnitRunnerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum assertionStateEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum testRunnerEventTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -270,53 +275,8 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	 * @generated
 	 */
 	@Override
-	public EClass getCallableTest() {
-		return callableTestEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getSuiteTestRunner() {
-		return suiteTestRunnerEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getTestAsserter() {
 		return testAsserterEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getTestContainer() {
-		return testContainerEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getTestContainer_Tests() {
-		return (EReference)testContainerEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTestRunnerListener() {
-		return testRunnerListenerEClass;
 	}
 
 	/**
@@ -392,12 +352,12 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EClass getUnitTestRunner() {
-		return unitTestRunnerEClass;
+	public EClass getTestRunnerEvent() {
+		return testRunnerEventEClass;
 	}
 
 	/**
@@ -405,8 +365,8 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTestLauncher() {
-		return testLauncherEClass;
+	public EReference getTestRunnerEvent_Source() {
+		return (EReference)testRunnerEventEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -414,8 +374,53 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTestLauncherListener() {
-		return testLauncherListenerEClass;
+	public EAttribute getTestRunnerEvent_Type() {
+		return (EAttribute)testRunnerEventEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTestRunnerListener() {
+		return testRunnerListenerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTestRunnerMaker() {
+		return testRunnerMakerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTestSuiteRunner() {
+		return testSuiteRunnerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTestSuiteLauncher() {
+		return testSuiteLauncherEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTestUnitRunner() {
+		return testUnitRunnerEClass;
 	}
 
 	/**
@@ -425,6 +430,15 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	@Override
 	public EEnum getAssertionState() {
 		return assertionStateEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getTestRunnerEventType() {
+		return testRunnerEventTypeEEnum;
 	}
 
 	/**
@@ -464,18 +478,19 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 
 		assertionSuccessEClass = createEClass(ASSERTION_SUCCESS);
 
-		callableTestEClass = createEClass(CALLABLE_TEST);
-
-		suiteTestRunnerEClass = createEClass(SUITE_TEST_RUNNER);
-
 		testAsserterEClass = createEClass(TEST_ASSERTER);
 
-		testContainerEClass = createEClass(TEST_CONTAINER);
-		createEReference(testContainerEClass, TEST_CONTAINER__TESTS);
+		testManagerEClass = createEClass(TEST_MANAGER);
+
+		testRunnerEClass = createEClass(TEST_RUNNER);
+
+		testRunnerEventEClass = createEClass(TEST_RUNNER_EVENT);
+		createEReference(testRunnerEventEClass, TEST_RUNNER_EVENT__SOURCE);
+		createEAttribute(testRunnerEventEClass, TEST_RUNNER_EVENT__TYPE);
 
 		testRunnerListenerEClass = createEClass(TEST_RUNNER_LISTENER);
 
-		testManagerEClass = createEClass(TEST_MANAGER);
+		testRunnerMakerEClass = createEClass(TEST_RUNNER_MAKER);
 
 		testResultEClass = createEClass(TEST_RESULT);
 		createEReference(testResultEClass, TEST_RESULT__ASSERT_RESULTS);
@@ -484,16 +499,15 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		createEAttribute(testResultEClass, TEST_RESULT__RUNNER);
 		createEAttribute(testResultEClass, TEST_RESULT__TIME);
 
-		testRunnerEClass = createEClass(TEST_RUNNER);
+		testSuiteLauncherEClass = createEClass(TEST_SUITE_LAUNCHER);
 
-		unitTestRunnerEClass = createEClass(UNIT_TEST_RUNNER);
+		testSuiteRunnerEClass = createEClass(TEST_SUITE_RUNNER);
 
-		testLauncherEClass = createEClass(TEST_LAUNCHER);
-
-		testLauncherListenerEClass = createEClass(TEST_LAUNCHER_LISTENER);
+		testUnitRunnerEClass = createEClass(TEST_UNIT_RUNNER);
 
 		// Create enums
 		assertionStateEEnum = createEEnum(ASSERTION_STATE);
+		testRunnerEventTypeEEnum = createEEnum(TEST_RUNNER_EVENT_TYPE);
 	}
 
 	/**
@@ -520,8 +534,8 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 
 		// Obtain other dependent packages
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
-		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
+		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -531,17 +545,23 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		assertionFailedEClass.getESuperTypes().add(this.getAssertionResult());
 		assertionResultEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		assertionSuccessEClass.getESuperTypes().add(this.getAssertionResult());
-		EGenericType g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaCallable());
-		EGenericType g2 = createEGenericType(this.getTestResult());
-		g1.getETypeArguments().add(g2);
-		callableTestEClass.getEGenericSuperTypes().add(g1);
-		suiteTestRunnerEClass.getESuperTypes().add(this.getTestRunner());
 		testAsserterEClass.getESuperTypes().add(this.getAsserter());
-		testContainerEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		testResultEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		testRunnerEClass.getESuperTypes().add(this.getCallableTest());
 		testRunnerEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
-		unitTestRunnerEClass.getESuperTypes().add(this.getTestRunner());
+		testResultEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		EGenericType g1 = createEGenericType(this.getTestRunner());
+		testSuiteRunnerEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaCallable());
+		EGenericType g2 = createEGenericType(theMachineInterfaceCorePackage.getJavaList());
+		g1.getETypeArguments().add(g2);
+		EGenericType g3 = createEGenericType(this.getTestResult());
+		g2.getETypeArguments().add(g3);
+		testSuiteRunnerEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getTestRunner());
+		testUnitRunnerEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaCallable());
+		g2 = createEGenericType(this.getTestResult());
+		g1.getETypeArguments().add(g2);
+		testUnitRunnerEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(asserterEClass, QAsserter.class, "Asserter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -636,42 +656,58 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 
 		initEClass(assertionSuccessEClass, QAssertionSuccess.class, "AssertionSuccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(callableTestEClass, QCallableTest.class, "CallableTest", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(suiteTestRunnerEClass, QSuiteTestRunner.class, "SuiteTestRunner", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(testAsserterEClass, QTestAsserter.class, "TestAsserter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(testAsserterEClass, null, "resetTime", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(testContainerEClass, QTestContainer.class, "TestContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTestContainer_Tests(), this.getTestRunner(), null, "tests", null, 0, -1, QTestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(testRunnerListenerEClass, QTestRunnerListener.class, "TestRunnerListener", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		op = addEOperation(testRunnerListenerEClass, null, "assertionResultAdded", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "testClass", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAssertionResult(), "assertionResult", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(testRunnerListenerEClass, null, "testStarted", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "testClass", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(testRunnerListenerEClass, null, "testStopped", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "testClass", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getTestResult(), "result", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(testManagerEClass, QTestManager.class, "TestManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(testManagerEClass, this.getTestRunner(), "prepareRunner", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(testManagerEClass, this.getTestSuiteRunner(), "prepareSuiteRunner", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTestRunnerMaker(), "testMaker", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "component", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(testManagerEClass, this.getTestUnitRunner(), "prepareUnitRunner", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTestRunnerMaker(), "testMaker", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(testManagerEClass, this.getTestRunner(), "prepareRunner", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(testManagerEClass, this.getTestUnitRunner(), "prepareUnitRunner", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTestRunnerMaker(), "testMaker", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "classURI", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(testRunnerEClass, QTestRunner.class, "TestRunner", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(testRunnerEClass, null, "registerListener", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTestRunnerListener(), "listener", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(testRunnerEClass, null, "removeListener", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTestRunnerListener(), "listener", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(testRunnerEventEClass, QTestRunnerEvent.class, "TestRunnerEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTestRunnerEvent_Source(), this.getTestRunner(), null, "source", null, 1, 1, QTestRunnerEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestRunnerEvent_Type(), this.getTestRunnerEventType(), "type", null, 1, 1, QTestRunnerEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(testRunnerListenerEClass, QTestRunnerListener.class, "TestRunnerListener", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(testRunnerListenerEClass, null, "handleEvent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTestRunnerEvent(), "event", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(testRunnerMakerEClass, QTestRunnerMaker.class, "TestRunnerMaker", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(testRunnerMakerEClass, null, "make", 1, 1, IS_UNIQUE, IS_ORDERED);
+		ETypeParameter t1 = addETypeParameter(op, "T");
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		initEOperation(op, g1);
 
 		initEClass(testResultEClass, QTestResult.class, "TestResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTestResult_AssertResults(), this.getAssertionResult(), null, "assertResults", null, 0, -1, QTestResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -686,57 +722,27 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 
 		addEOperation(testResultEClass, ecorePackage.getEBoolean(), "isFailed", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(testRunnerEClass, QTestRunner.class, "TestRunner", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(testSuiteLauncherEClass, QTestSuiteLauncher.class, "TestSuiteLauncher", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(testRunnerEClass, null, "registerListener", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getTestRunnerListener(), "listener", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(testRunnerEClass, null, "removeListener", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getTestRunnerListener(), "listener", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(testRunnerEClass, this.getTestRunnerListener(), "getListeners", 0, -1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(unitTestRunnerEClass, QUnitTestRunner.class, "UnitTestRunner", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(testLauncherEClass, QTestLauncher.class, "TestLauncher", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		op = addEOperation(testLauncherEClass, null, "destroy", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(testSuiteLauncherEClass, this.getTestSuiteRunner(), "createSuite", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(testLauncherEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEClass(testSuiteRunnerEClass, QTestSuiteRunner.class, "TestSuiteRunner", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(testLauncherEClass, null, "launch", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "object", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(testLauncherEClass, null, "registerListener", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getTestLauncherListener(), "listener", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(testLauncherEClass, null, "removeListener", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getTestLauncherListener(), "listener", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(testLauncherEClass, this.getTestLauncherListener(), "getListeners", 0, -1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(testLauncherListenerEClass, QTestLauncherListener.class, "TestLauncherListener", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		op = addEOperation(testLauncherListenerEClass, null, "launcherStopped", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getTestLauncher(), "launcher", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(testLauncherListenerEClass, null, "launcherStarted", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getTestLauncher(), "launcher", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(testLauncherListenerEClass, null, "resultAdded", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getTestRunner(), "runner", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getTestResult(), "result", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEClass(testUnitRunnerEClass, QTestUnitRunner.class, "TestUnitRunner", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(assertionStateEEnum, AssertionState.class, "AssertionState");
 		addEEnumLiteral(assertionStateEEnum, AssertionState.SUCCESS);
 		addEEnumLiteral(assertionStateEEnum, AssertionState.FAILED);
+
+		initEEnum(testRunnerEventTypeEEnum, TestRunnerEventType.class, "TestRunnerEventType");
+		addEEnumLiteral(testRunnerEventTypeEEnum, TestRunnerEventType.UNIT_STARTING);
+		addEEnumLiteral(testRunnerEventTypeEEnum, TestRunnerEventType.UNIT_STOPPING);
+		addEEnumLiteral(testRunnerEventTypeEEnum, TestRunnerEventType.UNIT_STOPPED);
+		addEEnumLiteral(testRunnerEventTypeEEnum, TestRunnerEventType.SUITE_STARTING);
+		addEEnumLiteral(testRunnerEventTypeEEnum, TestRunnerEventType.SUITE_STOPPING);
+		addEEnumLiteral(testRunnerEventTypeEEnum, TestRunnerEventType.SUITE_STOPPED);
 
 		// Create resource
 		createResource(eNS_URI);

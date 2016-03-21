@@ -20,7 +20,7 @@ import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QProjectDef;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.dk.test.QTestAsserter;
-import org.smeup.sys.dk.test.QTestRunner;
+import org.smeup.sys.dk.test.QTestUnitRunner;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.il.core.ctx.QContext;
@@ -34,7 +34,7 @@ public class SourceTester {
 	private QTestAsserter testAsserter;
 	
 	@Inject
-	private QTestRunner testRunner;
+	private QTestUnitRunner testRunner;
 	
 	@Inject
 	private QSourceManager sourceManager;

@@ -12,8 +12,11 @@
 package org.smeup.sys.il.data.nio;
 
 import java.nio.ByteBuffer;
+import java.util.Arrays;
 
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
+import org.smeup.sys.il.data.DataSpecial;
+import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
@@ -25,6 +28,8 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 	private static final long serialVersionUID = 1L;
 	private static byte INIT = (byte) 0;
+	protected static final byte LOVAL = (byte) 0;
+	protected static final byte HIVAL = (byte) 128;
 
 	private BinaryType _type;
 	private boolean _unsigned;
@@ -170,5 +175,37 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	protected void _write(byte[] value) {
 		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getLength(), 0);
 		eval(zoned.toDouble(value));
+	}
+	
+
+	@Override
+	protected final byte[] _toBytes(DataSpecial value) {
+
+		byte[] bytes = new byte[getLength()];
+		switch (value) {
+		case LOVAL:
+			Arrays.fill(bytes, LOVAL);
+			break;
+		case BLANK:
+		case BLANKS:
+			Arrays.fill(bytes, NIOCharacterImpl.INIT);
+			break;
+		case OFF:
+		case ZERO:
+		case ZEROS:
+			Arrays.fill(bytes, INIT);
+			break;
+		case ON:
+			Arrays.fill(bytes, NIOIndicatorImpl.ON);
+			break;
+		case HIVAL:
+			Arrays.fill(bytes, HIVAL);
+			break;
+		case NULL:
+		case OMIT:
+			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237rvbwe87vb9stf");
+		}
+
+		return bytes;
 	}
 }

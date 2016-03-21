@@ -83,14 +83,19 @@ public class BaseCallableInjector {
 	@Inject
 	private QJob job;
 
+	private QContext context;
 	private QResourceReader<QFile> fileReader;
 	private QDataContext dataContext;
 	private Map<String, Object> callerModules;
 
+	public BaseCallableInjector(QContext context) {
+		this.context = context;
+	}
+	
 	@PostConstruct
 	public void init() {
 		this.fileReader = resourceManager.getResourceReader(job, QFile.class, Scope.LIBRARY_LIST);
-		this.dataContext = dataManager.createDataContext(job.getContext());
+		this.dataContext = dataManager.createDataContext(context);
 		this.callerModules = new HashMap<String, Object>();
 	}
 
@@ -127,8 +132,7 @@ public class BaseCallableInjector {
 
 			QCallableProgram<P> callableProgram = new BaseCallableProgramDelegator<P>(dataContext, program, programStatus, delegate, programInfo);
 
-			QDataContext dataContext = getDataContext();
-			dataContext.getContext().invoke(callableProgram.getRawProgram(), PostConstruct.class);
+			context.invoke(callableProgram.getRawProgram(), PostConstruct.class);
 
 			return callableProgram;
 		} catch (Exception e) {
@@ -196,7 +200,7 @@ public class BaseCallableInjector {
 		List<InjectableField> pointers = new ArrayList<InjectableField>();
 
 		for (Field field : klass.getDeclaredFields()) {
-
+			
 			// TODO
 			if (field.getName().startsWith("$SWITCH_TABLE"))
 				continue;
@@ -426,7 +430,7 @@ public class BaseCallableInjector {
 
 		// data
 		for (InjectableField field : datas) {
-
+			
 			QDataTerm<?> dataTerm = dataContainer.createDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
 			QData data = dataContainer.resetData(dataTerm);
 			field.setValue(callable, data);

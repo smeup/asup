@@ -98,46 +98,69 @@
     <eLiterals name="failed"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AssertionSuccess" eSuperTypes="#//AssertionResult"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CallableTest" abstract="true" interface="true">
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCallable">
-      <eTypeArguments eClassifier="#//TestResult"/>
-    </eGenericSuperTypes>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SuiteTestRunner" abstract="true" eSuperTypes="#//TestRunner"/>
   <eClassifiers xsi:type="ecore:EClass" name="TestAsserter" abstract="true" interface="true"
       eSuperTypes="#//Asserter">
     <eOperations name="resetTime"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TestContainer" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tests" upperBound="-1"
-        eType="#//TestRunner" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TestRunnerListener" abstract="true"
-      interface="true">
-    <eOperations name="assertionResultAdded">
-      <eParameters name="testClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="assertionResult" eType="#//AssertionResult"/>
-    </eOperations>
-    <eOperations name="testStarted">
-      <eParameters name="testClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="testStopped">
-      <eParameters name="testClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="result" eType="#//TestResult"/>
-    </eOperations>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestManager" abstract="true" interface="true">
-    <eOperations name="prepareRunner" lowerBound="1" eType="#//TestRunner">
+    <eOperations name="prepareSuiteRunner" upperBound="-1" eType="#//TestSuiteRunner">
       <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="testMaker" eType="#//TestRunnerMaker"/>
+      <eParameters name="component" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="prepareUnitRunner" lowerBound="1" eType="#//TestUnitRunner">
+      <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="testMaker" eType="#//TestRunnerMaker"/>
       <eParameters name="klass" lowerBound="1">
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="prepareRunner" lowerBound="1" eType="#//TestRunner">
+    <eOperations name="prepareUnitRunner" lowerBound="1" eType="#//TestUnitRunner">
       <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="testMaker" eType="#//TestRunnerMaker"/>
       <eParameters name="classURI" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TestRunner" abstract="true" interface="true"
+      eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
+    <eOperations name="registerListener">
+      <eParameters name="listener" lowerBound="1" eType="#//TestRunnerListener"/>
+    </eOperations>
+    <eOperations name="removeListener">
+      <eParameters name="listener" lowerBound="1" eType="#//TestRunnerListener"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TestRunnerEvent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//TestRunner"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//TestRunnerEventType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TestRunnerEventType">
+    <eLiterals name="UnitStarting" value="10" literal="UNIT_STARTING"/>
+    <eLiterals name="UnitStopping" value="20" literal="UNIT_STOPPING"/>
+    <eLiterals name="UnitStopped" value="30" literal="UNIT_STOPPED"/>
+    <eLiterals name="SuiteStarting" value="110" literal="SUITE_STARTING"/>
+    <eLiterals name="SuiteStopping" value="120" literal="SUITE_STOPPING"/>
+    <eLiterals name="SuiteStopped" value="130" literal="SUITE_STOPPED"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TestRunnerListener" abstract="true"
+      interface="true">
+    <eOperations name="handleEvent">
+      <eParameters name="event" lowerBound="1" eType="#//TestRunnerEvent"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TestRunnerMaker" abstract="true" interface="true">
+    <eOperations name="make" lowerBound="1">
+      <eGenericType eTypeParameter="#//TestRunnerMaker/make/T"/>
+      <eTypeParameters name="T"/>
+      <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="klass" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//TestRunnerMaker/make/T"/>
+        </eGenericType>
+      </eParameters>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestResult" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
@@ -178,50 +201,23 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TestRunner" abstract="true" eSuperTypes="#//CallableTest ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
-    <eOperations name="registerListener">
-      <eParameters name="listener" eType="#//TestRunnerListener"/>
-    </eOperations>
-    <eOperations name="removeListener">
-      <eParameters name="listener" eType="#//TestRunnerListener"/>
-    </eOperations>
-    <eOperations name="getListeners" upperBound="-1" eType="#//TestRunnerListener"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="UnitTestRunner" abstract="true" eSuperTypes="#//TestRunner"/>
-  <eClassifiers xsi:type="ecore:EClass" name="TestLauncher" abstract="true">
-    <eOperations name="destroy">
-      <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
-    </eOperations>
-    <eOperations name="init">
-      <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
-    </eOperations>
-    <eOperations name="launch">
-      <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
-      <eParameters name="object" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="registerListener">
-      <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
-      <eParameters name="listener" eType="#//TestLauncherListener"/>
-    </eOperations>
-    <eOperations name="removeListener">
-      <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
-      <eParameters name="listener" eType="#//TestLauncherListener"/>
-    </eOperations>
-    <eOperations name="getListeners" upperBound="-1" eType="#//TestLauncherListener">
+  <eClassifiers xsi:type="ecore:EClass" name="TestSuiteLauncher" abstract="true" interface="true">
+    <eOperations name="createSuite" eType="#//TestSuiteRunner">
       <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TestLauncherListener" abstract="true"
-      interface="true">
-    <eOperations name="launcherStopped">
-      <eParameters name="launcher" eType="#//TestLauncher"/>
-    </eOperations>
-    <eOperations name="launcherStarted">
-      <eParameters name="launcher" eType="#//TestLauncher"/>
-    </eOperations>
-    <eOperations name="resultAdded">
-      <eParameters name="runner" eType="#//TestRunner"/>
-      <eParameters name="result" eType="#//TestResult"/>
-    </eOperations>
+  <eClassifiers xsi:type="ecore:EClass" name="TestSuiteRunner" abstract="true" interface="true">
+    <eGenericSuperTypes eClassifier="#//TestRunner"/>
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCallable">
+      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaList">
+        <eTypeArguments eClassifier="#//TestResult"/>
+      </eTypeArguments>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TestUnitRunner" abstract="true" interface="true">
+    <eGenericSuperTypes eClassifier="#//TestRunner"/>
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCallable">
+      <eTypeArguments eClassifier="#//TestResult"/>
+    </eGenericSuperTypes>
   </eClassifiers>
 </ecore:EPackage>

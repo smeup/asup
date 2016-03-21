@@ -27,7 +27,7 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 		
 		zoned = getDecimal(precision, scale);
 	}
-
+	
 	@Override
 	public int getSize() {
 		return zoned.getByteLength();
