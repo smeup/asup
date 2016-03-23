@@ -20,7 +20,7 @@ import java.lang.String;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QString extends QBufferedElement, QScanner, QCattable<QString>, QLookuppable {
+public interface QString extends QBufferedElement, QChecker, QScanner, QCattable<QString>, QLookuppable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

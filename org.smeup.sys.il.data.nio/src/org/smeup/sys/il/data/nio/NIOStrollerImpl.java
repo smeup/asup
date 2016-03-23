@@ -844,6 +844,127 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 		current().movea(value, startIndex, clear);		
 	}
 
+	
+	@Override
+	public QNumeric qCheck(QCharacter base) {
+		return current().qCheck(base);
+	}
+
+	@Override
+	public QNumeric qCheck(QCharacter base, QIndicator found) {
+		return current().qCheck(base, found);
+	}
+
+	@Override
+	public QNumeric qCheck(QCharacter base, QNumeric start) {
+		return current().qCheck(base, start);
+	}
+
+	@Override
+	public QNumeric qCheck(QCharacter base, QNumeric start, QIndicator found) {
+		return current().qCheck(base, start, found);
+	}
+
+	@Override
+	public QNumeric qCheck(QCharacter base, Number start) {
+		return current().qCheck(base, start);
+	}
+
+	@Override
+	public QNumeric qCheck(QCharacter base, Number start, QIndicator found) {
+		return current().qCheck(base, start, found);
+	}
+
+	@Override
+	public QNumeric qCheck(String base) {
+		return current().qCheck(base);
+	}
+
+	@Override
+	public QNumeric qCheck(String base, QIndicator found) {
+		return current().qCheck(base, found);
+	}
+
+	@Override
+	public QNumeric qCheck(String base, QNumeric start) {
+		return current().qCheck(base, start);
+	}
+
+	@Override
+	public QNumeric qCheck(String base, QNumeric start, QIndicator found) {
+		return current().qCheck(base, start, found);
+	}
+
+	@Override
+	public QNumeric qCheck(String base, Number start) {
+		return current().qCheck(base, start);
+	}
+
+	@Override
+	public QNumeric qCheck(String base, Number start, QIndicator found) {
+		return current().qCheck(base, start, found);
+	}
+	
+	@Override
+	public QNumeric qCheckr(QCharacter base) {
+		return current().qCheck(base);
+	}
+
+	@Override
+	public QNumeric qCheckr(QCharacter base, QIndicator found) {
+		return current().qCheck(base, found);
+	}
+
+	@Override
+	public QNumeric qCheckr(QCharacter base, QNumeric start) {
+		return current().qCheck(base, start);
+	}
+
+	@Override
+	public QNumeric qCheckr(QCharacter base, QNumeric start, QIndicator found) {
+		return current().qCheck(base, start, found);
+	}
+
+	@Override
+	public QNumeric qCheckr(QCharacter base, Number start) {
+		return current().qCheck(base, start);
+	}
+
+	@Override
+	public QNumeric qCheckr(QCharacter base, Number start, QIndicator found) {
+		return current().qCheck(base, start, found);
+	}
+
+	@Override
+	public QNumeric qCheckr(String base) {
+		return current().qCheck(base);
+	}
+
+	@Override
+	public QNumeric qCheckr(String base, QIndicator found) {
+		return current().qCheck(base, found);
+	}
+
+	@Override
+	public QNumeric qCheckr(String base, QNumeric start) {
+		return current().qCheck(base, start);
+	}
+
+	@Override
+	public QNumeric qCheckr(String base, QNumeric start, QIndicator found) {
+		return current().qCheck(base, start, found);
+	}
+
+	@Override
+	public QNumeric qCheckr(String base, Number start) {
+		return current().qCheck(base, start);
+	}
+
+	@Override
+	public QNumeric qCheckr(String base, Number start, QIndicator found) {
+		return current().qCheck(base, start, found);
+	}
+	
 	@Override
 	public QDatetime qDate(DatetimeFormat format) {
 		return current().qDate(format);

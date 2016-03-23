@@ -866,7 +866,128 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	public boolean lt(byte value) {
 		return delegate.lt(value);
 	}
+	
 
+	@Override
+	public QNumeric qCheck(QCharacter base) {
+		return delegate.qCheck(base);
+	}
+
+	@Override
+	public QNumeric qCheck(QCharacter base, QIndicator found) {
+		return delegate.qCheck(base, found);
+	}
+
+	@Override
+	public QNumeric qCheck(QCharacter base, QNumeric start) {
+		return delegate.qCheck(base, start);
+	}
+
+	@Override
+	public QNumeric qCheck(QCharacter base, QNumeric start, QIndicator found) {
+		return delegate.qCheck(base, start, found);
+	}
+
+	@Override
+	public QNumeric qCheck(QCharacter base, Number start) {
+		return delegate.qCheck(base, start);
+	}
+
+	@Override
+	public QNumeric qCheck(QCharacter base, Number start, QIndicator found) {
+		return delegate.qCheck(base, start, found);
+	}
+
+	@Override
+	public QNumeric qCheck(String base) {
+		return delegate.qCheck(base);
+	}
+
+	@Override
+	public QNumeric qCheck(String base, QIndicator found) {
+		return delegate.qCheck(base, found);
+	}
+
+	@Override
+	public QNumeric qCheck(String base, QNumeric start) {
+		return delegate.qCheck(base, start);
+	}
+
+	@Override
+	public QNumeric qCheck(String base, QNumeric start, QIndicator found) {
+		return delegate.qCheck(base, start, found);
+	}
+
+	@Override
+	public QNumeric qCheck(String base, Number start) {
+		return delegate.qCheck(base, start);
+	}
+
+	@Override
+	public QNumeric qCheck(String base, Number start, QIndicator found) {
+		return delegate.qCheck(base, start, found);
+	}
+
+	@Override
+	public QNumeric qCheckr(QCharacter base) {
+		return delegate.qCheck(base);
+	}
+
+	@Override
+	public QNumeric qCheckr(QCharacter base, QIndicator found) {
+		return delegate.qCheck(base, found);
+	}
+
+	@Override
+	public QNumeric qCheckr(QCharacter base, QNumeric start) {
+		return delegate.qCheck(base, start);
+	}
+
+	@Override
+	public QNumeric qCheckr(QCharacter base, QNumeric start, QIndicator found) {
+		return delegate.qCheck(base, start, found);
+	}
+
+	@Override
+	public QNumeric qCheckr(QCharacter base, Number start) {
+		return delegate.qCheck(base, start);
+	}
+
+	@Override
+	public QNumeric qCheckr(QCharacter base, Number start, QIndicator found) {
+		return delegate.qCheck(base, start, found);
+	}
+
+	@Override
+	public QNumeric qCheckr(String base) {
+		return delegate.qCheck(base);
+	}
+
+	@Override
+	public QNumeric qCheckr(String base, QIndicator found) {
+		return delegate.qCheck(base, found);
+	}
+
+	@Override
+	public QNumeric qCheckr(String base, QNumeric start) {
+		return delegate.qCheck(base, start);
+	}
+
+	@Override
+	public QNumeric qCheckr(String base, QNumeric start, QIndicator found) {
+		return delegate.qCheck(base, start, found);
+	}
+
+	@Override
+	public QNumeric qCheckr(String base, Number start) {
+		return delegate.qCheck(base, start);
+	}
+
+	@Override
+	public QNumeric qCheckr(String base, Number start, QIndicator found) {
+		return delegate.qCheck(base, start, found);
+	}
+	
 	@Override
 	public QNumeric qLookup(QArray<?> array) {
 		return delegate.qLookup(array);
