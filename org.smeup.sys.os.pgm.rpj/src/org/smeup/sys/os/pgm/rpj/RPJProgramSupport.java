@@ -652,11 +652,25 @@ public class RPJProgramSupport {
 
 	public QString qReplace(String replacement, String source, Integer from, Integer length) {
 
+		if(from == null)
+			from = 1;
+
+		if(length == null)
+			if(replacement.length() > source.length())
+				length = source.length();
+			else
+				length = replacement.length();
+		
+		int startPos = from + length - 1;
+		
+		
 		StringBuffer sb = new StringBuffer();
 		sb.append(source.substring(0, from - 1));
 		sb.append(replacement);
-		sb.append(source.substring(from + length - 1));
+		if(startPos<=source.length())
+			sb.append(source.substring(from + length - 1));
 
+		// TODO cache
 		QCharacter character = dataContext.getDataFactory().createCharacter(sb.length(), false, true);
 		character.eval(sb.toString());
 
