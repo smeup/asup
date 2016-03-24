@@ -23,7 +23,6 @@ import javax.annotation.PostConstruct;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
-import org.eclipse.e4.core.di.InjectionException;
 import org.eclipse.emf.common.util.URI;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
@@ -100,11 +99,9 @@ public abstract class E4ContextImpl extends ContextImpl {
 	public <A extends Annotation> void invoke(Object object, Class<A> qualifier) {
 		try {
 			ContextInjectionFactory.invoke(object, qualifier, getEclipseContext());
-		} catch (InjectionException e) {
-			// TODO
-			e.toString();
 		} catch (Exception e) {
-			e.printStackTrace();
+			if(e.getCause() != null)
+				throw new RuntimeException(e.getCause());
 		}
 	}
 
