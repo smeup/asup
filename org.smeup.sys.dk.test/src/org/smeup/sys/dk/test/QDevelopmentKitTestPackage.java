@@ -61,7 +61,8 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.QAsserter <em>Asserter</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.dk.test.QAsserter
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getAsserter()
 	 * @generated
@@ -69,9 +70,9 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	int ASSERTER = 0;
 
 	/**
-	 * The number of structural features of the '<em>Asserter</em>' class. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The number of structural features of the '<em>Asserter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
@@ -194,7 +195,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestRunner()
 	 * @generated
 	 */
-	int TEST_RUNNER = 6;
+	int TEST_RUNNER = 7;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.QTestAsserter
@@ -224,15 +225,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestManager()
 	 * @generated
 	 */
-	int TEST_MANAGER = 5;
-
-	/**
-	 * The number of structural features of the '<em>Test Manager</em>' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEST_MANAGER_FEATURE_COUNT = 0;
+	int TEST_MANAGER = 6;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.impl.TestResultImpl
@@ -243,15 +236,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestResult()
 	 * @generated
 	 */
-	int TEST_RESULT = 10;
-
-	/**
-	 * The number of structural features of the '<em>Test Runner</em>' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEST_RUNNER_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.CONTEXT_PROVIDER_FEATURE_COUNT + 0;
+	int TEST_RESULT = 11;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.impl.TestRunnerEventImpl <em>Test Runner Event</em>}' class.
@@ -261,7 +246,110 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestRunnerEvent()
 	 * @generated
 	 */
-	int TEST_RUNNER_EVENT = 7;
+	int TEST_RUNNER_EVENT = 8;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.test.QTestRunnerListener <em>Test Runner Listener</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.test.QTestRunnerListener
+	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestRunnerListener()
+	 * @generated
+	 */
+	int TEST_RUNNER_LISTENER = 9;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.test.QTestRunnerMaker <em>Test Runner Maker</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.test.QTestRunnerMaker
+	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestRunnerMaker()
+	 * @generated
+	 */
+	int TEST_RUNNER_MAKER = 10;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.test.QTestSuiteRunner <em>Test Suite Runner</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.test.QTestSuiteRunner
+	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestSuiteRunner()
+	 * @generated
+	 */
+	int TEST_SUITE_RUNNER = 13;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.test.QTestSuiteLauncher <em>Test Suite Launcher</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.test.QTestSuiteLauncher
+	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestSuiteLauncher()
+	 * @generated
+	 */
+	int TEST_SUITE_LAUNCHER = 12;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.test.QTestUnitRunner <em>Test Unit Runner</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.test.QTestUnitRunner
+	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestUnitRunner()
+	 * @generated
+	 */
+	int TEST_UNIT_RUNNER = 14;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.test.impl.TestContainerImpl <em>Test Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.test.impl.TestContainerImpl
+	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestContainer()
+	 * @generated
+	 */
+	int TEST_CONTAINER = 5;
+
+	/**
+	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CONTAINER__CONTENTS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CONTAINER__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Test Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CONTAINER_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Test Manager</em>' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_MANAGER_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of structural features of the '<em>Test Runner</em>' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_RUNNER_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.CONTEXT_PROVIDER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -291,16 +379,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	int TEST_RUNNER_EVENT_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.dk.test.QTestRunnerListener <em>Test Runner Listener</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.dk.test.QTestRunnerListener
-	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestRunnerListener()
-	 * @generated
-	 */
-	int TEST_RUNNER_LISTENER = 8;
-
-	/**
 	 * The number of structural features of the '<em>Test Runner Listener</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -308,16 +386,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @ordered
 	 */
 	int TEST_RUNNER_LISTENER_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.dk.test.QTestRunnerMaker <em>Test Runner Maker</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.dk.test.QTestRunnerMaker
-	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestRunnerMaker()
-	 * @generated
-	 */
-	int TEST_RUNNER_MAKER = 9;
 
 	/**
 	 * The number of structural features of the '<em>Test Runner Maker</em>' class.
@@ -381,26 +449,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	int TEST_RESULT_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 5;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.dk.test.QTestSuiteRunner <em>Test Suite Runner</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.dk.test.QTestSuiteRunner
-	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestSuiteRunner()
-	 * @generated
-	 */
-	int TEST_SUITE_RUNNER = 12;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.dk.test.QTestSuiteLauncher <em>Test Suite Launcher</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.dk.test.QTestSuiteLauncher
-	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestSuiteLauncher()
-	 * @generated
-	 */
-	int TEST_SUITE_LAUNCHER = 11;
-
-	/**
 	 * The number of structural features of the '<em>Test Suite Launcher</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -419,16 +467,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	int TEST_SUITE_RUNNER_FEATURE_COUNT = TEST_RUNNER_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.dk.test.QTestUnitRunner <em>Test Unit Runner</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.dk.test.QTestUnitRunner
-	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestUnitRunner()
-	 * @generated
-	 */
-	int TEST_UNIT_RUNNER = 13;
-
-	/**
 	 * The number of structural features of the '<em>Test Unit Runner</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -436,43 +474,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @ordered
 	 */
 	int TEST_UNIT_RUNNER_FEATURE_COUNT = TEST_RUNNER_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.dk.test.impl.TestContainerImpl <em>Test Container</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.dk.test.impl.TestContainerImpl
-	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestContainer()
-	 * @generated
-	 */
-	int TEST_CONTAINER = 14;
-
-	/**
-	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEST_CONTAINER__CONTENTS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEST_CONTAINER__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Test Container</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEST_CONTAINER_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.AssertionState <em>Assertion State</em>}' enum.
@@ -496,7 +497,8 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.dk.test.QAsserter <em>Asserter</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Asserter</em>'.
 	 * @see org.smeup.sys.dk.test.QAsserter
 	 * @generated
@@ -791,10 +793,9 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.dk.test.QAsserter
-		 * <em>Asserter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
-		 * -->
-		 * 
+		 * The meta object literal for the '{@link org.smeup.sys.dk.test.QAsserter <em>Asserter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
 		 * @see org.smeup.sys.dk.test.QAsserter
 		 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getAsserter()
 		 * @generated

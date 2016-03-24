@@ -48,7 +48,8 @@ import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
  */
 public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDevelopmentKitTestPackage {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass asserterEClass = null;
@@ -225,10 +226,10 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EClass getAsserter() {
 		return asserterEClass;
 	}
@@ -506,6 +507,9 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 
 		testAsserterEClass = createEClass(TEST_ASSERTER);
 
+		testContainerEClass = createEClass(TEST_CONTAINER);
+		createEAttribute(testContainerEClass, TEST_CONTAINER__NAME);
+
 		testManagerEClass = createEClass(TEST_MANAGER);
 
 		testRunnerEClass = createEClass(TEST_RUNNER);
@@ -530,9 +534,6 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		testSuiteRunnerEClass = createEClass(TEST_SUITE_RUNNER);
 
 		testUnitRunnerEClass = createEClass(TEST_UNIT_RUNNER);
-
-		testContainerEClass = createEClass(TEST_CONTAINER);
-		createEAttribute(testContainerEClass, TEST_CONTAINER__NAME);
 
 		// Create enums
 		assertionStateEEnum = createEEnum(ASSERTION_STATE);
@@ -575,12 +576,18 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		assertionResultEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		assertionSuccessEClass.getESuperTypes().add(this.getAssertionResult());
 		testAsserterEClass.getESuperTypes().add(this.getAsserter());
+		EGenericType g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
+		testContainerEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectContainer());
+		EGenericType g2 = createEGenericType(this.getTestResult());
+		g1.getETypeArguments().add(g2);
+		testContainerEClass.getEGenericSuperTypes().add(g1);
 		testRunnerEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
 		testResultEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		EGenericType g1 = createEGenericType(this.getTestRunner());
+		g1 = createEGenericType(this.getTestRunner());
 		testSuiteRunnerEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaCallable());
-		EGenericType g2 = createEGenericType(theMachineInterfaceCorePackage.getJavaList());
+		g2 = createEGenericType(theMachineInterfaceCorePackage.getJavaList());
 		g1.getETypeArguments().add(g2);
 		EGenericType g3 = createEGenericType(this.getTestResult());
 		g2.getETypeArguments().add(g3);
@@ -591,12 +598,6 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		g2 = createEGenericType(this.getTestResult());
 		g1.getETypeArguments().add(g2);
 		testUnitRunnerEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
-		testContainerEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectContainer());
-		g2 = createEGenericType(this.getTestResult());
-		g1.getETypeArguments().add(g2);
-		testContainerEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(asserterEClass, QAsserter.class, "Asserter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -695,6 +696,9 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 
 		addEOperation(testAsserterEClass, null, "resetTime", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(testContainerEClass, QTestContainer.class, "TestContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTestContainer_Name(), ecorePackage.getEString(), "name", null, 1, 1, QTestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(testManagerEClass, QTestManager.class, "TestManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(testManagerEClass, this.getTestSuiteRunner(), "prepareSuiteRunner", 0, -1, IS_UNIQUE, IS_ORDERED);
@@ -766,9 +770,6 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 
 		initEClass(testUnitRunnerEClass, QTestUnitRunner.class, "TestUnitRunner", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(testContainerEClass, QTestContainer.class, "TestContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTestContainer_Name(), ecorePackage.getEString(), "name", null, 1, 1, QTestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		// Initialize enums and add enum literals
 		initEEnum(assertionStateEEnum, AssertionState.class, "AssertionState");
 		addEEnumLiteral(assertionStateEEnum, AssertionState.SUCCESS);
@@ -802,7 +803,7 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		  (assertionResultEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
-			 "length", "20"
+			 "length", "15"
 		   },
 		   new URI[] {
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")

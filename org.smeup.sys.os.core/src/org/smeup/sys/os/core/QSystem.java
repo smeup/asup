@@ -23,7 +23,6 @@ import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getCreationInfo <em>Creation Info</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.QSystem#getInstallPath <em>Install Path</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getLastJobNumber <em>Last Job Number</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getStatus <em>Status</em>}</li>
@@ -93,35 +92,6 @@ public interface QSystem extends QObjectNameable, QContextProvider {
 	 * @generated
 	 */
 	void setCreationInfo(QCreationInfo value);
-
-	/**
-	 * Returns the value of the '<em><b>Install Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Path di installazione del sistema.
-	 * 
-	 * All'interno e' generalmente prevista una strutturazione del tipo:
-	 * 
-	 * $installPath/library/objectType/objectName
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Install Path</em>' attribute.
-	 * @see #setInstallPath(String)
-	 * @see org.smeup.sys.os.core.QOperatingSystemCorePackage#getSystem_InstallPath()
-	 * @model required="true"
-	 * @generated
-	 */
-	String getInstallPath();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.core.QSystem#getInstallPath <em>Install Path</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Install Path</em>' attribute.
-	 * @see #getInstallPath()
-	 * @generated
-	 */
-	void setInstallPath(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Last Job Number</b></em>' attribute.

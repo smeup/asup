@@ -12,7 +12,6 @@
 package org.smeup.sys.il.data.nio;
 
 import java.nio.ByteBuffer;
-import java.util.BitSet;
 
 import org.smeup.sys.il.data.QDataContext;
 

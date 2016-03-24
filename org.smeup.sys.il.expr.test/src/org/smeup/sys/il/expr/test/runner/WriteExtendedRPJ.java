@@ -1,4 +1,4 @@
-package org.smeup.sys.dk.compiler.test.runner;
+package org.smeup.sys.il.expr.test.runner;
 
 import javax.inject.Inject;
 

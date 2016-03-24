@@ -59,7 +59,6 @@
     <genClasses ecoreClass="os-core.ecore#//System">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//System/context"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//System/creationInfo"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/installPath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/lastJobNumber"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//System/status"/>
@@ -200,12 +199,16 @@
         </genOperations>
       </genClasses>
       <genClasses image="false" ecoreClass="os-core.ecore#//jobs/JobManager">
+        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/checkCapability">
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/checkCapability/capability"/>
+        </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/close">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/close/capability"/>
         </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/close.1">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/close.1/job"/>
         </genOperations>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/countActiveJobs"/>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/create">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/create/identity"/>
         </genOperations>

@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.expr.ibmi.test.runner;
+package org.smeup.sys.il.expr.test.runner;
 
 import java.io.IOException;
 
