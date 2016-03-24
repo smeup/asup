@@ -13,6 +13,9 @@ package org.smeup.sys.il.data.nio;
 
 import java.nio.ByteBuffer;
 
+import org.smeup.sys.il.data.DataSpecial;
+import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QString;
 
@@ -58,6 +61,38 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 
 	@Override
+	public final QBufferedData eval(DataSpecial value) {
+		switch (value) {
+		case BLANK:
+		case BLANKS:
+			NIOBufferHelper.fill(getBuffer(), getPosition()+2, _length, getFiller());
+			break;
+		case ZERO:
+		case ZEROS:
+			NIOBufferHelper.fill(getBuffer(), getPosition()+2, _length, NIODecimalImpl.INIT);
+			break;			
+		case HIVAL:
+			NIOBufferHelper.fill(getBuffer(), getPosition()+2, _length, HIVAL);
+			break;
+		case LOVAL:
+			NIOBufferHelper.fill(getBuffer(), getPosition()+2, _length, LOVAL);
+			break;
+		case OFF:
+			NIOBufferHelper.fill(getBuffer(), getPosition()+2, _length, NIOIndicatorImpl.OFF);
+			break;
+		case ON:
+			NIOBufferHelper.fill(getBuffer(), getPosition()+2, _length, NIOIndicatorImpl.OFF);
+			break;
+		case OMIT:
+		case NULL:
+			// TODO
+			throw new IntegratedLanguageDataRuntimeException("Unexpceted condition 9vxt87w5ec86w8etrv6wc8e");
+		}
+
+		return this;
+	}
+
+	@Override
 	public final void evalr(QString value) {
 		setLength((short) _length);
 		super.evalr(value);
@@ -72,8 +107,12 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	@Override
 	protected void cat(byte[] factor1, byte[] factor2, Number space, boolean clear) {
 
+		int length = getLength();
+		if(length == 0)
+			return;
+		
 		ByteBuffer buffer = getBuffer();
-		NIOBufferHelper.prepare(buffer, getPosition() + 2, getLength());
+		NIOBufferHelper.prepare(buffer, getPosition() + 2, length);
 
 		buffer.put(factor1);
 		if (space != null)

@@ -120,12 +120,6 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	}
 
 	@Override
-	public final QBufferedData eval(DataSpecial value) {
-		_fill(_toBytes(value), true);
-		return this;
-	}
-
-	@Override
 	public final QBufferedData eval(QDataFiller value) {
 		_fill(value.get().asBytes(), true);
 		return this;

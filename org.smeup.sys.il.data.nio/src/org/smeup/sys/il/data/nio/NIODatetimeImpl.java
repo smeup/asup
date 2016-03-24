@@ -21,6 +21,7 @@ import org.smeup.sys.il.data.BufferedElementType;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDatetime;
@@ -126,6 +127,12 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	@Override
 	public int getSize() {
 		return getLength();
+	}
+
+	@Override
+	public final QBufferedData eval(DataSpecial value) {
+		_write(_toBytes(value));
+		return this;
 	}
 
 	@Override

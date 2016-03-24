@@ -17,9 +17,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import org.smeup.sys.il.data.BufferedElementType;
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
@@ -33,6 +35,12 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	
 	public NIONumericImpl(QDataContext dataContext) {
 		super(dataContext);
+	}
+
+	@Override
+	public final QBufferedData eval(DataSpecial value) {
+		_write(_toBytes(value));
+		return this;
 	}
 
 	@Override

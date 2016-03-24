@@ -13,7 +13,9 @@ package org.smeup.sys.il.data.nio;
 
 import java.nio.ByteBuffer;
 
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QArray;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
@@ -51,6 +53,12 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	@Override
 	public int getSize() {
 		return _length;
+	}
+
+	@Override
+	public QBufferedData eval(DataSpecial value) {
+		_write(_toBytes(value));
+		return this;
 	}
 
 	@Override

@@ -106,6 +106,9 @@ public class NIOBufferHelper {
 	public static void fill(ByteBuffer buffer, int position, int length, byte[] filler) {
 		assert buffer != null;
 
+		if(filler.length == 0) 
+			return;
+
 		if(filler.length == 1) {
 			fill(buffer, position, length, filler[0]);
 			return;
@@ -133,6 +136,9 @@ public class NIOBufferHelper {
 
 	public static void fillr(ByteBuffer buffer, int position, int length, byte[] filler) {
 		assert buffer != null;
+
+		if(filler.length == 0) 
+			return;
 
 		if(filler.length == 1) {
 			fill(buffer, position, length, filler[0]);
