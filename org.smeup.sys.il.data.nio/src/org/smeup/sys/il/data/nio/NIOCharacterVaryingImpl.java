@@ -115,9 +115,15 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 		NIOBufferHelper.prepare(buffer, getPosition() + 2, length);
 
 		buffer.put(factor1);
+		if(!buffer.hasRemaining())
+			return;
+		
 		if (space != null)
 			for (int i = 0; i < space.intValue(); i++)
 				buffer.put(getFiller());
+
+		if(!buffer.hasRemaining())
+			return;
 
 		buffer.put(factor2);
 
