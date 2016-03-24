@@ -9,7 +9,7 @@
  * Contributors:
  *   Dario Foresti - Initial API and implementation
  */
-package org.smeup.sys.il.expr.ibmi.test;
+package org.smeup.sys.il.expr.test;
 
 import javax.inject.Inject;
 
@@ -21,7 +21,7 @@ import org.smeup.sys.dk.test.base.BaseTestSuiteDirectoryRunnerImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 
 @Test(category = "IL.EXPR")
-public class ILExprIBMiTestLauncherImpl implements QTestSuiteLauncher {
+public class ILExprTestLauncherImpl implements QTestSuiteLauncher {
 
 	@Inject
 	private QTestManager testManager;

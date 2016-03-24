@@ -11,17 +11,23 @@
  */
 package org.smeup.sys.dk.source.nio;
 
+import java.io.IOException;
 import java.net.URI;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.attribute.UserDefinedFileAttributeView;
 
 import org.smeup.sys.dk.source.QProject;
+import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 
 public class NIOProjectAdapter implements QProject {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Path project;
-	
+
 	public NIOProjectAdapter(Path project) {
 		this.project = project;
 	}
@@ -33,7 +39,17 @@ public class NIOProjectAdapter implements QProject {
 
 	@Override
 	public String getText() {
-		return "Text "+getName();
+		try {
+			UserDefinedFileAttributeView view = Files.getFileAttributeView(project, UserDefinedFileAttributeView.class);
+			String name = "text";
+			ByteBuffer buf = ByteBuffer.allocate(view.size(name));
+			view.read(name, buf);
+			buf.flip();
+			String value = Charset.defaultCharset().decode(buf).toString();
+			return value;
+		} catch (IOException e) {
+			throw new IntegratedLanguageCoreRuntimeException(e);
+		}
 	}
 
 	@Override

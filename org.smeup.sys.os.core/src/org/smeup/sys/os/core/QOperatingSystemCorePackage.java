@@ -161,22 +161,13 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	int SYSTEM__CREATION_INFO = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Install Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM__INSTALL_PATH = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Last Job Number</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__LAST_JOB_NUMBER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
+	int SYSTEM__LAST_JOB_NUMBER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -185,7 +176,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 4;
+	int SYSTEM__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute.
@@ -194,7 +185,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__STATUS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 5;
+	int SYSTEM__STATUS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>System Library</b></em>' attribute.
@@ -203,7 +194,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__SYSTEM_LIBRARY = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 6;
+	int SYSTEM__SYSTEM_LIBRARY = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>System User</b></em>' attribute.
@@ -212,7 +203,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__SYSTEM_USER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 7;
+	int SYSTEM__SYSTEM_USER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Temporary Library</b></em>' attribute.
@@ -221,7 +212,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__TEMPORARY_LIBRARY = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 8;
+	int SYSTEM__TEMPORARY_LIBRARY = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Variable Container</b></em>' containment reference.
@@ -230,7 +221,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__VARIABLE_CONTAINER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 9;
+	int SYSTEM__VARIABLE_CONTAINER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>System</em>' class.
@@ -239,7 +230,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 10;
+	int SYSTEM_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.impl.SystemEventImpl <em>System Event</em>}' class.
@@ -415,17 +406,6 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSystem_CreationInfo();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.QSystem#getInstallPath <em>Install Path</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Install Path</em>'.
-	 * @see org.smeup.sys.os.core.QSystem#getInstallPath()
-	 * @see #getSystem()
-	 * @generated
-	 */
-	EAttribute getSystem_InstallPath();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.QSystem#getLastJobNumber <em>Last Job Number</em>}'.
@@ -684,14 +664,6 @@ public interface QOperatingSystemCorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference SYSTEM__CREATION_INFO = eINSTANCE.getSystem_CreationInfo();
-
-		/**
-		 * The meta object literal for the '<em><b>Install Path</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SYSTEM__INSTALL_PATH = eINSTANCE.getSystem_InstallPath();
 
 		/**
 		 * The meta object literal for the '<em><b>Last Job Number</b></em>' attribute feature.

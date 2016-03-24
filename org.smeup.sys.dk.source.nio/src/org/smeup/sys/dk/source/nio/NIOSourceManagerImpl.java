@@ -15,11 +15,14 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
+import java.nio.charset.Charset;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.nio.file.attribute.UserDefinedFileAttributeView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -63,7 +66,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	}
 
 	public NIOSourceManagerImpl(QApplication application, String path) {
-		this.path = "/home/jamiro/xyz/" + path;
+		this.path = URI.create(System.getProperty("osgi.instance.area")).getPath() + path;
 		this.application = application;
 	}
 
@@ -104,6 +107,9 @@ public class NIOSourceManagerImpl implements QSourceManager {
 				Files.delete(project);
 
 			project = Files.createDirectories(project);
+
+			UserDefinedFileAttributeView view = Files.getFileAttributeView(project, UserDefinedFileAttributeView.class);
+			view.write("text", Charset.defaultCharset().encode(projectDef.getText()));
 
 		} finally {
 			projectLocker.unlock(LockType.WRITE);
@@ -257,7 +263,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 
 		QObjectLocker<QProject> fileLocker = lockManager.getLocker(context, file.toUri());
 		fileLocker.lock(LockType.WRITE);
-		
+
 		try {
 			Files.delete(file);
 		} catch (IOException e) {
@@ -356,9 +362,9 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	}
 
 	private <T extends QObjectNameable> Path getFolder(QContext context, QSourceNode parent, Class<T> type, boolean create) {
-		
+
 		java.net.URI location = URIUtil.removeFileExtension(parent.getLocation());
-		if(type != null)
+		if (type != null)
 			location = URIUtil.append(location, type.getSimpleName().substring(1));
 
 		Path folder = Paths.get(location);

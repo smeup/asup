@@ -82,7 +82,7 @@ public interface QAssertionResult extends QObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
-	 *        annotation="il-data length='20'"
+	 *        annotation="il-data length='15'"
 	 * @generated
 	 */
 	AssertionState getAssertionState();

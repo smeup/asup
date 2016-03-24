@@ -43,7 +43,6 @@ public class BaseSystemActivator {
 			QJobLogManager jobLogManager) {
 
 		system.setName(resolveVariables(application, system.getName()));
-		system.setInstallPath(resolveVariables(application, system.getName()));
 		
 		QContext systemContext = application.getContext().createChildContext(system.getName());
 		system.setContext(systemContext);

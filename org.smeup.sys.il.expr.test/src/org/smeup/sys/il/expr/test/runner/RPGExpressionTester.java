@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.expr.ibmi.test.runner;
+package org.smeup.sys.il.expr.test.runner;
 
 import java.io.IOException;
 
@@ -21,17 +21,12 @@ import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.dk.test.base.BaseTestHelper;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
-import org.smeup.sys.il.expr.QExpressionWriter;
-import org.smeup.sys.il.expr.QExpressionWriterRegistry;
 
-@Test(category = "IL.EXPR", object = "NWRI")
-public class NeutralExprWriterTester {
+@Test(category = "IL.EXPR", object = "RPG")
+public class RPGExpressionTester {
 
 	@Inject
 	private QExpressionParserRegistry expressionParserRegistry;
-	
-	@Inject
-	private QExpressionWriterRegistry expressionWriterRegistry;
 
 	@Inject
 	private QTestAsserter testAsserter;
@@ -40,22 +35,12 @@ public class NeutralExprWriterTester {
 	public void main() throws IOException {
 
 		QExpressionParser expressionParser = expressionParserRegistry.lookup("RPG");
-		QExpressionWriter rpgExpressionWriter = expressionWriterRegistry.lookup("RPG");
-		QExpressionWriter normalizedExpressionWriter = expressionWriterRegistry.lookup("NRM");
-		
-		String preparedExpr = null;
 
 		for (String expression : BaseTestHelper.readTextResource(this, "/resources/rpg/expressions.txt")) {
 			try{
-				
-				//Normalize expression for test input
-				preparedExpr = rpgExpressionWriter.writeExpression(expressionParser.parseExpression(expression));
-				
-				// Build normalized expr
-				normalizedExpressionWriter.writeExpression(expressionParser.parseExpression(preparedExpr));
-				
+				testAsserter.assertNotNull("Parse " + expression, expressionParser.parseExpression(expression));
 			} catch(Exception exc) {
-				testAsserter.fail("In: \"" + expression + "\" Norm: \"" + preparedExpr + "\" Error: \"" +exc.getMessage() + "\"");
+				testAsserter.fail("Cannot parse expression \"" + expression + "\"");
 			}
 		}
 	}

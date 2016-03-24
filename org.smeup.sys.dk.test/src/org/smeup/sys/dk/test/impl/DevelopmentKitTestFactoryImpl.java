@@ -59,9 +59,9 @@ public class DevelopmentKitTestFactoryImpl extends EFactoryImpl implements QDeve
 		switch (eClass.getClassifierID()) {
 			case QDevelopmentKitTestPackage.ASSERTION_FAILED: return (EObject)createAssertionFailed();
 			case QDevelopmentKitTestPackage.ASSERTION_SUCCESS: return (EObject)createAssertionSuccess();
+			case QDevelopmentKitTestPackage.TEST_CONTAINER: return (EObject)createTestContainer();
 			case QDevelopmentKitTestPackage.TEST_RUNNER_EVENT: return (EObject)createTestRunnerEvent();
 			case QDevelopmentKitTestPackage.TEST_RESULT: return (EObject)createTestResult();
-			case QDevelopmentKitTestPackage.TEST_CONTAINER: return (EObject)createTestContainer();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

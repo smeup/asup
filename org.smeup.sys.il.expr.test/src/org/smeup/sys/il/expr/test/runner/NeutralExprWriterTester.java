@@ -9,14 +9,12 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.expr.ibmi.test.runner;
+package org.smeup.sys.il.expr.test.runner;
 
 import java.io.IOException;
 
 import javax.inject.Inject;
 
-import org.antlr.runtime.ANTLRStringStream;
-import org.antlr.runtime.CommonTokenStream;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
@@ -25,11 +23,9 @@ import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 import org.smeup.sys.il.expr.QExpressionWriter;
 import org.smeup.sys.il.expr.QExpressionWriterRegistry;
-import org.smeup.sys.il.expr.neutral.NeutralExprLexer;
-import org.smeup.sys.il.expr.neutral.NeutralExprParser;
 
-@Test(category = "IL.EXPR", object = "NPAR")
-public class NeutralExprParserTester {
+@Test(category = "IL.EXPR", object = "NWRI")
+public class NeutralExprWriterTester {
 
 	@Inject
 	private QExpressionParserRegistry expressionParserRegistry;
@@ -56,18 +52,7 @@ public class NeutralExprParserTester {
 				preparedExpr = rpgExpressionWriter.writeExpression(expressionParser.parseExpression(expression));
 				
 				// Build normalized expr
-				String result = normalizedExpressionWriter.writeExpression(expressionParser.parseExpression(preparedExpr));
-								
-				NeutralExprLexer lex = new NeutralExprLexer(new ANTLRStringStream(result));
-				CommonTokenStream tokens = new CommonTokenStream(lex);
-				NeutralExprParser parser = new NeutralExprParser(tokens);
-
-				try {
-					parser.expression().getTree();
-					
-				} catch (Exception e) {
-					testAsserter.fail("Neu: " + result + " Msg: " + e.getMessage());					
-				}
+				normalizedExpressionWriter.writeExpression(expressionParser.parseExpression(preparedExpr));
 				
 			} catch(Exception exc) {
 				testAsserter.fail("In: \"" + expression + "\" Norm: \"" + preparedExpr + "\" Error: \"" +exc.getMessage() + "\"");

@@ -32,7 +32,6 @@ import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getCreationInfo <em>Creation Info</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getInstallPath <em>Install Path</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getLastJobNumber <em>Last Job Number</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getStatus <em>Status</em>}</li>
@@ -69,26 +68,6 @@ public class SystemImpl extends ObjectNameableImpl implements QSystem {
 	 * @ordered
 	 */
 	protected QCreationInfo creationInfo;
-
-	/**
-	 * The default value of the '{@link #getInstallPath() <em>Install Path</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInstallPath()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String INSTALL_PATH_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getInstallPath() <em>Install Path</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInstallPath()
-	 * @generated
-	 * @ordered
-	 */
-	protected String installPath = INSTALL_PATH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getLastJobNumber() <em>Last Job Number</em>}' attribute.
@@ -335,29 +314,6 @@ public class SystemImpl extends ObjectNameableImpl implements QSystem {
 	 * @generated
 	 */
 	@Override
-	public String getInstallPath() {
-		return installPath;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setInstallPath(String newInstallPath) {
-		String oldInstallPath = installPath;
-		installPath = newInstallPath;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemCorePackage.SYSTEM__INSTALL_PATH, oldInstallPath, installPath));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public int getLastJobNumber() {
 		return lastJobNumber;
 	}
@@ -579,8 +535,6 @@ public class SystemImpl extends ObjectNameableImpl implements QSystem {
 				return getContext();
 			case QOperatingSystemCorePackage.SYSTEM__CREATION_INFO:
 				return getCreationInfo();
-			case QOperatingSystemCorePackage.SYSTEM__INSTALL_PATH:
-				return getInstallPath();
 			case QOperatingSystemCorePackage.SYSTEM__LAST_JOB_NUMBER:
 				return getLastJobNumber();
 			case QOperatingSystemCorePackage.SYSTEM__NAME:
@@ -612,9 +566,6 @@ public class SystemImpl extends ObjectNameableImpl implements QSystem {
 				return;
 			case QOperatingSystemCorePackage.SYSTEM__CREATION_INFO:
 				setCreationInfo((QCreationInfo)newValue);
-				return;
-			case QOperatingSystemCorePackage.SYSTEM__INSTALL_PATH:
-				setInstallPath((String)newValue);
 				return;
 			case QOperatingSystemCorePackage.SYSTEM__LAST_JOB_NUMBER:
 				setLastJobNumber((Integer)newValue);
@@ -655,9 +606,6 @@ public class SystemImpl extends ObjectNameableImpl implements QSystem {
 			case QOperatingSystemCorePackage.SYSTEM__CREATION_INFO:
 				setCreationInfo((QCreationInfo)null);
 				return;
-			case QOperatingSystemCorePackage.SYSTEM__INSTALL_PATH:
-				setInstallPath(INSTALL_PATH_EDEFAULT);
-				return;
 			case QOperatingSystemCorePackage.SYSTEM__LAST_JOB_NUMBER:
 				setLastJobNumber(LAST_JOB_NUMBER_EDEFAULT);
 				return;
@@ -695,8 +643,6 @@ public class SystemImpl extends ObjectNameableImpl implements QSystem {
 				return context != null;
 			case QOperatingSystemCorePackage.SYSTEM__CREATION_INFO:
 				return creationInfo != null;
-			case QOperatingSystemCorePackage.SYSTEM__INSTALL_PATH:
-				return INSTALL_PATH_EDEFAULT == null ? installPath != null : !INSTALL_PATH_EDEFAULT.equals(installPath);
 			case QOperatingSystemCorePackage.SYSTEM__LAST_JOB_NUMBER:
 				return lastJobNumber != LAST_JOB_NUMBER_EDEFAULT;
 			case QOperatingSystemCorePackage.SYSTEM__NAME:
@@ -725,9 +671,7 @@ public class SystemImpl extends ObjectNameableImpl implements QSystem {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (installPath: ");
-		result.append(installPath);
-		result.append(", lastJobNumber: ");
+		result.append(" (lastJobNumber: ");
 		result.append(lastJobNumber);
 		result.append(", name: ");
 		result.append(name);
