@@ -43,6 +43,382 @@ public interface QNumeric extends QBufferedElement {
 	short asShort();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true"
+	 * @generated
+	 */
+	void check(QCharacter comparator, QCharacter base);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true"
+	 * @generated
+	 */
+	void check(String comparator, QCharacter base);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void check(QCharacter comparator, QCharacter base, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void check(String comparator, QCharacter base, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startRequired="true"
+	 * @generated
+	 */
+	void check(QCharacter comparator, QCharacter base, QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startRequired="true"
+	 * @generated
+	 */
+	void check(String comparator, QCharacter base, QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void check(QCharacter comparator, QCharacter base, QNumeric start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void check(String comparator, QCharacter base, QNumeric start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
+	 * @generated
+	 */
+	void check(QCharacter comparator, QCharacter base, Number start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
+	 * @generated
+	 */
+	void check(String comparator, QCharacter base, Number start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void check(QCharacter comparator, QCharacter base, Number start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void check(String comparator, QCharacter base, Number start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true"
+	 * @generated
+	 */
+	void check(QCharacter comparator, String base);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true"
+	 * @generated
+	 */
+	void check(String comparator, String base);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void check(QCharacter comparator, String base, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void check(String comparator, String base, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startRequired="true"
+	 * @generated
+	 */
+	void check(QCharacter comparator, String base, QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startRequired="true"
+	 * @generated
+	 */
+	void check(String comparator, String base, QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void check(QCharacter comparator, String base, QNumeric start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void check(String comparator, String base, QNumeric start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
+	 * @generated
+	 */
+	void check(QCharacter comparator, String base, Number start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
+	 * @generated
+	 */
+	void check(String comparator, String base, Number start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void check(QCharacter comparator, String base, Number start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void check(String comparator, String base, Number start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true"
+	 * @generated
+	 */
+	void checkr(QCharacter comparator, QCharacter base);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true"
+	 * @generated
+	 */
+	void checkr(String comparator, QCharacter base);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void checkr(QCharacter comparator, QCharacter base, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void checkr(String comparator, QCharacter base, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startRequired="true"
+	 * @generated
+	 */
+	void checkr(QCharacter comparator, QCharacter base, QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startRequired="true"
+	 * @generated
+	 */
+	void checkr(String comparator, QCharacter base, QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void checkr(QCharacter comparator, QCharacter base, QNumeric start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void checkr(String comparator, QCharacter base, QNumeric start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
+	 * @generated
+	 */
+	void checkr(QCharacter comparator, QCharacter base, Number start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
+	 * @generated
+	 */
+	void checkr(String comparator, QCharacter base, Number start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void checkr(QCharacter comparator, QCharacter base, Number start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void checkr(String comparator, QCharacter base, Number start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true"
+	 * @generated
+	 */
+	void checkr(QCharacter comparator, String base);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true"
+	 * @generated
+	 */
+	void checkr(String comparator, String base);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void checkr(QCharacter comparator, String base, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void checkr(String comparator, String base, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startRequired="true"
+	 * @generated
+	 */
+	void checkr(QCharacter comparator, String base, QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startRequired="true"
+	 * @generated
+	 */
+	void checkr(String comparator, String base, QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void checkr(QCharacter comparator, String base, QNumeric start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void checkr(String comparator, String base, QNumeric start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
+	 * @generated
+	 */
+	void checkr(QCharacter comparator, String base, Number start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
+	 * @generated
+	 */
+	void checkr(String comparator, String base, Number start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void checkr(QCharacter comparator, String base, Number start, QIndicator found);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -63,6 +439,14 @@ public interface QNumeric extends QBufferedElement {
 	 * @generated
 	 */
 	QNumeric divide(short value, QNumeric remainderTarget);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void checkr(String comparator, String base, Number start, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

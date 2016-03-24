@@ -22,14 +22,18 @@ import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
+import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.DecimalType;
 
 public abstract class NIONumericImpl extends NIOBufferedElementImpl implements QNumeric {
+
+
 
 	private static final long serialVersionUID = 1L;
 	
@@ -96,7 +100,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	public final short asShort() {
 		return _readNumber().shortValue();
 	}
-
+	
 	protected final int compareNumber(Number value) {
 		double d1 = asDouble();
 		double d2 = value.doubleValue();
@@ -106,6 +110,292 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 		return result;
 	}
 
+	@Override
+	public void check(QCharacter comparator, QCharacter base) {
+		eval(comparator.qCheck(base));
+	}
+
+	@Override
+	public void check(String comparator, QCharacter base) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheck(base));
+	}
+
+	@Override
+	public void check(QCharacter comparator, QCharacter base, QIndicator found) {
+		eval(comparator.qCheck(base, found));
+	}
+
+	@Override
+	public void check(String comparator, QCharacter base, QIndicator found) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheck(base, found));
+	}
+
+	@Override
+	public void check(QCharacter comparator, QCharacter base, QNumeric start) {
+		eval(comparator.qCheck(base, start));
+	}
+
+	@Override
+	public void check(String comparator, QCharacter base, QNumeric start) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheck(base, start));
+	}
+
+	@Override
+	public void check(QCharacter comparator, QCharacter base, QNumeric start, QIndicator found) {
+		eval(comparator.qCheck(base, start, found));
+	}
+
+	@Override
+	public void check(String comparator, QCharacter base, QNumeric start, QIndicator found) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheck(base, start, found));
+	}
+
+	@Override
+	public void check(QCharacter comparator, QCharacter base, Number start) {
+		eval(comparator.qCheck(base, start));
+	}
+
+	@Override
+	public void check(String comparator, QCharacter base, Number start) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheck(base, start));
+	}
+
+	@Override
+	public void check(QCharacter comparator, QCharacter base, Number start, QIndicator found) {
+		eval(comparator.qCheck(base, start, found));
+	}
+
+	@Override
+	public void check(String comparator, QCharacter base, Number start, QIndicator found) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheck(base, start, found));
+	}
+
+	@Override
+	public void check(QCharacter comparator, String base) {
+		eval(comparator.qCheck(base));
+	}
+
+	@Override
+	public void check(String comparator, String base) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheck(base));
+	}
+
+	@Override
+	public void check(QCharacter comparator, String base, QIndicator found) {
+		eval(comparator.qCheck(base, found));
+	}
+
+	@Override
+	public void check(String comparator, String base, QIndicator found) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheck(base, found));
+	}
+
+	@Override
+	public void check(QCharacter comparator, String base, QNumeric start) {
+		eval(comparator.qCheck(base, start));
+	}
+
+	@Override
+	public void check(String comparator, String base, QNumeric start) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheck(base, start));
+	}
+
+	@Override
+	public void check(QCharacter comparator, String base, QNumeric start, QIndicator found) {
+		eval(comparator.qCheck(base, start, found));
+	}
+
+	@Override
+	public void check(String comparator, String base, QNumeric start, QIndicator found) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheck(base, start, found));
+	}
+
+	@Override
+	public void check(QCharacter comparator, String base, Number start) {
+		eval(comparator.qCheck(base, start));
+	}
+
+	@Override
+	public void check(String comparator, String base, Number start) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheck(base, start));
+	}
+
+	@Override
+	public void check(QCharacter comparator, String base, Number start, QIndicator found) {
+		eval(comparator.qCheck(base, start, found));
+	}
+
+	@Override
+	public void check(String comparator, String base, Number start, QIndicator found) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheck(base, start, found));
+	}
+
+	@Override
+	public void checkr(QCharacter comparator, QCharacter base) {
+		eval(comparator.qCheckr(base));
+	}
+
+	@Override
+	public void checkr(String comparator, QCharacter base) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheckr(base));
+	}
+
+	@Override
+	public void checkr(QCharacter comparator, QCharacter base, QIndicator found) {
+		eval(comparator.qCheckr(base, found));	}
+
+	@Override
+	public void checkr(String comparator, QCharacter base, QIndicator found) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheckr(base, found));
+	}
+
+	@Override
+	public void checkr(QCharacter comparator, QCharacter base, QNumeric start) {
+		eval(comparator.qCheckr(base, start));	}
+
+	@Override
+	public void checkr(String comparator, QCharacter base, QNumeric start) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheckr(base, start));
+	}
+
+	@Override
+	public void checkr(QCharacter comparator, QCharacter base, QNumeric start, QIndicator found) {
+		eval(comparator.qCheckr(base, start, found));
+	}
+
+	@Override
+	public void checkr(String comparator, QCharacter base, QNumeric start, QIndicator found) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheckr(base, start, found));
+	}
+
+	@Override
+	public void checkr(QCharacter comparator, QCharacter base, Number start) {
+		eval(comparator.qCheckr(base, start));
+	}
+
+	@Override
+	public void checkr(String comparator, QCharacter base, Number start) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheckr(base, start));
+	}
+
+	@Override
+	public void checkr(QCharacter comparator, QCharacter base, Number start, QIndicator found) {
+		eval(comparator.qCheckr(base, start, found));
+	}
+
+	@Override
+	public void checkr(String comparator, QCharacter base, Number start, QIndicator found) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheckr(base, start, found));
+	}
+
+	@Override
+	public void checkr(QCharacter comparator, String base) {
+		eval(comparator.qCheckr(base));
+	}
+
+	@Override
+	public void checkr(String comparator, String base) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheckr(base));
+	}
+
+	@Override
+	public void checkr(QCharacter comparator, String base, QIndicator found) {
+		eval(comparator.qCheckr(base, found));
+	}
+
+	@Override
+	public void checkr(String comparator, String base, QIndicator found) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheckr(base, found));
+	}
+
+	@Override
+	public void checkr(QCharacter comparator, String base, QNumeric start) {
+		eval(comparator.qCheckr(base, start));
+	}
+
+	@Override
+	public void checkr(String comparator, String base, QNumeric start) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheckr(base, start));
+	}
+
+	@Override
+	public void checkr(QCharacter comparator, String base, QNumeric start, QIndicator found) {
+		eval(comparator.qCheckr(base, start, found));
+	}
+
+	@Override
+	public void checkr(String comparator, String base, QNumeric start, QIndicator found) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheckr(base, start, found));
+	}
+
+	@Override
+	public void checkr(QCharacter comparator, String base, Number start) {
+		eval(comparator.qCheckr(base, start));
+	}
+
+	@Override
+	public void checkr(String comparator, String base, Number start) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheckr(base, start));
+	}
+
+	@Override
+	public void checkr(QCharacter comparator, String base, Number start, QIndicator found) {
+		eval(comparator.qCheckr(base, start, found));
+	}
+
+	@Override
+	public void checkr(String comparator, String base, Number start, QIndicator found) {
+		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+		character.eval(comparator);
+		eval(character.qCheckr(base, start, found));
+	}
+	
 	@Override
 	public final double d() {
 		return asDouble();

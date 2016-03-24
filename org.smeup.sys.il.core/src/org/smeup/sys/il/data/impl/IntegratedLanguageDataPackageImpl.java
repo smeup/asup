@@ -3333,6 +3333,248 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(numericEClass, ecorePackage.getEShort(), "asShort", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(numericEClass, ecorePackage.getEDouble(), "d", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(numericEClass, this.getNumeric(), "divide", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -3345,6 +3587,12 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(numericEClass, this.getNumeric(), "divide", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEShort(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "remainderTarget", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "checkr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "base", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(numericEClass, this.getNumeric(), "divide", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getELong(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);

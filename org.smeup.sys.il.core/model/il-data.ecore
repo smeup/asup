@@ -2224,6 +2224,248 @@
     <eOperations name="asInteger" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eOperations name="asLong" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eOperations name="asShort" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="check" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="#//Character"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
     <eOperations name="d" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eOperations name="divide" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
@@ -2235,6 +2477,12 @@
     <eOperations name="divide" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
       <eParameters name="remainderTarget" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="checkr" lowerBound="1">
+      <eParameters name="comparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="base" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="divide" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
