@@ -18,13 +18,17 @@ import java.io.InputStream;
 import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
 import java.nio.file.StandardCopyOption;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.UserDefinedFileAttributeView;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -59,6 +63,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 
 	private QApplication application;
 	private String path;
+	private String relativePath;
 
 	@Inject
 	public NIOSourceManagerImpl(QApplication application) {
@@ -66,7 +71,8 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	}
 
 	public NIOSourceManagerImpl(QApplication application, String path) {
-		this.path = URI.create(System.getProperty("osgi.instance.area")).getPath() + path;
+		this.path = URI.create(System.getProperty("osgi.instance.area")).getPath();
+		this.relativePath = path;
 		this.application = application;
 	}
 
@@ -104,7 +110,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 				throw new IOException("Project already exists: " + projectDef.getName());
 
 			if (exists)
-				Files.delete(project);
+				deletePath(project);
 
 			project = Files.createDirectories(project);
 
@@ -129,9 +135,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 		projectLocker.lock(LockType.WRITE);
 
 		try {
-			Files.delete(project);
-		} catch (IOException e) {
-			logger.error(e);
+			deletePath(project);
 		} finally {
 			projectLocker.unlock(LockType.WRITE);
 		}
@@ -150,11 +154,12 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	@Override
 	public <T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, QProject project, Class<T> klass, String name, boolean replace, T content) throws IOException {
 
+		if(!name.equals(content.getName()))
+			throw new IOException("Invalid name: " + name);
+		
 		ByteArrayOutputStream output = getObjectSerializer(context).serialize(project, klass, name, content);
 
-		QSourceEntry sourceEntry = createObjectEntry(context, project, klass, name, replace, new ByteArrayInputStream(output.toByteArray()));
-		return sourceEntry;
-
+		return createObjectEntry(context, project, klass, name, replace, new ByteArrayInputStream(output.toByteArray()));
 	}
 
 	@Override
@@ -169,7 +174,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 
 	@Override
 	public <T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, QProject project, Class<T> type, String name, boolean replace, InputStream content) throws IOException {
-		return createEntry(context, project, type, name + ".XMI", replace, content);
+		return createEntry(context, project, type, name+".XMI", replace, content);
 	}
 
 	@Override
@@ -199,7 +204,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 
 	@Override
 	public <T extends QObjectNameable> QSourceEntry getObjectEntry(QContext context, QProject project, Class<T> type, String name) {
-		return getChildEntry(context, project, type, name + ".XMI");
+		return getChildEntry(context, project, type, name+".XMI");
 	}
 
 	@Override
@@ -220,6 +225,13 @@ public class NIOSourceManagerImpl implements QSourceManager {
 				if (Files.isDirectory(path))
 					projects.add(new NIOProjectAdapter(path));
 			}
+		
+			Collections.sort(projects, new Comparator<QProject>() {
+				@Override
+				public int compare(QProject o1, QProject o2) {
+					return o1.getName().compareTo(o2.getName());
+				}
+			});
 			return projects;
 		} catch (IOException e) {
 			throw new IntegratedLanguageCoreRuntimeException(e);
@@ -248,12 +260,6 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	}
 
 	@Override
-	public void refreshNode(QContext context, QSourceNode node) {
-		// throw new UnsupportedOperationException("Invalid refresh node:
-		// "+node);
-	}
-
-	@Override
 	public void removeEntry(QContext context, QSourceEntry entry) throws IOException {
 
 		Path file = Paths.get(entry.getLocation());
@@ -265,9 +271,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 		fileLocker.lock(LockType.WRITE);
 
 		try {
-			Files.delete(file);
-		} catch (IOException e) {
-			logger.error(e);
+			deletePath(file);
 		} finally {
 			fileLocker.unlock(LockType.WRITE);
 		}
@@ -325,14 +329,14 @@ public class NIOSourceManagerImpl implements QSourceManager {
 					continue;
 
 				String resourceName = path.getFileName().toString();
-
+				
 				// XMI extension
 				if (!resourceName.endsWith(".XMI"))
 					continue;
-
+				
 				// remove extension
 				resourceName = resourceName.substring(0, resourceName.length() - 4);
-
+				
 				// filter by name
 				if (nameFilter != null) {
 
@@ -358,14 +362,25 @@ public class NIOSourceManagerImpl implements QSourceManager {
 			e.printStackTrace();
 		}
 
+		Collections.sort(entries, new Comparator<QSourceEntry>() {
+
+			@Override
+			public int compare(QSourceEntry o1, QSourceEntry o2) {
+				return o1.getName().compareTo(o2.getName());
+			}
+		});
+
 		return entries;
 	}
 
 	private <T extends QObjectNameable> Path getFolder(QContext context, QSourceNode parent, Class<T> type, boolean create) {
 
 		java.net.URI location = URIUtil.removeFileExtension(parent.getLocation());
-		if (type != null)
+				
+		if (type != null) {
+			location = URIUtil.append(location, relativePath);
 			location = URIUtil.append(location, type.getSimpleName().substring(1));
+		}
 
 		Path folder = Paths.get(location);
 		if (Files.exists(folder))
@@ -406,5 +421,22 @@ public class NIOSourceManagerImpl implements QSourceManager {
 			}
 		}
 		return objectSerializer;
+	}
+
+	private void deletePath(Path path) throws IOException {
+		Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
+			@Override
+			public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+				Files.delete(file);
+				return FileVisitResult.CONTINUE;
+			}
+
+			@Override
+			public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+				Files.delete(dir);
+				return FileVisitResult.CONTINUE;
+			}
+
+		});
 	}
 }

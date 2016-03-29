@@ -142,14 +142,6 @@ public interface QSourceManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model contextRequired="true" nodeRequired="true"
-	 * @generated
-	 */
-	void refreshNode(QContext context, QSourceNode node);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException" contextRequired="true" entryRequired="true"
 	 * @generated
 	 */

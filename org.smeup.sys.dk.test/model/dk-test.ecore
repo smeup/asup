@@ -231,4 +231,12 @@
       <eTypeArguments eClassifier="#//TestResult"/>
     </eGenericSuperTypes>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TestObject" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="integerProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objectReference" eType="#//TestObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objectReferences" upperBound="-1"
+        eType="#//TestObject"/>
+  </eClassifiers>
 </ecore:EPackage>

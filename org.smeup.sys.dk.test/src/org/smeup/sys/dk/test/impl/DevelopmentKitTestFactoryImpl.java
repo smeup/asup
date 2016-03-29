@@ -62,6 +62,7 @@ public class DevelopmentKitTestFactoryImpl extends EFactoryImpl implements QDeve
 			case QDevelopmentKitTestPackage.TEST_CONTAINER: return (EObject)createTestContainer();
 			case QDevelopmentKitTestPackage.TEST_RUNNER_EVENT: return (EObject)createTestRunnerEvent();
 			case QDevelopmentKitTestPackage.TEST_RESULT: return (EObject)createTestResult();
+			case QDevelopmentKitTestPackage.TEST_OBJECT: return (EObject)createTestObject();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -137,6 +138,16 @@ public class DevelopmentKitTestFactoryImpl extends EFactoryImpl implements QDeve
 	public QTestResult createTestResult() {
 		TestResultImpl testResult = new TestResultImpl();
 		return testResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QTestObject createTestObject() {
+		TestObjectImpl testObject = new TestObjectImpl();
+		return testObject;
 	}
 
 	/**

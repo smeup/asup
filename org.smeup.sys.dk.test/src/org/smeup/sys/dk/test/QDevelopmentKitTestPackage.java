@@ -476,6 +476,70 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	int TEST_UNIT_RUNNER_FEATURE_COUNT = TEST_RUNNER_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.test.impl.TestObjectImpl <em>Test Object</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.test.impl.TestObjectImpl
+	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestObject()
+	 * @generated
+	 */
+	int TEST_OBJECT = 15;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_OBJECT__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>String Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_OBJECT__STRING_PROPERTY = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Integer Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_OBJECT__INTEGER_PROPERTY = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Object Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_OBJECT__OBJECT_REFERENCE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Object References</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_OBJECT__OBJECT_REFERENCES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Test Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_OBJECT_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 5;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.AssertionState <em>Assertion State</em>}' enum.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -483,7 +547,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getAssertionState()
 	 * @generated
 	 */
-	int ASSERTION_STATE = 15;
+	int ASSERTION_STATE = 16;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.TestRunnerEventType <em>Test Runner Event Type</em>}' enum.
@@ -493,7 +557,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestRunnerEventType()
 	 * @generated
 	 */
-	int TEST_RUNNER_EVENT_TYPE = 16;
+	int TEST_RUNNER_EVENT_TYPE = 17;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.dk.test.QAsserter <em>Asserter</em>}'.
@@ -729,6 +793,71 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTestUnitRunner();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.dk.test.QTestObject <em>Test Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Test Object</em>'.
+	 * @see org.smeup.sys.dk.test.QTestObject
+	 * @generated
+	 */
+	EClass getTestObject();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.dk.test.QTestObject#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.smeup.sys.dk.test.QTestObject#getName()
+	 * @see #getTestObject()
+	 * @generated
+	 */
+	EAttribute getTestObject_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.dk.test.QTestObject#getStringProperty <em>String Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>String Property</em>'.
+	 * @see org.smeup.sys.dk.test.QTestObject#getStringProperty()
+	 * @see #getTestObject()
+	 * @generated
+	 */
+	EAttribute getTestObject_StringProperty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.dk.test.QTestObject#getIntegerProperty <em>Integer Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Integer Property</em>'.
+	 * @see org.smeup.sys.dk.test.QTestObject#getIntegerProperty()
+	 * @see #getTestObject()
+	 * @generated
+	 */
+	EAttribute getTestObject_IntegerProperty();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.smeup.sys.dk.test.QTestObject#getObjectReference <em>Object Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Object Reference</em>'.
+	 * @see org.smeup.sys.dk.test.QTestObject#getObjectReference()
+	 * @see #getTestObject()
+	 * @generated
+	 */
+	EReference getTestObject_ObjectReference();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.smeup.sys.dk.test.QTestObject#getObjectReferences <em>Object References</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Object References</em>'.
+	 * @see org.smeup.sys.dk.test.QTestObject#getObjectReferences()
+	 * @see #getTestObject()
+	 * @generated
+	 */
+	EReference getTestObject_ObjectReferences();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.dk.test.QTestContainer <em>Test Container</em>}'.
@@ -993,6 +1122,56 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TEST_UNIT_RUNNER = eINSTANCE.getTestUnitRunner();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.dk.test.impl.TestObjectImpl <em>Test Object</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.dk.test.impl.TestObjectImpl
+		 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestObject()
+		 * @generated
+		 */
+		EClass TEST_OBJECT = eINSTANCE.getTestObject();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_OBJECT__NAME = eINSTANCE.getTestObject_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>String Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_OBJECT__STRING_PROPERTY = eINSTANCE.getTestObject_StringProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Integer Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_OBJECT__INTEGER_PROPERTY = eINSTANCE.getTestObject_IntegerProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Object Reference</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEST_OBJECT__OBJECT_REFERENCE = eINSTANCE.getTestObject_ObjectReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Object References</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEST_OBJECT__OBJECT_REFERENCES = eINSTANCE.getTestObject_ObjectReferences();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.dk.test.impl.TestContainerImpl <em>Test Container</em>}' class.

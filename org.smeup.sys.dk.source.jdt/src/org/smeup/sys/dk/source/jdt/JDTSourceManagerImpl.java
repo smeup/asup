@@ -225,19 +225,6 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	}
 
 	@Override
-	public void refreshNode(QContext context, QSourceNode node) {
-		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-		for (IContainer container : root.findContainersForLocationURI(node.getLocation())) {
-			try {
-				container.refreshLocal(IContainer.DEPTH_INFINITE, null);
-			} catch (CoreException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
-
-	@Override
 	public void removeEntry(QContext context, QSourceEntry entry) throws IOException {
 		assert entry != null;
 

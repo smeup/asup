@@ -27,6 +27,7 @@ import org.smeup.sys.dk.test.QDevelopmentKitTestPackage;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.QTestContainer;
 import org.smeup.sys.dk.test.QTestManager;
+import org.smeup.sys.dk.test.QTestObject;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.QTestRunnerEvent;
@@ -137,6 +138,13 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	 * @generated
 	 */
 	private EClass testUnitRunnerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass testObjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -437,6 +445,60 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTestObject() {
+		return testObjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTestObject_Name() {
+		return (EAttribute)testObjectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTestObject_StringProperty() {
+		return (EAttribute)testObjectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTestObject_IntegerProperty() {
+		return (EAttribute)testObjectEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTestObject_ObjectReference() {
+		return (EReference)testObjectEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTestObject_ObjectReferences() {
+		return (EReference)testObjectEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTestContainer() {
 		return testContainerEClass;
 	}
@@ -535,6 +597,13 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 
 		testUnitRunnerEClass = createEClass(TEST_UNIT_RUNNER);
 
+		testObjectEClass = createEClass(TEST_OBJECT);
+		createEAttribute(testObjectEClass, TEST_OBJECT__NAME);
+		createEAttribute(testObjectEClass, TEST_OBJECT__STRING_PROPERTY);
+		createEAttribute(testObjectEClass, TEST_OBJECT__INTEGER_PROPERTY);
+		createEReference(testObjectEClass, TEST_OBJECT__OBJECT_REFERENCE);
+		createEReference(testObjectEClass, TEST_OBJECT__OBJECT_REFERENCES);
+
 		// Create enums
 		assertionStateEEnum = createEEnum(ASSERTION_STATE);
 		testRunnerEventTypeEEnum = createEEnum(TEST_RUNNER_EVENT_TYPE);
@@ -598,6 +667,7 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		g2 = createEGenericType(this.getTestResult());
 		g1.getETypeArguments().add(g2);
 		testUnitRunnerEClass.getEGenericSuperTypes().add(g1);
+		testObjectEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(asserterEClass, QAsserter.class, "Asserter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -769,6 +839,13 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		initEClass(testSuiteRunnerEClass, QTestSuiteRunner.class, "TestSuiteRunner", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(testUnitRunnerEClass, QTestUnitRunner.class, "TestUnitRunner", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(testObjectEClass, QTestObject.class, "TestObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTestObject_Name(), ecorePackage.getEString(), "name", null, 1, 1, QTestObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestObject_StringProperty(), ecorePackage.getEString(), "stringProperty", null, 0, 1, QTestObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestObject_IntegerProperty(), ecorePackage.getEInt(), "integerProperty", null, 0, 1, QTestObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestObject_ObjectReference(), this.getTestObject(), null, "objectReference", null, 0, 1, QTestObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestObject_ObjectReferences(), this.getTestObject(), null, "objectReferences", null, 0, -1, QTestObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(assertionStateEEnum, AssertionState.class, "AssertionState");

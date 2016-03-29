@@ -24,8 +24,6 @@ import org.smeup.sys.dk.source.QSourceNode;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
-import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
-import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
@@ -114,9 +112,7 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 
 		// Initialize simple dependencies
 		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataDefPackage.eINSTANCE.eClass();
 		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataTermPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theDevelopmentKitSourcePackage.createPackageContents();
@@ -448,10 +444,6 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 
 		op = addEOperation(sourceManagerEClass, this.getProject(), "listProjects", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(sourceManagerEClass, null, "refreshNode", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getSourceNode(), "node", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(sourceManagerEClass, null, "removeEntry", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);

@@ -57,7 +57,6 @@ public class BaseSystemListenerImpl implements QSystemListener {
 					e.printStackTrace();
 				}
 			}
-			sourceManager.refreshNode(system.getContext(), project);
 			break;
 		case STATUS_CHANGED:
 			break;

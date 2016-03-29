@@ -62,35 +62,42 @@ public class NIOSourceEntryFileAdapter implements QSourceEntry {
 	public String getName() {
 
 		String fileName = file.getFileName().toString();
-		if (fileName.toUpperCase().endsWith(".xmi")) {
-			return fileName.substring(0, fileName.length() - 4);
-		}
+		if (fileName.toUpperCase().endsWith(".XMI"))
+			fileName = fileName.substring(0, fileName.length() - 4);
+		
 		return fileName;
 	}
 
 	@Override
 	public String getText() {
+		
+		BufferedReader reader = null;
 		try {
-			BufferedReader reader = Files.newBufferedReader(file);
+			reader = Files.newBufferedReader(file);
 			String line = reader.readLine();
 
 			if (line != null) {
 				line = reader.readLine();
 				if (line != null) {
-					Pattern pattern = Pattern.compile("text=\"(.*?)\"");
-					Matcher m = pattern.matcher(line);
+					Matcher m = Pattern.compile("text=\"(.*?)\"").matcher(line);
 					if (m.find()) {
 						String result = m.group();
 						result = result.substring(6, result.length() - 1);
-						reader.close();
 						return result;
 					}
 				}
-			}
-			reader.close();
+			}			
 			return null;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
+		}
+		finally {
+			if(reader != null)
+				try {
+					reader.close();
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
 		}
 	}
 
