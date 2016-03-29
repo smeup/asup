@@ -13,9 +13,8 @@ package org.smeup.sys.il.expr;
 
 import org.smeup.sys.il.expr.impl.ExpressionVisitorImpl;
 
-
 public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
-	
+
 	protected StringBuffer result = new StringBuffer();
 
 	public String getResult() {
@@ -171,13 +170,26 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QAtomicTermExpression expression) {
 
-		if (expression.getType() == AtomicType.STRING) {
+		switch (expression.getType()) {
+		case STRING:
 			String value = expression.getValue().replaceAll("\'", "\''");
 			result.append("'" + value + "'");
-		} else if (expression.getType() == AtomicType.HEXADECIMAL) {
+			break;
+		case HEXADECIMAL:
 			result.append("x'" + expression.getValue() + "'");
-		} else
-			result.append(expression.getValue());
+			break;
+		case BOOLEAN:
+		case DATE:
+		case FLOATING:
+		case INDICATOR:
+		case INTEGER:
+		case NAME:
+		case SPECIAL:
+		case TIME:
+		case TIMESTAMP:
+			result.append(expression.getValue());			
+			break;
+		}
 
 		return false;
 	}
@@ -192,23 +204,22 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 		return false;
 	}
 
-	
 	@Override
 	public boolean visit(QFunctionTermExpression expression) {
-		
+
 		String functionName = expression.getValue();
-				
+
 		if (functionName.startsWith("*ALL")) {
-			
+
 			result.append("*ALL");
 			for (QExpression child : expression.getElements()) {
 				child.accept(this);
-			}		
-			
+			}
+
 		} else {
-		
+
 			result.append(expression.getValue());
-	
+
 			result.append("(");
 			boolean first = true;
 			for (QExpression child : expression.getElements()) {
@@ -222,8 +233,6 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		return false;
 	}
-
-	
 
 	@Override
 	public boolean visit(QQualifiedTermExpression expression) {
