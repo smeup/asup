@@ -31,6 +31,9 @@
     <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaIterator">
       <eTypeArguments eTypeParameter="#//ObjectIterator/T"/>
     </eGenericSuperTypes>
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaIterable">
+      <eTypeArguments eTypeParameter="#//ObjectIterator/T"/>
+    </eGenericSuperTypes>
     <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectNameable" eSuperTypes="#//Object #//Nameable">

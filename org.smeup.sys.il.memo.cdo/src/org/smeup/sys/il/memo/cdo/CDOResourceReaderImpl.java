@@ -12,6 +12,7 @@
 package org.smeup.sys.il.memo.cdo;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 import org.eclipse.emf.cdo.net4j.CDONet4jSession;
 import org.eclipse.emf.cdo.view.CDOQuery;
@@ -175,6 +176,11 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 		@Override
 		public void remove() {
 
+		}
+		
+		@Override
+		public Iterator<T> iterator() {
+			return this;
 		}
 	}
 }

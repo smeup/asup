@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.memo.impl;
 
+import java.util.Iterator;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -269,6 +271,11 @@ public abstract class ResourceReaderImpl<T extends QObjectNameable> extends Reso
 				nextObject = object;
 				break;
 			}
+		}
+		
+		@Override
+		public Iterator<T> iterator() {
+			return this;
 		}
 	}
 

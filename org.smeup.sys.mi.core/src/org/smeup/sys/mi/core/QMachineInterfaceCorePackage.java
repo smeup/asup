@@ -162,7 +162,136 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaIterator()
 	 * @generated
 	 */
-	int JAVA_ITERATOR = 5;
+	int JAVA_ITERATOR = 6;
+
+	/**
+	 * The meta object id for the '{@link java.util.List <em>Java List</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.util.List
+	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaList()
+	 * @generated
+	 */
+	int JAVA_LIST = 7;
+
+	/**
+	 * The meta object id for the '{@link java.lang.Number <em>Java Number</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.Number
+	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaNumber()
+	 * @generated
+	 */
+	int JAVA_NUMBER = 8;
+
+	/**
+	 * The meta object id for the '{@link java.security.Principal <em>Java Principal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.security.Principal
+	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaPrincipal()
+	 * @generated
+	 */
+	int JAVA_PRINCIPAL = 9;
+
+	/**
+	 * The meta object id for the '{@link java.lang.Thread <em>Java Thread</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.Thread
+	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaThread()
+	 * @generated
+	 */
+	int JAVA_THREAD = 11;
+
+	/**
+	 * The meta object id for the '{@link java.lang.ThreadGroup <em>Java Thread Group</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.ThreadGroup
+	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaThreadGroup()
+	 * @generated
+	 */
+	int JAVA_THREAD_GROUP = 12;
+
+	/**
+	 * The meta object id for the '{@link java.lang.management.ThreadInfo <em>Java Thread Info</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.management.ThreadInfo
+	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaThreadInfo()
+	 * @generated
+	 */
+	int JAVA_THREAD_INFO = 13;
+
+	/**
+	 * The meta object id for the '<em>Java Annotation</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.annotation.Annotation
+	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaAnnotation()
+	 * @generated
+	 */
+	int JAVA_ANNOTATION = 14;
+
+	/**
+	 * The meta object id for the '<em>Java Dictionary</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.util.Dictionary
+	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaDictionary()
+	 * @generated
+	 */
+	int JAVA_DICTIONARY = 15;
+
+	/**
+	 * The meta object id for the '<em>Java Exception</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.Exception
+	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaException()
+	 * @generated
+	 */
+	int JAVA_EXCEPTION = 16;
+
+	/**
+	 * The meta object id for the '<em>Java Input Stream</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.io.InputStream
+	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaInputStream()
+	 * @generated
+	 */
+	int JAVA_INPUT_STREAM = 17;
+
+	/**
+	 * The meta object id for the '<em>Java IO Exception</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.io.IOException
+	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaIOException()
+	 * @generated
+	 */
+	int JAVA_IO_EXCEPTION = 18;
+
+	/**
+	 * The meta object id for the '{@link java.lang.Iterable <em>Java Iterable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.Iterable
+	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaIterable()
+	 * @generated
+	 */
+	int JAVA_ITERABLE = 5;
+
+	/**
+	 * The number of structural features of the '<em>Java Iterable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JAVA_ITERABLE_FEATURE_COUNT = 0;
 
 	/**
 	 * The number of structural features of the '<em>Java Iterator</em>' class.
@@ -174,16 +303,6 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	int JAVA_ITERATOR_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link java.util.List <em>Java List</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.util.List
-	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaList()
-	 * @generated
-	 */
-	int JAVA_LIST = 6;
-
-	/**
 	 * The number of structural features of the '<em>Java List</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -191,16 +310,6 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @ordered
 	 */
 	int JAVA_LIST_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link java.lang.Number <em>Java Number</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.Number
-	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaNumber()
-	 * @generated
-	 */
-	int JAVA_NUMBER = 7;
 
 	/**
 	 * The number of structural features of the '<em>Java Number</em>' class.
@@ -212,16 +321,6 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	int JAVA_NUMBER_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link java.security.Principal <em>Java Principal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.security.Principal
-	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaPrincipal()
-	 * @generated
-	 */
-	int JAVA_PRINCIPAL = 8;
-
-	/**
 	 * The number of structural features of the '<em>Java Principal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -229,96 +328,6 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @ordered
 	 */
 	int JAVA_PRINCIPAL_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link java.lang.Thread <em>Java Thread</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.Thread
-	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaThread()
-	 * @generated
-	 */
-	int JAVA_THREAD = 10;
-
-	/**
-	 * The meta object id for the '{@link java.lang.ThreadGroup <em>Java Thread Group</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.ThreadGroup
-	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaThreadGroup()
-	 * @generated
-	 */
-	int JAVA_THREAD_GROUP = 11;
-
-	/**
-	 * The meta object id for the '{@link java.lang.management.ThreadInfo <em>Java Thread Info</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.management.ThreadInfo
-	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaThreadInfo()
-	 * @generated
-	 */
-	int JAVA_THREAD_INFO = 12;
-
-	/**
-	 * The meta object id for the '<em>Java Annotation</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.annotation.Annotation
-	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaAnnotation()
-	 * @generated
-	 */
-	int JAVA_ANNOTATION = 13;
-
-	/**
-	 * The meta object id for the '<em>Java Dictionary</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.util.Dictionary
-	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaDictionary()
-	 * @generated
-	 */
-	int JAVA_DICTIONARY = 14;
-
-	/**
-	 * The meta object id for the '<em>Java Exception</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.Exception
-	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaException()
-	 * @generated
-	 */
-	int JAVA_EXCEPTION = 15;
-
-	/**
-	 * The meta object id for the '<em>Java Input Stream</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.io.InputStream
-	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaInputStream()
-	 * @generated
-	 */
-	int JAVA_INPUT_STREAM = 16;
-
-	/**
-	 * The meta object id for the '<em>Java IO Exception</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.io.IOException
-	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaIOException()
-	 * @generated
-	 */
-	int JAVA_IO_EXCEPTION = 17;
-
-	/**
-	 * The meta object id for the '<em>Java Iterable</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.Iterable
-	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaIterable()
-	 * @generated
-	 */
-	int JAVA_ITERABLE = 18;
 
 	/**
 	 * The meta object id for the '<em>Java Map</em>' data type.
@@ -358,7 +367,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaRunnable()
 	 * @generated
 	 */
-	int JAVA_RUNNABLE = 9;
+	int JAVA_RUNNABLE = 10;
 
 	/**
 	 * The number of structural features of the '<em>Java Runnable</em>' class.
@@ -645,15 +654,15 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	EDataType getJavaIOException();
 
 	/**
-	 * Returns the meta object for data type '{@link java.lang.Iterable <em>Java Iterable</em>}'.
+	 * Returns the meta object for class '{@link java.lang.Iterable <em>Java Iterable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Java Iterable</em>'.
+	 * @return the meta object for class '<em>Java Iterable</em>'.
 	 * @see java.lang.Iterable
-	 * @model instanceClass="java.lang.Iterable<java.lang.Object>"
+	 * @model instanceClass="java.lang.Iterable" typeParameters="T"
 	 * @generated
 	 */
-	EDataType getJavaIterable();
+	EClass getJavaIterable();
 
 	/**
 	 * Returns the meta object for data type '{@link java.util.Map <em>Java Map</em>}'.
@@ -958,14 +967,14 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 		EDataType JAVA_IO_EXCEPTION = eINSTANCE.getJavaIOException();
 
 		/**
-		 * The meta object literal for the '<em>Java Iterable</em>' data type.
+		 * The meta object literal for the '{@link java.lang.Iterable <em>Java Iterable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see java.lang.Iterable
 		 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaIterable()
 		 * @generated
 		 */
-		EDataType JAVA_ITERABLE = eINSTANCE.getJavaIterable();
+		EClass JAVA_ITERABLE = eINSTANCE.getJavaIterable();
 
 		/**
 		 * The meta object literal for the '<em>Java Map</em>' data type.

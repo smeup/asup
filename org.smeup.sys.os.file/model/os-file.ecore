@@ -103,6 +103,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FileMemberManager" abstract="true" interface="true">
+    <eOperations name="delete" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
+      <eParameters name="file" lowerBound="1" eType="#//FileMembered"/>
+      <eParameters name="member" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eOperations name="list" upperBound="-1" eType="#//FileMember">
       <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
       <eParameters name="file" lowerBound="1" eType="#//FileMembered"/>

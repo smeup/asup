@@ -154,9 +154,9 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	@Override
 	public <T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, QProject project, Class<T> klass, String name, boolean replace, T content) throws IOException {
 
-		if(!name.equals(content.getName()))
+		if (!name.equals(content.getName()))
 			throw new IOException("Invalid name: " + name);
-		
+
 		ByteArrayOutputStream output = getObjectSerializer(context).serialize(project, klass, name, content);
 
 		return createObjectEntry(context, project, klass, name, replace, new ByteArrayInputStream(output.toByteArray()));
@@ -174,7 +174,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 
 	@Override
 	public <T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, QProject project, Class<T> type, String name, boolean replace, InputStream content) throws IOException {
-		return createEntry(context, project, type, name+".XMI", replace, content);
+		return createEntry(context, project, type, name + ".XMI", replace, content);
 	}
 
 	@Override
@@ -204,7 +204,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 
 	@Override
 	public <T extends QObjectNameable> QSourceEntry getObjectEntry(QContext context, QProject project, Class<T> type, String name) {
-		return getChildEntry(context, project, type, name+".XMI");
+		return getChildEntry(context, project, type, name + ".XMI");
 	}
 
 	@Override
@@ -225,7 +225,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 				if (Files.isDirectory(path))
 					projects.add(new NIOProjectAdapter(path));
 			}
-		
+
 			Collections.sort(projects, new Comparator<QProject>() {
 				@Override
 				public int compare(QProject o1, QProject o2) {
@@ -280,8 +280,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 
 	private <T extends QObjectNameable> QSourceEntry createEntry(QContext context, QSourceNode parent, Class<T> type, String name, boolean replace, InputStream content) throws IOException {
 
-		Path folder = getFolder(context, parent, type, true);
-		Path file = folder.resolve(name);
+		Path file = getFolder(context, parent, type, true).resolve(name);
 
 		QObjectLocker<QProject> fileLocker = lockManager.getLocker(context, file.toUri());
 		fileLocker.lock(LockType.WRITE);
@@ -293,8 +292,12 @@ public class NIOSourceManagerImpl implements QSourceManager {
 
 			if (exists)
 				Files.copy(content, file, StandardCopyOption.REPLACE_EXISTING);
-			else
+			else {
+				if (!Files.exists(file.getParent()))
+					Files.createDirectories(file.getParent());
+				
 				Files.copy(content, file);
+			}
 
 		} finally {
 			fileLocker.unlock(LockType.WRITE);
@@ -329,14 +332,14 @@ public class NIOSourceManagerImpl implements QSourceManager {
 					continue;
 
 				String resourceName = path.getFileName().toString();
-				
+
 				// XMI extension
 				if (!resourceName.endsWith(".XMI"))
 					continue;
-				
+
 				// remove extension
 				resourceName = resourceName.substring(0, resourceName.length() - 4);
-				
+
 				// filter by name
 				if (nameFilter != null) {
 
@@ -376,7 +379,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	private <T extends QObjectNameable> Path getFolder(QContext context, QSourceNode parent, Class<T> type, boolean create) {
 
 		java.net.URI location = URIUtil.removeFileExtension(parent.getLocation());
-				
+
 		if (type != null) {
 			location = URIUtil.append(location, relativePath);
 			location = URIUtil.append(location, type.getSimpleName().substring(1));

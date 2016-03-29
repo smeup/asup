@@ -21,7 +21,10 @@
   <eClassifiers xsi:type="ecore:EDataType" name="JavaException" instanceClassName="java.lang.Exception"/>
   <eClassifiers xsi:type="ecore:EDataType" name="JavaInputStream" instanceClassName="java.io.InputStream"/>
   <eClassifiers xsi:type="ecore:EDataType" name="JavaIOException" instanceClassName="java.io.IOException"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="JavaIterable" instanceTypeName="java.lang.Iterable&lt;T>"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaIterable" instanceClassName="java.lang.Iterable"
+      abstract="true" interface="true">
+    <eTypeParameters name="T"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="JavaIterator" instanceClassName="java.util.Iterator"
       abstract="true" interface="true">
     <eTypeParameters name="T"/>

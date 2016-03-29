@@ -12,7 +12,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.io.Writer;
-import java.lang.Iterable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.net.URI;
@@ -96,8 +95,6 @@ public class MachineInterfaceCoreFactoryImpl extends EFactoryImpl implements QMa
 				return createJavaInputStreamFromString(eDataType, initialValue);
 			case QMachineInterfaceCorePackage.JAVA_IO_EXCEPTION:
 				return createJavaIOExceptionFromString(eDataType, initialValue);
-			case QMachineInterfaceCorePackage.JAVA_ITERABLE:
-				return createJavaIterableFromString(eDataType, initialValue);
 			case QMachineInterfaceCorePackage.JAVA_MAP:
 				return createJavaMapFromString(eDataType, initialValue);
 			case QMachineInterfaceCorePackage.JAVA_OUTPUT_STREAM:
@@ -139,8 +136,6 @@ public class MachineInterfaceCoreFactoryImpl extends EFactoryImpl implements QMa
 				return convertJavaInputStreamToString(eDataType, instanceValue);
 			case QMachineInterfaceCorePackage.JAVA_IO_EXCEPTION:
 				return convertJavaIOExceptionToString(eDataType, instanceValue);
-			case QMachineInterfaceCorePackage.JAVA_ITERABLE:
-				return convertJavaIterableToString(eDataType, instanceValue);
 			case QMachineInterfaceCorePackage.JAVA_MAP:
 				return convertJavaMapToString(eDataType, instanceValue);
 			case QMachineInterfaceCorePackage.JAVA_OUTPUT_STREAM:
@@ -252,25 +247,6 @@ public class MachineInterfaceCoreFactoryImpl extends EFactoryImpl implements QMa
 	 */
 	public String convertJavaIOExceptionToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	public Iterable<Object> createJavaIterableFromString(EDataType eDataType, String initialValue) {
-		return (Iterable<Object>)super.createFromString(initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertJavaIterableToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
 	}
 
 	/**

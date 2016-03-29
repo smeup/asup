@@ -464,6 +464,10 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		EGenericType g2 = createEGenericType(objectIteratorEClass_T);
 		g1.getETypeArguments().add(g2);
 		objectIteratorEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaIterable());
+		g2 = createEGenericType(objectIteratorEClass_T);
+		g1.getETypeArguments().add(g2);
+		objectIteratorEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaCloseable());
 		objectIteratorEClass.getEGenericSuperTypes().add(g1);
 		objectNameableEClass.getESuperTypes().add(this.getObject());

@@ -305,6 +305,11 @@ public class QResourceHelper {
 		public void remove() {
 			iterator.remove();
 		}
+
+		@Override
+		public Iterator<T> iterator() {
+			return this;
+		}
 	}
 
 	private static class ListReaderImpl<T extends QObjectNameable> extends ResourceReaderImpl<T> {
@@ -411,6 +416,11 @@ public class QResourceHelper {
 					return;
 				}
 			}
+		}
+
+		@Override
+		public Iterator<T> iterator() {
+			return this;
 		}
 	}
 }

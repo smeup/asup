@@ -66,4 +66,9 @@ public class JDTObjectIteratorImpl<T extends QObjectNameable> implements QObject
 			break;
 		}
 	}
+
+	@Override
+	public Iterator<T> iterator() {
+		return this;
+	}
 }

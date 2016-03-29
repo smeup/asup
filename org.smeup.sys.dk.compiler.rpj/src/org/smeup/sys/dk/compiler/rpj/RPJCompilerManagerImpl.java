@@ -324,10 +324,10 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	@SuppressWarnings("resource")
 	private void loadInternalModule(QJob job, List<QCompilationUnit> moduleContexts, CaseSensitiveType caseSensitive, String moduleName) {
 
-		QCompilationUnit moduleContext = globalContexts.get(moduleName);
+		QCompilationUnit moduleCompilaztionUnit = globalContexts.get(moduleName);
 
-		if (moduleContext != null) {
-			moduleContexts.add(moduleContext);
+		if (moduleCompilaztionUnit != null) {
+			moduleContexts.add(moduleCompilaztionUnit);
 			return;
 		}
 
@@ -343,8 +343,10 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 			if (eObject instanceof QModule) {
 				QModule module = (QModule) eObject;
 
-				moduleContext = createCompilationUnit(job, new HashMap<String, QCompilationUnit>(), module, caseSensitive);
-				moduleContexts.add(moduleContext);
+				moduleCompilaztionUnit = createCompilationUnit(job, new HashMap<String, QCompilationUnit>(), module, caseSensitive);
+				
+				moduleContexts.add(moduleCompilaztionUnit);				
+				globalContexts.put(moduleName, moduleCompilaztionUnit);
 			}
 
 		} catch (Exception e) {

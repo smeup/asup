@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.il.memo.cdo;
 
+import java.util.Iterator;
+
 import org.eclipse.net4j.util.collection.CloseableIterator;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
@@ -49,4 +51,8 @@ public class CDOObjectIterator<T extends QObjectNameable> implements QObjectIter
 		iterator.remove();
 	}
 
+	@Override
+	public Iterator<T> iterator() {
+		return this;
+	}
 }

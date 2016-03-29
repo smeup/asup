@@ -70,7 +70,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	private QNameable node;
 
 	private QCompilationUnit parentUnit;
-	protected List<QCompilationUnit> childUnits;
+	private List<QCompilationUnit> childUnits;
 	private CaseSensitiveType caseSensitive;
 
 	private List<QDataSetTerm> dataSets;

@@ -17,8 +17,6 @@ import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
-import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage;
@@ -155,8 +153,6 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 
 		// Initialize simple dependencies
 		QIntegratedLanguageExpressionPackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataDefPackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataTermPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theIntegratedLanguageMemoryPackage.createPackageContents();

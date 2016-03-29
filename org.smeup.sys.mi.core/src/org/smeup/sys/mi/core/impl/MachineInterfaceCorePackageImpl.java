@@ -95,6 +95,13 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass javaIterableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass javaIteratorEClass = null;
 
 	/**
@@ -180,13 +187,6 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * @generated
 	 */
 	private EDataType javaIOExceptionEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType javaIterableEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -475,8 +475,8 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getJavaIterable() {
-		return javaIterableEDataType;
+	public EClass getJavaIterable() {
+		return javaIterableEClass;
 	}
 
 	/**
@@ -607,6 +607,8 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 
 		javaEnumEClass = createEClass(JAVA_ENUM);
 
+		javaIterableEClass = createEClass(JAVA_ITERABLE);
+
 		javaIteratorEClass = createEClass(JAVA_ITERATOR);
 
 		javaListEClass = createEClass(JAVA_LIST);
@@ -629,7 +631,6 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		javaExceptionEDataType = createEDataType(JAVA_EXCEPTION);
 		javaInputStreamEDataType = createEDataType(JAVA_INPUT_STREAM);
 		javaIOExceptionEDataType = createEDataType(JAVA_IO_EXCEPTION);
-		javaIterableEDataType = createEDataType(JAVA_ITERABLE);
 		javaMapEDataType = createEDataType(JAVA_MAP);
 		javaOutputStreamEDataType = createEDataType(JAVA_OUTPUT_STREAM);
 		javaPropertiesEDataType = createEDataType(JAVA_PROPERTIES);
@@ -672,6 +673,7 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 
 		// Create type parameters
 		addETypeParameter(javaCallableEClass, "V");
+		addETypeParameter(javaIterableEClass, "T");
 		addETypeParameter(javaIteratorEClass, "T");
 		addETypeParameter(javaListEClass, "E");
 		addETypeParameter(javaDictionaryEDataType, "K");
@@ -693,6 +695,8 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		initEClass(javaExecutorServiceEClass, ExecutorService.class, "JavaExecutorService", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(javaEnumEClass, Enum.class, "JavaEnum", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS, "java.lang.Enum<E>");
+
+		initEClass(javaIterableEClass, Iterable.class, "JavaIterable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(javaIteratorEClass, Iterator.class, "JavaIterator", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
@@ -716,7 +720,6 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		initEDataType(javaExceptionEDataType, Exception.class, "JavaException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaInputStreamEDataType, InputStream.class, "JavaInputStream", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaIOExceptionEDataType, IOException.class, "JavaIOException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(javaIterableEDataType, Iterable.class, "JavaIterable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.lang.Iterable<T>");
 		initEDataType(javaMapEDataType, Map.class, "JavaMap", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaOutputStreamEDataType, OutputStream.class, "JavaOutputStream", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaPropertiesEDataType, Properties.class, "JavaProperties", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

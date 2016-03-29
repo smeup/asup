@@ -1047,6 +1047,11 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 
 		initEClass(fileMemberManagerEClass, QFileMemberManager.class, "FileMemberManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		op = addEOperation(fileMemberManagerEClass, ecorePackage.getEBoolean(), "delete", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getFileMembered(), "file", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "member", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(fileMemberManagerEClass, this.getFileMember(), "list", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getFileMembered(), "file", 1, 1, IS_UNIQUE, IS_ORDERED);

@@ -25,6 +25,14 @@ public interface QFileMemberManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model contextProviderRequired="true" fileRequired="true" memberRequired="true"
+	 * @generated
+	 */
+	boolean delete(QContextProvider contextProvider, QFileMembered file, String member);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model contextProviderRequired="true" fileRequired="true"
 	 * @generated
 	 */
