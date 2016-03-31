@@ -25,7 +25,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * @model
  * @generated
  */
-public interface QDataStructDef extends QUnaryCompoundDataDef<QDataStruct, QDataTerm<QBufferedDataDef<?>>>, QBufferedDataDef<QDataStruct> {
+public interface QDataStructDef extends QUnaryCompoundDataDef<QDataStruct, QDataTerm<QBufferedDataDef<?>>>, QUnaryBufferedDataDef<QDataStruct> {
 
 	/**
 	 * Returns the value of the '<em><b>Length</b></em>' attribute. <!--

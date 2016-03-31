@@ -3391,7 +3391,7 @@
           </eTypeArguments>
         </eTypeArguments>
       </eGenericSuperTypes>
-      <eGenericSuperTypes eClassifier="#//def/BufferedDataDef">
+      <eGenericSuperTypes eClassifier="#//def/UnaryBufferedDataDef">
         <eTypeArguments eClassifier="#//DataStruct"/>
       </eGenericSuperTypes>
     </eClassifiers>

@@ -1343,7 +1343,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		EGenericType g4 = createEGenericType();
 		g3.getETypeArguments().add(g4);
 		dataStructDefEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(this.getBufferedDataDef());
+		g1 = createEGenericType(this.getUnaryBufferedDataDef());
 		g2 = createEGenericType(theIntegratedLanguageDataPackage.getDataStruct());
 		g1.getETypeArguments().add(g2);
 		dataStructDefEClass.getEGenericSuperTypes().add(g1);
