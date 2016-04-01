@@ -17,6 +17,7 @@ import java.util.ListIterator;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
+import org.smeup.sys.dk.compiler.QConversionUnit;
 import org.smeup.sys.dk.parser.ibmi.cl.ParserFactory;
 import org.smeup.sys.dk.parser.ibmi.cl.ParserFactory.ScriptType;
 import org.smeup.sys.dk.parser.ibmi.cl.ParserInterface;
@@ -27,8 +28,10 @@ import org.smeup.sys.dk.parser.ibmi.cl.model.pgm.CLRow;
 import org.smeup.sys.dk.parser.ibmi.cl.util.CLParserUtil;
 import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QBinaryDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QDataDef;
@@ -43,12 +46,12 @@ import org.smeup.sys.il.flow.QBreak;
 import org.smeup.sys.il.flow.QCommandExec;
 import org.smeup.sys.il.flow.QContinue;
 import org.smeup.sys.il.flow.QDataSection;
-import org.smeup.sys.il.flow.QEval;
 import org.smeup.sys.il.flow.QFor;
 import org.smeup.sys.il.flow.QIf;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
 import org.smeup.sys.il.flow.QJump;
 import org.smeup.sys.il.flow.QLabel;
+import org.smeup.sys.il.flow.QMethodExec;
 import org.smeup.sys.il.flow.QMonitor;
 import org.smeup.sys.il.flow.QOnError;
 import org.smeup.sys.il.flow.QParameterList;
@@ -58,42 +61,28 @@ import org.smeup.sys.il.flow.QStatement;
 import org.smeup.sys.il.flow.QUntil;
 import org.smeup.sys.il.flow.QWhile;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.QExceptionManager;
+import org.smeup.sys.os.core.jobs.QJob;
 
 public class XMICLProgramWriter {
 
-	private class CLBlock {
-
-		private QBlock block;
-
-		private Stack<QIf> ifStack;
-
-		CLBlock() {
-			block = QIntegratedLanguageFlowFactory.eINSTANCE.createBlock();
-			ifStack = new Stack<QIf>();
-		}
-
-		public Stack<QIf> getIfStack() {
-			return ifStack;
-		}
-
-		public QBlock getBlock() {
-			return block;
-		}
-
-		public void clearIfStack() {
-			ifStack.clear();
-		}
+	public static enum QRNFMSG {
+		RNF7030;
 	}
-
+	
 	private ParserInterface<?> clParser;
 	private ParserInterface<?> commandParser;
 
-	// private QExpressionParser expressionParser;
 	private QProgram flowProgram;
+	private QExceptionManager exceptionManager;
+	private QConversionUnit conversionUnit;
+	
 	private ListIterator<CLRow> rowIterator;
 
-	public XMICLProgramWriter(QProgram flowProgram) {
+	public XMICLProgramWriter(QConversionUnit conversionUnit, QProgram flowProgram, QExceptionManager exceptionManager) {
+		this.conversionUnit = conversionUnit;
 		this.flowProgram = flowProgram;
+		this.exceptionManager = exceptionManager;
 		clParser = ParserFactory.getInstance().getParser(ScriptType.CL);
 		commandParser = ParserFactory.getInstance().getParser(ScriptType.CL_COMMAND);
 	}
@@ -119,7 +108,7 @@ public class XMICLProgramWriter {
 		return flowProgram;
 	}
 
-	private void analizeRow(CLBlock block, CLRow row) throws OperatingSystemRuntimeException, IntegratedLanguageExpressionException {
+	private void analizeRow(CLBlock block, CLRow row) {
 
 		if (row.getLabel() != null) {
 			// Manage Labels
@@ -138,7 +127,7 @@ public class XMICLProgramWriter {
 		}
 	}
 
-	private QStatement analizeCommand(CLBlock block, CLCommand clCmd, boolean clearIfStack) throws OperatingSystemRuntimeException, IntegratedLanguageExpressionException {
+	private QStatement analizeCommand(CLBlock block, CLCommand clCmd, boolean clearIfStack) {
 
 		QStatement result = null;
 
@@ -234,7 +223,7 @@ public class XMICLProgramWriter {
 			if (clearIfStack)
 				block.clearIfStack();
 
-			QEval eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
+//			QEval eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
 
 			// Read parms
 			String varParm = null;
@@ -258,9 +247,29 @@ public class XMICLProgramWriter {
 			if (right.startsWith("&"))
 				right = removeFirstChar(right);
 
-			String expression = left + "=" + right;
-			eval.setAssignment(expression);
-			result = eval;
+			DataDefType dataDefType = null;
+			
+			if(left.toUpperCase().startsWith("%SST"))
+				dataDefType = DataDefType.CHARACTER;
+			else {
+				QDataTerm<?> dataLeft = getData(left);
+				if(dataLeft == null)
+					throw exceptionManager.prepareException(conversionUnit.getContext().get(QJob.class), QRNFMSG.RNF7030, left);
+
+				dataDefType = dataLeft.getDefinition().getDataDefType();
+			}
+
+			QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+			methodExec.setObject(left);
+			if(dataDefType == DataDefType.CHARACTER || dataDefType == DataDefType.INDICATOR) 
+				methodExec.setMethod("movel");
+			else 
+				methodExec.setMethod("move");
+			methodExec.getParameters().add(right);
+//			methodExec.getParameters().add(DataSpecial.ON.getLiteral());
+			
+			result = methodExec;
+
 		} else {
 			if (clearIfStack)
 				block.clearIfStack();
@@ -273,7 +282,7 @@ public class XMICLProgramWriter {
 		return result;
 	}
 
-	private QUntil buildUNTILStatement(CLCommand clCmd) throws IntegratedLanguageExpressionException {
+	private QUntil buildUNTILStatement(CLCommand clCmd) {
 		QUntil untilStatement = QIntegratedLanguageFlowFactory.eINSTANCE.createUntil();
 
 		// Read params
@@ -293,7 +302,7 @@ public class XMICLProgramWriter {
 		return untilStatement;
 	}
 
-	private QIf buildIFStatement(CLBlock block, CLCommand clCmd) throws IntegratedLanguageExpressionException {
+	private QIf buildIFStatement(CLBlock block, CLCommand clCmd) {
 
 		QIf ifStatement = QIntegratedLanguageFlowFactory.eINSTANCE.createIf();
 
@@ -361,7 +370,7 @@ public class XMICLProgramWriter {
 		return ifStatement;
 	}
 
-	private void buildELSEStatement(CLBlock block, CLCommand clCmd) throws IntegratedLanguageExpressionException {
+	private void buildELSEStatement(CLBlock block, CLCommand clCmd) {
 
 		// Get CMD value (positional or not)
 		String cmdValue = null;
@@ -399,7 +408,7 @@ public class XMICLProgramWriter {
 		}
 	}
 
-	private void buildMONMSGStatement(CLBlock block, CLCommand clCmd) throws IntegratedLanguageExpressionException {
+	private void buildMONMSGStatement(CLBlock block, CLCommand clCmd)  {
 
 		// Get MSGID value (positional or not)
 		String msgIDValue = null;
@@ -456,7 +465,7 @@ public class XMICLProgramWriter {
 
 			if (lastCommand instanceof QWhile || lastCommand instanceof QUntil || lastCommand instanceof QFor || lastCommand instanceof QJump || lastCommand instanceof QBreak
 					|| lastCommand instanceof QContinue || lastCommand instanceof QReturn)
-				throw new IntegratedLanguageExpressionException("MONMSG after a forbidden command");
+				System.err.println("MONMSG after a forbidden command");
 
 			// Manage MONMSG command only if an EXEC is defined
 
@@ -520,7 +529,7 @@ public class XMICLProgramWriter {
 				if (execCommand instanceof QJump)
 					execBlock.getStatements().add(execCommand);
 				else
-					throw new IntegratedLanguageExpressionException("Program level MONMSG can execute only GOTO statements");
+					System.err.println("Program level MONMSG can execute only GOTO statements");
 
 				QMonitor monitorStatement = QIntegratedLanguageFlowFactory.eINSTANCE.createMonitor();
 
@@ -542,7 +551,7 @@ public class XMICLProgramWriter {
 		}
 	}
 
-	private QFor buildStatementFOR(CLCommand clCmd) throws OperatingSystemRuntimeException, IntegratedLanguageExpressionException {
+	private QFor buildStatementFOR(CLCommand clCmd) {
 		QFor forStatement = QIntegratedLanguageFlowFactory.eINSTANCE.createFor();
 
 		// Read params
@@ -591,7 +600,7 @@ public class XMICLProgramWriter {
 		return forStatement;
 	}
 
-	private QWhile buildDOWHILEStatement(CLCommand clCmd) throws IntegratedLanguageExpressionException {
+	private QWhile buildDOWHILEStatement(CLCommand clCmd) {
 
 		QWhile whileStatement = QIntegratedLanguageFlowFactory.eINSTANCE.createWhile();
 
@@ -613,7 +622,7 @@ public class XMICLProgramWriter {
 
 	}
 
-	private void buildBlock(CLBlock block) throws OperatingSystemRuntimeException, IntegratedLanguageExpressionException {
+	private void buildBlock(CLBlock block) {
 
 		while (rowIterator.hasNext()) {
 
@@ -760,5 +769,37 @@ public class XMICLProgramWriter {
 			return "";
 
 		return str.substring(1);
+	}
+	
+	private QDataTerm<?> getData(String name) {
+		for(QDataTerm<?> data: flowProgram.getDataSection().getDatas()) {
+			if(data.getName().equalsIgnoreCase(name))
+				return data;
+		}
+		return null;
+	}
+	
+	private class CLBlock {
+
+		private QBlock block;
+
+		private Stack<QIf> ifStack;
+
+		CLBlock() {
+			block = QIntegratedLanguageFlowFactory.eINSTANCE.createBlock();
+			ifStack = new Stack<QIf>();
+		}
+
+		public Stack<QIf> getIfStack() {
+			return ifStack;
+		}
+
+		public QBlock getBlock() {
+			return block;
+		}
+
+		public void clearIfStack() {
+			ifStack.clear();
+		}
 	}
 }

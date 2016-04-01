@@ -35,6 +35,7 @@ import org.smeup.sys.il.flow.QModule;
 import org.smeup.sys.il.flow.QProgram;
 import org.smeup.sys.il.flow.QSetupSection;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileMember;
@@ -49,6 +50,8 @@ public class CLUnitConverterImpl implements QUnitConverter {
 
 	@Inject
 	private QSourceManager sourceManager;
+	@Inject
+	private QExceptionManager exceptionManager;
 
 	@Override
 	public QModule convertModule(QConversionUnit conversionUnit, org.smeup.sys.os.module.QModule module) {
@@ -84,7 +87,7 @@ public class CLUnitConverterImpl implements QUnitConverter {
 			setupSection.setApplication(program.getApplication());
 			flowProgram.setSetupSection(setupSection);
 
-			XMICLProgramWriter clProgramWriter = new XMICLProgramWriter(flowProgram);
+			XMICLProgramWriter clProgramWriter = new XMICLProgramWriter(conversionUnit, flowProgram, exceptionManager);
 			clProgramWriter.writeProgram(source);
 
 			return flowProgram;
