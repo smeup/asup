@@ -287,11 +287,9 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		block.statements().add(expressionStatement);
 
 		// Annotation
-		if (statement.getFacet(QAnnotationTest.class) != null) {
-			QAnnotationTest annotationTest = statement.getFacet(QAnnotationTest.class);
-
+		QAnnotationTest annotationTest = statement.getFacet(QAnnotationTest.class); 
+		if (annotationTest != null) 
 			writeAssertion(annotationTest, statement.toString());
-		}
 
 		return false;
 	}
@@ -1030,21 +1028,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			messageNormalized = annotationTest.getMessage();
 		}
 
-		// QAtomicTermExpression atomicLeftExpr = null;
-		writeAssertionTrue(block, messageNormalized, buildExpression(ast, expressionParser.parseExpression(annotationTest.getExpression()), null));
-		/*
-		 * if(relationalExpression.getLeftOperand() instanceof
-		 * QAtomicTermExpression){ atomicLeftExpr = (QAtomicTermExpression)
-		 * relationalExpression.getLeftOperand();
-		 * if(compilationUnit.getDataTerm(atomicLeftExpr.getValue(), true) !=
-		 * null) writeAssertionTrue(block,
-		 * messageNormalized,buildExpression(ast,
-		 * expressionParser.parseExpression(qAnnotationTest.getExpression()),
-		 * null)); else writeAssertionEquals(block, messageNormalized,
-		 * leftExpression, rightExpression, relationalExpression.getOperator());
-		 * }else{ writeAssertionEquals(block, messageNormalized, leftExpression,
-		 * rightExpression, relationalExpression.getOperator()); }
-		 */
+		writeAssertionTrue(block, messageNormalized, buildExpression(ast, expression, null));
 	}
 
 	@SuppressWarnings("unchecked")

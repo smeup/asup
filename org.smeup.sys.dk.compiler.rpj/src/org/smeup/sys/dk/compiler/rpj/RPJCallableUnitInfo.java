@@ -20,6 +20,7 @@ public class RPJCallableUnitInfo {
 	private Map<String, Label> labels;
 	private boolean containsSQLStatement = false;
 	private boolean containsCMDStatement = false;
+	private boolean containsInsignificantZeros = false;
 
 	public RPJCallableUnitInfo() {
 		reset();
@@ -33,12 +34,20 @@ public class RPJCallableUnitInfo {
 		this.containsCMDStatement = containsCMDStatement;
 	}
 
+	public void containsInsignificantZeros(boolean containsInsignificantZeros) {
+		this.containsInsignificantZeros = containsInsignificantZeros;
+	}
+
 	public boolean containsSQLStatement() {
 		return this.containsSQLStatement;
 	}
 
 	public boolean containsCMDStatement() {
 		return this.containsCMDStatement;
+	}
+
+	public boolean containsInsignificantZeros() {
+		return containsInsignificantZeros;
 	}
 
 	public Map<String, Label> getLabels() {

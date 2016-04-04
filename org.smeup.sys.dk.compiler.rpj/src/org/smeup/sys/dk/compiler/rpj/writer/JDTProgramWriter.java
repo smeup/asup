@@ -81,7 +81,9 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 
 		// unit info
 		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(program);
-
+		if(callableUnitInfo.containsInsignificantZeros())
+			System.err.println("Unsignificant zeros");
+		
 		writeSupportFields(callableUnitInfo);
 
 		writeModuleFields(modules, UnitScope.PRIVATE);

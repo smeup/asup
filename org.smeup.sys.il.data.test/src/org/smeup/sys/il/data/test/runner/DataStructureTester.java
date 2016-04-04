@@ -40,14 +40,14 @@ public class DataStructureTester {
 	@Inject
 	private QTestRunner testRunner;
 
-	private static int DIM = 9999;
+	private static final int DIM = 9999;
 
 	@TestStarted
 	public void main() throws IOException, ClassNotFoundException {
 
 		QDataContext dataContext = dataManager.createDataContext(testRunner.getContext());
 		QDataFactory dataFactory = dataContext.getDataFactory();
-		
+
 		testAsserter.resetTime();
 		DataStructure dataStruct = dataFactory.createDataStruct(DataStructure.class, 0, true);
 		testAsserter.assertNotNull("DataStructure creation", dataStruct);
@@ -115,9 +115,9 @@ public class DataStructureTester {
 		testAsserter.assertEquals("Evaluation elements", true, true);
 
 		dataFactory.createDataStruct(£MU_B£QQ50P_1.class, 0, true);
-		
+
 		dataFactory.createDataStruct(£MU_£G90DA_1.class, 0, true);
-		
+
 		dataFactory.createDataStruct(£MU_JAJ11G_2.class, 0, true);
 
 	}
@@ -302,7 +302,6 @@ public class DataStructureTester {
 		@DataDef(length = 10)
 		public QCharacter f1ogag;
 	}
-	
 
 	public static class £MU_£G90DA_1 extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;

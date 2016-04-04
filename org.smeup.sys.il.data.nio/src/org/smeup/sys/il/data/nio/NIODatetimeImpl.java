@@ -414,11 +414,6 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
 	}
 
-	protected NIOBufferedDataImpl _getTemporaryDatax() {
-		NIODataContextImpl nioDataContextImpl = (NIODataContextImpl)getDataContext();
-		return nioDataContextImpl.getTemporaryDatetimes(_type, _dateFormat, _timeFormat);
-	}
-
 	@Override
 	public BufferedElementType getBufferedElementType() {
 		return BufferedElementType.DATETIME;

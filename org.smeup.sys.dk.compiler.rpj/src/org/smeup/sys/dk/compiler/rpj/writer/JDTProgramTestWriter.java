@@ -66,7 +66,7 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 	@SuppressWarnings("unchecked")
 	public void writeProgramTest(QProgram program) throws IOException {
 
-		System.out.println("Compiling test: "+program);
+		System.out.println("Compiling test: " + program);
 
 		refactCallableUnit(program);
 
@@ -94,6 +94,8 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 
 		// unit info
 		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(program);
+		if(callableUnitInfo.containsInsignificantZeros())
+			System.err.println("Unsignificant zeros");
 
 		writeSupportFields(callableUnitInfo);
 
@@ -149,13 +151,14 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 			statementWriter.getBlocks().push(assertionBlock);
 
 			for (QDataTerm<?> dataTerm : program.getDataSection().getDatas()) {
-				if (dataTerm.getFacet(QAnnotationTest.class) != null) {
-					QAnnotationTest annotationTest = dataTerm.getFacet(QAnnotationTest.class);
-					statementWriter.writeAssertion(annotationTest, dataTerm.toString());
-				}
+				if (dataTerm.getFacet(QAnnotationTest.class) == null)
+					continue;
+
+				QAnnotationTest annotationTest = dataTerm.getFacet(QAnnotationTest.class);
+				statementWriter.writeAssertion(annotationTest, dataTerm.toString());
 			}
 
-			if(!assertionBlock.statements().isEmpty())
+			if (!assertionBlock.statements().isEmpty())
 				listUtil.addFirst(methodDeclaration.getBody().statements(), assertionBlock);
 
 			statementWriter.getBlocks().pop();
@@ -163,8 +166,9 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 
 		// routines
 		if (program.getFlowSection() != null)
-			for (QRoutine routine : program.getFlowSection().getRoutines())
+			for (QRoutine routine : program.getFlowSection().getRoutines()) {
 				writeRoutine(routine);
+			}
 
 		// procedures
 		if (program.getFlowSection() != null)

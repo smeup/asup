@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -91,57 +90,20 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	private QLogger logger;
 
 	private ResourceSet resourceSet = new ResourceSetImpl();
-	private Map<String, QCompilationUnit> globalContexts = new HashMap<>();
 
 	@Override
 	public QCompilationUnit createChildCompilationUnit(QCompilationUnit master, QProcedure procedure) {
 
 		QJob job = master.getContext().get(QJob.class);
 
-		List<QCompilationUnit> moduleContexts = prepareContexts(job, globalContexts, procedure, master.getCaseSensitive());
-		// moduleContexts.add(master);
+		List<QCompilationUnit> moduleContexts = prepareContexts(job, procedure, master.getCaseSensitive());
 
-		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(master.getContext().createChildContext(procedure.getName()), procedure, master, moduleContexts, master.getCaseSensitive());
+		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(master.getContext().createChildContext(procedure.getName()), procedure, master, moduleContexts,
+				master.getCaseSensitive());
 		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
 
 		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().make(RPJCallableUnitLinker.class);
 		compilationUnit.getContext().set(RPJCallableUnitLinker.class, callableUnitLinker);
-
-		return compilationUnit;
-	}
-
-	private QCompilationUnit createCompilationUnit(QJob job, Map<String, QCompilationUnit> globalContexts, QModule module, CaseSensitiveType caseSensitive) {
-
-		List<QCompilationUnit> moduleContexts = null;
-		if (!module.getName().startsWith("*"))
-			moduleContexts = prepareContexts(job, globalContexts, module, caseSensitive);
-		else
-			moduleContexts = new ArrayList<QCompilationUnit>();
-
-		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(job.getContext().createChildContext(module.getName()), module, null, moduleContexts, caseSensitive);
-		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
-
-		// dataContext
-		QDataContext dataContext = dataManager.createDataContext(compilationUnit.getContext());
-		compilationUnit.getContext().set(QDataContext.class, dataContext);
-
-		// module
-		compilationUnit.getContext().set(QModule.class, module);
-
-		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().make(RPJCallableUnitLinker.class);
-		compilationUnit.getContext().set(RPJCallableUnitLinker.class, callableUnitLinker);
-
-		// expression parser and expression writer
-		if (module.getSetupSection() != null) {
-			String expressionType = module.getSetupSection().getExpressionType();
-			if (expressionType != null) {
-				QExpressionParser expressionParser = expressionParserRegistry.lookup(expressionType);
-				compilationUnit.getContext().set(QExpressionParser.class, expressionParser);
-				
-				QExpressionWriter expressionWriter = expressionWriterRegistry.lookup(QExpressionWriterRegistry.DEFAULT_WRITER);
-				compilationUnit.getContext().set(QExpressionWriter.class, expressionWriter);
-			}
-		}
 
 		return compilationUnit;
 	}
@@ -167,13 +129,48 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	@Override
 	public QCompilationUnit createCompilationUnit(QJob job, QModule module, CaseSensitiveType caseSensitive) {
 
-		return createCompilationUnit(job, globalContexts, module, caseSensitive);
+		System.out.println("\tcreate module: " + module.getName());
+
+		List<QCompilationUnit> moduleContexts = null;
+		if (!module.getName().startsWith("*"))
+			moduleContexts = prepareContexts(job, module, caseSensitive);
+		else
+			moduleContexts = new ArrayList<QCompilationUnit>();
+
+		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(job.getContext().createChildContext(module.getName()), module, null, moduleContexts, caseSensitive);
+		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
+
+		// dataContext
+		QDataContext dataContext = dataManager.createDataContext(compilationUnit.getContext());
+		compilationUnit.getContext().set(QDataContext.class, dataContext);
+
+		// module
+		compilationUnit.getContext().set(QModule.class, module);
+
+		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().make(RPJCallableUnitLinker.class);
+		compilationUnit.getContext().set(RPJCallableUnitLinker.class, callableUnitLinker);
+
+		// expression parser and expression writer
+		if (module.getSetupSection() != null) {
+			String expressionType = module.getSetupSection().getExpressionType();
+			if (expressionType != null) {
+				QExpressionParser expressionParser = expressionParserRegistry.lookup(expressionType);
+				compilationUnit.getContext().set(QExpressionParser.class, expressionParser);
+
+				QExpressionWriter expressionWriter = expressionWriterRegistry.lookup(QExpressionWriterRegistry.DEFAULT_WRITER);
+				compilationUnit.getContext().set(QExpressionWriter.class, expressionWriter);
+			}
+		}
+
+		return compilationUnit;
 	}
 
 	@Override
 	public QCompilationUnit createCompilationUnit(QJob job, QProgram program, CaseSensitiveType caseSensitive) {
 
-		List<QCompilationUnit> moduleContexts = prepareContexts(job, globalContexts, program, caseSensitive);
+		System.out.println("Create program: " + program.getName());
+
+		List<QCompilationUnit> moduleContexts = prepareContexts(job, program, caseSensitive);
 
 		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(job.getContext().createChildContext(program.getName()), program, null, moduleContexts, caseSensitive);
 		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
@@ -194,7 +191,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 				QExpressionParser expressionParser = expressionParserRegistry.lookup(expressionType);
 				compilationUnit.getContext().set(QExpressionParser.class, expressionParser);
-				
+
 				QExpressionWriter expressionWriter = expressionWriterRegistry.lookup(QExpressionWriterRegistry.DEFAULT_WRITER);
 				compilationUnit.getContext().set(QExpressionWriter.class, expressionWriter);
 			}
@@ -210,7 +207,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 		compilationUnits.add(compilationUnit.getNode().getName());
 
-		// link childs
+		// link children
 		for (QCompilationUnit childCompilationUnit : compilationUnit.getChildCompilationUnits())
 			linkCompilationUnit(compilationUnits, childCompilationUnit);
 
@@ -243,52 +240,47 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 				childCompilationUnit.close();
 			}
 		}
-
 	}
 
 	@Override
 	public void linkCompilationUnit(QCompilationUnit compilationUnit) {
 
-		// load childs
+		// load children
 		List<String> compilationUnits = new ArrayList<String>();
 		linkCompilationUnit(compilationUnits, compilationUnit);
 	}
 
-	private List<QCompilationUnit> prepareContexts(QJob job, Map<String, QCompilationUnit> globalContexts, QCallableUnit callableUnit, CaseSensitiveType caseSensitive) {
+	private List<QCompilationUnit> prepareContexts(QJob job, QCallableUnit callableUnit, CaseSensitiveType caseSensitive) {
 
 		List<QCompilationUnit> moduleContexts = new ArrayList<QCompilationUnit>();
-
 		if (callableUnit instanceof QProcedure)
-			loadInternalModule(job, moduleContexts, caseSensitive, "*PRO");
+			moduleContexts.add(loadInternalModule(job, caseSensitive, "*PRO"));
 		else
-			loadInternalModule(job, moduleContexts, caseSensitive, "*RPJ");
+			moduleContexts.add(loadInternalModule(job, caseSensitive, "*RPJ"));
 
 		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(callableUnit);
+
 		if (callableUnitInfo.containsSQLStatement())
-			loadInternalModule(job, moduleContexts, caseSensitive, "*SQL");
+			moduleContexts.add(loadInternalModule(job, caseSensitive, "*SQL"));
 
 		if (callableUnitInfo.containsCMDStatement())
-			loadInternalModule(job, moduleContexts, caseSensitive, "*CMD");
+			moduleContexts.add(loadInternalModule(job, caseSensitive, "*CMD"));
 
 		if (callableUnit.getSetupSection() == null)
 			return moduleContexts;
 
 		QResourceReader<org.smeup.sys.os.module.QModule> moduleReader = resourceManager.getResourceReader(job, org.smeup.sys.os.module.QModule.class, Scope.LIBRARY_LIST);
 		for (String moduleName : new ArrayList<String>(callableUnit.getSetupSection().getModules()))
-			loadModule(job, moduleReader, moduleContexts, moduleName, caseSensitive);
+			moduleContexts.add(loadModule(job, moduleReader, moduleName, caseSensitive));
 
 		return moduleContexts;
 	}
-		
-	@SuppressWarnings("resource")
-	private void loadModule(QJob job, QResourceReader<org.smeup.sys.os.module.QModule> moduleReader, List<QCompilationUnit> moduleContexts, String moduleName, CaseSensitiveType caseSensitive) {
 
-		QCompilationUnit moduleContext = globalContexts.get(moduleName);
+	private QCompilationUnit loadModule(QJob job, QResourceReader<org.smeup.sys.os.module.QModule> moduleReader, String moduleName, CaseSensitiveType caseSensitive) {
 
-		if (moduleContext != null) {
-			moduleContexts.add(moduleContext);
-			return;
-		}
+		QCompilationUnit compilationUnit = getModuleCacheMap(job).get(moduleName);
+		if (compilationUnit != null)
+			return compilationUnit;
 
 		org.smeup.sys.os.module.QModule module = moduleReader.lookup(moduleName);
 
@@ -310,26 +302,23 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		try {
 			resourceModule.load(xmiModuleSource.getInputStream(), Collections.EMPTY_MAP);
 			QModule flowModel = (QModule) resourceModule.getContents().get(0);
-
-			moduleContext = createCompilationUnit(job, globalContexts, flowModel, caseSensitive);
-			moduleContexts.add(moduleContext);
-
-			globalContexts.put(moduleName, moduleContext);
+			compilationUnit = createCompilationUnit(job, flowModel, caseSensitive);
 		} catch (IOException e) {
 			throw new OperatingSystemRuntimeException(e);
 		}
 
+		getModuleCacheMap(job).put(moduleName, compilationUnit);
+
+		return compilationUnit;
 	}
-	
-	@SuppressWarnings("resource")
-	private void loadInternalModule(QJob job, List<QCompilationUnit> moduleContexts, CaseSensitiveType caseSensitive, String moduleName) {
 
-		QCompilationUnit moduleCompilaztionUnit = globalContexts.get(moduleName);
+	private QCompilationUnit loadInternalModule(QJob job, CaseSensitiveType caseSensitive, String moduleName) {
 
-		if (moduleCompilaztionUnit != null) {
-			moduleContexts.add(moduleCompilaztionUnit);
-			return;
-		}
+		QCompilationUnit moduleCompilationUnit = getModuleCacheMap(job).get(moduleName);
+		if (moduleCompilationUnit != null)
+			return moduleCompilationUnit;
+
+		System.out.println("\tload internal module: " + moduleName);
 
 		try {
 			Bundle bundle = FrameworkUtil.getBundle(this.getClass());
@@ -342,16 +331,16 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 			if (eObject instanceof QModule) {
 				QModule module = (QModule) eObject;
-
-				moduleCompilaztionUnit = createCompilationUnit(job, new HashMap<String, QCompilationUnit>(), module, caseSensitive);
-				
-				moduleContexts.add(moduleCompilaztionUnit);				
-				globalContexts.put(moduleName, moduleCompilaztionUnit);
+				moduleCompilationUnit = createCompilationUnit(job, module, caseSensitive);
 			}
 
 		} catch (Exception e) {
 			logger.info(exceptionManager.prepareException(job, RPJCompilerMessage.AS00102, new String[] { moduleName }));
 		}
+
+		getModuleCacheMap(job).put(moduleName, moduleCompilationUnit);
+
+		return moduleCompilationUnit;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -474,5 +463,27 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		skeletonWriter.writeSkeleton(program);
 
 		skeletonWriter.writeOutputStream(output);
+	}
+
+	private ModuleCacheMap getModuleCacheMap(QJob job) {
+
+		ModuleCacheMap moduleCacheMap = job.getContext().get(ModuleCacheMap.class);
+		if (moduleCacheMap == null) {
+			synchronized (job) {
+				moduleCacheMap = job.getContext().get(ModuleCacheMap.class);
+				if (moduleCacheMap == null) {
+					moduleCacheMap = new ModuleCacheMap();
+					job.getContext().set(ModuleCacheMap.class, moduleCacheMap);
+				}
+			}
+		}
+
+		return moduleCacheMap;
+	}
+
+	private class ModuleCacheMap extends HashMap<String, QCompilationUnit> {
+
+		private static final long serialVersionUID = 1L;
+
 	}
 }

@@ -8,7 +8,6 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.def.DateFormat;
-import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.data.def.TimeFormat;
 
 public class NIODataContextImpl implements QDataContext {
@@ -23,7 +22,6 @@ public class NIODataContextImpl implements QDataContext {
 	private static final TimeFormat TIMEFMT = TimeFormat.ISO;
 
 	private NIOCharacterVaryingImpl temporaryString;
-	private final NIODatetimeImpl temporaryDatetimes[][][] = new NIODatetimeImpl[999][99][99];
 
 	public NIODataContextImpl(QContext context) {
 		this.context = context;
@@ -34,28 +32,6 @@ public class NIODataContextImpl implements QDataContext {
 
 		this.temporaryString = new NIOCharacterVaryingImpl(this, 64000);
 		this.temporaryString.allocate();
-	}
-
-	protected NIODatetimeImpl getTemporaryDatetimes(DatetimeType type, DateFormat dateFormat, TimeFormat timeFormat) {
-
-		try {
-			NIODatetimeImpl datetime = temporaryDatetimes[type.getValue()][dateFormat.getValue()][timeFormat.getValue()];
-
-			if (datetime == null)
-				synchronized (temporaryDatetimes) {
-					datetime = temporaryDatetimes[type.getValue()][dateFormat.getValue()][timeFormat.getValue()];
-					if (datetime == null) {
-						datetime = new NIODatetimeImpl(this, type, dateFormat, timeFormat);
-						temporaryDatetimes[type.getValue()][dateFormat.getValue()][timeFormat.getValue()] = datetime;
-					}
-				}
-
-			return datetime;
-		} catch (Exception e) {
-			System.err.println("Unexpected condition bgdfvs5f76sd7fsd7: " + e.getMessage());
-			return null;
-		}
-
 	}
 	
 	protected NIOCharacterVaryingImpl getTemporaryString() {

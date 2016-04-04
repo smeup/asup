@@ -200,6 +200,14 @@ public class RPJCallableUnitLinker {
 
 		for (String moduleName : setupSection.getModules()) {
 
+			org.smeup.sys.il.flow.QModule flowModule = compilationUnit.getModule(moduleName, false);
+			if (flowModule == null)
+				throw new OperatingSystemRuntimeException("Module not found: " + moduleName);
+
+			// already linked
+			if(flowModule.getFacet(QCompilerLinker.class) != null)
+				continue;
+
 			QModule module = getModule(moduleName);
 			if (module == null)
 				throw new OperatingSystemRuntimeException("Module not found: " + moduleName);
@@ -211,11 +219,7 @@ public class RPJCallableUnitLinker {
 			QCompilerLinker compilerLinker = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilerLinker();
 			compilerLinker.setLinkedClass(linkedClass);
 
-			org.smeup.sys.il.flow.QModule flowModule = compilationUnit.getModule(moduleName, false);
-			if (flowModule != null)
-				compilationUnit.getModule(moduleName, false).getFacets().add(compilerLinker);
-			else
-				throw new OperatingSystemRuntimeException("Module not found: " + moduleName);
+			flowModule.getFacets().add(compilerLinker);
 		}
 
 	}
@@ -243,7 +247,7 @@ public class RPJCallableUnitLinker {
 		compilationUnit.refresh();
 	}
 
-	@SuppressWarnings({ "unchecked"})
+	@SuppressWarnings({ "unchecked" })
 	private <E extends QDataTerm<?>> void linkFileTerm(QFileTerm fileTerm, QCompilationUnit compilationUnit) {
 
 		QFile file = getFile(fileTerm.getName());
@@ -322,7 +326,7 @@ public class RPJCallableUnitLinker {
 
 				QDisplayTerm displayTerm = (QDisplayTerm) fileTerm;
 				if (displayTerm.getFormat() == null) {
-					InternalFileTermImpl internalFormat = new InternalFileTermImpl(); 
+					InternalFileTermImpl internalFormat = new InternalFileTermImpl();
 					internalFormat.setDefinition(new InternalFileDefinitionImpl());
 					displayTerm.setFormat(internalFormat);
 				}
@@ -332,10 +336,10 @@ public class RPJCallableUnitLinker {
 					displayTerm.getFacets().add(compilerLinker);
 
 				List<QDataTerm<?>> childDataElements = new ArrayList<QDataTerm<?>>(displayTerm.getFormat().getDefinition().getElements());
-				for(QDataTerm<?> childDataTerm: childDataElements) {
-					if(!(childDataTerm instanceof QFileFormat))
+				for (QDataTerm<?> childDataTerm : childDataElements) {
+					if (!(childDataTerm instanceof QFileFormat))
 						continue;
-					
+
 					QFileFormat<?> fileFormat = (QFileFormat<?>) childDataTerm;
 					// redefine record
 					QDataTerm<QCompoundDataDef<?, ?>> dataRecord = (QDataTerm<QCompoundDataDef<?, ?>>) compilationUnit.getDataTerm(fileFormat.getName(), false);
@@ -344,14 +348,14 @@ public class RPJCallableUnitLinker {
 
 					// remove redefined record
 					if (!(dataRecord.getParent() instanceof InternalFileTermImpl))
-						compilationUnit.getTrashCan().getDataTerms().add(dataRecord);					
+						compilationUnit.getTrashCan().getDataTerms().add(dataRecord);
 				}
 
 			} else if (file instanceof QPrinterFile) {
 
 				QPrintTerm printTerm = (QPrintTerm) fileTerm;
 				if (printTerm.getFormat() == null) {
-					InternalFileTermImpl internalFormat = new InternalFileTermImpl(); 
+					InternalFileTermImpl internalFormat = new InternalFileTermImpl();
 					internalFormat.setDefinition(new InternalFileDefinitionImpl());
 					printTerm.setFormat(internalFormat);
 				}
@@ -370,9 +374,9 @@ public class RPJCallableUnitLinker {
 	public QCompilerLinker linkExternalFile(QContext context, QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> qDataTerm, QExternalFile externalFile) {
 
 		QFile file = getFile(externalFile.getName());
-		if(file == null)
+		if (file == null)
 			return null;
-		
+
 		if (externalFile.getName().startsWith("*")) {
 			logger.info(excpetionManager.prepareException(job, RPJCompilerMessage.AS00101, externalFile.getName()));
 			return null;
@@ -554,12 +558,12 @@ public class RPJCallableUnitLinker {
 
 		return linkedClass;
 	}
-	
+
 	private class InternalFileTermImpl extends DataTermImpl<QCompoundDataDef<?, QDataTerm<?>>> {
 		private static final long serialVersionUID = 1L;
-		
+
 	}
-	
+
 	private class InternalFileDefinitionImpl extends CompoundDataDefImpl<QStruct<?>, QDataTerm<?>> {
 
 		private static final long serialVersionUID = 1L;
@@ -580,6 +584,6 @@ public class RPJCallableUnitLinker {
 		public DataDefType getDataDefType() {
 			return DataDefType.STRUCT;
 		}
-		
+
 	}
 }

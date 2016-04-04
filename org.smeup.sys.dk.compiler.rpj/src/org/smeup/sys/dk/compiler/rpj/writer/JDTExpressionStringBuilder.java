@@ -24,6 +24,7 @@ import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.rpj.RPJCompilerMessage;
 import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.core.term.QTerm;
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
@@ -160,7 +161,23 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			break;
 		case SPECIAL:
 			source = Enum.class;
-			value = "qRPJ.qSP." + strings.removeFirstChar(expression.getValue()).toUpperCase();
+			DataSpecial dataSpecial = DataSpecial.get(expression.getValue());
+			switch (dataSpecial) {
+			case NULL:
+				value = "null";
+				break;
+			case BLANK:
+			case BLANKS:
+			case HIVAL:
+			case LOVAL:
+			case OFF:
+			case OMIT:
+			case ON:
+			case ZERO:
+			case ZEROS:
+				value = "qRPJ.qSP." + strings.removeFirstChar(expression.getValue()).toUpperCase();
+				break;
+			}
 			break;
 		case STRING:
 
