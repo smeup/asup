@@ -60,6 +60,7 @@ public class CLExpressionHelper implements BaseExpressionHelper {
 		case CLExprLexer.INTEGER:
 		case CLExprLexer.FLOAT:
 		case CLExprLexer.STRING:
+		case CLExprLexer.BOOLEAN:
 		case CLExprLexer.TERM:
 		case CLExprLexer.VAR:
 			expressionType = ExpressionType.ATOMIC;
@@ -87,6 +88,9 @@ public class CLExpressionHelper implements BaseExpressionHelper {
 
 		case CLExprLexer.FLOAT:
 			return AtomicType.FLOATING;
+
+		case CLExprLexer.BOOLEAN:
+			return AtomicType.BOOLEAN;
 
 		case CLExprLexer.STRING:
 			return AtomicType.STRING;

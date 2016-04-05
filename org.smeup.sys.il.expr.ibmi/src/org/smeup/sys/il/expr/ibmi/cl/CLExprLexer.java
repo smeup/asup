@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g 2015-11-09 18:10:44
+// $ANTLR 3.5.1 /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g 2016-04-05 16:35:57
 
   package org.smeup.sys.il.expr.ibmi.cl;
   
@@ -18,63 +18,64 @@ public class CLExprLexer extends Lexer {
 	public static final int B=6;
 	public static final int BCAT=7;
 	public static final int BINARY_FUN=8;
-	public static final int C=9;
-	public static final int CAT=10;
-	public static final int CHAR_SPECIAL=11;
-	public static final int CLOSE_BRACE=12;
-	public static final int D=13;
-	public static final int DIGIT=14;
-	public static final int DIGIT_SPECIAL=15;
-	public static final int DIV=16;
-	public static final int E=17;
-	public static final int EQ=18;
-	public static final int F=19;
-	public static final int FLOAT=20;
-	public static final int G=21;
-	public static final int GT=22;
-	public static final int GTEQ=23;
-	public static final int H=24;
-	public static final int I=25;
-	public static final int INTEGER=26;
-	public static final int J=27;
-	public static final int K=28;
-	public static final int L=29;
-	public static final int LETTER=30;
-	public static final int LT=31;
-	public static final int LTEQ=32;
-	public static final int M=33;
-	public static final int MINUS=34;
-	public static final int MULT=35;
-	public static final int N=36;
-	public static final int NE=37;
-	public static final int NG=38;
-	public static final int NL=39;
-	public static final int NOT=40;
-	public static final int O=41;
-	public static final int OPEN_BRACE=42;
-	public static final int OR=43;
-	public static final int P=44;
-	public static final int PLUS=45;
-	public static final int Q=46;
-	public static final int R=47;
-	public static final int S=48;
-	public static final int SIGN_MINUS=49;
-	public static final int SIGN_PLUS=50;
-	public static final int SST_FUN=51;
-	public static final int STRING=52;
-	public static final int SWITCH_FUN=53;
-	public static final int SWITCH_VALUE=54;
-	public static final int T=55;
-	public static final int TCAT=56;
-	public static final int TERM=57;
-	public static final int U=58;
-	public static final int V=59;
-	public static final int VAR=60;
-	public static final int W=61;
-	public static final int WS=62;
-	public static final int X=63;
-	public static final int Y=64;
-	public static final int Z=65;
+	public static final int BOOLEAN=9;
+	public static final int C=10;
+	public static final int CAT=11;
+	public static final int CHAR_SPECIAL=12;
+	public static final int CLOSE_BRACE=13;
+	public static final int D=14;
+	public static final int DIGIT=15;
+	public static final int DIGIT_SPECIAL=16;
+	public static final int DIV=17;
+	public static final int E=18;
+	public static final int EQ=19;
+	public static final int F=20;
+	public static final int FLOAT=21;
+	public static final int G=22;
+	public static final int GT=23;
+	public static final int GTEQ=24;
+	public static final int H=25;
+	public static final int I=26;
+	public static final int INTEGER=27;
+	public static final int J=28;
+	public static final int K=29;
+	public static final int L=30;
+	public static final int LETTER=31;
+	public static final int LT=32;
+	public static final int LTEQ=33;
+	public static final int M=34;
+	public static final int MINUS=35;
+	public static final int MULT=36;
+	public static final int N=37;
+	public static final int NE=38;
+	public static final int NG=39;
+	public static final int NL=40;
+	public static final int NOT=41;
+	public static final int O=42;
+	public static final int OPEN_BRACE=43;
+	public static final int OR=44;
+	public static final int P=45;
+	public static final int PLUS=46;
+	public static final int Q=47;
+	public static final int R=48;
+	public static final int S=49;
+	public static final int SIGN_MINUS=50;
+	public static final int SIGN_PLUS=51;
+	public static final int SST_FUN=52;
+	public static final int STRING=53;
+	public static final int SWITCH_FUN=54;
+	public static final int SWITCH_VALUE=55;
+	public static final int T=56;
+	public static final int TCAT=57;
+	public static final int TERM=58;
+	public static final int U=59;
+	public static final int V=60;
+	public static final int VAR=61;
+	public static final int W=62;
+	public static final int WS=63;
+	public static final int X=64;
+	public static final int Y=65;
+	public static final int Z=66;
 
 
 		@Override
@@ -110,15 +111,15 @@ public class CLExprLexer extends Lexer {
 	public CLExprLexer(CharStream input, RecognizerSharedState state) {
 		super(input,state);
 	}
-	@Override public String getGrammarFileName() { return "C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g"; }
+	@Override public String getGrammarFileName() { return "/home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g"; }
 
 	// $ANTLR start "VAR"
 	public final void mVAR() throws RecognitionException {
 		try {
 			int _type = VAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:185:5: ( '&' TERM )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:186:2: '&' TERM
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:187:5: ( '&' TERM )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:188:2: '&' TERM
 			{
 			match('&'); 
 			mTERM(); 
@@ -134,6 +135,77 @@ public class CLExprLexer extends Lexer {
 	}
 	// $ANTLR end "VAR"
 
+	// $ANTLR start "BOOLEAN"
+	public final void mBOOLEAN() throws RecognitionException {
+		try {
+			int _type = BOOLEAN;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:192:2: ( ( T R U E ) | ( F A L S E ) )
+			int alt1=2;
+			int LA1_0 = input.LA(1);
+			if ( (LA1_0=='T'||LA1_0=='t') ) {
+				alt1=1;
+			}
+			else if ( (LA1_0=='F'||LA1_0=='f') ) {
+				alt1=2;
+			}
+
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 1, 0, input);
+				throw nvae;
+			}
+
+			switch (alt1) {
+				case 1 :
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:192:4: ( T R U E )
+					{
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:192:4: ( T R U E )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:192:5: T R U E
+					{
+					mT(); 
+
+					mR(); 
+
+					mU(); 
+
+					mE(); 
+
+					}
+
+					}
+					break;
+				case 2 :
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:193:4: ( F A L S E )
+					{
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:193:4: ( F A L S E )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:193:5: F A L S E
+					{
+					mF(); 
+
+					mA(); 
+
+					mL(); 
+
+					mS(); 
+
+					mE(); 
+
+					}
+
+					}
+					break;
+
+			}
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "BOOLEAN"
+
 	// $ANTLR start "STRING"
 	public final void mSTRING() throws RecognitionException {
 		try {
@@ -141,30 +213,30 @@ public class CLExprLexer extends Lexer {
 			int _channel = DEFAULT_TOKEN_CHANNEL;
 			int c;
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:190:2: ( '\\'' ( '\\'' '\\'' |c=~ ( '\\'' | '\\r' | '\\n' ) )* '\\'' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:190:4: '\\'' ( '\\'' '\\'' |c=~ ( '\\'' | '\\r' | '\\n' ) )* '\\''
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:197:2: ( '\\'' ( '\\'' '\\'' |c=~ ( '\\'' | '\\r' | '\\n' ) )* '\\'' )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:197:4: '\\'' ( '\\'' '\\'' |c=~ ( '\\'' | '\\r' | '\\n' ) )* '\\''
 			{
 			match('\''); 
 			 StringBuilder b = new StringBuilder(); 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:192:2: ( '\\'' '\\'' |c=~ ( '\\'' | '\\r' | '\\n' ) )*
-			loop1:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:199:2: ( '\\'' '\\'' |c=~ ( '\\'' | '\\r' | '\\n' ) )*
+			loop2:
 			while (true) {
-				int alt1=3;
-				int LA1_0 = input.LA(1);
-				if ( (LA1_0=='\'') ) {
-					int LA1_1 = input.LA(2);
-					if ( (LA1_1=='\'') ) {
-						alt1=1;
+				int alt2=3;
+				int LA2_0 = input.LA(1);
+				if ( (LA2_0=='\'') ) {
+					int LA2_1 = input.LA(2);
+					if ( (LA2_1=='\'') ) {
+						alt2=1;
 					}
 
 				}
-				else if ( ((LA1_0 >= '\u0000' && LA1_0 <= '\t')||(LA1_0 >= '\u000B' && LA1_0 <= '\f')||(LA1_0 >= '\u000E' && LA1_0 <= '&')||(LA1_0 >= '(' && LA1_0 <= '\uFFFF')) ) {
-					alt1=2;
+				else if ( ((LA2_0 >= '\u0000' && LA2_0 <= '\t')||(LA2_0 >= '\u000B' && LA2_0 <= '\f')||(LA2_0 >= '\u000E' && LA2_0 <= '&')||(LA2_0 >= '(' && LA2_0 <= '\uFFFF')) ) {
+					alt2=2;
 				}
 
-				switch (alt1) {
+				switch (alt2) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:192:4: '\\'' '\\''
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:199:4: '\\'' '\\''
 					{
 					match('\''); 
 					match('\''); 
@@ -172,7 +244,7 @@ public class CLExprLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:193:4: c=~ ( '\\'' | '\\r' | '\\n' )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:200:4: c=~ ( '\\'' | '\\r' | '\\n' )
 					{
 					c= input.LA(1);
 					if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '&')||(input.LA(1) >= '(' && input.LA(1) <= '\uFFFF') ) {
@@ -188,7 +260,7 @@ public class CLExprLexer extends Lexer {
 					break;
 
 				default :
-					break loop1;
+					break loop2;
 				}
 			}
 
@@ -210,34 +282,34 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = OR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:199:5: ( '!' | ( '*' O R ) )
-			int alt2=2;
-			int LA2_0 = input.LA(1);
-			if ( (LA2_0=='!') ) {
-				alt2=1;
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:206:5: ( '!' | ( '*' O R ) )
+			int alt3=2;
+			int LA3_0 = input.LA(1);
+			if ( (LA3_0=='!') ) {
+				alt3=1;
 			}
-			else if ( (LA2_0=='*') ) {
-				alt2=2;
+			else if ( (LA3_0=='*') ) {
+				alt3=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 2, 0, input);
+					new NoViableAltException("", 3, 0, input);
 				throw nvae;
 			}
 
-			switch (alt2) {
+			switch (alt3) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:199:8: '!'
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:206:8: '!'
 					{
 					match('!'); 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:199:14: ( '*' O R )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:206:14: ( '*' O R )
 					{
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:199:14: ( '*' O R )
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:199:15: '*' O R
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:206:14: ( '*' O R )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:206:15: '*' O R
 					{
 					match('*'); 
 					mO(); 
@@ -264,34 +336,34 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = AND;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:200:6: ( '&' | ( '*' A N D ) )
-			int alt3=2;
-			int LA3_0 = input.LA(1);
-			if ( (LA3_0=='&') ) {
-				alt3=1;
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:207:6: ( '&' | ( '*' A N D ) )
+			int alt4=2;
+			int LA4_0 = input.LA(1);
+			if ( (LA4_0=='&') ) {
+				alt4=1;
 			}
-			else if ( (LA3_0=='*') ) {
-				alt3=2;
+			else if ( (LA4_0=='*') ) {
+				alt4=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 3, 0, input);
+					new NoViableAltException("", 4, 0, input);
 				throw nvae;
 			}
 
-			switch (alt3) {
+			switch (alt4) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:200:9: '&'
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:207:9: '&'
 					{
 					match('&'); 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:200:15: ( '*' A N D )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:207:15: ( '*' A N D )
 					{
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:200:15: ( '*' A N D )
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:200:16: '*' A N D
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:207:15: ( '*' A N D )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:207:16: '*' A N D
 					{
 					match('*'); 
 					mA(); 
@@ -320,11 +392,11 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = NOT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:201:5: ( ( '*' N O T ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:201:7: ( '*' N O T )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:208:5: ( ( '*' N O T ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:208:7: ( '*' N O T )
 			{
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:201:7: ( '*' N O T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:201:8: '*' N O T
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:208:7: ( '*' N O T )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:208:8: '*' N O T
 			{
 			match('*'); 
 			mN(); 
@@ -351,34 +423,34 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = EQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:202:4: ( '=' | ( '*' E Q ) )
-			int alt4=2;
-			int LA4_0 = input.LA(1);
-			if ( (LA4_0=='=') ) {
-				alt4=1;
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:209:4: ( '=' | ( '*' E Q ) )
+			int alt5=2;
+			int LA5_0 = input.LA(1);
+			if ( (LA5_0=='=') ) {
+				alt5=1;
 			}
-			else if ( (LA4_0=='*') ) {
-				alt4=2;
+			else if ( (LA5_0=='*') ) {
+				alt5=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 4, 0, input);
+					new NoViableAltException("", 5, 0, input);
 				throw nvae;
 			}
 
-			switch (alt4) {
+			switch (alt5) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:202:6: '='
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:209:6: '='
 					{
 					match('='); 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:202:13: ( '*' E Q )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:209:13: ( '*' E Q )
 					{
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:202:13: ( '*' E Q )
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:202:14: '*' E Q
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:209:13: ( '*' E Q )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:209:14: '*' E Q
 					{
 					match('*'); 
 					mE(); 
@@ -405,34 +477,34 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = GT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:203:4: ( '>' | ( '*' G T ) )
-			int alt5=2;
-			int LA5_0 = input.LA(1);
-			if ( (LA5_0=='>') ) {
-				alt5=1;
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:210:4: ( '>' | ( '*' G T ) )
+			int alt6=2;
+			int LA6_0 = input.LA(1);
+			if ( (LA6_0=='>') ) {
+				alt6=1;
 			}
-			else if ( (LA5_0=='*') ) {
-				alt5=2;
+			else if ( (LA6_0=='*') ) {
+				alt6=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 5, 0, input);
+					new NoViableAltException("", 6, 0, input);
 				throw nvae;
 			}
 
-			switch (alt5) {
+			switch (alt6) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:203:6: '>'
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:210:6: '>'
 					{
 					match('>'); 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:203:12: ( '*' G T )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:210:12: ( '*' G T )
 					{
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:203:12: ( '*' G T )
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:203:13: '*' G T
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:210:12: ( '*' G T )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:210:13: '*' G T
 					{
 					match('*'); 
 					mG(); 
@@ -459,34 +531,34 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = LT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:204:4: ( '<' | ( '*' L T ) )
-			int alt6=2;
-			int LA6_0 = input.LA(1);
-			if ( (LA6_0=='<') ) {
-				alt6=1;
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:211:4: ( '<' | ( '*' L T ) )
+			int alt7=2;
+			int LA7_0 = input.LA(1);
+			if ( (LA7_0=='<') ) {
+				alt7=1;
 			}
-			else if ( (LA6_0=='*') ) {
-				alt6=2;
+			else if ( (LA7_0=='*') ) {
+				alt7=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 6, 0, input);
+					new NoViableAltException("", 7, 0, input);
 				throw nvae;
 			}
 
-			switch (alt6) {
+			switch (alt7) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:204:8: '<'
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:211:8: '<'
 					{
 					match('<'); 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:204:14: ( '*' L T )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:211:14: ( '*' L T )
 					{
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:204:14: ( '*' L T )
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:204:15: '*' L T
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:211:14: ( '*' L T )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:211:15: '*' L T
 					{
 					match('*'); 
 					mL(); 
@@ -513,8 +585,8 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = GTEQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:205:6: ( '*' G E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:205:8: '*' G E
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:212:6: ( '*' G E )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:212:8: '*' G E
 			{
 			match('*'); 
 			mG(); 
@@ -537,8 +609,8 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = LTEQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:206:6: ( '*' L E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:206:8: '*' L E
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:213:6: ( '*' L E )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:213:8: '*' L E
 			{
 			match('*'); 
 			mL(); 
@@ -561,32 +633,32 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = NE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:207:8: ( '^=' | '*' N E )
-			int alt7=2;
-			int LA7_0 = input.LA(1);
-			if ( (LA7_0=='^') ) {
-				alt7=1;
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:214:8: ( '^=' | '*' N E )
+			int alt8=2;
+			int LA8_0 = input.LA(1);
+			if ( (LA8_0=='^') ) {
+				alt8=1;
 			}
-			else if ( (LA7_0=='*') ) {
-				alt7=2;
+			else if ( (LA8_0=='*') ) {
+				alt8=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 7, 0, input);
+					new NoViableAltException("", 8, 0, input);
 				throw nvae;
 			}
 
-			switch (alt7) {
+			switch (alt8) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:207:11: '^='
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:214:11: '^='
 					{
 					match("^="); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:207:18: '*' N E
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:214:18: '*' N E
 					{
 					match('*'); 
 					mN(); 
@@ -611,32 +683,32 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = NG;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:208:9: ( '^>' | '*' N G )
-			int alt8=2;
-			int LA8_0 = input.LA(1);
-			if ( (LA8_0=='^') ) {
-				alt8=1;
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:215:9: ( '^>' | '*' N G )
+			int alt9=2;
+			int LA9_0 = input.LA(1);
+			if ( (LA9_0=='^') ) {
+				alt9=1;
 			}
-			else if ( (LA8_0=='*') ) {
-				alt8=2;
+			else if ( (LA9_0=='*') ) {
+				alt9=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 8, 0, input);
+					new NoViableAltException("", 9, 0, input);
 				throw nvae;
 			}
 
-			switch (alt8) {
+			switch (alt9) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:208:12: '^>'
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:215:12: '^>'
 					{
 					match("^>"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:208:19: '*' N G
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:215:19: '*' N G
 					{
 					match('*'); 
 					mN(); 
@@ -661,32 +733,32 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = NL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:209:9: ( '^<' | '*' N L )
-			int alt9=2;
-			int LA9_0 = input.LA(1);
-			if ( (LA9_0=='^') ) {
-				alt9=1;
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:216:9: ( '^<' | '*' N L )
+			int alt10=2;
+			int LA10_0 = input.LA(1);
+			if ( (LA10_0=='^') ) {
+				alt10=1;
 			}
-			else if ( (LA9_0=='*') ) {
-				alt9=2;
+			else if ( (LA10_0=='*') ) {
+				alt10=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 9, 0, input);
+					new NoViableAltException("", 10, 0, input);
 				throw nvae;
 			}
 
-			switch (alt9) {
+			switch (alt10) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:209:12: '^<'
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:216:12: '^<'
 					{
 					match("^<"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:209:19: '*' N L
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:216:19: '*' N L
 					{
 					match('*'); 
 					mN(); 
@@ -711,8 +783,8 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = PLUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:211:6: ( '+' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:211:8: '+'
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:218:6: ( '+' )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:218:8: '+'
 			{
 			match('+'); 
 			}
@@ -731,8 +803,8 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = MINUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:212:7: ( '-' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:212:9: '-'
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:219:7: ( '-' )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:219:9: '-'
 			{
 			match('-'); 
 			}
@@ -751,8 +823,8 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = MULT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:213:6: ( '*' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:213:8: '*'
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:220:6: ( '*' )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:220:8: '*'
 			{
 			match('*'); 
 			}
@@ -771,8 +843,8 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = DIV;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:214:5: ( '/' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:214:7: '/'
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:221:5: ( '/' )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:221:7: '/'
 			{
 			match('/'); 
 			}
@@ -791,35 +863,35 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = CAT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:216:9: ( '!!' | ( '*' C A T ) )
-			int alt10=2;
-			int LA10_0 = input.LA(1);
-			if ( (LA10_0=='!') ) {
-				alt10=1;
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:223:9: ( '!!' | ( '*' C A T ) )
+			int alt11=2;
+			int LA11_0 = input.LA(1);
+			if ( (LA11_0=='!') ) {
+				alt11=1;
 			}
-			else if ( (LA10_0=='*') ) {
-				alt10=2;
+			else if ( (LA11_0=='*') ) {
+				alt11=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 10, 0, input);
+					new NoViableAltException("", 11, 0, input);
 				throw nvae;
 			}
 
-			switch (alt10) {
+			switch (alt11) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:216:11: '!!'
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:223:11: '!!'
 					{
 					match("!!"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:216:18: ( '*' C A T )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:223:18: ( '*' C A T )
 					{
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:216:18: ( '*' C A T )
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:216:19: '*' C A T
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:223:18: ( '*' C A T )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:223:19: '*' C A T
 					{
 					match('*'); 
 					mC(); 
@@ -848,35 +920,35 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = BCAT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:217:9: ( '!>' | ( '*' B C A T ) )
-			int alt11=2;
-			int LA11_0 = input.LA(1);
-			if ( (LA11_0=='!') ) {
-				alt11=1;
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:224:9: ( '!>' | ( '*' B C A T ) )
+			int alt12=2;
+			int LA12_0 = input.LA(1);
+			if ( (LA12_0=='!') ) {
+				alt12=1;
 			}
-			else if ( (LA11_0=='*') ) {
-				alt11=2;
+			else if ( (LA12_0=='*') ) {
+				alt12=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 11, 0, input);
+					new NoViableAltException("", 12, 0, input);
 				throw nvae;
 			}
 
-			switch (alt11) {
+			switch (alt12) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:217:11: '!>'
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:224:11: '!>'
 					{
 					match("!>"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:217:18: ( '*' B C A T )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:224:18: ( '*' B C A T )
 					{
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:217:18: ( '*' B C A T )
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:217:19: '*' B C A T
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:224:18: ( '*' B C A T )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:224:19: '*' B C A T
 					{
 					match('*'); 
 					mB(); 
@@ -907,35 +979,35 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = TCAT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:218:9: ( '!<' | ( '*' T C A T ) )
-			int alt12=2;
-			int LA12_0 = input.LA(1);
-			if ( (LA12_0=='!') ) {
-				alt12=1;
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:225:9: ( '!<' | ( '*' T C A T ) )
+			int alt13=2;
+			int LA13_0 = input.LA(1);
+			if ( (LA13_0=='!') ) {
+				alt13=1;
 			}
-			else if ( (LA12_0=='*') ) {
-				alt12=2;
+			else if ( (LA13_0=='*') ) {
+				alt13=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 12, 0, input);
+					new NoViableAltException("", 13, 0, input);
 				throw nvae;
 			}
 
-			switch (alt12) {
+			switch (alt13) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:218:11: '!<'
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:225:11: '!<'
 					{
 					match("!<"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:218:18: ( '*' T C A T )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:225:18: ( '*' T C A T )
 					{
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:218:18: ( '*' T C A T )
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:218:19: '*' T C A T
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:225:18: ( '*' T C A T )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:225:19: '*' T C A T
 					{
 					match('*'); 
 					mT(); 
@@ -966,23 +1038,23 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = TERM;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:220:6: ( LETTER ( LETTER | DIGIT )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:220:8: LETTER ( LETTER | DIGIT )*
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:227:6: ( LETTER ( LETTER | DIGIT )* )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:227:8: LETTER ( LETTER | DIGIT )*
 			{
 			mLETTER(); 
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:220:15: ( LETTER | DIGIT )*
-			loop13:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:227:15: ( LETTER | DIGIT )*
+			loop14:
 			while (true) {
-				int alt13=2;
-				int LA13_0 = input.LA(1);
-				if ( (LA13_0=='\"'||LA13_0=='$'||(LA13_0 >= '+' && LA13_0 <= '9')||LA13_0=='?'||(LA13_0 >= 'A' && LA13_0 <= 'Z')||LA13_0=='_'||(LA13_0 >= 'a' && LA13_0 <= 'z')||LA13_0=='\u00A3'||LA13_0=='\u00A7'||LA13_0=='\u00E0'||(LA13_0 >= '\u00E8' && LA13_0 <= '\u00E9')||LA13_0=='\u00EC'||LA13_0=='\u00F2'||LA13_0=='\u00F9') ) {
-					alt13=1;
+				int alt14=2;
+				int LA14_0 = input.LA(1);
+				if ( (LA14_0=='\"'||LA14_0=='$'||(LA14_0 >= '+' && LA14_0 <= '9')||LA14_0=='?'||(LA14_0 >= 'A' && LA14_0 <= 'Z')||LA14_0=='_'||(LA14_0 >= 'a' && LA14_0 <= 'z')||LA14_0=='\u00A3'||LA14_0=='\u00A7'||LA14_0=='\u00E0'||(LA14_0 >= '\u00E8' && LA14_0 <= '\u00E9')||LA14_0=='\u00EC'||LA14_0=='\u00F2'||LA14_0=='\u00F9') ) {
+					alt14=1;
 				}
 
-				switch (alt13) {
+				switch (alt14) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 					{
 					if ( input.LA(1)=='\"'||input.LA(1)=='$'||(input.LA(1) >= '+' && input.LA(1) <= '9')||input.LA(1)=='?'||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z')||input.LA(1)=='\u00A3'||input.LA(1)=='\u00A7'||input.LA(1)=='\u00E0'||(input.LA(1) >= '\u00E8' && input.LA(1) <= '\u00E9')||input.LA(1)=='\u00EC'||input.LA(1)=='\u00F2'||input.LA(1)=='\u00F9' ) {
 						input.consume();
@@ -996,7 +1068,7 @@ public class CLExprLexer extends Lexer {
 					break;
 
 				default :
-					break loop13;
+					break loop14;
 				}
 			}
 
@@ -1016,22 +1088,22 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = INTEGER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:222:9: ( ( DIGIT )+ )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:223:2: ( DIGIT )+
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:229:9: ( ( DIGIT )+ )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:230:2: ( DIGIT )+
 			{
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:223:2: ( DIGIT )+
-			int cnt14=0;
-			loop14:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:230:2: ( DIGIT )+
+			int cnt15=0;
+			loop15:
 			while (true) {
-				int alt14=2;
-				int LA14_0 = input.LA(1);
-				if ( ((LA14_0 >= '0' && LA14_0 <= '9')) ) {
-					alt14=1;
+				int alt15=2;
+				int LA15_0 = input.LA(1);
+				if ( ((LA15_0 >= '0' && LA15_0 <= '9')) ) {
+					alt15=1;
 				}
 
-				switch (alt14) {
+				switch (alt15) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -1045,11 +1117,11 @@ public class CLExprLexer extends Lexer {
 					break;
 
 				default :
-					if ( cnt14 >= 1 ) break loop14;
-					EarlyExitException eee = new EarlyExitException(14, input);
+					if ( cnt15 >= 1 ) break loop15;
+					EarlyExitException eee = new EarlyExitException(15, input);
 					throw eee;
 				}
-				cnt14++;
+				cnt15++;
 			}
 
 			}
@@ -1068,42 +1140,10 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = FLOAT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:227:2: ( ( '0' .. '9' )* DIGIT_SPECIAL ( '0' .. '9' )+ )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:227:4: ( '0' .. '9' )* DIGIT_SPECIAL ( '0' .. '9' )+
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:234:2: ( ( '0' .. '9' )* DIGIT_SPECIAL ( '0' .. '9' )+ )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:234:4: ( '0' .. '9' )* DIGIT_SPECIAL ( '0' .. '9' )+
 			{
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:227:4: ( '0' .. '9' )*
-			loop15:
-			while (true) {
-				int alt15=2;
-				int LA15_0 = input.LA(1);
-				if ( ((LA15_0 >= '0' && LA15_0 <= '9')) ) {
-					alt15=1;
-				}
-
-				switch (alt15) {
-				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
-					{
-					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
-						input.consume();
-					}
-					else {
-						MismatchedSetException mse = new MismatchedSetException(null,input);
-						recover(mse);
-						throw mse;
-					}
-					}
-					break;
-
-				default :
-					break loop15;
-				}
-			}
-
-			mDIGIT_SPECIAL(); 
-
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:227:30: ( '0' .. '9' )+
-			int cnt16=0;
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:234:4: ( '0' .. '9' )*
 			loop16:
 			while (true) {
 				int alt16=2;
@@ -1114,7 +1154,7 @@ public class CLExprLexer extends Lexer {
 
 				switch (alt16) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -1128,11 +1168,43 @@ public class CLExprLexer extends Lexer {
 					break;
 
 				default :
-					if ( cnt16 >= 1 ) break loop16;
-					EarlyExitException eee = new EarlyExitException(16, input);
+					break loop16;
+				}
+			}
+
+			mDIGIT_SPECIAL(); 
+
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:234:30: ( '0' .. '9' )+
+			int cnt17=0;
+			loop17:
+			while (true) {
+				int alt17=2;
+				int LA17_0 = input.LA(1);
+				if ( ((LA17_0 >= '0' && LA17_0 <= '9')) ) {
+					alt17=1;
+				}
+
+				switch (alt17) {
+				case 1 :
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
+					{
+					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
+						input.consume();
+					}
+					else {
+						MismatchedSetException mse = new MismatchedSetException(null,input);
+						recover(mse);
+						throw mse;
+					}
+					}
+					break;
+
+				default :
+					if ( cnt17 >= 1 ) break loop17;
+					EarlyExitException eee = new EarlyExitException(17, input);
 					throw eee;
 				}
-				cnt16++;
+				cnt17++;
 			}
 
 			}
@@ -1151,8 +1223,8 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = OPEN_BRACE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:231:2: ( '(' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:232:2: '('
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:238:2: ( '(' )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:239:2: '('
 			{
 			match('('); 
 			}
@@ -1171,8 +1243,8 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = CLOSE_BRACE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:236:2: ( ')' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:237:2: ')'
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:243:2: ( ')' )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:244:2: ')'
 			{
 			match(')'); 
 			}
@@ -1191,8 +1263,8 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = BINARY_FUN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:241:2: ( '%' B I N A R Y )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:242:2: '%' B I N A R Y
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:248:2: ( '%' B I N A R Y )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:249:2: '%' B I N A R Y
 			{
 			match('%'); 
 			mB(); 
@@ -1223,18 +1295,18 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = SST_FUN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:246:2: ( '%' S S T | '%' S U B S T R I N G )
-			int alt17=2;
-			int LA17_0 = input.LA(1);
-			if ( (LA17_0=='%') ) {
-				int LA17_1 = input.LA(2);
-				if ( (LA17_1=='S'||LA17_1=='s') ) {
-					int LA17_2 = input.LA(3);
-					if ( (LA17_2=='S'||LA17_2=='s') ) {
-						alt17=1;
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:253:2: ( '%' S S T | '%' S U B S T R I N G )
+			int alt18=2;
+			int LA18_0 = input.LA(1);
+			if ( (LA18_0=='%') ) {
+				int LA18_1 = input.LA(2);
+				if ( (LA18_1=='S'||LA18_1=='s') ) {
+					int LA18_2 = input.LA(3);
+					if ( (LA18_2=='S'||LA18_2=='s') ) {
+						alt18=1;
 					}
-					else if ( (LA17_2=='U'||LA17_2=='u') ) {
-						alt17=2;
+					else if ( (LA18_2=='U'||LA18_2=='u') ) {
+						alt18=2;
 					}
 
 					else {
@@ -1244,7 +1316,7 @@ public class CLExprLexer extends Lexer {
 								input.consume();
 							}
 							NoViableAltException nvae =
-								new NoViableAltException("", 17, 2, input);
+								new NoViableAltException("", 18, 2, input);
 							throw nvae;
 						} finally {
 							input.rewind(nvaeMark);
@@ -1258,7 +1330,7 @@ public class CLExprLexer extends Lexer {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 17, 1, input);
+							new NoViableAltException("", 18, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -1269,13 +1341,13 @@ public class CLExprLexer extends Lexer {
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 17, 0, input);
+					new NoViableAltException("", 18, 0, input);
 				throw nvae;
 			}
 
-			switch (alt17) {
+			switch (alt18) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:247:2: '%' S S T
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:254:2: '%' S S T
 					{
 					match('%'); 
 					mS(); 
@@ -1287,7 +1359,7 @@ public class CLExprLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:249:2: '%' S U B S T R I N G
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:256:2: '%' S U B S T R I N G
 					{
 					match('%'); 
 					mS(); 
@@ -1326,8 +1398,8 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = SWITCH_FUN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:253:2: ( '%' S W I T C H )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:254:2: '%' S W I T C H
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:260:2: ( '%' S W I T C H )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:261:2: '%' S W I T C H
 			{
 			match('%'); 
 			mS(); 
@@ -1358,8 +1430,8 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = SWITCH_VALUE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:258:2: ( ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:259:2: ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:265:2: ( ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:266:2: ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' ) ( '0' | X | '1' )
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '1')||input.LA(1)=='X'||input.LA(1)=='x' ) {
 				input.consume();
@@ -1439,8 +1511,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "LETTER"
 	public final void mLETTER() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:264:3: ( ( 'a' .. 'z' | 'A' .. 'Z' | CHAR_SPECIAL ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:271:3: ( ( 'a' .. 'z' | 'A' .. 'Z' | CHAR_SPECIAL ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='\"'||input.LA(1)=='$'||(input.LA(1) >= '+' && input.LA(1) <= '/')||input.LA(1)=='?'||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z')||input.LA(1)=='\u00A3'||input.LA(1)=='\u00A7'||input.LA(1)=='\u00E0'||(input.LA(1) >= '\u00E8' && input.LA(1) <= '\u00E9')||input.LA(1)=='\u00EC'||input.LA(1)=='\u00F2'||input.LA(1)=='\u00F9' ) {
 				input.consume();
@@ -1462,8 +1534,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "CHAR_SPECIAL"
 	public final void mCHAR_SPECIAL() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:269:3: ( ( '\\u00A7' | '_' | '.' | '/' | '\\u00e0' | '\\u00e8' | '\\u00e9' | '\\u00ec' | '\\u00f2' | '\\u00f9' | '\"' | '\\u00a3' | '?' | '+' | '-' | ',' | '$' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:276:3: ( ( '\\u00A7' | '_' | '.' | '/' | '\\u00e0' | '\\u00e8' | '\\u00e9' | '\\u00ec' | '\\u00f2' | '\\u00f9' | '\"' | '\\u00a3' | '?' | '+' | '-' | ',' | '$' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='\"'||input.LA(1)=='$'||(input.LA(1) >= '+' && input.LA(1) <= '/')||input.LA(1)=='?'||input.LA(1)=='_'||input.LA(1)=='\u00A3'||input.LA(1)=='\u00A7'||input.LA(1)=='\u00E0'||(input.LA(1) >= '\u00E8' && input.LA(1) <= '\u00E9')||input.LA(1)=='\u00EC'||input.LA(1)=='\u00F2'||input.LA(1)=='\u00F9' ) {
 				input.consume();
@@ -1485,8 +1557,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "DIGIT"
 	public final void mDIGIT() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:292:3: ( ( '0' .. '9' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:299:3: ( ( '0' .. '9' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 				input.consume();
@@ -1508,8 +1580,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "DIGIT_SPECIAL"
 	public final void mDIGIT_SPECIAL() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:297:3: ( ( ',' | '.' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:304:3: ( ( ',' | '.' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)==','||input.LA(1)=='.' ) {
 				input.consume();
@@ -1531,8 +1603,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "A"
 	public final void mA() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:300:11: ( ( 'a' | 'A' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:307:11: ( ( 'a' | 'A' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
 				input.consume();
@@ -1554,8 +1626,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "B"
 	public final void mB() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:301:11: ( ( 'b' | 'B' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:308:11: ( ( 'b' | 'B' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
 				input.consume();
@@ -1577,8 +1649,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "C"
 	public final void mC() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:302:11: ( ( 'c' | 'C' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:309:11: ( ( 'c' | 'C' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
 				input.consume();
@@ -1600,8 +1672,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "D"
 	public final void mD() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:303:11: ( ( 'd' | 'D' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:310:11: ( ( 'd' | 'D' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
 				input.consume();
@@ -1623,8 +1695,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "E"
 	public final void mE() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:304:11: ( ( 'e' | 'E' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:311:11: ( ( 'e' | 'E' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
 				input.consume();
@@ -1646,8 +1718,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "F"
 	public final void mF() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:305:11: ( ( 'f' | 'F' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:312:11: ( ( 'f' | 'F' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
 				input.consume();
@@ -1669,8 +1741,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "G"
 	public final void mG() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:306:11: ( ( 'g' | 'G' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:313:11: ( ( 'g' | 'G' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='G'||input.LA(1)=='g' ) {
 				input.consume();
@@ -1692,8 +1764,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "H"
 	public final void mH() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:307:11: ( ( 'h' | 'H' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:314:11: ( ( 'h' | 'H' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='H'||input.LA(1)=='h' ) {
 				input.consume();
@@ -1715,8 +1787,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "I"
 	public final void mI() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:308:11: ( ( 'i' | 'I' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:315:11: ( ( 'i' | 'I' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
 				input.consume();
@@ -1738,8 +1810,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "J"
 	public final void mJ() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:309:11: ( ( 'j' | 'J' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:316:11: ( ( 'j' | 'J' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='J'||input.LA(1)=='j' ) {
 				input.consume();
@@ -1761,8 +1833,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "K"
 	public final void mK() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:310:11: ( ( 'k' | 'K' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:317:11: ( ( 'k' | 'K' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='K'||input.LA(1)=='k' ) {
 				input.consume();
@@ -1784,8 +1856,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "L"
 	public final void mL() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:311:11: ( ( 'l' | 'L' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:318:11: ( ( 'l' | 'L' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
 				input.consume();
@@ -1807,8 +1879,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "M"
 	public final void mM() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:312:11: ( ( 'm' | 'M' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:319:11: ( ( 'm' | 'M' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='M'||input.LA(1)=='m' ) {
 				input.consume();
@@ -1830,8 +1902,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "N"
 	public final void mN() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:313:11: ( ( 'n' | 'N' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:320:11: ( ( 'n' | 'N' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='N'||input.LA(1)=='n' ) {
 				input.consume();
@@ -1853,8 +1925,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "O"
 	public final void mO() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:314:11: ( ( 'o' | 'O' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:321:11: ( ( 'o' | 'O' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='O'||input.LA(1)=='o' ) {
 				input.consume();
@@ -1876,8 +1948,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "P"
 	public final void mP() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:315:11: ( ( 'p' | 'P' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:322:11: ( ( 'p' | 'P' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
 				input.consume();
@@ -1899,8 +1971,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "Q"
 	public final void mQ() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:316:11: ( ( 'q' | 'Q' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:323:11: ( ( 'q' | 'Q' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='Q'||input.LA(1)=='q' ) {
 				input.consume();
@@ -1922,8 +1994,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "R"
 	public final void mR() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:317:11: ( ( 'r' | 'R' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:324:11: ( ( 'r' | 'R' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
 				input.consume();
@@ -1945,8 +2017,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "S"
 	public final void mS() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:318:11: ( ( 's' | 'S' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:325:11: ( ( 's' | 'S' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
 				input.consume();
@@ -1968,8 +2040,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "T"
 	public final void mT() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:319:11: ( ( 't' | 'T' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:326:11: ( ( 't' | 'T' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
 				input.consume();
@@ -1991,8 +2063,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "U"
 	public final void mU() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:320:11: ( ( 'u' | 'U' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:327:11: ( ( 'u' | 'U' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='U'||input.LA(1)=='u' ) {
 				input.consume();
@@ -2014,8 +2086,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "V"
 	public final void mV() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:321:11: ( ( 'v' | 'V' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:328:11: ( ( 'v' | 'V' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='V'||input.LA(1)=='v' ) {
 				input.consume();
@@ -2037,8 +2109,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "W"
 	public final void mW() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:322:11: ( ( 'w' | 'W' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:329:11: ( ( 'w' | 'W' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='W'||input.LA(1)=='w' ) {
 				input.consume();
@@ -2060,8 +2132,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "X"
 	public final void mX() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:323:11: ( ( 'x' | 'X' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:330:11: ( ( 'x' | 'X' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='X'||input.LA(1)=='x' ) {
 				input.consume();
@@ -2083,8 +2155,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "Y"
 	public final void mY() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:324:11: ( ( 'y' | 'Y' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:331:11: ( ( 'y' | 'Y' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='Y'||input.LA(1)=='y' ) {
 				input.consume();
@@ -2106,8 +2178,8 @@ public class CLExprLexer extends Lexer {
 	// $ANTLR start "Z"
 	public final void mZ() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:325:11: ( ( 'z' | 'Z' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:332:11: ( ( 'z' | 'Z' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:
 			{
 			if ( input.LA(1)=='Z'||input.LA(1)=='z' ) {
 				input.consume();
@@ -2131,8 +2203,8 @@ public class CLExprLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:329:2: ( ( ' ' | '\\t' | '\\u000C' | '\\n' | '\\r' ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:329:5: ( ' ' | '\\t' | '\\u000C' | '\\n' | '\\r' )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:336:2: ( ( ' ' | '\\t' | '\\u000C' | '\\n' | '\\r' ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:336:5: ( ' ' | '\\t' | '\\u000C' | '\\n' | '\\r' )
 			{
 			if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||(input.LA(1) >= '\f' && input.LA(1) <= '\r')||input.LA(1)==' ' ) {
 				input.consume();
@@ -2156,215 +2228,222 @@ public class CLExprLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:8: ( VAR | STRING | OR | AND | NOT | EQ | GT | LT | GTEQ | LTEQ | NE | NG | NL | PLUS | MINUS | MULT | DIV | CAT | BCAT | TCAT | TERM | INTEGER | FLOAT | OPEN_BRACE | CLOSE_BRACE | BINARY_FUN | SST_FUN | SWITCH_FUN | SWITCH_VALUE | WS )
-		int alt18=30;
-		alt18 = dfa18.predict(input);
-		switch (alt18) {
+		// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:8: ( VAR | BOOLEAN | STRING | OR | AND | NOT | EQ | GT | LT | GTEQ | LTEQ | NE | NG | NL | PLUS | MINUS | MULT | DIV | CAT | BCAT | TCAT | TERM | INTEGER | FLOAT | OPEN_BRACE | CLOSE_BRACE | BINARY_FUN | SST_FUN | SWITCH_FUN | SWITCH_VALUE | WS )
+		int alt19=31;
+		alt19 = dfa19.predict(input);
+		switch (alt19) {
 			case 1 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:10: VAR
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:10: VAR
 				{
 				mVAR(); 
 
 				}
 				break;
 			case 2 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:14: STRING
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:14: BOOLEAN
+				{
+				mBOOLEAN(); 
+
+				}
+				break;
+			case 3 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:22: STRING
 				{
 				mSTRING(); 
 
 				}
 				break;
-			case 3 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:21: OR
+			case 4 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:29: OR
 				{
 				mOR(); 
 
 				}
 				break;
-			case 4 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:24: AND
+			case 5 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:32: AND
 				{
 				mAND(); 
 
 				}
 				break;
-			case 5 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:28: NOT
+			case 6 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:36: NOT
 				{
 				mNOT(); 
 
 				}
 				break;
-			case 6 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:32: EQ
+			case 7 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:40: EQ
 				{
 				mEQ(); 
 
 				}
 				break;
-			case 7 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:35: GT
+			case 8 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:43: GT
 				{
 				mGT(); 
 
 				}
 				break;
-			case 8 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:38: LT
+			case 9 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:46: LT
 				{
 				mLT(); 
 
 				}
 				break;
-			case 9 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:41: GTEQ
+			case 10 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:49: GTEQ
 				{
 				mGTEQ(); 
 
 				}
 				break;
-			case 10 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:46: LTEQ
+			case 11 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:54: LTEQ
 				{
 				mLTEQ(); 
 
 				}
 				break;
-			case 11 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:51: NE
+			case 12 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:59: NE
 				{
 				mNE(); 
 
 				}
 				break;
-			case 12 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:54: NG
+			case 13 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:62: NG
 				{
 				mNG(); 
 
 				}
 				break;
-			case 13 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:57: NL
+			case 14 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:65: NL
 				{
 				mNL(); 
 
 				}
 				break;
-			case 14 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:60: PLUS
+			case 15 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:68: PLUS
 				{
 				mPLUS(); 
 
 				}
 				break;
-			case 15 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:65: MINUS
+			case 16 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:73: MINUS
 				{
 				mMINUS(); 
 
 				}
 				break;
-			case 16 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:71: MULT
+			case 17 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:79: MULT
 				{
 				mMULT(); 
 
 				}
 				break;
-			case 17 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:76: DIV
+			case 18 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:84: DIV
 				{
 				mDIV(); 
 
 				}
 				break;
-			case 18 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:80: CAT
+			case 19 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:88: CAT
 				{
 				mCAT(); 
 
 				}
 				break;
-			case 19 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:84: BCAT
+			case 20 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:92: BCAT
 				{
 				mBCAT(); 
 
 				}
 				break;
-			case 20 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:89: TCAT
+			case 21 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:97: TCAT
 				{
 				mTCAT(); 
 
 				}
 				break;
-			case 21 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:94: TERM
+			case 22 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:102: TERM
 				{
 				mTERM(); 
 
 				}
 				break;
-			case 22 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:99: INTEGER
+			case 23 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:107: INTEGER
 				{
 				mINTEGER(); 
 
 				}
 				break;
-			case 23 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:107: FLOAT
+			case 24 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:115: FLOAT
 				{
 				mFLOAT(); 
 
 				}
 				break;
-			case 24 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:113: OPEN_BRACE
+			case 25 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:121: OPEN_BRACE
 				{
 				mOPEN_BRACE(); 
 
 				}
 				break;
-			case 25 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:124: CLOSE_BRACE
+			case 26 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:132: CLOSE_BRACE
 				{
 				mCLOSE_BRACE(); 
 
 				}
 				break;
-			case 26 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:136: BINARY_FUN
+			case 27 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:144: BINARY_FUN
 				{
 				mBINARY_FUN(); 
 
 				}
 				break;
-			case 27 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:147: SST_FUN
+			case 28 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:155: SST_FUN
 				{
 				mSST_FUN(); 
 
 				}
 				break;
-			case 28 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:155: SWITCH_FUN
+			case 29 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:163: SWITCH_FUN
 				{
 				mSWITCH_FUN(); 
 
 				}
 				break;
-			case 29 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:166: SWITCH_VALUE
+			case 30 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:174: SWITCH_VALUE
 				{
 				mSWITCH_VALUE(); 
 
 				}
 				break;
-			case 30 :
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:1:179: WS
+			case 31 :
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:1:187: WS
 				{
 				mWS(); 
 
@@ -2375,75 +2454,82 @@ public class CLExprLexer extends Lexer {
 	}
 
 
-	protected DFA18 dfa18 = new DFA18(this);
-	static final String DFA18_eotS =
-		"\1\uffff\1\26\1\uffff\1\32\1\36\4\uffff\1\42\1\43\1\44\1\23\1\47\1\23"+
-		"\3\uffff\1\47\22\uffff\1\23\1\47\3\uffff\1\23\5\uffff\1\47\1\23\2\uffff"+
-		"\1\47\1\23\1\47\1\23\1\47\1\23\1\47\1\23\1\47\1\uffff";
-	static final String DFA18_eofS =
-		"\76\uffff";
-	static final String DFA18_minS =
-		"\1\11\1\42\1\uffff\1\41\1\101\3\uffff\1\74\3\42\1\60\1\54\1\60\2\uffff"+
-		"\1\102\1\54\10\uffff\3\105\7\uffff\1\60\1\54\3\uffff\1\60\1\uffff\1\123"+
-		"\3\uffff\1\54\1\60\2\uffff\1\54\1\60\1\54\1\60\1\54\1\60\1\54\1\60\1\54"+
+	protected DFA19 dfa19 = new DFA19(this);
+	static final String DFA19_eotS =
+		"\1\uffff\1\30\2\25\1\uffff\1\36\1\42\4\uffff\1\46\1\47\1\50\1\25\1\53"+
+		"\1\25\3\uffff\1\53\4\uffff\2\25\16\uffff\1\25\1\53\3\uffff\1\25\2\uffff"+
+		"\2\25\3\uffff\1\53\1\25\2\uffff\1\76\1\25\1\53\1\25\1\uffff\1\76\1\53"+
+		"\1\25\1\53\1\25\1\53\1\25\1\53\1\uffff";
+	static final String DFA19_eofS =
+		"\110\uffff";
+	static final String DFA19_minS =
+		"\1\11\1\42\1\122\1\101\1\uffff\1\41\1\101\3\uffff\1\74\3\42\1\60\1\54"+
+		"\1\60\2\uffff\1\102\1\54\4\uffff\1\125\1\114\4\uffff\3\105\7\uffff\1\60"+
+		"\1\54\3\uffff\1\60\1\uffff\1\123\1\105\1\123\3\uffff\1\54\1\60\2\uffff"+
+		"\1\42\1\105\1\54\1\60\1\uffff\1\42\1\54\1\60\1\54\1\60\1\54\1\60\1\54"+
 		"\1\uffff";
-	static final String DFA18_maxS =
-		"\2\u00f9\1\uffff\1\76\1\164\3\uffff\1\76\3\u00f9\1\71\2\170\2\uffff\1"+
-		"\163\1\71\10\uffff\1\157\2\164\7\uffff\1\71\1\170\3\uffff\1\170\1\uffff"+
-		"\1\167\3\uffff\2\170\2\uffff\10\170\1\71\1\uffff";
-	static final String DFA18_acceptS =
-		"\2\uffff\1\2\2\uffff\1\6\1\7\1\10\7\uffff\1\30\1\31\2\uffff\1\25\1\36"+
-		"\1\1\1\4\1\22\1\23\1\24\1\3\3\uffff\1\20\1\13\1\14\1\15\1\16\1\17\1\21"+
-		"\2\uffff\1\26\1\35\1\27\1\uffff\1\32\1\uffff\1\5\1\11\1\12\2\uffff\1\33"+
-		"\1\34\11\uffff\1\25";
-	static final String DFA18_specialS =
-		"\76\uffff}>";
-	static final String[] DFA18_transitionS = {
-			"\2\24\1\uffff\2\24\22\uffff\1\24\1\3\1\23\1\uffff\1\23\1\21\1\1\1\2\1"+
-			"\17\1\20\1\4\1\11\1\14\1\12\1\14\1\13\2\15\10\22\2\uffff\1\7\1\5\1\6"+
-			"\1\23\1\uffff\27\23\1\16\2\23\3\uffff\1\10\1\23\1\uffff\27\23\1\16\2"+
-			"\23\50\uffff\1\23\3\uffff\1\23\70\uffff\1\23\7\uffff\2\23\2\uffff\1\23"+
-			"\5\uffff\1\23\6\uffff\1\23",
-			"\1\25\1\uffff\1\25\6\uffff\5\25\17\uffff\1\25\1\uffff\32\25\4\uffff"+
+	static final String DFA19_maxS =
+		"\2\u00f9\1\162\1\141\1\uffff\1\76\1\164\3\uffff\1\76\3\u00f9\1\71\2\170"+
+		"\2\uffff\1\163\1\71\4\uffff\1\165\1\154\4\uffff\1\157\2\164\7\uffff\1"+
+		"\71\1\170\3\uffff\1\170\1\uffff\1\167\1\145\1\163\3\uffff\2\170\2\uffff"+
+		"\1\u00f9\1\145\2\170\1\uffff\1\u00f9\6\170\1\71\1\uffff";
+	static final String DFA19_acceptS =
+		"\4\uffff\1\3\2\uffff\1\7\1\10\1\11\7\uffff\1\31\1\32\2\uffff\1\26\1\37"+
+		"\1\1\1\5\2\uffff\1\23\1\24\1\25\1\4\3\uffff\1\21\1\14\1\15\1\16\1\17\1"+
+		"\20\1\22\2\uffff\1\27\1\36\1\30\1\uffff\1\33\3\uffff\1\6\1\12\1\13\2\uffff"+
+		"\1\34\1\35\4\uffff\1\2\10\uffff\1\26";
+	static final String DFA19_specialS =
+		"\110\uffff}>";
+	static final String[] DFA19_transitionS = {
+			"\2\26\1\uffff\2\26\22\uffff\1\26\1\5\1\25\1\uffff\1\25\1\23\1\1\1\4\1"+
+			"\21\1\22\1\6\1\13\1\16\1\14\1\16\1\15\2\17\10\24\2\uffff\1\11\1\7\1\10"+
+			"\1\25\1\uffff\5\25\1\3\15\25\1\2\3\25\1\20\2\25\3\uffff\1\12\1\25\1\uffff"+
+			"\5\25\1\3\15\25\1\2\3\25\1\20\2\25\50\uffff\1\25\3\uffff\1\25\70\uffff"+
+			"\1\25\7\uffff\2\25\2\uffff\1\25\5\uffff\1\25\6\uffff\1\25",
+			"\1\27\1\uffff\1\27\6\uffff\5\27\17\uffff\1\27\1\uffff\32\27\4\uffff"+
+			"\1\27\1\uffff\32\27\50\uffff\1\27\3\uffff\1\27\70\uffff\1\27\7\uffff"+
+			"\2\27\2\uffff\1\27\5\uffff\1\27\6\uffff\1\27",
+			"\1\31\37\uffff\1\31",
+			"\1\32\37\uffff\1\32",
+			"",
+			"\1\33\32\uffff\1\35\1\uffff\1\34",
+			"\1\30\1\34\1\33\1\uffff\1\7\1\uffff\1\40\4\uffff\1\41\1\uffff\1\37\1"+
+			"\36\4\uffff\1\35\14\uffff\1\30\1\34\1\33\1\uffff\1\7\1\uffff\1\40\4\uffff"+
+			"\1\41\1\uffff\1\37\1\36\4\uffff\1\35",
+			"",
+			"",
+			"",
+			"\1\45\1\43\1\44",
+			"\1\25\1\uffff\1\25\6\uffff\17\25\5\uffff\1\25\1\uffff\32\25\4\uffff"+
 			"\1\25\1\uffff\32\25\50\uffff\1\25\3\uffff\1\25\70\uffff\1\25\7\uffff"+
 			"\2\25\2\uffff\1\25\5\uffff\1\25\6\uffff\1\25",
-			"",
-			"\1\27\32\uffff\1\31\1\uffff\1\30",
-			"\1\26\1\30\1\27\1\uffff\1\5\1\uffff\1\34\4\uffff\1\35\1\uffff\1\33\1"+
-			"\32\4\uffff\1\31\14\uffff\1\26\1\30\1\27\1\uffff\1\5\1\uffff\1\34\4\uffff"+
-			"\1\35\1\uffff\1\33\1\32\4\uffff\1\31",
-			"",
-			"",
-			"",
-			"\1\41\1\37\1\40",
-			"\1\23\1\uffff\1\23\6\uffff\17\23\5\uffff\1\23\1\uffff\32\23\4\uffff"+
-			"\1\23\1\uffff\32\23\50\uffff\1\23\3\uffff\1\23\70\uffff\1\23\7\uffff"+
-			"\2\23\2\uffff\1\23\5\uffff\1\23\6\uffff\1\23",
-			"\1\23\1\uffff\1\23\6\uffff\17\23\5\uffff\1\23\1\uffff\32\23\4\uffff"+
-			"\1\23\1\uffff\32\23\50\uffff\1\23\3\uffff\1\23\70\uffff\1\23\7\uffff"+
-			"\2\23\2\uffff\1\23\5\uffff\1\23\6\uffff\1\23",
-			"\1\23\1\uffff\1\23\6\uffff\17\23\5\uffff\1\23\1\uffff\32\23\4\uffff"+
-			"\1\23\1\uffff\32\23\50\uffff\1\23\3\uffff\1\23\70\uffff\1\23\7\uffff"+
-			"\2\23\2\uffff\1\23\5\uffff\1\23\6\uffff\1\23",
-			"\12\45",
-			"\1\51\1\uffff\1\51\1\uffff\2\46\10\22\36\uffff\1\50\37\uffff\1\50",
-			"\2\52\46\uffff\1\52\37\uffff\1\52",
+			"\1\25\1\uffff\1\25\6\uffff\17\25\5\uffff\1\25\1\uffff\32\25\4\uffff"+
+			"\1\25\1\uffff\32\25\50\uffff\1\25\3\uffff\1\25\70\uffff\1\25\7\uffff"+
+			"\2\25\2\uffff\1\25\5\uffff\1\25\6\uffff\1\25",
+			"\1\25\1\uffff\1\25\6\uffff\17\25\5\uffff\1\25\1\uffff\32\25\4\uffff"+
+			"\1\25\1\uffff\32\25\50\uffff\1\25\3\uffff\1\25\70\uffff\1\25\7\uffff"+
+			"\2\25\2\uffff\1\25\5\uffff\1\25\6\uffff\1\25",
+			"\12\51",
+			"\1\55\1\uffff\1\55\1\uffff\2\52\10\24\36\uffff\1\54\37\uffff\1\54",
+			"\2\56\46\uffff\1\56\37\uffff\1\56",
 			"",
 			"",
-			"\1\53\20\uffff\1\54\16\uffff\1\53\20\uffff\1\54",
-			"\1\51\1\uffff\1\51\1\uffff\12\22",
+			"\1\57\20\uffff\1\60\16\uffff\1\57\20\uffff\1\60",
+			"\1\55\1\uffff\1\55\1\uffff\12\24",
 			"",
 			"",
 			"",
 			"",
+			"\1\61\37\uffff\1\61",
+			"\1\62\37\uffff\1\62",
 			"",
 			"",
 			"",
 			"",
-			"\1\37\1\uffff\1\40\4\uffff\1\41\2\uffff\1\55\25\uffff\1\37\1\uffff\1"+
-			"\40\4\uffff\1\41\2\uffff\1\55",
-			"\1\56\16\uffff\1\6\20\uffff\1\56\16\uffff\1\6",
-			"\1\57\16\uffff\1\7\20\uffff\1\57\16\uffff\1\7",
+			"\1\43\1\uffff\1\44\4\uffff\1\45\2\uffff\1\63\25\uffff\1\43\1\uffff\1"+
+			"\44\4\uffff\1\45\2\uffff\1\63",
+			"\1\64\16\uffff\1\10\20\uffff\1\64\16\uffff\1\10",
+			"\1\65\16\uffff\1\11\20\uffff\1\65\16\uffff\1\11",
 			"",
 			"",
 			"",
@@ -2451,66 +2537,76 @@ public class CLExprLexer extends Lexer {
 			"",
 			"",
 			"",
-			"\12\45",
-			"\1\51\1\uffff\1\51\1\uffff\2\60\10\22\36\uffff\1\50\37\uffff\1\50",
+			"\12\51",
+			"\1\55\1\uffff\1\55\1\uffff\2\66\10\24\36\uffff\1\54\37\uffff\1\54",
 			"",
 			"",
 			"",
-			"\2\61\46\uffff\1\61\37\uffff\1\61",
-			"",
-			"\1\62\1\uffff\1\62\1\uffff\1\63\33\uffff\1\62\1\uffff\1\62\1\uffff\1"+
-			"\63",
-			"",
-			"",
-			"",
-			"\1\51\1\uffff\1\51\1\uffff\2\64\10\22\36\uffff\1\50\37\uffff\1\50",
-			"\2\65\46\uffff\1\65\37\uffff\1\65",
-			"",
-			"",
-			"\1\51\1\uffff\1\51\1\uffff\2\66\10\22\36\uffff\1\50\37\uffff\1\50",
 			"\2\67\46\uffff\1\67\37\uffff\1\67",
-			"\1\51\1\uffff\1\51\1\uffff\2\70\10\22\36\uffff\1\50\37\uffff\1\50",
-			"\2\71\46\uffff\1\71\37\uffff\1\71",
-			"\1\51\1\uffff\1\51\1\uffff\2\72\10\22\36\uffff\1\50\37\uffff\1\50",
-			"\2\73\46\uffff\1\73\37\uffff\1\73",
-			"\1\51\1\uffff\1\51\1\uffff\2\74\10\22\36\uffff\1\50\37\uffff\1\50",
+			"",
+			"\1\70\1\uffff\1\70\1\uffff\1\71\33\uffff\1\70\1\uffff\1\70\1\uffff\1"+
+			"\71",
+			"\1\72\37\uffff\1\72",
+			"\1\73\37\uffff\1\73",
+			"",
+			"",
+			"",
+			"\1\55\1\uffff\1\55\1\uffff\2\74\10\24\36\uffff\1\54\37\uffff\1\54",
 			"\2\75\46\uffff\1\75\37\uffff\1\75",
-			"\1\51\1\uffff\1\51\1\uffff\12\22",
+			"",
+			"",
+			"\1\25\1\uffff\1\25\6\uffff\17\25\5\uffff\1\25\1\uffff\32\25\4\uffff"+
+			"\1\25\1\uffff\32\25\50\uffff\1\25\3\uffff\1\25\70\uffff\1\25\7\uffff"+
+			"\2\25\2\uffff\1\25\5\uffff\1\25\6\uffff\1\25",
+			"\1\77\37\uffff\1\77",
+			"\1\55\1\uffff\1\55\1\uffff\2\100\10\24\36\uffff\1\54\37\uffff\1\54",
+			"\2\101\46\uffff\1\101\37\uffff\1\101",
+			"",
+			"\1\25\1\uffff\1\25\6\uffff\17\25\5\uffff\1\25\1\uffff\32\25\4\uffff"+
+			"\1\25\1\uffff\32\25\50\uffff\1\25\3\uffff\1\25\70\uffff\1\25\7\uffff"+
+			"\2\25\2\uffff\1\25\5\uffff\1\25\6\uffff\1\25",
+			"\1\55\1\uffff\1\55\1\uffff\2\102\10\24\36\uffff\1\54\37\uffff\1\54",
+			"\2\103\46\uffff\1\103\37\uffff\1\103",
+			"\1\55\1\uffff\1\55\1\uffff\2\104\10\24\36\uffff\1\54\37\uffff\1\54",
+			"\2\105\46\uffff\1\105\37\uffff\1\105",
+			"\1\55\1\uffff\1\55\1\uffff\2\106\10\24\36\uffff\1\54\37\uffff\1\54",
+			"\2\107\46\uffff\1\107\37\uffff\1\107",
+			"\1\55\1\uffff\1\55\1\uffff\12\24",
 			""
 	};
 
-	static final short[] DFA18_eot = DFA.unpackEncodedString(DFA18_eotS);
-	static final short[] DFA18_eof = DFA.unpackEncodedString(DFA18_eofS);
-	static final char[] DFA18_min = DFA.unpackEncodedStringToUnsignedChars(DFA18_minS);
-	static final char[] DFA18_max = DFA.unpackEncodedStringToUnsignedChars(DFA18_maxS);
-	static final short[] DFA18_accept = DFA.unpackEncodedString(DFA18_acceptS);
-	static final short[] DFA18_special = DFA.unpackEncodedString(DFA18_specialS);
-	static final short[][] DFA18_transition;
+	static final short[] DFA19_eot = DFA.unpackEncodedString(DFA19_eotS);
+	static final short[] DFA19_eof = DFA.unpackEncodedString(DFA19_eofS);
+	static final char[] DFA19_min = DFA.unpackEncodedStringToUnsignedChars(DFA19_minS);
+	static final char[] DFA19_max = DFA.unpackEncodedStringToUnsignedChars(DFA19_maxS);
+	static final short[] DFA19_accept = DFA.unpackEncodedString(DFA19_acceptS);
+	static final short[] DFA19_special = DFA.unpackEncodedString(DFA19_specialS);
+	static final short[][] DFA19_transition;
 
 	static {
-		int numStates = DFA18_transitionS.length;
-		DFA18_transition = new short[numStates][];
+		int numStates = DFA19_transitionS.length;
+		DFA19_transition = new short[numStates][];
 		for (int i=0; i<numStates; i++) {
-			DFA18_transition[i] = DFA.unpackEncodedString(DFA18_transitionS[i]);
+			DFA19_transition[i] = DFA.unpackEncodedString(DFA19_transitionS[i]);
 		}
 	}
 
-	protected class DFA18 extends DFA {
+	protected class DFA19 extends DFA {
 
-		public DFA18(BaseRecognizer recognizer) {
+		public DFA19(BaseRecognizer recognizer) {
 			this.recognizer = recognizer;
-			this.decisionNumber = 18;
-			this.eot = DFA18_eot;
-			this.eof = DFA18_eof;
-			this.min = DFA18_min;
-			this.max = DFA18_max;
-			this.accept = DFA18_accept;
-			this.special = DFA18_special;
-			this.transition = DFA18_transition;
+			this.decisionNumber = 19;
+			this.eot = DFA19_eot;
+			this.eof = DFA19_eof;
+			this.min = DFA19_min;
+			this.max = DFA19_max;
+			this.accept = DFA19_accept;
+			this.special = DFA19_special;
+			this.transition = DFA19_transition;
 		}
 		@Override
 		public String getDescription() {
-			return "1:1: Tokens : ( VAR | STRING | OR | AND | NOT | EQ | GT | LT | GTEQ | LTEQ | NE | NG | NL | PLUS | MINUS | MULT | DIV | CAT | BCAT | TCAT | TERM | INTEGER | FLOAT | OPEN_BRACE | CLOSE_BRACE | BINARY_FUN | SST_FUN | SWITCH_FUN | SWITCH_VALUE | WS );";
+			return "1:1: Tokens : ( VAR | BOOLEAN | STRING | OR | AND | NOT | EQ | GT | LT | GTEQ | LTEQ | NE | NG | NL | PLUS | MINUS | MULT | DIV | CAT | BCAT | TCAT | TERM | INTEGER | FLOAT | OPEN_BRACE | CLOSE_BRACE | BINARY_FUN | SST_FUN | SWITCH_FUN | SWITCH_VALUE | WS );";
 		}
 	}
 

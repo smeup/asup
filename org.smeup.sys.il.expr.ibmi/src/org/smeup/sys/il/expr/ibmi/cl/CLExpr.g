@@ -102,7 +102,7 @@ expression
   	logicalExpression  EOF!
   	;
 
- logicalExpression
+logicalExpression
 	:
 	booleanAndExpression (OR^ booleanAndExpression )*
 	;
@@ -152,6 +152,8 @@ value	:
 
 	VAR
 	|
+	BOOLEAN
+	|
 	STRING
 	|
 	TERM
@@ -184,6 +186,11 @@ switch_fun
 
 VAR	:
 	'&' TERM
+	;
+
+BOOLEAN
+	:	(T R U E)
+	|	(F A L S E)
 	;
 
 STRING

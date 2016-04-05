@@ -28,7 +28,6 @@ import org.smeup.sys.dk.parser.ibmi.cl.model.pgm.CLRow;
 import org.smeup.sys.dk.parser.ibmi.cl.util.CLParserUtil;
 import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
-import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DataDefType;
@@ -266,7 +265,7 @@ public class XMICLProgramWriter {
 			else 
 				methodExec.setMethod("move");
 			methodExec.getParameters().add(right);
-//			methodExec.getParameters().add(DataSpecial.ON.getLiteral());
+			methodExec.getParameters().add("true");
 			
 			result = methodExec;
 
