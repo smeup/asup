@@ -16,7 +16,8 @@ package org.smeup.sys.il.flow;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QEval#getAssignment <em>Assignment</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.QEval#getRoundingMode <em>Rounding Mode</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QEval#isHalfAdjust <em>Half Adjust</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QEval#isMaxPrecision <em>Max Precision</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QEval#isRightAdjust <em>Right Adjust</em>}</li>
  * </ul>
  *
@@ -53,34 +54,60 @@ public interface QEval extends QInvoke {
 	void setAssignment(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Rounding Mode</b></em>' attribute.
+	 * Returns the value of the '<em><b>Half Adjust</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Rounding Mode</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Half Adjust</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Rounding Mode</em>' attribute.
-	 * @see #setRoundingMode(String)
-	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getEval_RoundingMode()
-	 * @model required="true"
+	 * @return the value of the '<em>Half Adjust</em>' attribute.
+	 * @see #setHalfAdjust(boolean)
+	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getEval_HalfAdjust()
+	 * @model
 	 * @generated
 	 */
-	String getRoundingMode();
+	boolean isHalfAdjust();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QEval#getRoundingMode <em>Rounding Mode</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QEval#isHalfAdjust <em>Half Adjust</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Rounding Mode</em>' attribute.
-	 * @see #getRoundingMode()
+	 * @param value the new value of the '<em>Half Adjust</em>' attribute.
+	 * @see #isHalfAdjust()
 	 * @generated
 	 */
-	void setRoundingMode(String value);
+	void setHalfAdjust(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Max Precision</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Max Precision</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Max Precision</em>' attribute.
+	 * @see #setMaxPrecision(boolean)
+	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getEval_MaxPrecision()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isMaxPrecision();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QEval#isMaxPrecision <em>Max Precision</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Max Precision</em>' attribute.
+	 * @see #isMaxPrecision()
+	 * @generated
+	 */
+	void setMaxPrecision(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Right Adjust</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Right Adjust</em>' attribute isn't clear,
@@ -90,7 +117,7 @@ public interface QEval extends QInvoke {
 	 * @return the value of the '<em>Right Adjust</em>' attribute.
 	 * @see #setRightAdjust(boolean)
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getEval_RightAdjust()
-	 * @model default="false" required="true"
+	 * @model
 	 * @generated
 	 */
 	boolean isRightAdjust();

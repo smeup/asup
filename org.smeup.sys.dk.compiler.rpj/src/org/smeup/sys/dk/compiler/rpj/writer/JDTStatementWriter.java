@@ -271,17 +271,11 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		QAssignmentExpression assignmentExpression = expressionParser.parseAssignment(statement.getAssignment());
 		MethodInvocation methodInvocation = buildAssignmentMethod(assignmentExpression, statement.isRightAdjust());
 
-		if (statement.getRoundingMode() != null) {
-			QDataTerm<?> dataTerm = compilationUnit.getDataTerm(assignmentExpression.getLeftOperand().getValue(), true);
-			if (dataTerm == null)
-				throw new IntegratedLanguageExpressionRuntimeException("Invalid statement: " + statement);
-
-			if (Number.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
-				QExpression expression = expressionParser.parseExpression(statement.getRoundingMode());
-				Expression jdtExpression = buildExpression(ast, expression, null);
-				methodInvocation.arguments().add(jdtExpression);
-			}
-		}
+		if(statement.isHalfAdjust() || statement.isMaxPrecision()) 
+			methodInvocation.arguments().add(ast.newBooleanLiteral(statement.isHalfAdjust()));
+			
+		if(statement.isMaxPrecision())
+			methodInvocation.arguments().add(ast.newBooleanLiteral(statement.isMaxPrecision()));
 
 		ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
 		block.statements().add(expressionStatement);

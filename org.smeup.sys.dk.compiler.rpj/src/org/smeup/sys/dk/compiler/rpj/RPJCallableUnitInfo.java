@@ -18,8 +18,10 @@ import java.util.Map;
 public class RPJCallableUnitInfo {
 
 	private Map<String, Label> labels;
+	
 	private boolean containsSQLStatement = false;
 	private boolean containsCMDStatement = false;
+	
 	private boolean containsInsignificantZeros = false;
 
 	public RPJCallableUnitInfo() {

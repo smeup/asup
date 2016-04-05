@@ -51,6 +51,14 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 			for (QProcedure procedure : callableUnit.getFlowSection().getProcedures()) {
 				RPJCallableUnitInfo procedureUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(procedure);
 
+				// split procedure information to callableUnit parent 
+				if(procedureUnitInfo.containsCMDStatement())
+					callableUnitInfo.containsCMDStatement(true);
+				if(procedureUnitInfo.containsSQLStatement())
+					callableUnitInfo.containsSQLStatement(true);
+				if(procedureUnitInfo.containsInsignificantZeros())
+					callableUnitInfo.containsInsignificantZeros(true);
+				
 				callableUnitInfo.getLabels().putAll(procedureUnitInfo.getLabels());
 			}
 
@@ -98,7 +106,7 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 
 		for (String parameter : statement.getParameters()) {
 			if(isNumeric(parameter)) {
-				if(parameter.trim().startsWith("0"))
+				if(parameter.trim().startsWith("0") && !parameter.trim().startsWith("0."))
 					programInfo.containsInsignificantZeros(true);
 			}
 		}

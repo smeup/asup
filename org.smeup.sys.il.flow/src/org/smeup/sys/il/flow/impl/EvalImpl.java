@@ -22,7 +22,8 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#getAssignment <em>Assignment</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#getRoundingMode <em>Rounding Mode</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#isHalfAdjust <em>Half Adjust</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#isMaxPrecision <em>Max Precision</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#isRightAdjust <em>Right Adjust</em>}</li>
  * </ul>
  *
@@ -48,24 +49,44 @@ public class EvalImpl extends InvokeImpl implements QEval {
 	protected String assignment = ASSIGNMENT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getRoundingMode() <em>Rounding Mode</em>}' attribute.
+	 * The default value of the '{@link #isHalfAdjust() <em>Half Adjust</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRoundingMode()
+	 * @see #isHalfAdjust()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ROUNDING_MODE_EDEFAULT = null;
+	protected static final boolean HALF_ADJUST_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #getRoundingMode() <em>Rounding Mode</em>}' attribute.
+	 * The cached value of the '{@link #isHalfAdjust() <em>Half Adjust</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRoundingMode()
+	 * @see #isHalfAdjust()
 	 * @generated
 	 * @ordered
 	 */
-	protected String roundingMode = ROUNDING_MODE_EDEFAULT;
+	protected boolean halfAdjust = HALF_ADJUST_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMaxPrecision() <em>Max Precision</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMaxPrecision()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MAX_PRECISION_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMaxPrecision() <em>Max Precision</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMaxPrecision()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean maxPrecision = MAX_PRECISION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isRightAdjust() <em>Right Adjust</em>}' attribute.
@@ -135,8 +156,8 @@ public class EvalImpl extends InvokeImpl implements QEval {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getRoundingMode() {
-		return roundingMode;
+	public boolean isHalfAdjust() {
+		return halfAdjust;
 	}
 
 	/**
@@ -144,11 +165,32 @@ public class EvalImpl extends InvokeImpl implements QEval {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRoundingMode(String newRoundingMode) {
-		String oldRoundingMode = roundingMode;
-		roundingMode = newRoundingMode;
+	public void setHalfAdjust(boolean newHalfAdjust) {
+		boolean oldHalfAdjust = halfAdjust;
+		halfAdjust = newHalfAdjust;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE, oldRoundingMode, roundingMode));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.EVAL__HALF_ADJUST, oldHalfAdjust, halfAdjust));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isMaxPrecision() {
+		return maxPrecision;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMaxPrecision(boolean newMaxPrecision) {
+		boolean oldMaxPrecision = maxPrecision;
+		maxPrecision = newMaxPrecision;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.EVAL__MAX_PRECISION, oldMaxPrecision, maxPrecision));
 	}
 
 	/**
@@ -181,8 +223,10 @@ public class EvalImpl extends InvokeImpl implements QEval {
 		switch (featureID) {
 			case QIntegratedLanguageFlowPackage.EVAL__ASSIGNMENT:
 				return getAssignment();
-			case QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE:
-				return getRoundingMode();
+			case QIntegratedLanguageFlowPackage.EVAL__HALF_ADJUST:
+				return isHalfAdjust();
+			case QIntegratedLanguageFlowPackage.EVAL__MAX_PRECISION:
+				return isMaxPrecision();
 			case QIntegratedLanguageFlowPackage.EVAL__RIGHT_ADJUST:
 				return isRightAdjust();
 		}
@@ -199,8 +243,11 @@ public class EvalImpl extends InvokeImpl implements QEval {
 			case QIntegratedLanguageFlowPackage.EVAL__ASSIGNMENT:
 				setAssignment((String)newValue);
 				return;
-			case QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE:
-				setRoundingMode((String)newValue);
+			case QIntegratedLanguageFlowPackage.EVAL__HALF_ADJUST:
+				setHalfAdjust((Boolean)newValue);
+				return;
+			case QIntegratedLanguageFlowPackage.EVAL__MAX_PRECISION:
+				setMaxPrecision((Boolean)newValue);
 				return;
 			case QIntegratedLanguageFlowPackage.EVAL__RIGHT_ADJUST:
 				setRightAdjust((Boolean)newValue);
@@ -219,8 +266,11 @@ public class EvalImpl extends InvokeImpl implements QEval {
 			case QIntegratedLanguageFlowPackage.EVAL__ASSIGNMENT:
 				setAssignment(ASSIGNMENT_EDEFAULT);
 				return;
-			case QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE:
-				setRoundingMode(ROUNDING_MODE_EDEFAULT);
+			case QIntegratedLanguageFlowPackage.EVAL__HALF_ADJUST:
+				setHalfAdjust(HALF_ADJUST_EDEFAULT);
+				return;
+			case QIntegratedLanguageFlowPackage.EVAL__MAX_PRECISION:
+				setMaxPrecision(MAX_PRECISION_EDEFAULT);
 				return;
 			case QIntegratedLanguageFlowPackage.EVAL__RIGHT_ADJUST:
 				setRightAdjust(RIGHT_ADJUST_EDEFAULT);
@@ -238,8 +288,10 @@ public class EvalImpl extends InvokeImpl implements QEval {
 		switch (featureID) {
 			case QIntegratedLanguageFlowPackage.EVAL__ASSIGNMENT:
 				return ASSIGNMENT_EDEFAULT == null ? assignment != null : !ASSIGNMENT_EDEFAULT.equals(assignment);
-			case QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE:
-				return ROUNDING_MODE_EDEFAULT == null ? roundingMode != null : !ROUNDING_MODE_EDEFAULT.equals(roundingMode);
+			case QIntegratedLanguageFlowPackage.EVAL__HALF_ADJUST:
+				return halfAdjust != HALF_ADJUST_EDEFAULT;
+			case QIntegratedLanguageFlowPackage.EVAL__MAX_PRECISION:
+				return maxPrecision != MAX_PRECISION_EDEFAULT;
 			case QIntegratedLanguageFlowPackage.EVAL__RIGHT_ADJUST:
 				return rightAdjust != RIGHT_ADJUST_EDEFAULT;
 		}
@@ -257,8 +309,10 @@ public class EvalImpl extends InvokeImpl implements QEval {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (assignment: ");
 		result.append(assignment);
-		result.append(", roundingMode: ");
-		result.append(roundingMode);
+		result.append(", halfAdjust: ");
+		result.append(halfAdjust);
+		result.append(", maxPrecision: ");
+		result.append(maxPrecision);
 		result.append(", rightAdjust: ");
 		result.append(rightAdjust);
 		result.append(')');

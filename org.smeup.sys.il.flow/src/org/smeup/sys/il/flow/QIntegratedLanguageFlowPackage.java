@@ -791,13 +791,22 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	int EVAL__ASSIGNMENT = INVOKE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Rounding Mode</b></em>' attribute.
+	 * The feature id for the '<em><b>Half Adjust</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVAL__ROUNDING_MODE = INVOKE_FEATURE_COUNT + 1;
+	int EVAL__HALF_ADJUST = INVOKE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Max Precision</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVAL__MAX_PRECISION = INVOKE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Right Adjust</b></em>' attribute.
@@ -806,7 +815,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVAL__RIGHT_ADJUST = INVOKE_FEATURE_COUNT + 2;
+	int EVAL__RIGHT_ADJUST = INVOKE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Eval</em>' class. <!--
@@ -815,7 +824,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVAL_FEATURE_COUNT = INVOKE_FEATURE_COUNT + 3;
+	int EVAL_FEATURE_COUNT = INVOKE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.FileSectionImpl <em>File Section</em>}' class.
@@ -2567,15 +2576,26 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	EAttribute getEval_Assignment();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.flow.QEval#getRoundingMode <em>Rounding Mode</em>}'.
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.flow.QEval#isHalfAdjust <em>Half Adjust</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Rounding Mode</em>'.
-	 * @see org.smeup.sys.il.flow.QEval#getRoundingMode()
+	 * @return the meta object for the attribute '<em>Half Adjust</em>'.
+	 * @see org.smeup.sys.il.flow.QEval#isHalfAdjust()
 	 * @see #getEval()
 	 * @generated
 	 */
-	EAttribute getEval_RoundingMode();
+	EAttribute getEval_HalfAdjust();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.flow.QEval#isMaxPrecision <em>Max Precision</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max Precision</em>'.
+	 * @see org.smeup.sys.il.flow.QEval#isMaxPrecision()
+	 * @see #getEval()
+	 * @generated
+	 */
+	EAttribute getEval_MaxPrecision();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.flow.QEval#isRightAdjust <em>Right Adjust</em>}'.
@@ -3748,12 +3768,20 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 		EAttribute EVAL__ASSIGNMENT = eINSTANCE.getEval_Assignment();
 
 		/**
-		 * The meta object literal for the '<em><b>Rounding Mode</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Half Adjust</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EVAL__ROUNDING_MODE = eINSTANCE.getEval_RoundingMode();
+		EAttribute EVAL__HALF_ADJUST = eINSTANCE.getEval_HalfAdjust();
+
+		/**
+		 * The meta object literal for the '<em><b>Max Precision</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EVAL__MAX_PRECISION = eINSTANCE.getEval_MaxPrecision();
 
 		/**
 		 * The meta object literal for the '<em><b>Right Adjust</b></em>' attribute feature.
