@@ -26,6 +26,7 @@ import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.dk.compiler.rpj.RPJExpressionNormalizer;
+import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QUnit;
@@ -62,6 +63,7 @@ public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 	public void writeSupportFields(RPJCallableUnitInfo callableUnitInfo) {
 
 		writeImport(QData.class);
+		writeImport(DatetimeFormat.class);
 		
 		VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 		FieldDeclaration field = getAST().newFieldDeclaration(variable);

@@ -205,26 +205,26 @@ public class RPJProgramSupport {
 
 	public static class Specials {
 
-		public static DataSpecial NULL = DataSpecial.NULL;
-		public static DataSpecial OMIT = DataSpecial.OMIT;
+		public static final DataSpecial NULL = DataSpecial.NULL;
+		public static final DataSpecial OMIT = DataSpecial.OMIT;
 
-		public static DataSpecial OFF = DataSpecial.OFF;
-		public static DataSpecial ON = DataSpecial.ON;
-		public static DataSpecial ZERO = DataSpecial.ZERO;
-		public static DataSpecial ZEROS = DataSpecial.ZEROS;
-		public static DataSpecial BLANK = DataSpecial.BLANK;
-		public static DataSpecial BLANKS = DataSpecial.BLANKS;
-		public static DataSpecial LOVAL = DataSpecial.LOVAL;
-		public static DataSpecial HIVAL = DataSpecial.HIVAL;
+		public static final DataSpecial OFF = DataSpecial.OFF;
+		public static final DataSpecial ON = DataSpecial.ON;
+		public static final DataSpecial ZERO = DataSpecial.ZERO;
+		public static final DataSpecial ZEROS = DataSpecial.ZEROS;
+		public static final DataSpecial BLANK = DataSpecial.BLANK;
+		public static final DataSpecial BLANKS = DataSpecial.BLANKS;
+		public static final DataSpecial LOVAL = DataSpecial.LOVAL;
+		public static final DataSpecial HIVAL = DataSpecial.HIVAL;
 
-		public static DatetimeFormat ISO = DatetimeFormat.ISO;
-		public static DatetimeFormat MS = DatetimeFormat.MILLISECONDS;
-		public static DatetimeFormat Y = DatetimeFormat.YEAR;
-		public static DatetimeFormat YEARS = DatetimeFormat.YEARS;
-		public static DatetimeFormat M = DatetimeFormat.MONTH;
-		public static DatetimeFormat MONTHS = DatetimeFormat.MONTHS;
-		public static DatetimeFormat D = DatetimeFormat.DAY;
-		public static DatetimeFormat DAYS = DatetimeFormat.DAYS;
+		public static final DatetimeFormat ISO = DatetimeFormat.ISO;
+		public static final DatetimeFormat MS = DatetimeFormat.MILLISECONDS;
+		public static final DatetimeFormat Y = DatetimeFormat.YEAR;
+		public static final DatetimeFormat YEARS = DatetimeFormat.YEARS;
+		public static final DatetimeFormat M = DatetimeFormat.MONTH;
+		public static final DatetimeFormat MONTHS = DatetimeFormat.MONTHS;
+		public static final DatetimeFormat D = DatetimeFormat.DAY;
+		public static final DatetimeFormat DAYS = DatetimeFormat.DAYS;
 	}
 
 	private static enum LookupOperator {

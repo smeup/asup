@@ -63,7 +63,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 				if (specialElement != null) {
 					list.accept(dataWriter.set(specialElement));
 				} else {
-					DataSpecial dataSpecial = DataSpecial.get(default_.getValue());
+					DataSpecial dataSpecial = DataSpecial.get(default_.getValue().toUpperCase());
 					if (dataSpecial != null)
 						list.eval(dataSpecial);
 					else
@@ -79,7 +79,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 					if (specialElement != null) {
 						list.get(i).accept(dataWriter.set(specialElement));
 					} else {
-						DataSpecial dataSpecial = DataSpecial.get(value);
+						DataSpecial dataSpecial = DataSpecial.get(value.toUpperCase());
 						if (dataSpecial != null)
 							list.get(i).eval(dataSpecial);
 						else
@@ -108,7 +108,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 								list.get(e).accept(dataWriter.set(specialElement));
 						result = false;
 					} else {
-						DataSpecial dataSpecial = DataSpecial.get(value);
+						DataSpecial dataSpecial = DataSpecial.get(value.toUpperCase());
 						if (dataSpecial != null)
 							list.get(i).eval(dataSpecial);
 						else
@@ -143,7 +143,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 			if (specialElement != null)
 				data.accept(dataWriter.set(specialElement));
 			else {
-				DataSpecial dataSpecial = DataSpecial.get(default_.getValue());
+				DataSpecial dataSpecial = DataSpecial.get(default_.getValue().toUpperCase());
 				if (dataSpecial != null) {
 					QBufferedElement bufferedElement = (QBufferedElement) data;
 					bufferedElement.eval(dataSpecial);
@@ -177,7 +177,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 					struct.accept(dataWriter.set(specialElement));
 					result = false;
 				} else {
-					DataSpecial dataSpecial = DataSpecial.get(default_.getValue());
+					DataSpecial dataSpecial = DataSpecial.get(default_.getValue().toUpperCase());
 					if (dataSpecial != null) {
 						QBufferedElement bufferedElement = (QBufferedElement) data;
 						bufferedElement.eval(dataSpecial);

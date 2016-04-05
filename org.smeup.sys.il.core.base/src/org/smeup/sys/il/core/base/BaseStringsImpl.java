@@ -15,6 +15,7 @@ import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import java.util.List;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.smeup.sys.mi.core.util.QStrings;
 
 public class BaseStringsImpl implements QStrings {
@@ -215,5 +216,10 @@ public class BaseStringsImpl implements QStrings {
 			return s;
 
 		return s.substring(s.length() - nCaratteri);
+	}
+
+	@Override
+	public String escape(String string) {
+		return StringEscapeUtils.escapeJava(string);
 	}
 }

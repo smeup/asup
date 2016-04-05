@@ -54,6 +54,7 @@ import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DataDefType;
+import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.def.QArrayDef;
@@ -474,6 +475,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		} else if (QDatetimeDef.class.isAssignableFrom(klassDef)) {
 			QDatetimeDef datetimeDef = (QDatetimeDef) dataDef;
 			writeImport(DatetimeType.class);
+			writeImport(DateFormat.class);
 			writeAnnotation(node, DataDef.class, "datetimeType", datetimeDef.getType());
 			if (datetimeDef.getDateFormat() != null)
 				writeAnnotation(node, DataDef.class, "dateFormat", datetimeDef.getDateFormat());

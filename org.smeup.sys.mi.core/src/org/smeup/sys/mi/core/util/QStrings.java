@@ -106,6 +106,14 @@ public interface QStrings extends QSingleton<QStrings> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" stringRequired="true"
+	 * @generated
+	 */
+	String escape(String string);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" stringRequired="true" nrOfCharsRequired="true"
 	 * @generated
 	 */

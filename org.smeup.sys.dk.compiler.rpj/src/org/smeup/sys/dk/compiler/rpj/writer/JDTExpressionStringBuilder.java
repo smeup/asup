@@ -25,6 +25,7 @@ import org.smeup.sys.dk.compiler.rpj.RPJCompilerMessage;
 import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.data.DataSpecial;
+import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
@@ -85,7 +86,6 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	private QLogger logger;
 	@Inject
 	private QJob job;
-	
 
 	private StringBuffer buffer = new StringBuffer();
 	private Class<?> target;
@@ -161,35 +161,60 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			break;
 		case SPECIAL:
 			source = Enum.class;
-			DataSpecial dataSpecial = DataSpecial.get(expression.getValue());
-			switch (dataSpecial) {
-			case NULL:
-				value = "null";
-				break;
-			case BLANK:
-			case BLANKS:
-			case HIVAL:
-			case LOVAL:
-			case OFF:
-			case OMIT:
-			case ON:
-			case ZERO:
-			case ZEROS:
-				value = "qRPJ.qSP." + strings.removeFirstChar(expression.getValue()).toUpperCase();
-				break;
+			DataSpecial dataSpecial = DataSpecial.get(expression.getValue().toUpperCase());
+			if (dataSpecial != null) {
+				switch (dataSpecial) {
+				case NULL:
+					value = "null";
+					break;
+				case BLANK:
+				case BLANKS:
+				case HIVAL:
+				case LOVAL:
+				case OFF:
+				case OMIT:
+				case ON:
+				case ZERO:
+				case ZEROS:
+					value = "qRPJ.qSP." + strings.removeFirstChar(expression.getValue()).toUpperCase();
+					break;
+				}
+			}
+			
+			DatetimeFormat datetimeFormat = DatetimeFormat.get(expression.getValue().toUpperCase());
+			if(datetimeFormat != null) {
+				switch (datetimeFormat) {
+				case DAY:
+				case DAYS:
+				case HOURS:
+				case ISO:
+				case MILLISECONDS:
+				case MINUTES:
+				case MONTH:
+				case MONTHS:
+				case SECONDS:
+				case YEAR:
+				case YEARS:
+					value = "qRPJ.qSP." + strings.removeFirstChar(expression.getValue()).toUpperCase();
+					break;
+				}
 			}
 			break;
 		case STRING:
 
-			value = expression.getValue().replaceAll("\\\\", "\\\\\\\\");
+			// escaping
+			value = expression.getValue().replaceAll("\\\\", "\\\\\\\\");			
 			value = value.replaceAll("\\\"", "\\\\\"");
+			
+			// TODO
+//			value = strings.escape(expression.getValue());
 			value = "\"" + value + "\"";
 
 			source = String.class;
 			break;
 		case INDICATOR:
 		case NAME:
-		
+
 			QNamedNode namedNode = null;
 			namedNode = compilationUnit.getNamedNode(expression.getValue(), true);
 			if (namedNode == null) {
@@ -631,7 +656,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		case BOOLEAN:
 			break;
 		case ARRAY:
-			break;			
+			break;
 		}
 
 		return result;
@@ -768,7 +793,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			QExpression expressionChild = expression.getElements().get(0);
 
 			switch (expressionChild.getExpressionType()) {
-			case ARRAY:			
+			case ARRAY:
 			case ATOMIC:
 			case FUNCTION:
 			case QUALIFIED:
@@ -778,7 +803,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
 
-				if (CompilationContextHelper.isPrimitive(compilationUnit, expressionChild)) {															
+				if (CompilationContextHelper.isPrimitive(compilationUnit, expressionChild)) {
 					methodExec.setObject("%box(" + expressionWriter.writeExpression(expressionChild) + ")");
 				} else {
 					methodExec.setObject(expressionWriter.writeExpression(expressionChild));
@@ -823,7 +848,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		if (namedNode == null)
 			throw new IntegratedLanguageExpressionRuntimeException("Invalid term: " + expression.getValue());
-		
+
 		// unary
 
 		// dataSet
@@ -917,7 +942,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				writeValue(prototype.getDefinition().getJavaClass(), this.target, value.toString());
 			else
 				writeValue(prototype.getDefinition().getDataClass(), this.target, value.toString());
-			
+
 		} else if (namedNode instanceof QDataTerm<?>) {
 			QDataTerm<?> dataTerm = (QDataTerm<?>) namedNode;
 
