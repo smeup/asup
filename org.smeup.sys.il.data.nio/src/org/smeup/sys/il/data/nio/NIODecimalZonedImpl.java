@@ -59,23 +59,16 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 	}
 
 	@Override
-	public void _writeNumber(Number number, String roundingMode) {
-
-		if(roundingMode == null)
-			roundingMode = "";
+	public void _writeNumber(Number number, boolean halfAdjust) {
 		
 		byte[] bytes = null;
-		switch (roundingMode) {
-		case "H":
+		if(halfAdjust) {
 			BigDecimal bd = new BigDecimal(number.doubleValue());
-			bytes = zoned.toBytes(bd.setScale(getScale(), RoundingMode.HALF_UP).doubleValue());
-			break;
-
-		default:
-			bytes = zoned.toBytes(number.doubleValue());
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
-			break;
+			bytes = zoned.toBytes(bd.setScale(getScale(), RoundingMode.HALF_UP).doubleValue());			
 		}
+		else {
+			bytes = zoned.toBytes(number.doubleValue());			
+		}		
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
 	}
 

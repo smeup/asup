@@ -108,7 +108,7 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	}
 
 	@Override
-	public void _writeNumber(Number number, String roundingMode) {
+	public void _writeNumber(Number number, boolean halfAdjust) {
 
 		ByteBuffer buffer = getBuffer();
 		int position = getPosition();

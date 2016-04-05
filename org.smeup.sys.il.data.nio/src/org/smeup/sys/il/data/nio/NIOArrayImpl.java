@@ -78,67 +78,37 @@ public class NIOArrayImpl<D extends NIOBufferedElementImpl> extends NIOBufferedL
 	}
 
 	@Override
-	public void divide(double value) {
-		divide(value, null);
+	public void divide(Number value) {
+		divide(value, false);
 	}
 
 	@Override
-	public void divide(double value, String roundingMode) {
-		operationDivide(value, roundingMode);
-	}
-
-	@Override
-	public void divide(int value) {
-		divide(value, null);
-	}
-
-	@Override
-	public void divide(int value, String roundingMode) {
-		operationDivide(value, roundingMode);
-	}
-
-	@Override
-	public void divide(long value) {
-		divide(value, null);
-	}
-
-	@Override
-	public void divide(long value, String roundingMode) {
-		operationDivide(value, roundingMode);
+	public void divide(Number value, boolean halfAdjust) {
+		operationDivide(value, halfAdjust);
 	}
 
 	@Override
 	public void divide(QArray<D> array) {
-		divide(array, null);
+		divide(array, false);
 	}
 
 	@Override
-	public void divide(QArray<D> array, String roundingMode) {
+	public void divide(QArray<D> array, boolean halfAdjust) {
 		for (int i = 1; i <= this.capacity(); i++) {
 			if (i > array.capacity())
 				break;
-			((QNumeric) this.get(i)).divide((QNumeric) array.get(i));
+			((QNumeric) this.get(i)).divide((QNumeric) array.get(i), halfAdjust);
 		}
 	}
 
 	@Override
 	public void divide(QNumeric value) {
-		divide(value, null);
+		divide(value, false);
 	}
 
 	@Override
-	public void divide(QNumeric value, String roundingMode) {
-		operationDivide(value.asDouble(), roundingMode);
-	}
-
-	@Override
-	public void divide(short value) {
-		divide(value, null);
-	}
-
-	@Override
-	public void divide(short value, String roundingMode) {
-		operationDivide(value, roundingMode);
+	public void divide(QNumeric value, boolean halfAdjust) {
+		operationDivide(value.asDouble(), halfAdjust);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -170,219 +140,129 @@ public class NIOArrayImpl<D extends NIOBufferedElementImpl> extends NIOBufferedL
 	}
 
 	@Override
-	public void minus(double value) {
-		minus(value, null);
+	public void minus(Number value) {
+		minus(value, false);
 	}
 
 	@Override
-	public void minus(double value, String roundingMode) {
-		operationMinus(value, roundingMode);
-	}
-
-	@Override
-	public void minus(int value) {
-		minus(value, null);
-	}
-
-	@Override
-	public void minus(int value, String roundingMode) {
-		operationMinus(value, roundingMode);
-	}
-
-	@Override
-	public void minus(long value) {
-		minus(value, null);
-	}
-
-	@Override
-	public void minus(long value, String roundingMode) {
-		operationMinus(value, roundingMode);
+	public void minus(Number value, boolean halfAdjust) {
+		operationMinus(value, halfAdjust);
 	}
 
 	@Override
 	public void minus(QArray<D> array) {
-		minus(array, null);
+		minus(array, false);
 	}
 
 	@Override
-	public void minus(QArray<D> array, String roundingMode) {
+	public void minus(QArray<D> array, boolean halfAdjust) {
 		for (int i = 1; i <= this.capacity(); i++) {
 			if (i > array.capacity())
 				break;
-			((QNumeric) this.get(i)).minus((QNumeric) array.get(i));
+			((QNumeric) this.get(i)).minus((QNumeric) array.get(i), halfAdjust);
 		}
 	}
 
 	@Override
 	public void minus(QNumeric value) {
-		minus(value, null);
+		minus(value, false);
 	}
 
 	@Override
-	public void minus(QNumeric value, String roundingMode) {
-		operationMinus(value.asDouble(), roundingMode);
+	public void minus(QNumeric value, boolean halfAdjust) {
+		operationMinus(value.asDouble(), halfAdjust);
 	}
 
 	@Override
-	public void minus(short value) {
-		minus(value, null);
+	public void mult(Number value) {
+		mult(value, false);
 	}
 
 	@Override
-	public void minus(short value, String roundingMode) {
-		operationMinus(value, roundingMode);
-	}
-
-	@Override
-	public void mult(double value) {
-		mult(value, null);
-	}
-
-	@Override
-	public void mult(double value, String roundingMode) {
-		operationMult(value, roundingMode);
-	}
-
-	@Override
-	public void mult(int value) {
-		mult(value, null);
-	}
-
-	@Override
-	public void mult(int value, String roundingMode) {
-		operationMult(value, roundingMode);
-	}
-
-	@Override
-	public void mult(long value) {
-		mult(value, null);
-	}
-
-	@Override
-	public void mult(long value, String roundingMode) {
-		operationMult(value, roundingMode);
+	public void mult(Number value, boolean halfAdjust) {
+		operationMult(value, halfAdjust);
 	}
 
 	@Override
 	public void mult(QArray<D> array) {
-		mult(array, null);
+		mult(array, false);
 	}
 
 	@Override
-	public void mult(QArray<D> array, String roundingMode) {
+	public void mult(QArray<D> array, boolean halfAdjust) {
 		for (int i = 1; i <= this.capacity(); i++) {
 			if (i > array.capacity())
 				break;
-			((QNumeric) this.get(i)).mult((QNumeric) array.get(i));
+			((QNumeric) this.get(i)).mult((QNumeric) array.get(i), halfAdjust);
 		}
 	}
 
 	@Override
 	public void mult(QNumeric value) {
-		mult(value, null);
+		mult(value, false);
 	}
 
 	@Override
-	public void mult(QNumeric value, String roundingMode) {
-		operationMult(value.asDouble(), roundingMode);
+	public void mult(QNumeric value, boolean halfAdjust) {
+		operationMult(value.asDouble(), halfAdjust);
 	}
 
-	@Override
-	public void mult(short value) {
-		mult(value, null);
-	}
-
-	@Override
-	public void mult(short value, String roundingMode) {
-		operationMult(value, roundingMode);
-	}
-
-	private void operationDivide(Number value, String roundingMode) {
+	private void operationDivide(Number value, boolean halfAdjust) {
 		for (int i = 1; i <= this.capacity(); i++) {
-			((QNumeric) this.get(i)).divide(value.doubleValue());
+			((QNumeric) this.get(i)).divide(value.doubleValue(), halfAdjust);
 		}
 	}
 
-	private void operationMinus(Number value, String roundingMode) {
+	private void operationMinus(Number value, boolean halfAdjust) {
 		for (int i = 1; i <= this.capacity(); i++) {
-			((QNumeric) this.get(i)).minus(value.doubleValue());
+			((QNumeric) this.get(i)).minus(value.doubleValue(), halfAdjust);
 		}
 	}
 
-	private void operationMult(Number value, String roundingMode) {
+	private void operationMult(Number value, boolean halfAdjust) {
 		for (int i = 1; i <= this.capacity(); i++) {
-			((QNumeric) this.get(i)).mult(value.doubleValue());
+			((QNumeric) this.get(i)).mult(value.doubleValue(), halfAdjust);
 		}
 	}
 
-	private void operationPlus(Number value, String roundingMode) {
+	private void operationPlus(Number value, boolean halfAdjust) {
 		for (int i = 1; i <= this.capacity(); i++) {
-			((QNumeric) this.get(i)).plus(value.doubleValue());
+			((QNumeric) this.get(i)).plus(value.doubleValue(), halfAdjust);
 		}
 	}
 
 	@Override
-	public void plus(double value) {
-		plus(value, null);
+	public void plus(Number value) {
+		plus(value, false);
 	}
 
 	@Override
-	public void plus(double value, String roundingMode) {
-		operationPlus(value, roundingMode);
-	}
-
-	@Override
-	public void plus(int value) {
-		plus(value, null);
-	}
-
-	@Override
-	public void plus(int value, String roundingMode) {
-		operationPlus(value, roundingMode);
-	}
-
-	@Override
-	public void plus(long value) {
-		plus(value, null);
-	}
-
-	@Override
-	public void plus(long value, String roundingMode) {
-		operationPlus(value, roundingMode);
+	public void plus(Number value, boolean halfAdjust) {
+		operationPlus(value, halfAdjust);
 	}
 
 	@Override
 	public void plus(QArray<D> array) {
-		plus(array, null);
+		plus(array, false);
 	}
 
 	@Override
-	public void plus(QArray<D> array, String roundingMode) {
+	public void plus(QArray<D> array, boolean halfAdjust) {
 		for (int i = 1; i <= this.capacity(); i++) {
 			if (i > array.capacity())
 				break;
-			((QNumeric) this.get(i)).plus((QNumeric) array.get(i));
+			((QNumeric) this.get(i)).plus((QNumeric) array.get(i), halfAdjust);
 		}
 	}
 
 	@Override
 	public void plus(QNumeric value) {
-		plus(value, null);
+		plus(value, false);
 	}
 
 	@Override
-	public void plus(QNumeric value, String roundingMode) {
-		operationPlus(value.asDouble(), roundingMode);
-	}
-
-	@Override
-	public void plus(short value) {
-		plus(value, null);
-	}
-
-	@Override
-	public void plus(short value, String roundingMode) {
-		operationPlus(value, roundingMode);
+	public void plus(QNumeric value, boolean halfAdjust) {
+		operationPlus(value.asDouble(), halfAdjust);
 	}
 
 	@Override

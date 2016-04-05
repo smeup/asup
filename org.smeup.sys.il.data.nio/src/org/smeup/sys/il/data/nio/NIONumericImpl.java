@@ -11,8 +11,6 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -77,7 +75,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 		return value.getBytes(getDataContext().getCharset());
 	}
 
-	protected abstract void _writeNumber(Number number, String roundingMode);
+	protected abstract void _writeNumber(Number number, boolean halfAdjust);
 	
 	protected abstract Number _readNumber();
 
@@ -402,62 +400,26 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QNumeric divide(double value) {
-		return divide(value, (String) null);
+	public final QNumeric divide(Number value) {
+		return divide(value, false);
 	}
 
 	@Override
-	public final QNumeric divide(double value, QNumeric remainderTarget) {
-		eval(asDouble() / value);
-		remainderTarget.eval(asDouble() % value);
+	public final QNumeric divide(Number value, boolean halfAdjust) {
+		eval(asDouble() / value.doubleValue(), halfAdjust);
 		return this;
 	}
 
 	@Override
-	public final QNumeric divide(double value, String haslRounding) {
-		eval(asDouble() / value);
-		return this;
-	}
-
-	@Override
-	public final QNumeric divide(int value) {
-		return divide(value, (String) null);
-	}
-
-	@Override
-	public final QNumeric divide(int value, QNumeric remainderTarget) {
-		eval(asDouble() / value);
-		remainderTarget.eval(asDouble() % value);
-		return this;
-	}
-
-	@Override
-	public final QNumeric divide(int value, String roundingMode) {
-		eval(asDouble() / value);
-		return this;
-	}
-
-	@Override
-	public final QNumeric divide(long value) {
-		return divide(value, (String) null);
-	}
-
-	@Override
-	public final QNumeric divide(long value, QNumeric remainderTarget) {
-		eval(asDouble() / value);
-		remainderTarget.eval(asDouble() % value);
-		return this;
-	}
-
-	@Override
-	public final QNumeric divide(long value, String roundingMode) {
-		eval(asDouble() / value);
+	public final QNumeric divide(Number value, QNumeric remainderTarget) {
+		eval(asDouble() / value.doubleValue());
+		remainderTarget.eval(asDouble() % value.doubleValue());
 		return this;
 	}
 
 	@Override
 	public final QNumeric divide(QNumeric value) {
-		return divide(value, (String) null);
+		return divide(value, false);
 	}
 
 	@Override
@@ -468,26 +430,8 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QNumeric divide(QNumeric value, String roundingMode) {
+	public final QNumeric divide(QNumeric value, boolean halfAdjust) {
 		eval(asDouble() / value.asDouble());
-		return this;
-	}
-
-	@Override
-	public final QNumeric divide(short value) {
-		return divide(value, (String) null);
-	}
-
-	@Override
-	public final QNumeric divide(short value, QNumeric remainderTarget) {
-		eval(asDouble() / value);
-		remainderTarget.eval(asDouble() % value);
-		return this;
-	}
-
-	@Override
-	public final QNumeric divide(short value, String roundingMode) {
-		eval(asDouble() / value);
 		return this;
 	}
 
@@ -503,82 +447,32 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final void eval(Number value) {
-		eval(value, null);
+		eval(value, false);
 	}
 
 	@Override
-	public final void eval(Number value, String roundingMode) {
-		_writeNumber(value, null);		
-	}
-
-	@Override
-	public final void eval(BigDecimal value) {
-		eval(value, (String) null);
-	}
-
-	@Override
-	public final void eval(BigDecimal value, String roundingMode) {
-		_writeNumber(value, roundingMode);
-	}
-
-	@Override
-	public final void eval(BigInteger value) {
-		eval(value, (String) null);
-	}
-
-	@Override
-	public final void eval(BigInteger value, String roundingMode) {
-		_writeNumber(value, roundingMode);
-	}
-
-	@Override
-	public final void eval(double value) {
-		eval(value, (String) null);
-	}
-
-	@Override
-	public final void eval(double value, String roundingMode) {
-		_writeNumber(value, roundingMode);
-	}
-
-	@Override
-	public final void eval(int value) {
-		eval(value, (String) null);
-	}
-
-	@Override
-	public final void eval(int value, String roundingMode) {
-		_writeNumber(value, roundingMode);
-	}
-
-	@Override
-	public final void eval(long value) {
-		eval(value, (String) null);
-	}
-
-	@Override
-	public final void eval(long value, String roundingMode) {
-		_writeNumber(value, roundingMode);
+	public final void eval(Number value, boolean halfAdjust) {
+		_writeNumber(value, halfAdjust);		
 	}
 
 	@Override
 	public final void eval(QNumeric value) {
-		eval(value, (String) null);
+		eval(value, false);
 	}
 
 	@Override
-	public final void eval(QNumeric value, String roundingMode) {
-		_writeNumber(value.asDouble(), roundingMode);
+	public final void eval(QNumeric value, boolean halfAdjust) {
+		_writeNumber(value.asDouble(), halfAdjust);
 	}
 
 	@Override
-	public final void eval(short value) {
-		eval(value, (String) null);
+	public void eval(Number value, boolean halfAdjust, boolean maxPrecision) {
+		_writeNumber(value, halfAdjust);
 	}
 
 	@Override
-	public final void eval(short value, String roundingMode) {
-		_writeNumber(value, roundingMode);
+	public void eval(QNumeric value, boolean halfAdjust, boolean maxPrecision) {
+		_writeNumber(value.asDouble(), halfAdjust);
 	}
 
 	@Override
@@ -646,112 +540,46 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QNumeric minus(double value) {
-		return minus(value, null);
+	public final QNumeric minus(Number value) {
+		return minus(value, false);
 	}
 
 	@Override
-	public final QNumeric minus(double value, String roundingMode) {
-		eval(asDouble() - value);
-		return this;
-	}
-
-	@Override
-	public final QNumeric minus(int value) {
-		return minus(value, null);
-	}
-
-	@Override
-	public final QNumeric minus(int value, String roundingMode) {
-		eval(asDouble() - value);
-		return this;
-	}
-
-	@Override
-	public final QNumeric minus(long value) {
-		return minus(value, null);
-	}
-
-	@Override
-	public final QNumeric minus(long value, String roundingMode) {
-		eval(asDouble() - value);
+	public final QNumeric minus(Number value, boolean halfAdjust) {
+		eval(asDouble() - value.doubleValue());
 		return this;
 	}
 
 	@Override
 	public final QNumeric minus(QNumeric value) {
-		return minus(value, null);
+		return minus(value, false);
 	}
 
 	@Override
-	public final QNumeric minus(QNumeric value, String roundingMode) {
-		eval(asDouble() - value.asDouble());
+	public final QNumeric minus(QNumeric value,  boolean halfAdjust) {
+		eval(asDouble() - value.asDouble(), halfAdjust);
 		return this;
 	}
 
 	@Override
-	public final QNumeric minus(short value) {
-		return minus(value, null);
+	public final QNumeric mult(Number value) {
+		return mult(value, false);
 	}
 
 	@Override
-	public final QNumeric minus(short value, String roundingMode) {
-		eval(asDouble() - value);
-		return this;
-	}
-
-	@Override
-	public final QNumeric mult(double value) {
-		return mult(value, null);
-	}
-
-	@Override
-	public final QNumeric mult(double value, String roundingMode) {
-		eval(asDouble() * value);
-		return this;
-	}
-
-	@Override
-	public final QNumeric mult(int value) {
-		return mult(value, null);
-	}
-
-	@Override
-	public final QNumeric mult(int value, String roundingMode) {
-		eval(asDouble() * value);
-		return this;
-	}
-
-	@Override
-	public final QNumeric mult(long value) {
-		return mult(value, null);
-	}
-
-	@Override
-	public final QNumeric mult(long value, String roundingMode) {
-		eval(asDouble() * value);
+	public final QNumeric mult(Number value,  boolean halfAdjust) {
+		eval(asDouble() * value.doubleValue(), halfAdjust);
 		return this;
 	}
 
 	@Override
 	public final QNumeric mult(QNumeric value) {
-		return mult(value, null);
+		return mult(value, false);
 	}
 
 	@Override
-	public final QNumeric mult(QNumeric value, String roundingMode) {
-		eval(asDouble() * value.asDouble());
-		return this;
-	}
-
-	@Override
-	public final QNumeric mult(short value) {
-		return mult(value, null);
-	}
-
-	@Override
-	public final QNumeric mult(short value, String roundingMode) {
-		eval(asDouble() * value);
+	public final QNumeric mult(QNumeric value, boolean halfAdjust) {
+		eval(asDouble() * value.asDouble(), halfAdjust);
 		return this;
 	}
 
@@ -766,69 +594,30 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QNumeric plus(double value) {
-		return plus(value, null);
+	public final QNumeric plus(Number value) {
+		return plus(value, false);
 	}
 
 	@Override
-	public final QNumeric plus(double value, String roundingMode) {
-		eval(asDouble() + value);
-		return this;
-	}
-
-	@Override
-	public final QNumeric plus(int value) {
-		return plus(value, null);
-	}
-
-	@Override
-	public final QNumeric plus(int value, String roundingMode) {
-		eval(asDouble() + value);
-		return this;
-	}
-
-	@Override
-	public final QNumeric plus(long value) {
-		return plus(value, null);
-	}
-
-	@Override
-	public final QNumeric plus(long value, String roundingMode) {
-		eval(asDouble() + value);
+	public final QNumeric plus(Number value, boolean halfAdjust) {
+		eval(asDouble() + value.doubleValue(), halfAdjust);
 		return this;
 	}
 
 	@Override
 	public final QNumeric plus(QNumeric value) {
-		return plus(value, null);
+		return plus(value, false);
 	}
 
 	@Override
-	public final QNumeric plus(QNumeric value, String roundingMode) {
-		eval(asDouble() + value.asDouble());
+	public final QNumeric plus(QNumeric value, boolean halfAdjust) {
+		eval(asDouble() + value.asDouble(), halfAdjust);
 		return this;
 	}
 
 	@Override
-	public final QNumeric plus(short value) {
-		return plus(value, null);
-	}
-
-	@Override
-	public final QNumeric plus(short value, String roundingMode) {
-		eval(asDouble() + value);
-		return this;
-	}
-
-	@Override
-	public final QNumeric power(int value) {
-		eval(asLong() ^ value);
-		return this;
-	}
-
-	@Override
-	public final QNumeric power(long value) {
-		eval(asLong() ^ value);
+	public final QNumeric power(Number value) {
+		eval(asLong() ^ value.longValue());
 		return this;
 	}
 
@@ -839,43 +628,17 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QNumeric power(short value) {
-		eval(asLong() ^ value);
-		return this;
-	}
-
-	@Override
 	public final QDatetime qDate(DatetimeFormat format) {
 		throw new IntegratedLanguageDataRuntimeException("Unexpected condition ew8978wre8qwetr");
 	}
 
 	@Override
-	public final QNumeric qDiv(double value) {
+	public final QNumeric qDiv(Number value) {
 		return qDivOperation(value, null);
 	}
 
 	@Override
-	public final QNumeric qDiv(double value, QNumeric remainderTarget) {
-		return qDivOperation(value, remainderTarget);
-	}
-
-	@Override
-	public final QNumeric qDiv(int value) {
-		return qDivOperation(value, null);
-	}
-
-	@Override
-	public final QNumeric qDiv(int value, QNumeric remainderTarget) {
-		return qDivOperation(value, remainderTarget);
-	}
-
-	@Override
-	public final QNumeric qDiv(long value) {
-		return qDivOperation(value, null);
-	}
-
-	@Override
-	public final QNumeric qDiv(long value, QNumeric remainderTarget) {
+	public final QNumeric qDiv(Number value, QNumeric remainderTarget) {
 		return qDivOperation(value, remainderTarget);
 	}
 
@@ -887,16 +650,6 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	@Override
 	public final QNumeric qDiv(QNumeric value, QNumeric remainderTarget) {
 		return qDivOperation(value.asDouble(), remainderTarget);
-	}
-
-	@Override
-	public final QNumeric qDiv(short value) {
-		return qDivOperation(value, null);
-	}
-
-	@Override
-	public final QNumeric qDiv(short value, QNumeric remainderTarget) {
-		return qDivOperation(value, remainderTarget);
 	}
 
 	private QNumeric qDivOperation(Number value, QNumeric remainderTarget) {
@@ -924,28 +677,13 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QNumeric qMinus(double value) {
-		return qMinusOperation(value);
-	}
-
-	@Override
-	public final QNumeric qMinus(int value) {
-		return qMinusOperation(value);
-	}
-
-	@Override
-	public final QNumeric qMinus(long value) {
+	public final QNumeric qMinus(Number value) {
 		return qMinusOperation(value);
 	}
 
 	@Override
 	public final QNumeric qMinus(QNumeric value) {
 		return qMinusOperation(value.asDouble());
-	}
-
-	@Override
-	public final QNumeric qMinus(short value) {
-		return qMinusOperation(value);
 	}
 
 	private QNumeric qMinusOperation(Number value) {
@@ -955,28 +693,13 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QNumeric qMult(double value) {
-		return qMultOperation(value);
-	}
-
-	@Override
-	public final QNumeric qMult(int value) {
-		return qMultOperation(value);
-	}
-
-	@Override
-	public final QNumeric qMult(long value) {
+	public final QNumeric qMult(Number value) {
 		return qMultOperation(value);
 	}
 
 	@Override
 	public final QNumeric qMult(QNumeric value) {
 		return qMultOperation(value.asDouble());
-	}
-
-	@Override
-	public final QNumeric qMult(short value) {
-		return qMultOperation(value);
 	}
 
 	private QNumeric qMultOperation(Number value) {
@@ -986,28 +709,13 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QNumeric qPlus(double value) {
-		return qPlusOperation(value);
-	}
-
-	@Override
-	public final QNumeric qPlus(int value) {
-		return qPlusOperation(value);
-	}
-
-	@Override
-	public final QNumeric qPlus(long value) {
+	public final QNumeric qPlus(Number value) {
 		return qPlusOperation(value);
 	}
 
 	@Override
 	public final QNumeric qPlus(QNumeric value) {
 		return qPlusOperation(value.asDouble());
-	}
-
-	@Override
-	public final QNumeric qPlus(short value) {
-		return qPlusOperation(value);
 	}
 
 	private QNumeric qPlusOperation(Number value) {
@@ -1017,17 +725,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QNumeric qRem(double value) {
-		return qRemOperation(value);
-	}
-
-	@Override
-	public final QNumeric qRem(int value) {
-		return qRemOperation(value);
-	}
-
-	@Override
-	public final QNumeric qRem(long value) {
+	public final QNumeric qRem(Number value) {
 		return qRemOperation(value);
 	}
 
@@ -1035,12 +733,6 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	public final QNumeric qRem(QNumeric value) {
 		return qRemOperation(value.asDouble());
 	}
-
-	@Override
-	public final QNumeric qRem(short value) {
-		return qRemOperation(value);
-	}
-	
 
 	private QNumeric qRemOperation(Number value) {
 		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
@@ -1088,12 +780,12 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final void xfoot(QArray<? extends QNumeric> array) {
-		xfoot(array, null);
+		xfoot(array, false);
 	}
 
 	@Override
-	public final void xfoot(QArray<? extends QNumeric> array, String roundingMode) {
+	public final void xfoot(QArray<? extends QNumeric> array, boolean halfAdjust) {
 		for (QNumeric numeric: array) 
-			this.plus(numeric, roundingMode);
+			this.plus(numeric, halfAdjust);
 	}
 }

@@ -8,8 +8,6 @@
 package org.smeup.sys.il.data;
 
 import java.lang.String;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -419,28 +417,6 @@ public interface QNumeric extends QBufferedElement {
 	void checkr(QCharacter comparator, String base, Number start, QIndicator found);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric divide(short value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	QNumeric divide(short value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" remainderTargetRequired="true"
-	 * @generated
-	 */
-	QNumeric divide(short value, QNumeric remainderTarget);
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model comparatorRequired="true" baseRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
@@ -453,80 +429,15 @@ public interface QNumeric extends QBufferedElement {
 	 * @model valueRequired="true"
 	 * @generated
 	 */
-	QNumeric divide(long value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	QNumeric divide(long value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" remainderTargetRequired="true"
-	 * @generated
-	 */
-	QNumeric divide(long value, QNumeric remainderTarget);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric divide(int value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	QNumeric divide(int value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" remainderTargetRequired="true"
-	 * @generated
-	 */
-	QNumeric divide(int value, QNumeric remainderTarget);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric divide(double value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	QNumeric divide(double value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" remainderTargetRequired="true"
-	 * @generated
-	 */
-	QNumeric divide(double value, QNumeric remainderTarget);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
 	QNumeric divide(QNumeric value);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	QNumeric divide(QNumeric value, String roundingMode);
+	QNumeric divide(QNumeric value, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -562,70 +473,15 @@ public interface QNumeric extends QBufferedElement {
 	 * @model valueRequired="true"
 	 * @generated
 	 */
-	void eval(double value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void eval(double value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void eval(short value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void eval(short value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void eval(long value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void eval(long value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void eval(int value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void eval(int value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
 	void eval(QNumeric value);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	void eval(QNumeric value, String roundingMode);
+	void eval(QNumeric value, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -638,38 +494,26 @@ public interface QNumeric extends QBufferedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" roundingModeRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	void eval(Number value, String roundingMode);
+	void eval(Number value, boolean halfAdjust);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" halfAdjustRequired="true" maxPrecisionRequired="true"
 	 * @generated
 	 */
-	void eval(BigInteger value);
+	void eval(Number value, boolean halfAdjust, boolean maxPrecision);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" halfAdjustRequired="true" maxPrecisionRequired="true"
 	 * @generated
 	 */
-	void eval(BigInteger value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void eval(BigDecimal value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void eval(BigDecimal value, String roundingMode);
+	void eval(QNumeric value, boolean halfAdjust, boolean maxPrecision);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -735,64 +579,20 @@ public interface QNumeric extends QBufferedElement {
 	boolean lt(QNumeric value);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
-	QNumeric minus(short value);
+	QNumeric minus(Number value);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	QNumeric minus(short value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric minus(long value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	QNumeric minus(long value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric minus(int value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	QNumeric minus(int value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric minus(double value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	QNumeric minus(double value, String roundingMode);
+	QNumeric minus(Number value, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -804,70 +604,26 @@ public interface QNumeric extends QBufferedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @model valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	QNumeric minus(QNumeric value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric mult(short value);
+	QNumeric minus(QNumeric value, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
-	QNumeric mult(short value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric mult(long value);
+	QNumeric mult(Number value);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	QNumeric mult(long value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric mult(int value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	QNumeric mult(int value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric mult(double value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	QNumeric mult(double value, String roundingMode);
+	QNumeric mult(Number value, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -879,10 +635,10 @@ public interface QNumeric extends QBufferedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @model valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	QNumeric mult(QNumeric value, String roundingMode);
+	QNumeric mult(QNumeric value, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -899,64 +655,20 @@ public interface QNumeric extends QBufferedElement {
 	boolean ne(QNumeric value);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
-	QNumeric plus(short value);
+	QNumeric plus(Number value);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	QNumeric plus(short value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric plus(long value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	QNumeric plus(long value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric plus(int value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	QNumeric plus(int value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric plus(double value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	QNumeric plus(double value, String roundingMode);
+	QNumeric plus(Number value, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -968,31 +680,18 @@ public interface QNumeric extends QBufferedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @model valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	QNumeric plus(QNumeric value, String roundingMode);
+	QNumeric plus(QNumeric value, boolean halfAdjust);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
-	QNumeric power(short value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric power(long value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric power(int value);
+	QNumeric power(Number value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1010,32 +709,20 @@ public interface QNumeric extends QBufferedElement {
 	QDatetime qDate(DatetimeFormat format);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
-	QNumeric qRem(short value);
+	QNumeric qDiv(Number value);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" remainderTargetRequired="true"
 	 * @generated
 	 */
-	QNumeric qRem(long value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric qRem(int value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric qRem(double value);
+	QNumeric qDiv(Number value, QNumeric remainderTarget);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1043,70 +730,6 @@ public interface QNumeric extends QBufferedElement {
 	 * @generated
 	 */
 	QNumeric qRem(QNumeric value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric qDiv(short value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" remainderTargetRequired="true"
-	 * @generated
-	 */
-	QNumeric qDiv(short value, QNumeric remainderTarget);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric qDiv(long value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" remainderTargetRequired="true"
-	 * @generated
-	 */
-	QNumeric qDiv(long value, QNumeric remainderTarget);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric qDiv(int value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" remainderTargetRequired="true"
-	 * @generated
-	 */
-	QNumeric qDiv(int value, QNumeric remainderTarget);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric qDiv(double value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" remainderTargetRequired="true"
-	 * @generated
-	 */
-	QNumeric qDiv(double value, QNumeric remainderTarget);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1143,34 +766,10 @@ public interface QNumeric extends QBufferedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
-	QNumeric qMinus(short value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric qMinus(long value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric qMinus(int value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric qMinus(double value);
+	QNumeric qMinus(Number value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1183,34 +782,10 @@ public interface QNumeric extends QBufferedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
-	QNumeric qMult(short value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric qMult(long value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric qMult(int value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric qMult(double value);
+	QNumeric qMult(Number value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1223,34 +798,10 @@ public interface QNumeric extends QBufferedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
-	QNumeric qPlus(short value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric qPlus(long value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric qPlus(int value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QNumeric qPlus(double value);
+	QNumeric qPlus(Number value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1263,6 +814,14 @@ public interface QNumeric extends QBufferedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
+	 * @generated
+	 */
+	QNumeric qRem(Number value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model arrayRequired="true"
 	 * @generated
 	 */
@@ -1271,10 +830,10 @@ public interface QNumeric extends QBufferedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model arrayRequired="true" roundingModeRequired="true"
+	 * @model arrayRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	void xfoot(QArray<? extends QNumeric> array, String roundingMode);
+	void xfoot(QArray<? extends QNumeric> array, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1298,6 +857,30 @@ public interface QNumeric extends QBufferedElement {
 	 * @generated
 	 */
 	double d();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
+	 * @generated
+	 */
+	QNumeric divide(Number value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" halfAdjustRequired="true"
+	 * @generated
+	 */
+	QNumeric divide(Number value, boolean halfAdjust);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" remainderTargetRequired="true"
+	 * @generated
+	 */
+	QNumeric divide(Number value, QNumeric remainderTarget);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

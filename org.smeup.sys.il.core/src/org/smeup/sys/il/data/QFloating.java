@@ -29,7 +29,6 @@ public interface QFloating extends QNumeric {
 	 * @model valueRequired="true"
 	 * @generated
 	 */
-	@Override
 	void eval(double value);
 
 } // QFloating

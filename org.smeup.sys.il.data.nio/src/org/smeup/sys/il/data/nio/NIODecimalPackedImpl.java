@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.nio.ByteBuffer;
 
 import org.smeup.sys.il.data.QDataContext;
@@ -69,9 +71,16 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	}
 
 	@Override
-	public void _writeNumber(Number number, String roundingMode) {
+	public void _writeNumber(Number number,  boolean halfAdjust) {
 
-		byte[] bytes = packed.toBytes(number.doubleValue());
+		byte[] bytes = null;
+		if(halfAdjust) {
+			BigDecimal bd = new BigDecimal(number.doubleValue());
+			bytes = packed.toBytes(bd.setScale(getScale(), RoundingMode.HALF_UP).doubleValue());			
+		}
+		else {
+			bytes = packed.toBytes(number.doubleValue());			
+		} 		
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
 	}
 

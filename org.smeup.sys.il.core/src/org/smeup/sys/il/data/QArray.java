@@ -60,74 +60,26 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model arrayRequired="true" roundingModeRequired="true"
+	 * @model arrayRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	void divide(QArray<D> array, String roundingMode);
+	void divide(QArray<D> array, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
-	void divide(short value);
+	void divide(Number value);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	void divide(short value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void divide(long value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void divide(long value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void divide(int value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void divide(int value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void divide(double value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void divide(double value, String roundingMode);
+	void divide(Number value, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -140,10 +92,10 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @model valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	void divide(QNumeric value, String roundingMode);
+	void divide(QNumeric value, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -164,74 +116,26 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model arrayRequired="true" roundingModeRequired="true"
+	 * @model arrayRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	void minus(QArray<D> array, String roundingMode);
+	void minus(QArray<D> array, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
-	void minus(short value);
+	void minus(Number value);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	void minus(short value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void minus(long value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void minus(long value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void minus(int value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void minus(int value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void minus(double value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void minus(double value, String roundingMode);
+	void minus(Number value, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -244,10 +148,10 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @model valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	void minus(QNumeric value, String roundingMode);
+	void minus(QNumeric value, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -588,74 +492,26 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model arrayRequired="true" roundingModeRequired="true"
+	 * @model arrayRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	void mult(QArray<D> array, String roundingMode);
+	void mult(QArray<D> array, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
-	void mult(short value);
+	void mult(Number value);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	void mult(short value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void mult(long value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void mult(long value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void mult(int value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void mult(int value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void mult(double value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void mult(double value, String roundingMode);
+	void mult(Number value, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -668,10 +524,10 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @model valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	void mult(QNumeric value, String roundingMode);
+	void mult(QNumeric value, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -684,74 +540,26 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model arrayRequired="true" roundingModeRequired="true"
+	 * @model arrayRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	void plus(QArray<D> array, String roundingMode);
+	void plus(QArray<D> array, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
-	void plus(short value);
+	void plus(Number value);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	void plus(short value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void plus(long value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void plus(long value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void plus(int value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void plus(int value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void plus(double value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
-	 * @generated
-	 */
-	void plus(double value, String roundingMode);
+	void plus(Number value, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -764,10 +572,10 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @model valueRequired="true" halfAdjustRequired="true"
 	 * @generated
 	 */
-	void plus(QNumeric value, String roundingMode);
+	void plus(QNumeric value, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->
