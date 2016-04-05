@@ -60,6 +60,7 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 
 		writeImport(Program.class);
 		writeImport(RPJProgramSupport.class);
+		writeImport(QTestAsserter.class);
 		writeImport(OperatingSystemRuntimeException.class);
 	}
 
