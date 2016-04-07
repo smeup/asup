@@ -59,6 +59,7 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 		this.listUtil = compilationUnit.getContext().get(QLists.class);
 
 		writeImport(Program.class);
+		writeImport(Test.class);
 		writeImport(RPJProgramSupport.class);
 		writeImport(QTestAsserter.class);
 		writeImport(OperatingSystemRuntimeException.class);
@@ -219,17 +220,31 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 		programAnnotation = getAST().newNormalAnnotation();
 		programAnnotation.setTypeName(getAST().newSimpleName(Test.class.getSimpleName()));
 
+		String categoryName = "IL.DATA";
+		String objectName = program.getName();
+		
+		String programText = program.getText();
+		if(programText != null) {
+			String[] tokens = programText.split("[\\s\\-]+");
+			if(tokens.length >= 2) {
+				categoryName = tokens[tokens.length-1];
+				objectName = tokens[tokens.length-2];
+			}
+		}
+		
+		// category
 		MemberValuePair categoryValuePair = getAST().newMemberValuePair();
 		categoryValuePair.setName(getAST().newSimpleName("category"));
 		stringLiteral = getAST().newStringLiteral();
-		stringLiteral.setLiteralValue("ILDATA");
+		stringLiteral.setLiteralValue(categoryName);
 		categoryValuePair.setValue(stringLiteral);
 		programAnnotation.values().add(categoryValuePair);
 
+		// object
 		MemberValuePair objectValuePair = getAST().newMemberValuePair();
 		objectValuePair.setName(getAST().newSimpleName("object"));
 		stringLiteral = getAST().newStringLiteral();
-		stringLiteral.setLiteralValue(program.getName());
+		stringLiteral.setLiteralValue(objectName);
 		objectValuePair.setValue(stringLiteral);
 		programAnnotation.values().add(objectValuePair);
 

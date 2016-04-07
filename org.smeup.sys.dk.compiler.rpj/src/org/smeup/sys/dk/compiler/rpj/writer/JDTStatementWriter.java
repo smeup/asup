@@ -47,8 +47,13 @@ import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.core.term.QNode;
 import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
-import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDatetime;
+import org.smeup.sys.il.data.QDecimal;
+import org.smeup.sys.il.data.QFloating;
+import org.smeup.sys.il.data.QHexadecimal;
+import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QDataSet;
@@ -58,6 +63,7 @@ import org.smeup.sys.il.esam.QPrintTerm;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.LogicalOperator;
 import org.smeup.sys.il.expr.QAssignmentExpression;
+import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QBlockExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
@@ -191,7 +197,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		// program name
 		QTermExpression expression = expressionParser.parseTerm(statement.getProgram());
-		Expression jdtExpression = buildExpression(ast, expression, String.class);
+		Expression jdtExpression = JDTStatementHelper.buildExpression(ast, compilationUnit, expression, String.class);
 		methodInvocation.arguments().add(jdtExpression);
 
 		// array of parameter
@@ -200,7 +206,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		ArrayInitializer arrayInitializer = ast.newArrayInitializer();
 		for (String parameter : statement.getParameters()) {
 			expression = expressionParser.parseTerm(parameter);
-			jdtExpression = buildExpression(ast, expression, null);
+			jdtExpression = JDTStatementHelper.buildExpression(ast, compilationUnit, expression, null);
 			arrayInitializer.expressions().add(jdtExpression);
 
 		}
@@ -210,14 +216,14 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		// error indicator
 		if (statement.getError() != null) {
 			QTermExpression errorExpression = expressionParser.parseTerm(statement.getError());
-			Expression jdtErrorExpression = buildExpression(ast, errorExpression, null);
+			Expression jdtErrorExpression = JDTStatementHelper.buildExpression(ast, compilationUnit, errorExpression, null);
 
 			methodInvocation.arguments().add(jdtErrorExpression);
 		}
 		// error handling
 		if (statement.getErrorHandling() != null) {
 			QTermExpression errorExpression = expressionParser.parseTerm(statement.getErrorHandling());
-			Expression jdtErrorExpression = buildExpression(ast, errorExpression, null);
+			Expression jdtErrorExpression = JDTStatementHelper.buildExpression(ast, compilationUnit, errorExpression, null);
 
 			methodInvocation.arguments().add(jdtErrorExpression);
 		}
@@ -271,18 +277,18 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		QAssignmentExpression assignmentExpression = expressionParser.parseAssignment(statement.getAssignment());
 		MethodInvocation methodInvocation = buildAssignmentMethod(assignmentExpression, statement.isRightAdjust());
 
-		if(statement.isHalfAdjust() || statement.isMaxPrecision()) 
+		if (statement.isHalfAdjust() || statement.isMaxPrecision())
 			methodInvocation.arguments().add(ast.newBooleanLiteral(statement.isHalfAdjust()));
-			
-		if(statement.isMaxPrecision())
+
+		if (statement.isMaxPrecision())
 			methodInvocation.arguments().add(ast.newBooleanLiteral(statement.isMaxPrecision()));
 
 		ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
 		block.statements().add(expressionStatement);
 
 		// Annotation
-		QAnnotationTest annotationTest = statement.getFacet(QAnnotationTest.class); 
-		if (annotationTest != null) 
+		QAnnotationTest annotationTest = statement.getFacet(QAnnotationTest.class);
+		if (annotationTest != null)
 			writeAssertion(annotationTest, statement.toString());
 
 		return false;
@@ -301,9 +307,9 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		Expression expression = null;
 
 		if (CompilationContextHelper.isPrimitive(compilationUnit, condition))
-			expression = buildExpression(ast, condition, Boolean.class);
+			expression = JDTStatementHelper.buildExpression(ast, compilationUnit, condition, Boolean.class);
 		else
-			expression = buildExpression(ast, condition, Boolean.class);
+			expression = JDTStatementHelper.buildExpression(ast, compilationUnit, condition, Boolean.class);
 
 		ifSt.setExpression(expression);
 
@@ -355,7 +361,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		QPrototype prototype = compilationUnit.getPrototype(statement.getProcedure(), true);
 
 		if (prototype == null)
-			prototype = compilationUnit.getMethod(statement.getProcedure());
+			prototype = compilationUnit.getMethod(null, statement.getProcedure());
 
 		if (prototype == null)
 			throw new IntegratedLanguageExpressionRuntimeException("Binding error: " + statement.getProcedure());
@@ -369,7 +375,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			} else if (parent instanceof QNamedNode) {
 				// invoke on module
 				String qualifiedParent = compilationUnit.getQualifiedName((QNamedNode) parent);
-				methodInvocation.setExpression(buildExpression(ast, expressionParser.parseTerm(qualifiedParent), null));
+				methodInvocation.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, expressionParser.parseTerm(qualifiedParent), null));
 			} else
 				throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure: " + statement.getProcedure());
 
@@ -391,14 +397,14 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 						QDataTerm<?> dataTerm = (QDataTerm<?>) parameterDelegate;
 
 						if (dataTerm.isConstant()) {
-							Expression jdtExpression = buildExpression(ast, expression, dataTerm.getDefinition().getJavaClass());
+							Expression jdtExpression = JDTStatementHelper.buildExpression(ast, compilationUnit, expression, dataTerm.getDefinition().getJavaClass());
 							methodInvocation.arguments().add(jdtExpression);
 						} else {
-							Expression jdtExpression = buildExpression(ast, expression, dataTerm.getDefinition().getDataClass());
+							Expression jdtExpression = JDTStatementHelper.buildExpression(ast, compilationUnit, expression, dataTerm.getDefinition().getDataClass());
 							methodInvocation.arguments().add(jdtExpression);
 						}
 					} else if (parameterDelegate instanceof QDataSetTerm) {
-						Expression jdtExpression = buildExpression(ast, expression, QDataSet.class);
+						Expression jdtExpression = JDTStatementHelper.buildExpression(ast, compilationUnit, expression, QDataSet.class);
 						methodInvocation.arguments().add(jdtExpression);
 					} else
 						throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure invocation: " + statement.getProcedure());
@@ -438,7 +444,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		block.statements().add(expressionStatement);
 
 		// dummy break
-		if (isParentFor(statement)) 
+		if (isParentFor(statement))
 			block.statements().add(ast.newBreakStatement());
 
 		return super.visit(statement);
@@ -468,18 +474,50 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	public boolean visit(QMethodExec statement) {
 
 		Block block = blocks.peek();
-
 		if (statement.getObject() != null) {
-
-			MethodInvocation methodInvocation = ast.newMethodInvocation();
-			methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(statement.getMethod())));
 
 			QTermExpression nameExpression = expressionParser.parseTerm(statement.getObject());
 
+			MethodInvocation methodInvocation = ast.newMethodInvocation();
+			methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(statement.getMethod())));
 			QNamedNode namedNode = compilationUnit.getNamedNode(nameExpression.getValue(), true);
 
-			if (namedNode == null)
-				methodInvocation.setExpression(buildExpression(ast, nameExpression, QBufferedData.class));
+			if (namedNode == null) {
+				if(nameExpression instanceof QAtomicTermExpression) {
+					QAtomicTermExpression atomicTermExpression = (QAtomicTermExpression) nameExpression;
+					Class<?> target = null;
+					switch (atomicTermExpression.getType()) {
+					case BOOLEAN:
+						target = QIndicator.class;
+						break;
+					case DATE:
+					case TIME:
+					case TIMESTAMP:
+						target = QDatetime.class;
+						break;
+					case FLOATING:
+						target = QFloating.class;
+						break;
+					case HEXADECIMAL:
+						target = QHexadecimal.class;
+						break;
+					case INDICATOR:
+						target = QIndicator.class;
+						break;
+					case INTEGER:
+						target = QDecimal.class;
+						break;
+					case STRING:
+						target = QCharacter.class;
+						break;
+					case SPECIAL:
+					case NAME:
+						target = QData.class;
+						break;
+					}				
+					methodInvocation.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, nameExpression, target));
+				}
+			}
 			// display and print
 			else if ((namedNode != null && (namedNode.getParent() instanceof QDisplayTerm || namedNode.getParent() instanceof QPrintTerm))) {
 
@@ -493,16 +531,17 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 				methodInvocation.arguments().add(typeLiteral);
 
 			} else {
-				methodInvocation.setExpression(buildExpression(ast, nameExpression, null));
+				Class<?> target = CompilationContextHelper.getTargetClass(compilationUnit, nameExpression, false);
+				methodInvocation.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, nameExpression, target));
 			}
 
-			if (statement.getParameters() != null)
+			if (statement.getParameters() != null) {
 				for (String parameter : statement.getParameters()) {
-					
 					QExpression expression = expressionParser.parseExpression(parameter);
-					Expression jdtExpression = buildExpression(ast, expression, null);
+					Expression jdtExpression = JDTStatementHelper.buildExpression(ast, compilationUnit, expression, null);
 					methodInvocation.arguments().add(jdtExpression);
 				}
+			}
 
 			ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
 			block.statements().add(expressionStatement);
@@ -617,13 +656,13 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 			QProcedure procedure = (QProcedure) this.compilationUnit.getNode();
 
-			returnSt.setExpression(buildExpression(ast, returnExpression, procedure.getReturnType().getDataClass()));
+			returnSt.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, returnExpression, procedure.getReturnType().getDataClass()));
 			block.statements().add(returnSt);
 		} else {
 			// dummy condition
-			
+
 			IfStatement ifSt = ast.newIfStatement();
-			ifSt.setExpression(ast.newName("qRPJ.TRUE"));			
+			ifSt.setExpression(ast.newName("qRPJ.TRUE"));
 			ifSt.setThenStatement(returnSt);
 
 			block.statements().add(ifSt);
@@ -646,7 +685,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		// condition
 		QPredicateExpression condition = buildIterationCondition(statement.getCondition());
-		Expression expression = buildExpression(ast, condition, CompilationContextHelper.getJavaClass(compilationUnit, condition));
+		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, condition, CompilationContextHelper.getTargetClass(compilationUnit, condition, true));
 		forSt.setExpression(expression);
 
 		// increment
@@ -675,13 +714,13 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		QLogicalExpression logicalExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createLogicalExpression();
 		logicalExpression.setOperator(LogicalOperator.NOT);
 		QBlockExpression blockExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createBlockExpression();
-		
-		QPredicateExpression condition = buildIterationCondition(statement.getCondition());		
+
+		QPredicateExpression condition = buildIterationCondition(statement.getCondition());
 		blockExpression.setExpression(condition);
-		
+
 		logicalExpression.setLeftOperand(blockExpression);
 
-		Expression expression = buildExpression(ast, logicalExpression, CompilationContextHelper.getJavaClass(compilationUnit, logicalExpression));
+		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, logicalExpression, CompilationContextHelper.getTargetClass(compilationUnit, logicalExpression, true));
 		doSt.setExpression(expression);
 
 		block.statements().add(doSt);
@@ -696,16 +735,16 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	}
 
 	private QPredicateExpression buildIterationCondition(String condition) {
-			
+
 		if (condition == null || condition.isEmpty())
 			condition = "%runnable";
 		else {
-			if(condition.equalsIgnoreCase("*ON"))
+			if (condition.equalsIgnoreCase("*ON"))
 				condition = "%runnable";
 			else
-				condition = "%runnable and ("+condition+")";
+				condition = "%runnable and (" + condition + ")";
 		}
-		
+
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(condition);
 
 		return predicateExpression;
@@ -719,8 +758,8 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		WhileStatement whileSt = ast.newWhileStatement();
 
-		QPredicateExpression condition = buildIterationCondition(statement.getCondition());		
-		Expression expression = buildExpression(ast, condition, CompilationContextHelper.getJavaClass(compilationUnit, condition));
+		QPredicateExpression condition = buildIterationCondition(statement.getCondition());
+		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, condition, CompilationContextHelper.getTargetClass(compilationUnit, condition, true));
 		whileSt.setExpression(expression);
 
 		block.statements().add(whileSt);
@@ -732,10 +771,6 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		blocks.push(bodyBlock);
 
 		return super.visit(statement);
-	}
-
-	private Expression buildExpression(AST ast, QExpression expression, Class<?> target) {
-		return JDTStatementHelper.buildExpression(ast, compilationUnit, expression, target);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -758,7 +793,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			} else if (parent instanceof QNamedNode) {
 				// invoke on module
 				String qualifiedParent = compilationUnit.getQualifiedName((QNamedNode) parent);
-				methodInvocation.setExpression(buildExpression(ast, expressionParser.parseTerm(qualifiedParent), null));
+				methodInvocation.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, expressionParser.parseTerm(qualifiedParent), null));
 			} else
 				throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure: " + statement.getRoutine());
 
@@ -938,10 +973,13 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			break;
 		}
 
-		Expression expression = buildExpression(ast, assignmentExpression.getLeftOperand(), null);
+		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, assignmentExpression.getLeftOperand(), null);
 		methodInvocation.setExpression(expression);
 
-		expression = buildExpression(ast, assignmentExpression.getRightOperand(), null);
+		// Class<?> target =
+		// CompilationContextHelper.getTargetClass(compilationUnit,
+		// assignmentExpression.getLeftOperand(), false);
+		expression = JDTStatementHelper.buildExpression(ast, compilationUnit, assignmentExpression.getRightOperand(), null);
 		methodInvocation.arguments().add(p, expression);
 
 		return methodInvocation;
@@ -1009,7 +1047,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		} else
 			return;
 
-		Expression leftExpression = buildExpression(ast, relationalExpression.getLeftOperand(), null);
+		Expression leftExpression = JDTStatementHelper.buildExpression(ast, compilationUnit, relationalExpression.getLeftOperand(), null);
 
 		String messageNormalized = "";
 		if (annotationTest.getMessage() == null || annotationTest.getMessage().isEmpty()) {
@@ -1022,7 +1060,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			messageNormalized = annotationTest.getMessage();
 		}
 
-		writeAssertionTrue(block, messageNormalized, buildExpression(ast, expression, null));
+		writeAssertionTrue(block, messageNormalized, JDTStatementHelper.buildExpression(ast, compilationUnit, expression, null));
 	}
 
 	@SuppressWarnings("unchecked")

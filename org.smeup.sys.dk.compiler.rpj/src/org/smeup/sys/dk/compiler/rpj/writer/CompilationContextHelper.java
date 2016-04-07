@@ -17,16 +17,23 @@ import java.util.List;
 
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.il.core.term.QNamedNode;
-import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
+import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDatetime;
+import org.smeup.sys.il.data.QIndicator;
+import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.def.QArrayDef;
 import org.smeup.sys.il.data.def.QPointerDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QKeyListTerm;
+import org.smeup.sys.il.expr.QArithmeticExpression;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QBlockExpression;
 import org.smeup.sys.il.expr.QBooleanExpression;
 import org.smeup.sys.il.expr.QCompoundTermExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
+import org.smeup.sys.il.expr.QFunctionTermExpression;
 import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QPrototype;
 
@@ -175,13 +182,13 @@ public class CompilationContextHelper {
 		}
 	}
 
-	public static Class<?> getJavaClass(QCompilationUnit compilationUnit, QExpression expression) {
+	public static Class<?> getTargetClass(QCompilationUnit compilationUnit, QExpression expression, boolean primitive) {
 
 		switch (expression.getExpressionType()) {
 		case ARRAY:
 			return List.class;		
 		case ARITHMETIC:
-			return Integer.class;
+			return getTargetClass(compilationUnit, ((QArithmeticExpression)expression).getLeftOperand(), primitive);
 		case ASSIGNMENT:
 			break;
 		case ATOMIC:
@@ -205,43 +212,91 @@ public class CompilationContextHelper {
 			case STRING:
 				return String.class;
 			case INDICATOR:
-				return Boolean.class;
+				return QIndicator.class;
 			case NAME:
 
 				QNamedNode namedNode = compilationUnit.getNamedNode(atomicTermExpression.getValue(), true);
 				QDataTerm<?> dataTerm = getDataTerm(namedNode);
 				if (dataTerm != null)
-					if (dataTerm.getDataTermType().isMultiple()) {
-						QMultipleAtomicDataDef<?> multipleAtomicDataDef = (QMultipleAtomicDataDef<?>) dataTerm.getDefinition();
-						return multipleAtomicDataDef.getArgument().getJavaClass();
-					} else
-						return dataTerm.getDefinition().getJavaClass();
-
+					
+					switch (dataTerm.getDataTermType()) {
+					case MULTIPLE_ATOMIC:
+/*						QMultipleAtomicDataDef<?> multipleAtomicDataDef = (QMultipleAtomicDataDef<?>) dataTerm.getDefinition();
+						if(primitive)
+							return multipleAtomicDataDef.getArgument().getJavaClass();
+						else
+							return multipleAtomicDataDef.getArgument().getDataClass();*/
+					case MULTIPLE_COMPOUND:
+/*						if(primitive)
+							return String.class;
+						else
+							return QDataStruct.class;*/
+					case UNARY_ATOMIC:
+					case UNARY_COMPOUND:
+						if(primitive)
+							return dataTerm.getDefinition().getJavaClass();
+						else 
+							return dataTerm.getDefinition().getDataClass();
+					}
 				break;
 			}
 			break;
 		case BLOCK:
 			QBlockExpression blockExpression = (QBlockExpression) expression;
 
-			return getJavaClass(compilationUnit, blockExpression.getExpression());
+			return getTargetClass(compilationUnit, blockExpression.getExpression(), primitive);
 		case FUNCTION:
+			QFunctionTermExpression functionExpression = (QFunctionTermExpression)expression;
+			
+			if (!functionExpression.getElements().isEmpty()) {
+				
+				// check array
+				QDataTerm<?> dataTerm = compilationUnit.getDataTerm(functionExpression.getValue(), true);
+				if(dataTerm != null && dataTerm.getDefinition() instanceof QArrayDef<?>) {
+					QArrayDef<?> arrayDef = (QArrayDef<?>) dataTerm.getDefinition();
+					return arrayDef.getArgument().getDataClass();
+				}
+				else {
+					QExpression expressionChild = functionExpression.getElements().get(0);
+					Class<?> target = CompilationContextHelper.getTargetClass(compilationUnit, expressionChild, false);
+					
+					QPrototype method = compilationUnit.getMethod(target, functionExpression.getValue());
+					if(method != null) {
+							if(primitive)
+								return getDataTerm(method).getDefinition().getJavaClass();
+							else 
+								return getDataTerm(method).getDefinition().getDataClass();
+						
+					}
+				}
+			}
 		case QUALIFIED:
 			QCompoundTermExpression compoundTermExpression = (QCompoundTermExpression) expression;
 
 			QNamedNode namedNode = compilationUnit.getNamedNode(compoundTermExpression.getValue(), true);
 			QDataTerm<?> dataTerm = getDataTerm(namedNode);
 			if (dataTerm != null)
-				if (dataTerm.getDataTermType().isMultiple() && dataTerm.getDataTermType().isAtomic()) {
+				if(primitive)
+					return dataTerm.getDefinition().getJavaClass();
+				else 
+					return dataTerm.getDefinition().getDataClass();
+/*				if (dataTerm.getDataTermType().isMultiple() && dataTerm.getDataTermType().isAtomic()) {
 					QMultipleAtomicDataDef<?> multipleAtomicDataDef = (QMultipleAtomicDataDef<?>) dataTerm.getDefinition();
-					return multipleAtomicDataDef.getArgument().getJavaClass();
+					if(primitive)
+						return multipleAtomicDataDef.getArgument().getJavaClass();
+					else
+						return multipleAtomicDataDef.getArgument().getDataClass();
 				} else {
-					// TODO verify
+					// TODO define *IN as array not dataStruct
 					if (compoundTermExpression.getValue().startsWith("*IN")) {
-						return Boolean.class;
+						return QIndicator.class;
 					} else {
-						return dataTerm.getDefinition().getJavaClass();
+						if(primitive)
+							return dataTerm.getDefinition().getJavaClass();
+						else
+							return dataTerm.getDefinition().getDataClass();
 					}
-				}
+				}*/
 
 			break;
 		case LOGICAL:
@@ -251,7 +306,7 @@ public class CompilationContextHelper {
 		case BOOLEAN:
 			QBooleanExpression booleanExpression = (QBooleanExpression) expression;
 
-			return getJavaClass(compilationUnit, booleanExpression.getOperand());
+			return getTargetClass(compilationUnit, booleanExpression.getOperand(), primitive);
 		}
 
 		return null;
@@ -292,5 +347,19 @@ public class CompilationContextHelper {
 		}
 
 		return result;
+	}
+
+	public static Class<?> getJavaClass(Class<? extends QData> target) {
+
+		if(QString.class.isAssignableFrom(target))
+			return String.class;
+		else if(QNumeric.class.isAssignableFrom(target))
+			return Integer.class;
+		else if(QDatetime.class.isAssignableFrom(target))
+			return Date.class;
+		else
+			System.err.println("Unexpected condition 98xxwervwetr");
+		
+		return null;
 	}
 }

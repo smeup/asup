@@ -175,6 +175,8 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 				default_.setValue(Integer.toString(dataStruct.getSize()));
 
 				break;
+			case "%addr":
+				break;
 			default:
 				logger.warning(exceptionManager.prepareException(job, RPJCompilerMessage.AS00104, new String[] { value.toString() }));
 				break;

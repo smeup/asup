@@ -146,7 +146,7 @@ public interface QCompilationUnit extends QContextProvider, Closeable {
 	 * @model required="true" nameRequired="true"
 	 * @generated
 	 */
-	QPrototype getMethod(String name);
+	QPrototype getMethod(Class<?> target, String name);
 
 	/**
 	 * <!-- begin-user-doc -->

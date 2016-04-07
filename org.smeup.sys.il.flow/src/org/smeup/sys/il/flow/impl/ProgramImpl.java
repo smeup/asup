@@ -30,6 +30,7 @@ import org.smeup.sys.il.flow.QProgram;
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.ProgramImpl#getEntry <em>Entry</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.ProgramImpl#getMessages <em>Messages</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.ProgramImpl#getText <em>Text</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,6 +52,24 @@ public class ProgramImpl extends CallableUnitImpl implements QProgram {
 	 * @ordered
 	 */
 	protected EList<String> messages;
+	/**
+	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getText()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TEXT_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getText()
+	 * @generated
+	 * @ordered
+	 */
+	protected String text = TEXT_EDEFAULT;
 	/**
 	 *
 	 */
@@ -128,6 +147,27 @@ public class ProgramImpl extends CallableUnitImpl implements QProgram {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getText() {
+		return text;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setText(String newText) {
+		String oldText = text;
+		text = newText;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.PROGRAM__TEXT, oldText, text));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -151,6 +191,8 @@ public class ProgramImpl extends CallableUnitImpl implements QProgram {
 				return getEntry();
 			case QIntegratedLanguageFlowPackage.PROGRAM__MESSAGES:
 				return getMessages();
+			case QIntegratedLanguageFlowPackage.PROGRAM__TEXT:
+				return getText();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -170,6 +212,9 @@ public class ProgramImpl extends CallableUnitImpl implements QProgram {
 				getMessages().clear();
 				getMessages().addAll((Collection<? extends String>)newValue);
 				return;
+			case QIntegratedLanguageFlowPackage.PROGRAM__TEXT:
+				setText((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -187,6 +232,9 @@ public class ProgramImpl extends CallableUnitImpl implements QProgram {
 			case QIntegratedLanguageFlowPackage.PROGRAM__MESSAGES:
 				getMessages().clear();
 				return;
+			case QIntegratedLanguageFlowPackage.PROGRAM__TEXT:
+				setText(TEXT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -202,6 +250,8 @@ public class ProgramImpl extends CallableUnitImpl implements QProgram {
 				return entry != null;
 			case QIntegratedLanguageFlowPackage.PROGRAM__MESSAGES:
 				return messages != null && !messages.isEmpty();
+			case QIntegratedLanguageFlowPackage.PROGRAM__TEXT:
+				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -217,6 +267,8 @@ public class ProgramImpl extends CallableUnitImpl implements QProgram {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (messages: ");
 		result.append(messages);
+		result.append(", text: ");
+		result.append(text);
 		result.append(')');
 		return result.toString();
 	}

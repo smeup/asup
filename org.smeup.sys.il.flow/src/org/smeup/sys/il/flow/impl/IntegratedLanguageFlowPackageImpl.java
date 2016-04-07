@@ -1220,6 +1220,15 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProgram_Text() {
+		return (EAttribute)programEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1655,6 +1664,7 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		programEClass = createEClass(PROGRAM);
 		createEReference(programEClass, PROGRAM__ENTRY);
 		createEAttribute(programEClass, PROGRAM__MESSAGES);
+		createEAttribute(programEClass, PROGRAM__TEXT);
 
 		prototypeEClass = createEClass(PROTOTYPE);
 		createEReference(prototypeEClass, PROTOTYPE__ENTRY);
@@ -1927,6 +1937,7 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		initEClass(programEClass, QProgram.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProgram_Entry(), this.getParameterList(), null, "entry", null, 0, 1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProgram_Messages(), ecorePackage.getEString(), "messages", null, 0, -1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProgram_Text(), ecorePackage.getEString(), "text", null, 0, 1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(prototypeEClass, QPrototype.class, "Prototype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPrototype_Entry(), this.getEntry(), null, "entry", null, 0, 1, QPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -1699,13 +1699,22 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	int PROGRAM__MESSAGES = CALLABLE_UNIT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROGRAM__TEXT = CALLABLE_UNIT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Program</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
 	 * @ordered
 	 */
-	int PROGRAM_FEATURE_COUNT = CALLABLE_UNIT_FEATURE_COUNT + 2;
+	int PROGRAM_FEATURE_COUNT = CALLABLE_UNIT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.PrototypeImpl <em>Prototype</em>}' class.
@@ -3109,6 +3118,17 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	EAttribute getProgram_Messages();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.flow.QProgram#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see org.smeup.sys.il.flow.QProgram#getText()
+	 * @see #getProgram()
+	 * @generated
+	 */
+	EAttribute getProgram_Text();
+
+	/**
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.flow.QPrototype <em>Prototype</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -4176,6 +4196,14 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROGRAM__MESSAGES = eINSTANCE.getProgram_Messages();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROGRAM__TEXT = eINSTANCE.getProgram_Text();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.flow.impl.PrototypeImpl <em>Prototype</em>}' class.

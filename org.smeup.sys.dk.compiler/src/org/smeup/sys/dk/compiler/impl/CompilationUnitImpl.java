@@ -351,7 +351,7 @@ public abstract class CompilationUnitImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QPrototype getMethod(String name) {
+	public QPrototype getMethod(Class<?> target, String name) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

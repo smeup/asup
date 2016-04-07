@@ -326,8 +326,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		ArrayInitializer arrayInitializer = getAST().newArrayInitializer();
 		for (String keyField : keyList.getKeyFields()) {
 
-			QExpression expression = expressionParser.parseExpression(keyField);
-			Expression jdtExpression = buildExpression(expression, null);
+			QExpression expression = expressionParser.parseExpression(keyField);			
+			Expression jdtExpression = JDTStatementHelper.buildExpression(getAST(), getCompilationUnit(), expression, null);
 			arrayInitializer.expressions().add(jdtExpression);
 		}
 		arrayCreation.setInitializer(arrayInitializer);
@@ -887,7 +887,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		arrayCreation.setInitializer(arrayInitializer);
 		for (String parameterName : parameterList.getParameters()) {
 			QExpression expression = expressionParser.parseExpression(parameterName);
-			Expression jdtExpression = buildExpression(expression, null);
+			Expression jdtExpression = JDTStatementHelper.buildExpression(getAST(), getCompilationUnit(), expression, null);
 			arrayInitializer.expressions().add(jdtExpression);
 		}
 
@@ -919,10 +919,6 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		Expression jdtExpression = (Expression) node;
 
 		return (Expression) ASTNode.copySubtree(getAST(), jdtExpression);
-	}
-
-	private Expression buildExpression(QExpression expression, Class<?> target) {
-		return JDTStatementHelper.buildExpression(getAST(), getCompilationUnit(), expression, target);
 	}
 
 	@SuppressWarnings("unchecked")

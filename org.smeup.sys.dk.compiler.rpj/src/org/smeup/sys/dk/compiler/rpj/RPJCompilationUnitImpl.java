@@ -798,7 +798,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				break;
 			// method
 			case 'T':
-				namedNode = getMethod(name);
+				namedNode = getMethod(null, name);
 				break;
 			// module
 			case 'M':
@@ -981,7 +981,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	}
 
 	@Override
-	public QPrototype getMethod(String name) {
+	public QPrototype getMethod(Class<?> target, String name) {
 
 		QPrototype prototype = null;
 		for (EClassifier eClassifier : QIntegratedLanguageDataPackage.eINSTANCE.getEClassifiers()) {
@@ -989,6 +989,8 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				continue;
 
 			EClass eClass = (EClass) eClassifier;
+			if(target != null && !target.getSimpleName().equals("Q"+eClass.getName()))
+				continue;
 
 			for (EOperation eOperation : eClass.getEAllOperations()) {
 				// TODO remove me

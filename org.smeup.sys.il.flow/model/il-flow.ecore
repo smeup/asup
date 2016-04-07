@@ -205,6 +205,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messages" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Prototype">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entry" eType="#//Entry"

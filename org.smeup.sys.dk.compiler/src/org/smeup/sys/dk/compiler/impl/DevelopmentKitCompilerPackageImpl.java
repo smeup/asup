@@ -604,6 +604,10 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEBoolean(), "deep", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(compilationUnitEClass, theIntegratedLanguageFlowPackage.getPrototype(), "getMethod", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "target", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(compilationUnitEClass, theIntegratedLanguageFlowPackage.getModule(), "getModule", 1, 1, IS_UNIQUE, IS_ORDERED);

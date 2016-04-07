@@ -152,7 +152,7 @@ public class RPJArithmeticExpressionAnalyzer extends ExpressionVisitorImpl {
 		dataTerm = compilationUnit.getPrototype(expression.getValue(), true);
 		
 		if(dataTerm == null)
-			dataTerm = compilationUnit.getMethod(expression.getValue());
+			dataTerm = compilationUnit.getMethod(null, expression.getValue());
 		
 		if (dataTerm == null)
 			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: bwr9wxe7r9we9brw9e");

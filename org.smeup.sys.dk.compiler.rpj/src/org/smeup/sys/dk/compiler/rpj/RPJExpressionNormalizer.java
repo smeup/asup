@@ -76,7 +76,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 		switch (assignmentExpression.getLeftOperand().getExpressionType()) {
 		case FUNCTION:
-			QDataTerm<?> dataTerm = compilationUnit.getMethod(assignmentExpression.getLeftOperand().getValue());
+			QDataTerm<?> dataTerm = compilationUnit.getMethod(null, assignmentExpression.getLeftOperand().getValue());
 
 			// function to object method
 			if (dataTerm != null) {

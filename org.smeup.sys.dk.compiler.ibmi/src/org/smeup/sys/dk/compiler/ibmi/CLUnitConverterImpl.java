@@ -80,6 +80,7 @@ public class CLUnitConverterImpl implements QUnitConverter {
 
 			QProgram flowProgram = QIntegratedLanguageFlowFactory.eINSTANCE.createProgram();
 			flowProgram.setName(program.getName());
+			flowProgram.setText(program.getText());
 
 			// setup
 			QSetupSection setupSection = QIntegratedLanguageFlowFactory.eINSTANCE.createSetupSection();
