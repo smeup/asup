@@ -46,6 +46,26 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
+	public void bitoff(byte bitNumbers) {
+		current().bitoff(bitNumbers);
+	}
+
+	@Override
+	public void bitoff(String bitNumbers) {
+		current().bitoff(bitNumbers);
+	}
+	
+	@Override
+	public void biton(byte bitNumbers) {
+		current().biton(bitNumbers);
+	}
+
+	@Override
+	public void biton(String bitNumbers) {
+		current().biton(bitNumbers);
+	}
+	
+	@Override
 	public void cat(QString factor1) {
 		current().cat(factor1);
 	}

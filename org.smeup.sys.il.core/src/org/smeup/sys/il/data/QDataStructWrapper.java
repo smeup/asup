@@ -41,6 +41,26 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
+	public void bitoff(byte bitNumbers) {
+		delegate.bitoff(bitNumbers);
+	}
+
+	@Override
+	public void bitoff(String bitNumbers) {
+		delegate.bitoff(bitNumbers);
+	}
+
+	@Override
+	public void biton(byte bitNumbers) {
+		delegate.biton(bitNumbers);
+	}
+
+	@Override
+	public void biton(String bitNumbers) {
+		delegate.biton(bitNumbers);
+	}
+
+	@Override
 	public void cat(QString factor1) {
 		delegate.cat(factor1);
 	}

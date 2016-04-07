@@ -30,6 +30,14 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	String asString();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model bitNumbersRequired="true"
+	 * @generated
+	 */
+	void bitoff(byte bitNumbers);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -346,6 +354,30 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	 * @generated
 	 */
 	String trimR();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model bitNumbersRequired="true"
+	 * @generated
+	 */
+	void biton(String bitNumbers);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model bitNumbersRequired="true"
+	 * @generated
+	 */
+	void bitoff(String bitNumbers);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model bitNumbersRequired="true"
+	 * @generated
+	 */
+	void biton(byte bitNumbers);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

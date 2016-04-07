@@ -46,6 +46,26 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	}
 
 	@Override
+	public void bitoff(byte bitNumbers) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void biton(String bitNumbers) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void bitoff(String bitNumbers) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void biton(byte bitNumbers) {
+		// TODO Auto-generated method stub
+	}
+		
+	@Override
 	public int getLength() {
 		return _length;
 	}
@@ -758,6 +778,5 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 				sb.append(to.substring(i, i + 1));
 		}
 		movel(sb.toString(), clear);
-	}
-	
+	}	
 }
