@@ -28,11 +28,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.osgi.framework.FrameworkUtil;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
+import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataArea;
@@ -53,7 +55,6 @@ import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QScroller;
-import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.SortDirection;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -501,31 +502,37 @@ public class NIODataFactoryImpl implements QDataFactory {
 					continue; // TODO throw Exception
 
 				// default
-				if (dataElement instanceof QList<?>) {
-					QList<?> array = (QList<?>) dataElement;
+				if (dataElement instanceof QBufferedList<?>) {
+					QBufferedList<?> array = (QBufferedList<?>) dataElement;
 					int i = 1;
-					for (String value : annotationDef.values()) {
-						array.get(i).accept(dataWriter.set(value));
-						i++;
-					}
-				} else {
-					if (!annotationDef.value().isEmpty()) {
-						if (dataElement instanceof QString) {
-
-							String value = annotationDef.value();
-							if (value.startsWith("'") && value.endsWith("'")) {
-								value = value.substring(1).substring(0, value.lastIndexOf("'") - 1);
-
-								dataElement.accept(dataWriter.set(value));
-							} else if (value.startsWith("*")) {
-								dataElement.accept(dataWriter.set(value));
-							} else
-								dataElement.accept(dataWriter.set(value));
-						} else {
-							dataElement.accept(dataWriter.set(annotationDef.value()));
+					if(annotationDef.values().length > 0) { 							
+						for (String value : annotationDef.values()) {
+							array.get(i).accept(dataWriter.set(value));
+							i++;
 						}
 					}
+					else if(!annotationDef.value().isEmpty()){
+						String value = annotationDef.value();
+						if (value.startsWith("*")) {
+							DataSpecial dataSpecial = DataSpecial.get(value);
+							array.eval(dataSpecial);
+						} else
+							array.eval(value);
+					}
+				} 
+				else if(dataElement instanceof QBufferedElement) {
+					QBufferedElement element = (QBufferedElement)dataElement;
+					if (!annotationDef.value().isEmpty()) {
+						String value = annotationDef.value();
+						if (value.startsWith("*")) {
+							DataSpecial dataSpecial = DataSpecial.get(value);
+							element.movel(dataSpecial, true);
+						} else
+							element.movel(value, true);
+					}
 				}
+				else 
+					throw new IntegratedLanguageCoreRuntimeException("Unexpected condition wueyrow34tfdsh");
 			}
 		}
 

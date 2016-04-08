@@ -411,9 +411,8 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QNumeric divide(Number value, QNumeric remainderTarget) {
-		eval(asDouble() / value.doubleValue());
-		remainderTarget.eval(asDouble() % value.doubleValue());
+	public final QNumeric divide(Number value, QNumeric remainderTarget) {		
+		qDivOperation(value, remainderTarget);
 		return this;
 	}
 
@@ -424,14 +423,13 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric divide(QNumeric value, QNumeric remainderTarget) {
-		eval(asDouble() / value.asDouble());
-		remainderTarget.eval(asDouble() % value.asDouble());
+		qDivOperation(value.asDouble(), remainderTarget);
 		return this;
 	}
 
 	@Override
 	public final QNumeric divide(QNumeric value, boolean halfAdjust) {
-		eval(asDouble() / value.asDouble());
+		eval(asDouble() / value.asDouble(), halfAdjust);
 		return this;
 	}
 
@@ -653,7 +651,8 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	private QNumeric qDivOperation(Number value, QNumeric remainderTarget) {
-		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
+		
+		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);		
 		number.eval(asDouble() / value.doubleValue());
 		if (remainderTarget != null)
 			remainderTarget.eval(asDouble() % value.doubleValue());

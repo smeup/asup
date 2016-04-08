@@ -23,7 +23,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	private static final long serialVersionUID = 1L;
 	protected static final byte INIT = (byte) 64;
 	protected static final byte LOVAL = (byte) 0;
-	protected static final byte HIVAL = (byte)9;
+	protected static final byte HIVAL = (byte)-7;
 	
 	public NIOStringImpl(QDataContext dataContext) {
 		super(dataContext);

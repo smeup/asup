@@ -55,6 +55,7 @@ import org.smeup.sys.il.data.QFloating;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
+import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QDataSetTerm;
@@ -483,7 +484,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			QNamedNode namedNode = compilationUnit.getNamedNode(nameExpression.getValue(), true);
 
 			if (namedNode == null) {
-				if(nameExpression instanceof QAtomicTermExpression) {
+				if (nameExpression instanceof QAtomicTermExpression) {
 					QAtomicTermExpression atomicTermExpression = (QAtomicTermExpression) nameExpression;
 					Class<?> target = null;
 					switch (atomicTermExpression.getType()) {
@@ -514,7 +515,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 					case NAME:
 						target = QData.class;
 						break;
-					}				
+					}
 					methodInvocation.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, nameExpression, target));
 				}
 			}
@@ -816,10 +817,6 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		if (dataTerm == null)
 			throw new IntegratedLanguageExpressionRuntimeException("Invalid statement: " + statement);
 
-		// if (dataTerm.getDataTermType().isMultiple())
-		// throw new
-		// FrameworkCoreUnexpectedConditionException("cbe7xcb59vbnfg4535");
-
 		switch (dataTerm.getDataTermType()) {
 		case MULTIPLE_ATOMIC:
 			QDefault default_ = dataTerm.getDefault();
@@ -839,7 +836,8 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			if (value == null)
 				value = default_.getValues().iterator().next();
 
-			if (String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
+			QMultipleAtomicDataDef<?> multipleAtomicDataDef = (QMultipleAtomicDataDef<?>) dataTerm.getDefinition();
+			if (String.class.isAssignableFrom(multipleAtomicDataDef.getArgument().getJavaClass())) {
 				if (default_.getValue().startsWith("'"))
 					eval.setAssignment(statement.getObject() + "=" + value);
 				else
@@ -901,14 +899,21 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 					continue;
 
 				eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
-				if (String.class.isAssignableFrom(element.getDefinition().getJavaClass())) {
+				
+				Class<?> javaClass = null; 
+				if (element.getDataTermType().isMultiple()) {
+					multipleAtomicDataDef = (QMultipleAtomicDataDef<?>) element.getDefinition();
+					javaClass = multipleAtomicDataDef.getArgument().getJavaClass();
+				} else 
+					javaClass = element.getDefinition().getJavaClass();
+				
+				if (String.class.isAssignableFrom(javaClass)) {
 					if (defaultElement.getValue().startsWith("'"))
 						eval.setAssignment(element.getName() + "=" + defaultElement.getValue());
 					else
 						eval.setAssignment(element.getName() + "=" + "'" + defaultElement.getValue().replaceAll("\'", "\''") + "'");
 				} else
-					eval.setAssignment(element.getName() + "=" + defaultElement.getValue());
-
+					eval.setAssignment(element.getName() + "=" + defaultElement.getValue());				
 				eval.accept(this);
 			}
 

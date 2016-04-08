@@ -91,7 +91,7 @@ public class BaseCallableInjector {
 	public BaseCallableInjector(QContext context) {
 		this.context = context;
 	}
-	
+
 	@PostConstruct
 	public void init() {
 		this.fileReader = resourceManager.getResourceReader(job, QFile.class, Scope.LIBRARY_LIST);
@@ -182,8 +182,8 @@ public class BaseCallableInjector {
 	}
 
 	@SuppressWarnings({ "unchecked", "resource" })
-	private void injectFields(Object owner, Class<?> klass, Object callable, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules, Map<String, QRecord> records)
-			throws IllegalArgumentException, IllegalAccessException, InstantiationException {
+	private void injectFields(Object owner, Class<?> klass, Object callable, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules,
+			Map<String, QRecord> records) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		// recursively on superClass
 		if (klass.getSuperclass().getAnnotation(Program.class) != null)
@@ -200,7 +200,7 @@ public class BaseCallableInjector {
 		List<InjectableField> pointers = new ArrayList<InjectableField>();
 
 		for (Field field : klass.getDeclaredFields()) {
-			
+
 			// TODO
 			if (field.getName().startsWith("$SWITCH_TABLE"))
 				continue;
@@ -312,6 +312,10 @@ public class BaseCallableInjector {
 
 				if (Integer.class.isAssignableFrom(fieldClass)) {
 					object = Integer.parseInt(dataDef.value());
+				} else if (Long.class.isAssignableFrom(fieldClass)) {
+					object = Long.parseLong(dataDef.value());					
+				} else if (Double.class.isAssignableFrom(fieldClass)) {
+					object = Double.parseDouble(dataDef.value());
 				} else if (String.class.isAssignableFrom(fieldClass)) {
 					object = dataDef.value();
 				} else if (Byte.class.isAssignableFrom(fieldClass)) {
@@ -375,9 +379,9 @@ public class BaseCallableInjector {
 			boolean userOpen = false;
 			// from annotation
 			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
-			if (fileDef != null) 
+			if (fileDef != null)
 				userOpen = fileDef.userOpen();
-			
+
 			field.setValue(callable, new BaseDisplayDelegator<Object>(display, userOpen));
 		}
 
@@ -389,12 +393,12 @@ public class BaseCallableInjector {
 			boolean userOpen = false;
 			// from annotation
 			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
-			if (fileDef != null) 
+			if (fileDef != null)
 				userOpen = fileDef.userOpen();
-			
+
 			field.setValue(callable, new BasePrintDelegator<Object>(print, userOpen));
 		}
-		
+
 		// pointer
 		for (InjectableField field : pointers) {
 
@@ -419,9 +423,14 @@ public class BaseCallableInjector {
 			if (compoundDataDef.getPrefix() != null && !compoundDataDef.getPrefix().isEmpty())
 				primaryRecordName = compoundDataDef.getPrefix() + "_" + primaryRecordName;
 
-			QRecord primaryRecord = records.get(primaryRecordName.toLowerCase());
+			if (compoundDataDef.isQualified())
+				primaryRecordName = primaryRecordName + "(" + dataTerm.getName() + ")";
+
+			primaryRecordName = primaryRecordName.toLowerCase();
+
+			QRecord primaryRecord = records.get(primaryRecordName);
 			if (primaryRecord == null)
-				records.put(primaryRecordName.toLowerCase(), dataStruct);
+				records.put(primaryRecordName, dataStruct);
 			else
 				((QDataStruct) primaryRecord).assign(dataStruct);
 
@@ -430,7 +439,7 @@ public class BaseCallableInjector {
 
 		// data
 		for (InjectableField field : datas) {
-			
+
 			QDataTerm<?> dataTerm = dataContainer.createDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
 			QData data = dataContainer.resetData(dataTerm);
 			field.setValue(callable, data);
@@ -439,20 +448,20 @@ public class BaseCallableInjector {
 		// dataSet
 		for (InjectableField field : dataSets) {
 			QDataSet<?> dataSet = (QDataSet<?>) field.getValue(callable);
-			for(String fieldName: dataSet.get().getElementNames()) {
+			for (String fieldName : dataSet.get().getElementNames()) {
 				QData data = dataContainer.getData(fieldName);
-				if(data instanceof QBufferedData) {
-					QBufferedData bufferedData = (QBufferedData)data;
+				if (data instanceof QBufferedData) {
+					QBufferedData bufferedData = (QBufferedData) data;
 					QBufferedData bufferedDataTo = dataSet.get().getElement(fieldName);
-					
-					if(bufferedData.getStore() == null)
+
+					if (bufferedData.getStore() == null)
 						"".toCharArray();
-					if(bufferedDataTo == null)
+					if (bufferedDataTo == null)
 						"".toCharArray();
-					if(!bufferedData.getStore().equals(bufferedDataTo.getStore()))
+					if (!bufferedData.getStore().equals(bufferedDataTo.getStore()))
 						bufferedData.assign(bufferedDataTo);
 				}
-			}			
+			}
 		}
 
 		// recordInfo

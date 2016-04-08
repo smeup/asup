@@ -221,7 +221,6 @@ public class BaseTestAsserterImpl implements QTestAsserter {
 	/**
 	 * Fails a test with the given message.
 	 *
-	 * @throws FrameworkTestFailureError
 	 */
 	@Override
 	public void fail(String message) {

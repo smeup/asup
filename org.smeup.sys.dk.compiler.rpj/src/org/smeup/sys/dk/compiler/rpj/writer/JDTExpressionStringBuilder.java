@@ -92,11 +92,16 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	private StringBuffer buffer = new StringBuffer();
 
 	private Class<?> target;
+	private boolean useDouble = false;
 
 	public void setTarget(Class<?> target) {
 		this.target = target;
 	}
 
+	public void useDouble(boolean useDouble) {
+		this.useDouble = useDouble;
+	}
+	
 	public Class<?> getTarget() {
 		return this.target;
 	}
@@ -136,12 +141,27 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			source = Date.class;
 			break;
 		case INTEGER:
-			try {
-				value = Integer.toString(Integer.parseInt(expression.getValue()));
-			} catch (NumberFormatException e) {
-				value = Long.toString(Long.parseLong(expression.getValue()));
-			}
 			source = Integer.class;
+			
+			if(useDouble) {
+				try {
+					value = Double.toString(Double.parseDouble(expression.getValue()));
+				}
+				catch(Exception e) {
+					try {
+						value = Integer.toString(Integer.parseInt(expression.getValue()))+".0";
+					} catch (NumberFormatException e2) {
+						value = Long.toString(Long.parseLong(expression.getValue()))+".0";
+					}									
+				}
+			}
+			else {
+				try {
+					value = Integer.toString(Integer.parseInt(expression.getValue()));
+				} catch (NumberFormatException e) {
+					value = Long.toString(Long.parseLong(expression.getValue()));
+				}				
+			}
 			break;
 		case FLOATING:
 			value = expression.getValue();
@@ -305,14 +325,19 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		else if (expression.getRightOperand() != null) {
 
 			Class<?> target = CompilationContextHelper.getTargetClass(compilationUnit, expression.getLeftOperand(), true);
-			builder.setTarget(target);
+			builder.setTarget(target);			
 			builder.clear();
 			expression.getLeftOperand().accept(builder);
 			value.append(builder.getResult());
 
 			value.append(toJavaPrimitive(expression.getOperator()));
 
-			builder.clear();
+			builder.clear();			
+			if(expression.getOperator() == ArithmeticOperator.DIVIDE && Number.class.isAssignableFrom(target))
+				builder.useDouble(true);
+			else
+				builder.useDouble(false);
+
 			expression.getRightOperand().accept(builder);
 
 			value.append(builder.getResult());

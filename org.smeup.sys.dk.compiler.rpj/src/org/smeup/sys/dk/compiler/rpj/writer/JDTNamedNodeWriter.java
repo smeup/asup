@@ -157,9 +157,9 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		}
 
 		// based
-		if(dataTerm.getBased() != null)
+		if (dataTerm.getBased() != null)
 			writeAnnotation(field, DataDef.class, "based", getCompilationUnit().normalizeTermName(dataTerm.getBased()));
-		
+
 		// @Overlay
 		if (dataTerm.getFacet(QOverlay.class) != null) {
 			QOverlay overlay = dataTerm.getFacet(QOverlay.class);
@@ -399,8 +399,10 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			if (arrayDef.getDimension() != 0)
 				writeAnnotation(node, DataDef.class, "dimension", arrayDef.getDimension());
 
-			if (arrayDef.getOrder() != null && arrayDef.getOrder() != SortDirection.ASCEND)
+			if (arrayDef.getOrder() != null && arrayDef.getOrder() != SortDirection.ASCEND) {
+				writeImport(SortDirection.class);
 				writeAnnotation(node, DataDef.class, "order", arrayDef.getOrder());
+			}
 
 			writeDataDefAnnotation(node, arrayDef.getArgument());
 		} else if (QScrollerDef.class.isAssignableFrom(klassDef)) {
@@ -426,18 +428,6 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			writeImport(BinaryType.class);
 			writeAnnotation(node, DataDef.class, "binaryType", binaryDef.getType());
 		}
-		/*
-		 * else if(QEnumeratedDataDef.class.isAssignableFrom(klassDef)) {
-		 * QEnumeratedDataDef<?> dataDefinition = (QEnumeratedDataDef<?>)
-		 * dataDef;
-		 * 
-		 * QBufferedDataDef<?> innerDataDefinition =
-		 * dataDefinition.getArgument(); writeImport(unit,
-		 * innerDataDefinition.getClass().getName().split("\\."));
-		 * setElementAnnotation(unit, target, innerDataDefinition);
-		 * 
-		 * }
-		 */
 		else if (QDataStructDef.class.isAssignableFrom(klassDef)) {
 			QDataStructDef dataStructureDef = (QDataStructDef) dataDef;
 
@@ -621,7 +611,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		Type type = null;
 		Type wrapper = null;
 		QSpecial special = dataTerm.getFacet(QSpecial.class);
-		
+
 		switch (dataTerm.getDataTermType()) {
 		case MULTIPLE_ATOMIC:
 			QMultipleAtomicDataDef<?> multipleAtomicDataDef = (QMultipleAtomicDataDef<?>) dataDef;
@@ -636,7 +626,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			Type argumentType = getAST().newSimpleType(getAST().newSimpleName(argument));
 			if (special != null)
 				argumentType = buildSpecial(dataTerm, special, argumentType);
-			
+
 			parType.typeArguments().add(argumentType);
 			type = parType;
 
@@ -660,7 +650,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 			if (special != null)
 				type = buildSpecial(dataTerm, special, type);
-			
+
 			break;
 
 		case MULTIPLE_COMPOUND:
@@ -772,7 +762,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 		return parEnumType;
 	}
-	
+
 	public boolean checkCompoundOverride(QCompoundDataDef<?, ?> compoundDataDef) {
 
 		for (QDataTerm<?> element : compoundDataDef.getElements())

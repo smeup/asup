@@ -37,6 +37,7 @@ import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Overlay;
+import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermFactory;
@@ -53,7 +54,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 	private Map<String, QData> datas;
 	private long memorySize = 0;
-	
+
 	protected NIODataContainerImpl(NIODataContextImpl dataContext, Map<String, QDataTerm<?>> dataTerms) {
 		this.dataTerms = dataTerms;
 		this.datas = new HashMap<String, QData>();
@@ -71,9 +72,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	@Override
 	public QDataTerm<?> createDataTerm(String name, Type type, List<Annotation> annotations) {
 
-		if(annotations == null)
+		if (annotations == null)
 			annotations = new ArrayList<Annotation>();
-		
+
 		QDataTerm<QDataDef<?>> dataTerm = new DataTermImpl<QDataDef<?>>() {
 			private static final long serialVersionUID = 1L;
 		};
@@ -94,8 +95,8 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 				if (!_default.isEmpty())
 					dataTerm.setDefault(_default);
-				
-				if(!dataDef.based().isEmpty())
+
+				if (!dataDef.based().isEmpty())
 					dataTerm.setBased(dataDef.based());
 			}
 
@@ -125,7 +126,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			if (previousData instanceof QBufferedData) {
 				QData data = createData(dataTerm, false);
 				QOverlay overlay = dataTerm.getFacet(QOverlay.class);
-				if(overlay == null) {
+				if (overlay == null) {
 					overlay = QIntegratedLanguageDataTermFactory.eINSTANCE.createOverlay();
 					overlay.setName("*PREVIOUS");
 					dataTerm.getFacets().add(overlay);
@@ -157,7 +158,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			// root data
 			if (data == null) {
 				data = getOrCreateData(qualifier);
-				if (data == null) 
+				if (data == null)
 					break;
 			} else {
 
@@ -246,7 +247,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 	@Override
 	public QDataTerm<?> getDataTerm(String key) {
-		
+
 		QDataTerm<?> dataTerm = dataTerms.get(key);
 
 		return dataTerm;
@@ -275,7 +276,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			NIODataResetter resetter = new NIODataResetter(data);
 			dataTerm.accept(resetter);
 		}
-		
+
 		return data;
 	}
 
@@ -284,9 +285,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		String key = getKey(dataTerm);
 		this.dataTerms.remove(key);
 		QData data = this.datas.remove(key);
-		if(data instanceof QBufferedData) {
-			QBufferedData bufferedData = (QBufferedData)data;
-			if(bufferedData.isStoreOwner())
+		if (data instanceof QBufferedData) {
+			QBufferedData bufferedData = (QBufferedData) data;
+			if (bufferedData.isStoreOwner())
 				this.memorySize -= bufferedData.getSize();
 		}
 	}
@@ -305,7 +306,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@Override
-	public boolean hasDefaultValue(QDataTerm<?> dataTerm) {		
+	public boolean hasDefaultValue(QDataTerm<?> dataTerm) {
 
 		if (dataTerm == null)
 			return false;
@@ -327,7 +328,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		QData data = datas.get(key);
 		if (data == null) {
 			QDataTerm<?> dataTerm = getDataTerm(key);
-			if(dataTerm != null)
+			if (dataTerm != null)
 				data = getOrCreateData(key, dataTerm);
 		}
 
@@ -343,14 +344,16 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		data = createData(dataTerm, true);
 		datas.put(key, data);
-		
-		if(data instanceof QBufferedData) {
-			QBufferedData bufferedData = (QBufferedData)data;
-			if(bufferedData.isStoreOwner())
+
+		if (data instanceof QBufferedData) {
+			QBufferedData bufferedData = (QBufferedData) data;
+			if (bufferedData.isStoreOwner())
 				this.memorySize += bufferedData.getSize();
 		}
-		
-		if (data instanceof QStruct<?>) {
+
+		if (data instanceof QStruct<?> && dataTerm.getDefinition() instanceof QCompoundDataDef<?, ?>) {
+			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
+
 			for (Field field : NIOStructHelper.getFields((Class<? extends QStruct<?>>) data.getClass())) {
 				if (QData.class.isAssignableFrom(field.getType())) {
 					try {
@@ -358,7 +361,10 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 						if (element == null)
 							System.err.println("Unexpected condition: ducvfs8dtrf8tse7rd8ftds");
 
-						datas.put(field.getName(), element);
+						if (compoundDataDef.isQualified())
+							datas.put(dataTerm.getName()+"."+field.getName(), element);
+						else
+							datas.put(field.getName(), element);
 					} catch (IllegalArgumentException | IllegalAccessException e) {
 						continue;
 					}
@@ -392,7 +398,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 				if (Overlay.NAME_OWNER.equalsIgnoreCase(overlay.getName())) {
 					data = dataFactory.createData(dataTerm, true);
 					System.err.println("Unexpected condition 5qf7rva9cwerc5: " + dataTerm);
-				}  else {
+				} else {
 					data = dataFactory.createData(dataTerm, false);
 					// TODO remove lowerCase
 					QData overlayedData = getData(overlay.getName().toLowerCase());

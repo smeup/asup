@@ -267,10 +267,13 @@ public class NIOArrayImpl<D extends NIOBufferedElementImpl> extends NIOBufferedL
 
 	@Override
 	public QArray<D> qSubarr(int start, int elements) {
-
+		
 		NIOArrayImpl<D> subArray = new NIOArrayImpl<D>(getDataContext(), getModel(), elements, getSortDirection());
-		assign(subArray, getModel().getSize() * (start - 1) + 1);
+		if(!isContiguous())
+			subArray.setListOwner(getListOwner());
 
+		assign(subArray, getModel().getSize() * (start - 1) + 1);
+		
 		return subArray;
 	}
 
@@ -403,7 +406,7 @@ public class NIOArrayImpl<D extends NIOBufferedElementImpl> extends NIOBufferedL
 
 	@Override
 	public void movea(String value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getDataContext().getCharset()), clear, getFiller());
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value.getBytes(getDataContext().getCharset()), clear, getFiller());
 	}
 
 	@Override
@@ -419,7 +422,7 @@ public class NIOArrayImpl<D extends NIOBufferedElementImpl> extends NIOBufferedL
 			this.clear();
 
 		int position = ((this.getLength() / this.capacity()) * (targetIndex - 1));
-		NIOBufferHelper.movel(getBuffer(), position, value.length, value, clear, filler);
+		NIOBufferHelper.movel(getBuffer(), position, getSize(), value, clear, filler);
 	}
 
 	@Override
@@ -438,29 +441,36 @@ public class NIOArrayImpl<D extends NIOBufferedElementImpl> extends NIOBufferedL
 		if (!value.isContiguous())
 			throw new UnsupportedOperationException("Invalid operation MOVEA with not contiguous array");
 
-		int positionSource = ((value.getLength() / value.capacity()) * (sourceIndex - 1));
-		int positionTarget = ((this.getLength() / this.capacity()) * (targetIndex - 1));
+		if (getModel().getClass() != ((NIOArrayImpl<?>) value).getModel().getClass()) {
+			int e = 0;
+			for (int i = sourceIndex; i <= capacity(); i++) {
+				get(targetIndex + e).move(value.get(i), true);
+				e++;
+			}
+		} else {
 
-		NIOBufferedDataImpl arrayBuffer = NIOBufferHelper.getNIOBufferedDataImpl(value);
+			int positionSource = ((value.getLength() / value.capacity()) * (sourceIndex - 1));
+			int positionTarget = ((this.getLength() / this.capacity()) * (targetIndex - 1));
 
-		int length = getLength();
-		if (length > value.getLength())
-			length = value.getLength();
+			NIOBufferedDataImpl arrayBuffer = NIOBufferHelper.getNIOBufferedDataImpl(value);
 
-		byte[] bytes = NIOBufferHelper.read(arrayBuffer.getBuffer(), arrayBuffer.getPosition() + positionSource, length);
-		NIOBufferHelper.movel(getBuffer(), positionTarget, value.getSize(), bytes, clear, getFiller());
+			int length = getLength();
+			if (length > value.getLength())
+				length = value.getLength();
+
+			byte[] bytes = NIOBufferHelper.read(arrayBuffer.getBuffer(), arrayBuffer.getPosition() + positionSource, length);
+			NIOBufferHelper.movel(getBuffer(), positionTarget, getSize(), bytes, clear, getFiller());
+		}
 	}
 
 	@Override
 	public void sorta() {
 
-		int i = 0;
-
 		if (getListOwner() != null) {
 			List<byte[]> dataList = new ArrayList<byte[]>();
 
-			for (QBufferedElement elementTarget : getListOwner()) {
-				dataList.add(elementTarget.asBytes());
+			for (int e = 1; e <= capacity(); e++) {
+				dataList.add(getListOwner().get(e).asBytes());
 			}
 
 			Collections.sort(dataList, new Comparator<byte[]>() {
@@ -481,9 +491,9 @@ public class NIOArrayImpl<D extends NIOBufferedElementImpl> extends NIOBufferedL
 				}
 			});
 
+			int i = 1;
 			for (byte[] bd : dataList) {
-
-				((NIOBufferedElementImpl) getListOwner().get(i + 1))._write(bd);
+				((NIOBufferedElementImpl) getListOwner().get(i))._write(bd);
 				i++;
 			}
 
@@ -509,8 +519,9 @@ public class NIOArrayImpl<D extends NIOBufferedElementImpl> extends NIOBufferedL
 				}
 			});
 
+			int i = 1;
 			for (byte[] bd : dataList) {
-				((NIOBufferedElementImpl) this.get(i + 1))._write(bd);
+				((NIOBufferedElementImpl) this.get(i))._write(bd);
 				i++;
 			}
 		}
@@ -601,7 +612,7 @@ public class NIOArrayImpl<D extends NIOBufferedElementImpl> extends NIOBufferedL
 
 	@Override
 	public void move(QArray<?> value) {
-		movea(value, false);
+		move(value, false);
 	}
 
 	@Override
@@ -612,7 +623,7 @@ public class NIOArrayImpl<D extends NIOBufferedElementImpl> extends NIOBufferedL
 			capacity = value.capacity();
 
 		for (int e = 1; e <= capacity; e++) {
-			get(e).move(e, clear);
+			get(e).move(value.get(e), clear);
 		}
 
 		for (int e = capacity + 1; e <= capacity(); e++)
@@ -632,7 +643,7 @@ public class NIOArrayImpl<D extends NIOBufferedElementImpl> extends NIOBufferedL
 			capacity = value.capacity();
 
 		for (int e = 1; e <= capacity; e++) {
-			get(e).movel(e, clear);
+			get(e).movel(value.get(e), clear);
 		}
 
 		for (int e = capacity + 1; e <= capacity(); e++)

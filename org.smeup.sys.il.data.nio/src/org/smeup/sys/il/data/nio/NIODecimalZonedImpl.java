@@ -63,11 +63,12 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 		
 		byte[] bytes = null;
 		if(halfAdjust) {
-			BigDecimal bd = new BigDecimal(number.doubleValue());
-			bytes = zoned.toBytes(bd.setScale(getScale(), RoundingMode.HALF_UP).doubleValue());			
+			BigDecimal bd = new BigDecimal(number.toString()).setScale(getScale(), RoundingMode.UP);
+			bytes = zoned.toBytes(bd);
 		}
 		else {
-			bytes = zoned.toBytes(number.doubleValue());			
+			BigDecimal bd = new BigDecimal(number.toString()).setScale(getScale(), RoundingMode.DOWN);
+			bytes = zoned.toBytes(bd);			
 		}		
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
 	}

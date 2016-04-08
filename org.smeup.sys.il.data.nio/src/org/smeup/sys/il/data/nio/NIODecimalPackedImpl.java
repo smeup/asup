@@ -36,7 +36,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	@Override
 	public NIODecimalPackedImpl allocate() {
 		super.allocate();
-		
+
 		_clear();
 
 		return this;
@@ -71,16 +71,16 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	}
 
 	@Override
-	public void _writeNumber(Number number,  boolean halfAdjust) {
+	public void _writeNumber(Number number, boolean halfAdjust) {
 
 		byte[] bytes = null;
-		if(halfAdjust) {
-			BigDecimal bd = new BigDecimal(number.doubleValue());
-			bytes = packed.toBytes(bd.setScale(getScale(), RoundingMode.HALF_UP).doubleValue());			
+		if (halfAdjust) {
+			BigDecimal bd = new BigDecimal(number.toString()).setScale(getScale(), RoundingMode.UP);
+			bytes = packed.toBytes(bd.doubleValue());
+		} else {
+			BigDecimal bd = new BigDecimal(number.toString()).setScale(getScale(), RoundingMode.DOWN);
+			bytes = packed.toBytes(bd);
 		}
-		else {
-			bytes = packed.toBytes(number.doubleValue());			
-		} 		
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
 	}
 
@@ -109,7 +109,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 
 		eval(NIODecimalZonedImpl.getDecimal(getPrecision(), getScale()).toDouble(byteBuffer.array()));
 	}
-	
+
 	@Override
 	protected void _fillr(byte[] filler, boolean maxLength) {
 

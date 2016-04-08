@@ -556,14 +556,15 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 				if (compoundDataDef.isQualified()) {
 					String[] tokens = name.split("\\.");
-					if (tokens.length > 1) {
-						name = null;
-						for (int i = 1; i < tokens.length; i++)
-							if (name != null)
-								name = name + "." + tokens[i];
-							else
-								name = tokens[i];
-					}
+					if (tokens.length <= 1) 
+						continue;
+
+					name = null;
+					for (int i = 1; i < tokens.length; i++)
+						if (name != null)
+							name = name + "." + tokens[i];
+						else
+							name = tokens[i];
 				}
 				if (compoundDataDef.getPrefix() != null) {
 					String[] tokens = compoundDataDef.getPrefix().split("\\:");
