@@ -18,10 +18,10 @@ import org.smeup.sys.il.data.term.QDataTerm;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.msgf.QMessageDataField#getOutputMask <em>Output Mask</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.msgf.QOperatingSystemMessageFilePackage#getMessageDataField()
  * @model

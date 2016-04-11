@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.smeup.sys.os.msgf.*;
 import org.smeup.sys.os.msgf.QMessageDataField;
 import org.smeup.sys.os.msgf.QMessageDescription;
 import org.smeup.sys.os.msgf.QMessageFile;
@@ -63,6 +64,7 @@ public class OperatingSystemMessageFileFactoryImpl extends EFactoryImpl implemen
 			case QOperatingSystemMessageFilePackage.MESSAGE_DESCRIPTION: return (EObject)createMessageDescription();
 			case QOperatingSystemMessageFilePackage.MESSAGE_DATA_FIELD: return (EObject)createMessageDataField();
 			case QOperatingSystemMessageFilePackage.MESSAGE_FILE: return (EObject)createMessageFile();
+			case QOperatingSystemMessageFilePackage.MESSAGE_FILE_CONTAINER: return (EObject)createMessageFileContainer();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -97,6 +99,16 @@ public class OperatingSystemMessageFileFactoryImpl extends EFactoryImpl implemen
 	public QMessageFile createMessageFile() {
 		MessageFileImpl messageFile = new MessageFileImpl();
 		return messageFile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QMessageFileContainer createMessageFileContainer() {
+		MessageFileContainerImpl messageFileContainer = new MessageFileContainerImpl();
+		return messageFileContainer;
 	}
 
 	/**

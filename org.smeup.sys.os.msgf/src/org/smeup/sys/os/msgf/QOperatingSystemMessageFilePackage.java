@@ -337,6 +337,34 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	int MESSAGE_FILE_MANAGER_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.msgf.impl.MessageFileContainerImpl <em>Message File Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.msgf.impl.MessageFileContainerImpl
+	 * @see org.smeup.sys.os.msgf.impl.OperatingSystemMessageFilePackageImpl#getMessageFileContainer()
+	 * @generated
+	 */
+	int MESSAGE_FILE_CONTAINER = 4;
+
+	/**
+	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_FILE_CONTAINER__CONTENTS = QOperatingSystemTypePackage.TYPED_CONTAINER__CONTENTS;
+
+	/**
+	 * The number of structural features of the '<em>Message File Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_FILE_CONTAINER_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_CONTAINER_FEATURE_COUNT + 0;
+
+	/**
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.os.msgf.QMessageDescription
 	 * <em>Message Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
@@ -455,6 +483,16 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	EClass getMessageFileManager();
 
 	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.os.msgf.QMessageFileContainer <em>Message File Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Message File Container</em>'.
+	 * @see org.smeup.sys.os.msgf.QMessageFileContainer
+	 * @generated
+	 */
+	EClass getMessageFileContainer();
+
+	/**
 	 * Returns the factory that creates the instances of the model. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -568,6 +606,16 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 		 * @generated
 		 */
 		EClass MESSAGE_FILE_MANAGER = eINSTANCE.getMessageFileManager();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.msgf.impl.MessageFileContainerImpl <em>Message File Container</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.msgf.impl.MessageFileContainerImpl
+		 * @see org.smeup.sys.os.msgf.impl.OperatingSystemMessageFilePackageImpl#getMessageFileContainer()
+		 * @generated
+		 */
+		EClass MESSAGE_FILE_CONTAINER = eINSTANCE.getMessageFileContainer();
 
 	}
 

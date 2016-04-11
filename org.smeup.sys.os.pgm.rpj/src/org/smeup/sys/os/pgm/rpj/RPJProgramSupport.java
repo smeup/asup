@@ -31,7 +31,6 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFiller;
-import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
@@ -41,7 +40,6 @@ import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QString;
-import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Module;
 import org.smeup.sys.il.data.annotation.Module.Scope;
@@ -190,7 +188,7 @@ public class RPJProgramSupport {
 	private int countRunnable = 0;
 
 	public boolean qRunnable() {
-		if (countRunnable == 10) {
+		if (countRunnable == 1000) {
 			countRunnable = 0;
 			QThread thread = job.getJobThread();
 			if (thread != null)
@@ -240,15 +238,15 @@ public class RPJProgramSupport {
 		return null;
 	}
 
-	public QDecimal qBitand(Integer expression, QDecimal expression2) {
+	public QDecimal qBitand(Number expression, QDecimal expression2) {
 		return null;
 	}
 
-	public QDecimal qBitnot(Integer expression) {
+	public QDecimal qBitnot(Number expression) {
 		return null;
 	}
 
-	public QDecimal qBitxor(Integer expression, QDecimal expression2) {
+	public QDecimal qBitxor(Number expression, QDecimal expression2) {
 		return null;
 	}
 
@@ -424,7 +422,7 @@ public class RPJProgramSupport {
 		return character;
 	}
 
-	public QDecimal qCheck(String comparator, QString base, Integer start) {
+	public QDecimal qCheck(String comparator, QString base, Number start) {
 		// returns the first position of the string base that contains a
 		// character that does not appear in string comparator
 		if (start == null)
@@ -448,7 +446,7 @@ public class RPJProgramSupport {
 		return decimal;
 	}
 
-	public QDecimal qCheckr(String comparator, QString base, Integer start) {
+	public QDecimal qCheckr(String comparator, QString base, Number start) {
 		// TODO verify
 		if (start == null)
 			start = 1;
@@ -614,16 +612,16 @@ public class RPJProgramSupport {
 		return qAlloc(size.asInteger());
 	}
 
-	public QPointer qAlloc(Integer size) {
-		return dataContext.getDataFactory().createPointer(size);
+	public QPointer qAlloc(Number size) {
+		return dataContext.getDataFactory().createPointer(size.intValue());
 	}
 
 	public QPointer qRealloc(QPointer pointer, QNumeric size) {
 		return qRealloc(pointer, size.asInteger());
 	}
 
-	public QPointer qRealloc(QPointer pointer, Integer size) {
-		return dataContext.getDataFactory().createPointer(pointer, size);
+	public QPointer qRealloc(QPointer pointer, Number size) {
+		return dataContext.getDataFactory().createPointer(pointer, size.intValue());
 	}
 
 	public void qDealloc(QPointer pointer) {
@@ -650,7 +648,7 @@ public class RPJProgramSupport {
 		return programStatus.getStatusCode();
 	}
 
-	public QString qReplace(String replacement, String source, Integer from, Integer length) {
+	public QString qReplace(String replacement, String source, Number from, Number length) {
 
 		if(from == null)
 			from = 1;
@@ -661,14 +659,14 @@ public class RPJProgramSupport {
 			else
 				length = replacement.length();
 		
-		int startPos = from + length - 1;
+		int startPos = from.intValue() + length.intValue() - 1;
 		
 		
 		StringBuffer sb = new StringBuffer();
-		sb.append(source.substring(0, from - 1));
+		sb.append(source.substring(0, from.intValue() - 1));
 		sb.append(replacement);
 		if(startPos<=source.length())
-			sb.append(source.substring(from + length - 1));
+			sb.append(source.substring(from.intValue() + length.intValue() - 1));
 
 		// TODO cache
 		QCharacter character = dataContext.getDataFactory().createCharacter(sb.length(), false, true);
@@ -841,59 +839,59 @@ public class RPJProgramSupport {
 	}
 
 	/* Lookup */
-	public QNumeric qLookup(DataSpecial argument, QArray<?> list, Integer startIndex, Integer numElements) {
+	public QNumeric qLookup(DataSpecial argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
 	}
 
-	public QNumeric qLookupEQ(QBufferedElement argument, QArray<?> list, QDecimal startIndex, Integer numElements) {
+	public QNumeric qLookupEQ(QBufferedElement argument, QBufferedList<?> list, QDecimal startIndex, Number numElements) {
 		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
 	}
 
-	public QNumeric qLookup(QBufferedElement argument, QArray<?> list, Integer startIndex, Integer numElements) {
+	public QNumeric qLookup(QBufferedElement argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
 	}
 
-	public QDecimal qLookup(String argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookup(String argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
 	}
 
-	public QDecimal qLookup(QDataStruct argument, QStroller<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookup(Number argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 		return qLookup(LookupOperator.EQ, argument.toString(), list, startIndex, numElements);
 	}
 
-	public QDecimal qLookuplt(DataSpecial argument, QArray<?> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookuplt(DataSpecial argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 		return qLookup(LookupOperator.LT, argument, list, startIndex, numElements);
 	}
 
-	public QDecimal qLookuplt(QBufferedElement argument, QArray<?> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookuplt(QBufferedElement argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 		return qLookup(LookupOperator.LT, argument, list, startIndex, numElements);
 	}
 
-	public QDecimal qLookuple(DataSpecial argument, QArray<?> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookuple(DataSpecial argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 		return qLookup(LookupOperator.LE, argument, list, startIndex, numElements);
 	}
 
-	public QDecimal qLookuple(QBufferedElement argument, QArray<?> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookuple(QBufferedElement argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 		return qLookup(LookupOperator.LE, argument, list, startIndex, numElements);
 	}
 
-	public QDecimal qLookupgt(DataSpecial argument, QArray<?> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookupgt(DataSpecial argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 		return qLookup(LookupOperator.GT, argument, list, startIndex, numElements);
 	}
 
-	public QDecimal qLookupgt(QBufferedElement argument, QArray<?> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookupgt(QBufferedElement argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 		return qLookup(LookupOperator.GT, argument, list, startIndex, numElements);
 	}
 
-	public QDecimal qLookupge(DataSpecial argument, QArray<?> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookupge(DataSpecial argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 		return qLookup(LookupOperator.GE, argument, list, startIndex, numElements);
 	}
 
-	public QDecimal qLookupge(QBufferedElement argument, QArray<?> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookupge(QBufferedElement argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 		return qLookup(LookupOperator.GE, argument, list, startIndex, numElements);
 	}
 
-	private QDecimal qLookup(LookupOperator operator, String argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	private QDecimal qLookup(LookupOperator operator, String argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 
 		if (startIndex == null)
 			startIndex = 1;
@@ -902,7 +900,7 @@ public class RPJProgramSupport {
 			numElements = list.capacity();
 
 		QDecimal result = null;
-		for (int i = startIndex; i <= numElements; i++) {
+		for (int i = startIndex.intValue(); i <= numElements.intValue(); i++) {
 			if (list.get(i).toString().trim().equals(argument.toString().trim())) {
 				result = qBox(i);
 				break;
@@ -917,7 +915,7 @@ public class RPJProgramSupport {
 		return result;
 	}
 
-	private QDecimal qLookup(LookupOperator operator, QBufferedElement argument, QArray<?> list, Integer startIndex, Integer numElements) {
+	private QDecimal qLookup(LookupOperator operator, QBufferedElement argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 		
 		if (startIndex == null)
 			startIndex = 1;
@@ -926,7 +924,7 @@ public class RPJProgramSupport {
 			numElements = list.capacity();
 
 		QDecimal result = null;
-		for (int i = startIndex; i <= numElements; i++) {
+		for (int i = startIndex.intValue(); i <= numElements.intValue(); i++) {
 			if (list.get(i).eq(argument)) {
 				result = qBox(i);
 				break;
@@ -941,7 +939,7 @@ public class RPJProgramSupport {
 		return result;
 	}
 
-	private QDecimal qLookup(LookupOperator operator, QBufferedElement argument, QArray<?> list, QNumeric startIndex, Integer numElements) {
+	private QDecimal qLookup(LookupOperator operator, QBufferedElement argument, QBufferedList<?> list, QNumeric startIndex, Number numElements) {
 
 		if (startIndex == null)
 			throw new IntegratedLanguageDataRuntimeException("Unexpected condition wsoerbwe7r6vwert");
@@ -950,7 +948,7 @@ public class RPJProgramSupport {
 			numElements = list.capacity();
 
 		QDecimal result = null;
-		for (int i = startIndex.i(); i <= numElements; i++) {
+		for (int i = startIndex.i(); i <= numElements.intValue(); i++) {
 			if (list.get(i).eq(argument)) {
 				result = qBox(i);
 				break;
@@ -967,7 +965,7 @@ public class RPJProgramSupport {
 		return result;
 	}
 
-	private QDecimal qLookup(LookupOperator operator, DataSpecial argument, QArray<?> list, Integer startIndex, Integer numElements) {
+	private QDecimal qLookup(LookupOperator operator, DataSpecial argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 
 		if (startIndex == null)
 			startIndex = 1;
@@ -976,7 +974,7 @@ public class RPJProgramSupport {
 			numElements = list.capacity();
 
 		QDecimal result = null;
-		for (int i = startIndex; i <= numElements; i++) {
+		for (int i = startIndex.intValue(); i <= numElements.intValue(); i++) {
 			if (list.get(i).eq(argument)) {
 				result = qBox(i);
 				break;
@@ -996,12 +994,12 @@ public class RPJProgramSupport {
 		return qScan(argument, source, null, null);
 	}
 
-	public QDecimal qScan(byte argument, QString source, Integer start) {
+	public QDecimal qScan(byte argument, QString source, Number start) {
 		return qScan(argument, source, start, null);
 	}
 
 	// TODO double byte?
-	public QDecimal qScan(byte argument, QString source, Integer start, Integer length) {
+	public QDecimal qScan(byte argument, QString source, Number start, Number length) {
 
 		if (start == null)
 			start = 1;
@@ -1009,10 +1007,10 @@ public class RPJProgramSupport {
 		int position = 0;
 
 		if (length != null)
-			position = qSubst(source, 1, length).toString().indexOf(argument, start - 1) + 1;
+			position = qSubst(source, 1, length).toString().indexOf(argument, start.intValue() - 1) + 1;
 		else
 			// TODO encoding?
-			position = source.asString().indexOf(argument, start - 1) + 1;
+			position = source.asString().indexOf(argument, start.intValue() - 1) + 1;
 
 		return qBox(position);
 	}
@@ -1021,11 +1019,11 @@ public class RPJProgramSupport {
 		return qScan(argument, source, null, null);
 	}
 
-	public QDecimal qScan(String argument, QString source, Integer start) {
+	public QDecimal qScan(String argument, QString source, Number start) {
 		return qScan(argument, source, start, null);
 	}
 
-	public QDecimal qScan(String argument, QString source, Integer start, Integer length) {
+	public QDecimal qScan(String argument, QString source, Number start, Number length) {
 
 		if (start == null)
 			start = 1;
@@ -1033,50 +1031,50 @@ public class RPJProgramSupport {
 		int position = 0;
 
 		if (length != null)
-			position = qSubst(source, 1, length).toString().indexOf(argument, start - 1) + 1;
+			position = qSubst(source, 1, length).toString().indexOf(argument, start.intValue() - 1) + 1;
 		else
-			position = source.toString().indexOf(argument, start - 1) + 1;
+			position = source.toString().indexOf(argument, start.intValue() - 1) + 1;
 
 		return qBox(position);
 	}
 
 	/* Substring */
-	public QCharacter qSubst(QArray<QCharacter> source, Integer startIndex) {
+	public QCharacter qSubst(QArray<QCharacter> source, Number startIndex) {
 		return qSubst(source, startIndex, null);
 	}
 
-	public QCharacter qSubst(QArray<QCharacter> source, Integer startIndex, Integer length) {
+	public QCharacter qSubst(QArray<QCharacter> source, Number startIndex, Number length) {
 
 		if (startIndex == null)
 			startIndex = 1;
 
 		if (length == null)
-			length = source.getLength() - startIndex;
+			length = source.getLength() - startIndex.intValue();
 
-		QCharacter string = dataContext.getDataFactory().createCharacter(length, false, false);
-		source.assign(string, startIndex);
+		QCharacter string = dataContext.getDataFactory().createCharacter(length.intValue(), false, false);
+		source.assign(string, startIndex.intValue());
 
 		return string;
 
 	}
 
-	public QCharacter qSubst(QString source, Integer startIndex) {
+	public QCharacter qSubst(QString source, Number startIndex) {
 		return qSubst(source, startIndex, null);
 	}
 
-	public QCharacter qSubst(QString source, Integer startIndex, Integer length) {
+	public QCharacter qSubst(QString source, Number startIndex, Number length) {
 		return source.qSubst(startIndex, length);
 	}
 
-	public QCharacter qSubst(String source, Integer startIndex, Integer length) {
+	public QCharacter qSubst(String source, Number startIndex, Number length) {
 
 		if (startIndex == null)
 			startIndex = 1;
 
 		if (length == null)
-			length = source.length() - startIndex;
+			length = source.length() - startIndex.intValue();
 
-		String str = source.substring(startIndex - 1, startIndex - 1 + length);
+		String str = source.substring(startIndex.intValue() - 1, startIndex.intValue() - 1 + length.intValue());
 
 		QCharacter string = dataContext.getDataFactory().createCharacter(str.length(), false, true);
 		string.eval(str);

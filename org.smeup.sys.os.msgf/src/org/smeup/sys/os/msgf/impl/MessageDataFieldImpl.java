@@ -27,10 +27,10 @@ import org.smeup.sys.os.msgf.QOperatingSystemMessageFilePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.msgf.impl.MessageDataFieldImpl#getOutputMask <em>Output Mask</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

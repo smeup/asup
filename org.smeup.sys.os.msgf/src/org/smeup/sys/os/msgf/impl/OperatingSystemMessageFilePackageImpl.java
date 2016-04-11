@@ -25,6 +25,7 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.msgf.QMessageDataField;
 import org.smeup.sys.os.msgf.QMessageDescription;
 import org.smeup.sys.os.msgf.QMessageFile;
+import org.smeup.sys.os.msgf.QMessageFileContainer;
 import org.smeup.sys.os.msgf.QMessageFileManager;
 import org.smeup.sys.os.msgf.QOperatingSystemMessageFileFactory;
 import org.smeup.sys.os.msgf.QOperatingSystemMessageFilePackage;
@@ -60,6 +61,13 @@ public class OperatingSystemMessageFilePackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	private EClass messageFileManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass messageFileContainerEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -226,6 +234,15 @@ public class OperatingSystemMessageFilePackageImpl extends EPackageImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMessageFileContainer() {
+		return messageFileContainerEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -266,6 +283,8 @@ public class OperatingSystemMessageFilePackageImpl extends EPackageImpl implemen
 		createEReference(messageFileEClass, MESSAGE_FILE__MESSAGES);
 
 		messageFileManagerEClass = createEClass(MESSAGE_FILE_MANAGER);
+
+		messageFileContainerEClass = createEClass(MESSAGE_FILE_CONTAINER);
 	}
 
 	/**
@@ -311,6 +330,10 @@ public class OperatingSystemMessageFilePackageImpl extends EPackageImpl implemen
 		g2.getETypeArguments().add(g3);
 		messageDataFieldEClass.getEGenericSuperTypes().add(g1);
 		messageFileEClass.getESuperTypes().add(theOperatingSystemTypePackage.getTypedObject());
+		g1 = createEGenericType(theOperatingSystemTypePackage.getTypedContainer());
+		g2 = createEGenericType(this.getMessageFile());
+		g1.getETypeArguments().add(g2);
+		messageFileContainerEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(messageDescriptionEClass, QMessageDescription.class, "MessageDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -348,6 +371,8 @@ public class OperatingSystemMessageFilePackageImpl extends EPackageImpl implemen
 		op = addEOperation(messageFileManagerEClass, this.getMessageFile(), "getOverrideMessageFile", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "messageFileName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(messageFileContainerEClass, QMessageFileContainer.class, "MessageFileContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

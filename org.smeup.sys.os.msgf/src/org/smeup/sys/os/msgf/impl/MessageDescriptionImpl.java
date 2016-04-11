@@ -28,6 +28,7 @@ import org.smeup.sys.os.msgf.QOperatingSystemMessageFilePackage;
  * <em><b>Message Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.msgf.impl.MessageDescriptionImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.msgf.impl.MessageDescriptionImpl#getSeverity <em>Severity</em>}</li>
@@ -35,7 +36,6 @@ import org.smeup.sys.os.msgf.QOperatingSystemMessageFilePackage;
  *   <li>{@link org.smeup.sys.os.msgf.impl.MessageDescriptionImpl#getMessageText <em>Message Text</em>}</li>
  *   <li>{@link org.smeup.sys.os.msgf.impl.MessageDescriptionImpl#getMessageDataFields <em>Message Data Fields</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

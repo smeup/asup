@@ -57,4 +57,9 @@
       <eParameters name="messageFileName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MessageFileContainer">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.os.type/model/os-type.ecore#//TypedContainer">
+      <eTypeArguments eClassifier="#//MessageFile"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
 </ecore:EPackage>

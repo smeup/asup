@@ -41,6 +41,8 @@ import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.module.QModule;
 import org.smeup.sys.os.module.QModuleContainer;
 import org.smeup.sys.os.module.QOperatingSystemModuleFactory;
+import org.smeup.sys.os.msgf.QMessageFile;
+import org.smeup.sys.os.msgf.QMessageFileContainer;
 import org.smeup.sys.os.pgm.QCallableProgram;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 import org.smeup.sys.os.pgm.QProgram;
@@ -208,6 +210,18 @@ public class BaseBundleManagerImpl implements QBundleManager {
 						System.err.println("Unexpected error: " + e);
 					}
 				}
+			} else if (eObject instanceof QMessageFileContainer) {
+				QResourceWriter<QMessageFile> messageFileWriter = resourceManager.getResourceWriter(job, QMessageFile.class, Scope.SYSTEM_LIBRARY);
+				QMessageFileContainer messageFileContainer = (QMessageFileContainer) eObject;
+				List<QMessageFile> messageFiles = new ArrayList<>(messageFileContainer.getContents());				
+				for (QMessageFile messageFile : messageFiles) {
+					try {
+						messageFileWriter.save(messageFile, true);
+
+					} catch (Exception e) {
+						System.err.println("Unexpected error: " + e);
+					}
+				}
 			} else
 				System.out.println("Unknown entry " + eObject);
 		}
@@ -319,6 +333,20 @@ public class BaseBundleManagerImpl implements QBundleManager {
 						}
 					}
 				}
+			} else if (eObject instanceof QMessageFileContainer) {
+				QResourceWriter<QMessageFile> messageFileWriter = resourceManager.getResourceWriter(job, QMessageFile.class, Scope.SYSTEM_LIBRARY);
+				QMessageFileContainer messageFileContainer = (QMessageFileContainer) eObject;
+				List<QMessageFile> messageFiles = new ArrayList<>(messageFileContainer.getContents());
+				for (QMessageFile messageFile : messageFiles) {
+					QMessageFile messageFilePrevious = messageFileWriter.lookup(messageFile.getName());
+					if (messageFilePrevious != null) {
+						try {
+							messageFileWriter.delete(messageFilePrevious);
+						} catch (Exception e) {
+							System.err.println("Unexpected error: " + e);
+						}
+					}
+				}				
 			} else
 				System.out.println("Unknown entry " + eObject);
 		}

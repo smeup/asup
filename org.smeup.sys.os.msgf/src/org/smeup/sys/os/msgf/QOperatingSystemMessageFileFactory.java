@@ -52,6 +52,15 @@ public interface QOperatingSystemMessageFileFactory extends EFactory {
 	QMessageFile createMessageFile();
 
 	/**
+	 * Returns a new object of class '<em>Message File Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Message File Container</em>'.
+	 * @generated
+	 */
+	QMessageFileContainer createMessageFileContainer();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
