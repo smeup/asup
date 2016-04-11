@@ -129,8 +129,6 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	@Override
 	public QCompilationUnit createCompilationUnit(QJob job, QModule module, CaseSensitiveType caseSensitive) {
 
-		System.out.println("\tcreate module: " + module.getName());
-
 		List<QCompilationUnit> moduleContexts = null;
 		if (!module.getName().startsWith("*"))
 			moduleContexts = prepareContexts(job, module, caseSensitive);
@@ -167,8 +165,6 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 	@Override
 	public QCompilationUnit createCompilationUnit(QJob job, QProgram program, CaseSensitiveType caseSensitive) {
-
-		System.out.println("Create program: " + program.getName());
 
 		List<QCompilationUnit> moduleContexts = prepareContexts(job, program, caseSensitive);
 
@@ -317,8 +313,6 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		QCompilationUnit moduleCompilationUnit = getModuleCacheMap(job).get(moduleName);
 		if (moduleCompilationUnit != null)
 			return moduleCompilationUnit;
-
-		System.out.println("\tload internal module: " + moduleName);
 
 		try {
 			Bundle bundle = FrameworkUtil.getBundle(this.getClass());

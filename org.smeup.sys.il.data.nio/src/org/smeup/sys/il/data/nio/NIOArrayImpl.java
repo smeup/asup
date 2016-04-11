@@ -278,7 +278,7 @@ public class NIOArrayImpl<D extends NIOBufferedElementImpl> extends NIOBufferedL
 	}
 
 	@Override
-	public QArray<D> qSubarr(int start, QDecimal elements) {
+	public QArray<D> qSubarr(int start, QNumeric elements) {
 		return qSubarr(start, elements.asInteger());
 	}
 
@@ -288,7 +288,7 @@ public class NIOArrayImpl<D extends NIOBufferedElementImpl> extends NIOBufferedL
 	}
 
 	@Override
-	public QArray<D> qSubarr(QDecimal start, QDecimal elements) {
+	public QArray<D> qSubarr(QNumeric start, QNumeric elements) {
 		return qSubarr(start.asInteger(), elements.asInteger());
 	}
 

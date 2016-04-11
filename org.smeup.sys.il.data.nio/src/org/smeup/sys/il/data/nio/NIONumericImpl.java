@@ -580,7 +580,12 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 		eval(asDouble() * value.asDouble(), halfAdjust);
 		return this;
 	}
-
+	
+	@Override
+	public final Number n() {
+		return _readNumber();
+	}
+	
 	@Override
 	public final boolean ne(Number value) {
 		return !eq(value);

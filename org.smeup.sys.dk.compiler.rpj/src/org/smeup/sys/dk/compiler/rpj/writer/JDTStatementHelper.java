@@ -11,7 +11,7 @@ import org.smeup.sys.il.expr.QExpression;
 public class JDTStatementHelper {
 	
 	public static Expression buildExpression(AST ast, QCompilationUnit compilationUnit, QExpression expression, Class<?> target) {
-
+		
 		ASTParser parser = ASTParser.newParser(AST.JLS8);
 		parser.setKind(ASTParser.K_EXPRESSION);
 

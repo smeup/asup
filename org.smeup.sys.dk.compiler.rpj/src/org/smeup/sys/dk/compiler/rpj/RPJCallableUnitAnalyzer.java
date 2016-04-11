@@ -115,6 +115,7 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 	}
 
 	private boolean isNumeric(String str) {
+		
 		try {
 			Double.parseDouble(str);
 		} catch (NumberFormatException nfe) {

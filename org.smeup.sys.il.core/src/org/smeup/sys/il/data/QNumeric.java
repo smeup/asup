@@ -641,6 +641,14 @@ public interface QNumeric extends QBufferedElement {
 	QNumeric mult(QNumeric value, boolean halfAdjust);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaNumber" required="true"
+	 * @generated
+	 */
+	Number n();
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated

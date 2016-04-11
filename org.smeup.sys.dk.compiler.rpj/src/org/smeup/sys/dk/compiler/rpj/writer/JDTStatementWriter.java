@@ -63,6 +63,7 @@ import org.smeup.sys.il.esam.QDisplayTerm;
 import org.smeup.sys.il.esam.QPrintTerm;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.LogicalOperator;
+import org.smeup.sys.il.expr.QArithmeticExpression;
 import org.smeup.sys.il.expr.QAssignmentExpression;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QBlockExpression;
@@ -474,19 +475,26 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QMethodExec statement) {
 
+
 		Block block = blocks.peek();
 		if (statement.getObject() != null) {
-
-			QTermExpression nameExpression = expressionParser.parseTerm(statement.getObject());
-
 			MethodInvocation methodInvocation = ast.newMethodInvocation();
 			methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(statement.getMethod())));
-			QNamedNode namedNode = compilationUnit.getNamedNode(nameExpression.getValue(), true);
+
+			QExpression objectExpression = expressionParser.parseExpression(statement.getObject());
+			QNamedNode namedNode = null;
+			if(objectExpression instanceof QTermExpression) {
+				QTermExpression termExpression = (QTermExpression)objectExpression;
+				namedNode = compilationUnit.getNamedNode(termExpression.getValue(), true);
+			}
 
 			if (namedNode == null) {
-				if (nameExpression instanceof QAtomicTermExpression) {
-					QAtomicTermExpression atomicTermExpression = (QAtomicTermExpression) nameExpression;
-					Class<?> target = null;
+				Class<?> target = null;
+				if (objectExpression instanceof QArithmeticExpression) {
+					target = CompilationContextHelper.getTargetClass(compilationUnit, objectExpression, false);
+				}
+				else if (objectExpression instanceof QAtomicTermExpression) {
+					QAtomicTermExpression atomicTermExpression = (QAtomicTermExpression) objectExpression;
 					switch (atomicTermExpression.getType()) {
 					case BOOLEAN:
 						target = QIndicator.class;
@@ -516,8 +524,8 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 						target = QData.class;
 						break;
 					}
-					methodInvocation.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, nameExpression, target));
 				}
+				methodInvocation.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, objectExpression, target));
 			}
 			// display and print
 			else if ((namedNode != null && (namedNode.getParent() instanceof QDisplayTerm || namedNode.getParent() instanceof QPrintTerm))) {
@@ -532,8 +540,8 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 				methodInvocation.arguments().add(typeLiteral);
 
 			} else {
-				Class<?> target = CompilationContextHelper.getTargetClass(compilationUnit, nameExpression, false);
-				methodInvocation.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, nameExpression, target));
+				Class<?> target = CompilationContextHelper.getTargetClass(compilationUnit, objectExpression, false);
+				methodInvocation.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, objectExpression, target));
 			}
 
 			if (statement.getParameters() != null) {

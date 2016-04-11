@@ -29,18 +29,20 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	QArray<D> qSubarr(int start, int elements);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true"
 	 * @generated
 	 */
-	QArray<D> qSubarr(int start, QDecimal elements);
+	QArray<D> qSubarr(int start, QNumeric elements);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true"
 	 * @generated
 	 */
-	QArray<D> qSubarr(QDecimal start, QDecimal elements);
+	QArray<D> qSubarr(QNumeric start, QNumeric elements);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

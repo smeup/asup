@@ -23,12 +23,9 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.smeup.sys.il.data.def.impl.DecimalDefImpl#getPrecision
- * <em>Precision</em>}</li>
- * <li>{@link org.smeup.sys.il.data.def.impl.DecimalDefImpl#getScale
- * <em>Scale</em>}</li>
- * <li>{@link org.smeup.sys.il.data.def.impl.DecimalDefImpl#getType
- * <em>Type</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.impl.DecimalDefImpl#getPrecision <em>Precision</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.impl.DecimalDefImpl#getScale <em>Scale</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.impl.DecimalDefImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -40,9 +37,8 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The default value of the '{@link #getPrecision() <em>Precision</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getPrecision() <em>Precision</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPrecision()
 	 * @generated
 	 * @ordered
@@ -50,9 +46,8 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	protected static final int PRECISION_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getPrecision() <em>Precision</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getPrecision() <em>Precision</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPrecision()
 	 * @generated
 	 * @ordered
@@ -62,7 +57,6 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	/**
 	 * The default value of the '{@link #getScale() <em>Scale</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getScale()
 	 * @generated
 	 * @ordered
@@ -72,7 +66,6 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	/**
 	 * The cached value of the '{@link #getScale() <em>Scale</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getScale()
 	 * @generated
 	 * @ordered
@@ -82,7 +75,6 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -92,7 +84,6 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -101,7 +92,6 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected DecimalDefImpl() {
@@ -110,7 +100,6 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -120,7 +109,6 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -130,7 +118,6 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -143,7 +130,6 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -153,7 +139,6 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -166,7 +151,6 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -176,7 +160,6 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -220,91 +203,85 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__PRECISION:
-			return getPrecision();
-		case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__SCALE:
-			return getScale();
-		case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__TYPE:
-			return getType();
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__PRECISION:
+				return getPrecision();
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__SCALE:
+				return getScale();
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__TYPE:
+				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__PRECISION:
-			setPrecision((Integer) newValue);
-			return;
-		case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__SCALE:
-			setScale((Integer) newValue);
-			return;
-		case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__TYPE:
-			setType((DecimalType) newValue);
-			return;
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__PRECISION:
+				setPrecision((Integer)newValue);
+				return;
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__SCALE:
+				setScale((Integer)newValue);
+				return;
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__TYPE:
+				setType((DecimalType)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__PRECISION:
-			setPrecision(PRECISION_EDEFAULT);
-			return;
-		case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__SCALE:
-			setScale(SCALE_EDEFAULT);
-			return;
-		case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__TYPE:
-			setType(TYPE_EDEFAULT);
-			return;
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__PRECISION:
+				setPrecision(PRECISION_EDEFAULT);
+				return;
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__SCALE:
+				setScale(SCALE_EDEFAULT);
+				return;
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__TYPE:
+				setType(TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__PRECISION:
-			return precision != PRECISION_EDEFAULT;
-		case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__SCALE:
-			return scale != SCALE_EDEFAULT;
-		case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__TYPE:
-			return type != TYPE_EDEFAULT;
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__PRECISION:
+				return precision != PRECISION_EDEFAULT;
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__SCALE:
+				return scale != SCALE_EDEFAULT;
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__TYPE:
+				return type != TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (precision: ");

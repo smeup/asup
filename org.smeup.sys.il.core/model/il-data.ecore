@@ -398,14 +398,14 @@
         <eTypeArguments eTypeParameter="#//Array/D"/>
       </eGenericType>
       <eParameters name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="elements" eType="#//Decimal"/>
+      <eParameters name="elements" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="qSubarr" lowerBound="1">
       <eGenericType eClassifier="#//Array">
         <eTypeArguments eTypeParameter="#//Array/D"/>
       </eGenericType>
-      <eParameters name="start" eType="#//Decimal"/>
-      <eParameters name="elements" eType="#//Decimal"/>
+      <eParameters name="start" eType="#//Numeric"/>
+      <eParameters name="elements" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="qSubarr" lowerBound="1">
       <eGenericType eClassifier="#//Array">
@@ -2496,6 +2496,7 @@
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="halfAdjust" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
+    <eOperations name="n" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>

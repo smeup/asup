@@ -37,8 +37,9 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 
 	private static final long serialVersionUID = 1L;
 	protected static final byte INIT = (byte) 64;
-	private static GregorianCalendar LOVAL = new GregorianCalendar(2039,12,31);
-	private static GregorianCalendar HIVAL = new GregorianCalendar(1940,01,01);
+	private static final GregorianCalendar CLEAR = new GregorianCalendar(0001,00,01);
+	private static final GregorianCalendar LOVAL = new GregorianCalendar(2039,11,31);
+	private static final GregorianCalendar HIVAL = new GregorianCalendar(1940,00,01);
 
 	private DatetimeType _type;
 	private DateFormat _dateFormat;
@@ -380,7 +381,7 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 
 	@Override
 	protected void _clear() {
-		String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(new GregorianCalendar(0001,01,01));
+		String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(CLEAR.getTime());
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), result.getBytes(getDataContext().getCharset()), true, getFiller());
 	}
 
@@ -425,12 +426,12 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 		byte[] bytes = null;
 		switch (value) {
 		case LOVAL: {
-			String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(LOVAL);
+			String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(LOVAL.getTime());
 			bytes = result.getBytes(getDataContext().getCharset());
 			break;
 		}
 		case HIVAL: {
-			String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(HIVAL);
+			String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(HIVAL.getTime());
 			bytes = result.getBytes(getDataContext().getCharset());
 			break;
 		}

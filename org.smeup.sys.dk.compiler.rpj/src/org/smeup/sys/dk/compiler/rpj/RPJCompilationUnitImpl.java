@@ -547,6 +547,8 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			else if (child.getDataTermType().isCompound()) {
 				QDataTerm<QCompoundDataDef<?, ?>> compoundDataTerm = (QDataTerm<QCompoundDataDef<?, ?>>) child;
 
+				String tempName = name;
+				
 				QCompoundDataDef<?, QDataTerm<?>> compoundDataDef = null;
 				if (child.getDefinition() instanceof QDataAreaDef) {
 					QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) child.getDefinition();
@@ -559,12 +561,12 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					if (tokens.length <= 1) 
 						continue;
 
-					name = null;
+					tempName = null;
 					for (int i = 1; i < tokens.length; i++)
-						if (name != null)
-							name = name + "." + tokens[i];
+						if (tempName != null)
+							tempName = tempName + "." + tokens[i];
 						else
-							name = tokens[i];
+							tempName = tokens[i];
 				}
 				if (compoundDataDef.getPrefix() != null) {
 					String[] tokens = compoundDataDef.getPrefix().split("\\:");
@@ -575,11 +577,11 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					else
 						pos = 0;
 
-					dataTerm = findData(compoundDataDef.getElements(), name, pfx, pos);
+					dataTerm = findData(compoundDataDef.getElements(), tempName, pfx, pos);
 				} else
-					dataTerm = findData(compoundDataDef.getElements(), name, null, 0);
+					dataTerm = findData(compoundDataDef.getElements(), tempName, null, 0);
 
-				if (dataTerm == null && equalsTermName(childName, name))
+				if (dataTerm == null && equalsTermName(childName, tempName))
 					dataTerm = child;
 			}
 			// atomic
