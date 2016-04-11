@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.dk.compiler.rpj.writer;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Stack;
 
@@ -54,6 +55,7 @@ import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QFloating;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
+import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
@@ -480,7 +482,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		if (statement.getObject() != null) {
 			MethodInvocation methodInvocation = ast.newMethodInvocation();
 			methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(statement.getMethod())));
-
+			
 			QExpression objectExpression = expressionParser.parseExpression(statement.getObject());
 			QNamedNode namedNode = null;
 			if(objectExpression instanceof QTermExpression) {
@@ -492,6 +494,13 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 				Class<?> target = null;
 				if (objectExpression instanceof QArithmeticExpression) {
 					target = CompilationContextHelper.getTargetClass(compilationUnit, objectExpression, false);
+					// force boxing
+					if(String.class.isAssignableFrom(target))
+						target = QCharacter.class;
+					else if(Number.class.isAssignableFrom(target))
+						target = QNumeric.class;
+					else if(Date.class.isAssignableFrom(target))
+						target = QDatetime.class;						
 				}
 				else if (objectExpression instanceof QAtomicTermExpression) {
 					QAtomicTermExpression atomicTermExpression = (QAtomicTermExpression) objectExpression;

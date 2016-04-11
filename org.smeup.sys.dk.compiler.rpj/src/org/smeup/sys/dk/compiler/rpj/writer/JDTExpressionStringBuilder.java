@@ -58,10 +58,10 @@ import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionWriter;
 import org.smeup.sys.il.expr.QFunctionTermExpression;
+import org.smeup.sys.il.expr.QIntegratedLanguageExpressionFactory;
 import org.smeup.sys.il.expr.QLogicalExpression;
 import org.smeup.sys.il.expr.QQualifiedTermExpression;
 import org.smeup.sys.il.expr.QRelationalExpression;
-import org.smeup.sys.il.expr.RelationalOperator;
 import org.smeup.sys.il.expr.impl.ExpressionVisitorImpl;
 import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
@@ -476,6 +476,20 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QRelationalExpression expression) {
 
+		// normalize arithmetic left
+		if(expression.getLeftOperand() instanceof QArithmeticExpression) {
+			QBlockExpression blockExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createBlockExpression();
+			blockExpression.setExpression(expression.getLeftOperand());
+			expression.setLeftOperand(blockExpression);
+		}
+
+		// normalize arithmetic right
+		if(expression.getRightOperand() instanceof QArithmeticExpression) {
+			QBlockExpression blockExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createBlockExpression();
+			blockExpression.setExpression(expression.getRightOperand());
+			expression.setRightOperand(blockExpression);
+		}
+		
 		JDTExpressionStringBuilder leftBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
 		leftBuilder.setAST(getAST());
 
@@ -483,23 +497,23 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		rightBuilder.setAST(getAST());
 
 		if (CompilationContextHelper.isPrimitive(compilationUnit, expression.getLeftOperand())) {
-
+			
 			leftBuilder.clear();
 			if (CompilationContextHelper.isSpecial(compilationUnit, expression.getRightOperand()))
 				leftBuilder.setTarget(QData.class);
 			else
-				leftBuilder.setTarget(null);
+				leftBuilder.setTarget(QData.class);
 
 			expression.getLeftOperand().accept(leftBuilder);
 			buffer.append(leftBuilder.getResult());
 
 			// operator
-			if (leftBuilder.getTarget() != null) {
+			if (leftBuilder.getTarget() != null)
 				buffer.append("." + toJavaMethod(expression));
-				buffer.append("(");
-			} else
-				buffer.append(toJavaPrimitive(expression.getOperator()));
-
+			else
+				buffer.append(".compareTo");
+			buffer.append("(");
+			
 			// right
 			rightBuilder.clear();
 			if (CompilationContextHelper.isPrimitive(compilationUnit, expression.getRightOperand()))
@@ -509,9 +523,31 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			expression.getRightOperand().accept(rightBuilder);
 			buffer.append(rightBuilder.getResult());
+			
+			buffer.append(")");
 
-			if (leftBuilder.getTarget() != null)
-				buffer.append(")");
+			if (leftBuilder.getTarget() == null) {
+				switch (expression.getOperator()) {
+				case EQUAL:
+					buffer.append(" == 0");
+					break;
+				case GREATER_THAN:
+					buffer.append(" > 0");
+					break;
+				case GREATER_THAN_EQUAL:
+					buffer.append(" >= 0");
+					break;
+				case LESS_THAN:
+					buffer.append(" < 0");
+					break;
+				case LESS_THAN_EQUAL:
+					buffer.append(" <= 0");
+					break;
+				case NOT_EQUAL:
+					buffer.append(" != 0");
+					break;
+				}	
+			}
 
 		} else {
 
@@ -622,36 +658,6 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			break;
 		case OR:
 			result = " || ";
-			break;
-		}
-
-		return result;
-	}
-
-	private String toJavaPrimitive(RelationalOperator operator) {
-
-		String result = null;
-
-		switch (operator) {
-		case EQUAL:
-			result = "==";
-			break;
-		case GREATER_THAN:
-			result = ">";
-			break;
-		case GREATER_THAN_EQUAL:
-			result = ">=";
-			break;
-		case LESS_THAN:
-			result = "<";
-			break;
-		case LESS_THAN_EQUAL:
-			result = "<=";
-			break;
-		case NOT_EQUAL:
-			result = "!=";
-			break;
-		default:
 			break;
 		}
 
@@ -776,7 +782,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				buffer.append(".d()");
 			} else {
 				buffer.append(value);
-				buffer.append(".n()");
+				buffer.append(".i()");
+//				buffer.append(".n()");
 			}
 		} else if (Boolean.class.isAssignableFrom(target)) {
 			buffer.append(value);
@@ -804,7 +811,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			buffer.append("qRPJ.qBox(" + value + ")");
 		else if (target.equals(QBufferedElement.class) && source.equals(String.class))
 			buffer.append("qRPJ.qBox(" + value + ")");
-		else if (target.equals(QData.class) && source.equals(Number.class))
+		else if (target.equals(QData.class) && Number.class.isAssignableFrom(source))
 			buffer.append("qRPJ.qBox(" + value + ")");
 		else if (target.equals(QNumeric.class) && source.equals(Number.class))
 			buffer.append("qRPJ.qBox(" + value + ")");

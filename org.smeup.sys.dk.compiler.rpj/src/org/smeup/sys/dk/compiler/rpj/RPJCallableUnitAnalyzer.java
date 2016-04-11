@@ -51,14 +51,14 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 			for (QProcedure procedure : callableUnit.getFlowSection().getProcedures()) {
 				RPJCallableUnitInfo procedureUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(procedure);
 
-				// split procedure information to callableUnit parent 
-				if(procedureUnitInfo.containsCMDStatement())
+				// split procedure information to callableUnit parent
+				if (procedureUnitInfo.containsCMDStatement())
 					callableUnitInfo.containsCMDStatement(true);
-				if(procedureUnitInfo.containsSQLStatement())
+				if (procedureUnitInfo.containsSQLStatement())
 					callableUnitInfo.containsSQLStatement(true);
-				if(procedureUnitInfo.containsInsignificantZeros())
+				if (procedureUnitInfo.containsInsignificantZeros())
 					callableUnitInfo.containsInsignificantZeros(true);
-				
+
 				callableUnitInfo.getLabels().putAll(procedureUnitInfo.getLabels());
 			}
 
@@ -104,18 +104,20 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QMethodExec statement) {
 
-		for (String parameter : statement.getParameters()) {
-			if(isNumeric(parameter)) {
-				if(parameter.trim().startsWith("0") && !parameter.trim().startsWith("0."))
-					programInfo.containsInsignificantZeros(true);
+		if (statement.getMethod().startsWith("move")) {
+			for (String parameter : statement.getParameters()) {
+				if (isNumeric(parameter)) {
+					if (parameter.trim().startsWith("0") && !parameter.trim().startsWith("0."))
+						programInfo.containsInsignificantZeros(true);
+				}
 			}
 		}
-		
+
 		return super.visit(statement);
 	}
 
 	private boolean isNumeric(String str) {
-		
+
 		try {
 			Double.parseDouble(str);
 		} catch (NumberFormatException nfe) {
