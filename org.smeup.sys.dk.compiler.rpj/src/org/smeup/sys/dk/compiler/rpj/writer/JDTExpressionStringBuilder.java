@@ -248,7 +248,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			QDataTerm<?> dataTerm = CompilationContextHelper.getDataTerm(namedNode);
 
 			if (dataTerm != null) {
-
+				
+				if(dataTerm instanceof QPrototype)
+					value = value+"()";
+					
 				if (dataTerm.getDataTermType().isMultiple()) {
 					if (this.target != null) {
 						if (QList.class.isAssignableFrom(this.target))
