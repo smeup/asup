@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<os-msgf:MessageFileContainer
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:os-msgf="http://www.smeup.org/asup/os/msgf"
+    xsi:schemaLocation="http://www.smeup.org/asup/os/msgf os-msgf.ecore">
+  <contents
+      xsi:type="os-msgf:MessageFile"
+      name="MSGAS"
+      text="Base messages AS">
+  <messages name="AS00100" severity="20" messageText="File format &amp;1 not empty"/>
+  <messages name="AS00101" severity="30" messageText="Invalid file name &amp;1"/>
+  <messages name="AS00102" severity="30" messageText="Invalid module &amp;1"/>
+  <messages name="AS00103" severity="30" messageText="Invalid expression &amp;1"/>
+  <messages name="AS00104" severity="30" messageText="Invalid formula &amp;1"/>
+  <messages name="AS00105" severity="30" messageText="Invalid property &amp;1 for term &amp;2"/>
+  <messages name="AS00106" severity="20" messageText="Unexpected condition &amp;1"/>
+  <messages name="AS00107" severity="30" messageText="Invalid dataTerm &amp;1"/>
+  <messages name="AS00108" severity="30" messageText="Invalid address &amp;1"/>
+  <messages name="AS00109" severity="30" messageText="Invalide like &amp;1"/>
+  </contents>
+</os-msgf:MessageFileContainer>
+
