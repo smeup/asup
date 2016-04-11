@@ -121,6 +121,14 @@ public interface QDataSet<R extends QRecord> {
 	boolean read();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean read(Boolean lock);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model
 	 * @generated
@@ -157,6 +165,14 @@ public interface QDataSet<R extends QRecord> {
 	 * @generated
 	 */
 	boolean readp();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean readp(Boolean lock);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

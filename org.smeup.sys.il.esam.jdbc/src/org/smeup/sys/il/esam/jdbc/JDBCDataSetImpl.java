@@ -291,6 +291,11 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	}
 
 	@Override
+	public boolean read(Boolean lock) {
+		return readp(null, null, lock);
+	}
+
+	@Override
 	public boolean read(QIndicator endOfData) {
 		return read(endOfData, null, null);
 	}
@@ -372,6 +377,11 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	@Override
 	public boolean readp() {
 		return readp(null, null, null);
+	}
+
+	@Override
+	public boolean readp(Boolean lock) {
+		return readp(null, null, lock);
 	}
 
 	@Override
