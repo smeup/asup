@@ -402,4 +402,16 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 		// TODO Auto-generated method stub
 		"".toString();
 	}
+
+	@Override
+	public boolean read(Boolean lock) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean readp(Boolean lock) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
