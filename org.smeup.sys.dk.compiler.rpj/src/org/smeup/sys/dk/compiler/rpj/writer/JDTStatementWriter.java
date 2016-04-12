@@ -477,7 +477,6 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QMethodExec statement) {
 
-
 		Block block = blocks.peek();
 		if (statement.getObject() != null) {
 			MethodInvocation methodInvocation = ast.newMethodInvocation();

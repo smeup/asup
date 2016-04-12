@@ -49,6 +49,7 @@ import org.smeup.sys.il.expr.AssignmentOperator;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.LogicalOperator;
 import org.smeup.sys.il.expr.QArithmeticExpression;
+import org.smeup.sys.il.expr.QArrayExpression;
 import org.smeup.sys.il.expr.QAssignmentExpression;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QBlockExpression;
@@ -248,10 +249,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			QDataTerm<?> dataTerm = CompilationContextHelper.getDataTerm(namedNode);
 
 			if (dataTerm != null) {
-				
-				if(dataTerm instanceof QPrototype)
-					value = value+"()";
-					
+
+				if (dataTerm instanceof QPrototype)
+					value = value + "()";
+
 				if (dataTerm.getDataTermType().isMultiple()) {
 					if (this.target != null) {
 						if (QList.class.isAssignableFrom(this.target))
@@ -405,8 +406,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			JDTExpressionStringBuilder builder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
 			builder.setTarget(Boolean.class);
 			builder.setAST(getAST());
-
 			expression.getOperand().accept(builder);
+			
 			buffer.append(builder.getResult());
 		}
 
@@ -477,19 +478,19 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	public boolean visit(QRelationalExpression expression) {
 
 		// normalize arithmetic left
-		if(expression.getLeftOperand() instanceof QArithmeticExpression) {
+		if (expression.getLeftOperand() instanceof QArithmeticExpression) {
 			QBlockExpression blockExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createBlockExpression();
 			blockExpression.setExpression(expression.getLeftOperand());
 			expression.setLeftOperand(blockExpression);
 		}
 
 		// normalize arithmetic right
-		if(expression.getRightOperand() instanceof QArithmeticExpression) {
+		if (expression.getRightOperand() instanceof QArithmeticExpression) {
 			QBlockExpression blockExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createBlockExpression();
 			blockExpression.setExpression(expression.getRightOperand());
 			expression.setRightOperand(blockExpression);
 		}
-		
+
 		JDTExpressionStringBuilder leftBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
 		leftBuilder.setAST(getAST());
 
@@ -497,7 +498,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		rightBuilder.setAST(getAST());
 
 		if (CompilationContextHelper.isPrimitive(compilationUnit, expression.getLeftOperand())) {
-			
+
 			leftBuilder.clear();
 			if (CompilationContextHelper.isSpecial(compilationUnit, expression.getRightOperand()))
 				leftBuilder.setTarget(QData.class);
@@ -513,7 +514,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			else
 				buffer.append(".compareTo");
 			buffer.append("(");
-			
+
 			// right
 			rightBuilder.clear();
 			if (CompilationContextHelper.isPrimitive(compilationUnit, expression.getRightOperand()))
@@ -523,7 +524,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			expression.getRightOperand().accept(rightBuilder);
 			buffer.append(rightBuilder.getResult());
-			
+
 			buffer.append(")");
 
 			if (leftBuilder.getTarget() == null) {
@@ -546,7 +547,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				case NOT_EQUAL:
 					buffer.append(" != 0");
 					break;
-				}	
+				}
 			}
 
 		} else {
@@ -783,7 +784,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			} else {
 				buffer.append(value);
 				buffer.append(".i()");
-//				buffer.append(".n()");
+				// buffer.append(".n()");
 			}
 		} else if (Boolean.class.isAssignableFrom(target)) {
 			buffer.append(value);
@@ -884,7 +885,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			case ARITHMETIC:
 			case BLOCK:
 			case BOOLEAN:
-				
+
 				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
 				methodExec.setObject(expressionWriter.writeExpression(expressionChild));
 				methodExec.setMethod(expression.getValue());
@@ -918,6 +919,29 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		}
 
 		return visit((QCompoundTermExpression) expression);
+	}
+
+	@Override
+	public boolean visit(QArrayExpression expression) {
+
+		if (expression.getExpression().isEmpty()) {
+			buffer.append("new QBufferedData[] {}");
+		} else if (expression.getExpression().size() == 1) {
+			expression.getExpression().get(0).accept(this);
+		} else {
+			buffer.append("new QBufferedData[] { ");
+			
+			boolean first = true;
+			for(QExpression expressionChild: expression.getExpression()) {
+				if(!first)
+					buffer.append(", ");
+				expressionChild.accept(this);
+				first = false;
+			}
+			buffer.append(" }");
+		}
+
+		return false;
 	}
 
 	private boolean visit(QCompoundTermExpression expression) {
@@ -1102,5 +1126,4 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		return false;
 	}
-
 }
