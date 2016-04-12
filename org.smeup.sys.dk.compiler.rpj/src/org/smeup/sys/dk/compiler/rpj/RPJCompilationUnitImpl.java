@@ -1105,6 +1105,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			if (node instanceof QDisplayTerm)
 				name = "get()." + name;
 
+			if (node instanceof QPrintTerm)
+				name = "get()." + name;
+
 			if (node instanceof QProgram)
 				continue;
 
