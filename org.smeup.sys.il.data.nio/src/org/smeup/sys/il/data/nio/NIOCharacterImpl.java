@@ -778,5 +778,5 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 				sb.append(to.substring(i, i + 1));
 		}
 		movel(sb.toString(), clear);
-	}	
+	}
 }

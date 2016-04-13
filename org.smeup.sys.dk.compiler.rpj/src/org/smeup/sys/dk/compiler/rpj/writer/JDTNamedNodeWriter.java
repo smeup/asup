@@ -160,6 +160,10 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		if (dataTerm.getBased() != null)
 			writeAnnotation(field, DataDef.class, "based", getCompilationUnit().normalizeTermName(dataTerm.getBased()));
 
+		// constant
+		if (dataTerm.isConstant())
+			writeAnnotation(field, DataDef.class, "constant", true);
+
 		// @Overlay
 		if (dataTerm.getFacet(QOverlay.class) != null) {
 			QOverlay overlay = dataTerm.getFacet(QOverlay.class);
@@ -634,7 +638,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 		case UNARY_ATOMIC:
 
-			if (dataTerm.isConstant())
+			if (dataTerm.isConstant() && !dataTerm.getDataTermType().isMultiple())
 				type = getAST().newSimpleType(getAST().newSimpleName(dataDef.getJavaClass().getSimpleName()));
 			else {
 				type = getAST().newSimpleType(getAST().newSimpleName(dataDef.getDataClass().getSimpleName()));

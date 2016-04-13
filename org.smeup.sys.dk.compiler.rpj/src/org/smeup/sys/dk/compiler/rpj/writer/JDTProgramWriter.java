@@ -13,7 +13,6 @@ package org.smeup.sys.dk.compiler.rpj.writer;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.jdt.core.dom.MarkerAnnotation;
@@ -203,22 +202,4 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		getTarget().modifiers().add(0, programAnnotation);
 	}
 
-	protected void loadModules(Collection<String> modules, String module, boolean recursive) {
-
-		addModule(modules, module);
-
-		QModule qModule = getCompilationUnit().getModule(module, true);
-		for (String moduleName : qModule.getSetupSection().getModules()) {
-			if (recursive)
-				loadModules(modules, moduleName, recursive);
-			else 
-				addModule(modules, module);
-		}
-	}
-	
-	private void addModule(Collection<String> modules, String module) {
-
-		if (!modules.contains(module))
-			modules.add(module);
-	}
 }

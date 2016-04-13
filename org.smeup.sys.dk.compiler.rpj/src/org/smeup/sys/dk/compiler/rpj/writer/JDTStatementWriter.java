@@ -275,7 +275,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean visit(QEval statement) {
-
+		
 		Block block = blocks.peek();
 
 		QAssignmentExpression assignmentExpression = expressionParser.parseAssignment(statement.getAssignment());
@@ -400,7 +400,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 					if (parameterDelegate instanceof QDataTerm) {
 						QDataTerm<?> dataTerm = (QDataTerm<?>) parameterDelegate;
 
-						if (dataTerm.isConstant()) {
+						if (dataTerm.isConstant() && !dataTerm.getDataTermType().isMultiple()) {
 							Expression jdtExpression = JDTStatementHelper.buildExpression(ast, compilationUnit, expression, dataTerm.getDefinition().getJavaClass());
 							methodInvocation.arguments().add(jdtExpression);
 						} else {
@@ -679,7 +679,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			// dummy condition
 
 			IfStatement ifSt = ast.newIfStatement();
-			ifSt.setExpression(ast.newName("qRPJ.TRUE"));
+			ifSt.setExpression(ast.newName(new String[] {"RPJProgramSupport", "TRUE"}));
 			ifSt.setThenStatement(returnSt);
 
 			block.statements().add(ifSt);

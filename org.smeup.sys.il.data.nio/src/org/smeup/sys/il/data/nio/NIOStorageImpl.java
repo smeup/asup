@@ -9,6 +9,12 @@ public class NIOStorageImpl implements QStorable {
 	
 	
 	private ByteBuffer byteBuffer = null;
+	private int position = 0;
+	
+	public NIOStorageImpl(ByteBuffer byteBuffer, int position) {
+		this.byteBuffer = byteBuffer;
+		this.position = position;
+	}
 	
 	public NIOStorageImpl(int storageLength) {
 		this.byteBuffer = ByteBuffer.allocate(storageLength);
@@ -24,9 +30,13 @@ public class NIOStorageImpl implements QStorable {
 		return byteBuffer;
 	}
 
+	protected void setPosition(int position) {
+		this.position = position;
+	}
+	
 	@Override
 	public int getPosition() {
-		return 0;
+		return position;
 	}
 
 	@Override

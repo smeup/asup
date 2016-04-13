@@ -296,6 +296,14 @@ public interface QCattable<D extends QData> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model factor1Required="true" factor2Required="true"
+	 * @generated
+	 */
+	void cat(byte factor1, String factor2);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model factor1Required="true"
 	 * @generated
 	 */

@@ -387,6 +387,22 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	QCharacter qTrim();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" trimmedRequired="true"
+	 * @generated
+	 */
+	QCharacter qTrim(String trimmed);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" trimmedRequired="true"
+	 * @generated
+	 */
+	QCharacter qTrim(QString trimmed);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true"
 	 * @generated

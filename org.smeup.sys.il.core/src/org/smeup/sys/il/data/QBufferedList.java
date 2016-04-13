@@ -24,6 +24,14 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" halfAdjustRequired="true"
+	 * @generated
+	 */
+	void eval(QList<? extends QNumeric> value, boolean halfAdjust);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
@@ -40,6 +48,14 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" halfAdjustRequired="true"
+	 * @generated
+	 */
+	void eval(Number value, boolean halfAdjust);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
@@ -52,6 +68,14 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @generated
 	 */
 	void eval(QNumeric value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" halfAdjustRequired="true"
+	 * @generated
+	 */
+	void eval(QNumeric value, boolean halfAdjust);
 
 	/**
 	 * <!-- begin-user-doc -->

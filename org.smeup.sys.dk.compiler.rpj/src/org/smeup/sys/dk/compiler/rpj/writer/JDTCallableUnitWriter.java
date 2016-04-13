@@ -95,6 +95,7 @@ import org.smeup.sys.il.flow.QDataSection;
 import org.smeup.sys.il.flow.QEntry;
 import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
+import org.smeup.sys.il.flow.QModule;
 import org.smeup.sys.il.flow.QParameterList;
 import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QPrototype;
@@ -210,6 +211,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 	public void writeDataFields(QDataSection dataSection, UnitScope scope) {
 
+		List<String> fields = new ArrayList<String>();
 		// fields
 		for (QDataTerm<?> dataTerm : dataSection.getDatas()) {
 
@@ -218,7 +220,12 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 			dataTerm = getCompilationUnit().getDataTerm(dataTerm.getName(), false);
 
+			if(fields.contains(getCompilationUnit().normalizeTermName(dataTerm.getName())))
+				continue;
+			
 			writeField(dataTerm, false, scope);
+			
+			fields.add(getCompilationUnit().normalizeTermName(dataTerm.getName()));
 		}
 
 	}
@@ -278,7 +285,10 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getDataSetTerm_ExternalMember()))
 				writeAnnotation(field, FileDef.class, "externalMember", getCompilationUnit().normalizeTermName(dataSetTerm.getExternalMember()));
 
-			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
+			if(getCompilationUnit().getNode() instanceof QModule)
+				field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+			else
+				field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 
 			field.setType(parType);
 			if (dataSetTerm.getFormatName() != null)
@@ -943,7 +953,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				QDataTerm<?> dataTerm = (QDataTerm<?>) parameterDelegate;
 
 				// primitive
-				if (dataTerm.isConstant())
+				if (dataTerm.isConstant() && !dataTerm.getDataTermType().isMultiple())
 					singleVar.setType(getJavaPrimitive(dataTerm));
 				else {
 					Type type = getJavaType(dataTerm);
@@ -963,5 +973,24 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 			p++;
 		}
+	}
+	
+	protected void loadModules(Collection<String> modules, String module, boolean recursive) {
+
+		addModule(modules, module);
+
+		QModule qModule = getCompilationUnit().getModule(module, true);
+		for (String moduleName : qModule.getSetupSection().getModules()) {
+			if (recursive)
+				loadModules(modules, moduleName, recursive);
+			else 
+				addModule(modules, module);
+		}
+	}
+	
+	private void addModule(Collection<String> modules, String module) {
+
+		if (!modules.contains(module))
+			modules.add(module);
 	}
 }

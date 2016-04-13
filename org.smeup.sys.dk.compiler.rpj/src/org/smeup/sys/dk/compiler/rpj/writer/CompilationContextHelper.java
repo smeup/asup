@@ -68,7 +68,7 @@ public class CompilationContextHelper {
 
 				QNamedNode namedNode = compilationUnit.getNamedNode(atomicTermExpression.getValue(), true);
 				QDataTerm<?> dataTerm = getDataTerm(namedNode);
-				if (dataTerm == null || dataTerm.isConstant())
+				if (dataTerm == null || (dataTerm.isConstant() && !dataTerm.getDataTermType().isMultiple()))
 					return true;
 
 				break;

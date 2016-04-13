@@ -18,6 +18,10 @@ public class JDTStatementHelper {
 		JDTExpressionStringBuilder builder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
 		builder.setTarget(target);
 		builder.setAST(ast);
+		
+		if(target != null && Double.class.isAssignableFrom(target))
+			builder.useDouble(true);
+		
 		expression.accept(builder);
 		String value = builder.getResult();
 

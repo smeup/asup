@@ -989,4 +989,19 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	public QDatetime qDate(DatetimeFormat format) {
 		return current().qDate(format);
 	}
+
+	@Override
+	public QCharacter qTrim(String trimmed) {
+		return current().qTrim(trimmed);
+	}
+
+	@Override
+	public QCharacter qTrim(QString trimmed) {
+		return current().qTrim(trimmed);
+	}
+
+	@Override
+	public void cat(byte factor1, String factor2) {
+		current().cat(factor1, factor2);
+	}
 }

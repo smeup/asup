@@ -478,4 +478,34 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean ge(QDatetime value) {
+		return asDate().compareTo(value.asDate()) >= 0;
+	}
+
+	@Override
+	public boolean gt(QDatetime value) {
+		return asDate().compareTo(value.asDate()) > 0;
+	}
+
+	@Override
+	public boolean le(QDatetime value) {
+		return asDate().compareTo(value.asDate()) <= 0;
+	}
+
+	@Override
+	public boolean lt(QDatetime value) {
+		return asDate().compareTo(value.asDate()) < 0;
+	}
+
+	@Override
+	public boolean ne(QDatetime value) {
+		return asDate().compareTo(value.asDate()) != 0;
+	}
+
+	@Override
+	public boolean eq(QDatetime value) {
+		return asDate().compareTo(value.asDate()) == 0;
+	}
 }

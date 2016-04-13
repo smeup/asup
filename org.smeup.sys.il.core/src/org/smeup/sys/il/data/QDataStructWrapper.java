@@ -1270,4 +1270,16 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	public boolean isVarying() {
 		return delegate.isVarying();
 	}
+
+	public QCharacter qTrim(String trimmed) {
+		return delegate.qTrim(trimmed);
+	}
+
+	public QCharacter qTrim(QString trimmed) {
+		return delegate.qTrim(trimmed);
+	}
+
+	public void cat(byte factor1, String factor2) {
+		delegate.cat(factor1, factor2);
+	}
 }

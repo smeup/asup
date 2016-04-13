@@ -23,7 +23,6 @@ import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
-import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QBufferedList;
@@ -40,12 +39,15 @@ import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.SortDirection;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Module;
 import org.smeup.sys.il.data.annotation.Module.Scope;
 import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.DecimalType;
+import org.smeup.sys.il.data.def.QCharacterDef;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
 import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QDisplay;
 import org.smeup.sys.il.esam.QPrint;
@@ -258,6 +260,14 @@ public class RPJProgramSupport {
 		return qIndicator;
 	}
 
+	public QIndicator qBoxBoolean(String value) {
+
+		QIndicator qIndicator = dataContext.getDataFactory().createIndicator(true);
+		qIndicator.eval(value);
+
+		return qIndicator;
+	}
+	
 	public QDecimal qBox(Integer decimal) {
 
 		QDecimal qDecimal = null;
@@ -306,18 +316,22 @@ public class RPJProgramSupport {
 		return qDecimal;
 	}
 
-	public QCharacter qBox(String character) {
+	public QCharacter qBox(String characters) {
 
 		QCharacter qCharacter = null;
-		if (character == null)
+		if (characters == null)
 			qCharacter = dataContext.getDataFactory().createCharacter(0, false, false);
 		else
 			// TODO use cache
-			qCharacter = dataContext.getDataFactory().createCharacter(character.length(), false, true);
+			qCharacter = dataContext.getDataFactory().createCharacter(characters.length(), false, true);
 
-		qCharacter.eval(character);
+		qCharacter.eval(characters);
 
 		return qCharacter;
+	}
+
+	public QString qBoxString(byte b) {
+		return qBox(b);
 	}
 
 	public QCharacter qBox(byte character) {
@@ -328,6 +342,16 @@ public class RPJProgramSupport {
 		return qCharacter;
 	}
 
+	public QArray<QCharacter> qBoxArray(String characters) {
+		
+		QCharacterDef argument = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
+		argument.setLength(characters.length());
+		QArray<QCharacter> array = dataContext.getDataFactory().createArray(argument, 1, SortDirection.ASCEND, true);
+		array.get(1).eval(characters);
+		
+		return array;
+	}
+	
 	public QIndicator qCast(QCharacter xin) {
 		QIndicator indicator = dataContext.getDataFactory().createIndicator(false);
 		xin.assign(indicator);
@@ -403,7 +427,7 @@ public class RPJProgramSupport {
 		return program;
 	}
 
-	public QBufferedData qChar(QBinary numeric) {
+	public QString qChar(QNumeric numeric) {
 		return qBox(Long.toString(numeric.asLong()));
 	}
 
@@ -469,15 +493,19 @@ public class RPJProgramSupport {
 		return decimal;
 	}
 
-	public QDecimal qDec(QNumeric numeric, int precision, int scale) {
+	public QDecimal qDec(QNumeric numeric, Integer precision, Integer scale) {
 		return null;
 	}
 
-	public QDecimal qDec(QString string, int precision, int scale) {
+	public QDecimal qDec(QDatetime date, Integer precision, Integer scale) {
 		return null;
 	}
 
-	public QDecimal qDec(String string, int precision, int scale) {
+	public QDecimal qDec(QString string, Integer precision, Integer scale) {
+		return null;
+	}
+
+	public QDecimal qDec(String string, Integer precision, Integer scale) {
 		return null;
 	}
 
@@ -519,6 +547,10 @@ public class RPJProgramSupport {
 		return character;
 	}
 
+	public QString qEditc(double numeric, String format) {
+		return qEditc(qBox(numeric), format);
+	}
+	
 	public QString qEditc(int numeric, String format) {
 		return qEditc(qBox(numeric), format);
 	}

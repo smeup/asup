@@ -31,12 +31,9 @@ import org.smeup.sys.il.data.QString;
 public class NIOPointerImpl extends NIODataImpl implements QPointer {
 
 	private static final long serialVersionUID = 1L;
+	private static byte INIT = (byte) 0;
 
 	protected QStorable _storage = null;
-
-	public NIOPointerImpl(QDataContext dataContext) {
-		super(dataContext);
-	}
 
 	public NIOPointerImpl(QDataContext dataContext, QStorable storage) {
 		super(dataContext);
@@ -65,6 +62,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 
 	@Override
 	public void dealloc() {
+		this._storage = null;
 	}
 
 	@Override
@@ -83,16 +81,15 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 
 		return character;
 	}
-	
+
 	@Override
 	public QString qStr(QNumeric length) {
 		return qStr(length.i());
 	}
 
-
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
+		NIOBufferHelper.clear(getBuffer(), getPosition(), getByteSize(_storage), INIT);
 	}
 
 	@Override
@@ -101,126 +98,6 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 			return true;
 		else
 			return _storage.isEmpty();
-	}
-
-	@Override
-	public QPointer divide(short value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer divide(long value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer divide(int value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer divide(QNumeric value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer minus(short value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer minus(long value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer minus(int value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer minus(QNumeric value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer mult(short value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer mult(long value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer mult(int value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer mult(QNumeric value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer plus(short value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer plus(long value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer plus(int value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer plus(QNumeric value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer power(short value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer power(long value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer power(int value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QPointer power(QNumeric value) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -258,7 +135,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 
 	protected ByteBuffer getBuffer() {
-		if(_storage != null)
+		if (_storage != null)
 			return NIOBufferHelper.getBuffer(_storage);
 		else
 			return null;
@@ -284,5 +161,57 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	@Override
 	public String toString() {
 		return "SPP:" + _storage.hashCode();
+	}
+
+	@Override
+	public QPointer qMinus(Number value) {
+		return new NIOPointerImpl(getDataContext(), new NIOStorageImpl(getBuffer(), getPosition() - value.intValue()));
+	}
+
+	@Override
+	public QPointer qMinus(QNumeric value) {
+		return qMinus(value.n());
+	}
+
+	@Override
+	public QPointer qPlus(Number value) {
+		return new NIOPointerImpl(getDataContext(), new NIOStorageImpl(getBuffer(), getPosition() + value.intValue()));
+	}
+
+	@Override
+	public QPointer qPlus(QNumeric value) {
+		return qPlus(value.n());
+	}
+
+	@Override
+	public QPointer minus(Number value) {
+		if(!(getStore() instanceof NIOStorageImpl))
+			throw new UnsupportedOperationException();
+		
+		NIOStorageImpl nioStorageImpl = (NIOStorageImpl) getStore();
+		nioStorageImpl.setPosition(getPosition()-value.intValue());
+
+		return this;
+	}
+
+	@Override
+	public QPointer minus(QNumeric value) {
+		return minus(value.n());
+	}
+
+	@Override
+	public QPointer plus(Number value) {
+		if(!(getStore() instanceof NIOStorageImpl))
+			throw new UnsupportedOperationException();
+		
+		NIOStorageImpl nioStorageImpl = (NIOStorageImpl) getStore();
+		nioStorageImpl.setPosition(getPosition()+value.intValue());
+
+		return this;
+	}
+
+	@Override
+	public QPointer plus(QNumeric value) {
+		return plus(value.n());
 	}
 }

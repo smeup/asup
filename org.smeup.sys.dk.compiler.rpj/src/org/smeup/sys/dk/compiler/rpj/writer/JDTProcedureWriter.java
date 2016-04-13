@@ -13,6 +13,8 @@
 package org.smeup.sys.dk.compiler.rpj.writer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.jdt.core.dom.Assignment;
 import org.eclipse.jdt.core.dom.Assignment.Operator;
@@ -30,6 +32,7 @@ import org.eclipse.jdt.core.dom.StringLiteral;
 import org.eclipse.jdt.core.dom.Type;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.dk.compiler.QCompilerLinker;
 import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitAnalyzer;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
@@ -40,6 +43,7 @@ import org.smeup.sys.il.data.term.impl.DataTermImpl;
 import org.smeup.sys.il.flow.QBlock;
 import org.smeup.sys.il.flow.QEntry;
 import org.smeup.sys.il.flow.QEntryParameter;
+import org.smeup.sys.il.flow.QModule;
 import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
@@ -68,6 +72,26 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 
 		refactCallableUnit(procedure);
 
+		// modules
+		List<String> modules = new ArrayList<>();
+		if (procedure.getSetupSection() != null) {
+			for (String module : procedure.getSetupSection().getModules())
+				loadModules(modules, module, true);
+
+			for (String module : modules) {
+
+				QModule flowModule = getCompilationUnit().getModule(module, true);
+				if (flowModule == null)
+					throw new IOException("Invalid module: " + module);
+
+				QCompilerLinker compilerLinker = flowModule.getFacet(QCompilerLinker.class);
+				if (compilerLinker != null)
+					writeImport(compilerLinker.getLinkedClass());
+				else
+					writeImport(module);
+			}
+		}
+		
 		writeProcedureAnnotation(procedure);
 
 		// unit info
@@ -75,8 +99,8 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 		writeSupportFields(callableUnitInfo);
 
 		if (procedure.getSetupSection() != null)
-			writeModuleFields(procedure.getSetupSection().getModules(), UnitScope.PRIVATE);
-
+			writeModuleFields(modules, UnitScope.PRIVATE);
+		
 		if (procedure.getFileSection() != null) {
 			writeDataSets(procedure.getFileSection().getDataSets());
 			writeKeyLists(procedure.getFileSection().getKeyLists());
@@ -165,7 +189,7 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 					thisAccess.setExpression(getAST().newThisExpression());
 					thisAccess.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(entryParameter.getName())));
 
-					if (delegateTerm.isConstant()) {
+					if (delegateTerm.isConstant() && !delegateTerm.getDataTermType().isMultiple()) {
 						Assignment assignment = getAST().newAssignment();
 
 						assignment.setLeftHandSide(thisAccess);

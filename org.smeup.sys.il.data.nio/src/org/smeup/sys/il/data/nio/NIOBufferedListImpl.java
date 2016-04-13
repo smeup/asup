@@ -59,6 +59,12 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	@Override
+	public void eval(Number value, boolean halfAdjust) {
+		for (D element : this)
+			((QNumeric) element).eval(value, halfAdjust);		
+	}
+
+	@Override
 	public QBufferedData eval(QDataFiller value) {
 		for(D element: this)
 			element.eval(value);
@@ -83,11 +89,34 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	@Override
+	public void eval(QList<? extends QNumeric> value, boolean halfAdjust) {
+
+		assert QNumeric.class.isAssignableFrom(getModel().getClass());
+		
+		int capacity = capacity();
+		if (value.capacity() < capacity)
+			capacity = value.capacity();
+
+		for (int e = 1; e <= capacity; e++) {
+			((QNumeric)get(e)).eval(value.get(e), halfAdjust);
+		}
+
+		for (int e = capacity + 1; e <= capacity(); e++)
+			get(e).clear();
+	}
+	
+	@Override
 	public final void eval(QNumeric value) {
 		for (D element : this)
 			((QNumeric) element).eval(value);
 	}
 
+	@Override
+	public void eval(QNumeric value, boolean halfAdjust) {
+		for (D element : this)
+			((QNumeric) element).eval(value, halfAdjust);
+	}
+	
 	@Override
 	public final void eval(QString value) {
 		for (D element : this)

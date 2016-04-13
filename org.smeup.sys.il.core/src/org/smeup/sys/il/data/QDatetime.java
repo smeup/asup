@@ -75,6 +75,46 @@ public interface QDatetime extends QBufferedElement {
 	 * @model valueRequired="true"
 	 * @generated
 	 */
+	boolean ge(QDatetime value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	boolean gt(QDatetime value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	boolean le(QDatetime value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	boolean lt(QDatetime value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	boolean ne(QDatetime value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
 	QNumeric qDiff(QDatetime value, DatetimeFormat format);
 
 	/**
@@ -83,6 +123,14 @@ public interface QDatetime extends QBufferedElement {
 	 * @generated
 	 */
 	long asTime();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	boolean eq(QDatetime value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

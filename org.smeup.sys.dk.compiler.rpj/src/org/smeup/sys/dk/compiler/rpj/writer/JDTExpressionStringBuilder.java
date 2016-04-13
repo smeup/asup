@@ -26,6 +26,7 @@ import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.DatetimeFormat;
+import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
@@ -198,7 +199,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				case LOVAL:
 				case ZERO:
 				case ZEROS:
-					value = "qRPJ.qSP." + strings.removeFirstChar(expression.getValue()).toUpperCase();
+					value = "Specials." + strings.removeFirstChar(expression.getValue()).toUpperCase();
 					break;
 				}
 			}
@@ -217,7 +218,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				case SECONDS:
 				case YEAR:
 				case YEARS:
-					value = "qRPJ.qSP." + strings.removeFirstChar(expression.getValue()).toUpperCase();
+					value = "Specials." + strings.removeFirstChar(expression.getValue()).toUpperCase();
 					break;
 				}
 			}
@@ -262,7 +263,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 					} else
 						source = dataTerm.getDefinition().getDataClass();
 				} else {
-					if (dataTerm.isConstant())
+					if (dataTerm.isConstant() && !dataTerm.getDataTermType().isMultiple())
 						source = dataTerm.getDefinition().getJavaClass();
 					else
 						source = dataTerm.getDefinition().getDataClass();
@@ -305,7 +306,6 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		// pointer
 		if (CompilationContextHelper.isPointer(compilationUnit, expression.getLeftOperand())) {
-
 			// left
 			builder.setTarget(null);
 			builder.clear();
@@ -313,7 +313,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			value.append(builder.getResult());
 
 			// operator
-			value.append("." + toJavaMethod(expression));
+			value.append(".q" + strings.firstToUpper(toJavaMethod(expression)));
 			value.append("(");
 
 			// right
@@ -323,17 +323,28 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			value.append(")");
 
+			builder.setTarget(QPointer.class);
 		}
 		// plus, minus, multiple, divide ..
 		else if (expression.getRightOperand() != null) {
 
-			Class<?> target = CompilationContextHelper.getTargetClass(compilationUnit, expression.getLeftOperand(), true);
+			Class<?> target = null;
+
+			if (expression.getOperator() == ArithmeticOperator.POWER)
+				target = Integer.class;
+			else
+				target = CompilationContextHelper.getTargetClass(compilationUnit, expression.getLeftOperand(), true);
+			if (Boolean.class.isAssignableFrom(target))
+				target = String.class;
 			builder.setTarget(target);
 			builder.clear();
 			expression.getLeftOperand().accept(builder);
 			value.append(builder.getResult());
 
-			value.append(toJavaPrimitive(expression.getOperator()));
+			if (QPointer.class.isAssignableFrom(target))
+				value.append("." + toJavaMethod(expression));
+			else
+				value.append(toJavaPrimitive(expression.getOperator()));
 
 			builder.clear();
 			if (expression.getOperator() == ArithmeticOperator.DIVIDE && Number.class.isAssignableFrom(target))
@@ -407,7 +418,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			builder.setTarget(Boolean.class);
 			builder.setAST(getAST());
 			expression.getOperand().accept(builder);
-			
+
 			buffer.append(builder.getResult());
 		}
 
@@ -737,93 +748,128 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		else if (Enum.class.isAssignableFrom(source)) {
 
 			if (QIndicator.class.isAssignableFrom(this.target)) {
-				if (value.equalsIgnoreCase("qRPJ.qSP.ON"))
+				if (value.equalsIgnoreCase("Specials.ON"))
 					buffer.append("qRPJ.qBox(true)");
 				else
 					buffer.append("qRPJ.qBox(false)");
 			} else if (String.class.isAssignableFrom(this.target)) {
-				if (value.equalsIgnoreCase("qRPJ.qSP.ON"))
+				if (value.equalsIgnoreCase("Specials.ON"))
 					buffer.append("\"1\"");
-				else if (value.equalsIgnoreCase("qRPJ.qSP.OFF"))
+				else if (value.equalsIgnoreCase("Specials.OFF"))
 					buffer.append("\"0\"");
-				else if (value.equalsIgnoreCase("qRPJ.qSP.BLANK"))
+				else if (value.equalsIgnoreCase("Specials.BLANK"))
 					buffer.append("\"\"");
-				else if (value.equalsIgnoreCase("qRPJ.qSP.BLANKS"))
+				else if (value.equalsIgnoreCase("Specials.BLANKS"))
 					buffer.append("\"\"");
-				else if (value.equalsIgnoreCase("qRPJ.qSP.ZERO"))
+				else if (value.equalsIgnoreCase("Specials.ZERO"))
 					buffer.append("0");
-				else if (value.equalsIgnoreCase("qRPJ.qSP.ZEROS"))
+				else if (value.equalsIgnoreCase("Specials.ZEROS"))
 					buffer.append("0");
 				else
 					buffer.append(value);
 			} else
 				buffer.append(value);
 
-		}
-
-		// unboxing
-		else if (String.class.isAssignableFrom(target)) {
-			buffer.append(value);
-			buffer.append(".s()");
-		} else if (Number.class.isAssignableFrom(target)) {
-			if (target.equals(Byte.class)) {
-				buffer.append(value);
-				buffer.append(".i()");
-			} else if (target.equals(Short.class)) {
-				buffer.append(value);
-				buffer.append(".i()");
-			} else if (target.equals(Integer.class)) {
-				buffer.append(value);
-				buffer.append(".i()");
-			} else if (target.equals(Long.class)) {
-				buffer.append(value);
-				buffer.append(".l()");
-			} else if (target.equals(Double.class)) {
-				buffer.append(value);
-				buffer.append(".d()");
-			} else {
-				buffer.append(value);
-				buffer.append(".i()");
-				// buffer.append(".n()");
-			}
-		} else if (Boolean.class.isAssignableFrom(target)) {
-			buffer.append(value);
-			buffer.append(".b()");
-		} else if (Date.class.isAssignableFrom(target)) {
-			buffer.append(value);
-			buffer.append(".t()");
-		} else if (List.class.isAssignableFrom(target)) {
-			buffer.append(value);
-			buffer.append(".asList()");
-		} else if (QDatetime.class.isAssignableFrom(target)) {
-			buffer.append("qRPJ.qBox(" + value + ")");
-			buffer.append(value);
-			buffer.append(".asDatetime()");
-		}
+		} 
 		// cast
 		else if (QIndicator.class.isAssignableFrom(target) && QCharacter.class.isAssignableFrom(source))
 			buffer.append("qRPJ.qCast(" + value + ")");
+
 		// boxing
-		else if (QPointer.class.isAssignableFrom(target))
-			buffer.append("qRPJ.qPointer(" + value + ")");
-		else if (QString.class.isAssignableFrom(target))
-			buffer.append("qRPJ.qBox(" + value + ")");
-		else if (target.equals(QData.class) && source.equals(String.class))
-			buffer.append("qRPJ.qBox(" + value + ")");
-		else if (target.equals(QBufferedElement.class) && source.equals(String.class))
-			buffer.append("qRPJ.qBox(" + value + ")");
-		else if (target.equals(QData.class) && Number.class.isAssignableFrom(source))
-			buffer.append("qRPJ.qBox(" + value + ")");
-		else if (target.equals(QNumeric.class) && source.equals(Number.class))
-			buffer.append("qRPJ.qBox(" + value + ")");
-		else if (target.equals(QDecimal.class) && source.equals(Number.class))
-			buffer.append("qRPJ.qBox(" + value + ")");
-		else if (QIndicator.class.isAssignableFrom(target))
-			buffer.append("qRPJ.qBox(" + value + ")");
-		else if (target.equals(QHexadecimal.class) && source.equals(Byte.class))
-			buffer.append("qRPJ.qBox(" + value + ")");
-		else
-			throw new IntegratedLanguageExpressionRuntimeException("Invalid boxing: " + value);
+		else if (QData.class.isAssignableFrom(target)) {
+
+			// pointer
+			if (QPointer.class.isAssignableFrom(target))
+				buffer.append("qRPJ.qPointer(" + value + ")");
+
+			// string
+			else if (QString.class.isAssignableFrom(target))
+				buffer.append("qRPJ.qBox(" + value + ")");
+			else if (target.equals(QData.class) && source.equals(String.class))
+				buffer.append("qRPJ.qBox(" + value + ")");
+			
+			// buffered
+			else if (target.equals(QBufferedElement.class) && source.equals(String.class))
+				buffer.append("qRPJ.qBox(" + value + ")");
+			else if (target.equals(QData.class) && Number.class.isAssignableFrom(source))
+				buffer.append("qRPJ.qBox(" + value + ")");
+
+			// numeric
+			else if (target.equals(QNumeric.class) && source.equals(Number.class))
+				buffer.append("qRPJ.qBox(" + value + ")");
+			else if (target.equals(QDecimal.class) && source.equals(Number.class))
+				buffer.append("qRPJ.qBox(" + value + ")");
+
+			// indicator
+			else if (QIndicator.class.isAssignableFrom(target))
+				buffer.append("qRPJ.qBox(" + value + ")");
+
+			// hexadecimal
+			else if (target.equals(QHexadecimal.class) && source.equals(Byte.class))
+				buffer.append("qRPJ.qBox(" + value + ")");
+
+			// array
+			else if (QArray.class.isAssignableFrom(target))
+				buffer.append("qRPJ.qBoxArray(" + value + ")");
+
+			// datetime
+			else if (QDatetime.class.isAssignableFrom(target)) {
+				buffer.append("qRPJ.qBox(" + value + ")");
+				buffer.append(value);
+				buffer.append(".asDatetime()");
+			}
+		}
+		// unboxing
+		else {
+
+			if(source != null && !QData.class.isAssignableFrom(source)) {
+				// JVM casting
+				if (Number.class.isAssignableFrom(source) && Number.class.isAssignableFrom(target)) {
+					buffer.append(value);
+					return;
+				}
+				else {					
+					buffer.append("qRPJ.qBox"+getTarget().getSimpleName()+"(");
+					buffer.append(value);
+					buffer.append(")");
+				}
+			}
+			else
+				buffer.append(value);
+			
+			// string
+			if (String.class.isAssignableFrom(target)) {
+				buffer.append(".s()");
+				// number
+			} else if (Number.class.isAssignableFrom(target)) {
+				if (target.equals(Byte.class)) {
+					buffer.append(".i()");
+				} else if (target.equals(Short.class)) {
+					buffer.append(".i()");
+				} else if (target.equals(Integer.class)) {
+					buffer.append(".i()");
+				} else if (target.equals(Long.class)) {
+					buffer.append(".l()");
+				} else if (target.equals(Double.class)) {	
+					buffer.append(".d()");
+				} else {
+					buffer.append(".i()");
+				}
+			}
+			// boolean
+			else if (Boolean.class.isAssignableFrom(target)) {
+				buffer.append(".b()");
+			}
+			// date
+			else if (Date.class.isAssignableFrom(target)) {
+				buffer.append(".t()");
+			}
+			// list
+			else if (List.class.isAssignableFrom(target)) {
+				buffer.append(".asList()");
+			} else
+				throw new IntegratedLanguageExpressionRuntimeException("Invalid unboxing type: " + target.getSimpleName());
+		}
 	}
 
 	public String buildExpression(QKeyListTerm keyList) {
@@ -930,10 +976,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			expression.getExpression().get(0).accept(this);
 		} else {
 			buffer.append("new QBufferedData[] { ");
-			
+
 			boolean first = true;
-			for(QExpression expressionChild: expression.getExpression()) {
-				if(!first)
+			for (QExpression expressionChild : expression.getExpression()) {
+				if (!first)
 					buffer.append(", ");
 				expressionChild.accept(this);
 				first = false;
@@ -1002,7 +1048,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 					parameterBuilder.clear();
 					if (parameterDelegate instanceof QDataTerm) {
 						QDataTerm<?> dataTerm = (QDataTerm<?>) parameterDelegate;
-						if (dataTerm.isConstant()) {
+						if (dataTerm.isConstant() && !dataTerm.getDataTermType().isMultiple()) {
 							parameterBuilder.setTarget(dataTerm.getDefinition().getJavaClass());
 						} else {
 							parameterBuilder.setTarget(dataTerm.getDefinition().getDataClass());

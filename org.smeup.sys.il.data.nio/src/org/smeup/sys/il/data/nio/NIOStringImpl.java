@@ -23,8 +23,8 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	private static final long serialVersionUID = 1L;
 	protected static final byte INIT = (byte) 64;
 	protected static final byte LOVAL = (byte) 0;
-	protected static final byte HIVAL = (byte)-7;
-	
+	protected static final byte HIVAL = (byte) -7;
+
 	public NIOStringImpl(QDataContext dataContext) {
 		super(dataContext);
 	}
@@ -83,7 +83,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	protected final byte[] _toBytes(QNumeric value) {
 		return value.asBytes();
 	}
-	
+
 	@Override
 	protected final byte[] _toBytes(QString value) {
 		return value.asBytes();
@@ -98,7 +98,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	public final String asString() {
 		return new String(asBytes(), getDataContext().getCharset());
 	}
-	
+
 	@Override
 	public final void cat(QString factor1) {
 		cat(this.asBytes(), factor1.asBytes(), null, false);
@@ -106,7 +106,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	public final void cat(QString factor1, boolean clear) {
-		cat(this.asBytes(), factor1.asBytes(), null, clear); 
+		cat(this.asBytes(), factor1.asBytes(), null, clear);
 	}
 
 	@Override
@@ -162,6 +162,11 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	@Override
 	public final void cat(QString factor1, String factor2) {
 		cat(factor1.asBytes(), factor2.getBytes(getDataContext().getCharset()), null, false);
+	}
+
+	@Override
+	public final void cat(byte factor1, String factor2) {
+		cat(new byte[] { factor1 }, factor2.getBytes(getDataContext().getCharset()), null, false);
 	}
 
 	@Override
@@ -270,7 +275,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	}
 
 	protected abstract void cat(byte[] factor1, byte[] factor2, Number space, boolean clear);
-		
+
 	@Override
 	public final boolean eq(QHexadecimal value) {
 		// TODO verify
@@ -289,7 +294,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	public final void eval(boolean value) {
-		if(value)
+		if (value)
 			eval(DataSpecial.ON);
 		else
 			eval(DataSpecial.OFF);
@@ -388,44 +393,44 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	public final void movea(QArray<? extends QString> value, boolean clear) {
-		movea(value, 1, clear);		
+		movea(value, 1, clear);
 	}
 
 	@Override
 	public final void movea(QArray<? extends QString> value, int startIndex) {
-		movea(value, startIndex, false);		
+		movea(value, startIndex, false);
 	}
 
 	@Override
 	public final void movea(QArray<? extends QString> value, int startIndex, boolean clear) {
 
-		if(!value.isContiguous())
+		if (!value.isContiguous())
 			throw new UnsupportedOperationException("Invalid operation MOVEA with not contiguous array");
-		
-		if(value.get(1).isVarying())
+
+		if (value.get(1).isVarying())
 			throw new UnsupportedOperationException("Invalid operation MOVEA with varying array");
-		
+
 		int position = ((value.getLength() / value.capacity()) * (startIndex - 1));
-		
+
 		NIOBufferedDataImpl arrayBuffer = NIOBufferHelper.getNIOBufferedDataImpl(value);
-		
+
 		int length = getLength();
-		if(length > value.getLength())
+		if (length > value.getLength())
 			length = value.getLength();
-		
-		byte[] bytes = NIOBufferHelper.read(arrayBuffer.getBuffer(), arrayBuffer.getPosition()+position, length); 
-		
-		_movel(bytes, clear);		
+
+		byte[] bytes = NIOBufferHelper.read(arrayBuffer.getBuffer(), arrayBuffer.getPosition() + position, length);
+
+		_movel(bytes, clear);
 	}
 
 	@Override
 	public final void movea(QArray<? extends QString> value, QNumeric startIndex) {
-		movea(value, startIndex.i());		
+		movea(value, startIndex.i());
 	}
 
 	@Override
 	public final void movea(QArray<? extends QString> value, QNumeric startIndex, boolean clear) {
-		movea(value, startIndex.i(), clear);		
+		movea(value, startIndex.i(), clear);
 	}
 
 	@Override
@@ -467,7 +472,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	public final QCharacter qSubst(Number start) {
-		return qSubst(start, (Number)null);
+		return qSubst(start, (Number) null);
 	}
 
 	@Override
@@ -482,11 +487,11 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 		// TODO cache ?
 		QCharacter character = new NIOCharacterImpl(getDataContext(), length.intValue());
-		if(isVarying()) 
-			this.assign(character, start.intValue()+2);
-		else 
+		if (isVarying())
+			this.assign(character, start.intValue() + 2);
+		else
 			this.assign(character, start.intValue());
-				
+
 		return character;
 	}
 
@@ -510,11 +515,10 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 		return qSubst(start.i(), length.i());
 	}
 
-
 	@Override
 	public QCharacter qTrim() {
 
-		// TODO cache? 
+		// TODO cache?
 		byte[] bytes = NIOBufferHelper.trim(this);
 		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length);
 		character.allocate();
@@ -524,9 +528,21 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	}
 
 	@Override
+	public QCharacter qTrim(String trimmed) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public QCharacter qTrim(QString trimmed) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public QCharacter qTriml() {
 
-		// TODO cache? 
+		// TODO cache?
 		byte[] bytes = NIOBufferHelper.trimL(this);
 		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length);
 		character.allocate();
@@ -537,8 +553,8 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	public QCharacter qTrimr() {
-		
-		// TODO cache? 
+
+		// TODO cache?
 		byte[] bytes = NIOBufferHelper.trimR(this);
 		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length);
 		character.allocate();
@@ -546,12 +562,12 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 		return character;
 	}
-	
+
 	@Override
 	public final String s() {
 		return asString();
 	}
-	
+
 	@Override
 	public final void testn(QIndicator numeric) {
 		testn(numeric, null);
@@ -570,14 +586,14 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 			blank.eval(isBlank);
 
 		boolean isBlankNumeric = false;
-		if(!isBlank)
+		if (!isBlank)
 			isBlankNumeric = asString().startsWith(" ");
-			if (blankNumeric != null) {
-				blankNumeric.eval(isBlankNumeric);
-			}
-		
+		if (blankNumeric != null) {
+			blankNumeric.eval(isBlankNumeric);
+		}
+
 		boolean isNumeric = false;
-		if(!isBlank && ! isBlankNumeric)
+		if (!isBlank && !isBlankNumeric)
 			try {
 				Double.parseDouble(asString());
 				isNumeric = true;
@@ -594,7 +610,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	public String toString() {
 		return asString();
 	}
-	
+
 	@Override
 	public final String trim() {
 		return new String(NIOBufferHelper.trim(this), getDataContext().getCharset());

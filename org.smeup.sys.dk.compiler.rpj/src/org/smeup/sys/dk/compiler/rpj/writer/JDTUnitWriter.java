@@ -35,6 +35,7 @@ import org.smeup.sys.os.pgm.rpj.RPJCommandSupport;
 import org.smeup.sys.os.pgm.rpj.RPJDatabaseSupport;
 import org.smeup.sys.os.pgm.rpj.RPJProcedureSupport;
 import org.smeup.sys.os.pgm.rpj.RPJProgramSupport;
+import org.smeup.sys.os.pgm.rpj.RPJProgramSupport.Specials;
 
 public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 
@@ -64,6 +65,7 @@ public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 	public void writeSupportFields(RPJCallableUnitInfo callableUnitInfo) {
 
 		writeImport(QData.class);
+		writeImport(Specials.class);
 		writeImport(DatetimeFormat.class);
 		writeImport(TimeFormat.class);
 		
