@@ -427,6 +427,78 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model bitNumbersRequired="true" offRequired="true"
+	 * @generated
+	 */
+	void testb(byte bitNumbers, QIndicator off);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model bitNumbersRequired="true" offRequired="true"
+	 * @generated
+	 */
+	void testb(String bitNumbers, QIndicator off);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model bitNumbersRequired="true" offRequired="true"
+	 * @generated
+	 */
+	void testb(QString bitNumbers, QIndicator off);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model bitNumbersRequired="true" offRequired="true" onRequired="true"
+	 * @generated
+	 */
+	void testb(byte bitNumbers, QIndicator off, QIndicator on);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model bitNumbersRequired="true" offRequired="true" onRequired="true"
+	 * @generated
+	 */
+	void testb(String bitNumbers, QIndicator off, QIndicator on);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model bitNumbersRequired="true" offRequired="true" onRequired="true"
+	 * @generated
+	 */
+	void testb(QString bitNumbers, QIndicator off, QIndicator on);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model bitNumbersRequired="true" offRequired="true" onRequired="true" equalRequired="true"
+	 * @generated
+	 */
+	void testb(byte bitNumbers, QIndicator off, QIndicator on, QIndicator equal);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model bitNumbersRequired="true" offRequired="true" onRequired="true" equalRequired="true"
+	 * @generated
+	 */
+	void testb(String bitNumbers, QIndicator off, QIndicator on, QIndicator equal);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model bitNumbersRequired="true" offRequired="true" onRequired="true" equalRequired="true"
+	 * @generated
+	 */
+	void testb(QString bitNumbers, QIndicator off, QIndicator on, QIndicator equal);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model numericRequired="true" blankRequired="true"
 	 * @generated
 	 */
