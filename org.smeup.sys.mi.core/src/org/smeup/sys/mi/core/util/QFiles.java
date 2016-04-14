@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.mi.core.util;
 
+import java.io.IOException;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -26,5 +28,21 @@ public interface QFiles {
 	 * @generated
 	 */
 	String getBaseName(String fileName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException" pathRequired="true"
+	 * @generated
+	 */
+	void cleanDirectory(String path) throws IOException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException" pathRequired="true"
+	 * @generated
+	 */
+	void deleteDirectory(String path) throws IOException;
 
 } // QFiles
