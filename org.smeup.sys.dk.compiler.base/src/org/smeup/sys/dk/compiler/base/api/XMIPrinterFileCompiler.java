@@ -25,12 +25,15 @@ import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerManager;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.source.QProject;
+import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
@@ -56,7 +59,7 @@ public class XMIPrinterFileCompiler {
 	private QLibraryManager libraryManager;
 
 	@Main
-	public void main(FileRef fileRef, @DataDef(length=10) QCharacter libraryTo) throws IOException {
+	public void main(FileRef fileRef, @DataDef(length = 1) QEnum<YesNo, QCharacter> replace, @DataDef(length = 10) QCharacter libraryTo) throws IOException {
 
 		// file
 		QResourceReader<QFile> fileReader = null;
@@ -82,13 +85,16 @@ public class XMIPrinterFileCompiler {
 
 			QPrinterFile printerFile = (QPrinterFile) qFile;
 
+			if (!replaceSource(printerFile, libraryTo, replace.asEnum()))
+				continue;
+
 			try {
 				createJavaFile(printerFile, library, libraryTo.trimR());
 			} catch (Exception e) {
 				System.err.println(e);
 			}
 		}
-		
+
 		files.close();
 	}
 
@@ -96,9 +102,9 @@ public class XMIPrinterFileCompiler {
 		if (file.getApplication() == null)
 			throw new OperatingSystemException("Invalid file application: " + file);
 
-		if(libraryTo == null || libraryTo.isEmpty())
+		if (libraryTo == null || libraryTo.isEmpty())
 			libraryTo = file.getLibrary();
-		
+
 		// create java source
 		QProject project = sourceManager.getProject(job.getContext(), libraryTo);
 
@@ -111,13 +117,35 @@ public class XMIPrinterFileCompiler {
 		setup.setBasePackage(packageURI.toString().replaceAll("/", "."));
 
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
-		String javaName = "java-src/"+library.getPackageURI().resolve(file.getClassURI()) + ".java";
+		String javaName = "java-src/" + library.getPackageURI().resolve(file.getClassURI()) + ".java";
 		javaName = javaName.replaceAll("§", "Ç");
-		
+
 		compilerManager.writePrinterFile(compilationUnit, setup, output);
 
 		sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(output.toByteArray()));
 
 		compilationUnit.close();
 	}
+
+	private boolean replaceSource(QPrinterFile qPrinterFile, QCharacter libraryTo, YesNo replace) {
+		QLibrary library = this.libraryManager.getLibraryReader(job).lookup(qPrinterFile.getLibrary());
+		String librarySrc = libraryTo.trimR();
+		if (libraryTo == null || libraryTo.isEmpty())
+			librarySrc = qPrinterFile.getLibrary();
+		QProject libraryEntry = sourceManager.getProject(job.getContext(), librarySrc);
+
+		String javaName = "java-src/" + library.getPackageURI().resolve(qPrinterFile.getClassURI()) + ".java";
+		javaName = javaName.replaceAll("§", "Ç");
+		QSourceEntry javaEntry = sourceManager.getChildEntry(job.getContext(), libraryEntry, javaName);
+
+		if (javaEntry != null && replace.equals(YesNo.NO))
+			return false;
+
+		return true;
+	}
+
+	private enum YesNo {
+		@Special(value = "Y") YES, @Special(value = "N") NO
+	}
+
 }

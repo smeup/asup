@@ -76,8 +76,30 @@
       </dataTerm>
     </parameters>
     <parameters
-        name="TOLIB"
+        name="REPLACE"
         position="2">
+      <dataTerm
+          name="replace"
+          restricted="true">
+        <facets
+            xsi:type="il-data-term:Special">
+          <elements
+              name="*YES"
+              value="Y"/>
+          <elements
+              name="*NO"
+              value="N"/>
+        </facets>
+        <default
+            value="*YES"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        name="TOLIB"
+        position="3">
       <dataTerm
           name="libraryTo"
           restricted="true">
@@ -155,10 +177,33 @@
       </dataTerm>
     </parameters>
     <parameters
-        name="TOLIB"
+        name="REPLACE"
         position="2">
       <dataTerm
-          name="libraryTo">
+          name="replace"
+          restricted="true">
+        <facets
+            xsi:type="il-data-term:Special">
+          <elements
+              name="*YES"
+              value="Y"/>
+          <elements
+              name="*NO"
+              value="N"/>
+        </facets>
+        <default
+            value="*YES"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        name="TOLIB"
+        position="3">
+      <dataTerm
+          name="libraryTo"
+          restricted="true">
         <definition
             xsi:type="il-data-def:CharacterDef"
             length="10"/>
@@ -234,10 +279,33 @@
       </dataTerm>
     </parameters>
     <parameters
-        name="TOLIB"
+        name="REPLACE"
         position="2">
       <dataTerm
-          name="libraryTo">
+          name="replace"
+          restricted="true">
+        <facets
+            xsi:type="il-data-term:Special">
+          <elements
+              name="*YES"
+              value="Y"/>
+          <elements
+              name="*NO"
+              value="N"/>
+        </facets>
+        <default
+            value="*YES"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        name="TOLIB"
+        position="3">
+      <dataTerm
+          name="libraryTo"
+          restricted="true">
         <definition
             xsi:type="il-data-def:CharacterDef"
             length="10"/>

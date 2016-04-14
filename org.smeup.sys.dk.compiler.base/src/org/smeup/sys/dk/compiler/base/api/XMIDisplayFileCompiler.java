@@ -25,12 +25,15 @@ import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerManager;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.source.QProject;
+import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
@@ -56,7 +59,7 @@ public class XMIDisplayFileCompiler {
 	private QLibraryManager libraryManager;
 
 	@Main
-	public void main(FileRef fileRef, @DataDef(length=10) QCharacter libraryTo) {
+	public void main(FileRef fileRef, @DataDef(length = 1) QEnum<YesNo, QCharacter> replace, @DataDef(length = 10) QCharacter libraryTo) {
 
 		try (QObjectIterator<QFile> files = buildIterator(fileRef);) {
 
@@ -69,6 +72,9 @@ public class XMIDisplayFileCompiler {
 					continue;
 
 				QDisplayFile displayFile = (QDisplayFile) qFile;
+
+				if (!replaceSource(displayFile, libraryTo, replace.asEnum()))
+					continue;
 
 				try {
 					createJavaFile(displayFile, library, libraryTo.trimR());
@@ -98,14 +104,13 @@ public class XMIDisplayFileCompiler {
 
 		return fileIterator;
 	}
-	
+
 	private void createJavaFile(QDisplayFile file, QLibrary library, String libraryTo) throws IOException, OperatingSystemException {
 
 		if (file.getApplication() == null)
 			throw new OperatingSystemException("Invalid file application: " + file);
 
-
-		if(libraryTo == null || libraryTo.isEmpty())
+		if (libraryTo == null || libraryTo.isEmpty())
 			libraryTo = file.getLibrary();
 
 		// create java source
@@ -123,10 +128,31 @@ public class XMIDisplayFileCompiler {
 
 		compilerManager.writeDisplayFile(compilationUnit, setup, output);
 
-		String javaName = "java-src/"+library.getPackageURI().resolve(file.getClassURI()) + ".java";
+		String javaName = "java-src/" + library.getPackageURI().resolve(file.getClassURI()) + ".java";
 		javaName = javaName.replaceAll("§", "Ç");
 		sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(output.toByteArray()));
 
 		compilationUnit.close();
+	}
+
+	private boolean replaceSource(QDisplayFile qDisplayFile, QCharacter libraryTo, YesNo replace) {
+		QLibrary library = this.libraryManager.getLibraryReader(job).lookup(qDisplayFile.getLibrary());
+		String librarySrc = libraryTo.trimR();
+		if (libraryTo == null || libraryTo.isEmpty())
+			librarySrc = qDisplayFile.getLibrary();
+		QProject libraryEntry = sourceManager.getProject(job.getContext(), librarySrc);
+
+		String javaName = "java-src/" + library.getPackageURI().resolve(qDisplayFile.getClassURI()) + ".java";
+		javaName = javaName.replaceAll("§", "Ç");
+		QSourceEntry javaEntry = sourceManager.getChildEntry(job.getContext(), libraryEntry, javaName);
+
+		if (javaEntry != null && replace.equals(YesNo.NO))
+			return false;
+
+		return true;
+	}
+
+	private enum YesNo {
+		@Special(value = "Y") YES, @Special(value = "N") NO
 	}
 }

@@ -25,12 +25,15 @@ import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerManager;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.source.QProject;
+import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
@@ -56,7 +59,7 @@ public class XMIDatabaseFileCompiler {
 	private QLibraryManager libraryManager;
 
 	@Main
-	public void main(FileRef fileRef, @DataDef(length=10) QCharacter libraryTo) throws IOException {
+	public void main(FileRef fileRef, @DataDef(length = 1) QEnum<YesNo, QCharacter> replace, @DataDef(length = 10) QCharacter libraryTo) throws IOException {
 
 		// file
 		QResourceReader<QFile> fileReader = null;
@@ -85,6 +88,9 @@ public class XMIDatabaseFileCompiler {
 			if (qFile.getName().startsWith("DIZ_"))
 				continue;
 
+			if (!replaceSource(qFile, libraryTo, replace.asEnum()))
+				continue;
+			
 			QDatabaseFile databaseFile = (QDatabaseFile) qFile;
 
 			try {
@@ -102,15 +108,15 @@ public class XMIDatabaseFileCompiler {
 		if (file.getApplication() == null)
 			throw new OperatingSystemException("Invalid file application: " + file);
 
-		if(libraryTo == null || libraryTo.isEmpty())
+		if (libraryTo == null || libraryTo.isEmpty())
 			libraryTo = file.getLibrary();
-		
+
 		// create java source
 		QProject project = sourceManager.getProject(job.getContext(), libraryTo);
 
-		String javaName = "java-src/"+library.getPackageURI().resolve(file.getClassURI()) + ".java";
+		String javaName = "java-src/" + library.getPackageURI().resolve(file.getClassURI()) + ".java";
 		javaName = javaName.replaceAll("§", "Ç");
-		
+
 		// compilation unit
 		QCompilationUnit compilationUnit = compilerManager.createCompilationUnit(job, file, CaseSensitiveType.LOWER);
 
@@ -120,13 +126,34 @@ public class XMIDatabaseFileCompiler {
 		setup.setBasePackage(packageURI.toString().replaceAll("/", "."));
 
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
-		
+
 		compilerManager.writeDatabaseFile(compilationUnit, setup, output);
-		
+
 		sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(output.toByteArray()));
 
 		output.close();
 
 		compilationUnit.close();
+	}
+
+	private boolean replaceSource(QFile qProgram, QCharacter libraryTo, YesNo replace) {
+		QLibrary library = this.libraryManager.getLibraryReader(job).lookup(qProgram.getLibrary());
+		String librarySrc = libraryTo.trimR();
+		if (libraryTo == null || libraryTo.isEmpty())
+			librarySrc = qProgram.getLibrary();
+		QProject libraryEntry = sourceManager.getProject(job.getContext(), librarySrc);
+
+		String javaName = "java-src/" + library.getPackageURI().resolve(qProgram.getClassURI()) + ".java";
+		javaName = javaName.replaceAll("§", "Ç");
+		QSourceEntry javaEntry = sourceManager.getChildEntry(job.getContext(), libraryEntry, javaName);
+
+		if (javaEntry != null && replace.equals(YesNo.NO))
+			return false;
+
+		return true;
+	}
+	
+	private enum YesNo {
+		@Special(value = "Y") YES, @Special(value = "N") NO
 	}
 }

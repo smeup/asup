@@ -445,54 +445,6 @@ public class RPJProgramSupport {
 
 		return character;
 	}
-/*
-	public QDecimal qCheck(String comparator, QString base, Number start) {
-		// returns the first position of the string base that contains a
-		// character that does not appear in string comparator
-		if (start == null)
-			start = 1;
-		QDecimal decimal = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.PACKED, true);
-
-		int i = 0;
-		int s = 0;
-		while (true) {
-			i = base.qSubst(start).trimR().indexOf(comparator, s);
-			if (i != -1)
-				s++;
-			break;
-		}
-
-		if (s > 0)
-			decimal.eval(s + 1);
-		else
-			decimal.eval(base.qSubst(start).trimR().length());
-
-		return decimal;
-	}
-
-	public QDecimal qCheckr(String comparator, QString base, Number start) {
-		// TODO verify
-		if (start == null)
-			start = 1;
-		QDecimal decimal = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.PACKED, true);
-		int i = 0;
-		int s = base.qSubst(start).trimR().length();
-		String string = base.qSubst(start).trimR();
-		while (true) {
-			i = string.indexOf(comparator, s);
-			if (i != -1)
-				s--;
-			break;
-		}
-
-		if (s > 0)
-			decimal.eval(s - 1);
-		else
-			decimal.eval(string.length());
-
-		return decimal;
-	}
-*/
 
 	public QDecimal qDec(QNumeric numeric, Integer precision, Integer scale) {
 		return null;
