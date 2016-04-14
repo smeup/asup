@@ -27,6 +27,8 @@ import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectIterator;
+import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -54,7 +56,7 @@ public class XMIPrinterFileCompiler {
 	private QLibraryManager libraryManager;
 
 	@Main
-	public void main(FileRef fileRef) throws IOException {
+	public void main(FileRef fileRef, @DataDef(length=10) QCharacter libraryTo) throws IOException {
 
 		// file
 		QResourceReader<QFile> fileReader = null;
@@ -81,7 +83,7 @@ public class XMIPrinterFileCompiler {
 			QPrinterFile printerFile = (QPrinterFile) qFile;
 
 			try {
-				createJavaFile(printerFile, library);
+				createJavaFile(printerFile, library, libraryTo.trimR());
 			} catch (Exception e) {
 				System.err.println(e);
 			}
@@ -90,12 +92,15 @@ public class XMIPrinterFileCompiler {
 		files.close();
 	}
 
-	private void createJavaFile(QPrinterFile file, QLibrary library) throws IOException, OperatingSystemException {
+	private void createJavaFile(QPrinterFile file, QLibrary library, String libraryTo) throws IOException, OperatingSystemException {
 		if (file.getApplication() == null)
 			throw new OperatingSystemException("Invalid file application: " + file);
 
+		if(libraryTo == null || libraryTo.isEmpty())
+			libraryTo = file.getLibrary();
+		
 		// create java source
-		QProject project = sourceManager.getProject(job.getContext(), file.getLibrary());
+		QProject project = sourceManager.getProject(job.getContext(), libraryTo);
 
 		// compilation unit
 		QCompilationUnit compilationUnit = compilerManager.createCompilationUnit(job, file, CaseSensitiveType.LOWER);
