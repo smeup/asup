@@ -445,7 +445,7 @@ public class RPJProgramSupport {
 
 		return character;
 	}
-
+/*
 	public QDecimal qCheck(String comparator, QString base, Number start) {
 		// returns the first position of the string base that contains a
 		// character that does not appear in string comparator
@@ -492,6 +492,7 @@ public class RPJProgramSupport {
 
 		return decimal;
 	}
+*/
 
 	public QDecimal qDec(QNumeric numeric, Integer precision, Integer scale) {
 		return null;
