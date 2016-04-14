@@ -50,6 +50,7 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 		// TODO Auto-generated method stub
 	}
 
+
 	@Override
 	public void biton(String bitNumbers) {
 		// TODO Auto-generated method stub
@@ -581,6 +582,60 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 			found.eval(getDataContext().found());
 		
 		return number;
+	}
+	
+	@Override
+	public void testb(byte bitNumbers, QIndicator off) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void testb(String bitNumbers, QIndicator off) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void testb(QString bitNumbers, QIndicator off) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void testb(byte bitNumbers, QIndicator off, QIndicator on) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void testb(String bitNumbers, QIndicator off, QIndicator on) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void testb(QString bitNumbers, QIndicator off, QIndicator on) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void testb(byte bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void testb(String bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void testb(QString bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	@Override

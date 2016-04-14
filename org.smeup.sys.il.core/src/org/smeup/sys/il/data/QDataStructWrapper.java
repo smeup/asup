@@ -1282,4 +1282,40 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	public void cat(byte factor1, String factor2) {
 		delegate.cat(factor1, factor2);
 	}
+
+	public void testb(byte bitNumbers, QIndicator off) {
+		delegate.testb(bitNumbers, off);
+	}
+
+	public void testb(String bitNumbers, QIndicator off) {
+		delegate.testb(bitNumbers, off);
+	}
+
+	public void testb(QString bitNumbers, QIndicator off) {
+		delegate.testb(bitNumbers, off);
+	}
+
+	public void testb(byte bitNumbers, QIndicator off, QIndicator on) {
+		delegate.testb(bitNumbers, off, on);
+	}
+
+	public void testb(String bitNumbers, QIndicator off, QIndicator on) {
+		delegate.testb(bitNumbers, off, on);
+	}
+
+	public void testb(QString bitNumbers, QIndicator off, QIndicator on) {
+		delegate.testb(bitNumbers, off, on);
+	}
+
+	public void testb(byte bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
+		delegate.testb(bitNumbers, off, on, equal);
+	}
+
+	public void testb(String bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
+		delegate.testb(bitNumbers, off, on, equal);
+	}
+
+	public void testb(QString bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
+		delegate.testb(bitNumbers, off, on, equal);
+	}	
 }

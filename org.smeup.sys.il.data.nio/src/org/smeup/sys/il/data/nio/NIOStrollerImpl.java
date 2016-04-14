@@ -1004,4 +1004,49 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	public void cat(byte factor1, String factor2) {
 		current().cat(factor1, factor2);
 	}
+
+	@Override
+	public void testb(byte bitNumbers, QIndicator off) {
+		current().testb(bitNumbers, off);
+	}
+
+	@Override
+	public void testb(String bitNumbers, QIndicator off) {
+		current().testb(bitNumbers, off);
+	}
+
+	@Override
+	public void testb(QString bitNumbers, QIndicator off) {
+		current().testb(bitNumbers, off);
+	}
+
+	@Override
+	public void testb(byte bitNumbers, QIndicator off, QIndicator on) {
+		current().testb(bitNumbers, off, on);
+	}
+
+	@Override
+	public void testb(String bitNumbers, QIndicator off, QIndicator on) {
+		current().testb(bitNumbers, off, on);
+	}
+
+	@Override
+	public void testb(QString bitNumbers, QIndicator off, QIndicator on) {
+		current().testb(bitNumbers, off, on);
+	}
+
+	@Override
+	public void testb(byte bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
+		current().testb(bitNumbers, off, on, equal);
+	}
+
+	@Override
+	public void testb(String bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
+		current().testb(bitNumbers, off, on, equal);
+	}
+
+	@Override
+	public void testb(QString bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
+		current().testb(bitNumbers, off, on, equal);
+	}
 }

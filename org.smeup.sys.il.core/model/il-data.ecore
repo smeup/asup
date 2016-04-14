@@ -2946,6 +2946,51 @@
     <eOperations name="qTriml" lowerBound="1" eType="#//Character"/>
     <eOperations name="qTrimr" lowerBound="1" eType="#//Character"/>
     <eOperations name="s" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="testb" lowerBound="1">
+      <eParameters name="bitNumbers" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+      <eParameters name="off" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="testb" lowerBound="1">
+      <eParameters name="bitNumbers" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="off" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="testb" lowerBound="1">
+      <eParameters name="bitNumbers" lowerBound="1" eType="#//String"/>
+      <eParameters name="off" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="testb" lowerBound="1">
+      <eParameters name="bitNumbers" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+      <eParameters name="off" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="on" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="testb" lowerBound="1">
+      <eParameters name="bitNumbers" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="off" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="on" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="testb" lowerBound="1">
+      <eParameters name="bitNumbers" lowerBound="1" eType="#//String"/>
+      <eParameters name="off" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="on" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="testb" lowerBound="1">
+      <eParameters name="bitNumbers" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+      <eParameters name="off" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="on" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="testb" lowerBound="1">
+      <eParameters name="bitNumbers" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="off" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="on" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="testb" lowerBound="1">
+      <eParameters name="bitNumbers" lowerBound="1" eType="#//String"/>
+      <eParameters name="off" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="on" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
     <eOperations name="testn" lowerBound="1">
       <eParameters name="numeric" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
