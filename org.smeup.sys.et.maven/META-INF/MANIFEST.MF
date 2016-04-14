@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP External Tool Maven Invoker
+Bundle-SymbolicName: org.smeup.sys.et.maven
+Bundle-Version: 0.8.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .,
+ lib/maven-invoker-2.2.jar,
+ lib/plexus-component-annotations-1.6.jar,
+ lib/plexus-utils-3.0.20.jar
