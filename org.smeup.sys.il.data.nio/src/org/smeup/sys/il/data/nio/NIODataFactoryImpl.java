@@ -526,7 +526,10 @@ public class NIODataFactoryImpl implements QDataFactory {
 						String value = annotationDef.value();
 						if (value.startsWith("*")) {
 							DataSpecial dataSpecial = DataSpecial.get(value);
-							element.movel(dataSpecial, true);
+							if(dataSpecial==null)
+								element.movel(value, true);
+							else
+								element.movel(dataSpecial, true);
 						} else
 							element.movel(value, true);
 					}
