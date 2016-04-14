@@ -351,7 +351,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public <D extends QBufferedElement> QArray<D> createArray(QUnaryAtomicBufferedDataDef<D> argument, int dimension, SortDirection sortDirection, boolean initialize) {
 
-		NIOBufferedElementImpl model = (NIOBufferedElementImpl) createData(argument, false);
+		QBufferedElement model = (QBufferedElement) createData(argument, false);
 
 		QArray<D> array = new NIOArrayImpl(getDataContext(), model, dimension, sortDirection);
 

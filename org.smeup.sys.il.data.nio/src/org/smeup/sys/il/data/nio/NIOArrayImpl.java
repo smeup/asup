@@ -30,7 +30,7 @@ import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.SortDirection;
 
-public class NIOArrayImpl<D extends NIOBufferedElementImpl> extends NIOBufferedListImpl<D> implements QArray<D> {
+public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImpl<D> implements QArray<D> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -119,7 +119,7 @@ public class NIOArrayImpl<D extends NIOBufferedElementImpl> extends NIOBufferedL
 		if (element != null)
 			return element;
 
-		element = (D) getModel().copy();
+		element = (D) ((NIODataImpl)getModel()).copy();
 
 		int position = 0;
 		if (getListOwner() == null)

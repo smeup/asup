@@ -770,7 +770,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			} else
 				buffer.append(value);
 
-		} 
+		}
 		// cast
 		else if (QIndicator.class.isAssignableFrom(target) && QCharacter.class.isAssignableFrom(source))
 			buffer.append("qRPJ.qCast(" + value + ")");
@@ -787,7 +787,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				buffer.append("qRPJ.qBox(" + value + ")");
 			else if (target.equals(QData.class) && source.equals(String.class))
 				buffer.append("qRPJ.qBox(" + value + ")");
-			
+
 			// buffered
 			else if (target.equals(QBufferedElement.class) && source.equals(String.class))
 				buffer.append("qRPJ.qBox(" + value + ")");
@@ -822,21 +822,19 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		// unboxing
 		else {
 
-			if(source != null && !QData.class.isAssignableFrom(source)) {
+			if (source != null && !QData.class.isAssignableFrom(source)) {
 				// JVM casting
 				if (Number.class.isAssignableFrom(source) && Number.class.isAssignableFrom(target)) {
 					buffer.append(value);
 					return;
-				}
-				else {					
-					buffer.append("qRPJ.qBox"+getTarget().getSimpleName()+"(");
+				} else {
+					buffer.append("qRPJ.qBox" + getTarget().getSimpleName() + "(");
 					buffer.append(value);
 					buffer.append(")");
 				}
-			}
-			else
+			} else
 				buffer.append(value);
-			
+
 			// string
 			if (String.class.isAssignableFrom(target)) {
 				buffer.append(".s()");
@@ -850,7 +848,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 					buffer.append(".i()");
 				} else if (target.equals(Long.class)) {
 					buffer.append(".l()");
-				} else if (target.equals(Double.class)) {	
+				} else if (target.equals(Double.class)) {
 					buffer.append(".d()");
 				} else {
 					buffer.append(".i()");
@@ -994,11 +992,6 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		QNamedNode namedNode = compilationUnit.getNamedNode(expression.getValue(), true);
 
-		if (namedNode == null)
-			compilationUnit.getNamedNode(expression.getValue(), true);
-
-		// unary
-
 		// dataSet
 		if (namedNode instanceof QDataSetTerm) {
 			this.buffer.append(compilationUnit.getQualifiedName(namedNode));
@@ -1093,8 +1086,12 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		} else if (namedNode instanceof QDataTerm<?>) {
 			QDataTerm<?> dataTerm = (QDataTerm<?>) namedNode;
-
-			if (dataTerm.getDataTermType().isUnary()) {
+			// qualified
+			if(expression instanceof QQualifiedTermExpression) {
+				writeValue(dataTerm.getDefinition().getDataClass(), this.target, compilationUnit.getQualifiedName(namedNode));
+				return true;
+			}
+			else if (dataTerm.getDataTermType().isUnary()) {
 
 				// atomic
 				if (dataTerm.getDataTermType().isAtomic())
@@ -1102,47 +1099,12 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 				// compound
 				else {
-
-					// TODO remove
-					if (namedNode.getName().toString().equalsIgnoreCase("*IN")) {
-
-						StringBuffer value = new StringBuffer();
-						value.append(compilationUnit.getQualifiedName(namedNode));
-						value.append(".get");
-						value.append("(");
-
-						JDTExpressionStringBuilder indexBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
-						indexBuilder.setAST(getAST());
-
-						for (QExpression element : expression.getElements())
-							element.accept(indexBuilder);
-						value.append(indexBuilder.getResult());
-
-						value.append(")");
-
-						if (this.target == null)
-							writeValue(dataTerm.getDefinition().getDataClass(), null, value.toString());
-						else if (this.target != null && Number.class.isAssignableFrom(this.target))
-							writeValue(dataTerm.getDefinition().getDataClass(), this.target, value.toString());
-						else if (this.target != null && String.class.isAssignableFrom(this.target))
-							writeValue(dataTerm.getDefinition().getDataClass(), this.target, value.toString());
-						else if (this.target != null && Boolean.class.isAssignableFrom(this.target))
-							writeValue(dataTerm.getDefinition().getDataClass(), this.target, value.toString());
-						else
-							writeValue(dataTerm.getDefinition().getDataClass(), null, value.toString());
-
-						return false;
-					} else {
-						this.buffer.append(compilationUnit.getQualifiedName(namedNode));
-						return true;
-					}
-
+					this.buffer.append(compilationUnit.getQualifiedName(namedNode));
 				}
 
 			}
 			// multiple
 			else {
-
 				StringBuffer value = new StringBuffer();
 				value.append(compilationUnit.getQualifiedName(namedNode));
 				value.append(".get");

@@ -108,7 +108,7 @@ public class XMIDatabaseFileCompiler {
 		// create java source
 		QProject project = sourceManager.getProject(job.getContext(), libraryTo);
 
-		String javaName = library.getPackageURI().resolve(file.getClassURI()) + ".java";
+		String javaName = "java-src/"+library.getPackageURI().resolve(file.getClassURI()) + ".java";
 		javaName = javaName.replaceAll("§", "Ç");
 		
 		// compilation unit

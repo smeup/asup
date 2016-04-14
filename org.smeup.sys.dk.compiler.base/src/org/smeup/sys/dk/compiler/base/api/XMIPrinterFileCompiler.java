@@ -111,7 +111,7 @@ public class XMIPrinterFileCompiler {
 		setup.setBasePackage(packageURI.toString().replaceAll("/", "."));
 
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
-		String javaName = library.getPackageURI().resolve(file.getClassURI()) + ".java";
+		String javaName = "java-src/"+library.getPackageURI().resolve(file.getClassURI()) + ".java";
 		javaName = javaName.replaceAll("§", "Ç");
 		
 		compilerManager.writePrinterFile(compilationUnit, setup, output);
