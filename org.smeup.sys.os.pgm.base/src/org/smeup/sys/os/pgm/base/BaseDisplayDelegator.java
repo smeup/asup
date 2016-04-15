@@ -1,7 +1,6 @@
 package org.smeup.sys.os.pgm.base;
 
 import org.smeup.sys.il.data.QIndicator;
-import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.esam.QDisplay;
 
 public class BaseDisplayDelegator<D> implements QDisplay<D> {
@@ -12,18 +11,6 @@ public class BaseDisplayDelegator<D> implements QDisplay<D> {
 		this.delegate = delegate;
 		if(!userOpen)
 			isOpen = true;
-	}
-	
-	@Override
-	public void chain(Class<?> format, int relativeRecordNumber, QIndicator notFound) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void chain(Class<?> format, QNumeric relativeRecordNumber, QIndicator notFound) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

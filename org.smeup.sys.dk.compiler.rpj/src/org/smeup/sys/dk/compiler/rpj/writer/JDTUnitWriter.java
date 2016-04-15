@@ -33,6 +33,7 @@ import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QUnit;
 import org.smeup.sys.os.pgm.rpj.RPJCommandSupport;
 import org.smeup.sys.os.pgm.rpj.RPJDatabaseSupport;
+import org.smeup.sys.os.pgm.rpj.RPJPrintSupport;
 import org.smeup.sys.os.pgm.rpj.RPJProcedureSupport;
 import org.smeup.sys.os.pgm.rpj.RPJProgramSupport;
 import org.smeup.sys.os.pgm.rpj.RPJProgramSupport.Specials;
@@ -109,9 +110,7 @@ public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 			variable = getAST().newVariableDeclarationFragment();
 			field = getAST().newFieldDeclaration(variable);
 
-			// writeAnnotation(field, ModuleDef.class, "name", "*SQL");
 			writeAnnotation(field, Inject.class);
-			// writeAnnotation(field, Named.class, "value", "*SQL");
 
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.PRIVATE_KEYWORD));
 			field.setType(getAST().newSimpleType(getAST().newName(RPJDatabaseSupport.class.getSimpleName())));
@@ -120,22 +119,21 @@ public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 
 		}
 
-/*		String name = getCompilationUnit().getRoot().getName();
-		if (name.equalsIgnoreCase("£J03")) {
-			writeImport(RPJServiceSupport.class);
+		// *PRT
+		if (callableUnitInfo.containsPRTStatement()) {
+			writeImport(RPJPrintSupport.class);
 
 			variable = getAST().newVariableDeclarationFragment();
 			field = getAST().newFieldDeclaration(variable);
 
-			// writeAnnotation(field, ModuleDef.class, "name", "*JAX");
 			writeAnnotation(field, Inject.class);
-			// writeAnnotation(field, Named.class, "value", "*JAX");
 
-			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
-			field.setType(getAST().newSimpleType(getAST().newName(RPJServiceSupport.class.getSimpleName())));
-			variable.setName(getAST().newSimpleName("qJAX"));
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.PRIVATE_KEYWORD));
+			field.setType(getAST().newSimpleType(getAST().newName(RPJPrintSupport.class.getSimpleName())));
+			variable.setName(getAST().newSimpleName("qPRT"));
 			getTarget().bodyDeclarations().add(field);
-		}*/
+
+		}
 	}
 
 	public void refactUnit(QUnit unit) {

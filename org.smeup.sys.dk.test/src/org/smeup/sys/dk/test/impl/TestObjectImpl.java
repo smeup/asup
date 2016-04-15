@@ -43,6 +43,11 @@ import org.smeup.sys.il.core.impl.ObjectNameableImpl;
  */
 public class TestObjectImpl extends ObjectNameableImpl implements QTestObject {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

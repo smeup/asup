@@ -3436,7 +3436,7 @@
       <eGenericSuperTypes eClassifier="#//def/UnaryAtomicDataDef">
         <eTypeArguments eTypeParameter="#//def/UnaryAtomicBufferedDataDef/D"/>
       </eGenericSuperTypes>
-      <eGenericSuperTypes eClassifier="#//def/BufferedDataDef">
+      <eGenericSuperTypes eClassifier="#//def/UnaryBufferedDataDef">
         <eTypeArguments eTypeParameter="#//def/UnaryAtomicBufferedDataDef/D"/>
       </eGenericSuperTypes>
     </eClassifiers>

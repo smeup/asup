@@ -30,7 +30,7 @@ import org.smeup.sys.il.data.def.DecimalType;
 public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NIOBufferedDataImpl implements QBufferedList<D> {
 
 	private static final long serialVersionUID = 1L;
-	private NIOBufferedListImpl<?> listOwner;	
+	private NIOBufferedListImpl<?> listOwner;
 	private QDataWriter dataWriter;
 	private D _model;
 
@@ -48,7 +48,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	public QBufferedData eval(DataSpecial value) {
 		for (D element : this)
 			element.eval(value);
-		
+
 		return this;
 	}
 
@@ -61,12 +61,12 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	@Override
 	public void eval(Number value, boolean halfAdjust) {
 		for (D element : this)
-			((QNumeric) element).eval(value, halfAdjust);		
+			((QNumeric) element).eval(value, halfAdjust);
 	}
 
 	@Override
 	public QBufferedData eval(QDataFiller value) {
-		for(D element: this)
+		for (D element : this)
 			element.eval(value);
 
 		return this;
@@ -92,19 +92,19 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	public void eval(QList<? extends QNumeric> value, boolean halfAdjust) {
 
 		assert QNumeric.class.isAssignableFrom(getModel().getClass());
-		
+
 		int capacity = capacity();
 		if (value.capacity() < capacity)
 			capacity = value.capacity();
 
 		for (int e = 1; e <= capacity; e++) {
-			((QNumeric)get(e)).eval(value.get(e), halfAdjust);
+			((QNumeric) get(e)).eval(value.get(e), halfAdjust);
 		}
 
 		for (int e = capacity + 1; e <= capacity(); e++)
 			get(e).clear();
 	}
-	
+
 	@Override
 	public final void eval(QNumeric value) {
 		for (D element : this)
@@ -116,29 +116,39 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 		for (D element : this)
 			((QNumeric) element).eval(value, halfAdjust);
 	}
-	
+
 	@Override
 	public final void eval(QString value) {
-		for (D element : this)
-			((QString) element).eval(value);
+		if (getModel() instanceof QString) {
+			for (D element : this)
+				((QString) element).eval(value);
+		} else {
+			for (D element : this)
+				element.move(value, true);
+		}
 	}
 
 	@Override
 	public final void eval(String value) {
-		for (D element : this)
-			((QString) element).eval(value);
+		if (getModel() instanceof QString) {
+			for (D element : this)
+				((QString) element).eval(value);
+		} else {
+			for (D element : this)
+				element.move(value, true);
+		}
 	}
 
 	@Override
 	public final D get(QNumeric index) {
 		return get(index.asInteger());
 	}
-		
+
 	@Override
 	protected final byte getFiller() {
 		return ((NIOBufferedDataImpl) getModel()).getFiller();
 	}
-	
+
 	@Override
 	public final int getLength() {
 		return capacity() * getModel().getLength();
@@ -191,8 +201,8 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void move(DataSpecial value, boolean clear) {
-		for(D element: this)
-			element.move(value, clear);		
+		for (D element : this)
+			element.move(value, clear);
 	}
 
 	@Override
@@ -202,7 +212,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void move(Number value, boolean clear) {
-		for(D element: this)
+		for (D element : this)
 			element.move(value, clear);
 	}
 
@@ -213,7 +223,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void move(QBufferedElement value, boolean clear) {
-		for(D element: this)
+		for (D element : this)
 			element.move(value, clear);
 	}
 
@@ -224,7 +234,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void move(QDataFiller value, boolean clear) {
-		for(D element: this)
+		for (D element : this)
 			element.move(value, clear);
 	}
 
@@ -235,7 +245,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void move(String value, boolean clear) {
-		for(D element: this)
+		for (D element : this)
 			element.move(value, clear);
 	}
 
@@ -246,52 +256,52 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void movel(DataSpecial value, boolean clear) {
-		for(D element: this)
-			element.movel(value, clear);		
+		for (D element : this)
+			element.movel(value, clear);
 	}
 
 	@Override
 	public void movel(Number value) {
-		movel(value, false);		
+		movel(value, false);
 	}
 
 	@Override
 	public void movel(Number value, boolean clear) {
-		for(D element: this)
-			element.movel(value, clear);				
+		for (D element : this)
+			element.movel(value, clear);
 	}
 
 	@Override
 	public void movel(QBufferedElement value) {
-		movel(value, false);		
+		movel(value, false);
 	}
 
 	@Override
 	public void movel(QBufferedElement value, boolean clear) {
-		for(D element: this)
-			element.movel(value, clear);		
+		for (D element : this)
+			element.movel(value, clear);
 	}
 
 	@Override
 	public void movel(QDataFiller value) {
-		movel(value, false);		
+		movel(value, false);
 	}
 
 	@Override
 	public void movel(QDataFiller value, boolean clear) {
-		for(D element: this)
-			element.movel(value, clear);		
+		for (D element : this)
+			element.movel(value, clear);
 	}
 
 	@Override
 	public void movel(String value) {
-		movel(value, false);		
+		movel(value, false);
 	}
 
 	@Override
 	public void movel(String value, boolean clear) {
-		for(D element: this)
-			element.movel(value, clear);				
+		for (D element : this)
+			element.movel(value, clear);
 	}
 
 	protected final void setListOwner(NIOBufferedListImpl<?> listOwner) {
@@ -323,7 +333,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 		return sb.toString();
 	}
-	
+
 	private class NIOListIteratorImpl<E extends QBufferedData> implements Iterator<E> {
 
 		private QList<E> list;

@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.smeup.sys.os.file.*;
 import org.smeup.sys.os.file.QDatabaseFileField;
 import org.smeup.sys.os.file.QDatabaseFileFormat;
 import org.smeup.sys.os.file.QDatabaseFileFormatDef;

@@ -218,29 +218,10 @@ public class CompilationContextHelper {
 				QNamedNode namedNode = compilationUnit.getNamedNode(atomicTermExpression.getValue(), true);
 				QDataTerm<?> dataTerm = getDataTerm(namedNode);
 				if (dataTerm != null)
-
-					switch (dataTerm.getDataTermType()) {
-					case MULTIPLE_ATOMIC:
-						/*
-						 * QMultipleAtomicDataDef<?> multipleAtomicDataDef =
-						 * (QMultipleAtomicDataDef<?>) dataTerm.getDefinition();
-						 * if(primitive) return
-						 * multipleAtomicDataDef.getArgument().getJavaClass();
-						 * else return
-						 * multipleAtomicDataDef.getArgument().getDataClass();
-						 */
-					case MULTIPLE_COMPOUND:
-						/*
-						 * if(primitive) return String.class; else return
-						 * QDataStruct.class;
-						 */
-					case UNARY_ATOMIC:
-					case UNARY_COMPOUND:
-						if (primitive)
-							return dataTerm.getDefinition().getJavaClass();
-						else
-							return dataTerm.getDefinition().getDataClass();
-					}
+					if (primitive)
+						return dataTerm.getDefinition().getJavaClass();
+					else
+						return dataTerm.getDefinition().getDataClass();
 				break;
 			}
 			break;
@@ -285,20 +266,6 @@ public class CompilationContextHelper {
 					return dataTerm.getDefinition().getJavaClass();
 				else
 					return dataTerm.getDefinition().getDataClass();
-			/*
-			 * if (dataTerm.getDataTermType().isMultiple() &&
-			 * dataTerm.getDataTermType().isAtomic()) {
-			 * QMultipleAtomicDataDef<?> multipleAtomicDataDef =
-			 * (QMultipleAtomicDataDef<?>) dataTerm.getDefinition();
-			 * if(primitive) return
-			 * multipleAtomicDataDef.getArgument().getJavaClass(); else return
-			 * multipleAtomicDataDef.getArgument().getDataClass(); } else { //
-			 * TODO define *IN as array not dataStruct if
-			 * (compoundTermExpression.getValue().startsWith("*IN")) { return
-			 * QIndicator.class; } else { if(primitive) return
-			 * dataTerm.getDefinition().getJavaClass(); else return
-			 * dataTerm.getDefinition().getDataClass(); } }
-			 */
 
 			break;
 		case LOGICAL:

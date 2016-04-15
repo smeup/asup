@@ -19,6 +19,7 @@ public class RPJCallableUnitInfo {
 
 	private Map<String, Label> labels;
 	
+	private boolean containsPRTStatement = false;
 	private boolean containsSQLStatement = false;
 	private boolean containsCMDStatement = false;
 	
@@ -51,6 +52,15 @@ public class RPJCallableUnitInfo {
 	public boolean containsInsignificantZeros() {
 		return containsInsignificantZeros;
 	}
+
+	public void containsPRTStatement(boolean containsPRTStatement) {
+		this.containsPRTStatement = containsPRTStatement;
+	}
+
+	public boolean containsPRTStatement() {
+		return this.containsPRTStatement;
+	}
+
 
 	public Map<String, Label> getLabels() {
 		return this.labels;

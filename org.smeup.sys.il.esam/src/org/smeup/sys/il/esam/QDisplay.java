@@ -8,7 +8,6 @@
 package org.smeup.sys.il.esam;
 
 import org.smeup.sys.il.data.QIndicator;
-import org.smeup.sys.il.data.QNumeric;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -20,20 +19,6 @@ import org.smeup.sys.il.data.QNumeric;
  * @generated
  */
 public interface QDisplay<D extends Object> {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model formatRequired="true" relativeRecordNumberRequired="true"
-	 * @generated
-	 */
-	void chain(Class<?> format, int relativeRecordNumber, QIndicator notFound);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model formatRequired="true" relativeRecordNumberRequired="true"
-	 * @generated
-	 */
-	void chain(Class<?> format, QNumeric relativeRecordNumber, QIndicator notFound);
-
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model
