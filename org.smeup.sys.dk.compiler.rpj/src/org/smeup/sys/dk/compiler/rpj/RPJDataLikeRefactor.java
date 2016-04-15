@@ -49,7 +49,11 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 		if (target.getLike() == null)
 			return super.visit(target);
 
-		QDataTerm<?> source = getCompilationUnit().getDataTerm(target.getLike(), true);
+		String like = target.getLike();
+		if(like.toUpperCase().startsWith("*IN") && !like.equalsIgnoreCase("*IN"))
+			like = "*INKA";
+		
+		QDataTerm<?> source = getCompilationUnit().getDataTerm(like, true);
 		if (source == null)
 			throw new IntegratedLanguageExpressionRuntimeException("Invalid liked data term: " + target.getLike());
 
