@@ -31,8 +31,6 @@ import org.smeup.sys.il.data.QString;
 public class NIOPointerImpl extends NIODataImpl implements QPointer {
 
 	private static final long serialVersionUID = 1L;
-	private static byte INIT = (byte) 0;
-
 	protected QStorable _storage = null;
 
 	public NIOPointerImpl(QDataContext dataContext, QStorable storage) {
@@ -89,7 +87,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 
 	@Override
 	public void clear() {
-		NIOBufferHelper.clear(getBuffer(), getPosition(), getByteSize(_storage), INIT);
+		this._storage = null;
 	}
 
 	@Override
