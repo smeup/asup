@@ -230,23 +230,6 @@
   </dataSection>
   <flowSection>
     <prototypes
-        name="%abs">
-      <definition
-          xsi:type="il-data-def:NumericDef"/>
-      <entry>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              name="expression">
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:NumericDef"/>
-          </delegate>
-        </parameters>
-      </entry>
-    </prototypes>
-    <prototypes
         name="%addr">
       <definition
           xsi:type="il-data-def:PointerDef"/>
@@ -761,23 +744,6 @@
           <delegate
               xsi:type="il-esam:DataSetTerm"
               name="dataSet"/>
-        </parameters>
-      </entry>
-    </prototypes>
-    <prototypes
-        name="%int">
-      <definition
-          xsi:type="il-data-def:NumericDef"/>
-      <entry>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              name="expression">
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:StringDef"/>
-          </delegate>
         </parameters>
       </entry>
     </prototypes>

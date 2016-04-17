@@ -714,6 +714,14 @@ public interface QNumeric extends QBufferedElement {
 	 * @model
 	 * @generated
 	 */
+	QNumeric qAbs();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	QDatetime qDate(DatetimeFormat format);
 
 	/**

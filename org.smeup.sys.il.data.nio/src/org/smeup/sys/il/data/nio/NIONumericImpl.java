@@ -792,4 +792,12 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 		for (QNumeric numeric: array) 
 			this.plus(numeric, halfAdjust);
 	}
+
+	@Override
+	public QNumeric qAbs() {
+		if(ge(DataSpecial.ZEROS))
+			return this;
+		else
+			return mult(-1);
+	}
 }

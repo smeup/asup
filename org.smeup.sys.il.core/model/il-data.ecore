@@ -2566,6 +2566,7 @@
     <eOperations name="power" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
+    <eOperations name="qAbs" eType="#//Numeric"/>
     <eOperations name="qDate" eType="#//Datetime">
       <eParameters name="format" eType="#//DatetimeFormat"/>
     </eOperations>

@@ -571,14 +571,6 @@ public class RPJProgramSupport {
 			return qBox(dataSet.isFound());
 	}
 
-	public QDecimal qInt(QString string) {
-		return qBox(Integer.parseInt(string.trimR()));
-	}
-
-	public QDecimal qInt(Integer numeric) {
-		return qBox(numeric);
-	}
-
 	public void qJump(Enum<?> label) {
 	}
 
@@ -748,11 +740,6 @@ public class RPJProgramSupport {
 		}
 	}
 
-	/* Abs */
-	public QNumeric qAbs(QNumeric numeric) {
-		return qBox(Math.abs(numeric.asDouble()));
-	}
-
 	public QDataFiller qAll(byte numeric) {
 		return this.dataFiller.set(qBox(numeric));
 	}
@@ -771,10 +758,6 @@ public class RPJProgramSupport {
 
 	public QDataFiller qAll(QNumeric numeric) {
 		return this.dataFiller.set(numeric);
-	}
-
-	public QNumeric qAbs(Integer numeric) {
-		return qBox(Math.abs(numeric));
 	}
 
 	/* Elem */

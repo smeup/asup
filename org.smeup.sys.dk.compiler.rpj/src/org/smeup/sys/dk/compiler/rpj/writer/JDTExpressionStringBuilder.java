@@ -31,7 +31,6 @@ import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDatetime;
-import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QList;
@@ -794,9 +793,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				buffer.append("qRPJ.qBox(" + value + ")");
 
 			// numeric
-			else if (target.equals(QNumeric.class) && source.equals(Number.class))
-				buffer.append("qRPJ.qBox(" + value + ")");
-			else if (target.equals(QDecimal.class) && source.equals(Number.class))
+			else if (QNumeric.class.isAssignableFrom(target) && Number.class.isAssignableFrom(source))
 				buffer.append("qRPJ.qBox(" + value + ")");
 
 			// indicator
@@ -960,9 +957,6 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QFunctionTermExpression expression) {
 
-		if(expression.toString().toUpperCase().contains("%ABS"))
-			"".toCharArray();
-		
 		Class<?> objectTarget = null;
 		if (!expression.getElements().isEmpty()) {
 			QExpression expressionChild = expression.getElements().get(0);
