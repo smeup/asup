@@ -2803,6 +2803,15 @@
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
+    <eOperations name="eval">
+      <eParameters name="value" lowerBound="1">
+        <eGenericType eClassifier="#//DataArea">
+          <eTypeArguments>
+            <eUpperBound eClassifier="#//String"/>
+          </eTypeArguments>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
     <eOperations name="evalr">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>

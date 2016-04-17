@@ -272,6 +272,11 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
+	public void eval(QDataArea<? extends QString> value) {
+		delegate.eval(value);
+	}
+
+	@Override
 	public void evalr(String value) {
 		delegate.evalr(value);
 	}

@@ -8,6 +8,7 @@ import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
@@ -313,6 +314,11 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	@Override
 	public void eval(String value) {
 		_write(value.getBytes(getDataContext().getCharset()));
+	}
+
+	@Override
+	public final void eval(QDataArea<? extends QString> value) {
+		_write(value.get().asBytes());
 	}
 
 	@Override

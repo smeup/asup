@@ -95,6 +95,14 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	 * @model valueRequired="true"
 	 * @generated
 	 */
+	void eval(QDataArea<? extends QString> value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
 	void evalr(String value);
 
 	/**

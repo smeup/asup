@@ -18,6 +18,7 @@ import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataVisitor;
@@ -1048,5 +1049,10 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	@Override
 	public void testb(QString bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
 		current().testb(bitNumbers, off, on, equal);
+	}
+
+	@Override
+	public void eval(QDataArea<? extends QString> value) {
+		current().eval(value);
 	}
 }
