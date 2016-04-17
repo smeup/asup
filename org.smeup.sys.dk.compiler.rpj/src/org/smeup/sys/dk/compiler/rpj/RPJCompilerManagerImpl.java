@@ -423,7 +423,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		QPrinterFile printerFile = (QPrinterFile) compilationUnit.getNode();
 
 		JDTPrinterFileWriter printerFileWriter = new JDTPrinterFileWriter(null, compilationUnit, setup, compilationUnit.getNode().getName());
-		printerFileWriter.writerPrinterFile(printerFile);
+		printerFileWriter.writePrinterFile(printerFile);
 
 		printerFileWriter.writeOutputStream(output);
 

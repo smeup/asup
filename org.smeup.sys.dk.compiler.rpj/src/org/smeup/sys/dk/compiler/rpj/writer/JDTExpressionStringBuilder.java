@@ -565,7 +565,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			// left
 			leftBuilder.clear();
 			leftBuilder.setTarget(null);
-			leftBuilder.clear();
+
 			expression.getLeftOperand().accept(leftBuilder);
 			buffer.append(leftBuilder.getResult());
 
@@ -960,11 +960,17 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QFunctionTermExpression expression) {
 
+		if(expression.toString().toUpperCase().contains("%ABS"))
+			"".toCharArray();
+		
 		Class<?> objectTarget = null;
 		if (!expression.getElements().isEmpty()) {
 			QExpression expressionChild = expression.getElements().get(0);
 			if (!CompilationContextHelper.isPrimitive(compilationUnit, expressionChild))
 				objectTarget = CompilationContextHelper.getTargetClass(compilationUnit, expressionChild, false);
+			else {
+				
+			}
 		}
 
 		QPrototype method = compilationUnit.getMethod(objectTarget, expression.getValue());

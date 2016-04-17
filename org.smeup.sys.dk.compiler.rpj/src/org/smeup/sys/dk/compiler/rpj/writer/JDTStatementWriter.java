@@ -63,6 +63,7 @@ import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QDataSetTerm;
 import org.smeup.sys.il.esam.QDisplayTerm;
 import org.smeup.sys.il.esam.QPrintTerm;
+import org.smeup.sys.il.expr.AtomicType;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.LogicalOperator;
 import org.smeup.sys.il.expr.QArithmeticExpression;
@@ -486,7 +487,30 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			QNamedNode namedNode = null;
 			if(objectExpression instanceof QTermExpression) {
 				QTermExpression termExpression = (QTermExpression)objectExpression;
-				namedNode = compilationUnit.getNamedNode(termExpression.getValue(), true);
+				
+				switch (termExpression.getExpressionType()) {
+				case FUNCTION:
+					namedNode = compilationUnit.getNamedNode(termExpression.getValue(), true);
+					break;
+				case QUALIFIED:
+					namedNode = compilationUnit.getNamedNode(termExpression.getValue(), true);
+					break;
+				case ATOMIC: {
+					QAtomicTermExpression atomicTermExpression = (QAtomicTermExpression) termExpression;
+					if(atomicTermExpression.getType() == AtomicType.NAME)
+						namedNode = compilationUnit.getNamedNode(termExpression.getValue(), true);
+					break;
+				}
+
+				case ARITHMETIC:
+				case ARRAY:
+				case ASSIGNMENT:
+				case BLOCK:
+				case BOOLEAN:
+				case LOGICAL:
+				case RELATIONAL:
+					break;
+				}
 			}
 
 			if (namedNode == null) {

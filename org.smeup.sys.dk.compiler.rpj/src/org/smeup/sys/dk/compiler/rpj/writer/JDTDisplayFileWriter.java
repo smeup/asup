@@ -48,6 +48,8 @@ public class JDTDisplayFileWriter extends JDTNamedNodeWriter {
 	@SuppressWarnings({"unchecked" })
 	public void writeDisplayFile(QDisplayFile displayFile) throws IOException {
 
+		writeImport(QDisplayFormatWrapper.class);
+		
 		// Distinct element
 		List<QDataTerm<?>> elementsField = new ArrayList<QDataTerm<?>>();
 		List<String> elementsName = new ArrayList<String>();
