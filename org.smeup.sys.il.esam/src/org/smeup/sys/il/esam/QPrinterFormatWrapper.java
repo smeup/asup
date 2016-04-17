@@ -10,14 +10,12 @@ package org.smeup.sys.il.esam;
 import java.lang.reflect.Field;
 
 import org.smeup.sys.il.data.QData;
-import org.smeup.sys.il.data.QDecimal;
-import org.smeup.sys.il.data.QIndicator;
 
-public abstract class QDisplayFormatWrapper<E extends Enum<E>> {
+public abstract class QPrinterFormatWrapper<E extends Enum<E>> {
 
 	private Class<E> fieldsEnum;
 
-	public QDisplayFormatWrapper(Class<E> fieldsEnum) {
+	public QPrinterFormatWrapper(Class<E> fieldsEnum) {
 		this.fieldsEnum = fieldsEnum;
 	}
 	
@@ -39,27 +37,6 @@ public abstract class QDisplayFormatWrapper<E extends Enum<E>> {
 		}
 	}
 
-	public void show() {
-	}
-	
-	public void readc() {		
-	}
-	
-	public void update() {		
-	}
-	
 	public void write() {
-	}
-
-	public void chain(int recordNumber, QIndicator notFound) {
-	}
-
-	public void chain(int recordNumber, QIndicator notFound, QIndicator error) {
-	}
-
-	public void chain(QDecimal recordNumber, QIndicator notFound) {		
-	}
-
-	public void chain(QDecimal recordNumber, QIndicator notFound, QIndicator error) {		
 	}
 }

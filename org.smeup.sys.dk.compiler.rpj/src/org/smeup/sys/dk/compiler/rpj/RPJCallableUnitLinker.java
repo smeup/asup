@@ -388,6 +388,11 @@ public class RPJCallableUnitLinker {
 			if (externalFile.getFormat() == null)
 				externalFile.setFormat(databaseFile.getDatabaseFormat().getName());
 
+			if (externalFile.getRule() != null) {
+				if (!externalFile.getRule().equalsIgnoreCase("*ALL"))
+					throw new OperatingSystemRuntimeException("Invalid format rule: " + externalFile.getRule());
+			}
+
 			QDatabaseFileFormat databaseFileFormat = databaseFile.getDatabaseFormat();
 			if (databaseFile instanceof QLogicalFile && databaseFileFormat.isEmpty()) {
 				QLogicalFile logicalFile = (QLogicalFile) databaseFile;
@@ -397,50 +402,71 @@ public class RPJCallableUnitLinker {
 
 					if (superTable == null)
 						throw new OperatingSystemRuntimeException("File not found: " + table);
-
-					// TODO
-					if (externalFile.getRule() != null) {
-						if (!externalFile.getRule().equalsIgnoreCase("*ALL"))
-							throw new OperatingSystemRuntimeException("Invalid format rule: " + externalFile.getRule());
-					}
-
-					appendElements(qDataTerm, superTable.getDatabaseFormat());
+					
+					appendElements(qDataTerm, superTable.getDatabaseFormat(), true);
 				}
 			} else
-				appendElements(qDataTerm, databaseFileFormat);
+				appendElements(qDataTerm, databaseFileFormat, true);
 
+			return buildCompilerLinker(file, context);
+			
 		} else if (file instanceof QDisplayFile) {
 			QDisplayFile displayFile = (QDisplayFile) file;
 
-			for (QFileFormat<?> fileFormat : displayFile.getDisplayFormats()) {
-				fileFormat = (QFileFormat<?>) EcoreUtil.copy((EObject) fileFormat);
-
-				appendElements(qDataTerm, fileFormat);
-
-				QDerived derived = QDevelopmentKitCompilerFactory.eINSTANCE.createDerived();
-				fileFormat.getFacets().add(derived);
-
-				qDataTerm.getDefinition().getElements().add(fileFormat);
+			if (externalFile.getFormat() != null) {
+				if (externalFile.getRule() != null) {
+					if (!externalFile.getRule().equalsIgnoreCase("*ALL"))
+						throw new OperatingSystemRuntimeException("Invalid format rule: " + externalFile.getRule());
+				}
+								
+				for (QFileFormat<?> fileFormat : displayFile.getDisplayFormats()) {
+					if(!externalFile.getFormat().equals(fileFormat.getName()))
+						continue;
+										
+					appendElements(qDataTerm, fileFormat, false);
+					
+					break;
+				}
+				
+				return null;
+			}
+			else {
+	
+				for (QFileFormat<?> fileFormat : displayFile.getDisplayFormats()) {
+					fileFormat = (QFileFormat<?>) EcoreUtil.copy((EObject) fileFormat);
+					
+					appendElements(qDataTerm, fileFormat, true);
+	
+					QDerived derived = QDevelopmentKitCompilerFactory.eINSTANCE.createDerived();
+					fileFormat.getFacets().add(derived);
+	
+					qDataTerm.getDefinition().getElements().add(fileFormat);
+				}
+				
+				return buildCompilerLinker(file, context);
 			}
 
 		} else if (file instanceof QPrinterFile) {
 			QPrinterFile printerFile = (QPrinterFile) file;
+			
+			if (externalFile.getFormat() != null)
+				System.err.println("Unexpected condition g57tqw76erqweqw");
 
 			for (QFileFormat<?> fileFormat : printerFile.getPrinterFormats()) {
 				fileFormat = (QFileFormat<?>) EcoreUtil.copy((EObject) fileFormat);
 
-				appendElements(qDataTerm, fileFormat);
+				appendElements(qDataTerm, fileFormat, true);
 
 				QDerived derived = QDevelopmentKitCompilerFactory.eINSTANCE.createDerived();
 				fileFormat.getFacets().add(derived);
 
 				qDataTerm.getDefinition().getElements().add(fileFormat);
 			}
-
+			
+			return buildCompilerLinker(file, context);
 		} else
 			throw new OperatingSystemRuntimeException("Unknown file type: " + externalFile.getName());
 
-		return buildCompilerLinker(file, context);
 	}
 
 	private QCompilerLinker buildCompilerLinker(QFile file, QContext context) {
@@ -455,15 +481,17 @@ public class RPJCallableUnitLinker {
 		return compilerLinker;
 	}
 
-	private void appendElements(QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> qDataTerm, QFileFormat<?> fileFormat) {
+	private void appendElements(QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> qDataTerm, QFileFormat<?> fileFormat, boolean setDerived) {
 
 		int pos = 0;
 		for (QDataTerm<?> element : fileFormat.getDefinition().getElements()) {
 
 			element = (QDataTerm<?>) EcoreUtil.copy((EObject) element);
 
-			QDerived derived = QDevelopmentKitCompilerFactory.eINSTANCE.createDerived();
-			element.getFacets().add(derived);
+			if(setDerived) {
+				QDerived derived = QDevelopmentKitCompilerFactory.eINSTANCE.createDerived();
+				element.getFacets().add(derived);
+			}
 
 			qDataTerm.getDefinition().getElements().add(pos, element);
 			pos++;
