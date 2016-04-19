@@ -101,7 +101,7 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 
 	@Override
 	protected void _move(byte[] value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value, clear, getFiller());
+		NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value, clear, getFiller());
 	}
 
 	@Override
