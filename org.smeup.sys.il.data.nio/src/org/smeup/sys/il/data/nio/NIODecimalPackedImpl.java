@@ -12,8 +12,8 @@
 package org.smeup.sys.il.data.nio;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.nio.ByteBuffer;
+import java.text.NumberFormat;
 
 import org.smeup.sys.il.data.QDataContext;
 
@@ -23,7 +23,7 @@ import com.ibm.as400.access.AS400ZonedDecimal;
 public class NIODecimalPackedImpl extends NIODecimalImpl {
 	private static final long serialVersionUID = 1L;
 
-	private static final AS400PackedDecimal packeds[][] = new AS400PackedDecimal[50][50];
+	private static final AS400PackedDecimal packeds[][] = new AS400PackedDecimal[50][20];
 
 	private AS400PackedDecimal packed = null;
 
@@ -75,11 +75,23 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 
 		byte[] bytes = null;
 		if (halfAdjust) {
-			BigDecimal bd = new BigDecimal(number.toString()).setScale(getScale(), RoundingMode.UP);
-			bytes = packed.toBytes(bd.doubleValue());
+			NumberFormat nf = getNumberFormatUP(getPrecision(), getScale());
+			BigDecimal bd = new BigDecimal(nf.format(number));
+
+			try {
+				bytes = packed.toBytes(bd);
+			} catch (Exception e) {
+				e.toString();
+			}
 		} else {
-			BigDecimal bd = new BigDecimal(number.toString()).setScale(getScale(), RoundingMode.DOWN);
-			bytes = packed.toBytes(bd);
+			NumberFormat nf = getNumberFormatDW(getPrecision(), getScale());
+			BigDecimal bd = new BigDecimal(nf.format(number));
+
+			try {
+				bytes = packed.toBytes(bd);
+			} catch (Exception e) {
+				e.toString();
+			}
 		}
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
 	}

@@ -2182,6 +2182,7 @@
     <eOperations name="asDouble" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eOperations name="asInteger" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eOperations name="asLong" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eOperations name="asNumber" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     <eOperations name="asShort" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     <eOperations name="check" lowerBound="1">
       <eParameters name="comparator" lowerBound="1" eType="#//Character"/>

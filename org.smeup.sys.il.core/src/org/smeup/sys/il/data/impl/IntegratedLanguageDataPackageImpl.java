@@ -3289,6 +3289,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(numericEClass, ecorePackage.getELong(), "asLong", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(numericEClass, theMachineInterfaceCorePackage.getJavaNumber(), "asNumber", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(numericEClass, ecorePackage.getEShort(), "asShort", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(numericEClass, null, "check", 1, 1, IS_UNIQUE, IS_ORDERED);
