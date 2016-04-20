@@ -30,7 +30,7 @@ public class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicator {
 	@Override
 	public boolean asBoolean() {
 		byte byte_ = asBytes()[0];
-		return byte_ != OFF && byte_ != (byte) 48;
+		return byte_ != OFF && byte_ != NIOStringImpl.INIT;
 	}
 
 	@Override

@@ -347,20 +347,6 @@ public class NIODataFactoryImpl implements QDataFactory {
 		return nioDataAreaImpl;
 	}
 
-	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public <D extends QBufferedElement> QArray<D> createArray(QUnaryAtomicBufferedDataDef<D> argument, int dimension, SortDirection sortDirection, boolean initialize) {
-
-		QBufferedElement model = (QBufferedElement) createData(argument, false);
-
-		QArray<D> array = new NIOArrayImpl(getDataContext(), model, dimension, sortDirection);
-
-		if (initialize)
-			initialize(array);
-
-		return array;
-	}
-
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public <D extends QBufferedElement> QScroller<D> createScroller(QUnaryAtomicBufferedDataDef<D> argument, int dimension, boolean initialize) {
@@ -373,6 +359,20 @@ public class NIODataFactoryImpl implements QDataFactory {
 			initialize(scroller);
 
 		return scroller;
+	}
+
+	@Override
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public <D extends QBufferedElement> QArray<D> createArray(QUnaryAtomicBufferedDataDef<D> argument, int dimension, SortDirection sortDirection, boolean initialize) {
+
+		QBufferedElement model = (QBufferedElement) createData(argument, false);
+
+		QArray<D> array = new NIOArrayImpl(getDataContext(), model, dimension, sortDirection);
+
+		if (initialize)
+			initialize(array);
+
+		return array;
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -745,6 +745,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	private void injectAnnotations(List<Annotation> annotations, Object target) {
 
 		EObject eObject = (EObject) target;
+
 		EClass eClass = eObject.eClass();
 
 		// merge annotations by reflection
@@ -758,8 +759,15 @@ public class NIODataFactoryImpl implements QDataFactory {
 						QDecimalDef decimalDef = (QDecimalDef) multipleAtomicBufferedDataDef.getArgument();
 						decimalDef.setType(DecimalType.PACKED);
 					} else {
-						QDecimalDef decimalDef = (QDecimalDef) eObject;
-						decimalDef.setType(DecimalType.PACKED);
+						if(eObject instanceof QDataAreaDef<?>) {
+							QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) eObject;
+							QDecimalDef decimalDef = (QDecimalDef) dataAreaDef.getArgument();
+							decimalDef.setType(DecimalType.PACKED);
+						}
+						else {
+							QDecimalDef decimalDef = (QDecimalDef) eObject;
+							decimalDef.setType(DecimalType.PACKED);
+						}
 					}
 				}
 			}

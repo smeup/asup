@@ -11,12 +11,8 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 import org.smeup.sys.il.data.BufferedElementType;
 import org.smeup.sys.il.data.DataSpecial;
@@ -36,9 +32,7 @@ import org.smeup.sys.il.data.def.DecimalType;
 public abstract class NIONumericImpl extends NIOBufferedElementImpl implements QNumeric {
 
 	private static final long serialVersionUID = 1L;
-	
-	private static final DecimalFormat format_up[][] = new DecimalFormat[50][20];
-	private static final DecimalFormat format_dw[][] = new DecimalFormat[50][20];
+
 	
 	public NIONumericImpl(QDataContext dataContext) {
 		super(dataContext);
@@ -809,45 +803,5 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 			return this;
 		else
 			return mult(-1);
-	}
-	
-	protected static NumberFormat getNumberFormatUP(int precision, int scale) {
-
-		DecimalFormat numberFormat = format_up[precision - 1][scale];
-		if (numberFormat == null)
-			synchronized (format_up) {
-				numberFormat = format_up[precision - 1][scale];
-				if (numberFormat == null) {
-					numberFormat = (DecimalFormat) DecimalFormat.getInstance(Locale.US); // TODO verify
-					numberFormat.setMaximumIntegerDigits(precision - scale);
-					numberFormat.setMaximumFractionDigits(scale);
-					numberFormat.setRoundingMode(RoundingMode.UP);
-					numberFormat.setGroupingUsed(false);
-					
-					format_up[precision - 1][scale] = numberFormat;
-				}
-			}
-
-		return numberFormat;
-	}
-
-	protected static NumberFormat getNumberFormatDW(int precision, int scale) {
-
-		DecimalFormat numberFormat = format_dw[precision - 1][scale];
-		if (numberFormat == null)
-			synchronized (format_dw) {
-				numberFormat = format_dw[precision - 1][scale];
-				if (numberFormat == null) {
-					numberFormat = (DecimalFormat) DecimalFormat.getInstance(Locale.US); // TODO verify
-					numberFormat.setMaximumIntegerDigits(precision - scale);
-					numberFormat.setMaximumFractionDigits(scale);
-					numberFormat.setRoundingMode(RoundingMode.DOWN);
-					numberFormat.setGroupingUsed(false);
-					
-					format_dw[precision - 1][scale] = numberFormat;
-				}
-			}
-
-		return numberFormat;
 	}
 }

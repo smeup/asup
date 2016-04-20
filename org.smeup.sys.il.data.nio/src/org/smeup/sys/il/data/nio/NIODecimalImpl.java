@@ -22,14 +22,23 @@ import org.smeup.sys.il.data.QDecimal;
 public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal {
 
 	private static final long serialVersionUID = 1L;
+
 	protected static final byte INIT = (byte) -16;
 	protected static final byte LOVAL = (byte) -39;
 	protected static final byte HIVAL = (byte) -7;
 
+	private NIODecimalDef decimalDef = null;
+
 	public NIODecimalImpl(QDataContext dataContext, int precision, int scale) {
 		super(dataContext);
+		
+		decimalDef = NIODecimalDef.getInstance(precision, scale);
 	}
 
+	protected NIODecimalDef getDecimalDef() {
+		return decimalDef;
+	}
+	
 	@Override
 	protected final byte getFiller() {
 		return INIT;
@@ -44,7 +53,7 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 	public final boolean isSigned() {
 		return true;
 	}
-	
+
 	@Override
 	public final void accept(QDataVisitor visitor) {
 		visitor.visit(this);
@@ -57,7 +66,7 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 		switch (value) {
 		case LOVAL:
 			Arrays.fill(bytes, HIVAL);
-			bytes[bytes.length-1] = LOVAL;
+			bytes[bytes.length - 1] = LOVAL;
 			break;
 		case BLANK:
 		case BLANKS:
