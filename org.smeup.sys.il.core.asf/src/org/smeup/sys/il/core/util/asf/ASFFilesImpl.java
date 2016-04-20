@@ -30,7 +30,11 @@ public class ASFFilesImpl implements QFiles {
 
 	@Override
 	public void deleteDirectory(String path) throws IOException {
-		org.apache.commons.io.FileUtils.forceDelete(new File(path));		
+		org.apache.commons.io.FileUtils.forceDelete(new File(path));				
 	}
 
+	@Override
+	public String getSeparator() {		
+		return java.nio.file.FileSystems.getDefault().getSeparator();
+	}
 }

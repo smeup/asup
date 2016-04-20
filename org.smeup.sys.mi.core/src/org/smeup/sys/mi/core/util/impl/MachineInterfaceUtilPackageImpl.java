@@ -314,6 +314,8 @@ public class MachineInterfaceUtilPackageImpl extends EPackageImpl implements QMa
 		addEParameter(op, ecorePackage.getEString(), "path", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
+		addEOperation(filesEClass, ecorePackage.getEString(), "getSeparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(streamsEClass, QStreams.class, "Streams", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(streamsEClass, null, "copy", 0, 1, IS_UNIQUE, IS_ORDERED);

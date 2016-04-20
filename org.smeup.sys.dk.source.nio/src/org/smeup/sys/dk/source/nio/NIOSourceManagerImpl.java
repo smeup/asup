@@ -71,7 +71,10 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	}
 
 	public NIOSourceManagerImpl(QApplication application, String path) {
-		this.path = URI.create(System.getProperty("osgi.instance.area")).getPath();
+		String instanceArea = System.getProperty("osgi.instance.area");
+		this.path = URI.create(instanceArea).getPath();
+		//TODO: patch da eliminare
+		if (this.path.charAt(2) == ':') this.path = this.path.substring(1);
 		this.relativePath = path;
 		this.application = application;
 	}
