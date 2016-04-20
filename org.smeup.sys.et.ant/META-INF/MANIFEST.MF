@@ -9,3 +9,4 @@ Bundle-ClassPath: .,
  lib/ant-launcher.jar,
  lib/ant.jar,
  lib/xercesImpl.jar
+Export-Package: org.smeup.sys.et.ant

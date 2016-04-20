@@ -13,6 +13,8 @@
 package org.smeup.sys.et.ant;
 
 import java.io.File;
+import java.util.Hashtable;
+import java.util.Properties;
 
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.DefaultLogger;
@@ -27,7 +29,7 @@ public class AntHelper {
      * @param buildXmlFileFullPath
      */
     public static boolean executeAntTask(String buildXmlFileFullPath) {
-        return executeAntTask(buildXmlFileFullPath, null);
+        return executeAntTask(buildXmlFileFullPath, null, null);
     }
     
     /**
@@ -36,7 +38,7 @@ public class AntHelper {
      * @param buildXmlFileFullPath
      * @param target
      */
-    public static boolean executeAntTask(String buildXmlFileFullPath, String target) {
+    public static boolean executeAntTask(String buildXmlFileFullPath, String target, Hashtable<String, String> properties) {
         boolean success = false;
         DefaultLogger consoleLogger = getConsoleLogger();
 
@@ -45,6 +47,14 @@ public class AntHelper {
         File buildFile = new File(buildXmlFileFullPath);
         project.setUserProperty("ant.file", buildFile.getAbsolutePath());
         project.addBuildListener(consoleLogger);
+        
+        //Set properties
+        if (properties != null && properties.size() > 0) {
+        	
+        	for(String propertyName: properties.keySet()) {
+        		project.setUserProperty(propertyName, properties.get(propertyName));
+        	}
+        }
 
         // Capture event for Ant script build start / stop / failure
         try {
@@ -54,9 +64,9 @@ public class AntHelper {
             ProjectHelper projectHelper = ProjectHelper.getProjectHelper();
             project.addReference("ant.projectHelper", projectHelper);
             projectHelper.parse(project, buildFile);
-            
+
             // If no target specified then default target will be executed.
-            String targetToExecute = (target != null && target.trim().length() > 0) ? target.trim() : project.getDefaultTarget();
+            String targetToExecute = (target != null && target.trim().length() > 0) ? target.trim() : project.getDefaultTarget();            
             project.executeTarget(targetToExecute);
             project.fireBuildFinished(null);
             success = true;

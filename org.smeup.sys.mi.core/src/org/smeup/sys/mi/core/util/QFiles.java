@@ -45,4 +45,12 @@ public interface QFiles {
 	 */
 	void deleteDirectory(String path) throws IOException;
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	String getSeparator();
+
 } // QFiles
