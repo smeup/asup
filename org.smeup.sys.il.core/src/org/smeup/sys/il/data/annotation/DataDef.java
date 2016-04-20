@@ -37,6 +37,7 @@ public @interface DataDef {
 			
 	// compound
 	boolean qualified() default false;
+	boolean initialized() default false;
 	String prefix() default "";
 
 	// multiple

@@ -200,7 +200,6 @@ public class BaseCallableInjector {
 		List<InjectableField> pointers = new ArrayList<InjectableField>();
 
 		for (Field field : klass.getDeclaredFields()) {
-
 			// TODO
 			if (field.getName().startsWith("$SWITCH_TABLE"))
 				continue;
@@ -409,11 +408,15 @@ public class BaseCallableInjector {
 
 		// dataStructure
 		for (InjectableField field : dataStructures) {
-
-			QDataTerm<?> dataTerm = dataContainer.createDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
-
-			QData data = dataContainer.resetData(dataTerm);
-
+			
+			QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> dataTerm = (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataContainer.createDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
+			
+			QData data = null;
+			if(dataTerm.getDefinition().isInitialized()) 
+				data = dataContainer.resetData(dataTerm);
+			else
+				data = dataContainer.getData(dataTerm);
+			
 			QDataStruct dataStruct = (QDataStruct) data;
 			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
 

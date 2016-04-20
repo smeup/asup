@@ -11,12 +11,16 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.lang.reflect.Field;
+import java.util.Arrays;
+
 import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataArea;
+import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
@@ -30,10 +34,13 @@ import org.smeup.sys.il.data.term.impl.DataTermVisitorImpl;
 
 public class NIODataResetter extends DataTermVisitorImpl {
 
+	private QDataContainer dataContainer;
 	private QData data;
+
 	private QDataWriter dataWriter;
 
-	public NIODataResetter(QData data) {
+	public NIODataResetter(QDataContainer dataContainer, QData data) {
+		this.dataContainer = dataContainer;
 		this.data = data;
 		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 	}
@@ -119,14 +126,26 @@ public class NIODataResetter extends DataTermVisitorImpl {
 				}
 			}
 
-			if (result)
-				for (QStruct<?> struct : (QList<QStruct<?>>) list)
-					// elements
-					for (QDataTerm<?> child : ((QCompoundDataDef<?, ?>) term.getDefinition()).getElements()) {
-						NIODataResetter childResetter = new NIODataResetter(struct.getElement(child.getName()));
-						child.accept(childResetter);
+			if (result) {
+				QCompoundDataDef<?, ?> compoundDef = (QCompoundDataDef<?, ?>) term.getDefinition();
+				if (compoundDef.getClassDelegator() != null) {
+					for (QStruct<?> struct : (QList<QStruct<?>>) list) {
+						for (Field field : NIOStructHelper.getFields((Class<? extends QStruct<?>>) struct.getClass())) {
+							QDataTerm<?> child = dataContainer.createDataTerm(field.getName(), field.getGenericType(), Arrays.asList(field.getAnnotations()));
+							NIODataResetter childResetter = new NIODataResetter(dataContainer, struct.getElement(child.getName()));
+							child.accept(childResetter);
+						}
 					}
-
+				} else {
+					for (QStruct<?> struct : (QList<QStruct<?>>) list) {
+						// elements
+						for (QDataTerm<?> child : (compoundDef).getElements()) {
+							NIODataResetter childResetter = new NIODataResetter(dataContainer, struct.getElement(child.getName()));
+							child.accept(childResetter);
+						}
+					}
+				}
+			}
 			result = false;
 
 			break;
@@ -159,16 +178,16 @@ public class NIODataResetter extends DataTermVisitorImpl {
 			QStruct<?> struct = null;
 
 			// elements
-			QCompoundDataDef<?, ?> compoundDef = null;
+			QCompoundDataDef<?, QDataTerm<?>> compoundDef = null;
 
 			// TODO
 			if (data instanceof QDataArea<?>) {
 				QDataArea<?> dataArea = (QDataArea<?>) data;
 				struct = (QStruct<?>) dataArea.get();
-				compoundDef = (QCompoundDataDef<?, ?>) ((QDataAreaDef<?>) term.getDefinition()).getArgument();
+				compoundDef = (QCompoundDataDef<?, QDataTerm<?>>) ((QDataAreaDef<?>) term.getDefinition()).getArgument();
 			} else {
 				struct = (QStruct<?>) data;
-				compoundDef = (QCompoundDataDef<?, ?>) term.getDefinition();
+				compoundDef = (QCompoundDataDef<?, QDataTerm<?>>) term.getDefinition();
 			}
 
 			if (default_ != null) {
@@ -188,9 +207,17 @@ public class NIODataResetter extends DataTermVisitorImpl {
 
 			if (result) {
 
-				for (QDataTerm<?> child : compoundDef.getElements()) {
-					NIODataResetter childResetter = new NIODataResetter(struct.getElement(child.getName()));
-					child.accept(childResetter);
+				if (compoundDef.getClassDelegator() != null) {
+					for (Field field : NIOStructHelper.getFields((Class<? extends QStruct<?>>) struct.getClass())) {
+						QDataTerm<?> child = dataContainer.createDataTerm(field.getName(), field.getGenericType(), Arrays.asList(field.getAnnotations()));
+						NIODataResetter childResetter = new NIODataResetter(dataContainer, struct.getElement(child.getName()));
+						child.accept(childResetter);
+					}
+				} else {
+					for (QDataTerm<?> child : compoundDef.getElements()) {
+						NIODataResetter childResetter = new NIODataResetter(dataContainer, struct.getElement(child.getName()));
+						child.accept(childResetter);
+					}
 				}
 			}
 

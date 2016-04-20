@@ -593,12 +593,21 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	int COMPOUND_DATA_DEF__QUALIFIED = DATA_DEF_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Initialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOUND_DATA_DEF__INITIALIZED = DATA_DEF_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Compound Data Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOUND_DATA_DEF_FEATURE_COUNT = DATA_DEF_FEATURE_COUNT + 4;
+	int COMPOUND_DATA_DEF_FEATURE_COUNT = DATA_DEF_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.UnaryBufferedDataDefImpl <em>Unary Buffered Data Def</em>}' class.
@@ -729,13 +738,22 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	int UNARY_COMPOUND_DATA_DEF__QUALIFIED = UNARY_DATA_DEF_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Initialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_COMPOUND_DATA_DEF__INITIALIZED = UNARY_DATA_DEF_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Unary Compound Data Def</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNARY_COMPOUND_DATA_DEF_FEATURE_COUNT = UNARY_DATA_DEF_FEATURE_COUNT + 4;
+	int UNARY_COMPOUND_DATA_DEF_FEATURE_COUNT = UNARY_DATA_DEF_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.DataStructDefImpl <em>Data Struct Def</em>}' class.
@@ -790,6 +808,15 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_STRUCT_DEF__QUALIFIED = UNARY_COMPOUND_DATA_DEF__QUALIFIED;
+
+	/**
+	 * The feature id for the '<em><b>Initialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STRUCT_DEF__INITIALIZED = UNARY_COMPOUND_DATA_DEF__INITIALIZED;
 
 	/**
 	 * The feature id for the '<em><b>Length</b></em>' attribute. <!--
@@ -1204,13 +1231,22 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	int MULTIPLE_COMPOUND_DATA_DEF__QUALIFIED = MULTIPLE_DATA_DEF_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Initialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_COMPOUND_DATA_DEF__INITIALIZED = MULTIPLE_DATA_DEF_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Multiple Compound Data Def</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MULTIPLE_COMPOUND_DATA_DEF_FEATURE_COUNT = MULTIPLE_DATA_DEF_FEATURE_COUNT + 4;
+	int MULTIPLE_COMPOUND_DATA_DEF_FEATURE_COUNT = MULTIPLE_DATA_DEF_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '
@@ -1407,6 +1443,15 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @ordered
 	 */
 	int STROLLER_DEF__QUALIFIED = MULTIPLE_COMPOUND_DATA_DEF__QUALIFIED;
+
+	/**
+	 * The feature id for the '<em><b>Initialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STROLLER_DEF__INITIALIZED = MULTIPLE_COMPOUND_DATA_DEF__INITIALIZED;
 
 	/**
 	 * The feature id for the '<em><b>Length</b></em>' attribute. <!--
@@ -1703,6 +1748,17 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCompoundDataDef_Qualified();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.def.QCompoundDataDef#isInitialized <em>Initialized</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Initialized</em>'.
+	 * @see org.smeup.sys.il.data.def.QCompoundDataDef#isInitialized()
+	 * @see #getCompoundDataDef()
+	 * @generated
+	 */
+	EAttribute getCompoundDataDef_Initialized();
 
 	/**
 	 * Returns the meta object for class '
@@ -2386,6 +2442,14 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMPOUND_DATA_DEF__QUALIFIED = eINSTANCE.getCompoundDataDef_Qualified();
+
+		/**
+		 * The meta object literal for the '<em><b>Initialized</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPOUND_DATA_DEF__INITIALIZED = eINSTANCE.getCompoundDataDef_Initialized();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.def.impl.DataDefImpl <em>Data Def</em>}' class.

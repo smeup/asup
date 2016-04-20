@@ -439,8 +439,11 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				writeAnnotation(node, DataDef.class, "prefix", dataStructureDef.getPrefix());
 
 			if (dataStructureDef.isQualified())
-				writeAnnotation(node, DataDef.class, "qualified", dataStructureDef.isQualified());
+				writeAnnotation(node, DataDef.class, "qualified", true);
 
+			if (dataStructureDef.isInitialized())
+				writeAnnotation(node, DataDef.class, "initialized", true);
+			
 			if (dataStructureDef.getLength() > 0)
 				writeAnnotation(node, DataDef.class, "length", dataStructureDef.getLength());
 		} else if (QCompoundDataDef.class.isAssignableFrom(klassDef)) {
@@ -450,7 +453,10 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				writeAnnotation(node, DataDef.class, "prefix", compoundDataDef.getPrefix());
 
 			if (compoundDataDef.isQualified())
-				writeAnnotation(node, DataDef.class, "qualified", compoundDataDef.isQualified());
+				writeAnnotation(node, DataDef.class, "qualified", true);
+			
+			if (compoundDataDef.isInitialized())
+				writeAnnotation(node, DataDef.class, "initialized", true);
 
 		} else if (QCharacterDef.class.isAssignableFrom(klassDef)) {
 			QCharacterDef charDef = (QCharacterDef) dataDef;

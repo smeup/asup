@@ -34,6 +34,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
  *   <li>{@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl#getPrefix <em>Prefix</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl#isQualified <em>Qualified</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl#isInitialized <em>Initialized</em>}</li>
  * </ul>
  *
  * @generated
@@ -108,6 +109,26 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 	 * @ordered
 	 */
 	protected boolean qualified = QUALIFIED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isInitialized() <em>Initialized</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInitialized()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean INITIALIZED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isInitialized() <em>Initialized</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInitialized()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean initialized = INITIALIZED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -202,6 +223,27 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isInitialized() {
+		return initialized;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInitialized(boolean newInitialized) {
+		boolean oldInitialized = initialized;
+		initialized = newInitialized;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__INITIALIZED, oldInitialized, initialized));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -229,6 +271,8 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 				return getPrefix();
 			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED:
 				return isQualified();
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__INITIALIZED:
+				return isInitialized();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -254,6 +298,9 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED:
 				setQualified((Boolean)newValue);
 				return;
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__INITIALIZED:
+				setInitialized((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -277,6 +324,9 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED:
 				setQualified(QUALIFIED_EDEFAULT);
 				return;
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__INITIALIZED:
+				setInitialized(INITIALIZED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -296,6 +346,8 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 				return PREFIX_EDEFAULT == null ? prefix != null : !PREFIX_EDEFAULT.equals(prefix);
 			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED:
 				return qualified != QUALIFIED_EDEFAULT;
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__INITIALIZED:
+				return initialized != INITIALIZED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -315,6 +367,8 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 		result.append(prefix);
 		result.append(", qualified: ");
 		result.append(qualified);
+		result.append(", initialized: ");
+		result.append(initialized);
 		result.append(')');
 		return result.toString();
 	}

@@ -273,7 +273,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 		if (overlay == null) {
-			NIODataResetter resetter = new NIODataResetter(data);
+			NIODataResetter resetter = new NIODataResetter(this, data);
 			dataTerm.accept(resetter);
 		}
 
@@ -314,7 +314,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		QData clearData = createData(dataTerm, true);
 		QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 		if (overlay == null) {
-			NIODataResetter resetter = new NIODataResetter(clearData);
+			NIODataResetter resetter = new NIODataResetter(this, clearData);
 			dataTerm.accept(resetter);
 		}
 

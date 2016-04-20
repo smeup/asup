@@ -264,6 +264,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 			strollerDef.setClassDelegator(argument.getClassDelegator());
 			strollerDef.setPrefix(argument.getPrefix());
 			strollerDef.setQualified(argument.isQualified());
+			strollerDef.setInitialized(argument.isInitialized());
 			strollerDef.getElements().addAll(argument.getElements());
 
 			dataDef = strollerDef;
@@ -505,13 +506,12 @@ public class NIODataFactoryImpl implements QDataFactory {
 				if (dataElement instanceof QBufferedList<?>) {
 					QBufferedList<?> array = (QBufferedList<?>) dataElement;
 					int i = 1;
-					if(annotationDef.values().length > 0) { 							
+					if (annotationDef.values().length > 0) {
 						for (String value : annotationDef.values()) {
 							array.get(i).accept(dataWriter.set(value));
 							i++;
 						}
-					}
-					else if(!annotationDef.value().isEmpty()){
+					} else if (!annotationDef.value().isEmpty()) {
 						String value = annotationDef.value();
 						if (value.startsWith("*")) {
 							DataSpecial dataSpecial = DataSpecial.get(value);
@@ -519,22 +519,20 @@ public class NIODataFactoryImpl implements QDataFactory {
 						} else
 							array.eval(value);
 					}
-				} 
-				else if(dataElement instanceof QBufferedElement) {
-					QBufferedElement element = (QBufferedElement)dataElement;
+				} else if (dataElement instanceof QBufferedElement) {
+					QBufferedElement element = (QBufferedElement) dataElement;
 					if (!annotationDef.value().isEmpty()) {
 						String value = annotationDef.value();
 						if (value.startsWith("*")) {
 							DataSpecial dataSpecial = DataSpecial.get(value);
-							if(dataSpecial==null)
+							if (dataSpecial == null)
 								element.movel(value, true);
 							else
 								element.movel(dataSpecial, true);
 						} else
 							element.movel(value, true);
 					}
-				}
-				else 
+				} else
 					throw new IntegratedLanguageCoreRuntimeException("Unexpected condition wueyrow34tfdsh");
 			}
 		}
@@ -759,12 +757,11 @@ public class NIODataFactoryImpl implements QDataFactory {
 						QDecimalDef decimalDef = (QDecimalDef) multipleAtomicBufferedDataDef.getArgument();
 						decimalDef.setType(DecimalType.PACKED);
 					} else {
-						if(eObject instanceof QDataAreaDef<?>) {
+						if (eObject instanceof QDataAreaDef<?>) {
 							QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) eObject;
 							QDecimalDef decimalDef = (QDecimalDef) dataAreaDef.getArgument();
 							decimalDef.setType(DecimalType.PACKED);
-						}
-						else {
+						} else {
 							QDecimalDef decimalDef = (QDecimalDef) eObject;
 							decimalDef.setType(DecimalType.PACKED);
 						}

@@ -35,6 +35,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
  *   <li>{@link org.smeup.sys.il.data.def.impl.MultipleCompoundDataDefImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.MultipleCompoundDataDefImpl#getPrefix <em>Prefix</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.MultipleCompoundDataDefImpl#isQualified <em>Qualified</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.impl.MultipleCompoundDataDefImpl#isInitialized <em>Initialized</em>}</li>
  * </ul>
  *
  * @generated
@@ -109,6 +110,26 @@ public abstract class MultipleCompoundDataDefImpl<D extends QStroller<?>, E exte
 	 * @ordered
 	 */
 	protected boolean qualified = QUALIFIED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isInitialized() <em>Initialized</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInitialized()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean INITIALIZED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isInitialized() <em>Initialized</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInitialized()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean initialized = INITIALIZED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -203,6 +224,27 @@ public abstract class MultipleCompoundDataDefImpl<D extends QStroller<?>, E exte
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isInitialized() {
+		return initialized;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInitialized(boolean newInitialized) {
+		boolean oldInitialized = initialized;
+		initialized = newInitialized;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__INITIALIZED, oldInitialized, initialized));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -230,6 +272,8 @@ public abstract class MultipleCompoundDataDefImpl<D extends QStroller<?>, E exte
 				return getPrefix();
 			case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__QUALIFIED:
 				return isQualified();
+			case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__INITIALIZED:
+				return isInitialized();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -255,6 +299,9 @@ public abstract class MultipleCompoundDataDefImpl<D extends QStroller<?>, E exte
 			case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__QUALIFIED:
 				setQualified((Boolean)newValue);
 				return;
+			case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__INITIALIZED:
+				setInitialized((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -278,6 +325,9 @@ public abstract class MultipleCompoundDataDefImpl<D extends QStroller<?>, E exte
 			case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__QUALIFIED:
 				setQualified(QUALIFIED_EDEFAULT);
 				return;
+			case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__INITIALIZED:
+				setInitialized(INITIALIZED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -297,6 +347,8 @@ public abstract class MultipleCompoundDataDefImpl<D extends QStroller<?>, E exte
 				return PREFIX_EDEFAULT == null ? prefix != null : !PREFIX_EDEFAULT.equals(prefix);
 			case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__QUALIFIED:
 				return qualified != QUALIFIED_EDEFAULT;
+			case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__INITIALIZED:
+				return initialized != INITIALIZED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -313,6 +365,7 @@ public abstract class MultipleCompoundDataDefImpl<D extends QStroller<?>, E exte
 				case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__ELEMENTS: return QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS;
 				case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__PREFIX: return QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__PREFIX;
 				case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__QUALIFIED: return QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED;
+				case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__INITIALIZED: return QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__INITIALIZED;
 				default: return -1;
 			}
 		}
@@ -331,6 +384,7 @@ public abstract class MultipleCompoundDataDefImpl<D extends QStroller<?>, E exte
 				case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS: return QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__ELEMENTS;
 				case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__PREFIX: return QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__PREFIX;
 				case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED: return QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__QUALIFIED;
+				case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__INITIALIZED: return QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__INITIALIZED;
 				default: return -1;
 			}
 		}
@@ -352,6 +406,8 @@ public abstract class MultipleCompoundDataDefImpl<D extends QStroller<?>, E exte
 		result.append(prefix);
 		result.append(", qualified: ");
 		result.append(qualified);
+		result.append(", initialized: ");
+		result.append(initialized);
 		result.append(')');
 		return result.toString();
 	}

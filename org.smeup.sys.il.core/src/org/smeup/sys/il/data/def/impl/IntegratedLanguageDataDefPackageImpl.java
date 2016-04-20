@@ -571,6 +571,15 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCompoundDataDef_Initialized() {
+		return (EAttribute)compoundDataDefEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1080,6 +1089,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		createEReference(compoundDataDefEClass, COMPOUND_DATA_DEF__ELEMENTS);
 		createEAttribute(compoundDataDefEClass, COMPOUND_DATA_DEF__PREFIX);
 		createEAttribute(compoundDataDefEClass, COMPOUND_DATA_DEF__QUALIFIED);
+		createEAttribute(compoundDataDefEClass, COMPOUND_DATA_DEF__INITIALIZED);
 
 		dataDefEClass = createEClass(DATA_DEF);
 		createEAttribute(dataDefEClass, DATA_DEF__FORMULAS);
@@ -1508,6 +1518,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		initEReference(getCompoundDataDef_Elements(), g1, null, "elements", null, 0, -1, QCompoundDataDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCompoundDataDef_Prefix(), ecorePackage.getEString(), "prefix", null, 0, 1, QCompoundDataDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCompoundDataDef_Qualified(), ecorePackage.getEBoolean(), "qualified", null, 0, 1, QCompoundDataDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCompoundDataDef_Initialized(), ecorePackage.getEBoolean(), "initialized", null, 0, 1, QCompoundDataDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataDefEClass, QDataDef.class, "DataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataDef_Formulas(), ecorePackage.getEString(), "formulas", null, 0, -1, QDataDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

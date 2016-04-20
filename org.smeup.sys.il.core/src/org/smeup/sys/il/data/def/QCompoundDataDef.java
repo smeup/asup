@@ -24,6 +24,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
  *   <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#getElements <em>Elements</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#getPrefix <em>Prefix</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#isQualified <em>Qualified</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#isInitialized <em>Initialized</em>}</li>
  * </ul>
  *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getCompoundDataDef()
@@ -127,4 +128,30 @@ public interface QCompoundDataDef<D extends QStruct<?>, E extends QDataTerm<?>> 
 	 * @generated
 	 */
 	void setQualified(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Initialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Initialized</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Initialized</em>' attribute.
+	 * @see #setInitialized(boolean)
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getCompoundDataDef_Initialized()
+	 * @model
+	 * @generated
+	 */
+	boolean isInitialized();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.data.def.QCompoundDataDef#isInitialized <em>Initialized</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Initialized</em>' attribute.
+	 * @see #isInitialized()
+	 * @generated
+	 */
+	void setInitialized(boolean value);
 } // QCompoundDataDef
