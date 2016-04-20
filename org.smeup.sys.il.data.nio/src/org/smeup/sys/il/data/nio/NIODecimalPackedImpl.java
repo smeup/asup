@@ -12,25 +12,16 @@
 package org.smeup.sys.il.data.nio;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.nio.ByteBuffer;
+import java.text.NumberFormat;
 
 import org.smeup.sys.il.data.QDataContext;
-
-import com.ibm.as400.access.AS400PackedDecimal;
-import com.ibm.as400.access.AS400ZonedDecimal;
 
 public class NIODecimalPackedImpl extends NIODecimalImpl {
 	private static final long serialVersionUID = 1L;
 
-	private static final AS400PackedDecimal packeds[][] = new AS400PackedDecimal[50][50];
-
-	private AS400PackedDecimal packed = null;
-
 	public NIODecimalPackedImpl(QDataContext dataContext, int precision, int scale) {
 		super(dataContext, precision, scale);
-
-		packed = getDecimal(precision, scale);
 	}
 
 	@Override
@@ -44,17 +35,17 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 
 	@Override
 	public int getSize() {
-		return packed.getByteLength();
+		return getDecimalDef().getPacked().getByteLength();
 	}
 
 	@Override
 	public int getPrecision() {
-		return packed.getNumberOfDigits();
+		return getDecimalDef().getPacked().getNumberOfDigits();
 	}
 
 	@Override
 	public int getScale() {
-		return packed.getNumberOfDecimalPositions();
+		return getDecimalDef().getPacked().getNumberOfDecimalPositions();
 	}
 
 	@Override
@@ -63,9 +54,9 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 		Number result = 0;
 		byte[] bytes = NIOBufferHelper.read(getBuffer(), getPosition(), getSize());
 		if (getScale() > 0)
-			result = packed.toDouble(bytes);
+			result = getDecimalDef().getPacked().toDouble(bytes);
 		else
-			result = ((Double) packed.toDouble(bytes)).longValue();
+			result = ((Double) getDecimalDef().getPacked().toDouble(bytes)).longValue();
 
 		return result;
 	}
@@ -75,30 +66,25 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 
 		byte[] bytes = null;
 		if (halfAdjust) {
-			BigDecimal bd = new BigDecimal(number.toString()).setScale(getScale(), RoundingMode.UP);
-			bytes = packed.toBytes(bd.doubleValue());
+			NumberFormat nf = getDecimalDef().getFormatUP();
+			BigDecimal bd = new BigDecimal(nf.format(number));
+
+			try {
+				bytes = getDecimalDef().getPacked().toBytes(bd);
+			} catch (Exception e) {
+				e.toString();
+			}
 		} else {
-			BigDecimal bd = new BigDecimal(number.toString()).setScale(getScale(), RoundingMode.DOWN);
-			bytes = packed.toBytes(bd);
+			NumberFormat nf = getDecimalDef().getFormatDW();
+			BigDecimal bd = new BigDecimal(nf.format(number));
+
+			try {
+				bytes = getDecimalDef().getPacked().toBytes(bd);
+			} catch (Exception e) {
+				e.toString();
+			}
 		}
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
-	}
-
-	private AS400PackedDecimal getDecimal(int precision, int scale) {
-
-		AS400PackedDecimal decimal = packeds[precision - 1][scale];
-
-		if (decimal == null)
-			synchronized (packeds) {
-				decimal = packeds[precision - 1][scale];
-				if (decimal == null) {
-					decimal = new AS400PackedDecimal(precision, scale);
-					decimal.setUseDouble(true);
-					packeds[precision - 1][scale] = decimal;
-				}
-			}
-
-		return decimal;
 	}
 
 	@Override
@@ -107,7 +93,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 		ByteBuffer byteBuffer = ByteBuffer.allocate(getLength());
 		NIOBufferHelper.fill(byteBuffer, 0, getLength(), filler);
 
-		eval(NIODecimalZonedImpl.getDecimal(getPrecision(), getScale()).toDouble(byteBuffer.array()));
+		eval(getDecimalDef().getZoned().toDouble(byteBuffer.array()));
 	}
 
 	@Override
@@ -116,43 +102,51 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 		ByteBuffer byteBuffer = ByteBuffer.allocate(getLength());
 		NIOBufferHelper.fillr(byteBuffer, 0, getLength(), filler);
 
-		eval(NIODecimalZonedImpl.getDecimal(getPrecision(), getScale()).toDouble(byteBuffer.array()));
+		eval(getDecimalDef().getZoned().toDouble(byteBuffer.array()));
 	}
 
 	@Override
 	protected void _move(byte[] value, boolean clear) {
 
-		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
-
 		double doubleValue;
-		if (getPrecision() > value.length)
-			doubleValue = zoned.toDouble(value);
-		else
-			doubleValue = zoned.toDouble(value, value.length - getPrecision());
+		if (getPrecision() > value.length) {
+			
+			byte[] newValue = asBytes();
+			System.arraycopy(value, 0, newValue, getPrecision() - value.length, value.length);
+			
+			doubleValue = getDecimalDef().getZoned().toDouble(newValue);
+		} else
+			doubleValue = getDecimalDef().getZoned().toDouble(value, value.length - getPrecision());
 
-		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), packed.toBytes(doubleValue), clear, getFiller());
+		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), getDecimalDef().getPacked().toBytes(doubleValue), clear, getFiller());
 	}
 
 	@Override
 	protected void _movel(byte[] value, boolean clear) {
 
-		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
-		double doubleValue = zoned.toDouble(value);
-
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), packed.toBytes(doubleValue), clear, getFiller());
+		double doubleValue;
+		if (getPrecision() > value.length) {
+			byte[] newValue = asBytes();
+			System.arraycopy(value, 0, newValue, 0, value.length);
+			
+			doubleValue = getDecimalDef().getZoned().toDouble(newValue);
+		} else {
+			doubleValue = getDecimalDef().getZoned().toDouble(value);
+		}
+		
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), getDecimalDef().getPacked().toBytes(doubleValue), clear, getFiller());
 	}
 
 	@Override
 	protected void _write(byte[] value) {
-		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
-		double doubleValue = zoned.toDouble(value);
+
+		double doubleValue = getDecimalDef().getZoned().toDouble(value);
 
 		eval(doubleValue);
 	}
 
 	@Override
 	public byte[] _toBytes() {
-		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getPrecision(), getScale());
-		return zoned.toBytes(asDouble());
+		return getDecimalDef().getZoned().toBytes(asDouble());
 	}
 }

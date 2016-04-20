@@ -455,6 +455,14 @@ public interface QNumeric extends QBufferedElement {
 	long asLong();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaNumber" required="true"
+	 * @generated
+	 */
+	Number asNumber();
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated

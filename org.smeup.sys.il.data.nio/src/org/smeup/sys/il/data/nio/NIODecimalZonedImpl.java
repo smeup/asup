@@ -12,38 +12,30 @@
 package org.smeup.sys.il.data.nio;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.text.NumberFormat;
 
 import org.smeup.sys.il.data.QDataContext;
-
-import com.ibm.as400.access.AS400ZonedDecimal;
 
 public class NIODecimalZonedImpl extends NIODecimalImpl {
 	private static final long serialVersionUID = 1L;
 
-	private static final AS400ZonedDecimal zoneds[][] = new AS400ZonedDecimal[50][50];
-
-	private AS400ZonedDecimal zoned = null;
-
 	public NIODecimalZonedImpl(QDataContext dataContext, int precision, int scale) {
 		super(dataContext, precision, scale);
-
-		zoned = getDecimal(precision, scale);
 	}
 
 	@Override
 	public int getSize() {
-		return zoned.getByteLength();
+		return getDecimalDef().getZoned().getByteLength();
 	}
 
 	@Override
 	public int getPrecision() {
-		return zoned.getNumberOfDigits();
+		return getDecimalDef().getZoned().getNumberOfDigits();
 	}
 
 	@Override
 	public int getScale() {
-		return zoned.getNumberOfDecimalPositions();
+		return getDecimalDef().getZoned().getNumberOfDecimalPositions();
 	}
 
 	@Override
@@ -51,42 +43,38 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 
 		Number result = 0;
 		if (getScale() > 0)
-			result = zoned.toDouble(asBytes());
+			result = getDecimalDef().getZoned().toDouble(asBytes());
 		else
-			result = ((Double) zoned.toDouble(asBytes())).longValue();
+			result = ((Double) getDecimalDef().getZoned().toDouble(asBytes())).longValue();
 
 		return result;
 	}
 
 	@Override
 	public void _writeNumber(Number number, boolean halfAdjust) {
-		
+
 		byte[] bytes = null;
-		if(halfAdjust) {
-			BigDecimal bd = new BigDecimal(number.toString()).setScale(getScale(), RoundingMode.UP);
-			bytes = zoned.toBytes(bd);
-		}
-		else {
-			BigDecimal bd = new BigDecimal(number.toString()).setScale(getScale(), RoundingMode.DOWN);
-			bytes = zoned.toBytes(bd);			
-		}		
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
-	}
+		if (halfAdjust) {
+			NumberFormat nf = getDecimalDef().getFormatUP();
+			BigDecimal bd = new BigDecimal(nf.format(number));
 
-	protected static AS400ZonedDecimal getDecimal(int precision, int scale) {
-
-		AS400ZonedDecimal decimal = zoneds[precision - 1][scale];
-		if (decimal == null)
-			synchronized (zoneds) {
-				decimal = zoneds[precision - 1][scale];
-				if (decimal == null) {
-					decimal = new AS400ZonedDecimal(precision, scale);
-					decimal.setUseDouble(true);
-					zoneds[precision - 1][scale] = decimal;
-				}
+			try {
+				bytes = getDecimalDef().getZoned().toBytes(bd.setScale(getScale()));
+			} catch (Exception e) {
+				e.toString();
 			}
+		} else {
+			
+			NumberFormat nf = getDecimalDef().getFormatDW();
+			BigDecimal bd = new BigDecimal(nf.format(number));
 
-		return decimal;
+			try {
+				bytes = getDecimalDef().getZoned().toBytes(bd);
+			} catch (Exception e) {
+				e.toString();
+			}
+		}
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
 	}
 
 	@Override

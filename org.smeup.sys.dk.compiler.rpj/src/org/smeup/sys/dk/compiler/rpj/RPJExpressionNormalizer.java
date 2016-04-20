@@ -92,7 +92,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 			break;
 		case ATOMIC:
 		case QUALIFIED:
-			QNamedNode namedNode = this.compilationUnit.getNamedNode(assignmentExpression.getLeftOperand().getValue(), true);
+/*			QNamedNode namedNode = this.compilationUnit.getNamedNode(assignmentExpression.getLeftOperand().getValue(), true);
 
 			// dataTerm
 			if (namedNode instanceof QDataTerm<?>) {
@@ -113,7 +113,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 						statement.setAssignment(expressionWriter.writeExpression(assignmentExpression));
 					}
 				}
-			}
+			}*/
 			break;
 
 		case BLOCK:

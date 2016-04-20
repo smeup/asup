@@ -535,14 +535,26 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	public QCharacter qTrim(String trimmed) {
-		// TODO Auto-generated method stub
-		return null;
+
+		// TODO replace me
+		byte[] bytes = NIOBufferHelper.trim(this);
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length);
+		character.allocate();
+		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes, false, getFiller());
+
+		return character;
 	}
 
 	@Override
 	public QCharacter qTrim(QString trimmed) {
-		// TODO Auto-generated method stub
-		return null;
+
+		// TODO replace me
+		byte[] bytes = NIOBufferHelper.trim(this);
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length);
+		character.allocate();
+		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes, false, getFiller());
+
+		return character;
 	}
 
 	@Override

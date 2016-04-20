@@ -31,9 +31,8 @@ import org.smeup.sys.il.data.def.DecimalType;
 
 public abstract class NIONumericImpl extends NIOBufferedElementImpl implements QNumeric {
 
-
-
 	private static final long serialVersionUID = 1L;
+
 	
 	public NIONumericImpl(QDataContext dataContext) {
 		super(dataContext);
@@ -92,6 +91,11 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	@Override
 	public final long asLong() {
 		return _readNumber().longValue();
+	}
+	
+	@Override
+	public final Number asNumber() {
+		return _readNumber();
 	}
 
 	@Override
@@ -460,7 +464,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final void eval(QNumeric value, boolean halfAdjust) {
-		_writeNumber(value.asDouble(), halfAdjust);
+		_writeNumber(value.asNumber(), halfAdjust);
 	}
 
 	@Override
@@ -583,7 +587,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	
 	@Override
 	public final Number n() {
-		return _readNumber();
+		return asNumber();
 	}
 	
 	@Override

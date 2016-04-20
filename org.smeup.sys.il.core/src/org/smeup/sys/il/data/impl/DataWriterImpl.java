@@ -225,14 +225,12 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 			numeric.eval((QNumeric) object);
 		else if (object instanceof DataSpecial)
 			numeric.eval((DataSpecial) object);
-		else if (object instanceof BigDecimal)
-			numeric.eval((BigDecimal) object);
-		else if (object instanceof Integer)
-			numeric.eval((Integer) object);
+		else if (object instanceof Number)
+			numeric.eval((Number) object);
 		else
 			try {
 				if (!object.toString().isEmpty())
-					numeric.eval(Double.parseDouble(object.toString()));
+					numeric.eval(new BigDecimal(object.toString()));
 				else
 					numeric.clear();
 			} catch (Exception e) {

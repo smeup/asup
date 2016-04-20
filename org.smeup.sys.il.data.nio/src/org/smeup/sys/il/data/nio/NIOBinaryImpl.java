@@ -22,8 +22,6 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.def.BinaryType;
 
-import com.ibm.as400.access.AS400ZonedDecimal;
-
 public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 	private static final long serialVersionUID = 1L;
@@ -33,17 +31,20 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 	private BinaryType _type;
 	private boolean _unsigned;
-
-	public NIOBinaryImpl(QDataContext dataContext) {
-		super(dataContext);
-	}
-
+	private NIODecimalDef decimalType = null;
+	
 	public NIOBinaryImpl(QDataContext dataContext, BinaryType type, boolean unsigned) {
 		super(dataContext);
 		this._type = type;
 		this._unsigned = unsigned;
+		
+		this.decimalType = NIODecimalDef.getInstance(getLength(), 0);
 	}
 
+	protected NIODecimalDef getDecimalType() {
+		return decimalType;
+	}
+	
 	@Override
 	protected byte getFiller() {
 		return INIT;
@@ -138,9 +139,8 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	}
 
 	@Override
-	public byte[] _toBytes() {
-		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getLength(), 0);
-		return zoned.toBytes(asDouble());
+	public byte[] _toBytes() {;
+		return getDecimalType().getZoned().toBytes(asDouble());
 	}
 
 	@Override
@@ -161,22 +161,18 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 	@Override
 	protected void _move(byte[] value, boolean clear) {
-		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getLength(), 0);
-		eval(zoned.toDouble(value));
+		eval(getDecimalType().getZoned().toDouble(value));
 	}
 
 	@Override
 	protected void _movel(byte[] value, boolean clear) {
-		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getLength(), 0);
-		eval(zoned.toDouble(value));
+		eval(getDecimalType().getZoned().toDouble(value));
 	}
 
 	@Override
 	protected void _write(byte[] value) {
-		AS400ZonedDecimal zoned = NIODecimalZonedImpl.getDecimal(getLength(), 0);
-		eval(zoned.toDouble(value));
+		eval(getDecimalType().getZoned().toDouble(value));
 	}
-	
 
 	@Override
 	protected final byte[] _toBytes(DataSpecial value) {
