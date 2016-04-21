@@ -34,6 +34,14 @@ public interface QCommandManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" jobRequired="true" commandRequired="true"
+	 * @generated
+	 */
+	QDataContainer decodeCommand(QJob job, String command);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" capabilityRequired="true" containerRequired="true"
 	 * @generated
 	 */
