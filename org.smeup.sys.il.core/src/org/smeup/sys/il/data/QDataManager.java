@@ -9,7 +9,6 @@ package org.smeup.sys.il.data;
 
 import java.lang.String;
 import java.util.Map;
-
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.ctx.QContext;

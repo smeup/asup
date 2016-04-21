@@ -7,9 +7,10 @@
  *
  *
  * Contributors:
- *   Dario Foresti - Initial API and implementation
+ *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.expr.test;
+package org.smeup.sys.os.cmd.test;
+
 
 import javax.inject.Inject;
 
@@ -20,8 +21,8 @@ import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.base.BaseTestSuiteDirectoryRunnerImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 
-@Test(category = "ILExpr")
-public class ILExprTestLauncherImpl implements QTestSuiteLauncher {
+@Test(category = "OSCmd")
+public class OSCmdTestLauncherImpl implements QTestSuiteLauncher {
 
 	@Inject
 	private QTestManager testManager;
