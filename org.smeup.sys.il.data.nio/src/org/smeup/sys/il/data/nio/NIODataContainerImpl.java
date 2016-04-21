@@ -117,7 +117,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 			// remove child data
 			if (previousData instanceof QStruct<?>) {
-				for (Field field : NIOStructHelper.getFields((Class<? extends QStruct<?>>) previousData.getClass())) {
+				for (Field field : NIODataStructHelper.getFields((Class<? extends QStruct<?>>) previousData.getClass())) {
 					if (QData.class.isAssignableFrom(field.getType()))
 						datas.remove(field.getName());
 				}
@@ -354,7 +354,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		if (data instanceof QStruct<?> && dataTerm.getDefinition() instanceof QCompoundDataDef<?, ?>) {
 			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
 
-			for (Field field : NIOStructHelper.getFields((Class<? extends QStruct<?>>) data.getClass())) {
+			for (Field field : NIODataStructHelper.getFields((Class<? extends QStruct<?>>) data.getClass())) {
 				if (QData.class.isAssignableFrom(field.getType())) {
 					try {
 						QData element = (QData) field.get(data);

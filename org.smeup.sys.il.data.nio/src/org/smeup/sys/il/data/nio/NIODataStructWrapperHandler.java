@@ -65,7 +65,7 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 					cachedElements = new ArrayList<>();
 
 					try {
-						for (Field field : NIOStructHelper.getFields(_wrapped.getClass()))
+						for (Field field : NIODataStructHelper.getFields(_wrapped.getClass()))
 							cachedElements.add((QBufferedData) field.get(_wrapped));
 					} catch (SecurityException | IllegalArgumentException | IllegalAccessException e) {
 						e.printStackTrace();
@@ -105,7 +105,7 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 		
 		List<String> elementNames = new ArrayList<String>();
 		
-		for (Field field : NIOStructHelper.getFields(_wrapped.getClass()))
+		for (Field field : NIODataStructHelper.getFields(_wrapped.getClass()))
 			elementNames.add(field.getName());
 		
 		return elementNames;

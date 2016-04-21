@@ -100,7 +100,7 @@ public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
 				QStrollerDef<?> strollerDef = (QStrollerDef<?>) overlayTerm.getDefinition();
 				multipleAtomicDataDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createArrayDef();
 				multipleAtomicDataDef.setDimension(strollerDef.getDimension());
-				setLength(overlayTerm.getName(), (QCharacterDef) dataTerm.getDefinition(), strollerDef);
+				setLength((QCharacterDef) dataTerm.getDefinition(), strollerDef);
 				multipleAtomicDataDef.setArgument((QUnaryAtomicBufferedDataDef<?>) dataTerm.getDefinition());
 				((QDataTerm<QMultipleAtomicDataDef<?>>) dataTerm).setDefinition(multipleAtomicDataDef);
 				appendDefinition(overlayTerm.getDefinition(), dataTerm);

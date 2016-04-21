@@ -60,7 +60,8 @@ public interface QDataFactory {
 	QCharacter createCharacter(int length, boolean varying, boolean initialize);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" dataDefRequired="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -94,10 +95,11 @@ public interface QDataFactory {
 	 * @model required="true" elementsMany="true" lengthRequired="true" initializeRequired="true"
 	 * @generated
 	 */
-	<D extends QDataStruct> D createDataStruct(String name, List<QDataTerm<QBufferedDataDef<?>>> elements, int length, boolean initialize);
+	<D extends QDataStruct> D createDataStruct(List<QDataTerm<QBufferedDataDef<?>>> elements, int length, boolean initialize);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" lengthRequired="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -191,7 +193,7 @@ public interface QDataFactory {
 	 * @model required="true" argumentRequired="true" dimensionRequired="true" initializeRequired="true"
 	 * @generated
 	 */
-	<D extends QDataStruct> QStroller<D> createStroller(String name, QStrollerDef<?> argument, int dimension, boolean initialize);
+	<D extends QDataStruct> QStroller<D> createStroller(QStrollerDef<?> argument, int dimension, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

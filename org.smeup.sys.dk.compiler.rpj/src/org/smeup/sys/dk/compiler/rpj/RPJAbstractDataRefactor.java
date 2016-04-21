@@ -185,13 +185,13 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 		dataDefTo.getFormulas().addAll(EcoreUtil.copyAll(dataDef.getFormulas()));
 	}
 
-	protected void setLength(String name, QCharacterDef charDefTo, QDataStructDef dataStructDefFrom) {
+	protected void setLength(QCharacterDef charDefTo, QDataStructDef dataStructDefFrom) {
 
 		if (charDefTo.getLength() == 0) {
 			if (dataStructDefFrom.getLength() == 0) {
 
 				QDataContext dataContext = getCompilationUnit().getContext().get(QDataContext.class);
-				QDataStruct dataStructure = dataContext.getDataFactory().createDataStruct(name, dataStructDefFrom.getElements(), 0, false);
+				QDataStruct dataStructure = dataContext.getDataFactory().createDataStruct(dataStructDefFrom.getElements(), 0, false);
 
 				if (dataStructure.getLength() == 0)
 					throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: ayetvayey654c7C");
@@ -202,13 +202,13 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 		}
 	}
 
-	protected void setLength(String name, QCharacterDef charDefTo, QStrollerDef<?> strollerDefFrom) {
+	protected void setLength(QCharacterDef charDefTo, QStrollerDef<?> strollerDefFrom) {
 
 		if (charDefTo.getLength() == 0) {
 			if (strollerDefFrom.getLength() == 0) {
 
 				QDataContext dataContext = getCompilationUnit().getContext().get(QDataContext.class);
-				QDataStruct dataStructure = dataContext.getDataFactory().createDataStruct(name, strollerDefFrom.getElements(), 0, false);
+				QDataStruct dataStructure = dataContext.getDataFactory().createDataStruct(strollerDefFrom.getElements(), 0, false);
 
 				if (dataStructure.getLength() == 0)
 					throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: kjhfvxzgjchvzxjchv");

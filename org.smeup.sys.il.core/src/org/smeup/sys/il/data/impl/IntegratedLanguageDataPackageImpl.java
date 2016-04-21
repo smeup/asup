@@ -2481,7 +2481,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		t1 = addETypeParameter(op, "D");
 		g1 = createEGenericType(this.getDataStruct());
 		t1.getEBounds().add(g1);
-		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType(theIntegratedLanguageDataDefPackage.getBufferedDataDef());
 		g1.getETypeArguments().add(g2);
@@ -2603,7 +2602,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		t1 = addETypeParameter(op, "D");
 		g1 = createEGenericType(this.getDataStruct());
 		t1.getEBounds().add(g1);
-		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getStrollerDef());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);

@@ -130,7 +130,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 				QCompoundDataDef<?, ?> compoundDef = (QCompoundDataDef<?, ?>) term.getDefinition();
 				if (compoundDef.getClassDelegator() != null) {
 					for (QStruct<?> struct : (QList<QStruct<?>>) list) {
-						for (Field field : NIOStructHelper.getFields((Class<? extends QStruct<?>>) struct.getClass())) {
+						for (Field field : NIODataStructHelper.getFields((Class<? extends QStruct<?>>) struct.getClass())) {
 							QDataTerm<?> child = dataContainer.createDataTerm(field.getName(), field.getGenericType(), Arrays.asList(field.getAnnotations()));
 							NIODataResetter childResetter = new NIODataResetter(dataContainer, struct.getElement(child.getName()));
 							child.accept(childResetter);
@@ -208,7 +208,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 			if (result) {
 
 				if (compoundDef.getClassDelegator() != null) {
-					for (Field field : NIOStructHelper.getFields((Class<? extends QStruct<?>>) struct.getClass())) {
+					for (Field field : NIODataStructHelper.getFields((Class<? extends QStruct<?>>) struct.getClass())) {
 						QDataTerm<?> child = dataContainer.createDataTerm(field.getName(), field.getGenericType(), Arrays.asList(field.getAnnotations()));
 						NIODataResetter childResetter = new NIODataResetter(dataContainer, struct.getElement(child.getName()));
 						child.accept(childResetter);

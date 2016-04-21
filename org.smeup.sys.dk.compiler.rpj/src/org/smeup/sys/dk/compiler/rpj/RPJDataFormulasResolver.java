@@ -171,7 +171,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 				QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>> compoundDataDef = (QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>>) dataValue.getDefinition();
 
-				QDataStruct dataStruct = dataContext.getDataFactory().createDataStruct(dataValue.getName(), compoundDataDef.getElements(), 0, false);
+				QDataStruct dataStruct = dataContext.getDataFactory().createDataStruct(compoundDataDef.getElements(), 0, false);
 				default_.setValue(Integer.toString(dataStruct.getSize()));
 
 				break;

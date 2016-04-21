@@ -27,7 +27,9 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 	public NIOAbstractDataStruct(QDataContext dataContext, int length) {
 		super(dataContext, length);
 	}
-
+	
+	protected abstract void addElement(String name, QBufferedData element, int position);
+	
 	@Override
 	protected void _clear() {
 		super._clear();

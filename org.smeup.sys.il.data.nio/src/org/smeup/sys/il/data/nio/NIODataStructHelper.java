@@ -8,7 +8,7 @@ import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QStruct;
 
-public class NIOStructHelper {
+public class NIODataStructHelper {
 	
 	public static List<Field> getFields(Class<? extends QStruct<?>> klass) {
 		List<Field> fields = new ArrayList<Field>();
