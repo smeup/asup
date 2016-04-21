@@ -11,8 +11,8 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -52,13 +52,13 @@ public class NIODataManagerImpl implements QDataManager {
 	}
 
 	@Override
-	public QDataContainer createDataContainer(QDataContext dataContext, Map<String, QDataTerm<?>> dataTerms) {
-		return new NIODataContainerImpl((NIODataContextImpl) dataContext, dataTerms);
+	public QDataContainer createDataContainer(QDataContext dataContext) {
+		return new NIODataContainerImpl((NIODataContextImpl) dataContext);
 	}
 
 	@Override
-	public QDataContainer createDataContainer(QContext context, Map<String, QDataTerm<?>> dataTerms) {
-		return new NIODataContainerImpl(new NIODataContextImpl(context), dataTerms);
+	public QDataContainer createDataContainer(QContext context) {
+		return new NIODataContainerImpl(new NIODataContextImpl(context));
 	}
 
 	@Override
@@ -66,9 +66,11 @@ public class NIODataManagerImpl implements QDataManager {
 
 		QFrame<?> frame = frameManager.getFrame(object);
 
-		Map<String, QDataTerm<?>> dataTerms = buildDataTerms(frame, frameManager.getFrame(term));
+		QDataContainer dataContainer = new NIODataContainerImpl(new NIODataContextImpl(context));
+		for(QDataTerm<?> dataTerm: buildDataTerms(frame, frameManager.getFrame(term))) 
+			dataContainer.addDataTerm(dataTerm);
 
-		return new NIODataContainerImpl(new NIODataContextImpl(context), dataTerms);
+		return dataContainer;
 	}
 
 	@Override
@@ -79,9 +81,9 @@ public class NIODataManagerImpl implements QDataManager {
 	}
 
 	@SuppressWarnings({ "unchecked" })
-	private <DD extends QDataDef<?>> Map<String, QDataTerm<?>> buildDataTerms(QFrame<?> frame, QFrame<?> term) {
+	private <DD extends QDataDef<?>> List<QDataTerm<?>> buildDataTerms(QFrame<?> frame, QFrame<?> term) {
 
-		Map<String, QDataTerm<?>> dataTerms = new LinkedHashMap<String, QDataTerm<?>>();
+		List<QDataTerm<?>> dataTerms = new LinkedList<QDataTerm<?>>();
 
 		for (QSlot slot : frame.getSlots()) {
 			
@@ -134,7 +136,7 @@ public class NIODataManagerImpl implements QDataManager {
 					default_.getValues().add(slot.getDefaultValue().toString());
 			}
 
-			dataTerms.put(slot.getName(), dataTerm);
+			dataTerms.add(dataTerm);
 		}
 
 		return dataTerms;

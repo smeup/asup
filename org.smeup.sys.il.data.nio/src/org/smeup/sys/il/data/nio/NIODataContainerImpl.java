@@ -18,9 +18,9 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.core.meta.QDefault;
@@ -55,8 +55,8 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	private Map<String, QData> datas;
 	private long memorySize = 0;
 
-	protected NIODataContainerImpl(NIODataContextImpl dataContext, Map<String, QDataTerm<?>> dataTerms) {
-		this.dataTerms = dataTerms;
+	protected NIODataContainerImpl(NIODataContextImpl dataContext) {
+		this.dataTerms = new LinkedHashMap<String, QDataTerm<?>>();
 		this.datas = new HashMap<String, QData>();
 		this.dataContext = dataContext;
 	}
@@ -68,9 +68,14 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		this.dataTerms = new HashMap<String, QDataTerm<?>>();
 	}
 
+	@Override
+	public void addDataTerm(QDataTerm<?> dataTerm) {
+		this.dataTerms.put(getKey(dataTerm), dataTerm);		
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
-	public QDataTerm<?> createDataTerm(String name, Type type, List<Annotation> annotations) {
+	public QDataTerm<?> addDataTerm(String name, Type type, List<Annotation> annotations) {
 
 		if (annotations == null)
 			annotations = new ArrayList<Annotation>();
@@ -193,7 +198,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			QDataTerm<?> dataTermParent = (QDataTerm<?>) parent;
 			if (dataTermParent.getDataTermType().isCompound()) {
 				QStruct<?> dataParent = (QStruct<?>) getData(dataTermParent);
-				return dataParent.getElement(dataTerm.getName());
+				return dataParent.getElement(getKey(dataTerm));
 			} else
 				return null;
 		} else
@@ -208,8 +213,8 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	@Override
 	public void clearData() {
 
-		for (Entry<String, QDataTerm<?>> entry : dataTerms.entrySet()) {
-			QData data = getOrCreateData(entry.getKey(), entry.getValue());
+		for (QDataTerm<?> dataTerm: dataTerms.values()) {
+			QData data = getOrCreateData(dataTerm);
 			data.clear();
 		}
 	}
@@ -217,21 +222,30 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	@Override
 	public void resetData() {
 
-		for (Entry<String, QDataTerm<?>> entry : dataTerms.entrySet()) {
-			if (entry.getValue().getParent() instanceof QDataTerm<?>) {
-				QDataTerm<?> parentTerm = (QDataTerm<?>) entry.getValue().getParent();
+		for (QDataTerm<?> dataTerm : dataTerms.values()) {
+			if (dataTerm.getParent() instanceof QDataTerm<?>) {
+				QDataTerm<?> parentTerm = (QDataTerm<?>) dataTerm.getParent();
 
 				// exclude element of compound data
 				if (parentTerm.getDataTermType().isCompound())
 					continue;
 			}
-			resetData(entry.getKey(), entry.getValue());
+			resetData(dataTerm);
 		}
 	}
 
 	@Override
 	public QData resetData(QDataTerm<?> dataTerm) {
-		return resetData(getKey(dataTerm), dataTerm);
+
+		QData data = getOrCreateData(dataTerm);
+
+		QOverlay overlay = dataTerm.getFacet(QOverlay.class);
+		if (overlay == null) {
+			NIODataResetter resetter = new NIODataResetter(this, data);
+			dataTerm.accept(resetter);
+		}
+
+		return data;
 	}
 
 	@Override
@@ -242,7 +256,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		if (dataTerm == null)
 			return null;
 
-		return resetData(key, dataTerm);
+		return resetData(dataTerm);
 	}
 
 	@Override
@@ -258,33 +272,11 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		return new ArrayList<String>(dataTerms.keySet());
 	}
 
-	private String getKey(QDataTerm<?> dataTerm) {
-
-		for (Entry<String, QDataTerm<?>> entry : dataTerms.entrySet())
-			if (entry.getValue().equals(dataTerm))
-				return entry.getKey();
-
-		return dataTerm.getName();
-	}
-
-	private QData resetData(String key, QDataTerm<?> dataTerm) {
-
-		QData data = getOrCreateData(key, dataTerm);
-
-		QOverlay overlay = dataTerm.getFacet(QOverlay.class);
-		if (overlay == null) {
-			NIODataResetter resetter = new NIODataResetter(this, data);
-			dataTerm.accept(resetter);
-		}
-
-		return data;
-	}
-
 	@Override
 	public void removeDataTerm(QDataTerm<?> dataTerm) {
-		String key = getKey(dataTerm);
-		this.dataTerms.remove(key);
-		QData data = this.datas.remove(key);
+		
+		this.dataTerms.remove(getKey(dataTerm));
+		QData data = this.datas.remove(getKey(dataTerm));
 		if (data instanceof QBufferedData) {
 			QBufferedData bufferedData = (QBufferedData) data;
 			if (bufferedData.isStoreOwner())
@@ -329,21 +321,21 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		if (data == null) {
 			QDataTerm<?> dataTerm = getDataTerm(key);
 			if (dataTerm != null)
-				data = getOrCreateData(key, dataTerm);
+				data = getOrCreateData(dataTerm);
 		}
 
 		return data;
 	}
 
 	@SuppressWarnings("unchecked")
-	private QData getOrCreateData(String key, QDataTerm<?> dataTerm) {
+	private QData getOrCreateData(QDataTerm<?> dataTerm) {
 
-		QData data = datas.get(key);
+		QData data = datas.get(getKey(dataTerm));
 		if (data != null)
 			return data;
 
 		data = createData(dataTerm, true);
-		datas.put(key, data);
+		datas.put(getKey(dataTerm), data);
 
 		if (data instanceof QBufferedData) {
 			QBufferedData bufferedData = (QBufferedData) data;
@@ -362,7 +354,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 							System.err.println("Unexpected condition: ducvfs8dtrf8tse7rd8ftds");
 
 						if (compoundDataDef.isQualified())
-							datas.put(dataTerm.getName()+"."+field.getName(), element);
+							datas.put(getKey(dataTerm)+"."+field.getName(), element);
 						else
 							datas.put(field.getName(), element);
 					} catch (IllegalArgumentException | IllegalAccessException e) {
@@ -418,5 +410,12 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	@Override
 	public long getMemorySize() {
 		return this.memorySize;
+	}
+	
+	private String getKey(QDataTerm<?> dataTerm) {
+		if(dataTerm.getKey() != null)
+			return dataTerm.getKey();
+		else
+			return dataTerm.getName();
 	}
 }

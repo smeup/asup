@@ -105,10 +105,10 @@ public class BaseCallableInjector {
 
 	public <P> QCallableProgram<P> prepareCallable(QProgram program, Class<P> klass) {
 
-		QDataContainer dataContainer = dataManager.createDataContainer(dataContext, new HashMap<String, QDataTerm<?>>());
+		QDataContainer dataContainer = dataManager.createDataContainer(dataContext);
 
 		// create programStatus
-		QDataTerm<?> programStatusTerm = dataContainer.createDataTerm("*pgmstatus", BaseProgramStatusImpl.class, null);
+		QDataTerm<?> programStatusTerm = dataContainer.addDataTerm("*pgmstatus", BaseProgramStatusImpl.class, null);
 		QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
 		if (program != null) {
 			programStatus.getProgramName().eval(program.getName());
@@ -144,7 +144,7 @@ public class BaseCallableInjector {
 
 	public <P extends Object> P prepareProcedure(Object owner, Class<P> klass) {
 
-		QDataContainer dataContainer = dataManager.createDataContainer(dataContext, new HashMap<String, QDataTerm<?>>());
+		QDataContainer dataContainer = dataManager.createDataContainer(dataContext);
 		Constructor<?> constructor = null;
 
 		try {
@@ -401,7 +401,7 @@ public class BaseCallableInjector {
 		// pointer
 		for (InjectableField field : pointers) {
 
-			QDataTerm<?> dataTerm = dataContainer.createDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
+			QDataTerm<?> dataTerm = dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
 			QData data = dataContainer.resetData(dataTerm);
 			field.setValue(callable, data);
 		}
@@ -409,7 +409,7 @@ public class BaseCallableInjector {
 		// dataStructure
 		for (InjectableField field : dataStructures) {
 			
-			QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> dataTerm = (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataContainer.createDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
+			QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> dataTerm = (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
 			
 			QData data = null;
 			if(dataTerm.getDefinition().isInitialized()) 
@@ -443,7 +443,7 @@ public class BaseCallableInjector {
 		// data
 		for (InjectableField field : datas) {
 
-			QDataTerm<?> dataTerm = dataContainer.createDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
+			QDataTerm<?> dataTerm = dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
 			QData data = dataContainer.resetData(dataTerm);
 			field.setValue(callable, data);
 		}

@@ -1165,9 +1165,7 @@
   <eClassifiers xsi:type="ecore:EDataType" name="DataArray" instanceTypeName="D[]"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataContainer" abstract="true" interface="true"
       eSuperTypes="#//term/DataTermContainer ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable">
-    <eOperations name="clearData"/>
-    <eOperations name="close"/>
-    <eOperations name="createDataTerm" lowerBound="1">
+    <eOperations name="addDataTerm" lowerBound="1">
       <eGenericType eClassifier="#//term/DataTerm">
         <eTypeArguments/>
       </eGenericType>
@@ -1175,6 +1173,15 @@
       <eParameters name="type" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaType"/>
       <eParameters name="annotations" lowerBound="1" upperBound="-1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaAnnotation"/>
     </eOperations>
+    <eOperations name="addDataTerm" lowerBound="1">
+      <eParameters name="dataTerm" lowerBound="1">
+        <eGenericType eClassifier="#//term/DataTerm">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="clearData"/>
+    <eOperations name="close"/>
     <eOperations name="getData" eType="#//Data">
       <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
@@ -1454,25 +1461,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="DataManager" abstract="true" interface="true">
     <eOperations name="createDataContainer" lowerBound="1" eType="#//DataContainer">
       <eParameters name="dataContext" lowerBound="1" eType="#//DataContext"/>
-      <eParameters name="dataTerms">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
-          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-          <eTypeArguments eClassifier="#//term/DataTerm">
-            <eTypeArguments/>
-          </eTypeArguments>
-        </eGenericType>
-      </eParameters>
     </eOperations>
     <eOperations name="createDataContainer" lowerBound="1" eType="#//DataContainer">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass il-core.ecore#//ctx/Context"/>
-      <eParameters name="dataTerms">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
-          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-          <eTypeArguments eClassifier="#//term/DataTerm">
-            <eTypeArguments/>
-          </eTypeArguments>
-        </eGenericType>
-      </eParameters>
     </eOperations>
     <eOperations name="createDataContainer" lowerBound="1" eType="#//DataContainer">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass il-core.ecore#//ctx/Context"/>
@@ -3512,6 +3503,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="definition" containment="true">
         <eGenericType eTypeParameter="#//term/DataTerm/DD"/>
       </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialized" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="like" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -12,7 +12,6 @@
 package org.smeup.sys.os.cmd.ibmi;
 
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -117,9 +116,11 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		callableCommand.setCommandString(command);
 		callableCommand.setVariables(variables);
 
-		// prepare data terms
-		Map<String, QDataTerm<?>> dataTerms = new LinkedHashMap<String, QDataTerm<?>>();
 
+		// data container
+		QDataContainer dataContainer = dataManager.createDataContainer(job.getContext());
+
+		// prepare data terms
 		for (QCommandParameter commandParameter : qCommand.getParameters(CommandParameterOrder.POSITION)) {
 
 			QDevelopmentStatus developmentStatus = QDevelopmentKitCoreFactory.eINSTANCE.createDevelopmentStatus();
@@ -142,11 +143,10 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				dataTerm.getFacets().add(developmentStatus);
 				break;
 			}
-			dataTerms.put(commandParameter.getName(), dataTerm);
+			dataTerm.setKey(commandParameter.getName());
+			dataContainer.addDataTerm(dataTerm);
 		}
-
-		// data container
-		QDataContainer dataContainer = dataManager.createDataContainer(job.getContext(), dataTerms);
+		
 		dataContainer.clearData();
 		callableCommand.setDataContainer(dataContainer);
 
@@ -180,7 +180,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				value = "";
 
 			// Assign value
-			QDataTerm<?> dataTerm = dataTerms.get(commandParameter.getName());
+			QDataTerm<?> dataTerm = dataContainer.getDataTerm(commandParameter.getName());
 
 			QData data = null;
 			if (value.startsWith("&") || value.isEmpty() == false) {

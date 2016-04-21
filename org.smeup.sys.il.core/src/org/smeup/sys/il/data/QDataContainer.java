@@ -27,6 +27,22 @@ import org.smeup.sys.il.data.term.QDataTermContainer;
  */
 public interface QDataContainer extends QDataTermContainer, Closeable {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" nameRequired="true" typeDataType="org.smeup.sys.mi.core.JavaType" typeRequired="true" annotationsDataType="org.smeup.sys.mi.core.JavaAnnotation" annotationsRequired="true" annotationsMany="true"
+	 * @generated
+	 */
+	QDataTerm<?> addDataTerm(String name, Type type, List<Annotation> annotations);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataTermRequired="true"
+	 * @generated
+	 */
+	void addDataTerm(QDataTerm<?> dataTerm);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model
 	 * @generated
@@ -40,14 +56,6 @@ public interface QDataContainer extends QDataTermContainer, Closeable {
 	 * @generated
 	 */
 	void close();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" nameRequired="true" typeDataType="org.smeup.sys.mi.core.JavaType" typeRequired="true" annotationsDataType="org.smeup.sys.mi.core.JavaAnnotation" annotationsRequired="true" annotationsMany="true"
-	 * @generated
-	 */
-	QDataTerm<?> createDataTerm(String name, Type type, List<Annotation> annotations);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

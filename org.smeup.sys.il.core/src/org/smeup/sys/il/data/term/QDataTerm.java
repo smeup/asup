@@ -26,6 +26,7 @@ import org.smeup.sys.il.data.def.QDataDef;
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#isConstant <em>Constant</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getDefault <em>Default</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getDefinition <em>Definition</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getKey <em>Key</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#isInitialized <em>Initialized</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getLike <em>Like</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getName <em>Name</em>}</li>
@@ -166,6 +167,32 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * @generated
 	 */
 	void setDefinition(DD value);
+
+	/**
+	 * Returns the value of the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Key</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Key</em>' attribute.
+	 * @see #setKey(String)
+	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTerm_Key()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getKey();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.data.term.QDataTerm#getKey <em>Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Key</em>' attribute.
+	 * @see #getKey()
+	 * @generated
+	 */
+	void setKey(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Initialized</b></em>' attribute. <!--

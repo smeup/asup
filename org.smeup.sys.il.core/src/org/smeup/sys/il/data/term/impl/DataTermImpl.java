@@ -37,6 +37,7 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#isConstant <em>Constant</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getDefinition <em>Definition</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getKey <em>Key</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#isInitialized <em>Initialized</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getLike <em>Like</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getName <em>Name</em>}</li>
@@ -114,6 +115,26 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	 * @ordered
 	 */
 	protected DD definition;
+
+	/**
+	 * The default value of the '{@link #getKey() <em>Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String KEY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getKey() <em>Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected String key = KEY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isInitialized() <em>Initialized</em>}' attribute.
@@ -391,6 +412,27 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getKey() {
+		return key;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setKey(String newKey) {
+		String oldKey = key;
+		key = newKey;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__KEY, oldKey, key));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -605,6 +647,8 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 				return getDefault();
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION:
 				return getDefinition();
+			case QIntegratedLanguageDataTermPackage.DATA_TERM__KEY:
+				return getKey();
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__INITIALIZED:
 				return isInitialized();
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__LIKE:
@@ -641,6 +685,9 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION:
 				setDefinition((DD)newValue);
+				return;
+			case QIntegratedLanguageDataTermPackage.DATA_TERM__KEY:
+				setKey((String)newValue);
 				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__INITIALIZED:
 				setInitialized((Boolean)newValue);
@@ -683,6 +730,9 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION:
 				setDefinition((DD)null);
 				return;
+			case QIntegratedLanguageDataTermPackage.DATA_TERM__KEY:
+				setKey(KEY_EDEFAULT);
+				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__INITIALIZED:
 				setInitialized(INITIALIZED_EDEFAULT);
 				return;
@@ -719,6 +769,8 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 				return default_ != null;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION:
 				return definition != null;
+			case QIntegratedLanguageDataTermPackage.DATA_TERM__KEY:
+				return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__INITIALIZED:
 				return initialized != INITIALIZED_EDEFAULT;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__LIKE:
@@ -746,6 +798,8 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 		result.append(based);
 		result.append(", constant: ");
 		result.append(constant);
+		result.append(", key: ");
+		result.append(key);
 		result.append(", initialized: ");
 		result.append(initialized);
 		result.append(", like: ");
