@@ -1256,17 +1256,17 @@
       </eParameters>
       <eParameters name="dimension" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="sortDirection" lowerBound="1" eType="#//SortDirection"/>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createBinary" lowerBound="1" eType="#//Binary">
       <eParameters name="type" lowerBound="1" eType="#//def/BinaryType"/>
       <eParameters name="unsigned" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createCharacter" lowerBound="1" eType="#//Character">
       <eParameters name="length" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="varying" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createData" lowerBound="1">
       <eGenericType eTypeParameter="#//DataFactory/createData/D"/>
@@ -1278,7 +1278,7 @@
           <eTypeArguments eTypeParameter="#//DataFactory/createData/D"/>
         </eGenericType>
       </eParameters>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createData" lowerBound="1" eType="#//Data">
       <eParameters name="dataTerm" lowerBound="1">
@@ -1286,7 +1286,7 @@
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createDataArea" lowerBound="1">
       <eGenericType eClassifier="#//DataArea">
@@ -1301,7 +1301,7 @@
         </eGenericType>
       </eParameters>
       <eParameters name="externalName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createDataDef" lowerBound="1">
       <eGenericType eClassifier="#//def/DataDef">
@@ -1323,7 +1323,7 @@
         </eGenericType>
       </eParameters>
       <eParameters name="length" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createDataStruct" lowerBound="1">
       <eGenericType eTypeParameter="#//DataFactory/createDataStruct.1/D"/>
@@ -1336,19 +1336,19 @@
         </eGenericType>
       </eParameters>
       <eParameters name="length" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createDate" lowerBound="1" eType="#//Datetime">
       <eParameters name="type" lowerBound="1" eType="#//def/DatetimeType"/>
       <eParameters name="dateFormat" lowerBound="1" eType="#//def/DateFormat"/>
       <eParameters name="timeFormat" lowerBound="1" eType="#//def/TimeFormat"/>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createDecimal" lowerBound="1" eType="#//Decimal">
       <eParameters name="precision" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="scale" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="type" lowerBound="1" eType="#//def/DecimalType"/>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createEnum" lowerBound="1">
       <eGenericType eClassifier="#//Enum">
@@ -1369,18 +1369,17 @@
       <eParameters name="dataDelegate" lowerBound="1">
         <eGenericType eTypeParameter="#//DataFactory/createEnum/D"/>
       </eParameters>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createFloating" lowerBound="1" eType="#//Floating">
       <eParameters name="type" lowerBound="1" eType="#//def/FloatingType"/>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createHexadecimal" lowerBound="1" eType="#//Hexadecimal">
       <eParameters name="length" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createIndicator" lowerBound="1" eType="#//Indicator">
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createList" lowerBound="1">
       <eGenericType eClassifier="#//List">
@@ -1395,7 +1394,6 @@
         </eGenericType>
       </eParameters>
       <eParameters name="dimension" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createPointer" lowerBound="1" eType="#//Pointer">
       <eParameters name="size" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -1414,7 +1412,7 @@
           <eTypeArguments eTypeParameter="#//DataFactory/createRecord/R"/>
         </eGenericType>
       </eParameters>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createScroller" lowerBound="1">
       <eGenericType eClassifier="#//Scroller">
@@ -1429,7 +1427,7 @@
         </eGenericType>
       </eParameters>
       <eParameters name="dimension" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createStroller" lowerBound="1">
       <eGenericType eClassifier="#//Stroller">
@@ -1444,13 +1442,7 @@
         </eGenericType>
       </eParameters>
       <eParameters name="dimension" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="createTime" lowerBound="1" eType="#//Datetime">
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="createTimestamp" lowerBound="1" eType="#//Datetime">
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataFiller">

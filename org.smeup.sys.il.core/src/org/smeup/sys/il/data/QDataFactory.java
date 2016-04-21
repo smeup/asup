@@ -40,47 +40,47 @@ public interface QDataFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" dimensionRequired="true" sortDirectionRequired="true" initializeRequired="true"
+	 * @model required="true" argumentRequired="true" dimensionRequired="true" sortDirectionRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	<D extends QBufferedElement> QArray<D> createArray(QUnaryAtomicBufferedDataDef<D> argument, int dimension, SortDirection sortDirection, boolean initialize);
+	<D extends QBufferedElement> QArray<D> createArray(QUnaryAtomicBufferedDataDef<D> argument, int dimension, SortDirection sortDirection, boolean allocate);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" typeRequired="true" unsignedRequired="true" initializeRequired="true"
+	 * @model required="true" typeRequired="true" unsignedRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	QBinary createBinary(BinaryType type, boolean unsigned, boolean initialize);
+	QBinary createBinary(BinaryType type, boolean unsigned, boolean allocate);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" lengthRequired="true" varyingRequired="true" initializeRequired="true"
+	 * @model required="true" lengthRequired="true" varyingRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	QCharacter createCharacter(int length, boolean varying, boolean initialize);
+	QCharacter createCharacter(int length, boolean varying, boolean allocate);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" dataDefRequired="true" initializeRequired="true"
+	 * @model required="true" dataDefRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	<D extends QData> D createData(QDataDef<D> dataDef, boolean initialize);
+	<D extends QData> D createData(QDataDef<D> dataDef, boolean allocate);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" dataTermRequired="true" initializeRequired="true"
+	 * @model required="true" dataTermRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	QData createData(QDataTerm<?> dataTerm, boolean initialize);
+	QData createData(QDataTerm<?> dataTerm, boolean allocate);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" externalNameRequired="true" initializeRequired="true"
+	 * @model required="true" argumentRequired="true" externalNameRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	<D extends QBufferedElement> QDataArea<D> createDataArea(QUnaryBufferedDataDef<D> argument, String externalName, boolean initialize);
+	<D extends QBufferedElement> QDataArea<D> createDataArea(QUnaryBufferedDataDef<D> argument, String externalName, boolean allocate);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -92,68 +92,70 @@ public interface QDataFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" elementsMany="true" lengthRequired="true" initializeRequired="true"
+	 * @model required="true" elementsMany="true" lengthRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	<D extends QDataStruct> D createDataStruct(List<QDataTerm<QBufferedDataDef<?>>> elements, int length, boolean initialize);
+	<D extends QDataStruct> D createDataStruct(List<QDataTerm<QBufferedDataDef<?>>> elements, int length, boolean allocate);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" lengthRequired="true" initializeRequired="true"
+	 * @model required="true" lengthRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	<D extends QDataStruct> D createDataStruct(Class<D> wrapper, int length, boolean initialize);
+	<D extends QDataStruct> D createDataStruct(Class<D> wrapper, int length, boolean allocate);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" typeRequired="true" dateFormatRequired="true" timeFormatRequired="true" initializeRequired="true"
+	 * @model required="true" typeRequired="true" dateFormatRequired="true" timeFormatRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	QDatetime createDate(DatetimeType type, DateFormat dateFormat, TimeFormat timeFormat, boolean initialize);
+	QDatetime createDate(DatetimeType type, DateFormat dateFormat, TimeFormat timeFormat, boolean allocate);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" precisionRequired="true" scaleRequired="true" typeRequired="true" initializeRequired="true"
+	 * @model required="true" precisionRequired="true" scaleRequired="true" typeRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	QDecimal createDecimal(int precision, int scale, DecimalType type, boolean initialize);
+	QDecimal createDecimal(int precision, int scale, DecimalType type, boolean allocate);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" dataDelegateRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
+	 * @generated
+	 */
+	<E extends Enum<E>, D extends QBufferedElement> QEnum<E, D> createEnum(Class<E> classEnumerator, D dataDelegate);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" dataDelegateRequired="true" initializeRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
+	 * @model required="true" typeRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	<E extends Enum<E>, D extends QBufferedElement> QEnum<E, D> createEnum(Class<E> classEnumerator, D dataDelegate, boolean initialize);
+	QFloating createFloating(FloatingType type, boolean allocate);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" typeRequired="true" initializeRequired="true"
+	 * @model required="true" lengthRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	QFloating createFloating(FloatingType type, boolean initialize);
+	QHexadecimal createHexadecimal(int length, boolean allocate);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" lengthRequired="true" initializeRequired="true"
+	 * @model required="true" allocateRequired="true"
 	 * @generated
 	 */
-	QHexadecimal createHexadecimal(int length, boolean initialize);
+	QIndicator createIndicator(boolean allocate);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" initializeRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" dimensionRequired="true"
 	 * @generated
 	 */
-	QIndicator createIndicator(boolean initialize);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" dimensionRequired="true" initializeRequired="true"
-	 * @generated
-	 */
-	<D extends QData> QList<D> createList(QUnaryAtomicDataDef<D> argument, int dimension, boolean initialize);
+	<D extends QData> QList<D> createList(QUnaryAtomicDataDef<D> argument, int dimension);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -174,39 +176,25 @@ public interface QDataFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" initializeRequired="true"
+	 * @model required="true" allocateRequired="true"
 	 * @generated
 	 */
-	<R extends QRecord> R createRecord(Class<R> wrapper, boolean initialize);
+	<R extends QRecord> R createRecord(Class<R> wrapper, boolean allocate);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" dimensionRequired="true" initializeRequired="true"
+	 * @model required="true" argumentRequired="true" dimensionRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	<D extends QBufferedElement> QScroller<D> createScroller(QUnaryAtomicBufferedDataDef<D> argument, int dimension, boolean initialize);
+	<D extends QBufferedElement> QScroller<D> createScroller(QUnaryAtomicBufferedDataDef<D> argument, int dimension, boolean allocate);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" dimensionRequired="true" initializeRequired="true"
+	 * @model required="true" argumentRequired="true" dimensionRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	<D extends QDataStruct> QStroller<D> createStroller(QStrollerDef<?> argument, int dimension, boolean initialize);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" initializeRequired="true"
-	 * @generated
-	 */
-	QDatetime createTime(boolean initialize);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" initializeRequired="true"
-	 * @generated
-	 */
-	QDatetime createTimestamp(boolean initialize);
+	<D extends QDataStruct> QStroller<D> createStroller(QStrollerDef<?> argument, int dimension, boolean allocate);
 
 } // QDataFactory
