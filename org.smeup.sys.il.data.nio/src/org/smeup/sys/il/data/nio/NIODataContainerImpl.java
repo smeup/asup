@@ -28,20 +28,28 @@ import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
 import org.smeup.sys.il.core.term.QNode;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
+import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
+import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QPointer;
+import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
+import org.smeup.sys.il.data.def.QDataAreaDef;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermFactory;
 import org.smeup.sys.il.data.term.QOverlay;
+import org.smeup.sys.il.data.term.QSpecial;
+import org.smeup.sys.il.data.term.QSpecialElement;
 import org.smeup.sys.il.data.term.impl.DataTermImpl;
 
 public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, Serializable {
@@ -70,7 +78,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 	@Override
 	public void addDataTerm(QDataTerm<?> dataTerm) {
-		this.dataTerms.put(getKey(dataTerm), dataTerm);		
+		this.dataTerms.put(getKey(dataTerm), dataTerm);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -128,7 +136,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 				}
 			}
 
+			// redefined module variable
 			if (previousData instanceof QBufferedData) {
+				QBufferedData previousBuffered = (QBufferedData) previousData;
 				QData data = createData(dataTerm, false);
 				QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 				if (overlay == null) {
@@ -137,7 +147,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 					dataTerm.getFacets().add(overlay);
 				}
 
-				((QBufferedData) previousData).assign((QBufferedData) data);
+				previousBuffered.assign((QBufferedData) data);
+				getDataContext().removeSnap(previousBuffered);
+
 				datas.put(name, data);
 			}
 		}
@@ -213,50 +225,10 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	@Override
 	public void clearData() {
 
-		for (QDataTerm<?> dataTerm: dataTerms.values()) {
+		for (QDataTerm<?> dataTerm : dataTerms.values()) {
 			QData data = getOrCreateData(dataTerm);
 			data.clear();
 		}
-	}
-
-	@Override
-	public void resetData() {
-
-		for (QDataTerm<?> dataTerm : dataTerms.values()) {
-			if (dataTerm.getParent() instanceof QDataTerm<?>) {
-				QDataTerm<?> parentTerm = (QDataTerm<?>) dataTerm.getParent();
-
-				// exclude element of compound data
-				if (parentTerm.getDataTermType().isCompound())
-					continue;
-			}
-			resetData(dataTerm);
-		}
-	}
-
-	@Override
-	public QData resetData(QDataTerm<?> dataTerm) {
-
-		QData data = getOrCreateData(dataTerm);
-
-		QOverlay overlay = dataTerm.getFacet(QOverlay.class);
-		if (overlay == null) {
-			NIODataResetter resetter = new NIODataResetter(this, data);
-			dataTerm.accept(resetter);
-		}
-
-		return data;
-	}
-
-	@Override
-	public QData resetData(String key) {
-
-		QDataTerm<?> dataTerm = dataTerms.get(key);
-
-		if (dataTerm == null)
-			return null;
-
-		return resetData(dataTerm);
 	}
 
 	@Override
@@ -274,45 +246,20 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 	@Override
 	public void removeDataTerm(QDataTerm<?> dataTerm) {
-		
+
 		this.dataTerms.remove(getKey(dataTerm));
 		QData data = this.datas.remove(getKey(dataTerm));
 		if (data instanceof QBufferedData) {
 			QBufferedData bufferedData = (QBufferedData) data;
 			if (bufferedData.isStoreOwner())
 				this.memorySize -= bufferedData.getSize();
+			getDataContext().removeSnap(bufferedData);
 		}
 	}
 
 	@Override
 	public QDataContext getDataContext() {
 		return dataContext;
-	}
-
-	@Override
-	public boolean hasDefaultValue(String key) {
-
-		QDataTerm<?> dataTerm = dataTerms.get(key);
-
-		return hasDefaultValue(dataTerm);
-	}
-
-	@Override
-	public boolean hasDefaultValue(QDataTerm<?> dataTerm) {
-
-		if (dataTerm == null)
-			return false;
-
-		QData clearData = createData(dataTerm, true);
-		QOverlay overlay = dataTerm.getFacet(QOverlay.class);
-		if (overlay == null) {
-			NIODataResetter resetter = new NIODataResetter(this, clearData);
-			dataTerm.accept(resetter);
-		}
-
-		QData data = datas.get(getKey(dataTerm));
-
-		return data.toString().equals(clearData.toString());
 	}
 
 	private QData getOrCreateData(String key) {
@@ -347,20 +294,18 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
 
 			for (Field field : NIODataStructHelper.getFields((Class<? extends QStruct<?>>) data.getClass())) {
-				if (QData.class.isAssignableFrom(field.getType())) {
-					try {
-						QData element = (QData) field.get(data);
-						if (element == null)
-							System.err.println("Unexpected condition: ducvfs8dtrf8tse7rd8ftds");
+				if (!QData.class.isAssignableFrom(field.getType()))
+					continue;
 
-						if (compoundDataDef.isQualified())
-							datas.put(getKey(dataTerm)+"."+field.getName(), element);
-						else
-							datas.put(field.getName(), element);
-					} catch (IllegalArgumentException | IllegalAccessException e) {
-						continue;
-					}
+				try {
+					QData element = (QData) field.get(data);
+					if (compoundDataDef.isQualified())
+						datas.put(getKey(dataTerm) + "." + field.getName(), element);
+					else
+						datas.put(field.getName(), element);
 
+				} catch (IllegalArgumentException | IllegalAccessException e) {
+					throw new IntegratedLanguageDataRuntimeException(e);
 				}
 			}
 		}
@@ -368,7 +313,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		return data;
 	}
 
-	private QData createData(QDataTerm<?> dataTerm, boolean initialize) {
+	private QData createData(QDataTerm<?> dataTerm, boolean allocate) {
 
 		QDataFactory dataFactory = getDataContext().getDataFactory();
 
@@ -384,12 +329,11 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		} else {
 			QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 			if (overlay == null) {
-				data = dataFactory.createData(dataTerm, initialize);
+				data = dataFactory.createData(dataTerm, allocate);
 			} else {
 
 				if (Overlay.NAME_OWNER.equalsIgnoreCase(overlay.getName())) {
-					data = dataFactory.createData(dataTerm, true);
-					System.err.println("Unexpected condition 5qf7rva9cwerc5: " + dataTerm);
+					throw new IntegratedLanguageDataRuntimeException("Invalid owner data: " + dataTerm);
 				} else {
 					data = dataFactory.createData(dataTerm, false);
 					// TODO remove lowerCase
@@ -397,9 +341,108 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 					((QBufferedData) overlayedData).assign((QBufferedData) data);
 				}
 			}
+
+			if (allocate)
+				writeDefault(dataTerm, data);
+
 		}
 
 		return data;
+	}
+
+	@SuppressWarnings("unchecked")
+	private void writeDefault(QDataTerm<?> dataTerm, QData data) {
+
+		switch (dataTerm.getDataTermType()) {
+		case UNARY_ATOMIC: {
+			QBufferedElement bufferedElement = (QBufferedElement) data;
+			if (dataTerm.getDefault() != null && dataTerm.getDefault().getValue() != null && !dataTerm.getDefault().getValue().isEmpty()) {
+
+				QSpecialElement specialElement = getSpecialElement(dataTerm, dataTerm.getDefault().getValue());
+				if (specialElement != null)
+					NIOBufferHelper.writeDefault(bufferedElement, specialElement.getValue());
+				else {
+					NIOBufferHelper.writeDefault(bufferedElement, dataTerm.getDefault().getValue());
+				}
+			} else
+				bufferedElement.clear();
+
+			break;
+		}
+		case UNARY_COMPOUND:
+			
+			QDataStruct dataStruct = null;
+			QCompoundDataDef<?, QDataTerm<?>> compoundDataDef = null;
+			if (data instanceof QDataArea<?>) {
+				QDataArea<?> dataArea = (QDataArea<?>) data;
+				dataStruct = (QDataStruct) dataArea.get();
+				QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataTerm.getDefinition();
+				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataAreaDef.getArgument();
+			} else {
+				dataStruct = (QDataStruct) data;
+				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataTerm.getDefinition();
+			}
+
+			if (compoundDataDef.getClassDelegator() != null)
+				dataStruct.reset();
+			else {
+
+				for (QDataTerm<?> element : compoundDataDef.getElements()) {
+					if (element.getDefault() != null)
+						writeDefault(element, dataStruct.getElement(element.getName()));
+					else
+						dataStruct.getElement(element.getName()).clear();
+				}
+			}
+			break;
+		case MULTIPLE_ATOMIC:
+			QBufferedList<?> bufferedList = (QBufferedList<?>) data;
+			if (dataTerm.getDefault() != null) {
+				if (dataTerm.getDefault().getValue() != null && !dataTerm.getDefault().getValue().isEmpty()) {
+					QSpecialElement specialElement = getSpecialElement(dataTerm, dataTerm.getDefault().getValue());
+					if (specialElement != null)
+						NIOBufferHelper.writeDefault(bufferedList, specialElement.getValue());
+					else
+						NIOBufferHelper.writeDefault(bufferedList, dataTerm.getDefault().getValue());
+				} else {
+					int i = 1;
+					for (String value : dataTerm.getDefault().getValues()) {
+
+						QSpecialElement specialElement = getSpecialElement(dataTerm, value);
+						if (specialElement != null) {
+							NIOBufferHelper.writeDefault(bufferedList.get(i), specialElement.getValue());
+						} else {
+							NIOBufferHelper.writeDefault(bufferedList.get(i), value);
+						}
+						i++;
+					}
+				}
+			} else
+				bufferedList.clear();
+
+			break;
+		case MULTIPLE_COMPOUND:
+			QStroller<?> stroller = (QStroller<?>) data;
+			compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataTerm.getDefinition();
+
+			dataStruct = (QDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(stroller.first()).copy().allocate();
+			if (compoundDataDef.getClassDelegator() != null)
+				dataStruct.reset();
+			else {
+				for (QDataTerm<?> element : compoundDataDef.getElements()) {
+					if (element.getDefault() != null)
+						writeDefault(element, dataStruct.getElement(element.getName()));
+					else
+						dataStruct.getElement(element.getName()).clear();
+				}
+			}
+
+			for (QDataStruct strollerDataStruct : stroller)
+				strollerDataStruct.eval(dataStruct);
+
+			break;
+		}
+
 	}
 
 	@Override
@@ -411,11 +454,47 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	public long getMemorySize() {
 		return this.memorySize;
 	}
-	
+
+	@Override
+	public boolean hasDefaultValue(String key) {
+
+		QData data = getData(key);
+
+		if (!(data instanceof QBufferedData))
+			return false;
+
+		QBufferedData bufferedData = (QBufferedData) data;
+
+		if (getDataContext().getSnap(bufferedData) != null)
+			return true;
+
+		if (bufferedData instanceof QDataStruct) {
+			QDataStruct dataStruct = (QDataStruct) bufferedData;
+			for (QBufferedData element : dataStruct.getElements()) {
+				if (getDataContext().getSnap(element) != null)
+					return true;
+			}
+		}
+
+		return false;
+	}
+
 	private String getKey(QDataTerm<?> dataTerm) {
-		if(dataTerm.getKey() != null)
+		if (dataTerm.getKey() != null)
 			return dataTerm.getKey();
 		else
 			return dataTerm.getName();
+	}
+
+	private QSpecialElement getSpecialElement(QDataTerm<?> dataTerm, String value) {
+
+		QSpecial special = dataTerm.getFacet(QSpecial.class);
+
+		if (special != null)
+			for (QSpecialElement specialElem : special.getElements())
+				if (specialElem.getName().equals(value))
+					return specialElem;
+
+		return null;
 	}
 }

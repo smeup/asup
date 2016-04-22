@@ -26,6 +26,14 @@ public interface QBufferedData extends QData, QStorable {
 	void clear();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	BufferedDataType getBufferedDataType();
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
@@ -75,5 +83,21 @@ public interface QBufferedData extends QData, QStorable {
 	 * @generated
 	 */
 	QNumeric qLen();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void reset();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void snap();
 
 } // QBufferedData

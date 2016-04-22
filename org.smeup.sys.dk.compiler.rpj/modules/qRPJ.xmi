@@ -776,7 +776,6 @@
         <parameters>
           <delegate
               xsi:type="il-flow:FlowData"
-              constant="true"
               name="startIndex">
             <cardinality
                 min="1"/>

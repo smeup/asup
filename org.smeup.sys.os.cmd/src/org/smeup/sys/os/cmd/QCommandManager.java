@@ -50,6 +50,14 @@ public interface QCommandManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" jobRequired="true" containerRequired="true"
+	 * @generated
+	 */
+	String encodeCommand(QJob job, QDataContainer container, boolean showDefaults);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" jobRequired="true" commandRequired="true"
 	 * @generated
 	 */

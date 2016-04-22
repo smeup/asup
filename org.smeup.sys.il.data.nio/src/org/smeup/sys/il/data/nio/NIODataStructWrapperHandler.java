@@ -16,9 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
+import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
+import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
+import org.smeup.sys.il.data.annotation.DataDef;
+import org.smeup.sys.il.data.annotation.Overlay;
 
 public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 
@@ -90,24 +95,73 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 			field.set(_wrapped, element);
 
 			if (_dynamicLength)
-				if (position -1 + element.getSize() >= _length)
-					_length = position -1 + element.getSize();
+				if (position - 1 + element.getSize() >= _length)
+					_length = position - 1 + element.getSize();
 
 		} catch (SecurityException | IllegalArgumentException | IllegalAccessException | NoSuchFieldException e) {
 			e.printStackTrace();
 		}
-	
+
 		assign(element, position);
 	}
 
 	@Override
 	public List<String> getElementNames() {
-		
+
 		List<String> elementNames = new ArrayList<String>();
-		
+
 		for (Field field : NIODataStructHelper.getFields(_wrapped.getClass()))
 			elementNames.add(field.getName());
-		
+
 		return elementNames;
+	}
+
+	@Override
+	public void reset() {
+
+		QBufferedData snapData = getDataContext().getSnap(this);
+		if (snapData != null) {
+			NIOBufferHelper.write(this, snapData);
+			return;
+		}
+		
+		for (Field field : NIODataStructHelper.getFields(_wrapped.getClass())) {
+			DataDef dataDef = field.getAnnotation(DataDef.class);
+			if (dataDef == null)
+				continue;
+
+			try {
+				Object fieldValue = field.get(_wrapped);
+				QBufferedData data = (QBufferedData) fieldValue;
+				QBufferedData snapElement = getDataContext().getSnap(data);
+				if (snapElement != null) {
+					NIOBufferHelper.write(data, snapElement);
+					continue;
+				}
+
+				if (fieldValue instanceof QBufferedList) {
+					QBufferedList<?> bufferedListImpl = (QBufferedList<?>) fieldValue;
+
+					if(!dataDef.value().isEmpty()) {
+						NIOBufferHelper.writeDefault(bufferedListImpl, dataDef.value());
+					}
+					else if(dataDef.values().length != 0) {
+						NIOBufferHelper.writeDefault(bufferedListImpl, dataDef.values());
+					}
+					else 
+						if(field.getAnnotation(Overlay.class) == null)
+							bufferedListImpl.clear();
+						
+				} else {
+						if(dataDef.value().isEmpty())
+							data.clear();
+						else
+							NIOBufferHelper.writeDefault((QBufferedElement)data, dataDef.value());
+				}
+
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				throw new IntegratedLanguageDataRuntimeException(e);
+			}
+		}
 	}
 }

@@ -109,4 +109,9 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 	public String encodeCommand(QJobCapability capability, QDataContainer container, boolean showDefaults) {
 		return BaseCommandHelper.encodeCommand(container, showDefaults);
 	}
+
+	@Override
+	public String encodeCommand(QJob job, QDataContainer container, boolean showDefaults) {
+		return BaseCommandHelper.encodeCommand(container, showDefaults);
+	}
 }

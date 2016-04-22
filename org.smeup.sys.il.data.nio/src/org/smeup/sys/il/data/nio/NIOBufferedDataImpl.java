@@ -193,4 +193,20 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		stream.writeObject(_storage);
 		stream.writeInt(_position);
 	}
+	
+	@Override
+	public void snap() {
+		if(!isEmpty())
+			getDataContext().snap(this);
+	}
+	
+	@Override
+	public void reset() {
+
+		QBufferedData snapData = getDataContext().getSnap(this);
+		if(snapData != null)
+			NIOBufferHelper.write(this, snapData);
+		else
+			clear();
+	}
 }

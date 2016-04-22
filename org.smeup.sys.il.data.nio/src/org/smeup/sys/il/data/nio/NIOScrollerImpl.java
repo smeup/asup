@@ -113,11 +113,6 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	}
 
 	@Override
-	public boolean eq(QBufferedElement value) {
-		return current().eq(value);
-	}
-
-	@Override
 	public QBufferedData eval(byte value) {
 		return current().eval(value);
 	}

@@ -949,6 +949,16 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		   },
 		   new URI[] {
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (getTestResult_Time(), 
+		   source, 
+		   new String[] {
+			 "precision", "9",
+			 "scale", "0"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/DecimalDef")
 		   });
 	}
 

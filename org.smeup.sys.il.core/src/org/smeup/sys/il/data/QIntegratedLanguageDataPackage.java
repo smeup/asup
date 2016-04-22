@@ -851,6 +851,16 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int STROLLER_FEATURE_COUNT = SCROLLER_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.BufferedDataType <em>Buffered Data Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.BufferedDataType
+	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getBufferedDataType()
+	 * @generated
+	 */
+	int BUFFERED_DATA_TYPE = 43;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.BufferedElementType <em>Buffered Element Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -858,7 +868,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getBufferedElementType()
 	 * @generated
 	 */
-	int BUFFERED_ELEMENT_TYPE = 43;
+	int BUFFERED_ELEMENT_TYPE = 44;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.DataSpecial <em>Data Special</em>}' enum.
@@ -868,7 +878,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataSpecial()
 	 * @generated
 	 */
-	int DATA_SPECIAL = 44;
+	int DATA_SPECIAL = 45;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.DatetimeFormat <em>Datetime Format</em>}' enum.
@@ -878,7 +888,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDatetimeFormat()
 	 * @generated
 	 */
-	int DATETIME_FORMAT = 45;
+	int DATETIME_FORMAT = 46;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.InitStrategy <em>Init Strategy</em>}' enum.
@@ -888,7 +898,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getInitStrategy()
 	 * @generated
 	 */
-	int INIT_STRATEGY = 46;
+	int INIT_STRATEGY = 47;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.SortDirection <em>Sort Direction</em>}' enum.
@@ -898,7 +908,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getSortDirection()
 	 * @generated
 	 */
-	int SORT_DIRECTION = 47;
+	int SORT_DIRECTION = 48;
 
 	/**
 	 * The meta object id for the '<em>Data Array</em>' data type. <!--
@@ -907,7 +917,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataArray()
 	 * @generated
 	 */
-	int DATA_ARRAY = 48;
+	int DATA_ARRAY = 49;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QAdapter <em>Adapter</em>}'.
@@ -1317,6 +1327,16 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getStruct();
+
+	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.il.data.BufferedDataType <em>Buffered Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Buffered Data Type</em>'.
+	 * @see org.smeup.sys.il.data.BufferedDataType
+	 * @generated
+	 */
+	EEnum getBufferedDataType();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QChecker <em>Checker</em>}'.
@@ -1821,6 +1841,16 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		 * @generated
 		 */
 		EClass STRUCT = eINSTANCE.getStruct();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.BufferedDataType <em>Buffered Data Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.BufferedDataType
+		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getBufferedDataType()
+		 * @generated
+		 */
+		EEnum BUFFERED_DATA_TYPE = eINSTANCE.getBufferedDataType();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.QChecker <em>Checker</em>}' class.

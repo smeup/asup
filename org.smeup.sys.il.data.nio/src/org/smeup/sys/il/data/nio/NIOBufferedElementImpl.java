@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import org.smeup.sys.il.data.BufferedDataType;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
@@ -96,21 +97,6 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	@Override
 	public final boolean eq(QDataFiller value) {
 		return NIOBufferHelper.compareBytes(this, value) == 0;
-	}
-
-	@Override
-	public final boolean eq(QBufferedElement value) {
-
-		switch (value.getBufferedElementType()) {
-		case DATETIME:
-			return NIOBufferHelper.compareBytes(this, _toBytes((QDatetime) value)) == 0;
-		case NUMERIC:
-			return NIOBufferHelper.compareBytes(this, _toBytes((QNumeric) value)) == 0;
-		case STRING:
-			return NIOBufferHelper.compareBytes(this, _toBytes((QString) value)) == 0;
-		}
-		
-		return false;
 	}
 
 	@Override
@@ -320,5 +306,10 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	@Override
 	public final boolean ne(QDataFiller value) {
 		return !eq(value);
+	}
+	
+	@Override
+	public BufferedDataType getBufferedDataType() {
+		return BufferedDataType.ELEMENT;
 	}
 }

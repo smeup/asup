@@ -27,28 +27,40 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 	public NIOAbstractDataStruct(QDataContext dataContext, int length) {
 		super(dataContext, length);
 	}
-	
+
 	protected abstract void addElement(String name, QBufferedData element, int position);
-	
+
 	@Override
 	protected void _clear() {
 		super._clear();
-		
+
 		for (QBufferedData element : this.getElements())
 			element.clear();
 	}
 
 	@Override
 	public boolean isEmpty() {
+
 		for (QBufferedData element : this.getElements())
 			if (!element.isEmpty())
 				return false;
 
-		return true;
+		return super.isEmpty();
 	}
-	
+
 	@Override
 	public void accept(QDataVisitor visitor) {
 		visitor.visit(this);
+	}
+
+	@Override
+	public void snap() {
+
+		if (!isEmpty())
+			getDataContext().snap(this);
+
+		for (QBufferedData element : getElements())
+			element.snap();
+
 	}
 }

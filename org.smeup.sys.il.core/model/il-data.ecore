@@ -464,6 +464,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="BufferedData" abstract="true" interface="true"
       eSuperTypes="#//Data #//Storable">
     <eOperations name="clear"/>
+    <eOperations name="getBufferedDataType" lowerBound="1" eType="#//BufferedDataType"/>
     <eOperations name="getLength" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eOperations name="getSize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eOperations name="isEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -471,6 +472,12 @@
     <eOperations name="isStoreOwner" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="qAddr" lowerBound="1" eType="#//Pointer"/>
     <eOperations name="qLen" lowerBound="1" eType="#//Numeric"/>
+    <eOperations name="reset"/>
+    <eOperations name="snap"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BufferedDataType">
+    <eLiterals name="Element" value="10" literal="ELEM"/>
+    <eLiterals name="List" value="20" literal="LIST"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BufferedElementDelegator" abstract="true"
       interface="true">
@@ -490,9 +497,6 @@
     </eOperations>
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//DataFiller"/>
-    </eOperations>
-    <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" eType="#//BufferedElement"/>
     </eOperations>
     <eOperations name="eval" eType="#//BufferedData">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
@@ -1205,25 +1209,7 @@
     <eOperations name="hasDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="hasDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="dataTerm" lowerBound="1">
-        <eGenericType eClassifier="#//term/DataTerm">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-    </eOperations>
     <eOperations name="removeDataTerm">
-      <eParameters name="dataTerm" lowerBound="1">
-        <eGenericType eClassifier="#//term/DataTerm">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-    </eOperations>
-    <eOperations name="resetData"/>
-    <eOperations name="resetData" eType="#//Data">
-      <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="resetData" eType="#//Data">
       <eParameters name="dataTerm" lowerBound="1">
         <eGenericType eClassifier="#//term/DataTerm">
           <eTypeArguments/>
@@ -1238,7 +1224,16 @@
     <eOperations name="getCharset" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCharset"/>
     <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
     <eOperations name="getDateFormat" lowerBound="1" eType="#//def/DateFormat"/>
+    <eOperations name="getSnap" eType="#//BufferedData">
+      <eParameters name="data" lowerBound="1" eType="#//BufferedData"/>
+    </eOperations>
     <eOperations name="getTimeFormat" lowerBound="1" eType="#//def/TimeFormat"/>
+    <eOperations name="removeSnap">
+      <eParameters name="data" lowerBound="1" eType="#//BufferedData"/>
+    </eOperations>
+    <eOperations name="snap">
+      <eParameters name="data" lowerBound="1" eType="#//BufferedData"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataDelegator" abstract="true" interface="true">
     <eTypeParameters name="D">

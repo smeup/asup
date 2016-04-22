@@ -25,6 +25,7 @@ import org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage;
 import org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.il.core.term.impl.IntegratedLanguageCoreTermPackageImpl;
+import org.smeup.sys.il.data.BufferedDataType;
 import org.smeup.sys.il.data.BufferedElementType;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.DatetimeFormat;
@@ -344,6 +345,13 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass structEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum bufferedDataTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -859,6 +867,15 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getBufferedDataType() {
+		return bufferedDataTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getChecker() {
 		return checkerEClass;
 	}
@@ -1040,6 +1057,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		structEClass = createEClass(STRUCT);
 
 		// Create enums
+		bufferedDataTypeEEnum = createEEnum(BUFFERED_DATA_TYPE);
 		bufferedElementTypeEEnum = createEEnum(BUFFERED_ELEMENT_TYPE);
 		dataSpecialEEnum = createEEnum(DATA_SPECIAL);
 		datetimeFormatEEnum = createEEnum(DATETIME_FORMAT);
@@ -1640,6 +1658,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(bufferedDataEClass, null, "clear", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(bufferedDataEClass, this.getBufferedDataType(), "getBufferedDataType", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(bufferedDataEClass, ecorePackage.getEInt(), "getLength", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(bufferedDataEClass, ecorePackage.getEInt(), "getSize", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -1653,6 +1673,10 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEOperation(bufferedDataEClass, this.getPointer(), "qAddr", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(bufferedDataEClass, this.getNumeric(), "qLen", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(bufferedDataEClass, null, "reset", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(bufferedDataEClass, null, "snap", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(bufferedElementDelegatorEClass, QBufferedElementDelegator.class, "BufferedElementDelegator", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1668,9 +1692,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(bufferedElementEClass, ecorePackage.getEBoolean(), "eq", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataFiller(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedElementEClass, ecorePackage.getEBoolean(), "eq", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getBufferedElement(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedElementEClass, this.getBufferedData(), "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEByte(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2370,24 +2391,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(dataContainerEClass, ecorePackage.getEBoolean(), "hasDefaultValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataContainerEClass, ecorePackage.getEBoolean(), "hasDefaultValue", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "dataTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = addEOperation(dataContainerEClass, null, "removeDataTerm", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "dataTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(dataContainerEClass, null, "resetData", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(dataContainerEClass, this.getData(), "resetData", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "key", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(dataContainerEClass, this.getData(), "resetData", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2405,7 +2409,16 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(dataContextEClass, theIntegratedLanguageDataDefPackage.getDateFormat(), "getDateFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(dataContextEClass, this.getBufferedData(), "getSnap", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "data", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(dataContextEClass, theIntegratedLanguageDataDefPackage.getTimeFormat(), "getTimeFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dataContextEClass, null, "removeSnap", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "data", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dataContextEClass, null, "snap", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "data", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataDelegatorEClass, QDataDelegator.class, "DataDelegator", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -4135,6 +4148,10 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEOperation(structEClass, ecorePackage.getEString(), "getElementNames", 1, -1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
+		initEEnum(bufferedDataTypeEEnum, BufferedDataType.class, "BufferedDataType");
+		addEEnumLiteral(bufferedDataTypeEEnum, BufferedDataType.ELEMENT);
+		addEEnumLiteral(bufferedDataTypeEEnum, BufferedDataType.LIST);
+
 		initEEnum(bufferedElementTypeEEnum, BufferedElementType.class, "BufferedElementType");
 		addEEnumLiteral(bufferedElementTypeEEnum, BufferedElementType.STRING);
 		addEEnumLiteral(bufferedElementTypeEEnum, BufferedElementType.NUMERIC);

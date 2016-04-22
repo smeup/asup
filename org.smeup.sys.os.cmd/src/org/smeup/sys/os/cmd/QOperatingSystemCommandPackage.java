@@ -346,6 +346,15 @@ public interface QOperatingSystemCommandPackage extends EPackage {
 	int COMMAND_DATA__DEFINITION = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION;
 
 	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_DATA__KEY = QIntegratedLanguageDataTermPackage.DATA_TERM__KEY;
+
+	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

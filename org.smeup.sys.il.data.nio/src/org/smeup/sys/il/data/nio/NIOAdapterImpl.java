@@ -12,7 +12,6 @@
 package org.smeup.sys.il.data.nio;
 
 import org.smeup.sys.il.data.QAdapter;
-import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.def.DecimalType;
@@ -75,10 +74,5 @@ public class NIOAdapterImpl extends NIOBufferedElementDelegatorImpl implements Q
 				setDelegate(character);
 			}
 		}
-	}
-
-	@Override
-	public boolean eq(QBufferedElement value) {
-		return getDelegate().eq(value);
 	}
 }

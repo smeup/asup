@@ -43,9 +43,6 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 	@Override
 	public boolean visit(QDataTerm<?> target) {
 
-		if (target.getDataTermType() == null)
-			throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: sdbfg9br9wer6");
-
 		if (target.getLike() == null)
 			return super.visit(target);
 

@@ -55,18 +55,35 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 
 		byte[] bytes = null;
 		if (halfAdjust) {
-			NumberFormat nf = getDecimalDef().getFormatUP();
-			BigDecimal bd = new BigDecimal(nf.format(number));
+
+			BigDecimal bd = null;
+			if (number instanceof BigDecimal) {
+				bd = (BigDecimal) number;
+			}
+			
+			if(bd == null || bd.precision() > getPrecision()) {
+				if(bd != null)
+					"".toCharArray();
+				NumberFormat nf = getDecimalDef().getFormatUP();
+				bd = new BigDecimal(nf.format(number));					
+			}
 
 			try {
-				bytes = getDecimalDef().getZoned().toBytes(bd.setScale(getScale()));
+				bytes = getDecimalDef().getZoned().toBytes(bd);
 			} catch (Exception e) {
 				e.toString();
 			}
 		} else {
+
+			BigDecimal bd = null;
+			if (number instanceof BigDecimal) {
+				bd = (BigDecimal) number;
+			}
 			
-			NumberFormat nf = getDecimalDef().getFormatDW();
-			BigDecimal bd = new BigDecimal(nf.format(number));
+			if(bd == null || bd.precision() > getPrecision()) {
+				NumberFormat nf = getDecimalDef().getFormatDW();
+				bd = new BigDecimal(nf.format(number));					
+			}
 
 			try {
 				bytes = getDecimalDef().getZoned().toBytes(bd);

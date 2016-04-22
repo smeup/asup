@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.smeup.sys.il.data.BufferedDataType;
 import org.smeup.sys.il.data.BufferedElementType;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.DatetimeFormat;
@@ -81,6 +82,8 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case QIntegratedLanguageDataPackage.BUFFERED_DATA_TYPE:
+				return createBufferedDataTypeFromString(eDataType, initialValue);
 			case QIntegratedLanguageDataPackage.BUFFERED_ELEMENT_TYPE:
 				return createBufferedElementTypeFromString(eDataType, initialValue);
 			case QIntegratedLanguageDataPackage.DATA_SPECIAL:
@@ -105,6 +108,8 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case QIntegratedLanguageDataPackage.BUFFERED_DATA_TYPE:
+				return convertBufferedDataTypeToString(eDataType, instanceValue);
 			case QIntegratedLanguageDataPackage.BUFFERED_ELEMENT_TYPE:
 				return convertBufferedElementTypeToString(eDataType, instanceValue);
 			case QIntegratedLanguageDataPackage.DATA_SPECIAL:
@@ -150,6 +155,26 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 	public QDataWriter createDataWriter() {
 		DataWriterImpl dataWriter = new DataWriterImpl();
 		return dataWriter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BufferedDataType createBufferedDataTypeFromString(EDataType eDataType, String initialValue) {
+		BufferedDataType result = BufferedDataType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertBufferedDataTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

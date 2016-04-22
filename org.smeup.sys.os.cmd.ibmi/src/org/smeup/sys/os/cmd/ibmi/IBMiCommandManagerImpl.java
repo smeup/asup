@@ -147,10 +147,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			dataContainer.addDataTerm(dataTerm);
 		}
 		
-		dataContainer.clearData();
 		callableCommand.setDataContainer(dataContainer);
-
-		dataContainer.resetData();
 
 		QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 
@@ -164,7 +161,6 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				if (clParameter == null) {
 					clParameter = new CLParameter();
 					clParameter.setName(commandParameter.getName());
-
 				}
 
 				CLPositionalParameter positionalParm = clCommand.getPositionalParm(commandParameter.getPosition() - 1);

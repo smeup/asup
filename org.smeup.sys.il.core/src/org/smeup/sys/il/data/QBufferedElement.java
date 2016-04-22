@@ -49,14 +49,6 @@ public interface QBufferedElement extends QBufferedData, QMoveable {
 	 * @model
 	 * @generated
 	 */
-	boolean eq(QBufferedElement value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
 	boolean eq(byte value);
 
 	/**

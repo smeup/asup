@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import org.smeup.sys.il.data.BufferedDataType;
 import org.smeup.sys.il.data.BufferedElementType;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QBufferedData;
@@ -398,5 +399,18 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 
 	public byte[] asBytes() {
 		return _delegate.asBytes();
+	}
+
+	public void reset() {
+		_delegate.reset();
+	}
+
+	public void snap() {
+		_delegate.snap();
+	}
+	
+	@Override
+	public BufferedDataType getBufferedDataType() {
+		return _delegate.getBufferedDataType();
 	}
 }

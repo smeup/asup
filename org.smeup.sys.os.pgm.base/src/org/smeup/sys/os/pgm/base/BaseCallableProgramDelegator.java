@@ -21,9 +21,11 @@ import java.util.List;
 
 import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.data.InitStrategy;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QIndicator;
+import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Open;
@@ -120,19 +122,19 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 			try {
 				switch (initStrategy) {
 				case BASE:
-					_open.invoke(delegate);
-					break;
 				case LIGHT:
 					_open.invoke(delegate);
+					
 					break;
 				}
 			} catch (InvocationTargetException e) {
 				if (e.getTargetException() instanceof OperatingSystemMessageException)
 					throw (OperatingSystemMessageException) e.getTargetException();
+				
 				if (e.getTargetException() instanceof OperatingSystemRuntimeException)
 					throw (OperatingSystemRuntimeException) e.getTargetException();
-				else
-					throw new OperatingSystemRuntimeException(e.getTargetException());
+
+				throw new OperatingSystemRuntimeException(e.getTargetException());
 			} catch (Exception e) {
 				throw new OperatingSystemRuntimeException(e);
 			}
@@ -166,6 +168,20 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 			}
 		}
 
+		// take a snapshot
+		for(Field field: delegate.getClass().getDeclaredFields()) {
+			DataDef dataDef = field.getAnnotation(DataDef.class);
+			if(dataDef == null || !dataDef.snapshot())
+				continue;
+			
+			try {
+				((QBufferedData)field.get(delegate)).snap();
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				throw new OperatingSystemRuntimeException(e);
+			}
+		}
+
+		// 
 		try {
 			Field qrpjField = delegate.getClass().getDeclaredField("qRPJ");
 			qrpjField.setAccessible(true);

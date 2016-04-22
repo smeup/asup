@@ -1,8 +1,10 @@
 package org.smeup.sys.il.data.nio;
 
 import java.nio.charset.Charset;
+import java.util.Map;
 
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataAreaFactory;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
@@ -22,6 +24,7 @@ public class NIODataContextImpl implements QDataContext {
 	private static final TimeFormat TIMEFMT = TimeFormat.ISO;
 
 	private NIOCharacterVaryingImpl temporaryString;
+	private Map<QBufferedData, QBufferedData> snapshots = null;
 
 	public NIODataContextImpl(QContext context) {
 		this.context = context;
@@ -71,5 +74,31 @@ public class NIODataContextImpl implements QDataContext {
 	@Override
 	public TimeFormat getTimeFormat() {
 		return TIMEFMT;
+	}
+
+	@Override
+	public void snap(QBufferedData data) {
+		
+		NIOBufferedDataImpl nioBufferedDataImpl = (NIOBufferedDataImpl)data;		
+		QBufferedData snapData = nioBufferedDataImpl.copy();
+		nioBufferedDataImpl.assign(snapData);
+		
+		snapshots.put(data, snapData);
+	}
+
+	@Override
+	public QBufferedData getSnap(QBufferedData data) {
+		if(snapshots == null)
+			return null;
+		
+		return snapshots.get(data);
+	}
+
+	@Override
+	public void removeSnap(QBufferedData data) {
+		if(snapshots == null)
+			return;
+		
+		snapshots.remove(data);
 	}
 }

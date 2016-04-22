@@ -34,11 +34,11 @@ public class RPJDataTermLinker extends DataTermVisitorImpl {
 		
 		switch (dataTerm.getDataTermType()) {
 		case MULTIPLE_ATOMIC:
-			break;
 		case UNARY_ATOMIC:
 			break;
 
 		case MULTIPLE_COMPOUND:
+		case UNARY_COMPOUND:
 			QExternalFile externalFile = dataTerm.getFacet(QExternalFile.class);
 			if (externalFile != null) {
 				QCompilerLinker compilerLinker = dataTerm.getFacet(QCompilerLinker.class);
@@ -49,20 +49,7 @@ public class RPJDataTermLinker extends DataTermVisitorImpl {
 				}
 			}
 
-			break;
-		case UNARY_COMPOUND:
-			externalFile = dataTerm.getFacet(QExternalFile.class);
-			if (externalFile != null) {
-				QCompilerLinker compilerLinker = dataTerm.getFacet(QCompilerLinker.class);
-				if(compilerLinker == null) {
-					compilerLinker = callableUnitLinker.linkExternalFile(compilationUnit.getContext(), (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataTerm, externalFile);
-					if(compilerLinker != null)
-						dataTerm.getFacets().add(compilerLinker);
-				}
-			}
-
-			break;
-		
+			break;		
 		}
 		
 		return false;

@@ -66,8 +66,18 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 
 		byte[] bytes = null;
 		if (halfAdjust) {
-			NumberFormat nf = getDecimalDef().getFormatUP();
-			BigDecimal bd = new BigDecimal(nf.format(number));
+			BigDecimal bd = null;
+			if (number instanceof BigDecimal) {
+				bd = (BigDecimal) number;
+			}
+			
+			if(bd == null || bd.precision() > getPrecision()) {
+				if(bd != null)
+					"".toCharArray();
+
+				NumberFormat nf = getDecimalDef().getFormatUP();
+				bd = new BigDecimal(nf.format(number));					
+			}
 
 			try {
 				bytes = getDecimalDef().getPacked().toBytes(bd);
@@ -75,8 +85,15 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 				e.toString();
 			}
 		} else {
-			NumberFormat nf = getDecimalDef().getFormatDW();
-			BigDecimal bd = new BigDecimal(nf.format(number));
+			BigDecimal bd = null;
+			if (number instanceof BigDecimal) {
+				bd = (BigDecimal) number;
+			}
+			
+			if(bd == null || bd.precision() > getPrecision()) {
+				NumberFormat nf = getDecimalDef().getFormatDW();
+				bd = new BigDecimal(nf.format(number));					
+			}
 
 			try {
 				bytes = getDecimalDef().getPacked().toBytes(bd);

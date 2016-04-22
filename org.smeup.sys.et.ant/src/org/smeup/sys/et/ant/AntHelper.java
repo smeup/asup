@@ -14,7 +14,6 @@ package org.smeup.sys.et.ant;
 
 import java.io.File;
 import java.util.Hashtable;
-import java.util.Properties;
 
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.DefaultLogger;

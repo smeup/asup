@@ -27,7 +27,7 @@ import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.jobs.QJob;
 
 @Test(category = "OSCmd", object = "Decoder")
-public class CommandDecoder {
+public class CommandDecoderTester {
 
 
 	@Inject
@@ -45,6 +45,8 @@ public class CommandDecoder {
 		
 		QDataContainer dataContainer = commandManager.decodeCommand(job, commands[0]);
 		testAsserter.assertNotNull("Decode "+commands[0], dataContainer);
+		
+		System.out.println(commandManager.encodeCommand(job, dataContainer, false));
 		
 		QCharacter objectType = (QCharacter)dataContainer.getData("OBJTYPE");
 		testAsserter.assertTrue(commands[0]+" objectType=*CMD", objectType.eq("*CMD"));

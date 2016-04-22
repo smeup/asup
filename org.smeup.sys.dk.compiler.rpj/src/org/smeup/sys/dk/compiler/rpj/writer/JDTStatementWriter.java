@@ -43,11 +43,9 @@ import org.eclipse.jdt.core.dom.TypeLiteral;
 import org.eclipse.jdt.core.dom.WhileStatement;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
-import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.core.term.QNode;
 import org.smeup.sys.il.core.term.QTerm;
-import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDatetime;
@@ -56,8 +54,6 @@ import org.smeup.sys.il.data.QFloating;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
-import org.smeup.sys.il.data.def.QCompoundDataDef;
-import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QDataSetTerm;
@@ -849,116 +845,10 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QReset statement) {
 
-		QTermExpression termExpression = expressionParser.parseTerm(statement.getObject());
-		if (termExpression == null)
-			throw new IntegratedLanguageExpressionRuntimeException("Invalid statement: " + statement);
-
-		QDataTerm<?> dataTerm = compilationUnit.getDataTerm(termExpression.getValue(), true);
-		if (dataTerm == null)
-			throw new IntegratedLanguageExpressionRuntimeException("Invalid statement: " + statement);
-
-		switch (dataTerm.getDataTermType()) {
-		case MULTIPLE_ATOMIC:
-			QDefault default_ = dataTerm.getDefault();
-
-			if (default_ == null || default_.isEmpty()) {
-
-				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-				methodExec.setObject(statement.getObject());
-				methodExec.setMethod("clear");
-				methodExec.accept(this);
-
-				break;
-			}
-
-			QEval eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
-			String value = default_.getValue();
-			if (value == null)
-				value = default_.getValues().iterator().next();
-
-			QMultipleAtomicDataDef<?> multipleAtomicDataDef = (QMultipleAtomicDataDef<?>) dataTerm.getDefinition();
-			if (String.class.isAssignableFrom(multipleAtomicDataDef.getArgument().getJavaClass())) {
-				if (default_.getValue().startsWith("'"))
-					eval.setAssignment(statement.getObject() + "=" + value);
-				else
-					eval.setAssignment(statement.getObject() + "=" + "'" + value.replaceAll("\'", "\''") + "'");
-			} else
-				eval.setAssignment(statement.getObject() + "=" + value);
-			eval.accept(this);
-
-			break;
-
-		case MULTIPLE_COMPOUND:
-			throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cbe7xcb59vbnfg4533");
-
-		case UNARY_ATOMIC:
-			default_ = dataTerm.getDefault();
-
-			if (default_ == null || default_.isEmpty()) {
-
-				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-				methodExec.setObject(statement.getObject());
-				methodExec.setMethod("clear");
-				methodExec.accept(this);
-
-				break;
-			}
-
-			eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
-			if (String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
-				if (default_.getValue().startsWith("'"))
-					eval.setAssignment(statement.getObject() + "=" + default_.getValue());
-				else
-					eval.setAssignment(statement.getObject() + "=" + "'" + default_.getValue().replaceAll("\'", "\''") + "'");
-			} else
-				eval.setAssignment(statement.getObject() + "=" + default_.getValue());
-			eval.accept(this);
-
-			break;
-		case UNARY_COMPOUND:
-			default_ = dataTerm.getDefault();
-
-			if (default_ == null || default_.isEmpty()) {
-
-				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-				methodExec.setObject(statement.getObject());
-				methodExec.setMethod("clear");
-				methodExec.accept(this);
-
-				break;
-			}
-
-			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
-			for (QDataTerm<?> element : compoundDataDef.getElements()) {
-
-				if (element.getDataTermType().isMultiple())
-					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cbe7xcb59vbnfg7733");
-
-				QDefault defaultElement = element.getDefault();
-				if (defaultElement == null || defaultElement.isEmpty())
-					continue;
-
-				eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
-				
-				Class<?> javaClass = null; 
-				if (element.getDataTermType().isMultiple()) {
-					multipleAtomicDataDef = (QMultipleAtomicDataDef<?>) element.getDefinition();
-					javaClass = multipleAtomicDataDef.getArgument().getJavaClass();
-				} else 
-					javaClass = element.getDefinition().getJavaClass();
-				
-				if (String.class.isAssignableFrom(javaClass)) {
-					if (defaultElement.getValue().startsWith("'"))
-						eval.setAssignment(element.getName() + "=" + defaultElement.getValue());
-					else
-						eval.setAssignment(element.getName() + "=" + "'" + defaultElement.getValue().replaceAll("\'", "\''") + "'");
-				} else
-					eval.setAssignment(element.getName() + "=" + defaultElement.getValue());				
-				eval.accept(this);
-			}
-
-			break;
-		}
+		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+		methodExec.setObject(statement.getObject());
+		methodExec.setMethod("reset");
+		methodExec.accept(this);
 
 		return false;
 	}

@@ -83,19 +83,12 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 			} else
 				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataTerm.getDefinition();
 			
-			List<QDataTerm<?>> dataTerms = new ArrayList<QDataTerm<?>>(compoundDataDef.getElements());
 
 			RPJAbstractDataRefactor visitor = this.copy();
-			for (QDataTerm<?> dataTerm : dataTerms) {
+			for (QDataTerm<?> dataTerm : compoundDataDef.getElements()) {
 				visitor.reset();
 				dataTerm.accept(visitor);
 			}
-
-/*			while (!visitor.getTermsTodo().isEmpty()) {
-				visitor.reset();
-				QDataTerm<?> termTodo = visitor.getTermsTodo().pop();
-				termTodo.accept(visitor);
-			}*/
 		}
 
 		return false;

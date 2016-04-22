@@ -267,22 +267,17 @@ public class RPJProgramSupport {
 
 		return qIndicator;
 	}
-	
 	public QDecimal qBox(Integer decimal) {
+		return qBox((long)decimal);
+	}
+
+	public QDecimal qBox(Long decimal) {
 
 		QDecimal qDecimal = null;
 
 		if (decimal == null)
 			qDecimal = dataContext.getDataFactory().createDecimal(0, 0, DecimalType.ZONED, false);
-		else if (Math.abs(decimal) >= 0 && Math.abs(decimal) <= 9)
-			qDecimal = dataContext.getDataFactory().createDecimal(1, 0, DecimalType.ZONED, true);
-		else if (Math.abs(decimal) >= 10 && Math.abs(decimal) <= 99)
-			qDecimal = dataContext.getDataFactory().createDecimal(2, 0, DecimalType.ZONED, true);
-		else if (Math.abs(decimal) >= 100 && Math.abs(decimal) <= 999)
-			qDecimal = dataContext.getDataFactory().createDecimal(3, 0, DecimalType.ZONED, true);
-		else if (Math.abs(decimal) >= 1000 && Math.abs(decimal) <= 9999)
-			qDecimal = dataContext.getDataFactory().createDecimal(4, 0, DecimalType.ZONED, true);
-		else if (Math.abs(decimal) >= 10000 && Math.abs(decimal) <= 99999)
+		else if (Math.abs(decimal) >= 0 && Math.abs(decimal) <= 99999)
 			qDecimal = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
 		else if (Math.abs(decimal) >= 100000 && Math.abs(decimal) <= 999999)
 			qDecimal = dataContext.getDataFactory().createDecimal(6, 0, DecimalType.ZONED, true);
@@ -343,15 +338,15 @@ public class RPJProgramSupport {
 	}
 
 	public QArray<QCharacter> qBoxArray(String characters) {
-		
+
 		QCharacterDef argument = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
 		argument.setLength(characters.length());
 		QArray<QCharacter> array = dataContext.getDataFactory().createArray(argument, 1, SortDirection.ASCEND, true);
 		array.get(1).eval(characters);
-		
+
 		return array;
 	}
-	
+
 	public QIndicator qCast(QCharacter xin) {
 		QIndicator indicator = dataContext.getDataFactory().createIndicator(false);
 		xin.assign(indicator);
@@ -503,7 +498,7 @@ public class RPJProgramSupport {
 	public QString qEditc(double numeric, String format) {
 		return qEditc(qBox(numeric), format);
 	}
-	
+
 	public QString qEditc(int numeric, String format) {
 		return qEditc(qBox(numeric), format);
 	}
@@ -627,22 +622,21 @@ public class RPJProgramSupport {
 
 	public QString qReplace(String replacement, String source, Number from, Number length) {
 
-		if(from == null)
+		if (from == null)
 			from = 1;
 
-		if(length == null)
-			if(replacement.length() > source.length())
+		if (length == null)
+			if (replacement.length() > source.length())
 				length = source.length();
 			else
 				length = replacement.length();
-		
+
 		int startPos = from.intValue() + length.intValue() - 1;
-		
-		
+
 		StringBuffer sb = new StringBuffer();
 		sb.append(source.substring(0, from.intValue() - 1));
 		sb.append(replacement);
-		if(startPos<=source.length())
+		if (startPos <= source.length())
 			sb.append(source.substring(from.intValue() + length.intValue() - 1));
 
 		// TODO cache
@@ -810,21 +804,17 @@ public class RPJProgramSupport {
 	public QNumeric qLookup(DataSpecial argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
 	}
-
-	public QNumeric qLookupEQ(QBufferedElement argument, QBufferedList<?> list, QDecimal startIndex, Number numElements) {
-		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
-	}
-
+	
 	public QNumeric qLookup(QBufferedElement argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
 	}
 
 	public QDecimal qLookup(String argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
+		return qLookup(LookupOperator.EQ, qBox(argument), list, startIndex, numElements);
 	}
 
 	public QDecimal qLookup(Number argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-		return qLookup(LookupOperator.EQ, argument.toString(), list, startIndex, numElements);
+		return qLookup(LookupOperator.EQ, qBox(argument.intValue()), list, startIndex, numElements);
 	}
 
 	public QDecimal qLookuplt(DataSpecial argument, QBufferedList<?> list, Number startIndex, Number numElements) {
@@ -859,52 +849,9 @@ public class RPJProgramSupport {
 		return qLookup(LookupOperator.GE, argument, list, startIndex, numElements);
 	}
 
-	private QDecimal qLookup(LookupOperator operator, String argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-
-		if (startIndex == null)
-			startIndex = 1;
-
-		if (numElements == null)
-			numElements = list.capacity();
-
-		QDecimal result = null;
-		for (int i = startIndex.intValue(); i <= numElements.intValue(); i++) {
-			if (list.get(i).toString().trim().equals(argument.toString().trim())) {
-				result = qBox(i);
-				break;
-			}
-		}
-
-		if (result == null)
-			result = qBox(0);
-
-		this.dataContext.found().eval(result.ge(1));
-
-		return result;
-	}
-
 	private QDecimal qLookup(LookupOperator operator, QBufferedElement argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-		
-		if (startIndex == null)
-			startIndex = 1;
 
-		if (numElements == null)
-			numElements = list.capacity();
-
-		QDecimal result = null;
-		for (int i = startIndex.intValue(); i <= numElements.intValue(); i++) {
-			if (list.get(i).eq(argument)) {
-				result = qBox(i);
-				break;
-			}
-		}
-
-		if (result == null)
-			result = qBox(0);
-
-		this.dataContext.found().eval(result.ge(1));
-
-		return result;
+		return qLookup(operator, argument, list, qBox(startIndex.intValue()), numElements);
 	}
 
 	private QDecimal qLookup(LookupOperator operator, QBufferedElement argument, QBufferedList<?> list, QNumeric startIndex, Number numElements) {
@@ -916,8 +863,74 @@ public class RPJProgramSupport {
 			numElements = list.capacity();
 
 		QDecimal result = null;
+		boolean resultIndex = false;
 		for (int i = startIndex.i(); i <= numElements.intValue(); i++) {
-			if (list.get(i).eq(argument)) {
+			
+			QBufferedElement bufferedElement = list.get(i);
+			switch (bufferedElement.getBufferedElementType()) {
+			case DATETIME:
+				QDatetime datetime = ((QDatetime)bufferedElement);
+				switch (operator) {
+				case EQ:
+					resultIndex = datetime.eq((QDatetime)argument);
+					break;
+				case GE:
+					resultIndex = datetime.ge((QDatetime)argument);
+					break;
+				case GT:
+					resultIndex = datetime.gt((QDatetime)argument);
+					break;
+				case LE:
+					resultIndex = datetime.le((QDatetime)argument);
+					break;
+				case LT:
+					resultIndex = datetime.lt((QDatetime)argument);
+					break;
+				}
+				break;
+			case NUMERIC:
+				QNumeric numeric = ((QNumeric)bufferedElement);
+				switch (operator) {
+				case EQ:
+					resultIndex = numeric.eq((QNumeric)argument);
+					break;
+				case GE:
+					resultIndex = numeric.ge((QNumeric)argument);
+					break;
+				case GT:
+					resultIndex = numeric.gt((QNumeric)argument);
+					break;
+				case LE:
+					resultIndex = numeric.le((QNumeric)argument);
+					break;
+				case LT:
+					resultIndex = numeric.lt((QNumeric)argument);
+					break;
+				}
+				break;
+			case STRING:
+				QString string = ((QString)bufferedElement);
+				switch (operator) {
+				case EQ:
+					resultIndex = string.eq((QString)argument);
+					break;
+				case GE:
+					resultIndex = string.ge((QString)argument);
+					break;
+				case GT:
+					resultIndex = string.gt((QString)argument);
+					break;
+				case LE:
+					resultIndex = string.le((QString)argument);
+					break;
+				case LT:
+					resultIndex = string.lt((QString)argument);
+					break;
+				}
+				break;
+			}
+
+			if (resultIndex) {
 				result = qBox(i);
 				break;
 			}
@@ -926,7 +939,7 @@ public class RPJProgramSupport {
 		if (result == null)
 			result = qBox(0);
 
-		this.dataContext.found().eval(result.ge(1));
+		this.dataContext.found().eval(resultIndex);
 
 		startIndex.eval(result);
 
@@ -942,8 +955,29 @@ public class RPJProgramSupport {
 			numElements = list.capacity();
 
 		QDecimal result = null;
+		boolean resultIndex = false;
 		for (int i = startIndex.intValue(); i <= numElements.intValue(); i++) {
-			if (list.get(i).eq(argument)) {
+
+			QBufferedElement bufferedElement = list.get(i);
+			switch (operator) {
+			case EQ:
+				resultIndex = bufferedElement.eq(argument);
+				break;
+			case GE:
+				resultIndex = bufferedElement.ge(argument);
+				break;
+			case GT:
+				resultIndex = bufferedElement.gt(argument);
+				break;
+			case LE:
+				resultIndex = bufferedElement.le(argument);
+				break;
+			case LT:
+				resultIndex = bufferedElement.lt(argument);
+				break;
+			}
+
+			if (resultIndex) {
 				result = qBox(i);
 				break;
 			}
@@ -952,7 +986,7 @@ public class RPJProgramSupport {
 		if (result == null)
 			result = qBox(0);
 
-		this.dataContext.found().eval(result.ge(1));
+		this.dataContext.found().eval(resultIndex);
 
 		return result;
 	}

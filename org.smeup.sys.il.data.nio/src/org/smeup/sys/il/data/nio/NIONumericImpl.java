@@ -513,6 +513,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 		for (byte b : asBytes())
 			if (b != getFiller())
 				return false;
+		
 		return true;
 	}
 

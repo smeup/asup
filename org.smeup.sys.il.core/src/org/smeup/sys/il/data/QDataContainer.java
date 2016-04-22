@@ -118,39 +118,10 @@ public interface QDataContainer extends QDataTermContainer, Closeable {
 	boolean hasDefaultValue(String key);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model dataTermRequired="true"
-	 * @generated
-	 */
-	boolean hasDefaultValue(QDataTerm<?> dataTerm);
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model dataTermRequired="true"
 	 * @generated
 	 */
 	void removeDataTerm(QDataTerm<?> dataTerm);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void resetData();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyRequired="true"
-	 * @generated
-	 */
-	QData resetData(String key);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model dataTermRequired="true"
-	 * @generated
-	 */
-	QData resetData(QDataTerm<?> dataTerm);
 
 } // QDataContainer

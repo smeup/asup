@@ -40,38 +40,36 @@ public class NIODataStructBuilder {
 
 		org.smeup.sys.il.data.annotation.Overlay overlay = field.getAnnotation(org.smeup.sys.il.data.annotation.Overlay.class);
 		if (overlay == null) {
-			addElement(field.getName(), dataElement, null);
+			dataStruct.addElement(field.getName(), dataElement, ownerNextPos);		
+			ownerNextPos += dataElement.getSize();
 			return;
 		} else {
-			addElement(field.getName(), dataElement, new Overlay(overlay.name(), overlay.position()));
+			addElement(field.getName(), dataElement, overlay.name(), overlay.position());
 		} 		
 	}
 
 	public void addElement(QDataTerm<?> dataTerm, QBufferedData dataElement) {
 		QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 		if (overlay == null) {
-			addElement(dataTerm.getName(), dataElement, null);
+			dataStruct.addElement(dataTerm.getName(), dataElement, ownerNextPos);		
+			ownerNextPos += dataElement.getSize();
 		} else {
-			addElement(dataTerm.getName(), dataElement, new Overlay(overlay.getName(), overlay.getPosition()));
+			addElement(dataTerm.getName(), dataElement, overlay.getName(), overlay.getPosition());
 		} 		
  	}
 	
-	private void addElement(String name, QBufferedData dataElement, Overlay overlay) {
+	private void addElement(String name, QBufferedData dataElement, String overlayName, int overlayPosition) {
 		
-		if (overlay == null) {
-			dataStruct.addElement(name, dataElement, ownerNextPos);		
-			ownerNextPos += dataElement.getSize();
-		}
-		else if (overlay.name == null || overlay.name.equalsIgnoreCase(org.smeup.sys.il.data.annotation.Overlay.NAME_OWNER)) {
+		if (overlayName == null || overlayName.equalsIgnoreCase(org.smeup.sys.il.data.annotation.Overlay.NAME_OWNER)) {
 
-			if (overlay.position >= 1)
-				ownerNextPos = overlay.position;
+			if (overlayPosition >= 1)
+				ownerNextPos = overlayPosition;
 
 			dataStruct.addElement(name, dataElement, ownerNextPos);
 			ownerNextPos += dataElement.getSize();
 		} else {
 
-			NIOBufferedDataImpl overlayedData = (NIOBufferedDataImpl) dataStruct.getElement(overlay.name.toLowerCase());
+			NIOBufferedDataImpl overlayedData = (NIOBufferedDataImpl) dataStruct.getElement(overlayName.toLowerCase());
 			
 			if (overlayedData == null)
 				throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: s87rfysd8fsd");
@@ -83,8 +81,8 @@ public class NIODataStructBuilder {
 				overlayedToNextPos.put(overlayedData, overlayedNextPos);
 			}
 
-			if (overlay.position >= 1)
-				overlayedNextPos.eval(overlay.position);
+			if (overlayPosition >= 1)
+				overlayedNextPos.eval(overlayPosition);
 
 			dataStruct.addElement(name, dataElement, overlayedNextPos.i());
 
@@ -99,16 +97,5 @@ public class NIODataStructBuilder {
 			}
 		}
 
-	}
-	
-	private class Overlay {
-		
-		private String name;
-		private int position;
-		
-		public Overlay(String name, int position) {
-			this.name = name;
-			this.position = position;
-		}
 	}
 }

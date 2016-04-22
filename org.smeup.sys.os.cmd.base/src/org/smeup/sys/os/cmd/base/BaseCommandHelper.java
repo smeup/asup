@@ -44,7 +44,7 @@ public class BaseCommandHelper {
 			 * QDataTerm<?> dataTerm = dataContext.getTerms().get(position);
 			 */
 
-			if (!dataContainer.hasDefaultValue(key)|| showDefault) {
+			if (!dataContainer.hasDefaultValue(key) || showDefault) {
 
 				result += key + "(";
 

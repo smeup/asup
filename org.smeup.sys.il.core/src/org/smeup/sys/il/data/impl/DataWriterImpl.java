@@ -121,12 +121,11 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public QDataWriter set(DataSpecial value) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		this.object = value;
+		return this;
 	}
 
 	@Override
@@ -155,8 +154,8 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 
 	@Override
 	public boolean visit(QDatetime data) {
-		// TODO Auto-generated method stub
-		return super.visit(data);
+		visitDateData(data);
+		return false;
 	}
 
 	@Override
@@ -247,14 +246,17 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 			string.eval((QString) object);
 		else if (object instanceof String) {
 			String s = (String) object;
-			if(s.startsWith("'*") && s.endsWith("'"))
-				s = s.substring(1).substring(0, s.lastIndexOf("'") - 1);
 			string.eval(s);
 		} else if (object instanceof DataSpecial)
 			string.eval((DataSpecial) object);
 		else
 			string.eval(object.toString());
 
+	}
+
+	private void visitDateData(QDatetime data) {
+		// TODO Auto-generated method stub
+		
 	}
 
 } // DataWriterImpl

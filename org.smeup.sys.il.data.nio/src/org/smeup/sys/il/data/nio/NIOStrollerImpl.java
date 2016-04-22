@@ -1055,4 +1055,10 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	public void eval(QDataArea<? extends QString> value) {
 		current().eval(value);
 	}
+	
+	@Override
+	public void reset() {		
+		current().reset();
+	}
+
 }

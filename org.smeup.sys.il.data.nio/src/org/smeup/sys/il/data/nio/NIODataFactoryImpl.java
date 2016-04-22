@@ -18,6 +18,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -26,13 +27,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.osgi.framework.FrameworkUtil;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
-import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
-import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataArea;
@@ -41,14 +40,12 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataStructWrapper;
-import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QFloating;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
-import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QRecord;
@@ -99,11 +96,9 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	private QDataAreaFactory dataAreaFactory;
 	private QDataContext dataContext;
-	private QDataWriter dataWriter;
 
 	protected NIODataFactoryImpl(QDataContext dataContext, QDataAreaFactory dataAreaFactory) {
 		this.dataContext = dataContext;
-		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 		this.dataAreaFactory = dataAreaFactory;
 	}
 
@@ -427,13 +422,8 @@ public class NIODataFactoryImpl implements QDataFactory {
 		List<Field> fields = NIODataStructHelper.getFields(classDelegator);
 		for (Field field : fields) {
 
-			// annotations field
-			List<Annotation> annotations = new ArrayList<Annotation>();
-			for (Annotation annotation : field.getAnnotations())
-				annotations.add(annotation);
-
 			// create element
-			QDataDef<?> dataDef = createDataDef(field.getGenericType(), annotations);
+			QDataDef<?> dataDef = createDataDef(field.getGenericType(), Arrays.asList(field.getAnnotations()));
 			QBufferedData dataElement = (QBufferedData) createData(dataDef, false);
 			
 			dataStructBuilder.addElement(field, dataElement);
@@ -442,54 +432,8 @@ public class NIODataFactoryImpl implements QDataFactory {
 		if (dataStructure instanceof QDataStructWrapper)
 			((QDataStructWrapper) dataStructure).setDelegate(dataStructureDelegate);
 
-		if (allocate) {
+		if (allocate) 
 			allocate(dataStructure);
-
-			// default
-			for (Field field : fields) {
-
-				DataDef annotationDef = field.getAnnotation(DataDef.class);
-				if (annotationDef == null)
-					continue;
-
-				QData dataElement = dataStructure.getElement(field.getName());
-				if (dataElement == null)
-					continue; // TODO throw Exception
-
-				// default
-				if (dataElement instanceof QBufferedList<?>) {
-					QBufferedList<?> array = (QBufferedList<?>) dataElement;
-					int i = 1;
-					if (annotationDef.values().length > 0) {
-						for (String value : annotationDef.values()) {
-							array.get(i).accept(dataWriter.set(value));
-							i++;
-						}
-					} else if (!annotationDef.value().isEmpty()) {
-						String value = annotationDef.value();
-						if (value.startsWith("*")) {
-							DataSpecial dataSpecial = DataSpecial.get(value);
-							array.eval(dataSpecial);
-						} else
-							array.eval(value);
-					}
-				} else if (dataElement instanceof QBufferedElement) {
-					QBufferedElement element = (QBufferedElement) dataElement;
-					if (!annotationDef.value().isEmpty()) {
-						String value = annotationDef.value();
-						if (value.startsWith("*")) {
-							DataSpecial dataSpecial = DataSpecial.get(value);
-							if (dataSpecial == null)
-								element.movel(value, true);
-							else
-								element.movel(dataSpecial, true);
-						} else
-							element.movel(value, true);
-					}
-				} else
-					throw new IntegratedLanguageCoreRuntimeException("Unexpected condition wueyrow34tfdsh");
-			}
-		}
 
 		return dataStructure;
 	}

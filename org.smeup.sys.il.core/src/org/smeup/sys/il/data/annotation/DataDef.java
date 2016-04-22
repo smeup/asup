@@ -31,6 +31,7 @@ public @interface DataDef {
 	// common
 	String based() default "";	
 	boolean constant() default false;
+	boolean snapshot() default false;
 	String value() default "";
 	String[] formulas() default {};
 	String externalName() default "";

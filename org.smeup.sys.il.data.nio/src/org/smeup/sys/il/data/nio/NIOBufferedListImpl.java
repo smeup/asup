@@ -11,8 +11,10 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.math.BigDecimal;
 import java.util.Iterator;
 
+import org.smeup.sys.il.data.BufferedDataType;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
@@ -130,12 +132,20 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public final void eval(String value) {
-		if (getModel() instanceof QString) {
+		
+		switch (getModel().getBufferedElementType()) {
+		case DATETIME:
+			for (D element : this)
+				element.movel(value, true);
+			break;
+		case NUMERIC:
+			for (D element : this)
+				((QNumeric) element).eval(new BigDecimal(value), true);
+			break;
+		case STRING:
 			for (D element : this)
 				((QString) element).eval(value);
-		} else {
-			for (D element : this)
-				element.move(value, true);
+			break;
 		}
 	}
 
@@ -358,5 +368,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 		public void remove() {
 			list.get(current).clear();
 		}
+	}
+	
+	@Override
+	public BufferedDataType getBufferedDataType() {
+		return BufferedDataType.LIST;
 	}
 }

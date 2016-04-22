@@ -117,7 +117,10 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 				}
 			}
 		}
-
+		else if (statement.getMethod().equals("reset")) {
+			programInfo.containsRSTStatement(true);
+		}
+		
 		return super.visit(statement);
 	}
 

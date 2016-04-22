@@ -236,11 +236,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
-	public boolean eq(QBufferedElement value) {
-		return delegate.eq(value);
-	}
-
-	@Override
 	public boolean eq(String value) {
 		return delegate.eq(value);
 	}
@@ -1199,7 +1194,12 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	public BufferedElementType getBufferedElementType() {
 		return delegate.getBufferedElementType();
 	}
-
+	
+	@Override
+	public BufferedDataType getBufferedDataType() {
+		return delegate.getBufferedDataType();
+	}
+	
 	public void move(QString value) {
 		delegate.move(value);
 	}
@@ -1322,5 +1322,13 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 
 	public void testb(QString bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
 		delegate.testb(bitNumbers, off, on, equal);
-	}	
+	}
+	
+	public void reset() {
+		delegate.reset();
+	}
+	
+	public void snap() {
+		delegate.snap();
+	}
 }

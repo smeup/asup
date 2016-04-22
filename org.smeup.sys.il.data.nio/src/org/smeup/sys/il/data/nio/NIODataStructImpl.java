@@ -53,9 +53,9 @@ public class NIODataStructImpl extends NIOAbstractDataStruct {
 		this._elements.put(name, element);
 
 		if (_dynamicLength)
-			if (position -1 + element.getSize() >= _length)
+			if (position - 1 + element.getSize() >= _length)
 				_length = position - 1 + element.getSize();
-		
+
 		assign(element, position);
 	}
 
@@ -67,5 +67,17 @@ public class NIODataStructImpl extends NIOAbstractDataStruct {
 	@Override
 	public List<String> getElementNames() {
 		return new ArrayList<String>(_elements.keySet());
+	}
+
+	@Override
+	public void reset() {
+
+		QBufferedData snapData = getDataContext().getSnap(this);
+		if (snapData != null)
+			NIOBufferHelper.write(this, snapData);
+		else {
+			for (QBufferedData element : getElements())
+				element.reset();
+		}
 	}
 }

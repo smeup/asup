@@ -131,9 +131,4 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedData> extends NIO
 		eval(special.value());
 
 	}
-	
-	@Override
-	public boolean eq(QBufferedElement value) {
-		return getDelegate().eq(value);
-	}
 }

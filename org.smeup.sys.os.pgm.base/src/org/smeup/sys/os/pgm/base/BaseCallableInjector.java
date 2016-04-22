@@ -181,15 +181,13 @@ public class BaseCallableInjector {
 		return callable;
 	}
 
-	@SuppressWarnings({ "unchecked", "resource" })
+	@SuppressWarnings({ "unchecked"})
 	private void injectFields(Object owner, Class<?> klass, Object callable, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules,
 			Map<String, QRecord> records) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		// recursively on superClass
 		if (klass.getSuperclass().getAnnotation(Program.class) != null)
 			injectFields(owner, klass.getSuperclass(), callable, dataContainer, accessFactory, unitModules, records);
-
-		QContext context = dataContainer.getDataContext().getContext();
 
 		List<InjectableField> datas = new ArrayList<InjectableField>();
 		List<InjectableField> dataStructures = new ArrayList<InjectableField>();
@@ -402,8 +400,7 @@ public class BaseCallableInjector {
 		for (InjectableField field : pointers) {
 
 			QDataTerm<?> dataTerm = dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
-			QData data = dataContainer.resetData(dataTerm);
-			field.setValue(callable, data);
+			field.setValue(callable, dataContainer.getData(dataTerm));
 		}
 
 		// dataStructure
@@ -413,7 +410,7 @@ public class BaseCallableInjector {
 			
 			QData data = null;
 			if(dataTerm.getDefinition().isInitialized()) 
-				data = dataContainer.resetData(dataTerm);
+				data = dataContainer.getData(dataTerm);
 			else
 				data = dataContainer.getData(dataTerm);
 			
@@ -444,8 +441,7 @@ public class BaseCallableInjector {
 		for (InjectableField field : datas) {
 
 			QDataTerm<?> dataTerm = dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
-			QData data = dataContainer.resetData(dataTerm);
-			field.setValue(callable, data);
+			field.setValue(callable, dataContainer.getData(dataTerm));
 		}
 
 		// dataSet
@@ -457,10 +453,6 @@ public class BaseCallableInjector {
 					QBufferedData bufferedData = (QBufferedData) data;
 					QBufferedData bufferedDataTo = dataSet.get().getElement(fieldName);
 
-					if (bufferedData.getStore() == null)
-						"".toCharArray();
-					if (bufferedDataTo == null)
-						"".toCharArray();
 					if (!bufferedData.getStore().equals(bufferedDataTo.getStore()))
 						bufferedData.assign(bufferedDataTo);
 				}
