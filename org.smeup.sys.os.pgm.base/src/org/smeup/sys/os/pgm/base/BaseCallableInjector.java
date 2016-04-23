@@ -107,20 +107,20 @@ public class BaseCallableInjector {
 
 		QDataContainer dataContainer = dataManager.createDataContainer(dataContext);
 
-		// create programStatus
-		QDataTerm<?> programStatusTerm = dataContainer.addDataTerm("*pgmstatus", BaseProgramStatusImpl.class, null);
-		QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
-		if (program != null) {
-			programStatus.getProgramName().eval(program.getName());
-			programStatus.getProgramLibrary().eval(program.getLibrary());
-		}
-		QJobReference jobReference = job.getJobReference();
-		programStatus.getUserName().eval(jobReference.getJobUser());
-		programStatus.getJobNumber().eval(jobReference.getJobNumber());
-		programStatus.getJobName().eval(jobReference.getJobName());
-		programStatus.getStatusCode().clear();
-
 		try {
+			// create programStatus
+			QDataTerm<?> programStatusTerm = dataContainer.addDataTerm("*pgmstatus", BaseProgramStatusImpl.class, null);
+			QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
+			if (program != null) {
+				programStatus.getProgramName().eval(program.getName());
+				programStatus.getProgramLibrary().eval(program.getLibrary());
+			}
+			QJobReference jobReference = job.getJobReference();
+			programStatus.getUserName().eval(jobReference.getJobUser());
+			programStatus.getJobNumber().eval(jobReference.getJobNumber());
+			programStatus.getJobName().eval(jobReference.getJobName());
+			programStatus.getStatusCode().clear();
+
 			QAccessFactory accessFactory = esamManager.createFactory(job, dataContainer.getDataContext());
 
 			Map<String, Object> unitModules = new HashMap<String, Object>();
