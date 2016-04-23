@@ -11,12 +11,14 @@
  */
 package org.smeup.sys.os.cmd.base;
 
+import java.util.List;
 import java.util.Map;
 
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.os.cmd.QCallableCommand;
 import org.smeup.sys.os.cmd.QCommandManager;
@@ -54,9 +56,10 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 
 		QData[] parameters = new QData[callableCommand.getCommand().getParameters().size()];
 
+		List<QDataTerm<?>> dataTerms = dataContainer.getTerms();
 		for (QCommandParameter commandParameter : callableCommand.getCommand().getParameters()) {
 			int position = commandParameter.getPosition() - 1;
-			parameters[position] = dataContainer.getData(dataContainer.getTerms().get(position));
+			parameters[position] = dataContainer.getData(dataTerms.get(position));
 		}
 
 		programManager.callProgram(job, null, callableCommand.getCommand().getProgram(), parameters);
