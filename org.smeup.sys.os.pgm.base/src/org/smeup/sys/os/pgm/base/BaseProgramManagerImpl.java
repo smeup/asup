@@ -114,6 +114,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		
 		callProgram(job, callableProgram, params);
 	}
+	
 	@Override
 	public QCallableProgram<?> loadProgram(QJob job, QProgram program) {
 
@@ -243,10 +244,10 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		if (paramsTo == null)
 			return;
 
-		QCharacter nullReference = callableProgram.getDataContext().getDataFactory().createCharacter(1, false, false);
 		for (int i = paramsLength; i < paramsTo.length; i++) {
 			if (paramsTo[i] instanceof QBufferedData) {
 				QBufferedData bufferedData = (QBufferedData) paramsTo[i];
+				QCharacter nullReference = callableProgram.getDataContext().getDataFactory().createCharacter(1, false, false);				
 				nullReference.assign(bufferedData);
 			} else
 				paramsTo[i].clear();
