@@ -356,7 +356,7 @@ public class NIOBufferHelper {
 			i++;
 
 		int f = bytes.length - 1;
-		while (f >= 0 && (bytes[f] == NIOStringImpl.INIT || bytes[f] == 0))
+		while (f >= i && (bytes[f] == NIOStringImpl.INIT || bytes[f] == 0))
 			f--;
 
 		return Arrays.copyOfRange(bytes, i, f + 1);
