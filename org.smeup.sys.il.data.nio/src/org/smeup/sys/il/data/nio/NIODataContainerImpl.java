@@ -344,7 +344,6 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 			if (allocate)
 				writeDefault(dataTerm, data);
-
 		}
 
 		return data;
@@ -370,7 +369,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			break;
 		}
 		case UNARY_COMPOUND:
-			
+
 			QDataStruct dataStruct = null;
 			QCompoundDataDef<?, QDataTerm<?>> compoundDataDef = null;
 			if (data instanceof QDataArea<?>) {
@@ -383,14 +382,22 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataTerm.getDefinition();
 			}
 
-			if (compoundDataDef.getClassDelegator() != null)
+			if (dataTerm.getDefault() == null && compoundDataDef.getClassDelegator() != null)
 				dataStruct.reset();
 			else {
+				if (dataTerm.getDefault() != null) {
+					QSpecialElement specialElement = getSpecialElement(dataTerm, dataTerm.getDefault().getValue());
+					if (specialElement != null)
+						NIOBufferHelper.writeDefault(dataStruct, specialElement.getValue());
+					else {
+						NIOBufferHelper.writeDefault(dataStruct, dataTerm.getDefault().getValue());
+					}
+				}
 
 				for (QDataTerm<?> element : compoundDataDef.getElements()) {
 					if (element.getDefault() != null)
 						writeDefault(element, dataStruct.getElement(element.getName()));
-					else
+					else if (dataTerm.getDefault() == null)
 						dataStruct.getElement(element.getName()).clear();
 				}
 			}
@@ -426,13 +433,22 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataTerm.getDefinition();
 
 			dataStruct = (QDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(stroller.first()).copy().allocate();
-			if (compoundDataDef.getClassDelegator() != null)
+			if (dataTerm.getDefault() == null && compoundDataDef.getClassDelegator() != null)
 				dataStruct.reset();
 			else {
+				if (dataTerm.getDefault() != null) {
+					QSpecialElement specialElement = getSpecialElement(dataTerm, dataTerm.getDefault().getValue());
+					if (specialElement != null)
+						NIOBufferHelper.writeDefault(dataStruct, specialElement.getValue());
+					else {
+						NIOBufferHelper.writeDefault(dataStruct, dataTerm.getDefault().getValue());
+					}
+				}
+
 				for (QDataTerm<?> element : compoundDataDef.getElements()) {
 					if (element.getDefault() != null)
 						writeDefault(element, dataStruct.getElement(element.getName()));
-					else
+					else if (dataTerm.getDefault() == null)
 						dataStruct.getElement(element.getName()).clear();
 				}
 			}
