@@ -26,7 +26,6 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
-import org.smeup.sys.il.data.enums.YesNoEnum;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -52,8 +51,7 @@ public class JobLogDisplayer {
 
 	@Main
 	public void main(@Supported @DataDef(qualified = true) JobName jobName, @Supported @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output,
-			@ToDo @DataDef(qualified = true) FileToReceiveOutput fileToReceiveOutput, @ToDo OutputMemberOptions outputMemberOptions,
-			@Supported @DataDef(length = 1) QEnum<YesNoEnum, QCharacter> shortFormat) {
+			@ToDo @DataDef(qualified = true) FileToReceiveOutput fileToReceiveOutput, @ToDo OutputMemberOptions outputMemberOptions) {
 
 		QJobLog jobLog = findJobLog(jobName);
 		QObjectWriter objectWriter = findWiter(output);
