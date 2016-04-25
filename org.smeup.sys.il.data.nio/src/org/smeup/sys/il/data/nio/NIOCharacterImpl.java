@@ -31,39 +31,21 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 
 	protected int _length;
 
-	public NIOCharacterImpl(QDataContext dataContext) {
-		super(dataContext);
-	}
-
-	public NIOCharacterImpl(QDataContext dataContext, int length) {
+	public NIOCharacterImpl(QDataContext dataContext, int length, boolean allocate) {
 		super(dataContext);
 		_length = length;
+		
+		if(allocate) {
+			checkAllocation();
+			
+			_buffer = ByteBuffer.allocate(getSize());			
+			NIOBufferHelper.fill(_buffer, 0, _buffer.capacity(), INIT);			
+		}
 	}
 
 	@Override
 	public void accept(QDataVisitor visitor) {
 		visitor.visit(this);
-	}
-
-	@Override
-	public void bitoff(byte bitNumbers) {
-		// TODO Auto-generated method stub
-	}
-
-
-	@Override
-	public void biton(String bitNumbers) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void bitoff(String bitNumbers) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void biton(byte bitNumbers) {
-		// TODO Auto-generated method stub
 	}
 		
 	@Override
@@ -123,12 +105,12 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 			int s = space.intValue();
 			if(s>remaining) {
 				for(int i=0; i<remaining;i++)
-					buffer.put(getFiller());
+					buffer.put(INIT);
 				return;
 			}
 			else {
 				for(int i=0; i<s; i++)
-					buffer.put(getFiller());
+					buffer.put(INIT);
 				
 				remaining = remaining - s;
 			}
@@ -143,12 +125,12 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 
 		if(clear)
 			while(buffer.hasRemaining())
-				buffer.put(getFiller());
+				buffer.put(INIT);
 	}
 
 	@Override
 	protected void _clear() {
-		NIOBufferHelper.clear(getBuffer(), getPosition(), getSize(), getFiller());
+		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), INIT);
 	}
 
 	@Override
@@ -163,17 +145,23 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 
 	@Override
 	protected void _write(byte[] value) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value, true, getFiller());
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value, INIT);
 	}
 
 	@Override
 	protected void _move(byte[] value, boolean clear) {
-		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value, clear, getFiller());
+		if(clear)
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value, INIT);
+		else
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value);
 	}
 
 	@Override
 	protected void _movel(byte[] value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value, clear, getFiller());
+		if(clear)
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value, INIT);
+		else
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value);
 	}
 
 	@Override
@@ -582,60 +570,6 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 			found.eval(getDataContext().found());
 		
 		return number;
-	}
-	
-	@Override
-	public void testb(byte bitNumbers, QIndicator off) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void testb(String bitNumbers, QIndicator off) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void testb(QString bitNumbers, QIndicator off) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void testb(byte bitNumbers, QIndicator off, QIndicator on) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void testb(String bitNumbers, QIndicator off, QIndicator on) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void testb(QString bitNumbers, QIndicator off, QIndicator on) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void testb(byte bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void testb(String bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void testb(QString bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override

@@ -13,16 +13,18 @@
 package org.smeup.sys.dk.compiler.rpj;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class RPJCallableUnitInfo {
 
 	private Map<String, Label> labels;
+	private Set<String> resetObjects;
 	
 	private boolean containsPRTStatement = false;
 	private boolean containsSQLStatement = false;
 	private boolean containsCMDStatement = false;
-	private boolean containsRSTStatement = false;
 	
 	private boolean containsInsignificantZeros = false;
 
@@ -62,21 +64,20 @@ public class RPJCallableUnitInfo {
 		return this.containsPRTStatement;
 	}
 
-	public void containsRSTStatement(boolean containsRSTStatement) {
-		this.containsRSTStatement = containsRSTStatement;
-	}
-
-	public boolean containsRSTStatement() {
-		return this.containsRSTStatement;
-	}
-
 	public Map<String, Label> getLabels() {
 		return this.labels;
 	}
 
+	public Set<String> getResetObjects() {
+		return this.resetObjects;
+	}
+	
 	public void reset() {
 		this.labels = new HashMap<String, RPJCallableUnitInfo.Label>();
+		this.resetObjects = new HashSet<String>();
 		this.containsSQLStatement = false;
+		this.containsInsignificantZeros = false;
+		this.containsPRTStatement = false;
 	}
 
 	public static class Label {

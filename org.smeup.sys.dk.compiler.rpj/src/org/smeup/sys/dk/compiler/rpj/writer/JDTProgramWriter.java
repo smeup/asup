@@ -79,7 +79,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		writeProgramAnnotation(program);
 
 		// unit info
-		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(program);
+		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(getCompilationUnit(), program);
 		if(callableUnitInfo.containsInsignificantZeros())
 			System.err.println("Unsignificant zeros");
 		
@@ -118,7 +118,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		writeLabels(callableUnitInfo.getLabels().keySet(), false, true);
 
 		// routines
-		writeRoutines(program);
+		writeRoutines(program, callableUnitInfo);
 		
 		// procedures
 		if (program.getFlowSection() != null)

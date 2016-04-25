@@ -20,6 +20,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
@@ -27,7 +28,7 @@ import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QNumeric;
 
-public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements QList<D> {
+public class NIOListImpl<D extends QBufferedData> extends NIODataImpl implements QList<D> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -87,10 +88,10 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 	}
 
 	@Override
-	protected final NIODataImpl copy() {
+	public final NIODataImpl copy() {
 
 		try {
-			NIOBufferedElementDelegatorImpl copy = null;
+			NIODataImpl copy = null;
 
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			ObjectOutputStream oos = new ObjectOutputStream(baos);
@@ -99,7 +100,7 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 
 			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 			ObjectInputStream ois = new ObjectInputStream(bais);
-			copy = (NIOBufferedElementDelegatorImpl) ois.readObject();
+			copy = (NIODataImpl) ois.readObject();
 			ois.close();
 			copy._dataContext = getDataContext();
 			return copy;
@@ -136,7 +137,7 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 			element = _elements.get(index - 1);
 
 		if (element == null) {
-			element = (D) _model.copy();
+			element = (D) ((NIODataImpl) _model).copy();
 			_elements.add(index - 1, element);
 
 			return element;

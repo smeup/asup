@@ -29,20 +29,7 @@ import org.smeup.sys.il.data.QString;
 
 public class NIOBufferHelper {
 
-	public static byte[] read(ByteBuffer buffer, int position, int length) {
-		assert buffer != null;
-
-		prepare(buffer, position, length);
-
-		byte[] bytes = new byte[buffer.remaining()];
-		buffer.get(bytes);
-
-		return bytes;
-	}
-
-	public static void movel(ByteBuffer buffer, int position, int length, byte[] bytes, boolean clear, byte filler) {
-		assert buffer != null;
-
+	public static void movel(ByteBuffer buffer, int position, int length, byte[] bytes) {
 		prepare(buffer, position, length);
 
 		// overflow
@@ -50,17 +37,23 @@ public class NIOBufferHelper {
 			buffer.put(bytes, 0, buffer.remaining());
 		else {
 			buffer.put(bytes);
-
-			if (clear) {
-				while (buffer.hasRemaining())
-					buffer.put(filler);
-			}
 		}
 	}
 
-	public static void move(ByteBuffer buffer, int position, int length, byte[] bytes, boolean clear, byte filler) {
-		assert buffer != null;
+	public static void movel(ByteBuffer buffer, int position, int length, byte[] bytes, byte filler) {
+		prepare(buffer, position, length);
 
+		// overflow
+		if (bytes.length >= buffer.remaining())
+			buffer.put(bytes, 0, buffer.remaining());
+		else {
+			buffer.put(bytes);
+			while (buffer.hasRemaining())
+				buffer.put(filler);
+		}
+	}
+
+	public static void move(ByteBuffer buffer, int position, int length, byte[] bytes) {
 		prepare(buffer, position, length);
 
 		// overflow
@@ -68,24 +61,27 @@ public class NIOBufferHelper {
 			buffer.put(bytes, bytes.length - buffer.remaining(), buffer.remaining());
 		else {
 
-			if (clear) {
-				for (int i = buffer.position(); i < buffer.limit() - bytes.length; i++)
-					buffer.put(filler);
-			} else
-				buffer.position(position + buffer.remaining() - bytes.length);
+			buffer.position(position + buffer.remaining() - bytes.length);
+			buffer.put(bytes);
+		}
+	}
+
+	public static void move(ByteBuffer buffer, int position, int length, byte[] bytes, byte filler) {
+		prepare(buffer, position, length);
+
+		// overflow
+		if (bytes.length > buffer.remaining())
+			buffer.put(bytes, bytes.length - buffer.remaining(), buffer.remaining());
+		else {
+
+			for (int i = buffer.position(); i < buffer.limit() - bytes.length; i++)
+				buffer.put(filler);
 
 			buffer.put(bytes);
 		}
 	}
 
-	public static void clear(ByteBuffer buffer, int position, int length, byte filler) {
-		assert buffer != null;
-
-		Arrays.fill(buffer.array(), position, position + length, filler);
-	}
-
 	public static void prepare(ByteBuffer buffer, int position, int length) {
-		assert buffer != null;
 
 		if (position > 0) {
 
@@ -107,7 +103,6 @@ public class NIOBufferHelper {
 	}
 
 	public static void fill(ByteBuffer buffer, int position, int length, byte[] filler) {
-		assert buffer != null;
 
 		if (filler.length == 0)
 			return;
@@ -131,13 +126,17 @@ public class NIOBufferHelper {
 	}
 
 	public static void fill(ByteBuffer buffer, int position, int length, byte filler) {
-		assert buffer != null;
 
-		Arrays.fill(buffer.array(), position, position + length, filler);
+		if (buffer.isDirect())
+			Arrays.fill(buffer.array(), position, position + length, filler);
+		else {
+			NIOBufferHelper.prepare(buffer, position, length);
+			while(buffer.hasRemaining())
+				buffer.put(filler);
+		}
 	}
 
 	public static void fillr(ByteBuffer buffer, int position, int length, byte[] filler) {
-		assert buffer != null;
 
 		if (filler.length == 0)
 			return;
@@ -234,7 +233,21 @@ public class NIOBufferHelper {
 	}
 
 	public static final int compareBytes(NIOBufferedElementImpl bufferedElement, byte[] b2) {
-		return compareBytes(bufferedElement._toBytes(), b2, bufferedElement.getFiller());
+
+		byte filler = 0;
+		switch (bufferedElement.getBufferedElementType()) {
+		case DATETIME:
+			filler = NIODatetimeImpl.INIT;
+			break;
+		case NUMERIC:
+			filler = NIODecimalImpl.INIT;
+			break;
+		case STRING:
+			filler = NIOStringImpl.INIT;
+			break;
+		}
+
+		return compareBytes(bufferedElement._toBytes(), b2, filler);
 	}
 
 	public static final int compareBytes(byte[] b1, byte[] b2, byte filler) {
@@ -326,7 +339,7 @@ public class NIOBufferHelper {
 		case ZEROS:
 		}
 
-		return NIOBufferHelper.compareBytes(bufferedElement, bufferedElement._toBytes(value));
+		return compareBytes(bufferedElement, bufferedElement._toBytes(value));
 	}
 
 	public static int compareBytes(NIOBufferedElementImpl bufferedElement, QDataFiller value) {
@@ -343,7 +356,7 @@ public class NIOBufferHelper {
 			return 1;
 
 		ByteBuffer byteBuffer = ByteBuffer.allocate(length);
-		NIOBufferHelper.fill(byteBuffer, 0, length, value.get().asBytes());
+		fill(byteBuffer, 0, length, value.get().asBytes());
 
 		return compareBytes(bufferedElement, byteBuffer.array());
 	}
@@ -359,7 +372,10 @@ public class NIOBufferHelper {
 		while (f >= i && (bytes[f] == NIOStringImpl.INIT || bytes[f] == 0))
 			f--;
 
-		return Arrays.copyOfRange(bytes, i, f + 1);
+		if (i == 0 && f == bytes.length - 1)
+			return bytes;
+		else
+			return Arrays.copyOfRange(bytes, i, f + 1);
 	}
 
 	public static byte[] trimL(QString string) {
@@ -369,7 +385,10 @@ public class NIOBufferHelper {
 		while (i < bytes.length && (bytes[i] == NIOStringImpl.INIT || bytes[i] == 0))
 			i++;
 
-		return Arrays.copyOfRange(bytes, i, bytes.length);
+		if (i == 0)
+			return bytes;
+		else
+			return Arrays.copyOfRange(bytes, i, bytes.length);
 	}
 
 	public static byte[] trimR(QString string) {
@@ -379,38 +398,49 @@ public class NIOBufferHelper {
 		while (i >= 0 && (bytes[i] == NIOStringImpl.INIT || bytes[i] == 0))
 			i--;
 
-		return Arrays.copyOfRange(bytes, 0, i + 1);
+		if (i == bytes.length - 1)
+			return bytes;
+		else
+			return Arrays.copyOfRange(bytes, 0, i + 1);
 	}
 
 	public static byte[] read(QBufferedData data) {
-		NIOBufferedDataImpl nioData = NIOBufferHelper.getNIOBufferedDataImpl(data);
-		return NIOBufferHelper.read(nioData.getBuffer(), nioData.getPosition(), nioData.getSize());
+		NIOBufferedDataImpl nioData = getNIOBufferedDataImpl(data);
+		return read(nioData.getBuffer(), nioData.getPosition(), nioData.getSize());
+	}
+
+	public static byte[] read(ByteBuffer buffer, int position, int length) {
+		prepare(buffer, position, length);
+
+		byte[] bytes = new byte[buffer.remaining()];
+		buffer.get(bytes);
+
+		return bytes;
 	}
 
 	public static void write(QBufferedData target, QBufferedData source) {
-		NIOBufferedDataImpl nioTarget = NIOBufferHelper.getNIOBufferedDataImpl(target);
-		movel(nioTarget.getBuffer(), nioTarget.getPosition(), nioTarget.getSize(), read(source), false, nioTarget.getFiller());
+		NIOBufferedDataImpl nioTarget = getNIOBufferedDataImpl(target);
+		movel(nioTarget.getBuffer(), nioTarget.getPosition(), nioTarget.getSize(), read(source));
 	}
 
 	public static void writeDefault(QBufferedElement element, String value) {
 
-		DataSpecial dataSpecial = null;		
-		if(value.startsWith("*"))
+		DataSpecial dataSpecial = null;
+		if (value.startsWith("*"))
 			dataSpecial = DataSpecial.get(value.toUpperCase());
-		
-		if(dataSpecial != null) {
+
+		if (dataSpecial != null) {
 			element.eval(dataSpecial);
-		}
-		else {
+		} else {
 			switch (element.getBufferedElementType()) {
 			case DATETIME:
 				element.movel(value, true);
 				break;
 			case NUMERIC:
-				((QNumeric)element).eval(new BigDecimal(value), true);
+				((QNumeric) element).eval(new BigDecimal(value), true);
 				break;
-			case STRING:				
-				((QString)element).eval(value);
+			case STRING:
+				((QString) element).eval(value);
 				break;
 			}
 		}
@@ -418,8 +448,8 @@ public class NIOBufferHelper {
 
 	public static void writeDefault(QBufferedList<?> bufferedList, String value) {
 
-		DataSpecial dataSpecial = null;		
-		if(value.startsWith("*"))
+		DataSpecial dataSpecial = null;
+		if (value.startsWith("*"))
 			dataSpecial = DataSpecial.get(value.toUpperCase());
 
 		if (dataSpecial != null)
@@ -430,7 +460,7 @@ public class NIOBufferHelper {
 
 	public static void writeDefault(QBufferedList<?> bufferedList, String[] values) {
 
-		for(int i =1; i<=values.length; i++) 
+		for (int i = 1; i <= values.length; i++)
 			bufferedList.get(i).movel(values[i], true);
 	}
 }

@@ -103,7 +103,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 
 		try {
 
-			NIOBufferedDataImpl copy = null;
+			NIODataImpl copy = null;
 
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			ObjectOutputStream oos = new ObjectOutputStream(baos);
@@ -121,7 +121,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 
 			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 			ObjectInputStream ois = new ObjectInputStream(bais);
-			copy = (NIOBufferedDataImpl) ois.readObject();
+			copy = (NIODataImpl) ois.readObject();
 			copy._dataContext = _dataContext;
 			ois.close();
 

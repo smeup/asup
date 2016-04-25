@@ -18,19 +18,18 @@ import java.text.NumberFormat;
 import org.smeup.sys.il.data.QDataContext;
 
 public class NIODecimalPackedImpl extends NIODecimalImpl {
+
 	private static final long serialVersionUID = 1L;
 
-	public NIODecimalPackedImpl(QDataContext dataContext, int precision, int scale) {
+	public NIODecimalPackedImpl(QDataContext dataContext, int precision, int scale, boolean allocate) {
 		super(dataContext, precision, scale);
-	}
-
-	@Override
-	public NIODecimalPackedImpl allocate() {
-		super.allocate();
-
-		_clear();
-
-		return this;
+		
+		if(allocate) {
+			checkAllocation();		
+			_buffer = ByteBuffer.allocate(getSize());
+			_buffer.position(_buffer.capacity()-1);
+			_buffer.put((byte)0x0F);
+		}
 	}
 
 	@Override
@@ -72,9 +71,6 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 			}
 			
 			if(bd == null || bd.precision() > getPrecision()) {
-				if(bd != null)
-					"".toCharArray();
-
 				NumberFormat nf = getDecimalDef().getFormatUP();
 				bd = new BigDecimal(nf.format(number));					
 			}
@@ -101,7 +97,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 				e.toString();
 			}
 		}
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, INIT);
 	}
 
 	@Override
@@ -135,7 +131,10 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 		} else
 			doubleValue = getDecimalDef().getZoned().toDouble(value, value.length - getPrecision());
 
-		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), getDecimalDef().getPacked().toBytes(doubleValue), clear, getFiller());
+		if(clear)
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), getDecimalDef().getPacked().toBytes(doubleValue), INIT);
+		else
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), getDecimalDef().getPacked().toBytes(doubleValue));
 	}
 
 	@Override
@@ -151,15 +150,17 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 			doubleValue = getDecimalDef().getZoned().toDouble(value);
 		}
 		
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), getDecimalDef().getPacked().toBytes(doubleValue), clear, getFiller());
+		if(clear)
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), getDecimalDef().getPacked().toBytes(doubleValue), INIT);
+		else
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), getDecimalDef().getPacked().toBytes(doubleValue));
 	}
 
 	@Override
 	protected void _write(byte[] value) {
 
 		double doubleValue = getDecimalDef().getZoned().toDouble(value);
-
-		eval(doubleValue);
+		NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), getDecimalDef().getPacked().toBytes(doubleValue), INIT);
 	}
 
 	@Override

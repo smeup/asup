@@ -801,12 +801,13 @@ public class RPJProgramSupport {
 	}
 
 	/* Lookup */
-	public QNumeric qLookup(DataSpecial argument, QBufferedList<?> list, Number startIndex, Number numElements) {
+
+	public QNumeric qLookup(DataSpecial argument, QBufferedList<?> list, QNumeric startIndex, Number numElements) {
 		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
 	}
-	
-	public QNumeric qLookup(QBufferedElement argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
+
+	public QNumeric qLookup(String argument, QBufferedList<?> list, QNumeric startIndex, Number numElements) {
+		return qLookup(LookupOperator.EQ, qBox(argument), list, startIndex, numElements);
 	}
 
 	public QDecimal qLookup(String argument, QBufferedList<?> list, Number startIndex, Number numElements) {
@@ -948,15 +949,20 @@ public class RPJProgramSupport {
 
 	private QDecimal qLookup(LookupOperator operator, DataSpecial argument, QBufferedList<?> list, Number startIndex, Number numElements) {
 
+		return qLookup(operator, argument, list, qBox(startIndex.intValue()), numElements);
+	}
+	
+	private QDecimal qLookup(LookupOperator operator, DataSpecial argument, QBufferedList<?> list, QNumeric startIndex, Number numElements) {
+
 		if (startIndex == null)
-			startIndex = 1;
+			throw new IntegratedLanguageDataRuntimeException("Unexpected condition wsoesdfsdfsd");
 
 		if (numElements == null)
 			numElements = list.capacity();
 
 		QDecimal result = null;
 		boolean resultIndex = false;
-		for (int i = startIndex.intValue(); i <= numElements.intValue(); i++) {
+		for (int i = startIndex.i(); i <= numElements.intValue(); i++) {
 
 			QBufferedElement bufferedElement = list.get(i);
 			switch (operator) {
@@ -987,6 +993,8 @@ public class RPJProgramSupport {
 			result = qBox(0);
 
 		this.dataContext.found().eval(resultIndex);
+
+		startIndex.eval(result);
 
 		return result;
 	}

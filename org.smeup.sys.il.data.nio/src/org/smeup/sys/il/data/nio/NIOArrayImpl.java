@@ -12,6 +12,7 @@
 package org.smeup.sys.il.data.nio;
 
 import java.lang.reflect.Array;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -38,13 +39,20 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	private SortDirection sortDirection = null;
 
 	@SuppressWarnings("unchecked")
-	public NIOArrayImpl(QDataContext dataContext, D model, int dimension, SortDirection sortDirection) {
+	public NIOArrayImpl(QDataContext dataContext, D model, int dimension, SortDirection sortDirection, boolean allocate) {
 		super(dataContext, model);
 
 		this.sortDirection = sortDirection;
 		this._elements = (D[]) Array.newInstance(model.getClass(), dimension);
+		
+		if(allocate) {
+			checkAllocation();		
+			_buffer = ByteBuffer.allocate(getSize());
+			
+			clear();
+		}
 	}
-
+	
 	protected final SortDirection getSortDirection() {
 		return this.sortDirection;
 	}
@@ -119,7 +127,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 		if (element != null)
 			return element;
 
-		element = (D) ((NIODataImpl)getModel()).copy();
+		element = (D) ((NIOBufferedElementImpl) getModel()).copy();
 
 		int position = 0;
 		if (getListOwner() == null)
@@ -267,13 +275,13 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 	@Override
 	public QArray<D> qSubarr(int start, int elements) {
-		
-		NIOArrayImpl<D> subArray = new NIOArrayImpl<D>(getDataContext(), getModel(), elements, getSortDirection());
-		if(!isContiguous())
+
+		NIOArrayImpl<D> subArray = new NIOArrayImpl<D>(getDataContext(), getModel(), elements, getSortDirection(), false);
+		if (!isContiguous())
 			subArray.setListOwner(getListOwner());
 
 		assign(subArray, getModel().getSize() * (start - 1) + 1);
-		
+
 		return subArray;
 	}
 
@@ -301,8 +309,8 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	@Override
 	public QArray<QCharacter> qSubst(Number start, Number length) {
 
-		D modelCharacter = (D) new NIOCharacterImpl(getDataContext(), length.intValue());
-		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), modelCharacter, capacity(), getSortDirection());
+		D modelCharacter = (D) new NIOCharacterImpl(getDataContext(), length.intValue(), false);
+		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), modelCharacter, capacity(), getSortDirection(), false);
 		newArray.setListOwner(this);
 		assign(newArray, start.intValue());
 
@@ -366,7 +374,22 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 	@Override
 	public void movea(int targetIndex, QBufferedElement value, boolean clear) {
-		movea(targetIndex, value.asBytes(), clear, getFiller());
+
+		byte[] bytes = value.asBytes();
+		if (clear) {
+			switch (getModel().getBufferedElementType()) {
+			case DATETIME:
+				movea(targetIndex, bytes, NIODatetimeImpl.INIT);
+				break;
+			case NUMERIC:
+				movea(targetIndex, bytes, NIODecimalImpl.INIT);
+				break;
+			case STRING:
+				movea(targetIndex, bytes, NIOStringImpl.INIT);
+				break;
+			}
+		} else
+			movea(targetIndex, bytes, null);
 	}
 
 	@Override
@@ -376,7 +399,22 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 	@Override
 	public void movea(int targetIndex, String value, boolean clear) {
-		movea(targetIndex, value.getBytes(getDataContext().getCharset()), clear, NIOCharacterImpl.INIT);
+
+		byte[] bytes = value.getBytes(getDataContext().getCharset());
+		if (clear) {
+			switch (getModel().getBufferedElementType()) {
+			case DATETIME:
+				movea(targetIndex, bytes, NIODatetimeImpl.INIT);
+				break;
+			case NUMERIC:
+				movea(targetIndex, bytes, NIODecimalImpl.INIT);
+				break;
+			case STRING:
+				movea(targetIndex, bytes, NIOStringImpl.INIT);
+				break;
+			}
+		} else
+			movea(targetIndex, bytes, null);
 	}
 
 	@Override
@@ -406,23 +444,20 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 	@Override
 	public void movea(String value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value.getBytes(getDataContext().getCharset()), clear, getFiller());
+		movea(1, value, clear);
 	}
 
 	@Override
 	public void movea(QBufferedElement value, boolean clear) {
-		if (clear)
-			this.clear();
-
-		NIOBufferHelper.movel(getBuffer(), getPosition(), value.getSize(), value.asBytes(), clear, getFiller());
+		movea(1, value, clear);
 	}
 
-	private void movea(int targetIndex, byte[] value, boolean clear, byte filler) {
-		if (clear)
-			this.clear();
-
+	private void movea(int targetIndex, byte[] value, Byte filler) {
 		int position = ((this.getLength() / this.capacity()) * (targetIndex - 1));
-		NIOBufferHelper.movel(getBuffer(), position, getSize(), value, clear, filler);
+		if (filler != null)
+			NIOBufferHelper.movel(getBuffer(), position, getSize(), value, filler);
+		else
+			NIOBufferHelper.movel(getBuffer(), position, getSize(), value);
 	}
 
 	@Override
@@ -459,35 +494,65 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 				length = value.getLength();
 
 			byte[] bytes = NIOBufferHelper.read(arrayBuffer.getBuffer(), arrayBuffer.getPosition() + positionSource, length);
-			NIOBufferHelper.movel(getBuffer(), positionTarget, getSize(), bytes, clear, getFiller());
+
+			if (clear) {
+				switch (getModel().getBufferedElementType()) {
+				case DATETIME:
+					NIOBufferHelper.movel(getBuffer(), positionTarget, getSize(), bytes, NIODatetimeImpl.INIT);
+					break;
+				case NUMERIC:
+					NIOBufferHelper.movel(getBuffer(), positionTarget, getSize(), bytes, NIODecimalImpl.INIT);
+					break;
+				case STRING:
+					NIOBufferHelper.movel(getBuffer(), positionTarget, getSize(), bytes, NIODecimalImpl.INIT);
+					break;
+				}
+			} else
+				NIOBufferHelper.movel(getBuffer(), positionTarget, getSize(), bytes);
 		}
 	}
 
 	@Override
 	public void sorta() {
 
+		byte filler = 0;
+		switch (getModel().getBufferedElementType()) {
+		case DATETIME:
+			filler = NIODatetimeImpl.INIT;
+			break;
+		case NUMERIC:
+			filler = NIODecimalImpl.INIT;
+			break;
+		case STRING:
+			filler = NIOStringImpl.INIT;
+			break;
+		}
+
+		final byte fillerComparator = filler;
 		if (getListOwner() != null) {
 			List<byte[]> dataList = new ArrayList<byte[]>();
 
 			for (int e = 1; e <= capacity(); e++) {
 				dataList.add(getListOwner().get(e).asBytes());
 			}
-
+			
+			
+			
 			Collections.sort(dataList, new Comparator<byte[]>() {
+				
 				@Override
 				public int compare(byte[] param1, byte[] param2) {
 
 					byte[] b1 = Arrays.copyOfRange(param1, getPosition(), getPosition() + getModel().getLength());
 					byte[] b2 = Arrays.copyOfRange(param2, getPosition(), getPosition() + getModel().getLength());
 
-					switch (getSortDirection()) {
+					switch (getSortDirection()) { 
 					case ASCEND:
-						return NIOBufferHelper.compareBytes(b1, b2, getFiller());
+						return NIOBufferHelper.compareBytes(b1, b2, fillerComparator);
 					case DESCEND:
-						return NIOBufferHelper.compareBytes(b1, b2, getFiller()) * -1;
+						return NIOBufferHelper.compareBytes(b1, b2, fillerComparator) * -1;
 					}
-
-					return NIOBufferHelper.compareBytes(b1, b2, getFiller());
+					return -1;
 				}
 			});
 
@@ -510,12 +575,11 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 					switch (getSortDirection()) {
 					case ASCEND:
-						return NIOBufferHelper.compareBytes(param1, param2, getFiller());
+						return NIOBufferHelper.compareBytes(param1, param2, fillerComparator);
 					case DESCEND:
-						return NIOBufferHelper.compareBytes(param1, param2, getFiller()) * -1;
+						return NIOBufferHelper.compareBytes(param1, param2, fillerComparator) * -1;
 					}
-
-					return NIOBufferHelper.compareBytes(param1, param2, getFiller());
+					return-1;
 				}
 			});
 

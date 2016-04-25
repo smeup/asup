@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.nio.ByteBuffer;
 import java.util.Iterator;
 
 import org.smeup.sys.il.data.BufferedElementType;
@@ -30,14 +31,20 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	private int _lastIndex;
 
 	D _current = current();
-	
-	public NIOScrollerImpl(QDataContext dataContext) {
-		super(dataContext);
-	}
 
-	public NIOScrollerImpl(QDataContext dataContext, D model, int dimension) {
+	public NIOScrollerImpl(QDataContext dataContext, D model, int dimension, boolean allocate) {
 		super(dataContext, model);
 		_dimension = dimension;
+
+		if (allocate) {
+			checkAllocation();
+			_buffer = ByteBuffer.allocate(getSize());
+
+			for (D element : this)
+				element.clear();
+
+			absolute(1);
+		}
 	}
 
 	@Override
@@ -53,18 +60,9 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 			Iterator<D> datas = this.iterator();
 			while (datas.hasNext())
 				datas.next().accept(visitor);
-			
+
 			visitor.endVisit(this);
 		}
-	}
-
-	@Override
-	public NIOScrollerImpl<D> allocate() {
-		super.allocate();
-
-		absolute(1);
-		
-		return this;
 	}
 
 	@Override
@@ -98,23 +96,13 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	}
 
 	@Override
-	public boolean eq(byte value) {
-		return current().eq(value);
-	}
-
-	@Override
 	public boolean eq(DataSpecial value) {
 		return current().eq(value);
 	}
-	
+
 	@Override
 	public boolean eq(QDataFiller value) {
 		return current().eq(value);
-	}
-
-	@Override
-	public QBufferedData eval(byte value) {
-		return current().eval(value);
 	}
 
 	@Override
@@ -130,11 +118,6 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	@Override
 	public D first() {
 		return get(1);
-	}
-
-	@Override
-	public boolean ge(byte value) {
-		return current().ge(value);
 	}
 
 	@Override
@@ -154,13 +137,13 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 			return (D) getModel();
 
 		int position = 0;
-		
-		if(getListOwner() == null)
+
+		if (getListOwner() == null)
 			position = getModel().getSize() * (index - 1);
 		else
 			position = getListOwner().getModel().getLength() * (index - 1);
 
-		assign(getModel(), position+1);
+		assign(getModel(), position + 1);
 
 		_lastIndex = index;
 
@@ -170,11 +153,6 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	@Override
 	public BufferedElementType getBufferedElementType() {
 		return current().getBufferedElementType();
-	}
-
-	@Override
-	public boolean gt(byte value) {
-		return current().gt(value);
 	}
 
 	@Override
@@ -193,11 +171,6 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	}
 
 	@Override
-	public boolean le(byte value) {
-		return current().le(value);
-	}
-
-	@Override
 	public boolean le(DataSpecial value) {
 		return current().le(value);
 	}
@@ -205,11 +178,6 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	@Override
 	public boolean le(QDataFiller value) {
 		return current().le(value);
-	}
-
-	@Override
-	public boolean lt(byte value) {
-		return current().lt(value);
 	}
 
 	@Override
@@ -236,7 +204,7 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	public void move(Number value) {
 		current().move(value);
 	}
-	
+
 	@Override
 	public void move(Number value, boolean clear) {
 		current().move(value, clear);
@@ -320,11 +288,6 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	@Override
 	public void movel(String value, boolean clear) {
 		current().movel(value, clear);
-	}
-
-	@Override
-	public boolean ne(byte value) {
-		return current().ne(value);
 	}
 
 	@Override

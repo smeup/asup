@@ -33,8 +33,7 @@ public class NIODataContextImpl implements QDataContext {
 		found = dataFactory.createIndicator(true);
 		endOfData = dataFactory.createIndicator(true);
 
-		this.temporaryString = new NIOCharacterVaryingImpl(this, 64000);
-		this.temporaryString.allocate();
+		this.temporaryString = new NIOCharacterVaryingImpl(this, 64000, true);
 	}
 	
 	protected NIOCharacterVaryingImpl getTemporaryString() {
@@ -80,7 +79,7 @@ public class NIODataContextImpl implements QDataContext {
 	public void snap(QBufferedData data) {
 		
 		NIOBufferedDataImpl nioBufferedDataImpl = (NIOBufferedDataImpl)data;		
-		QBufferedData snapData = nioBufferedDataImpl.copy();
+		QBufferedData snapData = (QBufferedData) nioBufferedDataImpl.copy();
 		nioBufferedDataImpl.assign(snapData);
 		
 		snapshots.put(data, snapData);

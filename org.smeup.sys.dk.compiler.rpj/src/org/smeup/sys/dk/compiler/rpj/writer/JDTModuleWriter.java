@@ -61,7 +61,7 @@ public class JDTModuleWriter extends JDTCallableUnitWriter {
 		writeModuleAnnotation(module);
 
 		// unit info
-		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(module);
+		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(getCompilationUnit(), module);
 
 		writeSupportFields(callableUnitInfo);
 
@@ -94,7 +94,7 @@ public class JDTModuleWriter extends JDTCallableUnitWriter {
 		writeLabels(callableUnitInfo.getLabels().keySet(), false, true);
 
 		// routines
-		writeRoutines(module);
+		writeRoutines(module, callableUnitInfo);
 
 		// procedures
 		if (module.getFlowSection() != null)

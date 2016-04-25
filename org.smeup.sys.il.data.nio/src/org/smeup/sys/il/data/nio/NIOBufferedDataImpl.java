@@ -38,7 +38,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	public NIOBufferedDataImpl(QDataContext dataContext) {
 		super(dataContext);
 	}
-
+	
 	@Override
 	public final void assign(QBufferedData target) {
 		assign(target, 1);
@@ -49,17 +49,12 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		NIOBufferHelper.assign(this, target, position);
 	}
 
-	protected NIOBufferedDataImpl allocate() {
+	protected void checkAllocation() {
 
-		// TODO synchronize
 		if (_storage != null || _buffer != null)
 			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dmn8432m75n030");
 
 		_buffer = ByteBuffer.allocate(getSize());
-
-		NIOBufferHelper.fill(_buffer, 0, _buffer.capacity(), getFiller());
-		
-		return this;
 	}
 
 	protected final ByteBuffer getBuffer() {
@@ -112,53 +107,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		return _buffer != null;
 	}
 
-	protected abstract byte getFiller();
-
-	@Override
-	protected final NIOBufferedDataImpl copy() {
-
-		try {
-
-			NIOBufferedDataImpl copy = null;
-
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			ObjectOutputStream oos = new ObjectOutputStream(baos);
-
-			QStorable tempStorage = _storage;
-			ByteBuffer tempBuffer = _buffer;
-			int tempPosition = _position;
-			QDataContext tempDataContext = getDataContext();
-
-			_storage = null;
-			_buffer = null;
-			_position = 0;
-
-			_dataContext = null;
-
-			oos.writeObject(this);
-
-			_storage = tempStorage;
-			_buffer = tempBuffer;
-			_position = tempPosition;
-
-			_dataContext = tempDataContext;
-			baos.close();
-			oos.close();
-
-			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-			ObjectInputStream ois = new ObjectInputStream(bais);
-			copy = (NIOBufferedDataImpl) ois.readObject();
-			copy._dataContext = tempDataContext;
-			bais.close();
-			ois.close();
-
-			return copy;
-		} catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
 	private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
 
 		int length = stream.readInt();
@@ -208,5 +156,50 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			NIOBufferHelper.write(this, snapData);
 		else
 			clear();
+	}
+	
+	@Override
+	public final NIODataImpl copy() {
+
+		try {
+
+			NIODataImpl copy = null;
+
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ObjectOutputStream oos = new ObjectOutputStream(baos);
+
+			QStorable tempStorage = _storage;
+			ByteBuffer tempBuffer = _buffer;
+			int tempPosition = _position;
+			QDataContext tempDataContext = getDataContext();
+
+			_storage = null;
+			_buffer = null;
+			_position = 0;
+
+			_dataContext = null;
+
+			oos.writeObject(this);
+
+			_storage = tempStorage;
+			_buffer = tempBuffer;
+			_position = tempPosition;
+
+			_dataContext = tempDataContext;
+			baos.close();
+			oos.close();
+
+			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+			ObjectInputStream ois = new ObjectInputStream(bais);
+			copy = (NIODataImpl) ois.readObject();
+			copy._dataContext = tempDataContext;
+			bais.close();
+			ois.close();
+
+			return copy;
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

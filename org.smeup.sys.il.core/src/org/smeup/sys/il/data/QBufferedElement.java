@@ -49,22 +49,6 @@ public interface QBufferedElement extends QBufferedData, QMoveable {
 	 * @model
 	 * @generated
 	 */
-	boolean eq(byte value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QBufferedData eval(byte value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
 	QBufferedData eval(DataSpecial value);
 
 	/**
@@ -105,14 +89,6 @@ public interface QBufferedElement extends QBufferedData, QMoveable {
 	 * @model
 	 * @generated
 	 */
-	boolean ge(byte value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
 	boolean gt(DataSpecial value);
 
 	/**
@@ -122,14 +98,6 @@ public interface QBufferedElement extends QBufferedData, QMoveable {
 	 * @generated
 	 */
 	boolean gt(QDataFiller value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean gt(byte value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,14 +121,6 @@ public interface QBufferedElement extends QBufferedData, QMoveable {
 	 * @model
 	 * @generated
 	 */
-	boolean le(byte value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
 	boolean lt(DataSpecial value);
 
 	/**
@@ -177,14 +137,6 @@ public interface QBufferedElement extends QBufferedData, QMoveable {
 	 * @model
 	 * @generated
 	 */
-	boolean lt(byte value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
 	boolean ne(DataSpecial value);
 
 	/**
@@ -194,13 +146,5 @@ public interface QBufferedElement extends QBufferedData, QMoveable {
 	 * @generated
 	 */
 	boolean ne(QDataFiller value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean ne(byte value);
 
 } // QBufferedElement

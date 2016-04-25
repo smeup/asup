@@ -18,12 +18,13 @@ import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
+import org.smeup.sys.il.data.QNumeric;
 
 public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal {
 
 	private static final long serialVersionUID = 1L;
 
-	protected static final byte INIT = (byte) -16;
+	protected static final byte INIT = (byte) 0xF0;
 	protected static final byte LOVAL = (byte) -39;
 	protected static final byte HIVAL = (byte) -7;
 
@@ -37,11 +38,6 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 
 	protected NIODecimalDef getDecimalDef() {
 		return decimalDef;
-	}
-	
-	@Override
-	protected final byte getFiller() {
-		return INIT;
 	}
 
 	@Override
@@ -89,5 +85,17 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 		}
 
 		return bytes;
+	}
+	
+	@Override
+	public final QNumeric qUns() {
+
+		NIONumericImpl number = new NIODecimalPackedImpl(getDataContext(), getPrecision(), getScale(), true);
+		if (asShort() > 0)
+			number.eval(this);
+		else
+			number.eval(this.asDouble() * -1);
+
+		return number;
 	}
 }

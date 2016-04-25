@@ -75,7 +75,7 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 	}
 
 	@Override
-	public NIODataImpl copy() {
+	protected NIODataImpl copy() {
 
 		try {
 			NIOBufferedElementDelegatorImpl copy = null;
@@ -124,12 +124,6 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 
 	@Override
 	public QBufferedData eval(QDataFiller value) {
-		_delegate.eval(value);
-		return this;
-	}
-
-	@Override
-	public QBufferedData eval(byte value) {
 		_delegate.eval(value);
 		return this;
 	}
@@ -308,30 +302,6 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 
 	public QPointer qAddr() {
 		return _delegate.qAddr();
-	}
-
-	public boolean eq(byte value) {
-		return _delegate.eq(value);
-	}
-
-	public boolean ne(byte value) {
-		return _delegate.ne(value);
-	}
-
-	public boolean ge(byte value) {
-		return _delegate.ge(value);
-	}
-
-	public boolean gt(byte value) {
-		return _delegate.gt(value);
-	}
-
-	public boolean le(byte value) {
-		return _delegate.le(value);
-	}
-
-	public boolean lt(byte value) {
-		return _delegate.lt(value);
 	}
 
 	@Override

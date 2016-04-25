@@ -21,17 +21,16 @@ import java.util.List;
 
 import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.data.InitStrategy;
-import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QIndicator;
-import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Open;
 import org.smeup.sys.il.data.annotation.PostMain;
 import org.smeup.sys.il.data.annotation.PreMain;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.il.data.annotation.Snap;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
@@ -52,6 +51,7 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 	private InitStrategy initStrategy;
 
 	private Method _open = null;
+	private Method _snap = null;
 	private Method _entry = null;
 	private Method _main = null;
 	private Method _exit = null;
@@ -62,14 +62,14 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 	private boolean apiMode = false;
 
 	private QProgramInfo programInfo = null;
-	
+
 	protected BaseCallableProgramDelegator(QDataContext dataContext, QProgram program, QProgramStatus programStatus, P delegate, QProgramInfo programInfo) {
 		this.dataContext = dataContext;
 		this.program = program;
 		this.programStatus = programStatus;
 		this.delegate = delegate;
-		
-		this.programInfo = programInfo;		
+
+		this.programInfo = programInfo;
 		analyzeDelegate(delegate);
 	}
 
@@ -89,6 +89,8 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 				_entry = method;
 			} else if (method.isAnnotationPresent(Main.class)) {
 				_main = method;
+			} else if (method.isAnnotationPresent(Snap.class)) {
+				_snap = method;
 			} else if (method.isAnnotationPresent(PostMain.class)) {
 				_exit = method;
 			} else if (method.isAnnotationPresent(Entry.class)) {
@@ -109,7 +111,7 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 
 		// try API mode
 		if (entry == null) {
-			if(_main != null)
+			if (_main != null)
 				entry = buildEntry(_main);
 			apiMode = entry != null;
 		}
@@ -124,13 +126,13 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 				case BASE:
 				case LIGHT:
 					_open.invoke(delegate);
-					
+
 					break;
 				}
 			} catch (InvocationTargetException e) {
 				if (e.getTargetException() instanceof OperatingSystemMessageException)
 					throw (OperatingSystemMessageException) e.getTargetException();
-				
+
 				if (e.getTargetException() instanceof OperatingSystemRuntimeException)
 					throw (OperatingSystemRuntimeException) e.getTargetException();
 
@@ -169,19 +171,29 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 		}
 
 		// take a snapshot
-		for(Field field: delegate.getClass().getDeclaredFields()) {
-			DataDef dataDef = field.getAnnotation(DataDef.class);
-			if(dataDef == null || !dataDef.snapshot())
-				continue;
-			
+		if (_snap != null) {
 			try {
-				((QBufferedData)field.get(delegate)).snap();
-			} catch (IllegalArgumentException | IllegalAccessException e) {
+				switch (initStrategy) {
+				case BASE:
+				case LIGHT:
+					_open.invoke(delegate);
+
+					break;
+				}
+			} catch (InvocationTargetException e) {
+				if (e.getTargetException() instanceof OperatingSystemMessageException)
+					throw (OperatingSystemMessageException) e.getTargetException();
+
+				if (e.getTargetException() instanceof OperatingSystemRuntimeException)
+					throw (OperatingSystemRuntimeException) e.getTargetException();
+
+				throw new OperatingSystemRuntimeException(e.getTargetException());
+			} catch (Exception e) {
 				throw new OperatingSystemRuntimeException(e);
 			}
 		}
 
-		// 
+		//
 		try {
 			Field qrpjField = delegate.getClass().getDeclaredField("qRPJ");
 			qrpjField.setAccessible(true);

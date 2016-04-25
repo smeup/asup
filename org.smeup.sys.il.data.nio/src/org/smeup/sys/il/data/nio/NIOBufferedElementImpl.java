@@ -85,11 +85,6 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	}
 
 	@Override
-	public final boolean eq(byte value) {
-		return NIOBufferHelper.compareBytes(this, new byte[] { value }) == 0;
-	}
-
-	@Override
 	public final boolean eq(DataSpecial special) {
 		return NIOBufferHelper.compareBytes(this, special) == 0;
 	}
@@ -100,20 +95,9 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	}
 
 	@Override
-	public final QBufferedData eval(byte value) {
-		_write(new byte[] { value });
-		return this;
-	}
-
-	@Override
 	public final QBufferedData eval(QDataFiller value) {
 		_fill(value.get().asBytes(), true);
 		return this;
-	}
-
-	@Override
-	public final boolean ge(byte value) {
-		return NIOBufferHelper.compareBytes(this, new byte[] { value }) >= 0;
 	}
 
 	@Override
@@ -127,11 +111,6 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	}
 
 	@Override
-	public final boolean gt(byte value) {
-		return NIOBufferHelper.compareBytes(this, new byte[] { value }) > 0;
-	}
-
-	@Override
 	public final boolean gt(DataSpecial special) {
 		return NIOBufferHelper.compareBytes(this, special) > 0;
 	}
@@ -142,11 +121,6 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	}
 
 	@Override
-	public final boolean le(byte value) {
-		return NIOBufferHelper.compareBytes(this, new byte[] { value }) <= 0;
-	}
-
-	@Override
 	public final boolean le(DataSpecial special) {
 		return NIOBufferHelper.compareBytes(this, special) <= 0;
 	}
@@ -154,11 +128,6 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	@Override
 	public final boolean le(QDataFiller value) {
 		return NIOBufferHelper.compareBytes(this, value) <= 0;
-	}
-
-	@Override
-	public final boolean lt(byte value) {
-		return NIOBufferHelper.compareBytes(this, new byte[] { value }) < 0;
 	}
 
 	@Override
@@ -294,11 +263,6 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	}
 
 	@Override
-	public final boolean ne(byte value) {
-		return !eq(value);
-	}
-
-	@Override
 	public final boolean ne(DataSpecial value) {
 		return !eq(value);
 	}
@@ -307,7 +271,7 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	public final boolean ne(QDataFiller value) {
 		return !eq(value);
 	}
-	
+
 	@Override
 	public BufferedDataType getBufferedDataType() {
 		return BufferedDataType.ELEMENT;

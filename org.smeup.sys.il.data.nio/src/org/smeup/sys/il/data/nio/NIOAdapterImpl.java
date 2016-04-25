@@ -67,8 +67,7 @@ public class NIOAdapterImpl extends NIOBufferedElementDelegatorImpl implements Q
 				int stringLength = string.length();
 				if (stringLength == 0)
 					stringLength = 32;
-				NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), stringLength);
-				character.allocate();
+				NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), stringLength, true);
 				character.eval(string);
 
 				setDelegate(character);

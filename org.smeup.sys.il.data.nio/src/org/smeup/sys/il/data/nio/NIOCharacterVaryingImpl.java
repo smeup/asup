@@ -22,20 +22,16 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 
 	private static final long serialVersionUID = 1L;
 
-	public NIOCharacterVaryingImpl(QDataContext dataContext, int size) {
-		super(dataContext, size);
+	public NIOCharacterVaryingImpl(QDataContext dataContext, int length, boolean allocate) {
+		super(dataContext, length, false);
+		
+		if(allocate) {
+			checkAllocation();
+			_buffer = ByteBuffer.allocate(getSize());
+		}
 	}
 
-	@Override
-	protected NIOBufferedDataImpl allocate() {
-		super.allocate();
-
-		setLength((short) 0);
-
-		return this;
-	}
-
-	protected void setLength(short length) {
+	private void setLength(short length) {
 
 		ByteBuffer buffer = getBuffer();
 		NIOBufferHelper.prepare(buffer, getPosition(), 2);
@@ -94,54 +90,53 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 
 		if (space != null)
 			for (int i = 0; i < space.intValue() && buffer.hasRemaining(); i++)
-				buffer.put(getFiller());
-
+				buffer.put(INIT);
 
 		if (buffer.remaining() > factor2.length) {
 			buffer.put(factor2);
 
 			if (clear)
 				while (buffer.hasRemaining())
-					buffer.put(getFiller());
-		}
-		else
+					buffer.put(INIT);
+		} else
 			buffer.put(factor2, 0, buffer.remaining());
 	}
 
 	@Override
 	protected void _clear() {
 
-		ByteBuffer buffer = getBuffer();
-		NIOBufferHelper.prepare(buffer, getPosition(), 2);
-		buffer.putShort((short) 0);
-
-		NIOBufferHelper.clear(getBuffer(), getPosition() + 2, _length, getFiller());
+		setLength((short) 0);
+		// NIOBufferHelper.fill(getBuffer(), getPosition()+2, _length, INIT);
 	}
 
 	@Override
 	protected void _write(byte[] value) {
 
-		ByteBuffer buffer = getBuffer();
-		NIOBufferHelper.prepare(buffer, getPosition(), 2);
 		if (value.length > _length)
-			buffer.putShort((short) _length);
+			setLength((short) _length);
 		else
-			buffer.putShort((short) value.length);
+			setLength((short) value.length);
 
 		if (value.length > _length)
-			NIOBufferHelper.movel(getBuffer(), getPosition() + 2, _length, value, true, getFiller());
+			NIOBufferHelper.movel(getBuffer(), getPosition() + 2, _length, value);
 		else
-			NIOBufferHelper.movel(getBuffer(), getPosition() + 2, value.length, value, true, getFiller());
+			NIOBufferHelper.movel(getBuffer(), getPosition() + 2, value.length, value);
 	}
 
 	@Override
 	protected void _move(byte[] value, boolean clear) {
-		NIOBufferHelper.move(getBuffer(), getPosition() + 2, getLength(), value, clear, getFiller());
+		if (clear)
+			NIOBufferHelper.move(getBuffer(), getPosition() + 2, getLength(), value, INIT);
+		else
+			NIOBufferHelper.move(getBuffer(), getPosition() + 2, getLength(), value);
 	}
 
 	@Override
 	protected void _movel(byte[] value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition() + 2, getLength(), value, clear, getFiller());
+		if (clear)
+			NIOBufferHelper.movel(getBuffer(), getPosition() + 2, getLength(), value, INIT);
+		else
+			NIOBufferHelper.movel(getBuffer(), getPosition() + 2, getLength(), value);
 	}
 
 	@Override

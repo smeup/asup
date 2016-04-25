@@ -12,6 +12,7 @@
 package org.smeup.sys.il.data.nio;
 
 import java.math.BigDecimal;
+import java.nio.ByteBuffer;
 import java.text.NumberFormat;
 
 import org.smeup.sys.il.data.QDataContext;
@@ -19,8 +20,15 @@ import org.smeup.sys.il.data.QDataContext;
 public class NIODecimalZonedImpl extends NIODecimalImpl {
 	private static final long serialVersionUID = 1L;
 
-	public NIODecimalZonedImpl(QDataContext dataContext, int precision, int scale) {
+	public NIODecimalZonedImpl(QDataContext dataContext, int precision, int scale, boolean allocate) {
 		super(dataContext, precision, scale);
+		
+		if(allocate) {
+			checkAllocation();		
+			_buffer = ByteBuffer.allocate(getSize());
+			_buffer.position(_buffer.capacity()-1);
+			_buffer.put((byte)0xF0);
+		}
 	}
 
 	@Override
@@ -62,8 +70,6 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 			}
 			
 			if(bd == null || bd.precision() > getPrecision()) {
-				if(bd != null)
-					"".toCharArray();
 				NumberFormat nf = getDecimalDef().getFormatUP();
 				bd = new BigDecimal(nf.format(number));					
 			}
@@ -91,7 +97,7 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 				e.toString();
 			}
 		}
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, INIT);
 	}
 
 	@Override
@@ -106,17 +112,23 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 
 	@Override
 	protected void _move(byte[] value, boolean clear) {
-		NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value, clear, getFiller());
+		if(clear)
+			NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value, INIT);
+		else
+			NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value);
 	}
 
 	@Override
 	protected void _movel(byte[] value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value, clear, getFiller());
+		if(clear)
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value, INIT);
+		else
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value);
 	}
 
 	@Override
 	protected void _write(byte[] value) {
-		NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value, true, getFiller());
+		NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value, INIT);
 	}
 
 	@Override

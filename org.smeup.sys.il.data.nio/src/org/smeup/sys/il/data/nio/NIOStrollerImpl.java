@@ -33,12 +33,8 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 
 	private static final long serialVersionUID = 1L;
 
-	public NIOStrollerImpl(QDataContext dataContext) {
-		super(dataContext);
-	}
-
-	public NIOStrollerImpl(QDataContext dataContext, D model, int dimension) {
-		super(dataContext, model, dimension);
+	public NIOStrollerImpl(QDataContext dataContext, D model, int dimension, boolean allocate) {
+		super(dataContext, model, dimension, allocate);
 	}
 
 	@Override
@@ -1061,4 +1057,38 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 		current().reset();
 	}
 
+	@Override
+	public boolean eq(byte value) {
+		return current().eq(value);
+	}
+
+	@Override
+	public QBufferedData eval(byte value) {
+		return current().eval(value);
+	}
+
+	@Override
+	public boolean ge(byte value) {
+		return current().ge(value);
+	}
+
+	@Override
+	public boolean gt(byte value) {
+		return current().gt(value);
+	}
+
+	@Override
+	public boolean le(byte value) {
+		return current().le(value);
+	}
+
+	@Override
+	public boolean lt(byte value) {
+		return current().lt(value);
+	}
+
+	@Override
+	public boolean ne(byte value) {
+		return current().ne(value);
+	}
 }

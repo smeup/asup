@@ -20,12 +20,8 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 
 	private static final long serialVersionUID = 1L;
 
-	public NIOAbstractDataStruct(QDataContext dataContext) {
-		super(dataContext);
-	}
-
 	public NIOAbstractDataStruct(QDataContext dataContext, int length) {
-		super(dataContext, length);
+		super(dataContext, length, false);
 	}
 
 	protected abstract void addElement(String name, QBufferedData element, int position);

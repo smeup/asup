@@ -12,34 +12,39 @@
  */
 package org.smeup.sys.dk.compiler.rpj;
 
+import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.il.flow.QCallableUnit;
 import org.smeup.sys.il.flow.QCommandExec;
 import org.smeup.sys.il.flow.QJump;
 import org.smeup.sys.il.flow.QLabel;
 import org.smeup.sys.il.flow.QMethodExec;
 import org.smeup.sys.il.flow.QProcedure;
+import org.smeup.sys.il.flow.QReset;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.il.flow.impl.StatementVisitorImpl;
 
 public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 
-	private RPJCallableUnitInfo programInfo;
+	private QCompilationUnit compilationUnit;
+	private RPJCallableUnitInfo programInfo;	
 
-	private RPJCallableUnitAnalyzer(RPJCallableUnitInfo programInfo) {
+	private RPJCallableUnitAnalyzer(QCompilationUnit compilationUnit, RPJCallableUnitInfo programInfo) {
+		this.compilationUnit = compilationUnit;
 		this.programInfo = programInfo;
 	}
 
-	public static RPJCallableUnitInfo analyzeCallableUnit(QCallableUnit callableUnit) {
+	public static RPJCallableUnitInfo analyzeCallableUnit(QCompilationUnit compilationUnit, QCallableUnit callableUnit) {
 
 		RPJCallableUnitInfo callableUnitInfo = new RPJCallableUnitInfo();
-
+		
+		
 		if(callableUnit.getFileSection() != null) {
 			if(callableUnit.getFileSection().getPrinters().size() >0 )
 				callableUnitInfo.containsPRTStatement(true);
 		}
 		
 		// analyze statement
-		RPJCallableUnitAnalyzer callableUnitAnalyzer = new RPJCallableUnitAnalyzer(callableUnitInfo);
+		RPJCallableUnitAnalyzer callableUnitAnalyzer = new RPJCallableUnitAnalyzer(compilationUnit, callableUnitInfo);
 
 		// main
 		if (callableUnit.getMain() != null)
@@ -54,7 +59,7 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 		// procedures
 		if (callableUnit.getFlowSection() != null)
 			for (QProcedure procedure : callableUnit.getFlowSection().getProcedures()) {
-				RPJCallableUnitInfo procedureUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(procedure);
+				RPJCallableUnitInfo procedureUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(compilationUnit, procedure);
 
 				// split procedure information to callableUnit parent
 				if (procedureUnitInfo.containsCMDStatement())
@@ -65,6 +70,7 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 					callableUnitInfo.containsInsignificantZeros(true);
 
 				callableUnitInfo.getLabels().putAll(procedureUnitInfo.getLabels());
+				callableUnitInfo.getResetObjects().addAll(procedureUnitInfo.getResetObjects());
 			}
 
 		if (callableUnit.getFileSection() != null && !callableUnit.getFileSection().getStatements().isEmpty())
@@ -118,8 +124,16 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 			}
 		}
 		else if (statement.getMethod().equals("reset")) {
-			programInfo.containsRSTStatement(true);
+			programInfo.getResetObjects().add(compilationUnit.normalizeTermName(statement.getObject()));
 		}
+		
+		return super.visit(statement);
+	}
+
+	@Override
+	public boolean visit(QReset statement) {
+
+		programInfo.getResetObjects().add(compilationUnit.normalizeTermName(statement.getObject()));
 		
 		return super.visit(statement);
 	}

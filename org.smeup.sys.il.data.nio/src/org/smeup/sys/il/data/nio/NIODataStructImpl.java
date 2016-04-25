@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -18,6 +19,9 @@ import java.util.Map;
 
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataFactory;
+import org.smeup.sys.il.data.def.QBufferedDataDef;
+import org.smeup.sys.il.data.term.QDataTerm;
 
 public class NIODataStructImpl extends NIOAbstractDataStruct {
 
@@ -26,15 +30,28 @@ public class NIODataStructImpl extends NIOAbstractDataStruct {
 	private Map<String, QBufferedData> _elements;
 	private boolean _dynamicLength;
 
-	public NIODataStructImpl(QDataContext dataContext) {
-		super(dataContext);
-	}
-
-	public NIODataStructImpl(QDataContext dataContext, int length) {
+	public NIODataStructImpl(QDataContext dataContext, int length, List<QDataTerm<QBufferedDataDef<?>>> dataTerms, boolean allocate) {
 		super(dataContext, length);
 
 		this._elements = new LinkedHashMap<String, QBufferedData>();
 		this._dynamicLength = (length == 0 ? true : false);
+		
+		QDataFactory dataFactory = getDataContext().getDataFactory();
+		
+		NIODataStructBuilder dataStructBuilder = new NIODataStructBuilder(dataFactory, this);
+
+		for (QDataTerm<?> dataTerm : dataTerms) {
+			QBufferedData dataElement = (QBufferedData) dataFactory.createData(dataTerm, false);
+			dataStructBuilder.addElement(dataTerm, dataElement);
+		}
+
+		
+		if(allocate) {
+			checkAllocation();
+			
+			_buffer = ByteBuffer.allocate(getSize());			
+			NIOBufferHelper.fill(_buffer, 0, _buffer.capacity(), INIT);			
+		}
 	}
 
 	@Override

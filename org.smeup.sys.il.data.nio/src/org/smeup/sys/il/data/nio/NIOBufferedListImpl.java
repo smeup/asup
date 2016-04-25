@@ -11,19 +11,17 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.math.BigDecimal;
 import java.util.Iterator;
 
 import org.smeup.sys.il.data.BufferedDataType;
+import org.smeup.sys.il.data.BufferedElementType;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFiller;
-import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDecimal;
-import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
@@ -33,16 +31,11 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	private static final long serialVersionUID = 1L;
 	private NIOBufferedListImpl<?> listOwner;
-	private QDataWriter dataWriter;
+
 	private D _model;
 
-	public NIOBufferedListImpl(QDataContext dataContext) {
-		super(dataContext);
-		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
-	}
-
 	public NIOBufferedListImpl(QDataContext dataContext, D model) {
-		this(dataContext);
+		super(dataContext);
 		this._model = model;
 	}
 
@@ -80,10 +73,20 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 		int capacity = capacity();
 		if (value.capacity() < capacity)
 			capacity = value.capacity();
-
+		
+		BufferedElementType bufferedElementType = getModel().getBufferedElementType();
 		for (int e = 1; e <= capacity; e++) {
-			dataWriter.set(value.get(e));
-			get(e).accept(dataWriter);
+			switch (bufferedElementType) {
+			case DATETIME:
+				get(e).movel(value.get(e), true);
+				break;
+			case NUMERIC:
+				get(e).move(value.get(e), true);
+				break;
+			case STRING:
+				get(e).movel(value.get(e), true);
+				break;
+			}
 		}
 
 		for (int e = capacity + 1; e <= capacity(); e++)
@@ -135,16 +138,13 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 		
 		switch (getModel().getBufferedElementType()) {
 		case DATETIME:
-			for (D element : this)
-				element.movel(value, true);
+			movel(value, true);
 			break;
 		case NUMERIC:
-			for (D element : this)
-				((QNumeric) element).eval(new BigDecimal(value), true);
+			move(value, true);
 			break;
 		case STRING:
-			for (D element : this)
-				((QString) element).eval(value);
+			movel(value, true);
 			break;
 		}
 	}
@@ -152,11 +152,6 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	@Override
 	public final D get(QNumeric index) {
 		return get(index.asInteger());
-	}
-
-	@Override
-	protected final byte getFiller() {
-		return ((NIOBufferedDataImpl) getModel()).getFiller();
 	}
 
 	@Override
@@ -180,20 +175,9 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	@Override
 	public final boolean isEmpty() {
 
-		byte[] emptyElement = null;
 		for (D element : this) {
-
-			if (emptyElement != null) {
-				if (NIOBufferHelper.compareBytes(element, emptyElement) == 0)
-					continue;
-				else
-					return false;
-			}
-
-			if (!element.isEmpty())
-				return false;
-
-			emptyElement = element.asBytes();
+			if (!element.isEmpty()) 
+				return false; 
 		}
 
 		return true;

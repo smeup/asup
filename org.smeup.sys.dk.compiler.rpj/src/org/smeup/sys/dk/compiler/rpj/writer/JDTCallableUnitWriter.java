@@ -60,6 +60,7 @@ import org.smeup.sys.dk.compiler.QCompilerLinker;
 import org.smeup.sys.dk.compiler.QCompilerManager;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.compiler.UnitScope;
+import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.dk.core.annotation.Unsupported;
@@ -72,6 +73,7 @@ import org.smeup.sys.il.data.annotation.Open;
 import org.smeup.sys.il.data.annotation.Optional;
 import org.smeup.sys.il.data.annotation.PostMain;
 import org.smeup.sys.il.data.annotation.PreMain;
+import org.smeup.sys.il.data.annotation.Snap;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QRemap;
 import org.smeup.sys.il.esam.QDataSet;
@@ -95,6 +97,7 @@ import org.smeup.sys.il.flow.QDataSection;
 import org.smeup.sys.il.flow.QEntry;
 import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
+import org.smeup.sys.il.flow.QMethodExec;
 import org.smeup.sys.il.flow.QModule;
 import org.smeup.sys.il.flow.QParameterList;
 import org.smeup.sys.il.flow.QProcedure;
@@ -490,7 +493,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		}
 	}
 
-	public void writeRoutines(QCallableUnit callableUnit) {
+	public void writeRoutines(QCallableUnit callableUnit, RPJCallableUnitInfo callableUnitInfo) {
 
 		// special routines
 		if (callableUnit.getFlowSection() != null)
@@ -507,14 +510,36 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			routine.setMain(callableUnit.getMain());
 			writeRoutine(routine);
 		}
+		
+		// snap
+		if(!callableUnitInfo.getResetObjects().isEmpty())
+			writeSnapRoutine(callableUnit, callableUnitInfo);
 
-		// program routines
+		// routines
 		if (callableUnit.getFlowSection() != null)
 			for (QRoutine routine : callableUnit.getFlowSection().getRoutines()) {
 				if (routine.getName().startsWith("*"))
 					continue;
 				writeRoutine(routine);
 			}
+	}
+
+	public void writeSnapRoutine(QCallableUnit callableUnit, RPJCallableUnitInfo callableUnitInfo) {
+
+		QRoutine routine = QIntegratedLanguageFlowFactory.eINSTANCE.createRoutine();
+		routine.setName("*SNAP");
+		routine.setMain(callableUnit.getMain());
+		
+		QBlock block  = QIntegratedLanguageFlowFactory.eINSTANCE.createBlock();
+		routine.setMain(block);
+		for(String object: callableUnitInfo.getResetObjects()) {
+			QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+			methodExec.setObject(object);
+			methodExec.setMethod("snap");
+			block.getStatements().add(methodExec);
+		}
+		
+		writeRoutine(routine);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -540,6 +565,12 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			MarkerAnnotation mainAnnotation = getAST().newMarkerAnnotation();
 			mainAnnotation.setTypeName(getAST().newSimpleName(Main.class.getSimpleName()));
 			writeImport(Main.class);
+			methodDeclaration.modifiers().add(mainAnnotation);
+		} else if (routine.getName().equals("*SNAP")) {
+			routineName = "_snap";
+			MarkerAnnotation mainAnnotation = getAST().newMarkerAnnotation();
+			mainAnnotation.setTypeName(getAST().newSimpleName(Snap.class.getSimpleName()));
+			writeImport(Snap.class);
 			methodDeclaration.modifiers().add(mainAnnotation);
 		} else if (routine.getName().equals("*EXIT")) {
 			routineName = "_exit";

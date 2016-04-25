@@ -1,12 +1,25 @@
+/**
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
+ */
 package org.smeup.sys.il.data.nio;
 
 import java.util.Arrays;
+import java.util.BitSet;
 
 import org.smeup.sys.il.data.BufferedElementType;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContext;
@@ -343,11 +356,6 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	}
 
 	@Override
-	protected byte getFiller() {
-		return NIOStringImpl.INIT;
-	}
-
-	@Override
 	public final boolean gt(QString value) {
 		return NIOBufferHelper.compareBytes(this, _toBytes(value)) > 0;
 	}
@@ -359,11 +367,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	public boolean isEmpty() {
-
-		for (byte b : asBytes())
-			if (b != getFiller())
-				return false;
-		return true;
+		return eq(DataSpecial.BLANKS);
 	}
 
 	@Override
@@ -389,7 +393,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	public final boolean lt(String value) {
-		return NIOBufferHelper.compareBytes(this, value.getBytes(getDataContext().getCharset())) < 0;
+		return NIOBufferHelper.compareBytes(this, _toBytes(value)) < 0;
 	}
 
 	@Override
@@ -492,7 +496,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 			length = getLength() - start.intValue() + 1;
 
 		// TODO cache ?
-		QCharacter character = new NIOCharacterImpl(getDataContext(), length.intValue());
+		QCharacter character = new NIOCharacterImpl(getDataContext(), length.intValue(), false);
 		if (isVarying())
 			this.assign(character, start.intValue() + 2);
 		else
@@ -526,9 +530,8 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 		// TODO cache?
 		byte[] bytes = NIOBufferHelper.trim(this);
-		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length);
-		character.allocate();
-		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes, false, getFiller());
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length, true);
+		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes);
 
 		return character;
 	}
@@ -538,9 +541,8 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 		// TODO replace me
 		byte[] bytes = NIOBufferHelper.trim(this);
-		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length);
-		character.allocate();
-		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes, false, getFiller());
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length, true);
+		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes);
 
 		return character;
 	}
@@ -550,9 +552,8 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 		// TODO replace me
 		byte[] bytes = NIOBufferHelper.trim(this);
-		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length);
-		character.allocate();
-		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes, false, getFiller());
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length, true);
+		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes);
 
 		return character;
 	}
@@ -562,9 +563,8 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 		// TODO cache?
 		byte[] bytes = NIOBufferHelper.trimL(this);
-		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length);
-		character.allocate();
-		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes, false, getFiller());
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length, true);
+		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes);
 
 		return character;
 	}
@@ -574,9 +574,8 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 		// TODO cache?
 		byte[] bytes = NIOBufferHelper.trimR(this);
-		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length);
-		character.allocate();
-		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes, false, getFiller());
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), bytes.length, true);
+		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes);
 
 		return character;
 	}
@@ -642,5 +641,165 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	@Override
 	public final String trimR() {
 		return new String(NIOBufferHelper.trimR(this), getDataContext().getCharset());
+	}
+
+	@Override
+	public final QBufferedData eval(byte value) {
+		_write(new byte[] { value });
+		return this;
+	}
+
+	@Override
+	public final boolean eq(byte value) {
+		return NIOBufferHelper.compareBytes(this, new byte[] { value }) == 0;
+	}
+
+	@Override
+	public final boolean ge(byte value) {
+		return NIOBufferHelper.compareBytes(this, new byte[] { value }) >= 0;
+	}
+
+	@Override
+	public final boolean gt(byte value) {
+		return NIOBufferHelper.compareBytes(this, new byte[] { value }) > 0;
+	}
+
+	@Override
+	public final boolean le(byte value) {
+		return NIOBufferHelper.compareBytes(this, new byte[] { value }) <= 0;
+	}
+
+	@Override
+	public final boolean lt(byte value) {
+		return NIOBufferHelper.compareBytes(this, new byte[] { value }) < 0;
+	}
+
+	@Override
+	public final boolean ne(byte value) {
+		return !eq(value);
+	}
+
+	@Override
+	public void bitoff(byte value) {
+
+		bitoff(formatBitMask(value));
+	}
+
+	@Override
+	public void bitoff(String bitMask) {
+
+		BitSet bitSet = BitSet.valueOf(asBytes());
+		for (char c : bitMask.toCharArray()) {
+			int i = Integer.parseInt(""+c);
+			bitSet.set(7-i, false);
+		}
+
+		byte[] bytes = bitSet.toByteArray();
+		if (bytes.length == 0)
+			bytes = new byte[] { (byte) 0x00 };
+
+		_write(bytes);
+	}
+
+	@Override
+	public void biton(byte value) {
+		biton(formatBitMask(value));
+	}
+
+	@Override
+	public void biton(String bitMask) {
+
+		BitSet bitSet = BitSet.valueOf(asBytes());
+		for (char c : bitMask.toCharArray()) {
+			int i = Integer.parseInt(""+c);
+			bitSet.set(7-i, true);
+		}
+
+		byte[] bytes = bitSet.toByteArray();
+		if (bytes.length == 0)
+			bytes = new byte[] { (byte) 0x00 };
+
+		_write(bytes);
+	}
+
+	@Override
+	public void testb(byte value, QIndicator off) {
+		testb(formatBitMask(value), off, null, null);
+	}
+
+	@Override
+	public void testb(String bitMask, QIndicator off) {
+		testb(bitMask, off, null, null);
+	}
+
+	@Override
+	public void testb(QString bitMask, QIndicator off) {
+		testb(bitMask.asString(), off, null, null);
+	}
+
+	@Override
+	public void testb(byte value, QIndicator off, QIndicator on) {
+		testb(formatBitMask(value), off, on, null);
+	}
+
+	@Override
+	public void testb(String bitMask, QIndicator off, QIndicator on) {
+		testb(bitMask, off, on, null);
+	}
+
+	@Override
+	public void testb(QString bitMask, QIndicator off, QIndicator on) {
+		testb(bitMask.asString(), off, on, null);
+	}
+
+	@Override
+	public void testb(byte value, QIndicator off, QIndicator on, QIndicator equal) {
+		testb(formatBitMask(value), off, on, equal);
+	}
+
+	@Override
+	public void testb(QString bitMask, QIndicator off, QIndicator on, QIndicator equal) {
+		testb(bitMask.asString(), off, on, equal);
+	}
+
+	@Override
+	public void testb(String bitMask, QIndicator off, QIndicator on, QIndicator equal) {
+
+		boolean rOff = true;
+		boolean rEqual = true;
+		
+		BitSet bitSet = BitSet.valueOf(asBytes());
+		for (char c : bitMask.toCharArray()) {
+			int i = Integer.parseInt(""+c);
+			if (rOff && bitSet.get(7-i))
+				rOff = false;
+			if (rEqual && !bitSet.get(7-i))
+				rEqual = false;
+		}
+		
+		if (off != null)
+			off.eval(rOff);
+		
+		if (equal != null) {
+			if(equal != off)
+				equal.eval(rEqual);
+		}
+		
+		if (on != null)
+			on.eval(rOff || rEqual);
+
+	}
+
+	private String formatBitMask(byte value) {
+
+		String binaryString = Integer.toBinaryString(value);
+		StringBuffer bitMask = new StringBuffer(8);
+
+		for (int i = 24; i < 32; i++) {
+			if (binaryString.charAt(i) == '1')
+				bitMask.append(i - 24);
+		}
+
+		return bitMask.toString();
 	}
 }

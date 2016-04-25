@@ -408,6 +408,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				writeAnnotation(node, DataDef.class, "order", arrayDef.getOrder());
 			}
 
+			writeImport(arrayDef.getArgument().getDataClass());
 			writeDataDefAnnotation(node, arrayDef.getArgument());
 		} else if (QScrollerDef.class.isAssignableFrom(klassDef)) {
 			QScrollerDef<?> scrollerDef = (QScrollerDef<?>) dataDef;
@@ -415,10 +416,12 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			if (scrollerDef.getDimension() != 0)
 				writeAnnotation(node, DataDef.class, "dimension", scrollerDef.getDimension());
 
+			writeImport(scrollerDef.getArgument().getDataClass());
 			writeDataDefAnnotation(node, scrollerDef.getArgument());
 		} else if (QDataAreaDef.class.isAssignableFrom(klassDef)) {
 			QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataDef;
 
+			writeImport(dataAreaDef.getArgument().getDataClass());
 			writeDataDefAnnotation(node, dataAreaDef.getArgument());
 
 		} else if (QStrollerDef.class.isAssignableFrom(klassDef)) {

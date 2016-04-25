@@ -95,7 +95,7 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 		writeProgramAnnotation(program);
 
 		// unit info
-		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(program);
+		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(getCompilationUnit(), program);
 		if(callableUnitInfo.containsInsignificantZeros())
 			System.err.println("Unsignificant zeros");
 
@@ -165,6 +165,10 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 
 			statementWriter.getBlocks().pop();
 		}
+		
+		// snap
+		if(!callableUnitInfo.getResetObjects().isEmpty())
+			writeSnapRoutine(program, callableUnitInfo);
 
 		// routines
 		if (program.getFlowSection() != null)

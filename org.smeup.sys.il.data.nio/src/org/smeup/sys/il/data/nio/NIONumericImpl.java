@@ -33,7 +33,6 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	private static final long serialVersionUID = 1L;
 
-	
 	public NIONumericImpl(QDataContext dataContext) {
 		super(dataContext);
 	}
@@ -510,11 +509,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	@Override
 	public final boolean isEmpty() {
 
-		for (byte b : asBytes())
-			if (b != getFiller())
-				return false;
-		
-		return true;
+		return eq(0);
 	}
 
 	@Override
@@ -746,20 +741,6 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	private QNumeric qRemOperation(Number value) {
 		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 		number.eval(asDouble() % value.doubleValue());
-		return number;
-	}
-	
-	@Override
-	public final QNumeric qUns() {
-
-		NIONumericImpl number = (NIONumericImpl) copy();
-		number.allocate();
-
-		if (asShort() > 0)
-			number.eval(this);
-		else
-			number.eval(this.asDouble() * -1);
-
 		return number;
 	}
 

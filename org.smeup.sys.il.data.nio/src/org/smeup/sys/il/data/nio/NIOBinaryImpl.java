@@ -20,34 +20,35 @@ import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
+import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.def.BinaryType;
 
 public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 	private static final long serialVersionUID = 1L;
 	private static byte INIT = (byte) 0;
-	protected static final byte LOVAL = (byte) 0;
-	protected static final byte HIVAL = (byte) 128;
+	private static final byte LOVAL = (byte) 0;
+	private static final byte HIVAL = (byte) 128;
 
 	private BinaryType _type;
 	private boolean _unsigned;
 	private NIODecimalDef decimalType = null;
 	
-	public NIOBinaryImpl(QDataContext dataContext, BinaryType type, boolean unsigned) {
+	public NIOBinaryImpl(QDataContext dataContext, BinaryType type, boolean unsigned, boolean allocate) {
 		super(dataContext);
 		this._type = type;
 		this._unsigned = unsigned;
 		
 		this.decimalType = NIODecimalDef.getInstance(getLength(), 0);
+		
+		if(allocate) {
+			checkAllocation();		
+			_buffer = ByteBuffer.allocate(getSize());
+		} 
 	}
 
 	protected NIODecimalDef getDecimalType() {
 		return decimalType;
-	}
-	
-	@Override
-	protected byte getFiller() {
-		return INIT;
 	}
 
 	@Override
@@ -203,5 +204,17 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 		}
 
 		return bytes;
+	}
+	
+	@Override
+	public final QNumeric qUns() {
+
+		NIOBinaryImpl number = new NIOBinaryImpl(getDataContext(), _type, isSigned(), true);
+		if (asShort() > 0)
+			number.eval(this);
+		else
+			number.eval(this.asDouble() * -1);
+
+		return number;
 	}
 }

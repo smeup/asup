@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.nio.ByteBuffer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -37,19 +38,15 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 
 	private static final long serialVersionUID = 1L;
 	protected static final byte INIT = (byte) 64;
-	private static final GregorianCalendar CLEAR = new GregorianCalendar(0001,00,01);
-	private static final GregorianCalendar LOVAL = new GregorianCalendar(2039,11,31);
-	private static final GregorianCalendar HIVAL = new GregorianCalendar(1940,00,01);
+	protected static final GregorianCalendar CLEAR = new GregorianCalendar(0001,00,01);
+	protected static final GregorianCalendar LOVAL = new GregorianCalendar(2039,11,31);
+	protected static final GregorianCalendar HIVAL = new GregorianCalendar(1940,00,01);
 
 	private DatetimeType _type;
 	private DateFormat _dateFormat;
 	private TimeFormat _timeFormat;
-
-	public NIODatetimeImpl(QDataContext dataContext) {
-		super(dataContext);
-	}
-
-	public NIODatetimeImpl(QDataContext dataContext, DatetimeType type, DateFormat dateFormat, TimeFormat timeFormat) {
+	
+	public NIODatetimeImpl(QDataContext dataContext, DatetimeType type, DateFormat dateFormat, TimeFormat timeFormat, boolean allocate) {
 		super(dataContext);
 
 		this._type = type;
@@ -63,13 +60,20 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 			this._timeFormat = getDataContext().getTimeFormat();
 		else
 			this._timeFormat = timeFormat;
+		
+		if(allocate) {
+			checkAllocation();
+			
+			_buffer = ByteBuffer.allocate(getSize());
+			_clear();
+		}
 	}
 
 	@Override
 	public boolean isEmpty() {
 
 		for (byte b : asBytes())
-			if (b != getFiller())
+			if (b != INIT)
 				return false;
 		return true;
 	}
@@ -139,11 +143,6 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	@Override
 	public void eval(QDatetime value) {
 		movel(value, true);
-	}
-
-	@Override
-	protected byte getFiller() {
-		return INIT;
 	}
 
 	@Override
@@ -247,13 +246,13 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	@Override
 	public void eval(Date value) {
 		String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(value);
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), result.getBytes(getDataContext().getCharset()), true, getFiller());
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), result.getBytes(getDataContext().getCharset()));
 	}
 
 	@Override
 	public void time() {
 		String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(Calendar.getInstance().getTime());
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), result.getBytes(getDataContext().getCharset()), true, getFiller());
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), result.getBytes(getDataContext().getCharset()));
 	}
 
 	@Override
@@ -382,12 +381,12 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	@Override
 	protected void _clear() {
 		String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(CLEAR.getTime());
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), result.getBytes(getDataContext().getCharset()), true, getFiller());
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), result.getBytes(getDataContext().getCharset()), INIT);
 	}
 
 	@Override
 	protected void _write(byte[] value) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value, true, getFiller());
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value, INIT);
 	}
 
 	@Override
@@ -402,12 +401,18 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	
 	@Override
 	protected void _move(byte[] value, boolean clear) {
-		NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value, clear, getFiller());
+		if(clear)
+			NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value, INIT);
+		else
+			NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value);
 	}
 
 	@Override
 	protected void _movel(byte[] value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value, clear, getFiller());
+		if(clear)
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value, INIT);
+		else
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value);
 	}
 
 	@Override

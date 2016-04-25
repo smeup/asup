@@ -18,17 +18,9 @@ import org.smeup.sys.il.data.QHexadecimal;
 public class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexadecimal {
 
 	private static final long serialVersionUID = 1L;
-	private static byte INIT = (byte) -1;
 
-	private int _length;
-
-	public NIOHexadecimalImpl(QDataContext dataContext) {
-		super(dataContext);
-	}
-
-	public NIOHexadecimalImpl(QDataContext dataContext, int length) {
-		super(dataContext);
-		this._length = length;
+	public NIOHexadecimalImpl(QDataContext dataContext, int length, boolean allocate) {
+		super(dataContext, length, allocate);
 	}
 
 	@Override
@@ -58,12 +50,8 @@ public class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexadecimal
 			String hex = new String(value.substring(2 * i, 2 * i + 2));
 			bytes[i] = (byte) Integer.parseInt(hex, 16);
 		}
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, getFiller());
-	}
-
-	@Override
-	protected byte getFiller() {
-		return INIT;
+		
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, INIT);
 	}
 
 	private static final char[] BYTE2HEX = ("000102030405060708090A0B0C0D0E0F" + "101112131415161718191A1B1C1D1E1F" + "202122232425262728292A2B2C2D2E2F" + "303132333435363738393A3B3C3D3E3F"

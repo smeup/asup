@@ -24,6 +24,8 @@ import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.dk.test.annotation.TestStopped;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.data.annotation.Open;
+import org.smeup.sys.il.data.annotation.Snap;
 
 public class BaseTestUnitRunnerImpl extends BaseTestRunnerImpl implements QTestUnitRunner {
 
@@ -67,6 +69,8 @@ public class BaseTestUnitRunnerImpl extends BaseTestRunnerImpl implements QTestU
 
 			// call
 			Object testCase = getContext().make(testClass);
+			getContext().invoke(testCase, Open.class);
+			getContext().invoke(testCase, Snap.class);
 			getContext().invoke(testCase, TestStarted.class);
 
 			// unit stopping

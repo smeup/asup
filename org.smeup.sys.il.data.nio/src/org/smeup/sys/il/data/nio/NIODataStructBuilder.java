@@ -31,7 +31,7 @@ public class NIODataStructBuilder {
 	private Map<QBufferedData, QDecimal> overlayedToNextPos = new HashMap<QBufferedData, QDecimal>();
 	private int ownerNextPos = 1;
 	
-	public NIODataStructBuilder(NIODataFactoryImpl dataFactory, NIOAbstractDataStruct dataStruct) {
+	public NIODataStructBuilder(QDataFactory dataFactory, NIOAbstractDataStruct dataStruct) {
 		this.dataFactory = dataFactory;
 		this.dataStruct = dataStruct;
 	}

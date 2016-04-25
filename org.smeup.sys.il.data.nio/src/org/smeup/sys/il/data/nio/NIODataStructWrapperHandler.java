@@ -12,7 +12,9 @@
 package org.smeup.sys.il.data.nio;
 
 import java.lang.reflect.Field;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
@@ -21,9 +23,11 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Overlay;
+import org.smeup.sys.il.data.def.QDataDef;
 
 public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 
@@ -34,15 +38,31 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 
 	private List<QBufferedData> cachedElements = null;
 
-	public NIODataStructWrapperHandler(QDataContext dataContext) {
-		super(dataContext);
-	}
-
-	public NIODataStructWrapperHandler(QDataContext dataContext, int length, QDataStruct wrapped) {
+	public NIODataStructWrapperHandler(QDataContext dataContext, int length, QDataStruct wrapped, boolean allocate) {
 		super(dataContext, length);
 
 		this._wrapped = wrapped;
 		this._dynamicLength = (length == 0 ? true : false);
+
+		QDataFactory dataFactory = getDataContext().getDataFactory();
+		
+		NIODataStructBuilder dataStructBuilder = new NIODataStructBuilder(dataFactory, this);
+		List<Field> fields = NIODataStructHelper.getFields(wrapped.getClass());
+		for (Field field : fields) {
+
+			// create element
+			QDataDef<?> dataDef = dataFactory.createDataDef(field.getGenericType(), Arrays.asList(field.getAnnotations()));
+			QBufferedData dataElement = (QBufferedData) dataFactory.createData(dataDef, false);
+			
+			dataStructBuilder.addElement(field, dataElement);
+		}
+		
+		if(allocate) {
+			checkAllocation();
+			
+			_buffer = ByteBuffer.allocate(getSize());			
+			NIOBufferHelper.fill(_buffer, 0, _buffer.capacity(), INIT);			
+		}
 	}
 
 	@Override

@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.nio.ByteBuffer;
+
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
@@ -23,8 +25,20 @@ public class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicator {
 	protected static final byte OFF = (byte) -16;
 	protected static final byte ON = (byte) -15;
 
-	public NIOIndicatorImpl(QDataContext dataContext) {
-		super(dataContext);
+	public NIOIndicatorImpl(QDataContext dataContext, boolean allocate) {
+		super(dataContext, 1, false);
+		
+		if(allocate) {
+			checkAllocation();
+			
+			_buffer = ByteBuffer.allocate(getSize());		
+			_buffer.put(OFF);
+		}
+	}
+
+	@Override
+	protected void _clear() {
+		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), OFF);
 	}
 
 	@Override
@@ -76,11 +90,6 @@ public class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicator {
 			eval(true);
 		else
 			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237etxvq86rea invalid value "+value);
-	}
-
-	@Override
-	protected byte getFiller() {
-		return OFF;
 	}
 
 	@Override

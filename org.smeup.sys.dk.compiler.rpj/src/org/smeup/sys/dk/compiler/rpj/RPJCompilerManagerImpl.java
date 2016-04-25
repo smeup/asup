@@ -46,6 +46,7 @@ import org.smeup.sys.dk.compiler.rpj.writer.JDTProgramWriter;
 import org.smeup.sys.dk.compiler.rpj.writer.JDTStubWriter;
 import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
+import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QRecordWrapper;
@@ -91,15 +92,18 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 	private ResourceSet resourceSet = new ResourceSetImpl();
 
+	@SuppressWarnings("resource")
 	@Override
 	public QCompilationUnit createChildCompilationUnit(QCompilationUnit master, QProcedure procedure) {
 
 		QJob job = master.getContext().get(QJob.class);
+		QContext childContext = master.getContext().createChildContext(procedure.getName());
+		
+		List<QCompilationUnit> moduleContexts = new ArrayList<QCompilationUnit>();
+		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(childContext, procedure, master, moduleContexts, master.getCaseSensitive());
 
-		List<QCompilationUnit> moduleContexts = prepareContexts(job, procedure, master.getCaseSensitive());
+		prepareContexts(job, compilationUnit, procedure, moduleContexts);
 
-		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(master.getContext().createChildContext(procedure.getName()), procedure, master, moduleContexts,
-				master.getCaseSensitive());
 		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
 
 		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().make(RPJCallableUnitLinker.class);
@@ -129,13 +133,12 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	@Override
 	public QCompilationUnit createCompilationUnit(QJob job, QModule module, CaseSensitiveType caseSensitive) {
 
-		List<QCompilationUnit> moduleContexts = null;
-		if (!module.getName().startsWith("*"))
-			moduleContexts = prepareContexts(job, module, caseSensitive);
-		else
-			moduleContexts = new ArrayList<QCompilationUnit>();
-
+		List<QCompilationUnit> moduleContexts = new ArrayList<QCompilationUnit>();
 		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(job.getContext().createChildContext(module.getName()), module, null, moduleContexts, caseSensitive);
+
+		if (!module.getName().startsWith("*"))
+			prepareContexts(job, compilationUnit, module, moduleContexts);
+
 		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
 
 		// dataContext
@@ -166,9 +169,10 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	@Override
 	public QCompilationUnit createCompilationUnit(QJob job, QProgram program, CaseSensitiveType caseSensitive) {
 
-		List<QCompilationUnit> moduleContexts = prepareContexts(job, program, caseSensitive);
-
+		List<QCompilationUnit> moduleContexts = new ArrayList<QCompilationUnit>();
 		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(job.getContext().createChildContext(program.getName()), program, null, moduleContexts, caseSensitive);
+		prepareContexts(job, compilationUnit, program, moduleContexts);
+
 		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
 
 		// dataContext
@@ -246,15 +250,15 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		linkCompilationUnit(compilationUnits, compilationUnit);
 	}
 
-	private List<QCompilationUnit> prepareContexts(QJob job, QCallableUnit callableUnit, CaseSensitiveType caseSensitive) {
+	private void prepareContexts(QJob job, QCompilationUnit compilationUnit, QCallableUnit callableUnit, List<QCompilationUnit> moduleContexts) {
 
-		List<QCompilationUnit> moduleContexts = new ArrayList<QCompilationUnit>();
+		CaseSensitiveType caseSensitive = compilationUnit.getCaseSensitive();
 		if (callableUnit instanceof QProcedure)
 			moduleContexts.add(loadInternalModule(job, caseSensitive, "*PRO"));
 		else
 			moduleContexts.add(loadInternalModule(job, caseSensitive, "*RPJ"));
 
-		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(callableUnit);
+		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(compilationUnit, callableUnit);
 
 		if (callableUnitInfo.containsSQLStatement())
 			moduleContexts.add(loadInternalModule(job, caseSensitive, "*SQL"));
@@ -262,17 +266,14 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		if (callableUnitInfo.containsCMDStatement())
 			moduleContexts.add(loadInternalModule(job, caseSensitive, "*CMD"));
 
-		if(callableUnitInfo.containsPRTStatement())
+		if (callableUnitInfo.containsPRTStatement())
 			moduleContexts.add(loadInternalModule(job, caseSensitive, "*PRT"));
-		
-		if (callableUnit.getSetupSection() == null)
-			return moduleContexts;
 
-		QResourceReader<org.smeup.sys.os.module.QModule> moduleReader = resourceManager.getResourceReader(job, org.smeup.sys.os.module.QModule.class, Scope.LIBRARY_LIST);
-		for (String moduleName : new ArrayList<String>(callableUnit.getSetupSection().getModules()))
-			moduleContexts.add(loadModule(job, moduleReader, moduleName, caseSensitive));
-
-		return moduleContexts;
+		if (callableUnit.getSetupSection() != null) {
+			QResourceReader<org.smeup.sys.os.module.QModule> moduleReader = resourceManager.getResourceReader(job, org.smeup.sys.os.module.QModule.class, Scope.LIBRARY_LIST);
+			for (String moduleName : new ArrayList<String>(callableUnit.getSetupSection().getModules()))
+				moduleContexts.add(loadModule(job, moduleReader, moduleName, caseSensitive));			
+		}
 	}
 
 	private QCompilationUnit loadModule(QJob job, QResourceReader<org.smeup.sys.os.module.QModule> moduleReader, String moduleName, CaseSensitiveType caseSensitive) {

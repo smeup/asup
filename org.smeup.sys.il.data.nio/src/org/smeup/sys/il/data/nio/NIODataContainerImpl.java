@@ -30,6 +30,7 @@ import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QBufferedList;
+import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContainer;
@@ -432,7 +433,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			QStroller<?> stroller = (QStroller<?>) data;
 			compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataTerm.getDefinition();
 
-			dataStruct = (QDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(stroller.first()).copy().allocate();
+			// set default on first element
+			dataStruct = stroller.first();
+
 			if (dataTerm.getDefault() == null && compoundDataDef.getClassDelegator() != null)
 				dataStruct.reset();
 			else {
@@ -452,9 +455,14 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 						dataStruct.getElement(element.getName()).clear();
 				}
 			}
-
+			
+			// dereference stroller element
+			QCharacter character = getDataContext().getDataFactory().createCharacter(dataStruct.getLength(), false, true);
+			character.eval(dataStruct);
+			
+			// set default for all elements
 			for (QDataStruct strollerDataStruct : stroller)
-				strollerDataStruct.eval(dataStruct);
+				strollerDataStruct.eval(character);
 
 			break;
 		}

@@ -82,8 +82,9 @@ public class BaseShellSocketHandler implements Runnable {
 						else
 							shellManager.executeCommand(jobCapability, request, null);
 					} catch (Exception e) {
-						if (e.getCause() == null)
+						if (e.getCause() == null) {
 							outputStreamWriter.write(e + "\n");
+						}
 						else
 							outputStreamWriter.write(e.getCause().getMessage() + "\n");
 					}

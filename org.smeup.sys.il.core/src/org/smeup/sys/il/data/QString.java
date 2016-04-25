@@ -32,10 +32,10 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model bitNumbersRequired="true"
+	 * @model valueRequired="true"
 	 * @generated
 	 */
-	void bitoff(byte bitNumbers);
+	void bitoff(byte value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -57,6 +57,14 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	 * @generated
 	 */
 	boolean eq(QHexadecimal value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean eq(byte value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -88,6 +96,14 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	 * @generated
 	 */
 	void eval(QIndicator value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	QBufferedData eval(byte value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -136,6 +152,14 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	boolean ge(QHexadecimal value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean ge(byte value);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -148,6 +172,14 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	 * @generated
 	 */
 	boolean gt(QString value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean gt(byte value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -180,6 +212,14 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	boolean le(QHexadecimal value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean le(byte value);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -192,6 +232,14 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	 * @generated
 	 */
 	boolean lt(QString value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean lt(byte value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -261,6 +309,14 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	 * @generated
 	 */
 	boolean ne(QHexadecimal value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean ne(byte value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -366,26 +422,26 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model bitNumbersRequired="true"
+	 * @model bitMaskRequired="true"
 	 * @generated
 	 */
-	void biton(String bitNumbers);
+	void biton(String bitMask);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model bitNumbersRequired="true"
+	 * @model bitMaskRequired="true"
 	 * @generated
 	 */
-	void bitoff(String bitNumbers);
+	void bitoff(String bitMask);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model bitNumbersRequired="true"
+	 * @model valueRequired="true"
 	 * @generated
 	 */
-	void biton(byte bitNumbers);
+	void biton(byte value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -435,18 +491,18 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model bitNumbersRequired="true" offRequired="true"
+	 * @model valueRequired="true" offRequired="true"
 	 * @generated
 	 */
-	void testb(byte bitNumbers, QIndicator off);
+	void testb(byte value, QIndicator off);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model bitNumbersRequired="true" offRequired="true"
+	 * @model bitMaskRequired="true" offRequired="true"
 	 * @generated
 	 */
-	void testb(String bitNumbers, QIndicator off);
+	void testb(String bitMask, QIndicator off);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -459,50 +515,50 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model bitNumbersRequired="true" offRequired="true" onRequired="true"
+	 * @model valueRequired="true" offRequired="true" onRequired="true"
 	 * @generated
 	 */
-	void testb(byte bitNumbers, QIndicator off, QIndicator on);
+	void testb(byte value, QIndicator off, QIndicator on);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model bitNumbersRequired="true" offRequired="true" onRequired="true"
+	 * @model bitMaskRequired="true" offRequired="true" onRequired="true"
 	 * @generated
 	 */
-	void testb(String bitNumbers, QIndicator off, QIndicator on);
+	void testb(String bitMask, QIndicator off, QIndicator on);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model bitNumbersRequired="true" offRequired="true" onRequired="true"
+	 * @model bitMaskRequired="true" offRequired="true" onRequired="true"
 	 * @generated
 	 */
-	void testb(QString bitNumbers, QIndicator off, QIndicator on);
+	void testb(QString bitMask, QIndicator off, QIndicator on);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model bitNumbersRequired="true" offRequired="true" onRequired="true" equalRequired="true"
+	 * @model valueRequired="true" offRequired="true" onRequired="true" equalRequired="true"
 	 * @generated
 	 */
-	void testb(byte bitNumbers, QIndicator off, QIndicator on, QIndicator equal);
+	void testb(byte value, QIndicator off, QIndicator on, QIndicator equal);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model bitNumbersRequired="true" offRequired="true" onRequired="true" equalRequired="true"
+	 * @model bitMaskRequired="true" offRequired="true" onRequired="true" equalRequired="true"
 	 * @generated
 	 */
-	void testb(String bitNumbers, QIndicator off, QIndicator on, QIndicator equal);
+	void testb(String bitMask, QIndicator off, QIndicator on, QIndicator equal);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model bitNumbersRequired="true" offRequired="true" onRequired="true" equalRequired="true"
+	 * @model bitMaskRequired="true" offRequired="true" onRequired="true" equalRequired="true"
 	 * @generated
 	 */
-	void testb(QString bitNumbers, QIndicator off, QIndicator on, QIndicator equal);
+	void testb(QString bitMask, QIndicator off, QIndicator on, QIndicator equal);
 
 	/**
 	 * <!-- begin-user-doc -->

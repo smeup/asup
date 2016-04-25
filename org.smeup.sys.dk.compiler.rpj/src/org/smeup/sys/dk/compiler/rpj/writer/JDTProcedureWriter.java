@@ -95,7 +95,7 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 		writeProcedureAnnotation(procedure);
 
 		// unit info
-		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(procedure);
+		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(getCompilationUnit(), procedure);
 		writeSupportFields(callableUnitInfo);
 
 		if (procedure.getSetupSection() != null)
