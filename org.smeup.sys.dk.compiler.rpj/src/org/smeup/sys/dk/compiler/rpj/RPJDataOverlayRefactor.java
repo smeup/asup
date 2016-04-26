@@ -17,6 +17,7 @@ import javax.inject.Inject;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
 import org.smeup.sys.il.data.def.QMultipleAtomicBufferedDataDef;
@@ -49,6 +50,7 @@ public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
 			return super.visit(dataTerm);
 
 		if (overlay.getName() == null) {
+			
 			switch (dataTerm.getDataTermType()) {
 			case MULTIPLE_ATOMIC:
 				QMultipleAtomicBufferedDataDef<?> multipleAtomicBufferedDataDef = (QMultipleAtomicBufferedDataDef<?>) dataTerm.getDefinition();
@@ -68,7 +70,11 @@ public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
 		if (overlay.getName().equalsIgnoreCase("*LDA"))
 			overlay.setName("£udlda");
 
-		QDataTerm<?> overlayTerm = getCompilationUnit().getDataTerm(overlay.getName(), true);
+		String overlayName = overlay.getName();
+		if(overlayName.equalsIgnoreCase(Overlay.NAME_OWNER))
+			overlayName = RPJDataStructureHelper.getNameFromElement(dataTerm);
+		
+		QDataTerm<?> overlayTerm = getCompilationUnit().getDataTerm(overlayName, true);
 		if (overlayTerm == null)
 			throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00109, new String[] { overlay.getName() });
 

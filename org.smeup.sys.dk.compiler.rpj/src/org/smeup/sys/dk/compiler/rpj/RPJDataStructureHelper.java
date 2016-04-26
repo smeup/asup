@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import org.smeup.sys.il.core.term.QNode;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
@@ -15,6 +16,25 @@ import org.smeup.sys.il.data.term.impl.DataTermImpl;
 
 public class RPJDataStructureHelper {
 
+	public static String getNameFromElement(QDataTerm<?> element) {
+		
+		QDataTerm<?> dataTerm = null;
+
+		QNode node = element.getParent();
+		while (dataTerm == null) {
+			if (node instanceof QDataTerm<?>) {
+				dataTerm = (QDataTerm<?>) node;
+				break;
+			} else
+				node = node.getParent();
+
+			if (node == null)
+				break;
+		}
+
+		return dataTerm.getName();
+	}
+	
 	public static void relativizePositions(QCompoundDataDef<?, QDataTerm<?>> dataStructDef) {
 
 		if(isReorderable(dataStructDef))
