@@ -996,9 +996,6 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				continue;
 
 			for (EOperation eOperation : eClass.getEAllOperations()) {
-				// TODO remove me
-				if (eOperation.getName().startsWith("qLookup"))
-					continue;
 
 				if (!eOperation.getName().equalsIgnoreCase(normalizeTermName(name)))
 					continue;
