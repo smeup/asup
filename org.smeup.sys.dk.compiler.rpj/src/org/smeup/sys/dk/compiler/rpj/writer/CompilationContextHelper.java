@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.il.core.term.QNamedNode;
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QIndicator;
@@ -140,6 +141,46 @@ public class CompilationContextHelper {
 		return false;
 	}
 
+	public static DataSpecial getSpecial(QCompilationUnit compilationUnit, QExpression expression) {
+
+		switch (expression.getExpressionType()) {
+		case ARRAY:
+		case ARITHMETIC:
+		case ASSIGNMENT:
+		case FUNCTION:
+		case QUALIFIED:
+		case LOGICAL:
+		case RELATIONAL:
+		case BOOLEAN:
+			return null;
+		case ATOMIC:
+			QAtomicTermExpression atomicTermExpression = (QAtomicTermExpression) expression;
+
+			switch (atomicTermExpression.getType()) {
+			case BOOLEAN:
+			case DATE:
+			case TIME:
+			case TIMESTAMP:
+			case FLOATING:
+			case HEXADECIMAL:
+			case INTEGER:
+			case STRING:
+			case INDICATOR:
+			case NAME:
+				return null;
+			case SPECIAL:
+				DataSpecial dataSpecial = DataSpecial.get(atomicTermExpression.getValue().toUpperCase());
+				return dataSpecial;
+			}
+			break;
+		case BLOCK:
+			QBlockExpression blockExpression = (QBlockExpression) expression;
+			return getSpecial(compilationUnit, blockExpression.getExpression());
+		}
+
+		return null;
+	}
+	
 	public static boolean isPointer(QCompilationUnit compilationUnit, QExpression expression) {
 
 		switch (expression.getExpressionType()) {
