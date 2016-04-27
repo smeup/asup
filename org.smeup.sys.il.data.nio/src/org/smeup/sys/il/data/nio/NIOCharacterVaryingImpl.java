@@ -16,7 +16,9 @@ import java.nio.ByteBuffer;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.def.BinaryType;
 
 public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 
@@ -36,6 +38,15 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 		ByteBuffer buffer = getBuffer();
 		NIOBufferHelper.prepare(buffer, getPosition(), 2);
 		buffer.putShort(length);
+	}
+
+	@Override
+	public final QNumeric qLen() {
+
+		QNumeric number = getDataContext().getDataFactory().createBinary(BinaryType.SHORT, true, false);
+		assign(number);
+
+		return number;
 	}
 
 	@Override

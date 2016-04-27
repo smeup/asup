@@ -86,7 +86,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getNumeric()
 	 * @generated
 	 */
-	int NUMERIC = 34;
+	int NUMERIC = 33;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QBinary <em>Binary</em>}' class.
@@ -104,7 +104,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getString()
 	 * @generated
 	 */
-	int STRING = 40;
+	int STRING = 39;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QCharacter <em>Character</em>}' class.
@@ -336,7 +336,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getPointer()
 	 * @generated
 	 */
-	int POINTER = 35;
+	int POINTER = 34;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QScroller <em>Scroller</em>}' class.
@@ -345,7 +345,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getScroller()
 	 * @generated
 	 */
-	int SCROLLER = 38;
+	int SCROLLER = 37;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QStruct <em>Struct</em>}' class.
@@ -354,7 +354,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getStruct()
 	 * @generated
 	 */
-	int STRUCT = 42;
+	int STRUCT = 41;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QStroller <em>Stroller</em>}' class.
@@ -363,7 +363,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getStroller()
 	 * @generated
 	 */
-	int STROLLER = 41;
+	int STROLLER = 40;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QDataStruct
@@ -538,16 +538,6 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int IDENTITY = 29;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QLookuppable <em>Lookuppable</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.data.QLookuppable
-	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getLookuppable()
-	 * @generated
-	 */
-	int LOOKUPPABLE = 32;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QMoveable <em>Moveable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -555,7 +545,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getMoveable()
 	 * @generated
 	 */
-	int MOVEABLE = 33;
+	int MOVEABLE = 32;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QRecord <em>Record</em>}' class.
@@ -564,7 +554,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getRecord()
 	 * @generated
 	 */
-	int RECORD = 36;
+	int RECORD = 35;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QScanner <em>Scanner</em>}' class.
@@ -574,7 +564,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getScanner()
 	 * @generated
 	 */
-	int SCANNER = 37;
+	int SCANNER = 36;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QStorable <em>Storable</em>}' class.
@@ -584,7 +574,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getStorable()
 	 * @generated
 	 */
-	int STORABLE = 39;
+	int STORABLE = 38;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QChecker <em>Checker</em>}' class.
@@ -770,15 +760,6 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int INDICATOR_FEATURE_COUNT = CHARACTER_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Lookuppable</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOOKUPPABLE_FEATURE_COUNT = 0;
-
-	/**
 	 * The number of structural features of the '<em>Moveable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -858,7 +839,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getBufferedDataType()
 	 * @generated
 	 */
-	int BUFFERED_DATA_TYPE = 43;
+	int BUFFERED_DATA_TYPE = 42;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.BufferedElementType <em>Buffered Element Type</em>}' enum.
@@ -868,7 +849,17 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getBufferedElementType()
 	 * @generated
 	 */
-	int BUFFERED_ELEMENT_TYPE = 44;
+	int BUFFERED_ELEMENT_TYPE = 43;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.DataComparator <em>Data Comparator</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.DataComparator
+	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataComparator()
+	 * @generated
+	 */
+	int DATA_COMPARATOR = 44;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.DataSpecial <em>Data Special</em>}' enum.
@@ -1233,16 +1224,6 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getList();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QLookuppable <em>Lookuppable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Lookuppable</em>'.
-	 * @see org.smeup.sys.il.data.QLookuppable
-	 * @generated
-	 */
-	EClass getLookuppable();
-
-	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QMoveable <em>Moveable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1357,6 +1338,16 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getBufferedElementType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.il.data.DataComparator <em>Data Comparator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Data Comparator</em>'.
+	 * @see org.smeup.sys.il.data.DataComparator
+	 * @generated
+	 */
+	EEnum getDataComparator();
 
 	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.il.data.DataSpecial <em>Data Special</em>}'.
@@ -1739,16 +1730,6 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass LIST = eINSTANCE.getList();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QLookuppable <em>Lookuppable</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.data.QLookuppable
-		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getLookuppable()
-		 * @generated
-		 */
-		EClass LOOKUPPABLE = eINSTANCE.getLookuppable();
-
-		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.QMoveable <em>Moveable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1871,6 +1852,16 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum BUFFERED_ELEMENT_TYPE = eINSTANCE.getBufferedElementType();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.DataComparator <em>Data Comparator</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.DataComparator
+		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataComparator()
+		 * @generated
+		 */
+		EEnum DATA_COMPARATOR = eINSTANCE.getDataComparator();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.DataSpecial <em>Data Special</em>}' enum.

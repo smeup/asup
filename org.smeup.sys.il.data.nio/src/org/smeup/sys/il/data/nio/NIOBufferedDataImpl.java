@@ -89,7 +89,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
-	public final QNumeric qLen() {
+	public QNumeric qLen() {
 
 		QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
 		number.eval(getLength());

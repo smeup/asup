@@ -20,7 +20,7 @@ import java.lang.String;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QString extends QBufferedElement, QChecker, QScanner, QCattable<QString>, QLookuppable {
+public interface QString extends QBufferedElement, QChecker, QScanner, QCattable<QString> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -112,6 +112,14 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	 * @generated
 	 */
 	void eval(QDataArea<? extends QString> value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	void eval(QScroller<? extends QString> value);
 
 	/**
 	 * <!-- begin-user-doc -->

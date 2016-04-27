@@ -454,8 +454,20 @@ public class NIOBufferHelper {
 
 		if (dataSpecial != null)
 			bufferedList.eval(dataSpecial);
-		else
-			bufferedList.eval(value);
+		else {			
+			NIOBufferedElementImpl nioBufferedElementImpl = getNIOBufferedElementImpl(((NIOBufferedListImpl<?>)bufferedList).getModel());
+			switch (nioBufferedElementImpl.getBufferedElementType()) {
+			case DATETIME:
+				bufferedList.movel(value, true);
+				break;
+			case NUMERIC:
+				bufferedList.eval(new BigDecimal(value), true);
+				break;
+			case STRING:
+				bufferedList.eval(value);
+				break;
+			}
+		}
 	}
 
 	public static void writeDefault(QBufferedList<?> bufferedList, String[] values) {

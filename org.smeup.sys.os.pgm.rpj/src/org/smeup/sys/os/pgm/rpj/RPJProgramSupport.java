@@ -19,12 +19,11 @@ import javax.inject.Inject;
 
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.data.DataComparator;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.DatetimeFormat;
-import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
-import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
@@ -225,10 +224,13 @@ public class RPJProgramSupport {
 		public static final DatetimeFormat MONTHS = DatetimeFormat.MONTHS;
 		public static final DatetimeFormat D = DatetimeFormat.DAY;
 		public static final DatetimeFormat DAYS = DatetimeFormat.DAYS;
-	}
-
-	private static enum LookupOperator {
-		EQ, LT, LE, GT, GE;
+		
+		public static final DataComparator EQ = DataComparator.EQUAL;
+		public static final DataComparator LT = DataComparator.LESS_THAN;
+		public static final DataComparator LE = DataComparator.LESS_THAN_EQUAL;
+		public static final DataComparator GT = DataComparator.GREATER_THAN;
+		public static final DataComparator GE = DataComparator.GREATER_THAN_EQUAL;
+		public static final DataComparator NE = DataComparator.NOT_EQUAL;
 	}
 
 	/*
@@ -798,205 +800,6 @@ public class RPJProgramSupport {
 		decimal.eval(length);
 
 		return decimal;
-	}
-
-	/* Lookup */
-
-	public QNumeric qLookup(DataSpecial argument, QBufferedList<?> list, QNumeric startIndex, Number numElements) {
-		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
-	}
-
-	public QNumeric qLookup(String argument, QBufferedList<?> list, QNumeric startIndex, Number numElements) {
-		return qLookup(LookupOperator.EQ, qBox(argument), list, startIndex, numElements);
-	}
-
-	public QDecimal qLookup(String argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-		return qLookup(LookupOperator.EQ, qBox(argument), list, startIndex, numElements);
-	}
-
-	public QDecimal qLookup(Number argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-		return qLookup(LookupOperator.EQ, qBox(argument.intValue()), list, startIndex, numElements);
-	}
-
-	public QDecimal qLookuplt(DataSpecial argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-		return qLookup(LookupOperator.LT, argument, list, startIndex, numElements);
-	}
-
-	public QDecimal qLookuplt(QBufferedElement argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-		return qLookup(LookupOperator.LT, argument, list, startIndex, numElements);
-	}
-
-	public QDecimal qLookuple(DataSpecial argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-		return qLookup(LookupOperator.LE, argument, list, startIndex, numElements);
-	}
-
-	public QDecimal qLookuple(QBufferedElement argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-		return qLookup(LookupOperator.LE, argument, list, startIndex, numElements);
-	}
-
-	public QDecimal qLookupgt(DataSpecial argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-		return qLookup(LookupOperator.GT, argument, list, startIndex, numElements);
-	}
-
-	public QDecimal qLookupgt(QBufferedElement argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-		return qLookup(LookupOperator.GT, argument, list, startIndex, numElements);
-	}
-
-	public QDecimal qLookupge(DataSpecial argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-		return qLookup(LookupOperator.GE, argument, list, startIndex, numElements);
-	}
-
-	public QDecimal qLookupge(QBufferedElement argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-		return qLookup(LookupOperator.GE, argument, list, startIndex, numElements);
-	}
-
-	private QDecimal qLookup(LookupOperator operator, QBufferedElement argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-
-		return qLookup(operator, argument, list, qBox(startIndex.intValue()), numElements);
-	}
-
-	private QDecimal qLookup(LookupOperator operator, QBufferedElement argument, QBufferedList<?> list, QNumeric startIndex, Number numElements) {
-
-		if (startIndex == null)
-			throw new IntegratedLanguageDataRuntimeException("Unexpected condition wsoerbwe7r6vwert");
-
-		if (numElements == null)
-			numElements = list.capacity();
-
-		QDecimal result = null;
-		boolean resultIndex = false;
-		for (int i = startIndex.i(); i <= numElements.intValue(); i++) {
-			
-			QBufferedElement bufferedElement = list.get(i);
-			switch (bufferedElement.getBufferedElementType()) {
-			case DATETIME:
-				QDatetime datetime = ((QDatetime)bufferedElement);
-				switch (operator) {
-				case EQ:
-					resultIndex = datetime.eq((QDatetime)argument);
-					break;
-				case GE:
-					resultIndex = datetime.ge((QDatetime)argument);
-					break;
-				case GT:
-					resultIndex = datetime.gt((QDatetime)argument);
-					break;
-				case LE:
-					resultIndex = datetime.le((QDatetime)argument);
-					break;
-				case LT:
-					resultIndex = datetime.lt((QDatetime)argument);
-					break;
-				}
-				break;
-			case NUMERIC:
-				QNumeric numeric = ((QNumeric)bufferedElement);
-				switch (operator) {
-				case EQ:
-					resultIndex = numeric.eq((QNumeric)argument);
-					break;
-				case GE:
-					resultIndex = numeric.ge((QNumeric)argument);
-					break;
-				case GT:
-					resultIndex = numeric.gt((QNumeric)argument);
-					break;
-				case LE:
-					resultIndex = numeric.le((QNumeric)argument);
-					break;
-				case LT:
-					resultIndex = numeric.lt((QNumeric)argument);
-					break;
-				}
-				break;
-			case STRING:
-				QString string = ((QString)bufferedElement);
-				switch (operator) {
-				case EQ:
-					resultIndex = string.eq((QString)argument);
-					break;
-				case GE:
-					resultIndex = string.ge((QString)argument);
-					break;
-				case GT:
-					resultIndex = string.gt((QString)argument);
-					break;
-				case LE:
-					resultIndex = string.le((QString)argument);
-					break;
-				case LT:
-					resultIndex = string.lt((QString)argument);
-					break;
-				}
-				break;
-			}
-
-			if (resultIndex) {
-				result = qBox(i);
-				break;
-			}
-		}
-
-		if (result == null)
-			result = qBox(0);
-
-		this.dataContext.found().eval(resultIndex);
-
-		startIndex.eval(result);
-
-		return result;
-	}
-
-	private QDecimal qLookup(LookupOperator operator, DataSpecial argument, QBufferedList<?> list, Number startIndex, Number numElements) {
-
-		return qLookup(operator, argument, list, qBox(startIndex.intValue()), numElements);
-	}
-	
-	private QDecimal qLookup(LookupOperator operator, DataSpecial argument, QBufferedList<?> list, QNumeric startIndex, Number numElements) {
-
-		if (startIndex == null)
-			throw new IntegratedLanguageDataRuntimeException("Unexpected condition wsoesdfsdfsd");
-
-		if (numElements == null)
-			numElements = list.capacity();
-
-		QDecimal result = null;
-		boolean resultIndex = false;
-		for (int i = startIndex.i(); i <= numElements.intValue(); i++) {
-
-			QBufferedElement bufferedElement = list.get(i);
-			switch (operator) {
-			case EQ:
-				resultIndex = bufferedElement.eq(argument);
-				break;
-			case GE:
-				resultIndex = bufferedElement.ge(argument);
-				break;
-			case GT:
-				resultIndex = bufferedElement.gt(argument);
-				break;
-			case LE:
-				resultIndex = bufferedElement.le(argument);
-				break;
-			case LT:
-				resultIndex = bufferedElement.lt(argument);
-				break;
-			}
-
-			if (resultIndex) {
-				result = qBox(i);
-				break;
-			}
-		}
-
-		if (result == null)
-			result = qBox(0);
-
-		this.dataContext.found().eval(resultIndex);
-
-		startIndex.eval(result);
-
-		return result;
 	}
 
 	/* Scan */

@@ -272,7 +272,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean visit(QEval statement) {
-		
+
 		Block block = blocks.peek();
 
 		QAssignmentExpression assignmentExpression = expressionParser.parseAssignment(statement.getAssignment());
@@ -478,12 +478,12 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		if (statement.getObject() != null) {
 			MethodInvocation methodInvocation = ast.newMethodInvocation();
 			methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(statement.getMethod())));
-			
+
 			QExpression objectExpression = expressionParser.parseExpression(statement.getObject());
 			QNamedNode namedNode = null;
-			if(objectExpression instanceof QTermExpression) {
-				QTermExpression termExpression = (QTermExpression)objectExpression;
-				
+			if (objectExpression instanceof QTermExpression) {
+				QTermExpression termExpression = (QTermExpression) objectExpression;
+
 				switch (termExpression.getExpressionType()) {
 				case FUNCTION:
 					namedNode = compilationUnit.getNamedNode(termExpression.getValue(), true);
@@ -493,7 +493,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 					break;
 				case ATOMIC: {
 					QAtomicTermExpression atomicTermExpression = (QAtomicTermExpression) termExpression;
-					if(atomicTermExpression.getType() == AtomicType.NAME)
+					if (atomicTermExpression.getType() == AtomicType.NAME)
 						namedNode = compilationUnit.getNamedNode(termExpression.getValue(), true);
 					break;
 				}
@@ -514,14 +514,13 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 				if (objectExpression instanceof QArithmeticExpression) {
 					target = CompilationContextHelper.getTargetClass(compilationUnit, objectExpression, false);
 					// force boxing
-					if(String.class.isAssignableFrom(target))
+					if (String.class.isAssignableFrom(target))
 						target = QCharacter.class;
-					else if(Number.class.isAssignableFrom(target))
+					else if (Number.class.isAssignableFrom(target))
 						target = QNumeric.class;
-					else if(Date.class.isAssignableFrom(target))
-						target = QDatetime.class;						
-				}
-				else if (objectExpression instanceof QAtomicTermExpression) {
+					else if (Date.class.isAssignableFrom(target))
+						target = QDatetime.class;
+				} else if (objectExpression instanceof QAtomicTermExpression) {
 					QAtomicTermExpression atomicTermExpression = (QAtomicTermExpression) objectExpression;
 					switch (atomicTermExpression.getType()) {
 					case BOOLEAN:
@@ -699,7 +698,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			// dummy condition
 
 			IfStatement ifSt = ast.newIfStatement();
-			ifSt.setExpression(ast.newName(new String[] {"RPJProgramSupport", "TRUE"}));
+			ifSt.setExpression(ast.newName(new String[] { "RPJProgramSupport", "TRUE" }));
 			ifSt.setThenStatement(returnSt);
 
 			block.statements().add(ifSt);

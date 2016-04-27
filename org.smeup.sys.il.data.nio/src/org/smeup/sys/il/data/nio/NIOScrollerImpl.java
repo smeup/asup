@@ -22,20 +22,21 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QScroller;
+import org.smeup.sys.il.data.SortDirection;
 
 public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedListImpl<D> implements QScroller<D> {
 
 	private static final long serialVersionUID = 1L;
 
 	private int _dimension;
-	private int _lastIndex;
+	private int _position;
 
 	D _current = current();
 
 	public NIOScrollerImpl(QDataContext dataContext, D model, int dimension, boolean allocate) {
-		super(dataContext, model);
+		super(dataContext, model, SortDirection.ASCEND);
 		_dimension = dimension;
-
+		
 		if (allocate) {
 			checkAllocation();
 			_buffer = ByteBuffer.allocate(getSize());
@@ -133,7 +134,7 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	@Override
 	public D get(int index) {
 
-		if (_lastIndex == index)
+		if (_position == index)
 			return (D) getModel();
 
 		int position = 0;
@@ -145,7 +146,7 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 
 		assign(getModel(), position + 1);
 
-		_lastIndex = index;
+		_position = index;
 
 		return (D) getModel();
 	}
@@ -302,11 +303,21 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 
 	@Override
 	public D next() {
-		return get(_lastIndex + 1);
+		return get(position() + 1);
 	}
 
 	@Override
 	public D previous() {
-		return get(_lastIndex - 1);
+		return get(position() - 1);
+	}
+
+	@Override
+	public int position() {
+		return _position;
+	}
+
+	@Override
+	public void qPosition(QScroller<D> scroller) {
+		absolute(scroller.position());
 	}
 }

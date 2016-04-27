@@ -127,6 +127,9 @@
           <eGenericType eTypeParameter="#//util/Lists/addAfter/E"/>
         </eParameters>
       </eOperations>
+      <eGenericSuperTypes eClassifier="#//util/Singleton">
+        <eTypeArguments eClassifier="#//util/Lists"/>
+      </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Singleton" abstract="true" interface="true">
       <eTypeParameters name="S">

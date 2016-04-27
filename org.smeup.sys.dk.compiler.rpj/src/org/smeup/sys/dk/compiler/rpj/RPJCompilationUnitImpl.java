@@ -548,7 +548,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				QDataTerm<QCompoundDataDef<?, ?>> compoundDataTerm = (QDataTerm<QCompoundDataDef<?, ?>>) child;
 
 				String tempName = name;
-				
+
 				QCompoundDataDef<?, QDataTerm<?>> compoundDataDef = null;
 				if (child.getDefinition() instanceof QDataAreaDef) {
 					QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) child.getDefinition();
@@ -558,7 +558,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 				if (compoundDataDef.isQualified()) {
 					String[] tokens = name.split("\\.");
-					if (tokens.length <= 1) 
+					if (tokens.length <= 1)
 						continue;
 
 					tempName = null;
@@ -992,7 +992,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				continue;
 
 			EClass eClass = (EClass) eClassifier;
-			if(target != null && !target.getSimpleName().equals("Q"+eClass.getName()))
+			if (target != null && !target.getSimpleName().equals("Q" + eClass.getName()))
 				continue;
 
 			for (EOperation eOperation : eClass.getEAllOperations()) {
@@ -1003,9 +1003,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				if (eOperation.getEType() == null)
 					continue;
 
-				if(prototype != null && prototype.getEntry() != null && prototype.getEntry().getParameters().size() >= eOperation.getEParameters().size())
+				if (prototype != null && prototype.getEntry() != null && prototype.getEntry().getParameters().size() >= eOperation.getEParameters().size())
 					continue;
-					
+
 				prototype = QIntegratedLanguageFlowFactory.eINSTANCE.createPrototype();
 				prototype.setName(name);
 
@@ -1013,6 +1013,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					QCharacterDef characterDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
 					prototype.setDefinition(characterDef);
 				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getNumeric())) {
+					QDecimalDef decimalDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createDecimalDef();
+					prototype.setDefinition(decimalDef);
+				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getDecimal())) {
 					QDecimalDef decimalDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createDecimalDef();
 					prototype.setDefinition(decimalDef);
 				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getArray())) {
@@ -1054,7 +1057,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 						entry.getParameters().add(entryParameter);
 					}
 				}
-//				break;
+				// break;
 			}
 
 			if (prototype != null)

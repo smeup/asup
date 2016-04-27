@@ -36,13 +36,11 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	private static final long serialVersionUID = 1L;
 
 	private D[] _elements;
-	private SortDirection sortDirection = null;
 
 	@SuppressWarnings("unchecked")
 	public NIOArrayImpl(QDataContext dataContext, D model, int dimension, SortDirection sortDirection, boolean allocate) {
-		super(dataContext, model);
+		super(dataContext, model, sortDirection);
 
-		this.sortDirection = sortDirection;
 		this._elements = (D[]) Array.newInstance(model.getClass(), dimension);
 		
 		if(allocate) {
@@ -51,10 +49,6 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 			
 			clear();
 		}
-	}
-	
-	protected final SortDirection getSortDirection() {
-		return this.sortDirection;
 	}
 
 	@Override

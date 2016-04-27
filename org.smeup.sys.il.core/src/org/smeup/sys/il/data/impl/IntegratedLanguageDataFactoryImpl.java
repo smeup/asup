@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.il.data.BufferedDataType;
 import org.smeup.sys.il.data.BufferedElementType;
+import org.smeup.sys.il.data.DataComparator;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.InitStrategy;
@@ -86,6 +87,8 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 				return createBufferedDataTypeFromString(eDataType, initialValue);
 			case QIntegratedLanguageDataPackage.BUFFERED_ELEMENT_TYPE:
 				return createBufferedElementTypeFromString(eDataType, initialValue);
+			case QIntegratedLanguageDataPackage.DATA_COMPARATOR:
+				return createDataComparatorFromString(eDataType, initialValue);
 			case QIntegratedLanguageDataPackage.DATA_SPECIAL:
 				return createDataSpecialFromString(eDataType, initialValue);
 			case QIntegratedLanguageDataPackage.DATETIME_FORMAT:
@@ -112,6 +115,8 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 				return convertBufferedDataTypeToString(eDataType, instanceValue);
 			case QIntegratedLanguageDataPackage.BUFFERED_ELEMENT_TYPE:
 				return convertBufferedElementTypeToString(eDataType, instanceValue);
+			case QIntegratedLanguageDataPackage.DATA_COMPARATOR:
+				return convertDataComparatorToString(eDataType, instanceValue);
 			case QIntegratedLanguageDataPackage.DATA_SPECIAL:
 				return convertDataSpecialToString(eDataType, instanceValue);
 			case QIntegratedLanguageDataPackage.DATETIME_FORMAT:
@@ -194,6 +199,26 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 	 * @generated
 	 */
 	public String convertBufferedElementTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataComparator createDataComparatorFromString(EDataType eDataType, String initialValue) {
+		DataComparator result = DataComparator.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDataComparatorToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -53,10 +53,26 @@ public interface QScroller<D extends QBufferedElement> extends QBufferedList<D>,
 	D next();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	int position();
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true"
 	 * @generated
 	 */
 	D previous();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model scrollerRequired="true"
+	 * @generated
+	 */
+	void qPosition(QScroller<D> scroller);
 
 } // QScroller

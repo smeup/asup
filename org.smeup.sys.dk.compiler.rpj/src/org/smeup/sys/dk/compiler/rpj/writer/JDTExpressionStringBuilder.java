@@ -24,6 +24,7 @@ import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.rpj.RPJCompilerMessage;
 import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.core.term.QTerm;
+import org.smeup.sys.il.data.DataComparator;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.QArray;
@@ -216,6 +217,20 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				case SECONDS:
 				case YEAR:
 				case YEARS:
+					value = "Specials." + strings.removeFirstChar(expression.getValue()).toUpperCase();
+					break;
+				}
+			}
+			
+			DataComparator dataComparator = DataComparator.get(expression.getValue().toUpperCase());
+			if (dataComparator != null) {
+				switch (dataComparator) {
+				case EQUAL:
+				case GREATER_THAN:
+				case GREATER_THAN_EQUAL:
+				case LESS_THAN:
+				case LESS_THAN_EQUAL:
+				case NOT_EQUAL:
 					value = "Specials." + strings.removeFirstChar(expression.getValue()).toUpperCase();
 					break;
 				}

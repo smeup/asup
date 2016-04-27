@@ -98,7 +98,7 @@ public class RPJArithmeticExpressionAnalyzer extends ExpressionVisitorImpl {
 			QDataTerm<?> dataTerm = compilationUnit.getDataTerm(expression.getValue(), true);
 			if (dataTerm != null) {
 
-				if (dataTerm.getDefinition().getDataClass().isAssignableFrom(QArray.class)) {
+				if (QArray.class.isAssignableFrom(dataTerm.getDefinition().getDataClass())) {
 
 					if (dataTerm.getDataTermType().isMultiple()) {
 						QMultipleAtomicDataDef<?> multipleAtomicDataDef = (QMultipleAtomicDataDef<?>) dataTerm.getDefinition();
@@ -130,7 +130,7 @@ public class RPJArithmeticExpressionAnalyzer extends ExpressionVisitorImpl {
 			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: bwr9wxe7r9wefisgde");
 
 
-		if (dataTerm.getDefinition().getDataClass().isAssignableFrom(QArray.class)) {
+		if (QArray.class.isAssignableFrom(dataTerm.getDefinition().getDataClass())) {
 
 			if (dataTerm.getDataTermType().isMultiple()) {
 				QMultipleCompoundDataDef<?, ?> multipleCompoundDataDef = (QMultipleCompoundDataDef<?, ?>) dataTerm.getDefinition();
@@ -157,7 +157,7 @@ public class RPJArithmeticExpressionAnalyzer extends ExpressionVisitorImpl {
 		if (dataTerm == null)
 			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: bwr9wxe7r9we9brw9e");
 
-		if (dataTerm.getDefinition().getDataClass().isAssignableFrom(QArray.class)) {
+		if (QArray.class.isAssignableFrom(dataTerm.getDefinition().getDataClass())) {
 
 			if (dataTerm.getDataTermType().isMultiple()) {
 				QMultipleCompoundDataDef<?, ?> multipleCompoundDataDef = (QMultipleCompoundDataDef<?, ?>) dataTerm.getDefinition();

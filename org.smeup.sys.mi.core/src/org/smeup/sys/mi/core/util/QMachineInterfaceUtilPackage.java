@@ -107,15 +107,6 @@ public interface QMachineInterfaceUtilPackage extends EPackage {
 	int LISTS = 2;
 
 	/**
-	 * The number of structural features of the '<em>Lists</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LISTS_FEATURE_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.mi.core.util.QSingleton <em>Singleton</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -133,6 +124,15 @@ public interface QMachineInterfaceUtilPackage extends EPackage {
 	 * @ordered
 	 */
 	int SINGLETON_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of structural features of the '<em>Lists</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LISTS_FEATURE_COUNT = SINGLETON_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.mi.core.util.QStrings <em>Strings</em>}' class.

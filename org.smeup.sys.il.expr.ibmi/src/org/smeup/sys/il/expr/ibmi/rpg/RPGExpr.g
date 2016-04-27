@@ -265,6 +265,18 @@ SPECIAL
 		( N E X T)
 		|
 		(I S O)
+		|
+		( E Q)
+		|
+		( L T)
+		|
+		( L E)
+		|
+		( G T)
+		|
+		( G E)
+		|
+		( N E)		
 	;
 
 OR 	: 	'||' | (O R);

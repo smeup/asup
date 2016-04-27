@@ -292,7 +292,11 @@ public class MachineInterfaceUtilPackageImpl extends EPackageImpl implements QMa
 
 		// Add supertypes to classes
 		g1 = createEGenericType(this.getSingleton());
-		EGenericType g2 = createEGenericType(this.getStrings());
+		EGenericType g2 = createEGenericType(this.getLists());
+		g1.getETypeArguments().add(g2);
+		listsEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getSingleton());
+		g2 = createEGenericType(this.getStrings());
 		g1.getETypeArguments().add(g2);
 		stringsEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getSingleton());

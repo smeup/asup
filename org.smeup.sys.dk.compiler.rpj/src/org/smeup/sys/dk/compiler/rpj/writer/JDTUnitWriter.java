@@ -26,6 +26,7 @@ import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.dk.compiler.rpj.RPJExpressionNormalizer;
+import org.smeup.sys.il.data.DataComparator;
 import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.def.TimeFormat;
@@ -68,6 +69,7 @@ public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 		writeImport(QData.class);
 		writeImport(Specials.class);
 		writeImport(DatetimeFormat.class);
+		writeImport(DataComparator.class);
 		writeImport(TimeFormat.class);
 		
 		VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();

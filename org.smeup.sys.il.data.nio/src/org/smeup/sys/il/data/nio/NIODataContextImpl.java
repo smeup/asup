@@ -1,10 +1,12 @@
 package org.smeup.sys.il.data.nio;
 
 import java.nio.charset.Charset;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataAreaFactory;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
@@ -32,7 +34,6 @@ public class NIODataContextImpl implements QDataContext {
 		dataFactory = new NIODataFactoryImpl(this, dataAreaFactory);
 		found = dataFactory.createIndicator(true);
 		endOfData = dataFactory.createIndicator(true);
-
 		this.temporaryString = new NIOCharacterVaryingImpl(this, 64000, true);
 	}
 	
@@ -77,11 +78,12 @@ public class NIODataContextImpl implements QDataContext {
 
 	@Override
 	public void snap(QBufferedData data) {
+				
+		QCharacter snapData = new NIOCharacterImpl(this, data.getSize(), true);
+		NIOBufferHelper.write(snapData, data);
 		
-		NIOBufferedDataImpl nioBufferedDataImpl = (NIOBufferedDataImpl)data;		
-		QBufferedData snapData = (QBufferedData) nioBufferedDataImpl.copy();
-		nioBufferedDataImpl.assign(snapData);
-		
+		if(snapshots == null)
+			snapshots = new HashMap<QBufferedData, QBufferedData>();
 		snapshots.put(data, snapData);
 	}
 

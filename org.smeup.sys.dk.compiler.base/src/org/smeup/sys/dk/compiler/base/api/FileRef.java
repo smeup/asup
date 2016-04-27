@@ -20,5 +20,4 @@ public class FileRef extends QDataStructWrapper {
 
 	@DataDef(length = 10)
 	public QCharacter library;
-
 }
