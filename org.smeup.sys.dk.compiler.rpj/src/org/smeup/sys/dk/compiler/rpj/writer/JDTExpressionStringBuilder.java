@@ -960,11 +960,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		Class<?> objectTarget = null;
 		if (!expression.getElements().isEmpty()) {
 			QExpression expressionChild = expression.getElements().get(0);
+			
 			if (!CompilationContextHelper.isPrimitive(compilationUnit, expressionChild))
-				objectTarget = CompilationContextHelper.getTargetClass(compilationUnit, expressionChild, false);
-			else {
-				
-			}
+				objectTarget = CompilationContextHelper.getTargetClass(compilationUnit, expressionChild, false); 
 		}
 
 		QPrototype method = compilationUnit.getMethod(objectTarget, expression.getValue());

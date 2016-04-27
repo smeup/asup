@@ -1003,7 +1003,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				if (eOperation.getEType() == null)
 					continue;
 
-				if(prototype != null && prototype.getEntry().getParameters().size() >= eOperation.getEParameters().size())
+				if(prototype != null && prototype.getEntry() != null && prototype.getEntry().getParameters().size() >= eOperation.getEParameters().size())
 					continue;
 					
 				prototype = QIntegratedLanguageFlowFactory.eINSTANCE.createPrototype();

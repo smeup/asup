@@ -942,9 +942,10 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		refactUnit(callableUnit);
 
 		// main
-		if (callableUnit.getFlowSection() != null)
-			for (QUnit unit : callableUnit.getFlowSection().getRoutines())
-				refactUnit(unit);
+		if (callableUnit.getFlowSection() != null) {
+			for (QUnit routine : callableUnit.getFlowSection().getRoutines())
+				refactUnit(routine);
+		}
 	}
 
 	protected Expression buildExpression(String expression) {
