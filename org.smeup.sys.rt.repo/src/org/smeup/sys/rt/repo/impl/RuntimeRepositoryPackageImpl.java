@@ -13,6 +13,8 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.rt.core.QRuntimeCorePackage;
 
 import org.smeup.sys.rt.repo.QRepositoryManager;
@@ -81,6 +83,8 @@ public class RuntimeRepositoryPackageImpl extends EPackageImpl implements QRunti
 
 		// Initialize simple dependencies
 		QRuntimeCorePackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataDefPackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataTermPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theRuntimeRepositoryPackage.createPackageContents();
@@ -111,7 +115,7 @@ public class RuntimeRepositoryPackageImpl extends EPackageImpl implements QRunti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getRepositoryManager__CheckUpdates__QApplication() {
+	public EOperation getRepositoryManager__CheckUpdates__String() {
 		return repositoryManagerEClass.getEOperations().get(0);
 	}
 
@@ -120,26 +124,8 @@ public class RuntimeRepositoryPackageImpl extends EPackageImpl implements QRunti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getRepositoryManager__UpdateApplication__QApplication() {
+	public EOperation getRepositoryManager__Update__String() {
 		return repositoryManagerEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getRepositoryManager__CheckUpdates__QApplicationComponent() {
-		return repositoryManagerEClass.getEOperations().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getRepositoryManager__UpdateComponent__QApplicationComponent() {
-		return repositoryManagerEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -171,10 +157,8 @@ public class RuntimeRepositoryPackageImpl extends EPackageImpl implements QRunti
 
 		// Create classes and their features
 		repositoryManagerEClass = createEClass(REPOSITORY_MANAGER);
-		createEOperation(repositoryManagerEClass, REPOSITORY_MANAGER___CHECK_UPDATES__QAPPLICATION);
-		createEOperation(repositoryManagerEClass, REPOSITORY_MANAGER___UPDATE_APPLICATION__QAPPLICATION);
-		createEOperation(repositoryManagerEClass, REPOSITORY_MANAGER___CHECK_UPDATES__QAPPLICATIONCOMPONENT);
-		createEOperation(repositoryManagerEClass, REPOSITORY_MANAGER___UPDATE_COMPONENT__QAPPLICATIONCOMPONENT);
+		createEOperation(repositoryManagerEClass, REPOSITORY_MANAGER___CHECK_UPDATES__STRING);
+		createEOperation(repositoryManagerEClass, REPOSITORY_MANAGER___UPDATE__STRING);
 	}
 
 	/**
@@ -200,9 +184,6 @@ public class RuntimeRepositoryPackageImpl extends EPackageImpl implements QRunti
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
-		// Obtain other dependent packages
-		QRuntimeCorePackage theRuntimeCorePackage = (QRuntimeCorePackage)EPackage.Registry.INSTANCE.getEPackage(QRuntimeCorePackage.eNS_URI);
-
 		// Create type parameters
 
 		// Set bounds for type parameters
@@ -212,17 +193,11 @@ public class RuntimeRepositoryPackageImpl extends EPackageImpl implements QRunti
 		// Initialize classes, features, and operations; add parameters
 		initEClass(repositoryManagerEClass, QRepositoryManager.class, "RepositoryManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = initEOperation(getRepositoryManager__CheckUpdates__QApplication(), ecorePackage.getEBoolean(), "checkUpdates", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theRuntimeCorePackage.getApplication(), "application", 1, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getRepositoryManager__CheckUpdates__String(), ecorePackage.getEBoolean(), "checkUpdates", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "repositoryLocation", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getRepositoryManager__UpdateApplication__QApplication(), null, "updateApplication", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theRuntimeCorePackage.getApplication(), "application", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = initEOperation(getRepositoryManager__CheckUpdates__QApplicationComponent(), ecorePackage.getEBoolean(), "checkUpdates", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theRuntimeCorePackage.getApplicationComponent(), "component", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = initEOperation(getRepositoryManager__UpdateComponent__QApplicationComponent(), null, "updateComponent", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theRuntimeCorePackage.getApplicationComponent(), "component", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getRepositoryManager__Update__String(), ecorePackage.getEBoolean(), "update", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "repositoryLocation", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

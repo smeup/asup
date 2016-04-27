@@ -86,34 +86,16 @@ public interface QRuntimeRepositoryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REPOSITORY_MANAGER___CHECK_UPDATES__QAPPLICATION = 0;
+	int REPOSITORY_MANAGER___CHECK_UPDATES__STRING = 0;
 
 	/**
-	 * The operation id for the '<em>Update Application</em>' operation.
+	 * The operation id for the '<em>Update</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REPOSITORY_MANAGER___UPDATE_APPLICATION__QAPPLICATION = 1;
-
-	/**
-	 * The operation id for the '<em>Check Updates</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPOSITORY_MANAGER___CHECK_UPDATES__QAPPLICATIONCOMPONENT = 2;
-
-	/**
-	 * The operation id for the '<em>Update Component</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPOSITORY_MANAGER___UPDATE_COMPONENT__QAPPLICATIONCOMPONENT = 3;
+	int REPOSITORY_MANAGER___UPDATE__STRING = 1;
 
 	/**
 	 * The number of operations of the '<em>Repository Manager</em>' class.
@@ -122,7 +104,7 @@ public interface QRuntimeRepositoryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REPOSITORY_MANAGER_OPERATION_COUNT = 4;
+	int REPOSITORY_MANAGER_OPERATION_COUNT = 2;
 
 
 	/**
@@ -136,44 +118,24 @@ public interface QRuntimeRepositoryPackage extends EPackage {
 	EClass getRepositoryManager();
 
 	/**
-	 * Returns the meta object for the '{@link org.smeup.sys.rt.repo.QRepositoryManager#checkUpdates(org.smeup.sys.rt.core.QApplication) <em>Check Updates</em>}' operation.
+	 * Returns the meta object for the '{@link org.smeup.sys.rt.repo.QRepositoryManager#checkUpdates(java.lang.String) <em>Check Updates</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Check Updates</em>' operation.
-	 * @see org.smeup.sys.rt.repo.QRepositoryManager#checkUpdates(org.smeup.sys.rt.core.QApplication)
+	 * @see org.smeup.sys.rt.repo.QRepositoryManager#checkUpdates(java.lang.String)
 	 * @generated
 	 */
-	EOperation getRepositoryManager__CheckUpdates__QApplication();
+	EOperation getRepositoryManager__CheckUpdates__String();
 
 	/**
-	 * Returns the meta object for the '{@link org.smeup.sys.rt.repo.QRepositoryManager#updateApplication(org.smeup.sys.rt.core.QApplication) <em>Update Application</em>}' operation.
+	 * Returns the meta object for the '{@link org.smeup.sys.rt.repo.QRepositoryManager#update(java.lang.String) <em>Update</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Update Application</em>' operation.
-	 * @see org.smeup.sys.rt.repo.QRepositoryManager#updateApplication(org.smeup.sys.rt.core.QApplication)
+	 * @return the meta object for the '<em>Update</em>' operation.
+	 * @see org.smeup.sys.rt.repo.QRepositoryManager#update(java.lang.String)
 	 * @generated
 	 */
-	EOperation getRepositoryManager__UpdateApplication__QApplication();
-
-	/**
-	 * Returns the meta object for the '{@link org.smeup.sys.rt.repo.QRepositoryManager#checkUpdates(org.smeup.sys.rt.core.QApplicationComponent) <em>Check Updates</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Check Updates</em>' operation.
-	 * @see org.smeup.sys.rt.repo.QRepositoryManager#checkUpdates(org.smeup.sys.rt.core.QApplicationComponent)
-	 * @generated
-	 */
-	EOperation getRepositoryManager__CheckUpdates__QApplicationComponent();
-
-	/**
-	 * Returns the meta object for the '{@link org.smeup.sys.rt.repo.QRepositoryManager#updateComponent(org.smeup.sys.rt.core.QApplicationComponent) <em>Update Component</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Update Component</em>' operation.
-	 * @see org.smeup.sys.rt.repo.QRepositoryManager#updateComponent(org.smeup.sys.rt.core.QApplicationComponent)
-	 * @generated
-	 */
-	EOperation getRepositoryManager__UpdateComponent__QApplicationComponent();
+	EOperation getRepositoryManager__Update__String();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -214,31 +176,15 @@ public interface QRuntimeRepositoryPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation REPOSITORY_MANAGER___CHECK_UPDATES__QAPPLICATION = eINSTANCE.getRepositoryManager__CheckUpdates__QApplication();
+		EOperation REPOSITORY_MANAGER___CHECK_UPDATES__STRING = eINSTANCE.getRepositoryManager__CheckUpdates__String();
 
 		/**
-		 * The meta object literal for the '<em><b>Update Application</b></em>' operation.
+		 * The meta object literal for the '<em><b>Update</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation REPOSITORY_MANAGER___UPDATE_APPLICATION__QAPPLICATION = eINSTANCE.getRepositoryManager__UpdateApplication__QApplication();
-
-		/**
-		 * The meta object literal for the '<em><b>Check Updates</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation REPOSITORY_MANAGER___CHECK_UPDATES__QAPPLICATIONCOMPONENT = eINSTANCE.getRepositoryManager__CheckUpdates__QApplicationComponent();
-
-		/**
-		 * The meta object literal for the '<em><b>Update Component</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation REPOSITORY_MANAGER___UPDATE_COMPONENT__QAPPLICATIONCOMPONENT = eINSTANCE.getRepositoryManager__UpdateComponent__QApplicationComponent();
+		EOperation REPOSITORY_MANAGER___UPDATE__STRING = eINSTANCE.getRepositoryManager__Update__String();
 
 	}
 

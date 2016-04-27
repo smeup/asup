@@ -39,25 +39,6 @@ public class RespositoryTester {
 
 		if(true)
 			return;
-		
-		try{
-			repositoryManager.checkUpdates(application);
-			
-			for(QApplicationComponent component: application.getComponents()) {
-				if(!repositoryManager.checkUpdates(component))
-					System.out.println(component);				
-			}
-			
-			if(repositoryManager.checkUpdates(application)) {
-				repositoryManager.updateApplication(application);
-				
-				applicationManager.restart();
-			}
-			testAsserter.success("");
-		} catch(Exception exc) {
-			testAsserter.fail("Repository tester failed: " + exc.getMessage());
-		}
-		
 	}
 	
 	
