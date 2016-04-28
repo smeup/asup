@@ -147,13 +147,12 @@ public class E4RepositoryManagerImpl implements QRepositoryManager {
 		// Load repo
 		try {
 			URI repoLocation = new URI(repositoryLocation);
+						
+			metadataManager.addRepository(repoLocation);
+			artifactManager.addRepository(repoLocation);			
+			metadataManager.loadRepository(repoLocation, new NullProgressMonitor());
+			artifactManager.loadRepository(repoLocation, new NullProgressMonitor());
 			
-			if (metadataManager.contains(repoLocation) == false) {
-				metadataManager.addRepository(repoLocation);
-				artifactManager.addRepository(repoLocation);			
-				metadataManager.loadRepository(repoLocation, new NullProgressMonitor());
-				artifactManager.loadRepository(repoLocation, new NullProgressMonitor());
-			}
 
 		} catch (ProvisionException pe) {
 			System.out.println("Caught provisioning exception " + pe.getMessage()/* , pe */);
