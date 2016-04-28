@@ -23,7 +23,6 @@ import org.smeup.sys.il.data.QBufferedElementDelegator;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataFiller;
-import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
 
@@ -437,10 +436,10 @@ public class NIOBufferHelper {
 				element.movel(value, true);
 				break;
 			case NUMERIC:
-				((QNumeric) element).eval(new BigDecimal(value), true);
+				element.move(new BigDecimal(value), true);
 				break;
 			case STRING:
-				((QString) element).eval(value);
+				element.movel(value, true);
 				break;
 			}
 		}
@@ -461,7 +460,7 @@ public class NIOBufferHelper {
 				bufferedList.movel(value, true);
 				break;
 			case NUMERIC:
-				bufferedList.eval(new BigDecimal(value), true);
+				bufferedList.movel(new BigDecimal(value), true);
 				break;
 			case STRING:
 				bufferedList.eval(value);
