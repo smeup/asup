@@ -24,7 +24,7 @@ import org.smeup.sys.il.esam.QAccessFactory;
 import org.smeup.sys.il.esam.QKSDataSet;
 import org.smeup.sys.il.esam.test.dbf.MUTEST0F;
 
-@Test(category = "ILESAM", object = "RRDS")
+@Test(object = "RRDS")
 public class KSDS_write {
 
 	@Inject

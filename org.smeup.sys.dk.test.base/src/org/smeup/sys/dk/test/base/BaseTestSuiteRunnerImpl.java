@@ -23,6 +23,7 @@ import org.smeup.sys.dk.test.QTestRunnerEvent;
 import org.smeup.sys.dk.test.QTestSuiteRunner;
 import org.smeup.sys.dk.test.QTestUnitRunner;
 import org.smeup.sys.dk.test.TestRunnerEventType;
+import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.dk.test.annotation.TestStopped;
 import org.smeup.sys.il.core.ctx.QContext;
@@ -30,17 +31,23 @@ import org.smeup.sys.il.core.ctx.QContext;
 public abstract class BaseTestSuiteRunnerImpl extends BaseTestRunnerImpl implements QTestSuiteRunner {
 
 	private QTestManager testManager;
-	
-	public BaseTestSuiteRunnerImpl(QContext context, QTestManager testManager) {
+	private String category;
+
+	public BaseTestSuiteRunnerImpl(QContext context, QTestManager testManager, String category) {
 		super(context);
 		this.testManager = testManager;
+		this.category = category;
 	}
 
 	/*
 	 * Return the list of test classes to execute
 	 */
 	public abstract Collection<Class<?>> getTestClassList();
-
+	
+	protected String getCategory() {
+		return category;
+	}
+	
 	@Override
 	public List<QTestResult> call() {
 
@@ -61,6 +68,11 @@ public abstract class BaseTestSuiteRunnerImpl extends BaseTestRunnerImpl impleme
 			QTestResult testResult;
 			try {
 				testResult = testRunner.call();
+				if(testResult.getCategory() == null) {
+					Test testSuite = this.getClass().getAnnotation(Test.class);
+					if(testSuite != null && !testSuite.category().isEmpty())
+						testResult.setCategory(testSuite.category());
+				}
 				testResults.add(testResult);
 			} catch (Exception e) {
 				throw new DevelopmentKitTestRuntimeException(e); 

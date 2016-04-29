@@ -47,8 +47,10 @@ public class BaseTestUnitRunnerImpl extends BaseTestRunnerImpl implements QTestU
 		QTestResult testResult = QDevelopmentKitTestFactory.eINSTANCE.createTestResult();
 
 		Test test = testClass.getAnnotation(Test.class);
-		testResult.setCategory(test.category());
-		testResult.setObject(test.object());
+		if(!test.category().isEmpty())
+			testResult.setCategory(test.category());
+		if(test.object() != null)
+			testResult.setObject(test.object());
 		testResult.setRunner(testClass.getSimpleName());
 
 		QTestAsserter testAsserter = new BaseTestAsserterImpl(testResult);

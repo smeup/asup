@@ -20,7 +20,7 @@ import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 
-@Test(category = "DB.CORE", object = "Connection")
+@Test(object = "Connection")
 public class Connection {
 
 	@Inject

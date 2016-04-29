@@ -23,7 +23,7 @@ import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.dk.test.base.BaseTestHelper;
 
-@Test(category = "DB.SYNTAX", object = "DDL")
+@Test(object = "DDL")
 public class ParseDDL {
 
 	@Inject

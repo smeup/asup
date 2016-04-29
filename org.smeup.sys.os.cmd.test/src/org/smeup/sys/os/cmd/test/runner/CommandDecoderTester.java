@@ -26,7 +26,7 @@ import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.jobs.QJob;
 
-@Test(category = "OSCmd", object = "Decoder")
+@Test(object = "Decoder")
 public class CommandDecoderTester {
 
 

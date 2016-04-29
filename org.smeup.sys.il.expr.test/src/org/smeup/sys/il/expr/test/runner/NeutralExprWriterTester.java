@@ -24,7 +24,7 @@ import org.smeup.sys.il.expr.QExpressionParserRegistry;
 import org.smeup.sys.il.expr.QExpressionWriter;
 import org.smeup.sys.il.expr.QExpressionWriterRegistry;
 
-@Test(category = "IL.EXPR", object = "NWRI")
+@Test(object = "NWRI")
 public class NeutralExprWriterTester {
 
 	@Inject

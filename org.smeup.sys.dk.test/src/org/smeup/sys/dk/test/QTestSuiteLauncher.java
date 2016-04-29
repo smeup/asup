@@ -23,9 +23,9 @@ public interface QTestSuiteLauncher {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model categoryRequired="true"
 	 * @generated
 	 */
-	QTestSuiteRunner createSuite(QContext context);
+	QTestSuiteRunner createSuite(QContext context, String category);
 
 } // QTestSuiteLauncher

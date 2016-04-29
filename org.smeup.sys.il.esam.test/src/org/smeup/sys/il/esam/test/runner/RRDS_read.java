@@ -24,7 +24,7 @@ import org.smeup.sys.il.esam.QRRDataSet;
 import org.smeup.sys.il.esam.test.dbf.BRARTI0F;
 import org.smeup.sys.il.esam.test.dbf.BRENTI0F;
 
-@Test(category = "ILESAM", object = "RRDS")
+@Test(object = "RRDS")
 public class RRDS_read {
 
 	@Inject

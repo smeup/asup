@@ -24,7 +24,7 @@ public class DBCoreTestLauncherImpl implements QTestSuiteLauncher {
 	private QTestManager testManager;
 	
 	@Override
-	public QTestSuiteRunner createSuite(QContext context) {
-		return new DBCoreTestSuiteRunnerImpl(context, testManager);
+	public QTestSuiteRunner createSuite(QContext context, String category) {
+		return new DBCoreTestSuiteRunnerImpl(context, testManager, category);
 	}	
 }

@@ -18,8 +18,8 @@ import org.smeup.sys.il.core.ctx.QContext;
 
 public abstract class BaseTestSuiteDirectoryRunnerImpl extends BaseTestSuiteRunnerImpl {
 
-	public BaseTestSuiteDirectoryRunnerImpl(QContext context, QTestManager testManager) {
-		super(context, testManager);
+	public BaseTestSuiteDirectoryRunnerImpl(QContext context, QTestManager testManager, String category) {
+		super(context, testManager, category);
 	}
 
 	private String runnerDirPath = "/runner/";	
@@ -34,6 +34,6 @@ public abstract class BaseTestSuiteDirectoryRunnerImpl extends BaseTestSuiteRunn
 	
 	@Override
 	public Collection<Class<?>> getTestClassList() {
-		return BaseTestHelper.findTestClasses(this, getRunnersDirPath());	
+		return BaseTestHelper.findTestClasses(this, getRunnersDirPath(), getCategory());	
 	}
 }

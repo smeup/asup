@@ -13,7 +13,7 @@ import org.smeup.sys.il.memo.test.QIntegratedLanguageMemoryTestFactory;
 import org.smeup.sys.il.memo.test.QObjectA;
 import org.smeup.sys.il.memo.test.QObjectB;
 
-@Test(category = "IL.MEMO", object = "OBJECT")
+@Test(object = "Object")
 public class TestWrite {
 
 	@Inject

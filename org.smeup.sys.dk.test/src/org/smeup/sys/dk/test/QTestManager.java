@@ -24,10 +24,10 @@ public interface QTestManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model componentRequired="true"
+	 * @model componentRequired="true" categoryRequired="true"
 	 * @generated
 	 */
-	List<QTestSuiteRunner> prepareSuiteRunner(QContext context, QTestRunnerMaker testMaker, String component);
+	List<QTestSuiteRunner> prepareSuiteRunner(QContext context, QTestRunnerMaker testMaker, String component, String category);
 
 	/**
 	 * <!-- begin-user-doc -->

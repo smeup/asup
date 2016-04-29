@@ -775,6 +775,7 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTestRunnerMaker(), "testMaker", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "component", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "category", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(testManagerEClass, this.getTestUnitRunner(), "prepareUnitRunner", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -835,6 +836,7 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 
 		op = addEOperation(testSuiteLauncherEClass, this.getTestSuiteRunner(), "createSuite", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "category", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(testSuiteRunnerEClass, QTestSuiteRunner.class, "TestSuiteRunner", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

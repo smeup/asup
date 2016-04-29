@@ -118,6 +118,7 @@
       <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
       <eParameters name="testMaker" eType="#//TestRunnerMaker"/>
       <eParameters name="component" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="category" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="prepareUnitRunner" lowerBound="1" eType="#//TestUnitRunner">
       <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
@@ -220,6 +221,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="TestSuiteLauncher" abstract="true" interface="true">
     <eOperations name="createSuite" eType="#//TestSuiteRunner">
       <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="category" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestSuiteRunner" abstract="true" interface="true">

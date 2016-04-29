@@ -45,7 +45,7 @@ import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
 import org.smeup.sys.mi.core.util.QFiles;
 
-@Test(category = "DB.CORE", object = "Definition")
+@Test(object = "Definition")
 public class Definition  {
 
 	@Inject

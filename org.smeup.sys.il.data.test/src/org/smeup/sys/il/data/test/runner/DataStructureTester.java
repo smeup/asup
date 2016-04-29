@@ -28,7 +28,7 @@ import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.annotation.DataDef;
 
-@Test(category = "IL.DATA", object = "DataStructure")
+@Test(object = "DataStructure")
 public class DataStructureTester {
 
 	@Inject

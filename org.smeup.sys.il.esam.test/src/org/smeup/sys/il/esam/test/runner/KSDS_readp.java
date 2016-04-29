@@ -23,7 +23,7 @@ import org.smeup.sys.il.esam.QAccessFactory;
 import org.smeup.sys.il.esam.QKSDataSet;
 import org.smeup.sys.il.esam.test.dbf.BRARTI2L;
 
-@Test(category = "ILESAM", object = "KSDS")
+@Test(object = "KSDS")
 public class KSDS_readp {
 
 	@Inject

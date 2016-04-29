@@ -30,7 +30,7 @@ import org.smeup.sys.os.dtaq.QDataQueue;
 import org.smeup.sys.os.dtaq.QDataQueueManager;
 import org.smeup.sys.os.lib.QLibrary;
 
-@Test(category = "OSDtaq", object = "KEYED")
+@Test(object = "KEYED")
 public class KeyedQueueTest {
 
 	@Inject

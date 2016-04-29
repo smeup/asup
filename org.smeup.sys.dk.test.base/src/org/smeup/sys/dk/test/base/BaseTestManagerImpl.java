@@ -30,7 +30,7 @@ import org.smeup.sys.dk.test.QTestUnitRunner;
 import org.smeup.sys.il.core.ctx.QContext;
 
 public class BaseTestManagerImpl implements QTestManager {
-	
+
 	@SuppressWarnings("resource")
 	@Override
 	public QTestUnitRunner prepareUnitRunner(QContext context, QTestRunnerMaker testMaker, Class<?> klass) {
@@ -54,13 +54,13 @@ public class BaseTestManagerImpl implements QTestManager {
 
 	@SuppressWarnings("resource")
 	@Override
-	public List<QTestSuiteRunner> prepareSuiteRunner(QContext context, QTestRunnerMaker testMaker, String component) {
+	public List<QTestSuiteRunner> prepareSuiteRunner(QContext context, QTestRunnerMaker testMaker, String component, String category) {
 		BundleContext bundleContext = FrameworkUtil.getBundle(QContext.class).getBundleContext();
 
 		// Search QTestLauncher services for specific component
 		String filter = null;
 
-		if (component != null && component.length() > 0) 
+		if (component != null && component.length() > 0)
 			filter = "(org.smeup.sys.rt.core.component.name=" + component + ")";
 
 		Collection<ServiceReference<QTestSuiteLauncher>> serviceReferences;
@@ -75,7 +75,7 @@ public class BaseTestManagerImpl implements QTestManager {
 			QTestSuiteLauncher testSuiteLauncher = bundleContext.getService(serviceRef);
 
 			QContext testContext = new BaseTestContextImpl(context.createChildContext(testSuiteLauncher.getClass().getSimpleName()), testMaker);
-			QTestSuiteRunner suiteRunner = testSuiteLauncher.createSuite(testContext);
+			QTestSuiteRunner suiteRunner = testSuiteLauncher.createSuite(testContext, category);
 			suiteRunners.add(suiteRunner);
 		}
 		return suiteRunners;

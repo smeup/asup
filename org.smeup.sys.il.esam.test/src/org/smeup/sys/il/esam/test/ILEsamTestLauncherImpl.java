@@ -16,17 +16,15 @@ import javax.inject.Inject;
 import org.smeup.sys.dk.test.QTestManager;
 import org.smeup.sys.dk.test.QTestSuiteLauncher;
 import org.smeup.sys.dk.test.QTestSuiteRunner;
-import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.il.core.ctx.QContext;
 
-@Test(category = "IL.ESAM")
 public class ILEsamTestLauncherImpl implements QTestSuiteLauncher {
 
 	@Inject
 	private QTestManager testManager;
 		
 	@Override
-	public QTestSuiteRunner createSuite(QContext context) {
-		return new ILEsamTestSuiteRunnerImpl(context, testManager); 
+	public QTestSuiteRunner createSuite(QContext context, String category) {
+		return new ILEsamTestSuiteRunnerImpl(context, testManager, category); 
 	}	
 }

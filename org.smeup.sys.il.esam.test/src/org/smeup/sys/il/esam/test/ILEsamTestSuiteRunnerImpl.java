@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QConnectionManager;
 import org.smeup.sys.dk.test.QTestManager;
+import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.dk.test.annotation.TestStopped;
 import org.smeup.sys.dk.test.base.BaseTestSuiteDirectoryRunnerImpl;
@@ -25,12 +26,13 @@ import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.esam.QAccessFactory;
 import org.smeup.sys.il.esam.QAccessManager;
 
+@Test(category = "ILEsam")
 public class ILEsamTestSuiteRunnerImpl extends BaseTestSuiteDirectoryRunnerImpl {
 
 	private QConnection connection;
 
-	public ILEsamTestSuiteRunnerImpl(QContext context, QTestManager testManager) {
-		super(context, testManager);
+	public ILEsamTestSuiteRunnerImpl(QContext context, QTestManager testManager, String category) {
+		super(context, testManager, category);
 	}
 
 	@TestStarted

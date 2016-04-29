@@ -22,7 +22,7 @@ import org.smeup.sys.dk.test.base.BaseTestHelper;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 
-@Test(category = "IL.EXPR", object = "RPG")
+@Test(object = "RPG")
 public class RPGExpressionTester {
 
 	@Inject

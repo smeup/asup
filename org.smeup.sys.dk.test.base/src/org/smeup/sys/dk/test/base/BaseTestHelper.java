@@ -73,7 +73,7 @@ public class BaseTestHelper {
 		return linee;
 	}
 
-	public static Collection<Class<?>> findTestClasses(Object context, String resourcePath) {
+	public static Collection<Class<?>> findTestClasses(Object context, String resourcePath, String category) {
 
 		List<Class<?>> testRunnerList = new ArrayList<Class<?>>();
 
@@ -94,13 +94,25 @@ public class BaseTestHelper {
 				continue;
 			}
 
-			Test annotation = klass.getAnnotation(Test.class);
-			if (annotation == null)
+			Test testUnit = klass.getAnnotation(Test.class);
+			if (testUnit == null)
 				continue;
 
-			testRunnerList.add(klass);
+			if (category != null) {
 
+				// unit
+				if (!testUnit.category().isEmpty() && !category.equals(testUnit.category()))
+					continue;
+
+				// suite
+				Test testSuite = context.getClass().getAnnotation(Test.class);
+				if (testSuite != null && !testSuite.category().isEmpty() && !category.equals(testSuite.category()))
+					continue;
+			}
+
+			testRunnerList.add(klass);
 		}
+
 		Comparator<Class<?>> comparator = new Comparator<Class<?>>() {
 
 			@Override
@@ -108,9 +120,9 @@ public class BaseTestHelper {
 				return o1.getName().compareTo(o2.getName());
 			}
 		};
-		
-		Collections.sort(testRunnerList, comparator );
-		
+
+		Collections.sort(testRunnerList, comparator);
+
 		return testRunnerList;
 	}
 }

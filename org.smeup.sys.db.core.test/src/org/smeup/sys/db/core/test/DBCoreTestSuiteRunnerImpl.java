@@ -22,13 +22,13 @@ import org.smeup.sys.dk.test.annotation.TestStopped;
 import org.smeup.sys.dk.test.base.BaseTestSuiteDirectoryRunnerImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 
-@Test(category = "DB.CORE")
+@Test(category = "DBCore")
 public class DBCoreTestSuiteRunnerImpl extends BaseTestSuiteDirectoryRunnerImpl {
 
 	private QConnection connection;
 
-	public DBCoreTestSuiteRunnerImpl(QContext context, QTestManager testManager) {
-		super(context, testManager);
+	public DBCoreTestSuiteRunnerImpl(QContext context, QTestManager testManager, String category) {
+		super(context, testManager, category);
 	}
 
 	@TestStarted

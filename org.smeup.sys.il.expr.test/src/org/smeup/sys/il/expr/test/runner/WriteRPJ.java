@@ -22,7 +22,7 @@ import org.smeup.sys.il.expr.QExpressionParserRegistry;
 import org.smeup.sys.il.expr.QExpressionWriter;
 import org.smeup.sys.il.expr.QExpressionWriterRegistry;
 
-@Test(category = "DK.COMPILER", object = "RPJ")
+@Test(object = "RPJ")
 public class WriteRPJ {
 
 	@Inject

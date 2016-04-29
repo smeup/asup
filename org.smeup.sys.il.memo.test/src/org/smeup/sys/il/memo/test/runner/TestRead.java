@@ -12,7 +12,7 @@ import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.il.memo.test.QObjectA;
 
-@Test(category = "IL.MEMO", object = "OBJECT")
+@Test(object = "Object")
 public class TestRead {
 	@Inject
 	private QResourceManager resourceManager;

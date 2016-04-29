@@ -24,7 +24,7 @@ public class DBSyntaxTestLauncherImpl implements QTestSuiteLauncher {
 	private QTestManager testManager;
 
 	@Override
-	public QTestSuiteRunner createSuite(QContext context) {
-		return new DBSyntaxTestSuiteRunnerImpl(context, testManager);
+	public QTestSuiteRunner createSuite(QContext context, String category) {
+		return new DBSyntaxTestSuiteRunnerImpl(context, testManager, category);
 	}
 }

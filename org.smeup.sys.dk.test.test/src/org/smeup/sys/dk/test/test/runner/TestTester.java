@@ -17,7 +17,7 @@ import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 
-@Test(category = "DK.TEST", object = "ASSERTER")
+@Test(object = "Asserter")
 public class TestTester {
 
 	@Inject

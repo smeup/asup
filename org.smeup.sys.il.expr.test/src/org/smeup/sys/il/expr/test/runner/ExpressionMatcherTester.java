@@ -24,7 +24,7 @@ import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 
-@Test(category = "IL.EXPR", object = "MTC")
+@Test(object = "MTC")
 public class ExpressionMatcherTester {
 
 	@Inject

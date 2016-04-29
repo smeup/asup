@@ -27,7 +27,7 @@ import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 
-@Test(category = "DK.SOURCE", object = "Manager")
+@Test(object = "Manager")
 public class SourceTester {
 
 	@Inject

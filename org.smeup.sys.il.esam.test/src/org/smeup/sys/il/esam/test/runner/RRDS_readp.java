@@ -23,7 +23,7 @@ import org.smeup.sys.il.esam.QAccessFactory;
 import org.smeup.sys.il.esam.QRRDataSet;
 import org.smeup.sys.il.esam.test.dbf.BRARTI0F;
 
-@Test(category = "ILESAM", object = "RRDS")
+@Test(object = "RRDS")
 public class RRDS_readp {
 
 	@Inject

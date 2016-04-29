@@ -21,7 +21,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataManager;
 
-@Test(category = "IL.DATA", object = "Hexadecimal")
+@Test(object = "Hexadecimal")
 public class HexadecimalTester {
 
 	@Inject

@@ -21,7 +21,7 @@ import org.smeup.sys.rt.core.QApplicationComponent;
 import org.smeup.sys.rt.core.QApplicationManager;
 import org.smeup.sys.rt.repo.QRepositoryManager;
 
-@Test(category = "RT.REPO", object = "Repository")
+@Test(object = "Repository")
 public class RespositoryTester {
 
 	@Inject

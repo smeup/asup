@@ -21,15 +21,21 @@ import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.base.BaseTestSuiteDirectoryRunnerImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 
-@Test(category = "OSCmd")
 public class OSCmdTestLauncherImpl implements QTestSuiteLauncher {
 
 	@Inject
 	private QTestManager testManager;
 
 	@Override
-	public QTestSuiteRunner createSuite(QContext context) {
-		return new BaseTestSuiteDirectoryRunnerImpl(context, testManager) {
-		};
+	public QTestSuiteRunner createSuite(QContext context, String category) {
+		return new InternalSuiteDirectoryRunnerImpl(context, testManager, category);
+	}
+
+	@Test(category = "OSCmd")
+	private class InternalSuiteDirectoryRunnerImpl extends BaseTestSuiteDirectoryRunnerImpl {
+
+		public InternalSuiteDirectoryRunnerImpl(QContext context, QTestManager testManager, String category) {
+			super(context, testManager, category);
+		}		
 	}
 }
