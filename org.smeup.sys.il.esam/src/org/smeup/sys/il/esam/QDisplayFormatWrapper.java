@@ -9,6 +9,7 @@ package org.smeup.sys.il.esam;
 
 import java.lang.reflect.Field;
 
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QIndicator;
@@ -19,6 +20,37 @@ public abstract class QDisplayFormatWrapper<E extends Enum<E>> {
 
 	public QDisplayFormatWrapper(Class<E> fieldsEnum) {
 		this.fieldsEnum = fieldsEnum;
+	}
+	
+	public void snap() {
+
+		for (Field field : fieldsEnum.getFields()) {
+			try {
+				Field formatField = this.getClass().getField(field.getName().toLowerCase());
+				Object value = formatField.get(this);
+				if(value instanceof QBufferedData) {
+					QBufferedData bufferedData = (QBufferedData) value;
+					bufferedData.snap();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void reset() {
+		for (Field field : fieldsEnum.getFields()) {
+			try {
+				Field formatField = this.getClass().getField(field.getName().toLowerCase());
+				Object value = formatField.get(this);
+				if(value instanceof QBufferedData) {
+					QBufferedData bufferedData = (QBufferedData) value;
+					bufferedData.reset();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public void clear() {

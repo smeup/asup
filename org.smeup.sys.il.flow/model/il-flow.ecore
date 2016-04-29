@@ -216,9 +216,6 @@
       </eTypeArguments>
     </eGenericSuperTypes>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Reset" eSuperTypes="#//Invoke">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="object" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Return" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -359,12 +356,6 @@
     </eOperations>
     <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="statement" eType="#//While"/>
-    </eOperations>
-    <eOperations name="endVisit">
-      <eParameters name="statement" eType="#//Reset"/>
-    </eOperations>
-    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="statement" eType="#//Reset"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Unit" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//term/NamedNode">

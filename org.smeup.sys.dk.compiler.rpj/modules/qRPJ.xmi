@@ -574,44 +574,6 @@
       </entry>
     </prototypes>
     <prototypes
-        name="%diff">
-      <definition
-          xsi:type="il-data-def:NumericDef"/>
-      <entry>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              name="op1">
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:DatetimeDef"/>
-          </delegate>
-        </parameters>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              name="op2">
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:DatetimeDef"/>
-          </delegate>
-        </parameters>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              constant="true"
-              name="format">
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:StringDef"/>
-          </delegate>
-        </parameters>
-      </entry>
-    </prototypes>
-    <prototypes
         name="%display">
       <entry>
         <parameters>

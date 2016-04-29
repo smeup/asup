@@ -967,4 +967,9 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	public void eval(QScroller<? extends QString> value) {
 		current().eval(value.current());
 	}
+	
+	@Override
+	public void eval(QStroller<? extends QDataStruct> value) {
+		current().eval(value.current());
+	}
 }

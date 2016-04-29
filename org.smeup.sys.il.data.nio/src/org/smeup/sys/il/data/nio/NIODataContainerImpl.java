@@ -383,8 +383,10 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataTerm.getDefinition();
 			}
 
-			if (dataTerm.getDefault() == null && compoundDataDef.getClassDelegator() != null)
-				dataStruct.reset();
+			if (dataTerm.getDefault() == null && compoundDataDef.getClassDelegator() != null) {
+				if(compoundDataDef.isInitialized())
+					dataStruct.reset();
+			}
 			else {
 				if (dataTerm.getDefault() != null) {
 					QSpecialElement specialElement = getSpecialElement(dataTerm, dataTerm.getDefault().getValue());
@@ -436,8 +438,10 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			// set default on first element
 			dataStruct = stroller.first();
 
-			if (dataTerm.getDefault() == null && compoundDataDef.getClassDelegator() != null)
-				dataStruct.reset();
+			if (dataTerm.getDefault() == null && compoundDataDef.getClassDelegator() != null) {
+				if(compoundDataDef.isInitialized())
+					dataStruct.reset();
+			}
 			else {
 				if (dataTerm.getDefault() != null) {
 					QSpecialElement specialElement = getSpecialElement(dataTerm, dataTerm.getDefault().getValue());

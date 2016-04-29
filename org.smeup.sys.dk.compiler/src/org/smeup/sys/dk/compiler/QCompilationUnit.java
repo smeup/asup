@@ -15,6 +15,7 @@ import org.smeup.sys.db.esql.QStatementTerm;
 import org.smeup.sys.il.core.QNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.core.term.QNamedNode;
+import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QDataSetTerm;
 import org.smeup.sys.il.esam.QDisplayTerm;
@@ -146,7 +147,7 @@ public interface QCompilationUnit extends QContextProvider, Closeable {
 	 * @model required="true" nameRequired="true"
 	 * @generated
 	 */
-	QPrototype getMethod(Class<?> target, String name);
+	QPrototype getMethod(Class<? extends QData> target, String name);
 
 	/**
 	 * <!-- begin-user-doc -->

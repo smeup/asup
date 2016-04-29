@@ -60,7 +60,6 @@ import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QProcedureExec;
 import org.smeup.sys.il.flow.QProgram;
 import org.smeup.sys.il.flow.QPrototype;
-import org.smeup.sys.il.flow.QReset;
 import org.smeup.sys.il.flow.QReturn;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.il.flow.QRoutineExec;
@@ -274,12 +273,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass prototypeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass resetEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1251,24 +1244,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	@Override
-	public EClass getReset() {
-		return resetEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getReset_Object() {
-		return (EAttribute)resetEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getReturn() {
 		return returnEClass;
 	}
@@ -1669,9 +1644,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		prototypeEClass = createEClass(PROTOTYPE);
 		createEReference(prototypeEClass, PROTOTYPE__ENTRY);
 
-		resetEClass = createEClass(RESET);
-		createEAttribute(resetEClass, RESET__OBJECT);
-
 		returnEClass = createEClass(RETURN);
 		createEAttribute(returnEClass, RETURN__VALUE);
 
@@ -1792,7 +1764,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);
 		prototypeEClass.getEGenericSuperTypes().add(g1);
-		resetEClass.getESuperTypes().add(this.getInvoke());
 		returnEClass.getESuperTypes().add(this.getStatement());
 		routineEClass.getESuperTypes().add(this.getUnit());
 		routineExecEClass.getESuperTypes().add(this.getInvoke());
@@ -1942,9 +1913,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		initEClass(prototypeEClass, QPrototype.class, "Prototype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPrototype_Entry(), this.getEntry(), null, "entry", null, 0, 1, QPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(resetEClass, QReset.class, "Reset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getReset_Object(), ecorePackage.getEString(), "object", null, 0, 1, QReset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(returnEClass, QReturn.class, "Return", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getReturn_Value(), ecorePackage.getEString(), "value", null, 1, 1, QReturn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2084,12 +2052,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(statementVisitorEClass, ecorePackage.getEBoolean(), "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getWhile(), "statement", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(statementVisitorEClass, null, "endVisit", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getReset(), "statement", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(statementVisitorEClass, ecorePackage.getEBoolean(), "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getReset(), "statement", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(unitEClass, QUnit.class, "Unit", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUnit_Name(), ecorePackage.getEString(), "name", null, 0, 1, QUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -29,7 +29,6 @@ import org.smeup.sys.il.flow.QMethodExec;
 import org.smeup.sys.il.flow.QMonitor;
 import org.smeup.sys.il.flow.QOnError;
 import org.smeup.sys.il.flow.QProcedureExec;
-import org.smeup.sys.il.flow.QReset;
 import org.smeup.sys.il.flow.QReturn;
 import org.smeup.sys.il.flow.QRoutineExec;
 import org.smeup.sys.il.flow.QSQLExec;
@@ -247,14 +246,6 @@ public abstract class RPJStatementRewriter extends StatementVisitorImpl {
 
 	@Override
 	public boolean visit(QSQLExec statement) {
-
-		write((QStatement) EcoreUtil.copy((EObject) statement));
-
-		return false;
-	}
-
-	@Override
-	public boolean visit(QReset statement) {
 
 		write((QStatement) EcoreUtil.copy((EObject) statement));
 

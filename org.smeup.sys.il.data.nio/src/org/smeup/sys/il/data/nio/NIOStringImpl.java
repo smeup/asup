@@ -23,6 +23,7 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
@@ -30,6 +31,7 @@ import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.mi.core.util.QStrings;
 
@@ -337,6 +339,11 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	public final void eval(QScroller<? extends QString> value) {
+		_write(value.current().asBytes());
+	}
+
+	@Override
+	public final void eval(QStroller<? extends QDataStruct> value) {
 		_write(value.current().asBytes());
 	}
 	

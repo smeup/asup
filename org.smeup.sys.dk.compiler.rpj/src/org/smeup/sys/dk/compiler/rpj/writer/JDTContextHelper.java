@@ -18,10 +18,12 @@ import java.util.List;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.data.DataSpecial;
+import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.QArrayDef;
 import org.smeup.sys.il.data.def.QPointerDef;
@@ -38,7 +40,7 @@ import org.smeup.sys.il.expr.QFunctionTermExpression;
 import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QPrototype;
 
-public class CompilationContextHelper {
+public class JDTContextHelper {
 
 	public static boolean isPrimitive(QCompilationUnit compilationUnit, QExpression expression) {
 
@@ -80,9 +82,11 @@ public class CompilationContextHelper {
 
 			return isPrimitive(compilationUnit, blockExpression.getExpression());
 		case FUNCTION:
+			QFunctionTermExpression functionExpression = (QFunctionTermExpression) expression;
+			return getTargetClass(compilationUnit, functionExpression, false) == null;
+			
 		case QUALIFIED:
 			QCompoundTermExpression compoundTermExpression = (QCompoundTermExpression) expression;
-
 			QNamedNode namedNode = compilationUnit.getNamedNode(compoundTermExpression.getValue(), true);
 			QDataTerm<?> dataTerm = getDataTerm(namedNode);
 			if (dataTerm == null)
@@ -209,6 +213,9 @@ public class CompilationContextHelper {
 				return dataTerm.getDefinition() instanceof QPointerDef;
 			}
 		case FUNCTION:
+			QFunctionTermExpression functionExpression = (QFunctionTermExpression) expression;
+			return QPointer.class.isAssignableFrom(getTargetClass(compilationUnit, functionExpression, false));
+
 		case QUALIFIED:
 			QCompoundTermExpression compoundTermExpression = (QCompoundTermExpression) expression;
 
@@ -217,10 +224,18 @@ public class CompilationContextHelper {
 			if (dataTerm == null)
 				return false;
 
-			return dataTerm.getDefinition() instanceof QPointerDef;
-		default:
+			return QPointer.class.isAssignableFrom(dataTerm.getDefinition().getDataClass());
+		case ARITHMETIC:
+		case ARRAY:
+		case ASSIGNMENT:
+		case BLOCK:
+		case BOOLEAN:
+		case LOGICAL:
+		case RELATIONAL:
 			return false;
 		}
+		
+		return false;
 	}
 
 	public static Class<?> getTargetClass(QCompilationUnit compilationUnit, QExpression expression, boolean primitive) {
@@ -272,34 +287,9 @@ public class CompilationContextHelper {
 			return getTargetClass(compilationUnit, blockExpression.getExpression(), primitive);
 		case FUNCTION:
 			QFunctionTermExpression functionExpression = (QFunctionTermExpression) expression;
-
-			if (!functionExpression.getElements().isEmpty()) {
-
-				// check array
-				QDataTerm<?> dataTerm = compilationUnit.getDataTerm(functionExpression.getValue(), true);
-				if (dataTerm != null && dataTerm.getDefinition() instanceof QArrayDef<?>) {
-					QArrayDef<?> arrayDef = (QArrayDef<?>) dataTerm.getDefinition();
-					if (primitive)
-						return arrayDef.getArgument().getJavaClass();
-					else
-						return arrayDef.getArgument().getDataClass();
-				} else {
-					QExpression expressionChild = functionExpression.getElements().get(0);
-					Class<?> target = CompilationContextHelper.getTargetClass(compilationUnit, expressionChild, false);
-
-					QPrototype method = compilationUnit.getMethod(target, functionExpression.getValue());
-					if (method != null) {
-						if (primitive)
-							return getDataTerm(method).getDefinition().getJavaClass();
-						else
-							return getDataTerm(method).getDefinition().getDataClass();
-
-					}
-				}
-			}
+			return getTargetClass(compilationUnit, functionExpression, primitive); 
 		case QUALIFIED:
 			QCompoundTermExpression compoundTermExpression = (QCompoundTermExpression) expression;
-
 			QNamedNode namedNode = compilationUnit.getNamedNode(compoundTermExpression.getValue(), true);
 			QDataTerm<?> dataTerm = getDataTerm(namedNode);
 			if (dataTerm != null)
@@ -319,6 +309,57 @@ public class CompilationContextHelper {
 			return getTargetClass(compilationUnit, booleanExpression.getOperand(), primitive);
 		}
 
+		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	private static Class<?> getTargetClass(QCompilationUnit compilationUnit, QFunctionTermExpression functionExpression, boolean primitive) {
+		if(!functionExpression.getElements().isEmpty()) {
+				
+			// check array index
+			QDataTerm<?> dataTerm = compilationUnit.getDataTerm(functionExpression.getValue(), true);
+			if (dataTerm != null && dataTerm.getDefinition() instanceof QArrayDef<?>) {
+				QArrayDef<?> arrayDef = (QArrayDef<?>) dataTerm.getDefinition();
+				if (primitive)
+					return arrayDef.getArgument().getJavaClass();
+				else
+					return arrayDef.getArgument().getDataClass();
+			} 
+			// prototype
+			QPrototype prototype = compilationUnit.getPrototype(functionExpression.getValue(), true);
+			if(prototype != null) {
+				if (primitive)
+					return getDataTerm(prototype).getDefinition().getJavaClass();
+				else
+					return getDataTerm(prototype).getDefinition().getDataClass();
+			}
+			
+			// check method
+			QExpression expressionChild = functionExpression.getElements().get(0);
+			Class<? extends QData> target = null;
+			if(!JDTContextHelper.isPrimitive(compilationUnit, expressionChild))
+				target = (Class<? extends QData>) getTargetClass(compilationUnit, expressionChild, false);
+			else
+				target = getDataClass(getTargetClass(compilationUnit, expressionChild, true));
+
+			QPrototype method = compilationUnit.getMethod(target, functionExpression.getValue());
+			if (method != null) {
+				if (primitive)
+					return getDataTerm(method).getDefinition().getJavaClass();
+				else
+					return getDataTerm(method).getDefinition().getDataClass();	
+			}
+		}
+		else {
+			QNamedNode namedNode = compilationUnit.getNamedNode(functionExpression.getValue(), true);
+			QDataTerm<?> dataTerm = getDataTerm(namedNode);
+			if (dataTerm != null)
+				if (primitive)
+					return dataTerm.getDefinition().getJavaClass();
+				else
+					return dataTerm.getDefinition().getDataClass();
+		}
+		
 		return null;
 	}
 
@@ -367,6 +408,27 @@ public class CompilationContextHelper {
 			return Date.class;
 		else
 			System.err.println("Unexpected condition 98xxwervwetr");
+
+		return null;
+	}
+
+	public static Class<? extends QData> getDataClass(Class<?> target) {
+
+		if(target == null) {
+			System.err.println("Unexpected condition 98xxw34wejruwe35wetr");
+			return null;
+		}
+		
+		if (Byte.class.isAssignableFrom(target))
+			return QCharacter.class;
+		else if (String.class.isAssignableFrom(target))
+			return QCharacter.class;
+		else if (Number.class.isAssignableFrom(target))
+			return QNumeric.class;
+		else if (Date.class.isAssignableFrom(target))
+			return QDatetime.class;
+		else
+			System.err.println("Unexpected condition 98xxw345435wetr");
 
 		return null;
 	}

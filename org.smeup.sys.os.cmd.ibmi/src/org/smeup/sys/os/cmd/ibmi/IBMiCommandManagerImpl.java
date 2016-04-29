@@ -45,6 +45,7 @@ import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QMultipleCompoundDataDef;
 import org.smeup.sys.il.data.def.QUnaryCompoundDataDef;
@@ -144,6 +145,14 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				break;
 			}
 			dataTerm.setKey(commandParameter.getName());
+			
+			// force reset dataStruct
+			if(dataTerm.getDataTermType().isCompound()) {
+				@SuppressWarnings("unchecked")
+				QCompoundDataDef<QStruct<?>, QDataTerm<?>> compoundDataDef = (QCompoundDataDef<QStruct<?>, QDataTerm<?>>) dataTerm.getDefinition();
+				compoundDataDef.setInitialized(true);
+			}
+					
 			dataContainer.addDataTerm(dataTerm);
 		}
 		
@@ -184,7 +193,6 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			} else {
 				data = dataContainer.getData(dataTerm);
 			}
-
 			
 			// required
 			if (controlRequiredParms) {

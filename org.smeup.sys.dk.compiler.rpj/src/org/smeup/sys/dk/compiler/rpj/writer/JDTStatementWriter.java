@@ -97,7 +97,6 @@ import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QProcedureExec;
 import org.smeup.sys.il.flow.QProgram;
 import org.smeup.sys.il.flow.QPrototype;
-import org.smeup.sys.il.flow.QReset;
 import org.smeup.sys.il.flow.QReturn;
 import org.smeup.sys.il.flow.QRoutineExec;
 import org.smeup.sys.il.flow.QStatement;
@@ -307,7 +306,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		Expression expression = null;
 
-		if (CompilationContextHelper.isPrimitive(compilationUnit, condition))
+		if (JDTContextHelper.isPrimitive(compilationUnit, condition))
 			expression = JDTStatementHelper.buildExpression(ast, compilationUnit, condition, Boolean.class);
 		else
 			expression = JDTStatementHelper.buildExpression(ast, compilationUnit, condition, Boolean.class);
@@ -473,7 +472,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean visit(QMethodExec statement) {
-
+		
 		Block block = blocks.peek();
 		if (statement.getObject() != null) {
 			MethodInvocation methodInvocation = ast.newMethodInvocation();
@@ -512,7 +511,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			if (namedNode == null) {
 				Class<?> target = null;
 				if (objectExpression instanceof QArithmeticExpression) {
-					target = CompilationContextHelper.getTargetClass(compilationUnit, objectExpression, false);
+					target = JDTContextHelper.getTargetClass(compilationUnit, objectExpression, false);
 					// force boxing
 					if (String.class.isAssignableFrom(target))
 						target = QCharacter.class;
@@ -567,7 +566,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 				methodInvocation.arguments().add(typeLiteral);
 
 			} else {
-				Class<?> target = CompilationContextHelper.getTargetClass(compilationUnit, objectExpression, false);
+				Class<?> target = JDTContextHelper.getTargetClass(compilationUnit, objectExpression, false);
 				methodInvocation.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, objectExpression, target));
 			}
 
@@ -721,7 +720,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		// condition
 		QPredicateExpression condition = buildIterationCondition(statement.getCondition());
-		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, condition, CompilationContextHelper.getTargetClass(compilationUnit, condition, true));
+		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, condition, JDTContextHelper.getTargetClass(compilationUnit, condition, true));
 		forSt.setExpression(expression);
 
 		// increment
@@ -756,7 +755,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		logicalExpression.setLeftOperand(blockExpression);
 
-		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, logicalExpression, CompilationContextHelper.getTargetClass(compilationUnit, logicalExpression, true));
+		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, logicalExpression, JDTContextHelper.getTargetClass(compilationUnit, logicalExpression, true));
 		doSt.setExpression(expression);
 
 		block.statements().add(doSt);
@@ -795,7 +794,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		WhileStatement whileSt = ast.newWhileStatement();
 
 		QPredicateExpression condition = buildIterationCondition(statement.getCondition());
-		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, condition, CompilationContextHelper.getTargetClass(compilationUnit, condition, true));
+		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, condition, JDTContextHelper.getTargetClass(compilationUnit, condition, true));
 		whileSt.setExpression(expression);
 
 		block.statements().add(whileSt);
@@ -839,17 +838,6 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		block.statements().add(expressionStatement);
 
 		return super.visit(statement);
-	}
-
-	@Override
-	public boolean visit(QReset statement) {
-
-		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-		methodExec.setObject(statement.getObject());
-		methodExec.setMethod("reset");
-		methodExec.accept(this);
-
-		return false;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -911,7 +899,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		methodInvocation.setExpression(expression);
 
 		// Class<?> target =
-		// CompilationContextHelper.getTargetClass(compilationUnit,
+		// JDTContextHelper.getTargetClass(compilationUnit,
 		// assignmentExpression.getLeftOperand(), false);
 		expression = JDTStatementHelper.buildExpression(ast, compilationUnit, assignmentExpression.getRightOperand(), null);
 		methodInvocation.arguments().add(p, expression);
