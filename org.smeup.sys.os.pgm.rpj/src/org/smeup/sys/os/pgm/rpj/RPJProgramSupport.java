@@ -467,10 +467,6 @@ public class RPJProgramSupport {
 		return null;
 	}
 
-	public QDecimal qDiff(QDatetime op1, QDatetime op2, Enum<?> format) {
-		return null;
-	}
-
 	public void qDisplay(QString text) {
 		System.out.println(text);
 	}

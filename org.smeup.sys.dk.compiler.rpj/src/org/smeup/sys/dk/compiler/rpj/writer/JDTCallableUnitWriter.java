@@ -185,7 +185,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			// writeAnnotation(field, Named.class, "value", moduleName);
 
 			// TODO remove me
-			if (module.equalsIgnoreCase("£MUB"))
+			if (module.equalsIgnoreCase("£MUB") && !(getCompilationUnit().getNode() instanceof QProcedure))
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 			else {
 				switch (scope) {
@@ -317,7 +317,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		writeImport(QBufferedData.class);
 
 		for (QKeyListTerm keyList : keyLists)
-			if (!CompilationContextHelper.containsArray(expressionParser, keyList))
+			if (!JDTContextHelper.containsArray(expressionParser, keyList))
 				writeKeyList(keyList);
 	}
 
@@ -436,7 +436,10 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
 				writeAnnotation(field, FileDef.class, "info", displayTerm.getInfoStruct());
 
-			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
+			if(getCompilationUnit().getNode() instanceof QModule)
+				field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+			else
+				field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 
 			field.setType(parType);
 			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(displayTerm.getName())));
@@ -484,7 +487,12 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
 				writeAnnotation(field, FileDef.class, "info", printTerm.getInfoStruct());
 
-			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
+
+			if(getCompilationUnit().getNode() instanceof QModule)
+				field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+			else
+				field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
+
 			field.setType(parType);
 			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(printTerm.getName())));
 

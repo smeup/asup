@@ -14,15 +14,18 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.il.core.term.QTerm;
-import org.smeup.sys.il.flow.*;
+import org.smeup.sys.il.flow.ConversionStatus;
 import org.smeup.sys.il.flow.EvalOperator;
 import org.smeup.sys.il.flow.PassingType;
 import org.smeup.sys.il.flow.QAnnotationCommand;
+import org.smeup.sys.il.flow.QAnnotationScope;
+import org.smeup.sys.il.flow.QAnnotationTest;
 import org.smeup.sys.il.flow.QBlock;
 import org.smeup.sys.il.flow.QBreak;
 import org.smeup.sys.il.flow.QCall;
 import org.smeup.sys.il.flow.QCommandExec;
 import org.smeup.sys.il.flow.QContinue;
+import org.smeup.sys.il.flow.QConversion;
 import org.smeup.sys.il.flow.QDataSection;
 import org.smeup.sys.il.flow.QEntry;
 import org.smeup.sys.il.flow.QEntryParameter;
@@ -45,7 +48,6 @@ import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QProcedureExec;
 import org.smeup.sys.il.flow.QProgram;
 import org.smeup.sys.il.flow.QPrototype;
-import org.smeup.sys.il.flow.QReset;
 import org.smeup.sys.il.flow.QReturn;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.il.flow.QRoutineExec;
@@ -125,7 +127,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 			case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC: return (EObject)createProcedureExec();
 			case QIntegratedLanguageFlowPackage.PROGRAM: return (EObject)createProgram();
 			case QIntegratedLanguageFlowPackage.PROTOTYPE: return (EObject)createPrototype();
-			case QIntegratedLanguageFlowPackage.RESET: return (EObject)createReset();
 			case QIntegratedLanguageFlowPackage.RETURN: return (EObject)createReturn();
 			case QIntegratedLanguageFlowPackage.ROUTINE: return (EObject)createRoutine();
 			case QIntegratedLanguageFlowPackage.ROUTINE_EXEC: return (EObject)createRoutineExec();
@@ -452,16 +453,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 	public QPrototype createPrototype() {
 		PrototypeImpl prototype = new PrototypeImpl();
 		return prototype;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QReset createReset() {
-		ResetImpl reset = new ResetImpl();
-		return reset;
 	}
 
 	/**

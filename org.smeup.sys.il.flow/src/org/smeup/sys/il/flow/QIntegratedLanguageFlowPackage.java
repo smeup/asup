@@ -178,7 +178,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getStatement()
 	 * @generated
 	 */
-	int STATEMENT = 39;
+	int STATEMENT = 38;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -264,7 +264,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getUnit()
 	 * @generated
 	 */
-	int UNIT = 41;
+	int UNIT = 40;
 
 	/**
 	 * The meta object id for the '
@@ -383,7 +383,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getReturn()
 	 * @generated
 	 */
-	int RETURN = 34;
+	int RETURN = 33;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.WhileImpl <em>While</em>}' class.
@@ -392,7 +392,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getWhile()
 	 * @generated
 	 */
-	int WHILE = 44;
+	int WHILE = 43;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.ForImpl <em>For</em>}' class.
@@ -652,7 +652,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getUnitSection()
 	 * @generated
 	 */
-	int UNIT_SECTION = 42;
+	int UNIT_SECTION = 41;
 
 	/**
 	 * The number of structural features of the '<em>Unit Section</em>' class.
@@ -949,6 +949,15 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @ordered
 	 */
 	int FLOW_DATA__DEFINITION = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_DATA__KEY = QIntegratedLanguageDataTermPackage.DATA_TERM__KEY;
 
 	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
@@ -1776,6 +1785,15 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	int PROTOTYPE__DEFINITION = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION;
 
 	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROTOTYPE__KEY = QIntegratedLanguageDataTermPackage.DATA_TERM__KEY;
+
+	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -1838,41 +1856,6 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	int PROTOTYPE_FEATURE_COUNT = QIntegratedLanguageDataTermPackage.DATA_TERM_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.ResetImpl <em>Reset</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.flow.impl.ResetImpl
-	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getReset()
-	 * @generated
-	 */
-	int RESET = 33;
-
-	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESET__FACETS = INVOKE__FACETS;
-
-	/**
-	 * The feature id for the '<em><b>Object</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int RESET__OBJECT = INVOKE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Reset</em>' class. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int RESET_FEATURE_COUNT = INVOKE_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -1905,7 +1888,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getRoutine()
 	 * @generated
 	 */
-	int ROUTINE = 35;
+	int ROUTINE = 34;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -1949,7 +1932,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getRoutineExec()
 	 * @generated
 	 */
-	int ROUTINE_EXEC = 36;
+	int ROUTINE_EXEC = 35;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -1986,7 +1969,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getSetupSection()
 	 * @generated
 	 */
-	int SETUP_SECTION = 37;
+	int SETUP_SECTION = 36;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2056,7 +2039,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getSQLExec()
 	 * @generated
 	 */
-	int SQL_EXEC = 38;
+	int SQL_EXEC = 37;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -2092,7 +2075,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getStatementVisitor()
 	 * @generated
 	 */
-	int STATEMENT_VISITOR = 40;
+	int STATEMENT_VISITOR = 39;
 
 	/**
 	 * The number of structural features of the '<em>Statement Visitor</em>' class.
@@ -2109,7 +2092,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getUntil()
 	 * @generated
 	 */
-	int UNTIL = 43;
+	int UNTIL = 42;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -2189,7 +2172,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getConversionStatus()
 	 * @generated
 	 */
-	int CONVERSION_STATUS = 45;
+	int CONVERSION_STATUS = 44;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.EvalOperator
@@ -2200,7 +2183,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getEvalOperator()
 	 * @generated
 	 */
-	int EVAL_OPERATOR = 46;
+	int EVAL_OPERATOR = 45;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.PassingType
@@ -2211,7 +2194,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getPassingType()
 	 * @generated
 	 */
-	int PASSING_TYPE = 47;
+	int PASSING_TYPE = 46;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.flow.QAnnotation <em>Annotation</em>}'.
@@ -3150,27 +3133,6 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPrototype_Entry();
-
-	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.flow.QReset <em>Reset</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Reset</em>'.
-	 * @see org.smeup.sys.il.flow.QReset
-	 * @generated
-	 */
-	EClass getReset();
-
-	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.smeup.sys.il.flow.QReset#getObject <em>Object</em>}'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @return the meta object for the attribute '<em>Object</em>'.
-	 * @see org.smeup.sys.il.flow.QReset#getObject()
-	 * @see #getReset()
-	 * @generated
-	 */
-	EAttribute getReset_Object();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.flow.QReturn <em>Return</em>}'.
@@ -4220,22 +4182,6 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PROTOTYPE__ENTRY = eINSTANCE.getPrototype_Entry();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.flow.impl.ResetImpl <em>Reset</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.flow.impl.ResetImpl
-		 * @see org.smeup.sys.il.flow.impl.IntegratedLanguageFlowPackageImpl#getReset()
-		 * @generated
-		 */
-		EClass RESET = eINSTANCE.getReset();
-
-		/**
-		 * The meta object literal for the '<em><b>Object</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESET__OBJECT = eINSTANCE.getReset_Object();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.flow.impl.ReturnImpl <em>Return</em>}' class.

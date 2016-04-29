@@ -60,7 +60,8 @@ public class JobDescriptionRetriever {
 
 			if (formatName.eq("JOBD0100")) {
 				JOBD0100 jobd0100 = dataContext.getDataFactory().createDataStruct(JOBD0100.class, 0, true);
-
+				jobd0100.clear();
+				
 				jobd0100.jobDescriptionName.eval(qJobDescription.getName());
 				jobd0100.jobDescriptionLibrary.eval(qJobDescription.getLibrary());
 				if (qJobDescription.getUser() != null)

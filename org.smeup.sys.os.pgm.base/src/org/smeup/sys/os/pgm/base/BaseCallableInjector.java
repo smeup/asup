@@ -111,6 +111,7 @@ public class BaseCallableInjector {
 			// create programStatus
 			QDataTerm<?> programStatusTerm = dataContainer.addDataTerm("*pgmstatus", BaseProgramStatusImpl.class, null);
 			QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
+			programStatus.clear();
 			if (program != null) {
 				programStatus.getProgramName().eval(program.getName());
 				programStatus.getProgramLibrary().eval(program.getLibrary());
@@ -119,7 +120,6 @@ public class BaseCallableInjector {
 			programStatus.getUserName().eval(jobReference.getJobUser());
 			programStatus.getJobNumber().eval(jobReference.getJobNumber());
 			programStatus.getJobName().eval(jobReference.getJobName());
-			programStatus.getStatusCode().clear();
 
 			QAccessFactory accessFactory = esamManager.createFactory(job, dataContainer.getDataContext());
 
@@ -364,7 +364,7 @@ public class BaseCallableInjector {
 			} else {
 				dataSet = accessFactory.createRelativeRecordDataSet(classRecord, record, AccessMode.UPDATE, userOpen, null);
 			}
-
+			dataSet.clear();
 			field.setValue(callable, dataSet);
 		}
 

@@ -26,7 +26,6 @@ import org.smeup.sys.il.flow.QLabel;
 import org.smeup.sys.il.flow.QMethodExec;
 import org.smeup.sys.il.flow.QMonitor;
 import org.smeup.sys.il.flow.QProcedureExec;
-import org.smeup.sys.il.flow.QReset;
 import org.smeup.sys.il.flow.QReturn;
 import org.smeup.sys.il.flow.QRoutineExec;
 import org.smeup.sys.il.flow.QSQLExec;
@@ -355,26 +354,6 @@ public abstract class StatementVisitorImpl extends MinimalEObjectImpl.Container 
 	 */
 	@Override
 	public boolean visit(QWhile statement) {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated NOT
-	 */
-	@Override
-	public void endVisit(QReset statement) {
-		return;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated NOT
-	 */
-	@Override
-	public boolean visit(QReset statement) {
 		return true;
 	}
 

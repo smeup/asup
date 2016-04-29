@@ -48,6 +48,7 @@ public class DataStructureTester {
 
 		testAsserter.resetTime();
 		DataStructure dataStruct = dataFactory.createDataStruct(DataStructure.class, 0, true);
+		dataStruct.clear();
 		testAsserter.assertNotNull("DataStructure creation", dataStruct);
 
 		dataStruct.alfa.eval("ABCDEFGHIJKLMNOPQRSTUVWXYZ");

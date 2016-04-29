@@ -35,6 +35,7 @@ import org.smeup.sys.il.core.meta.QCardinality;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
 import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.core.term.QNode;
+import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QArrayDef;
 import org.smeup.sys.il.data.def.QBufferDef;
@@ -801,7 +802,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				break;
 			// method
 			case 'T':
-				namedNode = getMethod(null, name);
+//				namedNode = getMethod(null, name);
 				break;
 			// module
 			case 'M':
@@ -984,8 +985,11 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	}
 
 	@Override
-	public QPrototype getMethod(Class<?> target, String name) {
+	public QPrototype getMethod(Class<? extends QData> target, String name) {
 
+		if(target == null)
+			System.err.println("method:" +name);
+		
 		QPrototype prototype = null;
 		for (EClassifier eClassifier : QIntegratedLanguageDataPackage.eINSTANCE.getEClassifiers()) {
 			if (!(eClassifier instanceof EClass))
@@ -1020,13 +1024,15 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					prototype.setDefinition(decimalDef);
 				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getArray())) {
 					QArrayDef<?> arrayDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createArrayDef();
-					if (eOperation.getName().equals("qSubst")) {
-						QCharacterDef characterDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
-						arrayDef.setArgument(characterDef);
-					} else {
-						QBufferDef bufferDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createBufferDef();
-						arrayDef.setArgument(bufferDef);
-					}
+					QBufferDef bufferDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createBufferDef();
+					arrayDef.setArgument(bufferDef);
+
+					// TODO remove me
+//					if (eOperation.getName().equals("qSubst")) {
+//						QCharacterDef characterDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
+//						arrayDef.setArgument(characterDef);
+//					}
+					
 					prototype.setDefinition(arrayDef);
 				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getPointer())) {
 					QPointerDef pointerDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createPointerDef();

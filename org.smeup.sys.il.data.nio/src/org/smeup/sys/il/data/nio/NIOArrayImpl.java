@@ -28,6 +28,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
+import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.SortDirection;
 
@@ -717,4 +718,25 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	public void movea(QNumeric targetIndex, QArray<?> value) {
 		movea(targetIndex, value, false);
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public QDecimal qLookup(String argument) {
+		
+		QCharacter argumentChar = getDataContext().getDataFactory().createCharacter(argument.length(), false, true);
+		argumentChar.eval(argument);
+		
+		return qLookup((D)  argumentChar);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public void qLookup(String argument, QNumeric startIndex, QIndicator found) {
+		
+		QCharacter argumentChar = getDataContext().getDataFactory().createCharacter(argument.length(), false, true);
+		argumentChar.eval(argument);
+		
+		qLookup((D)  argumentChar, startIndex, found);
+	}
+
 }

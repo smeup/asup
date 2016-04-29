@@ -19,7 +19,6 @@ import org.smeup.sys.il.flow.QJump;
 import org.smeup.sys.il.flow.QLabel;
 import org.smeup.sys.il.flow.QMethodExec;
 import org.smeup.sys.il.flow.QProcedure;
-import org.smeup.sys.il.flow.QReset;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.il.flow.impl.StatementVisitorImpl;
 
@@ -115,7 +114,7 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QMethodExec statement) {
 
-		if (statement.getMethod().startsWith("move")) {
+		if (statement.getMethod().toUpperCase().startsWith("MOVE")) {
 			for (String parameter : statement.getParameters()) {
 				if (isNumeric(parameter)) {
 					if (parameter.trim().startsWith("0") && !parameter.trim().startsWith("0."))
@@ -123,17 +122,9 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 				}
 			}
 		}
-		else if (statement.getMethod().equals("reset")) {
+		else if (statement.getMethod().equalsIgnoreCase("RESET")) {
 			programInfo.getResetObjects().add(compilationUnit.normalizeTermName(statement.getObject()));
 		}
-		
-		return super.visit(statement);
-	}
-
-	@Override
-	public boolean visit(QReset statement) {
-
-		programInfo.getResetObjects().add(compilationUnit.normalizeTermName(statement.getObject()));
 		
 		return super.visit(statement);
 	}

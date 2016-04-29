@@ -582,6 +582,22 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true"
+	 * @generated
+	 */
+	QDecimal qLookup(String argument);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model argumentRequired="true" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void qLookup(String argument, QNumeric start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" startRequired="true" lengthRequired="true"
 	 * @generated
 	 */

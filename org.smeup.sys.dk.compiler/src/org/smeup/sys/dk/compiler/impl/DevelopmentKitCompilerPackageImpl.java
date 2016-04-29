@@ -38,6 +38,7 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
+import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
@@ -529,6 +530,7 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		QIntegratedLanguageEsamPackage theIntegratedLanguageEsamPackage = (QIntegratedLanguageEsamPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageEsamPackage.eNS_URI);
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 		QIntegratedLanguageFlowPackage theIntegratedLanguageFlowPackage = (QIntegratedLanguageFlowPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageFlowPackage.eNS_URI);
+		QIntegratedLanguageDataPackage theIntegratedLanguageDataPackage = (QIntegratedLanguageDataPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
 		QIntegratedLanguageCoreMetaPackage theIntegratedLanguageCoreMetaPackage = (QIntegratedLanguageCoreMetaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI);
@@ -607,6 +609,8 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
+		g3 = createEGenericType(theIntegratedLanguageDataPackage.getData());
+		g2.setEUpperBound(g3);
 		addEParameter(op, g1, "target", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 

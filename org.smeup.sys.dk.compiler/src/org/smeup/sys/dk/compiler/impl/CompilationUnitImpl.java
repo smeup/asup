@@ -24,6 +24,7 @@ import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage;
 import org.smeup.sys.il.core.QNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.term.QNamedNode;
+import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QDataSetTerm;
 import org.smeup.sys.il.esam.QDisplayTerm;
@@ -351,7 +352,7 @@ public abstract class CompilationUnitImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QPrototype getMethod(Class<?> target, String name) {
+	public QPrototype getMethod(Class<? extends QData> target, String name) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

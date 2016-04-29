@@ -278,15 +278,6 @@ public interface QIntegratedLanguageFlowFactory extends EFactory {
 	QPrototype createPrototype();
 
 	/**
-	 * Returns a new object of class '<em>Reset</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Reset</em>'.
-	 * @generated
-	 */
-	QReset createReset();
-
-	/**
 	 * Returns a new object of class '<em>Return</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

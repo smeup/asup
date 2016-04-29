@@ -17,7 +17,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.compiler.QCompilationUnit;
-import org.smeup.sys.dk.compiler.rpj.writer.CompilationContextHelper;
+import org.smeup.sys.dk.compiler.rpj.writer.JDTContextHelper;
 import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.expr.AtomicType;
@@ -68,7 +68,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 		if (statement.getMethod().equalsIgnoreCase("SETLL"))
 			lastSetll = statement;
-
+		
 		return true;
 	}
 
@@ -264,7 +264,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 				// constant founded on left
 				else if (atomicTermExpressionLeft.getType() == AtomicType.NAME) {
 
-					if (CompilationContextHelper.isPrimitive(compilationUnit, rightExpression))
+					if (JDTContextHelper.isPrimitive(compilationUnit, rightExpression))
 						break;
 					if (rightExpression instanceof QAtomicTermExpression)
 						if (((QAtomicTermExpression) rightExpression).getType() == AtomicType.SPECIAL)
