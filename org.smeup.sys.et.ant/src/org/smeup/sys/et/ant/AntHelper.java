@@ -71,7 +71,7 @@ public class AntHelper {
             success = true;
         } catch (BuildException buildException) {
             project.fireBuildFinished(buildException);            
-            throw buildException;
+            success = false;
         }
         
         return success;
