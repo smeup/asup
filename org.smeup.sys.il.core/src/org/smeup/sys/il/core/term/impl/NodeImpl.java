@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.core.term.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -123,6 +124,22 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 				return (F) facet;
 
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@SuppressWarnings("unchecked")
+	public <F extends QFacet> List<F> getFacets(Class<F> klass) {
+
+		List<F> facets = new ArrayList<F>();
+		for (QFacet facet : getFacets())
+			if (klass.isAssignableFrom(facet.getClass()))
+				facets.add((F) facet);
+
+		return facets;
 	}
 
 	/**

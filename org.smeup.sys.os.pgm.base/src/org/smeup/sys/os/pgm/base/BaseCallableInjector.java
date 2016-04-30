@@ -408,11 +408,7 @@ public class BaseCallableInjector {
 			
 			QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> dataTerm = (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
 			
-			QData data = null;
-			if(dataTerm.getDefinition().isInitialized()) 
-				data = dataContainer.getData(dataTerm);
-			else
-				data = dataContainer.getData(dataTerm);
+			QData data = dataContainer.getData(dataTerm);
 			
 			QDataStruct dataStruct = (QDataStruct) data;
 			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();

@@ -145,6 +145,7 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 			return;
 		}
 		
+		clear();
 		for (Field field : NIODataStructHelper.getFields(_wrapped.getClass())) {
 			DataDef dataDef = field.getAnnotation(DataDef.class);
 			if (dataDef == null)

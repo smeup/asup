@@ -18,28 +18,27 @@ import org.smeup.sys.il.core.meta.QFacet;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.smeup.sys.il.core.term.QNode#getFacets <em>Facets</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.smeup.sys.il.core.term.QNode#getFacets <em>Facets</em>}</li>
+ * </ul>
  *
- * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getNode()
+ * @see org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage#getNode()
  * @model abstract="true"
  * @generated NOT
  */
 public interface QNode extends Serializable {
 	/**
-	 * Returns the value of the '<em><b>Facets</b></em>' containment reference
-	 * list. The list contents are of type
-	 * {@link org.smeup.sys.il.core.meta.QFacet}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Facets</b></em>' containment reference list.
+	 * The list contents are of type {@link org.smeup.sys.il.core.meta.QFacet}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Facets</em>' containment reference list isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @return the value of the '<em>Facets</em>' containment reference list.
-	 * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getNode_Facets()
+	 * @see org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage#getNode_Facets()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -47,7 +46,6 @@ public interface QNode extends Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
@@ -55,7 +53,6 @@ public interface QNode extends Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
@@ -63,10 +60,17 @@ public interface QNode extends Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model klassRequired="true"
 	 * @generated
 	 */
 	<F extends QFacet> F getFacet(Class<F> klass);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model klassRequired="true"
+	 * @generated
+	 */
+	<F extends QFacet> List<F> getFacets(Class<F> klass);
 
 } // QNode

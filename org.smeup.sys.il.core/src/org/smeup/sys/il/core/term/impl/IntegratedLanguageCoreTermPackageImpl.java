@@ -296,6 +296,17 @@ public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implemen
 		g1 = createEGenericType(t1);
 		initEOperation(op, g1);
 
+		op = addEOperation(nodeEClass, null, "getFacets", 0, -1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "F");
+		g1 = createEGenericType(theIntegratedLanguageCoreMetaPackage.getFacet());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		initEOperation(op, g1);
+
 		initEClass(termEClass, QTerm.class, "Term", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(termEClass, ecorePackage.getEString(), "getText", 1, 1, IS_UNIQUE, IS_ORDERED);

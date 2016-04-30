@@ -29,7 +29,6 @@ import org.smeup.sys.il.core.term.QNode;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
-import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataArea;
@@ -384,10 +383,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			}
 
 			if (dataTerm.getDefault() == null && compoundDataDef.getClassDelegator() != null) {
-				if(compoundDataDef.isInitialized())
-					dataStruct.reset();
-			}
-			else {
+				// if(compoundDataDef.isInitialized())
+				dataStruct.reset();
+			} else {
 				if (dataTerm.getDefault() != null) {
 					QSpecialElement specialElement = getSpecialElement(dataTerm, dataTerm.getDefault().getValue());
 					if (specialElement != null)
@@ -406,29 +404,29 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			}
 			break;
 		case MULTIPLE_ATOMIC:
-			QBufferedList<?> bufferedList = (QBufferedList<?>) data;
+			QList<?> list = (QList<?>) data;
 			if (dataTerm.getDefault() != null) {
 				if (dataTerm.getDefault().getValue() != null && !dataTerm.getDefault().getValue().isEmpty()) {
 					QSpecialElement specialElement = getSpecialElement(dataTerm, dataTerm.getDefault().getValue());
 					if (specialElement != null)
-						NIOBufferHelper.writeDefault(bufferedList, specialElement.getValue());
+						NIOBufferHelper.writeDefault(list, specialElement.getValue());
 					else
-						NIOBufferHelper.writeDefault(bufferedList, dataTerm.getDefault().getValue());
+						NIOBufferHelper.writeDefault(list, dataTerm.getDefault().getValue());
 				} else {
 					int i = 1;
 					for (String value : dataTerm.getDefault().getValues()) {
 
 						QSpecialElement specialElement = getSpecialElement(dataTerm, value);
 						if (specialElement != null) {
-							NIOBufferHelper.writeDefault(bufferedList.get(i), specialElement.getValue());
+							NIOBufferHelper.writeDefault((QBufferedElement) list.get(i), specialElement.getValue());
 						} else {
-							NIOBufferHelper.writeDefault(bufferedList.get(i), value);
+							NIOBufferHelper.writeDefault((QBufferedElement) list.get(i), value);
 						}
 						i++;
 					}
 				}
 			} else
-				bufferedList.clear();
+				list.clear();
 
 			break;
 		case MULTIPLE_COMPOUND:
@@ -439,10 +437,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			dataStruct = stroller.first();
 
 			if (dataTerm.getDefault() == null && compoundDataDef.getClassDelegator() != null) {
-				if(compoundDataDef.isInitialized())
-					dataStruct.reset();
-			}
-			else {
+				// if(compoundDataDef.isInitialized())
+				dataStruct.reset();
+			} else {
 				if (dataTerm.getDefault() != null) {
 					QSpecialElement specialElement = getSpecialElement(dataTerm, dataTerm.getDefault().getValue());
 					if (specialElement != null)
@@ -459,11 +456,11 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 						dataStruct.getElement(element.getName()).clear();
 				}
 			}
-			
+
 			// dereference stroller element
 			QCharacter character = getDataContext().getDataFactory().createCharacter(dataStruct.getLength(), false, true);
 			character.eval(dataStruct);
-			
+
 			// set default for all elements
 			for (QDataStruct strollerDataStruct : stroller)
 				strollerDataStruct.eval(character);

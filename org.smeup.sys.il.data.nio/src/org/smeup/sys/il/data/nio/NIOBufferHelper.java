@@ -23,6 +23,9 @@ import org.smeup.sys.il.data.QBufferedElementDelegator;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataFiller;
+import org.smeup.sys.il.data.QDataWriter;
+import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
+import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
 
@@ -445,6 +448,16 @@ public class NIOBufferHelper {
 		}
 	}
 
+	public static void writeDefault(QList<?> list, String value) {
+		if(list instanceof QBufferedList<?>)
+			writeDefault((QBufferedList<?>)list, value);
+		else {
+			QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
+			dataWriter.set(value);
+			list.accept(dataWriter);
+		}
+	}
+	
 	public static void writeDefault(QBufferedList<?> bufferedList, String value) {
 
 		DataSpecial dataSpecial = null;
@@ -460,7 +473,7 @@ public class NIOBufferHelper {
 				bufferedList.movel(value, true);
 				break;
 			case NUMERIC:
-				bufferedList.movel(new BigDecimal(value), true);
+				bufferedList.eval(new BigDecimal(value), true);
 				break;
 			case STRING:
 				bufferedList.eval(value);

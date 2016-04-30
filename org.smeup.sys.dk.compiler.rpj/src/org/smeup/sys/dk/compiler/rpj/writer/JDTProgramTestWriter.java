@@ -96,7 +96,7 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 
 		// unit info
 		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(getCompilationUnit(), program);
-		if(callableUnitInfo.containsInsignificantZeros())
+		if (callableUnitInfo.containsInsignificantZeros())
 			System.err.println("Unsignificant zeros");
 
 		writeSupportFields(callableUnitInfo);
@@ -152,12 +152,10 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 			statementWriter.setAST(getAST());
 			statementWriter.getBlocks().push(assertionBlock);
 
+			// test annotations
 			for (QDataTerm<?> dataTerm : program.getDataSection().getDatas()) {
-				if (dataTerm.getFacet(QAnnotationTest.class) == null)
-					continue;
-
-				QAnnotationTest annotationTest = dataTerm.getFacet(QAnnotationTest.class);
-				statementWriter.writeAssertion(annotationTest, dataTerm.toString());
+				for (QAnnotationTest annotationTest : dataTerm.getFacets(QAnnotationTest.class))
+					statementWriter.writeAssertion(annotationTest, dataTerm.toString());
 			}
 
 			if (!assertionBlock.statements().isEmpty())
@@ -165,9 +163,9 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 
 			statementWriter.getBlocks().pop();
 		}
-		
+
 		// snap
-		if(!callableUnitInfo.getResetObjects().isEmpty())
+		if (!callableUnitInfo.getResetObjects().isEmpty())
 			writeSnapRoutine(program, callableUnitInfo);
 
 		// routines
@@ -226,16 +224,16 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 
 		String categoryName = "IL.DATA";
 		String objectName = program.getName();
-		
+
 		String programText = program.getText();
-		if(programText != null) {
+		if (programText != null) {
 			String[] tokens = programText.split("[\\s\\-]+");
-			if(tokens.length >= 2) {
-				categoryName = tokens[tokens.length-1];
-				objectName = tokens[tokens.length-2];
+			if (tokens.length >= 2) {
+				categoryName = tokens[tokens.length - 1];
+				objectName = tokens[tokens.length - 2];
 			}
 		}
-		
+
 		// category
 		MemberValuePair categoryValuePair = getAST().newMemberValuePair();
 		categoryValuePair.setName(getAST().newSimpleName("category"));

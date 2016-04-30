@@ -445,6 +445,17 @@
           </eGenericType>
         </eParameters>
       </eOperations>
+      <eOperations name="getFacets" upperBound="-1">
+        <eGenericType eTypeParameter="#//term/Node/getFacets/F"/>
+        <eTypeParameters name="F">
+          <eBounds eClassifier="#//meta/Facet"/>
+        </eTypeParameters>
+        <eParameters name="klass" lowerBound="1">
+          <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+            <eTypeArguments eTypeParameter="#//term/Node/getFacets/F"/>
+          </eGenericType>
+        </eParameters>
+      </eOperations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="facets" upperBound="-1"
           eType="#//meta/Facet" containment="true"/>
     </eClassifiers>

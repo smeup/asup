@@ -93,6 +93,7 @@ public class NIODataStructImpl extends NIOAbstractDataStruct {
 		if (snapData != null)
 			NIOBufferHelper.write(this, snapData);
 		else {
+			clear();
 			for (QBufferedData element : getElements())
 				element.reset();
 		}

@@ -286,11 +286,10 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
 		block.statements().add(expressionStatement);
 
-		// Annotation
-		QAnnotationTest annotationTest = statement.getFacet(QAnnotationTest.class);
-		if (annotationTest != null)
+		// test annotations
+		for (QAnnotationTest annotationTest : statement.getFacets(QAnnotationTest.class))
 			writeAssertion(annotationTest, statement.toString());
-
+		
 		return false;
 	}
 
@@ -588,13 +587,10 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			visit(procedureExec);
 		}
 
-		// Annotation
-		if (statement.getFacet(QAnnotationTest.class) != null) {
-			QAnnotationTest annotationTest = statement.getFacet(QAnnotationTest.class);
-
+		// test annotations
+		for (QAnnotationTest annotationTest : statement.getFacets(QAnnotationTest.class))
 			writeAssertion(annotationTest, statement.toString());
-		}
-
+		
 		return false;
 	}
 
