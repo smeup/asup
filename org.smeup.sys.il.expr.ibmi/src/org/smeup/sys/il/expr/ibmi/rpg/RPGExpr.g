@@ -207,6 +207,8 @@ usr_function
 		TERM empty	-> ^(USER_FUNCTION[$TERM.text])
 		|
 		SPECIAL params	-> ^(USER_FUNCTION[$SPECIAL.text] params)
+		|
+		IN params	-> ^(USER_FUNCTION[$IN.text] params)
 	;
 bi_function
 	: 	BI_FUN (params)? -> ^(BI_FUNCTION[$BI_FUN.text] (params)?)
