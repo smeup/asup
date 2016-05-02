@@ -606,13 +606,15 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		if (statement.getBody() != null)
 			statement.getBody().accept(this);
 
+		String exceptionName = "e"+blocks.size(); 
+		
 		// catch
 		CatchClause catchClause = ast.newCatchClause();
 		SingleVariableDeclaration exceptionDeclaration = ast.newSingleVariableDeclaration();
 
 		Type exception = ast.newSimpleType(ast.newSimpleName(OperatingSystemMessageException.class.getSimpleName()));
 		exceptionDeclaration.setType(exception);
-		exceptionDeclaration.setName(ast.newSimpleName("e"));
+		exceptionDeclaration.setName(ast.newSimpleName(exceptionName));
 		catchClause.setException(exceptionDeclaration);
 		tryStatement.catchClauses().add(catchClause);
 
@@ -623,7 +625,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		SwitchStatement switchStatement = ast.newSwitchStatement();
 
 		MethodInvocation methodInvocation = ast.newMethodInvocation();
-		methodInvocation.setExpression(ast.newSimpleName("e"));
+		methodInvocation.setExpression(ast.newSimpleName(exceptionName));
 		methodInvocation.setName(ast.newSimpleName("getMessageName"));
 
 		switchStatement.setExpression(methodInvocation);

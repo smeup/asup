@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<il-flow:Module
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:il-flow="http://www.smeup.org/asup/il/flow"
+    xsi:schemaLocation="http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il.flow/model/il-flow.ecore"
+    name="*RPJ">
+  <dataSection/>
+  <flowSection/>
+</il-flow:Module>

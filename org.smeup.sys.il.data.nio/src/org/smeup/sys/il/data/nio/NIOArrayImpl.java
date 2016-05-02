@@ -43,11 +43,11 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 		super(dataContext, model, sortDirection);
 
 		this._elements = (D[]) Array.newInstance(model.getClass(), dimension);
-		
-		if(allocate) {
-			checkAllocation();		
+
+		if (allocate) {
+			checkAllocation();
 			_buffer = ByteBuffer.allocate(getSize());
-			
+
 			clear();
 		}
 	}
@@ -122,7 +122,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 		if (element != null)
 			return element;
 
-		element = (D) ((NIOBufferedElementImpl) getModel()).copy();
+		element = (D) NIOBufferHelper.getNIOBufferedElementImpl(getModel()).copy();
 
 		int position = 0;
 		if (getListOwner() == null)
@@ -530,18 +530,16 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 			for (int e = 1; e <= capacity(); e++) {
 				dataList.add(getListOwner().get(e).asBytes());
 			}
-			
-			
-			
+
 			Collections.sort(dataList, new Comparator<byte[]>() {
-				
+
 				@Override
 				public int compare(byte[] param1, byte[] param2) {
 
 					byte[] b1 = Arrays.copyOfRange(param1, getPosition(), getPosition() + getModel().getLength());
 					byte[] b2 = Arrays.copyOfRange(param2, getPosition(), getPosition() + getModel().getLength());
 
-					switch (getSortDirection()) { 
+					switch (getSortDirection()) {
 					case ASCEND:
 						return NIOBufferHelper.compareBytes(b1, b2, fillerComparator);
 					case DESCEND:
@@ -574,7 +572,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 					case DESCEND:
 						return NIOBufferHelper.compareBytes(param1, param2, fillerComparator) * -1;
 					}
-					return-1;
+					return -1;
 				}
 			});
 
@@ -722,21 +720,81 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	@SuppressWarnings("unchecked")
 	@Override
 	public QDecimal qLookup(String argument) {
-		
+
 		QCharacter argumentChar = getDataContext().getDataFactory().createCharacter(argument.length(), false, true);
 		argumentChar.eval(argument);
-		
-		return qLookup((D)  argumentChar);
+
+		return qLookup((D) argumentChar);
 	}
-	
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void qLookup(String argument, QIndicator found) {
+
+		QCharacter argumentChar = getDataContext().getDataFactory().createCharacter(argument.length(), false, true);
+		argumentChar.eval(argument);
+
+		qLookup((D) argumentChar, found);
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public void qLookup(String argument, QNumeric startIndex, QIndicator found) {
-		
+
 		QCharacter argumentChar = getDataContext().getDataFactory().createCharacter(argument.length(), false, true);
 		argumentChar.eval(argument);
-		
-		qLookup((D)  argumentChar, startIndex, found);
+
+		qLookup((D) argumentChar, startIndex, found);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public QDecimal qLookup(String argument, Number start, QNumeric elements) {
+
+		QCharacter argumentChar = getDataContext().getDataFactory().createCharacter(argument.length(), false, true);
+		argumentChar.eval(argument);
+
+		return qLookup((D) argumentChar, start, elements);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public QDecimal qLookup(String argument, QNumeric start, QNumeric elements) {
+
+		QCharacter argumentChar = getDataContext().getDataFactory().createCharacter(argument.length(), false, true);
+		argumentChar.eval(argument);
+
+		return qLookup((D) argumentChar, start, elements);
+	}
+	
+	@Override
+	public QArray<D> qDiv(QNumeric value) {
+		return qDivOperation(value.asNumber(), false);
+	}
+
+	@Override
+	public QArray<D> qDiv(QNumeric value, boolean halfAdjust) {
+		return qDivOperation(value.asNumber(), halfAdjust);
+	}
+
+	@Override
+	public QArray<D> qDiv(Number value) {
+		return qDivOperation(value, false);
+	}
+
+	@Override
+	public QArray<D> qDiv(Number value, boolean halfAdjust) {
+		return qDivOperation(value, halfAdjust);
+	}
+
+	private QArray<D> qDivOperation(Number value, boolean halfAdjust) {
+
+		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), getModel(), capacity(), getSortDirection(), true);
+		newArray.movea(this);
+		for (D element : newArray) {
+			((QNumeric) element).divide(value.doubleValue(), halfAdjust);
+		}
+
+		return newArray;
+	}
 }

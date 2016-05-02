@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.data;
 
+import java.lang.String;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -19,6 +21,14 @@ package org.smeup.sys.il.data;
  * @generated
  */
 public interface QDataArea<D extends QBufferedElement> extends QBufferedElement {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	String asString();
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -74,5 +84,13 @@ public interface QDataArea<D extends QBufferedElement> extends QBufferedElement 
 	 * @generated
 	 */
 	void out(QIndicator error);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	String s();
 
 } // QDataArea

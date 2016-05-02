@@ -33,7 +33,6 @@ import org.smeup.sys.il.esam.QRRDataSet;
 import org.smeup.sys.il.esam.QSMDataSet;
 import org.smeup.sys.il.esam.annotation.Descend;
 import org.smeup.sys.il.esam.annotation.Index;
-import org.smeup.sys.il.esam.jdbc.JDBCDataSetImpl.InfoStruct;
 import org.smeup.sys.os.file.base.BaseFileMemberDataSetImpl;
 import org.smeup.sys.os.file.base.BaseFileMemberProvider;
 
@@ -84,12 +83,12 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 		if (index == null)
 			index = TABLE_INDEX_RELATIVE_RECORD_NUMBER;
 
-		InfoStruct internalInfoStruct = null;
+		JDBCInfoStruct internalInfoStruct = null;
 		if (infoStruct != null) {
-			internalInfoStruct = dataContext.getDataFactory().createDataStruct(InfoStruct.class, 0, false);
+			internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, false);
 			infoStruct.assign(internalInfoStruct);
 		} else {
-			internalInfoStruct = dataContext.getDataFactory().createDataStruct(InfoStruct.class, 0, true);
+			internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, true);
 		}
 
 		return new JDBCKeySequencedDataSetImpl<R>(connection, new JDBCTableProvider(connection), index, record, wrapper.getSimpleName(), accessMode, userOpen, internalInfoStruct, dataContext);
@@ -130,12 +129,12 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 
 		QIndex index = TABLE_INDEX_RELATIVE_RECORD_NUMBER;
 
-		InfoStruct internalInfoStruct = null;
+		JDBCInfoStruct internalInfoStruct = null;
 		if (infoStruct != null) {
-			internalInfoStruct = dataContext.getDataFactory().createDataStruct(InfoStruct.class, 0, false);
+			internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, false);
 			infoStruct.assign(internalInfoStruct);
 		} else {
-			internalInfoStruct = dataContext.getDataFactory().createDataStruct(InfoStruct.class, 0, true);
+			internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, true);
 		}
 
 		return new JDBCRelativeRecordDataSetImpl<R>(connection, new JDBCTableProvider(connection), index, record, wrapper.getSimpleName(), accessMode, userOpen, internalInfoStruct, dataContext);

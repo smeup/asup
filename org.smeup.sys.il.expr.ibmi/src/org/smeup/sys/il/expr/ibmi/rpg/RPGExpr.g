@@ -254,6 +254,8 @@ SPECIAL
 		|
 		( P A R M S)
 		|
+		( S I Z E)
+		|
 		( D )
 		|
 		( M S)

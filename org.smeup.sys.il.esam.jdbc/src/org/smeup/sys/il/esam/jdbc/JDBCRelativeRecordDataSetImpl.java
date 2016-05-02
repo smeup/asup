@@ -27,7 +27,7 @@ import org.smeup.sys.il.esam.QRRDataSet;
 public class JDBCRelativeRecordDataSetImpl<R extends QRecord> extends JDBCDataSetImpl<R> implements QRRDataSet<R> {
 
 	protected JDBCRelativeRecordDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, QIndex index, 
-											R record, String tableName, AccessMode accessMode, boolean userOpen, InfoStruct infoStruct, QDataContext dataContext) {
+											R record, String tableName, AccessMode accessMode, boolean userOpen, JDBCInfoStruct infoStruct, QDataContext dataContext) {
 		super(databaseConnection, tableProvider, index, record, tableName, accessMode, userOpen, infoStruct, dataContext);
 	}
 

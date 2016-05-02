@@ -27,6 +27,14 @@ public interface QPointer extends QData, QStorable {
 	void dealloc();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean eq(QPointer value);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -56,6 +64,14 @@ public interface QPointer extends QData, QStorable {
 	 * @generated
 	 */
 	QPointer minus(QNumeric value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean ne(QPointer value);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -582,10 +582,66 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" valueRequired="true"
+	 * @generated
+	 */
+	QArray<D> qDiv(QNumeric value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" valueRequired="true" halfAdjustRequired="true"
+	 * @generated
+	 */
+	QArray<D> qDiv(QNumeric value, boolean halfAdjust);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
+	 * @generated
+	 */
+	QArray<D> qDiv(Number value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" halfAdjustRequired="true"
+	 * @generated
+	 */
+	QArray<D> qDiv(Number value, boolean halfAdjust);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" argumentRequired="true"
 	 * @generated
 	 */
 	QDecimal qLookup(String argument);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model argumentRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	void qLookup(String argument, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsRequired="true"
+	 * @generated
+	 */
+	QDecimal qLookup(String argument, Number start, QNumeric elements);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startRequired="true" elementsRequired="true"
+	 * @generated
+	 */
+	QDecimal qLookup(String argument, QNumeric start, QNumeric elements);
 
 	/**
 	 * <!-- begin-user-doc -->

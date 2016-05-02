@@ -117,4 +117,18 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 		
 		((QString)get()).eval(value);		
 	}
+
+	@Override
+	public String asString() {
+
+		if(!(get() instanceof QString))
+			throw new UnsupportedOperationException();
+		
+		return ((QString)get()).asString();		
+	}
+
+	@Override
+	public String s() {
+		return asString();
+	}
 }

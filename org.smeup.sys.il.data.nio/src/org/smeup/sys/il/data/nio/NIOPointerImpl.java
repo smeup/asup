@@ -212,4 +212,20 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	public QPointer plus(QNumeric value) {
 		return plus(value.n());
 	}
+
+	@Override
+	public boolean eq(QPointer value) {
+		if(value == null)
+			if(isNull())
+				return true;
+			else
+				return false;
+			
+		return getStore().equals(value.getStore());
+	}
+
+	@Override
+	public boolean ne(QPointer value) {
+		return !eq(value);
+	}
 }

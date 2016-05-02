@@ -18,15 +18,10 @@ import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.db.core.QStatement;
-import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
-import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QRecord;
-import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Overlay;
-import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.OperationDirection;
 import org.smeup.sys.il.esam.OperationRead;
@@ -37,14 +32,6 @@ import org.smeup.sys.il.esam.QIndexColumn;
 
 public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> {
 
-	public static class InfoStruct extends QDataStructWrapper {
-		private static final long serialVersionUID = 1L;
-		
-		@DataDef(binaryType = BinaryType.INTEGER)
-		@Overlay(position = 397)
-		public QBinary rrn;
-	}
-	
 	private QConnection databaseConnection;
 
 	private JDBCAccessHelper jdbcAccessHelper;
@@ -71,12 +58,12 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	private QStatement statementUpdate;
 
 	private ResultSet resultSet;
-	private InfoStruct infoStruct;
+	private JDBCInfoStruct infoStruct;
 	
 	private QDataContext dataContext;
 
 	protected JDBCDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, 
-							  QIndex index, R record, String tableName, AccessMode accessMode, boolean userOpen, InfoStruct infoStruct, QDataContext dataContext) {
+							  QIndex index, R record, String tableName, AccessMode accessMode, boolean userOpen, JDBCInfoStruct infoStruct, QDataContext dataContext) {
 
 		this.databaseConnection = databaseConnection;
 

@@ -314,16 +314,25 @@ public class JDTContextHelper {
 
 	@SuppressWarnings("unchecked")
 	private static Class<?> getTargetClass(QCompilationUnit compilationUnit, QFunctionTermExpression functionExpression, boolean primitive) {
+		
 		if(!functionExpression.getElements().isEmpty()) {
 				
 			// check array index
 			QDataTerm<?> dataTerm = compilationUnit.getDataTerm(functionExpression.getValue(), true);
-			if (dataTerm != null && dataTerm.getDefinition() instanceof QArrayDef<?>) {
-				QArrayDef<?> arrayDef = (QArrayDef<?>) dataTerm.getDefinition();
-				if (primitive)
-					return arrayDef.getArgument().getJavaClass();
-				else
-					return arrayDef.getArgument().getDataClass();
+			if (dataTerm != null) {
+				if(dataTerm.getDefinition() instanceof QArrayDef<?>) {
+					QArrayDef<?> arrayDef = (QArrayDef<?>) dataTerm.getDefinition();
+					if (primitive)
+						return arrayDef.getArgument().getJavaClass();
+					else
+						return arrayDef.getArgument().getDataClass();
+				}
+				else {
+					if (primitive)
+						return dataTerm.getDefinition().getJavaClass();
+					else
+						return dataTerm.getDefinition().getDataClass();
+				}
 			} 
 			// prototype
 			QPrototype prototype = compilationUnit.getPrototype(functionExpression.getValue(), true);
