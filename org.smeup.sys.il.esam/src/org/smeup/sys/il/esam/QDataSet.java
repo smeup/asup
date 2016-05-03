@@ -54,15 +54,7 @@ public interface QDataSet<R extends QRecord> {
 	 * @model
 	 * @generated
 	 */
-	void delete(QIndicator notFound);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void delete(QIndicator notFound, QIndicator error);
+	void delete(QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

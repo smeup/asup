@@ -117,13 +117,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	}
 
 	@Override
-	public void delete(QIndicator notFound) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete(QIndicator notFound, QIndicator error) {
+	public void delete(QIndicator error) {
 		// TODO Auto-generated method stub
 		
 	}

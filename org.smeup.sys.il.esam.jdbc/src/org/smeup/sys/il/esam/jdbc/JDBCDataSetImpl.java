@@ -132,13 +132,8 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	}
 
 	@Override
-	public void delete(QIndicator notFound) {
-		deleteRecord(null, notFound, null);
-	}
-
-	@Override
-	public void delete(QIndicator notFound, QIndicator error) {
-		deleteRecord(null, notFound, error);
+	public void delete(QIndicator error) {
+		deleteRecord(null, null, error);
 	}
 	
 	@Override

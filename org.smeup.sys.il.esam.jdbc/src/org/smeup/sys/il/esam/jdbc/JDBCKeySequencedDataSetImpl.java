@@ -29,7 +29,6 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 
 	protected JDBCKeySequencedDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, QIndex index, R record, String tableName, AccessMode accessMode, boolean userOpen, JDBCInfoStruct infoStruct, QDataContext dataContext) {
 		super(databaseConnection, tableProvider, index, record, tableName, accessMode, userOpen, infoStruct, dataContext);
-
 	}
 
 	@Override
@@ -133,9 +132,9 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 
 	@Override
 	public void delete(Object[] keyList, QIndicator notFound) {
-		deleteRecord(keyList, notFound, null);		
+		deleteRecord(keyList, notFound, null);
 	}
-
+	
 	@Override
 	public void delete(Object[] keyList, QIndicator notFound, QIndicator error) {
 		deleteRecord(keyList, notFound, error);

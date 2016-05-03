@@ -22,7 +22,8 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.il.data.def.impl.HexadecimalDefImpl#getLength <em>Length</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.impl.HexadecimalDefImpl#getLength
+ * <em>Length</em>}</li>
  * </ul>
  *
  * @generated
@@ -34,8 +35,9 @@ public class HexadecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QHexadeci
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The default value of the '{@link #getLength() <em>Length</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getLength() <em>Length</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -45,6 +47,7 @@ public class HexadecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QHexadeci
 	/**
 	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -53,6 +56,7 @@ public class HexadecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QHexadeci
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected HexadecimalDefImpl() {
@@ -61,6 +65,7 @@ public class HexadecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QHexadeci
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -70,6 +75,7 @@ public class HexadecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QHexadeci
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -78,16 +84,17 @@ public class HexadecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QHexadeci
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public int getSize() {
-		return length/2;
+		return length / 2;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -100,65 +107,71 @@ public class HexadecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QHexadeci
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF__LENGTH:
-				return getLength();
+		case QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF__LENGTH:
+			return getLength();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF__LENGTH:
-				setLength((Integer)newValue);
-				return;
+		case QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF__LENGTH:
+			setLength((Integer) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF__LENGTH:
-				setLength(LENGTH_EDEFAULT);
-				return;
+		case QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF__LENGTH:
+			setLength(LENGTH_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF__LENGTH:
-				return length != LENGTH_EDEFAULT;
+		case QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF__LENGTH:
+			return length != LENGTH_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (length: ");
@@ -169,7 +182,10 @@ public class HexadecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QHexadeci
 
 	@Override
 	public Class<?> getJavaClass() {
-		return Byte.class;
+		if (getLength() > 1)
+			return String.class;
+		else
+			return Byte.class;
 	}
 
 	@Override
