@@ -83,6 +83,8 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		this.dataManager = dataManager;
 		this.clParameterParser = ParserFactory.getInstance().getParser(ParserFactory.ScriptType.CL_PARAMETER);
 		this.clParser = ParserFactory.getInstance().getParser(ParserFactory.ScriptType.CL);
+		
+		resourceManager.registerListener(QCommand.class, new IBMiCommandListenerImpl());
 	}
 
 	@SuppressWarnings("resource")
