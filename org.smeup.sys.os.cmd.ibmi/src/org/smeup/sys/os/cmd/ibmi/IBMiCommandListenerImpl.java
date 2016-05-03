@@ -34,7 +34,8 @@ public class IBMiCommandListenerImpl implements QResourceListener<QCommand> {
 		case PRE_SAVE:
 
 			try {
-				IBMiCommandBuilder.buildCommand(command);
+				if(command.getParameters().isEmpty())
+					IBMiCommandBuilder.buildCommand(command);
 			} catch (IOException e) {
 				throw new OperatingSystemRuntimeException(e);
 			}
