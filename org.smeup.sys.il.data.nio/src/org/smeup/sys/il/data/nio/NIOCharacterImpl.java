@@ -33,12 +33,12 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	public NIOCharacterImpl(QDataContext dataContext, int length, boolean allocate) {
 		super(dataContext);
 		_length = length;
-		
-		if(allocate) {
+
+		if (allocate) {
 			checkAllocation();
-			
-			_buffer = ByteBuffer.allocate(getSize());			
-			NIOBufferHelper.fill(_buffer, 0, _buffer.capacity(), INIT);			
+
+			_buffer = ByteBuffer.allocate(getSize());
+			NIOBufferHelper.fill(_buffer, 0, _buffer.capacity(), INIT);
 		}
 	}
 
@@ -46,7 +46,7 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	public void accept(QDataVisitor visitor) {
 		visitor.visit(this);
 	}
-		
+
 	@Override
 	public int getLength() {
 		return _length;
@@ -83,47 +83,44 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 			_move(bytes, true);
 	}
 
-
 	@Override
 	protected void cat(byte[] factor1, byte[] factor2, Number space, boolean clear) {
-		
+
 		ByteBuffer buffer = getBuffer();
 		NIOBufferHelper.prepare(buffer, getPosition(), getLength());
 
 		int remaining = buffer.remaining();
-		if(remaining > factor1.length) {
+		if (remaining > factor1.length) {
 			buffer.put(factor1);
 			remaining = remaining - factor1.length;
-		}
-		else {
+		} else {
 			buffer.put(factor1, 0, remaining);
 			return;
 		}
 
-		if(space != null) {
+		if (space != null) {
 			int s = space.intValue();
-			if(s>remaining) {
-				for(int i=0; i<remaining;i++)
+			if (s > remaining) {
+				for (int i = 0; i < remaining; i++)
 					buffer.put(INIT);
 				return;
-			}
-			else {
-				for(int i=0; i<s; i++)
+			} else {
+				for (int i = 0; i < s; i++)
 					buffer.put(INIT);
-				
+
 				remaining = remaining - s;
 			}
 		}
 
-		if(remaining > factor2.length)
+		if (remaining > factor2.length)
 			buffer.put(factor2);
 		else {
 			buffer.put(factor2, 0, remaining);
 			return;
 		}
 
-		if(clear)
-			while(buffer.hasRemaining())
+		if (clear)
+			while (buffer.hasRemaining())
 				buffer.put(INIT);
 	}
 
@@ -149,7 +146,7 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 
 	@Override
 	protected void _move(byte[] value, boolean clear) {
-		if(clear)
+		if (clear)
 			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value, INIT);
 		else
 			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value);
@@ -157,7 +154,7 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 
 	@Override
 	protected void _movel(byte[] value, boolean clear) {
-		if(clear)
+		if (clear)
 			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value, INIT);
 		else
 			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value);
@@ -170,52 +167,52 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 
 	@Override
 	public QNumeric qCheck(QCharacter base) {
-		return qCheck(base.asString(), (Integer)null , null);
+		return qCheck(base.asString(), (Integer) null, null);
 	}
 
 	@Override
 	public QNumeric qCheck(QCharacter base, QIndicator found) {
-		return qCheck(base.asString(), (Integer)null , found);
+		return qCheck(base.asString(), (Integer) null, found);
 	}
 
 	@Override
 	public QNumeric qCheck(QCharacter base, QNumeric start) {
-		return qCheck(base.asString(), start.asInteger() , null);
+		return qCheck(base.asString(), start.asInteger(), null);
 	}
 
 	@Override
 	public QNumeric qCheck(QCharacter base, QNumeric start, QIndicator found) {
-		return qCheck(base.asString(), start.asInteger() , found);
+		return qCheck(base.asString(), start.asInteger(), found);
 	}
 
 	@Override
 	public QNumeric qCheck(QCharacter base, Number start) {
-		return qCheck(base.asString(), start , null);
+		return qCheck(base.asString(), start, null);
 	}
 
 	@Override
 	public QNumeric qCheck(QCharacter base, Number start, QIndicator found) {
-		return qCheck(base.asString(), start , found);
+		return qCheck(base.asString(), start, found);
 	}
 
 	@Override
 	public QNumeric qCheck(String base) {
-		return qCheck(base, (Integer)null, null);
+		return qCheck(base, (Integer) null, null);
 	}
 
 	@Override
 	public QNumeric qCheck(String base, QIndicator found) {
-		return qCheck(base, (Integer)null , found);
+		return qCheck(base, (Integer) null, found);
 	}
 
 	@Override
 	public QNumeric qCheck(String base, QNumeric start) {
-		return qCheck(base, start.asInteger() , null);
+		return qCheck(base, start.asInteger(), null);
 	}
 
 	@Override
 	public QNumeric qCheck(String base, QNumeric start, QIndicator found) {
-		return qCheck(base, start.asInteger() , found);
+		return qCheck(base, start.asInteger(), found);
 	}
 
 	@Override
@@ -227,80 +224,80 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	public QNumeric qCheck(String base, Number start, QIndicator found) {
 		// TODO use cache
 		QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
-		
+
 		if (start == null)
 			start = 1;
-		int id = start.intValue()-1;
-		
-		for (char c : base.substring(start.intValue()-1).toCharArray()) {
+		int id = start.intValue() - 1;
+
+		for (char c : base.substring(start.intValue() - 1).toCharArray()) {
 			id++;
 			int i = asString().indexOf(c);
-			if(i<0){
+			if (i < 0) {
 				number.eval(id);
 				break;
 			}
 		}
 		if (found != null)
 			found.eval(number.gt(0));
-		
+
 		return number;
 	}
 
 	@Override
 	public QNumeric qCheckr(QCharacter base) {
-		return qCheckr(base.asString(), (Integer)null , null);
+		return qCheckr(base.asString(), (Integer) null, null);
 	}
 
 	@Override
 	public QNumeric qCheckr(QCharacter base, QIndicator found) {
-		return qCheckr(base.asString(), (Integer)null , found);
+		return qCheckr(base.asString(), (Integer) null, found);
 	}
 
 	@Override
 	public QNumeric qCheckr(QCharacter base, QNumeric start) {
-		return qCheckr(base.asString(), start.asInteger() , null);
+		return qCheckr(base.asString(), start.asInteger(), null);
 	}
 
 	@Override
 	public QNumeric qCheckr(QCharacter base, QNumeric start, QIndicator found) {
-		return qCheckr(base.asString(), start.asInteger() , found);
+		return qCheckr(base.asString(), start.asInteger(), found);
 	}
 
 	@Override
 	public QNumeric qCheckr(QCharacter base, Number start) {
-		return qCheckr(base.asString(), start , null);
+		return qCheckr(base.asString(), start, null);
 	}
 
 	@Override
 	public QNumeric qCheckr(QCharacter base, Number start, QIndicator found) {
-		return qCheckr(base.asString(), start , found);
+		return qCheckr(base.asString(), start, found);
 	}
 
 	@Override
 	public QNumeric qCheckr(String base) {
-		return qCheckr(base, (Integer)null, null);
+		return qCheckr(base, (Integer) null, null);
 	}
 
 	@Override
 	public QNumeric qCheckr(String base, QIndicator found) {
-		return qCheckr(base, (Integer)null , found);
+		return qCheckr(base, (Integer) null, found);
 	}
 
 	@Override
 	public QNumeric qCheckr(String base, QNumeric start) {
-		return qCheckr(base, start.asInteger() , null);
+		return qCheckr(base, start.asInteger(), null);
 	}
 
 	@Override
 	public QNumeric qCheckr(String base, QNumeric start, QIndicator found) {
-		return qCheckr(base, start.asInteger() , found);
+		return qCheckr(base, start.asInteger(), found);
 	}
 
 	@Override
 	public QNumeric qCheckr(String base, Number start) {
 		return qCheckr(base, start, null);
 	}
-	
+
 	@Override
 	public QNumeric qCheckr(String base, Number start, QIndicator found) {
 		// TODO use cache
@@ -309,20 +306,20 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 			start = base.length();
 
 		char[] chars = base.substring(0, start.intValue()).toCharArray();
-		
-		for (int ii = chars.length; ii>0; ii--) {
-			int i = asString().indexOf(chars[ii-1]);
-			if(i<0){
+
+		for (int ii = chars.length; ii > 0; ii--) {
+			int i = asString().indexOf(chars[ii - 1]);
+			if (i < 0) {
 				number.eval(ii);
 				break;
 			}
 		}
 		if (found != null)
 			found.eval(number.gt(0));
-		
+
 		return number;
-	}	
-	
+	}
+
 	@Override
 	public QString qPlus(String factor1) {
 		// TODO Auto-generated method stub
@@ -399,22 +396,21 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 		// default
 		if (start == null)
 			start = 1;
-		
-		int i = source.indexOf(asString(), start.intValue() - 1);		
+
+		int i = source.indexOf(asString(), start.intValue() - 1);
 		if (i >= 0) {
 			number.eval(i + 1);
 			getDataContext().found().eval(true);
-		}
-		else {
+		} else {
 			getDataContext().found().eval(false);
 		}
-		
+
 		if (found != null)
 			found.eval(getDataContext().found());
-		
+
 		return number;
 	}
-	
+
 	@Override
 	public void xlate(byte from, String to, QString source) {
 		xlate(new String(new byte[] { from }), to, source.asString());
@@ -546,6 +542,11 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	}
 
 	@Override
+	public void xlate(String from, byte to, QString source) {
+		xlate(from, new String(new byte[] { to }, getDataContext().getCharset()), source.asString(), 1, false);
+	}
+
+	@Override
 	public void xlate(String from, String to, QString source, boolean clear) {
 		xlate(from, to, source.asString(), 1, clear);
 	}
@@ -600,11 +601,11 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 		StringBuffer sb = new StringBuffer();
 		int startId = 0;
 		for (char c : source.toCharArray()) {
-			if(startId > getLength())
+			if (startId > getLength())
 				break;
 			startId++;
 			int i = from.indexOf(c);
-			if(startId<start.intValue() || (i < 0) || (i + 1 > to.length()))
+			if (startId < start.intValue() || (i < 0) || (i + 1 > to.length()))
 				sb.append(c);
 			else
 				sb.append(to.substring(i, i + 1));

@@ -81,10 +81,10 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QJump statement) {
 
-		RPJCallableUnitInfo.Label label = programInfo.getLabels().get(statement.getLabel());
+		RPJCallableUnitInfo.Label label = programInfo.getLabels().get(statement.getLabel().toUpperCase());
 		if (label == null) {
 			label = new RPJCallableUnitInfo.Label();
-			programInfo.getLabels().put(statement.getLabel(), label);
+			programInfo.getLabels().put(statement.getLabel().toUpperCase(), label);
 		}
 		label.jumpsCount++;
 
@@ -94,10 +94,10 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QLabel statement) {
 
-		RPJCallableUnitInfo.Label label = programInfo.getLabels().get(statement.getName());
+		RPJCallableUnitInfo.Label label = programInfo.getLabels().get(statement.getName().toUpperCase());
 		if (label == null) {
 			label = new RPJCallableUnitInfo.Label();
-			programInfo.getLabels().put(statement.getName(), label);
+			programInfo.getLabels().put(statement.getName().toUpperCase(), label);
 		}
 
 		return super.visit(statement);

@@ -514,7 +514,7 @@
             <cardinality
                 min="1"/>
             <definition
-                xsi:type="il-data-def:NumericDef"/>
+                xsi:type="il-data-def:BufferDef"/>
           </delegate>
         </parameters>
       </entry>
@@ -575,6 +575,10 @@
     </prototypes>
     <prototypes
         name="%display">
+      <definition
+          xsi:type="il-data-def:CharacterDef"
+          length="128"
+          varying="true"/>
       <entry>
         <parameters>
           <delegate
@@ -945,6 +949,8 @@
     </prototypes>
     <prototypes
         name="%xfoot">
+      <definition
+          xsi:type="il-data-def:NumericDef"/>
       <entry>
         <parameters>
           <delegate

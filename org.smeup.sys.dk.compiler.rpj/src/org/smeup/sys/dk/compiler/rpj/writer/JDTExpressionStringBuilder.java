@@ -29,6 +29,7 @@ import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
+import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
@@ -808,6 +809,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			else if (target.equals(QData.class) && Number.class.isAssignableFrom(source))
 				buffer.append("qRPJ.qBox(" + value + ")");
 
+			// binary
+			else if (QBinary.class.isAssignableFrom(target) && Number.class.isAssignableFrom(source))
+				buffer.append("qRPJ.qBoxBinary(" + value + ")");
+
 			// numeric
 			else if (QNumeric.class.isAssignableFrom(target) && Number.class.isAssignableFrom(source))
 				buffer.append("qRPJ.qBox(" + value + ")");
@@ -819,7 +824,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			// hexadecimal
 			else if (target.equals(QHexadecimal.class) && source.equals(Byte.class))
 				buffer.append("qRPJ.qBox(" + value + ")");
-
+			else if (target.equals(QHexadecimal.class) && source.equals(String.class))
+				buffer.append("qRPJ.qBox(" + value + ")");
 			// array
 			else if (QArray.class.isAssignableFrom(target))
 				buffer.append("qRPJ.qBoxArray(" + value + ")");
@@ -830,6 +836,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				buffer.append(value);
 				buffer.append(".asDatetime()");
 			}
+			
 		}
 		// unboxing
 		else {

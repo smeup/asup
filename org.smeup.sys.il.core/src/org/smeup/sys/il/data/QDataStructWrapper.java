@@ -1211,4 +1211,8 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	public void eval(QStroller<? extends QDataStruct> value) {
 		delegate.eval(value);
 	}
+
+	public void xlate(String from, byte to, QString source) {
+		delegate.xlate(from, to, source);
+	}
 }

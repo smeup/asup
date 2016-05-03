@@ -83,12 +83,18 @@ public abstract class QDisplayFormatWrapper<E extends Enum<E>> {
 	public void write() {
 	}
 
+	public void chain(int recordNumber) {
+	}
+
 	public void chain(int recordNumber, QIndicator notFound) {
 	}
 
 	public void chain(int recordNumber, QIndicator notFound, QIndicator error) {
 	}
 
+	public void chain(QDecimal recordNumber) {
+	}
+	
 	public void chain(QDecimal recordNumber, QIndicator notFound) {		
 	}
 

@@ -1101,6 +1101,11 @@
       <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="source" lowerBound="1" eType="#//String"/>
     </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+      <eParameters name="source" lowerBound="1" eType="#//String"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Cattable" abstract="true" interface="true">
     <eTypeParameters name="D">
@@ -2774,7 +2779,7 @@
     <eOperations name="qPosition">
       <eParameters name="scroller" lowerBound="1">
         <eGenericType eClassifier="#//Scroller">
-          <eTypeArguments eTypeParameter="#//Scroller/D"/>
+          <eTypeArguments/>
         </eGenericType>
       </eParameters>
     </eOperations>

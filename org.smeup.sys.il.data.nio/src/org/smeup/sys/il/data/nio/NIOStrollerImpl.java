@@ -972,4 +972,9 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	public void eval(QStroller<? extends QDataStruct> value) {
 		current().eval(value.current());
 	}
+
+	@Override
+	public void xlate(String from, byte to, QString source) {
+		current().xlate(from, to, source);
+	}
 }

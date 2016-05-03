@@ -317,7 +317,7 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	}
 
 	@Override
-	public void qPosition(QScroller<D> scroller) {
+	public void qPosition(QScroller<?> scroller) {
 		absolute(scroller.position());
 	}
 }

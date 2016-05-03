@@ -91,7 +91,7 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 					writeImport(module);
 			}
 		}
-		
+
 		writeProcedureAnnotation(procedure);
 
 		// unit info
@@ -100,7 +100,7 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 
 		if (procedure.getSetupSection() != null)
 			writeModuleFields(modules, UnitScope.PRIVATE);
-		
+
 		if (procedure.getFileSection() != null) {
 			writeDataSets(procedure.getFileSection().getDataSets());
 			writeKeyLists(procedure.getFileSection().getKeyLists());
@@ -125,9 +125,7 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 				writePrototype(prototype);
 
 		// main
-		if (procedure.getMain() != null) {
-			writeProcedureEntry(procedure);
-		}
+		writeProcedureEntry(procedure);
 
 		// routines
 		if (procedure.getFlowSection() != null)
@@ -222,20 +220,21 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 			}
 		}
 
-		// write java AST
-		JDTStatementWriter statementWriter = getCompilationUnit().getContext().make(JDTStatementWriter.class);
-		statementWriter.setAST(getAST());
+		if (procedure.getMain() != null) {
+			JDTStatementWriter statementWriter = getCompilationUnit().getContext().make(JDTStatementWriter.class);
+			statementWriter.setAST(getAST());
 
-		statementWriter.getBlocks().push(block);
-
-		if (procedure.getMain() instanceof QBlock) {
-			QBlock qBlock = (QBlock) procedure.getMain();
-			for (org.smeup.sys.il.flow.QStatement qStatement : qBlock.getStatements())
-				qStatement.accept(statementWriter);
-		} else
-			procedure.getMain().accept(statementWriter);
-
-		statementWriter.getBlocks().pop();
+			statementWriter.getBlocks().push(block);
+			
+			if (procedure.getMain() instanceof QBlock) {
+				QBlock qBlock = (QBlock) procedure.getMain();
+				for (org.smeup.sys.il.flow.QStatement qStatement : qBlock.getStatements())
+					qStatement.accept(statementWriter);
+			} else
+				procedure.getMain().accept(statementWriter);
+			
+			statementWriter.getBlocks().pop();
+		}
 	}
 
 	@SuppressWarnings("unchecked")

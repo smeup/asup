@@ -42,7 +42,11 @@ import org.smeup.sys.il.esam.QPrintTerm;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.flow.QCallableUnit;
 import org.smeup.sys.il.flow.QDataSection;
+import org.smeup.sys.il.flow.QEntry;
+import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QFileSection;
+import org.smeup.sys.il.flow.QFlowSection;
+import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QSetupSection;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
@@ -125,24 +129,38 @@ public class RPJCallableUnitLinker {
 		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getNode();
 
 		QDataSection dataSection = callableUnit.getDataSection();
-		if (dataSection == null)
-			return;
+		if (dataSection != null) {
+			List<QDataTerm<?>> dataTerms = new ArrayList<QDataTerm<?>>(dataSection.getDatas());
 
-		List<QDataTerm<?>> dataTerms = new ArrayList<QDataTerm<?>>(dataSection.getDatas());
-
-		RPJDataLikeRefactor dataLikeVisitor = new RPJDataLikeRefactor(compilationUnit);
-		for (QDataTerm<?> dataTerm : dataTerms) {
-			dataLikeVisitor.reset();
-			dataTerm.accept(dataLikeVisitor);
+			RPJDataLikeRefactor dataLikeVisitor = new RPJDataLikeRefactor(compilationUnit);
+			for (QDataTerm<?> dataTerm : dataTerms) {
+				dataLikeVisitor.reset();
+				dataTerm.accept(dataLikeVisitor);
+			}
 		}
 
-		/*
-		 * while (!dataLikeVisitor.getTermsTodo().isEmpty()) {
-		 * dataLikeVisitor.reset();
-		 * 
-		 * QDataTerm<?> termTodo = dataLikeVisitor.getTermsTodo().pop();
-		 * termTodo.accept(dataLikeVisitor); }
-		 */
+		QFlowSection flowSection = callableUnit.getFlowSection();
+		if (flowSection != null) {
+			List<QPrototype> prototypes = new ArrayList<QPrototype>(flowSection.getPrototypes());
+
+			RPJDataLikeRefactor dataLikeVisitor = new RPJDataLikeRefactor(compilationUnit);
+			for (QPrototype prototype : prototypes) {
+				
+				if(prototype.getDefinition() != null) {
+					dataLikeVisitor.reset();
+					prototype.accept(dataLikeVisitor);
+				}
+								
+				QEntry entry = prototype.getEntry();
+				if(entry != null) {
+					for(QEntryParameter<?> entryParameter: entry.getParameters()) {
+						dataLikeVisitor.reset();
+						if(entryParameter.getDelegate() instanceof QDataTerm) 
+							((QDataTerm<?>)entryParameter.getDelegate()).accept(dataLikeVisitor);
+					}
+				}
+			}
+		}
 	}
 
 	public void linkFormulas(QCompilationUnit compilationUnit) {
@@ -205,7 +223,7 @@ public class RPJCallableUnitLinker {
 				throw new OperatingSystemRuntimeException("Module not found: " + moduleName);
 
 			// already linked
-			if(flowModule.getFacet(QCompilerLinker.class) != null)
+			if (flowModule.getFacet(QCompilerLinker.class) != null)
 				continue;
 
 			QModule module = getModule(moduleName);
@@ -402,14 +420,14 @@ public class RPJCallableUnitLinker {
 
 					if (superTable == null)
 						throw new OperatingSystemRuntimeException("File not found: " + table);
-					
+
 					appendElements(qDataTerm, superTable.getDatabaseFormat(), true);
 				}
 			} else
 				appendElements(qDataTerm, databaseFileFormat, true);
 
 			return buildCompilerLinker(file, context);
-			
+
 		} else if (file instanceof QDisplayFile) {
 			QDisplayFile displayFile = (QDisplayFile) file;
 
@@ -418,37 +436,36 @@ public class RPJCallableUnitLinker {
 					if (!externalFile.getRule().equalsIgnoreCase("*ALL"))
 						throw new OperatingSystemRuntimeException("Invalid format rule: " + externalFile.getRule());
 				}
-								
+
 				for (QFileFormat<?> fileFormat : displayFile.getDisplayFormats()) {
-					if(!externalFile.getFormat().equals(fileFormat.getName()))
+					if (!externalFile.getFormat().equals(fileFormat.getName()))
 						continue;
-										
+
 					appendElements(qDataTerm, fileFormat, false);
-					
+
 					break;
 				}
-				
+
 				return null;
-			}
-			else {
-	
+			} else {
+
 				for (QFileFormat<?> fileFormat : displayFile.getDisplayFormats()) {
 					fileFormat = (QFileFormat<?>) EcoreUtil.copy((EObject) fileFormat);
-					
+
 					appendElements(qDataTerm, fileFormat, true);
-	
+
 					QDerived derived = QDevelopmentKitCompilerFactory.eINSTANCE.createDerived();
 					fileFormat.getFacets().add(derived);
-	
+
 					qDataTerm.getDefinition().getElements().add(fileFormat);
 				}
-				
+
 				return buildCompilerLinker(file, context);
 			}
 
 		} else if (file instanceof QPrinterFile) {
 			QPrinterFile printerFile = (QPrinterFile) file;
-			
+
 			if (externalFile.getFormat() != null)
 				System.err.println("Unexpected condition g57tqw76erqweqw");
 
@@ -462,7 +479,7 @@ public class RPJCallableUnitLinker {
 
 				qDataTerm.getDefinition().getElements().add(fileFormat);
 			}
-			
+
 			return buildCompilerLinker(file, context);
 		} else
 			throw new OperatingSystemRuntimeException("Unknown file type: " + externalFile.getName());
@@ -488,7 +505,7 @@ public class RPJCallableUnitLinker {
 
 			element = (QDataTerm<?>) EcoreUtil.copy((EObject) element);
 
-			if(setDerived) {
+			if (setDerived) {
 				QDerived derived = QDevelopmentKitCompilerFactory.eINSTANCE.createDerived();
 				element.getFacets().add(derived);
 			}

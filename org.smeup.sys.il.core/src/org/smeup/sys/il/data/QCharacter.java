@@ -310,4 +310,12 @@ public interface QCharacter extends QString {
 	 * @generated
 	 */
 	void xlate(byte from, String to, QString source);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true"
+	 * @generated
+	 */
+	void xlate(String from, byte to, QString source);
 }

@@ -23,6 +23,7 @@ import org.smeup.sys.il.data.DataComparator;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.QArray;
+import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QCharacter;
@@ -44,6 +45,7 @@ import org.smeup.sys.il.data.annotation.Module;
 import org.smeup.sys.il.data.annotation.Module.Scope;
 import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
@@ -269,6 +271,26 @@ public class RPJProgramSupport {
 
 		return qIndicator;
 	}
+
+	public QBinary qBoxBinary(long value) {
+
+		BinaryType type = null;
+
+		if(value <= Byte.MAX_VALUE)
+			type = BinaryType.BYTE;
+		else if(value <= Short.MAX_VALUE)
+			type = BinaryType.SHORT;
+		else if(value <= Integer.MAX_VALUE)
+			type = BinaryType.INTEGER;
+		else
+			type = BinaryType.LONG;
+						
+		QBinary binary = dataContext.getDataFactory().createBinary(type, false, true);
+		binary.eval(value);
+
+		return binary;
+	}
+	
 	public QDecimal qBox(Integer decimal) {
 		return qBox((long)decimal);
 	}
@@ -439,6 +461,14 @@ public class RPJProgramSupport {
 
 		QCharacter character = dataContext.getDataFactory().createCharacter(19, true, true);
 		character.eval(Integer.toString(number));
+
+		return character;
+	}
+
+	public QString qChar(QDatetime datetime) {
+
+		QCharacter character = dataContext.getDataFactory().createCharacter(19, true, true);
+		character.eval(Long.toString(datetime.asTime()));
 
 		return character;
 	}
@@ -895,6 +925,24 @@ public class RPJProgramSupport {
 		return injector.prepareProcedure(owner, klass);
 	}
 
+	public QPointer qPointer(String string) {
+		return qBox(string).qAddr();
+	}
+
+	public QPointer qPointer(QCharacter string) {
+		return string.qAddr();
+	}
+
+	public QArray<QCharacter> qArray(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public QNumeric qTime() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public QDatetime qDate() {
 		// TODO Auto-generated method stub
 		return null;
@@ -924,16 +972,4 @@ public class RPJProgramSupport {
 			System.err.println("Unknown length: " + datetime.getLength());
 	}
 
-	public QPointer qPointer(String string) {
-		return qBox(string).qAddr();
-	}
-
-	public QPointer qPointer(QCharacter string) {
-		return string.qAddr();
-	}
-
-	public QArray<QCharacter> qArray(String string) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

@@ -2263,6 +2263,11 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEString(), "to", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getString(), "source", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(characterEClass, null, "xlate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "from", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByte(), "to", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "source", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(cattableEClass, QCattable.class, "Cattable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -3911,7 +3916,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(scrollerEClass, null, "qPosition", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getScroller());
-		g2 = createEGenericType(scrollerEClass_D);
+		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "scroller", 1, 1, IS_UNIQUE, IS_ORDERED);
 

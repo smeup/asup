@@ -199,7 +199,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 	@Override
 	public QDataTerm<?> getDataTerm(String name, boolean deep) {
-
+		
 		QDataTerm<?> dataTerm = cachedTerms.get(normalizeTermName(name));
 		if (dataTerm != null)
 			return dataTerm;
@@ -225,6 +225,8 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		if (dataTerm == null && deep) {
 
 			for (QCompilationUnit compilationUnit : this.childUnits)
+				
+				// module prefix before
 				if (name.toUpperCase().startsWith(compilationUnit.getNode().getName())) {
 					dataTerm = compilationUnit.getDataTerm(name, true);
 
@@ -232,6 +234,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 						break;
 				}
 
+			// other modules
 			if (dataTerm == null)
 				for (QCompilationUnit compilationUnit : this.childUnits) {
 					if (name.toUpperCase().startsWith(compilationUnit.getNode().getName()))
