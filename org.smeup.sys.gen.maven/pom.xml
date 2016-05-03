@@ -173,6 +173,40 @@
 
 	
 	<modules>
+    <module>../org.smeup.sys.ft.apache</module>
+    <module>../org.smeup.sys.ft.comp.base</module>
+    <module>../org.smeup.sys.ft.comp.ibmi</module>
+    <module>../org.smeup.sys.ft.dbms.base</module>
+    <module>../org.smeup.sys.ft.dbms.db2</module>
+    <module>../org.smeup.sys.ft.dbms.ibmi</module>
+    <module>../org.smeup.sys.ft.dbms.jtds</module>
+    <module>../org.smeup.sys.ft.dbms.mssql</module>
+    <module>../org.smeup.sys.ft.dbms.mysql</module>
+    <module>../org.smeup.sys.ft.dbms.test</module>    
+    <module>../org.smeup.sys.ft.devk.base</module>
+    <module>../org.smeup.sys.ft.devk.test</module>
+    <module>../org.smeup.sys.ft.eclipse</module>
+    <module>../org.smeup.sys.ft.eclipse.dtp</module>
+    <module>../org.smeup.sys.ft.eclipse.ecf</module>
+    <module>../org.smeup.sys.ft.eclipse.flux</module>
+    <module>../org.smeup.sys.ft.eclipse.jdt</module>
+    <module>../org.smeup.sys.ft.eclipse.jetty</module>
+    <module>../org.smeup.sys.ft.eclipse.net4j</module>
+    <module>../org.smeup.sys.ft.equinox</module>
+    <module>../org.smeup.sys.ft.equinox.p2</module>
+    <module>../org.smeup.sys.ft.framework</module>    
+    <module>../org.smeup.sys.ft.lang.base</module>
+    <module>../org.smeup.sys.ft.lang.test</module>
+    <module>../org.smeup.sys.ft.mind.base</module>
+    <module>../org.smeup.sys.ft.netc.base</module>
+    <module>../org.smeup.sys.ft.netc.flux</module>
+    <module>../org.smeup.sys.ft.oper.base</module>
+    <module>../org.smeup.sys.ft.runt.e4</module>
+    <module>../org.smeup.sys.ft.runt.test</module>
+    <module>../org.smeup.sys.ft.store.cdo</module>
+    <module>../org.smeup.sys.ft.type.base</module>
+    <module>../org.smeup.sys.ft.type.flux</module>
+    <module>../org.smeup.sys.ft.type.test</module>
     <module>../org.smeup.sys.co.core</module>
     <module>../org.smeup.sys.co.flux</module>
     <module>../org.smeup.sys.co.flux.base</module>
@@ -219,40 +253,6 @@
     <module>../org.smeup.sys.et.jt400</module>
     <module>../org.smeup.sys.et.maven</module>
     <module>../org.smeup.sys.et.osgi</module>
-    <module>../org.smeup.sys.ft.apache</module>
-    <module>../org.smeup.sys.ft.comp.base</module>
-    <module>../org.smeup.sys.ft.comp.ibmi</module>
-    <module>../org.smeup.sys.ft.dbms.base</module>
-    <module>../org.smeup.sys.ft.dbms.db2</module>
-    <module>../org.smeup.sys.ft.dbms.ibmi</module>
-    <module>../org.smeup.sys.ft.dbms.jtds</module>
-    <module>../org.smeup.sys.ft.dbms.mssql</module>
-    <module>../org.smeup.sys.ft.dbms.mysql</module>
-    <module>../org.smeup.sys.ft.dbms.test</module>    
-    <module>../org.smeup.sys.ft.devk.base</module>
-    <module>../org.smeup.sys.ft.devk.test</module>
-    <module>../org.smeup.sys.ft.eclipse</module>
-    <module>../org.smeup.sys.ft.eclipse.dtp</module>
-    <module>../org.smeup.sys.ft.eclipse.ecf</module>
-    <module>../org.smeup.sys.ft.eclipse.flux</module>
-    <module>../org.smeup.sys.ft.eclipse.jdt</module>
-    <module>../org.smeup.sys.ft.eclipse.jetty</module>
-    <module>../org.smeup.sys.ft.eclipse.net4j</module>
-    <module>../org.smeup.sys.ft.equinox</module>
-    <module>../org.smeup.sys.ft.equinox.p2</module>
-    <module>../org.smeup.sys.ft.framework</module>    
-    <module>../org.smeup.sys.ft.lang.base</module>
-    <module>../org.smeup.sys.ft.lang.test</module>
-    <module>../org.smeup.sys.ft.mind.base</module>
-    <module>../org.smeup.sys.ft.netc.base</module>
-    <module>../org.smeup.sys.ft.netc.flux</module>
-    <module>../org.smeup.sys.ft.oper.base</module>
-    <module>../org.smeup.sys.ft.runt.e4</module>
-    <module>../org.smeup.sys.ft.runt.test</module>
-    <module>../org.smeup.sys.ft.store.cdo</module>
-    <module>../org.smeup.sys.ft.type.base</module>
-    <module>../org.smeup.sys.ft.type.flux</module>
-    <module>../org.smeup.sys.ft.type.test</module>
     <module>../org.smeup.sys.il.core</module>
     <module>../org.smeup.sys.il.core.asf</module>
     <module>../org.smeup.sys.il.core.base</module>
