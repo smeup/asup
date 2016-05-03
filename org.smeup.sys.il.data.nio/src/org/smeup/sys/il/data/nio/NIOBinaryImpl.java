@@ -32,14 +32,14 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 	private BinaryType _type;
 	private boolean _unsigned;
-	private NIODecimalDef decimalType = null;
+	private NIODecimalDef decimalDef = null;
 	
 	public NIOBinaryImpl(QDataContext dataContext, BinaryType type, boolean unsigned, boolean allocate) {
 		super(dataContext);
 		this._type = type;
 		this._unsigned = unsigned;
 		
-		this.decimalType = NIODecimalDef.getInstance(getLength(), 0);
+		this.decimalDef = NIODecimalDef.getInstance(getLength(), 0);
 		
 		if(allocate) {
 			checkAllocation();		
@@ -47,8 +47,8 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 		} 
 	}
 
-	protected NIODecimalDef getDecimalType() {
-		return decimalType;
+	protected NIODecimalDef getDecimalDef() {
+		return decimalDef;
 	}
 
 	@Override
@@ -141,7 +141,7 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 	@Override
 	public byte[] _toBytes() {;
-		return getDecimalType().getZoned().toBytes(asDouble());
+		return getDecimalDef().getZoned().toBytes(asDouble());
 	}
 
 	@Override
@@ -162,17 +162,40 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 	@Override
 	protected void _move(byte[] value, boolean clear) {
-		eval(getDecimalType().getZoned().toDouble(value));
+		
+
+		double doubleValue;
+		if (getLength() > value.length) {
+			
+			byte[] newValue = asBytes();
+			System.arraycopy(value, 0, newValue, getLength() - value.length, value.length);
+			
+			doubleValue = getDecimalDef().getZoned().toDouble(newValue);
+		} else
+			doubleValue = getDecimalDef().getZoned().toDouble(value, value.length - getLength());
+
+		_writeNumber(doubleValue, false);
 	}
 
 	@Override
 	protected void _movel(byte[] value, boolean clear) {
-		eval(getDecimalType().getZoned().toDouble(value));
+
+		double doubleValue;
+		if (getLength() > value.length) {
+			byte[] newValue = asBytes();
+			System.arraycopy(value, 0, newValue, 0, value.length);
+			
+			doubleValue = getDecimalDef().getZoned().toDouble(newValue);
+		} else {
+			doubleValue = getDecimalDef().getZoned().toDouble(value);
+		}
+		
+		_writeNumber(doubleValue, false);
 	}
 
 	@Override
 	protected void _write(byte[] value) {
-		eval(getDecimalType().getZoned().toDouble(value));
+		eval(getDecimalDef().getZoned().toDouble(value));
 	}
 
 	@Override
