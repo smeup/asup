@@ -1,0 +1,70 @@
+<project name="sndmvnunit" basedir="." xmlns:git="antlib:com.rimerosolutions.ant.git">
+
+	<property name="git.source.uri" value="https://github.com/smeup/asup"/>
+	<property name="git.user" value="smeup"/>
+	<property name="git.pwd"  value="smeup++2015"/>
+	<property name="git.user.name"  value="smeup"/>
+	<property name="git.user.email"  value="asupdev@gmail.com"/>
+	<property name="root.dir" location=".." />
+
+	<tstamp>
+		<format property="time-stamp" pattern="yyyy-MM-dd_HH:mm:ss" />
+	</tstamp>
+
+
+	<taskdef uri="antlib:com.rimerosolutions.ant.git" resource="com/rimerosolutions/ant/git/jgit-ant-lib.xml">
+		<classpath>
+			<pathelement location="${basedir}\lib\org.eclipse.jgit.ant-3.0.0.201306101825-r.jar" />
+			<pathelement location="${basedir}\lib\org.eclipse.jgit-4.1.0.201509280440-r.jar" />
+			<pathelement location="${basedir}\lib\com.jcraft.jsch_0.1.53.v201508180515.jar" />
+			<pathelement location="${basedir}\lib\ant-git-tasks-0.0.1.jar" />
+			<pathelement location="${basedir}\lib\slf4j-api-1.7.12.jar"/>
+			<pathelement location="${basedir}\lib\slf4j-log4j12-1.7.2.jar"/>
+			<pathelement location="${basedir}\lib\org.apache.log4j_1.2.15.v201012070815.jar"/>
+		</classpath>
+	</taskdef>
+
+
+	<macrodef name="git-switch-branch">
+		<attribute name="git.repo" default="" />
+		<attribute name="dir" default="" />
+		<attribute name="branch" default="" />
+		<sequential>
+			<echo message="Switch to branch: @{branch}"/>
+			<git:git directory="@{dir}" settingsref="smeup-build">
+				<checkout createbranch="false" uri="@{git.repo}" branchname="@{branch}" />
+			</git:git>
+		</sequential>
+	</macrodef>
+
+	<git:settings refId="smeup-build" username="${git.user}" password="${git.pwd}" name="${git.user.name}" email="${git.user.email}" />
+
+	<target name="get-sources" description="Get sources from git repository">
+
+		<echo message="Get source from gitHub respository:  ${commit-message}" />
+		<git:git directory="${root.dir}" settingsref="smeup-build">
+			<pull  uri="${git.source.uri}"/>
+		</git:git>
+	</target>
+
+	<target name="mvn-compile">
+		<property environment="env" />
+		<path id="classpath">
+			<fileset dir="${env.M2_HOME}/boot">
+				<include name="plexus-classworlds-*.jar" />
+			</fileset>
+		</path>
+		<property name="mvn.mainclass" value="org.codehaus.plexus.classworlds.launcher.Launcher" />
+
+		<java classname="${mvn.mainclass}" classpathref="classpath" fork="true" failonerror="true">
+			<jvmarg value="-Dclassworlds.conf=${env.M2_HOME}/bin/m2.conf" />
+			<jvmarg value="-Dmaven.home=${env.M2_HOME}" />
+			<jvmarg value="-Dmaven.multiModuleProjectDirectory=${env.M2_HOME}" />
+			<jvmarg value="-Dfile.encoding=UTF-8" />
+			<arg value="clean" />
+			<arg value="package" />
+		</java>
+	</target>
+
+
+</project>
