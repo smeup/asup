@@ -8,7 +8,7 @@ Bundle-Vendor: www.smeup.com
 Bundle-Localization: plugin
 Export-Package: org.smeup.sys.os.dtaara,
  org.smeup.sys.os.dtaara.impl
-Require-Bundle: org.eclipse.core.runtime,
+Require-Bundle:  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.smeup.sys.os.core;visibility:=reexport,
  org.smeup.sys.os.type;visibility:=reexport,

@@ -89,13 +89,11 @@
 							<os>linux</os>
 							<ws>gtk</ws>
 							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>macosx</os>
-							<ws>cocoa</ws>
-							<arch>x86_64</arch>
-						</environment>
+						</environment>						
 					</environments>
+					<configuration>
+		                <pomDependencies>consider</pomDependencies>
+		            </configuration>
 				</configuration>
 			</plugin>
 
@@ -104,23 +102,13 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
 				<version>${tycho-version}</version>
-				<extensions>true</extensions>
-				<configuration>
-					<dependency-resolution>
-						<optionalDependencies>ignore</optionalDependencies>
-					</dependency-resolution>
-				</configuration>
+				<extensions>true</extensions>				
 			</plugin>
 
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-versions-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<dependency-resolution>
-						<optionalDependencies>ignore</optionalDependencies>
-					</dependency-resolution>
-				</configuration>
+				<version>${tycho-version}</version>				
 			</plugin>
 
 			<plugin>
@@ -166,6 +154,13 @@
 					<logEnabled>true</logEnabled>
 					<logDirectory>${project.build.directory}/logfiles</logDirectory>
 					<log>plain</log>
+					<extraClasspathElements>
+						<extraClasspathElement>
+							<groupId>javax.inject</groupId>
+							<artifactId>javax.inject</artifactId>
+							<version>1</version>
+						</extraClasspathElement>
+					</extraClasspathElements>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -337,11 +332,9 @@
     <module>../org.smeup.sys.rt.core.test</module>
     <module>../org.smeup.sys.rt.repo</module>
     <module>../org.smeup.sys.rt.repo.e4</module>
-    <module>../org.smeup.sys.rt.repo.test</module>
-    
+    <module>../org.smeup.sys.rt.repo.test</module>    
     <module>../org.smeup.sys.gen.ft</module>
     <module>../org.smeup.sys.gen.p2</module>
-    
   </modules>
   
 </project>

@@ -11,7 +11,7 @@ Require-Bundle: org.smeup.sys.db.core;visibility:=reexport,
  org.smeup.sys.il.core,
  org.eclipse.datatools.connectivity.sqm.core,
  org.eclipse.datatools.connectivity,
- org.eclipse.core.runtime,
+  org.eclipse.core.runtime,
  org.smeup.sys.rt.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .

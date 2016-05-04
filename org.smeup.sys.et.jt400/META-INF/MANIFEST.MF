@@ -8,4 +8,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: lib/jt400.jar,
  .
 Export-Package: com.ibm.as400.access
-Require-Bundle: org.eclipse.core.runtime
+Require-Bundle:  org.eclipse.core.runtime

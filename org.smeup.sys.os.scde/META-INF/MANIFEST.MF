@@ -9,7 +9,7 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.smeup.sys.os.scde,
  org.smeup.sys.os.scde.impl
-Require-Bundle: org.eclipse.core.runtime,
+Require-Bundle:  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.smeup.sys.il.core;visibility:=reexport,
  org.smeup.sys.il.data;visibility:=reexport,
