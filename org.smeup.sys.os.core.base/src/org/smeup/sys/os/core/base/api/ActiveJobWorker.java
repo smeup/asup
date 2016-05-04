@@ -46,9 +46,9 @@ public class ActiveJobWorker {
 	@Main
 	public void main(@ToDo @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output, @ToDo @DataDef(length = 1) QEnum<ResetStatusStatisticsEnum, QCharacter> resetStatusStatistics,
 			@ToDo @DataDef(dimension = 25, length = 10) QScroller<QEnum<SubsystemEnum, QCharacter>> subsystem,
-			@ToDo @DataDef(precision = 3, scale = 1) QEnum<CPUPercentLimitEnum, QDecimal> cPUPercentLimit,
-			@ToDo @DataDef(precision = 4, scale = 1) QEnum<ResponseTimeLimitEnum, QDecimal> responseTimeLimit, @ToDo @DataDef(binaryType = BinaryType.SHORT) QEnum<SequenceEnum, QBinary> sequence,
-			@ToDo @DataDef(qualified = true) JobName jobName, @ToDo @DataDef(precision = 3) QEnum<AutomaticRefreshIntervalEnum, QDecimal> automaticRefreshInterval) {
+			@ToDo @DataDef(precision = 3, scale = 1, packed = true) QEnum<CPUPercentLimitEnum, QDecimal> cPUPercentLimit,
+			@ToDo @DataDef(precision = 4, scale = 1, packed = true) QEnum<ResponseTimeLimitEnum, QDecimal> responseTimeLimit, @ToDo @DataDef(binaryType = BinaryType.SHORT) QEnum<SequenceEnum, QBinary> sequence,
+			@ToDo @DataDef(qualified = true) JobName jobName, @ToDo @DataDef(precision = 3, packed = true) QEnum<AutomaticRefreshIntervalEnum, QDecimal> automaticRefreshInterval) {
 
 		QObjectWriter objectWriter = null;
 

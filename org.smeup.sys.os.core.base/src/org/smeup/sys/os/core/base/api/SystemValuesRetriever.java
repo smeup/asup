@@ -15,7 +15,6 @@ package org.smeup.sys.os.core.base.api;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
-import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
@@ -25,7 +24,7 @@ import org.smeup.sys.il.data.def.BinaryType;
 public class SystemValuesRetriever {
 
 	@Main
-	public void main(@DataDef(length = 10) QCharacter variable, @DataDef(precision = 10) QDecimal length, @DataDef(precision = 10, value = "1") QDecimal number,
+	public void main(@DataDef(length = 10) QCharacter variable, @DataDef(binaryType = BinaryType.INTEGER) QBinary length, @DataDef(binaryType = BinaryType.INTEGER) QBinary number,
 			@DataDef(length = 10) QCharacter names, QUSEC error) {
 		"".toCharArray();
 	}

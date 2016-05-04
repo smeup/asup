@@ -28,10 +28,10 @@ public class ThreadReleaser {
 	private QThreadManager threadManager;
 
 	@Main
-	public void main(@Supported @DataDef(precision = 10) QDecimal threadId) {
-		
+	public void main(@Supported @DataDef(precision = 10, packed = true) QDecimal threadId) {
+
 		QThread thread = threadManager.lookupThread(threadId.asLong());
-		if(thread != null)
+		if (thread != null)
 			threadManager.release(thread);
 	}
 }

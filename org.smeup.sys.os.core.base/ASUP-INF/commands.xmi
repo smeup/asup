@@ -4,13 +4,10 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:dk-core="http://www.smeup.com/asup/dk/core"
-    xmlns:il-core="http://www.smeup.org/asup/il/core"
-    xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta"
-    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" 
+    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
     xmlns:il-data-term="http://www.smeup.org/asup/il/data/term"
-
     xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
-    xsi:schemaLocation="http://www.smeup.com/asup/dk/core ../../org.smeup.sys.dk.core/model/dk.core.ecore http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/data/term ../../org.smeup.sys.il.core/model/il-data.ecore#//term http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore">
+    xsi:schemaLocation="http://www.smeup.com/asup/dk/core ../../org.smeup.sys.dk.core/model/dk.core.ecore http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/data/term ../../org.smeup.sys.il.core/model/il-data.ecore#//term http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore">
   <contents
       xsi:type="os-cmd:Command"
       name="ADDENVVAR"
@@ -2352,7 +2349,7 @@
       <dataTerm
           name="threadId">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="10"/>
       </dataTerm>
     </parameters>
@@ -2517,7 +2514,7 @@
       <dataTerm
           name="threadId">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="10"/>
       </dataTerm>
     </parameters>
@@ -2713,7 +2710,7 @@
       <dataTerm
           name="cLVarForLOGSEV20">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="2"/>
       </dataTerm>
     </parameters>
@@ -2761,7 +2758,7 @@
       <dataTerm
           name="cLVarForJOBMSGQMX20">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="2"/>
       </dataTerm>
     </parameters>
@@ -2831,7 +2828,7 @@
       <dataTerm
           name="cLVarForRTNCDE50">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="5"/>
       </dataTerm>
     </parameters>
@@ -2975,7 +2972,7 @@
       <dataTerm
           name="cLVarForCCSID50">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="5"/>
       </dataTerm>
     </parameters>
@@ -2987,7 +2984,7 @@
       <dataTerm
           name="cLVarForDFTCCSID50">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="5"/>
       </dataTerm>
     </parameters>
@@ -3140,7 +3137,7 @@
       <dataTerm
           name="cLVarForTIMOFFSET30">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="3"/>
       </dataTerm>
     </parameters>
@@ -3152,7 +3149,7 @@
       <dataTerm
           name="cLVarForYEAROFS30">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="3"/>
       </dataTerm>
     </parameters>
@@ -3187,7 +3184,7 @@
       <dataTerm
           name="cLVarForRUNPTY20">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="2"/>
       </dataTerm>
     </parameters>
@@ -3199,7 +3196,7 @@
       <dataTerm
           name="cLVarForTIMESLICE70">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="7"/>
       </dataTerm>
     </parameters>
@@ -3223,7 +3220,7 @@
       <dataTerm
           name="cLVarForDFTWAIT70">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="7"/>
       </dataTerm>
     </parameters>
@@ -4810,7 +4807,7 @@
         <default
             value="*NONE"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="3"
             scale="1"/>
       </dataTerm>
@@ -4835,7 +4832,7 @@
         <default
             value="*NONE"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="4"
             scale="1"/>
       </dataTerm>
@@ -4963,7 +4960,7 @@
         <default
             value="*PRV"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="3"/>
       </dataTerm>
     </parameters>
