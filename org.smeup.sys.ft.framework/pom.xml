@@ -9,7 +9,8 @@
 		<groupId>org.smeup</groupId>
 		<relativePath>../org.smeup.sys.gen.maven</relativePath>
 	</parent>
-	<groupId>org.smeup.sys.ft.framework</groupId>
+	
 	<artifactId>org.smeup.sys.ft.framework</artifactId>
 	<packaging>eclipse-feature</packaging>
+	
 </project>

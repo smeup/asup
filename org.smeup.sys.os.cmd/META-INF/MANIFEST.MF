@@ -8,7 +8,7 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.smeup.sys.os.cmd,
  org.smeup.sys.os.cmd.impl
-Require-Bundle: org.eclipse.core.runtime,
+Require-Bundle:  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.smeup.sys.os.core;visibility:=reexport,
  org.smeup.sys.os.type;visibility:=reexport,

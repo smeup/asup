@@ -8,7 +8,8 @@ Bundle-Vendor: www.smeup.com
 Bundle-Localization: plugin
 Export-Package: org.smeup.sys.os.file.base,
  org.smeup.sys.os.file.base.api
-Require-Bundle: org.smeup.sys.os.file,
+Require-Bundle: 
+ org.smeup.sys.os.file,
  org.smeup.sys.db.core,
  org.smeup.sys.db.syntax,
  org.smeup.sys.os.core,

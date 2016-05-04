@@ -12,7 +12,8 @@ Export-Package: org.smeup.sys.dk.compiler.rpj,
  org.smeup.sys.dk.compiler.rpj.dbl,
  org.smeup.sys.dk.compiler.rpj.writer
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.smeup.sys.il.flow,
+Require-Bundle: 
+ org.smeup.sys.il.flow,
  org.smeup.sys.dk.compiler,
  org.smeup.sys.os.pgm.rpj,
  org.smeup.sys.dk.core,
