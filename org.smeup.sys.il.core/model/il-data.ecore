@@ -3591,7 +3591,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="definition" containment="true">
         <eGenericType eTypeParameter="#//term/DataTerm/DD"/>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialized" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="like" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

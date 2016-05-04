@@ -186,7 +186,7 @@ public class RPJProgramSupport {
 	}
 
 	// public static boolean FALSE = false;
-	public static boolean TRUE = true;
+	public static final boolean TRUE = true;
 
 	private int countRunnable = 0;
 

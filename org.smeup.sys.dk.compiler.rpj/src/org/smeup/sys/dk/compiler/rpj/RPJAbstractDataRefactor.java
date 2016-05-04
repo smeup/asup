@@ -74,7 +74,7 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 
 		dataTerm = term;
 
-		if (dataTerm.getDataTermType().isCompound()) {
+		if (dataTerm.getDataTermType() != null && dataTerm.getDataTermType().isCompound()) {
 			QCompoundDataDef<?, QDataTerm<?>> compoundDataDef = null;
 			
 			if (dataTerm.getDefinition() instanceof QDataAreaDef) {

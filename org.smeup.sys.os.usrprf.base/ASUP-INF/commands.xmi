@@ -1576,7 +1576,7 @@
         <default
             value="*SAME"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="10"/>
       </dataTerm>
     </parameters>
@@ -1606,7 +1606,7 @@
         <default
             value="*SAME"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="10"/>
       </dataTerm>
     </parameters>
@@ -3170,7 +3170,7 @@
         <default
             value="*GEN"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="10"/>
       </dataTerm>
     </parameters>
@@ -3197,7 +3197,7 @@
         <default
             value="*NONE"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="10"/>
       </dataTerm>
     </parameters>
@@ -3846,7 +3846,7 @@
         <default
             value="99.90"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="5"
             scale="2"/>
       </dataTerm>
@@ -4438,7 +4438,7 @@
       <dataTerm
           name="cLVarForMAXSTG110">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="11"/>
       </dataTerm>
     </parameters>
@@ -4450,7 +4450,7 @@
       <dataTerm
           name="cLVarForSTGUSED150">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="15"/>
       </dataTerm>
     </parameters>
@@ -4738,7 +4738,7 @@
       <dataTerm
           name="cLVarForSEV20">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="2"/>
       </dataTerm>
     </parameters>
@@ -4810,7 +4810,7 @@
       <dataTerm
           name="cLVarForPWDEXPITV50">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="5"/>
       </dataTerm>
     </parameters>
@@ -4858,7 +4858,7 @@
       <dataTerm
           name="cLVarForNOTVLDSIGN110">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="11"/>
       </dataTerm>
     </parameters>
@@ -4918,7 +4918,7 @@
       <dataTerm
           name="cLVarForCCSID50">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="5"/>
       </dataTerm>
     </parameters>
@@ -5002,7 +5002,7 @@
       <dataTerm
           name="cLVarForUID100">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="10"/>
       </dataTerm>
     </parameters>
@@ -5014,7 +5014,7 @@
       <dataTerm
           name="cLVarForGID100">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="10"/>
       </dataTerm>
     </parameters>

@@ -9646,7 +9646,7 @@
         <default
             value="9"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="2"/>
       </dataTerm>
     </parameters>
@@ -10382,7 +10382,7 @@
         <default
             value="9"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="2"/>
       </dataTerm>
     </parameters>
@@ -11298,7 +11298,7 @@
         <default
             value="10"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="2"/>
       </dataTerm>
     </parameters>
@@ -12631,7 +12631,7 @@
         <default
             value="10"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="2"/>
       </dataTerm>
     </parameters>
@@ -13864,7 +13864,7 @@
         <default
             value="21"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="2"/>
       </dataTerm>
     </parameters>
@@ -13952,7 +13952,7 @@
         <default
             value="0"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="2"/>
       </dataTerm>
     </parameters>
@@ -14812,7 +14812,7 @@
         <default
             value="21"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="2"/>
       </dataTerm>
     </parameters>
@@ -14900,7 +14900,7 @@
         <default
             value="0"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="2"/>
       </dataTerm>
     </parameters>
@@ -20650,7 +20650,7 @@
       <dataTerm
           name="cLVarForMSGLEN50">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="5"/>
       </dataTerm>
     </parameters>
@@ -20674,7 +20674,7 @@
       <dataTerm
           name="cLVarForSECLVLLEN50">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="5"/>
       </dataTerm>
     </parameters>
@@ -20699,7 +20699,7 @@
       <dataTerm
           name="cLVarForMSGDTALEN50">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="5"/>
       </dataTerm>
     </parameters>
@@ -20723,7 +20723,7 @@
       <dataTerm
           name="cLVarForSEV20">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="2"/>
       </dataTerm>
     </parameters>
@@ -20831,7 +20831,7 @@
       <dataTerm
           name="cLVarForTextCCSID50">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="5"/>
       </dataTerm>
     </parameters>
@@ -20843,7 +20843,7 @@
       <dataTerm
           name="cLVarForDataCCSID50">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="5"/>
       </dataTerm>
     </parameters>
@@ -22858,7 +22858,7 @@
         <default
             value="*FIRST"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="15"/>
       </dataTerm>
     </parameters>
@@ -22935,7 +22935,7 @@
         <default
             value="*LAST"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="15"/>
       </dataTerm>
     </parameters>
@@ -23252,7 +23252,7 @@
         <default
             value="*ALL"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="15"/>
       </dataTerm>
     </parameters>
@@ -23651,7 +23651,7 @@
       <dataTerm
           name="cLVarForRTNSEQNBR100">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="10"/>
       </dataTerm>
     </parameters>
@@ -23975,7 +23975,7 @@
       <dataTerm
           name="cLVarForNBRCURRCD100">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="10"/>
       </dataTerm>
     </parameters>
@@ -23987,7 +23987,7 @@
       <dataTerm
           name="cLVarForNBRDLTRCD100">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="10"/>
       </dataTerm>
     </parameters>
@@ -24073,7 +24073,7 @@
       <dataTerm
           name="cLVarForNBRDTAMBRS20">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="2"/>
       </dataTerm>
     </parameters>
@@ -24097,7 +24097,7 @@
       <dataTerm
           name="cLVarForUSECOUNT50">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="5"/>
       </dataTerm>
     </parameters>
@@ -24215,7 +24215,7 @@
       <dataTerm
           name="cLVarForMSGLEN50">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="5"/>
       </dataTerm>
     </parameters>
@@ -24237,7 +24237,7 @@
       <dataTerm
           name="cLVarForSECLVLLEN50">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="5"/>
       </dataTerm>
     </parameters>
@@ -24248,7 +24248,7 @@
       <dataTerm
           name="cLVarForSEV20">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="2"/>
       </dataTerm>
     </parameters>
@@ -24338,7 +24338,7 @@
       <dataTerm
           name="cLVarForTextCCSID50">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="5"/>
       </dataTerm>
     </parameters>
@@ -24350,7 +24350,7 @@
       <dataTerm
           name="cLVarForDataCCSID50">
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="5"/>
       </dataTerm>
     </parameters>

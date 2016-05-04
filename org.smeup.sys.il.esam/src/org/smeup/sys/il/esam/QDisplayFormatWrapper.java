@@ -100,4 +100,7 @@ public abstract class QDisplayFormatWrapper<E extends Enum<E>> {
 
 	public void chain(QDecimal recordNumber, QIndicator notFound, QIndicator error) {		
 	}
+
+	public void read(QIndicator found) {
+	}
 }
