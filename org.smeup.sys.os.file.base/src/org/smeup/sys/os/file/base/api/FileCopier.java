@@ -114,9 +114,9 @@ public @ToDo class FileCopier {
 		case OTHER:
 
 			QResourceWriter<QFile> fileWriter = resourceManager.getResourceWriter(job, QFile.class, toFile.library.asEnum(), toFile.library.asData().trimR());
-			if(fileWriter == null)
+			if (fileWriter == null)
 				throw exceptionManager.prepareException(job, QCPFMSG.CPF9810, toFile);
-			
+
 			QFile qFileTo = fileWriter.lookup(toFile.name.asData().trimR());
 			if (qFileTo == null) {
 				switch (createFile.asEnum()) {
@@ -149,47 +149,32 @@ public @ToDo class FileCopier {
 		public QEnum<Scope, QCharacter> library;
 
 		public static enum NAMEEnum {
-			@Special(value = "*LIST")
-			PRINT, OTHER
+			@Special(value = "*LIST") PRINT, OTHER
 		}
 	}
 
 	public static enum FROMMEMBEREnum {
-		@Special(value = "*N")
-		FIRST, ALL, OTHER
+		@Special(value = "*N") FIRST, ALL, OTHER
 	}
 
 	public static enum TOMEMBERORLABELEnum {
-		@Special(value = "*N")
-		FIRST, FROMMBR, ALL, OTHER
+		@Special(value = "*N") FIRST, FROMMBR, ALL, OTHER
 	}
 
 	public static enum REPLACEORADDRECORDSEnum {
-		@Special(value = "N")
-		NONE, @Special(value = "A")
-		ADD, @Special(value = "R")
-		REPLACE, @Special(value = "U")
-		UPDADD
+		@Special(value = "N") NONE, @Special(value = "A") ADD, @Special(value = "R") REPLACE, @Special(value = "U") UPDADD
 	}
 
 	public static enum CREATEFILEEnum {
-		@Special(value = "N")
-		NO, @Special(value = "Y")
-		YES
+		@Special(value = "N") NO, @Special(value = "Y") YES
 	}
 
 	public static enum PRINTFORMATEnum {
-		@Special(value = "C")
-		CHAR, @Special(value = "H")
-		HEX
+		@Special(value = "C") CHAR, @Special(value = "H") HEX
 	}
 
 	public static enum WHICHRECORDSTOPRINTEnum {
-		@Special(value = "N")
-		NONE, @Special(value = "E")
-		EXCLD, @Special(value = "C")
-		COPIED, @Special(value = "R")
-		ERROR
+		@Special(value = "N") NONE, @Special(value = "E") EXCLD, @Special(value = "C") COPIED, @Special(value = "R") ERROR
 	}
 
 	public static enum RECORDFORMATOFLOGICALFILEEnum {
@@ -197,13 +182,11 @@ public @ToDo class FileCopier {
 	}
 
 	public static enum COPYFROMRECORDNUMBEREnum {
-		@Special(value = "0")
-		START, OTHER
+		@Special(value = "0") START, OTHER
 	}
 
 	public static enum COPYTORECORDNUMBEREnum {
-		@Special(value = "0")
-		END, OTHER
+		@Special(value = "0") END, OTHER
 	}
 
 	public static class COPYFROMRECORDKEY extends QDataStructWrapper {
@@ -214,9 +197,7 @@ public @ToDo class FileCopier {
 		public QScroller<QCharacter> keyValue;
 
 		public static enum NUMBEROFKEYFIELDSEnum {
-			@Special(value = "0")
-			NONE, @Special(value = "-1")
-			BLDKEY, OTHER
+			@Special(value = "0") NONE, @Special(value = "-1") BLDKEY, OTHER
 		}
 	}
 
@@ -228,15 +209,12 @@ public @ToDo class FileCopier {
 		public QScroller<QCharacter> keyValue;
 
 		public static enum NUMBEROFKEYFIELDSEnum {
-			@Special(value = "0")
-			NONE, @Special(value = "-1")
-			BLDKEY, OTHER
+			@Special(value = "0") NONE, @Special(value = "-1") BLDKEY, OTHER
 		}
 	}
 
 	public static enum NUMBEROFRECORDSTOCOPYEnum {
-		@Special(value = "0")
-		END, OTHER
+		@Special(value = "0") END, OTHER
 	}
 
 	public static class INCLUDERECORDSBYCHARTEST extends QDataStructWrapper {
@@ -251,21 +229,11 @@ public @ToDo class FileCopier {
 		public QCharacter value;
 
 		public static enum FIELDEnum {
-			NONE, RCD, @Special(value = "*RCD")
-			FLD, OTHER
+			NONE, RCD, @Special(value = "*RCD") FLD, OTHER
 		}
 
 		public static enum RELATIONALOPERATOREnum {
-			@Special(value = "2")
-			EQ, @Special(value = "1")
-			GT, @Special(value = "4")
-			LT, @Special(value = "5")
-			NE, @Special(value = "3")
-			GE, @Special(value = "3")
-			NL, @Special(value = "6")
-			LE, @Special(value = "6")
-			NG, @Special(value = "7")
-			CT
+			@Special(value = "2") EQ, @Special(value = "1") GT, @Special(value = "4") LT, @Special(value = "5") NE, @Special(value = "3") GE, @Special(value = "3") NL, @Special(value = "6") LE, @Special(value = "6") NG, @Special(value = "7") CT
 		}
 	}
 
@@ -281,23 +249,11 @@ public @ToDo class FileCopier {
 		public QEnum<VALUEEnum, QCharacter> value;
 
 		public static enum RELATIONSHIPEnum {
-			@Special(value = "N")
-			NONE, @Special(value = "I")
-			IF, @Special(value = "A")
-			AND, @Special(value = "O")
-			OR
+			@Special(value = "N") NONE, @Special(value = "I") IF, @Special(value = "A") AND, @Special(value = "O") OR
 		}
 
 		public static enum RELATIONALOPERATOREnum {
-			@Special(value = "2")
-			EQ, @Special(value = "1")
-			GT, @Special(value = "4")
-			LT, @Special(value = "5")
-			NE, @Special(value = "3")
-			GE, @Special(value = "3")
-			NL, @Special(value = "6")
-			LE, @Special(value = "6")
-			NG
+			@Special(value = "2") EQ, @Special(value = "1") GT, @Special(value = "4") LT, @Special(value = "5") NE, @Special(value = "3") GE, @Special(value = "3") NL, @Special(value = "6") LE, @Special(value = "6") NG
 		}
 
 		public static enum VALUEEnum {
@@ -306,39 +262,26 @@ public @ToDo class FileCopier {
 	}
 
 	public static enum RECORDFORMATFIELDMAPPINGEnum {
-		@Special(value = "N")
-		NONE, @Special(value = "X")
-		NOCHK, @Special(value = "C")
-		CVTSRC, @Special(value = "M")
-		MAP, @Special(value = "D")
-		DROP, @Special(value = "F")
-		CVTFLOAT, @Special(value = "L")
-		NULLFLAGS
+		@Special(value = "N") NONE, @Special(value = "X") NOCHK, @Special(value = "C") CVTSRC, @Special(value = "M") MAP, @Special(value = "D") DROP, @Special(value = "F") CVTFLOAT, @Special(value = "L") NULLFLAGS
 	}
 
 	public static enum SOURCEUPDATEOPTIONSEnum {
-		@Special(value = "S")
-		SAME, @Special(value = "N")
-		SEQNBR, @Special(value = "D")
-		DATE
+		@Special(value = "S") SAME, @Special(value = "N") SEQNBR, @Special(value = "D") DATE
 	}
 
 	public static class SOURCESEQUENCENUMBERING extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
-		@DataDef(precision = 6, scale = 2)
+		@DataDef(precision = 6, scale = 2, packed = true)
 		public QDecimal startingSequenceNumber;
-		@DataDef(precision = 6, scale = 2)
+		@DataDef(precision = 6, scale = 2, packed = true)
 		public QDecimal incrementNumber;
 	}
 
 	public static enum ERRORSALLOWEDEnum {
-		@Special(value = "4294967295")
-		NOMAX, OTHER
+		@Special(value = "4294967295") NOMAX, OTHER
 	}
 
 	public static enum COMPRESSOUTDELETEDRECORDSEnum {
-		@Special(value = "Y")
-		YES, @Special(value = "N")
-		NO
+		@Special(value = "Y") YES, @Special(value = "N") NO
 	}
 }
