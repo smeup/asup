@@ -670,7 +670,7 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 		initEReference(getDataTerm_Default(), theIntegratedLanguageCoreMetaPackage.getDefault(), null, "default", null, 0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(dataTermEClass_DD);
 		initEReference(getDataTerm_Definition(), g1, null, "definition", null, 0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataTerm_Key(), ecorePackage.getEString(), "key", null, 1, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataTerm_Key(), ecorePackage.getEString(), "key", null, 0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataTerm_Initialized(), ecorePackage.getEBoolean(), "initialized", null, 1, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataTerm_Like(), ecorePackage.getEString(), "like", null, 0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataTerm_Name(), ecorePackage.getEString(), "name", null, 1, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

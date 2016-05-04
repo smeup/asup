@@ -179,7 +179,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * @return the value of the '<em>Key</em>' attribute.
 	 * @see #setKey(String)
 	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTerm_Key()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	String getKey();
