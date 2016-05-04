@@ -31,6 +31,7 @@ import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DataDefType;
+import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.def.QBinaryDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QDataDef;
@@ -725,7 +726,7 @@ public class XMICLProgramWriter {
 
 		if (varType.equalsIgnoreCase("*DEC")) {
 			decimalDefinition = QIntegratedLanguageDataDefFactory.eINSTANCE.createDecimalDef();
-
+			decimalDefinition.setType(DecimalType.PACKED);
 			if (varLength != null) {
 				String[] tokens = varLength.split(" ");
 				decimalDefinition.setPrecision(Integer.parseInt(tokens[0]));
