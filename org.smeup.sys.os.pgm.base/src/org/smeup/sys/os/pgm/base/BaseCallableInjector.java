@@ -396,10 +396,13 @@ public class BaseCallableInjector {
 			field.setValue(callable, new BasePrintDelegator<Object>(print, userOpen));
 		}
 
-		// pointer
+		// pointer no default
 		for (InjectableField field : pointers) {
 
 			QDataTerm<?> dataTerm = dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
+			if(dataTerm.getDefault() != null)
+				continue;
+			
 			field.setValue(callable, dataContainer.getData(dataTerm));
 		}
 
@@ -453,6 +456,16 @@ public class BaseCallableInjector {
 						bufferedData.assign(bufferedDataTo);
 				}
 			}
+		}
+
+		// pointer with default
+		for (InjectableField field : pointers) {
+
+			QDataTerm<?> dataTerm = dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
+			if(dataTerm.getDefault() == null)
+				continue;
+			
+			field.setValue(callable, dataContainer.getData(dataTerm));
 		}
 
 		// recordInfo

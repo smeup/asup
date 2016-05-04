@@ -354,17 +354,24 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		switch (dataTerm.getDataTermType()) {
 		case UNARY_ATOMIC: {
-			QBufferedElement bufferedElement = (QBufferedElement) data;
+			
 			if (dataTerm.getDefault() != null && dataTerm.getDefault().getValue() != null && !dataTerm.getDefault().getValue().isEmpty()) {
-
-				QSpecialElement specialElement = getSpecialElement(dataTerm, dataTerm.getDefault().getValue());
-				if (specialElement != null)
-					NIOBufferHelper.writeDefault(bufferedElement, specialElement.getValue());
+				if(data instanceof QPointer) {
+					QPointer pointer = (QPointer)data;
+					writeDefault(pointer, dataTerm.getDefault().getValue());
+				}
 				else {
-					NIOBufferHelper.writeDefault(bufferedElement, dataTerm.getDefault().getValue());
+					QBufferedElement bufferedElement = (QBufferedElement) data;
+					
+					QSpecialElement specialElement = getSpecialElement(dataTerm, dataTerm.getDefault().getValue());
+					if (specialElement != null)
+						NIOBufferHelper.writeDefault(bufferedElement, specialElement.getValue());
+					else {
+						NIOBufferHelper.writeDefault(bufferedElement, dataTerm.getDefault().getValue());
+					}
 				}
 			} else
-				bufferedElement.clear();
+				data.clear();
 
 			break;
 		}
@@ -522,4 +529,21 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		return null;
 	}
+	
+
+	public void writeDefault(QPointer pointer, String value) {
+
+		if(value.trim().toUpperCase().startsWith("%ADDR")) {
+			value = value.trim().toUpperCase();
+			value = value.substring(6, value.length()-1).toLowerCase();
+			QBufferedData bufferedData = (QBufferedData)getData(value);
+			if (bufferedData == null || !(bufferedData instanceof QBufferedData))
+				throw new IntegratedLanguageDataRuntimeException("Invalid address data: " + value);
+
+			pointer.eval(bufferedData.qAddr());
+		}
+		else
+			throw new IntegratedLanguageDataRuntimeException("Unexpected condition: ixretcretrtscv8dtf");
+	}
+
 }
