@@ -5816,12 +5816,12 @@
     </parameters>
     <parameters allowVariable="true" name="ASP" position="10" status="POS">
       <dataTerm name="cLVarForASP20">
-        <definition xsi:type="il-data-def:DecimalDef" precision="2"/>
+        <definition xsi:type="il-data-def:DecimalDef" type="PACKED" precision="2"/>
       </dataTerm>
     </parameters>
     <parameters allowVariable="true" name="LIBASP" position="11" status="POS">
       <dataTerm name="cLVarForLIBASP50">
-        <definition xsi:type="il-data-def:DecimalDef" precision="5"/>
+        <definition xsi:type="il-data-def:DecimalDef" type="PACKED" precision="5"/>
       </dataTerm>
     </parameters>
     <parameters allowVariable="true" name="OBJASPDEV" position="12" status="POS">
@@ -5901,7 +5901,7 @@
     </parameters>
     <parameters allowVariable="true" name="USECOUNT" position="27" status="POS">
       <dataTerm name="cLVarForUSECOUNT50">
-        <definition xsi:type="il-data-def:DecimalDef" precision="5"/>
+        <definition xsi:type="il-data-def:DecimalDef" type="PACKED" precision="5"/>
       </dataTerm>
     </parameters>
     <parameters allowVariable="true" name="RESETDATE" position="28" status="POS">
@@ -5921,12 +5921,12 @@
     </parameters>
     <parameters allowVariable="true" name="SIZE" position="31" status="TODO">
       <dataTerm name="cLVarForSIZE150">
-        <definition xsi:type="il-data-def:DecimalDef" precision="15"/>
+        <definition xsi:type="il-data-def:DecimalDef" type="PACKED" precision="15"/>
       </dataTerm>
     </parameters>
     <parameters allowVariable="true" name="SPCSIZE" position="32" status="POS">
       <dataTerm name="cLVarForSPCSIZE150">
-        <definition xsi:type="il-data-def:DecimalDef" precision="15"/>
+        <definition xsi:type="il-data-def:DecimalDef" type="PACKED" precision="15"/>
       </dataTerm>
     </parameters>
     <parameters allowVariable="true" name="SPCALIGN" position="33" status="POS">
@@ -5936,7 +5936,7 @@
     </parameters>
     <parameters allowVariable="true" name="SAVSIZE" position="34" status="POS">
       <dataTerm name="cLVarForSAVSIZE150">
-        <definition xsi:type="il-data-def:DecimalDef" precision="15"/>
+        <definition xsi:type="il-data-def:DecimalDef" type="PACKED" precision="15"/>
       </dataTerm>
     </parameters>
     <parameters allowVariable="true" name="SAVCMD" position="35" status="POS">
@@ -5946,12 +5946,12 @@
     </parameters>
     <parameters allowVariable="true" name="SAVSEQNBR" position="36" status="POS">
       <dataTerm name="cLVarForSAVSEQNBR40">
-        <definition xsi:type="il-data-def:DecimalDef" precision="4"/>
+        <definition xsi:type="il-data-def:DecimalDef" type="PACKED" precision="4"/>
       </dataTerm>
     </parameters>
     <parameters allowVariable="true" name="SAVLRGSEQ" position="37" status="POS">
       <dataTerm name="cLVarForSAVLRGSEQ100">
-        <definition xsi:type="il-data-def:DecimalDef" precision="10"/>
+        <definition xsi:type="il-data-def:DecimalDef" type="PACKED" precision="10"/>
       </dataTerm>
     </parameters>
     <parameters allowVariable="true" name="SAVVOL" position="38" status="POS">

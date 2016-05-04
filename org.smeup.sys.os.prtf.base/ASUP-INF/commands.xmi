@@ -180,7 +180,7 @@
             <default
                 value="*SAME"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -200,7 +200,7 @@
             <default
                 value="*SAME"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -262,7 +262,7 @@
         <default
             value="*SAME"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="3"
             scale="1"/>
       </dataTerm>
@@ -304,7 +304,7 @@
         <default
             value="*SAME"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="3"
             scale="1"/>
       </dataTerm>
@@ -339,7 +339,7 @@
             <cardinality
                 min="1"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -353,7 +353,7 @@
             <cardinality
                 min="1"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -393,7 +393,7 @@
             <cardinality
                 min="1"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -407,7 +407,7 @@
             <cardinality
                 min="1"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -1663,7 +1663,7 @@
             <default
                 value="*NONE"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="4"
                 scale="1"/>
           </elements>
@@ -1869,7 +1869,7 @@
             <default
                 value="*NONE"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="4"
                 scale="1"/>
           </elements>
@@ -1955,7 +1955,7 @@
             <default
                 value="*NONE"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="4"
                 scale="1"/>
           </elements>
@@ -2449,7 +2449,7 @@
             <default
                 value="*SAME"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -2469,7 +2469,7 @@
             <default
                 value="*SAME"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -2559,7 +2559,7 @@
             <default
                 value="*SAME"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -2579,7 +2579,7 @@
             <default
                 value="*SAME"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -2805,7 +2805,7 @@
             <default
                 value="*SAME"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -2853,7 +2853,7 @@
                 xsi:type="il-data-def:ScrollerDef"
                 dimension="122">
               <argument
-                  xsi:type="il-data-def:DecimalDef"
+                  xsi:type="il-data-def:DecimalDef" type="PACKED"
                   precision="6"
                   scale="3"/>
             </definition>
@@ -2942,7 +2942,7 @@
                 xsi:type="il-data-def:ScrollerDef"
                 dimension="122">
               <argument
-                  xsi:type="il-data-def:DecimalDef"
+                  xsi:type="il-data-def:DecimalDef" type="PACKED"
                   precision="6"
                   scale="3"/>
             </definition>
@@ -3830,7 +3830,7 @@
             <default
                 value="*NONE"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="4"
                 scale="1"/>
           </elements>
@@ -4333,7 +4333,7 @@
             <default
                 value="66"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -4347,7 +4347,7 @@
             <default
                 value="132"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -4403,7 +4403,7 @@
         <default
             value="6"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="3"
             scale="1"/>
       </dataTerm>
@@ -4442,7 +4442,7 @@
         <default
             value="10"/>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="3"
             scale="1"/>
       </dataTerm>
@@ -4474,7 +4474,7 @@
             <cardinality
                 min="1"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -4488,7 +4488,7 @@
             <cardinality
                 min="1"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -4525,7 +4525,7 @@
             <cardinality
                 min="1"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -4539,7 +4539,7 @@
             <cardinality
                 min="1"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -5753,7 +5753,7 @@
             <default
                 value="*NONE"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="4"
                 scale="1"/>
           </elements>
@@ -5950,7 +5950,7 @@
             <default
                 value="*NONE"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="4"
                 scale="1"/>
           </elements>
@@ -6033,7 +6033,7 @@
             <default
                 value="*NONE"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="4"
                 scale="1"/>
           </elements>
@@ -6446,7 +6446,7 @@
             <default
                 value="0"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -6460,7 +6460,7 @@
             <default
                 value="0"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -6540,7 +6540,7 @@
             <default
                 value="0"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -6554,7 +6554,7 @@
             <default
                 value="0"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -6761,7 +6761,7 @@
             <default
                 value="*DEVD"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -6803,7 +6803,7 @@
                 xsi:type="il-data-def:ScrollerDef"
                 dimension="122">
               <argument
-                  xsi:type="il-data-def:DecimalDef"
+                  xsi:type="il-data-def:DecimalDef" type="PACKED"
                   precision="6"
                   scale="3"/>
             </definition>
@@ -6885,7 +6885,7 @@
                 xsi:type="il-data-def:ScrollerDef"
                 dimension="122">
               <argument
-                  xsi:type="il-data-def:DecimalDef"
+                  xsi:type="il-data-def:DecimalDef" type="PACKED"
                   precision="6"
                   scale="3"/>
             </definition>
@@ -7713,7 +7713,7 @@
             <default
                 value="*NONE"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="4"
                 scale="1"/>
           </elements>
@@ -8121,7 +8121,7 @@
                 max="255.0"
                 min="0.001"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -8133,7 +8133,7 @@
                 max="378.0"
                 min="0.001"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="6"
                 scale="3"/>
           </elements>
@@ -8185,7 +8185,7 @@
               name="12.0"/>
         </facets>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="3"
             scale="1"/>
       </dataTerm>
@@ -8218,7 +8218,7 @@
               name="20.0"/>
         </facets>
         <definition
-            xsi:type="il-data-def:DecimalDef"
+            xsi:type="il-data-def:DecimalDef" type="PACKED"
             precision="3"
             scale="1"/>
       </dataTerm>
@@ -8248,7 +8248,7 @@
             <cardinality
                 min="1"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="5"
                 scale="3"/>
           </elements>
@@ -8262,7 +8262,7 @@
             <cardinality
                 min="1"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="5"
                 scale="3"/>
           </elements>
@@ -8297,7 +8297,7 @@
             <cardinality
                 min="1"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="5"
                 scale="3"/>
           </elements>
@@ -8311,7 +8311,7 @@
             <cardinality
                 min="1"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="5"
                 scale="3"/>
           </elements>
@@ -9317,7 +9317,7 @@
             <default
                 value="*NONE"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="4"
                 scale="1"/>
           </elements>
@@ -9629,7 +9629,7 @@
             <default
                 value="*NONE"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="4"
                 scale="1"/>
           </elements>
@@ -9710,7 +9710,7 @@
             <default
                 value="*NONE"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="4"
                 scale="1"/>
           </elements>
@@ -10104,7 +10104,7 @@
             <default
                 value="0"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="5"
                 scale="3"/>
           </elements>
@@ -10118,7 +10118,7 @@
             <default
                 value="0"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="5"
                 scale="3"/>
           </elements>
@@ -10196,7 +10196,7 @@
             <default
                 value="0"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="5"
                 scale="3"/>
           </elements>
@@ -10210,7 +10210,7 @@
             <default
                 value="0"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="5"
                 scale="3"/>
           </elements>
@@ -10404,7 +10404,7 @@
             <cardinality
                 min="1"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="7"
                 scale="4"/>
           </elements>
@@ -10444,7 +10444,7 @@
                 xsi:type="il-data-def:ScrollerDef"
                 dimension="122">
               <argument
-                  xsi:type="il-data-def:DecimalDef"
+                  xsi:type="il-data-def:DecimalDef" type="PACKED"
                   precision="7"
                   scale="4"/>
             </definition>
@@ -10522,7 +10522,7 @@
                 xsi:type="il-data-def:ScrollerDef"
                 dimension="122">
               <argument
-                  xsi:type="il-data-def:DecimalDef"
+                  xsi:type="il-data-def:DecimalDef" type="PACKED"
                   precision="7"
                   scale="4"/>
             </definition>
@@ -11319,7 +11319,7 @@
             <default
                 value="*NONE"/>
             <definition
-                xsi:type="il-data-def:DecimalDef"
+                xsi:type="il-data-def:DecimalDef" type="PACKED"
                 precision="4"
                 scale="1"/>
           </elements>

@@ -78,8 +78,8 @@ public class UserProfileChanger {
 			@DataDef(length = 2) QEnum<COUNTRYORREGIONIDEnum, QCharacter> countryOrRegionID, @DataDef(binaryType = BinaryType.INTEGER) QEnum<CODEDCHARACTERSETIDEnum, QBinary> codedCharacterSetID,
 			@DataDef(length = 10) QEnum<CHARACTERIDENTIFIERCONTROLEnum, QCharacter> characterIdentifierControl,
 			@DataDef(dimension = 6, length = 2) QScroller<QEnum<LOCALEJOBATTRIBUTESEnum, QCharacter>> localeJobAttributes, @DataDef(length = 2048) QEnum<LOCALEEnum, QCharacter> locale,
-			@DataDef(dimension = 7, length = 10) QScroller<QEnum<USEROPTIONSEnum, QCharacter>> userOptions, @DataDef(precision = 10) QEnum<USERIDNUMBEREnum, QDecimal> userIDNumber,
-			@DataDef(precision = 10) QEnum<GROUPIDNUMBEREnum, QDecimal> groupIDNumber, @DataDef(length = 2048) QEnum<HOMEDIRECTORYEnum, QCharacter> homeDirectory,
+			@DataDef(dimension = 7, length = 10) QScroller<QEnum<USEROPTIONSEnum, QCharacter>> userOptions, @DataDef(precision = 10, packed = true) QEnum<USERIDNUMBEREnum, QDecimal> userIDNumber,
+			@DataDef(precision = 10, packed = true) QEnum<GROUPIDNUMBEREnum, QDecimal> groupIDNumber, @DataDef(length = 2048) QEnum<HOMEDIRECTORYEnum, QCharacter> homeDirectory,
 			QEnum<EIMASSOCIATIONEnum, EIMASSOCIATION> eIMAssociation) {
 
 		QResourceWriter<QUserProfile> resourceWriter = null;
