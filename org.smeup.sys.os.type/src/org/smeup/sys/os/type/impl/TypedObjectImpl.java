@@ -295,7 +295,8 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 			if(getClass().getSimpleName().equalsIgnoreCase("UserProfileImpl"))
 				return "QSYS";
 			else
-				throw new IntegratedLanguageCoreRuntimeException("Invalid library for object: " + this);
+				return null;
+//				throw new IntegratedLanguageCoreRuntimeException("Invalid library for object: " + this);
 		
 		if(resource instanceof QNameable)
 			return ((QNameable)resource).getName();
