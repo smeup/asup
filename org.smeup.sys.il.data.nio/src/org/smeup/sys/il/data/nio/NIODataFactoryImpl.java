@@ -539,7 +539,13 @@ public class NIODataFactoryImpl implements QDataFactory {
 							QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) eObject;
 							QDecimalDef decimalDef = (QDecimalDef) dataAreaDef.getArgument();
 							decimalDef.setType(DecimalType.PACKED);
-						} else {
+						} 
+						else if(eObject instanceof QEnumDef<?, ?>) {
+							QEnumDef<?, ?> enumDef = (QEnumDef<?, ?>)eObject;
+							QDecimalDef decimalDef = (QDecimalDef) enumDef.getDelegate();
+							decimalDef.setType(DecimalType.PACKED);
+						}
+						else {
 							QDecimalDef decimalDef = (QDecimalDef) eObject;
 							decimalDef.setType(DecimalType.PACKED);
 						}
