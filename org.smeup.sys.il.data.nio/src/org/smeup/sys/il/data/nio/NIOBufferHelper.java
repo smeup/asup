@@ -442,7 +442,7 @@ public class NIOBufferHelper {
 				element.move(new BigDecimal(value), true);
 				break;
 			case STRING:
-				element.movel(value, true);
+				((QString)element).eval(value);
 				break;
 			}
 		}
