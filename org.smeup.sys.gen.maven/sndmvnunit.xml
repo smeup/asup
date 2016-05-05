@@ -1,0 +1,84 @@
+<project name="sndmvnunit" basedir=".">
+	
+	<!--
+		Target da implementare:
+			
+			1) push-sources-test
+			2) push-jars-test
+			3) push-sources-prod
+			4) push-jars-prod
+		-->	
+	
+	<import file="smeup-sys-base.xml"/>
+
+	<taskdef resource="org/oecd/ant/git/antlib.xml">
+		<classpath>
+			<pathelement location="${basedir}\lib\org.oecd.ant.git-1.2.0.jar"/>
+			<pathelement location="${basedir}\lib\org.eclipse.jgit-4.1.0.201509280440-r.jar"/>
+			<pathelement location="${basedir}\lib\com.jcraft.jsch_0.1.53.v201508180515.jar"/>
+			<pathelement location="${basedir}\lib\slf4j-api-1.7.12.jar"/>
+			<pathelement location="${basedir}\lib\slf4j-log4j12-1.7.2.jar"/>
+			<pathelement location="${basedir}\lib\org.apache.log4j_1.2.15.v201012070815.jar"/>
+		</classpath>
+	</taskdef>
+
+	<macrodef name="git-push-jar">		
+		<attribute name="site.dir" default="" />
+		<attribute name="site.name" default="" />
+		<attribute name="message" default="" />
+		<sequential>
+			<echo message="Push jars on site @{site.name}" />
+			<git repo="@{site.dir}">
+				
+				<gitadd filepatterns="@{site.name}"/>
+	
+				<gitcommit all="true" message="@{message}">
+					<author name="${git.user.name}" email="${git.user.email}" />
+					<committer name="${git.user.name}" email="${git.user.email}" />
+				</gitcommit>
+	
+				<gitpush remote="origin" refSpecs="refs/heads/master">
+					<credentials username="${git.user}" password="${git.pwd}" />
+				</gitpush>
+			</git>
+		</sequential>
+	</macrodef>
+	
+	<target name="push-jars-prod" description="Push all Smeup SYS jars to prod P2 site (com.smeup.sys.p2.site)">
+
+		<echo message="push-jars-prod for SYS repository"/>
+		
+		<property name="commit-message" value="As.UP System release ${time-stamp}" />
+		
+		<echo message="Commiting all changes to test P2 site with message ${commit-message}" />
+
+		<echo message="Clear destination p2 dir" />
+
+		<delete includeemptydirs="true" failonerror="false">
+			<fileset dir="${p2.dir}/${p2.sub.dir}" includes="**/*" excludes="empty.txt"/>
+		</delete>
+
+		<echo message="Copy jars to destination p2 dir" />
+
+		<copy todir="${p2.local.dir}/${p2.local.sub.dir}" failonerror="false">
+			<fileset dir="${root.dir}/org.smeup.sys.gen.p2/target/repository" />
+		</copy>
+
+		<echo message="Push to remote P2 dir" />
+
+		<git-push-jar message="${commit-message}" site.dir="${p2.local.dir}" site.name="${p2.local.sub.dir}"/>
+	</target>
+	
+	<target name="push-sources-prod" >
+		<echo message="push-sources-prod for SYS repository"/>
+	</target>
+	
+	<target name="push-sources-test" >
+		<echo message="push-sources-prod for SYS repository"/>
+	</target>
+		
+	<target name="push-jars-test" >
+			<echo message="push-sources-prod for SYS repository"/>
+	</target>	
+
+</project>

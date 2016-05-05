@@ -1,16 +1,14 @@
 <project name="sndmvnunit" basedir="." xmlns:git="antlib:com.rimerosolutions.ant.git">
+	
+	<!--
+		Target da implementare:
+		
+		1) delete-src
+		2) get-sources
+		3) mvn-compile
+	-->
 
-	<property name="git.source.uri" value="https://github.com/smeup/asup"/>
-	<property name="git.user" value="smeup"/>
-	<property name="git.pwd"  value="smeup++2015"/>
-	<property name="git.user.name"  value="smeup"/>
-	<property name="git.user.email"  value="asupdev@gmail.com"/>
-	<property name="root.dir" location=".." />
-
-	<tstamp>
-		<format property="time-stamp" pattern="yyyy-MM-dd_HH:mm:ss" />
-	</tstamp>
-
+	<import file="smeup-sys-base.xml"/>
 
 	<taskdef uri="antlib:com.rimerosolutions.ant.git" resource="com/rimerosolutions/ant/git/jgit-ant-lib.xml">
 		<classpath>
@@ -38,12 +36,16 @@
 	</macrodef>
 
 	<git:settings refId="smeup-build" username="${git.user}" password="${git.pwd}" name="${git.user.name}" email="${git.user.email}" />
-
+	
+	<target name="delete-src" description="Delete source in build dir">
+		<echo message="Delete sources in build dir: ${build.dir}" />
+	</target>	
+	
 	<target name="get-sources" description="Get sources from git repository">
 
-		<echo message="Get source from gitHub respository:  ${commit-message}" />
+		<echo message="Get source from gitHub respository:  ${source.git.uri}" />
 		<git:git directory="${root.dir}" settingsref="smeup-build">
-			<pull  uri="${git.source.uri}"/>
+			<pull  uri="${source.git.uri}"/>
 		</git:git>
 	</target>
 

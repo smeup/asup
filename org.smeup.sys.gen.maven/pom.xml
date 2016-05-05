@@ -163,7 +163,7 @@
 					</extraClasspathElements>
 				</configuration>
 			</plugin>
-		</plugins>
+		</plugins>		
 	</build>
 
 	

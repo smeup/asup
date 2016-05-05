@@ -1,0 +1,11 @@
+<project name="smeup-gen-base" basedir=".">
+
+	<property name="root.dir" location=".." />
+
+	<property file="smeup-sys.properties" />
+
+	<tstamp>
+		<format property="time-stamp" pattern="yyyy-MM-dd_HH:mm:ss" />
+	</tstamp>
+	
+</project>
