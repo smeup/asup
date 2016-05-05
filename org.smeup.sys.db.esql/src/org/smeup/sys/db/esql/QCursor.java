@@ -64,9 +64,57 @@ public interface QCursor extends QESqlObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model targetRequired="true"
+	 * @generated
+	 */
+	void prior(QBufferedData target);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetDataType="org.smeup.sys.db.esql.CursorRecord" targetRequired="true"
+	 * @generated
+	 */
+	void prior(QBufferedData[] target);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
 	void close();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetRequired="true"
+	 * @generated
+	 */
+	void first(QBufferedData target);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetDataType="org.smeup.sys.db.esql.CursorRecord" targetRequired="true"
+	 * @generated
+	 */
+	void first(QBufferedData[] target);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetRequired="true"
+	 * @generated
+	 */
+	void last(QBufferedData target);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetDataType="org.smeup.sys.db.esql.CursorRecord" targetRequired="true"
+	 * @generated
+	 */
+	void last(QBufferedData[] target);
 
 } // QCursor

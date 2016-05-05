@@ -43,7 +43,7 @@ public class JDBCDataWriterImpl extends DataWriterImpl {
 		int c = 1;
 		for (QBufferedData bufferedData : data.getElements()) {
 			try {
-				if((bufferedData instanceof QBufferedElement))
+				if(!(bufferedData instanceof QBufferedElement))
 					throw new IntegratedLanguageEsamRuntimeException("Invalid buffered data: "+bufferedData);
 				
 				QBufferedElement bufferedElement = (QBufferedElement)bufferedData;

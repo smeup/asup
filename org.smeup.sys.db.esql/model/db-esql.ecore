@@ -5,6 +5,19 @@
       eSuperTypes="../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
   <eClassifiers xsi:type="ecore:EClass" name="Cursor" abstract="true" interface="true"
       eSuperTypes="#//ESqlObject">
+    <eOperations name="close"/>
+    <eOperations name="first">
+      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//BufferedData"/>
+    </eOperations>
+    <eOperations name="first">
+      <eParameters name="target" lowerBound="1" eType="#//CursorRecord"/>
+    </eOperations>
+    <eOperations name="last">
+      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//BufferedData"/>
+    </eOperations>
+    <eOperations name="last">
+      <eParameters name="target" lowerBound="1" eType="#//CursorRecord"/>
+    </eOperations>
     <eOperations name="next">
       <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//BufferedData"/>
     </eOperations>
@@ -18,7 +31,12 @@
     <eOperations name="openUsingVariable">
       <eParameters name="variable" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//String"/>
     </eOperations>
-    <eOperations name="close"/>
+    <eOperations name="prior">
+      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//BufferedData"/>
+    </eOperations>
+    <eOperations name="prior">
+      <eParameters name="target" lowerBound="1" eType="#//CursorRecord"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="CursorRecord" instanceClassName="org.smeup.sys.il.data.QBufferedData[]"/>
   <eClassifiers xsi:type="ecore:EClass" name="CursorTerm" eSuperTypes="#//ESqlTerm">
