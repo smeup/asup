@@ -112,10 +112,12 @@ public class BaseCallableInjector {
 			QDataTerm<?> programStatusTerm = dataContainer.addDataTerm("*pgmstatus", BaseProgramStatusImpl.class, null);
 			QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
 			programStatus.clear();
-			if (program != null) {
-				programStatus.getProgramName().eval(program.getName());
+
+			programStatus.getProgramName().eval(program.getName());
+			
+			if(program.getLibrary() != null)
 				programStatus.getProgramLibrary().eval(program.getLibrary());
-			}
+
 			QJobReference jobReference = job.getJobReference();
 			programStatus.getUserName().eval(jobReference.getJobUser());
 			programStatus.getJobNumber().eval(jobReference.getJobNumber());
@@ -181,7 +183,7 @@ public class BaseCallableInjector {
 		return callable;
 	}
 
-	@SuppressWarnings({ "unchecked"})
+	@SuppressWarnings({ "unchecked" })
 	private void injectFields(Object owner, Class<?> klass, Object callable, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules,
 			Map<String, QRecord> records) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
@@ -310,7 +312,7 @@ public class BaseCallableInjector {
 				if (Integer.class.isAssignableFrom(fieldClass)) {
 					object = Integer.parseInt(dataDef.value());
 				} else if (Long.class.isAssignableFrom(fieldClass)) {
-					object = Long.parseLong(dataDef.value());					
+					object = Long.parseLong(dataDef.value());
 				} else if (Double.class.isAssignableFrom(fieldClass)) {
 					object = Double.parseDouble(dataDef.value());
 				} else if (String.class.isAssignableFrom(fieldClass)) {
@@ -400,19 +402,20 @@ public class BaseCallableInjector {
 		for (InjectableField field : pointers) {
 
 			QDataTerm<?> dataTerm = dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
-			if(dataTerm.getDefault() != null)
+			if (dataTerm.getDefault() != null)
 				continue;
-			
+
 			field.setValue(callable, dataContainer.getData(dataTerm));
 		}
 
 		// dataStructure
 		for (InjectableField field : dataStructures) {
-			
-			QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> dataTerm = (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
-			
+
+			QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> dataTerm = (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataContainer.addDataTerm(field.getName(), field.getType(),
+					Arrays.asList(field.getField().getAnnotations()));
+
 			QData data = dataContainer.getData(dataTerm);
-			
+
 			QDataStruct dataStruct = (QDataStruct) data;
 			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
 
@@ -462,9 +465,9 @@ public class BaseCallableInjector {
 		for (InjectableField field : pointers) {
 
 			QDataTerm<?> dataTerm = dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
-			if(dataTerm.getDefault() == null)
+			if (dataTerm.getDefault() == null)
 				continue;
-			
+
 			field.setValue(callable, dataContainer.getData(dataTerm));
 		}
 

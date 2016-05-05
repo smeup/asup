@@ -144,7 +144,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	public <P> QCallableProgram<P> loadProgram(QJob job, Class<P> klass) {
 
 		try {
-			QProgram program = null;
+			QProgram program = QOperatingSystemProgramFactory.eINSTANCE.createProgram();
+			program.setName(klass.getSimpleName());
 			QCallableProgram<P> callableProgram = prepareCallableProgram(job, program, klass);
 
 			return callableProgram;
