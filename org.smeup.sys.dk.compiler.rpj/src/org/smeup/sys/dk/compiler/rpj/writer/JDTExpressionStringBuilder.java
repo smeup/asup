@@ -340,6 +340,27 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			builder.setTarget(QPointer.class);
 		}
+		// list
+		else if (JDTContextHelper.isList(compilationUnit, expression.getLeftOperand())) {
+			// left
+			builder.setTarget(null);
+			builder.clear();
+			expression.getLeftOperand().accept(builder);
+			value.append(builder.getResult());
+
+			// operator
+			value.append(".q" + strings.firstToUpper(toJavaMethod(expression)));
+			value.append("(");
+
+			// right
+			builder.clear();
+			expression.getRightOperand().accept(builder);
+			value.append(builder.getResult());
+
+			value.append(")");
+
+			builder.setTarget(QList.class);
+		}
 		// plus, minus, multiple, divide ..
 		else if (expression.getRightOperand() != null) {
 
@@ -357,6 +378,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			value.append(builder.getResult());
 
 			if (QPointer.class.isAssignableFrom(target))
+				value.append("." + toJavaMethod(expression));
+			else if (QList.class.isAssignableFrom(target))
 				value.append("." + toJavaMethod(expression));
 			else
 				value.append(toJavaPrimitive(expression.getOperator()));
@@ -403,6 +426,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				writeValue(String.class, target, value.toString());
 			else if (QPointer.class.isAssignableFrom(target))
 				writeValue(QPointer.class, target, value.toString());
+			else if (QList.class.isAssignableFrom(target))
+				writeValue(QList.class, target, value.toString());
 			else
 				writeValue(String.class, target, value.toString());
 		} else {
@@ -836,7 +861,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				buffer.append(value);
 				buffer.append(".asDatetime()");
 			}
-			
+
 		}
 		// unboxing
 		else {
@@ -883,7 +908,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			}
 			// list
 			else if (List.class.isAssignableFrom(target)) {
-				buffer.append(".asList()");
+//				buffer.append(".asList()");
 			} else
 				throw new IntegratedLanguageExpressionRuntimeException("Invalid unboxing type: " + target.getSimpleName());
 		}
@@ -1014,7 +1039,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			return false;
 		}
 
-		throw new IntegratedLanguageDataRuntimeException("Invalid expression "+expression);
+		throw new IntegratedLanguageDataRuntimeException("Invalid expression " + expression);
 	}
 
 	private void writeDataTerm(QDataTerm<?> dataTerm, List<QExpression> elements) {
