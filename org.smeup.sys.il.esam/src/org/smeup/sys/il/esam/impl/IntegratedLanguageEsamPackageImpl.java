@@ -1228,6 +1228,10 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(ksDataSetEClass, ecorePackage.getEBoolean(), "readpe", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getData(), "keyField", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBooleanObject(), "lock", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(ksDataSetEClass, ecorePackage.getEBoolean(), "readpe", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getData(), "keyField", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "beginningOfData", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(ksDataSetEClass, ecorePackage.getEBoolean(), "readpe", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1243,6 +1247,10 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(ksDataSetEClass, ecorePackage.getEBoolean(), "readpe", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEJavaObject(), "keyField", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(ksDataSetEClass, ecorePackage.getEBoolean(), "readpe", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEJavaObject(), "keyField", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBooleanObject(), "lock", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(ksDataSetEClass, ecorePackage.getEBoolean(), "readpe", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEJavaObject(), "keyField", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -1261,6 +1269,10 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(ksDataSetEClass, ecorePackage.getEBoolean(), "readpe", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getKeyList(), "keyList", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(ksDataSetEClass, ecorePackage.getEBoolean(), "readpe", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getKeyList(), "keyList", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBooleanObject(), "lock", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(ksDataSetEClass, ecorePackage.getEBoolean(), "readpe", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getKeyList(), "keyList", 1, 1, IS_UNIQUE, IS_ORDERED);

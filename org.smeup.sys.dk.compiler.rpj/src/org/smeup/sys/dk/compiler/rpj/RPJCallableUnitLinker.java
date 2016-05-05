@@ -46,6 +46,7 @@ import org.smeup.sys.il.flow.QEntry;
 import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QFileSection;
 import org.smeup.sys.il.flow.QFlowSection;
+import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QSetupSection;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -141,10 +142,10 @@ public class RPJCallableUnitLinker {
 
 		QFlowSection flowSection = callableUnit.getFlowSection();
 		if (flowSection != null) {
-			List<QPrototype> prototypes = new ArrayList<QPrototype>(flowSection.getPrototypes());
-
+			
+			// prototypes
 			RPJDataLikeRefactor dataLikeVisitor = new RPJDataLikeRefactor(compilationUnit);
-			for (QPrototype prototype : prototypes) {
+			for (QPrototype prototype : flowSection.getPrototypes()) {
 				
 				if(prototype.getDefinition() != null) {
 					dataLikeVisitor.reset();
@@ -160,6 +161,20 @@ public class RPJCallableUnitLinker {
 					}
 				}
 			}
+			
+			// procedures
+			for (QProcedure procedure : flowSection.getProcedures()) {
+												
+				QEntry entry = procedure.getEntry();
+				if(entry != null) {
+					for(QEntryParameter<?> entryParameter: entry.getParameters()) {
+						dataLikeVisitor.reset();
+						if(entryParameter.getDelegate() instanceof QDataTerm) 
+							((QDataTerm<?>)entryParameter.getDelegate()).accept(dataLikeVisitor);
+					}
+				}
+			}
+
 		}
 	}
 

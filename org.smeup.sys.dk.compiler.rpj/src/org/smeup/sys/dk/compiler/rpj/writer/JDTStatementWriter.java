@@ -509,7 +509,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 			if (namedNode == null) {
 				Class<?> target = null;
-				if (objectExpression instanceof QArithmeticExpression) {
+				if (objectExpression instanceof QArithmeticExpression || objectExpression instanceof QBlockExpression) {
 					target = JDTContextHelper.getTargetClass(compilationUnit, objectExpression, false);
 					// force boxing
 					if (String.class.isAssignableFrom(target))

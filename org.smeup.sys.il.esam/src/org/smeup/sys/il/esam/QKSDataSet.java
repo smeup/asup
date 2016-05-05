@@ -281,6 +281,14 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	boolean readpe(QData keyField);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model keyFieldRequired="true"
+	 * @generated
+	 */
+	boolean readpe(QData keyField, Boolean lock);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model keyFieldRequired="true"
 	 * @generated
@@ -311,6 +319,14 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	boolean readpe(Object keyField);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model keyFieldRequired="true"
+	 * @generated
+	 */
+	boolean readpe(Object keyField, Boolean lock);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model keyFieldRequired="true"
 	 * @generated
@@ -339,6 +355,14 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	 * @generated
 	 */
 	boolean readpe(Object[] keyList);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * @generated
+	 */
+	boolean readpe(Object[] keyList, Boolean lock);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
