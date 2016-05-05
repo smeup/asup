@@ -654,6 +654,30 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" valueRequired="true"
+	 * @generated
+	 */
+	QArray<D> qPlus(QArray<D> value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" valueRequired="true"
+	 * @generated
+	 */
+	QArray<D> qPlus(QString value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" valueRequired="true"
+	 * @generated
+	 */
+	QArray<D> qPlus(String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" startRequired="true" lengthRequired="true"
 	 * @generated
 	 */

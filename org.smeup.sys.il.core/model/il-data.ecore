@@ -434,6 +434,28 @@
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
+    <eOperations name="qPlus" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eTypeParameter="#//Array/D"/>
+      </eGenericType>
+      <eParameters name="value" lowerBound="1">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments eTypeParameter="#//Array/D"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="qPlus" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eTypeParameter="#//Array/D"/>
+      </eGenericType>
+      <eParameters name="value" lowerBound="1" eType="#//String"/>
+    </eOperations>
+    <eOperations name="qPlus" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eTypeParameter="#//Array/D"/>
+      </eGenericType>
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eOperations name="qSubarr" lowerBound="1">
       <eGenericType eClassifier="#//Array">
         <eTypeArguments eTypeParameter="#//Array/D"/>

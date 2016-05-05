@@ -30,6 +30,7 @@ import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.SortDirection;
 
 public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImpl<D> implements QArray<D> {
@@ -796,5 +797,23 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 		}
 
 		return newArray;
+	}
+
+	@Override
+	public QArray<D> qPlus(QArray<D> value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public QArray<D> qPlus(QString value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public QArray<D> qPlus(String value) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
