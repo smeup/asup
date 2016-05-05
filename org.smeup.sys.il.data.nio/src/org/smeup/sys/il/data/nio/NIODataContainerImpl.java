@@ -343,7 +343,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			}
 
 			if (allocate)
-				writeDefault(dataTerm, data);
+				writeDefault(dataTerm, data);			
 		}
 
 		return data;
@@ -391,7 +391,8 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 			if (dataTerm.getDefault() == null && compoundDataDef.getClassDelegator() != null) {
 				// if(compoundDataDef.isInitialized())
-				dataStruct.reset();
+				if(dataTerm.getFacet(QOverlay.class) == null)
+					dataStruct.reset();
 			} else {
 				if (dataTerm.getDefault() != null) {
 					QSpecialElement specialElement = getSpecialElement(dataTerm, dataTerm.getDefault().getValue());
