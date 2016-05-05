@@ -33,11 +33,11 @@ import org.smeup.sys.os.file.QDisplayFileField;
 import org.smeup.sys.os.file.QDisplayFileFormat;
 import org.smeup.sys.os.file.QFileFormat;
 
-public class JDTDisplayFileWriter extends JDTNamedNodeWriter {
+public class JDTDisplayFileWriter extends JDTDataStructureWriter {
 
 	@SuppressWarnings("unchecked")
-	public JDTDisplayFileWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
-		super(root, compilationUnit, compilationSetup, name, UnitScope.PUBLIC);
+	public JDTDisplayFileWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, Class<?> superClass) {
+		super(root, compilationUnit, compilationSetup, name, superClass, UnitScope.PUBLIC, false);
 
 		// writeFieldSerializer();
 

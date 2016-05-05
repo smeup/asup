@@ -49,6 +49,7 @@ import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataManager;
+import org.smeup.sys.il.data.QDisplayWrapper;
 import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.esam.annotation.Format;
 import org.smeup.sys.il.esam.annotation.Query;
@@ -401,7 +402,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 		QDisplayFile displayFile = (QDisplayFile) compilationUnit.getNode();
 
-		JDTDisplayFileWriter displayFileWriter = new JDTDisplayFileWriter(null, compilationUnit, setup, compilationUnit.getNode().getName());
+		JDTDisplayFileWriter displayFileWriter = new JDTDisplayFileWriter(null, compilationUnit, setup, compilationUnit.getNode().getName(), QDisplayWrapper.class);
 		displayFileWriter.writeDisplayFile(displayFile);
 
 		displayFileWriter.writeOutputStream(output);
