@@ -250,6 +250,11 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 	}
 
 	@Override
+	public boolean readpe(Object keyField, Boolean lock) {
+		return readpe(keyField, null, null, lock);
+	}
+
+	@Override
 	public boolean readpe(Object keyField, QIndicator beginningOfData) {
 		return readpe(keyField, beginningOfData, null, null);
 	}
@@ -269,6 +274,11 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 	@Override
 	public boolean readpe(Object[] keyList) {
 		return readpe(keyList, null, null, null);
+	}
+
+	@Override
+	public boolean readpe(Object[] keyList, Boolean lock) {
+		return readpe(keyList, null, null, lock);
 	}
 
 	@Override
@@ -313,6 +323,11 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 	@Override
 	public boolean readpe(QData keyField) {
 		return readpe(keyField, null, null, null);
+	}
+
+	@Override
+	public boolean readpe(QData keyField, Boolean lock) {
+		return readpe(keyField, null, null, lock);		
 	}
 
 	@Override
