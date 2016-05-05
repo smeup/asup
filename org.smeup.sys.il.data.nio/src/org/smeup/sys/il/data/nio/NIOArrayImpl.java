@@ -798,7 +798,38 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 		return newArray;
 	}
+	
+	@Override
+	public QArray<D> qMult(QNumeric value) {
+		return qMultOperation(value.asNumber(), false);
+	}
 
+	@Override
+	public QArray<D> qMult(QNumeric value, boolean halfAdjust) {
+		return qMultOperation(value.asNumber(), halfAdjust);
+	}
+
+	@Override
+	public QArray<D> qMult(Number value) {
+		return qMultOperation(value, false);
+	}
+
+	@Override
+	public QArray<D> qMult(Number value, boolean halfAdjust) {
+		return qMultOperation(value, halfAdjust);
+	}
+
+	private QArray<D> qMultOperation(Number value, boolean halfAdjust) {
+
+		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), getModel(), capacity(), getSortDirection(), true);
+		newArray.movea(this);
+		for (D element : newArray) {
+			((QNumeric) element).mult(value.doubleValue(), halfAdjust);
+		}
+
+		return newArray;
+	}
+	
 	@Override
 	public QArray<D> qPlus(QArray<D> value) {
 		// TODO Auto-generated method stub

@@ -20,6 +20,7 @@ import org.smeup.sys.il.data.QString;
 
 public class NIOBufferedListHelper {
 
+	@SuppressWarnings("unchecked")
 	public static <D extends QBufferedElement> int lookup(NIOBufferedListImpl<D> list, D argument, DataComparator comparator, int startIndex, int numElements) {
 
 		int result = 0;
@@ -28,6 +29,7 @@ public class NIOBufferedListHelper {
 		NIOBufferedListIterator<D> iterator = new NIOBufferedListIterator<D>(list, list.getSortDirection(), startIndex, numElements);
 		while (iterator.hasNext()) {
 			D bufferedElement = iterator.next();
+			bufferedElement = (D) NIOBufferHelper.getNIOBufferedElementImpl(bufferedElement);
 			switch (bufferedElement.getBufferedElementType()) {
 			case DATETIME:
 				QDatetime datetime = ((QDatetime) bufferedElement);

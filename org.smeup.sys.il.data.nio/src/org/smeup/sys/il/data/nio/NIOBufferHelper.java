@@ -434,6 +434,7 @@ public class NIOBufferHelper {
 		if (dataSpecial != null) {
 			element.eval(dataSpecial);
 		} else {
+			element = NIOBufferHelper.getNIOBufferedElementImpl(element);
 			switch (element.getBufferedElementType()) {
 			case DATETIME:
 				element.movel(value, true);

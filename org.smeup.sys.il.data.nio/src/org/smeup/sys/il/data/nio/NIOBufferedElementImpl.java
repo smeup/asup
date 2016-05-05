@@ -167,7 +167,8 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 
 	@Override
 	public final void move(QBufferedElement value, boolean clear) {
-
+		
+		value = NIOBufferHelper.getNIOBufferedElementImpl(value);
 		switch (value.getBufferedElementType()) {
 		case DATETIME:
 			_move(_toBytes((QDatetime) value), clear);
@@ -229,6 +230,7 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	@Override
 	public final void movel(QBufferedElement value, boolean clear) {
 
+		value = NIOBufferHelper.getNIOBufferedElementImpl(value);
 		switch (value.getBufferedElementType()) {
 		case DATETIME:
 			_movel(_toBytes((QDatetime) value), clear);
