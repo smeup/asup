@@ -456,14 +456,12 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 
 	@Override
 	protected byte[] _toBytes(String value) {
-		// TODO Auto-generated method stub
-		return null;
+		return value.getBytes(getDataContext().getCharset());
 	}
 
 	@Override
 	protected byte[] _toBytes(QString value) {
-		// TODO Auto-generated method stub
-		return null;
+		return value.asBytes();
 	}
 
 	@Override
@@ -474,14 +472,12 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 
 	@Override
 	protected byte[] _toBytes(QNumeric value) {
-		// TODO Auto-generated method stub
-		return null;
+		return value.asBytes();
 	}
 
 	@Override
 	protected byte[] _toBytes(QDatetime value) {
-		// TODO Auto-generated method stub
-		return null;
+		return value.asBytes();
 	}
 
 	@Override
