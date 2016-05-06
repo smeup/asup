@@ -49,6 +49,8 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 	public void executeCommand(QJob job, QCallableCommand callableCommand) {
 
 		// TODO create a dataContainer visitor with replaced variables
+		System.out.println("Command Exec: " + callableCommand.getCommandString());
+
 		jobLogManager.info(job, callableCommand.getCommandString());
 
 		@SuppressWarnings("resource")
