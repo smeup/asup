@@ -42,14 +42,14 @@ public @ToDo class MessageReceiver {
 			@DataDef(binaryType = BinaryType.INTEGER) QEnum<CODEDCHARACTERSETIDEnum, QBinary> codedCharacterSetID, @DataDef(length = 1) QEnum<REJECTDEFAULTREPLYEnum, QCharacter> rejectDefaultReply,
 			@ToDo @DataDef(length = 4) QCharacter cLVarForKEYVAR4, @ToDo @DataDef(length = 1) QCharacter cLVarFor1stLevelText, @ToDo @DataDef(precision = 5, packed = true) QDecimal cLVarForMSGLEN50,
 			@ToDo @DataDef(length = 1) QCharacter cLVarFor2ndLevelText, @ToDo @DataDef(precision = 5, packed = true) QDecimal cLVarForSECLVLLEN50,
-			@ToDo @DataDef(length = 1024, varying = true) QCharacter cLVarForMsgData, @ToDo @DataDef(precision = 5, packed= true) QDecimal cLVarForMSGDTALEN50,
+			@ToDo @DataDef(length = 1024) QCharacter cLVarForMsgData, @ToDo @DataDef(precision = 5, packed= true) QDecimal cLVarForMSGDTALEN50,
 			@ToDo @DataDef(length = 7) QCharacter cLVarForMSGID7, @ToDo @DataDef(precision = 2, packed= true) QDecimal cLVarForSEV20, @ToDo @DataDef(length = 80) QCharacter cLVarForSENDER80,
 			@DataDef(length = 1) QEnum<SENDERFORMATEnum, QCharacter> senderFormat, @ToDo @DataDef(length = 2) QCharacter cLVarForRTNTYPE2, @ToDo @DataDef(length = 9) QCharacter cLVarForALROPT9,
 			@ToDo @DataDef(length = 10) QCharacter cLVarForMSGF10, @ToDo @DataDef(length = 10) QCharacter cLVarForMSGFLIB10, @ToDo @DataDef(length = 10) QCharacter cLVarForSNDMSGFLIB10,
 			@DataDef(precision = 5, packed = true) QDecimal cLVarForTextCCSID50, @DataDef(precision = 5, packed = true) QDecimal cLVarForDataCCSID50) {
 
 		String lastMessage = job.getMessages().get(job.getMessages().size() - 1);
-		cLVarForMsgData.eval("                    " + lastMessage + "              ");
+		cLVarForMsgData.qSubst(21, 6).eval(lastMessage);
 	}
 
 	public static class CALLSTACKENTRYMESSAGEQUEUE extends QDataStructWrapper {

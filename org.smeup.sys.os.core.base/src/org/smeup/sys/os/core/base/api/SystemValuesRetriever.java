@@ -26,7 +26,8 @@ public class SystemValuesRetriever {
 	@Main
 	public void main(@DataDef(length = 10) QCharacter variable, @DataDef(binaryType = BinaryType.INTEGER) QBinary length, @DataDef(binaryType = BinaryType.INTEGER) QBinary number,
 			@DataDef(length = 10) QCharacter names, QUSEC error) {
-		"".toCharArray();
+		// TODO
+		error.qusbavl.eval(1);
 	}
 
 	public static class QUSEC extends QDataStructWrapper {
