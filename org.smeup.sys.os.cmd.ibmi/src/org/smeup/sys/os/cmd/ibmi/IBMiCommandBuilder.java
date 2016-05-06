@@ -86,7 +86,7 @@ public class IBMiCommandBuilder {
 			byte[] commandSourceContent = commandSource.getContent().replaceAll("\n", "").getBytes("ISO-8859-1");
 			commandDocument = loadDocument(new ByteArrayInputStream(commandSourceContent));
 		} catch (Exception e) {
-			System.err.println(e.getMessage());
+			System.err.println(qCommand.getName() + " " + e.getMessage());
 			return;
 		}
 
