@@ -154,6 +154,7 @@
 					<logEnabled>true</logEnabled>
 					<logDirectory>${project.build.directory}/logfiles</logDirectory>
 					<log>plain</log>
+					<compilerVersion>1.8</compilerVersion>
 					<extraClasspathElements>
 						<extraClasspathElement>
 							<groupId>javax.inject</groupId>

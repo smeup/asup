@@ -1,4 +1,4 @@
-<project name="smeup-gen-base" basedir=".">
+<project name="smeup-sys-base" basedir=".">
 
 	<property name="root.dir" location=".." />
 
