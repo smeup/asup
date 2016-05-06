@@ -130,21 +130,25 @@
 				</executions>
 			</plugin>
 
-			<!--  
+<!--  
 			<plugin>
-				<groupId>org.eclipse.tycho.extras</groupId>
-				<artifactId>tycho-source-feature-plugin</artifactId>				
-				<executions>
-					<execution>
-						<id>source-feature</id>
-						<phase>package</phase>
-						<goals>
-							<goal>source-feature</goal>
-						</goals>
-					</execution>
-				</executions>
+				<groupId>net.revelc.code</groupId>
+				<artifactId>formatter-maven-plugin</artifactId>
+				<version>0.5.2-SNAPSHOT</version>
+
+				<configuration>
+					<directories>
+						<directory>${project.build.sourceDirectory}</directory>
+						<directory>${project.build.directory}/generated-sources</directory>
+					</directories>
+					<compilerSource>1.8</compilerSource>
+					<compilerCompliance>1.8</compilerCompliance>
+					<compilerTargetPlatform>1.8</compilerTargetPlatform>
+					<encoding>UTF-8</encoding>	
+				</configuration>
 			</plugin>
 			-->
+
 
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
