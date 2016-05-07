@@ -1,6 +1,10 @@
 <project name="sndmvnunit" basedir=".">
 	
 	<!--
+		Parametro da passare:
+		
+			1) p2.local.dir: directory locale che contiene i siti p2
+	
 		Target da implementare:
 			
 			1) push-sources-test
@@ -55,7 +59,7 @@
 		<echo message="Clear destination p2 dir" />
 
 		<delete includeemptydirs="true" failonerror="false">
-			<fileset dir="${p2.dir}/${p2.sub.dir}" includes="**/*" excludes="empty.txt"/>
+			<fileset dir="${p2.local.dir}/${p2.local.sub.dir}" includes="**/*" excludes="empty.txt"/>
 		</delete>
 
 		<echo message="Copy jars to destination p2 dir" />
