@@ -323,7 +323,7 @@ INNU	:
 	|
 	I N M R
 	|
-	I N O (A | G | V | F)
+	I N O (A | B | C | D | E | F | G | V)
 	|
 	I N L ('1'..'9')
 	|

@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g 2016-05-02 14:18:26
+// $ANTLR 3.5.1 /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g 2016-05-08 18:44:17
 
   package org.smeup.sys.il.expr.ibmi.rpg;
   
@@ -1309,7 +1309,7 @@ public class RPGExprParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: v, vals
+					// elements: vals, v
 					// token labels: 
 					// rule labels: v, retval
 					// token list labels: 

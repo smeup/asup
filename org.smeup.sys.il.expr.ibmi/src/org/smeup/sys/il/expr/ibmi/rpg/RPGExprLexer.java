@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g 2016-05-02 14:18:27
+// $ANTLR 3.5.1 /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g 2016-05-08 18:44:17
 
   package org.smeup.sys.il.expr.ibmi.rpg;
   
@@ -1690,7 +1690,7 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = INNU;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:318:6: ( I N U ( '1' .. '8' ) | I N H ( '1' .. '8' ) | I N M R | I N O ( A | G | V | F ) | I N L ( '1' .. '9' ) | I N L R | I N R T | I N K A | I N K B | I N K C | I N K D | I N K E | I N K F | I N K G | I N K H | I N K I | I N K J | I N K K | I N K L | I N K M | I N K N | I N K P | I N K Q | I N K R | I N K S | I N K T | I N K U | I N K V | I N K W | I N K X | I N K Y )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:318:6: ( I N U ( '1' .. '8' ) | I N H ( '1' .. '8' ) | I N M R | I N O ( A | B | C | D | E | F | G | V ) | I N L ( '1' .. '9' ) | I N L R | I N R T | I N K A | I N K B | I N K C | I N K D | I N K E | I N K F | I N K G | I N K H | I N K I | I N K J | I N K K | I N K L | I N K M | I N K N | I N K P | I N K Q | I N K R | I N K S | I N K T | I N K U | I N K V | I N K W | I N K X | I N K Y )
 			int alt7=31;
 			int LA7_0 = input.LA(1);
 			if ( (LA7_0=='I'||LA7_0=='i') ) {
@@ -2005,7 +2005,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 4 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:326:2: I N O ( A | G | V | F )
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:326:2: I N O ( A | B | C | D | E | F | G | V )
 					{
 					mI(); 
 
@@ -2013,7 +2013,7 @@ public class RPGExprLexer extends Lexer {
 
 					mO(); 
 
-					if ( input.LA(1)=='A'||(input.LA(1) >= 'F' && input.LA(1) <= 'G')||input.LA(1)=='V'||input.LA(1)=='a'||(input.LA(1) >= 'f' && input.LA(1) <= 'g')||input.LA(1)=='v' ) {
+					if ( (input.LA(1) >= 'A' && input.LA(1) <= 'G')||input.LA(1)=='V'||(input.LA(1) >= 'a' && input.LA(1) <= 'g')||input.LA(1)=='v' ) {
 						input.consume();
 					}
 					else {
@@ -4468,8 +4468,7 @@ public class RPGExprLexer extends Lexer {
 			"\10\u0084",
 			"\10\u0085",
 			"\1\u0086\37\uffff\1\u0086",
-			"\1\u0087\4\uffff\2\u0087\16\uffff\1\u0087\12\uffff\1\u0087\4\uffff\2"+
-			"\u0087\16\uffff\1\u0087",
+			"\7\u0087\16\uffff\1\u0087\12\uffff\7\u0087\16\uffff\1\u0087",
 			"\11\u0088\30\uffff\1\u0089\37\uffff\1\u0089",
 			"\1\u008a\37\uffff\1\u008a",
 			"\1\u008b\1\u008c\1\u008d\1\u008e\1\u008f\1\u0090\1\u0091\1\u0092\1\u0093"+
