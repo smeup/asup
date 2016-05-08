@@ -114,8 +114,8 @@ public class BaseCallableInjector {
 			programStatus.clear();
 
 			programStatus.getProgramName().eval(program.getName());
-			
-			if(program.getLibrary() != null)
+
+			if (program.getLibrary() != null)
 				programStatus.getProgramLibrary().eval(program.getLibrary());
 
 			QJobReference jobReference = job.getJobReference();
@@ -408,11 +408,84 @@ public class BaseCallableInjector {
 			field.setValue(callable, dataContainer.getData(dataTerm));
 		}
 
-		// dataStructure
+		// dataStructure no based
+		injectDataStructures(callable, dataContainer, records, dataStructures, false);
+
+		// data no based
+		for (InjectableField field : datas) {
+
+			QDataTerm<?> dataTerm = dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
+			if (dataTerm.getBased() != null)
+				continue;
+
+			field.setValue(callable, dataContainer.getData(dataTerm));
+		}
+
+		// dataSet
+		for (InjectableField field : dataSets) {
+			QDataSet<?> dataSet = (QDataSet<?>) field.getValue(callable);
+			for (String fieldName : dataSet.get().getElementNames()) {
+				QData data = dataContainer.getData(fieldName);
+				if (data instanceof QBufferedData) {
+					QBufferedData bufferedData = (QBufferedData) data;
+					QBufferedData bufferedDataTo = dataSet.get().getElement(fieldName);
+
+					if (!bufferedData.getStore().equals(bufferedDataTo.getStore()))
+						bufferedData.assign(bufferedDataTo);
+				}
+			}
+		}
+
+		// pointer with default
+		for (InjectableField field : pointers) {
+
+			QDataTerm<?> dataTerm = dataContainer.getDataTerm(field.getName());
+			if (dataTerm.getDefault() == null)
+				continue;
+
+			field.setValue(callable, dataContainer.getData(dataTerm));
+		}
+
+		// dataStructure based
+		injectDataStructures(callable, dataContainer, records, dataStructures, true);
+
+		// data based
+		for (InjectableField field : datas) {
+
+			QDataTerm<?> dataTerm = dataContainer.getDataTerm(field.getName());
+			if (dataTerm.getBased() == null)
+				continue;
+
+			field.setValue(callable, dataContainer.getData(dataTerm));
+		}
+
+		// recordInfo
+		for (InjectableField field : infoFields) {
+
+			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
+
+			QDataStruct infoStruct = (QDataStruct) records.get(fileDef.info().toLowerCase());
+			if (infoStruct == null)
+				System.err.println("Unexpected condition " + fileDef.info() + ": asggsu676rf7qwf7");
+			else {
+				field.getField().setAccessible(true);
+				((QDataSet<?>) field.getValue(callable)).getInfoStruct().assign(infoStruct);
+				field.getField().setAccessible(false);
+			}
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private void injectDataStructures(Object callable, QDataContainer dataContainer, Map<String, QRecord> records, List<InjectableField> dataStructures, boolean based) {
+
 		for (InjectableField field : dataStructures) {
 
-			QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> dataTerm = (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataContainer.addDataTerm(field.getName(), field.getType(),
-					Arrays.asList(field.getField().getAnnotations()));
+			QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> dataTerm = (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataContainer.getDataTerm(field.getName());
+			if (dataTerm == null)
+				dataTerm = (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
+
+			if (based == (dataTerm.getBased() == null))
+				continue;
 
 			QData data = dataContainer.getData(dataTerm);
 
@@ -439,52 +512,6 @@ public class BaseCallableInjector {
 			field.setValue(callable, dataStruct);
 		}
 
-		// data
-		for (InjectableField field : datas) {
-
-			QDataTerm<?> dataTerm = dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
-			field.setValue(callable, dataContainer.getData(dataTerm));
-		}
-
-		// dataSet
-		for (InjectableField field : dataSets) {
-			QDataSet<?> dataSet = (QDataSet<?>) field.getValue(callable);
-			for (String fieldName : dataSet.get().getElementNames()) {
-				QData data = dataContainer.getData(fieldName);
-				if (data instanceof QBufferedData) {
-					QBufferedData bufferedData = (QBufferedData) data;
-					QBufferedData bufferedDataTo = dataSet.get().getElement(fieldName);
-
-					if (!bufferedData.getStore().equals(bufferedDataTo.getStore()))
-						bufferedData.assign(bufferedDataTo);
-				}
-			}
-		}
-
-		// pointer with default
-		for (InjectableField field : pointers) {
-
-			QDataTerm<?> dataTerm = dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
-			if (dataTerm.getDefault() == null)
-				continue;
-
-			field.setValue(callable, dataContainer.getData(dataTerm));
-		}
-
-		// recordInfo
-		for (InjectableField field : infoFields) {
-
-			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
-
-			QDataStruct infoStruct = (QDataStruct) records.get(fileDef.info().toLowerCase());
-			if (infoStruct == null)
-				System.err.println("Unexpected condition " + fileDef.info() + ": asggsu676rf7qwf7");
-			else {
-				field.getField().setAccessible(true);
-				((QDataSet<?>) field.getValue(callable)).getInfoStruct().assign(infoStruct);
-				field.getField().setAccessible(false);
-			}
-		}
 	}
 
 	@SuppressWarnings("unused")
