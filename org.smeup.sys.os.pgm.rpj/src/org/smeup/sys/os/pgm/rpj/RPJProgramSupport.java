@@ -85,59 +85,12 @@ public class RPJProgramSupport {
 	private BaseProgramStatusImpl programStatus;
 
 	@DataDef
+	public QIndicator qINLR;
+	@DataDef
 	public QIndicator qINOF;
 	@DataDef
 	public QIndicator qINRT;
-	@DataDef
-	public QIndicator qINLR;
-	@DataDef
-	public QIndicator qINKA;
-	@DataDef
-	public QIndicator qINKB;
-	@DataDef
-	public QIndicator qINKC;
-	@DataDef
-	public QIndicator qINKD;
-	@DataDef
-	public QIndicator qINKE;
-	@DataDef
-	public QIndicator qINKF;
-	@DataDef
-	public QIndicator qINKG;
-	@DataDef
-	public QIndicator qINKH;
-	@DataDef
-	public QIndicator qINKI;
-	@DataDef
-	public QIndicator qINKJ;
-	@DataDef
-	public QIndicator qINKK;
-	@DataDef
-	public QIndicator qINKL;
-	@DataDef
-	public QIndicator qINKM;
-	@DataDef
-	public QIndicator qINKN;
-	@DataDef
-	public QIndicator qINKP;
-	@DataDef
-	public QIndicator qINKQ;
-	@DataDef
-	public QIndicator qINKR;
-	@DataDef
-	public QIndicator qINKS;
-	@DataDef
-	public QIndicator qINKT;
-	@DataDef
-	public QIndicator qINKU;
-	@DataDef
-	public QIndicator qINKV;
-	@DataDef
-	public QIndicator qINKW;
-	@DataDef
-	public QIndicator qINKX;
-	@DataDef
-	public QIndicator qINKY;
+
 	@DataDef
 	public QIndicator qINU1;
 	@DataDef
@@ -154,8 +107,6 @@ public class RPJProgramSupport {
 	public QIndicator qINU7;
 	@DataDef
 	public QIndicator qINU8;
-	@DataDef
-	public QIndicator qINU9;
 
 	@DataDef
 	public Date qDATE;

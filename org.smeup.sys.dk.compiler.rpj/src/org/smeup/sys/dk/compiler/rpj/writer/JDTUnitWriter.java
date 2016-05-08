@@ -34,6 +34,7 @@ import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QUnit;
 import org.smeup.sys.os.pgm.rpj.RPJCommandSupport;
 import org.smeup.sys.os.pgm.rpj.RPJDatabaseSupport;
+import org.smeup.sys.os.pgm.rpj.RPJDisplaySupport;
 import org.smeup.sys.os.pgm.rpj.RPJPrintSupport;
 import org.smeup.sys.os.pgm.rpj.RPJProcedureSupport;
 import org.smeup.sys.os.pgm.rpj.RPJProgramSupport;
@@ -71,24 +72,22 @@ public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 		writeImport(DatetimeFormat.class);
 		writeImport(DataComparator.class);
 		writeImport(TimeFormat.class);
-		
+
 		VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 		FieldDeclaration field = getAST().newFieldDeclaration(variable);
 
 		writeAnnotation(field, Inject.class);
 		field.modifiers().add(getAST().newModifier(ModifierKeyword.PRIVATE_KEYWORD));
 
-		if(getCompilationUnit().getNode() instanceof QProcedure) {
+		if (getCompilationUnit().getNode() instanceof QProcedure) {
 			field.setType(getAST().newSimpleType(getAST().newName(RPJProcedureSupport.class.getSimpleName())));
-			variable.setName(getAST().newSimpleName("qPRO"));	
-		}
-		else {
+			variable.setName(getAST().newSimpleName("qPRO"));
+		} else {
 			field.setType(getAST().newSimpleType(getAST().newName(RPJProgramSupport.class.getSimpleName())));
 			variable.setName(getAST().newSimpleName("qRPJ"));
 		}
 		getTarget().bodyDeclarations().add(field);
-		
-		
+
 		// *CMD
 		if (callableUnitInfo.containsCMDStatement()) {
 			writeImport(RPJCommandSupport.class);
@@ -136,12 +135,29 @@ public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 			getTarget().bodyDeclarations().add(field);
 
 		}
+
+		// *DSP
+		// TODO
+		// if (callableUnitInfo.containsDSPStatement()) {
+		writeImport(RPJDisplaySupport.class);
+
+		variable = getAST().newVariableDeclarationFragment();
+		field = getAST().newFieldDeclaration(variable);
+
+		writeAnnotation(field, Inject.class);
+
+		field.modifiers().add(getAST().newModifier(ModifierKeyword.PRIVATE_KEYWORD));
+		field.setType(getAST().newSimpleType(getAST().newName(RPJDisplaySupport.class.getSimpleName())));
+		variable.setName(getAST().newSimpleName("qDSP"));
+		getTarget().bodyDeclarations().add(field);
+
+		// }
 	}
 
 	public void refactUnit(QUnit unit) {
 
 		RPJExpressionNormalizer expressionNormalizer = getCompilationUnit().getContext().make(RPJExpressionNormalizer.class);
-		
+
 		// main
 		if (unit.getMain() != null)
 			unit.getMain().accept(expressionNormalizer);

@@ -6,81 +6,125 @@
     xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
     xmlns:il-flow="http://www.smeup.org/asup/il/flow"
     xsi:schemaLocation="http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il.flow/model/il-flow.ecore"
-    name="*PRT">
+    name="*DSP">
   <dataSection>
     <datas xsi:type="il-flow:FlowData"
-        name="PAGE">
-      <definition
-          xsi:type="il-data-def:DecimalDef"
-          precision="5"/>
-    </datas>
-    <datas xsi:type="il-flow:FlowData"
-        name="*INL1">
+        name="*INKA">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>
     <datas xsi:type="il-flow:FlowData"
-        name="*INL2">
+        name="*INKB">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>
     <datas xsi:type="il-flow:FlowData"
-        name="*INL3">
+        name="*INKC">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>
     <datas xsi:type="il-flow:FlowData"
-        name="*INL4">
+        name="*INKD">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>
     <datas xsi:type="il-flow:FlowData"
-        name="*INL5">
+        name="*INKE">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>
     <datas xsi:type="il-flow:FlowData"
-        name="*INL6">
+        name="*INKF">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>
     <datas xsi:type="il-flow:FlowData"
-        name="*INL7">
+        name="*INKG">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>
     <datas xsi:type="il-flow:FlowData"
-        name="*INL8">
+        name="*INKH">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>
     <datas xsi:type="il-flow:FlowData"
-        name="*INL9">
+        name="*INKI">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>
     <datas xsi:type="il-flow:FlowData"
-        name="*INOA">
+        name="*INKJ">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>
     <datas xsi:type="il-flow:FlowData"
-        name="*INOB">
+        name="*INKK">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>
     <datas xsi:type="il-flow:FlowData"
-        name="*INOC">
+        name="*INKL">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>
     <datas xsi:type="il-flow:FlowData"
-        name="*INOD">
+        name="*INKM">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>
     <datas xsi:type="il-flow:FlowData"
-        name="*INOE">
+        name="*INKN">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INKP">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INKQ">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INKR">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INKS">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INKT">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INKU">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INKV">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INKW">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INKX">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INKY">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>

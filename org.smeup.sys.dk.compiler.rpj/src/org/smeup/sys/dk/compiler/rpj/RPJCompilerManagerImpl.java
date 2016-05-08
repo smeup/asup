@@ -267,6 +267,10 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		if (callableUnitInfo.containsCMDStatement())
 			moduleContexts.add(loadInternalModule(job, caseSensitive, "*CMD"));
 
+		// TODO 
+//		if (callableUnitInfo.containsDSPStatement())
+			moduleContexts.add(loadInternalModule(job, caseSensitive, "*DSP"));
+		
 		if (callableUnitInfo.containsPRTStatement())
 			moduleContexts.add(loadInternalModule(job, caseSensitive, "*PRT"));
 

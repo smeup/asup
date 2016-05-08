@@ -348,16 +348,21 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			expression.getLeftOperand().accept(builder);
 			value.append(builder.getResult());
 
-			// operator
-			value.append(".q" + strings.firstToUpper(toJavaMethod(expression)));
-			value.append("(");
-
-			// right
-			builder.clear();
-			expression.getRightOperand().accept(builder);
-			value.append(builder.getResult());
-
-			value.append(")");
+			// right			
+			if(expression.getRightOperand() != null) {
+				builder.clear();
+				value.append(".q" + strings.firstToUpper(toJavaMethod(expression)));
+				value.append("(");
+				expression.getRightOperand().accept(builder);
+				value.append(builder.getResult());				
+				value.append(")");
+			}
+			else {
+				if(expression.getOperator() == ArithmeticOperator.SIGN_MINUS)
+					value.append(".qMult(-1)");
+				else
+					throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: 9zb87we6r8vewrce6tr");
+			}
 
 			builder.setTarget(QList.class);
 		}
@@ -507,8 +512,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		// negate
 		else {
 
+			StringBuffer value = new StringBuffer();
 			// operator
-			buffer.append(toJavaPrimitive(expression.getOperator()));
+			value.append(toJavaPrimitive(expression.getOperator()));
 
 			// left
 			if (!JDTContextHelper.isPrimitive(compilationUnit, expression.getLeftOperand()))
@@ -518,7 +524,12 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			builder.clear();
 			expression.getLeftOperand().accept(builder);
-			buffer.append(builder.getResult());
+			value.append(builder.getResult());
+			
+			if (target != null) 
+				writeValue(builder.getTarget(), target, value.toString());
+			else
+				buffer.append(value.toString());
 
 		}
 
@@ -787,12 +798,16 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		// TODO
 		else if (Enum.class.isAssignableFrom(source)) {
 
-			if (QIndicator.class.isAssignableFrom(this.target)) {
+			if (QCharacter.class.isAssignableFrom(this.target)) {
 				if (value.equalsIgnoreCase("Specials.ON"))
 					buffer.append("qRPJ.qBox(true)");
-				else
+				else if (value.equalsIgnoreCase("Specials.OFF"))
 					buffer.append("qRPJ.qBox(false)");
-			} else if (String.class.isAssignableFrom(this.target)) {
+				else
+					buffer.append("qRPJ.qBox("+value+")");
+			} 
+			
+			else if (String.class.isAssignableFrom(this.target)) {
 				if (value.equalsIgnoreCase("Specials.ON"))
 					buffer.append("\"1\"");
 				else if (value.equalsIgnoreCase("Specials.OFF"))

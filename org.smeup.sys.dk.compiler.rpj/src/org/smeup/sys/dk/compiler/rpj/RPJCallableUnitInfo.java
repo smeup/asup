@@ -21,7 +21,8 @@ public class RPJCallableUnitInfo {
 
 	private Map<String, Label> labels;
 	private Set<String> resetObjects;
-	
+
+	private boolean containsDSPStatement = false;
 	private boolean containsPRTStatement = false;
 	private boolean containsSQLStatement = false;
 	private boolean containsCMDStatement = false;
@@ -56,10 +57,18 @@ public class RPJCallableUnitInfo {
 		return containsInsignificantZeros;
 	}
 
+	public void containsDSPStatement(boolean containsDSPStatement) {
+		this.containsDSPStatement = containsDSPStatement;
+	}
+	
 	public void containsPRTStatement(boolean containsPRTStatement) {
 		this.containsPRTStatement = containsPRTStatement;
 	}
 
+	public boolean containsDSPStatement() {
+		return this.containsDSPStatement;
+	}
+	
 	public boolean containsPRTStatement() {
 		return this.containsPRTStatement;
 	}
@@ -78,6 +87,7 @@ public class RPJCallableUnitInfo {
 		this.containsSQLStatement = false;
 		this.containsInsignificantZeros = false;
 		this.containsPRTStatement = false;
+		this.containsDSPStatement = false;
 	}
 
 	public static class Label {

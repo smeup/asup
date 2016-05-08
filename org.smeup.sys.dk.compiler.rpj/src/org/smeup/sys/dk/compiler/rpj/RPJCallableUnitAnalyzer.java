@@ -40,6 +40,9 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 		if(callableUnit.getFileSection() != null) {
 			if(callableUnit.getFileSection().getPrinters().size() >0 )
 				callableUnitInfo.containsPRTStatement(true);
+			
+			if(callableUnit.getFileSection().getDisplays().size() >0 )
+				callableUnitInfo.containsDSPStatement(true);
 		}
 		
 		// analyze statement

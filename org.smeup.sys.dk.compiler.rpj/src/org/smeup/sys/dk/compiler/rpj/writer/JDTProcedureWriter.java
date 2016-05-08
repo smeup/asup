@@ -30,6 +30,7 @@ import org.eclipse.jdt.core.dom.Modifier.ModifierKeyword;
 import org.eclipse.jdt.core.dom.NormalAnnotation;
 import org.eclipse.jdt.core.dom.StringLiteral;
 import org.eclipse.jdt.core.dom.Type;
+import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
@@ -37,9 +38,7 @@ import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitAnalyzer;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.il.data.annotation.Procedure;
-import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
-import org.smeup.sys.il.data.term.impl.DataTermImpl;
 import org.smeup.sys.il.flow.QBlock;
 import org.smeup.sys.il.flow.QEntry;
 import org.smeup.sys.il.flow.QEntryParameter;
@@ -159,15 +158,19 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 
 		if (procedure.getReturnType() != null) {
-			QDataTerm<?> tempTerm = new DataTermImpl<QDataDef<?>>() {
+			QPrototype prototype = getCompilationUnit().getPrototype(procedure.getName(), true);
+			if(prototype == null)
+				throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: wiuervy87e6x87rwe8vr");
+				
+/*			QDataTerm<?> tempTerm = new DataTermImpl<QDataDef<?>>() {
 				private static final long serialVersionUID = 1L;
 
 				@Override
 				public QDataDef<?> getDefinition() {
 					return procedure.getReturnType();
 				}
-			};
-			Type type = getJavaType(tempTerm);
+			};*/
+			Type type = getJavaType(prototype);
 			methodDeclaration.setReturnType2(type);
 		}
 
