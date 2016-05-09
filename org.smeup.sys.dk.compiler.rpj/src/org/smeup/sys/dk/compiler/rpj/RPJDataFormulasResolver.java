@@ -41,7 +41,7 @@ import org.smeup.sys.rt.core.QLogger;
 public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 	private QExpressionParser expressionParser;
-	private QDataContext dataContext;	
+	private QDataContext dataContext;
 
 	@Inject
 	private QExceptionManager exceptionManager;
@@ -139,23 +139,23 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 				}
 
 				if (dataValue.getDataTermType().isUnary())
-					throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00105, new String[] { property, stringValue});
+					throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00105, new String[] { property, stringValue });
 
 				default_.setValue(stringValue);
 
 				break;
 			case "%len":
 				stringValue = null;
-				if (dataValue.getDataTermType().isUnary()){
+				if (dataValue.getDataTermType().isUnary()) {
 					try {
-						stringValue = Integer.toString(((QBufferedDataDef<?>)dataValue.getDefinition()).getLength());
+						stringValue = Integer.toString(((QBufferedDataDef<?>) dataValue.getDefinition()).getLength());
 					} catch (Exception e) {
 						throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdgesdfsafdsf26sd", e);
 					}
 					default_.setValue(stringValue);
 
-				} else if(dataValue.getDataTermType().isMultiple()){
-					
+				} else if (dataValue.getDataTermType().isMultiple()) {
+
 					try {
 						QBufferedDataDef<?> argument = ((QDataTerm<QMultipleAtomicBufferedDataDef<?>>) dataValue).getDefinition().getArgument();
 						stringValue = Integer.toString(argument.getLength());
@@ -166,14 +166,20 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 				}
 				break;
 			case "%size":
-				if (dataValue.getDataTermType().isAtomic())
-					throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00107, dataTerm);
+				QBufferedDataDef<?> bufferedDataDef = (QBufferedDataDef<?>) dataValue.getDefinition();
+				if(bufferedDataDef.getSize() == 0) {
+					
+					if (dataValue.getDataTermType().isCompound()) {
+						QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>> compoundDataDef = (QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>>) dataValue.getDefinition();
 
-				QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>> compoundDataDef = (QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>>) dataValue.getDefinition();
+						QDataStruct dataStruct = dataContext.getDataFactory().createDataStruct(compoundDataDef.getElements(), 0, false);
+						default_.setValue(Integer.toString(dataStruct.getSize()));
+					}
 
-				QDataStruct dataStruct = dataContext.getDataFactory().createDataStruct(compoundDataDef.getElements(), 0, false);
-				default_.setValue(Integer.toString(dataStruct.getSize()));
-
+				}
+				else {
+					default_.setValue(Integer.toString(bufferedDataDef.getSize()));
+				}
 				break;
 			case "%addr":
 				break;
@@ -215,7 +221,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 						try {
 							((QMultipleDataDef<?>) target.getDefinition()).setDimension(Integer.parseInt(defaultValue));
 						} catch (Exception e) {
-							throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00105, new String[] { propertyName, defaultValue});
+							throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00105, new String[] { propertyName, defaultValue });
 						}
 					}
 				} else {
@@ -252,8 +258,8 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 				break;
 
 			default:
-				logger.info(exceptionManager.prepareException(job, RPJCompilerMessage.AS00105, new String[] { getCompilationUnit().getNode().getName() + "." + target.getName() + "." + propertyName
-						+ "=" + compoundTermExpression.getValue() }));
+				logger.info(exceptionManager.prepareException(job, RPJCompilerMessage.AS00105,
+						new String[] { getCompilationUnit().getNode().getName() + "." + target.getName() + "." + propertyName + "=" + compoundTermExpression.getValue() }));
 				break;
 			}
 

@@ -92,12 +92,10 @@ public class DataStructDefImpl extends UnaryCompoundDataDefImpl<QDataStruct, QDa
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public int getSize() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return getLength();
 	}
 
 	/**
