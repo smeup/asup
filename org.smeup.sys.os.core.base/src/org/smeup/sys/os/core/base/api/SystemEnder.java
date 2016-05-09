@@ -21,7 +21,9 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.os.core.QSystemManager;
+import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.rt.core.QApplicationManager;
+import org.smeup.sys.rt.repo.QRepositoryManager;
 
 @Program(name = "QWCCSDSC") 
 public class SystemEnder {
@@ -29,12 +31,24 @@ public class SystemEnder {
 	@Inject
 	private QApplicationManager applicationManager;
 	@Inject
+	private QRepositoryManager repositoryManager;
+	@Inject
 	private QSystemManager systemManager;
-
+	@Inject
+	private QJob job;
+	
 	@Main
-	public void main(@Supported @DataDef(length = 4) QEnum<RESTARTEnum, QCharacter> restart) {
+	public void main(@Supported @DataDef(length = 4) QEnum<RESTARTEnum, QCharacter> restart, @Supported @DataDef(length = 4) QEnum<UPGRADEEnum, QCharacter> upgrade) {
 		
 		systemManager.stop();
+		
+		switch (upgrade.asEnum()) {
+		case NO:
+			break;
+		case YES:
+			repositoryManager.updateAll(job);
+			break;
+		}
 		
 		switch (restart.asEnum()) {
 		case NO:			
@@ -47,6 +61,12 @@ public class SystemEnder {
 	}
 
 	public static enum RESTARTEnum {
+		@Special("*NO")
+		NO, @Special("*YES")
+		YES
+	}
+
+	public static enum UPGRADEEnum {
 		@Special("*NO")
 		NO, @Special("*YES")
 		YES

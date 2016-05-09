@@ -107,11 +107,13 @@ public class BaseSystemManagerImpl implements QSystemManager {
 				if (variableContainer != null) 
 					system.setVariableContainer(variableContainer);
 			}
+			system.setStatus(SystemStatus.STARTED);
 			systemWriter.save(system, true);
 
 			systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
 			systemEvent.setSource(system);
 			systemEvent.setType(SystemEventType.STARTED);
+			
 			fireEvent(systemEvent);
 		} finally {
 			locker.unlock(LockType.WRITE);
@@ -124,24 +126,30 @@ public class BaseSystemManagerImpl implements QSystemManager {
 	public void stop() {
 
 		QSystem system = jobKernel.getSystem();
+		
+		// TODO system not able to stop
+		if (!QOperatingSystemCoreHelper.isStoppable(system))
+			return;
+
 		// acquire system lock
 		QObjectLocker<QSystem> locker = lockManager.getLocker(jobKernel.getContext(), system);
-
-		// system not able to stop
-		if (!QOperatingSystemCoreHelper.isStoppable(system)) {
-			locker.unlock(LockType.WRITE);
-			return;
+		locker.lock(LockType.WRITE);
+		
+		try {
+			
+			QSystemEvent systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
+			systemEvent.setSource(system);
+			systemEvent.setType(SystemEventType.STOPPING);
+			fireEvent(systemEvent);
+	
+			systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
+			systemEvent.setSource(system);
+			systemEvent.setType(SystemEventType.STOPPED);
+			fireEvent(systemEvent);
 		}
-
-		QSystemEvent systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
-		systemEvent.setSource(system);
-		systemEvent.setType(SystemEventType.STOPPING);
-		fireEvent(systemEvent);
-
-		systemEvent = QOperatingSystemCoreFactory.eINSTANCE.createSystemEvent();
-		systemEvent.setSource(system);
-		systemEvent.setType(SystemEventType.STOPPED);
-		fireEvent(systemEvent);
+		finally {
+			locker.unlock(LockType.WRITE);
+		}
 	}
 
 	protected QJob createJob(JobType jobType, Principal principal, String jobName) {
