@@ -7,9 +7,11 @@
  */
 package org.smeup.sys.rt.repo;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
+
+import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -68,7 +70,44 @@ public interface QRuntimeRepositoryPackage extends EPackage {
 	 * @see org.smeup.sys.rt.repo.impl.RuntimeRepositoryPackageImpl#getRepositoryManager()
 	 * @generated
 	 */
-	int REPOSITORY_MANAGER = 0;
+	int REPOSITORY_MANAGER = 1;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.rt.repo.impl.RepositoryImpl <em>Repository</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.rt.repo.impl.RepositoryImpl
+	 * @see org.smeup.sys.rt.repo.impl.RuntimeRepositoryPackageImpl#getRepository()
+	 * @generated
+	 */
+	int REPOSITORY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPOSITORY__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPOSITORY__LOCATION = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Repository</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPOSITORY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Repository Manager</em>' class.
@@ -78,34 +117,6 @@ public interface QRuntimeRepositoryPackage extends EPackage {
 	 * @ordered
 	 */
 	int REPOSITORY_MANAGER_FEATURE_COUNT = 0;
-
-	/**
-	 * The operation id for the '<em>Check Updates</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPOSITORY_MANAGER___CHECK_UPDATES__STRING = 0;
-
-	/**
-	 * The operation id for the '<em>Update</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPOSITORY_MANAGER___UPDATE__STRING = 1;
-
-	/**
-	 * The number of operations of the '<em>Repository Manager</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPOSITORY_MANAGER_OPERATION_COUNT = 2;
-
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.rt.repo.QRepositoryManager <em>Repository Manager</em>}'.
@@ -118,24 +129,36 @@ public interface QRuntimeRepositoryPackage extends EPackage {
 	EClass getRepositoryManager();
 
 	/**
-	 * Returns the meta object for the '{@link org.smeup.sys.rt.repo.QRepositoryManager#checkUpdates(java.lang.String) <em>Check Updates</em>}' operation.
+	 * Returns the meta object for class '{@link org.smeup.sys.rt.repo.QRepository <em>Repository</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Check Updates</em>' operation.
-	 * @see org.smeup.sys.rt.repo.QRepositoryManager#checkUpdates(java.lang.String)
+	 * @return the meta object for class '<em>Repository</em>'.
+	 * @see org.smeup.sys.rt.repo.QRepository
 	 * @generated
 	 */
-	EOperation getRepositoryManager__CheckUpdates__String();
+	EClass getRepository();
 
 	/**
-	 * Returns the meta object for the '{@link org.smeup.sys.rt.repo.QRepositoryManager#update(java.lang.String) <em>Update</em>}' operation.
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.repo.QRepository#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Update</em>' operation.
-	 * @see org.smeup.sys.rt.repo.QRepositoryManager#update(java.lang.String)
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.smeup.sys.rt.repo.QRepository#getName()
+	 * @see #getRepository()
 	 * @generated
 	 */
-	EOperation getRepositoryManager__Update__String();
+	EAttribute getRepository_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.repo.QRepository#getLocation <em>Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Location</em>'.
+	 * @see org.smeup.sys.rt.repo.QRepository#getLocation()
+	 * @see #getRepository()
+	 * @generated
+	 */
+	EAttribute getRepository_Location();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -171,20 +194,30 @@ public interface QRuntimeRepositoryPackage extends EPackage {
 		EClass REPOSITORY_MANAGER = eINSTANCE.getRepositoryManager();
 
 		/**
-		 * The meta object literal for the '<em><b>Check Updates</b></em>' operation.
+		 * The meta object literal for the '{@link org.smeup.sys.rt.repo.impl.RepositoryImpl <em>Repository</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.rt.repo.impl.RepositoryImpl
+		 * @see org.smeup.sys.rt.repo.impl.RuntimeRepositoryPackageImpl#getRepository()
 		 * @generated
 		 */
-		EOperation REPOSITORY_MANAGER___CHECK_UPDATES__STRING = eINSTANCE.getRepositoryManager__CheckUpdates__String();
+		EClass REPOSITORY = eINSTANCE.getRepository();
 
 		/**
-		 * The meta object literal for the '<em><b>Update</b></em>' operation.
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation REPOSITORY_MANAGER___UPDATE__STRING = eINSTANCE.getRepositoryManager__Update__String();
+		EAttribute REPOSITORY__NAME = eINSTANCE.getRepository_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REPOSITORY__LOCATION = eINSTANCE.getRepository_Location();
 
 	}
 

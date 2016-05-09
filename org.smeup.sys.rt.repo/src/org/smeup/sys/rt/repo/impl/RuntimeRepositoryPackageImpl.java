@@ -7,16 +7,19 @@
  */
 package org.smeup.sys.rt.repo.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
-import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
-import org.smeup.sys.rt.core.QRuntimeCorePackage;
+import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 
+import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
+import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
+
+import org.smeup.sys.rt.repo.QRepository;
 import org.smeup.sys.rt.repo.QRepositoryManager;
 import org.smeup.sys.rt.repo.QRuntimeRepositoryFactory;
 import org.smeup.sys.rt.repo.QRuntimeRepositoryPackage;
@@ -34,6 +37,13 @@ public class RuntimeRepositoryPackageImpl extends EPackageImpl implements QRunti
 	 * @generated
 	 */
 	private EClass repositoryManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass repositoryEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -82,9 +92,8 @@ public class RuntimeRepositoryPackageImpl extends EPackageImpl implements QRunti
 		isInited = true;
 
 		// Initialize simple dependencies
-		QRuntimeCorePackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataDefPackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataTermPackage.eINSTANCE.eClass();
+		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theRuntimeRepositoryPackage.createPackageContents();
@@ -115,8 +124,8 @@ public class RuntimeRepositoryPackageImpl extends EPackageImpl implements QRunti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getRepositoryManager__CheckUpdates__String() {
-		return repositoryManagerEClass.getEOperations().get(0);
+	public EClass getRepository() {
+		return repositoryEClass;
 	}
 
 	/**
@@ -124,8 +133,17 @@ public class RuntimeRepositoryPackageImpl extends EPackageImpl implements QRunti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getRepositoryManager__Update__String() {
-		return repositoryManagerEClass.getEOperations().get(1);
+	public EAttribute getRepository_Name() {
+		return (EAttribute)repositoryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRepository_Location() {
+		return (EAttribute)repositoryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -156,9 +174,11 @@ public class RuntimeRepositoryPackageImpl extends EPackageImpl implements QRunti
 		isCreated = true;
 
 		// Create classes and their features
+		repositoryEClass = createEClass(REPOSITORY);
+		createEAttribute(repositoryEClass, REPOSITORY__NAME);
+		createEAttribute(repositoryEClass, REPOSITORY__LOCATION);
+
 		repositoryManagerEClass = createEClass(REPOSITORY_MANAGER);
-		createEOperation(repositoryManagerEClass, REPOSITORY_MANAGER___CHECK_UPDATES__STRING);
-		createEOperation(repositoryManagerEClass, REPOSITORY_MANAGER___UPDATE__STRING);
 	}
 
 	/**
@@ -184,20 +204,32 @@ public class RuntimeRepositoryPackageImpl extends EPackageImpl implements QRunti
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
+		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		repositoryEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 
-		// Initialize classes, features, and operations; add parameters
+		// Initialize classes and features; add operations and parameters
+		initEClass(repositoryEClass, QRepository.class, "Repository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRepository_Name(), ecorePackage.getEString(), "name", null, 1, 1, QRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRepository_Location(), ecorePackage.getEString(), "location", null, 1, 1, QRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(repositoryManagerEClass, QRepositoryManager.class, "RepositoryManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = initEOperation(getRepositoryManager__CheckUpdates__String(), ecorePackage.getEBoolean(), "checkUpdates", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(repositoryManagerEClass, ecorePackage.getEBoolean(), "checkUpdates", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "repositoryLocation", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getRepositoryManager__Update__String(), ecorePackage.getEBoolean(), "update", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(repositoryManagerEClass, ecorePackage.getEBoolean(), "update", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "repositoryLocation", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(repositoryManagerEClass, null, "updateAll", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

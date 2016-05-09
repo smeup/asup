@@ -40,27 +40,49 @@ import org.eclipse.equinox.p2.query.IQuery;
 import org.eclipse.equinox.p2.query.QueryUtil;
 import org.eclipse.equinox.p2.repository.artifact.IArtifactRepositoryManager;
 import org.eclipse.equinox.p2.repository.metadata.IMetadataRepositoryManager;
+import org.smeup.sys.il.core.QObjectIterator;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.rt.core.QApplicationManager;
+import org.smeup.sys.rt.repo.QRepository;
 import org.smeup.sys.rt.repo.QRepositoryManager;
 
 public class E4RepositoryManagerImpl implements QRepositoryManager {
 
 	@Inject
-	public IProvisioningAgentProvider agentProvider;
-	
-	@Inject
-	private QApplicationManager applicationManager;
-
+	public IProvisioningAgentProvider agentProvider;	
 	@Inject
 	private IProvisioningAgent agent;
-
+	@Inject
+	private QApplicationManager applicationManager;	
+	
 	@PostConstruct
 	public void init() throws ProvisionException, URISyntaxException {
 		if (agent == null) {
 			String path = System.getProperty("osgi.instance.area");
 			this.agent = agentProvider.createAgent(new URI(path + "/p2"));
 		}
-			
+	}
+
+	@Override
+	public void updateAll(QContextProvider contextProvider) {
+
+		QResourceManager resourceManager = contextProvider.getContext().get(QResourceManager.class);
+		
+		QResourceReader<QRepository> repositoryReader = resourceManager.getResourceReader(contextProvider, QRepository.class, Scope.SYSTEM_LIBRARY);
+		QObjectIterator<QRepository> repositories = repositoryReader.find(null);
+		
+		try {
+			while(repositories.hasNext()) {
+				QRepository repository = repositories.next();
+				update(repository.getLocation());
+			}
+		}
+		finally {
+			repositories.close();
+		}
 	}
 	
 	@Override

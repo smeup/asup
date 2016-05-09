@@ -27,6 +27,15 @@ public interface QRuntimeRepositoryFactory extends EFactory {
 	QRuntimeRepositoryFactory eINSTANCE = org.smeup.sys.rt.repo.impl.RuntimeRepositoryFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Repository</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Repository</em>'.
+	 * @generated
+	 */
+	QRepository createRepository();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -61,9 +61,20 @@ public class RuntimeRepositoryFactoryImpl extends EFactoryImpl implements QRunti
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case QRuntimeRepositoryPackage.REPOSITORY: return (EObject)createRepository();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QRepository createRepository() {
+		RepositoryImpl repository = new RepositoryImpl();
+		return repository;
 	}
 
 	/**

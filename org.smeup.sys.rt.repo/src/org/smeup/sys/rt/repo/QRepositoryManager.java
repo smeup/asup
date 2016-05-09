@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.rt.repo;
 
+import org.smeup.sys.il.core.ctx.QContextProvider;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Repository Manager</b></em>'.
@@ -33,5 +35,13 @@ public interface QRepositoryManager {
 	 * @generated
 	 */
 	boolean update(String repositoryLocation);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextProviderRequired="true"
+	 * @generated
+	 */
+	void updateAll(QContextProvider contextProvider);
 
 } // QRepositoryManager
