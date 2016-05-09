@@ -221,8 +221,7 @@
     <module>../org.smeup.sys.db.core.mssql</module>
     <module>../org.smeup.sys.db.core.mysql</module>
     <module>../org.smeup.sys.db.core.test</module>
-    <module>../org.smeup.sys.db.esql</module>
-    <module>../org.smeup.sys.db.script.db2</module>
+    <module>../org.smeup.sys.db.esql</module>    
     <module>../org.smeup.sys.db.syntax</module>
     <module>../org.smeup.sys.db.syntax.base</module>
     <module>../org.smeup.sys.db.syntax.db2</module>
