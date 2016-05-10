@@ -1,4 +1,4 @@
-<project name="sndmvnunit" basedir=".">
+<project name="sndmvnunit" basedir="." xmlns:git="antlib:com.rimerosolutions.ant.git">
 	
 	<!--
 		Parametro da passare:
@@ -14,6 +14,8 @@
 		-->	
 	
 	<import file="smeup-sys-base.xml"/>
+	
+	<git:settings refId="smeup-build" username="${git.user}" password="${git.pwd}" name="${git.user.name}" email="${git.user.email}" />
 
 	<taskdef resource="org/oecd/ant/git/antlib.xml">
 		<classpath>

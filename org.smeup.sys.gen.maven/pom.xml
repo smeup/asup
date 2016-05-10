@@ -232,6 +232,7 @@
     <module>../org.smeup.sys.db.syntax.mssql</module>
     <module>../org.smeup.sys.db.syntax.mysql</module>
     <module>../org.smeup.sys.db.syntax.test</module>
+    <module>../org.smeup.sys.db.script.db2</module>
     <module>../org.smeup.sys.dk.compiler</module>
     <module>../org.smeup.sys.dk.compiler.base</module>
     <module>../org.smeup.sys.dk.compiler.ibmi</module>
