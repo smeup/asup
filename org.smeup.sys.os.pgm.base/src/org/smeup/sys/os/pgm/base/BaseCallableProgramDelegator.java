@@ -176,7 +176,7 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 				switch (initStrategy) {
 				case BASE:
 				case LIGHT:
-					_open.invoke(delegate);
+					_snap.invoke(delegate);
 
 					break;
 				}
