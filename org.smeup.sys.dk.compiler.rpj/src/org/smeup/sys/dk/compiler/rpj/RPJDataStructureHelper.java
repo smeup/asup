@@ -152,6 +152,9 @@ public class RPJDataStructureHelper {
 			if (overlay.getName() != null)
 				continue;
 
+			if(element.getDataTermType().isMultiple())
+				continue;
+			
 			Object[] objects = searchOverlayedByPosition(dataStructDef, overlay.getPosition());
 			if (objects == null) {
 				System.err.println("Unexpected condition: wiuey7rf8sfsdg");
