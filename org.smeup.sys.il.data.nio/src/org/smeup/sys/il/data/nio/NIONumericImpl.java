@@ -65,7 +65,13 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	protected final byte[] _toBytes(QString value) {
-		return value.asBytes();
+		byte[] bytes = value.asBytes();
+		for (int i = 0; i < bytes.length; i++) {
+			if (bytes[i] == NIOStringImpl.INIT)
+				bytes[i] = NIODecimalImpl.INIT;
+		}
+
+		return bytes;
 	}
 
 	@Override
@@ -74,7 +80,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	protected abstract void _writeNumber(Number number, boolean halfAdjust);
-	
+
 	protected abstract Number _readNumber();
 
 	@Override
@@ -91,7 +97,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	public final long asLong() {
 		return _readNumber().longValue();
 	}
-	
+
 	@Override
 	public final Number asNumber() {
 		return _readNumber();
@@ -101,7 +107,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	public final short asShort() {
 		return _readNumber().shortValue();
 	}
-	
+
 	protected final int compareNumber(Number value) {
 		double d1 = asDouble();
 		double d2 = value.doubleValue();
@@ -269,7 +275,8 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public void checkr(QCharacter comparator, QCharacter base, QIndicator found) {
-		eval(comparator.qCheckr(base, found));	}
+		eval(comparator.qCheckr(base, found));
+	}
 
 	@Override
 	public void checkr(String comparator, QCharacter base, QIndicator found) {
@@ -280,7 +287,8 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public void checkr(QCharacter comparator, QCharacter base, QNumeric start) {
-		eval(comparator.qCheckr(base, start));	}
+		eval(comparator.qCheckr(base, start));
+	}
 
 	@Override
 	public void checkr(String comparator, QCharacter base, QNumeric start) {
@@ -396,7 +404,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 		character.eval(comparator);
 		eval(character.qCheckr(base, start, found));
 	}
-	
+
 	@Override
 	public final double d() {
 		return asDouble();
@@ -414,7 +422,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QNumeric divide(Number value, QNumeric remainderTarget) {		
+	public final QNumeric divide(Number value, QNumeric remainderTarget) {
 		qDivOperation(value, remainderTarget);
 		return this;
 	}
@@ -453,7 +461,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final void eval(Number value, boolean halfAdjust) {
-		_writeNumber(value, halfAdjust);		
+		_writeNumber(value, halfAdjust);
 	}
 
 	@Override
@@ -554,7 +562,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QNumeric minus(QNumeric value,  boolean halfAdjust) {
+	public final QNumeric minus(QNumeric value, boolean halfAdjust) {
 		eval(asDouble() - value.asDouble(), halfAdjust);
 		return this;
 	}
@@ -565,7 +573,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QNumeric mult(Number value,  boolean halfAdjust) {
+	public final QNumeric mult(Number value, boolean halfAdjust) {
 		eval(asDouble() * value.doubleValue(), halfAdjust);
 		return this;
 	}
@@ -580,12 +588,12 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 		eval(asDouble() * value.asDouble(), halfAdjust);
 		return this;
 	}
-	
+
 	@Override
 	public final Number n() {
 		return asNumber();
 	}
-	
+
 	@Override
 	public final boolean ne(Number value) {
 		return !eq(value);
@@ -656,8 +664,8 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	private QNumeric qDivOperation(Number value, QNumeric remainderTarget) {
-		
-		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);		
+
+		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 		number.eval(asDouble() / value.doubleValue());
 		if (remainderTarget != null)
 			remainderTarget.eval(asDouble() % value.doubleValue());
@@ -775,13 +783,13 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final void xfoot(QArray<? extends QNumeric> array, boolean halfAdjust) {
-		for (QNumeric numeric: array) 
+		for (QNumeric numeric : array)
 			this.plus(numeric, halfAdjust);
 	}
 
 	@Override
 	public QNumeric qAbs() {
-		if(ge(DataSpecial.ZEROS))
+		if (ge(DataSpecial.ZEROS))
 			return this;
 		else
 			return mult(-1);

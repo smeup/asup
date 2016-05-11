@@ -91,7 +91,11 @@ public class NIODataStructBuilder {
 				NIOBufferedListImpl<?> arrayData = (NIOBufferedListImpl<?>) dataElement;
 				arrayData.setListOwner(arrayOverlayed);
 				arrayOverlayed.assign(dataElement, overlayedNextPos.asInteger());
-				overlayedNextPos.plus(arrayData.getModel().getSize());
+				overlayedNextPos.plus(arrayData.getModel().getSize());				
+/*				if(overlayPosition >= 1)
+					arrayOverlayed.assign(dataElement, overlayPosition);
+				else
+					arrayOverlayed.assign(dataElement);*/
 			} else {
 				overlayedNextPos.plus(dataElement.getSize());
 			}
