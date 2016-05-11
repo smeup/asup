@@ -83,6 +83,7 @@ public class NIOListImpl<D extends QBufferedData> extends NIODataImpl implements
 
 	@Override
 	public final void clear() {
+		_elements.clear();
 		for (D element : this)
 			element.clear();
 	}
