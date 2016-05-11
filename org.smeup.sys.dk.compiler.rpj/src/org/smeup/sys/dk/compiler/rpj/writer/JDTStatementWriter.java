@@ -262,7 +262,11 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		Block block = blocks.peek();
 
-		if (isParentFor(statement)) {
+		if(isParentIf(statement))  {
+			ContinueStatement continueSt = ast.newContinueStatement();
+			block.statements().add(continueSt);
+		}
+		else if (isParentFor(statement)) {
 
 			IfStatement ifSt = ast.newIfStatement();
 			ifSt.setExpression(ast.newName(new String[] { "RPJProgramSupport", "TRUE" }));
@@ -956,6 +960,18 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		QNode parent = statement.getParent();
 		while (parent != null) {
 			if (parent instanceof QFor)
+				return true;
+			parent = parent.getParent();
+		}
+
+		return false;
+	}
+
+	private boolean isParentIf(QStatement statement) {
+
+		QNode parent = statement.getParent();
+		while (parent != null) {
+			if (parent instanceof QIf)
 				return true;
 			parent = parent.getParent();
 		}
