@@ -21,6 +21,7 @@ import javax.inject.Inject;
 
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
+import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QList;
@@ -90,16 +91,16 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	@Override
 	public void callProgram(QJob job, String library, String programName, QData[] params) {
-		
+
 		QProgram program = getProgram(job, library, programName);
 
-		callProgram(job, program, params);		
+		callProgram(job, program, params);
 	}
 
 	@SuppressWarnings("resource")
 	@Override
 	public void callProgram(QJob job, QProgram program, QData[] params) {
-		
+
 		QActivationGroup activationGroup = activationGroupManager.lookup(job, program.getActivationGroup());
 		if (activationGroup == null)
 			activationGroup = activationGroupManager.create(job, program.getActivationGroup(), true);
@@ -111,13 +112,13 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			callableProgram = loadProgram(job, program);
 			activationGroup.getPrograms().add(callableProgram);
 		}
-		
+
 		callProgram(job, callableProgram, params);
 	}
-	
+
 	@Override
 	public QCallableProgram<?> loadProgram(QJob job, QProgram program) {
-
+		
 		// API
 		String address = null;
 		if (program.getAddress() != null)
@@ -248,7 +249,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		for (int i = paramsLength; i < paramsTo.length; i++) {
 			if (paramsTo[i] instanceof QBufferedData) {
 				QBufferedData bufferedData = (QBufferedData) paramsTo[i];
-				QCharacter nullReference = callableProgram.getDataContext().getDataFactory().createCharacter(1, false, false);				
+				QCharacter nullReference = callableProgram.getDataContext().getDataFactory().createCharacter(1, false, false);
 				nullReference.assign(bufferedData);
 			} else
 				paramsTo[i].clear();
@@ -260,7 +261,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 		QList<D> listFrom = (QList<D>) from;
 		QList<D> listTo = (QList<D>) to;
-
+		listTo.clear();
+		
 		int e = 1;
 		for (D elementFrom : listFrom) {
 			D elementTo = listTo.get(e);
@@ -287,9 +289,9 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	private void callProgram(QJob job, QCallableProgram<?> callableProgram, QData[] params) {
 
-		if(job.getJobThread() != null && !job.getJobThread().checkRunnable())
+		if (job.getJobThread() != null && !job.getJobThread().checkRunnable())
 			return;
-		
+
 		synchronized (callableProgram) {
 
 			// retrieve program stack from job
@@ -328,22 +330,23 @@ public class BaseProgramManagerImpl implements QProgramManager {
 						if (jobRunInfo == null) {
 							jobRunInfo = QOperatingSystemJobsFactory.eINSTANCE.createJobRunInfo();
 							job.setJobRunInfo(jobRunInfo);
-						}
-						else
+						} else
 							jobRunInfo.setMemorySize(jobRunInfo.getMemorySize() - programInfo.getMemorySize());
 					}
 				}
 
 			} catch (OperatingSystemMessageException | OperatingSystemRuntimeException e) {
 				System.err.println(e.getMessage());
+//				e.printStackTrace();
 				throw e;
 			} catch (Exception e) {
 				Throwable cause = e.getCause();
-				if (cause != null && (cause instanceof OperatingSystemMessageException)) {
+				if (cause != null)
 					System.err.println(cause);
-				} else {
-					e.printStackTrace();
-				}
+				else
+					System.err.println(e);
+//				e.printStackTrace();
+				
 				throw new OperatingSystemRuntimeException(e.getMessage(), e);
 			} finally {
 				printReceiveStack(job, programStack, callableProgram);
@@ -365,7 +368,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		if (scope == null)
 			scope = Scope.LIBRARY_LIST;
 
-		QResourceReader<QProgram> programReader = resourceManager.getResourceReader(job, QProgram.class, scope, library);		
+		QResourceReader<QProgram> programReader = resourceManager.getResourceReader(job, QProgram.class, scope, library);
 		QProgram program = programReader.lookup(name);
 		if (program == null) {
 			QJobReference jobReference = job.getJobReference();
@@ -403,7 +406,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				text += "|";
 				continue;
 			}
-			
+
 			String paramValue = null;
 			if (param instanceof QString) {
 				QString stringData = (QString) param;
@@ -418,13 +421,33 @@ public class BaseProgramManagerImpl implements QProgramManager {
 					text += "|";
 					continue;
 				}
-				byte[] bytes = bufferedElement.asBytes();
-				if(bytes == null) {
-					System.err.println(bufferedElement.isNull());
-					bytes = bufferedElement.asBytes();
+				try {
+					byte[] bytes = bufferedElement.asBytes();
+					if (bytes == null) {
+						System.err.println(bufferedElement.isNull());
+						bytes = bufferedElement.asBytes();
+					}
+					paramValue = new String(bytes);
+				} catch (Exception e) {
+					bufferedElement.asBytes();
 				}
-				paramValue = new String(bytes);
-			} else
+			} 
+			else if (param instanceof QBufferedList) {
+				QBufferedList<?> bufferedList = (QBufferedList<?>)param;
+				if (bufferedList.isNull()) {
+					text += "|";
+					continue;
+				}
+				StringBuffer sb = new StringBuffer();
+				for(QBufferedElement bufferedElement: bufferedList) {
+					if(sb.toString().isEmpty()) 
+						sb.append(bufferedElement.toString());
+					else
+						sb.append(":"+bufferedElement.toString());
+				}
+				paramValue = "["+sb.toString()+"]";
+			}
+			else
 				paramValue = param.toString();
 
 			if (paramValue.length() > 100)
