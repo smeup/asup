@@ -480,12 +480,21 @@ public class BaseCallableInjector {
 
 		for (InjectableField field : dataStructures) {
 
-			QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> dataTerm = (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataContainer.getDataTerm(field.getName());
+			QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> dataTerm = null;
+
+			if (based)
+				dataTerm = (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataContainer.getDataTerm(field.getName());
+
 			if (dataTerm == null)
 				dataTerm = (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
 
-			if (based == (dataTerm.getBased() == null))
-				continue;
+			if (based) {
+				if (dataTerm.getBased() == null)
+					continue;
+			} else {
+				if (dataTerm.getBased() != null)
+					continue;
+			}
 
 			QData data = dataContainer.getData(dataTerm);
 

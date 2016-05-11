@@ -344,6 +344,11 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
+	public void movea(QDataFiller value, boolean clear) {
+		movea(1, value);
+	}
+	
+	@Override
 	public void movea(String value) {
 		movea(value, false);
 	}

@@ -29,7 +29,7 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	private static final long serialVersionUID = 1L;
 
 	private int _dimension;
-	private int _position;
+	private int _index;
 
 	D _current = current();
 
@@ -46,6 +46,8 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 
 			absolute(1);
 		}
+		else
+			absolute(1);
 	}
 
 	@Override
@@ -134,7 +136,7 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	@Override
 	public D get(int index) {
 
-		if (_position == index)
+		if (_index == index)
 			return (D) getModel();
 
 		int position = 0;
@@ -146,7 +148,7 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 
 		assign(getModel(), position + 1);
 
-		_position = index;
+		_index = index;
 
 		return (D) getModel();
 	}
@@ -313,7 +315,7 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 
 	@Override
 	public int position() {
-		return _position;
+		return _index;
 	}
 
 	@Override

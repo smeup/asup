@@ -577,6 +577,26 @@
       </entry>
     </prototypes>
     <prototypes
+        name="%except">
+      <definition
+          xsi:type="il-data-def:CharacterDef"
+          length="128"
+          varying="true"/>
+      <entry>
+        <parameters>
+          <delegate
+              xsi:type="il-flow:FlowData"
+              constant="true"
+              name="text">
+            <cardinality
+                min="1"/>
+            <definition
+                xsi:type="il-data-def:StringDef"/>
+          </delegate>
+        </parameters>
+      </entry>
+    </prototypes>
+    <prototypes
         name="%found">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>

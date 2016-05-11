@@ -312,7 +312,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				if (!callableProgram.isOpen())
 					callableProgram.open();
 
-//				printSendStack(job, programStack, callableProgram);
+				printSendStack(job, programStack, callableProgram);
 
 				// call
 				callableProgram.call();
@@ -346,7 +346,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				}
 				throw new OperatingSystemRuntimeException(e.getMessage(), e);
 			} finally {
-//				printReceiveStack(job, programStack, callableProgram);
+				printReceiveStack(job, programStack, callableProgram);
 
 				// remove program from stack
 				programStack.setDateExit(new Date());
@@ -403,6 +403,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				text += "|";
 				continue;
 			}
+			
 			String paramValue = null;
 			if (param instanceof QString) {
 				QString stringData = (QString) param;
@@ -417,7 +418,12 @@ public class BaseProgramManagerImpl implements QProgramManager {
 					text += "|";
 					continue;
 				}
-				paramValue = new String(bufferedElement.asBytes());
+				byte[] bytes = bufferedElement.asBytes();
+				if(bytes == null) {
+					System.err.println(bufferedElement.isNull());
+					bytes = bufferedElement.asBytes();
+				}
+				paramValue = new String(bytes);
 			} else
 				paramValue = param.toString();
 

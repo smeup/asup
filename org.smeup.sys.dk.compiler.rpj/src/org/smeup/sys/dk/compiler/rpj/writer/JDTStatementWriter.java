@@ -262,8 +262,18 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		Block block = blocks.peek();
 
-		ContinueStatement continueSt = ast.newContinueStatement();
-		block.statements().add(continueSt);
+		if (isParentFor(statement)) {
+
+			IfStatement ifSt = ast.newIfStatement();
+			ifSt.setExpression(ast.newName(new String[] { "RPJProgramSupport", "TRUE" }));
+			ContinueStatement continueSt = ast.newContinueStatement();
+			ifSt.setThenStatement(continueSt);
+			
+			block.statements().add(ifSt);
+		} else {
+			ContinueStatement continueSt = ast.newContinueStatement();
+			block.statements().add(continueSt);
+		}
 
 		return false;
 	}
@@ -289,7 +299,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		// test annotations
 		for (QAnnotationTest annotationTest : statement.getFacets(QAnnotationTest.class))
 			writeAssertion(annotationTest, statement.toString());
-		
+
 		return false;
 	}
 
@@ -471,7 +481,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean visit(QMethodExec statement) {
-		
+
 		Block block = blocks.peek();
 		if (statement.getObject() != null) {
 			MethodInvocation methodInvocation = ast.newMethodInvocation();
@@ -590,7 +600,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		// test annotations
 		for (QAnnotationTest annotationTest : statement.getFacets(QAnnotationTest.class))
 			writeAssertion(annotationTest, statement.toString());
-		
+
 		return false;
 	}
 
@@ -606,8 +616,8 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		if (statement.getBody() != null)
 			statement.getBody().accept(this);
 
-		String exceptionName = "e"+blocks.size(); 
-		
+		String exceptionName = "e" + blocks.size();
+
 		// catch
 		CatchClause catchClause = ast.newCatchClause();
 		SingleVariableDeclaration exceptionDeclaration = ast.newSingleVariableDeclaration();

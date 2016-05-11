@@ -48,6 +48,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	protected byte[] _toBytes() {
+		getBuffer();
 		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
 	}
 
@@ -77,6 +78,8 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 			Arrays.fill(bytes, NIOStringImpl.HIVAL);
 			break;
 		case NULL:
+			Arrays.fill(bytes, (byte)0x00);
+			break;
 		case OMIT:
 			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237rvbwe87vb9stf");
 		}

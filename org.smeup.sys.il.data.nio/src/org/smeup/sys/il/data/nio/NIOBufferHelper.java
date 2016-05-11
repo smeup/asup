@@ -412,6 +412,8 @@ public class NIOBufferHelper {
 	}
 
 	public static byte[] read(ByteBuffer buffer, int position, int length) {
+		if(buffer == null)
+			return null;
 		prepare(buffer, position, length);
 
 		byte[] bytes = new byte[buffer.remaining()];

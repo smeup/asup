@@ -452,7 +452,7 @@ public class RPJProgramSupport {
 		System.out.println(text);
 	}
 
-	public QString qEditc(QNumeric numeric, String format) {
+	public QCharacter qEditc(QNumeric numeric, String format) {
 		// TODO
 		QCharacter character = dataContext.getDataFactory().createCharacter(numeric.getLength(), false, true);
 
@@ -474,15 +474,15 @@ public class RPJProgramSupport {
 		return character;
 	}
 
-	public QString qEditc(double numeric, String format) {
+	public QCharacter qEditc(double numeric, String format) {
 		return qEditc(qBox(numeric), format);
 	}
 
-	public QString qEditc(int numeric, String format) {
+	public QCharacter qEditc(int numeric, String format) {
 		return qEditc(qBox(numeric), format);
 	}
 
-	public QString qEditw(QNumeric numeric, String format) {
+	public QCharacter qEditw(QNumeric numeric, String format) {
 		// TODO
 		QCharacter character = null;
 		if (numeric.getLength() == 1) {
@@ -921,6 +921,11 @@ public class RPJProgramSupport {
 			datetime.eval(Long.parseLong(new SimpleDateFormat("HHmmss").format(CALENDAR.getTime())));
 		} else
 			System.err.println("Unknown length: " + datetime.getLength());
+	}
+
+	public void qExcept(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

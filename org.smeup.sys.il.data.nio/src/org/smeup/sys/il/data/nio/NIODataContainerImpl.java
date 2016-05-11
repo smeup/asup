@@ -543,8 +543,10 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 			pointer.eval(bufferedData.qAddr());
 		}
+		else if(value.trim().toUpperCase().equals("*NULL")) {
+			System.err.println("Unexpected condition *NULL: ew8vr6888t67ew");
+		}
 		else
 			throw new IntegratedLanguageDataRuntimeException("Unexpected condition: ixretcretrtscv8dtf");
 	}
-
 }
