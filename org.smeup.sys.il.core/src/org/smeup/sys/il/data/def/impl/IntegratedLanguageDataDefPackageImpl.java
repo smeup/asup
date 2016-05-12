@@ -1494,7 +1494,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		initEClass(arrayDefEClass, QArrayDef.class, "ArrayDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getArrayDef_Order(), theIntegratedLanguageDataPackage.getSortDirection(), "order", "A", 0, 1, QArrayDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(atomicDataDefEClass, QAtomicDataDef.class, "AtomicDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(atomicDataDefEClass, QAtomicDataDef.class, "AtomicDataDef", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(binaryDefEClass, QBinaryDef.class, "BinaryDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBinaryDef_Type(), this.getBinaryType(), "type", null, 1, 1, QBinaryDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

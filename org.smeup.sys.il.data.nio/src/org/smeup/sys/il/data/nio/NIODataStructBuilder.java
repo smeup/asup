@@ -49,6 +49,7 @@ public class NIODataStructBuilder {
 	}
 
 	public void addElement(QDataTerm<?> dataTerm, QBufferedData dataElement) {
+		
 		QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 		if (overlay == null) {
 			dataStruct.addElement(dataTerm.getName(), dataElement, ownerNextPos);		

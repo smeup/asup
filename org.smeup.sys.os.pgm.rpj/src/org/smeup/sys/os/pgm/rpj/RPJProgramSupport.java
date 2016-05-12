@@ -304,6 +304,10 @@ public class RPJProgramSupport {
 		return qBox(b);
 	}
 
+	public QString qBoxString(boolean b) {
+		return qBox(b);
+	}
+	
 	public QCharacter qBox(byte character) {
 
 		QCharacter qCharacter = dataContext.getDataFactory().createCharacter(1, false, true);

@@ -161,7 +161,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				try {
 					value = Integer.toString(Integer.parseInt(expression.getValue()));
 				} catch (NumberFormatException e) {
-					value = Long.toString(Long.parseLong(expression.getValue()));
+					value = Long.toString(Long.parseLong(expression.getValue()))+"L";
 				}
 			}
 			break;

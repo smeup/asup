@@ -84,5 +84,15 @@
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INOG">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INOV">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
   </dataSection>
 </il-flow:Module>

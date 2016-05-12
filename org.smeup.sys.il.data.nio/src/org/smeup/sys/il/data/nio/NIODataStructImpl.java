@@ -39,12 +39,10 @@ public class NIODataStructImpl extends NIOAbstractDataStruct {
 		QDataFactory dataFactory = getDataContext().getDataFactory();
 		
 		NIODataStructBuilder dataStructBuilder = new NIODataStructBuilder(dataFactory, this);
-
 		for (QDataTerm<?> dataTerm : dataTerms) {
 			QBufferedData dataElement = (QBufferedData) dataFactory.createData(dataTerm, false);
 			dataStructBuilder.addElement(dataTerm, dataElement);
 		}
-
 		
 		if(allocate) {
 			checkAllocation();

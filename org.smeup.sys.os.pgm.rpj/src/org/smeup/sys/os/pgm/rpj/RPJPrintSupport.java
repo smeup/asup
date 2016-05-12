@@ -52,4 +52,9 @@ public class RPJPrintSupport {
 	public QIndicator qINOD;
 	@DataDef
 	public QIndicator qINOE;
+	
+	@DataDef
+	public QIndicator qINOG;
+	@DataDef
+	public QIndicator qINOV;
 }

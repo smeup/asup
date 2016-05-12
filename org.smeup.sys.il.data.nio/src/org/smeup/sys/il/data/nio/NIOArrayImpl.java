@@ -126,11 +126,17 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 		element = (D) NIOBufferHelper.getNIOBufferedElementImpl(getModel()).copy();
 
 		int position = 0;
+		int modelSize = 0;
 		if (getListOwner() == null)
-			position = getModel().getSize() * (index - 1);
+			modelSize = getModel().getSize();
 		else
-			position = getListOwner().getModel().getSize() * (index - 1);
+			modelSize = getListOwner().getModel().getSize();
 
+		if(modelSize == 0)
+			"".toCharArray();
+		
+		position = modelSize * (index - 1);
+		
 		assign(element, position + 1);
 
 		_elements[index - 1] = element;
@@ -851,5 +857,62 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	public QArray<D> qPlus(String value) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public QArray<D> qPlus(Number value) {
+		return qPlusOperation(value, false);
+	}
+
+	@Override
+	public QArray<D> qPlus(QNumeric value) {
+		return qPlusOperation(value.asNumber(), false);
+	}
+	
+	private QArray<D> qPlusOperation(Number value, boolean halfAdjust) {
+
+		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), getModel(), capacity(), getSortDirection(), true);
+		newArray.movea(this);
+		for (D element : newArray) {
+			((QNumeric) element).plus(value.doubleValue(), halfAdjust);
+		}
+
+		return newArray;
+	}
+
+	@Override
+	public QArray<QCharacter> qTrim() {
+		
+		NIOArrayImpl<QCharacter> newArray = new NIOArrayImpl<QCharacter>(getDataContext(), (QCharacter) getModel(), capacity(), getSortDirection(), true);
+		newArray.movea(this);
+		for (QCharacter element : newArray) {
+			element.eval(element.trim());
+		}
+
+		return newArray;
+	}
+
+	@Override
+	public QArray<QCharacter> qTriml() {
+		
+		NIOArrayImpl<QCharacter> newArray = new NIOArrayImpl<QCharacter>(getDataContext(), (QCharacter) getModel(), capacity(), getSortDirection(), true);
+		newArray.movea(this);
+		for (QCharacter element : newArray) {
+			element.eval(element.trimL());
+		}
+
+		return newArray;
+	}
+
+	@Override
+	public QArray<QCharacter> qTrimr() {
+		
+		NIOArrayImpl<QCharacter> newArray = new NIOArrayImpl<QCharacter>(getDataContext(), (QCharacter) getModel(), capacity(), getSortDirection(), true);
+		newArray.movea(this);
+		for (QCharacter element : newArray) {
+			element.eval(element.trimR());
+		}
+
+		return newArray;
 	}
 }

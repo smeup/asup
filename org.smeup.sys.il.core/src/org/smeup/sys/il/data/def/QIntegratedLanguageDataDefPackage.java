@@ -191,10 +191,10 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	int ARRAY_DEF = 1;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.AtomicDataDefImpl <em>Atomic Data Def</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.il.data.def.QAtomicDataDef <em>Atomic Data Def</em>}' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @see org.smeup.sys.il.data.def.impl.AtomicDataDefImpl
+	 * @see org.smeup.sys.il.data.def.QAtomicDataDef
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getAtomicDataDef()
 	 * @generated
 	 */
@@ -2327,10 +2327,10 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		EAttribute ARRAY_DEF__ORDER = eINSTANCE.getArrayDef_Order();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.def.impl.AtomicDataDefImpl <em>Atomic Data Def</em>}' class.
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.def.QAtomicDataDef <em>Atomic Data Def</em>}' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * @see org.smeup.sys.il.data.def.impl.AtomicDataDefImpl
+		 * @see org.smeup.sys.il.data.def.QAtomicDataDef
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getAtomicDataDef()
 		 * @generated
 		 */

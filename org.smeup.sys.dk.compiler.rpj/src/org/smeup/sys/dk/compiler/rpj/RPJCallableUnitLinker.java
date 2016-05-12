@@ -134,10 +134,8 @@ public class RPJCallableUnitLinker {
 			List<QDataTerm<?>> dataTerms = new ArrayList<QDataTerm<?>>(dataSection.getDatas());
 
 			RPJDataLikeRefactor dataLikeVisitor = new RPJDataLikeRefactor(compilationUnit);
-			for (QDataTerm<?> dataTerm : dataTerms) {
-				dataLikeVisitor.reset();
+			for (QDataTerm<?> dataTerm : dataTerms)
 				dataTerm.accept(dataLikeVisitor);
-			}
 		}
 
 		QFlowSection flowSection = callableUnit.getFlowSection();
@@ -147,15 +145,13 @@ public class RPJCallableUnitLinker {
 			RPJDataLikeRefactor dataLikeVisitor = new RPJDataLikeRefactor(compilationUnit);
 			for (QPrototype prototype : flowSection.getPrototypes()) {
 				
-				if(prototype.getDefinition() != null) {
-					dataLikeVisitor.reset();
+				if(prototype.getDefinition() != null)
 					prototype.accept(dataLikeVisitor);
-				}
+
 								
 				QEntry entry = prototype.getEntry();
 				if(entry != null) {
 					for(QEntryParameter<?> entryParameter: entry.getParameters()) {
-						dataLikeVisitor.reset();
 						if(entryParameter.getDelegate() instanceof QDataTerm) 
 							((QDataTerm<?>)entryParameter.getDelegate()).accept(dataLikeVisitor);
 					}
@@ -168,7 +164,6 @@ public class RPJCallableUnitLinker {
 				QEntry entry = procedure.getEntry();
 				if(entry != null) {
 					for(QEntryParameter<?> entryParameter: entry.getParameters()) {
-						dataLikeVisitor.reset();
 						if(entryParameter.getDelegate() instanceof QDataTerm) 
 							((QDataTerm<?>)entryParameter.getDelegate()).accept(dataLikeVisitor);
 					}
@@ -193,10 +188,8 @@ public class RPJCallableUnitLinker {
 
 		RPJDataFormulasResolver dataFormulasResolver = new RPJDataFormulasResolver(compilationUnit, expressionParser, dataContext);
 		compilationUnit.getContext().inject(dataFormulasResolver);
-		for (QDataTerm<?> dataTerm : dataTerms) {
-			dataFormulasResolver.reset();
+		for (QDataTerm<?> dataTerm : dataTerms)
 			dataTerm.accept(dataFormulasResolver);
-		}
 	}
 
 	public void linkOverlayDatas(QCompilationUnit compilationUnit) {
@@ -213,11 +206,29 @@ public class RPJCallableUnitLinker {
 		List<QDataTerm<?>> dataTerms = new ArrayList<QDataTerm<?>>(dataSection.getDatas());
 
 		RPJDataOverlayRefactor dataOverlayVisitor = new RPJDataOverlayRefactor(compilationUnit);
-		for (QDataTerm<?> dataTerm : dataTerms) {
-			dataOverlayVisitor.reset();
-
+		for (QDataTerm<?> dataTerm : dataTerms)
 			dataTerm.accept(dataOverlayVisitor);
-		}
+		
+	}
+
+	public void completeDataStructures(QCompilationUnit compilationUnit) {
+
+		if (!(compilationUnit.getNode() instanceof QCallableUnit))
+			return;
+
+		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getNode();
+
+		QDataSection dataSection = callableUnit.getDataSection();
+		if (dataSection == null)
+			return;
+
+		List<QDataTerm<?>> dataTerms = new ArrayList<QDataTerm<?>>(dataSection.getDatas());
+
+		RPJDataLengthCompleter dataLengthCompleter = new RPJDataLengthCompleter(compilationUnit, expressionParser, dataContext);
+		compilationUnit.getContext().inject(dataLengthCompleter);
+		for (QDataTerm<?> dataTerm : dataTerms) 
+			dataTerm.accept(dataLengthCompleter);
+
 	}
 
 	public void linkModules(QCompilationUnit compilationUnit) {

@@ -44,14 +44,6 @@ import org.smeup.sys.il.data.term.impl.DataTermVisitorImpl;
 public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 
 	private QCompilationUnit compilationUnit;
-	private QDataTerm<?> dataTerm;
-
-	/*
-	private Stack<QDataTerm<?>> termsTodo = new Stack<QDataTerm<?>>();
-
-	public Stack<QDataTerm<?>> getTermsTodo() {
-		return this.termsTodo;
-	}*/
 
 	@Inject
 	public RPJAbstractDataRefactor(QCompilationUnit compilationUnit) {
@@ -64,15 +56,10 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 
 	public abstract RPJAbstractDataRefactor copy();
 
-	public void reset() {
-		this.dataTerm = null;
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean visit(QDataTerm<?> term) {
+	public boolean visit(QDataTerm<?> dataTerm) {
 
-		dataTerm = term;
 
 		if (dataTerm.getDataTermType() != null && dataTerm.getDataTermType().isCompound()) {
 			QCompoundDataDef<?, QDataTerm<?>> compoundDataDef = null;
@@ -85,10 +72,8 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 			
 
 			RPJAbstractDataRefactor visitor = this.copy();
-			for (QDataTerm<?> dataTerm : compoundDataDef.getElements()) {
-				visitor.reset();
-				dataTerm.accept(visitor);
-			}
+			for (QDataTerm<?> elementTerm : compoundDataDef.getElements())
+				elementTerm.accept(visitor);
 		}
 
 		return false;
@@ -124,7 +109,7 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 				((QDataTerm<QIndicatorDef>) termTarget).setDefinition((QIndicatorDef) EcoreUtil.copy((EObject) source));
 				target = termTarget.getDefinition();
 			} else
-				throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: sb9r89tnbr9tbnt9s");
+				throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: sb8te8rtwbr9tbnt9s");
 		}
 
 		appendDefinition(source, target);
@@ -162,7 +147,6 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 		RPJAbstractDataRefactor elementVisitor = this.copy();
 		List<QDataTerm<?>> dataTerms = new ArrayList<QDataTerm<?>>(source.getElements());
 		for (QDataTerm<?> element : dataTerms) {
-			elementVisitor.reset();
 			element.accept(elementVisitor);
 			@SuppressWarnings("unchecked")
 			E elementTerm = (E) EcoreUtil.copy((EObject) element);

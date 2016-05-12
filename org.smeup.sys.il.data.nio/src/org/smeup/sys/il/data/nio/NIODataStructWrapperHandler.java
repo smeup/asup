@@ -49,11 +49,8 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 		NIODataStructBuilder dataStructBuilder = new NIODataStructBuilder(dataFactory, this);
 		List<Field> fields = NIODataStructHelper.getFields(wrapped.getClass());
 		for (Field field : fields) {
-
-			// create element
 			QDataDef<?> dataDef = dataFactory.createDataDef(field.getGenericType(), Arrays.asList(field.getAnnotations()));
-			QBufferedData dataElement = (QBufferedData) dataFactory.createData(dataDef, false);
-			
+			QBufferedData dataElement = (QBufferedData) dataFactory.createData(dataDef, false);			
 			dataStructBuilder.addElement(field, dataElement);
 		}
 		

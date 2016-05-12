@@ -201,8 +201,16 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		return compilationUnit;
 	}
 
-	private void linkCompilationUnit(List<String> compilationUnits, QCompilationUnit compilationUnit) {
+	@Override
+	public void linkCompilationUnit(QCompilationUnit compilationUnit) {
 
+		// load children
+		List<String> compilationUnits = new ArrayList<String>();
+		linkCompilationUnit(compilationUnits, compilationUnit);
+	}
+
+	private void linkCompilationUnit(List<String> compilationUnits, QCompilationUnit compilationUnit) {
+		
 		if (compilationUnits.contains(compilationUnit.getNode().getName()))
 			return;
 
@@ -220,6 +228,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		callableUnitLinker.linkLikeDatas(compilationUnit);
 		callableUnitLinker.linkOverlayDatas(compilationUnit);
 		callableUnitLinker.linkFormulas(compilationUnit);
+		callableUnitLinker.completeDataStructures(compilationUnit);
 
 		if (!(compilationUnit.getNode() instanceof QCallableUnit))
 			return;
@@ -241,14 +250,6 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 				childCompilationUnit.close();
 			}
 		}
-	}
-
-	@Override
-	public void linkCompilationUnit(QCompilationUnit compilationUnit) {
-
-		// load children
-		List<String> compilationUnits = new ArrayList<String>();
-		linkCompilationUnit(compilationUnits, compilationUnit);
 	}
 
 	private void prepareContexts(QJob job, QCompilationUnit compilationUnit, QCallableUnit callableUnit, List<QCompilationUnit> moduleContexts) {

@@ -718,6 +718,22 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
+	 * @generated
+	 */
+	QArray<D> qPlus(Number value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" valueRequired="true"
+	 * @generated
+	 */
+	QArray<D> qPlus(QNumeric value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" startRequired="true" lengthRequired="true"
 	 * @generated
 	 */
@@ -762,6 +778,30 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	 * @generated
 	 */
 	QArray<QCharacter> qSubst(Number start, QNumeric length);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	QArray<QCharacter> qTrim();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	QArray<QCharacter> qTriml();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	QArray<QCharacter> qTrimr();
 
 	/**
 	 * <!-- begin-user-doc -->

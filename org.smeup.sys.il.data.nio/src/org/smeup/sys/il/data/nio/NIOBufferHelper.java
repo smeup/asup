@@ -26,6 +26,7 @@ import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
+import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
 
@@ -207,7 +208,11 @@ public class NIOBufferHelper {
 	public static NIOBufferedElementImpl getNIOBufferedElementImpl(QData data) {
 
 		NIOBufferedElementImpl nioBufferedElement = null;
-
+		if (data instanceof QScroller<?>) {
+			NIOScrollerImpl<?> nioScrollerImpl = (NIOScrollerImpl<?>)data;
+			data = nioScrollerImpl.current();
+		}
+		
 		if (data instanceof NIOBufferedElementImpl)
 			nioBufferedElement = (NIOBufferedElementImpl) data;
 		else if (data instanceof QBufferedElementDelegator) {

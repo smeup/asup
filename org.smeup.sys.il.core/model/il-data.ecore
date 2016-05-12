@@ -486,6 +486,18 @@
       </eGenericType>
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="qPlus" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eTypeParameter="#//Array/D"/>
+      </eGenericType>
+      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="qPlus" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eTypeParameter="#//Array/D"/>
+      </eGenericType>
+      <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
     <eOperations name="qSubarr" lowerBound="1">
       <eGenericType eClassifier="#//Array">
         <eTypeArguments eTypeParameter="#//Array/D"/>
@@ -553,6 +565,21 @@
       </eGenericType>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qTrim" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eClassifier="#//Character"/>
+      </eGenericType>
+    </eOperations>
+    <eOperations name="qTriml" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eClassifier="#//Character"/>
+      </eGenericType>
+    </eOperations>
+    <eOperations name="qTrimr" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eClassifier="#//Character"/>
+      </eGenericType>
     </eOperations>
     <eOperations name="sorta"/>
     <eGenericSuperTypes eClassifier="#//BufferedList">
@@ -3191,7 +3218,7 @@
         <eTypeArguments eTypeParameter="#//def/ArrayDef/D"/>
       </eGenericSuperTypes>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="AtomicDataDef" abstract="true">
+    <eClassifiers xsi:type="ecore:EClass" name="AtomicDataDef" abstract="true" interface="true">
       <eTypeParameters name="D">
         <eBounds eClassifier="#//Data"/>
       </eTypeParameters>

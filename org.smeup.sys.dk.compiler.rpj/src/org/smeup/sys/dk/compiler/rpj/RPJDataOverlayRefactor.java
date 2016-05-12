@@ -49,22 +49,8 @@ public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
 		if (overlay == null)
 			return super.visit(dataTerm);
 
-		if (overlay.getName() == null) {
-			
-			switch (dataTerm.getDataTermType()) {
-			case MULTIPLE_ATOMIC:
-				QMultipleAtomicBufferedDataDef<?> multipleAtomicBufferedDataDef = (QMultipleAtomicBufferedDataDef<?>) dataTerm.getDefinition();
-				QUnaryAtomicBufferedDataDef<?> unaryAtomicBufferedDataDef = multipleAtomicBufferedDataDef.getArgument();
-								
-				unaryAtomicBufferedDataDef.setLength(unaryAtomicBufferedDataDef.getLength() / multipleAtomicBufferedDataDef.getDimension());
-				return super.visit(dataTerm);
-			case MULTIPLE_COMPOUND:
-				return super.visit(dataTerm);
-			case UNARY_COMPOUND:
-			case UNARY_ATOMIC:
-				return super.visit(dataTerm);
-			}
-		}
+		if (overlay.getName() == null)
+			return super.visit(dataTerm);
 
 		// TODO remove me
 		if (overlay.getName().equalsIgnoreCase("*LDA"))
