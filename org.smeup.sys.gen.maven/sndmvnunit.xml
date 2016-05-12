@@ -55,10 +55,10 @@
 					<committer name="${git.user.name}" email="${git.user.email}" />
 				</gitcommit>
 				
-				<echo message="Execute pull before pushing jars" />
+				<echo message="Execute fecth before pushing jars" />
 								
 				<git:git directory="@{site.dir}" settingsref="smeup-build">
-					<pull  uri="${p2.git.uri}"/>
+					<fetch  uri="${p2.git.uri}"/>
 				</git:git>
 					
 	
