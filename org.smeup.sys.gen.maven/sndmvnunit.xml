@@ -14,8 +14,6 @@
 		-->	
 	
 	<import file="smeup-sys-base.xml"/>
-	
-	<git:settings refId="smeup-build" username="${git.user}" password="${git.pwd}" name="${git.user.name}" email="${git.user.email}" />
 
 	<taskdef uri="antlib:com.rimerosolutions.ant.git" resource="com/rimerosolutions/ant/git/jgit-ant-lib.xml">
 		<classpath>
@@ -39,6 +37,8 @@
 			<pathelement location="${basedir}\lib\org.apache.log4j_1.2.15.v201012070815.jar"/>
 		</classpath>
 	</taskdef>
+	
+	<git:settings refId="smeup-build" username="${git.user}" password="${git.pwd}" name="${git.user.name}" email="${git.user.email}" />
 
 	<macrodef name="git-push-jar">		
 		<attribute name="site.dir" default="" />
@@ -55,10 +55,10 @@
 					<committer name="${git.user.name}" email="${git.user.email}" />
 				</gitcommit>
 				
-				<echo message="Execute fecth before pushing jars" />
+				<echo message="Execute pull before pushing jars" />
 								
 				<git:git directory="@{site.dir}" settingsref="smeup-build">
-					<fetch  uri="${p2.git.uri}"/>
+					<pull  uri="${p2.git.uri}"/>
 				</git:git>
 					
 	
