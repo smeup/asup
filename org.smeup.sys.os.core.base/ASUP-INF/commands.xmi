@@ -2365,25 +2365,244 @@
       program="QWCCSDSC">
     <parameters
         allowVariable="true"
-        name="RESTART"
-        position="1">
+        name="OPTION"
+        position="1"
+        status="TODO">
       <dataTerm
-          name="restart"
+          name="howToEnd"
           restricted="true">
         <facets
             xsi:type="il-data-term:Special">
           <elements
-              name="*NO"
-              value="*NO"/>
+              name="*CNTRLD"
+              value="C"/>
+          <elements
+              name="*IMMED"
+              value="I"/>
+        </facets>
+        <default
+            value="*CNTRLD"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="DELAY"
+        position="2">
+      <dataTerm
+          name="controlledEndDelayTime">
+        <facets
+            xsi:type="il-data-term:Range"
+            max="99999"
+            min="1"/>
+        <facets
+            xsi:type="il-data-term:Special">
+          <elements
+              name="*NOLIMIT"
+              value="999999"/>
+        </facets>
+        <default
+            value="3600"/>
+        <definition
+            xsi:type="il-data-def:BinaryDef"
+            type="INTEGER"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="RESTART"
+        position="3">
+      <dataTerm
+          name="restartOptions">
+        <definition
+            xsi:type="il-data-def:DataStructDef">
+          <elements
+              xsi:type="os-cmd:CommandData"
+              name="restartAfterPowerDown"
+              restricted="true">
+            <facets
+                xsi:type="il-data-term:Special">
+              <elements
+                  name="*NO"
+                  value="N"/>
+              <elements
+                  name="*YES"
+                  value="Y"/>
+            </facets>
+            <default
+                value="*NO"/>
+            <definition
+                xsi:type="il-data-def:CharacterDef"
+                length="1"/>
+          </elements>
+          <elements
+              xsi:type="os-cmd:CommandData"
+              name="restartType"
+              restricted="true">
+            <facets
+                xsi:type="il-data-term:Special">
+              <elements
+                  name="*IPLA"
+                  value="I"/>
+              <elements
+                  name="*SYS"
+                  value="S"/>
+              <elements
+                  name="*FULL"
+                  value="F"/>
+            </facets>
+            <default
+                value="*IPLA"/>
+            <definition
+                xsi:type="il-data-def:CharacterDef"
+                length="1"/>
+          </elements>
+        </definition>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="IPLSRC"
+        position="4"
+        status="POS">
+      <dataTerm
+          name="iPLSource"
+          restricted="true">
+        <facets
+            xsi:type="il-data-term:Special">
+          <elements
+              name="*PANEL"
+              value="P"/>
+          <elements
+              name="A"
+              value="A"/>
+          <elements
+              name="B"
+              value="B"/>
+          <elements
+              name="D"
+              value="D"/>
+          <elements
+              name="*IMGCLG"
+              value="I"/>
+        </facets>
+        <default
+            value="*PANEL"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="IMGCLG"
+        position="5"
+        status="POS">
+      <dataTerm
+          name="imageCatalog">
+        <facets
+            xsi:type="il-data-term:Format"
+            type="NAME"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="10"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="ENDSBSOPT"
+        position="6"
+        status="POS">
+      <dataTerm
+          name="endSubsystemOption"
+          restricted="true">
+        <facets
+            xsi:type="il-data-term:Special">
+          <elements
+              name="*DFT"
+              unary="true"
+              value="*DFT"/>
+          <elements
+              name="*NOJOBLOG"
+              value="*NOJOBLOG"/>
+          <elements
+              name="*CHGPTY"
+              value="*CHGPTY"/>
+          <elements
+              name="*CHGTSL"
+              value="*CHGTSL"/>
+        </facets>
+        <cardinality
+            max="3"/>
+        <default>
+          <values>*DFT</values>
+        </default>
+        <definition
+            xsi:type="il-data-def:ScrollerDef"
+            dimension="3">
+          <argument
+              xsi:type="il-data-def:CharacterDef"
+              length="10"/>
+        </definition>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="TIMOUTOPT"
+        position="7"
+        status="POS">
+      <dataTerm
+          name="timeoutOption"
+          restricted="true">
+        <facets
+            xsi:type="il-data-term:Special">
+          <elements
+              name="*CONTINUE"
+              value="C"/>
+          <elements
+              name="*MSD"
+              value="M"/>
+          <elements
+              name="*SYSREFCDE"
+              value="S"/>
+        </facets>
+        <default
+            value="*CONTINUE"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="CONFIRM"
+        position="8"
+        status="POS">
+      <dataTerm
+          name="confirm"
+          restricted="true">
+        <facets
+            xsi:type="il-data-term:Special">
+          <elements
+              name="*ENVVAR"
+              value="*ENVVAR"/>
+          <elements
+              name="*INTERACT"
+              value="*INTERACT"/>
           <elements
               name="*YES"
               value="*YES"/>
+          <elements
+              name="*NO"
+              value="*NO"/>
         </facets>
         <default
-            value="*NO"/>
+            value="*ENVVAR"/>
         <definition
             xsi:type="il-data-def:CharacterDef"
-            length="4"/>
+            length="10"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -2391,7 +2610,7 @@
         name="UPGRADE"
         position="2">
       <dataTerm
-          name="restart"
+          name="upgrade"
           restricted="true">
         <facets
             xsi:type="il-data-term:Special">
