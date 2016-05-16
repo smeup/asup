@@ -11,6 +11,7 @@ Require-Bundle:
  org.smeup.sys.os.pgm,
  org.smeup.sys.os.file,
  org.smeup.sys.il.esam,
- org.smeup.sys.il.memo
+ org.smeup.sys.il.memo,
+ org.smeup.sys.rt.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

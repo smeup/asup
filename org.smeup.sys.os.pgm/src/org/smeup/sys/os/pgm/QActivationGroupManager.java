@@ -23,6 +23,22 @@ import org.smeup.sys.os.core.jobs.QJob;
  */
 public interface QActivationGroupManager extends QSingleton<QActivationGroupManager> {
 	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model jobRequired="true" nameRequired="true"
+	 * @generated
+	 */
+	void close(QJob job, String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model jobRequired="true"
+	 * @generated
+	 */
+	void closeAll(QJob job);
+
 	QActivationGroupManager qINSTANCE = null;
 	
 	/**

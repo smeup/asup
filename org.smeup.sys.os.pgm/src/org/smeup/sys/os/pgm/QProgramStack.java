@@ -83,6 +83,14 @@ public interface QProgramStack extends QObject {
 	void setDateExit(Date value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" elementRequired="true"
+	 * @generated
+	 */
+	boolean contains(QCallableProgram<?> element);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
 	 * @generated

@@ -135,6 +135,15 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean contains(QCallableProgram<?> element) {
+		return this.stack.contains(element);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated NOT

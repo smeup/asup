@@ -51,15 +51,20 @@ import org.smeup.sys.os.pgm.QProgram;
 import org.smeup.sys.os.pgm.QProgramInfo;
 import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.os.pgm.QProgramStack;
+import org.smeup.sys.rt.core.QApplication;
 
 public class BaseProgramManagerImpl implements QProgramManager {
+	
+	@Inject
+	private QApplication application;
 	@Inject
 	private QJobManager jobManager;
 	@Inject
 	private QJobLogManager jobLogManager;
 	@Inject
 	private QResourceManager resourceManager;
-	@Inject
+
+	
 	private QActivationGroupManager activationGroupManager;
 
 	@Inject
@@ -69,7 +74,9 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	@PostConstruct
 	private void init() {
-		this.programStacks = new HashMap<String, QProgramStack>();
+		programStacks = new HashMap<String, QProgramStack>();
+		activationGroupManager = new BaseActivationGroupManagerImpl(this);
+		application.getContext().set(QActivationGroupManager.class, activationGroupManager);
 	}
 
 	@Override
@@ -100,7 +107,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	@SuppressWarnings("resource")
 	@Override
 	public void callProgram(QJob job, QProgram program, QData[] params) {
-
+		
 		QActivationGroup activationGroup = activationGroupManager.lookup(job, program.getActivationGroup());
 		if (activationGroup == null)
 			activationGroup = activationGroupManager.create(job, program.getActivationGroup(), true);

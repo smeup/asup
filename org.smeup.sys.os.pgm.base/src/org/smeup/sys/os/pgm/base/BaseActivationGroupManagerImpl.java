@@ -19,9 +19,18 @@ import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QActivationGroupManager;
+import org.smeup.sys.os.pgm.QCallableProgram;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
+import org.smeup.sys.os.pgm.QProgramManager;
+import org.smeup.sys.os.pgm.QProgramStack;
 
 public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
+
+	private QProgramManager programManager;
+
+	public BaseActivationGroupManagerImpl(QProgramManager programManager) {
+		this.programManager = programManager;
+	}
 
 	@Override
 	public void register(QJob job, QActivationGroup activationGroup) {
@@ -38,10 +47,10 @@ public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 
 		QContext jobContext = job.getContext();
 		BaseActivationGroupCache activationGroupCache = jobContext.get(BaseActivationGroupCache.class);
-		if(activationGroupCache == null) {
+		if (activationGroupCache == null) {
 			synchronized (job) {
 				activationGroupCache = jobContext.get(BaseActivationGroupCache.class);
-				if(activationGroupCache == null) {
+				if (activationGroupCache == null) {
 					activationGroupCache = new BaseActivationGroupCache();
 					jobContext.set(BaseActivationGroupCache.class, activationGroupCache);
 				}
@@ -68,5 +77,34 @@ public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 	@Override
 	public List<QActivationGroup> list(QJob job) {
 		return new ArrayList<QActivationGroup>(getMapActivationGroup(job).values());
+	}
+
+	@Override
+	public void close(QJob job, String name) {
+
+		QActivationGroup activationGroup = lookup(job, name);
+		// TODO
+		if (activationGroup == null)
+			return;
+
+		QProgramStack programStack = programManager.getProgramStack(job.getContext().getID());
+		for (QCallableProgram<?> callableProgram : activationGroup.getPrograms()) {
+			if (programStack.contains(callableProgram))
+				continue;
+			callableProgram.close();
+		}
+	}
+
+	@Override
+	public void closeAll(QJob job) {
+
+		QProgramStack programStack = programManager.getProgramStack(job.getContext().getID());
+		for (QActivationGroup activationGroup : list(job)) {
+			for (QCallableProgram<?> callableProgram : activationGroup.getPrograms()) {
+				if (programStack.contains(callableProgram))
+					continue;
+				callableProgram.close();
+			}
+		}
 	}
 }
