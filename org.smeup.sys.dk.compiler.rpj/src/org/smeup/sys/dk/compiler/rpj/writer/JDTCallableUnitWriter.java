@@ -881,15 +881,15 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 							if (remap == null)
 								continue;
 
-							MethodInvocation methodInvocation = getAST().newMethodInvocation();
-							methodInvocation.setName(getAST().newSimpleName("assign"));
-
 							QDataTerm<?> remapDataTerm = getCompilationUnit().getDataTerm(remap.getName(), true);
 							if (remapDataTerm == null)
 								throw new IntegratedLanguageExpressionRuntimeException("Invalid term: " + remap);
 
 							if (getCompilationUnit().equalsTermName(element.getName(), remapDataTerm.getName()))
 								continue;
+
+							MethodInvocation methodInvocation = getAST().newMethodInvocation();
+							methodInvocation.setName(getAST().newSimpleName("assign"));
 
 							if (remap.getIndex() == null || remap.getIndex().isEmpty())
 								methodInvocation.setExpression(buildExpression(getCompilationUnit().getQualifiedName(remapDataTerm)));

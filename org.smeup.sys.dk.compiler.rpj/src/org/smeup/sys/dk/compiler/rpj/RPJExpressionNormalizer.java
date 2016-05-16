@@ -272,7 +272,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 					QDataTerm<?> dataTerm = compilationUnit.getDataTerm(atomicTermExpressionLeft.getValue(), true);
 					if (dataTerm == null)
-						logger.info(excpetionManager.prepareException(job, RPJCompilerMessage.AS00107, atomicTermExpressionLeft.getValue()));
+						excpetionManager.prepareException(job, RPJCompilerMessage.AS00107, atomicTermExpressionLeft.getValue());
 
 					else if (dataTerm.isConstant()) {
 						reverseExpression(expression);

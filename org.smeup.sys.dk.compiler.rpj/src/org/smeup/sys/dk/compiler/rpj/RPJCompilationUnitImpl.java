@@ -48,6 +48,7 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
 import org.smeup.sys.il.data.def.QPointerDef;
 import org.smeup.sys.il.data.term.DataTermType;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.il.data.term.QRemap;
 import org.smeup.sys.il.esam.QDataSetTerm;
 import org.smeup.sys.il.esam.QDisplayTerm;
 import org.smeup.sys.il.esam.QKeyListTerm;
@@ -521,6 +522,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	@SuppressWarnings("unchecked")
 	private QDataTerm<?> findData(List<QDataTerm<?>> dataTerms, String name, String prefix, int position) {
 
+		if(name.equalsIgnoreCase("CFCDVA"))
+			"".toCharArray();
+		
 		if (name.contains("("))
 			name = name.substring(0, name.indexOf("("));
 
@@ -530,16 +534,15 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			String childName = null;
 
 			// remap
-/*			QRemap remap = child.getFacet(QRemap.class);
+			QRemap remap = child.getFacet(QRemap.class);
 			if (remap != null) {
 				if (remap.getIndex() != null && !remap.getIndex().isEmpty())
 					childName = remap.getName();
 				else
 					childName = remap.getName();
-			} else
-				childName = child.getName();*/
-			
-			childName = child.getName();
+			} 			
+			else
+				childName = child.getName();
 
 			// prefix
 			if (prefix != null)
@@ -548,6 +551,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			// qualified
 			if (equalsTermName(getQualifiedName(child), name))
 				dataTerm = child;
+			// atomic
+			else if (equalsTermName(childName, name))
+				dataTerm = child;			
 			// compound
 			else if (child.getDataTermType().isCompound()) {
 				QDataTerm<QCompoundDataDef<?, ?>> compoundDataTerm = (QDataTerm<QCompoundDataDef<?, ?>>) child;
@@ -573,6 +579,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 						else
 							tempName = tokens[i];
 				}
+				
 				if (compoundDataDef.getPrefix() != null) {
 					String[] tokens = compoundDataDef.getPrefix().split("\\:");
 					String pfx = tokens[0];
@@ -589,9 +596,6 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				if (dataTerm == null && equalsTermName(childName, tempName))
 					dataTerm = child;
 			}
-			// atomic
-			else if (equalsTermName(childName, name))
-				dataTerm = child;
 
 			if (dataTerm != null)
 				break;
