@@ -333,7 +333,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			} else {
 
 				if (Overlay.NAME_OWNER.equalsIgnoreCase(overlay.getName())) {
-					throw new IntegratedLanguageDataRuntimeException("Invalid owner data: " + dataTerm);
+					data = dataFactory.createData(dataTerm, true);				
+					// TODO
+//					throw new IntegratedLanguageDataRuntimeException("Invalid owner data: " + dataTerm);
 				} else {
 					data = dataFactory.createData(dataTerm, false);
 					// TODO remove lowerCase
@@ -537,7 +539,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		if(value.trim().toUpperCase().startsWith("%ADDR")) {
 			value = value.trim().toUpperCase();
 			value = value.substring(6, value.length()-1).toLowerCase();
-			QBufferedData bufferedData = (QBufferedData)getData(value);
+			QBufferedData bufferedData = (QBufferedData)getData(value.trim());
 			if (bufferedData == null || !(bufferedData instanceof QBufferedData))
 				throw new IntegratedLanguageDataRuntimeException("Invalid address data: " + value);
 
