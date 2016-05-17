@@ -499,6 +499,15 @@
       <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
       <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
     </eOperations>
+    <eOperations name="delete">
+      <eParameters name="keyField" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Data"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
+    </eOperations>
+    <eOperations name="delete">
+      <eParameters name="keyField" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Data"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
+      <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
+    </eOperations>
     <eOperations name="reade" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="keyField" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Data"/>
     </eOperations>
@@ -797,6 +806,15 @@
       <eParameters name="lock" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
     </eOperations>
     <eOperations name="chain" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="relativeRecordNumber" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Numeric"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
+      <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
+    </eOperations>
+    <eOperations name="delete">
+      <eParameters name="relativeRecordNumber" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Numeric"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
+    </eOperations>
+    <eOperations name="delete">
       <eParameters name="relativeRecordNumber" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Numeric"/>
       <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
       <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>

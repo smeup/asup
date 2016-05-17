@@ -98,6 +98,22 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 	boolean chain(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model relativeRecordNumberRequired="true"
+	 * @generated
+	 */
+	void delete(QNumeric relativeRecordNumber, QIndicator notFound);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model relativeRecordNumberRequired="true"
+	 * @generated
+	 */
+	void delete(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated

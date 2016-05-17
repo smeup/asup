@@ -435,6 +435,16 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
+	public void movea(QNumeric targetIndex, QArray<?> value, int sourceIndex, boolean clear) {
+		movea(targetIndex.i(), value, sourceIndex, clear);
+	}
+
+	@Override
+	public void movea(QNumeric targetIndex, QArray<?> value, QNumeric sourceIndex, boolean clear) {
+		movea(targetIndex.i(), value, sourceIndex.i(), clear);
+	}
+
+	@Override
 	public void movea(int targetIndex, QArray<?> value, QNumeric sourceIndex) {
 		movea(targetIndex, value, sourceIndex.i());
 	}
@@ -859,6 +869,23 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 		return newArray;
 	}
 
+	@Override
+	public QArray<D> qMult(QArray<D> value) {
+
+		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), getModel(), capacity(), getSortDirection(), true);
+		newArray.movea(this);
+
+		if (getModel() instanceof QNumeric) {
+			int i = 0;
+			for (D element : newArray) {
+				i++;
+				((QNumeric) element).mult((QNumeric) value.get(i), false);
+			}
+		}
+		// TODO
+		
+		return newArray;
+	}
 	@Override
 	public QArray<D> qPlus(QArray<D> value) {
 		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), getModel(), capacity(), getSortDirection(), true);

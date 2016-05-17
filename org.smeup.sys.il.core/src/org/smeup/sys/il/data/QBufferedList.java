@@ -32,6 +32,14 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" halfAdjustRequired="true" maxPrecisionRequired="true"
+	 * @generated
+	 */
+	void eval(QList<? extends QNumeric> value, boolean halfAdjust, boolean maxPrecision);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */

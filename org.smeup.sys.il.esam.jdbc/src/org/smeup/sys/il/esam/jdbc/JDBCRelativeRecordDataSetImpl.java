@@ -188,4 +188,18 @@ public class JDBCRelativeRecordDataSetImpl<R extends QRecord> extends JDBCDataSe
 	public void setll(QNumeric relativeRecordNumber) {
 		setll(relativeRecordNumber.asInteger());
 	}
+
+	@Override
+	public void delete(QNumeric relativeRecordNumber, QIndicator notFound) {
+
+		Object[] keyList = { relativeRecordNumber };
+		deleteRecord(keyList, notFound, null);
+	}
+
+	@Override
+	public void delete(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error) {
+		
+		Object[] keyList = { relativeRecordNumber };
+		deleteRecord(keyList, notFound, error);		
+	}
 } // QTableDataSetImpl

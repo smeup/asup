@@ -723,6 +723,11 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	}
 
 	@Override
+	public void biton(QString bitMask) {
+		biton(bitMask.asString());
+	}
+	
+	@Override
 	public void biton(String bitMask) {
 
 		BitSet bitSet = BitSet.valueOf(asBytes());

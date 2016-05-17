@@ -686,7 +686,7 @@ public class RPJProgramSupport {
 
 	}
 
-	public QString qXlate(String oldString, String newString, QString source) {
+	public QCharacter qXlate(String oldString, String newString, QString source) {
 		// TODO
 		/*
 		 * Verify with il-data

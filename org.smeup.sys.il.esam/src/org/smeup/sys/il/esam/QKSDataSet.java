@@ -160,6 +160,22 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	void delete(Object[] keyList, QIndicator notFound, QIndicator error);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model keyFieldRequired="true"
+	 * @generated
+	 */
+	void delete(QData keyField, QIndicator notFound);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model keyFieldRequired="true"
+	 * @generated
+	 */
+	void delete(QData keyField, QIndicator notFound, QIndicator error);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model keyFieldRequired="true"
 	 * @generated

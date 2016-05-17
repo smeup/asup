@@ -106,6 +106,11 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void eval(QList<? extends QNumeric> value, boolean halfAdjust) {
+		eval(value, halfAdjust, false);
+	}
+	
+	@Override
+	public void eval(QList<? extends QNumeric> value, boolean halfAdjust, boolean maxPrecision) {
 
 		assert QNumeric.class.isAssignableFrom(getModel().getClass());
 
@@ -114,7 +119,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 			capacity = value.capacity();
 
 		for (int e = 1; e <= capacity; e++) {
-			((QNumeric) get(e)).eval(value.get(e), halfAdjust);
+			((QNumeric) get(e)).eval(value.get(e), halfAdjust, maxPrecision);
 		}
 
 		for (int e = capacity + 1; e <= capacity(); e++)
