@@ -625,6 +625,14 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	 * @model required="true" valueRequired="true"
 	 * @generated
 	 */
+	QArray<D> qMinus(QArray<D> value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" valueRequired="true"
+	 * @generated
+	 */
 	QArray<D> qMult(QNumeric value);
 
 	/**

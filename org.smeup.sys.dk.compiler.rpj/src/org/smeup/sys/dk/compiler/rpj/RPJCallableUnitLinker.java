@@ -396,7 +396,6 @@ public class RPJCallableUnitLinker {
 				}
 
 			} else if (file instanceof QPrinterFile) {
-
 				QPrintTerm printTerm = (QPrintTerm) fileTerm;
 				if (printTerm.getFormat() == null) {
 					InternalFileTermImpl internalFormat = new InternalFileTermImpl();

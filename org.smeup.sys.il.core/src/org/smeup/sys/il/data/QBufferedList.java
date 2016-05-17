@@ -412,4 +412,12 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @generated
 	 */
 	void qLookup(DataSpecial argument, Number start, QIndicator found, DataComparator comparator);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	QDecimal qXfoot();
 } // QBufferedList

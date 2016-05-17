@@ -843,32 +843,6 @@
       </entry>
     </prototypes>
     <prototypes
-        name="%xfoot">
-      <definition
-          xsi:type="il-data-def:NumericDef"/>
-      <entry>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              name="list">
-            <definition
-                xsi:type="il-data-def:ListDef"
-                dimension="-1"/>
-          </delegate>
-        </parameters>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              name="target">
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:NumericDef"/>
-          </delegate>
-        </parameters>
-      </entry>
-    </prototypes>
-    <prototypes
         name="%xlate">
       <definition
           xsi:type="il-data-def:StringDef"/>

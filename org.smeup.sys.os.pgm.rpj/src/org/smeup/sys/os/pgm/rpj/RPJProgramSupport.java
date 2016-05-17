@@ -710,13 +710,6 @@ public class RPJProgramSupport {
 		return string;
 	}
 
-	public void qXfoot(QArray<QDecimal> list, QNumeric target) {
-		target.clear();
-		for (QDecimal element : list) {
-			target.plus(element);
-		}
-	}
-
 	public QDataFiller qAll(byte numeric) {
 		return this.dataFiller.set(qBox(numeric));
 	}

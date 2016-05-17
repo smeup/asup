@@ -132,11 +132,11 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 		else
 			modelSize = getListOwner().getModel().getSize();
 
-		if(modelSize == 0)
+		if (modelSize == 0)
 			"".toCharArray();
-		
+
 		position = modelSize * (index - 1);
-		
+
 		assign(element, position + 1);
 
 		_elements[index - 1] = element;
@@ -353,7 +353,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	public void movea(QDataFiller value, boolean clear) {
 		movea(1, value);
 	}
-	
+
 	@Override
 	public void movea(String value) {
 		movea(value, false);
@@ -778,7 +778,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 		return qLookup((D) argumentChar, start, elements);
 	}
-	
+
 	@Override
 	public QArray<D> qDiv(QNumeric value) {
 		return qDivOperation(value.asNumber(), false);
@@ -809,7 +809,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 		return newArray;
 	}
-	
+
 	@Override
 	public QArray<D> qMult(QNumeric value) {
 		return qMultOperation(value.asNumber(), false);
@@ -840,23 +840,66 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 		return newArray;
 	}
-	
+
+	@Override
+	public QArray<D> qMinus(QArray<D> value) {
+
+		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), getModel(), capacity(), getSortDirection(), true);
+		newArray.movea(this);
+
+		if (getModel() instanceof QNumeric) {
+			int i = 0;
+			for (D element : newArray) {
+				i++;
+				((QNumeric) element).minus((QNumeric) value.get(i), false);
+			}
+		}
+		// TODO
+		
+		return newArray;
+	}
+
 	@Override
 	public QArray<D> qPlus(QArray<D> value) {
-		// TODO Auto-generated method stub
-		return null;
+		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), getModel(), capacity(), getSortDirection(), true);
+		newArray.movea(this);
+
+		if (getModel() instanceof QNumeric) {
+			int i = 0;
+			for (D element : newArray) {
+				i++;
+				((QNumeric) element).plus((QNumeric) value.get(i), false);
+			}
+		}
+		// TODO
+		
+		return newArray;
 	}
 
 	@Override
 	public QArray<D> qPlus(QString value) {
-		// TODO Auto-generated method stub
-		return null;
+
+		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), getModel(), capacity(), getSortDirection(), true);
+		newArray.movea(this);
+
+		for (D element : newArray) {
+			((QString)element).cat(value);
+		}
+
+		return newArray;
 	}
 
 	@Override
 	public QArray<D> qPlus(String value) {
-		// TODO Auto-generated method stub
-		return null;
+
+		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), getModel(), capacity(), getSortDirection(), true);
+		newArray.movea(this);
+
+		for (D element : newArray) {
+			((QString)element).cat(value);
+		}
+
+		return newArray;
 	}
 
 	@Override
@@ -868,7 +911,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	public QArray<D> qPlus(QNumeric value) {
 		return qPlusOperation(value.asNumber(), false);
 	}
-	
+
 	private QArray<D> qPlusOperation(Number value, boolean halfAdjust) {
 
 		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), getModel(), capacity(), getSortDirection(), true);
@@ -882,7 +925,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 	@Override
 	public QArray<QCharacter> qTrim() {
-		
+
 		NIOArrayImpl<QCharacter> newArray = new NIOArrayImpl<QCharacter>(getDataContext(), (QCharacter) getModel(), capacity(), getSortDirection(), true);
 		newArray.movea(this);
 		for (QCharacter element : newArray) {
@@ -894,7 +937,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 	@Override
 	public QArray<QCharacter> qTriml() {
-		
+
 		NIOArrayImpl<QCharacter> newArray = new NIOArrayImpl<QCharacter>(getDataContext(), (QCharacter) getModel(), capacity(), getSortDirection(), true);
 		newArray.movea(this);
 		for (QCharacter element : newArray) {
@@ -906,7 +949,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 	@Override
 	public QArray<QCharacter> qTrimr() {
-		
+
 		NIOArrayImpl<QCharacter> newArray = new NIOArrayImpl<QCharacter>(getDataContext(), (QCharacter) getModel(), capacity(), getSortDirection(), true);
 		newArray.movea(this);
 		for (QCharacter element : newArray) {
