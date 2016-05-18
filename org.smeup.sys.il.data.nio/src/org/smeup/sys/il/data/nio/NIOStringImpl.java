@@ -48,7 +48,6 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	protected byte[] _toBytes() {
-		getBuffer();
 		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
 	}
 

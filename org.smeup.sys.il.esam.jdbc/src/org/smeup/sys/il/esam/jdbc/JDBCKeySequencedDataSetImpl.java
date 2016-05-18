@@ -18,6 +18,7 @@ import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QRecord;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.OperationDirection;
 import org.smeup.sys.il.esam.OperationRead;
@@ -27,8 +28,9 @@ import org.smeup.sys.il.esam.QKSDataSet;
 
 public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetImpl<R> implements QKSDataSet<R> {
 
-	protected JDBCKeySequencedDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, QIndex index, R record, String tableName, AccessMode accessMode, boolean userOpen, JDBCInfoStruct infoStruct, QDataContext dataContext) {
-		super(databaseConnection, tableProvider, index, record, tableName, accessMode, userOpen, infoStruct, dataContext);
+	protected JDBCKeySequencedDataSetImpl(QConnection databaseConnection, QString tableName, QIndex index, R record, AccessMode accessMode, boolean userOpen, JDBCInfoStruct infoStruct,
+			QDataContext dataContext) {
+		super(databaseConnection, tableName, index, record, accessMode, userOpen, infoStruct, dataContext);
 	}
 
 	@Override
@@ -134,12 +136,12 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 	public void delete(Object[] keyList, QIndicator notFound) {
 		deleteRecord(keyList, notFound, null);
 	}
-	
+
 	@Override
 	public void delete(Object[] keyList, QIndicator notFound, QIndicator error) {
 		deleteRecord(keyList, notFound, error);
 	}
-		
+
 	@Override
 	public boolean reade(Object[] keyList, Boolean lock) {
 		return reade(keyList, null, null, null);
@@ -159,7 +161,7 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 	public boolean reade(Object keyField, Boolean lock) {
 		return reade(keyField, null, null, lock);
 	}
-	
+
 	@Override
 	public boolean reade(Object keyField, QIndicator endOfData, Boolean lock) {
 		return reade(keyField, endOfData, null, lock);
@@ -231,7 +233,7 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 	public boolean reade(QData keyField, Boolean lock) {
 		return reade(keyField, null, null, lock);
 	}
-	
+
 	@Override
 	public boolean reade(QData keyField, QIndicator endOfData, Boolean lock) {
 		return reade(keyField, endOfData, null, lock);
@@ -310,7 +312,7 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 		} catch (SQLException e) {
 			handleSQLException(e);
 		}
-		
+
 		if (beginningOfData != null)
 			beginningOfData.eval(isEndOfData());
 
@@ -327,7 +329,7 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 
 	@Override
 	public boolean readpe(QData keyField, Boolean lock) {
-		return readpe(keyField, null, null, lock);		
+		return readpe(keyField, null, null, lock);
 	}
 
 	@Override
@@ -479,14 +481,14 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 
 	@Override
 	public void delete(QData keyField, QIndicator notFound) {
-		
+
 		Object[] keyList = { keyField };
 		delete(keyList, notFound);
 	}
 
 	@Override
 	public void delete(QData keyField, QIndicator notFound, QIndicator error) {
-		
+
 		Object[] keyList = { keyField };
 		delete(keyList, notFound, error);
 	}

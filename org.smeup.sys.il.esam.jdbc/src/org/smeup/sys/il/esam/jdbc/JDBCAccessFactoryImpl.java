@@ -18,10 +18,10 @@ import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.core.ctx.QContextProvider;
-import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QRecord;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.OperationDirection;
@@ -67,12 +67,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 	@Override
 	public <R extends QRecord> QKSDataSet<R> createKeySequencedDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct) {
 
-		R record = null;
-		if (QDataStruct.class.isAssignableFrom(wrapper))
-			record = (R) this.dataContext.getDataFactory().createDataStruct((Class<QDataStruct>) wrapper, 0, true);
-		else
-			throw new IntegratedLanguageDataRuntimeException("Invalid record class: " + wrapper);
-
+		R record = (R) this.dataContext.getDataFactory().createDataStruct((Class<QDataStruct>) wrapper, 0, true);
 		return createKeySequencedDataSet(wrapper, record, accessMode, userOpen, infoStruct);
 	}
 
@@ -91,8 +86,10 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 			internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, true);
 		}
 
-		return new JDBCKeySequencedDataSetImpl<R>(connection, new JDBCTableProvider(connection), index, record, wrapper.getSimpleName(), accessMode, userOpen, internalInfoStruct, dataContext);
+		QString tableName = dataContext.getDataFactory().createCharacter(wrapper.getSimpleName().length(), false, true);
+		tableName.eval(wrapper.getSimpleName());
 
+		return new JDBCKeySequencedDataSetImpl<R>(connection, tableName, index, record, accessMode, userOpen, internalInfoStruct, dataContext);
 	}
 
 	@Override
@@ -115,12 +112,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 	@Override
 	public <R extends QRecord> QRRDataSet<R> createRelativeRecordDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct) {
 
-		R record = null;
-		if (QDataStruct.class.isAssignableFrom(wrapper))
-			record = (R) this.dataContext.getDataFactory().createDataStruct((Class<QDataStruct>) wrapper, 0, true);
-		else
-			throw new IntegratedLanguageDataRuntimeException("Invalid record class: " + wrapper);
-
+		R record = (R) this.dataContext.getDataFactory().createDataStruct((Class<QDataStruct>) wrapper, 0, true);
 		return createRelativeRecordDataSet(wrapper, record, accessMode, userOpen, infoStruct);
 	}
 
@@ -137,7 +129,10 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 			internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, true);
 		}
 
-		return new JDBCRelativeRecordDataSetImpl<R>(connection, new JDBCTableProvider(connection), index, record, wrapper.getSimpleName(), accessMode, userOpen, internalInfoStruct, dataContext);
+		QString tableName = dataContext.getDataFactory().createCharacter(wrapper.getSimpleName().length(), false, true);
+		tableName.eval(wrapper.getSimpleName());
+
+		return new JDBCRelativeRecordDataSetImpl<R>(connection, tableName, index, record, accessMode, userOpen, internalInfoStruct, dataContext);
 	}
 
 	@Override
@@ -159,11 +154,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 	@Override
 	public <R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct) {
 
-		R record = null;
-		if (QDataStruct.class.isAssignableFrom(wrapper))
-			record = (R) this.dataContext.getDataFactory().createDataStruct((Class<QDataStruct>) wrapper, 0, true);
-		else
-			throw new IntegratedLanguageDataRuntimeException("Invalid record class: " + wrapper);
+		R record = (R) this.dataContext.getDataFactory().createDataStruct((Class<QDataStruct>) wrapper, 0, true);
 
 		return createSourceMemberDataSet(wrapper, record, accessMode, userOpen, infoStruct);
 	}

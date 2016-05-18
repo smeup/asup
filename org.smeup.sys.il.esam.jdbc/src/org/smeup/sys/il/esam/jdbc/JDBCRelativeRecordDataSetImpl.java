@@ -18,6 +18,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QRecord;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.OperationRead;
 import org.smeup.sys.il.esam.OperationSet;
@@ -26,9 +27,9 @@ import org.smeup.sys.il.esam.QRRDataSet;
 
 public class JDBCRelativeRecordDataSetImpl<R extends QRecord> extends JDBCDataSetImpl<R> implements QRRDataSet<R> {
 
-	protected JDBCRelativeRecordDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, QIndex index, 
-											R record, String tableName, AccessMode accessMode, boolean userOpen, JDBCInfoStruct infoStruct, QDataContext dataContext) {
-		super(databaseConnection, tableProvider, index, record, tableName, accessMode, userOpen, infoStruct, dataContext);
+	protected JDBCRelativeRecordDataSetImpl(QConnection databaseConnection, QString tableName, QIndex index, R record, AccessMode accessMode, boolean userOpen, JDBCInfoStruct infoStruct,
+			QDataContext dataContext) {
+		super(databaseConnection, tableName, index, record, accessMode, userOpen, infoStruct, dataContext);
 	}
 
 	@Override
@@ -198,8 +199,8 @@ public class JDBCRelativeRecordDataSetImpl<R extends QRecord> extends JDBCDataSe
 
 	@Override
 	public void delete(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error) {
-		
+
 		Object[] keyList = { relativeRecordNumber };
-		deleteRecord(keyList, notFound, error);		
+		deleteRecord(keyList, notFound, error);
 	}
 } // QTableDataSetImpl
