@@ -7,9 +7,13 @@
  */
 package org.smeup.sys.db.syntax.dbl.impl;
 
+import java.util.Collection;
+import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.smeup.sys.db.syntax.dbl.OpenUsingType;
 import org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage;
 import org.smeup.sys.db.syntax.dbl.QOpenStatement;
@@ -52,24 +56,14 @@ public class OpenStatementImpl extends BindingStatementImpl implements QOpenStat
 	protected String cursor = CURSOR_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getUsing() <em>Using</em>}' attribute.
+	 * The cached value of the '{@link #getUsing() <em>Using</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getUsing()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String USING_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getUsing() <em>Using</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUsing()
-	 * @generated
-	 * @ordered
-	 */
-	protected String using = USING_EDEFAULT;
+	protected EList<String> using;
 
 	/**
 	 * The default value of the '{@link #getUsingType() <em>Using Type</em>}' attribute.
@@ -136,20 +130,11 @@ public class OpenStatementImpl extends BindingStatementImpl implements QOpenStat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getUsing() {
+	public List<String> getUsing() {
+		if (using == null) {
+			using = new EDataTypeUniqueEList<String>(String.class, this, QDatabaseSyntaxDBLPackage.OPEN_STATEMENT__USING);
+		}
 		return using;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUsing(String newUsing) {
-		String oldUsing = using;
-		using = newUsing;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDatabaseSyntaxDBLPackage.OPEN_STATEMENT__USING, oldUsing, using));
 	}
 
 	/**
@@ -196,6 +181,7 @@ public class OpenStatementImpl extends BindingStatementImpl implements QOpenStat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -203,7 +189,8 @@ public class OpenStatementImpl extends BindingStatementImpl implements QOpenStat
 				setCursor((String)newValue);
 				return;
 			case QDatabaseSyntaxDBLPackage.OPEN_STATEMENT__USING:
-				setUsing((String)newValue);
+				getUsing().clear();
+				getUsing().addAll((Collection<? extends String>)newValue);
 				return;
 			case QDatabaseSyntaxDBLPackage.OPEN_STATEMENT__USING_TYPE:
 				setUsingType((OpenUsingType)newValue);
@@ -224,7 +211,7 @@ public class OpenStatementImpl extends BindingStatementImpl implements QOpenStat
 				setCursor(CURSOR_EDEFAULT);
 				return;
 			case QDatabaseSyntaxDBLPackage.OPEN_STATEMENT__USING:
-				setUsing(USING_EDEFAULT);
+				getUsing().clear();
 				return;
 			case QDatabaseSyntaxDBLPackage.OPEN_STATEMENT__USING_TYPE:
 				setUsingType(USING_TYPE_EDEFAULT);
@@ -244,7 +231,7 @@ public class OpenStatementImpl extends BindingStatementImpl implements QOpenStat
 			case QDatabaseSyntaxDBLPackage.OPEN_STATEMENT__CURSOR:
 				return CURSOR_EDEFAULT == null ? cursor != null : !CURSOR_EDEFAULT.equals(cursor);
 			case QDatabaseSyntaxDBLPackage.OPEN_STATEMENT__USING:
-				return USING_EDEFAULT == null ? using != null : !USING_EDEFAULT.equals(using);
+				return using != null && !using.isEmpty();
 			case QDatabaseSyntaxDBLPackage.OPEN_STATEMENT__USING_TYPE:
 				return usingType != USING_TYPE_EDEFAULT;
 		}

@@ -459,13 +459,31 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	int EXECUTE_STATEMENT__STATEMENT_NAME = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Using</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTE_STATEMENT__USING = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Using Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTE_STATEMENT__USING_TYPE = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Execute Statement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTE_STATEMENT_FEATURE_COUNT = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 1;
+	int EXECUTE_STATEMENT_FEATURE_COUNT = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Cursor Name</b></em>' attribute.
@@ -784,7 +802,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	int OPEN_STATEMENT__CURSOR = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Using</b></em>' attribute.
+	 * The feature id for the '<em><b>Using</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1169,6 +1187,28 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	EAttribute getExecuteStatement_StatementName();
 
 	/**
+	 * Returns the meta object for the attribute list '{@link org.smeup.sys.db.syntax.dbl.QExecuteStatement#getUsing <em>Using</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Using</em>'.
+	 * @see org.smeup.sys.db.syntax.dbl.QExecuteStatement#getUsing()
+	 * @see #getExecuteStatement()
+	 * @generated
+	 */
+	EAttribute getExecuteStatement_Using();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.db.syntax.dbl.QExecuteStatement#getUsingType <em>Using Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Using Type</em>'.
+	 * @see org.smeup.sys.db.syntax.dbl.QExecuteStatement#getUsingType()
+	 * @see #getExecuteStatement()
+	 * @generated
+	 */
+	EAttribute getExecuteStatement_UsingType();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.syntax.dbl.QFetchStatement <em>Fetch Statement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1544,10 +1584,10 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	EAttribute getOpenStatement_Cursor();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.db.syntax.dbl.QOpenStatement#getUsing <em>Using</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.smeup.sys.db.syntax.dbl.QOpenStatement#getUsing <em>Using</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Using</em>'.
+	 * @return the meta object for the attribute list '<em>Using</em>'.
 	 * @see org.smeup.sys.db.syntax.dbl.QOpenStatement#getUsing()
 	 * @see #getOpenStatement()
 	 * @generated
@@ -1958,6 +1998,22 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 		EAttribute EXECUTE_STATEMENT__STATEMENT_NAME = eINSTANCE.getExecuteStatement_StatementName();
 
 		/**
+		 * The meta object literal for the '<em><b>Using</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXECUTE_STATEMENT__USING = eINSTANCE.getExecuteStatement_Using();
+
+		/**
+		 * The meta object literal for the '<em><b>Using Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXECUTE_STATEMENT__USING_TYPE = eINSTANCE.getExecuteStatement_UsingType();
+
+		/**
 		 * The meta object literal for the '{@link org.smeup.sys.db.syntax.dbl.impl.FetchStatementImpl <em>Fetch Statement</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2258,7 +2314,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 		EAttribute OPEN_STATEMENT__CURSOR = eINSTANCE.getOpenStatement_Cursor();
 
 		/**
-		 * The meta object literal for the '<em><b>Using</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Using</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

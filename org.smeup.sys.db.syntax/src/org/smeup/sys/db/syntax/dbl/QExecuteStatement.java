@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.db.syntax.dbl;
 
+import java.util.List;
 import org.smeup.sys.db.syntax.QBindingStatement;
 
 /**
@@ -19,6 +20,8 @@ import org.smeup.sys.db.syntax.QBindingStatement;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QExecuteStatement#getStatementName <em>Statement Name</em>}</li>
+ *   <li>{@link org.smeup.sys.db.syntax.dbl.QExecuteStatement#getUsing <em>Using</em>}</li>
+ *   <li>{@link org.smeup.sys.db.syntax.dbl.QExecuteStatement#getUsingType <em>Using Type</em>}</li>
  * </ul>
  *
  * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getExecuteStatement()
@@ -51,5 +54,50 @@ public interface QExecuteStatement extends QBindingStatement {
 	 * @generated
 	 */
 	void setStatementName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Using</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Using</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Using</em>' attribute list.
+	 * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getExecuteStatement_Using()
+	 * @model
+	 * @generated
+	 */
+	List<String> getUsing();
+
+	/**
+	 * Returns the value of the '<em><b>Using Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.smeup.sys.db.syntax.dbl.OpenUsingType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Using Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Using Type</em>' attribute.
+	 * @see org.smeup.sys.db.syntax.dbl.OpenUsingType
+	 * @see #setUsingType(OpenUsingType)
+	 * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getExecuteStatement_UsingType()
+	 * @model
+	 * @generated
+	 */
+	OpenUsingType getUsingType();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.db.syntax.dbl.QExecuteStatement#getUsingType <em>Using Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Using Type</em>' attribute.
+	 * @see org.smeup.sys.db.syntax.dbl.OpenUsingType
+	 * @see #getUsingType()
+	 * @generated
+	 */
+	void setUsingType(OpenUsingType value);
 
 } // QExecuteStatement

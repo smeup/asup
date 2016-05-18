@@ -961,7 +961,7 @@ public class DBLModelBuilder {
 				Tree variableToken = fieldToken.getChild(0);
 
 				if (variableToken != null && variableToken.getType() == DBLLexer.VARIABLE)
-					openStatement.setUsing(variableToken.getChild(0).getText());
+					openStatement.getUsing().add(variableToken.getChild(0).getText());
 
 				break;
 
@@ -971,7 +971,7 @@ public class DBLModelBuilder {
 				Tree childToken = fieldToken.getChild(0);
 
 				if ((childToken != null && (childToken.getType() == DBLLexer.VARIABLE || childToken.getType() == DBLLexer.DESCRIPTOR)))
-					openStatement.setUsing(childToken.getChild(0).getText());
+					openStatement.getUsing().add(childToken.getChild(0).getText());
 
 				break;
 			}
@@ -1000,11 +1000,41 @@ public class DBLModelBuilder {
 	private QBindingStatement manageExecuteStatement(Tree tree) {
 
 		QExecuteStatement executeStatement = QDatabaseSyntaxDBLFactory.eINSTANCE.createExecuteStatement();
+				
+		Tree fieldToken = null;
+		
+		for (int i = 0; i < tree.getChildCount(); i++) {
+			fieldToken = tree.getChild(i);
 
-		Tree statementToken = tree.getChild(0);
+			switch (fieldToken.getType()) {
 
-		if (statementToken != null && statementToken.getType() == DBLLexer.STATEMENT)
-			executeStatement.setStatementName(statementToken.getChild(0).getText());
+			case DBLLexer.STATEMENT:
+
+				executeStatement.setStatementName(fieldToken.getChild(0).getText());
+
+				break;
+
+			case DBLLexer.USING:
+				executeStatement.setUsingType(OpenUsingType.VARIABLE);
+
+				Tree variableToken = fieldToken.getChild(0);
+
+				if (variableToken != null && variableToken.getType() == DBLLexer.VARIABLE)
+					executeStatement.getUsing().add(variableToken.getChild(0).getText());
+
+				break;
+
+			case DBLLexer.USING_DESCRIPTOR:
+				executeStatement.setUsingType(OpenUsingType.DESCRIPTOR);
+
+				Tree childToken = fieldToken.getChild(0);
+
+				if ((childToken != null && (childToken.getType() == DBLLexer.VARIABLE || childToken.getType() == DBLLexer.DESCRIPTOR)))
+					executeStatement.getUsing().add(childToken.getChild(0).getText());
+
+				break;
+			}
+		}
 
 		return executeStatement;
 	}

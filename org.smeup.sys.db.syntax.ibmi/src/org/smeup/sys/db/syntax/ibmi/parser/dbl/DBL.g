@@ -124,7 +124,6 @@ tokens {
   WITHOUT_HOLD;
 }
 
-
 @header {
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
 
@@ -811,8 +810,23 @@ read_write
  
  execute_statement
  	:
- 	EXECUTE s=Identifier -> ^(EXECUTE_STATEMENT ^(STATEMENT $s))						    
+ 	execute_using
+ 	|
+ 	execute_using_descriptor 	
 	;	
+	
+ execute_using_descriptor
+ 	:
+ 	EXECUTE s=Identifier (USING DESCRIPTOR (v2=Variable|d=Descriptor_Name))? -> {$v2 != null}? ^(EXECUTE_STATEMENT ^(STATEMENT $s) ^(USING_DESCRIPTOR ^(VARIABLE $v2))) 
+ 								      -> {$d != null}? 	^(EXECUTE_STATEMENT ^(STATEMENT $s) ^(USING_DESCRIPTOR ^(DESCRIPTOR $d)))	
+ 								      -> ^(EXECUTE_STATEMENT ^(STATEMENT $s))			
+ 	;		
+	
+execute_using
+	:
+	EXECUTE s=Identifier USING using_variable (COMMA using_variable)* -> ^(EXECUTE_STATEMENT ^(STATEMENT $s) ^(USING using_variable (using_variable)*))						  
+	;	
+	
 	
 execute_immediate_statement
  	:

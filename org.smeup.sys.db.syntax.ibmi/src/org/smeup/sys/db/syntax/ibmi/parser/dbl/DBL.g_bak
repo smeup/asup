@@ -30,19 +30,24 @@ tokens {
   ALIAS_NAME;
   ALL; 
   ALL_SQL;
+  ALLOCATE_DESCRIPTOR_STATEMENT;
   ALLOW_READ;    
   AS_EXPRESSION;
   CLOSE_STATEMENT;
   COLUMN;
   COLUMNS_LIST;
   COLUMN_NAME;
+  CONDITION_INFO;
+  CONDITION_ITEMS;
   COUNT_VAL;
   COUNT_ROWS;
   //CURRENT
   DB_NAME;
+  DEALLOCATE_DESCRIPTOR_STATEMENT;
   DECLARE_CURSOR_STATEMENT;
   DESCRIBE_STATEMENT;
   DESCRIPTOR;
+  DESCRIPTOR_SCOPE;
   EMPTY_GROUPING_SET;
   EXECUTE_STATEMENT;
   EXECUTE_IMMEDIATE_STATEMENT;
@@ -53,9 +58,15 @@ tokens {
   FIELD_TYPE;
   FUNCTION;
   FUNC_ARGS;
+  GET_DIAGNOSTICS_STATEMENT;
+  GET_DESCRIPTOR_STATEMENT;
   GROUP_BY;
+  HEADER_INFO;
   INDEX_NAME;
   ISOLATION_LEVEL;
+  ITEM;
+  ITEM_INFO;
+  ITEMS;
   MEMBER;
   MULTIPLE_ROW_FETCH;
   NEW_NAME;
@@ -80,6 +91,7 @@ tokens {
   ROLLBACK_STATEMENT;  
   RW_OPERATION;
   SEL_LIST;
+  SET_DESCRIPTOR_STATEMENT;
   SET_OPTION;
   SET_OPTION_STATEMENT;  
   SET_TRANSACTION_STATEMENT;
@@ -102,13 +114,16 @@ tokens {
   FOR_COLUMN;
   NOT_NULL;
   USING_DESCRIPTOR;
-  VALUES;
   VARIABLE;
+  VARIABLES;
+  VAR_INFO;
   VIEW_NAME;
   WITH_DEFAULT;
   WITH_HOLD;
+  WITH_MAX;
   WITHOUT_HOLD;
 }
+
 
 @header {
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
@@ -118,7 +133,31 @@ import org.smeup.sys.db.syntax.DataBaseSyntaxRuntimeException;
 
 @lexer::header {
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
+import org.smeup.sys.db.syntax.DataBaseSyntaxRuntimeException;
 }
+
+@lexer::members {
+
+	@Override
+  	protected Object recoverFromMismatchedToken(IntStream input, int ttype, BitSet follow) throws RecognitionException {
+    	throw new MismatchedTokenException(ttype, input);
+  	}
+
+    @Override    
+    public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
+		String msg = "Lexer error. Input: " + e.input.toString();
+        msg += " " + getErrorHeader(e);
+        msg += " Msg: " + getErrorMessage(e, tokenNames);
+        throw new DataBaseSyntaxRuntimeException(msg , e);
+    }	
+
+   @Override
+  	public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
+    	throw e;
+    }
+
+}
+
 
 @parser::members {
 
@@ -127,47 +166,20 @@ package org.smeup.sys.db.syntax.ibmi.parser.dbl;
     	throw new MismatchedTokenException(ttype, input);
   	}
 
-   @Override
-   public void reportError(RecognitionException e) {
-      super.reportError(e);
-      RuntimeException re = createException(e);
-      recover(input, e);
-      throw re;
-   }
+	@Override    
+    public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
+		String msg = "Parser error. Input: " + e.input.toString();
+        msg += " " + getErrorHeader(e);
+        msg += " Msg: " + getErrorMessage(e, tokenNames);
+        throw new DataBaseSyntaxRuntimeException(msg , e);
+    }	
 
    @Override
   	public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
     	throw e;
     }
-    
-    public RuntimeException createException(RecognitionException e) {
-        String message = "";
-        boolean addTokenAndLine = true;
-        if (e instanceof NoViableAltException) {
-            message = "Syntax error. ";
-        } else if (e instanceof MissingTokenException) {
-            message = "Missing token ";
-        } else if (e instanceof UnwantedTokenException) {
-            UnwantedTokenException ex = (UnwantedTokenException) e;
-            ex.getUnexpectedToken().getText();
-            message = "Unkown token '" + ex.getUnexpectedToken().getText() + "' at line " + e.token.getLine() + ":" + e.token.getCharPositionInLine();
-            addTokenAndLine = false;
-        } else {
-            message = "Syntax error near ";
-        }
-        if (addTokenAndLine) {
-            message = message + "'" + e.token.getText() + "' at line " + e.token.getLine() + ":" + e.token.getCharPositionInLine();
-        }
-        return new DataBaseSyntaxRuntimeException(message, e);
-    }
 }
 
-@rulecatch {
-    catch (RecognitionException exc) {
-        RuntimeException re = createException(exc);
-        throw re;
-    }
-}
 
 /*
 ===============================================================================
@@ -239,6 +251,7 @@ AFTER	:	A F T E R;
 AS : A S;
 ALIAS	:	A L I A S;
 ALL : A L L;
+ALLOCATE : A L L O C A T E;	 
 ALLOW	:	 A L L O W;
 ALWBLK 	: A L W B L K;
 ALWCPYDTA : A L W C P Y D T A;	
@@ -261,6 +274,7 @@ COUNT : C O U N T;
 CREATE : C R E A T E;
 COMMIT	:	 C O M M I T;
 COMMITTED	:	 C O M M I T T E D;
+CONDITION	:	C O N D I T I O N;
 CONNECT :	 C O N N E C T;
 CONNECTION	:	C O N N E C T I O N;
 CROSS : C R O S S;
@@ -270,6 +284,7 @@ CURSOR	:	 C U R S O R;
 DATFMT 	:	D A T F M T;
 DATSEP  :	D A T S E P;
 DBGVIEW	:	D B G V I E W;
+DEALLOCATE	:	D E A L L O C A T E;
 DEFAULT	: D E F A U L T;	 
 DECLARE	:	 D E C L A R E;
 DECMPT  :	 D E C M P T;
@@ -277,6 +292,7 @@ DFTRDBCOL: 	D F T R D B C O L;
 DESC : D E S C;
 DESCRIBE : D E S C R I B E;
 DESCRIPTOR : D E S C R I P T O R;	
+DIAGNOSTICS :	D I A G N O S T I C S;
 DISTINCT : D I S T I N C T;
 DISCONNECT : D I S C O N N E C T;
 DLYPRP	: D L Y P R P;	
@@ -298,6 +314,8 @@ FOR 	:	 F O R;
 FORMAT : F O R M A T;
 FULL : F U L L;
 FROM : F R O M;
+GET 	:	G E T;
+GLOBAL	:	G L O B A L;
 GROUP : G R O U P;
 HAVING : H A V I N G;
 HOLD	:	 H O L D;
@@ -318,8 +336,10 @@ LEFT : L E F T;
 LEVEL	:	 L E V E L;
 LIKE : L I K E;
 LIMIT : L I M I T;
+LOCAL 	:	 L O C A L;
 LOCATION : L O C A T I O N;
 LOCK	:	 L O C K;
+MAX	:	M A X;
 MODE	:	 M O D E;
 NAME	:	 N A M E;
 NAMES	:	 N A M E S;
@@ -381,6 +401,7 @@ UNKNOWN : U N K N O W N;
 USING : U S I N G;
 USER	:	U S E R;
 USRPRF : U S R P R F;
+VALUE	:	V A L U E;
 VALUES : V A L U E S;
 VARYING : V A R Y I N G;
 WHEN : W H E N;
@@ -447,9 +468,6 @@ S_USA	:	 MULT U S A;
 S_USER	:	 MULT U S E R;
 S_YES	:	MULT Y E S;
 S_YMD	:	MULT Y M D;
-
-
-
 
 
 /*
@@ -653,6 +671,16 @@ statement
   close_statement
   |
   set_option_statement
+  |
+  allocate_descriptor
+  |
+  deallocate_descriptor
+  |
+  get_descriptor
+  |
+  set_descriptor
+  |
+  get_diagnostic
   
   ;  
   
@@ -826,7 +854,7 @@ using_variable
  */
  open_using_descriptor
  	:
- 	OPEN c=Identifier (USING DESCRIPTOR (v2=Variable|d=Identifier))? -> {$v2 != null}? ^(OPEN_STATEMENT ^(CURSOR $c) ^(USING_DESCRIPTOR ^(VARIABLE $v2))) 
+ 	OPEN c=Identifier (USING DESCRIPTOR (v2=Variable|d=Descriptor_Name))? -> {$v2 != null}? ^(OPEN_STATEMENT ^(CURSOR $c) ^(USING_DESCRIPTOR ^(VARIABLE $v2))) 
  								      -> {$d != null}? 	^(OPEN_STATEMENT ^(CURSOR $c) ^(USING_DESCRIPTOR ^(DESCRIPTOR $d)))	
  								      -> ^(OPEN_STATEMENT ^(CURSOR $c))			
  	;	
@@ -861,8 +889,16 @@ hold
 /* DESCRIBE STATEMENT */
  describe_statement
  	:	
- 	DESCRIBE s=Identifier into_clause ->^(DESCRIBE_STATEMENT ^(STATEMENT $s) into_clause)
+ 	DESCRIBE s=Identifier into_clause -> ^(DESCRIBE_STATEMENT ^(STATEMENT $s) into_clause)
+ 	|
+ 	DESCRIBE s=Identifier using_clause -> ^(DESCRIBE_STATEMENT ^(STATEMENT $s) using_clause)
  	;
+ 	
+ using_clause
+ 	:
+ 	USING (SQL)* DESCRIPTOR (s=descriptor_scope)* d= Descriptor_Name -> ^(USING ^(DESCRIPTOR $d) $s*)
+ 	;	
+ 	
 /* FETCH STATEMENT*/ 
  fetch_statement
  	:
@@ -886,12 +922,21 @@ hold
  single_fetch
  	:
  	INTO into_variable  (',' into_variable)* -> ^(SINGLE_FETCH ^(INTO into_variable (into_variable)*))
+ 	|
+ 	INTO into_descriptor -> ^(SINGLE_FETCH ^(INTO into_descriptor))
  	;
  	
  into_variable
  	:
  	v=Variable -> ^(VARIABLE $v)
  	;	
+
+ into_descriptor
+ 	:
+ 	SQL DESCRIPTOR v=Variable -> ^(DESCRIPTOR ^(VARIABLE $v)) 	
+ 	|
+ 	SQL DESCRIPTOR d=Descriptor_Name -> ^(DESCRIPTOR $d) 	
+ 	;	 	
 
  	
  multiple_row_fetch
@@ -902,7 +947,9 @@ hold
  	
  multiple_row
  	:
- 	USING DESCRIPTOR d=Variable ->^(DESCRIPTOR ^(VARIABLE $d)) 	
+ 	USING DESCRIPTOR v=Variable ->^(DESCRIPTOR ^(VARIABLE $v)) 	
+ 	|
+ 	USING DESCRIPTOR d=Descriptor_Name ->^(DESCRIPTOR $d) 	
  	;	
  	
  /*CLOSE STATEMENT*/
@@ -953,9 +1000,130 @@ field_type
   : data_type
   ;
 
+/* ALLOCATE DESCRIPTOR STATEMENT */
 
+allocate_descriptor
+	:
+	ALLOCATE (SQL)* DESCRIPTOR (s=descriptor_scope)* d= Descriptor_Name (l=descriptor_limits)* -> ^(ALLOCATE_DESCRIPTOR_STATEMENT ^(DESCRIPTOR $d) $s* $l*)
+	;
 
+descriptor_scope
+	:
+	l=LOCAL -> ^(DESCRIPTOR_SCOPE $l)
+	|
+	g=GLOBAL -> ^(DESCRIPTOR_SCOPE $g)
+	;
 
+descriptor_limits
+	:
+	WITH MAX i=NUMBER -> ^(WITH_MAX $i)
+	|
+	WITH MAX v= Variable -> ^(WITH_MAX ^(VARIABLE $v))
+	;	
+
+/* DEALLOCATE DESCRIPTOR STATEMENT */
+
+deallocate_descriptor
+	:
+	DEALLOCATE (SQL)* DESCRIPTOR (s=descriptor_scope)* d= Descriptor_Name -> ^(DEALLOCATE_DESCRIPTOR_STATEMENT ^(DESCRIPTOR $d) $s* )
+	;	
+
+/* GET DESCRIPTOR STATEMENT */
+
+get_descriptor
+	:
+	GET (SQL)* DESCRIPTOR (s=descriptor_scope)* d= Descriptor_Name info -> ^(GET_DESCRIPTOR_STATEMENT ^(DESCRIPTOR $d) $s* info)
+	;	
+	
+info
+	:
+	header_info
+	|
+	item_info
+	;
+		
+header_info
+	:
+	variable_assign (',' variable_assign)*-> ^(HEADER_INFO ^(VARIABLES variable_assign variable_assign*))
+	;	
+	
+item_info
+	:
+	VALUE i=NUMBER var_item_info -> ^(ITEM_INFO $i var_item_info)
+	|
+	VALUE v=Variable var_item_info -> ^(ITEM_INFO ^(VARIABLE $v) var_item_info) 
+	;
+
+var_item_info
+	:
+	variable_assign  (',' variable_assign)* -> ^(VARIABLES variable_assign variable_assign*)
+	;	
+
+	
+
+variable_assign
+	:
+	v=Variable EQUAL variable_value -> ^(VALUE ^(VARIABLE $v) variable_value) 
+	;	
+
+variable_value
+
+	:
+	c = COUNT -> ^(VALUE $c)
+	|
+	p = PRECISION -> ^(VALUE $p)
+	|
+	n = NAME -> ^(VALUE $n)
+	|
+	i = Identifier -> ^(VALUE $i)
+	;	
+
+	
+	
+/* SET DESCRIPTOR STATEMENT */
+
+set_descriptor
+	:
+	SET (SQL)* DESCRIPTOR (s=descriptor_scope)* d= Descriptor_Name value_settings -> ^(SET_DESCRIPTOR_STATEMENT ^(DESCRIPTOR $d) $s* value_settings)
+	;		
+
+value_settings
+	:
+	VALUE i=NUMBER value_item_info -> ^(ITEM_INFO $i value_item_info)
+	|
+	VALUE v=Variable value_item_info -> ^(ITEM_INFO ^(VARIABLE $v) value_item_info) 
+	;
+
+value_item_info
+	:
+	item_info_assign  (',' item_info_assign)* -> ^(ITEMS item_info_assign item_info_assign*)
+	;	
+
+item_info_assign
+	:
+	i = Identifier EQUAL v = Variable -> ^(ITEM ^(NAME $i) ^(VALUE ^(VARIABLE $v))) 
+	|
+	i = Identifier EQUAL c = Identifier -> ^(ITEM ^(NAME $i) ^(VALUE $c)) 
+	;	
+
+/* GET DIAGNOSTIC STATEMENT */
+
+get_diagnostic
+	:
+	GET DIAGNOSTICS condition_information -> ^(GET_DIAGNOSTICS_STATEMENT condition_information)
+	;			
+
+condition_information
+	:
+	CONDITION i=NUMBER condition_information_items -> ^(CONDITION_INFO $i condition_information_items)
+	|
+	CONDITION v=Variable condition_information_items -> ^(CONDITION_INFO ^(VARIABLE $v) condition_information_items)
+	;	
+
+condition_information_items
+	:	
+	variable_assign (',' variable_assign)* -> ^(CONDITION_ITEMS variable_assign variable_assign*)
+	;
 /*
 ===============================================================================
   <query_expression>
@@ -1375,6 +1543,11 @@ COMMENT
     :   '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
     |   '/*' ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;}
     ;
+
+Descriptor_Name
+	: '\'' Identifier '\''
+	;
+
 /*
 ===============================================================================
  Identifiers

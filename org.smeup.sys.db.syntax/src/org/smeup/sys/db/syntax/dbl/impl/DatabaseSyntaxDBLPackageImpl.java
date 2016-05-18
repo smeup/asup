@@ -509,6 +509,24 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getExecuteStatement_Using() {
+		return (EAttribute)executeStatementEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExecuteStatement_UsingType() {
+		return (EAttribute)executeStatementEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getFetchStatement() {
 		return fetchStatementEClass;
 	}
@@ -1068,6 +1086,8 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 
 		executeStatementEClass = createEClass(EXECUTE_STATEMENT);
 		createEAttribute(executeStatementEClass, EXECUTE_STATEMENT__STATEMENT_NAME);
+		createEAttribute(executeStatementEClass, EXECUTE_STATEMENT__USING);
+		createEAttribute(executeStatementEClass, EXECUTE_STATEMENT__USING_TYPE);
 
 		fetchStatementEClass = createEClass(FETCH_STATEMENT);
 		createEAttribute(fetchStatementEClass, FETCH_STATEMENT__CURSOR_NAME);
@@ -1216,6 +1236,8 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 
 		initEClass(executeStatementEClass, QExecuteStatement.class, "ExecuteStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getExecuteStatement_StatementName(), theEcorePackage.getEString(), "statementName", null, 0, 1, QExecuteStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExecuteStatement_Using(), theEcorePackage.getEString(), "using", null, 0, -1, QExecuteStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExecuteStatement_UsingType(), this.getOpenUsingType(), "usingType", null, 0, 1, QExecuteStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(fetchStatementEClass, QFetchStatement.class, "FetchStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFetchStatement_CursorName(), theEcorePackage.getEString(), "cursorName", null, 1, 1, QFetchStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1261,7 +1283,7 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 
 		initEClass(openStatementEClass, QOpenStatement.class, "OpenStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOpenStatement_Cursor(), theEcorePackage.getEString(), "cursor", null, 0, 1, QOpenStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOpenStatement_Using(), theEcorePackage.getEString(), "using", null, 0, 1, QOpenStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOpenStatement_Using(), theEcorePackage.getEString(), "using", null, 0, -1, QOpenStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOpenStatement_UsingType(), this.getOpenUsingType(), "usingType", null, 0, 1, QOpenStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(prepareStatementEClass, QPrepareStatement.class, "PrepareStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

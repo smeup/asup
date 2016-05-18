@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.db.syntax.dbl;
 
+import java.util.List;
 import org.smeup.sys.db.syntax.QBindingStatement;
 
 /**
@@ -55,30 +56,20 @@ public interface QOpenStatement extends QBindingStatement {
 	void setCursor(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Using</b></em>' attribute.
+	 * Returns the value of the '<em><b>Using</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Using</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Using</em>' attribute.
-	 * @see #setUsing(String)
+	 * @return the value of the '<em>Using</em>' attribute list.
 	 * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getOpenStatement_Using()
 	 * @model
 	 * @generated
 	 */
-	String getUsing();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.db.syntax.dbl.QOpenStatement#getUsing <em>Using</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Using</em>' attribute.
-	 * @see #getUsing()
-	 * @generated
-	 */
-	void setUsing(String value);
+	List<String> getUsing();
 
 	/**
 	 * Returns the value of the '<em><b>Using Type</b></em>' attribute.
