@@ -22,6 +22,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QRecord;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.OperationDirection;
 import org.smeup.sys.il.esam.OperationRead;
@@ -37,7 +38,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	private JDBCAccessHelper jdbcAccessHelper;
 	private QIndex index;
 	private R record;
-	private String tableName;
+	private QString tableName;
 	private AccessMode accessMode;
 	private JDBCTableProvider tableProvider;
 	private JDBCDataReaderImpl dataReader;
@@ -62,8 +63,8 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	
 	private QDataContext dataContext;
 
-	protected JDBCDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, 
-							  QIndex index, R record, String tableName, AccessMode accessMode, boolean userOpen, JDBCInfoStruct infoStruct, QDataContext dataContext) {
+	protected JDBCDataSetImpl(QConnection databaseConnection, QString tableName, 
+							  QIndex index, R record, AccessMode accessMode, boolean userOpen, JDBCInfoStruct infoStruct, QDataContext dataContext) {
 
 		this.databaseConnection = databaseConnection;
 
@@ -72,7 +73,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		this.tableName = tableName;
 		
 		this.accessMode = accessMode;
-		this.tableProvider = tableProvider;
+		this.tableProvider = new JDBCTableProvider(databaseConnection);
 		this.infoStruct = infoStruct;
 		this.dataContext = dataContext;
 
@@ -240,7 +241,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 				statementUpdate = databaseConnection.createStatement(true, true);
 			}
 
-			this.currentTable = this.tableProvider.getTable(null, this.tableName);
+			this.currentTable = this.tableProvider.getTable(null, this.tableName.trimR());
 
 			this.open = true;
 		} catch (SQLException e) {

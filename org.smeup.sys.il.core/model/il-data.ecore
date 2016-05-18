@@ -315,7 +315,27 @@
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
+      <eParameters name="sourceIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
       <eParameters name="sourceIndex" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="sourceIndex" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movel">
       <eParameters name="value">
@@ -416,6 +436,16 @@
       <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="halfAdjust" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
+    <eOperations name="qMinus" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eTypeParameter="#//Array/D"/>
+      </eGenericType>
+      <eParameters name="value" lowerBound="1">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments eTypeParameter="#//Array/D"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
     <eOperations name="qMult" lowerBound="1">
       <eGenericType eClassifier="#//Array">
         <eTypeArguments eTypeParameter="#//Array/D"/>
@@ -441,6 +471,16 @@
       </eGenericType>
       <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="halfAdjust" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="qMult" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eTypeParameter="#//Array/D"/>
+      </eGenericType>
+      <eParameters name="value" lowerBound="1">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments eTypeParameter="#//Array/D"/>
+        </eGenericType>
+      </eParameters>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -679,6 +719,17 @@
       </eParameters>
       <eParameters name="halfAdjust" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
+    <eOperations name="eval">
+      <eParameters name="value" lowerBound="1">
+        <eGenericType eClassifier="#//List">
+          <eTypeArguments>
+            <eUpperBound eClassifier="#//Numeric"/>
+          </eTypeArguments>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="halfAdjust" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="maxPrecision" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
     <eOperations name="eval" eType="#//BufferedData">
       <eParameters name="value" eType="#//DataSpecial"/>
     </eOperations>
@@ -945,6 +996,7 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
+    <eOperations name="qXfoot" lowerBound="1" eType="#//Decimal"/>
     <eGenericSuperTypes eClassifier="#//List">
       <eTypeArguments eTypeParameter="#//BufferedList/D"/>
     </eGenericSuperTypes>
@@ -2581,6 +2633,15 @@
       <eParameters name="halfAdjust" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eParameters name="maxPrecision" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
+    <eOperations name="eval">
+      <eParameters name="value" lowerBound="1">
+        <eGenericType eClassifier="#//Scroller">
+          <eTypeArguments>
+            <eUpperBound eClassifier="#//Numeric"/>
+          </eTypeArguments>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
     <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
@@ -2694,6 +2755,18 @@
     </eOperations>
     <eOperations name="qMult" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qMult">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eClassifier="#//Decimal"/>
+      </eGenericType>
+      <eParameters name="value" lowerBound="1">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments>
+            <eUpperBound eClassifier="#//Numeric"/>
+          </eTypeArguments>
+        </eGenericType>
+      </eParameters>
     </eOperations>
     <eOperations name="qPlus" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
@@ -2892,6 +2965,9 @@
     </eOperations>
     <eOperations name="biton" lowerBound="1">
       <eParameters name="bitMask" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="biton" lowerBound="1">
+      <eParameters name="bitMask" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

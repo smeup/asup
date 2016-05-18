@@ -977,4 +977,9 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	public void xlate(String from, byte to, QString source) {
 		current().xlate(from, to, source);
 	}
+
+	@Override
+	public void biton(QString bitMask) {
+		current().biton(bitMask);
+	}
 }

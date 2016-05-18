@@ -408,4 +408,16 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public void delete(QNumeric relativeRecordNumber, QIndicator notFound) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error) {
+		// TODO Auto-generated method stub
+		
+	}
 }

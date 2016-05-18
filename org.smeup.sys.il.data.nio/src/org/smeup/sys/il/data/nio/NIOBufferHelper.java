@@ -36,7 +36,7 @@ public class NIOBufferHelper {
 		prepare(buffer, position, length);
 
 		// overflow
-		if (bytes.length >= buffer.remaining())
+		if (bytes.length > buffer.remaining())
 			buffer.put(bytes, 0, buffer.remaining());
 		else {
 			buffer.put(bytes);

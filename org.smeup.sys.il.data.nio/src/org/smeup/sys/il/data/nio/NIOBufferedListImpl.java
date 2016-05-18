@@ -106,6 +106,11 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void eval(QList<? extends QNumeric> value, boolean halfAdjust) {
+		eval(value, halfAdjust, false);
+	}
+	
+	@Override
+	public void eval(QList<? extends QNumeric> value, boolean halfAdjust, boolean maxPrecision) {
 
 		assert QNumeric.class.isAssignableFrom(getModel().getClass());
 
@@ -114,7 +119,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 			capacity = value.capacity();
 
 		for (int e = 1; e <= capacity; e++) {
-			((QNumeric) get(e)).eval(value.get(e), halfAdjust);
+			((QNumeric) get(e)).eval(value.get(e), halfAdjust, maxPrecision);
 		}
 
 		for (int e = capacity + 1; e <= capacity(); e++)
@@ -635,5 +640,20 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	private int qLookup(DataComparator comparator, DataSpecial argument, int startIndex, int numElements) {
 		return NIOBufferedListHelper.lookup(this, argument, comparator, startIndex, numElements);
+	}
+
+	@Override
+	public QDecimal qXfoot() {
+		
+		// TODO calculate precision
+		QDecimal total = getDataContext().getDataFactory().createDecimal(21, 6, DecimalType.PACKED, true);
+		
+		@SuppressWarnings("unchecked")
+		QList<QNumeric> numericList = (QList<QNumeric>)this;
+		for (QNumeric element : numericList) {
+			total.plus(element);
+		}
+		
+		return total;
 	}
 }

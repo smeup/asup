@@ -48,7 +48,6 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	protected byte[] _toBytes() {
-		getBuffer();
 		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
 	}
 
@@ -722,6 +721,11 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 		biton(formatBitMask(value));
 	}
 
+	@Override
+	public void biton(QString bitMask) {
+		biton(bitMask.asString());
+	}
+	
 	@Override
 	public void biton(String bitMask) {
 

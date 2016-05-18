@@ -26,6 +26,7 @@ import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.DecimalType;
 
@@ -485,6 +486,11 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
+	public final void eval(QScroller<? extends QNumeric> value) {
+		eval(value.current(), false);
+	}
+	
+	@Override
 	public boolean ge(Number value) {
 		return compareNumber(value) >= 0;
 	}
@@ -793,5 +799,17 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 			return this;
 		else
 			return mult(-1);
+	}
+	
+	@Override
+	public QArray<QDecimal> qMult(QArray<? extends QNumeric> value) {
+
+		@SuppressWarnings("unchecked")
+		NIOArrayImpl<QDecimal> arrayValue = (NIOArrayImpl<QDecimal>) value;
+		NIOArrayImpl<QDecimal> newArray = new NIOArrayImpl<QDecimal>(getDataContext(), arrayValue.getModel(), arrayValue.capacity(), arrayValue.getSortDirection(), true);
+		newArray.movea(this);
+		newArray.mult(this);
+		
+		return newArray;
 	}
 }

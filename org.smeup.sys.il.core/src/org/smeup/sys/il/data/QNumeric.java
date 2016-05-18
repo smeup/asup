@@ -518,6 +518,14 @@ public interface QNumeric extends QBufferedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	void eval(QScroller<? extends QNumeric> value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model valueRequired="true" halfAdjustRequired="true" maxPrecisionRequired="true"
 	 * @generated
 	 */
@@ -818,6 +826,14 @@ public interface QNumeric extends QBufferedElement {
 	 * @generated
 	 */
 	QNumeric qMult(QNumeric value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	QArray<QDecimal> qMult(QArray<? extends QNumeric> value);
 
 	/**
 	 * <!-- begin-user-doc -->

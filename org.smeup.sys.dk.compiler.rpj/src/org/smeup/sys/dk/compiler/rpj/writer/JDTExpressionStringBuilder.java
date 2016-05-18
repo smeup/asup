@@ -377,6 +377,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				target = JDTContextHelper.getTargetClass(compilationUnit, expression.getLeftOperand(), true);
 			if (Boolean.class.isAssignableFrom(target))
 				target = String.class;
+			else if (Byte.class.isAssignableFrom(target))
+				target = String.class;
+			
 			builder.setTarget(target);
 			builder.clear();
 			expression.getLeftOperand().accept(builder);

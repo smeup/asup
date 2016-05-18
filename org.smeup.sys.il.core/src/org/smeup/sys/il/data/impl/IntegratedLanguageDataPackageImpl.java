@@ -1504,7 +1504,25 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "sourceIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(arrayEClass, null, "movel", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
@@ -1603,6 +1621,16 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
+		op = addEOperation(arrayEClass, null, "qMinus", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType(arrayEClass_D);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType(arrayEClass_D);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
 		op = addEOperation(arrayEClass, null, "qMult", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
@@ -1628,6 +1656,16 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(arrayEClass, null, "qMult", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "halfAdjust", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType(arrayEClass_D);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(arrayEClass, null, "qMult", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType(arrayEClass_D);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType(arrayEClass_D);
 		g1.getETypeArguments().add(g2);
@@ -1878,6 +1916,16 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, g1, "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "halfAdjust", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(bufferedListEClass, null, "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getList());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		g3 = createEGenericType(this.getNumeric());
+		g2.setEUpperBound(g3);
+		addEParameter(op, g1, "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "halfAdjust", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "maxPrecision", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(bufferedListEClass, this.getBufferedData(), "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataSpecial(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -2123,6 +2171,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataComparator(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(bufferedListEClass, this.getDecimal(), "qXfoot", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(characterEClass, QCharacter.class, "Character", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -3720,6 +3770,14 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEBoolean(), "halfAdjust", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "maxPrecision", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(numericEClass, null, "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getScroller());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		g3 = createEGenericType(this.getNumeric());
+		g2.setEUpperBound(g3);
+		addEParameter(op, g1, "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(numericEClass, ecorePackage.getEBoolean(), "ge", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -3840,6 +3898,18 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(numericEClass, this.getNumeric(), "qMult", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(numericEClass, null, "qMult", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		g3 = createEGenericType(this.getNumeric());
+		g2.setEUpperBound(g3);
+		addEParameter(op, g1, "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType(this.getDecimal());
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
 
 		op = addEOperation(numericEClass, this.getNumeric(), "qPlus", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -4040,6 +4110,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(stringEClass, null, "biton", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "bitMask", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(stringEClass, null, "biton", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "bitMask", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(stringEClass, ecorePackage.getEBoolean(), "eq", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);

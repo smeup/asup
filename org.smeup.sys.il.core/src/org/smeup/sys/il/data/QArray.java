@@ -430,10 +430,26 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true" sourceIndexRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void movea(QNumeric targetIndex, QArray<?> value, int sourceIndex, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model targetIndexRequired="true" sourceIndexRequired="true"
 	 * @generated
 	 */
 	void movea(QNumeric targetIndex, QArray<?> value, QNumeric sourceIndex);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true" sourceIndexRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void movea(QNumeric targetIndex, QArray<?> value, QNumeric sourceIndex, boolean clear);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -625,6 +641,14 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	 * @model required="true" valueRequired="true"
 	 * @generated
 	 */
+	QArray<D> qMinus(QArray<D> value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" valueRequired="true"
+	 * @generated
+	 */
 	QArray<D> qMult(QNumeric value);
 
 	/**
@@ -650,6 +674,14 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	 * @generated
 	 */
 	QArray<D> qMult(Number value, boolean halfAdjust);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" valueRequired="true"
+	 * @generated
+	 */
+	QArray<D> qMult(QArray<D> value);
 
 	/**
 	 * <!-- begin-user-doc -->

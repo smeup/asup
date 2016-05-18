@@ -449,6 +449,14 @@ public interface QString extends QBufferedElement, QChecker, QScanner, QCattable
 	 * @model bitMaskRequired="true"
 	 * @generated
 	 */
+	void biton(QString bitMask);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model bitMaskRequired="true"
+	 * @generated
+	 */
 	void bitoff(String bitMask);
 
 	/**

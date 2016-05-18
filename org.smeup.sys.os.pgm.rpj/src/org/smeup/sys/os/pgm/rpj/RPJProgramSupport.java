@@ -686,7 +686,7 @@ public class RPJProgramSupport {
 
 	}
 
-	public QString qXlate(String oldString, String newString, QString source) {
+	public QCharacter qXlate(String oldString, String newString, QString source) {
 		// TODO
 		/*
 		 * Verify with il-data
@@ -708,13 +708,6 @@ public class RPJProgramSupport {
 		string.eval(sb.toString());
 
 		return string;
-	}
-
-	public void qXfoot(QArray<QDecimal> list, QNumeric target) {
-		target.clear();
-		for (QDecimal element : list) {
-			target.plus(element);
-		}
 	}
 
 	public QDataFiller qAll(byte numeric) {

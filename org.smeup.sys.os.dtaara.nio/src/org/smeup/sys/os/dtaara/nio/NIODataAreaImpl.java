@@ -18,7 +18,8 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 	private static final long serialVersionUID = 1L;
 
 	private String externalName;
-
+	private org.smeup.sys.os.dtaara.QDataArea currentDataArea;
+	
 	protected NIODataAreaImpl(QDataContext dataContext, D delegate, String externalName) {
 		super(dataContext, delegate);
 		this.externalName = externalName;
@@ -33,18 +34,17 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 	@Override
 	public void in() {
 
-		org.smeup.sys.os.dtaara.QDataArea qDataArea = null;
 		if (externalName.equalsIgnoreCase("*LDA")) {
 			QDataAreaManager dataAreaManager = getDataContext().getContext().get(QDataAreaManager.class);
-			qDataArea = dataAreaManager.getLocalDataArea(getDataContext().getContext());
+			currentDataArea = dataAreaManager.getLocalDataArea(getDataContext().getContext());
 		}
 		else {
 			QResourceManager resourceManager = getDataContext().getContext().get(QResourceManager.class);
 			QResourceReader<org.smeup.sys.os.dtaara.QDataArea> dataAreaReader = resourceManager.getResourceReader(getDataContext(), org.smeup.sys.os.dtaara.QDataArea.class, Scope.LIBRARY_LIST);
-			qDataArea = dataAreaReader.lookup(externalName);
+			currentDataArea = dataAreaReader.lookup(externalName);
 		}		
 		
-		get().movel(qDataArea.getContent(), true);
+		get().movel(currentDataArea.getContent(), true);
 	}
 
 	@Override
@@ -61,27 +61,22 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 	public void out() {
 
 		if (externalName.equalsIgnoreCase("*LDA")) {
-			QDataAreaManager dataAreaManager = getDataContext().getContext().get(QDataAreaManager.class);
-			org.smeup.sys.os.dtaara.QDataArea localDataArea = dataAreaManager.getLocalDataArea(getDataContext().getContext());
 			// TODO
 			if(get() instanceof QString)
-				localDataArea.setContent(((QString)get()).asString());
+				currentDataArea.setContent(((QString)get()).asString());
 			else
-				localDataArea.setContent(new String(asBytes()));
+				currentDataArea.setContent(new String(asBytes()));
 		}
 		else {
 			QResourceManager resourceManager = getDataContext().getContext().get(QResourceManager.class);
-			QResourceReader<org.smeup.sys.os.dtaara.QDataArea> dataAreaReader = resourceManager.getResourceReader(getDataContext(), org.smeup.sys.os.dtaara.QDataArea.class, Scope.LIBRARY_LIST);
-			org.smeup.sys.os.dtaara.QDataArea qDataArea = dataAreaReader.lookup(externalName);
-			QResourceWriter<org.smeup.sys.os.dtaara.QDataArea> dataAreaWriter = resourceManager.getResourceWriter(getDataContext(), org.smeup.sys.os.dtaara.QDataArea.class, qDataArea.getLibrary());
+			QResourceWriter<org.smeup.sys.os.dtaara.QDataArea> dataAreaWriter = resourceManager.getResourceWriter(getDataContext(), org.smeup.sys.os.dtaara.QDataArea.class, currentDataArea.getLibrary());
 			
-			qDataArea = dataAreaWriter.lookup(externalName);
+			org.smeup.sys.os.dtaara.QDataArea qDataArea = dataAreaWriter.lookup(externalName);
 			if(get() instanceof QString)
 				qDataArea.setContent(((QString)get()).asString());
 			else
 				qDataArea.setContent(new String(asBytes()));
 			dataAreaWriter.save(qDataArea, true);
-
 		}
 	}
 
