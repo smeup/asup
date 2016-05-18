@@ -31,6 +31,7 @@ tokens
 	//BINARY_FUN
 	//SST_FUN
 	//SWITCH_FUN
+	//DATA_AREA
 
 	//VAR
 	//STRING
@@ -162,11 +163,14 @@ value	:
 	|
 	FLOAT
 	|
+	DATA_AREA
+	|
 	binary_fun
 	|
 	sst_fun
 	|
 	switch_fun
+
 	;
 
 binary_fun
@@ -243,6 +247,15 @@ CLOSE_BRACE
 	:
 	')'
 	;
+	
+DATA_AREA
+	:
+	MULT L D A
+	|
+	MULT G D A
+	|
+	MULT P D A
+	;	
 
 BINARY_FUN
 	:

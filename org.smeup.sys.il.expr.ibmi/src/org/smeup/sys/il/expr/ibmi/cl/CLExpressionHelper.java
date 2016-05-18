@@ -63,6 +63,7 @@ public class CLExpressionHelper implements BaseExpressionHelper {
 		case CLExprLexer.BOOLEAN:
 		case CLExprLexer.TERM:
 		case CLExprLexer.VAR:
+		case CLExprLexer.DATA_AREA:				
 			expressionType = ExpressionType.ATOMIC;
 			break;
 
@@ -100,6 +101,10 @@ public class CLExpressionHelper implements BaseExpressionHelper {
 
 		case CLExprLexer.VAR:
 			return AtomicType.NAME;
+		
+		//TODO: corretto?	
+		case CLExprLexer.DATA_AREA:
+			return AtomicType.STRING;	
 
 		default:
 			System.err.println(node.getType());
