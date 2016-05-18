@@ -108,33 +108,15 @@ public class BaseCallableInjector {
 		QDataContainer dataContainer = dataManager.createDataContainer(dataContext);
 
 		try {
-			// create programStatus
-			QDataTerm<?> programStatusTerm = dataContainer.addDataTerm("*pgmstatus", BaseProgramStatusImpl.class, null);
-			QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
-			programStatus.clear();
+			QProgramStatus programStatus = createProgramStatus(program, dataContainer);
+			QAccessFactory accessFactory = esamManager.createFactory(job, dataContext);
 
-			programStatus.getProgramName().eval(program.getName());
-
-			if (program.getLibrary() != null)
-				programStatus.getProgramLibrary().eval(program.getLibrary());
-
-			QJobReference jobReference = job.getJobReference();
-			programStatus.getUserName().eval(jobReference.getJobUser());
-			programStatus.getJobNumber().eval(jobReference.getJobNumber());
-			programStatus.getJobName().eval(jobReference.getJobName());
-
-			QAccessFactory accessFactory = esamManager.createFactory(job, dataContainer.getDataContext());
-
-			Map<String, Object> unitModules = new HashMap<String, Object>();
-			Map<String, QRecord> records = new HashMap<String, QRecord>();
-
-			P delegate = injectData(null, klass, dataContainer, accessFactory, unitModules, records);
+			P delegate = injectData(null, klass, dataContainer, accessFactory, new HashMap<String, Object>(), new HashMap<String, QRecord>());
+			context.invoke(delegate, PostConstruct.class);
+			
 			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();
 			programInfo.setMemorySize(dataContainer.getMemorySize());
-
 			QCallableProgram<P> callableProgram = new BaseCallableProgramDelegator<P>(dataContext, program, programStatus, delegate, programInfo);
-
-			context.invoke(callableProgram.getRawProgram(), PostConstruct.class);
 
 			return callableProgram;
 		} catch (Exception e) {
@@ -142,6 +124,27 @@ public class BaseCallableInjector {
 		} finally {
 			dataContainer.close();
 		}
+	}
+
+	
+	
+	private QProgramStatus createProgramStatus(QProgram program, QDataContainer dataContainer) {
+
+		QDataTerm<?> programStatusTerm = dataContainer.addDataTerm("*pgmstatus", BaseProgramStatusImpl.class, null);
+		QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
+		programStatus.clear();
+
+		programStatus.getProgramName().eval(program.getName());
+
+		if (program.getLibrary() != null)
+			programStatus.getProgramLibrary().eval(program.getLibrary());
+
+		QJobReference jobReference = job.getJobReference();
+		programStatus.getUserName().eval(jobReference.getJobUser());
+		programStatus.getJobNumber().eval(jobReference.getJobNumber());
+		programStatus.getJobName().eval(jobReference.getJobName());
+
+		return programStatus;
 	}
 
 	public <P extends Object> P prepareProcedure(Object owner, Class<P> klass) {
@@ -466,7 +469,7 @@ public class BaseCallableInjector {
 
 			QDataStruct infoStruct = (QDataStruct) records.get(fileDef.info().toLowerCase());
 			if (infoStruct == null)
-				System.err.println("Unexpected condition " + fileDef.info() + ": asggsu676rf7qwf7");
+				System.err.println("Unused infoStruct" + fileDef.info());
 			else {
 				field.getField().setAccessible(true);
 				((QDataSet<?>) field.getValue(callable)).getInfoStruct().assign(infoStruct);
@@ -496,6 +499,9 @@ public class BaseCallableInjector {
 					continue;
 			}
 
+			if(dataTerm.getName().equalsIgnoreCase("£mu_£c£c£e_c01_1"))
+				"".toCharArray();
+			
 			QData data = dataContainer.getData(dataTerm);
 
 			QDataStruct dataStruct = (QDataStruct) data;
