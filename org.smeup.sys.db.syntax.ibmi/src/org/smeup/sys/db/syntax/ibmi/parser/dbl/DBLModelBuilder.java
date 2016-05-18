@@ -1216,7 +1216,7 @@ public class DBLModelBuilder {
 		} else if (statement.matches("^[\\s]*[dD][eE][cC][lL][aA][rR][eE].*[fF][oO][rR][\\s]*[sS][eE][lL][eE][cC][tT].*")) {
 			
 			String[] tokens = statement.split("[\\s]*[sS][eE][lL][eE][cC][tT]", Pattern.CASE_INSENSITIVE);
-			response[0] = tokens[0] + " FOR s1";
+			response[0] = tokens[0] + " s1";
 			response[1] = "SELECT" + tokens[1];
 		}
 
