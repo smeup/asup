@@ -54,7 +54,7 @@ import org.smeup.sys.os.pgm.QProgramStack;
 import org.smeup.sys.rt.core.QApplication;
 
 public class BaseProgramManagerImpl implements QProgramManager {
-	
+
 	@Inject
 	private QApplication application;
 	@Inject
@@ -64,7 +64,6 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	@Inject
 	private QResourceManager resourceManager;
 
-	
 	private QActivationGroupManager activationGroupManager;
 
 	@Inject
@@ -107,7 +106,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	@SuppressWarnings("resource")
 	@Override
 	public void callProgram(QJob job, QProgram program, QData[] params) {
-		
+
 		QActivationGroup activationGroup = activationGroupManager.lookup(job, program.getActivationGroup());
 		if (activationGroup == null)
 			activationGroup = activationGroupManager.create(job, program.getActivationGroup(), true);
@@ -125,7 +124,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	@Override
 	public QCallableProgram<?> loadProgram(QJob job, QProgram program) {
-		
+
 		// API
 		String address = null;
 		if (program.getAddress() != null)
@@ -269,7 +268,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		QList<D> listFrom = (QList<D>) from;
 		QList<D> listTo = (QList<D>) to;
 		listTo.clear();
-		
+
 		int e = 1;
 		for (D elementFrom : listFrom) {
 			D elementTo = listTo.get(e);
@@ -317,11 +316,11 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				// assign parameter
 				assignParameters(callableProgram, params);
 
+				printSendStack(job, programStack, callableProgram);
+
 				// open
 				if (!callableProgram.isOpen())
 					callableProgram.open();
-
-				printSendStack(job, programStack, callableProgram);
 
 				// call
 				callableProgram.call();
@@ -352,8 +351,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 					System.err.println(cause);
 				else
 					System.err.println(e);
-//				e.printStackTrace();
-				
+				// e.printStackTrace();
+
 				throw new OperatingSystemRuntimeException(e.getMessage(), e);
 			} finally {
 				printReceiveStack(job, programStack, callableProgram);
@@ -387,8 +386,10 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	}
 
 	protected void printSendStack(QJob job, QProgramStack programStack, QCallableProgram<?> callableProgram) {
-		String text = "-> " + callableProgram.getProgram().getName() + " (";
 
+		String text = callableProgram.isOpen() ? ">  " : "-> ";
+		text += callableProgram.getProgram().getName()+ " (";
+		
 		if (callableProgram.getEntry() != null)
 			text += formatStackParameters(callableProgram.getEntry());
 		text += ")";
@@ -397,11 +398,12 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	}
 
 	protected void printReceiveStack(QJob job, QProgramStack programStack, QCallableProgram<?> callableProgram) {
-		String text = "<- " + callableProgram.getProgram().getName() + " (";
+		String text = callableProgram.isOpen() ? "<  " : "<- ";
+		text += callableProgram.getProgram().getName()+ " (";
 		if (callableProgram.getEntry() != null)
 			text += formatStackParameters(callableProgram.getEntry());
 		text += ")";
-		text += callableProgram.isOpen() ? "(RT)" : "(LR)";
+
 		QJobReference jobReference = job.getJobReference();
 		System.out.println(jobReference.getJobName() + "(" + jobReference.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
 	}
@@ -438,23 +440,21 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				} catch (Exception e) {
 					bufferedElement.asBytes();
 				}
-			} 
-			else if (param instanceof QBufferedList) {
-				QBufferedList<?> bufferedList = (QBufferedList<?>)param;
+			} else if (param instanceof QBufferedList) {
+				QBufferedList<?> bufferedList = (QBufferedList<?>) param;
 				if (bufferedList.isNull()) {
 					text += "|";
 					continue;
 				}
 				StringBuffer sb = new StringBuffer();
-				for(QBufferedElement bufferedElement: bufferedList) {
-					if(sb.toString().isEmpty()) 
+				for (QBufferedElement bufferedElement : bufferedList) {
+					if (sb.toString().isEmpty())
 						sb.append(bufferedElement.toString());
 					else
-						sb.append(":"+bufferedElement.toString());
+						sb.append(":" + bufferedElement.toString());
 				}
-				paramValue = "["+sb.toString()+"]";
-			}
-			else
+				paramValue = "[" + sb.toString() + "]";
+			} else
 				paramValue = param.toString();
 
 			if (paramValue.length() > 100)
