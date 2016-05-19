@@ -528,7 +528,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 			// Into
 			QSingleRowFetchClause singleRowClause = bindingStatement.getSingleRowClause();
 
-			if (singleRowClause.getInto() != null) {
+			if (singleRowClause != null && singleRowClause.getInto() != null) {
 				if (singleRowClause.isUsingDescriptor()) {
 
 					if (singleRowClause.getInto().get(0) != null)
