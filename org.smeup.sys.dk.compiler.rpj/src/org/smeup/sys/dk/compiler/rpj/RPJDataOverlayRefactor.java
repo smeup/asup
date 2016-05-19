@@ -64,6 +64,8 @@ public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
 		if (overlayTerm == null)
 			throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00109, new String[] { overlay.getName() });
 
+		overlay.setName(getCompilationUnit().normalizeTermName(overlayName));
+		
 		switch (dataTerm.getDataTermType()) {
 		case MULTIPLE_ATOMIC:
 			super.visit(dataTerm);

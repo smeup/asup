@@ -122,7 +122,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
 
 		// dataContext
-		QDataContext dataContext = dataManager.createDataContext(compilationUnit.getContext());
+		QDataContext dataContext = dataManager.createDataContext(compilationUnit.getContext(), null);
 		compilationUnit.getContext().set(QDataContext.class, dataContext);
 
 		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().make(RPJCallableUnitLinker.class);
@@ -143,7 +143,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
 
 		// dataContext
-		QDataContext dataContext = dataManager.createDataContext(compilationUnit.getContext());
+		QDataContext dataContext = dataManager.createDataContext(compilationUnit.getContext(), null);
 		compilationUnit.getContext().set(QDataContext.class, dataContext);
 
 		// module
@@ -177,7 +177,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
 
 		// dataContext
-		QDataContext dataContext = dataManager.createDataContext(compilationUnit.getContext());
+		QDataContext dataContext = dataManager.createDataContext(compilationUnit.getContext(), null);
 		compilationUnit.getContext().set(QDataContext.class, dataContext);
 
 		compilationUnit.getContext().set(QProgram.class, program);
@@ -225,7 +225,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		callableUnitLinker.linkModules(compilationUnit);
 		callableUnitLinker.linkFiles(compilationUnit);
 		callableUnitLinker.linkExternalDatas(compilationUnit);
-		callableUnitLinker.linkLikeDatas(compilationUnit);
+		callableUnitLinker.linkLikeDatas(compilationUnit);		
 		callableUnitLinker.linkOverlayDatas(compilationUnit);
 		callableUnitLinker.linkFormulas(compilationUnit);
 		callableUnitLinker.completeDataStructures(compilationUnit);
