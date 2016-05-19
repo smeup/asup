@@ -9,6 +9,7 @@ package org.smeup.sys.il.esam;
 
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QRecord;
+import org.smeup.sys.il.data.QString;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -61,6 +62,14 @@ public interface QAccessFactory {
 	<R extends QRecord> QKSDataSet<R> createKeySequencedDataSet(Class<R> wrapper, R record, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" wrapperRequired="true" recordRequired="true"
+	 * @generated
+	 */
+	<R extends QRecord> QKSDataSet<R> createKeySequencedDataSet(Class<R> wrapper, R record, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct, QString fileName);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" wrapperRequired="true"
 	 * @generated
@@ -96,6 +105,14 @@ public interface QAccessFactory {
 	 * @generated
 	 */
 	<R extends QRecord> QRRDataSet<R> createRelativeRecordDataSet(Class<R> wrapper, R record, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" wrapperRequired="true" recordRequired="true"
+	 * @generated
+	 */
+	<R extends QRecord> QRRDataSet<R> createRelativeRecordDataSet(Class<R> wrapper, R record, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct, QString fileName);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -136,5 +153,13 @@ public interface QAccessFactory {
 	 * @generated
 	 */
 	<R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, R record, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" wrapperRequired="true" recordRequired="true"
+	 * @generated
+	 */
+	<R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, R record, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct, QString fileName, QString mamberName);
 
 } // QAccessFactory

@@ -12,7 +12,9 @@
 package org.smeup.sys.il.data.nio;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.nio.ByteBuffer;
@@ -94,9 +96,11 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	private QDataAreaFactory dataAreaFactory;
 	private QDataContext dataContext;
+	private Object owner;
 
-	protected NIODataFactoryImpl(QDataContext dataContext, QDataAreaFactory dataAreaFactory) {
+	protected NIODataFactoryImpl(QDataContext dataContext, Object owner, QDataAreaFactory dataAreaFactory) {
 		this.dataContext = dataContext;
+		this.owner = owner;
 		this.dataAreaFactory = dataAreaFactory;
 	}
 
@@ -393,16 +397,33 @@ public class NIODataFactoryImpl implements QDataFactory {
 		return (R) createDataStruct(classDataStruct, 0, allocate);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public <D extends QDataStruct> D createDataStruct(Class<D> classDelegator, int length, boolean allocate) {
+
 
 		// data structure
 		D dataStructure = null;
 
-		try {
-			dataStructure = classDelegator.newInstance();
-		} catch (InstantiationException | IllegalAccessException | SecurityException e) {
-			throw new IntegratedLanguageDataRuntimeException(e);
+		if(owner == null || Modifier.isStatic(classDelegator.getModifiers())) {
+			try {
+				dataStructure = classDelegator.newInstance();
+			} catch (Exception e) {
+				throw new IntegratedLanguageDataRuntimeException(e);
+			}
+		}
+		else {
+			Constructor<?> constructor = null;
+			try {
+				constructor = classDelegator.getDeclaredConstructor(owner.getClass());
+				constructor.setAccessible(true);
+				dataStructure = (D) constructor.newInstance(owner);
+			} catch (Exception e) {
+				throw new IntegratedLanguageDataRuntimeException(e);
+			} finally {
+				if (constructor != null)
+					constructor.setAccessible(false);
+			}			
 		}
 
 		NIODataStructWrapperHandler dataStructureDelegate = new NIODataStructWrapperHandler(getDataContext(), length, dataStructure, allocate);
@@ -558,11 +579,6 @@ public class NIODataFactoryImpl implements QDataFactory {
 				// TODO Java reflection
 				EStructuralFeature eFeature = null;
 
-				// if default field (value) use annotation name
-				// if (method.getName().equals("value"))
-				// eFeature =
-				// eClass.getEStructuralFeature(annotation.annotationType().getSimpleName().toLowerCase());
-				// else
 				eFeature = eClass.getEStructuralFeature(method.getName());
 
 				if (eFeature == null)

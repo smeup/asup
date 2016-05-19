@@ -116,8 +116,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			if (annotation instanceof Overlay) {
 				Overlay overlay = (Overlay) annotation;
 				QOverlay qOverlay = QIntegratedLanguageDataTermFactory.eINSTANCE.createOverlay();
-				// TODO remove lowerCase
-				qOverlay.setName(overlay.name().toLowerCase());
+				qOverlay.setName(overlay.name());
 				qOverlay.setPosition(overlay.position());
 				dataTerm.getFacets().add(qOverlay);
 			}
@@ -338,7 +337,6 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 //					throw new IntegratedLanguageDataRuntimeException("Invalid owner data: " + dataTerm);
 				} else {
 					data = dataFactory.createData(dataTerm, false);
-					// TODO remove lowerCase
 					QData overlayedData = getData(overlay.getName().toLowerCase());
 					((QBufferedData) overlayedData).assign((QBufferedData) data);
 				}

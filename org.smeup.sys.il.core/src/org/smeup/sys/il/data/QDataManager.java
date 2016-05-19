@@ -32,10 +32,10 @@ public interface QDataManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" contextRequired="true"
+	 * @model required="true" contextRequired="true" ownerRequired="true"
 	 * @generated
 	 */
-	QDataContainer createDataContainer(QContext context);
+	QDataContainer createDataContainer(QContext context, Object owner);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -47,10 +47,10 @@ public interface QDataManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" contextRequired="true"
+	 * @model required="true" contextRequired="true" ownerRequired="true"
 	 * @generated
 	 */
-	QDataContext createDataContext(QContext context);
+	QDataContext createDataContext(QContext context, Object owner);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -1872,6 +1872,7 @@
     </eOperations>
     <eOperations name="createDataContainer" lowerBound="1" eType="#//DataContainer">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass il-core.ecore#//ctx/Context"/>
+      <eParameters name="owner" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     </eOperations>
     <eOperations name="createDataContainer" lowerBound="1" eType="#//DataContainer">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass il-core.ecore#//ctx/Context"/>
@@ -1880,6 +1881,7 @@
     </eOperations>
     <eOperations name="createDataContext" lowerBound="1" eType="#//DataContext">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass il-core.ecore#//ctx/Context"/>
+      <eParameters name="owner" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     </eOperations>
     <eOperations name="validateDataContainer" lowerBound="1">
       <eParameters name="container" lowerBound="1" eType="#//DataContainer"/>

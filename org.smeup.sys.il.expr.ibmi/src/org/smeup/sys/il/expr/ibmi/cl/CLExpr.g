@@ -251,10 +251,6 @@ CLOSE_BRACE
 DATA_AREA
 	:
 	MULT L D A
-	|
-	MULT G D A
-	|
-	MULT P D A
 	;	
 
 BINARY_FUN

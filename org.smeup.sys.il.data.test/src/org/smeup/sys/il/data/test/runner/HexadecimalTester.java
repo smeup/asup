@@ -32,7 +32,7 @@ public class HexadecimalTester {
 	@TestStarted
 	public void main() {
 
-		QDataContext dataContext = dataManager.createDataContext(testRunner.getContext());
+		QDataContext dataContext = dataManager.createDataContext(testRunner.getContext(), null);
 		QDataFactory dataFactory = dataContext.getDataFactory();
 
 		String inputHex = "C1A24BE4D7";

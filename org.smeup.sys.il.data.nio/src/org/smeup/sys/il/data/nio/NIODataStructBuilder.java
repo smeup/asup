@@ -70,7 +70,7 @@ public class NIODataStructBuilder {
 			ownerNextPos += dataElement.getSize();
 		} else {
 
-			NIOBufferedDataImpl overlayedData = (NIOBufferedDataImpl) dataStruct.getElement(overlayName.toLowerCase());
+			NIOBufferedDataImpl overlayedData = (NIOBufferedDataImpl) dataStruct.getElement(overlayName);
 			
 			if (overlayedData == null)
 				throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: s87rfysd8fsd");
@@ -93,10 +93,6 @@ public class NIODataStructBuilder {
 				arrayData.setListOwner(arrayOverlayed);
 				arrayOverlayed.assign(dataElement, overlayedNextPos.asInteger());
 				overlayedNextPos.plus(arrayData.getModel().getSize());				
-/*				if(overlayPosition >= 1)
-					arrayOverlayed.assign(dataElement, overlayPosition);
-				else
-					arrayOverlayed.assign(dataElement);*/
 			} else {
 				overlayedNextPos.plus(dataElement.getSize());
 			}

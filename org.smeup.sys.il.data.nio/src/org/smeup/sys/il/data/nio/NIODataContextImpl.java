@@ -28,10 +28,10 @@ public class NIODataContextImpl implements QDataContext {
 	private NIOCharacterVaryingImpl temporaryString;
 	private Map<QBufferedData, QBufferedData> snapshots = null;
 
-	public NIODataContextImpl(QContext context) {
+	public NIODataContextImpl(QContext context, Object owner) {
 		this.context = context;
 		QDataAreaFactory dataAreaFactory = context.get(QDataAreaFactory.class);
-		dataFactory = new NIODataFactoryImpl(this, dataAreaFactory);
+		dataFactory = new NIODataFactoryImpl(this, owner, dataAreaFactory);
 		found = dataFactory.createIndicator(true);
 		endOfData = dataFactory.createIndicator(true);
 		this.temporaryString = new NIOCharacterVaryingImpl(this, 64000, true);

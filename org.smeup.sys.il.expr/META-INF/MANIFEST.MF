@@ -9,10 +9,10 @@ Bundle-Localization: plugin
 Export-Package: org.smeup.sys.il.expr,
  org.smeup.sys.il.expr.impl,
  org.smeup.sys.il.expr.neutral
-Require-Bundle:  org.eclipse.core.runtime,
+Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.smeup.sys.il.core;visibility:=reexport,
  org.smeup.sys.mi.core;visibility:=reexport,
- org.smeup.sys.et.antlr;bundle-version="0.8.0"
+ org.smeup.sys.et.antlr
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

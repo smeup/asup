@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g 2016-05-18 12:19:56
+// $ANTLR 3.5.1 /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g 2016-05-19 08:52:54
 
   package org.smeup.sys.il.expr.ibmi.cl;
   
@@ -115,7 +115,7 @@ public class CLExprParser extends Parser {
 		return adaptor;
 	}
 	@Override public String[] getTokenNames() { return CLExprParser.tokenNames; }
-	@Override public String getGrammarFileName() { return "C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g"; }
+	@Override public String getGrammarFileName() { return "/home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g"; }
 
 
 
@@ -146,7 +146,7 @@ public class CLExprParser extends Parser {
 
 
 	// $ANTLR start "expression"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:101:1: expression : logicalExpression EOF !;
+	// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:101:1: expression : logicalExpression EOF !;
 	public final CLExprParser.expression_return expression() throws RecognitionException {
 		CLExprParser.expression_return retval = new CLExprParser.expression_return();
 		retval.start = input.LT(1);
@@ -159,8 +159,8 @@ public class CLExprParser extends Parser {
 		CommonTree EOF2_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:102:4: ( logicalExpression EOF !)
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:103:4: logicalExpression EOF !
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:102:4: ( logicalExpression EOF !)
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:103:4: logicalExpression EOF !
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -201,7 +201,7 @@ public class CLExprParser extends Parser {
 
 
 	// $ANTLR start "logicalExpression"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:106:1: logicalExpression : booleanAndExpression ( OR ^ booleanAndExpression )* ;
+	// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:106:1: logicalExpression : booleanAndExpression ( OR ^ booleanAndExpression )* ;
 	public final CLExprParser.logicalExpression_return logicalExpression() throws RecognitionException {
 		CLExprParser.logicalExpression_return retval = new CLExprParser.logicalExpression_return();
 		retval.start = input.LT(1);
@@ -215,8 +215,8 @@ public class CLExprParser extends Parser {
 		CommonTree OR4_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:107:2: ( booleanAndExpression ( OR ^ booleanAndExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:108:2: booleanAndExpression ( OR ^ booleanAndExpression )*
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:107:2: ( booleanAndExpression ( OR ^ booleanAndExpression )* )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:108:2: booleanAndExpression ( OR ^ booleanAndExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -227,7 +227,7 @@ public class CLExprParser extends Parser {
 
 			adaptor.addChild(root_0, booleanAndExpression3.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:108:23: ( OR ^ booleanAndExpression )*
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:108:23: ( OR ^ booleanAndExpression )*
 			loop1:
 			while (true) {
 				int alt1=2;
@@ -238,7 +238,7 @@ public class CLExprParser extends Parser {
 
 				switch (alt1) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:108:24: OR ^ booleanAndExpression
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:108:24: OR ^ booleanAndExpression
 					{
 					OR4=(Token)match(input,OR,FOLLOW_OR_in_logicalExpression171); 
 					OR4_tree = (CommonTree)adaptor.create(OR4);
@@ -287,7 +287,7 @@ public class CLExprParser extends Parser {
 
 
 	// $ANTLR start "booleanAndExpression"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:111:1: booleanAndExpression : equalityExpression ( AND ^ equalityExpression )* ;
+	// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:111:1: booleanAndExpression : equalityExpression ( AND ^ equalityExpression )* ;
 	public final CLExprParser.booleanAndExpression_return booleanAndExpression() throws RecognitionException {
 		CLExprParser.booleanAndExpression_return retval = new CLExprParser.booleanAndExpression_return();
 		retval.start = input.LT(1);
@@ -301,8 +301,8 @@ public class CLExprParser extends Parser {
 		CommonTree AND7_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:112:2: ( equalityExpression ( AND ^ equalityExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:112:4: equalityExpression ( AND ^ equalityExpression )*
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:112:2: ( equalityExpression ( AND ^ equalityExpression )* )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:112:4: equalityExpression ( AND ^ equalityExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -313,7 +313,7 @@ public class CLExprParser extends Parser {
 
 			adaptor.addChild(root_0, equalityExpression6.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:112:23: ( AND ^ equalityExpression )*
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:112:23: ( AND ^ equalityExpression )*
 			loop2:
 			while (true) {
 				int alt2=2;
@@ -324,7 +324,7 @@ public class CLExprParser extends Parser {
 
 				switch (alt2) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:112:24: AND ^ equalityExpression
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:112:24: AND ^ equalityExpression
 					{
 					AND7=(Token)match(input,AND,FOLLOW_AND_in_booleanAndExpression191); 
 					AND7_tree = (CommonTree)adaptor.create(AND7);
@@ -373,7 +373,7 @@ public class CLExprParser extends Parser {
 
 
 	// $ANTLR start "equalityExpression"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:115:1: equalityExpression : relationalExpression ( ( EQ | NE ) ^ relationalExpression )* ;
+	// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:115:1: equalityExpression : relationalExpression ( ( EQ | NE ) ^ relationalExpression )* ;
 	public final CLExprParser.equalityExpression_return equalityExpression() throws RecognitionException {
 		CLExprParser.equalityExpression_return retval = new CLExprParser.equalityExpression_return();
 		retval.start = input.LT(1);
@@ -387,8 +387,8 @@ public class CLExprParser extends Parser {
 		CommonTree set10_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:116:2: ( relationalExpression ( ( EQ | NE ) ^ relationalExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:116:4: relationalExpression ( ( EQ | NE ) ^ relationalExpression )*
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:116:2: ( relationalExpression ( ( EQ | NE ) ^ relationalExpression )* )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:116:4: relationalExpression ( ( EQ | NE ) ^ relationalExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -399,7 +399,7 @@ public class CLExprParser extends Parser {
 
 			adaptor.addChild(root_0, relationalExpression9.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:116:25: ( ( EQ | NE ) ^ relationalExpression )*
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:116:25: ( ( EQ | NE ) ^ relationalExpression )*
 			loop3:
 			while (true) {
 				int alt3=2;
@@ -410,7 +410,7 @@ public class CLExprParser extends Parser {
 
 				switch (alt3) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:116:26: ( EQ | NE ) ^ relationalExpression
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:116:26: ( EQ | NE ) ^ relationalExpression
 					{
 					set10=input.LT(1);
 					set10=input.LT(1);
@@ -466,7 +466,7 @@ public class CLExprParser extends Parser {
 
 
 	// $ANTLR start "relationalExpression"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:119:1: relationalExpression : concatExpression ( ( LT | LTEQ | GT | GTEQ | NG | NL ) ^ concatExpression )* ;
+	// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:119:1: relationalExpression : concatExpression ( ( LT | LTEQ | GT | GTEQ | NG | NL ) ^ concatExpression )* ;
 	public final CLExprParser.relationalExpression_return relationalExpression() throws RecognitionException {
 		CLExprParser.relationalExpression_return retval = new CLExprParser.relationalExpression_return();
 		retval.start = input.LT(1);
@@ -480,8 +480,8 @@ public class CLExprParser extends Parser {
 		CommonTree set13_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:120:2: ( concatExpression ( ( LT | LTEQ | GT | GTEQ | NG | NL ) ^ concatExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:120:4: concatExpression ( ( LT | LTEQ | GT | GTEQ | NG | NL ) ^ concatExpression )*
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:120:2: ( concatExpression ( ( LT | LTEQ | GT | GTEQ | NG | NL ) ^ concatExpression )* )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:120:4: concatExpression ( ( LT | LTEQ | GT | GTEQ | NG | NL ) ^ concatExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -492,7 +492,7 @@ public class CLExprParser extends Parser {
 
 			adaptor.addChild(root_0, concatExpression12.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:120:21: ( ( LT | LTEQ | GT | GTEQ | NG | NL ) ^ concatExpression )*
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:120:21: ( ( LT | LTEQ | GT | GTEQ | NG | NL ) ^ concatExpression )*
 			loop4:
 			while (true) {
 				int alt4=2;
@@ -503,7 +503,7 @@ public class CLExprParser extends Parser {
 
 				switch (alt4) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:120:23: ( LT | LTEQ | GT | GTEQ | NG | NL ) ^ concatExpression
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:120:23: ( LT | LTEQ | GT | GTEQ | NG | NL ) ^ concatExpression
 					{
 					set13=input.LT(1);
 					set13=input.LT(1);
@@ -559,7 +559,7 @@ public class CLExprParser extends Parser {
 
 
 	// $ANTLR start "concatExpression"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:123:1: concatExpression : additiveExpression ( ( CAT | BCAT | TCAT ) ^ additiveExpression )* ;
+	// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:123:1: concatExpression : additiveExpression ( ( CAT | BCAT | TCAT ) ^ additiveExpression )* ;
 	public final CLExprParser.concatExpression_return concatExpression() throws RecognitionException {
 		CLExprParser.concatExpression_return retval = new CLExprParser.concatExpression_return();
 		retval.start = input.LT(1);
@@ -573,8 +573,8 @@ public class CLExprParser extends Parser {
 		CommonTree set16_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:124:2: ( additiveExpression ( ( CAT | BCAT | TCAT ) ^ additiveExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:125:3: additiveExpression ( ( CAT | BCAT | TCAT ) ^ additiveExpression )*
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:124:2: ( additiveExpression ( ( CAT | BCAT | TCAT ) ^ additiveExpression )* )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:125:3: additiveExpression ( ( CAT | BCAT | TCAT ) ^ additiveExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -585,7 +585,7 @@ public class CLExprParser extends Parser {
 
 			adaptor.addChild(root_0, additiveExpression15.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:125:22: ( ( CAT | BCAT | TCAT ) ^ additiveExpression )*
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:125:22: ( ( CAT | BCAT | TCAT ) ^ additiveExpression )*
 			loop5:
 			while (true) {
 				int alt5=2;
@@ -596,7 +596,7 @@ public class CLExprParser extends Parser {
 
 				switch (alt5) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:125:24: ( CAT | BCAT | TCAT ) ^ additiveExpression
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:125:24: ( CAT | BCAT | TCAT ) ^ additiveExpression
 					{
 					set16=input.LT(1);
 					set16=input.LT(1);
@@ -652,7 +652,7 @@ public class CLExprParser extends Parser {
 
 
 	// $ANTLR start "additiveExpression"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:129:1: additiveExpression : multiplicativeExpression ( ( PLUS | MINUS ) ^ multiplicativeExpression )* ;
+	// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:129:1: additiveExpression : multiplicativeExpression ( ( PLUS | MINUS ) ^ multiplicativeExpression )* ;
 	public final CLExprParser.additiveExpression_return additiveExpression() throws RecognitionException {
 		CLExprParser.additiveExpression_return retval = new CLExprParser.additiveExpression_return();
 		retval.start = input.LT(1);
@@ -666,8 +666,8 @@ public class CLExprParser extends Parser {
 		CommonTree set19_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:130:2: ( multiplicativeExpression ( ( PLUS | MINUS ) ^ multiplicativeExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:130:4: multiplicativeExpression ( ( PLUS | MINUS ) ^ multiplicativeExpression )*
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:130:2: ( multiplicativeExpression ( ( PLUS | MINUS ) ^ multiplicativeExpression )* )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:130:4: multiplicativeExpression ( ( PLUS | MINUS ) ^ multiplicativeExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -678,7 +678,7 @@ public class CLExprParser extends Parser {
 
 			adaptor.addChild(root_0, multiplicativeExpression18.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:130:29: ( ( PLUS | MINUS ) ^ multiplicativeExpression )*
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:130:29: ( ( PLUS | MINUS ) ^ multiplicativeExpression )*
 			loop6:
 			while (true) {
 				int alt6=2;
@@ -689,7 +689,7 @@ public class CLExprParser extends Parser {
 
 				switch (alt6) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:130:31: ( PLUS | MINUS ) ^ multiplicativeExpression
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:130:31: ( PLUS | MINUS ) ^ multiplicativeExpression
 					{
 					set19=input.LT(1);
 					set19=input.LT(1);
@@ -745,7 +745,7 @@ public class CLExprParser extends Parser {
 
 
 	// $ANTLR start "multiplicativeExpression"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:133:1: multiplicativeExpression : unaryExpression ( ( MULT | DIV ) ^ unaryExpression )* ;
+	// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:133:1: multiplicativeExpression : unaryExpression ( ( MULT | DIV ) ^ unaryExpression )* ;
 	public final CLExprParser.multiplicativeExpression_return multiplicativeExpression() throws RecognitionException {
 		CLExprParser.multiplicativeExpression_return retval = new CLExprParser.multiplicativeExpression_return();
 		retval.start = input.LT(1);
@@ -759,8 +759,8 @@ public class CLExprParser extends Parser {
 		CommonTree set22_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:134:2: ( unaryExpression ( ( MULT | DIV ) ^ unaryExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:135:3: unaryExpression ( ( MULT | DIV ) ^ unaryExpression )*
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:134:2: ( unaryExpression ( ( MULT | DIV ) ^ unaryExpression )* )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:135:3: unaryExpression ( ( MULT | DIV ) ^ unaryExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -771,7 +771,7 @@ public class CLExprParser extends Parser {
 
 			adaptor.addChild(root_0, unaryExpression21.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:135:19: ( ( MULT | DIV ) ^ unaryExpression )*
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:135:19: ( ( MULT | DIV ) ^ unaryExpression )*
 			loop7:
 			while (true) {
 				int alt7=2;
@@ -782,7 +782,7 @@ public class CLExprParser extends Parser {
 
 				switch (alt7) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:135:21: ( MULT | DIV ) ^ unaryExpression
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:135:21: ( MULT | DIV ) ^ unaryExpression
 					{
 					set22=input.LT(1);
 					set22=input.LT(1);
@@ -838,7 +838,7 @@ public class CLExprParser extends Parser {
 
 
 	// $ANTLR start "unaryExpression"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:138:1: unaryExpression : ( primaryExpression | NOT ^ primaryExpression | MINUS primaryExpression -> ^( SIGN_MINUS primaryExpression ) | PLUS primaryExpression -> ^( SIGN_PLUS primaryExpression ) );
+	// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:138:1: unaryExpression : ( primaryExpression | NOT ^ primaryExpression | MINUS primaryExpression -> ^( SIGN_MINUS primaryExpression ) | PLUS primaryExpression -> ^( SIGN_PLUS primaryExpression ) );
 	public final CLExprParser.unaryExpression_return unaryExpression() throws RecognitionException {
 		CLExprParser.unaryExpression_return retval = new CLExprParser.unaryExpression_return();
 		retval.start = input.LT(1);
@@ -861,7 +861,7 @@ public class CLExprParser extends Parser {
 		RewriteRuleSubtreeStream stream_primaryExpression=new RewriteRuleSubtreeStream(adaptor,"rule primaryExpression");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:139:2: ( primaryExpression | NOT ^ primaryExpression | MINUS primaryExpression -> ^( SIGN_MINUS primaryExpression ) | PLUS primaryExpression -> ^( SIGN_PLUS primaryExpression ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:139:2: ( primaryExpression | NOT ^ primaryExpression | MINUS primaryExpression -> ^( SIGN_MINUS primaryExpression ) | PLUS primaryExpression -> ^( SIGN_PLUS primaryExpression ) )
 			int alt8=4;
 			switch ( input.LA(1) ) {
 			case BINARY_FUN:
@@ -901,7 +901,7 @@ public class CLExprParser extends Parser {
 			}
 			switch (alt8) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:140:4: primaryExpression
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:140:4: primaryExpression
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -915,7 +915,7 @@ public class CLExprParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:141:8: NOT ^ primaryExpression
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:141:8: NOT ^ primaryExpression
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -933,7 +933,7 @@ public class CLExprParser extends Parser {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:142:8: MINUS primaryExpression
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:142:8: MINUS primaryExpression
 					{
 					MINUS27=(Token)match(input,MINUS,FOLLOW_MINUS_in_unaryExpression371);  
 					stream_MINUS.add(MINUS27);
@@ -956,7 +956,7 @@ public class CLExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 142:32: -> ^( SIGN_MINUS primaryExpression )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:142:35: ^( SIGN_MINUS primaryExpression )
+						// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:142:35: ^( SIGN_MINUS primaryExpression )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(SIGN_MINUS, "SIGN_MINUS"), root_1);
@@ -972,7 +972,7 @@ public class CLExprParser extends Parser {
 					}
 					break;
 				case 4 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:143:8: PLUS primaryExpression
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:143:8: PLUS primaryExpression
 					{
 					PLUS29=(Token)match(input,PLUS,FOLLOW_PLUS_in_unaryExpression390);  
 					stream_PLUS.add(PLUS29);
@@ -995,7 +995,7 @@ public class CLExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 143:31: -> ^( SIGN_PLUS primaryExpression )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:143:34: ^( SIGN_PLUS primaryExpression )
+						// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:143:34: ^( SIGN_PLUS primaryExpression )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(SIGN_PLUS, "SIGN_PLUS"), root_1);
@@ -1039,7 +1039,7 @@ public class CLExprParser extends Parser {
 
 
 	// $ANTLR start "primaryExpression"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:146:1: primaryExpression : ( '(' ! logicalExpression ')' !| value );
+	// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:146:1: primaryExpression : ( '(' ! logicalExpression ')' !| value );
 	public final CLExprParser.primaryExpression_return primaryExpression() throws RecognitionException {
 		CLExprParser.primaryExpression_return retval = new CLExprParser.primaryExpression_return();
 		retval.start = input.LT(1);
@@ -1055,7 +1055,7 @@ public class CLExprParser extends Parser {
 		CommonTree char_literal33_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:147:2: ( '(' ! logicalExpression ')' !| value )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:147:2: ( '(' ! logicalExpression ')' !| value )
 			int alt9=2;
 			int LA9_0 = input.LA(1);
 			if ( (LA9_0==OPEN_BRACE) ) {
@@ -1073,7 +1073,7 @@ public class CLExprParser extends Parser {
 
 			switch (alt9) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:147:4: '(' ! logicalExpression ')' !
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:147:4: '(' ! logicalExpression ')' !
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1089,7 +1089,7 @@ public class CLExprParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:148:4: value
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:148:4: value
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1131,7 +1131,7 @@ public class CLExprParser extends Parser {
 
 
 	// $ANTLR start "value"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:152:1: value : ( VAR | BOOLEAN | STRING | TERM | INTEGER | FLOAT | DATA_AREA | binary_fun | sst_fun | switch_fun );
+	// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:152:1: value : ( VAR | BOOLEAN | STRING | TERM | INTEGER | FLOAT | DATA_AREA | binary_fun | sst_fun | switch_fun );
 	public final CLExprParser.value_return value() throws RecognitionException {
 		CLExprParser.value_return retval = new CLExprParser.value_return();
 		retval.start = input.LT(1);
@@ -1158,7 +1158,7 @@ public class CLExprParser extends Parser {
 		CommonTree DATA_AREA41_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:152:7: ( VAR | BOOLEAN | STRING | TERM | INTEGER | FLOAT | DATA_AREA | binary_fun | sst_fun | switch_fun )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:152:7: ( VAR | BOOLEAN | STRING | TERM | INTEGER | FLOAT | DATA_AREA | binary_fun | sst_fun | switch_fun )
 			int alt10=10;
 			switch ( input.LA(1) ) {
 			case VAR:
@@ -1218,7 +1218,7 @@ public class CLExprParser extends Parser {
 			}
 			switch (alt10) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:154:2: VAR
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:154:2: VAR
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1230,7 +1230,7 @@ public class CLExprParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:156:2: BOOLEAN
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:156:2: BOOLEAN
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1242,7 +1242,7 @@ public class CLExprParser extends Parser {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:158:2: STRING
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:158:2: STRING
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1254,7 +1254,7 @@ public class CLExprParser extends Parser {
 					}
 					break;
 				case 4 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:160:2: TERM
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:160:2: TERM
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1266,7 +1266,7 @@ public class CLExprParser extends Parser {
 					}
 					break;
 				case 5 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:162:2: INTEGER
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:162:2: INTEGER
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1278,7 +1278,7 @@ public class CLExprParser extends Parser {
 					}
 					break;
 				case 6 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:164:2: FLOAT
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:164:2: FLOAT
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1290,7 +1290,7 @@ public class CLExprParser extends Parser {
 					}
 					break;
 				case 7 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:166:2: DATA_AREA
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:166:2: DATA_AREA
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1302,7 +1302,7 @@ public class CLExprParser extends Parser {
 					}
 					break;
 				case 8 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:168:2: binary_fun
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:168:2: binary_fun
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1316,7 +1316,7 @@ public class CLExprParser extends Parser {
 					}
 					break;
 				case 9 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:170:2: sst_fun
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:170:2: sst_fun
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1330,7 +1330,7 @@ public class CLExprParser extends Parser {
 					}
 					break;
 				case 10 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:172:2: switch_fun
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:172:2: switch_fun
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1372,7 +1372,7 @@ public class CLExprParser extends Parser {
 
 
 	// $ANTLR start "binary_fun"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:176:1: binary_fun : BINARY_FUN '(' ( value )? ')' -> ^( BINARY_FUN[$BINARY_FUN.text] ( value )? ) ;
+	// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:176:1: binary_fun : BINARY_FUN '(' ( value )? ')' -> ^( BINARY_FUN[$BINARY_FUN.text] ( value )? ) ;
 	public final CLExprParser.binary_fun_return binary_fun() throws RecognitionException {
 		CLExprParser.binary_fun_return retval = new CLExprParser.binary_fun_return();
 		retval.start = input.LT(1);
@@ -1393,8 +1393,8 @@ public class CLExprParser extends Parser {
 		RewriteRuleSubtreeStream stream_value=new RewriteRuleSubtreeStream(adaptor,"rule value");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:177:2: ( BINARY_FUN '(' ( value )? ')' -> ^( BINARY_FUN[$BINARY_FUN.text] ( value )? ) )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:178:3: BINARY_FUN '(' ( value )? ')'
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:177:2: ( BINARY_FUN '(' ( value )? ')' -> ^( BINARY_FUN[$BINARY_FUN.text] ( value )? ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:178:3: BINARY_FUN '(' ( value )? ')'
 			{
 			BINARY_FUN45=(Token)match(input,BINARY_FUN,FOLLOW_BINARY_FUN_in_binary_fun506);  
 			stream_BINARY_FUN.add(BINARY_FUN45);
@@ -1402,7 +1402,7 @@ public class CLExprParser extends Parser {
 			char_literal46=(Token)match(input,OPEN_BRACE,FOLLOW_OPEN_BRACE_in_binary_fun508);  
 			stream_OPEN_BRACE.add(char_literal46);
 
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:178:18: ( value )?
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:178:18: ( value )?
 			int alt11=2;
 			int LA11_0 = input.LA(1);
 			if ( ((LA11_0 >= BINARY_FUN && LA11_0 <= BOOLEAN)||LA11_0==DATA_AREA||LA11_0==FLOAT||LA11_0==INTEGER||(LA11_0 >= SST_FUN && LA11_0 <= SWITCH_FUN)||LA11_0==TERM||LA11_0==VAR) ) {
@@ -1410,7 +1410,7 @@ public class CLExprParser extends Parser {
 			}
 			switch (alt11) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:178:18: value
+					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:178:18: value
 					{
 					pushFollow(FOLLOW_value_in_binary_fun510);
 					value47=value();
@@ -1438,11 +1438,11 @@ public class CLExprParser extends Parser {
 			root_0 = (CommonTree)adaptor.nil();
 			// 178:29: -> ^( BINARY_FUN[$BINARY_FUN.text] ( value )? )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:178:32: ^( BINARY_FUN[$BINARY_FUN.text] ( value )? )
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:178:32: ^( BINARY_FUN[$BINARY_FUN.text] ( value )? )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(BINARY_FUN, (BINARY_FUN45!=null?BINARY_FUN45.getText():null)), root_1);
-				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:178:63: ( value )?
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:178:63: ( value )?
 				if ( stream_value.hasNext() ) {
 					adaptor.addChild(root_1, stream_value.nextTree());
 				}
@@ -1485,7 +1485,7 @@ public class CLExprParser extends Parser {
 
 
 	// $ANTLR start "sst_fun"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:181:1: sst_fun : SST_FUN '(' value value value ')' -> ^( SST_FUN[\"\\%SST\"] value value value ) ;
+	// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:181:1: sst_fun : SST_FUN '(' value value value ')' -> ^( SST_FUN[\"\\%SST\"] value value value ) ;
 	public final CLExprParser.sst_fun_return sst_fun() throws RecognitionException {
 		CLExprParser.sst_fun_return retval = new CLExprParser.sst_fun_return();
 		retval.start = input.LT(1);
@@ -1508,8 +1508,8 @@ public class CLExprParser extends Parser {
 		RewriteRuleSubtreeStream stream_value=new RewriteRuleSubtreeStream(adaptor,"rule value");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:182:2: ( SST_FUN '(' value value value ')' -> ^( SST_FUN[\"\\%SST\"] value value value ) )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:183:3: SST_FUN '(' value value value ')'
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:182:2: ( SST_FUN '(' value value value ')' -> ^( SST_FUN[\"\\%SST\"] value value value ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:183:3: SST_FUN '(' value value value ')'
 			{
 			SST_FUN49=(Token)match(input,SST_FUN,FOLLOW_SST_FUN_in_sst_fun537);  
 			stream_SST_FUN.add(SST_FUN49);
@@ -1548,7 +1548,7 @@ public class CLExprParser extends Parser {
 			root_0 = (CommonTree)adaptor.nil();
 			// 183:37: -> ^( SST_FUN[\"\\%SST\"] value value value )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:183:40: ^( SST_FUN[\"\\%SST\"] value value value )
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:183:40: ^( SST_FUN[\"\\%SST\"] value value value )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(SST_FUN, "%SST"), root_1);
@@ -1592,7 +1592,7 @@ public class CLExprParser extends Parser {
 
 
 	// $ANTLR start "switch_fun"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:186:1: switch_fun : SWITCH_FUN '(' SWITCH_VALUE ')' -> ^( SWITCH_FUN[$SWITCH_FUN.text] SWITCH_VALUE ) ;
+	// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:186:1: switch_fun : SWITCH_FUN '(' SWITCH_VALUE ')' -> ^( SWITCH_FUN[$SWITCH_FUN.text] SWITCH_VALUE ) ;
 	public final CLExprParser.switch_fun_return switch_fun() throws RecognitionException {
 		CLExprParser.switch_fun_return retval = new CLExprParser.switch_fun_return();
 		retval.start = input.LT(1);
@@ -1614,8 +1614,8 @@ public class CLExprParser extends Parser {
 		RewriteRuleTokenStream stream_SWITCH_FUN=new RewriteRuleTokenStream(adaptor,"token SWITCH_FUN");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:187:2: ( SWITCH_FUN '(' SWITCH_VALUE ')' -> ^( SWITCH_FUN[$SWITCH_FUN.text] SWITCH_VALUE ) )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:188:3: SWITCH_FUN '(' SWITCH_VALUE ')'
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:187:2: ( SWITCH_FUN '(' SWITCH_VALUE ')' -> ^( SWITCH_FUN[$SWITCH_FUN.text] SWITCH_VALUE ) )
+			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:188:3: SWITCH_FUN '(' SWITCH_VALUE ')'
 			{
 			SWITCH_FUN55=(Token)match(input,SWITCH_FUN,FOLLOW_SWITCH_FUN_in_switch_fun576);  
 			stream_SWITCH_FUN.add(SWITCH_FUN55);
@@ -1630,7 +1630,7 @@ public class CLExprParser extends Parser {
 			stream_CLOSE_BRACE.add(char_literal58);
 
 			// AST REWRITE
-			// elements: SWITCH_VALUE, SWITCH_FUN
+			// elements: SWITCH_FUN, SWITCH_VALUE
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1642,7 +1642,7 @@ public class CLExprParser extends Parser {
 			root_0 = (CommonTree)adaptor.nil();
 			// 188:35: -> ^( SWITCH_FUN[$SWITCH_FUN.text] SWITCH_VALUE )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g:188:38: ^( SWITCH_FUN[$SWITCH_FUN.text] SWITCH_VALUE )
+				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/cl/CLExpr.g:188:38: ^( SWITCH_FUN[$SWITCH_FUN.text] SWITCH_VALUE )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(SWITCH_FUN, (SWITCH_FUN55!=null?SWITCH_FUN55.getText():null)), root_1);

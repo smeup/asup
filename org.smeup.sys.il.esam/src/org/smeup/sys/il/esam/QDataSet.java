@@ -10,6 +10,7 @@ package org.smeup.sys.il.esam;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QRecord;
+import org.smeup.sys.il.data.QString;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -245,6 +246,14 @@ public interface QDataSet<R extends QRecord> {
 	 * @generated
 	 */
 	R get();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QString getFileName();
 
 	/**
 	 * <!-- begin-user-doc -->

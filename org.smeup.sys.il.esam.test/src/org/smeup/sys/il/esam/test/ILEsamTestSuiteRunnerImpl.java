@@ -42,7 +42,7 @@ public class ILEsamTestSuiteRunnerImpl extends BaseTestSuiteDirectoryRunnerImpl 
 		QConnection connection = connectionManager.createConnection(getContext());
 
 		QDataManager dataManager = getContext().get(QDataManager.class);
-		QDataContext dataContext = dataManager.createDataContext(getContext());
+		QDataContext dataContext = dataManager.createDataContext(getContext(), null);
 
 		QAccessManager accessManager = getContext().get(QAccessManager.class);
 		QAccessFactory accessFactory = accessManager.createFactory(connection, dataContext);

@@ -8,6 +8,7 @@
 package org.smeup.sys.il.esam;
 
 import org.smeup.sys.il.data.QRecord;
+import org.smeup.sys.il.data.QString;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -19,5 +20,13 @@ import org.smeup.sys.il.data.QRecord;
  * @generated
  */
 public interface QSMDataSet<R extends QRecord> extends QRRDataSet<R> {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QString getMemberName();
 
 } // QSMDataSet

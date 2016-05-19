@@ -57,6 +57,5 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 
 		for (QBufferedData element : getElements())
 			element.snap();
-
 	}
 }

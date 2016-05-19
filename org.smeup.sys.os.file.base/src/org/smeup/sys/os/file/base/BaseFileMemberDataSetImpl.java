@@ -6,6 +6,7 @@ import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QRecord;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.QSMDataSet;
 import org.smeup.sys.os.file.QFileMember;
@@ -29,6 +30,16 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 	}
 
+	@Override
+	public QString getFileName() {
+		return fileMemberProvider.getFileName();
+	}
+
+	@Override
+	public QString getMemberName() {
+		return fileMemberProvider.getMemberName();
+	}
+	
 	@Override
 	public boolean chain(QNumeric relativeRecordNumber, Boolean lock) {
 		return chain(relativeRecordNumber.asInteger(), null);

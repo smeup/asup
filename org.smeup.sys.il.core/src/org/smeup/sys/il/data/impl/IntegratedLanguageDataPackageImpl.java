@@ -3041,6 +3041,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(dataManagerEClass, this.getDataContainer(), "createDataContainer", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEJavaObject(), "owner", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataManagerEClass, this.getDataContainer(), "createDataContainer", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -3049,6 +3050,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(dataManagerEClass, this.getDataContext(), "createDataContext", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEJavaObject(), "owner", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataManagerEClass, null, "validateDataContainer", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataContainer(), "container", 1, 1, IS_UNIQUE, IS_ORDERED);

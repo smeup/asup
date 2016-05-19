@@ -1,5 +1,4 @@
-﻿
-&NC1='BRENTI0F/E§CSPE'
+﻿&NC1='BRENTI0F/E§CSPE'
 &NC2='BRENTI0F/E§CSPE'
 &NC1='BRENTI0F/E§RAGS' !                  &NC2='BRENTI0F/E§RAGS' !                  &NC3='BRENTI0F/E§RAGS' !                  &NC4='BRENTI0F/E§RAGS' !                  &NC5='BRENTI0F/E§RAGS'
 &MEMF ^= ' '
@@ -10,3 +9,4 @@
 &$MEMO^='*ALL'
 &NC1='BRARTI0F/A§DEAR' !                  &NC2='BRARTI0F/A§DEAR' !                  &NC3='BRARTI0F/A§DEAR' !                  &NC4='BRARTI0F/A§DEAR' !                  &NC5='BRARTI0F/A§DEAR'
 %SST(*LDA 1 2)
+%SST(*LDB 1 2)

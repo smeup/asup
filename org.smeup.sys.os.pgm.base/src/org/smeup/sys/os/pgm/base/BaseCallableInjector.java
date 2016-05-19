@@ -27,7 +27,6 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
@@ -38,6 +37,7 @@ import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QRecordWrapper;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Module;
 import org.smeup.sys.il.data.annotation.Procedure;
@@ -51,6 +51,7 @@ import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QDisplay;
 import org.smeup.sys.il.esam.QKSDataSet;
 import org.smeup.sys.il.esam.QPrint;
+import org.smeup.sys.il.esam.QRRDataSet;
 import org.smeup.sys.il.esam.QSMDataSet;
 import org.smeup.sys.il.esam.annotation.FileDef;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -75,28 +76,27 @@ public class BaseCallableInjector {
 	@Inject
 	private QDataManager dataManager;
 	@Inject
-	private QAccessManager esamManager;
-	@Inject
 	private QResourceManager resourceManager;
 	@Inject
 	private QFileManager fileManager;
 	@Inject
+	private QAccessManager esamManager;
+
+	@Inject
 	private QJob job;
 
-	private QContext context;
 	private QResourceReader<QFile> fileReader;
 	private QDataContext dataContext;
 	private Map<String, Object> callerModules;
 
-	public BaseCallableInjector(QContext context) {
-		this.context = context;
+	public BaseCallableInjector(QDataContext dataContext) {
+		this.dataContext = dataContext;
+		this.callerModules = new HashMap<String, Object>();
 	}
 
 	@PostConstruct
-	public void init() {
+	private void init() {
 		this.fileReader = resourceManager.getResourceReader(job, QFile.class, Scope.LIBRARY_LIST);
-		this.dataContext = dataManager.createDataContext(context);
-		this.callerModules = new HashMap<String, Object>();
 	}
 
 	public QDataContext getDataContext() {
@@ -112,8 +112,8 @@ public class BaseCallableInjector {
 			QAccessFactory accessFactory = esamManager.createFactory(job, dataContext);
 
 			P delegate = injectData(null, klass, dataContainer, accessFactory, new HashMap<String, Object>(), new HashMap<String, QRecord>());
-			context.invoke(delegate, PostConstruct.class);
-			
+			dataContext.getContext().invoke(delegate, PostConstruct.class);
+
 			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();
 			programInfo.setMemorySize(dataContainer.getMemorySize());
 			QCallableProgram<P> callableProgram = new BaseCallableProgramDelegator<P>(dataContext, program, programStatus, delegate, programInfo);
@@ -126,8 +126,34 @@ public class BaseCallableInjector {
 		}
 	}
 
-	
-	
+	public <P extends Object> P prepareProcedure(Object owner, Class<P> klass) {
+
+		Constructor<?> constructor = null;
+		QDataContainer dataContainer = null;
+		try {
+			constructor = klass.getDeclaredConstructor(owner.getClass());
+			constructor.setAccessible(true);
+			@SuppressWarnings("unchecked")
+			P callable = (P) constructor.newInstance(owner);
+
+			Map<String, Object> unitModules = new HashMap<String, Object>();
+			Map<String, QRecord> records = new HashMap<String, QRecord>();
+
+			dataContainer = dataManager.createDataContainer(dataContext.getContext(), callable);
+
+			injectFields(owner, klass, callable, dataContainer, null, unitModules, records);
+
+			return callable;
+		} catch (Exception e) {
+			throw new OperatingSystemRuntimeException(e);
+		} finally {
+			if (constructor != null)
+				constructor.setAccessible(false);
+			if (dataContainer != null)
+				dataContainer.close();
+		}
+	}
+
 	private QProgramStatus createProgramStatus(QProgram program, QDataContainer dataContainer) {
 
 		QDataTerm<?> programStatusTerm = dataContainer.addDataTerm("*pgmstatus", BaseProgramStatusImpl.class, null);
@@ -145,32 +171,6 @@ public class BaseCallableInjector {
 		programStatus.getJobName().eval(jobReference.getJobName());
 
 		return programStatus;
-	}
-
-	public <P extends Object> P prepareProcedure(Object owner, Class<P> klass) {
-
-		QDataContainer dataContainer = dataManager.createDataContainer(dataContext);
-		Constructor<?> constructor = null;
-
-		try {
-			constructor = klass.getDeclaredConstructor(owner.getClass());
-			constructor.setAccessible(true);
-			@SuppressWarnings("unchecked")
-			P callable = (P) constructor.newInstance(owner);
-
-			Map<String, Object> unitModules = new HashMap<String, Object>();
-			Map<String, QRecord> records = new HashMap<String, QRecord>();
-
-			injectFields(owner, klass, callable, dataContainer, null, unitModules, records);
-
-			return callable;
-		} catch (Exception e) {
-			throw new OperatingSystemRuntimeException(e);
-		} finally {
-			if (constructor != null)
-				constructor.setAccessible(false);
-			dataContainer.close();
-		}
 	}
 
 	private <P> P injectData(Object owner, Class<P> klass, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules, Map<String, QRecord> records)
@@ -199,7 +199,6 @@ public class BaseCallableInjector {
 		List<InjectableField> dataSets = new LinkedList<InjectableField>();
 		List<InjectableField> displays = new LinkedList<InjectableField>();
 		List<InjectableField> prints = new LinkedList<InjectableField>();
-		List<InjectableField> infoFields = new ArrayList<InjectableField>();
 		List<InjectableField> pointers = new ArrayList<InjectableField>();
 
 		for (Field field : klass.getDeclaredFields()) {
@@ -304,7 +303,7 @@ public class BaseCallableInjector {
 				object = owner;
 			// Inject
 			else if (field.getAnnotation(Inject.class) != null) {
-				object = context.get(fieldClass);
+				object = dataContext.getContext().get(fieldClass);
 
 				if (object == null)
 					throw new OperatingSystemRuntimeException("Invalid " + injectableField);
@@ -349,8 +348,6 @@ public class BaseCallableInjector {
 				userOpen = fileDef.userOpen();
 				if (!fileDef.name().isEmpty())
 					primaryRecordName = fileDef.name();
-				if (!fileDef.info().isEmpty())
-					infoFields.add(field);
 
 				if (!fileDef.prefix().isEmpty())
 					primaryRecordName = fileDef.prefix() + "_" + primaryRecordName;
@@ -462,18 +459,45 @@ public class BaseCallableInjector {
 			field.setValue(callable, dataContainer.getData(dataTerm));
 		}
 
-		// recordInfo
-		for (InjectableField field : infoFields) {
-
+		// recordInfo/fileName/memberName
+		for (InjectableField field : dataSets) {
 			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
+			if (fileDef == null)
+				continue;
 
-			QDataStruct infoStruct = (QDataStruct) records.get(fileDef.info().toLowerCase());
-			if (infoStruct == null)
-				System.err.println("Unused infoStruct" + fileDef.info());
-			else {
-				field.getField().setAccessible(true);
-				((QDataSet<?>) field.getValue(callable)).getInfoStruct().assign(infoStruct);
-				field.getField().setAccessible(false);
+			// fileInfo
+			if (!fileDef.info().isEmpty()) {
+				QDataStruct infoStruct = (QDataStruct) records.get(fileDef.info().toLowerCase());
+				if (infoStruct == null)
+					System.err.println("Unused infoStruct" + fileDef.info());
+				else {
+					field.getField().setAccessible(true);
+					QDataSet<?> dataSet = ((QDataSet<?>) field.getValue(callable));
+					dataSet.getInfoStruct().assign(infoStruct);
+					field.getField().setAccessible(false);
+				}
+			}
+
+			QString externalFile = null;
+			if (!fileDef.externalFile().isEmpty())
+				externalFile = (QString) getFieldValue(callable, fileDef.externalFile());
+
+			QString externalMember = null;
+			if (!fileDef.externalMember().isEmpty())
+				externalMember = (QString) getFieldValue(callable, fileDef.externalMember());
+
+			if (externalFile != null) {
+				if (QKSDataSet.class.isAssignableFrom(field.getClass_())) {
+					QKSDataSet<?> dataSet = (QKSDataSet<?>) field.getValue(callable);
+					externalFile.assign(dataSet.getFileName());
+				} else if (QSMDataSet.class.isAssignableFrom(field.getClass_())) {
+					QSMDataSet<?> dataSet = (QSMDataSet<?>) field.getValue(callable);
+					externalFile.assign(dataSet.getFileName());
+					externalMember.assign(dataSet.getMemberName());
+				} else {
+					QRRDataSet<?> dataSet = (QRRDataSet<?>) field.getValue(callable);
+					externalFile.assign(dataSet.getFileName());
+				}
 			}
 		}
 	}
@@ -499,9 +523,6 @@ public class BaseCallableInjector {
 					continue;
 			}
 
-			if(dataTerm.getName().equalsIgnoreCase("£mu_£c£c£e_c01_1"))
-				"".toCharArray();
-			
 			QData data = dataContainer.getData(dataTerm);
 
 			QDataStruct dataStruct = (QDataStruct) data;
@@ -631,6 +652,25 @@ public class BaseCallableInjector {
 		public String toString() {
 			return "InjectableField [field=" + field + ", class_=" + class_ + ", type=" + type + ", arguments=" + Arrays.toString(arguments) + "]";
 		}
+	}
+
+	private Object getFieldValue(Object owner, String externalFile) {
+
+		String splits[] = externalFile.split("\\.");
+
+		for (String split : splits) {
+
+			try {
+				Field externalFileField = owner.getClass().getDeclaredField(split);
+				externalFileField.setAccessible(true);
+				owner = externalFileField.get(owner);
+				externalFileField.setAccessible(false);
+			} catch (Exception e) {
+				throw new OperatingSystemRuntimeException("Invalid externalFile: " + externalFile);
+			}
+		}
+
+		return owner;
 	}
 
 	public static Byte convertHexToByte(String value) {

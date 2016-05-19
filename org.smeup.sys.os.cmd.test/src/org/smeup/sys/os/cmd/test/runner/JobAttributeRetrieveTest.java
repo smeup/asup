@@ -46,7 +46,7 @@ public class JobAttributeRetrieveTest {
 	@TestStarted
 	public void main() throws IOException {
 
-		dataContext = dataManager.createDataContext(job.getContext());
+		dataContext = dataManager.createDataContext(job.getContext(), null);
 
 		Map<String, Object> variables = new HashMap<String, Object>();
 

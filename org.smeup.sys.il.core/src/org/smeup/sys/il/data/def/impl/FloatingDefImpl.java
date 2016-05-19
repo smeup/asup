@@ -174,4 +174,22 @@ public class FloatingDefImpl extends UnaryAtomicBufferedDataDefImpl<QFloating> i
 	public DataDefType getDataDefType() {
 		return DataDefType.FLOATING;
 	}
+	
+	@Override
+	public int getLength() {
+		return getSize();
+	}
+
+	@Override
+	public int getSize() {
+
+		switch (getType()) {
+		case DOUBLE:
+			return 8;
+		case SINGLE:
+			return 4;
+		}
+		
+		return 0;
+	}
 } // FloatingDefImpl

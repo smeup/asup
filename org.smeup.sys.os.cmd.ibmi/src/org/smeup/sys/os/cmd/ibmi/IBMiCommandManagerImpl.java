@@ -121,7 +121,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 
 		// data container
-		QDataContainer dataContainer = dataManager.createDataContainer(job.getContext());
+		QDataContainer dataContainer = dataManager.createDataContainer(job.getContext(), null);
 
 		// prepare data terms
 		for (QCommandParameter commandParameter : qCommand.getParameters(CommandParameterOrder.POSITION)) {
@@ -203,6 +203,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			}
 				
 		}
+		
 		return callableCommand;
 	}
 	

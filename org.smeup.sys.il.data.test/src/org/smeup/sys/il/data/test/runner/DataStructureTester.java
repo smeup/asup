@@ -43,7 +43,7 @@ public class DataStructureTester {
 	@TestStarted
 	public void main() throws IOException, ClassNotFoundException {
 
-		QDataContext dataContext = dataManager.createDataContext(testRunner.getContext());
+		QDataContext dataContext = dataManager.createDataContext(testRunner.getContext(), null);
 		QDataFactory dataFactory = dataContext.getDataFactory();
 
 		testAsserter.resetTime();

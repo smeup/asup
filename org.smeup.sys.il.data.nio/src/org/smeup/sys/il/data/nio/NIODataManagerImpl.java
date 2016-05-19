@@ -44,9 +44,9 @@ public class NIODataManagerImpl implements QDataManager {
 	private QFrameManager frameManager;
 
 	@Override
-	public QDataContext createDataContext(QContext context) {
+	public QDataContext createDataContext(QContext context, Object owner) {
 
-		NIODataContextImpl nioDataContextImpl = new NIODataContextImpl(context);
+		NIODataContextImpl nioDataContextImpl = new NIODataContextImpl(context, owner);
 		
 		return nioDataContextImpl;
 	}
@@ -55,10 +55,10 @@ public class NIODataManagerImpl implements QDataManager {
 	public QDataContainer createDataContainer(QDataContext dataContext) {
 		return new NIODataContainerImpl((NIODataContextImpl) dataContext);
 	}
-
+	
 	@Override
-	public QDataContainer createDataContainer(QContext context) {
-		return new NIODataContainerImpl(new NIODataContextImpl(context));
+	public QDataContainer createDataContainer(QContext context, Object owner) {
+		return new NIODataContainerImpl(new NIODataContextImpl(context, owner));
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class NIODataManagerImpl implements QDataManager {
 
 		QFrame<?> frame = frameManager.getFrame(object);
 
-		QDataContainer dataContainer = new NIODataContainerImpl(new NIODataContextImpl(context));
+		QDataContainer dataContainer = new NIODataContainerImpl(new NIODataContextImpl(context, object));
 		for(QDataTerm<?> dataTerm: buildDataTerms(frame, frameManager.getFrame(term))) 
 			dataContainer.addDataTerm(dataTerm);
 

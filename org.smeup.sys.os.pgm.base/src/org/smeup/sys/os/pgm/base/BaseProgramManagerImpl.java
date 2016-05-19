@@ -24,6 +24,9 @@ import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QStorable;
@@ -63,6 +66,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	private QJobLogManager jobLogManager;
 	@Inject
 	private QResourceManager resourceManager;
+	@Inject
+	private QDataManager dataManager;
 
 	private QActivationGroupManager activationGroupManager;
 
@@ -199,23 +204,23 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	private <P> QCallableProgram<P> prepareCallableProgram(QJob job, QProgram program, Class<P> klass) {
 
-		BaseCallableInjector callableInjector = new BaseCallableInjector(job.getContext());
-		job.getContext().inject(callableInjector);
-		QCallableProgram<P> callableProgram = callableInjector.prepareCallable(program, klass);
+		QDataContext dataContext = dataManager.createDataContext(job.getContext(), null);
+		QDataContainer dataContainer = dataManager.createDataContainer(dataContext);
+		
+		try {
+			BaseCallableInjector callableInjector = new BaseCallableInjector(dataContext);
+			job.getContext().inject(callableInjector);
 
-		QProgramInfo programInfo = callableProgram.getProgramInfo();
-		if (programInfo != null) {
-			QJobRunInfo jobRunInfo = job.getJobRunInfo();
-			if (jobRunInfo == null) {
-				jobRunInfo = QOperatingSystemJobsFactory.eINSTANCE.createJobRunInfo();
-				job.setJobRunInfo(jobRunInfo);
-			}
-			jobRunInfo.setMemorySize(jobRunInfo.getMemorySize() + programInfo.getMemorySize());
+			QCallableProgram<P> callableProgram = callableInjector.prepareCallable(program, klass);
+
+			return callableProgram;
+		} catch (Exception e) {
+			throw new OperatingSystemRuntimeException(e);
+		} finally {
+			dataContainer.close();
 		}
-
-		return callableProgram;
 	}
-
+	
 	private void assignParameters(QCallableProgram<?> callableProgram, QData[] paramsFrom) {
 
 		QData[] paramsTo = callableProgram.getEntry();

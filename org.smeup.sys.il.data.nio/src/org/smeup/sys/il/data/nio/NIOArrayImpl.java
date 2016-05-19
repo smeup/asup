@@ -585,6 +585,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 			}
 
 			Collections.sort(dataList, new Comparator<byte[]>() {
+
 				@Override
 				public int compare(byte[] param1, byte[] param2) {
 
@@ -608,8 +609,19 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 	@Override
 	public void clear() {
-		for (D element : this)
-			element.clear();
+
+		D model = getModel();
+
+		if (model instanceof NIOIndicatorImpl ||
+			model instanceof NIODecimalZonedImpl) {
+			
+			NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+			firstElement.clear();
+			NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), firstElement._toBytes());
+		} else {
+			for (D element : this)
+				element.clear();
+		}
 	}
 
 	@Override
@@ -865,7 +877,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 			}
 		}
 		// TODO
-		
+
 		return newArray;
 	}
 
@@ -883,9 +895,10 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 			}
 		}
 		// TODO
-		
+
 		return newArray;
 	}
+
 	@Override
 	public QArray<D> qPlus(QArray<D> value) {
 		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), getModel(), capacity(), getSortDirection(), true);
@@ -899,7 +912,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 			}
 		}
 		// TODO
-		
+
 		return newArray;
 	}
 
@@ -910,7 +923,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 		newArray.movea(this);
 
 		for (D element : newArray) {
-			((QString)element).cat(value);
+			((QString) element).cat(value);
 		}
 
 		return newArray;
@@ -923,7 +936,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 		newArray.movea(this);
 
 		for (D element : newArray) {
-			((QString)element).cat(value);
+			((QString) element).cat(value);
 		}
 
 		return newArray;
