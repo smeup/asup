@@ -38,6 +38,7 @@ import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Module;
 import org.smeup.sys.il.data.annotation.Procedure;
@@ -346,6 +347,7 @@ public class BaseCallableInjector {
 			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
 			if (fileDef != null) {
 				userOpen = fileDef.userOpen();
+				
 				if (!fileDef.name().isEmpty())
 					primaryRecordName = fileDef.name();
 
@@ -354,6 +356,10 @@ public class BaseCallableInjector {
 			}
 
 			QRecord record = records.get(primaryRecordName.toLowerCase());
+			// TODO (C£C£Ex)
+			if (record == null)
+				record = records.get(classPrimaryRecord.getSimpleName().toLowerCase());
+
 			if (record == null) {
 				record = dataContainer.getDataContext().getDataFactory().createRecord(classRecord, true);
 				records.put(primaryRecordName.toLowerCase(), record);
@@ -366,6 +372,10 @@ public class BaseCallableInjector {
 			} else {
 				dataSet = accessFactory.createRelativeRecordDataSet(classRecord, record, AccessMode.UPDATE, userOpen, null);
 			}
+
+			if (fileDef != null && !fileDef.name().isEmpty())
+				dataSet.getFileName().eval(fileDef.name());				
+
 			dataSet.clear();
 			field.setValue(callable, dataSet);
 		}
@@ -525,27 +535,32 @@ public class BaseCallableInjector {
 
 			QData data = dataContainer.getData(dataTerm);
 
-			QDataStruct dataStruct = (QDataStruct) data;
-			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
+			if (data instanceof QStroller<?>) {
+				field.setValue(callable, data);
+			}
+			else {
+				QDataStruct dataStruct = (QDataStruct) data;
+				QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
 
-			Class<? extends QRecord> primaryRecordClass = getPrimaryRecord((Class<? extends QRecord>) data.getClass());
+				Class<? extends QRecord> primaryRecordClass = getPrimaryRecord((Class<? extends QRecord>) data.getClass());
 
-			String primaryRecordName = primaryRecordClass.getSimpleName();
-			if (compoundDataDef.getPrefix() != null && !compoundDataDef.getPrefix().isEmpty())
-				primaryRecordName = compoundDataDef.getPrefix() + "_" + primaryRecordName;
+				String primaryRecordName = primaryRecordClass.getSimpleName();
+				if (compoundDataDef.getPrefix() != null && !compoundDataDef.getPrefix().isEmpty())
+					primaryRecordName = compoundDataDef.getPrefix() + "_" + primaryRecordName;
 
-			if (compoundDataDef.isQualified())
-				primaryRecordName = primaryRecordName + "(" + dataTerm.getName() + ")";
+				if (compoundDataDef.isQualified())
+					primaryRecordName = primaryRecordName + "(" + dataTerm.getName() + ")";
 
-			primaryRecordName = primaryRecordName.toLowerCase();
+				primaryRecordName = primaryRecordName.toLowerCase();
 
-			QRecord primaryRecord = records.get(primaryRecordName);
-			if (primaryRecord == null)
-				records.put(primaryRecordName, dataStruct);
-			else
-				((QDataStruct) primaryRecord).assign(dataStruct);
-
-			field.setValue(callable, dataStruct);
+				QRecord primaryRecord = records.get(primaryRecordName);
+				if (primaryRecord == null)
+					records.put(primaryRecordName, dataStruct);
+				else
+					((QDataStruct) primaryRecord).assign(dataStruct);
+				
+				field.setValue(callable, dataStruct);
+			}
 		}
 
 	}
