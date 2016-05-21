@@ -93,7 +93,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 		}
 		
 		if(tableName == null) {
-			tableName = dataContext.getDataFactory().createCharacter(wrapper.getSimpleName().length(), false, true);
+			tableName = dataContext.getDataFactory().createCharacter(16, false, true);
 			tableName.eval(wrapper.getSimpleName());
 
 		}
@@ -145,7 +145,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 		}
 
 		if(tableName == null) {
-			tableName = dataContext.getDataFactory().createCharacter(wrapper.getSimpleName().length(), false, true);
+			tableName = dataContext.getDataFactory().createCharacter(16, false, true);
 			tableName.eval(wrapper.getSimpleName());
 		}
 		
@@ -185,7 +185,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 	public <R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, R record, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct, QString fileName, QString memberName) {
 		
 		if(fileName == null) {
-			fileName = dataContext.getDataFactory().createCharacter(wrapper.getSimpleName().length(), false, true);
+			fileName = dataContext.getDataFactory().createCharacter(16, false, true);
 			fileName.eval(wrapper.getSimpleName());
 		}
 

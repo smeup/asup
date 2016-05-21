@@ -30,7 +30,7 @@ public class JDBCTableProvider {
 		QCatalogMetaData catalogMetaData = connection.getCatalogMetaData();
 
 		if (container == null) {
-			return catalogMetaData.getTable(connection.getContext().getContextDescription(), name);
+			return catalogMetaData.getTable(name);
 		} else
 			return catalogMetaData.getTable(container, name);
 	}

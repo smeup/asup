@@ -13,7 +13,6 @@ import org.eclipse.datatools.modelbase.sql.constraints.Index;
 import org.eclipse.datatools.modelbase.sql.schema.Schema;
 import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.eclipse.datatools.modelbase.sql.tables.ViewTable;
-import org.smeup.sys.il.core.ctx.QContextDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -26,28 +25,40 @@ import org.smeup.sys.il.core.ctx.QContextDescription;
  */
 public interface QCatalogMetaData {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model schemaRequired="true" tableRequired="true" indexRequired="true"
 	 * @generated
 	 */
 	Index getIndex(String schema, String table, String index);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" schemaRequired="true"
 	 * @generated
 	 */
 	Schema getSchema(String schema);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
 	List<Schema> getSchemas();
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model tableRequired="true"
+	 * @generated
+	 */
+	Table getTable(String table);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model schemaRequired="true" tableRequired="true"
 	 * @generated
 	 */
@@ -56,13 +67,14 @@ public interface QCatalogMetaData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model contextDescriptionRequired="true" tableRequired="true"
+	 * @model tableRequired="true"
 	 * @generated
 	 */
-	Table getTable(QContextDescription contextDescription, String table);
+	ViewTable getView(String table);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model schemaRequired="true" tableRequired="true"
 	 * @generated
 	 */

@@ -49,10 +49,11 @@ public class BaseConnectionImpl implements QConnection, Connection {
 
 	private QContext context;
 	private QDatabaseContainer databaseContainer;
+	private QCatalogMetaData catalogMetaData;
 
 	private QQueryParser queryParser;
 	private QAliasResolver aliasResolver;
-	
+
 	private String virtualCatalog;
 	private BaseCatalogConnection currentCatalogConnection;
 	private List<BaseCatalogConnection> catalogConnections;
@@ -62,7 +63,7 @@ public class BaseConnectionImpl implements QConnection, Connection {
 		this.context = context;
 		this.databaseContainer = databaseContainer;
 		this.queryParser = context.get(QQueryParser.class);
-		
+
 		this.catalogConnections = new ArrayList<BaseCatalogConnection>();
 	}
 
@@ -85,7 +86,7 @@ public class BaseConnectionImpl implements QConnection, Connection {
 		this.catalogConnections.clear();
 		this.currentCatalogConnection = null;
 		this.virtualCatalog = null;
-		
+
 		this.context.close();
 	}
 
@@ -221,12 +222,21 @@ public class BaseConnectionImpl implements QConnection, Connection {
 
 	@Override
 	public QCatalogMetaData getCatalogMetaData() {
-		try {
-			return getCatalogConnection().getCatalogMetaData();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
+
+		if (this.catalogMetaData == null) {
+			synchronized (this) {
+				if (this.catalogMetaData == null) {
+					try {
+						catalogMetaData = new BaseCatalogMetaDataConnectionImpl(this, getCatalogConnection().getCatalogMetaData());
+					} catch (SQLException e) {
+						e.printStackTrace();
+						return null;
+					}
+				}
+			}
 		}
+
+		return catalogMetaData;
 	}
 
 	@Override
@@ -488,12 +498,12 @@ public class BaseConnectionImpl implements QConnection, Connection {
 			SQLQueryParseResult query = queryParser.parseQuery(sql);
 			BaseCatalogConnection connection = getCatalogConnection();
 
-			if(aliasResolver == null)
+			if (aliasResolver == null)
 				aliasResolver = context.get(QAliasResolver.class);
-			
-			if(aliasResolver != null) 
+
+			if (aliasResolver != null)
 				aliasResolver.resolveQuery(this, query);
-			
+
 			sql = connection.getQueryWriter().writeQuery(query.getQueryStatement());
 		} catch (Exception e) {
 			throw new SQLException(e);
@@ -510,20 +520,20 @@ public class BaseConnectionImpl implements QConnection, Connection {
 	@Override
 	public void close(QStatement stmt) {
 		try {
-			if (stmt != null) { 
-				stmt.close(); 
+			if (stmt != null) {
+				stmt.close();
 			}
 		} catch (Exception e) {
-		}  	
+		}
 	}
 
 	@Override
 	public void close(ResultSet rs) {
 		try {
-			if (rs != null) { 
-				rs.close(); 
+			if (rs != null) {
+				rs.close();
 			}
 		} catch (Exception e) {
-		}  	
+		}
 	}
 }

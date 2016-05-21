@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.smeup.sys.db.core.QCatalogMetaData;
 import org.smeup.sys.db.core.QDatabaseCorePackage;
-import org.smeup.sys.il.core.ctx.QContextDescription;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -44,10 +43,10 @@ public abstract class CatalogMetaDataImpl extends MinimalEObjectImpl.Container i
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Index getIndex(String schema, String table, String index) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -55,10 +54,10 @@ public abstract class CatalogMetaDataImpl extends MinimalEObjectImpl.Container i
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Schema getSchema(String schema) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -66,10 +65,10 @@ public abstract class CatalogMetaDataImpl extends MinimalEObjectImpl.Container i
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public List<Schema> getSchemas() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -77,10 +76,21 @@ public abstract class CatalogMetaDataImpl extends MinimalEObjectImpl.Container i
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
+	public Table getTable(String table) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Table getTable(String schema, String table) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -92,17 +102,17 @@ public abstract class CatalogMetaDataImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Table getTable(QContextDescription contextDescription, String table) {
+	public ViewTable getView(String table) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public ViewTable getView(String schema, String table) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
