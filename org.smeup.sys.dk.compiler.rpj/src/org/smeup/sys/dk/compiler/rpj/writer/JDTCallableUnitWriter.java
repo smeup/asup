@@ -282,11 +282,15 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
 				writeAnnotation(field, FileDef.class, "info", getCompilationUnit().normalizeTermName(dataSetTerm.getInfoStruct()));
 
-			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getDataSetTerm_ExternalFile()))
-				writeAnnotation(field, FileDef.class, "externalFile", getCompilationUnit().normalizeTermName(dataSetTerm.getExternalFile()));
+			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getDataSetTerm_ExternalFile())) {
+				QDataTerm<?> externalFileTerm = getCompilationUnit().getDataTerm(dataSetTerm.getExternalFile(), true);
+				writeAnnotation(field, FileDef.class, "externalFile", getCompilationUnit().getQualifiedName(externalFileTerm));
+			}
 
-			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getDataSetTerm_ExternalMember()))
-				writeAnnotation(field, FileDef.class, "externalMember", getCompilationUnit().normalizeTermName(dataSetTerm.getExternalMember()));
+			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getDataSetTerm_ExternalMember())) {
+				QDataTerm<?> externalFileMember = getCompilationUnit().getDataTerm(dataSetTerm.getExternalMember(), true);				
+				writeAnnotation(field, FileDef.class, "externalMember", getCompilationUnit().getQualifiedName(externalFileMember));
+			}
 
 			if(getCompilationUnit().getNode() instanceof QModule)
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
