@@ -26,7 +26,7 @@ public class BaseAliasResolverImpl implements QAliasResolver {
 		for (TableInDatabase tableRef : tableList) {
 
 			if (tableRef.getDatabaseTable().getSchema().getName() == null) {
-				Table table = connection.getCatalogMetaData().getTable(connection.getContext().getContextDescription(), tableRef.getName());
+				Table table = connection.getCatalogMetaData().getTable(tableRef.getName());
 				if (table != null)
 					tableRef.setDatabaseTable(table);
 			} else {

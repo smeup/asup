@@ -31,6 +31,7 @@ import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QExceptionManager;
@@ -134,16 +135,19 @@ public @Supported class FileDescriptionDisplayer {
 
 	private QFile createDestinationFile(FileRef toFile, TypeOfFileInformationEnum typeofinformationEnum) {
 
-		QResourceReader<QFile> fileReader = resourceManager.getResourceReader(job, QFile.class, toFile.library.asEnum(), toFile.library.asData().trimR());
-		QFile qFileTo = fileReader.lookup(toFile.name.trimR());
-		if (qFileTo == null) {
-			QFile qFileFrom = fileReader.lookup(typeofinformationEnum.baseOutputFileName());
-			
-			QResourceWriter<QFile> fileWriter = resourceManager.getResourceWriter(job, QFile.class, toFile.library.asEnum(), toFile.library.asData().trimR());
-			qFileTo = fileWriter.copy(qFileFrom, toFile.name.trimR());
-			
-			jobLogManager.info(job, "File " + toFile + " created");
-		}
+		QResourceWriter<QFile> fileWriter = resourceManager.getResourceWriter(job, QFile.class, toFile.library.asEnum(), toFile.library.asData().trimR());
+		QFile qFileTo = fileWriter.lookup(toFile.name.trimR());
+		if (qFileTo != null) 
+			return qFileTo;
+		
+		QResourceReader<QFile> fileReader = resourceManager.getResourceReader(job, QFile.class, Scope.LIBRARY_LIST);
+		QFile qFileFrom = fileReader.lookup(typeofinformationEnum.baseOutputFileName());
+		if(qFileFrom == null)
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF3012, new String[] { typeofinformationEnum.baseOutputFileName() });
+		
+		qFileTo = fileWriter.copy(qFileFrom, toFile.name.trimR());
+		
+		jobLogManager.info(job, "File " + toFile + " created");
 		
 		return qFileTo;
 	}
