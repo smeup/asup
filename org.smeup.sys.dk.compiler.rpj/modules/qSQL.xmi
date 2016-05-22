@@ -3,26 +3,24 @@
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:il-core="http://www.smeup.org/asup/il/core"
-    xmlns:il-data="http://www.smeup.org/asup/il/data"
-        xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" 
-    xmlns:il-data-term="http://www.smeup.org/asup/il/data/term"
-
+    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
     xmlns:il-flow="http://www.smeup.org/asup/il/flow"
-    xmlns:db-esam="http://www.smeup.org/asup/db/esam"
-    xsi:schemaLocation="
-    http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore 
-    http://www.smeup.org/asup/il/data ../../org.smeup.sys.il.core/model/il-data.ecore 
-    http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def
-    http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il-flow/model/il-flow.ecore
-    http://www.smeup.org/asup/db/esam ../../org.smeup.sys.db.esam/model/db-esam.ecore"
+    xsi:schemaLocation="http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il.flow/model/il-flow.ecore"
     name="*SQL">
-
   <dataSection>
     <datas xsi:type="il-flow:FlowData"
         name="SQLCA">
       <definition
           xsi:type="il-data-def:DataStructDef">
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLCAID">
+          <default
+              value="X'0000000000000000'"/>
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="8"/>
+        </elements>
         <elements
             xsi:type="il-flow:FlowData"
             name="SQLAID">
@@ -39,24 +37,363 @@
         </elements>
         <elements
             xsi:type="il-flow:FlowData"
+            name="SQLABC">
+          <definition
+              xsi:type="il-data-def:BinaryDef"
+              type="INTEGER"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLCODE">
+          <definition
+              xsi:type="il-data-def:BinaryDef"
+              type="INTEGER"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
             name="SQLCOD">
           <definition
               xsi:type="il-data-def:BinaryDef"
               type="INTEGER"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLERRML">
+          <definition
+              xsi:type="il-data-def:BinaryDef"
+              type="SHORT"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLERL">
+          <definition
+              xsi:type="il-data-def:BinaryDef"
+              type="INTEGER"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLERRMC">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="70"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLERM">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="70"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLERRP">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="8"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLERP">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="8"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLERR">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="24"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLER1">
+          <definition
+              xsi:type="il-data-def:BinaryDef"
+              type="INTEGER"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLER2">
+          <definition
+              xsi:type="il-data-def:BinaryDef"
+              type="INTEGER"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLER3">
+          <definition
+              xsi:type="il-data-def:BinaryDef"
+              type="INTEGER"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLER4">
+          <definition
+              xsi:type="il-data-def:BinaryDef"
+              type="INTEGER"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLER5">
+          <definition
+              xsi:type="il-data-def:BinaryDef"
+              type="INTEGER"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLER6">
+          <definition
+              xsi:type="il-data-def:BinaryDef"
+              type="INTEGER"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLERRD">
+          <definition
+              xsi:type="il-data-def:ArrayDef"
+              dimension="6">
+            <argument
+                xsi:type="il-data-def:BinaryDef"
+                type="INTEGER"/>
+          </definition>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLWRN">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="11"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLWN0">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="1"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLWN1">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="1"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLWN2">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="1"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLWN3">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="1"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLWN4">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="1"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLWN5">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="1"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLWN6">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="1"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLWN7">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="1"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLWN8">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="1"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLWN9">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="1"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLWNA">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="1"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLWARN">
+          <definition
+              xsi:type="il-data-def:ArrayDef"
+              dimension="11">
+            <argument
+                xsi:type="il-data-def:CharacterDef"
+                length="1"/>
+          </definition>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLSTATE">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="5"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLSTT">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="5"/>
+        </elements>
+      </definition>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="SQLDA">
+      <definition
+          xsi:type="il-data-def:DataStructDef">
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLDAID">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="8"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLDABC">
+          <definition
+              xsi:type="il-data-def:BinaryDef"
+              type="INTEGER"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLN">
+          <definition
+              xsi:type="il-data-def:BinaryDef"
+              type="SHORT"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLD">
+          <definition
+              xsi:type="il-data-def:BinaryDef"
+              type="SHORT"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQL_VAR">
+          <definition
+              xsi:type="il-data-def:ArrayDef"
+              dimension="10">
+            <argument
+                xsi:type="il-data-def:CharacterDef"
+                length="80"/>
+          </definition>
+        </elements>
+      </definition>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="SQLVAR">
+      <definition
+          xsi:type="il-data-def:DataStructDef">
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLTYPE">
+          <definition
+              xsi:type="il-data-def:BinaryDef"
+              type="SHORT"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLLEN">
+          <definition
+              xsi:type="il-data-def:BinaryDef"
+              type="SHORT"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLRES">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="12"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLINFO1">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="16"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLDATA">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="16"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLINFO2">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="16"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLIND">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="16"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLNAMELEN">
+          <definition
+              xsi:type="il-data-def:BinaryDef"
+              type="SHORT"/>
+        </elements>
+        <elements
+            xsi:type="il-flow:FlowData"
+            name="SQLNAME">
+          <definition
+              xsi:type="il-data-def:CharacterDef"
+              length="30"/>
         </elements>
       </definition>
     </datas>
   </dataSection>
   <flowSection>
     <prototypes
-          name="%execute">
+        name="%execute">
       <entry>
         <parameters>
           <delegate
               xsi:type="il-flow:FlowData"
-              name="statement"
-              default="">
-              <cardinality min="1"/>
+              name="statement">
+            <cardinality
+                min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -64,14 +401,14 @@
       </entry>
     </prototypes>
     <prototypes
-          name="%execute">
+        name="%execute">
       <entry>
         <parameters>
           <delegate
               xsi:type="il-flow:FlowData"
-              name="query"
-              default="">
-              <cardinality min="1"/>
+              name="query">
+            <cardinality
+                min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -79,9 +416,9 @@
         <parameters>
           <delegate
               xsi:type="il-flow:FlowData"
-              name="into"
-              default="">
-              <cardinality min="1"/>
+              name="into">
+            <cardinality
+                min="1"/>
             <definition
                 xsi:type="il-data-def:BufferDef"/>
           </delegate>
