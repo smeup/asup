@@ -24,8 +24,8 @@ import org.smeup.sys.os.usrspc.QUserSpace;
 public class OperatingSystemUserSpaceFactoryImpl extends EFactoryImpl implements QOperatingSystemUserSpaceFactory {
 	/**
 	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static QOperatingSystemUserSpaceFactory init() {

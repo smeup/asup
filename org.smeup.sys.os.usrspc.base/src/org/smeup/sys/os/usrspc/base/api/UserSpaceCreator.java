@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.os.usrspc.base.api;
 
+import javax.inject.Inject;
+
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -18,26 +20,47 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.usrspc.QOperatingSystemUserSpaceFactory;
+import org.smeup.sys.os.usrspc.QUserSpace;
 
 @Program(name = "QUSCRTUS")
 public class UserSpaceCreator {
 
+	@Inject
+	private QResourceManager resourceManager;
+	@Inject
+	private QJob job;
+	
 	@Main
-	public void main(@DataDef(qualified = true) UserSpace userSpace, @DataDef(length = 10) QCharacter extendedAttribute, @DataDef(binaryType = BinaryType.BYTE) QBinary initialSize,
-			@DataDef(length = 1) QCharacter initialValue, @DataDef(length = 10) QCharacter publicAuthority, @DataDef(length = 50) QCharacter textDescription,
-			@DataDef(length = 10) QCharacter replace, ErrorCode errorCode, @DataDef(length = 10) QCharacter domain, @DataDef(binaryType = BinaryType.BYTE) QBinary transferSizeRequest,
-			@DataDef(length = 1) QCharacter optimumSpaceAlignement) {
-		// TODO
-		errorCode.£$01e2.eval(1);
+	public void main(@DataDef(qualified = true) UserSpaceRef userSpaceRef, 
+					 @DataDef(length = 10) QCharacter extendedAttribute, 
+					 @DataDef(binaryType = BinaryType.INTEGER) QBinary initialSize,
+ 					 @DataDef(length = 1) QCharacter initialValue, 
+ 					 @DataDef(length = 10) QCharacter publicAuthority, 
+					 @DataDef(length = 50) QCharacter textDescription,
+					 @DataDef(length = 10) QCharacter replace, 
+					 ErrorCode errorCode, 
+					 @DataDef(length = 10) QCharacter domain, 
+					 @DataDef(binaryType = BinaryType.BYTE) QBinary transferSizeRequest,
+					 @DataDef(length = 1) QCharacter optimumSpaceAlignement) {
+				
+		try {
+			QResourceWriter<QUserSpace> userSpaceWriter = resourceManager.getResourceWriter(job, QUserSpace.class, userSpaceRef.library.asEnum(), userSpaceRef.library.asData().trimR());
+			
+			QUserSpace userSpace = QOperatingSystemUserSpaceFactory.eINSTANCE.createUserSpace();
+			userSpace.setAttribute(extendedAttribute.trimR());
+			userSpace.setName(userSpaceRef.name.trimR());
+			userSpace.setText(textDescription.trimR());
 
-	}
-
-	public static class UserSpace extends QDataStructWrapper {
-		private static final long serialVersionUID = 1L;
-		@DataDef(length = 10)
-		public QCharacter name;
-		@DataDef(length = 10, value = "*LIBL")
-		public QCharacter library;
+			userSpaceWriter.save(userSpace, replace.trimR().equalsIgnoreCase("*YES"));
+			errorCode.£$01e2.eval(1);
+		}
+		catch(Exception e) {
+			errorCode.£$01e2.eval(43);			
+		}
 	}
 
 	public static class ErrorCode extends QDataStructWrapper {

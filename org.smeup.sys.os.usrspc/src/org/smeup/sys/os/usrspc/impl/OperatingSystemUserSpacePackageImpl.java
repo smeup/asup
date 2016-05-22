@@ -108,11 +108,11 @@ public class OperatingSystemUserSpacePackageImpl extends EPackageImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EAttribute getUserSpace_Header() {
+	public EAttribute getUserSpace_Attribute() {
 		return (EAttribute)userSpaceEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -121,8 +121,26 @@ public class OperatingSystemUserSpacePackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	@Override
-	public EAttribute getUserSpace_Content() {
+	public EAttribute getUserSpace_Header() {
 		return (EAttribute)userSpaceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getUserSpace_Content() {
+		return (EAttribute)userSpaceEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUserSpace_ContentArray() {
+		return (EAttribute)userSpaceEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -162,8 +180,10 @@ public class OperatingSystemUserSpacePackageImpl extends EPackageImpl implements
 
 		// Create classes and their features
 		userSpaceEClass = createEClass(USER_SPACE);
+		createEAttribute(userSpaceEClass, USER_SPACE__ATTRIBUTE);
 		createEAttribute(userSpaceEClass, USER_SPACE__HEADER);
 		createEAttribute(userSpaceEClass, USER_SPACE__CONTENT);
+		createEAttribute(userSpaceEClass, USER_SPACE__CONTENT_ARRAY);
 
 		userSpaceManagerEClass = createEClass(USER_SPACE_MANAGER);
 	}
@@ -202,8 +222,10 @@ public class OperatingSystemUserSpacePackageImpl extends EPackageImpl implements
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(userSpaceEClass, QUserSpace.class, "UserSpace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getUserSpace_Attribute(), ecorePackage.getEString(), "attribute", null, 0, 1, QUserSpace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUserSpace_Header(), ecorePackage.getEString(), "header", null, 0, 1, QUserSpace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUserSpace_Content(), ecorePackage.getEString(), "content", null, 0, 1, QUserSpace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUserSpace_ContentArray(), ecorePackage.getEByteArray(), "contentArray", null, 0, 1, QUserSpace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(userSpaceManagerEClass, QUserSpaceManager.class, "UserSpaceManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

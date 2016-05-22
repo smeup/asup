@@ -110,13 +110,22 @@ public interface QOperatingSystemUserSpacePackage extends EPackage {
 	int USER_SPACE__CREATION_INFO = QOperatingSystemTypePackage.TYPED_OBJECT__CREATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Attribute</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_SPACE__ATTRIBUTE = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Header</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int USER_SPACE__HEADER = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 0;
+	int USER_SPACE__HEADER = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Content</b></em>' attribute. <!--
@@ -125,7 +134,16 @@ public interface QOperatingSystemUserSpacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER_SPACE__CONTENT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 1;
+	int USER_SPACE__CONTENT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Content Array</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_SPACE__CONTENT_ARRAY = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>User Space</em>' class.
@@ -133,7 +151,7 @@ public interface QOperatingSystemUserSpacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER_SPACE_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 2;
+	int USER_SPACE_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.usrspc.QUserSpaceManager <em>User Space Manager</em>}' class.
@@ -165,6 +183,17 @@ public interface QOperatingSystemUserSpacePackage extends EPackage {
 	EClass getUserSpace();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.usrspc.QUserSpace#getAttribute <em>Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Attribute</em>'.
+	 * @see org.smeup.sys.os.usrspc.QUserSpace#getAttribute()
+	 * @see #getUserSpace()
+	 * @generated
+	 */
+	EAttribute getUserSpace_Attribute();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.usrspc.QUserSpace#getHeader <em>Header</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Header</em>'.
@@ -183,6 +212,17 @@ public interface QOperatingSystemUserSpacePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getUserSpace_Content();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.usrspc.QUserSpace#getContentArray <em>Content Array</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Content Array</em>'.
+	 * @see org.smeup.sys.os.usrspc.QUserSpace#getContentArray()
+	 * @see #getUserSpace()
+	 * @generated
+	 */
+	EAttribute getUserSpace_ContentArray();
 
 	/**
 	 * Returns the meta object for class '
@@ -229,6 +269,14 @@ public interface QOperatingSystemUserSpacePackage extends EPackage {
 		EClass USER_SPACE = eINSTANCE.getUserSpace();
 
 		/**
+		 * The meta object literal for the '<em><b>Attribute</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute USER_SPACE__ATTRIBUTE = eINSTANCE.getUserSpace_Attribute();
+
+		/**
 		 * The meta object literal for the '<em><b>Header</b></em>' attribute feature.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
@@ -241,6 +289,14 @@ public interface QOperatingSystemUserSpacePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute USER_SPACE__CONTENT = eINSTANCE.getUserSpace_Content();
+
+		/**
+		 * The meta object literal for the '<em><b>Content Array</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute USER_SPACE__CONTENT_ARRAY = eINSTANCE.getUserSpace_ContentArray();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.usrspc.QUserSpaceManager <em>User Space Manager</em>}' class.

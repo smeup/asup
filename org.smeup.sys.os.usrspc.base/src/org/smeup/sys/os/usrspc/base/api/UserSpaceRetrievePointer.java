@@ -24,17 +24,12 @@ import org.smeup.sys.il.data.def.BinaryType;
 public class UserSpaceRetrievePointer {
 
 	@Main
-	public void main(@DataDef(qualified = true) UserSpace userSpace, QPointer retunrPointer, ErrorCode errorCode) {
-
+	public void main(@DataDef(qualified = true) UserSpaceRef userSpaceRef, 
+					 QPointer retunrPointer, 
+					 ErrorCode errorCode) {
+		"".toCharArray();
 	}
 
-	public static class UserSpace extends QDataStructWrapper {
-		private static final long serialVersionUID = 1L;
-		@DataDef(length = 10)
-		public QCharacter name;
-		@DataDef(length = 10, value = "*LIBL")
-		public QCharacter library;
-	}
 
 	public static class ErrorCode extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;

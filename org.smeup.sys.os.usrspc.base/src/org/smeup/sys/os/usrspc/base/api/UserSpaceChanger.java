@@ -23,16 +23,12 @@ import org.smeup.sys.il.data.def.BinaryType;
 public class UserSpaceChanger {
 
 	@Main
-	public void main(@DataDef(length = 10) QCharacter returnedLibrary, @DataDef(qualified = true) UserSpace userSpace, AttributeToChange attributeToChange, ErrorCode errorCode) {
-
-	}
-
-	public static class UserSpace extends QDataStructWrapper {
-		private static final long serialVersionUID = 1L;
-		@DataDef(length = 10)
-		public QCharacter name;
-		@DataDef(length = 10, value = "*LIBL")
-		public QCharacter library;
+	public void main(@DataDef(length = 10) QCharacter returnedLibrary, 
+					 @DataDef(qualified = true) UserSpaceRef userSpaceRef, 
+					 AttributeToChange attributeToChange, 
+					 ErrorCode errorCode) {
+		
+		"".toCharArray();
 	}
 
 	public static class AttributeToChange extends QDataStructWrapper {

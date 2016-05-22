@@ -34,28 +34,22 @@ public class UserSpaceDeleter {
 	private QResourceManager resourceManager;
 
 	@Main
-	public void main(@DataDef(qualified = true) UserSpace userSpace, ErrorCode errorCode) {
-		QResourceWriter<QUserSpace> userSpaceResource = resourceManager.getResourceWriter(job, QUserSpace.class, userSpace.library.trimR());
-		QUserSpace qUserSpace = userSpaceResource.lookup(userSpace.name.trimR());
-		if (qUserSpace == null) {
+	public void main(@DataDef(qualified = true) UserSpaceRef userSpaceRef, ErrorCode errorCode) {
+
+		QResourceWriter<QUserSpace> userSpaceWriter = resourceManager.getResourceWriter(job, QUserSpace.class, userSpaceRef.library.asEnum(), userSpaceRef.library.asData().trimR());
+		QUserSpace userSpace = userSpaceWriter.lookup(userSpaceRef.name.trimR());
+		if (userSpace == null) {
 			errorCode.£$01e2.eval(43);
 			// TODO
-			System.err.println("User Space not found: " + userSpace.name);
+			System.err.println("User Space not found: " + userSpaceRef.name);
 			// throw new
 			// OperatingSystemRuntimeException("User Space not found: " +
 			// userSpace.name);
 			return;
 		}
-		userSpaceResource.delete(qUserSpace);
+		userSpaceWriter.delete(userSpace);
 	}
 
-	public static class UserSpace extends QDataStructWrapper {
-		private static final long serialVersionUID = 1L;
-		@DataDef(length = 10)
-		public QCharacter name;
-		@DataDef(length = 10, value = "*LIBL")
-		public QCharacter library;
-	}
 
 	public static class ErrorCode extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
