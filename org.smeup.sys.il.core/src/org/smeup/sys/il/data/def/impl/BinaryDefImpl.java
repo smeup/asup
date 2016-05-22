@@ -271,7 +271,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 	public Class<?> getJavaClass() {
 		switch (getType()) {
 		case BYTE:
-			return Byte.class;
+			return Integer.class;
 		case INTEGER:
 			return Integer.class;
 		case LONG:
