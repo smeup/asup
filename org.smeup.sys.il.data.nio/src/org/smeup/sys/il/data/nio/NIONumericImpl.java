@@ -522,8 +522,12 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final boolean isEmpty() {
-
-		return eq(0);
+		try {
+			return eq(0);
+		}
+		catch(Exception e) {
+			return true;
+		}
 	}
 
 	@Override

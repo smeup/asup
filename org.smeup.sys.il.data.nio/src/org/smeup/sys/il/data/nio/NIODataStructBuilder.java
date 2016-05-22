@@ -27,40 +27,40 @@ public class NIODataStructBuilder {
 
 	private QDataFactory dataFactory = null;
 	private NIOAbstractDataStruct dataStruct = null;
-	
+
 	private Map<QBufferedData, QDecimal> overlayedToNextPos = new HashMap<QBufferedData, QDecimal>();
 	private int ownerNextPos = 1;
-	
+
 	public NIODataStructBuilder(QDataFactory dataFactory, NIOAbstractDataStruct dataStruct) {
 		this.dataFactory = dataFactory;
 		this.dataStruct = dataStruct;
 	}
-	
+
 	public void addElement(Field field, QBufferedData dataElement) {
 
 		org.smeup.sys.il.data.annotation.Overlay overlay = field.getAnnotation(org.smeup.sys.il.data.annotation.Overlay.class);
 		if (overlay == null) {
-			dataStruct.addElement(field.getName(), dataElement, ownerNextPos);		
+			dataStruct.addElement(field.getName(), dataElement, ownerNextPos);
 			ownerNextPos += dataElement.getSize();
 			return;
 		} else {
 			addElement(field.getName(), dataElement, overlay.name(), overlay.position());
-		} 		
+		}
 	}
 
 	public void addElement(QDataTerm<?> dataTerm, QBufferedData dataElement) {
-		
+
 		QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 		if (overlay == null) {
-			dataStruct.addElement(dataTerm.getName(), dataElement, ownerNextPos);		
+			dataStruct.addElement(dataTerm.getName(), dataElement, ownerNextPos);
 			ownerNextPos += dataElement.getSize();
 		} else {
 			addElement(dataTerm.getName(), dataElement, overlay.getName(), overlay.getPosition());
-		} 		
- 	}
-	
+		}
+	}
+
 	private void addElement(String name, QBufferedData dataElement, String overlayName, int overlayPosition) {
-		
+
 		if (overlayName == null || overlayName.equalsIgnoreCase(org.smeup.sys.il.data.annotation.Overlay.NAME_OWNER)) {
 
 			if (overlayPosition >= 1)
@@ -71,28 +71,33 @@ public class NIODataStructBuilder {
 		} else {
 
 			NIOBufferedDataImpl overlayedData = (NIOBufferedDataImpl) dataStruct.getElement(overlayName);
-			
+
 			if (overlayedData == null)
 				throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: s87rfysd8fsd");
-			
+
+			int overlayedPosition = overlayedData.getPosition();
+			if (overlayedPosition == 0)
+				overlayedPosition = 1;
+
 			QDecimal overlayedNextPos = overlayedToNextPos.get(overlayedData);
 			if (overlayedNextPos == null) {
 				overlayedNextPos = dataFactory.createDecimal(5, 0, DecimalType.PACKED, true);
-				overlayedNextPos.plus(overlayedData.getPosition() + 1);
+				overlayedNextPos.eval(1);
 				overlayedToNextPos.put(overlayedData, overlayedNextPos);
 			}
 
-			if (overlayPosition >= 1)
+			if (overlayPosition >= 1) {
+				dataStruct.addElement(name, dataElement, overlayedPosition - 1 + overlayPosition);
 				overlayedNextPos.eval(overlayPosition);
-
-			dataStruct.addElement(name, dataElement, overlayedNextPos.i());
+			} else
+				dataStruct.addElement(name, dataElement, overlayedPosition - 1 + overlayedNextPos.i());
 
 			if (overlayedData instanceof NIOBufferedListImpl<?>) {
 				NIOBufferedListImpl<?> arrayOverlayed = (NIOBufferedListImpl<?>) overlayedData;
 				NIOBufferedListImpl<?> arrayData = (NIOBufferedListImpl<?>) dataElement;
 				arrayData.setListOwner(arrayOverlayed);
-				arrayOverlayed.assign(dataElement, overlayedNextPos.asInteger());
-				overlayedNextPos.plus(arrayData.getModel().getSize());				
+				arrayOverlayed.assign(arrayData, overlayedNextPos.asInteger());
+				overlayedNextPos.plus(arrayData.getModel().getSize());
 			} else {
 				overlayedNextPos.plus(dataElement.getSize());
 			}

@@ -245,7 +245,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataAreaDef.getArgument();
 			} else
 				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataTerm.getDefinition();
-
+			
 			QCompilerLinker compilerLinker = dataTerm.getFacet(QCompilerLinker.class);
 			if (compilerLinker == null) {
 				QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
@@ -436,8 +436,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			QBinaryDef binaryDef = (QBinaryDef) dataDef;
 			writeImport(BinaryType.class);
 			writeAnnotation(node, DataDef.class, "binaryType", binaryDef.getType());
-		}
-		else if (QDataStructDef.class.isAssignableFrom(klassDef)) {
+		} else if (QDataStructDef.class.isAssignableFrom(klassDef)) {
 			QDataStructDef dataStructureDef = (QDataStructDef) dataDef;
 
 			if (dataStructureDef.getPrefix() != null)
@@ -448,7 +447,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 			if (dataStructureDef.isInitialized())
 				writeAnnotation(node, DataDef.class, "initialized", true);
-			
+
 			if (dataStructureDef.getLength() > 0)
 				writeAnnotation(node, DataDef.class, "length", dataStructureDef.getLength());
 		} else if (QCompoundDataDef.class.isAssignableFrom(klassDef)) {
@@ -459,7 +458,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 			if (compoundDataDef.isQualified())
 				writeAnnotation(node, DataDef.class, "qualified", true);
-			
+
 			if (compoundDataDef.isInitialized())
 				writeAnnotation(node, DataDef.class, "initialized", true);
 

@@ -314,6 +314,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QArithmeticExpression expression) {
 
+		if(mockExpression(expression))
+			return false;
+		
 		StringBuffer value = new StringBuffer();
 
 		JDTExpressionStringBuilder builder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
@@ -375,6 +378,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				target = Integer.class;
 			else
 				target = JDTContextHelper.getTargetClass(compilationUnit, expression.getLeftOperand(), true);
+			
 			if (Boolean.class.isAssignableFrom(target))
 				target = String.class;
 			else if (Byte.class.isAssignableFrom(target))
@@ -1270,5 +1274,29 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			}
 		} else
 			logger.warning(exceptionManager.prepareException(job, RPJCompilerMessage.AS00106, namedNode));
+	}
+	
+
+	private boolean mockExpression(QExpression expression) {
+
+		String expressionString = expression.toString();
+		String expressionRewrited = null;
+	
+		// B£G00G
+		if(expressionString.equals("W$DIV+'       '+W£DIV")) {
+			expressionRewrited = "w$div.qPlus(\"       \").qPlus(w£div)";
+		}
+		// B£IR10
+		else if(expressionString.contains("%SUBARR(POG: 1: $CONTD)+' '+%SUBARR(PDE: 1: $CONTD)")) {
+			expressionRewrited = "pog.qSubarr(1, $contd).qPlus(\" \").qPlus(pde.qSubarr(1, $contd))";
+		}
+		
+		if(expressionRewrited != null) {
+			buffer.append(expressionRewrited);
+			return true;
+		}
+		else
+			return false;
+		
 	}
 }

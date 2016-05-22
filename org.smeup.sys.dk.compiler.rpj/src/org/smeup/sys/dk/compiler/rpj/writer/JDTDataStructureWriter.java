@@ -71,7 +71,8 @@ public class JDTDataStructureWriter extends JDTNamedNodeWriter {
 
 	public void writeDataStructure(QCompoundDataDef<?, QDataTerm<?>> dataStructDef) throws IOException {
 
-		RPJDataStructureHelper.relativizePositions(dataStructDef);
+		if (RPJDataStructureHelper.isReorderable(dataStructDef))
+			RPJDataStructureHelper.reorderDataStruct(dataStructDef);
 		
 		for (QDataTerm<?> element : dataStructDef.getElements())
 			writeField(element, false, UnitScope.PUBLIC);
