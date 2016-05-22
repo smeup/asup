@@ -377,6 +377,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int FILE_FORMAT_FIELD__DEFINITION = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION;
 
 	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_FORMAT_FIELD__KEY = QIntegratedLanguageDataTermPackage.DATA_TERM__KEY;
+
+	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -490,6 +499,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int DATABASE_FILE_FIELD__DEFINITION = FILE_FORMAT_FIELD__DEFINITION;
 
 	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE_FILE_FIELD__KEY = FILE_FORMAT_FIELD__KEY;
+
+	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -591,6 +609,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int FILE_FORMAT__DEFINITION = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_FORMAT__KEY = QIntegratedLanguageDataTermPackage.DATA_TERM__KEY;
 
 	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
@@ -716,6 +743,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int DATABASE_FILE_FORMAT__DEFINITION = FILE_FORMAT__DEFINITION;
 
 	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE_FILE_FORMAT__KEY = FILE_FORMAT__KEY;
+
+	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -829,6 +865,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int DATABASE_FILE_FORMAT_DEF__QUALIFIED = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED;
+
+	/**
+	 * The feature id for the '<em><b>Initialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE_FILE_FORMAT_DEF__INITIALIZED = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__INITIALIZED;
 
 	/**
 	 * The number of structural features of the '<em>Database File Format Def</em>' class.
@@ -950,6 +995,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int DISPLAY_FILE_FIELD__DEFINITION = FILE_FORMAT_FIELD__DEFINITION;
 
 	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISPLAY_FILE_FIELD__KEY = FILE_FORMAT_FIELD__KEY;
+
+	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -1051,6 +1105,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int DISPLAY_FILE_FORMAT__DEFINITION = FILE_FORMAT__DEFINITION;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISPLAY_FILE_FORMAT__KEY = FILE_FORMAT__KEY;
 
 	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
@@ -1158,6 +1221,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int DISPLAY_FILE_FORMAT_DEF__QUALIFIED = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED;
+
+	/**
+	 * The feature id for the '<em><b>Initialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISPLAY_FILE_FORMAT_DEF__INITIALIZED = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__INITIALIZED;
 
 	/**
 	 * The number of structural features of the '<em>Display File Format Def</em>' class.
@@ -1727,6 +1799,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int PRINTER_FILE_FORMAT__DEFINITION = FILE_FORMAT__DEFINITION;
 
 	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINTER_FILE_FORMAT__KEY = FILE_FORMAT__KEY;
+
+	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -1824,6 +1905,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int PRINTER_FILE_FORMAT_DEF__QUALIFIED = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED;
 
 	/**
+	 * The feature id for the '<em><b>Initialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINTER_FILE_FORMAT_DEF__INITIALIZED = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__INITIALIZED;
+
+	/**
 	 * The number of structural features of the '<em>Printer File Format Def</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -1881,6 +1971,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int PRINTER_FILE_FIELD__DEFINITION = FILE_FORMAT_FIELD__DEFINITION;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINTER_FILE_FIELD__KEY = FILE_FORMAT_FIELD__KEY;
 
 	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
