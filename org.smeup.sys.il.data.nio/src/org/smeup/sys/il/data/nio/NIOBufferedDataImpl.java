@@ -53,8 +53,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 		if (_storage != null || _buffer != null)
 			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dmn8432m75n030");
-
-		_buffer = ByteBuffer.allocate(getSize());
 	}
 
 	protected final ByteBuffer getBuffer() {

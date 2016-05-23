@@ -63,7 +63,6 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 		
 		if(allocate) {
 			checkAllocation();
-			
 			_buffer = ByteBuffer.allocate(getSize());
 			_clear();
 		}

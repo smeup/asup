@@ -30,7 +30,6 @@ public class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicator {
 		
 		if(allocate) {
 			checkAllocation();
-			
 			_buffer = ByteBuffer.allocate(getSize());		
 			_buffer.put(OFF);
 		}

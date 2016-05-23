@@ -46,7 +46,6 @@ public class NIODataStructImpl extends NIOAbstractDataStruct {
 		
 		if(allocate) {
 			checkAllocation();
-			
 			_buffer = ByteBuffer.allocate(getSize());			
 			NIOBufferHelper.fill(_buffer, 0, _buffer.capacity(), INIT);			
 		}

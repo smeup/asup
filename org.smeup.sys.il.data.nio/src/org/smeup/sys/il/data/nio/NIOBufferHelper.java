@@ -481,7 +481,7 @@ public class NIOBufferHelper {
 				bufferedList.movel(value, true);
 				break;
 			case NUMERIC:
-				bufferedList.eval(new BigDecimal(value), true);
+				bufferedList.move(new BigDecimal(value), true);
 				break;
 			case STRING:
 				bufferedList.eval(value);
