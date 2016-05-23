@@ -7,7 +7,7 @@
  *
  *
  * Contributors:
- *   Giuliano Giancristofaro - Initial API and implementation
+ *   Mattia Rocchi - Initial API and implementation
  */
 package org.smeup.sys.os.usrspc.base.api;
 
