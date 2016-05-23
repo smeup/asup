@@ -105,7 +105,7 @@ public class BaseCallableInjector {
 	}
 
 	public <P> QCallableProgram<P> prepareCallable(QProgram program, Class<P> klass) {
-
+		
 		QDataContainer dataContainer = dataManager.createDataContainer(dataContext);
 
 		try {

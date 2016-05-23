@@ -468,6 +468,10 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 
 		initEClass(cursorEClass, QCursor.class, "Cursor", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		addEOperation(cursorEClass, null, "after", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(cursorEClass, null, "before", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(cursorEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		EOperation op = addEOperation(cursorEClass, null, "first", 0, 1, IS_UNIQUE, IS_ORDERED);

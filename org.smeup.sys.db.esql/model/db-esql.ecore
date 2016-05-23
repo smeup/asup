@@ -5,6 +5,8 @@
       eSuperTypes="../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
   <eClassifiers xsi:type="ecore:EClass" name="Cursor" abstract="true" interface="true"
       eSuperTypes="#//ESqlObject">
+    <eOperations name="after"/>
+    <eOperations name="before"/>
     <eOperations name="close"/>
     <eOperations name="first">
       <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//BufferedData"/>
