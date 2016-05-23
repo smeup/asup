@@ -20,7 +20,7 @@ import java.lang.String;
  * @model interface="true" abstract="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
  * @generated
  */
-public interface QEnum<E extends Enum<E>, D extends QBufferedData> extends QBufferedElement {
+public interface QEnum<E extends Enum<E>, D extends QBufferedElement> extends QBufferedElement {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true"
@@ -41,7 +41,7 @@ public interface QEnum<E extends Enum<E>, D extends QBufferedData> extends QBuff
 	 * @model valueRequired="true"
 	 * @generated
 	 */
-	void eval(String value);
+	void eval(E value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

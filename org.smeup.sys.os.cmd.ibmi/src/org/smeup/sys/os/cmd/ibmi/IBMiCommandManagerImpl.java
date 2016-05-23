@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.os.cmd.ibmi;
 
+import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -36,6 +37,7 @@ import org.smeup.sys.dk.parser.ibmi.cl.model.pgm.CLRow;
 import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataManager;
@@ -667,14 +669,22 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 	private void assignValue(QDataWriter writer, QData data, Object value) {
 
 		if (data instanceof QEnum) {
-			QEnum<?, ?> enumerator = (QEnum<?, ?>) data;
+			@SuppressWarnings("unchecked")
+			QEnum<?, QBufferedElement> enumerator = (QEnum<?, QBufferedElement>) data;
 
-			/*
-			 * for(QEnumElemDef enumElement: enumerator.getElements()) {
-			 * if(enumElement.getName().equals(value)) { value =
-			 * enumElement.getValue(); break; } }
-			 */
-			enumerator.eval(value.toString());
+			QBufferedElement element = enumerator.asData();
+			switch (element.getBufferedElementType()) {
+			case DATETIME:
+				element.movel(value.toString(), true);
+				break;
+			case NUMERIC:
+				element.move(new BigDecimal(value.toString()), true);
+				break;
+			case STRING:
+				((QString)element).eval(value.toString());
+				break;
+			}
+
 		} else if (data instanceof QAdapter) {
 			QAdapter adapter = (QAdapter) data;
 			adapter.eval(value);

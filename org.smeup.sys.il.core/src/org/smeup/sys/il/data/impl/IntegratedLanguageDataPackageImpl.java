@@ -1126,7 +1126,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		dataDelegatorEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
 		enumEClass_E.getEBounds().add(g1);
-		g1 = createEGenericType(this.getBufferedData());
+		g1 = createEGenericType(this.getBufferedElement());
 		enumEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(this.getData());
 		listEClass_D.getEBounds().add(g1);
@@ -3320,7 +3320,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		initEOperation(op, g1);
 
 		op = addEOperation(enumEClass, null, "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(enumEClass_E);
+		addEParameter(op, g1, "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(enumEClass, ecorePackage.getEString(), "getSpecialName", 0, 1, IS_UNIQUE, IS_ORDERED);
 

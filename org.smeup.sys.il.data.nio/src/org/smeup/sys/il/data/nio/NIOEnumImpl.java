@@ -23,7 +23,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.Special;
 
-public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedData> extends NIOBufferedElementDelegatorImpl implements QEnum<E, D> {
+public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> extends NIOBufferedElementDelegatorImpl implements QEnum<E, D> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -78,57 +78,23 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedData> extends NIO
 	@SuppressWarnings("unchecked")
 	@Override
 	public D asData() {
-
 		return (D) getDelegate();
 	}
 
 	@Override
 	public QBufferedData eval(DataSpecial value) {
-
-		Field field = null;
-		try {
-			field = value.getClass().getField(value.name());
-		} catch (NoSuchFieldException | SecurityException e) {
-			throw new RuntimeException(e);
-		}
-
-		if (field == null)
-			throw new RuntimeException("Unknown field " + value.name());
-
-		Special special = field.getAnnotation(Special.class);
-		if (special == null)
-			throw new RuntimeException("Unknown value " + field.getName());
-
-		eval(special.value());
-		
+		asData().eval(value);		
 		return this;
 	}
 
 	@Override
 	public String getSpecialName() {
-
 		return "*" + asEnum().name();
-
 	}
 
 	@Override
-	public void eval(String value) {
-
-		Field field = null;
-		try {
-			field = value.getClass().getField(value);
-		} catch (NoSuchFieldException | SecurityException e) {
-			throw new RuntimeException(e);
-		}
-
-		if (field == null)
-			throw new RuntimeException("Unknown field " + value);
-
-		Special special = field.getAnnotation(Special.class);
-		if (special == null)
-			throw new RuntimeException("Unknown value " + field.getName());
-
-		eval(special.value());
-
+	public void eval(E value) {
+		// TODO Auto-generated method stub
+		value.toString();
 	}
 }
