@@ -13,6 +13,7 @@ package org.smeup.sys.il.data.nio;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
 
 import org.eclipse.emf.common.util.Enumerator;
 import org.smeup.sys.il.data.DataSpecial;
@@ -21,6 +22,7 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QEnum;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.Special;
 
 public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> extends NIOBufferedElementDelegatorImpl implements QEnum<E, D> {
@@ -50,11 +52,10 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> extends 
 			try {
 				Method method = _klass.getMethod("get", String.class);
 				E enumerator = (E) method.invoke(_klass, value);
-				if(enumerator == null)
+				if (enumerator == null)
 					enumerator = (E) method.invoke(_klass, "*OTHER");
 				return enumerator;
-			}
-			catch(Exception e) {
+			} catch (Exception e) {
 				throw new IntegratedLanguageDataRuntimeException(e);
 			}
 		} else {
@@ -83,7 +84,7 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> extends 
 
 	@Override
 	public QBufferedData eval(DataSpecial value) {
-		asData().eval(value);		
+		asData().eval(value);
 		return this;
 	}
 
@@ -94,7 +95,38 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> extends 
 
 	@Override
 	public void eval(E value) {
-		// TODO Auto-generated method stub
-		value.toString();
+
+		try {
+			Field field = _klass.getField(value.name());
+			if (field == null)
+				throw new IntegratedLanguageDataRuntimeException("Invalid special " + value + " for enum " + _klass);
+
+			Special special = field.getAnnotation(Special.class);
+			String valueString = null;
+			if (special == null)
+				valueString = value.name();
+			else {
+				if (special.value().isEmpty())
+					valueString = value.name();
+				else
+					valueString = special.value();
+			}
+			
+			QBufferedElement element = asData();
+			switch (element.getBufferedElementType()) {
+			case DATETIME:
+				element.movel(valueString, true);
+				break;
+			case NUMERIC:
+				element.move(new BigDecimal(valueString), true);
+				break;
+			case STRING:
+				((QString)element).eval(valueString);
+				break;
+			}
+			
+		} catch (Exception e) {
+			throw new IntegratedLanguageDataRuntimeException(e);
+		}
 	}
 }
