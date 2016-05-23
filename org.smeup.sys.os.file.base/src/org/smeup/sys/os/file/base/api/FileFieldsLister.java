@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.os.file.base.api;
 
+import java.nio.ByteBuffer;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -25,18 +26,19 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.file.QDatabaseFile;
-import org.smeup.sys.os.file.QDisplayFile;
+import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileFormat;
 import org.smeup.sys.os.file.QFileFormatField;
-import org.smeup.sys.os.file.QPrinterFile;
+import org.smeup.sys.os.file.QFileManager;
 import org.smeup.sys.os.usrspc.QUserSpace;
 
 @Program(name = "QUSLFLD")
@@ -48,13 +50,42 @@ public class FileFieldsLister {
 	@Inject
 	private QResourceManager resourceManager;
 	@Inject
+	private QJobManager jobManager;
+	@Inject
 	private QJob job;
 	@Inject
 	private QDataContext dataContext;
+	@Inject
+	private QFileManager fileManager;
+
+	private USRSPC_HEADER_0100 userSpaceHeader;
+	private USLFLD_FLDL0100 userSpaceField;
+	
+	public static class UserSpaceRef extends QDataStructWrapper {
+		private static final long serialVersionUID = 1L;
+
+		@DataDef(length = 10)
+		public QCharacter name;
+
+		@DataDef(length = 10, value = "*LIBL")
+		public QEnum<Scope, QCharacter> library;
+	}
+
+	public static enum FORMATEnum {
+		FLDL0100, FLDL0200, FLDL0300;
+	}
+
+	public static enum ACCURATEEnum {
+		@Special(value = "C") COMPLETE, @Special(value = "I") INCOMPLETE, @Special(value = "P") PARTIAL;
+	}
 
 	@Main
-	public void main(@DataDef(qualified = true) UserSpaceRef userSpaceRef, @DataDef(length = 8) QEnum<FORMATEnum, QCharacter> formatName, @DataDef(qualified = true) FileRef fileRef,
-			@DataDef(length = 10) QCharacter recordFormatName, @DataDef(length = 1) QCharacter overrideProcessing, @DataDef(qualified = true) ERROR error) {
+	public void main(@DataDef(qualified = true) UserSpaceRef userSpaceRef, 
+					 @DataDef(length = 8) QEnum<FORMATEnum, QCharacter> formatName, 
+					 @DataDef(qualified = true) FileRef fileRef,
+					 @DataDef(length = 10) QCharacter recordFormatName, 
+					 @DataDef(length = 1) QCharacter overrideProcessing, 
+					 @DataDef(qualified = true) ERROR error) {
 
 		QResourceWriter<QUserSpace> userSpaceWriter = resourceManager.getResourceWriter(job, QUserSpace.class, userSpaceRef.library.asEnum(), userSpaceRef.library.asData().trimR());
 		QUserSpace userSpace = userSpaceWriter.lookup(userSpaceRef.name.trimR());
@@ -72,97 +103,50 @@ public class FileFieldsLister {
 
 		// formatAPIHeader(file, recordFormatName, error);
 
-		HEADER_USRSPC_0100 headerUsrspc_0100 = dataContext.getDataFactory().createDataStruct(HEADER_USRSPC_0100.class, 0, true);
-		headerUsrspc_0100.headerSize.eval(128);
-		headerUsrspc_0100.structureReleaseLevel.eval("0100");
-		headerUsrspc_0100.formatName.eval(formatName.asData());
-		headerUsrspc_0100.apiUsed.eval("QUSLFLD");
-		headerUsrspc_0100.dateTimeCreated.eval("1160522202951");
-		headerUsrspc_0100.informationStatus.eval("C");
+		userSpaceHeader.reset();
 
-		userSpace.setContentArray(headerUsrspc_0100.asBytes());
+		userSpaceHeader.formatName.eval(formatName.asData());
+		userSpaceHeader.apiUsed.eval("QUSLFLD");
+		userSpaceHeader.dateTimeCreated.eval(Long.toString(jobManager.now(job).getTime()));
+		userSpaceHeader.informationStatus.eval(ACCURATEEnum.PARTIAL);
+		userSpaceHeader.entrySize.eval(userSpaceField.getSize());
+
+		QFileFormat<?> fileFormat = fileManager.getFileFormat(file, recordFormatName.trimR());
+		userSpaceHeader.entriesNumber.eval(fileFormat.getDefinition().getElements().size());
+		userSpaceHeader.listSize.eval(userSpaceHeader.entriesNumber.qMult(userSpaceField.getSize()));
+
+		byte[] bytes = new byte[userSpaceHeader.listOffset.i() + userSpaceHeader.listSize.i()];
+		ByteBuffer buffer = ByteBuffer.wrap(bytes);
+		
+		buffer.put(userSpaceHeader.asBytes());
+		
+		buffer.position(userSpaceHeader.listOffset.i());
+		for(QDataTerm<?> dataTermField: fileFormat.getDefinition().getElements()) {
+			QFileFormatField fileFormatField = (QFileFormatField)dataTermField;
+			
+			userSpaceField.clear();
+			userSpaceField.fieldName.eval(fileFormatField.getName());
+			userSpaceField.fieldLength.eval(fileFormatField.getDefinition().getLength());
+			userSpaceField.fieldText.eval(fileFormatField.getText());
+			
+			buffer.put(userSpaceField.asBytes());
+		}
+			
+		userSpace.setContentArray(bytes);
+
 		userSpaceWriter.save(userSpace, true);
+
 	}
 
-	@SuppressWarnings("unused")
-	private HEADER_USLFLD formatAPIHeader(QFile file, QString recordFormatName, ERROR error) {
-
-		HEADER_USLFLD headerUslFld = dataContext.getDataFactory().createDataStruct(HEADER_USLFLD.class, 0, true);
-		headerUslFld.fileName.eval(file.getName());
-		headerUslFld.fileLibraryName.eval(file.getLibrary());
-		headerUslFld.fileType.eval(file.getAttribute());
-
-		QFileFormat<?> fileFormat = null;
-		if (file instanceof QDatabaseFile) {
-			QDatabaseFile databaseFile = (QDatabaseFile) file;
-			fileFormat = databaseFile.getDatabaseFormat();
-		} else if (file instanceof QDisplayFile) {
-			QDisplayFile displayFile = (QDisplayFile) file;
-			for (QFileFormat<?> displayFormat : displayFile.getDisplayFormats()) {
-				if (!displayFormat.getName().equalsIgnoreCase(recordFormatName.trimR()))
-					continue;
-
-				fileFormat = displayFormat;
-				break;
-			}
-		} else if (file instanceof QPrinterFile) {
-			QPrinterFile printerFile = (QPrinterFile) file;
-			for (QFileFormat<?> printerFormat : printerFile.getPrinterFormats()) {
-				if (!printerFormat.getName().equalsIgnoreCase(recordFormatName.trimR()))
-					continue;
-
-				fileFormat = printerFormat;
-				break;
-			}
-
-		} else {
-			error.exceptionID.eval("002761");
-			return null;
-		}
-		headerUslFld.recordFormatName.eval(fileFormat.getName());
-		headerUslFld.recordLength.eval(calculateLength(fileFormat));
-
-		if (fileFormat.getText() != null)
-			headerUslFld.recordText.eval(fileFormat.getText());
-
-		return headerUslFld;
-	}
-
-	private int calculateLength(QFileFormat<?> fileFormat) {
-
-		int length = 0;
-		List<?> elements = fileFormat.getDefinition().getElements();
-		for (Object element : elements) {
-			if (element instanceof QFileFormatField)
-				length += ((QFileFormatField) element).getDefinition().getSize();
-		}
-
-		return length;
-	}
-
-	public static class UserSpaceRef extends QDataStructWrapper {
-		private static final long serialVersionUID = 1L;
-
-		@DataDef(length = 10)
-		public QCharacter name;
-
-		@DataDef(length = 10, value = "*LIBL")
-		public QEnum<Scope, QCharacter> library;
-	}
-
-	public static enum FORMATEnum {
-		FLDL0100, FLDL0200, FLDL0300;
-	}
-
-	public static class HEADER_USRSPC_0100 extends QDataStructWrapper {
+	public static class USRSPC_HEADER_0100 extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
 		@DataDef(length = 64)
 		@Overlay(position = 1)
 		public QCharacter userArea;
-		@DataDef(binaryType = BinaryType.INTEGER)
+		@DataDef(binaryType = BinaryType.INTEGER, value = "128")
 		@Overlay(position = 65)
-		public QBinary headerSize;
-		@DataDef(length = 4)
+		public QBinary userSpaceHeaderSize;
+		@DataDef(length = 4, value = "0100")
 		@Overlay(position = 69)
 		public QCharacter structureReleaseLevel;
 		@DataDef(length = 8)
@@ -176,37 +160,52 @@ public class FileFieldsLister {
 		public QCharacter dateTimeCreated;
 		@DataDef(length = 1)
 		@Overlay(position = 104)
-		public QCharacter informationStatus;
+		public QEnum<ACCURATEEnum, QCharacter> informationStatus;
 		@DataDef(binaryType = BinaryType.INTEGER)
 		@Overlay(position = 105)
-		public QBinary dmo£ge;
-		@DataDef(binaryType = BinaryType.INTEGER)
+		public QBinary userSpaceSizeUsed;
+		@DataDef(binaryType = BinaryType.INTEGER, value = "192")
 		@Overlay(position = 109)
-		public QBinary sci£ge;
-		@DataDef(binaryType = BinaryType.INTEGER)
+		public QBinary parameterOffset;
+		@DataDef(binaryType = BinaryType.INTEGER, value = "64")
 		@Overlay(position = 113)
-		public QBinary dmi£ge;
-		@DataDef(binaryType = BinaryType.INTEGER)
+		public QBinary parameterSize;
+		@DataDef(binaryType = BinaryType.INTEGER, value = "256")
 		@Overlay(position = 117)
-		public QBinary sct£ge;
-		@DataDef(binaryType = BinaryType.INTEGER)
+		public QBinary headerOffset;
+		@DataDef(binaryType = BinaryType.INTEGER, value = "256")
 		@Overlay(position = 121)
-		public QBinary dmt£ge;
-		@DataDef(binaryType = BinaryType.INTEGER)
+		public QBinary headerSize;
+		@DataDef(binaryType = BinaryType.INTEGER, value = "512")
 		@Overlay(position = 125)
-		public QBinary scl£ge;
+		public QBinary listOffset;
 		@DataDef(binaryType = BinaryType.INTEGER)
 		@Overlay(position = 129)
-		public QBinary dml£ge;
+		public QBinary listSize;
 		@DataDef(binaryType = BinaryType.INTEGER)
 		@Overlay(position = 133)
-		public QBinary nrv£ge;
+		public QBinary entriesNumber;
 		@DataDef(binaryType = BinaryType.INTEGER)
 		@Overlay(position = 137)
-		public QBinary dmv£ge;
+		public QBinary entrySize;
+		@DataDef(binaryType = BinaryType.INTEGER)
+		@Overlay(position = 141)
+		public QBinary entryCCSID;
+		@DataDef(length = 2)
+		@Overlay(position = 145)
+		public QCharacter countryID;
+		@DataDef(length = 3)
+		@Overlay(position = 147)
+		public QCharacter languageID;
+		@DataDef(length = 1)
+		@Overlay(position = 150)
+		public QCharacter listIndicator;
+		@DataDef(length = 42)
+		@Overlay(position = 151)
+		public QCharacter reserved01;
 	}
 
-	public static class HEADER_USLFLD extends QDataStructWrapper {
+	public static class USLFLD_HEADER extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
 		@DataDef(length = 10)
 		public QCharacter fileName;
@@ -236,7 +235,7 @@ public class FileFieldsLister {
 		public QCharacter nullCapableFields;
 	}
 
-	public static class FLDL0100 extends QDataStructWrapper {
+	public static class USLFLD_FLDL0100 extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
 		@DataDef(length = 10)
 		public QCharacter fieldName;
@@ -320,6 +319,9 @@ public class FileFieldsLister {
 		public QCharacter dataLinkRecovery;
 		@DataDef(length = 1)
 		public QCharacter dataLinkUnlinkControl;
+		@DataDef(length = 11)
+		@Overlay(position = 534)
+		public QCharacter reserved01;
 	}
 
 	public static class ERROR extends QDataStructWrapper {
@@ -334,4 +336,35 @@ public class FileFieldsLister {
 		@DataDef(length = 1)
 		public QCharacter reserved01;
 	}
+
+	@SuppressWarnings("unused")
+	private USLFLD_HEADER formatAPIHeader(QFile file, QString recordFormatName, ERROR error) {
+
+		USLFLD_HEADER uslFieldHeader = dataContext.getDataFactory().createDataStruct(USLFLD_HEADER.class, 0, true);
+		uslFieldHeader.fileName.eval(file.getName());
+		uslFieldHeader.fileLibraryName.eval(file.getLibrary());
+		uslFieldHeader.fileType.eval(file.getAttribute());
+
+		QFileFormat<?> fileFormat = fileManager.getFileFormat(file, recordFormatName.trimR());
+		uslFieldHeader.recordFormatName.eval(fileFormat.getName());
+		uslFieldHeader.recordLength.eval(calculateLength(fileFormat));
+
+		if (fileFormat.getText() != null)
+			uslFieldHeader.recordText.eval(fileFormat.getText());
+
+		return uslFieldHeader;
+	}
+
+	private int calculateLength(QFileFormat<?> fileFormat) {
+
+		int length = 0;
+		List<?> elements = fileFormat.getDefinition().getElements();
+		for (Object element : elements) {
+			if (element instanceof QFileFormatField)
+				length += ((QFileFormatField) element).getDefinition().getSize();
+		}
+
+		return length;
+	}
+
 }

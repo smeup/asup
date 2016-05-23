@@ -58,4 +58,12 @@ public interface QFileManager {
 	 * @generated
 	 */
 	void removeAllFileOverride(QContext context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" fileRequired="true" formatNameRequired="true"
+	 * @generated
+	 */
+	QFileFormat<?> getFileFormat(QFile file, String formatName);
 } // QFileManager
