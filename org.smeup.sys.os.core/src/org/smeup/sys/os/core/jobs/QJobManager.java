@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.os.core.jobs;
 
+import java.util.Date;
 import java.util.List;
 import org.smeup.sys.il.core.ctx.QIdentity;
 import org.smeup.sys.il.core.out.QObjectWriter;
@@ -162,6 +163,14 @@ public interface QJobManager {
 	 * @generated
 	 */
 	QJob lookup(String contextID);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" jobRequired="true"
+	 * @generated
+	 */
+	Date now(QJob job);
 
 	/**
 	 * <!-- begin-user-doc -->

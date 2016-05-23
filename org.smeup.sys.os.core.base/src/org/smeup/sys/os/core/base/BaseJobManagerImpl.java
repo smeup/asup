@@ -333,4 +333,9 @@ public class BaseJobManagerImpl implements QJobManager {
 	public int countActiveJobs() {
 		return getActiveJobs().size();
 	}
+
+	@Override
+	public Date now(QJob job) {
+		return new Date();
+	}
 }
