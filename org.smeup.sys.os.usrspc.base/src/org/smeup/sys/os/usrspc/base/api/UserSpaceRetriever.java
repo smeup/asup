@@ -39,39 +39,67 @@ public class UserSpaceRetriever {
 	private QJob job;
 	@Inject
 	private QDataContext dataContext;
+
+	private QUserSpace lastUserSpace = null;
 	
+	public static enum QCPFMSG {
+		CPF3C0F, CPF3C01, CPF3C06
+	}
+
 	@Main
 	public void main(@DataDef(qualified = true) UserSpaceRef userSpaceRef, 
-					 @DataDef(binaryType = BinaryType.INTEGER) QBinary startPosition, 
-					 @DataDef(binaryType = BinaryType.INTEGER) QBinary dataLength,
-					 QPointer receiverPointer,
+					 @DataDef(binaryType = BinaryType.INTEGER) QBinary startPosition,
+					 @DataDef(binaryType = BinaryType.INTEGER) QBinary dataLength, 
+					 QPointer receiverPointer, 
 					 ERROR errorCode) {
+
+		if(startPosition.eq(1))
+			lastUserSpace = null;
 		
-		QResourceReader<QUserSpace> userSpaceReader = resourceManager.getResourceReader(job, QUserSpace.class, userSpaceRef.library.asEnum(), userSpaceRef.library.asData().trimR());
-		QUserSpace userSpace = userSpaceReader.lookup(userSpaceRef.name.trimR());
-		if(userSpace == null) {
-			errorCode.exceptionID.eval("002762");
+		QUserSpace userSpace = null;
+		if(lastUserSpace != null && lastUserSpace.getName().equalsIgnoreCase(userSpaceRef.name.trimR()))
+			userSpace = lastUserSpace;
+		else {
+			QResourceReader<QUserSpace> userSpaceReader = resourceManager.getResourceReader(job, QUserSpace.class, userSpaceRef.library.asEnum(), userSpaceRef.library.asData().trimR());
+			userSpace = userSpaceReader.lookup(userSpaceRef.name.trimR());
+			lastUserSpace = userSpace;
+		}
+		
+		if (userSpace == null) {
+			errorCode.exceptionName.eval(QCPFMSG.CPF3C01.name());
 			return;
 		}
-		
-		QString receiverVariable = receiverPointer.qStr();
-		if(userSpace.getContent() != null)
-			receiverVariable.eval(userSpace.getContent().substring(startPosition.i()-1, startPosition.i()+dataLength.i()-1));
-		else if(userSpace.getContentArray() != null) {
-			byte[] bytes = Arrays.copyOfRange(userSpace.getContentArray(), startPosition.i()-1, startPosition.i()+dataLength.i()-2);
-			receiverVariable.eval(new String(bytes, dataContext.getCharset()));
+
+		byte[] bytes = userSpace.getContentArray();
+		if (bytes == null) {
+			errorCode.exceptionName.eval(QCPFMSG.CPF3C06.name());
+			return;
 		}
+
+		if (startPosition.gt(bytes.length)) {
+			errorCode.exceptionName.eval(QCPFMSG.CPF3C0F.name());
+			return;
+		}
+
+		QString receiverVariable = receiverPointer.qStr();
+		int endPosition = startPosition.i() - 1 + dataLength.i();
+		if(endPosition > bytes.length)
+			endPosition = bytes.length;
+		
+		bytes = Arrays.copyOfRange(bytes, startPosition.i() - 1, endPosition);
+		receiverVariable.eval(new String(bytes, dataContext.getCharset()));
+		
 	}
 
 	public static class ERROR extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
-		
+
 		@DataDef(binaryType = BinaryType.INTEGER)
 		public QBinary bytesProvided;
 		@DataDef(binaryType = BinaryType.INTEGER)
 		public QBinary bytesAvailable;
 		@DataDef(length = 7)
-		public QCharacter exceptionID;
+		public QCharacter exceptionName;
 		@DataDef(length = 1)
 		public QCharacter reserved01;
 	}
