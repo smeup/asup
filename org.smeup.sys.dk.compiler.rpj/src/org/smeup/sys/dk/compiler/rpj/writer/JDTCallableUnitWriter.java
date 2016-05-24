@@ -86,6 +86,7 @@ import org.smeup.sys.il.esam.QKeyListTerm;
 import org.smeup.sys.il.esam.QPrint;
 import org.smeup.sys.il.esam.QPrintTerm;
 import org.smeup.sys.il.esam.QRRDataSet;
+import org.smeup.sys.il.esam.QSMDataSet;
 import org.smeup.sys.il.esam.annotation.FileDef;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.QExpression;
@@ -223,11 +224,11 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 			dataTerm = getCompilationUnit().getDataTerm(dataTerm.getName(), false);
 
-			if(fields.contains(getCompilationUnit().normalizeTermName(dataTerm.getName())))
+			if (fields.contains(getCompilationUnit().normalizeTermName(dataTerm.getName())))
 				continue;
-			
+
 			writeField(dataTerm, false, scope);
-			
+
 			fields.add(getCompilationUnit().normalizeTermName(dataTerm.getName()));
 		}
 
@@ -249,8 +250,14 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				writeImport(QKSDataSet.class);
 				className = QKSDataSet.class.getSimpleName();
 			} else {
-				writeImport(QRRDataSet.class);
-				className = QRRDataSet.class.getSimpleName();
+				if (dataSetTerm.getFacet(QExternalFile.class) != null) {
+					writeImport(QRRDataSet.class);
+					className = QRRDataSet.class.getSimpleName();
+				}
+				else {
+					writeImport(QSMDataSet.class);
+					className = QSMDataSet.class.getSimpleName();
+				}
 			}
 
 			Type dataSetType = getAST().newSimpleType(getAST().newSimpleName(className));
@@ -288,11 +295,11 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			}
 
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getDataSetTerm_ExternalMember())) {
-				QDataTerm<?> externalFileMember = getCompilationUnit().getDataTerm(dataSetTerm.getExternalMember(), true);				
+				QDataTerm<?> externalFileMember = getCompilationUnit().getDataTerm(dataSetTerm.getExternalMember(), true);
 				writeAnnotation(field, FileDef.class, "externalMember", getCompilationUnit().getQualifiedName(externalFileMember));
 			}
 
-			if(getCompilationUnit().getNode() instanceof QModule)
+			if (getCompilationUnit().getNode() instanceof QModule)
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 			else
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
@@ -343,7 +350,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		ArrayInitializer arrayInitializer = getAST().newArrayInitializer();
 		for (String keyField : keyList.getKeyFields()) {
 
-			QExpression expression = expressionParser.parseExpression(keyField);			
+			QExpression expression = expressionParser.parseExpression(keyField);
 			Expression jdtExpression = JDTStatementHelper.buildExpression(getAST(), getCompilationUnit(), expression, null);
 			arrayInitializer.expressions().add(jdtExpression);
 		}
@@ -440,7 +447,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
 				writeAnnotation(field, FileDef.class, "info", displayTerm.getInfoStruct());
 
-			if(getCompilationUnit().getNode() instanceof QModule)
+			if (getCompilationUnit().getNode() instanceof QModule)
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 			else
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
@@ -491,8 +498,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
 				writeAnnotation(field, FileDef.class, "info", printTerm.getInfoStruct());
 
-
-			if(getCompilationUnit().getNode() instanceof QModule)
+			if (getCompilationUnit().getNode() instanceof QModule)
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 			else
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
@@ -522,9 +528,9 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			routine.setMain(callableUnit.getMain());
 			writeRoutine(routine);
 		}
-		
+
 		// snap
-		if(!callableUnitInfo.getResetObjects().isEmpty())
+		if (!callableUnitInfo.getResetObjects().isEmpty())
 			writeSnapRoutine(callableUnit, callableUnitInfo);
 
 		// routines
@@ -541,16 +547,16 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		QRoutine routine = QIntegratedLanguageFlowFactory.eINSTANCE.createRoutine();
 		routine.setName("*SNAP");
 		routine.setMain(callableUnit.getMain());
-		
-		QBlock block  = QIntegratedLanguageFlowFactory.eINSTANCE.createBlock();
+
+		QBlock block = QIntegratedLanguageFlowFactory.eINSTANCE.createBlock();
 		routine.setMain(block);
-		for(String object: callableUnitInfo.getResetObjects()) {
+		for (String object : callableUnitInfo.getResetObjects()) {
 			QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
 			methodExec.setObject(object);
 			methodExec.setMethod("snap");
 			block.getStatements().add(methodExec);
 		}
-		
+
 		writeRoutine(routine);
 	}
 
@@ -656,7 +662,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		} else {
 			QProcedure procedure = getCompilationUnit().getProcedure(prototype.getName(), false);
 			if (procedure != null) {
-				if(procedure.getEntry() != null)
+				if (procedure.getEntry() != null)
 					writeEntry(methodDeclaration, procedure.getEntry());
 
 				writeLazyLoading(procedure, block);
@@ -715,7 +721,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 	@SuppressWarnings("unchecked")
 	private void writeSetEntryParams(QProcedure procedure, Block block) {
 		List<QEntryParameter<?>> entryParameters = new ArrayList<QEntryParameter<?>>();
-		if(procedure.getEntry() != null) {
+		if (procedure.getEntry() != null) {
 			entryParameters.addAll(procedure.getEntry().getParameters());
 			Collections.reverse(entryParameters);
 		}
@@ -786,7 +792,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				break;
 			}
 
-			JDTProcedureWriter procedureWriter = new JDTProcedureWriter(this, procedureCompilationUnit, compilationSetup, getCompilationUnit().normalizeTermName(procedure.getName()), scope, static_);
+			JDTProcedureWriter procedureWriter = new JDTProcedureWriter(this, procedureCompilationUnit, compilationSetup, getCompilationUnit().normalizeTermName(procedure.getName()), scope,
+					static_);
 
 			procedureWriter.writeProcedure(procedure);
 		} catch (IOException e) {
@@ -810,7 +817,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		methodDeclaration.setName(getAST().newSimpleName(name));
 		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 
-		for (String parameterName : parameterList.getParameters()) {			
+		for (String parameterName : parameterList.getParameters()) {
 			QDataTerm<?> dataTerm = getCompilationUnit().getDataTerm(parameterName, true);
 
 			SingleVariableDeclaration parameterVariable = getAST().newSingleVariableDeclaration();
@@ -977,7 +984,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 	@SuppressWarnings("unchecked")
 	public void writeEntry(MethodDeclaration methodDeclaration, QEntry entry) {
-		
+
 		int p = 0;
 		for (QEntryParameter<?> entryParameter : entry.getParameters()) {
 
@@ -1018,7 +1025,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			p++;
 		}
 	}
-	
+
 	protected void loadModules(Collection<String> modules, String module, boolean recursive) {
 
 		addModule(modules, module);
@@ -1027,11 +1034,11 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		for (String moduleName : qModule.getSetupSection().getModules()) {
 			if (recursive)
 				loadModules(modules, moduleName, recursive);
-			else 
+			else
 				addModule(modules, module);
 		}
 	}
-	
+
 	private void addModule(Collection<String> modules, String module) {
 
 		if (!modules.contains(module))

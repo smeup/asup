@@ -24,7 +24,7 @@ public class BaseFileMemberProvider {
 
 	private QFileManager fileManager;
 	private QFileMemberManager fileMemberManager;
-	
+
 	private QContextProvider contextProvider;
 	private QString fileName;
 	private QString memberName;
@@ -33,23 +33,20 @@ public class BaseFileMemberProvider {
 		this.contextProvider = contextProvider;
 		this.fileName = fileName;
 		this.memberName = memberName;
-		
+
 		this.fileManager = contextProvider.getContext().get(QFileManager.class);
 		this.fileMemberManager = contextProvider.getContext().get(QFileMemberManager.class);
 	}
 
 	public QFileMember getFileMember() {
 
-		if(memberName.isEmpty())
-			"".toCharArray();
-		
 		QFileOverride fileOverride = fileManager.getFileOverride(contextProvider.getContext(), fileName.trimR());
-		if(fileOverride == null)
+		if (fileOverride == null)
 			return null;
-				
+
 		QFile fileMembered = fileOverride.getFileTo();
 		QFileMember fileMember = fileMemberManager.lookup(contextProvider, (QFileMembered) fileMembered, fileOverride.getMemberTo());
-		
+
 		return fileMember;
 	}
 

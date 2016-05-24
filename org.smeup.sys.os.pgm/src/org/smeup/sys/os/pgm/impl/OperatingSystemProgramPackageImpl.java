@@ -319,6 +319,24 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProgramInfo_LoadTime() {
+		return (EAttribute)programInfoEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProgramInfo_CallTime() {
+		return (EAttribute)programInfoEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -361,24 +379,6 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	@Override
 	public EClass getProgramStack() {
 		return programStackEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getProgramStack_DateEnter() {
-		return (EAttribute)programStackEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getProgramStack_DateExit() {
-		return (EAttribute)programStackEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -448,6 +448,8 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 
 		programInfoEClass = createEClass(PROGRAM_INFO);
 		createEAttribute(programInfoEClass, PROGRAM_INFO__MEMORY_SIZE);
+		createEAttribute(programInfoEClass, PROGRAM_INFO__LOAD_TIME);
+		createEAttribute(programInfoEClass, PROGRAM_INFO__CALL_TIME);
 
 		programManagerEClass = createEClass(PROGRAM_MANAGER);
 
@@ -456,8 +458,6 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		createEAttribute(programSourceEClass, PROGRAM_SOURCE__CONTENT);
 
 		programStackEClass = createEClass(PROGRAM_STACK);
-		createEAttribute(programStackEClass, PROGRAM_STACK__DATE_ENTER);
-		createEAttribute(programStackEClass, PROGRAM_STACK__DATE_EXIT);
 
 		programStatusEClass = createEClass(PROGRAM_STATUS);
 
@@ -589,8 +589,6 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(callableProgramEClass, ecorePackage.getEBoolean(), "isOpen", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(callableProgramEClass, null, "open", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(programEClass, QProgram.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProgram_ActivationGroup(), ecorePackage.getEString(), "activationGroup", "*DFT", 0, 1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProgram_Address(), ecorePackage.getEString(), "address", null, 0, 1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -608,6 +606,8 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 
 		initEClass(programInfoEClass, QProgramInfo.class, "ProgramInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProgramInfo_MemorySize(), ecorePackage.getELong(), "memorySize", null, 0, 1, QProgramInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProgramInfo_LoadTime(), ecorePackage.getELong(), "loadTime", null, 0, 1, QProgramInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProgramInfo_CallTime(), ecorePackage.getELong(), "callTime", null, 0, 1, QProgramInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(programManagerEClass, QProgramManager.class, "ProgramManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -689,8 +689,6 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		initEAttribute(getProgramSource_Content(), ecorePackage.getEString(), "content", null, 0, 1, QProgramSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(programStackEClass, QProgramStack.class, "ProgramStack", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProgramStack_DateEnter(), ecorePackage.getEDate(), "dateEnter", null, 0, 1, QProgramStack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProgramStack_DateExit(), ecorePackage.getEDate(), "dateExit", null, 0, 1, QProgramStack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(programStackEClass, ecorePackage.getEBoolean(), "contains", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getCallableProgram());

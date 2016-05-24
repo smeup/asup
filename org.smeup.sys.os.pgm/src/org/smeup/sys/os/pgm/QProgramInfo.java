@@ -19,6 +19,8 @@ import org.smeup.sys.il.core.QObject;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.pgm.QProgramInfo#getMemorySize <em>Memory Size</em>}</li>
+ *   <li>{@link org.smeup.sys.os.pgm.QProgramInfo#getLoadTime <em>Load Time</em>}</li>
+ *   <li>{@link org.smeup.sys.os.pgm.QProgramInfo#getCallTime <em>Call Time</em>}</li>
  * </ul>
  *
  * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getProgramInfo()
@@ -52,4 +54,56 @@ public interface QProgramInfo extends QObject {
 	 * @generated
 	 */
 	void setMemorySize(long value);
+
+	/**
+	 * Returns the value of the '<em><b>Load Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Load Time</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Load Time</em>' attribute.
+	 * @see #setLoadTime(long)
+	 * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getProgramInfo_LoadTime()
+	 * @model
+	 * @generated
+	 */
+	long getLoadTime();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.pgm.QProgramInfo#getLoadTime <em>Load Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Load Time</em>' attribute.
+	 * @see #getLoadTime()
+	 * @generated
+	 */
+	void setLoadTime(long value);
+
+	/**
+	 * Returns the value of the '<em><b>Call Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Call Time</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Call Time</em>' attribute.
+	 * @see #setCallTime(long)
+	 * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getProgramInfo_CallTime()
+	 * @model
+	 * @generated
+	 */
+	long getCallTime();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.pgm.QProgramInfo#getCallTime <em>Call Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Call Time</em>' attribute.
+	 * @see #getCallTime()
+	 * @generated
+	 */
+	void setCallTime(long value);
 } // QProgramInfo

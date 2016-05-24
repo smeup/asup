@@ -35,6 +35,7 @@ import org.smeup.sys.il.esam.annotation.Descend;
 import org.smeup.sys.il.esam.annotation.Index;
 import org.smeup.sys.os.file.base.BaseFileMemberDataSetImpl;
 import org.smeup.sys.os.file.base.BaseFileMemberProvider;
+import org.smeup.sys.os.file.base.BaseInfoStruct;
 
 public class JDBCAccessFactoryImpl implements QAccessFactory {
 
@@ -193,8 +194,8 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 			memberName = dataContext.getDataFactory().createCharacter(10, false, true);
 		
 		BaseFileMemberProvider fileMemberProvider = new BaseFileMemberProvider(contextProvider, fileName, memberName);
-
-		QSMDataSet<R> dataSet = new BaseFileMemberDataSetImpl<R>(fileMemberProvider, record, accessMode, userOpen);
+		BaseInfoStruct internalInfoStruct = dataContext.getDataFactory().createDataStruct(BaseInfoStruct.class, 0, true);
+		QSMDataSet<R> dataSet = new BaseFileMemberDataSetImpl<R>(fileMemberProvider, record, accessMode, userOpen, internalInfoStruct);
 
 		return dataSet;
 	}

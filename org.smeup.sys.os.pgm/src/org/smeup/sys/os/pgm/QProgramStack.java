@@ -16,72 +16,12 @@ import org.smeup.sys.il.core.QObject;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>QProgram Stack</b></em>'. <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link org.smeup.sys.os.pgm.QProgramStack#getDateEnter <em>Date Enter</em>}</li>
- *   <li>{@link org.smeup.sys.os.pgm.QProgramStack#getDateExit <em>Date Exit</em>}</li>
- * </ul>
  *
  * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getProgramStack()
  * @model
  * @generated
  */
 public interface QProgramStack extends QObject {
-	/**
-	 * Returns the value of the '<em><b>Date Enter</b></em>' attribute. <!--
-	 * begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Date Enter</em>' attribute isn't clear, there
-	 * really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 *
-	 * @return the value of the '<em>Date Enter</em>' attribute.
-	 * @see #setDateEnter(Date)
-	 * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getProgramStack_DateEnter()
-	 * @model
-	 * @generated
-	 */
-	Date getDateEnter();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.pgm.QProgramStack#getDateEnter <em>Date Enter</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @param value the new value of the '<em>Date Enter</em>' attribute.
-	 * @see #getDateEnter()
-	 * @generated
-	 */
-	void setDateEnter(Date value);
-
-	/**
-	 * Returns the value of the '<em><b>Date Exit</b></em>' attribute. <!--
-	 * begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Date Exit</em>' attribute isn't clear, there
-	 * really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 *
-	 * @return the value of the '<em>Date Exit</em>' attribute.
-	 * @see #setDateExit(Date)
-	 * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getProgramStack_DateExit()
-	 * @model
-	 * @generated
-	 */
-	Date getDateExit();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.pgm.QProgramStack#getDateExit <em>Date Exit</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Date Exit</em>' attribute.
-	 * @see #getDateExit()
-	 * @generated
-	 */
-	void setDateExit(Date value);
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

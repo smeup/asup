@@ -21,12 +21,13 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	
 	private boolean open = false;
 	private int currentPosition = -1;
-	
+	private BaseInfoStruct infoStruct;
 	private QDataWriter dataWriter;
 	
-	public BaseFileMemberDataSetImpl(BaseFileMemberProvider fileMemberProvider, R record, AccessMode accessMode, boolean userOpen) {
+	public BaseFileMemberDataSetImpl(BaseFileMemberProvider fileMemberProvider, R record, AccessMode accessMode, boolean userOpen, BaseInfoStruct infoStruct) {
 		this.fileMemberProvider = fileMemberProvider;
 		this.record = record;
+		this.infoStruct = infoStruct;
 		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 	}
 
@@ -149,8 +150,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 	@Override
 	public QDataStruct getInfoStruct() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.infoStruct;
 	}
 
 	@Override

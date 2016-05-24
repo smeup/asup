@@ -62,17 +62,16 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 	private boolean apiMode = false;
 
 	private QProgramInfo programInfo = null;
-
+	
 	protected BaseCallableProgramDelegator(QDataContext dataContext, QProgram program, QProgramStatus programStatus, P delegate, QProgramInfo programInfo) {
 		this.dataContext = dataContext;
 		this.program = program;
 		this.programStatus = programStatus;
 		this.delegate = delegate;
-
 		this.programInfo = programInfo;
 		analyzeDelegate(delegate);
 	}
-
+	
 	private void analyzeDelegate(Object delegate) {
 
 		Class<?> klass = delegate.getClass();
@@ -117,16 +116,88 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 		}
 	}
 
-	@Override
-	public void open() {
+	public QData[] call() {
+		// open
+		if (!isOpen())
+			open();
+		
+		if (apiMode)
+			callAPIMode();
+		else
+			callProgramMode();
 
+		return getEntry();
+	}
+
+	private void callAPIMode() {
+
+		try {
+			// @PreMain
+			if (_entry != null)
+				_entry.invoke(getDelegate());
+
+			if (getEntry() == null) {
+				_main.invoke(delegate);
+			} else {
+				_main.invoke(delegate, (Object[]) getEntry());
+			}
+
+			// @PostMain
+			if (_exit != null)
+				_exit.invoke(getDelegate());
+			
+		} catch (InvocationTargetException e) {
+			if (e.getTargetException() instanceof OperatingSystemMessageException)
+				throw (OperatingSystemMessageException) e.getTargetException();
+			if (e.getTargetException() instanceof OperatingSystemRuntimeException)
+				throw (OperatingSystemRuntimeException) e.getTargetException();
+			else
+				throw new OperatingSystemRuntimeException(e.getTargetException());
+		} catch (Exception e) {
+			throw new OperatingSystemRuntimeException(e);
+		}
+	}
+
+	private QData[] callProgramMode() {
+		
+		try {
+			if (inlr != null)
+				inlr.eval(false);
+
+			// @Pre Main
+			if (_entry != null)
+				_entry.invoke(getDelegate());
+
+			_main.invoke(delegate);
+
+			// @PostMain
+			if (_exit != null)
+				_exit.invoke(getDelegate());
+
+			if (inlr != null && inlr.asBoolean())
+				close();
+
+			return getEntry();
+		} catch (InvocationTargetException e) {
+			if (e.getTargetException() instanceof OperatingSystemMessageException)
+				throw (OperatingSystemMessageException) e.getTargetException();
+			if (e.getTargetException() instanceof OperatingSystemRuntimeException)
+				throw (OperatingSystemRuntimeException) e.getTargetException();
+			else
+				throw new OperatingSystemRuntimeException(e.getTargetException());
+		} catch (Exception e) {
+			throw new OperatingSystemRuntimeException(e);
+		}	
+	}
+	
+	private void open() {
+		
 		if (_open != null) {
 			try {
 				switch (initStrategy) {
 				case BASE:
 				case LIGHT:
 					_open.invoke(delegate);
-
 					break;
 				}
 			} catch (InvocationTargetException e) {
@@ -206,72 +277,6 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 		}
 
 		isOpen = true;
-	}
-
-	public QData[] call() {
-
-		if (apiMode)
-			return callAPIMode();
-
-		try {
-			if (inlr != null)
-				inlr.eval(false);
-
-			// @Pre Main
-			if (_entry != null)
-				_entry.invoke(getDelegate());
-
-			_main.invoke(delegate);
-
-			// @PostMain
-			if (_exit != null)
-				_exit.invoke(getDelegate());
-
-			if (inlr != null && inlr.asBoolean())
-				close();
-
-			return getEntry();
-		} catch (InvocationTargetException e) {
-			if (e.getTargetException() instanceof OperatingSystemMessageException)
-				throw (OperatingSystemMessageException) e.getTargetException();
-			if (e.getTargetException() instanceof OperatingSystemRuntimeException)
-				throw (OperatingSystemRuntimeException) e.getTargetException();
-			else
-				throw new OperatingSystemRuntimeException(e.getTargetException());
-		} catch (Exception e) {
-			throw new OperatingSystemRuntimeException(e);
-		}
-	}
-
-	private QData[] callAPIMode() {
-
-		try {
-			// @PreMain
-			if (_entry != null)
-				_entry.invoke(getDelegate());
-
-			if (getEntry() == null) {
-				_main.invoke(delegate);
-				return entry;
-			} else {
-				_main.invoke(delegate, (Object[]) getEntry());
-			}
-
-			// @PostMain
-			if (_exit != null)
-				_exit.invoke(getDelegate());
-
-			return getEntry();
-		} catch (InvocationTargetException e) {
-			if (e.getTargetException() instanceof OperatingSystemMessageException)
-				throw (OperatingSystemMessageException) e.getTargetException();
-			if (e.getTargetException() instanceof OperatingSystemRuntimeException)
-				throw (OperatingSystemRuntimeException) e.getTargetException();
-			else
-				throw new OperatingSystemRuntimeException(e.getTargetException());
-		} catch (Exception e) {
-			throw new OperatingSystemRuntimeException(e);
-		}
 	}
 
 	@Override

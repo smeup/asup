@@ -302,13 +302,31 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	int PROGRAM_INFO__MEMORY_SIZE = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Load Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROGRAM_INFO__LOAD_TIME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Call Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROGRAM_INFO__CALL_TIME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Program Info</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROGRAM_INFO_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
+	int PROGRAM_INFO_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.pgm.QProgramManager <em>Program Manager</em>}' class.
@@ -374,30 +392,12 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	int PROGRAM_STACK = 8;
 
 	/**
-	 * The feature id for the '<em><b>Date Enter</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int PROGRAM_STACK__DATE_ENTER = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Date Exit</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int PROGRAM_STACK__DATE_EXIT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Program Stack</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROGRAM_STACK_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
+	int PROGRAM_STACK_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.pgm.QProgramStatus <em>Program Status</em>}' class.
@@ -592,6 +592,28 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	EAttribute getProgramInfo_MemorySize();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.pgm.QProgramInfo#getLoadTime <em>Load Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Load Time</em>'.
+	 * @see org.smeup.sys.os.pgm.QProgramInfo#getLoadTime()
+	 * @see #getProgramInfo()
+	 * @generated
+	 */
+	EAttribute getProgramInfo_LoadTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.pgm.QProgramInfo#getCallTime <em>Call Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Call Time</em>'.
+	 * @see org.smeup.sys.os.pgm.QProgramInfo#getCallTime()
+	 * @see #getProgramInfo()
+	 * @generated
+	 */
+	EAttribute getProgramInfo_CallTime();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.pgm.QProgramManager <em>Program Manager</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Program Manager</em>'.
@@ -641,26 +663,6 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getProgramStack();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.pgm.QProgramStack#getDateEnter <em>Date Enter</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Date Enter</em>'.
-	 * @see org.smeup.sys.os.pgm.QProgramStack#getDateEnter()
-	 * @see #getProgramStack()
-	 * @generated
-	 */
-	EAttribute getProgramStack_DateEnter();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.pgm.QProgramStack#getDateExit <em>Date Exit</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Date Exit</em>'.
-	 * @see org.smeup.sys.os.pgm.QProgramStack#getDateExit()
-	 * @see #getProgramStack()
-	 * @generated
-	 */
-	EAttribute getProgramStack_DateExit();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.pgm.QProgramStatus <em>Program Status</em>}'.
@@ -836,6 +838,22 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 		EAttribute PROGRAM_INFO__MEMORY_SIZE = eINSTANCE.getProgramInfo_MemorySize();
 
 		/**
+		 * The meta object literal for the '<em><b>Load Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROGRAM_INFO__LOAD_TIME = eINSTANCE.getProgramInfo_LoadTime();
+
+		/**
+		 * The meta object literal for the '<em><b>Call Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROGRAM_INFO__CALL_TIME = eINSTANCE.getProgramInfo_CallTime();
+
+		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.pgm.QProgramManager <em>Program Manager</em>}' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
@@ -878,20 +896,6 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PROGRAM_STACK = eINSTANCE.getProgramStack();
-
-		/**
-		 * The meta object literal for the '<em><b>Date Enter</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PROGRAM_STACK__DATE_ENTER = eINSTANCE.getProgramStack_DateEnter();
-
-		/**
-		 * The meta object literal for the '<em><b>Date Exit</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PROGRAM_STACK__DATE_EXIT = eINSTANCE.getProgramStack_DateExit();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.pgm.QProgramStatus <em>Program Status</em>}' class.

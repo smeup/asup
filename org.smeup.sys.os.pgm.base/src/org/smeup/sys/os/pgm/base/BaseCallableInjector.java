@@ -82,7 +82,6 @@ public class BaseCallableInjector {
 	private QFileManager fileManager;
 	@Inject
 	private QAccessManager esamManager;
-
 	@Inject
 	private QJob job;
 

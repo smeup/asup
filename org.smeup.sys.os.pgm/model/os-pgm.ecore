@@ -62,7 +62,6 @@
       <eGenericType eTypeParameter="#//CallableProgram/P"/>
     </eOperations>
     <eOperations name="isOpen" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="open"/>
     <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
     <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCallable">
       <eTypeArguments eClassifier="#//ParameterList"/>
@@ -104,6 +103,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProgramInfo" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="memorySize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="loadTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="callTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProgramManager" abstract="true" interface="true">
     <eOperations name="callProgram">
@@ -216,8 +217,6 @@
       </eGenericType>
     </eOperations>
     <eOperations name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateEnter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateExit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProgramStatus" abstract="true" interface="true"
       eSuperTypes="../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct">

@@ -9,10 +9,10 @@ package org.smeup.sys.os.pgm;
 
 import java.io.Closeable;
 import java.util.concurrent.Callable;
+
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -84,12 +84,5 @@ public interface QCallableProgram<P extends Object> extends QObject, Callable<QD
 	 * @generated
 	 */
 	boolean isOpen();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void open() throws OperatingSystemRuntimeException;
 
 } // QCallableProgram

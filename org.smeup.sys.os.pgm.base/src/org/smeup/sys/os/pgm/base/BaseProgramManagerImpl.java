@@ -11,10 +11,10 @@
  */
 package org.smeup.sys.os.pgm.base;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -70,9 +70,6 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	private QDataManager dataManager;
 
 	private QActivationGroupManager activationGroupManager;
-
-	@Inject
-	private QStrings strings;
 
 	private Map<String, QProgramStack> programStacks;
 
@@ -158,6 +155,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		try {
 			QProgram program = QOperatingSystemProgramFactory.eINSTANCE.createProgram();
 			program.setName(klass.getSimpleName());
+
 			QCallableProgram<P> callableProgram = prepareCallableProgram(job, program, klass);
 
 			return callableProgram;
@@ -206,12 +204,14 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 		QDataContext dataContext = dataManager.createDataContext(job.getContext(), null);
 		QDataContainer dataContainer = dataManager.createDataContainer(dataContext);
-		
+
 		try {
 			BaseCallableInjector callableInjector = new BaseCallableInjector(dataContext);
 			job.getContext().inject(callableInjector);
 
+			Date startDate = new Date();
 			QCallableProgram<P> callableProgram = callableInjector.prepareCallable(program, klass);
+			callableProgram.getProgramInfo().setLoadTime(new Date().getTime() - startDate.getTime());
 
 			return callableProgram;
 		} catch (Exception e) {
@@ -220,7 +220,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			dataContainer.close();
 		}
 	}
-	
+
 	private void assignParameters(QCallableProgram<?> callableProgram, QData[] paramsFrom) {
 
 		QData[] paramsTo = callableProgram.getEntry();
@@ -302,34 +302,29 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 		if (job.getJobThread() != null && !job.getJobThread().checkRunnable())
 			return;
-
+		
+		callableProgram.getProgramInfo().setCallTime(new Date().getTime());
+		
 		synchronized (callableProgram) {
 
 			// retrieve program stack from job
 			QProgramStack programStack = getProgramStack(job.getJobID());
-			programStack.setDateEnter(new Date());
-			programStack.setDateExit(null);
 			if (programStack.isEmpty())
 				jobManager.updateStatus(job, JobStatus.RUN);
-
-			// push program on stack
-			programStack.push(callableProgram);
 
 			// call
 			try {
 
-				// assign parameter
 				assignParameters(callableProgram, params);
+
+				programStack.push(callableProgram);
 
 				printSendStack(job, programStack, callableProgram);
 
-				// open
-				if (!callableProgram.isOpen())
-					callableProgram.open();
-
+				
 				// call
 				callableProgram.call();
-
+				
 				if (!callableProgram.isOpen()) {
 					QProgram program = callableProgram.getProgram();
 					QActivationGroup activationGroup = activationGroupManager.lookup(job, program.getActivationGroup());
@@ -357,14 +352,19 @@ public class BaseProgramManagerImpl implements QProgramManager {
 					System.err.println(e);
 				throw new OperatingSystemRuntimeException(e.getMessage(), e);
 			} finally {
-				printReceiveStack(job, programStack, callableProgram);
 
-				// remove program from stack
-				programStack.setDateExit(new Date());
+				long callTime = new Date().getTime() - programStack.peek().getProgramInfo().getCallTime();
+				callableProgram.getProgramInfo().setCallTime(callTime);
+
+				printReceiveStack(job, programStack, callableProgram);
+				
 				programStack.pop();
 
 				if (programStack.isEmpty())
 					jobManager.updateStatus(job, JobStatus.ACTIVE);
+				else
+					programStack.peek().getProgramInfo().setCallTime(programStack.peek().getProgramInfo().getCallTime()+callTime);
+					
 			}
 		}
 	}
@@ -387,27 +387,35 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		return program;
 	}
 
-	protected void printSendStack(QJob job, QProgramStack programStack, QCallableProgram<?> callableProgram) {
+	private void printSendStack(QJob job, QProgramStack programStack, QCallableProgram<?> callableProgram) {
 
 		String text = callableProgram.isOpen() ? ">  " : "-> ";
-		text += callableProgram.getProgram().getName()+ " (";
-		
+		text += callableProgram.getProgram().getName() + " (";
+
 		if (callableProgram.getEntry() != null)
 			text += formatStackParameters(callableProgram.getEntry());
 		text += ")";
+
+		String loadTimeString = "       ";
+		if (!callableProgram.isOpen())
+			loadTimeString = "[" + new DecimalFormat("00000").format(callableProgram.getProgramInfo().getLoadTime()) + "]";
+
 		QJobReference jobReference = job.getJobReference();
-		System.out.println(jobReference.getJobName() + "(" + jobReference.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
+		System.out.println(jobReference.getJobName() + "(" + jobReference.getJobNumber() + ")" + loadTimeString + QStrings.qINSTANCE.appendChars(text, "\t", programStack.size(), true));
 	}
 
-	protected void printReceiveStack(QJob job, QProgramStack programStack, QCallableProgram<?> callableProgram) {
+	private void printReceiveStack(QJob job, QProgramStack programStack, QCallableProgram<?> callableProgram) {
+
 		String text = callableProgram.isOpen() ? "<  " : "<- ";
-		text += callableProgram.getProgram().getName()+ " (";
+		text += callableProgram.getProgram().getName() + " (";
 		if (callableProgram.getEntry() != null)
 			text += formatStackParameters(callableProgram.getEntry());
 		text += ")";
 
+		String callTimeString = "[" + new DecimalFormat("00000").format(callableProgram.getProgramInfo().getCallTime()) + "]";
+
 		QJobReference jobReference = job.getJobReference();
-		System.out.println(jobReference.getJobName() + "(" + jobReference.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
+		System.out.println(jobReference.getJobName() + "(" + jobReference.getJobNumber() + ")" + callTimeString + QStrings.qINSTANCE.appendChars(text, "\t", programStack.size(), true));
 	}
 
 	private String formatStackParameters(QData[] entry) {
@@ -465,10 +473,5 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				text += paramValue + "|";
 		}
 		return text;
-	}
-
-	protected long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
-		long diffInMillies = date2.getTime() - date1.getTime();
-		return timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS);
 	}
 }
