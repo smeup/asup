@@ -493,6 +493,6 @@ public class NIOBufferHelper {
 	public static void writeDefault(QBufferedList<?> bufferedList, String[] values) {
 
 		for (int i = 1; i <= values.length; i++)
-			bufferedList.get(i).movel(values[i], true);
+			bufferedList.get(i).movel(values[i-1], true);
 	}
 }

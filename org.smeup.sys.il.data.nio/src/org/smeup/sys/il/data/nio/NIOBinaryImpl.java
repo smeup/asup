@@ -198,6 +198,7 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 		eval(getDecimalDef().getZoned().toDouble(value));
 	}
 
+	/*
 	@Override
 	protected final byte[] _toBytes(DataSpecial value) {
 
@@ -214,6 +215,40 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 		case ZERO:
 		case ZEROS:
 			Arrays.fill(bytes, INIT);
+			break;
+		case ON:
+			Arrays.fill(bytes, NIOIndicatorImpl.ON);
+			break;
+		case HIVAL:
+			Arrays.fill(bytes, HIVAL);
+			break;
+		case NULL:
+		case OMIT:
+			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237rvbwe87vb9stf");
+		}
+
+		bytes[bytes.length - 1] = 0x0F;
+		return bytes;
+	}
+	*/
+
+	@Override
+	protected final byte[] _toBytes(DataSpecial value) {
+
+		byte[] bytes = new byte[getLength()];
+		switch (value) {
+		case LOVAL:
+			Arrays.fill(bytes, HIVAL);
+			bytes[bytes.length - 1] = LOVAL;
+			break;
+		case BLANK:
+		case BLANKS:
+			Arrays.fill(bytes, NIOCharacterImpl.INIT);
+			break;
+		case OFF:
+		case ZERO:
+		case ZEROS:
+			Arrays.fill(bytes, NIODecimalImpl.INIT);
 			break;
 		case ON:
 			Arrays.fill(bytes, NIOIndicatorImpl.ON);

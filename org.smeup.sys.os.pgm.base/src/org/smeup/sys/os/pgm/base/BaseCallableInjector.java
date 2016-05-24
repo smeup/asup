@@ -120,6 +120,7 @@ public class BaseCallableInjector {
 
 			return callableProgram;
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new OperatingSystemRuntimeException(e);
 		} finally {
 			dataContainer.close();

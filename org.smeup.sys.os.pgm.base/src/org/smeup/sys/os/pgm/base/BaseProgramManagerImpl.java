@@ -353,7 +353,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				throw new OperatingSystemRuntimeException(e.getMessage(), e);
 			} finally {
 
-				long callTime = new Date().getTime() - programStack.peek().getProgramInfo().getCallTime();
+				long callTime = new Date().getTime() - callableProgram.getProgramInfo().getCallTime();
 				callableProgram.getProgramInfo().setCallTime(callTime);
 
 				printReceiveStack(job, programStack, callableProgram);
@@ -362,8 +362,6 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 				if (programStack.isEmpty())
 					jobManager.updateStatus(job, JobStatus.ACTIVE);
-				else
-					programStack.peek().getProgramInfo().setCallTime(programStack.peek().getProgramInfo().getCallTime()+callTime);
 					
 			}
 		}
