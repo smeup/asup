@@ -27,6 +27,17 @@ import org.smeup.sys.il.expr.QRelationalExpression;
 import org.smeup.sys.il.expr.impl.ExpressionVisitorImpl;
 
 
+/**
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Dario Foresti - Initial API and implementation
+ */
 public class NeutralExpressionStringBuilder extends ExpressionVisitorImpl {
 	
 	protected StringBuffer result = new StringBuffer();
