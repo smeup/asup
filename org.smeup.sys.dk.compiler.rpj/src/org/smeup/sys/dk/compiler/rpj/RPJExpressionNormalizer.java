@@ -16,6 +16,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.rpj.writer.JDTContextHelper;
 import org.smeup.sys.il.core.term.QNamedNode;
@@ -61,13 +62,33 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 	@Inject
 	private QJob job;
 
-	private QMethodExec lastSetll = null;
+	private QMethodExec lastMethod = null;
 
 	@Override
 	public boolean visit(QMethodExec statement) {
 
 		if (statement.getMethod().equalsIgnoreCase("SETLL"))
-			lastSetll = statement;
+			lastMethod = statement;
+		else if (statement.getMethod().equalsIgnoreCase("SETGT"))
+			lastMethod = statement;
+		else if (statement.getMethod().equalsIgnoreCase("CHAIN"))
+			lastMethod = statement;
+		else if (statement.getMethod().equalsIgnoreCase("DELETE"))
+			lastMethod = statement;
+		else if (statement.getMethod().equalsIgnoreCase("READ"))
+			lastMethod = statement;
+		else if (statement.getMethod().equalsIgnoreCase("READE"))
+			lastMethod = statement;
+		else if (statement.getMethod().equalsIgnoreCase("READP"))
+			lastMethod = statement;
+		else if (statement.getMethod().equalsIgnoreCase("READPE"))
+			lastMethod = statement;
+		else if (statement.getMethod().equalsIgnoreCase("%LOOKUP"))
+			lastMethod = statement;
+		else if (statement.getMethod().equalsIgnoreCase("%CHECK"))
+			lastMethod = statement;
+		else if (statement.getMethod().equalsIgnoreCase("%CHECKR"))
+			lastMethod = statement;
 		
 		return true;
 	}
@@ -212,16 +233,24 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 		@Override
 		public boolean visit(QFunctionTermExpression expression) {
-			if (expression.getValue().equalsIgnoreCase("%EQUAL")) {
+			if (expression.getValue().equalsIgnoreCase("%EQUAL") ||
+				expression.getValue().equalsIgnoreCase("%FOUND") ||
+				expression.getValue().equalsIgnoreCase("%EOF")   ||
+				expression.getValue().equalsIgnoreCase("%ERROR") ||
+				expression.getValue().equalsIgnoreCase("%OPEN") ||
+				expression.getValue().equalsIgnoreCase("%CLOSE")) {
 				if (expression.getElements().isEmpty()) {
-					if (lastSetll != null) {
+					if (lastMethod != null) {
 						QAtomicTermExpression atomicTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createAtomicTermExpression();
 						atomicTermExpression.setType(AtomicType.NAME);
-						atomicTermExpression.setValue(lastSetll.getObject());
+						atomicTermExpression.setValue(lastMethod.getObject());
 						expression.getElements().add(atomicTermExpression);
 
 						normalized = true;
 					}
+					else
+						throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: 9w8xbt87we8r");
+						
 				}
 
 			}
