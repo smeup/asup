@@ -206,7 +206,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		ArrayInitializer arrayInitializer = ast.newArrayInitializer();
 		for (String parameter : statement.getParameters()) {
 			expression = expressionParser.parseTerm(parameter);
-			jdtExpression = JDTStatementHelper.buildExpression(ast, compilationUnit, expression, null);
+			jdtExpression = JDTStatementHelper.buildExpression(ast, compilationUnit, expression, QData.class);
 			arrayInitializer.expressions().add(jdtExpression);
 
 		}

@@ -52,6 +52,7 @@ import org.smeup.sys.db.core.QSchemaDef;
 import org.smeup.sys.db.core.QStatement;
 import org.smeup.sys.db.core.QTableColumnDef;
 import org.smeup.sys.db.core.QTableDef;
+import org.smeup.sys.db.core.QTableProvider;
 import org.smeup.sys.db.core.QViewDef;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
@@ -198,6 +199,13 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 	 * @generated
 	 */
 	private EClass tableColumnDefEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tableProviderEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -766,6 +774,15 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTableProvider() {
+		return tableProviderEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getViewDef() {
 		return viewDefEClass;
 	}
@@ -928,6 +945,8 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		createEReference(tableColumnDefEClass, TABLE_COLUMN_DEF__DEFINITION);
 		createEAttribute(tableColumnDefEClass, TABLE_COLUMN_DEF__NAME);
 		createEAttribute(tableColumnDefEClass, TABLE_COLUMN_DEF__NULLABLE);
+
+		tableProviderEClass = createEClass(TABLE_PROVIDER);
 
 		viewDefEClass = createEClass(VIEW_DEF);
 		createEAttribute(viewDefEClass, VIEW_DEF__QUERY_SELECT);
@@ -1339,6 +1358,12 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		initEReference(getTableColumnDef_Definition(), g1, null, "definition", null, 1, 1, QTableColumnDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTableColumnDef_Name(), ecorePackage.getEString(), "name", null, 1, 1, QTableColumnDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTableColumnDef_Nullable(), ecorePackage.getEBoolean(), "nullable", null, 0, 1, QTableColumnDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(tableProviderEClass, QTableProvider.class, "TableProvider", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(tableProviderEClass, theSQLTablesPackage.getTable(), "getTable", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "schema", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "table", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(viewDefEClass, QViewDef.class, "ViewDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getViewDef_QuerySelect(), ecorePackage.getEString(), "querySelect", null, 0, 1, QViewDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

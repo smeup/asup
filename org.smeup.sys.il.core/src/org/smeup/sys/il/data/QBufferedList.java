@@ -104,6 +104,14 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	QIndicator qFound();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" argumentRequired="true"
 	 * @generated
 	 */

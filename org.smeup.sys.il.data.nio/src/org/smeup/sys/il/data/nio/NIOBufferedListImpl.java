@@ -656,4 +656,9 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 		
 		return total;
 	}
+	
+	@Override
+	public QIndicator qFound() {
+		return getDataContext().found();
+	}
 }

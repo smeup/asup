@@ -18,6 +18,7 @@ import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.db.core.QStatement;
+import org.smeup.sys.db.core.QTableProvider;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QIndicator;
@@ -40,7 +41,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	private R record;
 	private QString tableName;
 	private AccessMode accessMode;
-	private JDBCTableProvider tableProvider;
+	private QTableProvider tableProvider;
 	private JDBCDataReaderImpl dataReader;
 
 	private JDBCDataWriterImpl dataWriter;
@@ -73,7 +74,9 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		this.tableName = tableName;
 		
 		this.accessMode = accessMode;
-		this.tableProvider = new JDBCTableProvider(databaseConnection);
+		this.tableProvider = databaseConnection.getContext().get(QTableProvider.class);
+		if(tableProvider == null)
+			tableProvider = new JDBCTableProvider(databaseConnection);
 		this.infoStruct = infoStruct;
 		this.dataContext = dataContext;
 
@@ -266,7 +269,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 		String querySelect = jdbcAccessHelper.buildSelect(this.currentTable, index, opSet, keySet, opRead, keyRead);
 
-//		System.out.println("sql:\t"+querySelect);
+		System.out.println("sql:\t"+querySelect);
 
 		this.resultSet = this.statement.executeQuery(querySelect);
 		this.dataReader.set(this.resultSet);

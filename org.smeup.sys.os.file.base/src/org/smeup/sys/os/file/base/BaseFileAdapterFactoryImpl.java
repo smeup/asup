@@ -23,6 +23,7 @@ import org.smeup.sys.db.core.QIndexColumnDef;
 import org.smeup.sys.db.core.QIndexDef;
 import org.smeup.sys.db.core.QTableColumnDef;
 import org.smeup.sys.db.core.QTableDef;
+import org.smeup.sys.db.core.QTableProvider;
 import org.smeup.sys.db.core.QViewDef;
 import org.smeup.sys.db.syntax.QAliasResolver;
 import org.smeup.sys.db.syntax.QDefinitionParseResult;
@@ -39,14 +40,17 @@ import org.smeup.sys.os.file.QDatabaseFileField;
 import org.smeup.sys.os.file.QDatabaseFileFormat;
 import org.smeup.sys.os.file.QFileFormatKey;
 import org.smeup.sys.os.file.QFileFormatKeyField;
+import org.smeup.sys.os.file.QFileManager;
 import org.smeup.sys.os.file.QLogicalFile;
 
 public class BaseFileAdapterFactoryImpl implements QAdapterFactory {
 
+	private QFileManager fileManager;
 	private QConnectionManager connectionManager;
 
-	public BaseFileAdapterFactoryImpl(QConnectionManager connectionManager) {
+	public BaseFileAdapterFactoryImpl(QConnectionManager connectionManager, QFileManager fileManager) {
 		this.connectionManager = connectionManager;
+		this.fileManager = fileManager;
 	}
 
 	@SuppressWarnings({ "unchecked" })
@@ -88,6 +92,7 @@ public class BaseFileAdapterFactoryImpl implements QAdapterFactory {
 						job.getContext().set(QConnection.class, connection);
 					
 						connection.getContext().set(QAliasResolver.class, new BaseAliasResolverImpl());
+						connection.getContext().set(QTableProvider.class, new BaseTableProviderImpl(job, connection, fileManager));
 						
 					} catch (SQLException e) {
 						throw new OperatingSystemRuntimeException(e);

@@ -9,24 +9,34 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.esam.jdbc;
+package org.smeup.sys.os.file.base;
 
 import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.smeup.sys.db.core.QCatalogMetaData;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QTableProvider;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.file.QFileManager;
+import org.smeup.sys.os.file.QFileOverride;
 
-public class JDBCTableProvider implements QTableProvider {
+public class BaseTableProviderImpl implements QTableProvider {
 
+	private QFileManager fileManager;
+	private QJob job;
 	private QConnection connection;
 
-	public JDBCTableProvider(QConnection connection) {
+	public BaseTableProviderImpl(QJob job, QConnection connection, QFileManager fileManager) {
+		this.job = job;
 		this.connection = connection;
+		this.fileManager = fileManager;
 	}
 
-	@Override
 	public Table getTable(String container, String name) {
 
+		QFileOverride fileOverride = fileManager.getFileOverride(job.getContext(), name);
+		if (fileOverride != null)
+			name = fileOverride.getFileTo().getName();
+		
 		QCatalogMetaData catalogMetaData = connection.getCatalogMetaData();
 
 		if (container == null) {

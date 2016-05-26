@@ -1952,6 +1952,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(bufferedListEClass, null, "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getString(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(bufferedListEClass, this.getIndicator(), "qFound", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(bufferedListEClass, this.getDecimal(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(bufferedListEClass_D);
 		addEParameter(op, g1, "argument", 1, 1, IS_UNIQUE, IS_ORDERED);

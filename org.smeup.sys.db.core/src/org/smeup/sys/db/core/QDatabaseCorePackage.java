@@ -729,13 +729,32 @@ public interface QDatabaseCorePackage extends EPackage {
 	int TABLE_COLUMN_DEF_FEATURE_COUNT = DATABASE_OBJECT_DEF_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.db.core.QTableProvider <em>Table Provider</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.db.core.QTableProvider
+	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getTableProvider()
+	 * @generated
+	 */
+	int TABLE_PROVIDER = 19;
+
+	/**
+	 * The number of structural features of the '<em>Table Provider</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_PROVIDER_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.core.impl.ViewDefImpl <em>View Def</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.db.core.impl.ViewDefImpl
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getViewDef()
 	 * @generated
 	 */
-	int VIEW_DEF = 19;
+	int VIEW_DEF = 20;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -781,7 +800,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getOrderingType()
 	 * @generated
 	 */
-	int ORDERING_TYPE = 20;
+	int ORDERING_TYPE = 21;
 
 	/**
 	 * The meta object id for the '<em>Database Exception</em>' data type. <!--
@@ -791,7 +810,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseException()
 	 * @generated
 	 */
-	int DATABASE_EXCEPTION = 21;
+	int DATABASE_EXCEPTION = 22;
 
 	/**
 	 * The meta object id for the '<em>Database Result Set</em>' data type. <!--
@@ -801,7 +820,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseResultSet()
 	 * @generated
 	 */
-	int DATABASE_RESULT_SET = 22;
+	int DATABASE_RESULT_SET = 23;
 
 	/**
 	 * The meta object id for the '<em>Statement Batch Result</em>' data type.
@@ -809,7 +828,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getStatementBatchResult()
 	 * @generated
 	 */
-	int STATEMENT_BATCH_RESULT = 23;
+	int STATEMENT_BATCH_RESULT = 24;
 
 	/**
 	 * The meta object id for the '<em>Exception</em>' data type. <!--
@@ -819,7 +838,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseCoreException()
 	 * @generated
 	 */
-	int DATABASE_CORE_EXCEPTION = 24;
+	int DATABASE_CORE_EXCEPTION = 25;
 
 	/**
 	 * The meta object id for the '<em>Runtime Exception</em>' data type. <!--
@@ -829,7 +848,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseCoreRuntimeException()
 	 * @generated
 	 */
-	int DATABASE_CORE_RUNTIME_EXCEPTION = 25;
+	int DATABASE_CORE_RUNTIME_EXCEPTION = 26;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.core.QCatalogContainer <em>Catalog Container</em>}'.
@@ -1350,6 +1369,16 @@ public interface QDatabaseCorePackage extends EPackage {
 	EAttribute getTableColumnDef_Nullable();
 
 	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.db.core.QTableProvider <em>Table Provider</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Table Provider</em>'.
+	 * @see org.smeup.sys.db.core.QTableProvider
+	 * @generated
+	 */
+	EClass getTableProvider();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.core.QViewDef <em>View Def</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>View Def</em>'.
@@ -1864,6 +1893,16 @@ public interface QDatabaseCorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TABLE_COLUMN_DEF__NULLABLE = eINSTANCE.getTableColumnDef_Nullable();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.db.core.QTableProvider <em>Table Provider</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.db.core.QTableProvider
+		 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getTableProvider()
+		 * @generated
+		 */
+		EClass TABLE_PROVIDER = eINSTANCE.getTableProvider();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.db.core.impl.ViewDefImpl <em>View Def</em>}' class.

@@ -44,7 +44,7 @@ public class BaseFileManagerImpl implements QFileManager {
 	@PostConstruct
 	public void init() {
 
-		QAdapterFactory adapterFactory = new BaseFileAdapterFactoryImpl(connectionManager);
+		QAdapterFactory adapterFactory = new BaseFileAdapterFactoryImpl(connectionManager, this);
 
 		application.getContext().registerAdapterFactory(adapterFactory, QJob.class);
 		application.getContext().registerAdapterFactory(adapterFactory, QPhysicalFile.class);

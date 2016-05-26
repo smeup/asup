@@ -92,6 +92,7 @@ import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.flow.QBlock;
+import org.smeup.sys.il.flow.QCall;
 import org.smeup.sys.il.flow.QCallableUnit;
 import org.smeup.sys.il.flow.QConversion;
 import org.smeup.sys.il.flow.QDataSection;
@@ -253,8 +254,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				if (dataSetTerm.getFacet(QExternalFile.class) != null) {
 					writeImport(QRRDataSet.class);
 					className = QRRDataSet.class.getSimpleName();
-				}
-				else {
+				} else {
 					writeImport(QSMDataSet.class);
 					className = QSMDataSet.class.getSimpleName();
 				}
@@ -649,10 +649,23 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		QExternalFile externalFile = prototype.getFacet(QExternalFile.class);
 		if (externalFile != null) {
 
-			writeEntry(methodDeclaration, prototype.getEntry());
+			QCall call = QIntegratedLanguageFlowFactory.eINSTANCE.createCall();
+			call.setProgram(externalFile.getName());
 
-			// TODO manage external invocation
+			if (prototype.getEntry() != null) {
+				writeEntry(methodDeclaration, prototype.getEntry());
 
+				for (QEntryParameter<?> entryParameter : prototype.getEntry().getParameters()) {
+					String parameterName = entryParameter.getDelegate().getName();
+					call.getParameters().add(parameterName);
+				}
+			}
+
+			JDTStatementWriter statementWriter = getCompilationUnit().getContext().make(JDTStatementWriter.class);
+			statementWriter.setAST(getAST());
+			statementWriter.getBlocks().push(block);
+			call.accept(statementWriter);	
+			
 			if (prototype.getDefinition() != null) {
 				ReturnStatement returnStatement = getAST().newReturnStatement();
 				returnStatement.setExpression(getAST().newNullLiteral());
@@ -689,7 +702,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				}
 
 			} else {
-				writeEntry(methodDeclaration, prototype.getEntry());
+				if (prototype.getEntry() != null)
+					writeEntry(methodDeclaration, prototype.getEntry());
 
 				// TODO manage CALL
 

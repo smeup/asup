@@ -931,7 +931,12 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			// list
 			else if (List.class.isAssignableFrom(target)) {
 //				buffer.append(".asList()");
-			} else
+			}
+			// dataSet
+			else if (QFileTerm.class.isAssignableFrom(target)) {
+//				buffer.append(".asList()");
+			}
+			else
 				throw new IntegratedLanguageExpressionRuntimeException("Invalid unboxing type: " + target.getSimpleName());
 		}
 	}

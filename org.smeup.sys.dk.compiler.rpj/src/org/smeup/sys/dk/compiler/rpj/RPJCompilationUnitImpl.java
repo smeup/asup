@@ -200,7 +200,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 	@Override
 	public QDataTerm<?> getDataTerm(String name, boolean deep) {
-		
+
 		QDataTerm<?> dataTerm = cachedTerms.get(normalizeTermName(name));
 		if (dataTerm != null)
 			return dataTerm;
@@ -214,19 +214,33 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		if (dataTerm == null && getNode() instanceof QProcedure) {
 			QProcedure qProcedure = (QProcedure) getNode();
 
-			if (qProcedure.getEntry() != null)
+			if (qProcedure.getEntry() != null) {
 				for (QEntryParameter<?> entryParameter : qProcedure.getEntry().getParameters())
 					if (equalsTermName(entryParameter.getName(), name)) {
 						dataTerm = (QDataTerm<?>) entryParameter.getDelegate();
 						break;
 					}
+			}
+		}
+
+		if (dataTerm == null && callableUnit.getFlowSection() != null) {
+			for (QPrototype prototype : callableUnit.getFlowSection().getPrototypes()) {
+				if (prototype.getEntry() != null) {
+					for (QEntryParameter<?> entryParameter : prototype.getEntry().getParameters()) {
+						if (equalsTermName(entryParameter.getName(), name)) {
+							dataTerm = (QDataTerm<?>) entryParameter.getDelegate();
+							break;
+						}
+					}
+				}
+			}
 		}
 
 		// deep search on module
 		if (dataTerm == null && deep) {
 
 			for (QCompilationUnit compilationUnit : this.childUnits)
-				
+
 				// module prefix before
 				if (name.toUpperCase().startsWith(compilationUnit.getNode().getName())) {
 					dataTerm = compilationUnit.getDataTerm(name, true);
@@ -300,7 +314,11 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// search on display
 		if (dataTerm == null)
-			for (QDisplayTerm displayTerm : displays) {
+			for (
+
+			QDisplayTerm displayTerm : displays)
+
+			{
 				if (displayTerm.getFormat() == null)
 					continue;
 
@@ -311,7 +329,11 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// search on printers
 		if (dataTerm == null)
-			for (QPrintTerm printTerm : printers) {
+			for (
+
+			QPrintTerm printTerm : printers)
+
+			{
 				if (printTerm.getFormat() == null)
 					continue;
 
@@ -321,7 +343,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			}
 
 		if (dataTerm != null)
-			cachedTerms.put(normalizeTermName(name), dataTerm);
+			cachedTerms.put(
+
+					normalizeTermName(name), dataTerm);
 
 		return dataTerm;
 	}
@@ -522,9 +546,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	@SuppressWarnings("unchecked")
 	private QDataTerm<?> findData(List<QDataTerm<?>> dataTerms, String name, String prefix, int position) {
 
-		if(name.equalsIgnoreCase("CFCDVA"))
+		if (name.equalsIgnoreCase("CFCDVA"))
 			"".toCharArray();
-		
+
 		if (name.contains("("))
 			name = name.substring(0, name.indexOf("("));
 
@@ -540,8 +564,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					childName = remap.getName();
 				else
 					childName = remap.getName();
-			} 			
-			else
+			} else
 				childName = child.getName();
 
 			// prefix
@@ -553,7 +576,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				dataTerm = child;
 			// atomic
 			else if (equalsTermName(childName, name))
-				dataTerm = child;			
+				dataTerm = child;
 			// compound
 			else if (child.getDataTermType().isCompound()) {
 				QDataTerm<QCompoundDataDef<?, ?>> compoundDataTerm = (QDataTerm<QCompoundDataDef<?, ?>>) child;
@@ -579,7 +602,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 						else
 							tempName = tokens[i];
 				}
-				
+
 				if (compoundDataDef.getPrefix() != null) {
 					String[] tokens = compoundDataDef.getPrefix().split("\\:");
 					String pfx = tokens[0];
@@ -810,7 +833,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				break;
 			// method
 			case 'T':
-//				namedNode = getMethod(null, name);
+				// namedNode = getMethod(null, name);
 				break;
 			// module
 			case 'M':
@@ -995,9 +1018,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	@Override
 	public QPrototype getMethod(Class<? extends QData> target, String name) {
 
-		if(target == null)
-			System.err.println("method:" +name);
-		
+		if (target == null)
+			System.err.println("method:" + name);
+
 		QPrototype prototype = null;
 		for (EClassifier eClassifier : QIntegratedLanguageDataPackage.eINSTANCE.getEClassifiers()) {
 			if (!(eClassifier instanceof EClass))
@@ -1036,11 +1059,12 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					arrayDef.setArgument(bufferDef);
 
 					// TODO remove me
-//					if (eOperation.getName().equals("qSubst")) {
-//						QCharacterDef characterDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
-//						arrayDef.setArgument(characterDef);
-//					}
-					
+					// if (eOperation.getName().equals("qSubst")) {
+					// QCharacterDef characterDef =
+					// QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
+					// arrayDef.setArgument(characterDef);
+					// }
+
 					prototype.setDefinition(arrayDef);
 				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getPointer())) {
 					QPointerDef pointerDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createPointerDef();
@@ -1129,6 +1153,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				continue;
 
 			if (node instanceof QProcedure)
+				continue;
+
+			if (node instanceof QPrototype)
 				continue;
 
 			if (node instanceof QEntry)

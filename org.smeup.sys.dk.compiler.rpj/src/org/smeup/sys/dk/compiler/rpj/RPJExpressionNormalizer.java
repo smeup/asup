@@ -248,9 +248,8 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 						normalized = true;
 					}
-					else
-						throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: 9w8xbt87we8r");
-						
+//					else
+//						throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: 9w8xbt87we8r");						
 				}
 
 			}
