@@ -999,9 +999,10 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 		return newArray;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected NIODataImpl _copy(QDataContext dataContext) {
-		NIOArrayImpl<D> copy = new NIOArrayImpl<D>(dataContext, getModel(), capacity(), getSortDirection(), false);
+		NIOArrayImpl<D> copy = new NIOArrayImpl<D>(dataContext, (D) NIOBufferHelper.getNIOBufferedElementImpl(getModel())._copy(dataContext), capacity(), getSortDirection(), false);
 		return copy;
 	}
 }

@@ -43,8 +43,8 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 		this._wrapped = wrapped;
 		this._dynamicLength = (length == 0 ? true : false);
 
-		QDataFactory dataFactory = getDataContext().getDataFactory();
 
+		QDataFactory dataFactory = getDataContext().getDataFactory();
 		NIODataStructBuilder dataStructBuilder = new NIODataStructBuilder(dataFactory, this);
 		List<Field> fields = NIODataStructHelper.getFields(wrapped.getClass());
 		for (Field field : fields) {
@@ -96,9 +96,10 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 
 	protected void addElement(String name, QBufferedData element, int position) {
 
+
 		if (this.cachedElements != null)
 			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: abmg8u9r7asr8v8cbx");
-
+		
 		try {
 			Field field = _wrapped.getClass().getField(name);
 			if (field == null)

@@ -1290,6 +1290,19 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		else if(expressionString.contains("%SUBARR(POG: 1: $CONTD)+' '+%SUBARR(PDE: 1: $CONTD)")) {
 			expressionRewrited = "pog.qSubarr(1, $contd).qPlus(\" \").qPlus(pde.qSubarr(1, $contd))";
 		}
+		// MUTE02_01
+		else if(expressionString.contains("AR10+10+AR11")) {
+			expressionRewrited = "ar10.qPlus(10).qPlus(ar11)";
+		}
+		else if(expressionString.contains("AR10+2,666+AR11")) {
+			expressionRewrited = "ar10.qPlus(2.666).qPlus(ar11)";
+		}
+		else if(expressionString.contains("AR13+' '+AR14")) {
+			expressionRewrited = "ar13.qPlus(\" \").qPlus(ar14)";
+		}
+		else if(expressionString.contains("AR13+' + '+AR14")) {
+			expressionRewrited = "ar13.qPlus(\" + \").qPlus(ar14)";
+		}
 		
 		if(expressionRewrited != null) {
 			buffer.append(expressionRewrited);

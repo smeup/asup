@@ -34,26 +34,26 @@ public class NIODataStructImpl extends NIOAbstractDataStruct {
 
 		this._elements = new ElementMap();
 		this._dynamicLength = (length == 0 ? true : false);
-		
+
 		QDataFactory dataFactory = getDataContext().getDataFactory();
-		
+
 		NIODataStructBuilder dataStructBuilder = new NIODataStructBuilder(dataFactory, this);
 		for (QDataTerm<?> dataTerm : dataTerms) {
 			QBufferedData dataElement = (QBufferedData) dataFactory.createData(dataTerm, false);
 			dataStructBuilder.addElement(dataTerm, dataElement);
 		}
-		
-		if(allocate) 
+
+		if (allocate)
 			_allocate();
 	}
-	
+
 	@Override
-	public QBufferedData getElement(String name) {		
+	public QBufferedData getElement(String name) {
 		return _elements.get(name);
 	}
 
 	protected void addElement(String name, QBufferedData element, int position) {
-		
+
 		// virtual name '/n'
 		if (name == null) {
 			System.err.println("Unexpected condition: 61n67v8sh2756nv56");
@@ -91,7 +91,7 @@ public class NIODataStructImpl extends NIOAbstractDataStruct {
 				element.reset();
 		}
 	}
-	
+
 	public class ElementMap extends LinkedHashMap<String, QBufferedData> {
 
 		private static final long serialVersionUID = 1L;
