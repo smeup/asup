@@ -14,7 +14,6 @@ public class CallStackRetriever {
 	private QWVCSTKE qwvcstke;
 	private QWVK0100 qwvk0100;
 
-
 	@Main
 	public void main(@DataDef(length = 500) CSRCVVAR receiverVariable, 
 				     @DataDef(binaryType = BinaryType.SHORT) QBinary receiveVariableLength, 

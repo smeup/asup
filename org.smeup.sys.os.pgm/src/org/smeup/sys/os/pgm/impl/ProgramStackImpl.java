@@ -60,6 +60,19 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean contains(String name) {
+		for (QCallableProgram<?> level : list()) {
+			if (level.getProgram().getName().equalsIgnoreCase(name))
+				return true;
+		}
+		return false;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated NOT

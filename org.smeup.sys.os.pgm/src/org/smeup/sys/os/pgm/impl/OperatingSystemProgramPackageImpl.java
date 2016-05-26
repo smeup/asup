@@ -696,6 +696,9 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "element", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(programStackEClass, ecorePackage.getEBoolean(), "contains", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(programStackEClass, ecorePackage.getEBoolean(), "isEmpty", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(programStackEClass, null, "list", 0, -1, IS_UNIQUE, IS_ORDERED);
