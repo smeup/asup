@@ -322,4 +322,11 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	public void qPosition(QScroller<?> scroller) {
 		absolute(scroller.position());
 	}
+	
+	@Override
+	protected NIODataImpl _copy(QDataContext dataContext) {
+		@SuppressWarnings("unchecked")
+		NIOScrollerImpl<D> copy = new NIOScrollerImpl<D>(dataContext, (D) NIOBufferHelper.getNIOBufferedElementImpl(getModel())._copy(dataContext), _dimension, false);
+		return copy;
+	}
 }

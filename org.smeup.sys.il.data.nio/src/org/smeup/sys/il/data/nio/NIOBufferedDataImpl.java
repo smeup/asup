@@ -11,8 +11,6 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -38,7 +36,16 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	public NIOBufferedDataImpl(QDataContext dataContext) {
 		super(dataContext);
 	}
-	
+
+	@Override
+	protected final QDataContext getDataContext() {
+
+		if (_dataContext == null && _storage instanceof QBufferedData) {
+			return NIOBufferHelper.getNIOBufferedDataImpl(((QBufferedData) _storage)).getDataContext();
+		} else
+			return _dataContext;
+	}
+
 	@Override
 	public final void assign(QBufferedData target) {
 		assign(target, 1);
@@ -94,7 +101,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 		return number;
 	}
-	
+
 	@Override
 	public final boolean isNull() {
 		return getBuffer() == null;
@@ -139,65 +146,20 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		stream.writeObject(_storage);
 		stream.writeInt(_position);
 	}
-	
+
 	@Override
 	public void snap() {
-		if(!isEmpty())
+		if (!isEmpty())
 			getDataContext().snap(this);
 	}
-	
+
 	@Override
 	public void reset() {
 
 		QBufferedData snapData = getDataContext().getSnap(this);
-		if(snapData != null)
+		if (snapData != null)
 			NIOBufferHelper.write(this, snapData);
 		else
 			clear();
-	}
-	
-	@Override
-	public final NIODataImpl copy() {
-
-		try {
-
-			NIODataImpl copy = null;
-
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			ObjectOutputStream oos = new ObjectOutputStream(baos);
-
-			QStorable tempStorage = _storage;
-			ByteBuffer tempBuffer = _buffer;
-			int tempPosition = _position;
-			QDataContext tempDataContext = getDataContext();
-
-			_storage = null;
-			_buffer = null;
-			_position = 0;
-
-			_dataContext = null;
-
-			oos.writeObject(this);
-
-			_storage = tempStorage;
-			_buffer = tempBuffer;
-			_position = tempPosition;
-
-			_dataContext = tempDataContext;
-			baos.close();
-			oos.close();
-
-			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-			ObjectInputStream ois = new ObjectInputStream(bais);
-			copy = (NIODataImpl) ois.readObject();
-			copy._dataContext = tempDataContext;
-			bais.close();
-			ois.close();
-
-			return copy;
-		} catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
 	}
 }

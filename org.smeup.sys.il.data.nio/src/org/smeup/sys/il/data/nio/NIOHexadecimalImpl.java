@@ -83,4 +83,10 @@ public class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexadecimal
 	public void accept(QDataVisitor visitor) {
 		visitor.visit((QHexadecimal) this);
 	}
+	
+	@Override
+	protected NIODataImpl _copy(QDataContext dataContext) {
+		NIOHexadecimalImpl copy = new NIOHexadecimalImpl(dataContext, _length, false);
+		return copy;
+	}
 }

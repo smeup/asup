@@ -115,4 +115,10 @@ public class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicator {
 	public String toString() {
 		return Boolean.toString(asBoolean());
 	}
+	
+	@Override
+	protected NIODataImpl _copy(QDataContext dataContext) {
+		NIOIndicatorImpl copy = new NIOIndicatorImpl(dataContext, false);
+		return copy;
+	}
 }

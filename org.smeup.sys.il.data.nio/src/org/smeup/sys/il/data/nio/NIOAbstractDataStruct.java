@@ -11,10 +11,19 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectStreamClass;
+import java.nio.ByteBuffer;
+
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataVisitor;
+import org.smeup.sys.il.data.QStorable;
 
 public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements QDataStruct {
 
@@ -24,8 +33,14 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 		super(dataContext, length, false);
 	}
 
+	protected void _allocate() {
+		checkAllocation();
+		_buffer = ByteBuffer.allocate(getSize());			
+		NIOBufferHelper.fill(_buffer, 0, _buffer.capacity(), INIT);			
+	}
+	
 	protected abstract void addElement(String name, QBufferedData element, int position);
-
+	
 	@Override
 	protected void _clear() {
 		super._clear();
@@ -57,5 +72,59 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 
 		for (QBufferedData element : getElements())
 			element.snap();
+	}
+	
+	@Override
+	protected final NIODataImpl _copy(QDataContext dataContext) {
+
+		try {
+
+			NIODataImpl copy = null;
+
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ObjectOutputStream oos = new ObjectOutputStream(baos);
+
+			QStorable tempStorage = _storage;
+			ByteBuffer tempBuffer = _buffer;
+			int tempPosition = _position;
+
+			_storage = null;
+			_buffer = null;
+			_position = 0;
+			oos.writeObject(this);
+			_storage = tempStorage;
+			_buffer = tempBuffer;
+			_position = tempPosition;
+
+			baos.close();
+			oos.close();
+
+			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+			ObjectInputStream ois = new ObjectInputStream(bais) {
+				@Override
+				protected Class<?> resolveClass(ObjectStreamClass desc) throws IOException, ClassNotFoundException {
+					try {
+						return super.resolveClass(desc);
+					} catch (Exception e) {
+						if (NIOAbstractDataStruct.this instanceof NIODataStructWrapperHandler) {
+							NIODataStructWrapperHandler nioDataStructWrapperHandler = (NIODataStructWrapperHandler) NIOAbstractDataStruct.this;
+							Class<?> c = nioDataStructWrapperHandler._wrapped.getClass().getClassLoader().loadClass(desc.getName());
+							return c;
+						}
+
+						throw e;
+					}
+				}
+			};
+			copy = (NIODataImpl) ois.readObject();
+			copy._dataContext = dataContext;
+			bais.close();
+			ois.close();
+
+			return copy;
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

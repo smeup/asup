@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Storage</b></em>'.
@@ -46,17 +45,17 @@ public interface QStorable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation" required="true"
-	 * @generated
-	 */
-	Object getStore();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
 	 */
 	boolean isEmpty();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	Object getStore();
 
 } // QStorage

@@ -44,7 +44,16 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 		super(dataContext);
 		this._delegate = delegate;
 	}
+	
+	@Override
+	protected final QDataContext getDataContext() {
 
+		if (_dataContext == null && _delegate instanceof QBufferedData) {
+			return NIOBufferHelper.getNIOBufferedDataImpl(((QBufferedData) _delegate)).getDataContext();
+		} else
+			return _dataContext;
+	}
+	
 	@Override
 	public BufferedElementType getBufferedElementType() {
 		return _delegate.getBufferedElementType();
@@ -75,7 +84,7 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 	}
 
 	@Override
-	protected NIODataImpl copy() {
+	protected final NIODataImpl _copy(QDataContext dataContext) {
 
 		try {
 			NIOBufferedElementDelegatorImpl copy = null;
@@ -83,22 +92,20 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			ObjectOutputStream oos = new ObjectOutputStream(baos);
 			QBufferedElement temp = _delegate;
-			QDataContext tempDataContext = getDataContext();
 			_delegate = null;
-			_dataContext = null;
 			oos.writeObject(this);
 			_delegate = temp;
-			_dataContext = tempDataContext;
 			oos.close();
 
 			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 			ObjectInputStream ois = new ObjectInputStream(bais);
 			copy = (NIOBufferedElementDelegatorImpl) ois.readObject();
 			ois.close();
-			if (_delegate != null) {
-				copy._delegate = (QBufferedElement) NIOBufferHelper.getNIOBufferedElementImpl(_delegate).copy();
-			}
-			copy._dataContext = _dataContext;
+			if (_delegate != null)
+				copy._delegate = (QBufferedElement) NIOBufferHelper.getNIOBufferedElementImpl(_delegate)._copy(dataContext);
+			
+			copy._dataContext = dataContext;
+			
 			return copy;
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();

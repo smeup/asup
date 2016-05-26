@@ -37,7 +37,16 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 		super(dataContext);
 		this._storage = storage;
 	}
+	
+	@Override
+	protected final QDataContext getDataContext() {
 
+		if (_dataContext == null && _storage instanceof QBufferedData) {
+			return NIOBufferHelper.getNIOBufferedDataImpl(((QBufferedData) _storage)).getDataContext();
+		} else
+			return _dataContext;
+	}
+	
 	@Override
 	public boolean isNull() {
 		return _storage == null;
@@ -99,7 +108,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 
 	@Override
-	public NIODataImpl copy() {
+	public NIODataImpl _copy(QDataContext dataContext) {
 
 		try {
 
@@ -109,20 +118,17 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 			ObjectOutputStream oos = new ObjectOutputStream(baos);
 
 			QStorable tempStorage = _storage;
-			QDataContext tempDataContext = getDataContext();
 
 			_storage = null;
-			_dataContext = null;
 			oos.writeObject(this);
 
 			_storage = tempStorage;
-			_dataContext = tempDataContext;
 			oos.close();
 
 			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 			ObjectInputStream ois = new ObjectInputStream(bais);
 			copy = (NIODataImpl) ois.readObject();
-			copy._dataContext = _dataContext;
+			copy._dataContext = dataContext;
 			ois.close();
 
 			return copy;

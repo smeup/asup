@@ -135,4 +135,10 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 	protected byte[] _toBytes() {
 		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
 	}
+	
+	@Override
+	protected NIODataImpl _copy(QDataContext dataContext) {
+		NIODecimalZonedImpl copy = new NIODecimalZonedImpl(dataContext, getPrecision(), getScale(), false);
+		return copy;
+	}
 }

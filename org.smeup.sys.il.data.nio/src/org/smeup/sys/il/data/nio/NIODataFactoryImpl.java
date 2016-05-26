@@ -19,7 +19,9 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -97,6 +99,8 @@ public class NIODataFactoryImpl implements QDataFactory {
 	private QDataAreaFactory dataAreaFactory;
 	private QDataContext dataContext;
 	private Object owner;
+
+	private static Map<Class<?>, QDataStruct> cachedClasses = new HashMap<Class<?>, QDataStruct>();
 
 	protected NIODataFactoryImpl(QDataContext dataContext, Object owner, QDataAreaFactory dataAreaFactory) {
 		this.dataContext = dataContext;
@@ -401,35 +405,57 @@ public class NIODataFactoryImpl implements QDataFactory {
 	@Override
 	public <D extends QDataStruct> D createDataStruct(Class<D> classDelegator, int length, boolean allocate) {
 
-
 		// data structure
 		D dataStructure = null;
 
-		if(owner == null || Modifier.isStatic(classDelegator.getModifiers())) {
+		QDataStruct model = cachedClasses.get(classDelegator);
+		if (model != null) {
+			NIOAbstractDataStruct nioDataStructure = (NIOAbstractDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(model)._copy(getDataContext());
+			if (length != 0)
+				nioDataStructure._length = length;
+
+			if (allocate)
+				nioDataStructure._allocate();
+
+			if (nioDataStructure instanceof NIODataStructWrapperHandler)
+				dataStructure = (D) ((NIODataStructWrapperHandler) nioDataStructure)._wrapped;
+			else
+				dataStructure = (D) nioDataStructure;
+
+			return dataStructure;
+		}
+
+		if (owner == null || Modifier.isStatic(classDelegator.getModifiers())) {
 			try {
 				dataStructure = classDelegator.newInstance();
+
+				if (dataStructure instanceof QDataStructWrapper) {
+					NIODataStructWrapperHandler dataStructureDelegate = new NIODataStructWrapperHandler(getDataContext(), length, dataStructure, allocate);
+					((QDataStructWrapper) dataStructure).setDelegate(dataStructureDelegate);
+				}
+				cachedClasses.put(classDelegator, (QDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(dataStructure)._copy(getDataContext()));
 			} catch (Exception e) {
 				throw new IntegratedLanguageDataRuntimeException(e);
 			}
-		}
-		else {
+		} else {
 			Constructor<?> constructor = null;
 			try {
 				constructor = classDelegator.getDeclaredConstructor(owner.getClass());
 				constructor.setAccessible(true);
 				dataStructure = (D) constructor.newInstance(owner);
+
+				if (dataStructure instanceof QDataStructWrapper) {
+					NIODataStructWrapperHandler dataStructureDelegate = new NIODataStructWrapperHandler(getDataContext(), length, dataStructure, allocate);
+					((QDataStructWrapper) dataStructure).setDelegate(dataStructureDelegate);
+				}
 			} catch (Exception e) {
 				throw new IntegratedLanguageDataRuntimeException(e);
 			} finally {
 				if (constructor != null)
 					constructor.setAccessible(false);
-			}			
+			}
+
 		}
-
-		NIODataStructWrapperHandler dataStructureDelegate = new NIODataStructWrapperHandler(getDataContext(), length, dataStructure, allocate);
-
-		if (dataStructure instanceof QDataStructWrapper)
-			((QDataStructWrapper) dataStructure).setDelegate(dataStructureDelegate);
 
 		return dataStructure;
 	}
@@ -560,13 +586,11 @@ public class NIODataFactoryImpl implements QDataFactory {
 							QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) eObject;
 							QDecimalDef decimalDef = (QDecimalDef) dataAreaDef.getArgument();
 							decimalDef.setType(DecimalType.PACKED);
-						} 
-						else if(eObject instanceof QEnumDef<?, ?>) {
-							QEnumDef<?, ?> enumDef = (QEnumDef<?, ?>)eObject;
+						} else if (eObject instanceof QEnumDef<?, ?>) {
+							QEnumDef<?, ?> enumDef = (QEnumDef<?, ?>) eObject;
 							QDecimalDef decimalDef = (QDecimalDef) enumDef.getDelegate();
 							decimalDef.setType(DecimalType.PACKED);
-						}
-						else {
+						} else {
 							QDecimalDef decimalDef = (QDecimalDef) eObject;
 							decimalDef.setType(DecimalType.PACKED);
 						}

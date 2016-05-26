@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.os.pgm;
 
-import java.util.Date;
 import java.util.List;
 
 import org.smeup.sys.il.core.QObject;

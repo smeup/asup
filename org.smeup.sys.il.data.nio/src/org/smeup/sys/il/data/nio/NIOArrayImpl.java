@@ -123,7 +123,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 		if (element != null)
 			return element;
 
-		element = (D) NIOBufferHelper.getNIOBufferedElementImpl(getModel()).copy();
+		element = (D) ((NIODataImpl) getModel())._copy(getDataContext());
 
 		int position = 0;
 		int modelSize = 0;
@@ -131,9 +131,6 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 			modelSize = getModel().getSize();
 		else
 			modelSize = getListOwner().getModel().getSize();
-
-		if (modelSize == 0)
-			"".toCharArray();
 
 		position = modelSize * (index - 1);
 
@@ -612,12 +609,15 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 		D model = getModel();
 
-		if (model instanceof NIOIndicatorImpl ||
+		if (model instanceof NIOIndicatorImpl || 
+/*		   !(model instanceof NIOAbstractDataStruct) &&
+		   !(model instanceof NIOHexadecimalImpl) &&
+		   !(model instanceof NIOCharacterVaryingImpl)) ||*/				
 			model instanceof NIODecimalZonedImpl) {
 			
 			NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
 			firstElement.clear();
-			NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), firstElement._toBytes());
+			NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), NIOBufferHelper.read(firstElement));
 		} else {
 			for (D element : this)
 				element.clear();
@@ -997,5 +997,11 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 		}
 
 		return newArray;
+	}
+
+	@Override
+	protected NIODataImpl _copy(QDataContext dataContext) {
+		NIOArrayImpl<D> copy = new NIOArrayImpl<D>(dataContext, getModel(), capacity(), getSortDirection(), false);
+		return copy;
 	}
 }

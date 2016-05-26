@@ -167,4 +167,10 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	public byte[] _toBytes() {
 		return getDecimalDef().getZoned().toBytes(asDouble());
 	}
+	
+	@Override
+	protected NIODataImpl _copy(QDataContext dataContext) {
+		NIODecimalPackedImpl copy = new NIODecimalPackedImpl(dataContext, getPrecision(), getScale(), false);
+		return copy;
+	}
 }

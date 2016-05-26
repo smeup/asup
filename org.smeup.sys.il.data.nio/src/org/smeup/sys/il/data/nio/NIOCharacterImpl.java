@@ -611,4 +611,11 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 		}
 		movel(sb.toString(), clear);
 	}
+	
+	
+	@Override
+	protected NIODataImpl _copy(QDataContext dataContext) {
+		NIOCharacterImpl copy = new NIOCharacterImpl(dataContext, _length, false);
+		return copy;
+	}
 }

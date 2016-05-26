@@ -36,7 +36,7 @@ public class NIOListImpl<D extends QBufferedData> extends NIODataImpl implements
 	private D _model;
 	private int _dimension;
 	private QDataWriter dataWriter;
-	
+
 	public NIOListImpl(QDataContext dataContext) {
 		super(dataContext);
 		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
@@ -48,7 +48,12 @@ public class NIOListImpl<D extends QBufferedData> extends NIODataImpl implements
 		this._dimension = dimension;
 		this._elements = new ArrayList<D>(_dimension);
 	}
-
+	
+	@Override
+	protected final QDataContext getDataContext() {		
+		return _dataContext;
+	}
+	
 	@Override
 	public void accept(QDataVisitor visitor) {
 
@@ -89,7 +94,7 @@ public class NIOListImpl<D extends QBufferedData> extends NIODataImpl implements
 	}
 
 	@Override
-	public final NIODataImpl copy() {
+	public final NIODataImpl _copy(QDataContext dataContext) {
 
 		try {
 			NIODataImpl copy = null;
@@ -103,7 +108,7 @@ public class NIOListImpl<D extends QBufferedData> extends NIODataImpl implements
 			ObjectInputStream ois = new ObjectInputStream(bais);
 			copy = (NIODataImpl) ois.readObject();
 			ois.close();
-			copy._dataContext = getDataContext();
+			copy._dataContext = dataContext;
 			return copy;
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -138,7 +143,7 @@ public class NIOListImpl<D extends QBufferedData> extends NIODataImpl implements
 			element = _elements.get(index - 1);
 
 		if (element == null) {
-			element = (D) ((NIODataImpl) _model).copy();
+			element = (D) ((NIODataImpl) _model)._copy(getDataContext());
 			_elements.add(index - 1, element);
 
 			return element;
@@ -178,9 +183,9 @@ public class NIOListImpl<D extends QBufferedData> extends NIODataImpl implements
 				sb.append(", ");
 			sb.append(element.toString().trim());
 			first = false;
-			
-			if(sb.length() > 1000)
-				break;			
+
+			if (sb.length() > 1000)
+				break;
 		}
 
 		sb.append("]");

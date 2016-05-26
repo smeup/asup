@@ -275,4 +275,10 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 		return number;
 	}
+	
+	@Override
+	protected NIODataImpl _copy(QDataContext dataContext) {
+		NIOBinaryImpl copy = new NIOBinaryImpl(dataContext, _type, _unsigned, false);
+		return copy;
+	}
 }

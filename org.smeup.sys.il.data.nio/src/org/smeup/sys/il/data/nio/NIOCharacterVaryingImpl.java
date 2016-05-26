@@ -170,4 +170,10 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 		else
 			NIOBufferHelper.fillr(getBuffer(), getPosition() + 2, getLength(), value);
 	}
+	
+	@Override
+	protected NIODataImpl _copy(QDataContext dataContext) {
+		NIOCharacterVaryingImpl copy = new NIOCharacterVaryingImpl(dataContext, _length, false);
+		return copy;
+	}
 }

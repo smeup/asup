@@ -11,7 +11,6 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -44,13 +43,10 @@ public class NIODataStructImpl extends NIOAbstractDataStruct {
 			dataStructBuilder.addElement(dataTerm, dataElement);
 		}
 		
-		if(allocate) {
-			checkAllocation();
-			_buffer = ByteBuffer.allocate(getSize());			
-			NIOBufferHelper.fill(_buffer, 0, _buffer.capacity(), INIT);			
-		}
+		if(allocate) 
+			_allocate();
 	}
-
+	
 	@Override
 	public QBufferedData getElement(String name) {		
 		return _elements.get(name);

@@ -508,4 +508,10 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	public boolean eq(QDatetime value) {
 		return asDate().compareTo(value.asDate()) == 0;
 	}
+	
+	@Override
+	protected NIODataImpl _copy(QDataContext dataContext) {
+		NIODatetimeImpl copy = new NIODatetimeImpl(dataContext, _type, _dateFormat, _timeFormat, false);
+		return copy;
+	}
 }

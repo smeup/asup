@@ -320,7 +320,6 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				programStack.push(callableProgram);
 
 				printSendStack(job, programStack, callableProgram);
-
 				
 				// call
 				callableProgram.call();
