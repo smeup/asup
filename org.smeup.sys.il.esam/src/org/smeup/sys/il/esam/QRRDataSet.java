@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.esam;
 
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QRecord;
@@ -142,11 +143,12 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 	void setll(int relativeRecordNumber);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyFieldRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
-	<E extends Enum<E>> void setll(E keyField);
+	void setll(DataSpecial keyField);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -206,10 +208,11 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 	void setgt(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyFieldRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
-	<E extends Enum<E>> void setgt(E keyField);
+	void setgt(DataSpecial keyField);
 
 } // QRelativeRecordDataSet

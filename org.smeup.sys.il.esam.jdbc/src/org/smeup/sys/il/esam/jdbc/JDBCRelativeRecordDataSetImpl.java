@@ -14,6 +14,7 @@ package org.smeup.sys.il.esam.jdbc;
 import java.sql.SQLException;
 
 import org.smeup.sys.db.core.QConnection;
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
@@ -100,9 +101,8 @@ public class JDBCRelativeRecordDataSetImpl<R extends QRecord> extends JDBCDataSe
 	}
 
 	@Override
-	public <E extends Enum<E>> void setgt(E keyField) {
-		// TODO Auto-generated method stub
-
+	public void setgt(DataSpecial keyField) {
+		setgt(Integer.MAX_VALUE);
 	}
 
 	@Override
@@ -144,9 +144,8 @@ public class JDBCRelativeRecordDataSetImpl<R extends QRecord> extends JDBCDataSe
 	}
 
 	@Override
-	public <E extends Enum<E>> void setll(E keyField) {
-		// TODO Auto-generated method stub
-
+	public void setll(DataSpecial keyField) {
+		setll(Integer.MAX_VALUE);
 	}
 
 	@Override

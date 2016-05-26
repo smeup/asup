@@ -1,5 +1,17 @@
+/**
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
+ */
 package org.smeup.sys.os.file.base;
 
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIndicator;
@@ -15,15 +27,15 @@ import org.smeup.sys.os.file.QFileMemberRow;
 public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<R> {
 
 	private BaseFileMemberProvider fileMemberProvider;
-	private R record;	
+	private R record;
 	
 	private QFileMember fileMember;
-	
+
 	private boolean open = false;
 	private int currentPosition = -1;
 	private BaseInfoStruct infoStruct;
 	private QDataWriter dataWriter;
-	
+
 	public BaseFileMemberDataSetImpl(BaseFileMemberProvider fileMemberProvider, R record, AccessMode accessMode, boolean userOpen, BaseInfoStruct infoStruct) {
 		this.fileMemberProvider = fileMemberProvider;
 		this.record = record;
@@ -40,14 +52,14 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	public QString getMemberName() {
 		return fileMemberProvider.getMemberName();
 	}
-	
+
 	@Override
 	public boolean chain(QNumeric relativeRecordNumber, Boolean lock) {
 		return chain(relativeRecordNumber.asInteger(), null);
 	}
 
 	@Override
-	public boolean chain(int relativeRecordNumber) {		
+	public boolean chain(int relativeRecordNumber) {
 		return chain(relativeRecordNumber, null);
 	}
 
@@ -65,12 +77,12 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	public boolean chain(int relativeRecordNumber, QIndicator notFound, QIndicator error, Boolean lock) {
 
 		QFileMember fileMember = getFileMember();
-		
-		for(int i=1; i<=fileMember.getRows().size();i++) {
-			if(i==relativeRecordNumber) {
 
-				setRecord(fileMember.getRows().get(i-1));
-				
+		for (int i = 1; i <= fileMember.getRows().size(); i++) {
+			if (i == relativeRecordNumber) {
+
+				setRecord(fileMember.getRows().get(i - 1));
+
 				return true;
 			}
 		}
@@ -105,8 +117,8 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		if (this.record != null)
+			this.record.clear();
 	}
 
 	@Override
@@ -118,27 +130,14 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	public void close(QIndicator error) {
 		
 		this.fileMember = null;
-		
 		this.open = false;
-	}
-
-	@Override
-	public void delete() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete(QIndicator error) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public R get() {
 		return this.record;
 	}
-	
+
 	private QFileMember getFileMember() {
 		
 		if(this.fileMember == null) {
@@ -155,20 +154,17 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 	@Override
 	public boolean isEndOfData() {
-		// TODO Auto-generated method stub
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public boolean isEqual() {
-		// TODO Auto-generated method stub
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public boolean isFound() {
-		// TODO Auto-generated method stub
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
@@ -178,8 +174,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 	@Override
 	public boolean onError() {
-		// TODO Auto-generated method stub
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
@@ -190,13 +185,12 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	@Override
 	public void open(QIndicator error) {
 		this.open = true;
-		getFileMember();		
+		getFileMember();
 	}
 
 	@Override
 	public boolean read() {
-		// TODO Auto-generated method stub
-		return false;
+		return read(null, null, null);
 	}
 
 	@Override
@@ -216,19 +210,19 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 	@Override
 	public boolean read(QIndicator endOfData, QIndicator error, Boolean lock) {
-		
-		if(getFileMember().getRows().size()<this.currentPosition) {
-			if(endOfData != null)
+
+		if (getFileMember().getRows().size() < this.currentPosition) {
+			if (endOfData != null)
 				endOfData.eval(true);
 			return false;
 		}
-		
-		QFileMemberRow fileMemberRow = getFileMember().getRows().get(this.currentPosition-1);
+
+		QFileMemberRow fileMemberRow = getFileMember().getRows().get(this.currentPosition - 1);
 		setRecord(fileMemberRow);
-		
+
 		this.currentPosition++;
 
-		if(endOfData != null)
+		if (endOfData != null)
 			endOfData.eval(false);
 
 		return false;
@@ -236,80 +230,67 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 	@Override
 	public boolean readp() {
-		// TODO Auto-generated method stub
-		return false;
+		return readp(null, null, null);
 	}
 
 	@Override
 	public boolean readp(QIndicator beginningOfData) {
-		// TODO Auto-generated method stub
-		return false;
+		return readp(beginningOfData, null, null);
 	}
 
 	@Override
 	public boolean readp(QIndicator beginningOfData, Boolean lock) {
-		// TODO Auto-generated method stub
-		return false;
+		return readp(beginningOfData, null, lock);
 	}
 
 	@Override
 	public boolean readp(QIndicator beginningOfData, QIndicator error) {
-		// TODO Auto-generated method stub
-		return false;
+		return readp(beginningOfData, error, null);
 	}
 
 	@Override
 	public boolean readp(QIndicator beginningOfData, QIndicator error, Boolean lock) {
-		// TODO Auto-generated method stub
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public <E extends Enum<E>> void setgt(E keyField) {
-		// TODO Auto-generated method stub
-		"".toString();
+	public void setgt(DataSpecial keyField) {
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public void setgt(int relativeRecordNumber) {
-		// TODO Auto-generated method stub
-		"".toString();		
+		setgt(relativeRecordNumber, null, null);
 	}
 
 	@Override
 	public void setgt(int relativeRecordNumber, QIndicator notFound) {
-		// TODO Auto-generated method stub
-		"".toString();
+		setgt(relativeRecordNumber, notFound, null);
 	}
 
 	@Override
 	public void setgt(int relativeRecordNumber, QIndicator notFound, QIndicator error) {
-		// TODO Auto-generated method stub
-		"".toString();
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public void setgt(QNumeric relativeRecordNumber) {
-		// TODO Auto-generated method stub
-		"".toString();
+		setgt(relativeRecordNumber.asInteger());
 	}
 
 	@Override
 	public void setgt(QNumeric relativeRecordNumber, QIndicator notFound) {
-		// TODO Auto-generated method stub
-		"".toString();
+		setgt(relativeRecordNumber.asInteger(), notFound, null);
 	}
 
 	@Override
 	public void setgt(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error) {
-		// TODO Auto-generated method stub
-		"".toString();
+		setgt(relativeRecordNumber.asInteger(), notFound, error);
 	}
 
 	@Override
-	public <E extends Enum<E>> void setll(E keyField) {
-		// TODO Auto-generated method stub
-		"".toString();
+	public void setll(DataSpecial keyField) {
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
@@ -319,32 +300,31 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 	@Override
 	public void setll(int relativeRecordNumber, QIndicator notFound) {
-		setll(relativeRecordNumber, notFound, null, null);		
+		setll(relativeRecordNumber, notFound, null, null);
 	}
 
 	@Override
 	public void setll(int relativeRecordNumber, QIndicator notFound, QIndicator equal) {
-		setll(relativeRecordNumber, notFound, equal, null);		
+		setll(relativeRecordNumber, notFound, equal, null);
 	}
 
 	@Override
 	public void setll(QNumeric relativeRecordNumber) {
-		setll(relativeRecordNumber.asInteger(), null, null, null);		
+		setll(relativeRecordNumber.asInteger(), null, null, null);
 	}
 
 	@Override
 	public void setll(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator equal) {
-		setll(relativeRecordNumber.asInteger(), notFound, equal, null);		
+		setll(relativeRecordNumber.asInteger(), notFound, equal, null);
 	}
 
 	@Override
 	public void setll(int relativeRecordNumber, QIndicator notFound, QIndicator equal, QIndicator error) {
 		this.currentPosition = relativeRecordNumber;
-
 	}
 
 	private void setRecord(QFileMemberRow fileMemberRow) {
-		
+
 		switch (this.record.getElements().size()) {
 		case 0:
 			return;
@@ -374,61 +354,61 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 	@Override
 	public void unlock() {
-		// TODO Auto-generated method stub
-		"".toString();
+		unlock(null);
 	}
 
 	@Override
 	public void unlock(QIndicator error) {
-		// TODO Auto-generated method stub
-		"".toString();
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		"".toString();
+		update(null);
 	}
 
 	@Override
 	public void update(QIndicator error) {
-		// TODO Auto-generated method stub
-		"".toString();
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public void write() {
-		// TODO Auto-generated method stub
-		"".toString();
+		write(null);
 	}
 
 	@Override
 	public void write(QIndicator error) {
-		// TODO Auto-generated method stub
-		"".toString();
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public boolean read(Boolean lock) {
-		// TODO Auto-generated method stub
-		return false;
+		return read(null, null, lock);
 	}
 
 	@Override
 	public boolean readp(Boolean lock) {
-		// TODO Auto-generated method stub
-		return false;
+		return readp(null, null, lock);
+	}
+
+	@Override
+	public void delete() {
+		delete(null, null, null);
+	}
+
+	@Override
+	public void delete(QIndicator error) {
+		delete(null, null, error);
 	}
 
 	@Override
 	public void delete(QNumeric relativeRecordNumber, QIndicator notFound) {
-		// TODO Auto-generated method stub
-		
+		delete(relativeRecordNumber, notFound, null);
 	}
 
 	@Override
 	public void delete(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error) {
-		// TODO Auto-generated method stub
-		
+		throw new UnsupportedOperationException();
 	}
 }

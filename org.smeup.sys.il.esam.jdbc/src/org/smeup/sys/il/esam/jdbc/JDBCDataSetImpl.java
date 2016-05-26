@@ -251,6 +251,9 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 			this.currentTable = this.tableProvider.getTable(null, this.tableName.trimR());
 
+			if(this.currentTable == null)
+				"".toCharArray();
+			
 			this.open = true;
 		} catch (SQLException e) {
 			handleSQLException(e);

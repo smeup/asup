@@ -906,23 +906,13 @@
       <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setgt">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="keyField" lowerBound="1">
-        <eGenericType eTypeParameter="#//RRDataSet/setgt.6/E"/>
-      </eParameters>
+      <eParameters name="keyField" lowerBound="1" eType="ecore:EEnum ../../org.smeup.sys.il.core/model/il-data.ecore#//DataSpecial"/>
     </eOperations>
     <eOperations name="setll">
       <eParameters name="relativeRecordNumber" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
     <eOperations name="setll">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="keyField" lowerBound="1">
-        <eGenericType eTypeParameter="#//RRDataSet/setll.1/E"/>
-      </eParameters>
+      <eParameters name="keyField" lowerBound="1" eType="ecore:EEnum ../../org.smeup.sys.il.core/model/il-data.ecore#//DataSpecial"/>
     </eOperations>
     <eOperations name="setll">
       <eParameters name="keyField" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Numeric"/>
