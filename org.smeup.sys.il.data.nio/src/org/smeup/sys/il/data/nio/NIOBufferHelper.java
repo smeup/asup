@@ -11,6 +11,12 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectStreamClass;
 import java.math.BigDecimal;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
@@ -22,6 +28,7 @@ import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QBufferedElementDelegator;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
@@ -494,5 +501,59 @@ public class NIOBufferHelper {
 
 		for (int i = 1; i <= values.length; i++)
 			bufferedList.get(i).movel(values[i-1], true);
+	}
+
+	public static NIODataImpl copy(QDataContext dataContext, NIOBufferedDataImpl nioBufferedDataImpl) {
+
+		try {
+
+			NIODataImpl copy = null;
+
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ObjectOutputStream oos = new ObjectOutputStream(baos);
+
+			QStorable tempStorage = nioBufferedDataImpl._storage;
+			ByteBuffer tempBuffer = nioBufferedDataImpl._buffer;
+			int tempPosition = nioBufferedDataImpl._position;
+
+			nioBufferedDataImpl._storage = null;
+			nioBufferedDataImpl._buffer = null;
+			nioBufferedDataImpl._position = 0;
+			oos.writeObject(nioBufferedDataImpl);
+			nioBufferedDataImpl._storage = tempStorage;
+			nioBufferedDataImpl._buffer = tempBuffer;
+			nioBufferedDataImpl._position = tempPosition;
+
+			baos.close();
+			oos.close();
+
+			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+			ObjectInputStream ois = new ObjectInputStream(bais) {
+				@Override
+				protected Class<?> resolveClass(ObjectStreamClass desc) throws IOException, ClassNotFoundException {
+					try {
+						return super.resolveClass(desc);
+					} catch (Exception e) {
+						if (nioBufferedDataImpl instanceof NIODataStructWrapperHandler) {
+							NIODataStructWrapperHandler nioDataStructWrapperHandler = (NIODataStructWrapperHandler) nioBufferedDataImpl;
+							Class<?> c = nioDataStructWrapperHandler._wrapped.getClass().getClassLoader().loadClass(desc.getName());
+							return c;
+						}
+
+						throw e;
+					}
+				}
+			};
+			copy = (NIODataImpl) ois.readObject();
+			copy._dataContext = dataContext;
+			bais.close();
+			ois.close();
+
+			return copy;
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 }
