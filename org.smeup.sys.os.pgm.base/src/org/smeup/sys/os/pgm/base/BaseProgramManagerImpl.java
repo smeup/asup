@@ -238,20 +238,21 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			if (paramsFrom[i] == null)
 				continue;
 
+			// pointer
 			if (paramsTo[i] instanceof QPointer) {
 				QPointer pointer = (QPointer) paramsTo[i];
 				pointer.eval(((QBufferedData) paramsFrom[i]).qAddr());
-			} else if (paramsTo[i] instanceof QBufferedData && paramsFrom[i] instanceof QStorable) {
+			} 
+			// bufferedData
+			else if (paramsTo[i] instanceof QBufferedData && paramsFrom[i] instanceof QStorable) {
 				QBufferedData bufferedData = (QBufferedData) paramsTo[i];
 				((QStorable) paramsFrom[i]).assign(bufferedData);
-			} else if (paramsTo[i] instanceof QList<?> && paramsFrom[i] instanceof QList<?>) {
+			} 
+			// list not buffered (QCLCALL)
+			else if (paramsTo[i] instanceof QList<?> && paramsFrom[i] instanceof QList<?>) {
 				assignList(paramsFrom[i], paramsTo[i]);
 			} else
 				throw new OperatingSystemRuntimeException("Unexpected condition: nxt057t024xn", null);
-			/*
-			 * if (paramsTo[i] instanceof QAdapter) { QAdapter adapter =
-			 * (QAdapter) paramsTo[i]; adapter.eval(adapter.getDelegate()); }
-			 */
 		}
 
 		if (paramsTo == null)

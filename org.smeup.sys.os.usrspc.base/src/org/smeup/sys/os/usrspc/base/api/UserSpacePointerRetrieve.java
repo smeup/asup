@@ -21,7 +21,7 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
 
 @Program(name = "QUSPTRUS")
-public class UserSpaceRetrievePointer {
+public class UserSpacePointerRetrieve {
 
 	@Main
 	public void main(@DataDef(qualified = true) UserSpaceRef userSpaceRef, 
