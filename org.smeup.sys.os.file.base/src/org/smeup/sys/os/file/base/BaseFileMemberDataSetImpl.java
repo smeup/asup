@@ -234,7 +234,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 		dataContext.found().eval(true);
 		
-		return false;
+		return true;
 	}
 
 	@Override
@@ -279,8 +279,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 		dataContext.found().eval(true);
 		
-		return false;
-
+		return true;
 	}
 
 	@Override
