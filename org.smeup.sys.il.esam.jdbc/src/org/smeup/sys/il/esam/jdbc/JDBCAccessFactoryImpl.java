@@ -195,7 +195,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 		
 		BaseFileMemberProvider fileMemberProvider = new BaseFileMemberProvider(contextProvider, fileName, memberName);
 		BaseInfoStruct internalInfoStruct = dataContext.getDataFactory().createDataStruct(BaseInfoStruct.class, 0, true);
-		QSMDataSet<R> dataSet = new BaseFileMemberDataSetImpl<R>(fileMemberProvider, record, accessMode, userOpen, internalInfoStruct);
+		QSMDataSet<R> dataSet = new BaseFileMemberDataSetImpl<R>(fileMemberProvider, record, accessMode, userOpen, internalInfoStruct, dataContext);
 
 		return dataSet;
 	}
