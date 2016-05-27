@@ -11,7 +11,10 @@
  */
 package org.smeup.sys.os.file.base;
 
+import java.util.List;
+
 import org.smeup.sys.il.data.DataSpecial;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataWriter;
@@ -34,7 +37,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	private QFileMember fileMember;
 
 	private boolean open = false;
-	private int currentPosition = -1;
+	private int currentPosition = 0;
 	private BaseInfoStruct infoStruct;
 	private QDataWriter dataWriter;
 
@@ -43,6 +46,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 		this.fileMemberProvider = fileMemberProvider;
 		this.record = record;
 		this.infoStruct = infoStruct;
+		
 		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 	}
 
@@ -134,7 +138,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 		
 		this.fileMember = null;
 		this.open = false;
-		this.currentPosition = -1;
+		this.currentPosition = 0;
 	}
 
 	@Override
@@ -188,7 +192,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	@Override
 	public void open(QIndicator error) {
 		this.open = true;
-		this.currentPosition = -1;
+		this.currentPosition = 0;
 		getFileMember();
 	}
 
@@ -226,15 +230,24 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 		this.currentPosition ++;
 
-		QFileMemberRow fileMemberRow = getFileMember().getRows().get(this.currentPosition - 1);
-		setRecord(fileMemberRow);
-
-		if (endOfData != null)
-			endOfData.eval(false);
-
-		dataContext.found().eval(true);
-		
-		return true;
+		try {
+			QFileMemberRow fileMemberRow = getFileMember().getRows().get(this.currentPosition - 1);
+			setRecord(fileMemberRow);
+	
+			if (endOfData != null)
+				endOfData.eval(false);
+			
+			dataContext.found().eval(true);
+			return true;
+		}
+		catch (Exception e) {
+			if(error != null)
+				error.eval(true);
+			
+			dataContext.endOfData().eval(true);
+			dataContext.found().eval(false);
+			return false;
+		}
 	}
 
 	@Override
@@ -271,15 +284,25 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 		this.currentPosition --;
 
-		QFileMemberRow fileMemberRow = getFileMember().getRows().get(this.currentPosition - 1);
-		setRecord(fileMemberRow);
-
-		if (beginningOfData != null)
-			beginningOfData.eval(false);
-
-		dataContext.found().eval(true);
-		
-		return true;
+		try {
+	
+			QFileMemberRow fileMemberRow = getFileMember().getRows().get(this.currentPosition - 1);
+			setRecord(fileMemberRow);
+	
+			if (beginningOfData != null)
+				beginningOfData.eval(false);
+	
+			dataContext.found().eval(true);		
+			return true;
+		}
+		catch (Exception e) {
+			if(error != null)
+				error.eval(true);
+			
+			dataContext.endOfData().eval(true);
+			dataContext.found().eval(false);
+			return false;
+		}
 	}
 
 	@Override
@@ -388,29 +411,31 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 	private void setRecord(QFileMemberRow fileMemberRow) {
 
-		switch (this.record.getElements().size()) {
+		List<QBufferedData> elements = record.getElements();
+		
+		switch (elements.size()) {
 		case 0:
 			return;
 		case 1:
 			dataWriter.set(fileMemberRow.getSequence());
-			record.getElement("srcseq").accept(dataWriter);
+			elements.get(0).accept(dataWriter);
 			return;
 		case 2:
 			dataWriter.set(fileMemberRow.getSequence());
-			record.getElement("srcseq").accept(dataWriter);
+			elements.get(0).accept(dataWriter);
 
 			dataWriter.set(fileMemberRow.getDate());
-			record.getElement("srcdat").accept(dataWriter);
+			elements.get(1).accept(dataWriter);
 			return;
 		case 3:
 			dataWriter.set(fileMemberRow.getSequence());
-			record.getElement("srcseq").accept(dataWriter);
+			elements.get(0).accept(dataWriter);
 
 			dataWriter.set(fileMemberRow.getDate());
-			record.getElement("srcdat").accept(dataWriter);
+			elements.get(1).accept(dataWriter);
 
 			dataWriter.set(fileMemberRow.getContent());
-			record.getElement("srcdta").accept(dataWriter);
+			elements.get(2).accept(dataWriter);
 			return;
 		}
 	}
