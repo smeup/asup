@@ -383,7 +383,7 @@
     <eOperations name="get" lowerBound="1">
       <eGenericType eTypeParameter="#//DataSet/R"/>
     </eOperations>
-    <eOperations name="getFileName" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//String"/>
+    <eOperations name="getFilePath" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//String"/>
     <eOperations name="getInfoStruct" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataSetTerm" eSuperTypes="#//FileTerm">

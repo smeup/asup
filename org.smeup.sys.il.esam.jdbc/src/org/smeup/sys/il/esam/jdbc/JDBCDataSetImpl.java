@@ -40,7 +40,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	private JDBCAccessHelper jdbcAccessHelper;
 	private QIndex index;
 	private R record;
-	private QString tableName;
+	private QString tablePath;
 	private AccessMode accessMode;
 	private QTableProvider tableProvider;
 	private JDBCDataReaderImpl dataReader;
@@ -65,14 +65,14 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 	private QDataContext dataContext;
 
-	protected JDBCDataSetImpl(QConnection databaseConnection, QString tableName, QIndex index, R record, AccessMode accessMode, boolean userOpen, JDBCInfoStruct infoStruct,
+	protected JDBCDataSetImpl(QConnection databaseConnection, QString tablePath, QIndex index, R record, AccessMode accessMode, boolean userOpen, JDBCInfoStruct infoStruct,
 			QDataContext dataContext) {
 
 		this.databaseConnection = databaseConnection;
 
 		this.index = index;
 		this.record = record;
-		this.tableName = tableName;
+		this.tablePath = tablePath;
 
 		this.accessMode = accessMode;
 		this.tableProvider = databaseConnection.getContext().get(QTableProvider.class);
@@ -92,8 +92,8 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	}
 
 	@Override
-	public QString getFileName() {
-		return tableName;
+	public QString getFilePath() {
+		return tablePath;
 	}
 
 	protected Object[] buildKeySet() {
@@ -250,10 +250,14 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 				statementUpdate = databaseConnection.createStatement(true, true);
 			}
 
-			this.currentTable = this.tableProvider.getTable(null, this.tableName.trimR());
+			String[] tableSplit = this.tablePath.trimR().split("/");
+			if(tableSplit.length ==1)
+				this.currentTable = this.tableProvider.getTable(null, tableSplit[0].trim());
+			else if(tableSplit.length ==2)
+				this.currentTable = this.tableProvider.getTable(tableSplit[0], tableSplit[1].trim());
 
 			if(this.currentTable == null)
-				throw new DatabaseCoreRuntimeException("Invalid table: "+this.tableName.trimR());
+				throw new DatabaseCoreRuntimeException("Invalid table: "+this.tablePath.trimR());
 			
 			this.open = true;
 		} catch (SQLException e) {

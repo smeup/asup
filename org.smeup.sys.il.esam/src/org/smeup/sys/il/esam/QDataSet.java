@@ -253,7 +253,7 @@ public interface QDataSet<R extends QRecord> {
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
-	QString getFileName();
+	QString getFilePath();
 
 	/**
 	 * <!-- begin-user-doc -->

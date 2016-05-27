@@ -11,13 +11,12 @@
  */
 package org.smeup.sys.os.file.base;
 
-
-
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
+import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileManager;
 import org.smeup.sys.os.file.QFileMember;
@@ -27,21 +26,20 @@ import org.smeup.sys.os.file.QFileOverride;
 
 public class BaseFileMemberProvider {
 
-	private QResourceReader<QFile> fileReader;
+	private QResourceManager resourceManager;
 	private QFileManager fileManager;
 	private QFileMemberManager fileMemberManager;
 
 	private QContextProvider contextProvider;
-	private QString fileName;
+	private QString filePath;
 	private QString memberName;
 
-	public BaseFileMemberProvider(QContextProvider contextProvider, QString fileName, QString memberName) {
+	public BaseFileMemberProvider(QContextProvider contextProvider, QString filePath, QString memberName) {
 		this.contextProvider = contextProvider;
-		this.fileName = fileName;
+		this.filePath = filePath;
 		this.memberName = memberName;
 
-		QResourceManager resourceManager = contextProvider.getContext().get(QResourceManager.class);
-		this.fileReader = resourceManager.getResourceReader(contextProvider, QFile.class, Scope.LIBRARY_LIST);
+		this.resourceManager = contextProvider.getContext().get(QResourceManager.class);
 		this.fileManager = contextProvider.getContext().get(QFileManager.class);
 		this.fileMemberManager = contextProvider.getContext().get(QFileMemberManager.class);
 	}
@@ -51,16 +49,35 @@ public class BaseFileMemberProvider {
 		QFileMembered fileMembered = null;
 		String fileMemberName = null;
 
-		QFileOverride fileOverride = fileManager.getFileOverride(contextProvider.getContext(), fileName.trimR());
+		QFileOverride fileOverride = fileManager.getFileOverride(contextProvider.getContext(), filePath.trimR());
 		if (fileOverride != null) {
 			fileMembered = (QFileMembered) fileOverride.getFileTo();
 			fileMemberName = fileOverride.getMemberTo();
 		}
-		
-		if(fileMembered == null || 
-		  (fileMemberName != null && !getMemberName().isEmpty() && !fileMemberName.equalsIgnoreCase(getMemberName().trimR()))) {
-			QFile qFile = fileReader.lookup(fileName.trimR());
-			fileMembered = (QFileMembered)qFile;
+
+		if (fileMembered == null || (fileMemberName != null && !getMemberName().isEmpty() && !fileMemberName.equalsIgnoreCase(getMemberName().trimR()))) {
+
+			String[] fileSplit = getFilePath().trimR().split("/");
+			QResourceReader<QFile> fileReader = null;
+			QFile qFile = null;
+			if (fileSplit.length == 1) {
+				fileReader = resourceManager.getResourceReader(contextProvider, QFile.class, Scope.LIBRARY_LIST);
+				qFile = fileReader.lookup(fileSplit[0].trim());
+			}
+			else if (fileSplit.length == 2) {
+				Scope scope = Scope.get(fileSplit[0].trim());
+				if(scope != null)
+					fileReader = resourceManager.getResourceReader(contextProvider, QFile.class, scope);
+				else
+					fileReader = resourceManager.getResourceReader(contextProvider, QFile.class, fileSplit[0]);
+				
+				qFile = fileReader.lookup(fileSplit[1].trim());
+			}
+
+			if(qFile == null)
+				throw new OperatingSystemRuntimeException("Invalid file: "+getFilePath());
+
+			fileMembered = (QFileMembered) qFile;
 			fileMemberName = getMemberName().trimR();
 		}
 
@@ -69,8 +86,8 @@ public class BaseFileMemberProvider {
 		return fileMember;
 	}
 
-	protected QString getFileName() {
-		return fileName;
+	protected QString getFilePath() {
+		return filePath;
 	}
 
 	protected QString getMemberName() {

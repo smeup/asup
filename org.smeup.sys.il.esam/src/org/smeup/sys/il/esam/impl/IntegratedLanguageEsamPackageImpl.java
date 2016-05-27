@@ -1057,7 +1057,7 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		g1 = createEGenericType(dataSetEClass_R);
 		initEOperation(op, g1);
 
-		addEOperation(dataSetEClass, theIntegratedLanguageDataPackage.getString(), "getFileName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(dataSetEClass, theIntegratedLanguageDataPackage.getString(), "getFilePath", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(dataSetEClass, theIntegratedLanguageDataPackage.getDataStruct(), "getInfoStruct", 1, 1, IS_UNIQUE, IS_ORDERED);
 

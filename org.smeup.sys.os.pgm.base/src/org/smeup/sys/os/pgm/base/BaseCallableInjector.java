@@ -374,7 +374,7 @@ public class BaseCallableInjector {
 			}
 
 			if (fileDef != null && !fileDef.name().isEmpty())
-				dataSet.getFileName().eval(fileDef.name());				
+				dataSet.getFilePath().eval(fileDef.name());				
 
 			dataSet.clear();
 			field.setValue(callable, dataSet);
@@ -499,14 +499,14 @@ public class BaseCallableInjector {
 			if (externalFile != null) {
 				if (QKSDataSet.class.isAssignableFrom(field.getClass_())) {
 					QKSDataSet<?> dataSet = (QKSDataSet<?>) field.getValue(callable);
-					externalFile.assign(dataSet.getFileName());
+					externalFile.assign(dataSet.getFilePath());
 				} else if (QSMDataSet.class.isAssignableFrom(field.getClass_())) {
 					QSMDataSet<?> dataSet = (QSMDataSet<?>) field.getValue(callable);
-					externalFile.assign(dataSet.getFileName());
+					externalFile.assign(dataSet.getFilePath());
 					externalMember.assign(dataSet.getMemberName());
 				} else {
 					QRRDataSet<?> dataSet = (QRRDataSet<?>) field.getValue(callable);
-					externalFile.assign(dataSet.getFileName());
+					externalFile.assign(dataSet.getFilePath());
 				}
 			}
 		}

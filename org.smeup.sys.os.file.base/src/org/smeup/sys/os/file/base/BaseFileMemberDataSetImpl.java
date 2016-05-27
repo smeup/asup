@@ -47,8 +47,8 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	}
 
 	@Override
-	public QString getFileName() {
-		return fileMemberProvider.getFileName();
+	public QString getFilePath() {
+		return fileMemberProvider.getFilePath();
 	}
 
 	@Override
