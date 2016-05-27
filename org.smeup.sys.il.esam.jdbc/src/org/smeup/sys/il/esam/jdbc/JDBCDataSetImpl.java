@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.eclipse.datatools.modelbase.sql.tables.Table;
+import org.smeup.sys.db.core.DatabaseCoreRuntimeException;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.db.core.QStatement;
@@ -61,21 +62,21 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 	private ResultSet resultSet;
 	private JDBCInfoStruct infoStruct;
-	
+
 	private QDataContext dataContext;
 
-	protected JDBCDataSetImpl(QConnection databaseConnection, QString tableName, 
-							  QIndex index, R record, AccessMode accessMode, boolean userOpen, JDBCInfoStruct infoStruct, QDataContext dataContext) {
+	protected JDBCDataSetImpl(QConnection databaseConnection, QString tableName, QIndex index, R record, AccessMode accessMode, boolean userOpen, JDBCInfoStruct infoStruct,
+			QDataContext dataContext) {
 
 		this.databaseConnection = databaseConnection;
 
 		this.index = index;
 		this.record = record;
 		this.tableName = tableName;
-		
+
 		this.accessMode = accessMode;
 		this.tableProvider = databaseConnection.getContext().get(QTableProvider.class);
-		if(tableProvider == null)
+		if (tableProvider == null)
 			tableProvider = new JDBCTableProvider(databaseConnection);
 		this.infoStruct = infoStruct;
 		this.dataContext = dataContext;
@@ -94,7 +95,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	public QString getFileName() {
 		return tableName;
 	}
-	
+
 	protected Object[] buildKeySet() {
 
 		Object[] keySet = new Object[index.getColumns().size()];
@@ -144,7 +145,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	public void delete(QIndicator error) {
 		deleteRecord(null, null, error);
 	}
-	
+
 	@Override
 	public R get() {
 		return this.record;
@@ -161,7 +162,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		this.dataContext.found().eval(false);
 		this.endOfData = true;
 		this.dataContext.endOfData().eval(true);
-		
+
 		this.error = true;
 		this.equal = false;
 
@@ -174,12 +175,12 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		this.dataContext.found().eval(false);
 		this.endOfData = true;
 		this.dataContext.endOfData().eval(true);
-		
+
 		this.open = false;
 
 		this.error = false;
 		this.equal = false;
-		
+
 		this.infoStruct.rrn.clear();
 
 		this.currentTable = null;
@@ -252,7 +253,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			this.currentTable = this.tableProvider.getTable(null, this.tableName.trimR());
 
 			if(this.currentTable == null)
-				"".toCharArray();
+				throw new DatabaseCoreRuntimeException("Invalid table: "+this.tableName.trimR());
 			
 			this.open = true;
 		} catch (SQLException e) {
@@ -272,7 +273,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 		String querySelect = jdbcAccessHelper.buildSelect(this.currentTable, index, opSet, keySet, opRead, keyRead);
 
-		System.out.println("sql:\t"+querySelect);
+		System.out.println("sql:\t" + querySelect);
 
 		this.resultSet = this.statement.executeQuery(querySelect);
 		this.dataReader.set(this.resultSet);
@@ -338,7 +339,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 			// TODO verify if not necessary
 			this.record.clear();
-			
+
 			this.infoStruct.rrn.clear();
 
 			this.found = false;
@@ -354,7 +355,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 			int rrn = this.resultSet.getInt(record.getElements().size() + 1);
 			this.infoStruct.rrn.eval(rrn);
-			
+
 			this.found = true;
 			this.dataContext.found().eval(true);
 			this.endOfData = false;
@@ -455,14 +456,14 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		this.currentKeySet = keyList;
 		this.currentOpRead = null;
 	}
-	
+
 	protected void deleteRecord(Object[] keyList, QIndicator notFound, QIndicator error) {
 
 		this.error = false;
 		this.equal = false;
 
 		try {
-			if(keyList!=null){
+			if (keyList != null) {
 				setKeySet(OperationSet.SET_LOWER_LIMIT, keyList);
 				if (rebuildNeeded(OperationDirection.FORWARD)) {
 
@@ -478,9 +479,9 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 				readNext();
 
-				if(!isEndOfData())
+				if (!isEndOfData())
 					this.statementUpdate.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
-			}else{
+			} else {
 				this.statementUpdate.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
 			}
 
@@ -492,8 +493,8 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		} catch (SQLException e) {
 			handleSQLException(e);
 		}
-		
-		if(notFound != null)
+
+		if (notFound != null)
 			notFound.eval(isEndOfData());
 
 		if (error != null)
@@ -551,7 +552,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	@Override
 	public void write() {
 		write(null);
-	}	
+	}
 
 	@Override
 	public void write(QIndicator error) {

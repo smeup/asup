@@ -52,10 +52,10 @@ public class BaseFileManagerImpl implements QFileManager {
 	}
 
 	@Override
-	public void setFileOverride(QContext context, QFileOverride fileOverride) {
+	public void addFileOverride(QContext context, QFileOverride fileOverride) {
 
 		BaseFileOverrideMap overrideFileMap = getFileMapOverride(context);
-		overrideFileMap.set(fileOverride.getName(), fileOverride);
+		overrideFileMap.add(fileOverride.getName(), fileOverride);
 	}
 
 	@Override

@@ -75,13 +75,13 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="descend" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FileManager" abstract="true" interface="true">
+    <eOperations name="addFileOverride" lowerBound="1">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="fileOverride" lowerBound="1" eType="#//FileOverride"/>
+    </eOperations>
     <eOperations name="getFileOverride" lowerBound="1" eType="#//FileOverride">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="setFileOverride" lowerBound="1">
-      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
-      <eParameters name="fileOverride" lowerBound="1" eType="#//FileOverride"/>
     </eOperations>
     <eOperations name="listFileOverride" lowerBound="1" upperBound="-1" eType="#//FileOverride">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
@@ -137,6 +137,14 @@
       <eParameters name="file" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="member" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="lookupFirst" eType="#//FileMember">
+      <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
+      <eParameters name="file" lowerBound="1" eType="#//FileMembered"/>
+    </eOperations>
+    <eOperations name="lookupLast" eType="#//FileMember">
+      <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
+      <eParameters name="file" lowerBound="1" eType="#//FileMembered"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FileMemberRow" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -145,7 +153,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="fileMember" lowerBound="1"
         eType="#//FileMember" eOpposite="#//FileMember/rows"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FileMembered" abstract="true" interface="true">
+  <eClassifiers xsi:type="ecore:EClass" name="FileMembered" abstract="true" interface="true"
+      eSuperTypes="#//File">
     <eOperations name="getLibrary" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="getName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -178,7 +187,7 @@
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PrinterFileField" eSuperTypes="#//FileFormatField"/>
-  <eClassifiers xsi:type="ecore:EClass" name="SourceFile" eSuperTypes="#//File #//FileMembered">
+  <eClassifiers xsi:type="ecore:EClass" name="SourceFile" eSuperTypes="#//FileMembered">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

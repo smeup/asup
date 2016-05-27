@@ -12,6 +12,7 @@
 package org.smeup.sys.os.file.base;
 
 import org.smeup.sys.il.data.DataSpecial;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIndicator;
@@ -26,6 +27,7 @@ import org.smeup.sys.os.file.QFileMemberRow;
 
 public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<R> {
 
+	private QDataContext dataContext;
 	private BaseFileMemberProvider fileMemberProvider;
 	private R record;
 	
@@ -36,7 +38,8 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	private BaseInfoStruct infoStruct;
 	private QDataWriter dataWriter;
 
-	public BaseFileMemberDataSetImpl(BaseFileMemberProvider fileMemberProvider, R record, AccessMode accessMode, boolean userOpen, BaseInfoStruct infoStruct) {
+	public BaseFileMemberDataSetImpl(BaseFileMemberProvider fileMemberProvider, R record, AccessMode accessMode, boolean userOpen, BaseInfoStruct infoStruct, QDataContext dataContext) {
+		this.dataContext = dataContext;
 		this.fileMemberProvider = fileMemberProvider;
 		this.record = record;
 		this.infoStruct = infoStruct;
@@ -131,6 +134,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 		
 		this.fileMember = null;
 		this.open = false;
+		this.currentPosition = -1;
 	}
 
 	@Override
@@ -140,9 +144,8 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 	private QFileMember getFileMember() {
 		
-		if(this.fileMember == null) {
+		if(this.fileMember == null) 
 			this.fileMember = this.fileMemberProvider.getFileMember(); 
-		}
 		
 		return this.fileMember;
 	}
@@ -154,7 +157,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 	@Override
 	public boolean isEndOfData() {
-		throw new UnsupportedOperationException();
+		return dataContext.endOfData().asBoolean();
 	}
 
 	@Override
@@ -164,7 +167,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 	@Override
 	public boolean isFound() {
-		throw new UnsupportedOperationException();
+		return dataContext.found().asBoolean();
 	}
 
 	@Override
@@ -185,6 +188,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	@Override
 	public void open(QIndicator error) {
 		this.open = true;
+		this.currentPosition = -1;
 		getFileMember();
 	}
 
@@ -211,20 +215,25 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	@Override
 	public boolean read(QIndicator endOfData, QIndicator error, Boolean lock) {
 
-		if (getFileMember().getRows().size() < this.currentPosition) {
+		if (this.currentPosition >= getFileMember().getRows().size()) {
 			if (endOfData != null)
 				endOfData.eval(true);
+			
+			dataContext.endOfData().eval(true);
+			dataContext.found().eval(false);
 			return false;
 		}
+
+		this.currentPosition ++;
 
 		QFileMemberRow fileMemberRow = getFileMember().getRows().get(this.currentPosition - 1);
 		setRecord(fileMemberRow);
 
-		this.currentPosition++;
-
 		if (endOfData != null)
 			endOfData.eval(false);
 
+		dataContext.found().eval(true);
+		
 		return false;
 	}
 
@@ -250,12 +259,50 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 	@Override
 	public boolean readp(QIndicator beginningOfData, QIndicator error, Boolean lock) {
-		throw new UnsupportedOperationException();
+
+		if (this.currentPosition <= 1) {
+			if (beginningOfData != null)
+				beginningOfData.eval(true);
+			
+			dataContext.endOfData().eval(true);
+			dataContext.found().eval(false);
+			return false;
+		}
+
+		this.currentPosition --;
+
+		QFileMemberRow fileMemberRow = getFileMember().getRows().get(this.currentPosition - 1);
+		setRecord(fileMemberRow);
+
+		if (beginningOfData != null)
+			beginningOfData.eval(false);
+
+		dataContext.found().eval(true);
+		
+		return false;
+
 	}
 
 	@Override
-	public void setgt(DataSpecial keyField) {
-		throw new UnsupportedOperationException();
+	public void setgt(DataSpecial special) {
+		
+		switch (special) {
+		case HIVAL:
+			setgt(fileMember.getRows().size());
+			break;
+		case LOVAL:
+			setgt(1);
+			break;
+		case NULL:
+		case OFF:
+		case OMIT:
+		case ON:
+		case ZERO:
+		case ZEROS:
+		case BLANK:
+		case BLANKS:
+			throw new UnsupportedOperationException();
+		}
 	}
 
 	@Override
@@ -266,11 +313,6 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	@Override
 	public void setgt(int relativeRecordNumber, QIndicator notFound) {
 		setgt(relativeRecordNumber, notFound, null);
-	}
-
-	@Override
-	public void setgt(int relativeRecordNumber, QIndicator notFound, QIndicator error) {
-		throw new UnsupportedOperationException();
 	}
 
 	@Override
@@ -289,8 +331,30 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	}
 
 	@Override
-	public void setll(DataSpecial keyField) {
-		throw new UnsupportedOperationException();
+	public void setgt(int relativeRecordNumber, QIndicator notFound, QIndicator error) {
+		this.currentPosition = relativeRecordNumber + 1;
+	}
+
+	@Override
+	public void setll(DataSpecial special) {
+		
+		switch (special) {
+		case HIVAL:
+			setll(fileMember.getRows().size());
+			break;
+		case LOVAL:
+			setll(1);
+			break;
+		case NULL:
+		case OFF:
+		case OMIT:
+		case ON:
+		case ZERO:
+		case ZEROS:
+		case BLANK:
+		case BLANKS:
+			throw new UnsupportedOperationException();
+		}
 	}
 
 	@Override
@@ -320,7 +384,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 	@Override
 	public void setll(int relativeRecordNumber, QIndicator notFound, QIndicator equal, QIndicator error) {
-		this.currentPosition = relativeRecordNumber;
+		this.currentPosition = relativeRecordNumber -1;
 	}
 
 	private void setRecord(QFileMemberRow fileMemberRow) {

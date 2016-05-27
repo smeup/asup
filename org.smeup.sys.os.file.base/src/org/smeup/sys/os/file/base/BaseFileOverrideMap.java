@@ -31,7 +31,7 @@ public class BaseFileOverrideMap {
 		return fileOverride;
 	}
 
-	public void set(String name, QFileOverride fileOverride) {
+	public void add(String name, QFileOverride fileOverride) {
 		this.files.put(name, fileOverride);
 	}
 	

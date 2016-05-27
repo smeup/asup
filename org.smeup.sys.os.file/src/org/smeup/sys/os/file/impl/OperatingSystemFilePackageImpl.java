@@ -955,6 +955,7 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		fileFormatKeyEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		fileMemberEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		fileMemberRowEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		fileMemberedEClass.getESuperTypes().add(this.getFile());
 		fileOverrideEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		logicalFileEClass.getESuperTypes().add(this.getDatabaseFile());
 		physicalFileEClass.getESuperTypes().add(this.getDatabaseFile());
@@ -970,7 +971,6 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		g1.getETypeArguments().add(g2);
 		printerFileFormatDefEClass.getEGenericSuperTypes().add(g1);
 		printerFileFieldEClass.getESuperTypes().add(this.getFileFormatField());
-		sourceFileEClass.getESuperTypes().add(this.getFile());
 		sourceFileEClass.getESuperTypes().add(this.getFileMembered());
 
 		// Initialize classes and features; add operations and parameters
@@ -1020,13 +1020,13 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 
 		initEClass(fileManagerEClass, QFileManager.class, "FileManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = addEOperation(fileManagerEClass, this.getFileOverride(), "getFileOverride", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(fileManagerEClass, null, "setFileOverride", 1, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(fileManagerEClass, null, "addFileOverride", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getFileOverride(), "fileOverride", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(fileManagerEClass, this.getFileOverride(), "getFileOverride", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(fileManagerEClass, this.getFileOverride(), "listFileOverride", 1, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -1081,6 +1081,14 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		addEParameter(op, ecorePackage.getEString(), "library", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "file", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "member", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(fileMemberManagerEClass, this.getFileMember(), "lookupFirst", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getFileMembered(), "file", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(fileMemberManagerEClass, this.getFileMember(), "lookupLast", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getFileMembered(), "file", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(fileMemberRowEClass, QFileMemberRow.class, "FileMemberRow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFileMemberRow_Sequence(), ecorePackage.getEInt(), "sequence", null, 0, 1, QFileMemberRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

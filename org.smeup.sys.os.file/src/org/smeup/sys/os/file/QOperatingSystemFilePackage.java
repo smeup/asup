@@ -1458,12 +1458,57 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int FILE_MEMBER_ROW_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Application</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_MEMBERED__APPLICATION = FILE__APPLICATION;
+
+	/**
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_MEMBERED__FACETS = FILE__FACETS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_MEMBERED__NAME = FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_MEMBERED__TEXT = FILE__TEXT;
+
+	/**
+	 * The feature id for the '<em><b>Creation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_MEMBERED__CREATION_INFO = FILE__CREATION_INFO;
+
+	/**
 	 * The number of structural features of the '<em>File Membered</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_MEMBERED_FEATURE_COUNT = 0;
+	int FILE_MEMBERED_FEATURE_COUNT = FILE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.file.impl.PrinterFileFormatImpl <em>Printer File Format</em>}' class.
@@ -2041,7 +2086,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_FILE__APPLICATION = FILE__APPLICATION;
+	int SOURCE_FILE__APPLICATION = FILE_MEMBERED__APPLICATION;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -2050,7 +2095,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_FILE__FACETS = FILE__FACETS;
+	int SOURCE_FILE__FACETS = FILE_MEMBERED__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2059,7 +2104,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_FILE__NAME = FILE__NAME;
+	int SOURCE_FILE__NAME = FILE_MEMBERED__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute. <!--
@@ -2068,7 +2113,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_FILE__TEXT = FILE__TEXT;
+	int SOURCE_FILE__TEXT = FILE_MEMBERED__TEXT;
 
 	/**
 	 * The feature id for the '<em><b>Creation Info</b></em>' containment reference.
@@ -2076,7 +2121,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_FILE__CREATION_INFO = FILE__CREATION_INFO;
+	int SOURCE_FILE__CREATION_INFO = FILE_MEMBERED__CREATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>File Type</b></em>' attribute.
@@ -2085,7 +2130,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_FILE__FILE_TYPE = FILE_FEATURE_COUNT + 0;
+	int SOURCE_FILE__FILE_TYPE = FILE_MEMBERED_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Source File</em>' class.
@@ -2093,7 +2138,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_FILE_FEATURE_COUNT = FILE_FEATURE_COUNT + 1;
+	int SOURCE_FILE_FEATURE_COUNT = FILE_MEMBERED_FEATURE_COUNT + 1;
 
 	/**
 	 * Returns the meta object for class '

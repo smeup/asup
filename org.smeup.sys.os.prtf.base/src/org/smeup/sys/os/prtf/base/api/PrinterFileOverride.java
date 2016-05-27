@@ -103,7 +103,7 @@ public @Supported class PrinterFileOverride {
 		// TODO: set attributes from command parameters
 		fileOverride.setFileTo(qFile);
 
-		fileManager.setFileOverride(job.getContext(), fileOverride);
+		fileManager.addFileOverride(job.getContext(), fileOverride);
 	}
 
 	private QPrinterFile qFile(OVERRIDINGTOPRINTERFILE overridingToPrinterFile) {

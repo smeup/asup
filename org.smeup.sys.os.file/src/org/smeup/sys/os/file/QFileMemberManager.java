@@ -49,6 +49,22 @@ public interface QFileMemberManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model contextProviderRequired="true" fileRequired="true"
+	 * @generated
+	 */
+	QFileMember lookupFirst(QContextProvider contextProvider, QFileMembered file);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextProviderRequired="true" fileRequired="true"
+	 * @generated
+	 */
+	QFileMember lookupLast(QContextProvider contextProvider, QFileMembered file);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model contextProviderRequired="true" fileRequired="true" memberRequired="true"
 	 * @generated
 	 */

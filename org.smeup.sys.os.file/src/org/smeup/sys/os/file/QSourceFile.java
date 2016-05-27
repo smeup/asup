@@ -22,7 +22,7 @@ package org.smeup.sys.os.file;
  * @model
  * @generated
  */
-public interface QSourceFile extends QFile, QFileMembered {
+public interface QSourceFile extends QFileMembered {
 
 	/**
 	 * Returns the value of the '<em><b>File Type</b></em>' attribute.

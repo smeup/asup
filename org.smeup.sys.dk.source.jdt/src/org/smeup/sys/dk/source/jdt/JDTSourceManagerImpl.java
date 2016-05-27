@@ -83,7 +83,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 		}
 
 		try {
-			if(!project.isOpen())
+			if (!project.isOpen())
 				project.open(null);
 		} catch (CoreException e) {
 			throw new IOException(e);
@@ -157,7 +157,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 
 		IProject project = (IProject) resource;
 		try {
-			if(!project.isOpen())
+			if (!project.isOpen())
 				project.open(null);
 		} catch (CoreException e) {
 			return null;
@@ -339,7 +339,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 
 		IProject project = root.getProject(parent.getProject().getName());
 		try {
-			if(!project.isOpen())
+			if (!project.isOpen())
 				project.open(null);
 		} catch (CoreException e) {
 			return null;
@@ -414,5 +414,30 @@ public class JDTSourceManagerImpl implements QSourceManager {
 			}
 		}
 		return objectSerializer;
+	}
+
+	@Override
+	public QSourceEntry lookupFirstChildEntry(QContext context, QSourceNode parent) {
+
+		List<QSourceEntry> entries = listChildEntries(context, parent);
+		if (entries.isEmpty())
+			return null;
+
+		return entries.get(0);
+	}
+
+	@Override
+	public QSourceEntry lookupLastChildEntry(QContext context, QSourceNode parent) {
+
+		List<QSourceEntry> entries = listChildEntries(context, parent);
+		if (entries.isEmpty())
+			return null;
+
+		return entries.get(entries.size() - 1);
+	}
+
+	@Override
+	public <T extends QObjectNameable> T deserializeObject(QContext context, QProject project, Class<T> type, String name, InputStream stream) throws IOException {
+		return getObjectSerializer(context).deserialize(project, type, name, stream);
 	}
 }

@@ -16,7 +16,7 @@ package org.smeup.sys.os.file;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QFileMembered {
+public interface QFileMembered extends QFile {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

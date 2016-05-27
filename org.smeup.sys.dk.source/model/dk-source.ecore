@@ -174,9 +174,32 @@
     <eOperations name="listProjects" upperBound="-1" eType="#//Project">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
     </eOperations>
+    <eOperations name="lookupFirstChildEntry" eType="#//SourceEntry">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="parent" lowerBound="1" eType="#//SourceNode"/>
+    </eOperations>
+    <eOperations name="lookupLastChildEntry" eType="#//SourceEntry">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="parent" lowerBound="1" eType="#//SourceNode"/>
+    </eOperations>
     <eOperations name="removeEntry" eExceptions="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaIOException">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
       <eParameters name="entry" lowerBound="1" eType="#//SourceEntry"/>
+    </eOperations>
+    <eOperations name="deserializeObject" eExceptions="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaIOException">
+      <eGenericType eTypeParameter="#//SourceManager/deserializeObject/T"/>
+      <eTypeParameters name="T">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
+      </eTypeParameters>
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="project" lowerBound="1" eType="#//Project"/>
+      <eParameters name="type" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//SourceManager/deserializeObject/T"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="stream" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaInputStream"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SourceNode" abstract="true" interface="true"

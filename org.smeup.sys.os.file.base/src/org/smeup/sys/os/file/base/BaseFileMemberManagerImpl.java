@@ -17,10 +17,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectIterator;
@@ -33,9 +29,12 @@ import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileMember;
 import org.smeup.sys.os.file.QFileMemberManager;
 import org.smeup.sys.os.file.QFileMembered;
+import org.smeup.sys.rt.core.QLogger;
 
 public class BaseFileMemberManagerImpl implements QFileMemberManager {
 
+	@Inject
+	private QLogger logger;
 	@Inject
 	private QResourceManager resourceManager;
 	@Inject
@@ -48,18 +47,15 @@ public class BaseFileMemberManagerImpl implements QFileMemberManager {
 
 		List<QSourceEntry> entries = sourceManager.listChildEntries(contextProvider.getContext(), fileEntry);
 
-		ResourceSet resSet = new ResourceSetImpl();
 		List<QFileMember> members = new ArrayList<QFileMember>();
 		for (QSourceEntry entry : entries)
 			try {
-				Resource resource = resSet.createResource(URI.createURI(fileEntry.getLocation().toString()));
-				resource.load(entry.getInputStream(), null);
-				QFileMember fileMember = (QFileMember) resource.getContents().get(0);
+				QFileMember fileMember = entry.load(QFileMember.class);
 				fileMember.setFile(file);
 				members.add(fileMember);
 
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.error(e);
 			}
 		return members;
 	}
@@ -86,19 +82,14 @@ public class BaseFileMemberManagerImpl implements QFileMemberManager {
 		if (sourceMember == null)
 			return null;
 
-		QFileMember fileMember = null;
-		ResourceSet resSet = new ResourceSetImpl();
-		Resource resource = resSet.createResource(URI.createURI(sourceFile.getLocation().toString()));
-
 		try {
-			resource.load(sourceMember.getInputStream(), null);
-			fileMember = (QFileMember) resource.getContents().get(0);
+			QFileMember fileMember = sourceMember.load(QFileMember.class);
+			fileMember.setFile(file);
+			return fileMember;
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error(e);
+			return null;
 		}
-		
-		fileMember.setFile(file);
-		return fileMember;
 	}
 
 	@Override
@@ -119,6 +110,49 @@ public class BaseFileMemberManagerImpl implements QFileMemberManager {
 		}
 
 		return fileMember;
+	}
+
+	@Override
+	public QFileMember lookupFirst(QContextProvider contextProvider, QFileMembered file) {
+
+		QSourceEntry fileEntry = sourceManager.getObjectEntry(contextProvider.getContext(), file.getLibrary(), QFile.class, file.getName());
+		if(fileEntry == null)
+			return null;
+
+		QSourceEntry memberEntry = sourceManager.lookupFirstChildEntry(contextProvider.getContext(), fileEntry);
+		if(memberEntry == null)
+			return null;
+
+		try {
+			QFileMember fileMember = memberEntry.load(QFileMember.class);
+			fileMember.setFile(file);
+			return fileMember;
+		} catch (IOException e) {
+			logger.error(e);
+			return null;
+		}
+	}
+
+	@Override
+	public QFileMember lookupLast(QContextProvider contextProvider, QFileMembered file) {
+
+
+		QSourceEntry fileEntry = sourceManager.getObjectEntry(contextProvider.getContext(), file.getLibrary(), QFile.class, file.getName());
+		if(fileEntry == null)
+			return null;
+
+		QSourceEntry memberEntry = sourceManager.lookupLastChildEntry(contextProvider.getContext(), fileEntry);
+		if(memberEntry == null)
+			return null;
+
+		try {
+			QFileMember fileMember = memberEntry.load(QFileMember.class);
+			fileMember.setFile(file);
+			return fileMember;
+		} catch (IOException e) {
+			logger.error(e);
+			return null;
+		}
 	}
 
 	@Override

@@ -60,7 +60,6 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	private QLockManager lockManager;
 	@Inject
 	private QLogger logger;
-
 	private QApplication application;
 	private String path;
 	private String relativePath;
@@ -444,5 +443,30 @@ public class NIOSourceManagerImpl implements QSourceManager {
 			}
 
 		});
+	}
+
+	@Override
+	public QSourceEntry lookupFirstChildEntry(QContext context, QSourceNode parent) {
+
+		List<QSourceEntry> entries = listChildEntries(context, parent);
+		if(entries.isEmpty())
+			return null;
+		
+		return entries.get(0);
+	}
+
+	@Override
+	public QSourceEntry lookupLastChildEntry(QContext context, QSourceNode parent) {
+		
+		List<QSourceEntry> entries = listChildEntries(context, parent);
+		if(entries.isEmpty())
+			return null;
+		
+		return entries.get(entries.size()-1);
+	}
+
+	@Override
+	public <T extends QObjectNameable> T deserializeObject(QContext context, QProject project, Class<T> type, String name, InputStream stream) throws IOException {
+		return getObjectSerializer(context).deserialize(project, type, name, stream);
 	}
 }

@@ -142,9 +142,33 @@ public interface QSourceManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model contextRequired="true" parentRequired="true"
+	 * @generated
+	 */
+	QSourceEntry lookupFirstChildEntry(QContext context, QSourceNode parent);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextRequired="true" parentRequired="true"
+	 * @generated
+	 */
+	QSourceEntry lookupLastChildEntry(QContext context, QSourceNode parent);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException" contextRequired="true" entryRequired="true"
 	 * @generated
 	 */
 	void removeEntry(QContext context, QSourceEntry entry) throws IOException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException" contextRequired="true" projectRequired="true" typeRequired="true" nameRequired="true" streamDataType="org.smeup.sys.mi.core.JavaInputStream" streamRequired="true"
+	 * @generated
+	 */
+	<T extends QObjectNameable> T deserializeObject(QContext context, QProject project, Class<T> type, String name, InputStream stream) throws IOException;
 
 } // QSourceManager

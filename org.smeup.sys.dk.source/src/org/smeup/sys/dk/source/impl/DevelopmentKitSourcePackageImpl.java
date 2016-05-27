@@ -445,10 +445,34 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 		op = addEOperation(sourceManagerEClass, this.getProject(), "listProjects", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(sourceManagerEClass, this.getSourceEntry(), "lookupFirstChildEntry", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSourceNode(), "parent", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(sourceManagerEClass, this.getSourceEntry(), "lookupLastChildEntry", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSourceNode(), "parent", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(sourceManagerEClass, null, "removeEntry", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getSourceEntry(), "entry", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
+
+		op = addEOperation(sourceManagerEClass, null, "deserializeObject", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "T");
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
+		t1.getEBounds().add(g1);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getProject(), "project", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "type", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaInputStream(), "stream", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
+		g1 = createEGenericType(t1);
+		initEOperation(op, g1);
 
 		initEClass(sourceNodeEClass, QSourceNode.class, "SourceNode", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

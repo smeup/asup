@@ -23,18 +23,19 @@ import org.smeup.sys.il.core.ctx.QContext;
 public interface QFileManager {
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextRequired="true" fileOverrideRequired="true"
+	 * @generated
+	 */
+	void addFileOverride(QContext context, QFileOverride fileOverride);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" contextRequired="true" nameRequired="true"
 	 * @generated
 	 */
 	QFileOverride getFileOverride(QContext context, String name);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model contextRequired="true" fileOverrideRequired="true"
-	 * @generated
-	 */
-	void setFileOverride(QContext context, QFileOverride fileOverride);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

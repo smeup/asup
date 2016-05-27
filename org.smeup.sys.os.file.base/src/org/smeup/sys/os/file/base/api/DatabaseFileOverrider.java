@@ -14,25 +14,24 @@ package org.smeup.sys.os.file.base.api;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.data.QCharacter;
-import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
-import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileManager;
 import org.smeup.sys.os.file.QFileMember;
 import org.smeup.sys.os.file.QFileMemberManager;
+import org.smeup.sys.os.file.QFileMembered;
 import org.smeup.sys.os.file.QFileOverride;
 import org.smeup.sys.os.file.QOperatingSystemFileFactory;
 
 @Program(name = "QDMOVERD")
-public class OverrideDatabaseFile {
+public class DatabaseFileOverrider {
 
 	@Inject
 	private QFileManager fileManager;
@@ -44,16 +43,41 @@ public class OverrideDatabaseFile {
 	private QJob job;
 
 	@Main
-	public void main(@DataDef(length = 10) QCharacter file, FILE fileTo, @DataDef(length = 10) QCharacter member) {
+	public void main(@DataDef(length = 10) QCharacter file, FileRef fileTo, @DataDef(length = 10) QEnum<MEMBEREnum, QCharacter> member) {
+		
+		QResourceReader<QFile> fileReader = resourceManager.getResourceReader(job, QFile.class, fileTo.library.asEnum(), fileTo.library.asData().trimR());		
 
 		QFile qFile = null;
-		if (member.isEmpty()) {			
-			QResourceReader<QFile> fileReader = resourceManager.getResourceReader(job, QFile.class, fileTo.library.asEnum(), fileTo.library.asData().trimR());
-			qFile = fileReader.lookup(fileTo.name.trimR());			
-		}
-		else {
-			QFileMember fileMember = fileMemberManager.lookup(job, fileTo.library.asEnum(), fileTo.library.asData().trimR(), fileTo.name.trimR(), member.trimR());
-			qFile = (QFile) fileMember.getFile();
+		QFileMember fileMember = null;
+		
+		switch (member.asEnum()) {
+		case ALL:
+			qFile = fileReader.lookup(fileTo.name.trimR());
+			break;
+		case FIRST:
+			qFile = fileReader.lookup(fileTo.name.trimR());
+			if(qFile instanceof QFileMembered) {
+				QFileMembered fileMembered = (QFileMembered) qFile;
+				fileMember = fileMemberManager.lookupFirst(job, fileMembered);
+			}
+			break;
+		case LAST:
+			qFile = fileReader.lookup(fileTo.name.trimR());
+			if(qFile instanceof QFileMembered) {
+				QFileMembered fileMembered = (QFileMembered) qFile;
+				fileMember = fileMemberManager.lookupLast(job, fileMembered);
+			}
+			break;
+		case OTHER:
+			if(member.isEmpty()) {
+				qFile = fileReader.lookup(fileTo.name.trimR());
+			}
+			else {
+				fileMember = fileMemberManager.lookup(job, fileTo.library.asEnum(), fileTo.library.asData().trimR(), fileTo.name.trimR(), member.asData().trimR());
+				if(fileMember != null)
+					qFile = fileMember.getFile();
+			}
+			break;
 		}
 
 		if (qFile == null)
@@ -62,17 +86,13 @@ public class OverrideDatabaseFile {
 		QFileOverride fileOverride = QOperatingSystemFileFactory.eINSTANCE.createFileOverride();
 		fileOverride.setName(file.trimR());
 		fileOverride.setFileTo(qFile);
-		fileOverride.setMemberTo(member.trimR());
+		if(fileMember != null)
+			fileOverride.setMemberTo(fileMember.getName());
 
-		fileManager.setFileOverride(job.getContext(), fileOverride);
+		fileManager.addFileOverride(job.getContext(), fileOverride);
 	}
 
-	public static class FILE extends QDataStructWrapper {
-		private static final long serialVersionUID = 1L;
-		@DataDef(length = 10)
-		public QCharacter name;
-		
-		@DataDef(length = 10, value = "*LIBL")
-		public QEnum<Scope, QCharacter> library;
+	public static enum MEMBEREnum {
+		FIRST, LAST, ALL, OTHER
 	}
 }
