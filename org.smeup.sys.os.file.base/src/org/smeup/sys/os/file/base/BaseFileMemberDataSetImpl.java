@@ -236,7 +236,8 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	
 			if (endOfData != null)
 				endOfData.eval(false);
-			
+
+			dataContext.endOfData().eval(false);
 			dataContext.found().eval(true);
 			return true;
 		}
@@ -292,6 +293,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 			if (beginningOfData != null)
 				beginningOfData.eval(false);
 	
+			dataContext.endOfData().eval(false);
 			dataContext.found().eval(true);		
 			return true;
 		}
