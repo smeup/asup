@@ -64,6 +64,7 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 			case QDatabaseSyntaxDBLPackage.CONDITION_INFO_CLAUSE: return (EObject)createConditionInfoClause();
 			case QDatabaseSyntaxDBLPackage.DEALLOCATE_DESCRIPTOR_STATEMENT: return (EObject)createDeallocateDescriptorStatement();
 			case QDatabaseSyntaxDBLPackage.DECLARE_CURSOR_STATEMENT: return (EObject)createDeclareCursorStatement();
+			case QDatabaseSyntaxDBLPackage.DECLARE_STATEMENT_STATEMENT: return (EObject)createDeclareStatementStatement();
 			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT: return (EObject)createDescribeStatement();
 			case QDatabaseSyntaxDBLPackage.EXECUTE_IMMEDIATE_STATEMENT: return (EObject)createExecuteImmediateStatement();
 			case QDatabaseSyntaxDBLPackage.EXECUTE_STATEMENT: return (EObject)createExecuteStatement();
@@ -166,6 +167,16 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 	public QDeclareCursorStatement createDeclareCursorStatement() {
 		DeclareCursorStatementImpl declareCursorStatement = new DeclareCursorStatementImpl();
 		return declareCursorStatement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QDeclareStatementStatement createDeclareStatementStatement() {
+		DeclareStatementStatementImpl declareStatementStatement = new DeclareStatementStatementImpl();
+		return declareStatementStatement;
 	}
 
 	/**

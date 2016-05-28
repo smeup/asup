@@ -33,6 +33,7 @@ import org.smeup.sys.db.syntax.dbl.QConditionInfoClause;
 import org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLFactory;
 import org.smeup.sys.db.syntax.dbl.QDeallocateDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QDeclareCursorStatement;
+import org.smeup.sys.db.syntax.dbl.QDeclareStatementStatement;
 import org.smeup.sys.db.syntax.dbl.QDescribeStatement;
 import org.smeup.sys.db.syntax.dbl.QExecuteImmediateStatement;
 import org.smeup.sys.db.syntax.dbl.QExecuteStatement;
@@ -119,6 +120,10 @@ public class DBLModelBuilder {
 		case DBLLexer.EXECUTE_IMMEDIATE_STATEMENT:
 			result = manageExecuteImmediateStatement(tree, queryString);
 			break;
+			
+		case DBLLexer.DECLARE_STATEMENT_STATEMENT:
+			result = manageDeclareStatementStatement(tree);
+			break;	
 
 		case DBLLexer.PREPARE_STATEMENT:
 			result = managePrepareStatement(tree);
@@ -836,6 +841,27 @@ public class DBLModelBuilder {
 		}
 
 		return declareCursorStatement;
+	}
+	
+	private QBindingStatement manageDeclareStatementStatement(Tree tree) {
+		QDeclareStatementStatement declareStatementStatement = QDatabaseSyntaxDBLFactory.eINSTANCE.createDeclareStatementStatement();
+		
+		Tree fieldToken = null;
+
+		for (int i = 0; i < tree.getChildCount(); i++) {
+			fieldToken = tree.getChild(i);
+
+			switch (fieldToken.getType()) {
+
+			case DBLLexer.STATEMENT:
+
+				declareStatementStatement.getStatements().add(fieldToken.getChild(0).getText());
+
+				break;
+			}
+		}
+		
+		return declareStatementStatement;
 	}
 
 	private QBindingStatement managePrepareStatement(Tree tree) {

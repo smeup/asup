@@ -45,6 +45,7 @@ tokens {
   DB_NAME;
   DEALLOCATE_DESCRIPTOR_STATEMENT;
   DECLARE_CURSOR_STATEMENT;
+  DECLARE_STATEMENT_STATEMENT;
   DESCRIBE_STATEMENT;
   DESCRIPTOR;
   DESCRIPTOR_SCOPE;
@@ -381,6 +382,7 @@ SCROLL	:	S C R O L L;
 SHARE	:	 S H A R E;
 SERIALIZABLE 	:	 S E R I A L I Z A B L E;
 SYSTEM	:	S Y S T E M;
+SSTATEMENT	:	 S T A T E M E N T;
 SQL	:	 S Q L;
 SQLCURRULE	:	S Q L C U R R U L E;
 SQLPATH	:	 S Q L P A T H;
@@ -657,6 +659,8 @@ statement
   |
   open_statement
   |
+  declare_statement
+  |
   prepare_statement
   |
   declare_cursor_statement
@@ -872,6 +876,18 @@ using_variable
  								      -> {$d != null}? 	^(OPEN_STATEMENT ^(CURSOR $c) ^(USING_DESCRIPTOR ^(DESCRIPTOR $d)))	
  								      -> ^(OPEN_STATEMENT ^(CURSOR $c))			
  	;	
+
+/* DECLARE STATEMENT */
+declare_statement
+	:
+	DECLARE statement_name  (',' statement_name)* SSTATEMENT -> ^(DECLARE_STATEMENT_STATEMENT statement_name statement_name*)
+	;
+
+statement_name
+	:
+	s = Identifier -> ^(STATEMENT $s)
+	;	
+
 
 /* PREPARE STATEMENT */ 	
  prepare_statement

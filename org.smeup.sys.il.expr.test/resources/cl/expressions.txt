@@ -10,3 +10,4 @@
 &NC1='BRARTI0F/A§DEAR' !                  &NC2='BRARTI0F/A§DEAR' !                  &NC3='BRARTI0F/A§DEAR' !                  &NC4='BRARTI0F/A§DEAR' !                  &NC5='BRARTI0F/A§DEAR'
 %SST(*LDA 1 2)
 %SST(*LDB 1 2)
+%SWITCH(XX1XXXXX)

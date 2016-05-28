@@ -228,6 +228,12 @@ CAT     :	'!!' | ('*' C A T);
 BCAT    :	'!>' | ('*' B C A T);
 TCAT    :	'!<' | ('*' T C A T);
 
+SWITCH_VALUE
+	:
+	('0'| X |'1')('0'| X |'1')('0'| X |'1')('0'| X |'1')('0'| X |'1')('0'| X |'1')('0'| X |'1')('0'| X |'1')
+	;
+
+
 TERM : LETTER (LETTER | DIGIT )*;
 
 INTEGER	:
@@ -251,6 +257,10 @@ CLOSE_BRACE
 DATA_AREA
 	:
 	MULT L D A
+	|
+	MULT G D A
+	|
+	MULT P D A
 	;	
 
 BINARY_FUN
@@ -268,11 +278,6 @@ SST_FUN
 SWITCH_FUN
 	:
 	'%' S W I T C H
-	;
-
-SWITCH_VALUE
-	:
-	('0'| X |'1')('0'| X |'1')('0'| X |'1')('0'| X |'1')('0'| X |'1')('0'| X |'1')('0'| X |'1')('0'| X |'1')
 	;
 
 
@@ -344,4 +349,5 @@ fragment Z:('z'|'Z');
 WS
 	:  (' '|'\t'|'\u000C'| '\n' | '\r') {$channel=HIDDEN;}
 	;
+	
 
