@@ -25,11 +25,9 @@ import org.smeup.sys.il.flow.impl.StatementVisitorImpl;
 
 public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 
-	private QCompilationUnit compilationUnit;
 	private RPJCallableUnitInfo programInfo;	
 
-	private RPJCallableUnitAnalyzer(QCompilationUnit compilationUnit, RPJCallableUnitInfo programInfo) {
-		this.compilationUnit = compilationUnit;
+	private RPJCallableUnitAnalyzer(RPJCallableUnitInfo programInfo) {
 		this.programInfo = programInfo;
 	}
 
@@ -47,7 +45,7 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 		}
 		
 		// analyze statement
-		RPJCallableUnitAnalyzer callableUnitAnalyzer = new RPJCallableUnitAnalyzer(compilationUnit, callableUnitInfo);
+		RPJCallableUnitAnalyzer callableUnitAnalyzer = new RPJCallableUnitAnalyzer(callableUnitInfo);
 
 		// main
 		if (callableUnit.getMain() != null)
@@ -135,7 +133,7 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 			}
 		}
 		else if (statement.getMethod().equalsIgnoreCase("RESET")) {
-			programInfo.getResetObjects().add(compilationUnit.normalizeTermName(statement.getObject()));
+			programInfo.getResetObjects().add(statement.getObject());
 		}
 		
 		return super.visit(statement);
