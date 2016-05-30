@@ -136,7 +136,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getDescribeStatement()
 	 * @generated
 	 */
-	int DESCRIBE_STATEMENT = 5;
+	int DESCRIBE_STATEMENT = 6;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.impl.ExecuteImmediateStatementImpl <em>Execute Immediate Statement</em>}' class.
@@ -146,7 +146,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getExecuteImmediateStatement()
 	 * @generated
 	 */
-	int EXECUTE_IMMEDIATE_STATEMENT = 6;
+	int EXECUTE_IMMEDIATE_STATEMENT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.impl.ExecuteStatementImpl <em>Execute Statement</em>}' class.
@@ -156,7 +156,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getExecuteStatement()
 	 * @generated
 	 */
-	int EXECUTE_STATEMENT = 7;
+	int EXECUTE_STATEMENT = 8;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.impl.FetchStatementImpl <em>Fetch Statement</em>}' class.
@@ -166,7 +166,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getFetchStatement()
 	 * @generated
 	 */
-	int FETCH_STATEMENT = 8;
+	int FETCH_STATEMENT = 9;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.impl.GetDescriptorStatementImpl <em>Get Descriptor Statement</em>}' class.
@@ -176,7 +176,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getGetDescriptorStatement()
 	 * @generated
 	 */
-	int GET_DESCRIPTOR_STATEMENT = 9;
+	int GET_DESCRIPTOR_STATEMENT = 10;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.impl.IntoClauseImpl <em>Into Clause</em>}' class.
@@ -186,7 +186,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getIntoClause()
 	 * @generated
 	 */
-	int INTO_CLAUSE = 11;
+	int INTO_CLAUSE = 12;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.impl.SingleRowFetchClauseImpl <em>Single Row Fetch Clause</em>}' class.
@@ -196,7 +196,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getSingleRowFetchClause()
 	 * @generated
 	 */
-	int SINGLE_ROW_FETCH_CLAUSE = 12;
+	int SINGLE_ROW_FETCH_CLAUSE = 13;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.impl.MultipleRowFetchClauseImpl <em>Multiple Row Fetch Clause</em>}' class.
@@ -206,7 +206,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getMultipleRowFetchClause()
 	 * @generated
 	 */
-	int MULTIPLE_ROW_FETCH_CLAUSE = 13;
+	int MULTIPLE_ROW_FETCH_CLAUSE = 14;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.impl.SetDescriptorStatementImpl <em>Set Descriptor Statement</em>}' class.
@@ -216,7 +216,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getSetDescriptorStatement()
 	 * @generated
 	 */
-	int SET_DESCRIPTOR_STATEMENT = 14;
+	int SET_DESCRIPTOR_STATEMENT = 15;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.impl.SetTransactionStatementImpl <em>Set Transaction Statement</em>}' class.
@@ -226,7 +226,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getSetTransactionStatement()
 	 * @generated
 	 */
-	int SET_TRANSACTION_STATEMENT = 15;
+	int SET_TRANSACTION_STATEMENT = 16;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.impl.SetOptionStatementImpl <em>Set Option Statement</em>}' class.
@@ -236,7 +236,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getSetOptionStatement()
 	 * @generated
 	 */
-	int SET_OPTION_STATEMENT = 16;
+	int SET_OPTION_STATEMENT = 17;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.impl.OpenStatementImpl <em>Open Statement</em>}' class.
@@ -246,7 +246,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getOpenStatement()
 	 * @generated
 	 */
-	int OPEN_STATEMENT = 17;
+	int OPEN_STATEMENT = 18;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.impl.PrepareStatementImpl <em>Prepare Statement</em>}' class.
@@ -256,7 +256,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getPrepareStatement()
 	 * @generated
 	 */
-	int PREPARE_STATEMENT = 18;
+	int PREPARE_STATEMENT = 19;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.impl.CloseStatementImpl <em>Close Statement</em>}' class.
@@ -403,6 +403,34 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @ordered
 	 */
 	int DECLARE_CURSOR_STATEMENT_FEATURE_COUNT = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.impl.DeclareStatementStatementImpl <em>Declare Statement Statement</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.db.syntax.dbl.impl.DeclareStatementStatementImpl
+	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getDeclareStatementStatement()
+	 * @generated
+	 */
+	int DECLARE_STATEMENT_STATEMENT = 5;
+
+	/**
+	 * The feature id for the '<em><b>Statements</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECLARE_STATEMENT_STATEMENT__STATEMENTS = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Declare Statement Statement</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECLARE_STATEMENT_STATEMENT_FEATURE_COUNT = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Into</b></em>' containment reference.
@@ -592,7 +620,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getGetDiagnosticsStatement()
 	 * @generated
 	 */
-	int GET_DIAGNOSTICS_STATEMENT = 10;
+	int GET_DIAGNOSTICS_STATEMENT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Condition Info</b></em>' reference.
@@ -872,7 +900,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getOption()
 	 * @generated
 	 */
-	int OPTION = 19;
+	int OPTION = 20;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -909,7 +937,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getCursorType()
 	 * @generated
 	 */
-	int CURSOR_TYPE = 20;
+	int CURSOR_TYPE = 21;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.DescriptorScope <em>Descriptor Scope</em>}' enum.
@@ -919,7 +947,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getDescriptorScope()
 	 * @generated
 	 */
-	int DESCRIPTOR_SCOPE = 21;
+	int DESCRIPTOR_SCOPE = 22;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.FetchPosition <em>Fetch Position</em>}' enum.
@@ -929,7 +957,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getFetchPosition()
 	 * @generated
 	 */
-	int FETCH_POSITION = 22;
+	int FETCH_POSITION = 23;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.IsolationLevel <em>Isolation Level</em>}' enum.
@@ -939,7 +967,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getIsolationLevel()
 	 * @generated
 	 */
-	int ISOLATION_LEVEL = 23;
+	int ISOLATION_LEVEL = 24;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.RWOperation <em>RW Operation</em>}' enum.
@@ -949,7 +977,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getRWOperation()
 	 * @generated
 	 */
-	int RW_OPERATION = 24;
+	int RW_OPERATION = 25;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.OpenUsingType <em>Open Using Type</em>}' enum.
@@ -959,7 +987,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getOpenUsingType()
 	 * @generated
 	 */
-	int OPEN_USING_TYPE = 25;
+	int OPEN_USING_TYPE = 26;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.UsingType <em>Using Type</em>}' enum.
@@ -969,7 +997,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getUsingType()
 	 * @generated
 	 */
-	int USING_TYPE = 26;
+	int USING_TYPE = 27;
 
 
 	/**
@@ -1111,6 +1139,27 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDeclareCursorStatement_Hold();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.db.syntax.dbl.QDeclareStatementStatement <em>Declare Statement Statement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Declare Statement Statement</em>'.
+	 * @see org.smeup.sys.db.syntax.dbl.QDeclareStatementStatement
+	 * @generated
+	 */
+	EClass getDeclareStatementStatement();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.smeup.sys.db.syntax.dbl.QDeclareStatementStatement#getStatements <em>Statements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Statements</em>'.
+	 * @see org.smeup.sys.db.syntax.dbl.QDeclareStatementStatement#getStatements()
+	 * @see #getDeclareStatementStatement()
+	 * @generated
+	 */
+	EAttribute getDeclareStatementStatement_Statements();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.syntax.dbl.QDescribeStatement <em>Describe Statement</em>}'.
@@ -1934,6 +1983,24 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DECLARE_CURSOR_STATEMENT__HOLD = eINSTANCE.getDeclareCursorStatement_Hold();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.db.syntax.dbl.impl.DeclareStatementStatementImpl <em>Declare Statement Statement</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.db.syntax.dbl.impl.DeclareStatementStatementImpl
+		 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getDeclareStatementStatement()
+		 * @generated
+		 */
+		EClass DECLARE_STATEMENT_STATEMENT = eINSTANCE.getDeclareStatementStatement();
+
+		/**
+		 * The meta object literal for the '<em><b>Statements</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DECLARE_STATEMENT_STATEMENT__STATEMENTS = eINSTANCE.getDeclareStatementStatement_Statements();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.db.syntax.dbl.impl.DescribeStatementImpl <em>Describe Statement</em>}' class.

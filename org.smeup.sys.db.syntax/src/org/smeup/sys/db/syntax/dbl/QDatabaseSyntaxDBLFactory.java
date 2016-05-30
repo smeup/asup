@@ -54,6 +54,15 @@ public interface QDatabaseSyntaxDBLFactory extends EFactory {
 	QDeclareCursorStatement createDeclareCursorStatement();
 
 	/**
+	 * Returns a new object of class '<em>Declare Statement Statement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Declare Statement Statement</em>'.
+	 * @generated
+	 */
+	QDeclareStatementStatement createDeclareStatementStatement();
+
+	/**
 	 * Returns a new object of class '<em>Describe Statement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

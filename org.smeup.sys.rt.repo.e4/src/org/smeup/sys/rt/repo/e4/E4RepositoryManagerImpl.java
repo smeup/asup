@@ -185,7 +185,7 @@ public class E4RepositoryManagerImpl implements QRepositoryManager {
 			throw new InvocationTargetException(e);
 		}
 	}
-	
+
 	public IStatus checkForUpdates(UpdateOperation operation) {
 
 		IStatus status = operation.resolveModal(new NullProgressMonitor());
@@ -207,7 +207,7 @@ public class E4RepositoryManagerImpl implements QRepositoryManager {
 				} else {					
 				    status = MultiStatus.CANCEL_STATUS;
 				}
-			}
+			} 
 		}
 		
 		return status;
@@ -215,7 +215,19 @@ public class E4RepositoryManagerImpl implements QRepositoryManager {
 
 	private UpdateOperation buildUpdateOperation() {
 		IProfileRegistry registry= (IProfileRegistry)agent.getService(IProfileRegistry.SERVICE_NAME);
-		IProfile profile= registry.getProfile(IProfileRegistry.SELF);		
+		
+		// Search profile
+		IProfile profile = null;
+		
+		profile= registry.getProfile(IProfileRegistry.SELF);
+		
+		if (profile == null) {
+			profile= registry.getProfile("DefaultProfile");
+		}
+		
+		if (profile == null && registry.getProfiles().length > 0) {
+			profile = registry.getProfiles()[0];
+		}		
 		
 		IQuery<IInstallableUnit> queryAll = QueryUtil.createIUAnyQuery();
 		Collection<IInstallableUnit> iusToUpdate = profile.query(queryAll, new NullProgressMonitor()).toUnmodifiableSet();

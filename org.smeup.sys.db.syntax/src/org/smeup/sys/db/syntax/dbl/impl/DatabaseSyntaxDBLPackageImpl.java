@@ -29,6 +29,7 @@ import org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLFactory;
 import org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage;
 import org.smeup.sys.db.syntax.dbl.QDeallocateDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QDeclareCursorStatement;
+import org.smeup.sys.db.syntax.dbl.QDeclareStatementStatement;
 import org.smeup.sys.db.syntax.dbl.QDescribeStatement;
 import org.smeup.sys.db.syntax.dbl.QExecuteImmediateStatement;
 import org.smeup.sys.db.syntax.dbl.QExecuteStatement;
@@ -79,6 +80,13 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 * @generated
 	 */
 	private EClass declareCursorStatementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass declareStatementStatementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -439,6 +447,24 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 */
 	public EAttribute getDeclareCursorStatement_Hold() {
 		return (EAttribute)declareCursorStatementEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDeclareStatementStatement() {
+		return declareStatementStatementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDeclareStatementStatement_Statements() {
+		return (EAttribute)declareStatementStatementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1077,6 +1103,9 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		createEAttribute(declareCursorStatementEClass, DECLARE_CURSOR_STATEMENT__FOR_STATEMENT_NAME);
 		createEAttribute(declareCursorStatementEClass, DECLARE_CURSOR_STATEMENT__HOLD);
 
+		declareStatementStatementEClass = createEClass(DECLARE_STATEMENT_STATEMENT);
+		createEAttribute(declareStatementStatementEClass, DECLARE_STATEMENT_STATEMENT__STATEMENTS);
+
 		describeStatementEClass = createEClass(DESCRIBE_STATEMENT);
 		createEReference(describeStatementEClass, DESCRIBE_STATEMENT__INTO);
 		createEAttribute(describeStatementEClass, DESCRIBE_STATEMENT__STATEMENT_NAME);
@@ -1191,6 +1220,7 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		closeStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 		deallocateDescriptorStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 		declareCursorStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
+		declareStatementStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 		describeStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 		executeImmediateStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 		executeStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
@@ -1226,6 +1256,9 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		initEAttribute(getDeclareCursorStatement_ForQuery(), theEcorePackage.getEString(), "forQuery", null, 0, 1, QDeclareCursorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDeclareCursorStatement_ForStatementName(), theEcorePackage.getEString(), "forStatementName", null, 0, 1, QDeclareCursorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDeclareCursorStatement_Hold(), theEcorePackage.getEBoolean(), "hold", null, 0, 1, QDeclareCursorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(declareStatementStatementEClass, QDeclareStatementStatement.class, "DeclareStatementStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDeclareStatementStatement_Statements(), theEcorePackage.getEString(), "statements", null, 0, -1, QDeclareStatementStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(describeStatementEClass, QDescribeStatement.class, "DescribeStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDescribeStatement_Into(), this.getIntoClause(), null, "into", null, 0, 1, QDescribeStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

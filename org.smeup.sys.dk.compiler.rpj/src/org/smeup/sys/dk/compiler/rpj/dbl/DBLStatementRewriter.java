@@ -34,6 +34,7 @@ import org.smeup.sys.db.syntax.dbl.QAllocateDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QCloseStatement;
 import org.smeup.sys.db.syntax.dbl.QDeallocateDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QDeclareCursorStatement;
+import org.smeup.sys.db.syntax.dbl.QDeclareStatementStatement;
 import org.smeup.sys.db.syntax.dbl.QDescribeStatement;
 import org.smeup.sys.db.syntax.dbl.QExecuteImmediateStatement;
 import org.smeup.sys.db.syntax.dbl.QExecuteStatement;
@@ -183,6 +184,8 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 				result = manageOpenStatement((QOpenStatement) bindingStatement);
 			else if (bindingStatement instanceof QPrepareStatement)
 				result = managePrepareStatement((QPrepareStatement) bindingStatement);
+			else if (bindingStatement instanceof QDeclareStatementStatement)
+				result = manageDeclareStatementStatement((QDeclareStatementStatement) bindingStatement);
 			else if (bindingStatement instanceof QDeclareCursorStatement)
 				result = manageDeclareCursorStatement((QDeclareCursorStatement) bindingStatement);
 			else if (bindingStatement instanceof QDescribeStatement)
@@ -207,6 +210,30 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 		}
 
 		return result;
+	}
+	
+	private QStatement manageDeclareStatementStatement(QDeclareStatementStatement bindingStatement) {
+				
+		for (String statement: bindingStatement.getStatements()) {
+			
+			if (getStatementTerm(statement) != null) {
+				// Statement already declared (i.e. by prepareStatement)
+				continue;
+			}
+			
+			QStatementTerm statementTerm = QIntegratedLanguageEmbeddedSQLFactory.eINSTANCE.createStatementTerm();
+			statementTerm.setName(statement);
+			
+			QFileSection fileSection = this.callableUnit.getFileSection();
+			if (fileSection == null) {
+				fileSection = QIntegratedLanguageFlowFactory.eINSTANCE.createFileSection();
+				this.callableUnit.setFileSection(fileSection);
+			}
+
+			fileSection.getStatements().add(statementTerm);
+		}
+		
+		return null;		
 	}
 
 	private QStatement manageDeclareCursorStatement(QDeclareCursorStatement bindingStatement) {
