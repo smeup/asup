@@ -21,15 +21,6 @@
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="deep" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
-    <eOperations name="getDataTerms" lowerBound="1">
-      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
-        <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//term/DataTerm">
-          <eTypeArguments/>
-        </eTypeArguments>
-      </eGenericType>
-      <eParameters name="deep" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
     <eOperations name="getDataTerm" lowerBound="1">
       <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//term/DataTerm">
         <eTypeArguments/>
@@ -48,9 +39,7 @@
     <eOperations name="getMethod" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.flow/model/il-flow.ecore#//Prototype">
       <eParameters name="target">
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-          <eTypeArguments>
-            <eUpperBound eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Data"/>
-          </eTypeArguments>
+          <eTypeArguments/>
         </eGenericType>
       </eParameters>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

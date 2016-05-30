@@ -91,8 +91,8 @@ import org.smeup.sys.il.esam.annotation.FileDef;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
+import org.smeup.sys.il.expr.QTermExpression;
 import org.smeup.sys.il.flow.QBlock;
-import org.smeup.sys.il.flow.QCall;
 import org.smeup.sys.il.flow.QCallableUnit;
 import org.smeup.sys.il.flow.QConversion;
 import org.smeup.sys.il.flow.QDataSection;
@@ -646,25 +646,10 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			methodDeclaration.setReturnType2(type);
 		}
 
+		// TODO QExternalProgram
 		QExternalFile externalFile = prototype.getFacet(QExternalFile.class);
 		if (externalFile != null) {
-
-			QCall call = QIntegratedLanguageFlowFactory.eINSTANCE.createCall();
-			call.setProgram(externalFile.getName());
-
-			if (prototype.getEntry() != null) {
-				writeEntry(methodDeclaration, prototype.getEntry());
-
-				for (QEntryParameter<?> entryParameter : prototype.getEntry().getParameters()) {
-					String parameterName = entryParameter.getDelegate().getName();
-					call.getParameters().add(parameterName);
-				}
-			}
-
-			JDTStatementWriter statementWriter = getCompilationUnit().getContext().make(JDTStatementWriter.class);
-			statementWriter.setAST(getAST());
-			statementWriter.getBlocks().push(block);
-			call.accept(statementWriter);	
+			writePrototypeCall(prototype, externalFile.getName(), methodDeclaration, block);			
 			
 			if (prototype.getDefinition() != null) {
 				ReturnStatement returnStatement = getAST().newReturnStatement();
@@ -674,46 +659,84 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		} else {
 			QProcedure procedure = getCompilationUnit().getProcedure(prototype.getName(), false);
-			if (procedure != null) {
-				if (procedure.getEntry() != null)
-					writeEntry(methodDeclaration, procedure.getEntry());
+			if (procedure == null) 
+				throw new DevelopmentKitCompilerRuntimeException("Invalid procedure bind: " + prototype);
+			
+			if (procedure.getEntry() != null)
+				writeEntry(methodDeclaration, procedure.getEntry());
 
-				writeLazyLoading(procedure, block);
+			writeLazyLoading(procedure, block);
 
-				writeSetEntryParams(procedure, block);
+			writeSetEntryParams(procedure, block);
 
-				String namePrototype = getCompilationUnit().normalizeTermName(prototype.getName());
-				MethodInvocation methodInvocation = getAST().newMethodInvocation();
-				methodInvocation.setExpression(getAST().newName(namePrototype));
-				methodInvocation.setName(getAST().newSimpleName("qExec"));
+			String namePrototype = getCompilationUnit().normalizeTermName(prototype.getName());
+			MethodInvocation methodInvocation = getAST().newMethodInvocation();
+			methodInvocation.setExpression(getAST().newName(namePrototype));
+			methodInvocation.setName(getAST().newSimpleName("qExec"));
 
-				for (Object entryParameter : methodDeclaration.parameters()) {
-					SingleVariableDeclaration singleVariableDeclaration = (SingleVariableDeclaration) entryParameter;
-					methodInvocation.arguments().add(getAST().newSimpleName(singleVariableDeclaration.getName().toString()));
-				}
+			for (Object entryParameter : methodDeclaration.parameters()) {
+				SingleVariableDeclaration singleVariableDeclaration = (SingleVariableDeclaration) entryParameter;
+				methodInvocation.arguments().add(getAST().newSimpleName(singleVariableDeclaration.getName().toString()));
+			}
 
-				if (prototype.getDefinition() != null) {
-					ReturnStatement returnStatement = getAST().newReturnStatement();
-					returnStatement.setExpression(methodInvocation);
-					block.statements().add(returnStatement);
-				} else {
-					ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
-					block.statements().add(expressionStatement);
-				}
-
+			if (prototype.getDefinition() != null) {
+				ReturnStatement returnStatement = getAST().newReturnStatement();
+				returnStatement.setExpression(methodInvocation);
+				block.statements().add(returnStatement);
 			} else {
-				if (prototype.getEntry() != null)
-					writeEntry(methodDeclaration, prototype.getEntry());
-
-				// TODO manage CALL
-
-				if (prototype.getDefinition() != null) {
-					ReturnStatement returnStatement = getAST().newReturnStatement();
-					returnStatement.setExpression(getAST().newNullLiteral());
-					block.statements().add(returnStatement);
-				}
+				ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
+				block.statements().add(expressionStatement);
 			}
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private void writePrototypeCall(QPrototype prototype, String programName, MethodDeclaration methodDeclaration, Block block) {
+
+
+		MethodInvocation methodInvocation = getAST().newMethodInvocation();
+		methodInvocation.setExpression(getAST().newSimpleName("qRPJ"));
+		methodInvocation.setName(getAST().newSimpleName("qCall"));
+
+		// program name
+		QTermExpression expression = expressionParser.parseTerm(programName);
+		Expression jdtExpression = JDTStatementHelper.buildExpression(getAST(), getCompilationUnit(), expression, String.class);
+		methodInvocation.arguments().add(jdtExpression);
+
+		// array of parameter
+		ArrayInitializer arrayInitializer = getAST().newArrayInitializer();
+		if (prototype.getEntry() != null) {
+			writeEntry(methodDeclaration, prototype.getEntry());
+			
+			for (QEntryParameter<?> entryParameter : prototype.getEntry().getParameters()) {					
+
+				if(!(entryParameter.getDelegate() instanceof QDataTerm<?>))
+					throw new DevelopmentKitCompilerRuntimeException("Invalid parameter: " + entryParameter);
+				
+				QDataTerm<?> parameterDelegate = (QDataTerm<?>) entryParameter.getDelegate();
+				String parameterName = parameterDelegate.getName();
+				parameterName = getCompilationUnit().normalizeTermName(parameterName);
+				
+				// call parameter
+				if(parameterDelegate.isConstant() && !parameterDelegate.getDataTermType().isMultiple()) {
+					ASTParser parser = ASTParser.newParser(AST.JLS8);
+					parser.setKind(ASTParser.K_EXPRESSION);
+					parser.setSource(("qRPJ.qBox("+parameterName+")").toCharArray());
+					ASTNode node = parser.createAST(null);
+					arrayInitializer.expressions().add((Expression) ASTNode.copySubtree(getAST(), (Expression) node));
+				}
+				else
+					arrayInitializer.expressions().add(getAST().newName(parameterName));
+			}
+		}
+
+		ArrayCreation arrayCreation = getAST().newArrayCreation();
+		arrayCreation.setType(getAST().newArrayType(getAST().newSimpleType(getAST().newSimpleName(QData.class.getSimpleName()))));
+		arrayCreation.setInitializer(arrayInitializer);
+		methodInvocation.arguments().add(arrayCreation);
+
+		ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
+		block.statements().add(expressionStatement);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -1037,7 +1060,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			methodDeclaration.parameters().add(singleVar);
 
 			p++;
-		}
+		}		
 	}
 
 	protected void loadModules(Collection<String> modules, String module, boolean recursive) {

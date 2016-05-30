@@ -147,7 +147,6 @@ public class RPJCallableUnitLinker {
 				
 				if(prototype.getDefinition() != null)
 					prototype.accept(dataLikeVisitor);
-
 								
 				QEntry entry = prototype.getEntry();
 				if(entry != null) {

@@ -53,41 +53,38 @@ public class RPJDataLengthCompleter extends RPJAbstractDataRefactor {
 			return super.visit(dataTerm);
 
 		QCompoundDataDef<?, ?> compoundDataDef = null;
-		if(dataTerm.getDefinition() instanceof QDataAreaDef<?>) {
+		if (dataTerm.getDefinition() instanceof QDataAreaDef<?>) {
 			QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataTerm.getDefinition();
 			compoundDataDef = (QCompoundDataDef<?, ?>) dataAreaDef.getArgument();
-		}
-		else
+		} else
 			compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
 
 		for (QDataTerm<?> element : new ArrayList<QDataTerm<?>>(compoundDataDef.getElements())) {
 			QBufferedDataDef<?> bufferedDataDef = (QBufferedDataDef<?>) element.getDefinition();
 			if (bufferedDataDef.getLength() != 0)
 				continue;
-			
+
 			int length = calculateLength(dataTerm, element);
 
-			if(length == 0)
-				throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: sd34623vr8wevrw");
-			
-			if(element.getDefinition() instanceof QMultipleAtomicBufferedDataDef<?>) {
+			if (length == 0)
+				calculateLength(dataTerm, element);
+
+			if (element.getDefinition() instanceof QMultipleAtomicBufferedDataDef<?>) {
 				QMultipleAtomicBufferedDataDef<?> multipleAtomicBufferedDataDef = (QMultipleAtomicBufferedDataDef<?>) element.getDefinition();
-				if(multipleAtomicBufferedDataDef.getArgument().getLength() != 0)
+				if (multipleAtomicBufferedDataDef.getArgument().getLength() != 0)
 					throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: 7w746e7qw6re7ewq");
-				
-				multipleAtomicBufferedDataDef.getArgument().setLength(length/multipleAtomicBufferedDataDef.getDimension());
-			}
-			else if(element.getDefinition() instanceof QUnaryAtomicBufferedDataDef<?>) {
+
+				multipleAtomicBufferedDataDef.getArgument().setLength(length / multipleAtomicBufferedDataDef.getDimension());
+			} else if (element.getDefinition() instanceof QUnaryAtomicBufferedDataDef<?>) {
 				QUnaryAtomicBufferedDataDef<?> unaryAtomicBufferedDataDef = (QUnaryAtomicBufferedDataDef<?>) element.getDefinition();
-				if(unaryAtomicBufferedDataDef.getLength() != 0)
+				if (unaryAtomicBufferedDataDef.getLength() != 0)
 					throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: 7w746e8ewtr8wet7ewq");
-				
+
 				unaryAtomicBufferedDataDef.setLength(length);
-			}
-			else
+			} else
 				throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: 7w745234v7cr7ev");
 		}
-		
+
 		return false;
 	}
 
@@ -105,7 +102,7 @@ public class RPJDataLengthCompleter extends RPJAbstractDataRefactor {
 			if (elementOverlay == null)
 				continue;
 
-			if (elementOverlay.getName() == null || !elementOverlay.getName().equalsIgnoreCase(targetTerm.getName()))
+			if (elementOverlay.getName() == null || !getCompilationUnit().equalsTermName(elementOverlay.getName(), targetTerm.getName()))
 				continue;
 
 			if (targetOverlay != null)
@@ -117,7 +114,7 @@ public class RPJDataLengthCompleter extends RPJAbstractDataRefactor {
 			QBufferedDataDef<?> bufferedDataDef = (QBufferedDataDef<?>) dataElement.getDefinition();
 			targetNextPosition += bufferedDataDef.getSize();
 		}
-		
-		return targetNextPosition-1;
+
+		return targetNextPosition - 1;
 	}
 }

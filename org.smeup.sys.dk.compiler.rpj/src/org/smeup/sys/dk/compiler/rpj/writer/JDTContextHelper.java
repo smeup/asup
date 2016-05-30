@@ -30,7 +30,13 @@ import org.smeup.sys.il.data.def.QArrayDef;
 import org.smeup.sys.il.data.def.QMultipleDataDef;
 import org.smeup.sys.il.data.def.QPointerDef;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.il.esam.QDataSet;
+import org.smeup.sys.il.esam.QDataSetTerm;
+import org.smeup.sys.il.esam.QDisplay;
+import org.smeup.sys.il.esam.QDisplayTerm;
 import org.smeup.sys.il.esam.QKeyListTerm;
+import org.smeup.sys.il.esam.QPrint;
+import org.smeup.sys.il.esam.QPrintTerm;
 import org.smeup.sys.il.expr.QArithmeticExpression;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QBlockExpression;
@@ -274,12 +280,21 @@ public class JDTContextHelper {
 			case NAME:
 
 				QNamedNode namedNode = compilationUnit.getNamedNode(atomicTermExpression.getValue(), true);
+				if (namedNode instanceof QDataSetTerm) {
+					return QDataSet.class;
+				} else if (namedNode instanceof QPrintTerm) {
+					return QPrint.class;
+				} else if (namedNode instanceof QDisplayTerm) {
+					return QDisplay.class;
+				}
+
 				QDataTerm<?> dataTerm = getDataTerm(namedNode);
-				if (dataTerm != null)
+				if (dataTerm != null) {
 					if (primitive)
 						return dataTerm.getDefinition().getJavaClass();
 					else
 						return dataTerm.getDefinition().getDataClass();
+				}
 				break;
 			}
 			break;
@@ -346,11 +361,11 @@ public class JDTContextHelper {
 
 			// check method
 			QExpression expressionChild = functionExpression.getElements().get(0);
-			Class<? extends QData> target = null;
+			Class<?> target = null;
 			if (!JDTContextHelper.isPrimitive(compilationUnit, expressionChild))
 				target = (Class<? extends QData>) getTargetClass(compilationUnit, expressionChild, false);
 			else
-				target = getDataClass(getTargetClass(compilationUnit, expressionChild, true));
+				target = getModelClass(getTargetClass(compilationUnit, expressionChild, true));
 
 			QPrototype method = compilationUnit.getMethod(target, functionExpression.getValue());
 			if (method != null) {
@@ -421,7 +436,7 @@ public class JDTContextHelper {
 		return null;
 	}
 
-	public static Class<? extends QData> getDataClass(Class<?> target) {
+	public static Class<?> getModelClass(Class<?> target) {
 
 		if (target == null) {
 			System.err.println("Unexpected condition 98xxw34wejruwe35wetr");
@@ -436,6 +451,12 @@ public class JDTContextHelper {
 			return QNumeric.class;
 		else if (Date.class.isAssignableFrom(target))
 			return QDatetime.class;
+		else if (QDataSet.class.isAssignableFrom(target))
+			return QDataSet.class;
+		else if (QPrint.class.isAssignableFrom(target))
+			return QPrint.class;
+		else if (QDisplay.class.isAssignableFrom(target))
+			return QDisplay.class;
 		else
 			System.err.println("Unexpected condition 98xxw345435wetr");
 

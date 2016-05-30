@@ -16,7 +16,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.rpj.writer.JDTContextHelper;
 import org.smeup.sys.il.core.term.QNamedNode;

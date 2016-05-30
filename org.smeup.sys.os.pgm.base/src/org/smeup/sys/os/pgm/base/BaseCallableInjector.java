@@ -203,6 +203,7 @@ public class BaseCallableInjector {
 		List<InjectableField> pointers = new ArrayList<InjectableField>();
 
 		for (Field field : klass.getDeclaredFields()) {
+			
 			// TODO
 			if (field.getName().startsWith("$SWITCH_TABLE"))
 				continue;
@@ -452,7 +453,7 @@ public class BaseCallableInjector {
 			QDataTerm<?> dataTerm = dataContainer.getDataTerm(field.getName());
 			if (dataTerm.getDefault() == null)
 				continue;
-
+			
 			field.setValue(callable, dataContainer.getData(dataTerm));
 		}
 
@@ -465,7 +466,7 @@ public class BaseCallableInjector {
 			QDataTerm<?> dataTerm = dataContainer.getDataTerm(field.getName());
 			if (dataTerm.getBased() == null)
 				continue;
-
+			
 			field.setValue(callable, dataContainer.getData(dataTerm));
 		}
 

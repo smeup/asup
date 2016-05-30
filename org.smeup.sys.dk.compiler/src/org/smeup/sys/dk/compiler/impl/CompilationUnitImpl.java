@@ -8,7 +8,6 @@
 package org.smeup.sys.dk.compiler.impl;
 
 import java.util.List;
-import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -24,7 +23,6 @@ import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage;
 import org.smeup.sys.il.core.QNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.term.QNamedNode;
-import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QDataSetTerm;
 import org.smeup.sys.il.esam.QDisplayTerm;
@@ -269,17 +267,6 @@ public abstract class CompilationUnitImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map<String, QDataTerm<?>> getDataTerms(boolean deep) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public String normalizeTermName(String name) {
 		// TODO: implement this method
@@ -352,7 +339,7 @@ public abstract class CompilationUnitImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QPrototype getMethod(Class<? extends QData> target, String name) {
+	public QPrototype getMethod(Class<?> target, String name) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

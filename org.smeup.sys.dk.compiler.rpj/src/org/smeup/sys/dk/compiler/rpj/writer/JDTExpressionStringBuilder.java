@@ -1032,26 +1032,28 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QFunctionTermExpression expression) {
 
-		// prototype
-		QPrototype prototype = compilationUnit.getPrototype(expression.getValue(), true);
-		if (prototype != null) {
-			writePrototype(prototype, expression.getElements());
-			return false;
-		}
-
+		QPrototype prototype = null;
+		
 		// search object method
 		if (!expression.getElements().isEmpty()) {
 			QExpression expressionChild = expression.getElements().get(0);
 
-			Class<? extends QData> objectTarget = null;
+			Class<?> objectTarget = null;
 			if (!JDTContextHelper.isPrimitive(compilationUnit, expressionChild))
 				objectTarget = (Class<? extends QData>) JDTContextHelper.getTargetClass(compilationUnit, expressionChild, false);
 			else
-				objectTarget = JDTContextHelper.getDataClass((Class<? extends QData>) JDTContextHelper.getTargetClass(compilationUnit, expressionChild, true));
-
+				objectTarget = JDTContextHelper.getModelClass((Class<?>) JDTContextHelper.getTargetClass(compilationUnit, expressionChild, true));
+			
 			prototype = compilationUnit.getMethod(objectTarget, expression.getValue());
 			if (prototype != null)
 				return writeMethod(prototype, expression.getElements());
+		}
+
+		// prototype
+		prototype = compilationUnit.getPrototype(expression.getValue(), true);
+		if (prototype != null) {
+			writePrototype(prototype, expression.getElements());
+			return false;
 		}
 
 		// search dataTerm
@@ -1060,6 +1062,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			writeDataTerm(dataTerm, expression.getElements());
 			return false;
 		}
+		
 		QNamedNode namedNode = compilationUnit.getNamedNode(expression.getValue(), true);
 		if (namedNode != null) {
 			writeNamedNode(namedNode);

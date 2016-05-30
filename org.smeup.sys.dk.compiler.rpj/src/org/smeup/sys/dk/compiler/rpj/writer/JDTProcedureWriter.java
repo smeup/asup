@@ -40,7 +40,6 @@ import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.il.data.annotation.Procedure;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.flow.QBlock;
-import org.smeup.sys.il.flow.QEntry;
 import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QModule;
 import org.smeup.sys.il.flow.QProcedure;
@@ -162,14 +161,6 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 			if(prototype == null)
 				throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: wiuervy87e6x87rwe8vr");
 				
-/*			QDataTerm<?> tempTerm = new DataTermImpl<QDataDef<?>>() {
-				private static final long serialVersionUID = 1L;
-
-				@Override
-				public QDataDef<?> getDefinition() {
-					return procedure.getReturnType();
-				}
-			};*/
 			Type type = getJavaType(prototype);
 			methodDeclaration.setReturnType2(type);
 		}
@@ -178,11 +169,10 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 		methodDeclaration.setBody(block);
 
 		if (procedure.getEntry() != null) {
-			QEntry entry = procedure.getEntry();
-			writeEntry(methodDeclaration, entry);
+			writeEntry(methodDeclaration, procedure.getEntry());
 
 			if (procedure.hasRoutines()) {
-				for (QEntryParameter<?> entryParameter : entry.getParameters()) {
+				for (QEntryParameter<?> entryParameter : procedure.getEntry().getParameters()) {
 
 					QDataTerm<?> delegateTerm = (QDataTerm<?>) entryParameter.getDelegate();
 

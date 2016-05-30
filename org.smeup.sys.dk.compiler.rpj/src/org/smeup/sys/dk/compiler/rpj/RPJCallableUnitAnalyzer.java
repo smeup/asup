@@ -20,6 +20,7 @@ import org.smeup.sys.il.flow.QLabel;
 import org.smeup.sys.il.flow.QMethodExec;
 import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QRoutine;
+import org.smeup.sys.il.flow.QSQLExec;
 import org.smeup.sys.il.flow.impl.StatementVisitorImpl;
 
 public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
@@ -110,6 +111,14 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 	public boolean visit(QCommandExec statement) {
 
 		programInfo.containsCMDStatement(true);
+
+		return super.visit(statement);
+	}
+
+	@Override
+	public boolean visit(QSQLExec statement) {
+
+		programInfo.containsSQLStatement(true);
 
 		return super.visit(statement);
 	}
