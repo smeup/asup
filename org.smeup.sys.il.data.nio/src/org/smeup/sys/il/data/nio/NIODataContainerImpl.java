@@ -292,16 +292,22 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		if (data instanceof QStruct<?> && dataTerm.getDefinition() instanceof QCompoundDataDef<?, ?>) {
 			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
 
+			
 			for (Field field : NIODataStructHelper.getFields((Class<? extends QStruct<?>>) data.getClass())) {
 				if (!QData.class.isAssignableFrom(field.getType()))
 					continue;
 
 				try {
 					QData element = (QData) field.get(data);
+
+					String fieldName = field.getName();
+					if(compoundDataDef.getPrefix() != null && !compoundDataDef.getPrefix().isEmpty())
+						fieldName = compoundDataDef.getPrefix() + fieldName;
+
 					if (compoundDataDef.isQualified())
-						datas.put(getKey(dataTerm) + "." + field.getName(), element);
+						datas.put(getKey(dataTerm) + "." + fieldName, element);
 					else
-						datas.put(field.getName(), element);
+						datas.put(fieldName, element);
 
 				} catch (IllegalArgumentException | IllegalAccessException e) {
 					throw new IntegratedLanguageDataRuntimeException(e);
@@ -338,6 +344,8 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 				} else {
 					data = dataFactory.createData(dataTerm, false);
 					QData overlayedData = getData(overlay.getName().toLowerCase());
+					if(overlayedData == null)
+						throw new IntegratedLanguageDataRuntimeException("Invalid overlay data: " + overlay);
 					((QBufferedData) overlayedData).assign((QBufferedData) data);
 				}
 			}

@@ -336,7 +336,7 @@ public class RPJCallableUnitLinker {
 					QDatabaseFileFormat databaseFileFormat = databaseFile.getDatabaseFormat();
 					dataSet.setFormat((QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) EcoreUtil.copy((EObject) databaseFileFormat));
 				}
-				if (dataSet.getPrefix() != null)
+				if (dataSet.getPrefix() != null && !dataSet.getPrefix().isEmpty())
 					dataSet.getFormat().getDefinition().setPrefix(dataSet.getPrefix());
 
 				QCompilerLinker compilerLinker = linkExternalFile(compilationUnit.getContext(), dataSet.getFormat(), externalFile);

@@ -20,9 +20,11 @@ import java.lang.reflect.WildcardType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -104,7 +106,7 @@ public class BaseCallableInjector {
 	}
 
 	public <P> QCallableProgram<P> prepareCallable(QProgram program, Class<P> klass) {
-		
+
 		QDataContainer dataContainer = dataManager.createDataContainer(dataContext);
 
 		try {
@@ -203,7 +205,7 @@ public class BaseCallableInjector {
 		List<InjectableField> pointers = new ArrayList<InjectableField>();
 
 		for (Field field : klass.getDeclaredFields()) {
-			
+
 			// TODO
 			if (field.getName().startsWith("$SWITCH_TABLE"))
 				continue;
@@ -348,19 +350,15 @@ public class BaseCallableInjector {
 			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
 			if (fileDef != null) {
 				userOpen = fileDef.userOpen();
-				
-				if (!fileDef.name().isEmpty())
-					primaryRecordName = fileDef.name();
+
+				// if (!fileDef.name().isEmpty())
+				// primaryRecordName = fileDef.name();
 
 				if (!fileDef.prefix().isEmpty())
 					primaryRecordName = fileDef.prefix() + "_" + primaryRecordName;
 			}
 
 			QRecord record = records.get(primaryRecordName.toLowerCase());
-			// TODO (C£C£Ex)
-			if (record == null)
-				record = records.get(classPrimaryRecord.getSimpleName().toLowerCase());
-
 			if (record == null) {
 				record = dataContainer.getDataContext().getDataFactory().createRecord(classRecord, true);
 				records.put(primaryRecordName.toLowerCase(), record);
@@ -375,7 +373,7 @@ public class BaseCallableInjector {
 			}
 
 			if (fileDef != null && !fileDef.name().isEmpty())
-				dataSet.getFilePath().eval(fileDef.name());				
+				dataSet.getFilePath().eval(fileDef.name());
 
 			dataSet.clear();
 			field.setValue(callable, dataSet);
@@ -433,18 +431,39 @@ public class BaseCallableInjector {
 		}
 
 		// dataSet
+		Set<String> dataSetRecords = new HashSet<String>();
 		for (InjectableField field : dataSets) {
+
 			QDataSet<?> dataSet = (QDataSet<?>) field.getValue(callable);
-			for (String fieldName : dataSet.get().getElementNames()) {
-				QData data = dataContainer.getData(fieldName);
+			QRecord dataSetRecord = dataSet.get();
+
+			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
+			
+			String primaryRecordName = dataSetRecord.getClass().getSimpleName();
+			if (fileDef != null && !fileDef.prefix().isEmpty())
+				primaryRecordName = fileDef.prefix() + "_" + primaryRecordName;
+			
+			if (dataSetRecords.contains(primaryRecordName))
+				continue;
+			
+			for (String fieldName : dataSetRecord.getElementNames()) {
+
+				QData data = null;
+				if (fileDef != null && !fileDef.prefix().isEmpty())
+					data = dataContainer.getData(fileDef.prefix() + fieldName);
+				else
+					data = dataContainer.getData(fieldName);
+				
 				if (data instanceof QBufferedData) {
 					QBufferedData bufferedData = (QBufferedData) data;
-					QBufferedData bufferedDataTo = dataSet.get().getElement(fieldName);
+					QBufferedData bufferedDataTo = dataSetRecord.getElement(fieldName);
 
-					if (!bufferedData.getStore().equals(bufferedDataTo.getStore()))
+					if (bufferedData.getStore() != bufferedDataTo.getStore())
 						bufferedData.assign(bufferedDataTo);
 				}
 			}
+
+			dataSetRecords.add(primaryRecordName);
 		}
 
 		// pointer with default
@@ -453,7 +472,7 @@ public class BaseCallableInjector {
 			QDataTerm<?> dataTerm = dataContainer.getDataTerm(field.getName());
 			if (dataTerm.getDefault() == null)
 				continue;
-			
+
 			field.setValue(callable, dataContainer.getData(dataTerm));
 		}
 
@@ -466,7 +485,7 @@ public class BaseCallableInjector {
 			QDataTerm<?> dataTerm = dataContainer.getDataTerm(field.getName());
 			if (dataTerm.getBased() == null)
 				continue;
-			
+
 			field.setValue(callable, dataContainer.getData(dataTerm));
 		}
 
@@ -533,13 +552,12 @@ public class BaseCallableInjector {
 				if (dataTerm.getBased() != null)
 					continue;
 			}
-
+			
 			QData data = dataContainer.getData(dataTerm);
 
 			if (data instanceof QStroller<?>) {
 				field.setValue(callable, data);
-			}
-			else {
+			} else {
 				QDataStruct dataStruct = (QDataStruct) data;
 				QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
 
@@ -559,7 +577,7 @@ public class BaseCallableInjector {
 					records.put(primaryRecordName, dataStruct);
 				else
 					((QDataStruct) primaryRecord).assign(dataStruct);
-				
+
 				field.setValue(callable, dataStruct);
 			}
 		}
