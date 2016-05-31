@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g 2016-05-28 07:12:47
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g 2016-05-31 09:18:05
 
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
 import org.smeup.sys.db.syntax.DataBaseSyntaxRuntimeException;
@@ -9682,17 +9682,17 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = Variable;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1597:3: ( ':' ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL )+ )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1597:5: ':' ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL )+
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1597:3: ( ':' ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL | ':' )+ )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1597:5: ':' ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL | ':' )+
 			{
 			match(':'); 
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1597:8: ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL )+
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1597:9: ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL | ':' )+
 			int cnt15=0;
 			loop15:
 			while (true) {
 				int alt15=2;
 				int LA15_0 = input.LA(1);
-				if ( ((LA15_0 >= '!' && LA15_0 <= '\"')||(LA15_0 >= '$' && LA15_0 <= '&')||(LA15_0 >= '*' && LA15_0 <= '+')||(LA15_0 >= '-' && LA15_0 <= '9')||(LA15_0 >= '<' && LA15_0 <= '?')||(LA15_0 >= 'A' && LA15_0 <= 'Z')||LA15_0=='\\'||(LA15_0 >= '^' && LA15_0 <= '_')||(LA15_0 >= 'a' && LA15_0 <= 'z')||LA15_0=='\u00A3'||LA15_0=='\u00A7'||LA15_0=='\u00E0'||(LA15_0 >= '\u00E8' && LA15_0 <= '\u00E9')||LA15_0=='\u00EC'||LA15_0=='\u00F2'||LA15_0=='\u00F9') ) {
+				if ( ((LA15_0 >= '!' && LA15_0 <= '\"')||(LA15_0 >= '$' && LA15_0 <= '&')||(LA15_0 >= '*' && LA15_0 <= '+')||(LA15_0 >= '-' && LA15_0 <= ':')||(LA15_0 >= '<' && LA15_0 <= '?')||(LA15_0 >= 'A' && LA15_0 <= 'Z')||LA15_0=='\\'||(LA15_0 >= '^' && LA15_0 <= '_')||(LA15_0 >= 'a' && LA15_0 <= 'z')||LA15_0=='\u00A3'||LA15_0=='\u00A7'||LA15_0=='\u00E0'||(LA15_0 >= '\u00E8' && LA15_0 <= '\u00E9')||LA15_0=='\u00EC'||LA15_0=='\u00F2'||LA15_0=='\u00F9') ) {
 					alt15=1;
 				}
 
@@ -9700,7 +9700,7 @@ public class DBLLexer extends Lexer {
 				case 1 :
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:
 					{
-					if ( (input.LA(1) >= '!' && input.LA(1) <= '\"')||(input.LA(1) >= '$' && input.LA(1) <= '&')||(input.LA(1) >= '*' && input.LA(1) <= '+')||(input.LA(1) >= '-' && input.LA(1) <= '9')||(input.LA(1) >= '<' && input.LA(1) <= '?')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='\\'||(input.LA(1) >= '^' && input.LA(1) <= '_')||(input.LA(1) >= 'a' && input.LA(1) <= 'z')||input.LA(1)=='\u00A3'||input.LA(1)=='\u00A7'||input.LA(1)=='\u00E0'||(input.LA(1) >= '\u00E8' && input.LA(1) <= '\u00E9')||input.LA(1)=='\u00EC'||input.LA(1)=='\u00F2'||input.LA(1)=='\u00F9' ) {
+					if ( (input.LA(1) >= '!' && input.LA(1) <= '\"')||(input.LA(1) >= '$' && input.LA(1) <= '&')||(input.LA(1) >= '*' && input.LA(1) <= '+')||(input.LA(1) >= '-' && input.LA(1) <= ':')||(input.LA(1) >= '<' && input.LA(1) <= '?')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='\\'||(input.LA(1) >= '^' && input.LA(1) <= '_')||(input.LA(1) >= 'a' && input.LA(1) <= 'z')||input.LA(1)=='\u00A3'||input.LA(1)=='\u00A7'||input.LA(1)=='\u00E0'||(input.LA(1) >= '\u00E8' && input.LA(1) <= '\u00E9')||input.LA(1)=='\u00EC'||input.LA(1)=='\u00F2'||input.LA(1)=='\u00F9' ) {
 						input.consume();
 					}
 					else {
@@ -9719,7 +9719,7 @@ public class DBLLexer extends Lexer {
 				cnt15++;
 			}
 
-			 setText(getText().substring(1)); 
+			 setText(getText().substring(1).replace(':', '.').trim()); 
 			}
 
 			state.type = _type;
@@ -12759,7 +12759,7 @@ public class DBLLexer extends Lexer {
 			"\1\22\1\23\1\24\1\25\1\26\2\52\1\27\3\56\1\37\1\52\1\56\1\2\1\4\1\3\1"+
 			"\5\1\6\1\7\1\10\1\11\1\12\1\13\1\52\1\14\1\15\1\16\1\17\1\20\1\52\1\21"+
 			"\1\22\1\23\1\24\1\25\1\26\2\52\1\27\3\56\1\36\1\56\40\55\uff60\56",
-			"\2\61\1\uffff\3\61\3\uffff\2\61\1\uffff\15\61\2\uffff\1\61\1\57\2\61"+
+			"\2\61\1\uffff\3\61\3\uffff\2\61\1\uffff\16\61\1\uffff\1\61\1\57\2\61"+
 			"\1\uffff\32\61\1\uffff\1\61\1\uffff\2\61\1\uffff\32\61\50\uffff\1\61"+
 			"\3\uffff\1\61\70\uffff\1\61\7\uffff\2\61\2\uffff\1\61\5\uffff\1\61\6"+
 			"\uffff\1\61",
@@ -12833,7 +12833,7 @@ public class DBLLexer extends Lexer {
 			"",
 			"",
 			"",
-			"\2\61\1\uffff\3\61\3\uffff\2\61\1\uffff\15\61\2\uffff\4\61\1\uffff\32"+
+			"\2\61\1\uffff\3\61\3\uffff\2\61\1\uffff\16\61\1\uffff\4\61\1\uffff\32"+
 			"\61\1\uffff\1\61\1\uffff\2\61\1\uffff\32\61\50\uffff\1\61\3\uffff\1\61"+
 			"\70\uffff\1\61\7\uffff\2\61\2\uffff\1\61\5\uffff\1\61\6\uffff\1\61",
 			"",

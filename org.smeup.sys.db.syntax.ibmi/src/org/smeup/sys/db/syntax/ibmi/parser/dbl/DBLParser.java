@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g 2016-05-28 07:12:46
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g 2016-05-31 09:18:05
 
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
 
@@ -2823,7 +2823,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: type_length, FLOAT
+			// elements: FLOAT, type_length
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -8440,7 +8440,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: i, r
+			// elements: r, i
 			// token labels: 
 			// rule labels: r, i, retval
 			// token list labels: 
@@ -9574,7 +9574,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: s, d, DESCRIPTOR, s, s, v2
+			// elements: s, s, d, DESCRIPTOR, s, v2
 			// token labels: s, d, v2
 			// rule labels: retval
 			// token list labels: 
@@ -9786,7 +9786,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: s, using_variable, USING, using_variable
+			// elements: USING, using_variable, s, using_variable
 			// token labels: s
 			// rule labels: retval
 			// token list labels: 
@@ -10195,7 +10195,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: USING, c, using_variable, using_variable
+			// elements: using_variable, using_variable, c, USING
 			// token labels: c
 			// rule labels: retval
 			// token list labels: 
@@ -10457,7 +10457,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: c, c, DESCRIPTOR, d, v2, c
+			// elements: c, DESCRIPTOR, c, d, v2, c
 			// token labels: c, d, v2
 			// rule labels: retval
 			// token list labels: 
@@ -10874,7 +10874,7 @@ public class DBLParser extends Parser {
 			if ( state.backtracking==0 ) stream_Variable.add(v);
 
 			// AST REWRITE
-			// elements: FROM, s, v, into_clause
+			// elements: into_clause, v, s, FROM
 			// token labels: s, v
 			// rule labels: retval
 			// token list labels: 
@@ -11074,16 +11074,16 @@ public class DBLParser extends Parser {
 			if ( state.backtracking==0 ) stream_Identifier.add(s);
 
 			// AST REWRITE
-			// elements: s, CURSOR, sc, h, d, FOR, c
-			// token labels: s, c, d
+			// elements: c, sc, h, FOR, s, CURSOR, d
+			// token labels: c, s, d
 			// rule labels: sc, h, retval
 			// token list labels: 
 			// rule list labels: 
 			// wildcard labels: 
 			if ( state.backtracking==0 ) {
 			retval.tree = root_0;
-			RewriteRuleTokenStream stream_s=new RewriteRuleTokenStream(adaptor,"token s",s);
 			RewriteRuleTokenStream stream_c=new RewriteRuleTokenStream(adaptor,"token c",c);
+			RewriteRuleTokenStream stream_s=new RewriteRuleTokenStream(adaptor,"token s",s);
 			RewriteRuleTokenStream stream_d=new RewriteRuleTokenStream(adaptor,"token d",d);
 			RewriteRuleSubtreeStream stream_sc=new RewriteRuleSubtreeStream(adaptor,"rule sc",sc!=null?sc.getTree():null);
 			RewriteRuleSubtreeStream stream_h=new RewriteRuleSubtreeStream(adaptor,"rule h",h!=null?h.getTree():null);
@@ -11566,7 +11566,7 @@ public class DBLParser extends Parser {
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) stream_into_clause.add(into_clause228.getTree());
 					// AST REWRITE
-					// elements: s, into_clause
+					// elements: into_clause, s
 					// token labels: s
 					// rule labels: retval
 					// token list labels: 
@@ -11619,7 +11619,7 @@ public class DBLParser extends Parser {
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) stream_using_clause.add(using_clause230.getTree());
 					// AST REWRITE
-					// elements: using_clause, s
+					// elements: s, using_clause
 					// token labels: s
 					// rule labels: retval
 					// token list labels: 
@@ -11779,7 +11779,7 @@ public class DBLParser extends Parser {
 			if ( state.backtracking==0 ) stream_Descriptor_Name.add(d);
 
 			// AST REWRITE
-			// elements: s, d, USING, DESCRIPTOR
+			// elements: USING, s, d, DESCRIPTOR
 			// token labels: d
 			// rule labels: s, retval
 			// token list labels: 
@@ -11947,7 +11947,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: fetch_position, c, fetch_into
+			// elements: c, fetch_position, fetch_into
 			// token labels: c
 			// rule labels: retval
 			// token list labels: 
@@ -12257,7 +12257,7 @@ public class DBLParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: NUMBER, RELATIVE, v, RELATIVE
+					// elements: RELATIVE, RELATIVE, NUMBER, v
 					// token labels: v
 					// rule labels: retval
 					// token list labels: 
@@ -12547,7 +12547,7 @@ public class DBLParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: into_variable, into_variable, INTO
+					// elements: into_variable, INTO, into_variable
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -12898,7 +12898,7 @@ public class DBLParser extends Parser {
 					if ( state.backtracking==0 ) stream_Descriptor_Name.add(d);
 
 					// AST REWRITE
-					// elements: d, DESCRIPTOR
+					// elements: DESCRIPTOR, d
 					// token labels: d
 					// rule labels: retval
 					// token list labels: 
@@ -13065,7 +13065,7 @@ public class DBLParser extends Parser {
 			if ( state.backtracking==0 ) stream_Variable.add(ds);
 
 			// AST REWRITE
-			// elements: FOR, v, NUMBER, mi, INTO, mi, ds, ds, INTO, FOR
+			// elements: INTO, FOR, ds, INTO, v, FOR, mi, NUMBER, mi, ds
 			// token labels: v, ds
 			// rule labels: mi, retval
 			// token list labels: 
@@ -13600,7 +13600,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: t, v, INTO, USING, USING, INTO, d, t
+			// elements: USING, INTO, t, d, USING, INTO, v, t
 			// token labels: d, v
 			// rule labels: t, retval
 			// token list labels: 
@@ -13629,7 +13629,7 @@ public class DBLParser extends Parser {
 				}
 
 				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:995:98: ( ^( USING $t) )?
-				if ( stream_t.hasNext()||stream_USING.hasNext() ) {
+				if ( stream_USING.hasNext()||stream_t.hasNext() ) {
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:995:98: ^( USING $t)
 					{
 					CommonTree root_2 = (CommonTree)adaptor.nil();
@@ -13639,8 +13639,8 @@ public class DBLParser extends Parser {
 					}
 
 				}
-				stream_t.reset();
 				stream_USING.reset();
+				stream_t.reset();
 
 				adaptor.addChild(root_0, root_1);
 				}
@@ -13662,7 +13662,7 @@ public class DBLParser extends Parser {
 				}
 
 				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:996:36: ( ^( USING $t) )?
-				if ( stream_USING.hasNext()||stream_t.hasNext() ) {
+				if ( stream_t.hasNext()||stream_USING.hasNext() ) {
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:996:36: ^( USING $t)
 					{
 					CommonTree root_2 = (CommonTree)adaptor.nil();
@@ -13672,8 +13672,8 @@ public class DBLParser extends Parser {
 					}
 
 				}
-				stream_USING.reset();
 				stream_t.reset();
+				stream_USING.reset();
 
 				adaptor.addChild(root_0, root_1);
 				}
@@ -14217,7 +14217,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: with_default, field_type, not_null, Identifier, c
+			// elements: field_type, Identifier, with_default, c, not_null
 			// token labels: c
 			// rule labels: retval
 			// token list labels: 
@@ -14667,7 +14667,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: l, s, DESCRIPTOR, d
+			// elements: DESCRIPTOR, d, l, s
 			// token labels: d
 			// rule labels: s, l, retval
 			// token list labels: 
@@ -15189,7 +15189,7 @@ public class DBLParser extends Parser {
 			if ( state.backtracking==0 ) stream_Descriptor_Name.add(d);
 
 			// AST REWRITE
-			// elements: DESCRIPTOR, s, d
+			// elements: DESCRIPTOR, d, s
 			// token labels: d
 			// rule labels: s, retval
 			// token list labels: 
@@ -15360,7 +15360,7 @@ public class DBLParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_info.add(info299.getTree());
 			// AST REWRITE
-			// elements: info, DESCRIPTOR, s, d
+			// elements: DESCRIPTOR, s, d, info
 			// token labels: d
 			// rule labels: s, retval
 			// token list labels: 
@@ -16008,7 +16008,7 @@ public class DBLParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_variable_value.add(variable_value313.getTree());
 			// AST REWRITE
-			// elements: variable_value, v
+			// elements: v, variable_value
 			// token labels: v
 			// rule labels: retval
 			// token list labels: 
@@ -16408,7 +16408,7 @@ public class DBLParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_value_settings.add(value_settings317.getTree());
 			// AST REWRITE
-			// elements: s, value_settings, d, DESCRIPTOR
+			// elements: s, d, value_settings, DESCRIPTOR
 			// token labels: d
 			// rule labels: s, retval
 			// token list labels: 
@@ -16560,7 +16560,7 @@ public class DBLParser extends Parser {
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) stream_value_item_info.add(value_item_info319.getTree());
 					// AST REWRITE
-					// elements: i, value_item_info
+					// elements: value_item_info, i
 					// token labels: i
 					// rule labels: retval
 					// token list labels: 
@@ -16606,7 +16606,7 @@ public class DBLParser extends Parser {
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) stream_value_item_info.add(value_item_info321.getTree());
 					// AST REWRITE
-					// elements: v, value_item_info
+					// elements: value_item_info, v
 					// token labels: v
 					// rule labels: retval
 					// token list labels: 
@@ -16891,7 +16891,7 @@ public class DBLParser extends Parser {
 					if ( state.backtracking==0 ) stream_Variable.add(v);
 
 					// AST REWRITE
-					// elements: v, i
+					// elements: i, v
 					// token labels: v, i
 					// rule labels: retval
 					// token list labels: 
@@ -18578,7 +18578,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: SELECT, set_qualifier, orderby_clause, groupby_clause, limit_clause, select_list, from_clause, where_clause, having_clause
+			// elements: limit_clause, set_qualifier, select_list, groupby_clause, from_clause, where_clause, SELECT, orderby_clause, having_clause
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -19578,7 +19578,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: f, l, m
+			// elements: l, m, f
 			// token labels: f, l, m
 			// rule labels: retval
 			// token list labels: 
@@ -19698,7 +19698,7 @@ public class DBLParser extends Parser {
 			if ( state.backtracking==0 ) stream_RIGHT_PAREN.add(RIGHT_PAREN394);
 
 			// AST REWRITE
-			// elements: m, l, f
+			// elements: l, f, m
 			// token labels: f, l, m
 			// rule labels: retval
 			// token list labels: 
@@ -21107,7 +21107,7 @@ public class DBLParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_table_primary.add(r.getTree());
 			// AST REWRITE
-			// elements: r, CROSS, JOIN
+			// elements: r, JOIN, CROSS
 			// token labels: 
 			// rule labels: r, retval
 			// token list labels: 
@@ -21227,7 +21227,7 @@ public class DBLParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_join_specification.add(s.getTree());
 			// AST REWRITE
-			// elements: r, t, s, JOIN
+			// elements: t, JOIN, s, r
 			// token labels: 
 			// rule labels: r, s, t, retval
 			// token list labels: 
@@ -21458,7 +21458,7 @@ public class DBLParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_table_primary.add(r.getTree());
 			// AST REWRITE
-			// elements: UNION, r, JOIN
+			// elements: JOIN, r, UNION
 			// token labels: 
 			// rule labels: r, retval
 			// token list labels: 
@@ -21603,7 +21603,7 @@ public class DBLParser extends Parser {
 					if ( state.backtracking==0 ) stream_OUTER.add(OUTER419);
 
 					// AST REWRITE
-					// elements: t, OUTER
+					// elements: OUTER, t
 					// token labels: 
 					// rule labels: t, retval
 					// token list labels: 
@@ -21970,7 +21970,7 @@ public class DBLParser extends Parser {
 			if ( state.backtracking==0 ) stream_RIGHT_PAREN.add(RIGHT_PAREN427);
 
 			// AST REWRITE
-			// elements: f, USING
+			// elements: USING, f
 			// token labels: 
 			// rule labels: f, retval
 			// token list labels: 
@@ -22096,7 +22096,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: table, a
+			// elements: a, table
 			// token labels: a
 			// rule labels: retval
 			// token list labels: 
@@ -23242,7 +23242,7 @@ public class DBLParser extends Parser {
 			if ( state.backtracking==0 ) stream_RIGHT_PAREN.add(RIGHT_PAREN465);
 
 			// AST REWRITE
-			// elements: c, CUBE
+			// elements: CUBE, c
 			// token labels: 
 			// rule labels: c, retval
 			// token list labels: 
@@ -23741,7 +23741,7 @@ public class DBLParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: fn, o, a
+			// elements: fn, a, o
 			// token labels: 
 			// rule labels: a, fn, retval, o
 			// token list labels: 
@@ -23986,7 +23986,7 @@ public class DBLParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_numeric_value_expression.add(e.getTree());
 			// AST REWRITE
-			// elements: LIMIT, e
+			// elements: e, LIMIT
 			// token labels: 
 			// rule labels: e, retval
 			// token list labels: 
@@ -25042,7 +25042,7 @@ public class DBLParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_truth_value.add(t.getTree());
 			// AST REWRITE
-			// elements: t, NOT, IS
+			// elements: NOT, t, IS
 			// token labels: 
 			// rule labels: t, retval
 			// token list labels: 
@@ -25741,7 +25741,7 @@ public class DBLParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_numeric_value_expression.add(r.getTree());
 			// AST REWRITE
-			// elements: r, c, l
+			// elements: r, l, c
 			// token labels: 
 			// rule labels: r, c, l, retval
 			// token list labels: 
@@ -25927,7 +25927,7 @@ public class DBLParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_in_predicate_value.add(a.getTree());
 			// AST REWRITE
-			// elements: v, a, NOT, IN
+			// elements: v, IN, NOT, a
 			// token labels: 
 			// rule labels: a, v, retval
 			// token list labels: 
@@ -26232,7 +26232,7 @@ public class DBLParser extends Parser {
 			if ( state.backtracking==0 ) stream_Character_String_Literal.add(s);
 
 			// AST REWRITE
-			// elements: NOT, f, LIKE, s
+			// elements: f, NOT, s, LIKE
 			// token labels: s
 			// rule labels: f, retval
 			// token list labels: 
@@ -26357,7 +26357,7 @@ public class DBLParser extends Parser {
 			if ( state.backtracking==0 ) stream_NULL.add(NULL528);
 
 			// AST REWRITE
-			// elements: n, NULL, IS, f
+			// elements: IS, NULL, f, n
 			// token labels: n
 			// rule labels: f, retval
 			// token list labels: 
@@ -28044,7 +28044,7 @@ public class DBLParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_result.add(r.getTree());
 			// AST REWRITE
-			// elements: WHEN, r, c
+			// elements: c, r, WHEN
 			// token labels: 
 			// rule labels: r, c, retval
 			// token list labels: 
@@ -28136,7 +28136,7 @@ public class DBLParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_result.add(r.getTree());
 			// AST REWRITE
-			// elements: ELSE, r
+			// elements: r, ELSE
 			// token labels: 
 			// rule labels: r, retval
 			// token list labels: 

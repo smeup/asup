@@ -42,6 +42,7 @@ public class ParseDBL {
 				parseResult = bindingParser.parseBinding(sql);
 
 			} catch (Exception e) {
+				System.out.println("Error parsing : \"" + sql + "\" " + e.getMessage());
 				parseResult = null;
 			}
 			testAsserter.assertNotNull("Test parser: " + sql, parseResult);
