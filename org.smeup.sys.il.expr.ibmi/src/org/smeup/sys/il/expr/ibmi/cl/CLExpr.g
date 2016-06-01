@@ -31,6 +31,7 @@ tokens
 	//BINARY_FUN
 	//SST_FUN
 	//SWITCH_FUN
+	//SWITCH_VALUE
 	//DATA_AREA
 
 	//VAR
@@ -159,6 +160,8 @@ value	:
 	|
 	TERM
 	|
+	MULT_TERM -> ^(TERM[$value.text])
+	|
 	INTEGER
 	|
 	FLOAT
@@ -172,6 +175,10 @@ value	:
 	switch_fun
 
 	;
+amp_term
+	:
+	'*' TERM -> ^(TERM[$amp_term.text])
+	;	
 
 binary_fun
 	:
@@ -236,6 +243,21 @@ SWITCH_VALUE
 
 TERM : LETTER (LETTER | DIGIT )*;
 
+DATA_AREA
+	:
+	MULT L D A
+	|
+	MULT G D A
+	|
+	MULT P D A
+	;
+
+// Stringa che inizia per * e che non ricade in uno dei casi precedentemente trattati -> TERM
+MULT_TERM 
+	:
+	MULT LETTER (LETTER | DIGIT )*
+	;
+
 INTEGER	:
 	DIGIT+
 	;
@@ -253,15 +275,6 @@ CLOSE_BRACE
 	:
 	')'
 	;
-	
-DATA_AREA
-	:
-	MULT L D A
-	|
-	MULT G D A
-	|
-	MULT P D A
-	;	
 
 BINARY_FUN
 	:
