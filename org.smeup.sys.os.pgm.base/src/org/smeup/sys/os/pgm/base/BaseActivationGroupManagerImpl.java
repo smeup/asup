@@ -82,29 +82,38 @@ public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 	@Override
 	public void close(QJob job, String name) {
 
-		QActivationGroup activationGroup = lookup(job, name);
-		// TODO
-		if (activationGroup == null)
-			return;
-
 		QProgramStack programStack = programManager.getProgramStack(job.getContext().getID());
-		for (QCallableProgram<?> callableProgram : activationGroup.getPrograms()) {
-			if (programStack.contains(callableProgram))
-				continue;
-			callableProgram.close();
-		}
+		QActivationGroup activationGroup = lookup(job, name);
+		closeActivationGroup(programStack, activationGroup);
 	}
 
 	@Override
 	public void closeAll(QJob job) {
-
 		QProgramStack programStack = programManager.getProgramStack(job.getContext().getID());
 		for (QActivationGroup activationGroup : list(job)) {
-			for (QCallableProgram<?> callableProgram : activationGroup.getPrograms()) {
-				if (programStack.contains(callableProgram))
-					continue;
-				callableProgram.close();
+			closeActivationGroup(programStack, activationGroup);
+		}			
+	}
+	
+	private void closeActivationGroup(QProgramStack programStack, QActivationGroup activationGroup) {
+		if(activationGroup.getName().equalsIgnoreCase("*DFT"))
+			return;
+
+		boolean active = false;
+		for (QCallableProgram<?> callableProgram : new ArrayList<QCallableProgram<?>>(activationGroup.getPrograms())) {
+			if (programStack.contains(callableProgram)) {
+				active = true;
+				break;					
 			}
 		}
+		
+		if(active)
+			return;
+		
+		for (QCallableProgram<?> callableProgram : new ArrayList<QCallableProgram<?>>(activationGroup.getPrograms()))
+			callableProgram.close();
+		
+		if(!activationGroup.getPrograms().isEmpty())
+			"".toCharArray();
 	}
 }

@@ -52,14 +52,6 @@ public interface QActivationGroup extends QObject {
 	QCallableProgram<?> lookup(QProgram program);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model programRequired="true"
-	 * @generated
-	 */
-	void remove(QProgram program);
-
-	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
 	 * begin-user-doc -->
 	 * <p>

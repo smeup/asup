@@ -34,6 +34,9 @@ import org.smeup.sys.il.data.annotation.Snap;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobRunInfo;
+import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QCallableProgram;
 import org.smeup.sys.os.pgm.QProgram;
 import org.smeup.sys.os.pgm.QProgramInfo;
@@ -42,6 +45,9 @@ import org.smeup.sys.os.pgm.QProgramStatus;
 public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCallableProgram<P> {
 
 	private static final long serialVersionUID = 1L;
+
+	private QJob job;
+	private QActivationGroup activationGroup;
 
 	private QDataContext dataContext;
 	private QProgram program;
@@ -62,16 +68,20 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 	private boolean apiMode = false;
 
 	private QProgramInfo programInfo = null;
-	
-	protected BaseCallableProgramDelegator(QDataContext dataContext, QProgram program, QProgramStatus programStatus, P delegate, QProgramInfo programInfo) {
+
+	protected BaseCallableProgramDelegator(QJob job, QActivationGroup activationGroup, QDataContext dataContext, QProgram program, QProgramStatus programStatus, P delegate,
+			QProgramInfo programInfo) {
+		this.job = job;
+		this.activationGroup = activationGroup;
 		this.dataContext = dataContext;
 		this.program = program;
 		this.programStatus = programStatus;
 		this.delegate = delegate;
 		this.programInfo = programInfo;
+
 		analyzeDelegate(delegate);
 	}
-	
+
 	private void analyzeDelegate(Object delegate) {
 
 		Class<?> klass = delegate.getClass();
@@ -120,7 +130,7 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 		// open
 		if (!isOpen())
 			open();
-		
+
 		if (apiMode)
 			callAPIMode();
 		else
@@ -145,7 +155,7 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 			// @PostMain
 			if (_exit != null)
 				_exit.invoke(getDelegate());
-			
+
 		} catch (InvocationTargetException e) {
 			if (e.getTargetException() instanceof OperatingSystemMessageException)
 				throw (OperatingSystemMessageException) e.getTargetException();
@@ -159,7 +169,7 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 	}
 
 	private QData[] callProgramMode() {
-		
+
 		try {
 			if (inlr != null)
 				inlr.eval(false);
@@ -187,11 +197,11 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 				throw new OperatingSystemRuntimeException(e.getTargetException());
 		} catch (Exception e) {
 			throw new OperatingSystemRuntimeException(e);
-		}	
+		}
 	}
-	
+
 	private void open() {
-		
+
 		if (_open != null) {
 			try {
 				switch (initStrategy) {
@@ -282,6 +292,14 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 	@Override
 	public void close() {
 		isOpen = false;
+
+		QJobRunInfo jobRunInfo = job.getJobRunInfo();
+		if (jobRunInfo != null)
+			jobRunInfo.setMemorySize(jobRunInfo.getMemorySize() - programInfo.getMemorySize());
+
+		if (activationGroup != null)
+			if (!activationGroup.getPrograms().remove(this))
+				throw new OperatingSystemRuntimeException("Invalid program " + getProgram().getName() + " "+ " for activationGroup "+activationGroup.getName());
 	}
 
 	@Override

@@ -10,6 +10,7 @@ package org.smeup.sys.os.pgm;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
@@ -418,13 +419,23 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	int PROGRAM_STATUS_FEATURE_COUNT = QIntegratedLanguageDataPackage.DATA_STRUCT_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.pgm.ProgramStackOrder <em>Program Stack Order</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.pgm.ProgramStackOrder
+	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgramStackOrder()
+	 * @generated
+	 */
+	int PROGRAM_STACK_ORDER = 10;
+
+	/**
 	 * The meta object id for the '<em>Parameter List</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getParameterList()
 	 * @generated
 	 */
-	int PARAMETER_LIST = 10;
+	int PARAMETER_LIST = 11;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.pgm.QActivationGroup <em>Activation Group</em>}'.
@@ -674,6 +685,16 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	EClass getProgramStatus();
 
 	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.os.pgm.ProgramStackOrder <em>Program Stack Order</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Program Stack Order</em>'.
+	 * @see org.smeup.sys.os.pgm.ProgramStackOrder
+	 * @generated
+	 */
+	EEnum getProgramStackOrder();
+
+	/**
 	 * Returns the meta object for data type '<em>Parameter List</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -906,6 +927,16 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PROGRAM_STATUS = eINSTANCE.getProgramStatus();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.pgm.ProgramStackOrder <em>Program Stack Order</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.pgm.ProgramStackOrder
+		 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgramStackOrder()
+		 * @generated
+		 */
+		EEnum PROGRAM_STACK_ORDER = eINSTANCE.getProgramStackOrder();
 
 		/**
 		 * The meta object literal for the '<em>Parameter List</em>' data type.

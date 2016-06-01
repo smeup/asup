@@ -11,6 +11,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
@@ -23,6 +24,7 @@ import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 import org.smeup.sys.mi.core.util.QMachineInterfaceUtilPackage;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
+import org.smeup.sys.os.pgm.ProgramStackOrder;
 import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QActivationGroupManager;
 import org.smeup.sys.os.pgm.QCallableProgram;
@@ -103,6 +105,13 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass programStatusEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum programStackOrderEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -395,6 +404,15 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getProgramStackOrder() {
+		return programStackOrderEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EDataType getParameterList() {
 		return parameterListEDataType;
@@ -460,6 +478,9 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		programStackEClass = createEClass(PROGRAM_STACK);
 
 		programStatusEClass = createEClass(PROGRAM_STATUS);
+
+		// Create enums
+		programStackOrderEEnum = createEEnum(PROGRAM_STACK_ORDER);
 
 		// Create data types
 		parameterListEDataType = createEDataType(PARAMETER_LIST);
@@ -540,9 +561,6 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
-
-		op = addEOperation(activationGroupEClass, null, "remove", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getProgram(), "program", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(activationGroupManagerEClass, QActivationGroupManager.class, "ActivationGroupManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -702,6 +720,7 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		addEOperation(programStackEClass, ecorePackage.getEBoolean(), "isEmpty", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(programStackEClass, null, "list", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getProgramStackOrder(), "order", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getCallableProgram());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -742,6 +761,11 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		addEOperation(programStatusEClass, theIntegratedLanguageDataPackage.getDecimal(), "getStatusCode", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(programStatusEClass, theIntegratedLanguageDataPackage.getCharacter(), "getUserName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(programStackOrderEEnum, ProgramStackOrder.class, "ProgramStackOrder");
+		addEEnumLiteral(programStackOrderEEnum, ProgramStackOrder.ASCEND);
+		addEEnumLiteral(programStackOrderEEnum, ProgramStackOrder.DESCEND);
 
 		// Initialize data types
 		initEDataType(parameterListEDataType, QData[].class, "ParameterList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

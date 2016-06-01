@@ -8,12 +8,14 @@
 package org.smeup.sys.os.pgm.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.core.impl.ObjectImpl;
+import org.smeup.sys.os.pgm.ProgramStackOrder;
 import org.smeup.sys.os.pgm.QCallableProgram;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramPackage;
 import org.smeup.sys.os.pgm.QProgramStack;
@@ -65,7 +67,7 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	 * @generated NOT
 	 */
 	public boolean contains(String name) {
-		for (QCallableProgram<?> level : list()) {
+		for (QCallableProgram<?> level : list(ProgramStackOrder.ASCEND)) {
 			if (level.getProgram().getName().equalsIgnoreCase(name))
 				return true;
 		}
@@ -118,13 +120,21 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	 * @generated NOT
 	 */
 	@Override
-	public List<QCallableProgram<?>> list() {
+	public List<QCallableProgram<?>> list(ProgramStackOrder order) {
 		List<QCallableProgram<?>> programList = new ArrayList<QCallableProgram<?>>();
 		Iterator<QCallableProgram<?>> programs = stack.iterator();
 		while (programs.hasNext()) {
 			@SuppressWarnings("resource")
 			QCallableProgram<?> program = programs.next();
 			programList.add(program);
+		}
+		
+		switch (order) {
+		case ASCEND:
+			break;
+		case DESCEND:
+			Collections.reverse(programList);
+			break;
 		}
 		return programList;
 	}

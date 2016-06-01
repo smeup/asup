@@ -8,9 +8,6 @@
       </eGenericType>
       <eParameters name="program" lowerBound="1" eType="#//Program"/>
     </eOperations>
-    <eOperations name="remove">
-      <eParameters name="program" lowerBound="1" eType="#//Program"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="programs" upperBound="-1"
         transient="true" containment="true">
@@ -201,6 +198,7 @@
       <eGenericType eClassifier="#//CallableProgram">
         <eTypeArguments/>
       </eGenericType>
+      <eParameters name="order" lowerBound="1" eType="#//ProgramStackOrder"/>
     </eOperations>
     <eOperations name="push">
       <eParameters name="element" lowerBound="1">
@@ -230,5 +228,9 @@
     <eOperations name="getProgramLibrary" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Character"/>
     <eOperations name="getStatusCode" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Decimal"/>
     <eOperations name="getUserName" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Character"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ProgramStackOrder">
+    <eLiterals name="Ascend" value="10" literal="A"/>
+    <eLiterals name="Descend" value="20" literal="D"/>
   </eClassifiers>
 </ecore:EPackage>

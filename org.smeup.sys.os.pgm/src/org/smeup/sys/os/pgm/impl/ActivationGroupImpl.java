@@ -137,20 +137,6 @@ public class ActivationGroupImpl extends ObjectImpl implements QActivationGroup 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void remove(QProgram program) {
-
-		for (QCallableProgram<?> callableProgram : getPrograms())
-			if (callableProgram.getProgram().getLibrary().equals(program.getLibrary()) && callableProgram.getProgram().getName().equals(program.getName())) {
-				getPrograms().remove(callableProgram);
-				break;
-			}
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */

@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.os.pgm.base;
 
+import java.io.FileWriter;
 import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -44,14 +45,12 @@ import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.core.jobs.QJobReference;
-import org.smeup.sys.os.core.jobs.QJobRunInfo;
-import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
+import org.smeup.sys.os.pgm.ProgramStackOrder;
 import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QActivationGroupManager;
 import org.smeup.sys.os.pgm.QCallableProgram;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 import org.smeup.sys.os.pgm.QProgram;
-import org.smeup.sys.os.pgm.QProgramInfo;
 import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.os.pgm.QProgramStack;
 import org.smeup.sys.rt.core.QApplication;
@@ -109,23 +108,23 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	@Override
 	public void callProgram(QJob job, QProgram program, QData[] params) {
 
-		QActivationGroup activationGroup = activationGroupManager.lookup(job, program.getActivationGroup());
-		if (activationGroup == null)
-			activationGroup = activationGroupManager.create(job, program.getActivationGroup(), true);
-
-		QCallableProgram<?> callableProgram = activationGroup.lookup(program);
-
-		// new program
-		if (callableProgram == null) {
-			callableProgram = loadProgram(job, program);
-			activationGroup.getPrograms().add(callableProgram);
-		}
-
+		QCallableProgram<?> callableProgram = loadProgram(job, program);
 		callProgram(job, callableProgram, params);
 	}
 
 	@Override
 	public QCallableProgram<?> loadProgram(QJob job, QProgram program) {
+
+		QCallableProgram<?> callableProgram = null;
+
+		QActivationGroup activationGroup = activationGroupManager.lookup(job, program.getActivationGroup());
+		if (activationGroup == null)
+			activationGroup = activationGroupManager.create(job, program.getActivationGroup(), true);
+		else {
+			callableProgram = activationGroup.lookup(program);
+			if (callableProgram != null)
+				return callableProgram;
+		}
 
 		// API
 		String address = null;
@@ -144,7 +143,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		if (klass == null)
 			throw new OperatingSystemRuntimeException("Class not found: " + address);
 
-		QCallableProgram<?> callableProgram = prepareCallableProgram(job, program, klass);
+		callableProgram = prepareCallableProgram(job, activationGroup, program, klass);
+		activationGroup.getPrograms().add(callableProgram);
 
 		return callableProgram;
 	}
@@ -156,7 +156,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			QProgram program = QOperatingSystemProgramFactory.eINSTANCE.createProgram();
 			program.setName(klass.getSimpleName());
 
-			QCallableProgram<P> callableProgram = prepareCallableProgram(job, program, klass);
+			QCallableProgram<P> callableProgram = prepareCallableProgram(job, null, program, klass);
 
 			return callableProgram;
 
@@ -190,7 +190,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 		QProgramStack programStack = getProgramStack(contextID);
 		QCallableProgram<?> caller = null;
-		for (QCallableProgram<?> level : programStack.list()) {
+		for (QCallableProgram<?> level : programStack.list(ProgramStackOrder.ASCEND)) {
 			// looking for this
 			if (level.equals(program))
 				return caller;
@@ -200,13 +200,29 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		return null;
 	}
 
-	private <P> QCallableProgram<P> prepareCallableProgram(QJob job, QProgram program, Class<P> klass) {
+	@Override
+	public QCallableProgram<?> getCaller(String contextID, Object program) {
+
+		QProgramStack programStack = getProgramStack(contextID);
+		QCallableProgram<?> caller = null;
+		for (QCallableProgram<?> level : programStack.list(ProgramStackOrder.ASCEND)) {
+			// looking for this
+			if (level.getRawProgram().equals(program))
+				return caller;
+			// set caller
+			caller = level;
+		}
+		return null;
+
+	}
+
+	private <P> QCallableProgram<P> prepareCallableProgram(QJob job, QActivationGroup activationGroup, QProgram program, Class<P> klass) {
 
 		QDataContext dataContext = dataManager.createDataContext(job.getContext(), null);
 		QDataContainer dataContainer = dataManager.createDataContainer(dataContext);
 
 		try {
-			BaseCallableInjector callableInjector = new BaseCallableInjector(dataContext);
+			BaseCallableInjector callableInjector = new BaseCallableInjector(activationGroup, dataContext);
 			job.getContext().inject(callableInjector);
 
 			Date startDate = new Date();
@@ -242,12 +258,12 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			if (paramsTo[i] instanceof QPointer) {
 				QPointer pointer = (QPointer) paramsTo[i];
 				pointer.eval(((QBufferedData) paramsFrom[i]).qAddr());
-			} 
+			}
 			// bufferedData
 			else if (paramsTo[i] instanceof QBufferedData && paramsFrom[i] instanceof QStorable) {
 				QBufferedData bufferedData = (QBufferedData) paramsTo[i];
 				((QStorable) paramsFrom[i]).assign(bufferedData);
-			} 
+			}
 			// list not buffered (QCLCALL)
 			else if (paramsTo[i] instanceof QList<?> && paramsFrom[i] instanceof QList<?>) {
 				assignList(paramsFrom[i], paramsTo[i]);
@@ -283,29 +299,13 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		}
 	}
 
-	@Override
-	public QCallableProgram<?> getCaller(String contextID, Object program) {
-
-		QProgramStack programStack = getProgramStack(contextID);
-		QCallableProgram<?> caller = null;
-		for (QCallableProgram<?> level : programStack.list()) {
-			// looking for this
-			if (level.getRawProgram().equals(program))
-				return caller;
-			// set caller
-			caller = level;
-		}
-		return null;
-
-	}
-
 	private void callProgram(QJob job, QCallableProgram<?> callableProgram, QData[] params) {
 
 		if (job.getJobThread() != null && !job.getJobThread().checkRunnable())
 			return;
-		
+
 		callableProgram.getProgramInfo().setCallTime(new Date().getTime());
-		
+
 		synchronized (callableProgram) {
 
 			// retrieve program stack from job
@@ -321,25 +321,9 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				programStack.push(callableProgram);
 
 				printSendStack(job, programStack, callableProgram);
-				
+
 				// call
 				callableProgram.call();
-				
-				if (!callableProgram.isOpen()) {
-					QProgram program = callableProgram.getProgram();
-					QActivationGroup activationGroup = activationGroupManager.lookup(job, program.getActivationGroup());
-					activationGroup.remove(program);
-
-					QProgramInfo programInfo = callableProgram.getProgramInfo();
-					if (programInfo != null) {
-						QJobRunInfo jobRunInfo = job.getJobRunInfo();
-						if (jobRunInfo == null) {
-							jobRunInfo = QOperatingSystemJobsFactory.eINSTANCE.createJobRunInfo();
-							job.setJobRunInfo(jobRunInfo);
-						} else
-							jobRunInfo.setMemorySize(jobRunInfo.getMemorySize() - programInfo.getMemorySize());
-					}
-				}
 
 			} catch (OperatingSystemMessageException | OperatingSystemRuntimeException e) {
 				System.err.println(e.getMessage());
@@ -357,12 +341,11 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				callableProgram.getProgramInfo().setCallTime(callTime);
 
 				printReceiveStack(job, programStack, callableProgram);
-				
+
 				programStack.pop();
 
 				if (programStack.isEmpty())
 					jobManager.updateStatus(job, JobStatus.ACTIVE);
-					
 			}
 		}
 	}
@@ -399,7 +382,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			loadTimeString = "[" + new DecimalFormat("00000").format(callableProgram.getProgramInfo().getLoadTime()) + "]";
 
 		QJobReference jobReference = job.getJobReference();
-		System.out.println(jobReference.getJobName() + "(" + jobReference.getJobNumber() + ")" + loadTimeString + QStrings.qINSTANCE.appendChars(text, "\t", programStack.size(), true));
+		writeContent(job, jobReference.getJobName() + "(" + jobReference.getJobNumber() + ")" + loadTimeString + QStrings.qINSTANCE.appendChars(text, "\t", programStack.size(), true));
 	}
 
 	private void printReceiveStack(QJob job, QProgramStack programStack, QCallableProgram<?> callableProgram) {
@@ -413,7 +396,17 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		String callTimeString = "[" + new DecimalFormat("00000").format(callableProgram.getProgramInfo().getCallTime()) + "]";
 
 		QJobReference jobReference = job.getJobReference();
-		System.out.println(jobReference.getJobName() + "(" + jobReference.getJobNumber() + ")" + callTimeString + QStrings.qINSTANCE.appendChars(text, "\t", programStack.size(), true));
+		writeContent(job, jobReference.getJobName() + "(" + jobReference.getJobNumber() + ")" + callTimeString + QStrings.qINSTANCE.appendChars(text, "\t", programStack.size(), true));
+	}
+
+	private void writeContent(QJob job, String content) {
+		try {
+			FileWriter fw = new FileWriter("/home/jamiro/asup_stacks/" + job.getJobReference().getJobName() + ".txt", true);
+			fw.write(content + "\n");
+			fw.close();
+		} catch (Exception e) {
+			e.toString();
+		}
 	}
 
 	private String formatStackParameters(QDataContext dataContext, QData[] entry) {
@@ -432,7 +425,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 					continue;
 				}
 				paramValue = stringData.asString();
-				
+
 				if (paramValue.length() > 100)
 					text += paramValue.substring(0, 100) + "..|";
 
@@ -459,9 +452,9 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				for (QBufferedElement bufferedElement : bufferedList) {
 					byte[] bytes = bufferedElement.asBytes();
 					sb.append(":" + new String(bytes, dataContext.getCharset()));
-					
-					if(sb.length() > 100)
-						break;					
+
+					if (sb.length() > 100)
+						break;
 				}
 				paramValue = "[" + sb.toString() + "]";
 			} else {

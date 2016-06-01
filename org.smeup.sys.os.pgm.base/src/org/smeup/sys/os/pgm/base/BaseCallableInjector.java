@@ -66,6 +66,7 @@ import org.smeup.sys.os.core.jobs.QJobReference;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileManager;
 import org.smeup.sys.os.file.QFileOverride;
+import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QCallableProgram;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 import org.smeup.sys.os.pgm.QProgram;
@@ -86,12 +87,14 @@ public class BaseCallableInjector {
 	private QAccessManager esamManager;
 	@Inject
 	private QJob job;
-
+	
+	private QActivationGroup activationGroup;
 	private QResourceReader<QFile> fileReader;
 	private QDataContext dataContext;
 	private Map<String, Object> callerModules;
 
-	public BaseCallableInjector(QDataContext dataContext) {
+	public BaseCallableInjector(QActivationGroup activationGroup, QDataContext dataContext) {
+		this.activationGroup = activationGroup;
 		this.dataContext = dataContext;
 		this.callerModules = new HashMap<String, Object>();
 	}
@@ -118,7 +121,7 @@ public class BaseCallableInjector {
 
 			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();
 			programInfo.setMemorySize(dataContainer.getMemorySize());
-			QCallableProgram<P> callableProgram = new BaseCallableProgramDelegator<P>(dataContext, program, programStatus, delegate, programInfo);
+			QCallableProgram<P> callableProgram = new BaseCallableProgramDelegator<P>(job, activationGroup, dataContext, program, programStatus, delegate, programInfo);
 
 			return callableProgram;
 		} catch (Exception e) {
