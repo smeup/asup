@@ -19,6 +19,7 @@ import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -77,6 +78,8 @@ public class BaseCallableInjector {
 
 	public static final String NAME_OWNER = "*OWNER";
 
+	private static final String PROGRAM_STATUS = "*pgmstatus";
+
 	@Inject
 	private QDataManager dataManager;
 	@Inject
@@ -111,17 +114,22 @@ public class BaseCallableInjector {
 	public <P> QCallableProgram<P> prepareCallable(QProgram program, Class<P> klass) {
 
 		QDataContainer dataContainer = dataManager.createDataContainer(dataContext);
-
+				
 		try {
-			QProgramStatus programStatus = createProgramStatus(program, dataContainer);
-			QAccessFactory accessFactory = esamManager.createFactory(job, dataContext);
+			Date startDate = new Date();
 
-			P delegate = injectData(null, klass, dataContainer, accessFactory, new HashMap<String, Object>(), new HashMap<String, QRecord>());
-			dataContext.getContext().invoke(delegate, PostConstruct.class);
+			// program status
+			QProgramStatus programStatus = getOrCreateProgramStatus(program, dataContainer);
 
+			// memory info
 			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();
-			programInfo.setMemorySize(dataContainer.getMemorySize());
-			QCallableProgram<P> callableProgram = new BaseCallableProgramDelegator<P>(job, activationGroup, dataContext, program, programStatus, delegate, programInfo);
+
+			P delegate = prepareDelegate(dataContainer, program, klass);
+
+			programInfo.setMemorySize(dataContainer.getMemorySize());			
+			programInfo.setLoadTime(new Date().getTime() - startDate.getTime());
+			
+			QCallableProgram<P> callableProgram = new BaseCallableProgramDelegator<P>(job, dataContext, activationGroup, program, programStatus, delegate, programInfo);
 
 			return callableProgram;
 		} catch (Exception e) {
@@ -131,7 +139,25 @@ public class BaseCallableInjector {
 			dataContainer.close();
 		}
 	}
+	
+	public <P> P prepareDelegate(QDataContainer dataContainer, QProgram program, Class<P> klass) {
 
+		try {
+			QAccessFactory accessFactory = esamManager.createFactory(job, dataContext);
+
+			getOrCreateProgramStatus(program, dataContainer);
+			
+			P delegate = injectData(null, klass, dataContainer, accessFactory, new HashMap<String, Object>(), new HashMap<String, QRecord>());
+			
+			dataContext.getContext().invoke(delegate, PostConstruct.class);
+			
+			return delegate;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new OperatingSystemRuntimeException(e);
+		}
+	}
+	
 	public <P extends Object> P prepareProcedure(Object owner, Class<P> klass) {
 
 		Constructor<?> constructor = null;
@@ -160,21 +186,24 @@ public class BaseCallableInjector {
 		}
 	}
 
-	private QProgramStatus createProgramStatus(QProgram program, QDataContainer dataContainer) {
+	private QProgramStatus getOrCreateProgramStatus(QProgram program, QDataContainer dataContainer) {
 
-		QDataTerm<?> programStatusTerm = dataContainer.addDataTerm("*pgmstatus", BaseProgramStatusImpl.class, null);
-		QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
-		programStatus.clear();
+		QProgramStatus programStatus  = (QProgramStatus) dataContainer.getData(PROGRAM_STATUS);
+		
+		if(programStatus == null) {
+			QDataTerm<?> programStatusTerm = dataContainer.addDataTerm(PROGRAM_STATUS, BaseProgramStatusImpl.class, null);
+			programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
+//			programStatus.clear();
+			
+			programStatus.getProgramName().eval(program.getName());
+			if (program.getLibrary() != null)
+				programStatus.getProgramLibrary().eval(program.getLibrary());
 
-		programStatus.getProgramName().eval(program.getName());
-
-		if (program.getLibrary() != null)
-			programStatus.getProgramLibrary().eval(program.getLibrary());
-
-		QJobReference jobReference = job.getJobReference();
-		programStatus.getUserName().eval(jobReference.getJobUser());
-		programStatus.getJobNumber().eval(jobReference.getJobNumber());
-		programStatus.getJobName().eval(jobReference.getJobName());
+			QJobReference jobReference = job.getJobReference();
+			programStatus.getUserName().eval(jobReference.getJobUser());
+			programStatus.getJobNumber().eval(jobReference.getJobNumber());
+			programStatus.getJobName().eval(jobReference.getJobName());
+		}
 
 		return programStatus;
 	}

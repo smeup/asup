@@ -19,7 +19,6 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.data.InitStrategy;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
@@ -41,13 +40,13 @@ import org.smeup.sys.os.pgm.QCallableProgram;
 import org.smeup.sys.os.pgm.QProgram;
 import org.smeup.sys.os.pgm.QProgramInfo;
 import org.smeup.sys.os.pgm.QProgramStatus;
+import org.smeup.sys.os.pgm.impl.CallableProgramImpl;
 
-public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCallableProgram<P> {
+public class BaseCallableProgramDelegator<P> extends CallableProgramImpl<P> {
 
 	private static final long serialVersionUID = 1L;
 
 	private QJob job;
-	private QActivationGroup activationGroup;
 
 	private QDataContext dataContext;
 	private QProgram program;
@@ -69,20 +68,20 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 
 	private QProgramInfo programInfo = null;
 
-	protected BaseCallableProgramDelegator(QJob job, QActivationGroup activationGroup, QDataContext dataContext, QProgram program, QProgramStatus programStatus, P delegate,
-			QProgramInfo programInfo) {
+	protected BaseCallableProgramDelegator(QJob job, QDataContext dataContext, QActivationGroup activationGroup, QProgram program, QProgramStatus programStatus, P delegate, QProgramInfo programInfo) {
 		this.job = job;
-		this.activationGroup = activationGroup;
 		this.dataContext = dataContext;
 		this.program = program;
 		this.programStatus = programStatus;
 		this.delegate = delegate;
 		this.programInfo = programInfo;
-
-		analyzeDelegate(delegate);
+		
+		setActivationGroup(activationGroup);
+		
+		analyzeDelegate();
 	}
 
-	private void analyzeDelegate(Object delegate) {
+	private void analyzeDelegate() {
 
 		Class<?> klass = delegate.getClass();
 
@@ -123,6 +122,20 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 			if (_main != null)
 				entry = buildEntry(_main);
 			apiMode = entry != null;
+		}
+		
+		//
+		try {
+			Field qrpjField = delegate.getClass().getDeclaredField("qRPJ");
+			if(qrpjField != null) {
+				qrpjField.setAccessible(true);
+				Object qrpj = qrpjField.get(delegate);
+				Field inlrField = qrpj.getClass().getDeclaredField("qINLR");
+				inlr = (QIndicator) inlrField.get(qrpj);
+				qrpjField.setAccessible(false);
+			}
+
+		} catch (Exception e) {
 		}
 	}
 
@@ -168,7 +181,7 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 		}
 	}
 
-	private QData[] callProgramMode() {
+	private void callProgramMode() {
 
 		try {
 			if (inlr != null)
@@ -187,7 +200,6 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 			if (inlr != null && inlr.asBoolean())
 				close();
 
-			return getEntry();
 		} catch (InvocationTargetException e) {
 			if (e.getTargetException() instanceof OperatingSystemMessageException)
 				throw (OperatingSystemMessageException) e.getTargetException();
@@ -274,32 +286,27 @@ public class BaseCallableProgramDelegator<P> extends ObjectImpl implements QCall
 			}
 		}
 
-		//
-		try {
-			Field qrpjField = delegate.getClass().getDeclaredField("qRPJ");
-			qrpjField.setAccessible(true);
-			Object qrpj = qrpjField.get(delegate);
-			Field inlrField = qrpj.getClass().getDeclaredField("qINLR");
-			inlr = (QIndicator) inlrField.get(qrpj);
-			qrpjField.setAccessible(false);
-
-		} catch (Exception e) {
-		}
 
 		isOpen = true;
 	}
 
 	@Override
 	public void close() {
+		
 		isOpen = false;
-
+		delegate = null;
+		
 		QJobRunInfo jobRunInfo = job.getJobRunInfo();
 		if (jobRunInfo != null)
 			jobRunInfo.setMemorySize(jobRunInfo.getMemorySize() - programInfo.getMemorySize());
 
-		if (activationGroup != null)
-			if (!activationGroup.getPrograms().remove(this))
-				throw new OperatingSystemRuntimeException("Invalid program " + getProgram().getName() + " "+ " for activationGroup "+activationGroup.getName());
+		QActivationGroup currentActivationGroup = getActivationGroup();
+		setActivationGroup(null);
+		
+		if(currentActivationGroup != null && program.getActivationGroup().equals("*NEW")) {
+			for(QCallableProgram<?> callableProgram: new ArrayList<QCallableProgram<?>>(currentActivationGroup.getPrograms()))
+				callableProgram.close();
+		}			
 	}
 
 	@Override

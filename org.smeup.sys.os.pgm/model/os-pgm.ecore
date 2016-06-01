@@ -10,7 +10,7 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="programs" upperBound="-1"
-        transient="true" containment="true">
+        containment="true" eOpposite="#//CallableProgram/activationGroup">
       <eGenericType eClassifier="#//CallableProgram">
         <eTypeArguments/>
       </eGenericType>
@@ -45,7 +45,7 @@
       <eTypeArguments eClassifier="#//ActivationGroupManager"/>
     </eGenericSuperTypes>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CallableProgram" abstract="true" interface="true">
+  <eClassifiers xsi:type="ecore:EClass" name="CallableProgram" abstract="true">
     <eTypeParameters name="P">
       <eBounds eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     </eTypeParameters>
@@ -59,6 +59,8 @@
       <eGenericType eTypeParameter="#//CallableProgram/P"/>
     </eOperations>
     <eOperations name="isOpen" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activationGroup" eType="#//ActivationGroup"
+        eOpposite="#//ActivationGroup/programs"/>
     <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
     <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCallable">
       <eTypeArguments eClassifier="#//ParameterList"/>
@@ -163,9 +165,7 @@
       <eParameters name="program" lowerBound="1" eType="#//Program"/>
     </eOperations>
     <eOperations name="loadProgram">
-      <eGenericType eClassifier="#//CallableProgram">
-        <eTypeArguments eTypeParameter="#//ProgramManager/loadProgram.1/P"/>
-      </eGenericType>
+      <eGenericType eTypeParameter="#//ProgramManager/loadProgram.1/P"/>
       <eTypeParameters name="P">
         <eBounds eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
       </eTypeParameters>

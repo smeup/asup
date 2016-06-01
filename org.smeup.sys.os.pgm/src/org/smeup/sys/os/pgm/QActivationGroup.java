@@ -31,6 +31,7 @@ public interface QActivationGroup extends QObject {
 	/**
 	 * Returns the value of the '<em><b>Programs</b></em>' containment reference list.
 	 * The list contents are of type {@link org.smeup.sys.os.pgm.QCallableProgram}&lt;?>.
+	 * It is bidirectional and its opposite is '{@link org.smeup.sys.os.pgm.QCallableProgram#getActivationGroup <em>Activation Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Programs</em>' attribute isn't clear, there
@@ -39,7 +40,8 @@ public interface QActivationGroup extends QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Programs</em>' containment reference list.
 	 * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getActivationGroup_Programs()
-	 * @model containment="true" transient="true"
+	 * @see org.smeup.sys.os.pgm.QCallableProgram#getActivationGroup
+	 * @model opposite="activationGroup" containment="true"
 	 * @generated
 	 */
 	List<QCallableProgram<?>> getPrograms();

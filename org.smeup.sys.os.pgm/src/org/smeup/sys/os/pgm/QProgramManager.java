@@ -86,7 +86,8 @@ public interface QProgramManager {
 	QProgramStack getProgramStack(String contextID, String jobID);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model programRequired="true"
 	 * @generated
 	 */
@@ -97,6 +98,6 @@ public interface QProgramManager {
 	 * @model PBounds="org.eclipse.emf.ecore.EJavaObject"
 	 * @generated
 	 */
-	<P extends Object> QCallableProgram<P> loadProgram(QJob job, Class<P> klass);
+	<P extends Object> P loadProgram(QJob job, Class<P> klass);
 
 } // QProgramManager

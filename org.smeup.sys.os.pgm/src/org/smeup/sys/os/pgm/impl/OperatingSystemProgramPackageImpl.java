@@ -283,6 +283,15 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCallableProgram_ActivationGroup() {
+		return (EReference)callableProgramEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -452,6 +461,7 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		activationGroupManagerEClass = createEClass(ACTIVATION_GROUP_MANAGER);
 
 		callableProgramEClass = createEClass(CALLABLE_PROGRAM);
+		createEReference(callableProgramEClass, CALLABLE_PROGRAM__ACTIVATION_GROUP);
 
 		programEClass = createEClass(PROGRAM);
 		createEAttribute(programEClass, PROGRAM__ACTIVATION_GROUP);
@@ -553,7 +563,7 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		g1 = createEGenericType(this.getCallableProgram());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
-		initEReference(getActivationGroup_Programs(), g1, null, "programs", null, 0, -1, QActivationGroup.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActivationGroup_Programs(), g1, this.getCallableProgram_ActivationGroup(), "programs", null, 0, -1, QActivationGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = addEOperation(activationGroupEClass, null, "lookup", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getProgram(), "program", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -587,7 +597,8 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getActivationGroup(), "activationGroup", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(callableProgramEClass, QCallableProgram.class, "CallableProgram", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(callableProgramEClass, QCallableProgram.class, "CallableProgram", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCallableProgram_ActivationGroup(), this.getActivationGroup(), this.getActivationGroup_Programs(), "activationGroup", null, 0, 1, QCallableProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(callableProgramEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -697,9 +708,7 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "klass", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getCallableProgram());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
+		g1 = createEGenericType(t1);
 		initEOperation(op, g1);
 
 		initEClass(programSourceEClass, QProgramSource.class, "ProgramSource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
