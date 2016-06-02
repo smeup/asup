@@ -114,7 +114,7 @@ public class BaseCallableInjector {
 
 	public <P> QCallableProgram<P> prepareCallable(QProgram program, Class<P> klass) {
 
-		System.out.println("cls:\t" + klass.getSimpleName());
+//		System.out.println("cls:\t" + klass.getSimpleName());
 
 		QDataContainer dataContainer = dataManager.createDataContainer(dataContext);
 
@@ -327,7 +327,7 @@ public class BaseCallableInjector {
 				if (object == null) {
 					long startTime = System.currentTimeMillis();
 					object = injectData(owner, fieldClass, dataContainer, accessFactory, unitModules, records);
-					System.out.println("\t\t" + fieldClass.getSimpleName() + "[" + new DecimalFormat("00000").format(System.currentTimeMillis() - startTime) + "]");
+//					System.out.println("\t\t" + fieldClass.getSimpleName() + "[" + new DecimalFormat("00000").format(System.currentTimeMillis() - startTime) + "]");
 					dataContext.getContext().invoke(object, PostConstruct.class);
 					switch (module.scope()) {
 					case OWNER:

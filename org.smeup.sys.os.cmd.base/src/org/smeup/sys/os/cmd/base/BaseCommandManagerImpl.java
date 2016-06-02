@@ -48,7 +48,7 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 	@Override
 	public void executeCommand(QJob job, QCallableCommand callableCommand) {
 
-		System.out.println("cmd:\t" + callableCommand.getCommandString());
+//		System.out.println("cmd:\t" + callableCommand.getCommandString());
 
 		jobLogManager.info(job, callableCommand.getCommandString());
 
