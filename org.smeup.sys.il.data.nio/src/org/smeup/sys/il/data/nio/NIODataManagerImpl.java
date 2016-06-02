@@ -25,6 +25,7 @@ import org.smeup.sys.il.core.meta.QFrame;
 import org.smeup.sys.il.core.meta.QFrameManager;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
 import org.smeup.sys.il.core.meta.QSlot;
+import org.smeup.sys.il.data.QDataAreaFactory;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataManager;
@@ -42,11 +43,12 @@ public class NIODataManagerImpl implements QDataManager {
 
 	@Inject
 	private QFrameManager frameManager;
-
+	
 	@Override
-	public QDataContext createDataContext(QContext context, Object owner) {
-
-		NIODataContextImpl nioDataContextImpl = new NIODataContextImpl(context, owner);
+	public NIODataContextImpl createDataContext(QContext context, Object owner) {
+		QDataAreaFactory dataAreaFactory = context.get(QDataAreaFactory.class);
+		
+		NIODataContextImpl nioDataContextImpl = new NIODataContextImpl(context, dataAreaFactory, owner);
 		
 		return nioDataContextImpl;
 	}
@@ -58,7 +60,7 @@ public class NIODataManagerImpl implements QDataManager {
 	
 	@Override
 	public QDataContainer createDataContainer(QContext context, Object owner) {
-		return new NIODataContainerImpl(new NIODataContextImpl(context, owner));
+		return new NIODataContainerImpl(createDataContext(context, owner));
 	}
 
 	@Override
@@ -66,7 +68,7 @@ public class NIODataManagerImpl implements QDataManager {
 
 		QFrame<?> frame = frameManager.getFrame(object);
 
-		QDataContainer dataContainer = new NIODataContainerImpl(new NIODataContextImpl(context, object));
+		QDataContainer dataContainer = new NIODataContainerImpl(createDataContext(context, object));
 		for(QDataTerm<?> dataTerm: buildDataTerms(frame, frameManager.getFrame(term))) 
 			dataContainer.addDataTerm(dataTerm);
 

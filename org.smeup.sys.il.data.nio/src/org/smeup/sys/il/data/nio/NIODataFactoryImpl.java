@@ -433,6 +433,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 					NIODataStructWrapperHandler dataStructureDelegate = new NIODataStructWrapperHandler(getDataContext(), length, dataStructure, allocate);
 					((QDataStructWrapper) dataStructure).setDelegate(dataStructureDelegate);
 				}
+				
 				cachedClasses.put(classDelegator, (QDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(dataStructure)._copy(getDataContext()));
 			} catch (Exception e) {
 				throw new IntegratedLanguageDataRuntimeException(e);

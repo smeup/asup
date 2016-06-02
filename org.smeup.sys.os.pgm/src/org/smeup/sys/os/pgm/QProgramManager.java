@@ -80,14 +80,6 @@ public interface QProgramManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model jobIDRequired="true"
-	 * @generated
-	 */
-	QProgramStack getProgramStack(String contextID, String jobID);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model programRequired="true"
 	 * @generated
 	 */

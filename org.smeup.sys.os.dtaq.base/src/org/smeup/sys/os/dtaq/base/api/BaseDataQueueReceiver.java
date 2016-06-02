@@ -40,7 +40,7 @@ public class BaseDataQueueReceiver {
 		// content
 		String content = dataQueueManager.readDataQueue(jobCapability, library.trimR(), name.trimR(), wait.asInteger() * 1000, null, null);
 
-		System.out.println("dtaq-rcv("+name.trimR()+"):\t" + content);
+//		System.out.println("dtaq-rcv("+name.trimR()+"):\t" + content);
 
 		if (content != null) {
 			length.eval(content.length());

@@ -292,21 +292,24 @@ public class BaseCallableProgramDelegator<P> extends CallableProgramImpl<P> {
 
 	@Override
 	public void close() {
-		
-		isOpen = false;
-		delegate = null;
-		
-		QJobRunInfo jobRunInfo = job.getJobRunInfo();
-		if (jobRunInfo != null)
-			jobRunInfo.setMemorySize(jobRunInfo.getMemorySize() - programInfo.getMemorySize());
 
-		QActivationGroup currentActivationGroup = getActivationGroup();
-		setActivationGroup(null);
-		
-		if(currentActivationGroup != null && program.getActivationGroup().equals("*NEW")) {
-			for(QCallableProgram<?> callableProgram: new ArrayList<QCallableProgram<?>>(currentActivationGroup.getPrograms()))
-				callableProgram.close();
-		}			
+		try {
+			QJobRunInfo jobRunInfo = job.getJobRunInfo();
+			if (jobRunInfo != null)
+				jobRunInfo.setMemorySize(jobRunInfo.getMemorySize() - programInfo.getMemorySize());
+	
+			QActivationGroup currentActivationGroup = getActivationGroup();
+			setActivationGroup(null);
+			
+			if(currentActivationGroup != null && program.getActivationGroup().equals("*NEW")) {
+				for(QCallableProgram<?> callableProgram: new ArrayList<QCallableProgram<?>>(currentActivationGroup.getPrograms()))
+					callableProgram.close();
+			}
+		}
+		finally {
+			isOpen = false;
+			delegate = null;
+		}
 	}
 
 	@Override

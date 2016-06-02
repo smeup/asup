@@ -23,11 +23,12 @@ import javax.inject.Inject;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.annotation.Module;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.il.data.annotation.Module.Scope;
 import org.smeup.sys.os.cmd.QCallableCommand;
 import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.jobs.QJob;
 
-@Module(name="*CMD")
+@Module(name="*CMD", scope = Scope.OWNER)
 public class RPJCommandSupport {
 
 	@Inject
