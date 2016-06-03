@@ -45,6 +45,10 @@ public class DatabaseFileOverrider {
 	@Main
 	public void main(@DataDef(length = 10) QCharacter file, FileRef fileTo, @DataDef(length = 10) QEnum<MEMBEREnum, QCharacter> member) {
 
+		// TODO
+		if(member.asData().trimR().startsWith("NTSTRU"))
+			member.asData().clear();
+		
 		try {
 			QResourceReader<QFile> fileReader = resourceManager.getResourceReader(job, QFile.class, fileTo.library.asEnum(), fileTo.library.asData().trimR());
 
