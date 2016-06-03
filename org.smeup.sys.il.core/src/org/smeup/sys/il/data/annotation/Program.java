@@ -20,6 +20,7 @@ public @interface Program {
 
 	String name();
 	String text() default "";
+	String activationGroup() default "";
 	
 	boolean generated() default true;
 	

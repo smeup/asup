@@ -25,20 +25,13 @@ public class NIODataContextImpl implements QDataContext {
 	private static final DateFormat DATEFMT = DateFormat.ISO;
 	private static final TimeFormat TIMEFMT = TimeFormat.ISO;
 
-	private NIOCharacterVaryingImpl temporaryString;
 	private Map<QBufferedData, QBufferedData> snapshots = null;
 
-	public NIODataContextImpl(QContext context, Object owner) {
-		this.context = context;
-		QDataAreaFactory dataAreaFactory = context.get(QDataAreaFactory.class);
+	public NIODataContextImpl(QContext context, QDataAreaFactory dataAreaFactory, Object owner) {
+		this.context = context;		
 		dataFactory = new NIODataFactoryImpl(this, owner, dataAreaFactory);
 		found = dataFactory.createIndicator(true);
 		endOfData = dataFactory.createIndicator(true);
-		this.temporaryString = new NIOCharacterVaryingImpl(this, 64000, true);
-	}
-	
-	protected NIOCharacterVaryingImpl getTemporaryString() {
-		return temporaryString;
 	}
 
 	@Override

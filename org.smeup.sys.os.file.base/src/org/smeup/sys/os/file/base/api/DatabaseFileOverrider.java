@@ -44,52 +44,60 @@ public class DatabaseFileOverrider {
 
 	@Main
 	public void main(@DataDef(length = 10) QCharacter file, FileRef fileTo, @DataDef(length = 10) QEnum<MEMBEREnum, QCharacter> member) {
-		
-		QResourceReader<QFile> fileReader = resourceManager.getResourceReader(job, QFile.class, fileTo.library.asEnum(), fileTo.library.asData().trimR());		
 
-		QFile qFile = null;
-		QFileMember fileMember = null;
+		// TODO
+		if(member.asData().trimR().startsWith("NTSTRU"))
+			member.asData().clear();
 		
-		switch (member.asEnum()) {
-		case ALL:
-			qFile = fileReader.lookup(fileTo.name.trimR());
-			break;
-		case FIRST:
-			qFile = fileReader.lookup(fileTo.name.trimR());
-			if(qFile instanceof QFileMembered) {
-				QFileMembered fileMembered = (QFileMembered) qFile;
-				fileMember = fileMemberManager.lookupFirst(job, fileMembered);
-			}
-			break;
-		case LAST:
-			qFile = fileReader.lookup(fileTo.name.trimR());
-			if(qFile instanceof QFileMembered) {
-				QFileMembered fileMembered = (QFileMembered) qFile;
-				fileMember = fileMemberManager.lookupLast(job, fileMembered);
-			}
-			break;
-		case OTHER:
-			if(member.isEmpty()) {
+		try {
+			QResourceReader<QFile> fileReader = resourceManager.getResourceReader(job, QFile.class, fileTo.library.asEnum(), fileTo.library.asData().trimR());
+
+			QFile qFile = null;
+			QFileMember fileMember = null;
+
+			switch (member.asEnum()) {
+			case ALL:
 				qFile = fileReader.lookup(fileTo.name.trimR());
+				break;
+			case FIRST:
+				qFile = fileReader.lookup(fileTo.name.trimR());
+				if (qFile instanceof QFileMembered) {
+					QFileMembered fileMembered = (QFileMembered) qFile;
+					fileMember = fileMemberManager.lookupFirst(job, fileMembered);
+				}
+				break;
+			case LAST:
+				qFile = fileReader.lookup(fileTo.name.trimR());
+				if (qFile instanceof QFileMembered) {
+					QFileMembered fileMembered = (QFileMembered) qFile;
+					fileMember = fileMemberManager.lookupLast(job, fileMembered);
+				}
+				break;
+			case OTHER:
+				if (member.isEmpty()) {
+					qFile = fileReader.lookup(fileTo.name.trimR());
+				} else {
+					fileMember = fileMemberManager.lookup(job, fileTo.library.asEnum(), fileTo.library.asData().trimR(), fileTo.name.trimR(), member.asData().trimR());
+					if (fileMember != null)
+						qFile = fileMember.getFile();
+				}
+				break;
 			}
-			else {
-				fileMember = fileMemberManager.lookup(job, fileTo.library.asEnum(), fileTo.library.asData().trimR(), fileTo.name.trimR(), member.asData().trimR());
-				if(fileMember != null)
-					qFile = fileMember.getFile();
-			}
-			break;
+
+			if (qFile == null)
+				throw new OperatingSystemRuntimeException("File not found: " + fileTo);
+
+			QFileOverride fileOverride = QOperatingSystemFileFactory.eINSTANCE.createFileOverride();
+			fileOverride.setName(file.trimR());
+			fileOverride.setFileTo(qFile);
+			if (fileMember != null)
+				fileOverride.setMemberTo(fileMember.getName());
+
+			fileManager.addFileOverride(job.getContext(), fileOverride);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
 		}
-
-		if (qFile == null)
-			throw new OperatingSystemRuntimeException("File not found: " + fileTo);
-
-		QFileOverride fileOverride = QOperatingSystemFileFactory.eINSTANCE.createFileOverride();
-		fileOverride.setName(file.trimR());
-		fileOverride.setFileTo(qFile);
-		if(fileMember != null)
-			fileOverride.setMemberTo(fileMember.getName());
-
-		fileManager.addFileOverride(job.getContext(), fileOverride);
 	}
 
 	public static enum MEMBEREnum {

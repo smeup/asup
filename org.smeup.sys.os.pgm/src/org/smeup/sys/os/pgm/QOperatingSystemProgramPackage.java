@@ -10,6 +10,7 @@ package org.smeup.sys.os.pgm;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
@@ -125,14 +126,23 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	int PROGRAM = 3;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.pgm.QCallableProgram <em>Callable Program</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.os.pgm.impl.CallableProgramImpl <em>Callable Program</em>}' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @see org.smeup.sys.os.pgm.QCallableProgram
+	 * @see org.smeup.sys.os.pgm.impl.CallableProgramImpl
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getCallableProgram()
 	 * @generated
 	 */
 	int CALLABLE_PROGRAM = 2;
+
+	/**
+	 * The feature id for the '<em><b>Activation Group</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALLABLE_PROGRAM__ACTIVATION_GROUP = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Callable Program</em>' class.
@@ -140,7 +150,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CALLABLE_PROGRAM_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
+	int CALLABLE_PROGRAM_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Application</b></em>' attribute. <!--
@@ -418,13 +428,23 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	int PROGRAM_STATUS_FEATURE_COUNT = QIntegratedLanguageDataPackage.DATA_STRUCT_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.pgm.ProgramStackOrder <em>Program Stack Order</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.pgm.ProgramStackOrder
+	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgramStackOrder()
+	 * @generated
+	 */
+	int PROGRAM_STACK_ORDER = 10;
+
+	/**
 	 * The meta object id for the '<em>Parameter List</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getParameterList()
 	 * @generated
 	 */
-	int PARAMETER_LIST = 10;
+	int PARAMETER_LIST = 11;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.pgm.QActivationGroup <em>Activation Group</em>}'.
@@ -540,6 +560,17 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getCallableProgram();
+
+	/**
+	 * Returns the meta object for the container reference '{@link org.smeup.sys.os.pgm.QCallableProgram#getActivationGroup <em>Activation Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Activation Group</em>'.
+	 * @see org.smeup.sys.os.pgm.QCallableProgram#getActivationGroup()
+	 * @see #getCallableProgram()
+	 * @generated
+	 */
+	EReference getCallableProgram_ActivationGroup();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.pgm.QProgramContainer <em>Program Container</em>}'.
@@ -674,6 +705,16 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	EClass getProgramStatus();
 
 	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.os.pgm.ProgramStackOrder <em>Program Stack Order</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Program Stack Order</em>'.
+	 * @see org.smeup.sys.os.pgm.ProgramStackOrder
+	 * @generated
+	 */
+	EEnum getProgramStackOrder();
+
+	/**
 	 * Returns the meta object for data type '<em>Parameter List</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -786,14 +827,22 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 		EReference PROGRAM__SOURCE = eINSTANCE.getProgram_Source();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.os.pgm.QCallableProgram <em>Callable Program</em>}' class.
+		 * The meta object literal for the '{@link org.smeup.sys.os.pgm.impl.CallableProgramImpl <em>Callable Program</em>}' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * @see org.smeup.sys.os.pgm.QCallableProgram
+		 * @see org.smeup.sys.os.pgm.impl.CallableProgramImpl
 		 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getCallableProgram()
 		 * @generated
 		 */
 		EClass CALLABLE_PROGRAM = eINSTANCE.getCallableProgram();
+
+		/**
+		 * The meta object literal for the '<em><b>Activation Group</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CALLABLE_PROGRAM__ACTIVATION_GROUP = eINSTANCE.getCallableProgram_ActivationGroup();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.pgm.impl.ProgramContainerImpl <em>Program Container</em>}' class.
@@ -906,6 +955,16 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PROGRAM_STATUS = eINSTANCE.getProgramStatus();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.pgm.ProgramStackOrder <em>Program Stack Order</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.pgm.ProgramStackOrder
+		 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgramStackOrder()
+		 * @generated
+		 */
+		EEnum PROGRAM_STACK_ORDER = eINSTANCE.getProgramStackOrder();
 
 		/**
 		 * The meta object literal for the '<em>Parameter List</em>' data type.

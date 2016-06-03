@@ -17,6 +17,7 @@ import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -66,6 +67,7 @@ import org.smeup.sys.os.core.jobs.QJobReference;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileManager;
 import org.smeup.sys.os.file.QFileOverride;
+import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QCallableProgram;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 import org.smeup.sys.os.pgm.QProgram;
@@ -75,6 +77,8 @@ import org.smeup.sys.os.pgm.QProgramStatus;
 public class BaseCallableInjector {
 
 	public static final String NAME_OWNER = "*OWNER";
+
+	private static final String PROGRAM_STATUS = "*pgmstatus";
 
 	@Inject
 	private QDataManager dataManager;
@@ -87,13 +91,16 @@ public class BaseCallableInjector {
 	@Inject
 	private QJob job;
 
-	private QResourceReader<QFile> fileReader;
+	private QActivationGroup activationGroup;
 	private QDataContext dataContext;
-	private Map<String, Object> callerModules;
 
-	public BaseCallableInjector(QDataContext dataContext) {
+	private QResourceReader<QFile> fileReader;
+	private Map<String, Object> ownerModules;
+
+	public BaseCallableInjector(QActivationGroup activationGroup, QDataContext dataContext) {
+		this.activationGroup = activationGroup;
 		this.dataContext = dataContext;
-		this.callerModules = new HashMap<String, Object>();
+		this.ownerModules = new HashMap<String, Object>();
 	}
 
 	@PostConstruct
@@ -107,18 +114,25 @@ public class BaseCallableInjector {
 
 	public <P> QCallableProgram<P> prepareCallable(QProgram program, Class<P> klass) {
 
+//		System.out.println("cls:\t" + klass.getSimpleName());
+
 		QDataContainer dataContainer = dataManager.createDataContainer(dataContext);
 
 		try {
-			QProgramStatus programStatus = createProgramStatus(program, dataContainer);
-			QAccessFactory accessFactory = esamManager.createFactory(job, dataContext);
+			long startTime = System.currentTimeMillis();
 
-			P delegate = injectData(null, klass, dataContainer, accessFactory, new HashMap<String, Object>(), new HashMap<String, QRecord>());
-			dataContext.getContext().invoke(delegate, PostConstruct.class);
+			// program status
+			QProgramStatus programStatus = getOrCreateProgramStatus(program, dataContainer);
 
+			// memory info
 			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();
+
+			P delegate = prepareDelegate(dataContainer, program, klass);
+
 			programInfo.setMemorySize(dataContainer.getMemorySize());
-			QCallableProgram<P> callableProgram = new BaseCallableProgramDelegator<P>(dataContext, program, programStatus, delegate, programInfo);
+			programInfo.setLoadTime(System.currentTimeMillis() - startTime);
+
+			QCallableProgram<P> callableProgram = new BaseCallableProgramDelegator<P>(job, dataContext, activationGroup, program, programStatus, delegate, programInfo);
 
 			return callableProgram;
 		} catch (Exception e) {
@@ -126,6 +140,23 @@ public class BaseCallableInjector {
 			throw new OperatingSystemRuntimeException(e);
 		} finally {
 			dataContainer.close();
+		}
+	}
+
+	public <P> P prepareDelegate(QDataContainer dataContainer, QProgram program, Class<P> klass) {
+
+		try {
+			QAccessFactory accessFactory = esamManager.createFactory(job, dataContext);
+
+			getOrCreateProgramStatus(program, dataContainer);
+
+			P delegate = injectData(null, klass, dataContainer, accessFactory, new HashMap<String, Object>(), new HashMap<String, QRecord>());
+			dataContext.getContext().invoke(delegate, PostConstruct.class);
+
+			return delegate;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new OperatingSystemRuntimeException(e);
 		}
 	}
 
@@ -157,21 +188,24 @@ public class BaseCallableInjector {
 		}
 	}
 
-	private QProgramStatus createProgramStatus(QProgram program, QDataContainer dataContainer) {
+	private QProgramStatus getOrCreateProgramStatus(QProgram program, QDataContainer dataContainer) {
 
-		QDataTerm<?> programStatusTerm = dataContainer.addDataTerm("*pgmstatus", BaseProgramStatusImpl.class, null);
-		QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
-		programStatus.clear();
+		QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(PROGRAM_STATUS);
 
-		programStatus.getProgramName().eval(program.getName());
+		if (programStatus == null) {
+			QDataTerm<?> programStatusTerm = dataContainer.addDataTerm(PROGRAM_STATUS, BaseProgramStatusImpl.class, null);
+			programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
+			// programStatus.clear();
 
-		if (program.getLibrary() != null)
-			programStatus.getProgramLibrary().eval(program.getLibrary());
+			programStatus.getProgramName().eval(program.getName());
+			if (program.getLibrary() != null)
+				programStatus.getProgramLibrary().eval(program.getLibrary());
 
-		QJobReference jobReference = job.getJobReference();
-		programStatus.getUserName().eval(jobReference.getJobUser());
-		programStatus.getJobNumber().eval(jobReference.getJobNumber());
-		programStatus.getJobName().eval(jobReference.getJobName());
+			QJobReference jobReference = job.getJobReference();
+			programStatus.getUserName().eval(jobReference.getJobUser());
+			programStatus.getJobNumber().eval(jobReference.getJobNumber());
+			programStatus.getJobName().eval(jobReference.getJobName());
+		}
 
 		return programStatus;
 	}
@@ -283,7 +317,7 @@ public class BaseCallableInjector {
 				Module module = fieldClass.getAnnotation(Module.class);
 				switch (module.scope()) {
 				case OWNER:
-					object = callerModules.get(fieldClass.getSimpleName());
+					object = ownerModules.get(fieldClass.getSimpleName());
 					break;
 				case UNIT:
 					object = unitModules.get(fieldClass.getSimpleName());
@@ -291,10 +325,13 @@ public class BaseCallableInjector {
 				}
 
 				if (object == null) {
+					long startTime = System.currentTimeMillis();
 					object = injectData(owner, fieldClass, dataContainer, accessFactory, unitModules, records);
+//					System.out.println("\t\t" + fieldClass.getSimpleName() + "[" + new DecimalFormat("00000").format(System.currentTimeMillis() - startTime) + "]");
+					dataContext.getContext().invoke(object, PostConstruct.class);
 					switch (module.scope()) {
 					case OWNER:
-						callerModules.put(fieldClass.getSimpleName(), object);
+						ownerModules.put(fieldClass.getSimpleName(), object);
 						break;
 					case UNIT:
 						unitModules.put(fieldClass.getSimpleName(), object);
@@ -438,14 +475,14 @@ public class BaseCallableInjector {
 			QRecord dataSetRecord = dataSet.get();
 
 			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
-			
+
 			String primaryRecordName = dataSetRecord.getClass().getSimpleName();
 			if (fileDef != null && !fileDef.prefix().isEmpty())
 				primaryRecordName = fileDef.prefix() + "_" + primaryRecordName;
-			
+
 			if (dataSetRecords.contains(primaryRecordName))
 				continue;
-			
+
 			for (String fieldName : dataSetRecord.getElementNames()) {
 
 				QData data = null;
@@ -453,7 +490,7 @@ public class BaseCallableInjector {
 					data = dataContainer.getData(fileDef.prefix() + fieldName);
 				else
 					data = dataContainer.getData(fieldName);
-				
+
 				if (data instanceof QBufferedData) {
 					QBufferedData bufferedData = (QBufferedData) data;
 					QBufferedData bufferedDataTo = dataSetRecord.getElement(fieldName);
@@ -552,7 +589,7 @@ public class BaseCallableInjector {
 				if (dataTerm.getBased() != null)
 					continue;
 			}
-			
+
 			QData data = dataContainer.getData(dataTerm);
 
 			if (data instanceof QStroller<?>) {

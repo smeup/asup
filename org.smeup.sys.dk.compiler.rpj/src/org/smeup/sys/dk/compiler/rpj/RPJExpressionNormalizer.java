@@ -137,6 +137,8 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QIf statement) {
 
+		lastMethod = null;
+		
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
 
 		if (normalizePredicateExpression(predicateExpression))

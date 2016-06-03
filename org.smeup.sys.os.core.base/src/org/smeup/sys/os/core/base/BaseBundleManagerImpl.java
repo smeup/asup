@@ -389,6 +389,8 @@ public class BaseBundleManagerImpl implements QBundleManager {
 			qProgram.setName(programAnnotation.name());
 			if (!programAnnotation.text().isEmpty())
 				qProgram.setText(programAnnotation.text());
+			if(!programAnnotation.activationGroup().isEmpty())
+				qProgram.setActivationGroup(programAnnotation.activationGroup());
 		} else
 			qProgram.setName(klass.getSimpleName());
 

@@ -45,11 +45,12 @@ public interface QProgramStack extends QObject {
 	boolean isEmpty();
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model orderRequired="true"
 	 * @generated
 	 */
-	List<QCallableProgram<?>> list();
+	List<QCallableProgram<?>> list(ProgramStackOrder order);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

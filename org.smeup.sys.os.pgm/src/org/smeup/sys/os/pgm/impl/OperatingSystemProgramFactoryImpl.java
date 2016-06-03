@@ -83,6 +83,8 @@ public class OperatingSystemProgramFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case QOperatingSystemProgramPackage.PROGRAM_STACK_ORDER:
+				return createProgramStackOrderFromString(eDataType, initialValue);
 			case QOperatingSystemProgramPackage.PARAMETER_LIST:
 				return createParameterListFromString(eDataType, initialValue);
 			default:
@@ -97,6 +99,8 @@ public class OperatingSystemProgramFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case QOperatingSystemProgramPackage.PROGRAM_STACK_ORDER:
+				return convertProgramStackOrderToString(eDataType, instanceValue);
 			case QOperatingSystemProgramPackage.PARAMETER_LIST:
 				return convertParameterListToString(eDataType, instanceValue);
 			default:
@@ -162,6 +166,26 @@ public class OperatingSystemProgramFactoryImpl extends EFactoryImpl implements Q
 	public QProgramStack createProgramStack() {
 		ProgramStackImpl programStack = new ProgramStackImpl();
 		return programStack;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProgramStackOrder createProgramStackOrderFromString(EDataType eDataType, String initialValue) {
+		ProgramStackOrder result = ProgramStackOrder.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertProgramStackOrderToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

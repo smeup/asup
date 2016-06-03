@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.QThread;
@@ -140,7 +141,30 @@ public class RPJProgramSupport {
 	public static final boolean TRUE = true;
 
 	private int countRunnable = 0;
-
+	
+	private RPJProgramCache programCache;
+	private QResourceReader<QProgram> programReader;
+	
+	@PostConstruct
+	private void init() {
+		
+		@SuppressWarnings("resource")
+		QContext jobContext = job.getContext();
+		
+		programCache = jobContext.get(RPJProgramCache.class);
+		if (programCache == null) {
+			synchronized (job) {
+				programCache = jobContext.get(RPJProgramCache.class);
+				if (programCache == null) {
+					programCache = new RPJProgramCache();
+					jobContext.set(RPJProgramCache.class, programCache);
+				}
+			}
+		}
+		
+		programReader = resourceManager.getResourceReader(job, QProgram.class, org.smeup.sys.il.memo.Scope.LIBRARY_LIST);
+	}
+	
 	public boolean qRunnable() {
 		if (countRunnable == 1000) {
 			countRunnable = 0;
@@ -372,29 +396,14 @@ public class RPJProgramSupport {
 		}
 	}
 
-	@SuppressWarnings("resource")
 	private QProgram getProgram(String name) {
 
-		QProgram program = null;
-
-		QContext jobContext = job.getContext();
-		RPJProgramCache programCache = jobContext.get(RPJProgramCache.class);
-		if (programCache == null) {
-			synchronized (job) {
-				programCache = jobContext.get(RPJProgramCache.class);
-				if (programCache == null) {
-					programCache = new RPJProgramCache();
-					jobContext.set(RPJProgramCache.class, programCache);
-				}
-			}
-		}
-
-		program = programCache.get(name);
+		QProgram program = programCache.get(name);
 		if (program == null) {
-			QResourceReader<QProgram> programReader = resourceManager.getResourceReader(job, QProgram.class, org.smeup.sys.il.memo.Scope.LIBRARY_LIST);
 			program = programReader.lookup(name);
 			if (program == null)
 				throw new OperatingSystemRuntimeException("Program not found: " + name);
+			
 			programCache.put(name, program);
 		}
 
