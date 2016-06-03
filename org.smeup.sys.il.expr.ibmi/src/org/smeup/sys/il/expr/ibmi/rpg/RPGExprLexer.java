@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g 2016-06-03 16:04:41
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g 2016-06-03 16:18:07
 
   package org.smeup.sys.il.expr.ibmi.rpg;
   
@@ -2776,8 +2776,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = DATE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:418:3: ( ( 'D\\'' | 'd\\'' ) DIGIT DIGIT DIGIT DIGIT '-' DIGIT ( DIGIT )* '-' DIGIT ( DIGIT )* '\\'' )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:418:5: ( 'D\\'' | 'd\\'' ) DIGIT DIGIT DIGIT DIGIT '-' DIGIT ( DIGIT )* '-' DIGIT ( DIGIT )* '\\''
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:418:3: ( ( 'D\\'' | 'd\\'' ) DIGIT DIGIT DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT '\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:418:5: ( 'D\\'' | 'd\\'' ) DIGIT DIGIT DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT '\\''
 			{
 			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:418:5: ( 'D\\'' | 'd\\'' )
 			int alt15=2;
@@ -2824,39 +2824,68 @@ public class RPGExprLexer extends Lexer {
 			match('-'); 
 			mDIGIT(); 
 
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:418:53: ( DIGIT )*
-			loop16:
-			while (true) {
-				int alt16=2;
-				int LA16_0 = input.LA(1);
-				if ( ((LA16_0 >= '0' && LA16_0 <= '9')) ) {
-					alt16=1;
-				}
-
-				switch (alt16) {
-				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
-					{
-					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
-						input.consume();
-					}
-					else {
-						MismatchedSetException mse = new MismatchedSetException(null,input);
-						recover(mse);
-						throw mse;
-					}
-					}
-					break;
-
-				default :
-					break loop16;
-				}
-			}
+			mDIGIT(); 
 
 			match('-'); 
 			mDIGIT(); 
 
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:418:72: ( DIGIT )*
+			mDIGIT(); 
+
+			match('\''); 
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "DATE"
+
+	// $ANTLR start "TIME"
+	public final void mTIME() throws RecognitionException {
+		try {
+			int _type = TIME;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:422:3: ( ( 'T\\'' | 't\\'' ) ( DIGIT )* '\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:422:5: ( 'T\\'' | 't\\'' ) ( DIGIT )* '\\''
+			{
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:422:5: ( 'T\\'' | 't\\'' )
+			int alt16=2;
+			int LA16_0 = input.LA(1);
+			if ( (LA16_0=='T') ) {
+				alt16=1;
+			}
+			else if ( (LA16_0=='t') ) {
+				alt16=2;
+			}
+
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 16, 0, input);
+				throw nvae;
+			}
+
+			switch (alt16) {
+				case 1 :
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:422:6: 'T\\''
+					{
+					match("T'"); 
+
+					}
+					break;
+				case 2 :
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:422:12: 't\\''
+					{
+					match("t'"); 
+
+					}
+					break;
+
+			}
+
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:422:19: ( DIGIT )*
 			loop17:
 			while (true) {
 				int alt17=2;
@@ -2895,23 +2924,23 @@ public class RPGExprLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "DATE"
+	// $ANTLR end "TIME"
 
-	// $ANTLR start "TIME"
-	public final void mTIME() throws RecognitionException {
+	// $ANTLR start "TIMESTAMP"
+	public final void mTIMESTAMP() throws RecognitionException {
 		try {
-			int _type = TIME;
+			int _type = TIMESTAMP;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:422:3: ( ( 'T\\'' | 't\\'' ) ( DIGIT )* '\\'' )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:422:5: ( 'T\\'' | 't\\'' ) ( DIGIT )* '\\''
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:426:3: ( ( 'Z\\'' | 'z\\'' ) DIGIT DIGIT DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT '.' DIGIT DIGIT '.' DIGIT DIGIT '.' DIGIT DIGIT DIGIT DIGIT DIGIT DIGIT '\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:426:5: ( 'Z\\'' | 'z\\'' ) DIGIT DIGIT DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT '.' DIGIT DIGIT '.' DIGIT DIGIT '.' DIGIT DIGIT DIGIT DIGIT DIGIT DIGIT '\\''
 			{
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:422:5: ( 'T\\'' | 't\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:426:5: ( 'Z\\'' | 'z\\'' )
 			int alt18=2;
 			int LA18_0 = input.LA(1);
-			if ( (LA18_0=='T') ) {
+			if ( (LA18_0=='Z') ) {
 				alt18=1;
 			}
-			else if ( (LA18_0=='t') ) {
+			else if ( (LA18_0=='z') ) {
 				alt18=2;
 			}
 
@@ -2922,89 +2951,6 @@ public class RPGExprLexer extends Lexer {
 			}
 
 			switch (alt18) {
-				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:422:6: 'T\\''
-					{
-					match("T'"); 
-
-					}
-					break;
-				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:422:12: 't\\''
-					{
-					match("t'"); 
-
-					}
-					break;
-
-			}
-
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:422:19: ( DIGIT )*
-			loop19:
-			while (true) {
-				int alt19=2;
-				int LA19_0 = input.LA(1);
-				if ( ((LA19_0 >= '0' && LA19_0 <= '9')) ) {
-					alt19=1;
-				}
-
-				switch (alt19) {
-				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
-					{
-					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
-						input.consume();
-					}
-					else {
-						MismatchedSetException mse = new MismatchedSetException(null,input);
-						recover(mse);
-						throw mse;
-					}
-					}
-					break;
-
-				default :
-					break loop19;
-				}
-			}
-
-			match('\''); 
-			}
-
-			state.type = _type;
-			state.channel = _channel;
-		}
-		finally {
-			// do for sure before leaving
-		}
-	}
-	// $ANTLR end "TIME"
-
-	// $ANTLR start "TIMESTAMP"
-	public final void mTIMESTAMP() throws RecognitionException {
-		try {
-			int _type = TIMESTAMP;
-			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:426:3: ( ( 'Z\\'' | 'z\\'' ) ( DIGIT )* '\\'' )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:426:5: ( 'Z\\'' | 'z\\'' ) ( DIGIT )* '\\''
-			{
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:426:5: ( 'Z\\'' | 'z\\'' )
-			int alt20=2;
-			int LA20_0 = input.LA(1);
-			if ( (LA20_0=='Z') ) {
-				alt20=1;
-			}
-			else if ( (LA20_0=='z') ) {
-				alt20=2;
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 20, 0, input);
-				throw nvae;
-			}
-
-			switch (alt20) {
 				case 1 :
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:426:6: 'Z\\''
 					{
@@ -3022,34 +2968,51 @@ public class RPGExprLexer extends Lexer {
 
 			}
 
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:426:19: ( DIGIT )*
-			loop21:
-			while (true) {
-				int alt21=2;
-				int LA21_0 = input.LA(1);
-				if ( ((LA21_0 >= '0' && LA21_0 <= '9')) ) {
-					alt21=1;
-				}
+			mDIGIT(); 
 
-				switch (alt21) {
-				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
-					{
-					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
-						input.consume();
-					}
-					else {
-						MismatchedSetException mse = new MismatchedSetException(null,input);
-						recover(mse);
-						throw mse;
-					}
-					}
-					break;
+			mDIGIT(); 
 
-				default :
-					break loop21;
-				}
-			}
+			mDIGIT(); 
+
+			mDIGIT(); 
+
+			match('-'); 
+			mDIGIT(); 
+
+			mDIGIT(); 
+
+			match('-'); 
+			mDIGIT(); 
+
+			mDIGIT(); 
+
+			match('-'); 
+			mDIGIT(); 
+
+			mDIGIT(); 
+
+			match('.'); 
+			mDIGIT(); 
+
+			mDIGIT(); 
+
+			match('.'); 
+			mDIGIT(); 
+
+			mDIGIT(); 
+
+			match('.'); 
+			mDIGIT(); 
+
+			mDIGIT(); 
+
+			mDIGIT(); 
+
+			mDIGIT(); 
+
+			mDIGIT(); 
+
+			mDIGIT(); 
 
 			match('\''); 
 			}
@@ -3069,22 +3032,22 @@ public class RPGExprLexer extends Lexer {
 			int _type = BOOLEAN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
 			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:431:2: ( ( T R U E ) | ( F A L S E ) )
-			int alt22=2;
-			int LA22_0 = input.LA(1);
-			if ( (LA22_0=='T'||LA22_0=='t') ) {
-				alt22=1;
+			int alt19=2;
+			int LA19_0 = input.LA(1);
+			if ( (LA19_0=='T'||LA19_0=='t') ) {
+				alt19=1;
 			}
-			else if ( (LA22_0=='F'||LA22_0=='f') ) {
-				alt22=2;
+			else if ( (LA19_0=='F'||LA19_0=='f') ) {
+				alt19=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 22, 0, input);
+					new NoViableAltException("", 19, 0, input);
 				throw nvae;
 			}
 
-			switch (alt22) {
+			switch (alt19) {
 				case 1 :
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:431:4: ( T R U E )
 					{
@@ -3145,15 +3108,15 @@ public class RPGExprLexer extends Lexer {
 			mLETTER(); 
 
 			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:437:11: ( LETTER | DIGIT )*
-			loop23:
+			loop20:
 			while (true) {
-				int alt23=2;
-				int LA23_0 = input.LA(1);
-				if ( (LA23_0=='$'||(LA23_0 >= '0' && LA23_0 <= '9')||(LA23_0 >= 'A' && LA23_0 <= 'Z')||LA23_0=='_'||(LA23_0 >= 'a' && LA23_0 <= 'z')||LA23_0=='\u00A3'||LA23_0=='\u00A7') ) {
-					alt23=1;
+				int alt20=2;
+				int LA20_0 = input.LA(1);
+				if ( (LA20_0=='$'||(LA20_0 >= '0' && LA20_0 <= '9')||(LA20_0 >= 'A' && LA20_0 <= 'Z')||LA20_0=='_'||(LA20_0 >= 'a' && LA20_0 <= 'z')||LA20_0=='\u00A3'||LA20_0=='\u00A7') ) {
+					alt20=1;
 				}
 
-				switch (alt23) {
+				switch (alt20) {
 				case 1 :
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 					{
@@ -3169,7 +3132,7 @@ public class RPGExprLexer extends Lexer {
 					break;
 
 				default :
-					break loop23;
+					break loop20;
 				}
 			}
 
@@ -3281,44 +3244,44 @@ public class RPGExprLexer extends Lexer {
 			{
 			match('\\'); 
 			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:459:4: ( 'n' | 'r' | 't' | '\\'' | '\\\\' | UnicodeEscape )
-			int alt24=6;
+			int alt21=6;
 			switch ( input.LA(1) ) {
 			case 'n':
 				{
-				alt24=1;
+				alt21=1;
 				}
 				break;
 			case 'r':
 				{
-				alt24=2;
+				alt21=2;
 				}
 				break;
 			case 't':
 				{
-				alt24=3;
+				alt21=3;
 				}
 				break;
 			case '\'':
 				{
-				alt24=4;
+				alt21=4;
 				}
 				break;
 			case '\\':
 				{
-				alt24=5;
+				alt21=5;
 				}
 				break;
 			case 'u':
 				{
-				alt24=6;
+				alt21=6;
 				}
 				break;
 			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 24, 0, input);
+					new NoViableAltException("", 21, 0, input);
 				throw nvae;
 			}
-			switch (alt24) {
+			switch (alt21) {
 				case 1 :
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:460:5: 'n'
 					{
@@ -4067,9 +4030,9 @@ public class RPGExprLexer extends Lexer {
 	@Override
 	public void mTokens() throws RecognitionException {
 		// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:8: ( T__79 | T__80 | T__81 | T__82 | T__83 | SPECIAL | OR | AND | NOT | EQ | NE | LT | LTEQ | GT | GTEQ | PLUS | MINUS | MULT | DIV | MOD | BI_FUN | IN | INNR | INNU | ALL | ALLX | HEX | STRING | INTEGER | FLOAT | DATE | TIME | TIMESTAMP | BOOLEAN | TERM | POINT | WS )
-		int alt25=37;
-		alt25 = dfa25.predict(input);
-		switch (alt25) {
+		int alt22=37;
+		alt22 = dfa22.predict(input);
+		switch (alt22) {
 			case 1 :
 				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:10: T__79
 				{
@@ -4334,17 +4297,17 @@ public class RPGExprLexer extends Lexer {
 	}
 
 
-	protected DFA25 dfa25 = new DFA25(this);
-	static final String DFA25_eotS =
+	protected DFA22 dfa22 = new DFA22(this);
+	static final String DFA22_eotS =
 		"\6\uffff\10\52\1\77\5\52\2\uffff\1\52\1\114\1\uffff\1\116\1\120\4\uffff"+
 		"\1\121\2\52\1\uffff\1\124\1\125\1\77\4\52\3\uffff\2\52\2\77\1\uffff\2"+
 		"\52\1\77\2\52\1\24\1\52\1\77\4\52\2\uffff\1\52\1\77\3\52\1\151\3\77\2"+
 		"\52\14\uffff\6\52\1\77\3\52\1\114\6\52\1\77\1\uffff\10\52\1\25\5\52\1"+
 		"\77\1\52\3\77\1\52\1\77\1\52\1\77\1\52\1\77\1\u00b0\37\u00b1\1\uffff\2"+
 		"\52\1\u00b3\1\52\4\77\1\52\1\77\1\52\1\77\4\uffff\1\u00b3\3\77";
-	static final String DFA25_eofS =
+	static final String DFA22_eofS =
 		"\u00b8\uffff";
-	static final String DFA25_minS =
+	static final String DFA22_minS =
 		"\1\11\5\uffff\1\111\1\105\1\47\1\114\1\106\1\105\1\111\1\101\1\44\1\117"+
 		"\1\105\1\116\1\121\1\105\2\uffff\1\114\1\75\1\uffff\2\75\4\uffff\1\44"+
 		"\2\47\1\uffff\1\54\1\60\1\44\3\47\1\101\3\uffff\2\126\2\44\1\uffff\1\122"+
@@ -4354,7 +4317,7 @@ public class RPGExprLexer extends Lexer {
 		"\124\1\122\1\44\1\uffff\1\60\2\61\1\122\1\101\1\61\1\124\1\101\1\44\1"+
 		"\47\1\105\1\123\2\114\1\44\1\113\3\44\1\125\1\44\1\123\1\44\1\110\41\44"+
 		"\1\uffff\2\47\1\44\1\105\4\44\1\123\1\44\1\123\1\44\4\uffff\4\44";
-	static final String DFA25_maxS =
+	static final String DFA22_maxS =
 		"\1\u00a7\5\uffff\1\151\1\164\1\145\1\154\1\162\1\165\1\164\1\141\1\u00a7"+
 		"\1\163\1\145\1\163\1\161\1\164\2\uffff\1\156\1\75\1\uffff\1\76\1\75\4"+
 		"\uffff\1\u00a7\2\47\1\uffff\2\71\1\u00a7\2\162\1\145\1\141\3\uffff\2\166"+
@@ -4365,15 +4328,15 @@ public class RPGExprLexer extends Lexer {
 		"\2\70\1\162\1\166\1\162\1\164\1\171\1\u00a7\1\170\1\145\1\163\2\154\1"+
 		"\u00a7\1\153\3\u00a7\1\165\1\u00a7\1\163\1\u00a7\1\150\41\u00a7\1\uffff"+
 		"\2\47\1\u00a7\1\145\4\u00a7\1\163\1\u00a7\1\163\1\u00a7\4\uffff\4\u00a7";
-	static final String DFA25_acceptS =
+	static final String DFA22_acceptS =
 		"\1\uffff\1\1\1\2\1\3\1\4\1\5\16\uffff\1\7\1\10\2\uffff\1\12\2\uffff\1"+
 		"\20\1\21\1\22\1\23\3\uffff\1\34\7\uffff\1\43\1\36\1\45\4\uffff\1\41\14"+
 		"\uffff\1\37\1\6\13\uffff\1\13\1\11\1\15\1\14\1\17\1\16\1\24\1\25\1\33"+
 		"\1\35\1\44\1\40\22\uffff\1\26\71\uffff\1\31\14\uffff\1\27\1\30\1\32\1"+
 		"\42\4\uffff";
-	static final String DFA25_specialS =
+	static final String DFA22_specialS =
 		"\u00b8\uffff}>";
-	static final String[] DFA25_transitionS = {
+	static final String[] DFA22_transitionS = {
 			"\2\54\1\uffff\2\54\22\uffff\1\54\1\27\2\uffff\1\52\1\37\1\25\1\42\1\1"+
 			"\1\2\1\35\1\33\1\53\1\34\1\44\1\36\12\43\1\3\1\uffff\1\31\1\30\1\32\2"+
 			"\uffff\1\26\1\11\1\52\1\16\1\22\1\51\1\23\1\6\1\21\2\52\1\7\1\17\1\13"+
@@ -4643,34 +4606,34 @@ public class RPGExprLexer extends Lexer {
 			"\1\52\3\uffff\1\52"
 	};
 
-	static final short[] DFA25_eot = DFA.unpackEncodedString(DFA25_eotS);
-	static final short[] DFA25_eof = DFA.unpackEncodedString(DFA25_eofS);
-	static final char[] DFA25_min = DFA.unpackEncodedStringToUnsignedChars(DFA25_minS);
-	static final char[] DFA25_max = DFA.unpackEncodedStringToUnsignedChars(DFA25_maxS);
-	static final short[] DFA25_accept = DFA.unpackEncodedString(DFA25_acceptS);
-	static final short[] DFA25_special = DFA.unpackEncodedString(DFA25_specialS);
-	static final short[][] DFA25_transition;
+	static final short[] DFA22_eot = DFA.unpackEncodedString(DFA22_eotS);
+	static final short[] DFA22_eof = DFA.unpackEncodedString(DFA22_eofS);
+	static final char[] DFA22_min = DFA.unpackEncodedStringToUnsignedChars(DFA22_minS);
+	static final char[] DFA22_max = DFA.unpackEncodedStringToUnsignedChars(DFA22_maxS);
+	static final short[] DFA22_accept = DFA.unpackEncodedString(DFA22_acceptS);
+	static final short[] DFA22_special = DFA.unpackEncodedString(DFA22_specialS);
+	static final short[][] DFA22_transition;
 
 	static {
-		int numStates = DFA25_transitionS.length;
-		DFA25_transition = new short[numStates][];
+		int numStates = DFA22_transitionS.length;
+		DFA22_transition = new short[numStates][];
 		for (int i=0; i<numStates; i++) {
-			DFA25_transition[i] = DFA.unpackEncodedString(DFA25_transitionS[i]);
+			DFA22_transition[i] = DFA.unpackEncodedString(DFA22_transitionS[i]);
 		}
 	}
 
-	protected class DFA25 extends DFA {
+	protected class DFA22 extends DFA {
 
-		public DFA25(BaseRecognizer recognizer) {
+		public DFA22(BaseRecognizer recognizer) {
 			this.recognizer = recognizer;
-			this.decisionNumber = 25;
-			this.eot = DFA25_eot;
-			this.eof = DFA25_eof;
-			this.min = DFA25_min;
-			this.max = DFA25_max;
-			this.accept = DFA25_accept;
-			this.special = DFA25_special;
-			this.transition = DFA25_transition;
+			this.decisionNumber = 22;
+			this.eot = DFA22_eot;
+			this.eof = DFA22_eof;
+			this.min = DFA22_min;
+			this.max = DFA22_max;
+			this.accept = DFA22_accept;
+			this.special = DFA22_special;
+			this.transition = DFA22_transition;
 		}
 		@Override
 		public String getDescription() {

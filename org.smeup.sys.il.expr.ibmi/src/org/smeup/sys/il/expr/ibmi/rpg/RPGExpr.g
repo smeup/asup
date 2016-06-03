@@ -415,7 +415,7 @@ FLOAT
 	;
 
 DATE
- 	:	('D\''|'d\'') DIGIT DIGIT DIGIT DIGIT '-' DIGIT (DIGIT)* '-' DIGIT (DIGIT)* '\''
+ 	:	('D\''|'d\'') DIGIT DIGIT DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT '\''
         ;
 
 TIME
@@ -423,7 +423,7 @@ TIME
         ;
 
 TIMESTAMP
- 	:	('Z\''|'z\'') (DIGIT)* '\''
+ 	:	('Z\''|'z\'') DIGIT DIGIT DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT '.' DIGIT DIGIT '.' DIGIT DIGIT '.' DIGIT DIGIT DIGIT DIGIT DIGIT DIGIT '\''
         ;
         
 
