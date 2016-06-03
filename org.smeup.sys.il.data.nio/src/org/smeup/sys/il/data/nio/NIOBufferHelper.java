@@ -33,6 +33,7 @@ import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
+import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
@@ -454,7 +455,7 @@ public class NIOBufferHelper {
 				element.movel(value, true);
 				break;
 			case NUMERIC:
-				element.move(new BigDecimal(value), true);
+				((QNumeric)element).eval(new BigDecimal(value));
 				break;
 			case STRING:
 				((QString)element).eval(value);
@@ -488,7 +489,7 @@ public class NIOBufferHelper {
 				bufferedList.movel(value, true);
 				break;
 			case NUMERIC:
-				bufferedList.move(new BigDecimal(value), true);
+				bufferedList.eval(new BigDecimal(value));
 				break;
 			case STRING:
 				bufferedList.eval(value);

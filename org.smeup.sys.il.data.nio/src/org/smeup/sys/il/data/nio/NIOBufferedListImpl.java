@@ -92,7 +92,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 				get(e).movel(value.get(e), true);
 				break;
 			case NUMERIC:
-				get(e).move(value.get(e), true);
+				((QNumeric)get(e)).eval((QNumeric)value.get(e));
 				break;
 			case STRING:
 				((QString)get(e)).eval((QString)value.get(e));

@@ -22,6 +22,7 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QEnum;
+import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.Special;
 
@@ -118,7 +119,7 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> extends 
 				element.movel(valueString, true);
 				break;
 			case NUMERIC:
-				element.move(new BigDecimal(valueString), true);
+				((QNumeric)element).eval(new BigDecimal(valueString));
 				break;
 			case STRING:
 				((QString)element).eval(valueString);
