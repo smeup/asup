@@ -415,7 +415,7 @@ FLOAT
 	;
 
 DATE
- 	:	('D\''|'d\'') (DIGIT)* '\''
+ 	:	('D\''|'d\'') DIGIT DIGIT DIGIT DIGIT '-' DIGIT (DIGIT)* '-' DIGIT (DIGIT)* '\''
         ;
 
 TIME
