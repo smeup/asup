@@ -317,7 +317,7 @@ public class BaseCallableInjector {
 			}
 
 			if (injectableField.getAnnotation(DataDef.class) != null)
-				BaseInjectionHelper.setPrimitiveValue(injectableField, callable);
+				BaseInjectionHelper.setPrimitiveValue(dataContext, injectableField, callable);
 			else
 				injectFieldValue(injectableField, callable, owner, dataContainer, accessFactory, unitModules, records);
 		}

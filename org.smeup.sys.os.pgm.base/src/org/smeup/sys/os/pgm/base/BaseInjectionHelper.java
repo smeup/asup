@@ -22,6 +22,7 @@ import java.util.Set;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QRecord;
@@ -115,7 +116,7 @@ public class BaseInjectionHelper {
 		field.setValue(callable, dataContainer.getData(dataTerm));
 	}
 
-	public static void setPrimitiveValue(BaseInjectableField injectableField, Object callable) {
+	public static void setPrimitiveValue(QDataContext dataContext, BaseInjectableField injectableField, Object callable) {
 
 		DataDef dataDef = injectableField.getAnnotation(DataDef.class);
 		if (dataDef == null)
@@ -130,10 +131,13 @@ public class BaseInjectionHelper {
 		} else if (Double.class.isAssignableFrom(injectableField.getFieldClass())) {
 			object = Double.parseDouble(dataDef.value());
 		} else if (String.class.isAssignableFrom(injectableField.getFieldClass())) {
-			object = dataDef.value();
+			if (dataDef.value().startsWith("X'")) {
+				object = new String(convertHexToBytes(dataDef.value().substring(2, dataDef.value().lastIndexOf("'"))), dataContext.getCharset());
+			} else
+				object = dataDef.value();
 		} else if (Byte.class.isAssignableFrom(injectableField.getFieldClass())) {
 			if (dataDef.value().startsWith("X'")) {
-				object = convertHexToByte(dataDef.value().substring(2, 4));
+				object = convertHexToBytes(dataDef.value().substring(2, 4))[0];
 			} else
 				System.err.println("Unexpected condition " + injectableField.getFieldClass() + ": xw09ert98ery87tyrew");
 		} else
@@ -286,14 +290,14 @@ public class BaseInjectionHelper {
 
 	}
 
-	public static Byte convertHexToByte(String value) {
+	public static byte[] convertHexToBytes(String value) {
 		byte[] bytes = new byte[value.length() / 2];
 
 		for (int i = 0; i < bytes.length; i++) {
 			String hex = new String(value.substring(2 * i, 2 * i + 2));
 			bytes[i] = (byte) Integer.parseInt(hex, 16);
 		}
-		return bytes[0];
+		return bytes;
 	}
 
 	public static void assignRecordFields(Object callable, QDataContainer dataContainer, Set<String> records, BaseInjectableField field, QRecord record) {
