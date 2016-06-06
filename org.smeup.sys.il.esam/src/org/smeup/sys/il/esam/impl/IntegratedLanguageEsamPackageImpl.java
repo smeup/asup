@@ -33,6 +33,7 @@ import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QDataSetTerm;
 import org.smeup.sys.il.esam.QDisplay;
 import org.smeup.sys.il.esam.QDisplayTerm;
+import org.smeup.sys.il.esam.QFileHandler;
 import org.smeup.sys.il.esam.QFileTerm;
 import org.smeup.sys.il.esam.QIndex;
 import org.smeup.sys.il.esam.QIndexColumn;
@@ -74,6 +75,13 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass displayTermEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass fileHandlerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -326,6 +334,15 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFileHandler() {
+		return fileHandlerEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -568,6 +585,8 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 
 		displayTermEClass = createEClass(DISPLAY_TERM);
 
+		fileHandlerEClass = createEClass(FILE_HANDLER);
+
 		fileTermEClass = createEClass(FILE_TERM);
 		createEReference(fileTermEClass, FILE_TERM__FORMAT);
 		createEAttribute(fileTermEClass, FILE_TERM__INFO_STRUCT);
@@ -633,35 +652,50 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 
 		// Create type parameters
 		ETypeParameter dataSetEClass_R = addETypeParameter(dataSetEClass, "R");
-		ETypeParameter displayEClass_D = addETypeParameter(displayEClass, "D");
+		ETypeParameter displayEClass_R = addETypeParameter(displayEClass, "R");
+		ETypeParameter fileHandlerEClass_R = addETypeParameter(fileHandlerEClass, "R");
 		ETypeParameter ksDataSetEClass_R = addETypeParameter(ksDataSetEClass, "R");
-		ETypeParameter printEClass_D = addETypeParameter(printEClass, "D");
+		ETypeParameter printEClass_R = addETypeParameter(printEClass, "R");
 		ETypeParameter rrDataSetEClass_R = addETypeParameter(rrDataSetEClass, "R");
 		ETypeParameter smDataSetEClass_R = addETypeParameter(smDataSetEClass, "R");
 
 		// Set bounds for type parameters
 		EGenericType g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
 		dataSetEClass_R.getEBounds().add(g1);
-		g1 = createEGenericType(ecorePackage.getEJavaObject());
-		displayEClass_D.getEBounds().add(g1);
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
+		displayEClass_R.getEBounds().add(g1);
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
+		fileHandlerEClass_R.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
 		ksDataSetEClass_R.getEBounds().add(g1);
-		g1 = createEGenericType(ecorePackage.getEJavaObject());
-		printEClass_D.getEBounds().add(g1);
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
+		printEClass_R.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
 		rrDataSetEClass_R.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
 		smDataSetEClass_R.getEBounds().add(g1);
 
 		// Add supertypes to classes
+		g1 = createEGenericType(this.getFileHandler());
+		EGenericType g2 = createEGenericType(dataSetEClass_R);
+		g1.getETypeArguments().add(g2);
+		dataSetEClass.getEGenericSuperTypes().add(g1);
 		dataSetTermEClass.getESuperTypes().add(this.getFileTerm());
+		g1 = createEGenericType(this.getFileHandler());
+		g2 = createEGenericType(displayEClass_R);
+		g1.getETypeArguments().add(g2);
+		displayEClass.getEGenericSuperTypes().add(g1);
 		displayTermEClass.getESuperTypes().add(this.getFileTerm());
 		fileTermEClass.getESuperTypes().add(theIntegratedLanguageCoreTermPackage.getTerm());
 		keyListTermEClass.getESuperTypes().add(theIntegratedLanguageCoreTermPackage.getTerm());
 		g1 = createEGenericType(this.getDataSet());
-		EGenericType g2 = createEGenericType(ksDataSetEClass_R);
+		g2 = createEGenericType(ksDataSetEClass_R);
 		g1.getETypeArguments().add(g2);
 		ksDataSetEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getFileHandler());
+		g2 = createEGenericType(printEClass_R);
+		g1.getETypeArguments().add(g2);
+		printEClass.getEGenericSuperTypes().add(g1);
 		printTermEClass.getESuperTypes().add(this.getFileTerm());
 		g1 = createEGenericType(this.getDataSet());
 		g2 = createEGenericType(rrDataSetEClass_R);
@@ -971,11 +1005,6 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(dataSetEClass, null, "clear", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(dataSetEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		addEOperation(dataSetEClass, null, "delete", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataSetEClass, null, "delete", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -987,14 +1016,7 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(dataSetEClass, ecorePackage.getEBoolean(), "isFound", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, ecorePackage.getEBoolean(), "isOpen", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		addEOperation(dataSetEClass, ecorePackage.getEBoolean(), "onError", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(dataSetEClass, null, "open", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(dataSetEClass, null, "open", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(dataSetEClass, ecorePackage.getEBoolean(), "read", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1053,13 +1075,7 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(dataSetEClass, null, "write", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, null, "get", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(dataSetEClass_R);
-		initEOperation(op, g1);
-
 		addEOperation(dataSetEClass, theIntegratedLanguageDataPackage.getString(), "getFilePath", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(dataSetEClass, theIntegratedLanguageDataPackage.getDataStruct(), "getInfoStruct", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataSetTermEClass, QDataSetTerm.class, "DataSetTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataSetTerm_AccessMode(), this.getAccessMode(), "accessMode", "I", 1, 1, QDataSetTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1070,22 +1086,6 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		initEAttribute(getDataSetTerm_Prefix(), ecorePackage.getEString(), "prefix", null, 0, 1, QDataSetTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(displayEClass, QDisplay.class, "Display", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		addEOperation(displayEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(displayEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(displayEClass, null, "get", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(displayEClass_D);
-		initEOperation(op, g1);
-
-		addEOperation(displayEClass, ecorePackage.getEBoolean(), "isOpen", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(displayEClass, null, "open", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(displayEClass, null, "open", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(displayEClass, null, "readc", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
@@ -1112,6 +1112,26 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, g1, "format", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(displayTermEClass, QDisplayTerm.class, "DisplayTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(fileHandlerEClass, QFileHandler.class, "FileHandler", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(fileHandlerEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(fileHandlerEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(fileHandlerEClass, null, "get", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(fileHandlerEClass_R);
+		initEOperation(op, g1);
+
+		addEOperation(fileHandlerEClass, theIntegratedLanguageDataPackage.getDataStruct(), "getInfoStruct", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(fileHandlerEClass, ecorePackage.getEBoolean(), "isOpen", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(fileHandlerEClass, null, "open", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(fileHandlerEClass, null, "open", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(fileTermEClass, QFileTerm.class, "FileTerm", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
@@ -1461,22 +1481,6 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		addEOperation(indexColumnEClass, ecorePackage.getEBoolean(), "isNumeric", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(printEClass, QPrint.class, "Print", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		addEOperation(printEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(printEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(printEClass, ecorePackage.getEBoolean(), "isOpen", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(printEClass, null, "open", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(printEClass, null, "open", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(printEClass, null, "get", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(printEClass_D);
-		initEOperation(op, g1);
 
 		initEClass(printTermEClass, QPrintTerm.class, "PrintTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

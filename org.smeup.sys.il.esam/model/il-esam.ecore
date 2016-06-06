@@ -311,10 +311,6 @@
       <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Record"/>
     </eTypeParameters>
     <eOperations name="clear"/>
-    <eOperations name="close"/>
-    <eOperations name="close">
-      <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
-    </eOperations>
     <eOperations name="delete"/>
     <eOperations name="delete">
       <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
@@ -322,12 +318,7 @@
     <eOperations name="isEndOfData" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="isEqual" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="isFound" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="isOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="onError" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="open"/>
-    <eOperations name="open">
-      <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
-    </eOperations>
     <eOperations name="read" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="read" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="lock" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
@@ -380,11 +371,10 @@
     <eOperations name="write">
       <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
     </eOperations>
-    <eOperations name="get" lowerBound="1">
-      <eGenericType eTypeParameter="#//DataSet/R"/>
-    </eOperations>
     <eOperations name="getFilePath" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//String"/>
-    <eOperations name="getInfoStruct" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
+    <eGenericSuperTypes eClassifier="#//FileHandler">
+      <eTypeArguments eTypeParameter="#//DataSet/R"/>
+    </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataSetTerm" eSuperTypes="#//FileTerm">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="accessMode" lowerBound="1"
@@ -405,21 +395,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prefix" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Display" abstract="true" interface="true">
-    <eTypeParameters name="D">
-      <eBounds eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    <eTypeParameters name="R">
+      <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Record"/>
     </eTypeParameters>
-    <eOperations name="close"/>
-    <eOperations name="close">
-      <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
-    </eOperations>
-    <eOperations name="get" lowerBound="1">
-      <eGenericType eTypeParameter="#//Display/D"/>
-    </eOperations>
-    <eOperations name="isOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="open"/>
-    <eOperations name="open">
-      <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
-    </eOperations>
     <eOperations name="readc">
       <eParameters name="format" lowerBound="1">
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
@@ -448,8 +426,29 @@
         </eGenericType>
       </eParameters>
     </eOperations>
+    <eGenericSuperTypes eClassifier="#//FileHandler">
+      <eTypeArguments eTypeParameter="#//Display/R"/>
+    </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DisplayTerm" eSuperTypes="#//FileTerm"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FileHandler" abstract="true" interface="true">
+    <eTypeParameters name="R">
+      <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Record"/>
+    </eTypeParameters>
+    <eOperations name="close"/>
+    <eOperations name="close">
+      <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
+    </eOperations>
+    <eOperations name="get" lowerBound="1">
+      <eGenericType eTypeParameter="#//FileHandler/R"/>
+    </eOperations>
+    <eOperations name="getInfoStruct" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
+    <eOperations name="isOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="open"/>
+    <eOperations name="open">
+      <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
+    </eOperations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FileTerm" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//term/Term">
     <eStructuralFeatures xsi:type="ecore:EReference" name="format" containment="true">
       <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//term/DataTerm">
@@ -806,21 +805,12 @@
     <eOperations name="isNumeric" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Print" abstract="true" interface="true">
-    <eTypeParameters name="D">
-      <eBounds eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    <eTypeParameters name="R">
+      <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Record"/>
     </eTypeParameters>
-    <eOperations name="close"/>
-    <eOperations name="close">
-      <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
-    </eOperations>
-    <eOperations name="isOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="open"/>
-    <eOperations name="open">
-      <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Indicator"/>
-    </eOperations>
-    <eOperations name="get" lowerBound="1">
-      <eGenericType eTypeParameter="#//Print/D"/>
-    </eOperations>
+    <eGenericSuperTypes eClassifier="#//FileHandler">
+      <eTypeArguments eTypeParameter="#//Print/R"/>
+    </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PrintTerm" eSuperTypes="#//FileTerm"/>
   <eClassifiers xsi:type="ecore:EClass" name="RRDataSet" abstract="true" interface="true">

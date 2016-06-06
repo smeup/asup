@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.esam;
 
-import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QString;
@@ -21,27 +20,13 @@ import org.smeup.sys.il.data.QString;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QDataSet<R extends QRecord> {
+public interface QDataSet<R extends QRecord> extends QFileHandler<R> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
 	void clear();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void close();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void close(QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -80,31 +65,10 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
-	boolean isOpen();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
 	boolean onError();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void open();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void open(QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -241,26 +205,11 @@ public interface QDataSet<R extends QRecord> {
 	void write(QIndicator error);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true"
-	 * @generated
-	 */
-	R get();
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
 	QString getFilePath();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" required="true"
-	 * @generated
-	 */
-	QDataStruct getInfoStruct();
 
 } // QDataSet

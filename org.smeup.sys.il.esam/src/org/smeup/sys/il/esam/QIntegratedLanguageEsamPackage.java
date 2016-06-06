@@ -75,7 +75,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getFileTerm()
 	 * @generated
 	 */
-	int FILE_TERM = 6;
+	int FILE_TERM = 7;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.esam.impl.DataSetTermImpl <em>Data Set Term</em>}' class.
@@ -111,7 +111,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getKeyListTerm()
 	 * @generated
 	 */
-	int KEY_LIST_TERM = 7;
+	int KEY_LIST_TERM = 8;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.esam.QKSDataSet
@@ -122,7 +122,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getKSDataSet()
 	 * @generated
 	 */
-	int KS_DATA_SET = 8;
+	int KS_DATA_SET = 9;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.esam.QIndex <em>Index</em>}' class.
@@ -131,7 +131,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getIndex()
 	 * @generated
 	 */
-	int INDEX = 9;
+	int INDEX = 10;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.esam.QIndexColumn
@@ -142,7 +142,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getIndexColumn()
 	 * @generated
 	 */
-	int INDEX_COLUMN = 10;
+	int INDEX_COLUMN = 11;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.esam.QAccessManager <em>Access Manager</em>}' class.
@@ -181,13 +181,32 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int ACCESS_MANAGER_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QFileHandler <em>File Handler</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.esam.QFileHandler
+	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getFileHandler()
+	 * @generated
+	 */
+	int FILE_HANDLER = 6;
+
+	/**
+	 * The number of structural features of the '<em>File Handler</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_HANDLER_FEATURE_COUNT = 0;
+
+	/**
 	 * The number of structural features of the '<em>Data Set</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SET_FEATURE_COUNT = 0;
+	int DATA_SET_FEATURE_COUNT = FILE_HANDLER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -355,7 +374,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISPLAY_FEATURE_COUNT = 0;
+	int DISPLAY_FEATURE_COUNT = FILE_HANDLER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -475,7 +494,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getPrint()
 	 * @generated
 	 */
-	int PRINT = 11;
+	int PRINT = 12;
 
 	/**
 	 * The number of structural features of the '<em>Print</em>' class. <!--
@@ -484,7 +503,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRINT_FEATURE_COUNT = 0;
+	int PRINT_FEATURE_COUNT = FILE_HANDLER_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.esam.impl.PrintTermImpl <em>Print Term</em>}' class.
@@ -493,7 +512,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getPrintTerm()
 	 * @generated
 	 */
-	int PRINT_TERM = 12;
+	int PRINT_TERM = 13;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -556,7 +575,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getRRDataSet()
 	 * @generated
 	 */
-	int RR_DATA_SET = 13;
+	int RR_DATA_SET = 14;
 
 	/**
 	 * The number of structural features of the '<em>RR Data Set</em>' class.
@@ -575,7 +594,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getSMDataSet()
 	 * @generated
 	 */
-	int SM_DATA_SET = 14;
+	int SM_DATA_SET = 15;
 
 	/**
 	 * The number of structural features of the '<em>SM Data Set</em>' class.
@@ -594,7 +613,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getAccessMode()
 	 * @generated
 	 */
-	int ACCESS_MODE = 15;
+	int ACCESS_MODE = 16;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.esam.OperationDirection <em>Operation Direction</em>}' enum.
@@ -604,7 +623,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getOperationDirection()
 	 * @generated
 	 */
-	int OPERATION_DIRECTION = 16;
+	int OPERATION_DIRECTION = 17;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.esam.OperationSet
@@ -615,7 +634,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getOperationSet()
 	 * @generated
 	 */
-	int OPERATION_SET = 17;
+	int OPERATION_SET = 18;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.esam.OperationRead
@@ -626,7 +645,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getOperationRead()
 	 * @generated
 	 */
-	int OPERATION_READ = 18;
+	int OPERATION_READ = 19;
 
 	/**
 	 * The meta object id for the '<em>Key List</em>' data type. <!--
@@ -635,7 +654,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getKeyList()
 	 * @generated
 	 */
-	int KEY_LIST = 19;
+	int KEY_LIST = 20;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QDataSet <em>Data Set</em>}'.
@@ -738,6 +757,16 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getDisplayTerm();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QFileHandler <em>File Handler</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>File Handler</em>'.
+	 * @see org.smeup.sys.il.esam.QFileHandler
+	 * @generated
+	 */
+	EClass getFileHandler();
 
 	/**
 	 * Returns the meta object for class '
@@ -1077,6 +1106,16 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		 * @generated
 		 */
 		EClass DISPLAY_TERM = eINSTANCE.getDisplayTerm();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.esam.QFileHandler <em>File Handler</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.esam.QFileHandler
+		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getFileHandler()
+		 * @generated
+		 */
+		EClass FILE_HANDLER = eINSTANCE.getFileHandler();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.esam.impl.FileTermImpl <em>File Term</em>}' class.

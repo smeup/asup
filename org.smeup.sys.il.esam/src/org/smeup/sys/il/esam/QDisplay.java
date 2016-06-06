@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.il.esam;
 
-import org.smeup.sys.il.data.QIndicator;
+import org.smeup.sys.il.data.QRecord;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -15,45 +15,10 @@ import org.smeup.sys.il.data.QIndicator;
  *
  *
  * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getDisplay()
- * @model interface="true" abstract="true" DBounds="org.eclipse.emf.ecore.EJavaObject"
+ * @model interface="true" abstract="true"
  * @generated
  */
-public interface QDisplay<D extends Object> {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void close();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void close(QIndicator error);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
-	boolean isOpen();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void open();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void open(QIndicator error);
-
+public interface QDisplay<R extends QRecord> extends QFileHandler<R> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model formatRequired="true"
@@ -81,12 +46,5 @@ public interface QDisplay<D extends Object> {
 	 * @generated
 	 */
 	void write(Class<?> format);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true"
-	 * @generated
-	 */
-	D get();
 
 } // QDisplay
