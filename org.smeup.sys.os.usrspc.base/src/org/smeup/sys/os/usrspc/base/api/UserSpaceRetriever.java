@@ -40,7 +40,7 @@ public class UserSpaceRetriever {
 	@Inject
 	private QDataContext dataContext;
 
-	private QUserSpace lastUserSpace = null;
+	private transient QUserSpace lastUserSpace = null;
 	
 	public static enum QCPFMSG {
 		CPF3C0F, CPF3C01, CPF3C06
