@@ -41,6 +41,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	public NIOBufferedListImpl(QDataContext dataContext, D model, SortDirection sortDirection) {
 		super(dataContext);
+		
 		this._model = model;
 		this.sortDirection = sortDirection;
 		this.lastIndex = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
@@ -52,28 +53,33 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public QBufferedData eval(DataSpecial value) {
-		for (D element : this)
-			element.eval(value);
+
+		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.eval(value);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 
 		return this;
 	}
 
 	@Override
 	public final void eval(Number value) {
-		for (D element : this)
-			((QNumeric) element).eval(value);
+		eval(value, false);
 	}
 
 	@Override
 	public void eval(Number value, boolean halfAdjust) {
-		for (D element : this)
-			((QNumeric) element).eval(value, halfAdjust);
+
+		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		((QNumeric)firstElement).eval(value, halfAdjust);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
 	@Override
 	public QBufferedData eval(QDataFiller value) {
-		for (D element : this)
-			element.eval(value);
+
+		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		((QNumeric)firstElement).eval(value);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 
 		return this;
 	}
@@ -128,26 +134,31 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public final void eval(QNumeric value) {
-		for (D element : this)
-			((QNumeric) element).eval(value);
+		eval(value, false);
 	}
 
 	@Override
 	public void eval(QNumeric value, boolean halfAdjust) {
-		for (D element : this)
-			((QNumeric) element).eval(value, halfAdjust);
+
+		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		((QNumeric)firstElement).eval(value, halfAdjust);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
 	@Override
 	public final void eval(QString value) {
-		for (D element : this)
-			((QString) element).eval(value);
+
+		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		((QString)firstElement).eval(value);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
 	@Override
 	public final void eval(String value) {
-		for (D element : this)
-			((QString) element).eval(value);
+		
+		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		((QString)firstElement).eval(value);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
 	@Override
@@ -196,8 +207,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void move(DataSpecial value, boolean clear) {
-		for (D element : this)
-			element.move(value, clear);
+
+		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.move(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
 	@Override
@@ -207,8 +220,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void move(Number value, boolean clear) {
-		for (D element : this)
-			element.move(value, clear);
+		
+		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.move(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));		
 	}
 
 	@Override
@@ -218,8 +233,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void move(QBufferedElement value, boolean clear) {
-		for (D element : this)
-			element.move(value, clear);
+
+		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.move(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
 	@Override
@@ -229,8 +246,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void move(QDataFiller value, boolean clear) {
-		for (D element : this)
-			element.move(value, clear);
+
+		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.move(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
 	@Override
@@ -240,8 +259,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void move(String value, boolean clear) {
-		for (D element : this)
-			element.move(value, clear);
+
+		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.move(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
 	@Override
@@ -251,8 +272,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void movel(DataSpecial value, boolean clear) {
-		for (D element : this)
-			element.movel(value, clear);
+		
+		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.movel(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
 	@Override
@@ -262,8 +285,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void movel(Number value, boolean clear) {
-		for (D element : this)
-			element.movel(value, clear);
+		
+		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.movel(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
 	@Override
@@ -273,8 +298,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void movel(QBufferedElement value, boolean clear) {
-		for (D element : this)
-			element.movel(value, clear);
+		
+		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.movel(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
 	@Override
@@ -284,8 +311,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void movel(QDataFiller value, boolean clear) {
-		for (D element : this)
-			element.movel(value, clear);
+		
+		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.movel(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
 	@Override
@@ -295,8 +324,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void movel(String value, boolean clear) {
-		for (D element : this)
-			element.movel(value, clear);
+		
+		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.movel(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
 	protected final void setListOwner(NIOBufferedListImpl<?> listOwner) {

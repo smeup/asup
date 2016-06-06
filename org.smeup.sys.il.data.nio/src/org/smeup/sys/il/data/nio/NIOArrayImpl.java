@@ -37,12 +37,15 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 	private static final long serialVersionUID = 1L;
 
-	private int capacity = 0;
+	private D[] _elements;
+	// private int capacity = 0;
 
+	@SuppressWarnings("unchecked")
 	public NIOArrayImpl(QDataContext dataContext, D model, int dimension, SortDirection sortDirection, boolean allocate) {
 		super(dataContext, model, sortDirection);
 
-		capacity = dimension;
+		this._elements = (D[]) Array.newInstance(model.getClass(), dimension);
+		// capacity = dimension;
 
 		if (allocate) {
 			checkAllocation();
@@ -68,22 +71,26 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	@Override
 	public D[] asArray() {
 
-		@SuppressWarnings("unchecked")
-		D[] array = (D[]) Array.newInstance(getModel().getClass(), capacity);
-		for (int x = 0; x < capacity; x++)
-			array[x] = get(x + 1);
+		return Arrays.copyOf(_elements, capacity());
 
-		return array;
+		/*
+		 * D[] array = (D[]) Array.newInstance(getModel().getClass(), capacity);
+		 * for (int x = 0; x < capacity; x++) array[x] = get(x + 1);
+		 * 
+		 * return array;
+		 */
 	}
 
 	@Override
 	public int capacity() {
-		return capacity;
+		return _elements.length;
+		// return capacity;
 	}
 
 	@Override
 	public int count() {
-		return capacity;
+		return _elements.length;
+		// return capacity;
 	}
 
 	@Override
@@ -124,7 +131,11 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	@Override
 	public D get(int index) {
 
-		D element = (D) ((NIODataImpl) getModel())._copy(getDataContext());
+		D element = _elements[index - 1];
+		if (element != null)
+			return element;
+
+		element = (D) ((NIODataImpl) getModel())._copy(getDataContext());
 
 		int position = 0;
 		int modelSize = 0;
@@ -137,6 +148,8 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 		assign(element, position + 1);
 
+		_elements[index - 1] = element;
+		
 		return element;
 	}
 
@@ -629,7 +642,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	public void movea(int targetIndex, DataSpecial value, boolean clear) {
 
 		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(targetIndex));
-		firstElement.movel(value, clear);		
+		firstElement.movel(value, clear);
 		NIOBufferHelper.fill(getBuffer(), getPosition() + targetIndex * firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
@@ -647,7 +660,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	public void movea(int targetIndex, QDataFiller value) {
 
 		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(targetIndex));
-		firstElement.eval(value);		
+		firstElement.eval(value);
 		NIOBufferHelper.fill(getBuffer(), getPosition() + targetIndex * firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
