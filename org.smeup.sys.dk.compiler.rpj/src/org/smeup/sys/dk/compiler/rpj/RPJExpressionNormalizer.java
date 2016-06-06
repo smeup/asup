@@ -19,6 +19,7 @@ import javax.inject.Inject;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.rpj.writer.JDTContextHelper;
 import org.smeup.sys.il.core.term.QNamedNode;
+import org.smeup.sys.il.core.term.QNode;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.expr.AtomicType;
 import org.smeup.sys.il.expr.QAssignmentExpression;
@@ -39,6 +40,7 @@ import org.smeup.sys.il.flow.QMethodExec;
 import org.smeup.sys.il.flow.QProcedureExec;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QReturn;
+import org.smeup.sys.il.flow.QStatement;
 import org.smeup.sys.il.flow.QUntil;
 import org.smeup.sys.il.flow.QWhile;
 import org.smeup.sys.il.flow.impl.StatementVisitorImpl;
@@ -65,6 +67,11 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 	@Override
 	public boolean visit(QMethodExec statement) {
+		
+		if(isParentIf(statement)) {
+			lastMethod = null;
+			return true;
+		}
 
 		if (statement.getMethod().equalsIgnoreCase("SETLL"))
 			lastMethod = statement;
@@ -136,8 +143,6 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 	@Override
 	public boolean visit(QIf statement) {
-
-		lastMethod = null;
 		
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
 
@@ -227,13 +232,16 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 	private class InternalExpressionNormalizer extends ExpressionVisitorImpl {
 
 		private boolean normalized = false;
-
+		
 		protected boolean isNormalized() {
 			return normalized;
 		}
 
 		@Override
 		public boolean visit(QFunctionTermExpression expression) {
+			
+			
+			
 			if (expression.getValue().equalsIgnoreCase("%EQUAL") ||
 				expression.getValue().equalsIgnoreCase("%FOUND") ||
 				expression.getValue().equalsIgnoreCase("%EOF")   ||
@@ -241,6 +249,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 				expression.getValue().equalsIgnoreCase("%OPEN") ||
 				expression.getValue().equalsIgnoreCase("%CLOSE")) {
 				if (expression.getElements().isEmpty()) {
+						
 					if (lastMethod != null) {
 						QAtomicTermExpression atomicTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createAtomicTermExpression();
 						atomicTermExpression.setType(AtomicType.NAME);
@@ -356,5 +365,17 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 				break;
 			}
 		}		
+	}
+	
+	private boolean isParentIf(QStatement statement) {
+
+		QNode parent = statement.getParent();
+		while (parent != null) {
+			if (parent instanceof QIf)
+				return true;
+			parent = parent.getParent();
+		}
+
+		return false;
 	}
 }
