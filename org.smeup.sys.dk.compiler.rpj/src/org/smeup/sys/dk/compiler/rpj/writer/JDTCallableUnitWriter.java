@@ -280,14 +280,14 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 			EObject eDataSet = (EObject) dataSetTerm;
 
-			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getDataSetTerm_Prefix()))
-				writeAnnotation(field, FileDef.class, "prefix", dataSetTerm.getPrefix());
-
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_UserOpen()))
 				writeAnnotation(field, FileDef.class, "userOpen", dataSetTerm.isUserOpen());
 
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
 				writeAnnotation(field, FileDef.class, "info", getCompilationUnit().normalizeTermName(dataSetTerm.getInfoStruct()));
+
+			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getDataSetTerm_Prefix()))
+				writeAnnotation(field, FileDef.class, "prefix", dataSetTerm.getPrefix());
 
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getDataSetTerm_ExternalFile())) {
 				QDataTerm<?> externalFileTerm = getCompilationUnit().getDataTerm(dataSetTerm.getExternalFile(), true);
@@ -303,6 +303,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 			else
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
+
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.TRANSIENT_KEYWORD));
 
 			field.setType(parType);
 			if (dataSetTerm.getFormatName() != null)
@@ -445,12 +447,14 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				writeAnnotation(field, FileDef.class, "userOpen", displayTerm.isUserOpen());
 
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
-				writeAnnotation(field, FileDef.class, "info", displayTerm.getInfoStruct());
+				writeAnnotation(field, FileDef.class, "info", getCompilationUnit().normalizeTermName(displayTerm.getInfoStruct()));
 
 			if (getCompilationUnit().getNode() instanceof QModule)
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 			else
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
+
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.TRANSIENT_KEYWORD));
 
 			field.setType(parType);
 			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(displayTerm.getName())));
@@ -496,13 +500,15 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				writeAnnotation(field, FileDef.class, "userOpen", printTerm.isUserOpen());
 
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
-				writeAnnotation(field, FileDef.class, "info", printTerm.getInfoStruct());
+				writeAnnotation(field, FileDef.class, "info", getCompilationUnit().normalizeTermName(printTerm.getInfoStruct()));
 
 			if (getCompilationUnit().getNode() instanceof QModule)
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 			else
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.TRANSIENT_KEYWORD));
+			
 			field.setType(parType);
 			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(printTerm.getName())));
 
