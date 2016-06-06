@@ -26,6 +26,7 @@ import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.UnitScope;
+import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QPrinterFormatWrapper;
 import org.smeup.sys.os.file.QFileFormat;
@@ -33,11 +34,11 @@ import org.smeup.sys.os.file.QPrinterFile;
 import org.smeup.sys.os.file.QPrinterFileField;
 import org.smeup.sys.os.file.QPrinterFileFormat;
 
-public class JDTPrinterFileWriter extends JDTNamedNodeWriter {
+public class JDTPrinterFileWriter extends JDTDataStructureWriter {
 
 	@SuppressWarnings("unchecked")
 	public JDTPrinterFileWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
-		super(root, compilationUnit, compilationSetup, name, UnitScope.PUBLIC);
+		super(root, compilationUnit, compilationSetup, name, QRecordWrapper.class, UnitScope.PUBLIC, false);
 
 		// writeFieldSerializer();
 
