@@ -388,7 +388,7 @@
         <parameters>
           <delegate
               xsi:type="il-flow:FlowData"
-              name="expression">
+              name="dateFormat">
             <cardinality
                 min="1"/>
             <definition
