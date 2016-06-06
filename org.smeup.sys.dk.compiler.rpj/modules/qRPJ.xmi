@@ -4,10 +4,9 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
-    xmlns:il-data-term="http://www.smeup.org/asup/il/data/term"
     xmlns:il-esam="http://www.smeup.org/asup/il/esam"
     xmlns:il-flow="http://www.smeup.org/asup/il/flow"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/data/term ../../org.smeup.sys.il.core/model/il-data.ecore#//term http://www.smeup.org/asup/il/esam ../../org.smeup.sys.il.esam/model/il-esam.ecore http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il.flow/model/il-flow.ecore"
+    xsi:schemaLocation="http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/esam ../../org.smeup.sys.il.esam/model/il-esam.ecore http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il.flow/model/il-flow.ecore"
     name="*RPJ">
   <dataSection>
     <datas xsi:type="il-flow:FlowData"
@@ -38,29 +37,6 @@
         name="*INRT">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
-    </datas>
-    <datas xsi:type="il-flow:FlowData"
-        name="*DATE">
-      <definition
-          xsi:type="il-data-def:DataStructDef">
-        <elements
-            xsi:type="il-flow:FlowData"
-            name="UYEAR4">
-          <definition
-              xsi:type="il-data-def:DecimalDef"
-              precision="4"/>
-        </elements>
-        <elements
-            xsi:type="il-flow:FlowData"
-            name="UYEAR">
-          <facets
-              xsi:type="il-data-term:Overlay"
-              name="UYEAR4"/>
-          <definition
-              xsi:type="il-data-def:DecimalDef"
-              precision="2"/>
-        </elements>
-      </definition>
     </datas>
     <datas xsi:type="il-flow:FlowData"
         name="*INU1">
@@ -407,6 +383,16 @@
                 min="1"/>
             <definition
                 xsi:type="il-data-def:BufferDef"/>
+          </delegate>
+        </parameters>
+        <parameters>
+          <delegate
+              xsi:type="il-flow:FlowData"
+              name="expression">
+            <cardinality
+                min="1"/>
+            <definition
+                xsi:type="il-data-def:StringDef"/>
           </delegate>
         </parameters>
       </entry>
