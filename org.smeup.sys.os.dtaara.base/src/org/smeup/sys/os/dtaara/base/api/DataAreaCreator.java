@@ -64,8 +64,6 @@ public class DataAreaCreator {
 	@Inject
 	private QStrings stringsUtils;
 
-	private QResourceWriter<QDataArea> resourceWriter;
-
 	@Main
 	public void main(@DataDef(qualified = true) QEnum<DATAAREAEnum, DATAAREA> dataArea, @DataDef(length = 1) QEnum<TIPOEnum, QCharacter> tipo, @DataDef(length = 1) LUNGHEZZA lunghezza,
 			@DataDef(length = 2000) QCharacter valoreIniziale, @Unsupported @DataDef(qualified = true) AREADATIREMOTA areaDatiRemota,
@@ -78,6 +76,7 @@ public class DataAreaCreator {
 		String areaName = dataArea.asData().name.trimR();
 		String libName = dataArea.asData().library.asData().trimR();
 
+		QResourceWriter<QDataArea> resourceWriter = null;
 		switch (dataArea.asData().library.asEnum()) {
 		case CURLIB:
 			resourceWriter = resourceManager.getResourceWriter(job, QDataArea.class, Scope.CURRENT_LIBRARY);
@@ -87,7 +86,8 @@ public class DataAreaCreator {
 			break;
 		}
 
-		checkExistence(areaName, libName);
+		if (resourceWriter.exists(areaName)) 
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1023, new String[] { areaName, libName });
 
 		QDataArea newDataArea = QOperatingSystemDataAreaFactory.eINSTANCE.createDataArea();
 		newDataArea.setName(areaName);
@@ -120,11 +120,6 @@ public class DataAreaCreator {
 		return "";
 	}
 
-	private void checkExistence(String areaName, String libName) {
-		if (resourceWriter.exists(areaName)) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1023, new String[] { areaName, libName });
-		}
-	}
 
 	public static class DATAAREA extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;

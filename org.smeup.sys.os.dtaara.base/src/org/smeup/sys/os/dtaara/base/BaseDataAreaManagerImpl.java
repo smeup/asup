@@ -22,12 +22,12 @@ public class BaseDataAreaManagerImpl implements QDataAreaManager {
 	@Override
 	public QDataArea getLocalDataArea(QContext context) {
 		QDataArea localDataArea = context.get(QDataArea.class);
-
 		if (localDataArea == null) {
 			synchronized (context) {
 				localDataArea = context.get(QDataArea.class);
 				if (localDataArea == null) {
 					localDataArea = QOperatingSystemDataAreaFactory.eINSTANCE.createDataArea();
+					localDataArea.setName("*LDA");
 					localDataArea.setDataAreaType(DataAreaType.CHARACTER);
 					localDataArea.setContentLength(1024);
 					localDataArea.setContent("");
