@@ -67,23 +67,30 @@ import org.smeup.sys.os.pgm.base.BaseProgramStatusImpl;
 public class RPJProgramSupport {
 
 	@Inject
-	private BaseCallableInjector injector;
+	private transient BaseCallableInjector injector;
 	@Inject
-	private QDataContext dataContext;
+	private transient QDataContext dataContext;
 	@Inject
-	private QProgramManager programManager;
+	private transient QProgramManager programManager;
 	@Inject
-	private QResourceManager resourceManager;
-
+	private transient QResourceManager resourceManager;
 	@Inject
-	public QJob job;
-
+	public transient QJob job;
 	@Inject
 	@Program(name = "*OWNER")
-	private Object programOwner;
+	private transient Object programOwner;
 
+	// public static boolean FALSE = false;
+	public static final boolean TRUE = true;
+	public transient static Specials qSP;
+	
 	@Overlay(name = "*PGMSTATUS")
-	private BaseProgramStatusImpl programStatus;
+	private transient BaseProgramStatusImpl programStatus;
+
+	private transient QDataFiller dataFiller;
+	private transient QResourceReader<QProgram> programReader;
+	private transient RPJProgramCache programCache;
+	private transient int countRunnable = 0;
 
 	@DataDef
 	public QIndicator qINLR;
@@ -112,44 +119,24 @@ public class RPJProgramSupport {
 	@DataDef
 	public Date qDATE;
 
-	public static Specials qSP;
-
 	@DataDef(length = 1024)
 	public QCharacter qLDA;
 
 	@DataDef(dimension = 99, length = 1)
 	public QArray<QIndicator> qIN;
 
-	private QDataFiller dataFiller = QIntegratedLanguageDataFactory.eINSTANCE.createDataFiller();
-
 	public Object getProgramOwner() {
 		return this.programOwner;
 	}
-
-	public static class Date extends QDataStructWrapper {
-
-		private static final long serialVersionUID = 1L;
-
-		@DataDef(precision = 4)
-		public QDecimal uyear4;
-
-		@DataDef(precision = 2)
-		public QDecimal uyear;
-	}
-
-	// public static boolean FALSE = false;
-	public static final boolean TRUE = true;
-
-	private int countRunnable = 0;
-	
-	private RPJProgramCache programCache;
-	private QResourceReader<QProgram> programReader;
 	
 	@PostConstruct
 	private void init() {
 		
 		@SuppressWarnings("resource")
 		QContext jobContext = job.getContext();
+
+		dataFiller = QIntegratedLanguageDataFactory.eINSTANCE.createDataFiller();
+		programReader = resourceManager.getResourceReader(job, QProgram.class, org.smeup.sys.il.memo.Scope.LIBRARY_LIST);
 		
 		programCache = jobContext.get(RPJProgramCache.class);
 		if (programCache == null) {
@@ -161,8 +148,6 @@ public class RPJProgramSupport {
 				}
 			}
 		}
-		
-		programReader = resourceManager.getResourceReader(job, QProgram.class, org.smeup.sys.il.memo.Scope.LIBRARY_LIST);
 	}
 	
 	public boolean qRunnable() {
@@ -934,4 +919,14 @@ public class RPJProgramSupport {
 		
 	}
 
+	public static class Date extends QDataStructWrapper {
+
+		private static final long serialVersionUID = 1L;
+
+		@DataDef(precision = 4)
+		public QDecimal uyear4;
+
+		@DataDef(precision = 2)
+		public QDecimal uyear;
+	}
 }
