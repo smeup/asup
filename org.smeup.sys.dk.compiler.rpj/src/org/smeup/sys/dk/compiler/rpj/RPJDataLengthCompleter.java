@@ -67,7 +67,7 @@ public class RPJDataLengthCompleter extends RPJAbstractDataRefactor {
 			int length = calculateLength(dataTerm, element);
 
 			if (length == 0)
-				calculateLength(dataTerm, element);
+				throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: 7wyd8rf97sdffdsfsd");
 
 			if (element.getDefinition() instanceof QMultipleAtomicBufferedDataDef<?>) {
 				QMultipleAtomicBufferedDataDef<?> multipleAtomicBufferedDataDef = (QMultipleAtomicBufferedDataDef<?>) element.getDefinition();
@@ -105,13 +105,18 @@ public class RPJDataLengthCompleter extends RPJAbstractDataRefactor {
 			if (elementOverlay.getName() == null || !getCompilationUnit().equalsTermName(elementOverlay.getName(), targetTerm.getName()))
 				continue;
 
+			QBufferedDataDef<?> bufferedDataDef = (QBufferedDataDef<?>) dataElement.getDefinition();
+
 			if (targetOverlay != null)
 				targetNextPosition += targetOverlay.getPosition() + 1;
 
-			if (elementOverlay.getPosition() >= 1)
-				targetNextPosition = elementOverlay.getPosition();
+			if (elementOverlay.getPosition() >= 1) {
+				if (elementOverlay.getPosition() + bufferedDataDef.getSize() > targetNextPosition)
+					targetNextPosition = elementOverlay.getPosition();
+				else
+					continue;
+			}
 
-			QBufferedDataDef<?> bufferedDataDef = (QBufferedDataDef<?>) dataElement.getDefinition();
 			targetNextPosition += bufferedDataDef.getSize();
 		}
 
