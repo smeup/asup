@@ -45,6 +45,7 @@ import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
+import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStruct;
@@ -168,7 +169,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		for (QCommandParameter commandParameter : qCommand.getParameters(CommandParameterOrder.POSITION)) {
 
 			CLParameter clParameter = clCommand.getParm(commandParameter.getName());
-
+			
 			// positional parameters
 			if (commandParameter.getPosition() <= clCommand.getPositionalParms().size()) {
 				if (clParameter == null) {
@@ -678,7 +679,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				element.movel(value.toString(), true);
 				break;
 			case NUMERIC:
-				element.move(new BigDecimal(value.toString()), true);
+				((QNumeric)element).eval(new BigDecimal(value.toString()));
 				break;
 			case STRING:
 				((QString)element).eval(value.toString());
