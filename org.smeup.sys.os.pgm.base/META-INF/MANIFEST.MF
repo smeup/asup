@@ -15,3 +15,4 @@ Require-Bundle:
  org.smeup.sys.rt.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
+Import-Package: org.smeup.sys.db.esql

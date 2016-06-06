@@ -1,16 +1,45 @@
+/**
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
+ */
 package org.smeup.sys.os.pgm.base;
 
+import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QIndicator;
+import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.esam.QDisplay;
 
-public class BaseDisplayDelegator<D> implements QDisplay<D> {
+public class BaseDisplayDelegator<R extends QRecord> implements QDisplay<R> {
 
-	private D delegate = null;
+	private R delegate = null;
 	private boolean isOpen = false;
-	public BaseDisplayDelegator(D delegate, boolean userOpen) {
+	private BaseInfoStruct infoStruct;
+	
+	public BaseDisplayDelegator(R delegate, boolean userOpen, BaseInfoStruct infoStruct) {
 		this.delegate = delegate;
 		if(!userOpen)
 			isOpen = true;
+		this.infoStruct = infoStruct;
+		
+		this.infoStruct.clear();
+		this.delegate.clear();
+	}
+
+	@Override
+	public R get() {
+		return delegate;
+	}
+
+	@Override
+	public QDataStruct getInfoStruct() {
+		return infoStruct;
 	}
 
 	@Override
@@ -37,7 +66,7 @@ public class BaseDisplayDelegator<D> implements QDisplay<D> {
 	public void open(QIndicator error) {
 		isOpen = true;		
 	}
-
+	
 	@Override
 	public void readc(Class<?> format) {
 		// TODO Auto-generated method stub
@@ -61,10 +90,4 @@ public class BaseDisplayDelegator<D> implements QDisplay<D> {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public D get() {
-		return delegate;
-	}
-
 }

@@ -65,7 +65,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	private QDataManager dataManager;
 
 	private QActivationGroupManager activationGroupManager;
-
+	
 	@PostConstruct
 	private void init() {
 		activationGroupManager = new BaseActivationGroupManagerImpl(this);
@@ -314,8 +314,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 				programStack.push(callableProgram);
 
-//				printSendStack(job, programStack, callableProgram);
-
+				printSendStack(job, programStack, callableProgram);
+				
 				// call
 				callableProgram.call();
 
@@ -334,7 +334,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				long callTime = System.currentTimeMillis() - callableProgram.getProgramInfo().getCallTime();
 				callableProgram.getProgramInfo().setCallTime(callTime);
 
-//				printReceiveStack(job, programStack, callableProgram);
+				printReceiveStack(job, programStack, callableProgram);
 
 				programStack.pop();
 
