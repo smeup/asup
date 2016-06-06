@@ -39,7 +39,9 @@ import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
 
 public class NIOBufferHelper {
-
+	
+	private static final char[] hexArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+	
 	public static void movel(ByteBuffer buffer, int position, int length, byte[] bytes) {
 		prepare(buffer, position, length);
 
@@ -275,7 +277,7 @@ public class NIOBufferHelper {
 				if (b1[i] == b2[i])
 					continue;
 
-				return toHexString(b1[i]).compareTo(toHexString(b2[i]));
+				return compareByte(b1[i], b2[i]);
 			}
 		} else if (b1.length > b2.length) {
 			for (int i = 0; i < b1.length; i++) {
@@ -290,7 +292,7 @@ public class NIOBufferHelper {
 				if (b1[i] == b2[i])
 					continue;
 
-				return toHexString(b1[i]).compareTo(toHexString(b2[i]));
+				return compareByte(b1[i], b2[i]);
 			}
 		} else if (b2.length > b1.length) {
 			for (int i = 0; i < b2.length; i++) {
@@ -305,16 +307,19 @@ public class NIOBufferHelper {
 				if (b1[i] == b2[i])
 					continue;
 
-				return toHexString(b1[i]).compareTo(toHexString(b2[i]));
+				return compareByte(b1[i], b2[i]);
 			}
 		}
 
 		return 0;
 	}
 
+	public static int compareByte(byte b1, byte b2) {
+		return toHexString(b1).compareTo(toHexString(b2));
+	}
+
 	public static final String toHexString(byte b) {
 
-		final char[] hexArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 		char[] hexChars = new char[2];
 
 		int v = b & 0xFF;
@@ -325,7 +330,6 @@ public class NIOBufferHelper {
 	}
 
 	public static final String bytesToHex(byte[] bytes) {
-		final char[] hexArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 		char[] hexChars = new char[bytes.length * 2];
 		int v;
 		for (int j = 0; j < bytes.length; j++) {
