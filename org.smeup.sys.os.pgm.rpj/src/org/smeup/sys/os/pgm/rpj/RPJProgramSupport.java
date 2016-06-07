@@ -431,11 +431,13 @@ public class RPJProgramSupport {
 	}
 
 	public QDecimal qDec(QString string, Integer precision, Integer scale) {
-		return null;
+		return qDec(string.s(), precision, scale);
 	}
 
 	public QDecimal qDec(String string, Integer precision, Integer scale) {
-		return null;
+		QDecimal decimal = dataContext.getDataFactory().createDecimal(precision, scale, DecimalType.PACKED, true);
+		decimal.eval(Double.parseDouble(string.replaceAll(",", ".")));
+		return decimal;
 	}
 
 	public QDatetime qAdddur(QDatetime op1, QDecimal op2, Enum<?> format) {
