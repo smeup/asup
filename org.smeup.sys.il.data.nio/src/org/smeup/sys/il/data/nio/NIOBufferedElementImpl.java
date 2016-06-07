@@ -85,11 +85,6 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	}
 
 	@Override
-	public final boolean eq(DataSpecial special) {
-		return NIOBufferHelper.compareBytes(this, special) == 0;
-	}
-
-	@Override
 	public final boolean eq(QDataFiller value) {
 		return NIOBufferHelper.compareBytes(this, value) == 0;
 	}
@@ -101,18 +96,8 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	}
 
 	@Override
-	public final boolean ge(DataSpecial value) {
-		return NIOBufferHelper.compareBytes(this, value) >= 0;
-	}
-
-	@Override
 	public final boolean ge(QDataFiller value) {
 		return NIOBufferHelper.compareBytes(this, value) >= 0;
-	}
-
-	@Override
-	public final boolean gt(DataSpecial special) {
-		return NIOBufferHelper.compareBytes(this, special) > 0;
 	}
 
 	@Override
@@ -121,18 +106,8 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	}
 
 	@Override
-	public final boolean le(DataSpecial special) {
-		return NIOBufferHelper.compareBytes(this, special) <= 0;
-	}
-
-	@Override
 	public final boolean le(QDataFiller value) {
 		return NIOBufferHelper.compareBytes(this, value) <= 0;
-	}
-
-	@Override
-	public final boolean lt(DataSpecial special) {
-		return NIOBufferHelper.compareBytes(this, special) < 0;
 	}
 
 	@Override
@@ -265,11 +240,6 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	}
 
 	@Override
-	public final boolean ne(DataSpecial value) {
-		return !eq(value);
-	}
-
-	@Override
 	public final boolean ne(QDataFiller value) {
 		return !eq(value);
 	}
@@ -277,5 +247,34 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	@Override
 	public BufferedDataType getBufferedDataType() {
 		return BufferedDataType.ELEMENT;
+	}
+
+	@Override
+	public final boolean ge(DataSpecial value) {
+		return !lt(value);
+	}
+
+	@Override
+	public final boolean gt(DataSpecial special) {
+		return !le(special);
+	}
+
+	@Override
+	public final boolean ne(DataSpecial value) {
+		return !eq(value);
+	}
+	
+	@Override
+	public final boolean le(DataSpecial special) {
+		return NIOBufferHelper.compareBytes(this, special) <= 0;
+	}
+
+	@Override
+	public final boolean lt(DataSpecial special) {
+		return NIOBufferHelper.compareBytes(this, special) < 0;
+	}
+		@Override
+	public final boolean eq(DataSpecial special) {
+		return NIOBufferHelper.compareBytes(this, special) == 0;
 	}
 }

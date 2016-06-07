@@ -19,6 +19,7 @@ import org.eclipse.jdt.core.dom.MarkerAnnotation;
 import org.eclipse.jdt.core.dom.MemberValuePair;
 import org.eclipse.jdt.core.dom.NormalAnnotation;
 import org.eclipse.jdt.core.dom.StringLiteral;
+import org.eclipse.jdt.core.dom.Type;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
@@ -38,6 +39,7 @@ import org.smeup.sys.il.flow.QProgram;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.pgm.rpj.RPJProgram;
 import org.smeup.sys.os.pgm.rpj.RPJProgramSupport;
 
 public class JDTProgramWriter extends JDTCallableUnitWriter {
@@ -45,6 +47,11 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 	public JDTProgramWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
 		super(root, compilationUnit, compilationSetup, name, UnitScope.PUBLIC);
 
+		// super type
+		Type superType = getAST().newSimpleType(getAST().newSimpleName(RPJProgram.class.getSimpleName()));
+		getTarget().setSuperclassType(superType);
+
+		writeImport(RPJProgram.class);
 		writeImport(Program.class);
 		writeImport(RPJProgramSupport.class);
 		writeImport(OperatingSystemRuntimeException.class);
