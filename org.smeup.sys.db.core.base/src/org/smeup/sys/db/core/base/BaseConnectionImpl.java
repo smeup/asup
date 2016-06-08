@@ -11,30 +11,15 @@
  */
 package org.smeup.sys.db.core.base;
 
-import java.sql.Array;
-import java.sql.Blob;
-import java.sql.CallableStatement;
-import java.sql.Clob;
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.NClob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLClientInfoException;
 import java.sql.SQLException;
-import java.sql.SQLWarning;
-import java.sql.SQLXML;
-import java.sql.Savepoint;
 import java.sql.Statement;
-import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.concurrent.Executor;
 
 import org.eclipse.datatools.sqltools.parsers.sql.query.SQLQueryParseResult;
-import org.smeup.sys.db.core.DatabaseCoreRuntimeException;
 import org.smeup.sys.db.core.QCatalogContainer;
 import org.smeup.sys.db.core.QCatalogGenerationStrategy;
 import org.smeup.sys.db.core.QCatalogMetaData;
@@ -45,7 +30,7 @@ import org.smeup.sys.db.syntax.QAliasResolver;
 import org.smeup.sys.db.syntax.QQueryParser;
 import org.smeup.sys.il.core.ctx.QContext;
 
-public class BaseConnectionImpl implements QConnection, Connection {
+public class BaseConnectionImpl implements QConnection {
 
 	private QContext context;
 	private QDatabaseContainer databaseContainer;
@@ -68,16 +53,6 @@ public class BaseConnectionImpl implements QConnection, Connection {
 	}
 
 	@Override
-	public void abort(Executor executor) throws SQLException {
-		getRawConnection().abort(executor);
-	}
-
-	@Override
-	public void clearWarnings() throws SQLException {
-		getRawConnection().clearWarnings();
-	}
-
-	@Override
 	public void close() throws SQLException {
 
 		for (BaseCatalogConnection catalogConnection : catalogConnections)
@@ -88,38 +63,6 @@ public class BaseConnectionImpl implements QConnection, Connection {
 		this.virtualCatalog = null;
 
 		this.context.close();
-	}
-
-	@SuppressWarnings("resource")
-	@Override
-	public void commit() throws SQLException {
-		Connection connection = getRawConnection();
-		connection.commit();
-	}
-
-	@Override
-	public Array createArrayOf(String typeName, Object[] elements) throws SQLException {
-		return getRawConnection().createArrayOf(typeName, elements);
-	}
-
-	@Override
-	public Blob createBlob() throws SQLException {
-		return getRawConnection().createBlob();
-	}
-
-	@Override
-	public Clob createClob() throws SQLException {
-		return getRawConnection().createClob();
-	}
-
-	@Override
-	public NClob createNClob() throws SQLException {
-		return getRawConnection().createNClob();
-	}
-
-	@Override
-	public SQLXML createSQLXML() throws SQLException {
-		return getRawConnection().createSQLXML();
 	}
 
 	@Override
@@ -146,26 +89,6 @@ public class BaseConnectionImpl implements QConnection, Connection {
 		BaseStatementImpl statement = new BaseStatementImpl(this, sqlStatement, native_);
 		return statement;
 
-	}
-
-	@Override
-	public Statement createStatement(int resultSetType, int resultSetConcurrency) throws SQLException {
-		return getRawConnection().createStatement(resultSetType, resultSetConcurrency);
-	}
-
-	@Override
-	public Statement createStatement(int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
-		return getRawConnection().createStatement(resultSetType, resultSetConcurrency, resultSetHoldability);
-	}
-
-	@Override
-	public Struct createStruct(String typeName, Object[] attributes) throws SQLException {
-		return getRawConnection().createStruct(typeName, attributes);
-	}
-
-	@Override
-	public boolean getAutoCommit() throws SQLException {
-		return getRawConnection().getAutoCommit();
 	}
 
 	@Override
@@ -240,105 +163,12 @@ public class BaseConnectionImpl implements QConnection, Connection {
 	}
 
 	@Override
-	public Properties getClientInfo() throws SQLException {
-		return getRawConnection().getClientInfo();
-	}
-
-	@Override
-	public String getClientInfo(String name) throws SQLException {
-		return getRawConnection().getClientInfo(name);
-	}
-
-	@Override
 	public QContext getContext() {
 		return context;
 	}
 
-	@Override
-	public int getHoldability() throws SQLException {
-		return getRawConnection().getHoldability();
-	}
-
-	@Override
-	public DatabaseMetaData getMetaData() throws SQLException {
-		return getRawConnection().getMetaData();
-	}
-
-	@Override
-	public int getNetworkTimeout() throws SQLException {
-		return getRawConnection().getNetworkTimeout();
-	}
-
 	private Connection getRawConnection() throws SQLException {
 		return getCatalogConnection().getRawConnection();
-	}
-
-	@Override
-	public String getSchema() throws SQLException {
-		return getRawConnection().getSchema();
-	}
-
-	@Override
-	public int getTransactionIsolation() throws SQLException {
-		return getRawConnection().getTransactionIsolation();
-	}
-
-	@Override
-	public Map<String, Class<?>> getTypeMap() throws SQLException {
-		return getRawConnection().getTypeMap();
-	}
-
-	@Override
-	public SQLWarning getWarnings() throws SQLException {
-		return getRawConnection().getWarnings();
-	}
-
-	@Override
-	public boolean isClosed() throws SQLException {
-
-		try {
-			if (getRawConnection() == null)
-				return true;
-		} catch (DatabaseCoreRuntimeException e) {
-			return true;
-		}
-
-		return false;
-	}
-
-	@Override
-	public boolean isReadOnly() throws SQLException {
-		return getRawConnection().isReadOnly();
-	}
-
-	@Override
-	public boolean isValid(int timeout) throws SQLException {
-		return getRawConnection().isValid(timeout);
-	}
-
-	@Override
-	public boolean isWrapperFor(Class<?> iface) throws SQLException {
-		return getRawConnection().isWrapperFor(iface);
-	}
-
-	@Override
-	public String nativeSQL(String sql) throws SQLException {
-		return getRawConnection().nativeSQL(sql);
-	}
-
-	@Override
-	public CallableStatement prepareCall(String sql) throws SQLException {
-		return getRawConnection().prepareCall(sql);
-	}
-
-	@Override
-	public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
-		return getRawConnection().prepareCall(sql, resultSetType, resultSetConcurrency);
-	}
-
-	@Override
-	public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
-		return getRawConnection().prepareCall(sql, resultSetType, resultSetConcurrency, resultSetHoldability);
 	}
 
 	@Override
@@ -369,54 +199,6 @@ public class BaseConnectionImpl implements QConnection, Connection {
 		return statement;
 	}
 
-	@Override
-	public PreparedStatement prepareStatement(String sql, int autoGeneratedKeys) throws SQLException {
-		return getRawConnection().prepareStatement(sql, autoGeneratedKeys);
-	}
-
-	@Override
-	public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
-		return getRawConnection().prepareStatement(sql, resultSetType, resultSetConcurrency);
-	}
-
-	@Override
-	public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
-		return getRawConnection().prepareStatement(sql, resultSetType, resultSetConcurrency, resultSetHoldability);
-	}
-
-	@Override
-	public PreparedStatement prepareStatement(String sql, int[] columnIndexes) throws SQLException {
-		return getRawConnection().prepareStatement(sql, columnIndexes);
-	}
-
-	@Override
-	public PreparedStatement prepareStatement(String sql, String[] columnNames) throws SQLException {
-		return getRawConnection().prepareStatement(sql, columnNames);
-	}
-
-	@Override
-	public void releaseSavepoint(Savepoint savepoint) throws SQLException {
-		getRawConnection().releaseSavepoint(savepoint);
-	}
-
-	@Override
-	public void rollback() throws SQLException {
-		@SuppressWarnings("resource")
-		Connection connection = getRawConnection();
-		connection.rollback();
-	}
-
-	@Override
-	public void rollback(Savepoint savepoint) throws SQLException {
-		getRawConnection().rollback(savepoint);
-	}
-
-	@Override
-	public void setAutoCommit(boolean autoCommit) throws SQLException {
-		@SuppressWarnings("resource")
-		Connection connection = getRawConnection();
-		connection.setAutoCommit(autoCommit);
-	}
 
 	@Override
 	public void setCatalog(String catalog) throws SQLException {
@@ -429,66 +211,6 @@ public class BaseConnectionImpl implements QConnection, Connection {
 
 		getRawConnection();
 
-	}
-
-	@Override
-	public void setClientInfo(Properties properties) throws SQLClientInfoException {
-		try {
-			getRawConnection().setClientInfo(properties);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void setClientInfo(String name, String value) throws SQLClientInfoException {
-		try {
-			getRawConnection().setClientInfo(name, value);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void setHoldability(int holdability) throws SQLException {
-		getRawConnection().setHoldability(holdability);
-	}
-
-	@Override
-	public void setNetworkTimeout(Executor executor, int milliseconds) throws SQLException {
-		getRawConnection().setNetworkTimeout(executor, milliseconds);
-	}
-
-	@Override
-	public void setReadOnly(boolean readOnly) throws SQLException {
-		getRawConnection().setReadOnly(readOnly);
-	}
-
-	@Override
-	public Savepoint setSavepoint() throws SQLException {
-		return getRawConnection().setSavepoint();
-	}
-
-	@Override
-	public Savepoint setSavepoint(String name) throws SQLException {
-		return getRawConnection().setSavepoint(name);
-	}
-
-	@Override
-	public void setSchema(String schema) throws SQLException {
-		getRawConnection().setSchema(schema);
-	}
-
-	@Override
-	public void setTransactionIsolation(int level) throws SQLException {
-		getRawConnection().setTransactionIsolation(level);
-	}
-
-	@Override
-	public void setTypeMap(Map<String, Class<?>> map) throws SQLException {
-		getRawConnection().setTypeMap(map);
 	}
 
 	@Override
@@ -510,11 +232,6 @@ public class BaseConnectionImpl implements QConnection, Connection {
 		}
 
 		return sql;
-	}
-
-	@Override
-	public <T> T unwrap(Class<T> iface) throws SQLException {
-		return getRawConnection().unwrap(iface);
 	}
 
 	@Override
