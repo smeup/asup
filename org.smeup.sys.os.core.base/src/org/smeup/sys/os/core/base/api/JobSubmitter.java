@@ -35,7 +35,7 @@ import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
-import org.smeup.sys.os.pgm.QCallableProgram;
+import org.smeup.sys.os.pgm.QProgramCallable;
 import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.os.usrprf.QUserProfile;
 
@@ -78,7 +78,7 @@ public class JobSubmitter {
 			@ToDo @DataDef(length = 1) QEnum<AllowMultipleThreadsEnum, QCharacter> allowMultipleThreads, @ToDo @DataDef(length = 10) QEnum<SpooledFileActionEnum, QCharacter> spooledFileAction) {
 
 		@SuppressWarnings("resource")
-		QCallableProgram<?> callableProgram = programManager.getCaller(job.getJobID(), this);
+		QProgramCallable callableProgram = programManager.getCaller(job.getJobID(), this);
 		Object caller = null;
 		if(callableProgram != null)
 			caller = callableProgram.getRawProgram();

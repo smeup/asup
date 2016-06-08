@@ -43,7 +43,7 @@ import org.smeup.sys.os.module.QModuleContainer;
 import org.smeup.sys.os.module.QOperatingSystemModuleFactory;
 import org.smeup.sys.os.msgf.QMessageFile;
 import org.smeup.sys.os.msgf.QMessageFileContainer;
-import org.smeup.sys.os.pgm.QCallableProgram;
+import org.smeup.sys.os.pgm.QProgramCallable;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 import org.smeup.sys.os.pgm.QProgram;
 import org.smeup.sys.os.pgm.QProgramContainer;
@@ -366,8 +366,8 @@ public class BaseBundleManagerImpl implements QBundleManager {
 			} catch (ClassNotFoundException e) {
 				continue;
 			}
-			if (QCallableProgram.class.isAssignableFrom(klass) || klass.getAnnotation(Program.class) != null)
-				programs.add(buildProgram(bundle, (Class<QCallableProgram<?>>) klass));
+			if (QProgramCallable.class.isAssignableFrom(klass) || klass.getAnnotation(Program.class) != null)
+				programs.add(buildProgram(bundle, (Class<QProgramCallable>) klass));
 		}
 
 		return programs;
@@ -413,7 +413,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 			}
 
 			if (klass.getAnnotation(Module.class) != null)
-				modules.add(buildModule(bundle, (Class<QCallableProgram<?>>) klass));
+				modules.add(buildModule(bundle, (Class<QProgramCallable>) klass));
 		}
 
 		return modules;

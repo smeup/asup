@@ -640,6 +640,9 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(compilationUnitEClass, ecorePackage.getEString(), "normalizeModuleName", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(compilationUnitEClass, ecorePackage.getEString(), "normalizeRoutineName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(compilationUnitEClass, ecorePackage.getEString(), "normalizeTermName", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 

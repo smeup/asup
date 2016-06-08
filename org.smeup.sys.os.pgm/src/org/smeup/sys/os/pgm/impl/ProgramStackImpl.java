@@ -16,7 +16,7 @@ import java.util.Stack;
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.os.pgm.ProgramStackOrder;
-import org.smeup.sys.os.pgm.QCallableProgram;
+import org.smeup.sys.os.pgm.QProgramCallable;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramPackage;
 import org.smeup.sys.os.pgm.QProgramStack;
 
@@ -31,7 +31,7 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	private Stack<QCallableProgram<?>> stack;
+	private Stack<QProgramCallable> stack;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -40,7 +40,7 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	 */
 	protected ProgramStackImpl() {
 		super();
-		this.stack = new Stack<QCallableProgram<?>>();
+		this.stack = new Stack<QProgramCallable>();
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean contains(QCallableProgram<?> element) {
+	public boolean contains(QProgramCallable element) {
 		return this.stack.contains(element);
 	}
 
@@ -67,7 +67,7 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	 * @generated NOT
 	 */
 	public boolean contains(String name) {
-		for (QCallableProgram<?> level : list(ProgramStackOrder.ASCEND)) {
+		for (QProgramCallable level : list(ProgramStackOrder.ASCEND)) {
 			if (level.getProgram().getName().equalsIgnoreCase(name))
 				return true;
 		}
@@ -80,7 +80,7 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	 * @generated NOT
 	 */
 	@Override
-	public void push(QCallableProgram<?> element) {
+	public void push(QProgramCallable element) {
 		this.stack.push(element);
 	}
 
@@ -90,7 +90,7 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	 * @generated NOT
 	 */
 	@Override
-	public QCallableProgram<?> peek() {
+	public QProgramCallable peek() {
 		return this.stack.peek();
 	}
 
@@ -100,7 +100,7 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	 * @generated NOT
 	 */
 	@Override
-	public QCallableProgram<?> pop() {
+	public QProgramCallable pop() {
 		return this.stack.pop();
 	}
 
@@ -120,12 +120,12 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	 * @generated NOT
 	 */
 	@Override
-	public List<QCallableProgram<?>> list(ProgramStackOrder order) {
-		List<QCallableProgram<?>> programList = new ArrayList<QCallableProgram<?>>();
-		Iterator<QCallableProgram<?>> programs = stack.iterator();
+	public List<QProgramCallable> list(ProgramStackOrder order) {
+		List<QProgramCallable> programList = new ArrayList<QProgramCallable>();
+		Iterator<QProgramCallable> programs = stack.iterator();
 		while (programs.hasNext()) {
 			@SuppressWarnings("resource")
-			QCallableProgram<?> program = programs.next();
+			QProgramCallable program = programs.next();
 			programList.add(program);
 		}
 		

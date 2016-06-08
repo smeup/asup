@@ -31,11 +31,11 @@ public class NIOBufferedListIterator<D extends QBufferedElement> implements Iter
 		this.startIndex = startIndex;
 		this.numElements = numElements;
 		this.current = sortDirection == SortDirection.ASCEND ? startIndex - 1 : list.capacity() + 1;
-	}
+	}	
 
 	@Override
 	public boolean hasNext() {
-		return sortDirection == SortDirection.ASCEND ? current < (numElements - startIndex + 1) : current > startIndex;
+		return sortDirection == SortDirection.ASCEND ? current < (numElements) : current > startIndex;
 	}
 
 	@Override

@@ -831,7 +831,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		if (routine == null)
 			throw new IntegratedLanguageExpressionRuntimeException("Invalid routine: " + statement.getRoutine());
 
-		methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(routine.getName())));
+		methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeRoutineName(routine.getName())));
 
 		if (!isOwner(routine)) {
 			QNode parent = routine.getParent();

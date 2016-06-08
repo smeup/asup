@@ -60,14 +60,12 @@ import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.QProgram;
 import org.smeup.sys.os.pgm.QProgramManager;
-import org.smeup.sys.os.pgm.base.BaseCallableInjector;
-import org.smeup.sys.os.pgm.base.BaseProgramStatusImpl;
 
 @Module(name = "*RPJ", scope = Scope.OWNER)
 public class RPJProgramSupport {
 
 	@Inject
-	private transient BaseCallableInjector injector;
+	private transient RPJProgramInjector injector;
 	@Inject
 	private transient QDataContext dataContext;
 	@Inject
@@ -85,7 +83,7 @@ public class RPJProgramSupport {
 	public transient static Specials qSP;
 	
 	@Overlay(name = "*PGMSTATUS")
-	private transient BaseProgramStatusImpl programStatus;
+	private transient RPJProgramStatus programStatus;
 
 	private transient QDataFiller dataFiller;
 	private transient QResourceReader<QProgram> programReader;

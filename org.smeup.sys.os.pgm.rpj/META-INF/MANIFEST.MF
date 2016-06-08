@@ -11,6 +11,7 @@ Require-Bundle:
  org.smeup.sys.os.pgm,
  org.smeup.sys.os.cmd,
  org.smeup.sys.rt.core,
- org.smeup.sys.os.pgm.base,
  org.smeup.sys.il.memo,
- org.smeup.sys.il.esam
+ org.smeup.sys.il.esam,
+ org.smeup.sys.os.file,
+ org.smeup.sys.db.esql

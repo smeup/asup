@@ -59,7 +59,7 @@ public interface QProgramManager {
 	 * @model programRequired="true"
 	 * @generated
 	 */
-	QCallableProgram<?> getCaller(String contextID, QCallableProgram<?> program);
+	QProgramCallable getCaller(String contextID, QProgramCallable program);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -67,7 +67,7 @@ public interface QProgramManager {
 	 * @model programRequired="true"
 	 * @generated
 	 */
-	QCallableProgram<?> getCaller(String contextID, Object program);
+	QProgramCallable getCaller(String contextID, Object program);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -83,7 +83,7 @@ public interface QProgramManager {
 	 * @model programRequired="true"
 	 * @generated
 	 */
-	QCallableProgram<?> loadProgram(QJob job, QProgram program);
+	QProgramCallable loadProgram(QJob job, QProgram program);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

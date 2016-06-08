@@ -18,7 +18,7 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.os.pgm.QActivationGroup;
-import org.smeup.sys.os.pgm.QCallableProgram;
+import org.smeup.sys.os.pgm.QProgramCallable;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramPackage;
 import org.smeup.sys.os.pgm.QProgram;
 import org.smeup.sys.os.pgm.QProgramInfo;
@@ -32,12 +32,12 @@ import org.smeup.sys.os.pgm.QProgramStatus;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.os.pgm.impl.CallableProgramImpl#getActivationGroup <em>Activation Group</em>}</li>
+ *   <li>{@link org.smeup.sys.os.pgm.impl.ProgramCallableImpl#getActivationGroup <em>Activation Group</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class CallableProgramImpl<P extends Object> extends ObjectImpl implements QCallableProgram<P> {
+public abstract class ProgramCallableImpl extends ObjectImpl implements QProgramCallable {
 	/**
 	 * 
 	 */
@@ -48,7 +48,7 @@ public abstract class CallableProgramImpl<P extends Object> extends ObjectImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CallableProgramImpl() {
+	protected ProgramCallableImpl() {
 		super();
 	}
 
@@ -59,7 +59,7 @@ public abstract class CallableProgramImpl<P extends Object> extends ObjectImpl i
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QOperatingSystemProgramPackage.Literals.CALLABLE_PROGRAM;
+		return QOperatingSystemProgramPackage.Literals.PROGRAM_CALLABLE;
 	}
 
 	/**
@@ -68,7 +68,7 @@ public abstract class CallableProgramImpl<P extends Object> extends ObjectImpl i
 	 * @generated
 	 */
 	public QActivationGroup getActivationGroup() {
-		if (eContainerFeatureID() != QOperatingSystemProgramPackage.CALLABLE_PROGRAM__ACTIVATION_GROUP) return null;
+		if (eContainerFeatureID() != QOperatingSystemProgramPackage.PROGRAM_CALLABLE__ACTIVATION_GROUP) return null;
 		return (QActivationGroup)eInternalContainer();
 	}
 
@@ -78,7 +78,7 @@ public abstract class CallableProgramImpl<P extends Object> extends ObjectImpl i
 	 * @generated
 	 */
 	public NotificationChain basicSetActivationGroup(QActivationGroup newActivationGroup, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newActivationGroup, QOperatingSystemProgramPackage.CALLABLE_PROGRAM__ACTIVATION_GROUP, msgs);
+		msgs = eBasicSetContainer((InternalEObject)newActivationGroup, QOperatingSystemProgramPackage.PROGRAM_CALLABLE__ACTIVATION_GROUP, msgs);
 		return msgs;
 	}
 
@@ -88,7 +88,7 @@ public abstract class CallableProgramImpl<P extends Object> extends ObjectImpl i
 	 * @generated
 	 */
 	public void setActivationGroup(QActivationGroup newActivationGroup) {
-		if (newActivationGroup != eInternalContainer() || (eContainerFeatureID() != QOperatingSystemProgramPackage.CALLABLE_PROGRAM__ACTIVATION_GROUP && newActivationGroup != null)) {
+		if (newActivationGroup != eInternalContainer() || (eContainerFeatureID() != QOperatingSystemProgramPackage.PROGRAM_CALLABLE__ACTIVATION_GROUP && newActivationGroup != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject)newActivationGroup))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
@@ -100,7 +100,7 @@ public abstract class CallableProgramImpl<P extends Object> extends ObjectImpl i
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemProgramPackage.CALLABLE_PROGRAM__ACTIVATION_GROUP, newActivationGroup, newActivationGroup));
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemProgramPackage.PROGRAM_CALLABLE__ACTIVATION_GROUP, newActivationGroup, newActivationGroup));
 	}
 
 	/**
@@ -130,7 +130,7 @@ public abstract class CallableProgramImpl<P extends Object> extends ObjectImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QData[] getEntry() {
+	public QData[] getParameters() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -174,7 +174,7 @@ public abstract class CallableProgramImpl<P extends Object> extends ObjectImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public P getRawProgram() {
+	public Object getRawProgram() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -199,7 +199,7 @@ public abstract class CallableProgramImpl<P extends Object> extends ObjectImpl i
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__ACTIVATION_GROUP:
+			case QOperatingSystemProgramPackage.PROGRAM_CALLABLE__ACTIVATION_GROUP:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetActivationGroup((QActivationGroup)otherEnd, msgs);
@@ -215,7 +215,7 @@ public abstract class CallableProgramImpl<P extends Object> extends ObjectImpl i
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__ACTIVATION_GROUP:
+			case QOperatingSystemProgramPackage.PROGRAM_CALLABLE__ACTIVATION_GROUP:
 				return basicSetActivationGroup(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -229,7 +229,7 @@ public abstract class CallableProgramImpl<P extends Object> extends ObjectImpl i
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__ACTIVATION_GROUP:
+			case QOperatingSystemProgramPackage.PROGRAM_CALLABLE__ACTIVATION_GROUP:
 				return eInternalContainer().eInverseRemove(this, QOperatingSystemProgramPackage.ACTIVATION_GROUP__PROGRAMS, QActivationGroup.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
@@ -243,7 +243,7 @@ public abstract class CallableProgramImpl<P extends Object> extends ObjectImpl i
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__ACTIVATION_GROUP:
+			case QOperatingSystemProgramPackage.PROGRAM_CALLABLE__ACTIVATION_GROUP:
 				return getActivationGroup();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -257,7 +257,7 @@ public abstract class CallableProgramImpl<P extends Object> extends ObjectImpl i
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__ACTIVATION_GROUP:
+			case QOperatingSystemProgramPackage.PROGRAM_CALLABLE__ACTIVATION_GROUP:
 				setActivationGroup((QActivationGroup)newValue);
 				return;
 		}
@@ -272,7 +272,7 @@ public abstract class CallableProgramImpl<P extends Object> extends ObjectImpl i
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__ACTIVATION_GROUP:
+			case QOperatingSystemProgramPackage.PROGRAM_CALLABLE__ACTIVATION_GROUP:
 				setActivationGroup((QActivationGroup)null);
 				return;
 		}
@@ -287,7 +287,7 @@ public abstract class CallableProgramImpl<P extends Object> extends ObjectImpl i
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__ACTIVATION_GROUP:
+			case QOperatingSystemProgramPackage.PROGRAM_CALLABLE__ACTIVATION_GROUP:
 				return getActivationGroup() != null;
 		}
 		return super.eIsSet(featureID);

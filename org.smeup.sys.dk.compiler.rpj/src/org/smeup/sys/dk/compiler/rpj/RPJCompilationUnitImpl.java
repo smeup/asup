@@ -89,7 +89,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 	private Map<String, QDataTerm<?>> cachedTerms = new HashMap<String, QDataTerm<?>>();
 	private Map<String, QPrototype> cachedPrototypes = new HashMap<String, QPrototype>();
-	private ArrayList<String> reservedKeywords = new ArrayList<String>(Arrays.asList("INT", "FOR", "CHAR", "IF", "BREAK", "TRUE", "FALSE", "DO", "FINAL", "DEFAULT", "ENUM"));
+	private ArrayList<String> reservedKeywords = new ArrayList<String>(Arrays.asList("INT", "FOR", "CHAR", "IF", "BREAK", "TRUE", "FALSE", "DO", "FINAL", "DEFAULT", "ENUM", "CALL"));
 
 	public RPJCompilationUnitImpl(QContext context, QNameable node, QCompilationUnit parentUnit, List<QCompilationUnit> childUnits, CaseSensitiveType caseSensitive) {
 
@@ -801,6 +801,11 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		moduleName = Character.toString(moduleName.charAt(0)) + Character.toUpperCase(moduleName.charAt(1)) + moduleName.substring(2);
 
 		return moduleName;
+	}
+
+	@Override
+	public String normalizeRoutineName(String name) {
+		return normalizeTermName(name);
 	}
 
 	@Override

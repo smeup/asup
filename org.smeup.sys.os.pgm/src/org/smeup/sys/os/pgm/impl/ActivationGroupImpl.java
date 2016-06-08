@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.os.pgm.QActivationGroup;
-import org.smeup.sys.os.pgm.QCallableProgram;
+import org.smeup.sys.os.pgm.QProgramCallable;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramPackage;
 import org.smeup.sys.os.pgm.QProgram;
 
@@ -68,7 +68,7 @@ public class ActivationGroupImpl extends ObjectImpl implements QActivationGroup 
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<QCallableProgram<?>> programs;
+	protected EList<QProgramCallable> programs;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -113,9 +113,9 @@ public class ActivationGroupImpl extends ObjectImpl implements QActivationGroup 
 	 * @generated
 	 */
 	@Override
-	public List<QCallableProgram<?>> getPrograms() {
+	public List<QProgramCallable> getPrograms() {
 		if (programs == null) {
-			programs = new EObjectContainmentWithInverseEList<QCallableProgram<?>>(QCallableProgram.class, this, QOperatingSystemProgramPackage.ACTIVATION_GROUP__PROGRAMS, QOperatingSystemProgramPackage.CALLABLE_PROGRAM__ACTIVATION_GROUP);
+			programs = new EObjectContainmentWithInverseEList<QProgramCallable>(QProgramCallable.class, this, QOperatingSystemProgramPackage.ACTIVATION_GROUP__PROGRAMS, QOperatingSystemProgramPackage.PROGRAM_CALLABLE__ACTIVATION_GROUP);
 		}
 		return programs;
 	}
@@ -126,9 +126,9 @@ public class ActivationGroupImpl extends ObjectImpl implements QActivationGroup 
 	 * @generated NOT
 	 */
 	@Override
-	public QCallableProgram<?> lookup(QProgram program) {
-		QCallableProgram<?> qCallableProgram = null;
-		for (QCallableProgram<?> callableProgram : getPrograms())
+	public QProgramCallable lookup(QProgram program) {
+		QProgramCallable qCallableProgram = null;
+		for (QProgramCallable callableProgram : getPrograms())
 			if (callableProgram.getProgram().getLibrary().equals(program.getLibrary()) && callableProgram.getProgram().getName().equals(program.getName())) {
 				qCallableProgram = callableProgram;
 				break;
@@ -192,7 +192,7 @@ public class ActivationGroupImpl extends ObjectImpl implements QActivationGroup 
 				return;
 			case QOperatingSystemProgramPackage.ACTIVATION_GROUP__PROGRAMS:
 				getPrograms().clear();
-				getPrograms().addAll((Collection<? extends QCallableProgram<?>>)newValue);
+				getPrograms().addAll((Collection<? extends QProgramCallable>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

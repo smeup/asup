@@ -571,7 +571,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		MethodDeclaration methodDeclaration = getAST().newMethodDeclaration();
 
-		String routineName = getCompilationUnit().normalizeTermName(routine.getName());
+		String routineName = getCompilationUnit().normalizeRoutineName(routine.getName());
 		if (routine.getName().equals("*INZSR")) {
 			routineName = "_open";
 			MarkerAnnotation openAnnotation = getAST().newMarkerAnnotation();

@@ -9,21 +9,21 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.os.pgm.base;
+package org.smeup.sys.os.pgm.rpj;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.util.Arrays;
 
-public class BaseInjectableField {
+public class RPJInjectableField {
 
 	private Field field;
 	private Class<?> fieldClass;
 	private Type type;
 	private Type[] arguments;
 
-	protected BaseInjectableField(Field field, Class<?> fieldClass, Type fieldType, Type[] fieldArgs) {
+	protected RPJInjectableField(Field field, Class<?> fieldClass, Type fieldType, Type[] fieldArgs) {
 		this.field = field;
 		this.fieldClass = fieldClass;
 		this.type = fieldType;

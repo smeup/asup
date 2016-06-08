@@ -26,7 +26,7 @@ import org.smeup.sys.il.data.def.BinaryType;
 public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 	private static final long serialVersionUID = 1L;
-	private static byte INIT = (byte) 0;
+//	private static byte INIT = (byte) 0;
 	private static final byte LOVAL = (byte) 0;
 	private static final byte HIVAL = (byte) 128;
 

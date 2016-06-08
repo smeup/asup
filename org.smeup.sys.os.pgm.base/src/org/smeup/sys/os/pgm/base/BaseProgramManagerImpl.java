@@ -44,11 +44,12 @@ import org.smeup.sys.os.core.jobs.QJobReference;
 import org.smeup.sys.os.pgm.ProgramStackOrder;
 import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QActivationGroupManager;
-import org.smeup.sys.os.pgm.QCallableProgram;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 import org.smeup.sys.os.pgm.QProgram;
+import org.smeup.sys.os.pgm.QProgramCallable;
 import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.os.pgm.QProgramStack;
+import org.smeup.sys.os.pgm.rpj.RPJProgramInjector;
 import org.smeup.sys.rt.core.QApplication;
 
 public class BaseProgramManagerImpl implements QProgramManager {
@@ -100,15 +101,15 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	@Override
 	public void callProgram(QJob job, QProgram program, QData[] params) {
 
-		QCallableProgram<?> callableProgram = loadProgram(job, program);
+		QProgramCallable callableProgram = loadProgram(job, program);
 
 		callProgram(job, callableProgram, params);
 	}
 
 	@Override
-	public QCallableProgram<?> loadProgram(QJob job, QProgram program) {
+	public QProgramCallable loadProgram(QJob job, QProgram program) {
 
-		QCallableProgram<?> callableProgram = null;
+		QProgramCallable callableProgram = null;
 
 		QActivationGroup activationGroup = null;
 
@@ -148,7 +149,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 		QDataContext dataContext = dataManager.createDataContext(job.getContext(), null);
 
-		BaseCallableInjector injector = new BaseCallableInjector(activationGroup, dataContext);
+		RPJProgramInjector injector = new RPJProgramInjector(activationGroup, dataContext);
 		job.getContext().inject(injector);
 
 		callableProgram = injector.prepareCallable(program, klass);
@@ -167,7 +168,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			QProgram program = QOperatingSystemProgramFactory.eINSTANCE.createProgram();
 			program.setName(klass.getSimpleName());
 
-			BaseCallableInjector injector = new BaseCallableInjector(null, dataContext);
+			RPJProgramInjector injector = new RPJProgramInjector(null, dataContext);
 			job.getContext().inject(injector);
 
 			P delegate = injector.prepareDelegate(dataContainer, program, klass);
@@ -201,11 +202,11 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	}
 
 	@Override
-	public QCallableProgram<?> getCaller(String contextID, QCallableProgram<?> program) {
+	public QProgramCallable getCaller(String contextID, QProgramCallable program) {
 
 		QProgramStack programStack = getProgramStack(contextID);
-		QCallableProgram<?> caller = null;
-		for (QCallableProgram<?> level : programStack.list(ProgramStackOrder.ASCEND)) {
+		QProgramCallable caller = null;
+		for (QProgramCallable level : programStack.list(ProgramStackOrder.ASCEND)) {
 			// looking for this
 			if (level.equals(program))
 				return caller;
@@ -216,11 +217,11 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	}
 
 	@Override
-	public QCallableProgram<?> getCaller(String contextID, Object program) {
+	public QProgramCallable getCaller(String contextID, Object program) {
 
 		QProgramStack programStack = getProgramStack(contextID);
-		QCallableProgram<?> caller = null;
-		for (QCallableProgram<?> level : programStack.list(ProgramStackOrder.ASCEND)) {
+		QProgramCallable caller = null;
+		for (QProgramCallable level : programStack.list(ProgramStackOrder.ASCEND)) {
 			// looking for this
 			if (level.getRawProgram().equals(program))
 				return caller;
@@ -231,9 +232,9 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	}
 
-	private void assignParameters(QCallableProgram<?> callableProgram, QData[] paramsFrom) {
+	private void assignParameters(QProgramCallable callableProgram, QData[] paramsFrom) {
 
-		QData[] paramsTo = callableProgram.getEntry();
+		QData[] paramsTo = callableProgram.getParameters();
 
 		int paramsLength = 0;
 
@@ -293,7 +294,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		}
 	}
 
-	private void callProgram(QJob job, QCallableProgram<?> callableProgram, QData[] params) {
+	private void callProgram(QJob job, QProgramCallable callableProgram, QData[] params) {
 
 		if (job.getJobThread() != null && !job.getJobThread().checkRunnable())
 			return;
@@ -367,13 +368,13 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		return program;
 	}
 
-	private void printSendStack(QJob job, QProgramStack programStack, QCallableProgram<?> callableProgram) {
+	private void printSendStack(QJob job, QProgramStack programStack, QProgramCallable callableProgram) {
 
 		String text = callableProgram.isOpen() ? ">  " : "-> ";
 		text += callableProgram.getProgram().getName() + "[" + callableProgram.getProgram().getActivationGroup() + "]" + " (";
 
-		if (callableProgram.getEntry() != null)
-			text += formatStackParameters(callableProgram.getDataContext(), callableProgram.getEntry());
+		if (callableProgram.getParameters() != null)
+			text += formatStackParameters(callableProgram.getDataContext(), callableProgram.getParameters());
 		text += ")";
 
 		String loadTimeString = "       ";
@@ -384,12 +385,12 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		writeContent(job, "pgm:\t" + jobReference.getJobName() + "(" + jobReference.getJobNumber() + ")" + loadTimeString + QStrings.qINSTANCE.appendChars(text, "\t", programStack.size(), true));
 	}
 
-	private void printReceiveStack(QJob job, QProgramStack programStack, QCallableProgram<?> callableProgram) {
+	private void printReceiveStack(QJob job, QProgramStack programStack, QProgramCallable callableProgram) {
 
 		String text = callableProgram.isOpen() ? "<  " : "<- ";
 		text += callableProgram.getProgram().getName() + "[" + callableProgram.getProgram().getActivationGroup() + "]" + " (";
-		if (callableProgram.getEntry() != null)
-			text += formatStackParameters(callableProgram.getDataContext(), callableProgram.getEntry());
+		if (callableProgram.getParameters() != null)
+			text += formatStackParameters(callableProgram.getDataContext(), callableProgram.getParameters());
 		text += ")";
 
 		String callTimeString = "[" + new DecimalFormat("00000").format(callableProgram.getProgramInfo().getCallTime()) + "]";

@@ -27,7 +27,7 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.pgm.ProgramStackOrder;
 import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QActivationGroupManager;
-import org.smeup.sys.os.pgm.QCallableProgram;
+import org.smeup.sys.os.pgm.QProgramCallable;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramPackage;
 import org.smeup.sys.os.pgm.QProgram;
@@ -64,10 +64,11 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	private EClass programEClass = null;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass callableProgramEClass = null;
+	private EClass programCallableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -274,12 +275,12 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EClass getCallableProgram() {
-		return callableProgramEClass;
+	public EClass getProgramCallable() {
+		return programCallableEClass;
 	}
 
 	/**
@@ -287,8 +288,8 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCallableProgram_ActivationGroup() {
-		return (EReference)callableProgramEClass.getEStructuralFeatures().get(0);
+	public EReference getProgramCallable_ActivationGroup() {
+		return (EReference)programCallableEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -460,15 +461,15 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 
 		activationGroupManagerEClass = createEClass(ACTIVATION_GROUP_MANAGER);
 
-		callableProgramEClass = createEClass(CALLABLE_PROGRAM);
-		createEReference(callableProgramEClass, CALLABLE_PROGRAM__ACTIVATION_GROUP);
-
 		programEClass = createEClass(PROGRAM);
 		createEAttribute(programEClass, PROGRAM__ACTIVATION_GROUP);
 		createEAttribute(programEClass, PROGRAM__ADDRESS);
 		createEAttribute(programEClass, PROGRAM__BASE_PROGRAM);
 		createEAttribute(programEClass, PROGRAM__CREATION_PARAMS);
 		createEReference(programEClass, PROGRAM__SOURCE);
+
+		programCallableEClass = createEClass(PROGRAM_CALLABLE);
+		createEReference(programCallableEClass, PROGRAM_CALLABLE__ACTIVATION_GROUP);
 
 		programContainerEClass = createEClass(PROGRAM_CONTAINER);
 		createEAttribute(programContainerEClass, PROGRAM_CONTAINER__BASE_PACKAGE);
@@ -522,32 +523,29 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QMachineInterfaceUtilPackage theMachineInterfaceUtilPackage = (QMachineInterfaceUtilPackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceUtilPackage.eNS_URI);
 		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
+		QOperatingSystemTypePackage theOperatingSystemTypePackage = (QOperatingSystemTypePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemTypePackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 		QIntegratedLanguageDataPackage theIntegratedLanguageDataPackage = (QIntegratedLanguageDataPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI);
-		QOperatingSystemTypePackage theOperatingSystemTypePackage = (QOperatingSystemTypePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemTypePackage.eNS_URI);
 
 		// Create type parameters
-		ETypeParameter callableProgramEClass_P = addETypeParameter(callableProgramEClass, "P");
 
 		// Set bounds for type parameters
-		EGenericType g1 = createEGenericType(ecorePackage.getEJavaObject());
-		callableProgramEClass_P.getEBounds().add(g1);
 
 		// Add supertypes to classes
 		activationGroupEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		g1 = createEGenericType(theMachineInterfaceUtilPackage.getSingleton());
+		EGenericType g1 = createEGenericType(theMachineInterfaceUtilPackage.getSingleton());
 		EGenericType g2 = createEGenericType(this.getActivationGroupManager());
 		g1.getETypeArguments().add(g2);
 		activationGroupManagerEClass.getEGenericSuperTypes().add(g1);
+		programEClass.getESuperTypes().add(theOperatingSystemTypePackage.getTypedObject());
 		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObject());
-		callableProgramEClass.getEGenericSuperTypes().add(g1);
+		programCallableEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaCallable());
 		g2 = createEGenericType(this.getParameterList());
 		g1.getETypeArguments().add(g2);
-		callableProgramEClass.getEGenericSuperTypes().add(g1);
+		programCallableEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaCloseable());
-		callableProgramEClass.getEGenericSuperTypes().add(g1);
-		programEClass.getESuperTypes().add(theOperatingSystemTypePackage.getTypedObject());
+		programCallableEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(theOperatingSystemTypePackage.getTypedContainer());
 		g2 = createEGenericType(this.getProgram());
 		g1.getETypeArguments().add(g2);
@@ -560,17 +558,10 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		// Initialize classes and features; add operations and parameters
 		initEClass(activationGroupEClass, QActivationGroup.class, "ActivationGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getActivationGroup_Name(), ecorePackage.getEString(), "name", null, 1, 1, QActivationGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		g1 = createEGenericType(this.getCallableProgram());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		initEReference(getActivationGroup_Programs(), g1, this.getCallableProgram_ActivationGroup(), "programs", null, 0, -1, QActivationGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActivationGroup_Programs(), this.getProgramCallable(), this.getProgramCallable_ActivationGroup(), "programs", null, 0, -1, QActivationGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = addEOperation(activationGroupEClass, null, "lookup", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(activationGroupEClass, this.getProgramCallable(), "lookup", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getProgram(), "program", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getCallableProgram());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
 
 		initEClass(activationGroupManagerEClass, QActivationGroupManager.class, "ActivationGroupManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -597,27 +588,6 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getActivationGroup(), "activationGroup", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(callableProgramEClass, QCallableProgram.class, "CallableProgram", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCallableProgram_ActivationGroup(), this.getActivationGroup(), this.getActivationGroup_Programs(), "activationGroup", null, 0, 1, QCallableProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(callableProgramEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(callableProgramEClass, theIntegratedLanguageDataPackage.getDataContext(), "getDataContext", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(callableProgramEClass, this.getParameterList(), "getEntry", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(callableProgramEClass, this.getProgram(), "getProgram", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(callableProgramEClass, this.getProgramInfo(), "getProgramInfo", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(callableProgramEClass, this.getProgramStatus(), "getProgramStatus", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(callableProgramEClass, null, "getRawProgram", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(callableProgramEClass_P);
-		initEOperation(op, g1);
-
-		addEOperation(callableProgramEClass, ecorePackage.getEBoolean(), "isOpen", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(programEClass, QProgram.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProgram_ActivationGroup(), ecorePackage.getEString(), "activationGroup", "*DFT", 0, 1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProgram_Address(), ecorePackage.getEString(), "address", null, 0, 1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -628,6 +598,25 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		addEOperation(programEClass, theMachineInterfaceCorePackage.getJavaURI(), "getClassURI", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(programEClass, theMachineInterfaceCorePackage.getJavaURI(), "getPackageInfoURI", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(programCallableEClass, QProgramCallable.class, "ProgramCallable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getProgramCallable_ActivationGroup(), this.getActivationGroup(), this.getActivationGroup_Programs(), "activationGroup", null, 0, 1, QProgramCallable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(programCallableEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(programCallableEClass, theIntegratedLanguageDataPackage.getDataContext(), "getDataContext", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(programCallableEClass, this.getParameterList(), "getParameters", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(programCallableEClass, this.getProgram(), "getProgram", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(programCallableEClass, this.getProgramInfo(), "getProgramInfo", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(programCallableEClass, this.getProgramStatus(), "getProgramStatus", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(programCallableEClass, ecorePackage.getEJavaObject(), "getRawProgram", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(programCallableEClass, ecorePackage.getEBoolean(), "isOpen", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(programContainerEClass, QProgramContainer.class, "ProgramContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProgramContainer_BasePackage(), ecorePackage.getEString(), "basePackage", null, 0, 1, QProgramContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -665,35 +654,20 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getProgram(), "program", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getParameterList(), "params", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(programManagerEClass, null, "getCaller", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(programManagerEClass, this.getProgramCallable(), "getCaller", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "contextID", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getCallableProgram());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "program", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getCallableProgram());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
+		addEParameter(op, this.getProgramCallable(), "program", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(programManagerEClass, null, "getCaller", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(programManagerEClass, this.getProgramCallable(), "getCaller", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "contextID", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEJavaObject(), "program", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getCallableProgram());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
 
 		op = addEOperation(programManagerEClass, this.getProgramStack(), "getProgramStack", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "contextID", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(programManagerEClass, null, "loadProgram", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(programManagerEClass, this.getProgramCallable(), "loadProgram", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getProgram(), "program", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getCallableProgram());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
 
 		op = addEOperation(programManagerEClass, null, "loadProgram", 0, 1, IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "P");
@@ -714,40 +688,22 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		initEClass(programStackEClass, QProgramStack.class, "ProgramStack", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(programStackEClass, ecorePackage.getEBoolean(), "contains", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getCallableProgram());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "element", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getProgramCallable(), "element", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(programStackEClass, ecorePackage.getEBoolean(), "contains", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(programStackEClass, ecorePackage.getEBoolean(), "isEmpty", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(programStackEClass, null, "list", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(programStackEClass, this.getProgramCallable(), "list", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getProgramStackOrder(), "order", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getCallableProgram());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
 
 		op = addEOperation(programStackEClass, null, "push", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getCallableProgram());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "element", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getProgramCallable(), "element", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(programStackEClass, null, "peek", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getCallableProgram());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
+		addEOperation(programStackEClass, this.getProgramCallable(), "peek", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(programStackEClass, null, "pop", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getCallableProgram());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
+		addEOperation(programStackEClass, this.getProgramCallable(), "pop", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(programStackEClass, ecorePackage.getEInt(), "size", 0, 1, IS_UNIQUE, IS_ORDERED);
 

@@ -22,14 +22,14 @@ import org.smeup.sys.il.data.QDataContext;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.os.pgm.QCallableProgram#getActivationGroup <em>Activation Group</em>}</li>
+ *   <li>{@link org.smeup.sys.os.pgm.QProgramCallable#getActivationGroup <em>Activation Group</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getCallableProgram()
- * @model abstract="true" superTypes="org.smeup.sys.il.core.Object org.smeup.sys.mi.core.JavaCallable<org.smeup.sys.os.pgm.ParameterList> org.smeup.sys.mi.core.JavaCloseable" PBounds="org.eclipse.emf.ecore.EJavaObject"
+ * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getProgramCallable()
+ * @model abstract="true" superTypes="org.smeup.sys.il.core.Object org.smeup.sys.mi.core.JavaCallable<org.smeup.sys.os.pgm.ParameterList> org.smeup.sys.mi.core.JavaCloseable"
  * @generated
  */
-public interface QCallableProgram<P extends Object> extends QObject, Callable<QData[]>, Closeable {
+public interface QProgramCallable extends QObject, Callable<QData[]>, Closeable {
 	/**
 	 * Returns the value of the '<em><b>Activation Group</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.smeup.sys.os.pgm.QActivationGroup#getPrograms <em>Programs</em>}'.
@@ -41,7 +41,7 @@ public interface QCallableProgram<P extends Object> extends QObject, Callable<QD
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Activation Group</em>' container reference.
 	 * @see #setActivationGroup(QActivationGroup)
-	 * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getCallableProgram_ActivationGroup()
+	 * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getProgramCallable_ActivationGroup()
 	 * @see org.smeup.sys.os.pgm.QActivationGroup#getPrograms
 	 * @model opposite="programs" transient="false"
 	 * @generated
@@ -49,7 +49,7 @@ public interface QCallableProgram<P extends Object> extends QObject, Callable<QD
 	QActivationGroup getActivationGroup();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.pgm.QCallableProgram#getActivationGroup <em>Activation Group</em>}' container reference.
+	 * Sets the value of the '{@link org.smeup.sys.os.pgm.QProgramCallable#getActivationGroup <em>Activation Group</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Activation Group</em>' container reference.
@@ -79,7 +79,7 @@ public interface QCallableProgram<P extends Object> extends QObject, Callable<QD
 	 * @model kind="operation" dataType="org.smeup.sys.os.pgm.ParameterList"
 	 * @generated
 	 */
-	QData[] getEntry();
+	QData[] getParameters();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -110,7 +110,7 @@ public interface QCallableProgram<P extends Object> extends QObject, Callable<QD
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
-	P getRawProgram();
+	Object getRawProgram();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

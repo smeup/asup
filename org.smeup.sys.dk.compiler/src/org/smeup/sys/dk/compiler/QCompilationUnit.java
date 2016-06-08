@@ -241,6 +241,14 @@ public interface QCompilationUnit extends QContextProvider, Closeable {
 	 * @model required="true" nameRequired="true"
 	 * @generated
 	 */
+	String normalizeRoutineName(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" nameRequired="true"
+	 * @generated
+	 */
 	String normalizeTermName(String name);
 
 	/**

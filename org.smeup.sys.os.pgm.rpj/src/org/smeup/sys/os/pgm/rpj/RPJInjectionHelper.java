@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.os.pgm.base;
+package org.smeup.sys.os.pgm.rpj;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -39,9 +39,9 @@ import org.smeup.sys.il.esam.QSMDataSet;
 import org.smeup.sys.il.esam.annotation.FileDef;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 
-public class BaseInjectionHelper {
+public class RPJInjectionHelper {
 
-	public static BaseInjectableField createInjectableField(Field field) {
+	public static RPJInjectableField createInjectableField(Field field) {
 		Class<?> fieldClass = null;
 
 		Type fieldType = field.getGenericType();
@@ -55,7 +55,7 @@ public class BaseInjectionHelper {
 		} else
 			fieldClass = (Class<?>) fieldType;
 
-		BaseInjectableField injectableField = new BaseInjectableField(field, fieldClass, fieldType, argsType);
+		RPJInjectableField injectableField = new RPJInjectableField(field, fieldClass, fieldType, argsType);
 
 		return injectableField;
 	}
@@ -79,7 +79,7 @@ public class BaseInjectionHelper {
 		return owner;
 	}
 
-	public static void injectDataNoBased(Object callable, QDataContainer dataContainer, BaseInjectableField field) {
+	public static void injectDataNoBased(Object callable, QDataContainer dataContainer, RPJInjectableField field) {
 
 		QDataTerm<?> dataTerm = dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
 		if (dataTerm.getBased() != null)
@@ -88,7 +88,7 @@ public class BaseInjectionHelper {
 		field.setValue(callable, dataContainer.getData(dataTerm));
 	}
 
-	public static void injectDataBased(Object callable, QDataContainer dataContainer, BaseInjectableField field) {
+	public static void injectDataBased(Object callable, QDataContainer dataContainer, RPJInjectableField field) {
 
 		QDataTerm<?> dataTerm = dataContainer.getDataTerm(field.getName());
 		if (dataTerm.getBased() == null)
@@ -97,7 +97,7 @@ public class BaseInjectionHelper {
 		field.setValue(callable, dataContainer.getData(dataTerm));
 	}
 
-	public static void injectPointerNoDefault(Object callable, QDataContainer dataContainer, BaseInjectableField field) {
+	public static void injectPointerNoDefault(Object callable, QDataContainer dataContainer, RPJInjectableField field) {
 
 		QDataTerm<?> dataTerm = dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
 
@@ -107,7 +107,7 @@ public class BaseInjectionHelper {
 		field.setValue(callable, dataContainer.getData(dataTerm));
 	}
 
-	public static void injectPointerWithDefault(Object callable, QDataContainer dataContainer, BaseInjectableField field) {
+	public static void injectPointerWithDefault(Object callable, QDataContainer dataContainer, RPJInjectableField field) {
 
 		QDataTerm<?> dataTerm = dataContainer.getDataTerm(field.getName());
 		if (dataTerm.getDefault() == null)
@@ -116,7 +116,7 @@ public class BaseInjectionHelper {
 		field.setValue(callable, dataContainer.getData(dataTerm));
 	}
 
-	public static void setPrimitiveValue(QDataContext dataContext, BaseInjectableField injectableField, Object callable) {
+	public static void setPrimitiveValue(QDataContext dataContext, RPJInjectableField injectableField, Object callable) {
 
 		DataDef dataDef = injectableField.getAnnotation(DataDef.class);
 		if (dataDef == null)
@@ -150,7 +150,7 @@ public class BaseInjectionHelper {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void injectDataStructure(Object callable, QDataContainer dataContainer, Map<String, QRecord> records, BaseInjectableField field, boolean based) {
+	public static void injectDataStructure(Object callable, QDataContainer dataContainer, Map<String, QRecord> records, RPJInjectableField field, boolean based) {
 
 		QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> dataTerm = null;
 
@@ -176,7 +176,7 @@ public class BaseInjectionHelper {
 			QDataStruct dataStruct = (QDataStruct) data;
 			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
 
-			Class<? extends QRecord> primaryRecordClass = BaseInjectionHelper.getPrimaryRecord((Class<? extends QRecord>) data.getClass());
+			Class<? extends QRecord> primaryRecordClass = RPJInjectionHelper.getPrimaryRecord((Class<? extends QRecord>) data.getClass());
 
 			String primaryRecordName = primaryRecordClass.getSimpleName();
 			if (compoundDataDef.getPrefix() != null && !compoundDataDef.getPrefix().isEmpty())
@@ -198,7 +198,7 @@ public class BaseInjectionHelper {
 
 	}
 	
-	public static QRecord createRecord(BaseInjectableField field, Class<QRecord> classRecord, FileDef fileDef, Object callable, QDataContainer dataContainer, Map<String, QRecord> records) {
+	public static QRecord createRecord(RPJInjectableField field, Class<QRecord> classRecord, FileDef fileDef, Object callable, QDataContainer dataContainer, Map<String, QRecord> records) {
 
 		Class<? extends QRecord> classPrimaryRecord = getPrimaryRecord(classRecord);
 
@@ -248,7 +248,7 @@ public class BaseInjectionHelper {
 			return getPrimaryRecord((Class<? extends QRecord>) classRecord.getSuperclass());
 	}
 	
-	public static void setInfoValue(BaseInjectableField field, FileDef fileDef, Object callable, Map<String, QRecord> records) {
+	public static void setInfoValue(RPJInjectableField field, FileDef fileDef, Object callable, Map<String, QRecord> records) {
 
 		// fileInfo
 		if (!fileDef.info().isEmpty()) {
@@ -264,7 +264,7 @@ public class BaseInjectionHelper {
 		}
 	}
 
-	public static void setExternalValue(BaseInjectableField field, FileDef fileDef, Object callable) {
+	public static void setExternalValue(RPJInjectableField field, FileDef fileDef, Object callable) {
 
 		QString externalFile = null;
 		if (!fileDef.externalFile().isEmpty())
@@ -300,7 +300,7 @@ public class BaseInjectionHelper {
 		return bytes;
 	}
 
-	public static void assignRecordFields(Object callable, QDataContainer dataContainer, Set<String> records, BaseInjectableField field, QRecord record) {
+	public static void assignRecordFields(Object callable, QDataContainer dataContainer, Set<String> records, RPJInjectableField field, QRecord record) {
 
 		FileDef fileDef = field.getField().getAnnotation(FileDef.class);
 

@@ -19,7 +19,7 @@ import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QActivationGroupManager;
-import org.smeup.sys.os.pgm.QCallableProgram;
+import org.smeup.sys.os.pgm.QProgramCallable;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.os.pgm.QProgramStack;
@@ -100,7 +100,7 @@ public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 			return;
 
 		boolean active = false;
-		for (QCallableProgram<?> callableProgram : new ArrayList<QCallableProgram<?>>(activationGroup.getPrograms())) {
+		for (QProgramCallable callableProgram : new ArrayList<QProgramCallable>(activationGroup.getPrograms())) {
 			if (programStack.contains(callableProgram)) {
 				active = true;
 				break;					
@@ -110,10 +110,7 @@ public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 		if(active)
 			return;
 		
-		for (QCallableProgram<?> callableProgram : new ArrayList<QCallableProgram<?>>(activationGroup.getPrograms()))
+		for (QProgramCallable callableProgram : new ArrayList<QProgramCallable>(activationGroup.getPrograms()))
 			callableProgram.close();
-		
-		if(!activationGroup.getPrograms().isEmpty())
-			"".toCharArray();
 	}
 }

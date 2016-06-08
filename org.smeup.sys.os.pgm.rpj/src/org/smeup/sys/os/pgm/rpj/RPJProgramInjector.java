@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.os.pgm.base;
+package org.smeup.sys.os.pgm.rpj;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -60,13 +60,13 @@ import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileManager;
 import org.smeup.sys.os.file.QFileOverride;
 import org.smeup.sys.os.pgm.QActivationGroup;
-import org.smeup.sys.os.pgm.QCallableProgram;
+import org.smeup.sys.os.pgm.QProgramCallable;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 import org.smeup.sys.os.pgm.QProgram;
 import org.smeup.sys.os.pgm.QProgramInfo;
 import org.smeup.sys.os.pgm.QProgramStatus;
 
-public class BaseCallableInjector {
+public class RPJProgramInjector {
 
 	public static final String NAME_OWNER = "*OWNER";
 
@@ -89,7 +89,7 @@ public class BaseCallableInjector {
 	private QResourceReader<QFile> fileReader;
 	private Map<String, Object> ownerModules;
 
-	public BaseCallableInjector(QActivationGroup activationGroup, QDataContext dataContext) {
+	public RPJProgramInjector(QActivationGroup activationGroup, QDataContext dataContext) {
 		this.activationGroup = activationGroup;
 		this.dataContext = dataContext;
 		this.ownerModules = new HashMap<String, Object>();
@@ -104,7 +104,8 @@ public class BaseCallableInjector {
 		return dataContext;
 	}
 
-	public <P> QCallableProgram<P> prepareCallable(QProgram program, Class<P> klass) {
+	@SuppressWarnings("resource")
+	public <P> QProgramCallable prepareCallable(QProgram program, Class<P> klass) {
 
 		// System.out.println("cls:\t" + klass.getSimpleName());
 
@@ -124,7 +125,15 @@ public class BaseCallableInjector {
 			programInfo.setMemorySize(dataContainer.getMemorySize());
 			programInfo.setLoadTime(System.currentTimeMillis() - startTime);
 
-			QCallableProgram<P> callableProgram = new BaseCallableProgramDelegator<P>(job, dataContext, activationGroup, program, programStatus, delegate, programInfo);
+			QProgramCallable callableProgram = null;
+			if(delegate instanceof RPJProgram) {
+				RPJProgram rpjProgram = (RPJProgram)delegate;
+				rpjProgram._init(job, dataContext, program, programInfo, programStatus);
+				callableProgram = rpjProgram;
+			}
+			else { 
+				callableProgram = new RPJProgramDelegator(job, dataContext, activationGroup, program, programStatus, delegate, programInfo);
+			}
 
 			return callableProgram;
 		} catch (Exception e) {
@@ -185,7 +194,7 @@ public class BaseCallableInjector {
 		QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(PROGRAM_STATUS);
 
 		if (programStatus == null) {
-			QDataTerm<?> programStatusTerm = dataContainer.addDataTerm(PROGRAM_STATUS, BaseProgramStatusImpl.class, null);
+			QDataTerm<?> programStatusTerm = dataContainer.addDataTerm(PROGRAM_STATUS, RPJProgramStatus.class, null);
 			programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
 			// programStatus.clear();
 
@@ -222,16 +231,16 @@ public class BaseCallableInjector {
 		if (klass.getSuperclass().getAnnotation(Program.class) != null)
 			injectFields(owner, klass.getSuperclass(), callable, dataContainer, accessFactory, unitModules, records);
 
-		List<BaseInjectableField> datas = new ArrayList<BaseInjectableField>();
-		List<BaseInjectableField> dataStructures = new ArrayList<BaseInjectableField>();
-		List<BaseInjectableField> pointers = new ArrayList<BaseInjectableField>();
+		List<RPJInjectableField> datas = new ArrayList<RPJInjectableField>();
+		List<RPJInjectableField> dataStructures = new ArrayList<RPJInjectableField>();
+		List<RPJInjectableField> pointers = new ArrayList<RPJInjectableField>();
 
-		List<BaseInjectableField> dataSets = new LinkedList<BaseInjectableField>();
-		List<BaseInjectableField> displays = new LinkedList<BaseInjectableField>();
-		List<BaseInjectableField> prints = new LinkedList<BaseInjectableField>();
+		List<RPJInjectableField> dataSets = new LinkedList<RPJInjectableField>();
+		List<RPJInjectableField> displays = new LinkedList<RPJInjectableField>();
+		List<RPJInjectableField> prints = new LinkedList<RPJInjectableField>();
 
-		List<BaseInjectableField> statements = new ArrayList<BaseInjectableField>();
-		List<BaseInjectableField> cursors = new ArrayList<BaseInjectableField>();
+		List<RPJInjectableField> statements = new ArrayList<RPJInjectableField>();
+		List<RPJInjectableField> cursors = new ArrayList<RPJInjectableField>();
 
 		for (Field field : klass.getDeclaredFields()) {
 
@@ -250,7 +259,7 @@ public class BaseCallableInjector {
 					continue;
 			}
 
-			BaseInjectableField injectableField = BaseInjectionHelper.createInjectableField(field);
+			RPJInjectableField injectableField = RPJInjectionHelper.createInjectableField(field);
 
 			// Procedure lazy loading
 			if (injectableField.getFieldClass().getAnnotation(Procedure.class) != null)
@@ -317,97 +326,97 @@ public class BaseCallableInjector {
 			}
 
 			if (injectableField.getAnnotation(DataDef.class) != null)
-				BaseInjectionHelper.setPrimitiveValue(dataContext, injectableField, callable);
+				RPJInjectionHelper.setPrimitiveValue(dataContext, injectableField, callable);
 			else
 				injectFieldValue(injectableField, callable, owner, dataContainer, accessFactory, unitModules, records);
 		}
 
 		// dataSet
-		for (BaseInjectableField field : dataSets)
+		for (RPJInjectableField field : dataSets)
 			injectDataSet(accessFactory, callable, dataContainer, records, field);
 
 		// display
-		for (BaseInjectableField field : displays)
+		for (RPJInjectableField field : displays)
 			injectDisplay(callable, dataContainer, records, field);
 
 		// print
-		for (BaseInjectableField field : prints)
+		for (RPJInjectableField field : prints)
 			injectPrint(callable, dataContainer, records, field);
 
 		// pointers no default
-		for (BaseInjectableField field : pointers)
-			BaseInjectionHelper.injectPointerNoDefault(callable, dataContainer, field);
+		for (RPJInjectableField field : pointers)
+			RPJInjectionHelper.injectPointerNoDefault(callable, dataContainer, field);
 
 		// dataStructure no based
-		for (BaseInjectableField field : dataStructures)
-			BaseInjectionHelper.injectDataStructure(callable, dataContainer, records, field, false);
+		for (RPJInjectableField field : dataStructures)
+			RPJInjectionHelper.injectDataStructure(callable, dataContainer, records, field, false);
 
 		// data no based
-		for (BaseInjectableField field : datas)
-			BaseInjectionHelper.injectDataNoBased(callable, dataContainer, field);
+		for (RPJInjectableField field : datas)
+			RPJInjectionHelper.injectDataNoBased(callable, dataContainer, field);
 
 		// dataSet
 		Set<String> dataSetRecords = new HashSet<String>();
-		for (BaseInjectableField field : dataSets) {
+		for (RPJInjectableField field : dataSets) {
 			QDataSet<?> dataSet = (QDataSet<?>) field.getValue(callable);
-			BaseInjectionHelper.assignRecordFields(field, dataContainer, dataSetRecords, field, dataSet.get());
+			RPJInjectionHelper.assignRecordFields(field, dataContainer, dataSetRecords, field, dataSet.get());
 		}
 		
 		// display
 		Set<String> displayRecords = new HashSet<String>();
-		for (BaseInjectableField field : displays) {
+		for (RPJInjectableField field : displays) {
 			QDisplay<?> display = (QDisplay<?>) field.getValue(callable);
-			BaseInjectionHelper.assignRecordFields(field, dataContainer, displayRecords, field, display.get());
+			RPJInjectionHelper.assignRecordFields(field, dataContainer, displayRecords, field, display.get());
 		}
 		
 		// print
 		Set<String> printRecords = new HashSet<String>();
-		for (BaseInjectableField field : prints) {
+		for (RPJInjectableField field : prints) {
 			QPrint<?> print = (QPrint<?>) field.getValue(callable);
-			BaseInjectionHelper.assignRecordFields(field, dataContainer, printRecords, field, print.get());
+			RPJInjectionHelper.assignRecordFields(field, dataContainer, printRecords, field, print.get());
 		}
 		
 		// pointer with default
-		for (BaseInjectableField field : pointers)
-			BaseInjectionHelper.injectPointerWithDefault(callable, dataContainer, field);
+		for (RPJInjectableField field : pointers)
+			RPJInjectionHelper.injectPointerWithDefault(callable, dataContainer, field);
 
 		// dataStructure based
-		for (BaseInjectableField field : dataStructures)
-			BaseInjectionHelper.injectDataStructure(callable, dataContainer, records, field, true);
+		for (RPJInjectableField field : dataStructures)
+			RPJInjectionHelper.injectDataStructure(callable, dataContainer, records, field, true);
 
 		// data based
-		for (BaseInjectableField field : datas)
-			BaseInjectionHelper.injectDataBased(callable, dataContainer, field);
+		for (RPJInjectableField field : datas)
+			RPJInjectionHelper.injectDataBased(callable, dataContainer, field);
 
 		// recordInfo/externalRefernce
-		for (BaseInjectableField field : dataSets) {
+		for (RPJInjectableField field : dataSets) {
 			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
 			if (fileDef == null)
 				continue;
 
-			BaseInjectionHelper.setInfoValue(field, fileDef, callable, records);
-			BaseInjectionHelper.setExternalValue(field, fileDef, callable);
+			RPJInjectionHelper.setInfoValue(field, fileDef, callable, records);
+			RPJInjectionHelper.setExternalValue(field, fileDef, callable);
 		}
 		
-		for (BaseInjectableField field : displays) {
+		for (RPJInjectableField field : displays) {
 			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
 			if (fileDef == null)
 				continue;
 
-			BaseInjectionHelper.setInfoValue(field, fileDef, callable, records);
+			RPJInjectionHelper.setInfoValue(field, fileDef, callable, records);
 		}
 		
-		for (BaseInjectableField field : prints) {
+		for (RPJInjectableField field : prints) {
 			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
 			if (fileDef == null)
 				continue;
 
-			BaseInjectionHelper.setInfoValue(field, fileDef, callable, records);
+			RPJInjectionHelper.setInfoValue(field, fileDef, callable, records);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	private void injectPrint(Object callable, QDataContainer dataContainer, Map<String, QRecord> records, BaseInjectableField field) {
+	private void injectPrint(Object callable, QDataContainer dataContainer, Map<String, QRecord> records, RPJInjectableField field) {
 
 		boolean userOpen = false;
 
@@ -416,13 +425,13 @@ public class BaseCallableInjector {
 			userOpen = fileDef.userOpen();
 
 		Class<QRecord> classRecord = (Class<QRecord>) field.getArguments()[0];
-		QRecord record = BaseInjectionHelper.createRecord(field, classRecord, fileDef, callable, dataContainer, records);
-		BaseInfoStruct infoStruct = dataContext.getDataFactory().createDataStruct(BaseInfoStruct.class, 0, true);
-		field.setValue(callable, new BasePrintDelegator<QRecord>(record, userOpen, infoStruct));
+		QRecord record = RPJInjectionHelper.createRecord(field, classRecord, fileDef, callable, dataContainer, records);
+		RPJInfoStruct infoStruct = dataContext.getDataFactory().createDataStruct(RPJInfoStruct.class, 0, true);
+		field.setValue(callable, new RPJPrintDelegator<QRecord>(record, userOpen, infoStruct));
 	}
 
 	@SuppressWarnings("unchecked")
-	private void injectDisplay(Object callable, QDataContainer dataContainer, Map<String, QRecord> records, BaseInjectableField field) {
+	private void injectDisplay(Object callable, QDataContainer dataContainer, Map<String, QRecord> records, RPJInjectableField field) {
 
 		boolean userOpen = false;
 
@@ -431,13 +440,13 @@ public class BaseCallableInjector {
 			userOpen = fileDef.userOpen();
 
 		Class<QRecord> classRecord = (Class<QRecord>) field.getArguments()[0];
-		QRecord record = BaseInjectionHelper.createRecord(field, classRecord, fileDef, callable, dataContainer, records);
-		BaseInfoStruct infoStruct = dataContext.getDataFactory().createDataStruct(BaseInfoStruct.class, 0, true);
-		field.setValue(callable, new BaseDisplayDelegator<QRecord>(record, userOpen, infoStruct));
+		QRecord record = RPJInjectionHelper.createRecord(field, classRecord, fileDef, callable, dataContainer, records);
+		RPJInfoStruct infoStruct = dataContext.getDataFactory().createDataStruct(RPJInfoStruct.class, 0, true);
+		field.setValue(callable, new RPJDisplayDelegator<QRecord>(record, userOpen, infoStruct));
 	}
 
 	@SuppressWarnings("unchecked")
-	private void injectDataSet(QAccessFactory accessFactory, Object callable, QDataContainer dataContainer, Map<String, QRecord> records, BaseInjectableField field) {
+	private void injectDataSet(QAccessFactory accessFactory, Object callable, QDataContainer dataContainer, Map<String, QRecord> records, RPJInjectableField field) {
 
 		boolean userOpen = false;
 
@@ -446,7 +455,7 @@ public class BaseCallableInjector {
 			userOpen = fileDef.userOpen();
 
 		Class<QRecord> classRecord = (Class<QRecord>) field.getArguments()[0];
-		QRecord record = BaseInjectionHelper.createRecord(field, classRecord, fileDef, callable, dataContainer, records);
+		QRecord record = RPJInjectionHelper.createRecord(field, classRecord, fileDef, callable, dataContainer, records);
 
 		QDataSet<?> dataSet = null;
 
@@ -466,7 +475,7 @@ public class BaseCallableInjector {
 	}
 
 
-	private void injectFieldValue(BaseInjectableField injectableField, Object callable, Object owner, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules,
+	private void injectFieldValue(RPJInjectableField injectableField, Object callable, Object owner, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules,
 			Map<String, QRecord> records) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		Object object = null;
@@ -476,7 +485,7 @@ public class BaseCallableInjector {
 			object = job;
 		}
 		// Injector
-		else if (BaseCallableInjector.class.equals(injectableField.getFieldClass())) {
+		else if (RPJProgramInjector.class.equals(injectableField.getFieldClass())) {
 			object = this;
 		}
 		// DataContext
@@ -497,7 +506,7 @@ public class BaseCallableInjector {
 			}
 
 			if (object == null) {
-				long startTime = System.currentTimeMillis();
+				//long startTime = System.currentTimeMillis();
 				object = injectData(owner, injectableField.getFieldClass(), dataContainer, accessFactory, unitModules, records);
 				// System.out.println("\t\t" +
 				// injectableField.getClass_().getSimpleName() + "[" + new

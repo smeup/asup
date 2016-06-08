@@ -9,20 +9,20 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.os.pgm.base;
+package org.smeup.sys.os.pgm.rpj;
 
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QRecord;
-import org.smeup.sys.il.esam.QPrint;
+import org.smeup.sys.il.esam.QDisplay;
 
-public class BasePrintDelegator<R extends QRecord> implements QPrint<R> {
+public class RPJDisplayDelegator<R extends QRecord> implements QDisplay<R> {
 
 	private R delegate = null;
 	private boolean isOpen = false;
-	private BaseInfoStruct infoStruct;
+	private RPJInfoStruct infoStruct;
 	
-	public BasePrintDelegator(R delegate, boolean userOpen, BaseInfoStruct infoStruct) {
+	public RPJDisplayDelegator(R delegate, boolean userOpen, RPJInfoStruct infoStruct) {
 		this.delegate = delegate;
 		if(!userOpen)
 			isOpen = true;
@@ -41,7 +41,7 @@ public class BasePrintDelegator<R extends QRecord> implements QPrint<R> {
 	public QDataStruct getInfoStruct() {
 		return infoStruct;
 	}
-	
+
 	@Override
 	public void close() {
 		isOpen = false;
@@ -65,5 +65,29 @@ public class BasePrintDelegator<R extends QRecord> implements QPrint<R> {
 	@Override
 	public void open(QIndicator error) {
 		isOpen = true;		
+	}
+	
+	@Override
+	public void readc(Class<?> format) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void show(Class<?> format) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Class<?> format) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void write(Class<?> format) {
+		// TODO Auto-generated method stub
+		
 	}
 }

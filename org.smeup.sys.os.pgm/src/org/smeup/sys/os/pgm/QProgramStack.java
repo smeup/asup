@@ -27,7 +27,7 @@ public interface QProgramStack extends QObject {
 	 * @model required="true" elementRequired="true"
 	 * @generated
 	 */
-	boolean contains(QCallableProgram<?> element);
+	boolean contains(QProgramCallable element);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -50,28 +50,28 @@ public interface QProgramStack extends QObject {
 	 * @model orderRequired="true"
 	 * @generated
 	 */
-	List<QCallableProgram<?>> list(ProgramStackOrder order);
+	List<QProgramCallable> list(ProgramStackOrder order);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model elementRequired="true"
 	 * @generated
 	 */
-	void push(QCallableProgram<?> element);
+	void push(QProgramCallable element);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
-	QCallableProgram<?> peek();
+	QProgramCallable peek();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
-	QCallableProgram<?> pop();
+	QProgramCallable pop();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

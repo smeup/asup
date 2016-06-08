@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.os.pgm.base;
+package org.smeup.sys.os.pgm.rpj;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -36,13 +36,13 @@ import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobRunInfo;
 import org.smeup.sys.os.pgm.QActivationGroup;
-import org.smeup.sys.os.pgm.QCallableProgram;
+import org.smeup.sys.os.pgm.QProgramCallable;
 import org.smeup.sys.os.pgm.QProgram;
 import org.smeup.sys.os.pgm.QProgramInfo;
 import org.smeup.sys.os.pgm.QProgramStatus;
-import org.smeup.sys.os.pgm.impl.CallableProgramImpl;
+import org.smeup.sys.os.pgm.impl.ProgramCallableImpl;
 
-public class BaseCallableProgramDelegator<P> extends CallableProgramImpl<P> {
+public class RPJProgramDelegator extends ProgramCallableImpl {
 
 	private static final long serialVersionUID = 1L;
 
@@ -51,7 +51,7 @@ public class BaseCallableProgramDelegator<P> extends CallableProgramImpl<P> {
 	private QDataContext dataContext;
 	private QProgram program;
 	private QProgramStatus programStatus;
-	private P delegate;
+	private Object delegate;
 
 	private InitStrategy initStrategy;
 
@@ -68,7 +68,7 @@ public class BaseCallableProgramDelegator<P> extends CallableProgramImpl<P> {
 
 	private QProgramInfo programInfo = null;
 
-	protected BaseCallableProgramDelegator(QJob job, QDataContext dataContext, QActivationGroup activationGroup, QProgram program, QProgramStatus programStatus, P delegate, QProgramInfo programInfo) {
+	protected RPJProgramDelegator(QJob job, QDataContext dataContext, QActivationGroup activationGroup, QProgram program, QProgramStatus programStatus, Object delegate, QProgramInfo programInfo) {
 		this.job = job;
 		this.dataContext = dataContext;
 		this.program = program;
@@ -149,7 +149,7 @@ public class BaseCallableProgramDelegator<P> extends CallableProgramImpl<P> {
 		else
 			callProgramMode();
 
-		return getEntry();
+		return getParameters();
 	}
 
 	private void callAPIMode() {
@@ -159,10 +159,10 @@ public class BaseCallableProgramDelegator<P> extends CallableProgramImpl<P> {
 			if (_entry != null)
 				_entry.invoke(getDelegate());
 
-			if (getEntry() == null) {
+			if (getParameters() == null) {
 				_main.invoke(delegate);
 			} else {
-				_main.invoke(delegate, (Object[]) getEntry());
+				_main.invoke(delegate, (Object[]) getParameters());
 			}
 
 			// @PostMain
@@ -302,7 +302,7 @@ public class BaseCallableProgramDelegator<P> extends CallableProgramImpl<P> {
 			setActivationGroup(null);
 			
 			if(currentActivationGroup != null && program.getActivationGroup().equals("*NEW")) {
-				for(QCallableProgram<?> callableProgram: new ArrayList<QCallableProgram<?>>(currentActivationGroup.getPrograms()))
+				for(QProgramCallable callableProgram: new ArrayList<QProgramCallable>(currentActivationGroup.getPrograms()))
 					callableProgram.close();
 			}
 		}
@@ -317,12 +317,12 @@ public class BaseCallableProgramDelegator<P> extends CallableProgramImpl<P> {
 		return isOpen;
 	}
 
-	public P getDelegate() {
+	public Object getDelegate() {
 		return delegate;
 	}
 
 	@Override
-	public P getRawProgram() {
+	public Object getRawProgram() {
 		return getDelegate();
 	}
 
@@ -358,7 +358,7 @@ public class BaseCallableProgramDelegator<P> extends CallableProgramImpl<P> {
 	}
 
 	@Override
-	public QData[] getEntry() {
+	public QData[] getParameters() {
 		return entry;
 	}
 

@@ -50,7 +50,9 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		// super type
 		Type superType = getAST().newSimpleType(getAST().newSimpleName(RPJProgram.class.getSimpleName()));
 		getTarget().setSuperclassType(superType);
-
+		
+		writeFieldSerializer();
+		
 		writeImport(RPJProgram.class);
 		writeImport(Program.class);
 		writeImport(RPJProgramSupport.class);

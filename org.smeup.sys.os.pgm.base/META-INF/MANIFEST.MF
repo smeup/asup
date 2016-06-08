@@ -8,11 +8,10 @@ Export-Package: org.smeup.sys.os.pgm.base,
  org.smeup.sys.os.pgm.base.api
 Bundle-ClassPath: .
 Require-Bundle: 
- org.smeup.sys.os.pgm,
- org.smeup.sys.os.file,
- org.smeup.sys.il.esam,
+ org.smeup.sys.rt.core,
  org.smeup.sys.il.memo,
- org.smeup.sys.rt.core
+ org.smeup.sys.os.pgm,
+ org.smeup.sys.os.pgm.rpj,
+ org.smeup.sys.os.file
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Import-Package: org.smeup.sys.db.esql
