@@ -292,22 +292,30 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		if (data instanceof QStruct<?> && dataTerm.getDefinition() instanceof QCompoundDataDef<?, ?>) {
 			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
 
-			
 			for (Field field : NIODataStructHelper.getFields((Class<? extends QStruct<?>>) data.getClass())) {
 				if (!QData.class.isAssignableFrom(field.getType()))
 					continue;
 
 				try {
-					QData element = (QData) field.get(data);
+					QBufferedData element = (QBufferedData) field.get(data);
 
 					String fieldName = field.getName();
-					if(compoundDataDef.getPrefix() != null && !compoundDataDef.getPrefix().isEmpty())
+					if (compoundDataDef.getPrefix() != null && !compoundDataDef.getPrefix().isEmpty())
 						fieldName = compoundDataDef.getPrefix() + fieldName;
 
+					QData previousData = null;
 					if (compoundDataDef.isQualified())
-						datas.put(getKey(dataTerm) + "." + fieldName, element);
+						previousData = datas.put(getKey(dataTerm) + "." + fieldName, element);
 					else
-						datas.put(fieldName, element);
+						previousData = datas.put(fieldName, element);
+
+					if (previousData != null && !field.getName().startsWith("filler_")) {
+						if (previousData instanceof QBufferedData) {
+							QBufferedData previousBufferedData = (QBufferedData) previousData;
+							if (element.getStore() != previousBufferedData.getStore())
+								element.assign(previousBufferedData);
+						}
+					}
 
 				} catch (IllegalArgumentException | IllegalAccessException e) {
 					throw new IntegratedLanguageDataRuntimeException(e);
@@ -338,20 +346,21 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			} else {
 
 				if (Overlay.NAME_OWNER.equalsIgnoreCase(overlay.getName())) {
-					data = dataFactory.createData(dataTerm, true);				
+					data = dataFactory.createData(dataTerm, true);
 					// TODO
-//					throw new IntegratedLanguageDataRuntimeException("Invalid owner data: " + dataTerm);
+					// throw new IntegratedLanguageDataRuntimeException("Invalid
+					// owner data: " + dataTerm);
 				} else {
 					data = dataFactory.createData(dataTerm, false);
 					QData overlayedData = getData(overlay.getName().toLowerCase());
-					if(overlayedData == null)
+					if (overlayedData == null)
 						throw new IntegratedLanguageDataRuntimeException("Invalid overlay data: " + overlay);
 					((QBufferedData) overlayedData).assign((QBufferedData) data);
 				}
 			}
 
 			if (allocate)
-				writeDefault(dataTerm, data);			
+				writeDefault(dataTerm, data);
 		}
 
 		return data;
@@ -362,15 +371,14 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		switch (dataTerm.getDataTermType()) {
 		case UNARY_ATOMIC: {
-			
+
 			if (dataTerm.getDefault() != null && dataTerm.getDefault().getValue() != null && !dataTerm.getDefault().getValue().isEmpty()) {
-				if(data instanceof QPointer) {
-					QPointer pointer = (QPointer)data;
+				if (data instanceof QPointer) {
+					QPointer pointer = (QPointer) data;
 					writeDefault(pointer, dataTerm.getDefault().getValue());
-				}
-				else {
+				} else {
 					QBufferedElement bufferedElement = (QBufferedElement) data;
-					
+
 					QSpecialElement specialElement = getSpecialElement(dataTerm, dataTerm.getDefault().getValue());
 					if (specialElement != null)
 						NIOBufferHelper.writeDefault(bufferedElement, specialElement.getValue());
@@ -399,11 +407,10 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 			if (dataTerm.getDefault() == null && compoundDataDef.getClassDelegator() != null) {
 				// if(compoundDataDef.isInitialized())
-				if(dataTerm.getFacet(QOverlay.class) == null) {
+				if (dataTerm.getFacet(QOverlay.class) == null) {
 					try {
 						dataStruct.reset();
-					}
-					catch(Exception e) {
+					} catch (Exception e) {
 						e.toString();
 					}
 				}
@@ -544,24 +551,21 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		return null;
 	}
-	
 
 	public void writeDefault(QPointer pointer, String value) {
 
-		if(value.trim().toUpperCase().startsWith("%ADDR")) {
+		if (value.trim().toUpperCase().startsWith("%ADDR")) {
 			value = value.trim().toUpperCase();
-			value = value.substring(6, value.length()-1).toLowerCase();
-			QBufferedData bufferedData = (QBufferedData)getData(value.trim());
+			value = value.substring(6, value.length() - 1).toLowerCase();
+			QBufferedData bufferedData = (QBufferedData) getData(value.trim());
 			if (bufferedData == null || !(bufferedData instanceof QBufferedData))
 				throw new IntegratedLanguageDataRuntimeException("Invalid address data: " + value);
 
 			pointer.eval(bufferedData.qAddr());
-		}
-		else if(value.trim().toUpperCase().equals("*NULL")) {
+		} else if (value.trim().toUpperCase().equals("*NULL")) {
 			// TODO
-//			System.err.println("Unexpected condition *NULL: ew8vr6888t67ew");
-		}
-		else
+			// System.err.println("Unexpected condition *NULL: ew8vr6888t67ew");
+		} else
 			throw new IntegratedLanguageDataRuntimeException("Unexpected condition: ixretcretrtscv8dtf");
 	}
 }
