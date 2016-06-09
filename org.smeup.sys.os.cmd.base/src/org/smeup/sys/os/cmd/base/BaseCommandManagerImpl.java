@@ -88,7 +88,7 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 		// Submit command
 		String threadName = "job/" + jobCapability.getObjectName();
 		QThread thread = threadManager.createThread(threadName, new BaseSubmittedCommand(this, jobCapability, command, caller));
-		job.setJobThread(thread);
+		jobManager.lookup(jobCapability).setJobThread(thread);
 		threadManager.start(thread);
 
 		return jobCapability;
