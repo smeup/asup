@@ -80,11 +80,9 @@ public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 	}
 
 	@Override
-	public void close(QJob job, String name) {
-
+	public boolean close(QJob job, QActivationGroup activationGroup) {
 		QProgramStack programStack = programManager.getProgramStack(job.getContext().getID());
-		QActivationGroup activationGroup = lookup(job, name);
-		closeActivationGroup(programStack, activationGroup);
+		return closeActivationGroup(programStack, activationGroup);
 	}
 
 	@Override
@@ -95,9 +93,10 @@ public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 		}			
 	}
 	
-	private void closeActivationGroup(QProgramStack programStack, QActivationGroup activationGroup) {
+	private boolean closeActivationGroup(QProgramStack programStack, QActivationGroup activationGroup) {
+
 		if(activationGroup.getName().equalsIgnoreCase("*DFT"))
-			return;
+			return false;
 
 		boolean active = false;
 		for (QProgramCallable callableProgram : new ArrayList<QProgramCallable>(activationGroup.getPrograms())) {
@@ -108,9 +107,11 @@ public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 		}
 		
 		if(active)
-			return;
+			return false;
 		
 		for (QProgramCallable callableProgram : new ArrayList<QProgramCallable>(activationGroup.getPrograms()))
 			callableProgram.close();
+		
+		return true;
 	}
 }

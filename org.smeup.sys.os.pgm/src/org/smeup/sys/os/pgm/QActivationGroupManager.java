@@ -26,10 +26,10 @@ public interface QActivationGroupManager extends QSingleton<QActivationGroupMana
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model jobRequired="true" nameRequired="true"
+	 * @model jobRequired="true" activationGroupRequired="true"
 	 * @generated
 	 */
-	void close(QJob job, String name);
+	boolean close(QJob job, QActivationGroup activationGroup);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -565,9 +565,9 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 
 		initEClass(activationGroupManagerEClass, QActivationGroupManager.class, "ActivationGroupManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(activationGroupManagerEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(activationGroupManagerEClass, ecorePackage.getEBoolean(), "close", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getActivationGroup(), "activationGroup", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(activationGroupManagerEClass, null, "closeAll", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);

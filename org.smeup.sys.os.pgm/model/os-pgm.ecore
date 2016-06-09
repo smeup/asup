@@ -11,9 +11,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ActivationGroupManager" abstract="true"
       interface="true">
-    <eOperations name="close">
+    <eOperations name="close" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
-      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="activationGroup" lowerBound="1" eType="#//ActivationGroup"/>
     </eOperations>
     <eOperations name="closeAll">
       <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
