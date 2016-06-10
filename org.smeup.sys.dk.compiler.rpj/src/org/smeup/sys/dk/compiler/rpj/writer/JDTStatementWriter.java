@@ -849,6 +849,10 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
 		block.statements().add(expressionStatement);
 
+		// test annotations
+		for (QAnnotationTest annotationTest : statement.getFacets(QAnnotationTest.class))
+			writeAssertion(annotationTest, statement.toString());
+		
 		return super.visit(statement);
 	}
 
