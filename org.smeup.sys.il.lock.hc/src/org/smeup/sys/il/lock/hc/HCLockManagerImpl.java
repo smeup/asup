@@ -24,25 +24,33 @@ import org.smeup.sys.rt.core.QApplication;
 import org.smeup.sys.rt.core.QLogger;
 
 import com.hazelcast.config.Config;
+import com.hazelcast.config.JoinConfig;
+import com.hazelcast.config.NetworkConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 
 public class HCLockManagerImpl implements QLockManager {
-	
+
 	private HazelcastInstance hazelcastInstance;
 
 	@Inject
 	public HCLockManagerImpl(QApplication application) {
 		Config cfg = new Config();
 		cfg.setInstanceName(application.getName());
-        hazelcastInstance = Hazelcast.newHazelcastInstance(cfg);
-	}	
+
+		NetworkConfig network = cfg.getNetworkConfig();
+		JoinConfig join = network.getJoin();
+		join.getMulticastConfig().setEnabled(false);
+		join.getTcpIpConfig().addMember("127.0.0.1");
+		
+		hazelcastInstance = Hazelcast.newHazelcastInstance(cfg);
+	}
 
 	@Override
 	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, URI address) {
 		return new HCObjectLockerImpl<N>(address, context.get(QLogger.class), hazelcastInstance);
 	}
-	
+
 	@Override
 	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, N object) {
 		return getLocker(context, object.qURI());
