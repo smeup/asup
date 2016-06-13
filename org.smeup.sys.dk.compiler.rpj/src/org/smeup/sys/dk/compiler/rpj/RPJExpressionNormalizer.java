@@ -33,6 +33,7 @@ import org.smeup.sys.il.expr.QPredicateExpression;
 import org.smeup.sys.il.expr.QRelationalExpression;
 import org.smeup.sys.il.expr.RelationalOperator;
 import org.smeup.sys.il.expr.impl.ExpressionVisitorImpl;
+import org.smeup.sys.il.flow.QBlock;
 import org.smeup.sys.il.flow.QEval;
 import org.smeup.sys.il.flow.QFor;
 import org.smeup.sys.il.flow.QIf;
@@ -64,14 +65,15 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 	private QJob job;
 
 	private QMethodExec lastMethod = null;
-
+	
 	@Override
 	public boolean visit(QMethodExec statement) {
-		
+
+		/*
 		if(isParentIf(statement)) {
 			lastMethod = null;
 			return true;
-		}
+		}*/
 
 		if (statement.getMethod().equalsIgnoreCase("SETLL"))
 			lastMethod = statement;
@@ -131,7 +133,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 			break;
 		}
 
-		InternalExpressionNormalizer expressionNormalizer = new InternalExpressionNormalizer();
+		InternalExpressionNormalizer expressionNormalizer = new InternalExpressionNormalizer(statement);
 		assignmentExpression.getLeftOperand().accept(expressionNormalizer);
 		assignmentExpression.getRightOperand().accept(expressionNormalizer);
 
@@ -146,7 +148,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
 
-		if (normalizePredicateExpression(predicateExpression))
+		if (normalizePredicateExpression(statement, predicateExpression))
 			statement.setCondition(expressionWriter.writeExpression(predicateExpression));
 
 		return true;
@@ -160,7 +162,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
 
-		if (normalizePredicateExpression(predicateExpression))
+		if (normalizePredicateExpression(statement, predicateExpression))
 			statement.setCondition(expressionWriter.writeExpression(predicateExpression));
 
 		return true;
@@ -171,7 +173,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
 
-		if (normalizePredicateExpression(predicateExpression))
+		if (normalizePredicateExpression(statement, predicateExpression))
 			statement.setCondition(expressionWriter.writeExpression(predicateExpression));
 
 		return true;
@@ -182,15 +184,15 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
 
-		if (normalizePredicateExpression(predicateExpression))
+		if (normalizePredicateExpression(statement, predicateExpression))
 			statement.setCondition(expressionWriter.writeExpression(predicateExpression));
 
 		return true;
 	}
 
-	private boolean normalizePredicateExpression(QPredicateExpression predicateExpression) {
+	private boolean normalizePredicateExpression(QStatement owner, QPredicateExpression predicateExpression) {
 
-		InternalExpressionNormalizer expressionVisitor = new InternalExpressionNormalizer();
+		InternalExpressionNormalizer expressionVisitor = new InternalExpressionNormalizer(owner);
 		predicateExpression.accept(expressionVisitor);
 
 		return expressionVisitor.isNormalized();
@@ -201,7 +203,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 		List<String> parameters = new ArrayList<String>();
 		for (String parameter : statement.getParameters()) {
-			InternalExpressionNormalizer expressionNormalizer = new InternalExpressionNormalizer();
+			InternalExpressionNormalizer expressionNormalizer = new InternalExpressionNormalizer(statement);
 			QExpression expression = expressionParser.parseExpression(parameter);
 			if (expressionNormalizer.isNormalized())
 				parameters.add(expressionWriter.writeExpression(expression));
@@ -219,7 +221,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 		if (statement.getValue() != null) {
 			QExpression expression = expressionParser.parseExpression(statement.getValue());
-			InternalExpressionNormalizer expressionNormalizer = new InternalExpressionNormalizer();
+			InternalExpressionNormalizer expressionNormalizer = new InternalExpressionNormalizer(statement);
 			expression.accept(expressionNormalizer);
 
 			if (expressionNormalizer.isNormalized())
@@ -232,6 +234,12 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 	private class InternalExpressionNormalizer extends ExpressionVisitorImpl {
 
 		private boolean normalized = false;
+		private QStatement owner = null;
+		
+		public InternalExpressionNormalizer(QStatement owner) {
+			this.owner = owner;
+		}
+		
 		
 		protected boolean isNormalized() {
 			return normalized;
@@ -251,6 +259,12 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 				if (expression.getElements().isEmpty()) {
 						
 					if (lastMethod != null) {
+						
+						if(getParentNode(lastMethod) != getParentNode(owner)) {
+							lastMethod = null;
+							return true;
+						}							
+						
 						QAtomicTermExpression atomicTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createAtomicTermExpression();
 						atomicTermExpression.setType(AtomicType.NAME);
 						atomicTermExpression.setValue(lastMethod.getObject());
@@ -367,6 +381,32 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		}		
 	}
 	
+	@SuppressWarnings("unused")
+	private QNode getParentNode(QExpression expression) {
+
+		QNode parent = expression.getParent();
+		if (parent instanceof QIf)
+			return parent.getParent();
+		else if (parent instanceof QFor)
+			return parent.getParent();
+		else if (parent instanceof QWhile)
+			return parent.getParent();
+		else if (parent instanceof QUntil)
+			return parent.getParent();		
+		else
+			return parent;
+	}
+	
+	private QNode getParentNode(QNode node) {
+		
+		QNode parent = node.getParent();
+		if(parent instanceof QBlock)
+			return getParentNode(parent);
+		else
+			return parent;
+	}
+	
+	@SuppressWarnings("unused")
 	private boolean isParentIf(QStatement statement) {
 
 		QNode parent = statement.getParent();
