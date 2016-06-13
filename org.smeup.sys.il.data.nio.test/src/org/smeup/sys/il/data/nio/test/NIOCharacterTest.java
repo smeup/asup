@@ -13,7 +13,7 @@ package org.smeup.sys.il.data.nio.test;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.nio.NIOCharacterImpl;
 import org.smeup.sys.il.data.nio.NIODataContextImpl;
 
@@ -26,7 +26,7 @@ public class NIOCharacterTest {
     	
     	NIODataContextImpl dataContextImpl = new NIODataContextImpl();    	
     	
-        final QString string = new NIOCharacterImpl(dataContextImpl, 10, true);
+        final QCharacter string = new NIOCharacterImpl(dataContextImpl, 10, true);
         string.eval("pippo");
 
         Assert.assertTrue(string.eq("pippo"));
