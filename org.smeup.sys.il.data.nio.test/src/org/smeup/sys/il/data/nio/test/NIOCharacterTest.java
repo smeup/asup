@@ -31,5 +31,8 @@ public class NIOCharacterTest {
         string.eval("pippo");
 
         Assert.assertTrue(string.eq("pippo"));
+        
+        string.move("Z");
+        Assert.assertTrue(string.eq("pippo    Z"));
     }
 }
