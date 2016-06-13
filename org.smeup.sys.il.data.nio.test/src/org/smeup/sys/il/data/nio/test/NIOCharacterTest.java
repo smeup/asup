@@ -24,8 +24,7 @@ public class NIOCharacterTest {
     @Test
     public void testStrings() {
     	
-    	NIODataContextImpl dataContextImpl = new NIODataContextImpl(null, null, null);
-    	
+    	NIODataContextImpl dataContextImpl = new NIODataContextImpl();    	
     	
         final QString string = new NIOCharacterImpl(dataContextImpl, 10, true);
         string.eval("pippo");

@@ -38,6 +38,10 @@ public class NIODataContextImpl implements QDataContext {
 
 	private Map<QBufferedData, QBufferedData> snapshots = null;
 
+	public NIODataContextImpl() {
+		this(null, null, null);
+	}
+	
 	public NIODataContextImpl(QContext context, QDataAreaFactory dataAreaFactory, Object owner) {
 		this.context = context;		
 		dataFactory = new NIODataFactoryImpl(this, owner, dataAreaFactory);

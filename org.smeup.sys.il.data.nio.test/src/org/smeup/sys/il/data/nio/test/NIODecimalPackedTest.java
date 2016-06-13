@@ -26,7 +26,7 @@ public class NIODecimalPackedTest {
     @Test
     public void testEquals() {
 
-    	NIODataContextImpl dataContextImpl = new NIODataContextImpl(null, null, null);
+    	NIODataContextImpl dataContextImpl = new NIODataContextImpl();
     	
         final QDecimal v1 = new NIODecimalZonedImpl(dataContextImpl, 10, 2, true);
         v1.eval(2.5);
