@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Integrated Language Data NIO Test
+Bundle-SymbolicName: org.smeup.sys.il.data.nio.test
+Bundle-Version: 0.8.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.smeup.sys.il.data.nio,
+ org.junit
