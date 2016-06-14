@@ -5,15 +5,18 @@
  *  which accompanies this distribution, and is available at
  *  http://www.eclipse.org/legal/epl-v10.html
  *
- * 
- * Contributors: 
- *   Mattia Rocchi - Initial API and implementation 
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
  */
 package org.smeup.sys.os.pgm.rpj;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -81,7 +84,7 @@ public class RPJProgramSupport {
 	// public static boolean FALSE = false;
 	public static final boolean TRUE = true;
 	public transient static Specials qSP;
-	
+
 	@Overlay(name = "*PGMSTATUS")
 	private transient RPJProgramStatus programStatus;
 
@@ -126,18 +129,18 @@ public class RPJProgramSupport {
 	public Object getProgramOwner() {
 		return this.programOwner;
 	}
-	
+
 	@PostConstruct
 	private void init() {
-		
+
 		@SuppressWarnings("resource")
 		QContext jobContext = job.getContext();
 
 		dataFiller = QIntegratedLanguageDataFactory.eINSTANCE.createDataFiller();
 		programReader = resourceManager.getResourceReader(job, QProgram.class, org.smeup.sys.il.memo.Scope.LIBRARY_LIST);
-		
+
 		programCache = jobContext.get(RPJProgramCache.class);
-		if (programCache == null) {
+		if (programCache == null)
 			synchronized (job) {
 				programCache = jobContext.get(RPJProgramCache.class);
 				if (programCache == null) {
@@ -145,9 +148,8 @@ public class RPJProgramSupport {
 					jobContext.set(RPJProgramCache.class, programCache);
 				}
 			}
-		}
 	}
-	
+
 	public boolean qRunnable() {
 		if (countRunnable == 1000) {
 			countRunnable = 0;
@@ -184,7 +186,7 @@ public class RPJProgramSupport {
 		public static final DatetimeFormat MONTHS = DatetimeFormat.MONTHS;
 		public static final DatetimeFormat D = DatetimeFormat.DAY;
 		public static final DatetimeFormat DAYS = DatetimeFormat.DAYS;
-		
+
 		public static final DataComparator EQ = DataComparator.EQUAL;
 		public static final DataComparator LT = DataComparator.LESS_THAN;
 		public static final DataComparator LE = DataComparator.LESS_THAN_EQUAL;
@@ -234,23 +236,23 @@ public class RPJProgramSupport {
 
 		BinaryType type = null;
 
-		if(value <= Byte.MAX_VALUE)
+		if (value <= Byte.MAX_VALUE)
 			type = BinaryType.BYTE;
-		else if(value <= Short.MAX_VALUE)
+		else if (value <= Short.MAX_VALUE)
 			type = BinaryType.SHORT;
-		else if(value <= Integer.MAX_VALUE)
+		else if (value <= Integer.MAX_VALUE)
 			type = BinaryType.INTEGER;
 		else
 			type = BinaryType.LONG;
-						
+
 		QBinary binary = dataContext.getDataFactory().createBinary(type, false, true);
 		binary.eval(value);
 
 		return binary;
 	}
-	
+
 	public QDecimal qBox(Integer decimal) {
-		return qBox((long)decimal);
+		return qBox((long) decimal);
 	}
 
 	public QDecimal qBox(Long decimal) {
@@ -314,7 +316,7 @@ public class RPJProgramSupport {
 	public QString qBoxString(boolean b) {
 		return qBox(b);
 	}
-	
+
 	public QCharacter qBox(byte character) {
 
 		QCharacter qCharacter = dataContext.getDataFactory().createCharacter(1, false, true);
@@ -386,7 +388,7 @@ public class RPJProgramSupport {
 			program = programReader.lookup(name);
 			if (program == null)
 				throw new OperatingSystemRuntimeException("Program not found: " + name);
-			
+
 			programCache.put(name, program);
 		}
 
@@ -464,8 +466,31 @@ public class RPJProgramSupport {
 		case "X":
 			character.move(numeric);
 			break;
+		case "J":
+			int length = numeric.getLength();
+			int scale = 0;
+			if (numeric instanceof QDecimal) {
+				QDecimal decimal = (QDecimal) numeric;
+				scale = decimal.getScale();
+			}
+
+			DecimalFormat numberFormat = (DecimalFormat) NumberFormat.getInstance(Locale.US); // TODO
+			// verify
+			numberFormat.setMinimumIntegerDigits(length - scale + 1);
+			// numberFormat.setMaximumFractionDigits(scale);
+			numberFormat.setMinimumFractionDigits(scale);
+			numberFormat.setGroupingUsed(false);
+
+			if (numeric.lt(0)) {
+				numberFormat.setNegativeSuffix("-");
+				numberFormat.setNegativePrefix("");
+			}
+
+			character.eval(numberFormat.format(numeric.asDouble()).replaceAll("^0+", " "));
+			break;
 		default:
-			System.out.println("Unexpected condition: sbdofsd8frRWE6R");
+			System.err.println("Invalid edit format: " + format);
+			character.eval(Integer.toString(numeric.asInteger()).replaceAll("^0+", ""));
 			break;
 		}
 
@@ -690,11 +715,10 @@ public class RPJProgramSupport {
 		int start = 1;
 		for (char c : source.s().toCharArray()) {
 			int i = oldString.indexOf(c);
-			if (startId >= start && (newString.length() >= i && i >= 0)) {
+			if (startId >= start && (newString.length() >= i && i >= 0))
 				sb.append(newString.substring(i, i + 1));
-			} else {
+			else
 				sb.append(c);
-			}
 			startId++;
 		}
 
@@ -904,19 +928,19 @@ public class RPJProgramSupport {
 	public void qTime(QNumeric datetime) {
 
 		Calendar CALENDAR = Calendar.getInstance();
-		if (datetime.getLength() == 14) {
+		if (datetime.getLength() == 14)
 			datetime.eval(Long.parseLong(new SimpleDateFormat("HHmmssddMMyyyy").format(CALENDAR.getTime())));
-		} else if (datetime.getLength() == 12) {
+		else if (datetime.getLength() == 12)
 			datetime.eval(Long.parseLong(new SimpleDateFormat("HHmmssddMMyy").format(CALENDAR.getTime())));
-		} else if (datetime.getLength() == 6) {
+		else if (datetime.getLength() == 6)
 			datetime.eval(Long.parseLong(new SimpleDateFormat("HHmmss").format(CALENDAR.getTime())));
-		} else
+		else
 			System.err.println("Unknown length: " + datetime.getLength());
 	}
 
 	public void qExcept(String string) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public static class Date extends QDataStructWrapper {
