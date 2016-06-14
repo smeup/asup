@@ -342,9 +342,8 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		if (!this.resultSet.next()) {
 
 			// TODO verify if not necessary
-			this.record.clear();
-
-			this.infoStruct.rrn.clear();
+//			this.record.clear();
+//			this.infoStruct.rrn.clear();
 
 			this.found = false;
 			this.dataContext.found().eval(false);
@@ -573,7 +572,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			 * this.resultSet.moveToCurrentRow();
 			 */
 
-			this.statementUpdate.executeUpdate(jdbcAccessHelper.buildWrite(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
+ 			this.statementUpdate.executeUpdate(jdbcAccessHelper.buildWrite(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
 
 			this.found = true;
 			this.dataContext.found().eval(true);
