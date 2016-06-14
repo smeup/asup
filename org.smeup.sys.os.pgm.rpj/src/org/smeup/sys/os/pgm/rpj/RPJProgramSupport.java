@@ -473,8 +473,8 @@ public class RPJProgramSupport {
 				QDecimal decimal = (QDecimal) numeric;
 				scale = decimal.getScale();
 			}
-
-			DecimalFormat numberFormat = (DecimalFormat) NumberFormat.getInstance(Locale.US); // TODO
+			// TODO
+			DecimalFormat numberFormat = (DecimalFormat) NumberFormat.getInstance(Locale.ITALIAN);
 			// verify
 			numberFormat.setMinimumIntegerDigits(length - scale + 1);
 			// numberFormat.setMaximumFractionDigits(scale);
