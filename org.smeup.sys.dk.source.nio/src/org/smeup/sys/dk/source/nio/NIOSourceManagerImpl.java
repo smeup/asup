@@ -281,7 +281,11 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	}
 
 	private <T extends QObjectNameable> QSourceEntry createEntry(QContext context, QSourceNode parent, Class<T> type, String name, boolean replace, InputStream content) throws IOException {
-
+		
+		// Patch for Windows system (pathname cannot start with * char)
+		if (name.startsWith("*")) 
+			throw new IOException("Invalid source entry name: " + name);
+		
 		Path file = getFolder(context, parent, type, true).resolve(name);
 
 		QObjectLocker<QProject> fileLocker = lockManager.getLocker(context, file.toUri());
@@ -313,7 +317,11 @@ public class NIOSourceManagerImpl implements QSourceManager {
 		Path folder = getFolder(context, parent, type, false);
 		if (folder == null)
 			return null;
-
+		
+		// Patch for Windows system (pathname cannot start with * char)
+		if (name.startsWith("*")) 
+			return null;
+		
 		Path file = folder.resolve(name);
 		if (!Files.exists(file))
 			return null;
