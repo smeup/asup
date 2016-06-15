@@ -476,7 +476,7 @@ public class RPJProgramSupport {
 			// TODO
 			DecimalFormat numberFormat = (DecimalFormat) NumberFormat.getInstance(Locale.ITALIAN);
 			// verify
-			numberFormat.setMinimumIntegerDigits(length - scale + 1);
+			numberFormat.setMinimumIntegerDigits(length - scale);
 			// numberFormat.setMaximumFractionDigits(scale);
 			numberFormat.setMinimumFractionDigits(scale);
 			numberFormat.setGroupingUsed(false);
