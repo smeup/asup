@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.smeup.sys.et.antlr
 Bundle-Version: 0.8.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .,
- lib/antlr-3.4.jar
+ lib/antlr-3.5.2.jar
 Bundle-Vendor: www.smeup.com
 Export-Package: org.antlr.runtime,
  org.antlr.runtime.debug,

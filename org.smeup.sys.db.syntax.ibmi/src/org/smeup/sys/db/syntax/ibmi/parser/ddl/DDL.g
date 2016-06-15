@@ -24,6 +24,7 @@ options {
 	output=AST;
 	ASTLabelType=CommonTree;
 }
+
 tokens {
   ALIAS_NAME;
   ALL; 

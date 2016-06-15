@@ -8,8 +8,8 @@ Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
- lib/antlr-3.5.1-complete-no-st3.jar,
- lib/antlrworks-1.5.2-complete.jar
+ lib/antlrworks-1.5.2-complete.jar,
+ lib/antlr-3.5.2-complete-no-st3.jar
 Export-Package: org.smeup.sys.ui.epdm.antlr,
  org.smeup.sys.ui.epdm.antlr.actions
 Import-Package: org.eclipse.core.resources,
