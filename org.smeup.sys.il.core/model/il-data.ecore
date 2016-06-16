@@ -806,21 +806,21 @@
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
@@ -855,7 +855,7 @@
     </eOperations>
     <eOperations name="qLookup" lowerBound="1">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
@@ -931,7 +931,7 @@
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1">
@@ -939,7 +939,7 @@
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
@@ -982,19 +982,19 @@
     </eOperations>
     <eOperations name="qLookup" lowerBound="1">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+      <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
     <eOperations name="qXfoot" lowerBound="1" eType="#//Decimal"/>
@@ -1634,6 +1634,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="DataContext" abstract="true" interface="true"
       eSuperTypes="il-core.ecore#//ctx/ContextProvider">
     <eOperations name="endOfData" lowerBound="1" eType="#//Indicator"/>
+    <eOperations name="equal" lowerBound="1" eType="#//Indicator"/>
+    <eOperations name="error" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="found" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="getCharset" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCharset"/>
     <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>

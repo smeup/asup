@@ -1995,19 +1995,19 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(bufferedListEClass, null, "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(bufferedListEClass_D);
 		addEParameter(op, g1, "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "equal", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedListEClass, null, "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(bufferedListEClass_D);
 		addEParameter(op, g1, "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "equal", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedListEClass, null, "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(bufferedListEClass_D);
 		addEParameter(op, g1, "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "equal", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedListEClass, this.getDecimal(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataSpecial(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2042,7 +2042,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(bufferedListEClass, null, "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataSpecial(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "equal", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedListEClass, null, "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataSpecial(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2109,14 +2109,14 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g1 = createEGenericType(bufferedListEClass_D);
 		addEParameter(op, g1, "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "equal", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataComparator(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedListEClass, null, "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(bufferedListEClass_D);
 		addEParameter(op, g1, "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "equal", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataComparator(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedListEClass, this.getDecimal(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2159,19 +2159,19 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(bufferedListEClass, null, "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataSpecial(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "equal", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataComparator(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedListEClass, null, "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataSpecial(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "equal", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataComparator(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedListEClass, null, "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataSpecial(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "equal", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataComparator(), "comparator", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(bufferedListEClass, this.getDecimal(), "qXfoot", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2799,6 +2799,10 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		initEClass(dataContextEClass, QDataContext.class, "DataContext", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(dataContextEClass, this.getIndicator(), "endOfData", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(dataContextEClass, this.getIndicator(), "equal", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(dataContextEClass, this.getIndicator(), "error", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(dataContextEClass, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 

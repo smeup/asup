@@ -29,8 +29,10 @@ public class NIODataContextImpl implements QDataContext {
 
 	private QContext context;
 	private QDataFactory dataFactory;
-	private QIndicator found;
 	private QIndicator endOfData;
+	private QIndicator equal;
+	private QIndicator error;
+	private QIndicator found;
 
 	private static final Charset CHARSET = Charset.forName("IBM-280");
 	private static final DateFormat DATEFMT = DateFormat.ISO;
@@ -45,8 +47,11 @@ public class NIODataContextImpl implements QDataContext {
 	public NIODataContextImpl(QContext context, QDataAreaFactory dataAreaFactory, Object owner) {
 		this.context = context;		
 		dataFactory = new NIODataFactoryImpl(this, owner, dataAreaFactory);
-		found = dataFactory.createIndicator(true);
+		
 		endOfData = dataFactory.createIndicator(true);
+		equal = dataFactory.createIndicator(true);
+		error = dataFactory.createIndicator(true);
+		found = dataFactory.createIndicator(true);
 	}
 
 	@Override
@@ -55,13 +60,23 @@ public class NIODataContextImpl implements QDataContext {
 	}
 
 	@Override
-	public QIndicator found() {
-		return this.found;
+	public QIndicator endOfData() {
+		return this.endOfData;
 	}
 
 	@Override
-	public QIndicator endOfData() {
-		return this.endOfData;
+	public QIndicator equal() {
+		return equal;
+	}
+
+	@Override
+	public QIndicator error() {
+		return error;
+	}
+
+	@Override
+	public QIndicator found() {
+		return this.found;
 	}
 
 	@Override

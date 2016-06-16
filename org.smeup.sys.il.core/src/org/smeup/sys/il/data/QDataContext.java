@@ -45,6 +45,22 @@ public interface QDataContext extends QContextProvider {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	QIndicator equal();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	QIndicator error();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */

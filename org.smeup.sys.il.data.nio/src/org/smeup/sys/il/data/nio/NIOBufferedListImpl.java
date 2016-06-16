@@ -41,7 +41,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	public NIOBufferedListImpl(QDataContext dataContext, D model, SortDirection sortDirection) {
 		super(dataContext);
-		
+
 		this._model = model;
 		this.sortDirection = sortDirection;
 		this.lastIndex = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
@@ -70,7 +70,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	public void eval(Number value, boolean halfAdjust) {
 
 		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		((QNumeric)firstElement).eval(value, halfAdjust);
+		((QNumeric) firstElement).eval(value, halfAdjust);
 		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
@@ -78,7 +78,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	public QBufferedData eval(QDataFiller value) {
 
 		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		((QNumeric)firstElement).eval(value);
+		((QNumeric) firstElement).eval(value);
 		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 
 		return this;
@@ -98,10 +98,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 				get(e).movel(value.get(e), true);
 				break;
 			case NUMERIC:
-				((QNumeric)get(e)).eval((QNumeric)value.get(e));
+				((QNumeric) get(e)).eval((QNumeric) value.get(e));
 				break;
 			case STRING:
-				((QString)get(e)).eval((QString)value.get(e));
+				((QString) get(e)).eval((QString) value.get(e));
 				break;
 			}
 		}
@@ -114,7 +114,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	public void eval(QList<? extends QNumeric> value, boolean halfAdjust) {
 		eval(value, halfAdjust, false);
 	}
-	
+
 	@Override
 	public void eval(QList<? extends QNumeric> value, boolean halfAdjust, boolean maxPrecision) {
 
@@ -141,7 +141,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	public void eval(QNumeric value, boolean halfAdjust) {
 
 		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		((QNumeric)firstElement).eval(value, halfAdjust);
+		((QNumeric) firstElement).eval(value, halfAdjust);
 		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
@@ -149,15 +149,15 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	public final void eval(QString value) {
 
 		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		((QString)firstElement).eval(value);
+		((QString) firstElement).eval(value);
 		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
 	@Override
 	public final void eval(String value) {
-		
+
 		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		((QString)firstElement).eval(value);
+		((QString) firstElement).eval(value);
 		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
@@ -220,10 +220,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void move(Number value, boolean clear) {
-		
+
 		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
 		firstElement.move(value, clear);
-		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));		
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
 	@Override
@@ -272,7 +272,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void movel(DataSpecial value, boolean clear) {
-		
+
 		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
 		firstElement.movel(value, clear);
 		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
@@ -285,7 +285,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void movel(Number value, boolean clear) {
-		
+
 		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
 		firstElement.movel(value, clear);
 		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
@@ -298,7 +298,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void movel(QBufferedElement value, boolean clear) {
-		
+
 		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
 		firstElement.movel(value, clear);
 		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
@@ -311,7 +311,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void movel(QDataFiller value, boolean clear) {
-		
+
 		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
 		firstElement.movel(value, clear);
 		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
@@ -324,7 +324,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public void movel(String value, boolean clear) {
-		
+
 		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
 		firstElement.movel(value, clear);
 		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
@@ -408,36 +408,51 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	@Override
-	public void qLookup(D argument, QIndicator found) {
+	public void qLookup(D argument, QIndicator equal) {
 
 		int i = qLookup(DataComparator.EQUAL, argument, 1, capacity());
-		found.eval(i > 0);
-
-		getDataContext().found().eval(found);
+		if (i > 0) {
+			equal.eval(true);
+			getDataContext().equal().eval(true);
+			getDataContext().found().eval(true);
+		}
+		else {
+			equal.eval(false);
+			getDataContext().equal().eval(false);
+			getDataContext().found().eval(false);
+		}
 	}
 
 	@Override
-	public void qLookup(D argument, QNumeric start, QIndicator found) {
+	public void qLookup(D argument, QNumeric start, QIndicator equal) {
 
 		int i = qLookup(DataComparator.EQUAL, argument, start.asInteger(), capacity());
 		if (i > 0) {
-			found.eval(true);
+			equal.eval(true);
+			getDataContext().equal().eval(true);
+			getDataContext().found().eval(true);
 			start.eval(i);
 		} else {
-			found.eval(false);
+			equal.eval(false);
+			getDataContext().equal().eval(false);
+			getDataContext().found().eval(false);
 			start.eval(1);
 		}
-
-		getDataContext().found().eval(found);
 	}
 
 	@Override
-	public void qLookup(D argument, Number start, QIndicator found) {
+	public void qLookup(D argument, Number start, QIndicator equal) {
 
 		int i = qLookup(DataComparator.EQUAL, argument, 1, capacity());
-		found.eval(i > 0);
-
-		getDataContext().found().eval(found);
+		if(i > 0) {
+			equal.eval(true);
+			getDataContext().equal().eval(true);
+			getDataContext().found().eval(true);
+		} else {
+			equal.eval(false);
+			getDataContext().equal().eval(false);
+			getDataContext().found().eval(false);
+		}
 	}
 
 	@Override
@@ -483,36 +498,52 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	@Override
-	public void qLookup(DataSpecial argument, QIndicator found) {
+	public void qLookup(DataSpecial argument, QIndicator equal) {
 
-		int i = qLookup(DataComparator.EQUAL, argument, 1, capacity());
-		found.eval(i > 0);
-
-		getDataContext().found().eval(found);
+		int i = qLookup(DataComparator.EQUAL, argument, 1, capacity());		
+		if(i > 0) {
+			equal.eval(true);
+			getDataContext().equal().eval(true);
+			getDataContext().found().eval(true);			
+		}
+		else {
+			equal.eval(false);
+			getDataContext().equal().eval(false);
+			getDataContext().found().eval(false);			
+		}
 	}
 
 	@Override
-	public void qLookup(DataSpecial argument, QNumeric start, QIndicator found) {
+	public void qLookup(DataSpecial argument, QNumeric start, QIndicator equal) {
 
 		int i = qLookup(DataComparator.EQUAL, argument, start.asInteger(), capacity());
 		if (i > 0) {
-			found.eval(true);
+			equal.eval(true);
+			getDataContext().equal().eval(true);
+			getDataContext().found().eval(true);						
 			start.eval(i);
 		} else {
-			found.eval(false);
+			equal.eval(false);
+			getDataContext().equal().eval(false);
+			getDataContext().found().eval(false);			
 			start.eval(1);
 		}
-
-		getDataContext().found().eval(found);
 	}
 
 	@Override
-	public void qLookup(DataSpecial argument, Number start, QIndicator found) {
+	public void qLookup(DataSpecial argument, Number start, QIndicator equal) {
 
 		int i = qLookup(DataComparator.EQUAL, argument, 1, capacity());
-		found.eval(i > 0);
-
-		getDataContext().found().eval(found);
+		if(i > 0) {
+			equal.eval(true);
+			getDataContext().equal().eval(true);
+			getDataContext().found().eval(true);									
+		}
+		else {
+			equal.eval(false);
+			getDataContext().equal().eval(false);
+			getDataContext().found().eval(false);									
+		}
 	}
 
 	@Override
@@ -558,36 +589,53 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	@Override
-	public void qLookup(D argument, QIndicator found, DataComparator comparator) {
+	public void qLookup(D argument, QIndicator equal, DataComparator comparator) {
 
 		int i = qLookup(comparator, argument, 1, capacity());
-		found.eval(i > 0);
-
-		getDataContext().found().eval(found);
+		if(i > 0) {
+			equal.eval(true);
+			getDataContext().equal().eval(true);
+			getDataContext().found().eval(true);									
+		}
+		else {
+			equal.eval(false);
+			getDataContext().equal().eval(false);
+			getDataContext().found().eval(false);									
+		}
 	}
 
 	@Override
-	public void qLookup(D argument, QNumeric start, QIndicator found, DataComparator comparator) {
+	public void qLookup(D argument, QNumeric start, QIndicator equal, DataComparator comparator) {
 
 		int i = qLookup(comparator, argument, start.asInteger(), capacity());
-		if (i > 0) {
-			found.eval(true);
+		if(i > 0) {
+			equal.eval(true);
+			getDataContext().equal().eval(true);
+			getDataContext().found().eval(true);
 			start.eval(i);
-		} else {
-			found.eval(false);
+		}
+		else {
+			equal.eval(false);
+			getDataContext().equal().eval(false);
+			getDataContext().found().eval(false);
 			start.eval(1);
 		}
-
-		getDataContext().found().eval(found);
 	}
 
 	@Override
-	public void qLookup(D argument, Number start, QIndicator found, DataComparator comparator) {
+	public void qLookup(D argument, Number start, QIndicator equal, DataComparator comparator) {
 
 		int i = qLookup(comparator, argument, 1, capacity());
-		found.eval(i > 0);
-
-		getDataContext().found().eval(found);
+		if(i > 0) {
+			equal.eval(true);
+			getDataContext().equal().eval(true);
+			getDataContext().found().eval(true);
+		}
+		else {
+			equal.eval(false);
+			getDataContext().equal().eval(false);
+			getDataContext().found().eval(false);
+		}
 	}
 
 	@Override
@@ -633,36 +681,53 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	@Override
-	public void qLookup(DataSpecial argument, QIndicator found, DataComparator comparator) {
+	public void qLookup(DataSpecial argument, QIndicator equal, DataComparator comparator) {
 
 		int i = qLookup(comparator, argument, 1, capacity());
-		found.eval(i > 0);
-
-		getDataContext().found().eval(found);
+		if(i > 0) {
+			equal.eval(true);
+			getDataContext().equal().eval(true);
+			getDataContext().found().eval(true);
+		}
+		else {
+			equal.eval(false);
+			getDataContext().equal().eval(false);
+			getDataContext().found().eval(false);
+		}
 	}
 
 	@Override
-	public void qLookup(DataSpecial argument, QNumeric start, QIndicator found, DataComparator comparator) {
+	public void qLookup(DataSpecial argument, QNumeric start, QIndicator equal, DataComparator comparator) {
 
 		int i = qLookup(comparator, argument, start.asInteger(), capacity());
-		if (i > 0) {
-			found.eval(true);
+		if(i > 0) {
+			equal.eval(true);
+			getDataContext().equal().eval(true);
+			getDataContext().found().eval(true);
 			start.eval(i);
-		} else {
-			found.eval(false);
+		}
+		else {
+			equal.eval(false);
+			getDataContext().equal().eval(false);
+			getDataContext().found().eval(false);
 			start.eval(1);
 		}
-
-		getDataContext().found().eval(found);
 	}
 
 	@Override
-	public void qLookup(DataSpecial argument, Number start, QIndicator found, DataComparator comparator) {
+	public void qLookup(DataSpecial argument, Number start, QIndicator equal, DataComparator comparator) {
 
 		int i = qLookup(comparator, argument, 1, capacity());
-		found.eval(i > 0);
-
-		getDataContext().found().eval(found);
+		if(i > 0) {
+			equal.eval(true);
+			getDataContext().equal().eval(true);
+			getDataContext().found().eval(true);
+		}
+		else {
+			equal.eval(false);
+			getDataContext().equal().eval(false);
+			getDataContext().found().eval(false);
+		}
 	}
 
 	private int qLookup(DataComparator comparator, D argument, int startIndex, int numElements) {
@@ -675,19 +740,19 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	@Override
 	public QDecimal qXfoot() {
-		
+
 		// TODO calculate precision
 		QDecimal total = getDataContext().getDataFactory().createDecimal(21, 6, DecimalType.PACKED, true);
-		
+
 		@SuppressWarnings("unchecked")
-		QList<QNumeric> numericList = (QList<QNumeric>)this;
+		QList<QNumeric> numericList = (QList<QNumeric>) this;
 		for (QNumeric element : numericList) {
 			total.plus(element);
 		}
-		
+
 		return total;
 	}
-	
+
 	@Override
 	public QIndicator qFound() {
 		return getDataContext().found();
