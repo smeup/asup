@@ -445,20 +445,21 @@ public class XMICLProgramWriter {
 			// Case 1: MONMSG in CL source body (command MONMSG)
 
 			QBlock execBlock = null;
+			
+			if ("DO".equalsIgnoreCase(execValue) || "(DO)".equalsIgnoreCase(msgIDValue)) {
 
-			if (execValue != null)
-				if ("DO".equalsIgnoreCase(execValue) || "(DO)".equalsIgnoreCase(msgIDValue)) {
+				CLBlock execCLBlock = new CLBlock();
+				buildBlock(execCLBlock);
+				execBlock = execCLBlock.getBlock();
 
-					CLBlock execCLBlock = new CLBlock();
-					buildBlock(execCLBlock);
-					execBlock = execCLBlock.getBlock();
-
-				} else {
-					execBlock = QIntegratedLanguageFlowFactory.eINSTANCE.createBlock();
-					CLCommand thenCmd = (CLCommand) commandParser.parse(msgIDValue + "\n");
+			} else {
+				execBlock = QIntegratedLanguageFlowFactory.eINSTANCE.createBlock();
+				if (execValue != null) {
+					CLCommand thenCmd = (CLCommand) commandParser.parse(execValue + "\n");
 					QStatement execCommand = analizeCommand(block, thenCmd, false);
 					execBlock.getStatements().add(execCommand);
 				}
+			}
 
 			// Control is the MONMSG command is related to an allowed command
 			QStatement lastCommand = statementsList.get(statementsList.size() - 1);
@@ -466,49 +467,46 @@ public class XMICLProgramWriter {
 			if (lastCommand instanceof QWhile || lastCommand instanceof QUntil || lastCommand instanceof QFor || lastCommand instanceof QJump || lastCommand instanceof QBreak
 					|| lastCommand instanceof QContinue || lastCommand instanceof QReturn)
 				System.err.println("MONMSG after a forbidden command");
+			
+			if (lastCommand instanceof QMonitor) {
 
-			// Manage MONMSG command only if an EXEC is defined
+				// Add a new onError node at existing monitor
 
-			if (execValue != null)
-				if (lastCommand instanceof QMonitor) {
+				QMonitor lastMonitor = (QMonitor) lastCommand;
 
-					// Add a new onError node at existing monitor
+				QOnError onError = QIntegratedLanguageFlowFactory.eINSTANCE.createOnError();
+				if (execBlock != null)
+					onError.setBody(execBlock);
+				if (msgIDValue != null)
+					onError.setError(msgIDValue);
 
-					QMonitor lastMonitor = (QMonitor) lastCommand;
+				lastMonitor.getOnErrors().add(onError);
 
-					QOnError onError = QIntegratedLanguageFlowFactory.eINSTANCE.createOnError();
-					if (execBlock != null)
-						onError.setBody(execBlock);
-					if (msgIDValue != null)
-						onError.setError(msgIDValue);
+			} else {
 
-					lastMonitor.getOnErrors().add(onError);
+				// Create a new monitor statement with last command as boby
 
-				} else {
+				QMonitor monitorStatement = QIntegratedLanguageFlowFactory.eINSTANCE.createMonitor();
 
-					// Create a new monitor statement with last command as boby
+				// Create monitor body
+				QBlock monitorBody = QIntegratedLanguageFlowFactory.eINSTANCE.createBlock();
+				monitorBody.getStatements().add(lastCommand);
+				monitorStatement.setBody(monitorBody);
 
-					QMonitor monitorStatement = QIntegratedLanguageFlowFactory.eINSTANCE.createMonitor();
+				// Create monitor onError
+				QOnError onError = QIntegratedLanguageFlowFactory.eINSTANCE.createOnError();
+				if (execBlock != null)
+					onError.setBody(execBlock);
+				if (msgIDValue != null)
+					onError.setError(msgIDValue);
 
-					// Create monitor body
-					QBlock monitorBody = QIntegratedLanguageFlowFactory.eINSTANCE.createBlock();
-					monitorBody.getStatements().add(lastCommand);
-					monitorStatement.setBody(monitorBody);
+				monitorStatement.getOnErrors().add(onError);
 
-					// Create monitor onError
-					QOnError onError = QIntegratedLanguageFlowFactory.eINSTANCE.createOnError();
-					if (execBlock != null)
-						onError.setBody(execBlock);
-					if (msgIDValue != null)
-						onError.setError(msgIDValue);
-
-					monitorStatement.getOnErrors().add(onError);
-
-					// Erase last command il block command list and add new
-					// monitorStatement as last command
-					// statementsList.remove(statementsList.size()-1);
-					statementsList.add(monitorStatement);
-				}
+				// Erase last command il block command list and add new
+				// monitorStatement as last command
+				// statementsList.remove(statementsList.size()-1);
+				statementsList.add(monitorStatement);
+			}
 		} else {
 			/*
 			 * Case 2: MONMSG after first PGM statement (program MONMSG).
