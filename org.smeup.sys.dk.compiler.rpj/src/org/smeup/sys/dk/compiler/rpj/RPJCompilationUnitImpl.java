@@ -797,8 +797,12 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 	@Override
 	public String normalizeModuleName(String name) {
-		String moduleName = normalizeTermName(name);
-		moduleName = Character.toString(moduleName.charAt(0)) + Character.toUpperCase(moduleName.charAt(1)) + moduleName.substring(2);
+
+		String moduleName = null;
+		if(!name.startsWith("*"))
+			moduleName = Character.toString(name.charAt(0)) + Character.toUpperCase(name.charAt(1)) + normalizeTermName(name.substring(2));
+		else
+			moduleName = normalizeTermName(name);
 
 		return moduleName;
 	}

@@ -21,6 +21,7 @@ import javax.inject.Inject;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.Block;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.dk.compiler.rpj.RPJContextHelper;
 import org.smeup.sys.dk.compiler.rpj.RPJCompilerMessage;
 import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.core.term.QTerm;
@@ -262,7 +263,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			value = compilationUnit.getQualifiedName(namedNode);
 
-			QDataTerm<?> dataTerm = JDTContextHelper.getDataTerm(namedNode);
+			QDataTerm<?> dataTerm = RPJContextHelper.getDataTerm(namedNode);
 
 			if (dataTerm != null) {
 
@@ -287,7 +288,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			} else if (namedNode instanceof QKeyListTerm) {
 				QKeyListTerm keyListTerm = (QKeyListTerm) namedNode;
 
-				if (JDTContextHelper.containsArray(expressionParser, keyListTerm)) {
+				if (RPJContextHelper.containsArray(expressionParser, keyListTerm)) {
 					this.buffer.append(buildExpression(keyListTerm));
 					return false;
 				}
@@ -323,7 +324,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		builder.setAST(getAST());
 
 		// pointer
-		if (JDTContextHelper.isPointer(compilationUnit, expression.getLeftOperand())) {
+		if (RPJContextHelper.isPointer(compilationUnit, expression.getLeftOperand())) {
 			// left
 			builder.setTarget(null);
 			builder.clear();
@@ -344,7 +345,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			builder.setTarget(QPointer.class);
 		}
 		// list
-		else if (JDTContextHelper.isList(compilationUnit, expression.getLeftOperand())) {
+		else if (RPJContextHelper.isList(compilationUnit, expression.getLeftOperand())) {
 			// left
 			builder.setTarget(null);
 			builder.clear();
@@ -377,7 +378,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			if (expression.getOperator() == ArithmeticOperator.POWER)
 				target = Integer.class;
 			else
-				target = JDTContextHelper.getTargetClass(compilationUnit, expression.getLeftOperand(), true);
+				target = RPJContextHelper.getTargetClass(compilationUnit, expression.getLeftOperand(), true);
 			
 			if (Boolean.class.isAssignableFrom(target))
 				target = String.class;
@@ -390,7 +391,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			value.append(builder.getResult());
 
 			if (QPointer.class.isAssignableFrom(target))
-				value.append("." + toJavaMethod(expression));
+						value.append("." + toJavaMethod(expression));
 			else if (QList.class.isAssignableFrom(target))
 				value.append("." + toJavaMethod(expression));
 			else
@@ -411,7 +412,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			value.append(toJavaPrimitive(expression.getOperator()));
 
-			if (!JDTContextHelper.isPrimitive(compilationUnit, expression.getLeftOperand()))
+			if (!RPJContextHelper.isPrimitive(compilationUnit, expression.getLeftOperand()))
 				builder.setTarget(Number.class);
 			else
 				builder.setTarget(null);
@@ -488,7 +489,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		if (expression.getRightOperand() != null) {
 
 			// left
-			if (!JDTContextHelper.isPrimitive(compilationUnit, expression.getLeftOperand()))
+			if (!RPJContextHelper.isPrimitive(compilationUnit, expression.getLeftOperand()))
 				builder.setTarget(Boolean.class);
 			// builder.setTarget(JDTContextHelper.getTargetClass(compilationUnit,
 			// expression.getLeftOperand(), true));
@@ -506,7 +507,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			buffer.append(toJavaPrimitive(expression.getOperator()));
 
 			// right
-			if (!JDTContextHelper.isPrimitive(compilationUnit, expression.getRightOperand()))
+			if (!RPJContextHelper.isPrimitive(compilationUnit, expression.getRightOperand()))
 				builder.setTarget(Boolean.class);
 			else
 				builder.setTarget(Boolean.class);
@@ -524,10 +525,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			value.append(toJavaPrimitive(expression.getOperator()));
 
 			// left
-			if (!JDTContextHelper.isPrimitive(compilationUnit, expression.getLeftOperand()))
+			if (!RPJContextHelper.isPrimitive(compilationUnit, expression.getLeftOperand()))
 				builder.setTarget(Boolean.class);
 			else
-				builder.setTarget(JDTContextHelper.getTargetClass(compilationUnit, expression.getLeftOperand(), true));
+				builder.setTarget(RPJContextHelper.getTargetClass(compilationUnit, expression.getLeftOperand(), true));
 
 			builder.clear();
 			expression.getLeftOperand().accept(builder);
@@ -566,10 +567,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		JDTExpressionStringBuilder rightBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
 		rightBuilder.setAST(getAST());
 
-		if (JDTContextHelper.isPrimitive(compilationUnit, expression.getLeftOperand())) {
+		if (RPJContextHelper.isPrimitive(compilationUnit, expression.getLeftOperand())) {
 
 			leftBuilder.clear();
-			if (JDTContextHelper.isSpecial(compilationUnit, expression.getRightOperand()))
+			if (RPJContextHelper.isSpecial(compilationUnit, expression.getRightOperand()))
 				leftBuilder.setTarget(QData.class);
 			else
 				leftBuilder.setTarget(QData.class);
@@ -586,10 +587,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			// right
 			rightBuilder.clear();
-			if (JDTContextHelper.isPrimitive(compilationUnit, expression.getRightOperand()))
+			if (RPJContextHelper.isPrimitive(compilationUnit, expression.getRightOperand()))
 				rightBuilder.setTarget(null);
 			else
-				rightBuilder.setTarget(JDTContextHelper.getTargetClass(compilationUnit, expression.getRightOperand(), true));
+				rightBuilder.setTarget(RPJContextHelper.getTargetClass(compilationUnit, expression.getRightOperand(), true));
 
 			expression.getRightOperand().accept(rightBuilder);
 			buffer.append(rightBuilder.getResult());
@@ -1039,10 +1040,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			QExpression expressionChild = expression.getElements().get(0);
 
 			Class<?> objectTarget = null;
-			if (!JDTContextHelper.isPrimitive(compilationUnit, expressionChild))
-				objectTarget = (Class<? extends QData>) JDTContextHelper.getTargetClass(compilationUnit, expressionChild, false);
+			if (!RPJContextHelper.isPrimitive(compilationUnit, expressionChild))
+				objectTarget = (Class<? extends QData>) RPJContextHelper.getTargetClass(compilationUnit, expressionChild, false);
 			else
-				objectTarget = JDTContextHelper.getModelClass((Class<?>) JDTContextHelper.getTargetClass(compilationUnit, expressionChild, true));
+				objectTarget = RPJContextHelper.getModelClass((Class<?>) RPJContextHelper.getTargetClass(compilationUnit, expressionChild, true));
 			
 			prototype = compilationUnit.getMethod(objectTarget, expression.getValue());
 			if (prototype != null)

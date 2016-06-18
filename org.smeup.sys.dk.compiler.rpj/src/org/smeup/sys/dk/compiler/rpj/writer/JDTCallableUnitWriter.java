@@ -60,6 +60,7 @@ import org.smeup.sys.dk.compiler.QCompilerLinker;
 import org.smeup.sys.dk.compiler.QCompilerManager;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.compiler.UnitScope;
+import org.smeup.sys.dk.compiler.rpj.RPJContextHelper;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
@@ -330,7 +331,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		writeImport(QBufferedData.class);
 
 		for (QKeyListTerm keyList : keyLists)
-			if (!JDTContextHelper.containsArray(expressionParser, keyList))
+			if (!RPJContextHelper.containsArray(expressionParser, keyList))
 				writeKeyList(keyList);
 	}
 

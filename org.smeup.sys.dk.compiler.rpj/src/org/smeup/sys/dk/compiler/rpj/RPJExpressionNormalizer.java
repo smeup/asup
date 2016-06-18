@@ -17,7 +17,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.compiler.QCompilationUnit;
-import org.smeup.sys.dk.compiler.rpj.writer.JDTContextHelper;
 import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.core.term.QNode;
 import org.smeup.sys.il.data.term.QDataTerm;
@@ -64,39 +63,12 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 	@Inject
 	private QJob job;
 
-	private QMethodExec lastMethod = null;
+	private QMethodExec lastContextIndicatorSetter = null;
 	
 	@Override
 	public boolean visit(QMethodExec statement) {
 
-		/*
-		if(isParentIf(statement)) {
-			lastMethod = null;
-			return true;
-		}*/
-
-		if (statement.getMethod().equalsIgnoreCase("SETLL"))
-			lastMethod = statement;
-		else if (statement.getMethod().equalsIgnoreCase("SETGT"))
-			lastMethod = statement;
-		else if (statement.getMethod().equalsIgnoreCase("CHAIN"))
-			lastMethod = statement;
-		else if (statement.getMethod().equalsIgnoreCase("DELETE"))
-			lastMethod = statement;
-		else if (statement.getMethod().equalsIgnoreCase("READ"))
-			lastMethod = statement;
-		else if (statement.getMethod().equalsIgnoreCase("READE"))
-			lastMethod = statement;
-		else if (statement.getMethod().equalsIgnoreCase("READP"))
-			lastMethod = statement;
-		else if (statement.getMethod().equalsIgnoreCase("READPE"))
-			lastMethod = statement;
-		else if (statement.getMethod().equalsIgnoreCase("%LOOKUP"))
-			lastMethod = statement;
-		else if (statement.getMethod().equalsIgnoreCase("%CHECK"))
-			lastMethod = statement;
-		else if (statement.getMethod().equalsIgnoreCase("%CHECKR"))
-			lastMethod = statement;
+		setLastContextIndicatorSetter(statement);
 		
 		return true;
 	}
@@ -248,34 +220,24 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		@Override
 		public boolean visit(QFunctionTermExpression expression) {
 			
-			
-			
-			if (expression.getValue().equalsIgnoreCase("%EQUAL") ||
-				expression.getValue().equalsIgnoreCase("%FOUND") ||
-				expression.getValue().equalsIgnoreCase("%EOF")   ||
-				expression.getValue().equalsIgnoreCase("%ERROR") ||
-				expression.getValue().equalsIgnoreCase("%OPEN") ||
-				expression.getValue().equalsIgnoreCase("%CLOSE")) {
-				if (expression.getElements().isEmpty()) {
+			if(RPJExpressionHelper.isContextIndicatorGetter(expression)) {
 						
-					if (lastMethod != null) {
+					if (lastContextIndicatorSetter != null) {
 						
-						if(getParentNode(lastMethod) != getParentNode(owner)) {
-							lastMethod = null;
+						if(getParentNode(lastContextIndicatorSetter) != getParentNode(owner)) {
+							lastContextIndicatorSetter = null;
 							return true;
 						}							
 						
 						QAtomicTermExpression atomicTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createAtomicTermExpression();
 						atomicTermExpression.setType(AtomicType.NAME);
-						atomicTermExpression.setValue(lastMethod.getObject());
+						atomicTermExpression.setValue(lastContextIndicatorSetter.getObject());
 						expression.getElements().add(atomicTermExpression);
-
+	
 						normalized = true;
 					}
 //					else
 //						throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: 9w8xbt87we8r");						
-				}
-
 			}
 			
 			return true;
@@ -316,7 +278,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 				// constant founded on left
 				else if (atomicTermExpressionLeft.getType() == AtomicType.NAME) {
 
-					if (JDTContextHelper.isPrimitive(compilationUnit, rightExpression))
+					if (RPJContextHelper.isPrimitive(compilationUnit, rightExpression))
 						break;
 					if (rightExpression instanceof QAtomicTermExpression)
 						if (((QAtomicTermExpression) rightExpression).getType() == AtomicType.SPECIAL)
@@ -351,34 +313,59 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 			return true;
 		}
-		
-		private void reverseExpression(QRelationalExpression relationalExpression) {
+	}
+	
+	private void reverseExpression(QRelationalExpression relationalExpression) {
 
-			QExpression leftExpression = relationalExpression.getLeftOperand();
-			QExpression rightExpression = relationalExpression.getRightOperand();
+		QExpression leftExpression = relationalExpression.getLeftOperand();
+		QExpression rightExpression = relationalExpression.getRightOperand();
 
-			relationalExpression.setLeftOperand(rightExpression);
-			relationalExpression.setRightOperand(leftExpression);
+		relationalExpression.setLeftOperand(rightExpression);
+		relationalExpression.setRightOperand(leftExpression);
 
-			switch (relationalExpression.getOperator()) {
-			case EQUAL:
-				break;
-			case GREATER_THAN:
-				relationalExpression.setOperator(RelationalOperator.LESS_THAN);
-				break;
-			case GREATER_THAN_EQUAL:
-				relationalExpression.setOperator(RelationalOperator.LESS_THAN_EQUAL);
-				break;
-			case LESS_THAN:
-				relationalExpression.setOperator(RelationalOperator.GREATER_THAN);
-				break;
-			case LESS_THAN_EQUAL:
-				relationalExpression.setOperator(RelationalOperator.GREATER_THAN_EQUAL);
-				break;
-			case NOT_EQUAL:
-				break;
-			}
-		}		
+		switch (relationalExpression.getOperator()) {
+		case EQUAL:
+			break;
+		case GREATER_THAN:
+			relationalExpression.setOperator(RelationalOperator.LESS_THAN);
+			break;
+		case GREATER_THAN_EQUAL:
+			relationalExpression.setOperator(RelationalOperator.LESS_THAN_EQUAL);
+			break;
+		case LESS_THAN:
+			relationalExpression.setOperator(RelationalOperator.GREATER_THAN);
+			break;
+		case LESS_THAN_EQUAL:
+			relationalExpression.setOperator(RelationalOperator.GREATER_THAN_EQUAL);
+			break;
+		case NOT_EQUAL:
+			break;
+		}
+	}		
+
+	private void setLastContextIndicatorSetter(QMethodExec statement) {
+		if (statement.getMethod().equalsIgnoreCase("SETLL"))
+			lastContextIndicatorSetter = statement;
+		else if (statement.getMethod().equalsIgnoreCase("SETGT"))
+			lastContextIndicatorSetter = statement;
+		else if (statement.getMethod().equalsIgnoreCase("CHAIN"))
+			lastContextIndicatorSetter = statement;
+		else if (statement.getMethod().equalsIgnoreCase("DELETE"))
+			lastContextIndicatorSetter = statement;
+		else if (statement.getMethod().equalsIgnoreCase("READ"))
+			lastContextIndicatorSetter = statement;
+		else if (statement.getMethod().equalsIgnoreCase("READE"))
+			lastContextIndicatorSetter = statement;
+		else if (statement.getMethod().equalsIgnoreCase("READP"))
+			lastContextIndicatorSetter = statement;
+		else if (statement.getMethod().equalsIgnoreCase("READPE"))
+			lastContextIndicatorSetter = statement;
+		else if (statement.getMethod().equalsIgnoreCase("%LOOKUP"))
+			lastContextIndicatorSetter = statement;
+		else if (statement.getMethod().equalsIgnoreCase("%CHECK"))
+			lastContextIndicatorSetter = statement;
+		else if (statement.getMethod().equalsIgnoreCase("%CHECKR"))
+			lastContextIndicatorSetter = statement;		
 	}
 	
 	@SuppressWarnings("unused")

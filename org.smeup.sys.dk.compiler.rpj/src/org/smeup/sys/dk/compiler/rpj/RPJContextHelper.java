@@ -10,7 +10,7 @@
  *   Giuliano Giancristofaro - Initial API and implementation
  *   Mattia Rocchi			 - Implementation
  */
-package org.smeup.sys.dk.compiler.rpj.writer;
+package org.smeup.sys.dk.compiler.rpj;
 
 import java.util.Date;
 import java.util.List;
@@ -48,7 +48,7 @@ import org.smeup.sys.il.expr.QFunctionTermExpression;
 import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QPrototype;
 
-public class JDTContextHelper {
+public class RPJContextHelper {
 
 	public static boolean isPrimitive(QCompilationUnit compilationUnit, QExpression expression) {
 
@@ -113,7 +113,7 @@ public class JDTContextHelper {
 
 		return false;
 	}
-
+	
 	public static boolean isSpecial(QCompilationUnit compilationUnit, QExpression expression) {
 
 		switch (expression.getExpressionType()) {
@@ -362,7 +362,7 @@ public class JDTContextHelper {
 			// check method
 			QExpression expressionChild = functionExpression.getElements().get(0);
 			Class<?> target = null;
-			if (!JDTContextHelper.isPrimitive(compilationUnit, expressionChild))
+			if (!RPJContextHelper.isPrimitive(compilationUnit, expressionChild))
 				target = (Class<? extends QData>) getTargetClass(compilationUnit, expressionChild, false);
 			else
 				target = getModelClass(getTargetClass(compilationUnit, expressionChild, true));

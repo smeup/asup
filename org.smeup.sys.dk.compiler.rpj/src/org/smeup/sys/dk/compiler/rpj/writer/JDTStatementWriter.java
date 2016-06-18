@@ -42,6 +42,7 @@ import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeLiteral;
 import org.eclipse.jdt.core.dom.WhileStatement;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.dk.compiler.rpj.RPJContextHelper;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.core.term.QNode;
@@ -319,7 +320,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		Expression expression = null;
 
-		if (JDTContextHelper.isPrimitive(compilationUnit, condition))
+		if (RPJContextHelper.isPrimitive(compilationUnit, condition))
 			expression = JDTStatementHelper.buildExpression(ast, compilationUnit, condition, Boolean.class);
 		else
 			expression = JDTStatementHelper.buildExpression(ast, compilationUnit, condition, Boolean.class);
@@ -524,7 +525,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			if (namedNode == null) {
 				Class<?> target = null;
 				if (objectExpression instanceof QArithmeticExpression || objectExpression instanceof QBlockExpression) {
-					target = JDTContextHelper.getTargetClass(compilationUnit, objectExpression, false);
+					target = RPJContextHelper.getTargetClass(compilationUnit, objectExpression, false);
 					// force boxing
 					if (String.class.isAssignableFrom(target))
 						target = QCharacter.class;
@@ -579,7 +580,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 				methodInvocation.arguments().add(typeLiteral);
 
 			} else {
-				Class<?> target = JDTContextHelper.getTargetClass(compilationUnit, objectExpression, false);
+				Class<?> target = RPJContextHelper.getTargetClass(compilationUnit, objectExpression, false);
 				methodInvocation.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, objectExpression, target));
 			}
 
@@ -732,7 +733,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		// condition
 		QPredicateExpression condition = buildIterationCondition(statement.getCondition());
-		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, condition, JDTContextHelper.getTargetClass(compilationUnit, condition, true));
+		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, condition, RPJContextHelper.getTargetClass(compilationUnit, condition, true));
 		forSt.setExpression(expression);
 
 		// increment
@@ -767,7 +768,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		logicalExpression.setLeftOperand(blockExpression);
 
-		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, logicalExpression, JDTContextHelper.getTargetClass(compilationUnit, logicalExpression, true));
+		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, logicalExpression, RPJContextHelper.getTargetClass(compilationUnit, logicalExpression, true));
 		doSt.setExpression(expression);
 
 		block.statements().add(doSt);
@@ -806,7 +807,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		WhileStatement whileSt = ast.newWhileStatement();
 
 		QPredicateExpression condition = buildIterationCondition(statement.getCondition());
-		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, condition, JDTContextHelper.getTargetClass(compilationUnit, condition, true));
+		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, condition, RPJContextHelper.getTargetClass(compilationUnit, condition, true));
 		whileSt.setExpression(expression);
 
 		block.statements().add(whileSt);
