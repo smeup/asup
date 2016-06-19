@@ -489,7 +489,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				writeImport(compilerLinker.getLinkedClass());
 				parType.typeArguments().add(getAST().newSimpleType(getAST().newName(compilerLinker.getLinkedClass().getSimpleName())));
 			} else {
-				String argument = printTerm.getName();
+//				String argument = printTerm.getName();
+				String argument = "PRT198";
 				parType.typeArguments().add(getAST().newSimpleType(getAST().newSimpleName(argument)));
 			}
 
