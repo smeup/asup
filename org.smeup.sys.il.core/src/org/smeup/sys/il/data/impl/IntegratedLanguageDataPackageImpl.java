@@ -1678,6 +1678,10 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(arrayEClass, null, "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(arrayEClass, this.getDecimal(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -1953,6 +1957,27 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getString(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(bufferedListEClass, this.getIndicator(), "qFound", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(bufferedListEClass, this.getIndicator(), "qEqual", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bufferedListEClass, this.getDecimal(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bufferedListEClass, this.getDecimal(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bufferedListEClass, this.getDecimal(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bufferedListEClass, this.getDecimal(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bufferedListEClass, this.getDecimal(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedListEClass, this.getDecimal(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(bufferedListEClass_D);
@@ -3873,7 +3898,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(numericEClass, this.getNumeric(), "power", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(numericEClass, this.getNumeric(), "qAbs", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(numericEClass, this.getDecimal(), "qAbs", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(numericEClass, this.getDatetime(), "qDate", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDatetimeFormat(), "format", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -4004,53 +4029,58 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		initEClass(scannerEClass, QScanner.class, "Scanner", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "source", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(scannerEClass, this.getIndicator(), "qFound", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "source", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "source", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "source", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "source", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "source", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "source", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByte(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "source", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "source", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "source", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "source", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "source", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 

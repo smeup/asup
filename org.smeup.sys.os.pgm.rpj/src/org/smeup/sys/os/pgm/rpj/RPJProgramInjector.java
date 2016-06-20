@@ -18,7 +18,6 @@ import java.lang.reflect.WildcardType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -60,9 +59,9 @@ import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileManager;
 import org.smeup.sys.os.file.QFileOverride;
 import org.smeup.sys.os.pgm.QActivationGroup;
-import org.smeup.sys.os.pgm.QProgramCallable;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 import org.smeup.sys.os.pgm.QProgram;
+import org.smeup.sys.os.pgm.QProgramCallable;
 import org.smeup.sys.os.pgm.QProgramInfo;
 import org.smeup.sys.os.pgm.QProgramStatus;
 
@@ -107,7 +106,7 @@ public class RPJProgramInjector {
 	@SuppressWarnings("resource")
 	public <P> QProgramCallable prepareCallable(QProgram program, Class<P> klass) {
 
-		// System.out.println("cls:\t" + klass.getSimpleName());
+//		System.out.println("cls:\t" + klass.getSimpleName());
 
 		QDataContainer dataContainer = dataManager.createDataContainer(dataContext);
 
@@ -126,12 +125,11 @@ public class RPJProgramInjector {
 			programInfo.setLoadTime(System.currentTimeMillis() - startTime);
 
 			QProgramCallable callableProgram = null;
-			if(delegate instanceof RPJProgram) {
-				RPJProgram rpjProgram = (RPJProgram)delegate;
+			if (delegate instanceof RPJProgram) {
+				RPJProgram rpjProgram = (RPJProgram) delegate;
 				rpjProgram._init(job, dataContext, program, programInfo, programStatus);
 				callableProgram = rpjProgram;
-			}
-			else { 
+			} else {
 				callableProgram = new RPJProgramDelegator(job, dataContext, activationGroup, program, programStatus, delegate, programInfo);
 			}
 
@@ -231,13 +229,14 @@ public class RPJProgramInjector {
 		if (klass.getSuperclass().getAnnotation(Program.class) != null)
 			injectFields(owner, klass.getSuperclass(), callable, dataContainer, accessFactory, unitModules, records);
 
+		List<RPJInjectableField> modules = new ArrayList<RPJInjectableField>();
 		List<RPJInjectableField> datas = new ArrayList<RPJInjectableField>();
 		List<RPJInjectableField> dataStructures = new ArrayList<RPJInjectableField>();
 		List<RPJInjectableField> pointers = new ArrayList<RPJInjectableField>();
 
-		List<RPJInjectableField> dataSets = new LinkedList<RPJInjectableField>();
-		List<RPJInjectableField> displays = new LinkedList<RPJInjectableField>();
-		List<RPJInjectableField> prints = new LinkedList<RPJInjectableField>();
+		List<RPJInjectableField> dataSets = new ArrayList<RPJInjectableField>();
+		List<RPJInjectableField> displays = new ArrayList<RPJInjectableField>();
+		List<RPJInjectableField> prints = new ArrayList<RPJInjectableField>();
 
 		List<RPJInjectableField> statements = new ArrayList<RPJInjectableField>();
 		List<RPJInjectableField> cursors = new ArrayList<RPJInjectableField>();
@@ -253,7 +252,7 @@ public class RPJProgramInjector {
 
 			if (Modifier.isFinal(field.getModifiers()))
 				continue;
-
+			
 			if (Modifier.isStatic(field.getModifiers())) {
 				if (field.get(callable) != null)
 					continue;
@@ -264,6 +263,12 @@ public class RPJProgramInjector {
 			// Procedure lazy loading
 			if (injectableField.getFieldClass().getAnnotation(Procedure.class) != null)
 				continue;
+
+			// Module
+			if (injectableField.getFieldClass().getAnnotation(Module.class) != null) {
+				modules.add(injectableField);
+				continue;
+			}
 
 			// DataStruct
 			if (QDataStruct.class.isAssignableFrom(injectableField.getFieldClass())) {
@@ -285,8 +290,6 @@ public class RPJProgramInjector {
 
 			// DataSet
 			if (QDataSet.class.isAssignableFrom(injectableField.getFieldClass())) {
-				if (injectableField.getArguments()[0] instanceof WildcardType)
-					continue;
 				dataSets.add(injectableField);
 				continue;
 			}
@@ -331,6 +334,10 @@ public class RPJProgramInjector {
 				injectFieldValue(injectableField, callable, owner, dataContainer, accessFactory, unitModules, records);
 		}
 
+		// modules
+		for (RPJInjectableField field : modules)
+			injectModule(callable, owner, dataContainer, accessFactory, unitModules, records, field);
+
 		// dataSet
 		for (RPJInjectableField field : dataSets)
 			injectDataSet(accessFactory, callable, dataContainer, records, field);
@@ -348,8 +355,9 @@ public class RPJProgramInjector {
 			RPJInjectionHelper.injectPointerNoDefault(callable, dataContainer, field);
 
 		// dataStructure no based
-		for (RPJInjectableField field : dataStructures)
+		for (RPJInjectableField field : dataStructures) {			
 			RPJInjectionHelper.injectDataStructure(callable, dataContainer, records, field, false);
+		}
 
 		// data no based
 		for (RPJInjectableField field : datas)
@@ -361,21 +369,21 @@ public class RPJProgramInjector {
 			QDataSet<?> dataSet = (QDataSet<?>) field.getValue(callable);
 			RPJInjectionHelper.assignRecordFields(field, dataContainer, dataSetRecords, field, dataSet.get());
 		}
-		
+
 		// display
 		Set<String> displayRecords = new HashSet<String>();
 		for (RPJInjectableField field : displays) {
 			QDisplay<?> display = (QDisplay<?>) field.getValue(callable);
 			RPJInjectionHelper.assignRecordFields(field, dataContainer, displayRecords, field, display.get());
 		}
-		
+
 		// print
 		Set<String> printRecords = new HashSet<String>();
 		for (RPJInjectableField field : prints) {
 			QPrint<?> print = (QPrint<?>) field.getValue(callable);
 			RPJInjectionHelper.assignRecordFields(field, dataContainer, printRecords, field, print.get());
 		}
-		
+
 		// pointer with default
 		for (RPJInjectableField field : pointers)
 			RPJInjectionHelper.injectPointerWithDefault(callable, dataContainer, field);
@@ -388,7 +396,7 @@ public class RPJProgramInjector {
 		for (RPJInjectableField field : datas)
 			RPJInjectionHelper.injectDataBased(callable, dataContainer, field);
 
-		// recordInfo/externalRefernce
+		// recordInfo/externalReference
 		for (RPJInjectableField field : dataSets) {
 			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
 			if (fileDef == null)
@@ -397,7 +405,7 @@ public class RPJProgramInjector {
 			RPJInjectionHelper.setInfoValue(field, fileDef, callable, records);
 			RPJInjectionHelper.setExternalValue(field, fileDef, callable);
 		}
-		
+
 		for (RPJInjectableField field : displays) {
 			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
 			if (fileDef == null)
@@ -405,7 +413,7 @@ public class RPJProgramInjector {
 
 			RPJInjectionHelper.setInfoValue(field, fileDef, callable, records);
 		}
-		
+
 		for (RPJInjectableField field : prints) {
 			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
 			if (fileDef == null)
@@ -413,6 +421,73 @@ public class RPJProgramInjector {
 
 			RPJInjectionHelper.setInfoValue(field, fileDef, callable, records);
 		}
+	}
+
+	private void injectModule(Object callable, Object owner, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules, Map<String, QRecord> records,
+			RPJInjectableField field) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
+
+		Object object = null;
+
+		Module module = field.getFieldClass().getAnnotation(Module.class);
+		switch (module.scope()) {
+		case OWNER:
+			object = ownerModules.get(field.getFieldClass().getSimpleName());
+			break;
+		case UNIT:
+			object = unitModules.get(field.getFieldClass().getSimpleName());
+			break;
+		}
+
+		if (object == null) {
+
+//			System.out.println("\t\tmod: " + field.getName());
+
+			object = injectData(owner, field.getFieldClass(), dataContainer, accessFactory, unitModules, records);
+			dataContext.getContext().invoke(object, PostConstruct.class);
+
+			switch (module.scope()) {
+			case OWNER:
+				ownerModules.put(field.getFieldClass().getSimpleName(), object);
+				break;
+			case UNIT:
+				unitModules.put(field.getFieldClass().getSimpleName(), object);
+				break;
+			}
+		}
+
+		if (object != null)
+			field.setValue(callable, object);
+		else if (!Modifier.isTransient(field.getField().getModifiers()))
+			System.err.println("Unexpected condition " + field.getName() + "(" + field.getFieldClass() + ")" + ": xo76sadfjhg6sagfu8h");
+	}
+
+	@SuppressWarnings("unchecked")
+	private void injectDataSet(QAccessFactory accessFactory, Object callable, QDataContainer dataContainer, Map<String, QRecord> records, RPJInjectableField field) {
+
+		boolean userOpen = false;
+
+		FileDef fileDef = field.getField().getAnnotation(FileDef.class);
+		if (fileDef != null)
+			userOpen = fileDef.userOpen();
+
+		Class<QRecord> classRecord = (Class<QRecord>) field.getArguments()[0];
+		QRecord record = RPJInjectionHelper.createRecord(field, classRecord, fileDef, callable, dataContainer, records);
+
+		QDataSet<?> dataSet = null;
+
+		if (QKSDataSet.class.isAssignableFrom(field.getFieldClass())) {
+			dataSet = accessFactory.createKeySequencedDataSet(classRecord, record, AccessMode.UPDATE, userOpen, null);
+		} else if (QSMDataSet.class.isAssignableFrom(field.getFieldClass())) {
+			dataSet = accessFactory.createSourceMemberDataSet(classRecord, record, AccessMode.UPDATE, userOpen, null);
+		} else {
+			dataSet = accessFactory.createRelativeRecordDataSet(classRecord, record, AccessMode.UPDATE, userOpen, null);
+		}
+
+		if (fileDef != null && !fileDef.name().isEmpty())
+			dataSet.getFilePath().eval(fileDef.name());
+		dataSet.clear();
+
+		field.setValue(callable, dataSet);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -445,36 +520,6 @@ public class RPJProgramInjector {
 		field.setValue(callable, new RPJDisplayDelegator<QRecord>(record, userOpen, infoStruct));
 	}
 
-	@SuppressWarnings("unchecked")
-	private void injectDataSet(QAccessFactory accessFactory, Object callable, QDataContainer dataContainer, Map<String, QRecord> records, RPJInjectableField field) {
-
-		boolean userOpen = false;
-
-		FileDef fileDef = field.getField().getAnnotation(FileDef.class);
-		if (fileDef != null)
-			userOpen = fileDef.userOpen();
-
-		Class<QRecord> classRecord = (Class<QRecord>) field.getArguments()[0];
-		QRecord record = RPJInjectionHelper.createRecord(field, classRecord, fileDef, callable, dataContainer, records);
-
-		QDataSet<?> dataSet = null;
-
-		if (QKSDataSet.class.isAssignableFrom(field.getFieldClass())) {
-			dataSet = accessFactory.createKeySequencedDataSet(classRecord, record, AccessMode.UPDATE, userOpen, null);
-		} else if (QSMDataSet.class.isAssignableFrom(field.getFieldClass())) {
-			dataSet = accessFactory.createSourceMemberDataSet(classRecord, record, AccessMode.UPDATE, userOpen, null);
-		} else {
-			dataSet = accessFactory.createRelativeRecordDataSet(classRecord, record, AccessMode.UPDATE, userOpen, null);
-		}
-
-		if (fileDef != null && !fileDef.name().isEmpty())
-			dataSet.getFilePath().eval(fileDef.name());
-		dataSet.clear();
-
-		field.setValue(callable, dataSet);
-	}
-
-
 	private void injectFieldValue(RPJInjectableField injectableField, Object callable, Object owner, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules,
 			Map<String, QRecord> records) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
@@ -491,39 +536,6 @@ public class RPJProgramInjector {
 		// DataContext
 		else if (QDataContext.class.equals(injectableField.getFieldClass())) {
 			object = dataContainer.getDataContext();
-		}
-
-		// Module
-		else if (injectableField.getFieldClass().getAnnotation(Module.class) != null) {
-			Module module = injectableField.getFieldClass().getAnnotation(Module.class);
-			switch (module.scope()) {
-			case OWNER:
-				object = ownerModules.get(injectableField.getFieldClass().getSimpleName());
-				break;
-			case UNIT:
-				object = unitModules.get(injectableField.getFieldClass().getSimpleName());
-				break;
-			}
-
-			if (object == null) {
-				//long startTime = System.currentTimeMillis();
-				object = injectData(owner, injectableField.getFieldClass(), dataContainer, accessFactory, unitModules, records);
-				// System.out.println("\t\t" +
-				// injectableField.getClass_().getSimpleName() + "[" + new
-				// DecimalFormat("00000").format(System.currentTimeMillis() -
-				// startTime) + "]");
-
-				dataContext.getContext().invoke(object, PostConstruct.class);
-
-				switch (module.scope()) {
-				case OWNER:
-					ownerModules.put(injectableField.getFieldClass().getSimpleName(), object);
-					break;
-				case UNIT:
-					unitModules.put(injectableField.getFieldClass().getSimpleName(), object);
-					break;
-				}
-			}
 		}
 		// Caller
 		else if (injectableField.getAnnotation(Program.class) != null && injectableField.getAnnotation(Program.class).name().equals(NAME_OWNER))
@@ -555,5 +567,4 @@ public class RPJProgramInjector {
 
 		return file;
 	}
-
 }

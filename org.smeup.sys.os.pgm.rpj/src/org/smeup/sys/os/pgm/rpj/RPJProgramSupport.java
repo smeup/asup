@@ -542,8 +542,12 @@ public class RPJProgramSupport {
 		return qBox(print.isOpen());
 	}
 
+	public QIndicator qEqual(QArray<?> array) {
+		return array.qEqual();
+	}
+
 	public QIndicator qEqual(QDataSet<?> dataSet) {
-		return qBox(dataSet.onError());
+		return qBox(dataSet.isEqual());
 	}
 
 	public QIndicator qError() {
@@ -952,5 +956,10 @@ public class RPJProgramSupport {
 
 		@DataDef(precision = 2)
 		public QDecimal uyear;
+	}
+
+	public QIndicator qSwitch(String string) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

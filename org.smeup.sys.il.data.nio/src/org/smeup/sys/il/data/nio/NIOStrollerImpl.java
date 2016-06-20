@@ -982,4 +982,9 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	public void biton(QString bitMask) {
 		current().biton(bitMask);
 	}
+
+	@Override
+	public QNumeric qScan(byte argument) {
+		return current().qScan(argument);
+	}
 }

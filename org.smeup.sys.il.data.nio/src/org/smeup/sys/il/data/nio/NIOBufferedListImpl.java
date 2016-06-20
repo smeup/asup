@@ -37,7 +37,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 
 	private D _model;
 	private SortDirection sortDirection = null;
-	private QDecimal lastIndex;
+	protected QDecimal lastIndex;
 
 	public NIOBufferedListImpl(QDataContext dataContext, D model, SortDirection sortDirection) {
 		super(dataContext);
@@ -410,7 +410,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	public BufferedDataType getBufferedDataType() {
 		return BufferedDataType.LIST;
 	}
-
+	
 	@Override
 	public QDecimal qLookup(D argument) {
 		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, 1, capacity()));
@@ -457,31 +457,17 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	public void qLookup(D argument, QIndicator equal) {
 
 		int i = qLookup(DataComparator.EQUAL, argument, 1, capacity());
-		if (i > 0) {
-			equal.eval(true);
-			getDataContext().equal().eval(true);
-			getDataContext().found().eval(true);
-		}
-		else {
-			equal.eval(false);
-			getDataContext().equal().eval(false);
-			getDataContext().found().eval(false);
-		}
+		setContextIndicators(i, equal);
 	}
 
 	@Override
 	public void qLookup(D argument, QNumeric start, QIndicator equal) {
 
 		int i = qLookup(DataComparator.EQUAL, argument, start.asInteger(), capacity());
+		setContextIndicators(i, equal);
 		if (i > 0) {
-			equal.eval(true);
-			getDataContext().equal().eval(true);
-			getDataContext().found().eval(true);
 			start.eval(i);
 		} else {
-			equal.eval(false);
-			getDataContext().equal().eval(false);
-			getDataContext().found().eval(false);
 			start.eval(1);
 		}
 	}
@@ -489,16 +475,8 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	@Override
 	public void qLookup(D argument, Number start, QIndicator equal) {
 
-		int i = qLookup(DataComparator.EQUAL, argument, 1, capacity());
-		if(i > 0) {
-			equal.eval(true);
-			getDataContext().equal().eval(true);
-			getDataContext().found().eval(true);
-		} else {
-			equal.eval(false);
-			getDataContext().equal().eval(false);
-			getDataContext().found().eval(false);
-		}
+		int i = qLookup(DataComparator.EQUAL, argument, start.intValue(), capacity());
+		setContextIndicators(i, equal);
 	}
 
 	@Override
@@ -546,32 +524,18 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	@Override
 	public void qLookup(DataSpecial argument, QIndicator equal) {
 
-		int i = qLookup(DataComparator.EQUAL, argument, 1, capacity());		
-		if(i > 0) {
-			equal.eval(true);
-			getDataContext().equal().eval(true);
-			getDataContext().found().eval(true);			
-		}
-		else {
-			equal.eval(false);
-			getDataContext().equal().eval(false);
-			getDataContext().found().eval(false);			
-		}
+		int i = qLookup(DataComparator.EQUAL, argument, 1, capacity());
+		setContextIndicators(i, equal);
 	}
 
 	@Override
 	public void qLookup(DataSpecial argument, QNumeric start, QIndicator equal) {
 
 		int i = qLookup(DataComparator.EQUAL, argument, start.asInteger(), capacity());
+		setContextIndicators(i, equal);
 		if (i > 0) {
-			equal.eval(true);
-			getDataContext().equal().eval(true);
-			getDataContext().found().eval(true);						
 			start.eval(i);
 		} else {
-			equal.eval(false);
-			getDataContext().equal().eval(false);
-			getDataContext().found().eval(false);			
 			start.eval(1);
 		}
 	}
@@ -579,17 +543,8 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	@Override
 	public void qLookup(DataSpecial argument, Number start, QIndicator equal) {
 
-		int i = qLookup(DataComparator.EQUAL, argument, 1, capacity());
-		if(i > 0) {
-			equal.eval(true);
-			getDataContext().equal().eval(true);
-			getDataContext().found().eval(true);									
-		}
-		else {
-			equal.eval(false);
-			getDataContext().equal().eval(false);
-			getDataContext().found().eval(false);									
-		}
+		int i = qLookup(DataComparator.EQUAL, argument, start.intValue(), capacity());
+		setContextIndicators(i, equal);
 	}
 
 	@Override
@@ -638,32 +593,17 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	public void qLookup(D argument, QIndicator equal, DataComparator comparator) {
 
 		int i = qLookup(comparator, argument, 1, capacity());
-		if(i > 0) {
-			equal.eval(true);
-			getDataContext().equal().eval(true);
-			getDataContext().found().eval(true);									
-		}
-		else {
-			equal.eval(false);
-			getDataContext().equal().eval(false);
-			getDataContext().found().eval(false);									
-		}
+		setContextIndicators(i, equal);
 	}
 
 	@Override
 	public void qLookup(D argument, QNumeric start, QIndicator equal, DataComparator comparator) {
 
 		int i = qLookup(comparator, argument, start.asInteger(), capacity());
-		if(i > 0) {
-			equal.eval(true);
-			getDataContext().equal().eval(true);
-			getDataContext().found().eval(true);
+		setContextIndicators(i, equal);
+		if (i > 0) {
 			start.eval(i);
-		}
-		else {
-			equal.eval(false);
-			getDataContext().equal().eval(false);
-			getDataContext().found().eval(false);
+		} else {
 			start.eval(1);
 		}
 	}
@@ -671,17 +611,8 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	@Override
 	public void qLookup(D argument, Number start, QIndicator equal, DataComparator comparator) {
 
-		int i = qLookup(comparator, argument, 1, capacity());
-		if(i > 0) {
-			equal.eval(true);
-			getDataContext().equal().eval(true);
-			getDataContext().found().eval(true);
-		}
-		else {
-			equal.eval(false);
-			getDataContext().equal().eval(false);
-			getDataContext().found().eval(false);
-		}
+		int i = qLookup(comparator, argument, start.intValue(), capacity());
+		setContextIndicators(i, equal);
 	}
 
 	@Override
@@ -730,32 +661,17 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	public void qLookup(DataSpecial argument, QIndicator equal, DataComparator comparator) {
 
 		int i = qLookup(comparator, argument, 1, capacity());
-		if(i > 0) {
-			equal.eval(true);
-			getDataContext().equal().eval(true);
-			getDataContext().found().eval(true);
-		}
-		else {
-			equal.eval(false);
-			getDataContext().equal().eval(false);
-			getDataContext().found().eval(false);
-		}
+		setContextIndicators(i, equal);
 	}
 
 	@Override
 	public void qLookup(DataSpecial argument, QNumeric start, QIndicator equal, DataComparator comparator) {
 
 		int i = qLookup(comparator, argument, start.asInteger(), capacity());
-		if(i > 0) {
-			equal.eval(true);
-			getDataContext().equal().eval(true);
-			getDataContext().found().eval(true);
+		setContextIndicators(i, equal);
+		if (i > 0) {
 			start.eval(i);
-		}
-		else {
-			equal.eval(false);
-			getDataContext().equal().eval(false);
-			getDataContext().found().eval(false);
+		} else {
 			start.eval(1);
 		}
 	}
@@ -763,19 +679,78 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	@Override
 	public void qLookup(DataSpecial argument, Number start, QIndicator equal, DataComparator comparator) {
 
-		int i = qLookup(comparator, argument, 1, capacity());
-		if(i > 0) {
-			equal.eval(true);
-			getDataContext().equal().eval(true);
-			getDataContext().found().eval(true);
-		}
-		else {
-			equal.eval(false);
-			getDataContext().equal().eval(false);
-			getDataContext().found().eval(false);
+		int i = qLookup(comparator, argument, start.intValue(), capacity());
+		setContextIndicators(i, equal);
+	}
+
+	public QDecimal qLookup(String argument) {
+		return qLookup(argument, 1);
+	}
+
+	@Override
+	public QDecimal qLookup(String argument, QNumeric start) {
+		return qLookup(argument, start.asNumber());
+	}
+
+	@Override
+	public QDecimal qLookup(String argument, Number start) {
+		int index = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), capacity());
+		lastIndex.eval(index);
+		return lastIndex;
+	}
+
+	public void qLookup(String argument, QIndicator found) {
+		
+		int i = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, 1, capacity());
+		setContextIndicators(i, found);
+	}
+	
+	public void qLookup(String argument, QNumeric start, QIndicator found) {
+
+		int i = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, start.asInteger(), capacity());
+		setContextIndicators(i, found);
+		if (i > 0) {
+			start.eval(i);
+		} else {
+			start.eval(1);
 		}
 	}
 
+	public QDecimal qLookup(String argument, Number start, QNumeric elements) {
+		int index = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), elements.asInteger());
+		lastIndex.eval(index);
+		return lastIndex;
+	}
+
+	public QDecimal qLookup(String argument, QNumeric start, QNumeric elements) {
+		int index = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, start.asInteger(), elements.asInteger());
+		lastIndex.eval(index);
+		return lastIndex;
+	}
+
+	@Override
+	public QDecimal qLookup(int argument) {
+		return qLookup(argument, 1);
+	}
+
+	@Override
+	public QDecimal qLookup(int argument, QNumeric start) {
+		return qLookup(argument, start.asNumber());
+	}
+
+	@Override
+	public QDecimal qLookup(int argument, Number start) {
+		int index = NIOBufferedListHelper.lookup(this, new NIODecimalPackedImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), capacity());
+		lastIndex.eval(index);
+		return lastIndex;
+	}
+
+	public void qLookup(Number argument, QIndicator found) {
+
+		int i = NIOBufferedListHelper.lookup(this, new NIODecimalPackedImpl(getDataContext(), argument.intValue()), DataComparator.EQUAL, 1, capacity());
+		setContextIndicators(i, found);
+	}
+	
 	private int qLookup(DataComparator comparator, D argument, int startIndex, int numElements) {
 		return NIOBufferedListHelper.lookup(this, argument, comparator, startIndex, numElements);
 	}
@@ -802,5 +777,23 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	@Override
 	public QIndicator qFound() {
 		return getDataContext().found();
+	}
+
+	@Override
+	public QIndicator qEqual() {
+		return getDataContext().equal();
+	}
+
+	protected void setContextIndicators(int index, QIndicator found) {
+		
+		if (index > 0) {
+			found.eval(true);
+			getDataContext().equal().eval(true);
+			getDataContext().found().eval(true);
+		} else {
+			found.eval(false);
+			getDataContext().equal().eval(false);
+			getDataContext().found().eval(false);
+		}		
 	}
 }

@@ -23,13 +23,18 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 
 	public NIODecimalPackedImpl(QDataContext dataContext, int precision, int scale, boolean allocate) {
 		super(dataContext, precision, scale);
-		
-		if(allocate) {
-			checkAllocation();		
+
+		if (allocate) {
+			checkAllocation();
 			_buffer = ByteBuffer.allocate(getSize());
-			_buffer.position(_buffer.capacity()-1);
-			_buffer.put((byte)0x0F);
+			_buffer.position(_buffer.capacity() - 1);
+			_buffer.put((byte) 0x0F);
 		}
+	}
+
+	public NIODecimalPackedImpl(QDataContext dataContext, int value) {
+		this(dataContext, 10, 0, true);
+		eval(value);
 	}
 
 	@Override
@@ -69,10 +74,10 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 			if (number instanceof BigDecimal) {
 				bd = (BigDecimal) number;
 			}
-			
-			if(bd == null || bd.precision() > getPrecision()) {
+
+			if (bd == null || bd.precision() > getPrecision()) {
 				NumberFormat nf = getDecimalDef().getFormatUP();
-				bd = new BigDecimal(nf.format(number));					
+				bd = new BigDecimal(nf.format(number));
 			}
 
 			try {
@@ -85,10 +90,10 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 			if (number instanceof BigDecimal) {
 				bd = (BigDecimal) number;
 			}
-			
-			if(bd == null || bd.precision() > getPrecision()) {
+
+			if (bd == null || bd.precision() > getPrecision()) {
 				NumberFormat nf = getDecimalDef().getFormatDW();
-				bd = new BigDecimal(nf.format(number));					
+				bd = new BigDecimal(nf.format(number));
 			}
 
 			try {
@@ -123,15 +128,15 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 
 		double doubleValue;
 		if (getPrecision() > value.length) {
-			
+
 			byte[] newValue = asBytes();
 			System.arraycopy(value, 0, newValue, getPrecision() - value.length, value.length);
-			
+
 			doubleValue = getDecimalDef().getZoned().toDouble(newValue);
 		} else
 			doubleValue = getDecimalDef().getZoned().toDouble(value, value.length - getPrecision());
 
-		if(clear)
+		if (clear)
 			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), getDecimalDef().getPacked().toBytes(doubleValue), INIT);
 		else
 			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), getDecimalDef().getPacked().toBytes(doubleValue));
@@ -144,13 +149,13 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 		if (getPrecision() > value.length) {
 			byte[] newValue = asBytes();
 			System.arraycopy(value, 0, newValue, 0, value.length);
-			
+
 			doubleValue = getDecimalDef().getZoned().toDouble(newValue);
 		} else {
 			doubleValue = getDecimalDef().getZoned().toDouble(value);
 		}
-		
-		if(clear)
+
+		if (clear)
 			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), getDecimalDef().getPacked().toBytes(doubleValue), INIT);
 		else
 			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), getDecimalDef().getPacked().toBytes(doubleValue));
@@ -167,7 +172,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	public byte[] _toBytes() {
 		return getDecimalDef().getZoned().toBytes(asDouble());
 	}
-	
+
 	@Override
 	protected NIODataImpl _copy(QDataContext dataContext) {
 		NIODecimalPackedImpl copy = new NIODecimalPackedImpl(dataContext, getPrecision(), getScale(), false);

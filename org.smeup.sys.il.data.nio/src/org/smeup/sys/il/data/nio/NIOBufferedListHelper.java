@@ -20,16 +20,15 @@ import org.smeup.sys.il.data.QString;
 
 public class NIOBufferedListHelper {
 
-	@SuppressWarnings("unchecked")
-	public static <D extends QBufferedElement> int lookup(NIOBufferedListImpl<D> list, D argument, DataComparator comparator, int startIndex, int numElements) {
+	public static int lookup(NIOBufferedListImpl<?> list, QBufferedElement argument, DataComparator comparator, int startIndex, int numElements) {
 
 		int result = 0;
 		boolean resultIndex = false;
 
-		NIOBufferedListIterator<D> iterator = new NIOBufferedListIterator<D>(list, list.getSortDirection(), startIndex, numElements);
+		NIOBufferedListIterator<?> iterator = new NIOBufferedListIterator<>(list, list.getSortDirection(), startIndex, numElements);
 		while (iterator.hasNext()) {
-			D bufferedElement = iterator.next();
-			bufferedElement = (D) NIOBufferHelper.getNIOBufferedElementImpl(bufferedElement);
+			QBufferedElement bufferedElement = iterator.next();
+			bufferedElement = NIOBufferHelper.getNIOBufferedElementImpl(bufferedElement);
 			switch (bufferedElement.getBufferedElementType()) {
 			case DATETIME:
 				QDatetime datetime = ((QDatetime) bufferedElement);
@@ -126,15 +125,15 @@ public class NIOBufferedListHelper {
 		return result;
 	}
 
-	public static  <D extends QBufferedElement> int lookup(NIOBufferedListImpl<D> list, DataSpecial argument, DataComparator comparator, int startIndex, int numElements) {
+	public static int lookup(NIOBufferedListImpl<? extends QBufferedElement> list, DataSpecial argument, DataComparator comparator, int startIndex, int numElements) {
 
 		int result = 0;
 		boolean resultIndex = false;
 
 
-		NIOBufferedListIterator<D> iterator = new NIOBufferedListIterator<D>(list, list.getSortDirection(), startIndex, numElements);
+		NIOBufferedListIterator<? extends QBufferedElement> iterator = new NIOBufferedListIterator<>(list, list.getSortDirection(), startIndex, numElements);
 		while (iterator.hasNext()) {
-			D bufferedElement = iterator.next();
+			QBufferedElement bufferedElement = iterator.next();
 
 			switch (comparator) {
 			case EQUAL:

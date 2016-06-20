@@ -64,12 +64,13 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 	private QJob job;
 
 	private QMethodExec lastContextIndicatorSetter = null;
-	
+
 	@Override
 	public boolean visit(QMethodExec statement) {
 
-		setLastContextIndicatorSetter(statement);
-		
+		if (RPJExpressionHelper.isContextIndicatorSetter(statement))
+			lastContextIndicatorSetter = statement;
+
 		return true;
 	}
 
@@ -117,7 +118,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 	@Override
 	public boolean visit(QIf statement) {
-		
+
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
 
 		if (normalizePredicateExpression(statement, predicateExpression))
@@ -199,7 +200,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 			if (expressionNormalizer.isNormalized())
 				statement.setValue(expressionWriter.writeExpression(expression));
 		}
-		
+
 		return false;
 	}
 
@@ -207,44 +208,45 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 		private boolean normalized = false;
 		private QStatement owner = null;
-		
+
 		public InternalExpressionNormalizer(QStatement owner) {
 			this.owner = owner;
 		}
-		
-		
+
 		protected boolean isNormalized() {
 			return normalized;
 		}
 
 		@Override
 		public boolean visit(QFunctionTermExpression expression) {
-			
-			if(RPJExpressionHelper.isContextIndicatorGetter(expression)) {
-						
-					if (lastContextIndicatorSetter != null) {
-						
-						if(getParentNode(lastContextIndicatorSetter) != getParentNode(owner)) {
-							lastContextIndicatorSetter = null;
-							return true;
-						}							
-						
-						QAtomicTermExpression atomicTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createAtomicTermExpression();
-						atomicTermExpression.setType(AtomicType.NAME);
-						atomicTermExpression.setValue(lastContextIndicatorSetter.getObject());
-						expression.getElements().add(atomicTermExpression);
-	
-						normalized = true;
+
+			if (RPJExpressionHelper.isContextIndicatorGetter(expression)) {
+
+				if (lastContextIndicatorSetter != null) {
+
+					if (getParentNode(lastContextIndicatorSetter) != getParentNode(owner)) {
+						lastContextIndicatorSetter = null;
+						return true;
 					}
-//					else
-//						throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: 9w8xbt87we8r");						
+
+					QAtomicTermExpression atomicTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createAtomicTermExpression();
+					atomicTermExpression.setType(AtomicType.NAME);
+					atomicTermExpression.setValue(lastContextIndicatorSetter.getObject());
+					expression.getElements().add(atomicTermExpression);
+
+					normalized = true;
+				}
+				// else
+				// throw new DevelopmentKitCompilerRuntimeException("Unexpected
+				// condition: 9w8xbt87we8r");
 			}
-			
+
 			return true;
 		}
 
 		@Override
 		public boolean visit(QRelationalExpression expression) {
+
 			QExpression leftExpression = expression.getLeftOperand();
 			QExpression rightExpression = expression.getRightOperand();
 
@@ -314,7 +316,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 			return true;
 		}
 	}
-	
+
 	private void reverseExpression(QRelationalExpression relationalExpression) {
 
 		QExpression leftExpression = relationalExpression.getLeftOperand();
@@ -341,33 +343,8 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		case NOT_EQUAL:
 			break;
 		}
-	}		
-
-	private void setLastContextIndicatorSetter(QMethodExec statement) {
-		if (statement.getMethod().equalsIgnoreCase("SETLL"))
-			lastContextIndicatorSetter = statement;
-		else if (statement.getMethod().equalsIgnoreCase("SETGT"))
-			lastContextIndicatorSetter = statement;
-		else if (statement.getMethod().equalsIgnoreCase("CHAIN"))
-			lastContextIndicatorSetter = statement;
-		else if (statement.getMethod().equalsIgnoreCase("DELETE"))
-			lastContextIndicatorSetter = statement;
-		else if (statement.getMethod().equalsIgnoreCase("READ"))
-			lastContextIndicatorSetter = statement;
-		else if (statement.getMethod().equalsIgnoreCase("READE"))
-			lastContextIndicatorSetter = statement;
-		else if (statement.getMethod().equalsIgnoreCase("READP"))
-			lastContextIndicatorSetter = statement;
-		else if (statement.getMethod().equalsIgnoreCase("READPE"))
-			lastContextIndicatorSetter = statement;
-		else if (statement.getMethod().equalsIgnoreCase("%LOOKUP"))
-			lastContextIndicatorSetter = statement;
-		else if (statement.getMethod().equalsIgnoreCase("%CHECK"))
-			lastContextIndicatorSetter = statement;
-		else if (statement.getMethod().equalsIgnoreCase("%CHECKR"))
-			lastContextIndicatorSetter = statement;		
 	}
-	
+
 	@SuppressWarnings("unused")
 	private QNode getParentNode(QExpression expression) {
 
@@ -379,20 +356,20 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		else if (parent instanceof QWhile)
 			return parent.getParent();
 		else if (parent instanceof QUntil)
-			return parent.getParent();		
+			return parent.getParent();
 		else
 			return parent;
 	}
-	
+
 	private QNode getParentNode(QNode node) {
-		
+
 		QNode parent = node.getParent();
-		if(parent instanceof QBlock)
+		if (parent instanceof QBlock)
 			return getParentNode(parent);
 		else
 			return parent;
 	}
-	
+
 	@SuppressWarnings("unused")
 	private boolean isParentIf(QStatement statement) {
 

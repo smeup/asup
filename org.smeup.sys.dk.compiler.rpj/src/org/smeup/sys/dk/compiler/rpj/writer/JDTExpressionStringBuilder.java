@@ -162,7 +162,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				try {
 					value = Integer.toString(Integer.parseInt(expression.getValue()));
 				} catch (NumberFormatException e) {
-					value = Long.toString(Long.parseLong(expression.getValue()))+"L";
+					value = Long.toString(Long.parseLong(expression.getValue())) + "L";
 				}
 			}
 			break;
@@ -315,9 +315,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QArithmeticExpression expression) {
 
-		if(mockExpression(expression))
+		if (mockExpression(expression))
 			return false;
-		
+
 		StringBuffer value = new StringBuffer();
 
 		JDTExpressionStringBuilder builder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
@@ -352,17 +352,16 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			expression.getLeftOperand().accept(builder);
 			value.append(builder.getResult());
 
-			// right			
-			if(expression.getRightOperand() != null) {
+			// right
+			if (expression.getRightOperand() != null) {
 				builder.clear();
 				value.append(".q" + strings.firstToUpper(toJavaMethod(expression)));
 				value.append("(");
 				expression.getRightOperand().accept(builder);
-				value.append(builder.getResult());				
+				value.append(builder.getResult());
 				value.append(")");
-			}
-			else {
-				if(expression.getOperator() == ArithmeticOperator.SIGN_MINUS)
+			} else {
+				if (expression.getOperator() == ArithmeticOperator.SIGN_MINUS)
 					value.append(".qMult(-1)");
 				else
 					throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: 9zb87we6r8vewrce6tr");
@@ -379,19 +378,19 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				target = Integer.class;
 			else
 				target = RPJContextHelper.getTargetClass(compilationUnit, expression.getLeftOperand(), true);
-			
+
 			if (Boolean.class.isAssignableFrom(target))
 				target = String.class;
 			else if (Byte.class.isAssignableFrom(target))
 				target = String.class;
-			
+
 			builder.setTarget(target);
 			builder.clear();
 			expression.getLeftOperand().accept(builder);
 			value.append(builder.getResult());
 
 			if (QPointer.class.isAssignableFrom(target))
-						value.append("." + toJavaMethod(expression));
+				value.append("." + toJavaMethod(expression));
 			else if (QList.class.isAssignableFrom(target))
 				value.append("." + toJavaMethod(expression));
 			else
@@ -533,8 +532,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			builder.clear();
 			expression.getLeftOperand().accept(builder);
 			value.append(builder.getResult());
-			
-			if (target != null) 
+
+			if (target != null)
 				writeValue(builder.getTarget(), target, value.toString());
 			else
 				buffer.append(value.toString());
@@ -812,9 +811,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				else if (value.equalsIgnoreCase("Specials.OFF"))
 					buffer.append("qRPJ.qBox(false)");
 				else
-					buffer.append("qRPJ.qBox("+value+")");
-			} 
-			
+					buffer.append("qRPJ.qBox(" + value + ")");
+			}
+
 			else if (String.class.isAssignableFrom(this.target)) {
 				if (value.equalsIgnoreCase("Specials.ON"))
 					buffer.append("\"1\"");
@@ -931,13 +930,12 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			}
 			// list
 			else if (List.class.isAssignableFrom(target)) {
-//				buffer.append(".asList()");
+				// buffer.append(".asList()");
 			}
 			// dataSet
 			else if (QFileTerm.class.isAssignableFrom(target)) {
-//				buffer.append(".asList()");
-			}
-			else
+				// buffer.append(".asList()");
+			} else
 				throw new IntegratedLanguageExpressionRuntimeException("Invalid unboxing type: " + target.getSimpleName());
 		}
 	}
@@ -1034,7 +1032,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	public boolean visit(QFunctionTermExpression expression) {
 
 		QPrototype prototype = null;
-		
+
 		// search object method
 		if (!expression.getElements().isEmpty()) {
 			QExpression expressionChild = expression.getElements().get(0);
@@ -1044,7 +1042,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				objectTarget = (Class<? extends QData>) RPJContextHelper.getTargetClass(compilationUnit, expressionChild, false);
 			else
 				objectTarget = RPJContextHelper.getModelClass((Class<?>) RPJContextHelper.getTargetClass(compilationUnit, expressionChild, true));
-			
+
 			prototype = compilationUnit.getMethod(objectTarget, expression.getValue());
 			if (prototype != null)
 				return writeMethod(prototype, expression.getElements());
@@ -1063,7 +1061,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			writeDataTerm(dataTerm, expression.getElements());
 			return false;
 		}
-		
+
 		QNamedNode namedNode = compilationUnit.getNamedNode(expression.getValue(), true);
 		if (namedNode != null) {
 			writeNamedNode(namedNode);
@@ -1284,41 +1282,36 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		} else
 			logger.warning(exceptionManager.prepareException(job, RPJCompilerMessage.AS00106, namedNode));
 	}
-	
 
 	private boolean mockExpression(QExpression expression) {
 
 		String expressionString = expression.toString();
 		String expressionRewrited = null;
-	
+
 		// B£G00G
-		if(expressionString.equals("W$DIV+'       '+W£DIV")) {
+		if (expressionString.equals("W$DIV+'       '+W£DIV")) {
 			expressionRewrited = "w$div.qPlus(\"       \").qPlus(w£div)";
 		}
 		// B£IR10
-		else if(expressionString.contains("%SUBARR(POG: 1: $CONTD)+' '+%SUBARR(PDE: 1: $CONTD)")) {
+		else if (expressionString.contains("%SUBARR(POG: 1: $CONTD)+' '+%SUBARR(PDE: 1: $CONTD)")) {
 			expressionRewrited = "pog.qSubarr(1, $contd).qPlus(\" \").qPlus(pde.qSubarr(1, $contd))";
 		}
 		// MUTE02_01
-		else if(expressionString.contains("AR10+10+AR11")) {
+		else if (expressionString.contains("AR10+10+AR11")) {
 			expressionRewrited = "ar10.qPlus(10).qPlus(ar11)";
-		}
-		else if(expressionString.contains("AR10+2,666+AR11")) {
+		} else if (expressionString.contains("AR10+2,666+AR11")) {
 			expressionRewrited = "ar10.qPlus(2.666).qPlus(ar11)";
-		}
-		else if(expressionString.contains("AR13+' '+AR14")) {
+		} else if (expressionString.contains("AR13+' '+AR14")) {
 			expressionRewrited = "ar13.qPlus(\" \").qPlus(ar14)";
-		}
-		else if(expressionString.contains("AR13+' + '+AR14")) {
+		} else if (expressionString.contains("AR13+' + '+AR14")) {
 			expressionRewrited = "ar13.qPlus(\" + \").qPlus(ar14)";
 		}
-		
-		if(expressionRewrited != null) {
+
+		if (expressionRewrited != null) {
 			buffer.append(expressionRewrited);
 			return true;
-		}
-		else
+		} else
 			return false;
-		
+
 	}
 }

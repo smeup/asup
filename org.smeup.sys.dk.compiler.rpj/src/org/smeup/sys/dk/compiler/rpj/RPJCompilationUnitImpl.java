@@ -217,13 +217,12 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		if (dataTerm == null && callableUnit instanceof QProcedure) {
 			QProcedure qProcedure = (QProcedure) callableUnit;
 
-			if (qProcedure.getEntry() != null) {
+			if (qProcedure.getEntry() != null)
 				for (QEntryParameter<?> entryParameter : qProcedure.getEntry().getParameters())
 					if (equalsTermName(entryParameter.getName(), name)) {
 						dataTerm = (QDataTerm<?>) entryParameter.getDelegate();
 						break;
 					}
-			}
 		}
 
 		// deep search on module
@@ -304,11 +303,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// search on display
 		if (dataTerm == null)
-			for (
-
-			QDisplayTerm displayTerm : displays)
-
-			{
+			for (QDisplayTerm displayTerm : displays) {
 				if (displayTerm.getFormat() == null)
 					continue;
 
@@ -319,11 +314,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// search on printers
 		if (dataTerm == null)
-			for (
-
-			QPrintTerm printTerm : printers)
-
-			{
+			for (QPrintTerm printTerm : printers) {
 				if (printTerm.getFormat() == null)
 					continue;
 
@@ -799,7 +790,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	public String normalizeModuleName(String name) {
 
 		String moduleName = null;
-		if(!name.startsWith("*"))
+		if (!name.startsWith("*"))
 			moduleName = Character.toString(name.charAt(0)) + Character.toUpperCase(name.charAt(1)) + normalizeTermName(name.substring(2));
 		else
 			moduleName = normalizeTermName(name);
@@ -919,9 +910,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 			for (EOperation eOperation : eClass.getEAllOperations()) {
 
-				if(!eOperation.getName().startsWith("q"))
+				if (!eOperation.getName().startsWith("q"))
 					continue;
-				
+
 				if (!eOperation.getName().equalsIgnoreCase(normalizeTermName(name)))
 					continue;
 

@@ -782,6 +782,11 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
+	public QNumeric qScan(byte argument) {
+		return delegate.qScan(argument);
+	}
+
+	@Override
 	public QNumeric qScan(QCharacter argument, QNumeric start) {
 		return delegate.qScan(argument, start);
 	}
@@ -1205,6 +1210,11 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	
 	public void snap() {
 		delegate.snap();
+	}
+	
+	@Override
+	public QIndicator qFound() {
+		return delegate.qFound();
 	}
 	
 	@Override

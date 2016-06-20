@@ -798,11 +798,15 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public QNumeric qAbs() {
+	public QDecimal qAbs() {
+
+		QDecimal number = new NIODecimalZonedImpl(getDataContext(), getLength(), 0, true);
 		if (ge(DataSpecial.ZEROS))
-			return this;
+			number.eval(this);
 		else
-			return mult(-1);
+			number.eval(mult(-1));
+		
+		return number;
 	}
 	
 	@Override

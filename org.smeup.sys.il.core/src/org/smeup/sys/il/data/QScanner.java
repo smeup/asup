@@ -24,97 +24,113 @@ public interface QScanner {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sourceRequired="true"
+	 * @model required="true"
 	 * @generated
 	 */
-	QNumeric qScan(QCharacter source);
+	QIndicator qFound();
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sourceRequired="true" foundRequired="true"
+	 * @model required="true" argumentRequired="true"
 	 * @generated
 	 */
-	QNumeric qScan(QCharacter source, QIndicator found);
+	QNumeric qScan(QCharacter argument);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sourceRequired="true" startRequired="true"
+	 * @model required="true" argumentRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qScan(QCharacter source, QNumeric start);
+	QNumeric qScan(QCharacter argument, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sourceRequired="true" startRequired="true" foundRequired="true"
+	 * @model required="true" argumentRequired="true" startRequired="true"
 	 * @generated
 	 */
-	QNumeric qScan(QCharacter source, QNumeric start, QIndicator found);
+	QNumeric qScan(QCharacter argument, QNumeric start);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sourceRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
+	 * @model required="true" argumentRequired="true" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qScan(QCharacter source, Number start);
+	QNumeric qScan(QCharacter argument, QNumeric start, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sourceRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
 	 * @generated
 	 */
-	QNumeric qScan(QCharacter source, Number start, QIndicator found);
+	QNumeric qScan(QCharacter argument, Number start);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sourceRequired="true"
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qScan(String source);
+	QNumeric qScan(QCharacter argument, Number start, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sourceRequired="true" foundRequired="true"
+	 * @model required="true" argumentRequired="true"
 	 * @generated
 	 */
-	QNumeric qScan(String source, QIndicator found);
+	QNumeric qScan(byte argument);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sourceRequired="true" startRequired="true"
+	 * @model required="true" argumentRequired="true"
 	 * @generated
 	 */
-	QNumeric qScan(String source, QNumeric start);
+	QNumeric qScan(String argument);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sourceRequired="true" startRequired="true" foundRequired="true"
+	 * @model required="true" argumentRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qScan(String source, QNumeric start, QIndicator found);
+	QNumeric qScan(String argument, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sourceRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
+	 * @model required="true" argumentRequired="true" startRequired="true"
 	 * @generated
 	 */
-	QNumeric qScan(String source, Number start);
+	QNumeric qScan(String argument, QNumeric start);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sourceRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
+	 * @model required="true" argumentRequired="true" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qScan(String source, Number start, QIndicator found);
+	QNumeric qScan(String argument, QNumeric start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
+	 * @generated
+	 */
+	QNumeric qScan(String argument, Number start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
+	 * @generated
+	 */
+	QNumeric qScan(String argument, Number start, QIndicator found);
 
 } // QScanner

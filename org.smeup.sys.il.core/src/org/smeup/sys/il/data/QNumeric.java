@@ -730,7 +730,7 @@ public interface QNumeric extends QBufferedElement {
 	 * @model
 	 * @generated
 	 */
-	QNumeric qAbs();
+	QDecimal qAbs();
 
 	/**
 	 * <!-- begin-user-doc -->

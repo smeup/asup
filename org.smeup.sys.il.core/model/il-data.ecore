@@ -489,6 +489,10 @@
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
+    <eOperations name="qLookup" lowerBound="1">
+      <eParameters name="argument" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
     <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
@@ -757,6 +761,26 @@
       <eParameters name="value" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="qFound" lowerBound="1" eType="#//Indicator"/>
+    <eOperations name="qEqual" lowerBound="1" eType="#//Indicator"/>
+    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
     <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
@@ -2731,7 +2755,7 @@
     <eOperations name="power" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
-    <eOperations name="qAbs" eType="#//Numeric"/>
+    <eOperations name="qAbs" eType="#//Decimal"/>
     <eOperations name="qDate" eType="#//Datetime">
       <eParameters name="format" eType="#//DatetimeFormat"/>
     </eOperations>
@@ -2860,53 +2884,57 @@
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Scanner" abstract="true" interface="true">
+    <eOperations name="qFound" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
-      <eParameters name="source" lowerBound="1" eType="#//Character"/>
+      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
-      <eParameters name="source" lowerBound="1" eType="#//Character"/>
+      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
-      <eParameters name="source" lowerBound="1" eType="#//Character"/>
+      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
-      <eParameters name="source" lowerBound="1" eType="#//Character"/>
+      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
-      <eParameters name="source" lowerBound="1" eType="#//Character"/>
+      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
-      <eParameters name="source" lowerBound="1" eType="#//Character"/>
+      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
+      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>

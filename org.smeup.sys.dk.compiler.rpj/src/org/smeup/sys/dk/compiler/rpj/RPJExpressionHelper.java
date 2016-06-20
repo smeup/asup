@@ -14,11 +14,17 @@ package org.smeup.sys.dk.compiler.rpj;
 import java.util.Arrays;
 
 import org.smeup.sys.il.expr.QFunctionTermExpression;
+import org.smeup.sys.il.flow.QMethodExec;
 
 public class RPJExpressionHelper {
 
-	private static String[] lastContextGetters = { "%CLOSE", "%EQUAL", "%EOF", "%ERROR", "%FOUND", "%OPEN" };
+	private static String[] lastContextSetters = { "%CHECK", "%CHECKR", "%LOOKUP", "%LOOKUPGE", "%LOOKUPGT", "%LOOKUPLE", "%LOOKUPLT", "%SCAN", "CHAIN", "DELETE", "READ", "READE", "READP", "READPE", "SETGT", "SETLL" };
+	private static String[] lastContextGetters = { "%CLOSE", "%EOF", "%EQUAL", "%ERROR", "%FOUND", "%OPEN" };
 
+	public static boolean isContextIndicatorSetter(QMethodExec methodExec) {
+		return Arrays.binarySearch(lastContextSetters, methodExec.getMethod().toUpperCase()) > 0;
+	}
+	
 	public static boolean isContextIndicatorGetter(QFunctionTermExpression expression) {
 		
 		if (Arrays.binarySearch(lastContextGetters, expression.getValue().toUpperCase()) > 0) {
@@ -29,5 +35,4 @@ public class RPJExpressionHelper {
 		} else
 			return false;
 	}
-
 }
