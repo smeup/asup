@@ -309,7 +309,7 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 		// TODO use cache
 		QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
 		if (start == null)
-			start = base.length();
+			start = asString().length();
 
 		if(start.intValue() > getLength())
 			start = getLength();
