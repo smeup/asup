@@ -22,7 +22,5 @@ public @interface Program {
 	String text() default "";
 	String activationGroup() default "";
 	
-	boolean generated() default true;
-	
 	InitStrategy initStrategy() default InitStrategy.BASE;
 }

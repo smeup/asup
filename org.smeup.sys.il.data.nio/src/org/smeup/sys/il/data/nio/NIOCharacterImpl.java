@@ -308,10 +308,7 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	public QNumeric qCheckr(String base, Number start, QIndicator found) {
 		// TODO use cache
 		QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
-		if (start == null)
-			start = asString().length();
-
-		if(start.intValue() > getLength())
+		if (start == null || start.intValue() > getLength())
 			start = getLength();
 		
 		char[] chars = asString().substring(0, start.intValue()).toCharArray();
