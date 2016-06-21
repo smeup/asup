@@ -70,7 +70,7 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 			result.append(" < ");
 			break;
 		case LESS_THAN_EQUAL:
-			result.append(" >= ");
+			result.append(" <= ");
 			break;
 		case NOT_EQUAL:
 			result.append(" <> ");
