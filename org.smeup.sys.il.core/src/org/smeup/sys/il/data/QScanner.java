@@ -88,6 +88,22 @@ public interface QScanner {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startRequired="true"
+	 * @generated
+	 */
+	QNumeric qScan(byte argument, QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
+	 * @generated
+	 */
+	QNumeric qScan(byte argument, Number start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" argumentRequired="true"
 	 * @generated
 	 */

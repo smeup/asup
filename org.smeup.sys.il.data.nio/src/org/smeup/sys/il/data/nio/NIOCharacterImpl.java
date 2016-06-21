@@ -346,6 +346,17 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	}
 
 	@Override
+	public QNumeric qScan(byte argument, QNumeric start) {
+		return qScan(new String(new byte[] { argument }, getDataContext().getCharset()), start, null);
+	}
+	
+	@Override
+	public QNumeric qScan(byte argument, Number start) {
+		return qScan(new String(new byte[] { argument }, getDataContext().getCharset()), start, null);
+	}
+	
+	
+	@Override
 	public QNumeric qScan(QCharacter argument) {
 		return qScan(argument.asString(), (Integer) null, null);
 	}
@@ -636,4 +647,6 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	public QIndicator qFound() {
 		return getDataContext().found();
 	}
+
+
 }

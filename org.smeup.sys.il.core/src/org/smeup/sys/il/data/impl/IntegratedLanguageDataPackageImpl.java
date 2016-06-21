@@ -4060,6 +4060,14 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEByte(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByte(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEByte(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(scannerEClass, this.getNumeric(), "qScan", 1, 1, IS_UNIQUE, IS_ORDERED);

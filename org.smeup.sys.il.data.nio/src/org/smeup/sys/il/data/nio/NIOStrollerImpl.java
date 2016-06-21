@@ -987,4 +987,15 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	public QNumeric qScan(byte argument) {
 		return current().qScan(argument);
 	}
+
+	@Override
+	public QNumeric qScan(byte argument, QNumeric start) {
+		return current().qScan(argument, start);
+	}
+
+	@Override
+	public QNumeric qScan(byte argument, Number start) {
+		return current().qScan(argument, start);
+	}
+	
 }
