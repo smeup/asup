@@ -457,6 +457,8 @@ public class RPJContextHelper {
 			return QPrint.class;
 		else if (QDisplay.class.isAssignableFrom(target))
 			return QDisplay.class;
+		else if (QPointer.class.isAssignableFrom(target))
+			return QPointer.class;
 		else
 			System.err.println("Unexpected condition 98xxw345435wetr");
 
