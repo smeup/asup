@@ -131,12 +131,12 @@ public class RPJInjectionHelper {
 		} else if (Double.class.isAssignableFrom(injectableField.getFieldClass())) {
 			object = Double.parseDouble(dataDef.value());
 		} else if (String.class.isAssignableFrom(injectableField.getFieldClass())) {
-			if (dataDef.value().startsWith("X'")) {
+			if (dataDef.value().toUpperCase().startsWith("X'")) {
 				object = new String(convertHexToBytes(dataDef.value().substring(2, dataDef.value().lastIndexOf("'"))), dataContext.getCharset());
 			} else
 				object = dataDef.value();
 		} else if (Byte.class.isAssignableFrom(injectableField.getFieldClass())) {
-			if (dataDef.value().startsWith("X'")) {
+			if (dataDef.value().toUpperCase().startsWith("X'")) {
 				object = convertHexToBytes(dataDef.value().substring(2, 4))[0];
 			} else
 				System.err.println("Unexpected condition " + injectableField.getFieldClass() + ": xw09ert98ery87tyrew");
