@@ -447,8 +447,8 @@ public class NIOBufferHelper {
 	public static void writeDefault(QBufferedElement element, String value) {
 
 		DataSpecial dataSpecial = null;
-		if (value.startsWith("*"))
-			dataSpecial = DataSpecial.get(value.toUpperCase());
+		if (value.trim().startsWith("*"))
+			dataSpecial = DataSpecial.get(value.trim().toUpperCase());
 
 		if (dataSpecial != null) {
 			element.eval(dataSpecial);
@@ -459,7 +459,7 @@ public class NIOBufferHelper {
 				element.movel(value, true);
 				break;
 			case NUMERIC:
-				((QNumeric)element).eval(new BigDecimal(value));
+				((QNumeric)element).eval(new BigDecimal(value.trim()));
 				break;
 			case STRING:
 				((QString)element).eval(value);
@@ -481,8 +481,8 @@ public class NIOBufferHelper {
 	public static void writeDefault(QBufferedList<?> bufferedList, String value) {
 
 		DataSpecial dataSpecial = null;
-		if (value.startsWith("*"))
-			dataSpecial = DataSpecial.get(value.toUpperCase());
+		if (value.trim().startsWith("*"))
+			dataSpecial = DataSpecial.get(value.trim().toUpperCase());
 
 		if (dataSpecial != null)
 			bufferedList.eval(dataSpecial);
@@ -493,7 +493,7 @@ public class NIOBufferHelper {
 				bufferedList.movel(value, true);
 				break;
 			case NUMERIC:
-				bufferedList.eval(new BigDecimal(value));
+				bufferedList.eval(new BigDecimal(value.trim()));
 				break;
 			case STRING:
 				bufferedList.eval(value);

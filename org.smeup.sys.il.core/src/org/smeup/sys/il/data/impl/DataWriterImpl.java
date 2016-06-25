@@ -229,7 +229,7 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 		else
 			try {
 				if (!object.toString().isEmpty())
-					numeric.eval(new BigDecimal(object.toString()));
+					numeric.eval(new BigDecimal(object.toString().trim()));
 				else
 					numeric.clear();
 			} catch (Exception e) {
