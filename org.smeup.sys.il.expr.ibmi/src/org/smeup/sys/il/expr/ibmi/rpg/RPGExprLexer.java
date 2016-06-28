@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g 2016-06-03 16:18:07
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g 2016-06-27 13:46:12
 
   package org.smeup.sys.il.expr.ibmi.rpg;
   
@@ -102,7 +102,7 @@ public class RPGExprLexer extends Lexer {
 
 	    @Override    
 	    public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
-			String msg = "Lexer error. Input: " + e.input.toString();
+			String msg = "RPGExprLexer error. Input: " + e.input.toString();
 	        msg += " " + getErrorHeader(e);
 	        msg += " Msg: " + getErrorMessage(e, tokenNames);
 	        throw new IntegratedLanguageExpressionRuntimeException(msg , e);

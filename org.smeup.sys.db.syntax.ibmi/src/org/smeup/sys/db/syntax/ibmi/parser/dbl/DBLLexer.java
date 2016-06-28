@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g 2016-05-31 09:18:05
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g 2016-06-27 13:44:17
 
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
 import org.smeup.sys.db.syntax.DataBaseSyntaxRuntimeException;
@@ -430,7 +430,7 @@ public class DBLLexer extends Lexer {
 
 	    @Override    
 	    public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
-			String msg = "Lexer error. Input: " + e.input.toString();
+			String msg = "DBLLexer error. Input: " + e.input.toString();
 	        msg += " " + getErrorHeader(e);
 	        msg += " Msg: " + getErrorMessage(e, tokenNames);
 	        throw new DataBaseSyntaxRuntimeException(msg , e);
@@ -9682,21 +9682,44 @@ public class DBLLexer extends Lexer {
 		try {
 			int _type = Variable;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1597:3: ( ':' ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL | ':' )+ )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1597:5: ':' ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL | ':' )+
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1597:3: ( ':' ( Space )* ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL | ':' )+ )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1597:5: ':' ( Space )* ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL | ':' )+
 			{
 			match(':'); 
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1597:9: ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL | ':' )+
-			int cnt15=0;
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1597:9: ( Space )*
 			loop15:
 			while (true) {
 				int alt15=2;
 				int LA15_0 = input.LA(1);
-				if ( ((LA15_0 >= '!' && LA15_0 <= '\"')||(LA15_0 >= '$' && LA15_0 <= '&')||(LA15_0 >= '*' && LA15_0 <= '+')||(LA15_0 >= '-' && LA15_0 <= ':')||(LA15_0 >= '<' && LA15_0 <= '?')||(LA15_0 >= 'A' && LA15_0 <= 'Z')||LA15_0=='\\'||(LA15_0 >= '^' && LA15_0 <= '_')||(LA15_0 >= 'a' && LA15_0 <= 'z')||LA15_0=='\u00A3'||LA15_0=='\u00A7'||LA15_0=='\u00E0'||(LA15_0 >= '\u00E8' && LA15_0 <= '\u00E9')||LA15_0=='\u00EC'||LA15_0=='\u00F2'||LA15_0=='\u00F9') ) {
+				if ( (LA15_0==' ') ) {
 					alt15=1;
 				}
 
 				switch (alt15) {
+				case 1 :
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1597:9: Space
+					{
+					mSpace(); 
+
+					}
+					break;
+
+				default :
+					break loop15;
+				}
+			}
+
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1597:16: ( 'a' .. 'z' | 'A' .. 'Z' | Digit | '_' | CHAR_SPECIAL | ':' )+
+			int cnt16=0;
+			loop16:
+			while (true) {
+				int alt16=2;
+				int LA16_0 = input.LA(1);
+				if ( ((LA16_0 >= '!' && LA16_0 <= '\"')||(LA16_0 >= '$' && LA16_0 <= '&')||(LA16_0 >= '*' && LA16_0 <= '+')||(LA16_0 >= '-' && LA16_0 <= ':')||(LA16_0 >= '<' && LA16_0 <= '?')||(LA16_0 >= 'A' && LA16_0 <= 'Z')||LA16_0=='\\'||(LA16_0 >= '^' && LA16_0 <= '_')||(LA16_0 >= 'a' && LA16_0 <= 'z')||LA16_0=='\u00A3'||LA16_0=='\u00A7'||LA16_0=='\u00E0'||(LA16_0 >= '\u00E8' && LA16_0 <= '\u00E9')||LA16_0=='\u00EC'||LA16_0=='\u00F2'||LA16_0=='\u00F9') ) {
+					alt16=1;
+				}
+
+				switch (alt16) {
 				case 1 :
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:
 					{
@@ -9712,11 +9735,11 @@ public class DBLLexer extends Lexer {
 					break;
 
 				default :
-					if ( cnt15 >= 1 ) break loop15;
-					EarlyExitException eee = new EarlyExitException(15, input);
+					if ( cnt16 >= 1 ) break loop16;
+					EarlyExitException eee = new EarlyExitException(16, input);
 					throw eee;
 				}
-				cnt15++;
+				cnt16++;
 			}
 
 			 setText(getText().substring(1).replace(':', '.').trim()); 
@@ -9783,40 +9806,40 @@ public class DBLLexer extends Lexer {
 			int _type = Character_String_Literal;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
 			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1611:5: ( Quote ( ESC_SEQ |~ ( '\\\\' | Quote ) )* Quote | Double_Quote ( ESC_SEQ |~ ( '\\\\' | Double_Quote ) )* Double_Quote )
-			int alt18=2;
-			int LA18_0 = input.LA(1);
-			if ( (LA18_0=='\'') ) {
-				alt18=1;
+			int alt19=2;
+			int LA19_0 = input.LA(1);
+			if ( (LA19_0=='\'') ) {
+				alt19=1;
 			}
-			else if ( (LA18_0=='\"') ) {
-				alt18=2;
+			else if ( (LA19_0=='\"') ) {
+				alt19=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 18, 0, input);
+					new NoViableAltException("", 19, 0, input);
 				throw nvae;
 			}
 
-			switch (alt18) {
+			switch (alt19) {
 				case 1 :
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1611:7: Quote ( ESC_SEQ |~ ( '\\\\' | Quote ) )* Quote
 					{
 					mQuote(); 
 
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1611:13: ( ESC_SEQ |~ ( '\\\\' | Quote ) )*
-					loop16:
+					loop17:
 					while (true) {
-						int alt16=3;
-						int LA16_0 = input.LA(1);
-						if ( (LA16_0=='\\') ) {
-							alt16=1;
+						int alt17=3;
+						int LA17_0 = input.LA(1);
+						if ( (LA17_0=='\\') ) {
+							alt17=1;
 						}
-						else if ( ((LA16_0 >= '\u0000' && LA16_0 <= '&')||(LA16_0 >= '(' && LA16_0 <= '[')||(LA16_0 >= ']' && LA16_0 <= '\uFFFF')) ) {
-							alt16=2;
+						else if ( ((LA17_0 >= '\u0000' && LA17_0 <= '&')||(LA17_0 >= '(' && LA17_0 <= '[')||(LA17_0 >= ']' && LA17_0 <= '\uFFFF')) ) {
+							alt17=2;
 						}
 
-						switch (alt16) {
+						switch (alt17) {
 						case 1 :
 							// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1611:15: ESC_SEQ
 							{
@@ -9839,7 +9862,7 @@ public class DBLLexer extends Lexer {
 							break;
 
 						default :
-							break loop16;
+							break loop17;
 						}
 					}
 
@@ -9854,18 +9877,18 @@ public class DBLLexer extends Lexer {
 					mDouble_Quote(); 
 
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1613:20: ( ESC_SEQ |~ ( '\\\\' | Double_Quote ) )*
-					loop17:
+					loop18:
 					while (true) {
-						int alt17=3;
-						int LA17_0 = input.LA(1);
-						if ( (LA17_0=='\\') ) {
-							alt17=1;
+						int alt18=3;
+						int LA18_0 = input.LA(1);
+						if ( (LA18_0=='\\') ) {
+							alt18=1;
 						}
-						else if ( ((LA17_0 >= '\u0000' && LA17_0 <= '!')||(LA17_0 >= '#' && LA17_0 <= '[')||(LA17_0 >= ']' && LA17_0 <= '\uFFFF')) ) {
-							alt17=2;
+						else if ( ((LA18_0 >= '\u0000' && LA18_0 <= '!')||(LA18_0 >= '#' && LA18_0 <= '[')||(LA18_0 >= ']' && LA18_0 <= '\uFFFF')) ) {
+							alt18=2;
 						}
 
-						switch (alt17) {
+						switch (alt18) {
 						case 1 :
 							// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1613:22: ESC_SEQ
 							{
@@ -9888,7 +9911,7 @@ public class DBLLexer extends Lexer {
 							break;
 
 						default :
-							break loop17;
+							break loop18;
 						}
 					}
 
@@ -9963,12 +9986,12 @@ public class DBLLexer extends Lexer {
 				throw mse;
 			}
 			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1622:22: ( '+' | '-' )?
-			int alt19=2;
-			int LA19_0 = input.LA(1);
-			if ( (LA19_0=='+'||LA19_0=='-') ) {
-				alt19=1;
+			int alt20=2;
+			int LA20_0 = input.LA(1);
+			if ( (LA20_0=='+'||LA20_0=='-') ) {
+				alt20=1;
 			}
-			switch (alt19) {
+			switch (alt20) {
 				case 1 :
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:
 					{
@@ -9986,16 +10009,16 @@ public class DBLLexer extends Lexer {
 			}
 
 			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1622:33: ( '0' .. '9' )+
-			int cnt20=0;
-			loop20:
+			int cnt21=0;
+			loop21:
 			while (true) {
-				int alt20=2;
-				int LA20_0 = input.LA(1);
-				if ( ((LA20_0 >= '0' && LA20_0 <= '9')) ) {
-					alt20=1;
+				int alt21=2;
+				int LA21_0 = input.LA(1);
+				if ( ((LA21_0 >= '0' && LA21_0 <= '9')) ) {
+					alt21=1;
 				}
 
-				switch (alt20) {
+				switch (alt21) {
 				case 1 :
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:
 					{
@@ -10011,11 +10034,11 @@ public class DBLLexer extends Lexer {
 					break;
 
 				default :
-					if ( cnt20 >= 1 ) break loop20;
-					EarlyExitException eee = new EarlyExitException(20, input);
+					if ( cnt21 >= 1 ) break loop21;
+					EarlyExitException eee = new EarlyExitException(21, input);
 					throw eee;
 				}
-				cnt20++;
+				cnt21++;
 			}
 
 			}
@@ -10054,9 +10077,9 @@ public class DBLLexer extends Lexer {
 	public final void mESC_SEQ() throws RecognitionException {
 		try {
 			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1627:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
-			int alt21=3;
-			int LA21_0 = input.LA(1);
-			if ( (LA21_0=='\\') ) {
+			int alt22=3;
+			int LA22_0 = input.LA(1);
+			if ( (LA22_0=='\\') ) {
 				switch ( input.LA(2) ) {
 				case '\"':
 				case '\'':
@@ -10067,12 +10090,12 @@ public class DBLLexer extends Lexer {
 				case 'r':
 				case 't':
 					{
-					alt21=1;
+					alt22=1;
 					}
 					break;
 				case 'u':
 					{
-					alt21=2;
+					alt22=2;
 					}
 					break;
 				case '0':
@@ -10084,7 +10107,7 @@ public class DBLLexer extends Lexer {
 				case '6':
 				case '7':
 					{
-					alt21=3;
+					alt22=3;
 					}
 					break;
 				default:
@@ -10092,7 +10115,7 @@ public class DBLLexer extends Lexer {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 21, 1, input);
+							new NoViableAltException("", 22, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -10102,11 +10125,11 @@ public class DBLLexer extends Lexer {
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 21, 0, input);
+					new NoViableAltException("", 22, 0, input);
 				throw nvae;
 			}
 
-			switch (alt21) {
+			switch (alt22) {
 				case 1 :
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1627:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
 					{
@@ -10148,37 +10171,37 @@ public class DBLLexer extends Lexer {
 	public final void mOCTAL_ESC() throws RecognitionException {
 		try {
 			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1633:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
-			int alt22=3;
-			int LA22_0 = input.LA(1);
-			if ( (LA22_0=='\\') ) {
-				int LA22_1 = input.LA(2);
-				if ( ((LA22_1 >= '0' && LA22_1 <= '3')) ) {
-					int LA22_2 = input.LA(3);
-					if ( ((LA22_2 >= '0' && LA22_2 <= '7')) ) {
-						int LA22_4 = input.LA(4);
-						if ( ((LA22_4 >= '0' && LA22_4 <= '7')) ) {
-							alt22=1;
+			int alt23=3;
+			int LA23_0 = input.LA(1);
+			if ( (LA23_0=='\\') ) {
+				int LA23_1 = input.LA(2);
+				if ( ((LA23_1 >= '0' && LA23_1 <= '3')) ) {
+					int LA23_2 = input.LA(3);
+					if ( ((LA23_2 >= '0' && LA23_2 <= '7')) ) {
+						int LA23_4 = input.LA(4);
+						if ( ((LA23_4 >= '0' && LA23_4 <= '7')) ) {
+							alt23=1;
 						}
 
 						else {
-							alt22=2;
+							alt23=2;
 						}
 
 					}
 
 					else {
-						alt22=3;
+						alt23=3;
 					}
 
 				}
-				else if ( ((LA22_1 >= '4' && LA22_1 <= '7')) ) {
-					int LA22_3 = input.LA(3);
-					if ( ((LA22_3 >= '0' && LA22_3 <= '7')) ) {
-						alt22=2;
+				else if ( ((LA23_1 >= '4' && LA23_1 <= '7')) ) {
+					int LA23_3 = input.LA(3);
+					if ( ((LA23_3 >= '0' && LA23_3 <= '7')) ) {
+						alt23=2;
 					}
 
 					else {
-						alt22=3;
+						alt23=3;
 					}
 
 				}
@@ -10188,7 +10211,7 @@ public class DBLLexer extends Lexer {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 22, 1, input);
+							new NoViableAltException("", 23, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -10199,11 +10222,11 @@ public class DBLLexer extends Lexer {
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 22, 0, input);
+					new NoViableAltException("", 23, 0, input);
 				throw nvae;
 			}
 
-			switch (alt22) {
+			switch (alt23) {
 				case 1 :
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1633:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
 					{
@@ -10359,16 +10382,16 @@ public class DBLLexer extends Lexer {
 			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1682:15: ( Control_Characters | Extended_Control_Characters )+
 			{
 			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1682:15: ( Control_Characters | Extended_Control_Characters )+
-			int cnt23=0;
-			loop23:
+			int cnt24=0;
+			loop24:
 			while (true) {
-				int alt23=2;
-				int LA23_0 = input.LA(1);
-				if ( ((LA23_0 >= '\u0001' && LA23_0 <= '\u001F')||(LA23_0 >= '\u0080' && LA23_0 <= '\u009F')) ) {
-					alt23=1;
+				int alt24=2;
+				int LA24_0 = input.LA(1);
+				if ( ((LA24_0 >= '\u0001' && LA24_0 <= '\u001F')||(LA24_0 >= '\u0080' && LA24_0 <= '\u009F')) ) {
+					alt24=1;
 				}
 
-				switch (alt23) {
+				switch (alt24) {
 				case 1 :
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:
 					{
@@ -10384,11 +10407,11 @@ public class DBLLexer extends Lexer {
 					break;
 
 				default :
-					if ( cnt23 >= 1 ) break loop23;
-					EarlyExitException eee = new EarlyExitException(23, input);
+					if ( cnt24 >= 1 ) break loop24;
+					EarlyExitException eee = new EarlyExitException(24, input);
 					throw eee;
 				}
-				cnt23++;
+				cnt24++;
 			}
 
 
@@ -10431,9 +10454,9 @@ public class DBLLexer extends Lexer {
 	@Override
 	public void mTokens() throws RecognitionException {
 		// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1:8: ( T__412 | AFTER | AS | ALIAS | ALL | ALLOCATE | ALLOW | ALWBLK | ALWCPYDTA | CLOSQLCSR | CNULRQD | AND | ANY | ASC | BEFORE | BOTH | BY | CALL | CASE | CASCADE | CHARACTER | CLOSE | COALESCE | COLUMN | COUNT | CREATE | COMMIT | COMMITTED | CONDITION | CONNECT | CONNECTION | CROSS | CUBE | CURRENT | CURSOR | DATFMT | DATSEP | DBGVIEW | DEALLOCATE | DEFAULT | DECLARE | DECMPT | DFTRDBCOL | DESC | DESCRIBE | DESCRIPTOR | DIAGNOSTICS | DISTINCT | DISCONNECT | DLYPRP | DROP | DYNAMIC | DYNDFTCOL | DYNUSRPRF | END | ELSE | EVENTF | EXCEPT | EXCLUSIVE | EXECUTE | EXTERNAL | FALSE | FETCH | FIRST | FOR | FORMAT | FULL | FROM | GET | GLOBAL | GROUP | HAVING | HOLD | IN | INDEX | INNER | INSERT | INTERSECT | INTO | IMMEDIATE | IS | ISOLATION | JOIN | LABELS | LANGID | LAST | LEFT | LEVEL | LIKE | LIMIT | LOCAL | LOCATION | LOCK | MAX | MODE | NAME | NAMES | NAMING | NATIONAL | NATURAL | NEXT | NO | NOT | NULL | NULLIF | ON | ONLY | OPEN | OPTION | OPTLOB | OR | ORDER | OUTER | OUTPUT | PRECISION | PREPARE | PRIOR | RDBCNNMTH | READ | RELATIVE | RELEASE | RENAME | REPEATABLE | REPLACE | RESET | RESTRICT | RIGHT | ROLLBACK | ROLLUP | ROWS | SET | SELECT | SCROLL | SHARE | SERIALIZABLE | SYSTEM | SSTATEMENT | SQL | SQLCURRULE | SQLPATH | SRTSEQ | TABLE | TGTRLS | THEN | TIMFMT | TIMSEP | TO | TRANSACTION | TRUE | UNCOMMITTED | UNION | UNIQUE | UNKNOWN | USING | USER | USRPRF | VALUE | VALUES | VARYING | WHEN | WHERE | WITH | WITHOUT | WORK | WRITE | VIEW | ZONE | S_ALL | S_ALLREAD | S_BLANK | S_CHG | S_COLON | S_COMMA | S_CS | S_CURLIB | S_DASH | S_DB2 | S_DMY | S_DUW | S_ENDACTGRP | S_ENDMOD | S_ENDPGM | S_ENDSQL | S_ENDJOB | S_EUR | S_HEX | S_HMS | S_ISO | S_JIS | S_JUL | S_JOB | S_JOBRUN | S_LANGIDSHR | S_LANGIDUNQ | S_LIBL | S_LIST | S_MDY | S_NAMING | S_NO | S_NONE | S_OPTIMIZE | S_OWNER | S_PERIOD | S_PRINT | S_READ | S_RR | S_RUW | S_SLASH | S_SOURCE | S_SQL | S_STD | S_STMT | S_SYS | S_SYSVAL | S_USA | S_USER | S_YES | S_YMD | BOOLEAN | BOOL | BIT | VARBIT | INT1 | INT2 | INT4 | INT8 | TINYINT | SMALLINT | INT | INTEGER | BIGINT | FLOAT4 | FLOAT8 | REAL | FLOAT | DOUBLE | NUMERIC | DECIMAL | DEC | CHAR | VARCHAR | NCHAR | NVARCHAR | DATE | TIME | TIMETZ | TIMESTAMP | TIMESTAMPTZ | TEXT | BINARY | VARBINARY | BLOB | BYTEA | INET4 | ASSIGN | EQUAL | SEMI_COLON | COMMA | NOT_EQUAL | LTH | LEQ | GTH | GEQ | LEFT_PAREN | RIGHT_PAREN | PLUS | MINUS | MULTIPLY | DIVIDE | MODULAR | DOT | NUMBER | REAL_NUMBER | COMMENT | Descriptor_Name | Identifier | Variable | Character_String_Literal | Quote | Double_Quote | Space | White_Space | BAD )
-		int alt24=283;
-		alt24 = dfa24.predict(input);
-		switch (alt24) {
+		int alt25=283;
+		alt25 = dfa25.predict(input);
+		switch (alt25) {
 			case 1 :
 				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g:1:10: T__412
 				{
@@ -12421,7 +12444,7 @@ public class DBLLexer extends Lexer {
 
 
 	protected DFA9 dfa9 = new DFA9(this);
-	protected DFA24 dfa24 = new DFA24(this);
+	protected DFA25 dfa25 = new DFA25(this);
 	static final String DFA9_eotS =
 		"\5\uffff";
 	static final String DFA9_eofS =
@@ -12477,7 +12500,7 @@ public class DBLLexer extends Lexer {
 		}
 	}
 
-	static final String DFA24_eotS =
+	static final String DFA25_eotS =
 		"\1\uffff\1\60\26\62\1\u008d\3\uffff\1\u00a4\3\56\1\u00a6\4\uffff\1\u00ac"+
 		"\1\uffff\1\u00ae\1\u00b0\1\u00b3\1\uffff\1\u00b5\3\uffff\1\u00b8\3\uffff"+
 		"\1\62\1\u00ba\13\62\1\u00d2\33\62\1\u00f7\1\62\1\u00fe\11\62\1\u010e\3"+
@@ -12533,10 +12556,10 @@ public class DBLLexer extends Lexer {
 		"\u045f\1\u0460\1\u0461\1\uffff\1\62\1\u0463\10\uffff\1\u0464\1\62\1\uffff"+
 		"\1\u0466\1\uffff\3\62\4\uffff\1\u046a\2\uffff\1\62\1\uffff\1\u046c\1\u046d"+
 		"\1\u046e\1\uffff\1\u046f\4\uffff";
-	static final String DFA24_eofS =
+	static final String DFA25_eofS =
 		"\u0470\uffff";
-	static final String DFA24_minS =
-		"\1\0\1\41\1\106\1\101\1\105\1\101\1\114\1\101\1\105\1\101\1\115\1\117"+
+	static final String DFA25_minS =
+		"\1\0\1\40\1\106\1\101\1\105\1\101\1\114\1\101\1\105\1\101\1\115\1\117"+
 		"\3\101\1\116\1\122\1\104\1\103\1\101\1\116\1\101\1\110\1\117\1\101\3\uffff"+
 		"\5\75\4\uffff\1\52\1\uffff\1\60\1\56\1\0\1\uffff\1\0\3\uffff\1\41\3\uffff"+
 		"\1\124\1\41\1\111\1\104\1\117\1\125\1\114\2\101\1\105\1\102\1\106\1\117"+
@@ -12614,7 +12637,7 @@ public class DBLLexer extends Lexer {
 		"\1\102\1\41\1\105\1\uffff\1\41\1\117\1\105\1\41\5\uffff\3\41\1\uffff\1"+
 		"\123\1\41\10\uffff\1\41\1\114\1\uffff\1\41\1\uffff\1\132\1\116\1\104\4"+
 		"\uffff\1\41\2\uffff\1\105\1\uffff\3\41\1\uffff\1\41\4\uffff";
-	static final String DFA24_maxS =
+	static final String DFA25_maxS =
 		"\1\uffff\1\u00f9\1\163\1\165\2\171\1\170\1\165\1\162\1\157\1\163\3\157"+
 		"\1\166\1\165\1\162\1\157\1\171\1\162\1\163\1\151\1\162\1\157\1\171\3\uffff"+
 		"\1\76\4\75\4\uffff\1\57\1\uffff\1\71\1\145\1\uffff\1\uffff\1\uffff\3\uffff"+
@@ -12700,7 +12723,7 @@ public class DBLLexer extends Lexer {
 		"\1\u00f9\5\uffff\3\u00f9\1\uffff\1\163\1\u00f9\10\uffff\1\u00f9\1\154"+
 		"\1\uffff\1\u00f9\1\uffff\1\172\1\156\1\144\4\uffff\1\u00f9\2\uffff\1\145"+
 		"\1\uffff\3\u00f9\1\uffff\1\u00f9\4\uffff";
-	static final String DFA24_acceptS =
+	static final String DFA25_acceptS =
 		"\31\uffff\1\u0100\1\u0101\1\u0102\5\uffff\1\u0108\1\u0109\1\u010a\1\u010b"+
 		"\1\uffff\1\u010e\3\uffff\1\u0114\1\uffff\1\u0119\1\u011a\1\u011b\1\uffff"+
 		"\1\1\1\u0115\1\u0114\132\uffff\1\u010c\1\uffff\1\u00aa\4\uffff\1\u00bc"+
@@ -12748,18 +12771,18 @@ public class DBLLexer extends Lexer {
 		"\163\1\166\2\uffff\1\u0089\1\uffff\1\u00f7\3\uffff\1\u00fb\1\37\1\47\1"+
 		"\56\1\uffff\1\61\1\173\1\uffff\1\u008b\3\uffff\1\57\1\uffff\1\u00f8\1"+
 		"\u0094\1\u0096\1\u0087";
-	static final String DFA24_specialS =
-		"\1\12\50\uffff\1\2\1\uffff\1\14\u0086\uffff\1\1\u00b9\uffff\1\0\u00bc"+
-		"\uffff\1\6\1\uffff\1\11\1\5\1\7\u00ba\uffff\1\10\1\4\u0087\uffff\1\3\u00a9"+
-		"\uffff\1\13\124\uffff}>";
-	static final String[] DFA24_transitionS = {
+	static final String DFA25_specialS =
+		"\1\12\50\uffff\1\4\1\uffff\1\1\u0086\uffff\1\3\u00b9\uffff\1\2\u00bc\uffff"+
+		"\1\10\1\uffff\1\14\1\7\1\11\u00ba\uffff\1\13\1\6\u0087\uffff\1\5\u00a9"+
+		"\uffff\1\0\124\uffff}>";
+	static final String[] DFA25_transitionS = {
 			"\1\56\37\55\1\54\1\35\1\53\2\56\1\46\1\56\1\51\1\41\1\42\1\30\1\43\1"+
 			"\33\1\44\1\47\1\45\12\50\1\1\1\32\1\34\1\31\1\40\2\56\1\2\1\4\1\3\1\5"+
 			"\1\6\1\7\1\10\1\11\1\12\1\13\1\52\1\14\1\15\1\16\1\17\1\20\1\52\1\21"+
 			"\1\22\1\23\1\24\1\25\1\26\2\52\1\27\3\56\1\37\1\52\1\56\1\2\1\4\1\3\1"+
 			"\5\1\6\1\7\1\10\1\11\1\12\1\13\1\52\1\14\1\15\1\16\1\17\1\20\1\52\1\21"+
 			"\1\22\1\23\1\24\1\25\1\26\2\52\1\27\3\56\1\36\1\56\40\55\uff60\56",
-			"\2\61\1\uffff\3\61\3\uffff\2\61\1\uffff\16\61\1\uffff\1\61\1\57\2\61"+
+			"\3\61\1\uffff\3\61\3\uffff\2\61\1\uffff\16\61\1\uffff\1\61\1\57\2\61"+
 			"\1\uffff\32\61\1\uffff\1\61\1\uffff\2\61\1\uffff\32\61\50\uffff\1\61"+
 			"\3\uffff\1\61\70\uffff\1\61\7\uffff\2\61\2\uffff\1\61\5\uffff\1\61\6"+
 			"\uffff\1\61",
@@ -14432,34 +14455,34 @@ public class DBLLexer extends Lexer {
 			""
 	};
 
-	static final short[] DFA24_eot = DFA.unpackEncodedString(DFA24_eotS);
-	static final short[] DFA24_eof = DFA.unpackEncodedString(DFA24_eofS);
-	static final char[] DFA24_min = DFA.unpackEncodedStringToUnsignedChars(DFA24_minS);
-	static final char[] DFA24_max = DFA.unpackEncodedStringToUnsignedChars(DFA24_maxS);
-	static final short[] DFA24_accept = DFA.unpackEncodedString(DFA24_acceptS);
-	static final short[] DFA24_special = DFA.unpackEncodedString(DFA24_specialS);
-	static final short[][] DFA24_transition;
+	static final short[] DFA25_eot = DFA.unpackEncodedString(DFA25_eotS);
+	static final short[] DFA25_eof = DFA.unpackEncodedString(DFA25_eofS);
+	static final char[] DFA25_min = DFA.unpackEncodedStringToUnsignedChars(DFA25_minS);
+	static final char[] DFA25_max = DFA.unpackEncodedStringToUnsignedChars(DFA25_maxS);
+	static final short[] DFA25_accept = DFA.unpackEncodedString(DFA25_acceptS);
+	static final short[] DFA25_special = DFA.unpackEncodedString(DFA25_specialS);
+	static final short[][] DFA25_transition;
 
 	static {
-		int numStates = DFA24_transitionS.length;
-		DFA24_transition = new short[numStates][];
+		int numStates = DFA25_transitionS.length;
+		DFA25_transition = new short[numStates][];
 		for (int i=0; i<numStates; i++) {
-			DFA24_transition[i] = DFA.unpackEncodedString(DFA24_transitionS[i]);
+			DFA25_transition[i] = DFA.unpackEncodedString(DFA25_transitionS[i]);
 		}
 	}
 
-	protected class DFA24 extends DFA {
+	protected class DFA25 extends DFA {
 
-		public DFA24(BaseRecognizer recognizer) {
+		public DFA25(BaseRecognizer recognizer) {
 			this.recognizer = recognizer;
-			this.decisionNumber = 24;
-			this.eot = DFA24_eot;
-			this.eof = DFA24_eof;
-			this.min = DFA24_min;
-			this.max = DFA24_max;
-			this.accept = DFA24_accept;
-			this.special = DFA24_special;
-			this.transition = DFA24_transition;
+			this.decisionNumber = 25;
+			this.eot = DFA25_eot;
+			this.eof = DFA25_eof;
+			this.min = DFA25_min;
+			this.max = DFA25_max;
+			this.accept = DFA25_accept;
+			this.special = DFA25_special;
+			this.transition = DFA25_transition;
 		}
 		@Override
 		public String getDescription() {
@@ -14471,177 +14494,177 @@ public class DBLLexer extends Lexer {
 			int _s = s;
 			switch ( s ) {
 					case 0 : 
-						int LA24_364 = input.LA(1);
+						int LA25_1051 = input.LA(1);
 						s = -1;
-						if ( (LA24_364=='\'') ) {s = 363;}
-						else if ( (LA24_364=='\\') ) {s = 362;}
-						else if ( ((LA24_364 >= '!' && LA24_364 <= '\"')||(LA24_364 >= '$' && LA24_364 <= '&')||(LA24_364 >= '*' && LA24_364 <= '+')||(LA24_364 >= '-' && LA24_364 <= '9')||(LA24_364 >= '<' && LA24_364 <= '?')||(LA24_364 >= 'A' && LA24_364 <= 'Z')||(LA24_364 >= '^' && LA24_364 <= '_')||(LA24_364 >= 'a' && LA24_364 <= 'z')||LA24_364=='\u00A3'||LA24_364=='\u00A7'||LA24_364=='\u00E0'||(LA24_364 >= '\u00E8' && LA24_364 <= '\u00E9')||LA24_364=='\u00EC'||LA24_364=='\u00F2'||LA24_364=='\u00F9') ) {s = 364;}
-						else if ( ((LA24_364 >= '\u0000' && LA24_364 <= ' ')||LA24_364=='#'||(LA24_364 >= '(' && LA24_364 <= ')')||LA24_364==','||(LA24_364 >= ':' && LA24_364 <= ';')||LA24_364=='@'||LA24_364=='['||LA24_364==']'||LA24_364=='`'||(LA24_364 >= '{' && LA24_364 <= '\u00A2')||(LA24_364 >= '\u00A4' && LA24_364 <= '\u00A6')||(LA24_364 >= '\u00A8' && LA24_364 <= '\u00DF')||(LA24_364 >= '\u00E1' && LA24_364 <= '\u00E7')||(LA24_364 >= '\u00EA' && LA24_364 <= '\u00EB')||(LA24_364 >= '\u00ED' && LA24_364 <= '\u00F1')||(LA24_364 >= '\u00F3' && LA24_364 <= '\u00F8')||(LA24_364 >= '\u00FA' && LA24_364 <= '\uFFFF')) ) {s = 180;}
+						if ( (LA25_1051=='\'') ) {s = 363;}
+						else if ( (LA25_1051=='\\') ) {s = 362;}
+						else if ( ((LA25_1051 >= '!' && LA25_1051 <= '\"')||(LA25_1051 >= '$' && LA25_1051 <= '&')||(LA25_1051 >= '*' && LA25_1051 <= '+')||(LA25_1051 >= '-' && LA25_1051 <= '9')||(LA25_1051 >= '<' && LA25_1051 <= '?')||(LA25_1051 >= 'A' && LA25_1051 <= 'Z')||(LA25_1051 >= '^' && LA25_1051 <= '_')||(LA25_1051 >= 'a' && LA25_1051 <= 'z')||LA25_1051=='\u00A3'||LA25_1051=='\u00A7'||LA25_1051=='\u00E0'||(LA25_1051 >= '\u00E8' && LA25_1051 <= '\u00E9')||LA25_1051=='\u00EC'||LA25_1051=='\u00F2'||LA25_1051=='\u00F9') ) {s = 364;}
+						else if ( ((LA25_1051 >= '\u0000' && LA25_1051 <= ' ')||LA25_1051=='#'||(LA25_1051 >= '(' && LA25_1051 <= ')')||LA25_1051==','||(LA25_1051 >= ':' && LA25_1051 <= ';')||LA25_1051=='@'||LA25_1051=='['||LA25_1051==']'||LA25_1051=='`'||(LA25_1051 >= '{' && LA25_1051 <= '\u00A2')||(LA25_1051 >= '\u00A4' && LA25_1051 <= '\u00A6')||(LA25_1051 >= '\u00A8' && LA25_1051 <= '\u00DF')||(LA25_1051 >= '\u00E1' && LA25_1051 <= '\u00E7')||(LA25_1051 >= '\u00EA' && LA25_1051 <= '\u00EB')||(LA25_1051 >= '\u00ED' && LA25_1051 <= '\u00F1')||(LA25_1051 >= '\u00F3' && LA25_1051 <= '\u00F8')||(LA25_1051 >= '\u00FA' && LA25_1051 <= '\uFFFF')) ) {s = 180;}
 						if ( s>=0 ) return s;
 						break;
 
 					case 1 : 
-						int LA24_178 = input.LA(1);
+						int LA25_43 = input.LA(1);
 						s = -1;
-						if ( (LA24_178=='\\') ) {s = 362;}
-						else if ( (LA24_178=='\'') ) {s = 363;}
-						else if ( ((LA24_178 >= '!' && LA24_178 <= '\"')||(LA24_178 >= '$' && LA24_178 <= '&')||(LA24_178 >= '*' && LA24_178 <= '+')||(LA24_178 >= '-' && LA24_178 <= '9')||(LA24_178 >= '<' && LA24_178 <= '?')||(LA24_178 >= 'A' && LA24_178 <= 'Z')||(LA24_178 >= '^' && LA24_178 <= '_')||(LA24_178 >= 'a' && LA24_178 <= 'z')||LA24_178=='\u00A3'||LA24_178=='\u00A7'||LA24_178=='\u00E0'||(LA24_178 >= '\u00E8' && LA24_178 <= '\u00E9')||LA24_178=='\u00EC'||LA24_178=='\u00F2'||LA24_178=='\u00F9') ) {s = 364;}
-						else if ( ((LA24_178 >= '\u0000' && LA24_178 <= ' ')||LA24_178=='#'||(LA24_178 >= '(' && LA24_178 <= ')')||LA24_178==','||(LA24_178 >= ':' && LA24_178 <= ';')||LA24_178=='@'||LA24_178=='['||LA24_178==']'||LA24_178=='`'||(LA24_178 >= '{' && LA24_178 <= '\u00A2')||(LA24_178 >= '\u00A4' && LA24_178 <= '\u00A6')||(LA24_178 >= '\u00A8' && LA24_178 <= '\u00DF')||(LA24_178 >= '\u00E1' && LA24_178 <= '\u00E7')||(LA24_178 >= '\u00EA' && LA24_178 <= '\u00EB')||(LA24_178 >= '\u00ED' && LA24_178 <= '\u00F1')||(LA24_178 >= '\u00F3' && LA24_178 <= '\u00F8')||(LA24_178 >= '\u00FA' && LA24_178 <= '\uFFFF')) ) {s = 180;}
+						if ( ((LA25_43 >= '\u0000' && LA25_43 <= '\uFFFF')) ) {s = 180;}
+						else s = 181;
 						if ( s>=0 ) return s;
 						break;
 
 					case 2 : 
-						int LA24_41 = input.LA(1);
+						int LA25_364 = input.LA(1);
 						s = -1;
-						if ( ((LA24_41 >= 'A' && LA24_41 <= 'Z')||LA24_41=='_'||(LA24_41 >= 'a' && LA24_41 <= 'z')) ) {s = 178;}
-						else if ( ((LA24_41 >= '\u0000' && LA24_41 <= '@')||(LA24_41 >= '[' && LA24_41 <= '^')||LA24_41=='`'||(LA24_41 >= '{' && LA24_41 <= '\uFFFF')) ) {s = 180;}
-						else s = 179;
+						if ( (LA25_364=='\'') ) {s = 363;}
+						else if ( (LA25_364=='\\') ) {s = 362;}
+						else if ( ((LA25_364 >= '!' && LA25_364 <= '\"')||(LA25_364 >= '$' && LA25_364 <= '&')||(LA25_364 >= '*' && LA25_364 <= '+')||(LA25_364 >= '-' && LA25_364 <= '9')||(LA25_364 >= '<' && LA25_364 <= '?')||(LA25_364 >= 'A' && LA25_364 <= 'Z')||(LA25_364 >= '^' && LA25_364 <= '_')||(LA25_364 >= 'a' && LA25_364 <= 'z')||LA25_364=='\u00A3'||LA25_364=='\u00A7'||LA25_364=='\u00E0'||(LA25_364 >= '\u00E8' && LA25_364 <= '\u00E9')||LA25_364=='\u00EC'||LA25_364=='\u00F2'||LA25_364=='\u00F9') ) {s = 364;}
+						else if ( ((LA25_364 >= '\u0000' && LA25_364 <= ' ')||LA25_364=='#'||(LA25_364 >= '(' && LA25_364 <= ')')||LA25_364==','||(LA25_364 >= ':' && LA25_364 <= ';')||LA25_364=='@'||LA25_364=='['||LA25_364==']'||LA25_364=='`'||(LA25_364 >= '{' && LA25_364 <= '\u00A2')||(LA25_364 >= '\u00A4' && LA25_364 <= '\u00A6')||(LA25_364 >= '\u00A8' && LA25_364 <= '\u00DF')||(LA25_364 >= '\u00E1' && LA25_364 <= '\u00E7')||(LA25_364 >= '\u00EA' && LA25_364 <= '\u00EB')||(LA25_364 >= '\u00ED' && LA25_364 <= '\u00F1')||(LA25_364 >= '\u00F3' && LA25_364 <= '\u00F8')||(LA25_364 >= '\u00FA' && LA25_364 <= '\uFFFF')) ) {s = 180;}
 						if ( s>=0 ) return s;
 						break;
 
 					case 3 : 
-						int LA24_881 = input.LA(1);
+						int LA25_178 = input.LA(1);
 						s = -1;
-						if ( (LA24_881=='\'') ) {s = 363;}
-						else if ( (LA24_881=='\\') ) {s = 362;}
-						else if ( ((LA24_881 >= '!' && LA24_881 <= '\"')||(LA24_881 >= '$' && LA24_881 <= '&')||(LA24_881 >= '*' && LA24_881 <= '+')||(LA24_881 >= '-' && LA24_881 <= '9')||(LA24_881 >= '<' && LA24_881 <= '?')||(LA24_881 >= 'A' && LA24_881 <= 'Z')||(LA24_881 >= '^' && LA24_881 <= '_')||(LA24_881 >= 'a' && LA24_881 <= 'z')||LA24_881=='\u00A3'||LA24_881=='\u00A7'||LA24_881=='\u00E0'||(LA24_881 >= '\u00E8' && LA24_881 <= '\u00E9')||LA24_881=='\u00EC'||LA24_881=='\u00F2'||LA24_881=='\u00F9') ) {s = 364;}
-						else if ( ((LA24_881 >= '\u0000' && LA24_881 <= ' ')||LA24_881=='#'||(LA24_881 >= '(' && LA24_881 <= ')')||LA24_881==','||(LA24_881 >= ':' && LA24_881 <= ';')||LA24_881=='@'||LA24_881=='['||LA24_881==']'||LA24_881=='`'||(LA24_881 >= '{' && LA24_881 <= '\u00A2')||(LA24_881 >= '\u00A4' && LA24_881 <= '\u00A6')||(LA24_881 >= '\u00A8' && LA24_881 <= '\u00DF')||(LA24_881 >= '\u00E1' && LA24_881 <= '\u00E7')||(LA24_881 >= '\u00EA' && LA24_881 <= '\u00EB')||(LA24_881 >= '\u00ED' && LA24_881 <= '\u00F1')||(LA24_881 >= '\u00F3' && LA24_881 <= '\u00F8')||(LA24_881 >= '\u00FA' && LA24_881 <= '\uFFFF')) ) {s = 180;}
+						if ( (LA25_178=='\\') ) {s = 362;}
+						else if ( (LA25_178=='\'') ) {s = 363;}
+						else if ( ((LA25_178 >= '!' && LA25_178 <= '\"')||(LA25_178 >= '$' && LA25_178 <= '&')||(LA25_178 >= '*' && LA25_178 <= '+')||(LA25_178 >= '-' && LA25_178 <= '9')||(LA25_178 >= '<' && LA25_178 <= '?')||(LA25_178 >= 'A' && LA25_178 <= 'Z')||(LA25_178 >= '^' && LA25_178 <= '_')||(LA25_178 >= 'a' && LA25_178 <= 'z')||LA25_178=='\u00A3'||LA25_178=='\u00A7'||LA25_178=='\u00E0'||(LA25_178 >= '\u00E8' && LA25_178 <= '\u00E9')||LA25_178=='\u00EC'||LA25_178=='\u00F2'||LA25_178=='\u00F9') ) {s = 364;}
+						else if ( ((LA25_178 >= '\u0000' && LA25_178 <= ' ')||LA25_178=='#'||(LA25_178 >= '(' && LA25_178 <= ')')||LA25_178==','||(LA25_178 >= ':' && LA25_178 <= ';')||LA25_178=='@'||LA25_178=='['||LA25_178==']'||LA25_178=='`'||(LA25_178 >= '{' && LA25_178 <= '\u00A2')||(LA25_178 >= '\u00A4' && LA25_178 <= '\u00A6')||(LA25_178 >= '\u00A8' && LA25_178 <= '\u00DF')||(LA25_178 >= '\u00E1' && LA25_178 <= '\u00E7')||(LA25_178 >= '\u00EA' && LA25_178 <= '\u00EB')||(LA25_178 >= '\u00ED' && LA25_178 <= '\u00F1')||(LA25_178 >= '\u00F3' && LA25_178 <= '\u00F8')||(LA25_178 >= '\u00FA' && LA25_178 <= '\uFFFF')) ) {s = 180;}
 						if ( s>=0 ) return s;
 						break;
 
 					case 4 : 
-						int LA24_745 = input.LA(1);
+						int LA25_41 = input.LA(1);
 						s = -1;
-						if ( (LA24_745=='\'') ) {s = 363;}
-						else if ( (LA24_745=='\\') ) {s = 362;}
-						else if ( ((LA24_745 >= '!' && LA24_745 <= '\"')||(LA24_745 >= '$' && LA24_745 <= '&')||(LA24_745 >= '*' && LA24_745 <= '+')||(LA24_745 >= '-' && LA24_745 <= '9')||(LA24_745 >= '<' && LA24_745 <= '?')||(LA24_745 >= 'A' && LA24_745 <= 'Z')||(LA24_745 >= '^' && LA24_745 <= '_')||(LA24_745 >= 'a' && LA24_745 <= 'z')||LA24_745=='\u00A3'||LA24_745=='\u00A7'||LA24_745=='\u00E0'||(LA24_745 >= '\u00E8' && LA24_745 <= '\u00E9')||LA24_745=='\u00EC'||LA24_745=='\u00F2'||LA24_745=='\u00F9') ) {s = 364;}
-						else if ( ((LA24_745 >= '\u0000' && LA24_745 <= ' ')||LA24_745=='#'||(LA24_745 >= '(' && LA24_745 <= ')')||LA24_745==','||(LA24_745 >= ':' && LA24_745 <= ';')||LA24_745=='@'||LA24_745=='['||LA24_745==']'||LA24_745=='`'||(LA24_745 >= '{' && LA24_745 <= '\u00A2')||(LA24_745 >= '\u00A4' && LA24_745 <= '\u00A6')||(LA24_745 >= '\u00A8' && LA24_745 <= '\u00DF')||(LA24_745 >= '\u00E1' && LA24_745 <= '\u00E7')||(LA24_745 >= '\u00EA' && LA24_745 <= '\u00EB')||(LA24_745 >= '\u00ED' && LA24_745 <= '\u00F1')||(LA24_745 >= '\u00F3' && LA24_745 <= '\u00F8')||(LA24_745 >= '\u00FA' && LA24_745 <= '\uFFFF')) ) {s = 180;}
+						if ( ((LA25_41 >= 'A' && LA25_41 <= 'Z')||LA25_41=='_'||(LA25_41 >= 'a' && LA25_41 <= 'z')) ) {s = 178;}
+						else if ( ((LA25_41 >= '\u0000' && LA25_41 <= '@')||(LA25_41 >= '[' && LA25_41 <= '^')||LA25_41=='`'||(LA25_41 >= '{' && LA25_41 <= '\uFFFF')) ) {s = 180;}
+						else s = 179;
 						if ( s>=0 ) return s;
 						break;
 
 					case 5 : 
-						int LA24_556 = input.LA(1);
+						int LA25_881 = input.LA(1);
 						s = -1;
-						if ( ((LA24_556 >= '0' && LA24_556 <= '7')) ) {s = 745;}
-						else if ( (LA24_556=='\'') ) {s = 363;}
-						else if ( (LA24_556=='\\') ) {s = 362;}
-						else if ( ((LA24_556 >= '!' && LA24_556 <= '\"')||(LA24_556 >= '$' && LA24_556 <= '&')||(LA24_556 >= '*' && LA24_556 <= '+')||(LA24_556 >= '-' && LA24_556 <= '/')||(LA24_556 >= '8' && LA24_556 <= '9')||(LA24_556 >= '<' && LA24_556 <= '?')||(LA24_556 >= 'A' && LA24_556 <= 'Z')||(LA24_556 >= '^' && LA24_556 <= '_')||(LA24_556 >= 'a' && LA24_556 <= 'z')||LA24_556=='\u00A3'||LA24_556=='\u00A7'||LA24_556=='\u00E0'||(LA24_556 >= '\u00E8' && LA24_556 <= '\u00E9')||LA24_556=='\u00EC'||LA24_556=='\u00F2'||LA24_556=='\u00F9') ) {s = 364;}
-						else if ( ((LA24_556 >= '\u0000' && LA24_556 <= ' ')||LA24_556=='#'||(LA24_556 >= '(' && LA24_556 <= ')')||LA24_556==','||(LA24_556 >= ':' && LA24_556 <= ';')||LA24_556=='@'||LA24_556=='['||LA24_556==']'||LA24_556=='`'||(LA24_556 >= '{' && LA24_556 <= '\u00A2')||(LA24_556 >= '\u00A4' && LA24_556 <= '\u00A6')||(LA24_556 >= '\u00A8' && LA24_556 <= '\u00DF')||(LA24_556 >= '\u00E1' && LA24_556 <= '\u00E7')||(LA24_556 >= '\u00EA' && LA24_556 <= '\u00EB')||(LA24_556 >= '\u00ED' && LA24_556 <= '\u00F1')||(LA24_556 >= '\u00F3' && LA24_556 <= '\u00F8')||(LA24_556 >= '\u00FA' && LA24_556 <= '\uFFFF')) ) {s = 180;}
+						if ( (LA25_881=='\'') ) {s = 363;}
+						else if ( (LA25_881=='\\') ) {s = 362;}
+						else if ( ((LA25_881 >= '!' && LA25_881 <= '\"')||(LA25_881 >= '$' && LA25_881 <= '&')||(LA25_881 >= '*' && LA25_881 <= '+')||(LA25_881 >= '-' && LA25_881 <= '9')||(LA25_881 >= '<' && LA25_881 <= '?')||(LA25_881 >= 'A' && LA25_881 <= 'Z')||(LA25_881 >= '^' && LA25_881 <= '_')||(LA25_881 >= 'a' && LA25_881 <= 'z')||LA25_881=='\u00A3'||LA25_881=='\u00A7'||LA25_881=='\u00E0'||(LA25_881 >= '\u00E8' && LA25_881 <= '\u00E9')||LA25_881=='\u00EC'||LA25_881=='\u00F2'||LA25_881=='\u00F9') ) {s = 364;}
+						else if ( ((LA25_881 >= '\u0000' && LA25_881 <= ' ')||LA25_881=='#'||(LA25_881 >= '(' && LA25_881 <= ')')||LA25_881==','||(LA25_881 >= ':' && LA25_881 <= ';')||LA25_881=='@'||LA25_881=='['||LA25_881==']'||LA25_881=='`'||(LA25_881 >= '{' && LA25_881 <= '\u00A2')||(LA25_881 >= '\u00A4' && LA25_881 <= '\u00A6')||(LA25_881 >= '\u00A8' && LA25_881 <= '\u00DF')||(LA25_881 >= '\u00E1' && LA25_881 <= '\u00E7')||(LA25_881 >= '\u00EA' && LA25_881 <= '\u00EB')||(LA25_881 >= '\u00ED' && LA25_881 <= '\u00F1')||(LA25_881 >= '\u00F3' && LA25_881 <= '\u00F8')||(LA25_881 >= '\u00FA' && LA25_881 <= '\uFFFF')) ) {s = 180;}
 						if ( s>=0 ) return s;
 						break;
 
 					case 6 : 
-						int LA24_553 = input.LA(1);
+						int LA25_745 = input.LA(1);
 						s = -1;
-						if ( ((LA24_553 >= '\u0000' && LA24_553 <= '\uFFFF')) ) {s = 180;}
-						else s = 558;
+						if ( (LA25_745=='\'') ) {s = 363;}
+						else if ( (LA25_745=='\\') ) {s = 362;}
+						else if ( ((LA25_745 >= '!' && LA25_745 <= '\"')||(LA25_745 >= '$' && LA25_745 <= '&')||(LA25_745 >= '*' && LA25_745 <= '+')||(LA25_745 >= '-' && LA25_745 <= '9')||(LA25_745 >= '<' && LA25_745 <= '?')||(LA25_745 >= 'A' && LA25_745 <= 'Z')||(LA25_745 >= '^' && LA25_745 <= '_')||(LA25_745 >= 'a' && LA25_745 <= 'z')||LA25_745=='\u00A3'||LA25_745=='\u00A7'||LA25_745=='\u00E0'||(LA25_745 >= '\u00E8' && LA25_745 <= '\u00E9')||LA25_745=='\u00EC'||LA25_745=='\u00F2'||LA25_745=='\u00F9') ) {s = 364;}
+						else if ( ((LA25_745 >= '\u0000' && LA25_745 <= ' ')||LA25_745=='#'||(LA25_745 >= '(' && LA25_745 <= ')')||LA25_745==','||(LA25_745 >= ':' && LA25_745 <= ';')||LA25_745=='@'||LA25_745=='['||LA25_745==']'||LA25_745=='`'||(LA25_745 >= '{' && LA25_745 <= '\u00A2')||(LA25_745 >= '\u00A4' && LA25_745 <= '\u00A6')||(LA25_745 >= '\u00A8' && LA25_745 <= '\u00DF')||(LA25_745 >= '\u00E1' && LA25_745 <= '\u00E7')||(LA25_745 >= '\u00EA' && LA25_745 <= '\u00EB')||(LA25_745 >= '\u00ED' && LA25_745 <= '\u00F1')||(LA25_745 >= '\u00F3' && LA25_745 <= '\u00F8')||(LA25_745 >= '\u00FA' && LA25_745 <= '\uFFFF')) ) {s = 180;}
 						if ( s>=0 ) return s;
 						break;
 
 					case 7 : 
-						int LA24_557 = input.LA(1);
+						int LA25_556 = input.LA(1);
 						s = -1;
-						if ( (LA24_557=='\'') ) {s = 363;}
-						else if ( (LA24_557=='\\') ) {s = 362;}
-						else if ( ((LA24_557 >= '!' && LA24_557 <= '\"')||(LA24_557 >= '$' && LA24_557 <= '&')||(LA24_557 >= '*' && LA24_557 <= '+')||(LA24_557 >= '-' && LA24_557 <= '9')||(LA24_557 >= '<' && LA24_557 <= '?')||(LA24_557 >= 'A' && LA24_557 <= 'Z')||(LA24_557 >= '^' && LA24_557 <= '_')||(LA24_557 >= 'a' && LA24_557 <= 'z')||LA24_557=='\u00A3'||LA24_557=='\u00A7'||LA24_557=='\u00E0'||(LA24_557 >= '\u00E8' && LA24_557 <= '\u00E9')||LA24_557=='\u00EC'||LA24_557=='\u00F2'||LA24_557=='\u00F9') ) {s = 364;}
-						else if ( ((LA24_557 >= '\u0000' && LA24_557 <= ' ')||LA24_557=='#'||(LA24_557 >= '(' && LA24_557 <= ')')||LA24_557==','||(LA24_557 >= ':' && LA24_557 <= ';')||LA24_557=='@'||LA24_557=='['||LA24_557==']'||LA24_557=='`'||(LA24_557 >= '{' && LA24_557 <= '\u00A2')||(LA24_557 >= '\u00A4' && LA24_557 <= '\u00A6')||(LA24_557 >= '\u00A8' && LA24_557 <= '\u00DF')||(LA24_557 >= '\u00E1' && LA24_557 <= '\u00E7')||(LA24_557 >= '\u00EA' && LA24_557 <= '\u00EB')||(LA24_557 >= '\u00ED' && LA24_557 <= '\u00F1')||(LA24_557 >= '\u00F3' && LA24_557 <= '\u00F8')||(LA24_557 >= '\u00FA' && LA24_557 <= '\uFFFF')) ) {s = 180;}
+						if ( ((LA25_556 >= '0' && LA25_556 <= '7')) ) {s = 745;}
+						else if ( (LA25_556=='\'') ) {s = 363;}
+						else if ( (LA25_556=='\\') ) {s = 362;}
+						else if ( ((LA25_556 >= '!' && LA25_556 <= '\"')||(LA25_556 >= '$' && LA25_556 <= '&')||(LA25_556 >= '*' && LA25_556 <= '+')||(LA25_556 >= '-' && LA25_556 <= '/')||(LA25_556 >= '8' && LA25_556 <= '9')||(LA25_556 >= '<' && LA25_556 <= '?')||(LA25_556 >= 'A' && LA25_556 <= 'Z')||(LA25_556 >= '^' && LA25_556 <= '_')||(LA25_556 >= 'a' && LA25_556 <= 'z')||LA25_556=='\u00A3'||LA25_556=='\u00A7'||LA25_556=='\u00E0'||(LA25_556 >= '\u00E8' && LA25_556 <= '\u00E9')||LA25_556=='\u00EC'||LA25_556=='\u00F2'||LA25_556=='\u00F9') ) {s = 364;}
+						else if ( ((LA25_556 >= '\u0000' && LA25_556 <= ' ')||LA25_556=='#'||(LA25_556 >= '(' && LA25_556 <= ')')||LA25_556==','||(LA25_556 >= ':' && LA25_556 <= ';')||LA25_556=='@'||LA25_556=='['||LA25_556==']'||LA25_556=='`'||(LA25_556 >= '{' && LA25_556 <= '\u00A2')||(LA25_556 >= '\u00A4' && LA25_556 <= '\u00A6')||(LA25_556 >= '\u00A8' && LA25_556 <= '\u00DF')||(LA25_556 >= '\u00E1' && LA25_556 <= '\u00E7')||(LA25_556 >= '\u00EA' && LA25_556 <= '\u00EB')||(LA25_556 >= '\u00ED' && LA25_556 <= '\u00F1')||(LA25_556 >= '\u00F3' && LA25_556 <= '\u00F8')||(LA25_556 >= '\u00FA' && LA25_556 <= '\uFFFF')) ) {s = 180;}
 						if ( s>=0 ) return s;
 						break;
 
 					case 8 : 
-						int LA24_744 = input.LA(1);
+						int LA25_553 = input.LA(1);
 						s = -1;
-						if ( ((LA24_744 >= '0' && LA24_744 <= '7')) ) {s = 881;}
-						else if ( (LA24_744=='\'') ) {s = 363;}
-						else if ( (LA24_744=='\\') ) {s = 362;}
-						else if ( ((LA24_744 >= '!' && LA24_744 <= '\"')||(LA24_744 >= '$' && LA24_744 <= '&')||(LA24_744 >= '*' && LA24_744 <= '+')||(LA24_744 >= '-' && LA24_744 <= '/')||(LA24_744 >= '8' && LA24_744 <= '9')||(LA24_744 >= '<' && LA24_744 <= '?')||(LA24_744 >= 'A' && LA24_744 <= 'Z')||(LA24_744 >= '^' && LA24_744 <= '_')||(LA24_744 >= 'a' && LA24_744 <= 'z')||LA24_744=='\u00A3'||LA24_744=='\u00A7'||LA24_744=='\u00E0'||(LA24_744 >= '\u00E8' && LA24_744 <= '\u00E9')||LA24_744=='\u00EC'||LA24_744=='\u00F2'||LA24_744=='\u00F9') ) {s = 364;}
-						else if ( ((LA24_744 >= '\u0000' && LA24_744 <= ' ')||LA24_744=='#'||(LA24_744 >= '(' && LA24_744 <= ')')||LA24_744==','||(LA24_744 >= ':' && LA24_744 <= ';')||LA24_744=='@'||LA24_744=='['||LA24_744==']'||LA24_744=='`'||(LA24_744 >= '{' && LA24_744 <= '\u00A2')||(LA24_744 >= '\u00A4' && LA24_744 <= '\u00A6')||(LA24_744 >= '\u00A8' && LA24_744 <= '\u00DF')||(LA24_744 >= '\u00E1' && LA24_744 <= '\u00E7')||(LA24_744 >= '\u00EA' && LA24_744 <= '\u00EB')||(LA24_744 >= '\u00ED' && LA24_744 <= '\u00F1')||(LA24_744 >= '\u00F3' && LA24_744 <= '\u00F8')||(LA24_744 >= '\u00FA' && LA24_744 <= '\uFFFF')) ) {s = 180;}
+						if ( ((LA25_553 >= '\u0000' && LA25_553 <= '\uFFFF')) ) {s = 180;}
+						else s = 558;
 						if ( s>=0 ) return s;
 						break;
 
 					case 9 : 
-						int LA24_555 = input.LA(1);
+						int LA25_557 = input.LA(1);
 						s = -1;
-						if ( ((LA24_555 >= '0' && LA24_555 <= '7')) ) {s = 744;}
-						else if ( (LA24_555=='\'') ) {s = 363;}
-						else if ( (LA24_555=='\\') ) {s = 362;}
-						else if ( ((LA24_555 >= '!' && LA24_555 <= '\"')||(LA24_555 >= '$' && LA24_555 <= '&')||(LA24_555 >= '*' && LA24_555 <= '+')||(LA24_555 >= '-' && LA24_555 <= '/')||(LA24_555 >= '8' && LA24_555 <= '9')||(LA24_555 >= '<' && LA24_555 <= '?')||(LA24_555 >= 'A' && LA24_555 <= 'Z')||(LA24_555 >= '^' && LA24_555 <= '_')||(LA24_555 >= 'a' && LA24_555 <= 'z')||LA24_555=='\u00A3'||LA24_555=='\u00A7'||LA24_555=='\u00E0'||(LA24_555 >= '\u00E8' && LA24_555 <= '\u00E9')||LA24_555=='\u00EC'||LA24_555=='\u00F2'||LA24_555=='\u00F9') ) {s = 364;}
-						else if ( ((LA24_555 >= '\u0000' && LA24_555 <= ' ')||LA24_555=='#'||(LA24_555 >= '(' && LA24_555 <= ')')||LA24_555==','||(LA24_555 >= ':' && LA24_555 <= ';')||LA24_555=='@'||LA24_555=='['||LA24_555==']'||LA24_555=='`'||(LA24_555 >= '{' && LA24_555 <= '\u00A2')||(LA24_555 >= '\u00A4' && LA24_555 <= '\u00A6')||(LA24_555 >= '\u00A8' && LA24_555 <= '\u00DF')||(LA24_555 >= '\u00E1' && LA24_555 <= '\u00E7')||(LA24_555 >= '\u00EA' && LA24_555 <= '\u00EB')||(LA24_555 >= '\u00ED' && LA24_555 <= '\u00F1')||(LA24_555 >= '\u00F3' && LA24_555 <= '\u00F8')||(LA24_555 >= '\u00FA' && LA24_555 <= '\uFFFF')) ) {s = 180;}
+						if ( (LA25_557=='\'') ) {s = 363;}
+						else if ( (LA25_557=='\\') ) {s = 362;}
+						else if ( ((LA25_557 >= '!' && LA25_557 <= '\"')||(LA25_557 >= '$' && LA25_557 <= '&')||(LA25_557 >= '*' && LA25_557 <= '+')||(LA25_557 >= '-' && LA25_557 <= '9')||(LA25_557 >= '<' && LA25_557 <= '?')||(LA25_557 >= 'A' && LA25_557 <= 'Z')||(LA25_557 >= '^' && LA25_557 <= '_')||(LA25_557 >= 'a' && LA25_557 <= 'z')||LA25_557=='\u00A3'||LA25_557=='\u00A7'||LA25_557=='\u00E0'||(LA25_557 >= '\u00E8' && LA25_557 <= '\u00E9')||LA25_557=='\u00EC'||LA25_557=='\u00F2'||LA25_557=='\u00F9') ) {s = 364;}
+						else if ( ((LA25_557 >= '\u0000' && LA25_557 <= ' ')||LA25_557=='#'||(LA25_557 >= '(' && LA25_557 <= ')')||LA25_557==','||(LA25_557 >= ':' && LA25_557 <= ';')||LA25_557=='@'||LA25_557=='['||LA25_557==']'||LA25_557=='`'||(LA25_557 >= '{' && LA25_557 <= '\u00A2')||(LA25_557 >= '\u00A4' && LA25_557 <= '\u00A6')||(LA25_557 >= '\u00A8' && LA25_557 <= '\u00DF')||(LA25_557 >= '\u00E1' && LA25_557 <= '\u00E7')||(LA25_557 >= '\u00EA' && LA25_557 <= '\u00EB')||(LA25_557 >= '\u00ED' && LA25_557 <= '\u00F1')||(LA25_557 >= '\u00F3' && LA25_557 <= '\u00F8')||(LA25_557 >= '\u00FA' && LA25_557 <= '\uFFFF')) ) {s = 180;}
 						if ( s>=0 ) return s;
 						break;
 
 					case 10 : 
-						int LA24_0 = input.LA(1);
+						int LA25_0 = input.LA(1);
 						s = -1;
-						if ( (LA24_0==':') ) {s = 1;}
-						else if ( (LA24_0=='A'||LA24_0=='a') ) {s = 2;}
-						else if ( (LA24_0=='C'||LA24_0=='c') ) {s = 3;}
-						else if ( (LA24_0=='B'||LA24_0=='b') ) {s = 4;}
-						else if ( (LA24_0=='D'||LA24_0=='d') ) {s = 5;}
-						else if ( (LA24_0=='E'||LA24_0=='e') ) {s = 6;}
-						else if ( (LA24_0=='F'||LA24_0=='f') ) {s = 7;}
-						else if ( (LA24_0=='G'||LA24_0=='g') ) {s = 8;}
-						else if ( (LA24_0=='H'||LA24_0=='h') ) {s = 9;}
-						else if ( (LA24_0=='I'||LA24_0=='i') ) {s = 10;}
-						else if ( (LA24_0=='J'||LA24_0=='j') ) {s = 11;}
-						else if ( (LA24_0=='L'||LA24_0=='l') ) {s = 12;}
-						else if ( (LA24_0=='M'||LA24_0=='m') ) {s = 13;}
-						else if ( (LA24_0=='N'||LA24_0=='n') ) {s = 14;}
-						else if ( (LA24_0=='O'||LA24_0=='o') ) {s = 15;}
-						else if ( (LA24_0=='P'||LA24_0=='p') ) {s = 16;}
-						else if ( (LA24_0=='R'||LA24_0=='r') ) {s = 17;}
-						else if ( (LA24_0=='S'||LA24_0=='s') ) {s = 18;}
-						else if ( (LA24_0=='T'||LA24_0=='t') ) {s = 19;}
-						else if ( (LA24_0=='U'||LA24_0=='u') ) {s = 20;}
-						else if ( (LA24_0=='V'||LA24_0=='v') ) {s = 21;}
-						else if ( (LA24_0=='W'||LA24_0=='w') ) {s = 22;}
-						else if ( (LA24_0=='Z'||LA24_0=='z') ) {s = 23;}
-						else if ( (LA24_0=='*') ) {s = 24;}
-						else if ( (LA24_0=='=') ) {s = 25;}
-						else if ( (LA24_0==';') ) {s = 26;}
-						else if ( (LA24_0==',') ) {s = 27;}
-						else if ( (LA24_0=='<') ) {s = 28;}
-						else if ( (LA24_0=='!') ) {s = 29;}
-						else if ( (LA24_0=='~') ) {s = 30;}
-						else if ( (LA24_0=='^') ) {s = 31;}
-						else if ( (LA24_0=='>') ) {s = 32;}
-						else if ( (LA24_0=='(') ) {s = 33;}
-						else if ( (LA24_0==')') ) {s = 34;}
-						else if ( (LA24_0=='+') ) {s = 35;}
-						else if ( (LA24_0=='-') ) {s = 36;}
-						else if ( (LA24_0=='/') ) {s = 37;}
-						else if ( (LA24_0=='%') ) {s = 38;}
-						else if ( (LA24_0=='.') ) {s = 39;}
-						else if ( ((LA24_0 >= '0' && LA24_0 <= '9')) ) {s = 40;}
-						else if ( (LA24_0=='\'') ) {s = 41;}
-						else if ( (LA24_0=='K'||LA24_0=='Q'||(LA24_0 >= 'X' && LA24_0 <= 'Y')||LA24_0=='_'||LA24_0=='k'||LA24_0=='q'||(LA24_0 >= 'x' && LA24_0 <= 'y')) ) {s = 42;}
-						else if ( (LA24_0=='\"') ) {s = 43;}
-						else if ( (LA24_0==' ') ) {s = 44;}
-						else if ( ((LA24_0 >= '\u0001' && LA24_0 <= '\u001F')||(LA24_0 >= '\u0080' && LA24_0 <= '\u009F')) ) {s = 45;}
-						else if ( (LA24_0=='\u0000'||(LA24_0 >= '#' && LA24_0 <= '$')||LA24_0=='&'||(LA24_0 >= '?' && LA24_0 <= '@')||(LA24_0 >= '[' && LA24_0 <= ']')||LA24_0=='`'||(LA24_0 >= '{' && LA24_0 <= '}')||LA24_0=='\u007F'||(LA24_0 >= '\u00A0' && LA24_0 <= '\uFFFF')) ) {s = 46;}
+						if ( (LA25_0==':') ) {s = 1;}
+						else if ( (LA25_0=='A'||LA25_0=='a') ) {s = 2;}
+						else if ( (LA25_0=='C'||LA25_0=='c') ) {s = 3;}
+						else if ( (LA25_0=='B'||LA25_0=='b') ) {s = 4;}
+						else if ( (LA25_0=='D'||LA25_0=='d') ) {s = 5;}
+						else if ( (LA25_0=='E'||LA25_0=='e') ) {s = 6;}
+						else if ( (LA25_0=='F'||LA25_0=='f') ) {s = 7;}
+						else if ( (LA25_0=='G'||LA25_0=='g') ) {s = 8;}
+						else if ( (LA25_0=='H'||LA25_0=='h') ) {s = 9;}
+						else if ( (LA25_0=='I'||LA25_0=='i') ) {s = 10;}
+						else if ( (LA25_0=='J'||LA25_0=='j') ) {s = 11;}
+						else if ( (LA25_0=='L'||LA25_0=='l') ) {s = 12;}
+						else if ( (LA25_0=='M'||LA25_0=='m') ) {s = 13;}
+						else if ( (LA25_0=='N'||LA25_0=='n') ) {s = 14;}
+						else if ( (LA25_0=='O'||LA25_0=='o') ) {s = 15;}
+						else if ( (LA25_0=='P'||LA25_0=='p') ) {s = 16;}
+						else if ( (LA25_0=='R'||LA25_0=='r') ) {s = 17;}
+						else if ( (LA25_0=='S'||LA25_0=='s') ) {s = 18;}
+						else if ( (LA25_0=='T'||LA25_0=='t') ) {s = 19;}
+						else if ( (LA25_0=='U'||LA25_0=='u') ) {s = 20;}
+						else if ( (LA25_0=='V'||LA25_0=='v') ) {s = 21;}
+						else if ( (LA25_0=='W'||LA25_0=='w') ) {s = 22;}
+						else if ( (LA25_0=='Z'||LA25_0=='z') ) {s = 23;}
+						else if ( (LA25_0=='*') ) {s = 24;}
+						else if ( (LA25_0=='=') ) {s = 25;}
+						else if ( (LA25_0==';') ) {s = 26;}
+						else if ( (LA25_0==',') ) {s = 27;}
+						else if ( (LA25_0=='<') ) {s = 28;}
+						else if ( (LA25_0=='!') ) {s = 29;}
+						else if ( (LA25_0=='~') ) {s = 30;}
+						else if ( (LA25_0=='^') ) {s = 31;}
+						else if ( (LA25_0=='>') ) {s = 32;}
+						else if ( (LA25_0=='(') ) {s = 33;}
+						else if ( (LA25_0==')') ) {s = 34;}
+						else if ( (LA25_0=='+') ) {s = 35;}
+						else if ( (LA25_0=='-') ) {s = 36;}
+						else if ( (LA25_0=='/') ) {s = 37;}
+						else if ( (LA25_0=='%') ) {s = 38;}
+						else if ( (LA25_0=='.') ) {s = 39;}
+						else if ( ((LA25_0 >= '0' && LA25_0 <= '9')) ) {s = 40;}
+						else if ( (LA25_0=='\'') ) {s = 41;}
+						else if ( (LA25_0=='K'||LA25_0=='Q'||(LA25_0 >= 'X' && LA25_0 <= 'Y')||LA25_0=='_'||LA25_0=='k'||LA25_0=='q'||(LA25_0 >= 'x' && LA25_0 <= 'y')) ) {s = 42;}
+						else if ( (LA25_0=='\"') ) {s = 43;}
+						else if ( (LA25_0==' ') ) {s = 44;}
+						else if ( ((LA25_0 >= '\u0001' && LA25_0 <= '\u001F')||(LA25_0 >= '\u0080' && LA25_0 <= '\u009F')) ) {s = 45;}
+						else if ( (LA25_0=='\u0000'||(LA25_0 >= '#' && LA25_0 <= '$')||LA25_0=='&'||(LA25_0 >= '?' && LA25_0 <= '@')||(LA25_0 >= '[' && LA25_0 <= ']')||LA25_0=='`'||(LA25_0 >= '{' && LA25_0 <= '}')||LA25_0=='\u007F'||(LA25_0 >= '\u00A0' && LA25_0 <= '\uFFFF')) ) {s = 46;}
 						if ( s>=0 ) return s;
 						break;
 
 					case 11 : 
-						int LA24_1051 = input.LA(1);
+						int LA25_744 = input.LA(1);
 						s = -1;
-						if ( (LA24_1051=='\'') ) {s = 363;}
-						else if ( (LA24_1051=='\\') ) {s = 362;}
-						else if ( ((LA24_1051 >= '!' && LA24_1051 <= '\"')||(LA24_1051 >= '$' && LA24_1051 <= '&')||(LA24_1051 >= '*' && LA24_1051 <= '+')||(LA24_1051 >= '-' && LA24_1051 <= '9')||(LA24_1051 >= '<' && LA24_1051 <= '?')||(LA24_1051 >= 'A' && LA24_1051 <= 'Z')||(LA24_1051 >= '^' && LA24_1051 <= '_')||(LA24_1051 >= 'a' && LA24_1051 <= 'z')||LA24_1051=='\u00A3'||LA24_1051=='\u00A7'||LA24_1051=='\u00E0'||(LA24_1051 >= '\u00E8' && LA24_1051 <= '\u00E9')||LA24_1051=='\u00EC'||LA24_1051=='\u00F2'||LA24_1051=='\u00F9') ) {s = 364;}
-						else if ( ((LA24_1051 >= '\u0000' && LA24_1051 <= ' ')||LA24_1051=='#'||(LA24_1051 >= '(' && LA24_1051 <= ')')||LA24_1051==','||(LA24_1051 >= ':' && LA24_1051 <= ';')||LA24_1051=='@'||LA24_1051=='['||LA24_1051==']'||LA24_1051=='`'||(LA24_1051 >= '{' && LA24_1051 <= '\u00A2')||(LA24_1051 >= '\u00A4' && LA24_1051 <= '\u00A6')||(LA24_1051 >= '\u00A8' && LA24_1051 <= '\u00DF')||(LA24_1051 >= '\u00E1' && LA24_1051 <= '\u00E7')||(LA24_1051 >= '\u00EA' && LA24_1051 <= '\u00EB')||(LA24_1051 >= '\u00ED' && LA24_1051 <= '\u00F1')||(LA24_1051 >= '\u00F3' && LA24_1051 <= '\u00F8')||(LA24_1051 >= '\u00FA' && LA24_1051 <= '\uFFFF')) ) {s = 180;}
+						if ( ((LA25_744 >= '0' && LA25_744 <= '7')) ) {s = 881;}
+						else if ( (LA25_744=='\'') ) {s = 363;}
+						else if ( (LA25_744=='\\') ) {s = 362;}
+						else if ( ((LA25_744 >= '!' && LA25_744 <= '\"')||(LA25_744 >= '$' && LA25_744 <= '&')||(LA25_744 >= '*' && LA25_744 <= '+')||(LA25_744 >= '-' && LA25_744 <= '/')||(LA25_744 >= '8' && LA25_744 <= '9')||(LA25_744 >= '<' && LA25_744 <= '?')||(LA25_744 >= 'A' && LA25_744 <= 'Z')||(LA25_744 >= '^' && LA25_744 <= '_')||(LA25_744 >= 'a' && LA25_744 <= 'z')||LA25_744=='\u00A3'||LA25_744=='\u00A7'||LA25_744=='\u00E0'||(LA25_744 >= '\u00E8' && LA25_744 <= '\u00E9')||LA25_744=='\u00EC'||LA25_744=='\u00F2'||LA25_744=='\u00F9') ) {s = 364;}
+						else if ( ((LA25_744 >= '\u0000' && LA25_744 <= ' ')||LA25_744=='#'||(LA25_744 >= '(' && LA25_744 <= ')')||LA25_744==','||(LA25_744 >= ':' && LA25_744 <= ';')||LA25_744=='@'||LA25_744=='['||LA25_744==']'||LA25_744=='`'||(LA25_744 >= '{' && LA25_744 <= '\u00A2')||(LA25_744 >= '\u00A4' && LA25_744 <= '\u00A6')||(LA25_744 >= '\u00A8' && LA25_744 <= '\u00DF')||(LA25_744 >= '\u00E1' && LA25_744 <= '\u00E7')||(LA25_744 >= '\u00EA' && LA25_744 <= '\u00EB')||(LA25_744 >= '\u00ED' && LA25_744 <= '\u00F1')||(LA25_744 >= '\u00F3' && LA25_744 <= '\u00F8')||(LA25_744 >= '\u00FA' && LA25_744 <= '\uFFFF')) ) {s = 180;}
 						if ( s>=0 ) return s;
 						break;
 
 					case 12 : 
-						int LA24_43 = input.LA(1);
+						int LA25_555 = input.LA(1);
 						s = -1;
-						if ( ((LA24_43 >= '\u0000' && LA24_43 <= '\uFFFF')) ) {s = 180;}
-						else s = 181;
+						if ( ((LA25_555 >= '0' && LA25_555 <= '7')) ) {s = 744;}
+						else if ( (LA25_555=='\'') ) {s = 363;}
+						else if ( (LA25_555=='\\') ) {s = 362;}
+						else if ( ((LA25_555 >= '!' && LA25_555 <= '\"')||(LA25_555 >= '$' && LA25_555 <= '&')||(LA25_555 >= '*' && LA25_555 <= '+')||(LA25_555 >= '-' && LA25_555 <= '/')||(LA25_555 >= '8' && LA25_555 <= '9')||(LA25_555 >= '<' && LA25_555 <= '?')||(LA25_555 >= 'A' && LA25_555 <= 'Z')||(LA25_555 >= '^' && LA25_555 <= '_')||(LA25_555 >= 'a' && LA25_555 <= 'z')||LA25_555=='\u00A3'||LA25_555=='\u00A7'||LA25_555=='\u00E0'||(LA25_555 >= '\u00E8' && LA25_555 <= '\u00E9')||LA25_555=='\u00EC'||LA25_555=='\u00F2'||LA25_555=='\u00F9') ) {s = 364;}
+						else if ( ((LA25_555 >= '\u0000' && LA25_555 <= ' ')||LA25_555=='#'||(LA25_555 >= '(' && LA25_555 <= ')')||LA25_555==','||(LA25_555 >= ':' && LA25_555 <= ';')||LA25_555=='@'||LA25_555=='['||LA25_555==']'||LA25_555=='`'||(LA25_555 >= '{' && LA25_555 <= '\u00A2')||(LA25_555 >= '\u00A4' && LA25_555 <= '\u00A6')||(LA25_555 >= '\u00A8' && LA25_555 <= '\u00DF')||(LA25_555 >= '\u00E1' && LA25_555 <= '\u00E7')||(LA25_555 >= '\u00EA' && LA25_555 <= '\u00EB')||(LA25_555 >= '\u00ED' && LA25_555 <= '\u00F1')||(LA25_555 >= '\u00F3' && LA25_555 <= '\u00F8')||(LA25_555 >= '\u00FA' && LA25_555 <= '\uFFFF')) ) {s = 180;}
 						if ( s>=0 ) return s;
 						break;
 			}
 			NoViableAltException nvae =
-				new NoViableAltException(getDescription(), 24, _s, input);
+				new NoViableAltException(getDescription(), 25, _s, input);
 			error(nvae);
 			throw nvae;
 		}

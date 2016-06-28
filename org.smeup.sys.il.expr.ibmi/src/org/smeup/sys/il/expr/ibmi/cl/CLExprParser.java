@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g 2016-05-31 13:15:37
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\cl\\CLExpr.g 2016-06-27 13:47:04
 
   package org.smeup.sys.il.expr.ibmi.cl;
   
@@ -127,7 +127,7 @@ public class CLExprParser extends Parser {
 
 		@Override    
 	    public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
-			String msg = "Parser error. Input: " + e.input.toString();
+			String msg = "CLExprParser error. Input: " + e.input.toString();
 	        msg += " " + getErrorHeader(e);
 	        msg += " Msg: " + getErrorMessage(e, tokenNames);
 	        throw new IntegratedLanguageExpressionRuntimeException(msg , e);
@@ -1548,7 +1548,7 @@ public class CLExprParser extends Parser {
 			stream_CLOSE_BRACE.add(char_literal51);
 
 			// AST REWRITE
-			// elements: BINARY_FUN, value
+			// elements: value, BINARY_FUN
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 

@@ -128,7 +128,7 @@ import org.smeup.sys.db.syntax.DataBaseSyntaxRuntimeException;
 
     @Override    
     public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
-		String msg = "Lexer error. Input: " + e.input.toString();
+		String msg = "DDLLexer error. Input: " + e.input.toString();
         msg += " " + getErrorHeader(e);
         msg += " Msg: " + getErrorMessage(e, tokenNames);
         throw new DataBaseSyntaxRuntimeException(msg , e);
@@ -151,7 +151,7 @@ import org.smeup.sys.db.syntax.DataBaseSyntaxRuntimeException;
 
 	@Override    
     public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
-		String msg = "Parser error. Input: " + e.input.toString();
+		String msg = "DDLParser error. Input: " + e.input.toString();
         msg += " " + getErrorHeader(e);
         msg += " Msg: " + getErrorMessage(e, tokenNames);
         throw new DataBaseSyntaxRuntimeException(msg , e);

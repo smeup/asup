@@ -57,7 +57,7 @@ tokens
 
     @Override    
     public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
-		String msg = "Lexer error. Input: " + e.input.toString();
+		String msg = "RPGExprLexer error. Input: " + e.input.toString();
         msg += " " + getErrorHeader(e);
         msg += " Msg: " + getErrorMessage(e, tokenNames);
         throw new IntegratedLanguageExpressionRuntimeException(msg , e);
@@ -80,7 +80,7 @@ tokens
 
 	@Override    
     public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
-		String msg = "Parser error. Input: " + e.input.toString();
+		String msg = "RPGExprParser error. Input: " + e.input.toString();
         msg += " " + getErrorHeader(e);
         msg += " Msg: " + getErrorMessage(e, tokenNames);
         throw new IntegratedLanguageExpressionRuntimeException(msg , e);
