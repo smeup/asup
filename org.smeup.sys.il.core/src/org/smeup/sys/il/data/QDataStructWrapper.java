@@ -970,62 +970,62 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 
 	@Override
 	public QNumeric qCheckr(QCharacter base) {
-		return delegate.qCheck(base);
+		return delegate.qCheckr(base);
 	}
 
 	@Override
 	public QNumeric qCheckr(QCharacter base, QIndicator found) {
-		return delegate.qCheck(base, found);
+		return delegate.qCheckr(base, found);
 	}
 
 	@Override
 	public QNumeric qCheckr(QCharacter base, QNumeric start) {
-		return delegate.qCheck(base, start);
+		return delegate.qCheckr(base, start);
 	}
 
 	@Override
 	public QNumeric qCheckr(QCharacter base, QNumeric start, QIndicator found) {
-		return delegate.qCheck(base, start, found);
+		return delegate.qCheckr(base, start, found);
 	}
 
 	@Override
 	public QNumeric qCheckr(QCharacter base, Number start) {
-		return delegate.qCheck(base, start);
+		return delegate.qCheckr(base, start);
 	}
 
 	@Override
 	public QNumeric qCheckr(QCharacter base, Number start, QIndicator found) {
-		return delegate.qCheck(base, start, found);
+		return delegate.qCheckr(base, start, found);
 	}
 
 	@Override
 	public QNumeric qCheckr(String base) {
-		return delegate.qCheck(base);
+		return delegate.qCheckr(base);
 	}
 
 	@Override
 	public QNumeric qCheckr(String base, QIndicator found) {
-		return delegate.qCheck(base, found);
+		return delegate.qCheckr(base, found);
 	}
 
 	@Override
 	public QNumeric qCheckr(String base, QNumeric start) {
-		return delegate.qCheck(base, start);
+		return delegate.qCheckr(base, start);
 	}
 
 	@Override
 	public QNumeric qCheckr(String base, QNumeric start, QIndicator found) {
-		return delegate.qCheck(base, start, found);
+		return delegate.qCheckr(base, start, found);
 	}
 
 	@Override
 	public QNumeric qCheckr(String base, Number start) {
-		return delegate.qCheck(base, start);
+		return delegate.qCheckr(base, start);
 	}
 
 	@Override
 	public QNumeric qCheckr(String base, Number start, QIndicator found) {
-		return delegate.qCheck(base, start, found);
+		return delegate.qCheckr(base, start, found);
 	}
 	
 	@Override
