@@ -184,10 +184,16 @@ public class NIOBufferHelper {
 	}
 
 	public static void assign(QStorable storable, QBufferedData target) {
-		assign(storable, target, 1);
+		NIOBufferedDataImpl nioBufferedData = getNIOBufferedDataImpl(target);
+		if (nioBufferedData == null)
+			throw new IntegratedLanguageCoreRuntimeException("No buffer reference found: " + target.getClass());
+
+		nioBufferedData._buffer = null;
+		nioBufferedData._storage = storable;
+		nioBufferedData._position = 0;
 	}
 
-	public static void assign(QStorable storable, QBufferedData target, int position) {
+	public static void slice(QStorable storable, QBufferedData target, int position) {
 
 		if (position <= 0)
 			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dm5c46dsfgdsf7405mc");

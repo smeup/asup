@@ -29,14 +29,6 @@ public interface QStorable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model targetRequired="true" positionRequired="true"
-	 * @generated
-	 */
-	void assign(QBufferedData target, int position);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */

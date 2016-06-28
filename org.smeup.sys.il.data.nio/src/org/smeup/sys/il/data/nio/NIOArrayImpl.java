@@ -145,7 +145,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 		position = modelSize * (index - 1);
 
-		assign(element, position + 1);
+		slice(element, position + 1);
 
 		_elements[index - 1] = element;
 
@@ -290,7 +290,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 		if (!isContiguous())
 			subArray.setListOwner(getListOwner());
 
-		assign(subArray, getModel().getSize() * (start - 1) + 1);
+		slice(subArray, getModel().getSize() * (start - 1) + 1);
 
 		return subArray;
 	}
@@ -322,7 +322,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 		D modelCharacter = (D) new NIOCharacterImpl(getDataContext(), length.intValue(), false);
 		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), modelCharacter, capacity(), getSortDirection(), false);
 		newArray.setListOwner(this);
-		assign(newArray, start.intValue());
+		slice(newArray, start.intValue());
 
 		return (QArray<QCharacter>) newArray;
 	}

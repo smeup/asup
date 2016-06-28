@@ -115,7 +115,7 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 			e.printStackTrace();
 		}
 
-		assign(element, position);
+		slice(element, position);
 	}
 
 	@Override

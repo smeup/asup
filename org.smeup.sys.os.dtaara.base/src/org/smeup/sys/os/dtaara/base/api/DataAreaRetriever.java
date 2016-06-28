@@ -59,7 +59,7 @@ public @ToDo class DataAreaRetriever {
 				cLVariableForReturnedValue.assign(character);
 			} else {
 				SUBSTRINGSPECIFICATIONS substringSpec = dataAreaParm.substringSpecifications.asData();
-				cLVariableForReturnedValue.assign(character, substringSpec.substringStartingPosition.asInteger());
+				cLVariableForReturnedValue.slice(character, substringSpec.substringStartingPosition.asInteger());
 			}
 
 		} catch (DataAreaNotFoundException e) {

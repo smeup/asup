@@ -861,7 +861,7 @@ public class RPJProgramSupport {
 			length = source.getLength() - startIndex.intValue();
 
 		QCharacter string = dataContext.getDataFactory().createCharacter(length.intValue(), false, false);
-		source.assign(string, startIndex.intValue());
+		source.slice(string, startIndex.intValue());
 
 		return string;
 

@@ -513,9 +513,9 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 		// TODO cache ?
 		QCharacter character = new NIOCharacterImpl(getDataContext(), length.intValue(), false);
 		if (isVarying())
-			this.assign(character, start.intValue() + 2);
+			this.slice(character, start.intValue() + 2);
 		else
-			this.assign(character, start.intValue());
+			this.slice(character, start.intValue());
 
 		return character;
 	}

@@ -66,9 +66,9 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	public final byte[] asBytes() {
 		return _toBytes();
 	}
-
+	
 	@Override
-	public void assign(QBufferedData target, int position) {
+	public void assign(QBufferedData target) {
 
 		if (target instanceof NIOAdapterImpl) {
 			NIOAdapterImpl nioAdapterImpl = (NIOAdapterImpl) target;
@@ -76,7 +76,19 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 			return;
 		}
 
-		super.assign(target, position);
+		super.assign(target);
+	}
+
+	@Override
+	public void slice(QBufferedData target, int position) {
+
+		if (target instanceof NIOAdapterImpl) {
+			NIOAdapterImpl nioAdapterImpl = (NIOAdapterImpl) target;
+			nioAdapterImpl.setDelegate(this);
+			return;
+		}
+
+		super.slice(target, position);
 	}
 
 	@Override

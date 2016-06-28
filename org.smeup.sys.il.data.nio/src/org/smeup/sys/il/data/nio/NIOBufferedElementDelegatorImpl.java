@@ -73,8 +73,8 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 	}
 
 	@Override
-	public void assign(QBufferedData value, int position) {
-		_delegate.assign(value, position);
+	public void slice(QBufferedData value, int position) {
+		_delegate.slice(value, position);
 	}
 
 	@Override

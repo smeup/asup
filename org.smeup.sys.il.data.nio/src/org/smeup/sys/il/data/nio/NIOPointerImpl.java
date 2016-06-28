@@ -58,11 +58,6 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 
 	@Override
-	public void assign(QBufferedData target, int position) {
-		NIOBufferHelper.assign(this, target);
-	}
-
-	@Override
 	public void eval(QPointer value) {
 		this._storage = (QStorable) value.getStore();
 	}

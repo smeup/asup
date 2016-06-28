@@ -66,7 +66,7 @@ public class NIODataStructImpl extends NIOAbstractDataStruct {
 			if (position - 1 + element.getSize() > _length)
 				_length = position - 1 + element.getSize();
 
-		assign(element, position);
+		slice(element, position);
 	}
 
 	@Override

@@ -47,13 +47,13 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
-	public final void assign(QBufferedData target) {
-		assign(target, 1);
+	public void assign(QBufferedData target) {
+		NIOBufferHelper.assign(this, target);
 	}
 
 	@Override
-	public void assign(QBufferedData target, int position) {
-		NIOBufferHelper.assign(this, target, position);
+	public void slice(QBufferedData target, int position) {
+		NIOBufferHelper.slice(this, target, position);
 	}
 
 	protected void checkAllocation() {

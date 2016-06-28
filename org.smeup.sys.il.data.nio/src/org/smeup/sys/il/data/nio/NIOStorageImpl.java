@@ -51,11 +51,6 @@ public class NIOStorageImpl implements QStorable {
 	}
 
 	@Override
-	public void assign(QBufferedData target, int position) {
-		NIOBufferHelper.assign(this, target, position);
-	}
-
-	@Override
 	public void assign(QBufferedData target) {
 		NIOBufferHelper.assign(this, target);
 	}

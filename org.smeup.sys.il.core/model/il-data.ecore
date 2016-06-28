@@ -644,6 +644,10 @@
     <eOperations name="qAddr" lowerBound="1" eType="#//Pointer"/>
     <eOperations name="qLen" lowerBound="1" eType="#//Numeric"/>
     <eOperations name="reset"/>
+    <eOperations name="slice">
+      <eParameters name="target" lowerBound="1" eType="#//BufferedData"/>
+      <eParameters name="position" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
     <eOperations name="snap"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="BufferedDataType">
@@ -2986,10 +2990,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Storable" abstract="true" interface="true">
     <eOperations name="assign">
       <eParameters name="target" lowerBound="1" eType="#//BufferedData"/>
-    </eOperations>
-    <eOperations name="assign">
-      <eParameters name="target" lowerBound="1" eType="#//BufferedData"/>
-      <eParameters name="position" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
     <eOperations name="getPosition" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eOperations name="getStore" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
