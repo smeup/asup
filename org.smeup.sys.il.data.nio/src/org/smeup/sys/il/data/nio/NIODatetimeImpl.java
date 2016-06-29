@@ -207,7 +207,11 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 
 		QDecimal number = getDataContext().getDataFactory().createDecimal(10, 0, DecimalType.ZONED, true);
 
-		long diff = this.asDate().getTime() - value.asDate().getTime();
+		Date a = this.asDate();
+		Date b = value.asDate();
+		
+		
+		long diff = (this.asDate().getTime() - value.asDate().getTime()) * 1000;
 		
 		switch (format) {
 		case DAY:
@@ -293,7 +297,7 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 			simpleDateFormat = new SimpleDateFormat(toJavaFormat(timeFormat, timeSeparator));
 			break;
 		case TIME_STAMP:
-			simpleDateFormat = new SimpleDateFormat(toJavaFormat(dateFormat, dateSeparator) + "-" + toJavaFormat(timeFormat, timeSeparator));
+			simpleDateFormat = new SimpleDateFormat(toJavaFormat(dateFormat, dateSeparator) + "-" + toJavaFormat(timeFormat, timeSeparator) + ".SSSSSS");
 			break;
 		}
 
@@ -306,11 +310,10 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 		
 		switch (dateFormat) {
 		case DMY:
-			
-			format = "dd-MM-yy";
+			format = "dd/MM/yy";
 			break;
 		case EUR:
-			format = "yyyy-MM-dd";
+			format = "dd.MM.yyyy";
 			break;
 		case ISO:
 			format = "yyyy-MM-dd";
@@ -325,16 +328,16 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 			format = "yy-D";
 			break;
 		case MDY:
-			format = "MM-dd-yy";
+			format = "MM/dd/yy";
 			break;
 		case USA:
-			format = "yyyy-MM-dd";
+			format = "MM/dd/yyyy";
 			break;
 		case YMD:
-			format = "yy-MM-dd";
+			format = "yy/MM/dd";
 			break;
 		case YYMD:
-			format = "yyyy-MM-dd";
+			format = "yyyy/MM/dd";
 			break;
 		}
 
@@ -354,26 +357,26 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 			format = "HH.mm.ss";
 			break;
 		case HMS:
-			format = "HH.mm.ss";
+			format = "HH:mm:ss";
 			break;
 		case ISO:			
 			format = "HH.mm.ss";
 			break;
 		case JIS:			
-			format = "HH.mm.ss";
+			format = "HH:mm:ss";
 			break;
 		case JOBRUN:			
 			format = "HH.mm.ss";
 			break;
 		case USA:			
-			format = "K.mm a";
+			format = "HH:mm a";
 			break;
 		}
 
 		if (separator != null) { 			
 			format = format.replaceAll(".", separator);			
 		} 		
-
+		
 		return format;
 	}
 
