@@ -134,7 +134,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 		if (element != null)
 			return element;
 
-		element = (D) ((NIODataImpl) getModel())._copy(getDataContext());
+		element = (D) ((NIODataImpl) getModel())._copyDef(getDataContext());
 
 		int position = 0;
 		int modelSize = 0;
@@ -571,9 +571,9 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 					switch (getSortDirection()) {
 					case ASCEND:
-						return NIOBufferHelper.compareBytes(b1, b2, fillerComparator);
+						return NIOComparatorHelper.compareBytes(b1, b2, fillerComparator);
 					case DESCEND:
-						return NIOBufferHelper.compareBytes(b1, b2, fillerComparator) * -1;
+						return NIOComparatorHelper.compareBytes(b1, b2, fillerComparator) * -1;
 					}
 					return -1;
 				}
@@ -599,9 +599,9 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 					switch (getSortDirection()) {
 					case ASCEND:
-						return NIOBufferHelper.compareBytes(param1, param2, fillerComparator);
+						return NIOComparatorHelper.compareBytes(param1, param2, fillerComparator);
 					case DESCEND:
-						return NIOBufferHelper.compareBytes(param1, param2, fillerComparator) * -1;
+						return NIOComparatorHelper.compareBytes(param1, param2, fillerComparator) * -1;
 					}
 					return -1;
 				}
@@ -953,8 +953,8 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 	@SuppressWarnings("unchecked")
 	@Override
-	protected NIODataImpl _copy(QDataContext dataContext) {
-		NIOArrayImpl<D> copy = new NIOArrayImpl<D>(dataContext, (D) NIOBufferHelper.getNIOBufferedElementImpl(getModel())._copy(dataContext), capacity(), getSortDirection(), false);
+	protected NIODataImpl _copyDef(QDataContext dataContext) {
+		NIOArrayImpl<D> copy = new NIOArrayImpl<D>(dataContext, (D) NIOBufferHelper.getNIOBufferedElementImpl(getModel())._copyDef(dataContext), capacity(), getSortDirection(), false);
 		return copy;
 	}
 }

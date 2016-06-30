@@ -56,7 +56,7 @@ public @ToDo class DataAreaRetriever {
 
 			QCharacter character = dataContext.getDataFactory().createCharacter(area.getContent().length(), false, false);
 			if (dataAreaParm.all()) {
-				cLVariableForReturnedValue.assign(character);
+				cLVariableForReturnedValue.slice(character);
 			} else {
 				SUBSTRINGSPECIFICATIONS substringSpec = dataAreaParm.substringSpecifications.asData();
 				cLVariableForReturnedValue.slice(character, substringSpec.substringStartingPosition.asInteger());

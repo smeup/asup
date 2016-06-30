@@ -11,6 +11,11 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
@@ -124,5 +129,30 @@ public class NIODataContextImpl implements QDataContext {
 			return;
 		
 		snapshots.remove(data);
+	}
+
+	@Override
+	public QBufferedData copy(QBufferedData data) {
+		
+		try {
+			NIOBufferedDataImpl copy = null;
+
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ObjectOutputStream oos = new ObjectOutputStream(baos);
+			oos.writeObject(data);
+			oos.close();
+
+			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+			ObjectInputStream ois = new ObjectInputStream(bais);
+			copy = (NIOBufferedDataImpl) ois.readObject();
+			ois.close();
+			
+			NIOBufferHelper.setDataContext(copy, this);
+
+			return copy;
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

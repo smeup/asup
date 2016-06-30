@@ -137,7 +137,7 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 	}
 	
 	@Override
-	protected NIODataImpl _copy(QDataContext dataContext) {
+	protected NIODataImpl _copyDef(QDataContext dataContext) {
 		NIODecimalZonedImpl copy = new NIODecimalZonedImpl(dataContext, getPrecision(), getScale(), false);
 		return copy;
 	}

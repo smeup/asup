@@ -174,7 +174,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	}
 
 	@Override
-	protected NIODataImpl _copy(QDataContext dataContext) {
+	protected NIODataImpl _copyDef(QDataContext dataContext) {
 		NIODecimalPackedImpl copy = new NIODecimalPackedImpl(dataContext, getPrecision(), getScale(), false);
 		return copy;
 	}

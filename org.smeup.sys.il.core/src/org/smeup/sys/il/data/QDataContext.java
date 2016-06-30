@@ -29,6 +29,14 @@ public interface QDataContext extends QContextProvider {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" dataRequired="true"
+	 * @generated
+	 */
+	QBufferedData copy(QBufferedData data);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true"
 	 * @generated
 	 */

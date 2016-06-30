@@ -81,7 +81,6 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		this.dataTerms.put(getKey(dataTerm), dataTerm);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public QDataTerm<?> addDataTerm(String name, Type type, List<Annotation> annotations) {
 
@@ -93,7 +92,6 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		};
 
 		dataTerm.setName(name);
-
 		dataTerm.setDefinition(getDataContext().getDataFactory().createDataDef(type, annotations));
 
 		for (Annotation annotation : annotations) {
@@ -122,36 +120,11 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			}
 		}
 
-		this.dataTerms.put(name, dataTerm);
+		this.dataTerms.put(dataTerm.getName(), dataTerm);
 
-		QData previousData = this.datas.remove(name);
-		if (previousData != null) {
-
-			// remove child data
-			if (previousData instanceof QStruct<?>) {
-				for (Field field : NIODataStructHelper.getFields((Class<? extends QStruct<?>>) previousData.getClass())) {
-					if (QData.class.isAssignableFrom(field.getType()))
-						datas.remove(field.getName());
-				}
-			}
-
-			// redefined module variable
-			if (previousData instanceof QBufferedData) {
-				QBufferedData previousBuffered = (QBufferedData) previousData;
-				QData data = createData(dataTerm, false);
-				QOverlay overlay = dataTerm.getFacet(QOverlay.class);
-				if (overlay == null) {
-					overlay = QIntegratedLanguageDataTermFactory.eINSTANCE.createOverlay();
-					overlay.setName("*PREVIOUS");
-					dataTerm.getFacets().add(overlay);
-				}
-
-				previousBuffered.assign((QBufferedData) data);
-				getDataContext().removeSnap(previousBuffered);
-
-				datas.put(name, data);
-			}
-		}
+		QData previousData = this.datas.remove(dataTerm.getName());
+		if (previousData != null) 
+			replaceData(dataTerm, previousData);
 
 		return dataTerm;
 	}
@@ -309,6 +282,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 					else
 						previousData = datas.put(fieldName, element);
 
+					// TODO remove filler_
 					if (previousData != null && !field.getName().startsWith("filler_")) {
 						if (previousData instanceof QBufferedData) {
 							QBufferedData previousBufferedData = (QBufferedData) previousData;
@@ -567,5 +541,35 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			// System.err.println("Unexpected condition *NULL: ew8vr6888t67ew");
 		} else
 			throw new IntegratedLanguageDataRuntimeException("Unexpected condition: ixretcretrtscv8dtf");
+	}
+
+	@SuppressWarnings("unchecked")
+	private void replaceData(QDataTerm<QDataDef<?>> dataTerm, QData previousData) {
+
+		// remove child data
+		if (previousData instanceof QStruct<?>) {
+			for (Field field : NIODataStructHelper.getFields((Class<? extends QStruct<?>>) previousData.getClass())) {
+				if (QData.class.isAssignableFrom(field.getType()))
+					datas.remove(field.getName());
+			}
+		}
+
+		if (!(previousData instanceof QBufferedData))
+			return;
+		
+		QBufferedData previousBuffered = (QBufferedData) previousData;
+		
+		QData data = createData(dataTerm, false);
+		QOverlay overlay = dataTerm.getFacet(QOverlay.class);
+		if (overlay == null) {
+			overlay = QIntegratedLanguageDataTermFactory.eINSTANCE.createOverlay();
+			overlay.setName("*PREVIOUS");
+			dataTerm.getFacets().add(overlay);
+		}
+
+		previousBuffered.assign((QBufferedData) data);
+		getDataContext().removeSnap(previousBuffered);
+
+		datas.put(dataTerm.getName(), data);
 	}
 }

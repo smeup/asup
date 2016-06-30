@@ -92,7 +92,7 @@ public class NIOListImpl<D extends QBufferedData> extends NIODataImpl implements
 	}
 
 	@Override
-	public final NIODataImpl _copy(QDataContext dataContext) {
+	public final NIODataImpl _copyDef(QDataContext dataContext) {
 
 		try {
 			NIODataImpl copy = null;
@@ -141,7 +141,7 @@ public class NIOListImpl<D extends QBufferedData> extends NIODataImpl implements
 			element = _elements.get(index - 1);
 
 		if (element == null) {
-			element = (D) ((NIODataImpl) _model)._copy(getDataContext());
+			element = (D) ((NIODataImpl) _model)._copyDef(getDataContext());
 			_elements.add(index - 1, element);
 
 			return element;

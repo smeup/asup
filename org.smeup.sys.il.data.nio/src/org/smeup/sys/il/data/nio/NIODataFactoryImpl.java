@@ -410,7 +410,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 		QDataStruct model = cachedClasses.get(classDelegator);
 		if (model != null) {
-			NIOAbstractDataStruct nioDataStructure = (NIOAbstractDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(model)._copy(getDataContext());
+			NIOAbstractDataStruct nioDataStructure = (NIOAbstractDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(model)._copyDef(getDataContext());
 			if (length != 0)
 				nioDataStructure._length = length;
 
@@ -434,7 +434,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 					((QDataStructWrapper) dataStructure).setDelegate(dataStructureDelegate);
 				}
 				
-				cachedClasses.put(classDelegator, (QDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(dataStructure)._copy(getDataContext()));
+				cachedClasses.put(classDelegator, (QDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(dataStructure)._copyDef(getDataContext()));
 			} catch (Exception e) {
 				throw new IntegratedLanguageDataRuntimeException(e);
 			}

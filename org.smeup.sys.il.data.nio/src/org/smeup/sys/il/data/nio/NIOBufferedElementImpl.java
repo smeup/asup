@@ -98,7 +98,7 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 
 	@Override
 	public final boolean eq(QDataFiller value) {
-		return NIOBufferHelper.compareBytes(this, value) == 0;
+		return NIOComparatorHelper.compareBytes(this, value) == 0;
 	}
 
 	@Override
@@ -109,22 +109,22 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 
 	@Override
 	public final boolean ge(QDataFiller value) {
-		return NIOBufferHelper.compareBytes(this, value) >= 0;
+		return NIOComparatorHelper.compareBytes(this, value) >= 0;
 	}
 
 	@Override
 	public final boolean gt(QDataFiller value) {
-		return NIOBufferHelper.compareBytes(this, value) > 0;
+		return NIOComparatorHelper.compareBytes(this, value) > 0;
 	}
 
 	@Override
 	public final boolean le(QDataFiller value) {
-		return NIOBufferHelper.compareBytes(this, value) <= 0;
+		return NIOComparatorHelper.compareBytes(this, value) <= 0;
 	}
 
 	@Override
 	public final boolean lt(QDataFiller value) {
-		return NIOBufferHelper.compareBytes(this, value) < 0;
+		return NIOComparatorHelper.compareBytes(this, value) < 0;
 	}
 
 	@Override
@@ -278,15 +278,15 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	
 	@Override
 	public final boolean le(DataSpecial special) {
-		return NIOBufferHelper.compareBytes(this, special) <= 0;
+		return NIOComparatorHelper.compareBytes(this, special) <= 0;
 	}
 
 	@Override
 	public final boolean lt(DataSpecial special) {
-		return NIOBufferHelper.compareBytes(this, special) < 0;
+		return NIOComparatorHelper.compareBytes(this, special) < 0;
 	}
 		@Override
 	public final boolean eq(DataSpecial special) {
-		return NIOBufferHelper.compareBytes(this, special) == 0;
+		return NIOComparatorHelper.compareBytes(this, special) == 0;
 	}
 }

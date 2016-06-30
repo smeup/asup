@@ -68,7 +68,7 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 	}
 	
 	@Override
-	protected final NIODataImpl _copy(QDataContext dataContext) {
+	protected final NIODataImpl _copyDef(QDataContext dataContext) {
 		return NIOBufferHelper.copy(dataContext, this);
 	}
 }

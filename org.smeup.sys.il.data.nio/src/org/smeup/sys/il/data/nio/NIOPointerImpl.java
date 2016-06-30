@@ -103,7 +103,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 
 	@Override
-	public NIODataImpl _copy(QDataContext dataContext) {
+	public NIODataImpl _copyDef(QDataContext dataContext) {
 
 		try {
 

@@ -117,7 +117,7 @@ public class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicator {
 	}
 	
 	@Override
-	protected NIODataImpl _copy(QDataContext dataContext) {
+	protected NIODataImpl _copyDef(QDataContext dataContext) {
 		NIOIndicatorImpl copy = new NIOIndicatorImpl(dataContext, false);
 		return copy;
 	}

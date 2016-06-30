@@ -73,6 +73,11 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 	}
 
 	@Override
+	public void slice(QBufferedData value) {
+		_delegate.slice(value);
+	}
+
+	@Override
 	public void slice(QBufferedData value, int position) {
 		_delegate.slice(value, position);
 	}
@@ -84,7 +89,7 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 	}
 
 	@Override
-	protected final NIODataImpl _copy(QDataContext dataContext) {
+	protected final NIODataImpl _copyDef(QDataContext dataContext) {
 
 		try {
 			NIOBufferedElementDelegatorImpl copy = null;
@@ -102,7 +107,7 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 			copy = (NIOBufferedElementDelegatorImpl) ois.readObject();
 			ois.close();
 			if (_delegate != null)
-				copy._delegate = (QBufferedElement) NIOBufferHelper.getNIOBufferedElementImpl(_delegate)._copy(dataContext);
+				copy._delegate = (QBufferedElement) NIOBufferHelper.getNIOBufferedElementImpl(_delegate)._copyDef(dataContext);
 			
 			copy._dataContext = dataContext;
 			

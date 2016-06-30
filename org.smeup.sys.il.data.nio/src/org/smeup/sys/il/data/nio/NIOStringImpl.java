@@ -298,17 +298,17 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	@Override
 	public final boolean eq(QHexadecimal value) {
 		// TODO verify
-		return NIOBufferHelper.compareBytes(this, value.asBytes()) == 0;
+		return NIOComparatorHelper.compareBytes(this, value.asBytes()) == 0;
 	}
 
 	@Override
 	public final boolean eq(QString value) {
-		return NIOBufferHelper.compareBytes(this, _toBytes(value)) == 0;
+		return NIOComparatorHelper.compareBytes(this, _toBytes(value)) == 0;
 	}
 
 	@Override
 	public final boolean eq(String value) {
-		return NIOBufferHelper.compareBytes(this, _toBytes(value)) == 0;
+		return NIOComparatorHelper.compareBytes(this, _toBytes(value)) == 0;
 	}
 
 	@Override
@@ -352,17 +352,17 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	@Override
 	public final boolean ge(QHexadecimal value) {
 		// TODO verify
-		return NIOBufferHelper.compareBytes(this, value.asBytes()) >= 0;
+		return NIOComparatorHelper.compareBytes(this, value.asBytes()) >= 0;
 	}
 
 	@Override
 	public final boolean ge(QString value) {
-		return NIOBufferHelper.compareBytes(this, value.asBytes()) >= 0;
+		return NIOComparatorHelper.compareBytes(this, value.asBytes()) >= 0;
 	}
 
 	@Override
 	public final boolean ge(String value) {
-		return NIOBufferHelper.compareBytes(this, _toBytes(value)) >= 0;
+		return NIOComparatorHelper.compareBytes(this, _toBytes(value)) >= 0;
 	}
 
 	@Override
@@ -372,12 +372,12 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	public final boolean gt(QString value) {
-		return NIOBufferHelper.compareBytes(this, _toBytes(value)) > 0;
+		return NIOComparatorHelper.compareBytes(this, _toBytes(value)) > 0;
 	}
 
 	@Override
 	public final boolean gt(String value) {
-		return NIOBufferHelper.compareBytes(this, _toBytes(value)) > 0;
+		return NIOComparatorHelper.compareBytes(this, _toBytes(value)) > 0;
 	}
 
 	@Override
@@ -388,27 +388,27 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	@Override
 	public final boolean le(QHexadecimal value) {
 		// TODO verify
-		return NIOBufferHelper.compareBytes(this, value.asBytes()) <= 0;
+		return NIOComparatorHelper.compareBytes(this, value.asBytes()) <= 0;
 	}
 
 	@Override
 	public final boolean le(QString value) {
-		return NIOBufferHelper.compareBytes(this, value.asBytes()) <= 0;
+		return NIOComparatorHelper.compareBytes(this, value.asBytes()) <= 0;
 	}
 
 	@Override
 	public final boolean le(String value) {
-		return NIOBufferHelper.compareBytes(this, _toBytes(value)) <= 0;
+		return NIOComparatorHelper.compareBytes(this, _toBytes(value)) <= 0;
 	}
 
 	@Override
 	public final boolean lt(QString value) {
-		return NIOBufferHelper.compareBytes(this, _toBytes(value)) < 0;
+		return NIOComparatorHelper.compareBytes(this, _toBytes(value)) < 0;
 	}
 
 	@Override
 	public final boolean lt(String value) {
-		return NIOBufferHelper.compareBytes(this, _toBytes(value)) < 0;
+		return NIOComparatorHelper.compareBytes(this, _toBytes(value)) < 0;
 	}
 
 	@Override
@@ -666,27 +666,27 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	public final boolean eq(byte value) {
-		return NIOBufferHelper.compareBytes(this, new byte[] { value }) == 0;
+		return NIOComparatorHelper.compareBytes(this, new byte[] { value }) == 0;
 	}
 
 	@Override
 	public final boolean ge(byte value) {
-		return NIOBufferHelper.compareBytes(this, new byte[] { value }) >= 0;
+		return NIOComparatorHelper.compareBytes(this, new byte[] { value }) >= 0;
 	}
 
 	@Override
 	public final boolean gt(byte value) {
-		return NIOBufferHelper.compareBytes(this, new byte[] { value }) > 0;
+		return NIOComparatorHelper.compareBytes(this, new byte[] { value }) > 0;
 	}
 
 	@Override
 	public final boolean le(byte value) {
-		return NIOBufferHelper.compareBytes(this, new byte[] { value }) <= 0;
+		return NIOComparatorHelper.compareBytes(this, new byte[] { value }) <= 0;
 	}
 
 	@Override
 	public final boolean lt(byte value) {
-		return NIOBufferHelper.compareBytes(this, new byte[] { value }) < 0;
+		return NIOComparatorHelper.compareBytes(this, new byte[] { value }) < 0;
 	}
 
 	@Override

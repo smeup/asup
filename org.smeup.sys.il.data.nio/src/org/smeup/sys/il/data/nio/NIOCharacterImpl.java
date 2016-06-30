@@ -638,7 +638,7 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	}
 
 	@Override
-	protected NIODataImpl _copy(QDataContext dataContext) {
+	protected NIODataImpl _copyDef(QDataContext dataContext) {
 		NIOCharacterImpl copy = new NIOCharacterImpl(dataContext, _length, false);
 		return copy;
 	}

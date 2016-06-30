@@ -85,7 +85,7 @@ public class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexadecimal
 	}
 	
 	@Override
-	protected NIODataImpl _copy(QDataContext dataContext) {
+	protected NIODataImpl _copyDef(QDataContext dataContext) {
 		NIOHexadecimalImpl copy = new NIOHexadecimalImpl(dataContext, _length, false);
 		return copy;
 	}

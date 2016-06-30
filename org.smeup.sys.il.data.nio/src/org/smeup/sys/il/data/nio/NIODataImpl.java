@@ -26,5 +26,5 @@ public abstract class NIODataImpl implements QData {
 
 	protected abstract QDataContext getDataContext();		
 
-	protected abstract NIODataImpl _copy(QDataContext dataContext);
+	protected abstract NIODataImpl _copyDef(QDataContext dataContext);
 }

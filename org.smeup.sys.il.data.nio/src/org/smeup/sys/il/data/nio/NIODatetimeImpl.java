@@ -207,10 +207,6 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 
 		QDecimal number = getDataContext().getDataFactory().createDecimal(10, 0, DecimalType.ZONED, true);
 
-		Date a = this.asDate();
-		Date b = value.asDate();
-		
-		
 		long diff = (this.asDate().getTime() - value.asDate().getTime()) * 1000;
 		
 		switch (format) {
@@ -513,7 +509,7 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	}
 	
 	@Override
-	protected NIODataImpl _copy(QDataContext dataContext) {
+	protected NIODataImpl _copyDef(QDataContext dataContext) {
 		NIODatetimeImpl copy = new NIODatetimeImpl(dataContext, _type, _dateFormat, _timeFormat, false);
 		return copy;
 	}

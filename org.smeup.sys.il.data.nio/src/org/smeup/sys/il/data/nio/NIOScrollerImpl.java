@@ -325,8 +325,8 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	protected NIODataImpl _copy(QDataContext dataContext) {
-		NIOScrollerImpl<D> copy = new NIOScrollerImpl<D>(dataContext, (D) NIOBufferHelper.getNIOBufferedElementImpl(getModel())._copy(dataContext), _dimension, false);
+	protected NIODataImpl _copyDef(QDataContext dataContext) {
+		NIOScrollerImpl<D> copy = new NIOScrollerImpl<D>(dataContext, (D) NIOBufferHelper.getNIOBufferedElementImpl(getModel())._copyDef(dataContext), _dimension, false);
 		return copy;
 	}
 }

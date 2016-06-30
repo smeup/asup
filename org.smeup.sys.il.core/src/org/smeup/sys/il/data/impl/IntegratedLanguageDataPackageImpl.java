@@ -1859,6 +1859,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(bufferedDataEClass, null, "slice", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getBufferedData(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bufferedDataEClass, null, "slice", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "position", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(bufferedDataEClass, null, "snap", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -2826,6 +2829,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, g1, "dataTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataContextEClass, QDataContext.class, "DataContext", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(dataContextEClass, this.getBufferedData(), "copy", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "data", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(dataContextEClass, this.getIndicator(), "endOfData", 1, 1, IS_UNIQUE, IS_ORDERED);
 

@@ -88,7 +88,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 		JDBCInfoStruct internalInfoStruct = null;
 		if (infoStruct != null) {
 			internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, false);
-			infoStruct.assign(internalInfoStruct);
+			infoStruct.slice(internalInfoStruct);
 		} else {
 			internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, true);
 		}
@@ -140,7 +140,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 		JDBCInfoStruct internalInfoStruct = null;
 		if (infoStruct != null) {
 			internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, false);
-			infoStruct.assign(internalInfoStruct);
+			infoStruct.slice(internalInfoStruct);
 		} else {
 			internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, true);
 		}

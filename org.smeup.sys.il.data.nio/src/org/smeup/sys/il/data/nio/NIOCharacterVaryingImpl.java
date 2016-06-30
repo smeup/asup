@@ -172,7 +172,7 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 	
 	@Override
-	protected NIODataImpl _copy(QDataContext dataContext) {
+	protected NIODataImpl _copyDef(QDataContext dataContext) {
 		NIOCharacterVaryingImpl copy = new NIOCharacterVaryingImpl(dataContext, _length, false);
 		return copy;
 	}

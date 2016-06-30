@@ -646,6 +646,9 @@
     <eOperations name="reset"/>
     <eOperations name="slice">
       <eParameters name="target" lowerBound="1" eType="#//BufferedData"/>
+    </eOperations>
+    <eOperations name="slice">
+      <eParameters name="target" lowerBound="1" eType="#//BufferedData"/>
       <eParameters name="position" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
     <eOperations name="snap"/>
@@ -1661,6 +1664,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataContext" abstract="true" interface="true"
       eSuperTypes="il-core.ecore#//ctx/ContextProvider">
+    <eOperations name="copy" lowerBound="1" eType="#//BufferedData">
+      <eParameters name="data" lowerBound="1" eType="#//BufferedData"/>
+    </eOperations>
     <eOperations name="endOfData" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="equal" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="error" lowerBound="1" eType="#//Indicator"/>
