@@ -718,6 +718,22 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true"
+	 * @generated
+	 */
+	QDecimal qLookup(String argument, Number start, Number elements);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" comparatorRequired="true"
+	 * @generated
+	 */
+	QDecimal qLookup(String argument, Number start, DataComparator comparator);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" argumentRequired="true" startRequired="true" elementsRequired="true"
 	 * @generated
 	 */
@@ -730,6 +746,46 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	 * @generated
 	 */
 	void qLookup(String argument, QNumeric start, QIndicator found);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startRequired="true"
+	 * @generated
+	 */
+	QDecimal qLookup(String argument, QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
+	 * @generated
+	 */
+	QDecimal qLookup(String argument, Number start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true"
+	 * @generated
+	 */
+	QDecimal qLookup(int argument);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startRequired="true"
+	 * @generated
+	 */
+	QDecimal qLookup(int argument, QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
+	 * @generated
+	 */
+	QDecimal qLookup(int argument, Number start);
 
 	/**
 	 * <!-- begin-user-doc -->

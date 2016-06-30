@@ -20,6 +20,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
+import org.smeup.sys.il.data.DataComparator;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedElement;
@@ -28,6 +29,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
+import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.SortDirection;
@@ -957,4 +959,94 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 		NIOArrayImpl<D> copy = new NIOArrayImpl<D>(dataContext, (D) NIOBufferHelper.getNIOBufferedElementImpl(getModel())._copyDef(dataContext), capacity(), getSortDirection(), false);
 		return copy;
 	}
+	
+
+	@Override
+	public QDecimal qLookup(String argument) {
+		return qLookup(argument, 1);
+	}
+
+	@Override
+	public QDecimal qLookup(String argument, QNumeric start) {
+		return qLookup(argument, start.asNumber());
+	}
+
+	@Override
+	public QDecimal qLookup(String argument, Number start, Number elements) {
+		int index = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), elements.intValue());
+		lastIndex.eval(index);
+		return lastIndex;
+	}
+
+	@Override
+	public QDecimal qLookup(String argument, Number start, DataComparator comparator) {
+		int index = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), comparator, start.intValue(), capacity());
+		lastIndex.eval(index);
+		return lastIndex;
+	}
+	
+	@Override
+	public QDecimal qLookup(String argument, Number start) {
+		int index = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), capacity());
+		lastIndex.eval(index);
+		return lastIndex;
+	}
+
+	@Override
+	public void qLookup(String argument, QIndicator found) {
+		
+		int i = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, 1, capacity());
+		setContextIndicators(i, found);
+	}
+	
+	@Override
+	public void qLookup(String argument, QNumeric start, QIndicator found) {
+
+		int i = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, start.asInteger(), capacity());
+		setContextIndicators(i, found);
+		if (i > 0) {
+			start.eval(i);
+		} else {
+			start.eval(1);
+		}
+	}
+
+	@Override
+	public QDecimal qLookup(String argument, Number start, QNumeric elements) {
+		int index = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), elements.asInteger());
+		lastIndex.eval(index);
+		return lastIndex;
+	}
+
+	@Override
+	public QDecimal qLookup(String argument, QNumeric start, QNumeric elements) {
+		int index = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, start.asInteger(), elements.asInteger());
+		lastIndex.eval(index);
+		return lastIndex;
+	}
+
+	@Override
+	public QDecimal qLookup(int argument) {
+		return qLookup(argument, 1);
+	}
+
+	@Override
+	public QDecimal qLookup(int argument, QNumeric start) {
+		return qLookup(argument, start.asNumber());
+	}
+
+	@Override
+	public QDecimal qLookup(int argument, Number start) {
+		int index = NIOBufferedListHelper.lookup(this, new NIODecimalPackedImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), capacity());
+		lastIndex.eval(index);
+		return lastIndex;
+	}
+
+	@Override
+	public void qLookup(Number argument, QIndicator found) {
+
+		int i = NIOBufferedListHelper.lookup(this, new NIODecimalPackedImpl(getDataContext(), argument.intValue()), DataComparator.EQUAL, 1, capacity());
+		setContextIndicators(i, found);
+	}
+
 }

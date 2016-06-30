@@ -120,46 +120,6 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" startRequired="true"
-	 * @generated
-	 */
-	QDecimal qLookup(String argument, QNumeric start);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
-	 * @generated
-	 */
-	QDecimal qLookup(String argument, Number start);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true"
-	 * @generated
-	 */
-	QDecimal qLookup(int argument);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" startRequired="true"
-	 * @generated
-	 */
-	QDecimal qLookup(int argument, QNumeric start);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
-	 * @generated
-	 */
-	QDecimal qLookup(int argument, Number start);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model required="true" argumentRequired="true"
 	 * @generated
 	 */
