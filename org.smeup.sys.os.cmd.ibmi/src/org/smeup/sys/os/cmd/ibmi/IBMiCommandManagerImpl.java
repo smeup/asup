@@ -81,7 +81,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 	
 	@Inject
 	public IBMiCommandManagerImpl(QThreadManager threadManager, QResourceManager resourceManager, QJobManager jobManager, QJobLogManager jobLogManager, QDataManager dataManager, QProgramManager programManager) {
-		super(threadManager, resourceManager, jobManager, jobLogManager, programManager);
+		super(threadManager, resourceManager, jobManager, jobLogManager, programManager, dataManager);
 		this.jobManager = jobManager;
 		this.dataManager = dataManager;
 		this.clParameterParser = ParserFactory.getInstance().getParser(ParserFactory.ScriptType.CL_PARAMETER);
@@ -236,7 +236,6 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				} else if (data instanceof QList<?>) {
 					QList<?> list = (QList<?>) data;
 					((QBufferedData) variable).assign((QBufferedData) list.get(e));
-//					((QAdapter) list.get(e)).eval(variable);
 				}
 
 				e++;

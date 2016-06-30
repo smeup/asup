@@ -18,6 +18,8 @@ import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.os.cmd.QCallableCommand;
@@ -36,13 +38,15 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 	protected QJobManager jobManager;
 	protected QJobLogManager jobLogManager;
 	protected QProgramManager programManager;
+	protected QDataManager dataManager;
 
-	public BaseCommandManagerImpl(QThreadManager threadManager, QResourceManager resourceManager, QJobManager jobManager, QJobLogManager jobLogManager, QProgramManager programManager) {
+	public BaseCommandManagerImpl(QThreadManager threadManager, QResourceManager resourceManager, QJobManager jobManager, QJobLogManager jobLogManager, QProgramManager programManager, QDataManager dataManager) {
 		this.threadManager = threadManager;
 		this.resourceManager = resourceManager;
 		this.jobManager = jobManager;
 		this.jobLogManager = jobLogManager;
 		this.programManager = programManager;
+		this.dataManager = dataManager;
 	}
 
 	@Override
@@ -85,9 +89,11 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 		else
 			jobCapability = jobManager.spawn(job);
 
+		// TODO
+		QDataContext dataContext = dataManager.createDataContext(job.getContext(), null);
 		// Submit command
 		String threadName = "job/" + jobCapability.getObjectName();
-		QThread thread = threadManager.createThread(threadName, new BaseSubmittedCommand(this, jobCapability, command, caller));
+		QThread thread = threadManager.createThread(threadName, new BaseSubmittedCommand(this, jobCapability, dataContext, command, caller));
 		jobManager.lookup(jobCapability).setJobThread(thread);
 		threadManager.start(thread);
 

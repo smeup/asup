@@ -359,7 +359,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		if (scope == null)
 			scope = Scope.LIBRARY_LIST;
 		
-		QResourceReader<QProgram> programReader = resourceManager.getResourceReader(job, QProgram.class, scope, library);
+		QResourceReader<QProgram> programReader = resourceManager.getResourceReader(job, QProgram.class, scope, library);		
 		QProgram program = programReader.lookup(name);
 		if (program == null) {
 			QJobReference jobReference = job.getJobReference();

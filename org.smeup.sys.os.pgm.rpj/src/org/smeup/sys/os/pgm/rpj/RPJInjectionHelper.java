@@ -191,7 +191,7 @@ public class RPJInjectionHelper {
 			if (primaryRecord == null)
 				records.put(primaryRecordName, dataStruct);
 			else
-				((QDataStruct) primaryRecord).assign(dataStruct);
+				((QDataStruct) primaryRecord).slice(dataStruct);
 
 			field.setValue(callable, dataStruct);
 		}
@@ -258,7 +258,7 @@ public class RPJInjectionHelper {
 			else {
 				field.getField().setAccessible(true);
 				QFileHandler<?> dataSet = ((QFileHandler<?>) field.getValue(callable));
-				dataSet.getInfoStruct().assign(infoStruct);
+				dataSet.getInfoStruct().slice(infoStruct);
 				field.getField().setAccessible(false);
 			}
 		}
@@ -277,14 +277,14 @@ public class RPJInjectionHelper {
 		if (externalFile != null) {
 			if (QKSDataSet.class.isAssignableFrom(field.getFieldClass())) {
 				QKSDataSet<?> dataSet = (QKSDataSet<?>) field.getValue(callable);
-				externalFile.assign(dataSet.getFilePath());
+				externalFile.slice(dataSet.getFilePath());
 			} else if (QSMDataSet.class.isAssignableFrom(field.getFieldClass())) {
 				QSMDataSet<?> dataSet = (QSMDataSet<?>) field.getValue(callable);
-				externalFile.assign(dataSet.getFilePath());
-				externalMember.assign(dataSet.getMemberName());
+				externalFile.slice(dataSet.getFilePath());
+				externalMember.slice(dataSet.getMemberName());
 			} else {
 				QRRDataSet<?> dataSet = (QRRDataSet<?>) field.getValue(callable);
-				externalFile.assign(dataSet.getFilePath());
+				externalFile.slice(dataSet.getFilePath());
 			}
 		}
 
@@ -324,7 +324,7 @@ public class RPJInjectionHelper {
 				QBufferedData bufferedDataTo = record.getElement(fieldName);
 
 				if (bufferedData.getStore() != bufferedDataTo.getStore())
-					bufferedData.assign(bufferedDataTo);
+					bufferedData.slice(bufferedDataTo);
 			}
 		}
 

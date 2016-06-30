@@ -17,7 +17,8 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.jobs.QJobCapability;
 
@@ -25,12 +26,14 @@ public class BaseSubmittedCommand implements Runnable {
 
 	private QCommandManager commandManager;
 	private QJobCapability jobCapability;
+	private QDataContext dataContext;
 	private String commandString;
 	private Object caller;
 
-	protected BaseSubmittedCommand(QCommandManager commandManager, QJobCapability jobCapability, String commandString, Object caller) {
+	protected BaseSubmittedCommand(QCommandManager commandManager, QJobCapability jobCapability, QDataContext dataContext, String commandString, Object caller) {
 		this.commandManager = commandManager;
 		this.jobCapability = jobCapability;
+		this.dataContext = dataContext;
 		this.commandString = commandString;
 		this.caller = caller;
 	}
@@ -54,11 +57,12 @@ public class BaseSubmittedCommand implements Runnable {
 				else
 					fieldKlass = (Class<?>) type;
 
-				if (QData.class.isAssignableFrom(fieldKlass)) {
-					Object variable;
+				if (QBufferedData.class.isAssignableFrom(fieldKlass)) {
+					QBufferedData variable;
 					try {
 						field.setAccessible(true);
-						variable = field.get(caller);
+						variable = (QBufferedData) field.get(caller);
+						variable = dataContext.copy(variable);
 						variables.put(field.getName(), variable);
 					} catch (IllegalArgumentException | IllegalAccessException e) {
 						// TODO Auto-generated catch block
