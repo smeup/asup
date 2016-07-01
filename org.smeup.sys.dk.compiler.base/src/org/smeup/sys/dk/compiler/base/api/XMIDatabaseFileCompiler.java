@@ -24,6 +24,7 @@ import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerManager;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
+import org.smeup.sys.dk.compiler.base.SourceHelper;
 import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
@@ -128,10 +129,13 @@ public class XMIDatabaseFileCompiler {
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 
 		compilerManager.writeDatabaseFile(compilationUnit, setup, output);
-
-		sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(output.toByteArray()));
-
+		
+		// format code
+		ByteArrayOutputStream formattedOutput = SourceHelper.format(new ByteArrayInputStream(output.toByteArray()));
+		
+		sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(formattedOutput.toByteArray()));
 		output.close();
+		formattedOutput.close();
 
 		compilationUnit.close();
 	}

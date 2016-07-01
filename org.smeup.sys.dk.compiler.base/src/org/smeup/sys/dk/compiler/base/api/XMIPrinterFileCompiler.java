@@ -24,6 +24,7 @@ import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerManager;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
+import org.smeup.sys.dk.compiler.base.SourceHelper;
 import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
@@ -122,8 +123,12 @@ public class XMIPrinterFileCompiler {
 
 		String javaName = "java-src/" + library.getPackageURI().resolve(file.getClassURI()) + ".java";
 		javaName = javaName.replaceAll("§", "Ç");
-		sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(output.toByteArray()));
-
+		
+		// format code
+		ByteArrayOutputStream formattedOutput = SourceHelper.format(new ByteArrayInputStream(output.toByteArray()));
+		
+		sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(formattedOutput.toByteArray()));
+		
 		compilationUnit.close();
 	}
 
