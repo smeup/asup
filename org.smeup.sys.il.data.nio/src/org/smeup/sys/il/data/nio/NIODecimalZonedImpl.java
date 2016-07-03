@@ -26,8 +26,7 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 		if(allocate) {
 			checkAllocation();		
 			_buffer = ByteBuffer.allocate(getSize());
-			_buffer.position(_buffer.capacity()-1);
-			_buffer.put((byte)0xF0);
+			_buffer.put(getDecimalDef().getZonedInit());
 		}
 	}
 

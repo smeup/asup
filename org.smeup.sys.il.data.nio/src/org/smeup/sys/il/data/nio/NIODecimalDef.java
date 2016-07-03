@@ -12,6 +12,7 @@
 package org.smeup.sys.il.data.nio;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -24,27 +25,85 @@ public class NIODecimalDef implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private static NIODecimalDef decimalTypes[][] = new NIODecimalDef[50][20];;
+	private static NIODecimalDef decimalTypes[][] = new NIODecimalDef[50][20];
+
+	private AS400ZonedDecimal zoned = null;
+	private byte[] zoned_init = null;
+	private byte[] zoned_loval = null;
+	private byte[] zoned_hival = null;
 
 	private AS400PackedDecimal packed = null;
-	private AS400ZonedDecimal zoned = null;
+	private byte[] packed_init = null;
+	private byte[] packed_loval = null;
+	private byte[] packed_hival = null;
+
 	private NumberFormat formatUP = null;
 	private NumberFormat formatDW = null;
 
 	public NIODecimalDef(int precision, int scale) {
+		
+		zoned = createDecimalZoned(precision, scale);
+		zoned_init = zoned.toBytes(BigDecimal.ZERO);
+		zoned_loval = zoned.toBytes(new BigDecimal(formatMinValue(precision, scale)));
+		zoned_hival = zoned.toBytes(new BigDecimal(formatMaxValue(precision, scale)));
 
 		packed = createDecimalPacked(precision, scale);
-		zoned = getDecimalZoned(precision, scale);
+		packed_init = packed.toBytes(BigDecimal.ZERO);
+		packed_loval = packed.toBytes(new BigDecimal(formatMinValue(precision, scale)));
+		packed_hival = packed.toBytes(new BigDecimal(formatMaxValue(precision, scale)));
+		
 		formatUP = createNumberFormatUP(precision, scale);
 		formatDW = createNumberFormatDW(precision, scale);
+	}
+
+	private String formatMinValue(int precision, int scale) {
+		return "-"+formatMaxValue(precision, scale);
+	}
+	
+	private String formatMaxValue(int precision, int scale) {
+
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < precision - scale; i++)
+			sb.append("9");
+		if (scale > 0) {
+			sb.append(".");
+			for (int i = 0; i < scale; i++)
+				sb.append("9");
+		}
+
+		return sb.toString();
 	}
 
 	protected AS400PackedDecimal getPacked() {
 		return packed;
 	}
 
+	protected byte[] getPackedInit() {
+		return packed_init;
+	}
+
+	protected byte[] getPackedLoval() {
+		return packed_loval;
+	}
+
+	protected byte[] getPackedHival() {
+		return packed_hival;
+	}
+
 	protected AS400ZonedDecimal getZoned() {
 		return zoned;
+	}
+
+	protected byte[] getZonedInit() {
+		return zoned_init;
+	}
+
+	protected byte[] getZonedLoval() {
+		return zoned_loval;
+	}
+
+	protected byte[] getZonedHival() {
+		return zoned_hival;
 	}
 
 	public NumberFormat getFormatUP() {
@@ -55,7 +114,7 @@ public class NIODecimalDef implements Serializable {
 		return formatDW;
 	}
 
-	private static AS400ZonedDecimal getDecimalZoned(int precision, int scale) {
+	private static AS400ZonedDecimal createDecimalZoned(int precision, int scale) {
 
 		AS400ZonedDecimal decimal = new AS400ZonedDecimal(precision, scale);
 		decimal.setUseDouble(true);

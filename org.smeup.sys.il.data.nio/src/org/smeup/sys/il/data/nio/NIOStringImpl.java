@@ -38,9 +38,9 @@ import org.smeup.sys.mi.core.util.QStrings;
 public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QString {
 
 	private static final long serialVersionUID = 1L;
-	protected static final byte INIT = (byte) 64;
-	protected static final byte LOVAL = (byte) 0;
-	protected static final byte HIVAL = (byte) -7;
+	protected static final byte INIT = 0x40;
+	protected static final byte LOVAL = 0x00;
+	protected static final byte HIVAL = (byte) 0xFF;
 
 	public NIOStringImpl(QDataContext dataContext) {
 		super(dataContext);
@@ -68,7 +68,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 			break;
 		case ZERO:
 		case ZEROS:
-			Arrays.fill(bytes, NIODecimalZonedImpl.INIT);
+			Arrays.fill(bytes, NIONumericImpl.INIT);
 			break;
 		case ON:
 			Arrays.fill(bytes, NIOIndicatorImpl.ON);

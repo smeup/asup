@@ -122,7 +122,6 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		callableCommand.setCommandString(command);
 		callableCommand.setVariables(variables);
 
-
 		// data container
 		QDataContainer dataContainer = dataManager.createDataContainer(job.getContext(), null);
 

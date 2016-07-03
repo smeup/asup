@@ -22,8 +22,8 @@ import org.smeup.sys.il.data.QIndicator;
 public class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicator {
 
 	private static final long serialVersionUID = 1L;
-	protected static final byte OFF = (byte) -16;
-	protected static final byte ON = (byte) -15;
+	protected static final byte OFF = (byte) 0xF0;
+	protected static final byte ON = (byte) 0xF1;
 
 	public NIOIndicatorImpl(QDataContext dataContext, boolean allocate) {
 		super(dataContext, 1, false);

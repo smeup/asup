@@ -27,8 +27,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 		if (allocate) {
 			checkAllocation();
 			_buffer = ByteBuffer.allocate(getSize());
-			_buffer.position(_buffer.capacity() - 1);
-			_buffer.put((byte) 0x0F);
+			_buffer.put(getDecimalDef().getPackedInit());
 		}
 	}
 
@@ -51,7 +50,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	public int getScale() {
 		return getDecimalDef().getPacked().getNumberOfDecimalPositions();
 	}
-
+	
 	@Override
 	public Number _readNumber() {
 
@@ -74,7 +73,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 			if (number instanceof BigDecimal) {
 				bd = (BigDecimal) number;
 			}
-
+			
 			if (bd == null || bd.precision() > getPrecision()) {
 				NumberFormat nf = getDecimalDef().getFormatUP();
 				bd = new BigDecimal(nf.format(number));

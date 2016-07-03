@@ -44,7 +44,7 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	public final QNumeric qLen() {
 
 		QNumeric number = getDataContext().getDataFactory().createBinary(BinaryType.SHORT, true, false);
-		assign(number);
+		slice(number);
 
 		return number;
 	}

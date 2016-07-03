@@ -104,12 +104,7 @@ public class NIOBufferHelper {
 			else
 				buffer.limit(position + length);
 
-			try {
-				buffer.position(position);
-			}
-			catch(Exception e) {
-				e.toString();
-			}
+			buffer.position(position);
 		} else {
 			if (length > buffer.capacity())
 				buffer.limit(buffer.capacity());
@@ -191,11 +186,11 @@ public class NIOBufferHelper {
 	@SuppressWarnings("unused")
 	public static void assign(QStorable storable, QBufferedData target) {
 
-		if(true) {
-			slice(storable, target, 1);
+		if (true) {
+			slice(storable, target);
 			return;
 		}
-		
+
 		NIOBufferedDataImpl nioBufferedData = getNIOBufferedDataImpl(target);
 		if (nioBufferedData == null)
 			throw new IntegratedLanguageCoreRuntimeException("No buffer reference found: " + target.getClass());
@@ -206,16 +201,21 @@ public class NIOBufferHelper {
 		// storage chain
 		if (nioBufferedData._storage instanceof QBufferedData && !(nioBufferedData._storage instanceof QDataStruct)) {
 
-			nioBufferedData._buffer = null;
-			nioBufferedData._position = 0;
-
 			NIOBufferedDataImpl nioBufferOwner = getNIOBufferOwner(nioBufferedData._storage);
-			nioBufferOwner._buffer = (ByteBuffer) getNIOBufferOwner(storable).getStore();
-			nioBufferOwner._position = getNIOBufferOwner(storable).getPosition();
+			if (nioBufferOwner != null && !storable.equals(nioBufferOwner._storage)) {
+				nioBufferOwner._buffer = null;
+				nioBufferOwner._position = 0;				
+				nioBufferOwner._storage = storable;
+			} else {
+				nioBufferedData._buffer = null;
+				nioBufferedData._position = 0;				
+				nioBufferedData._storage = storable;
+			}
+
 		} else {
 			nioBufferedData._buffer = null;
-			nioBufferedData._storage = storable;
 			nioBufferedData._position = 0;
+			nioBufferedData._storage = storable;
 		}
 	}
 
@@ -243,9 +243,20 @@ public class NIOBufferHelper {
 		if (nioBufferedDataImpl.isStoreOwner())
 			return nioBufferedDataImpl;
 		else if (nioBufferedDataImpl._storage == null)
-			return nioBufferedDataImpl;
+			return null;
 		else
 			return getNIOBufferOwner(nioBufferedDataImpl._storage);
+	}
+
+	public static NIOBufferedDataImpl getNIOPositionOwner(QStorable data) {
+
+		NIOBufferedDataImpl nioBufferedDataImpl = getNIOBufferedDataImpl((QData) data);
+		if (nioBufferedDataImpl._position != 0)
+			return nioBufferedDataImpl;
+		else if (nioBufferedDataImpl._storage == null)
+			return nioBufferedDataImpl;
+		else
+			return getNIOPositionOwner(nioBufferedDataImpl._storage);
 	}
 
 	public static NIOBufferedDataImpl getNIOBufferedDataImpl(QData data) {
@@ -507,6 +518,5 @@ public class NIOBufferHelper {
 			e.printStackTrace();
 			return null;
 		}
-
 	}
 }

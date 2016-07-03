@@ -33,7 +33,8 @@ import org.smeup.sys.il.data.def.DecimalType;
 public abstract class NIONumericImpl extends NIOBufferedElementImpl implements QNumeric {
 
 	private static final long serialVersionUID = 1L;
-
+	protected static final byte INIT = (byte) 0xF0;
+			
 	public NIONumericImpl(QDataContext dataContext) {
 		super(dataContext);
 	}
@@ -69,7 +70,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 		byte[] bytes = value.asBytes();
 		for (int i = 0; i < bytes.length; i++) {
 			if (bytes[i] == NIOStringImpl.INIT)
-				bytes[i] = NIODecimalImpl.INIT;
+				bytes[i] = NIONumericImpl.INIT;
 		}
 
 		return bytes;

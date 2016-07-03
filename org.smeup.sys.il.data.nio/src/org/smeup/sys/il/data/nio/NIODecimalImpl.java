@@ -11,8 +11,6 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.util.Arrays;
-
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QDataContext;
@@ -23,10 +21,6 @@ import org.smeup.sys.il.data.QNumeric;
 public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal {
 
 	private static final long serialVersionUID = 1L;
-
-	protected static final byte INIT = (byte) 0xF0;
-	protected static final byte LOVAL = (byte) -39;
-	protected static final byte HIVAL = (byte) -7;
 
 	private NIODecimalDef decimalDef = null;
 
@@ -51,40 +45,35 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 	}
 
 	@Override
-	public final void accept(QDataVisitor visitor) {
-		visitor.visit(this);
-	}
-
-	@Override
 	protected final byte[] _toBytes(DataSpecial value) {
 
-		byte[] bytes = new byte[getLength()];
+		byte[] bytes = null;
 		switch (value) {
-		case LOVAL:
-			Arrays.fill(bytes, HIVAL);
-			bytes[bytes.length - 1] = LOVAL;
-			break;
-		case BLANK:
-		case BLANKS:
-			Arrays.fill(bytes, NIOCharacterImpl.INIT);
-			break;
-		case OFF:
 		case ZERO:
 		case ZEROS:
-			Arrays.fill(bytes, INIT);
-			break;
-		case ON:
-			Arrays.fill(bytes, NIOIndicatorImpl.ON);
+			bytes = getDecimalDef().getZonedInit();
+			break;		
+		case LOVAL:
+			bytes = getDecimalDef().getZonedLoval();
 			break;
 		case HIVAL:
-			Arrays.fill(bytes, HIVAL);
+			bytes = getDecimalDef().getZonedHival();
 			break;
+		case ON:
+		case OFF:
+		case BLANK:
+		case BLANKS:			
 		case NULL:
 		case OMIT:
 			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237rvbwe87vb9stf");
 		}
 
 		return bytes;
+	}
+	
+	@Override
+	public final void accept(QDataVisitor visitor) {
+		visitor.visit(this);
 	}
 	
 	@Override
