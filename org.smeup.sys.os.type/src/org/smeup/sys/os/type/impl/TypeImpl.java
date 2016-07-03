@@ -227,4 +227,8 @@ public class TypeImpl<T extends QTypedObject> extends TypedObjectImpl implements
 		return result.toString();
 	}
 
+	@Override
+	public String getAttribute() {
+		return null;
+	}
 } //TypeImpl

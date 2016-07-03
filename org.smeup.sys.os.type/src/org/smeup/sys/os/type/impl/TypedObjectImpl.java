@@ -175,14 +175,10 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
-	public String getAttribute() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
+	public abstract String getAttribute();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

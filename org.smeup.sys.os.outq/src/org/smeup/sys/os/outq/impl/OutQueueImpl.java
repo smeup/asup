@@ -168,4 +168,8 @@ public class OutQueueImpl extends TypedObjectImpl implements QOutQueue {
 		return result.toString();
 	}
 
+	@Override
+	public String getAttribute() {
+		return null;
+	}
 } //OutQueueImpl

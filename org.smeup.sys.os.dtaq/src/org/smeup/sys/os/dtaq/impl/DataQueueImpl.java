@@ -336,4 +336,8 @@ public class DataQueueImpl extends TypedObjectImpl implements QDataQueue {
 		return result.toString();
 	}
 
+	@Override
+	public String getAttribute() {
+		return null;
+	}
 } //DataQueueImpl
