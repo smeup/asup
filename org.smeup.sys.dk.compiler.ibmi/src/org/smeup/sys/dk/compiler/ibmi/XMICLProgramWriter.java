@@ -649,6 +649,10 @@ public class XMICLProgramWriter {
 			if (parm != null)
 				parms = parm.getValue().getText().trim();
 		}
+		
+		if (parms.startsWith("(") && parms.endsWith(")")) {
+			parms = parms.substring(1, parms.length()-1);
+		}
 
 		if (parms != null) {
 
