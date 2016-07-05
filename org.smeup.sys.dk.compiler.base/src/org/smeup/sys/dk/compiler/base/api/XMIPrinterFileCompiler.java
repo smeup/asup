@@ -60,7 +60,7 @@ public class XMIPrinterFileCompiler {
 	private QLibraryManager libraryManager;
 
 	@Main
-	public void main(FileRef fileRef, @DataDef(length = 1) QEnum<YesNo, QCharacter> replace, @DataDef(length = 10) QCharacter libraryTo) throws IOException {
+	public void main(FileRef fileRef, @DataDef(length = 1) QEnum<YesNo, QCharacter> replace, @DataDef(length = 10) QCharacter libraryTo, @DataDef(length = 1) QEnum<YesNo, QCharacter> format) throws IOException {
 
 		// file
 		QResourceReader<QFile> fileReader = null;
@@ -90,7 +90,7 @@ public class XMIPrinterFileCompiler {
 				continue;
 
 			try {
-				createJavaFile(printerFile, library, libraryTo.trimR());
+				createJavaFile(printerFile, library, libraryTo.trimR(), format);
 			} catch (Exception e) {
 				System.err.println(e);
 			}
@@ -99,7 +99,7 @@ public class XMIPrinterFileCompiler {
 		files.close();
 	}
 
-	private void createJavaFile(QPrinterFile file, QLibrary library, String libraryTo) throws IOException, OperatingSystemException {
+	private void createJavaFile(QPrinterFile file, QLibrary library, String libraryTo, QEnum<YesNo, QCharacter> format) throws IOException, OperatingSystemException {
 		if (file.getApplication() == null)
 			throw new OperatingSystemException("Invalid file application: " + file);
 
@@ -125,9 +125,12 @@ public class XMIPrinterFileCompiler {
 		javaName = javaName.replaceAll("§", "Ç");
 		
 		// format code
-		ByteArrayOutputStream formattedOutput = SourceHelper.format(new ByteArrayInputStream(output.toByteArray()));
-		
-		sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(formattedOutput.toByteArray()));
+		if (format.equals(YesNo.YES)){
+			ByteArrayOutputStream formattedOutput = SourceHelper.format(new ByteArrayInputStream(output.toByteArray()));
+			sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(formattedOutput.toByteArray()));
+		} else {
+			sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(output.toByteArray()));
+		}
 		
 		compilationUnit.close();
 	}

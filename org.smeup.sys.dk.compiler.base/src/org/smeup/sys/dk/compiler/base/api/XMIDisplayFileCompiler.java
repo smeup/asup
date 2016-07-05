@@ -60,7 +60,7 @@ public class XMIDisplayFileCompiler {
 	private QLibraryManager libraryManager;
 
 	@Main
-	public void main(FileRef fileRef, @DataDef(length = 1) QEnum<YesNo, QCharacter> replace, @DataDef(length = 10) QCharacter libraryTo) {
+	public void main(FileRef fileRef, @DataDef(length = 1) QEnum<YesNo, QCharacter> replace, @DataDef(length = 10) QCharacter libraryTo, @DataDef(length = 1) QEnum<YesNo, QCharacter> format) {
 
 		try (QObjectIterator<QFile> files = buildIterator(fileRef);) {
 
@@ -78,13 +78,12 @@ public class XMIDisplayFileCompiler {
 					continue;
 
 				try {
-					createJavaFile(displayFile, library, libraryTo.trimR());
+					createJavaFile(displayFile, library, libraryTo.trimR(), format);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		}
-
 	}
 
 	private QObjectIterator<QFile> buildIterator(FileRef fileRef) {
@@ -106,7 +105,7 @@ public class XMIDisplayFileCompiler {
 		return fileIterator;
 	}
 
-	private void createJavaFile(QDisplayFile file, QLibrary library, String libraryTo) throws IOException, OperatingSystemException {
+	private void createJavaFile(QDisplayFile file, QLibrary library, String libraryTo, QEnum<YesNo, QCharacter> format) throws IOException, OperatingSystemException {
 
 		if (file.getApplication() == null)
 			throw new OperatingSystemException("Invalid file application: " + file);
@@ -133,9 +132,13 @@ public class XMIDisplayFileCompiler {
 		javaName = javaName.replaceAll("§", "Ç");
 		
 		// format code
-		ByteArrayOutputStream formattedOutput = SourceHelper.format(new ByteArrayInputStream(output.toByteArray()));
+		if (format.equals(YesNo.YES)) {
+			ByteArrayOutputStream formattedOutput = SourceHelper.format(new ByteArrayInputStream(output.toByteArray()));
+			sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(formattedOutput.toByteArray()));
+		} else {
+			sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(output.toByteArray()));
+		}
 		
-		sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(formattedOutput.toByteArray()));
 		compilationUnit.close();
 	}
 

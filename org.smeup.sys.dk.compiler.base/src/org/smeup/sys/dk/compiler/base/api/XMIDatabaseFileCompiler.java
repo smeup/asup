@@ -60,7 +60,7 @@ public class XMIDatabaseFileCompiler {
 	private QLibraryManager libraryManager;
 
 	@Main
-	public void main(FileRef fileRef, @DataDef(length = 1) QEnum<YesNo, QCharacter> replace, @DataDef(length = 10) QCharacter libraryTo) throws IOException {
+	public void main(FileRef fileRef, @DataDef(length = 1) QEnum<YesNo, QCharacter> replace, @DataDef(length = 10) QCharacter libraryTo, @DataDef(length = 1) QEnum<YesNo, QCharacter> format) throws IOException {
 
 		// file
 		QResourceReader<QFile> fileReader = null;
@@ -95,7 +95,7 @@ public class XMIDatabaseFileCompiler {
 			QDatabaseFile databaseFile = (QDatabaseFile) qFile;
 
 			try {
-				createJavaFile(databaseFile, library, libraryTo.trimR());
+				createJavaFile(databaseFile, library, libraryTo.trimR(), format);
 			} catch (Exception e) {
 				System.err.println(e);
 			}
@@ -104,7 +104,7 @@ public class XMIDatabaseFileCompiler {
 		files.close();
 	}
 
-	private void createJavaFile(QDatabaseFile file, QLibrary library, String libraryTo) throws IOException, OperatingSystemException {
+	private void createJavaFile(QDatabaseFile file, QLibrary library, String libraryTo, QEnum<YesNo, QCharacter> format) throws IOException, OperatingSystemException {
 
 		if (file.getApplication() == null)
 			throw new OperatingSystemException("Invalid file application: " + file);
@@ -131,11 +131,15 @@ public class XMIDatabaseFileCompiler {
 		compilerManager.writeDatabaseFile(compilationUnit, setup, output);
 		
 		// format code
-		ByteArrayOutputStream formattedOutput = SourceHelper.format(new ByteArrayInputStream(output.toByteArray()));
-		
-		sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(formattedOutput.toByteArray()));
+		if (format.equals(YesNo.YES)) {
+			ByteArrayOutputStream formattedOutput = SourceHelper.format(new ByteArrayInputStream(output.toByteArray()));		
+			sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(formattedOutput.toByteArray()));
+			formattedOutput.close();
+		} else {
+			sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(output.toByteArray()));
+		}
 		output.close();
-		formattedOutput.close();
+		
 
 		compilationUnit.close();
 	}
