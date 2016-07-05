@@ -174,10 +174,15 @@ value
 	|	special
 	|	bi_function
 	|	usr_function
-	|   	indicator
+	|   indicator
+	|   mu_term
 	|	TERM
 
 	;
+	
+mu_term
+	:	MULT TERM -> TERM[$MULT.text + $TERM.text]
+	;	
 	
 indicator
 	:
