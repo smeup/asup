@@ -511,8 +511,14 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 			}
 		} else {
 
+			int positionTarget = 0;
+			
+			if(getPosition()>0) { 
+				positionTarget = getPosition() + ((this.getLength() / this.capacity()) * (targetIndex - 1));
+			} else {
+				positionTarget = ((this.getLength() / this.capacity()) * (targetIndex - 1));
+			}
 			int positionSource = ((value.getLength() / value.capacity()) * (sourceIndex - 1));
-			int positionTarget = ((this.getLength() / this.capacity()) * (targetIndex - 1));
 
 			NIOBufferedDataImpl arrayBuffer = NIOBufferHelper.getNIOBufferedDataImpl(value);
 

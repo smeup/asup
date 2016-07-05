@@ -84,7 +84,7 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 	public boolean chain(Object[] keyList, QIndicator notFound, QIndicator error, Boolean lock) {
 
 		try {
-			prepareAccess(OperationSet.CHAIN, keyList, OperationRead.CHAIN, keyList);
+			prepareAccess(OperationSet.CHAIN, keyList, OperationRead.CHAIN, keyList, false);
 
 			readNext();
 		} catch (SQLException e) {
@@ -202,7 +202,7 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 				else
 					keySet = buildKeySet();
 
-				prepareAccess(this.currentOpSet, keySet, OperationRead.READ_EQUAL, keyList);
+				prepareAccess(this.currentOpSet, keySet, OperationRead.READ_EQUAL, keyList, false);
 			}
 
 			readNext();
@@ -306,7 +306,7 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 				else
 					keySet = buildKeySet();
 
-				prepareAccess(this.currentOpSet, keySet, OperationRead.READ_PRIOR_EQUAL, keyList);
+				prepareAccess(this.currentOpSet, keySet, OperationRead.READ_PRIOR_EQUAL, keyList, false);
 			}
 			readNext();
 		} catch (SQLException e) {
@@ -446,6 +446,23 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 	public void setll(Object[] keyList, QIndicator found, QIndicator equal, QIndicator error) {
 
 		setKeySet(OperationSet.SET_LOWER_LIMIT, keyList);
+		if (found != null || equal != null)
+			try {
+				if (rebuildNeeded(OperationDirection.FORWARD)) {
+
+					Object[] keySet = null;
+
+					if (isBeforeFirst())
+						keySet = this.currentKeySet;
+					else
+						keySet = buildKeySet();
+
+					prepareAccess(this.currentOpSet, keySet, OperationRead.READ_EQUAL, keyList, false);
+				}
+				readForSetll();
+			} catch (SQLException e) {
+				handleSQLException(e);
+			}
 
 		if (found != null)
 			found.eval(isFound());

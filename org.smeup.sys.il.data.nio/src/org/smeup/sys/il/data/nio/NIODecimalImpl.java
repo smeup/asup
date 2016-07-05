@@ -59,10 +59,12 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 		case HIVAL:
 			bytes = getDecimalDef().getZonedHival();
 			break;
-		case ON:
-		case OFF:
 		case BLANK:
 		case BLANKS:			
+			bytes = getDecimalDef().getZonedInit();
+			break;
+		case ON:
+		case OFF:
 		case NULL:
 		case OMIT:
 			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237rvbwe87vb9stf");
