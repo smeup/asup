@@ -63,11 +63,15 @@ public class JDBCAccessHelper {
 		return sbUpdate.toString();
 	}
 
-	public String buildSelect(Table table, QIndex index, OperationSet opSet, Object[] keySet, OperationRead opRead, Object[] keyRead) {
+	public String buildSelect(Table table, QIndex index, OperationSet opSet, Object[] keySet, OperationRead opRead, Object[] keyRead, boolean noResulSet) {
 
 		StringBuffer querySelect = new StringBuffer();
 
-		querySelect.append("SELECT " + getSQLObjectNameHelper().getQualifiedNameInSQLFormat(table) + ".*, digits(QASRRN)");
+		if(noResulSet)
+			querySelect.append("SELECT '1'");
+		else
+			querySelect.append("SELECT " + getSQLObjectNameHelper().getQualifiedNameInSQLFormat(table) + ".*, digits(QASRRN)");
+
 
 		querySelect.append(" FROM " + getSQLObjectNameHelper().getQualifiedNameInSQLFormat(table));
 

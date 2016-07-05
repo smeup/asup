@@ -58,7 +58,7 @@ public class JDBCRelativeRecordDataSetImpl<R extends QRecord> extends JDBCDataSe
 
 		try {
 			Object[] keyList = new Object[] { relativeRecordNumber };
-			prepareAccess(OperationSet.CHAIN, keyList, OperationRead.CHAIN, keyList);
+			prepareAccess(OperationSet.CHAIN, keyList, OperationRead.CHAIN, keyList, false);
 
 			return readNext();
 

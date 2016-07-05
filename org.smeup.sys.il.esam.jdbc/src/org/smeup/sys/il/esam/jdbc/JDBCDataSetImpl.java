@@ -268,16 +268,16 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			error.eval(onError());
 	}
 
-	protected void prepareAccess(OperationSet opSet, Object[] keySet, OperationRead opRead, Object[] keyRead) throws SQLException {
+	protected void prepareAccess(OperationSet opSet, Object[] keySet, OperationRead opRead, Object[] keyRead, boolean noResultSet) throws SQLException {
 
 		this.currentOpRead = opRead;
 
 		if (this.resultSet != null)
 			this.resultSet.close();
 
-		String querySelect = jdbcAccessHelper.buildSelect(this.currentTable, index, opSet, keySet, opRead, keyRead);
+		String querySelect = jdbcAccessHelper.buildSelect(this.currentTable, index, opSet, keySet, opRead, keyRead, noResultSet);
 
-		System.out.println("sql:\t" + querySelect);
+		// System.out.println("sql:\t" + querySelect);
 
 		this.resultSet = this.statement.executeQuery(querySelect);
 		this.dataReader.set(this.resultSet);
@@ -315,11 +315,11 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		try {
 			if (rebuildNeeded(OperationDirection.FORWARD))
 				if (this.currentKeySet == null)
-					prepareAccess(OperationSet.SET_LOWER_LIMIT, buildKeySet(), OperationRead.READ, null);
+					prepareAccess(OperationSet.SET_LOWER_LIMIT, buildKeySet(), OperationRead.READ, null, false);
 				else
-					prepareAccess(OperationSet.SET_LOWER_LIMIT, this.currentKeySet, OperationRead.READ, null);
+					prepareAccess(OperationSet.SET_LOWER_LIMIT, this.currentKeySet, OperationRead.READ, null, false);
 
-			return readNext();
+			readNext();
 
 		} catch (SQLException e) {
 			handleSQLException(e);
@@ -372,6 +372,36 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 	}
 
+	protected boolean readForSetll() throws SQLException {
+
+		this.error = false;
+		this.equal = false;
+		
+		this.currentOpRead = null;
+
+		if (!this.resultSet.next()) {
+
+			this.found = false;
+			this.dataContext.found().eval(false);
+			this.endOfData = true;
+			this.dataContext.endOfData().eval(true);
+			this.resultSet.close();
+
+			return false;
+		}
+
+		this.found = true;
+		this.dataContext.found().eval(true);
+		this.equal = true;
+		this.dataContext.equal().eval(true);
+		this.endOfData = false;
+		this.dataContext.endOfData().eval(false);
+		this.resultSet.close();
+
+		return true;
+
+	}
+
 	@Override
 	public boolean readp() {
 		return readp(null, null, null);
@@ -403,9 +433,9 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		try {
 			if (rebuildNeeded(OperationDirection.BACKWARD))
 				if (this.currentKeySet == null)
-					prepareAccess(OperationSet.SET_GREATER_THAN, buildKeySet(), OperationRead.READ_PRIOR, null);
+					prepareAccess(OperationSet.SET_GREATER_THAN, buildKeySet(), OperationRead.READ_PRIOR, null, false);
 				else
-					prepareAccess(OperationSet.SET_GREATER_THAN, this.currentKeySet, OperationRead.READ_PRIOR, null);
+					prepareAccess(OperationSet.SET_GREATER_THAN, this.currentKeySet, OperationRead.READ_PRIOR, null, false);
 			return readNext();
 
 		} catch (SQLException e) {
@@ -477,16 +507,15 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 					else
 						keySet = buildKeySet();
 
-					prepareAccess(this.currentOpSet, keySet, OperationRead.READ_EQUAL, keyList);
+					prepareAccess(this.currentOpSet, keySet, OperationRead.READ_EQUAL, keyList, false);
 				}
 
 				readNext();
 
 				if (!isEndOfData())
 					this.statementUpdate.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
-			} else {
+			} else
 				this.statementUpdate.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
-			}
 
 			this.found = true;
 			this.dataContext.found().eval(true);
