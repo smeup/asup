@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g 2016-06-27 13:46:12
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g 2016-07-05 15:32:46
 
   package org.smeup.sys.il.expr.ibmi.rpg;
   
@@ -945,7 +945,7 @@ public class RPGExprParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: v1, v2
+					// elements: v2, v1
 					// token labels: 
 					// rule labels: v1, v2, retval
 					// token list labels: 
@@ -1309,7 +1309,7 @@ public class RPGExprParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: vals, v
+					// elements: v, vals
 					// token labels: 
 					// rule labels: v, retval
 					// token list labels: 
@@ -1546,7 +1546,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "array"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:152:1: array : '[' value ( ':' value )* ']' -> ^( ARRAY value ( value )* ) ;
+	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:152:1: array : '[' qualified ( ':' qualified )* ']' -> ^( ARRAY qualified ( qualified )* ) ;
 	public final RPGExprParser.array_return array() throws RecognitionException {
 		RPGExprParser.array_return retval = new RPGExprParser.array_return();
 		retval.start = input.LT(1);
@@ -1556,8 +1556,8 @@ public class RPGExprParser extends Parser {
 		Token char_literal36=null;
 		Token char_literal38=null;
 		Token char_literal40=null;
-		ParserRuleReturnScope value37 =null;
-		ParserRuleReturnScope value39 =null;
+		ParserRuleReturnScope qualified37 =null;
+		ParserRuleReturnScope qualified39 =null;
 
 		CommonTree char_literal36_tree=null;
 		CommonTree char_literal38_tree=null;
@@ -1565,21 +1565,21 @@ public class RPGExprParser extends Parser {
 		RewriteRuleTokenStream stream_81=new RewriteRuleTokenStream(adaptor,"token 81");
 		RewriteRuleTokenStream stream_82=new RewriteRuleTokenStream(adaptor,"token 82");
 		RewriteRuleTokenStream stream_83=new RewriteRuleTokenStream(adaptor,"token 83");
-		RewriteRuleSubtreeStream stream_value=new RewriteRuleSubtreeStream(adaptor,"rule value");
+		RewriteRuleSubtreeStream stream_qualified=new RewriteRuleSubtreeStream(adaptor,"rule qualified");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:153:2: ( '[' value ( ':' value )* ']' -> ^( ARRAY value ( value )* ) )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:154:2: '[' value ( ':' value )* ']'
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:153:2: ( '[' qualified ( ':' qualified )* ']' -> ^( ARRAY qualified ( qualified )* ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:154:2: '[' qualified ( ':' qualified )* ']'
 			{
 			char_literal36=(Token)match(input,82,FOLLOW_82_in_array526); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_82.add(char_literal36);
 
-			pushFollow(FOLLOW_value_in_array528);
-			value37=value();
+			pushFollow(FOLLOW_qualified_in_array528);
+			qualified37=qualified();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) stream_value.add(value37.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:154:12: ( ':' value )*
+			if ( state.backtracking==0 ) stream_qualified.add(qualified37.getTree());
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:154:16: ( ':' qualified )*
 			loop11:
 			while (true) {
 				int alt11=2;
@@ -1590,16 +1590,16 @@ public class RPGExprParser extends Parser {
 
 				switch (alt11) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:154:13: ':' value
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:154:17: ':' qualified
 					{
 					char_literal38=(Token)match(input,81,FOLLOW_81_in_array531); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_81.add(char_literal38);
 
-					pushFollow(FOLLOW_value_in_array533);
-					value39=value();
+					pushFollow(FOLLOW_qualified_in_array533);
+					qualified39=qualified();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) stream_value.add(value39.getTree());
+					if ( state.backtracking==0 ) stream_qualified.add(qualified39.getTree());
 					}
 					break;
 
@@ -1612,7 +1612,7 @@ public class RPGExprParser extends Parser {
 			if ( state.backtracking==0 ) stream_83.add(char_literal40);
 
 			// AST REWRITE
-			// elements: value, value
+			// elements: qualified, qualified
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1623,18 +1623,18 @@ public class RPGExprParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 154:29: -> ^( ARRAY value ( value )* )
+			// 154:37: -> ^( ARRAY qualified ( qualified )* )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:154:32: ^( ARRAY value ( value )* )
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:154:40: ^( ARRAY qualified ( qualified )* )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(ARRAY, "ARRAY"), root_1);
-				adaptor.addChild(root_1, stream_value.nextTree());
-				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:154:46: ( value )*
-				while ( stream_value.hasNext() ) {
-					adaptor.addChild(root_1, stream_value.nextTree());
+				adaptor.addChild(root_1, stream_qualified.nextTree());
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:154:58: ( qualified )*
+				while ( stream_qualified.hasNext() ) {
+					adaptor.addChild(root_1, stream_qualified.nextTree());
 				}
-				stream_value.reset();
+				stream_qualified.reset();
 
 				adaptor.addChild(root_0, root_1);
 				}
@@ -3690,10 +3690,10 @@ public class RPGExprParser extends Parser {
 	public static final BitSet FOLLOW_80_in_primaryExpression487 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_array_in_primaryExpression506 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_value_in_primaryExpression514 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_82_in_array526 = new BitSet(new long[]{0x8000803A42022460L,0x000000000000003AL});
-	public static final BitSet FOLLOW_value_in_array528 = new BitSet(new long[]{0x0000000000000000L,0x00000000000A0000L});
-	public static final BitSet FOLLOW_81_in_array531 = new BitSet(new long[]{0x8000803A42022460L,0x000000000000003AL});
-	public static final BitSet FOLLOW_value_in_array533 = new BitSet(new long[]{0x0000000000000000L,0x00000000000A0000L});
+	public static final BitSet FOLLOW_82_in_array526 = new BitSet(new long[]{0x8000803A42022460L,0x000000000004803AL});
+	public static final BitSet FOLLOW_qualified_in_array528 = new BitSet(new long[]{0x0000000000000000L,0x00000000000A0000L});
+	public static final BitSet FOLLOW_81_in_array531 = new BitSet(new long[]{0x8000803A42022460L,0x000000000004803AL});
+	public static final BitSet FOLLOW_qualified_in_array533 = new BitSet(new long[]{0x0000000000000000L,0x00000000000A0000L});
 	public static final BitSet FOLLOW_83_in_array537 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_INTEGER_in_value562 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_FLOAT_in_value567 = new BitSet(new long[]{0x0000000000000002L});
