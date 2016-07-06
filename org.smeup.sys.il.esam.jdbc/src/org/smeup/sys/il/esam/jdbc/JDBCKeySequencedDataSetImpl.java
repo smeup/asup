@@ -380,6 +380,25 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 	public void setgt(Object[] keyList, QIndicator found, QIndicator error) {
 
 		setKeySet(OperationSet.SET_GREATER_THAN, keyList);
+		
+		if (found != null || error  != null)
+		try {
+			if (rebuildNeeded(OperationDirection.FORWARD)) {
+
+				Object[] keySet = null;
+
+				if (isBeforeFirst())
+					keySet = this.currentKeySet;
+				else
+					keySet = buildKeySet();
+
+				prepareAccess(this.currentOpSet, keySet, OperationRead.READ, keyList, false);
+			}
+			readForSetll();
+		} catch (SQLException e) {
+			handleSQLException(e);
+		}
+		
 
 		if (found != null)
 			found.eval(isFound());
