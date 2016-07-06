@@ -287,7 +287,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 						if (previousData instanceof QBufferedData) {
 							QBufferedData previousBufferedData = (QBufferedData) previousData;
 							if (element.getStore() != previousBufferedData.getStore())
-								element.assign(previousBufferedData);
+								element.slice(previousBufferedData);
 						}
 					}
 
@@ -329,7 +329,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 					QData overlayedData = getData(overlay.getName().toLowerCase());
 					if (overlayedData == null)
 						throw new IntegratedLanguageDataRuntimeException("Invalid overlay data: " + overlay);
-					((QBufferedData) overlayedData).assign((QBufferedData) data);
+					((QBufferedData) overlayedData).slice((QBufferedData) data);
 				}
 			}
 
@@ -567,7 +567,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			dataTerm.getFacets().add(overlay);
 		}
 
-		previousBuffered.assign((QBufferedData) data);
+		previousBuffered.slice((QBufferedData) data);
 		getDataContext().removeSnap(previousBuffered);
 
 		datas.put(dataTerm.getName(), data);

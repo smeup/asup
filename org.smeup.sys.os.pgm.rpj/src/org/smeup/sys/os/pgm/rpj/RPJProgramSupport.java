@@ -337,7 +337,7 @@ public class RPJProgramSupport {
 
 	public QIndicator qCast(QCharacter xin) {
 		QIndicator indicator = dataContext.getDataFactory().createIndicator(false);
-		xin.assign(indicator);
+		xin.slice(indicator);
 		return indicator;
 	}
 
