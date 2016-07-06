@@ -23755,8 +23755,7 @@
     <parameters
         allowVariable="true"
         name="FILE"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="file">
         <cardinality
@@ -23803,8 +23802,7 @@
     <parameters
         allowVariable="true"
         name="MBR"
-        position="2"
-        status="TODO">
+        position="2">
       <dataTerm
           name="member">
         <default
@@ -23924,8 +23922,7 @@
     <parameters
         allowVariable="true"
         name="SRCTYPE"
-        position="8"
-        status="TODO">
+        position="8">
       <dataTerm
           name="cLVarForSRCTYPE10">
         <definition
@@ -23972,8 +23969,7 @@
     <parameters
         allowVariable="true"
         name="TEXT"
-        position="12"
-        status="TODO">
+        position="12">
       <dataTerm
           name="cLVarForTEXT50">
         <definition
