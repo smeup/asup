@@ -10,8 +10,13 @@
  *   Mattia Rocchi - Initial API and implementation
  *   Franco Lombardo - Further implementation
  */
+
 package org.smeup.sys.os.core.base.api;
 
+import org.smeup.sys.dk.core.annotation.ToDo;
+import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QDecimal;
+import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 
@@ -19,7 +24,10 @@ import org.smeup.sys.il.data.annotation.Program;
 public class GroupAttributesRetriever {
 
 	@Main
-	public void main() {
+	public void main(@ToDo @DataDef(length = 10) QCharacter cLVarForGRPJOB10, @ToDo @DataDef(length = 1056) QCharacter cLVarForGRPJOBList1056,
+			@ToDo @DataDef(precision = 3) QDecimal cLVarForGRPJOBCNT30, @ToDo @DataDef(length = 10) QCharacter cLVarForMSGQ10, @ToDo @DataDef(length = 10) QCharacter cLVarForMSGQLIB10,
+			@ToDo @DataDef(length = 16) QCharacter cLVarForPRVGRPJOB16, @ToDo @DataDef(precision = 3) QDecimal cLVarForCTLCDE30) {
+
 		"".toCharArray();
 	}
 }
