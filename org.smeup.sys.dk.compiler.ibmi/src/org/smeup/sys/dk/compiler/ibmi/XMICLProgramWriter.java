@@ -143,7 +143,13 @@ public class XMICLProgramWriter {
 			if (clearIfStack)
 				block.clearIfStack();
 			buildMONMSGStatement(block, clCmd);
-		} else if ("DOUNTIL".equalsIgnoreCase(clCmd.getName())) {
+		}
+		else if ("RETURN".equalsIgnoreCase(clCmd.getName())) {
+			if (clearIfStack)
+				block.clearIfStack();
+			result = QIntegratedLanguageFlowFactory.eINSTANCE.createReturn();
+		}
+		else if ("DOUNTIL".equalsIgnoreCase(clCmd.getName())) {
 			if (clearIfStack)
 				block.clearIfStack();
 			result = buildUNTILStatement(clCmd);

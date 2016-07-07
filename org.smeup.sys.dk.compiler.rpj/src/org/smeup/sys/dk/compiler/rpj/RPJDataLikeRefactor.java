@@ -75,7 +75,11 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 						if(bufferedDataDef instanceof QNumericDef)
 							break;
 						
+						// from files
 						QDataTerm<?> displayTerm = getFromFiles(target);
+						if(displayTerm == null)
+							displayTerm = getFromModules(target);
+						
 						if(displayTerm != null) {
 							completeDefinition(displayTerm, target);
 							return false;
@@ -105,6 +109,19 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 		return false;
 	}
 
+	// TODO move this method in QCompilationUnit
+	private QDataTerm<?> getFromModules(QDataTerm<?> target) {
+
+		for(QCompilationUnit childUnit: getCompilationUnit().getChildCompilationUnits()) {
+			QDataTerm<?> childDataTerm = childUnit.getDataTerm(target.getName(), true);
+			if(childDataTerm != null)
+				return childDataTerm;
+		}
+		
+		return null;
+	}
+
+	// TODO move this method in QCompilationUnit
 	private QDataTerm<?> getFromFiles(QDataTerm<?> target) {
 		
 		QCallableUnit callableUnit = (QCallableUnit) getCompilationUnit().getNode();
