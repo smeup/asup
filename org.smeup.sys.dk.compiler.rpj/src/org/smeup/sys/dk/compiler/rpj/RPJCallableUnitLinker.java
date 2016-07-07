@@ -134,8 +134,20 @@ public class RPJCallableUnitLinker {
 			List<QDataTerm<?>> dataTerms = new ArrayList<QDataTerm<?>>(dataSection.getDatas());
 
 			RPJDataLikeRefactor dataLikeVisitor = new RPJDataLikeRefactor(compilationUnit);
-			for (QDataTerm<?> dataTerm : dataTerms)
+			
+			// compound before
+			for (QDataTerm<?> dataTerm : dataTerms) {
+				if(dataTerm.getDataTermType().isCompound())
+					dataTerm.accept(dataLikeVisitor);
+			}
+			
+			// atomic after
+			for (QDataTerm<?> dataTerm : dataTerms) {
+				if(!dataTerm.getDataTermType().isCompound())
+					continue;
+				
 				dataTerm.accept(dataLikeVisitor);
+			}
 		}
 
 		QFlowSection flowSection = callableUnit.getFlowSection();
