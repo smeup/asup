@@ -16,7 +16,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import java.util.StringTokenizer;
 
 import javax.inject.Inject;
 
@@ -36,7 +35,6 @@ import org.smeup.sys.dk.parser.ibmi.cl.model.pgm.CLPositionalParameter;
 import org.smeup.sys.dk.parser.ibmi.cl.model.pgm.CLRow;
 import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.data.QAdapter;
-import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
@@ -210,43 +208,17 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 	}
 	
 	private QData assignValue(QDataTerm<?> dataTerm, QDataContainer dataContainer, QDataWriter writer, String value, Map<String, Object> variables) {
-
-		String tokValue = null;
-
+		
 		QData data = dataContainer.getData(dataTerm);
-
-		if (value.startsWith("&")) {
-
-			int e = 1;
-			StringTokenizer st = new StringTokenizer(value);
-			while (st.hasMoreTokens()) {
-				String token = st.nextToken();
-
-				Object variable = variables.get(token.substring(1).toLowerCase());
-
-				if (variable == null)
-					continue;
-
-				if (!(variable instanceof QBufferedData))
-					continue;
-
-				if (data instanceof QBufferedData) {
-					((QBufferedData) variable).assign((QBufferedData) data);
-				} else if (data instanceof QList<?>) {
-					QList<?> list = (QList<?>) data;
-					((QBufferedData) variable).assign((QBufferedData) list.get(e));
-				}
-
-				e++;
-			}
-
-			return data;
+		
+		// Resolve variable
+		if (value.startsWith("&") && variables != null) {
+			String varName = value.substring(1).toLowerCase();
+			if (variables.containsKey(varName))
+			{	
+				value = variables.get(varName).toString();
+			} 
 		}
-
-		/*
-		 * if (value.startsWith("(") && value.endsWith(")")) { value =
-		 * value.substring(1, value.length() - 1); }
-		 */
 
 		@SuppressWarnings("unused")
 		String dbgString = null;
@@ -281,16 +253,11 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 						// if(listAtomic instanceof QScroller<?>)
 						// ((QScroller<?>)listAtomic).absolute(counter);
 
-						tokValue = buildParameterValue(dataTerm, iterator.next());
+						value = buildParameterValue(dataTerm, iterator.next(), variables);
 
 						QData listItem = listAtomic.get(counter);
 
-						// tokValue = replaceVariable(tokValue, variables);
-						// tokValue =
-						// resolveSpecialValue(multipleAtomicDataTerm,
-						// tokValue);
-
-						assignValue(writer, listItem, tokValue);
+						assignValue(writer, listItem, value);
 
 						counter++;
 					}
@@ -312,11 +279,6 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 		case MULTIPLE_COMPOUND:
 
-			/*
-			 * if (defaults && useDefault(dataTerm, value)) { value =
-			 * buildDefault(dataTerm); defaults = false; }
-			 */
-
 			QMultipleCompoundDataDef<?, ?> multipleCompoundDataDef = (QMultipleCompoundDataDef<?, ?>) dataTerm.getDefinition();
 
 			// Manage Struct specials
@@ -328,8 +290,6 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			multipleParamComp = (CLParmAbstractComponent) clParameterParser.parse(value);
 
 			Iterator<CLParmAbstractComponent> multipleParmIterator = multipleParamComp.getChilds().iterator();
-			// List<QDataTerm<?>> dataTermList =
-			// multipleCompoundDataDef.getElements();
 
 			int i = 1;
 			while (multipleParmIterator.hasNext()) {
@@ -351,23 +311,10 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 		case UNARY_ATOMIC:
 
-			// if (defaults && useDefault(dataTerm, value))
-			// value = buildDefault(dataTerm);
-
 			if (value.isEmpty() == false) {
 
 				if (value.startsWith("(") && value.endsWith(")"))
 					value = value.substring(1, value.length() - 1);
-
-				// TODO: uncomment next (or not)?
-				/*
-				 * Class<?> javaClass =
-				 * unaryAtomicDataTerm.getDefinition().getJavaClass();
-				 * 
-				 * if (javaClass.isAssignableFrom(String.class)) { if
-				 * (!value.startsWith("'") || ! value.endsWith("'")) { value =
-				 * "'" + value + "'"; } }
-				 */
 
 				/*
 				 * Parser response structure:
@@ -388,17 +335,16 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				if (format != null && format.getType() == FormatType.COMMAND_STRING)
 					// Manage value without ' delimiters in parameters with
 					// COMMAND format (not detected by AntLR parser)
-					tokValue = paramComp.getText();
+					value = paramComp.getText();
 				else if (paramComp.getChilds().size() == 1)
-					tokValue = buildParameterValue(dataTerm, paramComp.getChilds().getFirst().getChilds().getFirst());
+					value = buildParameterValue(dataTerm, paramComp.getChilds().getFirst().getChilds().getFirst(), variables);
 				else
 					// Error: received a list of values in an unary parameter
 					throw new OperatingSystemRuntimeException("Invalid value for parameter " + dataTerm.getName().toUpperCase());
 
-			} else
-				tokValue = value;
+			} 
 
-			assignValue(writer, data, tokValue);
+			assignValue(writer, data, value);
 
 			dbgString = dataTerm.toString();
 
@@ -406,12 +352,9 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		case UNARY_COMPOUND:
 
 			/*
-			 * if (defaults && useDefault(dataTerm, value)) { value =
-			 * buildDefault(dataTerm); defaults = false; }
-			 */
-
 			// Manage Struct specials
 			value = resolveSpecialValue(dataTerm, value);
+			*/
 
 			QUnaryCompoundDataDef<?, ?> unaryCompoundDataDef = (QUnaryCompoundDataDef<?, ?>) dataTerm.getDefinition();
 			// QStruct struct = (QStruct) data;
@@ -483,7 +426,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		return structValue;
 	}
 
-	private String buildParameterValue(QDataTerm<?> dataTerm, CLParmAbstractComponent parmValue) {
+	private String buildParameterValue(QDataTerm<?> dataTerm, CLParmAbstractComponent parmValue, Map<String, Object> variables) {
 
 		String value = null;
 
@@ -496,7 +439,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 			while (listIterator.hasNext()) {
 
-				String tmp = buildParameterValue(dataTerm, listIterator.next());
+				String tmp = buildParameterValue(dataTerm, listIterator.next(), variables);
 
 				// All list elements have to match the DataTerm format
 				if (matchFormat(dataTerm, tmp))
@@ -520,7 +463,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			Iterator<CLParmAbstractComponent> iterator = childs.iterator();
 
 			while (iterator.hasNext())
-				value = buildParameterValue(dataTerm, iterator.next()) + " ";
+				value = buildParameterValue(dataTerm, iterator.next(), variables) + " ";
 
 			if (value.endsWith(" "))
 				value = value.substring(0, value.length() - 1);
@@ -541,7 +484,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			Iterator<CLParmAbstractComponent> funParmIterator = functionParms.getChilds().iterator();
 
 			while (funParmIterator.hasNext())
-				value += buildParameterValue(dataTerm, funParmIterator.next()) + "";
+				value += buildParameterValue(dataTerm, funParmIterator.next(), variables) + "";
 
 			if (value.endsWith(" ")) {
 				value = value.substring(0, value.length() - 2);
@@ -590,7 +533,20 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			break;
 
 		case VARIABLE:
-			value = parmValue.toString();
+			/*
+			 * Qui non dovrebbe mai passare, perchè le variabili son risolte in testa al
+			 * metodo assignValue
+			 */
+			
+			String varName = parmValue.toString().substring(1).toLowerCase();
+			
+			if (variables != null && variables.containsKey(varName))
+			{	
+				value = variables.get(varName).toString();
+			} else {
+				value = parmValue.toString();
+			}
+			
 			break;
 
 		default:
