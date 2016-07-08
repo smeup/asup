@@ -200,7 +200,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			
 			// required
 			if (controlRequiredParms) {
-				if ((data == null || (data != null && data.isEmpty())) && commandParameter.isRequired())
+				if ((data == null || (value.startsWith("&") && data.isEmpty())) && commandParameter.isRequired())
 					throw new OperatingSystemRuntimeException("Required parameter: " + commandParameter.getName());
 			}
 				
