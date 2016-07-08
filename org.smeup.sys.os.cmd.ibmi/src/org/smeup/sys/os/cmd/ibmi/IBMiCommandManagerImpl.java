@@ -467,6 +467,9 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 			if (value.endsWith(" "))
 				value = value.substring(0, value.length() - 1);
+			
+			if (value.equals("''"))
+				value = "";
 
 			// The result value have to match the dataTerm format
 			if (!isSpecialValue(dataTerm, value))
