@@ -51,7 +51,10 @@ public class ScheduleEntryCreator {
 			@ToDo @DataDef(length = 1) QEnum<RECOVERYACTIONEnum, QCharacter> recoveryAction,
 			@DataDef(qualified = true) QEnum<JOBDESCRIPTIONEnum, JOBDESCRIPTION> jobDescription,
 			@DataDef(qualified = true) QEnum<JOBQUEUEEnum, JOBQUEUE> jobQueue,
+			@ToDo @DataDef(length = 10) QEnum<SYSEnum, QCharacter> sys,
 			@ToDo @DataDef(length = 10) QEnum<USEREnum, QCharacter> user,
+			@ToDo @DataDef(length = 10) QEnum<PWDEnum, QCharacter> pwd,
+			@ToDo @DataDef(length = 10) QEnum<ENVEnum, QCharacter> env,
 			@ToDo @DataDef(qualified = true) QEnum<MESSAGEQUEUEEnum, MESSAGEQUEUE> messageQueue,
 			@ToDo @DataDef(length = 50) QEnum<TEXTDESCRIPTIONEnum, QCharacter> textDescription) {
 
@@ -119,6 +122,23 @@ public class ScheduleEntryCreator {
 		
 		scheduleEntry.setCommandToRun(commandToRun.asString().trim());
 		
+		
+		String system = "";
+		switch(sys.asEnum()){
+		case CURRENT:			
+		case JOBD:
+				system = "";
+			break;
+		case OTHER:
+			system = sys.asData().asString();
+			break;
+		default:
+			break;
+		
+		}
+		scheduleEntry.setSystem(system);
+		
+		
 		String userName = "";
 		switch(user.asEnum()) {
 		case CURRENT:
@@ -136,6 +156,44 @@ public class ScheduleEntryCreator {
 			
 		}		
 		scheduleEntry.setUser(userName);
+		
+		String password = "";
+		switch(pwd.asEnum()) {
+		case CURRENT:
+				//TODO: estrarre password da utente corrente
+			break;
+		case JOBD:
+				//todo: estrarre pwd dalla JOBD
+			break;
+		case OTHER:
+				password = pwd.asData().asString(); 
+			break;
+		default:
+			break;
+			
+		}		
+		scheduleEntry.setPassword(password);
+		
+		String environment = "";
+		switch(env.asEnum()) {
+		case CURRENT:
+				//TODO: estrarre ambiente da utente corrente
+			break;
+		case JOBD:
+				//todo: estrarre ambiente dalla JOBD
+			break;
+		case OTHER:
+				environment = env.asData().asString(); 
+			break;
+		default:
+			break;
+			
+		}		
+		scheduleEntry.setEnvironment(environment);
+		
+		
+		
+		
 		
 		scheduleEntry.setDescription(textDescription.asData().asString().trim());
 
@@ -234,6 +292,18 @@ public class ScheduleEntryCreator {
 	}
 
 	public static enum USEREnum {
+		CURRENT, JOBD, OTHER
+	}
+	
+	public static enum PWDEnum {
+		CURRENT, JOBD, OTHER
+	}
+	
+	public static enum SYSEnum {
+		CURRENT, JOBD, OTHER
+	}
+	
+	public static enum ENVEnum {
 		CURRENT, JOBD, OTHER
 	}
 

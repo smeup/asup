@@ -27,7 +27,10 @@ import org.smeup.sys.il.core.QObjectNameable;
  *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledDate <em>Scheduled Date</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledDay <em>Scheduled Day</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledTime <em>Scheduled Time</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getSystem <em>System</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getUser <em>User</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getPassword <em>Password</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getEnvironment <em>Environment</em>}</li>
  * </ul>
  *
  * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry()
@@ -103,6 +106,32 @@ public interface QScheduleEntry extends QObjectNameable {
 	 * @generated
 	 */
 	void setScheduledTime(String value);
+
+	/**
+	 * Returns the value of the '<em><b>System</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>System</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>System</em>' attribute.
+	 * @see #setSystem(String)
+	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry_System()
+	 * @model annotation="il-data length='10'"
+	 * @generated
+	 */
+	String getSystem();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.scde.QScheduleEntry#getSystem <em>System</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>System</em>' attribute.
+	 * @see #getSystem()
+	 * @generated
+	 */
+	void setSystem(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.
@@ -248,8 +277,7 @@ public interface QScheduleEntry extends QObjectNameable {
 	 * @return the value of the '<em>User</em>' attribute.
 	 * @see #setUser(String)
 	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry_User()
-	 * @model required="true"
-	 *        annotation="il-data length='10'"
+	 * @model annotation="il-data length='10'"
 	 * @generated
 	 */
 	String getUser();
@@ -263,5 +291,57 @@ public interface QScheduleEntry extends QObjectNameable {
 	 * @generated
 	 */
 	void setUser(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Password</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Password</em>' attribute.
+	 * @see #setPassword(String)
+	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry_Password()
+	 * @model annotation="il-data length='10'"
+	 * @generated
+	 */
+	String getPassword();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.scde.QScheduleEntry#getPassword <em>Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Password</em>' attribute.
+	 * @see #getPassword()
+	 * @generated
+	 */
+	void setPassword(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Environment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Environment</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Environment</em>' attribute.
+	 * @see #setEnvironment(String)
+	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry_Environment()
+	 * @model annotation="il-data length='10'"
+	 * @generated
+	 */
+	String getEnvironment();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.scde.QScheduleEntry#getEnvironment <em>Environment</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Environment</em>' attribute.
+	 * @see #getEnvironment()
+	 * @generated
+	 */
+	void setEnvironment(String value);
 
 } // QScheduleEntry

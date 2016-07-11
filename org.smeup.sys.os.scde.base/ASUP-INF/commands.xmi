@@ -3,13 +3,10 @@
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:il-core="http://www.smeup.org/asup/il/core"
-    xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta"
-        xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" 
+    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
     xmlns:il-data-term="http://www.smeup.org/asup/il/data/term"
-
     xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/data/term ../../org.smeup.sys.il.core/model/il-data.ecore#//term http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore"
+    xsi:schemaLocation="http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/data/term ../../org.smeup.sys.il.core/model/il-data.ecore#//term http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore"
     typeName="*JOBSCDE">
   <contents
       xsi:type="os-cmd:Command"
@@ -410,8 +407,34 @@
     </parameters>
     <parameters
         allowVariable="true"
-        name="USER"
+        name="SYS"
         position="13"
+        status="TODO">
+      <dataTerm
+          name="sys">
+        <facets
+            xsi:type="il-data-term:Format"
+            type="NAME"/>
+        <facets
+            xsi:type="il-data-term:Special">
+          <elements
+              name="*CURRENT"
+              value="*CURRENT"/>
+          <elements
+              name="*JOBD"
+              value="*JOBD"/>
+        </facets>
+        <default
+            value="*CURRENT"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="10"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="USER"
+        position="14"
         status="TODO">
       <dataTerm
           name="user">
@@ -436,8 +459,60 @@
     </parameters>
     <parameters
         allowVariable="true"
+        name="PWD"
+        position="15"
+        status="TODO">
+      <dataTerm
+          name="pwd">
+        <facets
+            xsi:type="il-data-term:Format"
+            type="NAME"/>
+        <facets
+            xsi:type="il-data-term:Special">
+          <elements
+              name="*CURRENT"
+              value="*CURRENT"/>
+          <elements
+              name="*JOBD"
+              value="*JOBD"/>
+        </facets>
+        <default
+            value="*CURRENT"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="10"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="ENV"
+        position="16"
+        status="TODO">
+      <dataTerm
+          name="env">
+        <facets
+            xsi:type="il-data-term:Format"
+            type="NAME"/>
+        <facets
+            xsi:type="il-data-term:Special">
+          <elements
+              name="*CURRENT"
+              value="*CURRENT"/>
+          <elements
+              name="*JOBD"
+              value="*JOBD"/>
+        </facets>
+        <default
+            value="*CURRENT"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="10"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
         name="MSGQ"
-        position="14"
+        position="17"
         status="TODO">
       <dataTerm
           name="messageQueue">
@@ -494,7 +569,7 @@
     <parameters
         allowVariable="true"
         name="TEXT"
-        position="15"
+        position="18"
         status="TODO">
       <dataTerm
           name="textDescription">

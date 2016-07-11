@@ -11,17 +11,23 @@ import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 
 public class CronSystemWrapper
  {
-	
+	//TODO: valorizzare questi due dati da config in xmi di avvio. Identificano lo SmeupProvider
+	//      associato ad una istanza attiva del server As.UP
 	String webServiceAddress = "127.0.0.1";
+	String webServicePort = "9090";
 	
-	public void addCronTask(String taskName, String taskDescription, String taskID, String mask, String user, String command){
+	public void addCronTask(String taskName, String taskDescription, String taskID, String mask, String system, String user, String password, String environment, String command){
 
 		executeBashScript("addcron",
 						  mask,
-						  webServiceAddress,
-						  taskID,
+						  webServiceAddress,						  
+						  webServicePort,	
+						  system,
 						  user,
+						  password,
+						  environment,
 						  command,
+						  taskID,						  
 						  taskName, 
 						  taskDescription
 						  );

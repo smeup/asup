@@ -43,7 +43,22 @@
         <details key="length" value="8"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="user" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="system" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+        <details key="length" value="10"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="user" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+        <details key="length" value="10"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+        <details key="length" value="10"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="environment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
         <details key="length" value="10"/>
       </eAnnotations>
