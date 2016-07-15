@@ -349,12 +349,11 @@ public class CallableCommandImpl extends ObjectImpl implements QCallableCommand 
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (commandString: ");
+		StringBuffer result = new StringBuffer();
+		result.append("commandString: ");
 		result.append(commandString);
 		result.append(", variables: ");
-		result.append(variables);
-		result.append(')');
+		result.append(variables);		
 		return result.toString();
 	}
 

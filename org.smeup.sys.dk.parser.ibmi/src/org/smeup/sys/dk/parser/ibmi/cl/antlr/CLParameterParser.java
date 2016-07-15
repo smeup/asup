@@ -1,15 +1,16 @@
-// $ANTLR 3.5.1 /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g 2015-05-26 20:06:43
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g 2016-07-12 15:54:36
 
   package org.smeup.sys.dk.parser.ibmi.cl.antlr;
   
-  import org.antlr.runtime.*;
+  import org.smeup.sys.dk.parser.ibmi.cl.util.CLParserHelper;
 
+
+import org.antlr.runtime.*;
 import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
 
 import org.antlr.runtime.tree.*;
-import org.smeup.sys.dk.parser.ibmi.cl.util.CLParserHelper;
 
 
 @SuppressWarnings("all")
@@ -98,7 +99,7 @@ public class CLParameterParser extends Parser {
 		return adaptor;
 	}
 	@Override public String[] getTokenNames() { return CLParameterParser.tokenNames; }
-	@Override public String getGrammarFileName() { return "/home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g"; }
+	@Override public String getGrammarFileName() { return "C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g"; }
 
 
 
@@ -133,7 +134,7 @@ public class CLParameterParser extends Parser {
 
 
 	// $ANTLR start "parse"
-	// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:68:1: parse : ( elem )* -> ^( LIST[$parse.text] ( elem )* ) ;
+	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:93:1: parse : ( elem )* -> ^( LIST[$parse.text] ( elem )* ) ;
 	public final CLParameterParser.parse_return parse() throws RecognitionException {
 		CLParameterParser.parse_return retval = new CLParameterParser.parse_return();
 		retval.start = input.LT(1);
@@ -145,10 +146,10 @@ public class CLParameterParser extends Parser {
 		RewriteRuleSubtreeStream stream_elem=new RewriteRuleSubtreeStream(adaptor,"rule elem");
 
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:69:3: ( ( elem )* -> ^( LIST[$parse.text] ( elem )* ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:70:3: ( elem )*
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:94:3: ( ( elem )* -> ^( LIST[$parse.text] ( elem )* ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:95:3: ( elem )*
 			{
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:70:3: ( elem )*
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:95:3: ( elem )*
 			loop1:
 			while (true) {
 				int alt1=2;
@@ -159,9 +160,9 @@ public class CLParameterParser extends Parser {
 
 				switch (alt1) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:70:4: elem
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:95:4: elem
 					{
-					pushFollow(FOLLOW_elem_in_parse109);
+					pushFollow(FOLLOW_elem_in_parse118);
 					elem1=elem();
 					state._fsp--;
 
@@ -185,13 +186,13 @@ public class CLParameterParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 70:11: -> ^( LIST[$parse.text] ( elem )* )
+			// 95:11: -> ^( LIST[$parse.text] ( elem )* )
 			{
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:70:14: ^( LIST[$parse.text] ( elem )* )
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:95:14: ^( LIST[$parse.text] ( elem )* )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(LIST, input.toString(retval.start,input.LT(-1))), root_1);
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:70:34: ( elem )*
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:95:34: ( elem )*
 				while ( stream_elem.hasNext() ) {
 					adaptor.addChild(root_1, stream_elem.nextTree());
 				}
@@ -235,7 +236,7 @@ public class CLParameterParser extends Parser {
 
 
 	// $ANTLR start "elem"
-	// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:73:1: elem : ( composite | list );
+	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:98:1: elem : ( composite | list );
 	public final CLParameterParser.elem_return elem() throws RecognitionException {
 		CLParameterParser.elem_return retval = new CLParameterParser.elem_return();
 		retval.start = input.LT(1);
@@ -247,7 +248,7 @@ public class CLParameterParser extends Parser {
 
 
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:74:2: ( composite | list )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:99:2: ( composite | list )
 			int alt2=2;
 			int LA2_0 = input.LA(1);
 			if ( (LA2_0==ASTERISK||LA2_0==BINARY||LA2_0==ESCAPE||LA2_0==FILTER||LA2_0==HEX||(LA2_0 >= SPECIAL && LA2_0 <= SWITCH)||LA2_0==TOKEN||LA2_0==VARIABLE) ) {
@@ -265,12 +266,12 @@ public class CLParameterParser extends Parser {
 
 			switch (alt2) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:75:5: composite
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:100:5: composite
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_composite_in_elem143);
+					pushFollow(FOLLOW_composite_in_elem152);
 					composite2=composite();
 					state._fsp--;
 
@@ -279,12 +280,12 @@ public class CLParameterParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:75:15: list
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:100:15: list
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_list_in_elem145);
+					pushFollow(FOLLOW_list_in_elem154);
 					list3=list();
 					state._fsp--;
 
@@ -322,7 +323,7 @@ public class CLParameterParser extends Parser {
 
 
 	// $ANTLR start "composite"
-	// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:79:3: composite : value ( operator value )* -> ^( VALUE[$composite.text] value ( operator value )* ) ;
+	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:104:3: composite : value ( operator value )* -> ^( VALUE[$composite.text] value ( operator value )* ) ;
 	public final CLParameterParser.composite_return composite() throws RecognitionException {
 		CLParameterParser.composite_return retval = new CLParameterParser.composite_return();
 		retval.start = input.LT(1);
@@ -337,15 +338,15 @@ public class CLParameterParser extends Parser {
 		RewriteRuleSubtreeStream stream_operator=new RewriteRuleSubtreeStream(adaptor,"rule operator");
 
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:80:3: ( value ( operator value )* -> ^( VALUE[$composite.text] value ( operator value )* ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:81:4: value ( operator value )*
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:105:3: ( value ( operator value )* -> ^( VALUE[$composite.text] value ( operator value )* ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:106:4: value ( operator value )*
 			{
-			pushFollow(FOLLOW_value_in_composite174);
+			pushFollow(FOLLOW_value_in_composite183);
 			value4=value();
 			state._fsp--;
 
 			stream_value.add(value4.getTree());
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:81:10: ( operator value )*
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:106:10: ( operator value )*
 			loop3:
 			while (true) {
 				int alt3=2;
@@ -356,14 +357,14 @@ public class CLParameterParser extends Parser {
 
 				switch (alt3) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:81:11: operator value
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:106:11: operator value
 					{
-					pushFollow(FOLLOW_operator_in_composite177);
+					pushFollow(FOLLOW_operator_in_composite186);
 					operator5=operator();
 					state._fsp--;
 
 					stream_operator.add(operator5.getTree());
-					pushFollow(FOLLOW_value_in_composite179);
+					pushFollow(FOLLOW_value_in_composite188);
 					value6=value();
 					state._fsp--;
 
@@ -377,7 +378,7 @@ public class CLParameterParser extends Parser {
 			}
 
 			// AST REWRITE
-			// elements: operator, value, value
+			// elements: value, value, operator
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -387,20 +388,20 @@ public class CLParameterParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 81:28: -> ^( VALUE[$composite.text] value ( operator value )* )
+			// 106:28: -> ^( VALUE[$composite.text] value ( operator value )* )
 			{
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:81:31: ^( VALUE[$composite.text] value ( operator value )* )
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:106:31: ^( VALUE[$composite.text] value ( operator value )* )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VALUE, input.toString(retval.start,input.LT(-1))), root_1);
 				adaptor.addChild(root_1, stream_value.nextTree());
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:81:62: ( operator value )*
-				while ( stream_operator.hasNext()||stream_value.hasNext() ) {
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:106:62: ( operator value )*
+				while ( stream_value.hasNext()||stream_operator.hasNext() ) {
 					adaptor.addChild(root_1, stream_operator.nextTree());
 					adaptor.addChild(root_1, stream_value.nextTree());
 				}
-				stream_operator.reset();
 				stream_value.reset();
+				stream_operator.reset();
 
 				adaptor.addChild(root_0, root_1);
 				}
@@ -440,7 +441,7 @@ public class CLParameterParser extends Parser {
 
 
 	// $ANTLR start "list"
-	// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:84:1: list : OPEN_BRACE ( elem )* CLOSE_BRACE -> ^( LIST[$list.text] ( elem )* ) ;
+	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:109:1: list : OPEN_BRACE ( elem )* CLOSE_BRACE -> ^( LIST[$list.text] ( elem )* ) ;
 	public final CLParameterParser.list_return list() throws RecognitionException {
 		CLParameterParser.list_return retval = new CLParameterParser.list_return();
 		retval.start = input.LT(1);
@@ -453,18 +454,18 @@ public class CLParameterParser extends Parser {
 
 		CommonTree OPEN_BRACE7_tree=null;
 		CommonTree CLOSE_BRACE9_tree=null;
-		RewriteRuleTokenStream stream_CLOSE_BRACE=new RewriteRuleTokenStream(adaptor,"token CLOSE_BRACE");
 		RewriteRuleTokenStream stream_OPEN_BRACE=new RewriteRuleTokenStream(adaptor,"token OPEN_BRACE");
+		RewriteRuleTokenStream stream_CLOSE_BRACE=new RewriteRuleTokenStream(adaptor,"token CLOSE_BRACE");
 		RewriteRuleSubtreeStream stream_elem=new RewriteRuleSubtreeStream(adaptor,"rule elem");
 
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:85:3: ( OPEN_BRACE ( elem )* CLOSE_BRACE -> ^( LIST[$list.text] ( elem )* ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:86:3: OPEN_BRACE ( elem )* CLOSE_BRACE
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:110:3: ( OPEN_BRACE ( elem )* CLOSE_BRACE -> ^( LIST[$list.text] ( elem )* ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:111:3: OPEN_BRACE ( elem )* CLOSE_BRACE
 			{
-			OPEN_BRACE7=(Token)match(input,OPEN_BRACE,FOLLOW_OPEN_BRACE_in_list220);  
+			OPEN_BRACE7=(Token)match(input,OPEN_BRACE,FOLLOW_OPEN_BRACE_in_list229);  
 			stream_OPEN_BRACE.add(OPEN_BRACE7);
 
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:86:14: ( elem )*
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:111:14: ( elem )*
 			loop4:
 			while (true) {
 				int alt4=2;
@@ -475,9 +476,9 @@ public class CLParameterParser extends Parser {
 
 				switch (alt4) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:86:15: elem
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:111:15: elem
 					{
-					pushFollow(FOLLOW_elem_in_list223);
+					pushFollow(FOLLOW_elem_in_list232);
 					elem8=elem();
 					state._fsp--;
 
@@ -490,7 +491,7 @@ public class CLParameterParser extends Parser {
 				}
 			}
 
-			CLOSE_BRACE9=(Token)match(input,CLOSE_BRACE,FOLLOW_CLOSE_BRACE_in_list227);  
+			CLOSE_BRACE9=(Token)match(input,CLOSE_BRACE,FOLLOW_CLOSE_BRACE_in_list236);  
 			stream_CLOSE_BRACE.add(CLOSE_BRACE9);
 
 			// AST REWRITE
@@ -504,13 +505,13 @@ public class CLParameterParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 86:34: -> ^( LIST[$list.text] ( elem )* )
+			// 111:34: -> ^( LIST[$list.text] ( elem )* )
 			{
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:86:37: ^( LIST[$list.text] ( elem )* )
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:111:37: ^( LIST[$list.text] ( elem )* )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(LIST, input.toString(retval.start,input.LT(-1))), root_1);
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:86:57: ( elem )*
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:111:57: ( elem )*
 				while ( stream_elem.hasNext() ) {
 					adaptor.addChild(root_1, stream_elem.nextTree());
 				}
@@ -554,7 +555,7 @@ public class CLParameterParser extends Parser {
 
 
 	// $ANTLR start "value"
-	// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:90:1: value : ( ASTERISK -> ^( TOKEN[$ASTERISK.text] ) | TOKEN | VARIABLE | SPECIAL | FILTER | HEX -> HEX[$HEX.text.substring(2, $HEX.text.length()-1)] | STRING -> ^( STRING[$STRING.text.substring(1, $STRING.text.length()-1).replace(\"''\", \"'\")] ) | ESCAPE -> ^( STRING[\"''\"] ) | function );
+	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:115:1: value : ( ASTERISK -> ^( TOKEN[$ASTERISK.text] ) | TOKEN | VARIABLE | SPECIAL | FILTER | HEX -> HEX[$HEX.text.substring(2, $HEX.text.length()-1)] | STRING -> ^( STRING[$STRING.text.substring(1, $STRING.text.length()-1).replace(\"''\", \"'\")] ) | ESCAPE -> ^( STRING[\"''\"] ) | function );
 	public final CLParameterParser.value_return value() throws RecognitionException {
 		CLParameterParser.value_return retval = new CLParameterParser.value_return();
 		retval.start = input.LT(1);
@@ -579,13 +580,13 @@ public class CLParameterParser extends Parser {
 		CommonTree HEX15_tree=null;
 		CommonTree STRING16_tree=null;
 		CommonTree ESCAPE17_tree=null;
-		RewriteRuleTokenStream stream_ESCAPE=new RewriteRuleTokenStream(adaptor,"token ESCAPE");
-		RewriteRuleTokenStream stream_HEX=new RewriteRuleTokenStream(adaptor,"token HEX");
 		RewriteRuleTokenStream stream_ASTERISK=new RewriteRuleTokenStream(adaptor,"token ASTERISK");
 		RewriteRuleTokenStream stream_STRING=new RewriteRuleTokenStream(adaptor,"token STRING");
+		RewriteRuleTokenStream stream_HEX=new RewriteRuleTokenStream(adaptor,"token HEX");
+		RewriteRuleTokenStream stream_ESCAPE=new RewriteRuleTokenStream(adaptor,"token ESCAPE");
 
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:91:3: ( ASTERISK -> ^( TOKEN[$ASTERISK.text] ) | TOKEN | VARIABLE | SPECIAL | FILTER | HEX -> HEX[$HEX.text.substring(2, $HEX.text.length()-1)] | STRING -> ^( STRING[$STRING.text.substring(1, $STRING.text.length()-1).replace(\"''\", \"'\")] ) | ESCAPE -> ^( STRING[\"''\"] ) | function )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:116:3: ( ASTERISK -> ^( TOKEN[$ASTERISK.text] ) | TOKEN | VARIABLE | SPECIAL | FILTER | HEX -> HEX[$HEX.text.substring(2, $HEX.text.length()-1)] | STRING -> ^( STRING[$STRING.text.substring(1, $STRING.text.length()-1).replace(\"''\", \"'\")] ) | ESCAPE -> ^( STRING[\"''\"] ) | function )
 			int alt5=9;
 			switch ( input.LA(1) ) {
 			case ASTERISK:
@@ -642,9 +643,9 @@ public class CLParameterParser extends Parser {
 			}
 			switch (alt5) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:92:3: ASTERISK
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:117:3: ASTERISK
 					{
-					ASTERISK10=(Token)match(input,ASTERISK,FOLLOW_ASTERISK_in_value262);  
+					ASTERISK10=(Token)match(input,ASTERISK,FOLLOW_ASTERISK_in_value271);  
 					stream_ASTERISK.add(ASTERISK10);
 
 					// AST REWRITE
@@ -658,9 +659,9 @@ public class CLParameterParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 92:12: -> ^( TOKEN[$ASTERISK.text] )
+					// 117:12: -> ^( TOKEN[$ASTERISK.text] )
 					{
-						// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:92:15: ^( TOKEN[$ASTERISK.text] )
+						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:117:15: ^( TOKEN[$ASTERISK.text] )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(TOKEN, (ASTERISK10!=null?ASTERISK10.getText():null)), root_1);
@@ -675,57 +676,57 @@ public class CLParameterParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:94:3: TOKEN
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:119:3: TOKEN
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					TOKEN11=(Token)match(input,TOKEN,FOLLOW_TOKEN_in_value277); 
+					TOKEN11=(Token)match(input,TOKEN,FOLLOW_TOKEN_in_value286); 
 					TOKEN11_tree = (CommonTree)adaptor.create(TOKEN11);
 					adaptor.addChild(root_0, TOKEN11_tree);
 
 					}
 					break;
 				case 3 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:96:3: VARIABLE
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:121:3: VARIABLE
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					VARIABLE12=(Token)match(input,VARIABLE,FOLLOW_VARIABLE_in_value285); 
+					VARIABLE12=(Token)match(input,VARIABLE,FOLLOW_VARIABLE_in_value294); 
 					VARIABLE12_tree = (CommonTree)adaptor.create(VARIABLE12);
 					adaptor.addChild(root_0, VARIABLE12_tree);
 
 					}
 					break;
 				case 4 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:98:3: SPECIAL
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:123:3: SPECIAL
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					SPECIAL13=(Token)match(input,SPECIAL,FOLLOW_SPECIAL_in_value293); 
+					SPECIAL13=(Token)match(input,SPECIAL,FOLLOW_SPECIAL_in_value302); 
 					SPECIAL13_tree = (CommonTree)adaptor.create(SPECIAL13);
 					adaptor.addChild(root_0, SPECIAL13_tree);
 
 					}
 					break;
 				case 5 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:100:3: FILTER
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:125:3: FILTER
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					FILTER14=(Token)match(input,FILTER,FOLLOW_FILTER_in_value303); 
+					FILTER14=(Token)match(input,FILTER,FOLLOW_FILTER_in_value312); 
 					FILTER14_tree = (CommonTree)adaptor.create(FILTER14);
 					adaptor.addChild(root_0, FILTER14_tree);
 
 					}
 					break;
 				case 6 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:102:3: HEX
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:127:3: HEX
 					{
-					HEX15=(Token)match(input,HEX,FOLLOW_HEX_in_value311);  
+					HEX15=(Token)match(input,HEX,FOLLOW_HEX_in_value320);  
 					stream_HEX.add(HEX15);
 
 					// AST REWRITE
@@ -739,7 +740,7 @@ public class CLParameterParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 102:7: -> HEX[$HEX.text.substring(2, $HEX.text.length()-1)]
+					// 127:7: -> HEX[$HEX.text.substring(2, $HEX.text.length()-1)]
 					{
 						adaptor.addChild(root_0, (CommonTree)adaptor.create(HEX, (HEX15!=null?HEX15.getText():null).substring(2, (HEX15!=null?HEX15.getText():null).length()-1)));
 					}
@@ -750,9 +751,9 @@ public class CLParameterParser extends Parser {
 					}
 					break;
 				case 7 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:104:3: STRING
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:129:3: STRING
 					{
-					STRING16=(Token)match(input,STRING,FOLLOW_STRING_in_value324);  
+					STRING16=(Token)match(input,STRING,FOLLOW_STRING_in_value333);  
 					stream_STRING.add(STRING16);
 
 					// AST REWRITE
@@ -766,9 +767,9 @@ public class CLParameterParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 104:10: -> ^( STRING[$STRING.text.substring(1, $STRING.text.length()-1).replace(\"''\", \"'\")] )
+					// 129:10: -> ^( STRING[$STRING.text.substring(1, $STRING.text.length()-1).replace(\"''\", \"'\")] )
 					{
-						// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:104:13: ^( STRING[$STRING.text.substring(1, $STRING.text.length()-1).replace(\"''\", \"'\")] )
+						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:129:13: ^( STRING[$STRING.text.substring(1, $STRING.text.length()-1).replace(\"''\", \"'\")] )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(STRING, (STRING16!=null?STRING16.getText():null).substring(1, (STRING16!=null?STRING16.getText():null).length()-1).replace("''", "'")), root_1);
@@ -783,9 +784,9 @@ public class CLParameterParser extends Parser {
 					}
 					break;
 				case 8 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:106:3: ESCAPE
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:131:3: ESCAPE
 					{
-					ESCAPE17=(Token)match(input,ESCAPE,FOLLOW_ESCAPE_in_value341);  
+					ESCAPE17=(Token)match(input,ESCAPE,FOLLOW_ESCAPE_in_value350);  
 					stream_ESCAPE.add(ESCAPE17);
 
 					// AST REWRITE
@@ -799,9 +800,9 @@ public class CLParameterParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 106:10: -> ^( STRING[\"''\"] )
+					// 131:10: -> ^( STRING[\"''\"] )
 					{
-						// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:106:13: ^( STRING[\"''\"] )
+						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:131:13: ^( STRING[\"''\"] )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(STRING, "''"), root_1);
@@ -816,12 +817,12 @@ public class CLParameterParser extends Parser {
 					}
 					break;
 				case 9 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:108:3: function
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:133:3: function
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_function_in_value356);
+					pushFollow(FOLLOW_function_in_value365);
 					function18=function();
 					state._fsp--;
 
@@ -859,7 +860,7 @@ public class CLParameterParser extends Parser {
 
 
 	// $ANTLR start "operator"
-	// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:111:1: operator : ( CAT | BCAT | TCAT );
+	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:136:1: operator : ( CAT | BCAT | TCAT );
 	public final CLParameterParser.operator_return operator() throws RecognitionException {
 		CLParameterParser.operator_return retval = new CLParameterParser.operator_return();
 		retval.start = input.LT(1);
@@ -871,8 +872,8 @@ public class CLParameterParser extends Parser {
 		CommonTree set19_tree=null;
 
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:111:9: ( CAT | BCAT | TCAT )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:136:9: ( CAT | BCAT | TCAT )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -917,7 +918,7 @@ public class CLParameterParser extends Parser {
 
 
 	// $ANTLR start "function"
-	// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:119:1: function : ( SST list -> ^( FUNCTION[\"\\%SST\"] list ) | BINARY list -> ^( FUNCTION[\"\\%BIN\"] list ) | SWITCH list -> ^( FUNCTION[\"\\%SWITCH\"] list ) );
+	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:144:1: function : ( SST list -> ^( FUNCTION[\"\\%SST\"] list ) | BINARY list -> ^( FUNCTION[\"\\%BIN\"] list ) | SWITCH list -> ^( FUNCTION[\"\\%SWITCH\"] list ) );
 	public final CLParameterParser.function_return function() throws RecognitionException {
 		CLParameterParser.function_return retval = new CLParameterParser.function_return();
 		retval.start = input.LT(1);
@@ -934,13 +935,13 @@ public class CLParameterParser extends Parser {
 		CommonTree SST20_tree=null;
 		CommonTree BINARY22_tree=null;
 		CommonTree SWITCH24_tree=null;
+		RewriteRuleTokenStream stream_SST=new RewriteRuleTokenStream(adaptor,"token SST");
 		RewriteRuleTokenStream stream_BINARY=new RewriteRuleTokenStream(adaptor,"token BINARY");
 		RewriteRuleTokenStream stream_SWITCH=new RewriteRuleTokenStream(adaptor,"token SWITCH");
-		RewriteRuleTokenStream stream_SST=new RewriteRuleTokenStream(adaptor,"token SST");
 		RewriteRuleSubtreeStream stream_list=new RewriteRuleSubtreeStream(adaptor,"rule list");
 
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:119:9: ( SST list -> ^( FUNCTION[\"\\%SST\"] list ) | BINARY list -> ^( FUNCTION[\"\\%BIN\"] list ) | SWITCH list -> ^( FUNCTION[\"\\%SWITCH\"] list ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:144:9: ( SST list -> ^( FUNCTION[\"\\%SST\"] list ) | BINARY list -> ^( FUNCTION[\"\\%BIN\"] list ) | SWITCH list -> ^( FUNCTION[\"\\%SWITCH\"] list ) )
 			int alt6=3;
 			switch ( input.LA(1) ) {
 			case SST:
@@ -965,12 +966,12 @@ public class CLParameterParser extends Parser {
 			}
 			switch (alt6) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:120:3: SST list
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:145:3: SST list
 					{
-					SST20=(Token)match(input,SST,FOLLOW_SST_in_function395);  
+					SST20=(Token)match(input,SST,FOLLOW_SST_in_function404);  
 					stream_SST.add(SST20);
 
-					pushFollow(FOLLOW_list_in_function397);
+					pushFollow(FOLLOW_list_in_function406);
 					list21=list();
 					state._fsp--;
 
@@ -986,9 +987,9 @@ public class CLParameterParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 120:12: -> ^( FUNCTION[\"\\%SST\"] list )
+					// 145:12: -> ^( FUNCTION[\"\\%SST\"] list )
 					{
-						// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:120:15: ^( FUNCTION[\"\\%SST\"] list )
+						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:145:15: ^( FUNCTION[\"\\%SST\"] list )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(FUNCTION, "%SST"), root_1);
@@ -1004,12 +1005,12 @@ public class CLParameterParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:122:3: BINARY list
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:147:3: BINARY list
 					{
-					BINARY22=(Token)match(input,BINARY,FOLLOW_BINARY_in_function414);  
+					BINARY22=(Token)match(input,BINARY,FOLLOW_BINARY_in_function423);  
 					stream_BINARY.add(BINARY22);
 
-					pushFollow(FOLLOW_list_in_function416);
+					pushFollow(FOLLOW_list_in_function425);
 					list23=list();
 					state._fsp--;
 
@@ -1025,9 +1026,9 @@ public class CLParameterParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 122:15: -> ^( FUNCTION[\"\\%BIN\"] list )
+					// 147:15: -> ^( FUNCTION[\"\\%BIN\"] list )
 					{
-						// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:122:18: ^( FUNCTION[\"\\%BIN\"] list )
+						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:147:18: ^( FUNCTION[\"\\%BIN\"] list )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(FUNCTION, "%BIN"), root_1);
@@ -1043,12 +1044,12 @@ public class CLParameterParser extends Parser {
 					}
 					break;
 				case 3 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:124:3: SWITCH list
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:149:3: SWITCH list
 					{
-					SWITCH24=(Token)match(input,SWITCH,FOLLOW_SWITCH_in_function433);  
+					SWITCH24=(Token)match(input,SWITCH,FOLLOW_SWITCH_in_function442);  
 					stream_SWITCH.add(SWITCH24);
 
-					pushFollow(FOLLOW_list_in_function435);
+					pushFollow(FOLLOW_list_in_function444);
 					list25=list();
 					state._fsp--;
 
@@ -1064,9 +1065,9 @@ public class CLParameterParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 124:15: -> ^( FUNCTION[\"\\%SWITCH\"] list )
+					// 149:15: -> ^( FUNCTION[\"\\%SWITCH\"] list )
 					{
-						// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:124:18: ^( FUNCTION[\"\\%SWITCH\"] list )
+						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:149:18: ^( FUNCTION[\"\\%SWITCH\"] list )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(FUNCTION, "%SWITCH"), root_1);
@@ -1106,28 +1107,28 @@ public class CLParameterParser extends Parser {
 
 
 
-	public static final BitSet FOLLOW_elem_in_parse109 = new BitSet(new long[]{0x000113C201140242L});
-	public static final BitSet FOLLOW_composite_in_elem143 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_list_in_elem145 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_value_in_composite174 = new BitSet(new long[]{0x0000080000000902L});
-	public static final BitSet FOLLOW_operator_in_composite177 = new BitSet(new long[]{0x000113C001140240L});
-	public static final BitSet FOLLOW_value_in_composite179 = new BitSet(new long[]{0x0000080000000902L});
-	public static final BitSet FOLLOW_OPEN_BRACE_in_list220 = new BitSet(new long[]{0x000113C201142240L});
-	public static final BitSet FOLLOW_elem_in_list223 = new BitSet(new long[]{0x000113C201142240L});
-	public static final BitSet FOLLOW_CLOSE_BRACE_in_list227 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ASTERISK_in_value262 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TOKEN_in_value277 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VARIABLE_in_value285 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SPECIAL_in_value293 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FILTER_in_value303 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_HEX_in_value311 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_STRING_in_value324 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ESCAPE_in_value341 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_function_in_value356 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SST_in_function395 = new BitSet(new long[]{0x0000000200000000L});
-	public static final BitSet FOLLOW_list_in_function397 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_BINARY_in_function414 = new BitSet(new long[]{0x0000000200000000L});
-	public static final BitSet FOLLOW_list_in_function416 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SWITCH_in_function433 = new BitSet(new long[]{0x0000000200000000L});
-	public static final BitSet FOLLOW_list_in_function435 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_elem_in_parse118 = new BitSet(new long[]{0x000113C201140242L});
+	public static final BitSet FOLLOW_composite_in_elem152 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_list_in_elem154 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_value_in_composite183 = new BitSet(new long[]{0x0000080000000902L});
+	public static final BitSet FOLLOW_operator_in_composite186 = new BitSet(new long[]{0x000113C001140240L});
+	public static final BitSet FOLLOW_value_in_composite188 = new BitSet(new long[]{0x0000080000000902L});
+	public static final BitSet FOLLOW_OPEN_BRACE_in_list229 = new BitSet(new long[]{0x000113C201142240L});
+	public static final BitSet FOLLOW_elem_in_list232 = new BitSet(new long[]{0x000113C201142240L});
+	public static final BitSet FOLLOW_CLOSE_BRACE_in_list236 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ASTERISK_in_value271 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TOKEN_in_value286 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VARIABLE_in_value294 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SPECIAL_in_value302 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FILTER_in_value312 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_HEX_in_value320 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_STRING_in_value333 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ESCAPE_in_value350 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_function_in_value365 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SST_in_function404 = new BitSet(new long[]{0x0000000200000000L});
+	public static final BitSet FOLLOW_list_in_function406 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_BINARY_in_function423 = new BitSet(new long[]{0x0000000200000000L});
+	public static final BitSet FOLLOW_list_in_function425 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SWITCH_in_function442 = new BitSet(new long[]{0x0000000200000000L});
+	public static final BitSet FOLLOW_list_in_function444 = new BitSet(new long[]{0x0000000000000002L});
 }

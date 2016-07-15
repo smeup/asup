@@ -16,6 +16,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.StringTokenizer;
 
 import javax.inject.Inject;
 
@@ -24,6 +25,7 @@ import org.smeup.sys.dk.core.QDevelopmentKitCoreFactory;
 import org.smeup.sys.dk.core.QDevelopmentStatus;
 import org.smeup.sys.dk.parser.ibmi.cl.ParserFactory;
 import org.smeup.sys.dk.parser.ibmi.cl.ParserInterface;
+import org.smeup.sys.dk.parser.ibmi.cl.exceptions.CLScriptException;
 import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmAbstractComponent;
 import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmComponentType;
 import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmFunction;
@@ -35,6 +37,7 @@ import org.smeup.sys.dk.parser.ibmi.cl.model.pgm.CLPositionalParameter;
 import org.smeup.sys.dk.parser.ibmi.cl.model.pgm.CLRow;
 import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.data.QAdapter;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
@@ -91,12 +94,18 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 	@SuppressWarnings("resource")
 	@Override
 	public QCallableCommand prepareCommand(QJob job, String command, Map<String, Object> variables, boolean controlRequiredParms) {
+		
+		System.out.println("cmd: " + command);		
 
 		if (command == null || command.trim().equals(""))
 			throw new OperatingSystemRuntimeException("Empty command line", null);
 
 		CLObject result = null;
-		result = (CLObject) clParser.parse(command + "\n");
+		try {
+			result = (CLObject) clParser.parse(command + "\n");
+		} catch (CLScriptException exc) {
+			throw new OperatingSystemRuntimeException("Cannot parse command: " + command, null);
+		}
 
 		CLRow clRow = null;
 		try {
@@ -204,20 +213,41 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				
 		}
 		
+		System.out.println(callableCommand.toString());
 		return callableCommand;
 	}
 	
 	private QData assignValue(QDataTerm<?> dataTerm, QDataContainer dataContainer, QDataWriter writer, String value, Map<String, Object> variables) {
 		
 		QData data = dataContainer.getData(dataTerm);
-		
-		// Resolve variable
-		if (value.startsWith("&") && variables != null) {
-			String varName = value.substring(1).toLowerCase();
-			if (variables.containsKey(varName))
-			{	
-				value = variables.get(varName).toString();
-			} 
+
+		// Manage vars
+		if (value.startsWith("&")) {
+
+			int e = 1;
+			StringTokenizer st = new StringTokenizer(value);
+			while (st.hasMoreTokens()) {
+				String token = st.nextToken();
+
+				Object variable = variables.get(token.substring(1).toLowerCase());
+
+				if (variable == null)
+					continue;
+
+				if (!(variable instanceof QBufferedData))
+					continue;
+
+				if (data instanceof QBufferedData) {
+					((QBufferedData) variable).assign((QBufferedData) data);
+				} else if (data instanceof QList<?>) {
+					QList<?> list = (QList<?>) data;
+					((QBufferedData) variable).assign((QBufferedData) list.get(e));
+				}
+
+				e++;
+			}
+
+			return data;
 		}
 
 		@SuppressWarnings("unused")
@@ -236,10 +266,14 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 			QList<?> listAtomic = (QList<?>) data;
 
-			if (value.isEmpty() == false) {
+			if (isEmptyString(value) == false) {
 
 				// Expected parms as list
-				paramComp = (CLParmAbstractComponent) clParameterParser.parse(value);
+				try {
+					paramComp = (CLParmAbstractComponent) clParameterParser.parse(value);
+				} catch (CLScriptException exc) {
+					throw new OperatingSystemRuntimeException("Cannot parse command parameter: " + value, null);
+				}
 
 				if (paramComp.getComponentType() == CLParmComponentType.LIST) {
 
@@ -257,7 +291,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 						QData listItem = listAtomic.get(counter);
 
-						assignValue(writer, listItem, value);
+						setValue(writer, listItem, value);
 
 						counter++;
 					}
@@ -268,7 +302,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 				for (int i = 1; i < capacity; i++) {
 					QData listItem = listAtomic.get(i);
-					assignValue(writer, listItem, "");
+					setValue(writer, listItem, "");
 				}
 
 			}
@@ -287,7 +321,11 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			// Parse the compound value ((A B C) (D E F)) --> return (A B C) and
 			// (D E F)
 			CLParmAbstractComponent multipleParamComp = null;
-			multipleParamComp = (CLParmAbstractComponent) clParameterParser.parse(value);
+			try {
+				multipleParamComp = (CLParmAbstractComponent) clParameterParser.parse(value);
+			} catch (CLScriptException exc) {
+				throw new OperatingSystemRuntimeException("Cannot parse command parameter: " + value, null);
+			}	
 
 			Iterator<CLParmAbstractComponent> multipleParmIterator = multipleParamComp.getChilds().iterator();
 
@@ -299,9 +337,9 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 					((QScroller<?>) data).absolute(i);
 
 				if (isSpecialValue(dataTerm, tmpValue))
-					assignValue(writer, data, resolveSpecialValue(dataTerm, tmpValue));
+					setValue(writer, data, resolveSpecialValue(dataTerm, tmpValue));
 				else
-					buildStructValue(multipleCompoundDataDef, dataContainer, writer, tmpValue, variables);
+					assignStructValue(multipleCompoundDataDef, dataContainer, writer, tmpValue, variables);
 
 				i++;
 			}
@@ -310,20 +348,16 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			break;
 
 		case UNARY_ATOMIC:
-
-			if (value.isEmpty() == false) {
+			
+			if (isEmptyString(value) == false) {
 
 				if (value.startsWith("(") && value.endsWith(")"))
 					value = value.substring(1, value.length() - 1);
-
-				/*
-				 * Parser response structure:
-				 * 
-				 * CLParamList | CLParamValue | (CLParmToken OR CLPArmVariable
-				 * OR CLParmSpecial OR CLParmString OR CLParmFunction)
-				 */
-
-				paramComp = (CLParmAbstractComponent) clParameterParser.parse(value);
+				try {
+					paramComp = (CLParmAbstractComponent) clParameterParser.parse(value);
+				} catch (CLScriptException exc) {
+					throw new OperatingSystemRuntimeException("Cannot parse command parameter: " + value, null);
+				}	
 
 				Class<?> javaClass = dataTerm.getDefinition().getJavaClass();
 
@@ -336,16 +370,17 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 					// Manage value without ' delimiters in parameters with
 					// COMMAND format (not detected by AntLR parser)
 					value = paramComp.getText();
-				else if (paramComp.getChilds().size() == 1)
-					value = buildParameterValue(dataTerm, paramComp.getChilds().getFirst().getChilds().getFirst(), variables);
+				else if (paramComp instanceof CLParmList) {
+					value = buildParameterValue(dataTerm, paramComp.getChilds().getFirst().getChilds().getFirst(), variables);					
+				}	
 				else
 					// Error: received a list of values in an unary parameter
 					throw new OperatingSystemRuntimeException("Invalid value for parameter " + dataTerm.getName().toUpperCase());
 
 			} 
 
-			assignValue(writer, data, value);
-
+			setValue(writer, data, value);
+			
 			dbgString = dataTerm.toString();
 
 			break;
@@ -364,9 +399,9 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			// assignValue(struct, structValue);
 
 			if (isSpecialValue(dataTerm, value))
-				assignValue(writer, data, resolveSpecialValue(dataTerm, value));
+				setValue(writer, data, resolveSpecialValue(dataTerm, value));
 			else
-				buildStructValue(unaryCompoundDataDef, dataContainer, writer, value, variables);
+				assignStructValue(unaryCompoundDataDef, dataContainer, writer, value, variables);
 
 			dbgString = dataTerm.toString();
 
@@ -376,9 +411,8 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		return data;
 	}
 
-	private String buildStructValue(QCompoundDataDef<?, ?> compoundDataDef, QDataContainer dataContext, QDataWriter writer, String parmValue, Map<String, Object> variables) {
+	private void assignStructValue(QCompoundDataDef<?, ?> compoundDataDef, QDataContainer dataContext, QDataWriter writer, String parmValue, Map<String, Object> variables) {
 
-		String structValue = "";
 		CLParmAbstractComponent paramComp;
 
 		if (parmValue.startsWith("(") && parmValue.endsWith(")"))
@@ -390,18 +424,16 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			for (int j = values.length; j > 0; j--) {
 
 				// Recursive Call
-				QData assignValue = assignValue(compoundDataDef.getElements().get(j - 1), dataContext, writer, values[values.length - j], variables);
-
-				// assignValue(struct.getElement(j), assignValue.toString());
-				if (assignValue instanceof QString)
-					structValue = ((QString) assignValue).toString() + structValue;
-				else
-					structValue = assignValue.toString() + structValue;
+				assignValue(compoundDataDef.getElements().get(j - 1), dataContext, writer, values[values.length - j], variables);
 			}
 		} else {
 
 			// Parse the compound value
-			paramComp = (CLParmAbstractComponent) clParameterParser.parse(parmValue);
+			try {
+				paramComp = (CLParmAbstractComponent) clParameterParser.parse(parmValue);
+			} catch (CLScriptException exc) {
+				throw new OperatingSystemRuntimeException("Cannot parse command parameter: " + parmValue, null);
+			}
 
 			@SuppressWarnings("unchecked")
 			Iterator<QDataTerm<?>> elementIterator = (Iterator<QDataTerm<?>>) compoundDataDef.getElements().iterator();
@@ -416,14 +448,9 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 					tmpValue = "";
 
 				// Recursive Call
-				QData assignValue = assignValue(elementIterator.next(), dataContext, writer, tmpValue, variables);
-				if (assignValue instanceof QString)
-					structValue += ((QString) assignValue).toString();
-				else
-					structValue += assignValue.toString();
+				assignValue(elementIterator.next(), dataContext, writer, tmpValue, variables);
 			}
-		}
-		return structValue;
+		}		
 	}
 
 	private String buildParameterValue(QDataTerm<?> dataTerm, CLParmAbstractComponent parmValue, Map<String, Object> variables) {
@@ -536,11 +563,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			break;
 
 		case VARIABLE:
-			/*
-			 * Qui non dovrebbe mai passare, perchè le variabili son risolte in testa al
-			 * metodo assignValue
-			 */
-			
+
 			String varName = parmValue.toString().substring(1).toLowerCase();
 			
 			if (variables != null && variables.containsKey(varName))
@@ -599,8 +622,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			for (QSpecialElement specialElem : special.getElements())
 				if (specialElem.getName().equals(value)) {
 					result = specialElem.getValue();
-					// TODO: what is the correct assign if special has null
-					// value?
+					// TODO: Which is the correct assign when the special has a null value?
 					if (result == null)
 						result = value;
 					break;
@@ -624,7 +646,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 	}
 
-	private void assignValue(QDataWriter writer, QData data, Object value) {
+	private void setValue(QDataWriter writer, QData data, Object value) {
 
 		if (data instanceof QEnum) {
 			@SuppressWarnings("unchecked")
@@ -648,5 +670,9 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			adapter.eval(value);
 		} else
 			data.accept(writer.set(value.toString()));
+	}
+	
+	private boolean isEmptyString(String value) {
+		return value.trim().isEmpty();
 	}
 }

@@ -85,8 +85,29 @@ tokens
 }
 
 @lexer::members {
+
+  public LexerHelper hlp = new LexerHelper();	
+
   int openBraces = 0;
   int closeBraces = 0;
+  
+  @Override
+  	protected Object recoverFromMismatchedToken(IntStream input, int ttype, BitSet follow) throws RecognitionException {
+    	throw new MismatchedTokenException(ttype, input);
+  	}
+
+   @Override
+   public void reportError(RecognitionException e) {
+      super.reportError(e);
+      RuntimeException re = hlp.createException(e);
+      recover(input, e);
+      throw re;
+   }
+
+   @Override
+  	public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
+    	throw e;
+    }
 }
 
 
