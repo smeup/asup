@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.data;
 
+import java.nio.ByteBuffer;
 import java.util.List;
 
 public abstract class QDataStructWrapper implements QDataStruct, QBufferedElementDelegator {
@@ -28,11 +29,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	@Override
 	public void assign(QBufferedData value) {
 		delegate.assign(value);
-	}
-
-	@Override
-	public void slice(QBufferedData value) {
-		delegate.slice(value);
 	}
 
 	@Override
@@ -1044,8 +1040,8 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
-	public Object getStore() {
-		return delegate.getStore();
+	public ByteBuffer getBuffer() {
+		return delegate.getBuffer();
 	}
 
 	@Override

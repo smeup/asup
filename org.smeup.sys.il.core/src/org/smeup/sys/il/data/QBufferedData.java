@@ -95,14 +95,6 @@ public interface QBufferedData extends QData, QStorable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model targetRequired="true"
-	 * @generated
-	 */
-	void slice(QBufferedData target);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model targetRequired="true" positionRequired="true"
 	 * @generated
 	 */

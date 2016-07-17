@@ -2,6 +2,8 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="core" nsURI="http://www.smeup.org/asup/mi/core" nsPrefix="mi-core">
   <eClassifiers xsi:type="ecore:EDataType" name="JavaAnnotation" instanceClassName="java.lang.annotation.Annotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaByteBuffer" instanceClassName="java.nio.ByteBuffer"
+      abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="JavaCallable" instanceClassName="java.util.concurrent.Callable"
       abstract="true" interface="true">
     <eTypeParameters name="V"/>

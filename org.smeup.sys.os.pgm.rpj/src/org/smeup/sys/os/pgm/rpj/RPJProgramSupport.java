@@ -337,7 +337,7 @@ public class RPJProgramSupport {
 
 	public QIndicator qCast(QCharacter xin) {
 		QIndicator indicator = dataContext.getDataFactory().createIndicator(false);
-		xin.slice(indicator);
+		xin.assign(indicator);
 		return indicator;
 	}
 
@@ -845,26 +845,6 @@ public class RPJProgramSupport {
 			position = source.toString().indexOf(argument, start.intValue() - 1) + 1;
 
 		return qBox(position);
-	}
-
-	/* Substring */
-	public QCharacter qSubst(QArray<QCharacter> source, Number startIndex) {
-		return qSubst(source, startIndex, null);
-	}
-
-	public QCharacter qSubst(QArray<QCharacter> source, Number startIndex, Number length) {
-
-		if (startIndex == null)
-			startIndex = 1;
-
-		if (length == null)
-			length = source.getLength() - startIndex.intValue();
-
-		QCharacter string = dataContext.getDataFactory().createCharacter(length.intValue(), false, false);
-		source.slice(string, startIndex.intValue());
-
-		return string;
-
 	}
 
 	public QCharacter qSubst(QString source, Number startIndex) {

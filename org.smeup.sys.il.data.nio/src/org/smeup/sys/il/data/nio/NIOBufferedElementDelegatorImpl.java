@@ -16,6 +16,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.ByteBuffer;
 
 import org.smeup.sys.il.data.BufferedDataType;
 import org.smeup.sys.il.data.BufferedElementType;
@@ -70,11 +71,6 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 	@Override
 	public void assign(QBufferedData value) {
 		_delegate.assign(value);
-	}
-
-	@Override
-	public void slice(QBufferedData value) {
-		_delegate.slice(value);
 	}
 
 	@Override
@@ -317,8 +313,8 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 	}
 
 	@Override
-	public Object getStore() {
-		return _delegate.getStore();
+	public ByteBuffer getBuffer() {
+		return _delegate.getBuffer();
 	}
 
 	@Override

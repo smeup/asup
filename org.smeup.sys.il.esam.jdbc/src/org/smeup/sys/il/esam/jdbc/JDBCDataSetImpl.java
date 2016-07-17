@@ -242,7 +242,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		init();
 
 		try {
-			if (this.accessMode == AccessMode.INPUT){
+			if (this.accessMode == AccessMode.INPUT) {
 				statement = databaseConnection.createStatement(true);
 				statementUpdate = databaseConnection.createStatement(true);
 			} else {
@@ -251,14 +251,16 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			}
 
 			String[] tableSplit = this.tablePath.trimR().split("/");
-			if(tableSplit.length ==1)
+			if (tableSplit.length == 1)
 				this.currentTable = this.tableProvider.getTable(null, tableSplit[0].trim());
-			else if(tableSplit.length ==2)
+			else if (tableSplit.length == 2)
 				this.currentTable = this.tableProvider.getTable(tableSplit[0], tableSplit[1].trim());
 
-			if(this.currentTable == null)
-				throw new DatabaseCoreRuntimeException("Invalid table: "+this.tablePath.trimR());
-			
+			if (this.currentTable == null) {
+				this.currentTable = this.tableProvider.getTable(null, tableSplit[0].trim());
+				throw new DatabaseCoreRuntimeException("Invalid table: " + this.tablePath.trimR());
+			}
+
 			this.open = true;
 		} catch (SQLException e) {
 			handleSQLException(e);
@@ -342,8 +344,8 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		if (!this.resultSet.next()) {
 
 			// TODO verify if not necessary
-//			this.record.clear();
-//			this.infoStruct.rrn.clear();
+			// this.record.clear();
+			// this.infoStruct.rrn.clear();
 
 			this.found = false;
 			this.dataContext.found().eval(false);
@@ -376,7 +378,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 		this.error = false;
 		this.equal = false;
-		
+
 		this.currentOpRead = null;
 
 		if (!this.resultSet.next()) {
@@ -601,7 +603,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			 * this.resultSet.moveToCurrentRow();
 			 */
 
- 			this.statementUpdate.executeUpdate(jdbcAccessHelper.buildWrite(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
+			this.statementUpdate.executeUpdate(jdbcAccessHelper.buildWrite(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
 
 			this.found = true;
 			this.dataContext.found().eval(true);

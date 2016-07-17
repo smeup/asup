@@ -25,6 +25,7 @@ import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URL;
 
+import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 
 import java.security.Principal;
@@ -55,6 +56,13 @@ import org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl;
  * @generated
  */
 public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMachineInterfaceCorePackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass javaByteBufferEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -315,6 +323,15 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(QMachineInterfaceCorePackage.eNS_URI, theMachineInterfaceCorePackage);
 		return theMachineInterfaceCorePackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJavaByteBuffer() {
+		return javaByteBufferEClass;
 	}
 
 	/**
@@ -597,6 +614,8 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		isCreated = true;
 
 		// Create classes and their features
+		javaByteBufferEClass = createEClass(JAVA_BYTE_BUFFER);
+
 		javaCallableEClass = createEClass(JAVA_CALLABLE);
 
 		javaCharsetEClass = createEClass(JAVA_CHARSET);
@@ -686,6 +705,8 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		// Add supertypes to classes
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(javaByteBufferEClass, ByteBuffer.class, "JavaByteBuffer", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(javaCallableEClass, Callable.class, "JavaCallable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(javaCharsetEClass, Charset.class, "JavaCharset", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);

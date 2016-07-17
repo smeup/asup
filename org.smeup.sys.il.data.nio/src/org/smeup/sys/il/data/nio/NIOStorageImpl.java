@@ -28,17 +28,17 @@ public class NIOStorageImpl implements QStorable {
 	}
 	
 	public NIOStorageImpl(int storageLength) {
-		this.byteBuffer = ByteBuffer.allocate(storageLength);
+		byteBuffer = ByteBuffer.allocate(storageLength);
 	}
 
+	@Override
+	public final ByteBuffer getBuffer() {
+		return byteBuffer;
+	}
+	
 	@Override
 	public boolean isEmpty() {
 		return byteBuffer.capacity() == 0;
-	}
-
-	@Override
-	public Object getStore() {
-		return byteBuffer;
 	}
 
 	protected void setPosition(int position) {

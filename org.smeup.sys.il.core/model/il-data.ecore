@@ -675,9 +675,6 @@
     <eOperations name="reset"/>
     <eOperations name="slice">
       <eParameters name="target" lowerBound="1" eType="#//BufferedData"/>
-    </eOperations>
-    <eOperations name="slice">
-      <eParameters name="target" lowerBound="1" eType="#//BufferedData"/>
       <eParameters name="position" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
     <eOperations name="snap"/>
@@ -3007,8 +3004,8 @@
     <eOperations name="assign">
       <eParameters name="target" lowerBound="1" eType="#//BufferedData"/>
     </eOperations>
+    <eOperations name="getBuffer" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaByteBuffer"/>
     <eOperations name="getPosition" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eOperations name="getStore" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     <eOperations name="isEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="String" abstract="true" interface="true">

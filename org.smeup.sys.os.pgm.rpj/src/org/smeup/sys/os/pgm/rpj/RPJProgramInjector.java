@@ -105,7 +105,7 @@ public class RPJProgramInjector {
 
 	@SuppressWarnings("resource")
 	public <P> QProgramCallable prepareCallable(QProgram program, Class<P> klass) {
-
+		
 //		System.out.println("cls:\t" + klass.getSimpleName());
 
 		QDataContainer dataContainer = dataManager.createDataContainer(dataContext);
@@ -355,7 +355,7 @@ public class RPJProgramInjector {
 			RPJInjectionHelper.injectPointerNoDefault(callable, dataContainer, field);
 
 		// dataStructure no based
-		for (RPJInjectableField field : dataStructures) {			
+		for (RPJInjectableField field : dataStructures) {
 			RPJInjectionHelper.injectDataStructure(callable, dataContainer, records, field, false);
 		}
 

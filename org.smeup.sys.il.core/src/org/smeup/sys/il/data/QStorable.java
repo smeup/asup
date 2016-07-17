@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.data;
 
+import java.nio.ByteBuffer;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Storage</b></em>'.
@@ -29,6 +31,14 @@ public interface QStorable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.smeup.sys.mi.core.JavaByteBuffer" required="true"
+	 * @generated
+	 */
+	ByteBuffer getBuffer();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
@@ -41,13 +51,5 @@ public interface QStorable {
 	 * @generated
 	 */
 	boolean isEmpty();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" required="true"
-	 * @generated
-	 */
-	Object getStore();
 
 } // QStorage

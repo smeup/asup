@@ -29,7 +29,6 @@ import org.smeup.sys.il.data.QBufferedElementDelegator;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
-import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
@@ -41,6 +40,148 @@ import org.smeup.sys.il.data.QString;
 public class NIOBufferHelper {
 
 	private static final char[] hexArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+
+	public static void assign(QStorable storable, QBufferedData target) {
+
+		NIOBufferedDataImpl nioBufferedData = getNIOBufferedDataImpl(target);
+		if (nioBufferedData == null)
+			throw new IntegratedLanguageCoreRuntimeException("No buffer reference found: " + target.getClass());
+
+		// same address
+		if (storable.getBuffer() != null && equalsAddress(storable, nioBufferedData, 1))
+			return;
+
+		// storage chain
+		NIOBufferedDataImpl nioBufferOwner = getNIOBufferOwner(nioBufferedData);
+
+		// first assignment
+		if (nioBufferOwner == null) {
+			nioBufferedData._buffer = null;
+			nioBufferedData._storage = storable;
+			nioBufferedData._position = 0;
+		} else {
+
+			if(containsStore(nioBufferOwner, storable))
+				return;
+
+			nioBufferOwner._buffer = null;
+			nioBufferOwner._storage = storable;
+			nioBufferOwner._position = 0;
+		}
+	}
+
+	public static void slice(QStorable storable, QBufferedData target, int position) {
+
+		if (position <= 0)
+			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dm5c46dsfgdsf7405mc");
+
+		NIOBufferedDataImpl nioBufferedData = getNIOBufferedDataImpl(target);
+		if (nioBufferedData == null)
+			throw new IntegratedLanguageCoreRuntimeException("No buffer reference found: " + target.getClass());
+
+		// same address
+		if (storable.getBuffer() != null && equalsAddress(storable, nioBufferedData, position))
+			return;
+
+		nioBufferedData._buffer = null;
+		nioBufferedData._storage = storable;
+		nioBufferedData._position = position - 1;
+	}
+
+	private static boolean containsStore(NIOBufferedDataImpl storage, QStorable storable) {
+
+		if (storage == storable)
+			return true;
+
+		boolean ret = false;
+		if (storage._storage != null)
+			ret = containsStore(getNIOBufferedDataImpl(storage._storage), storable);
+
+		if(!ret) {
+			if(storable instanceof NIOPointerImpl) {
+				NIOPointerImpl nioPointerImpl = (NIOPointerImpl) storable;
+				if(nioPointerImpl._storage instanceof NIOBufferedDataImpl)
+					ret = containsStore(storage, nioPointerImpl._storage);
+			}
+			else if(storable instanceof NIOBufferedDataImpl) {
+				NIOBufferedDataImpl nioBufferedDataImpl = (NIOBufferedDataImpl) storable;
+				if(nioBufferedDataImpl._storage instanceof NIOBufferedDataImpl)
+					ret = containsStore(storage, nioBufferedDataImpl._storage);
+			}
+			else 
+				"".toCharArray();
+		}
+		
+		return ret;
+	}
+
+	public static NIOBufferedDataImpl getNIOBufferOwner(QStorable data) {
+
+		NIOBufferedDataImpl nioBufferedDataImpl = getNIOBufferedDataImpl(data);
+		if (nioBufferedDataImpl.isStoreOwner())
+			return nioBufferedDataImpl;
+		else if (nioBufferedDataImpl._storage == null)
+			return null;
+		else
+			return getNIOBufferOwner(nioBufferedDataImpl._storage);
+	}
+
+	public static NIOBufferedDataImpl getNIOBufferedDataImpl(QStorable storable) {
+
+		NIOBufferedDataImpl nioBufferedData = null;
+
+		if (storable instanceof NIOBufferedDataImpl)
+			nioBufferedData = (NIOBufferedDataImpl) storable;
+		else if (storable instanceof QBufferedElementDelegator) {
+			QBufferedElementDelegator dataDelegator = (QBufferedElementDelegator) storable;
+			nioBufferedData = getNIOBufferedDataImpl(dataDelegator.getDelegate());
+		}
+
+		return nioBufferedData;
+	}
+
+	public static NIOBufferedElementImpl getNIOBufferedElementImpl(QData data) {
+
+		NIOBufferedElementImpl nioBufferedElement = null;
+		if (data instanceof QScroller<?>) {
+			NIOScrollerImpl<?> nioScrollerImpl = (NIOScrollerImpl<?>) data;
+			data = nioScrollerImpl.current();
+		}
+
+		if (data instanceof NIOBufferedElementImpl)
+			nioBufferedElement = (NIOBufferedElementImpl) data;
+		else if (data instanceof QBufferedElementDelegator) {
+			QBufferedElementDelegator dataDelegator = (QBufferedElementDelegator) data;
+			nioBufferedElement = getNIOBufferedElementImpl(dataDelegator.getDelegate());
+		}
+
+		return nioBufferedElement;
+	}
+
+	public static void prepare(ByteBuffer buffer, int position, int length) {
+
+		if (position > 0) {
+
+			// overflow
+			if (position + length > buffer.capacity())
+				buffer.limit(buffer.capacity());
+			else
+				buffer.limit(position + length);
+
+			try {
+				buffer.position(position);
+			} catch (Exception e) {
+				"".toCharArray();
+			}
+		} else {
+			if (length > buffer.capacity())
+				buffer.limit(buffer.capacity());
+			else
+				buffer.limit(length);
+
+			buffer.position(0);
+		}
+	}
 
 	public static void movel(ByteBuffer buffer, int position, int length, byte[] bytes) {
 		prepare(buffer, position, length);
@@ -91,27 +232,6 @@ public class NIOBufferHelper {
 				buffer.put(filler);
 
 			buffer.put(bytes);
-		}
-	}
-
-	public static void prepare(ByteBuffer buffer, int position, int length) {
-
-		if (position > 0) {
-
-			// overflow
-			if (position + length > buffer.capacity())
-				buffer.limit(buffer.capacity());
-			else
-				buffer.limit(position + length);
-
-			buffer.position(position);
-		} else {
-			if (length > buffer.capacity())
-				buffer.limit(buffer.capacity());
-			else
-				buffer.limit(length);
-
-			buffer.position(0);
 		}
 	}
 
@@ -183,123 +303,15 @@ public class NIOBufferHelper {
 		}
 	}
 
-	@SuppressWarnings("unused")
-	public static void assign(QStorable storable, QBufferedData target) {
-
-		if (true) {
-			slice(storable, target);
-			return;
-		}
-
-		NIOBufferedDataImpl nioBufferedData = getNIOBufferedDataImpl(target);
-		if (nioBufferedData == null)
-			throw new IntegratedLanguageCoreRuntimeException("No buffer reference found: " + target.getClass());
-
-		if (storable.equals(nioBufferedData._storage))
-			return;
-
-		// storage chain
-		if (nioBufferedData._storage instanceof QBufferedData && !(nioBufferedData._storage instanceof QDataStruct)) {
-
-			NIOBufferedDataImpl nioBufferOwner = getNIOBufferOwner(nioBufferedData._storage);
-			if (nioBufferOwner != null && !storable.equals(nioBufferOwner._storage)) {
-				nioBufferOwner._buffer = null;
-				nioBufferOwner._position = 0;				
-				nioBufferOwner._storage = storable;
-			} else {
-				nioBufferedData._buffer = null;
-				nioBufferedData._position = 0;				
-				nioBufferedData._storage = storable;
-			}
-
-		} else {
-			nioBufferedData._buffer = null;
-			nioBufferedData._position = 0;
-			nioBufferedData._storage = storable;
-		}
-	}
-
-	public static void slice(QStorable storable, QBufferedData target) {
-		slice(storable, target, 1);
-	}
-
-	public static void slice(QStorable storable, QBufferedData target, int position) {
-
-		if (position <= 0)
-			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dm5c46dsfgdsf7405mc");
-
-		NIOBufferedDataImpl nioBufferedData = getNIOBufferedDataImpl(target);
-		if (nioBufferedData == null)
-			throw new IntegratedLanguageCoreRuntimeException("No buffer reference found: " + target.getClass());
-
-		nioBufferedData._buffer = null;
-		nioBufferedData._storage = storable;
-		nioBufferedData._position = position - 1;
-	}
-
-	public static NIOBufferedDataImpl getNIOBufferOwner(QStorable data) {
-
-		NIOBufferedDataImpl nioBufferedDataImpl = getNIOBufferedDataImpl((QData) data);
-		if (nioBufferedDataImpl.isStoreOwner())
-			return nioBufferedDataImpl;
-		else if (nioBufferedDataImpl._storage == null)
-			return null;
-		else
-			return getNIOBufferOwner(nioBufferedDataImpl._storage);
-	}
-
-	public static NIOBufferedDataImpl getNIOPositionOwner(QStorable data) {
-
-		NIOBufferedDataImpl nioBufferedDataImpl = getNIOBufferedDataImpl((QData) data);
-		if (nioBufferedDataImpl._position != 0)
-			return nioBufferedDataImpl;
-		else if (nioBufferedDataImpl._storage == null)
-			return nioBufferedDataImpl;
-		else
-			return getNIOPositionOwner(nioBufferedDataImpl._storage);
-	}
-
-	public static NIOBufferedDataImpl getNIOBufferedDataImpl(QData data) {
-
-		NIOBufferedDataImpl nioBufferedData = null;
-
-		if (data instanceof NIOBufferedDataImpl)
-			nioBufferedData = (NIOBufferedDataImpl) data;
-		else if (data instanceof QBufferedElementDelegator) {
-			QBufferedElementDelegator dataDelegator = (QBufferedElementDelegator) data;
-			nioBufferedData = getNIOBufferedDataImpl(dataDelegator.getDelegate());
-		}
-
-		return nioBufferedData;
-	}
-
-	public static NIOBufferedElementImpl getNIOBufferedElementImpl(QData data) {
-
-		NIOBufferedElementImpl nioBufferedElement = null;
-		if (data instanceof QScroller<?>) {
-			NIOScrollerImpl<?> nioScrollerImpl = (NIOScrollerImpl<?>) data;
-			data = nioScrollerImpl.current();
-		}
-
-		if (data instanceof NIOBufferedElementImpl)
-			nioBufferedElement = (NIOBufferedElementImpl) data;
-		else if (data instanceof QBufferedElementDelegator) {
-			QBufferedElementDelegator dataDelegator = (QBufferedElementDelegator) data;
-			nioBufferedElement = getNIOBufferedElementImpl(dataDelegator.getDelegate());
-		}
-
-		return nioBufferedElement;
-	}
-
 	public static ByteBuffer getBuffer(QStorable storable) {
 
 		if (storable instanceof NIOBufferedDataImpl)
 			return ((NIOBufferedDataImpl) storable).getBuffer();
 		else if (storable instanceof NIOPointerImpl)
 			return ((NIOPointerImpl) storable).getBuffer();
-		else if (storable != null) {
-			return (ByteBuffer) storable.getStore();
-		} else
+		else if (storable instanceof NIOStorageImpl)
+			return ((NIOStorageImpl) storable).getBuffer();
+		else
 			return null;
 	}
 
@@ -518,5 +530,9 @@ public class NIOBufferHelper {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public static boolean equalsAddress(QStorable source, QStorable target, int position) {
+		return source.getBuffer() == target.getBuffer() && source.getPosition() == target.getPosition() + position -1;
 	}
 }

@@ -59,7 +59,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 
 	@Override
 	public void eval(QPointer value) {
-		this._storage = (QStorable) value.getStore();
+		this._storage = ((NIOPointerImpl)value)._storage;
 	}
 
 	@Override
@@ -133,7 +133,8 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 		}
 	}
 
-	protected ByteBuffer getBuffer() {
+	@Override
+	public final ByteBuffer getBuffer() {
 		if (_storage != null)
 			return NIOBufferHelper.getBuffer(_storage);
 		else
@@ -141,12 +142,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 
 	@Override
-	public Object getStore() {
-		return _storage;
-	}
-
-	@Override
-	public int getPosition() {
+	public final int getPosition() {
 		return _storage.getPosition();
 	}
 
@@ -184,10 +180,10 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 
 	@Override
 	public QPointer minus(Number value) {
-		if(!(getStore() instanceof NIOStorageImpl))
+		if(!(_storage instanceof NIOStorageImpl))
 			throw new UnsupportedOperationException();
 		
-		NIOStorageImpl nioStorageImpl = (NIOStorageImpl) getStore();
+		NIOStorageImpl nioStorageImpl = (NIOStorageImpl) _storage;
 		nioStorageImpl.setPosition(getPosition()-value.intValue());
 
 		return this;
@@ -200,10 +196,10 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 
 	@Override
 	public QPointer plus(Number value) {
-		if(!(getStore() instanceof NIOStorageImpl))
+		if(!(_storage instanceof NIOStorageImpl))
 			throw new UnsupportedOperationException();
 		
-		NIOStorageImpl nioStorageImpl = (NIOStorageImpl) getStore();
+		NIOStorageImpl nioStorageImpl = (NIOStorageImpl) _storage;
 		nioStorageImpl.setPosition(getPosition()+value.intValue());
 
 		return this;
@@ -222,7 +218,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 			else
 				return false;
 			
-		return getStore().equals(value.getStore());
+		return NIOBufferHelper.equalsAddress(this, value, 1);
 	}
 
 	@Override

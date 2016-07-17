@@ -1888,9 +1888,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(bufferedDataEClass, null, "slice", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getBufferedData(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedDataEClass, null, "slice", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getBufferedData(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "position", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(bufferedDataEClass, null, "snap", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -4152,9 +4149,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(storableEClass, null, "assign", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getBufferedData(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(storableEClass, ecorePackage.getEInt(), "getPosition", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(storableEClass, theMachineInterfaceCorePackage.getJavaByteBuffer(), "getBuffer", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(storableEClass, ecorePackage.getEJavaObject(), "getStore", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(storableEClass, ecorePackage.getEInt(), "getPosition", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(storableEClass, ecorePackage.getEBoolean(), "isEmpty", 0, 1, IS_UNIQUE, IS_ORDERED);
 

@@ -52,7 +52,7 @@ import org.smeup.sys.il.data.term.QSpecial;
 import org.smeup.sys.il.data.term.QSpecialElement;
 import org.smeup.sys.il.data.term.impl.DataTermImpl;
 
-public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, Serializable {
+public class NIODataContainerImpl2 extends ObjectImpl implements QDataContainer, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -63,7 +63,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	private Map<String, QData> datas;
 	private long memorySize = 0;
 
-	protected NIODataContainerImpl(NIODataContextImpl dataContext) {
+	protected NIODataContainerImpl2(NIODataContextImpl dataContext) {
 		this.dataTerms = new LinkedHashMap<String, QDataTerm<?>>();
 		this.datas = new HashMap<String, QData>();
 		this.dataContext = dataContext;
