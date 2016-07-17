@@ -25,6 +25,7 @@ import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.os.cmd.QCallableCommand;
 import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.cmd.QCommandParameter;
+import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
@@ -74,10 +75,14 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 	public void executeCommand(QJobCapability jobCapability, String command, Map<String, Object> variables) {
 
 		QJob jobLocal = jobManager.lookup(jobCapability);
-
-		QCallableCommand callableCommand = prepareCommand(jobLocal, command, variables, true);
-		executeCommand(jobLocal, callableCommand);
-		callableCommand.close();
+		QCallableCommand callableCommand = null;
+		try {
+			callableCommand = prepareCommand(jobLocal, command, variables, true);
+			executeCommand(jobLocal, callableCommand);
+			callableCommand.close();
+		} catch (OperatingSystemRuntimeException exc) {			
+			callableCommand.close();
+		}
 	}
 
 	@Override

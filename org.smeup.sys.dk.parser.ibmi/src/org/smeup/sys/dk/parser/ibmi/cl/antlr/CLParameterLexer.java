@@ -1,10 +1,11 @@
-// $ANTLR 3.5.1 /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g 2015-05-26 20:06:43
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g 2016-07-12 15:54:36
 
   package org.smeup.sys.dk.parser.ibmi.cl.antlr;
   
-  import org.antlr.runtime.*;
-import org.smeup.sys.dk.parser.ibmi.cl.util.LexerHelper;
+  import org.smeup.sys.dk.parser.ibmi.cl.util.LexerHelper;
 
+
+import org.antlr.runtime.*;
 import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
@@ -63,6 +64,30 @@ public class CLParameterLexer extends Lexer {
 	public static final int Y=52;
 	public static final int Z=53;
 
+
+	   public LexerHelper hlp = new LexerHelper();	
+	   
+	   @Override
+	  	protected Object recoverFromMismatchedToken(IntStream input, int ttype, BitSet follow) throws RecognitionException {
+	    	throw new MismatchedTokenException(ttype, input);
+	  	}
+
+	   @Override
+	   public void reportError(RecognitionException e) {
+	      super.reportError(e);
+	      RuntimeException re = hlp.createException(e);
+	      recover(input, e);
+	      throw re;
+	   }
+	   
+	   @Override
+	  	public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
+	    	throw e;
+	    }
+	  
+
+
+
 	// delegates
 	// delegators
 	public Lexer[] getDelegates() {
@@ -76,14 +101,14 @@ public class CLParameterLexer extends Lexer {
 	public CLParameterLexer(CharStream input, RecognizerSharedState state) {
 		super(input,state);
 	}
-	@Override public String getGrammarFileName() { return "/home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g"; }
+	@Override public String getGrammarFileName() { return "C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g"; }
 
 	// $ANTLR start "CAT"
 	public final void mCAT() throws RecognitionException {
 		try {
 			int _type = CAT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:127:9: ( '!!' | '*CAT' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:152:9: ( '!!' | '*CAT' )
 			int alt1=2;
 			int LA1_0 = input.LA(1);
 			if ( (LA1_0=='!') ) {
@@ -101,14 +126,14 @@ public class CLParameterLexer extends Lexer {
 
 			switch (alt1) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:127:11: '!!'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:152:11: '!!'
 					{
 					match("!!"); 
 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:127:18: '*CAT'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:152:18: '*CAT'
 					{
 					match("*CAT"); 
 
@@ -130,7 +155,7 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = BCAT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:129:9: ( '!>' | '*BCAT' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:154:9: ( '!>' | '*BCAT' )
 			int alt2=2;
 			int LA2_0 = input.LA(1);
 			if ( (LA2_0=='!') ) {
@@ -148,14 +173,14 @@ public class CLParameterLexer extends Lexer {
 
 			switch (alt2) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:129:11: '!>'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:154:11: '!>'
 					{
 					match("!>"); 
 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:129:18: '*BCAT'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:154:18: '*BCAT'
 					{
 					match("*BCAT"); 
 
@@ -177,7 +202,7 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = TCAT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:131:9: ( '!<' | '*TCAT' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:156:9: ( '!<' | '*TCAT' )
 			int alt3=2;
 			int LA3_0 = input.LA(1);
 			if ( (LA3_0=='!') ) {
@@ -195,14 +220,14 @@ public class CLParameterLexer extends Lexer {
 
 			switch (alt3) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:131:11: '!<'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:156:11: '!<'
 					{
 					match("!<"); 
 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:131:18: '*TCAT'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:156:18: '*TCAT'
 					{
 					match("*TCAT"); 
 
@@ -224,7 +249,7 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = SST;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:133:6: ( ( '%' S S T ) | ( '%' S U B S T R I N G ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:158:6: ( ( '%' S S T ) | ( '%' S U B S T R I N G ) )
 			int alt4=2;
 			int LA4_0 = input.LA(1);
 			if ( (LA4_0=='%') ) {
@@ -276,10 +301,10 @@ public class CLParameterLexer extends Lexer {
 
 			switch (alt4) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:133:8: ( '%' S S T )
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:158:8: ( '%' S S T )
 					{
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:133:8: ( '%' S S T )
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:133:9: '%' S S T
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:158:8: ( '%' S S T )
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:158:9: '%' S S T
 					{
 					match('%'); 
 					mS(); 
@@ -293,10 +318,10 @@ public class CLParameterLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:133:22: ( '%' S U B S T R I N G )
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:158:22: ( '%' S U B S T R I N G )
 					{
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:133:22: ( '%' S U B S T R I N G )
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:133:23: '%' S U B S T R I N G
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:158:22: ( '%' S U B S T R I N G )
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:158:23: '%' S U B S T R I N G
 					{
 					match('%'); 
 					mS(); 
@@ -337,8 +362,8 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = SWITCH;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:135:9: ( '%' S W I T C H )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:135:11: '%' S W I T C H
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:160:9: ( '%' S W I T C H )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:160:11: '%' S W I T C H
 			{
 			match('%'); 
 			mS(); 
@@ -369,7 +394,7 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = BINARY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:137:9: ( ( '%' B I N ) | ( '%' B I N A R Y ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:162:9: ( ( '%' B I N ) | ( '%' B I N A R Y ) )
 			int alt5=2;
 			int LA5_0 = input.LA(1);
 			if ( (LA5_0=='%') ) {
@@ -444,10 +469,10 @@ public class CLParameterLexer extends Lexer {
 
 			switch (alt5) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:137:11: ( '%' B I N )
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:162:11: ( '%' B I N )
 					{
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:137:11: ( '%' B I N )
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:137:12: '%' B I N
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:162:11: ( '%' B I N )
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:162:12: '%' B I N
 					{
 					match('%'); 
 					mB(); 
@@ -461,10 +486,10 @@ public class CLParameterLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:137:25: ( '%' B I N A R Y )
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:162:25: ( '%' B I N A R Y )
 					{
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:137:25: ( '%' B I N A R Y )
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:137:26: '%' B I N A R Y
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:162:25: ( '%' B I N A R Y )
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:162:26: '%' B I N A R Y
 					{
 					match('%'); 
 					mB(); 
@@ -499,12 +524,12 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = STRING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:139:8: ( APOS ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | '&' | ASTERISK | OPEN_BRACE | CLOSE_BRACE | ESCAPE )+ APOS )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:140:4: APOS ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | '&' | ASTERISK | OPEN_BRACE | CLOSE_BRACE | ESCAPE )+ APOS
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:164:8: ( APOS ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | '&' | ASTERISK | OPEN_BRACE | CLOSE_BRACE | ESCAPE )+ APOS )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:165:4: APOS ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | '&' | ASTERISK | OPEN_BRACE | CLOSE_BRACE | ESCAPE )+ APOS
 			{
 			mAPOS(); 
 
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:140:9: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | '&' | ASTERISK | OPEN_BRACE | CLOSE_BRACE | ESCAPE )+
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:165:9: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | '&' | ASTERISK | OPEN_BRACE | CLOSE_BRACE | ESCAPE )+
 			int cnt6=0;
 			loop6:
 			while (true) {
@@ -654,71 +679,71 @@ public class CLParameterLexer extends Lexer {
 				}
 				switch (alt6) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:140:10: 'a' .. 'z'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:165:10: 'a' .. 'z'
 					{
 					matchRange('a','z'); 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:140:19: 'A' .. 'Z'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:165:19: 'A' .. 'Z'
 					{
 					matchRange('A','Z'); 
 					}
 					break;
 				case 3 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:140:28: '0' .. '9'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:165:28: '0' .. '9'
 					{
 					matchRange('0','9'); 
 					}
 					break;
 				case 4 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:140:37: CHAR_SPECIAL
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:165:37: CHAR_SPECIAL
 					{
 					mCHAR_SPECIAL(); 
 
 					}
 					break;
 				case 5 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:140:50: ' '
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:165:50: ' '
 					{
 					match(' '); 
 					}
 					break;
 				case 6 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:140:54: '%'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:165:54: '%'
 					{
 					match('%'); 
 					}
 					break;
 				case 7 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:140:58: '&'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:165:58: '&'
 					{
 					match('&'); 
 					}
 					break;
 				case 8 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:140:62: ASTERISK
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:165:62: ASTERISK
 					{
 					mASTERISK(); 
 
 					}
 					break;
 				case 9 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:140:71: OPEN_BRACE
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:165:71: OPEN_BRACE
 					{
 					mOPEN_BRACE(); 
 
 					}
 					break;
 				case 10 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:140:82: CLOSE_BRACE
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:165:82: CLOSE_BRACE
 					{
 					mCLOSE_BRACE(); 
 
 					}
 					break;
 				case 11 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:140:94: ESCAPE
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:165:94: ESCAPE
 					{
 					mESCAPE(); 
 
@@ -751,10 +776,10 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = TOKEN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:143:6: ( ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+ )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:144:3: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:168:6: ( ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+ )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:169:3: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+
 			{
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:144:3: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:169:3: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+
 			int cnt7=0;
 			loop7:
 			while (true) {
@@ -766,7 +791,7 @@ public class CLParameterLexer extends Lexer {
 
 				switch (alt7) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 					{
 					if ( (input.LA(1) >= '!' && input.LA(1) <= '\"')||input.LA(1)=='$'||(input.LA(1) >= '+' && input.LA(1) <= ':')||(input.LA(1) >= '<' && input.LA(1) <= '?')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='\\'||(input.LA(1) >= '^' && input.LA(1) <= '_')||(input.LA(1) >= 'a' && input.LA(1) <= 'z')||input.LA(1)=='\u00A3'||input.LA(1)=='\u00A7'||input.LA(1)=='\u00E0'||(input.LA(1) >= '\u00E8' && input.LA(1) <= '\u00E9')||input.LA(1)=='\u00EC'||input.LA(1)=='\u00F2'||input.LA(1)=='\u00F9' ) {
 						input.consume();
@@ -803,8 +828,8 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = VARIABLE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:147:9: ( '&' TOKEN )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:148:4: '&' TOKEN
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:172:9: ( '&' TOKEN )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:173:4: '&' TOKEN
 			{
 			match('&'); 
 			mTOKEN(); 
@@ -825,8 +850,8 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = SPECIAL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:151:9: ( ASTERISK TOKEN )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:152:4: ASTERISK TOKEN
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:176:9: ( ASTERISK TOKEN )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:177:4: ASTERISK TOKEN
 			{
 			mASTERISK(); 
 
@@ -848,8 +873,8 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = FILTER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:155:8: ( TOKEN ASTERISK )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:156:2: TOKEN ASTERISK
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:180:8: ( TOKEN ASTERISK )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:181:2: TOKEN ASTERISK
 			{
 			mTOKEN(); 
 
@@ -871,8 +896,8 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = ASTERISK;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:159:9: ( '*' )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:160:2: '*'
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:184:9: ( '*' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:185:2: '*'
 			{
 			match('*'); 
 			}
@@ -891,13 +916,13 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = HEX;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:164:5: ( 'X' APOS ( '0' .. '9' | 'A' .. 'F' | 'a' .. 'f' )+ APOS )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:165:2: 'X' APOS ( '0' .. '9' | 'A' .. 'F' | 'a' .. 'f' )+ APOS
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:189:5: ( 'X' APOS ( '0' .. '9' | 'A' .. 'F' | 'a' .. 'f' )+ APOS )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:190:2: 'X' APOS ( '0' .. '9' | 'A' .. 'F' | 'a' .. 'f' )+ APOS
 			{
 			match('X'); 
 			mAPOS(); 
 
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:165:11: ( '0' .. '9' | 'A' .. 'F' | 'a' .. 'f' )+
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:190:11: ( '0' .. '9' | 'A' .. 'F' | 'a' .. 'f' )+
 			int cnt8=0;
 			loop8:
 			while (true) {
@@ -909,7 +934,7 @@ public class CLParameterLexer extends Lexer {
 
 				switch (alt8) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'F')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
 						input.consume();
@@ -948,8 +973,8 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = OPEN_BRACE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:169:3: ( '(' )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:170:3: '('
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:194:3: ( '(' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:195:3: '('
 			{
 			match('('); 
 			}
@@ -968,8 +993,8 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = CLOSE_BRACE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:174:3: ( ')' )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:175:3: ')'
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:199:3: ( ')' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:200:3: ')'
 			{
 			match(')'); 
 			}
@@ -988,8 +1013,8 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = ESCAPE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:179:2: ( APOS APOS )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:180:2: APOS APOS
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:204:2: ( APOS APOS )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:205:2: APOS APOS
 			{
 			mAPOS(); 
 
@@ -1011,8 +1036,8 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = APOS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:183:6: ( '\\'' )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:184:2: '\\''
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:208:6: ( '\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:209:2: '\\''
 			{
 			match('\''); 
 			}
@@ -1031,7 +1056,7 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = COMMENT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:188:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:213:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
 			int alt12=2;
 			int LA12_0 = input.LA(1);
 			if ( (LA12_0=='/') ) {
@@ -1065,11 +1090,11 @@ public class CLParameterLexer extends Lexer {
 
 			switch (alt12) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:188:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:213:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
 					{
 					match("//"); 
 
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:188:14: (~ ( '\\n' | '\\r' ) )*
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:213:14: (~ ( '\\n' | '\\r' ) )*
 					loop9:
 					while (true) {
 						int alt9=2;
@@ -1080,7 +1105,7 @@ public class CLParameterLexer extends Lexer {
 
 						switch (alt9) {
 						case 1 :
-							// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+							// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 							{
 							if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '\uFFFF') ) {
 								input.consume();
@@ -1098,7 +1123,7 @@ public class CLParameterLexer extends Lexer {
 						}
 					}
 
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:188:28: ( '\\r' )?
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:213:28: ( '\\r' )?
 					int alt10=2;
 					int LA10_0 = input.LA(1);
 					if ( (LA10_0=='\r') ) {
@@ -1106,7 +1131,7 @@ public class CLParameterLexer extends Lexer {
 					}
 					switch (alt10) {
 						case 1 :
-							// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:188:28: '\\r'
+							// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:213:28: '\\r'
 							{
 							match('\r'); 
 							}
@@ -1119,11 +1144,11 @@ public class CLParameterLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:189:9: '/*' ( options {greedy=false; } : . )* '*/'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:214:9: '/*' ( options {greedy=false; } : . )* '*/'
 					{
 					match("/*"); 
 
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:189:14: ( options {greedy=false; } : . )*
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:214:14: ( options {greedy=false; } : . )*
 					loop11:
 					while (true) {
 						int alt11=2;
@@ -1144,7 +1169,7 @@ public class CLParameterLexer extends Lexer {
 
 						switch (alt11) {
 						case 1 :
-							// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:189:42: .
+							// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:214:42: .
 							{
 							matchAny(); 
 							}
@@ -1176,10 +1201,10 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = CR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:192:4: ( ( '\\r' )? '\\n' )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:193:3: ( '\\r' )? '\\n'
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:217:4: ( ( '\\r' )? '\\n' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:218:3: ( '\\r' )? '\\n'
 			{
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:193:3: ( '\\r' )?
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:218:3: ( '\\r' )?
 			int alt13=2;
 			int LA13_0 = input.LA(1);
 			if ( (LA13_0=='\r') ) {
@@ -1187,7 +1212,7 @@ public class CLParameterLexer extends Lexer {
 			}
 			switch (alt13) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:193:4: '\\r'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:218:4: '\\r'
 					{
 					match('\r'); 
 					}
@@ -1212,8 +1237,8 @@ public class CLParameterLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:196:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:196:9: ( ' ' | '\\t' | '\\r' | '\\n' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:221:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:221:9: ( ' ' | '\\t' | '\\r' | '\\n' )
 			{
 			if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
 				input.consume();
@@ -1238,8 +1263,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "A"
 	public final void mA() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:204:11: ( ( 'a' | 'A' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:229:11: ( ( 'a' | 'A' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
 				input.consume();
@@ -1261,8 +1286,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "B"
 	public final void mB() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:205:11: ( ( 'b' | 'B' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:230:11: ( ( 'b' | 'B' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
 				input.consume();
@@ -1284,8 +1309,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "C"
 	public final void mC() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:206:11: ( ( 'c' | 'C' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:231:11: ( ( 'c' | 'C' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
 				input.consume();
@@ -1307,8 +1332,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "D"
 	public final void mD() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:207:11: ( ( 'd' | 'D' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:232:11: ( ( 'd' | 'D' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
 				input.consume();
@@ -1330,8 +1355,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "E"
 	public final void mE() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:208:11: ( ( 'e' | 'E' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:233:11: ( ( 'e' | 'E' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
 				input.consume();
@@ -1353,8 +1378,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "F"
 	public final void mF() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:209:11: ( ( 'f' | 'F' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:234:11: ( ( 'f' | 'F' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
 				input.consume();
@@ -1376,8 +1401,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "G"
 	public final void mG() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:210:11: ( ( 'g' | 'G' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:235:11: ( ( 'g' | 'G' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='G'||input.LA(1)=='g' ) {
 				input.consume();
@@ -1399,8 +1424,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "H"
 	public final void mH() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:211:11: ( ( 'h' | 'H' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:236:11: ( ( 'h' | 'H' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='H'||input.LA(1)=='h' ) {
 				input.consume();
@@ -1422,8 +1447,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "I"
 	public final void mI() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:212:11: ( ( 'i' | 'I' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:237:11: ( ( 'i' | 'I' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
 				input.consume();
@@ -1445,8 +1470,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "J"
 	public final void mJ() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:213:11: ( ( 'j' | 'J' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:238:11: ( ( 'j' | 'J' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='J'||input.LA(1)=='j' ) {
 				input.consume();
@@ -1468,8 +1493,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "K"
 	public final void mK() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:214:11: ( ( 'k' | 'K' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:239:11: ( ( 'k' | 'K' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='K'||input.LA(1)=='k' ) {
 				input.consume();
@@ -1491,8 +1516,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "L"
 	public final void mL() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:215:11: ( ( 'l' | 'L' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:240:11: ( ( 'l' | 'L' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
 				input.consume();
@@ -1514,8 +1539,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "M"
 	public final void mM() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:216:11: ( ( 'm' | 'M' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:241:11: ( ( 'm' | 'M' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='M'||input.LA(1)=='m' ) {
 				input.consume();
@@ -1537,8 +1562,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "N"
 	public final void mN() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:217:11: ( ( 'n' | 'N' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:242:11: ( ( 'n' | 'N' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='N'||input.LA(1)=='n' ) {
 				input.consume();
@@ -1560,8 +1585,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "O"
 	public final void mO() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:218:11: ( ( 'o' | 'O' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:243:11: ( ( 'o' | 'O' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='O'||input.LA(1)=='o' ) {
 				input.consume();
@@ -1583,8 +1608,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "P"
 	public final void mP() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:219:11: ( ( 'p' | 'P' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:244:11: ( ( 'p' | 'P' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
 				input.consume();
@@ -1606,8 +1631,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "Q"
 	public final void mQ() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:220:11: ( ( 'q' | 'Q' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:245:11: ( ( 'q' | 'Q' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='Q'||input.LA(1)=='q' ) {
 				input.consume();
@@ -1629,8 +1654,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "R"
 	public final void mR() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:221:11: ( ( 'r' | 'R' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:246:11: ( ( 'r' | 'R' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
 				input.consume();
@@ -1652,8 +1677,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "S"
 	public final void mS() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:222:11: ( ( 's' | 'S' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:247:11: ( ( 's' | 'S' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
 				input.consume();
@@ -1675,8 +1700,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "T"
 	public final void mT() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:223:11: ( ( 't' | 'T' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:248:11: ( ( 't' | 'T' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
 				input.consume();
@@ -1698,8 +1723,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "U"
 	public final void mU() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:224:11: ( ( 'u' | 'U' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:249:11: ( ( 'u' | 'U' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='U'||input.LA(1)=='u' ) {
 				input.consume();
@@ -1721,8 +1746,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "V"
 	public final void mV() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:225:11: ( ( 'v' | 'V' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:250:11: ( ( 'v' | 'V' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='V'||input.LA(1)=='v' ) {
 				input.consume();
@@ -1744,8 +1769,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "W"
 	public final void mW() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:226:11: ( ( 'w' | 'W' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:251:11: ( ( 'w' | 'W' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='W'||input.LA(1)=='w' ) {
 				input.consume();
@@ -1767,8 +1792,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "X"
 	public final void mX() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:227:11: ( ( 'x' | 'X' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:252:11: ( ( 'x' | 'X' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='X'||input.LA(1)=='x' ) {
 				input.consume();
@@ -1790,8 +1815,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "Y"
 	public final void mY() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:228:11: ( ( 'y' | 'Y' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:253:11: ( ( 'y' | 'Y' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='Y'||input.LA(1)=='y' ) {
 				input.consume();
@@ -1813,8 +1838,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "Z"
 	public final void mZ() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:229:11: ( ( 'z' | 'Z' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:254:11: ( ( 'z' | 'Z' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( input.LA(1)=='Z'||input.LA(1)=='z' ) {
 				input.consume();
@@ -1836,8 +1861,8 @@ public class CLParameterLexer extends Lexer {
 	// $ANTLR start "CHAR_SPECIAL"
 	public final void mCHAR_SPECIAL() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:234:3: ( ( '\\u00A7' | '$' | '_' | '.' | '^' | '\\u00e0' | '\\u00e8' | '\\u00e9' | '\\u00ec' | '\\u00f2' | '\\u00f9' | '\"' | '?' | ',' | '\\u00a3' | '!' | '=' | '>' | '<' | '+' | '-' | '/' | '\\\\' | ':' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:259:3: ( ( '\\u00A7' | '$' | '_' | '.' | '^' | '\\u00e0' | '\\u00e8' | '\\u00e9' | '\\u00ec' | '\\u00f2' | '\\u00f9' | '\"' | '?' | ',' | '\\u00a3' | '!' | '=' | '>' | '<' | '+' | '-' | '/' | '\\\\' | ':' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
 			{
 			if ( (input.LA(1) >= '!' && input.LA(1) <= '\"')||input.LA(1)=='$'||(input.LA(1) >= '+' && input.LA(1) <= '/')||input.LA(1)==':'||(input.LA(1) >= '<' && input.LA(1) <= '?')||input.LA(1)=='\\'||(input.LA(1) >= '^' && input.LA(1) <= '_')||input.LA(1)=='\u00A3'||input.LA(1)=='\u00A7'||input.LA(1)=='\u00E0'||(input.LA(1) >= '\u00E8' && input.LA(1) <= '\u00E9')||input.LA(1)=='\u00EC'||input.LA(1)=='\u00F2'||input.LA(1)=='\u00F9' ) {
 				input.consume();
@@ -1858,145 +1883,145 @@ public class CLParameterLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:8: ( CAT | BCAT | TCAT | SST | SWITCH | BINARY | STRING | TOKEN | VARIABLE | SPECIAL | FILTER | ASTERISK | HEX | OPEN_BRACE | CLOSE_BRACE | ESCAPE | APOS | COMMENT | CR | WS )
+		// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:8: ( CAT | BCAT | TCAT | SST | SWITCH | BINARY | STRING | TOKEN | VARIABLE | SPECIAL | FILTER | ASTERISK | HEX | OPEN_BRACE | CLOSE_BRACE | ESCAPE | APOS | COMMENT | CR | WS )
 		int alt14=20;
 		alt14 = dfa14.predict(input);
 		switch (alt14) {
 			case 1 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:10: CAT
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:10: CAT
 				{
 				mCAT(); 
 
 				}
 				break;
 			case 2 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:14: BCAT
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:14: BCAT
 				{
 				mBCAT(); 
 
 				}
 				break;
 			case 3 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:19: TCAT
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:19: TCAT
 				{
 				mTCAT(); 
 
 				}
 				break;
 			case 4 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:24: SST
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:24: SST
 				{
 				mSST(); 
 
 				}
 				break;
 			case 5 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:28: SWITCH
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:28: SWITCH
 				{
 				mSWITCH(); 
 
 				}
 				break;
 			case 6 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:35: BINARY
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:35: BINARY
 				{
 				mBINARY(); 
 
 				}
 				break;
 			case 7 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:42: STRING
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:42: STRING
 				{
 				mSTRING(); 
 
 				}
 				break;
 			case 8 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:49: TOKEN
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:49: TOKEN
 				{
 				mTOKEN(); 
 
 				}
 				break;
 			case 9 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:55: VARIABLE
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:55: VARIABLE
 				{
 				mVARIABLE(); 
 
 				}
 				break;
 			case 10 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:64: SPECIAL
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:64: SPECIAL
 				{
 				mSPECIAL(); 
 
 				}
 				break;
 			case 11 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:72: FILTER
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:72: FILTER
 				{
 				mFILTER(); 
 
 				}
 				break;
 			case 12 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:79: ASTERISK
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:79: ASTERISK
 				{
 				mASTERISK(); 
 
 				}
 				break;
 			case 13 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:88: HEX
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:88: HEX
 				{
 				mHEX(); 
 
 				}
 				break;
 			case 14 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:92: OPEN_BRACE
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:92: OPEN_BRACE
 				{
 				mOPEN_BRACE(); 
 
 				}
 				break;
 			case 15 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:103: CLOSE_BRACE
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:103: CLOSE_BRACE
 				{
 				mCLOSE_BRACE(); 
 
 				}
 				break;
 			case 16 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:115: ESCAPE
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:115: ESCAPE
 				{
 				mESCAPE(); 
 
 				}
 				break;
 			case 17 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:122: APOS
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:122: APOS
 				{
 				mAPOS(); 
 
 				}
 				break;
 			case 18 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:127: COMMENT
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:127: COMMENT
 				{
 				mCOMMENT(); 
 
 				}
 				break;
 			case 19 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:135: CR
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:135: CR
 				{
 				mCR(); 
 
 				}
 				break;
 			case 20 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CLParameter.g:1:138: WS
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:1:138: WS
 				{
 				mWS(); 
 
@@ -2027,7 +2052,7 @@ public class CLParameterLexer extends Lexer {
 		"\uffff\1\14\1\12\1\uffff\1\6\1\21\1\7\1\uffff\1\15\2\uffff\1\23\1\1\1"+
 		"\2\1\3\3\uffff\1\4\1\5\1\20\1\uffff\1\22\6\uffff";
 	static final String DFA14_specialS =
-		"\36\uffff\1\1\1\2\12\uffff\1\3\1\uffff\1\0\5\uffff}>";
+		"\36\uffff\1\2\1\3\12\uffff\1\1\1\uffff\1\0\5\uffff}>";
 	static final String[] DFA14_transitionS = {
 			"\1\15\1\14\2\uffff\1\13\22\uffff\1\15\1\1\1\12\1\uffff\1\12\1\3\1\6\1"+
 			"\4\1\10\1\11\1\2\4\12\1\7\13\12\1\uffff\4\12\1\uffff\27\12\1\5\2\12\1"+
@@ -2164,6 +2189,16 @@ public class CLParameterLexer extends Lexer {
 						break;
 
 					case 1 : 
+						int LA14_42 = input.LA(1);
+						s = -1;
+						if ( ((LA14_42 >= '\u0000' && LA14_42 <= ' ')||LA14_42=='#'||(LA14_42 >= '%' && LA14_42 <= ')')||LA14_42==';'||LA14_42=='@'||LA14_42=='['||LA14_42==']'||LA14_42=='`'||(LA14_42 >= '{' && LA14_42 <= '\u00A2')||(LA14_42 >= '\u00A4' && LA14_42 <= '\u00A6')||(LA14_42 >= '\u00A8' && LA14_42 <= '\u00DF')||(LA14_42 >= '\u00E1' && LA14_42 <= '\u00E7')||(LA14_42 >= '\u00EA' && LA14_42 <= '\u00EB')||(LA14_42 >= '\u00ED' && LA14_42 <= '\u00F1')||(LA14_42 >= '\u00F3' && LA14_42 <= '\u00F8')||(LA14_42 >= '\u00FA' && LA14_42 <= '\uFFFF')) ) {s = 43;}
+						else if ( ((LA14_42 >= '!' && LA14_42 <= '\"')||LA14_42=='$'||(LA14_42 >= '+' && LA14_42 <= ':')||(LA14_42 >= '<' && LA14_42 <= '?')||(LA14_42 >= 'A' && LA14_42 <= 'Z')||LA14_42=='\\'||(LA14_42 >= '^' && LA14_42 <= '_')||(LA14_42 >= 'a' && LA14_42 <= 'z')||LA14_42=='\u00A3'||LA14_42=='\u00A7'||LA14_42=='\u00E0'||(LA14_42 >= '\u00E8' && LA14_42 <= '\u00E9')||LA14_42=='\u00EC'||LA14_42=='\u00F2'||LA14_42=='\u00F9') ) {s = 42;}
+						else if ( (LA14_42=='*') ) {s = 44;}
+						else s = 17;
+						if ( s>=0 ) return s;
+						break;
+
+					case 2 : 
 						int LA14_30 = input.LA(1);
 						s = -1;
 						if ( ((LA14_30 >= '!' && LA14_30 <= '\"')||LA14_30=='$'||(LA14_30 >= '+' && LA14_30 <= ':')||(LA14_30 >= '<' && LA14_30 <= '?')||(LA14_30 >= 'A' && LA14_30 <= 'Z')||LA14_30=='\\'||(LA14_30 >= '^' && LA14_30 <= '_')||(LA14_30 >= 'a' && LA14_30 <= 'z')||LA14_30=='\u00A3'||LA14_30=='\u00A7'||LA14_30=='\u00E0'||(LA14_30 >= '\u00E8' && LA14_30 <= '\u00E9')||LA14_30=='\u00EC'||LA14_30=='\u00F2'||LA14_30=='\u00F9') ) {s = 42;}
@@ -2173,21 +2208,11 @@ public class CLParameterLexer extends Lexer {
 						if ( s>=0 ) return s;
 						break;
 
-					case 2 : 
+					case 3 : 
 						int LA14_31 = input.LA(1);
 						s = -1;
 						if ( ((LA14_31 >= '\u0000' && LA14_31 <= '\uFFFF')) ) {s = 43;}
 						else s = 18;
-						if ( s>=0 ) return s;
-						break;
-
-					case 3 : 
-						int LA14_42 = input.LA(1);
-						s = -1;
-						if ( ((LA14_42 >= '\u0000' && LA14_42 <= ' ')||LA14_42=='#'||(LA14_42 >= '%' && LA14_42 <= ')')||LA14_42==';'||LA14_42=='@'||LA14_42=='['||LA14_42==']'||LA14_42=='`'||(LA14_42 >= '{' && LA14_42 <= '\u00A2')||(LA14_42 >= '\u00A4' && LA14_42 <= '\u00A6')||(LA14_42 >= '\u00A8' && LA14_42 <= '\u00DF')||(LA14_42 >= '\u00E1' && LA14_42 <= '\u00E7')||(LA14_42 >= '\u00EA' && LA14_42 <= '\u00EB')||(LA14_42 >= '\u00ED' && LA14_42 <= '\u00F1')||(LA14_42 >= '\u00F3' && LA14_42 <= '\u00F8')||(LA14_42 >= '\u00FA' && LA14_42 <= '\uFFFF')) ) {s = 43;}
-						else if ( ((LA14_42 >= '!' && LA14_42 <= '\"')||LA14_42=='$'||(LA14_42 >= '+' && LA14_42 <= ':')||(LA14_42 >= '<' && LA14_42 <= '?')||(LA14_42 >= 'A' && LA14_42 <= 'Z')||LA14_42=='\\'||(LA14_42 >= '^' && LA14_42 <= '_')||(LA14_42 >= 'a' && LA14_42 <= 'z')||LA14_42=='\u00A3'||LA14_42=='\u00A7'||LA14_42=='\u00E0'||(LA14_42 >= '\u00E8' && LA14_42 <= '\u00E9')||LA14_42=='\u00EC'||LA14_42=='\u00F2'||LA14_42=='\u00F9') ) {s = 42;}
-						else if ( (LA14_42=='*') ) {s = 44;}
-						else s = 17;
 						if ( s>=0 ) return s;
 						break;
 			}

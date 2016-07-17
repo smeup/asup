@@ -718,6 +718,12 @@ public class XMICLProgramWriter {
 		dataTerm.setName(varName);
 
 		if (varValue != null) {
+			
+			// Remove ' delimiters, if exists
+			if (varValue.length()>1 && varValue.startsWith("'") && varValue.endsWith("'")) {
+				varValue = varValue.substring(1, varValue.length()-1);
+			}
+			
 			QDefault default_ = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createDefault();
 			default_.setValue(varValue);
 			dataTerm.setDefault(default_);

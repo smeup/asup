@@ -1,10 +1,11 @@
-// $ANTLR 3.5.1 /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g 2015-05-26 20:06:35
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g 2016-07-12 15:53:30
 
   package org.smeup.sys.dk.parser.ibmi.cl.antlr;
 
-  import org.antlr.runtime.*;
-import org.smeup.sys.dk.parser.ibmi.cl.util.LexerHelper;
+  import org.smeup.sys.dk.parser.ibmi.cl.util.LexerHelper;
 
+
+import org.antlr.runtime.*;
 import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
@@ -34,8 +35,29 @@ public class CLLexer extends Lexer {
 	public static final int TOKEN=23;
 	public static final int WS=24;
 
+
+	  public LexerHelper hlp = new LexerHelper();	
+
 	  int openBraces = 0;
 	  int closeBraces = 0;
+	  
+	  @Override
+	  	protected Object recoverFromMismatchedToken(IntStream input, int ttype, BitSet follow) throws RecognitionException {
+	    	throw new MismatchedTokenException(ttype, input);
+	  	}
+
+	   @Override
+	   public void reportError(RecognitionException e) {
+	      super.reportError(e);
+	      RuntimeException re = hlp.createException(e);
+	      recover(input, e);
+	      throw re;
+	   }
+
+	   @Override
+	  	public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
+	    	throw e;
+	    }
 
 
 	// delegates
@@ -51,15 +73,15 @@ public class CLLexer extends Lexer {
 	public CLLexer(CharStream input, RecognizerSharedState state) {
 		super(input,state);
 	}
-	@Override public String getGrammarFileName() { return "/home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g"; }
+	@Override public String getGrammarFileName() { return "C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g"; }
 
 	// $ANTLR start "LABEL"
 	public final void mLABEL() throws RecognitionException {
 		try {
 			int _type = LABEL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:155:7: ( TOKEN ':' )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:155:9: TOKEN ':'
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:176:7: ( TOKEN ':' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:176:9: TOKEN ':'
 			{
 			mTOKEN(); 
 
@@ -80,8 +102,8 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = FUN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:158:5: ( '%' TOKEN )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:159:4: '%' TOKEN
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:179:5: ( '%' TOKEN )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:180:4: '%' TOKEN
 			{
 			match('%'); 
 			mTOKEN(); 
@@ -102,15 +124,15 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = STRING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:162:8: ({...}? => APOS ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | ':' | ESCAPE )+ APOS )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:4: {...}? => APOS ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | ':' | ESCAPE )+ APOS
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:183:8: ({...}? => APOS ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | ':' | ESCAPE )+ APOS )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:184:4: {...}? => APOS ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | ':' | ESCAPE )+ APOS
 			{
 			if ( !(((openBraces - closeBraces) == 0)) ) {
 				throw new FailedPredicateException(input, "STRING", "(openBraces - closeBraces) == 0");
 			}
 			mAPOS(); 
 
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:46: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | ':' | ESCAPE )+
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:184:46: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | ' ' | '%' | ':' | ESCAPE )+
 			int cnt1=0;
 			loop1:
 			while (true) {
@@ -246,50 +268,50 @@ public class CLLexer extends Lexer {
 				}
 				switch (alt1) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:47: 'a' .. 'z'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:184:47: 'a' .. 'z'
 					{
 					matchRange('a','z'); 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:56: 'A' .. 'Z'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:184:56: 'A' .. 'Z'
 					{
 					matchRange('A','Z'); 
 					}
 					break;
 				case 3 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:65: '0' .. '9'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:184:65: '0' .. '9'
 					{
 					matchRange('0','9'); 
 					}
 					break;
 				case 4 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:74: CHAR_SPECIAL
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:184:74: CHAR_SPECIAL
 					{
 					mCHAR_SPECIAL(); 
 
 					}
 					break;
 				case 5 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:87: ' '
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:184:87: ' '
 					{
 					match(' '); 
 					}
 					break;
 				case 6 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:91: '%'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:184:91: '%'
 					{
 					match('%'); 
 					}
 					break;
 				case 7 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:95: ':'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:184:95: ':'
 					{
 					match(':'); 
 					}
 					break;
 				case 8 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:163:99: ESCAPE
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:184:99: ESCAPE
 					{
 					mESCAPE(); 
 
@@ -322,13 +344,13 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = TOKEN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:166:6: ({...}? => ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+ )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:166:8: {...}? => ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:187:6: ({...}? => ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+ )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:187:8: {...}? => ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+
 			{
 			if ( !(((openBraces - closeBraces) == 0)) ) {
 				throw new FailedPredicateException(input, "TOKEN", "(openBraces - closeBraces) == 0");
 			}
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:166:44: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:187:44: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL )+
 			int cnt2=0;
 			loop2:
 			while (true) {
@@ -340,7 +362,7 @@ public class CLLexer extends Lexer {
 
 				switch (alt2) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:
 					{
 					if ( (input.LA(1) >= '!' && input.LA(1) <= '\"')||input.LA(1)=='$'||input.LA(1)=='&'||(input.LA(1) >= '*' && input.LA(1) <= '9')||(input.LA(1) >= '<' && input.LA(1) <= '?')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='\\'||(input.LA(1) >= '^' && input.LA(1) <= '_')||(input.LA(1) >= 'a' && input.LA(1) <= 'z')||input.LA(1)=='\u00A3'||input.LA(1)=='\u00A7'||input.LA(1)=='\u00E0'||(input.LA(1) >= '\u00E8' && input.LA(1) <= '\u00E9')||input.LA(1)=='\u00EC'||input.LA(1)=='\u00F2'||input.LA(1)=='\u00F9' ) {
 						input.consume();
@@ -377,12 +399,12 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = PAREN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:6: ( OPEN_BRACE ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | APOS | ' ' | PAREN | '%' | ':' )* CLOSE_BRACE )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:8: OPEN_BRACE ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | APOS | ' ' | PAREN | '%' | ':' )* CLOSE_BRACE
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:190:6: ( OPEN_BRACE ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | APOS | ' ' | PAREN | '%' | ':' )* CLOSE_BRACE )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:190:8: OPEN_BRACE ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | APOS | ' ' | PAREN | '%' | ':' )* CLOSE_BRACE
 			{
 			mOPEN_BRACE(); 
 
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:19: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | APOS | ' ' | PAREN | '%' | ':' )*
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:190:19: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | CHAR_SPECIAL | APOS | ' ' | PAREN | '%' | ':' )*
 			loop3:
 			while (true) {
 				int alt3=10;
@@ -518,58 +540,58 @@ public class CLLexer extends Lexer {
 				}
 				switch (alt3) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:20: 'a' .. 'z'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:190:20: 'a' .. 'z'
 					{
 					matchRange('a','z'); 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:29: 'A' .. 'Z'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:190:29: 'A' .. 'Z'
 					{
 					matchRange('A','Z'); 
 					}
 					break;
 				case 3 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:38: '0' .. '9'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:190:38: '0' .. '9'
 					{
 					matchRange('0','9'); 
 					}
 					break;
 				case 4 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:47: CHAR_SPECIAL
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:190:47: CHAR_SPECIAL
 					{
 					mCHAR_SPECIAL(); 
 
 					}
 					break;
 				case 5 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:60: APOS
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:190:60: APOS
 					{
 					mAPOS(); 
 
 					}
 					break;
 				case 6 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:65: ' '
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:190:65: ' '
 					{
 					match(' '); 
 					}
 					break;
 				case 7 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:69: PAREN
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:190:69: PAREN
 					{
 					mPAREN(); 
 
 					}
 					break;
 				case 8 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:75: '%'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:190:75: '%'
 					{
 					match('%'); 
 					}
 					break;
 				case 9 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:169:79: ':'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:190:79: ':'
 					{
 					match(':'); 
 					}
@@ -598,8 +620,8 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = OPEN_BRACE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:173:3: ( '(' )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:174:3: '('
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:194:3: ( '(' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:195:3: '('
 			{
 			match('('); 
 			openBraces++;
@@ -619,8 +641,8 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = CLOSE_BRACE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:178:3: ( ')' )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:179:3: ')'
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:199:3: ( ')' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:200:3: ')'
 			{
 			match(')'); 
 			closeBraces++;
@@ -640,7 +662,7 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = COMMENT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:183:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:204:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
 			int alt7=2;
 			int LA7_0 = input.LA(1);
 			if ( (LA7_0=='/') ) {
@@ -674,11 +696,11 @@ public class CLLexer extends Lexer {
 
 			switch (alt7) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:183:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:204:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
 					{
 					match("//"); 
 
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:183:14: (~ ( '\\n' | '\\r' ) )*
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:204:14: (~ ( '\\n' | '\\r' ) )*
 					loop4:
 					while (true) {
 						int alt4=2;
@@ -689,7 +711,7 @@ public class CLLexer extends Lexer {
 
 						switch (alt4) {
 						case 1 :
-							// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:
+							// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:
 							{
 							if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '\uFFFF') ) {
 								input.consume();
@@ -707,7 +729,7 @@ public class CLLexer extends Lexer {
 						}
 					}
 
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:183:28: ( '\\r' )?
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:204:28: ( '\\r' )?
 					int alt5=2;
 					int LA5_0 = input.LA(1);
 					if ( (LA5_0=='\r') ) {
@@ -715,7 +737,7 @@ public class CLLexer extends Lexer {
 					}
 					switch (alt5) {
 						case 1 :
-							// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:183:28: '\\r'
+							// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:204:28: '\\r'
 							{
 							match('\r'); 
 							}
@@ -728,11 +750,11 @@ public class CLLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:184:9: '/*' ( options {greedy=false; } : . )* '*/'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:205:9: '/*' ( options {greedy=false; } : . )* '*/'
 					{
 					match("/*"); 
 
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:184:14: ( options {greedy=false; } : . )*
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:205:14: ( options {greedy=false; } : . )*
 					loop6:
 					while (true) {
 						int alt6=2;
@@ -753,7 +775,7 @@ public class CLLexer extends Lexer {
 
 						switch (alt6) {
 						case 1 :
-							// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:184:42: .
+							// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:205:42: .
 							{
 							matchAny(); 
 							}
@@ -785,10 +807,10 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = CR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:187:4: ( ( '\\r' )? '\\n' )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:188:3: ( '\\r' )? '\\n'
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:208:4: ( ( '\\r' )? '\\n' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:209:3: ( '\\r' )? '\\n'
 			{
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:188:3: ( '\\r' )?
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:209:3: ( '\\r' )?
 			int alt8=2;
 			int LA8_0 = input.LA(1);
 			if ( (LA8_0=='\r') ) {
@@ -796,7 +818,7 @@ public class CLLexer extends Lexer {
 			}
 			switch (alt8) {
 				case 1 :
-					// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:188:4: '\\r'
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:209:4: '\\r'
 					{
 					match('\r'); 
 					}
@@ -821,8 +843,8 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:191:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:212:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:
 			{
 			if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
 				input.consume();
@@ -848,8 +870,8 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = ESCAPE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:199:8: ( APOS APOS )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:200:2: APOS APOS
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:220:8: ( APOS APOS )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:221:2: APOS APOS
 			{
 			mAPOS(); 
 
@@ -871,8 +893,8 @@ public class CLLexer extends Lexer {
 		try {
 			int _type = APOS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:203:6: ( '\\'' )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:204:2: '\\''
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:224:6: ( '\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:225:2: '\\''
 			{
 			match('\''); 
 			}
@@ -889,8 +911,8 @@ public class CLLexer extends Lexer {
 	// $ANTLR start "CHAR_SPECIAL"
 	public final void mCHAR_SPECIAL() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:210:3: ( ( '\\u00A7' | '$' | '_' | '.' | '^' | '\\u00e0' | '\\u00e8' | '\\u00e9' | '\\u00ec' | '\\u00f2' | '\\u00f9' | '\"' | '?' | ',' | '\\u00a3' | '&' | '*' | '/' | '=' | '>' | '<' | '+' | '-' | '!' | '\\\\' ) )
-			// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:231:3: ( ( '\\u00A7' | '$' | '_' | '.' | '^' | '\\u00e0' | '\\u00e8' | '\\u00e9' | '\\u00ec' | '\\u00f2' | '\\u00f9' | '\"' | '?' | ',' | '\\u00a3' | '&' | '*' | '/' | '=' | '>' | '<' | '+' | '-' | '!' | '\\\\' ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:
 			{
 			if ( (input.LA(1) >= '!' && input.LA(1) <= '\"')||input.LA(1)=='$'||input.LA(1)=='&'||(input.LA(1) >= '*' && input.LA(1) <= '/')||(input.LA(1) >= '<' && input.LA(1) <= '?')||input.LA(1)=='\\'||(input.LA(1) >= '^' && input.LA(1) <= '_')||input.LA(1)=='\u00A3'||input.LA(1)=='\u00A7'||input.LA(1)=='\u00E0'||(input.LA(1) >= '\u00E8' && input.LA(1) <= '\u00E9')||input.LA(1)=='\u00EC'||input.LA(1)=='\u00F2'||input.LA(1)=='\u00F9' ) {
 				input.consume();
@@ -911,89 +933,89 @@ public class CLLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:8: ( LABEL | FUN | STRING | TOKEN | PAREN | OPEN_BRACE | CLOSE_BRACE | COMMENT | CR | WS | ESCAPE | APOS )
+		// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:1:8: ( LABEL | FUN | STRING | TOKEN | PAREN | OPEN_BRACE | CLOSE_BRACE | COMMENT | CR | WS | ESCAPE | APOS )
 		int alt9=12;
 		alt9 = dfa9.predict(input);
 		switch (alt9) {
 			case 1 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:10: LABEL
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:1:10: LABEL
 				{
 				mLABEL(); 
 
 				}
 				break;
 			case 2 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:16: FUN
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:1:16: FUN
 				{
 				mFUN(); 
 
 				}
 				break;
 			case 3 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:20: STRING
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:1:20: STRING
 				{
 				mSTRING(); 
 
 				}
 				break;
 			case 4 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:27: TOKEN
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:1:27: TOKEN
 				{
 				mTOKEN(); 
 
 				}
 				break;
 			case 5 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:33: PAREN
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:1:33: PAREN
 				{
 				mPAREN(); 
 
 				}
 				break;
 			case 6 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:39: OPEN_BRACE
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:1:39: OPEN_BRACE
 				{
 				mOPEN_BRACE(); 
 
 				}
 				break;
 			case 7 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:50: CLOSE_BRACE
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:1:50: CLOSE_BRACE
 				{
 				mCLOSE_BRACE(); 
 
 				}
 				break;
 			case 8 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:62: COMMENT
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:1:62: COMMENT
 				{
 				mCOMMENT(); 
 
 				}
 				break;
 			case 9 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:70: CR
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:1:70: CR
 				{
 				mCR(); 
 
 				}
 				break;
 			case 10 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:73: WS
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:1:73: WS
 				{
 				mWS(); 
 
 				}
 				break;
 			case 11 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:76: ESCAPE
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:1:76: ESCAPE
 				{
 				mESCAPE(); 
 
 				}
 				break;
 			case 12 :
-				// /home/jamiro/Dati/eclipse/workspace_asup_0.8.0/org.asup.dk.parser.ibmi/src/org/asup/dk/parser/ibmi/cl/antlr/CL.g:1:83: APOS
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CL.g:1:83: APOS
 				{
 				mAPOS(); 
 
@@ -1020,8 +1042,8 @@ public class CLLexer extends Lexer {
 		"\2\uffff\1\2\2\uffff\1\7\2\uffff\1\11\1\12\2\uffff\1\4\1\1\1\14\1\3\1"+
 		"\uffff\1\6\1\5\1\11\1\uffff\1\10\4\uffff\1\13\2\uffff";
 	static final String DFA9_specialS =
-		"\1\5\1\2\1\uffff\1\3\2\uffff\1\15\3\uffff\1\4\1\13\4\uffff\1\12\3\uffff"+
-		"\1\0\1\uffff\1\1\1\6\1\7\1\10\1\uffff\1\11\1\14}>";
+		"\1\2\1\4\1\uffff\1\13\2\uffff\1\12\3\uffff\1\7\1\15\4\uffff\1\0\3\uffff"+
+		"\1\10\1\uffff\1\1\1\5\1\3\1\14\1\uffff\1\6\1\11}>";
 	static final String[] DFA9_transitionS = {
 			"\1\11\1\10\2\uffff\1\7\22\uffff\1\11\2\6\1\uffff\1\6\1\2\1\6\1\3\1\4"+
 			"\1\5\5\6\1\1\12\6\2\uffff\4\6\1\uffff\32\6\1\uffff\1\6\1\uffff\2\6\1"+
@@ -1117,15 +1139,15 @@ public class CLLexer extends Lexer {
 			int _s = s;
 			switch ( s ) {
 					case 0 : 
-						int LA9_20 = input.LA(1);
+						int LA9_16 = input.LA(1);
 						 
-						int index9_20 = input.index();
+						int index9_16 = input.index();
 						input.rewind();
 						s = -1;
-						if ( ((LA9_20 >= '\u0000' && LA9_20 <= '\uFFFF')) ) {s = 21;}
-						else s = 13;
+						if ( (LA9_16=='\'') && (((openBraces - closeBraces) == 0))) {s = 15;}
+						else s = 26;
 						 
-						input.seek(index9_20);
+						input.seek(index9_16);
 						if ( s>=0 ) return s;
 						break;
 
@@ -1145,51 +1167,6 @@ public class CLLexer extends Lexer {
 						break;
 
 					case 2 : 
-						int LA9_1 = input.LA(1);
-						 
-						int index9_1 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (LA9_1=='/') ) {s = 10;}
-						else if ( (LA9_1=='*') ) {s = 11;}
-						else if ( (LA9_1==':') && (((openBraces - closeBraces) == 0))) {s = 13;}
-						else if ( ((LA9_1 >= '!' && LA9_1 <= '\"')||LA9_1=='$'||LA9_1=='&'||(LA9_1 >= '+' && LA9_1 <= '.')||(LA9_1 >= '0' && LA9_1 <= '9')||(LA9_1 >= '<' && LA9_1 <= '?')||(LA9_1 >= 'A' && LA9_1 <= 'Z')||LA9_1=='\\'||(LA9_1 >= '^' && LA9_1 <= '_')||(LA9_1 >= 'a' && LA9_1 <= 'z')||LA9_1=='\u00A3'||LA9_1=='\u00A7'||LA9_1=='\u00E0'||(LA9_1 >= '\u00E8' && LA9_1 <= '\u00E9')||LA9_1=='\u00EC'||LA9_1=='\u00F2'||LA9_1=='\u00F9') && (((openBraces - closeBraces) == 0))) {s = 6;}
-						else s = 12;
-						 
-						input.seek(index9_1);
-						if ( s>=0 ) return s;
-						break;
-
-					case 3 : 
-						int LA9_3 = input.LA(1);
-						 
-						int index9_3 = input.index();
-						input.rewind();
-						s = -1;
-						if ( ((LA9_3 >= ' ' && LA9_3 <= '\"')||(LA9_3 >= '$' && LA9_3 <= '&')||(LA9_3 >= '*' && LA9_3 <= ':')||(LA9_3 >= '<' && LA9_3 <= '?')||(LA9_3 >= 'A' && LA9_3 <= 'Z')||LA9_3=='\\'||(LA9_3 >= '^' && LA9_3 <= '_')||(LA9_3 >= 'a' && LA9_3 <= 'z')||LA9_3=='\u00A3'||LA9_3=='\u00A7'||LA9_3=='\u00E0'||(LA9_3 >= '\u00E8' && LA9_3 <= '\u00E9')||LA9_3=='\u00EC'||LA9_3=='\u00F2'||LA9_3=='\u00F9') && (((openBraces - closeBraces) == 0))) {s = 15;}
-						else if ( (LA9_3=='\'') ) {s = 16;}
-						else s = 14;
-						 
-						input.seek(index9_3);
-						if ( s>=0 ) return s;
-						break;
-
-					case 4 : 
-						int LA9_10 = input.LA(1);
-						 
-						int index9_10 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (LA9_10==':') ) {s = 20;}
-						else if ( ((LA9_10 >= '\u0000' && LA9_10 <= ' ')||LA9_10=='#'||LA9_10=='%'||(LA9_10 >= '\'' && LA9_10 <= ')')||LA9_10==';'||LA9_10=='@'||LA9_10=='['||LA9_10==']'||LA9_10=='`'||(LA9_10 >= '{' && LA9_10 <= '\u00A2')||(LA9_10 >= '\u00A4' && LA9_10 <= '\u00A6')||(LA9_10 >= '\u00A8' && LA9_10 <= '\u00DF')||(LA9_10 >= '\u00E1' && LA9_10 <= '\u00E7')||(LA9_10 >= '\u00EA' && LA9_10 <= '\u00EB')||(LA9_10 >= '\u00ED' && LA9_10 <= '\u00F1')||(LA9_10 >= '\u00F3' && LA9_10 <= '\u00F8')||(LA9_10 >= '\u00FA' && LA9_10 <= '\uFFFF')) ) {s = 21;}
-						else if ( ((LA9_10 >= '!' && LA9_10 <= '\"')||LA9_10=='$'||LA9_10=='&'||(LA9_10 >= '*' && LA9_10 <= '9')||(LA9_10 >= '<' && LA9_10 <= '?')||(LA9_10 >= 'A' && LA9_10 <= 'Z')||LA9_10=='\\'||(LA9_10 >= '^' && LA9_10 <= '_')||(LA9_10 >= 'a' && LA9_10 <= 'z')||LA9_10=='\u00A3'||LA9_10=='\u00A7'||LA9_10=='\u00E0'||(LA9_10 >= '\u00E8' && LA9_10 <= '\u00E9')||LA9_10=='\u00EC'||LA9_10=='\u00F2'||LA9_10=='\u00F9') ) {s = 22;}
-						else s = 12;
-						 
-						input.seek(index9_10);
-						if ( s>=0 ) return s;
-						break;
-
-					case 5 : 
 						int LA9_0 = input.LA(1);
 						 
 						int index9_0 = input.index();
@@ -1209,7 +1186,36 @@ public class CLLexer extends Lexer {
 						if ( s>=0 ) return s;
 						break;
 
-					case 6 : 
+					case 3 : 
+						int LA9_24 = input.LA(1);
+						 
+						int index9_24 = input.index();
+						input.rewind();
+						s = -1;
+						if ( ((LA9_24 >= '\u0000' && LA9_24 <= '\uFFFF')) ) {s = 21;}
+						else s = 13;
+						 
+						input.seek(index9_24);
+						if ( s>=0 ) return s;
+						break;
+
+					case 4 : 
+						int LA9_1 = input.LA(1);
+						 
+						int index9_1 = input.index();
+						input.rewind();
+						s = -1;
+						if ( (LA9_1=='/') ) {s = 10;}
+						else if ( (LA9_1=='*') ) {s = 11;}
+						else if ( (LA9_1==':') && (((openBraces - closeBraces) == 0))) {s = 13;}
+						else if ( ((LA9_1 >= '!' && LA9_1 <= '\"')||LA9_1=='$'||LA9_1=='&'||(LA9_1 >= '+' && LA9_1 <= '.')||(LA9_1 >= '0' && LA9_1 <= '9')||(LA9_1 >= '<' && LA9_1 <= '?')||(LA9_1 >= 'A' && LA9_1 <= 'Z')||LA9_1=='\\'||(LA9_1 >= '^' && LA9_1 <= '_')||(LA9_1 >= 'a' && LA9_1 <= 'z')||LA9_1=='\u00A3'||LA9_1=='\u00A7'||LA9_1=='\u00E0'||(LA9_1 >= '\u00E8' && LA9_1 <= '\u00E9')||LA9_1=='\u00EC'||LA9_1=='\u00F2'||LA9_1=='\u00F9') && (((openBraces - closeBraces) == 0))) {s = 6;}
+						else s = 12;
+						 
+						input.seek(index9_1);
+						if ( s>=0 ) return s;
+						break;
+
+					case 5 : 
 						int LA9_23 = input.LA(1);
 						 
 						int index9_23 = input.index();
@@ -1226,20 +1232,87 @@ public class CLLexer extends Lexer {
 						if ( s>=0 ) return s;
 						break;
 
+					case 6 : 
+						int LA9_27 = input.LA(1);
+						s = -1;
+						if ( (LA9_27=='*') ) {s = 23;}
+						else if ( (LA9_27==':') ) {s = 24;}
+						else if ( ((LA9_27 >= '!' && LA9_27 <= '\"')||LA9_27=='$'||LA9_27=='&'||(LA9_27 >= '+' && LA9_27 <= '9')||(LA9_27 >= '<' && LA9_27 <= '?')||(LA9_27 >= 'A' && LA9_27 <= 'Z')||LA9_27=='\\'||(LA9_27 >= '^' && LA9_27 <= '_')||(LA9_27 >= 'a' && LA9_27 <= 'z')||LA9_27=='\u00A3'||LA9_27=='\u00A7'||LA9_27=='\u00E0'||(LA9_27 >= '\u00E8' && LA9_27 <= '\u00E9')||LA9_27=='\u00EC'||LA9_27=='\u00F2'||LA9_27=='\u00F9') ) {s = 25;}
+						else if ( ((LA9_27 >= '\u0000' && LA9_27 <= ' ')||LA9_27=='#'||LA9_27=='%'||(LA9_27 >= '\'' && LA9_27 <= ')')||LA9_27==';'||LA9_27=='@'||LA9_27=='['||LA9_27==']'||LA9_27=='`'||(LA9_27 >= '{' && LA9_27 <= '\u00A2')||(LA9_27 >= '\u00A4' && LA9_27 <= '\u00A6')||(LA9_27 >= '\u00A8' && LA9_27 <= '\u00DF')||(LA9_27 >= '\u00E1' && LA9_27 <= '\u00E7')||(LA9_27 >= '\u00EA' && LA9_27 <= '\u00EB')||(LA9_27 >= '\u00ED' && LA9_27 <= '\u00F1')||(LA9_27 >= '\u00F3' && LA9_27 <= '\u00F8')||(LA9_27 >= '\u00FA' && LA9_27 <= '\uFFFF')) ) {s = 21;}
+						else s = 28;
+						if ( s>=0 ) return s;
+						break;
+
 					case 7 : 
-						int LA9_24 = input.LA(1);
+						int LA9_10 = input.LA(1);
 						 
-						int index9_24 = input.index();
+						int index9_10 = input.index();
 						input.rewind();
 						s = -1;
-						if ( ((LA9_24 >= '\u0000' && LA9_24 <= '\uFFFF')) ) {s = 21;}
-						else s = 13;
+						if ( (LA9_10==':') ) {s = 20;}
+						else if ( ((LA9_10 >= '\u0000' && LA9_10 <= ' ')||LA9_10=='#'||LA9_10=='%'||(LA9_10 >= '\'' && LA9_10 <= ')')||LA9_10==';'||LA9_10=='@'||LA9_10=='['||LA9_10==']'||LA9_10=='`'||(LA9_10 >= '{' && LA9_10 <= '\u00A2')||(LA9_10 >= '\u00A4' && LA9_10 <= '\u00A6')||(LA9_10 >= '\u00A8' && LA9_10 <= '\u00DF')||(LA9_10 >= '\u00E1' && LA9_10 <= '\u00E7')||(LA9_10 >= '\u00EA' && LA9_10 <= '\u00EB')||(LA9_10 >= '\u00ED' && LA9_10 <= '\u00F1')||(LA9_10 >= '\u00F3' && LA9_10 <= '\u00F8')||(LA9_10 >= '\u00FA' && LA9_10 <= '\uFFFF')) ) {s = 21;}
+						else if ( ((LA9_10 >= '!' && LA9_10 <= '\"')||LA9_10=='$'||LA9_10=='&'||(LA9_10 >= '*' && LA9_10 <= '9')||(LA9_10 >= '<' && LA9_10 <= '?')||(LA9_10 >= 'A' && LA9_10 <= 'Z')||LA9_10=='\\'||(LA9_10 >= '^' && LA9_10 <= '_')||(LA9_10 >= 'a' && LA9_10 <= 'z')||LA9_10=='\u00A3'||LA9_10=='\u00A7'||LA9_10=='\u00E0'||(LA9_10 >= '\u00E8' && LA9_10 <= '\u00E9')||LA9_10=='\u00EC'||LA9_10=='\u00F2'||LA9_10=='\u00F9') ) {s = 22;}
+						else s = 12;
 						 
-						input.seek(index9_24);
+						input.seek(index9_10);
 						if ( s>=0 ) return s;
 						break;
 
 					case 8 : 
+						int LA9_20 = input.LA(1);
+						 
+						int index9_20 = input.index();
+						input.rewind();
+						s = -1;
+						if ( ((LA9_20 >= '\u0000' && LA9_20 <= '\uFFFF')) ) {s = 21;}
+						else s = 13;
+						 
+						input.seek(index9_20);
+						if ( s>=0 ) return s;
+						break;
+
+					case 9 : 
+						int LA9_28 = input.LA(1);
+						 
+						int index9_28 = input.index();
+						input.rewind();
+						s = -1;
+						if ( (((openBraces - closeBraces) == 0)) ) {s = 12;}
+						else if ( (true) ) {s = 21;}
+						 
+						input.seek(index9_28);
+						if ( s>=0 ) return s;
+						break;
+
+					case 10 : 
+						int LA9_6 = input.LA(1);
+						 
+						int index9_6 = input.index();
+						input.rewind();
+						s = -1;
+						if ( (LA9_6==':') && (((openBraces - closeBraces) == 0))) {s = 13;}
+						else if ( ((LA9_6 >= '!' && LA9_6 <= '\"')||LA9_6=='$'||LA9_6=='&'||(LA9_6 >= '*' && LA9_6 <= '9')||(LA9_6 >= '<' && LA9_6 <= '?')||(LA9_6 >= 'A' && LA9_6 <= 'Z')||LA9_6=='\\'||(LA9_6 >= '^' && LA9_6 <= '_')||(LA9_6 >= 'a' && LA9_6 <= 'z')||LA9_6=='\u00A3'||LA9_6=='\u00A7'||LA9_6=='\u00E0'||(LA9_6 >= '\u00E8' && LA9_6 <= '\u00E9')||LA9_6=='\u00EC'||LA9_6=='\u00F2'||LA9_6=='\u00F9') && (((openBraces - closeBraces) == 0))) {s = 6;}
+						else s = 12;
+						 
+						input.seek(index9_6);
+						if ( s>=0 ) return s;
+						break;
+
+					case 11 : 
+						int LA9_3 = input.LA(1);
+						 
+						int index9_3 = input.index();
+						input.rewind();
+						s = -1;
+						if ( ((LA9_3 >= ' ' && LA9_3 <= '\"')||(LA9_3 >= '$' && LA9_3 <= '&')||(LA9_3 >= '*' && LA9_3 <= ':')||(LA9_3 >= '<' && LA9_3 <= '?')||(LA9_3 >= 'A' && LA9_3 <= 'Z')||LA9_3=='\\'||(LA9_3 >= '^' && LA9_3 <= '_')||(LA9_3 >= 'a' && LA9_3 <= 'z')||LA9_3=='\u00A3'||LA9_3=='\u00A7'||LA9_3=='\u00E0'||(LA9_3 >= '\u00E8' && LA9_3 <= '\u00E9')||LA9_3=='\u00EC'||LA9_3=='\u00F2'||LA9_3=='\u00F9') && (((openBraces - closeBraces) == 0))) {s = 15;}
+						else if ( (LA9_3=='\'') ) {s = 16;}
+						else s = 14;
+						 
+						input.seek(index9_3);
+						if ( s>=0 ) return s;
+						break;
+
+					case 12 : 
 						int LA9_25 = input.LA(1);
 						 
 						int index9_25 = input.index();
@@ -1255,31 +1328,7 @@ public class CLLexer extends Lexer {
 						if ( s>=0 ) return s;
 						break;
 
-					case 9 : 
-						int LA9_27 = input.LA(1);
-						s = -1;
-						if ( (LA9_27=='*') ) {s = 23;}
-						else if ( (LA9_27==':') ) {s = 24;}
-						else if ( ((LA9_27 >= '!' && LA9_27 <= '\"')||LA9_27=='$'||LA9_27=='&'||(LA9_27 >= '+' && LA9_27 <= '9')||(LA9_27 >= '<' && LA9_27 <= '?')||(LA9_27 >= 'A' && LA9_27 <= 'Z')||LA9_27=='\\'||(LA9_27 >= '^' && LA9_27 <= '_')||(LA9_27 >= 'a' && LA9_27 <= 'z')||LA9_27=='\u00A3'||LA9_27=='\u00A7'||LA9_27=='\u00E0'||(LA9_27 >= '\u00E8' && LA9_27 <= '\u00E9')||LA9_27=='\u00EC'||LA9_27=='\u00F2'||LA9_27=='\u00F9') ) {s = 25;}
-						else if ( ((LA9_27 >= '\u0000' && LA9_27 <= ' ')||LA9_27=='#'||LA9_27=='%'||(LA9_27 >= '\'' && LA9_27 <= ')')||LA9_27==';'||LA9_27=='@'||LA9_27=='['||LA9_27==']'||LA9_27=='`'||(LA9_27 >= '{' && LA9_27 <= '\u00A2')||(LA9_27 >= '\u00A4' && LA9_27 <= '\u00A6')||(LA9_27 >= '\u00A8' && LA9_27 <= '\u00DF')||(LA9_27 >= '\u00E1' && LA9_27 <= '\u00E7')||(LA9_27 >= '\u00EA' && LA9_27 <= '\u00EB')||(LA9_27 >= '\u00ED' && LA9_27 <= '\u00F1')||(LA9_27 >= '\u00F3' && LA9_27 <= '\u00F8')||(LA9_27 >= '\u00FA' && LA9_27 <= '\uFFFF')) ) {s = 21;}
-						else s = 28;
-						if ( s>=0 ) return s;
-						break;
-
-					case 10 : 
-						int LA9_16 = input.LA(1);
-						 
-						int index9_16 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (LA9_16=='\'') && (((openBraces - closeBraces) == 0))) {s = 15;}
-						else s = 26;
-						 
-						input.seek(index9_16);
-						if ( s>=0 ) return s;
-						break;
-
-					case 11 : 
+					case 13 : 
 						int LA9_11 = input.LA(1);
 						 
 						int index9_11 = input.index();
@@ -1292,33 +1341,6 @@ public class CLLexer extends Lexer {
 						else s = 12;
 						 
 						input.seek(index9_11);
-						if ( s>=0 ) return s;
-						break;
-
-					case 12 : 
-						int LA9_28 = input.LA(1);
-						 
-						int index9_28 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (((openBraces - closeBraces) == 0)) ) {s = 12;}
-						else if ( (true) ) {s = 21;}
-						 
-						input.seek(index9_28);
-						if ( s>=0 ) return s;
-						break;
-
-					case 13 : 
-						int LA9_6 = input.LA(1);
-						 
-						int index9_6 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (LA9_6==':') && (((openBraces - closeBraces) == 0))) {s = 13;}
-						else if ( ((LA9_6 >= '!' && LA9_6 <= '\"')||LA9_6=='$'||LA9_6=='&'||(LA9_6 >= '*' && LA9_6 <= '9')||(LA9_6 >= '<' && LA9_6 <= '?')||(LA9_6 >= 'A' && LA9_6 <= 'Z')||LA9_6=='\\'||(LA9_6 >= '^' && LA9_6 <= '_')||(LA9_6 >= 'a' && LA9_6 <= 'z')||LA9_6=='\u00A3'||LA9_6=='\u00A7'||LA9_6=='\u00E0'||(LA9_6 >= '\u00E8' && LA9_6 <= '\u00E9')||LA9_6=='\u00EC'||LA9_6=='\u00F2'||LA9_6=='\u00F9') && (((openBraces - closeBraces) == 0))) {s = 6;}
-						else s = 12;
-						 
-						input.seek(index9_6);
 						if ( s>=0 ) return s;
 						break;
 			}
