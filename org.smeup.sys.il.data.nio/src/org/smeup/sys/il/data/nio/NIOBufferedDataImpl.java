@@ -32,6 +32,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	protected transient ByteBuffer _buffer;
 	protected QStorable _storage;
 	protected int _position; // 0 based
+	protected boolean _sliced = false;
 
 	public NIOBufferedDataImpl(QDataContext dataContext) {
 		super(dataContext);
@@ -115,12 +116,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		stream.read(array);
 		_storage = (NIOBufferedDataImpl) stream.readObject();
 		_position = stream.readInt();
-
-		// TODO
-		if (_position == 538976288) {
-			System.err.println("Unexpected condition: xm74tx045m07");
-			_position = 0;
-		}
+		_sliced = stream.readBoolean();
 
 		if (length > 0) {
 			_buffer = ByteBuffer.allocate(length);
@@ -141,6 +137,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		stream.write(array);
 		stream.writeObject(_storage);
 		stream.writeInt(_position);
+		stream.writeBoolean(_sliced);
 	}
 
 	@Override

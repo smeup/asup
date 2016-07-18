@@ -46,6 +46,9 @@ public class NIOComparatorHelper {
 		if (b2 == null)
 			return 1;
 
+		if(b1 == null)
+			"".toCharArray();
+		
 		if (b1.length == b2.length) {
 			for (int i = 0; i < b1.length; i++) {
 				if (b1[i] == b2[i])

@@ -38,6 +38,7 @@ import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QPointer;
+import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -101,14 +102,13 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 				QDefault _default = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createDefault();
 				if (!dataDef.value().isEmpty()) {
 					String value = dataDef.value();
-										
+
 					if (value.length() > 1 && value.startsWith("'") && value.endsWith("'")) {
-						value = value.substring(1, value.length()-1);
+						value = value.substring(1, value.length() - 1);
 					}
 
 					_default.setValue(value);
-				}
-				else
+				} else
 					_default.getValues().addAll(Arrays.asList(dataDef.values()));
 
 				if (!_default.isEmpty())
@@ -130,7 +130,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		this.dataTerms.put(dataTerm.getName(), dataTerm);
 
 		QData previousData = this.datas.remove(dataTerm.getName());
-		if (previousData != null) 
+		if (previousData != null)
 			replaceData(dataTerm, previousData);
 
 		return dataTerm;
@@ -261,6 +261,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			return data;
 
 		data = createData(dataTerm, true);
+
 		datas.put(getKey(dataTerm), data);
 
 		if (data instanceof QBufferedData) {
@@ -277,23 +278,28 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 					continue;
 
 				try {
-					QBufferedData element = (QBufferedData) field.get(data);
+					NIOBufferedDataImpl element = NIOBufferHelper.getNIOBufferedDataImpl((QStorable) field.get(data));
 
 					String fieldName = field.getName();
 					if (compoundDataDef.getPrefix() != null && !compoundDataDef.getPrefix().isEmpty())
 						fieldName = compoundDataDef.getPrefix() + fieldName;
 
 					QData previousData = null;
-					if (compoundDataDef.isQualified())
+					if (compoundDataDef.isQualified()) {
 						previousData = datas.put(getKey(dataTerm) + "." + fieldName, element);
-					else
+					} else {
 						previousData = datas.put(fieldName, element);
+					}
 
 					// TODO remove filler_
 					if (previousData != null && !field.getName().startsWith("filler_")) {
-						if (previousData instanceof QBufferedData) {
-							QBufferedData previousBufferedData = (QBufferedData) previousData;
-							previousBufferedData.assign(element);
+						if (previousData instanceof QStorable) {
+							NIOBufferedDataImpl previousBufferedData = NIOBufferHelper.getNIOBufferedDataImpl((QStorable) previousData);
+							// sliced precedence
+							if (element._sliced && !previousBufferedData._sliced)
+								element.assign(previousBufferedData);
+							else
+								previousBufferedData.assign(element);
 						}
 					}
 
@@ -335,10 +341,10 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 					QData overlayedData = getData(overlay.getName().toLowerCase());
 					if (overlayedData == null)
 						throw new IntegratedLanguageDataRuntimeException("Invalid overlay data: " + overlay);
-										
-					if(!overlay.getName().equalsIgnoreCase("*PGMSTATUS"))
+
+					if (!overlay.getName().equalsIgnoreCase("*PGMSTATUS"))
 						System.out.println(overlay.getName());
-					
+
 					((QBufferedData) overlayedData).assign((QBufferedData) data);
 				}
 			}
@@ -346,7 +352,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			if (allocate)
 				writeDefault(dataTerm, data);
 		}
-		
+
 		return data;
 	}
 
@@ -566,10 +572,10 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		if (!(previousData instanceof QBufferedData))
 			return;
-		
+
 		QBufferedData previousBuffered = (QBufferedData) previousData;
-		
-		QData data = createData(dataTerm, true);
+
+		QData data = createData(dataTerm, false);
 		QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 		if (overlay == null) {
 			overlay = QIntegratedLanguageDataTermFactory.eINSTANCE.createOverlay();
