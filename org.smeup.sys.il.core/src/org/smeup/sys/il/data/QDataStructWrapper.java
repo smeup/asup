@@ -32,6 +32,11 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
+	public void slice(QBufferedData value) {
+		delegate.slice(value);
+	}
+	
+	@Override
 	public void slice(QBufferedData value, int position) {
 		delegate.slice(value, position);
 	}

@@ -103,6 +103,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 				if (!dataDef.value().isEmpty()) {
 					String value = dataDef.value();
 
+					// TODO remove me
 					if (value.length() > 1 && value.startsWith("'") && value.endsWith("'")) {
 						value = value.substring(1, value.length() - 1);
 					}
@@ -293,14 +294,12 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 					// TODO remove filler_
 					if (previousData != null && !field.getName().startsWith("filler_")) {
-						if (previousData instanceof QStorable) {
-							NIOBufferedDataImpl previousBufferedData = NIOBufferHelper.getNIOBufferedDataImpl((QStorable) previousData);
-							// sliced precedence
-							if (element._sliced && !previousBufferedData._sliced)
-								element.assign(previousBufferedData);
-							else
-								previousBufferedData.assign(element);
-						}
+						NIOBufferedDataImpl previousBufferedData = NIOBufferHelper.getNIOBufferedDataImpl((QStorable) previousData);
+						// sliced precedence
+						if (element._sliced && !previousBufferedData._sliced)
+							element.slice(previousBufferedData);
+						else
+							previousBufferedData.assign(element);
 					}
 
 				} catch (IllegalArgumentException | IllegalAccessException e) {

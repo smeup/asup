@@ -647,6 +647,4 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	public QIndicator qFound() {
 		return getDataContext().found();
 	}
-
-
 }

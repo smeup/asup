@@ -45,7 +45,7 @@ public class NIOComparatorHelper {
 
 		if (b2 == null)
 			return 1;
-
+		
 		if(b1 == null)
 			"".toCharArray();
 		

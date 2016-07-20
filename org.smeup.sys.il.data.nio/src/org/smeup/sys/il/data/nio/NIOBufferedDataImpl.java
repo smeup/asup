@@ -53,6 +53,11 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
+	public void slice(QBufferedData target) {
+		NIOBufferHelper.slice(this, target, 1);
+	}
+	
+	@Override
 	public void slice(QBufferedData target, int position) {
 		NIOBufferHelper.slice(this, target, position);
 	}

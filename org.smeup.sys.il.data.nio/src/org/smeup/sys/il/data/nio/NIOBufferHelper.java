@@ -33,6 +33,7 @@ import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
@@ -43,12 +44,6 @@ public class NIOBufferHelper {
 
 	public static void assign(QStorable storable, QBufferedData target) {
 
-		if(true) {
-			slice(storable, target, 1);
-			return;
-		}
-		
-		@SuppressWarnings("unused")
 		NIOBufferedDataImpl nioBufferedData = getNIOBufferedDataImpl(target);
 		if (nioBufferedData == null)
 			throw new IntegratedLanguageCoreRuntimeException("No buffer reference found: " + target.getClass());
@@ -59,21 +54,24 @@ public class NIOBufferHelper {
 
 		// storage chain
 		NIOBufferedDataImpl nioBufferOwner = getNIOBufferOwner(nioBufferedData);
-
-		// first assignment
-		if (nioBufferOwner == null) {
+			
+		if(nioBufferOwner == null) {
 			nioBufferedData._buffer = null;
 			nioBufferedData._storage = storable;
 			nioBufferedData._position = 0;
-			nioBufferedData._sliced = false;
-		} else {
-
-//			if(containsStore(nioBufferOwner, storable))
-//				return;
-			
+			nioBufferedData._sliced = false;			
+		}
+		else if(storable.getBuffer() == null || storable.getBuffer().capacity() == 0) {
 			nioBufferOwner._buffer = null;
 			nioBufferOwner._storage = storable;
 			nioBufferOwner._position = 0;
+			nioBufferOwner._sliced = false;
+		}
+		else {
+			nioBufferOwner._dataContext = nioBufferOwner.getDataContext();
+			nioBufferOwner._buffer = storable.getBuffer();
+			nioBufferOwner._storage = null;
+			nioBufferOwner._position = storable.getPosition();
 			nioBufferOwner._sliced = false;
 		}
 	}
@@ -128,13 +126,15 @@ public class NIOBufferHelper {
 	public static NIOBufferedDataImpl getNIOBufferOwner(QStorable data) {
 
 		NIOBufferedDataImpl nioBufferedDataImpl = getNIOBufferedDataImpl(data);
+		if(nioBufferedDataImpl == null)
+			return null;
 		
 		if (nioBufferedDataImpl.isStoreOwner())
 			return nioBufferedDataImpl;
 		else if(nioBufferedDataImpl._sliced) 			
 			return nioBufferedDataImpl;
 		else if (nioBufferedDataImpl._storage == null)
-			return null;
+			return nioBufferedDataImpl;
 		else
 			return getNIOBufferOwner(nioBufferedDataImpl._storage);
 	}

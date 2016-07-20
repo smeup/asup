@@ -19,7 +19,6 @@ import javax.inject.Inject;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QBufferedList;
-import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
@@ -66,7 +65,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	private QDataManager dataManager;
 
 	private QActivationGroupManager activationGroupManager;
-	
+
 	@PostConstruct
 	private void init() {
 		activationGroupManager = new BaseActivationGroupManagerImpl(this);
@@ -108,7 +107,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	@Override
 	public QProgramCallable loadProgram(QJob job, QProgram program) {
-
+		
 		QProgramCallable callableProgram = null;
 
 		QActivationGroup activationGroup = null;
@@ -272,7 +271,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		for (int i = paramsLength; i < paramsTo.length; i++) {
 			if (paramsTo[i] instanceof QBufferedData) {
 				QBufferedData bufferedData = (QBufferedData) paramsTo[i];
-				QCharacter nullReference = callableProgram.getDataContext().getDataFactory().createCharacter(1, false, false);
+				QPointer nullReference = callableProgram.getDataContext().getDataFactory().createPointer(0);
 				nullReference.assign(bufferedData);
 			} else
 				paramsTo[i].clear();
@@ -310,22 +309,20 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 			// call
 			try {
-
+				
 				assignParameters(callableProgram, params);
 
 				programStack.push(callableProgram);
 
-				printSendStack(job, programStack, callableProgram);
-				
+//				printSendStack(job, programStack, callableProgram);
+
 				// call
 				callableProgram.call();
 
 			} catch (OperatingSystemMessageException | OperatingSystemRuntimeException e) {
-//				e.printStackTrace();
 				System.err.println(e.getMessage());
 				throw e;
 			} catch (Exception e) {
-//				e.printStackTrace();
 				Throwable cause = e.getCause();
 				if (cause != null)
 					System.err.println(cause);
@@ -337,7 +334,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				long callTime = System.currentTimeMillis() - callableProgram.getProgramInfo().getCallTime();
 				callableProgram.getProgramInfo().setCallTime(callTime);
 
-				printReceiveStack(job, programStack, callableProgram);
+//				printReceiveStack(job, programStack, callableProgram);
 
 				programStack.pop();
 
@@ -358,8 +355,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 		if (scope == null)
 			scope = Scope.LIBRARY_LIST;
-		
-		QResourceReader<QProgram> programReader = resourceManager.getResourceReader(job, QProgram.class, scope, library);		
+
+		QResourceReader<QProgram> programReader = resourceManager.getResourceReader(job, QProgram.class, scope, library);
 		QProgram program = programReader.lookup(name);
 		if (program == null) {
 			QJobReference jobReference = job.getJobReference();
@@ -370,6 +367,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		return program;
 	}
 
+	@SuppressWarnings("unused")
 	private void printSendStack(QJob job, QProgramStack programStack, QProgramCallable callableProgram) {
 
 		String text = callableProgram.isOpen() ? ">  " : "-> ";
@@ -387,6 +385,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		writeContent(job, "pgm:\t" + jobReference.getJobName() + "(" + jobReference.getJobNumber() + ")" + loadTimeString + QStrings.qINSTANCE.appendChars(text, "\t", programStack.size(), true));
 	}
 
+	@SuppressWarnings("unused")
 	private void printReceiveStack(QJob job, QProgramStack programStack, QProgramCallable callableProgram) {
 
 		String text = callableProgram.isOpen() ? "<  " : "<- ";
@@ -412,73 +411,82 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	private String formatStackParameters(QDataContext dataContext, QData[] entry) {
 		String text = "";
+
 		for (QData param : entry) {
+
 			if (param == null) {
 				text += "|";
 				continue;
 			}
 
-			String paramValue = null;
-			if (param instanceof QString) {
-				QString stringData = (QString) param;
-				if (stringData.isNull()) {
-					text += "|";
-					continue;
+			try {
+				text += formatStackParameter(dataContext, param) + "|";
+
+				if (text.length() > 100) {
+					text = text.substring(0, 100);
+					break;
 				}
-				paramValue = stringData.trimR();
+			}
+			catch(Exception e) {
+				text += "|";
+			}
+		}
+		return text;
+	}
 
-				if (paramValue.length() > 20)
-					paramValue += paramValue.substring(0, 20) + "..";
+	private String formatStackParameter(QDataContext dataContext, QData param) {
 
-			} else if (param instanceof QBufferedElement) {
-				QBufferedElement bufferedElement = (QBufferedElement) param;
-				if (bufferedElement.isNull()) {
-					text += "|";
-					continue;
-				}
+		String paramValue = null;
+		if (param instanceof QString) {
+			QString stringData = (QString) param;
+			if (stringData.isNull()) {
+				return "";
+			}
+			paramValue = stringData.trimR();
 
+			if (paramValue.length() > 20)
+				paramValue = paramValue.substring(0, 20) + "..";
+
+		} else if (param instanceof QBufferedElement) {
+			QBufferedElement bufferedElement = (QBufferedElement) param;
+			if (bufferedElement.isNull()) {
+				return "";				
+			}
+
+			byte[] bytes = bufferedElement.asBytes();
+			paramValue = QStrings.qINSTANCE.trimR(new String(bytes, dataContext.getCharset()));
+
+			if (paramValue.length() > 20)
+				paramValue = paramValue.substring(0, 20) + "..";
+
+		} else if (param instanceof QBufferedList) {
+			QBufferedList<?> bufferedList = (QBufferedList<?>) param;
+			if (bufferedList.isNull()) {
+				return "";
+			}
+
+			StringBuffer sb = new StringBuffer();
+			for (QBufferedElement bufferedElement : bufferedList) {
 				byte[] bytes = bufferedElement.asBytes();
 				paramValue = QStrings.qINSTANCE.trimR(new String(bytes, dataContext.getCharset()));
 
 				if (paramValue.length() > 20)
-					paramValue += paramValue.substring(0, 20) + "..";
+					sb.append(paramValue.substring(0, 20));
 
-			} else if (param instanceof QBufferedList) {
-				QBufferedList<?> bufferedList = (QBufferedList<?>) param;
-				if (bufferedList.isNull()) {
-					text += "|";
-					continue;
+				sb.append(":" + paramValue);
+
+				if (sb.length() > 80) {
+					sb.append("..");
+					break;
 				}
-
-				StringBuffer sb = new StringBuffer();
-				for (QBufferedElement bufferedElement : bufferedList) {
-					byte[] bytes = bufferedElement.asBytes();
-					paramValue = QStrings.qINSTANCE.trimR(new String(bytes, dataContext.getCharset()));
-
-					if (paramValue.length() > 20)
-						sb.append(paramValue.substring(0, 20));
-
-					sb.append(":" + paramValue);
-
-					if (sb.length() > 80) {
-						sb.append("..");
-						break;
-					}
-				}
-				paramValue = "[" + sb.toString() + "]";
-			} else {
-				paramValue = param.toString();
-				if (paramValue.length() > 100)
-					paramValue += paramValue.substring(0, 100) + "..";
 			}
-
-			text += paramValue + "|";
-
-			if (text.length() > 100) {
-				text = text.substring(0, 100);
-				break;
-			}
+			paramValue = "[" + sb.toString() + "]";
+		} else {
+			paramValue = param.toString();
+			if (paramValue.length() > 100)
+				paramValue = paramValue.substring(0, 100) + "..";
 		}
-		return text;
+		
+		return paramValue;
 	}
 }
