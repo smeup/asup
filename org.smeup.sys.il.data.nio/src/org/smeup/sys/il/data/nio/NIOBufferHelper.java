@@ -33,7 +33,6 @@ import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QNumeric;
-import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;

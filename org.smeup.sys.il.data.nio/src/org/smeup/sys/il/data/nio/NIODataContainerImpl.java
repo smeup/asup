@@ -341,10 +341,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 					if (overlayedData == null)
 						throw new IntegratedLanguageDataRuntimeException("Invalid overlay data: " + overlay);
 
-					if (!overlay.getName().equalsIgnoreCase("*PGMSTATUS"))
-						System.out.println(overlay.getName());
-
-					((QBufferedData) overlayedData).assign((QBufferedData) data);
+					((QBufferedData) overlayedData).slice((QBufferedData) data);
 				}
 			}
 

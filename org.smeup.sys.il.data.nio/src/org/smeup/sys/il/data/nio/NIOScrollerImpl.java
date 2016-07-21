@@ -43,11 +43,9 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 
 			for (D element : this)
 				element.clear();
-
-			absolute(1);
 		}
-		else
-			absolute(1);
+		
+		absolute(1);
 	}
 
 	@Override

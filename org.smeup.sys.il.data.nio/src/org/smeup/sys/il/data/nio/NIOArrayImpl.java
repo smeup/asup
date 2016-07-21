@@ -289,9 +289,8 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	public QArray<D> qSubarr(int start, int elements) {
 
 		NIOArrayImpl<D> subArray = new NIOArrayImpl<D>(getDataContext(), getModel(), elements, getSortDirection(), false);
-		if (!isContiguous())
-			subArray.setListOwner(getListOwner());
-
+		subArray.setListOwner(getListOwner());
+		
 		slice(subArray, getModel().getSize() * (start - 1) + 1);
 
 		return subArray;
@@ -625,9 +624,16 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 	@Override
 	public void clear() {
-		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		firstElement.clear();
-		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
+		
+		if(isContiguous()) {
+			NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+			firstElement.clear();
+			NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
+		}
+		else {
+			for(D elelement: this)
+				elelement.clear();
+		}
 	}
 
 	@Override
@@ -648,8 +654,11 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	@Override
 	public void movea(int targetIndex, DataSpecial value, boolean clear) {
 
+		if (!isContiguous())
+			throw new UnsupportedOperationException("Invalid operation MOVEA with not contiguous array");
+
 		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(targetIndex));
-		firstElement.movel(value, clear);
+		firstElement.eval(value);
 		NIOBufferHelper.fill(getBuffer(), getPosition() + targetIndex * firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));
 	}
 
@@ -665,6 +674,9 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 
 	@Override
 	public void movea(int targetIndex, QDataFiller value) {
+
+		if (!isContiguous())
+			throw new UnsupportedOperationException("Invalid operation MOVEA with not contiguous array");
 
 		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(targetIndex));
 		firstElement.eval(value);

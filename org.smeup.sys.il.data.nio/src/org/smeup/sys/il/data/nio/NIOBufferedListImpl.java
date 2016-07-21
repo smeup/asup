@@ -187,10 +187,6 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 		return capacity() * getModel().getLength();
 	}
 
-	protected final NIOBufferedListImpl<?> getListOwner() {
-		return this.listOwner;
-	}
-
 	protected final D getModel() {
 		return _model;
 	}
@@ -380,6 +376,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 		this.listOwner = listOwner;
 	}
 
+	protected final NIOBufferedListImpl<?> getListOwner() {
+		return this.listOwner;
+	}
+	
 	protected final void setModel(D _model) {
 		this._model = _model;
 	}
