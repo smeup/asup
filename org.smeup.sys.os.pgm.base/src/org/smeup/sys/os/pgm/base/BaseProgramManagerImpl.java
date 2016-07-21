@@ -324,6 +324,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				throw e;
 			} catch (Exception e) {
 				Throwable cause = e.getCause();
+				e.printStackTrace();
 				if (cause != null)
 					System.err.println(cause);
 				else

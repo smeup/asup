@@ -85,18 +85,14 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 		if (index == null)
 			index = TABLE_INDEX_RELATIVE_RECORD_NUMBER;
 
-		JDBCInfoStruct internalInfoStruct = null;
-		if (infoStruct != null) {
-			internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, false);
-			infoStruct.assign(internalInfoStruct);
-		} else {
-			internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, true);
-		}
+		JDBCInfoStruct internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, true);
+		internalInfoStruct.clear();
+		if (infoStruct != null) 
+			internalInfoStruct.assign(infoStruct);
 		
 		if(tableName == null) {
 			tableName = dataContext.getDataFactory().createCharacter(21, false, true);
 			tableName.eval(wrapper.getSimpleName());
-
 		}
 		
 		return new JDBCKeySequencedDataSetImpl<R>(connection, tableName, index, record, accessMode, userOpen, internalInfoStruct, dataContext);
@@ -137,13 +133,10 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 
 		QIndex index = TABLE_INDEX_RELATIVE_RECORD_NUMBER;
 
-		JDBCInfoStruct internalInfoStruct = null;
-		if (infoStruct != null) {
-			internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, false);
-			infoStruct.assign(internalInfoStruct);
-		} else {
-			internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, true);
-		}
+		JDBCInfoStruct internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, true);
+		internalInfoStruct.clear();		
+		if (infoStruct != null) 
+			internalInfoStruct.assign(infoStruct);
 
 		if(tableName == null) {
 			tableName = dataContext.getDataFactory().createCharacter(21, false, true);
@@ -195,6 +188,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 		
 		BaseFileMemberProvider fileMemberProvider = new BaseFileMemberProvider(contextProvider, fileName, memberName);
 		BaseInfoStruct internalInfoStruct = dataContext.getDataFactory().createDataStruct(BaseInfoStruct.class, 0, true);
+		internalInfoStruct.clear();
 		QSMDataSet<R> dataSet = new BaseFileMemberDataSetImpl<R>(fileMemberProvider, record, accessMode, userOpen, internalInfoStruct, dataContext);
 
 		return dataSet;

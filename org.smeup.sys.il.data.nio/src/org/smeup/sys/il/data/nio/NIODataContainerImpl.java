@@ -295,9 +295,10 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 					// TODO remove filler_
 					if (previousData != null && !field.getName().startsWith("filler_")) {
 						NIOBufferedDataImpl previousBufferedData = NIOBufferHelper.getNIOBufferedDataImpl((QStorable) previousData);
+
 						// sliced precedence
-						if (element._sliced && !previousBufferedData._sliced)
-							element.slice(previousBufferedData);
+						if (element.isSliced() && !previousBufferedData.isSliced())
+							element.assign(previousBufferedData);
 						else
 							previousBufferedData.assign(element);
 					}
@@ -341,7 +342,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 					if (overlayedData == null)
 						throw new IntegratedLanguageDataRuntimeException("Invalid overlay data: " + overlay);
 
-					((QBufferedData) overlayedData).slice((QBufferedData) data);
+					((QBufferedData) overlayedData).assign((QBufferedData) data);
 				}
 			}
 

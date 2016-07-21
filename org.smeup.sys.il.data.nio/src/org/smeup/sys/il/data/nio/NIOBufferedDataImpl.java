@@ -31,8 +31,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	protected transient ByteBuffer _buffer;
 	protected QStorable _storage;
-	protected int _position; // 0 based
-	protected boolean _sliced = false;
+	protected int _position = 0; // 1 based
 
 	public NIOBufferedDataImpl(QDataContext dataContext) {
 		super(dataContext);
@@ -56,10 +55,14 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	public void slice(QBufferedData target) {
 		NIOBufferHelper.slice(this, target, 1);
 	}
-	
+
 	@Override
 	public void slice(QBufferedData target, int position) {
 		NIOBufferHelper.slice(this, target, position);
+	}
+
+	protected boolean isSliced() {
+		return _position > 0;
 	}
 
 	protected void checkAllocation() {
@@ -71,23 +74,28 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public final ByteBuffer getBuffer() {
 
-			// TODO synchronize
-			if (_buffer != null)
-				return _buffer;
-			else if (_storage != null)
-				return NIOBufferHelper.getBuffer(_storage);
-			else
-				return null;
+		// TODO synchronize
+		if (_buffer != null)
+			return _buffer;
+		else if (_storage != null)
+			return NIOBufferHelper.getBuffer(_storage);
+		else
+			return null;
 	}
 
 	@Override
 	public final int getPosition() {
 
 		// TODO synchronize
-		if (_storage != null)
-			return _storage.getPosition() + _position;
+		if (_storage != null) {
+			if (_position > 0)
+				return _storage.getPosition() + _position - 1;
+			else
+				return _storage.getPosition();
+		} else if (_position > 0)
+			return _position - 1;
 		else
-			return _position;
+			return 0;
 	}
 
 	@Override
@@ -121,7 +129,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		stream.read(array);
 		_storage = (NIOBufferedDataImpl) stream.readObject();
 		_position = stream.readInt();
-		_sliced = stream.readBoolean();
 
 		if (length > 0) {
 			_buffer = ByteBuffer.allocate(length);
@@ -142,7 +149,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		stream.write(array);
 		stream.writeObject(_storage);
 		stream.writeInt(_position);
-		stream.writeBoolean(_sliced);
 	}
 
 	@Override

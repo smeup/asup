@@ -53,26 +53,35 @@ public class NIOBufferHelper {
 
 		// storage chain
 		NIOBufferedDataImpl nioBufferOwner = getNIOBufferOwner(nioBufferedData);
-			
-		if(nioBufferOwner == null) {
+
+		if (nioBufferOwner == null) {
 			nioBufferedData._buffer = null;
 			nioBufferedData._storage = storable;
 			nioBufferedData._position = 0;
-			nioBufferedData._sliced = false;			
-		}
-		else if(storable.getBuffer() == null || storable.getBuffer().capacity() == 0) {
+		} else {
 			nioBufferOwner._buffer = null;
 			nioBufferOwner._storage = storable;
 			nioBufferOwner._position = 0;
-			nioBufferOwner._sliced = false;
+		}
+
+/*		if (nioBufferOwner == null) {
+			nioBufferedData._buffer = null;
+			nioBufferedData._storage = storable;
+			nioBufferedData._position = 0;
+		} else if (storable.getBuffer() == null || storable.getBuffer().capacity() == 0) {
+			nioBufferOwner._buffer = null;
+			nioBufferOwner._storage = storable;
+			nioBufferOwner._position = 0;
 		}
 		else {
 			nioBufferOwner._dataContext = nioBufferOwner.getDataContext();
 			nioBufferOwner._buffer = storable.getBuffer();
 			nioBufferOwner._storage = null;
-			nioBufferOwner._position = storable.getPosition();
-			nioBufferOwner._sliced = false;
-		}
+			if (storable.getPosition() > 0)
+				nioBufferOwner._position = storable.getPosition() + 1;
+			else
+				nioBufferOwner._position = 0;
+		}*/
 	}
 
 	public static void slice(QStorable storable, QBufferedData target, int position) {
@@ -90,8 +99,7 @@ public class NIOBufferHelper {
 
 		nioBufferedData._buffer = null;
 		nioBufferedData._storage = storable;
-		nioBufferedData._position = position - 1;
-		nioBufferedData._sliced = true;
+		nioBufferedData._position = position;
 	}
 
 	@SuppressWarnings("unused")
@@ -104,38 +112,46 @@ public class NIOBufferHelper {
 		if (target._storage != null)
 			ret = containsStore(getNIOBufferedDataImpl(target._storage), source);
 
-		if(!ret) {
-			if(source instanceof NIOPointerImpl) {
+		if (!ret) {
+			if (source instanceof NIOPointerImpl) {
 				NIOPointerImpl nioPointerImpl = (NIOPointerImpl) source;
-				if(nioPointerImpl._storage instanceof NIOBufferedDataImpl)
+				if (nioPointerImpl._storage instanceof NIOBufferedDataImpl)
 					ret = containsStore(target, nioPointerImpl._storage);
-			}
-			else if(source instanceof NIOBufferedDataImpl) {
+			} else if (source instanceof NIOBufferedDataImpl) {
 				NIOBufferedDataImpl nioBufferedDataImpl = (NIOBufferedDataImpl) source;
-				if(nioBufferedDataImpl._storage instanceof NIOBufferedDataImpl)
+				if (nioBufferedDataImpl._storage instanceof NIOBufferedDataImpl)
 					ret = containsStore(target, nioBufferedDataImpl._storage);
-			}
-			else 
+			} else
 				"".toCharArray();
 		}
-		
+
 		return ret;
 	}
 
 	public static NIOBufferedDataImpl getNIOBufferOwner(QStorable data) {
 
 		NIOBufferedDataImpl nioBufferedDataImpl = getNIOBufferedDataImpl(data);
-		if(nioBufferedDataImpl == null)
+		if (nioBufferedDataImpl == null)
 			return null;
+
+		QDataContext dataContext = nioBufferedDataImpl.getDataContext();
 		
 		if (nioBufferedDataImpl.isStoreOwner())
 			return nioBufferedDataImpl;
-		else if(nioBufferedDataImpl._sliced) 			
+		else if (nioBufferedDataImpl.isSliced())
 			return nioBufferedDataImpl;
 		else if (nioBufferedDataImpl._storage == null)
 			return nioBufferedDataImpl;
-		else
-			return getNIOBufferOwner(nioBufferedDataImpl._storage);
+		else {
+			NIOBufferedDataImpl nioBufferedOwner = getNIOBufferOwner(nioBufferedDataImpl._storage);
+			if(nioBufferedOwner == null)
+				return null;
+			
+			if(nioBufferedOwner.getDataContext() != dataContext)
+				return nioBufferedDataImpl;
+			else
+				return nioBufferedOwner;
+		}
 	}
 
 	public static NIOBufferedDataImpl getNIOBufferedDataImpl(QStorable storable) {
@@ -503,17 +519,14 @@ public class NIOBufferHelper {
 			QStorable tempStorage = nioBufferedDataImpl._storage;
 			ByteBuffer tempBuffer = nioBufferedDataImpl._buffer;
 			int tempPosition = nioBufferedDataImpl._position;
-			boolean tempSliced = nioBufferedDataImpl._sliced;
 
 			nioBufferedDataImpl._storage = null;
 			nioBufferedDataImpl._buffer = null;
 			nioBufferedDataImpl._position = 0;
-			nioBufferedDataImpl._sliced = false;
 			oos.writeObject(nioBufferedDataImpl);
 			nioBufferedDataImpl._storage = tempStorage;
 			nioBufferedDataImpl._buffer = tempBuffer;
 			nioBufferedDataImpl._position = tempPosition;
-			nioBufferedDataImpl._sliced = tempSliced;
 
 			baos.close();
 			oos.close();
@@ -548,6 +561,6 @@ public class NIOBufferHelper {
 	}
 
 	public static boolean equalsAddress(QStorable source, QStorable target, int position) {
-		return source.getBuffer() == target.getBuffer() && source.getPosition() == target.getPosition() + position -1;
+		return source.getBuffer() == target.getBuffer() && source.getPosition() == target.getPosition() + position - 1;
 	}
 }
