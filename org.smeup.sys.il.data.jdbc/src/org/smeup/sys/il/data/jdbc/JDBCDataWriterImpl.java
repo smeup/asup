@@ -9,25 +9,22 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.esam.jdbc;
+package org.smeup.sys.il.data.jdbc;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDataStruct;
-import org.smeup.sys.il.data.QDataWriter;
-import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
-import org.smeup.sys.il.data.impl.DataReaderImpl;
+import org.smeup.sys.il.data.QDatetime;
+import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.impl.DataWriterImpl;
 
-public class JDBCDataReaderImpl extends DataReaderImpl {
+public class JDBCDataWriterImpl extends DataWriterImpl {
 
-	// private static DecimalFormat[][] decimalFormats = new
-	// DecimalFormat[32][9];
-
-	private QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
-
-	public JDBCDataReaderImpl set(ResultSet resultSet) {
+	public JDBCDataWriterImpl set(ResultSet resultSet) {
 
 		super.object = resultSet;
 
@@ -45,10 +42,23 @@ public class JDBCDataReaderImpl extends DataReaderImpl {
 		int c = 1;
 		for (QBufferedData bufferedData : data.getElements()) {
 			try {
-				// bufferedData.movel(resultSet.getString(c), true);
+				
+				QBufferedElement bufferedElement = (QBufferedElement)bufferedData;
+				switch (bufferedElement.getBufferedElementType()) {
+				case DATETIME:
+					QDatetime datetime = (QDatetime)bufferedData;
+					resultSet.updateDate(c, new java.sql.Date(datetime.asTime()));
+					break;
+				case NUMERIC:
+					QNumeric numeric = (QNumeric) bufferedData;
+					resultSet.updateDouble(c, numeric.asDouble());
+					break;
+				case STRING:
+					QString string = (QString) bufferedData;
+					resultSet.updateString(c, string.asString());
+					break;
+				}
 
-				dataWriter.set(resultSet.getObject(c));
-				bufferedData.accept(dataWriter);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -58,5 +68,4 @@ public class JDBCDataReaderImpl extends DataReaderImpl {
 
 		return false;
 	}
-
 }

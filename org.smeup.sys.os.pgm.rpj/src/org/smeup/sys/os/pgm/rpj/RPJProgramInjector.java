@@ -16,6 +16,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.WildcardType;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -25,8 +26,13 @@ import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.smeup.sys.db.esql.QCommunicationArea;
 import org.smeup.sys.db.esql.QCursor;
+import org.smeup.sys.db.esql.QCursorTerm;
+import org.smeup.sys.db.esql.QESqlFactory;
+import org.smeup.sys.db.esql.QESqlManager;
 import org.smeup.sys.db.esql.QStatement;
+import org.smeup.sys.db.esql.QStatementTerm;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
@@ -39,6 +45,7 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Module;
 import org.smeup.sys.il.data.annotation.Procedure;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.il.data.jdbc.JDBCCommunicationAreaImpl;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.QAccessFactory;
@@ -70,6 +77,7 @@ public class RPJProgramInjector {
 	public static final String NAME_OWNER = "*OWNER";
 
 	private static final String PROGRAM_STATUS = "*pgmstatus";
+	private static final String SQL_COMMUNICATION_AREA = "*sqlca";
 
 	@Inject
 	private QDataManager dataManager;
@@ -79,6 +87,8 @@ public class RPJProgramInjector {
 	private QFileManager fileManager;
 	@Inject
 	private QAccessManager esamManager;
+	@Inject
+	private QESqlManager esqlManager;
 	@Inject
 	private QJob job;
 
@@ -145,11 +155,20 @@ public class RPJProgramInjector {
 	public <P> P prepareDelegate(QDataContainer dataContainer, QProgram program, Class<P> klass) {
 
 		try {
-			QAccessFactory accessFactory = esamManager.createFactory(job, dataContext);
-
 			getOrCreateProgramStatus(program, dataContainer);
 
-			P delegate = injectData(null, klass, dataContainer, accessFactory, new HashMap<String, Object>(), new HashMap<String, QRecord>());
+			QAccessFactory accessFactory = esamManager.createFactory(job, dataContext);
+			
+			QCommunicationArea communicationArea = (QCommunicationArea) dataContainer.getData(SQL_COMMUNICATION_AREA);
+
+			if (communicationArea == null) {
+				QDataTerm<?> communicationAreaTerm = dataContainer.addDataTerm(SQL_COMMUNICATION_AREA, JDBCCommunicationAreaImpl.class, null);
+				communicationArea = (QCommunicationArea) dataContainer.getData(communicationAreaTerm);
+			}
+
+			QESqlFactory sqlFactory = esqlManager.createFactory(job, dataContext, communicationArea);
+			
+			P delegate = injectData(null, klass, dataContainer, accessFactory, sqlFactory,new HashMap<String, Object>(), new HashMap<String, QRecord>());
 			dataContext.getContext().invoke(delegate, PostConstruct.class);
 
 			return delegate;
@@ -174,7 +193,7 @@ public class RPJProgramInjector {
 
 			dataContainer = dataManager.createDataContainer(dataContext.getContext(), callable);
 
-			injectFields(owner, klass, callable, dataContainer, null, unitModules, records);
+			injectFields(owner, klass, callable, dataContainer, null, null, unitModules, records);
 
 			return callable;
 		} catch (Exception e) {
@@ -209,7 +228,7 @@ public class RPJProgramInjector {
 		return programStatus;
 	}
 
-	private <P> P injectData(Object owner, Class<P> klass, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules, Map<String, QRecord> records)
+	private <P> P injectData(Object owner, Class<P> klass, QDataContainer dataContainer, QAccessFactory accessFactory, QESqlFactory sqlFactory, Map<String, Object> unitModules, Map<String, QRecord> records)
 			throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		P callable = klass.newInstance();
@@ -217,17 +236,17 @@ public class RPJProgramInjector {
 		if (owner == null)
 			owner = callable;
 
-		injectFields(owner, klass, callable, dataContainer, accessFactory, unitModules, records);
+		injectFields(owner, klass, callable, dataContainer, accessFactory, sqlFactory, unitModules, records);
 
 		return callable;
 	}
 
-	private void injectFields(Object owner, Class<?> klass, Object callable, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules,
+	private void injectFields(Object owner, Class<?> klass, Object callable, QDataContainer dataContainer, QAccessFactory accessFactory, QESqlFactory sqlFactory, Map<String, Object> unitModules,
 			Map<String, QRecord> records) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		// recursively on superClass
 		if (klass.getSuperclass().getAnnotation(Program.class) != null)
-			injectFields(owner, klass.getSuperclass(), callable, dataContainer, accessFactory, unitModules, records);
+			injectFields(owner, klass.getSuperclass(), callable, dataContainer, accessFactory, sqlFactory, unitModules, records);
 
 		List<RPJInjectableField> modules = new ArrayList<RPJInjectableField>();
 		List<RPJInjectableField> datas = new ArrayList<RPJInjectableField>();
@@ -336,7 +355,7 @@ public class RPJProgramInjector {
 
 		// modules
 		for (RPJInjectableField field : modules)
-			injectModule(callable, owner, dataContainer, accessFactory, unitModules, records, field);
+			injectModule(callable, owner, dataContainer, accessFactory, sqlFactory, unitModules, records, field);
 
 		// dataSet
 		for (RPJInjectableField field : dataSets)
@@ -350,14 +369,21 @@ public class RPJProgramInjector {
 		for (RPJInjectableField field : prints)
 			injectPrint(callable, dataContainer, records, field);
 
+		// statement
+		for(RPJInjectableField field: statements)
+			injectStatement(sqlFactory, callable, field);
+
+		// cursor
+		for(RPJInjectableField field: cursors)
+			injectCursor(sqlFactory, callable, statements, field);
+
 		// pointers no default
 		for (RPJInjectableField field : pointers)
 			RPJInjectionHelper.injectPointerNoDefault(callable, dataContainer, field);
 
 		// dataStructure no based
-		for (RPJInjectableField field : dataStructures) {
+		for (RPJInjectableField field : dataStructures)
 			RPJInjectionHelper.injectDataStructure(callable, dataContainer, records, field, false);
-		}
 
 		// data no based
 		for (RPJInjectableField field : datas)
@@ -423,7 +449,7 @@ public class RPJProgramInjector {
 		}
 	}
 
-	private void injectModule(Object callable, Object owner, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules, Map<String, QRecord> records,
+	private void injectModule(Object callable, Object owner, QDataContainer dataContainer, QAccessFactory accessFactory, QESqlFactory sqlFactory, Map<String, Object> unitModules, Map<String, QRecord> records,
 			RPJInjectableField field) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		Object object = null;
@@ -442,7 +468,7 @@ public class RPJProgramInjector {
 
 //			System.out.println("\t\tmod: " + field.getName());
 
-			object = injectData(owner, field.getFieldClass(), dataContainer, accessFactory, unitModules, records);
+			object = injectData(owner, field.getFieldClass(), dataContainer, accessFactory, sqlFactory, unitModules, records);
 			dataContext.getContext().invoke(object, PostConstruct.class);
 
 			switch (module.scope()) {
@@ -520,6 +546,42 @@ public class RPJProgramInjector {
 		field.setValue(callable, new RPJDisplayDelegator<QRecord>(record, userOpen, infoStruct));
 	}
 
+	@SuppressWarnings("resource")
+	private void injectStatement(QESqlFactory sqlFactory, Object callable, RPJInjectableField field) {
+
+		@SuppressWarnings("unused")
+		QStatementTerm statementTerm = sqlFactory.createStatementTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
+		
+		QStatement statement = sqlFactory.createStatement();
+		
+		field.setValue(callable, statement);
+	}
+
+	@SuppressWarnings("resource")
+	private void injectCursor(QESqlFactory sqlFactory, Object callable, List<RPJInjectableField> statements, RPJInjectableField field) {
+	
+		QCursorTerm cursorTerm = sqlFactory.createCursorTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
+		
+		QCursor cursor = null;
+		
+		if(cursorTerm.getSql() != null)
+			cursor = sqlFactory.createCursor(cursorTerm.getCursorType(), cursorTerm.isHold(), cursorTerm.getSql());
+		else {
+			QStatement statement = null;
+			
+			for(RPJInjectableField statementField: statements) {
+				if(statementField.getName().equalsIgnoreCase(cursorTerm.getStatementName())) {
+					statement = (QStatement) statementField.getValue(callable);
+					break;
+				}
+			}
+			
+			cursor = sqlFactory.createCursor(cursorTerm.getCursorType(), cursorTerm.isHold(), statement);
+		}
+		
+		field.setValue(callable, cursor);
+	}
+	
 	private void injectFieldValue(RPJInjectableField injectableField, Object callable, Object owner, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules,
 			Map<String, QRecord> records) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 

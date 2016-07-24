@@ -447,8 +447,8 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 		// Obtain other dependent packages
 		QIntegratedLanguageDataPackage theIntegratedLanguageDataPackage = (QIntegratedLanguageDataPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI);
 		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
-		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
+		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -461,6 +461,7 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 		descriptorAreaEClass.getESuperTypes().add(theIntegratedLanguageDataPackage.getDataStruct());
 		eSqlTermEClass.getESuperTypes().add(theIntegratedLanguageCoreTermPackage.getTerm());
 		statementEClass.getESuperTypes().add(this.getESqlObject());
+		statementEClass.getESuperTypes().add(theMachineInterfaceCorePackage.getJavaCloseable());
 		statementTermEClass.getESuperTypes().add(this.getESqlTerm());
 
 		// Initialize classes and features; add operations and parameters
@@ -480,17 +481,26 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 		op = addEOperation(cursorEClass, null, "first", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCursorRecord(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(cursorEClass, null, "first", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getDataStruct(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(cursorEClass, null, "last", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getBufferedData(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(cursorEClass, null, "last", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCursorRecord(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(cursorEClass, null, "last", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getDataStruct(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(cursorEClass, null, "next", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getBufferedData(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(cursorEClass, null, "next", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCursorRecord(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cursorEClass, null, "next", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getDataStruct(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(cursorEClass, null, "open", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -505,6 +515,9 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 
 		op = addEOperation(cursorEClass, null, "prior", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCursorRecord(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cursorEClass, null, "prior", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getDataStruct(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(cursorTermEClass, QCursorTerm.class, "CursorTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCursorTerm_CursorType(), this.getCursorType(), "cursorType", null, 0, 1, QCursorTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -524,9 +537,14 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 		initEClass(statementEClass, QStatement.class, "Statement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(statementEClass, null, "prepare", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageDataPackage.getString(), "from", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getString(), "sql", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(statementEClass, null, "prepare", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "sql", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(statementEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(statementEClass, ecorePackage.getEJavaObject(), "executeQuery", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(statementTermEClass, QStatementTerm.class, "StatementTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -534,20 +552,30 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 
 		op = addEOperation(eSqlManagerEClass, this.getESqlFactory(), "createFactory", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getDataContext(), "dataContext", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCommunicationArea(), "communicationArea", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(eSqlFactoryEClass, QESqlFactory.class, "ESqlFactory", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(eSqlFactoryEClass, this.getCursor(), "createCursor", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCursorTerm(), "cursorTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCursorType(), "cursorType", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "hold", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "sql", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(eSqlFactoryEClass, this.getCursor(), "createCursor", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCursorType(), "cursorType", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "hold", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getStatement(), "statement", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(eSqlFactoryEClass, this.getCursorTerm(), "createCursorTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaAnnotation(), "annotations", 1, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(eSqlFactoryEClass, this.getStatement(), "createStatement", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getStatementTerm(), "statementTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(eSqlFactoryEClass, this.getStatement(), "createStatement", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(eSqlFactoryEClass, this.getStatementTerm(), "createStatementTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaAnnotation(), "annotations", 1, -1, IS_UNIQUE, IS_ORDERED);
 

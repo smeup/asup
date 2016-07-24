@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: As.UP Integrated Language Embedded SQL
+Bundle-Name: As.UP Integrated Language EmbeddedSQL
 Bundle-SymbolicName: org.smeup.sys.db.esql;singleton:=true
 Bundle-Version: 0.8.0.qualifier
 Bundle-ClassPath: .

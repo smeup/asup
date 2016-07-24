@@ -25,6 +25,8 @@ import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.jdbc.JDBCDataReaderImpl;
+import org.smeup.sys.il.data.jdbc.JDBCDataWriterImpl;
 import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.OperationDirection;
 import org.smeup.sys.il.esam.OperationRead;
@@ -169,6 +171,19 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		this.infoStruct.rrn.clear();
 	}
 
+	protected void handleTableNotFound() {
+
+		this.found = false;
+		this.dataContext.found().eval(false);
+		this.endOfData = true;
+		this.dataContext.endOfData().eval(true);
+
+		this.error = true;
+		this.equal = false;
+
+		this.infoStruct.rrn.clear();
+	}
+
 	private void init() {
 
 		this.found = false;
@@ -257,11 +272,14 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 				this.currentTable = this.tableProvider.getTable(tableSplit[0], tableSplit[1].trim());
 
 			if (this.currentTable == null) {
-				this.currentTable = this.tableProvider.getTable(null, tableSplit[0].trim());
-				throw new DatabaseCoreRuntimeException("Invalid table: " + this.tablePath.trimR());
-			}
 
-			this.open = true;
+				handleTableNotFound();
+				
+				if (error == null)
+					throw new DatabaseCoreRuntimeException("Invalid table: " + this.tablePath.trimR());
+			}
+			else
+				this.open = true;
 		} catch (SQLException e) {
 			handleSQLException(e);
 		}

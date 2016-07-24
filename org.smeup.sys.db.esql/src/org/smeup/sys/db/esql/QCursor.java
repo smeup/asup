@@ -8,6 +8,7 @@
 package org.smeup.sys.db.esql;
 
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QString;
 
 /**
@@ -56,6 +57,14 @@ public interface QCursor extends QESqlObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model targetRequired="true"
+	 * @generated
+	 */
+	void next(QDataStruct target);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
@@ -96,6 +105,14 @@ public interface QCursor extends QESqlObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model targetRequired="true"
+	 * @generated
+	 */
+	void prior(QDataStruct target);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
@@ -123,6 +140,14 @@ public interface QCursor extends QESqlObject {
 	 * @model targetRequired="true"
 	 * @generated
 	 */
+	void first(QDataStruct target);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetRequired="true"
+	 * @generated
+	 */
 	void last(QBufferedData target);
 
 	/**
@@ -132,5 +157,13 @@ public interface QCursor extends QESqlObject {
 	 * @generated
 	 */
 	void last(QBufferedData[] target);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetRequired="true"
+	 * @generated
+	 */
+	void last(QDataStruct target);
 
 } // QCursor

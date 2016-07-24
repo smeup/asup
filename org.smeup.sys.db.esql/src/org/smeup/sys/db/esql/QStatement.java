@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.db.esql;
 
+import java.io.Closeable;
 import org.smeup.sys.il.data.QString;
 
 
@@ -17,10 +18,10 @@ import org.smeup.sys.il.data.QString;
  *
  *
  * @see org.smeup.sys.db.esql.QIntegratedLanguageEmbeddedSQLPackage#getStatement()
- * @model interface="true" abstract="true"
+ * @model interface="true" abstract="true" superTypes="org.smeup.sys.db.esql.ESqlObject org.smeup.sys.mi.core.JavaCloseable"
  * @generated
  */
-public interface QStatement extends QESqlObject {
+public interface QStatement extends QESqlObject, Closeable {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -28,7 +29,15 @@ public interface QStatement extends QESqlObject {
 	 * @model
 	 * @generated
 	 */
-	void prepare(QString from);
+	void prepare(QString sql);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void prepare(String sql);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -37,4 +46,12 @@ public interface QStatement extends QESqlObject {
 	 * @generated
 	 */
 	void execute();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	Object executeQuery();
 } // QStatement

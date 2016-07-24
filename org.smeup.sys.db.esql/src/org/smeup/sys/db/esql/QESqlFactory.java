@@ -27,33 +27,41 @@ public interface QESqlFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" cursorTermRequired="true"
+	 * @model required="true" cursorTypeRequired="true" holdRequired="true" sqlRequired="true"
 	 * @generated
 	 */
-	QCursor createCursor(QCursorTerm cursorTerm);
+	QCursor createCursor(CursorType cursorType, boolean hold, String sql);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" typeDataType="org.smeup.sys.mi.core.JavaType" typeRequired="true" annotationsDataType="org.smeup.sys.mi.core.JavaAnnotation" annotationsRequired="true" annotationsMany="true"
+	 * @model required="true" cursorTypeRequired="true" holdRequired="true" statementRequired="true"
 	 * @generated
 	 */
-	QCursorTerm createCursorTerm(Type type, List<Annotation> annotations);
+	QCursor createCursor(CursorType cursorType, boolean hold, QStatement statement);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" statementTermRequired="true"
+	 * @model required="true" nameRequired="true" typeDataType="org.smeup.sys.mi.core.JavaType" typeRequired="true" annotationsDataType="org.smeup.sys.mi.core.JavaAnnotation" annotationsRequired="true" annotationsMany="true"
 	 * @generated
 	 */
-	QStatement createStatement(QStatementTerm statementTerm);
+	QCursorTerm createCursorTerm(String name, Type type, List<Annotation> annotations);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" typeDataType="org.smeup.sys.mi.core.JavaType" typeRequired="true" annotationsDataType="org.smeup.sys.mi.core.JavaAnnotation" annotationsRequired="true" annotationsMany="true"
+	 * @model required="true"
 	 * @generated
 	 */
-	QStatementTerm createStatementTerm(Type type, List<Annotation> annotations);
+	QStatement createStatement();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" nameRequired="true" typeDataType="org.smeup.sys.mi.core.JavaType" typeRequired="true" annotationsDataType="org.smeup.sys.mi.core.JavaAnnotation" annotationsRequired="true" annotationsMany="true"
+	 * @generated
+	 */
+	QStatementTerm createStatementTerm(String name, Type type, List<Annotation> annotations);
 
 } // QESqlFactory

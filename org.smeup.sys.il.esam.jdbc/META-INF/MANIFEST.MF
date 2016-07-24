@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: As.UP IntegratedLanguage ESAM Jdbc
+Bundle-Name: As.UP Integrated Language ESAM JDBC
 Bundle-SymbolicName: org.smeup.sys.il.esam.jdbc
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
@@ -8,6 +8,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .
 Require-Bundle: org.smeup.sys.il.esam,
  org.smeup.sys.il.data,
+ org.smeup.sys.il.data.jdbc,
  org.smeup.sys.db.core,
  org.smeup.sys.rt.core,
  org.smeup.sys.os.file.base,

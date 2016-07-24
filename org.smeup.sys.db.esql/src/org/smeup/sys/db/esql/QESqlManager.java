@@ -8,6 +8,7 @@
 package org.smeup.sys.db.esql;
 
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.data.QDataContext;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,9 +24,9 @@ public interface QESqlManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" contextProviderRequired="true"
+	 * @model required="true" contextProviderRequired="true" dataContextRequired="true" communicationAreaRequired="true"
 	 * @generated
 	 */
-	QESqlFactory createFactory(QContextProvider contextProvider);
+	QESqlFactory createFactory(QContextProvider contextProvider, QDataContext dataContext, QCommunicationArea communicationArea);
 
 } // QESqlManager

@@ -13,29 +13,20 @@ package org.smeup.sys.os.pgm.rpj;
 
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
-import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
-import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Module;
-import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.annotation.Module.Scope;
+import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.def.BinaryType;
 
 @Module(name="*SQL", scope = Scope.OWNER)
 public class RPJDatabaseSupport {
 
 	@DataDef
+	@Overlay(name = "*SQLCA")
 	public SQLCA sqlca;
-	
-	public void qExecute(QString statement) {
-
-	}
-	
-	public void qSelect(QString statement, QBufferedData into) {
-
-	}
 
 	public static class SQLCA extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
