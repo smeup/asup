@@ -225,6 +225,7 @@
     <module>../org.smeup.sys.db.core.mysql</module>
     <module>../org.smeup.sys.db.core.test</module>
     <module>../org.smeup.sys.db.esql</module>    
+    <module>../org.smeup.sys.db.esql.jdbc</module>
     <module>../org.smeup.sys.db.syntax</module>
     <module>../org.smeup.sys.db.syntax.base</module>
     <module>../org.smeup.sys.db.syntax.db2</module>
@@ -262,6 +263,7 @@
     <module>../org.smeup.sys.il.core.e4</module>
     <module>../org.smeup.sys.il.core.test</module>
     <module>../org.smeup.sys.il.data</module>
+    <module>../org.smeup.sys.il.data.jdbc</module>
     <module>../org.smeup.sys.il.data.nio</module>
     <module>../org.smeup.sys.il.data.test</module>
     <module>../org.smeup.sys.il.esam</module>
