@@ -68,14 +68,19 @@ public class ObjectDescriptionRetriever {
 			break;
 		}
 
-		$$dati.clear();
-		QObjectNameable objectNameable = resourceReader.lookup(object.name.trimR());
 		// TODO
+		$$dati.clear();
 		qusec.qusbprv.clear();
 		qusec.qusbavl.clear();
 		qusec.qusei.clear();
 		qusec.quserved.clear();
+
+		if(resourceReader == null) {
+			qusec.qusbavl.eval(1);
+			return;
+		}
 		
+		QObjectNameable objectNameable = resourceReader.lookup(object.name.trimR());		
 		if (objectNameable == null) {
 			qusec.qusbavl.eval(1);
 			return;
