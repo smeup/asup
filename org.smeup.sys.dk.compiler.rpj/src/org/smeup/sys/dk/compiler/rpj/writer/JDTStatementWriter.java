@@ -37,6 +37,7 @@ import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.StringLiteral;
 import org.eclipse.jdt.core.dom.SwitchCase;
 import org.eclipse.jdt.core.dom.SwitchStatement;
+import org.eclipse.jdt.core.dom.ThrowStatement;
 import org.eclipse.jdt.core.dom.TryStatement;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeLiteral;
@@ -645,42 +646,62 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		switchStatement.setExpression(methodInvocation);
 
-		blocks.peek().statements().add(switchStatement);
-
-		for (QOnError error : statement.getOnErrors())
-			if (error.getBody() != null) {
-
-				// Case
-				SwitchCase switchCase = ast.newSwitchCase();
+		boolean defaultError = false;
+		boolean caseStatement = false;
+		for (QOnError error : statement.getOnErrors()) {
+			if (error.getBody() == null) 
+				continue;
+			
+			// Case
+			SwitchCase switchCase = ast.newSwitchCase();
+			if (error.getError() == null || error.getError().equals("CPF0000")) {
+				switchCase.setExpression(null);
+				defaultError = true;
+			}
+			else {
 				StringLiteral caseLiteral = ast.newStringLiteral();
-				if (error.getError() != null)
-					caseLiteral.setLiteralValue(error.getError());
-				else
-					caseLiteral.setLiteralValue("*ALL");
-
+				caseLiteral.setLiteralValue(error.getError());
 				switchCase.setExpression(caseLiteral);
-				switchStatement.statements().add(switchCase);
+			}			
+			switchStatement.statements().add(switchCase);
 
-				// Case body
+			// Case body
 
-				// -> Case
-				Block caseBlock = ast.newBlock();
-				blocks.push(caseBlock);
+			// -> Case
+			Block caseBlock = ast.newBlock();
+			blocks.push(caseBlock);
 
-				if (error.getBody() != null)
-					error.getBody().accept(this);
+			error.getBody().accept(this);
 
-				// copy case block to switch statement
-				for (int i = 0; i < caseBlock.statements().size(); i++)
-					switchStatement.statements().add(caseBlock.statements().remove(i));
+			// copy case block to switch statement
+			for (int i = 0; i < caseBlock.statements().size(); i++) {
+				Block temp = (Block) caseBlock.statements().remove(i);
+				if(temp.statements().isEmpty())
+					continue;
 
-				BreakStatement switchBreak = ast.newBreakStatement();
-				caseBlock.statements().add(switchBreak);
-
-				// <- case
-				blocks.pop();
+				caseStatement = true;				
+				switchStatement.statements().add(temp);
 			}
 
+			BreakStatement switchBreak = ast.newBreakStatement();
+			caseBlock.statements().add(switchBreak);
+
+			// <- case
+			blocks.pop();
+		}
+
+		if(!defaultError) {
+			SwitchCase switchCase = ast.newSwitchCase();
+			switchCase.setExpression(null);			
+			switchStatement.statements().add(switchCase);			
+			ThrowStatement throwStatement = ast.newThrowStatement();
+			throwStatement.setExpression(ast.newSimpleName(exceptionName));
+			switchStatement.statements().add(throwStatement);
+			blocks.peek().statements().add(switchStatement);
+		}
+		else if(caseStatement){
+			blocks.peek().statements().add(switchStatement);
+		}
 		// <-catch
 		blocks.pop();
 
