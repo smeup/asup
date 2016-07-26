@@ -379,6 +379,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			else
 				target = RPJContextHelper.getTargetClass(compilationUnit, expression.getLeftOperand(), true);
 
+			if(expression.getOperator() == ArithmeticOperator.DIVIDE)
+				builder.useDouble(true);
+			
 			if (Boolean.class.isAssignableFrom(target))
 				target = String.class;
 			else if (Byte.class.isAssignableFrom(target))
@@ -399,8 +402,6 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			builder.clear();
 			if (expression.getOperator() == ArithmeticOperator.DIVIDE && Number.class.isAssignableFrom(target))
 				builder.useDouble(true);
-			else
-				builder.useDouble(false);
 
 			expression.getRightOperand().accept(builder);
 
