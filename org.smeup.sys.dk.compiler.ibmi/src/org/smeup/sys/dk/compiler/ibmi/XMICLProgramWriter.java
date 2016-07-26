@@ -66,7 +66,7 @@ import org.smeup.sys.os.core.jobs.QJob;
 
 public class XMICLProgramWriter {
 
-	public static enum QRNFMSG {
+	public static enum QRPGLEMSG {
 		RNF7030;
 	}
 	
@@ -255,12 +255,12 @@ public class XMICLProgramWriter {
 
 			DataDefType dataDefType = null;
 			
-			if(left.toUpperCase().startsWith("%SST"))
+			if(left.toUpperCase().startsWith("%SST") || left.toUpperCase().startsWith("(%SST"))
 				dataDefType = DataDefType.CHARACTER;
 			else {
 				QDataTerm<?> dataLeft = getData(left);
 				if(dataLeft == null)
-					throw exceptionManager.prepareException(conversionUnit.getContext().get(QJob.class), QRNFMSG.RNF7030, left);
+					throw exceptionManager.prepareException(conversionUnit.getContext().get(QJob.class), QRPGLEMSG.RNF7030, left);
 
 				dataDefType = dataLeft.getDefinition().getDataDefType();
 			}
