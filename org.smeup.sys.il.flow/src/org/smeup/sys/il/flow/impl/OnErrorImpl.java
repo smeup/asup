@@ -7,11 +7,15 @@
  */
 package org.smeup.sys.il.flow.impl;
 
+import java.util.Collection;
+import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.smeup.sys.il.core.term.impl.NodeImpl;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
 import org.smeup.sys.il.flow.QOnError;
@@ -25,7 +29,7 @@ import org.smeup.sys.il.flow.QStatement;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.OnErrorImpl#getBody <em>Body</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.impl.OnErrorImpl#getError <em>Error</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.OnErrorImpl#getErrors <em>Errors</em>}</li>
  * </ul>
  *
  * @generated
@@ -46,22 +50,14 @@ public class OnErrorImpl extends NodeImpl implements QOnError {
 	protected QStatement body;
 
 	/**
-	 * The default value of the '{@link #getError() <em>Error</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getError()
+	 * The cached value of the '{@link #getErrors() <em>Errors</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getErrors()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ERROR_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getError() <em>Error</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getError()
-	 * @generated
-	 * @ordered
-	 */
-	protected String error = ERROR_EDEFAULT;
+	protected EList<String> errors;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -123,24 +119,15 @@ public class OnErrorImpl extends NodeImpl implements QOnError {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getError() {
-		return error;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setError(String newError) {
-		String oldError = error;
-		error = newError;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.ON_ERROR__ERROR, oldError, error));
+	public List<String> getErrors() {
+		if (errors == null) {
+			errors = new EDataTypeUniqueEList<String>(String.class, this, QIntegratedLanguageFlowPackage.ON_ERROR__ERRORS);
+		}
+		return errors;
 	}
 
 	/**
@@ -165,8 +152,8 @@ public class OnErrorImpl extends NodeImpl implements QOnError {
 		switch (featureID) {
 			case QIntegratedLanguageFlowPackage.ON_ERROR__BODY:
 				return getBody();
-			case QIntegratedLanguageFlowPackage.ON_ERROR__ERROR:
-				return getError();
+			case QIntegratedLanguageFlowPackage.ON_ERROR__ERRORS:
+				return getErrors();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -175,14 +162,16 @@ public class OnErrorImpl extends NodeImpl implements QOnError {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case QIntegratedLanguageFlowPackage.ON_ERROR__BODY:
 				setBody((QStatement)newValue);
 				return;
-			case QIntegratedLanguageFlowPackage.ON_ERROR__ERROR:
-				setError((String)newValue);
+			case QIntegratedLanguageFlowPackage.ON_ERROR__ERRORS:
+				getErrors().clear();
+				getErrors().addAll((Collection<? extends String>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -198,8 +187,8 @@ public class OnErrorImpl extends NodeImpl implements QOnError {
 			case QIntegratedLanguageFlowPackage.ON_ERROR__BODY:
 				setBody((QStatement)null);
 				return;
-			case QIntegratedLanguageFlowPackage.ON_ERROR__ERROR:
-				setError(ERROR_EDEFAULT);
+			case QIntegratedLanguageFlowPackage.ON_ERROR__ERRORS:
+				getErrors().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -214,8 +203,8 @@ public class OnErrorImpl extends NodeImpl implements QOnError {
 		switch (featureID) {
 			case QIntegratedLanguageFlowPackage.ON_ERROR__BODY:
 				return body != null;
-			case QIntegratedLanguageFlowPackage.ON_ERROR__ERROR:
-				return ERROR_EDEFAULT == null ? error != null : !ERROR_EDEFAULT.equals(error);
+			case QIntegratedLanguageFlowPackage.ON_ERROR__ERRORS:
+				return errors != null && !errors.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -229,8 +218,8 @@ public class OnErrorImpl extends NodeImpl implements QOnError {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (error: ");
-		result.append(error);
+		result.append(" (errors: ");
+		result.append(errors);
 		result.append(')');
 		return result.toString();
 	}

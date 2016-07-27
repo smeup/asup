@@ -362,8 +362,11 @@ public class RPJProgramSupport {
 		} catch (Exception e) {
 			if (error != null)
 				error.eval(true);
-			else
+			else {
+				e.printStackTrace();
+				System.err.println(e.getMessage());
 				throw new OperatingSystemMessageException("00211", e.getMessage(), 40);
+			}
 		}
 	}
 
@@ -435,8 +438,14 @@ public class RPJProgramSupport {
 	}
 
 	public QDecimal qDec(String string, Integer precision, Integer scale) {
+		
 		QDecimal decimal = dataContext.getDataFactory().createDecimal(precision, scale, DecimalType.PACKED, true);
-		decimal.eval(Double.parseDouble(string.replaceAll(",", ".")));
+		
+		// TODO use number format
+		string = string.replaceAll(",", ".").trim();
+		if(!string.isEmpty())
+			decimal.eval(Double.parseDouble(string));
+		
 		return decimal;
 	}
 

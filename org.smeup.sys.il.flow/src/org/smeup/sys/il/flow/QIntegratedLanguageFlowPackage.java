@@ -1435,13 +1435,13 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	int ON_ERROR__BODY = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Error</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The feature id for the '<em><b>Errors</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ON_ERROR__ERROR = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 1;
+	int ON_ERROR__ERRORS = QIntegratedLanguageCoreTermPackage.NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>On Error</em>' class. <!--
@@ -2965,16 +2965,15 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	EReference getOnError_Body();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.smeup.sys.il.flow.QOnError#getError <em>Error</em>}'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @return the meta object for the attribute '<em>Error</em>'.
-	 * @see org.smeup.sys.il.flow.QOnError#getError()
+	 * Returns the meta object for the attribute list '{@link org.smeup.sys.il.flow.QOnError#getErrors <em>Errors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Errors</em>'.
+	 * @see org.smeup.sys.il.flow.QOnError#getErrors()
 	 * @see #getOnError()
 	 * @generated
 	 */
-	EAttribute getOnError_Error();
+	EAttribute getOnError_Errors();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.flow.QParameterList <em>Parameter List</em>}'.
@@ -4058,11 +4057,12 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 		EReference ON_ERROR__BODY = eINSTANCE.getOnError_Body();
 
 		/**
-		 * The meta object literal for the '<em><b>Error</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Errors</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ON_ERROR__ERROR = eINSTANCE.getOnError_Error();
+		EAttribute ON_ERROR__ERRORS = eINSTANCE.getOnError_Errors();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.flow.impl.ParameterListImpl <em>Parameter List</em>}' class.

@@ -654,14 +654,16 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			
 			// Case
 			SwitchCase switchCase = ast.newSwitchCase();
-			if (error.getError() == null || error.getError().equals("CPF0000")) {
+			if (error.getErrors().isEmpty() || error.getErrors().contains("CPF0000")) {
 				switchCase.setExpression(null);
 				defaultError = true;
 			}
 			else {
-				StringLiteral caseLiteral = ast.newStringLiteral();
-				caseLiteral.setLiteralValue(error.getError());
-				switchCase.setExpression(caseLiteral);
+				for(String caseError: error.getErrors()) {
+					StringLiteral caseLiteral = ast.newStringLiteral();
+					caseLiteral.setLiteralValue(caseError);
+					switchCase.setExpression(caseLiteral);
+				}
 			}			
 			switchStatement.statements().add(switchCase);
 
@@ -675,9 +677,12 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 			// copy case block to switch statement
 			for (int i = 0; i < caseBlock.statements().size(); i++) {
-				Block temp = (Block) caseBlock.statements().remove(i);
-				if(temp.statements().isEmpty())
-					continue;
+				Object temp = caseBlock.statements().remove(i);
+				if(temp instanceof Block) {
+					Block tempBlock = (Block)temp; 
+					if(tempBlock.statements().isEmpty())
+						continue;
+				}
 
 				caseStatement = true;				
 				switchStatement.statements().add(temp);
@@ -696,12 +701,15 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			switchStatement.statements().add(switchCase);			
 			ThrowStatement throwStatement = ast.newThrowStatement();
 			throwStatement.setExpression(ast.newSimpleName(exceptionName));
+			
 			switchStatement.statements().add(throwStatement);
+
 			blocks.peek().statements().add(switchStatement);
 		}
 		else if(caseStatement){
 			blocks.peek().statements().add(switchStatement);
 		}
+		
 		// <-catch
 		blocks.pop();
 

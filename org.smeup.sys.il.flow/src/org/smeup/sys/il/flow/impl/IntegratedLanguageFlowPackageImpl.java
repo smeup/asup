@@ -1096,11 +1096,11 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EAttribute getOnError_Error() {
+	public EAttribute getOnError_Errors() {
 		return (EAttribute)onErrorEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1622,7 +1622,7 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 		onErrorEClass = createEClass(ON_ERROR);
 		createEReference(onErrorEClass, ON_ERROR__BODY);
-		createEAttribute(onErrorEClass, ON_ERROR__ERROR);
+		createEAttribute(onErrorEClass, ON_ERROR__ERRORS);
 
 		parameterListEClass = createEClass(PARAMETER_LIST);
 		createEAttribute(parameterListEClass, PARAMETER_LIST__NAME);
@@ -1888,7 +1888,7 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 		initEClass(onErrorEClass, QOnError.class, "OnError", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOnError_Body(), this.getStatement(), null, "body", null, 0, 1, QOnError.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOnError_Error(), ecorePackage.getEString(), "error", null, 0, 1, QOnError.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOnError_Errors(), ecorePackage.getEString(), "errors", null, 0, -1, QOnError.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterListEClass, QParameterList.class, "ParameterList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParameterList_Name(), ecorePackage.getEString(), "name", null, 0, 1, QParameterList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

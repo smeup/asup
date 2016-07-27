@@ -483,8 +483,13 @@ public class XMICLProgramWriter {
 				QOnError onError = QIntegratedLanguageFlowFactory.eINSTANCE.createOnError();
 				if (execBlock != null)
 					onError.setBody(execBlock);
-				if (msgIDValue != null)
-					onError.setError(msgIDValue);
+
+				if (msgIDValue != null && !msgIDValue.isEmpty()) {
+					String[] errors = msgIDValue.split(" ");
+					for(String error: errors)
+						onError.getErrors().add(error);
+				}
+
 
 				lastMonitor.getOnErrors().add(onError);
 
@@ -503,8 +508,12 @@ public class XMICLProgramWriter {
 				QOnError onError = QIntegratedLanguageFlowFactory.eINSTANCE.createOnError();
 				if (execBlock != null)
 					onError.setBody(execBlock);
-				if (msgIDValue != null)
-					onError.setError(msgIDValue);
+
+				if (msgIDValue != null && !msgIDValue.isEmpty()) {
+					String[] errors = msgIDValue.split(" ");
+					for(String error: errors)
+						onError.getErrors().add(error);
+				}
 
 				monitorStatement.getOnErrors().add(onError);
 
@@ -546,8 +555,12 @@ public class XMICLProgramWriter {
 				QOnError onError = QIntegratedLanguageFlowFactory.eINSTANCE.createOnError();
 				if (execBlock != null)
 					onError.setBody(execBlock);
-				if (msgIDValue != null)
-					onError.setError(msgIDValue);
+				
+				if (msgIDValue != null && !msgIDValue.isEmpty()) {
+					String[] errors = msgIDValue.split(" ");
+					for(String error: errors)
+						onError.getErrors().add(error);
+				}
 
 				monitorStatement.getOnErrors().add(onError);
 				statementsList.add(monitorStatement);

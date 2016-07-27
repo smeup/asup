@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.flow;
 
+import java.util.List;
 import org.smeup.sys.il.core.term.QNode;
 
 /**
@@ -18,7 +19,7 @@ import org.smeup.sys.il.core.term.QNode;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QOnError#getBody <em>Body</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.QOnError#getError <em>Error</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QOnError#getErrors <em>Errors</em>}</li>
  * </ul>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getOnError()
@@ -53,29 +54,19 @@ public interface QOnError extends QNode {
 	void setBody(QStatement value);
 
 	/**
-	 * Returns the value of the '<em><b>Error</b></em>' attribute. <!--
-	 * begin-user-doc -->
+	 * Returns the value of the '<em><b>Errors</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Error</em>' attribute isn't clear, there
-	 * really should be more of a description here...
+	 * If the meaning of the '<em>Errors</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the value of the '<em>Error</em>' attribute.
-	 * @see #setError(String)
-	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getOnError_Error()
+	 * @return the value of the '<em>Errors</em>' attribute list.
+	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getOnError_Errors()
 	 * @model
 	 * @generated
 	 */
-	String getError();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QOnError#getError <em>Error</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Error</em>' attribute.
-	 * @see #getError()
-	 * @generated
-	 */
-	void setError(String value);
+	List<String> getErrors();
 
 } // QOnError
