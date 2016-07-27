@@ -652,20 +652,23 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			if (error.getBody() == null) 
 				continue;
 			
-			// Case
-			SwitchCase switchCase = ast.newSwitchCase();
 			if (error.getErrors().isEmpty() || error.getErrors().contains("CPF0000")) {
+				// Case
+				SwitchCase switchCase = ast.newSwitchCase();
 				switchCase.setExpression(null);
+				switchStatement.statements().add(switchCase);
 				defaultError = true;
 			}
 			else {
 				for(String caseError: error.getErrors()) {
 					StringLiteral caseLiteral = ast.newStringLiteral();
 					caseLiteral.setLiteralValue(caseError);
+					// Case
+					SwitchCase switchCase = ast.newSwitchCase();
 					switchCase.setExpression(caseLiteral);
+					switchStatement.statements().add(switchCase);
 				}
 			}			
-			switchStatement.statements().add(switchCase);
 
 			// Case body
 
