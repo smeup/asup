@@ -72,10 +72,34 @@ public interface QProgramManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model programRequired="true"
+	 * @generated
+	 */
+	QProgramCallable getCaller(QJob job, QProgramCallable program);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model programRequired="true"
+	 * @generated
+	 */
+	QProgramCallable getCaller(QJob job, Object program);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
 	QProgramStack getProgramStack(String contextID);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	QProgramStack getProgramStack(QJob job);
 
 	/**
 	 * <!-- begin-user-doc -->

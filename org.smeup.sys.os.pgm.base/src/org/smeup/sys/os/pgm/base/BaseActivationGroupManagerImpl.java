@@ -81,13 +81,13 @@ public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 
 	@Override
 	public boolean close(QJob job, QActivationGroup activationGroup) {
-		QProgramStack programStack = programManager.getProgramStack(job.getContext().getID());
+		QProgramStack programStack = programManager.getProgramStack(job);
 		return closeActivationGroup(programStack, activationGroup);
 	}
 
 	@Override
 	public void closeAll(QJob job) {
-		QProgramStack programStack = programManager.getProgramStack(job.getContext().getID());
+		QProgramStack programStack = programManager.getProgramStack(job);
 		for (QActivationGroup activationGroup : list(job)) {
 			closeActivationGroup(programStack, activationGroup);
 		}			

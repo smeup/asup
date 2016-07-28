@@ -113,7 +113,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		QActivationGroup activationGroup = null;
 
 		if (program.getActivationGroup().equals("*CALLER")) {
-			QProgramStack programStack = getProgramStack(job.getJobID());
+			QProgramStack programStack = getProgramStack(job);
 			activationGroup = programStack.peek().getActivationGroup();
 			callableProgram = activationGroup.lookup(program);
 		} else if (program.getActivationGroup().equals("*NEW")) {
@@ -187,6 +187,13 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		if (job == null)
 			return null;
 
+		return getProgramStack(job);
+	}
+
+
+	@Override
+	public QProgramStack getProgramStack(QJob job) {
+
 		QProgramStack programStack = job.getContext().get(QProgramStack.class);
 		if (programStack == null) {
 			synchronized (job) {
@@ -197,13 +204,24 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				}
 			}
 		}
+		
 		return programStack;
 	}
 
 	@Override
 	public QProgramCallable getCaller(String contextID, QProgramCallable program) {
 
-		QProgramStack programStack = getProgramStack(contextID);
+		QJob job = jobManager.lookup(contextID);
+		if (job == null)
+			return null;
+
+		return getCaller(job, program);
+	}
+
+	@Override
+	public QProgramCallable getCaller(QJob job, QProgramCallable program) {
+
+		QProgramStack programStack = getProgramStack(job);
 		QProgramCallable caller = null;
 		for (QProgramCallable level : programStack.list(ProgramStackOrder.ASCEND)) {
 			// looking for this
@@ -218,7 +236,18 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	@Override
 	public QProgramCallable getCaller(String contextID, Object program) {
 
-		QProgramStack programStack = getProgramStack(contextID);
+
+		QJob job = jobManager.lookup(contextID);
+		if (job == null)
+			return null;
+
+		return getCaller(job, program);
+	}
+
+	@Override
+	public QProgramCallable getCaller(QJob job, Object program) {
+
+		QProgramStack programStack = getProgramStack(job);
 		QProgramCallable caller = null;
 		for (QProgramCallable level : programStack.list(ProgramStackOrder.ASCEND)) {
 			// looking for this
@@ -228,7 +257,6 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			caller = level;
 		}
 		return null;
-
 	}
 
 	private void assignParameters(QProgramCallable callableProgram, QData[] paramsFrom) {
@@ -303,7 +331,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		synchronized (callableProgram) {
 
 			// retrieve program stack from job
-			QProgramStack programStack = getProgramStack(job.getJobID());
+			QProgramStack programStack = getProgramStack(job);
 			if (programStack.isEmpty())
 				jobManager.updateStatus(job, JobStatus.RUN);
 
@@ -314,14 +342,17 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 				programStack.push(callableProgram);
 
-//				printSendStack(job, programStack, callableProgram);
+				printSendStack(job, programStack, callableProgram);
 
 				// call
 				callableProgram.call();
 
 			} catch (OperatingSystemMessageException | OperatingSystemRuntimeException e) {
+				System.err.println(e.getMessage());
 				throw e;
 			} catch (Exception e) {
+				System.err.println(e.getMessage());
+				
 				Throwable cause = e.getCause();
 				e.printStackTrace();
 				if (cause != null)
@@ -334,7 +365,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				long callTime = System.currentTimeMillis() - callableProgram.getProgramInfo().getCallTime();
 				callableProgram.getProgramInfo().setCallTime(callTime);
 
-//				printReceiveStack(job, programStack, callableProgram);
+				printReceiveStack(job, programStack, callableProgram);
 
 				programStack.pop();
 
