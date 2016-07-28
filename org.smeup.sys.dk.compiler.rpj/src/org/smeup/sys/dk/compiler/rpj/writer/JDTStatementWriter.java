@@ -652,7 +652,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			if (error.getBody() == null) 
 				continue;
 			
-			if (error.getErrors().isEmpty() || error.getErrors().contains("CPF0000")) {
+			if (error.getErrors().isEmpty() || error.getErrors().contains("CPF0000") || error.getErrors().contains("*ALL")) {
 				// Case
 				SwitchCase switchCase = ast.newSwitchCase();
 				switchCase.setExpression(null);
