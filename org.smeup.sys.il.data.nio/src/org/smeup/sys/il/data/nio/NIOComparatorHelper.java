@@ -17,7 +17,7 @@ import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDataFiller;
 
-public class NIOComparatorHelper {
+public final class NIOComparatorHelper {
 
 	public static final int compareBytes(QBufferedElement bufferedElement, byte[] b2) {
 		return compareBytes(NIOBufferHelper.getNIOBufferedElementImpl(bufferedElement), b2);
@@ -91,11 +91,11 @@ public class NIOComparatorHelper {
 		return 0;
 	}
 
-	public static int compareByte(byte b1, byte b2) {
+	public static final int compareByte(byte b1, byte b2) {
 		return NIOBufferHelper.toHexString(b1).compareTo(NIOBufferHelper.toHexString(b2));
 	}
 
-	public static int compareBytes(NIOBufferedElementImpl bufferedElement, DataSpecial value) {
+	public static final int compareBytes(NIOBufferedElementImpl bufferedElement, DataSpecial value) {
 
 		switch (value) {
 		case BLANK:
@@ -116,7 +116,7 @@ public class NIOComparatorHelper {
 		return compareBytes(bufferedElement, bufferedElement._toBytes(value));
 	}
 
-	public static int compareBytes(NIOBufferedElementImpl bufferedElement, QDataFiller value) {
+	public static final int compareBytes(NIOBufferedElementImpl bufferedElement, QDataFiller value) {
 
 		int length = bufferedElement.getLength();
 		int fillerLength = value.get().getLength();

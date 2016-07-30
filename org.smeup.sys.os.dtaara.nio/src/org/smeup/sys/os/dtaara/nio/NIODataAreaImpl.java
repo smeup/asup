@@ -10,7 +10,9 @@
  */
 package org.smeup.sys.os.dtaara.nio;
 
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QArray;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContext;
@@ -23,7 +25,7 @@ import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.dtaara.QDataAreaManager;
 
-public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElementDelegatorImpl implements QDataArea<D> {
+public final class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElementDelegatorImpl implements QDataArea<D> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -37,12 +39,12 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public D get() {
+	public final D get() {
 		return (D) getDelegate();
 	}
 
 	@Override
-	public void in() {
+	public final void in() {
 
 		if(currentDataArea != null) 
 			return;
@@ -61,7 +63,7 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 	}
 
 	@Override
-	public void in(QIndicator error) {
+	public final void in(QIndicator error) {
 		try {
 			in();
 			error.eval(false);
@@ -71,7 +73,7 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 	}
 
 	@Override
-	public void out() {
+	public final void out() {
 
 		if (externalName.equalsIgnoreCase("*LDA")) {
 			// TODO
@@ -93,7 +95,7 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 	}
 
 	@Override
-	public void out(QIndicator error) {
+	public final void out(QIndicator error) {
 		try {
 			out();
 			error.eval(false);
@@ -103,12 +105,7 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 	}
 
 	@Override
-	public byte[] asBytes() {
-		return getDelegate().asBytes();
-	}
-
-	@Override
-	public void movea(QArray<? extends QString> value) {
+	public final void movea(QArray<? extends QString> value) {
 
 		if (!(get() instanceof QString))
 			throw new UnsupportedOperationException();
@@ -117,7 +114,13 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 	}
 
 	@Override
-	public void eval(QString value) {
+	public final QBufferedData eval(DataSpecial value) {
+		getDelegate().eval(value);
+		return this;
+	}
+
+	@Override
+	public final void eval(QString value) {
 
 		if (!(get() instanceof QString))
 			throw new UnsupportedOperationException();
@@ -126,7 +129,7 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 	}
 
 	@Override
-	public String asString() {
+	public final String asString() {
 
 		if (!(get() instanceof QString))
 			throw new UnsupportedOperationException();
@@ -135,7 +138,7 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 	}
 
 	@Override
-	public String s() {
+	public final String s() {
 		return asString();
 	}
 }

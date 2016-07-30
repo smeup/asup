@@ -28,7 +28,7 @@ import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
 
-public class NIOPointerImpl extends NIODataImpl implements QPointer {
+public final class NIOPointerImpl extends NIODataImpl implements QPointer {
 
 	private static final long serialVersionUID = 1L;
 	protected QStorable _storage = null;
@@ -48,35 +48,35 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 	
 	@Override
-	public boolean isNull() {
+	public final boolean isNull() {
 		return _storage == null;
 	}
 
 	@Override
-	public void assign(QBufferedData target) {
+	public final void assign(QBufferedData target) {
 		NIOBufferHelper.assign(this, target);
 	}
 
 	@Override
-	public void eval(QPointer value) {
+	public final void eval(QPointer value) {
 		this._storage = ((NIOPointerImpl)value)._storage;
 	}
 
 	@Override
-	public void dealloc() {
+	public final void dealloc() {
 		this._storage = null;
 	}
 
 	@Override
-	public void accept(QDataVisitor visitor) {
+	public final void accept(QDataVisitor visitor) {
 		visitor.visit(this);
 	}
 
-	public QString qStr() {
+	public final QString qStr() {
 		return qStr(getByteSize(_storage));
 	}
 
-	public QString qStr(int length) {
+	public final QString qStr(int length) {
 
 		QCharacter character = getDataContext().getDataFactory().createCharacter(length, false, false);
 		_storage.assign(character);
@@ -85,17 +85,17 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 
 	@Override
-	public QString qStr(QNumeric length) {
+	public final QString qStr(QNumeric length) {
 		return qStr(length.i());
 	}
 
 	@Override
-	public void clear() {
+	public final void clear() {
 		this._storage = null;
 	}
 
 	@Override
-	public boolean isEmpty() {
+	public final boolean isEmpty() {
 		if (_storage == null)
 			return true;
 		else
@@ -103,7 +103,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 
 	@Override
-	public NIODataImpl _copyDef(QDataContext dataContext) {
+	public final NIODataImpl _copyDef(QDataContext dataContext) {
 
 		try {
 
@@ -146,7 +146,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 		return _storage.getPosition();
 	}
 
-	private int getByteSize(QStorable storable) {
+	private final int getByteSize(QStorable storable) {
 		if (storable instanceof QBufferedData)
 			return ((QBufferedData) storable).getSize();
 		else
@@ -154,32 +154,32 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 
 	@Override
-	public String toString() {
+	public final String toString() {
 		return "SPP:" + _storage.hashCode();
 	}
 
 	@Override
-	public QPointer qMinus(Number value) {
+	public final QPointer qMinus(Number value) {
 		return new NIOPointerImpl(getDataContext(), new NIOStorageImpl(getBuffer(), getPosition() - value.intValue()));
 	}
 
 	@Override
-	public QPointer qMinus(QNumeric value) {
+	public final QPointer qMinus(QNumeric value) {
 		return qMinus(value.n());
 	}
 
 	@Override
-	public QPointer qPlus(Number value) {
+	public final QPointer qPlus(Number value) {
 		return new NIOPointerImpl(getDataContext(), new NIOStorageImpl(getBuffer(), getPosition() + value.intValue()));
 	}
 
 	@Override
-	public QPointer qPlus(QNumeric value) {
+	public final QPointer qPlus(QNumeric value) {
 		return qPlus(value.n());
 	}
 
 	@Override
-	public QPointer minus(Number value) {
+	public final QPointer minus(Number value) {
 		if(!(_storage instanceof NIOStorageImpl))
 			throw new UnsupportedOperationException();
 		
@@ -190,12 +190,12 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 
 	@Override
-	public QPointer minus(QNumeric value) {
+	public final QPointer minus(QNumeric value) {
 		return minus(value.n());
 	}
 
 	@Override
-	public QPointer plus(Number value) {
+	public final QPointer plus(Number value) {
 		if(!(_storage instanceof NIOStorageImpl))
 			throw new UnsupportedOperationException();
 		
@@ -206,12 +206,12 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 
 	@Override
-	public QPointer plus(QNumeric value) {
+	public final QPointer plus(QNumeric value) {
 		return plus(value.n());
 	}
 
 	@Override
-	public boolean eq(QPointer value) {
+	public final boolean eq(QPointer value) {
 		if(value == null)
 			if(isNull())
 				return true;
@@ -222,7 +222,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 
 	@Override
-	public boolean ne(QPointer value) {
+	public final boolean ne(QPointer value) {
 		return !eq(value);
 	}
 }

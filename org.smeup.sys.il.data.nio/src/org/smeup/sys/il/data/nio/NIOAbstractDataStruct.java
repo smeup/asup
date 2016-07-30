@@ -26,7 +26,7 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 		super(dataContext, length, false);
 	}
 
-	protected void _allocate() {
+	protected final void _allocate() {
 		checkAllocation();
 		_buffer = ByteBuffer.allocate(getSize());			
 		NIOBufferHelper.fill(_buffer, 0, _buffer.capacity(), INIT);			
@@ -35,7 +35,7 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 	protected abstract void addElement(String name, QBufferedData element, int position);
 	
 	@Override
-	protected void _clear() {
+	protected final void _clear() {
 		super._clear();
 
 		for (QBufferedData element : this.getElements())
@@ -43,7 +43,7 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 	}
 
 	@Override
-	public boolean isEmpty() {
+	public final boolean isEmpty() {
 
 		for (QBufferedData element : this.getElements())
 			if (!element.isEmpty())
@@ -53,12 +53,12 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 	}
 
 	@Override
-	public void accept(QDataVisitor visitor) {
+	public final void accept(QDataVisitor visitor) {
 		visitor.visit(this);
 	}
 
 	@Override
-	public void snap() {
+	public final void snap() {
 
 		if (!isEmpty())
 			getDataContext().snap(this);

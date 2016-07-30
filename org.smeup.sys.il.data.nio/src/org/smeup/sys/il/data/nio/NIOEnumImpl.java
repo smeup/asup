@@ -26,7 +26,7 @@ import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.Special;
 
-public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> extends NIOBufferedElementDelegatorImpl implements QEnum<E, D> {
+public final class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> extends NIOBufferedElementDelegatorImpl implements QEnum<E, D> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -43,7 +43,7 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> extends 
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public E asEnum() {
+	public final E asEnum() {
 
 		// TODO encoding
 		String value = new String(asBytes(), getDataContext().getCharset()).trim();
@@ -79,23 +79,23 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> extends 
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public D asData() {
+	public final D asData() {
 		return (D) getDelegate();
 	}
 
 	@Override
-	public QBufferedData eval(DataSpecial value) {
+	public final QBufferedData eval(DataSpecial value) {
 		asData().eval(value);
 		return this;
 	}
 
 	@Override
-	public String getSpecialName() {
+	public final String getSpecialName() {
 		return "*" + asEnum().name();
 	}
 
 	@Override
-	public void eval(E value) {
+	public final void eval(E value) {
 
 		try {
 			Field field = _klass.getField(value.name());

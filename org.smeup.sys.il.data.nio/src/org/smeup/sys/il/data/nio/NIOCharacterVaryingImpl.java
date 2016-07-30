@@ -20,7 +20,7 @@ import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.BinaryType;
 
-public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
+public final class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 
 	private static final long serialVersionUID = 1L;
 
@@ -33,7 +33,7 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 		}
 	}
 
-	private void setLength(short length) {
+	private final void setLength(short length) {
 
 		ByteBuffer buffer = getBuffer();
 		NIOBufferHelper.prepare(buffer, getPosition(), 2);
@@ -50,12 +50,12 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 
 	@Override
-	public int getSize() {
+	public final int getSize() {
 		return _length + 2;
 	}
 
 	@Override
-	public int getLength() {
+	public final int getLength() {
 		ByteBuffer buffer = getBuffer();
 		NIOBufferHelper.prepare(buffer, getPosition(), 2);
 		return buffer.getShort();
@@ -88,7 +88,7 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 
 	@Override
-	protected void cat(byte[] factor1, byte[] factor2, Number space, boolean clear) {
+	protected final void cat(byte[] factor1, byte[] factor2, Number space, boolean clear) {
 
 		int length = getLength();
 		if (length == 0)
@@ -114,14 +114,14 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 
 	@Override
-	protected void _clear() {
+	protected final void _clear() {
 
 		setLength((short) 0);
 		// NIOBufferHelper.fill(getBuffer(), getPosition()+2, _length, INIT);
 	}
 
 	@Override
-	protected void _write(byte[] value) {
+	protected final void _write(byte[] value) {
 
 		if (value.length > _length)
 			setLength((short) _length);
@@ -135,7 +135,7 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 
 	@Override
-	protected void _move(byte[] value, boolean clear) {
+	protected final void _move(byte[] value, boolean clear) {
 		if (clear)
 			NIOBufferHelper.move(getBuffer(), getPosition() + 2, getLength(), value, INIT);
 		else
@@ -143,7 +143,7 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 
 	@Override
-	protected void _movel(byte[] value, boolean clear) {
+	protected final void _movel(byte[] value, boolean clear) {
 		if (clear)
 			NIOBufferHelper.movel(getBuffer(), getPosition() + 2, getLength(), value, INIT);
 		else
@@ -151,12 +151,12 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 
 	@Override
-	protected byte[] _toBytes() {
+	protected final byte[] _toBytes() {
 		return NIOBufferHelper.read(getBuffer(), getPosition() + 2, getLength());
 	}
 
 	@Override
-	protected void _fill(byte[] value, boolean maxLength) {
+	protected final void _fill(byte[] value, boolean maxLength) {
 		if (maxLength)
 			NIOBufferHelper.fill(getBuffer(), getPosition() + 2, _length, value);
 		else
@@ -164,7 +164,7 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 
 	@Override
-	protected void _fillr(byte[] value, boolean maxLength) {
+	protected final void _fillr(byte[] value, boolean maxLength) {
 		if (maxLength)
 			NIOBufferHelper.fillr(getBuffer(), getPosition() + 2, _length, value);
 		else
@@ -172,7 +172,7 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 	
 	@Override
-	protected NIODataImpl _copyDef(QDataContext dataContext) {
+	protected final NIODataImpl _copyDef(QDataContext dataContext) {
 		NIOCharacterVaryingImpl copy = new NIOCharacterVaryingImpl(dataContext, _length, false);
 		return copy;
 	}

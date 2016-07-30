@@ -22,7 +22,7 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 
 	private static final long serialVersionUID = 1L;
 
-	private NIODecimalDef decimalDef = null;
+	private final NIODecimalDef decimalDef;
 
 	public NIODecimalImpl(QDataContext dataContext, int precision, int scale) {
 		super(dataContext);

@@ -21,7 +21,7 @@ import java.util.Locale;
 import com.ibm.as400.access.AS400PackedDecimal;
 import com.ibm.as400.access.AS400ZonedDecimal;
 
-public class NIODecimalDef implements Serializable {
+public final class NIODecimalDef implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

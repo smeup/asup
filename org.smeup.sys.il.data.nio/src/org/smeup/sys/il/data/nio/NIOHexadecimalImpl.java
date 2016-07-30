@@ -15,7 +15,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QHexadecimal;
 
-public class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexadecimal {
+public final class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexadecimal {
 
 	private static final long serialVersionUID = 1L;
 
@@ -24,7 +24,7 @@ public class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexadecimal
 	}
 
 	@Override
-	public String toString() {
+	public final String toString() {
 
 		String string = getHexString(asBytes());
 
@@ -32,17 +32,17 @@ public class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexadecimal
 	}
 
 	@Override
-	public int getLength() {
+	public final int getLength() {
 		return _length;
 	}
 
 	@Override
-	public int getSize() {
+	public final int getSize() {
 		return _length;
 	}
 
 	@Override
-	public void eval(String value) {
+	public final void eval(String value) {
 
 		byte[] bytes = new byte[value.length() / 2];
 
@@ -59,7 +59,7 @@ public class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexadecimal
 			+ "909192939495969798999A9B9C9D9E9F" + "A0A1A2A3A4A5A6A7A8A9AAABACADAEAF" + "B0B1B2B3B4B5B6B7B8B9BABBBCBDBEBF" + "C0C1C2C3C4C5C6C7C8C9CACBCCCDCECF" + "D0D1D2D3D4D5D6D7D8D9DADBDCDDDEDF"
 			+ "E0E1E2E3E4E5E6E7E8E9EAEBECEDEEEF" + "F0F1F2F3F4F5F6F7F8F9FAFBFCFDFEFF").toCharArray();;
 
-	public static String getHexString(byte[] bytes) {
+	public final static String getHexString(byte[] bytes) {
 		final int len = bytes.length;
 		final char[] chars = new char[len << 1];
 		int hexIndex;
@@ -75,17 +75,17 @@ public class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexadecimal
 	}
 
 	@Override
-	public void eval(QHexadecimal value) {
+	public final void eval(QHexadecimal value) {
 		value.eval(this);
 	}
 
 	@Override
-	public void accept(QDataVisitor visitor) {
+	public final void accept(QDataVisitor visitor) {
 		visitor.visit((QHexadecimal) this);
 	}
 	
 	@Override
-	protected NIODataImpl _copyDef(QDataContext dataContext) {
+	protected final  NIODataImpl _copyDef(QDataContext dataContext) {
 		NIOHexadecimalImpl copy = new NIOHexadecimalImpl(dataContext, _length, false);
 		return copy;
 	}

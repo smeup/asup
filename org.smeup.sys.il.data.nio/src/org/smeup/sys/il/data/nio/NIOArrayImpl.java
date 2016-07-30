@@ -34,7 +34,7 @@ import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.SortDirection;
 
-public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImpl<D> implements QArray<D> {
+public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImpl<D> implements QArray<D> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -57,7 +57,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void accept(QDataVisitor visitor) {
+	public final void accept(QDataVisitor visitor) {
 
 		if (visitor.visit(this)) {
 
@@ -70,7 +70,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public D[] asArray() {
+	public final D[] asArray() {
 
 		return Arrays.copyOf(_elements, capacity());
 
@@ -83,34 +83,34 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public int capacity() {
+	public final int capacity() {
 		return _elements.length;
 		// return capacity;
 	}
 
 	@Override
-	public int count() {
+	public final int count() {
 		return _elements.length;
 		// return capacity;
 	}
 
 	@Override
-	public void divide(Number value) {
+	public final void divide(Number value) {
 		divide(value, false);
 	}
 
 	@Override
-	public void divide(Number value, boolean halfAdjust) {
+	public final void divide(Number value, boolean halfAdjust) {
 		operationDivide(value, halfAdjust);
 	}
 
 	@Override
-	public void divide(QArray<D> array) {
+	public final void divide(QArray<D> array) {
 		divide(array, false);
 	}
 
 	@Override
-	public void divide(QArray<D> array, boolean halfAdjust) {
+	public final void divide(QArray<D> array, boolean halfAdjust) {
 		for (int i = 1; i <= this.capacity(); i++) {
 			if (i > array.capacity())
 				break;
@@ -119,18 +119,18 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void divide(QNumeric value) {
+	public final void divide(QNumeric value) {
 		divide(value, false);
 	}
 
 	@Override
-	public void divide(QNumeric value, boolean halfAdjust) {
+	public final void divide(QNumeric value, boolean halfAdjust) {
 		operationDivide(value.asDouble(), halfAdjust);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public D get(int index) {
+	public final D get(int index) {
 
 		D element = _elements[index - 1];
 		if (element != null)
@@ -155,27 +155,27 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public boolean isContiguous() {
+	public final boolean isContiguous() {
 		return getListOwner() == null;
 	}
 
 	@Override
-	public void minus(Number value) {
+	public final void minus(Number value) {
 		minus(value, false);
 	}
 
 	@Override
-	public void minus(Number value, boolean halfAdjust) {
+	public final void minus(Number value, boolean halfAdjust) {
 		operationMinus(value, halfAdjust);
 	}
 
 	@Override
-	public void minus(QArray<D> array) {
+	public final void minus(QArray<D> array) {
 		minus(array, false);
 	}
 
 	@Override
-	public void minus(QArray<D> array, boolean halfAdjust) {
+	public final void minus(QArray<D> array, boolean halfAdjust) {
 		for (int i = 1; i <= this.capacity(); i++) {
 			if (i > array.capacity())
 				break;
@@ -184,32 +184,32 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void minus(QNumeric value) {
+	public final void minus(QNumeric value) {
 		minus(value, false);
 	}
 
 	@Override
-	public void minus(QNumeric value, boolean halfAdjust) {
+	public final void minus(QNumeric value, boolean halfAdjust) {
 		operationMinus(value.asDouble(), halfAdjust);
 	}
 
 	@Override
-	public void mult(Number value) {
+	public final void mult(Number value) {
 		mult(value, false);
 	}
 
 	@Override
-	public void mult(Number value, boolean halfAdjust) {
+	public final void mult(Number value, boolean halfAdjust) {
 		operationMult(value, halfAdjust);
 	}
 
 	@Override
-	public void mult(QArray<D> array) {
+	public final void mult(QArray<D> array) {
 		mult(array, false);
 	}
 
 	@Override
-	public void mult(QArray<D> array, boolean halfAdjust) {
+	public final void mult(QArray<D> array, boolean halfAdjust) {
 		for (int i = 1; i <= this.capacity(); i++) {
 			if (i > array.capacity())
 				break;
@@ -218,12 +218,12 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void mult(QNumeric value) {
+	public final void mult(QNumeric value) {
 		mult(value, false);
 	}
 
 	@Override
-	public void mult(QNumeric value, boolean halfAdjust) {
+	public final void mult(QNumeric value, boolean halfAdjust) {
 		operationMult(value.asDouble(), halfAdjust);
 	}
 
@@ -252,22 +252,22 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void plus(Number value) {
+	public final void plus(Number value) {
 		plus(value, false);
 	}
 
 	@Override
-	public void plus(Number value, boolean halfAdjust) {
+	public final void plus(Number value, boolean halfAdjust) {
 		operationPlus(value, halfAdjust);
 	}
 
 	@Override
-	public void plus(QArray<D> array) {
+	public final void plus(QArray<D> array) {
 		plus(array, false);
 	}
 
 	@Override
-	public void plus(QArray<D> array, boolean halfAdjust) {
+	public final void plus(QArray<D> array, boolean halfAdjust) {
 		for (int i = 1; i <= this.capacity(); i++) {
 			if (i > array.capacity())
 				break;
@@ -276,17 +276,17 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void plus(QNumeric value) {
+	public final void plus(QNumeric value) {
 		plus(value, false);
 	}
 
 	@Override
-	public void plus(QNumeric value, boolean halfAdjust) {
+	public final void plus(QNumeric value, boolean halfAdjust) {
 		operationPlus(value.asDouble(), halfAdjust);
 	}
 
 	@Override
-	public QArray<D> qSubarr(int start, int elements) {
+	public final QArray<D> qSubarr(int start, int elements) {
 
 		NIOArrayImpl<D> subArray = new NIOArrayImpl<D>(getDataContext(), getModel(), elements, getSortDirection(), false);
 		subArray.setListOwner(getListOwner());
@@ -297,28 +297,28 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public QArray<D> qSubarr(int start, QNumeric elements) {
+	public final QArray<D> qSubarr(int start, QNumeric elements) {
 		return qSubarr(start, elements.asInteger());
 	}
 
 	@Override
-	public QArray<D> qSubarr(QDecimal start, int elements) {
+	public final QArray<D> qSubarr(QDecimal start, int elements) {
 		return qSubarr(start.asInteger(), elements);
 	}
 
 	@Override
-	public QArray<D> qSubarr(QNumeric start, QNumeric elements) {
+	public final QArray<D> qSubarr(QNumeric start, QNumeric elements) {
 		return qSubarr(start.asInteger(), elements.asInteger());
 	}
 
 	@Override
-	public QArray<QCharacter> qSubst(Number start) {
+	public final QArray<QCharacter> qSubst(Number start) {
 		return qSubst(start, getModel().getLength());
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public QArray<QCharacter> qSubst(Number start, Number length) {
+	public final QArray<QCharacter> qSubst(Number start, Number length) {
 
 		D modelCharacter = (D) new NIOCharacterImpl(getDataContext(), length.intValue(), false);
 		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), modelCharacter, capacity(), getSortDirection(), false);
@@ -329,67 +329,67 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public QArray<QCharacter> qSubst(Number start, QNumeric length) {
+	public final QArray<QCharacter> qSubst(Number start, QNumeric length) {
 		return qSubst(start, length.asInteger());
 	}
 
 	@Override
-	public QArray<QCharacter> qSubst(QNumeric start) {
+	public final QArray<QCharacter> qSubst(QNumeric start) {
 		return qSubst(start, getModel().getLength());
 	}
 
 	@Override
-	public QArray<QCharacter> qSubst(QNumeric start, Number length) {
+	public final QArray<QCharacter> qSubst(QNumeric start, Number length) {
 		return qSubst(start.asInteger(), length);
 	}
 
 	@Override
-	public QArray<QCharacter> qSubst(QNumeric start, QNumeric length) {
+	public final QArray<QCharacter> qSubst(QNumeric start, QNumeric length) {
 		return qSubst(start, length.asInteger());
 	}
 
 	@Override
-	public void movea(QBufferedElement value) {
+	public final void movea(QBufferedElement value) {
 		movea(value, false);
 	}
 
 	@Override
-	public void movea(QDataFiller value) {
+	public final void movea(QDataFiller value) {
 		movea(1, value);
 	}
 
 	@Override
-	public void movea(QDataFiller value, boolean clear) {
+	public final void movea(QDataFiller value, boolean clear) {
 		movea(1, value);
 	}
 
 	@Override
-	public void movea(String value) {
+	public final void movea(String value) {
 		movea(value, false);
 	}
 
 	@Override
-	public void movea(QNumeric targetIndex, QBufferedElement value) {
+	public final void movea(QNumeric targetIndex, QBufferedElement value) {
 		movea(targetIndex.i(), value);
 	}
 
 	@Override
-	public void movea(int targetIndex, QArray<?> value) {
+	public final void movea(int targetIndex, QArray<?> value) {
 		movea(targetIndex, value, false);
 	}
 
 	@Override
-	public void movea(int targetIndex, QBufferedElement value) {
+	public final void movea(int targetIndex, QBufferedElement value) {
 		movea(targetIndex, value, false);
 	}
 
 	@Override
-	public void movea(QNumeric targetIndex, QArray<?> value, boolean clear) {
+	public final void movea(QNumeric targetIndex, QArray<?> value, boolean clear) {
 		movea(targetIndex.asInteger(), value, clear);
 	}
 
 	@Override
-	public void movea(int targetIndex, QBufferedElement value, boolean clear) {
+	public final void movea(int targetIndex, QBufferedElement value, boolean clear) {
 
 		byte[] bytes = value.asBytes();
 		if (clear) {
@@ -409,12 +409,12 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void movea(int targetIndex, String value) {
+	public final void movea(int targetIndex, String value) {
 		movea(targetIndex, value, false);
 	}
 
 	@Override
-	public void movea(int targetIndex, String value, boolean clear) {
+	public final void movea(int targetIndex, String value, boolean clear) {
 
 		byte[] bytes = value.getBytes(getDataContext().getCharset());
 		if (clear) {
@@ -434,47 +434,47 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void movea(QNumeric targetIndex, QArray<?> value, int sourceIndex) {
+	public final void movea(QNumeric targetIndex, QArray<?> value, int sourceIndex) {
 		movea(targetIndex.i(), value, sourceIndex);
 	}
 
 	@Override
-	public void movea(QNumeric targetIndex, QArray<?> value, QNumeric sourceIndex) {
+	public final void movea(QNumeric targetIndex, QArray<?> value, QNumeric sourceIndex) {
 		movea(targetIndex.i(), value, sourceIndex.i());
 	}
 
 	@Override
-	public void movea(QNumeric targetIndex, QArray<?> value, int sourceIndex, boolean clear) {
+	public final void movea(QNumeric targetIndex, QArray<?> value, int sourceIndex, boolean clear) {
 		movea(targetIndex.i(), value, sourceIndex, clear);
 	}
 
 	@Override
-	public void movea(QNumeric targetIndex, QArray<?> value, QNumeric sourceIndex, boolean clear) {
+	public final void movea(QNumeric targetIndex, QArray<?> value, QNumeric sourceIndex, boolean clear) {
 		movea(targetIndex.i(), value, sourceIndex.i(), clear);
 	}
 
 	@Override
-	public void movea(int targetIndex, QArray<?> value, QNumeric sourceIndex) {
+	public final void movea(int targetIndex, QArray<?> value, QNumeric sourceIndex) {
 		movea(targetIndex, value, sourceIndex.i());
 	}
 
 	@Override
-	public void movea(int targetIndex, QArray<?> value, int sourceIndex) {
+	public final void movea(int targetIndex, QArray<?> value, int sourceIndex) {
 		movea(targetIndex, value, sourceIndex, false);
 	}
 
 	@Override
-	public void movea(int targetIndex, QArray<?> value, boolean clear) {
+	public final void movea(int targetIndex, QArray<?> value, boolean clear) {
 		movea(targetIndex, value, 1, clear);
 	}
 
 	@Override
-	public void movea(String value, boolean clear) {
+	public final void movea(String value, boolean clear) {
 		movea(1, value, clear);
 	}
 
 	@Override
-	public void movea(QBufferedElement value, boolean clear) {
+	public final void movea(QBufferedElement value, boolean clear) {
 		movea(1, value, clear);
 	}
 
@@ -487,17 +487,17 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void movea(QArray<?> value, int sourceIndex) {
+	public final void movea(QArray<?> value, int sourceIndex) {
 		movea(1, value, sourceIndex, false);
 	}
 
 	@Override
-	public void movea(QArray<?> value, int sourceIndex, boolean clear) {
+	public final void movea(QArray<?> value, int sourceIndex, boolean clear) {
 		movea(1, value, sourceIndex, clear);
 	}
 
 	@Override
-	public void movea(int targetIndex, QArray<?> value, int sourceIndex, boolean clear) {
+	public final void movea(int targetIndex, QArray<?> value, int sourceIndex, boolean clear) {
 
 		if (!value.isContiguous())
 			throw new UnsupportedOperationException("Invalid operation MOVEA with not contiguous array");
@@ -545,7 +545,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void sorta() {
+	public final void sorta() {
 
 		byte filler = 0;
 		switch (getModel().getBufferedElementType()) {
@@ -571,7 +571,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 			Collections.sort(dataList, new Comparator<byte[]>() {
 
 				@Override
-				public int compare(byte[] param1, byte[] param2) {
+				public final int compare(byte[] param1, byte[] param2) {
 
 					byte[] b1 = Arrays.copyOfRange(param1, getPosition(), getPosition() + getModel().getLength());
 					byte[] b2 = Arrays.copyOfRange(param2, getPosition(), getPosition() + getModel().getLength());
@@ -602,7 +602,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 			Collections.sort(dataList, new Comparator<byte[]>() {
 
 				@Override
-				public int compare(byte[] param1, byte[] param2) {
+				public final int compare(byte[] param1, byte[] param2) {
 
 					switch (getSortDirection()) {
 					case ASCEND:
@@ -623,7 +623,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void clear() {
+	public final void clear() {
 		
 		if(isContiguous()) {
 			NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
@@ -637,22 +637,22 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void movea(DataSpecial value) {
+	public final void movea(DataSpecial value) {
 		movea(value, false);
 	}
 
 	@Override
-	public void movea(DataSpecial value, boolean clear) {
+	public final void movea(DataSpecial value, boolean clear) {
 		movea(1, value, clear);
 	}
 
 	@Override
-	public void movea(int targetIndex, DataSpecial value) {
+	public final void movea(int targetIndex, DataSpecial value) {
 		movea(targetIndex, value, false);
 	}
 
 	@Override
-	public void movea(int targetIndex, DataSpecial value, boolean clear) {
+	public final void movea(int targetIndex, DataSpecial value, boolean clear) {
 
 		if (!isContiguous())
 			throw new UnsupportedOperationException("Invalid operation MOVEA with not contiguous array");
@@ -663,17 +663,17 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void movea(QNumeric targetIndex, DataSpecial value) {
+	public final void movea(QNumeric targetIndex, DataSpecial value) {
 		movea(targetIndex.asInteger(), value);
 	}
 
 	@Override
-	public void movea(QNumeric targetIndex, DataSpecial value, boolean clear) {
+	public final void movea(QNumeric targetIndex, DataSpecial value, boolean clear) {
 		movea(targetIndex.asInteger(), value, clear);
 	}
 
 	@Override
-	public void movea(int targetIndex, QDataFiller value) {
+	public final void movea(int targetIndex, QDataFiller value) {
 
 		if (!isContiguous())
 			throw new UnsupportedOperationException("Invalid operation MOVEA with not contiguous array");
@@ -684,52 +684,52 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void movea(QNumeric targetIndex, QDataFiller value) {
+	public final void movea(QNumeric targetIndex, QDataFiller value) {
 		movea(targetIndex.asInteger(), value);
 	}
 
 	@Override
-	public void movea(QNumeric targetIndex, QBufferedElement value, boolean clear) {
+	public final void movea(QNumeric targetIndex, QBufferedElement value, boolean clear) {
 		movea(targetIndex.asInteger(), value, clear);
 	}
 
 	@Override
-	public void movea(QNumeric targetIndex, String value) {
+	public final void movea(QNumeric targetIndex, String value) {
 		movea(targetIndex.asInteger(), value);
 	}
 
 	@Override
-	public void movea(QNumeric targetIndex, String value, boolean clear) {
+	public final void movea(QNumeric targetIndex, String value, boolean clear) {
 		movea(targetIndex.asInteger(), value, clear);
 	}
 
 	@Override
-	public void movea(QArray<?> value) {
+	public final void movea(QArray<?> value) {
 		movea(value, false);
 	}
 
 	@Override
-	public void movea(QArray<?> value, boolean clear) {
+	public final void movea(QArray<?> value, boolean clear) {
 		movea(value, 1, clear);
 	}
 
 	@Override
-	public void movea(QArray<?> value, QNumeric sourceIndex) {
+	public final void movea(QArray<?> value, QNumeric sourceIndex) {
 		movea(value, sourceIndex.asInteger());
 	}
 
 	@Override
-	public void movea(QArray<?> value, QNumeric sourceIndex, boolean clear) {
+	public final void movea(QArray<?> value, QNumeric sourceIndex, boolean clear) {
 		movea(value, sourceIndex.asInteger(), clear);
 	}
 
 	@Override
-	public void move(QArray<?> value) {
+	public final void move(QArray<?> value) {
 		move(value, false);
 	}
 
 	@Override
-	public void move(QArray<?> value, boolean clear) {
+	public final void move(QArray<?> value, boolean clear) {
 
 		int capacity = capacity();
 		if (value.capacity() < capacity)
@@ -744,12 +744,12 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void movel(QArray<?> value) {
+	public final void movel(QArray<?> value) {
 		movel(value, false);
 	}
 
 	@Override
-	public void movel(QArray<?> value, boolean clear) {
+	public final void movel(QArray<?> value, boolean clear) {
 
 		int capacity = capacity();
 		if (value.capacity() < capacity)
@@ -764,32 +764,32 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void movea(int targetIndex, QArray<?> value, QNumeric sourceIndex, boolean clear) {
+	public final void movea(int targetIndex, QArray<?> value, QNumeric sourceIndex, boolean clear) {
 		movea(targetIndex, value, sourceIndex.asInteger(), clear);
 	}
 
 	@Override
-	public void movea(QNumeric targetIndex, QArray<?> value) {
+	public final void movea(QNumeric targetIndex, QArray<?> value) {
 		movea(targetIndex, value, false);
 	}
 
 	@Override
-	public QArray<D> qDiv(QNumeric value) {
+	public final QArray<D> qDiv(QNumeric value) {
 		return qDivOperation(value.asNumber(), false);
 	}
 
 	@Override
-	public QArray<D> qDiv(QNumeric value, boolean halfAdjust) {
+	public final QArray<D> qDiv(QNumeric value, boolean halfAdjust) {
 		return qDivOperation(value.asNumber(), halfAdjust);
 	}
 
 	@Override
-	public QArray<D> qDiv(Number value) {
+	public final QArray<D> qDiv(Number value) {
 		return qDivOperation(value, false);
 	}
 
 	@Override
-	public QArray<D> qDiv(Number value, boolean halfAdjust) {
+	public final QArray<D> qDiv(Number value, boolean halfAdjust) {
 		return qDivOperation(value, halfAdjust);
 	}
 
@@ -805,22 +805,22 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public QArray<D> qMult(QNumeric value) {
+	public final QArray<D> qMult(QNumeric value) {
 		return qMultOperation(value.asNumber(), false);
 	}
 
 	@Override
-	public QArray<D> qMult(QNumeric value, boolean halfAdjust) {
+	public final QArray<D> qMult(QNumeric value, boolean halfAdjust) {
 		return qMultOperation(value.asNumber(), halfAdjust);
 	}
 
 	@Override
-	public QArray<D> qMult(Number value) {
+	public final QArray<D> qMult(Number value) {
 		return qMultOperation(value, false);
 	}
 
 	@Override
-	public QArray<D> qMult(Number value, boolean halfAdjust) {
+	public final QArray<D> qMult(Number value, boolean halfAdjust) {
 		return qMultOperation(value, halfAdjust);
 	}
 
@@ -836,7 +836,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public QArray<D> qMinus(QArray<D> value) {
+	public final QArray<D> qMinus(QArray<D> value) {
 
 		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), getModel(), capacity(), getSortDirection(), true);
 		newArray.movea(this);
@@ -854,7 +854,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public QArray<D> qMult(QArray<D> value) {
+	public final QArray<D> qMult(QArray<D> value) {
 
 		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), getModel(), capacity(), getSortDirection(), true);
 		newArray.movea(this);
@@ -872,7 +872,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public QArray<D> qPlus(QArray<D> value) {
+	public final QArray<D> qPlus(QArray<D> value) {
 		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), getModel(), capacity(), getSortDirection(), true);
 		newArray.movea(this);
 
@@ -889,7 +889,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public QArray<D> qPlus(QString value) {
+	public final QArray<D> qPlus(QString value) {
 
 		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), getModel(), capacity(), getSortDirection(), true);
 		newArray.movea(this);
@@ -902,7 +902,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public QArray<D> qPlus(String value) {
+	public final QArray<D> qPlus(String value) {
 
 		NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), getModel(), capacity(), getSortDirection(), true);
 		newArray.movea(this);
@@ -915,12 +915,12 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public QArray<D> qPlus(Number value) {
+	public final QArray<D> qPlus(Number value) {
 		return qPlusOperation(value, false);
 	}
 
 	@Override
-	public QArray<D> qPlus(QNumeric value) {
+	public final QArray<D> qPlus(QNumeric value) {
 		return qPlusOperation(value.asNumber(), false);
 	}
 
@@ -936,7 +936,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public QArray<QCharacter> qTrim() {
+	public final QArray<QCharacter> qTrim() {
 
 		NIOArrayImpl<QCharacter> newArray = new NIOArrayImpl<QCharacter>(getDataContext(), (QCharacter) getModel(), capacity(), getSortDirection(), true);
 		newArray.movea(this);
@@ -948,7 +948,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public QArray<QCharacter> qTriml() {
+	public final QArray<QCharacter> qTriml() {
 
 		NIOArrayImpl<QCharacter> newArray = new NIOArrayImpl<QCharacter>(getDataContext(), (QCharacter) getModel(), capacity(), getSortDirection(), true);
 		newArray.movea(this);
@@ -960,7 +960,7 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public QArray<QCharacter> qTrimr() {
+	public final QArray<QCharacter> qTrimr() {
 
 		NIOArrayImpl<QCharacter> newArray = new NIOArrayImpl<QCharacter>(getDataContext(), (QCharacter) getModel(), capacity(), getSortDirection(), true);
 		newArray.movea(this);
@@ -980,45 +980,45 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	
 
 	@Override
-	public QDecimal qLookup(String argument) {
+	public final QDecimal qLookup(String argument) {
 		return qLookup(argument, 1);
 	}
 
 	@Override
-	public QDecimal qLookup(String argument, QNumeric start) {
+	public final QDecimal qLookup(String argument, QNumeric start) {
 		return qLookup(argument, start.asNumber());
 	}
 
 	@Override
-	public QDecimal qLookup(String argument, Number start, Number elements) {
+	public final QDecimal qLookup(String argument, Number start, Number elements) {
 		int index = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), elements.intValue());
 		lastIndex.eval(index);
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(String argument, Number start, DataComparator comparator) {
+	public final QDecimal qLookup(String argument, Number start, DataComparator comparator) {
 		int index = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), comparator, start.intValue(), capacity());
 		lastIndex.eval(index);
 		return lastIndex;
 	}
 	
 	@Override
-	public QDecimal qLookup(String argument, Number start) {
+	public final QDecimal qLookup(String argument, Number start) {
 		int index = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), capacity());
 		lastIndex.eval(index);
 		return lastIndex;
 	}
 
 	@Override
-	public void qLookup(String argument, QIndicator found) {
+	public final void qLookup(String argument, QIndicator found) {
 		
 		int i = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, 1, capacity());
 		setContextIndicators(i, found);
 	}
 	
 	@Override
-	public void qLookup(String argument, QNumeric start, QIndicator found) {
+	public final void qLookup(String argument, QNumeric start, QIndicator found) {
 
 		int i = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, start.asInteger(), capacity());
 		setContextIndicators(i, found);
@@ -1030,41 +1030,200 @@ public class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedListImp
 	}
 
 	@Override
-	public QDecimal qLookup(String argument, Number start, QNumeric elements) {
+	public final QDecimal qLookup(String argument, Number start, QNumeric elements) {
 		int index = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), elements.asInteger());
 		lastIndex.eval(index);
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(String argument, QNumeric start, QNumeric elements) {
+	public final QDecimal qLookup(String argument, QNumeric start, QNumeric elements) {
 		int index = NIOBufferedListHelper.lookup(this, new NIOCharacterImpl(getDataContext(), argument), DataComparator.EQUAL, start.asInteger(), elements.asInteger());
 		lastIndex.eval(index);
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(int argument) {
+	public final QDecimal qLookup(int argument) {
 		return qLookup(argument, 1);
 	}
 
 	@Override
-	public QDecimal qLookup(int argument, QNumeric start) {
+	public final QDecimal qLookup(int argument, QNumeric start) {
 		return qLookup(argument, start.asNumber());
 	}
 
 	@Override
-	public QDecimal qLookup(int argument, Number start) {
+	public final QDecimal qLookup(int argument, Number start) {
 		int index = NIOBufferedListHelper.lookup(this, new NIODecimalPackedImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), capacity());
 		lastIndex.eval(index);
 		return lastIndex;
 	}
 
 	@Override
-	public void qLookup(Number argument, QIndicator found) {
+	public final void qLookup(Number argument, QIndicator found) {
 
 		int i = NIOBufferedListHelper.lookup(this, new NIODecimalPackedImpl(getDataContext(), argument.intValue()), DataComparator.EQUAL, 1, capacity());
 		setContextIndicators(i, found);
 	}
 
+	@Override
+	public final void move(DataSpecial value) {
+		move(value, false);
+	}
+
+	@Override
+	public final void move(DataSpecial value, boolean clear) {
+
+/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.move(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
+		
+		for(D element: this)
+			element.move(value, clear);
+	}
+
+	@Override
+	public final void move(Number value) {
+		move(value, false);
+	}
+
+	@Override
+	public final void move(Number value, boolean clear) {
+
+/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.move(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
+		
+		for(D element: this)
+			element.move(value, clear);		
+	}
+
+	@Override
+	public final void move(QBufferedElement value) {
+		move(value, false);
+	}
+
+	@Override
+	public final void move(QBufferedElement value, boolean clear) {
+
+/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.move(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
+				
+		for(D element: this)
+			element.move(value, clear);		
+	}
+
+	@Override
+	public final void move(QDataFiller value) {
+		move(value, false);
+	}
+
+	@Override
+	public final void move(QDataFiller value, boolean clear) {
+
+/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.move(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
+				
+		for(D element: this)
+			element.move(value, clear);		
+	}
+
+	@Override
+	public final void move(String value) {
+		move(value, false);
+	}
+
+	@Override
+	public final void move(String value, boolean clear) {
+
+/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.move(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/		
+		
+		for(D element: this)
+			element.move(value, clear);		
+	}
+
+	@Override
+	public final void movel(DataSpecial value) {
+		movel(value, false);
+	}
+
+	@Override
+	public final void movel(DataSpecial value, boolean clear) {
+
+/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.movel(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
+				
+		for(D element: this)
+			element.movel(value, clear);
+	}
+
+	@Override
+	public final void movel(Number value) {
+		movel(value, false);
+	}
+
+	@Override
+	public final void movel(Number value, boolean clear) {
+
+/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.movel(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
+				
+		for(D element: this)
+			element.movel(value, clear);		
+	}
+
+	@Override
+	public final void movel(QBufferedElement value) {
+		movel(value, false);
+	}
+
+	@Override
+	public final void movel(QBufferedElement value, boolean clear) {
+
+/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.movel(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
+		
+		for(D element: this)
+			element.movel(value, clear);		
+	}
+
+	@Override
+	public final void movel(QDataFiller value) {
+		movel(value, false);
+	}
+
+	@Override
+	public final void movel(QDataFiller value, boolean clear) {
+
+/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.movel(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
+		
+		for(D element: this)
+			element.movel(value, clear);
+	}
+
+	@Override
+	public final void movel(String value) {
+		movel(value, false);
+	}
+
+	@Override
+	public final void movel(String value, boolean clear) {
+
+/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
+		firstElement.movel(value, clear);
+		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
+				
+		for(D element: this)
+			element.movel(value, clear);		
+	}
 }

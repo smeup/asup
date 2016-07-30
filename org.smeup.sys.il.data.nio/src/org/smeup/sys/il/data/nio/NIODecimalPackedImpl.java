@@ -17,7 +17,7 @@ import java.text.NumberFormat;
 
 import org.smeup.sys.il.data.QDataContext;
 
-public class NIODecimalPackedImpl extends NIODecimalImpl {
+public final class NIODecimalPackedImpl extends NIODecimalImpl {
 
 	private static final long serialVersionUID = 1L;
 
@@ -37,22 +37,22 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	}
 
 	@Override
-	public int getSize() {
+	public final int getSize() {
 		return getDecimalDef().getPacked().getByteLength();
 	}
 
 	@Override
-	public int getPrecision() {
+	public final int getPrecision() {
 		return getDecimalDef().getPacked().getNumberOfDigits();
 	}
 
 	@Override
-	public int getScale() {
+	public final int getScale() {
 		return getDecimalDef().getPacked().getNumberOfDecimalPositions();
 	}
 	
 	@Override
-	public Number _readNumber() {
+	public final Number _readNumber() {
 
 		Number result = 0;
 		byte[] bytes = NIOBufferHelper.read(getBuffer(), getPosition(), getSize());
@@ -65,9 +65,10 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	}
 
 	@Override
-	public void _writeNumber(Number number, boolean halfAdjust) {
+	public final void _writeNumber(Number number, boolean halfAdjust) {
 
 		byte[] bytes = null;
+		
 		if (halfAdjust) {
 			BigDecimal bd = null;
 			if (number instanceof BigDecimal) {
@@ -85,6 +86,15 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 				e.toString();
 			}
 		} else {
+
+			try {
+				bytes = getDecimalDef().getPacked().toBytes(number.doubleValue());
+				NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), bytes, INIT);
+				return;
+			}
+			catch(Exception e) {
+			}			
+
 			BigDecimal bd = null;
 			if (number instanceof BigDecimal) {
 				bd = (BigDecimal) number;
@@ -105,7 +115,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	}
 
 	@Override
-	protected void _fill(byte[] filler, boolean maxLength) {
+	protected final void _fill(byte[] filler, boolean maxLength) {
 
 		ByteBuffer byteBuffer = ByteBuffer.allocate(getLength());
 		NIOBufferHelper.fill(byteBuffer, 0, getLength(), filler);
@@ -114,7 +124,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	}
 
 	@Override
-	protected void _fillr(byte[] filler, boolean maxLength) {
+	protected final void _fillr(byte[] filler, boolean maxLength) {
 
 		ByteBuffer byteBuffer = ByteBuffer.allocate(getLength());
 		NIOBufferHelper.fillr(byteBuffer, 0, getLength(), filler);
@@ -123,7 +133,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	}
 
 	@Override
-	protected void _move(byte[] value, boolean clear) {
+	protected final void _move(byte[] value, boolean clear) {
 
 		double doubleValue;
 		if (getPrecision() > value.length) {
@@ -142,7 +152,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	}
 
 	@Override
-	protected void _movel(byte[] value, boolean clear) {
+	protected final void _movel(byte[] value, boolean clear) {
 
 		double doubleValue;
 		if (getPrecision() > value.length) {
@@ -161,7 +171,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	}
 
 	@Override
-	protected void _write(byte[] value) {
+	protected final void _write(byte[] value) {
 
 		double doubleValue = getDecimalDef().getZoned().toDouble(value);
 		NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), getDecimalDef().getPacked().toBytes(doubleValue), INIT);
@@ -173,7 +183,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	}
 
 	@Override
-	protected NIODataImpl _copyDef(QDataContext dataContext) {
+	protected final NIODataImpl _copyDef(QDataContext dataContext) {
 		NIODecimalPackedImpl copy = new NIODecimalPackedImpl(dataContext, getPrecision(), getScale(), false);
 		return copy;
 	}

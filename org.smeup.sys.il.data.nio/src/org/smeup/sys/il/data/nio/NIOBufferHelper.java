@@ -37,11 +37,11 @@ import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
 
-public class NIOBufferHelper {
+public final class NIOBufferHelper {
 
 	private static final char[] hexArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
-	public static void assign(QStorable storable, QBufferedData target) {
+	public final static void assign(QStorable storable, QBufferedData target) {
 
 		NIOBufferedDataImpl nioBufferedData = getNIOBufferedDataImpl(target);
 		if (nioBufferedData == null)
@@ -84,7 +84,7 @@ public class NIOBufferHelper {
 		}*/
 	}
 
-	public static void slice(QStorable storable, QBufferedData target, int position) {
+	public final static void slice(QStorable storable, QBufferedData target, int position) {
 
 		if (position <= 0)
 			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dm5c46dsfgdsf7405mc");
@@ -103,7 +103,7 @@ public class NIOBufferHelper {
 	}
 
 	@SuppressWarnings("unused")
-	private static boolean containsStore(NIOBufferedDataImpl target, QStorable source) {
+	private static final boolean containsStore(NIOBufferedDataImpl target, QStorable source) {
 
 		if (target == source)
 			return true;
@@ -128,7 +128,7 @@ public class NIOBufferHelper {
 		return ret;
 	}
 
-	public static NIOBufferedDataImpl getNIOBufferOwner(QStorable data) {
+	public final static NIOBufferedDataImpl getNIOBufferOwner(QStorable data) {
 
 		NIOBufferedDataImpl nioBufferedDataImpl = getNIOBufferedDataImpl(data);
 		if (nioBufferedDataImpl == null)
@@ -154,7 +154,7 @@ public class NIOBufferHelper {
 		}
 	}
 
-	public static NIOBufferedDataImpl getNIOBufferedDataImpl(QStorable storable) {
+	public final static NIOBufferedDataImpl getNIOBufferedDataImpl(QStorable storable) {
 
 		NIOBufferedDataImpl nioBufferedData = null;
 
@@ -168,7 +168,7 @@ public class NIOBufferHelper {
 		return nioBufferedData;
 	}
 
-	public static NIOBufferedElementImpl getNIOBufferedElementImpl(QData data) {
+	public final static NIOBufferedElementImpl getNIOBufferedElementImpl(QData data) {
 
 		NIOBufferedElementImpl nioBufferedElement = null;
 		if (data instanceof QScroller<?>) {
@@ -186,7 +186,7 @@ public class NIOBufferHelper {
 		return nioBufferedElement;
 	}
 
-	public static void prepare(ByteBuffer buffer, int position, int length) {
+	public final static void prepare(ByteBuffer buffer, int position, int length) {
 
 		if (position > 0) {
 
@@ -211,7 +211,7 @@ public class NIOBufferHelper {
 		}
 	}
 
-	public static void movel(ByteBuffer buffer, int position, int length, byte[] bytes) {
+	public final static void movel(ByteBuffer buffer, int position, int length, byte[] bytes) {
 		prepare(buffer, position, length);
 
 		// overflow
@@ -222,7 +222,7 @@ public class NIOBufferHelper {
 		}
 	}
 
-	public static void movel(ByteBuffer buffer, int position, int length, byte[] bytes, byte filler) {
+	public final static void movel(ByteBuffer buffer, int position, int length, byte[] bytes, byte filler) {
 		prepare(buffer, position, length);
 
 		// overflow
@@ -235,7 +235,7 @@ public class NIOBufferHelper {
 		}
 	}
 
-	public static void move(ByteBuffer buffer, int position, int length, byte[] bytes) {
+	public final static void move(ByteBuffer buffer, int position, int length, byte[] bytes) {
 		prepare(buffer, position, length);
 
 		// overflow
@@ -248,7 +248,7 @@ public class NIOBufferHelper {
 		}
 	}
 
-	public static void move(ByteBuffer buffer, int position, int length, byte[] bytes, byte filler) {
+	public final static void move(ByteBuffer buffer, int position, int length, byte[] bytes, byte filler) {
 		prepare(buffer, position, length);
 
 		// overflow
@@ -263,7 +263,7 @@ public class NIOBufferHelper {
 		}
 	}
 
-	public static void fill(ByteBuffer buffer, int position, int length, byte[] filler) {
+	public final static void fill(ByteBuffer buffer, int position, int length, byte[] filler) {
 
 		if (filler.length == 0)
 			return;
@@ -286,7 +286,7 @@ public class NIOBufferHelper {
 		}
 	}
 
-	public static void fill(ByteBuffer buffer, int position, int length, byte filler) {
+	public final static void fill(ByteBuffer buffer, int position, int length, byte filler) {
 
 		if (buffer.isDirect())
 			Arrays.fill(buffer.array(), position, position + length, filler);
@@ -297,7 +297,7 @@ public class NIOBufferHelper {
 		}
 	}
 
-	public static void fillr(ByteBuffer buffer, int position, int length, byte[] filler) {
+	public final static void fillr(ByteBuffer buffer, int position, int length, byte[] filler) {
 
 		if (filler.length == 0)
 			return;
@@ -331,7 +331,7 @@ public class NIOBufferHelper {
 		}
 	}
 
-	public static ByteBuffer getBuffer(QStorable storable) {
+	public final static ByteBuffer getBuffer(QStorable storable) {
 
 		if (storable instanceof NIOBufferedDataImpl)
 			return ((NIOBufferedDataImpl) storable).getBuffer();
@@ -343,7 +343,7 @@ public class NIOBufferHelper {
 			return null;
 	}
 
-	public static final String toHexString(byte b) {
+	public final static String toHexString(byte b) {
 
 		char[] hexChars = new char[2];
 
@@ -354,7 +354,7 @@ public class NIOBufferHelper {
 		return new String(hexChars);
 	}
 
-	public static final String bytesToHex(byte[] bytes) {
+	public final static String bytesToHex(byte[] bytes) {
 		char[] hexChars = new char[bytes.length * 2];
 		int v;
 		for (int j = 0; j < bytes.length; j++) {
@@ -365,7 +365,7 @@ public class NIOBufferHelper {
 		return new String(hexChars);
 	}
 
-	public static byte[] trim(QString string) {
+	public final static byte[] trim(QString string) {
 
 		byte[] bytes = string.asBytes();
 		int i = 0;
@@ -382,7 +382,7 @@ public class NIOBufferHelper {
 			return Arrays.copyOfRange(bytes, i, f + 1);
 	}
 
-	public static byte[] trimL(QString string) {
+	public final static byte[] trimL(QString string) {
 
 		byte[] bytes = string.asBytes();
 		int i = 0;
@@ -395,7 +395,7 @@ public class NIOBufferHelper {
 			return Arrays.copyOfRange(bytes, i, bytes.length);
 	}
 
-	public static byte[] trimR(QString string) {
+	public final static byte[] trimR(QString string) {
 
 		byte[] bytes = string.asBytes();
 		int i = bytes.length - 1;
@@ -408,12 +408,12 @@ public class NIOBufferHelper {
 			return Arrays.copyOfRange(bytes, 0, i + 1);
 	}
 
-	public static byte[] read(QBufferedData data) {
+	public final static byte[] read(QBufferedData data) {
 		NIOBufferedDataImpl nioData = getNIOBufferedDataImpl(data);
 		return read(nioData.getBuffer(), nioData.getPosition(), nioData.getSize());
 	}
 
-	public static byte[] read(ByteBuffer buffer, int position, int length) {
+	public final static byte[] read(ByteBuffer buffer, int position, int length) {
 		if (buffer == null)
 			return null;
 		prepare(buffer, position, length);
@@ -424,12 +424,12 @@ public class NIOBufferHelper {
 		return bytes;
 	}
 
-	public static void write(QBufferedData target, QBufferedData source) {
+	public final static void write(QBufferedData target, QBufferedData source) {
 		NIOBufferedDataImpl nioTarget = getNIOBufferedDataImpl(target);
 		movel(nioTarget.getBuffer(), nioTarget.getPosition(), nioTarget.getSize(), read(source));
 	}
 
-	public static void writeDefault(QBufferedElement element, String value) {
+	public final static void writeDefault(QBufferedElement element, String value) {
 
 		DataSpecial dataSpecial = null;
 		if (value.trim().startsWith("*"))
@@ -453,7 +453,7 @@ public class NIOBufferHelper {
 		}
 	}
 
-	public static void writeDefault(QList<?> list, String value) {
+	public final static void writeDefault(QList<?> list, String value) {
 		if (list instanceof QBufferedList<?>)
 			writeDefault((QBufferedList<?>) list, value);
 		else {
@@ -463,7 +463,7 @@ public class NIOBufferHelper {
 		}
 	}
 
-	public static void writeDefault(QBufferedList<?> bufferedList, String value) {
+	public final static void writeDefault(QBufferedList<?> bufferedList, String value) {
 
 		DataSpecial dataSpecial = null;
 		if (value.trim().startsWith("*"))
@@ -487,13 +487,13 @@ public class NIOBufferHelper {
 		}
 	}
 
-	public static void writeDefault(QBufferedList<?> bufferedList, String[] values) {
+	public final static void writeDefault(QBufferedList<?> bufferedList, String[] values) {
 
 		for (int i = 1; i <= values.length; i++)
 			bufferedList.get(i).movel(values[i - 1], true);
 	}
 
-	public static void setDataContext(QBufferedData data, QDataContext dataContext) {
+	public final static void setDataContext(QBufferedData data, QDataContext dataContext) {
 
 		NIOBufferedDataImpl nioBufferedData = null;
 
@@ -507,7 +507,7 @@ public class NIOBufferHelper {
 		nioBufferedData._dataContext = dataContext;
 	}
 
-	public static NIODataImpl copy(QDataContext dataContext, NIOBufferedDataImpl nioBufferedDataImpl) {
+	public final static NIODataImpl copy(QDataContext dataContext, NIOBufferedDataImpl nioBufferedDataImpl) {
 
 		try {
 
@@ -560,7 +560,7 @@ public class NIOBufferHelper {
 		}
 	}
 
-	public static boolean equalsAddress(QStorable source, QStorable target, int position) {
+	public final static boolean equalsAddress(QStorable source, QStorable target, int position) {
 		return source.getBuffer() == target.getBuffer() && source.getPosition() == target.getPosition() + position - 1;
 	}
 }

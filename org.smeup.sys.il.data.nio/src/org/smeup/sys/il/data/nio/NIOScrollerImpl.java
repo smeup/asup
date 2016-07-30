@@ -49,12 +49,12 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	}
 
 	@Override
-	public D absolute(int position) {
+	public final D absolute(int position) {
 		return get(position);
 	}
 
 	@Override
-	public void accept(QDataVisitor visitor) {
+	public final void accept(QDataVisitor visitor) {
 
 		if (visitor.visit(this)) {
 
@@ -67,72 +67,72 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	}
 
 	@Override
-	public D[] asArray() {
+	public final D[] asArray() {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public byte[] asBytes() {
+	public final byte[] asBytes() {
 		return current().asBytes();
 	}
 
 	@Override
-	public int capacity() {
+	public final int capacity() {
 		return _dimension;
 	}
 
 	@Override
-	public void clear() {
+	public final void clear() {
 		current().clear();
 	}
 
 	@Override
-	public int count() {
+	public final int count() {
 		return _dimension;
 	}
 
 	@Override
-	public D current() {
+	public final D current() {
 		return (D) getModel();
 	}
 
 	@Override
-	public boolean eq(DataSpecial value) {
+	public final boolean eq(DataSpecial value) {
 		return current().eq(value);
 	}
 
 	@Override
-	public boolean eq(QDataFiller value) {
+	public final boolean eq(QDataFiller value) {
 		return current().eq(value);
 	}
 
 	@Override
-	public QBufferedData eval(DataSpecial value) {
+	public final QBufferedData eval(DataSpecial value) {
 		return current().eval(value);
 	}
 
 	@Override
-	public QBufferedData eval(QDataFiller value) {
+	public final QBufferedData eval(QDataFiller value) {
 		return current().eval(value);
 	}
 
 	@Override
-	public D first() {
+	public final D first() {
 		return get(1);
 	}
 
 	@Override
-	public boolean ge(DataSpecial value) {
+	public final boolean ge(DataSpecial value) {
 		return current().ge(value);
 	}
 
 	@Override
-	public boolean ge(QDataFiller value) {
+	public final boolean ge(QDataFiller value) {
 		return current().ge(value);
 	}
 
 	@Override
-	public D get(int index) {
+	public final D get(int index) {
 
 		if (_index == index)
 			return (D) getModel();
@@ -152,172 +152,172 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	}
 
 	@Override
-	public BufferedElementType getBufferedElementType() {
+	public final BufferedElementType getBufferedElementType() {
 		return current().getBufferedElementType();
 	}
 
 	@Override
-	public boolean gt(DataSpecial value) {
+	public final boolean gt(DataSpecial value) {
 		return current().gt(value);
 	}
 
 	@Override
-	public boolean gt(QDataFiller value) {
+	public final boolean gt(QDataFiller value) {
 		return current().gt(value);
 	}
 
 	@Override
-	public D last() {
+	public final D last() {
 		return get(_dimension);
 	}
 
 	@Override
-	public boolean le(DataSpecial value) {
+	public final boolean le(DataSpecial value) {
 		return current().le(value);
 	}
 
 	@Override
-	public boolean le(QDataFiller value) {
+	public final boolean le(QDataFiller value) {
 		return current().le(value);
 	}
 
 	@Override
-	public boolean lt(DataSpecial value) {
+	public final boolean lt(DataSpecial value) {
 		return current().lt(value);
 	}
 
 	@Override
-	public boolean lt(QDataFiller value) {
+	public final boolean lt(QDataFiller value) {
 		return current().lt(value);
 	}
 
 	@Override
-	public void move(DataSpecial value) {
+	public final void move(DataSpecial value) {
 		current().move(value);
 	}
 
 	@Override
-	public void move(DataSpecial value, boolean clear) {
+	public final void move(DataSpecial value, boolean clear) {
 		current().move(value, clear);
 	}
 
 	@Override
-	public void move(Number value) {
+	public final void move(Number value) {
 		current().move(value);
 	}
 
 	@Override
-	public void move(Number value, boolean clear) {
+	public final void move(Number value, boolean clear) {
 		current().move(value, clear);
 	}
 
 	@Override
-	public void move(QBufferedElement value) {
+	public final void move(QBufferedElement value) {
 		current().move(value);
 	}
 
 	@Override
-	public void move(QBufferedElement value, boolean clear) {
+	public final void move(QBufferedElement value, boolean clear) {
 		current().move(value, clear);
 	}
 
 	@Override
-	public void move(QDataFiller value) {
+	public final void move(QDataFiller value) {
 		current().move(value);
 	}
 
 	@Override
-	public void move(QDataFiller value, boolean clear) {
+	public final void move(QDataFiller value, boolean clear) {
 		current().move(value, clear);
 	}
 
 	@Override
-	public void move(String value) {
+	public final void move(String value) {
 		current().move(value);
 	}
 
 	@Override
-	public void move(String value, boolean clear) {
+	public final void move(String value, boolean clear) {
 		current().move(value, clear);
 	}
 
 	@Override
-	public void movel(DataSpecial value) {
+	public final void movel(DataSpecial value) {
 		current().movel(value);
 	}
 
 	@Override
-	public void movel(DataSpecial value, boolean clear) {
+	public final void movel(DataSpecial value, boolean clear) {
 		current().movel(value, clear);
 	}
 
 	@Override
-	public void movel(Number value) {
+	public final void movel(Number value) {
 		current().movel(value);
 	}
 
 	@Override
-	public void movel(Number value, boolean clear) {
+	public final void movel(Number value, boolean clear) {
 		current().movel(value, clear);
 	}
 
 	@Override
-	public void movel(QBufferedElement value) {
+	public final void movel(QBufferedElement value) {
 		current().movel(value);
 	}
 
 	@Override
-	public void movel(QBufferedElement value, boolean clear) {
+	public final void movel(QBufferedElement value, boolean clear) {
 		current().movel(value, clear);
 	}
 
 	@Override
-	public void movel(QDataFiller value) {
+	public final void movel(QDataFiller value) {
 		current().movel(value);
 	}
 
 	@Override
-	public void movel(QDataFiller value, boolean clear) {
+	public final void movel(QDataFiller value, boolean clear) {
 		current().movel(value, clear);
 	}
 
 	@Override
-	public void movel(String value) {
+	public final void movel(String value) {
 		current().movel(value);
 	}
 
 	@Override
-	public void movel(String value, boolean clear) {
+	public final void movel(String value, boolean clear) {
 		current().movel(value, clear);
 	}
 
 	@Override
-	public boolean ne(DataSpecial value) {
+	public final boolean ne(DataSpecial value) {
 		return current().ne(value);
 	}
 
 	@Override
-	public boolean ne(QDataFiller value) {
+	public final boolean ne(QDataFiller value) {
 		return current().ne(value);
 	}
 
 	@Override
-	public D next() {
+	public final D next() {
 		return get(position() + 1);
 	}
 
 	@Override
-	public D previous() {
+	public final D previous() {
 		return get(position() - 1);
 	}
 
 	@Override
-	public int position() {
+	public final int position() {
 		return _index;
 	}
 
 	@Override
-	public void qPosition(QScroller<?> scroller) {
+	public final void qPosition(QScroller<?> scroller) {
 		absolute(scroller.position());
 	}
 	

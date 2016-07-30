@@ -19,7 +19,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QIndicator;
 
-public class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicator {
+public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicator {
 
 	private static final long serialVersionUID = 1L;
 	protected static final byte OFF = (byte) 0xF0;
@@ -36,53 +36,53 @@ public class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicator {
 	}
 
 	@Override
-	protected void _clear() {
+	protected final void _clear() {
 		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), OFF);
 	}
 
 	@Override
-	public boolean asBoolean() {
+	public final boolean asBoolean() {
 		byte byte_ = asBytes()[0];
 		return byte_ != OFF && byte_ != NIOStringImpl.INIT;
 	}
 
 	@Override
-	public boolean eq(boolean value) {
+	public final boolean eq(boolean value) {
 		return asBoolean() == value;
 	}
 
 	@Override
-	public boolean ne(boolean value) {
+	public final boolean ne(boolean value) {
 		return !eq(value);
 	}
 
 	@Override
-	public boolean eq(QIndicator value) {
+	public final boolean eq(QIndicator value) {
 		return eq(value.asBoolean());
 	}
 
 	@Override
-	public boolean ne(QIndicator value) {
+	public final boolean ne(QIndicator value) {
 		return !eq(value);
 	}
 
 	@Override
-	public boolean b() {
+	public final boolean b() {
 		return asBoolean();
 	}
 
 	@Override
-	public int getLength() {
+	public final int getLength() {
 		return 1;
 	}
 
 	@Override
-	public int getSize() {
+	public final int getSize() {
 		return 1;
 	}
 
 	@Override
-	public void eval(String value) {
+	public final void eval(String value) {
 		if (value.equals("0"))
 			eval(false);
 		else if (value.equals("1"))
@@ -92,27 +92,27 @@ public class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicator {
 	}
 
 	@Override
-	public QCharacter qTrim() {
+	public final QCharacter qTrim() {
 		return this;
 	}
 
 	@Override
-	public QCharacter qTriml() {
+	public final QCharacter qTriml() {
 		return this;
 	}
 
 	@Override
-	public QCharacter qTrimr() {
+	public final QCharacter qTrimr() {
 		return this;
 	}
 
 	@Override
-	public void accept(QDataVisitor visitor) {
+	public final void accept(QDataVisitor visitor) {
 		visitor.visit((QIndicator) this);
 	}
 
 	@Override
-	public String toString() {
+	public final String toString() {
 		return Boolean.toString(asBoolean());
 	}
 	

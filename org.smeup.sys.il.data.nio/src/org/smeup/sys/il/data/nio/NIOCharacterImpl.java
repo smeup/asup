@@ -170,117 +170,117 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	}
 
 	@Override
-	public QNumeric qCheck(QCharacter base) {
+	public final QNumeric qCheck(QCharacter base) {
 		return qCheck(base.asString(), (Integer) null, null);
 	}
 
 	@Override
-	public QNumeric qCheck(QCharacter base, QIndicator found) {
+	public final QNumeric qCheck(QCharacter base, QIndicator found) {
 		return qCheck(base.asString(), (Integer) null, found);
 	}
 
 	@Override
-	public QNumeric qCheck(QCharacter base, QNumeric start) {
+	public final QNumeric qCheck(QCharacter base, QNumeric start) {
 		return qCheck(base.asString(), start.asInteger(), null);
 	}
 
 	@Override
-	public QNumeric qCheck(QCharacter base, QNumeric start, QIndicator found) {
+	public final QNumeric qCheck(QCharacter base, QNumeric start, QIndicator found) {
 		return qCheck(base.asString(), start.asInteger(), found);
 	}
 
 	@Override
-	public QNumeric qCheck(QCharacter base, Number start) {
+	public final QNumeric qCheck(QCharacter base, Number start) {
 		return qCheck(base.asString(), start, null);
 	}
 
 	@Override
-	public QNumeric qCheck(QCharacter base, Number start, QIndicator found) {
+	public final QNumeric qCheck(QCharacter base, Number start, QIndicator found) {
 		return qCheck(base.asString(), start, found);
 	}
 
 	@Override
-	public QNumeric qCheck(String base) {
+	public final QNumeric qCheck(String base) {
 		return qCheck(base, (Integer) null, null);
 	}
 
 	@Override
-	public QNumeric qCheck(String base, QIndicator found) {
+	public final QNumeric qCheck(String base, QIndicator found) {
 		return qCheck(base, (Integer) null, found);
 	}
 
 	@Override
-	public QNumeric qCheck(String base, QNumeric start) {
+	public final QNumeric qCheck(String base, QNumeric start) {
 		return qCheck(base, start.asInteger(), null);
 	}
 
 	@Override
-	public QNumeric qCheck(String base, QNumeric start, QIndicator found) {
+	public final QNumeric qCheck(String base, QNumeric start, QIndicator found) {
 		return qCheck(base, start.asInteger(), found);
 	}
 
 	@Override
-	public QNumeric qCheck(String base, Number start) {
+	public final QNumeric qCheck(String base, Number start) {
 		return qCheck(base, start, null);
 	}
 
 	@Override
-	public QNumeric qCheckr(QCharacter base) {
+	public final QNumeric qCheckr(QCharacter base) {
 		return qCheckr(base.asString(), (Integer) null, null);
 	}
 
 	@Override
-	public QNumeric qCheckr(QCharacter base, QIndicator found) {
+	public final QNumeric qCheckr(QCharacter base, QIndicator found) {
 		return qCheckr(base.asString(), (Integer) null, found);
 	}
 
 	@Override
-	public QNumeric qCheckr(QCharacter base, QNumeric start) {
+	public final QNumeric qCheckr(QCharacter base, QNumeric start) {
 		return qCheckr(base.asString(), start.asInteger(), null);
 	}
 
 	@Override
-	public QNumeric qCheckr(QCharacter base, QNumeric start, QIndicator found) {
+	public final QNumeric qCheckr(QCharacter base, QNumeric start, QIndicator found) {
 		return qCheckr(base.asString(), start.asInteger(), found);
 	}
 
 	@Override
-	public QNumeric qCheckr(QCharacter base, Number start) {
+	public final QNumeric qCheckr(QCharacter base, Number start) {
 		return qCheckr(base.asString(), start, null);
 	}
 
 	@Override
-	public QNumeric qCheckr(QCharacter base, Number start, QIndicator found) {
+	public final QNumeric qCheckr(QCharacter base, Number start, QIndicator found) {
 		return qCheckr(base.asString(), start, found);
 	}
 
 	@Override
-	public QNumeric qCheckr(String base) {
+	public final QNumeric qCheckr(String base) {
 		return qCheckr(base, (Integer) null, null);
 	}
 
 	@Override
-	public QNumeric qCheckr(String base, QIndicator found) {
+	public final QNumeric qCheckr(String base, QIndicator found) {
 		return qCheckr(base, (Integer) null, found);
 	}
 
 	@Override
-	public QNumeric qCheckr(String base, QNumeric start) {
+	public final QNumeric qCheckr(String base, QNumeric start) {
 		return qCheckr(base, start.asInteger(), null);
 	}
 
 	@Override
-	public QNumeric qCheckr(String base, QNumeric start, QIndicator found) {
+	public final QNumeric qCheckr(String base, QNumeric start, QIndicator found) {
 		return qCheckr(base, start.asInteger(), found);
 	}
 
 	@Override
-	public QNumeric qCheckr(String base, Number start) {
+	public final QNumeric qCheckr(String base, Number start) {
 		return qCheckr(base, start, null);
 	}
 
 	@Override
-	public QNumeric qCheck(String base, Number start, QIndicator found) {
+	public final QNumeric qCheck(String base, Number start, QIndicator found) {
 		// TODO use cache
 		QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
 		if (start == null)
@@ -305,7 +305,7 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	}
 
 	@Override
-	public QNumeric qCheckr(String base, Number start, QIndicator found) {
+	public final QNumeric qCheckr(String base, Number start, QIndicator found) {
 		// TODO use cache
 		QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
 		if (start == null || start.intValue() > getLength())
@@ -329,90 +329,90 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	}
 
 	@Override
-	public QString qPlus(String factor1) {
+	public final QString qPlus(String factor1) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QString qPlus(QString factor1) {
+	public final QString qPlus(QString factor1) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qScan(byte argument) {
+	public final QNumeric qScan(byte argument) {
 		return qScan(new String(new byte[] { argument }, getDataContext().getCharset()), (Integer) null, null);
 	}
 
 	@Override
-	public QNumeric qScan(byte argument, QNumeric start) {
+	public final QNumeric qScan(byte argument, QNumeric start) {
 		return qScan(new String(new byte[] { argument }, getDataContext().getCharset()), start, null);
 	}
 	
 	@Override
-	public QNumeric qScan(byte argument, Number start) {
+	public final QNumeric qScan(byte argument, Number start) {
 		return qScan(new String(new byte[] { argument }, getDataContext().getCharset()), start, null);
 	}
 	
 	
 	@Override
-	public QNumeric qScan(QCharacter argument) {
+	public final QNumeric qScan(QCharacter argument) {
 		return qScan(argument.asString(), (Integer) null, null);
 	}
 
 	@Override
-	public QNumeric qScan(QCharacter argument, Number start) {
+	public final QNumeric qScan(QCharacter argument, Number start) {
 		return qScan(argument.asString(), start, null);
 	}
 
 	@Override
-	public QNumeric qScan(QCharacter argument, Number start, QIndicator found) {
+	public final QNumeric qScan(QCharacter argument, Number start, QIndicator found) {
 		return qScan(argument.asString(), start, found);
 	}
 
 	@Override
-	public QNumeric qScan(QCharacter argument, QIndicator found) {
+	public final QNumeric qScan(QCharacter argument, QIndicator found) {
 		return qScan(argument.asString(), (Integer) null, found);
 	}
 
 	@Override
-	public QNumeric qScan(QCharacter argument, QNumeric start) {
+	public final QNumeric qScan(QCharacter argument, QNumeric start) {
 		return qScan(argument.asString(), start.asInteger(), null);
 	}
 
 	@Override
-	public QNumeric qScan(QCharacter argument, QNumeric start, QIndicator found) {
+	public final QNumeric qScan(QCharacter argument, QNumeric start, QIndicator found) {
 		return qScan(argument.asString(), start.asInteger(), found);
 	}
 
 	@Override
-	public QNumeric qScan(String argument) {
+	public final QNumeric qScan(String argument) {
 		return qScan(argument, (Integer) null, null);
 	}
 
 	@Override
-	public QNumeric qScan(String argument, Number start) {
+	public final QNumeric qScan(String argument, Number start) {
 		return qScan(argument, start, null);
 	}
 
 	@Override
-	public QNumeric qScan(String argument, QIndicator found) {
+	public final QNumeric qScan(String argument, QIndicator found) {
 		return qScan(argument, (Integer) null, found);
 	}
 
 	@Override
-	public QNumeric qScan(String argument, QNumeric start) {
+	public final QNumeric qScan(String argument, QNumeric start) {
 		return qScan(argument, start.asInteger(), null);
 	}
 
 	@Override
-	public QNumeric qScan(String argument, QNumeric start, QIndicator found) {
+	public final QNumeric qScan(String argument, QNumeric start, QIndicator found) {
 		return qScan(argument, start.asInteger(), found);
 	}
 
 	@Override
-	public QNumeric qScan(String argument, Number start, QIndicator found) {
+	public final QNumeric qScan(String argument, Number start, QIndicator found) {
 
 		// TODO use cache
 		QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
@@ -436,192 +436,192 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	}
 
 	@Override
-	public void xlate(byte from, String to, QString source) {
+	public final void xlate(byte from, String to, QString source) {
 		xlate(new String(new byte[] { from }), to, source.asString());
 	}
 
 	@Override
-	public void xlate(QString from, QString to, QString source) {
+	public final void xlate(QString from, QString to, QString source) {
 		xlate(from.asString(), to.asString(), source.asString(), 1, false);
 	}
 
 	@Override
-	public void xlate(QString from, QString to, QString source, boolean clear) {
+	public final void xlate(QString from, QString to, QString source, boolean clear) {
 		xlate(from.asString(), to.asString(), source.asString(), 1, clear);
 	}
 
 	@Override
-	public void xlate(QString from, QString to, QString source, Number start) {
+	public final void xlate(QString from, QString to, QString source, Number start) {
 		xlate(from.asString(), to.asString(), source.asString(), start, false);
 	}
 
 	@Override
-	public void xlate(QString from, QString to, QString source, Number start, boolean clear) {
+	public final void xlate(QString from, QString to, QString source, Number start, boolean clear) {
 		xlate(from.asString(), to.asString(), source.asString(), start, clear);
 	}
 
 	@Override
-	public void xlate(QString from, QString to, QString source, QNumeric start) {
+	public final void xlate(QString from, QString to, QString source, QNumeric start) {
 		xlate(from.asString(), to.asString(), source.asString(), start.i(), false);
 	}
 
 	@Override
-	public void xlate(QString from, QString to, QString source, QNumeric start, boolean clear) {
+	public final void xlate(QString from, QString to, QString source, QNumeric start, boolean clear) {
 		xlate(from.asString(), to.asString(), source.asString(), start.i(), clear);
 	}
 
 	@Override
-	public void xlate(QString from, QString to, String source) {
+	public final void xlate(QString from, QString to, String source) {
 		xlate(from.asString(), to.asString(), source, 1, false);
 	}
 
 	@Override
-	public void xlate(QString from, QString to, String source, boolean clear) {
+	public final void xlate(QString from, QString to, String source, boolean clear) {
 		xlate(from.asString(), to.asString(), source, 1, clear);
 	}
 
 	@Override
-	public void xlate(QString from, QString to, String source, Number start) {
+	public final void xlate(QString from, QString to, String source, Number start) {
 		xlate(from.asString(), to.asString(), source, start, false);
 	}
 
 	@Override
-	public void xlate(QString from, QString to, String source, Number start, boolean clear) {
+	public final void xlate(QString from, QString to, String source, Number start, boolean clear) {
 		xlate(from.asString(), to.asString(), source, start, clear);
 	}
 
 	@Override
-	public void xlate(QString from, QString to, String source, QNumeric start) {
+	public final void xlate(QString from, QString to, String source, QNumeric start) {
 		xlate(from.asString(), to.asString(), source, start.i(), false);
 	}
 
 	@Override
-	public void xlate(QString from, QString to, String source, QNumeric start, boolean clear) {
+	public final void xlate(QString from, QString to, String source, QNumeric start, boolean clear) {
 		xlate(from.asString(), to.asString(), source, start.i(), clear);
 	}
 
 	@Override
-	public void xlate(QString from, String to, QString source) {
+	public final void xlate(QString from, String to, QString source) {
 		xlate(from.asString(), to, source.asString(), 1, false);
 	}
 
 	@Override
-	public void xlate(QString from, String to, QString source, boolean clear) {
+	public final void xlate(QString from, String to, QString source, boolean clear) {
 		xlate(from.asString(), to, source.asString(), 1, clear);
 	}
 
 	@Override
-	public void xlate(QString from, String to, QString source, Number start) {
+	public final void xlate(QString from, String to, QString source, Number start) {
 		xlate(from.asString(), to, source.asString(), start, false);
 	}
 
 	@Override
-	public void xlate(QString from, String to, QString source, Number start, boolean clear) {
+	public final void xlate(QString from, String to, QString source, Number start, boolean clear) {
 		xlate(from.asString(), to, source.asString(), start, clear);
 	}
 
 	@Override
-	public void xlate(QString from, String to, QString source, QNumeric start) {
+	public final void xlate(QString from, String to, QString source, QNumeric start) {
 		xlate(from.asString(), to, source.asString(), start.i(), false);
 	}
 
 	@Override
-	public void xlate(QString from, String to, QString source, QNumeric start, boolean clear) {
+	public final void xlate(QString from, String to, QString source, QNumeric start, boolean clear) {
 		xlate(from.asString(), to, source.asString(), start.i(), clear);
 	}
 
 	@Override
-	public void xlate(String from, QString to, QString source) {
+	public final void xlate(String from, QString to, QString source) {
 		xlate(from, to.asString(), source.asString(), 1, false);
 	}
 
 	@Override
-	public void xlate(String from, QString to, QString source, boolean clear) {
+	public final void xlate(String from, QString to, QString source, boolean clear) {
 		xlate(from, to.asString(), source.asString(), 1, clear);
 	}
 
 	@Override
-	public void xlate(String from, QString to, QString source, Number start) {
+	public final void xlate(String from, QString to, QString source, Number start) {
 		xlate(from, to.asString(), source.asString(), start, false);
 	}
 
 	@Override
-	public void xlate(String from, QString to, QString source, Number start, boolean clear) {
+	public final void xlate(String from, QString to, QString source, Number start, boolean clear) {
 		xlate(from, to.asString(), source.asString(), start, clear);
 	}
 
 	@Override
-	public void xlate(String from, QString to, QString source, QNumeric start) {
+	public final void xlate(String from, QString to, QString source, QNumeric start) {
 		xlate(from, to.asString(), source.asString(), start.i(), false);
 	}
 
 	@Override
-	public void xlate(String from, QString to, QString source, QNumeric start, boolean clear) {
+	public final void xlate(String from, QString to, QString source, QNumeric start, boolean clear) {
 		xlate(from, to.asString(), source.asString(), start.i(), clear);
 	}
 
 	@Override
-	public void xlate(String from, String to, QString source) {
+	public final void xlate(String from, String to, QString source) {
 		xlate(from, to, source.asString(), 1, false);
 	}
 
 	@Override
-	public void xlate(String from, byte to, QString source) {
+	public final void xlate(String from, byte to, QString source) {
 		xlate(from, new String(new byte[] { to }, getDataContext().getCharset()), source.asString(), 1, false);
 	}
 
 	@Override
-	public void xlate(String from, String to, QString source, boolean clear) {
+	public final void xlate(String from, String to, QString source, boolean clear) {
 		xlate(from, to, source.asString(), 1, clear);
 	}
 
 	@Override
-	public void xlate(String from, String to, QString source, Number start) {
+	public final void xlate(String from, String to, QString source, Number start) {
 		xlate(from, to, source.asString(), start, false);
 	}
 
 	@Override
-	public void xlate(String from, String to, QString source, Number start, boolean clear) {
+	public final void xlate(String from, String to, QString source, Number start, boolean clear) {
 		xlate(from, to, source.asString(), start, clear);
 	}
 
 	@Override
-	public void xlate(String from, String to, QString source, QNumeric start) {
+	public final void xlate(String from, String to, QString source, QNumeric start) {
 		xlate(from, to, source.asString(), start.i(), false);
 	}
 
 	@Override
-	public void xlate(String from, String to, QString source, QNumeric start, boolean clear) {
+	public final void xlate(String from, String to, QString source, QNumeric start, boolean clear) {
 		xlate(from, to, source.asString(), start.i(), clear);
 	}
 
 	@Override
-	public void xlate(String from, String to, String source) {
+	public final void xlate(String from, String to, String source) {
 		xlate(from, to, source, 1, false);
 	}
 
 	@Override
-	public void xlate(String from, String to, String source, boolean clear) {
+	public final void xlate(String from, String to, String source, boolean clear) {
 		xlate(from, to, source, 1, clear);
 	}
 
 	@Override
-	public void xlate(String from, String to, String source, Number start) {
+	public final void xlate(String from, String to, String source, Number start) {
 		xlate(from, to, source, start, false);
 	}
 
 	@Override
-	public void xlate(String from, String to, String source, QNumeric start) {
+	public final void xlate(String from, String to, String source, QNumeric start) {
 		xlate(from, to, source, start.i(), false);
 	}
 
 	@Override
-	public void xlate(String from, String to, String source, QNumeric start, boolean clear) {
+	public final void xlate(String from, String to, String source, QNumeric start, boolean clear) {
 		xlate(from, to, source, start.i(), clear);
 	}
 
 	@Override
-	public void xlate(String from, String to, String source, Number start, boolean clear) {
+	public final void xlate(String from, String to, String source, Number start, boolean clear) {
 		StringBuffer sb = new StringBuffer();
 		int startId = 0;
 		for (char c : source.toCharArray()) {
@@ -644,7 +644,7 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	}
 	
 	@Override
-	public QIndicator qFound() {
+	public final QIndicator qFound() {
 		return getDataContext().found();
 	}
 }

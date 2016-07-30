@@ -68,7 +68,7 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	}
 	
 	@Override
-	public void assign(QBufferedData target) {
+	public final void assign(QBufferedData target) {
 
 		if (target instanceof NIOAdapterImpl) {
 			NIOAdapterImpl nioAdapterImpl = (NIOAdapterImpl) target;
@@ -80,7 +80,7 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	}
 
 	@Override
-	public void slice(QBufferedData target, int position) {
+	public final void slice(QBufferedData target, int position) {
 
 		if (target instanceof NIOAdapterImpl) {
 			NIOAdapterImpl nioAdapterImpl = (NIOAdapterImpl) target;

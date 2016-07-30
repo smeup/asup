@@ -1,7 +1,7 @@
 /**
  *  Copyright (c) 2012, 2016 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
+ *  are made available under the terms of the Eclipse public final License v1.0
  *  which accompanies this distribution, and is available at
  *  http://www.eclipse.org/legal/epl-v10.html
  *
@@ -34,7 +34,7 @@ import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.def.TimeFormat;
 
-public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime {
+public final class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime {
 
 	private static final long serialVersionUID = 1L;
 	protected static final byte INIT = (byte) 64;
@@ -69,7 +69,7 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	}
 
 	@Override
-	public boolean isEmpty() {
+	public final boolean isEmpty() {
 
 		for (byte b : asBytes())
 			if (b != INIT)
@@ -78,7 +78,7 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	}
 	
 	@Override
-	public int getLength() {
+	public final int getLength() {
 
 		int length = 0;
 
@@ -129,7 +129,7 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	}
 
 	@Override
-	public int getSize() {
+	public final int getSize() {
 		return getLength();
 	}
 
@@ -140,70 +140,70 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	}
 
 	@Override
-	public void eval(QDatetime value) {
+	public final void eval(QDatetime value) {
 		movel(value, true);
 	}
 
 	@Override
-	public long asTime() {
+	public final long asTime() {
 		return asDate().getTime();
 	}
 
 	@Override
-	public long t() {
+	public final long t() {
 		return asTime();
 	}
 
 	@Override
-	public void adddur(int duration, DatetimeFormat format, QDatetime value) {
+	public final void adddur(int duration, DatetimeFormat format, QDatetime value) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void adddur(QNumeric duration, DatetimeFormat format, QDatetime value) {
+	public final void adddur(QNumeric duration, DatetimeFormat format, QDatetime value) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void adddur(int duration, DatetimeFormat format) {
+	public final void adddur(int duration, DatetimeFormat format) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void adddur(QNumeric duration, DatetimeFormat format) {
+	public final void adddur(QNumeric duration, DatetimeFormat format) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void subdur(int duration, DatetimeFormat format, QDatetime value) {
+	public final void subdur(int duration, DatetimeFormat format, QDatetime value) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void subdur(QNumeric duration, DatetimeFormat format, QDatetime value) {
+	public final void subdur(QNumeric duration, DatetimeFormat format, QDatetime value) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void subdur(int duration, DatetimeFormat format) {
+	public final void subdur(int duration, DatetimeFormat format) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void subdur(QNumeric duration, DatetimeFormat format) {
+	public final void subdur(QNumeric duration, DatetimeFormat format) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public QNumeric qDiff(QDatetime value, DatetimeFormat format) {
+	public final QNumeric qDiff(QDatetime value, DatetimeFormat format) {
 
 		QDecimal number = getDataContext().getDataFactory().createDecimal(10, 0, DecimalType.ZONED, true);
 
@@ -243,29 +243,29 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	}
 
 	@Override
-	public void eval(Date value) {
+	public final void eval(Date value) {
 		String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(value);
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), result.getBytes(getDataContext().getCharset()));
 	}
 
 	@Override
-	public void time() {
+	public final void time() {
 		String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(Calendar.getInstance().getTime());
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), result.getBytes(getDataContext().getCharset()));
 	}
 
 	@Override
-	public void accept(QDataVisitor visitor) {
+	public final void accept(QDataVisitor visitor) {
 		visitor.visit(this);
 	}
 
 	@Override
-	public String toString() {
+	public final String toString() {
 		return new String(asBytes(), getDataContext().getCharset());
 	}
 
 	@Override
-	public Date asDate() {
+	public final Date asDate() {
 
 		try {
 			String stringDate = new String(asBytes(), getDataContext().getCharset());
@@ -277,7 +277,7 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	}
 
 	@Override
-	public String qEditd(DateFormat dateFormat, String dateSeparator, TimeFormat timeFormat, String timeSeparator) {
+	public final String qEditd(DateFormat dateFormat, String dateSeparator, TimeFormat timeFormat, String timeSeparator) {
 		String result = getDateFormat(_type, dateFormat, dateSeparator, timeFormat, timeSeparator).format(asDate());
 		return result;
 	}
@@ -377,28 +377,28 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	}
 
 	@Override
-	protected void _clear() {
+	protected final void _clear() {
 		String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(CLEAR.getTime());
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), result.getBytes(getDataContext().getCharset()), INIT);
 	}
 
 	@Override
-	protected void _write(byte[] value) {
+	protected final void _write(byte[] value) {
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value, INIT);
 	}
 
 	@Override
-	protected void _fill(byte[] value, boolean maxLength) {
+	protected final void _fill(byte[] value, boolean maxLength) {
 		NIOBufferHelper.fill(getBuffer(), getPosition(), getLength(), value);
 	}
 
 	@Override
-	protected void _fillr(byte[] value, boolean maxLength) {
+	protected final void _fillr(byte[] value, boolean maxLength) {
 		NIOBufferHelper.fillr(getBuffer(), getPosition(), getLength(), value);
 	}
 	
 	@Override
-	protected void _move(byte[] value, boolean clear) {
+	protected final void _move(byte[] value, boolean clear) {
 		if(clear)
 			NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), value, INIT);
 		else
@@ -406,7 +406,7 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	}
 
 	@Override
-	protected void _movel(byte[] value, boolean clear) {
+	protected final void _movel(byte[] value, boolean clear) {
 		if(clear)
 			NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value, INIT);
 		else
@@ -414,17 +414,17 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	}
 
 	@Override
-	protected byte[] _toBytes() {
+	protected final byte[] _toBytes() {
 		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
 	}
 
 	@Override
-	public BufferedElementType getBufferedElementType() {
+	public final BufferedElementType getBufferedElementType() {
 		return BufferedElementType.DATETIME;
 	}
 
 	@Override
-	protected byte[] _toBytes(DataSpecial value) {
+	protected final byte[] _toBytes(DataSpecial value) {
 
 		byte[] bytes = null;
 		switch (value) {
@@ -453,63 +453,63 @@ public class NIODatetimeImpl extends NIOBufferedElementImpl implements QDatetime
 	}
 
 	@Override
-	protected byte[] _toBytes(String value) {
+	protected final byte[] _toBytes(String value) {
 		return value.getBytes(getDataContext().getCharset());
 	}
 
 	@Override
-	protected byte[] _toBytes(QString value) {
+	protected final byte[] _toBytes(QString value) {
 		return value.asBytes();
 	}
 
 	@Override
-	protected byte[] _toBytes(Number value) {
+	protected final byte[] _toBytes(Number value) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	protected byte[] _toBytes(QNumeric value) {
+	protected final byte[] _toBytes(QNumeric value) {
 		return value.asBytes();
 	}
 
 	@Override
-	protected byte[] _toBytes(QDatetime value) {
+	protected final byte[] _toBytes(QDatetime value) {
 		return value.asBytes();
 	}
 
 	@Override
-	public boolean ge(QDatetime value) {
+	public final boolean ge(QDatetime value) {
 		return asDate().compareTo(value.asDate()) >= 0;
 	}
 
 	@Override
-	public boolean gt(QDatetime value) {
+	public final boolean gt(QDatetime value) {
 		return asDate().compareTo(value.asDate()) > 0;
 	}
 
 	@Override
-	public boolean le(QDatetime value) {
+	public final boolean le(QDatetime value) {
 		return asDate().compareTo(value.asDate()) <= 0;
 	}
 
 	@Override
-	public boolean lt(QDatetime value) {
+	public final boolean lt(QDatetime value) {
 		return asDate().compareTo(value.asDate()) < 0;
 	}
 
 	@Override
-	public boolean ne(QDatetime value) {
+	public final boolean ne(QDatetime value) {
 		return asDate().compareTo(value.asDate()) != 0;
 	}
 
 	@Override
-	public boolean eq(QDatetime value) {
+	public final boolean eq(QDatetime value) {
 		return asDate().compareTo(value.asDate()) == 0;
 	}
 	
 	@Override
-	protected NIODataImpl _copyDef(QDataContext dataContext) {
+	protected final NIODataImpl _copyDef(QDataContext dataContext) {
 		NIODatetimeImpl copy = new NIODatetimeImpl(dataContext, _type, _dateFormat, _timeFormat, false);
 		return copy;
 	}

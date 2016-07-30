@@ -70,7 +70,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	@Override
-	public void eval(Number value, boolean halfAdjust) {
+	public final void eval(Number value, boolean halfAdjust) {
 
 /*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
 		((QNumeric) firstElement).eval(value, halfAdjust);
@@ -120,12 +120,12 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	@Override
-	public void eval(QList<? extends QNumeric> value, boolean halfAdjust) {
+	public final void eval(QList<? extends QNumeric> value, boolean halfAdjust) {
 		eval(value, halfAdjust, false);
 	}
 
 	@Override
-	public void eval(QList<? extends QNumeric> value, boolean halfAdjust, boolean maxPrecision) {
+	public final void eval(QList<? extends QNumeric> value, boolean halfAdjust, boolean maxPrecision) {
 
 		int capacity = capacity();
 		if (value.capacity() < capacity)
@@ -145,7 +145,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	@Override
-	public void eval(QNumeric value, boolean halfAdjust) {
+	public final void eval(QNumeric value, boolean halfAdjust) {
 
 /*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
 		((QNumeric) firstElement).eval(value, halfAdjust);
@@ -212,165 +212,6 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 		return new NIOListIteratorImpl<D>(this);
 	}
 
-	@Override
-	public void move(DataSpecial value) {
-		move(value, false);
-	}
-
-	@Override
-	public void move(DataSpecial value, boolean clear) {
-
-/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		firstElement.move(value, clear);
-		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
-		
-		for(D element: this)
-			element.move(value, clear);
-	}
-
-	@Override
-	public void move(Number value) {
-		move(value, false);
-	}
-
-	@Override
-	public void move(Number value, boolean clear) {
-
-/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		firstElement.move(value, clear);
-		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
-		
-		for(D element: this)
-			element.move(value, clear);		
-	}
-
-	@Override
-	public void move(QBufferedElement value) {
-		move(value, false);
-	}
-
-	@Override
-	public void move(QBufferedElement value, boolean clear) {
-
-/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		firstElement.move(value, clear);
-		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
-				
-		for(D element: this)
-			element.move(value, clear);		
-	}
-
-	@Override
-	public void move(QDataFiller value) {
-		move(value, false);
-	}
-
-	@Override
-	public void move(QDataFiller value, boolean clear) {
-
-/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		firstElement.move(value, clear);
-		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
-				
-		for(D element: this)
-			element.move(value, clear);		
-	}
-
-	@Override
-	public void move(String value) {
-		move(value, false);
-	}
-
-	@Override
-	public void move(String value, boolean clear) {
-
-/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		firstElement.move(value, clear);
-		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/		
-		
-		for(D element: this)
-			element.move(value, clear);		
-	}
-
-	@Override
-	public void movel(DataSpecial value) {
-		movel(value, false);
-	}
-
-	@Override
-	public void movel(DataSpecial value, boolean clear) {
-
-/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		firstElement.movel(value, clear);
-		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
-				
-		for(D element: this)
-			element.movel(value, clear);
-	}
-
-	@Override
-	public void movel(Number value) {
-		movel(value, false);
-	}
-
-	@Override
-	public void movel(Number value, boolean clear) {
-
-/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		firstElement.movel(value, clear);
-		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
-				
-		for(D element: this)
-			element.movel(value, clear);		
-	}
-
-	@Override
-	public void movel(QBufferedElement value) {
-		movel(value, false);
-	}
-
-	@Override
-	public void movel(QBufferedElement value, boolean clear) {
-
-/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		firstElement.movel(value, clear);
-		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
-		
-		for(D element: this)
-			element.movel(value, clear);		
-	}
-
-	@Override
-	public void movel(QDataFiller value) {
-		movel(value, false);
-	}
-
-	@Override
-	public void movel(QDataFiller value, boolean clear) {
-
-/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		firstElement.movel(value, clear);
-		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
-		
-		for(D element: this)
-			element.movel(value, clear);
-	}
-
-	@Override
-	public void movel(String value) {
-		movel(value, false);
-	}
-
-	@Override
-	public void movel(String value, boolean clear) {
-
-/*		NIOBufferedElementImpl firstElement = NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		firstElement.movel(value, clear);
-		NIOBufferHelper.fill(getBuffer(), getPosition() + firstElement.getSize(), getSize(), NIOBufferHelper.read(firstElement));*/
-				
-		for(D element: this)
-			element.movel(value, clear);		
-	}
 
 	protected final void setListOwner(NIOBufferedListImpl<?> listOwner) {
 		this.listOwner = listOwner;
@@ -407,61 +248,61 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	@Override
-	public BufferedDataType getBufferedDataType() {
+	public final BufferedDataType getBufferedDataType() {
 		return BufferedDataType.LIST;
 	}
 	
 	@Override
-	public QDecimal qLookup(D argument) {
+	public final QDecimal qLookup(D argument) {
 		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, 1, capacity()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(D argument, QNumeric start) {
+	public final QDecimal qLookup(D argument, QNumeric start) {
 		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.asInteger(), capacity()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(D argument, Number start) {
+	public final QDecimal qLookup(D argument, Number start) {
 		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.intValue(), capacity()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(D argument, QNumeric start, QNumeric elements) {
+	public final QDecimal qLookup(D argument, QNumeric start, QNumeric elements) {
 		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.asInteger(), elements.asInteger()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(D argument, Number start, Number elements) {
+	public final QDecimal qLookup(D argument, Number start, Number elements) {
 		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.intValue(), elements.intValue()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(D argument, Number start, QNumeric elements) {
+	public final QDecimal qLookup(D argument, Number start, QNumeric elements) {
 		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.intValue(), elements.asInteger()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(D argument, QNumeric start, Number elements) {
+	public final QDecimal qLookup(D argument, QNumeric start, Number elements) {
 		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.asInteger(), elements.intValue()));
 		return lastIndex;
 	}
 
 	@Override
-	public void qLookup(D argument, QIndicator equal) {
+	public final void qLookup(D argument, QIndicator equal) {
 
 		int i = qLookup(DataComparator.EQUAL, argument, 1, capacity());
 		setContextIndicators(i, equal);
 	}
 
 	@Override
-	public void qLookup(D argument, QNumeric start, QIndicator equal) {
+	public final void qLookup(D argument, QNumeric start, QIndicator equal) {
 
 		int i = qLookup(DataComparator.EQUAL, argument, start.asInteger(), capacity());
 		setContextIndicators(i, equal);
@@ -473,63 +314,63 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	@Override
-	public void qLookup(D argument, Number start, QIndicator equal) {
+	public final void qLookup(D argument, Number start, QIndicator equal) {
 
 		int i = qLookup(DataComparator.EQUAL, argument, start.intValue(), capacity());
 		setContextIndicators(i, equal);
 	}
 
 	@Override
-	public QDecimal qLookup(DataSpecial argument) {
+	public final QDecimal qLookup(DataSpecial argument) {
 		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, 1, capacity()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(DataSpecial argument, QNumeric start) {
+	public final QDecimal qLookup(DataSpecial argument, QNumeric start) {
 		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.asInteger(), capacity()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(DataSpecial argument, Number start) {
+	public final QDecimal qLookup(DataSpecial argument, Number start) {
 		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.intValue(), capacity()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(DataSpecial argument, QNumeric start, QNumeric elements) {
+	public final QDecimal qLookup(DataSpecial argument, QNumeric start, QNumeric elements) {
 		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.asInteger(), elements.asInteger()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(DataSpecial argument, Number start, Number elements) {
+	public final QDecimal qLookup(DataSpecial argument, Number start, Number elements) {
 		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.intValue(), elements.intValue()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(DataSpecial argument, Number start, QNumeric elements) {
+	public final QDecimal qLookup(DataSpecial argument, Number start, QNumeric elements) {
 		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.intValue(), elements.asInteger()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(DataSpecial argument, QNumeric start, Number elements) {
+	public final QDecimal qLookup(DataSpecial argument, QNumeric start, Number elements) {
 		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.asInteger(), elements.intValue()));
 		return lastIndex;
 	}
 
 	@Override
-	public void qLookup(DataSpecial argument, QIndicator equal) {
+	public final void qLookup(DataSpecial argument, QIndicator equal) {
 
 		int i = qLookup(DataComparator.EQUAL, argument, 1, capacity());
 		setContextIndicators(i, equal);
 	}
 
 	@Override
-	public void qLookup(DataSpecial argument, QNumeric start, QIndicator equal) {
+	public final void qLookup(DataSpecial argument, QNumeric start, QIndicator equal) {
 
 		int i = qLookup(DataComparator.EQUAL, argument, start.asInteger(), capacity());
 		setContextIndicators(i, equal);
@@ -541,63 +382,63 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	@Override
-	public void qLookup(DataSpecial argument, Number start, QIndicator equal) {
+	public final void qLookup(DataSpecial argument, Number start, QIndicator equal) {
 
 		int i = qLookup(DataComparator.EQUAL, argument, start.intValue(), capacity());
 		setContextIndicators(i, equal);
 	}
 
 	@Override
-	public QDecimal qLookup(D argument, DataComparator comparator) {
+	public final QDecimal qLookup(D argument, DataComparator comparator) {
 		lastIndex.eval(qLookup(comparator, argument, 1, capacity()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(D argument, QNumeric start, DataComparator comparator) {
+	public final QDecimal qLookup(D argument, QNumeric start, DataComparator comparator) {
 		lastIndex.eval(qLookup(comparator, argument, start.asInteger(), capacity()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(D argument, Number start, DataComparator comparator) {
+	public final QDecimal qLookup(D argument, Number start, DataComparator comparator) {
 		lastIndex.eval(qLookup(comparator, argument, start.intValue(), capacity()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(D argument, QNumeric start, QNumeric elements, DataComparator comparator) {
+	public final QDecimal qLookup(D argument, QNumeric start, QNumeric elements, DataComparator comparator) {
 		lastIndex.eval(qLookup(comparator, argument, start.asInteger(), elements.asInteger()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(D argument, Number start, Number elements, DataComparator comparator) {
+	public final QDecimal qLookup(D argument, Number start, Number elements, DataComparator comparator) {
 		lastIndex.eval(qLookup(comparator, argument, start.intValue(), elements.intValue()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(D argument, Number start, QNumeric elements, DataComparator comparator) {
+	public final QDecimal qLookup(D argument, Number start, QNumeric elements, DataComparator comparator) {
 		lastIndex.eval(qLookup(comparator, argument, start.intValue(), elements.asInteger()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(D argument, QNumeric start, Number elements, DataComparator comparator) {
+	public final QDecimal qLookup(D argument, QNumeric start, Number elements, DataComparator comparator) {
 		lastIndex.eval(qLookup(comparator, argument, start.asInteger(), elements.intValue()));
 		return lastIndex;
 	}
 
 	@Override
-	public void qLookup(D argument, QIndicator equal, DataComparator comparator) {
+	public final void qLookup(D argument, QIndicator equal, DataComparator comparator) {
 
 		int i = qLookup(comparator, argument, 1, capacity());
 		setContextIndicators(i, equal);
 	}
 
 	@Override
-	public void qLookup(D argument, QNumeric start, QIndicator equal, DataComparator comparator) {
+	public final void qLookup(D argument, QNumeric start, QIndicator equal, DataComparator comparator) {
 
 		int i = qLookup(comparator, argument, start.asInteger(), capacity());
 		setContextIndicators(i, equal);
@@ -609,63 +450,63 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	@Override
-	public void qLookup(D argument, Number start, QIndicator equal, DataComparator comparator) {
+	public final void qLookup(D argument, Number start, QIndicator equal, DataComparator comparator) {
 
 		int i = qLookup(comparator, argument, start.intValue(), capacity());
 		setContextIndicators(i, equal);
 	}
 
 	@Override
-	public QDecimal qLookup(DataSpecial argument, DataComparator comparator) {
+	public final QDecimal qLookup(DataSpecial argument, DataComparator comparator) {
 		lastIndex.eval(qLookup(comparator, argument, 1, capacity()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(DataSpecial argument, QNumeric start, DataComparator comparator) {
+	public final QDecimal qLookup(DataSpecial argument, QNumeric start, DataComparator comparator) {
 		lastIndex.eval(qLookup(comparator, argument, start.asInteger(), capacity()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(DataSpecial argument, Number start, DataComparator comparator) {
+	public final QDecimal qLookup(DataSpecial argument, Number start, DataComparator comparator) {
 		lastIndex.eval(qLookup(comparator, argument, start.intValue(), capacity()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(DataSpecial argument, QNumeric start, QNumeric elements, DataComparator comparator) {
+	public final QDecimal qLookup(DataSpecial argument, QNumeric start, QNumeric elements, DataComparator comparator) {
 		lastIndex.eval(qLookup(comparator, argument, start.asInteger(), elements.asInteger()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(DataSpecial argument, Number start, Number elements, DataComparator comparator) {
+	public final QDecimal qLookup(DataSpecial argument, Number start, Number elements, DataComparator comparator) {
 		lastIndex.eval(qLookup(comparator, argument, start.intValue(), elements.intValue()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(DataSpecial argument, Number start, QNumeric elements, DataComparator comparator) {
+	public final QDecimal qLookup(DataSpecial argument, Number start, QNumeric elements, DataComparator comparator) {
 		lastIndex.eval(qLookup(comparator, argument, start.intValue(), elements.asInteger()));
 		return lastIndex;
 	}
 
 	@Override
-	public QDecimal qLookup(DataSpecial argument, QNumeric start, Number elements, DataComparator comparator) {
+	public final QDecimal qLookup(DataSpecial argument, QNumeric start, Number elements, DataComparator comparator) {
 		lastIndex.eval(qLookup(comparator, argument, start.asInteger(), elements.intValue()));
 		return lastIndex;
 	}
 
 	@Override
-	public void qLookup(DataSpecial argument, QIndicator equal, DataComparator comparator) {
+	public final void qLookup(DataSpecial argument, QIndicator equal, DataComparator comparator) {
 
 		int i = qLookup(comparator, argument, 1, capacity());
 		setContextIndicators(i, equal);
 	}
 
 	@Override
-	public void qLookup(DataSpecial argument, QNumeric start, QIndicator equal, DataComparator comparator) {
+	public final void qLookup(DataSpecial argument, QNumeric start, QIndicator equal, DataComparator comparator) {
 
 		int i = qLookup(comparator, argument, start.asInteger(), capacity());
 		setContextIndicators(i, equal);
@@ -677,22 +518,22 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	@Override
-	public void qLookup(DataSpecial argument, Number start, QIndicator equal, DataComparator comparator) {
+	public final void qLookup(DataSpecial argument, Number start, QIndicator equal, DataComparator comparator) {
 
 		int i = qLookup(comparator, argument, start.intValue(), capacity());
 		setContextIndicators(i, equal);
 	}
 	
-	private int qLookup(DataComparator comparator, D argument, int startIndex, int numElements) {
+	private final int qLookup(DataComparator comparator, D argument, int startIndex, int numElements) {
 		return NIOBufferedListHelper.lookup(this, argument, comparator, startIndex, numElements);
 	}
 
-	private int qLookup(DataComparator comparator, DataSpecial argument, int startIndex, int numElements) {
+	private final int qLookup(DataComparator comparator, DataSpecial argument, int startIndex, int numElements) {
 		return NIOBufferedListHelper.lookup(this, argument, comparator, startIndex, numElements);
 	}
 
 	@Override
-	public QDecimal qXfoot() {
+	public final QDecimal qXfoot() {
 
 		// TODO calculate precision
 		QDecimal total = getDataContext().getDataFactory().createDecimal(21, 6, DecimalType.PACKED, true);
@@ -707,16 +548,16 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	@Override
-	public QIndicator qFound() {
+	public final QIndicator qFound() {
 		return getDataContext().found();
 	}
 
 	@Override
-	public QIndicator qEqual() {
+	public final QIndicator qEqual() {
 		return getDataContext().equal();
 	}
 
-	protected void setContextIndicators(int index, QIndicator found) {
+	protected final void setContextIndicators(int index, QIndicator found) {
 		
 		if (index > 0) {
 			found.eval(true);

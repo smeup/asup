@@ -56,12 +56,12 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 	}
 	
 	@Override
-	public BufferedElementType getBufferedElementType() {
+	public final BufferedElementType getBufferedElementType() {
 		return _delegate.getBufferedElementType();
 	}
 
 	@Override
-	public void accept(QDataVisitor visitor) {
+	public final void accept(QDataVisitor visitor) {
 		if(_delegate == null)
 			visitor.visit(this);
 		else
@@ -69,22 +69,22 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 	}
 
 	@Override
-	public void assign(QBufferedData value) {
+	public final void assign(QBufferedData value) {
 		_delegate.assign(value);
 	}
 
 	@Override
-	public void slice(QBufferedData value) {
+	public final void slice(QBufferedData value) {
 		_delegate.slice(value);
 	}
 	
 	@Override
-	public void slice(QBufferedData value, int position) {
+	public final void slice(QBufferedData value, int position) {
 		_delegate.slice(value, position);
 	}
 
 	@Override
-	public void clear() {
+	public final void clear() {
 		if (_delegate != null)
 			_delegate.clear();
 	}
@@ -120,59 +120,53 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 	}
 
 	@Override
-	public boolean eq(DataSpecial value) {
+	public final boolean eq(DataSpecial value) {
 		return _delegate.eq(value);
 	}
 
 	@Override
-	public boolean eq(QDataFiller value) {
+	public final boolean eq(QDataFiller value) {
 		return _delegate.eq(value);
 	}
 
 	@Override
-	public QBufferedData eval(DataSpecial value) {
-		_delegate.eval(value);
-		return this;
-	}
-
-	@Override
-	public QBufferedData eval(QDataFiller value) {
+	public final QBufferedData eval(QDataFiller value) {
 		_delegate.eval(value);
 		return this;
 	}
 	
 	@Override
-	public boolean ge(DataSpecial value) {
+	public final boolean ge(DataSpecial value) {
 		return _delegate.ge(value);
 	}
 
 	@Override
-	public boolean ge(QDataFiller value) {
+	public final boolean ge(QDataFiller value) {
 		return _delegate.ge(value);
 	}
 
 	@Override
-	public QBufferedElement getDelegate() {
+	public final QBufferedElement getDelegate() {
 		return _delegate;
 	}
 
 	@Override
-	public boolean gt(DataSpecial value) {
+	public final boolean gt(DataSpecial value) {
 		return _delegate.gt(value);
 	}
 
 	@Override
-	public boolean gt(QDataFiller value) {
+	public final boolean gt(QDataFiller value) {
 		return _delegate.gt(value);
 	}
 
 	@Override
-	public boolean isEmpty() {
+	public final boolean isEmpty() {
 		return _delegate.isEmpty();
 	}
 
 	@Override
-	public boolean isNull() {
+	public final boolean isNull() {
 		if (_delegate == null)
 			return true;
 
@@ -180,97 +174,97 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 	}
 
 	@Override
-	public boolean le(DataSpecial value) {
+	public final boolean le(DataSpecial value) {
 		return _delegate.le(value);
 	}
 
 	@Override
-	public boolean le(QDataFiller value) {
+	public final boolean le(QDataFiller value) {
 		return _delegate.le(value);
 	}
 
 	@Override
-	public int getLength() {
+	public final int getLength() {
 		return _delegate.getLength();
 	}
 
 	@Override
-	public boolean lt(DataSpecial value) {
+	public final boolean lt(DataSpecial value) {
 		return _delegate.lt(value);
 	}
 
 	@Override
-	public boolean lt(QDataFiller value) {
+	public final boolean lt(QDataFiller value) {
 		return _delegate.lt(value);
 	}
 
 	@Override
-	public void move(DataSpecial value) {
+	public final void move(DataSpecial value) {
 		_delegate.move(value);
 	}
 
 	@Override
-	public void move(DataSpecial value, boolean clear) {
+	public final void move(DataSpecial value, boolean clear) {
 		_delegate.move(value, clear);
 	}
 
 	@Override
-	public void move(Number value) {
+	public final void move(Number value) {
 		_delegate.move(value);
 	}
 
 	@Override
-	public void move(Number value, boolean clear) {
+	public final void move(Number value, boolean clear) {
 		_delegate.move(value, clear);
 	}
 
 	@Override
-	public void move(String value) {
+	public final void move(String value) {
 		_delegate.move(value);
 	}
 
 	@Override
-	public void move(String value, boolean clear) {
+	public final void move(String value, boolean clear) {
 		_delegate.move(value, clear);
 	}
 
 	@Override
-	public void movel(DataSpecial value) {
+	public final void movel(DataSpecial value) {
 		_delegate.movel(value);
 	}
 
 	@Override
-	public void movel(DataSpecial value, boolean clear) {
+	public final void movel(DataSpecial value, boolean clear) {
 		_delegate.movel(value, clear);
 	}
 
 	@Override
-	public void movel(Number value) {
+	public final void movel(Number value) {
 		_delegate.movel(value);
 	}
 
 	@Override
-	public void movel(Number value, boolean clear) {
+	public final void movel(Number value, boolean clear) {
 		_delegate.movel(value, clear);
 	}
 
 	@Override
-	public void movel(String value) {
+	public final void movel(String value) {
 		_delegate.movel(value);
 	}
 
 	@Override
-	public void movel(String value, boolean clear) {
+	public final void movel(String value, boolean clear) {
 		_delegate.movel(value, clear);
 	}
 
 	@Override
-	public boolean ne(DataSpecial value) {
+	public final boolean ne(DataSpecial value) {
 		return _delegate.ne(value);
 	}
 
 	@Override
-	public boolean ne(QDataFiller value) {
+	public final boolean ne(QDataFiller value) {
 		return _delegate.ne(value);
 	}
 
@@ -279,121 +273,121 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 	}
 
 	@Override
-	public int getSize() {
+	public final int getSize() {
 		return _delegate.getSize();
 	}
 
 	@Override
-	public String toString() {
+	public final String toString() {
 		return _delegate.toString();
 	}
 
 	@Override
-	public void move(QDataFiller value) {
+	public final void move(QDataFiller value) {
 		_delegate.move(value);
 	}
 
 	@Override
-	public void move(QDataFiller value, boolean clear) {
+	public final void move(QDataFiller value, boolean clear) {
 		_delegate.move(value, clear);
 	}
 
 	@Override
-	public void movel(QDataFiller value) {
+	public final void movel(QDataFiller value) {
 		_delegate.movel(value);
 	}
 
 	@Override
-	public void movel(QDataFiller value, boolean clear) {
+	public final void movel(QDataFiller value, boolean clear) {
 		_delegate.movel(value, clear);
 	}
 
 	@Override
-	public QNumeric qLen() {
+	public final QNumeric qLen() {
 		return _delegate.qLen();
 	}
 
-	public QPointer qAddr() {
+	public final QPointer qAddr() {
 		return _delegate.qAddr();
 	}
 
 	@Override
-	public ByteBuffer getBuffer() {
+	public final ByteBuffer getBuffer() {
 		return _delegate.getBuffer();
 	}
 
 	@Override
-	public int getPosition() {
+	public final int getPosition() {
 		return _delegate.getPosition();
 	}
 
 	@Override
-	public boolean isStoreOwner() {
+	public final boolean isStoreOwner() {
 		return _delegate.isStoreOwner();
 	}
 
-	public void move(QString value) {
+	public final void move(QString value) {
 		_delegate.move(value);
 	}
 
-	public void move(QString value, boolean clear) {
+	public final void move(QString value, boolean clear) {
 		_delegate.move(value, clear);
 	}
 
-	public void move(QNumeric value) {
+	public final void move(QNumeric value) {
 		_delegate.move(value);
 	}
 
-	public void move(QNumeric value, boolean clear) {
+	public final void move(QNumeric value, boolean clear) {
 		_delegate.move(value, clear);
 	}
 
-	public void movel(QString value) {
+	public final void movel(QString value) {
 		_delegate.movel(value);
 	}
 
-	public void movel(QString value, boolean clear) {
+	public final void movel(QString value, boolean clear) {
 		_delegate.movel(value, clear);
 	}
 
-	public void movel(QNumeric value) {
+	public final void movel(QNumeric value) {
 		_delegate.movel(value);
 	}
 
-	public void movel(QNumeric value, boolean clear) {
+	public final void movel(QNumeric value, boolean clear) {
 		_delegate.movel(value, clear);
 	}
 
-	public void move(QBufferedElement value) {
+	public final void move(QBufferedElement value) {
 		_delegate.move(value);
 	}
 
-	public void move(QBufferedElement value, boolean clear) {
+	public final void move(QBufferedElement value, boolean clear) {
 		_delegate.move(value, clear);
 	}
 
-	public void movel(QBufferedElement value) {
+	public final void movel(QBufferedElement value) {
 		_delegate.movel(value);
 	}
 
-	public void movel(QBufferedElement value, boolean clear) {
+	public final void movel(QBufferedElement value, boolean clear) {
 		_delegate.movel(value, clear);
 	}
 
-	public byte[] asBytes() {
+	public final byte[] asBytes() {
 		return _delegate.asBytes();
 	}
 
-	public void reset() {
+	public final void reset() {
 		_delegate.reset();
 	}
 
-	public void snap() {
+	public final void snap() {
 		_delegate.snap();
 	}
 	
 	@Override
-	public BufferedDataType getBufferedDataType() {
+	public final BufferedDataType getBufferedDataType() {
 		return _delegate.getBufferedDataType();
 	}
 }

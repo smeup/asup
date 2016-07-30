@@ -28,7 +28,7 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.def.QDataDef;
 
-public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
+public final class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 
 	private static final long serialVersionUID = 1L;
 
@@ -58,7 +58,7 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 	}
 
 	@Override
-	public QBufferedData getElement(String name) {
+	public final QBufferedData getElement(String name) {
 
 		try {
 			Field field = _wrapped.getClass().getField(name);
@@ -74,7 +74,7 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 	}
 
 	@Override
-	public List<QBufferedData> getElements() {
+	public final List<QBufferedData> getElements() {
 
 		if (cachedElements == null)
 			synchronized (this) {
@@ -94,7 +94,7 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 		return cachedElements;
 	}
 
-	protected void addElement(String name, QBufferedData element, int position) {
+	protected final void addElement(String name, QBufferedData element, int position) {
 
 
 		if (this.cachedElements != null)
@@ -119,7 +119,7 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 	}
 
 	@Override
-	public List<String> getElementNames() {
+	public final List<String> getElementNames() {
 
 		List<String> elementNames = new ArrayList<String>();
 
@@ -130,7 +130,7 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 	}
 
 	@Override
-	public void reset() {
+	public final void reset() {
 
 		QBufferedData snapData = getDataContext().getSnap(this);
 		if (snapData != null) {

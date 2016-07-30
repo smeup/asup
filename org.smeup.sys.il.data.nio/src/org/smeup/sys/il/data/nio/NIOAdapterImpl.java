@@ -11,12 +11,14 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QAdapter;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.def.DecimalType;
 
-public class NIOAdapterImpl extends NIOBufferedElementDelegatorImpl implements QAdapter {
+public final class NIOAdapterImpl extends NIOBufferedElementDelegatorImpl implements QAdapter {
 
 	private static final long serialVersionUID = 1L;
 
@@ -25,12 +27,12 @@ public class NIOAdapterImpl extends NIOBufferedElementDelegatorImpl implements Q
 	}
 
 	@Override
-	public void eval(QAdapter value) {
+	public final void eval(QAdapter value) {
 		eval(value.getDelegate());
 	}
 
 	@Override
-	public void eval(Object value) {
+	public final void eval(Object value) {
 
 		if (value instanceof Byte) {
 			Byte number = (Byte) value;
@@ -73,5 +75,11 @@ public class NIOAdapterImpl extends NIOBufferedElementDelegatorImpl implements Q
 				setDelegate(character);
 			}
 		}
+	}
+
+	@Override
+	public final QBufferedData eval(DataSpecial value) {
+		getDelegate().eval(value);
+		return this;
 	}
 }

@@ -342,7 +342,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 				programStack.push(callableProgram);
 
-				printSendStack(job, programStack, callableProgram);
+//				printSendStack(job, programStack, callableProgram);
 
 				// call
 				callableProgram.call();
@@ -354,7 +354,6 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				System.err.println(e.getMessage());
 				
 				Throwable cause = e.getCause();
-				e.printStackTrace();
 				if (cause != null)
 					System.err.println(cause);
 				else
@@ -365,7 +364,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				long callTime = System.currentTimeMillis() - callableProgram.getProgramInfo().getCallTime();
 				callableProgram.getProgramInfo().setCallTime(callTime);
 
-				printReceiveStack(job, programStack, callableProgram);
+//				printReceiveStack(job, programStack, callableProgram);
 
 				programStack.pop();
 

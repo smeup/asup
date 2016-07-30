@@ -22,7 +22,7 @@ import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 
-public class NIODataStructImpl extends NIOAbstractDataStruct {
+public final class NIODataStructImpl extends NIOAbstractDataStruct {
 
 	private static final long serialVersionUID = 1L;
 
@@ -48,11 +48,11 @@ public class NIODataStructImpl extends NIOAbstractDataStruct {
 	}
 
 	@Override
-	public QBufferedData getElement(String name) {
+	public final QBufferedData getElement(String name) {
 		return _elements.get(name);
 	}
 
-	protected void addElement(String name, QBufferedData element, int position) {
+	protected final void addElement(String name, QBufferedData element, int position) {
 
 		// virtual name '/n'
 		if (name == null) {
@@ -70,17 +70,17 @@ public class NIODataStructImpl extends NIOAbstractDataStruct {
 	}
 
 	@Override
-	public List<QBufferedData> getElements() {
+	public final List<QBufferedData> getElements() {
 		return new ArrayList<QBufferedData>(_elements.values());
 	}
 
 	@Override
-	public List<String> getElementNames() {
+	public final List<String> getElementNames() {
 		return new ArrayList<String>(_elements.keySet());
 	}
 
 	@Override
-	public void reset() {
+	public final void reset() {
 
 		QBufferedData snapData = getDataContext().getSnap(this);
 		if (snapData != null)
@@ -92,7 +92,7 @@ public class NIODataStructImpl extends NIOAbstractDataStruct {
 		}
 	}
 
-	public class ElementMap extends LinkedHashMap<String, QBufferedData> {
+	public final class ElementMap extends LinkedHashMap<String, QBufferedData> {
 
 		private static final long serialVersionUID = 1L;
 

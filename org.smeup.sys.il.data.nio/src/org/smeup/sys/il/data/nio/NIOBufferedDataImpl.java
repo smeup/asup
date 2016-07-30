@@ -52,7 +52,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
-	public void slice(QBufferedData target) {
+	public final void slice(QBufferedData target) {
 		NIOBufferHelper.slice(this, target, 1);
 	}
 
@@ -61,11 +61,11 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		NIOBufferHelper.slice(this, target, position);
 	}
 
-	protected boolean isSliced() {
+	protected final boolean isSliced() {
 		return _position > 0;
 	}
 
-	protected void checkAllocation() {
+	protected final void checkAllocation() {
 
 		if (_storage != null || _buffer != null)
 			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dmn8432m75n030");
@@ -122,7 +122,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		return _buffer != null;
 	}
 
-	private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
+	private final void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
 
 		int length = stream.readInt();
 		byte[] array = new byte[length];
@@ -136,7 +136,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		}
 	}
 
-	private void writeObject(ObjectOutputStream stream) throws IOException {
+	private final void writeObject(ObjectOutputStream stream) throws IOException {
 
 		// TODO synchronize
 		byte[] array = null;

@@ -28,7 +28,7 @@ import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QNumeric;
 
-public class NIOListImpl<D extends QBufferedData> extends NIODataImpl implements QList<D> {
+public final class NIOListImpl<D extends QBufferedData> extends NIODataImpl implements QList<D> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -55,7 +55,7 @@ public class NIOListImpl<D extends QBufferedData> extends NIODataImpl implements
 	}
 	
 	@Override
-	public void accept(QDataVisitor visitor) {
+	public final void accept(QDataVisitor visitor) {
 
 		if (visitor.visit(this)) {
 

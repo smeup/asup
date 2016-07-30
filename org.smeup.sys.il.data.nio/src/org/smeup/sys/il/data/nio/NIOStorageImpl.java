@@ -37,21 +37,21 @@ public class NIOStorageImpl implements QStorable {
 	}
 	
 	@Override
-	public boolean isEmpty() {
+	public final boolean isEmpty() {
 		return byteBuffer.capacity() == 0;
 	}
 
-	protected void setPosition(int position) {
+	protected final void setPosition(int position) {
 		this.position = position;
 	}
 	
 	@Override
-	public int getPosition() {
+	public final int getPosition() {
 		return position;
 	}
 
 	@Override
-	public void assign(QBufferedData target) {
+	public final void assign(QBufferedData target) {
 		NIOBufferHelper.assign(this, target);
 	}
 }

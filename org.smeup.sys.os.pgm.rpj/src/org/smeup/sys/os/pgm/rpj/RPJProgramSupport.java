@@ -363,7 +363,6 @@ public class RPJProgramSupport {
 			if (error != null)
 				error.eval(true);
 			else {
-				e.printStackTrace();
 				System.err.println(e.getMessage());
 				throw new OperatingSystemMessageException("00211", e.getMessage(), 40);
 			}
