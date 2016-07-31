@@ -17,7 +17,7 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	private QDataStruct delegate;
 
 	@Override
-	public final void accept(QDataVisitor visitor) {
+	public final void accept(final QDataVisitor visitor) {
 		delegate.accept(visitor);
 	}
 
@@ -27,17 +27,17 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
-	public final void assign(QBufferedData value) {
+	public final void assign(final QBufferedData value) {
 		delegate.assign(value);
 	}
 
 	@Override
-	public final void slice(QBufferedData value) {
+	public final void slice(final QBufferedData value) {
 		delegate.slice(value);
 	}
-	
+
 	@Override
-	public final void slice(QBufferedData value, int position) {
+	public final void slice(final QBufferedData value, final int position) {
 		delegate.slice(value, position);
 	}
 
@@ -47,188 +47,188 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
-	public final void bitoff(byte bitNumbers) {
+	public final void bitoff(final byte bitNumbers) {
 		delegate.bitoff(bitNumbers);
 	}
 
 	@Override
-	public final void bitoff(String bitNumbers) {
+	public final void bitoff(final String bitNumbers) {
 		delegate.bitoff(bitNumbers);
 	}
 
 	@Override
-	public final void biton(byte bitNumbers) {
+	public final void biton(final byte bitNumbers) {
 		delegate.biton(bitNumbers);
 	}
 
 	@Override
-	public final void biton(String bitNumbers) {
+	public final void biton(final String bitNumbers) {
 		delegate.biton(bitNumbers);
 	}
 
 	@Override
-	public final void biton(QString bitNumbers) {
+	public final void biton(final QString bitNumbers) {
 		delegate.biton(bitNumbers);
 	}
 
 	@Override
-	public final void cat(QString factor1) {
+	public final void cat(final QString factor1) {
 		delegate.cat(factor1);
 	}
 
 	@Override
-	public final void cat(QString factor1, QString factor2) {
+	public final void cat(final QString factor1, final QString factor2) {
 		delegate.cat(factor1, factor2);
 	}
 
 	@Override
-	public final void cat(QString factor1, QString factor2, Number space) {
+	public final void cat(final QString factor1, final QString factor2, final Number space) {
 		delegate.cat(factor1, factor2, space);
 	}
 
 	@Override
-	public final void cat(QString factor1, String factor2) {
+	public final void cat(final QString factor1, final String factor2) {
 		delegate.cat(factor1, factor2);
 	}
 
 	@Override
-	public final void cat(QString factor1, String factor2, Number space) {
+	public final void cat(final QString factor1, final String factor2, final Number space) {
 		delegate.cat(factor1, factor2, space);
 	}
 
 	@Override
-	public final void cat(String factor1) {
+	public final void cat(final String factor1) {
 		delegate.cat(factor1);
 	}
 
 	@Override
-	public final void cat(String factor1, QString factor2) {
+	public final void cat(final String factor1, final QString factor2) {
 		delegate.cat(factor1, factor2);
 	}
 
 	@Override
-	public final void cat(String factor1, QString factor2, QNumeric space) {
+	public final void cat(final String factor1, final QString factor2, final QNumeric space) {
 		delegate.cat(factor1, factor2, space);
 	}
 
 	@Override
-	public final void cat(String factor1, String factor2) {
+	public final void cat(final String factor1, final String factor2) {
 		delegate.cat(factor1, factor2);
 	}
 
 	@Override
-	public final void cat(String factor1, String factor2, QNumeric space) {
+	public final void cat(final String factor1, final String factor2, final QNumeric space) {
 		delegate.cat(factor1, factor2, space);
 	}
 
 	@Override
-	public final void cat(QString factor1, QString factor2, QNumeric space) {
+	public final void cat(final QString factor1, final QString factor2, final QNumeric space) {
 		delegate.cat(factor1, factor2, space);
 	}
 
 	@Override
-	public final void cat(QString factor1, Number space) {
+	public final void cat(final QString factor1, final Number space) {
 		delegate.cat(factor1, space);
 	}
 
 	@Override
-	public final void cat(String factor1, Number space) {
+	public final void cat(final String factor1, final Number space) {
 		delegate.cat(factor1, space);
 	}
 
 	@Override
-	public final void cat(String factor1, String factor2, QNumeric space, boolean clear) {
+	public final void cat(final String factor1, final String factor2, final QNumeric space, final boolean clear) {
 		delegate.cat(factor1, factor2, space, clear);
 	}
 
 	@Override
-	public final void cat(String factor1, QString factor2, QNumeric space, boolean clear) {
+	public final void cat(final String factor1, final QString factor2, final QNumeric space, final boolean clear) {
 		delegate.cat(factor1, factor2, space, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, QString factor2, QNumeric space, boolean clear) {
+	public final void cat(final QString factor1, final QString factor2, final QNumeric space, final boolean clear) {
 		delegate.cat(factor1, factor2, space, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, QString factor2, Number space, boolean clear) {
+	public final void cat(final QString factor1, final QString factor2, final Number space, final boolean clear) {
 		delegate.cat(factor1, factor2, space, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, String factor2, Number space, boolean clear) {
+	public final void cat(final QString factor1, final String factor2, final Number space, final boolean clear) {
 		delegate.cat(factor1, factor2, space, clear);
 	}
 
 	@Override
-	public final void cat(String factor1, String factor2, boolean clear) {
+	public final void cat(final String factor1, final String factor2, final boolean clear) {
 		delegate.cat(factor1, factor2, clear);
 	}
 
 	@Override
-	public final void cat(String factor1, QString factor2, boolean clear) {
+	public final void cat(final String factor1, final QString factor2, final boolean clear) {
 		delegate.cat(factor1, factor2, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, QString factor2, boolean clear) {
+	public final void cat(final QString factor1, final QString factor2, final boolean clear) {
 		delegate.cat(factor1, factor2, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, String factor2, boolean clear) {
+	public final void cat(final QString factor1, final String factor2, final boolean clear) {
 		delegate.cat(factor1, factor2, clear);
 	}
 
 	@Override
-	public final void cat(String factor1, boolean clear) {
+	public final void cat(final String factor1, final boolean clear) {
 		delegate.cat(factor1, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, Number space, boolean clear) {
+	public final void cat(final QString factor1, final Number space, final boolean clear) {
 		delegate.cat(factor1, space, clear);
 	}
 
 	@Override
-	public final void cat(String factor1, Number space, boolean clear) {
+	public final void cat(final String factor1, final Number space, final boolean clear) {
 		delegate.cat(factor1, space, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, QNumeric space, boolean clear) {
+	public final void cat(final QString factor1, final QNumeric space, final boolean clear) {
 		delegate.cat(factor1, space, clear);
 	}
 
 	@Override
-	public final void cat(String factor1, QNumeric space, boolean clear) {
+	public final void cat(final String factor1, final QNumeric space, final boolean clear) {
 		delegate.cat(factor1, space, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, boolean clear) {
+	public final void cat(final QString factor1, final boolean clear) {
 		delegate.cat(factor1, clear);
 	}
 
 	@Override
-	public final void cat(String factor1, String factor2, Number space) {
+	public final void cat(final String factor1, final String factor2, final Number space) {
 		delegate.cat(factor1, factor2, space);
 	}
 
 	@Override
-	public final void cat(String factor1, String factor2, Number space, boolean clear) {
-		delegate.cat(factor1, factor2, space, clear);		
+	public final void cat(final String factor1, final String factor2, final Number space, final boolean clear) {
+		delegate.cat(factor1, factor2, space, clear);
 	}
 
 	@Override
-	public final void cat(String factor1, QString factor2, Number space) {
-		delegate.cat(factor1, factor2, space);		
+	public final void cat(final String factor1, final QString factor2, final Number space) {
+		delegate.cat(factor1, factor2, space);
 	}
 
 	@Override
-	public final void cat(String factor1, QString factor2, Number space, boolean clear) {
-		delegate.cat(factor1, factor2, space, clear);		
+	public final void cat(final String factor1, final QString factor2, final Number space, final boolean clear) {
+		delegate.cat(factor1, factor2, space, clear);
 	}
 
 	@Override
@@ -237,73 +237,73 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
-	public final boolean eq(DataSpecial value) {
+	public final boolean eq(final DataSpecial value) {
 		return delegate.eq(value);
 	}
 
 	@Override
-	public final boolean eq(QString value) {
+	public final boolean eq(final QString value) {
 		return delegate.eq(value);
 	}
 
 	@Override
-	public final boolean eq(String value) {
+	public final boolean eq(final String value) {
 		return delegate.eq(value);
 	}
 
 	@Override
-	public final void eval(QString value) {
+	public final void eval(final QString value) {
 		delegate.eval(value);
 	}
 
 	@Override
-	public final void eval(QIndicator value) {
+	public final void eval(final QIndicator value) {
 		delegate.eval(value);
 	}
 
 	@Override
-	public final void eval(boolean value) {
+	public final void eval(final boolean value) {
 		delegate.eval(value);
 	}
 
 	@Override
-	public final QBufferedData eval(DataSpecial value) {
+	public final QBufferedData eval(final DataSpecial value) {
 		delegate.eval(value);
 		return this;
 	}
 
 	@Override
-	public final void eval(String value) {
+	public final void eval(final String value) {
 		delegate.eval(value);
 	}
 
 	@Override
-	public final void eval(QDataArea<? extends QString> value) {
+	public final void eval(final QDataArea<? extends QString> value) {
 		delegate.eval(value);
 	}
 
 	@Override
-	public final void evalr(String value) {
+	public final void evalr(final String value) {
 		delegate.evalr(value);
 	}
 
 	@Override
-	public final void evalr(QString value) {
+	public final void evalr(final QString value) {
 		delegate.evalr(value);
 	}
 
 	@Override
-	public final boolean ge(DataSpecial value) {
+	public final boolean ge(final DataSpecial value) {
 		return delegate.ge(value);
 	}
 
 	@Override
-	public final boolean ge(QString value) {
+	public final boolean ge(final QString value) {
 		return delegate.eq(value);
 	}
 
 	@Override
-	public final boolean ge(String value) {
+	public final boolean ge(final String value) {
 		return delegate.ge(value);
 	}
 
@@ -313,7 +313,7 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
-	public final QBufferedData getElement(String name) {
+	public final QBufferedData getElement(final String name) {
 		return delegate.getElement(name);
 	}
 
@@ -328,17 +328,17 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
-	public final boolean gt(DataSpecial value) {
+	public final boolean gt(final DataSpecial value) {
 		return delegate.gt(value);
 	}
 
 	@Override
-	public final boolean gt(QString value) {
+	public final boolean gt(final QString value) {
 		return delegate.gt(value);
 	}
 
 	@Override
-	public final boolean gt(String value) {
+	public final boolean gt(final String value) {
 		return delegate.gt(value);
 	}
 
@@ -353,17 +353,17 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
-	public final boolean le(DataSpecial value) {
+	public final boolean le(final DataSpecial value) {
 		return delegate.le(value);
 	}
 
 	@Override
-	public final boolean le(QString value) {
+	public final boolean le(final QString value) {
 		return delegate.le(value);
 	}
 
 	@Override
-	public final boolean le(String value) {
+	public final boolean le(final String value) {
 		return delegate.le(value);
 	}
 
@@ -373,96 +373,96 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
-	public final boolean lt(DataSpecial value) {
+	public final boolean lt(final DataSpecial value) {
 		return delegate.lt(value);
 	}
 
 	@Override
-	public final boolean lt(QString value) {
+	public final boolean lt(final QString value) {
 		return delegate.lt(value);
 	}
 
 	@Override
-	public final boolean lt(String value) {
+	public final boolean lt(final String value) {
 		return delegate.lt(value);
 	}
 
 	@Override
-	public final void move(DataSpecial value) {
+	public final void move(final DataSpecial value) {
 		delegate.move(value);
 	}
 
 	@Override
-	public final void move(DataSpecial value, boolean clear) {
+	public final void move(final DataSpecial value, final boolean clear) {
 		delegate.move(value, clear);
 	}
 
 	@Override
-	public final void move(Number value) {
+	public final void move(final Number value) {
 		delegate.move(value);
 	}
 
 	@Override
-	public final void move(Number value, boolean clear) {
-		delegate.move(value);
-	}
-	
-	@Override
-	public final void move(String value) {
+	public final void move(final Number value, final boolean clear) {
 		delegate.move(value);
 	}
 
 	@Override
-	public final void move(String value, boolean clear) {
+	public final void move(final String value) {
+		delegate.move(value);
+	}
+
+	@Override
+	public final void move(final String value, final boolean clear) {
 		delegate.move(value, clear);
 	}
 
 	@Override
-	public final void movel(DataSpecial value) {
+	public final void movel(final DataSpecial value) {
 		delegate.movel(value);
 	}
 
 	@Override
-	public final void movel(DataSpecial value, boolean clear) {
+	public final void movel(final DataSpecial value, final boolean clear) {
 		delegate.movel(value, clear);
 	}
 
 	@Override
-	public final void movel(Number value) {
+	public final void movel(final Number value) {
 		delegate.movel(value);
 	}
 
 	@Override
-	public final void movel(Number value, boolean clear) {
+	public final void movel(final Number value, final boolean clear) {
 		delegate.movel(value);
 	}
 
 	@Override
-	public final void movel(String value) {
+	public final void movel(final String value) {
 		delegate.movel(value);
 	}
 
 	@Override
-	public final void movel(String value, boolean clear) {
+	public final void movel(final String value, final boolean clear) {
 		delegate.movel(value, clear);
 	}
 
 	@Override
-	public final boolean ne(DataSpecial value) {
+	public final boolean ne(final DataSpecial value) {
 		return delegate.ne(value);
 	}
 
 	@Override
-	public final boolean ne(QString value) {
+	public final boolean ne(final QString value) {
 		return delegate.ne(value);
 	}
 
 	@Override
-	public final boolean ne(String value) {
+	public final boolean ne(final String value) {
 		return delegate.ne(value);
 	}
 
-	public final void setDelegate(QDataStruct delegate) {
+	public final void setDelegate(final QDataStruct delegate) {
 		this.delegate = delegate;
 	}
 
@@ -492,52 +492,52 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
-	public final void move(QDataFiller value) {
+	public final void move(final QDataFiller value) {
 		delegate.move(value);
 	}
 
 	@Override
-	public final void move(QDataFiller value, boolean clear) {
+	public final void move(final QDataFiller value, final boolean clear) {
 		delegate.move(value, clear);
 	}
 
 	@Override
-	public final void movel(QDataFiller value) {
+	public final void movel(final QDataFiller value) {
 		delegate.movel(value);
 	}
 
 	@Override
-	public final void movel(QDataFiller value, boolean clear) {
+	public final void movel(final QDataFiller value, final boolean clear) {
 		delegate.movel(value, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, QNumeric space) {
+	public final void cat(final QString factor1, final QNumeric space) {
 		delegate.cat(factor1, space);
 	}
 
 	@Override
-	public final void cat(String factor1, QNumeric space) {
+	public final void cat(final String factor1, final QNumeric space) {
 		delegate.cat(factor1, space);
 	}
 
 	@Override
-	public final boolean eq(QHexadecimal value) {
+	public final boolean eq(final QHexadecimal value) {
 		return delegate.eq(value);
 	}
 
 	@Override
-	public final boolean ne(QHexadecimal value) {
+	public final boolean ne(final QHexadecimal value) {
 		return delegate.ne(value);
 	}
 
 	@Override
-	public final boolean eq(byte value) {
+	public final boolean eq(final byte value) {
 		return delegate.eq(value);
 	}
 
 	@Override
-	public final QBufferedData eval(byte value) {
+	public final QBufferedData eval(final byte value) {
 		delegate.eval(value);
 		return this;
 	}
@@ -548,227 +548,227 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
-	public final boolean ge(QHexadecimal value) {
+	public final boolean ge(final QHexadecimal value) {
 		return delegate.ge(value);
 	}
 
 	@Override
-	public final boolean le(QHexadecimal value) {
+	public final boolean le(final QHexadecimal value) {
 		return delegate.le(value);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, QString source) {
+	public final void xlate(final QString from, final QString to, final QString source) {
 		delegate.xlate(from, to, source);
 	}
 
 	@Override
-	public final void xlate(String from, String to, QString source) {
+	public final void xlate(final String from, final String to, final QString source) {
 		delegate.xlate(from, to, source);
 	}
 
 	@Override
-	public final void xlate(String from, String to, QString source, boolean clear) {
+	public final void xlate(final String from, final String to, final QString source, final boolean clear) {
 		delegate.xlate(from, to, source, clear);
 	}
 
 	@Override
-	public final void xlate(String from, String to, QString source, Number start) {
+	public final void xlate(final String from, final String to, final QString source, final Number start) {
 		delegate.xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(String from, String to, QString source, Number start, boolean clear) {
+	public final void xlate(final String from, final String to, final QString source, final Number start, final boolean clear) {
 		delegate.xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(String from, String to, QString source, QNumeric start) {
+	public final void xlate(final String from, final String to, final QString source, final QNumeric start) {
 		delegate.xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(String from, String to, QString source, QNumeric start, boolean clear) {
+	public final void xlate(final String from, final String to, final QString source, final QNumeric start, final boolean clear) {
 		delegate.xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(String from, QString to, QString source) {
+	public final void xlate(final String from, final QString to, final QString source) {
 		delegate.xlate(from, to, source);
 	}
 
 	@Override
-	public final void xlate(String from, QString to, QString source, boolean clear) {
+	public final void xlate(final String from, final QString to, final QString source, final boolean clear) {
 		delegate.xlate(from, to, source, clear);
 	}
 
 	@Override
-	public final void xlate(String from, QString to, QString source, Number start) {
+	public final void xlate(final String from, final QString to, final QString source, final Number start) {
 		delegate.xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(String from, QString to, QString source, Number start, boolean clear) {
+	public final void xlate(final String from, final QString to, final QString source, final Number start, final boolean clear) {
 		delegate.xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(String from, QString to, QString source, QNumeric start) {
+	public final void xlate(final String from, final QString to, final QString source, final QNumeric start) {
 		delegate.xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(String from, QString to, QString source, QNumeric start, boolean clear) {
+	public final void xlate(final String from, final QString to, final QString source, final QNumeric start, final boolean clear) {
 		delegate.xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(QString from, String to, QString source) {
+	public final void xlate(final QString from, final String to, final QString source) {
 		delegate.xlate(from, to, source);
 	}
 
 	@Override
-	public final void xlate(QString from, String to, QString source, boolean clear) {
+	public final void xlate(final QString from, final String to, final QString source, final boolean clear) {
 		delegate.xlate(from, to, source, clear);
 	}
 
 	@Override
-	public final void xlate(QString from, String to, QString source, Number start) {
+	public final void xlate(final QString from, final String to, final QString source, final Number start) {
 		delegate.xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(QString from, String to, QString source, Number start, boolean clear) {
+	public final void xlate(final QString from, final String to, final QString source, final Number start, final boolean clear) {
 		delegate.xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(QString from, String to, QString source, QNumeric start) {
+	public final void xlate(final QString from, final String to, final QString source, final QNumeric start) {
 		delegate.xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(QString from, String to, QString source, QNumeric start, boolean clear) {
+	public final void xlate(final QString from, final String to, final QString source, final QNumeric start, final boolean clear) {
 		delegate.xlate(from, to, source, start, clear);
 	}
-	
+
 	@Override
-	public final void xlate(byte from, String to, QString source) {
+	public final void xlate(final byte from, final String to, final QString source) {
 		delegate.xlate(from, to, source);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, String source) {
+	public final void xlate(final QString from, final QString to, final String source) {
 		delegate.xlate(from, to, source);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, String source, boolean clear) {
+	public final void xlate(final QString from, final QString to, final String source, final boolean clear) {
 		delegate.xlate(from, to, source, clear);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, String source, Number start) {
+	public final void xlate(final QString from, final QString to, final String source, final Number start) {
 		delegate.xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, String source, Number start, boolean clear) {
+	public final void xlate(final QString from, final QString to, final String source, final Number start, final boolean clear) {
 		delegate.xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, String source, QNumeric start) {
+	public final void xlate(final QString from, final QString to, final String source, final QNumeric start) {
 		delegate.xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, String source, QNumeric start, boolean clear) {
+	public final void xlate(final QString from, final QString to, final String source, final QNumeric start, final boolean clear) {
 		delegate.xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, QString source, boolean clear) {
+	public final void xlate(final QString from, final QString to, final QString source, final boolean clear) {
 		delegate.xlate(from, to, source, clear);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, QString source, Number start) {
+	public final void xlate(final QString from, final QString to, final QString source, final Number start) {
 		delegate.xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, QString source, Number start, boolean clear) {
+	public final void xlate(final QString from, final QString to, final QString source, final Number start, final boolean clear) {
 		delegate.xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, QString source, QNumeric start) {
+	public final void xlate(final QString from, final QString to, final QString source, final QNumeric start) {
 		delegate.xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, QString source, QNumeric start, boolean clear) {
+	public final void xlate(final QString from, final QString to, final QString source, final QNumeric start, final boolean clear) {
 		delegate.xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(String from, String to, String source) {
+	public final void xlate(final String from, final String to, final String source) {
 		delegate.xlate(from, to, source);
 	}
 
 	@Override
-	public final void xlate(String from, String to, String source, boolean clear) {
+	public final void xlate(final String from, final String to, final String source, final boolean clear) {
 		delegate.xlate(from, to, source, clear);
 	}
 
 	@Override
-	public final void xlate(String from, String to, String source, Number start) {
+	public final void xlate(final String from, final String to, final String source, final Number start) {
 		delegate.xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(String from, String to, String source, Number start, boolean clear) {
+	public final void xlate(final String from, final String to, final String source, final Number start, final boolean clear) {
 		delegate.xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(String from, String to, String source, QNumeric start) {
+	public final void xlate(final String from, final String to, final String source, final QNumeric start) {
 		delegate.xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(String from, String to, String source, QNumeric start, boolean clear) {
+	public final void xlate(final String from, final String to, final String source, final QNumeric start, final boolean clear) {
 		delegate.xlate(from, to, source, start, clear);
 	}
-	
+
 	@Override
-	public final QCharacter qSubst(QNumeric start, QNumeric length) {
+	public final QCharacter qSubst(final QNumeric start, final QNumeric length) {
 		return delegate.qSubst(start, length);
 	}
 
 	@Override
-	public final QCharacter qSubst(QNumeric start) {
+	public final QCharacter qSubst(final QNumeric start) {
 		return delegate.qSubst(start);
 	}
 
 	@Override
-	public final QCharacter qSubst(Number start, Number length) {
+	public final QCharacter qSubst(final Number start, final Number length) {
 		return delegate.qSubst(start, length);
 	}
 
 	@Override
-	public final QCharacter qSubst(Number start) {
+	public final QCharacter qSubst(final Number start) {
 		return delegate.qSubst(start);
 	}
 
 	@Override
-	public final QCharacter qSubst(QNumeric start, Number length) {
+	public final QCharacter qSubst(final QNumeric start, final Number length) {
 		return delegate.qSubst(start, length);
 	}
 
 	@Override
-	public final QCharacter qSubst(Number start, QNumeric length) {
+	public final QCharacter qSubst(final Number start, final QNumeric length) {
 		return delegate.qSubst(start, length);
 	}
 
@@ -788,54 +788,54 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
-	public final QNumeric qScan(byte argument) {
+	public final QNumeric qScan(final byte argument) {
 		return delegate.qScan(argument);
 	}
 
 	@Override
-	public final QNumeric qScan(byte argument, QNumeric start) {
+	public final QNumeric qScan(final byte argument, final QNumeric start) {
 		return delegate.qScan(argument, start);
 	}
 
 	@Override
-	public final QNumeric qScan(byte argument, Number start) {
+	public final QNumeric qScan(final byte argument, final Number start) {
 		return delegate.qScan(argument, start);
 	}
 
 	@Override
-	public final QNumeric qScan(QCharacter argument, QNumeric start) {
+	public final QNumeric qScan(final QCharacter argument, final QNumeric start) {
 		return delegate.qScan(argument, start);
 	}
 
 	@Override
-	public final QNumeric qScan(String argument, QNumeric start) {
+	public final QNumeric qScan(final String argument, final QNumeric start) {
 		return delegate.qScan(argument, start);
 	}
 
 	@Override
-	public final QNumeric qScan(QCharacter argument, Number start) {
+	public final QNumeric qScan(final QCharacter argument, final Number start) {
 		return delegate.qScan(argument, start);
 	}
 
 	@Override
-	public final QNumeric qScan(String argument, Number start) {
+	public final QNumeric qScan(final String argument, final Number start) {
 		return delegate.qScan(argument, start);
 	}
 
 	@Override
-	public final QNumeric qScan(QCharacter argument) {
+	public final QNumeric qScan(final QCharacter argument) {
 		return delegate.qScan(argument);
 	}
 
 	@Override
-	public final QNumeric qScan(String argument) {
+	public final QNumeric qScan(final String argument) {
 		return delegate.qScan(argument);
 	}
 
-	public final QDatetime qDate(DatetimeFormat format) {
+	public final QDatetime qDate(final DatetimeFormat format) {
 		return delegate.qDate(format);
 	}
-	
+
 	@Override
 	public final QNumeric qInt() {
 		return delegate.qInt();
@@ -845,22 +845,22 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	public final QNumeric qInth() {
 		return delegate.qInth();
 	}
-	
+
 	@Override
 	public final QNumeric qLen() {
 		return delegate.qLen();
 	}
 
 	@Override
-	public final void testn(QIndicator numeric) {
+	public final void testn(final QIndicator numeric) {
 		delegate.testn(numeric);
 	}
 
-	public final void testn(QIndicator numeric, QIndicator blank) {
+	public final void testn(final QIndicator numeric, final QIndicator blank) {
 		delegate.testn(numeric, blank);
 	}
 
-	public final void testn(QIndicator numeric, QIndicator blank, QIndicator blankNumeric) {
+	public final void testn(final QIndicator numeric, final QIndicator blank, final QIndicator blankNumeric) {
 		delegate.testn(numeric, blank, blankNumeric);
 	}
 
@@ -869,178 +869,177 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 		return delegate.qAddr();
 	}
 
-	public final QNumeric qScan(QCharacter source, QIndicator found) {
+	public final QNumeric qScan(final QCharacter source, final QIndicator found) {
 		return delegate.qScan(source, found);
 	}
 
-	public final QNumeric qScan(QCharacter source, QNumeric start, QIndicator found) {
+	public final QNumeric qScan(final QCharacter source, final QNumeric start, final QIndicator found) {
 		return delegate.qScan(source, start, found);
 	}
 
-	public final QNumeric qScan(QCharacter source, Number start, QIndicator found) {
+	public final QNumeric qScan(final QCharacter source, final Number start, final QIndicator found) {
 		return delegate.qScan(source, start, found);
 	}
 
-	public final QNumeric qScan(String source, QIndicator found) {
+	public final QNumeric qScan(final String source, final QIndicator found) {
 		return delegate.qScan(source, found);
 	}
 
-	public final QNumeric qScan(String source, QNumeric start, QIndicator found) {
+	public final QNumeric qScan(final String source, final QNumeric start, final QIndicator found) {
 		return delegate.qScan(source, start, found);
 	}
 
-	public final QNumeric qScan(String source, Number start, QIndicator found) {
+	public final QNumeric qScan(final String source, final Number start, final QIndicator found) {
 		return delegate.qScan(source, start, found);
 	}
 
-	public final boolean ne(byte value) {
+	public final boolean ne(final byte value) {
 		return delegate.ne(value);
 	}
 
-	public final boolean ge(byte value) {
+	public final boolean ge(final byte value) {
 		return delegate.ge(value);
 	}
 
-	public final boolean gt(byte value) {
+	public final boolean gt(final byte value) {
 		return delegate.gt(value);
 	}
 
-	public final boolean le(byte value) {
+	public final boolean le(final byte value) {
 		return delegate.le(value);
 	}
 
-	public final boolean lt(byte value) {
+	public final boolean lt(final byte value) {
 		return delegate.lt(value);
 	}
-	
 
 	@Override
-	public final QNumeric qCheck(QCharacter base) {
+	public final QNumeric qCheck(final QCharacter base) {
 		return delegate.qCheck(base);
 	}
 
 	@Override
-	public final QNumeric qCheck(QCharacter base, QIndicator found) {
+	public final QNumeric qCheck(final QCharacter base, final QIndicator found) {
 		return delegate.qCheck(base, found);
 	}
 
 	@Override
-	public final QNumeric qCheck(QCharacter base, QNumeric start) {
+	public final QNumeric qCheck(final QCharacter base, final QNumeric start) {
 		return delegate.qCheck(base, start);
 	}
 
 	@Override
-	public final QNumeric qCheck(QCharacter base, QNumeric start, QIndicator found) {
+	public final QNumeric qCheck(final QCharacter base, final QNumeric start, final QIndicator found) {
 		return delegate.qCheck(base, start, found);
 	}
 
 	@Override
-	public final QNumeric qCheck(QCharacter base, Number start) {
+	public final QNumeric qCheck(final QCharacter base, final Number start) {
 		return delegate.qCheck(base, start);
 	}
 
 	@Override
-	public final QNumeric qCheck(QCharacter base, Number start, QIndicator found) {
+	public final QNumeric qCheck(final QCharacter base, final Number start, final QIndicator found) {
 		return delegate.qCheck(base, start, found);
 	}
 
 	@Override
-	public final QNumeric qCheck(String base) {
+	public final QNumeric qCheck(final String base) {
 		return delegate.qCheck(base);
 	}
 
 	@Override
-	public final QNumeric qCheck(String base, QIndicator found) {
+	public final QNumeric qCheck(final String base, final QIndicator found) {
 		return delegate.qCheck(base, found);
 	}
 
 	@Override
-	public final QNumeric qCheck(String base, QNumeric start) {
+	public final QNumeric qCheck(final String base, final QNumeric start) {
 		return delegate.qCheck(base, start);
 	}
 
 	@Override
-	public final QNumeric qCheck(String base, QNumeric start, QIndicator found) {
+	public final QNumeric qCheck(final String base, final QNumeric start, final QIndicator found) {
 		return delegate.qCheck(base, start, found);
 	}
 
 	@Override
-	public final QNumeric qCheck(String base, Number start) {
+	public final QNumeric qCheck(final String base, final Number start) {
 		return delegate.qCheck(base, start);
 	}
 
 	@Override
-	public final QNumeric qCheck(String base, Number start, QIndicator found) {
+	public final QNumeric qCheck(final String base, final Number start, final QIndicator found) {
 		return delegate.qCheck(base, start, found);
 	}
 
 	@Override
-	public final QNumeric qCheckr(QCharacter base) {
+	public final QNumeric qCheckr(final QCharacter base) {
 		return delegate.qCheckr(base);
 	}
 
 	@Override
-	public final QNumeric qCheckr(QCharacter base, QIndicator found) {
+	public final QNumeric qCheckr(final QCharacter base, final QIndicator found) {
 		return delegate.qCheckr(base, found);
 	}
 
 	@Override
-	public final QNumeric qCheckr(QCharacter base, QNumeric start) {
+	public final QNumeric qCheckr(final QCharacter base, final QNumeric start) {
 		return delegate.qCheckr(base, start);
 	}
 
 	@Override
-	public final QNumeric qCheckr(QCharacter base, QNumeric start, QIndicator found) {
+	public final QNumeric qCheckr(final QCharacter base, final QNumeric start, final QIndicator found) {
 		return delegate.qCheckr(base, start, found);
 	}
 
 	@Override
-	public final QNumeric qCheckr(QCharacter base, Number start) {
+	public final QNumeric qCheckr(final QCharacter base, final Number start) {
 		return delegate.qCheckr(base, start);
 	}
 
 	@Override
-	public final QNumeric qCheckr(QCharacter base, Number start, QIndicator found) {
+	public final QNumeric qCheckr(final QCharacter base, final Number start, final QIndicator found) {
 		return delegate.qCheckr(base, start, found);
 	}
 
 	@Override
-	public final QNumeric qCheckr(String base) {
+	public final QNumeric qCheckr(final String base) {
 		return delegate.qCheckr(base);
 	}
 
 	@Override
-	public final QNumeric qCheckr(String base, QIndicator found) {
+	public final QNumeric qCheckr(final String base, final QIndicator found) {
 		return delegate.qCheckr(base, found);
 	}
 
 	@Override
-	public final QNumeric qCheckr(String base, QNumeric start) {
+	public final QNumeric qCheckr(final String base, final QNumeric start) {
 		return delegate.qCheckr(base, start);
 	}
 
 	@Override
-	public final QNumeric qCheckr(String base, QNumeric start, QIndicator found) {
+	public final QNumeric qCheckr(final String base, final QNumeric start, final QIndicator found) {
 		return delegate.qCheckr(base, start, found);
 	}
 
 	@Override
-	public final QNumeric qCheckr(String base, Number start) {
+	public final QNumeric qCheckr(final String base, final Number start) {
 		return delegate.qCheckr(base, start);
 	}
 
 	@Override
-	public final QNumeric qCheckr(String base, Number start, QIndicator found) {
+	public final QNumeric qCheckr(final String base, final Number start, final QIndicator found) {
 		return delegate.qCheckr(base, start, found);
 	}
-	
+
 	@Override
-	public final QString qPlus(String factor1) {
+	public final QString qPlus(final String factor1) {
 		return delegate.qPlus(factor1);
 	}
 
 	@Override
-	public final QString qPlus(QString factor1) {
+	public final QString qPlus(final QString factor1) {
 		return delegate.qPlus(factor1);
 	}
 
@@ -1054,32 +1053,32 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 		return delegate.getPosition();
 	}
 
-	public final boolean eq(QDataFiller value) {
+	public final boolean eq(final QDataFiller value) {
 		return delegate.eq(value);
 	}
 
-	public final QBufferedData eval(QDataFiller value) {
+	public final QBufferedData eval(final QDataFiller value) {
 		delegate.eval(value);
 		return this;
 	}
 
-	public final boolean ge(QDataFiller value) {
+	public final boolean ge(final QDataFiller value) {
 		return delegate.ge(value);
 	}
 
-	public final boolean gt(QDataFiller value) {
+	public final boolean gt(final QDataFiller value) {
 		return delegate.gt(value);
 	}
 
-	public final boolean le(QDataFiller value) {
+	public final boolean le(final QDataFiller value) {
 		return delegate.le(value);
 	}
 
-	public final boolean lt(QDataFiller value) {
+	public final boolean lt(final QDataFiller value) {
 		return delegate.lt(value);
 	}
 
-	public final boolean ne(QDataFiller value) {
+	public final boolean ne(final QDataFiller value) {
 		return delegate.ne(value);
 	}
 
@@ -1090,81 +1089,81 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	public final BufferedElementType getBufferedElementType() {
 		return delegate.getBufferedElementType();
 	}
-	
+
 	@Override
 	public final BufferedDataType getBufferedDataType() {
 		return delegate.getBufferedDataType();
 	}
-	
-	public final void move(QString value) {
+
+	public final void move(final QString value) {
 		delegate.move(value);
 	}
 
-	public final void move(QString value, boolean clear) {
+	public final void move(final QString value, final boolean clear) {
 		delegate.move(value, clear);
 	}
 
-	public final void move(QNumeric value) {
+	public final void move(final QNumeric value) {
 		delegate.move(value);
 	}
 
-	public final void move(QNumeric value, boolean clear) {
+	public final void move(final QNumeric value, final boolean clear) {
 		delegate.move(value, clear);
 	}
 
-	public final void movel(QString value) {
+	public final void movel(final QString value) {
 		delegate.movel(value);
 	}
 
-	public final void movel(QString value, boolean clear) {
+	public final void movel(final QString value, final boolean clear) {
 		delegate.movel(value, clear);
 	}
 
-	public final void movel(QNumeric value) {
+	public final void movel(final QNumeric value) {
 		delegate.movel(value);
 	}
 
-	public final void movel(QNumeric value, boolean clear) {
+	public final void movel(final QNumeric value, final boolean clear) {
 		delegate.movel(value, clear);
 	}
 
-	public final void movea(QArray<? extends QString> value) {
+	public final void movea(final QArray<? extends QString> value) {
 		delegate.movea(value);
 	}
 
-	public final void movea(QArray<? extends QString> value, boolean clear) {
+	public final void movea(final QArray<? extends QString> value, final boolean clear) {
 		delegate.movea(value, clear);
 	}
 
-	public final void movea(QArray<? extends QString> value, int startIndex) {
+	public final void movea(final QArray<? extends QString> value, final int startIndex) {
 		delegate.movea(value, startIndex);
 	}
 
-	public final void movea(QArray<? extends QString> value, int startIndex, boolean clear) {
+	public final void movea(final QArray<? extends QString> value, final int startIndex, final boolean clear) {
 		delegate.movea(value, startIndex, clear);
 	}
 
-	public final void movea(QArray<? extends QString> value, QNumeric startIndex) {
+	public final void movea(final QArray<? extends QString> value, final QNumeric startIndex) {
 		delegate.movea(value, startIndex);
 	}
 
-	public final void movea(QArray<? extends QString> value, QNumeric startIndex, boolean clear) {
+	public final void movea(final QArray<? extends QString> value, final QNumeric startIndex, final boolean clear) {
 		delegate.movea(value, startIndex, clear);
 	}
 
-	public final void move(QBufferedElement value) {
+	public final void move(final QBufferedElement value) {
 		delegate.move(value);
 	}
 
-	public final void move(QBufferedElement value, boolean clear) {
+	public final void move(final QBufferedElement value, final boolean clear) {
 		delegate.move(value, clear);
 	}
 
-	public final void movel(QBufferedElement value) {
+	public final void movel(final QBufferedElement value) {
 		delegate.movel(value);
 	}
 
-	public final void movel(QBufferedElement value, boolean clear) {
+	public final void movel(final QBufferedElement value, final boolean clear) {
 		delegate.movel(value, clear);
 	}
 
@@ -1172,78 +1171,78 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 		return delegate.isVarying();
 	}
 
-	public final QCharacter qTrim(String trimmed) {
+	public final QCharacter qTrim(final String trimmed) {
 		return delegate.qTrim(trimmed);
 	}
 
-	public final QCharacter qTrim(QString trimmed) {
+	public final QCharacter qTrim(final QString trimmed) {
 		return delegate.qTrim(trimmed);
 	}
 
-	public final void cat(byte factor1, String factor2) {
+	public final void cat(final byte factor1, final String factor2) {
 		delegate.cat(factor1, factor2);
 	}
 
-	public final void testb(byte bitNumbers, QIndicator off) {
+	public final void testb(final byte bitNumbers, final QIndicator off) {
 		delegate.testb(bitNumbers, off);
 	}
 
-	public final void testb(String bitNumbers, QIndicator off) {
+	public final void testb(final String bitNumbers, final QIndicator off) {
 		delegate.testb(bitNumbers, off);
 	}
 
-	public final void testb(QString bitNumbers, QIndicator off) {
+	public final void testb(final QString bitNumbers, final QIndicator off) {
 		delegate.testb(bitNumbers, off);
 	}
 
-	public final void testb(byte bitNumbers, QIndicator off, QIndicator on) {
+	public final void testb(final byte bitNumbers, final QIndicator off, final QIndicator on) {
 		delegate.testb(bitNumbers, off, on);
 	}
 
-	public final void testb(String bitNumbers, QIndicator off, QIndicator on) {
+	public final void testb(final String bitNumbers, final QIndicator off, final QIndicator on) {
 		delegate.testb(bitNumbers, off, on);
 	}
 
-	public final void testb(QString bitNumbers, QIndicator off, QIndicator on) {
+	public final void testb(final QString bitNumbers, final QIndicator off, final QIndicator on) {
 		delegate.testb(bitNumbers, off, on);
 	}
 
-	public final void testb(byte bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
+	public final void testb(final byte bitNumbers, final QIndicator off, final QIndicator on, final QIndicator equal) {
 		delegate.testb(bitNumbers, off, on, equal);
 	}
 
-	public final void testb(String bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
+	public final void testb(final String bitNumbers, final QIndicator off, final QIndicator on, final QIndicator equal) {
 		delegate.testb(bitNumbers, off, on, equal);
 	}
 
-	public final void testb(QString bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
+	public final void testb(final QString bitNumbers, final QIndicator off, final QIndicator on, final QIndicator equal) {
 		delegate.testb(bitNumbers, off, on, equal);
 	}
-	
+
 	public final void reset() {
 		delegate.reset();
 	}
-	
+
 	public final void snap() {
 		delegate.snap();
 	}
-	
+
 	@Override
 	public final QIndicator qFound() {
 		return delegate.qFound();
 	}
-	
+
 	@Override
-	public final void eval(QScroller<? extends QString> value) {
-		delegate.eval(value);
-	}
-	
-	@Override
-	public final void eval(QStroller<? extends QDataStruct> value) {
+	public final void eval(final QScroller<? extends QString> value) {
 		delegate.eval(value);
 	}
 
-	public final void xlate(String from, byte to, QString source) {
+	@Override
+	public final void eval(final QStroller<? extends QDataStruct> value) {
+		delegate.eval(value);
+	}
+
+	public final void xlate(final String from, final byte to, final QString source) {
 		delegate.xlate(from, to, source);
 	}
 }
