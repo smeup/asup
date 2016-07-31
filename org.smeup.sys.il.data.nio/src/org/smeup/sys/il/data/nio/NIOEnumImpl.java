@@ -32,11 +32,11 @@ public final class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> ex
 
 	private Class<E> _klass;
 
-	public NIOEnumImpl(QDataContext dataContext) {
+	public NIOEnumImpl(final QDataContext dataContext) {
 		super(dataContext);
 	}
 
-	public NIOEnumImpl(QDataContext dataContext, Class<E> klass, QBufferedElement delegate) {
+	public NIOEnumImpl(final QDataContext dataContext, final Class<E> klass, final QBufferedElement delegate) {
 		super(dataContext, delegate);
 		this._klass = klass;
 	}
@@ -46,23 +46,22 @@ public final class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> ex
 	public final E asEnum() {
 
 		// TODO encoding
-		String value = new String(asBytes(), getDataContext().getCharset()).trim();
+		final String value = new String(asBytes(), getDataContext().getCharset()).trim();
 
-		if (Enumerator.class.isAssignableFrom(_klass)) {
-
+		if (Enumerator.class.isAssignableFrom(_klass))
 			try {
-				Method method = _klass.getMethod("get", String.class);
+				final Method method = _klass.getMethod("get", String.class);
 				E enumerator = (E) method.invoke(_klass, value);
 				if (enumerator == null)
 					enumerator = (E) method.invoke(_klass, "*OTHER");
 				return enumerator;
-			} catch (Exception e) {
+			} catch (final Exception e) {
 				throw new IntegratedLanguageDataRuntimeException(e);
 			}
-		} else {
-			for (Field field : _klass.getFields()) {
+		else {
+			for (final Field field : _klass.getFields()) {
 
-				Special special = field.getAnnotation(Special.class);
+				final Special special = field.getAnnotation(Special.class);
 				if (special == null) {
 					if (value.equals("*" + field.getName().toUpperCase()))
 						return Enum.valueOf(_klass, field.getName());
@@ -71,7 +70,7 @@ public final class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> ex
 			}
 			try {
 				return Enum.valueOf(_klass, "OTHER");
-			} catch (Exception e) {
+			} catch (final Exception e) {
 				return null;
 			}
 		}
@@ -84,7 +83,7 @@ public final class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> ex
 	}
 
 	@Override
-	public final QBufferedData eval(DataSpecial value) {
+	public final QBufferedData eval(final DataSpecial value) {
 		asData().eval(value);
 		return this;
 	}
@@ -95,38 +94,36 @@ public final class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> ex
 	}
 
 	@Override
-	public final void eval(E value) {
+	public final void eval(final E value) {
 
 		try {
-			Field field = _klass.getField(value.name());
+			final Field field = _klass.getField(value.name());
 			if (field == null)
 				throw new IntegratedLanguageDataRuntimeException("Invalid special " + value + " for enum " + _klass);
 
-			Special special = field.getAnnotation(Special.class);
+			final Special special = field.getAnnotation(Special.class);
 			String valueString = null;
 			if (special == null)
 				valueString = value.name();
-			else {
-				if (special.value().isEmpty())
-					valueString = value.name();
-				else
-					valueString = special.value();
-			}
-			
-			QBufferedElement element = asData();
+			else if (special.value().isEmpty())
+				valueString = value.name();
+			else
+				valueString = special.value();
+
+			final QBufferedElement element = asData();
 			switch (element.getBufferedElementType()) {
 			case DATETIME:
 				element.movel(valueString, true);
 				break;
 			case NUMERIC:
-				((QNumeric)element).eval(new BigDecimal(valueString));
+				((QNumeric) element).eval(new BigDecimal(valueString));
 				break;
 			case STRING:
-				((QString)element).eval(valueString);
+				((QString) element).eval(valueString);
 				break;
 			}
-			
-		} catch (Exception e) {
+
+		} catch (final Exception e) {
 			throw new IntegratedLanguageDataRuntimeException(e);
 		}
 	}

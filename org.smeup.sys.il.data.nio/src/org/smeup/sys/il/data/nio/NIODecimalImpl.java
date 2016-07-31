@@ -17,6 +17,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.def.DecimalType;
 
 public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal {
 
@@ -24,13 +25,13 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 
 	private final NIODecimalDef decimalDef;
 
-	public NIODecimalImpl(QDataContext dataContext, int precision, int scale) {
+	public NIODecimalImpl(final QDataContext dataContext, final int precision, final int scale) {
 		super(dataContext);
-		
+
 		decimalDef = NIODecimalDef.getInstance(precision, scale);
 	}
 
-	protected NIODecimalDef getDecimalDef() {
+	protected final NIODecimalDef getDecimalDef() {
 		return decimalDef;
 	}
 
@@ -45,14 +46,14 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 	}
 
 	@Override
-	protected final byte[] _toBytes(DataSpecial value) {
+	protected final byte[] _toBytes(final DataSpecial value) {
 
 		byte[] bytes = null;
 		switch (value) {
 		case ZERO:
 		case ZEROS:
 			bytes = getDecimalDef().getZonedInit();
-			break;		
+			break;
 		case LOVAL:
 			bytes = getDecimalDef().getZonedLoval();
 			break;
@@ -60,7 +61,7 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 			bytes = getDecimalDef().getZonedHival();
 			break;
 		case BLANK:
-		case BLANKS:			
+		case BLANKS:
 			bytes = getDecimalDef().getZonedInit();
 			break;
 		case ON:
@@ -72,21 +73,36 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 
 		return bytes;
 	}
-	
+
 	@Override
-	public final void accept(QDataVisitor visitor) {
+	public final void accept(final QDataVisitor visitor) {
 		visitor.visit(this);
 	}
-	
+
 	@Override
 	public final QNumeric qUns() {
 
-		NIONumericImpl number = new NIODecimalPackedImpl(getDataContext(), getPrecision(), getScale(), true);
+		final NIONumericImpl number = new NIODecimalPackedImpl(getDataContext(), getPrecision(), getScale(), true);
 		if (asShort() > 0)
 			number.eval(this);
 		else
 			number.eval(this.asDouble() * -1);
 
 		return number;
+	}
+
+	@Override
+	public final QNumeric qLen() {
+
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+		number.eval(getLength());
+
+		return number;
+	}
+
+	@Override
+	public final void snap() {
+		if (!isEmpty())
+			getDataContext().snap(this);
 	}
 }

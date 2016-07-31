@@ -16,28 +16,32 @@ import java.nio.ByteBuffer;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
-import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.def.DecimalType;
 
-public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements QDataStruct {
+public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 
 	private static final long serialVersionUID = 1L;
 
-	public NIOAbstractDataStruct(final QDataContext dataContext, final int length) {
+	public NIOCharacterFixedImpl(final QDataContext dataContext, final int length, final boolean allocate) {
 		super(dataContext, length);
+
+		if (allocate) {
+			checkAllocation();
+			_buffer = ByteBuffer.allocate(getSize());
+			NIOBufferHelper.fill(_buffer, 0, _buffer.capacity(), INIT);
+		}
 	}
 
 	@Override
 	protected final void setLength(final short length) {
 	}
 
-	protected final void _allocate() {
-		checkAllocation();
-		_buffer = ByteBuffer.allocate(getSize());
-		NIOBufferHelper.fill(_buffer, 0, _buffer.capacity(), INIT);
+	public NIOCharacterFixedImpl(final QDataContext dataContext, final String value) {
+		this(dataContext, value.length(), true);
+		eval(value);
 	}
 
 	@Override
@@ -55,49 +59,9 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 		return _length;
 	}
 
-	protected abstract void addElement(String name, QBufferedData element, int position);
-
-	@Override
-	protected final void _clear() {
-		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), INIT);
-
-		for (final QBufferedData element : this.getElements())
-			element.clear();
-	}
-
-	@Override
-	public final boolean isEmpty() {
-
-		for (final QBufferedData element : this.getElements())
-			if (!element.isEmpty())
-				return false;
-
-		return eq(DataSpecial.BLANKS);
-	}
-
 	@Override
 	public final void accept(final QDataVisitor visitor) {
 		visitor.visit(this);
-	}
-
-	@Override
-	public final void eval(final String value) {
-		_write(value.getBytes(getDataContext().getCharset()));
-	}
-
-	@Override
-	public final void snap() {
-
-		if (!isEmpty())
-			getDataContext().snap(this);
-
-		for (final QBufferedData element : getElements())
-			element.snap();
-	}
-
-	@Override
-	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
-		return NIOBufferHelper.copy(dataContext, this);
 	}
 
 	@Override
@@ -147,6 +111,17 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 	}
 
 	@Override
+	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
+		final NIOCharacterImpl copy = new NIOCharacterFixedImpl(dataContext, _length, false);
+		return copy;
+	}
+
+	@Override
+	protected final void _clear() {
+		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), INIT);
+	}
+
+	@Override
 	protected final void _fill(final byte[] value, final boolean maxLength) {
 		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), value);
 	}
@@ -178,8 +153,18 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 	}
 
 	@Override
-	protected final byte[] _toBytes() {
-		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
+	public final void eval(final String value) {
+		_write(value.getBytes(getDataContext().getCharset()));
+	}
+
+	@Override
+	public final void reset() {
+
+		final QBufferedData snapData = getDataContext().getSnap(this);
+		if (snapData != null)
+			NIOBufferHelper.write(this, snapData);
+		else
+			clear();
 	}
 
 	@Override
@@ -189,5 +174,21 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 		number.eval(getLength());
 
 		return number;
+	}
+
+	@Override
+	public final void snap() {
+		if (!isEmpty())
+			getDataContext().snap(this);
+	}
+
+	@Override
+	public final boolean isEmpty() {
+		return eq(DataSpecial.BLANKS);
+	}
+
+	@Override
+	protected final byte[] _toBytes() {
+		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
 	}
 }

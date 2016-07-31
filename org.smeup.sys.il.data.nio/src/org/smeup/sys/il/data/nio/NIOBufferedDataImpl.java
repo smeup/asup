@@ -19,11 +19,8 @@ import java.nio.ByteBuffer;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
-import org.smeup.sys.il.data.QDecimal;
-import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QStorable;
-import org.smeup.sys.il.data.def.DecimalType;
 
 public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBufferedData {
 
@@ -33,32 +30,22 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	protected QStorable _storage;
 	protected int _position = 0; // 1 based
 
-	public NIOBufferedDataImpl(QDataContext dataContext) {
+	public NIOBufferedDataImpl(final QDataContext dataContext) {
 		super(dataContext);
 	}
 
 	@Override
 	protected final QDataContext getDataContext() {
 
-		if (_dataContext == null && _storage instanceof QBufferedData) {
-			return NIOBufferHelper.getNIOBufferedDataImpl(((QBufferedData) _storage)).getDataContext();
-		} else
+		if (_dataContext == null && _storage instanceof QBufferedData)
+			return NIOBufferHelper.getNIOBufferedDataImpl((_storage)).getDataContext();
+		else
 			return _dataContext;
 	}
 
 	@Override
-	public void assign(QBufferedData target) {
-		NIOBufferHelper.assign(this, target);
-	}
-
-	@Override
-	public final void slice(QBufferedData target) {
+	public final void slice(final QBufferedData target) {
 		NIOBufferHelper.slice(this, target, 1);
-	}
-
-	@Override
-	public void slice(QBufferedData target, int position) {
-		NIOBufferHelper.slice(this, target, position);
 	}
 
 	protected final boolean isSliced() {
@@ -104,15 +91,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
-	public QNumeric qLen() {
-
-		QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
-		number.eval(getLength());
-
-		return number;
-	}
-
-	@Override
 	public final boolean isNull() {
 		return getBuffer() == null;
 	}
@@ -122,10 +100,10 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		return _buffer != null;
 	}
 
-	private final void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
+	private final void readObject(final ObjectInputStream stream) throws IOException, ClassNotFoundException {
 
-		int length = stream.readInt();
-		byte[] array = new byte[length];
+		final int length = stream.readInt();
+		final byte[] array = new byte[length];
 		stream.read(array);
 		_storage = (NIOBufferedDataImpl) stream.readObject();
 		_position = stream.readInt();
@@ -136,7 +114,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		}
 	}
 
-	private final void writeObject(ObjectOutputStream stream) throws IOException {
+	private final void writeObject(final ObjectOutputStream stream) throws IOException {
 
 		// TODO synchronize
 		byte[] array = null;
@@ -149,21 +127,5 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		stream.write(array);
 		stream.writeObject(_storage);
 		stream.writeInt(_position);
-	}
-
-	@Override
-	public void snap() {
-		if (!isEmpty())
-			getDataContext().snap(this);
-	}
-
-	@Override
-	public void reset() {
-
-		QBufferedData snapData = getDataContext().getSnap(this);
-		if (snapData != null)
-			NIOBufferHelper.write(this, snapData);
-		else
-			clear();
 	}
 }

@@ -17,17 +17,16 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QStorable;
 
 public class NIOStorageImpl implements QStorable {
-	
-	
+
 	private ByteBuffer byteBuffer = null;
 	private int position = 0;
-	
-	public NIOStorageImpl(ByteBuffer byteBuffer, int position) {
+
+	public NIOStorageImpl(final ByteBuffer byteBuffer, final int position) {
 		this.byteBuffer = byteBuffer;
 		this.position = position;
 	}
-	
-	public NIOStorageImpl(int storageLength) {
+
+	public NIOStorageImpl(final int storageLength) {
 		byteBuffer = ByteBuffer.allocate(storageLength);
 	}
 
@@ -35,23 +34,23 @@ public class NIOStorageImpl implements QStorable {
 	public final ByteBuffer getBuffer() {
 		return byteBuffer;
 	}
-	
+
 	@Override
 	public final boolean isEmpty() {
 		return byteBuffer.capacity() == 0;
 	}
 
-	protected final void setPosition(int position) {
+	protected final void setPosition(final int position) {
 		this.position = position;
 	}
-	
+
 	@Override
 	public final int getPosition() {
 		return position;
 	}
 
 	@Override
-	public final void assign(QBufferedData target) {
+	public final void assign(final QBufferedData target) {
 		NIOBufferHelper.assign(this, target);
 	}
 }

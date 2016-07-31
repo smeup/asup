@@ -28,37 +28,37 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 
 	private static final long serialVersionUID = 1L;
 
-	private int _dimension;
+	private final int _dimension;
 	private int _index;
 
 	D _current = current();
 
-	public NIOScrollerImpl(QDataContext dataContext, D model, int dimension, boolean allocate) {
+	public NIOScrollerImpl(final QDataContext dataContext, final D model, final int dimension, final boolean allocate) {
 		super(dataContext, model, SortDirection.ASCEND);
 		_dimension = dimension;
-		
+
 		if (allocate) {
 			checkAllocation();
 			_buffer = ByteBuffer.allocate(getSize());
 
-			for (D element : this)
+			for (final D element : this)
 				element.clear();
 		}
-		
+
 		absolute(1);
 	}
 
 	@Override
-	public final D absolute(int position) {
+	public final D absolute(final int position) {
 		return get(position);
 	}
 
 	@Override
-	public final void accept(QDataVisitor visitor) {
+	public final void accept(final QDataVisitor visitor) {
 
 		if (visitor.visit(this)) {
 
-			Iterator<D> datas = this.iterator();
+			final Iterator<D> datas = this.iterator();
 			while (datas.hasNext())
 				datas.next().accept(visitor);
 
@@ -93,26 +93,26 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 
 	@Override
 	public final D current() {
-		return (D) getModel();
+		return getModel();
 	}
 
 	@Override
-	public final boolean eq(DataSpecial value) {
+	public final boolean eq(final DataSpecial value) {
 		return current().eq(value);
 	}
 
 	@Override
-	public final boolean eq(QDataFiller value) {
+	public final boolean eq(final QDataFiller value) {
 		return current().eq(value);
 	}
 
 	@Override
-	public final QBufferedData eval(DataSpecial value) {
+	public final QBufferedData eval(final DataSpecial value) {
 		return current().eval(value);
 	}
 
 	@Override
-	public final QBufferedData eval(QDataFiller value) {
+	public final QBufferedData eval(final QDataFiller value) {
 		return current().eval(value);
 	}
 
@@ -122,20 +122,20 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	}
 
 	@Override
-	public final boolean ge(DataSpecial value) {
+	public final boolean ge(final DataSpecial value) {
 		return current().ge(value);
 	}
 
 	@Override
-	public final boolean ge(QDataFiller value) {
+	public final boolean ge(final QDataFiller value) {
 		return current().ge(value);
 	}
 
 	@Override
-	public final D get(int index) {
+	public final D get(final int index) {
 
 		if (_index == index)
-			return (D) getModel();
+			return getModel();
 
 		int position = 0;
 
@@ -148,7 +148,7 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 
 		_index = index;
 
-		return (D) getModel();
+		return getModel();
 	}
 
 	@Override
@@ -157,12 +157,12 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	}
 
 	@Override
-	public final boolean gt(DataSpecial value) {
+	public final boolean gt(final DataSpecial value) {
 		return current().gt(value);
 	}
 
 	@Override
-	public final boolean gt(QDataFiller value) {
+	public final boolean gt(final QDataFiller value) {
 		return current().gt(value);
 	}
 
@@ -172,132 +172,132 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	}
 
 	@Override
-	public final boolean le(DataSpecial value) {
+	public final boolean le(final DataSpecial value) {
 		return current().le(value);
 	}
 
 	@Override
-	public final boolean le(QDataFiller value) {
+	public final boolean le(final QDataFiller value) {
 		return current().le(value);
 	}
 
 	@Override
-	public final boolean lt(DataSpecial value) {
+	public final boolean lt(final DataSpecial value) {
 		return current().lt(value);
 	}
 
 	@Override
-	public final boolean lt(QDataFiller value) {
+	public final boolean lt(final QDataFiller value) {
 		return current().lt(value);
 	}
 
 	@Override
-	public final void move(DataSpecial value) {
+	public final void move(final DataSpecial value) {
 		current().move(value);
 	}
 
 	@Override
-	public final void move(DataSpecial value, boolean clear) {
+	public final void move(final DataSpecial value, final boolean clear) {
 		current().move(value, clear);
 	}
 
 	@Override
-	public final void move(Number value) {
+	public final void move(final Number value) {
 		current().move(value);
 	}
 
 	@Override
-	public final void move(Number value, boolean clear) {
+	public final void move(final Number value, final boolean clear) {
 		current().move(value, clear);
 	}
 
 	@Override
-	public final void move(QBufferedElement value) {
+	public final void move(final QBufferedElement value) {
 		current().move(value);
 	}
 
 	@Override
-	public final void move(QBufferedElement value, boolean clear) {
+	public final void move(final QBufferedElement value, final boolean clear) {
 		current().move(value, clear);
 	}
 
 	@Override
-	public final void move(QDataFiller value) {
+	public final void move(final QDataFiller value) {
 		current().move(value);
 	}
 
 	@Override
-	public final void move(QDataFiller value, boolean clear) {
+	public final void move(final QDataFiller value, final boolean clear) {
 		current().move(value, clear);
 	}
 
 	@Override
-	public final void move(String value) {
+	public final void move(final String value) {
 		current().move(value);
 	}
 
 	@Override
-	public final void move(String value, boolean clear) {
+	public final void move(final String value, final boolean clear) {
 		current().move(value, clear);
 	}
 
 	@Override
-	public final void movel(DataSpecial value) {
+	public final void movel(final DataSpecial value) {
 		current().movel(value);
 	}
 
 	@Override
-	public final void movel(DataSpecial value, boolean clear) {
+	public final void movel(final DataSpecial value, final boolean clear) {
 		current().movel(value, clear);
 	}
 
 	@Override
-	public final void movel(Number value) {
+	public final void movel(final Number value) {
 		current().movel(value);
 	}
 
 	@Override
-	public final void movel(Number value, boolean clear) {
+	public final void movel(final Number value, final boolean clear) {
 		current().movel(value, clear);
 	}
 
 	@Override
-	public final void movel(QBufferedElement value) {
+	public final void movel(final QBufferedElement value) {
 		current().movel(value);
 	}
 
 	@Override
-	public final void movel(QBufferedElement value, boolean clear) {
+	public final void movel(final QBufferedElement value, final boolean clear) {
 		current().movel(value, clear);
 	}
 
 	@Override
-	public final void movel(QDataFiller value) {
+	public final void movel(final QDataFiller value) {
 		current().movel(value);
 	}
 
 	@Override
-	public final void movel(QDataFiller value, boolean clear) {
+	public final void movel(final QDataFiller value, final boolean clear) {
 		current().movel(value, clear);
 	}
 
 	@Override
-	public final void movel(String value) {
+	public final void movel(final String value) {
 		current().movel(value);
 	}
 
 	@Override
-	public final void movel(String value, boolean clear) {
+	public final void movel(final String value, final boolean clear) {
 		current().movel(value, clear);
 	}
 
 	@Override
-	public final boolean ne(DataSpecial value) {
+	public final boolean ne(final DataSpecial value) {
 		return current().ne(value);
 	}
 
 	@Override
-	public final boolean ne(QDataFiller value) {
+	public final boolean ne(final QDataFiller value) {
 		return current().ne(value);
 	}
 
@@ -317,14 +317,24 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	}
 
 	@Override
-	public final void qPosition(QScroller<?> scroller) {
+	public final void qPosition(final QScroller<?> scroller) {
 		absolute(scroller.position());
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
-	protected NIODataImpl _copyDef(QDataContext dataContext) {
-		NIOScrollerImpl<D> copy = new NIOScrollerImpl<D>(dataContext, (D) NIOBufferHelper.getNIOBufferedElementImpl(getModel())._copyDef(dataContext), _dimension, false);
+	protected NIODataImpl _copyDef(final QDataContext dataContext) {
+		final NIOScrollerImpl<D> copy = new NIOScrollerImpl<D>(dataContext, (D) NIOBufferHelper.getNIOBufferedElementImpl(getModel())._copyDef(dataContext), _dimension, false);
 		return copy;
+	}
+
+	@Override
+	public void reset() {
+
+		final QBufferedData snapData = getDataContext().getSnap(this);
+		if (snapData != null)
+			NIOBufferHelper.write(this, snapData);
+		else
+			clear();
 	}
 }

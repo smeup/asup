@@ -13,37 +13,47 @@ package org.smeup.sys.il.data.nio;
 
 import java.nio.ByteBuffer;
 
-import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QNumeric;
-import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.BinaryType;
 
-public final class NIOCharacterVaryingImpl extends NIOCharacterImpl {
+public final class NIOCharacterVaryingImpl extends NIOCharacterImpl implements QCharacter {
 
 	private static final long serialVersionUID = 1L;
 
-	public NIOCharacterVaryingImpl(QDataContext dataContext, int length, boolean allocate) {
-		super(dataContext, length, false);
-		
-		if(allocate) {
+	public NIOCharacterVaryingImpl(final QDataContext dataContext, final int length, final boolean allocate) {
+		super(dataContext, length);
+
+		if (allocate) {
 			checkAllocation();
 			_buffer = ByteBuffer.allocate(getSize());
 		}
 	}
 
-	private final void setLength(short length) {
-
-		ByteBuffer buffer = getBuffer();
+	@Override
+	protected final void setLength(final short length) {
+		final ByteBuffer buffer = getBuffer();
 		NIOBufferHelper.prepare(buffer, getPosition(), 2);
 		buffer.putShort(length);
 	}
 
 	@Override
+	public final String toString() {
+		return asString();
+	}
+
+	@Override
+	public final void accept(final QDataVisitor visitor) {
+		visitor.visit(this);
+	}
+
+	@Override
 	public final QNumeric qLen() {
 
-		QNumeric number = getDataContext().getDataFactory().createBinary(BinaryType.SHORT, true, false);
+		final QNumeric number = getDataContext().getDataFactory().createBinary(BinaryType.SHORT, true, false);
 		assign(number);
 
 		return number;
@@ -56,7 +66,7 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 
 	@Override
 	public final int getLength() {
-		ByteBuffer buffer = getBuffer();
+		final ByteBuffer buffer = getBuffer();
 		NIOBufferHelper.prepare(buffer, getPosition(), 2);
 		return buffer.getShort();
 	}
@@ -67,34 +77,18 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 
 	@Override
-	public final QBufferedData eval(DataSpecial value) {
-
-		setLength((short) _length);
-		super.eval(value);
-
-		return this;
+	public final void eval(final String value) {
+		_write(value.getBytes(getDataContext().getCharset()));
 	}
 
 	@Override
-	public final void evalr(QString value) {
-		setLength((short) _length);
-		super.evalr(value);
-	}
+	protected final void cat(final byte[] factor1, final byte[] factor2, final Number space, final boolean clear) {
 
-	@Override
-	public final void evalr(String value) {
-		setLength((short) _length);
-		super.evalr(value);
-	}
-
-	@Override
-	protected final void cat(byte[] factor1, byte[] factor2, Number space, boolean clear) {
-
-		int length = getLength();
+		final int length = getLength();
 		if (length == 0)
 			return;
 
-		ByteBuffer buffer = getBuffer();
+		final ByteBuffer buffer = getBuffer();
 		NIOBufferHelper.prepare(buffer, getPosition() + 2, length);
 
 		buffer.put(factor1);
@@ -121,7 +115,7 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 
 	@Override
-	protected final void _write(byte[] value) {
+	protected final void _write(final byte[] value) {
 
 		if (value.length > _length)
 			setLength((short) _length);
@@ -135,7 +129,7 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 
 	@Override
-	protected final void _move(byte[] value, boolean clear) {
+	protected final void _move(final byte[] value, final boolean clear) {
 		if (clear)
 			NIOBufferHelper.move(getBuffer(), getPosition() + 2, getLength(), value, INIT);
 		else
@@ -143,7 +137,7 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 
 	@Override
-	protected final void _movel(byte[] value, boolean clear) {
+	protected final void _movel(final byte[] value, final boolean clear) {
 		if (clear)
 			NIOBufferHelper.movel(getBuffer(), getPosition() + 2, getLength(), value, INIT);
 		else
@@ -156,7 +150,7 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 
 	@Override
-	protected final void _fill(byte[] value, boolean maxLength) {
+	protected final void _fill(final byte[] value, final boolean maxLength) {
 		if (maxLength)
 			NIOBufferHelper.fill(getBuffer(), getPosition() + 2, _length, value);
 		else
@@ -164,16 +158,38 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 
 	@Override
-	protected final void _fillr(byte[] value, boolean maxLength) {
+	protected final void _fillr(final byte[] value, final boolean maxLength) {
 		if (maxLength)
 			NIOBufferHelper.fillr(getBuffer(), getPosition() + 2, _length, value);
 		else
 			NIOBufferHelper.fillr(getBuffer(), getPosition() + 2, getLength(), value);
 	}
-	
+
 	@Override
-	protected final NIODataImpl _copyDef(QDataContext dataContext) {
-		NIOCharacterVaryingImpl copy = new NIOCharacterVaryingImpl(dataContext, _length, false);
+	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
+		final NIOCharacterVaryingImpl copy = new NIOCharacterVaryingImpl(dataContext, _length, false);
 		return copy;
+	}
+
+	@Override
+	public final void snap() {
+		if (!isEmpty())
+			getDataContext().snap(this);
+	}
+
+	@Override
+	public final void reset() {
+
+		final QBufferedData snapData = getDataContext().getSnap(this);
+		if (snapData != null)
+			NIOBufferHelper.write(this, snapData);
+		else
+			clear();
+	}
+
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

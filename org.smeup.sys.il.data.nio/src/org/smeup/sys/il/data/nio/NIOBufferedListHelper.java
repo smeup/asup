@@ -20,18 +20,18 @@ import org.smeup.sys.il.data.QString;
 
 public class NIOBufferedListHelper {
 
-	public static int lookup(NIOBufferedListImpl<?> list, QBufferedElement argument, DataComparator comparator, int startIndex, int numElements) {
+	public static int lookup(final NIOBufferedListImpl<?> list, final QBufferedElement argument, final DataComparator comparator, final int startIndex, final int numElements) {
 
 		int result = 0;
 		boolean resultIndex = false;
 
-		NIOBufferedListIterator<?> iterator = new NIOBufferedListIterator<>(list, list.getSortDirection(), startIndex, numElements);
+		final NIOBufferedListIterator<?> iterator = new NIOBufferedListIterator<>(list, list.getSortDirection(), startIndex, numElements);
 		while (iterator.hasNext()) {
 			QBufferedElement bufferedElement = iterator.next();
 			bufferedElement = NIOBufferHelper.getNIOBufferedElementImpl(bufferedElement);
 			switch (bufferedElement.getBufferedElementType()) {
 			case DATETIME:
-				QDatetime datetime = ((QDatetime) bufferedElement);
+				final QDatetime datetime = ((QDatetime) bufferedElement);
 				switch (comparator) {
 				case EQUAL:
 					resultIndex = datetime.eq((QDatetime) argument);
@@ -54,7 +54,7 @@ public class NIOBufferedListHelper {
 				}
 				break;
 			case NUMERIC:
-				QNumeric numeric = ((QNumeric) bufferedElement);
+				final QNumeric numeric = ((QNumeric) bufferedElement);
 				switch (comparator) {
 				case EQUAL:
 					resultIndex = numeric.eq((QNumeric) argument);
@@ -77,7 +77,7 @@ public class NIOBufferedListHelper {
 				}
 				break;
 			case STRING:
-				QString string = ((QString) bufferedElement);
+				final QString string = ((QString) bufferedElement);
 				switch (comparator) {
 				case EQUAL:
 					resultIndex = string.eq((QString) argument);
@@ -125,15 +125,14 @@ public class NIOBufferedListHelper {
 		return result;
 	}
 
-	public static int lookup(NIOBufferedListImpl<? extends QBufferedElement> list, DataSpecial argument, DataComparator comparator, int startIndex, int numElements) {
+	public static int lookup(final NIOBufferedListImpl<? extends QBufferedElement> list, final DataSpecial argument, final DataComparator comparator, final int startIndex, final int numElements) {
 
 		int result = 0;
 		boolean resultIndex = false;
 
-
-		NIOBufferedListIterator<? extends QBufferedElement> iterator = new NIOBufferedListIterator<>(list, list.getSortDirection(), startIndex, numElements);
+		final NIOBufferedListIterator<? extends QBufferedElement> iterator = new NIOBufferedListIterator<>(list, list.getSortDirection(), startIndex, numElements);
 		while (iterator.hasNext()) {
-			QBufferedElement bufferedElement = iterator.next();
+			final QBufferedElement bufferedElement = iterator.next();
 
 			switch (comparator) {
 			case EQUAL:

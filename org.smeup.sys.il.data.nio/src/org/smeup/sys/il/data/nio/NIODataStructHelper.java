@@ -20,27 +20,25 @@ import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QStruct;
 
 public class NIODataStructHelper {
-	
-	public static List<Field> getFields(Class<? extends QStruct<?>> klass) {
-		List<Field> fields = new ArrayList<Field>();
+
+	public static List<Field> getFields(final Class<? extends QStruct<?>> klass) {
+		final List<Field> fields = new ArrayList<Field>();
 		appendFields(fields, klass);
 		return fields;
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	private static void appendFields(List<Field> fields, Class<? extends QStruct<?>> klass) {
-		
-		if(klass.equals(QDataStructWrapper.class))
+	private static void appendFields(final List<Field> fields, final Class<? extends QStruct<?>> klass) {
+
+		if (klass.equals(QDataStructWrapper.class))
 			return;
-			
-		if(QStruct.class.isAssignableFrom(klass.getSuperclass()))
+
+		if (QStruct.class.isAssignableFrom(klass.getSuperclass()))
 			appendFields(fields, (Class<QStruct<?>>) klass.getSuperclass());
-		
-		for(Field field: klass.getDeclaredFields()) {
-			if(QData.class.isAssignableFrom(field.getType())) {
+
+		for (final Field field : klass.getDeclaredFields())
+			if (QData.class.isAssignableFrom(field.getType()))
 				fields.add(field);
-			}
-		}
 	}
 
 }

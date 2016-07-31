@@ -19,11 +19,11 @@ import org.smeup.sys.il.data.QDataFiller;
 
 public final class NIOComparatorHelper {
 
-	public static final int compareBytes(QBufferedElement bufferedElement, byte[] b2) {
+	public static final int compareBytes(final QBufferedElement bufferedElement, final byte[] b2) {
 		return compareBytes(NIOBufferHelper.getNIOBufferedElementImpl(bufferedElement), b2);
 	}
 
-	public static final int compareBytes(NIOBufferedElementImpl bufferedElement, byte[] b2) {
+	public static final int compareBytes(final NIOBufferedElementImpl bufferedElement, final byte[] b2) {
 
 		byte filler = 0;
 		switch (bufferedElement.getBufferedElementType()) {
@@ -31,7 +31,7 @@ public final class NIOComparatorHelper {
 			filler = NIODatetimeImpl.INIT;
 			break;
 		case NUMERIC:
-			filler = NIODecimalImpl.INIT;
+			filler = NIONumericImpl.INIT;
 			break;
 		case STRING:
 			filler = NIOStringImpl.INIT;
@@ -41,22 +41,22 @@ public final class NIOComparatorHelper {
 		return compareBytes(bufferedElement._toBytes(), b2, filler);
 	}
 
-	public static final int compareBytes(byte[] b1, byte[] b2, byte filler) {
+	public static final int compareBytes(final byte[] b1, final byte[] b2, final byte filler) {
 
 		if (b2 == null)
 			return 1;
-		
-		if(b1 == null)
+
+		if (b1 == null)
 			"".toCharArray();
-		
-		if (b1.length == b2.length) {
+
+		if (b1.length == b2.length)
 			for (int i = 0; i < b1.length; i++) {
 				if (b1[i] == b2[i])
 					continue;
 
 				return compareByte(b1[i], b2[i]);
 			}
-		} else if (b1.length > b2.length) {
+		else if (b1.length > b2.length)
 			for (int i = 0; i < b1.length; i++) {
 
 				if (i + 1 > b2.length) {
@@ -71,7 +71,7 @@ public final class NIOComparatorHelper {
 
 				return compareByte(b1[i], b2[i]);
 			}
-		} else if (b2.length > b1.length) {
+		else if (b2.length > b1.length)
 			for (int i = 0; i < b2.length; i++) {
 
 				if (i + 1 > b1.length) {
@@ -86,16 +86,15 @@ public final class NIOComparatorHelper {
 
 				return compareByte(b1[i], b2[i]);
 			}
-		}
 
 		return 0;
 	}
 
-	public static final int compareByte(byte b1, byte b2) {
+	public static final int compareByte(final byte b1, final byte b2) {
 		return NIOBufferHelper.toHexString(b1).compareTo(NIOBufferHelper.toHexString(b2));
 	}
 
-	public static final int compareBytes(NIOBufferedElementImpl bufferedElement, DataSpecial value) {
+	public static final int compareBytes(final NIOBufferedElementImpl bufferedElement, final DataSpecial value) {
 
 		switch (value) {
 		case BLANK:
@@ -116,10 +115,10 @@ public final class NIOComparatorHelper {
 		return compareBytes(bufferedElement, bufferedElement._toBytes(value));
 	}
 
-	public static final int compareBytes(NIOBufferedElementImpl bufferedElement, QDataFiller value) {
+	public static final int compareBytes(final NIOBufferedElementImpl bufferedElement, final QDataFiller value) {
 
-		int length = bufferedElement.getLength();
-		int fillerLength = value.get().getLength();
+		final int length = bufferedElement.getLength();
+		final int fillerLength = value.get().getLength();
 
 		if (length == 0)
 			if (fillerLength == 0)
@@ -129,7 +128,7 @@ public final class NIOComparatorHelper {
 		else if (fillerLength == 0)
 			return 1;
 
-		ByteBuffer byteBuffer = ByteBuffer.allocate(length);
+		final ByteBuffer byteBuffer = ByteBuffer.allocate(length);
 		NIOBufferHelper.fill(byteBuffer, 0, length, value.get().asBytes());
 
 		return compareBytes(bufferedElement, byteBuffer.array());

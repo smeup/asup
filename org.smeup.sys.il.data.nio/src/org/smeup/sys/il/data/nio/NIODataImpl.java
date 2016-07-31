@@ -16,15 +16,15 @@ import org.smeup.sys.il.data.QDataContext;
 
 public abstract class NIODataImpl implements QData {
 
-	private static final long serialVersionUID = 1L;	
-	
+	private static final long serialVersionUID = 1L;
+
 	protected transient QDataContext _dataContext;
-	
-	public NIODataImpl(QDataContext dataContext) {
+
+	public NIODataImpl(final QDataContext dataContext) {
 		this._dataContext = dataContext;
 	}
 
-	protected abstract QDataContext getDataContext();		
+	protected abstract QDataContext getDataContext();
 
 	protected abstract NIODataImpl _copyDef(QDataContext dataContext);
 }

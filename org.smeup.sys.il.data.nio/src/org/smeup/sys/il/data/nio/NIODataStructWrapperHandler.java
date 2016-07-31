@@ -33,23 +33,22 @@ public final class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 	private static final long serialVersionUID = 1L;
 
 	protected QDataStruct _wrapped;
-	private boolean _dynamicLength;
+	private final boolean _dynamicLength;
 
 	private List<QBufferedData> cachedElements = null;
 
-	public NIODataStructWrapperHandler(QDataContext dataContext, int length, QDataStruct wrapped, boolean allocate) {
+	public NIODataStructWrapperHandler(final QDataContext dataContext, final int length, final QDataStruct wrapped, final boolean allocate) {
 		super(dataContext, length);
 
 		this._wrapped = wrapped;
 		this._dynamicLength = (length == 0 ? true : false);
 
-
-		QDataFactory dataFactory = getDataContext().getDataFactory();
-		NIODataStructBuilder dataStructBuilder = new NIODataStructBuilder(dataFactory, this);
-		List<Field> fields = NIODataStructHelper.getFields(wrapped.getClass());
-		for (Field field : fields) {
-			QDataDef<?> dataDef = dataFactory.createDataDef(field.getGenericType(), Arrays.asList(field.getAnnotations()));
-			QBufferedData dataElement = (QBufferedData) dataFactory.createData(dataDef, false);
+		final QDataFactory dataFactory = getDataContext().getDataFactory();
+		final NIODataStructBuilder dataStructBuilder = new NIODataStructBuilder(dataFactory, this);
+		final List<Field> fields = NIODataStructHelper.getFields(wrapped.getClass());
+		for (final Field field : fields) {
+			final QDataDef<?> dataDef = dataFactory.createDataDef(field.getGenericType(), Arrays.asList(field.getAnnotations()));
+			final QBufferedData dataElement = (QBufferedData) dataFactory.createData(dataDef, false);
 			dataStructBuilder.addElement(field, dataElement);
 		}
 
@@ -58,10 +57,10 @@ public final class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 	}
 
 	@Override
-	public final QBufferedData getElement(String name) {
+	public final QBufferedData getElement(final String name) {
 
 		try {
-			Field field = _wrapped.getClass().getField(name);
+			final Field field = _wrapped.getClass().getField(name);
 			if (field == null)
 				return null;
 
@@ -82,7 +81,7 @@ public final class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 					cachedElements = new ArrayList<>();
 
 					try {
-						for (Field field : NIODataStructHelper.getFields(_wrapped.getClass()))
+						for (final Field field : NIODataStructHelper.getFields(_wrapped.getClass()))
 							cachedElements.add((QBufferedData) field.get(_wrapped));
 					} catch (SecurityException | IllegalArgumentException | IllegalAccessException e) {
 						e.printStackTrace();
@@ -94,14 +93,13 @@ public final class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 		return cachedElements;
 	}
 
-	protected final void addElement(String name, QBufferedData element, int position) {
-
+	protected final void addElement(final String name, final QBufferedData element, final int position) {
 
 		if (this.cachedElements != null)
 			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: abmg8u9r7asr8v8cbx");
-		
+
 		try {
-			Field field = _wrapped.getClass().getField(name);
+			final Field field = _wrapped.getClass().getField(name);
 			if (field == null)
 				return;
 
@@ -121,9 +119,9 @@ public final class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 	@Override
 	public final List<String> getElementNames() {
 
-		List<String> elementNames = new ArrayList<String>();
+		final List<String> elementNames = new ArrayList<String>();
 
-		for (Field field : NIODataStructHelper.getFields(_wrapped.getClass()))
+		for (final Field field : NIODataStructHelper.getFields(_wrapped.getClass()))
 			elementNames.add(field.getName());
 
 		return elementNames;
@@ -132,43 +130,41 @@ public final class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 	@Override
 	public final void reset() {
 
-		QBufferedData snapData = getDataContext().getSnap(this);
+		final QBufferedData snapData = getDataContext().getSnap(this);
 		if (snapData != null) {
 			NIOBufferHelper.write(this, snapData);
 			return;
 		}
 
 		clear();
-		for (Field field : NIODataStructHelper.getFields(_wrapped.getClass())) {
-			DataDef dataDef = field.getAnnotation(DataDef.class);
+		for (final Field field : NIODataStructHelper.getFields(_wrapped.getClass())) {
+			final DataDef dataDef = field.getAnnotation(DataDef.class);
 			if (dataDef == null)
 				continue;
 
 			try {
-				Object fieldValue = field.get(_wrapped);
-				QBufferedData data = (QBufferedData) fieldValue;
-				QBufferedData snapElement = getDataContext().getSnap(data);
+				final Object fieldValue = field.get(_wrapped);
+				final QBufferedData data = (QBufferedData) fieldValue;
+				final QBufferedData snapElement = getDataContext().getSnap(data);
 				if (snapElement != null) {
 					NIOBufferHelper.write(data, snapElement);
 					continue;
 				}
 
 				if (fieldValue instanceof QBufferedList) {
-					QBufferedList<?> bufferedListImpl = (QBufferedList<?>) fieldValue;
+					final QBufferedList<?> bufferedListImpl = (QBufferedList<?>) fieldValue;
 
-					if (!dataDef.value().isEmpty()) {
+					if (!dataDef.value().isEmpty())
 						NIOBufferHelper.writeDefault(bufferedListImpl, dataDef.value());
-					} else if (dataDef.values().length != 0) {
+					else if (dataDef.values().length != 0)
 						NIOBufferHelper.writeDefault(bufferedListImpl, dataDef.values());
-					} else if (field.getAnnotation(Overlay.class) == null)
+					else if (field.getAnnotation(Overlay.class) == null)
 						bufferedListImpl.clear();
 
-				} else {
-					if (dataDef.value().isEmpty())
-						data.clear();
-					else
-						NIOBufferHelper.writeDefault((QBufferedElement) data, dataDef.value());
-				}
+				} else if (dataDef.value().isEmpty())
+					data.clear();
+				else
+					NIOBufferHelper.writeDefault((QBufferedElement) data, dataDef.value());
 
 			} catch (IllegalArgumentException | IllegalAccessException e) {
 				throw new IntegratedLanguageDataRuntimeException(e);

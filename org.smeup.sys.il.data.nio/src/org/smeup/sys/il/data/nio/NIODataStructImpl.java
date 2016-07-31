@@ -26,20 +26,20 @@ public final class NIODataStructImpl extends NIOAbstractDataStruct {
 
 	private static final long serialVersionUID = 1L;
 
-	private Map<String, QBufferedData> _elements;
-	private boolean _dynamicLength;
+	private final Map<String, QBufferedData> _elements;
+	private final boolean _dynamicLength;
 
-	public NIODataStructImpl(QDataContext dataContext, int length, List<QDataTerm<QBufferedDataDef<?>>> dataTerms, boolean allocate) {
+	public NIODataStructImpl(final QDataContext dataContext, final int length, final List<QDataTerm<QBufferedDataDef<?>>> dataTerms, final boolean allocate) {
 		super(dataContext, length);
 
 		this._elements = new ElementMap();
 		this._dynamicLength = (length == 0 ? true : false);
 
-		QDataFactory dataFactory = getDataContext().getDataFactory();
+		final QDataFactory dataFactory = getDataContext().getDataFactory();
 
-		NIODataStructBuilder dataStructBuilder = new NIODataStructBuilder(dataFactory, this);
-		for (QDataTerm<?> dataTerm : dataTerms) {
-			QBufferedData dataElement = (QBufferedData) dataFactory.createData(dataTerm, false);
+		final NIODataStructBuilder dataStructBuilder = new NIODataStructBuilder(dataFactory, this);
+		for (final QDataTerm<?> dataTerm : dataTerms) {
+			final QBufferedData dataElement = (QBufferedData) dataFactory.createData(dataTerm, false);
 			dataStructBuilder.addElement(dataTerm, dataElement);
 		}
 
@@ -48,11 +48,11 @@ public final class NIODataStructImpl extends NIOAbstractDataStruct {
 	}
 
 	@Override
-	public final QBufferedData getElement(String name) {
+	public final QBufferedData getElement(final String name) {
 		return _elements.get(name);
 	}
 
-	protected final void addElement(String name, QBufferedData element, int position) {
+	protected final void addElement(String name, final QBufferedData element, final int position) {
 
 		// virtual name '/n'
 		if (name == null) {
@@ -82,12 +82,12 @@ public final class NIODataStructImpl extends NIOAbstractDataStruct {
 	@Override
 	public final void reset() {
 
-		QBufferedData snapData = getDataContext().getSnap(this);
+		final QBufferedData snapData = getDataContext().getSnap(this);
 		if (snapData != null)
 			NIOBufferHelper.write(this, snapData);
 		else {
 			clear();
-			for (QBufferedData element : getElements())
+			for (final QBufferedData element : getElements())
 				element.reset();
 		}
 	}
@@ -97,13 +97,14 @@ public final class NIODataStructImpl extends NIOAbstractDataStruct {
 		private static final long serialVersionUID = 1L;
 
 		@Override
-		public QBufferedData get(Object key) {
+		public QBufferedData get(final Object key) {
 			return super.get(key.toString().toLowerCase());
 		}
 
 		@Override
-		public QBufferedData put(String key, QBufferedData value) {
+		public QBufferedData put(final String key, final QBufferedData value) {
 			return super.put(key.toLowerCase(), value);
 		}
 	}
+
 }

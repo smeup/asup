@@ -18,10 +18,10 @@ import org.smeup.sys.il.data.QList;
 
 public class NIOListIteratorImpl<E extends QBufferedData> implements Iterator<E> {
 
-	private QList<E> list;
+	private final QList<E> list;
 	private int current = 0;
 
-	protected NIOListIteratorImpl(QList<E> list) {
+	protected NIOListIteratorImpl(final QList<E> list) {
 		this.list = list;
 	}
 
@@ -41,4 +41,3 @@ public class NIOListIteratorImpl<E extends QBufferedData> implements Iterator<E>
 		list.get(current).clear();
 	}
 }
-

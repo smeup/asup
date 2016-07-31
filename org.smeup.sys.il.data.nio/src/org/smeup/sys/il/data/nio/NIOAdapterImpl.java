@@ -22,55 +22,54 @@ public final class NIOAdapterImpl extends NIOBufferedElementDelegatorImpl implem
 
 	private static final long serialVersionUID = 1L;
 
-	public NIOAdapterImpl(QDataContext dataContext) {
+	public NIOAdapterImpl(final QDataContext dataContext) {
 		super(dataContext);
 	}
 
 	@Override
-	public final void eval(QAdapter value) {
+	public final void eval(final QAdapter value) {
 		eval(value.getDelegate());
 	}
 
 	@Override
-	public final void eval(Object value) {
+	public final void eval(final Object value) {
 
 		if (value instanceof Byte) {
-			Byte number = (Byte) value;
-			QDecimal numeric = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
+			final Byte number = (Byte) value;
+			final QDecimal numeric = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 			numeric.eval(number);
 			setDelegate(numeric);
 
 		} else if (value instanceof Short) {
-			Short number = (Short) value;
-			QDecimal numeric = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
+			final Short number = (Short) value;
+			final QDecimal numeric = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 			numeric.eval(number);
 			setDelegate(numeric);
 
 		} else if (value instanceof Integer) {
-			Integer number = (Integer) value;
-			QDecimal numeric = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
+			final Integer number = (Integer) value;
+			final QDecimal numeric = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 			numeric.eval(number);
 			setDelegate(numeric);
 
 		} else if (value instanceof Long) {
-			Long number = (Long) value;
-			QDecimal numeric = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
+			final Long number = (Long) value;
+			final QDecimal numeric = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 			numeric.eval(number);
 			setDelegate(numeric);
 
 		} else {
-			String string = value.toString();
+			final String string = value.toString();
 			try {
-				long number = Long.parseLong(string);
-				QDecimal numeric = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
+				final long number = Long.parseLong(string);
+				final QDecimal numeric = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 				numeric.eval(number);
 				setDelegate(numeric);
-			} catch (NumberFormatException e) {
+			} catch (final NumberFormatException e) {
 				int stringLength = string.length();
 				if (stringLength == 0)
 					stringLength = 32;
-				NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), stringLength, true);
-				character.eval(string);
+				final NIOCharacterImpl character = new NIOCharacterFixedImpl(getDataContext(), string);
 
 				setDelegate(character);
 			}
@@ -78,7 +77,7 @@ public final class NIOAdapterImpl extends NIOBufferedElementDelegatorImpl implem
 	}
 
 	@Override
-	public final QBufferedData eval(DataSpecial value) {
+	public final QBufferedData eval(final DataSpecial value) {
 		getDelegate().eval(value);
 		return this;
 	}

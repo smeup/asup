@@ -43,60 +43,60 @@ public class NIODataManagerImpl implements QDataManager {
 
 	@Inject
 	private QFrameManager frameManager;
-	
+
 	@Override
-	public NIODataContextImpl createDataContext(QContext context, Object owner) {
-		QDataAreaFactory dataAreaFactory = context.get(QDataAreaFactory.class);
-		
-		NIODataContextImpl nioDataContextImpl = new NIODataContextImpl(context, dataAreaFactory, owner);
-		
+	public NIODataContextImpl createDataContext(final QContext context, final Object owner) {
+		final QDataAreaFactory dataAreaFactory = context.get(QDataAreaFactory.class);
+
+		final NIODataContextImpl nioDataContextImpl = new NIODataContextImpl(context, dataAreaFactory, owner);
+
 		return nioDataContextImpl;
 	}
 
 	@Override
-	public QDataContainer createDataContainer(QDataContext dataContext) {
+	public QDataContainer createDataContainer(final QDataContext dataContext) {
 		return new NIODataContainerImpl((NIODataContextImpl) dataContext);
 	}
-	
+
 	@Override
-	public QDataContainer createDataContainer(QContext context, Object owner) {
+	public QDataContainer createDataContainer(final QContext context, final Object owner) {
 		return new NIODataContainerImpl(createDataContext(context, owner));
 	}
 
 	@Override
-	public QDataContainer createDataContainer(QContext context, QObject object, EClass term) {
+	public QDataContainer createDataContainer(final QContext context, final QObject object, final EClass term) {
 
-		QFrame<?> frame = frameManager.getFrame(object);
+		final QFrame<?> frame = frameManager.getFrame(object);
 
-		QDataContainer dataContainer = new NIODataContainerImpl(createDataContext(context, object));
-		for(QDataTerm<?> dataTerm: buildDataTerms(frame, frameManager.getFrame(term))) 
+		final QDataContainer dataContainer = new NIODataContainerImpl(createDataContext(context, object));
+		for (final QDataTerm<?> dataTerm : buildDataTerms(frame, frameManager.getFrame(term)))
 			dataContainer.addDataTerm(dataTerm);
 
 		return dataContainer;
 	}
 
 	@Override
-	public void validateDataContainer(QDataContainer dataContainer) {
+	public void validateDataContainer(final QDataContainer dataContainer) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
 	}
 
 	@SuppressWarnings({ "unchecked" })
-	private <DD extends QDataDef<?>> List<QDataTerm<?>> buildDataTerms(QFrame<?> frame, QFrame<?> term) {
+	private <DD extends QDataDef<?>> List<QDataTerm<?>> buildDataTerms(final QFrame<?> frame, final QFrame<?> term) {
 
-		List<QDataTerm<?>> dataTerms = new LinkedList<QDataTerm<?>>();
+		final List<QDataTerm<?>> dataTerms = new LinkedList<QDataTerm<?>>();
 
-		for (QSlot slot : frame.getSlots()) {
-			
+		for (final QSlot slot : frame.getSlots()) {
+
 			// cardinality
-			QCardinality cardinality = slot.getCardinality();
+			final QCardinality cardinality = slot.getCardinality();
 
 			if (cardinality.isMultiple())
 				continue;
 
-//			if (slot.getName().equals("content"))
-//				continue;
+			// if (slot.getName().equals("content"))
+			// continue;
 
 			if (slot.getName().equals("source"))
 				continue;
@@ -105,18 +105,18 @@ public class NIODataManagerImpl implements QDataManager {
 			DD dataDef = (DD) buildDataDef(slot);
 
 			// dataTerm
-			QDataTerm<DD> dataTerm = (QDataTerm<DD>) frameManager.createObject(term);
+			final QDataTerm<DD> dataTerm = (QDataTerm<DD>) frameManager.createObject(term);
 
 			// multiple
 			if (cardinality.isMultiple())
 				if (dataDef instanceof QUnaryAtomicBufferedDataDef) {
-					QScrollerDef<?> scrollerDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createScrollerDef();
+					final QScrollerDef<?> scrollerDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createScrollerDef();
 					scrollerDef.setDimension(cardinality.getMax());
 					scrollerDef.setArgument((QUnaryAtomicBufferedDataDef<?>) dataDef);
 					dataDef = (DD) scrollerDef;
 
 				} else if (dataDef instanceof QCompoundDataDef) {
-					QStrollerDef<?> strollerDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createStrollerDef();
+					final QStrollerDef<?> strollerDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createStrollerDef();
 					strollerDef.setDimension(cardinality.getMax());
 					dataDef = (DD) strollerDef;
 
@@ -131,7 +131,7 @@ public class NIODataManagerImpl implements QDataManager {
 
 			// default
 			if (slot.getDefaultValue() != null && !slot.getDefaultValue().toString().isEmpty()) {
-				QDefault default_ = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createDefault();
+				final QDefault default_ = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createDefault();
 				if (dataTerm.getDataTermType().isUnary())
 					default_.setValue(slot.getDefaultValue().toString());
 				else
@@ -144,13 +144,13 @@ public class NIODataManagerImpl implements QDataManager {
 		return dataTerms;
 	}
 
-	private QDataDef<?> buildDataDef(QSlot slot) {
+	private QDataDef<?> buildDataDef(final QSlot slot) {
 
 		QDataDef<?> dataDef = (QDataDef<?>) slot.getValue(QIntegratedLanguageDataPackage.eNS_PREFIX);
 		if (dataDef == null) {
 
 			// TODO build dataDef from java primitive
-			QCharacterDef characterDefinition = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
+			final QCharacterDef characterDefinition = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
 			characterDefinition.setLength(slot.getName().length());
 
 			dataDef = characterDefinition;

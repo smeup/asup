@@ -14,10 +14,13 @@ package org.smeup.sys.il.data.nio;
 import java.nio.ByteBuffer;
 
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
-import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
+import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QIndicator;
+import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.def.DecimalType;
 
 public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicator {
 
@@ -25,44 +28,43 @@ public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicat
 	protected static final byte OFF = (byte) 0xF0;
 	protected static final byte ON = (byte) 0xF1;
 
-	public NIOIndicatorImpl(QDataContext dataContext, boolean allocate) {
-		super(dataContext, 1, false);
-		
-		if(allocate) {
+	public NIOIndicatorImpl(final QDataContext dataContext, final boolean allocate) {
+		super(dataContext, 1);
+
+		if (allocate) {
 			checkAllocation();
-			_buffer = ByteBuffer.allocate(getSize());		
+			_buffer = ByteBuffer.allocate(getSize());
 			_buffer.put(OFF);
 		}
 	}
 
 	@Override
-	protected final void _clear() {
-		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), OFF);
+	protected final void setLength(final short length) {
 	}
 
 	@Override
 	public final boolean asBoolean() {
-		byte byte_ = asBytes()[0];
+		final byte byte_ = asBytes()[0];
 		return byte_ != OFF && byte_ != NIOStringImpl.INIT;
 	}
 
 	@Override
-	public final boolean eq(boolean value) {
+	public final boolean eq(final boolean value) {
 		return asBoolean() == value;
 	}
 
 	@Override
-	public final boolean ne(boolean value) {
+	public final boolean ne(final boolean value) {
 		return !eq(value);
 	}
 
 	@Override
-	public final boolean eq(QIndicator value) {
+	public final boolean eq(final QIndicator value) {
 		return eq(value.asBoolean());
 	}
 
 	@Override
-	public final boolean ne(QIndicator value) {
+	public final boolean ne(final QIndicator value) {
 		return !eq(value);
 	}
 
@@ -82,43 +84,109 @@ public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicat
 	}
 
 	@Override
-	public final void eval(String value) {
+	public final void eval(final String value) {
 		if (value.equals("0"))
 			eval(false);
 		else if (value.equals("1"))
 			eval(true);
 		else
-			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237etxvq86rea invalid value "+value);
+			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237etxvq86rea invalid value " + value);
 	}
 
 	@Override
-	public final QCharacter qTrim() {
-		return this;
-	}
-
-	@Override
-	public final QCharacter qTriml() {
-		return this;
-	}
-
-	@Override
-	public final QCharacter qTrimr() {
-		return this;
-	}
-
-	@Override
-	public final void accept(QDataVisitor visitor) {
-		visitor.visit((QIndicator) this);
+	public final void accept(final QDataVisitor visitor) {
+		visitor.visit(this);
 	}
 
 	@Override
 	public final String toString() {
 		return Boolean.toString(asBoolean());
 	}
-	
+
 	@Override
-	protected NIODataImpl _copyDef(QDataContext dataContext) {
-		NIOIndicatorImpl copy = new NIOIndicatorImpl(dataContext, false);
+	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
+		final NIOIndicatorImpl copy = new NIOIndicatorImpl(dataContext, false);
 		return copy;
+	}
+
+	@Override
+	public final boolean isVarying() {
+		return false;
+	}
+
+	@Override
+	protected final void cat(final byte[] factor1, final byte[] factor2, final Number space, final boolean clear) {
+		_movel(factor1, false);
+	}
+
+	@Override
+	protected final void _clear() {
+		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), OFF);
+	}
+
+	@Override
+	protected final void _fill(final byte[] value, final boolean maxLength) {
+		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), value);
+	}
+
+	@Override
+	protected final void _fillr(final byte[] value, final boolean maxLength) {
+		NIOBufferHelper.fillr(getBuffer(), getPosition(), getSize(), value);
+	}
+
+	@Override
+	protected final void _move(final byte[] value, final boolean clear) {
+		if (clear)
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value, OFF);
+		else
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value);
+	}
+
+	@Override
+	protected final void _movel(final byte[] value, final boolean clear) {
+		if (clear)
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value, OFF);
+		else
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value);
+	}
+
+	@Override
+	protected final void _write(final byte[] value) {
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value, OFF);
+	}
+
+	@Override
+	protected final byte[] _toBytes() {
+		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
+	}
+
+	@Override
+	public final QNumeric qLen() {
+
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+		number.eval(getLength());
+
+		return number;
+	}
+
+	@Override
+	public final void snap() {
+		if (!isEmpty())
+			getDataContext().snap(this);
+	}
+
+	@Override
+	public final void reset() {
+
+		final QBufferedData snapData = getDataContext().getSnap(this);
+		if (snapData != null)
+			NIOBufferHelper.write(this, snapData);
+		else
+			clear();
+	}
+
+	@Override
+	public final boolean isEmpty() {
+		return eq(false);
 	}
 }

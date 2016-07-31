@@ -20,31 +20,33 @@ import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
+import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.data.def.DecimalType;
 
 public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 	private static final long serialVersionUID = 1L;
-//	private static byte INIT = (byte) 0;
+	// private static byte INIT = (byte) 0;
 	private static final byte LOVAL = (byte) 0;
 	private static final byte HIVAL = (byte) 128;
 
-	private BinaryType _type;
-	private boolean _unsigned;
+	private final BinaryType _type;
+	private final boolean _unsigned;
 	private NIODecimalDef decimalDef = null;
-	
-	public NIOBinaryImpl(QDataContext dataContext, BinaryType type, boolean unsigned, boolean allocate) {
+
+	public NIOBinaryImpl(final QDataContext dataContext, final BinaryType type, final boolean unsigned, final boolean allocate) {
 		super(dataContext);
 		this._type = type;
 		this._unsigned = unsigned;
-		
+
 		this.decimalDef = NIODecimalDef.getInstance(getLength(), 0);
-		
-		if(allocate) {
-			checkAllocation();		
+
+		if (allocate) {
+			checkAllocation();
 			_buffer = ByteBuffer.allocate(getSize());
-		} 
+		}
 	}
 
 	protected final NIODecimalDef getDecimalDef() {
@@ -91,8 +93,8 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	@Override
 	public final Number _readNumber() {
 
-		ByteBuffer buffer = getBuffer();
-		int position = getPosition();
+		final ByteBuffer buffer = getBuffer();
+		final int position = getPosition();
 
 		NIOBufferHelper.prepare(buffer, position, getSize());
 		switch (_type) {
@@ -110,10 +112,10 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	}
 
 	@Override
-	public final void _writeNumber(Number number, boolean halfAdjust) {
+	public final void _writeNumber(final Number number, final boolean halfAdjust) {
 
-		ByteBuffer buffer = getBuffer();
-		int position = getPosition();
+		final ByteBuffer buffer = getBuffer();
+		final int position = getPosition();
 
 		NIOBufferHelper.prepare(buffer, position, getSize());
 		switch (_type) {
@@ -135,41 +137,41 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	}
 
 	@Override
-	public final void accept(QDataVisitor visitor) {
+	public final void accept(final QDataVisitor visitor) {
 		visitor.visit(this);
 	}
 
 	@Override
-	public final byte[] _toBytes() {;
+	public final byte[] _toBytes() {
+		;
 		return getDecimalDef().getZoned().toBytes(asDouble());
 	}
 
 	@Override
-	protected final void _fill(byte[] filler, boolean maxLength) {
+	protected final void _fill(final byte[] filler, final boolean maxLength) {
 
-		ByteBuffer byteBuffer = ByteBuffer.allocate(getLength());
+		final ByteBuffer byteBuffer = ByteBuffer.allocate(getLength());
 		NIOBufferHelper.fill(byteBuffer, 0, getLength(), filler);
 		_write(byteBuffer.array());
 	}
 
 	@Override
-	protected final void _fillr(byte[] filler, boolean maxLength) {
+	protected final void _fillr(final byte[] filler, final boolean maxLength) {
 
-		ByteBuffer byteBuffer = ByteBuffer.allocate(getLength());
+		final ByteBuffer byteBuffer = ByteBuffer.allocate(getLength());
 		NIOBufferHelper.fillr(byteBuffer, 0, getLength(), filler);
 		_write(byteBuffer.array());
 	}
 
 	@Override
-	protected final void _move(byte[] value, boolean clear) {
-		
+	protected final void _move(final byte[] value, final boolean clear) {
 
 		double doubleValue;
 		if (getLength() > value.length) {
-			
-			byte[] newValue = asBytes();
+
+			final byte[] newValue = asBytes();
 			System.arraycopy(value, 0, newValue, getLength() - value.length, value.length);
-			
+
 			doubleValue = getDecimalDef().getZoned().toDouble(newValue);
 		} else
 			doubleValue = getDecimalDef().getZoned().toDouble(value, value.length - getLength());
@@ -178,64 +180,44 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	}
 
 	@Override
-	protected final void _movel(byte[] value, boolean clear) {
+	protected final void _movel(final byte[] value, final boolean clear) {
 
 		double doubleValue;
 		if (getLength() > value.length) {
-			byte[] newValue = asBytes();
+			final byte[] newValue = asBytes();
 			System.arraycopy(value, 0, newValue, 0, value.length);
-			
+
 			doubleValue = getDecimalDef().getZoned().toDouble(newValue);
-		} else {
+		} else
 			doubleValue = getDecimalDef().getZoned().toDouble(value);
-		}
-		
+
 		_writeNumber(doubleValue, false);
 	}
 
 	@Override
-	protected final void _write(byte[] value) {
+	protected final void _write(final byte[] value) {
 		eval(getDecimalDef().getZoned().toDouble(value));
 	}
 
 	/*
-	@Override
-	protected final byte[] _toBytes(DataSpecial value) {
-
-		byte[] bytes = new byte[getLength()];
-		switch (value) {
-		case LOVAL:
-			Arrays.fill(bytes, LOVAL);
-			break;
-		case BLANK:
-		case BLANKS:
-			Arrays.fill(bytes, NIOCharacterImpl.INIT);
-			break;
-		case OFF:
-		case ZERO:
-		case ZEROS:
-			Arrays.fill(bytes, INIT);
-			break;
-		case ON:
-			Arrays.fill(bytes, NIOIndicatorImpl.ON);
-			break;
-		case HIVAL:
-			Arrays.fill(bytes, HIVAL);
-			break;
-		case NULL:
-		case OMIT:
-			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237rvbwe87vb9stf");
-		}
-
-		bytes[bytes.length - 1] = 0x0F;
-		return bytes;
-	}
-	*/
+	 * @Override protected final byte[] _toBytes(DataSpecial value) {
+	 *
+	 * byte[] bytes = new byte[getLength()]; switch (value) { case LOVAL:
+	 * Arrays.fill(bytes, LOVAL); break; case BLANK: case BLANKS:
+	 * Arrays.fill(bytes, NIOCharacterImpl.INIT); break; case OFF: case ZERO:
+	 * case ZEROS: Arrays.fill(bytes, INIT); break; case ON: Arrays.fill(bytes,
+	 * NIOIndicatorImpl.ON); break; case HIVAL: Arrays.fill(bytes, HIVAL);
+	 * break; case NULL: case OMIT: throw new
+	 * IntegratedLanguageDataRuntimeException(
+	 * "Unexpected condition 237rvbwe87vb9stf"); }
+	 *
+	 * bytes[bytes.length - 1] = 0x0F; return bytes; }
+	 */
 
 	@Override
-	protected final byte[] _toBytes(DataSpecial value) {
+	protected final byte[] _toBytes(final DataSpecial value) {
 
-		byte[] bytes = new byte[getLength()];
+		final byte[] bytes = new byte[getLength()];
 		switch (value) {
 		case LOVAL:
 			Arrays.fill(bytes, HIVAL);
@@ -243,12 +225,12 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 			break;
 		case BLANK:
 		case BLANKS:
-			Arrays.fill(bytes, NIOCharacterImpl.INIT);
+			Arrays.fill(bytes, NIOStringImpl.INIT);
 			break;
 		case OFF:
 		case ZERO:
 		case ZEROS:
-			Arrays.fill(bytes, NIODecimalImpl.INIT);
+			Arrays.fill(bytes, NIONumericImpl.INIT);
 			break;
 		case ON:
 			Arrays.fill(bytes, NIOIndicatorImpl.ON);
@@ -263,11 +245,11 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 		return bytes;
 	}
-	
+
 	@Override
 	public final QNumeric qUns() {
 
-		NIOBinaryImpl number = new NIOBinaryImpl(getDataContext(), _type, isSigned(), true);
+		final NIOBinaryImpl number = new NIOBinaryImpl(getDataContext(), _type, isSigned(), true);
 		if (asShort() > 0)
 			number.eval(this);
 		else
@@ -275,10 +257,25 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 		return number;
 	}
-	
+
 	@Override
-	protected final NIODataImpl _copyDef(QDataContext dataContext) {
-		NIOBinaryImpl copy = new NIOBinaryImpl(dataContext, _type, _unsigned, false);
+	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
+		final NIOBinaryImpl copy = new NIOBinaryImpl(dataContext, _type, _unsigned, false);
 		return copy;
+	}
+
+	@Override
+	public final QNumeric qLen() {
+
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+		number.eval(getLength());
+
+		return number;
+	}
+
+	@Override
+	public final void snap() {
+		if (!isEmpty())
+			getDataContext().snap(this);
 	}
 }

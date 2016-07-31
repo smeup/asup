@@ -11,22 +11,31 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import org.smeup.sys.il.data.DataSpecial;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
+import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
+import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.def.DecimalType;
 
 public final class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexadecimal {
 
 	private static final long serialVersionUID = 1L;
 
-	public NIOHexadecimalImpl(QDataContext dataContext, int length, boolean allocate) {
-		super(dataContext, length, allocate);
+	public NIOHexadecimalImpl(final QDataContext dataContext, final int length, final boolean allocate) {
+		super(dataContext, length);
+	}
+
+	@Override
+	protected final void setLength(final short length) {
 	}
 
 	@Override
 	public final String toString() {
 
-		String string = getHexString(asBytes());
+		final String string = getHexString(asBytes());
 
 		return string;
 	}
@@ -42,15 +51,15 @@ public final class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexad
 	}
 
 	@Override
-	public final void eval(String value) {
+	public final void eval(final String value) {
 
-		byte[] bytes = new byte[value.length() / 2];
+		final byte[] bytes = new byte[value.length() / 2];
 
 		for (int i = 0; i < bytes.length; i++) {
-			String hex = new String(value.substring(2 * i, 2 * i + 2));
+			final String hex = new String(value.substring(2 * i, 2 * i + 2));
 			bytes[i] = (byte) Integer.parseInt(hex, 16);
 		}
-		
+
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, INIT);
 	}
 
@@ -59,7 +68,7 @@ public final class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexad
 			+ "909192939495969798999A9B9C9D9E9F" + "A0A1A2A3A4A5A6A7A8A9AAABACADAEAF" + "B0B1B2B3B4B5B6B7B8B9BABBBCBDBEBF" + "C0C1C2C3C4C5C6C7C8C9CACBCCCDCECF" + "D0D1D2D3D4D5D6D7D8D9DADBDCDDDEDF"
 			+ "E0E1E2E3E4E5E6E7E8E9EAEBECEDEEEF" + "F0F1F2F3F4F5F6F7F8F9FAFBFCFDFEFF").toCharArray();;
 
-	public final static String getHexString(byte[] bytes) {
+	public final static String getHexString(final byte[] bytes) {
 		final int len = bytes.length;
 		final char[] chars = new char[len << 1];
 		int hexIndex;
@@ -75,18 +84,99 @@ public final class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexad
 	}
 
 	@Override
-	public final void eval(QHexadecimal value) {
+	public final void eval(final QHexadecimal value) {
 		value.eval(this);
 	}
 
 	@Override
-	public final void accept(QDataVisitor visitor) {
+	public final void accept(final QDataVisitor visitor) {
 		visitor.visit((QHexadecimal) this);
 	}
-	
+
 	@Override
-	protected final  NIODataImpl _copyDef(QDataContext dataContext) {
-		NIOHexadecimalImpl copy = new NIOHexadecimalImpl(dataContext, _length, false);
+	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
+		final NIOHexadecimalImpl copy = new NIOHexadecimalImpl(dataContext, _length, false);
 		return copy;
+	}
+
+	@Override
+	public final boolean isVarying() {
+		return false;
+	}
+
+	@Override
+	protected final void cat(final byte[] factor1, final byte[] factor2, final Number space, final boolean clear) {
+		System.err.println("Unexpected condition: 78rfsd8tfsdf8s");
+	}
+
+	@Override
+	protected final void _clear() {
+		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), INIT);
+	}
+
+	@Override
+	protected final void _fill(final byte[] value, final boolean maxLength) {
+		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), value);
+	}
+
+	@Override
+	protected final void _fillr(final byte[] value, final boolean maxLength) {
+		NIOBufferHelper.fillr(getBuffer(), getPosition(), getSize(), value);
+	}
+
+	@Override
+	protected final void _move(final byte[] value, final boolean clear) {
+		if (clear)
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value, INIT);
+		else
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value);
+	}
+
+	@Override
+	protected final void _movel(final byte[] value, final boolean clear) {
+		if (clear)
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value, INIT);
+		else
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value);
+	}
+
+	@Override
+	protected final void _write(final byte[] value) {
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value, INIT);
+	}
+
+	@Override
+	protected final byte[] _toBytes() {
+		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
+	}
+
+	@Override
+	public final QNumeric qLen() {
+
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+		number.eval(getLength());
+
+		return number;
+	}
+
+	@Override
+	public final void snap() {
+		if (!isEmpty())
+			getDataContext().snap(this);
+	}
+
+	@Override
+	public final void reset() {
+
+		final QBufferedData snapData = getDataContext().getSnap(this);
+		if (snapData != null)
+			NIOBufferHelper.write(this, snapData);
+		else
+			clear();
+	}
+
+	@Override
+	public final boolean isEmpty() {
+		return eq(DataSpecial.BLANKS);
 	}
 }

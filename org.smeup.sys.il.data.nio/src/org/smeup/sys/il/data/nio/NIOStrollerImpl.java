@@ -32,7 +32,7 @@ public final class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImp
 
 	private static final long serialVersionUID = 1L;
 
-	public NIOStrollerImpl(QDataContext dataContext, D model, int dimension, boolean allocate) {
+	public NIOStrollerImpl(final QDataContext dataContext, final D model, final int dimension, final boolean allocate) {
 		super(dataContext, model, dimension, allocate);
 	}
 
@@ -42,137 +42,137 @@ public final class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImp
 	}
 
 	@Override
-	public final void bitoff(byte bitNumbers) {
+	public final void bitoff(final byte bitNumbers) {
 		current().bitoff(bitNumbers);
 	}
 
 	@Override
-	public final void bitoff(String bitNumbers) {
+	public final void bitoff(final String bitNumbers) {
 		current().bitoff(bitNumbers);
 	}
-	
+
 	@Override
-	public final void biton(byte bitNumbers) {
+	public final void biton(final byte bitNumbers) {
 		current().biton(bitNumbers);
 	}
 
 	@Override
-	public final void biton(String bitNumbers) {
+	public final void biton(final String bitNumbers) {
 		current().biton(bitNumbers);
 	}
-	
+
 	@Override
-	public final void cat(QString factor1) {
+	public final void cat(final QString factor1) {
 		current().cat(factor1);
 	}
 
 	@Override
-	public final void cat(QString factor1, QString factor2) {
+	public final void cat(final QString factor1, final QString factor2) {
 		current().cat(factor1, factor2);
 	}
 
 	@Override
-	public final void cat(QString factor1, QString factor2, Number space) {
+	public final void cat(final QString factor1, final QString factor2, final Number space) {
 		current().cat(factor1, factor2, space);
 	}
 
 	@Override
-	public final void cat(QString factor1, String factor2) {
+	public final void cat(final QString factor1, final String factor2) {
 		current().cat(factor1, factor2);
 	}
 
 	@Override
-	public final void cat(QString factor1, String factor2, Number space) {
+	public final void cat(final QString factor1, final String factor2, final Number space) {
 		current().cat(factor1, factor2, space);
 	}
 
 	@Override
-	public final void cat(String factor1) {
+	public final void cat(final String factor1) {
 		current().cat(factor1);
 	}
 
 	@Override
-	public final void cat(String factor1, QString factor2) {
+	public final void cat(final String factor1, final QString factor2) {
 		current().cat(factor1, factor2);
 	}
 
 	@Override
-	public final void cat(String factor1, QString factor2, QNumeric space) {
+	public final void cat(final String factor1, final QString factor2, final QNumeric space) {
 		current().cat(factor1, factor2, space);
 	}
 
 	@Override
-	public final void cat(String factor1, String factor2) {
+	public final void cat(final String factor1, final String factor2) {
 		current().cat(factor1, factor2);
 	}
 
 	@Override
-	public final void cat(String factor1, String factor2, QNumeric space) {
+	public final void cat(final String factor1, final String factor2, final QNumeric space) {
 		current().cat(factor1, factor2, space);
 	}
 
 	@Override
-	public final void cat(QString factor1, Number space) {
+	public final void cat(final QString factor1, final Number space) {
 		current().cat(factor1, space);
 	}
 
 	@Override
-	public final void cat(String factor1, Number space) {
+	public final void cat(final String factor1, final Number space) {
 		current().cat(factor1, space);
 	}
 
 	@Override
-	public final void cat(String factor1, String factor2, Number space) {
+	public final void cat(final String factor1, final String factor2, final Number space) {
 		current().cat(factor1, factor2, space);
 	}
 
 	@Override
-	public final void cat(String factor1, String factor2, Number space, boolean clear) {
+	public final void cat(final String factor1, final String factor2, final Number space, final boolean clear) {
 		current().cat(factor1, factor2, space, clear);
 	}
 
 	@Override
-	public final void cat(String factor1, QString factor2, Number space) {
+	public final void cat(final String factor1, final QString factor2, final Number space) {
 		current().cat(factor1, factor2, space);
 	}
 
 	@Override
-	public final void cat(String factor1, QString factor2, Number space, boolean clear) {
+	public final void cat(final String factor1, final QString factor2, final Number space, final boolean clear) {
 		current().cat(factor1, factor2, space, clear);
 	}
 
 	@Override
-	public final boolean eq(QString value) {
+	public final boolean eq(final QString value) {
 		return current().eq(value);
 	}
 
 	@Override
-	public final boolean eq(String value) {
+	public final boolean eq(final String value) {
 		return current().eq(value);
 	}
 
 	@Override
-	public final void eval(boolean value) {
+	public final void eval(final boolean value) {
 		current().eval(value);
 	}
 
 	@Override
-	public final void evalr(String value) {
+	public final void evalr(final String value) {
 		current().evalr(value);
 	}
 
 	@Override
-	public final boolean ge(QString value) {
+	public final boolean ge(final QString value) {
 		return current().ge(value);
 	}
 
 	@Override
-	public final boolean ge(String value) {
+	public final boolean ge(final String value) {
 		return current().ge(value);
 	}
 
 	@Override
-	public final QBufferedData getElement(String name) {
+	public final QBufferedData getElement(final String name) {
 		return current().getElement(name);
 	}
 
@@ -187,42 +187,42 @@ public final class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImp
 	}
 
 	@Override
-	public final boolean gt(QString value) {
+	public final boolean gt(final QString value) {
 		return current().gt(value);
 	}
 
 	@Override
-	public final boolean gt(String value) {
+	public final boolean gt(final String value) {
 		return current().gt(value);
 	}
 
 	@Override
-	public final boolean le(QString value) {
+	public final boolean le(final QString value) {
 		return current().le(value);
 	}
 
 	@Override
-	public final boolean le(String value) {
+	public final boolean le(final String value) {
 		return current().le(value);
 	}
 
 	@Override
-	public final boolean lt(QString value) {
+	public final boolean lt(final QString value) {
 		return current().lt(value);
 	}
 
 	@Override
-	public final boolean lt(String value) {
+	public final boolean lt(final String value) {
 		return current().lt(value);
 	}
 
 	@Override
-	public final boolean ne(QString value) {
+	public final boolean ne(final QString value) {
 		return current().ne(value);
 	}
 
 	@Override
-	public final boolean ne(String value) {
+	public final boolean ne(final String value) {
 		return current().ne(value);
 	}
 
@@ -242,252 +242,252 @@ public final class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImp
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, QString source) {
+	public final void xlate(final QString from, final QString to, final QString source) {
 		current().xlate(from, to, source);
 	}
 
 	@Override
-	public final void xlate(String from, String to, QString source) {
+	public final void xlate(final String from, final String to, final QString source) {
 		current().xlate(from, to, source);
 	}
 
 	@Override
-	public final void xlate(String from, String to, QString source, boolean clear) {
+	public final void xlate(final String from, final String to, final QString source, final boolean clear) {
 		current().xlate(from, to, source, clear);
 	}
 
 	@Override
-	public final void xlate(String from, String to, QString source, Number start) {
+	public final void xlate(final String from, final String to, final QString source, final Number start) {
 		current().xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(String from, String to, QString source, Number start, boolean clear) {
+	public final void xlate(final String from, final String to, final QString source, final Number start, final boolean clear) {
 		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(String from, String to, QString source, QNumeric start) {
+	public final void xlate(final String from, final String to, final QString source, final QNumeric start) {
 		current().xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(String from, String to, QString source, QNumeric start, boolean clear) {
+	public final void xlate(final String from, final String to, final QString source, final QNumeric start, final boolean clear) {
 		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(String from, QString to, QString source) {
+	public final void xlate(final String from, final QString to, final QString source) {
 		current().xlate(from, to, source);
 	}
 
 	@Override
-	public final void xlate(String from, QString to, QString source, boolean clear) {
+	public final void xlate(final String from, final QString to, final QString source, final boolean clear) {
 		current().xlate(from, to, source, clear);
 	}
 
 	@Override
-	public final void xlate(String from, QString to, QString source, Number start) {
+	public final void xlate(final String from, final QString to, final QString source, final Number start) {
 		current().xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(String from, QString to, QString source, Number start, boolean clear) {
+	public final void xlate(final String from, final QString to, final QString source, final Number start, final boolean clear) {
 		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(String from, QString to, QString source, QNumeric start) {
+	public final void xlate(final String from, final QString to, final QString source, final QNumeric start) {
 		current().xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(String from, QString to, QString source, QNumeric start, boolean clear) {
+	public final void xlate(final String from, final QString to, final QString source, final QNumeric start, final boolean clear) {
 		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(QString from, String to, QString source) {
+	public final void xlate(final QString from, final String to, final QString source) {
 		current().xlate(from, to, source);
 	}
 
 	@Override
-	public final void xlate(QString from, String to, QString source, boolean clear) {
+	public final void xlate(final QString from, final String to, final QString source, final boolean clear) {
 		current().xlate(from, to, source, clear);
 	}
 
 	@Override
-	public final void xlate(QString from, String to, QString source, Number start) {
+	public final void xlate(final QString from, final String to, final QString source, final Number start) {
 		current().xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(QString from, String to, QString source, Number start, boolean clear) {
+	public final void xlate(final QString from, final String to, final QString source, final Number start, final boolean clear) {
 		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(QString from, String to, QString source, QNumeric start) {
+	public final void xlate(final QString from, final String to, final QString source, final QNumeric start) {
 		current().xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(QString from, String to, QString source, QNumeric start, boolean clear) {
+	public final void xlate(final QString from, final String to, final QString source, final QNumeric start, final boolean clear) {
 		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(byte from, String to, QString source) {
+	public final void xlate(final byte from, final String to, final QString source) {
 		current().xlate(from, to, source);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, String source) {
+	public final void xlate(final QString from, final QString to, final String source) {
 		current().xlate(from, to, source);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, String source, boolean clear) {
+	public final void xlate(final QString from, final QString to, final String source, final boolean clear) {
 		current().xlate(from, to, source, clear);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, String source, Number start) {
+	public final void xlate(final QString from, final QString to, final String source, final Number start) {
 		current().xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, String source, Number start, boolean clear) {
+	public final void xlate(final QString from, final QString to, final String source, final Number start, final boolean clear) {
 		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, String source, QNumeric start) {
+	public final void xlate(final QString from, final QString to, final String source, final QNumeric start) {
 		current().xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, String source, QNumeric start, boolean clear) {
+	public final void xlate(final QString from, final QString to, final String source, final QNumeric start, final boolean clear) {
 		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, QString source, boolean clear) {
+	public final void xlate(final QString from, final QString to, final QString source, final boolean clear) {
 		current().xlate(from, to, source, clear);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, QString source, Number start) {
+	public final void xlate(final QString from, final QString to, final QString source, final Number start) {
 		current().xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, QString source, Number start, boolean clear) {
+	public final void xlate(final QString from, final QString to, final QString source, final Number start, final boolean clear) {
 		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, QString source, QNumeric start) {
+	public final void xlate(final QString from, final QString to, final QString source, final QNumeric start) {
 		current().xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(QString from, QString to, QString source, QNumeric start, boolean clear) {
+	public final void xlate(final QString from, final QString to, final QString source, final QNumeric start, final boolean clear) {
 		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(String from, String to, String source) {
+	public final void xlate(final String from, final String to, final String source) {
 		current().xlate(from, to, source);
 	}
 
 	@Override
-	public final void xlate(String from, String to, String source, boolean clear) {
+	public final void xlate(final String from, final String to, final String source, final boolean clear) {
 		current().xlate(from, to, source, clear);
 	}
 
 	@Override
-	public final void xlate(String from, String to, String source, Number start) {
+	public final void xlate(final String from, final String to, final String source, final Number start) {
 		current().xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(String from, String to, String source, Number start, boolean clear) {
+	public final void xlate(final String from, final String to, final String source, final Number start, final boolean clear) {
 		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void xlate(String from, String to, String source, QNumeric start) {
+	public final void xlate(final String from, final String to, final String source, final QNumeric start) {
 		current().xlate(from, to, source, start);
 	}
 
 	@Override
-	public final void xlate(String from, String to, String source, QNumeric start, boolean clear) {
+	public final void xlate(final String from, final String to, final String source, final QNumeric start, final boolean clear) {
 		current().xlate(from, to, source, start, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, QString factor2, QNumeric space) {
+	public final void cat(final QString factor1, final QString factor2, final QNumeric space) {
 		current().cat(factor1, factor2, space);
 	}
 
 	@Override
-	public final void cat(QString factor1, QNumeric space) {
+	public final void cat(final QString factor1, final QNumeric space) {
 		current().cat(factor1, space);
 	}
 
 	@Override
-	public final void cat(String factor1, QNumeric space) {
+	public final void cat(final String factor1, final QNumeric space) {
 		current().cat(factor1, space);
 	}
 
 	@Override
-	public final boolean eq(QHexadecimal value) {
+	public final boolean eq(final QHexadecimal value) {
 		return current().eq(value);
 	}
 
 	@Override
-	public final boolean ne(QHexadecimal value) {
+	public final boolean ne(final QHexadecimal value) {
 		return current().ne(value);
 	}
 
 	@Override
-	public final boolean ge(QHexadecimal value) {
+	public final boolean ge(final QHexadecimal value) {
 		return current().ge(value);
 	}
 
 	@Override
-	public final boolean le(QHexadecimal value) {
+	public final boolean le(final QHexadecimal value) {
 		return current().le(value);
 	}
 
 	@Override
-	public final QCharacter qSubst(QNumeric start, QNumeric length) {
+	public final QCharacter qSubst(final QNumeric start, final QNumeric length) {
 		return current().qSubst(start, length);
 	}
 
 	@Override
-	public final QCharacter qSubst(QNumeric start) {
+	public final QCharacter qSubst(final QNumeric start) {
 		return current().qSubst(start);
 	}
 
 	@Override
-	public final QCharacter qSubst(Number start, Number length) {
+	public final QCharacter qSubst(final Number start, final Number length) {
 		return current().qSubst(start, length);
 	}
 
 	@Override
-	public final QCharacter qSubst(Number start) {
+	public final QCharacter qSubst(final Number start) {
 		return current().qSubst(start);
 	}
 
 	@Override
-	public final QCharacter qSubst(QNumeric start, Number length) {
+	public final QCharacter qSubst(final QNumeric start, final Number length) {
 		return current().qSubst(start, length);
 	}
 
 	@Override
-	public final QCharacter qSubst(Number start, QNumeric length) {
+	public final QCharacter qSubst(final Number start, final QNumeric length) {
 		return current().qSubst(start, length);
 	}
 
@@ -507,140 +507,140 @@ public final class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImp
 	}
 
 	@Override
-	public final void testn(QIndicator numeric) {
+	public final void testn(final QIndicator numeric) {
 		current().testn(numeric);
 	}
 
 	@Override
-	public final void testn(QIndicator numeric, QIndicator blank) {
+	public final void testn(final QIndicator numeric, final QIndicator blank) {
 		current().testn(numeric, blank);
 	}
 
 	@Override
-	public final void testn(QIndicator numeric, QIndicator blank, QIndicator numericBlank) {
+	public final void testn(final QIndicator numeric, final QIndicator blank, final QIndicator numericBlank) {
 		current().testn(numeric, blank, numericBlank);
 	}
 
-	public final QNumeric qScan(QCharacter source) {
+	public final QNumeric qScan(final QCharacter source) {
 		return current().qScan(source);
 	}
 
-	public final QNumeric qScan(QCharacter source, QIndicator found) {
+	public final QNumeric qScan(final QCharacter source, final QIndicator found) {
 		return current().qScan(source, found);
 	}
 
-	public final QNumeric qScan(QCharacter source, QNumeric start) {
+	public final QNumeric qScan(final QCharacter source, final QNumeric start) {
 		return current().qScan(source, start);
 	}
 
-	public final QNumeric qScan(QCharacter source, QNumeric start, QIndicator found) {
+	public final QNumeric qScan(final QCharacter source, final QNumeric start, final QIndicator found) {
 		return current().qScan(source, start, found);
 	}
 
-	public final QNumeric qScan(QCharacter source, Number start) {
+	public final QNumeric qScan(final QCharacter source, final Number start) {
 		return current().qScan(source, start);
 	}
 
-	public final QNumeric qScan(QCharacter source, Number start, QIndicator found) {
+	public final QNumeric qScan(final QCharacter source, final Number start, final QIndicator found) {
 		return current().qScan(source, start, found);
 	}
 
-	public final QNumeric qScan(String source) {
+	public final QNumeric qScan(final String source) {
 		return current().qScan(source);
 	}
 
-	public final QNumeric qScan(String source, QIndicator found) {
+	public final QNumeric qScan(final String source, final QIndicator found) {
 		return current().qScan(source, found);
 	}
 
-	public final QNumeric qScan(String source, QNumeric start) {
+	public final QNumeric qScan(final String source, final QNumeric start) {
 		return current().qScan(source, start);
 	}
 
-	public final QNumeric qScan(String source, QNumeric start, QIndicator found) {
+	public final QNumeric qScan(final String source, final QNumeric start, final QIndicator found) {
 		return current().qScan(source, start, found);
 	}
 
-	public final QNumeric qScan(String source, Number start) {
+	public final QNumeric qScan(final String source, final Number start) {
 		return current().qScan(source, start);
 	}
 
-	public final QNumeric qScan(String source, Number start, QIndicator found) {
+	public final QNumeric qScan(final String source, final Number start, final QIndicator found) {
 		return current().qScan(source, start, found);
 	}
 
 	@Override
-	public final void cat(String factor1, String factor2, QNumeric space, boolean clear) {
+	public final void cat(final String factor1, final String factor2, final QNumeric space, final boolean clear) {
 		current().cat(factor1, factor2, space, clear);
 	}
 
 	@Override
-	public final void cat(String factor1, QString factor2, QNumeric space, boolean clear) {
+	public final void cat(final String factor1, final QString factor2, final QNumeric space, final boolean clear) {
 		current().cat(factor1, factor2, space, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, QString factor2, QNumeric space, boolean clear) {
+	public final void cat(final QString factor1, final QString factor2, final QNumeric space, final boolean clear) {
 		current().cat(factor1, factor2, space, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, QString factor2, Number space, boolean clear) {
+	public final void cat(final QString factor1, final QString factor2, final Number space, final boolean clear) {
 		current().cat(factor1, factor2, space, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, String factor2, Number space, boolean clear) {
+	public final void cat(final QString factor1, final String factor2, final Number space, final boolean clear) {
 		current().cat(factor1, factor2, space, clear);
 	}
 
 	@Override
-	public final void cat(String factor1, String factor2, boolean clear) {
+	public final void cat(final String factor1, final String factor2, final boolean clear) {
 		current().cat(factor1, factor2, clear);
 	}
 
 	@Override
-	public final void cat(String factor1, QString factor2, boolean clear) {
+	public final void cat(final String factor1, final QString factor2, final boolean clear) {
 		current().cat(factor1, factor2, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, QString factor2, boolean clear) {
+	public final void cat(final QString factor1, final QString factor2, final boolean clear) {
 		current().cat(factor1, factor2, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, String factor2, boolean clear) {
+	public final void cat(final QString factor1, final String factor2, final boolean clear) {
 		current().cat(factor1, factor2, clear);
 	}
 
 	@Override
-	public final void cat(String factor1, boolean clear) {
+	public final void cat(final String factor1, final boolean clear) {
 		current().cat(factor1, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, Number space, boolean clear) {
+	public final void cat(final QString factor1, final Number space, final boolean clear) {
 		current().cat(factor1, clear);
 	}
 
 	@Override
-	public final void cat(String factor1, Number space, boolean clear) {
+	public final void cat(final String factor1, final Number space, final boolean clear) {
 		current().cat(factor1, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, QNumeric space, boolean clear) {
+	public final void cat(final QString factor1, final QNumeric space, final boolean clear) {
 		current().cat(factor1, space, clear);
 	}
 
 	@Override
-	public final void cat(String factor1, QNumeric space, boolean clear) {
+	public final void cat(final String factor1, final QNumeric space, final boolean clear) {
 		current().cat(factor1, space, clear);
 	}
 
 	@Override
-	public final void cat(QString factor1, boolean clear) {
+	public final void cat(final QString factor1, final boolean clear) {
 		current().cat(factor1, clear);
 	}
 
@@ -655,12 +655,12 @@ public final class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImp
 	}
 
 	@Override
-	public final QString qPlus(String factor1) {
+	public final QString qPlus(final String factor1) {
 		return current().qPlus(factor1);
 	}
 
 	@Override
-	public final QString qPlus(QString factor1) {
+	public final QString qPlus(final QString factor1) {
 		return current().qPlus(factor1);
 	}
 
@@ -670,12 +670,12 @@ public final class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImp
 	}
 
 	@Override
-	public final void eval(QIndicator value) {
+	public final void eval(final QIndicator value) {
 		current().eval(value);
 	}
 
 	@Override
-	public final void evalr(QString value) {
+	public final void evalr(final QString value) {
 		current().evalr(value);
 	}
 
@@ -689,299 +689,297 @@ public final class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImp
 	}
 
 	@Override
-	public final void movea(QArray<? extends QString> value) {
+	public final void movea(final QArray<? extends QString> value) {
 		current().movea(value);
 	}
 
 	@Override
-	public final void movea(QArray<? extends QString> value, boolean clear) {
+	public final void movea(final QArray<? extends QString> value, final boolean clear) {
 		current().movea(value, clear);
 	}
 
 	@Override
-	public final void movea(QArray<? extends QString> value, int startIndex) {
-		current().movea(value, startIndex);		
+	public final void movea(final QArray<? extends QString> value, final int startIndex) {
+		current().movea(value, startIndex);
 	}
 
 	@Override
-	public final void movea(QArray<? extends QString> value, int startIndex, boolean clear) {
+	public final void movea(final QArray<? extends QString> value, final int startIndex, final boolean clear) {
 		current().movea(value, startIndex, clear);
 	}
 
 	@Override
-	public final void movea(QArray<? extends QString> value, QNumeric startIndex) {
-		current().movea(value, startIndex);		
+	public final void movea(final QArray<? extends QString> value, final QNumeric startIndex) {
+		current().movea(value, startIndex);
 	}
 
 	@Override
-	public final void movea(QArray<? extends QString> value, QNumeric startIndex, boolean clear) {
-		current().movea(value, startIndex, clear);		
+	public final void movea(final QArray<? extends QString> value, final QNumeric startIndex, final boolean clear) {
+		current().movea(value, startIndex, clear);
 	}
 
-	
 	@Override
-	public final QNumeric qCheck(QCharacter base) {
+	public final QNumeric qCheck(final QCharacter base) {
 		return current().qCheck(base);
 	}
 
 	@Override
-	public final QNumeric qCheck(QCharacter base, QIndicator found) {
+	public final QNumeric qCheck(final QCharacter base, final QIndicator found) {
 		return current().qCheck(base, found);
 	}
 
 	@Override
-	public final QNumeric qCheck(QCharacter base, QNumeric start) {
+	public final QNumeric qCheck(final QCharacter base, final QNumeric start) {
 		return current().qCheck(base, start);
 	}
 
 	@Override
-	public final QNumeric qCheck(QCharacter base, QNumeric start, QIndicator found) {
+	public final QNumeric qCheck(final QCharacter base, final QNumeric start, final QIndicator found) {
 		return current().qCheck(base, start, found);
 	}
 
 	@Override
-	public final QNumeric qCheck(QCharacter base, Number start) {
+	public final QNumeric qCheck(final QCharacter base, final Number start) {
 		return current().qCheck(base, start);
 	}
 
 	@Override
-	public final QNumeric qCheck(QCharacter base, Number start, QIndicator found) {
+	public final QNumeric qCheck(final QCharacter base, final Number start, final QIndicator found) {
 		return current().qCheck(base, start, found);
 	}
 
 	@Override
-	public final QNumeric qCheck(String base) {
+	public final QNumeric qCheck(final String base) {
 		return current().qCheck(base);
 	}
 
 	@Override
-	public final QNumeric qCheck(String base, QIndicator found) {
+	public final QNumeric qCheck(final String base, final QIndicator found) {
 		return current().qCheck(base, found);
 	}
 
 	@Override
-	public final QNumeric qCheck(String base, QNumeric start) {
+	public final QNumeric qCheck(final String base, final QNumeric start) {
 		return current().qCheck(base, start);
 	}
 
 	@Override
-	public final QNumeric qCheck(String base, QNumeric start, QIndicator found) {
+	public final QNumeric qCheck(final String base, final QNumeric start, final QIndicator found) {
 		return current().qCheck(base, start, found);
 	}
 
 	@Override
-	public final QNumeric qCheck(String base, Number start) {
+	public final QNumeric qCheck(final String base, final Number start) {
 		return current().qCheck(base, start);
 	}
 
 	@Override
-	public final QNumeric qCheck(String base, Number start, QIndicator found) {
+	public final QNumeric qCheck(final String base, final Number start, final QIndicator found) {
 		return current().qCheck(base, start, found);
 	}
-	
+
 	@Override
-	public final QNumeric qCheckr(QCharacter base) {
+	public final QNumeric qCheckr(final QCharacter base) {
 		return current().qCheck(base);
 	}
 
 	@Override
-	public final QNumeric qCheckr(QCharacter base, QIndicator found) {
+	public final QNumeric qCheckr(final QCharacter base, final QIndicator found) {
 		return current().qCheck(base, found);
 	}
 
 	@Override
-	public final QNumeric qCheckr(QCharacter base, QNumeric start) {
+	public final QNumeric qCheckr(final QCharacter base, final QNumeric start) {
 		return current().qCheck(base, start);
 	}
 
 	@Override
-	public final QNumeric qCheckr(QCharacter base, QNumeric start, QIndicator found) {
+	public final QNumeric qCheckr(final QCharacter base, final QNumeric start, final QIndicator found) {
 		return current().qCheck(base, start, found);
 	}
 
 	@Override
-	public final QNumeric qCheckr(QCharacter base, Number start) {
+	public final QNumeric qCheckr(final QCharacter base, final Number start) {
 		return current().qCheck(base, start);
 	}
 
 	@Override
-	public final QNumeric qCheckr(QCharacter base, Number start, QIndicator found) {
+	public final QNumeric qCheckr(final QCharacter base, final Number start, final QIndicator found) {
 		return current().qCheck(base, start, found);
 	}
 
 	@Override
-	public final QNumeric qCheckr(String base) {
+	public final QNumeric qCheckr(final String base) {
 		return current().qCheck(base);
 	}
 
 	@Override
-	public final QNumeric qCheckr(String base, QIndicator found) {
+	public final QNumeric qCheckr(final String base, final QIndicator found) {
 		return current().qCheck(base, found);
 	}
 
 	@Override
-	public final QNumeric qCheckr(String base, QNumeric start) {
+	public final QNumeric qCheckr(final String base, final QNumeric start) {
 		return current().qCheck(base, start);
 	}
 
 	@Override
-	public final QNumeric qCheckr(String base, QNumeric start, QIndicator found) {
+	public final QNumeric qCheckr(final String base, final QNumeric start, final QIndicator found) {
 		return current().qCheck(base, start, found);
 	}
 
 	@Override
-	public final QNumeric qCheckr(String base, Number start) {
+	public final QNumeric qCheckr(final String base, final Number start) {
 		return current().qCheck(base, start);
 	}
 
 	@Override
-	public final QNumeric qCheckr(String base, Number start, QIndicator found) {
+	public final QNumeric qCheckr(final String base, final Number start, final QIndicator found) {
 		return current().qCheck(base, start, found);
 	}
-	
+
 	@Override
-	public final QDatetime qDate(DatetimeFormat format) {
+	public final QDatetime qDate(final DatetimeFormat format) {
 		return current().qDate(format);
 	}
 
 	@Override
-	public final QCharacter qTrim(String trimmed) {
+	public final QCharacter qTrim(final String trimmed) {
 		return current().qTrim(trimmed);
 	}
 
 	@Override
-	public final QCharacter qTrim(QString trimmed) {
+	public final QCharacter qTrim(final QString trimmed) {
 		return current().qTrim(trimmed);
 	}
 
 	@Override
-	public final void cat(byte factor1, String factor2) {
+	public final void cat(final byte factor1, final String factor2) {
 		current().cat(factor1, factor2);
 	}
 
 	@Override
-	public final void testb(byte bitNumbers, QIndicator off) {
+	public final void testb(final byte bitNumbers, final QIndicator off) {
 		current().testb(bitNumbers, off);
 	}
 
 	@Override
-	public final void testb(String bitNumbers, QIndicator off) {
+	public final void testb(final String bitNumbers, final QIndicator off) {
 		current().testb(bitNumbers, off);
 	}
 
 	@Override
-	public final void testb(QString bitNumbers, QIndicator off) {
+	public final void testb(final QString bitNumbers, final QIndicator off) {
 		current().testb(bitNumbers, off);
 	}
 
 	@Override
-	public final void testb(byte bitNumbers, QIndicator off, QIndicator on) {
+	public final void testb(final byte bitNumbers, final QIndicator off, final QIndicator on) {
 		current().testb(bitNumbers, off, on);
 	}
 
 	@Override
-	public final void testb(String bitNumbers, QIndicator off, QIndicator on) {
+	public final void testb(final String bitNumbers, final QIndicator off, final QIndicator on) {
 		current().testb(bitNumbers, off, on);
 	}
 
 	@Override
-	public final void testb(QString bitNumbers, QIndicator off, QIndicator on) {
+	public final void testb(final QString bitNumbers, final QIndicator off, final QIndicator on) {
 		current().testb(bitNumbers, off, on);
 	}
 
 	@Override
-	public final void testb(byte bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
+	public final void testb(final byte bitNumbers, final QIndicator off, final QIndicator on, final QIndicator equal) {
 		current().testb(bitNumbers, off, on, equal);
 	}
 
 	@Override
-	public final void testb(String bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
+	public final void testb(final String bitNumbers, final QIndicator off, final QIndicator on, final QIndicator equal) {
 		current().testb(bitNumbers, off, on, equal);
 	}
 
 	@Override
-	public final void testb(QString bitNumbers, QIndicator off, QIndicator on, QIndicator equal) {
+	public final void testb(final QString bitNumbers, final QIndicator off, final QIndicator on, final QIndicator equal) {
 		current().testb(bitNumbers, off, on, equal);
 	}
 
 	@Override
-	public final void eval(QDataArea<? extends QString> value) {
+	public final void eval(final QDataArea<? extends QString> value) {
 		current().eval(value);
 	}
-	
+
 	@Override
-	public final void reset() {		
+	public final void reset() {
 		current().reset();
 	}
 
 	@Override
-	public final boolean eq(byte value) {
+	public final boolean eq(final byte value) {
 		return current().eq(value);
 	}
 
 	@Override
-	public final QBufferedData eval(byte value) {
+	public final QBufferedData eval(final byte value) {
 		return current().eval(value);
 	}
 
 	@Override
-	public final boolean ge(byte value) {
+	public final boolean ge(final byte value) {
 		return current().ge(value);
 	}
 
 	@Override
-	public final boolean gt(byte value) {
+	public final boolean gt(final byte value) {
 		return current().gt(value);
 	}
 
 	@Override
-	public final boolean le(byte value) {
+	public final boolean le(final byte value) {
 		return current().le(value);
 	}
 
 	@Override
-	public final boolean lt(byte value) {
+	public final boolean lt(final byte value) {
 		return current().lt(value);
 	}
 
 	@Override
-	public final boolean ne(byte value) {
+	public final boolean ne(final byte value) {
 		return current().ne(value);
 	}
 
 	@Override
-	public final void eval(QScroller<? extends QString> value) {
-		current().eval(value.current());
-	}
-	
-	@Override
-	public final void eval(QStroller<? extends QDataStruct> value) {
+	public final void eval(final QScroller<? extends QString> value) {
 		current().eval(value.current());
 	}
 
 	@Override
-	public final void xlate(String from, byte to, QString source) {
+	public final void eval(final QStroller<? extends QDataStruct> value) {
+		current().eval(value.current());
+	}
+
+	@Override
+	public final void xlate(final String from, final byte to, final QString source) {
 		current().xlate(from, to, source);
 	}
 
 	@Override
-	public final void biton(QString bitMask) {
+	public final void biton(final QString bitMask) {
 		current().biton(bitMask);
 	}
 
 	@Override
-	public final QNumeric qScan(byte argument) {
+	public final QNumeric qScan(final byte argument) {
 		return current().qScan(argument);
 	}
 
 	@Override
-	public final QNumeric qScan(byte argument, QNumeric start) {
+	public final QNumeric qScan(final byte argument, final QNumeric start) {
 		return current().qScan(argument, start);
 	}
 
 	@Override
-	public final QNumeric qScan(byte argument, Number start) {
+	public final QNumeric qScan(final byte argument, final Number start) {
 		return current().qScan(argument, start);
 	}
-	
 }

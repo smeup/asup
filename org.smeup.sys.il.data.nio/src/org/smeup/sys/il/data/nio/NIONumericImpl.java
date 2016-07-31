@@ -34,50 +34,49 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	private static final long serialVersionUID = 1L;
 	protected static final byte INIT = (byte) 0xF0;
-			
-	public NIONumericImpl(QDataContext dataContext) {
+
+	public NIONumericImpl(final QDataContext dataContext) {
 		super(dataContext);
 	}
 
 	@Override
-	public final QBufferedData eval(DataSpecial value) {
+	public final QBufferedData eval(final DataSpecial value) {
 		_write(_toBytes(value));
 		return this;
 	}
 
 	@Override
-	protected void _clear() {
+	protected final void _clear() {
 		eval(0);
 	}
 
 	@Override
-	protected final byte[] _toBytes(Number value) {
+	protected final byte[] _toBytes(final Number value) {
 		return _toBytes(value.toString());
 	}
 
 	@Override
-	protected final byte[] _toBytes(QDatetime value) {
+	protected final byte[] _toBytes(final QDatetime value) {
 		return value.asBytes();
 	}
 
 	@Override
-	protected final byte[] _toBytes(QNumeric value) {
+	protected final byte[] _toBytes(final QNumeric value) {
 		return value.asBytes();
 	}
 
 	@Override
-	protected final byte[] _toBytes(QString value) {
-		byte[] bytes = value.asBytes();
-		for (int i = 0; i < bytes.length; i++) {
+	protected final byte[] _toBytes(final QString value) {
+		final byte[] bytes = value.asBytes();
+		for (int i = 0; i < bytes.length; i++)
 			if (bytes[i] == NIOStringImpl.INIT)
 				bytes[i] = NIONumericImpl.INIT;
-		}
 
 		return bytes;
 	}
 
 	@Override
-	protected final byte[] _toBytes(String value) {
+	protected final byte[] _toBytes(final String value) {
 		return value.getBytes(getDataContext().getCharset());
 	}
 
@@ -110,299 +109,299 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 		return _readNumber().shortValue();
 	}
 
-	protected final int compareNumber(Number value) {
-		double d1 = asDouble();
-		double d2 = value.doubleValue();
+	protected final int compareNumber(final Number value) {
+		final double d1 = asDouble();
+		final double d2 = value.doubleValue();
 
-		int result = Double.compare(d1, d2);
+		final int result = Double.compare(d1, d2);
 
 		return result;
 	}
 
 	@Override
-	public void check(QCharacter comparator, QCharacter base) {
+	public final void check(final QCharacter comparator, final QCharacter base) {
 		eval(comparator.qCheck(base));
 	}
 
 	@Override
-	public void check(String comparator, QCharacter base) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void check(final String comparator, final QCharacter base) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheck(base));
 	}
 
 	@Override
-	public void check(QCharacter comparator, QCharacter base, QIndicator found) {
+	public final void check(final QCharacter comparator, final QCharacter base, final QIndicator found) {
 		eval(comparator.qCheck(base, found));
 	}
 
 	@Override
-	public void check(String comparator, QCharacter base, QIndicator found) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void check(final String comparator, final QCharacter base, final QIndicator found) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheck(base, found));
 	}
 
 	@Override
-	public void check(QCharacter comparator, QCharacter base, QNumeric start) {
+	public final void check(final QCharacter comparator, final QCharacter base, final QNumeric start) {
 		eval(comparator.qCheck(base, start));
 	}
 
 	@Override
-	public void check(String comparator, QCharacter base, QNumeric start) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void check(final String comparator, final QCharacter base, final QNumeric start) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheck(base, start));
 	}
 
 	@Override
-	public void check(QCharacter comparator, QCharacter base, QNumeric start, QIndicator found) {
+	public final void check(final QCharacter comparator, final QCharacter base, final QNumeric start, final QIndicator found) {
 		eval(comparator.qCheck(base, start, found));
 	}
 
 	@Override
-	public void check(String comparator, QCharacter base, QNumeric start, QIndicator found) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void check(final String comparator, final QCharacter base, final QNumeric start, final QIndicator found) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheck(base, start, found));
 	}
 
 	@Override
-	public void check(QCharacter comparator, QCharacter base, Number start) {
+	public final void check(final QCharacter comparator, final QCharacter base, final Number start) {
 		eval(comparator.qCheck(base, start));
 	}
 
 	@Override
-	public void check(String comparator, QCharacter base, Number start) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void check(final String comparator, final QCharacter base, final Number start) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheck(base, start));
 	}
 
 	@Override
-	public void check(QCharacter comparator, QCharacter base, Number start, QIndicator found) {
+	public final void check(final QCharacter comparator, final QCharacter base, final Number start, final QIndicator found) {
 		eval(comparator.qCheck(base, start, found));
 	}
 
 	@Override
-	public void check(String comparator, QCharacter base, Number start, QIndicator found) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void check(final String comparator, final QCharacter base, final Number start, final QIndicator found) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheck(base, start, found));
 	}
 
 	@Override
-	public void check(QCharacter comparator, String base) {
+	public final void check(final QCharacter comparator, final String base) {
 		eval(comparator.qCheck(base));
 	}
 
 	@Override
-	public void check(String comparator, String base) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void check(final String comparator, final String base) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheck(base));
 	}
 
 	@Override
-	public void check(QCharacter comparator, String base, QIndicator found) {
+	public final void check(final QCharacter comparator, final String base, final QIndicator found) {
 		eval(comparator.qCheck(base, found));
 	}
 
 	@Override
-	public void check(String comparator, String base, QIndicator found) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void check(final String comparator, final String base, final QIndicator found) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheck(base, found));
 	}
 
 	@Override
-	public void check(QCharacter comparator, String base, QNumeric start) {
+	public final void check(final QCharacter comparator, final String base, final QNumeric start) {
 		eval(comparator.qCheck(base, start));
 	}
 
 	@Override
-	public void check(String comparator, String base, QNumeric start) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void check(final String comparator, final String base, final QNumeric start) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheck(base, start));
 	}
 
 	@Override
-	public void check(QCharacter comparator, String base, QNumeric start, QIndicator found) {
+	public final void check(final QCharacter comparator, final String base, final QNumeric start, final QIndicator found) {
 		eval(comparator.qCheck(base, start, found));
 	}
 
 	@Override
-	public void check(String comparator, String base, QNumeric start, QIndicator found) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void check(final String comparator, final String base, final QNumeric start, final QIndicator found) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheck(base, start, found));
 	}
 
 	@Override
-	public void check(QCharacter comparator, String base, Number start) {
+	public final void check(final QCharacter comparator, final String base, final Number start) {
 		eval(comparator.qCheck(base, start));
 	}
 
 	@Override
-	public void check(String comparator, String base, Number start) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void check(final String comparator, final String base, final Number start) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheck(base, start));
 	}
 
 	@Override
-	public void check(QCharacter comparator, String base, Number start, QIndicator found) {
+	public final void check(final QCharacter comparator, final String base, final Number start, final QIndicator found) {
 		eval(comparator.qCheck(base, start, found));
 	}
 
 	@Override
-	public void check(String comparator, String base, Number start, QIndicator found) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void check(final String comparator, final String base, final Number start, final QIndicator found) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheck(base, start, found));
 	}
 
 	@Override
-	public void checkr(QCharacter comparator, QCharacter base) {
+	public final void checkr(final QCharacter comparator, final QCharacter base) {
 		eval(comparator.qCheckr(base));
 	}
 
 	@Override
-	public void checkr(String comparator, QCharacter base) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void checkr(final String comparator, final QCharacter base) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheckr(base));
 	}
 
 	@Override
-	public void checkr(QCharacter comparator, QCharacter base, QIndicator found) {
+	public final void checkr(final QCharacter comparator, final QCharacter base, final QIndicator found) {
 		eval(comparator.qCheckr(base, found));
 	}
 
 	@Override
-	public void checkr(String comparator, QCharacter base, QIndicator found) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void checkr(final String comparator, final QCharacter base, final QIndicator found) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheckr(base, found));
 	}
 
 	@Override
-	public void checkr(QCharacter comparator, QCharacter base, QNumeric start) {
+	public final void checkr(final QCharacter comparator, final QCharacter base, final QNumeric start) {
 		eval(comparator.qCheckr(base, start));
 	}
 
 	@Override
-	public void checkr(String comparator, QCharacter base, QNumeric start) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void checkr(final String comparator, final QCharacter base, final QNumeric start) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheckr(base, start));
 	}
 
 	@Override
-	public void checkr(QCharacter comparator, QCharacter base, QNumeric start, QIndicator found) {
+	public final void checkr(final QCharacter comparator, final QCharacter base, final QNumeric start, final QIndicator found) {
 		eval(comparator.qCheckr(base, start, found));
 	}
 
 	@Override
-	public void checkr(String comparator, QCharacter base, QNumeric start, QIndicator found) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void checkr(final String comparator, final QCharacter base, final QNumeric start, final QIndicator found) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheckr(base, start, found));
 	}
 
 	@Override
-	public void checkr(QCharacter comparator, QCharacter base, Number start) {
+	public final void checkr(final QCharacter comparator, final QCharacter base, final Number start) {
 		eval(comparator.qCheckr(base, start));
 	}
 
 	@Override
-	public void checkr(String comparator, QCharacter base, Number start) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void checkr(final String comparator, final QCharacter base, final Number start) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheckr(base, start));
 	}
 
 	@Override
-	public void checkr(QCharacter comparator, QCharacter base, Number start, QIndicator found) {
+	public final void checkr(final QCharacter comparator, final QCharacter base, final Number start, final QIndicator found) {
 		eval(comparator.qCheckr(base, start, found));
 	}
 
 	@Override
-	public void checkr(String comparator, QCharacter base, Number start, QIndicator found) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void checkr(final String comparator, final QCharacter base, final Number start, final QIndicator found) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheckr(base, start, found));
 	}
 
 	@Override
-	public void checkr(QCharacter comparator, String base) {
+	public final void checkr(final QCharacter comparator, final String base) {
 		eval(comparator.qCheckr(base));
 	}
 
 	@Override
-	public void checkr(String comparator, String base) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void checkr(final String comparator, final String base) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheckr(base));
 	}
 
 	@Override
-	public void checkr(QCharacter comparator, String base, QIndicator found) {
+	public final void checkr(final QCharacter comparator, final String base, final QIndicator found) {
 		eval(comparator.qCheckr(base, found));
 	}
 
 	@Override
-	public void checkr(String comparator, String base, QIndicator found) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void checkr(final String comparator, final String base, final QIndicator found) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheckr(base, found));
 	}
 
 	@Override
-	public void checkr(QCharacter comparator, String base, QNumeric start) {
+	public final void checkr(final QCharacter comparator, final String base, final QNumeric start) {
 		eval(comparator.qCheckr(base, start));
 	}
 
 	@Override
-	public void checkr(String comparator, String base, QNumeric start) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void checkr(final String comparator, final String base, final QNumeric start) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheckr(base, start));
 	}
 
 	@Override
-	public void checkr(QCharacter comparator, String base, QNumeric start, QIndicator found) {
+	public final void checkr(final QCharacter comparator, final String base, final QNumeric start, final QIndicator found) {
 		eval(comparator.qCheckr(base, start, found));
 	}
 
 	@Override
-	public void checkr(String comparator, String base, QNumeric start, QIndicator found) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void checkr(final String comparator, final String base, final QNumeric start, final QIndicator found) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheckr(base, start, found));
 	}
 
 	@Override
-	public void checkr(QCharacter comparator, String base, Number start) {
+	public final void checkr(final QCharacter comparator, final String base, final Number start) {
 		eval(comparator.qCheckr(base, start));
 	}
 
 	@Override
-	public void checkr(String comparator, String base, Number start) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void checkr(final String comparator, final String base, final Number start) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheckr(base, start));
 	}
 
 	@Override
-	public void checkr(QCharacter comparator, String base, Number start, QIndicator found) {
+	public final void checkr(final QCharacter comparator, final String base, final Number start, final QIndicator found) {
 		eval(comparator.qCheckr(base, start, found));
 	}
 
 	@Override
-	public void checkr(String comparator, String base, Number start, QIndicator found) {
-		QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
+	public final void checkr(final String comparator, final String base, final Number start, final QIndicator found) {
+		final QCharacter character = getDataContext().getDataFactory().createCharacter(comparator.length(), false, true);
 		character.eval(comparator);
 		eval(character.qCheckr(base, start, found));
 	}
@@ -413,91 +412,91 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QNumeric divide(Number value) {
+	public final QNumeric divide(final Number value) {
 		return divide(value, false);
 	}
 
 	@Override
-	public final QNumeric divide(Number value, boolean halfAdjust) {
+	public final QNumeric divide(final Number value, final boolean halfAdjust) {
 		eval(asDouble() / value.doubleValue(), halfAdjust);
 		return this;
 	}
 
 	@Override
-	public final QNumeric divide(Number value, QNumeric remainderTarget) {
+	public final QNumeric divide(final Number value, final QNumeric remainderTarget) {
 		qDivOperation(value, remainderTarget);
 		return this;
 	}
 
 	@Override
-	public final QNumeric divide(QNumeric value) {
+	public final QNumeric divide(final QNumeric value) {
 		return divide(value, false);
 	}
 
 	@Override
-	public final QNumeric divide(QNumeric value, QNumeric remainderTarget) {
+	public final QNumeric divide(final QNumeric value, final QNumeric remainderTarget) {
 		qDivOperation(value.asDouble(), remainderTarget);
 		return this;
 	}
 
 	@Override
-	public final QNumeric divide(QNumeric value, boolean halfAdjust) {
+	public final QNumeric divide(final QNumeric value, final boolean halfAdjust) {
 		eval(asDouble() / value.asDouble(), halfAdjust);
 		return this;
 	}
 
 	@Override
-	public final boolean eq(Number value) {
+	public final boolean eq(final Number value) {
 		return compareNumber(value) == 0;
 	}
 
 	@Override
-	public final boolean eq(QNumeric value) {
+	public final boolean eq(final QNumeric value) {
 		return compareNumber(value.asDouble()) == 0;
 	}
 
 	@Override
-	public final void eval(Number value) {
+	public final void eval(final Number value) {
 		eval(value, false);
 	}
 
 	@Override
-	public final void eval(Number value, boolean halfAdjust) {
+	public final void eval(final Number value, final boolean halfAdjust) {
 		_writeNumber(value, halfAdjust);
 	}
 
 	@Override
-	public final void eval(QNumeric value) {
+	public final void eval(final QNumeric value) {
 		eval(value, false);
 	}
 
 	@Override
-	public final void eval(QNumeric value, boolean halfAdjust) {
+	public final void eval(final QNumeric value, final boolean halfAdjust) {
 		_writeNumber(value.asNumber(), halfAdjust);
 	}
 
 	@Override
-	public void eval(Number value, boolean halfAdjust, boolean maxPrecision) {
+	public final void eval(final Number value, final boolean halfAdjust, final boolean maxPrecision) {
 		_writeNumber(value, halfAdjust);
 	}
 
 	@Override
-	public void eval(QNumeric value, boolean halfAdjust, boolean maxPrecision) {
+	public final void eval(final QNumeric value, final boolean halfAdjust, final boolean maxPrecision) {
 		_writeNumber(value.asDouble(), halfAdjust);
 	}
 
 	@Override
-	public final void eval(QScroller<? extends QNumeric> value) {
+	public final void eval(final QScroller<? extends QNumeric> value) {
 		eval(value.current(), false);
 	}
-	
+
 	@Override
-	public boolean ge(Number value) {
+	public final boolean ge(final Number value) {
 		return compareNumber(value) >= 0;
 	}
 
 	@Override
-	public final boolean ge(QNumeric value) {
+	public final boolean ge(final QNumeric value) {
 		return compareNumber(value.asDouble()) >= 0;
 	}
 
@@ -507,12 +506,12 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final boolean gt(Number value) {
+	public final boolean gt(final Number value) {
 		return compareNumber(value) > 0;
 	}
 
 	@Override
-	public final boolean gt(QNumeric value) {
+	public final boolean gt(final QNumeric value) {
 		return compareNumber(value.asDouble()) > 0;
 	}
 
@@ -525,8 +524,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	public final boolean isEmpty() {
 		try {
 			return eq(0);
-		}
-		catch(Exception e) {
+		} catch (final Exception e) {
 			return true;
 		}
 	}
@@ -537,65 +535,65 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final boolean le(Number value) {
+	public final boolean le(final Number value) {
 		return compareNumber(value) <= 0;
 	}
 
 	@Override
-	public final boolean le(QNumeric value) {
+	public final boolean le(final QNumeric value) {
 		return compareNumber(value.asDouble()) <= 0;
 	}
 
 	@Override
-	public final boolean lt(Number value) {
+	public final boolean lt(final Number value) {
 		return compareNumber(value) < 0;
 	}
 
 	@Override
-	public final boolean lt(QNumeric value) {
+	public final boolean lt(final QNumeric value) {
 		return compareNumber(value.asDouble()) < 0;
 	}
 
 	@Override
-	public final QNumeric minus(Number value) {
+	public final QNumeric minus(final Number value) {
 		return minus(value, false);
 	}
 
 	@Override
-	public final QNumeric minus(Number value, boolean halfAdjust) {
+	public final QNumeric minus(final Number value, final boolean halfAdjust) {
 		eval(asDouble() - value.doubleValue());
 		return this;
 	}
 
 	@Override
-	public final QNumeric minus(QNumeric value) {
+	public final QNumeric minus(final QNumeric value) {
 		return minus(value, false);
 	}
 
 	@Override
-	public final QNumeric minus(QNumeric value, boolean halfAdjust) {
+	public final QNumeric minus(final QNumeric value, final boolean halfAdjust) {
 		eval(asDouble() - value.asDouble(), halfAdjust);
 		return this;
 	}
 
 	@Override
-	public final QNumeric mult(Number value) {
+	public final QNumeric mult(final Number value) {
 		return mult(value, false);
 	}
 
 	@Override
-	public final QNumeric mult(Number value, boolean halfAdjust) {
+	public final QNumeric mult(final Number value, final boolean halfAdjust) {
 		eval(asDouble() * value.doubleValue(), halfAdjust);
 		return this;
 	}
 
 	@Override
-	public final QNumeric mult(QNumeric value) {
+	public final QNumeric mult(final QNumeric value) {
 		return mult(value, false);
 	}
 
 	@Override
-	public final QNumeric mult(QNumeric value, boolean halfAdjust) {
+	public final QNumeric mult(final QNumeric value, final boolean halfAdjust) {
 		eval(asDouble() * value.asDouble(), halfAdjust);
 		return this;
 	}
@@ -606,77 +604,77 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final boolean ne(Number value) {
+	public final boolean ne(final Number value) {
 		return !eq(value);
 	}
 
 	@Override
-	public final boolean ne(QNumeric value) {
+	public final boolean ne(final QNumeric value) {
 		return !eq(value);
 	}
 
 	@Override
-	public final QNumeric plus(Number value) {
+	public final QNumeric plus(final Number value) {
 		return plus(value, false);
 	}
 
 	@Override
-	public final QNumeric plus(Number value, boolean halfAdjust) {
+	public final QNumeric plus(final Number value, final boolean halfAdjust) {
 		eval(asDouble() + value.doubleValue(), halfAdjust);
 		return this;
 	}
 
 	@Override
-	public final QNumeric plus(QNumeric value) {
+	public final QNumeric plus(final QNumeric value) {
 		return plus(value, false);
 	}
 
 	@Override
-	public final QNumeric plus(QNumeric value, boolean halfAdjust) {
+	public final QNumeric plus(final QNumeric value, final boolean halfAdjust) {
 		eval(asDouble() + value.asDouble(), halfAdjust);
 		return this;
 	}
 
 	@Override
-	public final QNumeric power(Number value) {
+	public final QNumeric power(final Number value) {
 		eval(asLong() ^ value.longValue());
 		return this;
 	}
 
 	@Override
-	public final QNumeric power(QNumeric value) {
+	public final QNumeric power(final QNumeric value) {
 		eval(asLong() ^ value.asLong());
 		return this;
 	}
 
 	@Override
-	public final QDatetime qDate(DatetimeFormat format) {
+	public final QDatetime qDate(final DatetimeFormat format) {
 		throw new IntegratedLanguageDataRuntimeException("Unexpected condition ew8978wre8qwetr");
 	}
 
 	@Override
-	public final QNumeric qDiv(Number value) {
+	public final QNumeric qDiv(final Number value) {
 		return qDivOperation(value, null);
 	}
 
 	@Override
-	public final QNumeric qDiv(Number value, QNumeric remainderTarget) {
+	public final QNumeric qDiv(final Number value, final QNumeric remainderTarget) {
 		return qDivOperation(value, remainderTarget);
 	}
 
 	@Override
-	public final QNumeric qDiv(QNumeric value) {
+	public final QNumeric qDiv(final QNumeric value) {
 		return qDivOperation(value.asDouble(), null);
 	}
 
 	@Override
-	public final QNumeric qDiv(QNumeric value, QNumeric remainderTarget) {
+	public final QNumeric qDiv(final QNumeric value, final QNumeric remainderTarget) {
 		return qDivOperation(value.asDouble(), remainderTarget);
 	}
 
-	private QNumeric qDivOperation(Number value, QNumeric remainderTarget) {
+	private final QNumeric qDivOperation(final Number value, final QNumeric remainderTarget) {
 
-		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 		number.eval(asDouble() / value.doubleValue());
 		if (remainderTarget != null)
 			remainderTarget.eval(asDouble() % value.doubleValue());
@@ -693,88 +691,88 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 		return qIntOperation(this.asDouble(), true);
 	}
 
-	private QNumeric qIntOperation(Number value, boolean roundingMode) {
-		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 0, DecimalType.ZONED, true);
+	private final QNumeric qIntOperation(final Number value, final boolean roundingMode) {
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 0, DecimalType.ZONED, true);
 		number.eval(value.doubleValue());
 		return number;
 	}
 
 	@Override
-	public final QNumeric qMinus(Number value) {
+	public final QNumeric qMinus(final Number value) {
 		return qMinusOperation(value);
 	}
 
 	@Override
-	public final QNumeric qMinus(QNumeric value) {
+	public final QNumeric qMinus(final QNumeric value) {
 		return qMinusOperation(value.asDouble());
 	}
 
-	private QNumeric qMinusOperation(Number value) {
-		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
+	private final QNumeric qMinusOperation(final Number value) {
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 		number.eval(asDouble() - value.doubleValue());
 		return number;
 	}
 
 	@Override
-	public final QNumeric qMult(Number value) {
+	public final QNumeric qMult(final Number value) {
 		return qMultOperation(value);
 	}
 
 	@Override
-	public final QNumeric qMult(QNumeric value) {
+	public final QNumeric qMult(final QNumeric value) {
 		return qMultOperation(value.asDouble());
 	}
 
-	private QNumeric qMultOperation(Number value) {
-		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
+	private final QNumeric qMultOperation(final Number value) {
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 		number.eval(asDouble() * value.doubleValue());
 		return number;
 	}
 
 	@Override
-	public final QNumeric qPlus(Number value) {
+	public final QNumeric qPlus(final Number value) {
 		return qPlusOperation(value);
 	}
 
 	@Override
-	public final QNumeric qPlus(QNumeric value) {
+	public final QNumeric qPlus(final QNumeric value) {
 		return qPlusOperation(value.asDouble());
 	}
 
-	private QNumeric qPlusOperation(Number value) {
-		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
+	private final QNumeric qPlusOperation(final Number value) {
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 		number.eval(asDouble() + value.doubleValue());
 		return number;
 	}
 
 	@Override
-	public final QNumeric qRem(Number value) {
+	public final QNumeric qRem(final Number value) {
 		return qRemOperation(value);
 	}
 
 	@Override
-	public final QNumeric qRem(QNumeric value) {
+	public final QNumeric qRem(final QNumeric value) {
 		return qRemOperation(value.asDouble());
 	}
 
-	private QNumeric qRemOperation(Number value) {
-		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
+	private final QNumeric qRemOperation(final Number value) {
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 		number.eval(asDouble() % value.doubleValue());
 		return number;
 	}
 
 	@Override
-	public void time() {
+	public final void time() {
 
 		// TODO verify
-		Calendar CALENDAR = Calendar.getInstance();
-		if (getLength() == 14) {
+		final Calendar CALENDAR = Calendar.getInstance();
+		if (getLength() == 14)
 			eval(Long.parseLong(new SimpleDateFormat("HHmmssddMMyyyy").format(CALENDAR.getTime())));
-		} else if (getLength() == 12) {
+		else if (getLength() == 12)
 			eval(Long.parseLong(new SimpleDateFormat("HHmmssddMMyy").format(CALENDAR.getTime())));
-		} else if (getLength() == 6) {
+		else if (getLength() == 6)
 			eval(Long.parseLong(new SimpleDateFormat("HHmmss").format(CALENDAR.getTime())));
-		} else
+		else
 			System.err.println("Unknown length: " + getLength());
 	}
 
@@ -782,43 +780,53 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	public final String toString() {
 		try {
 			return _readNumber().toString();
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			return "error";
 		}
 	}
 
 	@Override
-	public final void xfoot(QArray<? extends QNumeric> array) {
+	public final void xfoot(final QArray<? extends QNumeric> array) {
 		xfoot(array, false);
 	}
 
 	@Override
-	public final void xfoot(QArray<? extends QNumeric> array, boolean halfAdjust) {
-		for (QNumeric numeric : array)
+	public final void xfoot(final QArray<? extends QNumeric> array, final boolean halfAdjust) {
+		for (final QNumeric numeric : array)
 			this.plus(numeric, halfAdjust);
 	}
 
 	@Override
-	public QDecimal qAbs() {
+	public final QDecimal qAbs() {
 
-		QDecimal number = new NIODecimalZonedImpl(getDataContext(), getLength(), 0, true);
+		final QDecimal number = new NIODecimalZonedImpl(getDataContext(), getLength(), 0, true);
 		if (ge(DataSpecial.ZEROS))
 			number.eval(this);
 		else
 			number.eval(mult(-1));
-		
+
 		return number;
 	}
-	
+
 	@Override
-	public QArray<QDecimal> qMult(QArray<? extends QNumeric> value) {
+	public final QArray<QDecimal> qMult(final QArray<? extends QNumeric> value) {
 
 		@SuppressWarnings("unchecked")
-		NIOArrayImpl<QDecimal> arrayValue = (NIOArrayImpl<QDecimal>) value;
-		NIOArrayImpl<QDecimal> newArray = new NIOArrayImpl<QDecimal>(getDataContext(), arrayValue.getModel(), arrayValue.capacity(), arrayValue.getSortDirection(), true);
+		final NIOArrayImpl<QDecimal> arrayValue = (NIOArrayImpl<QDecimal>) value;
+		final NIOArrayImpl<QDecimal> newArray = new NIOArrayImpl<QDecimal>(getDataContext(), arrayValue.getModel(), arrayValue.capacity(), arrayValue.getSortDirection(), true);
 		newArray.movea(this);
 		newArray.mult(this);
-		
+
 		return newArray;
+	}
+
+	@Override
+	public final void reset() {
+
+		final QBufferedData snapData = getDataContext().getSnap(this);
+		if (snapData != null)
+			NIOBufferHelper.write(this, snapData);
+		else
+			clear();
 	}
 }

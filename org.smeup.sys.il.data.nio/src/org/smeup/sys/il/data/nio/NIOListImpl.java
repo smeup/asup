@@ -37,29 +37,29 @@ public final class NIOListImpl<D extends QBufferedData> extends NIODataImpl impl
 	private int _dimension;
 	private QDataWriter dataWriter;
 
-	public NIOListImpl(QDataContext dataContext) {
+	public NIOListImpl(final QDataContext dataContext) {
 		super(dataContext);
 		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 	}
 
-	public NIOListImpl(QDataContext dataContext, D model, int dimension) {
+	public NIOListImpl(final QDataContext dataContext, final D model, final int dimension) {
 		this(dataContext);
 		this._model = model;
 		this._dimension = dimension;
 		this._elements = new ArrayList<D>(_dimension);
 	}
-	
+
 	@Override
-	protected final QDataContext getDataContext() {		
+	protected final QDataContext getDataContext() {
 		return _dataContext;
 	}
-	
+
 	@Override
-	public final void accept(QDataVisitor visitor) {
+	public final void accept(final QDataVisitor visitor) {
 
 		if (visitor.visit(this)) {
 
-			Iterator<D> datas = this.iterator();
+			final Iterator<D> datas = this.iterator();
 			while (datas.hasNext())
 				datas.next().accept(visitor);
 		}
@@ -71,7 +71,7 @@ public final class NIOListImpl<D extends QBufferedData> extends NIODataImpl impl
 	@Override
 	public final D[] asArray() {
 
-		D[] array = (D[]) Array.newInstance(_model.getClass(), _dimension);
+		final D[] array = (D[]) Array.newInstance(_model.getClass(), _dimension);
 
 		System.arraycopy(_elements.toArray(), 0, array, 0, _dimension);
 
@@ -92,18 +92,18 @@ public final class NIOListImpl<D extends QBufferedData> extends NIODataImpl impl
 	}
 
 	@Override
-	public final NIODataImpl _copyDef(QDataContext dataContext) {
+	public final NIODataImpl _copyDef(final QDataContext dataContext) {
 
 		try {
 			NIODataImpl copy = null;
 
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			ObjectOutputStream oos = new ObjectOutputStream(baos);
+			final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			final ObjectOutputStream oos = new ObjectOutputStream(baos);
 			oos.writeObject(this);
 			oos.close();
 
-			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-			ObjectInputStream ois = new ObjectInputStream(bais);
+			final ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+			final ObjectInputStream ois = new ObjectInputStream(bais);
 			copy = (NIODataImpl) ois.readObject();
 			ois.close();
 			copy._dataContext = dataContext;
@@ -120,12 +120,12 @@ public final class NIOListImpl<D extends QBufferedData> extends NIODataImpl impl
 	}
 
 	@Override
-	public final void eval(QList<D> value) {
+	public final void eval(final QList<D> value) {
 
 		clear();
 
 		int i = 1;
-		for (D element : value) {
+		for (final D element : value) {
 			dataWriter.set(element);
 			get(i).accept(dataWriter);
 			i++;
@@ -134,7 +134,7 @@ public final class NIOListImpl<D extends QBufferedData> extends NIODataImpl impl
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public final D get(int index) {
+	public final D get(final int index) {
 
 		D element = null;
 		if (_elements.size() >= index)
@@ -150,14 +150,14 @@ public final class NIOListImpl<D extends QBufferedData> extends NIODataImpl impl
 	}
 
 	@Override
-	public final D get(QNumeric index) {
+	public final D get(final QNumeric index) {
 		return get(index.asInteger());
 	}
 
 	@Override
 	public final boolean isEmpty() {
 
-		for (D element : this)
+		for (final D element : this)
 			if (!element.isEmpty())
 				return false;
 
@@ -172,11 +172,11 @@ public final class NIOListImpl<D extends QBufferedData> extends NIODataImpl impl
 	@Override
 	public final String toString() {
 
-		StringBuffer sb = new StringBuffer();
+		final StringBuffer sb = new StringBuffer();
 		sb.append("[");
 
 		boolean first = true;
-		for (D element : this) {
+		for (final D element : this) {
 			if (!first)
 				sb.append(", ");
 			sb.append(element.toString().trim());

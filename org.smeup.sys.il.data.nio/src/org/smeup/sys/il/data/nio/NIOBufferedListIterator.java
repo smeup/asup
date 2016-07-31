@@ -19,19 +19,19 @@ import org.smeup.sys.il.data.SortDirection;
 
 public class NIOBufferedListIterator<D extends QBufferedElement> implements Iterator<D> {
 
-	private QBufferedList<D> list;
-	private SortDirection sortDirection;
+	private final QBufferedList<D> list;
+	private final SortDirection sortDirection;
 	private final int startIndex;
 	private final int numElements;
 	private int current = 0;
 
-	public NIOBufferedListIterator(NIOBufferedListImpl<D> list, SortDirection sortDirection, int startIndex, int numElements) {
+	public NIOBufferedListIterator(final NIOBufferedListImpl<D> list, final SortDirection sortDirection, final int startIndex, final int numElements) {
 		this.list = list;
-		this.sortDirection = sortDirection != null ?  sortDirection: list.getSortDirection();
+		this.sortDirection = sortDirection != null ? sortDirection : list.getSortDirection();
 		this.startIndex = startIndex;
 		this.numElements = numElements;
 		this.current = sortDirection == SortDirection.ASCEND ? startIndex - 1 : list.capacity() + 1;
-	}	
+	}
 
 	@Override
 	public boolean hasNext() {

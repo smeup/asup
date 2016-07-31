@@ -25,7 +25,7 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 
 	private static final long serialVersionUID = 1L;
 
-	public NIOBufferedElementImpl(QDataContext dataContext) {
+	public NIOBufferedElementImpl(final QDataContext dataContext) {
 		super(dataContext);
 	}
 
@@ -66,29 +66,29 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	public final byte[] asBytes() {
 		return _toBytes();
 	}
-	
+
 	@Override
-	public final void assign(QBufferedData target) {
+	public final void assign(final QBufferedData target) {
 
 		if (target instanceof NIOAdapterImpl) {
-			NIOAdapterImpl nioAdapterImpl = (NIOAdapterImpl) target;
+			final NIOAdapterImpl nioAdapterImpl = (NIOAdapterImpl) target;
 			nioAdapterImpl.setDelegate(this);
 			return;
 		}
 
-		super.assign(target);
+		NIOBufferHelper.assign(this, target);
 	}
 
 	@Override
-	public final void slice(QBufferedData target, int position) {
+	public final void slice(final QBufferedData target, final int position) {
 
 		if (target instanceof NIOAdapterImpl) {
-			NIOAdapterImpl nioAdapterImpl = (NIOAdapterImpl) target;
+			final NIOAdapterImpl nioAdapterImpl = (NIOAdapterImpl) target;
 			nioAdapterImpl.setDelegate(this);
 			return;
 		}
 
-		super.slice(target, position);
+		NIOBufferHelper.slice(this, target, position);
 	}
 
 	@Override
@@ -97,64 +97,64 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	}
 
 	@Override
-	public final boolean eq(QDataFiller value) {
+	public final boolean eq(final QDataFiller value) {
 		return NIOComparatorHelper.compareBytes(this, value) == 0;
 	}
 
 	@Override
-	public final QBufferedData eval(QDataFiller value) {
+	public final QBufferedData eval(final QDataFiller value) {
 		_fill(value.get().asBytes(), true);
 		return this;
 	}
 
 	@Override
-	public final boolean ge(QDataFiller value) {
+	public final boolean ge(final QDataFiller value) {
 		return NIOComparatorHelper.compareBytes(this, value) >= 0;
 	}
 
 	@Override
-	public final boolean gt(QDataFiller value) {
+	public final boolean gt(final QDataFiller value) {
 		return NIOComparatorHelper.compareBytes(this, value) > 0;
 	}
 
 	@Override
-	public final boolean le(QDataFiller value) {
+	public final boolean le(final QDataFiller value) {
 		return NIOComparatorHelper.compareBytes(this, value) <= 0;
 	}
 
 	@Override
-	public final boolean lt(QDataFiller value) {
+	public final boolean lt(final QDataFiller value) {
 		return NIOComparatorHelper.compareBytes(this, value) < 0;
 	}
 
 	@Override
-	public final void move(DataSpecial value) {
+	public final void move(final DataSpecial value) {
 		move(value, false);
 	}
 
 	@Override
-	public final void move(DataSpecial special, boolean clear) {
+	public final void move(final DataSpecial special, final boolean clear) {
 		_move(_toBytes(special), false);
 	}
 
 	@Override
-	public final void move(Number value) {
+	public final void move(final Number value) {
 		move(value, false);
 	}
 
 	@Override
-	public final void move(Number value, boolean clear) {
+	public final void move(final Number value, final boolean clear) {
 		_move(_toBytes(value), clear);
 	}
 
 	@Override
-	public final void move(QBufferedElement value) {
+	public final void move(final QBufferedElement value) {
 		move(value, false);
 	}
 
 	@Override
-	public final void move(QBufferedElement value, boolean clear) {
-		
+	public final void move(QBufferedElement value, final boolean clear) {
+
 		value = NIOBufferHelper.getNIOBufferedElementImpl(value);
 		switch (value.getBufferedElementType()) {
 		case DATETIME:
@@ -170,52 +170,52 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	}
 
 	@Override
-	public final void move(QDataFiller value) {
+	public final void move(final QDataFiller value) {
 		move(value, false);
 	}
 
 	@Override
-	public final void move(QDataFiller value, boolean clear) {
+	public final void move(final QDataFiller value, final boolean clear) {
 		_fillr(value.get().asBytes(), false);
 	}
 
 	@Override
-	public final void move(String value) {
+	public final void move(final String value) {
 		move(value, false);
 	}
 
 	@Override
-	public final void move(String value, boolean clear) {
+	public final void move(final String value, final boolean clear) {
 		_move(_toBytes(value), clear);
 	}
 
 	@Override
-	public final void movel(DataSpecial value) {
+	public final void movel(final DataSpecial value) {
 		movel(value, false);
 	}
 
 	@Override
-	public final void movel(DataSpecial special, boolean clear) {
+	public final void movel(final DataSpecial special, final boolean clear) {
 		_movel(_toBytes(special), false);
 	}
 
 	@Override
-	public final void movel(Number value) {
+	public final void movel(final Number value) {
 		movel(value, false);
 	}
 
 	@Override
-	public final void movel(Number value, boolean clear) {
+	public final void movel(final Number value, final boolean clear) {
 		_movel(_toBytes(value), clear);
 	}
 
 	@Override
-	public final void movel(QBufferedElement value) {
+	public final void movel(final QBufferedElement value) {
 		movel(value, false);
 	}
 
 	@Override
-	public final void movel(QBufferedElement value, boolean clear) {
+	public final void movel(QBufferedElement value, final boolean clear) {
 
 		value = NIOBufferHelper.getNIOBufferedElementImpl(value);
 		switch (value.getBufferedElementType()) {
@@ -232,61 +232,62 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	}
 
 	@Override
-	public final void movel(QDataFiller value) {
+	public final void movel(final QDataFiller value) {
 		movel(value, false);
 	}
 
 	@Override
-	public final void movel(QDataFiller value, boolean clear) {
+	public final void movel(final QDataFiller value, final boolean clear) {
 		_fill(value.get().asBytes(), false);
 	}
 
 	@Override
-	public final void movel(String value) {
+	public final void movel(final String value) {
 		movel(value, false);
 	}
 
 	@Override
-	public final void movel(String value, boolean clear) {
+	public final void movel(final String value, final boolean clear) {
 		_movel(_toBytes(value), clear);
 	}
 
 	@Override
-	public final boolean ne(QDataFiller value) {
+	public final boolean ne(final QDataFiller value) {
 		return !eq(value);
 	}
 
 	@Override
-	public BufferedDataType getBufferedDataType() {
+	public final BufferedDataType getBufferedDataType() {
 		return BufferedDataType.ELEMENT;
 	}
 
 	@Override
-	public final boolean ge(DataSpecial value) {
+	public final boolean ge(final DataSpecial value) {
 		return !lt(value);
 	}
 
 	@Override
-	public final boolean gt(DataSpecial special) {
+	public final boolean gt(final DataSpecial special) {
 		return !le(special);
 	}
 
 	@Override
-	public final boolean ne(DataSpecial value) {
+	public final boolean ne(final DataSpecial value) {
 		return !eq(value);
 	}
-	
+
 	@Override
-	public final boolean le(DataSpecial special) {
+	public final boolean le(final DataSpecial special) {
 		return NIOComparatorHelper.compareBytes(this, special) <= 0;
 	}
 
 	@Override
-	public final boolean lt(DataSpecial special) {
+	public final boolean lt(final DataSpecial special) {
 		return NIOComparatorHelper.compareBytes(this, special) < 0;
 	}
-		@Override
-	public final boolean eq(DataSpecial special) {
+
+	@Override
+	public final boolean eq(final DataSpecial special) {
 		return NIOComparatorHelper.compareBytes(this, special) == 0;
 	}
 }
