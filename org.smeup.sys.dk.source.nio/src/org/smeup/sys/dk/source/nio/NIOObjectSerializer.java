@@ -38,20 +38,21 @@ public class NIOObjectSerializer {
 
 		URI uri = buildURI(project, klass, name);
 
-		NIOResourceImpl resource = (NIOResourceImpl) resourceSet.getResource(uri, false);
-		if (resource == null)
-			resource = (NIOResourceImpl) resourceSet.createResource(uri, "asup");
-		else
-			clearResource(resource);
+		synchronized (uri.toString().intern()) {
+			NIOResourceImpl resource = (NIOResourceImpl) resourceSet.getResource(uri, false);
+			if (resource == null)
+				resource = (NIOResourceImpl) resourceSet.createResource(uri, "asup");
+			else
+				clearResource(resource);
 
-		((BasicEObjectImpl) object).eSetResource(null, null);
-		resource.getContents().add((EObject) object);
+			((BasicEObjectImpl) object).eSetResource(null, null);
+			resource.getContents().add((EObject) object);
 
-		ByteArrayOutputStream output = new ByteArrayOutputStream();
-		resource.doSave(output, Collections.EMPTY_MAP);
-
-		return output;
-
+			ByteArrayOutputStream output = new ByteArrayOutputStream();
+			resource.doSave(output, Collections.EMPTY_MAP);
+			
+			return output;
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -59,20 +60,22 @@ public class NIOObjectSerializer {
 
 		URI uri = buildURI(project, klass, name);
 
-		NIOResourceImpl resource = (NIOResourceImpl) resourceSet.getResource(uri, false);
-		if (resource == null)
-			resource = (NIOResourceImpl) resourceSet.createResource(uri, "asup");
-		else
-			clearResource(resource);
+		synchronized (uri.toString().intern()) {
+			NIOResourceImpl resource = (NIOResourceImpl) resourceSet.getResource(uri, false);
+			if (resource == null)
+				resource = (NIOResourceImpl) resourceSet.createResource(uri, "asup");
+			else {
+				clearResource(resource);
+			}
 
-		resource.doLoad(inputStream, resourceSet.getLoadOptions());
-		if (resource.getContents().isEmpty())
-			return null;
+			resource.doLoad(inputStream, resourceSet.getLoadOptions());
+			if (resource.getContents().isEmpty())
+				return null;
 
-		EObject eObject = resource.getContents().get(0);
-
-		return (T) eObject;
-
+			EObject eObject = resource.getContents().get(0);
+			
+			return (T) eObject;
+		}
 	}
 
 	private void clearResource(NIOResourceImpl resource) {
