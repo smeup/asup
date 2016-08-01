@@ -37,8 +37,13 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	protected final QDataContext getDataContext() {
 
-		if (_dataContext == null && _storage instanceof QBufferedData)
-			return NIOBufferHelper.getNIOBufferedDataImpl((_storage)).getDataContext();
+		if (_dataContext == null) {
+			final NIOBufferedDataImpl nioBufferedDataImpl = NIOBufferHelper.getNIOBufferedDataImpl((_storage));
+			if(nioBufferedDataImpl != null)
+				return nioBufferedDataImpl.getDataContext();
+			else
+				return null;
+		}
 		else
 			return _dataContext;
 	}

@@ -16,7 +16,7 @@ import java.util.Iterator;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QList;
 
-public class NIOListIteratorImpl<E extends QBufferedData> implements Iterator<E> {
+public final class NIOListIteratorImpl<E extends QBufferedData> implements Iterator<E> {
 
 	private final QList<E> list;
 	private int current = 0;

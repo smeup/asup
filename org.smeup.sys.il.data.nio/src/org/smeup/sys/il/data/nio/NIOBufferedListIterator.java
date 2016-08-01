@@ -17,7 +17,7 @@ import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.SortDirection;
 
-public class NIOBufferedListIterator<D extends QBufferedElement> implements Iterator<D> {
+public final class NIOBufferedListIterator<D extends QBufferedElement> implements Iterator<D> {
 
 	private final QBufferedList<D> list;
 	private final SortDirection sortDirection;
@@ -34,17 +34,17 @@ public class NIOBufferedListIterator<D extends QBufferedElement> implements Iter
 	}
 
 	@Override
-	public boolean hasNext() {
+	public final boolean hasNext() {
 		return sortDirection == SortDirection.ASCEND ? current < (numElements) : current > startIndex;
 	}
 
 	@Override
-	public D next() {
+	public final D next() {
 		current = sortDirection == SortDirection.ASCEND ? current + 1 : current - 1;
 		return list.get(current);
 	}
 
-	protected int current() {
+	protected final int current() {
 		return this.current;
 	}
 }

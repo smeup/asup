@@ -16,7 +16,7 @@ import java.nio.ByteBuffer;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QStorable;
 
-public class NIOStorageImpl implements QStorable {
+public final class NIOStorageImpl implements QStorable {
 
 	private ByteBuffer byteBuffer = null;
 	private int position = 0;

@@ -23,7 +23,7 @@ import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QOverlay;
 
-public class NIODataStructBuilder {
+public final class NIODataStructBuilder {
 
 	private QDataFactory dataFactory = null;
 	private NIOAbstractDataStruct dataStruct = null;
@@ -36,7 +36,7 @@ public class NIODataStructBuilder {
 		this.dataStruct = dataStruct;
 	}
 
-	public void addElement(final Field field, final QBufferedData dataElement) {
+	public final void addElement(final Field field, final QBufferedData dataElement) {
 
 		final org.smeup.sys.il.data.annotation.Overlay overlay = field.getAnnotation(org.smeup.sys.il.data.annotation.Overlay.class);
 		if (overlay == null) {
@@ -47,7 +47,7 @@ public class NIODataStructBuilder {
 			addElement(field.getName(), dataElement, overlay.name(), overlay.position());
 	}
 
-	public void addElement(final QDataTerm<?> dataTerm, final QBufferedData dataElement) {
+	public final void addElement(final QDataTerm<?> dataTerm, final QBufferedData dataElement) {
 
 		final QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 		if (overlay == null) {
@@ -57,7 +57,7 @@ public class NIODataStructBuilder {
 			addElement(dataTerm.getName(), dataElement, overlay.getName(), overlay.getPosition());
 	}
 
-	private void addElement(final String name, final QBufferedData dataElement, final String overlayName, final int overlayPosition) {
+	private final void addElement(final String name, final QBufferedData dataElement, final String overlayName, final int overlayPosition) {
 
 		if (overlayName == null || overlayName.equalsIgnoreCase(org.smeup.sys.il.data.annotation.Overlay.NAME_OWNER)) {
 

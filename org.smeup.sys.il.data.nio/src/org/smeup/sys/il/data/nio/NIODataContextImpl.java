@@ -26,11 +26,13 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataAreaFactory;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
+import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.def.DateFormat;
+import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.def.TimeFormat;
 
-public class NIODataContextImpl implements QDataContext {
+public final class NIODataContextImpl implements QDataContext {
 
 	private final QContext context;
 	private final QDataFactory dataFactory;
@@ -44,11 +46,12 @@ public class NIODataContextImpl implements QDataContext {
 	private static final TimeFormat TIMEFMT = TimeFormat.ISO;
 
 	private Map<QBufferedData, QBufferedData> snapshots = null;
-
-	public NIODataContextImpl() {
-		this(null, null, null);
-	}
-
+	protected final NIOCharacterFixedImpl DATA_TRIM;
+	protected final NIOCharacterFixedImpl DATA_SUBST;
+	protected final QDecimal DATA_INT;
+	protected final QDecimal DATA_LENGTH;
+	protected final QDecimal DATA_OPERATION;
+	
 	public NIODataContextImpl(final QContext context, final QDataAreaFactory dataAreaFactory, final Object owner) {
 		this.context = context;
 		dataFactory = new NIODataFactoryImpl(this, owner, dataAreaFactory);
@@ -57,55 +60,60 @@ public class NIODataContextImpl implements QDataContext {
 		equal = dataFactory.createIndicator(true);
 		error = dataFactory.createIndicator(true);
 		found = dataFactory.createIndicator(true);
+		DATA_TRIM = new NIOCharacterFixedImpl(this, 32767, true);
+		DATA_SUBST = new NIOCharacterFixedImpl(this, 0, false);
+		DATA_INT = dataFactory.createDecimal(31, 0, DecimalType.ZONED, true);
+		DATA_LENGTH = dataFactory.createDecimal(10, 0, DecimalType.ZONED, true);
+		DATA_OPERATION = dataFactory.createDecimal(15, 5, DecimalType.ZONED, true);
 	}
 
 	@Override
-	public Charset getCharset() {
+	public final Charset getCharset() {
 		return CHARSET;
 	}
 
 	@Override
-	public QIndicator endOfData() {
+	public final QIndicator endOfData() {
 		return this.endOfData;
 	}
 
 	@Override
-	public QIndicator equal() {
+	public final QIndicator equal() {
 		return equal;
 	}
 
 	@Override
-	public QIndicator error() {
+	public final QIndicator error() {
 		return error;
 	}
 
 	@Override
-	public QIndicator found() {
+	public final QIndicator found() {
 		return this.found;
 	}
 
 	@Override
-	public QDataFactory getDataFactory() {
+	public final QDataFactory getDataFactory() {
 		return dataFactory;
 	}
 
 	@Override
-	public QContext getContext() {
+	public final QContext getContext() {
 		return context;
 	}
 
 	@Override
-	public DateFormat getDateFormat() {
+	public final DateFormat getDateFormat() {
 		return DATEFMT;
 	}
 
 	@Override
-	public TimeFormat getTimeFormat() {
+	public final TimeFormat getTimeFormat() {
 		return TIMEFMT;
 	}
 
 	@Override
-	public void snap(final QBufferedData data) {
+	public final void snap(final QBufferedData data) {
 
 		final QCharacter snapData = new NIOCharacterFixedImpl(this, data.getSize(), true);
 		NIOBufferHelper.write(snapData, data);
@@ -117,7 +125,7 @@ public class NIODataContextImpl implements QDataContext {
 	}
 
 	@Override
-	public QBufferedData getSnap(final QBufferedData data) {
+	public final QBufferedData getSnap(final QBufferedData data) {
 		if (snapshots == null)
 			return null;
 
@@ -125,7 +133,7 @@ public class NIODataContextImpl implements QDataContext {
 	}
 
 	@Override
-	public void removeSnap(final QBufferedData data) {
+	public final void removeSnap(final QBufferedData data) {
 		if (snapshots == null)
 			return;
 
@@ -133,7 +141,7 @@ public class NIODataContextImpl implements QDataContext {
 	}
 
 	@Override
-	public QBufferedData copy(final QBufferedData data) {
+	public final QBufferedData copy(final QBufferedData data) {
 
 		try {
 			NIOBufferedDataImpl copy = null;

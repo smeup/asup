@@ -25,7 +25,7 @@ import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.dtaara.QDataAreaManager;
 
-public final class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElementDelegatorImpl implements QDataArea<D> {
+public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElementDelegatorImpl implements QDataArea<D> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -39,12 +39,12 @@ public final class NIODataAreaImpl<D extends QBufferedElement> extends NIOBuffer
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public final D get() {
+	public D get() {
 		return (D) getDelegate();
 	}
 
 	@Override
-	public final void in() {
+	public void in() {
 
 		if(currentDataArea != null) 
 			return;
@@ -63,7 +63,7 @@ public final class NIODataAreaImpl<D extends QBufferedElement> extends NIOBuffer
 	}
 
 	@Override
-	public final void in(QIndicator error) {
+	public void in(QIndicator error) {
 		try {
 			in();
 			error.eval(false);
@@ -73,7 +73,7 @@ public final class NIODataAreaImpl<D extends QBufferedElement> extends NIOBuffer
 	}
 
 	@Override
-	public final void out() {
+	public void out() {
 
 		if (externalName.equalsIgnoreCase("*LDA")) {
 			// TODO
@@ -95,7 +95,7 @@ public final class NIODataAreaImpl<D extends QBufferedElement> extends NIOBuffer
 	}
 
 	@Override
-	public final void out(QIndicator error) {
+	public void out(QIndicator error) {
 		try {
 			out();
 			error.eval(false);
@@ -105,7 +105,7 @@ public final class NIODataAreaImpl<D extends QBufferedElement> extends NIOBuffer
 	}
 
 	@Override
-	public final void movea(QArray<? extends QString> value) {
+	public void movea(QArray<? extends QString> value) {
 
 		if (!(get() instanceof QString))
 			throw new UnsupportedOperationException();
@@ -114,13 +114,13 @@ public final class NIODataAreaImpl<D extends QBufferedElement> extends NIOBuffer
 	}
 
 	@Override
-	public final QBufferedData eval(DataSpecial value) {
+	public QBufferedData eval(DataSpecial value) {
 		getDelegate().eval(value);
 		return this;
 	}
 
 	@Override
-	public final void eval(QString value) {
+	public void eval(QString value) {
 
 		if (!(get() instanceof QString))
 			throw new UnsupportedOperationException();
@@ -129,7 +129,7 @@ public final class NIODataAreaImpl<D extends QBufferedElement> extends NIOBuffer
 	}
 
 	@Override
-	public final String asString() {
+	public String asString() {
 
 		if (!(get() instanceof QString))
 			throw new UnsupportedOperationException();
@@ -138,7 +138,7 @@ public final class NIODataAreaImpl<D extends QBufferedElement> extends NIOBuffer
 	}
 
 	@Override
-	public final String s() {
+	public String s() {
 		return asString();
 	}
 }

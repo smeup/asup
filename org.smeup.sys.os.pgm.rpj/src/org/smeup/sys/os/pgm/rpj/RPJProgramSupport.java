@@ -151,7 +151,7 @@ public class RPJProgramSupport {
 	}
 
 	public boolean qRunnable() {
-		if (countRunnable == 1000) {
+		if (countRunnable == 5000) {
 			countRunnable = 0;
 			QThread thread = job.getJobThread();
 			if (thread != null)

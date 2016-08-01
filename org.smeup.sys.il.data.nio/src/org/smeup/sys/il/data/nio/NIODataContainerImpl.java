@@ -53,7 +53,7 @@ import org.smeup.sys.il.data.term.QSpecial;
 import org.smeup.sys.il.data.term.QSpecialElement;
 import org.smeup.sys.il.data.term.impl.DataTermImpl;
 
-public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, Serializable {
+public final class NIODataContainerImpl extends ObjectImpl implements QDataContainer, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -71,19 +71,19 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@Override
-	public void close() {
+	public final void close() {
 		this.dataContext = null;
 		this.datas = new HashMap<String, QData>();
 		this.dataTerms = new HashMap<String, QDataTerm<?>>();
 	}
 
 	@Override
-	public void addDataTerm(final QDataTerm<?> dataTerm) {
+	public final void addDataTerm(final QDataTerm<?> dataTerm) {
 		this.dataTerms.put(getKey(dataTerm), dataTerm);
 	}
 
 	@Override
-	public QDataTerm<?> addDataTerm(final String name, final Type type, List<Annotation> annotations) {
+	public final QDataTerm<?> addDataTerm(final String name, final Type type, List<Annotation> annotations) {
 
 		if (annotations == null)
 			annotations = new ArrayList<Annotation>();
@@ -137,7 +137,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@Override
-	public QData getData(final String name) {
+	public final QData getData(final String name) {
 
 		final String[] qualifiers = name.split("\\.");
 
@@ -180,7 +180,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@Override
-	public QData getData(final QDataTerm<?> dataTerm) {
+	public final QData getData(final QDataTerm<?> dataTerm) {
 
 		final QNode parent = dataTerm.getParent();
 		if (parent == null)
@@ -197,12 +197,12 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@Override
-	public List<QDataTerm<?>> getTerms() {
+	public final List<QDataTerm<?>> getTerms() {
 		return new ArrayList<QDataTerm<?>>(dataTerms.values());
 	}
 
 	@Override
-	public void clearData() {
+	public final void clearData() {
 
 		for (final QDataTerm<?> dataTerm : dataTerms.values()) {
 			final QData data = getOrCreateData(dataTerm);
@@ -211,7 +211,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@Override
-	public QDataTerm<?> getDataTerm(final String key) {
+	public final QDataTerm<?> getDataTerm(final String key) {
 
 		final QDataTerm<?> dataTerm = dataTerms.get(key);
 
@@ -219,12 +219,12 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@Override
-	public List<String> getKeys() {
+	public final List<String> getKeys() {
 		return new ArrayList<String>(dataTerms.keySet());
 	}
 
 	@Override
-	public void removeDataTerm(final QDataTerm<?> dataTerm) {
+	public final void removeDataTerm(final QDataTerm<?> dataTerm) {
 
 		this.dataTerms.remove(getKey(dataTerm));
 		final QData data = this.datas.remove(getKey(dataTerm));
@@ -237,11 +237,11 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@Override
-	public QDataContext getDataContext() {
+	public final QDataContext getDataContext() {
 		return dataContext;
 	}
 
-	private QData getOrCreateData(final String key) {
+	private final QData getOrCreateData(final String key) {
 
 		QData data = datas.get(key);
 		if (data == null) {
@@ -254,7 +254,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@SuppressWarnings("unchecked")
-	private QData getOrCreateData(final QDataTerm<?> dataTerm) {
+	private final QData getOrCreateData(final QDataTerm<?> dataTerm) {
 
 		QData data = datas.get(getKey(dataTerm));
 		if (data != null)
@@ -310,7 +310,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		return data;
 	}
 
-	private QData createData(final QDataTerm<?> dataTerm, final boolean allocate) {
+	private final QData createData(final QDataTerm<?> dataTerm, final boolean allocate) {
 
 		final QDataFactory dataFactory = getDataContext().getDataFactory();
 
@@ -349,7 +349,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@SuppressWarnings("unchecked")
-	private void writeDefault(final QDataTerm<?> dataTerm, final QData data) {
+	private final void writeDefault(final QDataTerm<?> dataTerm, final QData data) {
 
 		switch (dataTerm.getDataTermType()) {
 		case UNARY_ATOMIC: {
@@ -475,17 +475,17 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@Override
-	public List<QData> getDatas() {
+	public final List<QData> getDatas() {
 		return new ArrayList<QData>(datas.values());
 	}
 
 	@Override
-	public long getMemorySize() {
+	public final long getMemorySize() {
 		return this.memorySize;
 	}
 
 	@Override
-	public boolean hasDefaultValue(final String key) {
+	public final boolean hasDefaultValue(final String key) {
 
 		final QData data = getData(key);
 
@@ -507,14 +507,14 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		return false;
 	}
 
-	private String getKey(final QDataTerm<?> dataTerm) {
+	private final String getKey(final QDataTerm<?> dataTerm) {
 		if (dataTerm.getKey() != null)
 			return dataTerm.getKey();
 		else
 			return dataTerm.getName();
 	}
 
-	private QSpecialElement getSpecialElement(final QDataTerm<?> dataTerm, final String value) {
+	private final QSpecialElement getSpecialElement(final QDataTerm<?> dataTerm, final String value) {
 
 		final QSpecial special = dataTerm.getFacet(QSpecial.class);
 
@@ -526,7 +526,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		return null;
 	}
 
-	public void writeDefault(final QPointer pointer, String value) {
+	public final void writeDefault(final QPointer pointer, String value) {
 
 		if (value.trim().toUpperCase().startsWith("%ADDR")) {
 			value = value.trim().toUpperCase();
@@ -544,7 +544,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@SuppressWarnings("unchecked")
-	private void replaceData(final QDataTerm<QDataDef<?>> dataTerm, final QData previousData) {
+	private final void replaceData(final QDataTerm<QDataDef<?>> dataTerm, final QData previousData) {
 
 		// remove child data
 		if (previousData instanceof QStruct<?>)

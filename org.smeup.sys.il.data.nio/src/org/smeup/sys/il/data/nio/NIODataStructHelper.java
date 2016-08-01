@@ -19,16 +19,16 @@ import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QStruct;
 
-public class NIODataStructHelper {
+public final class NIODataStructHelper {
 
-	public static List<Field> getFields(final Class<? extends QStruct<?>> klass) {
+	public final static List<Field> getFields(final Class<? extends QStruct<?>> klass) {
 		final List<Field> fields = new ArrayList<Field>();
 		appendFields(fields, klass);
 		return fields;
 	}
 
 	@SuppressWarnings("unchecked")
-	private static void appendFields(final List<Field> fields, final Class<? extends QStruct<?>> klass) {
+	private final static void appendFields(final List<Field> fields, final Class<? extends QStruct<?>> klass) {
 
 		if (klass.equals(QDataStructWrapper.class))
 			return;

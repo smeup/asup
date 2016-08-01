@@ -19,7 +19,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
-import org.smeup.sys.il.data.def.DecimalType;
+import org.smeup.sys.il.data.QString;
 
 public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 
@@ -33,10 +33,6 @@ public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 			_buffer = ByteBuffer.allocate(getSize());
 			NIOBufferHelper.fill(_buffer, 0, _buffer.capacity(), INIT);
 		}
-	}
-
-	@Override
-	protected final void setLength(final short length) {
 	}
 
 	public NIOCharacterFixedImpl(final QDataContext dataContext, final String value) {
@@ -158,6 +154,31 @@ public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 	}
 
 	@Override
+	public final QBufferedData eval(final DataSpecial value) {
+		_write(_toBytes(value));
+		return this;
+	}
+
+	@Override
+	public final void evalr(final QString value) {
+		final byte[] bytes = value.asBytes();
+		if (bytes.length > _length)
+			_move(bytes, false);
+		else
+			_move(bytes, true);
+	}
+
+	@Override
+	public final void evalr(final String value) {
+
+		final byte[] bytes = value.getBytes(getDataContext().getCharset());
+		if (bytes.length > _length)
+			_move(bytes, false);
+		else
+			_move(bytes, true);
+	}
+	
+	@Override
 	public final void reset() {
 
 		final QBufferedData snapData = getDataContext().getSnap(this);
@@ -170,8 +191,11 @@ public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 	@Override
 	public final QNumeric qLen() {
 
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+//		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+//		number.eval(getLength());
+		final QDecimal number = ((NIODataContextImpl)getDataContext()).DATA_LENGTH;
 		number.eval(getLength());
+
 
 		return number;
 	}

@@ -56,11 +56,11 @@ public final class NIODecimalDef implements Serializable {
 		formatDW = createNumberFormatDW(precision, scale);
 	}
 
-	private String formatMinValue(final int precision, final int scale) {
+	private final String formatMinValue(final int precision, final int scale) {
 		return "-" + formatMaxValue(precision, scale);
 	}
 
-	private String formatMaxValue(final int precision, final int scale) {
+	private final String formatMaxValue(final int precision, final int scale) {
 
 		final StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < precision - scale; i++)
@@ -74,47 +74,47 @@ public final class NIODecimalDef implements Serializable {
 		return sb.toString();
 	}
 
-	protected AS400PackedDecimal getPacked() {
+	protected final AS400PackedDecimal getPacked() {
 		return packed;
 	}
 
-	protected byte[] getPackedInit() {
+	protected final byte[] getPackedInit() {
 		return packed_init;
 	}
 
-	protected byte[] getPackedLoval() {
+	protected final byte[] getPackedLoval() {
 		return packed_loval;
 	}
 
-	protected byte[] getPackedHival() {
+	protected final byte[] getPackedHival() {
 		return packed_hival;
 	}
 
-	protected AS400ZonedDecimal getZoned() {
+	protected final AS400ZonedDecimal getZoned() {
 		return zoned;
 	}
 
-	protected byte[] getZonedInit() {
+	protected final byte[] getZonedInit() {
 		return zoned_init;
 	}
 
-	protected byte[] getZonedLoval() {
+	protected final byte[] getZonedLoval() {
 		return zoned_loval;
 	}
 
-	protected byte[] getZonedHival() {
+	protected final byte[] getZonedHival() {
 		return zoned_hival;
 	}
 
-	public NumberFormat getFormatUP() {
+	public final NumberFormat getFormatUP() {
 		return formatUP;
 	}
 
-	public NumberFormat getFormatDW() {
+	public final NumberFormat getFormatDW() {
 		return formatDW;
 	}
 
-	private static AS400ZonedDecimal createDecimalZoned(final int precision, final int scale) {
+	private final static AS400ZonedDecimal createDecimalZoned(final int precision, final int scale) {
 
 		final AS400ZonedDecimal decimal = new AS400ZonedDecimal(precision, scale);
 		decimal.setUseDouble(true);
@@ -122,7 +122,7 @@ public final class NIODecimalDef implements Serializable {
 		return decimal;
 	}
 
-	private AS400PackedDecimal createDecimalPacked(final int precision, final int scale) {
+	private final AS400PackedDecimal createDecimalPacked(final int precision, final int scale) {
 
 		final AS400PackedDecimal decimal = new AS400PackedDecimal(precision, scale);
 		decimal.setUseDouble(true);
@@ -130,7 +130,7 @@ public final class NIODecimalDef implements Serializable {
 		return decimal;
 	}
 
-	private static NumberFormat createNumberFormatUP(final int precision, final int scale) {
+	private final static NumberFormat createNumberFormatUP(final int precision, final int scale) {
 
 		final DecimalFormat numberFormat = (DecimalFormat) NumberFormat.getInstance(Locale.US); // TODO
 		// verify
@@ -142,7 +142,7 @@ public final class NIODecimalDef implements Serializable {
 		return numberFormat;
 	}
 
-	private static NumberFormat createNumberFormatDW(final int precision, final int scale) {
+	private final static NumberFormat createNumberFormatDW(final int precision, final int scale) {
 
 		final DecimalFormat numberFormat = (DecimalFormat) NumberFormat.getInstance(Locale.US); // TODO
 		// verify

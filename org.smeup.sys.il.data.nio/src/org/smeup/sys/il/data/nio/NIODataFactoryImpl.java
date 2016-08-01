@@ -94,7 +94,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermFactory;
 import org.smeup.sys.il.data.term.QOverlay;
 
-public class NIODataFactoryImpl implements QDataFactory {
+public final class NIODataFactoryImpl implements QDataFactory {
 
 	private final QDataAreaFactory dataAreaFactory;
 	private final QDataContext dataContext;
@@ -109,13 +109,13 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public QData createData(final QDataTerm<?> dataTerm, final boolean allocate) {
+	public final QData createData(final QDataTerm<?> dataTerm, final boolean allocate) {
 		return createData((QDataDef<?>) dataTerm.getDefinition(), allocate);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <D extends QData> D createData(final QDataDef<D> dataDef, final boolean allocate) {
+	public final <D extends QData> D createData(final QDataDef<D> dataDef, final boolean allocate) {
 
 		D data = null;
 
@@ -198,7 +198,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@SuppressWarnings("unchecked")
-	private <E extends Enum<E>, BD extends QBufferedElement, D extends QData> D _createData(final QDataDef<D> dataDef, final boolean allocate) {
+	private final <E extends Enum<E>, BD extends QBufferedElement, D extends QData> D _createData(final QDataDef<D> dataDef, final boolean allocate) {
 
 		final QEnumDef<E, BD> enumDef = (QEnumDef<E, BD>) dataDef;
 		return (D) createEnum(enumDef.getKlass(), createData(enumDef.getDelegate(), allocate));
@@ -206,7 +206,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public QDataDef<?> createDataDef(final Type type, List<Annotation> annotations) {
+	public final QDataDef<?> createDataDef(final Type type, List<Annotation> annotations) {
 
 		// annotations
 		if (annotations == null)
@@ -336,7 +336,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public <D extends QBufferedElement> QDataArea<D> createDataArea(final QUnaryBufferedDataDef<D> argument, final String externalName, final boolean allocate) {
+	public final <D extends QBufferedElement> QDataArea<D> createDataArea(final QUnaryBufferedDataDef<D> argument, final String externalName, final boolean allocate) {
 
 		final D argumentData = createData(argument, allocate);
 		final QDataArea<D> nioDataAreaImpl = dataAreaFactory.createDataArea(getDataContext(), argumentData, externalName);
@@ -346,7 +346,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public <D extends QBufferedElement> QScroller<D> createScroller(final QUnaryAtomicBufferedDataDef<D> argument, final int dimension, final boolean allocate) {
+	public final <D extends QBufferedElement> QScroller<D> createScroller(final QUnaryAtomicBufferedDataDef<D> argument, final int dimension, final boolean allocate) {
 
 		final QBufferedElement model = createData(argument, false);
 
@@ -357,7 +357,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public <D extends QBufferedElement> QArray<D> createArray(final QUnaryAtomicBufferedDataDef<D> argument, final int dimension, final SortDirection sortDirection, final boolean allocate) {
+	public final <D extends QBufferedElement> QArray<D> createArray(final QUnaryAtomicBufferedDataDef<D> argument, final int dimension, final SortDirection sortDirection, final boolean allocate) {
 
 		final QBufferedElement model = createData(argument, false);
 
@@ -368,7 +368,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public <D extends QDataStruct> QStroller<D> createStroller(final QStrollerDef<?> argument, final int dimension, final boolean allocate) {
+	public final <D extends QDataStruct> QStroller<D> createStroller(final QStrollerDef<?> argument, final int dimension, final boolean allocate) {
 
 		QDataStruct model = null;
 
@@ -395,7 +395,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <R extends QRecord> R createRecord(final Class<R> wrapper, final boolean allocate) {
+	public final <R extends QRecord> R createRecord(final Class<R> wrapper, final boolean allocate) {
 
 		final Class<? extends QDataStruct> classDataStruct = (Class<? extends QDataStruct>) wrapper;
 		return (R) createDataStruct(classDataStruct, 0, allocate);
@@ -403,7 +403,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <D extends QDataStruct> D createDataStruct(final Class<D> classDelegator, final int length, final boolean allocate) {
+	public final <D extends QDataStruct> D createDataStruct(final Class<D> classDelegator, final int length, final boolean allocate) {
 
 		// data structure
 		D dataStructure = null;
@@ -463,7 +463,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <D extends QDataStruct> D createDataStruct(final List<QDataTerm<QBufferedDataDef<?>>> dataTerms, final int length, final boolean allocate) {
+	public final <D extends QDataStruct> D createDataStruct(final List<QDataTerm<QBufferedDataDef<?>>> dataTerms, final int length, final boolean allocate) {
 
 		final NIODataStructImpl dataStructure = new NIODataStructImpl(getDataContext(), length, dataTerms, allocate);
 
@@ -476,7 +476,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public QCharacter createCharacter(final int length, final boolean varying, final boolean allocate) {
+	public final QCharacter createCharacter(final int length, final boolean varying, final boolean allocate) {
 
 		NIOCharacterImpl character = null;
 		if (varying)
@@ -488,7 +488,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public QBinary createBinary(final BinaryType type, final boolean unsigned, final boolean allocate) {
+	public final QBinary createBinary(final BinaryType type, final boolean unsigned, final boolean allocate) {
 
 		final NIOBinaryImpl binary = new NIOBinaryImpl(getDataContext(), type, unsigned, allocate);
 
@@ -496,7 +496,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public QDecimal createDecimal(final int precision, final int scale, final DecimalType type, final boolean allocate) {
+	public final QDecimal createDecimal(final int precision, final int scale, final DecimalType type, final boolean allocate) {
 
 		NIODecimalImpl decimal = null;
 
@@ -513,7 +513,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public QIndicator createIndicator(final boolean allocate) {
+	public final QIndicator createIndicator(final boolean allocate) {
 
 		final NIOIndicatorImpl indicator = new NIOIndicatorImpl(getDataContext(), true);
 
@@ -521,7 +521,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public QDatetime createDate(final DatetimeType type, final DateFormat dateFormat, final TimeFormat timeFormat, final boolean allocate) {
+	public final QDatetime createDate(final DatetimeType type, final DateFormat dateFormat, final TimeFormat timeFormat, final boolean allocate) {
 
 		final NIODatetimeImpl datetime = new NIODatetimeImpl(getDataContext(), type, dateFormat, timeFormat, allocate);
 
@@ -535,7 +535,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public QHexadecimal createHexadecimal(final int length, final boolean allocate) {
+	public final QHexadecimal createHexadecimal(final int length, final boolean allocate) {
 
 		final NIOHexadecimalImpl hexadecimal = new NIOHexadecimalImpl(getDataContext(), length, allocate);
 
@@ -543,7 +543,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@SuppressWarnings("unchecked")
-	private Class<? extends QData> completeMetadata(final Type type, final List<Type> arguments, final List<Annotation> annotations) {
+	private final Class<? extends QData> completeMetadata(final Type type, final List<Type> arguments, final List<Annotation> annotations) {
 
 		// klass
 		Class<? extends QData> klass = null;
@@ -566,7 +566,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 		return klass;
 	}
 
-	private void injectAnnotations(final List<Annotation> annotations, final Object target) {
+	private final void injectAnnotations(final List<Annotation> annotations, final Object target) {
 
 		final EObject eObject = (EObject) target;
 
@@ -643,7 +643,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public <D extends QData> QList<D> createList(final QUnaryAtomicDataDef<D> argument, final int dimension) {
+	public final <D extends QData> QList<D> createList(final QUnaryAtomicDataDef<D> argument, final int dimension) {
 
 		final QBufferedData model = (QBufferedData) createData(argument, false);
 
@@ -653,7 +653,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public QPointer createPointer(final int bufferLength) {
+	public final QPointer createPointer(final int bufferLength) {
 
 		if (bufferLength < 0)
 			throw new IntegratedLanguageDataRuntimeException("Invalid bufferLength");
@@ -662,7 +662,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public QPointer createPointer(final QPointer pointer, final int newSize) {
+	public final QPointer createPointer(final QPointer pointer, final int newSize) {
 
 		final NIOPointerImpl oldPointer = (NIOPointerImpl) pointer;
 		final ByteBuffer oldBuffer = oldPointer.getBuffer();
@@ -675,7 +675,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 		return newPointer;
 	}
 
-	public QDataContext getDataContext() {
+	public final QDataContext getDataContext() {
 		return this.dataContext;
 	}
 }

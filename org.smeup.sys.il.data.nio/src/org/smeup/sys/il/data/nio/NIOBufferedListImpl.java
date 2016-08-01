@@ -565,7 +565,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	@Override
 	public final QNumeric qLen() {
 
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(8, 0, DecimalType.ZONED, true);
+//		final QDecimal number = getDataContext().getDataFactory().createDecimal(8, 0, DecimalType.ZONED, true);
+//		number.eval(getLength());
+
+		final QDecimal number = ((NIODataContextImpl)getDataContext()).DATA_LENGTH;
 		number.eval(getLength());
 
 		return number;

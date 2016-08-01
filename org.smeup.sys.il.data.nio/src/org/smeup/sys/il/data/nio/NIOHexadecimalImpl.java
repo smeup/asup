@@ -18,7 +18,7 @@ import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QNumeric;
-import org.smeup.sys.il.data.def.DecimalType;
+import org.smeup.sys.il.data.QString;
 
 public final class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexadecimal {
 
@@ -26,10 +26,6 @@ public final class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexad
 
 	public NIOHexadecimalImpl(final QDataContext dataContext, final int length, final boolean allocate) {
 		super(dataContext, length);
-	}
-
-	@Override
-	protected final void setLength(final short length) {
 	}
 
 	@Override
@@ -153,7 +149,8 @@ public final class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexad
 	@Override
 	public final QNumeric qLen() {
 
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+//		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+		final QDecimal number = ((NIODataContextImpl)getDataContext()).DATA_LENGTH;
 		number.eval(getLength());
 
 		return number;
@@ -178,5 +175,31 @@ public final class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexad
 	@Override
 	public final boolean isEmpty() {
 		return eq(DataSpecial.BLANKS);
+	}
+
+	@Override
+	public final QBufferedData eval(final DataSpecial value) {
+		_write(_toBytes(value));
+		return this;
+	}
+
+	@Override
+	public final void evalr(final QString value) {
+
+		final byte[] bytes = value.asBytes();
+		if (bytes.length > _length)
+			_move(bytes, false);
+		else
+			_move(bytes, true);
+	}
+
+	@Override
+	public final void evalr(final String value) {
+
+		final byte[] bytes = value.getBytes(getDataContext().getCharset());
+		if (bytes.length > _length)
+			_move(bytes, false);
+		else
+			_move(bytes, true);
 	}
 }

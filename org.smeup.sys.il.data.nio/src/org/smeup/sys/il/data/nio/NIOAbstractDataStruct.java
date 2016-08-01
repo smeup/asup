@@ -20,6 +20,7 @@ import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.DecimalType;
 
 public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements QDataStruct {
@@ -28,10 +29,6 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 
 	public NIOAbstractDataStruct(final QDataContext dataContext, final int length) {
 		super(dataContext, length);
-	}
-
-	@Override
-	protected final void setLength(final short length) {
 	}
 
 	protected final void _allocate() {
@@ -189,5 +186,32 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 		number.eval(getLength());
 
 		return number;
+	}
+	
+
+	@Override
+	public final QBufferedData eval(final DataSpecial value) {
+		_write(_toBytes(value));
+		return this;
+	}
+
+	@Override
+	public final void evalr(final QString value) {
+
+		final byte[] bytes = value.asBytes();
+		if (bytes.length > _length)
+			_move(bytes, false);
+		else
+			_move(bytes, true);
+	}
+
+	@Override
+	public final void evalr(final String value) {
+
+		final byte[] bytes = value.getBytes(getDataContext().getCharset());
+		if (bytes.length > _length)
+			_move(bytes, false);
+		else
+			_move(bytes, true);
 	}
 }

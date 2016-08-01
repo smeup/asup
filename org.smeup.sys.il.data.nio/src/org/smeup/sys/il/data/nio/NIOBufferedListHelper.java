@@ -18,9 +18,9 @@ import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 
-public class NIOBufferedListHelper {
+public final class NIOBufferedListHelper {
 
-	public static int lookup(final NIOBufferedListImpl<?> list, final QBufferedElement argument, final DataComparator comparator, final int startIndex, final int numElements) {
+	public final static int lookup(final NIOBufferedListImpl<?> list, final QBufferedElement argument, final DataComparator comparator, final int startIndex, final int numElements) {
 
 		int result = 0;
 		boolean resultIndex = false;
@@ -125,7 +125,7 @@ public class NIOBufferedListHelper {
 		return result;
 	}
 
-	public static int lookup(final NIOBufferedListImpl<? extends QBufferedElement> list, final DataSpecial argument, final DataComparator comparator, final int startIndex, final int numElements) {
+	public final static int lookup(final NIOBufferedListImpl<? extends QBufferedElement> list, final DataSpecial argument, final DataComparator comparator, final int startIndex, final int numElements) {
 
 		int result = 0;
 		boolean resultIndex = false;

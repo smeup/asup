@@ -20,10 +20,8 @@ import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
-import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.def.BinaryType;
-import org.smeup.sys.il.data.def.DecimalType;
 
 public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
@@ -267,7 +265,10 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	@Override
 	public final QNumeric qLen() {
 
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+//		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+//		number.eval(getLength());
+
+		final QNumeric number = ((NIODataContextImpl)getDataContext()).DATA_LENGTH;
 		number.eval(getLength());
 
 		return number;

@@ -39,7 +39,7 @@ import org.smeup.sys.il.data.def.QStrollerDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 
-public class NIODataManagerImpl implements QDataManager {
+public final class NIODataManagerImpl implements QDataManager {
 
 	@Inject
 	private QFrameManager frameManager;
@@ -54,12 +54,12 @@ public class NIODataManagerImpl implements QDataManager {
 	}
 
 	@Override
-	public QDataContainer createDataContainer(final QDataContext dataContext) {
+	public final QDataContainer createDataContainer(final QDataContext dataContext) {
 		return new NIODataContainerImpl((NIODataContextImpl) dataContext);
 	}
 
 	@Override
-	public QDataContainer createDataContainer(final QContext context, final Object owner) {
+	public final QDataContainer createDataContainer(final QContext context, final Object owner) {
 		return new NIODataContainerImpl(createDataContext(context, owner));
 	}
 
@@ -76,14 +76,14 @@ public class NIODataManagerImpl implements QDataManager {
 	}
 
 	@Override
-	public void validateDataContainer(final QDataContainer dataContainer) {
+	public final void validateDataContainer(final QDataContainer dataContainer) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
 	}
 
 	@SuppressWarnings({ "unchecked" })
-	private <DD extends QDataDef<?>> List<QDataTerm<?>> buildDataTerms(final QFrame<?> frame, final QFrame<?> term) {
+	private final <DD extends QDataDef<?>> List<QDataTerm<?>> buildDataTerms(final QFrame<?> frame, final QFrame<?> term) {
 
 		final List<QDataTerm<?>> dataTerms = new LinkedList<QDataTerm<?>>();
 
@@ -144,7 +144,7 @@ public class NIODataManagerImpl implements QDataManager {
 		return dataTerms;
 	}
 
-	private QDataDef<?> buildDataDef(final QSlot slot) {
+	private final QDataDef<?> buildDataDef(final QSlot slot) {
 
 		QDataDef<?> dataDef = (QDataDef<?>) slot.getValue(QIntegratedLanguageDataPackage.eNS_PREFIX);
 		if (dataDef == null) {

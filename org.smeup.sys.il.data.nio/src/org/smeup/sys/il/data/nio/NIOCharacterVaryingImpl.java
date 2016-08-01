@@ -13,11 +13,13 @@ package org.smeup.sys.il.data.nio;
 
 import java.nio.ByteBuffer;
 
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.BinaryType;
 
 public final class NIOCharacterVaryingImpl extends NIOCharacterImpl implements QCharacter {
@@ -33,8 +35,7 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl implements Q
 		}
 	}
 
-	@Override
-	protected final void setLength(final short length) {
+	private final void setLength(final short length) {
 		final ByteBuffer buffer = getBuffer();
 		NIOBufferHelper.prepare(buffer, getPosition(), 2);
 		buffer.putShort(length);
@@ -81,6 +82,36 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl implements Q
 		_write(value.getBytes(getDataContext().getCharset()));
 	}
 
+
+	@Override
+	public final QBufferedData eval(final DataSpecial value) {
+		setLength((short) _length);
+		_write(_toBytes(value));
+		return this;
+	}
+
+	@Override
+	public final void evalr(final QString value) {
+
+		setLength((short) _length);
+		final byte[] bytes = value.asBytes();
+		if (bytes.length > _length)
+			_move(bytes, false);
+		else
+			_move(bytes, true);
+	}
+
+	@Override
+	public final void evalr(final String value) {
+
+		setLength((short) _length);
+		final byte[] bytes = value.getBytes(getDataContext().getCharset());
+		if (bytes.length > _length)
+			_move(bytes, false);
+		else
+			_move(bytes, true);
+	}
+	
 	@Override
 	protected final void cat(final byte[] factor1, final byte[] factor2, final Number space, final boolean clear) {
 

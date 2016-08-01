@@ -13,6 +13,7 @@ package org.smeup.sys.il.data.nio;
 
 import java.nio.ByteBuffer;
 
+import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
@@ -20,7 +21,7 @@ import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
-import org.smeup.sys.il.data.def.DecimalType;
+import org.smeup.sys.il.data.QString;
 
 public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicator {
 
@@ -36,10 +37,6 @@ public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicat
 			_buffer = ByteBuffer.allocate(getSize());
 			_buffer.put(OFF);
 		}
-	}
-
-	@Override
-	protected final void setLength(final short length) {
 	}
 
 	@Override
@@ -163,7 +160,8 @@ public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicat
 	@Override
 	public final QNumeric qLen() {
 
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+//		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+		final QDecimal number = ((NIODataContextImpl)getDataContext()).DATA_LENGTH;	
 		number.eval(getLength());
 
 		return number;
@@ -188,5 +186,32 @@ public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicat
 	@Override
 	public final boolean isEmpty() {
 		return eq(false);
+	}
+
+	@Override
+	public final QBufferedData eval(final DataSpecial value) {
+
+		_write(_toBytes(value));
+		return this;
+	}
+
+	@Override
+	public final void evalr(final QString value) {
+
+		final byte[] bytes = value.asBytes();
+		if (bytes.length > _length)
+			_move(bytes, false);
+		else
+			_move(bytes, true);
+	}
+
+	@Override
+	public final void evalr(final String value) {
+
+		final byte[] bytes = value.getBytes(getDataContext().getCharset());
+		if (bytes.length > _length)
+			_move(bytes, false);
+		else
+			_move(bytes, true);
 	}
 }
