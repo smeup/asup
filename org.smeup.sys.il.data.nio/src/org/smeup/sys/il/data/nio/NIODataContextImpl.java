@@ -26,10 +26,8 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataAreaFactory;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
-import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.def.DateFormat;
-import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.def.TimeFormat;
 
 public final class NIODataContextImpl implements QDataContext {
@@ -46,11 +44,6 @@ public final class NIODataContextImpl implements QDataContext {
 	private static final TimeFormat TIMEFMT = TimeFormat.ISO;
 
 	private Map<QBufferedData, QBufferedData> snapshots = null;
-	protected final NIOCharacterFixedImpl DATA_TRIM;
-	protected final NIOCharacterFixedImpl DATA_SUBST;
-	protected final QDecimal DATA_INT;
-	protected final QDecimal DATA_LENGTH;
-	protected final QDecimal DATA_OPERATION;
 	
 	public NIODataContextImpl(final QContext context, final QDataAreaFactory dataAreaFactory, final Object owner) {
 		this.context = context;
@@ -60,11 +53,6 @@ public final class NIODataContextImpl implements QDataContext {
 		equal = dataFactory.createIndicator(true);
 		error = dataFactory.createIndicator(true);
 		found = dataFactory.createIndicator(true);
-		DATA_TRIM = new NIOCharacterFixedImpl(this, 32767, true);
-		DATA_SUBST = new NIOCharacterFixedImpl(this, 0, false);
-		DATA_INT = dataFactory.createDecimal(31, 0, DecimalType.ZONED, true);
-		DATA_LENGTH = dataFactory.createDecimal(10, 0, DecimalType.ZONED, true);
-		DATA_OPERATION = dataFactory.createDecimal(15, 5, DecimalType.ZONED, true);
 	}
 
 	@Override

@@ -32,6 +32,7 @@ import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
+import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.mi.core.util.QStrings;
 
 public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QString {
@@ -574,10 +575,9 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	public final QNumeric qCheck(final String base, Number start, final QIndicator found) {
-		// TODO use cache
-//		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
-		final QDecimal number = ((NIODataContextImpl)getDataContext()).DATA_INT;
-		number.clear();
+		
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+		
 		if (start == null)
 			start = 1;
 
@@ -601,10 +601,8 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	public final QNumeric qCheckr(final String base, Number start, final QIndicator found) {
-		// TODO use cache
-//		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
-		final QDecimal number = ((NIODataContextImpl)getDataContext()).DATA_INT;
-		number.clear();
+
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
 		if (start == null || start.intValue() > getLength())
 			start = getLength();
 
@@ -646,10 +644,10 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	}
 
 	private final QNumeric qIntOperation(final String value, final boolean roundingMode) {
-		// TODO use cache
-//		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 0, DecimalType.ZONED, true);
-		final QDecimal number = ((NIODataContextImpl)getDataContext()).DATA_INT;
+
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 0, DecimalType.ZONED, true);
 		number.eval(Integer.parseInt(value));
+		
 		return number;
 	}
 
@@ -738,10 +736,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	@Override
 	public final QNumeric qScan(final String argument, Number start, final QIndicator found) {
 
-		// TODO use cache
-//		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
-		final QDecimal number = ((NIODataContextImpl)getDataContext()).DATA_INT;
-		number.clear();
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
 
 		// default
 		if (start == null)

@@ -26,6 +26,7 @@ import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.def.DecimalType;
 
 public abstract class NIONumericImpl extends NIOBufferedElementImpl implements QNumeric {
 
@@ -383,11 +384,12 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	private final QNumeric qDivOperation(final Number value, final QNumeric remainderTarget) {
 
-//		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
-		final QDecimal number = ((NIODataContextImpl)getDataContext()).DATA_OPERATION;
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 		number.eval(asDouble() / value.doubleValue());
+		
 		if (remainderTarget != null)
 			remainderTarget.eval(asDouble() % value.doubleValue());
+		
 		return number;
 	}
 
@@ -402,9 +404,10 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	private final QNumeric qIntOperation(final Number value, final boolean roundingMode) {
-//		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 0, DecimalType.ZONED, true);
-		final QDecimal number = ((NIODataContextImpl)getDataContext()).DATA_INT;
+
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 0, DecimalType.ZONED, true);
 		number.eval(value.doubleValue());
+		
 		return number;
 	}
 
@@ -419,8 +422,8 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	private final QNumeric qMinusOperation(final Number value) {
-//		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
-		final QDecimal number = ((NIODataContextImpl)getDataContext()).DATA_OPERATION;		
+
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 		number.eval(asDouble() - value.doubleValue());
 		return number;
 	}
@@ -436,9 +439,10 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	private final QNumeric qMultOperation(final Number value) {
-//		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
-		final QDecimal number = ((NIODataContextImpl)getDataContext()).DATA_OPERATION;
+
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);		
 		number.eval(asDouble() * value.doubleValue());
+		
 		return number;
 	}
 
@@ -453,9 +457,10 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	private final QNumeric qPlusOperation(final Number value) {
-//		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
-		final QDecimal number = ((NIODataContextImpl)getDataContext()).DATA_OPERATION;
+		
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 		number.eval(asDouble() + value.doubleValue());
+		
 		return number;
 	}
 
@@ -470,9 +475,10 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	private final QNumeric qRemOperation(final Number value) {
-//		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
-		final QDecimal number = ((NIODataContextImpl)getDataContext()).DATA_OPERATION;
+
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 		number.eval(asDouble() % value.doubleValue());
+		
 		return number;
 	}
 

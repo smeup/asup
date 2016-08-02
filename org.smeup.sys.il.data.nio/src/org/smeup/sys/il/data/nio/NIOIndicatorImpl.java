@@ -22,6 +22,7 @@ import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.def.DecimalType;
 
 public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicator {
 
@@ -160,8 +161,7 @@ public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicat
 	@Override
 	public final QNumeric qLen() {
 
-//		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
-		final QDecimal number = ((NIODataContextImpl)getDataContext()).DATA_LENGTH;	
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
 		number.eval(getLength());
 
 		return number;

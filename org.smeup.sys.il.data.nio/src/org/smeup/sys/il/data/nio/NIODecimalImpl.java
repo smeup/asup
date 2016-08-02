@@ -17,6 +17,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.def.DecimalType;
 
 public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal {
 
@@ -93,8 +94,7 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 	@Override
 	public final QNumeric qLen() {
 
-//		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
-		final QDecimal number = ((NIODataContextImpl)getDataContext()).DATA_LENGTH;		
+		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
 		number.eval(getLength());
 
 		return number;
