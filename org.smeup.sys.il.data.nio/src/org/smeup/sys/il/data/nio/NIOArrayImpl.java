@@ -316,10 +316,14 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 	@SuppressWarnings("unchecked")
 	@Override
 	public final QArray<QCharacter> qSubst(final Number start, final Number length) {
-
 //		final D modelCharacter = (D) NIOBufferHelper.getNIOBufferedElementImpl(getModel())._copyDef(getDataContext());
-		final D modelCharacter = (D) new NIOCharacterFixedImpl(getDataContext(), length.intValue(), false);
-		
+		D modelCharacter = null;
+		if (getModel() instanceof NIOCharacterFixedImpl) {
+			modelCharacter = (D) new NIOCharacterFixedImpl(getDataContext(), length.intValue(), false);
+		} else {
+			modelCharacter = (D) new NIOCharacterVaryingImpl(getDataContext(), length.intValue(), false);
+		}
+
 		final NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), modelCharacter, capacity(), getSortDirection(), false);
 		newArray.setListOwner(this);
 		slice(newArray, start.intValue());
