@@ -722,44 +722,6 @@
       </entry>
     </prototypes>
     <prototypes
-        name="%sst">
-      <definition
-          xsi:type="il-data-def:StringDef"/>
-      <entry>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              constant="true"
-              name="string">
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:StringDef"/>
-          </delegate>
-        </parameters>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              name="startIndex">
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:NumericDef"/>
-          </delegate>
-        </parameters>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              name="length">
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:NumericDef"/>
-          </delegate>
-        </parameters>
-      </entry>
-    </prototypes>
-    <prototypes
         name="%status">
       <definition
           xsi:type="il-data-def:DecimalDef"
