@@ -209,6 +209,8 @@ public class CLExpressionHelper implements BaseExpressionHelper {
 			text = "%BCAT";
 		else if (node.getType() == CLExprLexer.TCAT)
 			text = "%TCAT";
+		else if (node.getType() == CLExprLexer.SST_FUN)
+			text = "%SUBST";
 		else
 			text = normalizeText(node.getText());
 		return text;

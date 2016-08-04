@@ -255,8 +255,9 @@ public class XMICLProgramWriter {
 
 			DataDefType dataDefType = null;
 			
-			if(left.toUpperCase().startsWith("%SST") || left.toUpperCase().startsWith("(%SST"))
+			if(left.toUpperCase().startsWith("%SST") || left.toUpperCase().startsWith("(%SST")) {
 				dataDefType = DataDefType.CHARACTER;
+			}
 			else {
 				QDataTerm<?> dataLeft = getData(left);
 				if(dataLeft == null)
