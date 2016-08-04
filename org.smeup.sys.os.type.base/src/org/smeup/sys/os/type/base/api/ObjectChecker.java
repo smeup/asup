@@ -1,3 +1,14 @@
+/**
+ *  Copyright (c) 2012, 2016 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
+ */
 package org.smeup.sys.os.type.base.api;
 
 import javax.inject.Inject;
@@ -49,12 +60,9 @@ public @ToDo class ObjectChecker {
 	public void main(@DataDef(qualified = true) OBJECT object, @DataDef(length = 7) QCharacter objectType, @DataDef(length = 10) QEnum<MEMBERIFDATABASEFILEEnum, QCharacter> memberIfDataBaseFile,
 			@ToDo @DataDef(dimension = 10, length = 10) QScroller<QEnum<AUTHORITYEnum, QCharacter>> authority) {
 
-		if (objectType == null || objectType.trimR().equals(""))
-			error("You must specify an object type");
-
 		QType<?> type = typeRegistry.lookup(objectType.trimR());
 		if (type == null)
-			error("Wrong type: " + objectType.trimR());
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF9899, objectType);
 
 		QResourceReader<? extends QTypedObject> resourceReader = null;
 
@@ -96,7 +104,7 @@ public @ToDo class ObjectChecker {
 
 	private void error(String message) {
 		jobLogManager.error(job, message);
-		throw exceptionManager.prepareException(job, QCPFMSG.CPF9899, new String[] {});
+
 	}
 
 	private void checkLibrary(String libName) {

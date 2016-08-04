@@ -12,11 +12,13 @@
 package org.smeup.sys.os.cmd.ibmi;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import java.util.StringTokenizer;
 
 import javax.inject.Inject;
 
@@ -42,6 +44,7 @@ import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataManager;
+import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
@@ -224,9 +227,31 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		if (value.startsWith("&")) {
 
 			int e = 1;
-			StringTokenizer st = new StringTokenizer(value);
-			while (st.hasMoreTokens()) {
-				String token = st.nextToken();
+			String[] tokens = null;
+			
+			Iterator<QBufferedData> elements = null;
+			boolean qualified = false;
+			if(dataTerm.getDataTermType().isCompound()) {
+				QCompoundDataDef<?, ?> compoundDef = (QCompoundDataDef<?, ?>)dataTerm.getDefinition();
+				qualified = compoundDef.isQualified();
+				QDataStruct dataStruct = (QDataStruct) data;
+				if(qualified) { 
+					tokens = value.split("/");
+					List<QBufferedData> tempList = new ArrayList<QBufferedData>(dataStruct.getElements());
+					if(tokens.length> 1)
+						Collections.reverse(tempList);
+					elements = tempList.iterator();
+				}
+				else { 
+					tokens = value.split(" ");
+					elements = dataStruct.getElements().iterator();
+				}
+			}
+			else {
+				tokens = value.split(" ");
+			}
+			
+			for(String token: tokens) {
 
 				Object variable = variables.get(token.substring(1).toLowerCase());
 
@@ -236,12 +261,17 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				if (!(variable instanceof QBufferedData))
 					continue;
 
-				if (data instanceof QBufferedData) {
-					((QBufferedData) variable).assign((QBufferedData) data);
-				} else if (data instanceof QList<?>) {
+				if (data instanceof QList<?>) {
 					QList<?> list = (QList<?>) data;
 					((QBufferedData) variable).assign((QBufferedData) list.get(e));
 				}
+				else if(data instanceof QDataStruct && elements != null) {
+					writer.set(variable);
+					elements.next().accept(writer);
+				}
+				else if (data instanceof QBufferedData) {
+					((QBufferedData) variable).assign((QBufferedData) data);
+				} 
 
 				e++;
 			}
