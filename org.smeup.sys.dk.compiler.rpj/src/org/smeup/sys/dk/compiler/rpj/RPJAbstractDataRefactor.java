@@ -87,7 +87,12 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 			if (target.getArgument() instanceof QCharacterDef && source instanceof QDecimalDef) {
 				target.setArgument((QDecimalDef) EcoreUtil.copy((EObject) source));
 				appendDefinition(source, target.getArgument());
-			} else
+			}
+			else if (target.getArgument() instanceof QCharacterDef && source instanceof QIndicatorDef) {
+				target.setArgument((QIndicatorDef) EcoreUtil.copy((EObject) source));
+				appendDefinition(source, target.getArgument());
+			}
+			else
 				throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: sb9r89tnbr9tbnt9s");
 		} else
 			appendDefinition(source, target.getArgument());
