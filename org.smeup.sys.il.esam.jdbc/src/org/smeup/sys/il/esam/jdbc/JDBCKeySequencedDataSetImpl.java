@@ -80,11 +80,15 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 		return chain(keyList, notFound, error, null);
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public boolean chain(Object[] keyList, QIndicator notFound, QIndicator error, Boolean lock) {
 
+//		long timeIni = System.currentTimeMillis();
+
+		String querySelect = null;
 		try {
-			prepareAccess(OperationSet.CHAIN, keyList, OperationRead.CHAIN, keyList, false);
+			querySelect = prepareAccess(OperationSet.CHAIN, keyList, OperationRead.CHAIN, keyList, false);
 
 			readNext();
 		} catch (SQLException e) {
@@ -96,6 +100,8 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 
 		if (error != null)
 			error.eval(onError());
+
+//		System.out.println("sql:["+(System.currentTimeMillis()-timeIni)+"]\t" + querySelect);
 
 		return isFound();
 	}

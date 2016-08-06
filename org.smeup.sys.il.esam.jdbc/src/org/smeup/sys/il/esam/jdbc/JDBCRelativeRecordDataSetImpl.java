@@ -53,14 +53,19 @@ public class JDBCRelativeRecordDataSetImpl<R extends QRecord> extends JDBCDataSe
 		return chain(relativeRecordNumber, null, null, lock);
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public boolean chain(int relativeRecordNumber, QIndicator notFound, QIndicator error, Boolean lock) {
 
+//		long timeIni = System.currentTimeMillis();
+
+		String querySelect = null;
+
 		try {
 			Object[] keyList = new Object[] { relativeRecordNumber };
-			prepareAccess(OperationSet.CHAIN, keyList, OperationRead.CHAIN, keyList, false);
+			querySelect = prepareAccess(OperationSet.CHAIN, keyList, OperationRead.CHAIN, keyList, false);
 
-			return readNext();
+			readNext();
 
 		} catch (SQLException e) {
 			handleSQLException(e);
@@ -71,6 +76,8 @@ public class JDBCRelativeRecordDataSetImpl<R extends QRecord> extends JDBCDataSe
 
 		if (error != null)
 			error.eval(onError());
+
+//		System.out.println("sql:["+(System.currentTimeMillis()-timeIni)+"]\t" + querySelect);
 
 		return isFound();
 	}
