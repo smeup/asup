@@ -38,17 +38,6 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QBufferedData eval(final DataSpecial value) {
-		_write(_toBytes(value));
-		return this;
-	}
-
-	@Override
-	protected final void _clear() {
-		eval(0);
-	}
-
-	@Override
 	protected final byte[] _toBytes(final Number value) {
 		return _toBytes(value.toString());
 	}

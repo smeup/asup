@@ -31,8 +31,6 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	private final int _dimension;
 	private int _index;
 
-	D _current = current();
-
 	public NIOScrollerImpl(final QDataContext dataContext, final D model, final int dimension, final boolean allocate) {
 		super(dataContext, model, SortDirection.ASCEND);
 		_dimension = dimension;

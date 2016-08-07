@@ -38,7 +38,7 @@ public final class NIOComparatorHelper {
 			break;
 		}
 
-		return compareBytes(bufferedElement._toBytes(), b2, filler);
+		return compareBytes(bufferedElement.asBytes(), b2, filler);
 	}
 
 	public static final int compareBytes(final byte[] b1, final byte[] b2, final byte filler) {

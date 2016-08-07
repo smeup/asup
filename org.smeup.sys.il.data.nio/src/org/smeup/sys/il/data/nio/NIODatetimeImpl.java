@@ -64,8 +64,14 @@ public final class NIODatetimeImpl extends NIOBufferedElementImpl implements QDa
 		if (allocate) {
 			checkAllocation();
 			_buffer = ByteBuffer.allocate(getSize());
-			_clear();
+			clear();
 		}
+	}
+
+	@Override
+	public final void clear() {
+		final String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(CLEAR.getTime());
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), result.getBytes(getDataContext().getCharset()), INIT);
 	}
 
 	@Override
@@ -375,12 +381,6 @@ public final class NIODatetimeImpl extends NIOBufferedElementImpl implements QDa
 	}
 
 	@Override
-	protected final void _clear() {
-		final String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(CLEAR.getTime());
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), result.getBytes(getDataContext().getCharset()), INIT);
-	}
-
-	@Override
 	protected final void _write(final byte[] value) {
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value, INIT);
 	}
@@ -412,7 +412,7 @@ public final class NIODatetimeImpl extends NIOBufferedElementImpl implements QDa
 	}
 
 	@Override
-	protected final byte[] _toBytes() {
+	public final byte[] asBytes() {
 		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
 	}
 

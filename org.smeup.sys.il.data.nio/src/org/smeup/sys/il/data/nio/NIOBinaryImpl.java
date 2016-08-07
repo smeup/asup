@@ -11,6 +11,9 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
@@ -18,6 +21,7 @@ import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBinary;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
@@ -33,23 +37,19 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 	private final BinaryType _type;
 	private final boolean _unsigned;
-	private NIODecimalDef decimalDef = null;
+	private transient NIODecimalDef _decimalDef;
 
 	public NIOBinaryImpl(final QDataContext dataContext, final BinaryType type, final boolean unsigned, final boolean allocate) {
 		super(dataContext);
+		
 		this._type = type;
 		this._unsigned = unsigned;
-
-		this.decimalDef = NIODecimalDef.getInstance(getLength(), 0);
+		this._decimalDef = NIODecimalDef.getInstance(getLength(), 0);
 
 		if (allocate) {
 			checkAllocation();
 			_buffer = ByteBuffer.allocate(getSize());
 		}
-	}
-
-	protected final NIODecimalDef getDecimalDef() {
-		return decimalDef;
 	}
 
 	@Override
@@ -87,6 +87,17 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 		}
 
 		throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: sdbf6wq76ert");
+	}
+
+	@Override
+	public final void clear() {
+		_writeNumber(0, false);
+	}
+	
+	@Override
+	public final QBufferedData eval(final DataSpecial value) {
+		_write(_toBytes(value));
+		return this;
 	}
 
 	@Override
@@ -141,9 +152,8 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	}
 
 	@Override
-	public final byte[] _toBytes() {
-		;
-		return getDecimalDef().getZoned().toBytes(asDouble());
+	public final byte[] asBytes() {
+		return _decimalDef.zoned.toBytes(asDouble());
 	}
 
 	@Override
@@ -171,9 +181,9 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 			final byte[] newValue = asBytes();
 			System.arraycopy(value, 0, newValue, getLength() - value.length, value.length);
 
-			doubleValue = getDecimalDef().getZoned().toDouble(newValue);
+			doubleValue = _decimalDef.zoned.toDouble(newValue);
 		} else
-			doubleValue = getDecimalDef().getZoned().toDouble(value, value.length - getLength());
+			doubleValue = _decimalDef.zoned.toDouble(value, value.length - getLength());
 
 		_writeNumber(doubleValue, false);
 	}
@@ -186,16 +196,16 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 			final byte[] newValue = asBytes();
 			System.arraycopy(value, 0, newValue, 0, value.length);
 
-			doubleValue = getDecimalDef().getZoned().toDouble(newValue);
+			doubleValue = _decimalDef.zoned.toDouble(newValue);
 		} else
-			doubleValue = getDecimalDef().getZoned().toDouble(value);
+			doubleValue = _decimalDef.zoned.toDouble(value);
 
 		_writeNumber(doubleValue, false);
 	}
 
 	@Override
 	protected final void _write(final byte[] value) {
-		eval(getDecimalDef().getZoned().toDouble(value));
+		eval(_decimalDef.zoned.toDouble(value));
 	}
 
 	/*
@@ -276,5 +286,20 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	public final void snap() {
 		if (!isEmpty())
 			getDataContext().snap(this);
+	}
+	
+	private final void readObject(final ObjectInputStream stream) throws IOException, ClassNotFoundException {
+
+		stream.defaultReadObject();
+		
+		final int length = stream.readInt();
+		_decimalDef = NIODecimalDef.getInstance(length, 0);
+	}
+
+	private final void writeObject(final ObjectOutputStream stream) throws IOException {
+
+		stream.defaultWriteObject();
+		
+		stream.writeInt(getLength());
 	}
 }

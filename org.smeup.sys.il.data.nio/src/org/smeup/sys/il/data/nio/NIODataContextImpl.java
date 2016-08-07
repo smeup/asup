@@ -114,6 +114,7 @@ public final class NIODataContextImpl implements QDataContext {
 
 	@Override
 	public final QBufferedData getSnap(final QBufferedData data) {
+
 		if (snapshots == null)
 			return null;
 
@@ -122,6 +123,7 @@ public final class NIODataContextImpl implements QDataContext {
 
 	@Override
 	public final void removeSnap(final QBufferedData data) {
+
 		if (snapshots == null)
 			return;
 

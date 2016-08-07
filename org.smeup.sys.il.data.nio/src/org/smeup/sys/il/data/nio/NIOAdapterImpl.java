@@ -14,6 +14,7 @@ package org.smeup.sys.il.data.nio;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.def.DecimalType;
@@ -80,5 +81,15 @@ public final class NIOAdapterImpl extends NIOBufferedElementDelegatorImpl implem
 	public final QBufferedData eval(final DataSpecial value) {
 		getDelegate().eval(value);
 		return this;
+	}
+	
+	@Override
+	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
+
+		NIOAdapterImpl copy = new NIOAdapterImpl(dataContext);
+		if (getDelegate() != null)
+			copy.setDelegate((QBufferedElement) NIOBufferHelper.getNIOBufferedElementImpl(getDelegate())._copyDef(dataContext));
+		
+		return copy;
 	}
 }

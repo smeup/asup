@@ -15,6 +15,9 @@ import java.math.BigDecimal;
 import java.nio.ByteBuffer;
 import java.text.NumberFormat;
 
+import org.smeup.sys.il.data.DataSpecial;
+import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 
 public final class NIODecimalPackedImpl extends NIODecimalImpl {
@@ -27,7 +30,7 @@ public final class NIODecimalPackedImpl extends NIODecimalImpl {
 		if (allocate) {
 			checkAllocation();
 			_buffer = ByteBuffer.allocate(getSize());
-			_buffer.put(getDecimalDef().getPackedInit());
+			_buffer.put(_decimalDef.packed_init);
 		}
 	}
 
@@ -38,17 +41,62 @@ public final class NIODecimalPackedImpl extends NIODecimalImpl {
 
 	@Override
 	public final int getSize() {
-		return getDecimalDef().getPacked().getByteLength();
+		return _decimalDef.packed.getByteLength();
 	}
 
 	@Override
 	public final int getPrecision() {
-		return getDecimalDef().getPacked().getNumberOfDigits();
+		return _decimalDef.packed.getNumberOfDigits();
 	}
 
 	@Override
 	public final int getScale() {
-		return getDecimalDef().getPacked().getNumberOfDecimalPositions();
+		return _decimalDef.packed.getNumberOfDecimalPositions();
+	}
+
+	@Override
+	public final QBufferedData eval(final DataSpecial value) {
+		
+		switch (value) {
+		case ZERO:
+		case ZEROS:
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.packed_init, INIT);
+			break;
+		case LOVAL:
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.packed_loval, INIT);
+			break;
+		case HIVAL:
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.packed_hival, INIT);
+			break;
+		case BLANK:
+		case BLANKS:
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.packed_init, INIT);
+			break;
+		case ON:
+		case OFF:
+		case NULL:
+		case OMIT:
+			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237rv4trewe87vb9stf");
+		}
+
+		return this;
+	}
+
+	@Override
+	public final void clear() {
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.packed_init, INIT);		
+	}
+
+	@Override
+	protected final void _write(final byte[] value) {
+
+		final double doubleValue = _decimalDef.zoned.toDouble(value);
+		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), _decimalDef.packed.toBytes(doubleValue), INIT);
+	}
+
+	@Override
+	public final byte[] asBytes() {
+		return _decimalDef.zoned.toBytes(asDouble());
 	}
 
 	@Override
@@ -57,9 +105,9 @@ public final class NIODecimalPackedImpl extends NIODecimalImpl {
 		Number result = 0;
 		final byte[] bytes = NIOBufferHelper.read(getBuffer(), getPosition(), getSize());
 		if (getScale() > 0)
-			result = getDecimalDef().getPacked().toDouble(bytes);
+			result = _decimalDef.packed.toDouble(bytes);
 		else
-			result = ((Double) getDecimalDef().getPacked().toDouble(bytes)).longValue();
+			result = ((Double) _decimalDef.packed.toDouble(bytes)).longValue();
 
 		return result;
 	}
@@ -75,19 +123,19 @@ public final class NIODecimalPackedImpl extends NIODecimalImpl {
 				bd = (BigDecimal) number;
 
 			if (bd == null || bd.precision() > getPrecision()) {
-				final NumberFormat nf = getDecimalDef().getFormatUP();
+				final NumberFormat nf = _decimalDef.formatUP;
 				bd = new BigDecimal(nf.format(number));
 			}
 
 			try {
-				bytes = getDecimalDef().getPacked().toBytes(bd);
+				bytes = _decimalDef.packed.toBytes(bd);
 			} catch (final Exception e) {
 				e.toString();
 			}
 		} else {
 
 			try {
-				bytes = getDecimalDef().getPacked().toBytes(number.doubleValue());
+				bytes = _decimalDef.packed.toBytes(number.doubleValue());
 				NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), bytes, INIT);
 				return;
 			} catch (final Exception e) {
@@ -98,12 +146,12 @@ public final class NIODecimalPackedImpl extends NIODecimalImpl {
 				bd = (BigDecimal) number;
 
 			if (bd == null || bd.precision() > getPrecision()) {
-				final NumberFormat nf = getDecimalDef().getFormatDW();
+				final NumberFormat nf = _decimalDef.formatDW;
 				bd = new BigDecimal(nf.format(number));
 			}
 
 			try {
-				bytes = getDecimalDef().getPacked().toBytes(bd);
+				bytes = _decimalDef.packed.toBytes(bd);
 			} catch (final Exception e) {
 				e.toString();
 			}
@@ -115,18 +163,18 @@ public final class NIODecimalPackedImpl extends NIODecimalImpl {
 	protected final void _fill(final byte[] filler, final boolean maxLength) {
 
 		final ByteBuffer byteBuffer = ByteBuffer.allocate(getLength());
-		NIOBufferHelper.fill(byteBuffer, 0, getLength(), filler);
+		NIOBufferHelper.fill(byteBuffer, 0, byteBuffer.capacity(), filler);
 
-		eval(getDecimalDef().getZoned().toDouble(byteBuffer.array()));
+		eval(_decimalDef.zoned.toDouble(byteBuffer.array()));
 	}
 
 	@Override
 	protected final void _fillr(final byte[] filler, final boolean maxLength) {
 
 		final ByteBuffer byteBuffer = ByteBuffer.allocate(getLength());
-		NIOBufferHelper.fillr(byteBuffer, 0, getLength(), filler);
+		NIOBufferHelper.fillr(byteBuffer, 0, byteBuffer.capacity(), filler);
 
-		eval(getDecimalDef().getZoned().toDouble(byteBuffer.array()));
+		eval(_decimalDef.zoned.toDouble(byteBuffer.array()));
 	}
 
 	@Override
@@ -138,14 +186,14 @@ public final class NIODecimalPackedImpl extends NIODecimalImpl {
 			final byte[] newValue = asBytes();
 			System.arraycopy(value, 0, newValue, getPrecision() - value.length, value.length);
 
-			doubleValue = getDecimalDef().getZoned().toDouble(newValue);
+			doubleValue = _decimalDef.zoned.toDouble(newValue);
 		} else
-			doubleValue = getDecimalDef().getZoned().toDouble(value, value.length - getPrecision());
+			doubleValue = _decimalDef.zoned.toDouble(value, value.length - getPrecision());
 
 		if (clear)
-			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), getDecimalDef().getPacked().toBytes(doubleValue), INIT);
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), _decimalDef.packed.toBytes(doubleValue), INIT);
 		else
-			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), getDecimalDef().getPacked().toBytes(doubleValue));
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), _decimalDef.packed.toBytes(doubleValue));
 	}
 
 	@Override
@@ -156,26 +204,14 @@ public final class NIODecimalPackedImpl extends NIODecimalImpl {
 			final byte[] newValue = asBytes();
 			System.arraycopy(value, 0, newValue, 0, value.length);
 
-			doubleValue = getDecimalDef().getZoned().toDouble(newValue);
+			doubleValue = _decimalDef.zoned.toDouble(newValue);
 		} else
-			doubleValue = getDecimalDef().getZoned().toDouble(value);
+			doubleValue = _decimalDef.zoned.toDouble(value);
 
 		if (clear)
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), getDecimalDef().getPacked().toBytes(doubleValue), INIT);
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.packed.toBytes(doubleValue), INIT);
 		else
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), getDecimalDef().getPacked().toBytes(doubleValue));
-	}
-
-	@Override
-	protected final void _write(final byte[] value) {
-
-		final double doubleValue = getDecimalDef().getZoned().toDouble(value);
-		NIOBufferHelper.move(getBuffer(), getPosition(), getLength(), getDecimalDef().getPacked().toBytes(doubleValue), INIT);
-	}
-
-	@Override
-	public final byte[] _toBytes() {
-		return getDecimalDef().getZoned().toBytes(asDouble());
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.packed.toBytes(doubleValue));
 	}
 
 	@Override

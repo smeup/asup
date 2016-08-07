@@ -25,10 +25,10 @@ import org.smeup.sys.il.data.def.DecimalType;
 public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	public NIOCharacterFixedImpl(final QDataContext dataContext, final int length, final boolean allocate) {
 		super(dataContext, length);
-
+		
 		if (allocate) {
 			checkAllocation();
 			_buffer = ByteBuffer.allocate(getSize());
@@ -48,14 +48,19 @@ public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 
 	@Override
 	public final int getLength() {
-		return _length;
+		return _maxLength;
 	}
 
 	@Override
 	public final int getSize() {
-		return _length;
+		return _maxLength;
 	}
 
+	@Override
+	public final void clear() {
+		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), INIT);
+	}
+	
 	@Override
 	public final void accept(final QDataVisitor visitor) {
 		visitor.visit(this);
@@ -109,13 +114,8 @@ public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 
 	@Override
 	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
-		final NIOCharacterImpl copy = new NIOCharacterFixedImpl(dataContext, _length, false);
+		final NIOCharacterImpl copy = new NIOCharacterFixedImpl(dataContext, _maxLength, false);
 		return copy;
-	}
-
-	@Override
-	protected final void _clear() {
-		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), INIT);
 	}
 
 	@Override
@@ -163,7 +163,7 @@ public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 	@Override
 	public final void evalr(final QString value) {
 		final byte[] bytes = value.asBytes();
-		if (bytes.length > _length)
+		if (bytes.length > _maxLength)
 			_move(bytes, false);
 		else
 			_move(bytes, true);
@@ -173,7 +173,7 @@ public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 	public final void evalr(final String value) {
 
 		final byte[] bytes = value.getBytes(getDataContext().getCharset());
-		if (bytes.length > _length)
+		if (bytes.length > _maxLength)
 			_move(bytes, false);
 		else
 			_move(bytes, true);
@@ -210,7 +210,7 @@ public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 	}
 
 	@Override
-	protected final byte[] _toBytes() {
+	public final byte[] asBytes() {
 		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
 	}
 }

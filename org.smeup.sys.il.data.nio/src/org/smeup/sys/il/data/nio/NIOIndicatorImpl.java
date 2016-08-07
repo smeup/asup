@@ -41,6 +41,11 @@ public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicat
 	}
 
 	@Override
+	public final void clear() {
+		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), OFF);
+	}
+	
+	@Override
 	public final boolean asBoolean() {
 		final byte byte_ = asBytes()[0];
 		return byte_ != OFF && byte_ != NIOStringImpl.INIT;
@@ -118,11 +123,6 @@ public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicat
 	}
 
 	@Override
-	protected final void _clear() {
-		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), OFF);
-	}
-
-	@Override
 	protected final void _fill(final byte[] value, final boolean maxLength) {
 		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), value);
 	}
@@ -154,7 +154,7 @@ public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicat
 	}
 
 	@Override
-	protected final byte[] _toBytes() {
+	public final byte[] asBytes() {
 		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
 	}
 
@@ -190,8 +190,35 @@ public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicat
 
 	@Override
 	public final QBufferedData eval(final DataSpecial value) {
+		
+		switch (value) {
+		case LOVAL:
+			NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), NIOStringImpl.LOVAL);
+			break;
+		case HIVAL:
+			NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), NIOStringImpl.HIVAL);
+			break;
+		case BLANK:
+		case BLANKS:
+			NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), NIOStringImpl.INIT);
+			break;
+		case ZERO:
+		case ZEROS:
+			NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), NIONumericImpl.INIT);
+			break;
+		case ON:
+			NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), NIOIndicatorImpl.ON);
+			break;
+		case OFF:
+			NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), NIONumericImpl.INIT);
+			break;
+		case NULL:
+			NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), NIOStringImpl.LOVAL);
+			break;
+		case OMIT:
+			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237rvbwe87vb9stf");
+		}
 
-		_write(_toBytes(value));
 		return this;
 	}
 
@@ -199,7 +226,7 @@ public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicat
 	public final void evalr(final QString value) {
 
 		final byte[] bytes = value.asBytes();
-		if (bytes.length > _length)
+		if (bytes.length > _maxLength)
 			_move(bytes, false);
 		else
 			_move(bytes, true);
@@ -209,7 +236,7 @@ public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicat
 	public final void evalr(final String value) {
 
 		final byte[] bytes = value.getBytes(getDataContext().getCharset());
-		if (bytes.length > _length)
+		if (bytes.length > _maxLength)
 			_move(bytes, false);
 		else
 			_move(bytes, true);

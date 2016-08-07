@@ -11,12 +11,6 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamClass;
 import java.math.BigDecimal;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
@@ -63,19 +57,6 @@ public final class NIOBufferHelper {
 			nioBufferOwner._storage = storable;
 			nioBufferOwner._position = 0;
 		}
-
-		/*
-		 * if (nioBufferOwner == null) { nioBufferedData._buffer = null;
-		 * nioBufferedData._storage = storable; nioBufferedData._position = 0; }
-		 * else if (storable.getBuffer() == null ||
-		 * storable.getBuffer().capacity() == 0) { nioBufferOwner._buffer =
-		 * null; nioBufferOwner._storage = storable; nioBufferOwner._position =
-		 * 0; } else { nioBufferOwner._dataContext =
-		 * nioBufferOwner.getDataContext(); nioBufferOwner._buffer =
-		 * storable.getBuffer(); nioBufferOwner._storage = null; if
-		 * (storable.getPosition() > 0) nioBufferOwner._position =
-		 * storable.getPosition() + 1; else nioBufferOwner._position = 0; }
-		 */
 	}
 
 	public final static void slice(final QStorable storable, final QBufferedData target, final int position) {
@@ -205,12 +186,14 @@ public final class NIOBufferHelper {
 	public final static void move(final ByteBuffer buffer, final int position, final int length, final byte[] bytes) {
 		prepare(buffer, position, length);
 
+		final int remaining = buffer.remaining();
+		
 		// overflow
-		if (bytes.length > buffer.remaining())
-			buffer.put(bytes, bytes.length - buffer.remaining(), buffer.remaining());
+		if (bytes.length > remaining)
+			buffer.put(bytes, bytes.length - remaining, remaining);
 		else {
 
-			buffer.position(position + buffer.remaining() - bytes.length);
+			buffer.position(position + remaining - bytes.length);
 			buffer.put(bytes);
 		}
 	}
@@ -218,9 +201,10 @@ public final class NIOBufferHelper {
 	public final static void move(final ByteBuffer buffer, final int position, final int length, final byte[] bytes, final byte filler) {
 		prepare(buffer, position, length);
 
+		final int remaining = buffer.remaining();
 		// overflow
-		if (bytes.length > buffer.remaining())
-			buffer.put(bytes, bytes.length - buffer.remaining(), buffer.remaining());
+		if (bytes.length > remaining)
+			buffer.put(bytes, bytes.length - remaining, remaining);
 		else {
 
 			for (int i = buffer.position(); i < buffer.limit() - bytes.length; i++)
@@ -383,6 +367,7 @@ public final class NIOBufferHelper {
 	public final static byte[] read(final ByteBuffer buffer, final int position, final int length) {
 		if (buffer == null)
 			return null;
+		
 		prepare(buffer, position, length);
 
 		final byte[] bytes = new byte[buffer.remaining()];
@@ -472,59 +457,6 @@ public final class NIOBufferHelper {
 		}
 
 		nioBufferedData._dataContext = dataContext;
-	}
-
-	public final static NIODataImpl copy(final QDataContext dataContext, final NIOBufferedDataImpl nioBufferedDataImpl) {
-
-		try {
-
-			NIODataImpl copy = null;
-
-			final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			final ObjectOutputStream oos = new ObjectOutputStream(baos);
-
-			final QStorable tempStorage = nioBufferedDataImpl._storage;
-			final ByteBuffer tempBuffer = nioBufferedDataImpl._buffer;
-			final int tempPosition = nioBufferedDataImpl._position;
-
-			nioBufferedDataImpl._storage = null;
-			nioBufferedDataImpl._buffer = null;
-			nioBufferedDataImpl._position = 0;
-			oos.writeObject(nioBufferedDataImpl);
-			nioBufferedDataImpl._storage = tempStorage;
-			nioBufferedDataImpl._buffer = tempBuffer;
-			nioBufferedDataImpl._position = tempPosition;
-
-			baos.close();
-			oos.close();
-
-			final ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-			final ObjectInputStream ois = new ObjectInputStream(bais) {
-				@Override
-				protected Class<?> resolveClass(final ObjectStreamClass desc) throws IOException, ClassNotFoundException {
-					try {
-						return super.resolveClass(desc);
-					} catch (final Exception e) {
-						if (nioBufferedDataImpl instanceof NIODataStructWrapperHandler) {
-							final NIODataStructWrapperHandler nioDataStructWrapperHandler = (NIODataStructWrapperHandler) nioBufferedDataImpl;
-							final Class<?> c = nioDataStructWrapperHandler._wrapped.getClass().getClassLoader().loadClass(desc.getName());
-							return c;
-						}
-
-						throw e;
-					}
-				}
-			};
-			copy = (NIODataImpl) ois.readObject();
-			copy._dataContext = dataContext;
-			bais.close();
-			ois.close();
-
-			return copy;
-		} catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
 	}
 
 	public final static boolean equalsAddress(final QStorable source, final QStorable target, final int position) {

@@ -35,6 +35,12 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl implements Q
 		}
 	}
 
+	@Override
+	public final void clear() {
+		setLength((short) 0);
+		// NIOBufferHelper.fill(getBuffer(), getPosition()+2, _length, INIT);
+	}
+
 	private final void setLength(final short length) {
 		final ByteBuffer buffer = getBuffer();
 		NIOBufferHelper.prepare(buffer, getPosition(), 2);
@@ -62,7 +68,7 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl implements Q
 
 	@Override
 	public final int getSize() {
-		return _length + 2;
+		return _maxLength + 2;
 	}
 
 	@Override
@@ -85,7 +91,7 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl implements Q
 
 	@Override
 	public final QBufferedData eval(final DataSpecial value) {
-		setLength((short) _length);
+		setLength((short) _maxLength);
 		_write(_toBytes(value));
 		return this;
 	}
@@ -93,9 +99,9 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl implements Q
 	@Override
 	public final void evalr(final QString value) {
 
-		setLength((short) _length);
+		setLength((short) _maxLength);
 		final byte[] bytes = value.asBytes();
-		if (bytes.length > _length)
+		if (bytes.length > _maxLength)
 			_move(bytes, false);
 		else
 			_move(bytes, true);
@@ -104,9 +110,9 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl implements Q
 	@Override
 	public final void evalr(final String value) {
 
-		setLength((short) _length);
+		setLength((short) _maxLength);
 		final byte[] bytes = value.getBytes(getDataContext().getCharset());
-		if (bytes.length > _length)
+		if (bytes.length > _maxLength)
 			_move(bytes, false);
 		else
 			_move(bytes, true);
@@ -139,22 +145,15 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl implements Q
 	}
 
 	@Override
-	protected final void _clear() {
-
-		setLength((short) 0);
-		// NIOBufferHelper.fill(getBuffer(), getPosition()+2, _length, INIT);
-	}
-
-	@Override
 	protected final void _write(final byte[] value) {
 
-		if (value.length > _length)
-			setLength((short) _length);
+		if (value.length > _maxLength)
+			setLength((short) _maxLength);
 		else
 			setLength((short) value.length);
 
-		if (value.length > _length)
-			NIOBufferHelper.movel(getBuffer(), getPosition() + 2, _length, value);
+		if (value.length > _maxLength)
+			NIOBufferHelper.movel(getBuffer(), getPosition() + 2, _maxLength, value);
 		else
 			NIOBufferHelper.movel(getBuffer(), getPosition() + 2, value.length, value);
 	}
@@ -176,14 +175,14 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl implements Q
 	}
 
 	@Override
-	protected final byte[] _toBytes() {
+	public final byte[] asBytes() {
 		return NIOBufferHelper.read(getBuffer(), getPosition() + 2, getLength());
 	}
 
 	@Override
 	protected final void _fill(final byte[] value, final boolean maxLength) {
 		if (maxLength)
-			NIOBufferHelper.fill(getBuffer(), getPosition() + 2, _length, value);
+			NIOBufferHelper.fill(getBuffer(), getPosition() + 2, _maxLength, value);
 		else
 			NIOBufferHelper.fill(getBuffer(), getPosition() + 2, getLength(), value);
 	}
@@ -191,14 +190,14 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl implements Q
 	@Override
 	protected final void _fillr(final byte[] value, final boolean maxLength) {
 		if (maxLength)
-			NIOBufferHelper.fillr(getBuffer(), getPosition() + 2, _length, value);
+			NIOBufferHelper.fillr(getBuffer(), getPosition() + 2, _maxLength, value);
 		else
 			NIOBufferHelper.fillr(getBuffer(), getPosition() + 2, getLength(), value);
 	}
 
 	@Override
 	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
-		final NIOCharacterVaryingImpl copy = new NIOCharacterVaryingImpl(dataContext, _length, false);
+		final NIOCharacterVaryingImpl copy = new NIOCharacterVaryingImpl(dataContext, _maxLength, false);
 		return copy;
 	}
 

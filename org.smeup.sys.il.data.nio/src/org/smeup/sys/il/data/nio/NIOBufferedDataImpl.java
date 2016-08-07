@@ -27,6 +27,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	private static final long serialVersionUID = 1L;
 
 	protected transient ByteBuffer _buffer;
+	
 	protected QStorable _storage;
 	protected int _position = 0; // 1 based
 
@@ -47,7 +48,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		else
 			return _dataContext;
 	}
-
+	
 	@Override
 	public final void slice(final QBufferedData target) {
 		NIOBufferHelper.slice(this, target, 1);
@@ -107,11 +108,11 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	private final void readObject(final ObjectInputStream stream) throws IOException, ClassNotFoundException {
 
+		stream.defaultReadObject();
+		
 		final int length = stream.readInt();
 		final byte[] array = new byte[length];
 		stream.read(array);
-		_storage = (NIOBufferedDataImpl) stream.readObject();
-		_position = stream.readInt();
 
 		if (length > 0) {
 			_buffer = ByteBuffer.allocate(length);
@@ -121,6 +122,8 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	private final void writeObject(final ObjectOutputStream stream) throws IOException {
 
+		stream.defaultWriteObject();
+		
 		// TODO synchronize
 		byte[] array = null;
 		if (_buffer != null)
@@ -130,7 +133,5 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 		stream.writeInt(array.length);
 		stream.write(array);
-		stream.writeObject(_storage);
-		stream.writeInt(_position);
 	}
 }

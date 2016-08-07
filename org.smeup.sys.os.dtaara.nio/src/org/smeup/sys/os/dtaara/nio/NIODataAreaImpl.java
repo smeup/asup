@@ -19,6 +19,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.nio.NIOBufferedElementDelegatorImpl;
+import org.smeup.sys.il.data.nio.NIODataImpl;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
@@ -30,7 +31,7 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 	private static final long serialVersionUID = 1L;
 
 	private String externalName;
-	private org.smeup.sys.os.dtaara.QDataArea currentDataArea;
+	private transient org.smeup.sys.os.dtaara.QDataArea currentDataArea;
 
 	protected NIODataAreaImpl(QDataContext dataContext, D delegate, String externalName) {
 		super(dataContext, delegate);
@@ -141,4 +142,10 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 	public String s() {
 		return asString();
 	}
+	
+	@Override
+	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
+		return super._copyDef(dataContext);
+	}
+
 }

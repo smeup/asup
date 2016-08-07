@@ -11,6 +11,10 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QDataContext;
@@ -23,16 +27,12 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 
 	private static final long serialVersionUID = 1L;
 
-	private final NIODecimalDef decimalDef;
+	protected transient NIODecimalDef _decimalDef;
 
 	public NIODecimalImpl(final QDataContext dataContext, final int precision, final int scale) {
 		super(dataContext);
 
-		decimalDef = NIODecimalDef.getInstance(precision, scale);
-	}
-
-	protected final NIODecimalDef getDecimalDef() {
-		return decimalDef;
+		_decimalDef = NIODecimalDef.getInstance(precision, scale);
 	}
 
 	@Override
@@ -48,22 +48,17 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 	@Override
 	protected final byte[] _toBytes(final DataSpecial value) {
 
-		byte[] bytes = null;
 		switch (value) {
 		case ZERO:
 		case ZEROS:
-			bytes = getDecimalDef().getZonedInit();
-			break;
+			return _decimalDef.zoned_init;
 		case LOVAL:
-			bytes = getDecimalDef().getZonedLoval();
-			break;
+			return _decimalDef.zoned_loval;
 		case HIVAL:
-			bytes = getDecimalDef().getZonedHival();
-			break;
+			return _decimalDef.zoned_hival;
 		case BLANK:
 		case BLANKS:
-			bytes = getDecimalDef().getZonedInit();
-			break;
+			return _decimalDef.zoned_init;
 		case ON:
 		case OFF:
 		case NULL:
@@ -71,7 +66,7 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237rvbwe87vb9stf");
 		}
 
-		return bytes;
+		return null;
 	}
 
 	@Override
@@ -104,5 +99,22 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 	public final void snap() {
 		if (!isEmpty())
 			getDataContext().snap(this);
+	}
+	
+	private final void readObject(final ObjectInputStream stream) throws IOException, ClassNotFoundException {
+
+		stream.defaultReadObject();
+		
+		final int precision = stream.readInt();
+		final int scale = stream.readInt();
+		_decimalDef = NIODecimalDef.getInstance(precision, scale);
+	}
+
+	private final void writeObject(final ObjectOutputStream stream) throws IOException {
+
+		stream.defaultWriteObject();
+		
+		stream.writeInt(getPrecision());
+		stream.writeInt(getScale());
 	}
 }

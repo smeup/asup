@@ -11,6 +11,12 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectStreamClass;
 import java.nio.ByteBuffer;
 
 import org.smeup.sys.il.data.DataSpecial;
@@ -20,6 +26,7 @@ import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.DecimalType;
 
@@ -44,18 +51,19 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 
 	@Override
 	public final int getLength() {
-		return _length;
+		return _maxLength;
 	}
 
 	@Override
 	public final int getSize() {
-		return _length;
+		return _maxLength;
 	}
 
 	protected abstract void addElement(String name, QBufferedData element, int position);
 
 	@Override
-	protected final void _clear() {
+	public final void clear() {
+
 		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), INIT);
 
 		for (final QBufferedData element : this.getElements())
@@ -94,7 +102,56 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 
 	@Override
 	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
-		return NIOBufferHelper.copy(dataContext, this);
+	
+		try {
+
+			NIODataImpl copy = null;
+
+			final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			final ObjectOutputStream oos = new ObjectOutputStream(baos);
+
+			final QStorable tempStorage = _storage;
+			final ByteBuffer tempBuffer = _buffer;
+			final int tempPosition = _position;
+
+			_storage = null;
+			_buffer = null;
+			_position = 0;
+			oos.writeObject(this);
+			_storage = tempStorage;
+			_buffer = tempBuffer;
+			_position = tempPosition;
+
+			baos.close();
+			oos.close();
+
+			final ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+			final ObjectInputStream ois = new ObjectInputStream(bais) {
+				@Override
+				protected Class<?> resolveClass(final ObjectStreamClass desc) throws IOException, ClassNotFoundException {
+					try {
+						return super.resolveClass(desc);
+					} catch (final Exception e) {
+						if (NIOAbstractDataStruct.this instanceof NIODataStructWrapperHandler) {
+							final NIODataStructWrapperHandler nioDataStructWrapperHandler = (NIODataStructWrapperHandler) NIOAbstractDataStruct.this;
+							final Class<?> c = nioDataStructWrapperHandler._wrapped.getClass().getClassLoader().loadClass(desc.getName());
+							return c;
+						}
+
+						throw e;
+					}
+				}
+			};
+			copy = (NIODataImpl) ois.readObject();
+			copy._dataContext = dataContext;
+			bais.close();
+			ois.close();
+
+			return copy;
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
@@ -175,7 +232,7 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 	}
 
 	@Override
-	protected final byte[] _toBytes() {
+	public final byte[] asBytes() {
 		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
 	}
 
@@ -199,7 +256,7 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 	public final void evalr(final QString value) {
 
 		final byte[] bytes = value.asBytes();
-		if (bytes.length > _length)
+		if (bytes.length > _maxLength)
 			_move(bytes, false);
 		else
 			_move(bytes, true);
@@ -209,7 +266,7 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 	public final void evalr(final String value) {
 
 		final byte[] bytes = value.getBytes(getDataContext().getCharset());
-		if (bytes.length > _length)
+		if (bytes.length > _maxLength)
 			_move(bytes, false);
 		else
 			_move(bytes, true);

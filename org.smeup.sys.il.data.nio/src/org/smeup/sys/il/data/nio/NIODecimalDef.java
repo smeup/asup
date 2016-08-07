@@ -27,18 +27,18 @@ public final class NIODecimalDef implements Serializable {
 
 	private static NIODecimalDef decimalTypes[][] = new NIODecimalDef[50][20];
 
-	private AS400ZonedDecimal zoned = null;
-	private byte[] zoned_init = null;
-	private byte[] zoned_loval = null;
-	private byte[] zoned_hival = null;
+	protected final AS400ZonedDecimal zoned;
+	protected final byte[] zoned_init;
+	protected final byte[] zoned_loval;
+	protected final byte[] zoned_hival;
 
-	private AS400PackedDecimal packed = null;
-	private byte[] packed_init = null;
-	private byte[] packed_loval = null;
-	private byte[] packed_hival = null;
+	protected final AS400PackedDecimal packed;
+	protected final byte[] packed_init;
+	protected final byte[] packed_loval;
+	protected final byte[] packed_hival;
 
-	private NumberFormat formatUP = null;
-	private NumberFormat formatDW = null;
+	protected final NumberFormat formatUP;
+	protected final NumberFormat formatDW;
 
 	public NIODecimalDef(final int precision, final int scale) {
 
@@ -56,6 +56,21 @@ public final class NIODecimalDef implements Serializable {
 		formatDW = createNumberFormatDW(precision, scale);
 	}
 
+	public static NIODecimalDef getInstance(final int precision, final int scale) {
+
+		NIODecimalDef decimalType = decimalTypes[precision - 1][scale];
+		if (decimalType == null)
+			synchronized (decimalTypes) {
+				decimalType = decimalTypes[precision - 1][scale];
+				if (decimalType == null) {
+					decimalType = new NIODecimalDef(precision, scale);
+					decimalTypes[precision - 1][scale] = decimalType;
+				}
+			}
+
+		return decimalType;
+	}
+	
 	private final String formatMinValue(final int precision, final int scale) {
 		return "-" + formatMaxValue(precision, scale);
 	}
@@ -74,46 +89,6 @@ public final class NIODecimalDef implements Serializable {
 		return sb.toString();
 	}
 
-	protected final AS400PackedDecimal getPacked() {
-		return packed;
-	}
-
-	protected final byte[] getPackedInit() {
-		return packed_init;
-	}
-
-	protected final byte[] getPackedLoval() {
-		return packed_loval;
-	}
-
-	protected final byte[] getPackedHival() {
-		return packed_hival;
-	}
-
-	protected final AS400ZonedDecimal getZoned() {
-		return zoned;
-	}
-
-	protected final byte[] getZonedInit() {
-		return zoned_init;
-	}
-
-	protected final byte[] getZonedLoval() {
-		return zoned_loval;
-	}
-
-	protected final byte[] getZonedHival() {
-		return zoned_hival;
-	}
-
-	public final NumberFormat getFormatUP() {
-		return formatUP;
-	}
-
-	public final NumberFormat getFormatDW() {
-		return formatDW;
-	}
-
 	private final static AS400ZonedDecimal createDecimalZoned(final int precision, final int scale) {
 
 		final AS400ZonedDecimal decimal = new AS400ZonedDecimal(precision, scale);
@@ -122,7 +97,7 @@ public final class NIODecimalDef implements Serializable {
 		return decimal;
 	}
 
-	private final AS400PackedDecimal createDecimalPacked(final int precision, final int scale) {
+	private final static AS400PackedDecimal createDecimalPacked(final int precision, final int scale) {
 
 		final AS400PackedDecimal decimal = new AS400PackedDecimal(precision, scale);
 		decimal.setUseDouble(true);
@@ -152,20 +127,5 @@ public final class NIODecimalDef implements Serializable {
 		numberFormat.setGroupingUsed(false);
 
 		return numberFormat;
-	}
-
-	public static NIODecimalDef getInstance(final int precision, final int scale) {
-
-		NIODecimalDef decimalType = decimalTypes[precision - 1][scale];
-		if (decimalType == null)
-			synchronized (decimalTypes) {
-				decimalType = decimalTypes[precision - 1][scale];
-				if (decimalType == null) {
-					decimalType = new NIODecimalDef(precision, scale);
-					decimalTypes[precision - 1][scale] = decimalType;
-				}
-			}
-
-		return decimalType;
 	}
 }

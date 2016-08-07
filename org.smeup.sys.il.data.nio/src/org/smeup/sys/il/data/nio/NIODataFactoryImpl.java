@@ -412,7 +412,7 @@ public final class NIODataFactoryImpl implements QDataFactory {
 		if (model != null) {
 			final NIOAbstractDataStruct nioDataStructure = (NIOAbstractDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(model)._copyDef(getDataContext());
 			if (length != 0)
-				nioDataStructure._length = length;
+				nioDataStructure._maxLength = length;
 
 			if (allocate)
 				nioDataStructure._allocate();

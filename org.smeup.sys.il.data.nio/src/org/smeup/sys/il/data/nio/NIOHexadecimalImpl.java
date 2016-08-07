@@ -39,12 +39,17 @@ public final class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexad
 
 	@Override
 	public final int getLength() {
-		return _length;
+		return _maxLength;
 	}
 
 	@Override
 	public final int getSize() {
-		return _length;
+		return _maxLength;
+	}
+
+	@Override
+	public final void clear() {
+		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), INIT);
 	}
 
 	@Override
@@ -92,7 +97,7 @@ public final class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexad
 
 	@Override
 	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
-		final NIOHexadecimalImpl copy = new NIOHexadecimalImpl(dataContext, _length, false);
+		final NIOHexadecimalImpl copy = new NIOHexadecimalImpl(dataContext, _maxLength, false);
 		return copy;
 	}
 
@@ -104,11 +109,6 @@ public final class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexad
 	@Override
 	protected final void cat(final byte[] factor1, final byte[] factor2, final Number space, final boolean clear) {
 		System.err.println("Unexpected condition: 78rfsd8tfsdf8s");
-	}
-
-	@Override
-	protected final void _clear() {
-		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), INIT);
 	}
 
 	@Override
@@ -143,7 +143,7 @@ public final class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexad
 	}
 
 	@Override
-	protected final byte[] _toBytes() {
+	public final byte[] asBytes() {
 		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
 	}
 
@@ -187,7 +187,7 @@ public final class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexad
 	public final void evalr(final QString value) {
 
 		final byte[] bytes = value.asBytes();
-		if (bytes.length > _length)
+		if (bytes.length > _maxLength)
 			_move(bytes, false);
 		else
 			_move(bytes, true);
@@ -197,7 +197,7 @@ public final class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexad
 	public final void evalr(final String value) {
 
 		final byte[] bytes = value.getBytes(getDataContext().getCharset());
-		if (bytes.length > _length)
+		if (bytes.length > _maxLength)
 			_move(bytes, false);
 		else
 			_move(bytes, true);

@@ -127,4 +127,16 @@ public final class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> ex
 			throw new IntegratedLanguageDataRuntimeException(e);
 		}
 	}
+	
+	@Override
+	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
+
+		QBufferedElement tempDelegate = null;
+		if (getDelegate() != null)
+			tempDelegate = (QBufferedElement) NIOBufferHelper.getNIOBufferedElementImpl(getDelegate())._copyDef(dataContext);
+
+		NIOEnumImpl<E, D> copy = new NIOEnumImpl<E, D>(dataContext, _klass, tempDelegate);
+		
+		return copy;
+	}
 }

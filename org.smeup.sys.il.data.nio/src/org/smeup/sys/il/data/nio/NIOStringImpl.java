@@ -42,46 +42,11 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	protected static final byte LOVAL = 0x00;
 	protected static final byte HIVAL = (byte) 0xFF;
 
-	protected int _length;
+	protected int _maxLength;
 
-	public NIOStringImpl(final QDataContext dataContext, final int length) {
+	public NIOStringImpl(final QDataContext dataContext, final int maxLength) {
 		super(dataContext);
-		_length = length;
-	}
-
-	@Override
-	protected final byte[] _toBytes(final DataSpecial value) {
-
-		final byte[] bytes = new byte[getLength()];
-		switch (value) {
-		case LOVAL:
-			Arrays.fill(bytes, NIOStringImpl.LOVAL);
-			break;
-		case BLANK:
-		case BLANKS:
-			Arrays.fill(bytes, NIOStringImpl.INIT);
-			break;
-		case OFF:
-			Arrays.fill(bytes, NIOIndicatorImpl.OFF);
-			break;
-		case ZERO:
-		case ZEROS:
-			Arrays.fill(bytes, NIONumericImpl.INIT);
-			break;
-		case ON:
-			Arrays.fill(bytes, NIOIndicatorImpl.ON);
-			break;
-		case HIVAL:
-			Arrays.fill(bytes, NIOStringImpl.HIVAL);
-			break;
-		case NULL:
-			Arrays.fill(bytes, (byte) 0x00);
-			break;
-		case OMIT:
-			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237rvbwe87vb9stf");
-		}
-
-		return bytes;
+		_maxLength = maxLength;
 	}
 
 	@Override
@@ -293,7 +258,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	protected abstract void cat(byte[] factor1, byte[] factor2, Number space, boolean clear);
 
-//	protected abstract void setLength(short length);
+	// protected abstract void setLength(short length);
 
 	@Override
 	public final boolean eq(final QHexadecimal value) {
@@ -575,9 +540,9 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	public final QNumeric qCheck(final String base, Number start, final QIndicator found) {
-		
+
 		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
-		
+
 		if (start == null)
 			start = 1;
 
@@ -647,7 +612,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 0, DecimalType.ZONED, true);
 		number.eval(Integer.parseInt(value));
-		
+
 		return number;
 	}
 
@@ -776,7 +741,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 			this.slice(character, start.intValue() + 2);
 		else
 			this.slice(character, start.intValue());
-		
+
 		return character;
 	}
 
@@ -807,17 +772,18 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 		final byte[] bytes = NIOBufferHelper.trim(this);
 
 		final NIOCharacterImpl character = new NIOCharacterFixedImpl(getDataContext(), bytes.length, true);
-//		NIOCharacterFixedImpl character = ((NIODataContextImpl)getDataContext()).DATA_TRIM;
-//		character._length = bytes.length;
+		// NIOCharacterFixedImpl character =
+		// ((NIODataContextImpl)getDataContext()).DATA_TRIM;
+		// character._length = bytes.length;
 		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes);
-		
+
 		return character;
 	}
 
 	@Override
 	public final QCharacter qTrim(final String trimmed) {
 		// TODO
-		return qTrim();		
+		return qTrim();
 	}
 
 	@Override
@@ -832,8 +798,6 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 		final byte[] bytes = NIOBufferHelper.trimL(this);
 
 		final NIOCharacterImpl character = new NIOCharacterFixedImpl(getDataContext(), bytes.length, true);
-//		NIOCharacterFixedImpl character = ((NIODataContextImpl)getDataContext()).DATA_TRIM;
-//		character._length = bytes.length;
 		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes);
 
 		return character;
@@ -846,8 +810,9 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 		final byte[] bytes = NIOBufferHelper.trimR(this);
 
 		final NIOCharacterImpl character = new NIOCharacterFixedImpl(getDataContext(), bytes.length, true);
-//		NIOCharacterFixedImpl character = ((NIODataContextImpl)getDataContext()).DATA_TRIM;
-//		character._length = bytes.length;
+		// NIOCharacterFixedImpl character =
+		// ((NIODataContextImpl)getDataContext()).DATA_TRIM;
+		// character._length = bytes.length;
 		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes);
 
 		return character;
@@ -1273,5 +1238,39 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 				bitMask.append(i - 24);
 
 		return bitMask.toString();
+	}
+	@Override
+	protected final byte[] _toBytes(final DataSpecial value) {
+
+		byte[] bytes = new byte[getLength()];
+		switch (value) {
+		case ON:
+			Arrays.fill(bytes, NIOIndicatorImpl.ON);
+			break;
+		case OFF:
+			Arrays.fill(bytes, NIONumericImpl.INIT);
+			break;
+		case LOVAL:
+			Arrays.fill(bytes, NIOStringImpl.LOVAL);
+			break;
+		case HIVAL:
+			Arrays.fill(bytes, NIOStringImpl.HIVAL);
+			break;
+		case BLANK:
+		case BLANKS:
+			Arrays.fill(bytes, NIOStringImpl.INIT);
+			break;
+		case ZERO:
+		case ZEROS:
+			Arrays.fill(bytes, NIONumericImpl.INIT);
+			break;
+		case NULL:
+			Arrays.fill(bytes, NIOStringImpl.LOVAL);
+			break;
+		case OMIT:
+			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237rvbwe87vb9stf");
+		}
+
+		return bytes;
 	}
 }
