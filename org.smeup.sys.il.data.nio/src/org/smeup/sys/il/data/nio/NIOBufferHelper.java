@@ -360,8 +360,7 @@ public final class NIOBufferHelper {
 	}
 
 	public final static byte[] read(final QBufferedData data) {
-		final NIOBufferedDataImpl nioData = getNIOBufferedDataImpl(data);
-		return read(nioData.getBuffer(), nioData.getPosition(), nioData.getSize());
+		return read(data.getBuffer(), data.getPosition(), data.getSize());
 	}
 
 	public final static byte[] read(final ByteBuffer buffer, final int position, final int length) {
@@ -374,11 +373,6 @@ public final class NIOBufferHelper {
 		buffer.get(bytes);
 
 		return bytes;
-	}
-
-	public final static void write(final QBufferedData target, final QBufferedData source) {
-		final NIOBufferedDataImpl nioTarget = getNIOBufferedDataImpl(target);
-		movel(nioTarget.getBuffer(), nioTarget.getPosition(), nioTarget.getSize(), read(source));
 	}
 
 	public final static void writeDefault(QBufferedElement element, final String value) {

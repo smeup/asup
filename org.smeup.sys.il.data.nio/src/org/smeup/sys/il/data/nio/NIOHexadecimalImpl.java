@@ -159,15 +159,14 @@ public final class NIOHexadecimalImpl extends NIOCharacterImpl implements QHexad
 	@Override
 	public final void snap() {
 		if (!isEmpty())
-			getDataContext().snap(this);
+			_reset = NIOBufferHelper.read(this);
 	}
 
 	@Override
 	public final void reset() {
 
-		final QBufferedData snapData = getDataContext().getSnap(this);
-		if (snapData != null)
-			NIOBufferHelper.write(this, snapData);
+		if (_reset != null)
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _reset);
 		else
 			clear();
 	}

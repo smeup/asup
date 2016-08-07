@@ -204,22 +204,20 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl implements Q
 	@Override
 	public final void snap() {
 		if (!isEmpty())
-			getDataContext().snap(this);
-	}
-
-	@Override
-	public final void reset() {
-
-		final QBufferedData snapData = getDataContext().getSnap(this);
-		if (snapData != null)
-			NIOBufferHelper.write(this, snapData);
-		else
-			clear();
+			_reset = NIOBufferHelper.read(this);
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return trim().isEmpty();
+	}
+	
+	@Override
+	public final void reset() {
+
+		if (_reset != null)
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _reset);
+		else
+			clear();
 	}
 }

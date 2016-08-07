@@ -219,4 +219,10 @@ public final class NIODecimalPackedImpl extends NIODecimalImpl {
 		final NIODecimalPackedImpl copy = new NIODecimalPackedImpl(dataContext, getPrecision(), getScale(), false);
 		return copy;
 	}
+	
+	@Override
+	public final void snap() {
+		if (!isEmpty())
+			_reset = NIOBufferHelper.read(this);
+	}
 }

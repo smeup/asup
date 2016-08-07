@@ -232,7 +232,6 @@ public final class NIODataContainerImpl extends ObjectImpl implements QDataConta
 			final QBufferedData bufferedData = (QBufferedData) data;
 			if (bufferedData.isStoreOwner())
 				this.memorySize -= bufferedData.getSize();
-			getDataContext().removeSnap(bufferedData);
 		}
 	}
 
@@ -494,13 +493,13 @@ public final class NIODataContainerImpl extends ObjectImpl implements QDataConta
 
 		final QBufferedData bufferedData = (QBufferedData) data;
 
-		if (getDataContext().getSnap(bufferedData) != null)
+		if (NIOBufferHelper.getNIOBufferedDataImpl(bufferedData)._reset != null)
 			return true;
 
 		if (bufferedData instanceof QDataStruct) {
 			final QDataStruct dataStruct = (QDataStruct) bufferedData;
 			for (final QBufferedData element : dataStruct.getElements())
-				if (getDataContext().getSnap(element) != null)
+				if (NIOBufferHelper.getNIOBufferedDataImpl(element)._reset != null)
 					return true;
 		}
 
@@ -566,7 +565,6 @@ public final class NIODataContainerImpl extends ObjectImpl implements QDataConta
 		}
 
 		previousBuffered.assign(((QBufferedData) data));
-		getDataContext().removeSnap(previousBuffered);
 
 		datas.put(dataTerm.getName(), data);
 	}

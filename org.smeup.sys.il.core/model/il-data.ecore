@@ -1451,16 +1451,7 @@
     <eOperations name="getCharset" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCharset"/>
     <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
     <eOperations name="getDateFormat" lowerBound="1" eType="#//def/DateFormat"/>
-    <eOperations name="getSnap" eType="#//BufferedData">
-      <eParameters name="data" lowerBound="1" eType="#//BufferedData"/>
-    </eOperations>
     <eOperations name="getTimeFormat" lowerBound="1" eType="#//def/TimeFormat"/>
-    <eOperations name="removeSnap">
-      <eParameters name="data" lowerBound="1" eType="#//BufferedData"/>
-    </eOperations>
-    <eOperations name="snap">
-      <eParameters name="data" lowerBound="1" eType="#//BufferedData"/>
-    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataDelegator" abstract="true" interface="true">
     <eTypeParameters name="D">

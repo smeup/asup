@@ -94,9 +94,9 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 	public final void snap() {
 
 		if (!isEmpty())
-			getDataContext().snap(this);
+			_reset = NIOBufferHelper.read(this);
 
-		for (final QBufferedData element : getElements())
+		for (final QBufferedData element : getElements()) 
 			element.snap();
 	}
 

@@ -325,13 +325,12 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 		final NIOScrollerImpl<D> copy = new NIOScrollerImpl<D>(dataContext, (D) NIOBufferHelper.getNIOBufferedElementImpl(getModel())._copyDef(dataContext), _dimension, false);
 		return copy;
 	}
-
+	
 	@Override
 	public void reset() {
 
-		final QBufferedData snapData = getDataContext().getSnap(this);
-		if (snapData != null)
-			NIOBufferHelper.write(this, snapData);
+		if (_reset != null)
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _reset);
 		else
 			clear();
 	}

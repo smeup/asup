@@ -94,12 +94,6 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 
 		return number;
 	}
-
-	@Override
-	public final void snap() {
-		if (!isEmpty())
-			getDataContext().snap(this);
-	}
 	
 	private final void readObject(final ObjectInputStream stream) throws IOException, ClassNotFoundException {
 

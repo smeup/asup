@@ -1254,16 +1254,6 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 	}
 
 	@Override
-	public final void reset() {
-
-		final QBufferedData snapData = getDataContext().getSnap(this);
-		if (snapData != null)
-			NIOBufferHelper.write(this, snapData);
-		else
-			clear();
-	}
-
-	@Override
 	public final QBufferedData eval(final DataSpecial value) {
 
 		/*
@@ -1295,5 +1285,14 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 			element.eval(value);
 
 		return this;
+	}
+	
+	@Override
+	public final void reset() {
+
+		if (_reset != null)
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _reset);
+		else
+			clear();
 	}
 }

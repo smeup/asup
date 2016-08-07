@@ -93,30 +93,6 @@ public interface QDataContext extends QContextProvider {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model dataRequired="true"
-	 * @generated
-	 */
-	void removeSnap(QBufferedData data);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model dataRequired="true"
-	 * @generated
-	 */
-	void snap(QBufferedData data);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model dataRequired="true"
-	 * @generated
-	 */
-	QBufferedData getSnap(QBufferedData data);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model kind="operation" type="org.smeup.sys.mi.core.JavaCharset" required="true"
 	 * @generated
 	 */

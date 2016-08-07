@@ -17,12 +17,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QBufferedData;
-import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataAreaFactory;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
@@ -42,8 +39,6 @@ public final class NIODataContextImpl implements QDataContext {
 	private static final Charset CHARSET = Charset.forName("IBM-280");
 	private static final DateFormat DATEFMT = DateFormat.ISO;
 	private static final TimeFormat TIMEFMT = TimeFormat.ISO;
-
-	private Map<QBufferedData, QBufferedData> snapshots = null;
 	
 	public NIODataContextImpl(final QContext context, final QDataAreaFactory dataAreaFactory, final Object owner) {
 		this.context = context;
@@ -98,36 +93,6 @@ public final class NIODataContextImpl implements QDataContext {
 	@Override
 	public final TimeFormat getTimeFormat() {
 		return TIMEFMT;
-	}
-
-	@Override
-	public final void snap(final QBufferedData data) {
-
-		final QCharacter snapData = new NIOCharacterFixedImpl(this, data.getSize(), true);
-		NIOBufferHelper.write(snapData, data);
-
-		if (snapshots == null)
-			snapshots = new HashMap<QBufferedData, QBufferedData>();
-
-		snapshots.put(data, snapData);
-	}
-
-	@Override
-	public final QBufferedData getSnap(final QBufferedData data) {
-
-		if (snapshots == null)
-			return null;
-
-		return snapshots.get(data);
-	}
-
-	@Override
-	public final void removeSnap(final QBufferedData data) {
-
-		if (snapshots == null)
-			return;
-
-		snapshots.remove(data);
 	}
 
 	@Override

@@ -182,4 +182,10 @@ public final class NIODecimalZonedImpl extends NIODecimalImpl {
 		final NIODecimalZonedImpl copy = new NIODecimalZonedImpl(dataContext, getPrecision(), getScale(), false);
 		return copy;
 	}
+	
+	@Override
+	public final void snap() {
+		if (!isEmpty())
+			_reset = NIOBufferHelper.read(this);
+	}
 }

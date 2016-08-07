@@ -178,16 +178,6 @@ public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 		else
 			_move(bytes, true);
 	}
-	
-	@Override
-	public final void reset() {
-
-		final QBufferedData snapData = getDataContext().getSnap(this);
-		if (snapData != null)
-			NIOBufferHelper.write(this, snapData);
-		else
-			clear();
-	}
 
 	@Override
 	public final QNumeric qLen() {
@@ -201,7 +191,7 @@ public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 	@Override
 	public final void snap() {
 		if (!isEmpty())
-			getDataContext().snap(this);
+			_reset = NIOBufferHelper.read(this);
 	}
 
 	@Override
@@ -212,5 +202,14 @@ public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 	@Override
 	public final byte[] asBytes() {
 		return NIOBufferHelper.read(getBuffer(), getPosition(), getLength());
+	}
+	
+	@Override
+	public final void reset() {
+
+		if (_reset != null)
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _reset);
+		else
+			clear();
 	}
 }

@@ -24,6 +24,7 @@ import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataStruct;
+import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.def.QDataDef;
@@ -126,17 +127,18 @@ public final class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 
 		return elementNames;
 	}
+	
 
 	@Override
 	public final void reset() {
 
-		final QBufferedData snapData = getDataContext().getSnap(this);
-		if (snapData != null) {
-			NIOBufferHelper.write(this, snapData);
+		if (_reset != null) {
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _reset);
 			return;
 		}
 
-		clear();
+//		clear();
+		NIOBufferHelper.fill(getBuffer(), getPosition(), getSize(), INIT);
 		for (final Field field : NIODataStructHelper.getFields(_wrapped.getClass())) {
 			final DataDef dataDef = field.getAnnotation(DataDef.class);
 			if (dataDef == null)
@@ -144,10 +146,9 @@ public final class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 
 			try {
 				final Object fieldValue = field.get(_wrapped);
-				final QBufferedData data = (QBufferedData) fieldValue;
-				final QBufferedData snapElement = getDataContext().getSnap(data);
-				if (snapElement != null) {
-					NIOBufferHelper.write(data, snapElement);
+				final NIOBufferedDataImpl data = NIOBufferHelper.getNIOBufferedDataImpl((QStorable) fieldValue);
+				if (data._reset != null) {
+					NIOBufferHelper.movel(data.getBuffer(), data.getPosition(), data.getSize(), _reset);
 					continue;
 				}
 

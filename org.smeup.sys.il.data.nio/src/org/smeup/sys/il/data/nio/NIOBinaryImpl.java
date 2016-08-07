@@ -285,7 +285,7 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	@Override
 	public final void snap() {
 		if (!isEmpty())
-			getDataContext().snap(this);
+			_reset = NIOBufferHelper.read(this);
 	}
 	
 	private final void readObject(final ObjectInputStream stream) throws IOException, ClassNotFoundException {

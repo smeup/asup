@@ -512,12 +512,12 @@ public final class NIODatetimeImpl extends NIOBufferedElementImpl implements QDa
 		return copy;
 	}
 
+	
 	@Override
 	public final void reset() {
 
-		final QBufferedData snapData = getDataContext().getSnap(this);
-		if (snapData != null)
-			NIOBufferHelper.write(this, snapData);
+		if (_reset != null)
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _reset);
 		else
 			clear();
 	}
@@ -534,6 +534,6 @@ public final class NIODatetimeImpl extends NIOBufferedElementImpl implements QDa
 	@Override
 	public final void snap() {
 		if (!isEmpty())
-			getDataContext().snap(this);
+			_reset = NIOBufferHelper.read(this);
 	}
 }

@@ -574,6 +574,6 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	@Override
 	public final void snap() {
 		if (!isEmpty())
-			getDataContext().snap(this);
+			_reset = NIOBufferHelper.read(this);
 	}
 }

@@ -30,6 +30,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	
 	protected QStorable _storage;
 	protected int _position = 0; // 1 based
+	protected transient byte[] _reset;
 
 	public NIOBufferedDataImpl(final QDataContext dataContext) {
 		super(dataContext);
