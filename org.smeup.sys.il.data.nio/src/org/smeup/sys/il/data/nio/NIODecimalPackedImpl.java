@@ -27,15 +27,15 @@ public final class NIODecimalPackedImpl extends NIODecimalImpl {
 	public NIODecimalPackedImpl(final QDataContext dataContext, final int precision, final int scale, final boolean allocate) {
 		super(dataContext, precision, scale);
 
-		if (allocate) {
-			checkAllocation();
-			_buffer = ByteBuffer.allocate(getSize());
-			_buffer.put(_decimalDef.packed_init);
-		}
+		if (allocate)
+			_storage = ByteBuffer.allocate(getSize()).put(_decimalDef.packed_init);
 	}
 
 	public NIODecimalPackedImpl(final QDataContext dataContext, final int value) {
-		this(dataContext, 10, 0, true);
+		super(dataContext, 10, 0);
+		
+		_storage = ByteBuffer.allocate(getSize());
+
 		eval(value);
 	}
 

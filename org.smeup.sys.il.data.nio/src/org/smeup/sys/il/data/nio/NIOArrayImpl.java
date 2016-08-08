@@ -23,6 +23,7 @@ import java.util.List;
 import org.smeup.sys.il.data.DataComparator;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QArray;
+import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QCharacter;
@@ -50,8 +51,7 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 		// capacity = dimension;
 
 		if (allocate) {
-			checkAllocation();
-			_buffer = ByteBuffer.allocate(getSize());
+			_storage = ByteBuffer.allocate(getSize());
 
 			clear();
 		}
@@ -967,90 +967,84 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 	}
 
 	@Override
-	public final QDecimal qLookup(final String argument) {
+	public final QBinary qLookup(final String argument) {
 		return qLookup(argument, 1);
 	}
 
 	@Override
-	public final QDecimal qLookup(final String argument, final QNumeric start) {
+	public final QBinary qLookup(final String argument, final QNumeric start) {
 		return qLookup(argument, start.asNumber());
 	}
 
 	@Override
-	public final QDecimal qLookup(final String argument, final Number start, final Number elements) {
-		final int index = NIOBufferedListHelper.lookup(this, new NIOCharacterFixedImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), elements.intValue());
-		lastIndex.eval(index);
-		return lastIndex;
+	public final QBinary qLookup(final String argument, final Number start, final Number elements) { 
+		return writeLastIndex(NIOBufferedListHelper.lookup(this, new NIOCharacterFixedImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), elements.intValue()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final String argument, final Number start, final DataComparator comparator) {
-		final int index = NIOBufferedListHelper.lookup(this, new NIOCharacterFixedImpl(getDataContext(), argument), comparator, start.intValue(), capacity());
-		lastIndex.eval(index);
-		return lastIndex;
+	public final QBinary qLookup(final String argument, final Number start, final DataComparator comparator) {
+		return writeLastIndex(NIOBufferedListHelper.lookup(this, new NIOCharacterFixedImpl(getDataContext(), argument), comparator, start.intValue(), capacity()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final String argument, final Number start) {
-		final int index = NIOBufferedListHelper.lookup(this, new NIOCharacterFixedImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), capacity());
-		lastIndex.eval(index);
-		return lastIndex;
+	public final QBinary qLookup(final String argument, final Number start) {
+		return writeLastIndex(NIOBufferedListHelper.lookup(this, new NIOCharacterFixedImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), capacity()));
 	}
 
 	@Override
-	public final void qLookup(final String argument, final QIndicator found) {
+	public final QBinary qLookup(final String argument, final QIndicator found) {
 
-		final int i = NIOBufferedListHelper.lookup(this, new NIOCharacterFixedImpl(getDataContext(), argument), DataComparator.EQUAL, 1, capacity());
-		setContextIndicators(i, found);
+		final int index = NIOBufferedListHelper.lookup(this, new NIOCharacterFixedImpl(getDataContext(), argument), DataComparator.EQUAL, 1, capacity());
+		setContextIndicators(index, found);
+		
+		return writeLastIndex(index);
 	}
 
 	@Override
-	public final void qLookup(final String argument, final QNumeric start, final QIndicator found) {
+	public final QBinary qLookup(final String argument, final QNumeric start, final QIndicator found) {
 
-		final int i = NIOBufferedListHelper.lookup(this, new NIOCharacterFixedImpl(getDataContext(), argument), DataComparator.EQUAL, start.asInteger(), capacity());
-		setContextIndicators(i, found);
-		if (i > 0)
-			start.eval(i);
+		final int index = NIOBufferedListHelper.lookup(this, new NIOCharacterFixedImpl(getDataContext(), argument), DataComparator.EQUAL, start.asInteger(), capacity());
+		setContextIndicators(index, found);
+		if (index > 0)
+			start.eval(index);
 		else
 			start.eval(1);
+		
+		return writeLastIndex(index);
 	}
 
 	@Override
-	public final QDecimal qLookup(final String argument, final Number start, final QNumeric elements) {
-		final int index = NIOBufferedListHelper.lookup(this, new NIOCharacterFixedImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), elements.asInteger());
-		lastIndex.eval(index);
-		return lastIndex;
+	public final QBinary qLookup(final String argument, final Number start, final QNumeric elements) {
+		return writeLastIndex(NIOBufferedListHelper.lookup(this, new NIOCharacterFixedImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), elements.asInteger()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final String argument, final QNumeric start, final QNumeric elements) {
-		final int index = NIOBufferedListHelper.lookup(this, new NIOCharacterFixedImpl(getDataContext(), argument), DataComparator.EQUAL, start.asInteger(), elements.asInteger());
-		lastIndex.eval(index);
-		return lastIndex;
+	public final QBinary qLookup(final String argument, final QNumeric start, final QNumeric elements) {
+		return writeLastIndex(NIOBufferedListHelper.lookup(this, new NIOCharacterFixedImpl(getDataContext(), argument), DataComparator.EQUAL, start.asInteger(), elements.asInteger()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final int argument) {
+	public final QBinary qLookup(final int argument) {
 		return qLookup(argument, 1);
 	}
 
 	@Override
-	public final QDecimal qLookup(final int argument, final QNumeric start) {
+	public final QBinary qLookup(final int argument, final QNumeric start) {
 		return qLookup(argument, start.asNumber());
 	}
 
 	@Override
-	public final QDecimal qLookup(final int argument, final Number start) {
-		final int index = NIOBufferedListHelper.lookup(this, new NIODecimalPackedImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), capacity());
-		lastIndex.eval(index);
-		return lastIndex;
+	public final QBinary qLookup(final int argument, final Number start) {
+		return writeLastIndex(NIOBufferedListHelper.lookup(this, new NIODecimalPackedImpl(getDataContext(), argument), DataComparator.EQUAL, start.intValue(), capacity()));
 	}
 
 	@Override
-	public final void qLookup(final Number argument, final QIndicator found) {
+	public final QBinary qLookup(final Number argument, final QIndicator found) {
 
-		final int i = NIOBufferedListHelper.lookup(this, new NIODecimalPackedImpl(getDataContext(), argument.intValue()), DataComparator.EQUAL, 1, capacity());
-		setContextIndicators(i, found);
+		final int index = NIOBufferedListHelper.lookup(this, new NIODecimalPackedImpl(getDataContext(), argument.intValue()), DataComparator.EQUAL, 1, capacity());
+		setContextIndicators(index, found);
+		
+		return writeLastIndex(index);		
 	}
 
 	@Override
@@ -1060,14 +1054,6 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 
 	@Override
 	public final void move(final DataSpecial value, final boolean clear) {
-
-		/*
-		 * NIOBufferedElementImpl firstElement =
-		 * NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		 * firstElement.move(value, clear); NIOBufferHelper.fill(getBuffer(),
-		 * getPosition() + firstElement.getSize(), getSize(),
-		 * NIOBufferHelper.read(firstElement));
-		 */
 
 		for (final D element : this)
 			element.move(value, clear);
@@ -1081,14 +1067,6 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 	@Override
 	public final void move(final Number value, final boolean clear) {
 
-		/*
-		 * NIOBufferedElementImpl firstElement =
-		 * NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		 * firstElement.move(value, clear); NIOBufferHelper.fill(getBuffer(),
-		 * getPosition() + firstElement.getSize(), getSize(),
-		 * NIOBufferHelper.read(firstElement));
-		 */
-
 		for (final D element : this)
 			element.move(value, clear);
 	}
@@ -1100,14 +1078,6 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 
 	@Override
 	public final void move(final QBufferedElement value, final boolean clear) {
-
-		/*
-		 * NIOBufferedElementImpl firstElement =
-		 * NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		 * firstElement.move(value, clear); NIOBufferHelper.fill(getBuffer(),
-		 * getPosition() + firstElement.getSize(), getSize(),
-		 * NIOBufferHelper.read(firstElement));
-		 */
 
 		for (final D element : this)
 			element.move(value, clear);
@@ -1121,14 +1091,6 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 	@Override
 	public final void move(final QDataFiller value, final boolean clear) {
 
-		/*
-		 * NIOBufferedElementImpl firstElement =
-		 * NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		 * firstElement.move(value, clear); NIOBufferHelper.fill(getBuffer(),
-		 * getPosition() + firstElement.getSize(), getSize(),
-		 * NIOBufferHelper.read(firstElement));
-		 */
-
 		for (final D element : this)
 			element.move(value, clear);
 	}
@@ -1140,14 +1102,6 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 
 	@Override
 	public final void move(final String value, final boolean clear) {
-
-		/*
-		 * NIOBufferedElementImpl firstElement =
-		 * NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		 * firstElement.move(value, clear); NIOBufferHelper.fill(getBuffer(),
-		 * getPosition() + firstElement.getSize(), getSize(),
-		 * NIOBufferHelper.read(firstElement));
-		 */
 
 		for (final D element : this)
 			element.move(value, clear);
@@ -1161,14 +1115,6 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 	@Override
 	public final void movel(final DataSpecial value, final boolean clear) {
 
-		/*
-		 * NIOBufferedElementImpl firstElement =
-		 * NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		 * firstElement.movel(value, clear); NIOBufferHelper.fill(getBuffer(),
-		 * getPosition() + firstElement.getSize(), getSize(),
-		 * NIOBufferHelper.read(firstElement));
-		 */
-
 		for (final D element : this)
 			element.movel(value, clear);
 	}
@@ -1180,14 +1126,6 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 
 	@Override
 	public final void movel(final Number value, final boolean clear) {
-
-		/*
-		 * NIOBufferedElementImpl firstElement =
-		 * NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		 * firstElement.movel(value, clear); NIOBufferHelper.fill(getBuffer(),
-		 * getPosition() + firstElement.getSize(), getSize(),
-		 * NIOBufferHelper.read(firstElement));
-		 */
 
 		for (final D element : this)
 			element.movel(value, clear);
@@ -1201,14 +1139,6 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 	@Override
 	public final void movel(final QBufferedElement value, final boolean clear) {
 
-		/*
-		 * NIOBufferedElementImpl firstElement =
-		 * NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		 * firstElement.movel(value, clear); NIOBufferHelper.fill(getBuffer(),
-		 * getPosition() + firstElement.getSize(), getSize(),
-		 * NIOBufferHelper.read(firstElement));
-		 */
-
 		for (final D element : this)
 			element.movel(value, clear);
 	}
@@ -1220,14 +1150,6 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 
 	@Override
 	public final void movel(final QDataFiller value, final boolean clear) {
-
-		/*
-		 * NIOBufferedElementImpl firstElement =
-		 * NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		 * firstElement.movel(value, clear); NIOBufferHelper.fill(getBuffer(),
-		 * getPosition() + firstElement.getSize(), getSize(),
-		 * NIOBufferHelper.read(firstElement));
-		 */
 
 		for (final D element : this)
 			element.movel(value, clear);
@@ -1241,28 +1163,12 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 	@Override
 	public final void movel(final String value, final boolean clear) {
 
-		/*
-		 * NIOBufferedElementImpl firstElement =
-		 * NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		 * firstElement.movel(value, clear); NIOBufferHelper.fill(getBuffer(),
-		 * getPosition() + firstElement.getSize(), getSize(),
-		 * NIOBufferHelper.read(firstElement));
-		 */
-
 		for (final D element : this)
 			element.movel(value, clear);
 	}
 
 	@Override
 	public final QBufferedData eval(final DataSpecial value) {
-
-		/*
-		 * NIOBufferedElementImpl firstElement =
-		 * NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		 * firstElement.eval(value); NIOBufferHelper.fill(getBuffer(),
-		 * getPosition() + firstElement.getSize(), getSize(),
-		 * NIOBufferHelper.read(firstElement));
-		 */
 
 		for (final D element : this)
 			element.eval(value);
@@ -1272,14 +1178,6 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 
 	@Override
 	public final QBufferedData eval(final QDataFiller value) {
-
-		/*
-		 * NIOBufferedElementImpl firstElement =
-		 * NIOBufferHelper.getNIOBufferedElementImpl(get(1));
-		 * firstElement.eval(value); NIOBufferHelper.fill(getBuffer(),
-		 * getPosition() + firstElement.getSize(), getSize(),
-		 * NIOBufferHelper.read(firstElement));
-		 */
 
 		for (final D element : this)
 			element.eval(value);

@@ -518,11 +518,10 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QArray<QDecimal> qMult(final QArray<? extends QNumeric> value) {
+	public final <D extends QNumeric> QArray<D> qMult(final QArray<D> value) {
 
-		@SuppressWarnings("unchecked")
-		final NIOArrayImpl<QDecimal> arrayValue = (NIOArrayImpl<QDecimal>) value;
-		final NIOArrayImpl<QDecimal> newArray = new NIOArrayImpl<QDecimal>(getDataContext(), arrayValue.getModel(), arrayValue.capacity(), arrayValue.getSortDirection(), true);
+		final NIOArrayImpl<D> arrayValue = (NIOArrayImpl<D>) value;
+		final NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), arrayValue.getModel(), arrayValue.capacity(), arrayValue.getSortDirection(), true);
 		newArray.movea(this);
 		newArray.mult(this);
 

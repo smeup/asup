@@ -482,58 +482,58 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
@@ -798,137 +798,137 @@
     </eOperations>
     <eOperations name="qFound" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="qEqual" lowerBound="1" eType="#//Indicator"/>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
@@ -936,7 +936,7 @@
       <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
@@ -944,7 +944,7 @@
       <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
@@ -952,7 +952,7 @@
       <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
@@ -960,14 +960,14 @@
       <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
@@ -975,7 +975,7 @@
       <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1">
         <eGenericType eTypeParameter="#//BufferedList/D"/>
       </eParameters>
@@ -983,56 +983,56 @@
       <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Decimal">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
       <eParameters name="comparator" lowerBound="1" eType="#//DataComparator"/>
     </eOperations>
-    <eOperations name="qLookup" lowerBound="1">
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//DataSpecial"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="equal" lowerBound="1" eType="#//Indicator"/>
@@ -1483,6 +1483,10 @@
       <eParameters name="unsigned" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
+    <eOperations name="createBinary" lowerBound="1" eType="#//Binary">
+      <eParameters name="unsigned" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
     <eOperations name="createCharacter" lowerBound="1" eType="#//Character">
       <eParameters name="length" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="varying" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -1569,6 +1573,10 @@
       <eParameters name="scale" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="type" lowerBound="1" eType="#//def/DecimalType"/>
       <eParameters name="allocate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="createDecimal" lowerBound="1" eType="#//Decimal">
+      <eParameters name="type" lowerBound="1" eType="#//def/DecimalType"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
     <eOperations name="createEnum" lowerBound="1">
       <eGenericType eClassifier="#//Enum">
@@ -2319,13 +2327,14 @@
     </eOperations>
     <eOperations name="qMult">
       <eGenericType eClassifier="#//Array">
-        <eTypeArguments eClassifier="#//Decimal"/>
+        <eTypeArguments eTypeParameter="#//Numeric/qMult.2/D"/>
       </eGenericType>
+      <eTypeParameters name="D">
+        <eBounds eClassifier="#//Numeric"/>
+      </eTypeParameters>
       <eParameters name="value" lowerBound="1">
         <eGenericType eClassifier="#//Array">
-          <eTypeArguments>
-            <eUpperBound eClassifier="#//Numeric"/>
-          </eTypeArguments>
+          <eTypeArguments eTypeParameter="#//Numeric/qMult.2/D"/>
         </eGenericType>
       </eParameters>
     </eOperations>

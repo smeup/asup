@@ -62,8 +62,7 @@ public final class NIODatetimeImpl extends NIOBufferedElementImpl implements QDa
 			this._timeFormat = timeFormat;
 
 		if (allocate) {
-			checkAllocation();
-			_buffer = ByteBuffer.allocate(getSize());
+			_storage = ByteBuffer.allocate(getSize());
 			clear();
 		}
 	}

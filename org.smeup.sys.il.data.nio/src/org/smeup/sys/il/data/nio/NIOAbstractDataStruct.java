@@ -19,6 +19,7 @@ import java.io.ObjectOutputStream;
 import java.io.ObjectStreamClass;
 import java.nio.ByteBuffer;
 
+import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
@@ -26,7 +27,6 @@ import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
-import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.DecimalType;
 
@@ -39,9 +39,13 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 	}
 
 	protected final void _allocate() {
-		checkAllocation();
-		_buffer = ByteBuffer.allocate(getSize());
-		NIOBufferHelper.fill(_buffer, 0, _buffer.capacity(), INIT);
+
+		if (_storage != null)
+			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dmn8432m75n030");
+
+		ByteBuffer byteBuffer = ByteBuffer.allocate(getSize());
+		NIOBufferHelper.fill(byteBuffer, 0, byteBuffer.capacity(), INIT);
+		_storage = byteBuffer;
 	}
 
 	@Override
@@ -110,16 +114,13 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 			final ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			final ObjectOutputStream oos = new ObjectOutputStream(baos);
 
-			final QStorable tempStorage = _storage;
-			final ByteBuffer tempBuffer = _buffer;
+			final Object tempStorage = _storage;
 			final int tempPosition = _position;
 
 			_storage = null;
-			_buffer = null;
 			_position = 0;
 			oos.writeObject(this);
 			_storage = tempStorage;
-			_buffer = tempBuffer;
 			_position = tempPosition;
 
 			baos.close();

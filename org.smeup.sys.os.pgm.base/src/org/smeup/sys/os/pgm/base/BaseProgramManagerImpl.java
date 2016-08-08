@@ -427,7 +427,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		String callTimeString = "[" + new DecimalFormat("00000").format(callableProgram.getProgramInfo().getCallTime()) + "]";
 
 		QJobReference jobReference = job.getJobReference();
-		writeContent(job, "\t\t" + jobReference.getJobName() + "(" + jobReference.getJobNumber() + ")" + callTimeString + QStrings.qINSTANCE.appendChars(text, "\t", programStack.size(), true));
+		writeContent(job, "\t" + jobReference.getJobName() + "(" + jobReference.getJobNumber() + ")" + callTimeString + QStrings.qINSTANCE.appendChars(text, "\t", programStack.size(), true));
 	}
 
 	private void writeContent(QJob job, String content) {

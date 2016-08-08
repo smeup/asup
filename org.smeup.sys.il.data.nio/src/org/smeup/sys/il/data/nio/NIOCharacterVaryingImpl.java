@@ -29,10 +29,8 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl implements Q
 	public NIOCharacterVaryingImpl(final QDataContext dataContext, final int length, final boolean allocate) {
 		super(dataContext, length);
 
-		if (allocate) {
-			checkAllocation();
-			_buffer = ByteBuffer.allocate(getSize());
-		}
+		if (allocate)
+			_storage = ByteBuffer.allocate(getSize());
 	}
 
 	@Override

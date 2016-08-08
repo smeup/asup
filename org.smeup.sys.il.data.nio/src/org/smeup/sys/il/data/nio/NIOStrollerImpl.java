@@ -780,62 +780,62 @@ public final class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImp
 
 	@Override
 	public final QNumeric qCheckr(final QCharacter base) {
-		return current().qCheck(base);
+		return current().qCheckr(base);
 	}
 
 	@Override
 	public final QNumeric qCheckr(final QCharacter base, final QIndicator found) {
-		return current().qCheck(base, found);
+		return current().qCheckr(base, found);
 	}
 
 	@Override
 	public final QNumeric qCheckr(final QCharacter base, final QNumeric start) {
-		return current().qCheck(base, start);
+		return current().qCheckr(base, start);
 	}
 
 	@Override
 	public final QNumeric qCheckr(final QCharacter base, final QNumeric start, final QIndicator found) {
-		return current().qCheck(base, start, found);
+		return current().qCheckr(base, start, found);
 	}
 
 	@Override
 	public final QNumeric qCheckr(final QCharacter base, final Number start) {
-		return current().qCheck(base, start);
+		return current().qCheckr(base, start);
 	}
 
 	@Override
 	public final QNumeric qCheckr(final QCharacter base, final Number start, final QIndicator found) {
-		return current().qCheck(base, start, found);
+		return current().qCheckr(base, start, found);
 	}
 
 	@Override
 	public final QNumeric qCheckr(final String base) {
-		return current().qCheck(base);
+		return current().qCheckr(base);
 	}
 
 	@Override
 	public final QNumeric qCheckr(final String base, final QIndicator found) {
-		return current().qCheck(base, found);
+		return current().qCheckr(base, found);
 	}
 
 	@Override
 	public final QNumeric qCheckr(final String base, final QNumeric start) {
-		return current().qCheck(base, start);
+		return current().qCheckr(base, start);
 	}
 
 	@Override
 	public final QNumeric qCheckr(final String base, final QNumeric start, final QIndicator found) {
-		return current().qCheck(base, start, found);
+		return current().qCheckr(base, start, found);
 	}
 
 	@Override
 	public final QNumeric qCheckr(final String base, final Number start) {
-		return current().qCheck(base, start);
+		return current().qCheckr(base, start);
 	}
 
 	@Override
 	public final QNumeric qCheckr(final String base, final Number start, final QIndicator found) {
-		return current().qCheck(base, start, found);
+		return current().qCheckr(base, start, found);
 	}
 
 	@Override

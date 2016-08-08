@@ -53,6 +53,14 @@ public interface QDataFactory {
 	QBinary createBinary(BinaryType type, boolean unsigned, boolean allocate);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" unsignedRequired="true" valueRequired="true"
+	 * @generated
+	 */
+	QBinary createBinary(boolean unsigned, int value);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" lengthRequired="true" varyingRequired="true" allocateRequired="true"
 	 * @generated
@@ -119,6 +127,14 @@ public interface QDataFactory {
 	 * @generated
 	 */
 	QDecimal createDecimal(int precision, int scale, DecimalType type, boolean allocate);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" typeRequired="true" valueRequired="true"
+	 * @generated
+	 */
+	QDecimal createDecimal(DecimalType type, int value);
 
 	/**
 	 * <!-- begin-user-doc -->

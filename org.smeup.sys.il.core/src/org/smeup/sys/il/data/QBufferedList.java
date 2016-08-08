@@ -123,7 +123,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(D argument);
+	QNumeric qLookup(D argument);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -131,7 +131,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(D argument, QNumeric start);
+	QNumeric qLookup(D argument, QNumeric start);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -139,7 +139,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(D argument, Number start);
+	QNumeric qLookup(D argument, Number start);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -147,7 +147,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startRequired="true" elementsRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(D argument, QNumeric start, QNumeric elements);
+	QNumeric qLookup(D argument, QNumeric start, QNumeric elements);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -155,7 +155,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(D argument, Number start, Number elements);
+	QNumeric qLookup(D argument, Number start, Number elements);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,7 +163,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(D argument, Number start, QNumeric elements);
+	QNumeric qLookup(D argument, Number start, QNumeric elements);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -171,31 +171,31 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(D argument, QNumeric start, Number elements);
+	QNumeric qLookup(D argument, QNumeric start, Number elements);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model argumentRequired="true" equalRequired="true"
+	 * @model required="true" argumentRequired="true" equalRequired="true"
 	 * @generated
 	 */
-	void qLookup(D argument, QIndicator equal);
+	QNumeric qLookup(D argument, QIndicator equal);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model argumentRequired="true" startRequired="true" equalRequired="true"
+	 * @model required="true" argumentRequired="true" startRequired="true" equalRequired="true"
 	 * @generated
 	 */
-	void qLookup(D argument, QNumeric start, QIndicator equal);
+	QNumeric qLookup(D argument, QNumeric start, QIndicator equal);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" equalRequired="true"
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" equalRequired="true"
 	 * @generated
 	 */
-	void qLookup(D argument, Number start, QIndicator equal);
+	QNumeric qLookup(D argument, Number start, QIndicator equal);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -203,7 +203,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(DataSpecial argument);
+	QNumeric qLookup(DataSpecial argument);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -211,7 +211,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(DataSpecial argument, QNumeric start);
+	QNumeric qLookup(DataSpecial argument, QNumeric start);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -219,7 +219,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(DataSpecial argument, Number start);
+	QNumeric qLookup(DataSpecial argument, Number start);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -227,7 +227,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startRequired="true" elementsRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(DataSpecial argument, QNumeric start, QNumeric elements);
+	QNumeric qLookup(DataSpecial argument, QNumeric start, QNumeric elements);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -235,7 +235,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(DataSpecial argument, Number start, Number elements);
+	QNumeric qLookup(DataSpecial argument, Number start, Number elements);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -243,7 +243,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(DataSpecial argument, Number start, QNumeric elements);
+	QNumeric qLookup(DataSpecial argument, Number start, QNumeric elements);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -251,111 +251,31 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(DataSpecial argument, QNumeric start, Number elements);
+	QNumeric qLookup(DataSpecial argument, QNumeric start, Number elements);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model argumentRequired="true" equalRequired="true"
+	 * @model required="true" argumentRequired="true" equalRequired="true"
 	 * @generated
 	 */
-	void qLookup(DataSpecial argument, QIndicator equal);
+	QNumeric qLookup(DataSpecial argument, QIndicator equal);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model argumentRequired="true" startRequired="true" foundRequired="true"
+	 * @model required="true" argumentRequired="true" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	void qLookup(DataSpecial argument, QNumeric start, QIndicator found);
+	QNumeric qLookup(DataSpecial argument, QNumeric start, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	void qLookup(DataSpecial argument, Number start, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" comparatorRequired="true"
-	 * @generated
-	 */
-	QDecimal qLookup(D argument, DataComparator comparator);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" startRequired="true" comparatorRequired="true"
-	 * @generated
-	 */
-	QDecimal qLookup(D argument, QNumeric start, DataComparator comparator);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" comparatorRequired="true"
-	 * @generated
-	 */
-	QDecimal qLookup(D argument, Number start, DataComparator comparator);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" startRequired="true" elementsRequired="true" comparatorRequired="true"
-	 * @generated
-	 */
-	QDecimal qLookup(D argument, QNumeric start, QNumeric elements, DataComparator comparator);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true" comparatorRequired="true"
-	 * @generated
-	 */
-	QDecimal qLookup(D argument, Number start, Number elements, DataComparator comparator);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsRequired="true" comparatorRequired="true"
-	 * @generated
-	 */
-	QDecimal qLookup(D argument, Number start, QNumeric elements, DataComparator comparator);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true" comparatorRequired="true"
-	 * @generated
-	 */
-	QDecimal qLookup(D argument, QNumeric start, Number elements, DataComparator comparator);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model argumentRequired="true" foundRequired="true" comparatorRequired="true"
-	 * @generated
-	 */
-	void qLookup(D argument, QIndicator found, DataComparator comparator);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model argumentRequired="true" startRequired="true" equalRequired="true" comparatorRequired="true"
-	 * @generated
-	 */
-	void qLookup(D argument, QNumeric start, QIndicator equal, DataComparator comparator);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" equalRequired="true" comparatorRequired="true"
-	 * @generated
-	 */
-	void qLookup(D argument, Number start, QIndicator equal, DataComparator comparator);
+	QNumeric qLookup(DataSpecial argument, Number start, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -363,7 +283,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" comparatorRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(DataSpecial argument, DataComparator comparator);
+	QNumeric qLookup(D argument, DataComparator comparator);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -371,7 +291,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startRequired="true" comparatorRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(DataSpecial argument, QNumeric start, DataComparator comparator);
+	QNumeric qLookup(D argument, QNumeric start, DataComparator comparator);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -379,7 +299,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" comparatorRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(DataSpecial argument, Number start, DataComparator comparator);
+	QNumeric qLookup(D argument, Number start, DataComparator comparator);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -387,7 +307,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startRequired="true" elementsRequired="true" comparatorRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(DataSpecial argument, QNumeric start, QNumeric elements, DataComparator comparator);
+	QNumeric qLookup(D argument, QNumeric start, QNumeric elements, DataComparator comparator);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -395,7 +315,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true" comparatorRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(DataSpecial argument, Number start, Number elements, DataComparator comparator);
+	QNumeric qLookup(D argument, Number start, Number elements, DataComparator comparator);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -403,7 +323,7 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsRequired="true" comparatorRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(DataSpecial argument, Number start, QNumeric elements, DataComparator comparator);
+	QNumeric qLookup(D argument, Number start, QNumeric elements, DataComparator comparator);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -411,31 +331,111 @@ public interface QBufferedList<D extends QBufferedElement> extends QList<D>, QBu
 	 * @model required="true" argumentRequired="true" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true" comparatorRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(DataSpecial argument, QNumeric start, Number elements, DataComparator comparator);
+	QNumeric qLookup(D argument, QNumeric start, Number elements, DataComparator comparator);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model argumentRequired="true" equalRequired="true" comparatorRequired="true"
+	 * @model required="true" argumentRequired="true" foundRequired="true" comparatorRequired="true"
 	 * @generated
 	 */
-	void qLookup(DataSpecial argument, QIndicator equal, DataComparator comparator);
+	QNumeric qLookup(D argument, QIndicator found, DataComparator comparator);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model argumentRequired="true" startRequired="true" equalRequired="true" comparatorRequired="true"
+	 * @model required="true" argumentRequired="true" startRequired="true" equalRequired="true" comparatorRequired="true"
 	 * @generated
 	 */
-	void qLookup(DataSpecial argument, QNumeric start, QIndicator equal, DataComparator comparator);
+	QNumeric qLookup(D argument, QNumeric start, QIndicator equal, DataComparator comparator);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" equalRequired="true" comparatorRequired="true"
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" equalRequired="true" comparatorRequired="true"
 	 * @generated
 	 */
-	void qLookup(DataSpecial argument, Number start, QIndicator equal, DataComparator comparator);
+	QNumeric qLookup(D argument, Number start, QIndicator equal, DataComparator comparator);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" comparatorRequired="true"
+	 * @generated
+	 */
+	QNumeric qLookup(DataSpecial argument, DataComparator comparator);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startRequired="true" comparatorRequired="true"
+	 * @generated
+	 */
+	QNumeric qLookup(DataSpecial argument, QNumeric start, DataComparator comparator);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" comparatorRequired="true"
+	 * @generated
+	 */
+	QNumeric qLookup(DataSpecial argument, Number start, DataComparator comparator);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startRequired="true" elementsRequired="true" comparatorRequired="true"
+	 * @generated
+	 */
+	QNumeric qLookup(DataSpecial argument, QNumeric start, QNumeric elements, DataComparator comparator);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true" comparatorRequired="true"
+	 * @generated
+	 */
+	QNumeric qLookup(DataSpecial argument, Number start, Number elements, DataComparator comparator);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsRequired="true" comparatorRequired="true"
+	 * @generated
+	 */
+	QNumeric qLookup(DataSpecial argument, Number start, QNumeric elements, DataComparator comparator);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true" comparatorRequired="true"
+	 * @generated
+	 */
+	QNumeric qLookup(DataSpecial argument, QNumeric start, Number elements, DataComparator comparator);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" equalRequired="true" comparatorRequired="true"
+	 * @generated
+	 */
+	QNumeric qLookup(DataSpecial argument, QIndicator equal, DataComparator comparator);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startRequired="true" equalRequired="true" comparatorRequired="true"
+	 * @generated
+	 */
+	QNumeric qLookup(DataSpecial argument, QNumeric start, QIndicator equal, DataComparator comparator);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" equalRequired="true" comparatorRequired="true"
+	 * @generated
+	 */
+	QNumeric qLookup(DataSpecial argument, Number start, QIndicator equal, DataComparator comparator);
 
 	/**
 	 * <!-- begin-user-doc -->

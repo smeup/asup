@@ -46,11 +46,20 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 		this._unsigned = unsigned;
 		this._decimalDef = NIODecimalDef.getInstance(getLength(), 0);
 
-		if (allocate) {
-			checkAllocation();
-			_buffer = ByteBuffer.allocate(getSize());
-		}
+		if (allocate) 
+			_storage = ByteBuffer.allocate(getSize());
 	}
+
+	public NIOBinaryImpl(final QDataContext dataContext, final boolean unsigned, final int value) {
+		super(dataContext);
+
+		this._type = BinaryType.INTEGER;
+		this._unsigned = unsigned;
+		this._decimalDef = NIODecimalDef.getInstance(getLength(), 0);
+
+		_storage = ByteBuffer.allocate(getSize()).putInt(value);
+	}
+	
 
 	@Override
 	public final boolean isSigned() {

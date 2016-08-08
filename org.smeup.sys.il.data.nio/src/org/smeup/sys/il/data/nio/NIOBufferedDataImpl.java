@@ -14,9 +14,9 @@ package org.smeup.sys.il.data.nio;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.nio.ByteBuffer;
 
-import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QPointer;
@@ -26,10 +26,8 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	private static final long serialVersionUID = 1L;
 
-	protected transient ByteBuffer _buffer;
-	
-	protected QStorable _storage;
-	protected int _position = 0; // 1 based
+	protected transient Object _storage;
+	protected int _position = 0;
 	protected transient byte[] _reset;
 
 	public NIOBufferedDataImpl(final QDataContext dataContext) {
@@ -39,8 +37,8 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	protected final QDataContext getDataContext() {
 
-		if (_dataContext == null) {
-			final NIOBufferedDataImpl nioBufferedDataImpl = NIOBufferHelper.getNIOBufferedDataImpl((_storage));
+		if (_dataContext == null && _storage instanceof QStorable) {
+			final NIOBufferedDataImpl nioBufferedDataImpl = NIOBufferHelper.getNIOBufferedDataImpl((QStorable)_storage);
 			if(nioBufferedDataImpl != null)
 				return nioBufferedDataImpl.getDataContext();
 			else
@@ -59,33 +57,26 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		return _position > 0;
 	}
 
-	protected final void checkAllocation() {
-
-		if (_storage != null || _buffer != null)
-			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dmn8432m75n030");
-	}
-
 	@Override
 	public final ByteBuffer getBuffer() {
 
-		// TODO synchronize
-		if (_buffer != null)
-			return _buffer;
-		else if (_storage != null)
-			return NIOBufferHelper.getBuffer(_storage);
-		else
+		if(_storage == null)
 			return null;
+		
+		if (_storage instanceof ByteBuffer)
+			return (ByteBuffer)_storage;
+		else 
+			return NIOBufferHelper.getBuffer((QStorable)_storage);
 	}
 
 	@Override
 	public final int getPosition() {
 
-		// TODO synchronize
-		if (_storage != null) {
+		if (_storage instanceof QStorable) {
 			if (_position > 0)
-				return _storage.getPosition() + _position - 1;
+				return ((QStorable)_storage).getPosition() + _position - 1;
 			else
-				return _storage.getPosition();
+				return ((QStorable)_storage).getPosition();
 		} else if (_position > 0)
 			return _position - 1;
 		else
@@ -104,20 +95,24 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public final boolean isStoreOwner() {
-		return _buffer != null;
+		return _storage instanceof ByteBuffer;
 	}
 
 	private final void readObject(final ObjectInputStream stream) throws IOException, ClassNotFoundException {
 
 		stream.defaultReadObject();
-		
-		final int length = stream.readInt();
-		final byte[] array = new byte[length];
-		stream.read(array);
 
-		if (length > 0) {
-			_buffer = ByteBuffer.allocate(length);
-			_buffer.put(array);
+		Object object = stream.readObject();
+		if(object instanceof QStorable) {
+			_storage = object;
+		}
+		else {
+			final int length = stream.readInt();
+			final byte[] array = new byte[length];
+			stream.read(array);
+	
+			if (length > 0) 
+				_storage = ByteBuffer.allocate(length).put(array);
 		}
 	}
 
@@ -125,14 +120,23 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 		stream.defaultWriteObject();
 		
-		// TODO synchronize
-		byte[] array = null;
-		if (_buffer != null)
-			array = _buffer.array();
-		else
-			array = new byte[0];
+		if(_storage instanceof QStorable)
+			stream.writeObject(_storage);
+		else {
+			stream.writeObject(new NullObject());
 
-		stream.writeInt(array.length);
-		stream.write(array);
+			byte[] array = null;
+			if (_storage instanceof ByteBuffer)
+				array = ((ByteBuffer)_storage).array();
+			else
+				array = new byte[0];
+	
+			stream.writeInt(array.length);
+			stream.write(array);
+		}
+	}
+	
+	private class NullObject implements Serializable  {
+		private static final long serialVersionUID = 1L;		
 	}
 }

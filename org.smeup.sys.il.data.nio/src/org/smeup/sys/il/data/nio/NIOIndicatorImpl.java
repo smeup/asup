@@ -33,11 +33,8 @@ public final class NIOIndicatorImpl extends NIOCharacterImpl implements QIndicat
 	public NIOIndicatorImpl(final QDataContext dataContext, final boolean allocate) {
 		super(dataContext, 1);
 
-		if (allocate) {
-			checkAllocation();
-			_buffer = ByteBuffer.allocate(getSize());
-			_buffer.put(OFF);
-		}
+		if (allocate) 
+			_storage = ByteBuffer.allocate(getSize()).put(OFF);
 	}
 
 	@Override

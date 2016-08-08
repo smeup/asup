@@ -49,11 +49,9 @@ public final class NIOBufferHelper {
 		final NIOBufferedDataImpl nioBufferOwner = getNIOBufferOwner(nioBufferedData);
 
 		if (nioBufferOwner == null) {
-			nioBufferedData._buffer = null;
 			nioBufferedData._storage = storable;
 			nioBufferedData._position = 0;
 		} else {
-			nioBufferOwner._buffer = null;
 			nioBufferOwner._storage = storable;
 			nioBufferOwner._position = 0;
 		}
@@ -72,7 +70,6 @@ public final class NIOBufferHelper {
 		if (storable.getBuffer() != null && equalsAddress(storable, nioBufferedData, position))
 			return;
 
-		nioBufferedData._buffer = null;
 		nioBufferedData._storage = storable;
 		nioBufferedData._position = position;
 	}
@@ -91,8 +88,8 @@ public final class NIOBufferHelper {
 			return nioBufferedDataImpl;
 		else if (nioBufferedDataImpl._storage == null)
 			return nioBufferedDataImpl;
-		else {
-			final NIOBufferedDataImpl nioBufferedOwner = getNIOBufferOwner(nioBufferedDataImpl._storage);
+		else if(nioBufferedDataImpl._storage instanceof QStorable){
+			final NIOBufferedDataImpl nioBufferedOwner = getNIOBufferOwner((QStorable)nioBufferedDataImpl._storage);
 			if (nioBufferedOwner == null)
 				return null;
 
@@ -101,6 +98,8 @@ public final class NIOBufferHelper {
 			else
 				return nioBufferedOwner;
 		}
+		else
+			return null;
 	}
 
 	public final static NIOBufferedDataImpl getNIOBufferedDataImpl(final QStorable storable) {

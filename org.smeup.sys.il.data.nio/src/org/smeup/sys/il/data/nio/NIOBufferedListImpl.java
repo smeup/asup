@@ -17,6 +17,7 @@ import org.smeup.sys.il.data.BufferedDataType;
 import org.smeup.sys.il.data.BufferedElementType;
 import org.smeup.sys.il.data.DataComparator;
 import org.smeup.sys.il.data.DataSpecial;
+import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QBufferedList;
@@ -32,22 +33,20 @@ import org.smeup.sys.il.data.def.DecimalType;
 public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NIOBufferedDataImpl implements QBufferedList<D> {
 
 	private static final long serialVersionUID = 1L;
-	private NIOBufferedListImpl<?> listOwner;
+	private NIOBufferedListImpl<?> _listOwner;
 
 	private D _model;
-	private SortDirection sortDirection = null;
-	protected QDecimal lastIndex;
+	private SortDirection _sortDirection = null;
 
 	public NIOBufferedListImpl(final QDataContext dataContext, final D model, final SortDirection sortDirection) {
 		super(dataContext);
 
 		this._model = model;
-		this.sortDirection = sortDirection;
-		this.lastIndex = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+		this._sortDirection = sortDirection;		
 	}
 
 	protected final SortDirection getSortDirection() {
-		return this.sortDirection;
+		return this._sortDirection;
 	}
 
 	@Override
@@ -211,11 +210,11 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	protected final void setListOwner(final NIOBufferedListImpl<?> listOwner) {
-		this.listOwner = listOwner;
+		this._listOwner = listOwner;
 	}
 
 	protected final NIOBufferedListImpl<?> getListOwner() {
-		return this.listOwner;
+		return this._listOwner;
 	}
 
 	protected final void setModel(final D _model) {
@@ -250,271 +249,267 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 	}
 
 	@Override
-	public final QDecimal qLookup(final D argument) {
-		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, 1, capacity()));
-		return lastIndex;
+	public final QBinary qLookup(final D argument) {
+		return writeLastIndex(qLookup(DataComparator.EQUAL, argument, 1, capacity()));		
 	}
 
 	@Override
-	public final QDecimal qLookup(final D argument, final QNumeric start) {
-		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.asInteger(), capacity()));
-		return lastIndex;
+	public final QBinary qLookup(final D argument, final QNumeric start) {
+		return writeLastIndex(qLookup(DataComparator.EQUAL, argument, start.asInteger(), capacity()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final D argument, final Number start) {
-		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.intValue(), capacity()));
-		return lastIndex;
+	public final QBinary qLookup(final D argument, final Number start) {
+		return writeLastIndex(qLookup(DataComparator.EQUAL, argument, start.intValue(), capacity()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final D argument, final QNumeric start, final QNumeric elements) {
-		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.asInteger(), elements.asInteger()));
-		return lastIndex;
+	public final QBinary qLookup(final D argument, final QNumeric start, final QNumeric elements) {
+		return writeLastIndex(qLookup(DataComparator.EQUAL, argument, start.asInteger(), elements.asInteger()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final D argument, final Number start, final Number elements) {
-		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.intValue(), elements.intValue()));
-		return lastIndex;
+	public final QBinary qLookup(final D argument, final Number start, final Number elements) {
+		return writeLastIndex(qLookup(DataComparator.EQUAL, argument, start.intValue(), elements.intValue()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final D argument, final Number start, final QNumeric elements) {
-		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.intValue(), elements.asInteger()));
-		return lastIndex;
+	public final QBinary qLookup(final D argument, final Number start, final QNumeric elements) {
+		return writeLastIndex(qLookup(DataComparator.EQUAL, argument, start.intValue(), elements.asInteger()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final D argument, final QNumeric start, final Number elements) {
-		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.asInteger(), elements.intValue()));
-		return lastIndex;
+	public final QBinary qLookup(final D argument, final QNumeric start, final Number elements) {		
+		return writeLastIndex(qLookup(DataComparator.EQUAL, argument, start.asInteger(), elements.intValue()));
 	}
 
 	@Override
-	public final void qLookup(final D argument, final QIndicator equal) {
+	public final QBinary qLookup(final D argument, final QIndicator equal) {
 
-		final int i = qLookup(DataComparator.EQUAL, argument, 1, capacity());
-		setContextIndicators(i, equal);
+		final int index = qLookup(DataComparator.EQUAL, argument, 1, capacity());
+		setContextIndicators(index, equal);
+		
+		return writeLastIndex(index);
 	}
 
 	@Override
-	public final void qLookup(final D argument, final QNumeric start, final QIndicator equal) {
+	public final QBinary qLookup(final D argument, final QNumeric start, final QIndicator equal) {
 
-		final int i = qLookup(DataComparator.EQUAL, argument, start.asInteger(), capacity());
-		setContextIndicators(i, equal);
-		if (i > 0)
-			start.eval(i);
+		final int index = qLookup(DataComparator.EQUAL, argument, start.asInteger(), capacity());
+		setContextIndicators(index, equal);
+		if (index > 0)
+			start.eval(index);
 		else
 			start.eval(1);
+		
+		return writeLastIndex(index);
 	}
 
 	@Override
-	public final void qLookup(final D argument, final Number start, final QIndicator equal) {
+	public final QBinary qLookup(final D argument, final Number start, final QIndicator equal) {
 
-		final int i = qLookup(DataComparator.EQUAL, argument, start.intValue(), capacity());
-		setContextIndicators(i, equal);
+		final int index = qLookup(DataComparator.EQUAL, argument, start.intValue(), capacity());
+		setContextIndicators(index, equal);
+		
+		return writeLastIndex(index);
 	}
 
 	@Override
-	public final QDecimal qLookup(final DataSpecial argument) {
-		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, 1, capacity()));
-		return lastIndex;
+	public final QBinary qLookup(final DataSpecial argument) {
+		return writeLastIndex(qLookup(DataComparator.EQUAL, argument, 1, capacity()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final DataSpecial argument, final QNumeric start) {
-		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.asInteger(), capacity()));
-		return lastIndex;
+	public final QBinary qLookup(final DataSpecial argument, final QNumeric start) {
+		return writeLastIndex(qLookup(DataComparator.EQUAL, argument, start.asInteger(), capacity()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final DataSpecial argument, final Number start) {
-		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.intValue(), capacity()));
-		return lastIndex;
+	public final QBinary qLookup(final DataSpecial argument, final Number start) {
+		return writeLastIndex(qLookup(DataComparator.EQUAL, argument, start.intValue(), capacity()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final DataSpecial argument, final QNumeric start, final QNumeric elements) {
-		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.asInteger(), elements.asInteger()));
-		return lastIndex;
+	public final QBinary qLookup(final DataSpecial argument, final QNumeric start, final QNumeric elements) {
+		return writeLastIndex(qLookup(DataComparator.EQUAL, argument, start.asInteger(), elements.asInteger()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final DataSpecial argument, final Number start, final Number elements) {
-		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.intValue(), elements.intValue()));
-		return lastIndex;
+	public final QBinary qLookup(final DataSpecial argument, final Number start, final Number elements) {
+		return writeLastIndex(qLookup(DataComparator.EQUAL, argument, start.intValue(), elements.intValue()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final DataSpecial argument, final Number start, final QNumeric elements) {
-		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.intValue(), elements.asInteger()));
-		return lastIndex;
+	public final QBinary qLookup(final DataSpecial argument, final Number start, final QNumeric elements) {
+		return writeLastIndex(qLookup(DataComparator.EQUAL, argument, start.intValue(), elements.asInteger()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final DataSpecial argument, final QNumeric start, final Number elements) {
-		lastIndex.eval(qLookup(DataComparator.EQUAL, argument, start.asInteger(), elements.intValue()));
-		return lastIndex;
+	public final QBinary qLookup(final DataSpecial argument, final QNumeric start, final Number elements) {
+		return writeLastIndex(qLookup(DataComparator.EQUAL, argument, start.asInteger(), elements.intValue()));
 	}
 
 	@Override
-	public final void qLookup(final DataSpecial argument, final QIndicator equal) {
+	public final QBinary qLookup(final DataSpecial argument, final QIndicator equal) {
 
-		final int i = qLookup(DataComparator.EQUAL, argument, 1, capacity());
-		setContextIndicators(i, equal);
+		final int index = qLookup(DataComparator.EQUAL, argument, 1, capacity());
+		setContextIndicators(index, equal);
+		
+		return writeLastIndex(index);
 	}
 
 	@Override
-	public final void qLookup(final DataSpecial argument, final QNumeric start, final QIndicator equal) {
+	public final QBinary qLookup(final DataSpecial argument, final QNumeric start, final QIndicator equal) {
 
-		final int i = qLookup(DataComparator.EQUAL, argument, start.asInteger(), capacity());
-		setContextIndicators(i, equal);
-		if (i > 0)
-			start.eval(i);
+		final int index = qLookup(DataComparator.EQUAL, argument, start.asInteger(), capacity());
+		setContextIndicators(index, equal);
+		if (index > 0)
+			start.eval(index);
 		else
 			start.eval(1);
+		
+		return writeLastIndex(index);
 	}
 
 	@Override
-	public final void qLookup(final DataSpecial argument, final Number start, final QIndicator equal) {
+	public final QBinary qLookup(final DataSpecial argument, final Number start, final QIndicator equal) {
 
-		final int i = qLookup(DataComparator.EQUAL, argument, start.intValue(), capacity());
-		setContextIndicators(i, equal);
+		final int index = qLookup(DataComparator.EQUAL, argument, start.intValue(), capacity());
+		setContextIndicators(index, equal);
+		
+		return writeLastIndex(index);
 	}
 
 	@Override
-	public final QDecimal qLookup(final D argument, final DataComparator comparator) {
-		lastIndex.eval(qLookup(comparator, argument, 1, capacity()));
-		return lastIndex;
+	public final QBinary qLookup(final D argument, final DataComparator comparator) {
+		return writeLastIndex(qLookup(comparator, argument, 1, capacity()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final D argument, final QNumeric start, final DataComparator comparator) {
-		lastIndex.eval(qLookup(comparator, argument, start.asInteger(), capacity()));
-		return lastIndex;
+	public final QBinary qLookup(final D argument, final QNumeric start, final DataComparator comparator) {		
+		return writeLastIndex(qLookup(comparator, argument, start.asInteger(), capacity()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final D argument, final Number start, final DataComparator comparator) {
-		lastIndex.eval(qLookup(comparator, argument, start.intValue(), capacity()));
-		return lastIndex;
+	public final QBinary qLookup(final D argument, final Number start, final DataComparator comparator) {
+		return writeLastIndex(qLookup(comparator, argument, start.intValue(), capacity()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final D argument, final QNumeric start, final QNumeric elements, final DataComparator comparator) {
-		lastIndex.eval(qLookup(comparator, argument, start.asInteger(), elements.asInteger()));
-		return lastIndex;
+	public final QBinary qLookup(final D argument, final QNumeric start, final QNumeric elements, final DataComparator comparator) {		
+		return writeLastIndex(qLookup(comparator, argument, start.asInteger(), elements.asInteger()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final D argument, final Number start, final Number elements, final DataComparator comparator) {
-		lastIndex.eval(qLookup(comparator, argument, start.intValue(), elements.intValue()));
-		return lastIndex;
+	public final QBinary qLookup(final D argument, final Number start, final Number elements, final DataComparator comparator) {
+		return writeLastIndex(qLookup(comparator, argument, start.intValue(), elements.intValue()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final D argument, final Number start, final QNumeric elements, final DataComparator comparator) {
-		lastIndex.eval(qLookup(comparator, argument, start.intValue(), elements.asInteger()));
-		return lastIndex;
+	public final QBinary qLookup(final D argument, final Number start, final QNumeric elements, final DataComparator comparator) {
+		return writeLastIndex(qLookup(comparator, argument, start.intValue(), elements.asInteger()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final D argument, final QNumeric start, final Number elements, final DataComparator comparator) {
-		lastIndex.eval(qLookup(comparator, argument, start.asInteger(), elements.intValue()));
-		return lastIndex;
+	public final QBinary qLookup(final D argument, final QNumeric start, final Number elements, final DataComparator comparator) {
+		return writeLastIndex(qLookup(comparator, argument, start.asInteger(), elements.intValue()));
 	}
 
 	@Override
-	public final void qLookup(final D argument, final QIndicator equal, final DataComparator comparator) {
+	public final QBinary qLookup(final D argument, final QIndicator equal, final DataComparator comparator) {
 
-		final int i = qLookup(comparator, argument, 1, capacity());
-		setContextIndicators(i, equal);
+		final int index = qLookup(comparator, argument, 1, capacity());
+		setContextIndicators(index, equal);
+		
+		return writeLastIndex(index);
 	}
 
 	@Override
-	public final void qLookup(final D argument, final QNumeric start, final QIndicator equal, final DataComparator comparator) {
+	public final QBinary qLookup(final D argument, final QNumeric start, final QIndicator equal, final DataComparator comparator) {
 
-		final int i = qLookup(comparator, argument, start.asInteger(), capacity());
-		setContextIndicators(i, equal);
-		if (i > 0)
-			start.eval(i);
+		final int index = qLookup(comparator, argument, start.asInteger(), capacity());
+		setContextIndicators(index, equal);
+		if (index > 0)
+			start.eval(index);
 		else
 			start.eval(1);
+		
+		return writeLastIndex(index);
 	}
 
 	@Override
-	public final void qLookup(final D argument, final Number start, final QIndicator equal, final DataComparator comparator) {
+	public final QBinary qLookup(final D argument, final Number start, final QIndicator equal, final DataComparator comparator) {
 
-		final int i = qLookup(comparator, argument, start.intValue(), capacity());
-		setContextIndicators(i, equal);
+		final int index = qLookup(comparator, argument, start.intValue(), capacity());
+		setContextIndicators(index, equal);
+				
+		return writeLastIndex(index);
 	}
 
 	@Override
-	public final QDecimal qLookup(final DataSpecial argument, final DataComparator comparator) {
-		lastIndex.eval(qLookup(comparator, argument, 1, capacity()));
-		return lastIndex;
+	public final QBinary qLookup(final DataSpecial argument, final DataComparator comparator) {
+		return writeLastIndex(qLookup(comparator, argument, 1, capacity()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final DataSpecial argument, final QNumeric start, final DataComparator comparator) {
-		lastIndex.eval(qLookup(comparator, argument, start.asInteger(), capacity()));
-		return lastIndex;
+	public final QBinary qLookup(final DataSpecial argument, final QNumeric start, final DataComparator comparator) {
+		return writeLastIndex(qLookup(comparator, argument, start.asInteger(), capacity()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final DataSpecial argument, final Number start, final DataComparator comparator) {
-		lastIndex.eval(qLookup(comparator, argument, start.intValue(), capacity()));
-		return lastIndex;
+	public final QBinary qLookup(final DataSpecial argument, final Number start, final DataComparator comparator) {
+		return writeLastIndex(qLookup(comparator, argument, start.intValue(), capacity()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final DataSpecial argument, final QNumeric start, final QNumeric elements, final DataComparator comparator) {
-		lastIndex.eval(qLookup(comparator, argument, start.asInteger(), elements.asInteger()));
-		return lastIndex;
+	public final QBinary qLookup(final DataSpecial argument, final QNumeric start, final QNumeric elements, final DataComparator comparator) {
+		return writeLastIndex(qLookup(comparator, argument, start.asInteger(), elements.asInteger()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final DataSpecial argument, final Number start, final Number elements, final DataComparator comparator) {
-		lastIndex.eval(qLookup(comparator, argument, start.intValue(), elements.intValue()));
-		return lastIndex;
+	public final QBinary qLookup(final DataSpecial argument, final Number start, final Number elements, final DataComparator comparator) {
+		return writeLastIndex(qLookup(comparator, argument, start.intValue(), elements.intValue()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final DataSpecial argument, final Number start, final QNumeric elements, final DataComparator comparator) {
-		lastIndex.eval(qLookup(comparator, argument, start.intValue(), elements.asInteger()));
-		return lastIndex;
+	public final QBinary qLookup(final DataSpecial argument, final Number start, final QNumeric elements, final DataComparator comparator) {
+		return writeLastIndex(qLookup(comparator, argument, start.intValue(), elements.asInteger()));
 	}
 
 	@Override
-	public final QDecimal qLookup(final DataSpecial argument, final QNumeric start, final Number elements, final DataComparator comparator) {
-		lastIndex.eval(qLookup(comparator, argument, start.asInteger(), elements.intValue()));
-		return lastIndex;
+	public final QBinary qLookup(final DataSpecial argument, final QNumeric start, final Number elements, final DataComparator comparator) {
+		return writeLastIndex(qLookup(comparator, argument, start.asInteger(), elements.intValue()));
 	}
 
 	@Override
-	public final void qLookup(final DataSpecial argument, final QIndicator equal, final DataComparator comparator) {
+	public final QBinary qLookup(final DataSpecial argument, final QIndicator equal, final DataComparator comparator) {
 
-		final int i = qLookup(comparator, argument, 1, capacity());
-		setContextIndicators(i, equal);
+		final int index = qLookup(comparator, argument, 1, capacity());
+		setContextIndicators(index, equal);
+				
+		return writeLastIndex(index);
 	}
 
 	@Override
-	public final void qLookup(final DataSpecial argument, final QNumeric start, final QIndicator equal, final DataComparator comparator) {
+	public final QBinary qLookup(final DataSpecial argument, final QNumeric start, final QIndicator equal, final DataComparator comparator) {
 
-		final int i = qLookup(comparator, argument, start.asInteger(), capacity());
-		setContextIndicators(i, equal);
-		if (i > 0)
-			start.eval(i);
+		final int index = qLookup(comparator, argument, start.asInteger(), capacity());
+		setContextIndicators(index, equal);
+		if (index > 0)
+			start.eval(index);
 		else
 			start.eval(1);
+		
+		return writeLastIndex(index);
 	}
 
 	@Override
-	public final void qLookup(final DataSpecial argument, final Number start, final QIndicator equal, final DataComparator comparator) {
+	public final QBinary qLookup(final DataSpecial argument, final Number start, final QIndicator equal, final DataComparator comparator) {
 
-		final int i = qLookup(comparator, argument, start.intValue(), capacity());
-		setContextIndicators(i, equal);
+		final int index = qLookup(comparator, argument, start.intValue(), capacity());
+		setContextIndicators(index, equal);
+		
+		return writeLastIndex(index);		
 	}
 
 	private final int qLookup(final DataComparator comparator, final D argument, final int startIndex, final int numElements) {
@@ -576,4 +571,8 @@ public abstract class NIOBufferedListImpl<D extends QBufferedElement> extends NI
 		if (!isEmpty())
 			_reset = NIOBufferHelper.read(this);
 	}
+	
+	protected QBinary writeLastIndex(int index) {
+		return new NIOBinaryImpl(getDataContext(), true, index);
+	} 
 }

@@ -36,8 +36,7 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 		_dimension = dimension;
 
 		if (allocate) {
-			checkAllocation();
-			_buffer = ByteBuffer.allocate(getSize());
+			_storage = ByteBuffer.allocate(getSize());
 
 			for (final D element : this)
 				element.clear();

@@ -25,14 +25,12 @@ import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDatetime;
-import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
-import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.mi.core.util.QStrings;
 
 public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QString {
@@ -541,7 +539,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	@Override
 	public final QNumeric qCheck(final String base, Number start, final QIndicator found) {
 
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+		QNumeric number = null;
 
 		if (start == null)
 			start = 1;
@@ -552,10 +550,14 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 			id++;
 			final int i = base.indexOf(c);
 			if (i < 0) {
-				number.eval(id);
+				number = new NIOBinaryImpl(getDataContext(), true, id);
 				break;
 			}
 		}
+
+		if (number == null)
+			number = new NIOBinaryImpl(getDataContext(), true, 0);
+
 		if (found != null)
 			found.eval(number.gt(0));
 		else
@@ -567,7 +569,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	@Override
 	public final QNumeric qCheckr(final String base, Number start, final QIndicator found) {
 
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+		QNumeric number = null;
 		if (start == null || start.intValue() > getLength())
 			start = getLength();
 
@@ -575,10 +577,13 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 		for (int ii = chars.length; ii > 0; ii--) {
 			final int i = base.indexOf(chars[ii - 1]);
 			if (i < 0) {
-				number.eval(ii);
+				number = new NIOBinaryImpl(getDataContext(), true, ii);
 				break;
 			}
 		}
+
+		if (number == null)
+			number = new NIOBinaryImpl(getDataContext(), true, 0);
 
 		if (found != null)
 			found.eval(number.gt(0));
@@ -610,8 +615,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	private final QNumeric qIntOperation(final String value, final boolean roundingMode) {
 
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 0, DecimalType.ZONED, true);
-		number.eval(Integer.parseInt(value));
+		final QNumeric number = new NIOBinaryImpl(getDataContext(), false, Integer.parseInt(value));
 
 		return number;
 	}
@@ -701,7 +705,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	@Override
 	public final QNumeric qScan(final String argument, Number start, final QIndicator found) {
 
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
+		QNumeric number = null;
 
 		// default
 		if (start == null)
@@ -709,10 +713,12 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 		final int i = asString().indexOf(argument, start.intValue() - 1);
 		if (i >= 0) {
-			number.eval(i + 1);
+			number = new NIOBinaryImpl(getDataContext(), true, i + 1);
 			getDataContext().found().eval(true);
-		} else
+		} else {
+			number = new NIOBinaryImpl(getDataContext(), true, 0);
 			getDataContext().found().eval(false);
+		}
 
 		if (found != null)
 			found.eval(getDataContext().found());
@@ -772,9 +778,6 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 		final byte[] bytes = NIOBufferHelper.trim(this);
 
 		final NIOCharacterImpl character = new NIOCharacterFixedImpl(getDataContext(), bytes.length, true);
-		// NIOCharacterFixedImpl character =
-		// ((NIODataContextImpl)getDataContext()).DATA_TRIM;
-		// character._length = bytes.length;
 		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes);
 
 		return character;
@@ -810,9 +813,6 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 		final byte[] bytes = NIOBufferHelper.trimR(this);
 
 		final NIOCharacterImpl character = new NIOCharacterFixedImpl(getDataContext(), bytes.length, true);
-		// NIOCharacterFixedImpl character =
-		// ((NIODataContextImpl)getDataContext()).DATA_TRIM;
-		// character._length = bytes.length;
 		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes);
 
 		return character;
@@ -1239,6 +1239,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 		return bitMask.toString();
 	}
+
 	@Override
 	protected final byte[] _toBytes(final DataSpecial value) {
 

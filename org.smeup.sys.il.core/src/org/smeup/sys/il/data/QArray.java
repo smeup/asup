@@ -689,23 +689,23 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	 * @model required="true" argumentRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(String argument);
+	QNumeric qLookup(String argument);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model argumentRequired="true" foundRequired="true"
+	 * @model required="true" argumentRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	void qLookup(String argument, QIndicator found);
+	QNumeric qLookup(String argument, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model argumentType="org.smeup.sys.mi.core.JavaNumber" argumentRequired="true" foundRequired="true"
+	 * @model required="true" argumentType="org.smeup.sys.mi.core.JavaNumber" argumentRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	void qLookup(Number argument, QIndicator found);
+	QNumeric qLookup(Number argument, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -713,7 +713,7 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(String argument, Number start, QNumeric elements);
+	QNumeric qLookup(String argument, Number start, QNumeric elements);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -721,7 +721,7 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(String argument, Number start, Number elements);
+	QNumeric qLookup(String argument, Number start, Number elements);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -729,7 +729,7 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" comparatorRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(String argument, Number start, DataComparator comparator);
+	QNumeric qLookup(String argument, Number start, DataComparator comparator);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -737,15 +737,15 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	 * @model required="true" argumentRequired="true" startRequired="true" elementsRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(String argument, QNumeric start, QNumeric elements);
+	QNumeric qLookup(String argument, QNumeric start, QNumeric elements);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model argumentRequired="true" startRequired="true" foundRequired="true"
+	 * @model required="true" argumentRequired="true" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	void qLookup(String argument, QNumeric start, QIndicator found);
+	QNumeric qLookup(String argument, QNumeric start, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -753,7 +753,7 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	 * @model required="true" argumentRequired="true" startRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(String argument, QNumeric start);
+	QNumeric qLookup(String argument, QNumeric start);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -761,7 +761,7 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(String argument, Number start);
+	QNumeric qLookup(String argument, Number start);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -769,7 +769,7 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	 * @model required="true" argumentRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(int argument);
+	QNumeric qLookup(int argument);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -777,7 +777,7 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	 * @model required="true" argumentRequired="true" startRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(int argument, QNumeric start);
+	QNumeric qLookup(int argument, QNumeric start);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -785,7 +785,7 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
 	 * @generated
 	 */
-	QDecimal qLookup(int argument, Number start);
+	QNumeric qLookup(int argument, Number start);
 
 	/**
 	 * <!-- begin-user-doc -->

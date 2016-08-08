@@ -447,7 +447,7 @@ public interface QNumeric extends QBufferedElement {
 	 * @model valueRequired="true"
 	 * @generated
 	 */
-	QArray<QDecimal> qMult(QArray<? extends QNumeric> value);
+	<D extends QNumeric> QArray<D> qMult(QArray<D> value);
 
 	/**
 	 * <!-- begin-user-doc -->

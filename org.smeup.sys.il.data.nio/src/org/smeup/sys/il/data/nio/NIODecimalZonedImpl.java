@@ -26,11 +26,16 @@ public final class NIODecimalZonedImpl extends NIODecimalImpl {
 	public NIODecimalZonedImpl(final QDataContext dataContext, final int precision, final int scale, final boolean allocate) {
 		super(dataContext, precision, scale);
 
-		if (allocate) {
-			checkAllocation();
-			_buffer = ByteBuffer.allocate(getSize());
-			_buffer.put(_decimalDef.zoned_init);
-		}
+		if (allocate) 
+			_storage = ByteBuffer.allocate(getSize()).put(_decimalDef.zoned_init);
+	}
+
+	public NIODecimalZonedImpl(final QDataContext dataContext, final int value) {
+		super(dataContext, 10, 0);
+		
+		_storage = ByteBuffer.allocate(getSize());
+
+		eval(value);
 	}
 
 	@Override

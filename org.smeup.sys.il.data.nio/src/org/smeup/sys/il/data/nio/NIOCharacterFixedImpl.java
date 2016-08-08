@@ -30,9 +30,9 @@ public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 		super(dataContext, length);
 		
 		if (allocate) {
-			checkAllocation();
-			_buffer = ByteBuffer.allocate(getSize());
-			NIOBufferHelper.fill(_buffer, 0, _buffer.capacity(), INIT);
+			ByteBuffer byteBuffer = ByteBuffer.allocate(getSize());
+			NIOBufferHelper.fill(byteBuffer, 0, byteBuffer.capacity(), INIT);
+			_storage = byteBuffer;
 		}
 	}
 

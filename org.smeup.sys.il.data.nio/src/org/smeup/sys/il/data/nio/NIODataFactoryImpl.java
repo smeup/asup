@@ -496,6 +496,14 @@ public final class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
+	public QBinary createBinary(final boolean unsigned, final int value) {
+		
+		final NIOBinaryImpl binary = new NIOBinaryImpl(getDataContext(), unsigned, value);
+
+		return binary;
+	}
+
+	@Override
 	public final QDecimal createDecimal(final int precision, final int scale, final DecimalType type, final boolean allocate) {
 
 		NIODecimalImpl decimal = null;
@@ -506,6 +514,23 @@ public final class NIODataFactoryImpl implements QDataFactory {
 			break;
 		case PACKED:
 			decimal = new NIODecimalPackedImpl(getDataContext(), precision, scale, allocate);
+			break;
+		}
+
+		return decimal;
+	}
+
+	@Override
+	public QDecimal createDecimal(DecimalType type, int value) {
+
+		NIODecimalImpl decimal = null;
+
+		switch (type) {
+		case ZONED:
+			decimal = new NIODecimalZonedImpl(getDataContext(), value);
+			break;
+		case PACKED:
+			decimal = new NIODecimalPackedImpl(getDataContext(), value);
 			break;
 		}
 
