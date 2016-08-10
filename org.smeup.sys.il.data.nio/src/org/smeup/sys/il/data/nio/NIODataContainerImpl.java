@@ -525,11 +525,13 @@ public final class NIODataContainerImpl extends ObjectImpl implements QDataConta
 		return null;
 	}
 
-	public final void writeDefault(final QPointer pointer, String value) {
+	public final void writeDefault(final QPointer pointer, final String source) {
 
+		String value = source;
+		
 		if (value.trim().toUpperCase().startsWith("%ADDR")) {
 			value = value.trim().toUpperCase();
-			value = value.substring(6, value.length() - 1).toLowerCase();
+			value = value.substring(6, value.length() - 1).toLowerCase().replaceAll("§", "ç");
 			final QBufferedData bufferedData = (QBufferedData) getData(value.trim());
 			if (bufferedData == null || !(bufferedData instanceof QBufferedData))
 				throw new IntegratedLanguageDataRuntimeException("Invalid address data: " + value);
@@ -542,14 +544,14 @@ public final class NIODataContainerImpl extends ObjectImpl implements QDataConta
 			throw new IntegratedLanguageDataRuntimeException("Unexpected condition: ixretcretrtscv8dtf");
 	}
 
-	@SuppressWarnings("unchecked")
 	private final void replaceData(final QDataTerm<QDataDef<?>> dataTerm, final QData previousData) {
 
 		// remove child data
-		if (previousData instanceof QStruct<?>)
+/*		if (previousData instanceof QStruct<?>)
 			for (final Field field : NIODataStructHelper.getFields((Class<? extends QStruct<?>>) previousData.getClass()))
-				if (QData.class.isAssignableFrom(field.getType()))
+				if (QData.class.isAssignableFrom(field.getType())) {
 					datas.remove(field.getName());
+				}*/
 
 		if (!(previousData instanceof QBufferedData))
 			return;

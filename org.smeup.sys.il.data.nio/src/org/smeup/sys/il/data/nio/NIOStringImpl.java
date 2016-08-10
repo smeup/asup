@@ -546,10 +546,10 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 		int id = start.intValue() - 1;
 
-		for (final char c : asString().substring(start.intValue() - 1).toCharArray()) {
+		final char[] chars = asString().substring(id).toCharArray();
+		for (final char c : chars) {
 			id++;
-			final int i = base.indexOf(c);
-			if (i < 0) {
+			if (base.indexOf(c) < 0) {
 				number = new NIOBinaryImpl(getDataContext(), true, id);
 				break;
 			}
@@ -570,8 +570,10 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	public final QNumeric qCheckr(final String base, Number start, final QIndicator found) {
 
 		QNumeric number = null;
-		if (start == null || start.intValue() > getLength())
-			start = getLength();
+				
+		final int length = getLength();		
+		if (start == null || start.intValue() > length)
+			start = length;
 
 		final char[] chars = asString().substring(0, start.intValue()).toCharArray();
 		for (int ii = chars.length; ii > 0; ii--) {
@@ -773,13 +775,10 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 
 	@Override
 	public final QCharacter qTrim() {
-
-		// TODO cache?
+		
 		final byte[] bytes = NIOBufferHelper.trim(this);
-
 		final NIOCharacterImpl character = new NIOCharacterFixedImpl(getDataContext(), bytes.length, true);
 		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes);
-
 		return character;
 	}
 
@@ -797,24 +796,18 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	@Override
 	public final QCharacter qTriml() {
 
-		// TODO cache?
 		final byte[] bytes = NIOBufferHelper.trimL(this);
-
 		final NIOCharacterImpl character = new NIOCharacterFixedImpl(getDataContext(), bytes.length, true);
 		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes);
-
 		return character;
 	}
 
 	@Override
 	public final QCharacter qTrimr() {
 
-		// TODO cache?
 		final byte[] bytes = NIOBufferHelper.trimR(this);
-
 		final NIOCharacterImpl character = new NIOCharacterFixedImpl(getDataContext(), bytes.length, true);
 		NIOBufferHelper.movel(character.getBuffer(), 0, bytes.length, bytes);
-
 		return character;
 	}
 

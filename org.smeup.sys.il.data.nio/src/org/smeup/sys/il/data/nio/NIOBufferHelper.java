@@ -34,6 +34,7 @@ import org.smeup.sys.il.data.QString;
 public final class NIOBufferHelper {
 
 	private static final char[] hexArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+	private static final String[] trims = new String[Short.MAX_VALUE/2];
 
 	public final static void assign(final QStorable storable, final QBufferedData target) {
 
@@ -88,8 +89,8 @@ public final class NIOBufferHelper {
 			return nioBufferedDataImpl;
 		else if (nioBufferedDataImpl._storage == null)
 			return nioBufferedDataImpl;
-		else if(nioBufferedDataImpl._storage instanceof QStorable){
-			final NIOBufferedDataImpl nioBufferedOwner = getNIOBufferOwner((QStorable)nioBufferedDataImpl._storage);
+		else if (nioBufferedDataImpl._storage instanceof QStorable) {
+			final NIOBufferedDataImpl nioBufferedOwner = getNIOBufferOwner((QStorable) nioBufferedDataImpl._storage);
 			if (nioBufferedOwner == null)
 				return null;
 
@@ -97,8 +98,7 @@ public final class NIOBufferHelper {
 				return nioBufferedDataImpl;
 			else
 				return nioBufferedOwner;
-		}
-		else
+		} else
 			return null;
 	}
 
@@ -186,7 +186,7 @@ public final class NIOBufferHelper {
 		prepare(buffer, position, length);
 
 		final int remaining = buffer.remaining();
-		
+
 		// overflow
 		if (bytes.length > remaining)
 			buffer.put(bytes, bytes.length - remaining, remaining);
@@ -315,9 +315,71 @@ public final class NIOBufferHelper {
 		return new String(hexChars);
 	}
 
+	public final static String trimBinary(final String source) {
+		return trimRightBinary(trimLeftBinary(source));
+	}
+
+
+	public final static String trimLeftBinary(final String source) {
+
+		if(source.isEmpty())
+			return source;
+
+		loadTrims();
+		
+		String string = source;
+		int positionLeft = 0;
+
+		for (int length = string.length() / 2; length > 0; length = string.length() / 2) {
+
+			final String temp = string.substring(0, length);
+			if (temp.intern() == trims[temp.length()]) {
+				string = string.substring(length);
+				positionLeft += length;
+			} else {
+				string = temp;
+			}
+		}
+
+		if (string.equals(" "))
+			positionLeft++;
+
+		return source.substring(positionLeft);
+	}
+	
+	public final static String trimRightBinary(final String source) {
+		
+		if(source.isEmpty())
+			return source;
+
+		loadTrims();
+		
+		String string = source;
+		int positionRight = 0;
+
+		for (int length = string.length() / 2; length > 0; length = string.length() / 2) {
+
+			final String temp = string.substring(length);
+			if (temp.intern() == trims[temp.length()]) {
+				string = string.substring(0, length);
+			} else {
+				positionRight += length;
+				string = temp;
+			}
+		}
+
+		if (!string.equals(" "))
+			positionRight++;
+
+		return source.substring(0, positionRight);
+	}
+	
 	public final static byte[] trim(final QString string) {
 
 		final byte[] bytes = string.asBytes();
+		if(bytes.length == 0)
+			return bytes;
+
 		int i = 0;
 		while (i < bytes.length && (bytes[i] == NIOStringImpl.INIT || bytes[i] == 0))
 			i++;
@@ -335,6 +397,9 @@ public final class NIOBufferHelper {
 	public final static byte[] trimL(final QString string) {
 
 		final byte[] bytes = string.asBytes();
+		if(bytes.length == 0)
+			return bytes;
+
 		int i = 0;
 		while (i < bytes.length && (bytes[i] == NIOStringImpl.INIT || bytes[i] == 0))
 			i++;
@@ -345,9 +410,26 @@ public final class NIOBufferHelper {
 			return Arrays.copyOfRange(bytes, i, bytes.length);
 	}
 
+	private static void loadTrims() {
+		if(trims[0] == null) {
+			synchronized (trims) {
+				if(trims[0] == null) {
+					StringBuffer sb = new StringBuffer();
+					for (int i = 0; i < trims.length; i++) {
+						trims[i] = sb.toString().intern();
+						sb.append(" ");
+					}
+				}
+			}
+		}
+	}
+	
 	public final static byte[] trimR(final QString string) {
 
 		final byte[] bytes = string.asBytes();
+		if(bytes.length == 0)
+			return bytes;
+		
 		int i = bytes.length - 1;
 		while (i >= 0 && (bytes[i] == NIOStringImpl.INIT || bytes[i] == 0))
 			i--;
@@ -365,7 +447,7 @@ public final class NIOBufferHelper {
 	public final static byte[] read(final ByteBuffer buffer, final int position, final int length) {
 		if (buffer == null)
 			return null;
-		
+
 		prepare(buffer, position, length);
 
 		final byte[] bytes = new byte[buffer.remaining()];
