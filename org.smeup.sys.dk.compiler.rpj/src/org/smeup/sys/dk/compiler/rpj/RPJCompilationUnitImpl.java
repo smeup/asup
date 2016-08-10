@@ -408,9 +408,6 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	@SuppressWarnings("unchecked")
 	private QDataTerm<?> findData(List<QDataTerm<?>> dataTerms, String name, String prefix, int position) {
 
-		if (name.equalsIgnoreCase("CFCDVA"))
-			"".toCharArray();
-
 		if (name.contains("("))
 			name = name.substring(0, name.indexOf("("));
 
