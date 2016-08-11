@@ -304,25 +304,31 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 					throw new OperatingSystemRuntimeException("Cannot parse command parameter: " + value, null);
 				}
 
-				if (paramComp.getComponentType() == CLParmComponentType.LIST) {
+				QFormat format = dataTerm.getFacet(QFormat.class);
+				if (format != null && format.getType() == FormatType.COMMAND_STRING){
+					value = paramComp.getText();
+					setValue(writer, data, value);
+				}else{
+					if (paramComp.getComponentType() == CLParmComponentType.LIST) {
 
-					// Expected parm format as list
+						// Expected parm format as list
 
-					LinkedList<CLParmAbstractComponent> listElements = paramComp.getChilds();
+						LinkedList<CLParmAbstractComponent> listElements = paramComp.getChilds();
 
-					int counter = 1;
-					Iterator<CLParmAbstractComponent> iterator = listElements.iterator();
-					while (iterator.hasNext()) {
-						// if(listAtomic instanceof QScroller<?>)
-						// ((QScroller<?>)listAtomic).absolute(counter);
+						int counter = 1;
+						Iterator<CLParmAbstractComponent> iterator = listElements.iterator();
+						while (iterator.hasNext()) {
+							// if(listAtomic instanceof QScroller<?>)
+							// ((QScroller<?>)listAtomic).absolute(counter);
 
-						value = buildParameterValue(dataTerm, iterator.next(), variables);
+							value = buildParameterValue(dataTerm, iterator.next(), variables);
 
-						QData listItem = listAtomic.get(counter);
+							QData listItem = listAtomic.get(counter);
 
-						setValue(writer, listItem, value);
+							setValue(writer, listItem, value);
 
-						counter++;
+							counter++;
+						}
 					}
 				}
 			} else {
