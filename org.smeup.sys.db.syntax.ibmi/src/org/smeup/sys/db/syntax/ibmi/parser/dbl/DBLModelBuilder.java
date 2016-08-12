@@ -599,7 +599,7 @@ public class DBLModelBuilder {
 
 					fetchStatement.setPosition(FetchPosition.RELATIVE);
 
-					Tree relativeNumberToken = fieldToken.getChild(0).getChild(0);
+					Tree relativeNumberToken = fieldToken.getChild(0).getChild(0).getChild(0);
 
 					if (relativeNumberToken != null && (relativeNumberToken.getType() == DBLLexer.NUMBER || relativeNumberToken.getType() == DBLLexer.VARIABLE))
 						fetchStatement.setRelativePosition(relativeNumberToken.getText());
