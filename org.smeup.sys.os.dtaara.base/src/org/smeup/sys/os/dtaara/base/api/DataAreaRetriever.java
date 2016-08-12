@@ -54,7 +54,7 @@ public @ToDo class DataAreaRetriever {
 				cLVariableForReturnedValue.movel(area.getContent());
 			} else {
 				SUBSTRINGSPECIFICATIONS substringSpec = dataAreaParm.substringSpecifications.asData();
-				cLVariableForReturnedValue.movel(area.getContent().substring(substringSpec.substringStartingPosition.asInteger()-1, substringSpec.substringLength.asInteger()));
+				cLVariableForReturnedValue.movel(area.getContent().substring(substringSpec.substringStartingPosition.asInteger()-1, (substringSpec.substringStartingPosition.asInteger() + substringSpec.substringLength.asInteger())));
 			}
 
 		} catch (DataAreaNotFoundException e) {
