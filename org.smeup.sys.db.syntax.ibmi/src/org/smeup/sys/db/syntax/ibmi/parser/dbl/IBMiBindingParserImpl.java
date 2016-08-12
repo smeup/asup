@@ -8,6 +8,7 @@
  *
  * Contributors:
  *   Dario Foresti - Initial API and implementation
+ *   Mattia Rocchi - Implementation
  */
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
 
@@ -16,17 +17,27 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
 
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+
 import org.smeup.sys.db.syntax.QBindingParseResult;
 import org.smeup.sys.db.syntax.QBindingParser;
+import org.smeup.sys.db.syntax.QQueryParser;
+import org.smeup.sys.db.syntax.QQueryParserRegistry;
 
 public class IBMiBindingParserImpl implements QBindingParser {
 
 	private DBLModelBuilder bindingBuilder;
 
-	public IBMiBindingParserImpl() {
-		bindingBuilder = new DBLModelBuilder();
+	@Inject
+	private QQueryParserRegistry queryParserRegistry;
+	
+	@PostConstruct
+	private void init() {
+		QQueryParser queryParser = queryParserRegistry.lookup("ASUP");
+		bindingBuilder = new DBLModelBuilder(queryParser);		
 	}
-
+	
 	@Override
 	public QBindingParseResult parseBinding(InputStream bindingStream) throws SQLException {
 

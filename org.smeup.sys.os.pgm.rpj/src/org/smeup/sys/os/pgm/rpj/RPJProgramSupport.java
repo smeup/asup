@@ -397,6 +397,15 @@ public class RPJProgramSupport {
 		return program;
 	}
 
+	public QString qChar(QCharacter character) {
+		return qChar(character, null);
+	}
+	
+	public QString qChar(QCharacter character, String format) {
+		// TODO
+		return character;
+	}
+
 	public QString qChar(QNumeric numeric) {
 		return qChar(numeric, null);
 	}
@@ -421,6 +430,10 @@ public class RPJProgramSupport {
 	}
 
 	public QString qChar(QDatetime datetime) {
+		return qChar(datetime, null);
+	}
+	
+	public QString qChar(QDatetime datetime, DatetimeFormat format) {
 
 		QCharacter character = dataContext.getDataFactory().createCharacter(19, true, true);
 		character.eval(Long.toString(datetime.asTime()));

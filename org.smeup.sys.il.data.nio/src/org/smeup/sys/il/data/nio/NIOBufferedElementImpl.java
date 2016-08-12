@@ -66,7 +66,11 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 			return;
 		}
 
-		NIOBufferHelper.assign(this, target);
+		if(this instanceof NIOCharacterFixedImpl && target instanceof NIOCharacterVaryingImpl) {
+			NIOBufferHelper.assign(this.qAddr().qPlus(2), target);
+		}
+		else
+			NIOBufferHelper.assign(this, target);
 	}
 
 	@Override

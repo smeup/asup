@@ -8,6 +8,7 @@
  *
  * Contributors:
  *   Dario Foresti - Initial API and implementation
+ *   Mattia Rocchi - Implementation
  */
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
 
@@ -22,6 +23,7 @@ import org.antlr.runtime.tree.Tree;
 import org.smeup.sys.db.syntax.QBindingParseResult;
 import org.smeup.sys.db.syntax.QBindingStatement;
 import org.smeup.sys.db.syntax.QDatabaseSyntaxFactory;
+import org.smeup.sys.db.syntax.QQueryParser;
 import org.smeup.sys.db.syntax.dbl.CursorType;
 import org.smeup.sys.db.syntax.dbl.DescriptorScope;
 import org.smeup.sys.db.syntax.dbl.FetchPosition;
@@ -55,6 +57,12 @@ import org.smeup.sys.db.syntax.dbl.UsingType;
 
 public class DBLModelBuilder {
 
+	private QQueryParser queryParser;
+	
+	public DBLModelBuilder(QQueryParser queryParser) {
+		this.queryParser = queryParser;
+	}
+	
 	/**
 	 * Parse definition string and convert result in db-syntax model
 	 * 
@@ -836,8 +844,15 @@ public class DBLModelBuilder {
 
 		// Manage query in field FOR
 		if (queryString != null && queryString.length > 0) {
-			declareCursorStatement.setForStatementName("");
-			declareCursorStatement.setForQuery(queryString[0]);
+			
+			try {
+				queryParser.parseQuery(queryString[0]);
+				declareCursorStatement.setForStatementName(null);
+				declareCursorStatement.setForQuery(queryString[0]);				
+			} catch (SQLException e) {
+				declareCursorStatement.setForStatementName(queryString[0]);
+				declareCursorStatement.setForQuery(null);
+			}
 		}
 
 		return declareCursorStatement;
@@ -1082,7 +1097,9 @@ public class DBLModelBuilder {
 					option.setValue(valueToken.getText());
 					setOptionStatement.getOptions().add(option);
 				}
-			}			
+			}	
+			else 
+				System.err.println("Unknown SQL option: "+optionToken);
 		}
 		
 		return setOptionStatement;
@@ -1311,39 +1328,4 @@ public class DBLModelBuilder {
 
 		return response;
 	}
-
-	public static void main(String[] args) {
-		DBLModelBuilder builder = new DBLModelBuilder();
-
-		String test = "DECLARE c1 CURSOR FOR (SELECT A, B, C FROM FILE)";
-
-		System.out.println("Test1: " + test);
-		if (builder.isDeclareStatementWithSelect(test)) {
-			System.out.println("Stetement identified");
-			String[] parts = builder.splitDeclareViewStatement(test);
-			for (String part : parts)
-				System.out.println(part);
-		}
-		
-		test = "DECLARE c1 CURSOR FOR SELECT A, B, C FROM FILE";
-
-		System.out.println("Test2: " + test);
-		if (builder.isDeclareStatementWithSelect(test)) {
-			System.out.println("Stetement identified");
-			String[] parts = builder.splitDeclareViewStatement(test);
-			for (String part : parts)
-				System.out.println(part);
-		}
-
-
-		test = "EXECUTE IMMEDIATE (INSERT INTO WORK_TABLE SELECT * FROM EMPROJACT)";
-		System.out.println("Test3: " + test);
-		if (builder.isExecuteImmediateStatementWithSelect(test)) {
-			System.out.println("Stetement identified");
-			String[] parts = builder.splitExecuteImmediateStatement(test);
-			for (String part : parts)
-				System.out.println(part);
-		}
-	}
-
 }

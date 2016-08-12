@@ -13,6 +13,7 @@
 package org.smeup.sys.dk.compiler.rpj.writer;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -21,6 +22,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.eclipse.datatools.modelbase.sql.query.ValueExpressionVariable;
+import org.eclipse.datatools.modelbase.sql.query.helper.StatementHelper;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTNode;
@@ -53,6 +56,7 @@ import org.smeup.sys.db.esql.QCursorTerm;
 import org.smeup.sys.db.esql.QStatement;
 import org.smeup.sys.db.esql.QStatementTerm;
 import org.smeup.sys.db.esql.annotation.CursorDef;
+import org.smeup.sys.db.syntax.QQueryParser;
 import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
@@ -60,8 +64,8 @@ import org.smeup.sys.dk.compiler.QCompilerLinker;
 import org.smeup.sys.dk.compiler.QCompilerManager;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.compiler.UnitScope;
-import org.smeup.sys.dk.compiler.rpj.RPJContextHelper;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
+import org.smeup.sys.dk.compiler.rpj.RPJContextHelper;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.dk.core.annotation.Unsupported;
@@ -112,11 +116,13 @@ import org.smeup.sys.os.file.QExternalFile;
 public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 	private QExpressionParser expressionParser;
-
+	private QQueryParser queryParser;
+	
 	public JDTCallableUnitWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, UnitScope scope) {
 		super(root, compilationUnit, compilationSetup, name, scope);
 
 		expressionParser = getCompilationUnit().getContext().get(QExpressionParser.class);
+		queryParser = getCompilationUnit().getContext().get(QQueryParser.class);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -381,7 +387,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (cursorTerm.getStatementName() != null)
 				writeAnnotation(field, CursorDef.class, "statement", getCompilationUnit().normalizeTermName(cursorTerm.getStatementName()));
 			if (cursorTerm.getSql() != null)
-				writeAnnotation(field, CursorDef.class, "query", cursorTerm.getStatementName());
+				writeAnnotation(field, CursorDef.class, "query", cursorTerm.getSql());
 
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 
@@ -916,49 +922,77 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 
+		if (!(getCompilationUnit().getNode() instanceof QCallableUnit)) 
+			return;
+
 		Block block = getAST().newBlock();
 		methodDeclaration.setBody(block);
 
-		// redefined record dataSet
-		if (getCompilationUnit().getNode() instanceof QCallableUnit) {
+		QCallableUnit callableUnit = (QCallableUnit) getCompilationUnit().getNode();
+		if (callableUnit.getFileSection() != null) {
+			
+			// redefined record dataSet
+			for (QDataSetTerm dataSetTerm : callableUnit.getFileSection().getDataSets()) {
 
-			// getCompilationUnit().refresh();
+				// remap
+				if (dataSetTerm.getFormat() != null) {
+					for (QDataTerm<?> element : dataSetTerm.getFormat().getDefinition().getElements()) {
+						QRemap remap = element.getFacet(QRemap.class);
+						if (remap == null)
+							continue;
 
-			QCallableUnit callableUnit = (QCallableUnit) getCompilationUnit().getNode();
-			if (callableUnit.getFileSection() != null)
-				for (QDataSetTerm dataSetTerm : callableUnit.getFileSection().getDataSets()) {
+						QDataTerm<?> remapDataTerm = getCompilationUnit().getDataTerm(remap.getName(), true);
+						if (remapDataTerm == null)
+							throw new IntegratedLanguageExpressionRuntimeException("Invalid term: " + remap);
 
-					// remap
-					if (dataSetTerm.getFormat() != null) {
-						for (QDataTerm<?> element : dataSetTerm.getFormat().getDefinition().getElements()) {
-							QRemap remap = element.getFacet(QRemap.class);
-							if (remap == null)
-								continue;
+						if (getCompilationUnit().equalsTermName(element.getName(), remapDataTerm.getName()))
+							continue;
 
-							QDataTerm<?> remapDataTerm = getCompilationUnit().getDataTerm(remap.getName(), true);
-							if (remapDataTerm == null)
-								throw new IntegratedLanguageExpressionRuntimeException("Invalid term: " + remap);
+						MethodInvocation methodInvocation = getAST().newMethodInvocation();
+						methodInvocation.setName(getAST().newSimpleName("assign"));
 
-							if (getCompilationUnit().equalsTermName(element.getName(), remapDataTerm.getName()))
-								continue;
+						if (remap.getIndex() == null || remap.getIndex().isEmpty())
+							methodInvocation.setExpression(buildExpression(getCompilationUnit().getQualifiedName(remapDataTerm)));
+						else
+							methodInvocation.setExpression(buildExpression(getCompilationUnit().getQualifiedName(remapDataTerm) + ".get(" + Integer.parseInt(remap.getIndex()) + ")"));
 
-							MethodInvocation methodInvocation = getAST().newMethodInvocation();
-							methodInvocation.setName(getAST().newSimpleName("assign"));
+						methodInvocation.arguments().add(buildExpression(getCompilationUnit().getQualifiedName(element)));
+						ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
+						block.statements().add(expressionStatement);
 
-							if (remap.getIndex() == null || remap.getIndex().isEmpty())
-								methodInvocation.setExpression(buildExpression(getCompilationUnit().getQualifiedName(remapDataTerm)));
-							else
-								methodInvocation.setExpression(buildExpression(getCompilationUnit().getQualifiedName(remapDataTerm) + ".get(" + Integer.parseInt(remap.getIndex()) + ")"));
-
-							methodInvocation.arguments().add(buildExpression(getCompilationUnit().getQualifiedName(element)));
-							ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
-							block.statements().add(expressionStatement);
-
-						}
 					}
 				}
-		}
+			}
+			
+			// assign statement parameters
+			for(QCursorTerm cursorTerm: callableUnit.getFileSection().getCursors()) {
+				if(cursorTerm.getSql() == null)
+					continue;
+				
+				try {
+					List<ValueExpressionVariable> parameters = StatementHelper.getAllVariablesInQueryStatement(queryParser.parseQuery(cursorTerm.getSql()).getQueryStatement());
+					
+					// array of bufferedData
+					ArrayCreation arrayCreation = getAST().newArrayCreation();
+					arrayCreation.setType(getAST().newArrayType(getAST().newSimpleType(getAST().newSimpleName(QBufferedData.class.getSimpleName()))));
 
+					ArrayInitializer arrayInitializer = getAST().newArrayInitializer();
+					
+					for(ValueExpressionVariable parameter: parameters) {
+						QExpression expression = expressionParser.parseExpression(getCompilationUnit().normalizeTermName(parameter.getName()));
+						Expression jdtExpression = JDTStatementHelper.buildExpression(getAST(), getCompilationUnit(), expression, null);
+						arrayInitializer.expressions().add(jdtExpression);
+
+					}
+
+					arrayCreation.setInitializer(arrayInitializer);
+					
+				} catch (SQLException e) {
+					throw new DevelopmentKitCompilerRuntimeException("Invalid statement: " + cursorTerm);
+				}
+			}
+		}
+		
 		if (!methodDeclaration.getBody().statements().isEmpty())
 			getTarget().bodyDeclarations().add(methodDeclaration);
 	}

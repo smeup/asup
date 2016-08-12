@@ -84,7 +84,7 @@ public class DatabaseSyntaxHelper {
 	
 	public static boolean isDMLStatement(String statement) {
 		
-		return !(isDBLStatement(statement)  || isDMLStatement(statement)); 
+		return !(isDBLStatement(statement)  || isDDLStatement(statement)); 
 
 	}
 	
