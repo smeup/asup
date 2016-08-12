@@ -17,10 +17,8 @@ import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
-import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
-import org.smeup.sys.il.data.def.DecimalType;
 
 public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 
@@ -182,9 +180,7 @@ public final class NIOCharacterFixedImpl extends NIOCharacterImpl {
 	@Override
 	public final QNumeric qLen() {
 
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
-		number.eval(getLength());
-
+		final QNumeric number = new NIOBinaryImpl(getDataContext(), false, getLength());
 		return number;
 	}
 

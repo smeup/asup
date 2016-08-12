@@ -46,6 +46,7 @@ import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QFloating;
+import org.smeup.sys.il.data.QGraphic;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QList;
@@ -75,6 +76,7 @@ import org.smeup.sys.il.data.def.QDatetimeDef;
 import org.smeup.sys.il.data.def.QDecimalDef;
 import org.smeup.sys.il.data.def.QEnumDef;
 import org.smeup.sys.il.data.def.QFloatingDef;
+import org.smeup.sys.il.data.def.QGraphicDef;
 import org.smeup.sys.il.data.def.QHexadecimalDef;
 import org.smeup.sys.il.data.def.QIndicatorDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
@@ -170,7 +172,11 @@ public final class NIODataFactoryImpl implements QDataFactory {
 		} else if (dataDef instanceof QCharacterDef) {
 			final QCharacterDef characterDef = (QCharacterDef) dataDef;
 			data = (D) createCharacter(characterDef.getLength(), characterDef.isVarying(), allocate);
-		} else if (dataDef instanceof QDatetimeDef) {
+		} else if (dataDef instanceof QGraphicDef) {
+			final QGraphicDef graphicDef = (QGraphicDef) dataDef;
+			data = (D) createGraphic(graphicDef.getLength(), allocate);
+		}
+		else if (dataDef instanceof QDatetimeDef) {
 			final QDatetimeDef datetimeDef = (QDatetimeDef) dataDef;
 			data = (D) createDate(datetimeDef.getType(), datetimeDef.getDateFormat(), datetimeDef.getTimeFormat(), allocate);
 		} else if (dataDef instanceof QDecimalDef) {
@@ -485,6 +491,13 @@ public final class NIODataFactoryImpl implements QDataFactory {
 			character = new NIOCharacterFixedImpl(getDataContext(), length, allocate);
 
 		return character;
+	}
+
+	@Override
+	public QGraphic createGraphic(int length, boolean allocate) {
+
+		NIOCharacterGraphicImpl graphic = new NIOCharacterGraphicImpl(getDataContext(), length, allocate);		
+		return graphic;
 	}
 
 	@Override

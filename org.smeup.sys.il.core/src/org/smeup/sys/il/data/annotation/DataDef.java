@@ -19,6 +19,7 @@ import org.smeup.sys.il.data.SortDirection;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.DatetimeType;
+import org.smeup.sys.il.data.def.FloatingType;
 import org.smeup.sys.il.data.def.TimeFormat;
 
 @Qualifier
@@ -61,4 +62,7 @@ public @interface DataDef {
 	
 	// binary
 	BinaryType binaryType() default BinaryType.BYTE;
+	
+	// floating
+	FloatingType floatingType() default FloatingType.SINGLE;
 }

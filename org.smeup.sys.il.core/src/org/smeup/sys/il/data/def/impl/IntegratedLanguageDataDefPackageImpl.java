@@ -48,6 +48,7 @@ import org.smeup.sys.il.data.def.QDatetimeDef;
 import org.smeup.sys.il.data.def.QDecimalDef;
 import org.smeup.sys.il.data.def.QEnumDef;
 import org.smeup.sys.il.data.def.QFloatingDef;
+import org.smeup.sys.il.data.def.QGraphicDef;
 import org.smeup.sys.il.data.def.QHexadecimalDef;
 import org.smeup.sys.il.data.def.QIdentityDef;
 import org.smeup.sys.il.data.def.QIndicatorDef;
@@ -171,6 +172,13 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	private EClass floatingDefEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass graphicDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -751,6 +759,24 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGraphicDef() {
+		return graphicDefEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGraphicDef_Length() {
+		return (EAttribute)graphicDefEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1117,6 +1143,9 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		floatingDefEClass = createEClass(FLOATING_DEF);
 		createEAttribute(floatingDefEClass, FLOATING_DEF__TYPE);
 
+		graphicDefEClass = createEClass(GRAPHIC_DEF);
+		createEAttribute(graphicDefEClass, GRAPHIC_DEF__LENGTH);
+
 		hexadecimalDefEClass = createEClass(HEXADECIMAL_DEF);
 		createEAttribute(hexadecimalDefEClass, HEXADECIMAL_DEF__LENGTH);
 
@@ -1374,6 +1403,10 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		g1.getETypeArguments().add(g2);
 		floatingDefEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getUnaryAtomicBufferedDataDef());
+		g2 = createEGenericType(theIntegratedLanguageDataPackage.getGraphic());
+		g1.getETypeArguments().add(g2);
+		graphicDefEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getUnaryAtomicBufferedDataDef());
 		g2 = createEGenericType(theIntegratedLanguageDataPackage.getHexadecimal());
 		g1.getETypeArguments().add(g2);
 		hexadecimalDefEClass.getEGenericSuperTypes().add(g1);
@@ -1565,6 +1598,9 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 
 		initEClass(floatingDefEClass, QFloatingDef.class, "FloatingDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFloatingDef_Type(), this.getFloatingType(), "type", null, 1, 1, QFloatingDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(graphicDefEClass, QGraphicDef.class, "GraphicDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGraphicDef_Length(), ecorePackage.getEInt(), "length", null, 1, 1, QGraphicDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hexadecimalDefEClass, QHexadecimalDef.class, "HexadecimalDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getHexadecimalDef_Length(), ecorePackage.getEInt(), "length", null, 1, 1, QHexadecimalDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

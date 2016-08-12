@@ -98,6 +98,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 			case QIntegratedLanguageDataDefPackage.DATETIME_DEF: return (EObject)createDatetimeDef();
 			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF: return (EObject)createDecimalDef();
 			case QIntegratedLanguageDataDefPackage.FLOATING_DEF: return (EObject)createFloatingDef();
+			case QIntegratedLanguageDataDefPackage.GRAPHIC_DEF: return (EObject)createGraphicDef();
 			case QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF: return (EObject)createHexadecimalDef();
 			case QIntegratedLanguageDataDefPackage.IDENTITY_DEF: return (EObject)createIdentityDef();
 			case QIntegratedLanguageDataDefPackage.INDICATOR_DEF: return (EObject)createIndicatorDef();
@@ -262,6 +263,16 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	public QFloatingDef createFloatingDef() {
 		FloatingDefImpl floatingDef = new FloatingDefImpl();
 		return floatingDef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QGraphicDef createGraphicDef() {
+		GraphicDefImpl graphicDef = new GraphicDefImpl();
+		return graphicDef;
 	}
 
 	/**

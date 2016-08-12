@@ -93,7 +93,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryDataDef()
 	 * @generated
 	 */
-	int UNARY_DATA_DEF = 32;
+	int UNARY_DATA_DEF = 33;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -120,7 +120,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryAtomicDataDef()
 	 * @generated
 	 */
-	int UNARY_ATOMIC_DATA_DEF = 28;
+	int UNARY_ATOMIC_DATA_DEF = 29;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -159,7 +159,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getMultipleDataDef()
 	 * @generated
 	 */
-	int MULTIPLE_DATA_DEF = 22;
+	int MULTIPLE_DATA_DEF = 23;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.MultipleAtomicDataDefImpl <em>Multiple Atomic Data Def</em>}' class.
@@ -169,7 +169,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getMultipleAtomicDataDef()
 	 * @generated
 	 */
-	int MULTIPLE_ATOMIC_DATA_DEF = 19;
+	int MULTIPLE_ATOMIC_DATA_DEF = 20;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.MultipleAtomicBufferedDataDefImpl <em>Multiple Atomic Buffered Data Def</em>}' class.
@@ -179,7 +179,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getMultipleAtomicBufferedDataDef()
 	 * @generated
 	 */
-	int MULTIPLE_ATOMIC_BUFFERED_DATA_DEF = 20;
+	int MULTIPLE_ATOMIC_BUFFERED_DATA_DEF = 21;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.ArrayDefImpl <em>Array Def</em>}' class.
@@ -208,7 +208,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryAtomicBufferedDataDef()
 	 * @generated
 	 */
-	int UNARY_ATOMIC_BUFFERED_DATA_DEF = 29;
+	int UNARY_ATOMIC_BUFFERED_DATA_DEF = 30;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -617,7 +617,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryBufferedDataDef()
 	 * @generated
 	 */
-	int UNARY_BUFFERED_DATA_DEF = 30;
+	int UNARY_BUFFERED_DATA_DEF = 31;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list.
@@ -691,7 +691,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryCompoundDataDef()
 	 * @generated
 	 */
-	int UNARY_COMPOUND_DATA_DEF = 31;
+	int UNARY_COMPOUND_DATA_DEF = 32;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -1030,6 +1030,43 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	int FLOATING_DEF_FEATURE_COUNT = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.GraphicDefImpl <em>Graphic Def</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.def.impl.GraphicDefImpl
+	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getGraphicDef()
+	 * @generated
+	 */
+	int GRAPHIC_DEF = 15;
+
+	/**
+	 * The feature id for the '<em><b>Formulas</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHIC_DEF__FORMULAS = UNARY_ATOMIC_BUFFERED_DATA_DEF__FORMULAS;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHIC_DEF__LENGTH = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Graphic Def</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHIC_DEF_FEATURE_COUNT = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.HexadecimalDefImpl <em>Hexadecimal Def</em>}' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -1037,7 +1074,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getHexadecimalDef()
 	 * @generated
 	 */
-	int HEXADECIMAL_DEF = 15;
+	int HEXADECIMAL_DEF = 16;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -1075,7 +1112,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getIdentityDef()
 	 * @generated
 	 */
-	int IDENTITY_DEF = 16;
+	int IDENTITY_DEF = 17;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -1104,7 +1141,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getIndicatorDef()
 	 * @generated
 	 */
-	int INDICATOR_DEF = 17;
+	int INDICATOR_DEF = 18;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -1130,7 +1167,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getListDef()
 	 * @generated
 	 */
-	int LIST_DEF = 18;
+	int LIST_DEF = 19;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -1175,7 +1212,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getMultipleCompoundDataDef()
 	 * @generated
 	 */
-	int MULTIPLE_COMPOUND_DATA_DEF = 21;
+	int MULTIPLE_COMPOUND_DATA_DEF = 22;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -1258,7 +1295,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getNumericDef()
 	 * @generated
 	 */
-	int NUMERIC_DEF = 23;
+	int NUMERIC_DEF = 24;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -1287,7 +1324,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getPointerDef()
 	 * @generated
 	 */
-	int POINTER_DEF = 24;
+	int POINTER_DEF = 25;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -1316,7 +1353,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getScrollerDef()
 	 * @generated
 	 */
-	int SCROLLER_DEF = 25;
+	int SCROLLER_DEF = 26;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -1360,7 +1397,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getStringDef()
 	 * @generated
 	 */
-	int STRING_DEF = 26;
+	int STRING_DEF = 27;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -1389,7 +1426,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getStrollerDef()
 	 * @generated
 	 */
-	int STROLLER_DEF = 27;
+	int STROLLER_DEF = 28;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -1478,7 +1515,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getWrapperDef()
 	 * @generated
 	 */
-	int WRAPPER_DEF = 33;
+	int WRAPPER_DEF = 34;
 
 	/**
 	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -1507,7 +1544,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getBinaryType()
 	 * @generated
 	 */
-	int BINARY_TYPE = 34;
+	int BINARY_TYPE = 35;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.DataDefType
@@ -1518,7 +1555,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDataDefType()
 	 * @generated
 	 */
-	int DATA_DEF_TYPE = 35;
+	int DATA_DEF_TYPE = 36;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.DatetimeType <em>Datetime Type</em>}' enum.
@@ -1527,7 +1564,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDatetimeType()
 	 * @generated
 	 */
-	int DATETIME_TYPE = 36;
+	int DATETIME_TYPE = 37;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.DateFormat
@@ -1538,7 +1575,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDateFormat()
 	 * @generated
 	 */
-	int DATE_FORMAT = 37;
+	int DATE_FORMAT = 38;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.DecimalType
@@ -1549,7 +1586,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDecimalType()
 	 * @generated
 	 */
-	int DECIMAL_TYPE = 38;
+	int DECIMAL_TYPE = 39;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.FloatingType <em>Floating Type</em>}' enum.
@@ -1558,7 +1595,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getFloatingType()
 	 * @generated
 	 */
-	int FLOATING_TYPE = 39;
+	int FLOATING_TYPE = 40;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.TimeFormat <em>Time Format</em>}' enum.
@@ -1568,7 +1605,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getTimeFormat()
 	 * @generated
 	 */
-	int TIME_FORMAT = 40;
+	int TIME_FORMAT = 41;
 
 	/**
 	 * Returns the meta object for class '
@@ -1954,6 +1991,27 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getFloatingDef_Type();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.def.QGraphicDef <em>Graphic Def</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Graphic Def</em>'.
+	 * @see org.smeup.sys.il.data.def.QGraphicDef
+	 * @generated
+	 */
+	EClass getGraphicDef();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.def.QGraphicDef#getLength <em>Length</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Length</em>'.
+	 * @see org.smeup.sys.il.data.def.QGraphicDef#getLength()
+	 * @see #getGraphicDef()
+	 * @generated
+	 */
+	EAttribute getGraphicDef_Length();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.data.def.QHexadecimalDef <em>Hexadecimal Def</em>}'.
@@ -2606,6 +2664,24 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute FLOATING_DEF__TYPE = eINSTANCE.getFloatingDef_Type();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.def.impl.GraphicDefImpl <em>Graphic Def</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.def.impl.GraphicDefImpl
+		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getGraphicDef()
+		 * @generated
+		 */
+		EClass GRAPHIC_DEF = eINSTANCE.getGraphicDef();
+
+		/**
+		 * The meta object literal for the '<em><b>Length</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GRAPHIC_DEF__LENGTH = eINSTANCE.getGraphicDef_Length();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.def.impl.HexadecimalDefImpl <em>Hexadecimal Def</em>}' class.

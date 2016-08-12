@@ -2775,6 +2775,10 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, theIntegratedLanguageDataDefPackage.getFloatingType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "allocate", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(dataFactoryEClass, this.getGraphic(), "createGraphic", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "length", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "allocate", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(dataFactoryEClass, this.getHexadecimal(), "createHexadecimal", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "length", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "allocate", 1, 1, IS_UNIQUE, IS_ORDERED);

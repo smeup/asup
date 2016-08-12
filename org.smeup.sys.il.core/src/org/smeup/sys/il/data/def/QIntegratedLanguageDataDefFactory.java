@@ -120,6 +120,15 @@ public interface QIntegratedLanguageDataDefFactory extends EFactory {
 	QFloatingDef createFloatingDef();
 
 	/**
+	 * Returns a new object of class '<em>Graphic Def</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Graphic Def</em>'.
+	 * @generated
+	 */
+	QGraphicDef createGraphicDef();
+
+	/**
 	 * Returns a new object of class '<em>Hexadecimal Def</em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *

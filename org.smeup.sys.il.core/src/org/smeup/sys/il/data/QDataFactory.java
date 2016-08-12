@@ -152,6 +152,14 @@ public interface QDataFactory {
 	QFloating createFloating(FloatingType type, boolean allocate);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" lengthRequired="true" allocateRequired="true"
+	 * @generated
+	 */
+	QGraphic createGraphic(int length, boolean allocate);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" lengthRequired="true" allocateRequired="true"
 	 * @generated

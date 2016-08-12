@@ -57,6 +57,7 @@ import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.data.def.DecimalType;
+import org.smeup.sys.il.data.def.FloatingType;
 import org.smeup.sys.il.data.def.QArrayDef;
 import org.smeup.sys.il.data.def.QBinaryDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
@@ -67,6 +68,7 @@ import org.smeup.sys.il.data.def.QDataStructDef;
 import org.smeup.sys.il.data.def.QDatetimeDef;
 import org.smeup.sys.il.data.def.QDecimalDef;
 import org.smeup.sys.il.data.def.QFloatingDef;
+import org.smeup.sys.il.data.def.QGraphicDef;
 import org.smeup.sys.il.data.def.QHexadecimalDef;
 import org.smeup.sys.il.data.def.QIndicatorDef;
 import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
@@ -173,11 +175,11 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				QDataTerm<?> parentTerm = (QDataTerm<?>) dataTerm.getParent();
 
 				if (overlay.getName() != null && !overlay.getName().equals(Overlay.NAME_OWNER) && !getCompilationUnit().equalsTermName(parentTerm.getName(), overlay.getName()))
-					writeAnnotation(field, Overlay.class, "name", overlay.getName());						
+					writeAnnotation(field, Overlay.class, "name", overlay.getName());
 
 			} else {
 				if (overlay.getName() != null && !overlay.getName().equals(Overlay.NAME_OWNER))
-					writeAnnotation(field, Overlay.class, "name", overlay.getName());						
+					writeAnnotation(field, Overlay.class, "name", overlay.getName());
 			}
 
 			if (overlay.getPosition() >= 1)
@@ -244,7 +246,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataAreaDef.getArgument();
 			} else
 				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataTerm.getDefinition();
-			
+
 			QCompilerLinker compilerLinker = dataTerm.getFacet(QCompilerLinker.class);
 			if (compilerLinker == null) {
 				QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
@@ -506,12 +508,22 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			if (hexadecimalDef.getLength() > 0)
 				writeAnnotation(node, DataDef.class, "length", hexadecimalDef.getLength());
 		} else if (QFloatingDef.class.isAssignableFrom(klassDef)) {
-			// QFloatingDef floatDef = (QFloatingDef) dataDef;
-			// if (floatDef.getLength() > 0)
-			// writeAnnotation(target, annotationName, "length",
-			// floatDef.getLength());
-
-		} else
+			QFloatingDef floatDef = (QFloatingDef) dataDef;
+			writeImport(FloatingType.class);
+			if (floatDef.getType() != null)
+				writeAnnotation(node, DataDef.class, "floatingType", floatDef.getType());
+		} 
+		else if (QHexadecimalDef.class.isAssignableFrom(klassDef)) {
+			QHexadecimalDef hexadecimalDef = (QHexadecimalDef) dataDef;
+			if (hexadecimalDef.getLength() > 0)
+				writeAnnotation(node, DataDef.class, "length", hexadecimalDef.getLength());
+		}
+		else if (QGraphicDef.class.isAssignableFrom(klassDef)) {
+			QGraphicDef graphicDef = (QGraphicDef) dataDef;
+			if (graphicDef.getLength() > 0)
+				writeAnnotation(node, DataDef.class, "length", graphicDef.getLength());
+		}
+		else
 			System.err.println("Unknown field type " + dataDef);
 
 		if (!dataDef.getFormulas().isEmpty())

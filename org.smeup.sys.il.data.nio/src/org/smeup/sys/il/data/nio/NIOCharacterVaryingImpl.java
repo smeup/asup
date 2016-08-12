@@ -58,7 +58,7 @@ public final class NIOCharacterVaryingImpl extends NIOCharacterImpl implements Q
 	@Override
 	public final QNumeric qLen() {
 
-		final QNumeric number = getDataContext().getDataFactory().createBinary(BinaryType.SHORT, true, false);
+		final QNumeric number = new NIOBinaryImpl(getDataContext(), BinaryType.SHORT, true, false);
 		assign(number);
 
 		return number;
