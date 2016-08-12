@@ -114,8 +114,18 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 		if (program.getActivationGroup().equals("*CALLER")) {
 			QProgramStack programStack = getProgramStack(job);
-			activationGroup = programStack.peek().getActivationGroup();
-			callableProgram = activationGroup.lookup(program);
+			
+			if(!programStack.isEmpty()) {
+				activationGroup = programStack.peek().getActivationGroup();
+				callableProgram = activationGroup.lookup(program);
+			}
+			else {
+				activationGroup = activationGroupManager.lookup(job, "*DFT");
+				if (activationGroup == null)
+					activationGroup = activationGroupManager.create(job, "*DFT", true);
+				else
+					callableProgram = activationGroup.lookup(program);
+			}
 		} else if (program.getActivationGroup().equals("*NEW")) {
 			activationGroup = activationGroupManager.create(job, "*NEW_" + System.currentTimeMillis(), true);
 		} else {
@@ -349,10 +359,11 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 			} catch (OperatingSystemMessageException | OperatingSystemRuntimeException e) {
 				System.err.println(e.getMessage());
+//				e.printStackTrace();
 				throw e;
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
-				
+
 				Throwable cause = e.getCause();
 				if (cause != null)
 					System.err.println(cause);
