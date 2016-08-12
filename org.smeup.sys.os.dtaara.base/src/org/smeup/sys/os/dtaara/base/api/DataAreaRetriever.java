@@ -15,8 +15,6 @@ import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.data.QAdapter;
-import org.smeup.sys.il.data.QCharacter;
-import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -46,20 +44,17 @@ public @ToDo class DataAreaRetriever {
 	private QDataAreaManager dataAreaManager;
 	@Inject
 	private QExceptionManager exceptionManager;
-	@Inject
-	private QDataContext dataContext;
 
 	@Main
 	public void main(DataAreaSpecification dataAreaParm, QAdapter cLVariableForReturnedValue) {
 		try {
 			QDataArea area = dataAreaParm.dataAreaSpecification.asData().findDataArea(job, resourceManager, dataAreaManager, dataAreaParm.dataAreaSpecification.asEnum());
 
-			QCharacter character = dataContext.getDataFactory().createCharacter(area.getContent().length(), false, false);
 			if (dataAreaParm.all()) {
-				cLVariableForReturnedValue.slice(character, 1);
+				cLVariableForReturnedValue.movel(area.getContent());
 			} else {
 				SUBSTRINGSPECIFICATIONS substringSpec = dataAreaParm.substringSpecifications.asData();
-				cLVariableForReturnedValue.slice(character, substringSpec.substringStartingPosition.asInteger());
+				cLVariableForReturnedValue.movel(area.getContent().substring(substringSpec.substringStartingPosition.asInteger()-1, substringSpec.substringLength.asInteger()));
 			}
 
 		} catch (DataAreaNotFoundException e) {
