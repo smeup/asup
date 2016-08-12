@@ -1363,6 +1363,28 @@
     <eOperations name="out">
       <eParameters name="error" eType="#//Indicator"/>
     </eOperations>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
     <eOperations name="s" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataAreaFactory" abstract="true" interface="true">
