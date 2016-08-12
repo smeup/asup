@@ -2535,6 +2535,28 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(dataAreaEClass, null, "out", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(dataAreaEClass, this.getCharacter(), "qSubst", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "length", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dataAreaEClass, this.getCharacter(), "qSubst", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dataAreaEClass, this.getCharacter(), "qSubst", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "length", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dataAreaEClass, this.getCharacter(), "qSubst", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dataAreaEClass, this.getCharacter(), "qSubst", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "length", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dataAreaEClass, this.getCharacter(), "qSubst", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "length", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(dataAreaEClass, ecorePackage.getEString(), "s", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataAreaFactoryEClass, QDataAreaFactory.class, "DataAreaFactory", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
