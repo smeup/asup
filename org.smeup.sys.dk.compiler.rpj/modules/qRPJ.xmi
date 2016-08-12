@@ -368,6 +368,17 @@
                 xsi:type="il-data-def:BufferDef"/>
           </delegate>
         </parameters>
+        <parameters>
+          <delegate
+              xsi:type="il-flow:FlowData"
+              constant="true"
+              name="format">
+            <cardinality
+                min="1"/>
+            <definition
+                xsi:type="il-data-def:StringDef"/>
+          </delegate>
+        </parameters>
       </entry>
     </prototypes>
     <prototypes

@@ -398,6 +398,10 @@ public class RPJProgramSupport {
 	}
 
 	public QString qChar(QNumeric numeric) {
+		return qChar(numeric, null);
+	}
+
+	public QString qChar(QNumeric numeric, String format) {
 		return qBox(Long.toString(numeric.asLong()));
 	}
 
