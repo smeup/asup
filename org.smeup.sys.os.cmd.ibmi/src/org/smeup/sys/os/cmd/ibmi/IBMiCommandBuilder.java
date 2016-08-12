@@ -306,7 +306,7 @@ public class IBMiCommandBuilder {
 		QCommandData dataTerm = QOperatingSystemCommandFactory.eINSTANCE.createCommandData();
 
 		// multiple
-		if (cardinality != null) {
+		if (cardinality != null && cardinality.isMultiple()) {
 
 			if (dataDef instanceof QUnaryAtomicBufferedDataDef) {
 				/*
