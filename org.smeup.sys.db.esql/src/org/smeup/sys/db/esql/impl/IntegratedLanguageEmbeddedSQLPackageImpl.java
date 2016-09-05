@@ -484,6 +484,9 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 		op = addEOperation(cursorEClass, null, "first", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getDataStruct(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(cursorEClass, null, "first", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "descriptor", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(cursorEClass, null, "last", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getBufferedData(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -493,6 +496,9 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 		op = addEOperation(cursorEClass, null, "last", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getDataStruct(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(cursorEClass, null, "last", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "descriptor", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(cursorEClass, null, "next", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getBufferedData(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -501,15 +507,12 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 
 		op = addEOperation(cursorEClass, null, "next", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getDataStruct(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cursorEClass, null, "next", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "descriptor", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(cursorEClass, null, "open", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(cursorEClass, null, "openUsingDescriptor", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageDataPackage.getString(), "descriptorName", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cursorEClass, null, "openUsingVariable", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageDataPackage.getString(), "variable", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = addEOperation(cursorEClass, null, "prior", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getBufferedData(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -518,6 +521,13 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 
 		op = addEOperation(cursorEClass, null, "prior", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getDataStruct(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cursorEClass, null, "prior", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "descriptor", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cursorEClass, null, "relative", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getNumeric(), "position", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "descriptor", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(cursorTermEClass, QCursorTerm.class, "CursorTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCursorTerm_CursorType(), this.getCursorType(), "cursorType", null, 0, 1, QCursorTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -535,6 +545,9 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 		initEAttribute(getESqlTerm_Name(), ecorePackage.getEString(), "name", null, 1, 1, QESqlTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(statementEClass, QStatement.class, "Statement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(statementEClass, null, "describe", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "descriptor", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(statementEClass, null, "prepare", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getString(), "sql", 0, 1, IS_UNIQUE, IS_ORDERED);

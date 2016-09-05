@@ -14,7 +14,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage;
 import org.smeup.sys.db.syntax.dbl.QDescribeStatement;
-import org.smeup.sys.db.syntax.dbl.QIntoClause;
+import org.smeup.sys.db.syntax.dbl.QInto;
+import org.smeup.sys.db.syntax.dbl.QUsing;
 import org.smeup.sys.db.syntax.impl.BindingStatementImpl;
 
 /**
@@ -26,6 +27,7 @@ import org.smeup.sys.db.syntax.impl.BindingStatementImpl;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.DescribeStatementImpl#getInto <em>Into</em>}</li>
+ *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.DescribeStatementImpl#getUsing <em>Using</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.DescribeStatementImpl#getStatementName <em>Statement Name</em>}</li>
  * </ul>
  *
@@ -40,7 +42,17 @@ public class DescribeStatementImpl extends BindingStatementImpl implements QDesc
 	 * @generated
 	 * @ordered
 	 */
-	protected QIntoClause into;
+	protected QInto into;
+
+	/**
+	 * The cached value of the '{@link #getUsing() <em>Using</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUsing()
+	 * @generated
+	 * @ordered
+	 */
+	protected QUsing using;
 
 	/**
 	 * The default value of the '{@link #getStatementName() <em>Statement Name</em>}' attribute.
@@ -86,7 +98,7 @@ public class DescribeStatementImpl extends BindingStatementImpl implements QDesc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QIntoClause getInto() {
+	public QInto getInto() {
 		return into;
 	}
 
@@ -95,8 +107,8 @@ public class DescribeStatementImpl extends BindingStatementImpl implements QDesc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetInto(QIntoClause newInto, NotificationChain msgs) {
-		QIntoClause oldInto = into;
+	public NotificationChain basicSetInto(QInto newInto, NotificationChain msgs) {
+		QInto oldInto = into;
 		into = newInto;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__INTO, oldInto, newInto);
@@ -110,7 +122,7 @@ public class DescribeStatementImpl extends BindingStatementImpl implements QDesc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInto(QIntoClause newInto) {
+	public void setInto(QInto newInto) {
 		if (newInto != into) {
 			NotificationChain msgs = null;
 			if (into != null)
@@ -122,6 +134,49 @@ public class DescribeStatementImpl extends BindingStatementImpl implements QDesc
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__INTO, newInto, newInto));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QUsing getUsing() {
+		return using;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetUsing(QUsing newUsing, NotificationChain msgs) {
+		QUsing oldUsing = using;
+		using = newUsing;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__USING, oldUsing, newUsing);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUsing(QUsing newUsing) {
+		if (newUsing != using) {
+			NotificationChain msgs = null;
+			if (using != null)
+				msgs = ((InternalEObject)using).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__USING, null, msgs);
+			if (newUsing != null)
+				msgs = ((InternalEObject)newUsing).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__USING, null, msgs);
+			msgs = basicSetUsing(newUsing, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__USING, newUsing, newUsing));
 	}
 
 	/**
@@ -155,6 +210,8 @@ public class DescribeStatementImpl extends BindingStatementImpl implements QDesc
 		switch (featureID) {
 			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__INTO:
 				return basicSetInto(null, msgs);
+			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__USING:
+				return basicSetUsing(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -169,6 +226,8 @@ public class DescribeStatementImpl extends BindingStatementImpl implements QDesc
 		switch (featureID) {
 			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__INTO:
 				return getInto();
+			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__USING:
+				return getUsing();
 			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__STATEMENT_NAME:
 				return getStatementName();
 		}
@@ -184,7 +243,10 @@ public class DescribeStatementImpl extends BindingStatementImpl implements QDesc
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__INTO:
-				setInto((QIntoClause)newValue);
+				setInto((QInto)newValue);
+				return;
+			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__USING:
+				setUsing((QUsing)newValue);
 				return;
 			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__STATEMENT_NAME:
 				setStatementName((String)newValue);
@@ -202,7 +264,10 @@ public class DescribeStatementImpl extends BindingStatementImpl implements QDesc
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__INTO:
-				setInto((QIntoClause)null);
+				setInto((QInto)null);
+				return;
+			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__USING:
+				setUsing((QUsing)null);
 				return;
 			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__STATEMENT_NAME:
 				setStatementName(STATEMENT_NAME_EDEFAULT);
@@ -221,6 +286,8 @@ public class DescribeStatementImpl extends BindingStatementImpl implements QDesc
 		switch (featureID) {
 			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__INTO:
 				return into != null;
+			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__USING:
+				return using != null;
 			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT__STATEMENT_NAME:
 				return STATEMENT_NAME_EDEFAULT == null ? statementName != null : !STATEMENT_NAME_EDEFAULT.equals(statementName);
 		}

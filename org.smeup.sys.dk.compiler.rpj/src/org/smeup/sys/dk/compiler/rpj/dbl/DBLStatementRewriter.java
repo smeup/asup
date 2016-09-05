@@ -41,7 +41,7 @@ import org.smeup.sys.db.syntax.dbl.QExecuteStatement;
 import org.smeup.sys.db.syntax.dbl.QFetchStatement;
 import org.smeup.sys.db.syntax.dbl.QGetDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QGetDiagnosticsStatement;
-import org.smeup.sys.db.syntax.dbl.QIntoClause;
+import org.smeup.sys.db.syntax.dbl.QInto;
 import org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause;
 import org.smeup.sys.db.syntax.dbl.QOpenStatement;
 import org.smeup.sys.db.syntax.dbl.QOption;
@@ -50,6 +50,7 @@ import org.smeup.sys.db.syntax.dbl.QSetDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QSetOptionStatement;
 import org.smeup.sys.db.syntax.dbl.QSetTransactionStatement;
 import org.smeup.sys.db.syntax.dbl.QSingleRowFetchClause;
+import org.smeup.sys.db.syntax.dbl.QUsing;
 import org.smeup.sys.db.syntax.dml.QExtendedQuerySelect;
 import org.smeup.sys.dk.compiler.rpj.RPJStatementRewriter;
 import org.smeup.sys.il.flow.QCallableUnit;
@@ -88,7 +89,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 		String BEFORE = "before";
 		String AFTER = "after";
 		String CURRENT = "current";
-		String RELATIVE = "realative";
+		String RELATIVE = "relative";
 	}
 
 	/*************** Public static parameters definitions */
@@ -135,6 +136,11 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 		String dblString = statement.getStatement();
 
+
+		if(dblString.startsWith("ALLOCATE"))
+			"".toCharArray();
+
+		
 		if (DatabaseSyntaxHelper.isDBLStatement(dblString)) {
 
 			QStatement rewritedStatement = null;
@@ -165,7 +171,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 	private QStatement manageDBLStametemnt(String dblString) throws SQLException {
 
 		QStatement result = null;
-
+		
 		QBindingParseResult parseBindingResult = bindingParser.parseBinding(dblString);
 
 		if (parseBindingResult != null) {
@@ -211,19 +217,19 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 		return result;
 	}
-	
+
 	private QStatement manageDeclareStatementStatement(QDeclareStatementStatement bindingStatement) {
-				
-		for (String statement: bindingStatement.getStatements()) {
-			
+
+		for (String statement : bindingStatement.getStatements()) {
+
 			if (getStatementTerm(statement) != null) {
 				// Statement already declared (i.e. by prepareStatement)
 				continue;
 			}
-			
+
 			QStatementTerm statementTerm = QIntegratedLanguageEmbeddedSQLFactory.eINSTANCE.createStatementTerm();
 			statementTerm.setName(statement);
-			
+
 			QFileSection fileSection = this.callableUnit.getFileSection();
 			if (fileSection == null) {
 				fileSection = QIntegratedLanguageFlowFactory.eINSTANCE.createFileSection();
@@ -232,8 +238,8 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 			fileSection.getStatements().add(statementTerm);
 		}
-		
-		return null;		
+
+		return null;
 	}
 
 	private QStatement manageDeclareCursorStatement(QDeclareCursorStatement bindingStatement) {
@@ -452,7 +458,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 		// Par 2 and 3
 		if (bindingStatement.getInto() != null) {
 			// Par 2
-			QIntoClause intoClause = bindingStatement.getInto();
+			QInto intoClause = bindingStatement.getInto();
 			methodExec.getParameters().add(intoClause.getDescriptorName());
 
 			// Par 3
@@ -597,56 +603,48 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 	}
 
 	private QStatement manageDescribeStatement(QDescribeStatement bindingStatement) {
-		System.out.println("Manage DESCRIBE");
 
 		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
 
+		methodExec.setObject(bindingStatement.getStatementName());
 		methodExec.setMethod(DESCRIBE_METHOD);
-		methodExec.setObject(null); // TODO: null?
 
-		/*
-		 * PREPARE_METHOD parameter list: 1) Statement name 2) Into variable 3)
-		 * Using
-		 */
+		QUsing using = bindingStatement.getUsing();
+		if(using != null) {
+			methodExec.getParameters().add(using.getDescriptorName());
+		}
+		
+		QInto into = bindingStatement.getInto();
+		if (into != null) {
+			methodExec.getParameters().add(into.getDescriptorName());
 
-		// Par 1
-		methodExec.getParameters().add(bindingStatement.getStatementName());
-
-		// Par 2
-		QIntoClause intoClause = bindingStatement.getInto();
-		methodExec.getParameters().add(intoClause.getDescriptorName());
-
-		// Par 3
-		if (intoClause.getUsing() != null)
-			switch (intoClause.getUsing()) {
-			case ALL:
-				methodExec.getParameters().add(USING.ALL);
-				break;
-			case ANY:
-				methodExec.getParameters().add(USING.ANY);
-				break;
-			case BOTH:
-				methodExec.getParameters().add(USING.BOTH);
-				break;
-			case LABELS:
-				methodExec.getParameters().add(USING.LABELS);
-				break;
-			case NAMES:
-				methodExec.getParameters().add(USING.NAMES);
-				break;
-			case NONE:
+			if (into.getUsing() != null)
+				switch (into.getUsing()) {
+				case ALL:
+					methodExec.getParameters().add(USING.ALL);
+					break;
+				case ANY:
+					methodExec.getParameters().add(USING.ANY);
+					break;
+				case BOTH:
+					methodExec.getParameters().add(USING.BOTH);
+					break;
+				case LABELS:
+					methodExec.getParameters().add(USING.LABELS);
+					break;
+				case NAMES:
+					methodExec.getParameters().add(USING.NAMES);
+					break;
+				case NONE:
+					methodExec.getParameters().add(NONE);
+					break;
+				case SYSTEM_NAMES:
+					methodExec.getParameters().add(USING.SYSTEM_NAMES);
+					break;
+				}
+			else
 				methodExec.getParameters().add(NONE);
-				break;
-			case SYSTEM_NAMES:
-				methodExec.getParameters().add(USING.SYSTEM_NAMES);
-				break;
-			default:
-				methodExec.getParameters().add(NONE);
-				break;
-			}
-		else
-			methodExec.getParameters().add(NONE);
-
+		}
 		return methodExec;
 	}
 

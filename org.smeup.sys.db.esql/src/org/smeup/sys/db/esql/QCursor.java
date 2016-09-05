@@ -9,7 +9,7 @@ package org.smeup.sys.db.esql;
 
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataStruct;
-import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.QNumeric;
 
 /**
  * <!-- begin-user-doc -->
@@ -65,26 +65,18 @@ public interface QCursor extends QESqlObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model descriptorRequired="true"
+	 * @generated
+	 */
+	void next(String descriptor);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
 	void open();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void openUsingDescriptor(QString descriptorName);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void openUsingVariable(QString variable);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,6 +101,22 @@ public interface QCursor extends QESqlObject {
 	 * @generated
 	 */
 	void prior(QDataStruct target);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model descriptorRequired="true"
+	 * @generated
+	 */
+	void prior(String descriptor);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model positionRequired="true" descriptorRequired="true"
+	 * @generated
+	 */
+	void relative(QNumeric position, String descriptor);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,6 +153,14 @@ public interface QCursor extends QESqlObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model descriptorRequired="true"
+	 * @generated
+	 */
+	void first(String descriptor);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model targetRequired="true"
 	 * @generated
 	 */
@@ -165,5 +181,13 @@ public interface QCursor extends QESqlObject {
 	 * @generated
 	 */
 	void last(QDataStruct target);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model descriptorRequired="true"
+	 * @generated
+	 */
+	void last(String descriptor);
 
 } // QCursor

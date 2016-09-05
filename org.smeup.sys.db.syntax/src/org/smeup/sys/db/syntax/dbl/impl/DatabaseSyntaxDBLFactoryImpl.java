@@ -71,15 +71,16 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT: return (EObject)createFetchStatement();
 			case QDatabaseSyntaxDBLPackage.GET_DESCRIPTOR_STATEMENT: return (EObject)createGetDescriptorStatement();
 			case QDatabaseSyntaxDBLPackage.GET_DIAGNOSTICS_STATEMENT: return (EObject)createGetDiagnosticsStatement();
-			case QDatabaseSyntaxDBLPackage.INTO_CLAUSE: return (EObject)createIntoClause();
-			case QDatabaseSyntaxDBLPackage.SINGLE_ROW_FETCH_CLAUSE: return (EObject)createSingleRowFetchClause();
+			case QDatabaseSyntaxDBLPackage.INTO: return (EObject)createInto();
 			case QDatabaseSyntaxDBLPackage.MULTIPLE_ROW_FETCH_CLAUSE: return (EObject)createMultipleRowFetchClause();
-			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT: return (EObject)createSetDescriptorStatement();
-			case QDatabaseSyntaxDBLPackage.SET_TRANSACTION_STATEMENT: return (EObject)createSetTransactionStatement();
-			case QDatabaseSyntaxDBLPackage.SET_OPTION_STATEMENT: return (EObject)createSetOptionStatement();
 			case QDatabaseSyntaxDBLPackage.OPEN_STATEMENT: return (EObject)createOpenStatement();
-			case QDatabaseSyntaxDBLPackage.PREPARE_STATEMENT: return (EObject)createPrepareStatement();
 			case QDatabaseSyntaxDBLPackage.OPTION: return (EObject)createOption();
+			case QDatabaseSyntaxDBLPackage.PREPARE_STATEMENT: return (EObject)createPrepareStatement();
+			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT: return (EObject)createSetDescriptorStatement();
+			case QDatabaseSyntaxDBLPackage.SET_OPTION_STATEMENT: return (EObject)createSetOptionStatement();
+			case QDatabaseSyntaxDBLPackage.SET_TRANSACTION_STATEMENT: return (EObject)createSetTransactionStatement();
+			case QDatabaseSyntaxDBLPackage.SINGLE_ROW_FETCH_CLAUSE: return (EObject)createSingleRowFetchClause();
+			case QDatabaseSyntaxDBLPackage.USING: return (EObject)createUsing();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -101,10 +102,10 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 				return createFetchPositionFromString(eDataType, initialValue);
 			case QDatabaseSyntaxDBLPackage.ISOLATION_LEVEL:
 				return createIsolationLevelFromString(eDataType, initialValue);
-			case QDatabaseSyntaxDBLPackage.RW_OPERATION:
-				return createRWOperationFromString(eDataType, initialValue);
 			case QDatabaseSyntaxDBLPackage.OPEN_USING_TYPE:
 				return createOpenUsingTypeFromString(eDataType, initialValue);
+			case QDatabaseSyntaxDBLPackage.RW_OPERATION:
+				return createRWOperationFromString(eDataType, initialValue);
 			case QDatabaseSyntaxDBLPackage.USING_TYPE:
 				return createUsingTypeFromString(eDataType, initialValue);
 			default:
@@ -128,10 +129,10 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 				return convertFetchPositionToString(eDataType, instanceValue);
 			case QDatabaseSyntaxDBLPackage.ISOLATION_LEVEL:
 				return convertIsolationLevelToString(eDataType, instanceValue);
-			case QDatabaseSyntaxDBLPackage.RW_OPERATION:
-				return convertRWOperationToString(eDataType, instanceValue);
 			case QDatabaseSyntaxDBLPackage.OPEN_USING_TYPE:
 				return convertOpenUsingTypeToString(eDataType, instanceValue);
+			case QDatabaseSyntaxDBLPackage.RW_OPERATION:
+				return convertRWOperationToString(eDataType, instanceValue);
 			case QDatabaseSyntaxDBLPackage.USING_TYPE:
 				return convertUsingTypeToString(eDataType, instanceValue);
 			default:
@@ -244,9 +245,9 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QIntoClause createIntoClause() {
-		IntoClauseImpl intoClause = new IntoClauseImpl();
-		return intoClause;
+	public QInto createInto() {
+		IntoImpl into = new IntoImpl();
+		return into;
 	}
 
 	/**
@@ -257,6 +258,16 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 	public QSingleRowFetchClause createSingleRowFetchClause() {
 		SingleRowFetchClauseImpl singleRowFetchClause = new SingleRowFetchClauseImpl();
 		return singleRowFetchClause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QUsing createUsing() {
+		UsingImpl using = new UsingImpl();
+		return using;
 	}
 
 	/**

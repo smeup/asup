@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage;
-import org.smeup.sys.db.syntax.dbl.QIntoClause;
+import org.smeup.sys.db.syntax.dbl.QInto;
 import org.smeup.sys.db.syntax.dbl.QPrepareStatement;
 import org.smeup.sys.db.syntax.impl.BindingStatementImpl;
 
@@ -61,7 +61,7 @@ public class PrepareStatementImpl extends BindingStatementImpl implements QPrepa
 	 * @generated
 	 * @ordered
 	 */
-	protected QIntoClause into;
+	protected QInto into;
 
 	/**
 	 * The default value of the '{@link #getStatementName() <em>Statement Name</em>}' attribute.
@@ -128,7 +128,7 @@ public class PrepareStatementImpl extends BindingStatementImpl implements QPrepa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QIntoClause getInto() {
+	public QInto getInto() {
 		return into;
 	}
 
@@ -137,8 +137,8 @@ public class PrepareStatementImpl extends BindingStatementImpl implements QPrepa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetInto(QIntoClause newInto, NotificationChain msgs) {
-		QIntoClause oldInto = into;
+	public NotificationChain basicSetInto(QInto newInto, NotificationChain msgs) {
+		QInto oldInto = into;
 		into = newInto;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QDatabaseSyntaxDBLPackage.PREPARE_STATEMENT__INTO, oldInto, newInto);
@@ -152,7 +152,7 @@ public class PrepareStatementImpl extends BindingStatementImpl implements QPrepa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInto(QIntoClause newInto) {
+	public void setInto(QInto newInto) {
 		if (newInto != into) {
 			NotificationChain msgs = null;
 			if (into != null)
@@ -231,7 +231,7 @@ public class PrepareStatementImpl extends BindingStatementImpl implements QPrepa
 				setFrom((String)newValue);
 				return;
 			case QDatabaseSyntaxDBLPackage.PREPARE_STATEMENT__INTO:
-				setInto((QIntoClause)newValue);
+				setInto((QInto)newValue);
 				return;
 			case QDatabaseSyntaxDBLPackage.PREPARE_STATEMENT__STATEMENT_NAME:
 				setStatementName((String)newValue);
@@ -252,7 +252,7 @@ public class PrepareStatementImpl extends BindingStatementImpl implements QPrepa
 				setFrom(FROM_EDEFAULT);
 				return;
 			case QDatabaseSyntaxDBLPackage.PREPARE_STATEMENT__INTO:
-				setInto((QIntoClause)null);
+				setInto((QInto)null);
 				return;
 			case QDatabaseSyntaxDBLPackage.PREPARE_STATEMENT__STATEMENT_NAME:
 				setStatementName(STATEMENT_NAME_EDEFAULT);

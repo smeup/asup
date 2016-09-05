@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage;
-import org.smeup.sys.db.syntax.dbl.QIntoClause;
+import org.smeup.sys.db.syntax.dbl.QInto;
 import org.smeup.sys.db.syntax.dbl.UsingType;
 
 /**
@@ -23,13 +23,13 @@ import org.smeup.sys.db.syntax.dbl.UsingType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.IntoClauseImpl#getDescriptorName <em>Descriptor Name</em>}</li>
- *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.IntoClauseImpl#getUsing <em>Using</em>}</li>
+ *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.IntoImpl#getDescriptorName <em>Descriptor Name</em>}</li>
+ *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.IntoImpl#getUsing <em>Using</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class IntoClauseImpl extends EObjectImpl implements QIntoClause {
+public class IntoImpl extends EObjectImpl implements QInto {
 	/**
 	 * The default value of the '{@link #getDescriptorName() <em>Descriptor Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -75,7 +75,7 @@ public class IntoClauseImpl extends EObjectImpl implements QIntoClause {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected IntoClauseImpl() {
+	protected IntoImpl() {
 		super();
 	}
 
@@ -86,7 +86,7 @@ public class IntoClauseImpl extends EObjectImpl implements QIntoClause {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDatabaseSyntaxDBLPackage.Literals.INTO_CLAUSE;
+		return QDatabaseSyntaxDBLPackage.Literals.INTO;
 	}
 
 	/**
@@ -107,7 +107,7 @@ public class IntoClauseImpl extends EObjectImpl implements QIntoClause {
 		String oldDescriptorName = descriptorName;
 		descriptorName = newDescriptorName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDatabaseSyntaxDBLPackage.INTO_CLAUSE__DESCRIPTOR_NAME, oldDescriptorName, descriptorName));
+			eNotify(new ENotificationImpl(this, Notification.SET, QDatabaseSyntaxDBLPackage.INTO__DESCRIPTOR_NAME, oldDescriptorName, descriptorName));
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class IntoClauseImpl extends EObjectImpl implements QIntoClause {
 		UsingType oldUsing = using;
 		using = newUsing == null ? USING_EDEFAULT : newUsing;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDatabaseSyntaxDBLPackage.INTO_CLAUSE__USING, oldUsing, using));
+			eNotify(new ENotificationImpl(this, Notification.SET, QDatabaseSyntaxDBLPackage.INTO__USING, oldUsing, using));
 	}
 
 	/**
@@ -139,9 +139,9 @@ public class IntoClauseImpl extends EObjectImpl implements QIntoClause {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDatabaseSyntaxDBLPackage.INTO_CLAUSE__DESCRIPTOR_NAME:
+			case QDatabaseSyntaxDBLPackage.INTO__DESCRIPTOR_NAME:
 				return getDescriptorName();
-			case QDatabaseSyntaxDBLPackage.INTO_CLAUSE__USING:
+			case QDatabaseSyntaxDBLPackage.INTO__USING:
 				return getUsing();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -155,10 +155,10 @@ public class IntoClauseImpl extends EObjectImpl implements QIntoClause {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDatabaseSyntaxDBLPackage.INTO_CLAUSE__DESCRIPTOR_NAME:
+			case QDatabaseSyntaxDBLPackage.INTO__DESCRIPTOR_NAME:
 				setDescriptorName((String)newValue);
 				return;
-			case QDatabaseSyntaxDBLPackage.INTO_CLAUSE__USING:
+			case QDatabaseSyntaxDBLPackage.INTO__USING:
 				setUsing((UsingType)newValue);
 				return;
 		}
@@ -173,10 +173,10 @@ public class IntoClauseImpl extends EObjectImpl implements QIntoClause {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDatabaseSyntaxDBLPackage.INTO_CLAUSE__DESCRIPTOR_NAME:
+			case QDatabaseSyntaxDBLPackage.INTO__DESCRIPTOR_NAME:
 				setDescriptorName(DESCRIPTOR_NAME_EDEFAULT);
 				return;
-			case QDatabaseSyntaxDBLPackage.INTO_CLAUSE__USING:
+			case QDatabaseSyntaxDBLPackage.INTO__USING:
 				setUsing(USING_EDEFAULT);
 				return;
 		}
@@ -191,9 +191,9 @@ public class IntoClauseImpl extends EObjectImpl implements QIntoClause {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDatabaseSyntaxDBLPackage.INTO_CLAUSE__DESCRIPTOR_NAME:
+			case QDatabaseSyntaxDBLPackage.INTO__DESCRIPTOR_NAME:
 				return DESCRIPTOR_NAME_EDEFAULT == null ? descriptorName != null : !DESCRIPTOR_NAME_EDEFAULT.equals(descriptorName);
-			case QDatabaseSyntaxDBLPackage.INTO_CLAUSE__USING:
+			case QDatabaseSyntaxDBLPackage.INTO__USING:
 				return using != USING_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

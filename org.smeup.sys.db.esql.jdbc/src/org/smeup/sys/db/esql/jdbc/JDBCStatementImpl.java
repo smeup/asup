@@ -94,4 +94,10 @@ public class JDBCStatementImpl extends JDBCObjectImpl implements QStatement {
 		if(dbStatement != null)
 			dbStatement.close();		
 	}
+
+	@Override
+	public void describe(String descriptor) {
+		// TODO
+		"".toCharArray();
+	}
 }

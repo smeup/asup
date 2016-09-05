@@ -63,12 +63,12 @@ public interface QPrepareStatement extends QBindingStatement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Into</em>' containment reference.
-	 * @see #setInto(QIntoClause)
+	 * @see #setInto(QInto)
 	 * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getPrepareStatement_Into()
 	 * @model containment="true"
 	 * @generated
 	 */
-	QIntoClause getInto();
+	QInto getInto();
 
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.db.syntax.dbl.QPrepareStatement#getInto <em>Into</em>}' containment reference.
@@ -78,7 +78,7 @@ public interface QPrepareStatement extends QBindingStatement {
 	 * @see #getInto()
 	 * @generated
 	 */
-	void setInto(QIntoClause value);
+	void setInto(QInto value);
 
 	/**
 	 * Returns the value of the '<em><b>Statement Name</b></em>' attribute.

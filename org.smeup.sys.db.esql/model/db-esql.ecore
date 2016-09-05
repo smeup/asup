@@ -17,6 +17,9 @@
     <eOperations name="first">
       <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
     </eOperations>
+    <eOperations name="first">
+      <eParameters name="descriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eOperations name="last">
       <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//BufferedData"/>
     </eOperations>
@@ -26,6 +29,9 @@
     <eOperations name="last">
       <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
     </eOperations>
+    <eOperations name="last">
+      <eParameters name="descriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eOperations name="next">
       <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//BufferedData"/>
     </eOperations>
@@ -34,14 +40,11 @@
     </eOperations>
     <eOperations name="next">
       <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
+    </eOperations>
+    <eOperations name="next">
+      <eParameters name="descriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="open"/>
-    <eOperations name="openUsingDescriptor">
-      <eParameters name="descriptorName" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//String"/>
-    </eOperations>
-    <eOperations name="openUsingVariable">
-      <eParameters name="variable" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//String"/>
-    </eOperations>
     <eOperations name="prior">
       <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//BufferedData"/>
     </eOperations>
@@ -50,6 +53,13 @@
     </eOperations>
     <eOperations name="prior">
       <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
+    </eOperations>
+    <eOperations name="prior">
+      <eParameters name="descriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="relative">
+      <eParameters name="position" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Numeric"/>
+      <eParameters name="descriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="CursorRecord" instanceClassName="org.smeup.sys.il.data.QBufferedData[]"/>
@@ -74,6 +84,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Statement" abstract="true" interface="true"
       eSuperTypes="#//ESqlObject ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable">
+    <eOperations name="describe">
+      <eParameters name="descriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eOperations name="prepare">
       <eParameters name="sql" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//String"/>
     </eOperations>

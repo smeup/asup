@@ -19,6 +19,7 @@ import org.smeup.sys.db.syntax.QBindingStatement;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QDescribeStatement#getInto <em>Into</em>}</li>
+ *   <li>{@link org.smeup.sys.db.syntax.dbl.QDescribeStatement#getUsing <em>Using</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QDescribeStatement#getStatementName <em>Statement Name</em>}</li>
  * </ul>
  *
@@ -36,12 +37,12 @@ public interface QDescribeStatement extends QBindingStatement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Into</em>' containment reference.
-	 * @see #setInto(QIntoClause)
+	 * @see #setInto(QInto)
 	 * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getDescribeStatement_Into()
 	 * @model containment="true"
 	 * @generated
 	 */
-	QIntoClause getInto();
+	QInto getInto();
 
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.db.syntax.dbl.QDescribeStatement#getInto <em>Into</em>}' containment reference.
@@ -51,7 +52,33 @@ public interface QDescribeStatement extends QBindingStatement {
 	 * @see #getInto()
 	 * @generated
 	 */
-	void setInto(QIntoClause value);
+	void setInto(QInto value);
+
+	/**
+	 * Returns the value of the '<em><b>Using</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Using</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Using</em>' containment reference.
+	 * @see #setUsing(QUsing)
+	 * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getDescribeStatement_Using()
+	 * @model containment="true"
+	 * @generated
+	 */
+	QUsing getUsing();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.db.syntax.dbl.QDescribeStatement#getUsing <em>Using</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Using</em>' containment reference.
+	 * @see #getUsing()
+	 * @generated
+	 */
+	void setUsing(QUsing value);
 
 	/**
 	 * Returns the value of the '<em><b>Statement Name</b></em>' attribute.

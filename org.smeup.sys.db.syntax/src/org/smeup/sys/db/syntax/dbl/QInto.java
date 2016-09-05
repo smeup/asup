@@ -17,15 +17,15 @@ package org.smeup.sys.db.syntax.dbl;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.db.syntax.dbl.QIntoClause#getDescriptorName <em>Descriptor Name</em>}</li>
- *   <li>{@link org.smeup.sys.db.syntax.dbl.QIntoClause#getUsing <em>Using</em>}</li>
+ *   <li>{@link org.smeup.sys.db.syntax.dbl.QInto#getDescriptorName <em>Descriptor Name</em>}</li>
+ *   <li>{@link org.smeup.sys.db.syntax.dbl.QInto#getUsing <em>Using</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getIntoClause()
+ * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getInto()
  * @model
  * @generated
  */
-public interface QIntoClause {
+public interface QInto {
 	/**
 	 * Returns the value of the '<em><b>Descriptor Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -36,14 +36,14 @@ public interface QIntoClause {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Descriptor Name</em>' attribute.
 	 * @see #setDescriptorName(String)
-	 * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getIntoClause_DescriptorName()
+	 * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getInto_DescriptorName()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getDescriptorName();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.db.syntax.dbl.QIntoClause#getDescriptorName <em>Descriptor Name</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.db.syntax.dbl.QInto#getDescriptorName <em>Descriptor Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Descriptor Name</em>' attribute.
@@ -64,14 +64,14 @@ public interface QIntoClause {
 	 * @return the value of the '<em>Using</em>' attribute.
 	 * @see org.smeup.sys.db.syntax.dbl.UsingType
 	 * @see #setUsing(UsingType)
-	 * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getIntoClause_Using()
+	 * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getInto_Using()
 	 * @model
 	 * @generated
 	 */
 	UsingType getUsing();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.db.syntax.dbl.QIntoClause#getUsing <em>Using</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.db.syntax.dbl.QInto#getUsing <em>Using</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Using</em>' attribute.

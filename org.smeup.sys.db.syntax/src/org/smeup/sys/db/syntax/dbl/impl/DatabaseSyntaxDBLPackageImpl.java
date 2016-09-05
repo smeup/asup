@@ -36,7 +36,7 @@ import org.smeup.sys.db.syntax.dbl.QExecuteStatement;
 import org.smeup.sys.db.syntax.dbl.QFetchStatement;
 import org.smeup.sys.db.syntax.dbl.QGetDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QGetDiagnosticsStatement;
-import org.smeup.sys.db.syntax.dbl.QIntoClause;
+import org.smeup.sys.db.syntax.dbl.QInto;
 import org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause;
 import org.smeup.sys.db.syntax.dbl.QOpenStatement;
 import org.smeup.sys.db.syntax.dbl.QOption;
@@ -45,6 +45,7 @@ import org.smeup.sys.db.syntax.dbl.QSetDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QSetOptionStatement;
 import org.smeup.sys.db.syntax.dbl.QSetTransactionStatement;
 import org.smeup.sys.db.syntax.dbl.QSingleRowFetchClause;
+import org.smeup.sys.db.syntax.dbl.QUsing;
 import org.smeup.sys.db.syntax.dbl.RWOperation;
 import org.smeup.sys.db.syntax.dbl.UsingType;
 import org.smeup.sys.db.syntax.ddl.QDatabaseSyntaxDDLPackage;
@@ -135,7 +136,7 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass intoClauseEClass = null;
+	private EClass intoEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -143,6 +144,13 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 * @generated
 	 */
 	private EClass singleRowFetchClauseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass usingEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -490,8 +498,17 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getDescribeStatement_Using() {
+		return (EReference)describeStatementEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getDescribeStatement_StatementName() {
-		return (EAttribute)describeStatementEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)describeStatementEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -670,8 +687,8 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getIntoClause() {
-		return intoClauseEClass;
+	public EClass getInto() {
+		return intoEClass;
 	}
 
 	/**
@@ -679,8 +696,8 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getIntoClause_DescriptorName() {
-		return (EAttribute)intoClauseEClass.getEStructuralFeatures().get(0);
+	public EAttribute getInto_DescriptorName() {
+		return (EAttribute)intoEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -688,8 +705,8 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getIntoClause_Using() {
-		return (EAttribute)intoClauseEClass.getEStructuralFeatures().get(1);
+	public EAttribute getInto_Using() {
+		return (EAttribute)intoEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -717,6 +734,24 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 */
 	public EAttribute getSingleRowFetchClause_UsingDescriptor() {
 		return (EAttribute)singleRowFetchClauseEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getUsing() {
+		return usingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUsing_DescriptorName() {
+		return (EAttribute)usingEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1108,6 +1143,7 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 
 		describeStatementEClass = createEClass(DESCRIBE_STATEMENT);
 		createEReference(describeStatementEClass, DESCRIBE_STATEMENT__INTO);
+		createEReference(describeStatementEClass, DESCRIBE_STATEMENT__USING);
 		createEAttribute(describeStatementEClass, DESCRIBE_STATEMENT__STATEMENT_NAME);
 
 		executeImmediateStatementEClass = createEClass(EXECUTE_IMMEDIATE_STATEMENT);
@@ -1134,13 +1170,9 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		getDiagnosticsStatementEClass = createEClass(GET_DIAGNOSTICS_STATEMENT);
 		createEReference(getDiagnosticsStatementEClass, GET_DIAGNOSTICS_STATEMENT__CONDITION_INFO);
 
-		intoClauseEClass = createEClass(INTO_CLAUSE);
-		createEAttribute(intoClauseEClass, INTO_CLAUSE__DESCRIPTOR_NAME);
-		createEAttribute(intoClauseEClass, INTO_CLAUSE__USING);
-
-		singleRowFetchClauseEClass = createEClass(SINGLE_ROW_FETCH_CLAUSE);
-		createEAttribute(singleRowFetchClauseEClass, SINGLE_ROW_FETCH_CLAUSE__INTO);
-		createEAttribute(singleRowFetchClauseEClass, SINGLE_ROW_FETCH_CLAUSE__USING_DESCRIPTOR);
+		intoEClass = createEClass(INTO);
+		createEAttribute(intoEClass, INTO__DESCRIPTOR_NAME);
+		createEAttribute(intoEClass, INTO__USING);
 
 		multipleRowFetchClauseEClass = createEClass(MULTIPLE_ROW_FETCH_CLAUSE);
 		createEAttribute(multipleRowFetchClauseEClass, MULTIPLE_ROW_FETCH_CLAUSE__INTO);
@@ -1148,39 +1180,46 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		createEAttribute(multipleRowFetchClauseEClass, MULTIPLE_ROW_FETCH_CLAUSE__USING_DESCRIPTOR);
 		createEAttribute(multipleRowFetchClauseEClass, MULTIPLE_ROW_FETCH_CLAUSE__DESCRIPTOR);
 
-		setDescriptorStatementEClass = createEClass(SET_DESCRIPTOR_STATEMENT);
-		createEAttribute(setDescriptorStatementEClass, SET_DESCRIPTOR_STATEMENT__DESCRIPTOR_NAME);
-		createEAttribute(setDescriptorStatementEClass, SET_DESCRIPTOR_STATEMENT__VALUE);
-		createEReference(setDescriptorStatementEClass, SET_DESCRIPTOR_STATEMENT__ITEMS);
-
-		setTransactionStatementEClass = createEClass(SET_TRANSACTION_STATEMENT);
-		createEAttribute(setTransactionStatementEClass, SET_TRANSACTION_STATEMENT__ISOLATION_LEVEL);
-		createEAttribute(setTransactionStatementEClass, SET_TRANSACTION_STATEMENT__RW_OPERATION);
-
-		setOptionStatementEClass = createEClass(SET_OPTION_STATEMENT);
-		createEReference(setOptionStatementEClass, SET_OPTION_STATEMENT__OPTIONS);
-
 		openStatementEClass = createEClass(OPEN_STATEMENT);
 		createEAttribute(openStatementEClass, OPEN_STATEMENT__CURSOR);
 		createEAttribute(openStatementEClass, OPEN_STATEMENT__USING);
 		createEAttribute(openStatementEClass, OPEN_STATEMENT__USING_TYPE);
+
+		optionEClass = createEClass(OPTION);
+		createEAttribute(optionEClass, OPTION__NAME);
+		createEAttribute(optionEClass, OPTION__VALUE);
 
 		prepareStatementEClass = createEClass(PREPARE_STATEMENT);
 		createEAttribute(prepareStatementEClass, PREPARE_STATEMENT__FROM);
 		createEReference(prepareStatementEClass, PREPARE_STATEMENT__INTO);
 		createEAttribute(prepareStatementEClass, PREPARE_STATEMENT__STATEMENT_NAME);
 
-		optionEClass = createEClass(OPTION);
-		createEAttribute(optionEClass, OPTION__NAME);
-		createEAttribute(optionEClass, OPTION__VALUE);
+		setDescriptorStatementEClass = createEClass(SET_DESCRIPTOR_STATEMENT);
+		createEAttribute(setDescriptorStatementEClass, SET_DESCRIPTOR_STATEMENT__DESCRIPTOR_NAME);
+		createEAttribute(setDescriptorStatementEClass, SET_DESCRIPTOR_STATEMENT__VALUE);
+		createEReference(setDescriptorStatementEClass, SET_DESCRIPTOR_STATEMENT__ITEMS);
+
+		setOptionStatementEClass = createEClass(SET_OPTION_STATEMENT);
+		createEReference(setOptionStatementEClass, SET_OPTION_STATEMENT__OPTIONS);
+
+		setTransactionStatementEClass = createEClass(SET_TRANSACTION_STATEMENT);
+		createEAttribute(setTransactionStatementEClass, SET_TRANSACTION_STATEMENT__ISOLATION_LEVEL);
+		createEAttribute(setTransactionStatementEClass, SET_TRANSACTION_STATEMENT__RW_OPERATION);
+
+		singleRowFetchClauseEClass = createEClass(SINGLE_ROW_FETCH_CLAUSE);
+		createEAttribute(singleRowFetchClauseEClass, SINGLE_ROW_FETCH_CLAUSE__INTO);
+		createEAttribute(singleRowFetchClauseEClass, SINGLE_ROW_FETCH_CLAUSE__USING_DESCRIPTOR);
+
+		usingEClass = createEClass(USING);
+		createEAttribute(usingEClass, USING__DESCRIPTOR_NAME);
 
 		// Create enums
 		cursorTypeEEnum = createEEnum(CURSOR_TYPE);
 		descriptorScopeEEnum = createEEnum(DESCRIPTOR_SCOPE);
 		fetchPositionEEnum = createEEnum(FETCH_POSITION);
 		isolationLevelEEnum = createEEnum(ISOLATION_LEVEL);
-		rwOperationEEnum = createEEnum(RW_OPERATION);
 		openUsingTypeEEnum = createEEnum(OPEN_USING_TYPE);
+		rwOperationEEnum = createEEnum(RW_OPERATION);
 		usingTypeEEnum = createEEnum(USING_TYPE);
 	}
 
@@ -1227,11 +1266,11 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		fetchStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 		getDescriptorStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 		getDiagnosticsStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
-		setDescriptorStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
-		setTransactionStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
-		setOptionStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 		openStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 		prepareStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
+		setDescriptorStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
+		setOptionStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
+		setTransactionStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(allocateDescriptorStatementEClass, QAllocateDescriptorStatement.class, "AllocateDescriptorStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1261,7 +1300,8 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		initEAttribute(getDeclareStatementStatement_Statements(), theEcorePackage.getEString(), "statements", null, 0, -1, QDeclareStatementStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(describeStatementEClass, QDescribeStatement.class, "DescribeStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDescribeStatement_Into(), this.getIntoClause(), null, "into", null, 0, 1, QDescribeStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDescribeStatement_Into(), this.getInto(), null, "into", null, 0, 1, QDescribeStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDescribeStatement_Using(), this.getUsing(), null, "using", null, 0, 1, QDescribeStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDescribeStatement_StatementName(), theEcorePackage.getEString(), "statementName", null, 0, 1, QDescribeStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(executeImmediateStatementEClass, QExecuteImmediateStatement.class, "ExecuteImmediateStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1288,13 +1328,9 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		initEClass(getDiagnosticsStatementEClass, QGetDiagnosticsStatement.class, "GetDiagnosticsStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGetDiagnosticsStatement_ConditionInfo(), this.getConditionInfoClause(), null, "conditionInfo", null, 0, 1, QGetDiagnosticsStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(intoClauseEClass, QIntoClause.class, "IntoClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIntoClause_DescriptorName(), theEcorePackage.getEString(), "descriptorName", null, 1, 1, QIntoClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIntoClause_Using(), this.getUsingType(), "using", null, 0, 1, QIntoClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(singleRowFetchClauseEClass, QSingleRowFetchClause.class, "SingleRowFetchClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSingleRowFetchClause_Into(), theEcorePackage.getEString(), "into", null, 1, -1, QSingleRowFetchClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSingleRowFetchClause_UsingDescriptor(), theEcorePackage.getEBoolean(), "usingDescriptor", "false", 0, 1, QSingleRowFetchClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(intoEClass, QInto.class, "Into", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getInto_DescriptorName(), theEcorePackage.getEString(), "descriptorName", null, 1, 1, QInto.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInto_Using(), this.getUsingType(), "using", null, 0, 1, QInto.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(multipleRowFetchClauseEClass, QMultipleRowFetchClause.class, "MultipleRowFetchClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMultipleRowFetchClause_Into(), theEcorePackage.getEString(), "into", null, 0, 1, QMultipleRowFetchClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1302,31 +1338,38 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		initEAttribute(getMultipleRowFetchClause_UsingDescriptor(), theEcorePackage.getEBoolean(), "usingDescriptor", "false", 0, 1, QMultipleRowFetchClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMultipleRowFetchClause_Descriptor(), theEcorePackage.getEString(), "descriptor", null, 0, 1, QMultipleRowFetchClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(setDescriptorStatementEClass, QSetDescriptorStatement.class, "SetDescriptorStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSetDescriptorStatement_DescriptorName(), theEcorePackage.getEString(), "descriptorName", null, 1, 1, QSetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSetDescriptorStatement_Value(), theEcorePackage.getEString(), "value", null, 0, 1, QSetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSetDescriptorStatement_Items(), this.getOption(), null, "items", null, 0, -1, QSetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(setTransactionStatementEClass, QSetTransactionStatement.class, "SetTransactionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSetTransactionStatement_IsolationLevel(), this.getIsolationLevel(), "isolationLevel", null, 0, 1, QSetTransactionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSetTransactionStatement_RwOperation(), this.getRWOperation(), "rwOperation", null, 0, 1, QSetTransactionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(setOptionStatementEClass, QSetOptionStatement.class, "SetOptionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSetOptionStatement_Options(), this.getOption(), null, "options", null, 0, -1, QSetOptionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(openStatementEClass, QOpenStatement.class, "OpenStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOpenStatement_Cursor(), theEcorePackage.getEString(), "cursor", null, 0, 1, QOpenStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOpenStatement_Using(), theEcorePackage.getEString(), "using", null, 0, -1, QOpenStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOpenStatement_UsingType(), this.getOpenUsingType(), "usingType", null, 0, 1, QOpenStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(prepareStatementEClass, QPrepareStatement.class, "PrepareStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPrepareStatement_From(), theEcorePackage.getEString(), "from", null, 1, 1, QPrepareStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPrepareStatement_Into(), this.getIntoClause(), null, "into", null, 0, 1, QPrepareStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPrepareStatement_StatementName(), theEcorePackage.getEString(), "statementName", null, 0, 1, QPrepareStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(optionEClass, QOption.class, "Option", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOption_Name(), theEcorePackage.getEString(), "name", null, 0, 1, QOption.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOption_Value(), theEcorePackage.getEString(), "value", null, 0, 1, QOption.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(prepareStatementEClass, QPrepareStatement.class, "PrepareStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPrepareStatement_From(), theEcorePackage.getEString(), "from", null, 1, 1, QPrepareStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPrepareStatement_Into(), this.getInto(), null, "into", null, 0, 1, QPrepareStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPrepareStatement_StatementName(), theEcorePackage.getEString(), "statementName", null, 0, 1, QPrepareStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(setDescriptorStatementEClass, QSetDescriptorStatement.class, "SetDescriptorStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSetDescriptorStatement_DescriptorName(), theEcorePackage.getEString(), "descriptorName", null, 1, 1, QSetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSetDescriptorStatement_Value(), theEcorePackage.getEString(), "value", null, 0, 1, QSetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSetDescriptorStatement_Items(), this.getOption(), null, "items", null, 0, -1, QSetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(setOptionStatementEClass, QSetOptionStatement.class, "SetOptionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSetOptionStatement_Options(), this.getOption(), null, "options", null, 0, -1, QSetOptionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(setTransactionStatementEClass, QSetTransactionStatement.class, "SetTransactionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSetTransactionStatement_IsolationLevel(), this.getIsolationLevel(), "isolationLevel", null, 0, 1, QSetTransactionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSetTransactionStatement_RwOperation(), this.getRWOperation(), "rwOperation", null, 0, 1, QSetTransactionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(singleRowFetchClauseEClass, QSingleRowFetchClause.class, "SingleRowFetchClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSingleRowFetchClause_Into(), theEcorePackage.getEString(), "into", null, 1, -1, QSingleRowFetchClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSingleRowFetchClause_UsingDescriptor(), theEcorePackage.getEBoolean(), "usingDescriptor", "false", 0, 1, QSingleRowFetchClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(usingEClass, QUsing.class, "Using", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getUsing_DescriptorName(), theEcorePackage.getEString(), "descriptorName", null, 1, 1, QUsing.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(cursorTypeEEnum, CursorType.class, "CursorType");
@@ -1357,14 +1400,14 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		addEEnumLiteral(isolationLevelEEnum, IsolationLevel.READ_COMMITTED);
 		addEEnumLiteral(isolationLevelEEnum, IsolationLevel.REPEATABLE_READ);
 
-		initEEnum(rwOperationEEnum, RWOperation.class, "RWOperation");
-		addEEnumLiteral(rwOperationEEnum, RWOperation.READ_ONLY);
-		addEEnumLiteral(rwOperationEEnum, RWOperation.READ_WRITE);
-
 		initEEnum(openUsingTypeEEnum, OpenUsingType.class, "OpenUsingType");
 		addEEnumLiteral(openUsingTypeEEnum, OpenUsingType.NONE);
 		addEEnumLiteral(openUsingTypeEEnum, OpenUsingType.DESCRIPTOR);
 		addEEnumLiteral(openUsingTypeEEnum, OpenUsingType.VARIABLE);
+
+		initEEnum(rwOperationEEnum, RWOperation.class, "RWOperation");
+		addEEnumLiteral(rwOperationEEnum, RWOperation.READ_ONLY);
+		addEEnumLiteral(rwOperationEEnum, RWOperation.READ_WRITE);
 
 		initEEnum(usingTypeEEnum, UsingType.class, "UsingType");
 		addEEnumLiteral(usingTypeEEnum, UsingType.NONE);

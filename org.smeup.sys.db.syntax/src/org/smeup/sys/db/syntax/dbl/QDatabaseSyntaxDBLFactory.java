@@ -117,13 +117,13 @@ public interface QDatabaseSyntaxDBLFactory extends EFactory {
 	QGetDiagnosticsStatement createGetDiagnosticsStatement();
 
 	/**
-	 * Returns a new object of class '<em>Into Clause</em>'.
+	 * Returns a new object of class '<em>Into</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Into Clause</em>'.
+	 * @return a new object of class '<em>Into</em>'.
 	 * @generated
 	 */
-	QIntoClause createIntoClause();
+	QInto createInto();
 
 	/**
 	 * Returns a new object of class '<em>Single Row Fetch Clause</em>'.
@@ -133,6 +133,15 @@ public interface QDatabaseSyntaxDBLFactory extends EFactory {
 	 * @generated
 	 */
 	QSingleRowFetchClause createSingleRowFetchClause();
+
+	/**
+	 * Returns a new object of class '<em>Using</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Using</em>'.
+	 * @generated
+	 */
+	QUsing createUsing();
 
 	/**
 	 * Returns a new object of class '<em>Multiple Row Fetch Clause</em>'.

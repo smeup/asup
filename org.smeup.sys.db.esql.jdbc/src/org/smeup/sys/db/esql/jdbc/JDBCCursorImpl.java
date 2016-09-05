@@ -22,7 +22,7 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
-import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.jdbc.JDBCCommunicationAreaImpl;
 
 public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
@@ -110,19 +110,12 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 		}		
 
 	}
+	@Override
+	public void next(String descriptor) {
+		// TODO Auto-generated method stub
 		
-	@Override
-	public void openUsingDescriptor(QString descriptorName) {
-		// TODO Auto-generated method stub
-		"".toCharArray();
 	}
-
-	@Override
-	public void openUsingVariable(QString variable) {
-		// TODO Auto-generated method stub
-		"".toCharArray();
-	}
-
+		
 	@Override
 	public void prior(QBufferedData target) {
 		// TODO Auto-generated method stub
@@ -139,6 +132,12 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 	public void prior(QDataStruct target) {
 		// TODO Auto-generated method stub
 		"".toCharArray();		
+	}
+
+	@Override
+	public void prior(String descriptor) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -160,6 +159,12 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 	}
 
 	@Override
+	public void first(String descriptor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public void last(QBufferedData target) {
 		// TODO Auto-generated method stub
 		"".toCharArray();
@@ -175,6 +180,18 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 	public void last(QDataStruct target) {
 		// TODO Auto-generated method stub
 		"".toCharArray();		
+	}
+
+	@Override
+	public void last(String descriptor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void relative(QNumeric position, String descriptor) {
+		// TODO Auto-generated method stub
+		"".toCharArray();
 	}
 
 	protected ResultSet getResultSet() {
