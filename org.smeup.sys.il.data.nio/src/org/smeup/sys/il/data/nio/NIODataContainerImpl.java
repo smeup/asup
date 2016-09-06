@@ -27,6 +27,7 @@ import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
 import org.smeup.sys.il.core.term.QNode;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
+import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QCharacter;
@@ -263,6 +264,11 @@ public final class NIODataContainerImpl extends ObjectImpl implements QDataConta
 
 		datas.put(getKey(dataTerm), data);
 
+		// TODO verify me
+		if (data instanceof QAdapter) {
+			return data;
+		}
+		
 		if (data instanceof QBufferedData) {
 			final QBufferedData bufferedData = (QBufferedData) data;
 			if (bufferedData.isStoreOwner())
