@@ -11,7 +11,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataAreaManager" abstract="true" interface="true">
     <eOperations name="getLocalDataArea" lowerBound="1" eType="#//DataArea">
-      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DataAreaType">

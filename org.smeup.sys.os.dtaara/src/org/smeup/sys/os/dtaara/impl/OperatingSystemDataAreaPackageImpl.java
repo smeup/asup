@@ -253,7 +253,7 @@ public class OperatingSystemDataAreaPackageImpl extends EPackageImpl implements 
 		initEClass(dataAreaManagerEClass, QDataAreaManager.class, "DataAreaManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		EOperation op = addEOperation(dataAreaManagerEClass, this.getDataArea(), "getLocalDataArea", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(dataAreaTypeEEnum, DataAreaType.class, "DataAreaType");

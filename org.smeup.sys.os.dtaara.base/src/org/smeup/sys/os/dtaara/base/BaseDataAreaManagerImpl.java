@@ -12,6 +12,7 @@
 package org.smeup.sys.os.dtaara.base;
 
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.os.dtaara.DataAreaType;
 import org.smeup.sys.os.dtaara.QDataArea;
 import org.smeup.sys.os.dtaara.QDataAreaManager;
@@ -19,8 +20,12 @@ import org.smeup.sys.os.dtaara.QOperatingSystemDataAreaFactory;
 
 public class BaseDataAreaManagerImpl implements QDataAreaManager {
 
+	@SuppressWarnings("resource")
 	@Override
-	public QDataArea getLocalDataArea(QContext context) {
+	public QDataArea getLocalDataArea(QContextProvider contextProvider) {
+
+		QContext context = contextProvider.getContext();
+		
 		QDataArea localDataArea = context.get(QDataArea.class);
 		if (localDataArea == null) {
 			synchronized (context) {

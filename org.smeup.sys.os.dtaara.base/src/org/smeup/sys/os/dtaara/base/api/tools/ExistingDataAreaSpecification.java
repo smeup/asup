@@ -44,7 +44,7 @@ public class ExistingDataAreaSpecification extends QDataStructWrapper {
 	public QDataArea findDataArea(QJob job, QResourceManager resourceManager, QDataAreaManager dataAreaManager, DATAAREAEnum dataAreaType) throws DataAreaNotFoundException, LibraryNotFoundException {
 		switch (dataAreaType) {
 		case LDA:
-			return dataAreaManager.getLocalDataArea(job.getContext());
+			return dataAreaManager.getLocalDataArea(job);
 		case OTHER:
 			String dataAreaName = name.trimR();
 			String libraryName = library.asData().trimR();

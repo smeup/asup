@@ -55,7 +55,7 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 		
 		if (externalName.equalsIgnoreCase("*LDA")) {
 			QDataAreaManager dataAreaManager = getDataContext().getContext().get(QDataAreaManager.class);
-			currentDataArea = dataAreaManager.getLocalDataArea(getDataContext().getContext());
+			currentDataArea = dataAreaManager.getLocalDataArea(getDataContext());
 		} else {
 			QResourceManager resourceManager = getDataContext().getContext().get(QResourceManager.class);
 			QResourceReader<org.smeup.sys.os.dtaara.QDataArea> dataAreaReader = resourceManager.getResourceReader(getDataContext(), org.smeup.sys.os.dtaara.QDataArea.class, Scope.LIBRARY_LIST);

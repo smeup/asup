@@ -35,6 +35,9 @@ import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
+import org.smeup.sys.os.core.jobs.QJobManager;
+import org.smeup.sys.os.dtaara.QDataArea;
+import org.smeup.sys.os.dtaara.QDataAreaManager;
 import org.smeup.sys.os.pgm.QProgramCallable;
 import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.os.usrprf.QUserProfile;
@@ -45,6 +48,8 @@ public class JobSubmitter {
 	@Inject
 	private QJob job;
 	@Inject
+	private QJobManager jobManager;
+	@Inject
 	private QJobLogManager jobLogManager;
 	@Inject
 	private QCommandManager commandManager;
@@ -52,6 +57,8 @@ public class JobSubmitter {
 	private QProgramManager programManager;
 	@Inject
 	private QResourceManager resourceManager;
+	@Inject
+	private QDataAreaManager dataAreaManager;
 
 	@Main
 	public void main(@ToDo @DataDef(length = 20000) QCharacter commandToRun, @ToDo @DataDef(length = 10) QEnum<JobNameEnum, QCharacter> jobName,
@@ -124,6 +131,15 @@ public class JobSubmitter {
 		// Job spawn
 		QJobCapability jobCapability = commandManager.submitCommand(job, caller, commandToRun.toString(), jobNameString, hold, copyEnvironmentVariablesBoolean);   
 
+		// TODO scalability
+		QJob submittedJob = jobManager.lookup(jobCapability);
+
+		// copy localDataArea
+		if(copyEnvironmentVariablesBoolean) {
+			QDataArea localDataArea = dataAreaManager.getLocalDataArea(job);
+			dataAreaManager.getLocalDataArea(submittedJob).setContent(localDataArea.getContent());
+		}
+		
 		// add message to queue
 		job.getMessages().add(new DecimalFormat("000000").format(jobCapability.getJobReference().getJobNumber()));
 
