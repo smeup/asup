@@ -134,8 +134,8 @@ public class RPJProgramInjector {
 
 			P delegate = prepareDelegate(dataContainer, program, klass);
 
-			if (delegate instanceof Serializable)
-				serializeProgramDelegate(delegate);
+//			if (delegate instanceof Serializable)
+//				serializeProgramDelegate(delegate);
 
 			// memory info
 			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();
