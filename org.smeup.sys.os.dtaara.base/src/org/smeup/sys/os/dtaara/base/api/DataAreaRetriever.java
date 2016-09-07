@@ -29,11 +29,11 @@ import org.smeup.sys.os.dtaara.base.api.tools.ExistingDataAreaSpecification.Libr
 
 @Program(name = "QCLRTVDA")
 public @ToDo class DataAreaRetriever {
+	
 	public static enum QCPFMSG {
-		CPF1015, // Non è stata trovata l'area dati &1 in &2.
-		CPF1021, // Non è stata trovata la libreria &1 per l'area dati &2.
-		CPF9899, // Si è verificato un errore durante l'elaborazione del
-					// comando.
+		CPF1015,
+		CPF1021,
+		CPF9899
 	}
 
 	@Inject

@@ -293,6 +293,10 @@ public abstract class NIOBufferedElementDelegatorImpl extends NIODataImpl implem
 
 	@Override
 	public final boolean isStoreOwner() {
+
+		if (_delegate == null)
+			return false;
+		
 		return _delegate.isStoreOwner();
 	}
 
