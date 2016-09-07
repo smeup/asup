@@ -53,6 +53,7 @@ import org.smeup.sys.db.syntax.dbl.QSingleRowFetchClause;
 import org.smeup.sys.db.syntax.dbl.QUsing;
 import org.smeup.sys.db.syntax.dml.QExtendedQuerySelect;
 import org.smeup.sys.dk.compiler.rpj.RPJStatementRewriter;
+import org.smeup.sys.il.flow.QBlock;
 import org.smeup.sys.il.flow.QCallableUnit;
 import org.smeup.sys.il.flow.QFileSection;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
@@ -61,16 +62,23 @@ import org.smeup.sys.il.flow.QSQLExec;
 import org.smeup.sys.il.flow.QStatement;
 
 public class DBLStatementRewriter extends RPJStatementRewriter {
-
-	public static final String GET_DESCRIPTOR_METHOD = "getDescriptor";
-	public static final String ALLOCATE_DESCRIPTOR_METHOD = "allocateDescriptor";
+	
+	// Method object
+	private static final String QSQL = "*SQL";
+	
+	// Methods list
+	public static final String GET_DESCRIPTOR_METHOD = "%getDescriptor";
+	public static final String ALLOCATE_DESCRIPTOR_METHOD = "%allocateDescriptor";	
 	public static final String CLOSE_METHOD = "close";
 	public static final String OPEN_METHOD = "open";
-	public static final String SET_TRANSACTION_METHOD = "setTransaction";
-	public static final String DESCRIBE_METHOD = "describe";
+	public static final String SET_TRANSACTION_METHOD = "%setTransaction";
 	public static final String EXECUTE_IMMEDIATE_METHOD = "%execute";
 	public static final String SELECT_METHOD = "%select";
-	public static final String SET_OPTION_METHOD = "setOption";
+	public static final String SET_OPTION_METHOD = "%setOption";
+	public static final String SET_DESCRIPTOR_METHOD = "%setDescriptor";
+	public static final String GET_DIAGNOSTIC_METHOD = "%getDiagnostic";
+	public static final String DEALLOCATE_DESCRIPTOR_METHOD = "%deallocateDescriptor";
+	
 
 	private QCallableUnit callableUnit;
 	private QBindingParser bindingParser;
@@ -79,6 +87,8 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 	public static interface STATEMENT_METHOD {
 		String PREPARE = "prepare";
 		String EXECUTE = "execute";
+		String DESCRIBE_USING = "describeUsing";
+		String DESCRIBE_INTO = "describeInto";
 	}
 
 	public static interface CURSOR_METHOD {
@@ -277,6 +287,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 	private QStatement manageOpenStatement(QOpenStatement bindingStatement) {
 
 		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+
 		methodExec.setObject(bindingStatement.getCursor());
 		methodExec.setMethod(OPEN_METHOD);
 
@@ -286,18 +297,23 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 	private QStatement manageCloseStatement(QCloseStatement bindingStatement) {
 
 		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+		
 		methodExec.setObject(bindingStatement.getCursor());
 		methodExec.setMethod(CLOSE_METHOD);
-
+		
 		return methodExec;
 	}
 
 	private QStatement manageAllocateDescriptorStatement(QAllocateDescriptorStatement bindingStatement) {
 
 		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-		methodExec.setObject(bindingStatement.getDescriptorName());
+		
+		methodExec.setObject(QSQL);
 		methodExec.setMethod(ALLOCATE_DESCRIPTOR_METHOD);
-
+		
+		// Descriptor name
+		methodExec.getParameters().add(bindingStatement.getDescriptorName());
+		
 		// Scope
 		methodExec.getParameters().add(bindingStatement.getDescriptorScope().getLiteral());
 
@@ -308,125 +324,211 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 	}
 
 	private QStatement manageGetDescriptorStatement(QGetDescriptorStatement bindingStatement) {
+		
+		QStatement result = null;
+		if (bindingStatement.getVariables().size() > 1) {
 
-		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-		methodExec.setObject(bindingStatement.getDescriptorName());
-		methodExec.setMethod(GET_DESCRIPTOR_METHOD);
-
-		// Scope
-		methodExec.getParameters().add(bindingStatement.getDescriptorScope().getLiteral());
-
-		// Value
-		if (bindingStatement.getValue() != null) {
-			methodExec.getParameters().add(bindingStatement.getValue());
+			QBlock block = QIntegratedLanguageFlowFactory.eINSTANCE.createBlock();
+			
+			for (QOption variable : bindingStatement.getVariables()) {
+				
+				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+				methodExec.setObject(QSQL);
+				methodExec.setMethod(GET_DESCRIPTOR_METHOD);
+				
+				// Descriptor name
+				methodExec.getParameters().add(bindingStatement.getDescriptorName());
+	
+				// Scope
+				methodExec.getParameters().add(bindingStatement.getDescriptorScope().getLiteral());
+	
+				// Value
+				if (bindingStatement.getValue() != null) {
+					methodExec.getParameters().add(bindingStatement.getValue());
+				} else {
+					methodExec.getParameters().add("");
+				}
+				
+				// Variable name			
+				String varName = variable.getName().trim();
+				methodExec.getParameters().add(varName);
+				
+				// Variable value
+				String varValue = variable.getValue().trim();
+				methodExec.getParameters().add(varValue);
+				
+				block.getStatements().add(methodExec);
+			}
+			
+			result = block;
+			
 		} else {
-			methodExec.getParameters().add("");
+			
+			QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+			methodExec.setObject(bindingStatement.getDescriptorName());
+			methodExec.setMethod(GET_DESCRIPTOR_METHOD);
+
+			// Scope
+			methodExec.getParameters().add(bindingStatement.getDescriptorScope().getLiteral());
+
+			// Value
+			if (bindingStatement.getValue() != null) {
+				methodExec.getParameters().add(bindingStatement.getValue());
+			} else {
+				methodExec.getParameters().add("");
+			}
+			
+			if (bindingStatement.getVariables().size() == 1){				
+				methodExec.getParameters().add(bindingStatement.getVariables().get(0).getName());						
+				methodExec.getParameters().add(bindingStatement.getVariables().get(0).getValue());
+			} else {			
+				methodExec.getParameters().add("");						
+				methodExec.getParameters().add("");
+			}
+			
+			result = methodExec;
 		}
-
-		String varNames = "";
-		String varValues = "";
-
-		for (QOption variable : bindingStatement.getVariables()) {
-			if (varNames.isEmpty())
-				varNames = variable.getName().trim();
-			else
-				varNames += ": " + variable.getName().trim();
-
-			if (varValues.isEmpty())
-				varValues = variable.getValue().trim();
-			else
-				varValues += ": " + variable.getValue().trim();
-		}
-
-		// Var names list
-		methodExec.getParameters().add("[" + varNames + "]");
-
-		// Var values list
-		methodExec.getParameters().add("[" + varValues + "]");
-
-		return methodExec;
+		
+		return result;
+		
 	}
 
 	private QStatement manageSetDescriptorStatement(QSetDescriptorStatement bindingStatement) {
+		
+		QStatement result = null;
+		
+		if (bindingStatement.getItems().size() > 1) {
 
-		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-		methodExec.setObject(bindingStatement.getDescriptorName());
-		methodExec.setMethod("setDescriptor");
+			QBlock block = QIntegratedLanguageFlowFactory.eINSTANCE.createBlock();		
 
-		// Value
-		if (bindingStatement.getValue() != null) {
-			methodExec.getParameters().add(bindingStatement.getValue());
+			for (QOption item : bindingStatement.getItems()) {
+			
+				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+				methodExec.setObject(QSQL);
+				methodExec.setMethod(SET_DESCRIPTOR_METHOD);
+				
+				// Descriptor name
+				methodExec.getParameters().add(bindingStatement.getDescriptorName());
+				
+				// Value
+				if (bindingStatement.getValue() != null) {
+					methodExec.getParameters().add(bindingStatement.getValue());
+				} else {
+					methodExec.getParameters().add("");
+				}
+				
+				// Item name
+				String itemName = item.getName().trim();
+				methodExec.getParameters().add(itemName);
+				
+				// Item Value
+				String itemValue = item.getValue().trim();
+				methodExec.getParameters().add(itemValue);
+				
+				block.getStatements().add(methodExec);								
+			}			
+			result = block;
+			
 		} else {
-			methodExec.getParameters().add("");
+			
+			QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+			methodExec.setObject(QSQL);
+			methodExec.setMethod(SET_DESCRIPTOR_METHOD);
+			
+			// Descriptor name
+			methodExec.getParameters().add(bindingStatement.getDescriptorName());
+
+			// Value
+			if (bindingStatement.getValue() != null) {
+				methodExec.getParameters().add(bindingStatement.getValue());
+			} else {
+				methodExec.getParameters().add("");
+			}
+			// Item name and value
+			if (bindingStatement.getItems().size() == 1){				
+				methodExec.getParameters().add(bindingStatement.getItems().get(0).getName());						
+				methodExec.getParameters().add(bindingStatement.getItems().get(0).getValue());
+			} else {			
+				methodExec.getParameters().add("");						
+				methodExec.getParameters().add("");
+			}
+			
+			result = methodExec;
 		}
 
-		String itemNames = "";
-		String itemValues = "";
-
-		for (QOption item : bindingStatement.getItems()) {
-			if (itemNames.isEmpty())
-				itemNames = item.getName().trim();
-			else
-				itemNames += ": " + item.getName().trim();
-
-			if (itemValues.isEmpty())
-				itemValues = item.getValue().trim();
-			else
-				itemValues += ": " + item.getValue().trim();
-		}
-
-		// Item names list
-		methodExec.getParameters().add("[" + itemNames + "]");
-
-		// Item values list
-		methodExec.getParameters().add("[" + itemValues + "]");
-
-		return methodExec;
+		return result;
 	}
 
 	private QStatement manageGetDiagnosticsStatement(QGetDiagnosticsStatement bindingStatement) {
+		
+		QStatement result = null;
+		
+		if (bindingStatement.getConditionInfo().getConditionItems().size() > 1) {
+			
+			QBlock block = QIntegratedLanguageFlowFactory.eINSTANCE.createBlock();		
 
-		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-		methodExec.setObject(null);
-		methodExec.setMethod("getDiagnostics");
-
-		// Condition
-		if (bindingStatement.getConditionInfo().getCondition() != null) {
-			methodExec.getParameters().add(bindingStatement.getConditionInfo().getCondition());
+			for (QOption item : bindingStatement.getConditionInfo().getConditionItems()) {
+			
+				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+				methodExec.setObject(QSQL);
+				methodExec.setMethod(GET_DIAGNOSTIC_METHOD);
+	
+				// Condition
+				if (bindingStatement.getConditionInfo().getCondition() != null) {
+					methodExec.getParameters().add(bindingStatement.getConditionInfo().getCondition());
+				} else {
+					methodExec.getParameters().add("");
+				}
+				
+				// Item name
+				String itemName = item.getName().trim();
+				methodExec.getParameters().add(itemName);
+				
+				// Item Value
+				String itemValue = item.getValue().trim();
+				methodExec.getParameters().add(itemValue);
+				
+				block.getStatements().add(methodExec);								
+			}
+			
+			result = block;
+			
 		} else {
-			methodExec.getParameters().add("");
+			
+			QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+			methodExec.setObject(QSQL);
+			methodExec.setMethod(GET_DIAGNOSTIC_METHOD);
+
+			// Condition
+			if (bindingStatement.getConditionInfo().getCondition() != null) {
+				methodExec.getParameters().add(bindingStatement.getConditionInfo().getCondition());
+			} else {
+				methodExec.getParameters().add("");
+			}
+			
+			if (bindingStatement.getConditionInfo().getConditionItems().size() == 1){				
+				methodExec.getParameters().add(bindingStatement.getConditionInfo().getConditionItems().get(0).getName());						
+				methodExec.getParameters().add(bindingStatement.getConditionInfo().getConditionItems().get(0).getValue());
+			} else {			
+				methodExec.getParameters().add("");						
+				methodExec.getParameters().add("");
+			}
+			
+			result = methodExec;
 		}
 
-		String itemNames = "";
-		String itemValues = "";
-
-		for (QOption item : bindingStatement.getConditionInfo().getConditionItems()) {
-			if (itemNames.isEmpty())
-				itemNames = item.getName().trim();
-			else
-				itemNames += ": " + item.getName().trim();
-
-			if (itemValues.isEmpty())
-				itemValues = item.getValue().trim();
-			else
-				itemValues += " :" + item.getValue().trim();
-		}
-
-		// ConditionItem names list
-		methodExec.getParameters().add("[" + itemNames + "]");
-
-		// ConditionItem values list
-		methodExec.getParameters().add("[" + itemValues + "]");
-
-		return methodExec;
+		return result;
 	}
 
 	private QStatement manageDeallocateDescriptorStatement(QDeallocateDescriptorStatement bindingStatement) {
 
 		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-		methodExec.setObject(bindingStatement.getDescriptorName());
-		methodExec.setMethod("deallocateDescriptor");
-
+		methodExec.setObject(QSQL);
+		methodExec.setMethod(DEALLOCATE_DESCRIPTOR_METHOD);
+		
+		// Descriptor name
+		methodExec.getParameters().add(bindingStatement.getDescriptorName());
+		
 		// Scope
 		methodExec.getParameters().add(bindingStatement.getDescriptorScope().getLiteral());
 
@@ -586,6 +688,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 	private QStatement manageExecuteStatement(QExecuteStatement bindingStatement) {
 
 		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+
 		methodExec.setObject(bindingStatement.getStatementName());
 		methodExec.setMethod(STATEMENT_METHOD.EXECUTE);
 
@@ -595,8 +698,9 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 	private QStatement manageExecuteImmediateStatement(QExecuteImmediateStatement bindingStatement) {
 
 		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-		methodExec.setObject("*SQL");
+		methodExec.setObject(QSQL);
 		methodExec.setMethod(EXECUTE_IMMEDIATE_METHOD);
+		
 		methodExec.getParameters().add(bindingStatement.getVariable());
 
 		return methodExec;
@@ -606,86 +710,109 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
 
-		methodExec.setObject(bindingStatement.getStatementName());
-		methodExec.setMethod(DESCRIBE_METHOD);
-
+		methodExec.setObject(bindingStatement.getStatementName());		
+		
 		QUsing using = bindingStatement.getUsing();
 		if(using != null) {
+			
+			// Describe with using	
+			methodExec.setMethod(STATEMENT_METHOD.DESCRIBE_USING);
 			methodExec.getParameters().add(using.getDescriptorName());
+		} else {
+			
+			// Describe with into		
+			QInto into = bindingStatement.getInto();
+			if (into != null) {
+				
+				methodExec.setMethod(STATEMENT_METHOD.DESCRIBE_INTO);
+				methodExec.getParameters().add(into.getDescriptorName());
+
+				if (into.getUsing() != null)
+					switch (into.getUsing()) {
+					case ALL:
+						methodExec.getParameters().add(USING.ALL);
+						break;
+					case ANY:
+						methodExec.getParameters().add(USING.ANY);
+						break;
+					case BOTH:
+						methodExec.getParameters().add(USING.BOTH);
+						break;
+					case LABELS:
+						methodExec.getParameters().add(USING.LABELS);
+						break;
+					case NAMES:
+						methodExec.getParameters().add(USING.NAMES);
+						break;
+					case NONE:
+						methodExec.getParameters().add(NONE);
+						break;
+					case SYSTEM_NAMES:
+						methodExec.getParameters().add(USING.SYSTEM_NAMES);
+						break;
+					}
+				else
+					methodExec.getParameters().add(NONE);
+
+			}
 		}
 		
-		QInto into = bindingStatement.getInto();
-		if (into != null) {
-			methodExec.getParameters().add(into.getDescriptorName());
-
-			if (into.getUsing() != null)
-				switch (into.getUsing()) {
-				case ALL:
-					methodExec.getParameters().add(USING.ALL);
-					break;
-				case ANY:
-					methodExec.getParameters().add(USING.ANY);
-					break;
-				case BOTH:
-					methodExec.getParameters().add(USING.BOTH);
-					break;
-				case LABELS:
-					methodExec.getParameters().add(USING.LABELS);
-					break;
-				case NAMES:
-					methodExec.getParameters().add(USING.NAMES);
-					break;
-				case NONE:
-					methodExec.getParameters().add(NONE);
-					break;
-				case SYSTEM_NAMES:
-					methodExec.getParameters().add(USING.SYSTEM_NAMES);
-					break;
-				}
-			else
-				methodExec.getParameters().add(NONE);
-		}
 		return methodExec;
 	}
 
 	private QStatement manageSetOptionStatement(QSetOptionStatement bindingStatement) {
-
-		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-		methodExec.setMethod(SET_OPTION_METHOD);
-
-		String optionNames = "";
-		String optionValues = "";
-
-		for (QOption option : bindingStatement.getOptions()) {
-			if (optionNames.isEmpty())
-				optionNames = option.getName().trim();
-			else
-				optionNames += ": " + option.getName().trim();
-
-			if (optionValues.isEmpty())
-				optionValues = option.getValue().trim();
-			else
-				optionValues += ": " + option.getValue().trim();
+		
+		QStatement result = null;
+		
+		if (bindingStatement.getOptions().size() > 1){
+			QBlock block = QIntegratedLanguageFlowFactory.eINSTANCE.createBlock();
+			
+			for (QOption option : bindingStatement.getOptions()) {
+				
+				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+				methodExec.setObject(QSQL);
+				methodExec.setMethod(SET_OPTION_METHOD);
+				
+				// Name
+				methodExec.getParameters().add(option.getName());
+				
+				// Value
+				methodExec.getParameters().add(option.getValue());
+				
+				block.getStatements().add(methodExec);
+			}
+			
+			result = block;
+			
+			
+		} else {
+			QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+			methodExec.setObject(QSQL);
+			methodExec.setMethod(SET_OPTION_METHOD);
+			
+			// Name
+			methodExec.getParameters().add(bindingStatement.getOptions().get(0).getName());
+			
+			// Value
+			methodExec.getParameters().add(bindingStatement.getOptions().get(0).getValue());
+			
+			result = methodExec;
 		}
-
-		// Option names list
-		methodExec.getParameters().add("[" + optionNames + "]");
-
-		// Option values list
-		methodExec.getParameters().add("[" + optionValues + "]");
-
-		return null;
+		
+		return result;
 	}
 
 	private QStatement manageSetTransactionStatement(QSetTransactionStatement bindingStatement) {
 
-		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-
-		methodExec.setMethod(SET_TRANSACTION_METHOD);
-		methodExec.setObject(null);
+		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();		
+		
+		methodExec.setObject(QSQL);
+		methodExec.setMethod(SET_TRANSACTION_METHOD);		
 
 		/*
-		 * SET_TRANSACTION parameter list: 1) Isolation level 2) Read operation
+		 * SET_TRANSACTION parameter list: 
+		 * 1) Isolation level 
+		 * 2) Read operation
 		 */
 
 		switch (bindingStatement.getIsolationLevel()) {
@@ -761,7 +888,8 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 		// Create method call
 		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-		methodExec.setObject("*SQL");
+		
+		methodExec.setObject(QSQL);
 		methodExec.setMethod(SELECT_METHOD);
 
 		methodExec.getParameters().add(dblString);
