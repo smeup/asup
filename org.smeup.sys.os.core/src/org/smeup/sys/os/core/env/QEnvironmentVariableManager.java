@@ -33,6 +33,14 @@ public interface QEnvironmentVariableManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model jobRequired="true" variablesRequired="true" variablesMany="true" replaceRequired="true"
+	 * @generated
+	 */
+	void addVariables(QJob job, List<QEnvironmentVariable> variables, boolean replace);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model jobRequired="true" levelRequired="true" nameRequired="true" valueRequired="true"
 	 * @generated
 	 */

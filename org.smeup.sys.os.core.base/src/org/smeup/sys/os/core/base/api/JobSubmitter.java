@@ -82,30 +82,52 @@ public class JobSubmitter {
 		Object caller = null;
 		if(callableProgram != null)
 			caller = callableProgram.getRawProgram();
-
-		// Job spawn
-		QJobCapability jobSubmitted = null;
-
+		
+		String jobNameString = null;
 		switch (jobName.asEnum()) {
 		// TODO
 		case JOBD: {
 			QResourceReader<QUserProfile> userProfileReader = resourceManager.getResourceReader(job, QUserProfile.class, Scope.ALL);
 			QUserProfile userProfile = userProfileReader.lookup(job.getJobReference().getJobUser());
-			jobSubmitted = commandManager.submitCommand(job, commandToRun.trimR(), userProfile.getJobDescription(), caller);
+			jobNameString = userProfile.getJobDescription();
 			break;
 		}
 		case OTHER:
-			if (!jobName.isEmpty()) {
-				jobSubmitted = commandManager.submitCommand(job, commandToRun.trimR(), jobName.asData().trimR(), caller);
-			} else
-				jobSubmitted = commandManager.submitCommand(job, commandToRun.trimR(), null, caller);
+			if (!jobName.isEmpty()) 
+				jobNameString = jobName.asData().trimR();
 			break;
 		}
 
-		// add message to queue
-		job.getMessages().add(new DecimalFormat("000000").format(jobSubmitted.getJobReference().getJobNumber()));
+		boolean hold = false;
+		switch (holdOnJobQueue.asEnum()) {
+		case JOBD:
+			// TODO
+			break;
+		case NO:
+			hold = false;
+			break;
+		case YES:
+			hold = true;
+			break;
+		}
 
-		jobLogManager.info(job, "Job submitted:" + jobSubmitted);
+		boolean copyEnvironmentVariablesBoolean = false;
+		switch (copyEnvironmentVariables.asEnum()) {
+		case NO:
+			copyEnvironmentVariablesBoolean = false;
+			break;
+		case YES:
+			copyEnvironmentVariablesBoolean = true;
+			break;
+		}
+
+		// Job spawn
+		QJobCapability jobCapability = commandManager.submitCommand(job, caller, commandToRun.toString(), jobNameString, hold, copyEnvironmentVariablesBoolean);   
+
+		// add message to queue
+		job.getMessages().add(new DecimalFormat("000000").format(jobCapability.getJobReference().getJobNumber()));
+
+		jobLogManager.info(job, "Job submitted:" + jobCapability);
 	}
 
 	public static enum JobNameEnum {

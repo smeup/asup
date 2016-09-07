@@ -287,13 +287,6 @@
         </eParameters>
         <eParameters name="jobName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
-      <eOperations name="spawn" lowerBound="1" eType="#//jobs/JobCapability">
-        <eParameters name="parent" lowerBound="1" eType="#//jobs/Job"/>
-      </eOperations>
-      <eOperations name="spawn" lowerBound="1" eType="#//jobs/JobCapability">
-        <eParameters name="parent" lowerBound="1" eType="#//jobs/Job"/>
-        <eParameters name="jobName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eOperations>
       <eOperations name="delay">
         <eParameters name="millis" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
       </eOperations>
@@ -341,6 +334,11 @@
       <eOperations name="setDefaultWriter">
         <eParameters name="capability" lowerBound="1" eType="#//jobs/JobCapability"/>
         <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+      <eOperations name="spawn" lowerBound="1" eType="#//jobs/JobCapability">
+        <eParameters name="parent" lowerBound="1" eType="#//jobs/Job"/>
+        <eParameters name="jobName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eParameters name="copyEnvironmentVariables" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       </eOperations>
       <eOperations name="updateStatus">
         <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
@@ -417,6 +415,11 @@
         <eParameters name="level" lowerBound="1" eType="#//env/EnvironmentLevel"/>
         <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eParameters name="replace" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </eOperations>
+      <eOperations name="addVariables">
+        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
+        <eParameters name="variables" lowerBound="1" upperBound="-1" eType="#//env/EnvironmentVariable"/>
         <eParameters name="replace" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       </eOperations>
       <eOperations name="changeVariable" eType="#//env/EnvironmentVariable">

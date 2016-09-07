@@ -37,6 +37,7 @@ import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QSystemManager;
+import org.smeup.sys.os.core.env.QEnvironmentVariableManager;
 import org.smeup.sys.os.core.jobs.JobEventType;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
@@ -63,6 +64,8 @@ public class BaseJobManagerImpl implements QJobManager {
 	private QOutputManager outputManager;
 	@Inject
 	private QExpressionParserRegistry expressionParserRegistry;
+	@Inject
+	private QEnvironmentVariableManager environmentVariableManager;
 	
 	private BaseSystemManagerImpl systemManager;	
 	private Map<String, QJob> activeJobs;
@@ -80,11 +83,6 @@ public class BaseJobManagerImpl implements QJobManager {
 	@PostConstruct
 	private void init() {
 		this.expressionParser = expressionParserRegistry.lookup(QExpressionParserRegistry.DEFAULT_PARSER);
-	}
-	
-	@Override
-	public QJobCapability spawn(QJob credential) {		
-		return spawn(credential, null);
 	}
 
 	@Override
@@ -146,10 +144,15 @@ public class BaseJobManagerImpl implements QJobManager {
 	}
 	
 	@Override
-	public QJobCapability spawn(final QJob parent, String jobName) {
+	public QJobCapability spawn(final QJob parent, String jobName, boolean copyEnvironmentVariables) {
 		
 		QIdentity<?>  identity= parent.getContext().get(QIdentity.class);
 		QJobCapability jobCapability = create(identity, jobName);
+		
+		QJob jobSpawned = lookup(jobCapability);
+		
+		if(copyEnvironmentVariables) 
+			environmentVariableManager.addVariables(jobSpawned, parent.getVariableContainer().getVariables(), false);
 		
 		return jobCapability;
 	}

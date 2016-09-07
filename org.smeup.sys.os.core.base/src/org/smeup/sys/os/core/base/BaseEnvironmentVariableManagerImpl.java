@@ -66,9 +66,33 @@ public class BaseEnvironmentVariableManagerImpl implements QEnvironmentVariableM
 			variable.setValue(value);
 			variableContainer.getVariables().add(variable);
 		}
+		
 		save(job, level);
 		
 		return variable;
+	}
+
+	@Override
+	public void addVariables(QJob job, List<QEnvironmentVariable> variables, boolean replace) {
+		
+		for(QEnvironmentVariable environmentVariable: variables) {
+			
+			QEnvironmentVariable newEnvironmentVariable = lookupVariable(job, EnvironmentLevel.JOB, environmentVariable.getName());
+			if(!replace && newEnvironmentVariable != null)
+				continue;
+			
+			if(newEnvironmentVariable != null)
+				newEnvironmentVariable.setValue(environmentVariable.getValue());
+			else {
+				newEnvironmentVariable = QOperatingSystemEnvironmentFactory.eINSTANCE.createEnvironmentVariable();
+				newEnvironmentVariable.setName(environmentVariable.getName());
+				newEnvironmentVariable.setValue(environmentVariable.getValue());
+				
+				job.getVariableContainer().getVariables().add(newEnvironmentVariable);
+			}
+		}
+		
+		save(job, EnvironmentLevel.JOB);		
 	}
 
 	@Override

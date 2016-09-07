@@ -66,6 +66,14 @@ public interface QCommandManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" jobRequired="true" commandRequired="true" holdRequired="true" copyEnvironmentVariablesRequired="true"
+	 * @generated
+	 */
+	QJobCapability submitCommand(QJob job, Object caller, String command, String jobName, boolean hold, boolean copyEnvironmentVariables);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model jobRequired="true" commandRequired="true"
 	 * @generated
 	 */
@@ -78,13 +86,5 @@ public interface QCommandManager {
 	 * @generated
 	 */
 	void executeCommand(QJobCapability capability, String command, Map<String, Object> variables);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" jobRequired="true" commandRequired="true"
-	 * @generated
-	 */
-	QJobCapability submitCommand(QJob job, String command, String jobName, Object caller);
 
 } // QCommandManager

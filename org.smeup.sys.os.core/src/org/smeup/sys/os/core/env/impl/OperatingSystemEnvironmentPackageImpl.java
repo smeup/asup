@@ -291,6 +291,11 @@ public class OperatingSystemEnvironmentPackageImpl extends EPackageImpl implemen
 		addEParameter(op, ecorePackage.getEString(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "replace", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(environmentVariableManagerEClass, null, "addVariables", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getEnvironmentVariable(), "variables", 1, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "replace", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(environmentVariableManagerEClass, this.getEnvironmentVariable(), "changeVariable", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getEnvironmentLevel(), "level", 1, 1, IS_UNIQUE, IS_ORDERED);

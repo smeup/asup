@@ -847,13 +847,6 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		addEParameter(op, g1, "identity", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "jobName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(jobManagerEClass, this.getJobCapability(), "spawn", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getJob(), "parent", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(jobManagerEClass, this.getJobCapability(), "spawn", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getJob(), "parent", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "jobName", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = addEOperation(jobManagerEClass, null, "delay", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getELong(), "millis", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -902,6 +895,11 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		op = addEOperation(jobManagerEClass, null, "setDefaultWriter", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJobCapability(), "capability", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(jobManagerEClass, this.getJobCapability(), "spawn", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getJob(), "parent", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "jobName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "copyEnvironmentVariables", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(jobManagerEClass, null, "updateStatus", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);

@@ -63,6 +63,17 @@ public class EnvironmentVariableManagerImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void addVariables(QJob job, List<QEnvironmentVariable> variables, boolean replace) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public QEnvironmentVariable changeVariable(QJob job, EnvironmentLevel level, String name, String value) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT

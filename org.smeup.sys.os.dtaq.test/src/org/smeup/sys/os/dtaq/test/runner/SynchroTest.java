@@ -28,7 +28,6 @@ import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.OperatingSystemException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobCapability;
-import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.dtaq.DataQueueSequence;
 import org.smeup.sys.os.dtaq.QDataQueue;
 import org.smeup.sys.os.dtaq.QDataQueueManager;
@@ -45,8 +44,6 @@ public class SynchroTest {
 	private QResourceManager resourceManager;
 	@Inject
 	private QCommandManager commandManager;
-	@Inject
-	private QJobManager jobManager;
 	@Inject
 	private QTestAsserter testAsserter;
 	@Inject
@@ -206,10 +203,6 @@ public class SynchroTest {
 
 		@Override
 		public void run() {
-
-			// Create new job
-			@SuppressWarnings("unused")
-			QJobCapability childJob = jobManager.spawn(job);
 
 			// Get the queue
 			QResourceWriter<QDataQueue> resource = resourceManager.getResourceWriter(job, QDataQueue.class, lib);

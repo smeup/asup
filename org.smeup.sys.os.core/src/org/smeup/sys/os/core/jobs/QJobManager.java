@@ -71,22 +71,6 @@ public interface QJobManager {
 	QJobCapability create(QIdentity<?> identity, String jobName);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" parentRequired="true"
-	 * @generated
-	 */
-	QJobCapability spawn(QJob parent);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" parentRequired="true" jobNameRequired="true"
-	 * @generated
-	 */
-	QJobCapability spawn(QJob parent, String jobName);
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model jobRequired="true" statusRequired="true"
 	 * @generated
@@ -195,5 +179,13 @@ public interface QJobManager {
 	 * @generated
 	 */
 	void setDefaultWriter(QJobCapability capability, String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" parentRequired="true" jobNameRequired="true" copyEnvironmentVariablesRequired="true"
+	 * @generated
+	 */
+	QJobCapability spawn(QJob parent, String jobName, boolean copyEnvironmentVariables);
 
 } // QJobManager

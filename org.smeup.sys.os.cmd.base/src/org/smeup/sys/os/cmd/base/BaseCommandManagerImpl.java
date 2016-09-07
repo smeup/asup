@@ -85,22 +85,21 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 	}
 
 	@Override
-	public QJobCapability submitCommand(QJob job, String command, String jobName, Object caller) {
+	public QJobCapability submitCommand(QJob job, Object caller, String command, String jobName, boolean hold, boolean copyEnvironmentVariables) {
 
-		QJobCapability jobCapability = null;
-		if (jobName != null)
-			jobCapability = jobManager.spawn(job, jobName);
-		else
-			jobCapability = jobManager.spawn(job);
+		QJobCapability jobCapability = jobManager.spawn(job, jobName, copyEnvironmentVariables);
 
 		// TODO
 		QDataContext dataContext = dataManager.createDataContext(job.getContext(), null);
+
 		// Submit command
 		String threadName = "job/" + jobCapability.getObjectName();
 		QThread thread = threadManager.createThread(threadName, new BaseSubmittedCommand(this, jobCapability, dataContext, command, caller));
 		jobManager.lookup(jobCapability).setJobThread(thread);
-		threadManager.start(thread);
 
+		if(!hold)
+			threadManager.start(thread);
+		
 		return jobCapability;
 	}
 
