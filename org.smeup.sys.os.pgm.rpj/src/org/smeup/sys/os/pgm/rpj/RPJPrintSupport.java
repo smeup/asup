@@ -18,7 +18,8 @@ import org.smeup.sys.il.data.annotation.Module;
 import org.smeup.sys.il.data.annotation.Module.Scope;
 
 @Module(name = "*PRT", scope = Scope.OWNER)
-public class RPJPrintSupport {
+public class RPJPrintSupport extends RPJModule {
+	private static final long serialVersionUID = 1L;
 
 	@DataDef(precision = 5)
 	public QDecimal page;	

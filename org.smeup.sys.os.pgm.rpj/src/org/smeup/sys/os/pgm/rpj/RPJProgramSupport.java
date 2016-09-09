@@ -65,7 +65,8 @@ import org.smeup.sys.os.pgm.QProgram;
 import org.smeup.sys.os.pgm.QProgramManager;
 
 @Module(name = "*RPJ", scope = Scope.OWNER)
-public class RPJProgramSupport {
+public class RPJProgramSupport extends RPJModule {
+	private static final long serialVersionUID = 1L;
 
 	@Inject
 	private transient RPJProgramInjector injector;
