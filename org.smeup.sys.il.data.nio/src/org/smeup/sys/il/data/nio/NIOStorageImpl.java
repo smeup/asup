@@ -11,6 +11,9 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.nio.ByteBuffer;
 
 import org.smeup.sys.il.data.QBufferedData;
@@ -18,26 +21,28 @@ import org.smeup.sys.il.data.QStorable;
 
 public final class NIOStorageImpl implements QStorable {
 
-	private ByteBuffer byteBuffer = null;
+	private static final long serialVersionUID = 1L;
+
+	private transient ByteBuffer _storage = null;
 	private int position = 0;
 
-	public NIOStorageImpl(final ByteBuffer byteBuffer, final int position) {
-		this.byteBuffer = byteBuffer;
+	public NIOStorageImpl(final ByteBuffer storage, final int position) {
+		this._storage = storage;
 		this.position = position;
 	}
 
 	public NIOStorageImpl(final int storageLength) {
-		byteBuffer = ByteBuffer.allocate(storageLength);
+		_storage = ByteBuffer.allocate(storageLength);
 	}
 
 	@Override
 	public final ByteBuffer getBuffer() {
-		return byteBuffer;
+		return _storage;
 	}
 
 	@Override
 	public final boolean isEmpty() {
-		return byteBuffer.capacity() == 0;
+		return _storage.capacity() == 0;
 	}
 
 	protected final void setPosition(final int position) {
@@ -52,5 +57,24 @@ public final class NIOStorageImpl implements QStorable {
 	@Override
 	public final void assign(final QBufferedData target) {
 		NIOBufferHelper.assign(this, target);
+	}
+
+	private final void readObject(final ObjectInputStream stream) throws IOException, ClassNotFoundException {
+
+		stream.defaultReadObject();
+
+		int length = stream.readInt();
+		byte[] array = new byte[length];
+		stream.read(array);
+		_storage = ByteBuffer.allocate(length).put(array);
+	}
+
+	private final void writeObject(final ObjectOutputStream stream) throws IOException {
+
+		stream.defaultWriteObject();
+
+		byte[] array = _storage.array();
+		stream.writeInt(array.length);
+		stream.write(array);
 	}
 }
