@@ -27,6 +27,9 @@ public class DatabaseSyntaxHelper {
 	
 	private static String[] dblRegex = {
 		"^[\\s]*[sS][eE][tT][\\s]*[tT][rR][aA][nN][sS][aA][cC][tT][iI][oO][nN].*", /*SET TRANSACTION*/
+		"^[\\s]*[sS][eE][tT][\\s]*[dD][eE][sS][cC][rR][iI][pP][tT][oO][rR].*", /*SET DESCRIPTOR*/
+		"^[\\s]*[gG][eE][tT][\\s]*[dD][iI][aA][gG][nN][oO][sS][tT][iI][cC][sS].*", /*GET DIAGNOSTICS*/
+		"^[\\s]*[gG][eE][tT][\\s]*[dD][eE][sS][cC][rR][iI][pP][tT][oO][rR].*", /*GET DESCRIPTOR*/
 		"^[\\s]*[sS][eE][lL][eE][cC][tT].*[iI][nN][tT][oO][\\s]*.*", /*SELECT INTO*/
 		"^[\\s]*[oO][pP][eE][nN][\\s]*.*", /*OPEN*/
 		"^[\\s]*[pP][rR][eE][pP][aA][rR][eE][\\s]*.*", /*PREPARE*/
@@ -37,6 +40,9 @@ public class DatabaseSyntaxHelper {
 		"^[\\s]*[cC][lL][oO][sS][eE][\\s]*.*", /*CLOSE*/
 		"^[\\s]*[sS][eE][tT][\\s]*[oO][pP][tT][iI][oO][nN][\\s]*.*", /*SET OPTION*/
 		"^[\\s]*[eE][xX][eE][cC][uU][tT][eE][\\s]*.*", /*EXECUTE*/
+		"^[\\s]*[aA][lL][lL][oO][cC][aA][tT][eE][\\s]*.*", /*ALLOCATE*/
+		"^[\\s]*[dD][eE][aA][lL][lL][oO][cC][aA][tT][eE][\\s]*.*", /*DEALLOCATE*/
+		
 		
 	};
 	

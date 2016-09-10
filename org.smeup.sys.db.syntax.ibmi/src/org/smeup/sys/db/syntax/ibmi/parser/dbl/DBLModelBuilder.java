@@ -1063,7 +1063,7 @@ public class DBLModelBuilder {
 		for (int i = 0; i < tree.getChildCount(); i++) {
 			optionToken = tree.getChild(i);
 
-			if (optionToken.getType() == DBLLexer.OPTION) {
+			if (optionToken.getType() == DBLLexer.SET_OPTION) {
 				QOption option = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
 				option.setName(optionToken.getText());
 

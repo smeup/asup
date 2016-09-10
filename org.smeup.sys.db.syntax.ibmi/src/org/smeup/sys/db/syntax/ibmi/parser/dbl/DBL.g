@@ -1134,6 +1134,15 @@ item_info_assign
 	i = Identifier EQUAL v = Variable -> ^(ITEM ^(NAME $i) ^(VALUE ^(VARIABLE $v))) 
 	|
 	i = Identifier EQUAL c = Identifier -> ^(ITEM ^(NAME $i) ^(VALUE $c)) 
+	|
+	i = Identifier EQUAL n = NUMBER -> ^(ITEM ^(NAME $i) ^(VALUE $n)) 		
+	|
+	p = PRECISION EQUAL v = Variable -> ^(ITEM ^(NAME $p) ^(VALUE ^(VARIABLE $v)))  //Gestione identificativo con stesso nome del token PRECISION
+	|
+	p = PRECISION EQUAL c = Identifier -> ^(ITEM ^(NAME $p) ^(VALUE $c)) 		//Gestione identificativo con stesso nome del token PRECISION
+	|
+	p = PRECISION EQUAL n = NUMBER -> ^(ITEM ^(NAME $p) ^(VALUE $n)) 		//Gestione identificativo con stesso nome del token PRECISION
+	
 	;	
 
 /* GET DIAGNOSTIC STATEMENT */
@@ -1575,7 +1584,7 @@ COMMENT
     ;
 
 Descriptor_Name
-	: '\'' Identifier '\''
+	: '\'' Identifier '\'' { setText(getText().substring(1, getText().length()-1)); } //Elimina gli apici dal nome del descrittore
 	;
 
 /*
@@ -1659,7 +1668,6 @@ CHAR_SPECIAL
     | '&'
     | '*'    
     | '/'
-    | '='
     | '>'
     | '<'	
     | '+'

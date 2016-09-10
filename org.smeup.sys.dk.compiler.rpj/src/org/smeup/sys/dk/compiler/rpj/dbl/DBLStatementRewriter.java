@@ -83,7 +83,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 	private QCallableUnit callableUnit;
 	private QBindingParser bindingParser;
 	private QQueryParser queryParser;
-
+ 
 	public static interface STATEMENT_METHOD {
 		String PREPARE = "prepare";
 		String EXECUTE = "execute";
@@ -91,6 +91,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 		String DESCRIBE_INTO = "describeInto";
 	}
 
+	//TODO: is correct to connect the fetch modes to relative methods of the cursor class? 
 	public static interface CURSOR_METHOD {
 		String NEXT = "next";
 		String PRIOR = "prior";
@@ -481,12 +482,20 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 				}
 				
 				// Item name
-				String itemName = item.getName().trim();
-				methodExec.getParameters().add(itemName);
+				if (item.getName() != null) {
+					String itemName = item.getName().trim();
+					methodExec.getParameters().add(itemName);
+				} else {
+					methodExec.getParameters().add("");
+				}
 				
 				// Item Value
-				String itemValue = item.getValue().trim();
-				methodExec.getParameters().add(itemValue);
+				if (item.getValue() != null) {
+					String itemValue = item.getValue().trim();
+					methodExec.getParameters().add(itemValue);
+				} else {
+					methodExec.getParameters().add("");
+				}
 				
 				block.getStatements().add(methodExec);								
 			}
