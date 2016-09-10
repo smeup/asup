@@ -16,7 +16,8 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Module;
 
 @Module(name="*PRO")
-public class RPJProcedureSupport {
+public class RPJProcedureSupport extends RPJModule {
+	private static final long serialVersionUID = 1L;
 	
 	@DataDef(precision = 3)
 	private QDecimal qParms;

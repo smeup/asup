@@ -17,7 +17,8 @@ import org.smeup.sys.il.data.annotation.Module;
 import org.smeup.sys.il.data.annotation.Module.Scope;
 
 @Module(name = "*DSP", scope = Scope.OWNER)
-public class RPJDisplaySupport {
+public class RPJDisplaySupport extends RPJModule {
+	private static final long serialVersionUID = 1L;
 	
 	@DataDef
 	public QIndicator qINKA;

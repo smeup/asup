@@ -22,7 +22,8 @@ import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.def.BinaryType;
 
 @Module(name="*SQL", scope = Scope.OWNER)
-public class RPJDatabaseSupport {
+public class RPJDatabaseSupport extends RPJModule {
+	private static final long serialVersionUID = 1L;
 
 	@DataDef
 	@Overlay(name = "*SQLCA")

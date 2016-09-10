@@ -391,6 +391,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.TRANSIENT_KEYWORD));
+			
 			Type dataSetType = getAST().newSimpleType(getAST().newSimpleName(QCursor.class.getSimpleName()));
 			field.setType(dataSetType);
 			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(cursorTerm.getName())));
@@ -410,13 +412,13 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 			FieldDeclaration field = getAST().newFieldDeclaration(variable);
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
-
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.TRANSIENT_KEYWORD));
+			
 			Type dataSetType = getAST().newSimpleType(getAST().newSimpleName(QStatement.class.getSimpleName()));
 			field.setType(dataSetType);
 			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(statementTerm.getName())));
 			getTarget().bodyDeclarations().add(field);
 		}
-
 	}
 
 	@SuppressWarnings("unchecked")

@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.data;
 
+import java.io.Serializable;
 import java.nio.ByteBuffer;
 
 /**
@@ -17,9 +18,9 @@ import java.nio.ByteBuffer;
  *
  * @see org.smeup.sys.il.data.QIntegratedLanguageDataPackage#getStorable()
  * @model interface="true" abstract="true"
- * @generated
+ * @generated NOT
  */
-public interface QStorable {
+public interface QStorable extends Serializable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
