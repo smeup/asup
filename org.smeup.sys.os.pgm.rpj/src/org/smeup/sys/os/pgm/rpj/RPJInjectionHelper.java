@@ -215,6 +215,12 @@ public class RPJInjectionHelper {
 			record = dataContainer.getDataContext().getDataFactory().createRecord(classRecord, true);
 			records.put(primaryRecordName.toLowerCase(), record);
 		}
+		// task rimozione contiguità record (BRRLCM)
+		else {
+			QRecord newRecord = dataContainer.getDataContext().getDataFactory().createRecord(classRecord, false);
+			((QDataStruct)record).assign(((QDataStruct)newRecord));
+			record = newRecord;
+		}
 
 		return record;
 	}
