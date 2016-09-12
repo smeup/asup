@@ -110,11 +110,16 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 		return decodeCommand(job, command);
 	}
 
-	@SuppressWarnings("resource")
 	@Override
 	public QDataContainer decodeCommand(QJob job, String command) {
+		return decodeCommand(job, null, command);
+	}
 
-		QCallableCommand callableCommand = prepareCommand(job, command, null, false);
+	@SuppressWarnings("resource")
+	@Override
+	public QDataContainer decodeCommand(QJob job, Map<String, Object> variables, String command) {
+
+		QCallableCommand callableCommand = prepareCommand(job, command, variables, false);
 		return callableCommand.getDataContainer();
 	}
 

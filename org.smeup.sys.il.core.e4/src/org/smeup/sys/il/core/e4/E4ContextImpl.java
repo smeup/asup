@@ -39,7 +39,7 @@ import org.smeup.sys.il.core.ctx.impl.ContextImpl;
 
 public abstract class E4ContextImpl extends ContextImpl {
 
-	private static final String ADAPTER_FACTORIES_NAME = "org.asup.fw.core.e4.context.adapterFactories";
+	private static final String ADAPTER_FACTORIES_NAME = "org.smeup.sys.il.core.e4.context.adapterFactories";
 	private static final String QTEMP = "QTEMP";
 
 	private static Boolean postConstruct = null;
@@ -129,14 +129,13 @@ public abstract class E4ContextImpl extends ContextImpl {
 		BundleWiring bundleWiring = null;
 
 		for (Bundle bundle : bundleContext.getBundles()) {
-
 			try {
 				bundleWiring = bundle.adapt(BundleWiring.class);
-				if (bundleWiring != null) {
+				if (bundleWiring != null && bundleWiring.getClassLoader() != null) {
 					class_ = bundleWiring.getClassLoader().loadClass(className);
 					break;
 				}
-
+				
 			} catch (ClassNotFoundException e) {
 				continue;
 			}

@@ -36,7 +36,7 @@ public class BaseTestManagerImpl implements QTestManager {
 	public QTestUnitRunner prepareUnitRunner(QContext context, QTestRunnerMaker testMaker, Class<?> klass) {
 
 		Bundle bundle = FrameworkUtil.getBundle(klass);
-		String classURI = "asup:/bundle/" + bundle.getSymbolicName() + "/" + klass.getName();
+		String classURI = "asup:/omac/" + bundle.getSymbolicName() + "/" + klass.getName();
 
 		QContext testContext = new BaseTestContextImpl(context.createChildContext(klass.getSimpleName()), testMaker);
 		QTestUnitRunner testRunner = new BaseTestUnitRunnerImpl(testContext, classURI);
