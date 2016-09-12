@@ -7,7 +7,7 @@
  *
  *
  * Contributors:
- *   Dario Foresti - Initial API and implementation
+ *   Giuliano Giancristofaro - Initial API and implementation
  */
 package org.smeup.sys.os.dtaq.base.api;
 
