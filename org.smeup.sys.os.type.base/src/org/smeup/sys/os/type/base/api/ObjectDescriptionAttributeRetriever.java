@@ -88,7 +88,11 @@ public @ToDo class ObjectDescriptionAttributeRetriever {
 			if (typedObject != null) {
 				cLVarForTEXT50.eval(typedObject.getText());
 				cLVarForRTNLIB10.eval(typedObject.getLibrary());
-				cLVarForOBJATR10.eval(typedObject.getAttribute());
+				if(typedObject.getAttribute() != null)
+					cLVarForOBJATR10.eval(typedObject.getAttribute());
+				else
+					cLVarForOBJATR10.clear();
+					
 				cLVarForCRTDATE13.eval(formatDate(typedObject.getCreationInfo().getCreationDate()));
 				cLVarForCRTUSER10.eval(typedObject.getCreationInfo().getCreationUser());
 			}
