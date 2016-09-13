@@ -340,12 +340,7 @@ public class DBLModelBuilder {
 				break;
 
 			case DBLLexer.ITEM_INFO:
-				/**
-				 * Expected tree format:
-				 * 
-				 * ITEM_INFO ____ VARIABLE | |___ VARIABLES ___ VALUE ___
-				 * VARIABLE | |__ VALUE | |___ VALUE ___ VARIABLE |__ VALUE
-				 */
+				
 				if (fieldToken.getChildCount() > 0) {
 
 					for (int j = 0; j < fieldToken.getChildCount(); j++) {
@@ -362,10 +357,10 @@ public class DBLModelBuilder {
 
 							// Node VARIABLES
 
-							for (int j1 = 0; j1 < fieldToken.getChild(0).getChildCount(); j1++) {
+							for (int j1 = 0; j1 < fieldToken.getChild(j).getChildCount(); j1++) {
 
 								// Node VALUE
-								Tree value = fieldToken.getChild(0).getChild(j1);
+								Tree value = fieldToken.getChild(j).getChild(j1);
 
 								QOption varValue = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
 
@@ -442,10 +437,10 @@ public class DBLModelBuilder {
 
 							// Node ITEMS
 
-							for (int j1 = 0; j1 < fieldToken.getChild(0).getChildCount(); j1++) {
+							for (int j1 = 0; j1 < fieldToken.getChild(j).getChildCount(); j1++) {
 
 								// Node ITEM
-								Tree item = fieldToken.getChild(0).getChild(j1);
+								Tree item = fieldToken.getChild(j).getChild(j1);
 
 								QOption itemValue = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
 
@@ -457,7 +452,7 @@ public class DBLModelBuilder {
 
 										// Node NAME
 										if (item.getChild(k).getChildCount() > 0)
-											itemValue.setName(item.getChild(k).getChild(0).getText());
+											itemValue.setName("'" + item.getChild(k).getChild(0).getText() + "'");
 										break;
 
 									case DBLLexer.VALUE:
@@ -469,7 +464,7 @@ public class DBLModelBuilder {
 												// as variable name
 												itemValue.setValue(item.getChild(k).getChild(0).getChild(0).getText());
 											} else {
-												itemValue.setValue(item.getChild(k).getChild(0).getText());
+												itemValue.setValue("'" + item.getChild(k).getChild(0).getText() + "'");
 											}
 										break;
 									}
@@ -1065,11 +1060,11 @@ public class DBLModelBuilder {
 
 			if (optionToken.getType() == DBLLexer.SET_OPTION) {
 				QOption option = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
-				option.setName(optionToken.getText());
+				option.setName("'" + optionToken.getText() + "'");
 
 				Tree valueToken = optionToken.getChild(0);
-				if (valueToken != null) {
-					option.setValue(valueToken.getText());
+				if (valueToken != null) {					
+						option.setValue("'" + valueToken.getText() + "'");					
 					setOptionStatement.getOptions().add(option);
 				}
 			} else
@@ -1189,7 +1184,7 @@ public class DBLModelBuilder {
 								break;
 							case DBLLexer.VALUE:
 
-								conditionItem.setValue(valueNodeChild.getChild(0).getText());
+								conditionItem.setValue("'" + valueNodeChild.getChild(0).getText() + "'");
 								break;
 
 							}

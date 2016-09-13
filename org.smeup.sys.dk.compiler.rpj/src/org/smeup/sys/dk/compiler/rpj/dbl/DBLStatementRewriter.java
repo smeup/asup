@@ -316,7 +316,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 		methodExec.getParameters().add(bindingStatement.getDescriptorName());
 		
 		// Scope
-		methodExec.getParameters().add(bindingStatement.getDescriptorScope().getLiteral());
+		methodExec.getParameters().add(formatDescriptorScope(bindingStatement.getDescriptorScope().getLiteral()));
 
 		// withMax
 		methodExec.getParameters().add(bindingStatement.getWithMax());
@@ -341,13 +341,13 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 				methodExec.getParameters().add(bindingStatement.getDescriptorName());
 	
 				// Scope
-				methodExec.getParameters().add(bindingStatement.getDescriptorScope().getLiteral());
+				methodExec.getParameters().add(formatDescriptorScope(bindingStatement.getDescriptorScope().getLiteral()));
 	
 				// Value
 				if (bindingStatement.getValue() != null) {
 					methodExec.getParameters().add(bindingStatement.getValue());
 				} else {
-					methodExec.getParameters().add("");
+					methodExec.getParameters().add("*NULL");
 				}
 				
 				// Variable name			
@@ -356,7 +356,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 				
 				// Variable value
 				String varValue = variable.getValue().trim();
-				methodExec.getParameters().add(varValue);
+				methodExec.getParameters().add("'" + varValue + "'");
 				
 				block.getStatements().add(methodExec);
 			}
@@ -366,25 +366,28 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 		} else {
 			
 			QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-			methodExec.setObject(bindingStatement.getDescriptorName());
+			methodExec.setObject(QSQL);
 			methodExec.setMethod(GET_DESCRIPTOR_METHOD);
+			
+			// Descriptor name
+			methodExec.getParameters().add(bindingStatement.getDescriptorName());
 
 			// Scope
-			methodExec.getParameters().add(bindingStatement.getDescriptorScope().getLiteral());
+			methodExec.getParameters().add(formatDescriptorScope(bindingStatement.getDescriptorScope().getLiteral()));
 
 			// Value
 			if (bindingStatement.getValue() != null) {
 				methodExec.getParameters().add(bindingStatement.getValue());
 			} else {
-				methodExec.getParameters().add("");
+				methodExec.getParameters().add("*NULL");
 			}
 			
 			if (bindingStatement.getVariables().size() == 1){				
 				methodExec.getParameters().add(bindingStatement.getVariables().get(0).getName());						
-				methodExec.getParameters().add(bindingStatement.getVariables().get(0).getValue());
+				methodExec.getParameters().add("'" + bindingStatement.getVariables().get(0).getValue() + "'");
 			} else {			
-				methodExec.getParameters().add("");						
-				methodExec.getParameters().add("");
+				methodExec.getParameters().add("*NULL");						
+				methodExec.getParameters().add("*NULL");
 			}
 			
 			result = methodExec;
@@ -415,7 +418,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 				if (bindingStatement.getValue() != null) {
 					methodExec.getParameters().add(bindingStatement.getValue());
 				} else {
-					methodExec.getParameters().add("");
+					methodExec.getParameters().add("*NULL");
 				}
 				
 				// Item name
@@ -443,15 +446,15 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 			if (bindingStatement.getValue() != null) {
 				methodExec.getParameters().add(bindingStatement.getValue());
 			} else {
-				methodExec.getParameters().add("");
+				methodExec.getParameters().add("*NULL");
 			}
 			// Item name and value
 			if (bindingStatement.getItems().size() == 1){				
 				methodExec.getParameters().add(bindingStatement.getItems().get(0).getName());						
 				methodExec.getParameters().add(bindingStatement.getItems().get(0).getValue());
 			} else {			
-				methodExec.getParameters().add("");						
-				methodExec.getParameters().add("");
+				methodExec.getParameters().add("*NULL");						
+				methodExec.getParameters().add("*NULL");
 			}
 			
 			result = methodExec;
@@ -478,7 +481,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 				if (bindingStatement.getConditionInfo().getCondition() != null) {
 					methodExec.getParameters().add(bindingStatement.getConditionInfo().getCondition());
 				} else {
-					methodExec.getParameters().add("");
+					methodExec.getParameters().add("*NULL");
 				}
 				
 				// Item name
@@ -486,7 +489,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 					String itemName = item.getName().trim();
 					methodExec.getParameters().add(itemName);
 				} else {
-					methodExec.getParameters().add("");
+					methodExec.getParameters().add("*NULL");
 				}
 				
 				// Item Value
@@ -494,7 +497,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 					String itemValue = item.getValue().trim();
 					methodExec.getParameters().add(itemValue);
 				} else {
-					methodExec.getParameters().add("");
+					methodExec.getParameters().add("*NULL");
 				}
 				
 				block.getStatements().add(methodExec);								
@@ -512,15 +515,15 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 			if (bindingStatement.getConditionInfo().getCondition() != null) {
 				methodExec.getParameters().add(bindingStatement.getConditionInfo().getCondition());
 			} else {
-				methodExec.getParameters().add("");
+				methodExec.getParameters().add("*NULL");
 			}
 			
 			if (bindingStatement.getConditionInfo().getConditionItems().size() == 1){				
 				methodExec.getParameters().add(bindingStatement.getConditionInfo().getConditionItems().get(0).getName());						
 				methodExec.getParameters().add(bindingStatement.getConditionInfo().getConditionItems().get(0).getValue());
 			} else {			
-				methodExec.getParameters().add("");						
-				methodExec.getParameters().add("");
+				methodExec.getParameters().add("*NULL");						
+				methodExec.getParameters().add("*NULL");
 			}
 			
 			result = methodExec;
@@ -539,7 +542,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 		methodExec.getParameters().add(bindingStatement.getDescriptorName());
 		
 		// Scope
-		methodExec.getParameters().add(bindingStatement.getDescriptorScope().getLiteral());
+		methodExec.getParameters().add(formatDescriptorScope(bindingStatement.getDescriptorScope().getLiteral()));
 
 		return methodExec;
 	}
@@ -935,5 +938,9 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 			result = true;
 
 		return result;
+	}
+	
+	private String formatDescriptorScope(String descriptorName) {
+		return "'" + descriptorName + "'";
 	}
 }

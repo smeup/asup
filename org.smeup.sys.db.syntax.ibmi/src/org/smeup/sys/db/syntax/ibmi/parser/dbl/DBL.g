@@ -1584,7 +1584,7 @@ COMMENT
     ;
 
 Descriptor_Name
-	: '\'' Identifier '\'' { setText(getText().substring(1, getText().length()-1)); } //Elimina gli apici dal nome del descrittore
+	: '\'' Identifier '\'' //{ setText(getText().substring(1, getText().length()-1)); } //Elimina gli apici dal nome del descrittore
 	;
 
 /*
