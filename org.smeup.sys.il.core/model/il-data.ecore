@@ -1466,6 +1466,9 @@
     <eOperations name="copy" lowerBound="1" eType="#//BufferedData">
       <eParameters name="data" lowerBound="1" eType="#//BufferedData"/>
     </eOperations>
+    <eOperations name="deserialize">
+      <eParameters name="stream" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaInputStream"/>
+    </eOperations>
     <eOperations name="endOfData" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="equal" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="error" lowerBound="1" eType="#//Indicator"/>
@@ -1474,6 +1477,7 @@
     <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
     <eOperations name="getDateFormat" lowerBound="1" eType="#//def/DateFormat"/>
     <eOperations name="getTimeFormat" lowerBound="1" eType="#//def/TimeFormat"/>
+    <eOperations name="serialize" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaOutputStream"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataDelegator" abstract="true" interface="true">
     <eTypeParameters name="D">
@@ -1937,6 +1941,9 @@
     <eOperations name="asTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
+    </eOperations>
+    <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     </eOperations>
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>

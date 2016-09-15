@@ -506,6 +506,11 @@ public final class NIODatetimeImpl extends NIOBufferedElementImpl implements QDa
 	}
 
 	@Override
+	public boolean eq(Date value) {
+		return asDate().compareTo(value) == 0;
+	}
+
+	@Override
 	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
 		final NIODatetimeImpl copy = new NIODatetimeImpl(dataContext, _type, _dateFormat, _timeFormat, false);
 		return copy;

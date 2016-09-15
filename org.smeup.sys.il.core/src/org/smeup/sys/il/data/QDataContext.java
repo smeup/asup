@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.data;
 
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.charset.Charset;
 
 import org.smeup.sys.il.core.ctx.QContextProvider;
@@ -33,6 +35,14 @@ public interface QDataContext extends QContextProvider {
 	 * @generated
 	 */
 	QBufferedData copy(QBufferedData data);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model streamDataType="org.smeup.sys.mi.core.JavaInputStream" streamRequired="true"
+	 * @generated
+	 */
+	void deserialize(InputStream stream);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,6 +99,14 @@ public interface QDataContext extends QContextProvider {
 	 * @generated
 	 */
 	TimeFormat getTimeFormat();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.smeup.sys.mi.core.JavaOutputStream"
+	 * @generated
+	 */
+	OutputStream serialize();
 
 	/**
 	 * <!-- begin-user-doc -->
