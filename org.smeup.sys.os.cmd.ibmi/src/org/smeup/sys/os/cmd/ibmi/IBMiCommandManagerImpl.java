@@ -98,7 +98,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 	@Override
 	public QCallableCommand prepareCommand(QJob job, String command, Map<String, Object> variables, boolean controlRequiredParms) {
 		
-//		System.out.println("cmd: " + command);		
+		System.out.println("cmd: " + command);		
 
 		if (command == null || command.trim().equals(""))
 			throw new OperatingSystemRuntimeException("Empty command line", null);
@@ -212,8 +212,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			if (controlRequiredParms) {
 				if ((data == null || (!value.startsWith("&") && data.isEmpty())) && commandParameter.isRequired())
 					throw new OperatingSystemRuntimeException("Required parameter: " + commandParameter.getName());
-			}
-				
+			}				
 		}
 		
 		return callableCommand;
@@ -223,10 +222,9 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		
 		QData data = dataContainer.getData(dataTerm);
 
-		// Manage vars
-		if (value.startsWith("&")) {
-
-			int e = 1;
+		// Manage value as single var
+		if (isSingleVariable(value)) {
+			
 			String[] tokens = null;
 			
 			Iterator<QBufferedData> elements = null;
@@ -253,6 +251,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			
 			for(String token: tokens) {
 
+				
 				Object variable = variables.get(token.substring(1).toLowerCase());
 
 				if (variable == null)
@@ -263,7 +262,8 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 				if (data instanceof QList<?>) {
 					QList<?> list = (QList<?>) data;
-					((QBufferedData) variable).assign((QBufferedData) list.get(e));
+					writer.set(variable);
+					list.accept(writer);					
 				}
 				else if(data instanceof QDataStruct && elements != null) {
 					writer.set(variable);
@@ -271,9 +271,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				}
 				else if (data instanceof QBufferedData) {
 					((QBufferedData) variable).assign((QBufferedData) data);
-				} 
-
-				e++;
+				}				
 			}
 
 			return data;
@@ -307,7 +305,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				QFormat format = dataTerm.getFacet(QFormat.class);
 				if (format != null && format.getType() == FormatType.COMMAND_STRING){
 					value = paramComp.getText();
-					setValue(writer, data, value);
+					setValue(writer, data, value, variables);
 				}else{
 					if (paramComp.getComponentType() == CLParmComponentType.LIST) {
 
@@ -321,14 +319,16 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 							// if(listAtomic instanceof QScroller<?>)
 							// ((QScroller<?>)listAtomic).absolute(counter);
 
-							value = buildParameterValue(dataTerm, iterator.next(), variables);
+							value = buildParameterValue(dataTerm, iterator.next());
 
 							QData listItem = listAtomic.get(counter);
 
-							setValue(writer, listItem, value);
+							setValue(writer, listItem, value, variables);
 
 							counter++;
 						}
+					} else {
+						throw new OperatingSystemRuntimeException("Wrong command parameter format (wait for List): " + value, null);
 					}
 				}
 			} else {
@@ -337,7 +337,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 				for (int i = 1; i < capacity; i++) {
 					QData listItem = listAtomic.get(i);
-					setValue(writer, listItem, "");
+					setValue(writer, listItem, "", variables);
 				}
 
 			}
@@ -360,9 +360,12 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				multipleParamComp = (CLParmAbstractComponent) clParameterParser.parse(value);
 			} catch (CLScriptException exc) {
 				throw new OperatingSystemRuntimeException("Cannot parse command parameter: " + value, null);
-			}	
+			}
+			
+			CLParmAbstractComponent firstList = multipleParamComp.getChilds().getFirst();
+			
 
-			Iterator<CLParmAbstractComponent> multipleParmIterator = multipleParamComp.getChilds().iterator();
+			Iterator<CLParmAbstractComponent> multipleParmIterator = firstList.getChilds().iterator();
 
 			int i = 1;
 			while (multipleParmIterator.hasNext()) {
@@ -372,7 +375,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 					((QScroller<?>) data).absolute(i);
 
 				if (isSpecialValue(dataTerm, tmpValue))
-					setValue(writer, data, resolveSpecialValue(dataTerm, tmpValue));
+					setValue(writer, data, resolveSpecialValue(dataTerm, tmpValue), variables);
 				else
 					assignStructValue(multipleCompoundDataDef, dataContainer, writer, tmpValue, variables);
 
@@ -406,7 +409,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 					// COMMAND format (not detected by AntLR parser)
 					value = paramComp.getText();
 				else if (paramComp instanceof CLParmList) {
-					value = buildParameterValue(dataTerm, paramComp.getChilds().getFirst().getChilds().getFirst(), variables);					
+					value = buildParameterValue(dataTerm, paramComp.getChilds().getFirst());					
 				}	
 				else
 					// Error: received a list of values in an unary parameter
@@ -414,7 +417,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 			} 
 
-			setValue(writer, data, value);
+			setValue(writer, data, value, variables);
 			
 			dbgString = dataTerm.toString();
 
@@ -434,7 +437,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			// assignValue(struct, structValue);
 
 			if (isSpecialValue(dataTerm, value))
-				setValue(writer, data, resolveSpecialValue(dataTerm, value));
+				setValue(writer, data, resolveSpecialValue(dataTerm, value), variables);
 			else
 				assignStructValue(unaryCompoundDataDef, dataContainer, writer, value, variables);
 
@@ -488,103 +491,11 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		}		
 	}
 
-	private String buildParameterValue(QDataTerm<?> dataTerm, CLParmAbstractComponent parmValue, Map<String, Object> variables) {
+	private String buildParameterValue(QDataTerm<?> dataTerm, CLParmAbstractComponent parmValue) {
 
 		String value = null;
 
 		switch (parmValue.getComponentType()) {
-
-		case LIST:
-
-			LinkedList<CLParmAbstractComponent> listChilds = parmValue.getChilds();
-			Iterator<CLParmAbstractComponent> listIterator = listChilds.iterator();
-
-			while (listIterator.hasNext()) {
-
-				String tmp = buildParameterValue(dataTerm, listIterator.next(), variables);
-
-				// All list elements have to match the DataTerm format
-				if (matchFormat(dataTerm, tmp))
-					value += tmp + " ";
-				else
-					throw new OperatingSystemRuntimeException("Invalid format for parm value: " + value);
-
-				value += tmp + " ";
-			}
-
-			if (value.endsWith(" "))
-				value = value.substring(0, value.length() - 2);
-
-			break;
-
-		case VALUE:
-
-			value = "";
-
-			LinkedList<CLParmAbstractComponent> childs = parmValue.getChilds();
-			Iterator<CLParmAbstractComponent> iterator = childs.iterator();
-
-			while (iterator.hasNext())
-				value = buildParameterValue(dataTerm, iterator.next(), variables) + " ";
-
-			if (value.endsWith(" "))
-				value = value.substring(0, value.length() - 1);
-			
-			if (value.equals("''"))
-				value = "";
-
-			// The result value have to match the dataTerm format
-			if (!isSpecialValue(dataTerm, value))
-				if (matchFormat(dataTerm, value) == false)
-					throw new OperatingSystemRuntimeException("Invalid format for parm value: " + value);
-
-			break;
-
-		case FUNCTION:
-
-			value = "%" + parmValue.getText() + "(";
-
-			CLParmList functionParms = ((CLParmFunction) parmValue).getParms();
-
-			Iterator<CLParmAbstractComponent> funParmIterator = functionParms.getChilds().iterator();
-
-			while (funParmIterator.hasNext())
-				value += buildParameterValue(dataTerm, funParmIterator.next(), variables) + "";
-
-			if (value.endsWith(" ")) {
-				value = value.substring(0, value.length() - 2);
-				value += ")";
-			}
-
-			break;
-
-		case SPECIAL:
-
-			if (isSpecialValue(dataTerm, parmValue.toString()))
-				value = resolveSpecialValue(dataTerm, parmValue.toString());
-			else {
-				value = parmValue.toString();
-				if (matchFormat(dataTerm, value) == false)
-					throw new OperatingSystemRuntimeException("Invalid format for parm value: " + value);
-			}
-
-			break;
-
-		case FILTER:
-		case STR_OPERATOR:
-		case HEX:
-
-			value = parmValue.toString();
-
-			break;
-
-		case STRING:
-
-			value = parmValue.toString();
-			if (matchFormat(dataTerm, value) == false)
-				throw new OperatingSystemRuntimeException("Invalid format for parm value: " + value);
-
-			break;
 
 		case TOKEN:
 
@@ -596,19 +507,73 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 					throw new OperatingSystemRuntimeException("Invalid format for parm value: " + value);
 			}
 			break;
-
-		case VARIABLE:
-
-			String varName = parmValue.toString().substring(1).toLowerCase();
 			
-			if (variables != null && variables.containsKey(varName))
-			{	
-				value = variables.get(varName).toString();
-			} else {
+		case VARIABLE:			
+
+			value = parmValue.toString();
+
+			break;
+		
+		case SPECIAL:
+
+			if (isSpecialValue(dataTerm, parmValue.toString()))
+				value = resolveSpecialValue(dataTerm, parmValue.toString());
+			else {
 				value = parmValue.toString();
+				if (matchFormat(dataTerm, value) == false)
+					throw new OperatingSystemRuntimeException("Invalid format for parm value: " + value);
 			}
+
+			break;
+		
+		case STRING:
+
+			value = parmValue.toString();
+			if (matchFormat(dataTerm, value) == false)
+				throw new OperatingSystemRuntimeException("Invalid format for parm value: " + value);
+
+			break;
+			
+		case FILTER:			
+
+			value = parmValue.toString();
+
+			break;
+		
+		case HEX:
+			
+			value = parmValue.toString();
+			
+			if (value != null && value.startsWith("X'") && value.endsWith("'")) {
+				value = value.substring(2, value.length() - 1);
+			}	
+			break;
+		
+		case STR_OPERATOR:
+			
+			//TODO: implementare
+			value = parmValue.toString();
 			
 			break;
+			
+		case FUNCTION:
+
+			value = "%" + parmValue.getText() + "(";
+
+			CLParmList functionParms = ((CLParmFunction) parmValue).getParms();
+
+			Iterator<CLParmAbstractComponent> funParmIterator = functionParms.getChilds().iterator();
+
+			while (funParmIterator.hasNext())
+				value += buildParameterValue(dataTerm, funParmIterator.next()) + "";
+
+			if (value.endsWith(" ")) {
+				value = value.substring(0, value.length() - 2);
+				value += ")";
+			}
+
+			break;
+
 
 		default:
 			value = null;
@@ -616,10 +581,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		}
 
 		// Manage HEX default values
-		if (value != null && value.startsWith("X'") && value.endsWith("'")) {
-			value = value.substring(2, value.length() - 1);
-			System.out.println("Hexadecimal founded: " + value + " " + dataTerm.getName());
-		}
+		
 
 		return value;
 
@@ -681,33 +643,50 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 	}
 
-	private void setValue(QDataWriter writer, QData data, Object value) {
-
-		if (data instanceof QEnum) {
-			@SuppressWarnings("unchecked")
-			QEnum<?, QBufferedElement> enumerator = (QEnum<?, QBufferedElement>) data;
-
-			QBufferedElement element = enumerator.asData();
-			switch (element.getBufferedElementType()) {
-			case DATETIME:
-				element.movel(value.toString(), true);
-				break;
-			case NUMERIC:
-				((QNumeric)element).eval(new BigDecimal(value.toString()));
-				break;
-			case STRING:
-				((QString)element).eval(value.toString());
-				break;
+	private void setValue(QDataWriter writer, QData data, Object value, Map<String, Object> variables) {
+		
+		if (isSingleVariable(value.toString())) {
+			
+			// Il valore è una variabile
+			if (variables != null) {
+				Object variable = variables.get(value.toString().substring(1));
+				
+				if (variable != null && variable instanceof QBufferedData) {
+					((QBufferedData)variable).assign((QBufferedData)data);
+				}
 			}
-
-		} else if (data instanceof QAdapter) {
-			QAdapter adapter = (QAdapter) data;
-			adapter.eval(value);
-		} else
-			data.accept(writer.set(value.toString()));
+			
+		} else {	
+			if (data instanceof QEnum) {
+				@SuppressWarnings("unchecked")
+				QEnum<?, QBufferedElement> enumerator = (QEnum<?, QBufferedElement>) data;
+	
+				QBufferedElement element = enumerator.asData();
+				switch (element.getBufferedElementType()) {
+				case DATETIME:
+					element.movel(value.toString(), true);
+					break;
+				case NUMERIC:
+					((QNumeric)element).eval(new BigDecimal(value.toString()));
+					break;
+				case STRING:
+					((QString)element).eval(value.toString());
+					break;
+				}
+	
+			} else if (data instanceof QAdapter) {
+				QAdapter adapter = (QAdapter) data;
+				adapter.eval(value);
+			} else
+				data.accept(writer.set(value.toString()));
+		}
 	}
 	
 	private boolean isEmptyString(String value) {
 		return value.trim().isEmpty();
+	}
+	
+	private boolean isSingleVariable(String value) {		
+		return value.trim().startsWith("&") && !value.trim().contains(" ");
 	}
 }

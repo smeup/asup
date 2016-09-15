@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g 2016-07-12 15:54:36
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g 2016-09-15 17:08:29
 
   package org.smeup.sys.dk.parser.ibmi.cl.antlr;
   
@@ -9,6 +9,8 @@ import org.antlr.runtime.*;
 import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 import org.antlr.runtime.tree.*;
 
@@ -20,8 +22,8 @@ public class CLParameterParser extends Parser {
 		"BCAT", "BINARY", "C", "CAT", "CHAR_SPECIAL", "CLOSE_BRACE", "COMMENT", 
 		"CR", "D", "E", "ESCAPE", "F", "FILTER", "FUNCTION", "G", "H", "HEX", 
 		"I", "J", "K", "L", "LIST", "M", "N", "O", "OPEN_BRACE", "P", "Q", "R", 
-		"S", "SPECIAL", "SST", "STRING", "SWITCH", "T", "TCAT", "TOKEN", "U", 
-		"V", "VALUE", "VARIABLE", "W", "WS", "X", "Y", "Z"
+		"S", "SPECIAL", "SST", "STRING", "STR_OPERATOR", "SWITCH", "T", "TCAT", 
+		"TOKEN", "U", "V", "VARIABLE", "W", "WS", "X", "Y", "Z"
 	};
 	public static final int EOF=-1;
 	public static final int A=4;
@@ -61,13 +63,13 @@ public class CLParameterParser extends Parser {
 	public static final int SPECIAL=38;
 	public static final int SST=39;
 	public static final int STRING=40;
-	public static final int SWITCH=41;
-	public static final int T=42;
-	public static final int TCAT=43;
-	public static final int TOKEN=44;
-	public static final int U=45;
-	public static final int V=46;
-	public static final int VALUE=47;
+	public static final int STR_OPERATOR=41;
+	public static final int SWITCH=42;
+	public static final int T=43;
+	public static final int TCAT=44;
+	public static final int TOKEN=45;
+	public static final int U=46;
+	public static final int V=47;
 	public static final int VARIABLE=48;
 	public static final int W=49;
 	public static final int WS=50;
@@ -134,7 +136,7 @@ public class CLParameterParser extends Parser {
 
 
 	// $ANTLR start "parse"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:93:1: parse : ( elem )* -> ^( LIST[$parse.text] ( elem )* ) ;
+	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:95:1: parse : ( elem )* -> ^( LIST[$parse.text] ( elem )* ) ;
 	public final CLParameterParser.parse_return parse() throws RecognitionException {
 		CLParameterParser.parse_return retval = new CLParameterParser.parse_return();
 		retval.start = input.LT(1);
@@ -146,27 +148,27 @@ public class CLParameterParser extends Parser {
 		RewriteRuleSubtreeStream stream_elem=new RewriteRuleSubtreeStream(adaptor,"rule elem");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:94:3: ( ( elem )* -> ^( LIST[$parse.text] ( elem )* ) )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:95:3: ( elem )*
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:96:3: ( ( elem )* -> ^( LIST[$parse.text] ( elem )* ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:97:2: ( elem )*
 			{
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:95:3: ( elem )*
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:97:2: ( elem )*
 			loop1:
 			while (true) {
 				int alt1=2;
 				int LA1_0 = input.LA(1);
-				if ( (LA1_0==ASTERISK||LA1_0==BINARY||LA1_0==ESCAPE||LA1_0==FILTER||LA1_0==HEX||LA1_0==OPEN_BRACE||(LA1_0 >= SPECIAL && LA1_0 <= SWITCH)||LA1_0==TOKEN||LA1_0==VARIABLE) ) {
+				if ( (LA1_0==ASTERISK||LA1_0==BINARY||LA1_0==ESCAPE||LA1_0==FILTER||LA1_0==HEX||LA1_0==OPEN_BRACE||(LA1_0 >= SPECIAL && LA1_0 <= STRING)||LA1_0==SWITCH||LA1_0==TOKEN||LA1_0==VARIABLE) ) {
 					alt1=1;
 				}
 
 				switch (alt1) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:95:4: elem
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:97:2: elem
 					{
-					pushFollow(FOLLOW_elem_in_parse118);
+					pushFollow(FOLLOW_elem_in_parse123);
 					elem1=elem();
 					state._fsp--;
-
-					stream_elem.add(elem1.getTree());
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) stream_elem.add(elem1.getTree());
 					}
 					break;
 
@@ -182,17 +184,18 @@ public class CLParameterParser extends Parser {
 			// token list labels: 
 			// rule list labels: 
 			// wildcard labels: 
+			if ( state.backtracking==0 ) {
 			retval.tree = root_0;
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 95:11: -> ^( LIST[$parse.text] ( elem )* )
+			// 97:8: -> ^( LIST[$parse.text] ( elem )* )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:95:14: ^( LIST[$parse.text] ( elem )* )
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:97:11: ^( LIST[$parse.text] ( elem )* )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(LIST, input.toString(retval.start,input.LT(-1))), root_1);
-				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:95:34: ( elem )*
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:97:31: ( elem )*
 				while ( stream_elem.hasNext() ) {
 					adaptor.addChild(root_1, stream_elem.nextTree());
 				}
@@ -205,14 +208,16 @@ public class CLParameterParser extends Parser {
 
 
 			retval.tree = root_0;
+			}
 
 			}
 
 			retval.stop = input.LT(-1);
 
+			if ( state.backtracking==0 ) {
 			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
 			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
+			}
 		}
 
 		    catch (RecognitionException e) {
@@ -236,29 +241,30 @@ public class CLParameterParser extends Parser {
 
 
 	// $ANTLR start "elem"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:98:1: elem : ( composite | list );
+	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:100:1: elem : ( list | composite );
 	public final CLParameterParser.elem_return elem() throws RecognitionException {
 		CLParameterParser.elem_return retval = new CLParameterParser.elem_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope composite2 =null;
-		ParserRuleReturnScope list3 =null;
+		ParserRuleReturnScope list2 =null;
+		ParserRuleReturnScope composite3 =null;
 
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:99:2: ( composite | list )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:101:2: ( list | composite )
 			int alt2=2;
 			int LA2_0 = input.LA(1);
-			if ( (LA2_0==ASTERISK||LA2_0==BINARY||LA2_0==ESCAPE||LA2_0==FILTER||LA2_0==HEX||(LA2_0 >= SPECIAL && LA2_0 <= SWITCH)||LA2_0==TOKEN||LA2_0==VARIABLE) ) {
+			if ( (LA2_0==OPEN_BRACE) ) {
 				alt2=1;
 			}
-			else if ( (LA2_0==OPEN_BRACE) ) {
+			else if ( (LA2_0==ASTERISK||LA2_0==BINARY||LA2_0==ESCAPE||LA2_0==FILTER||LA2_0==HEX||(LA2_0 >= SPECIAL && LA2_0 <= STRING)||LA2_0==SWITCH||LA2_0==TOKEN||LA2_0==VARIABLE) ) {
 				alt2=2;
 			}
 
 			else {
+				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
 					new NoViableAltException("", 2, 0, input);
 				throw nvae;
@@ -266,30 +272,30 @@ public class CLParameterParser extends Parser {
 
 			switch (alt2) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:100:5: composite
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:102:5: list
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_composite_in_elem152);
-					composite2=composite();
+					pushFollow(FOLLOW_list_in_elem157);
+					list2=list();
 					state._fsp--;
-
-					adaptor.addChild(root_0, composite2.getTree());
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, list2.getTree());
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:100:15: list
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:102:10: composite
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_list_in_elem154);
-					list3=list();
+					pushFollow(FOLLOW_composite_in_elem159);
+					composite3=composite();
 					state._fsp--;
-
-					adaptor.addChild(root_0, list3.getTree());
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, composite3.getTree());
 
 					}
 					break;
@@ -297,9 +303,10 @@ public class CLParameterParser extends Parser {
 			}
 			retval.stop = input.LT(-1);
 
+			if ( state.backtracking==0 ) {
 			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
 			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
+			}
 		}
 
 		    catch (RecognitionException e) {
@@ -315,124 +322,6 @@ public class CLParameterParser extends Parser {
 	// $ANTLR end "elem"
 
 
-	public static class composite_return extends ParserRuleReturnScope {
-		CommonTree tree;
-		@Override
-		public CommonTree getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "composite"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:104:3: composite : value ( operator value )* -> ^( VALUE[$composite.text] value ( operator value )* ) ;
-	public final CLParameterParser.composite_return composite() throws RecognitionException {
-		CLParameterParser.composite_return retval = new CLParameterParser.composite_return();
-		retval.start = input.LT(1);
-
-		CommonTree root_0 = null;
-
-		ParserRuleReturnScope value4 =null;
-		ParserRuleReturnScope operator5 =null;
-		ParserRuleReturnScope value6 =null;
-
-		RewriteRuleSubtreeStream stream_value=new RewriteRuleSubtreeStream(adaptor,"rule value");
-		RewriteRuleSubtreeStream stream_operator=new RewriteRuleSubtreeStream(adaptor,"rule operator");
-
-		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:105:3: ( value ( operator value )* -> ^( VALUE[$composite.text] value ( operator value )* ) )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:106:4: value ( operator value )*
-			{
-			pushFollow(FOLLOW_value_in_composite183);
-			value4=value();
-			state._fsp--;
-
-			stream_value.add(value4.getTree());
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:106:10: ( operator value )*
-			loop3:
-			while (true) {
-				int alt3=2;
-				int LA3_0 = input.LA(1);
-				if ( (LA3_0==BCAT||LA3_0==CAT||LA3_0==TCAT) ) {
-					alt3=1;
-				}
-
-				switch (alt3) {
-				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:106:11: operator value
-					{
-					pushFollow(FOLLOW_operator_in_composite186);
-					operator5=operator();
-					state._fsp--;
-
-					stream_operator.add(operator5.getTree());
-					pushFollow(FOLLOW_value_in_composite188);
-					value6=value();
-					state._fsp--;
-
-					stream_value.add(value6.getTree());
-					}
-					break;
-
-				default :
-					break loop3;
-				}
-			}
-
-			// AST REWRITE
-			// elements: value, value, operator
-			// token labels: 
-			// rule labels: retval
-			// token list labels: 
-			// rule list labels: 
-			// wildcard labels: 
-			retval.tree = root_0;
-			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
-
-			root_0 = (CommonTree)adaptor.nil();
-			// 106:28: -> ^( VALUE[$composite.text] value ( operator value )* )
-			{
-				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:106:31: ^( VALUE[$composite.text] value ( operator value )* )
-				{
-				CommonTree root_1 = (CommonTree)adaptor.nil();
-				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(VALUE, input.toString(retval.start,input.LT(-1))), root_1);
-				adaptor.addChild(root_1, stream_value.nextTree());
-				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:106:62: ( operator value )*
-				while ( stream_value.hasNext()||stream_operator.hasNext() ) {
-					adaptor.addChild(root_1, stream_operator.nextTree());
-					adaptor.addChild(root_1, stream_value.nextTree());
-				}
-				stream_value.reset();
-				stream_operator.reset();
-
-				adaptor.addChild(root_0, root_1);
-				}
-
-			}
-
-
-			retval.tree = root_0;
-
-			}
-
-			retval.stop = input.LT(-1);
-
-			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-		}
-
-		    catch (RecognitionException e) {
-		        RuntimeException re = hlp.createException(e);
-		        throw re;
-		    }
-
-		finally {
-			// do for sure before leaving
-		}
-		return retval;
-	}
-	// $ANTLR end "composite"
-
-
 	public static class list_return extends ParserRuleReturnScope {
 		CommonTree tree;
 		@Override
@@ -441,58 +330,58 @@ public class CLParameterParser extends Parser {
 
 
 	// $ANTLR start "list"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:109:1: list : OPEN_BRACE ( elem )* CLOSE_BRACE -> ^( LIST[$list.text] ( elem )* ) ;
+	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:105:1: list : OPEN_BRACE ( elem )* CLOSE_BRACE -> ^( LIST[$list.text] ( elem )* ) ;
 	public final CLParameterParser.list_return list() throws RecognitionException {
 		CLParameterParser.list_return retval = new CLParameterParser.list_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		Token OPEN_BRACE7=null;
-		Token CLOSE_BRACE9=null;
-		ParserRuleReturnScope elem8 =null;
+		Token OPEN_BRACE4=null;
+		Token CLOSE_BRACE6=null;
+		ParserRuleReturnScope elem5 =null;
 
-		CommonTree OPEN_BRACE7_tree=null;
-		CommonTree CLOSE_BRACE9_tree=null;
+		CommonTree OPEN_BRACE4_tree=null;
+		CommonTree CLOSE_BRACE6_tree=null;
 		RewriteRuleTokenStream stream_OPEN_BRACE=new RewriteRuleTokenStream(adaptor,"token OPEN_BRACE");
 		RewriteRuleTokenStream stream_CLOSE_BRACE=new RewriteRuleTokenStream(adaptor,"token CLOSE_BRACE");
 		RewriteRuleSubtreeStream stream_elem=new RewriteRuleSubtreeStream(adaptor,"rule elem");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:110:3: ( OPEN_BRACE ( elem )* CLOSE_BRACE -> ^( LIST[$list.text] ( elem )* ) )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:111:3: OPEN_BRACE ( elem )* CLOSE_BRACE
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:106:3: ( OPEN_BRACE ( elem )* CLOSE_BRACE -> ^( LIST[$list.text] ( elem )* ) )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:107:3: OPEN_BRACE ( elem )* CLOSE_BRACE
 			{
-			OPEN_BRACE7=(Token)match(input,OPEN_BRACE,FOLLOW_OPEN_BRACE_in_list229);  
-			stream_OPEN_BRACE.add(OPEN_BRACE7);
+			OPEN_BRACE4=(Token)match(input,OPEN_BRACE,FOLLOW_OPEN_BRACE_in_list184); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_OPEN_BRACE.add(OPEN_BRACE4);
 
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:111:14: ( elem )*
-			loop4:
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:107:14: ( elem )*
+			loop3:
 			while (true) {
-				int alt4=2;
-				int LA4_0 = input.LA(1);
-				if ( (LA4_0==ASTERISK||LA4_0==BINARY||LA4_0==ESCAPE||LA4_0==FILTER||LA4_0==HEX||LA4_0==OPEN_BRACE||(LA4_0 >= SPECIAL && LA4_0 <= SWITCH)||LA4_0==TOKEN||LA4_0==VARIABLE) ) {
-					alt4=1;
+				int alt3=2;
+				int LA3_0 = input.LA(1);
+				if ( (LA3_0==ASTERISK||LA3_0==BINARY||LA3_0==ESCAPE||LA3_0==FILTER||LA3_0==HEX||LA3_0==OPEN_BRACE||(LA3_0 >= SPECIAL && LA3_0 <= STRING)||LA3_0==SWITCH||LA3_0==TOKEN||LA3_0==VARIABLE) ) {
+					alt3=1;
 				}
 
-				switch (alt4) {
+				switch (alt3) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:111:15: elem
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:107:15: elem
 					{
-					pushFollow(FOLLOW_elem_in_list232);
-					elem8=elem();
+					pushFollow(FOLLOW_elem_in_list187);
+					elem5=elem();
 					state._fsp--;
-
-					stream_elem.add(elem8.getTree());
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) stream_elem.add(elem5.getTree());
 					}
 					break;
 
 				default :
-					break loop4;
+					break loop3;
 				}
 			}
 
-			CLOSE_BRACE9=(Token)match(input,CLOSE_BRACE,FOLLOW_CLOSE_BRACE_in_list236);  
-			stream_CLOSE_BRACE.add(CLOSE_BRACE9);
+			CLOSE_BRACE6=(Token)match(input,CLOSE_BRACE,FOLLOW_CLOSE_BRACE_in_list191); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_CLOSE_BRACE.add(CLOSE_BRACE6);
 
 			// AST REWRITE
 			// elements: elem
@@ -501,17 +390,18 @@ public class CLParameterParser extends Parser {
 			// token list labels: 
 			// rule list labels: 
 			// wildcard labels: 
+			if ( state.backtracking==0 ) {
 			retval.tree = root_0;
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 111:34: -> ^( LIST[$list.text] ( elem )* )
+			// 107:34: -> ^( LIST[$list.text] ( elem )* )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:111:37: ^( LIST[$list.text] ( elem )* )
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:107:37: ^( LIST[$list.text] ( elem )* )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(LIST, input.toString(retval.start,input.LT(-1))), root_1);
-				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:111:57: ( elem )*
+				// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:107:57: ( elem )*
 				while ( stream_elem.hasNext() ) {
 					adaptor.addChild(root_1, stream_elem.nextTree());
 				}
@@ -524,14 +414,16 @@ public class CLParameterParser extends Parser {
 
 
 			retval.tree = root_0;
+			}
 
 			}
 
 			retval.stop = input.LT(-1);
 
+			if ( state.backtracking==0 ) {
 			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
 			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
+			}
 		}
 
 		    catch (RecognitionException e) {
@@ -545,6 +437,94 @@ public class CLParameterParser extends Parser {
 		return retval;
 	}
 	// $ANTLR end "list"
+
+
+	public static class composite_return extends ParserRuleReturnScope {
+		CommonTree tree;
+		@Override
+		public CommonTree getTree() { return tree; }
+	};
+
+
+	// $ANTLR start "composite"
+	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:110:1: composite : value ( operator ^ value )* ;
+	public final CLParameterParser.composite_return composite() throws RecognitionException {
+		CLParameterParser.composite_return retval = new CLParameterParser.composite_return();
+		retval.start = input.LT(1);
+
+		CommonTree root_0 = null;
+
+		ParserRuleReturnScope value7 =null;
+		ParserRuleReturnScope operator8 =null;
+		ParserRuleReturnScope value9 =null;
+
+
+		try {
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:111:3: ( value ( operator ^ value )* )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:112:4: value ( operator ^ value )*
+			{
+			root_0 = (CommonTree)adaptor.nil();
+
+
+			pushFollow(FOLLOW_value_in_composite230);
+			value7=value();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, value7.getTree());
+
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:112:10: ( operator ^ value )*
+			loop4:
+			while (true) {
+				int alt4=2;
+				int LA4_0 = input.LA(1);
+				if ( (LA4_0==BCAT||LA4_0==CAT||LA4_0==TCAT) ) {
+					alt4=1;
+				}
+
+				switch (alt4) {
+				case 1 :
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:112:11: operator ^ value
+					{
+					pushFollow(FOLLOW_operator_in_composite233);
+					operator8=operator();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot(operator8.getTree(), root_0);
+					pushFollow(FOLLOW_value_in_composite236);
+					value9=value();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, value9.getTree());
+
+					}
+					break;
+
+				default :
+					break loop4;
+				}
+			}
+
+			}
+
+			retval.stop = input.LT(-1);
+
+			if ( state.backtracking==0 ) {
+			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+			}
+		}
+
+		    catch (RecognitionException e) {
+		        RuntimeException re = hlp.createException(e);
+		        throw re;
+		    }
+
+		finally {
+			// do for sure before leaving
+		}
+		return retval;
+	}
+	// $ANTLR end "composite"
 
 
 	public static class value_return extends ParserRuleReturnScope {
@@ -637,6 +617,7 @@ public class CLParameterParser extends Parser {
 				}
 				break;
 			default:
+				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
 					new NoViableAltException("", 5, 0, input);
 				throw nvae;
@@ -645,8 +626,8 @@ public class CLParameterParser extends Parser {
 				case 1 :
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:117:3: ASTERISK
 					{
-					ASTERISK10=(Token)match(input,ASTERISK,FOLLOW_ASTERISK_in_value271);  
-					stream_ASTERISK.add(ASTERISK10);
+					ASTERISK10=(Token)match(input,ASTERISK,FOLLOW_ASTERISK_in_value256); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_ASTERISK.add(ASTERISK10);
 
 					// AST REWRITE
 					// elements: 
@@ -655,6 +636,7 @@ public class CLParameterParser extends Parser {
 					// token list labels: 
 					// rule list labels: 
 					// wildcard labels: 
+					if ( state.backtracking==0 ) {
 					retval.tree = root_0;
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
@@ -672,6 +654,7 @@ public class CLParameterParser extends Parser {
 
 
 					retval.tree = root_0;
+					}
 
 					}
 					break;
@@ -681,9 +664,11 @@ public class CLParameterParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					TOKEN11=(Token)match(input,TOKEN,FOLLOW_TOKEN_in_value286); 
+					TOKEN11=(Token)match(input,TOKEN,FOLLOW_TOKEN_in_value271); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
 					TOKEN11_tree = (CommonTree)adaptor.create(TOKEN11);
 					adaptor.addChild(root_0, TOKEN11_tree);
+					}
 
 					}
 					break;
@@ -693,9 +678,11 @@ public class CLParameterParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					VARIABLE12=(Token)match(input,VARIABLE,FOLLOW_VARIABLE_in_value294); 
+					VARIABLE12=(Token)match(input,VARIABLE,FOLLOW_VARIABLE_in_value279); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
 					VARIABLE12_tree = (CommonTree)adaptor.create(VARIABLE12);
 					adaptor.addChild(root_0, VARIABLE12_tree);
+					}
 
 					}
 					break;
@@ -705,9 +692,11 @@ public class CLParameterParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					SPECIAL13=(Token)match(input,SPECIAL,FOLLOW_SPECIAL_in_value302); 
+					SPECIAL13=(Token)match(input,SPECIAL,FOLLOW_SPECIAL_in_value287); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
 					SPECIAL13_tree = (CommonTree)adaptor.create(SPECIAL13);
 					adaptor.addChild(root_0, SPECIAL13_tree);
+					}
 
 					}
 					break;
@@ -717,17 +706,19 @@ public class CLParameterParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					FILTER14=(Token)match(input,FILTER,FOLLOW_FILTER_in_value312); 
+					FILTER14=(Token)match(input,FILTER,FOLLOW_FILTER_in_value297); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
 					FILTER14_tree = (CommonTree)adaptor.create(FILTER14);
 					adaptor.addChild(root_0, FILTER14_tree);
+					}
 
 					}
 					break;
 				case 6 :
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:127:3: HEX
 					{
-					HEX15=(Token)match(input,HEX,FOLLOW_HEX_in_value320);  
-					stream_HEX.add(HEX15);
+					HEX15=(Token)match(input,HEX,FOLLOW_HEX_in_value305); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_HEX.add(HEX15);
 
 					// AST REWRITE
 					// elements: HEX
@@ -736,6 +727,7 @@ public class CLParameterParser extends Parser {
 					// token list labels: 
 					// rule list labels: 
 					// wildcard labels: 
+					if ( state.backtracking==0 ) {
 					retval.tree = root_0;
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
@@ -747,14 +739,15 @@ public class CLParameterParser extends Parser {
 
 
 					retval.tree = root_0;
+					}
 
 					}
 					break;
 				case 7 :
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:129:3: STRING
 					{
-					STRING16=(Token)match(input,STRING,FOLLOW_STRING_in_value333);  
-					stream_STRING.add(STRING16);
+					STRING16=(Token)match(input,STRING,FOLLOW_STRING_in_value318); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_STRING.add(STRING16);
 
 					// AST REWRITE
 					// elements: STRING
@@ -763,6 +756,7 @@ public class CLParameterParser extends Parser {
 					// token list labels: 
 					// rule list labels: 
 					// wildcard labels: 
+					if ( state.backtracking==0 ) {
 					retval.tree = root_0;
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
@@ -780,14 +774,15 @@ public class CLParameterParser extends Parser {
 
 
 					retval.tree = root_0;
+					}
 
 					}
 					break;
 				case 8 :
 					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:131:3: ESCAPE
 					{
-					ESCAPE17=(Token)match(input,ESCAPE,FOLLOW_ESCAPE_in_value350);  
-					stream_ESCAPE.add(ESCAPE17);
+					ESCAPE17=(Token)match(input,ESCAPE,FOLLOW_ESCAPE_in_value333); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_ESCAPE.add(ESCAPE17);
 
 					// AST REWRITE
 					// elements: 
@@ -796,6 +791,7 @@ public class CLParameterParser extends Parser {
 					// token list labels: 
 					// rule list labels: 
 					// wildcard labels: 
+					if ( state.backtracking==0 ) {
 					retval.tree = root_0;
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
@@ -813,6 +809,7 @@ public class CLParameterParser extends Parser {
 
 
 					retval.tree = root_0;
+					}
 
 					}
 					break;
@@ -822,11 +819,11 @@ public class CLParameterParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_function_in_value365);
+					pushFollow(FOLLOW_function_in_value348);
 					function18=function();
 					state._fsp--;
-
-					adaptor.addChild(root_0, function18.getTree());
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, function18.getTree());
 
 					}
 					break;
@@ -834,9 +831,10 @@ public class CLParameterParser extends Parser {
 			}
 			retval.stop = input.LT(-1);
 
+			if ( state.backtracking==0 ) {
 			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
 			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
+			}
 		}
 
 		    catch (RecognitionException e) {
@@ -860,41 +858,163 @@ public class CLParameterParser extends Parser {
 
 
 	// $ANTLR start "operator"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:136:1: operator : ( CAT | BCAT | TCAT );
+	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:138:1: operator : ( CAT -> ^( STR_OPERATOR[$operator.text] ) | BCAT -> ^( STR_OPERATOR[$operator.text] ) | TCAT -> ^( STR_OPERATOR[$operator.text] ) );
 	public final CLParameterParser.operator_return operator() throws RecognitionException {
 		CLParameterParser.operator_return retval = new CLParameterParser.operator_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		Token set19=null;
+		Token CAT19=null;
+		Token BCAT20=null;
+		Token TCAT21=null;
 
-		CommonTree set19_tree=null;
+		CommonTree CAT19_tree=null;
+		CommonTree BCAT20_tree=null;
+		CommonTree TCAT21_tree=null;
+		RewriteRuleTokenStream stream_TCAT=new RewriteRuleTokenStream(adaptor,"token TCAT");
+		RewriteRuleTokenStream stream_CAT=new RewriteRuleTokenStream(adaptor,"token CAT");
+		RewriteRuleTokenStream stream_BCAT=new RewriteRuleTokenStream(adaptor,"token BCAT");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:136:9: ( CAT | BCAT | TCAT )
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:
-			{
-			root_0 = (CommonTree)adaptor.nil();
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:138:9: ( CAT -> ^( STR_OPERATOR[$operator.text] ) | BCAT -> ^( STR_OPERATOR[$operator.text] ) | TCAT -> ^( STR_OPERATOR[$operator.text] ) )
+			int alt6=3;
+			switch ( input.LA(1) ) {
+			case CAT:
+				{
+				alt6=1;
+				}
+				break;
+			case BCAT:
+				{
+				alt6=2;
+				}
+				break;
+			case TCAT:
+				{
+				alt6=3;
+				}
+				break;
+			default:
+				if (state.backtracking>0) {state.failed=true; return retval;}
+				NoViableAltException nvae =
+					new NoViableAltException("", 6, 0, input);
+				throw nvae;
+			}
+			switch (alt6) {
+				case 1 :
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:139:2: CAT
+					{
+					CAT19=(Token)match(input,CAT,FOLLOW_CAT_in_operator366); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_CAT.add(CAT19);
+
+					// AST REWRITE
+					// elements: 
+					// token labels: 
+					// rule labels: retval
+					// token list labels: 
+					// rule list labels: 
+					// wildcard labels: 
+					if ( state.backtracking==0 ) {
+					retval.tree = root_0;
+					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
+
+					root_0 = (CommonTree)adaptor.nil();
+					// 139:8: -> ^( STR_OPERATOR[$operator.text] )
+					{
+						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:139:11: ^( STR_OPERATOR[$operator.text] )
+						{
+						CommonTree root_1 = (CommonTree)adaptor.nil();
+						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(STR_OPERATOR, input.toString(retval.start,input.LT(-1))), root_1);
+						adaptor.addChild(root_0, root_1);
+						}
+
+					}
 
 
-			set19=input.LT(1);
-			if ( input.LA(1)==BCAT||input.LA(1)==CAT||input.LA(1)==TCAT ) {
-				input.consume();
-				adaptor.addChild(root_0, (CommonTree)adaptor.create(set19));
-				state.errorRecovery=false;
-			}
-			else {
-				MismatchedSetException mse = new MismatchedSetException(null,input);
-				throw mse;
-			}
-			}
+					retval.tree = root_0;
+					}
 
+					}
+					break;
+				case 2 :
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:141:2: BCAT
+					{
+					BCAT20=(Token)match(input,BCAT,FOLLOW_BCAT_in_operator381); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_BCAT.add(BCAT20);
+
+					// AST REWRITE
+					// elements: 
+					// token labels: 
+					// rule labels: retval
+					// token list labels: 
+					// rule list labels: 
+					// wildcard labels: 
+					if ( state.backtracking==0 ) {
+					retval.tree = root_0;
+					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
+
+					root_0 = (CommonTree)adaptor.nil();
+					// 141:10: -> ^( STR_OPERATOR[$operator.text] )
+					{
+						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:141:13: ^( STR_OPERATOR[$operator.text] )
+						{
+						CommonTree root_1 = (CommonTree)adaptor.nil();
+						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(STR_OPERATOR, input.toString(retval.start,input.LT(-1))), root_1);
+						adaptor.addChild(root_0, root_1);
+						}
+
+					}
+
+
+					retval.tree = root_0;
+					}
+
+					}
+					break;
+				case 3 :
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:143:2: TCAT
+					{
+					TCAT21=(Token)match(input,TCAT,FOLLOW_TCAT_in_operator397); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_TCAT.add(TCAT21);
+
+					// AST REWRITE
+					// elements: 
+					// token labels: 
+					// rule labels: retval
+					// token list labels: 
+					// rule list labels: 
+					// wildcard labels: 
+					if ( state.backtracking==0 ) {
+					retval.tree = root_0;
+					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
+
+					root_0 = (CommonTree)adaptor.nil();
+					// 143:10: -> ^( STR_OPERATOR[$operator.text] )
+					{
+						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:143:13: ^( STR_OPERATOR[$operator.text] )
+						{
+						CommonTree root_1 = (CommonTree)adaptor.nil();
+						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(STR_OPERATOR, input.toString(retval.start,input.LT(-1))), root_1);
+						adaptor.addChild(root_0, root_1);
+						}
+
+					}
+
+
+					retval.tree = root_0;
+					}
+
+					}
+					break;
+
+			}
 			retval.stop = input.LT(-1);
 
+			if ( state.backtracking==0 ) {
 			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
 			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
+			}
 		}
 
 		    catch (RecognitionException e) {
@@ -918,64 +1038,65 @@ public class CLParameterParser extends Parser {
 
 
 	// $ANTLR start "function"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:144:1: function : ( SST list -> ^( FUNCTION[\"\\%SST\"] list ) | BINARY list -> ^( FUNCTION[\"\\%BIN\"] list ) | SWITCH list -> ^( FUNCTION[\"\\%SWITCH\"] list ) );
+	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:146:1: function : ( SST list -> ^( FUNCTION[\"\\%SST\"] list ) | BINARY list -> ^( FUNCTION[\"\\%BIN\"] list ) | SWITCH list -> ^( FUNCTION[\"\\%SWITCH\"] list ) );
 	public final CLParameterParser.function_return function() throws RecognitionException {
 		CLParameterParser.function_return retval = new CLParameterParser.function_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		Token SST20=null;
-		Token BINARY22=null;
-		Token SWITCH24=null;
-		ParserRuleReturnScope list21 =null;
+		Token SST22=null;
+		Token BINARY24=null;
+		Token SWITCH26=null;
 		ParserRuleReturnScope list23 =null;
 		ParserRuleReturnScope list25 =null;
+		ParserRuleReturnScope list27 =null;
 
-		CommonTree SST20_tree=null;
-		CommonTree BINARY22_tree=null;
-		CommonTree SWITCH24_tree=null;
+		CommonTree SST22_tree=null;
+		CommonTree BINARY24_tree=null;
+		CommonTree SWITCH26_tree=null;
 		RewriteRuleTokenStream stream_SST=new RewriteRuleTokenStream(adaptor,"token SST");
 		RewriteRuleTokenStream stream_BINARY=new RewriteRuleTokenStream(adaptor,"token BINARY");
 		RewriteRuleTokenStream stream_SWITCH=new RewriteRuleTokenStream(adaptor,"token SWITCH");
 		RewriteRuleSubtreeStream stream_list=new RewriteRuleSubtreeStream(adaptor,"rule list");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:144:9: ( SST list -> ^( FUNCTION[\"\\%SST\"] list ) | BINARY list -> ^( FUNCTION[\"\\%BIN\"] list ) | SWITCH list -> ^( FUNCTION[\"\\%SWITCH\"] list ) )
-			int alt6=3;
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:146:9: ( SST list -> ^( FUNCTION[\"\\%SST\"] list ) | BINARY list -> ^( FUNCTION[\"\\%BIN\"] list ) | SWITCH list -> ^( FUNCTION[\"\\%SWITCH\"] list ) )
+			int alt7=3;
 			switch ( input.LA(1) ) {
 			case SST:
 				{
-				alt6=1;
+				alt7=1;
 				}
 				break;
 			case BINARY:
 				{
-				alt6=2;
+				alt7=2;
 				}
 				break;
 			case SWITCH:
 				{
-				alt6=3;
+				alt7=3;
 				}
 				break;
 			default:
+				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 6, 0, input);
+					new NoViableAltException("", 7, 0, input);
 				throw nvae;
 			}
-			switch (alt6) {
+			switch (alt7) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:145:3: SST list
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:147:3: SST list
 					{
-					SST20=(Token)match(input,SST,FOLLOW_SST_in_function404);  
-					stream_SST.add(SST20);
+					SST22=(Token)match(input,SST,FOLLOW_SST_in_function419); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_SST.add(SST22);
 
-					pushFollow(FOLLOW_list_in_function406);
-					list21=list();
+					pushFollow(FOLLOW_list_in_function421);
+					list23=list();
 					state._fsp--;
-
-					stream_list.add(list21.getTree());
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) stream_list.add(list23.getTree());
 					// AST REWRITE
 					// elements: list
 					// token labels: 
@@ -983,13 +1104,14 @@ public class CLParameterParser extends Parser {
 					// token list labels: 
 					// rule list labels: 
 					// wildcard labels: 
+					if ( state.backtracking==0 ) {
 					retval.tree = root_0;
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 145:12: -> ^( FUNCTION[\"\\%SST\"] list )
+					// 147:12: -> ^( FUNCTION[\"\\%SST\"] list )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:145:15: ^( FUNCTION[\"\\%SST\"] list )
+						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:147:15: ^( FUNCTION[\"\\%SST\"] list )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(FUNCTION, "%SST"), root_1);
@@ -1001,20 +1123,21 @@ public class CLParameterParser extends Parser {
 
 
 					retval.tree = root_0;
+					}
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:147:3: BINARY list
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:149:3: BINARY list
 					{
-					BINARY22=(Token)match(input,BINARY,FOLLOW_BINARY_in_function423);  
-					stream_BINARY.add(BINARY22);
+					BINARY24=(Token)match(input,BINARY,FOLLOW_BINARY_in_function438); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_BINARY.add(BINARY24);
 
-					pushFollow(FOLLOW_list_in_function425);
-					list23=list();
+					pushFollow(FOLLOW_list_in_function440);
+					list25=list();
 					state._fsp--;
-
-					stream_list.add(list23.getTree());
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) stream_list.add(list25.getTree());
 					// AST REWRITE
 					// elements: list
 					// token labels: 
@@ -1022,13 +1145,14 @@ public class CLParameterParser extends Parser {
 					// token list labels: 
 					// rule list labels: 
 					// wildcard labels: 
+					if ( state.backtracking==0 ) {
 					retval.tree = root_0;
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 147:15: -> ^( FUNCTION[\"\\%BIN\"] list )
+					// 149:15: -> ^( FUNCTION[\"\\%BIN\"] list )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:147:18: ^( FUNCTION[\"\\%BIN\"] list )
+						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:149:18: ^( FUNCTION[\"\\%BIN\"] list )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(FUNCTION, "%BIN"), root_1);
@@ -1040,20 +1164,21 @@ public class CLParameterParser extends Parser {
 
 
 					retval.tree = root_0;
+					}
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:149:3: SWITCH list
+					// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:151:3: SWITCH list
 					{
-					SWITCH24=(Token)match(input,SWITCH,FOLLOW_SWITCH_in_function442);  
-					stream_SWITCH.add(SWITCH24);
+					SWITCH26=(Token)match(input,SWITCH,FOLLOW_SWITCH_in_function457); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_SWITCH.add(SWITCH26);
 
-					pushFollow(FOLLOW_list_in_function444);
-					list25=list();
+					pushFollow(FOLLOW_list_in_function459);
+					list27=list();
 					state._fsp--;
-
-					stream_list.add(list25.getTree());
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) stream_list.add(list27.getTree());
 					// AST REWRITE
 					// elements: list
 					// token labels: 
@@ -1061,13 +1186,14 @@ public class CLParameterParser extends Parser {
 					// token list labels: 
 					// rule list labels: 
 					// wildcard labels: 
+					if ( state.backtracking==0 ) {
 					retval.tree = root_0;
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 149:15: -> ^( FUNCTION[\"\\%SWITCH\"] list )
+					// 151:15: -> ^( FUNCTION[\"\\%SWITCH\"] list )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:149:18: ^( FUNCTION[\"\\%SWITCH\"] list )
+						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:151:18: ^( FUNCTION[\"\\%SWITCH\"] list )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(FUNCTION, "%SWITCH"), root_1);
@@ -1079,6 +1205,7 @@ public class CLParameterParser extends Parser {
 
 
 					retval.tree = root_0;
+					}
 
 					}
 					break;
@@ -1086,9 +1213,10 @@ public class CLParameterParser extends Parser {
 			}
 			retval.stop = input.LT(-1);
 
+			if ( state.backtracking==0 ) {
 			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
 			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
+			}
 		}
 
 		    catch (RecognitionException e) {
@@ -1107,28 +1235,31 @@ public class CLParameterParser extends Parser {
 
 
 
-	public static final BitSet FOLLOW_elem_in_parse118 = new BitSet(new long[]{0x000113C201140242L});
-	public static final BitSet FOLLOW_composite_in_elem152 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_list_in_elem154 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_value_in_composite183 = new BitSet(new long[]{0x0000080000000902L});
-	public static final BitSet FOLLOW_operator_in_composite186 = new BitSet(new long[]{0x000113C001140240L});
-	public static final BitSet FOLLOW_value_in_composite188 = new BitSet(new long[]{0x0000080000000902L});
-	public static final BitSet FOLLOW_OPEN_BRACE_in_list229 = new BitSet(new long[]{0x000113C201142240L});
-	public static final BitSet FOLLOW_elem_in_list232 = new BitSet(new long[]{0x000113C201142240L});
-	public static final BitSet FOLLOW_CLOSE_BRACE_in_list236 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ASTERISK_in_value271 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TOKEN_in_value286 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VARIABLE_in_value294 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SPECIAL_in_value302 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FILTER_in_value312 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_HEX_in_value320 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_STRING_in_value333 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ESCAPE_in_value350 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_function_in_value365 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SST_in_function404 = new BitSet(new long[]{0x0000000200000000L});
-	public static final BitSet FOLLOW_list_in_function406 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_BINARY_in_function423 = new BitSet(new long[]{0x0000000200000000L});
-	public static final BitSet FOLLOW_list_in_function425 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SWITCH_in_function442 = new BitSet(new long[]{0x0000000200000000L});
-	public static final BitSet FOLLOW_list_in_function444 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_elem_in_parse123 = new BitSet(new long[]{0x000125C201140242L});
+	public static final BitSet FOLLOW_list_in_elem157 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_composite_in_elem159 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_OPEN_BRACE_in_list184 = new BitSet(new long[]{0x000125C201142240L});
+	public static final BitSet FOLLOW_elem_in_list187 = new BitSet(new long[]{0x000125C201142240L});
+	public static final BitSet FOLLOW_CLOSE_BRACE_in_list191 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_value_in_composite230 = new BitSet(new long[]{0x0000100000000902L});
+	public static final BitSet FOLLOW_operator_in_composite233 = new BitSet(new long[]{0x000125C001140240L});
+	public static final BitSet FOLLOW_value_in_composite236 = new BitSet(new long[]{0x0000100000000902L});
+	public static final BitSet FOLLOW_ASTERISK_in_value256 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TOKEN_in_value271 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VARIABLE_in_value279 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SPECIAL_in_value287 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FILTER_in_value297 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_HEX_in_value305 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_STRING_in_value318 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ESCAPE_in_value333 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_function_in_value348 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_CAT_in_operator366 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_BCAT_in_operator381 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TCAT_in_operator397 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SST_in_function419 = new BitSet(new long[]{0x0000000200000000L});
+	public static final BitSet FOLLOW_list_in_function421 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_BINARY_in_function438 = new BitSet(new long[]{0x0000000200000000L});
+	public static final BitSet FOLLOW_list_in_function440 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SWITCH_in_function457 = new BitSet(new long[]{0x0000000200000000L});
+	public static final BitSet FOLLOW_list_in_function459 = new BitSet(new long[]{0x0000000000000002L});
 }

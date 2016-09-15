@@ -4,6 +4,7 @@ options {
   	output=AST;
   	ASTLabelType=CommonTree;
 	language=Java;	
+	backtrack=true;
 }
 
 
@@ -16,9 +17,10 @@ tokens
 	//STRING
 	//FILTER
 	//HEX
-	FUNCTION;	
-	VALUE;	
+	STR_OPERATOR;
+	FUNCTION;		
 }
+
 
 
 @lexer::header {
@@ -92,25 +94,23 @@ tokens
 
 parse
   :
-  (elem)* -> ^(LIST[$parse.text] (elem)*) 
+	elem* -> ^(LIST[$parse.text] elem*)   	
   ;
   
 elem	
  :
-    composite|list
- ;	 
- 
-  
-  composite
-  :      
-   value (operator value)* -> ^(VALUE[$composite.text] value (operator value)*)
-  ;	   
+    list|composite
+ ;	      
    
 list
   : 
   OPEN_BRACE (elem)* CLOSE_BRACE -> ^(LIST[$list.text]  (elem)*)    
   ;
-  
+
+composite
+  :      
+   value (operator^ value)*
+  ;	  
 
 value
   :
@@ -127,34 +127,36 @@ value
   HEX -> HEX[$HEX.text.substring(2, $HEX.text.length()-1)]
   |
   STRING -> ^(STRING[$STRING.text.substring(1, $STRING.text.length()-1).replace("''", "'")])
-  |  
+  |
   ESCAPE -> ^(STRING["''"])
   |
-  function
+  function  
   ;
+
+ 
   
 operator:
-	CAT
+	CAT  	-> ^(STR_OPERATOR[$operator.text])
 	|
-	BCAT
+	BCAT    -> ^(STR_OPERATOR[$operator.text])
 	|
-	TCAT	
+	TCAT    -> ^(STR_OPERATOR[$operator.text])
 	;
-  
+ 
 function:
   SST list	-> ^(FUNCTION["\%SST"] list)
   |
   BINARY list	-> ^(FUNCTION["\%BIN"] list)
   |
-  SWITCH list	-> ^(FUNCTION["\%SWITCH"] list)
- ; 
+  SWITCH list	-> ^(FUNCTION["\%SWITCH"] list) 
+;
 	
 CAT     : '!!' | '*CAT';
 
 BCAT    : '!>' | '*BCAT';
 
 TCAT    : '!<' | '*TCAT';	
-	
+
 SST 	: ('%' S S T) | ('%' S U B S T R I N G);
 
 SWITCH  : '%' S W I T C H;	 
@@ -199,10 +201,9 @@ CLOSE_BRACE
   :
   ')' 
   ;
- 
-ESCAPE
-	:
-	APOS APOS
+
+ESCAPE  :
+	APOS APOS	
 	;  
   
 APOS	:
@@ -251,7 +252,7 @@ fragment V:('v'|'V');
 fragment W:('w'|'W');
 fragment X:('x'|'X');
 fragment Y:('y'|'Y');
-fragment Z:('z'|'Z');		
+fragment Z:('z'|'Z');	
 
 fragment
 CHAR_SPECIAL
