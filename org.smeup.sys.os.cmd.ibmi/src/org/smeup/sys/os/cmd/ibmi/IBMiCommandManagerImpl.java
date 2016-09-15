@@ -56,6 +56,7 @@ import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QMultipleCompoundDataDef;
 import org.smeup.sys.il.data.def.QUnaryCompoundDataDef;
+import org.smeup.sys.il.data.term.DataTermType;
 import org.smeup.sys.il.data.term.FormatType;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QFormat;
@@ -222,9 +223,11 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		
 		QData data = dataContainer.getData(dataTerm);
 
-		// Manage value as single var
-		if (isSingleVariable(value)) {
+		if (hasOnlyVariables(dataTerm, value)) {
 			
+			// If value contains only variables, don't parse the string but assign value using directly the variables
+
+			int e = 1;
 			String[] tokens = null;
 			
 			Iterator<QBufferedData> elements = null;
@@ -251,7 +254,6 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			
 			for(String token: tokens) {
 
-				
 				Object variable = variables.get(token.substring(1).toLowerCase());
 
 				if (variable == null)
@@ -262,8 +264,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 				if (data instanceof QList<?>) {
 					QList<?> list = (QList<?>) data;
-					writer.set(variable);
-					list.accept(writer);					
+					((QBufferedData) variable).assign((QBufferedData) list.get(e));
 				}
 				else if(data instanceof QDataStruct && elements != null) {
 					writer.set(variable);
@@ -271,11 +272,19 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				}
 				else if (data instanceof QBufferedData) {
 					((QBufferedData) variable).assign((QBufferedData) data);
-				}				
+				} 
+
+				e++;
 			}
 
 			return data;
 		}
+
+		/*
+		if (value.startsWith("&") || value.contains("/")) {
+			System.out.println(value);
+		}
+		*/		
 
 		@SuppressWarnings("unused")
 		String dbgString = null;
@@ -649,7 +658,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			
 			// Il valore è una variabile
 			if (variables != null) {
-				Object variable = variables.get(value.toString().substring(1));
+				Object variable = variables.get(value.toString().toLowerCase().substring(1));
 				
 				if (variable != null && variable instanceof QBufferedData) {
 					((QBufferedData)variable).assign((QBufferedData)data);
@@ -689,4 +698,35 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 	private boolean isSingleVariable(String value) {		
 		return value.trim().startsWith("&") && !value.trim().contains(" ");
 	}
+	
+	private boolean hasOnlyVariables(QDataTerm<?> dataTerm, String value) {
+		
+		boolean result = true;
+		String[] tokens = null;
+		if(dataTerm.getDataTermType().isCompound()) {
+			QCompoundDataDef<?, ?> compoundDef = (QCompoundDataDef<?, ?>)dataTerm.getDefinition();
+			boolean qualified = compoundDef.isQualified();			
+			if(qualified) { 
+				tokens = value.split("/");							
+			}
+			else { 
+				tokens = value.split(" ");				
+			}
+		}
+		else {
+			tokens = value.split(" ");
+		}
+		
+		for (int i = 0; i < tokens.length; i++) {
+			if (!tokens[i].startsWith("&")){
+				result = false;
+				break;
+			}
+				
+		}
+		
+		return result;
+	}
+	
+	
 }
