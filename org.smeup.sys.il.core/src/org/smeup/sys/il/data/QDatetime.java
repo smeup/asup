@@ -133,6 +133,14 @@ public interface QDatetime extends QBufferedElement {
 	boolean eq(QDatetime value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	boolean eq(Date value);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model
 	 * @generated

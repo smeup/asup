@@ -14,8 +14,10 @@ package org.smeup.sys.il.data.nio;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.nio.charset.Charset;
 
 import org.smeup.sys.il.core.ctx.QContext;
@@ -118,5 +120,17 @@ public final class NIODataContextImpl implements QDataContext {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	@Override
+	public void deserialize(InputStream stream) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public OutputStream serialize() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

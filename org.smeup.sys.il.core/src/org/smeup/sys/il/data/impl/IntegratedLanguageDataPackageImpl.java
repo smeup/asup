@@ -2633,6 +2633,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(dataContextEClass, this.getBufferedData(), "copy", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getBufferedData(), "data", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(dataContextEClass, null, "deserialize", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaInputStream(), "stream", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(dataContextEClass, this.getIndicator(), "endOfData", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(dataContextEClass, this.getIndicator(), "equal", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2648,6 +2651,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEOperation(dataContextEClass, theIntegratedLanguageDataDefPackage.getDateFormat(), "getDateFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(dataContextEClass, theIntegratedLanguageDataDefPackage.getTimeFormat(), "getTimeFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(dataContextEClass, theMachineInterfaceCorePackage.getJavaOutputStream(), "serialize", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataDelegatorEClass, QDataDelegator.class, "DataDelegator", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -3093,6 +3098,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(datetimeEClass, ecorePackage.getEBoolean(), "eq", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDatetime(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(datetimeEClass, ecorePackage.getEBoolean(), "eq", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDate(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(datetimeEClass, null, "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDate(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
