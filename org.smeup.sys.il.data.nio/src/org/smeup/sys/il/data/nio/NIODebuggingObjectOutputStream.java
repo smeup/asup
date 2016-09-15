@@ -1,4 +1,4 @@
-package org.smeup.sys.os.pgm.rpj;
+package org.smeup.sys.il.data.nio;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -7,7 +7,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RPJDebuggingObjectOutputStream extends ObjectOutputStream {
+public class NIODebuggingObjectOutputStream extends ObjectOutputStream {
 
 	private static final Field DEPTH_FIELD;
 
@@ -28,7 +28,7 @@ public class RPJDebuggingObjectOutputStream extends ObjectOutputStream {
 	 */
 	boolean broken = false;
 
-	public RPJDebuggingObjectOutputStream(OutputStream out) throws IOException {
+	public NIODebuggingObjectOutputStream(OutputStream out) throws IOException {
 		super(out);
 		enableReplaceObject(true);
 	}

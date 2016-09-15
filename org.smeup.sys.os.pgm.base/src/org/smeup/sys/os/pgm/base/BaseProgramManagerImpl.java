@@ -168,6 +168,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		return callableProgram;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public <P> P loadProgram(QJob job, Class<P> klass) {
 
@@ -180,9 +181,9 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			RPJProgramInjector injector = new RPJProgramInjector(null, dataContext);
 			job.getContext().inject(injector);
 
-			P delegate = injector.prepareDelegate(dataContainer, program, klass);
+			Object delegate = injector.prepareDelegate(dataContainer, program, klass);
 
-			return delegate;
+			return (P) delegate;
 		} catch (Exception e) {
 			throw new OperatingSystemRuntimeException(e);
 		} finally {
@@ -364,6 +365,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
 
+				e.printStackTrace();
+				
 				Throwable cause = e.getCause();
 				if (cause != null)
 					System.err.println(cause);

@@ -34,6 +34,7 @@ import org.smeup.sys.il.esam.OperationSet;
 import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QIndex;
 import org.smeup.sys.il.esam.QIndexColumn;
+import org.smeup.sys.il.esam.QDataSetInfo;
 
 public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> {
 
@@ -63,11 +64,11 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	private QStatement statementUpdate;
 
 	private ResultSet resultSet;
-	private JDBCInfoStruct infoStruct;
+	private QDataSetInfo infoStruct;
 
 	private QDataContext dataContext;
 
-	protected JDBCDataSetImpl(QConnection databaseConnection, QString tablePath, QIndex index, R record, AccessMode accessMode, boolean userOpen, JDBCInfoStruct infoStruct,
+	protected JDBCDataSetImpl(QConnection databaseConnection, QString tablePath, QIndex index, R record, AccessMode accessMode, boolean userOpen, QDataSetInfo infoStruct,
 			QDataContext dataContext) {
 
 		this.databaseConnection = databaseConnection;

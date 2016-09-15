@@ -206,6 +206,11 @@ public class BaseSystemManagerImpl implements QSystemManager {
 			public String getTemporaryLibrary() {
 				return "QTMP" + new DecimalFormat("000000").format(job.getJobReference().getJobNumber());
 			}
+
+			@Override
+			public String getTemporaryArea() {
+				return System.getProperty("osgi.instance.area")+"QTEMP";
+			}
 		};
 
 		QContext jobContext = system.getContext().createChildContext(contextDescription);

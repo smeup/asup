@@ -14,3 +14,4 @@ Require-Bundle: org.smeup.sys.il.esam,
  org.smeup.sys.os.file.base,
  org.smeup.sys.os.core
 Import-Package: javax.inject
+Export-Package: org.smeup.sys.il.esam.jdbc

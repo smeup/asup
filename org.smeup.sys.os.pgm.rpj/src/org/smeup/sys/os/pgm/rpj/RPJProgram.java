@@ -15,11 +15,14 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.smeup.sys.il.data.InitStrategy;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QIndicator;
+import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
@@ -41,6 +44,8 @@ public abstract class RPJProgram extends ProgramCallableImpl {
 	private QProgram program;
 	private QProgramInfo programInfo;
 	private QProgramStatus programStatus;
+	private Map<String, RPJModule> programModules = new HashMap<String, RPJModule>();
+	private Map<String, QRecord> programRecords = new HashMap<String, QRecord>();
 	
 	private boolean isOpen = false;
 	private QIndicator _inlr = null;
@@ -51,6 +56,14 @@ public abstract class RPJProgram extends ProgramCallableImpl {
 		this.program = program;
 		this.programInfo = programInfo;
 		this.programStatus = programStatus;
+	}
+	
+	protected Map<String, RPJModule> getModules() {
+		return programModules;
+	}
+	
+	protected Map<String, QRecord> getRecords() {
+		return programRecords;
 	}
 	
 	@Override

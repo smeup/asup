@@ -1466,8 +1466,14 @@
     <eOperations name="copy" lowerBound="1" eType="#//BufferedData">
       <eParameters name="data" lowerBound="1" eType="#//BufferedData"/>
     </eOperations>
-    <eOperations name="deserialize">
-      <eParameters name="stream" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaInputStream"/>
+    <eOperations name="deserialize" lowerBound="1">
+      <eGenericType eTypeParameter="#//DataContext/deserialize/O"/>
+      <eTypeParameters name="O"/>
+      <eParameters name="klass" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//DataContext/deserialize/O"/>
+        </eGenericType>
+      </eParameters>
     </eOperations>
     <eOperations name="endOfData" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="equal" lowerBound="1" eType="#//Indicator"/>
@@ -1477,7 +1483,9 @@
     <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
     <eOperations name="getDateFormat" lowerBound="1" eType="#//def/DateFormat"/>
     <eOperations name="getTimeFormat" lowerBound="1" eType="#//def/TimeFormat"/>
-    <eOperations name="serialize" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaOutputStream"/>
+    <eOperations name="serialize">
+      <eParameters name="object" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataDelegator" abstract="true" interface="true">
     <eTypeParameters name="D">

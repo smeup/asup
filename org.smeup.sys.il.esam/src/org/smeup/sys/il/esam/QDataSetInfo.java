@@ -8,7 +8,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.esam.jdbc;
+package org.smeup.sys.il.esam;
 
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -16,7 +16,7 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.def.BinaryType;
 
-public class JDBCInfoStruct extends QDataStructWrapper {
+public class QDataSetInfo extends QDataStructWrapper {
 	private static final long serialVersionUID = 1L;
 	
 	@DataDef(binaryType = BinaryType.INTEGER)

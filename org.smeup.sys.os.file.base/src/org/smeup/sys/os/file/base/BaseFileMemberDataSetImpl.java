@@ -24,6 +24,7 @@ import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.esam.AccessMode;
+import org.smeup.sys.il.esam.QDataSetInfo;
 import org.smeup.sys.il.esam.QSMDataSet;
 import org.smeup.sys.os.file.QFileMember;
 import org.smeup.sys.os.file.QFileMemberRow;
@@ -38,10 +39,10 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 	private boolean open = false;
 	private int currentPosition = 0;
-	private BaseInfoStruct infoStruct;
+	private QDataSetInfo infoStruct;
 	private QDataWriter dataWriter;
 
-	public BaseFileMemberDataSetImpl(BaseFileMemberProvider fileMemberProvider, R record, AccessMode accessMode, boolean userOpen, BaseInfoStruct infoStruct, QDataContext dataContext) {
+	public BaseFileMemberDataSetImpl(BaseFileMemberProvider fileMemberProvider, R record, AccessMode accessMode, boolean userOpen, QDataSetInfo infoStruct, QDataContext dataContext) {
 		this.dataContext = dataContext;
 		this.fileMemberProvider = fileMemberProvider;
 		this.record = record;

@@ -143,6 +143,8 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		if (dataTerm.getDefinition() instanceof QDataAreaDef) {
 			QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataTerm.getDefinition();
 			writeAnnotation(field, DataDef.class, "externalName", dataAreaDef.getExternalName());
+			
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.TRANSIENT_KEYWORD));
 		}
 
 		// @DataDef
@@ -184,6 +186,9 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 			if (overlay.getPosition() >= 1)
 				writeAnnotation(field, Overlay.class, "position", overlay.getPosition());
+			
+			if(overlay.getName().startsWith("*"))
+				field.modifiers().add(getAST().newModifier(ModifierKeyword.TRANSIENT_KEYWORD));
 		}
 
 		switch (scope) {

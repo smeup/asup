@@ -2633,8 +2633,14 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(dataContextEClass, this.getBufferedData(), "copy", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getBufferedData(), "data", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataContextEClass, null, "deserialize", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theMachineInterfaceCorePackage.getJavaInputStream(), "stream", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(dataContextEClass, null, "deserialize", 1, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "O");
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		initEOperation(op, g1);
 
 		addEOperation(dataContextEClass, this.getIndicator(), "endOfData", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -2652,7 +2658,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(dataContextEClass, theIntegratedLanguageDataDefPackage.getTimeFormat(), "getTimeFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataContextEClass, theMachineInterfaceCorePackage.getJavaOutputStream(), "serialize", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(dataContextEClass, null, "serialize", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEObject(), "object", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataDelegatorEClass, QDataDelegator.class, "DataDelegator", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

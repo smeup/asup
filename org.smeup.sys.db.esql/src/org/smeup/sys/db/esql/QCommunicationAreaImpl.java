@@ -1,6 +1,5 @@
-package org.smeup.sys.il.data.jdbc;
+package org.smeup.sys.db.esql;
 
-import org.smeup.sys.db.esql.QCommunicationArea;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
@@ -9,7 +8,7 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.def.BinaryType;
 
-public class JDBCCommunicationAreaImpl extends QDataStructWrapper implements QCommunicationArea {
+public class QCommunicationAreaImpl extends QDataStructWrapper implements QCommunicationArea {
 	
 	private static final long serialVersionUID = 1L;
 	@DataDef(length = 8)

@@ -9,3 +9,4 @@ Bundle-ClassPath: .
 Require-Bundle: org.smeup.sys.os.dtaara,
  org.smeup.sys.il.data.nio,
  org.smeup.sys.il.memo
+Export-Package: org.smeup.sys.os.dtaara.nio

@@ -14,7 +14,6 @@ package org.smeup.sys.il.data.nio;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.nio.ByteBuffer;
 
 import org.smeup.sys.il.data.QBufferedData;
@@ -102,6 +101,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 		stream.defaultReadObject();
 
+		// storage
 		Object object = stream.readObject();
 		if(object instanceof QStorable) {
 			_storage = object;
@@ -113,17 +113,20 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	
 			if (length > 0) 
 				_storage = ByteBuffer.allocate(length).put(array);
-		}
+			else
+				_storage = null;
+		}		
 	}
 
 	private final void writeObject(final ObjectOutputStream stream) throws IOException {
 
 		stream.defaultWriteObject();
 		
+		// storage
 		if(_storage instanceof QStorable)
 			stream.writeObject(_storage);
 		else {
-			stream.writeObject(new NullObject());
+			stream.writeObject(NIOObjectNull.getInstance());
 
 			byte[] array = null;
 			if (_storage instanceof ByteBuffer)
@@ -134,9 +137,5 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			stream.writeInt(array.length);
 			stream.write(array);
 		}
-	}
-	
-	private class NullObject implements Serializable  {
-		private static final long serialVersionUID = 1L;		
 	}
 }

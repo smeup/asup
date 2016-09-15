@@ -9,18 +9,25 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.os.file.base;
+package org.smeup.sys.il.data.nio;
 
-import org.smeup.sys.il.data.QBinary;
-import org.smeup.sys.il.data.QDataStructWrapper;
-import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Overlay;
-import org.smeup.sys.il.data.def.BinaryType;
+import java.io.Serializable;
 
-public class BaseInfoStruct extends QDataStructWrapper {
+public class NIOObjectNull implements Serializable  {
 	private static final long serialVersionUID = 1L;
 	
-	@DataDef(binaryType = BinaryType.INTEGER)
-	@Overlay(position = 397)
-	public QBinary rrn;
+	private static NIOObjectNull instance = null;
+	
+	protected static NIOObjectNull getInstance() {
+		
+		if(instance == null) {
+			synchronized (NIOObjectNull.class) {
+				if(instance == null) {
+					instance = new NIOObjectNull();
+				}
+			}
+		}
+		
+		return instance;
+	}
 }

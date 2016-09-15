@@ -115,6 +115,10 @@ public final class NIODataFactoryImpl implements QDataFactory {
 		return createData((QDataDef<?>) dataTerm.getDefinition(), allocate);
 	}
 
+	protected QDataAreaFactory getDataAreaFactory() {
+		return this.dataAreaFactory;
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public final <D extends QData> D createData(final QDataDef<D> dataDef, final boolean allocate) {

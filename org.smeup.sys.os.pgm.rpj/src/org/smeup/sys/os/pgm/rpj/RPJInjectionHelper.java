@@ -259,6 +259,23 @@ public class RPJInjectionHelper {
 		// fileInfo
 		if (!fileDef.info().isEmpty()) {
 			QDataStruct infoStruct = (QDataStruct) records.get(fileDef.info().toLowerCase());
+			if (infoStruct == null) {
+				try {
+					Field javaField = callable.getClass().getDeclaredField(fileDef.info());
+					javaField.setAccessible(true);
+					infoStruct = (QDataStruct) javaField.get(callable);
+					javaField.setAccessible(false);
+
+				} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+					if(callable instanceof RPJProgram) {
+						RPJProgram rpjProgram = (RPJProgram)callable;
+						infoStruct = (QDataStruct) rpjProgram.getRecords().get(fileDef.info());
+					}
+					else
+						e.printStackTrace();
+				}				
+			}
+
 			if (infoStruct == null)
 				System.err.println("Unused infoStruct" + fileDef.info());
 			else {

@@ -24,11 +24,12 @@ import org.smeup.sys.il.esam.OperationDirection;
 import org.smeup.sys.il.esam.OperationRead;
 import org.smeup.sys.il.esam.OperationSet;
 import org.smeup.sys.il.esam.QIndex;
+import org.smeup.sys.il.esam.QDataSetInfo;
 import org.smeup.sys.il.esam.QKSDataSet;
 
 public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetImpl<R> implements QKSDataSet<R> {
 
-	protected JDBCKeySequencedDataSetImpl(QConnection databaseConnection, QString tableName, QIndex index, R record, AccessMode accessMode, boolean userOpen, JDBCInfoStruct infoStruct,
+	protected JDBCKeySequencedDataSetImpl(QConnection databaseConnection, QString tableName, QIndex index, R record, AccessMode accessMode, boolean userOpen, QDataSetInfo infoStruct,
 			QDataContext dataContext) {
 		super(databaseConnection, tableName, index, record, accessMode, userOpen, infoStruct, dataContext);
 	}

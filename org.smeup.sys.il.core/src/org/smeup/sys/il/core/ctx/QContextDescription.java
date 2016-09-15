@@ -60,4 +60,12 @@ public interface QContextDescription {
 	 */
 	String getTemporaryLibrary();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	String getTemporaryArea();
+
 } // QContextDescription

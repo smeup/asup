@@ -32,7 +32,7 @@ public class CommandExecutor {
 	// @Inject
 	// private QProgramStatus programStatus;
 	@Inject
-	private QJob job;
+	private transient QJob job;
 
 	public CommandExecutor() {
 		super();

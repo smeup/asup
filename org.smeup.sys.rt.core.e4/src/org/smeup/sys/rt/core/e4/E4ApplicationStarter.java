@@ -96,6 +96,11 @@ public class E4ApplicationStarter {
 			public String getTemporaryLibrary() {
 				return "";
 			}
+
+			@Override
+			public String getTemporaryArea() {
+				return "";
+			}
 		};
 		QContext contextApplication = new E4ContextRootImpl(bundleContext, UUID.randomUUID().toString(), contextDescription);
 		this.application.setContext(contextApplication);

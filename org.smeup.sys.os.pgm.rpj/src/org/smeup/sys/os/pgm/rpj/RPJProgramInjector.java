@@ -11,9 +11,6 @@
  */
 package org.smeup.sys.os.pgm.rpj;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -31,6 +28,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.db.esql.QCommunicationArea;
+import org.smeup.sys.db.esql.QCommunicationAreaImpl;
 import org.smeup.sys.db.esql.QCursor;
 import org.smeup.sys.db.esql.QCursorTerm;
 import org.smeup.sys.db.esql.QESqlFactory;
@@ -49,7 +47,6 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Module;
 import org.smeup.sys.il.data.annotation.Procedure;
 import org.smeup.sys.il.data.annotation.Program;
-import org.smeup.sys.il.data.jdbc.JDBCCommunicationAreaImpl;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.QAccessFactory;
@@ -100,12 +97,12 @@ public class RPJProgramInjector {
 	private QDataContext dataContext;
 
 	private QResourceReader<QFile> fileReader;
-	private Map<String, Object> ownerModules;
+	private Map<String, RPJModule> ownerModules;
 
 	public RPJProgramInjector(QActivationGroup activationGroup, QDataContext dataContext) {
 		this.activationGroup = activationGroup;
 		this.dataContext = dataContext;
-		this.ownerModules = new HashMap<String, Object>();
+		this.ownerModules = new HashMap<String, RPJModule>();
 	}
 
 	@PostConstruct
@@ -132,10 +129,7 @@ public class RPJProgramInjector {
 			// program status
 			QProgramStatus programStatus = getOrCreateProgramStatus(program, dataContainer);
 
-			P delegate = prepareDelegate(dataContainer, program, klass);
-
-//			if (delegate instanceof Serializable)
-//				serializeProgramDelegate(delegate);
+			Object delegate = prepareDelegate(dataContainer, program, klass);
 
 			// memory info
 			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();
@@ -159,23 +153,36 @@ public class RPJProgramInjector {
 		}
 	}
 
-	public <P> P prepareDelegate(QDataContainer dataContainer, QProgram program, Class<P> klass) {
+	public Object prepareDelegate(QDataContainer dataContainer, QProgram program, Class<?> klass) {
+
+		Object delegate = null;
+		
+		if (Serializable.class.isAssignableFrom(klass)) 			
+			delegate = dataContext.deserialize(klass);
 
 		try {
-			getOrCreateProgramStatus(program, dataContainer);
 
-			QAccessFactory accessFactory = esamManager.createFactory(job, dataContext);
+			getOrCreateProgramStatus(program, dataContainer);
 
 			QCommunicationArea communicationArea = (QCommunicationArea) dataContainer.getData(SQL_COMMUNICATION_AREA);
 
 			if (communicationArea == null) {
-				QDataTerm<?> communicationAreaTerm = dataContainer.addDataTerm(SQL_COMMUNICATION_AREA, JDBCCommunicationAreaImpl.class, null);
+				QDataTerm<?> communicationAreaTerm = dataContainer.addDataTerm(SQL_COMMUNICATION_AREA, QCommunicationAreaImpl.class, null);
 				communicationArea = (QCommunicationArea) dataContainer.getData(communicationAreaTerm);
 			}
 
+			QAccessFactory accessFactory = esamManager.createFactory(job, dataContext);
 			QESqlFactory sqlFactory = esqlManager.createFactory(job, dataContext, communicationArea);
 
-			P delegate = injectData(null, klass, dataContainer, accessFactory, sqlFactory, new HashMap<String, Object>(), new HashMap<String, QRecord>());
+			if(delegate == null) {
+				delegate = injectData(null, null, klass, dataContainer, accessFactory, sqlFactory, new HashMap<String, RPJModule>(), new HashMap<String, QRecord>());
+				
+				if (Serializable.class.isAssignableFrom(klass)) 
+					dataContext.serialize(delegate);
+			}
+			else 
+				delegate = injectData(delegate, null, klass, dataContainer, accessFactory, sqlFactory, new HashMap<String, RPJModule>(), new HashMap<String, QRecord>());		
+			
 			dataContext.getContext().invoke(delegate, PostConstruct.class);
 
 			return delegate;
@@ -195,7 +202,7 @@ public class RPJProgramInjector {
 			@SuppressWarnings("unchecked")
 			P callable = (P) constructor.newInstance(owner);
 
-			Map<String, Object> unitModules = new HashMap<String, Object>();
+			Map<String, RPJModule> unitModules = new HashMap<String, RPJModule>();
 			Map<String, QRecord> records = new HashMap<String, QRecord>();
 
 			dataContainer = dataManager.createDataContainer(dataContext.getContext(), callable);
@@ -235,11 +242,12 @@ public class RPJProgramInjector {
 		return programStatus;
 	}
 
-	private <P> P injectData(Object owner, Class<P> klass, QDataContainer dataContainer, QAccessFactory accessFactory, QESqlFactory sqlFactory, Map<String, Object> unitModules,
+	private Object injectData(Object callable, Object owner, Class<?> klass, QDataContainer dataContainer, QAccessFactory accessFactory, QESqlFactory sqlFactory, Map<String, RPJModule> unitModules,
 			Map<String, QRecord> records) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
-		P callable = klass.newInstance();
-
+		if(callable == null)
+			callable = klass.newInstance();
+		
 		if (owner == null)
 			owner = callable;
 
@@ -248,7 +256,7 @@ public class RPJProgramInjector {
 		return callable;
 	}
 
-	private void injectFields(Object owner, Class<?> klass, Object callable, QDataContainer dataContainer, QAccessFactory accessFactory, QESqlFactory sqlFactory, Map<String, Object> unitModules,
+	private void injectFields(Object owner, Class<?> klass, Object callable, QDataContainer dataContainer, QAccessFactory accessFactory, QESqlFactory sqlFactory, Map<String, RPJModule> unitModules,
 			Map<String, QRecord> records) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		// recursively on superClass
@@ -279,11 +287,6 @@ public class RPJProgramInjector {
 			if (Modifier.isFinal(field.getModifiers()))
 				continue;
 
-			if (Modifier.isStatic(field.getModifiers())) {
-				if (field.get(callable) != null)
-					continue;
-			}
-
 			RPJInjectableField injectableField = RPJInjectionHelper.createInjectableField(field);
 
 			// Procedure lazy loading
@@ -295,6 +298,8 @@ public class RPJProgramInjector {
 				modules.add(injectableField);
 				continue;
 			}
+
+//			System.out.println(injectableField.getFieldClass());
 
 			// DataStruct
 			if (QDataStruct.class.isAssignableFrom(injectableField.getFieldClass())) {
@@ -361,8 +366,13 @@ public class RPJProgramInjector {
 		}
 
 		// modules
-		for (RPJInjectableField field : modules)
-			injectModule(callable, owner, dataContainer, accessFactory, sqlFactory, unitModules, records, field);
+		for (RPJInjectableField field : modules) {
+			field.getField().setAccessible(true);
+			RPJModule module = (RPJModule) field.getValue(callable);
+			field.getField().setAccessible(false);
+
+			injectModule(module, callable, owner, dataContainer, accessFactory, sqlFactory, unitModules, records, field);
+		}
 
 		// dataSet
 		for (RPJInjectableField field : dataSets)
@@ -456,36 +466,37 @@ public class RPJProgramInjector {
 		}
 	}
 
-	private void injectModule(Object callable, Object owner, QDataContainer dataContainer, QAccessFactory accessFactory, QESqlFactory sqlFactory, Map<String, Object> unitModules,
+	private void injectModule(RPJModule object, Object callable, Object owner, QDataContainer dataContainer, QAccessFactory accessFactory, QESqlFactory sqlFactory, Map<String, RPJModule> unitModules,
 			Map<String, QRecord> records, RPJInjectableField field) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
-		Object object = null;
-
 		Module module = field.getFieldClass().getAnnotation(Module.class);
+
+		Object tempObject = null;
 		switch (module.scope()) {
 		case OWNER:
-			object = ownerModules.get(field.getFieldClass().getSimpleName());
+			tempObject = ownerModules.get(field.getFieldClass().getSimpleName());
 			break;
 		case UNIT:
-			object = unitModules.get(field.getFieldClass().getSimpleName());
+			tempObject = unitModules.get(field.getFieldClass().getSimpleName());
 			break;
 		}
+		if (tempObject != null) {
+			field.setValue(callable, tempObject);
+			return;
+		}
 
-		if (object == null) {
+		// System.out.println("\t\tmod: " + field.getName());
 
-			// System.out.println("\t\tmod: " + field.getName());
+		object = (RPJModule) injectData(object, owner, field.getFieldClass(), dataContainer, accessFactory, sqlFactory, unitModules, records);
+		dataContext.getContext().invoke(object, PostConstruct.class);
 
-			object = injectData(owner, field.getFieldClass(), dataContainer, accessFactory, sqlFactory, unitModules, records);
-			dataContext.getContext().invoke(object, PostConstruct.class);
-
-			switch (module.scope()) {
-			case OWNER:
-				ownerModules.put(field.getFieldClass().getSimpleName(), object);
-				break;
-			case UNIT:
-				unitModules.put(field.getFieldClass().getSimpleName(), object);
-				break;
-			}
+		switch (module.scope()) {
+		case OWNER:
+			ownerModules.put(field.getFieldClass().getSimpleName(), object);
+			break;
+		case UNIT:
+			unitModules.put(field.getFieldClass().getSimpleName(), object);
+			break;
 		}
 
 		if (object != null)
@@ -589,7 +600,7 @@ public class RPJProgramInjector {
 		field.setValue(callable, cursor);
 	}
 
-	private void injectFieldValue(RPJInjectableField injectableField, Object callable, Object owner, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules,
+	private void injectFieldValue(RPJInjectableField injectableField, Object callable, Object owner, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, RPJModule> unitModules,
 			Map<String, QRecord> records) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		Object object = null;
@@ -635,23 +646,5 @@ public class RPJProgramInjector {
 			file = fileOverride.getFileTo();
 
 		return file;
-	}
-
-	private void serializeProgramDelegate(Object programDelegate) throws IOException {
-
-		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		final ObjectOutputStream oos = new ObjectOutputStream(baos);
-
-		RPJDebuggingObjectOutputStream out = new RPJDebuggingObjectOutputStream(oos);
-		try {
-			out.writeObject(programDelegate);
-		} catch (Exception e) {
-			throw new RuntimeException("Serialization error. Path to bad object: " + out.getStack(), e);
-		}
-		finally {
-			baos.close();
-			oos.close();
-			out.close();
-		}
 	}
 }

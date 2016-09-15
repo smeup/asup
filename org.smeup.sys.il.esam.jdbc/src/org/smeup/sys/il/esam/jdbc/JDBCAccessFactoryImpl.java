@@ -26,6 +26,7 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.OperationDirection;
 import org.smeup.sys.il.esam.QAccessFactory;
+import org.smeup.sys.il.esam.QDataSetInfo;
 import org.smeup.sys.il.esam.QIndex;
 import org.smeup.sys.il.esam.QIndexColumn;
 import org.smeup.sys.il.esam.QKSDataSet;
@@ -35,7 +36,6 @@ import org.smeup.sys.il.esam.annotation.Descend;
 import org.smeup.sys.il.esam.annotation.Index;
 import org.smeup.sys.os.file.base.BaseFileMemberDataSetImpl;
 import org.smeup.sys.os.file.base.BaseFileMemberProvider;
-import org.smeup.sys.os.file.base.BaseInfoStruct;
 
 public class JDBCAccessFactoryImpl implements QAccessFactory {
 
@@ -85,7 +85,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 		if (index == null)
 			index = TABLE_INDEX_RELATIVE_RECORD_NUMBER;
 
-		JDBCInfoStruct internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, true);
+		QDataSetInfo internalInfoStruct = dataContext.getDataFactory().createDataStruct(QDataSetInfo.class, 0, true);
 		internalInfoStruct.clear();
 		if (infoStruct != null) 
 			internalInfoStruct.assign(infoStruct);
@@ -133,7 +133,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 
 		QIndex index = TABLE_INDEX_RELATIVE_RECORD_NUMBER;
 
-		JDBCInfoStruct internalInfoStruct = dataContext.getDataFactory().createDataStruct(JDBCInfoStruct.class, 0, true);
+		QDataSetInfo internalInfoStruct = dataContext.getDataFactory().createDataStruct(QDataSetInfo.class, 0, true);
 		internalInfoStruct.clear();		
 		if (infoStruct != null) 
 			internalInfoStruct.assign(infoStruct);
@@ -187,7 +187,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 			memberName = dataContext.getDataFactory().createCharacter(10, false, true);
 		
 		BaseFileMemberProvider fileMemberProvider = new BaseFileMemberProvider(contextProvider, fileName, memberName);
-		BaseInfoStruct internalInfoStruct = dataContext.getDataFactory().createDataStruct(BaseInfoStruct.class, 0, true);
+		QDataSetInfo internalInfoStruct = dataContext.getDataFactory().createDataStruct(QDataSetInfo.class, 0, true);
 		internalInfoStruct.clear();
 		QSMDataSet<R> dataSet = new BaseFileMemberDataSetImpl<R>(fileMemberProvider, record, accessMode, userOpen, internalInfoStruct, dataContext);
 

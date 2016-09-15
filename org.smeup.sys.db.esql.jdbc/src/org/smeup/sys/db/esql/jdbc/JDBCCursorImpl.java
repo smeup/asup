@@ -17,13 +17,13 @@ import java.sql.SQLException;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.esql.CursorType;
 import org.smeup.sys.db.esql.QCommunicationArea;
+import org.smeup.sys.db.esql.QCommunicationAreaImpl;
 import org.smeup.sys.db.esql.QCursor;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QNumeric;
-import org.smeup.sys.il.data.jdbc.JDBCCommunicationAreaImpl;
 
 public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 
@@ -81,7 +81,7 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 	@Override
 	public void next(QDataStruct target) {
 
-		JDBCCommunicationAreaImpl communicationAreaImpl = (JDBCCommunicationAreaImpl) getCommunicationArea();
+		QCommunicationAreaImpl communicationAreaImpl = (QCommunicationAreaImpl) getCommunicationArea();
 		
 		try {
 			if (!this.resultSet.next()) {

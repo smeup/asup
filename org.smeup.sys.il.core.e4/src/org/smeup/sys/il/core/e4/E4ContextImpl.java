@@ -275,6 +275,11 @@ public abstract class E4ContextImpl extends ContextImpl {
 			public String getTemporaryLibrary() {
 				return getContextDescription().getTemporaryLibrary();
 			}
+
+			@Override
+			public String getTemporaryArea() {
+				return getContextDescription().getTemporaryArea();
+			}
 		};
 
 		return createChildContext(contextDescription);

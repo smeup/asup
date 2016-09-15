@@ -154,7 +154,7 @@ public final class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> ex
 
 		} catch (final Exception e) {
 			throw new IntegratedLanguageDataRuntimeException(e);
-		}
+		}			
 	}
 	
 	@Override

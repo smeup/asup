@@ -480,6 +480,8 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 
 		addEOperation(contextDescriptionEClass, ecorePackage.getEString(), "getTemporaryLibrary", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(contextDescriptionEClass, ecorePackage.getEString(), "getTemporaryArea", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(contextProviderEClass, QContextProvider.class, "ContextProvider", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(contextProviderEClass, this.getContext(), "getContext", 1, 1, IS_UNIQUE, IS_ORDERED);
