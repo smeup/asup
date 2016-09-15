@@ -14,6 +14,7 @@ package org.smeup.sys.il.data.nio;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.sql.Date;
 
 import org.eclipse.emf.common.util.Enumerator;
 import org.smeup.sys.il.data.DataSpecial;
@@ -21,6 +22,7 @@ import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
@@ -46,12 +48,23 @@ public final class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> ex
 	public final E asEnum() {
 
 		// TODO encoding
-		final String value = new String(asBytes(), getDataContext().getCharset()).trim();
+		Object value = null;
+		switch (getDelegate().getBufferedElementType()) {
+		case DATETIME:
+			value = ((QDatetime)getDelegate()).asDate();
+			break;
+		case NUMERIC:
+			value = ((QNumeric)getDelegate()).asNumber();
+			break;
+		case STRING:
+			value = ((QString)getDelegate()).asString();
+			break;
+		}
 
 		if (Enumerator.class.isAssignableFrom(_klass))
 			try {
 				final Method method = _klass.getMethod("get", String.class);
-				E enumerator = (E) method.invoke(_klass, value);
+				E enumerator = (E) method.invoke(_klass, value.toString().trim());
 				if (enumerator == null)
 					enumerator = (E) method.invoke(_klass, "*OTHER");
 				return enumerator;
@@ -63,11 +76,27 @@ public final class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> ex
 
 				final Special special = field.getAnnotation(Special.class);
 				if (special == null) {
-					if (value.equals("*" + field.getName().toUpperCase()))
+					if (value.toString().trim().equals("*" + field.getName().toUpperCase()))
 						return Enum.valueOf(_klass, field.getName());
-				} else if (special.value().equals(value))
-					return Enum.valueOf(_klass, field.getName());
+				} else {
+					
+					switch (getDelegate().getBufferedElementType()) {
+					case DATETIME:
+						if(((QDatetime)getDelegate()).eq(Date.valueOf(special.value())))
+							return Enum.valueOf(_klass, field.getName());
+						break;
+					case NUMERIC:
+						if(((QNumeric)getDelegate()).eq(new Double(special.value())))
+							return Enum.valueOf(_klass, field.getName());
+						break;
+					case STRING:
+						if(((QString)getDelegate()).eq(special.value()))
+							return Enum.valueOf(_klass, field.getName());
+						break;
+					}
+				}					
 			}
+			
 			try {
 				return Enum.valueOf(_klass, "OTHER");
 			} catch (final Exception e) {
