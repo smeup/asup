@@ -46,27 +46,27 @@ public class RPJProgramDelegator extends ProgramCallableImpl {
 
 	private static final long serialVersionUID = 1L;
 
-	private QJob job;
-
-	private QDataContext dataContext;
-	private QProgram program;
-	private QProgramStatus programStatus;
-	private Object delegate;
-
+	private transient QJob job;
+	private transient QDataContext dataContext;
+	private transient QProgram program;
+	private transient QProgramStatus programStatus;
+	private transient Object delegate;
+	private transient QProgramInfo programInfo = null;
+	
 	private InitStrategy initStrategy;
-
+	
 	private Method _open = null;
 	private Method _snap = null;
 	private Method _entry = null;
 	private Method _main = null;
 	private Method _exit = null;
-
+	
 	private boolean isOpen = false;
 	private QData[] entry = null;
 	private QIndicator inlr = null;
 	private boolean apiMode = false;
 
-	private QProgramInfo programInfo = null;
+	
 
 	protected RPJProgramDelegator(QJob job, QDataContext dataContext, QActivationGroup activationGroup, QProgram program, QProgramStatus programStatus, Object delegate, QProgramInfo programInfo) {
 		this.job = job;

@@ -38,7 +38,7 @@ public class NIOContextInputStreamImpl extends ObjectInputStream {
 	protected Class<?> resolveClass(ObjectStreamClass desc) throws ClassNotFoundException, IOException {
 
 		String name = desc.getName();
-
+		
 		try {
 			Class<?> c = klass.getClassLoader().loadClass(name);
 			return c;

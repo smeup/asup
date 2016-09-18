@@ -74,7 +74,7 @@ public final class NIOStorageImpl implements QStorable {
 		stream.defaultWriteObject();
 
 		byte[] array = _storage.array();
-		stream.writeInt(array.length);
+		stream.writeInt(_storage.capacity());
 		stream.write(array);
 	}
 }

@@ -39,50 +39,50 @@ public abstract class RPJProgram extends ProgramCallableImpl {
 
 	private static final long serialVersionUID = 1L;
 	
-	private QJob job;
-	private QDataContext dataContext;
-	private QProgram program;
-	private QProgramInfo programInfo;
-	private QProgramStatus programStatus;
-	private Map<String, RPJModule> programModules = new HashMap<String, RPJModule>();
-	private Map<String, QRecord> programRecords = new HashMap<String, QRecord>();
+	private transient QJob _job;
+	private transient QDataContext _dataContext;
+	private transient QProgram _program;
+	private transient QProgramInfo _programInfo;
+	private transient QProgramStatus _programStatus;
+	private Map<String, RPJModule> _programModules = new HashMap<String, RPJModule>();
+	private Map<String, QRecord> _programRecords = new HashMap<String, QRecord>();
 	
 	private boolean isOpen = false;
 	private QIndicator _inlr = null;
 	
 	protected void _init(QJob job, QDataContext dataContext, QProgram program, QProgramInfo programInfo, QProgramStatus programStatus) {
-		this.job = job;
-		this.dataContext = dataContext;
-		this.program = program;
-		this.programInfo = programInfo;
-		this.programStatus = programStatus;
+		this._job = job;
+		this._dataContext = dataContext;
+		this._program = program;
+		this._programInfo = programInfo;
+		this._programStatus = programStatus;
 	}
 	
 	protected Map<String, RPJModule> getModules() {
-		return programModules;
+		return _programModules;
 	}
 	
 	protected Map<String, QRecord> getRecords() {
-		return programRecords;
+		return _programRecords;
 	}
 	
 	@Override
 	public QDataContext getDataContext() {
-		return dataContext;
+		return _dataContext;
 	}
 
 	@Override
 	public QProgram getProgram() {
-		return program;
+		return _program;
 	}
 
 	public QProgramInfo getProgramInfo() {
-		return programInfo;
+		return _programInfo;
 	}
 
 	@Override
 	public QProgramStatus getProgramStatus() {
-		return programStatus;
+		return _programStatus;
 	}
 	
 	@Override
@@ -196,14 +196,14 @@ public abstract class RPJProgram extends ProgramCallableImpl {
 	public void close() {
 
 		try {
-			QJobRunInfo jobRunInfo = job.getJobRunInfo();
+			QJobRunInfo jobRunInfo = _job.getJobRunInfo();
 			if (jobRunInfo != null)
-				jobRunInfo.setMemorySize(jobRunInfo.getMemorySize() - programInfo.getMemorySize());
+				jobRunInfo.setMemorySize(jobRunInfo.getMemorySize() - _programInfo.getMemorySize());
 	
 			QActivationGroup currentActivationGroup = getActivationGroup();
 			setActivationGroup(null);
 			
-			if(currentActivationGroup != null && program.getActivationGroup().equals("*NEW")) {
+			if(currentActivationGroup != null && _program.getActivationGroup().equals("*NEW")) {
 				for(QProgramCallable callableProgram: new ArrayList<QProgramCallable>(currentActivationGroup.getPrograms()))
 					callableProgram.close();
 			}

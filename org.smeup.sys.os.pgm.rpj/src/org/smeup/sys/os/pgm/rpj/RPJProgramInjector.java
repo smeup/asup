@@ -11,7 +11,6 @@
  */
 package org.smeup.sys.os.pgm.rpj;
 
-import java.io.Serializable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -99,6 +98,10 @@ public class RPJProgramInjector {
 	private QResourceReader<QFile> fileReader;
 	private Map<String, RPJModule> ownerModules;
 
+	private static boolean serializationActive = false;
+	private static int globalInjectionTime = 0;
+	private static int globalInjectionIOTime = 0;
+	
 	public RPJProgramInjector(QActivationGroup activationGroup, QDataContext dataContext) {
 		this.activationGroup = activationGroup;
 		this.dataContext = dataContext;
@@ -126,10 +129,12 @@ public class RPJProgramInjector {
 		try {
 			long startTime = System.currentTimeMillis();
 
-			// program status
-			QProgramStatus programStatus = getOrCreateProgramStatus(program, dataContainer);
-
 			Object delegate = prepareDelegate(dataContainer, program, klass);
+
+			// program status
+			QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(PROGRAM_STATUS);
+			if(programStatus == null)
+				programStatus = addProgramStatus(dataContainer, program);
 
 			// memory info
 			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();
@@ -156,35 +161,66 @@ public class RPJProgramInjector {
 	public Object prepareDelegate(QDataContainer dataContainer, QProgram program, Class<?> klass) {
 
 		Object delegate = null;
-		
-		if (Serializable.class.isAssignableFrom(klass)) 			
-			delegate = dataContext.deserialize(klass);
 
+		long timeIni = System.currentTimeMillis();
+		long timeIOIni = timeIni;
+		if (serializationActive && RPJProgram.class.isAssignableFrom(klass)) {
+			delegate = dataContext.deserialize(klass);
+		}
+		long timeIOEnd = System.currentTimeMillis();
+		
 		try {
 
-			getOrCreateProgramStatus(program, dataContainer);
+			QProgramStatus programStatus = addProgramStatus(dataContainer, program);
 
-			QCommunicationArea communicationArea = (QCommunicationArea) dataContainer.getData(SQL_COMMUNICATION_AREA);
-
-			if (communicationArea == null) {
-				QDataTerm<?> communicationAreaTerm = dataContainer.addDataTerm(SQL_COMMUNICATION_AREA, QCommunicationAreaImpl.class, null);
-				communicationArea = (QCommunicationArea) dataContainer.getData(communicationAreaTerm);
-			}
-
+			QCommunicationArea communicationArea = addCommunicationArea(dataContainer, program);
+			
 			QAccessFactory accessFactory = esamManager.createFactory(job, dataContext);
 			QESqlFactory sqlFactory = esqlManager.createFactory(job, dataContext, communicationArea);
 
 			if(delegate == null) {
-				delegate = injectData(null, null, klass, dataContainer, accessFactory, sqlFactory, new HashMap<String, RPJModule>(), new HashMap<String, QRecord>());
 				
-				if (Serializable.class.isAssignableFrom(klass)) 
-					dataContext.serialize(delegate);
+				delegate = klass.newInstance();
+				
+				// serializable
+				if(delegate instanceof RPJProgram) {
+					
+					@SuppressWarnings("resource")
+					RPJProgram rpjProgram = (RPJProgram)delegate;
+
+					rpjProgram.getRecords().put(PROGRAM_STATUS, programStatus);
+					rpjProgram.getRecords().put(SQL_COMMUNICATION_AREA, communicationArea);
+					
+					delegate = injectData(delegate, null, klass, dataContainer, accessFactory, sqlFactory, rpjProgram.getModules(), rpjProgram.getRecords());
+					
+					if (serializationActive) 
+						dataContext.serialize(delegate);
+				}
+				else
+					delegate = injectData(delegate, null, klass, dataContainer, accessFactory, sqlFactory, new HashMap<String, RPJModule>(), new HashMap<String, QRecord>());
+				
 			}
-			else 
-				delegate = injectData(delegate, null, klass, dataContainer, accessFactory, sqlFactory, new HashMap<String, RPJModule>(), new HashMap<String, QRecord>());		
+			// serialized
+			else  {
+				@SuppressWarnings("resource")
+				RPJProgram rpjProgram = (RPJProgram)delegate;
+				
+				rpjProgram.getRecords().put(PROGRAM_STATUS, programStatus);
+				rpjProgram.getRecords().put(SQL_COMMUNICATION_AREA, communicationArea);
+
+				delegate = injectData(delegate, null, klass, dataContainer, accessFactory, sqlFactory, rpjProgram.getModules(), rpjProgram.getRecords());
+			}
 			
 			dataContext.getContext().invoke(delegate, PostConstruct.class);
-
+			
+			long timeEnd = System.currentTimeMillis();
+			globalInjectionTime += (timeEnd - timeIni);
+			globalInjectionIOTime += (timeIOEnd - timeIOIni);
+			if(timeEnd - timeIni > 100) {
+				System.out.println(klass.getSimpleName() + " time: " + (timeEnd - timeIni) + " IO: " + (timeIOEnd - timeIOIni));
+			}
+			System.out.println("Global injection time: " + globalInjectionTime + " IO: " + globalInjectionIOTime);
+			
 			return delegate;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -192,6 +228,39 @@ public class RPJProgramInjector {
 		}
 	}
 
+	private QProgramStatus addProgramStatus(QDataContainer dataContainer, QProgram program) {
+
+		QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(PROGRAM_STATUS);
+
+		if (programStatus == null) {
+			QDataTerm<?> programStatusTerm = dataContainer.addDataTerm(PROGRAM_STATUS, RPJProgramStatus.class, null);
+			programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
+
+			programStatus.getProgramName().eval(program.getName());
+			if (program.getLibrary() != null)
+				programStatus.getProgramLibrary().eval(program.getLibrary());
+
+			QJobReference jobReference = job.getJobReference();
+			programStatus.getUserName().eval(jobReference.getJobUser());
+			programStatus.getJobNumber().eval(jobReference.getJobNumber());
+			programStatus.getJobName().eval(jobReference.getJobName());
+		}
+
+		return programStatus;
+	}
+	
+	private QCommunicationArea addCommunicationArea(QDataContainer dataContainer, QProgram program) {
+		
+		QCommunicationArea communicationArea = (QCommunicationArea) dataContainer.getData(SQL_COMMUNICATION_AREA);
+
+		if (communicationArea == null) {
+			QDataTerm<?> communicationAreaTerm = dataContainer.addDataTerm(SQL_COMMUNICATION_AREA, QCommunicationAreaImpl.class, null);
+			communicationArea = (QCommunicationArea) dataContainer.getData(communicationAreaTerm);
+		}
+
+		return communicationArea;
+	}
+	
 	public <P extends Object> P prepareProcedure(Object owner, Class<P> klass) {
 
 		Constructor<?> constructor = null;
@@ -220,32 +289,10 @@ public class RPJProgramInjector {
 		}
 	}
 
-	private QProgramStatus getOrCreateProgramStatus(QProgram program, QDataContainer dataContainer) {
-
-		QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(PROGRAM_STATUS);
-
-		if (programStatus == null) {
-			QDataTerm<?> programStatusTerm = dataContainer.addDataTerm(PROGRAM_STATUS, RPJProgramStatus.class, null);
-			programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
-			// programStatus.clear();
-
-			programStatus.getProgramName().eval(program.getName());
-			if (program.getLibrary() != null)
-				programStatus.getProgramLibrary().eval(program.getLibrary());
-
-			QJobReference jobReference = job.getJobReference();
-			programStatus.getUserName().eval(jobReference.getJobUser());
-			programStatus.getJobNumber().eval(jobReference.getJobNumber());
-			programStatus.getJobName().eval(jobReference.getJobName());
-		}
-
-		return programStatus;
-	}
-
 	private Object injectData(Object callable, Object owner, Class<?> klass, QDataContainer dataContainer, QAccessFactory accessFactory, QESqlFactory sqlFactory, Map<String, RPJModule> unitModules,
 			Map<String, QRecord> records) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
-		if(callable == null)
+		if(callable == null) 
 			callable = klass.newInstance();
 		
 		if (owner == null)
@@ -287,35 +334,43 @@ public class RPJProgramInjector {
 			if (Modifier.isFinal(field.getModifiers()))
 				continue;
 
+			// Procedure lazy loading			
+			if (field.getType().getAnnotation(Procedure.class) != null) {
+				continue;
+			}
+
 			RPJInjectableField injectableField = RPJInjectionHelper.createInjectableField(field);
 
-			// Procedure lazy loading
-			if (injectableField.getFieldClass().getAnnotation(Procedure.class) != null)
-				continue;
-
 			// Module
-			if (injectableField.getFieldClass().getAnnotation(Module.class) != null) {
+			if (field.getType().getAnnotation(Module.class) != null) {
 				modules.add(injectableField);
 				continue;
 			}
 
-//			System.out.println(injectableField.getFieldClass());
-
 			// DataStruct
 			if (QDataStruct.class.isAssignableFrom(injectableField.getFieldClass())) {
-				dataStructures.add(injectableField);
+				if(injectableField.getValue(callable) == null) {
+//					System.out.println(injectableField);
+					dataStructures.add(injectableField);
+				}
 				continue;
 			}
 
 			// BufferedData
 			if (QBufferedData.class.isAssignableFrom(injectableField.getFieldClass())) {
-				datas.add(injectableField);
+				if(injectableField.getValue(callable) == null) {
+//					System.out.println(injectableField);
+					datas.add(injectableField);
+				}
 				continue;
 			}
 
 			// Pointers
 			if (QPointer.class.isAssignableFrom(injectableField.getFieldClass())) {
-				pointers.add(injectableField);
+				if(injectableField.getValue(callable) == null) {
+//					System.out.println(injectableField);
+					pointers.add(injectableField);
+				}
 				continue;
 			}
 
@@ -354,13 +409,18 @@ public class RPJProgramInjector {
 			}
 
 			// Data
+			// - Adapter
+			// - List
+			// - Structures
 			if (QData.class.isAssignableFrom(injectableField.getFieldClass())) {
 				datas.add(injectableField);
 				continue;
 			}
 
+			// primitives
 			if (injectableField.getAnnotation(DataDef.class) != null)
 				RPJInjectionHelper.setPrimitiveValue(dataContext, injectableField, callable);
+			// services
 			else
 				injectFieldValue(injectableField, callable, owner, dataContainer, accessFactory, unitModules, records);
 		}
@@ -471,21 +531,22 @@ public class RPJProgramInjector {
 
 		Module module = field.getFieldClass().getAnnotation(Module.class);
 
-		Object tempObject = null;
-		switch (module.scope()) {
-		case OWNER:
-			tempObject = ownerModules.get(field.getFieldClass().getSimpleName());
-			break;
-		case UNIT:
-			tempObject = unitModules.get(field.getFieldClass().getSimpleName());
-			break;
+		if(module != null) {
+			Object tempObject = null;
+			switch (module.scope()) {
+			case OWNER:
+				tempObject = ownerModules.get(field.getFieldClass().getSimpleName());
+				break;
+			case UNIT:
+				tempObject = unitModules.get(field.getFieldClass().getSimpleName());
+				break;
+			}
+			
+			if (tempObject != null) {
+				field.setValue(callable, tempObject);
+				return;
+			}
 		}
-		if (tempObject != null) {
-			field.setValue(callable, tempObject);
-			return;
-		}
-
-		// System.out.println("\t\tmod: " + field.getName());
 
 		object = (RPJModule) injectData(object, owner, field.getFieldClass(), dataContainer, accessFactory, sqlFactory, unitModules, records);
 		dataContext.getContext().invoke(object, PostConstruct.class);
