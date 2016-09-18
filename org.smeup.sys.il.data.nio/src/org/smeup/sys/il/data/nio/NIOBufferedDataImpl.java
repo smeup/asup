@@ -109,9 +109,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		else if(object instanceof NIOObjectBuffer) {
 			
 			NIOObjectBuffer nioObjectBuffer = (NIOObjectBuffer)object;
-/*			final int length = stream.readInt();				
-			final byte[] array = new byte[length];
-			stream.read(array, 0, length);*/
 			_storage = nioObjectBuffer.getByteBuffer();
 		}
 		else
@@ -128,9 +125,15 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		else if(_storage instanceof ByteBuffer) {
 			ByteBuffer byteBuffer = (ByteBuffer)_storage;
 			
-			stream.writeObject(new NIOObjectBuffer(byteBuffer.array()));
-//			stream.writeInt(byteBuffer.capacity());
-//			stream.write(byteBuffer.array(), 0, byteBuffer.capacity());
+			if(stream instanceof NIOContextOutputStreamImpl) {
+				NIOContextOutputStreamImpl nioContextOutputStreamImpl = (NIOContextOutputStreamImpl)stream;
+				if(nioContextOutputStreamImpl.isAllocated())
+					stream.writeObject(new NIOObjectBuffer(byteBuffer.array()));
+				else
+					stream.writeObject(NIOObjectNull.getInstance());
+			}
+			else 
+				stream.writeObject(new NIOObjectBuffer(byteBuffer.array()));
 		}
 		else {
 			stream.writeObject(NIOObjectNull.getInstance());

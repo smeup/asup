@@ -127,7 +127,7 @@ public final class NIODataContextImpl implements QDataContext {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <O> O deserialize(Class<O> klass) {
+	public <O> O deserialize(Class<O> klass, boolean allocate) {
 
 		O object = null;
 		FileInputStream fis = null;
@@ -135,10 +135,10 @@ public final class NIODataContextImpl implements QDataContext {
 
 		try {
 			String tempArea = getContext().getContextDescription().getTemporaryArea();
-			URI fileUri = new URI(tempArea+"/" + klass.getName());
+			URI fileUri = new URI(tempArea+"/" + klass.getName() + "_" + allocate);
 			fis = new FileInputStream(new File(fileUri));
 			
-			ois = new NIOContextInputStreamImpl(this, klass, fis);
+			ois = new NIOContextInputStreamImpl(this, klass, fis, allocate);
 			object = (O) ois.readObject();
 		}
 		catch (FileNotFoundException e) {
@@ -168,18 +168,18 @@ public final class NIODataContextImpl implements QDataContext {
 	}
 
 	@Override
-	public void serialize(Object object) {
+	public void serialize(Object object, boolean allocate) {
 		
 		ByteArrayOutputStream baos = null;
 		FileOutputStream fos = null;
-		NIODebuggingObjectOutputStream out = null;
+		NIOContextOutputStreamImpl out = null;
 		
 		try {
 			baos = new ByteArrayOutputStream();
 			String tempArea = getContext().getContextDescription().getTemporaryArea();
-			URI fileUri = new URI(tempArea+"/" + object.getClass().getName());
+			URI fileUri = new URI(tempArea+"/" + object.getClass().getName() + "_" + allocate);
 			fos = new FileOutputStream(new File(fileUri));
-			out = new NIODebuggingObjectOutputStream(fos);
+			out = new NIOContextOutputStreamImpl(this, fos, allocate);
 
 			out.writeObject(object);
 		} catch (Exception e) {

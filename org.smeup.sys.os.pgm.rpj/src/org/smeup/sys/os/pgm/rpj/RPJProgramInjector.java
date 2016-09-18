@@ -165,7 +165,7 @@ public class RPJProgramInjector {
 		long timeIni = System.currentTimeMillis();
 		long timeIOIni = timeIni;
 		if (serializationActive && RPJProgram.class.isAssignableFrom(klass)) {
-			delegate = dataContext.deserialize(klass);
+			delegate = dataContext.deserialize(klass, true);
 		}
 		long timeIOEnd = System.currentTimeMillis();
 		
@@ -194,7 +194,7 @@ public class RPJProgramInjector {
 					delegate = injectData(delegate, null, klass, dataContainer, accessFactory, sqlFactory, rpjProgram.getModules(), rpjProgram.getRecords());
 					
 					if (serializationActive) 
-						dataContext.serialize(delegate);
+						dataContext.serialize(delegate, true);
 				}
 				else
 					delegate = injectData(delegate, null, klass, dataContainer, accessFactory, sqlFactory, new HashMap<String, RPJModule>(), new HashMap<String, QRecord>());

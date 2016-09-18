@@ -36,10 +36,10 @@ public interface QDataContext extends QContextProvider {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" klassRequired="true"
+	 * @model required="true" klassRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	<O> O deserialize(Class<O> klass);
+	<O> O deserialize(Class<O> klass, boolean allocate);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,10 +100,10 @@ public interface QDataContext extends QContextProvider {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model objectRequired="true"
+	 * @model objectRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	void serialize(Object object);
+	void serialize(Object object, boolean allocate);
 
 	/**
 	 * <!-- begin-user-doc -->

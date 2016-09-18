@@ -11,6 +11,9 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.lang.reflect.Array;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -40,7 +43,7 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 
 	private static final long serialVersionUID = 1L;
 
-	private final D[] _elements;
+	private transient D[] _elements;
 	// private int capacity = 0;
 
 	@SuppressWarnings("unchecked")
@@ -1193,4 +1196,21 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 		else
 			clear();
 	}
+	
+	@SuppressWarnings("unchecked")
+	private final void readObject(final ObjectInputStream stream) throws IOException, ClassNotFoundException {
+		
+		stream.defaultReadObject();
+		
+		int dimension = stream.readInt();
+		this._elements = (D[]) Array.newInstance(getModel().getClass(), dimension);
+	}
+
+	private final void writeObject(final ObjectOutputStream stream) throws IOException {
+
+		stream.defaultWriteObject();
+		
+		stream.writeInt(_elements.length);
+	}	
+
 }
