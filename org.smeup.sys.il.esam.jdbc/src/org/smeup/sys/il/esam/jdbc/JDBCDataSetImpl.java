@@ -335,13 +335,19 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 		try {
 			if (rebuildNeeded(OperationDirection.FORWARD))
-				if (this.currentKeySet == null)
-					prepareAccess(OperationSet.SET_LOWER_LIMIT, buildKeySet(), OperationRead.READ, null, false);
-				else
-					prepareAccess(OperationSet.SET_LOWER_LIMIT, this.currentKeySet, OperationRead.READ, null, false);
-
+				// TODO verify me
+				if(this.currentOpSet == null){
+					if (this.currentKeySet == null)
+						prepareAccess(OperationSet.SET_LOWER_LIMIT, buildKeySet(), OperationRead.READ, null, false);
+					else
+						prepareAccess(OperationSet.SET_LOWER_LIMIT, this.currentKeySet, OperationRead.READ, null, false);
+				}else{
+					if (this.currentKeySet == null)
+						prepareAccess(this.currentOpSet, buildKeySet(), OperationRead.READ, null, false);
+					else
+						prepareAccess(this.currentOpSet, this.currentKeySet, OperationRead.READ, null, false);
+				}
 			readNext();
-
 		} catch (SQLException e) {
 			handleSQLException(e);
 		}
