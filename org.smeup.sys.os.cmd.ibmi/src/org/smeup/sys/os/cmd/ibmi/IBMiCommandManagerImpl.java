@@ -99,7 +99,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 	@Override
 	public QCallableCommand prepareCommand(QJob job, String command, Map<String, Object> variables, boolean controlRequiredParms) {
 		
-		System.out.println("cmd: " + command);		
+		//System.out.println("cmd: " + command);		
 
 		if (command == null || command.trim().equals(""))
 			throw new OperatingSystemRuntimeException("Empty command line", null);
