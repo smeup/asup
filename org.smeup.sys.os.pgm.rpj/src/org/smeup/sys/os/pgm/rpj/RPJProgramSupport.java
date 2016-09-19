@@ -689,7 +689,8 @@ public class RPJProgramSupport extends RPJModule {
 
 	public QString qCat(QString string1, QString string2) {
 
-		String str = string1.trimR() + " " + string2.toString();
+//		String str = string1.trimR() + " " + string2.toString();
+		String str = string1 + string2.toString();
 		int length = str.length();
 		QCharacter character = dataContext.getDataFactory().createCharacter(length, false, true);
 		character.eval(str);

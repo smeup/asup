@@ -187,7 +187,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			if (overlay.getPosition() >= 1)
 				writeAnnotation(field, Overlay.class, "position", overlay.getPosition());
 			
-			if(overlay.getName().startsWith("*"))
+			if(overlay.getName() != null && overlay.getName().startsWith("*"))
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.TRANSIENT_KEYWORD));
 		}
 
