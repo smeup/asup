@@ -165,7 +165,7 @@ public class RPJProgramInjector {
 		long timeIni = System.currentTimeMillis();
 		long timeIOIni = timeIni;
 		if (serializationActive && RPJProgram.class.isAssignableFrom(klass)) {
-			delegate = dataContext.deserialize(klass, true);
+			delegate = dataContext.deserialize(klass, true, "injector");
 		}
 		long timeIOEnd = System.currentTimeMillis();
 		
@@ -194,7 +194,7 @@ public class RPJProgramInjector {
 					delegate = injectData(delegate, null, klass, dataContainer, accessFactory, sqlFactory, rpjProgram.getModules(), rpjProgram.getRecords());
 					
 					if (serializationActive) 
-						dataContext.serialize(delegate, true);
+						dataContext.serialize(delegate, true, "injector");
 				}
 				else
 					delegate = injectData(delegate, null, klass, dataContainer, accessFactory, sqlFactory, new HashMap<String, RPJModule>(), new HashMap<String, QRecord>());
@@ -217,9 +217,9 @@ public class RPJProgramInjector {
 			globalInjectionTime += (timeEnd - timeIni);
 			globalInjectionIOTime += (timeIOEnd - timeIOIni);
 			if(timeEnd - timeIni > 100) {
-				System.out.println(klass.getSimpleName() + " time: " + (timeEnd - timeIni) + " IO: " + (timeIOEnd - timeIOIni));
+//				System.out.println(klass.getSimpleName() + " time: " + (timeEnd - timeIni) + " IO: " + (timeIOEnd - timeIOIni));
 			}
-			System.out.println("Global injection time: " + globalInjectionTime + " IO: " + globalInjectionIOTime);
+//			System.out.println("Global injection time: " + globalInjectionTime + " IO: " + globalInjectionIOTime);
 			
 			return delegate;
 		} catch (Exception e) {
@@ -532,6 +532,7 @@ public class RPJProgramInjector {
 		Module module = field.getFieldClass().getAnnotation(Module.class);
 
 		if(module != null) {
+			
 			Object tempObject = null;
 			switch (module.scope()) {
 			case OWNER:
@@ -544,7 +545,10 @@ public class RPJProgramInjector {
 			
 			if (tempObject != null) {
 				field.setValue(callable, tempObject);
-				return;
+				if(module.name().equalsIgnoreCase("£MDV") || module.name().equalsIgnoreCase("£JAX"))
+					object = (RPJModule) tempObject;
+				else
+					return;
 			}
 		}
 

@@ -107,16 +107,15 @@ public final class NIODataContextImpl implements QDataContext {
 			NIOBufferedDataImpl copy = null;
 
 			final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			final ObjectOutputStream oos = new ObjectOutputStream(baos);
+			final ObjectOutputStream oos = new NIOContextOutputStreamImpl(this, baos, true);
 			oos.writeObject(data);
 			oos.close();
 
-			final ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-			final ObjectInputStream ois = new ObjectInputStream(bais);
+			final ObjectInputStream ois = new NIOContextInputStreamImpl(this, data.getClass().getClassLoader(), new ByteArrayInputStream(baos.toByteArray()));
 			copy = (NIOBufferedDataImpl) ois.readObject();
 			ois.close();
 
-			NIOBufferHelper.setDataContext(copy, this);
+			baos.close();
 
 			return copy;
 		} catch (IOException | ClassNotFoundException e) {
@@ -127,7 +126,7 @@ public final class NIODataContextImpl implements QDataContext {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <O> O deserialize(Class<O> klass, boolean allocate) {
+	public <O> O deserialize(Class<O> klass, boolean allocate, String name) {
 
 		O object = null;
 		FileInputStream fis = null;
@@ -135,10 +134,10 @@ public final class NIODataContextImpl implements QDataContext {
 
 		try {
 			String tempArea = getContext().getContextDescription().getTemporaryArea();
-			URI fileUri = new URI(tempArea+"/" + klass.getName() + "_" + allocate);
+			URI fileUri = new URI(tempArea+"/" + klass.getName() + "_" + allocate + "_" + name);
 			fis = new FileInputStream(new File(fileUri));
 			
-			ois = new NIOContextInputStreamImpl(this, klass, fis, allocate);
+			ois = new NIOContextInputStreamImpl(this, klass.getClassLoader(), fis);
 			object = (O) ois.readObject();
 		}
 		catch (FileNotFoundException e) {
@@ -168,7 +167,7 @@ public final class NIODataContextImpl implements QDataContext {
 	}
 
 	@Override
-	public void serialize(Object object, boolean allocate) {
+	public void serialize(Object object, boolean allocate, String name) {
 		
 		ByteArrayOutputStream baos = null;
 		FileOutputStream fos = null;
@@ -177,7 +176,7 @@ public final class NIODataContextImpl implements QDataContext {
 		try {
 			baos = new ByteArrayOutputStream();
 			String tempArea = getContext().getContextDescription().getTemporaryArea();
-			URI fileUri = new URI(tempArea+"/" + object.getClass().getName() + "_" + allocate);
+			URI fileUri = new URI(tempArea+"/" + object.getClass().getName() + "_" + allocate + "_" + name);
 			fos = new FileOutputStream(new File(fileUri));
 			out = new NIOContextOutputStreamImpl(this, fos, allocate);
 

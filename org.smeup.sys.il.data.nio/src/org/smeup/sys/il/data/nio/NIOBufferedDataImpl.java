@@ -33,6 +33,8 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		super(dataContext);
 	}
 
+	protected abstract NIODataImpl _copyDef(QDataContext dataContext);
+	
 	@Override
 	protected final QDataContext getDataContext() {
 

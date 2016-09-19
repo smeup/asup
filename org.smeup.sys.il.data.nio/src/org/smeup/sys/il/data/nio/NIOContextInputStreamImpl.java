@@ -21,23 +21,17 @@ import org.smeup.sys.il.data.QDataContext;
 public class NIOContextInputStreamImpl extends ObjectInputStream {
 	
 	private NIODataContextImpl dataContext;
-	private Class<?> klass;
-	private boolean allocate;
+	private ClassLoader classLoader;
 	
-	protected NIOContextInputStreamImpl(NIODataContextImpl dataContext, Class<?> klass, InputStream inputStream, boolean allocate) throws IOException, SecurityException {
+	protected NIOContextInputStreamImpl(NIODataContextImpl dataContext, ClassLoader classLoader, InputStream inputStream) throws IOException, SecurityException {
 		super(inputStream);
 		
 		this.dataContext = dataContext;
-		this.klass = klass;
-		this.allocate = allocate;
+		this.classLoader = classLoader;
 	}
 	
 	protected QDataContext getDataContext() {
 		return this.dataContext;
-	}
-
-	protected boolean isAllocated() {
-		return allocate;
 	}
 	
 	@Override
@@ -46,7 +40,7 @@ public class NIOContextInputStreamImpl extends ObjectInputStream {
 		String name = desc.getName();
 		
 		try {
-			Class<?> c = klass.getClassLoader().loadClass(name);
+			Class<?> c = classLoader.loadClass(name);
 			return c;
 		} catch (Exception e) {
 		}

@@ -11,6 +11,12 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectStreamClass;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -106,4 +112,55 @@ public final class NIODataStructImpl extends NIOAbstractDataStruct {
 		}
 	}
 
+	@Override
+	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
+	
+		try {
+
+			NIODataImpl copy = null;
+
+			final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			final ObjectOutputStream oos = new ObjectOutputStream(baos);
+
+			final Object tempStorage = _storage;
+			final int tempPosition = _position;
+
+			_storage = null;
+			_position = 0;
+			oos.writeObject(this);
+			_storage = tempStorage;
+			_position = tempPosition;
+
+			baos.close();
+			oos.close();
+
+			final ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+			final ObjectInputStream ois = new ObjectInputStream(bais) {
+				@Override
+				protected Class<?> resolveClass(final ObjectStreamClass desc) throws IOException, ClassNotFoundException {
+					try {
+						return super.resolveClass(desc);
+					} catch (final Exception e) {
+						"".toCharArray();
+/*						if (NIODataStructImpl.this instanceof NIODataStructWrapperHandler) {
+							final NIODataStructWrapperHandler nioDataStructWrapperHandler = (NIODataStructWrapperHandler) NIOAbstractDataStruct.this;
+							final Class<?> c = nioDataStructWrapperHandler._wrapped.getClass().getClassLoader().loadClass(desc.getName());
+							return c;
+						}*/
+
+						throw e;
+					}
+				}
+			};
+			copy = (NIODataImpl) ois.readObject();
+			copy._dataContext = dataContext;
+			bais.close();
+			ois.close();
+
+			return copy;
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

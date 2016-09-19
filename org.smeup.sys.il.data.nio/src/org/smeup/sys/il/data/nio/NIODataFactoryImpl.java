@@ -409,14 +409,14 @@ public final class NIODataFactoryImpl implements QDataFactory {
 		return (R) createDataStruct(classDataStruct, 0, allocate);
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "unused" })
 	@Override
 	public final <D extends QDataStruct> D createDataStruct(final Class<D> classDelegator, final int length, final boolean allocate) {
 
 		// data structure
 		D dataStructure = null;
 
-		final QDataStruct model = getDataContext().deserialize(classDelegator, allocate);
+		final QDataStruct model = null; //getDataContext().deserialize(classDelegator, allocate, "factory");
 		if (model != null) {
 //			final NIOAbstractDataStruct nioDataStructure = (NIOAbstractDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(model)._copyDef(getDataContext());
 			NIOAbstractDataStruct nioDataStructure = (NIOAbstractDataStruct)NIOBufferHelper.getNIOBufferedDataImpl(model); 
@@ -443,7 +443,7 @@ public final class NIODataFactoryImpl implements QDataFactory {
 					((QDataStructWrapper) dataStructure).setDelegate(dataStructureDelegate);
 				}
 
-				getDataContext().serialize(dataStructure, allocate);
+//				getDataContext().serialize(dataStructure, allocate, "factory");
 //				cachedClasses.put(classDelegator, (QDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(dataStructure)._copyDef(getDataContext()));
 			} catch (final Exception e) {
 				throw new IntegratedLanguageDataRuntimeException(e);

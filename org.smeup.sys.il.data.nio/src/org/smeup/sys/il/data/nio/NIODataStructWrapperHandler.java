@@ -38,6 +38,13 @@ public final class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 
 	private List<QBufferedData> cachedElements = null;
 
+	private NIODataStructWrapperHandler(final QDataContext dataContext, final int length, final QDataStruct wrapped) {
+		super(dataContext, length);
+
+		this._wrapped = wrapped;
+		this._dynamicLength = (length == 0 ? true : false);		
+	}
+	
 	public NIODataStructWrapperHandler(final QDataContext dataContext, final int length, final QDataStruct wrapped, final boolean allocate) {
 		super(dataContext, length);
 
@@ -171,5 +178,15 @@ public final class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 				throw new IntegratedLanguageDataRuntimeException(e);
 			}
 		}
+	}
+	
+
+	@Override
+	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
+		
+		QDataStruct dataStruct = dataContext.deserialize(_wrapped.getClass(), false, null);		
+		NIODataImpl nioDataImpl = new NIODataStructWrapperHandler(dataContext, dataStruct.getLength(), dataStruct);
+		
+		return nioDataImpl;
 	}
 }
