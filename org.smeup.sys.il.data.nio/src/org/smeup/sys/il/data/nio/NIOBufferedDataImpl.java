@@ -33,6 +33,8 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		super(dataContext);
 	}
 
+	protected abstract NIODataImpl _copyDef(QDataContext dataContext);
+	
 	@Override
 	protected final QDataContext getDataContext() {
 
@@ -106,16 +108,13 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		if(object instanceof QStorable) {
 			_storage = object;
 		}
-		else {
-			final int length = stream.readInt();
-			final byte[] array = new byte[length];
-			stream.read(array);
-	
-			if (length > 0) 
-				_storage = ByteBuffer.allocate(length).put(array);
-			else
-				_storage = null;
-		}		
+		else if(object instanceof NIOObjectBuffer) {
+			
+			NIOObjectBuffer nioObjectBuffer = (NIOObjectBuffer)object;
+			_storage = nioObjectBuffer.getByteBuffer();
+		}
+		else
+			_storage = null;
 	}
 
 	private final void writeObject(final ObjectOutputStream stream) throws IOException {
@@ -125,17 +124,21 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		// storage
 		if(_storage instanceof QStorable)
 			stream.writeObject(_storage);
+		else if(_storage instanceof ByteBuffer) {
+			ByteBuffer byteBuffer = (ByteBuffer)_storage;
+			
+			if(stream instanceof NIOContextOutputStreamImpl) {
+				NIOContextOutputStreamImpl nioContextOutputStreamImpl = (NIOContextOutputStreamImpl)stream;
+				if(nioContextOutputStreamImpl.isAllocated())
+					stream.writeObject(new NIOObjectBuffer(byteBuffer.array()));
+				else
+					stream.writeObject(NIOObjectNull.getInstance());
+			}
+			else 
+				stream.writeObject(new NIOObjectBuffer(byteBuffer.array()));
+		}
 		else {
 			stream.writeObject(NIOObjectNull.getInstance());
-
-			byte[] array = null;
-			if (_storage instanceof ByteBuffer)
-				array = ((ByteBuffer)_storage).array();
-			else
-				array = new byte[0];
-	
-			stream.writeInt(array.length);
-			stream.write(array);
 		}
 	}
 }

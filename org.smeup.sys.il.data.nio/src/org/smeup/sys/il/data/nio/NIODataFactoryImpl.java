@@ -19,9 +19,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -102,7 +100,7 @@ public final class NIODataFactoryImpl implements QDataFactory {
 	private final QDataContext dataContext;
 	private final Object owner;
 
-	private static Map<Class<?>, QDataStruct> cachedClasses = new HashMap<Class<?>, QDataStruct>();
+//	private static Map<Class<?>, QDataStruct> cachedClasses = new HashMap<Class<?>, QDataStruct>();
 
 	protected NIODataFactoryImpl(final QDataContext dataContext, final Object owner, final QDataAreaFactory dataAreaFactory) {
 		this.dataContext = dataContext;
@@ -411,21 +409,22 @@ public final class NIODataFactoryImpl implements QDataFactory {
 		return (R) createDataStruct(classDataStruct, 0, allocate);
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "unused" })
 	@Override
 	public final <D extends QDataStruct> D createDataStruct(final Class<D> classDelegator, final int length, final boolean allocate) {
 
 		// data structure
 		D dataStructure = null;
 
-		final QDataStruct model = cachedClasses.get(classDelegator);
+		final QDataStruct model = null; //getDataContext().deserialize(classDelegator, allocate, "factory");
 		if (model != null) {
-			final NIOAbstractDataStruct nioDataStructure = (NIOAbstractDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(model)._copyDef(getDataContext());
-			if (length != 0)
+//			final NIOAbstractDataStruct nioDataStructure = (NIOAbstractDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(model)._copyDef(getDataContext());
+			NIOAbstractDataStruct nioDataStructure = (NIOAbstractDataStruct)NIOBufferHelper.getNIOBufferedDataImpl(model); 
+			if (length != 0 && nioDataStructure._maxLength != length)
 				nioDataStructure._maxLength = length;
 
-			if (allocate)
-				nioDataStructure._allocate();
+//			if (allocate)
+//				nioDataStructure._allocate();
 
 			if (nioDataStructure instanceof NIODataStructWrapperHandler)
 				dataStructure = (D) ((NIODataStructWrapperHandler) nioDataStructure)._wrapped;
@@ -444,7 +443,8 @@ public final class NIODataFactoryImpl implements QDataFactory {
 					((QDataStructWrapper) dataStructure).setDelegate(dataStructureDelegate);
 				}
 
-				cachedClasses.put(classDelegator, (QDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(dataStructure)._copyDef(getDataContext()));
+//				getDataContext().serialize(dataStructure, allocate, "factory");
+//				cachedClasses.put(classDelegator, (QDataStruct) NIOBufferHelper.getNIOBufferedDataImpl(dataStructure)._copyDef(getDataContext()));
 			} catch (final Exception e) {
 				throw new IntegratedLanguageDataRuntimeException(e);
 			}

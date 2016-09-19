@@ -7,7 +7,9 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NIODebuggingObjectOutputStream extends ObjectOutputStream {
+import org.smeup.sys.il.data.QDataContext;
+
+public class NIOContextOutputStreamImpl extends ObjectOutputStream {
 
 	private static final Field DEPTH_FIELD;
 
@@ -27,12 +29,27 @@ public class NIODebuggingObjectOutputStream extends ObjectOutputStream {
 	 * (presumably as the result of a serialization error) to the stream.
 	 */
 	boolean broken = false;
-
-	public NIODebuggingObjectOutputStream(OutputStream out) throws IOException {
+	
+	private NIODataContextImpl dataContext;
+	private boolean allocate;
+	
+	public NIOContextOutputStreamImpl(NIODataContextImpl dataContext, OutputStream out, boolean allocate) throws IOException {
 		super(out);
+		
+		this.dataContext = dataContext;
+		this.allocate = allocate;
+		
 		enableReplaceObject(true);
 	}
+	
+	protected QDataContext getDataContext() {
+		return this.dataContext;
+	}
 
+	protected boolean isAllocated() {
+		return allocate;
+	}
+	
 	/**
 	 * Abuse {@code replaceObject()} as a hook to maintain our stack.
 	 */

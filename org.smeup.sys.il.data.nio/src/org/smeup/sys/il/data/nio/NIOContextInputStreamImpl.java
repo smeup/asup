@@ -21,13 +21,13 @@ import org.smeup.sys.il.data.QDataContext;
 public class NIOContextInputStreamImpl extends ObjectInputStream {
 	
 	private NIODataContextImpl dataContext;
-	private Class<?> klass;	
+	private ClassLoader classLoader;
 	
-	protected NIOContextInputStreamImpl(NIODataContextImpl dataContext, Class<?> klass, InputStream inputStream) throws IOException, SecurityException {
+	protected NIOContextInputStreamImpl(NIODataContextImpl dataContext, ClassLoader classLoader, InputStream inputStream) throws IOException, SecurityException {
 		super(inputStream);
 		
 		this.dataContext = dataContext;
-		this.klass = klass;
+		this.classLoader = classLoader;
 	}
 	
 	protected QDataContext getDataContext() {
@@ -38,9 +38,9 @@ public class NIOContextInputStreamImpl extends ObjectInputStream {
 	protected Class<?> resolveClass(ObjectStreamClass desc) throws ClassNotFoundException, IOException {
 
 		String name = desc.getName();
-
+		
 		try {
-			Class<?> c = klass.getClassLoader().loadClass(name);
+			Class<?> c = classLoader.loadClass(name);
 			return c;
 		} catch (Exception e) {
 		}

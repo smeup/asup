@@ -28,7 +28,7 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 	public NIOBufferedElementImpl(final QDataContext dataContext) {
 		super(dataContext);
 	}
-
+	
 	protected abstract void _fill(byte[] filler, boolean maxLength);
 
 	protected abstract void _fillr(byte[] filler, boolean maxLength);

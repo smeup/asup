@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.data;
 
+import java.lang.String;
 import java.nio.charset.Charset;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.data.def.DateFormat;
@@ -36,10 +37,10 @@ public interface QDataContext extends QContextProvider {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" klassRequired="true"
+	 * @model required="true" klassRequired="true" allocateRequired="true" nameRequired="true"
 	 * @generated
 	 */
-	<O> O deserialize(Class<O> klass);
+	<O> O deserialize(Class<O> klass, boolean allocate, String name);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,10 +101,10 @@ public interface QDataContext extends QContextProvider {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model objectRequired="true"
+	 * @model objectRequired="true" allocateRequired="true" nameRequired="true"
 	 * @generated
 	 */
-	void serialize(Object object);
+	void serialize(Object object, boolean allocate, String name);
 
 	/**
 	 * <!-- begin-user-doc -->

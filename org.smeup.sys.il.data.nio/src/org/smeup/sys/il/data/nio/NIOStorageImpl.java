@@ -63,18 +63,14 @@ public final class NIOStorageImpl implements QStorable {
 
 		stream.defaultReadObject();
 
-		int length = stream.readInt();
-		byte[] array = new byte[length];
-		stream.read(array);
-		_storage = ByteBuffer.allocate(length).put(array);
+		NIOObjectBuffer nioObjectBuffer = (NIOObjectBuffer)stream.readObject();
+		_storage = nioObjectBuffer.getByteBuffer();
 	}
 
 	private final void writeObject(final ObjectOutputStream stream) throws IOException {
 
 		stream.defaultWriteObject();
 
-		byte[] array = _storage.array();
-		stream.writeInt(array.length);
-		stream.write(array);
+		stream.writeObject(new NIOObjectBuffer(_storage.array()));
 	}
 }

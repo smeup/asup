@@ -2639,6 +2639,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "allocate", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
 		initEOperation(op, g1);
 
@@ -2660,6 +2662,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(dataContextEClass, null, "serialize", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEObject(), "object", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "allocate", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataDelegatorEClass, QDataDelegator.class, "DataDelegator", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
