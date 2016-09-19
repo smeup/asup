@@ -34,16 +34,15 @@ import org.smeup.sys.dk.parser.ibmi.cl.exceptions.CLScriptException;
 import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmAbstractComponent;
 import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmFilter;
 import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmFunction;
+import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmFunction.CLParmFunctionType;
 import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmHexadecimal;
 import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmList;
 import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmSpecial;
 import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmString;
 import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmStringOperator;
-import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmToken;
-import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmValue;
-import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmVariable;
-import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmFunction.CLParmFunctionType;
 import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmStringOperator.CLParmStringOperatorType;
+import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmToken;
+import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmVariable;
 
 public class CLParameterParserWrapper implements ParserInterface <CLParmAbstractComponent> {
 
@@ -114,6 +113,7 @@ public class CLParameterParserWrapper implements ParserInterface <CLParmAbstract
 		
 		CLParmAbstractComponent buildNode = null; 
 		switch (antlrNode.getType()) {
+		
 		case CLParameterLexer.LIST:
 			
 			buildNode = new CLParmList();
@@ -190,9 +190,7 @@ public class CLParameterParserWrapper implements ParserInterface <CLParmAbstract
 
 			break;	
 		
-		case CLParameterLexer.CAT:
-		case CLParameterLexer.BCAT:
-		case CLParameterLexer.TCAT:	
+		case CLParameterLexer.STR_OPERATOR:			
 			
 			buildNode = new CLParmStringOperator();
 			
@@ -204,20 +202,12 @@ public class CLParameterParserWrapper implements ParserInterface <CLParmAbstract
 				((CLParmStringOperator)buildNode).setOperatorType(CLParmStringOperatorType.TCAT);
 			} 
 			
-			break;
-						
-		case CLParameterLexer.VALUE:
-		
-			buildNode = new CLParmValue();
-			buildNode.setText(antlrNode.getText());
-		
 			for (int i = 0; i < antlrNode.getChildCount(); i++) {
-				CLParmAbstractComponent child = build(buildNode, antlrNode.getChild(i));
-				buildNode.addChild(child);
+				buildNode.addChild(build(buildNode, antlrNode.getChild(i)));
 			}
-		
-		break;
-		
+			
+			break;
+
 		default:
 			break;
 		}
