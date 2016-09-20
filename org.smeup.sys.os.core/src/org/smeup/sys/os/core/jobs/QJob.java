@@ -115,6 +115,7 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 * @see #setJobReference(QJobReference)
 	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_JobReference()
 	 * @model containment="true" required="true"
+	 *        annotation="il-data length='28'"
 	 * @generated
 	 */
 	QJobReference getJobReference();

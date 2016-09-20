@@ -99,9 +99,32 @@ public final class NIODataContextImpl implements QDataContext {
 	public final TimeFormat getTimeFormat() {
 		return TIMEFMT;
 	}
-
 	@Override
 	public final QBufferedData copy(final QBufferedData data) {
+
+		try {
+			NIOBufferedDataImpl copy = null;
+
+			final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			final ObjectOutputStream oos = new ObjectOutputStream(baos);
+			oos.writeObject(data);
+			oos.close();
+
+			final ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+			final ObjectInputStream ois = new ObjectInputStream(bais);
+			copy = (NIOBufferedDataImpl) ois.readObject();
+			ois.close();
+
+			NIOBufferHelper.setDataContext(copy, this);
+
+			return copy;
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public final QBufferedData copy_new(final QBufferedData data) {
 
 		try {
 			NIOBufferedDataImpl copy = null;

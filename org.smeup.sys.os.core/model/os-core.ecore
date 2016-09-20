@@ -163,7 +163,11 @@
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="jobReference" lowerBound="1"
-          eType="#//jobs/JobReference" containment="true"/>
+          eType="#//jobs/JobReference" containment="true">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="28"/>
+        </eAnnotations>
+      </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="jobRunInfo" lowerBound="1"
           eType="#//jobs/JobRunInfo" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="jobThread" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Thread"

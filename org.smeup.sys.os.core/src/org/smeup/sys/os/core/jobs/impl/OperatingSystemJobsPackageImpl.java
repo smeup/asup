@@ -1034,6 +1034,15 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
 		   });	
 		addAnnotation
+		  (getJob_JobReference(), 
+		   source, 
+		   new String[] {
+			 "length", "28"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
 		  (getJob_Switches(), 
 		   source, 
 		   new String[] {

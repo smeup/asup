@@ -43,6 +43,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.mi.core.util.QStrings;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobCapability;
+import org.smeup.sys.os.core.jobs.QJobReference;
 
 public class BaseShellObjectWriterImpl implements QObjectWriter {
 
@@ -58,25 +59,25 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 	private QStrings strings;
 	@Inject
 	private QObjectRegistryFactory objectRegistryFactory;;
-	
+
 	private QFrame<?> qFrame = null;
 	private QDataContainer dataContainer = null;
 	private QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 
 	private QOutputWrapper outputWrapper;
-	
+
 	@PostConstruct
 	private void init() {
-		QObjectRegistry<QShellOutputWrapper> shellOutputWrapperRegistry = objectRegistryFactory.createObjectRegistry(QShellOutputWrapper.class);		
+		QObjectRegistry<QShellOutputWrapper> shellOutputWrapperRegistry = objectRegistryFactory.createObjectRegistry(QShellOutputWrapper.class);
 
-		for(QShellOutputWrapper shellOutputWrapper: shellOutputWrapperRegistry.list()) {
-			if(shellOutputWrapper.contains(jobCapability)) {
+		for (QShellOutputWrapper shellOutputWrapper : shellOutputWrapperRegistry.list()) {
+			if (shellOutputWrapper.contains(jobCapability)) {
 				outputWrapper = shellOutputWrapper;
 				break;
 			}
 		}
 	}
-	
+
 	@Override
 	public synchronized void write(QObject object) throws IOException {
 
@@ -97,7 +98,7 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 					streamWrite(data + "|");
 				} else if (data instanceof QNumeric) {
 					QCharacter character = dataContainer.getDataContext().getDataFactory().createCharacter(((QDecimalDef) dataTerm.getDefinition()).getPrecision(), false, true);
-					character.eval(strings.firstToUpper(dataTerm.getName()));
+					character.move(strings.firstToUpper(dataTerm.getName()));
 					streamWrite(character + "|");
 				} else
 					streamWrite(strings.firstToUpper(dataTerm.getName()) + "|");
@@ -129,16 +130,20 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 				data.accept(dataWriter.set(eEnumerator.getName()));
 				streamWrite(data + "|");
 			} else if (value instanceof Number) {
-				if(dataTerm.getDefinition() instanceof QDecimalDef) {
+				if (dataTerm.getDefinition() instanceof QDecimalDef) {
 					QDecimal decimal = dataContainer.getDataContext().getDataFactory().createData((QDecimalDef) dataTerm.getDefinition(), true);
 					decimal.eval(((Number) value).doubleValue());
-					streamWrite(strings.rSet(decimal.toString(), decimal.getLength()) + "|");					
-				}
-				else  {
+					streamWrite(strings.rSet(decimal.toString(), decimal.getLength()) + "|");
+				} else {
 					QCharacter character = dataContainer.getDataContext().getDataFactory().createCharacter(((QCharacterDef) dataTerm.getDefinition()).getLength(), false, true);
 					character.move(value.toString());
 					streamWrite(character + "|");
 				}
+			} else if (value instanceof QJobReference) {
+				QJobReference jobReference = ((QJobReference) value);
+				QCharacter character = dataContainer.getDataContext().getDataFactory().createCharacter(((QCharacterDef) dataTerm.getDefinition()).getLength(), false, true);
+				character.eval(jobReference.getJobNumber() + "/" + jobReference.getJobUser() + "/" + jobReference.getJobName());
+				streamWrite(character + "|");
 			} else {
 				data.accept(dataWriter.set(value.toString()));
 				streamWrite(data + "|");
