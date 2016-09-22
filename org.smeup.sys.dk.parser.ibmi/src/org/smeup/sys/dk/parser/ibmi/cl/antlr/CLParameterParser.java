@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g 2016-09-15 17:08:29
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g 2016-09-22 16:06:44
 
   package org.smeup.sys.dk.parser.ibmi.cl.antlr;
   
@@ -535,7 +535,7 @@ public class CLParameterParser extends Parser {
 
 
 	// $ANTLR start "value"
-	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:115:1: value : ( ASTERISK -> ^( TOKEN[$ASTERISK.text] ) | TOKEN | VARIABLE | SPECIAL | FILTER | HEX -> HEX[$HEX.text.substring(2, $HEX.text.length()-1)] | STRING -> ^( STRING[$STRING.text.substring(1, $STRING.text.length()-1).replace(\"''\", \"'\")] ) | ESCAPE -> ^( STRING[\"''\"] ) | function );
+	// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:115:1: value : ( ASTERISK -> ^( TOKEN[$ASTERISK.text] ) | TOKEN | VARIABLE | SPECIAL | FILTER | HEX -> HEX[$HEX.text.substring(2, $HEX.text.length()-1)] | STRING -> ^( STRING[$STRING.text.substring(1, $STRING.text.length()-1).replace(\"''\", \"'\")] ) | ESCAPE -> ^( STRING[\"\"] ) | function );
 	public final CLParameterParser.value_return value() throws RecognitionException {
 		CLParameterParser.value_return retval = new CLParameterParser.value_return();
 		retval.start = input.LT(1);
@@ -566,7 +566,7 @@ public class CLParameterParser extends Parser {
 		RewriteRuleTokenStream stream_ESCAPE=new RewriteRuleTokenStream(adaptor,"token ESCAPE");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:116:3: ( ASTERISK -> ^( TOKEN[$ASTERISK.text] ) | TOKEN | VARIABLE | SPECIAL | FILTER | HEX -> HEX[$HEX.text.substring(2, $HEX.text.length()-1)] | STRING -> ^( STRING[$STRING.text.substring(1, $STRING.text.length()-1).replace(\"''\", \"'\")] ) | ESCAPE -> ^( STRING[\"''\"] ) | function )
+			// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:116:3: ( ASTERISK -> ^( TOKEN[$ASTERISK.text] ) | TOKEN | VARIABLE | SPECIAL | FILTER | HEX -> HEX[$HEX.text.substring(2, $HEX.text.length()-1)] | STRING -> ^( STRING[$STRING.text.substring(1, $STRING.text.length()-1).replace(\"''\", \"'\")] ) | ESCAPE -> ^( STRING[\"\"] ) | function )
 			int alt5=9;
 			switch ( input.LA(1) ) {
 			case ASTERISK:
@@ -796,12 +796,12 @@ public class CLParameterParser extends Parser {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 131:10: -> ^( STRING[\"''\"] )
+					// 131:10: -> ^( STRING[\"\"] )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:131:13: ^( STRING[\"''\"] )
+						// C:\\Users\\darfores\\git\\asup_0_8_0\\org.smeup.sys.dk.parser.ibmi\\src\\org\\smeup\\sys\\dk\\parser\\ibmi\\cl\\antlr\\CLParameter.g:131:13: ^( STRING[\"\"] )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
-						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(STRING, "''"), root_1);
+						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(STRING, ""), root_1);
 						adaptor.addChild(root_0, root_1);
 						}
 

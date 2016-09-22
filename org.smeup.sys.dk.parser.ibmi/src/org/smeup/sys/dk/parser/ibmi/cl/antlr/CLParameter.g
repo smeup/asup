@@ -128,7 +128,7 @@ value
   |
   STRING -> ^(STRING[$STRING.text.substring(1, $STRING.text.length()-1).replace("''", "'")])
   |
-  ESCAPE -> ^(STRING["''"])
+  ESCAPE -> ^(STRING[""])
   |
   function  
   ;
