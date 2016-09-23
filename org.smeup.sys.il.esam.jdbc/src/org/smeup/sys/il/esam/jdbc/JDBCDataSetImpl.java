@@ -298,7 +298,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 		String querySelect = jdbcAccessHelper.buildSelect(this.currentTable, index, opSet, keySet, opRead, keyRead, noResultSet);
 
-		System.out.println("sql:\t" + querySelect);
+//		System.out.println("sql:\t" + querySelect);
 
 		this.resultSet = this.statement.executeQuery(querySelect);
 		this.dataReader.set(this.resultSet);
@@ -463,7 +463,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 					prepareAccess(OperationSet.SET_GREATER_THAN, buildKeySet(), OperationRead.READ_PRIOR, null, false);
 				else
 					prepareAccess(OperationSet.SET_GREATER_THAN, this.currentKeySet, OperationRead.READ_PRIOR, null, false);
-			return readNext();
+			readNext();
 
 		} catch (SQLException e) {
 			handleSQLException(e);
@@ -594,7 +594,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			 * this.resultSet.moveToCurrentRow();
 			 */
 			String sqlUpdate = jdbcAccessHelper.buildUpdate(this.currentTable, this.record, this.infoStruct.rrn.asInteger());
-			System.out.println("sql:\t" + sqlUpdate);
+//			System.out.println("sql:\t" + sqlUpdate);
 			
 			this.statementUpdate.executeUpdate(sqlUpdate);
 
@@ -625,7 +625,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		try {
 
 			String sqlInsert = jdbcAccessHelper.buildWrite(this.currentTable, this.record, this.infoStruct.rrn.asInteger());
-			System.out.println("sql:\t" + sqlInsert);
+//			System.out.println("sql:\t" + sqlInsert);
 			
 			this.statementUpdate.executeUpdate(sqlInsert);
 
