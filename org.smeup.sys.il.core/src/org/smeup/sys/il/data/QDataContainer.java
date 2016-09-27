@@ -13,6 +13,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import java.util.Map;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QDataTermContainer;
 
@@ -82,10 +83,10 @@ public interface QDataContainer extends QDataTermContainer, Closeable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation"
+	 * @model kind="operation" required="true"
 	 * @generated
 	 */
-	List<QData> getDatas();
+	Map<String, QData> getDatas();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

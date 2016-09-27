@@ -1441,7 +1441,12 @@
       </eParameters>
     </eOperations>
     <eOperations name="getDataContext" lowerBound="1" eType="#//DataContext"/>
-    <eOperations name="getDatas" upperBound="-1" eType="#//Data"/>
+    <eOperations name="getDatas" lowerBound="1">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+        <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eTypeArguments eClassifier="#//Data"/>
+      </eGenericType>
+    </eOperations>
     <eOperations name="getDataTerm">
       <eGenericType eClassifier="#//term/DataTerm">
         <eTypeArguments/>

@@ -475,8 +475,8 @@ public final class NIODataContainerImpl extends ObjectImpl implements QDataConta
 	}
 
 	@Override
-	public final List<QData> getDatas() {
-		return new ArrayList<QData>(datas.values());
+	public final Map<String, QData> getDatas() {
+		return datas;
 	}
 
 	@Override

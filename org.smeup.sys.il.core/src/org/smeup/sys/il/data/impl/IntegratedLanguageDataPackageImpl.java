@@ -2606,7 +2606,13 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(dataContainerEClass, this.getDataContext(), "getDataContext", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataContainerEClass, this.getData(), "getDatas", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(dataContainerEClass, null, "getDatas", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEString());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(this.getData());
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
 
 		op = addEOperation(dataContainerEClass, null, "getDataTerm", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 1, 1, IS_UNIQUE, IS_ORDERED);
