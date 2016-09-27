@@ -36,7 +36,7 @@ public class RPJProgramStatus extends QDataStructWrapper implements QProgramStat
 	public QDecimal parametersNumber;
 	@DataDef(length = 3)
 	public QCharacter exceptionType;
-	@DataDef(length = 3)
+	@DataDef(length = 4)
 	public QCharacter exceptionNumber;
 	@DataDef(length = 4)
 	public QCharacter filler_0;

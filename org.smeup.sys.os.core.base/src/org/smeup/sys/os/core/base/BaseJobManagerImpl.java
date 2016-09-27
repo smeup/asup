@@ -57,7 +57,7 @@ public class BaseJobManagerImpl implements QJobManager {
 	private static final int MILLIS_IN_ONE_DAY = 1000 * 60 * 60 * 24;
 
 	@Inject
-	private QApplication application;	
+	private QApplication application;
 	@Inject
 	private QResourceManager resourceManager;
 	@Inject
@@ -66,18 +66,19 @@ public class BaseJobManagerImpl implements QJobManager {
 	private QExpressionParserRegistry expressionParserRegistry;
 	@Inject
 	private QEnvironmentVariableManager environmentVariableManager;
-	
-	private BaseSystemManagerImpl systemManager;	
+
+	private BaseSystemManagerImpl systemManager;
 	private Map<String, QJob> activeJobs;
 	private QExpressionParser expressionParser;
 	private List<QJobListener> listeners;
-	
+
 	@Inject
 	public BaseJobManagerImpl(QSystemManager systemManager) {
 
 		this.systemManager = (BaseSystemManagerImpl) systemManager;
-		this.activeJobs = new HashMap<String, QJob>();  //TODO ConcurrentHashMap????		
-		this.listeners  = new ArrayList<QJobListener>();
+		this.activeJobs = new HashMap<String, QJob>(); // TODO
+														// ConcurrentHashMap????
+		this.listeners = new ArrayList<QJobListener>();
 	}
 
 	@PostConstruct
@@ -106,7 +107,7 @@ public class BaseJobManagerImpl implements QJobManager {
 			throw new OperatingSystemRuntimeException("User " + userProfile.getName() + " is disabled");
 
 		QJob job = systemManager.createJob(JobType.BATCH, identity.getJavaPrincipal(), jobName);
-		
+
 		// add job description libraries
 		if (userProfile.getJobDescription() != null) {
 			QResourceReader<QJobDescription> jobDescriptionResource = resourceManager.getResourceReader(startupJob, QJobDescription.class, Scope.ALL);
@@ -127,33 +128,33 @@ public class BaseJobManagerImpl implements QJobManager {
 
 		jobEvent.setType(JobEventType.STARTED);
 		fireEvent(jobEvent);
-		
+
 		activeJobs.put(job.getJobID(), job);
 
-		// capability		
+		// capability
 		QJobCapability jobCapability = QOperatingSystemJobsFactory.eINSTANCE.createJobCapability();
-		jobCapability.setJobReference((QJobReference) EcoreUtil.copy((EObject)job.getJobReference()));
+		jobCapability.setJobReference((QJobReference) EcoreUtil.copy((EObject) job.getJobReference()));
 		jobCapability.setObjectURI(job.qURI());
 		jobCapability.setPort(application.getPort());
 
 		job.getContext().set(QJobCapability.class, jobCapability);
-		
+
 		job.getContext().set(QIdentity.class, identity);
-		
+
 		return jobCapability;
 	}
-	
+
 	@Override
 	public QJobCapability spawn(final QJob parent, String jobName, boolean copyEnvironmentVariables) {
-		
-		QIdentity<?>  identity= parent.getContext().get(QIdentity.class);
+
+		QIdentity<?> identity = parent.getContext().get(QIdentity.class);
 		QJobCapability jobCapability = create(identity, jobName);
-		
+
 		QJob jobSpawned = lookup(jobCapability);
-		
-		if(copyEnvironmentVariables) 
+
+		if (copyEnvironmentVariables)
 			environmentVariableManager.addVariables(jobSpawned, parent.getVariableContainer().getVariables(), false);
-		
+
 		return jobCapability;
 	}
 
@@ -164,7 +165,7 @@ public class BaseJobManagerImpl implements QJobManager {
 
 	@Override
 	public QJob lookup(String contextID, QJobReference jobReference) {
-		return lookup(contextID, jobReference.getJobName(),jobReference.getJobUser(), jobReference.getJobNumber());
+		return lookup(contextID, jobReference.getJobName(), jobReference.getJobUser(), jobReference.getJobNumber());
 	}
 
 	@Override
@@ -173,10 +174,9 @@ public class BaseJobManagerImpl implements QJobManager {
 	}
 
 	@Override
-	public QJob lookup(String contextID) {		
+	public QJob lookup(String contextID) {
 		return activeJobs.get(contextID);
 	}
-
 
 	@Override
 	public boolean checkCapability(QJobCapability capability) {
@@ -210,7 +210,7 @@ public class BaseJobManagerImpl implements QJobManager {
 			return jobTarget;
 		}
 	}
-	
+
 	@Override
 	public List<QJob> getActiveJobs() {
 		return new ArrayList<QJob>(activeJobs.values());
@@ -220,12 +220,12 @@ public class BaseJobManagerImpl implements QJobManager {
 	public void close(QJobCapability jobCapability) {
 
 		QJob job = lookup(jobCapability);
-		close(job);		
+		close(job);
 	}
 
 	@Override
 	public void close(QJob job) {
-		
+
 		QJobEvent jobEvent = QOperatingSystemJobsFactory.eINSTANCE.createJobEvent();
 		jobEvent.setSource(job);
 		jobEvent.setType(JobEventType.STOPPING);
@@ -239,7 +239,7 @@ public class BaseJobManagerImpl implements QJobManager {
 
 		for (QJobListener jobListener : this.listeners)
 			jobListener.handleEvent(jobEvent);
-		
+
 		this.activeJobs.remove(job.getJobID());
 	}
 
@@ -262,18 +262,18 @@ public class BaseJobManagerImpl implements QJobManager {
 
 	@Override
 	public void setDefaultWriter(QJobCapability capability, String name) {
-		
+
 		QJob job = lookup(capability);
 		outputManager.setDefaultWriter(job.getContext(), name);
 	}
-	
+
 	@Override
 	public void updateStatus(QJob job, JobStatus status) {
-		
+
 		QJobEvent jobEvent = QOperatingSystemJobsFactory.eINSTANCE.createJobEvent();
 		jobEvent.setSource(job);
 		jobEvent.setType(JobEventType.STATUS_CHANGED);
-				
+
 		fireEvent(jobEvent);
 	}
 
@@ -283,6 +283,7 @@ public class BaseJobManagerImpl implements QJobManager {
 			throw new RuntimeException("You must specify millis");
 
 		try {
+			System.out.println("Job delay " + millis);
 			Thread.sleep(millis);
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);

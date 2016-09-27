@@ -46,6 +46,7 @@ public abstract class RPJProgram extends ProgramCallableImpl {
 	private transient QProgramStatus _programStatus;
 	private Map<String, RPJModule> _programModules = new HashMap<String, RPJModule>();
 	private Map<String, QRecord> _programRecords = new HashMap<String, QRecord>();
+	private Map<String, QData> _programDatas = new HashMap<String, QData>();
 	
 	private boolean isOpen = false;
 	private QIndicator _inlr = null;
@@ -64,6 +65,10 @@ public abstract class RPJProgram extends ProgramCallableImpl {
 	
 	protected Map<String, QRecord> getRecords() {
 		return _programRecords;
+	}
+	
+	protected Map<String, QData> getDatas() {
+		return _programDatas;
 	}
 	
 	@Override

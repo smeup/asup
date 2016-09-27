@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.os.pgm.base;
 
+import java.io.FileWriter;
 import java.text.DecimalFormat;
 
 import javax.annotation.PostConstruct;
@@ -107,19 +108,18 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	@Override
 	public QProgramCallable loadProgram(QJob job, QProgram program) {
-		
+
 		QProgramCallable callableProgram = null;
 
 		QActivationGroup activationGroup = null;
 
 		if (program.getActivationGroup().equals("*CALLER")) {
 			QProgramStack programStack = getProgramStack(job);
-			
-			if(!programStack.isEmpty()) {
+
+			if (!programStack.isEmpty()) {
 				activationGroup = programStack.peek().getActivationGroup();
 				callableProgram = activationGroup.lookup(program);
-			}
-			else {
+			} else {
 				activationGroup = activationGroupManager.lookup(job, "*DFT");
 				if (activationGroup == null)
 					activationGroup = activationGroupManager.create(job, "*DFT", true);
@@ -201,7 +201,6 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		return getProgramStack(job);
 	}
 
-
 	@Override
 	public QProgramStack getProgramStack(QJob job) {
 
@@ -215,7 +214,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				}
 			}
 		}
-		
+
 		return programStack;
 	}
 
@@ -246,7 +245,6 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	@Override
 	public QProgramCallable getCaller(String contextID, Object program) {
-
 
 		QJob job = jobManager.lookup(contextID);
 		if (job == null)
@@ -348,7 +346,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 			// call
 			try {
-				
+
 				assignParameters(callableProgram, params);
 
 				programStack.push(callableProgram);
@@ -360,13 +358,13 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 			} catch (OperatingSystemMessageException | OperatingSystemRuntimeException e) {
 				System.err.println(e.getMessage());
-//				e.printStackTrace();
+				// e.printStackTrace();
 				throw e;
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
 
 				e.printStackTrace();
-				
+
 				Throwable cause = e.getCause();
 				if (cause != null)
 					System.err.println(cause);
@@ -446,11 +444,14 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	private void writeContent(QJob job, String content) {
 		System.out.println(content);
-		/*
-		 * try { FileWriter fw = new FileWriter("/home/jamiro/asup_stacks/" +
-		 * job.getJobReference().getJobName() + ".txt", true); fw.write(content
-		 * + "\n"); fw.close(); } catch (Exception e) { e.toString(); }
-		 */
+
+		try {
+			FileWriter fw = new FileWriter("/home/jamiro/asup_stacks/" + job.getJobReference().getJobName() + ".txt", true);
+			fw.write(content + "\n");
+			fw.close();
+		} catch (Exception e) {
+			e.toString();
+		}
 	}
 
 	private String formatStackParameters(QDataContext dataContext, QData[] entry) {
@@ -470,8 +471,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 					text = text.substring(0, 100);
 					break;
 				}
-			}
-			catch(Exception e) {
+			} catch (Exception e) {
 				text += "|";
 			}
 		}
@@ -494,7 +494,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		} else if (param instanceof QBufferedElement) {
 			QBufferedElement bufferedElement = (QBufferedElement) param;
 			if (bufferedElement.isNull()) {
-				return "";				
+				return "";
 			}
 
 			byte[] bytes = bufferedElement.asBytes();
@@ -530,7 +530,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			if (paramValue.length() > 100)
 				paramValue = paramValue.substring(0, 100) + "..";
 		}
-		
+
 		return paramValue;
 	}
 }

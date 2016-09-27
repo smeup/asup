@@ -17,9 +17,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.Map;
-import java.util.Set;
 
-import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
@@ -27,21 +25,14 @@ import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QRecordWrapper;
-import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
-import org.smeup.sys.il.esam.QFileHandler;
-import org.smeup.sys.il.esam.QKSDataSet;
-import org.smeup.sys.il.esam.QRRDataSet;
-import org.smeup.sys.il.esam.QSMDataSet;
-import org.smeup.sys.il.esam.annotation.FileDef;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 
 public class RPJInjectionHelper {
 
-	public static RPJInjectableField createInjectableField(Field field) {
+	public static RPJInjectableField createInjectableField(Object owner, Field field) {
 		Class<?> fieldClass = null;
 
 		Type fieldType = field.getGenericType();
@@ -55,14 +46,14 @@ public class RPJInjectionHelper {
 		} else
 			fieldClass = (Class<?>) fieldType;
 
-		RPJInjectableField injectableField = new RPJInjectableField(field, fieldClass, fieldType, argsType);
+		RPJInjectableField injectableField = new RPJInjectableField(owner, field, fieldClass, fieldType, argsType);
 
 		return injectableField;
 	}
 
-	public static Object getFieldValue(Object owner, String externalFile) {
+	public static Object getFieldValue(Object owner, String fieldName) {
 
-		String splits[] = externalFile.split("\\.");
+		String splits[] = fieldName.split("\\.");
 
 		for (String split : splits) {
 
@@ -72,51 +63,51 @@ public class RPJInjectionHelper {
 				owner = externalFileField.get(owner);
 				externalFileField.setAccessible(false);
 			} catch (Exception e) {
-				throw new OperatingSystemRuntimeException("Invalid externalFile: " + externalFile);
+				return null;
 			}
 		}
 
 		return owner;
 	}
 
-	public static void injectDataNoBased(Object callable, QDataContainer dataContainer, RPJInjectableField field) {
+	public static void injectDataNoBased(QDataContainer dataContainer, RPJInjectableField field) {
 
 		QDataTerm<?> dataTerm = dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
 		if (dataTerm.getBased() != null)
 			return;
 
-		field.setValue(callable, dataContainer.getData(dataTerm));
+		field.setValue(dataContainer.getData(dataTerm));
 	}
 
-	public static void injectDataBased(Object callable, QDataContainer dataContainer, RPJInjectableField field) {
+	public static void injectDataBased(QDataContainer dataContainer, RPJInjectableField field) {
 
 		QDataTerm<?> dataTerm = dataContainer.getDataTerm(field.getName());
 		if (dataTerm.getBased() == null)
 			return;
 
-		field.setValue(callable, dataContainer.getData(dataTerm));
+		field.setValue(dataContainer.getData(dataTerm));
 	}
 
-	public static void injectPointerNoDefault(Object callable, QDataContainer dataContainer, RPJInjectableField field) {
+	public static void injectPointerNoDefault(QDataContainer dataContainer, RPJInjectableField field) {
 
 		QDataTerm<?> dataTerm = dataContainer.addDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
 
 		if (dataTerm.getDefault() != null)
 			return;
 
-		field.setValue(callable, dataContainer.getData(dataTerm));
+		field.setValue(dataContainer.getData(dataTerm));
 	}
 
-	public static void injectPointerWithDefault(Object callable, QDataContainer dataContainer, RPJInjectableField field) {
+	public static void injectPointerWithDefault(QDataContainer dataContainer, RPJInjectableField field) {
 
 		QDataTerm<?> dataTerm = dataContainer.getDataTerm(field.getName());
 		if (dataTerm.getDefault() == null)
 			return;
 
-		field.setValue(callable, dataContainer.getData(dataTerm));
+		field.setValue(dataContainer.getData(dataTerm));
 	}
 
-	public static void setPrimitiveValue(QDataContext dataContext, RPJInjectableField injectableField, Object callable) {
+	public static void setPrimitiveValue(QDataContext dataContext, RPJInjectableField injectableField) {
 
 		DataDef dataDef = injectableField.getAnnotation(DataDef.class);
 		if (dataDef == null)
@@ -144,13 +135,13 @@ public class RPJInjectionHelper {
 			System.err.println("Unexpected condition " + injectableField.getFieldClass() + ": x456b6439b57w6ervdas5");
 
 		if (object != null)
-			injectableField.setValue(callable, object);
+			injectableField.setValue(object);
 		else if (!Modifier.isTransient(injectableField.getField().getModifiers()))
 			System.err.println("Unexpected condition " + injectableField.getName() + "(" + injectableField.getFieldClass() + ")" + ": x5647veewq456bdtas");
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void injectDataStructure(Object callable, QDataContainer dataContainer, Map<String, QRecord> records, RPJInjectableField field, boolean based) {
+	public static void injectDataStructure(QDataContainer dataContainer, Map<String, QRecord> records, RPJInjectableField field, boolean based) {
 
 		QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> dataTerm = null;
 
@@ -171,7 +162,7 @@ public class RPJInjectionHelper {
 		QData data = dataContainer.getData(dataTerm);
 
 		if (data instanceof QStroller<?>) {
-			field.setValue(callable, data);
+			field.setValue(data);
 		} else {
 			QDataStruct dataStruct = (QDataStruct) data;
 			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
@@ -193,36 +184,9 @@ public class RPJInjectionHelper {
 			else
 				((QDataStruct) primaryRecord).assign(dataStruct);
 
-			field.setValue(callable, dataStruct);
+			field.setValue(dataStruct);
 		}
 
-	}
-	
-	public static QRecord createRecord(RPJInjectableField field, Class<QRecord> classRecord, FileDef fileDef, Object callable, QDataContainer dataContainer, Map<String, QRecord> records) {
-
-		Class<? extends QRecord> classPrimaryRecord = getPrimaryRecord(classRecord);
-
-		String primaryRecordName = classPrimaryRecord.getSimpleName();
-
-		// from annotation
-		if (fileDef != null) {
-			if (!fileDef.prefix().isEmpty())
-				primaryRecordName = fileDef.prefix() + "_" + primaryRecordName;
-		}
-
-		QRecord record = records.get(primaryRecordName.toLowerCase());
-		if (record == null) {
-			record = dataContainer.getDataContext().getDataFactory().createRecord(classRecord, true);
-			records.put(primaryRecordName.toLowerCase(), record);
-		}
-		// task rimozione contiguità record (BRRLCM)
-		else {
-			QRecord newRecord = dataContainer.getDataContext().getDataFactory().createRecord(classRecord, false);
-			((QDataStruct)record).assign(((QDataStruct)newRecord));
-			record = newRecord;
-		}
-
-		return record;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -254,65 +218,6 @@ public class RPJInjectionHelper {
 			return getPrimaryRecord((Class<? extends QRecord>) classRecord.getSuperclass());
 	}
 	
-	public static void setInfoValue(RPJInjectableField field, FileDef fileDef, Object callable, Map<String, QRecord> records) {
-
-		// fileInfo
-		if (!fileDef.info().isEmpty()) {
-			QDataStruct infoStruct = (QDataStruct) records.get(fileDef.info().toLowerCase());
-			if (infoStruct == null) {
-				try {
-					Field javaField = callable.getClass().getDeclaredField(fileDef.info());
-					javaField.setAccessible(true);
-					infoStruct = (QDataStruct) javaField.get(callable);
-					javaField.setAccessible(false);
-
-				} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
-					if(callable instanceof RPJProgram) {
-						RPJProgram rpjProgram = (RPJProgram)callable;
-						infoStruct = (QDataStruct) rpjProgram.getRecords().get(fileDef.info());
-					}
-					else
-						e.printStackTrace();
-				}				
-			}
-
-			if (infoStruct == null)
-				System.err.println("Unused infoStruct" + fileDef.info());
-			else {
-				field.getField().setAccessible(true);
-				QFileHandler<?> dataSet = ((QFileHandler<?>) field.getValue(callable));
-				dataSet.getInfoStruct().assign(infoStruct);
-				field.getField().setAccessible(false);
-			}
-		}
-	}
-
-	public static void setExternalValue(RPJInjectableField field, FileDef fileDef, Object callable) {
-
-		QString externalFile = null;
-		if (!fileDef.externalFile().isEmpty())
-			externalFile = (QString) getFieldValue(callable, fileDef.externalFile());
-
-		QString externalMember = null;
-		if (!fileDef.externalMember().isEmpty())
-			externalMember = (QString) getFieldValue(callable, fileDef.externalMember());
-
-		if (externalFile != null) {
-			if (QKSDataSet.class.isAssignableFrom(field.getFieldClass())) {
-				QKSDataSet<?> dataSet = (QKSDataSet<?>) field.getValue(callable);
-				externalFile.assign(dataSet.getFilePath());
-			} else if (QSMDataSet.class.isAssignableFrom(field.getFieldClass())) {
-				QSMDataSet<?> dataSet = (QSMDataSet<?>) field.getValue(callable);
-				externalFile.assign(dataSet.getFilePath());
-				externalMember.assign(dataSet.getMemberName());
-			} else {
-				QRRDataSet<?> dataSet = (QRRDataSet<?>) field.getValue(callable);
-				externalFile.assign(dataSet.getFilePath());
-			}
-		}
-
-	}
-
 	public static byte[] convertHexToBytes(String value) {
 		byte[] bytes = new byte[value.length() / 2];
 
@@ -321,35 +226,5 @@ public class RPJInjectionHelper {
 			bytes[i] = (byte) Integer.parseInt(hex, 16);
 		}
 		return bytes;
-	}
-
-	public static void assignRecordFields(Object callable, QDataContainer dataContainer, Set<String> records, RPJInjectableField field, QRecord record) {
-
-		FileDef fileDef = field.getField().getAnnotation(FileDef.class);
-
-		String primaryRecordName = record.getClass().getSimpleName();
-		if (fileDef != null && !fileDef.prefix().isEmpty())
-			primaryRecordName = fileDef.prefix() + "_" + primaryRecordName;
-
-		if (records.contains(primaryRecordName))
-			return;
-
-		for (String fieldName : record.getElementNames()) {
-
-			QData data = null;
-			if (fileDef != null && !fileDef.prefix().isEmpty())
-				data = dataContainer.getData(fileDef.prefix() + fieldName);
-			else
-				data = dataContainer.getData(fieldName);
-
-			if (data instanceof QBufferedData) {
-				QBufferedData bufferedData = (QBufferedData) data;
-				QBufferedData bufferedDataTo = record.getElement(fieldName);
-
-				bufferedData.assign(bufferedDataTo);
-			}
-		}
-
-		records.add(primaryRecordName);
 	}
 }
