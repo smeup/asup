@@ -48,6 +48,7 @@ import org.eclipse.jdt.core.dom.ParameterizedType;
 import org.eclipse.jdt.core.dom.ReturnStatement;
 import org.eclipse.jdt.core.dom.SimpleType;
 import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
+import org.eclipse.jdt.core.dom.StringLiteral;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.smeup.sys.db.esql.CursorType;
@@ -386,8 +387,6 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				writeAnnotation(field, CursorDef.class, "hold", cursorTerm.isHold());
 			if (cursorTerm.getStatementName() != null)
 				writeAnnotation(field, CursorDef.class, "statement", getCompilationUnit().normalizeTermName(cursorTerm.getStatementName()));
-			if (cursorTerm.getSql() != null)
-				writeAnnotation(field, CursorDef.class, "query", cursorTerm.getSql());
 
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 
@@ -978,7 +977,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 					ArrayCreation arrayCreation = getAST().newArrayCreation();
 					arrayCreation.setType(getAST().newArrayType(getAST().newSimpleType(getAST().newSimpleName(QBufferedData.class.getSimpleName()))));
 
-					ArrayInitializer arrayInitializer = getAST().newArrayInitializer();
+   					ArrayInitializer arrayInitializer = getAST().newArrayInitializer();
 					
 					for(ValueExpressionVariable parameter: parameters) {
 						QExpression expression = expressionParser.parseExpression(getCompilationUnit().normalizeTermName(parameter.getName()));
@@ -988,7 +987,21 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 					}
 
 					arrayCreation.setInitializer(arrayInitializer);
-					
+
+
+					MethodInvocation methodInvocation = getAST().newMethodInvocation();
+					methodInvocation.setName(getAST().newSimpleName("prepare"));
+
+					methodInvocation.setExpression(buildExpression(getCompilationUnit().getQualifiedName(cursorTerm)));
+
+					StringLiteral stringLiteral = getAST().newStringLiteral();
+					stringLiteral.setLiteralValue(cursorTerm.getSql());
+
+					methodInvocation.arguments().add(stringLiteral);
+
+					ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
+					block.statements().add(expressionStatement);
+
 				} catch (SQLException e) {
 					throw new DevelopmentKitCompilerRuntimeException("Invalid statement: " + cursorTerm);
 				}

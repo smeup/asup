@@ -11,7 +11,6 @@
  */
 package org.smeup.sys.db.syntax.db2;
 
-
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
@@ -31,21 +30,21 @@ import org.smeup.sys.db.syntax.dml.QExtendedQuerySelect;
 public class DB2QuerySourceWriter extends SQLQuerySourceWriter {
 
 	@Override
-	protected Method getSpecificAppendSQLMethod(Class sourceWriterClass,
-												SQLObject sqlObject) throws NoSuchMethodException {
+	protected Method getSpecificAppendSQLMethod(Class sourceWriterClass, SQLObject sqlObject) throws NoSuchMethodException {
 		if (sqlObject instanceof QExtendedQuerySelect) {
-			return DB2QuerySourceWriter.class.getMethod("appendSpecificSQL", 
-														QExtendedQuerySelect.class, StringBuffer.class);
+			return DB2QuerySourceWriter.class.getMethod("appendSpecificSQL", QExtendedQuerySelect.class, StringBuffer.class);
 		} else {
 			return super.getSpecificAppendSQLMethod(sourceWriterClass, sqlObject);
 		}
 	}
-	
+
 	public void appendSpecificSQL(QExtendedQuerySelect select, StringBuffer sb) {
 		if (select != null) {
 			StringBuffer sbSelect = new StringBuffer();
 
-			/* If this select is not a sub-query, break lines between clauses. */
+			/*
+			 * If this select is not a sub-query, break lines between clauses.
+			 */
 			StringBuffer sbClauseIndent = new StringBuffer();
 			int selectStartOffset = getLastLineLength(sb);
 			String spacer4 = "    ";
@@ -68,7 +67,6 @@ public class DB2QuerySourceWriter extends SQLQuerySourceWriter {
 				appendSpace(sbSelect);
 			}
 
-
 			List selectClauseList = select.getSelectClause();
 			if (selectClauseList != null && selectClauseList.size() > 0) {
 				appendSQLForSQLObjectList(selectClauseList, sbSelect);
@@ -87,8 +85,7 @@ public class DB2QuerySourceWriter extends SQLQuerySourceWriter {
 			List fromClauseList = select.getFromClause();
 			if (fromClauseList != null && fromClauseList.size() > 0) {
 				int lastTableStartIndex = sbSelect.length();
-				for (Iterator fromIt = select.getFromClause().iterator(); fromIt
-						.hasNext();) {
+				for (Iterator fromIt = select.getFromClause().iterator(); fromIt.hasNext();) {
 					TableReference tableRef = (TableReference) fromIt.next();
 
 					appendSQLForTableExpression(tableRef, sbSelect);
@@ -100,8 +97,7 @@ public class DB2QuerySourceWriter extends SQLQuerySourceWriter {
 
 					if (getLastLineLength(sbSelect) > displayWidth) {
 						sbSelect.insert(lastTableStartIndex - 1, spacer4);
-						sbSelect.insert(lastTableStartIndex - 1,
-								sbClauseIndent.toString());
+						sbSelect.insert(lastTableStartIndex - 1, sbClauseIndent.toString());
 						sbSelect.insert(lastTableStartIndex - 1, NEW_LINE);
 					}
 
@@ -150,8 +146,7 @@ public class DB2QuerySourceWriter extends SQLQuerySourceWriter {
 
 			// ORDER BY clause
 			List sortSpecList = select.getSortSpecList();
-			if (StatementHelper
-					.isOrderByClauseContainsValidOrderBySpecification(sortSpecList)) {
+			if (StatementHelper.isOrderByClauseContainsValidOrderBySpecification(sortSpecList)) {
 				appendNewLine(sbSelect);
 				appendStringBuffer(sbSelect, sbClauseIndent);
 				appendSQLForOrderByClause(sortSpecList, sbSelect);
@@ -176,9 +171,7 @@ public class DB2QuerySourceWriter extends SQLQuerySourceWriter {
 
 			// if select is nested select (not the top select stmt)
 			// and its source is very short we don't break lines
-			if (!(select.eContainer() instanceof QueryExpressionRoot && select
-					.eContainer().eContainer() instanceof QuerySelectStatement)
-					&& sbSelect.length() < 0) {
+			if (!(select.eContainer() instanceof QueryExpressionRoot && select.eContainer().eContainer() instanceof QuerySelectStatement) && sbSelect.length() < 0) {
 				trimWhiteSpace(sbSelect);
 			}
 
@@ -188,7 +181,7 @@ public class DB2QuerySourceWriter extends SQLQuerySourceWriter {
 				appendSQLForFetchFirstClause(rowFetchLimit, sbSelect);
 				appendSpace(sbSelect);
 			}
-			
+
 			appendStringBuffer(sb, sbSelect);
 		}
 	}
@@ -202,25 +195,21 @@ public class DB2QuerySourceWriter extends SQLQuerySourceWriter {
 	 * @param sb
 	 *            the string buffer to which the clause should be appended
 	 */
-	protected void appendSQLForOptimizeClause(int aRowOptimizeLimit,
-			StringBuffer sb) {
+	protected void appendSQLForOptimizeClause(int aRowOptimizeLimit, StringBuffer sb) {
 		if (aRowOptimizeLimit > 0) {
 			appendKeyword(sb, "FETCH FIRST ");
 			appendInt(sb, aRowOptimizeLimit);
 			appendKeyword(sb, " ROWS ONLY");
 		}
 	}
-	
-	protected void appendSQLForTableInDatabase(TableInDatabase tableInDB,
-											StringBuffer sb) {
-//		sb.append("P_MULT."+tableInDB.getName());
+
+	protected void appendSQLForTableInDatabase(TableInDatabase tableInDB, StringBuffer sb) {
+		// sb.append("P_MULT."+tableInDB.getName());
 		super.appendSQLForTableInDatabase(tableInDB, sb);
-//		sb.append("P_MULT."+tableInDB.getName());
+		// sb.append("P_MULT."+tableInDB.getName());
 	}
 
-	
-	protected void appendSpecificSQL(ValueExpressionFunction valExprFunc,
-									 StringBuffer sb) {
+	protected void appendSpecificSQL(ValueExpressionFunction valExprFunc, StringBuffer sb) {
 		String funcName = valExprFunc.getName();
 
 		if (funcName.equalsIgnoreCase("SUBSTRING")) {
@@ -234,19 +223,17 @@ public class DB2QuerySourceWriter extends SQLQuerySourceWriter {
 	}
 
 	/*
-	 * Manage RRN(FIELD_NAME) -->ROWNUM 
-	 * Richiede  db2set DB2_COMPATIBILITY_VECTOR=ORA
+	 * Manage RRN(FIELD_NAME) -->ROWNUM Richiede db2set
+	 * DB2_COMPATIBILITY_VECTOR=ORA
 	 * 
 	 * TODO: choose precision in relation to FIELD_NAME datatype.
 	 */
-	private void appendFunctionSQL_RRN(ValueExpressionFunction valExprFunc,
-									  StringBuffer sb) {
+	private void appendFunctionSQL_RRN(ValueExpressionFunction valExprFunc, StringBuffer sb) {
 		sb.append("ROWNUM");
 	}
-	
-	private void appendFunctionSQL_SUBSTR(ValueExpressionFunction valExprFunc,
-										  StringBuffer sb) {
-		valExprFunc.setName("SUBSTR");										  
-		super.appendSpecificSQL(valExprFunc, sb);									  
+
+	private void appendFunctionSQL_SUBSTR(ValueExpressionFunction valExprFunc, StringBuffer sb) {
+		valExprFunc.setName("SUBSTR");
+		super.appendSpecificSQL(valExprFunc, sb);
 	}
 }

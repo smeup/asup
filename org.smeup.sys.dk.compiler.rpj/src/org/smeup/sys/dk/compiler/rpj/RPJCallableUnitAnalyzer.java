@@ -21,6 +21,7 @@ import org.smeup.sys.il.flow.QMethodExec;
 import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.il.flow.QSQLExec;
+import org.smeup.sys.il.flow.QSetupSection;
 import org.smeup.sys.il.flow.impl.StatementVisitorImpl;
 
 public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
@@ -43,6 +44,11 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 			if(callableUnit.getFileSection().getDisplays().size() >0 )
 				callableUnitInfo.containsDSPStatement(true);
 		}
+		
+		// C2LE support
+		QSetupSection setupSection = callableUnit.getSetupSection();
+		if(setupSection != null && setupSection.getModules().contains("*C2LE")) 
+			callableUnitInfo.containsC2LEStatement(true);
 		
 		// analyze statement
 		RPJCallableUnitAnalyzer callableUnitAnalyzer = new RPJCallableUnitAnalyzer(callableUnitInfo);

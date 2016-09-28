@@ -227,7 +227,7 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 
 				viewDef.getColumns().add(pkTableComColumnDef);
 
-				String fieldName = QDatabaseManager.TABLE_COLUMN_RELATIVE_RECORD_NUMBER_NAME;
+				String fieldName = TABLE_COLUMN_RELATIVE_RECORD_NUMBER_NAME;
 
 				// column list
 				querySelect.getColumnList().add(StatementHelper.createColumnExpression(fieldName));

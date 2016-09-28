@@ -5,7 +5,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:il-flow="http://www.smeup.org/asup/il/flow"
     xsi:schemaLocation="http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il.flow/model/il-flow.ecore"
-    name="*RPJ">
+    name="*C2LE">
   <dataSection/>
   <flowSection/>
 </il-flow:Module>

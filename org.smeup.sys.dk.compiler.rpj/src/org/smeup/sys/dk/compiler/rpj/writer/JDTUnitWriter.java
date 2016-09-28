@@ -39,6 +39,7 @@ import org.smeup.sys.os.pgm.rpj.RPJPrintSupport;
 import org.smeup.sys.os.pgm.rpj.RPJProcedureSupport;
 import org.smeup.sys.os.pgm.rpj.RPJProgramSupport;
 import org.smeup.sys.os.pgm.rpj.RPJProgramSupport.Specials;
+import org.smeup.sys.os.pgm.rpj.RPJSystemSupport;
 
 public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 
@@ -136,8 +137,24 @@ public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 
 		}
 
+		// *C2LE
+		if (callableUnitInfo.containsC2LEStatement()) {
+			writeImport(RPJSystemSupport.class);
+
+			variable = getAST().newVariableDeclarationFragment();
+			field = getAST().newFieldDeclaration(variable);
+
+			writeAnnotation(field, Inject.class);
+
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.PRIVATE_KEYWORD));
+			field.setType(getAST().newSimpleType(getAST().newName(RPJSystemSupport.class.getSimpleName())));
+			variable.setName(getAST().newSimpleName("qC2LE"));
+			getTarget().bodyDeclarations().add(field);
+
+		}
+
 		// *DSP
-		// TODO
+		// TODO (*INKx ???)
 		// if (callableUnitInfo.containsDSPStatement()) {
 		writeImport(RPJDisplaySupport.class);
 
