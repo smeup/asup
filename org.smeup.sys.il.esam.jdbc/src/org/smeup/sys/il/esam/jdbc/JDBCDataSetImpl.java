@@ -267,8 +267,16 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			}
 
 			String[] tableSplit = this.tablePath.trimR().split("/");
-			if (tableSplit.length == 1)
-				this.currentTable = this.tableProvider.getTable(null, tableSplit[0].trim());
+			if (tableSplit.length == 1) {
+				if(this.tablePath.trimR().contains("/"))
+					this.currentTable = this.tableProvider.getTable(null, tableSplit[0].trim());
+				else {
+					if(tableSplit[0].length() > 20)
+						this.currentTable = this.tableProvider.getTable(null, tableSplit[0].substring(0, 20).trim());
+					else
+						this.currentTable = this.tableProvider.getTable(null, tableSplit[0].trim());
+				}
+			}
 			else if (tableSplit.length == 2)
 				this.currentTable = this.tableProvider.getTable(tableSplit[0], tableSplit[1].trim());
 
