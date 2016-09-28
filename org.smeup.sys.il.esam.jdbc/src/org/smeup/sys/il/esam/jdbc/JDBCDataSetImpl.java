@@ -68,8 +68,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 	private QDataContext dataContext;
 
-	protected JDBCDataSetImpl(QConnection databaseConnection, QString tablePath, QIndex index, R record, AccessMode accessMode, boolean userOpen, QDataSetInfo infoStruct,
-			QDataContext dataContext) {
+	protected JDBCDataSetImpl(QConnection databaseConnection, QString tablePath, QIndex index, R record, AccessMode accessMode, boolean userOpen, QDataSetInfo infoStruct, QDataContext dataContext) {
 
 		this.databaseConnection = databaseConnection;
 
@@ -266,28 +265,20 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 				statementUpdate = databaseConnection.createStatement(true, true);
 			}
 
-			String[] tableSplit = this.tablePath.trimR().split("/");
+			String[] tableSplit = getTableSplit(this.tablePath.trimR());
 			if (tableSplit.length == 1) {
-				if(this.tablePath.trimR().contains("/"))
-					this.currentTable = this.tableProvider.getTable(null, tableSplit[0].trim());
-				else {
-					if(tableSplit[0].length() > 20)
-						this.currentTable = this.tableProvider.getTable(null, tableSplit[0].substring(0, 20).trim());
-					else
-						this.currentTable = this.tableProvider.getTable(null, tableSplit[0].trim());
-				}
-			}
-			else if (tableSplit.length == 2)
+				this.currentTable = this.tableProvider.getTable(null, tableSplit[0].trim());
+				
+			} else if (tableSplit.length == 2)
 				this.currentTable = this.tableProvider.getTable(tableSplit[0], tableSplit[1].trim());
 
 			if (this.currentTable == null) {
 
 				handleTableNotFound();
-				
+
 				if (error == null)
 					throw new DatabaseCoreRuntimeException("Invalid table: " + this.tablePath.trimR());
-			}
-			else
+			} else
 				this.open = true;
 		} catch (SQLException e) {
 			handleSQLException(e);
@@ -297,6 +288,16 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			error.eval(onError());
 	}
 
+	protected String[] getTableSplit(String tableName) {
+		
+		String[] tableSplit = tableName.split("/");
+		
+		if (tableSplit.length == 1 && tableSplit[0].length() > 20)
+			tableSplit[0] = tableSplit[0].substring(0, 20);
+		
+		return tableSplit;
+	}
+	
 	protected void prepareAccess(OperationSet opSet, Object[] keySet, OperationRead opRead, Object[] keyRead, boolean noResultSet) throws SQLException {
 
 		this.currentOpRead = opRead;
@@ -306,7 +307,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 		String querySelect = jdbcAccessHelper.buildSelect(this.currentTable, index, opSet, keySet, opRead, keyRead, noResultSet);
 
-//		System.out.println("sql:\t" + querySelect);
+		// System.out.println("sql:\t" + querySelect);
 
 		this.resultSet = this.statement.executeQuery(querySelect);
 		this.dataReader.set(this.resultSet);
@@ -344,12 +345,12 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		try {
 			if (rebuildNeeded(OperationDirection.FORWARD))
 				// TODO verify me
-				if(this.currentOpSet == null){
+				if (this.currentOpSet == null) {
 					if (this.currentKeySet == null)
 						prepareAccess(OperationSet.SET_LOWER_LIMIT, buildKeySet(), OperationRead.READ, null, false);
 					else
 						prepareAccess(OperationSet.SET_LOWER_LIMIT, this.currentKeySet, OperationRead.READ, null, false);
-				}else{
+				} else {
 					if (this.currentKeySet == null)
 						prepareAccess(this.currentOpSet, buildKeySet(), OperationRead.READ, null, false);
 					else
@@ -602,8 +603,8 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			 * this.resultSet.moveToCurrentRow();
 			 */
 			String sqlUpdate = jdbcAccessHelper.buildUpdate(this.currentTable, this.record, this.infoStruct.rrn.asInteger());
-//			System.out.println("sql:\t" + sqlUpdate);
-			
+			// System.out.println("sql:\t" + sqlUpdate);
+
 			this.statementUpdate.executeUpdate(sqlUpdate);
 
 			this.found = true;
@@ -633,8 +634,8 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		try {
 
 			String sqlInsert = jdbcAccessHelper.buildWrite(this.currentTable, this.record, this.infoStruct.rrn.asInteger());
-//			System.out.println("sql:\t" + sqlInsert);
-			
+			// System.out.println("sql:\t" + sqlInsert);
+
 			this.statementUpdate.executeUpdate(sqlInsert);
 
 			this.found = true;
