@@ -220,7 +220,7 @@ public class RPJProgramInjector {
 			if(timeEnd - timeIni > 100) {
 //				System.out.println(klass.getSimpleName() + " time: " + (timeEnd - timeIni) + " IO: " + (timeIOEnd - timeIOIni));
 			}
-			System.out.println("Global injection time: " + GLOBAL_INJECTION_TIME + " IO: " + GLOBAL_INJECTION_IO_TIME);
+//			System.out.println("Global injection time: " + GLOBAL_INJECTION_TIME + " IO: " + GLOBAL_INJECTION_IO_TIME);
 			
 			return delegate;
 		} catch (Exception e) {
@@ -426,7 +426,7 @@ public class RPJProgramInjector {
 				RPJInjectionHelper.setPrimitiveValue(dataContext, injectableField);
 			// services
 			else
-				injectFieldValue(injectableField, callable, owner, dataContainer, accessFactory, unitModules, records);
+				injectFieldValue(injectableField, callable, owner, dataContainer, accessFactory, sqlFactory, unitModules, records);
 		}
 
 		// modules
@@ -575,7 +575,7 @@ public class RPJProgramInjector {
 	}
 
 
-	private void injectFieldValue(RPJInjectableField injectableField, Object callable, Object owner, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, RPJModule> unitModules,
+	private void injectFieldValue(RPJInjectableField injectableField, Object callable, Object owner, QDataContainer dataContainer, QAccessFactory accessFactory, QESqlFactory esqlFactory, Map<String, RPJModule> unitModules,
 			Map<String, QRecord> records) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		Object object = null;
@@ -591,6 +591,14 @@ public class RPJProgramInjector {
 		// DataContext
 		else if (QDataContext.class.equals(injectableField.getFieldClass())) {
 			object = dataContainer.getDataContext();
+		}
+		// AccessFactory
+		else if(QAccessFactory.class.equals(injectableField.getFieldClass())) {
+			object = accessFactory;
+		}
+		// ESqlFactory
+		else if(QESqlFactory.class.equals(injectableField.getFieldClass())) {
+			object = esqlFactory;
 		}
 		// Caller
 		else if (injectableField.getAnnotation(Program.class) != null && injectableField.getAnnotation(Program.class).name().equals(NAME_OWNER))

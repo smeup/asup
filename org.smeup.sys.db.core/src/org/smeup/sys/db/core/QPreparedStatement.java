@@ -9,6 +9,7 @@ package org.smeup.sys.db.core;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -56,11 +57,27 @@ public interface QPreparedStatement extends QStatement {
 	int executeUpdate() throws SQLException;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model exceptions="org.smeup.sys.db.core.DatabaseException" positionRequired="true" valueRequired="true"
+	 * @generated
+	 */
+	void setDate(int position, Date value) throws SQLException;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model exceptions="org.smeup.sys.db.core.DatabaseException" positionRequired="true" valueRequired="true"
 	 * @generated
 	 */
 	void setInt(int position, int value) throws SQLException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model exceptions="org.smeup.sys.db.core.DatabaseException" positionRequired="true" valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
+	 * @generated
+	 */
+	void setNumber(int position, Number value) throws SQLException;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

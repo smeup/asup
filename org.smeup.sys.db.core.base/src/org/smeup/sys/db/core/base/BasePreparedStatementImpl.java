@@ -14,6 +14,7 @@ package org.smeup.sys.db.core.base;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QPreparedStatement;
@@ -66,5 +67,15 @@ public class BasePreparedStatementImpl extends BaseStatementImpl implements QPre
 	@Override
 	public int executeUpdate() throws SQLException {
 		return rawStatement.executeUpdate();
+	}
+
+	@Override
+	public void setDate(int position, Date value) throws SQLException {
+		rawStatement.setDate(position, new java.sql.Date(value.getTime()));
+	}
+
+	@Override
+	public void setNumber(int position, Number value) throws SQLException {
+		rawStatement.setDouble(position, value.doubleValue());
 	}
 }

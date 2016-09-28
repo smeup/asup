@@ -64,16 +64,15 @@ public class JDBCESqlFactoryImpl implements QESqlFactory {
 		cursorTerm.setName(name);
 		
 		for (Annotation annotation : annotations) {
+			
 			if(annotation instanceof CursorDef) {
 				CursorDef cursorDef = (CursorDef) annotation;
+				if(!cursorDef.statement().isEmpty())
+					cursorTerm.setStatementName(cursorDef.statement());
 				cursorTerm.setCursorType(cursorDef.type());
 				cursorTerm.setHold(cursorDef.hold());
-				
-				if(!cursorDef.statement().isEmpty()) {
-					cursorTerm.setStatementName(cursorDef.statement());
-				}
-				else
-					"".toCharArray();
+				if(!cursorDef.sql().isEmpty())
+					cursorTerm.setSql(cursorDef.sql());				
 			}
 		}
 		 		

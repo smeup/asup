@@ -8,6 +8,7 @@
 package org.smeup.sys.db.esql;
 
 import java.io.Closeable;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QString;
 
 
@@ -46,6 +47,14 @@ public interface QStatement extends QESqlObject, Closeable {
 	 * @generated
 	 */
 	void prepare(String sql);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model parametersDataType="org.smeup.sys.db.esql.CursorParameters" parametersRequired="true"
+	 * @generated
+	 */
+	void prepare(String sql, QBufferedElement[] parameters);
 
 	/**
 	 * <!-- begin-user-doc -->

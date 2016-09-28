@@ -22,6 +22,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.eclipse.datatools.modelbase.sql.query.QueryStatement;
 import org.eclipse.datatools.modelbase.sql.query.ValueExpressionVariable;
 import org.eclipse.datatools.modelbase.sql.query.helper.StatementHelper;
 import org.eclipse.emf.ecore.EObject;
@@ -43,6 +44,7 @@ import org.eclipse.jdt.core.dom.MarkerAnnotation;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.Modifier;
+import org.eclipse.jdt.core.dom.Name;
 import org.eclipse.jdt.core.dom.Modifier.ModifierKeyword;
 import org.eclipse.jdt.core.dom.ParameterizedType;
 import org.eclipse.jdt.core.dom.ReturnStatement;
@@ -58,6 +60,7 @@ import org.smeup.sys.db.esql.QStatement;
 import org.smeup.sys.db.esql.QStatementTerm;
 import org.smeup.sys.db.esql.annotation.CursorDef;
 import org.smeup.sys.db.syntax.QQueryParser;
+import org.smeup.sys.db.syntax.QQueryWriter;
 import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
@@ -72,6 +75,7 @@ import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Main;
@@ -117,6 +121,7 @@ import org.smeup.sys.os.file.QExternalFile;
 public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 	private QExpressionParser expressionParser;
+	private QQueryWriter queryWriter;
 	private QQueryParser queryParser;
 	
 	public JDTCallableUnitWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, UnitScope scope) {
@@ -124,6 +129,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		expressionParser = getCompilationUnit().getContext().get(QExpressionParser.class);
 		queryParser = getCompilationUnit().getContext().get(QQueryParser.class);
+		queryWriter = getCompilationUnit().getContext().get(QQueryWriter.class);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -345,17 +351,19 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 	@SuppressWarnings("unchecked")
 	public void writeKeyList(QKeyListTerm keyList) {
 
+		writeImport(QBufferedElement.class);
+		
 		VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 		variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(keyList.getName())));
 		FieldDeclaration field = getAST().newFieldDeclaration(variable);
 		field.modifiers().add(getAST().newModifier(ModifierKeyword.PRIVATE_KEYWORD));
 
-		Type bufferedType = getAST().newSimpleType(getAST().newSimpleName(QBufferedData.class.getSimpleName()));
+		Type bufferedType = getAST().newSimpleType(getAST().newSimpleName(QBufferedElement.class.getSimpleName()));
 		field.setType(getAST().newArrayType(bufferedType));
 
 		// array of bufferedData
 		ArrayCreation arrayCreation = getAST().newArrayCreation();
-		arrayCreation.setType(getAST().newArrayType(getAST().newSimpleType(getAST().newSimpleName(QBufferedData.class.getSimpleName()))));
+		arrayCreation.setType(getAST().newArrayType(getAST().newSimpleType(getAST().newSimpleName(QBufferedElement.class.getSimpleName()))));
 
 		ArrayInitializer arrayInitializer = getAST().newArrayInitializer();
 		for (String keyField : keyList.getKeyFields()) {
@@ -388,6 +396,17 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (cursorTerm.getStatementName() != null)
 				writeAnnotation(field, CursorDef.class, "statement", getCompilationUnit().normalizeTermName(cursorTerm.getStatementName()));
 
+			if (cursorTerm.getSql() != null) {
+				
+				try {
+					List<ValueExpressionVariable> variables = StatementHelper.getAllVariablesInQueryStatement(queryParser.parseQuery(cursorTerm.getSql()).getQueryStatement());
+					if(variables.isEmpty())
+						writeAnnotation(field, CursorDef.class, "sql", cursorTerm.getSql());
+				} catch (SQLException e) {
+					throw new DevelopmentKitCompilerRuntimeException("Invalid statement: " + cursorTerm);
+				}
+			}
+			
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.TRANSIENT_KEYWORD));
@@ -912,6 +931,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 	@SuppressWarnings("unchecked")
 	public void writeInit() {
 
+		writeImport(QBufferedElement.class);
+
 		MethodDeclaration methodDeclaration = getAST().newMethodDeclaration();
 
 		methodDeclaration.setName(getAST().newSimpleName("_init"));
@@ -969,38 +990,55 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			for(QCursorTerm cursorTerm: callableUnit.getFileSection().getCursors()) {
 				if(cursorTerm.getSql() == null)
 					continue;
-				
+
 				try {
-					List<ValueExpressionVariable> parameters = StatementHelper.getAllVariablesInQueryStatement(queryParser.parseQuery(cursorTerm.getSql()).getQueryStatement());
+					QueryStatement queryStatement = queryParser.parseQuery(cursorTerm.getSql()).getQueryStatement();
+					
+					List<ValueExpressionVariable> variables = StatementHelper.getAllVariablesInQueryStatement(queryStatement);
+					if(variables.isEmpty())
+						continue;
 					
 					// array of bufferedData
 					ArrayCreation arrayCreation = getAST().newArrayCreation();
-					arrayCreation.setType(getAST().newArrayType(getAST().newSimpleType(getAST().newSimpleName(QBufferedData.class.getSimpleName()))));
-
+					arrayCreation.setType(getAST().newArrayType(getAST().newSimpleType(getAST().newSimpleName(QBufferedElement.class.getSimpleName()))));
    					ArrayInitializer arrayInitializer = getAST().newArrayInitializer();
-					
-					for(ValueExpressionVariable parameter: parameters) {
-						QExpression expression = expressionParser.parseExpression(getCompilationUnit().normalizeTermName(parameter.getName()));
+					for(ValueExpressionVariable variable: variables) {
+						QExpression expression = expressionParser.parseExpression(getCompilationUnit().normalizeTermName(variable.getName()));
 						Expression jdtExpression = JDTStatementHelper.buildExpression(getAST(), getCompilationUnit(), expression, null);
 						arrayInitializer.expressions().add(jdtExpression);
-
+ 						cursorTerm.setSql(cursorTerm.getSql().replace(":"+variable.getName(), "?"));
 					}
-
 					arrayCreation.setInitializer(arrayInitializer);
 
-
-					MethodInvocation methodInvocation = getAST().newMethodInvocation();
-					methodInvocation.setName(getAST().newSimpleName("prepare"));
-
-					methodInvocation.setExpression(buildExpression(getCompilationUnit().getQualifiedName(cursorTerm)));
-
+					queryStatement = queryParser.parseQuery(cursorTerm.getSql()).getQueryStatement();					
+/*					variables = StatementHelper.getAllVariablesInQueryStatement(queryStatement);
+					for(ValueExpressionVariable variable: variables) {
+						System.out.println(variable);
+					}*/
+					
+					String sql = queryWriter.writeQuery(queryStatement);
 					StringLiteral stringLiteral = getAST().newStringLiteral();
-					stringLiteral.setLiteralValue(cursorTerm.getSql());
+					stringLiteral.setLiteralValue(sql);
+					
+					MethodInvocation methodInvocation = getAST().newMethodInvocation();
+					methodInvocation.setName(getAST().newSimpleName("declare"));
+					methodInvocation.setExpression(getAST().newSimpleName("qSQL"));
+					
+					Name labelName = getAST().newName(new String[] { cursorTerm.getCursorType().getClass().getSimpleName(), cursorTerm.getCursorType().name() });
+					methodInvocation.arguments().add(labelName);
 
+					methodInvocation.arguments().add(getAST().newBooleanLiteral(cursorTerm.isHold()));
+					
 					methodInvocation.arguments().add(stringLiteral);
 
-					ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
-					block.statements().add(expressionStatement);
+					methodInvocation.arguments().add(arrayCreation);
+					
+					Assignment assignment = getAST().newAssignment();
+					assignment.setLeftHandSide(buildExpression(getCompilationUnit().getQualifiedName(cursorTerm)));
+					assignment.setOperator(Operator.ASSIGN);
+					assignment.setRightHandSide(methodInvocation);
+					
+					block.statements().add(getAST().newExpressionStatement(assignment));
 
 				} catch (SQLException e) {
 					throw new DevelopmentKitCompilerRuntimeException("Invalid statement: " + cursorTerm);

@@ -90,7 +90,7 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getESqlObject()
 	 * @generated
 	 */
-	int ESQL_OBJECT = 4;
+	int ESQL_OBJECT = 6;
 
 	/**
 	 * The number of structural features of the '<em>ESql Object</em>' class.
@@ -128,7 +128,7 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getESqlTerm()
 	 * @generated
 	 */
-	int ESQL_TERM = 5;
+	int ESQL_TERM = 7;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -257,16 +257,7 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getStatement()
 	 * @generated
 	 */
-	int STATEMENT = 6;
-
-	/**
-	 * The number of structural features of the '<em>Statement</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATEMENT_FEATURE_COUNT = ESQL_OBJECT_FEATURE_COUNT + 0;
+	int STATEMENT = 8;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.esql.impl.StatementTermImpl <em>Statement Term</em>}' class.
@@ -276,7 +267,54 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getStatementTerm()
 	 * @generated
 	 */
-	int STATEMENT_TERM = 7;
+	int STATEMENT_TERM = 9;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.db.esql.QESqlManager <em>ESql Manager</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.db.esql.QESqlManager
+	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getESqlManager()
+	 * @generated
+	 */
+	int ESQL_MANAGER = 5;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.db.esql.QESqlFactory <em>ESql Factory</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.db.esql.QESqlFactory
+	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getESqlFactory()
+	 * @generated
+	 */
+	int ESQL_FACTORY = 4;
+
+	/**
+	 * The number of structural features of the '<em>ESql Factory</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESQL_FACTORY_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of structural features of the '<em>ESql Manager</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESQL_MANAGER_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of structural features of the '<em>Statement</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATEMENT_FEATURE_COUNT = ESQL_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -306,44 +344,6 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	int STATEMENT_TERM_FEATURE_COUNT = ESQL_TERM_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.db.esql.QESqlManager <em>ESql Manager</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.db.esql.QESqlManager
-	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getESqlManager()
-	 * @generated
-	 */
-	int ESQL_MANAGER = 8;
-
-	/**
-	 * The number of structural features of the '<em>ESql Manager</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ESQL_MANAGER_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.db.esql.QESqlFactory <em>ESql Factory</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.db.esql.QESqlFactory
-	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getESqlFactory()
-	 * @generated
-	 */
-	int ESQL_FACTORY = 9;
-
-	/**
-	 * The number of structural features of the '<em>ESql Factory</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ESQL_FACTORY_FEATURE_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.esql.CursorType <em>Cursor Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -365,13 +365,22 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '<em>Cursor Parameters</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getCursorParameters()
+	 * @generated
+	 */
+	int CURSOR_PARAMETERS = 12;
+
+	/**
 	 * The meta object id for the '<em>Cursor Record</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getCursorRecord()
 	 * @generated
 	 */
-	int CURSOR_RECORD = 12;
+	int CURSOR_RECORD = 13;
 
 
 	/**
@@ -548,6 +557,16 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getFetchPositioning();
+
+	/**
+	 * Returns the meta object for data type '<em>Cursor Parameters</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Cursor Parameters</em>'.
+	 * @model instanceClass="org.smeup.sys.il.data.QBufferedElement[]"
+	 * @generated
+	 */
+	EDataType getCursorParameters();
 
 	/**
 	 * Returns the meta object for data type '<em>Cursor Record</em>'.
@@ -740,6 +759,15 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum FETCH_POSITIONING = eINSTANCE.getFetchPositioning();
+
+		/**
+		 * The meta object literal for the '<em>Cursor Parameters</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getCursorParameters()
+		 * @generated
+		 */
+		EDataType CURSOR_PARAMETERS = eINSTANCE.getCursorParameters();
 
 		/**
 		 * The meta object literal for the '<em>Cursor Record</em>' data type.

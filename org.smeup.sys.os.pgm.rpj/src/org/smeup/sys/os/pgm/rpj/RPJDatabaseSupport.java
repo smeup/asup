@@ -11,8 +11,15 @@
  */
 package org.smeup.sys.os.pgm.rpj;
 
+import javax.inject.Inject;
+
+import org.smeup.sys.db.esql.CursorType;
+import org.smeup.sys.db.esql.QCursor;
+import org.smeup.sys.db.esql.QESqlFactory;
+import org.smeup.sys.db.esql.QStatement;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
+import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -24,6 +31,9 @@ import org.smeup.sys.il.data.def.BinaryType;
 @Module(name="*SQL", scope = Scope.OWNER)
 public class RPJDatabaseSupport extends RPJModule {
 	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private transient QESqlFactory esqlFactory;
 
 	@DataDef
 	@Overlay(name = "*SQLCA")
@@ -165,5 +175,14 @@ public class RPJDatabaseSupport extends RPJModule {
 		public QBinary sqlnamelen;
 		@DataDef(length = 30)
 		public QCharacter sqlname;
+	}
+
+	@SuppressWarnings("resource")
+	public QCursor declare(CursorType cursorType, boolean hold, String sql, QBufferedElement[] parameters) {
+		
+		QStatement statement = esqlFactory.createStatement();
+		statement.prepare(sql, parameters);
+		
+		return esqlFactory.createCursor(cursorType, hold, statement);
 	}
 }

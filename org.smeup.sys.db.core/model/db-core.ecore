@@ -274,9 +274,17 @@
     <eOperations name="executeQuery" lowerBound="1" eType="#//DatabaseResultSet" eExceptions="#//DatabaseException"/>
     <eOperations name="executeUpdate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         eExceptions="#//DatabaseException"/>
+    <eOperations name="setDate" eExceptions="#//DatabaseException">
+      <eParameters name="position" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDate"/>
+    </eOperations>
     <eOperations name="setInt" eExceptions="#//DatabaseException">
       <eParameters name="position" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="setNumber" eExceptions="#//DatabaseException">
+      <eParameters name="position" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="setString" eExceptions="#//DatabaseException">
       <eParameters name="position" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

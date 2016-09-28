@@ -23,4 +23,6 @@ public @interface CursorDef {
 	CursorType type() default CursorType.SCROLLABLE;	
 	boolean hold() default false;
 	String statement() default "";
+	String sql() default "";
+	
 }

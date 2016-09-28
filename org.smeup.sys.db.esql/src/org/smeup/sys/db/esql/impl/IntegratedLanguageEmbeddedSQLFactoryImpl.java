@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.db.esql.*;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -79,6 +80,8 @@ public class IntegratedLanguageEmbeddedSQLFactoryImpl extends EFactoryImpl imple
 				return createCursorTypeFromString(eDataType, initialValue);
 			case QIntegratedLanguageEmbeddedSQLPackage.FETCH_POSITIONING:
 				return createFetchPositioningFromString(eDataType, initialValue);
+			case QIntegratedLanguageEmbeddedSQLPackage.CURSOR_PARAMETERS:
+				return createCursorParametersFromString(eDataType, initialValue);
 			case QIntegratedLanguageEmbeddedSQLPackage.CURSOR_RECORD:
 				return createCursorRecordFromString(eDataType, initialValue);
 			default:
@@ -98,6 +101,8 @@ public class IntegratedLanguageEmbeddedSQLFactoryImpl extends EFactoryImpl imple
 				return convertCursorTypeToString(eDataType, instanceValue);
 			case QIntegratedLanguageEmbeddedSQLPackage.FETCH_POSITIONING:
 				return convertFetchPositioningToString(eDataType, instanceValue);
+			case QIntegratedLanguageEmbeddedSQLPackage.CURSOR_PARAMETERS:
+				return convertCursorParametersToString(eDataType, instanceValue);
 			case QIntegratedLanguageEmbeddedSQLPackage.CURSOR_RECORD:
 				return convertCursorRecordToString(eDataType, instanceValue);
 			default:
@@ -163,6 +168,24 @@ public class IntegratedLanguageEmbeddedSQLFactoryImpl extends EFactoryImpl imple
 	 */
 	public String convertFetchPositioningToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QBufferedElement[] createCursorParametersFromString(EDataType eDataType, String initialValue) {
+		return (QBufferedElement[])super.createFromString(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCursorParametersToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(instanceValue);
 	}
 
 	/**

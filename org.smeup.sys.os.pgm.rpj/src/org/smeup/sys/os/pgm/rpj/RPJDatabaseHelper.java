@@ -149,7 +149,7 @@ public class RPJDatabaseHelper {
 
 		if (cursorTerm.getSql() != null)
 			cursor = sqlFactory.createCursor(cursorTerm.getCursorType(), cursorTerm.isHold(), cursorTerm.getSql());
-		else {
+		else if(cursorTerm.getStatementName() != null) {
 			QStatement statement = null;
 
 			for (RPJInjectableField statementField : statements) {
@@ -162,7 +162,8 @@ public class RPJDatabaseHelper {
 			cursor = sqlFactory.createCursor(cursorTerm.getCursorType(), cursorTerm.isHold(), statement);
 		}
 
-		field.setValue(cursor);
+		if(cursor != null)
+			field.setValue(cursor);
 	}
 	
 	public static void assignRecordFields(RPJInjectableField field, Set<String> records, QDataContainer dataContainer, QRecord record) {

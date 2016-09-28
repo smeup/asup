@@ -301,11 +301,11 @@ public class RPJProgramSupport extends RPJModule {
 		QCharacter qCharacter = null;
 		if (characters == null)
 			qCharacter = dataContext.getDataFactory().createCharacter(0, false, false);
-		else
+		else {
 			// TODO use cache
 			qCharacter = dataContext.getDataFactory().createCharacter(characters.length(), false, true);
-
-		qCharacter.eval(characters);
+			qCharacter.eval(characters);
+		}
 
 		return qCharacter;
 	}

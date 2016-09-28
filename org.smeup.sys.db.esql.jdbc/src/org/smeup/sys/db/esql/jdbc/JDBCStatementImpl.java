@@ -17,6 +17,9 @@ import java.sql.SQLException;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.esql.QCommunicationArea;
 import org.smeup.sys.db.esql.QStatement;
+import org.smeup.sys.il.data.QBufferedElement;
+import org.smeup.sys.il.data.QDatetime;
+import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 
 public class JDBCStatementImpl extends JDBCObjectImpl implements QStatement {
@@ -99,5 +102,36 @@ public class JDBCStatementImpl extends JDBCObjectImpl implements QStatement {
 	public void describe(String descriptor) {
 		// TODO
 		"".toCharArray();
+	}
+
+	@Override
+	public void prepare(String sql, QBufferedElement[] parameters) {
+
+		try {
+			dbStatement = getDatabaseConnection().prepareStatement(sql);
+			int i = 1;
+			for(QBufferedElement parameter: parameters) {
+				switch (parameter.getBufferedElementType()) {
+				case DATETIME:
+					QDatetime datetime = (QDatetime)parameter;
+					dbStatement.setDate(i, datetime.asDate());	
+					break;
+				case NUMERIC:
+					QNumeric numeric = (QNumeric)parameter;
+					dbStatement.setNumber(i, numeric.asNumber());
+					break;
+				case STRING:
+					QString string = (QString)parameter;
+					dbStatement.setString(i, string.asString());
+					break;
+				}
+				
+				i++;
+			}
+		} catch (SQLException e) {
+			// TODO
+			getCommunicationArea();
+		}
+		
 	}
 }

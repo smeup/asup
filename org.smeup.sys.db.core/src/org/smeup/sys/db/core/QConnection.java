@@ -60,7 +60,8 @@ public interface QConnection extends QContextProvider {
 	QPreparedStatement prepareStatement(String sql, boolean native_) throws SQLException;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" exceptions="org.smeup.sys.db.core.DatabaseException" sqlRequired="true" nativeRequired="true" updatableRequired="true"
 	 * @generated
 	 */

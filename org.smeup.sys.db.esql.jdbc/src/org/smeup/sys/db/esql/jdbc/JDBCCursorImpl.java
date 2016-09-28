@@ -74,8 +74,24 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 
 	@Override
 	public void next(QBufferedData[] target) {
-		// TODO Auto-generated method stub
-		"".toCharArray();
+
+
+		QCommunicationAreaImpl communicationAreaImpl = (QCommunicationAreaImpl) getCommunicationArea();
+		
+		try {
+			if (!this.resultSet.next()) {
+				communicationAreaImpl.sqlcod.eval(100);
+				return;
+			}
+
+			communicationAreaImpl.sqlcod.clear();
+			
+			completeTarget(target);
+			
+		} catch (SQLException e) {
+			communicationAreaImpl.sqlcod.eval(e.getErrorCode());
+			return;
+		}
 	}
 
 	@Override
@@ -91,18 +107,7 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 
 			communicationAreaImpl.sqlcod.clear();
 			
-			int c = 1;
-			for (QBufferedData bufferedData : target.getElements()) {
-				try {
-
-					dataWriter.set(resultSet.getObject(c));
-					bufferedData.accept(dataWriter);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				c++;
-			}
+			completeTarget(target.getElements().toArray(new QBufferedData[target.getElements().size()]));
 
 		} catch (SQLException e) {
 			communicationAreaImpl.sqlcod.eval(e.getErrorCode());
@@ -110,10 +115,11 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 		}		
 
 	}
+	
 	@Override
 	public void next(String descriptor) {
 		// TODO Auto-generated method stub
-		
+		"".toCharArray();
 	}
 		
 	@Override
@@ -137,7 +143,7 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 	@Override
 	public void prior(String descriptor) {
 		// TODO Auto-generated method stub
-		
+		"".toCharArray();
 	}
 
 	@Override
@@ -161,7 +167,7 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 	@Override
 	public void first(String descriptor) {
 		// TODO Auto-generated method stub
-		
+		"".toCharArray();
 	}
 
 	@Override
@@ -185,7 +191,7 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 	@Override
 	public void last(String descriptor) {
 		// TODO Auto-generated method stub
-		
+		"".toCharArray();
 	}
 
 	@Override
@@ -200,5 +206,21 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 
 	protected void setResultSet(ResultSet resultSet) {
 		this.resultSet = resultSet;
+	}
+	
+	private void completeTarget(QBufferedData[] target) {
+
+		int c = 1;
+		for (QBufferedData bufferedData : target) {
+			try {
+
+				dataWriter.set(resultSet.getObject(c));
+				bufferedData.accept(dataWriter);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			c++;
+		}
 	}
 }
