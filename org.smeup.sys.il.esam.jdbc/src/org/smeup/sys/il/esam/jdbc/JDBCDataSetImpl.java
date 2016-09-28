@@ -292,8 +292,8 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		
 		String[] tableSplit = tableName.split("/");
 		
-		if (tableSplit.length == 1 && tableSplit[0].length() > 20)
-			tableSplit[0] = tableSplit[0].substring(0, 20);
+		if (tableSplit.length == 1 && tableSplit[0].length() > 10)
+			tableSplit[0] = tableSplit[0].substring(0, 10);
 		
 		return tableSplit;
 	}
