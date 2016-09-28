@@ -69,10 +69,8 @@ public @ToDo class MessageReceiver {
 			break;
 		case LAST:
 			String lastMessage = "";
-			// lastMessage = new
-			// DecimalFormat("000000").format(job.getJobReference().getJobNumber());
 			lastMessage = job.getMessages().get(job.getMessages().size() - 1);
-			cLVarForMsgData.qSubst(21, 6).eval(lastMessage);
+			cLVarForMsgData.eval(lastMessage);
 			break;
 		case NEXT:
 			break;

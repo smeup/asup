@@ -18,6 +18,7 @@ import javax.inject.Inject;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QEnum;
@@ -59,6 +60,8 @@ public class JobSubmitter {
 	private QResourceManager resourceManager;
 	@Inject
 	private QDataAreaManager dataAreaManager;
+	@Inject
+	private QDataContext dataContext;
 
 	@Main
 	public void main(@ToDo @DataDef(length = 20000) QCharacter commandToRun, @ToDo @DataDef(length = 10) QEnum<JobNameEnum, QCharacter> jobName,
@@ -87,9 +90,9 @@ public class JobSubmitter {
 		@SuppressWarnings("resource")
 		QProgramCallable callableProgram = programManager.getCaller(job, this);
 		Object caller = null;
-		if(callableProgram != null)
+		if (callableProgram != null)
 			caller = callableProgram.getRawProgram();
-		
+
 		String jobNameString = null;
 		switch (jobName.asEnum()) {
 		// TODO
@@ -100,7 +103,7 @@ public class JobSubmitter {
 			break;
 		}
 		case OTHER:
-			if (!jobName.isEmpty()) 
+			if (!jobName.isEmpty())
 				jobNameString = jobName.asData().trimR();
 			break;
 		}
@@ -129,19 +132,27 @@ public class JobSubmitter {
 		}
 
 		// Job spawn
-		QJobCapability jobCapability = commandManager.submitCommand(job, caller, commandToRun.toString(), jobNameString, hold, copyEnvironmentVariablesBoolean);   
+		QJobCapability jobCapability = commandManager.submitCommand(job, caller, commandToRun.toString(), jobNameString, hold, copyEnvironmentVariablesBoolean);
 
 		// TODO scalability
 		QJob submittedJob = jobManager.lookup(jobCapability);
 
 		// copy localDataArea
-		if(copyEnvironmentVariablesBoolean) {
+		if (copyEnvironmentVariablesBoolean) {
 			QDataArea localDataArea = dataAreaManager.getLocalDataArea(job);
 			dataAreaManager.getLocalDataArea(submittedJob).setContent(localDataArea.getContent());
 		}
-		
+
 		// add message to queue
-		job.getMessages().add(new DecimalFormat("000000").format(jobCapability.getJobReference().getJobNumber()));
+		QCharacter lastJobName = dataContext.getDataFactory().createCharacter(10, false, true);
+		QCharacter lastJobUser = dataContext.getDataFactory().createCharacter(10, false, true);
+		QCharacter lastJobNumber = dataContext.getDataFactory().createCharacter(6, false, true);
+
+		lastJobName.eval(jobCapability.getJobReference().getJobName());
+		lastJobUser.eval(jobCapability.getJobReference().getJobUser());
+		lastJobNumber.eval(new DecimalFormat("000000").format(jobCapability.getJobReference().getJobNumber()));
+
+		job.getMessages().add(lastJobName.s() + lastJobUser.s() + lastJobNumber.s());
 
 		jobLogManager.info(job, "Job submitted:" + jobCapability);
 	}
