@@ -19,7 +19,9 @@ import org.smeup.sys.il.data.DataComparator;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.InitStrategy;
+import org.smeup.sys.il.data.InjectionStrategyType;
 import org.smeup.sys.il.data.QDataFiller;
+import org.smeup.sys.il.data.QDataManagerConfig;
 import org.smeup.sys.il.data.QDataReader;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
@@ -71,6 +73,7 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 			case QIntegratedLanguageDataPackage.DATA_FILLER: return (EObject)createDataFiller();
 			case QIntegratedLanguageDataPackage.DATA_READER: return (EObject)createDataReader();
 			case QIntegratedLanguageDataPackage.DATA_WRITER: return (EObject)createDataWriter();
+			case QIntegratedLanguageDataPackage.DATA_MANAGER_CONFIG: return (EObject)createDataManagerConfig();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -97,6 +100,8 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 				return createInitStrategyFromString(eDataType, initialValue);
 			case QIntegratedLanguageDataPackage.SORT_DIRECTION:
 				return createSortDirectionFromString(eDataType, initialValue);
+			case QIntegratedLanguageDataPackage.INJECTION_STRATEGY_TYPE:
+				return createInjectionStrategyTypeFromString(eDataType, initialValue);
 			case QIntegratedLanguageDataPackage.DATA_ARRAY:
 				return createDataArrayFromString(eDataType, initialValue);
 			default:
@@ -125,6 +130,8 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 				return convertInitStrategyToString(eDataType, instanceValue);
 			case QIntegratedLanguageDataPackage.SORT_DIRECTION:
 				return convertSortDirectionToString(eDataType, instanceValue);
+			case QIntegratedLanguageDataPackage.INJECTION_STRATEGY_TYPE:
+				return convertInjectionStrategyTypeToString(eDataType, instanceValue);
 			case QIntegratedLanguageDataPackage.DATA_ARRAY:
 				return convertDataArrayToString(eDataType, instanceValue);
 			default:
@@ -160,6 +167,16 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 	public QDataWriter createDataWriter() {
 		DataWriterImpl dataWriter = new DataWriterImpl();
 		return dataWriter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QDataManagerConfig createDataManagerConfig() {
+		DataManagerConfigImpl dataManagerConfig = new DataManagerConfigImpl();
+		return dataManagerConfig;
 	}
 
 	/**
@@ -299,6 +316,26 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 	 * @generated
 	 */
 	public String convertSortDirectionToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InjectionStrategyType createInjectionStrategyTypeFromString(EDataType eDataType, String initialValue) {
+		InjectionStrategyType result = InjectionStrategyType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertInjectionStrategyTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

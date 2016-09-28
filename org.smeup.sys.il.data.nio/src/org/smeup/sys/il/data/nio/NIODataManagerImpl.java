@@ -14,6 +14,7 @@ package org.smeup.sys.il.data.nio;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.eclipse.emf.ecore.EClass;
@@ -29,6 +30,7 @@ import org.smeup.sys.il.data.QDataAreaFactory;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataManager;
+import org.smeup.sys.il.data.QDataManagerConfig;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
@@ -43,12 +45,19 @@ public final class NIODataManagerImpl implements QDataManager {
 
 	@Inject
 	private QFrameManager frameManager;
+	
+	private QDataManagerConfig config;
+	
+	@PostConstruct
+	public void init(QDataManagerConfig config) {
+		this.config = config;
+	}
 
 	@Override
 	public NIODataContextImpl createDataContext(final QContext context, final Object owner) {
 		final QDataAreaFactory dataAreaFactory = context.get(QDataAreaFactory.class);
 
-		final NIODataContextImpl nioDataContextImpl = new NIODataContextImpl(context, dataAreaFactory, owner);
+		final NIODataContextImpl nioDataContextImpl = new NIODataContextImpl(context, dataAreaFactory, owner, config);
 
 		return nioDataContextImpl;
 	}

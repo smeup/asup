@@ -203,7 +203,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			QDataTerm<?> dataTerm = dataContainer.getDataTerm(commandParameter.getName());
 
 			QData data = null;
-			if (value.startsWith("&") || value.isEmpty() == false) {
+			if (value.isEmpty() == false) {
 				data = assignValue(dataTerm, dataContainer, dataWriter, value, variables);
 			} else {
 				data = dataContainer.getData(dataTerm);

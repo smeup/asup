@@ -1747,6 +1747,10 @@
       <eParameters name="container" lowerBound="1" eType="#//DataContainer"/>
     </eOperations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataManagerConfig">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="injectionStrategy" eType="#//InjectionStrategyType"
+        defaultValueLiteral=""/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataReader" eSuperTypes="#//DataVisitor"/>
   <eClassifiers xsi:type="ecore:EEnum" name="DataSpecial">
     <eLiterals name="Null" literal="*NULL"/>
@@ -2095,6 +2099,11 @@
   <eClassifiers xsi:type="ecore:EEnum" name="InitStrategy">
     <eLiterals name="Base" value="10" literal="BASE"/>
     <eLiterals name="Light" value="20" literal="LIGHT"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="InjectionStrategyType">
+    <eLiterals name="None" value="10" literal="NONE"/>
+    <eLiterals name="File" value="20" literal="FILE"/>
+    <eLiterals name="Memo" value="30" literal="MEMO"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="List" abstract="true" interface="true"
       eSuperTypes="#//Data">

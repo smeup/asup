@@ -22,12 +22,16 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URI;
 import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.data.InjectionStrategyType;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataAreaFactory;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataManagerConfig;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.TimeFormat;
@@ -40,13 +44,17 @@ public final class NIODataContextImpl implements QDataContext {
 	private final QIndicator equal;
 	private final QIndicator error;
 	private final QIndicator found;
+	private final QDataManagerConfig config;
 
 	private static final Charset CHARSET = Charset.forName("IBM-280");
 	private static final DateFormat DATEFMT = DateFormat.ISO;
 	private static final TimeFormat TIMEFMT = TimeFormat.ISO;
 	
-	public NIODataContextImpl(final QContext context, final QDataAreaFactory dataAreaFactory, final Object owner) {
+	private static Map<String, Object> memorymap = new HashMap<String, Object>();
+	
+	public NIODataContextImpl(final QContext context, final QDataAreaFactory dataAreaFactory, final Object owner, final QDataManagerConfig config) {
 		this.context = context;
+		this.config = config;
 		dataFactory = new NIODataFactoryImpl(this, owner, dataAreaFactory);
 
 		endOfData = dataFactory.createIndicator(true);
@@ -150,39 +158,46 @@ public final class NIODataContextImpl implements QDataContext {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <O> O deserialize(Class<O> klass, boolean allocate, String name) {
-
+		
 		O object = null;
-		FileInputStream fis = null;
-		ObjectInputStream ois = null;
-
-		try {
-			String tempArea = getContext().getContextDescription().getTemporaryArea();
-			URI fileUri = new URI(tempArea+"/" + klass.getName() + "_" + allocate + "_" + name);
-			fis = new FileInputStream(new File(fileUri));
-			
-			ois = new NIOContextInputStreamImpl(this, klass.getClassLoader(), fis);
-			object = (O) ois.readObject();
-		}
-		catch (FileNotFoundException e) {
-			return null;
-		}
-		catch (Exception e) {
-			System.err.println(e.getMessage());
-			e.printStackTrace();
-			return null;
-		} finally {
-
+		String code = klass.getName() + "_" + allocate + "_" + name;
+		
+		if (config.getInjectionStrategy().equals(InjectionStrategyType.MEMO) && memorymap.containsKey(code)) {
+			object = (O) memorymap.get(code);
+		} else {
+		
+			FileInputStream fis = null;
+			ObjectInputStream ois = null;
+	
 			try {
-				if (fis != null)
-					fis.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+				String tempArea = getContext().getContextDescription().getTemporaryArea();
+				URI fileUri = new URI(tempArea+"/" + klass.getName() + "_" + allocate + "_" + name);
+				fis = new FileInputStream(new File(fileUri));
+				
+				ois = new NIOContextInputStreamImpl(this, klass.getClassLoader(), fis);
+				object = (O) ois.readObject();
 			}
-			try {
-				if (ois != null)
-					ois.close();
-			} catch (IOException e) {
+			catch (FileNotFoundException e) {
+				return null;
+			}
+			catch (Exception e) {
+				System.err.println(e.getMessage());
 				e.printStackTrace();
+				return null;
+			} finally {
+	
+				try {
+					if (fis != null)
+						fis.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				try {
+					if (ois != null)
+						ois.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 
@@ -192,6 +207,14 @@ public final class NIODataContextImpl implements QDataContext {
 	@Override
 	public void serialize(Object object, boolean allocate, String name) {
 		
+		String code = object.getClass().getName() + "_" + allocate + "_" + name;
+		
+		if (config.getInjectionStrategy().equals(InjectionStrategyType.MEMO))
+		{
+			if (!memorymap.containsKey(code))
+				memorymap.put(code, object);
+		}
+		
 		ByteArrayOutputStream baos = null;
 		FileOutputStream fos = null;
 		NIOContextOutputStreamImpl out = null;
@@ -199,7 +222,7 @@ public final class NIODataContextImpl implements QDataContext {
 		try {
 			baos = new ByteArrayOutputStream();
 			String tempArea = getContext().getContextDescription().getTemporaryArea();
-			URI fileUri = new URI(tempArea+"/" + object.getClass().getName() + "_" + allocate + "_" + name);
+			URI fileUri = new URI(tempArea+"/" + code);
 			fos = new FileOutputStream(new File(fileUri));
 			out = new NIOContextOutputStreamImpl(this, fos, allocate);
 

@@ -8,6 +8,7 @@
 package org.smeup.sys.il.data;
 
 import java.lang.String;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
@@ -832,6 +833,34 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int STROLLER_FEATURE_COUNT = SCROLLER_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.impl.DataManagerConfigImpl <em>Data Manager Config</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.impl.DataManagerConfigImpl
+	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataManagerConfig()
+	 * @generated
+	 */
+	int DATA_MANAGER_CONFIG = 42;
+
+	/**
+	 * The feature id for the '<em><b>Injection Strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MANAGER_CONFIG__INJECTION_STRATEGY = 0;
+
+	/**
+	 * The number of structural features of the '<em>Data Manager Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MANAGER_CONFIG_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.BufferedDataType <em>Buffered Data Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -839,7 +868,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getBufferedDataType()
 	 * @generated
 	 */
-	int BUFFERED_DATA_TYPE = 42;
+	int BUFFERED_DATA_TYPE = 43;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.BufferedElementType <em>Buffered Element Type</em>}' enum.
@@ -849,7 +878,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getBufferedElementType()
 	 * @generated
 	 */
-	int BUFFERED_ELEMENT_TYPE = 43;
+	int BUFFERED_ELEMENT_TYPE = 44;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.DataComparator <em>Data Comparator</em>}' enum.
@@ -859,7 +888,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataComparator()
 	 * @generated
 	 */
-	int DATA_COMPARATOR = 44;
+	int DATA_COMPARATOR = 45;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.DataSpecial <em>Data Special</em>}' enum.
@@ -869,7 +898,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataSpecial()
 	 * @generated
 	 */
-	int DATA_SPECIAL = 45;
+	int DATA_SPECIAL = 46;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.DatetimeFormat <em>Datetime Format</em>}' enum.
@@ -879,7 +908,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDatetimeFormat()
 	 * @generated
 	 */
-	int DATETIME_FORMAT = 46;
+	int DATETIME_FORMAT = 47;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.InitStrategy <em>Init Strategy</em>}' enum.
@@ -889,7 +918,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getInitStrategy()
 	 * @generated
 	 */
-	int INIT_STRATEGY = 47;
+	int INIT_STRATEGY = 48;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.SortDirection <em>Sort Direction</em>}' enum.
@@ -899,7 +928,17 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getSortDirection()
 	 * @generated
 	 */
-	int SORT_DIRECTION = 48;
+	int SORT_DIRECTION = 49;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.InjectionStrategyType <em>Injection Strategy Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.InjectionStrategyType
+	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getInjectionStrategyType()
+	 * @generated
+	 */
+	int INJECTION_STRATEGY_TYPE = 50;
 
 	/**
 	 * The meta object id for the '<em>Data Array</em>' data type. <!--
@@ -908,7 +947,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataArray()
 	 * @generated
 	 */
-	int DATA_ARRAY = 49;
+	int DATA_ARRAY = 51;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QAdapter <em>Adapter</em>}'.
@@ -1310,6 +1349,27 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getStruct();
 
 	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QDataManagerConfig <em>Data Manager Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Data Manager Config</em>'.
+	 * @see org.smeup.sys.il.data.QDataManagerConfig
+	 * @generated
+	 */
+	EClass getDataManagerConfig();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.QDataManagerConfig#getInjectionStrategy <em>Injection Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Injection Strategy</em>'.
+	 * @see org.smeup.sys.il.data.QDataManagerConfig#getInjectionStrategy()
+	 * @see #getDataManagerConfig()
+	 * @generated
+	 */
+	EAttribute getDataManagerConfig_InjectionStrategy();
+
+	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.il.data.BufferedDataType <em>Buffered Data Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1388,6 +1448,16 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getSortDirection();
+
+	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.il.data.InjectionStrategyType <em>Injection Strategy Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Injection Strategy Type</em>'.
+	 * @see org.smeup.sys.il.data.InjectionStrategyType
+	 * @generated
+	 */
+	EEnum getInjectionStrategyType();
 
 	/**
 	 * Returns the meta object for class '
@@ -1824,6 +1894,24 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass STRUCT = eINSTANCE.getStruct();
 
 		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.impl.DataManagerConfigImpl <em>Data Manager Config</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.impl.DataManagerConfigImpl
+		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataManagerConfig()
+		 * @generated
+		 */
+		EClass DATA_MANAGER_CONFIG = eINSTANCE.getDataManagerConfig();
+
+		/**
+		 * The meta object literal for the '<em><b>Injection Strategy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_MANAGER_CONFIG__INJECTION_STRATEGY = eINSTANCE.getDataManagerConfig_InjectionStrategy();
+
+		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.BufferedDataType <em>Buffered Data Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1902,6 +1990,16 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum SORT_DIRECTION = eINSTANCE.getSortDirection();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.InjectionStrategyType <em>Injection Strategy Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.InjectionStrategyType
+		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getInjectionStrategyType()
+		 * @generated
+		 */
+		EEnum INJECTION_STRATEGY_TYPE = eINSTANCE.getInjectionStrategyType();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.QStroller <em>Stroller</em>}' class.
