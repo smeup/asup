@@ -12,8 +12,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
+import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.data.InjectionStrategyType;
 import org.smeup.sys.il.data.QDataManagerConfig;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
@@ -31,7 +30,7 @@ import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
  *
  * @generated
  */
-public class DataManagerConfigImpl extends MinimalEObjectImpl.Container implements QDataManagerConfig {
+public class DataManagerConfigImpl extends ObjectImpl implements QDataManagerConfig {
 	/**
 	 * The default value of the '{@link #getInjectionStrategy() <em>Injection Strategy</em>}' attribute.
 	 * <!-- begin-user-doc -->

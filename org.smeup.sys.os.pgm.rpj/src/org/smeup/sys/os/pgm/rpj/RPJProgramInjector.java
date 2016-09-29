@@ -92,14 +92,14 @@ public class RPJProgramInjector {
 	private QResourceReader<QFile> fileReader;
 	private Map<String, RPJModule> ownerModules;
 
-	private static boolean SERIALIZATION_ACTIVE = true;
+	private static boolean SERIALIZATION_ACTIVE = false;
 	private static int GLOBAL_INJECTION_TIME = 0;
 	private static int GLOBAL_INJECTION_IO_TIME = 0;
 	
 	public RPJProgramInjector(QActivationGroup activationGroup, QDataContext dataContext) {
 		this.activationGroup = activationGroup;
 		this.dataContext = dataContext;
-		this.ownerModules = new HashMap<String, RPJModule>();
+		this.ownerModules = new HashMap<String, RPJModule>();	
 	}
 
 	@PostConstruct

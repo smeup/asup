@@ -1052,6 +1052,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		dataManagerEClass = createEClass(DATA_MANAGER);
 
+		dataManagerConfigEClass = createEClass(DATA_MANAGER_CONFIG);
+		createEAttribute(dataManagerConfigEClass, DATA_MANAGER_CONFIG__INJECTION_STRATEGY);
+
 		dataReaderEClass = createEClass(DATA_READER);
 
 		dataStructEClass = createEClass(DATA_STRUCT);
@@ -1098,9 +1101,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		structEClass = createEClass(STRUCT);
 
-		dataManagerConfigEClass = createEClass(DATA_MANAGER_CONFIG);
-		createEAttribute(dataManagerConfigEClass, DATA_MANAGER_CONFIG__INJECTION_STRATEGY);
-
 		// Create enums
 		bufferedDataTypeEEnum = createEEnum(BUFFERED_DATA_TYPE);
 		bufferedElementTypeEEnum = createEEnum(BUFFERED_ELEMENT_TYPE);
@@ -1108,8 +1108,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		dataSpecialEEnum = createEEnum(DATA_SPECIAL);
 		datetimeFormatEEnum = createEEnum(DATETIME_FORMAT);
 		initStrategyEEnum = createEEnum(INIT_STRATEGY);
-		sortDirectionEEnum = createEEnum(SORT_DIRECTION);
 		injectionStrategyTypeEEnum = createEEnum(INJECTION_STRATEGY_TYPE);
+		sortDirectionEEnum = createEEnum(SORT_DIRECTION);
 
 		// Create data types
 		dataArrayEDataType = createEDataType(DATA_ARRAY);
@@ -1217,6 +1217,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		dataContainerEClass.getESuperTypes().add(theIntegratedLanguageDataTermPackage.getDataTermContainer());
 		dataContainerEClass.getESuperTypes().add(theMachineInterfaceCorePackage.getJavaCloseable());
 		dataContextEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
+		dataManagerConfigEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		dataReaderEClass.getESuperTypes().add(this.getDataVisitor());
 		dataStructEClass.getESuperTypes().add(this.getCharacter());
 		dataStructEClass.getESuperTypes().add(this.getRecord());
@@ -2969,6 +2970,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(dataManagerEClass, null, "validateDataContainer", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataContainer(), "container", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(dataManagerConfigEClass, QDataManagerConfig.class, "DataManagerConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDataManagerConfig_InjectionStrategy(), this.getInjectionStrategyType(), "injectionStrategy", "", 0, 1, QDataManagerConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(dataReaderEClass, QDataReader.class, "DataReader", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(dataStructEClass, QDataStruct.class, "DataStruct", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4317,9 +4321,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(structEClass, ecorePackage.getEString(), "getElementNames", 1, -1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(dataManagerConfigEClass, QDataManagerConfig.class, "DataManagerConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDataManagerConfig_InjectionStrategy(), this.getInjectionStrategyType(), "injectionStrategy", null, 0, 1, QDataManagerConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		// Initialize enums and add enum literals
 		initEEnum(bufferedDataTypeEEnum, BufferedDataType.class, "BufferedDataType");
 		addEEnumLiteral(bufferedDataTypeEEnum, BufferedDataType.ELEMENT);
@@ -4367,14 +4368,14 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEEnumLiteral(initStrategyEEnum, InitStrategy.BASE);
 		addEEnumLiteral(initStrategyEEnum, InitStrategy.LIGHT);
 
-		initEEnum(sortDirectionEEnum, SortDirection.class, "SortDirection");
-		addEEnumLiteral(sortDirectionEEnum, SortDirection.ASCEND);
-		addEEnumLiteral(sortDirectionEEnum, SortDirection.DESCEND);
-
 		initEEnum(injectionStrategyTypeEEnum, InjectionStrategyType.class, "InjectionStrategyType");
 		addEEnumLiteral(injectionStrategyTypeEEnum, InjectionStrategyType.NONE);
 		addEEnumLiteral(injectionStrategyTypeEEnum, InjectionStrategyType.FILE);
 		addEEnumLiteral(injectionStrategyTypeEEnum, InjectionStrategyType.MEMO);
+
+		initEEnum(sortDirectionEEnum, SortDirection.class, "SortDirection");
+		addEEnumLiteral(sortDirectionEEnum, SortDirection.ASCEND);
+		addEEnumLiteral(sortDirectionEEnum, SortDirection.DESCEND);
 
 		// Initialize data types
 		initEDataType(dataArrayEDataType, Object[].class, "DataArray", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

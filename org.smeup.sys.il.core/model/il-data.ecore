@@ -1747,7 +1747,7 @@
       <eParameters name="container" lowerBound="1" eType="#//DataContainer"/>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DataManagerConfig">
+  <eClassifiers xsi:type="ecore:EClass" name="DataManagerConfig" eSuperTypes="il-core.ecore#//Object">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="injectionStrategy" eType="#//InjectionStrategyType"
         defaultValueLiteral=""/>
   </eClassifiers>

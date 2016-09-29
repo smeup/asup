@@ -71,9 +71,9 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case QIntegratedLanguageDataPackage.DATA_FILLER: return (EObject)createDataFiller();
+			case QIntegratedLanguageDataPackage.DATA_MANAGER_CONFIG: return (EObject)createDataManagerConfig();
 			case QIntegratedLanguageDataPackage.DATA_READER: return (EObject)createDataReader();
 			case QIntegratedLanguageDataPackage.DATA_WRITER: return (EObject)createDataWriter();
-			case QIntegratedLanguageDataPackage.DATA_MANAGER_CONFIG: return (EObject)createDataManagerConfig();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -98,10 +98,10 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 				return createDatetimeFormatFromString(eDataType, initialValue);
 			case QIntegratedLanguageDataPackage.INIT_STRATEGY:
 				return createInitStrategyFromString(eDataType, initialValue);
-			case QIntegratedLanguageDataPackage.SORT_DIRECTION:
-				return createSortDirectionFromString(eDataType, initialValue);
 			case QIntegratedLanguageDataPackage.INJECTION_STRATEGY_TYPE:
 				return createInjectionStrategyTypeFromString(eDataType, initialValue);
+			case QIntegratedLanguageDataPackage.SORT_DIRECTION:
+				return createSortDirectionFromString(eDataType, initialValue);
 			case QIntegratedLanguageDataPackage.DATA_ARRAY:
 				return createDataArrayFromString(eDataType, initialValue);
 			default:
@@ -128,10 +128,10 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 				return convertDatetimeFormatToString(eDataType, instanceValue);
 			case QIntegratedLanguageDataPackage.INIT_STRATEGY:
 				return convertInitStrategyToString(eDataType, instanceValue);
-			case QIntegratedLanguageDataPackage.SORT_DIRECTION:
-				return convertSortDirectionToString(eDataType, instanceValue);
 			case QIntegratedLanguageDataPackage.INJECTION_STRATEGY_TYPE:
 				return convertInjectionStrategyTypeToString(eDataType, instanceValue);
+			case QIntegratedLanguageDataPackage.SORT_DIRECTION:
+				return convertSortDirectionToString(eDataType, instanceValue);
 			case QIntegratedLanguageDataPackage.DATA_ARRAY:
 				return convertDataArrayToString(eDataType, instanceValue);
 			default:

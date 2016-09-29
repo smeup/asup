@@ -22,6 +22,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URI;
 import java.nio.charset.Charset;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,8 +50,8 @@ public final class NIODataContextImpl implements QDataContext {
 	private static final Charset CHARSET = Charset.forName("IBM-280");
 	private static final DateFormat DATEFMT = DateFormat.ISO;
 	private static final TimeFormat TIMEFMT = TimeFormat.ISO;
-	
-	private static Map<String, Object> memorymap = new HashMap<String, Object>();
+		
+	private static Map<String, ByteArrayOutputStream> memorymap = Collections.synchronizedMap(new HashMap<String, ByteArrayOutputStream>());	
 	
 	public NIODataContextImpl(final QContext context, final QDataAreaFactory dataAreaFactory, final Object owner, final QDataManagerConfig config) {
 		this.context = context;
@@ -160,14 +161,39 @@ public final class NIODataContextImpl implements QDataContext {
 	public <O> O deserialize(Class<O> klass, boolean allocate, String name) {
 		
 		O object = null;
+		ObjectInputStream ois = null;
+		
 		String code = klass.getName() + "_" + allocate + "_" + name;
 		
-		if (config.getInjectionStrategy().equals(InjectionStrategyType.MEMO) && memorymap.containsKey(code)) {
-			object = (O) memorymap.get(code);
-		} else {
-		
-			FileInputStream fis = null;
-			ObjectInputStream ois = null;
+		if (config.getInjectionStrategy().equals(InjectionStrategyType.MEMO) ) {
+			
+			if (memorymap.containsKey(code)) {
+				ByteArrayOutputStream bos = memorymap.get(code);
+				
+				ByteArrayInputStream bis = new   ByteArrayInputStream(bos.toByteArray());
+				try {
+					ois = new ObjectInputStream(bis);
+					object = (O) ois.readObject();
+				} catch (Exception e) {
+					
+				} finally {
+					try {
+						if (bis != null)
+							bis.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					try {
+						if (ois != null)
+							ois.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			
+		} else if (config.getInjectionStrategy().equals(InjectionStrategyType.FILE)) {
+			FileInputStream fis = null;			
 	
 			try {
 				String tempArea = getContext().getContextDescription().getTemporaryArea();
@@ -200,7 +226,7 @@ public final class NIODataContextImpl implements QDataContext {
 				}
 			}
 		}
-
+		
 		return object;		
 	}
 
@@ -209,24 +235,27 @@ public final class NIODataContextImpl implements QDataContext {
 		
 		String code = object.getClass().getName() + "_" + allocate + "_" + name;
 		
-		if (config.getInjectionStrategy().equals(InjectionStrategyType.MEMO))
-		{
-			if (!memorymap.containsKey(code))
-				memorymap.put(code, object);
-		}
-		
 		ByteArrayOutputStream baos = null;
 		FileOutputStream fos = null;
 		NIOContextOutputStreamImpl out = null;
 		
 		try {
-			baos = new ByteArrayOutputStream();
-			String tempArea = getContext().getContextDescription().getTemporaryArea();
-			URI fileUri = new URI(tempArea+"/" + code);
-			fos = new FileOutputStream(new File(fileUri));
-			out = new NIOContextOutputStreamImpl(this, fos, allocate);
-
-			out.writeObject(object);
+			if (config.getInjectionStrategy().equals(InjectionStrategyType.MEMO) )
+			{				
+				baos = new ByteArrayOutputStream();
+				ObjectOutputStream oos = new ObjectOutputStream(baos);
+	        	oos.writeObject(object);		      	
+				memorymap.put(code, baos);
+				
+			} else if (config.getInjectionStrategy().equals(InjectionStrategyType.FILE)) {
+			
+				String tempArea = getContext().getContextDescription().getTemporaryArea();
+				URI fileUri = new URI(tempArea+"/" + code);
+				fos = new FileOutputStream(new File(fileUri));
+				out = new NIOContextOutputStreamImpl(this, fos, allocate);
+				
+				out.writeObject(object);
+			}
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 			throw new IntegratedLanguageDataRuntimeException(e);

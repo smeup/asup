@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.data;
 
+import org.smeup.sys.il.core.QObject;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Data Manager Config</b></em>'.
@@ -23,9 +25,10 @@ package org.smeup.sys.il.data;
  * @model
  * @generated
  */
-public interface QDataManagerConfig {
+public interface QDataManagerConfig extends QObject {
 	/**
 	 * Returns the value of the '<em><b>Injection Strategy</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * The literals are from the enumeration {@link org.smeup.sys.il.data.InjectionStrategyType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -37,7 +40,7 @@ public interface QDataManagerConfig {
 	 * @see org.smeup.sys.il.data.InjectionStrategyType
 	 * @see #setInjectionStrategy(InjectionStrategyType)
 	 * @see org.smeup.sys.il.data.QIntegratedLanguageDataPackage#getDataManagerConfig_InjectionStrategy()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	InjectionStrategyType getInjectionStrategy();
