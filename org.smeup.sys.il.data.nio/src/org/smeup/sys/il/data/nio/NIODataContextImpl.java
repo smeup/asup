@@ -22,12 +22,17 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URI;
 import java.nio.charset.Charset;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.data.InjectionStrategyType;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataAreaFactory;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataManagerConfig;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.TimeFormat;
@@ -40,13 +45,17 @@ public final class NIODataContextImpl implements QDataContext {
 	private final QIndicator equal;
 	private final QIndicator error;
 	private final QIndicator found;
+	private final QDataManagerConfig config;
 
 	private static final Charset CHARSET = Charset.forName("IBM-280");
 	private static final DateFormat DATEFMT = DateFormat.ISO;
 	private static final TimeFormat TIMEFMT = TimeFormat.ISO;
+		
+	private static Map<String, byte[]> memorymap = Collections.synchronizedMap(new HashMap<String, byte[]>());	
 	
-	public NIODataContextImpl(final QContext context, final QDataAreaFactory dataAreaFactory, final Object owner) {
+	public NIODataContextImpl(final QContext context, final QDataAreaFactory dataAreaFactory, final Object owner, final QDataManagerConfig config) {
 		this.context = context;
+		this.config = config;
 		dataFactory = new NIODataFactoryImpl(this, owner, dataAreaFactory);
 
 		endOfData = dataFactory.createIndicator(true);
@@ -150,60 +159,100 @@ public final class NIODataContextImpl implements QDataContext {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <O> O deserialize(Class<O> klass, boolean allocate, String name) {
-
+		
 		O object = null;
-		FileInputStream fis = null;
 		ObjectInputStream ois = null;
-
-		try {
-			String tempArea = getContext().getContextDescription().getTemporaryArea();
-			URI fileUri = new URI(tempArea+"/" + klass.getName() + "_" + allocate + "_" + name);
-			fis = new FileInputStream(new File(fileUri));
+		
+		String code = klass.getName() + "_" + allocate + "_" + name;
+		
+		if (config.getInjectionStrategy().equals(InjectionStrategyType.MEMO) ) {
 			
-			ois = new NIOContextInputStreamImpl(this, klass.getClassLoader(), fis);
-			object = (O) ois.readObject();
-		}
-		catch (FileNotFoundException e) {
-			return null;
-		}
-		catch (Exception e) {
-			System.err.println(e.getMessage());
-			e.printStackTrace();
-			return null;
-		} finally {
-
-			try {
-				if (fis != null)
-					fis.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+			if (memorymap.containsKey(code)) {
+				ByteArrayInputStream bis = new   ByteArrayInputStream(memorymap.get(code));
+				try {
+					ois = new ObjectInputStream(bis);
+					object = (O) ois.readObject();
+				} catch (Exception e) {
+					
+				} finally {
+					try {
+						if (bis != null)
+							bis.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					try {
+						if (ois != null)
+							ois.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
 			}
+			
+		} else if (config.getInjectionStrategy().equals(InjectionStrategyType.FILE)) {
+			FileInputStream fis = null;			
+	
 			try {
-				if (ois != null)
-					ois.close();
-			} catch (IOException e) {
+				String tempArea = getContext().getContextDescription().getTemporaryArea();
+				URI fileUri = new URI(tempArea+"/" + klass.getName() + "_" + allocate + "_" + name);
+				fis = new FileInputStream(new File(fileUri));
+				
+				ois = new NIOContextInputStreamImpl(this, klass.getClassLoader(), fis);
+				object = (O) ois.readObject();
+			}
+			catch (FileNotFoundException e) {
+				return null;
+			}
+			catch (Exception e) {
+				System.err.println(e.getMessage());
 				e.printStackTrace();
+				return null;
+			} finally {
+	
+				try {
+					if (fis != null)
+						fis.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				try {
+					if (ois != null)
+						ois.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
-
+		
 		return object;		
 	}
 
 	@Override
 	public void serialize(Object object, boolean allocate, String name) {
 		
+		String code = object.getClass().getName() + "_" + allocate + "_" + name;
+		
 		ByteArrayOutputStream baos = null;
 		FileOutputStream fos = null;
 		NIOContextOutputStreamImpl out = null;
 		
 		try {
-			baos = new ByteArrayOutputStream();
-			String tempArea = getContext().getContextDescription().getTemporaryArea();
-			URI fileUri = new URI(tempArea+"/" + object.getClass().getName() + "_" + allocate + "_" + name);
-			fos = new FileOutputStream(new File(fileUri));
-			out = new NIOContextOutputStreamImpl(this, fos, allocate);
-
-			out.writeObject(object);
+			if (config.getInjectionStrategy().equals(InjectionStrategyType.MEMO) )
+			{				
+				baos = new ByteArrayOutputStream();
+				ObjectOutputStream oos = new ObjectOutputStream(baos);
+	        	oos.writeObject(object);		      	
+				memorymap.put(code, baos.toByteArray());				
+			} else if (config.getInjectionStrategy().equals(InjectionStrategyType.FILE)) {
+			
+				String tempArea = getContext().getContextDescription().getTemporaryArea();
+				URI fileUri = new URI(tempArea+"/" + code);
+				fos = new FileOutputStream(new File(fileUri));
+				out = new NIOContextOutputStreamImpl(this, fos, allocate);
+				
+				out.writeObject(object);
+			}
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 			throw new IntegratedLanguageDataRuntimeException(e);

@@ -52,6 +52,15 @@ public interface QIntegratedLanguageDataFactory extends EFactory {
 	QDataWriter createDataWriter();
 
 	/**
+	 * Returns a new object of class '<em>Data Manager Config</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Manager Config</em>'.
+	 * @generated
+	 */
+	QDataManagerConfig createDataManagerConfig();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

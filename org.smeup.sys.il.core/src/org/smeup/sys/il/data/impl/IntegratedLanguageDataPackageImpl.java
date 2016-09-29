@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.data.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
@@ -31,6 +32,7 @@ import org.smeup.sys.il.data.DataComparator;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.DatetimeFormat;
 import org.smeup.sys.il.data.InitStrategy;
+import org.smeup.sys.il.data.InjectionStrategyType;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
@@ -50,6 +52,7 @@ import org.smeup.sys.il.data.QDataDelegator;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDataManager;
+import org.smeup.sys.il.data.QDataManagerConfig;
 import org.smeup.sys.il.data.QDataReader;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataVisitor;
@@ -344,6 +347,13 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass dataManagerConfigEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum bufferedDataTypeEEnum = null;
 
 	/**
@@ -394,6 +404,13 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EEnum sortDirectionEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum injectionStrategyTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -858,6 +875,24 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDataManagerConfig() {
+		return dataManagerConfigEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataManagerConfig_InjectionStrategy() {
+		return (EAttribute)dataManagerConfigEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getBufferedDataType() {
 		return bufferedDataTypeEEnum;
 	}
@@ -923,6 +958,15 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 	 */
 	public EEnum getSortDirection() {
 		return sortDirectionEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getInjectionStrategyType() {
+		return injectionStrategyTypeEEnum;
 	}
 
 	/**
@@ -1008,6 +1052,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		dataManagerEClass = createEClass(DATA_MANAGER);
 
+		dataManagerConfigEClass = createEClass(DATA_MANAGER_CONFIG);
+		createEAttribute(dataManagerConfigEClass, DATA_MANAGER_CONFIG__INJECTION_STRATEGY);
+
 		dataReaderEClass = createEClass(DATA_READER);
 
 		dataStructEClass = createEClass(DATA_STRUCT);
@@ -1061,6 +1108,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		dataSpecialEEnum = createEEnum(DATA_SPECIAL);
 		datetimeFormatEEnum = createEEnum(DATETIME_FORMAT);
 		initStrategyEEnum = createEEnum(INIT_STRATEGY);
+		injectionStrategyTypeEEnum = createEEnum(INJECTION_STRATEGY_TYPE);
 		sortDirectionEEnum = createEEnum(SORT_DIRECTION);
 
 		// Create data types
@@ -1169,6 +1217,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		dataContainerEClass.getESuperTypes().add(theIntegratedLanguageDataTermPackage.getDataTermContainer());
 		dataContainerEClass.getESuperTypes().add(theMachineInterfaceCorePackage.getJavaCloseable());
 		dataContextEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
+		dataManagerConfigEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		dataReaderEClass.getESuperTypes().add(this.getDataVisitor());
 		dataStructEClass.getESuperTypes().add(this.getCharacter());
 		dataStructEClass.getESuperTypes().add(this.getRecord());
@@ -2921,6 +2970,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(dataManagerEClass, null, "validateDataContainer", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataContainer(), "container", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(dataManagerConfigEClass, QDataManagerConfig.class, "DataManagerConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDataManagerConfig_InjectionStrategy(), this.getInjectionStrategyType(), "injectionStrategy", "", 0, 1, QDataManagerConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(dataReaderEClass, QDataReader.class, "DataReader", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(dataStructEClass, QDataStruct.class, "DataStruct", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4309,6 +4361,11 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		initEEnum(initStrategyEEnum, InitStrategy.class, "InitStrategy");
 		addEEnumLiteral(initStrategyEEnum, InitStrategy.BASE);
 		addEEnumLiteral(initStrategyEEnum, InitStrategy.LIGHT);
+
+		initEEnum(injectionStrategyTypeEEnum, InjectionStrategyType.class, "InjectionStrategyType");
+		addEEnumLiteral(injectionStrategyTypeEEnum, InjectionStrategyType.NONE);
+		addEEnumLiteral(injectionStrategyTypeEEnum, InjectionStrategyType.FILE);
+		addEEnumLiteral(injectionStrategyTypeEEnum, InjectionStrategyType.MEMO);
 
 		initEEnum(sortDirectionEEnum, SortDirection.class, "SortDirection");
 		addEEnumLiteral(sortDirectionEEnum, SortDirection.ASCEND);

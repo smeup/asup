@@ -88,7 +88,9 @@ public class CommandDecoderTester {
 		dataContainer = commandManager.decodeCommand(job, variables, commands[3]);
 		testAsserter.assertNotNull("Decode "+commands[3], dataContainer);		
 		parm = (QList<QAdapter>)dataContainer.getData("PARM");		
+		testAsserter.assertTrue(commands[3]+" PARM(01)=&DMSAZ", ((QString)parm.get(1).getDelegate()).eq("1"));
 		testAsserter.assertTrue(commands[3]+" PARM(02)='BAS0042'", ((QString)parm.get(2).getDelegate()).eq("BAS0042"));
+		testAsserter.assertTrue(commands[3]+" PARM(03)='MSGBA'", ((QString)parm.get(3).getDelegate()).eq("MSGBA"));
 		if(dataContainer != null)
 			dataContainer.close();
 	}
