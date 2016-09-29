@@ -26,57 +26,40 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
-import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DecimalType;
+import org.smeup.sys.il.data.def.FloatingType;
 
-public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
+public final class NIOFloatingImpl extends NIONumericImpl implements QBinary {
 
 	private static final long serialVersionUID = 1L;
 	private static final byte LOVAL = (byte) 0;
 	private static final byte HIVAL = (byte) 128;
 
-	private final BinaryType _type;
-	private final boolean _unsigned;
+	private final FloatingType _type;
 	private transient NIODecimalDef _decimalDef;
 
-	public NIOBinaryImpl(final QDataContext dataContext, final BinaryType type, final boolean unsigned, final boolean allocate) {
+	public NIOFloatingImpl(final QDataContext dataContext, final FloatingType type, final boolean allocate) {
 		super(dataContext);
 		
 		this._type = type;
-		this._unsigned = unsigned;
 		this._decimalDef = NIODecimalDef.getInstance(getLength(), 0);
 
 		if (allocate) 
 			_storage = ByteBuffer.allocate(getSize());
 	}
 
-	public NIOBinaryImpl(final QDataContext dataContext, final boolean unsigned, final int value) {
-		super(dataContext);
-
-		this._type = BinaryType.INTEGER;
-		this._unsigned = unsigned;
-		this._decimalDef = NIODecimalDef.getInstance(getLength(), 0);
-
-		_storage = ByteBuffer.allocate(getSize()).putInt(value);
-	}
-	
-
 	@Override
-	public final boolean isSigned() {
-		return !_unsigned;
+	public boolean isSigned() {
+		return true;
 	}
 
 	@Override
 	public final int getLength() {
 		switch (_type) {
-		case BYTE:
-			return 3;
-		case SHORT:
-			return 5;
-		case INTEGER:
-			return 10;
-		case LONG:
-			return 20;
+		case DOUBLE:
+			return 8;
+		case SINGLE:
+			return 4;
 		}
 
 		throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: sdbfsdsd456dfhg");
@@ -85,14 +68,10 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	@Override
 	public final int getSize() {
 		switch (_type) {
-		case BYTE:
-			return 1;
-		case SHORT:
-			return 2;
-		case INTEGER:
-			return 4;
-		case LONG:
+		case DOUBLE:
 			return 8;
+		case SINGLE:
+			return 4;
 		}
 
 		throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: sdbf6wq76ert");
@@ -117,14 +96,10 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 		NIOBufferHelper.prepare(buffer, position, getSize());
 		switch (_type) {
-		case BYTE:
-			return buffer.get(position);
-		case SHORT:
-			return buffer.getShort(position);
-		case INTEGER:
-			return buffer.getInt(position);
-		case LONG:
-			return buffer.getLong(position);
+		case DOUBLE:
+			return buffer.getDouble(position);
+		case SINGLE:
+			return buffer.getFloat(position);
 		}
 
 		throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: zv8rv8ewtrwe");
@@ -138,17 +113,11 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 		NIOBufferHelper.prepare(buffer, position, getSize());
 		switch (_type) {
-		case BYTE:
-			buffer.put(position, (byte) number.intValue());
+		case DOUBLE:
+			buffer.putDouble(position, number.doubleValue());
 			return;
-		case SHORT:
-			buffer.putShort(position, number.shortValue());
-			return;
-		case INTEGER:
-			buffer.putInt(position, number.intValue());
-			return;
-		case LONG:
-			buffer.putLong(position, number.longValue());
+		case SINGLE:
+			buffer.putFloat(position, number.floatValue());
 			return;
 		}
 
@@ -216,7 +185,7 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	protected final void _write(final byte[] value) {
 		eval(_decimalDef.zoned.toDouble(value));
 	}
-
+	
 	@Override
 	protected final byte[] _toBytes(final DataSpecial value) {
 
@@ -252,7 +221,7 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	@Override
 	public final QNumeric qUns() {
 
-		final NIOBinaryImpl number = new NIOBinaryImpl(getDataContext(), _type, isSigned(), true);
+		final NIOFloatingImpl number = new NIOFloatingImpl(getDataContext(), _type, true);
 		if (asShort() > 0)
 			number.eval(this);
 		else
@@ -263,7 +232,7 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 	@Override
 	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
-		final NIOBinaryImpl copy = new NIOBinaryImpl(dataContext, _type, _unsigned, false);
+		final NIOFloatingImpl copy = new NIOFloatingImpl(dataContext, _type, false);
 		return copy;
 	}
 

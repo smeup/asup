@@ -25,7 +25,7 @@ public final class NIODecimalDef implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private static NIODecimalDef decimalTypes[][] = new NIODecimalDef[50][20];
+	private static NIODecimalDef decimalTypes[][] = new NIODecimalDef[50][21];
 
 	protected final AS400ZonedDecimal zoned;
 	protected final byte[] zoned_init;
