@@ -31,7 +31,7 @@ import org.smeup.sys.os.file.QFileMemberManager;
 import org.smeup.sys.os.file.QFileMembered;
 
 @Program(name = "QWHRMBRD")
-public class MemberDescriptionRetriever {
+public class MemberDescriptionRetrieverCommand {
 
 	@Inject
 	private QResourceManager resourceManager;
