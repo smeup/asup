@@ -35,8 +35,8 @@ import org.smeup.sys.db.syntax.impl.BindingStatementImpl;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.SetDescriptorStatementImpl#getDescriptorName <em>Descriptor Name</em>}</li>
- *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.SetDescriptorStatementImpl#getValue <em>Value</em>}</li>
- *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.SetDescriptorStatementImpl#getItems <em>Items</em>}</li>
+ *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.SetDescriptorStatementImpl#getIndex <em>Index</em>}</li>
+ *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.SetDescriptorStatementImpl#getOptions <em>Options</em>}</li>
  * </ul>
  *
  * @generated
@@ -63,34 +63,34 @@ public class SetDescriptorStatementImpl extends BindingStatementImpl implements 
 	protected String descriptorName = DESCRIPTOR_NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #getIndex() <em>Index</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getIndex()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_EDEFAULT = null;
+	protected static final String INDEX_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #getIndex() <em>Index</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getIndex()
 	 * @generated
 	 * @ordered
 	 */
-	protected String value = VALUE_EDEFAULT;
+	protected String index = INDEX_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getItems() <em>Items</em>}' reference list.
+	 * The cached value of the '{@link #getOptions() <em>Options</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getItems()
+	 * @see #getOptions()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<QOption> items;
+	protected EList<QOption> options;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -137,8 +137,8 @@ public class SetDescriptorStatementImpl extends BindingStatementImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getValue() {
-		return value;
+	public String getIndex() {
+		return index;
 	}
 
 	/**
@@ -146,11 +146,11 @@ public class SetDescriptorStatementImpl extends BindingStatementImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(String newValue) {
-		String oldValue = value;
-		value = newValue;
+	public void setIndex(String newIndex) {
+		String oldIndex = index;
+		index = newIndex;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__INDEX, oldIndex, index));
 	}
 
 	/**
@@ -158,11 +158,11 @@ public class SetDescriptorStatementImpl extends BindingStatementImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List<QOption> getItems() {
-		if (items == null) {
-			items = new EObjectResolvingEList<QOption>(QOption.class, this, QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__ITEMS);
+	public List<QOption> getOptions() {
+		if (options == null) {
+			options = new EObjectResolvingEList<QOption>(QOption.class, this, QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__OPTIONS);
 		}
-		return items;
+		return options;
 	}
 
 	/**
@@ -175,10 +175,10 @@ public class SetDescriptorStatementImpl extends BindingStatementImpl implements 
 		switch (featureID) {
 			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__DESCRIPTOR_NAME:
 				return getDescriptorName();
-			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__VALUE:
-				return getValue();
-			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__ITEMS:
-				return getItems();
+			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__INDEX:
+				return getIndex();
+			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__OPTIONS:
+				return getOptions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -195,12 +195,12 @@ public class SetDescriptorStatementImpl extends BindingStatementImpl implements 
 			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__DESCRIPTOR_NAME:
 				setDescriptorName((String)newValue);
 				return;
-			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__VALUE:
-				setValue((String)newValue);
+			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__INDEX:
+				setIndex((String)newValue);
 				return;
-			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__ITEMS:
-				getItems().clear();
-				getItems().addAll((Collection<? extends QOption>)newValue);
+			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__OPTIONS:
+				getOptions().clear();
+				getOptions().addAll((Collection<? extends QOption>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -217,11 +217,11 @@ public class SetDescriptorStatementImpl extends BindingStatementImpl implements 
 			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__DESCRIPTOR_NAME:
 				setDescriptorName(DESCRIPTOR_NAME_EDEFAULT);
 				return;
-			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__VALUE:
-				setValue(VALUE_EDEFAULT);
+			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__INDEX:
+				setIndex(INDEX_EDEFAULT);
 				return;
-			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__ITEMS:
-				getItems().clear();
+			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__OPTIONS:
+				getOptions().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -237,10 +237,10 @@ public class SetDescriptorStatementImpl extends BindingStatementImpl implements 
 		switch (featureID) {
 			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__DESCRIPTOR_NAME:
 				return DESCRIPTOR_NAME_EDEFAULT == null ? descriptorName != null : !DESCRIPTOR_NAME_EDEFAULT.equals(descriptorName);
-			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
-			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__ITEMS:
-				return items != null && !items.isEmpty();
+			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__INDEX:
+				return INDEX_EDEFAULT == null ? index != null : !INDEX_EDEFAULT.equals(index);
+			case QDatabaseSyntaxDBLPackage.SET_DESCRIPTOR_STATEMENT__OPTIONS:
+				return options != null && !options.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -257,8 +257,8 @@ public class SetDescriptorStatementImpl extends BindingStatementImpl implements 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (descriptorName: ");
 		result.append(descriptorName);
-		result.append(", value: ");
-		result.append(value);
+		result.append(", index: ");
+		result.append(index);
 		result.append(')');
 		return result.toString();
 	}

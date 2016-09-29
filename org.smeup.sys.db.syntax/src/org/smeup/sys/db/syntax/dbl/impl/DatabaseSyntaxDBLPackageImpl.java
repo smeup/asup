@@ -651,7 +651,7 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGetDescriptorStatement_Value() {
+	public EAttribute getGetDescriptorStatement_Index() {
 		return (EAttribute)getDescriptorStatementEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -660,7 +660,7 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getGetDescriptorStatement_Variables() {
+	public EReference getGetDescriptorStatement_Options() {
 		return (EReference)getDescriptorStatementEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -822,7 +822,7 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSetDescriptorStatement_Value() {
+	public EAttribute getSetDescriptorStatement_Index() {
 		return (EAttribute)setDescriptorStatementEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -831,7 +831,7 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSetDescriptorStatement_Items() {
+	public EReference getSetDescriptorStatement_Options() {
 		return (EReference)setDescriptorStatementEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -1164,8 +1164,8 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		getDescriptorStatementEClass = createEClass(GET_DESCRIPTOR_STATEMENT);
 		createEAttribute(getDescriptorStatementEClass, GET_DESCRIPTOR_STATEMENT__DESCRIPTOR_NAME);
 		createEAttribute(getDescriptorStatementEClass, GET_DESCRIPTOR_STATEMENT__DESCRIPTOR_SCOPE);
-		createEAttribute(getDescriptorStatementEClass, GET_DESCRIPTOR_STATEMENT__VALUE);
-		createEReference(getDescriptorStatementEClass, GET_DESCRIPTOR_STATEMENT__VARIABLES);
+		createEAttribute(getDescriptorStatementEClass, GET_DESCRIPTOR_STATEMENT__INDEX);
+		createEReference(getDescriptorStatementEClass, GET_DESCRIPTOR_STATEMENT__OPTIONS);
 
 		getDiagnosticsStatementEClass = createEClass(GET_DIAGNOSTICS_STATEMENT);
 		createEReference(getDiagnosticsStatementEClass, GET_DIAGNOSTICS_STATEMENT__CONDITION_INFO);
@@ -1196,8 +1196,8 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 
 		setDescriptorStatementEClass = createEClass(SET_DESCRIPTOR_STATEMENT);
 		createEAttribute(setDescriptorStatementEClass, SET_DESCRIPTOR_STATEMENT__DESCRIPTOR_NAME);
-		createEAttribute(setDescriptorStatementEClass, SET_DESCRIPTOR_STATEMENT__VALUE);
-		createEReference(setDescriptorStatementEClass, SET_DESCRIPTOR_STATEMENT__ITEMS);
+		createEAttribute(setDescriptorStatementEClass, SET_DESCRIPTOR_STATEMENT__INDEX);
+		createEReference(setDescriptorStatementEClass, SET_DESCRIPTOR_STATEMENT__OPTIONS);
 
 		setOptionStatementEClass = createEClass(SET_OPTION_STATEMENT);
 		createEReference(setOptionStatementEClass, SET_OPTION_STATEMENT__OPTIONS);
@@ -1322,8 +1322,8 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		initEClass(getDescriptorStatementEClass, QGetDescriptorStatement.class, "GetDescriptorStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGetDescriptorStatement_DescriptorName(), theEcorePackage.getEString(), "descriptorName", null, 1, 1, QGetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGetDescriptorStatement_DescriptorScope(), this.getDescriptorScope(), "descriptorScope", null, 1, 1, QGetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGetDescriptorStatement_Value(), theEcorePackage.getEString(), "value", null, 0, 1, QGetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGetDescriptorStatement_Variables(), this.getOption(), null, "variables", null, 0, -1, QGetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGetDescriptorStatement_Index(), theEcorePackage.getEString(), "index", null, 0, 1, QGetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGetDescriptorStatement_Options(), this.getOption(), null, "options", null, 0, -1, QGetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(getDiagnosticsStatementEClass, QGetDiagnosticsStatement.class, "GetDiagnosticsStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGetDiagnosticsStatement_ConditionInfo(), this.getConditionInfoClause(), null, "conditionInfo", null, 0, 1, QGetDiagnosticsStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1354,8 +1354,8 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 
 		initEClass(setDescriptorStatementEClass, QSetDescriptorStatement.class, "SetDescriptorStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSetDescriptorStatement_DescriptorName(), theEcorePackage.getEString(), "descriptorName", null, 1, 1, QSetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSetDescriptorStatement_Value(), theEcorePackage.getEString(), "value", null, 0, 1, QSetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSetDescriptorStatement_Items(), this.getOption(), null, "items", null, 0, -1, QSetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSetDescriptorStatement_Index(), theEcorePackage.getEString(), "index", null, 0, 1, QSetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSetDescriptorStatement_Options(), this.getOption(), null, "options", null, 0, -1, QSetDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(setOptionStatementEClass, QSetOptionStatement.class, "SetOptionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSetOptionStatement_Options(), this.getOption(), null, "options", null, 0, -1, QSetOptionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

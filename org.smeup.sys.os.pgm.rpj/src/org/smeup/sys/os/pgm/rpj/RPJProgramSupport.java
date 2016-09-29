@@ -969,4 +969,14 @@ public class RPJProgramSupport extends RPJModule {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public QNumeric qBitxor(int i, QBinary qBinary) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public QNumeric qBitxor(Number asNumber, QBinary abufchar) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

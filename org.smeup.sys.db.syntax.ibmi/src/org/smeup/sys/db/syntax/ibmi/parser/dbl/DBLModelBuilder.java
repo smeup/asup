@@ -71,6 +71,7 @@ public class DBLModelBuilder {
 	 * @throws SQLException
 	 */
 	public QBindingParseResult parseBinding(String builtinString) throws SQLException {
+				
 		QBindingParseResult parserResult = QDatabaseSyntaxFactory.eINSTANCE.createBindingParseResult();
 
 		String[] queryStrings = null;
@@ -311,28 +312,32 @@ public class DBLModelBuilder {
 							// Node VALUE
 							Tree value = fieldToken.getChild(0).getChild(j);
 
-							QOption varValue = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
+							QOption option = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
 
 							for (int k = 0; k < value.getChildCount(); k++) {
 
 								switch (value.getChild(k).getType()) {
+								case DBLLexer.NAME:
+									"".toCharArray();
+									break;
+
 								case DBLLexer.VARIABLE:
 
-									// Node VARIABLE
+									// Node VALUE
 									if (value.getChild(k).getChildCount() > 0)
-										varValue.setName(value.getChild(k).getChild(0).getText());
+										option.setValue(value.getChild(k).getChild(0).getText());
 									break;
 
 								case DBLLexer.VALUE:
 
-									// Node VALUE
+									// Node NAME
 									if (value.getChild(k).getChildCount() > 0)
-										varValue.setValue(value.getChild(k).getChild(0).getText());
+										option.setName(value.getChild(k).getChild(0).getText());
 									break;
 								}
 							}
 
-							getDescriptorStatement.getVariables().add(varValue);
+							getDescriptorStatement.getOptions().add(option);
 						}
 					}
 				}
@@ -340,7 +345,7 @@ public class DBLModelBuilder {
 				break;
 
 			case DBLLexer.ITEM_INFO:
-				
+
 				if (fieldToken.getChildCount() > 0) {
 
 					for (int j = 0; j < fieldToken.getChildCount(); j++) {
@@ -349,7 +354,7 @@ public class DBLModelBuilder {
 
 						case DBLLexer.VARIABLE:
 
-							getDescriptorStatement.setValue(fieldToken.getChild(j).getChild(0).getText());
+							getDescriptorStatement.setIndex(fieldToken.getChild(j).getChild(0).getText());
 
 							break;
 
@@ -362,28 +367,29 @@ public class DBLModelBuilder {
 								// Node VALUE
 								Tree value = fieldToken.getChild(j).getChild(j1);
 
-								QOption varValue = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
+								QOption option = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
 
 								for (int k = 0; k < value.getChildCount(); k++) {
 
 									switch (value.getChild(k).getType()) {
+									case DBLLexer.NAME:
+										"".toCharArray();
+										break;
 									case DBLLexer.VARIABLE:
 
-										// Node VARIABLE
 										if (value.getChild(k).getChildCount() > 0)
-											varValue.setName(value.getChild(k).getChild(0).getText());
+											option.setValue(value.getChild(k).getChild(0).getText());
 										break;
 
 									case DBLLexer.VALUE:
 
-										// Node VALUE
 										if (value.getChild(k).getChildCount() > 0)
-											varValue.setValue(value.getChild(k).getChild(0).getText());
+											option.setName(value.getChild(k).getChild(0).getText());
 										break;
 									}
 								}
 
-								getDescriptorStatement.getVariables().add(varValue);
+								getDescriptorStatement.getOptions().add(option);
 							}
 
 							break;
@@ -429,7 +435,7 @@ public class DBLModelBuilder {
 
 						case DBLLexer.VARIABLE:
 
-							setDescriptorStatement.setValue(fieldToken.getChild(j).getChild(0).getText());
+							setDescriptorStatement.setIndex(fieldToken.getChild(j).getChild(0).getText());
 
 							break;
 
@@ -442,7 +448,7 @@ public class DBLModelBuilder {
 								// Node ITEM
 								Tree item = fieldToken.getChild(j).getChild(j1);
 
-								QOption itemValue = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
+								QOption option = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
 
 								for (int k = 0; k < item.getChildCount(); k++) {
 
@@ -452,25 +458,24 @@ public class DBLModelBuilder {
 
 										// Node NAME
 										if (item.getChild(k).getChildCount() > 0)
-											itemValue.setName("'" + item.getChild(k).getChild(0).getText() + "'");
+											option.setName(item.getChild(k).getChild(0).getText());
 										break;
-
+									case DBLLexer.VARIABLE:
+										"".toCharArray();
+										break;
 									case DBLLexer.VALUE:
 
-										// Node VALUE
+										// Node NAME
 										if (item.getChild(k).getChildCount() > 0)
-											if (item.getChild(k).getChild(0).getType() == DBLLexer.VARIABLE) {
-												// Node VARIABLE: get child text
-												// as variable name
-												itemValue.setValue(item.getChild(k).getChild(0).getChild(0).getText());
-											} else {
-												itemValue.setValue("'" + item.getChild(k).getChild(0).getText() + "'");
-											}
+											if (item.getChild(k).getChild(0).getType() == DBLLexer.VARIABLE)
+												option.setValue(item.getChild(k).getChild(0).getChild(0).getText());
+											else 
+												option.setValue(item.getChild(k).getChild(0).getText());
 										break;
 									}
 								}
 
-								setDescriptorStatement.getItems().add(itemValue);
+								setDescriptorStatement.getOptions().add(option);
 							}
 
 							break;
@@ -691,19 +696,19 @@ public class DBLModelBuilder {
 
 			case DBLLexer.USING:
 				switch (fieldToken.getChild(0).getType()) {
-				case DBLLexer.DESCRIPTOR:					
+				case DBLLexer.DESCRIPTOR:
 					Tree descriptor = fieldToken.getChild(0);
 					QUsing using = QDatabaseSyntaxDBLFactory.eINSTANCE.createUsing();
 					using.setDescriptorName(descriptor.getChild(0).getText());
-					
+
 					describeStatement.setUsing(using);
 					break;
 				default:
 					System.err.println("Unexpected condition: cuy7we6r7fn8d");
 					break;
-				}				
+				}
 				break;
-				
+
 			case DBLLexer.INTO:
 
 				QInto into = QDatabaseSyntaxDBLFactory.eINSTANCE.createInto();
@@ -1051,6 +1056,7 @@ public class DBLModelBuilder {
 	}
 
 	private QBindingStatement manageSetOptionStatement(Tree tree) {
+
 		QSetOptionStatement setOptionStatement = QDatabaseSyntaxDBLFactory.eINSTANCE.createSetOptionStatement();
 
 		Tree optionToken = null;
@@ -1060,11 +1066,11 @@ public class DBLModelBuilder {
 
 			if (optionToken.getType() == DBLLexer.SET_OPTION) {
 				QOption option = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
-				option.setName("'" + optionToken.getText() + "'");
+				option.setName(optionToken.getText());
 
 				Tree valueToken = optionToken.getChild(0);
-				if (valueToken != null) {					
-						option.setValue("'" + valueToken.getText() + "'");					
+				if (valueToken != null) {
+					option.setValue(valueToken.getText());
 					setOptionStatement.getOptions().add(option);
 				}
 			} else
@@ -1170,28 +1176,24 @@ public class DBLModelBuilder {
 						valueNode = conditionInfoChild.getChild(j);
 
 						Tree valueNodeChild = null;
-						for (int j2 = 0; j2 < valueNode.getChildCount(); j2++) {
+						QOption option = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
 
+						for (int j2 = 0; j2 < valueNode.getChildCount(); j2++) {
 							valueNodeChild = valueNode.getChild(j2);
 
-							QOption conditionItem = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
-
 							switch (valueNodeChild.getType()) {
-
+							case DBLLexer.NAME:
+								"".toCharArray();
+								break;
 							case DBLLexer.VARIABLE:
-
-								conditionItem.setName(valueNodeChild.getChild(0).getText());
+								option.setValue(valueNodeChild.getChild(0).getText());
 								break;
 							case DBLLexer.VALUE:
-
-								conditionItem.setValue("'" + valueNodeChild.getChild(0).getText() + "'");
+								option.setName(valueNodeChild.getChild(0).getText());
 								break;
-
-							}
-
-							conditionInfoClause.getConditionItems().add(conditionItem);
+							}							
 						}
-
+						conditionInfoClause.getConditionItems().add(option);						
 					}
 
 					break;

@@ -22,6 +22,8 @@ import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
+import org.smeup.sys.il.data.QDecimal;
+import org.smeup.sys.il.data.QFloating;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Module;
 import org.smeup.sys.il.data.annotation.Module.Scope;
@@ -185,4 +187,37 @@ public class RPJDatabaseSupport extends RPJModule {
 		
 		return esqlFactory.createCursor(cursorType, hold, statement);
 	}
+
+	public void qGetdiagnostic(int condition, String name, QBufferedElement value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void qSetoption(String key, String value) {
+	}
+
+	public void qAllocatedescriptor(String name, String scope, QBinary maxColumn) {
+		qAllocatedescriptor(name, scope, maxColumn.asInteger());
+	}
+	
+	public void qAllocatedescriptor(String name, String scope, int maxColumn) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void qDeallocatedescriptor(String name, String scope) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void qGetdescriptor(String name, String scope, QBinary object, String parameter, Object value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void qSetdescriptor(String name, QBinary column, String parameter, Object value) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

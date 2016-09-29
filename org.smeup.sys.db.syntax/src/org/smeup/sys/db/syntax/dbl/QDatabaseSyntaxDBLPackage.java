@@ -585,22 +585,22 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	int GET_DESCRIPTOR_STATEMENT__DESCRIPTOR_SCOPE = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Index</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GET_DESCRIPTOR_STATEMENT__VALUE = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 2;
+	int GET_DESCRIPTOR_STATEMENT__INDEX = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Variables</b></em>' reference list.
+	 * The feature id for the '<em><b>Options</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GET_DESCRIPTOR_STATEMENT__VARIABLES = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 3;
+	int GET_DESCRIPTOR_STATEMENT__OPTIONS = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Get Descriptor Statement</em>' class.
@@ -840,22 +840,22 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	int SET_DESCRIPTOR_STATEMENT__DESCRIPTOR_NAME = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Index</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SET_DESCRIPTOR_STATEMENT__VALUE = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 1;
+	int SET_DESCRIPTOR_STATEMENT__INDEX = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Items</b></em>' reference list.
+	 * The feature id for the '<em><b>Options</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SET_DESCRIPTOR_STATEMENT__ITEMS = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 2;
+	int SET_DESCRIPTOR_STATEMENT__OPTIONS = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Set Descriptor Statement</em>' class.
@@ -1403,26 +1403,26 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	EAttribute getGetDescriptorStatement_DescriptorScope();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.db.syntax.dbl.QGetDescriptorStatement#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.db.syntax.dbl.QGetDescriptorStatement#getIndex <em>Index</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.smeup.sys.db.syntax.dbl.QGetDescriptorStatement#getValue()
+	 * @return the meta object for the attribute '<em>Index</em>'.
+	 * @see org.smeup.sys.db.syntax.dbl.QGetDescriptorStatement#getIndex()
 	 * @see #getGetDescriptorStatement()
 	 * @generated
 	 */
-	EAttribute getGetDescriptorStatement_Value();
+	EAttribute getGetDescriptorStatement_Index();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.smeup.sys.db.syntax.dbl.QGetDescriptorStatement#getVariables <em>Variables</em>}'.
+	 * Returns the meta object for the reference list '{@link org.smeup.sys.db.syntax.dbl.QGetDescriptorStatement#getOptions <em>Options</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Variables</em>'.
-	 * @see org.smeup.sys.db.syntax.dbl.QGetDescriptorStatement#getVariables()
+	 * @return the meta object for the reference list '<em>Options</em>'.
+	 * @see org.smeup.sys.db.syntax.dbl.QGetDescriptorStatement#getOptions()
 	 * @see #getGetDescriptorStatement()
 	 * @generated
 	 */
-	EReference getGetDescriptorStatement_Variables();
+	EReference getGetDescriptorStatement_Options();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.syntax.dbl.QGetDiagnosticsStatement <em>Get Diagnostics Statement</em>}'.
@@ -1606,26 +1606,26 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	EAttribute getSetDescriptorStatement_DescriptorName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.db.syntax.dbl.QSetDescriptorStatement#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.db.syntax.dbl.QSetDescriptorStatement#getIndex <em>Index</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.smeup.sys.db.syntax.dbl.QSetDescriptorStatement#getValue()
+	 * @return the meta object for the attribute '<em>Index</em>'.
+	 * @see org.smeup.sys.db.syntax.dbl.QSetDescriptorStatement#getIndex()
 	 * @see #getSetDescriptorStatement()
 	 * @generated
 	 */
-	EAttribute getSetDescriptorStatement_Value();
+	EAttribute getSetDescriptorStatement_Index();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.smeup.sys.db.syntax.dbl.QSetDescriptorStatement#getItems <em>Items</em>}'.
+	 * Returns the meta object for the reference list '{@link org.smeup.sys.db.syntax.dbl.QSetDescriptorStatement#getOptions <em>Options</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Items</em>'.
-	 * @see org.smeup.sys.db.syntax.dbl.QSetDescriptorStatement#getItems()
+	 * @return the meta object for the reference list '<em>Options</em>'.
+	 * @see org.smeup.sys.db.syntax.dbl.QSetDescriptorStatement#getOptions()
 	 * @see #getSetDescriptorStatement()
 	 * @generated
 	 */
-	EReference getSetDescriptorStatement_Items();
+	EReference getSetDescriptorStatement_Options();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.syntax.dbl.QSetTransactionStatement <em>Set Transaction Statement</em>}'.
@@ -2234,20 +2234,20 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 		EAttribute GET_DESCRIPTOR_STATEMENT__DESCRIPTOR_SCOPE = eINSTANCE.getGetDescriptorStatement_DescriptorScope();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Index</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GET_DESCRIPTOR_STATEMENT__VALUE = eINSTANCE.getGetDescriptorStatement_Value();
+		EAttribute GET_DESCRIPTOR_STATEMENT__INDEX = eINSTANCE.getGetDescriptorStatement_Index();
 
 		/**
-		 * The meta object literal for the '<em><b>Variables</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Options</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GET_DESCRIPTOR_STATEMENT__VARIABLES = eINSTANCE.getGetDescriptorStatement_Variables();
+		EReference GET_DESCRIPTOR_STATEMENT__OPTIONS = eINSTANCE.getGetDescriptorStatement_Options();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.db.syntax.dbl.impl.GetDiagnosticsStatementImpl <em>Get Diagnostics Statement</em>}' class.
@@ -2398,20 +2398,20 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 		EAttribute SET_DESCRIPTOR_STATEMENT__DESCRIPTOR_NAME = eINSTANCE.getSetDescriptorStatement_DescriptorName();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Index</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SET_DESCRIPTOR_STATEMENT__VALUE = eINSTANCE.getSetDescriptorStatement_Value();
+		EAttribute SET_DESCRIPTOR_STATEMENT__INDEX = eINSTANCE.getSetDescriptorStatement_Index();
 
 		/**
-		 * The meta object literal for the '<em><b>Items</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Options</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SET_DESCRIPTOR_STATEMENT__ITEMS = eINSTANCE.getSetDescriptorStatement_Items();
+		EReference SET_DESCRIPTOR_STATEMENT__OPTIONS = eINSTANCE.getSetDescriptorStatement_Options();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.db.syntax.dbl.impl.SetTransactionStatementImpl <em>Set Transaction Statement</em>}' class.
