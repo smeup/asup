@@ -17,18 +17,5 @@ package org.smeup.sys.il.data;
  * @generated
  */
 public interface QFloating extends QNumeric {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void eval(float value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void eval(double value);
 
 } // QFloating

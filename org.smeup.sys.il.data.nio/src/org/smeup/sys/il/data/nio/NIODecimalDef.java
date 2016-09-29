@@ -25,7 +25,7 @@ public final class NIODecimalDef implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private static NIODecimalDef decimalTypes[][] = new NIODecimalDef[50][21];
+	private static NIODecimalDef decimalTypes[][] = new NIODecimalDef[100][100];
 
 	protected final AS400ZonedDecimal zoned;
 	protected final byte[] zoned_init;
@@ -58,17 +58,24 @@ public final class NIODecimalDef implements Serializable {
 
 	public static NIODecimalDef getInstance(final int precision, final int scale) {
 
-		NIODecimalDef decimalType = decimalTypes[precision - 1][scale];
-		if (decimalType == null)
-			synchronized (decimalTypes) {
-				decimalType = decimalTypes[precision - 1][scale];
-				if (decimalType == null) {
-					decimalType = new NIODecimalDef(precision, scale);
-					decimalTypes[precision - 1][scale] = decimalType;
+		try {
+			NIODecimalDef decimalType = decimalTypes[precision - 1][scale];
+			if (decimalType == null)
+				synchronized (decimalTypes) {
+					decimalType = decimalTypes[precision - 1][scale];
+					if (decimalType == null) {
+						decimalType = new NIODecimalDef(precision, scale);
+						decimalTypes[precision - 1][scale] = decimalType;
+					}
 				}
-			}
-
-		return decimalType;
+	
+			return decimalType;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			e.toString();
+			return null;
+		}
 	}
 	
 	private final String formatMinValue(final int precision, final int scale) {

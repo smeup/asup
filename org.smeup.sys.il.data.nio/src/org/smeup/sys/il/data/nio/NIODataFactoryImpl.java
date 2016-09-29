@@ -573,8 +573,8 @@ public final class NIODataFactoryImpl implements QDataFactory {
 
 	@Override
 	public QFloating createFloating(final FloatingType type, final boolean allocate) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return new NIOFloatingImpl(getDataContext(), type, allocate);
 	}
 
 	@Override

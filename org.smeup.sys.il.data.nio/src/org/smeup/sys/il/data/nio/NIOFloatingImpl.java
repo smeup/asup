@@ -20,16 +20,16 @@ import java.util.Arrays;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
-import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
+import org.smeup.sys.il.data.QFloating;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.def.FloatingType;
 
-public final class NIOFloatingImpl extends NIONumericImpl implements QBinary {
+public final class NIOFloatingImpl extends NIONumericImpl implements QFloating {
 
 	private static final long serialVersionUID = 1L;
 	private static final byte LOVAL = (byte) 0;

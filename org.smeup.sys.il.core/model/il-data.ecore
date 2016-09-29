@@ -2054,14 +2054,7 @@
     <eOperations name="getSpecialName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Floating" abstract="true" interface="true"
-      eSuperTypes="#//Numeric">
-    <eOperations name="eval">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
-    </eOperations>
-    <eOperations name="eval">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    </eOperations>
-  </eClassifiers>
+      eSuperTypes="#//Numeric"/>
   <eClassifiers xsi:type="ecore:EClass" name="Graphic" abstract="true" interface="true"
       eSuperTypes="#//String"/>
   <eClassifiers xsi:type="ecore:EClass" name="Hexadecimal" abstract="true" interface="true"
