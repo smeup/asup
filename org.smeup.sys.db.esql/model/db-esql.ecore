@@ -2,7 +2,19 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="esql" nsURI="http://www.smeup.org/asup/db/esql" nsPrefix="db-esql">
   <eClassifiers xsi:type="ecore:EClass" name="CommunicationArea" abstract="true" interface="true"
-      eSuperTypes="../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
+      eSuperTypes="../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct">
+    <eOperations name="allocateDescriptorArea" lowerBound="1" eType="#//DescriptorArea">
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="maxColumns" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="deallocateDescriptorArea" lowerBound="1" eType="#//DescriptorArea">
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getDataContext" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataContext"/>
+    <eOperations name="getDescriptorArea" lowerBound="1" eType="#//DescriptorArea">
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Cursor" abstract="true" interface="true"
       eSuperTypes="#//ESqlObject">
     <eOperations name="after"/>
@@ -77,6 +89,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DescriptorArea" abstract="true" interface="true"
       eSuperTypes="../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DescriptorVariable" abstract="true"
+      interface="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
   <eClassifiers xsi:type="ecore:EClass" name="ESqlFactory" abstract="true" interface="true">
     <eOperations name="createCursor" lowerBound="1" eType="#//Cursor">
       <eParameters name="cursorType" lowerBound="1" eType="#//CursorType"/>

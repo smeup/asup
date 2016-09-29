@@ -14,9 +14,12 @@ package org.smeup.sys.db.esql.jdbc;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import org.smeup.sys.db.core.DatabaseCoreRuntimeException;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.esql.QCommunicationArea;
+import org.smeup.sys.db.esql.QDescriptorArea;
 import org.smeup.sys.db.esql.QStatement;
+import org.smeup.sys.db.esql.impl.CommunicationAreaImpl;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QNumeric;
@@ -34,59 +37,64 @@ public class JDBCStatementImpl extends JDBCObjectImpl implements QStatement {
 	@Override
 	public void prepare(QString sql) {
 
+		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
+		communicationAreaImpl.clear();
+
 		try {
 			if(dbStatement != null)
 				dbStatement.close();
 			
 			dbStatement = getDatabaseConnection().prepareStatement(sql.trimR());
 		} catch (SQLException e) {
-			// TODO
-			getCommunicationArea();
-		}
-		
+			handleSQLException(communicationAreaImpl, e);
+		}		
 	}
 
 	@Override
 	public void prepare(String sql) {
 
+		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
+		communicationAreaImpl.clear();
+
 		try {
 			dbStatement = getDatabaseConnection().prepareStatement(sql);
 		} catch (SQLException e) {
-			// TODO
-			getCommunicationArea();
+			handleSQLException(communicationAreaImpl, e);
 		}		
 	}
 	
 	@Override
 	public void execute() {
 
+		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
+		communicationAreaImpl.clear();
+
 		if(dbStatement != null) {
 			try {
 				dbStatement.execute();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				getCommunicationArea();
+				handleSQLException(communicationAreaImpl, e);
 			}
 		}
 		else
-			// TODO
-			getCommunicationArea();
+			handleSQLException(communicationAreaImpl, new SQLException("Invalid statement"));
 	}
 
 	@Override
 	public Object executeQuery() {
 
+		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
+		communicationAreaImpl.clear();
+
 		if(dbStatement != null) {
 			try {
 				return dbStatement.executeQuery();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				getCommunicationArea();
+				handleSQLException(communicationAreaImpl, e);
 			}
 		}
 		else
-			// TODO
-			getCommunicationArea();
+			handleSQLException(communicationAreaImpl, new SQLException("Invalid statement"));
 		
 		return null;
 	}
@@ -100,12 +108,17 @@ public class JDBCStatementImpl extends JDBCObjectImpl implements QStatement {
 
 	@Override
 	public void describe(String descriptor) {
-		// TODO
-		"".toCharArray();
+		
+		QDescriptorArea descriptorArea = getCommunicationArea().getDescriptorArea(descriptor);
+		if (descriptorArea == null)
+			throw new DatabaseCoreRuntimeException("Descriptor not found: " + descriptor);
 	}
 
 	@Override
 	public void prepare(String sql, QBufferedElement[] parameters) {
+
+		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
+		communicationAreaImpl.clear();
 
 		try {
 			dbStatement = getDatabaseConnection().prepareStatement(sql);
@@ -129,9 +142,13 @@ public class JDBCStatementImpl extends JDBCObjectImpl implements QStatement {
 				i++;
 			}
 		} catch (SQLException e) {
-			// TODO
-			getCommunicationArea();
-		}
-		
+			handleSQLException(communicationAreaImpl, e);
+		}		
+	}
+	
+	protected void handleSQLException(CommunicationAreaImpl communicationAreaImpl, SQLException e) {
+		communicationAreaImpl.sqlcod.eval(e.getErrorCode());
+		if(communicationAreaImpl.sqlcod.eq(0))
+			communicationAreaImpl.sqlcod.eval(-100);
 	}
 }

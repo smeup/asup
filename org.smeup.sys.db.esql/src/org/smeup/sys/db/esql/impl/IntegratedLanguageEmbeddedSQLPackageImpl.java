@@ -20,6 +20,7 @@ import org.smeup.sys.db.esql.QCommunicationArea;
 import org.smeup.sys.db.esql.QCursor;
 import org.smeup.sys.db.esql.QCursorTerm;
 import org.smeup.sys.db.esql.QDescriptorArea;
+import org.smeup.sys.db.esql.QDescriptorVariable;
 import org.smeup.sys.db.esql.QESqlFactory;
 import org.smeup.sys.db.esql.QESqlManager;
 import org.smeup.sys.db.esql.QESqlObject;
@@ -70,6 +71,13 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 	 * @generated
 	 */
 	private EClass descriptorAreaEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass descriptorVariableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -283,6 +291,15 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDescriptorVariable() {
+		return descriptorVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getESqlObject() {
 		return eSqlObjectEClass;
 	}
@@ -417,6 +434,8 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 
 		descriptorAreaEClass = createEClass(DESCRIPTOR_AREA);
 
+		descriptorVariableEClass = createEClass(DESCRIPTOR_VARIABLE);
+
 		eSqlFactoryEClass = createEClass(ESQL_FACTORY);
 
 		eSqlManagerEClass = createEClass(ESQL_MANAGER);
@@ -477,6 +496,7 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 		cursorEClass.getESuperTypes().add(this.getESqlObject());
 		cursorTermEClass.getESuperTypes().add(this.getESqlTerm());
 		descriptorAreaEClass.getESuperTypes().add(theIntegratedLanguageDataPackage.getDataStruct());
+		descriptorVariableEClass.getESuperTypes().add(theIntegratedLanguageDataPackage.getDataStruct());
 		eSqlTermEClass.getESuperTypes().add(theIntegratedLanguageCoreTermPackage.getTerm());
 		statementEClass.getESuperTypes().add(this.getESqlObject());
 		statementEClass.getESuperTypes().add(theMachineInterfaceCorePackage.getJavaCloseable());
@@ -484,6 +504,18 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(communicationAreaEClass, QCommunicationArea.class, "CommunicationArea", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		EOperation op = addEOperation(communicationAreaEClass, this.getDescriptorArea(), "allocateDescriptorArea", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "maxColumns", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(communicationAreaEClass, this.getDescriptorArea(), "deallocateDescriptorArea", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(communicationAreaEClass, theIntegratedLanguageDataPackage.getDataContext(), "getDataContext", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(communicationAreaEClass, this.getDescriptorArea(), "getDescriptorArea", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(cursorEClass, QCursor.class, "Cursor", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -493,7 +525,7 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 
 		addEOperation(cursorEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		EOperation op = addEOperation(cursorEClass, null, "first", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(cursorEClass, null, "first", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getBufferedData(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(cursorEClass, null, "first", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -554,6 +586,8 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 		initEAttribute(getCursorTerm_StatementName(), ecorePackage.getEString(), "statementName", null, 0, 1, QCursorTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(descriptorAreaEClass, QDescriptorArea.class, "DescriptorArea", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(descriptorVariableEClass, QDescriptorVariable.class, "DescriptorVariable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(eSqlFactoryEClass, QESqlFactory.class, "ESqlFactory", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

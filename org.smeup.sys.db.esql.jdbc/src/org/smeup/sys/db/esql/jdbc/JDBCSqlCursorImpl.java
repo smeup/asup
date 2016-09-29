@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.esql.CursorType;
 import org.smeup.sys.db.esql.QCommunicationArea;
+import org.smeup.sys.db.esql.impl.CommunicationAreaImpl;
 
 public class JDBCSqlCursorImpl extends JDBCCursorImpl {
 
@@ -32,10 +33,11 @@ public class JDBCSqlCursorImpl extends JDBCCursorImpl {
 	@Override
 	public void open() {
 
+		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
+		communicationAreaImpl.clear();
+
 		try {
 
-			getCommunicationArea().clear();
-			
 			if (dbStatement != null)
 				dbStatement.close();
 
@@ -47,13 +49,15 @@ public class JDBCSqlCursorImpl extends JDBCCursorImpl {
 			this.setResultSet(dbStatement.executeQuery(sql));
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			getCommunicationArea();
+			handleSQLException(communicationAreaImpl, e);
 		}
 	}
 
 	@Override
 	public void close() {
+
+		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
+		communicationAreaImpl.clear();
 
 		try {
 			if (dbStatement != null)
@@ -61,9 +65,9 @@ public class JDBCSqlCursorImpl extends JDBCCursorImpl {
 
 			if (getResultSet() != null)
 				getResultSet().close();
+			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			getCommunicationArea();
+			handleSQLException(communicationAreaImpl, e);
 		}
 	}
 }

@@ -95,5 +95,4 @@ public class JDBCESqlFactoryImpl implements QESqlFactory {
 
 		return statementTerm;
 	}
-
 }

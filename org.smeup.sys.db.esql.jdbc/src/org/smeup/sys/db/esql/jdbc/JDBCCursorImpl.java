@@ -17,8 +17,8 @@ import java.sql.SQLException;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.esql.CursorType;
 import org.smeup.sys.db.esql.QCommunicationArea;
-import org.smeup.sys.db.esql.QCommunicationAreaImpl;
 import org.smeup.sys.db.esql.QCursor;
+import org.smeup.sys.db.esql.impl.CommunicationAreaImpl;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataWriter;
@@ -55,19 +55,24 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 	@Override
 	public void next(QBufferedData target) {
 
+		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
+		communicationAreaImpl.clear();
+
 		try {
-			if (!this.resultSet.next()) {
-				// TODO
-				getCommunicationArea();
+			
+			if(this.resultSet == null)
+				throw new SQLException("Invalid statement", "ERROR", 9999);
+				
+			if (!this.resultSet.next()) {				
+				communicationAreaImpl.sqlcod.eval(100);
 				return;
 			}
-
+			
 			dataWriter.set(resultSet.getObject(1));
 			target.accept(dataWriter);
 
 		} catch (SQLException e) {
-			// TODO
-			getCommunicationArea();
+			handleSQLException(communicationAreaImpl, e);
 			return;
 		}
 	}
@@ -76,20 +81,22 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 	public void next(QBufferedData[] target) {
 
 
-		QCommunicationAreaImpl communicationAreaImpl = (QCommunicationAreaImpl) getCommunicationArea();
-		
+		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
+		communicationAreaImpl.clear();
+
 		try {
+			if(this.resultSet == null)
+				throw new SQLException("Invalid statement", "ERROR", 9999);
+
 			if (!this.resultSet.next()) {
 				communicationAreaImpl.sqlcod.eval(100);
 				return;
 			}
-
-			communicationAreaImpl.sqlcod.clear();
 			
 			completeTarget(target);
 			
 		} catch (SQLException e) {
-			communicationAreaImpl.sqlcod.eval(e.getErrorCode());
+			handleSQLException(communicationAreaImpl, e);
 			return;
 		}
 	}
@@ -97,20 +104,22 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 	@Override
 	public void next(QDataStruct target) {
 
-		QCommunicationAreaImpl communicationAreaImpl = (QCommunicationAreaImpl) getCommunicationArea();
-		
+		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
+		communicationAreaImpl.clear();
+
 		try {
+			if(this.resultSet == null)
+				throw new SQLException("Invalid statement", "ERROR", 9999);
+
 			if (!this.resultSet.next()) {
 				communicationAreaImpl.sqlcod.eval(100);
 				return;
 			}
-
-			communicationAreaImpl.sqlcod.clear();
 			
 			completeTarget(target.getElements().toArray(new QBufferedData[target.getElements().size()]));
 
 		} catch (SQLException e) {
-			communicationAreaImpl.sqlcod.eval(e.getErrorCode());
+			handleSQLException(communicationAreaImpl, e);
 			return;
 		}		
 
@@ -222,5 +231,11 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 			}
 			c++;
 		}
+	}
+	
+	protected void handleSQLException(CommunicationAreaImpl communicationAreaImpl, SQLException e) {
+		communicationAreaImpl.sqlcod.eval(e.getErrorCode());
+		if(communicationAreaImpl.sqlcod.eq(0))
+			communicationAreaImpl.sqlcod.eval(-100);
 	}
 }

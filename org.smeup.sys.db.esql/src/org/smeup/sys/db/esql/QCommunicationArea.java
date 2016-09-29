@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.db.esql;
 
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 
 /**
@@ -20,4 +21,36 @@ import org.smeup.sys.il.data.QDataStruct;
  * @generated
  */
 public interface QCommunicationArea extends QDataStruct {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" nameRequired="true" maxColumnsRequired="true"
+	 * @generated
+	 */
+	QDescriptorArea allocateDescriptorArea(String name, int maxColumns);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" nameRequired="true"
+	 * @generated
+	 */
+	QDescriptorArea getDescriptorArea(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" nameRequired="true"
+	 * @generated
+	 */
+	QDescriptorArea deallocateDescriptorArea(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QDataContext getDataContext();
 } // QCommunicationArea

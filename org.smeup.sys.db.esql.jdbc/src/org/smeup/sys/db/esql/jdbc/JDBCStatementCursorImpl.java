@@ -19,6 +19,7 @@ import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.esql.CursorType;
 import org.smeup.sys.db.esql.QCommunicationArea;
 import org.smeup.sys.db.esql.QStatement;
+import org.smeup.sys.db.esql.impl.CommunicationAreaImpl;
 
 public class JDBCStatementCursorImpl extends JDBCCursorImpl {
 
@@ -33,22 +34,26 @@ public class JDBCStatementCursorImpl extends JDBCCursorImpl {
 	@Override
 	public void open() {
 
+		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
+		communicationAreaImpl.clear();
+
 		try {
-			getCommunicationArea().clear();
 			
 			if (getResultSet() != null)
 				getResultSet().close();
 
 			setResultSet((ResultSet) statement.executeQuery());
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			getCommunicationArea();
+		} catch (SQLException e) {			
+			handleSQLException(communicationAreaImpl, e);
 		}
 	}
 
 	@Override
 	public void close() {
+
+		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
+		communicationAreaImpl.clear();
 
 		try {
 			if (statement != null)
@@ -57,11 +62,9 @@ public class JDBCStatementCursorImpl extends JDBCCursorImpl {
 			if (getResultSet() != null)
 				getResultSet().close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			getCommunicationArea();
+			handleSQLException(communicationAreaImpl, e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			getCommunicationArea();
+			handleSQLException(communicationAreaImpl, new SQLException(e));
 		}
 	}
 }

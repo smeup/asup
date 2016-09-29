@@ -31,6 +31,9 @@ import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
  * @generated
  */
 public class DataManagerConfigImpl extends ObjectImpl implements QDataManagerConfig {
+
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * The default value of the '{@link #getInjectionStrategy() <em>Injection Strategy</em>}' attribute.
 	 * <!-- begin-user-doc -->

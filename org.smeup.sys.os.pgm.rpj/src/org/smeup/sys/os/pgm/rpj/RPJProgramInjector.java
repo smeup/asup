@@ -26,11 +26,11 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.db.esql.QCommunicationArea;
-import org.smeup.sys.db.esql.QCommunicationAreaImpl;
 import org.smeup.sys.db.esql.QCursor;
 import org.smeup.sys.db.esql.QESqlFactory;
 import org.smeup.sys.db.esql.QESqlManager;
 import org.smeup.sys.db.esql.QStatement;
+import org.smeup.sys.db.esql.impl.CommunicationAreaImpl;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
@@ -253,11 +253,11 @@ public class RPJProgramInjector {
 	
 	private QCommunicationArea addCommunicationArea(QDataContainer dataContainer, QProgram program) {
 		
-		QCommunicationArea communicationArea = (QCommunicationArea) dataContainer.getData(SQL_COMMUNICATION_AREA);
+		CommunicationAreaImpl communicationArea = (CommunicationAreaImpl) dataContainer.getData(SQL_COMMUNICATION_AREA);
 
 		if (communicationArea == null) {
-			QDataTerm<?> communicationAreaTerm = dataContainer.addDataTerm(SQL_COMMUNICATION_AREA, QCommunicationAreaImpl.class, null);
-			communicationArea = (QCommunicationArea) dataContainer.getData(communicationAreaTerm);
+			QDataTerm<?> communicationAreaTerm = dataContainer.addDataTerm(SQL_COMMUNICATION_AREA, CommunicationAreaImpl.class, null);
+			communicationArea = (CommunicationAreaImpl) dataContainer.getData(communicationAreaTerm);
 		}
 		else
 			communicationArea.clear();

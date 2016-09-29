@@ -1,16 +1,46 @@
-package org.smeup.sys.db.esql;
+/**
+ * Copyright (c) 2012, 2016 Sme.UP and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
+package org.smeup.sys.db.esql.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.inject.Inject;
+
+import org.smeup.sys.db.core.DatabaseCoreRuntimeException;
+import org.smeup.sys.db.esql.QCommunicationArea;
+import org.smeup.sys.db.esql.QDescriptorArea;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.def.BinaryType;
 
-public class QCommunicationAreaImpl extends QDataStructWrapper implements QCommunicationArea {
+public class CommunicationAreaImpl extends QDataStructWrapper implements QCommunicationArea {
 	
 	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	private transient QDataContext dataContext;
+	
+	private transient Map<String, QDescriptorArea> descriptorAreas;
+	
+	public CommunicationAreaImpl() {
+		descriptorAreas = new HashMap<String, QDescriptorArea>();
+	}
+	
+	public void setDataContext(QDataContext dataContext) {
+		this.dataContext = dataContext;
+	}
+	
 	@DataDef(length = 8)
 	public QCharacter sqlcaid;
 	@DataDef(length = 8)
@@ -107,5 +137,40 @@ public class QCommunicationAreaImpl extends QDataStructWrapper implements QCommu
 	@DataDef(length = 5)
 	@Overlay(name = "sqlstate")
 	public QCharacter sqlstt;
+	
+	@Override
+	public QDescriptorArea getDescriptorArea(String name) {
+		return descriptorAreas.get(name);
+	}
+	
+	@Override
+	public QDescriptorArea allocateDescriptorArea(String name, int numColumns) {
 
+		QDescriptorArea descriptorArea = getDescriptorArea(name);
+		if (descriptorArea != null)
+			throw new DatabaseCoreRuntimeException("Descriptor already defined: " + descriptorArea);
+		
+		descriptorArea = dataContext.getDataFactory().createDataStruct(DescriptorAreaImpl.class, 0, true);
+		
+		descriptorAreas.put(name, descriptorArea);
+		
+		return descriptorArea;
+	}
+	
+	@Override
+	public QDescriptorArea deallocateDescriptorArea(String name) {
+
+		QDescriptorArea descriptorArea = getDescriptorArea(name);
+		if (descriptorArea == null)
+			throw new DatabaseCoreRuntimeException("Descriptor not found: " + name);
+
+		descriptorAreas.remove(descriptorArea);
+		
+		return descriptorArea;
+	}
+
+	@Override
+	public QDataContext getDataContext() {
+		return dataContext;
+	}
 }
