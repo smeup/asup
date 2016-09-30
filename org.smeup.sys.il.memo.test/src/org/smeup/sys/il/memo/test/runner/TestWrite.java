@@ -21,7 +21,7 @@ public class TestWrite {
 	@Inject
 	private QTestRunner testRunner;
 	@Inject 
-	private QTestAsserter asserter;
+	public transient QTestAsserter asserter;
 	
 	@TestStarted
 	public void start() {

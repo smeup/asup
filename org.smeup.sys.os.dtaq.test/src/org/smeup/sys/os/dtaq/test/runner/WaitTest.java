@@ -39,7 +39,7 @@ public class WaitTest {
 	@Inject
 	private QCommandManager commandManager;
 	@Inject
-	private QTestAsserter testAsserter;
+	public transient QTestAsserter testAsserter;
 	@Inject
 	private QJob job;
 	@Inject

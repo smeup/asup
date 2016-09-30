@@ -34,7 +34,7 @@ public class DataStructureTester {
 	@Inject
 	private QDataManager dataManager;
 	@Inject
-	private QTestAsserter testAsserter;
+	public transient QTestAsserter testAsserter;
 	@Inject
 	private QTestRunner testRunner;
 

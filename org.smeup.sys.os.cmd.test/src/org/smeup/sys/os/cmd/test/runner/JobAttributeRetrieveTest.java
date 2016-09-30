@@ -37,7 +37,7 @@ public class JobAttributeRetrieveTest {
 	@Inject
 	private QJob job;
 	@Inject
-	private QTestAsserter testAsserter;
+	public transient QTestAsserter testAsserter;
 	@Inject
 	private QDataManager dataManager;
 

@@ -27,7 +27,7 @@ import org.smeup.sys.il.esam.test.dbf.BRARTI0F;
 public class RRDS_readp {
 
 	@Inject
-	private QTestAsserter testAsserter;
+	public transient QTestAsserter testAsserter;
 	@Inject
 	private QAccessFactory accessFactory;
 

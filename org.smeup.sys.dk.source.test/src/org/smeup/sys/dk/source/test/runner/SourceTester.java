@@ -31,7 +31,7 @@ import org.smeup.sys.dk.test.annotation.TestStarted;
 public class SourceTester {
 
 	@Inject
-	private QTestAsserter testAsserter;
+	public transient QTestAsserter testAsserter;
 	
 	@Inject
 	private QTestRunner testRunner;

@@ -41,7 +41,7 @@ public class CommandDecoderTester {
 	@Inject
 	private QJob job;
 	@Inject
-	private QTestAsserter testAsserter;
+	public transient QTestAsserter testAsserter;
 
 	private String[] commands = new String[]{"WRKCMD CMD(WRKCMD)", 
 											 "CHGCMD CMD(WRKCMD) ALLOW(*IREXX *IPGM *INTERACT *BMOD)",

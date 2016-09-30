@@ -28,7 +28,7 @@ import org.smeup.sys.il.esam.test.dbf.MUTEST0F;
 public class KSDS_write {
 
 	@Inject
-	private QTestAsserter testAsserter;
+	public transient QTestAsserter testAsserter;
 	@Inject
 	private QAccessFactory accessFactory;
 

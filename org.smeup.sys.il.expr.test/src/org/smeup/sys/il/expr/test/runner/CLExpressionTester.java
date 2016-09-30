@@ -29,7 +29,7 @@ public class CLExpressionTester {
 	private QExpressionParserRegistry expressionParserRegistry;
 
 	@Inject
-	private QTestAsserter testAsserter;
+	public transient QTestAsserter testAsserter;
 
 	@TestStarted
 	public void main() throws IOException {

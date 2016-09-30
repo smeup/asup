@@ -26,7 +26,7 @@ public class Connection {
 	@Inject
 	private QConnection connection;
 	@Inject
-	private QTestAsserter testAsserter;
+	public transient QTestAsserter testAsserter;
 	
 	@TestStarted
 	public void main() throws SQLException {

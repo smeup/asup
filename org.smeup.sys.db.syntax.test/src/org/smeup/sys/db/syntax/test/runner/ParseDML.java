@@ -27,7 +27,7 @@ import org.smeup.sys.dk.test.base.BaseTestHelper;
 public class ParseDML {
 
 	@Inject
-	private QTestAsserter testAsserter;
+	public transient QTestAsserter testAsserter;
 
 	@Inject
 	private QQueryParser queryParser;

@@ -29,7 +29,7 @@ public class JobLogTest {
 	@Inject
 	private QJobLogManager jobLogManger;
 	@Inject
-	private QTestAsserter testAsserter;
+	public transient QTestAsserter testAsserter;
 
 	@TestStarted
 	public void doTest() {

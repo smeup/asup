@@ -19,7 +19,7 @@ public class TestRead {
 	@Inject
 	private QTestRunner testRunner;
 	@Inject 
-	private QTestAsserter asserter;
+	public transient QTestAsserter asserter;
 	
 	
 	@TestStarted

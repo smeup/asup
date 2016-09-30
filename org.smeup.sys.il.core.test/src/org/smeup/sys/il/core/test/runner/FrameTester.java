@@ -22,7 +22,7 @@ import org.smeup.sys.il.core.meta.QFrameManager;
 public class FrameTester {
 
 	@Inject
-	public QTestAsserter testAsserter;
+	public transient QTestAsserter testAsserter;
 
 	@Inject
 	public QFrameManager frameManager;

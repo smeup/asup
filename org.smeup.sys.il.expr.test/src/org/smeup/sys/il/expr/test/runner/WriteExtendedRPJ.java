@@ -15,7 +15,7 @@ import org.smeup.sys.il.expr.QExpressionWriterRegistry;
 public class WriteExtendedRPJ {
 
 	@Inject
-	private QTestAsserter testAsserter;
+	public transient QTestAsserter testAsserter;
 	
 	@Inject
 	private QExpressionParserRegistry expressionParserRegistry;

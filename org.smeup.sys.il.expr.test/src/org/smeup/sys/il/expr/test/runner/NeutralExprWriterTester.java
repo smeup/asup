@@ -34,7 +34,7 @@ public class NeutralExprWriterTester {
 	private QExpressionWriterRegistry expressionWriterRegistry;
 
 	@Inject
-	private QTestAsserter testAsserter;
+	public transient QTestAsserter testAsserter;
 
 	@TestStarted
 	public void main() throws IOException {

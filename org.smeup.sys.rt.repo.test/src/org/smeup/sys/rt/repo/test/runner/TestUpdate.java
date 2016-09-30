@@ -58,7 +58,7 @@ public class TestUpdate {
 	private IProvisioningAgent agent;
 	
 	@Inject
-	private QTestAsserter testAsserter;
+	public transient QTestAsserter testAsserter;
 	
 	@TestStarted
 	public void main() {
