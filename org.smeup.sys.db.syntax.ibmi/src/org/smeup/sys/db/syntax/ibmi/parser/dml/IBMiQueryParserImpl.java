@@ -32,6 +32,11 @@ public class IBMiQueryParserImpl implements QQueryParser {
 
 	@Override
 	public SQLQueryParseResult parseQuery(String sql) throws SQLException {
+		
+		// TODO
+		sql = sql.replaceAll(" FOR FETCH ONLY ", " ");
+		sql = sql.replaceAll(" FOR READ ONLY ", " ");
+		
 		try {
 			return parserManager.parseQuery(sql);
 		} catch (Exception e) {

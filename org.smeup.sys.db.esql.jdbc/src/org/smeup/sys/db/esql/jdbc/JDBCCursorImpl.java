@@ -61,7 +61,7 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 		try {
 			
 			if(this.resultSet == null)
-				throw new SQLException("Invalid statement", "ERROR", 9999);
+				throw new SQLException("Invalid statement", "ERROR", -999);
 				
 			if (!this.resultSet.next()) {				
 				communicationAreaImpl.sqlcod.eval(100);
@@ -86,7 +86,7 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 
 		try {
 			if(this.resultSet == null)
-				throw new SQLException("Invalid statement", "ERROR", 9999);
+				throw new SQLException("Invalid statement", "ERROR", -999);
 
 			if (!this.resultSet.next()) {
 				communicationAreaImpl.sqlcod.eval(100);
@@ -109,7 +109,7 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 
 		try {
 			if(this.resultSet == null)
-				throw new SQLException("Invalid statement", "ERROR", 9999);
+				throw new SQLException("Invalid statement", "ERROR", -999);
 
 			if (!this.resultSet.next()) {
 				communicationAreaImpl.sqlcod.eval(100);

@@ -197,6 +197,7 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 		writeAnnotation(field, Inject.class);
 
 		field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+		field.modifiers().add(getAST().newModifier(ModifierKeyword.TRANSIENT_KEYWORD));
 		field.setType(getAST().newSimpleType(getAST().newName(QTestAsserter.class.getSimpleName())));
 		variable.setName(getAST().newSimpleName("testAsserter"));
 		getTarget().bodyDeclarations().add(field);
