@@ -71,9 +71,7 @@ public enum FetchPositioning implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	BEFORE(50, "Before", "BEFORE"),
-
-	/**
+	BEFORE(50, "Before", "BEFORE"), /**
 	 * The '<em><b>After</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -81,9 +79,7 @@ public enum FetchPositioning implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	AFTER(60, "After", "AFTER"),
-
-	/**
+	AFTER(60, "After", "AFTER"), /**
 	 * The '<em><b>Current</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -91,9 +87,7 @@ public enum FetchPositioning implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CURRENT(70, "Current", "CURRENT"),
-
-	/**
+	CURRENT(70, "Current", "CURRENT"), /**
 	 * The '<em><b>Relative</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

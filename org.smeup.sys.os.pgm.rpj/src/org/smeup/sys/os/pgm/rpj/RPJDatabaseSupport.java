@@ -11,16 +11,14 @@
  */
 package org.smeup.sys.os.pgm.rpj;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.db.esql.CursorType;
 import org.smeup.sys.db.esql.QCursor;
-import org.smeup.sys.db.esql.QESqlFactory;
+import org.smeup.sys.db.esql.QEsqlContext;
 import org.smeup.sys.db.esql.QStatement;
 import org.smeup.sys.db.esql.impl.CommunicationAreaImpl;
 import org.smeup.sys.il.data.QBufferedElement;
-import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Module;
@@ -32,26 +30,19 @@ public class RPJDatabaseSupport extends RPJModule {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private transient QESqlFactory esqlFactory;
-	@Inject
-	private transient QDataContext dataContext;
+	private transient QEsqlContext esqlContext;
 
 	@DataDef
 	@Overlay(name = "*SQLCA")
 	public transient CommunicationAreaImpl sqlca;
-
-	@PostConstruct
-	private void init() {
-		sqlca.setDataContext(dataContext);
-	}
 	
 	@SuppressWarnings("resource")
 	public QCursor declare(CursorType cursorType, boolean hold, String sql, QBufferedElement[] parameters) {
 
-		QStatement statement = esqlFactory.createStatement();
+		QStatement statement = esqlContext.getEsqlFactory().createStatement();
 		statement.prepare(sql, parameters);
 
-		return esqlFactory.createCursor(cursorType, hold, statement);
+		return esqlContext.getEsqlFactory().createCursor(cursorType, hold, statement);
 	}
 
 	public void qSetoption(String key, String value) {
@@ -62,11 +53,11 @@ public class RPJDatabaseSupport extends RPJModule {
 	}
 
 	public void qAllocatedescriptor(String name, String scope, int maxColumns) {		
-		sqlca.allocateDescriptorArea(name, maxColumns);		
+		esqlContext.allocateDescriptorArea(name, maxColumns);		
 	}
 
 	public void qDeallocatedescriptor(String name, String scope) {
-		sqlca.deallocateDescriptorArea(name);
+		esqlContext.deallocateDescriptorArea(name);
 	}
 
 	public void qGetdiagnostic(int condition, String name, QBufferedElement value) {

@@ -19,12 +19,5 @@ package org.smeup.sys.db.esql;
  * @generated
  */
 public interface QESqlObject {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" required="true"
-	 * @generated
-	 */
-	QCommunicationArea getCommunicationArea();
 
 } // QESqlObject

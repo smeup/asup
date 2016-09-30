@@ -12,22 +12,21 @@
 package org.smeup.sys.db.esql.jdbc;
 
 import org.smeup.sys.db.core.QConnection;
-import org.smeup.sys.db.esql.QCommunicationArea;
 import org.smeup.sys.db.esql.QESqlObject;
+import org.smeup.sys.db.esql.QEsqlContext;
 
 public class JDBCObjectImpl implements QESqlObject{
 
 	private QConnection databaseConnection;
-	private QCommunicationArea communicationArea;
+	private QEsqlContext esqlContext;
 	
-	public JDBCObjectImpl(QConnection databaseConnection, QCommunicationArea communicationArea) {
+	public JDBCObjectImpl(QConnection databaseConnection, QEsqlContext esqlContext) {
 		this.databaseConnection = databaseConnection;
-		this.communicationArea = communicationArea;
+		this.esqlContext = esqlContext;
 	}
 	
-	@Override
-	public QCommunicationArea getCommunicationArea() {
-		return communicationArea;
+	protected QEsqlContext getEsqlContext() {
+		return esqlContext;
 	}
 
 	protected QConnection getDatabaseConnection() {

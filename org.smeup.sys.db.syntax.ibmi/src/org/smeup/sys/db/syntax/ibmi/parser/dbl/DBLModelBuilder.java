@@ -101,8 +101,7 @@ public class DBLModelBuilder {
 			parserResult.setBindingStatement(convertModel(tree.getChild(0), queryStrings));
 
 		} catch (RecognitionException e) {
-			e.printStackTrace();
-			throw new SQLException(e);
+			throw new SQLException("Invalid embedded", "X", -84, e);
 		}
 
 		return parserResult;

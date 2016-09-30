@@ -17,34 +17,29 @@ import java.util.List;
 
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.esql.CursorType;
-import org.smeup.sys.db.esql.QCommunicationArea;
 import org.smeup.sys.db.esql.QCursor;
 import org.smeup.sys.db.esql.QCursorTerm;
 import org.smeup.sys.db.esql.QESqlFactory;
+import org.smeup.sys.db.esql.QEsqlContext;
 import org.smeup.sys.db.esql.QIntegratedLanguageEmbeddedSQLFactory;
 import org.smeup.sys.db.esql.QStatement;
 import org.smeup.sys.db.esql.QStatementTerm;
 import org.smeup.sys.db.esql.annotation.CursorDef;
-import org.smeup.sys.il.data.QDataContext;
 
 public class JDBCESqlFactoryImpl implements QESqlFactory {
 
 	private QConnection connection;
+	private QEsqlContext esqlContext;
 	
-	@SuppressWarnings("unused")
-	private QDataContext dataContext;
-	private QCommunicationArea communicationArea;
-	
-	public JDBCESqlFactoryImpl(QConnection connection, QDataContext dataContext, QCommunicationArea communicationArea) {
+	public JDBCESqlFactoryImpl(QConnection connection, QEsqlContext esqlContext) {
 		this.connection = connection;
-		this.dataContext = dataContext;
-		this.communicationArea = communicationArea;
+		this.esqlContext = esqlContext;
 	}
 	
 	@Override
 	public QCursor createCursor(CursorType cursorType, boolean hold, String sql) {
 		
-		QCursor cursor = new JDBCSqlCursorImpl(connection, communicationArea, cursorType, sql);
+		QCursor cursor = new JDBCSqlCursorImpl(connection, esqlContext, cursorType, sql);
 		
 		return cursor;
 	}
@@ -52,7 +47,7 @@ public class JDBCESqlFactoryImpl implements QESqlFactory {
 	@Override
 	public QCursor createCursor(CursorType cursorType, boolean hold, QStatement statement) {
 
-		QCursor cursor = new JDBCStatementCursorImpl(connection, communicationArea, cursorType, statement);
+		QCursor cursor = new JDBCStatementCursorImpl(connection, esqlContext, cursorType, statement);
 		
 		return cursor;
 	}
@@ -82,7 +77,7 @@ public class JDBCESqlFactoryImpl implements QESqlFactory {
 	@Override
 	public QStatement createStatement() {
 	
-		QStatement statement = new JDBCStatementImpl(connection, communicationArea);
+		QStatement statement = new JDBCStatementImpl(connection, esqlContext);
 		
 		return statement;
 	}

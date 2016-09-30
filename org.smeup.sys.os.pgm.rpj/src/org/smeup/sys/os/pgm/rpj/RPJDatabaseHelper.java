@@ -19,7 +19,7 @@ import java.util.Set;
 
 import org.smeup.sys.db.esql.QCursor;
 import org.smeup.sys.db.esql.QCursorTerm;
-import org.smeup.sys.db.esql.QESqlFactory;
+import org.smeup.sys.db.esql.QEsqlContext;
 import org.smeup.sys.db.esql.QStatement;
 import org.smeup.sys.db.esql.QStatementTerm;
 import org.smeup.sys.il.data.QBufferedData;
@@ -30,7 +30,7 @@ import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.esam.AccessMode;
-import org.smeup.sys.il.esam.QAccessFactory;
+import org.smeup.sys.il.esam.QAccessContext;
 import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QFileHandler;
 import org.smeup.sys.il.esam.QKSDataSet;
@@ -70,7 +70,7 @@ public class RPJDatabaseHelper {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static void injectDataSet(QAccessFactory accessFactory, QDataFactory dataFactory, Map<String, QRecord> records, RPJInjectableField field) {
+	public static void injectDataSet(QAccessContext accessContext, QDataFactory dataFactory, Map<String, QRecord> records, RPJInjectableField field) {
 
 		boolean userOpen = false;
 
@@ -84,11 +84,11 @@ public class RPJDatabaseHelper {
 		QDataSet<?> dataSet = null;
 
 		if (QKSDataSet.class.isAssignableFrom(field.getFieldClass())) {
-			dataSet = accessFactory.createKeySequencedDataSet(classRecord, record, AccessMode.UPDATE, userOpen, null);
+			dataSet = accessContext.getAccessFactory().createKeySequencedDataSet(classRecord, record, AccessMode.UPDATE, userOpen, null);
 		} else if (QSMDataSet.class.isAssignableFrom(field.getFieldClass())) {
-			dataSet = accessFactory.createSourceMemberDataSet(classRecord, record, AccessMode.UPDATE, userOpen, null);
+			dataSet = accessContext.getAccessFactory().createSourceMemberDataSet(classRecord, record, AccessMode.UPDATE, userOpen, null);
 		} else {
-			dataSet = accessFactory.createRelativeRecordDataSet(classRecord, record, AccessMode.UPDATE, userOpen, null);
+			dataSet = accessContext.getAccessFactory().createRelativeRecordDataSet(classRecord, record, AccessMode.UPDATE, userOpen, null);
 		}
 
 		if (fileDef != null && !fileDef.name().isEmpty())
@@ -130,25 +130,25 @@ public class RPJDatabaseHelper {
 	}
 
 	@SuppressWarnings("resource")
-	public static void injectStatement(QESqlFactory sqlFactory, RPJInjectableField field) {
+	public static void injectStatement(QEsqlContext esqlContext, RPJInjectableField field) {
 
 		@SuppressWarnings("unused")
-		QStatementTerm statementTerm = sqlFactory.createStatementTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
+		QStatementTerm statementTerm = esqlContext.getEsqlFactory().createStatementTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
 
-		QStatement statement = sqlFactory.createStatement();
+		QStatement statement = esqlContext.getEsqlFactory().createStatement();
 
 		field.setValue(statement);
 	}
 
 	@SuppressWarnings("resource")
-	public static void injectCursor(QESqlFactory sqlFactory, List<RPJInjectableField> statements, RPJInjectableField field) {
+	public static void injectCursor(QEsqlContext esqlContext, List<RPJInjectableField> statements, RPJInjectableField field) {
 
-		QCursorTerm cursorTerm = sqlFactory.createCursorTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
+		QCursorTerm cursorTerm = esqlContext.getEsqlFactory().createCursorTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
 
 		QCursor cursor = null;
 
 		if (cursorTerm.getSql() != null)
-			cursor = sqlFactory.createCursor(cursorTerm.getCursorType(), cursorTerm.isHold(), cursorTerm.getSql());
+			cursor = esqlContext.getEsqlFactory().createCursor(cursorTerm.getCursorType(), cursorTerm.isHold(), cursorTerm.getSql());
 		else if(cursorTerm.getStatementName() != null) {
 			QStatement statement = null;
 
@@ -159,7 +159,7 @@ public class RPJDatabaseHelper {
 				}
 			}
 
-			cursor = sqlFactory.createCursor(cursorTerm.getCursorType(), cursorTerm.isHold(), statement);
+			cursor = esqlContext.getEsqlFactory().createCursor(cursorTerm.getCursorType(), cursorTerm.isHold(), statement);
 		}
 
 		if(cursor != null)

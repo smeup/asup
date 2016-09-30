@@ -20,7 +20,7 @@ import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.il.esam.AccessMode;
-import org.smeup.sys.il.esam.QAccessFactory;
+import org.smeup.sys.il.esam.QAccessContext;
 import org.smeup.sys.il.esam.QKSDataSet;
 import org.smeup.sys.il.esam.test.dbf.MUTEST0F;
 
@@ -30,7 +30,7 @@ public class KSDS_write {
 	@Inject
 	public transient QTestAsserter testAsserter;
 	@Inject
-	private QAccessFactory accessFactory;
+	private QAccessContext accessContext;
 
 	@TestStarted
 	public void doTest() throws SQLException, IOException {
@@ -40,7 +40,7 @@ public class KSDS_write {
 
 	private void testMUTEST() {
 
-		QKSDataSet<MUTEST0F> mutest0f = accessFactory.createKeySequencedDataSet(MUTEST0F.class, AccessMode.UPDATE);
+		QKSDataSet<MUTEST0F> mutest0f = accessContext.getAccessFactory().createKeySequencedDataSet(MUTEST0F.class, AccessMode.UPDATE);
 
 		mutest0f.open();
 		testAsserter.resetTime();

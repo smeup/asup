@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.esql.CursorType;
 import org.smeup.sys.db.esql.QCommunicationArea;
-import org.smeup.sys.db.esql.impl.CommunicationAreaImpl;
+import org.smeup.sys.db.esql.QEsqlContext;
 
 public class JDBCSqlCursorImpl extends JDBCCursorImpl {
 
@@ -24,8 +24,8 @@ public class JDBCSqlCursorImpl extends JDBCCursorImpl {
 	private org.smeup.sys.db.core.QStatement dbStatement;
 
 
-	public JDBCSqlCursorImpl(QConnection databaseConnection, QCommunicationArea communicationArea, CursorType cursorType, String sql) {
-		super(databaseConnection, communicationArea, cursorType);
+	public JDBCSqlCursorImpl(QConnection databaseConnection, QEsqlContext esqlContext, CursorType cursorType, String sql) {
+		super(databaseConnection, esqlContext, cursorType);
 
 		this.sql = sql;
 	}
@@ -33,8 +33,8 @@ public class JDBCSqlCursorImpl extends JDBCCursorImpl {
 	@Override
 	public void open() {
 
-		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
-		communicationAreaImpl.clear();
+		QCommunicationArea communicationArea = getEsqlContext().getCommunicationArea();
+		communicationArea.clear();
 
 		try {
 
@@ -46,18 +46,18 @@ public class JDBCSqlCursorImpl extends JDBCCursorImpl {
 
 			dbStatement = getDatabaseConnection().createStatement(false, true);
 
-			this.setResultSet(dbStatement.executeQuery(sql));
+			setResultSet(dbStatement.executeQuery(sql));
 
 		} catch (SQLException e) {
-			handleSQLException(communicationAreaImpl, e);
+			handleSQLException(e);
 		}
 	}
 
 	@Override
 	public void close() {
 
-		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
-		communicationAreaImpl.clear();
+		QCommunicationArea communicationArea = getEsqlContext().getCommunicationArea();
+		communicationArea.clear();
 
 		try {
 			if (dbStatement != null)
@@ -67,7 +67,7 @@ public class JDBCSqlCursorImpl extends JDBCCursorImpl {
 				getResultSet().close();
 			
 		} catch (SQLException e) {
-			handleSQLException(communicationAreaImpl, e);
+			handleSQLException(e);
 		}
 	}
 }

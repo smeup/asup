@@ -5,21 +5,30 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.db.esql;
+package org.smeup.sys.il.esam;
 
-import org.smeup.sys.il.data.QDataStruct;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+
+import org.smeup.sys.il.data.QDataContext;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Communication Area</b></em>'.
+ * A representation of the model object '<em><b>Access Context</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.db.esql.QIntegratedLanguageEmbeddedSQLPackage#getCommunicationArea()
+ * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getAccessContext()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QCommunicationArea extends QDataStruct {
+public interface QAccessContext extends QContextProvider {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QDataContext getDataContext();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -27,13 +36,6 @@ public interface QCommunicationArea extends QDataStruct {
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
-	int getSqlCode();
+	QAccessFactory getAccessFactory();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void setSqlCode(int sqlCode);
-} // QCommunicationArea
+} // QAccessContext

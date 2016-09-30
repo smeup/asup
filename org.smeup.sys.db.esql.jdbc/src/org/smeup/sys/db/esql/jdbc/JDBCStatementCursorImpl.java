@@ -11,22 +11,21 @@
  */
 package org.smeup.sys.db.esql.jdbc;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.esql.CursorType;
 import org.smeup.sys.db.esql.QCommunicationArea;
+import org.smeup.sys.db.esql.QEsqlContext;
 import org.smeup.sys.db.esql.QStatement;
-import org.smeup.sys.db.esql.impl.CommunicationAreaImpl;
 
 public class JDBCStatementCursorImpl extends JDBCCursorImpl {
 
 	private QStatement statement;
 	
-	public JDBCStatementCursorImpl(QConnection databaseConnection, QCommunicationArea communicationArea,  CursorType cursorType, QStatement statement) {
-		super(databaseConnection, communicationArea, cursorType);
+	public JDBCStatementCursorImpl(QConnection databaseConnection, QEsqlContext esqlContext,  CursorType cursorType, QStatement statement) {
+		super(databaseConnection, esqlContext, cursorType);
 
 		this.statement = statement;
 	}
@@ -34,10 +33,15 @@ public class JDBCStatementCursorImpl extends JDBCCursorImpl {
 	@Override
 	public void open() {
 
-		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
-		communicationAreaImpl.clear();
+		QCommunicationArea communicationArea = getEsqlContext().getCommunicationArea();
+		communicationArea.clear();
 
 		try {
+			
+			if(statement == null) {
+				handleSQLException(new SQLException("Invalid statement", "X", -924));
+				return;
+			}
 			
 			if (getResultSet() != null)
 				getResultSet().close();
@@ -45,26 +49,28 @@ public class JDBCStatementCursorImpl extends JDBCCursorImpl {
 			setResultSet((ResultSet) statement.executeQuery());
 
 		} catch (SQLException e) {			
-			handleSQLException(communicationAreaImpl, e);
+			handleSQLException(e);
 		}
 	}
 
 	@Override
 	public void close() {
 
-		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
-		communicationAreaImpl.clear();
+		QCommunicationArea communicationArea = getEsqlContext().getCommunicationArea();
+		communicationArea.clear();
 
 		try {
-			if (statement != null)
-				statement.close();
+			
+			if(statement == null) {
+				handleSQLException(new SQLException("Invalid statement", "X", -924));
+				return;
+			}
 
 			if (getResultSet() != null)
 				getResultSet().close();
+			
 		} catch (SQLException e) {
-			handleSQLException(communicationAreaImpl, e);
-		} catch (IOException e) {
-			handleSQLException(communicationAreaImpl, new SQLException(e));
+			handleSQLException(e);
 		}
 	}
 }

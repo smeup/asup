@@ -23,7 +23,7 @@ import org.smeup.sys.dk.test.base.BaseTestSuiteDirectoryRunnerImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataManager;
-import org.smeup.sys.il.esam.QAccessFactory;
+import org.smeup.sys.il.esam.QAccessContext;
 import org.smeup.sys.il.esam.QAccessManager;
 
 @Test(category = "ILEsam")
@@ -45,11 +45,11 @@ public class ILEsamTestSuiteRunnerImpl extends BaseTestSuiteDirectoryRunnerImpl 
 		QDataContext dataContext = dataManager.createDataContext(getContext(), null);
 
 		QAccessManager accessManager = getContext().get(QAccessManager.class);
-		QAccessFactory accessFactory = accessManager.createFactory(connection, dataContext);
+		QAccessContext accessContext = accessManager.createAccessContext(connection, dataContext);
 
 		getContext().set(QConnection.class, connection);
 		getContext().set(QDataContext.class, dataContext);
-		getContext().set(QAccessFactory.class, accessFactory);
+		getContext().set(QAccessContext.class, accessContext);
 	}
 
 	@TestStopped

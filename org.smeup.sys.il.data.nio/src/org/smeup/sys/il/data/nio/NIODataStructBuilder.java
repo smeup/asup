@@ -73,9 +73,6 @@ public final class NIODataStructBuilder {
 			if (overlayedData == null)
 				throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: s87rfysd8fsd");
 
-			int overlayedPosition = overlayedData.getPosition();
-			if (overlayedPosition == 0)
-				overlayedPosition = 1;
 
 			QDecimal overlayedNextPos = overlayedToNextPos.get(overlayedData);
 			if (overlayedNextPos == null) {
@@ -84,11 +81,17 @@ public final class NIODataStructBuilder {
 				overlayedToNextPos.put(overlayedData, overlayedNextPos);
 			}
 
-			if (overlayPosition >= 1) {
+			if (overlayPosition >= 1) { 
+				int overlayedPosition = overlayedData.getPosition();
+				if (overlayedPosition == 0)
+					overlayedPosition = 1;
+
 				dataStruct.addElement(name, dataElement, overlayedPosition - 1 + overlayPosition);
 				overlayedNextPos.eval(overlayPosition);
-			} else
-				dataStruct.addElement(name, dataElement, overlayedPosition - 1 + overlayedNextPos.i());
+			} else {
+				int overlayedPosition = overlayedData.getPosition();
+				dataStruct.addElement(name, dataElement, overlayedPosition + overlayedNextPos.i());
+			}
 
 			if (overlayedData instanceof NIOBufferedListImpl<?>) {
 				final NIOBufferedListImpl<?> arrayOverlayed = (NIOBufferedListImpl<?>) overlayedData;
@@ -99,6 +102,5 @@ public final class NIODataStructBuilder {
 			} else
 				overlayedNextPos.plus(dataElement.getSize());
 		}
-
 	}
 }

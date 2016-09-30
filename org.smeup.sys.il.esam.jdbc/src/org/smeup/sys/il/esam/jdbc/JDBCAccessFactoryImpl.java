@@ -17,14 +17,13 @@ import java.util.List;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
-import org.smeup.sys.il.core.ctx.QContextProvider;
-import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.OperationDirection;
+import org.smeup.sys.il.esam.QAccessContext;
 import org.smeup.sys.il.esam.QAccessFactory;
 import org.smeup.sys.il.esam.QDataSetInfo;
 import org.smeup.sys.il.esam.QIndex;
@@ -39,14 +38,12 @@ import org.smeup.sys.os.file.base.BaseFileMemberProvider;
 
 public class JDBCAccessFactoryImpl implements QAccessFactory {
 
-	private QContextProvider contextProvider;
 	private QConnection connection;
-	private QDataContext dataContext;
+	private QAccessContext accessContext;
 
-	public JDBCAccessFactoryImpl(QContextProvider contextProvider, QConnection connection, QDataContext dataContext) {
-		this.contextProvider = contextProvider;
+	public JDBCAccessFactoryImpl(QConnection connection, QAccessContext accessContext) {
 		this.connection = connection;
-		this.dataContext = dataContext;
+		this.accessContext = accessContext;
 	}
 
 	@Override
@@ -68,7 +65,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 	@Override
 	public <R extends QRecord> QKSDataSet<R> createKeySequencedDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct) {
 
-		R record = (R) this.dataContext.getDataFactory().createDataStruct((Class<QDataStruct>) wrapper, 0, true);
+		R record = (R) accessContext.getDataContext().getDataFactory().createDataStruct((Class<QDataStruct>) wrapper, 0, true);
 		return createKeySequencedDataSet(wrapper, record, accessMode, userOpen, infoStruct);
 	}
 
@@ -85,17 +82,17 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 		if (index == null)
 			index = TABLE_INDEX_RELATIVE_RECORD_NUMBER;
 
-		QDataSetInfo internalInfoStruct = dataContext.getDataFactory().createDataStruct(QDataSetInfo.class, 0, true);
+		QDataSetInfo internalInfoStruct = accessContext.getDataContext().getDataFactory().createDataStruct(QDataSetInfo.class, 0, true);
 		internalInfoStruct.clear();
 		if (infoStruct != null) 
 			internalInfoStruct.assign(infoStruct);
 		
 		if(tableName == null) {
-			tableName = dataContext.getDataFactory().createCharacter(21, false, true);
+			tableName = accessContext.getDataContext().getDataFactory().createCharacter(21, false, true);
 			tableName.eval(wrapper.getSimpleName());
 		}
 		
-		return new JDBCKeySequencedDataSetImpl<R>(connection, tableName, index, record, accessMode, userOpen, internalInfoStruct, dataContext);
+		return new JDBCKeySequencedDataSetImpl<R>(connection, tableName, index, record, accessMode, userOpen, internalInfoStruct, accessContext.getDataContext());
 	}
 
 	@Override
@@ -118,7 +115,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 	@Override
 	public <R extends QRecord> QRRDataSet<R> createRelativeRecordDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct) {
 
-		R record = (R) this.dataContext.getDataFactory().createDataStruct((Class<QDataStruct>) wrapper, 0, true);
+		R record = (R) accessContext.getDataContext().getDataFactory().createDataStruct((Class<QDataStruct>) wrapper, 0, true);
 		return createRelativeRecordDataSet(wrapper, record, accessMode, userOpen, infoStruct);
 	}
 
@@ -133,17 +130,17 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 
 		QIndex index = TABLE_INDEX_RELATIVE_RECORD_NUMBER;
 
-		QDataSetInfo internalInfoStruct = dataContext.getDataFactory().createDataStruct(QDataSetInfo.class, 0, true);
+		QDataSetInfo internalInfoStruct = accessContext.getDataContext().getDataFactory().createDataStruct(QDataSetInfo.class, 0, true);
 		internalInfoStruct.clear();		
 		if (infoStruct != null) 
 			internalInfoStruct.assign(infoStruct);
 
 		if(tableName == null) {
-			tableName = dataContext.getDataFactory().createCharacter(21, false, true);
+			tableName = accessContext.getDataContext().getDataFactory().createCharacter(21, false, true);
 			tableName.eval(wrapper.getSimpleName());
 		}
 		
-		return new JDBCRelativeRecordDataSetImpl<R>(connection, tableName, index, record, accessMode, userOpen, internalInfoStruct, dataContext);
+		return new JDBCRelativeRecordDataSetImpl<R>(connection, tableName, index, record, accessMode, userOpen, internalInfoStruct, accessContext.getDataContext());
 	}
 
 	@Override
@@ -165,7 +162,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 	@Override
 	public <R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct) {
 
-		R record = (R) this.dataContext.getDataFactory().createDataStruct((Class<QDataStruct>) wrapper, 0, true);
+		R record = (R) accessContext.getDataContext().getDataFactory().createDataStruct((Class<QDataStruct>) wrapper, 0, true);
 
 		return createSourceMemberDataSet(wrapper, record, accessMode, userOpen, infoStruct);
 	}
@@ -179,17 +176,17 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 	public <R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, R record, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct, QString fileName, QString memberName) {
 		
 		if(fileName == null) {
-			fileName = dataContext.getDataFactory().createCharacter(21, false, true);
+			fileName = accessContext.getDataContext().getDataFactory().createCharacter(21, false, true);
 			fileName.eval(wrapper.getSimpleName());
 		}
 
 		if(memberName == null)
-			memberName = dataContext.getDataFactory().createCharacter(10, false, true);
+			memberName = accessContext.getDataContext().getDataFactory().createCharacter(10, false, true);
 		
-		BaseFileMemberProvider fileMemberProvider = new BaseFileMemberProvider(contextProvider, fileName, memberName);
-		QDataSetInfo internalInfoStruct = dataContext.getDataFactory().createDataStruct(QDataSetInfo.class, 0, true);
+		BaseFileMemberProvider fileMemberProvider = new BaseFileMemberProvider(accessContext.getDataContext(), fileName, memberName);
+		QDataSetInfo internalInfoStruct = accessContext.getDataContext().getDataFactory().createDataStruct(QDataSetInfo.class, 0, true);
 		internalInfoStruct.clear();
-		QSMDataSet<R> dataSet = new BaseFileMemberDataSetImpl<R>(fileMemberProvider, record, accessMode, userOpen, internalInfoStruct, dataContext);
+		QSMDataSet<R> dataSet = new BaseFileMemberDataSetImpl<R>(fileMemberProvider, record, accessMode, userOpen, internalInfoStruct, accessContext.getDataContext());
 
 		return dataSet;
 	}

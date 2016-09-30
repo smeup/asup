@@ -82,12 +82,10 @@ public class DDLModelBuilder {
 			parserResult.setDefinitionStatement(convertModel(tree.getChild(0), queryStrings));
 
 		} catch (RecognitionException e) {
-			e.printStackTrace();
-			throw new SQLException(e);
+			throw new SQLException("Invalid definition", "X", -84, e);
 
 		} catch (Error e) {
-			e.printStackTrace();
-			throw new SQLException(e);
+			throw new SQLException("Invalid definition", "X", -84, e);
 		}
 		return parserResult;
 	}

@@ -19,7 +19,7 @@ import javax.inject.Inject;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
-import org.smeup.sys.il.esam.QAccessFactory;
+import org.smeup.sys.il.esam.QAccessContext;
 import org.smeup.sys.il.esam.QKSDataSet;
 import org.smeup.sys.il.esam.test.dbf.BRARTI2L;
 
@@ -29,7 +29,7 @@ public class KSDS_readp {
 	@Inject
 	public transient QTestAsserter testAsserter;
 	@Inject
-	private QAccessFactory accessFactory;
+	private QAccessContext accessContext;
 
 	@TestStarted
 	public void doTest() throws SQLException, IOException {
@@ -40,7 +40,7 @@ public class KSDS_readp {
 
 	private void testBRARTI() {
 
-		QKSDataSet<BRARTI2L> brarti2l = accessFactory.createKeySequencedDataSet(BRARTI2L.class);
+		QKSDataSet<BRARTI2L> brarti2l = accessContext.getAccessFactory().createKeySequencedDataSet(BRARTI2L.class);
 
 		brarti2l.open();
 		testAsserter.resetTime();

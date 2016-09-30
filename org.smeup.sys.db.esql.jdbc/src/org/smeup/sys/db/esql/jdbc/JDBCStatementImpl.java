@@ -11,15 +11,14 @@
  */
 package org.smeup.sys.db.esql.jdbc;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 import org.smeup.sys.db.core.DatabaseCoreRuntimeException;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.esql.QCommunicationArea;
 import org.smeup.sys.db.esql.QDescriptorArea;
+import org.smeup.sys.db.esql.QEsqlContext;
 import org.smeup.sys.db.esql.QStatement;
-import org.smeup.sys.db.esql.impl.CommunicationAreaImpl;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QNumeric;
@@ -30,15 +29,15 @@ public class JDBCStatementImpl extends JDBCObjectImpl implements QStatement {
 
 	private org.smeup.sys.db.core.QPreparedStatement dbStatement = null;
 	
-	public JDBCStatementImpl(QConnection databaseConnection, QCommunicationArea communicationArea) {
-		super(databaseConnection, communicationArea);
+	public JDBCStatementImpl(QConnection databaseConnection, QEsqlContext esqlContext) {
+		super(databaseConnection, esqlContext);
 	}
 
 	@Override
 	public void prepare(QString sql) {
 
-		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
-		communicationAreaImpl.clear();
+		QCommunicationArea communicationArea = getEsqlContext().getCommunicationArea();
+		communicationArea.clear();
 
 		try {
 			if(dbStatement != null)
@@ -46,61 +45,70 @@ public class JDBCStatementImpl extends JDBCObjectImpl implements QStatement {
 			
 			dbStatement = getDatabaseConnection().prepareStatement(sql.trimR());
 		} catch (SQLException e) {
-			handleSQLException(communicationAreaImpl, e);
+			handleSQLException(e);
 		}		
 	}
 
 	@Override
 	public void prepare(String sql) {
 
-		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
-		communicationAreaImpl.clear();
+		QCommunicationArea communicationArea = getEsqlContext().getCommunicationArea();
+		communicationArea.clear();
 
 		try {
+			if(dbStatement != null)
+				dbStatement.close();
+
 			dbStatement = getDatabaseConnection().prepareStatement(sql);
 		} catch (SQLException e) {
-			handleSQLException(communicationAreaImpl, e);
+			handleSQLException(e);
 		}		
 	}
 	
 	@Override
 	public void execute() {
 
-		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
-		communicationAreaImpl.clear();
+		QCommunicationArea communicationArea = getEsqlContext().getCommunicationArea();
+		communicationArea.clear();
 
-		if(dbStatement != null) {
-			try {
-				dbStatement.execute();
-			} catch (SQLException e) {
-				handleSQLException(communicationAreaImpl, e);
-			}
+		if(dbStatement == null) {
+			handleSQLException(new SQLException("Invalid statement", "X", -924));
+			return;
 		}
-		else
-			handleSQLException(communicationAreaImpl, new SQLException("Invalid statement"));
+
+		try {
+			dbStatement.close();
+			
+			dbStatement.execute();
+		} catch (SQLException e) {
+			handleSQLException(e);
+		}
 	}
 
 	@Override
 	public Object executeQuery() {
 
-		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
-		communicationAreaImpl.clear();
+		QCommunicationArea communicationArea = getEsqlContext().getCommunicationArea();
+		communicationArea.clear();
 
-		if(dbStatement != null) {
-			try {
-				return dbStatement.executeQuery();
-			} catch (SQLException e) {
-				handleSQLException(communicationAreaImpl, e);
-			}
+		if(dbStatement == null) {
+			handleSQLException(new SQLException("Invalid statement", "X", -924));
+			return null;
 		}
-		else
-			handleSQLException(communicationAreaImpl, new SQLException("Invalid statement"));
-		
-		return null;
+
+		try {
+			return dbStatement.executeQuery();
+		} catch (SQLException e) {
+			handleSQLException(e);
+			return null;
+		}
 	}
 
 	@Override
-	public void close() throws IOException {
+	public void close() {
+
+		QCommunicationArea communicationArea = getEsqlContext().getCommunicationArea();
+		communicationArea.clear();
 
 		if(dbStatement != null)
 			dbStatement.close();		
@@ -108,8 +116,11 @@ public class JDBCStatementImpl extends JDBCObjectImpl implements QStatement {
 
 	@Override
 	public void describe(String descriptor) {
+
+		QCommunicationArea communicationArea = getEsqlContext().getCommunicationArea();
+		communicationArea.clear();
 		
-		QDescriptorArea descriptorArea = getCommunicationArea().getDescriptorArea(descriptor);
+		QDescriptorArea descriptorArea = getEsqlContext().getDescriptorArea(descriptor);
 		if (descriptorArea == null)
 			throw new DatabaseCoreRuntimeException("Descriptor not found: " + descriptor);
 	}
@@ -117,8 +128,8 @@ public class JDBCStatementImpl extends JDBCObjectImpl implements QStatement {
 	@Override
 	public void prepare(String sql, QBufferedElement[] parameters) {
 
-		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
-		communicationAreaImpl.clear();
+		QCommunicationArea communicationArea = getEsqlContext().getCommunicationArea();
+		communicationArea.clear();
 
 		try {
 			dbStatement = getDatabaseConnection().prepareStatement(sql);
@@ -142,13 +153,15 @@ public class JDBCStatementImpl extends JDBCObjectImpl implements QStatement {
 				i++;
 			}
 		} catch (SQLException e) {
-			handleSQLException(communicationAreaImpl, e);
+			handleSQLException(e);
 		}		
 	}
 	
-	protected void handleSQLException(CommunicationAreaImpl communicationAreaImpl, SQLException e) {
-		communicationAreaImpl.sqlcod.eval(e.getErrorCode());
-		if(communicationAreaImpl.sqlcod.eq(0))
-			communicationAreaImpl.sqlcod.eval(-100);
+
+	protected void handleSQLException(SQLException e) {
+		QCommunicationArea communicationArea = getEsqlContext().getCommunicationArea();
+		communicationArea.setSqlCode(e.getErrorCode());
+		if(communicationArea.getSqlCode() == 0)
+			communicationArea.setSqlCode(-924);
 	}
 }

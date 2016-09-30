@@ -228,7 +228,7 @@ public class BaseConnectionImpl implements QConnection {
 
 			sql = connection.getQueryWriter().writeQuery(query.getQueryStatement());
 		} catch (Exception e) {
-			throw new SQLException(e);
+			throw new SQLException("Invalid query", "X", -84, e);
 		}
 
 		return sql;

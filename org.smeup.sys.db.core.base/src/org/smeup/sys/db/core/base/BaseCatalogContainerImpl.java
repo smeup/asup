@@ -316,7 +316,7 @@ public class BaseCatalogContainerImpl extends CatalogContainerImpl {
 	public <C> C createConnection(Class<C> factory) throws SQLException {
 
 		if (!isSupportsGuestAccess())
-			throw new SQLException("Invalid catalog access: " + this.getName());
+			throw new SQLException("Invalid catalog access: " + this.getName(), "X", -551);
 
 		QConnectionCredentials credentials = getConnectionConfig().getCredentials();
 		return createConnection(factory, credentials.getUser(), credentials.getPassword());

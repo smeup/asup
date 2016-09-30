@@ -40,7 +40,7 @@ public class IBMiQueryParserImpl implements QQueryParser {
 		try {
 			return parserManager.parseQuery(sql);
 		} catch (Exception e) {
-			throw new SQLException(e);
+			throw new SQLException("Invalid query", "X", -84, e);			
 		}
 	}
 
@@ -50,7 +50,7 @@ public class IBMiQueryParserImpl implements QQueryParser {
 		try {
 			return parserManager.parseQuery(sql);
 		} catch (Exception e) {
-			throw new SQLException(e);
+			throw new SQLException("Invalid query", "X", -84, e);
 		}
 	}
 

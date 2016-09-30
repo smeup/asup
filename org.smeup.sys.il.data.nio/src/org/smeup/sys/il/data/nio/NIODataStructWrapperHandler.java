@@ -75,7 +75,6 @@ public final class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 			return (QBufferedData) field.get(_wrapped);
 
 		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
-			e.printStackTrace();
 			return null;
 		}
 	}

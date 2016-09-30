@@ -13,21 +13,18 @@ package org.smeup.sys.db.esql.jdbc;
 
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.esql.QCommunicationArea;
-import org.smeup.sys.db.esql.QESqlFactory;
 import org.smeup.sys.db.esql.QESqlManager;
-import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.db.esql.QEsqlContext;
 import org.smeup.sys.il.data.QDataContext;
 
 public class JDBCESqlManagerImpl implements QESqlManager{
 
 	@Override
-	public QESqlFactory createFactory(QContextProvider contextProvider, QDataContext dataContext, QCommunicationArea communicationArea) {
+	public QEsqlContext createEsqlContext(Object connection, QDataContext dataContext, QCommunicationArea communicationArea) {
 
-		QConnection connection = contextProvider.getContext().getAdapter(contextProvider, QConnection.class);
+		QConnection databaseConnection = dataContext.getContext().getAdapter(connection, QConnection.class);		
+		QEsqlContext esqlContext = new JDBCEsqlContextImpl(databaseConnection, dataContext, communicationArea);
 		
-		QESqlFactory esqlFactory = new JDBCESqlFactoryImpl(connection, dataContext, communicationArea);
-		
-		return esqlFactory;
+		return esqlContext;
 	}
-
 }

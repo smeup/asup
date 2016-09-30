@@ -197,9 +197,9 @@ public class DB2QuerySourceWriter extends SQLQuerySourceWriter {
 	 */
 	protected void appendSQLForOptimizeClause(int aRowOptimizeLimit, StringBuffer sb) {
 		if (aRowOptimizeLimit > 0) {
-			appendKeyword(sb, "FETCH FIRST ");
-			appendInt(sb, aRowOptimizeLimit);
-			appendKeyword(sb, " ROWS ONLY");
+//			appendKeyword(sb, "FETCH FIRST ");
+//			appendInt(sb, aRowOptimizeLimit);
+//			appendKeyword(sb, " ROWS ONLY");
 		}
 	}
 

@@ -16,137 +16,76 @@ import java.sql.SQLException;
 
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.esql.CursorType;
+import org.smeup.sys.db.esql.FetchPositioning;
 import org.smeup.sys.db.esql.QCommunicationArea;
 import org.smeup.sys.db.esql.QCursor;
-import org.smeup.sys.db.esql.impl.CommunicationAreaImpl;
+import org.smeup.sys.db.esql.QEsqlContext;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QRecord;
 
 public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 
 	private CursorType cursorType;
 	private ResultSet resultSet;
 	private QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
-	
-	public JDBCCursorImpl(QConnection databaseConnection, QCommunicationArea communicationArea, CursorType cursorType) {
-		super(databaseConnection, communicationArea);
+
+	public JDBCCursorImpl(QConnection databaseConnection, QEsqlContext esqlContext, CursorType cursorType) {
+		super(databaseConnection, esqlContext);
 		this.cursorType = cursorType;
 	}
 
 	public CursorType getCursorType() {
 		return cursorType;
 	}
-	
+
 	@Override
 	public void after() {
-		// TODO Auto-generated method stub
-		"".toCharArray();
+		handleResultSet(FetchPositioning.AFTER, 0, null);
 	}
 
 	@Override
 	public void before() {
-		// TODO Auto-generated method stub
-		"".toCharArray();
+		handleResultSet(FetchPositioning.BEFORE, 0, null);
 	}
 
 	@Override
 	public void next(QBufferedData target) {
-
-		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
-		communicationAreaImpl.clear();
-
-		try {
-			
-			if(this.resultSet == null)
-				throw new SQLException("Invalid statement", "ERROR", -999);
-				
-			if (!this.resultSet.next()) {				
-				communicationAreaImpl.sqlcod.eval(100);
-				return;
-			}
-			
-			dataWriter.set(resultSet.getObject(1));
-			target.accept(dataWriter);
-
-		} catch (SQLException e) {
-			handleSQLException(communicationAreaImpl, e);
-			return;
-		}
+		handleResultSet(FetchPositioning.NEXT, 0, new QBufferedData[] { target });
 	}
 
 	@Override
 	public void next(QBufferedData[] target) {
-
-
-		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
-		communicationAreaImpl.clear();
-
-		try {
-			if(this.resultSet == null)
-				throw new SQLException("Invalid statement", "ERROR", -999);
-
-			if (!this.resultSet.next()) {
-				communicationAreaImpl.sqlcod.eval(100);
-				return;
-			}
-			
-			completeTarget(target);
-			
-		} catch (SQLException e) {
-			handleSQLException(communicationAreaImpl, e);
-			return;
-		}
+		handleResultSet(FetchPositioning.NEXT, 0, target);
 	}
 
 	@Override
 	public void next(QDataStruct target) {
-
-		CommunicationAreaImpl communicationAreaImpl = (CommunicationAreaImpl) getCommunicationArea();
-		communicationAreaImpl.clear();
-
-		try {
-			if(this.resultSet == null)
-				throw new SQLException("Invalid statement", "ERROR", -999);
-
-			if (!this.resultSet.next()) {
-				communicationAreaImpl.sqlcod.eval(100);
-				return;
-			}
-			
-			completeTarget(target.getElements().toArray(new QBufferedData[target.getElements().size()]));
-
-		} catch (SQLException e) {
-			handleSQLException(communicationAreaImpl, e);
-			return;
-		}		
-
+		handleResultSet(FetchPositioning.NEXT, 0, target.getElements().toArray(new QBufferedData[target.getElements().size()]));
 	}
-	
+
 	@Override
 	public void next(String descriptor) {
 		// TODO Auto-generated method stub
 		"".toCharArray();
 	}
-		
+
 	@Override
 	public void prior(QBufferedData target) {
-		// TODO Auto-generated method stub
-		"".toCharArray();
+		handleResultSet(FetchPositioning.PRIOR, 0, new QBufferedData[] { target });
 	}
 
 	@Override
 	public void prior(QBufferedData[] target) {
-		// TODO Auto-generated method stub
-		"".toCharArray();
+		handleResultSet(FetchPositioning.PRIOR, 0, target);
 	}
 
 	@Override
 	public void prior(QDataStruct target) {
-		// TODO Auto-generated method stub
-		"".toCharArray();		
+		handleResultSet(FetchPositioning.PRIOR, 0, target.getElements().toArray(new QBufferedData[target.getElements().size()]));
 	}
 
 	@Override
@@ -157,20 +96,17 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 
 	@Override
 	public void first(QBufferedData target) {
-		// TODO Auto-generated method stub
-		"".toCharArray();
+		handleResultSet(FetchPositioning.FIRST, 0, new QBufferedData[] { target });
 	}
 
 	@Override
 	public void first(QBufferedData[] target) {
-		// TODO Auto-generated method stub
-		"".toCharArray();
+		handleResultSet(FetchPositioning.FIRST, 0, target);
 	}
 
 	@Override
 	public void first(QDataStruct target) {
-		// TODO Auto-generated method stub
-		"".toCharArray();		
+		handleResultSet(FetchPositioning.FIRST, 0, target.getElements().toArray(new QBufferedData[target.getElements().size()]));
 	}
 
 	@Override
@@ -181,20 +117,17 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 
 	@Override
 	public void last(QBufferedData target) {
-		// TODO Auto-generated method stub
-		"".toCharArray();
+		handleResultSet(FetchPositioning.LAST, 0, new QBufferedData[] { target });
 	}
 
 	@Override
 	public void last(QBufferedData[] target) {
-		// TODO Auto-generated method stub
-		"".toCharArray();
+		handleResultSet(FetchPositioning.LAST, 0, target);
 	}
 
 	@Override
 	public void last(QDataStruct target) {
-		// TODO Auto-generated method stub
-		"".toCharArray();		
+		handleResultSet(FetchPositioning.LAST, 0, target.getElements().toArray(new QBufferedData[target.getElements().size()]));
 	}
 
 	@Override
@@ -216,26 +149,96 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 	protected void setResultSet(ResultSet resultSet) {
 		this.resultSet = resultSet;
 	}
-	
-	private void completeTarget(QBufferedData[] target) {
 
-		int c = 1;
+	private void completeRecord(QBufferedData[] target, int column) {
+
+		if (target == null)
+			return;
+
+		int c = column;
 		for (QBufferedData bufferedData : target) {
-			try {
-
-				dataWriter.set(resultSet.getObject(c));
-				bufferedData.accept(dataWriter);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			if(bufferedData instanceof QRecord) {
+				QRecord record = (QRecord)bufferedData;
+				QBufferedData[] bufferedRecord = record.getElements().toArray(new QBufferedData[record.getElements().size()]);
+				completeRecord(bufferedRecord, c);
+				c = c + bufferedRecord.length - 1;
+				// QASRRN
+				if(record.getElement("QASRRN") != null) 
+					c++;
 			}
+			else {
+				try {
+					dataWriter.set(resultSet.getObject(c));
+					bufferedData.accept(dataWriter);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}	
 			c++;
 		}
 	}
-	
-	protected void handleSQLException(CommunicationAreaImpl communicationAreaImpl, SQLException e) {
-		communicationAreaImpl.sqlcod.eval(e.getErrorCode());
-		if(communicationAreaImpl.sqlcod.eq(0))
-			communicationAreaImpl.sqlcod.eval(-100);
+
+	protected boolean handleResultSet(FetchPositioning positioning, int rowNumber, QBufferedData[] record) {
+
+		QCommunicationArea communicationArea = getEsqlContext().getCommunicationArea();
+		communicationArea.clear();
+
+		if (this.resultSet == null) {
+			handleSQLException(new SQLException("Invalid resultSet", "X", -924));
+			return false;
+		} else {
+
+			try {
+				boolean found = false;
+
+				switch (positioning) {
+				case FIRST:
+					found = this.resultSet.first();
+					break;
+				case LAST:
+					found = this.resultSet.last();
+					break;
+				case NEXT:
+					found = this.resultSet.next();
+					break;
+				case PRIOR:
+					found = this.resultSet.previous();
+					break;
+				case RELATIVE:
+					found = this.resultSet.relative(rowNumber);
+					break;
+				case AFTER:
+					found = true;
+					this.resultSet.afterLast();
+					break;
+				case BEFORE:
+					found = true;
+					this.resultSet.beforeFirst();
+					break;
+				case CURRENT:
+					found = true;
+					break;
+				}
+
+				if (found) {
+					completeRecord(record, 1);
+					return true;
+				} else {
+					getEsqlContext().getCommunicationArea().setSqlCode(100);
+					return false;
+				}
+			} catch (SQLException e) {
+				handleSQLException(e);
+				return false;
+			}
+		}
+	}
+
+	protected void handleSQLException(SQLException e) {
+		QCommunicationArea communicationArea = getEsqlContext().getCommunicationArea();
+		communicationArea.setSqlCode(e.getErrorCode());
+		if(communicationArea.getSqlCode() == 0)
+			communicationArea.setSqlCode(-924);
 	}
 }

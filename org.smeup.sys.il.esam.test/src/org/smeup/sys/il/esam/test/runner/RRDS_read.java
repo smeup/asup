@@ -19,7 +19,7 @@ import javax.inject.Inject;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
-import org.smeup.sys.il.esam.QAccessFactory;
+import org.smeup.sys.il.esam.QAccessContext;
 import org.smeup.sys.il.esam.QRRDataSet;
 import org.smeup.sys.il.esam.test.dbf.BRARTI0F;
 import org.smeup.sys.il.esam.test.dbf.BRENTI0F;
@@ -30,7 +30,7 @@ public class RRDS_read {
 	@Inject
 	public transient QTestAsserter testAsserter;
 	@Inject
-	private QAccessFactory accessFactory;
+	private QAccessContext accessContext;
 
 	@TestStarted
 	public void doTest() throws SQLException, IOException {
@@ -42,7 +42,7 @@ public class RRDS_read {
 
 	private void testBRARTI() {
 
-		QRRDataSet<BRARTI0F> brarti0f = accessFactory.createRelativeRecordDataSet(BRARTI0F.class);
+		QRRDataSet<BRARTI0F> brarti0f = accessContext.getAccessFactory().createRelativeRecordDataSet(BRARTI0F.class);
 
 		brarti0f.open();
 
@@ -57,7 +57,7 @@ public class RRDS_read {
 
 	private void testBRENTI() {
 
-		QRRDataSet<BRENTI0F> brenti0f = accessFactory.createRelativeRecordDataSet(BRENTI0F.class);
+		QRRDataSet<BRENTI0F> brenti0f = accessContext.getAccessFactory().createRelativeRecordDataSet(BRENTI0F.class);
 
 		brenti0f.open();
 

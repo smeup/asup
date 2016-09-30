@@ -27,6 +27,7 @@ import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.OperationDirection;
 import org.smeup.sys.il.esam.OperationRead;
 import org.smeup.sys.il.esam.OperationSet;
+import org.smeup.sys.il.esam.QAccessContext;
 import org.smeup.sys.il.esam.QAccessFactory;
 import org.smeup.sys.il.esam.QAccessManager;
 import org.smeup.sys.il.esam.QDataSet;
@@ -52,6 +53,13 @@ import org.smeup.sys.il.esam.QSMDataSet;
  * @generated
  */
 public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements QIntegratedLanguageEsamPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass accessContextEClass = null;
+
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -241,6 +249,15 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(QIntegratedLanguageEsamPackage.eNS_URI, theIntegratedLanguageEsamPackage);
 		return theIntegratedLanguageEsamPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAccessContext() {
+		return accessContextEClass;
 	}
 
 	/**
@@ -567,6 +584,8 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		isCreated = true;
 
 		// Create classes and their features
+		accessContextEClass = createEClass(ACCESS_CONTEXT);
+
 		accessFactoryEClass = createEClass(ACCESS_FACTORY);
 
 		accessManagerEClass = createEClass(ACCESS_MANAGER);
@@ -644,8 +663,8 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		QIntegratedLanguageDataPackage theIntegratedLanguageDataPackage = (QIntegratedLanguageDataPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
+		QIntegratedLanguageDataPackage theIntegratedLanguageDataPackage = (QIntegratedLanguageDataPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI);
 		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
@@ -676,6 +695,7 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		smDataSetEClass_R.getEBounds().add(g1);
 
 		// Add supertypes to classes
+		accessContextEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
 		g1 = createEGenericType(this.getFileHandler());
 		EGenericType g2 = createEGenericType(dataSetEClass_R);
 		g1.getETypeArguments().add(g2);
@@ -707,6 +727,12 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		smDataSetEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(accessContextEClass, QAccessContext.class, "AccessContext", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(accessContextEClass, theIntegratedLanguageDataPackage.getDataContext(), "getDataContext", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(accessContextEClass, this.getAccessFactory(), "getAccessFactory", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(accessFactoryEClass, QAccessFactory.class, "AccessFactory", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		EOperation op = addEOperation(accessFactoryEClass, null, "createKeySequencedDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -997,8 +1023,8 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 
 		initEClass(accessManagerEClass, QAccessManager.class, "AccessManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(accessManagerEClass, this.getAccessFactory(), "createFactory", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(accessManagerEClass, this.getAccessContext(), "createAccessContext", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEObject(), "connection", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getDataContext(), "dataContext", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataSetEClass, QDataSet.class, "DataSet", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
+import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 
@@ -90,7 +91,7 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getESqlObject()
 	 * @generated
 	 */
-	int ESQL_OBJECT = 7;
+	int ESQL_OBJECT = 8;
 
 	/**
 	 * The number of structural features of the '<em>ESql Object</em>' class.
@@ -128,7 +129,7 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getESqlTerm()
 	 * @generated
 	 */
-	int ESQL_TERM = 8;
+	int ESQL_TERM = 9;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -269,6 +270,25 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	int DESCRIPTOR_VARIABLE_FEATURE_COUNT = QIntegratedLanguageDataPackage.DATA_STRUCT_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.db.esql.QEsqlContext <em>Esql Context</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.db.esql.QEsqlContext
+	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getEsqlContext()
+	 * @generated
+	 */
+	int ESQL_CONTEXT = 5;
+
+	/**
+	 * The number of structural features of the '<em>Esql Context</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESQL_CONTEXT_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.CONTEXT_PROVIDER_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.esql.QStatement <em>Statement</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -276,7 +296,7 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getStatement()
 	 * @generated
 	 */
-	int STATEMENT = 9;
+	int STATEMENT = 10;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.esql.impl.StatementTermImpl <em>Statement Term</em>}' class.
@@ -286,7 +306,7 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getStatementTerm()
 	 * @generated
 	 */
-	int STATEMENT_TERM = 10;
+	int STATEMENT_TERM = 11;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.esql.QESqlManager <em>ESql Manager</em>}' class.
@@ -296,7 +316,7 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getESqlManager()
 	 * @generated
 	 */
-	int ESQL_MANAGER = 6;
+	int ESQL_MANAGER = 7;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.esql.QESqlFactory <em>ESql Factory</em>}' class.
@@ -306,7 +326,7 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getESqlFactory()
 	 * @generated
 	 */
-	int ESQL_FACTORY = 5;
+	int ESQL_FACTORY = 6;
 
 	/**
 	 * The number of structural features of the '<em>ESql Factory</em>' class.
@@ -370,7 +390,7 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getCursorType()
 	 * @generated
 	 */
-	int CURSOR_TYPE = 11;
+	int CURSOR_TYPE = 12;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.esql.FetchPositioning <em>Fetch Positioning</em>}' enum.
@@ -380,7 +400,7 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getFetchPositioning()
 	 * @generated
 	 */
-	int FETCH_POSITIONING = 12;
+	int FETCH_POSITIONING = 13;
 
 
 	/**
@@ -390,7 +410,7 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getCursorParameters()
 	 * @generated
 	 */
-	int CURSOR_PARAMETERS = 13;
+	int CURSOR_PARAMETERS = 14;
 
 	/**
 	 * The meta object id for the '<em>Cursor Record</em>' data type.
@@ -399,7 +419,7 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getCursorRecord()
 	 * @generated
 	 */
-	int CURSOR_RECORD = 14;
+	int CURSOR_RECORD = 15;
 
 
 	/**
@@ -495,6 +515,16 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getDescriptorVariable();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.db.esql.QEsqlContext <em>Esql Context</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Esql Context</em>'.
+	 * @see org.smeup.sys.db.esql.QEsqlContext
+	 * @generated
+	 */
+	EClass getEsqlContext();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.esql.QESqlObject <em>ESql Object</em>}'.
@@ -710,6 +740,16 @@ public interface QIntegratedLanguageEmbeddedSQLPackage extends EPackage {
 		 * @generated
 		 */
 		EClass DESCRIPTOR_VARIABLE = eINSTANCE.getDescriptorVariable();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.db.esql.QEsqlContext <em>Esql Context</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.db.esql.QEsqlContext
+		 * @see org.smeup.sys.db.esql.impl.IntegratedLanguageEmbeddedSQLPackageImpl#getEsqlContext()
+		 * @generated
+		 */
+		EClass ESQL_CONTEXT = eINSTANCE.getEsqlContext();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.db.esql.QESqlObject <em>ESql Object</em>}' class.

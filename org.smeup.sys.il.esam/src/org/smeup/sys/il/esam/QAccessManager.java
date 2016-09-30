@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.esam;
 
-import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.data.QDataContext;
 
 /**
@@ -23,9 +22,9 @@ public interface QAccessManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" contextProviderRequired="true" dataContextRequired="true"
+	 * @model required="true" connectionRequired="true" dataContextRequired="true"
 	 * @generated
 	 */
-	QAccessFactory createFactory(QContextProvider contextProvider, QDataContext dataContext);
+	QAccessContext createAccessContext(Object connection, QDataContext dataContext);
 
 } // QAccessManager

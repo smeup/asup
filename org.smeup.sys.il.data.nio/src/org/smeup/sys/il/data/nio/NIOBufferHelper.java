@@ -303,6 +303,16 @@ public final class NIOBufferHelper {
 
 		return new String(hexChars);
 	}
+	
+	public static byte[] hexToBytes(String value) {
+		byte[] bytes = new byte[value.length() / 2];
+
+		for (int i = 0; i < bytes.length; i++) {
+			String hex = new String(value.substring(2 * i, 2 * i + 2));
+			bytes[i] = (byte) Integer.parseInt(hex, 16);
+		}
+		return bytes;
+	}
 
 	public final static String bytesToHex(final byte[] bytes) {
 		final char[] hexChars = new char[bytes.length * 2];
@@ -456,7 +466,7 @@ public final class NIOBufferHelper {
 		return bytes;
 	}
 
-	public final static void writeDefault(QBufferedElement element, final String value) {
+	public final static void writeDefault(QBufferedElement element, String value) {
 
 		DataSpecial dataSpecial = null;
 		if (value.trim().startsWith("*"))
@@ -465,6 +475,12 @@ public final class NIOBufferHelper {
 		if (dataSpecial != null)
 			element.eval(dataSpecial);
 		else {
+			
+			if (value.toUpperCase().startsWith("X'")) {
+				QDataContext dataContext = NIOBufferHelper.getNIOBufferedDataImpl(element).getDataContext();
+				value = new String(hexToBytes(value.substring(2, value.lastIndexOf("'"))), dataContext.getCharset());
+			}
+				
 			element = NIOBufferHelper.getNIOBufferedElementImpl(element);
 			switch (element.getBufferedElementType()) {
 			case DATETIME:
