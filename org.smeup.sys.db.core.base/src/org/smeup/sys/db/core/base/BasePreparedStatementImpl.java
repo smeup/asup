@@ -21,61 +21,63 @@ import org.smeup.sys.db.core.QPreparedStatement;
 
 public class BasePreparedStatementImpl extends BaseStatementImpl implements QPreparedStatement {
 
-	private PreparedStatement rawStatement;
-
 	protected BasePreparedStatementImpl(QConnection connection, PreparedStatement statement, boolean native_) {
 		super(connection, statement, native_);
 
 		this.rawStatement = statement;
 	}
 
+	private PreparedStatement getPreparedStatement() {
+		return (PreparedStatement)this.rawStatement;
+	}
+	
 	@Override
 	public void setInt(int parameterIndex, int x) throws SQLException {
-		rawStatement.setInt(parameterIndex, x);
+		getPreparedStatement().setInt(parameterIndex, x);
 	}
 
 	@Override
 	public void setObject(int parameterIndex, Object x) throws SQLException {
-		rawStatement.setObject(parameterIndex, x);
+		getPreparedStatement().setObject(parameterIndex, x);
 	}
 
 	@Override
 	public void setString(int parameterIndex, String x) throws SQLException {
-		rawStatement.setString(parameterIndex, x);
+		getPreparedStatement().setString(parameterIndex, x);
 	}
 
 	@Override
 	public void addBatch() throws SQLException {
-		rawStatement.addBatch();
+		getPreparedStatement().addBatch();
 	}
 
 	@Override
 	public void clearParameters() throws SQLException {
-		rawStatement.clearParameters();
+		getPreparedStatement().clearParameters();
 	}
 
 	@Override
 	public boolean execute() throws SQLException {
-		return rawStatement.execute();
+		return getPreparedStatement().execute();
 	}
 
 	@Override
 	public ResultSet executeQuery() throws SQLException {
-		return rawStatement.executeQuery();
+		return getPreparedStatement().executeQuery();
 	}
 
 	@Override
 	public int executeUpdate() throws SQLException {
-		return rawStatement.executeUpdate();
+		return getPreparedStatement().executeUpdate();
 	}
 
 	@Override
 	public void setDate(int position, Date value) throws SQLException {
-		rawStatement.setDate(position, new java.sql.Date(value.getTime()));
+		getPreparedStatement().setDate(position, new java.sql.Date(value.getTime()));
 	}
 
 	@Override
 	public void setNumber(int position, Number value) throws SQLException {
-		rawStatement.setDouble(position, value.doubleValue());
+		getPreparedStatement().setDouble(position, value.doubleValue());
 	}
 }

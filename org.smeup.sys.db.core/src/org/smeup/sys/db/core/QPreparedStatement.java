@@ -36,7 +36,8 @@ public interface QPreparedStatement extends QStatement {
 	void clearParameters() throws SQLException;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" exceptions="org.smeup.sys.db.core.DatabaseException"
 	 * @generated
 	 */
@@ -50,7 +51,8 @@ public interface QPreparedStatement extends QStatement {
 	ResultSet executeQuery() throws SQLException;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" exceptions="org.smeup.sys.db.core.DatabaseException"
 	 * @generated
 	 */

@@ -600,6 +600,8 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 
 		initEClass(descriptorAreaEClass, QDescriptorArea.class, "DescriptorArea", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		addEOperation(descriptorAreaEClass, ecorePackage.getEInt(), "getColumnsNumber", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(descriptorVariableEClass, QDescriptorVariable.class, "DescriptorVariable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(esqlContextEClass, QEsqlContext.class, "EsqlContext", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

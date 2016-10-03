@@ -50,10 +50,10 @@ public interface QStatement extends Closeable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" exceptions="org.smeup.sys.db.core.DatabaseException" sqlRequired="true"
+	 * @model required="true" exceptions="org.smeup.sys.db.core.DatabaseException" sqlRequired="true" generatedKeysRequired="true"
 	 * @generated
 	 */
-	int executeUpdate(String sql) throws SQLException;
+	int executeUpdate(String sql, boolean generatedKeys) throws SQLException;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -78,5 +78,13 @@ public interface QStatement extends Closeable {
 	 * @generated
 	 */
 	int[] executeBatch() throws SQLException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" dataType="org.smeup.sys.db.core.DatabaseResultSet" required="true" exceptions="org.smeup.sys.db.core.DatabaseException"
+	 * @generated
+	 */
+	ResultSet getGeneratedKeys() throws SQLException;
 
 } // QStatement

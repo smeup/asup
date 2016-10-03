@@ -81,7 +81,9 @@
     <eLiterals name="DynamicScroll" value="30" literal="DYNSCROLL"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DescriptorArea" abstract="true" interface="true"
-      eSuperTypes="../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
+      eSuperTypes="../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct">
+    <eOperations name="getColumnsNumber" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DescriptorVariable" abstract="true"
       interface="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
   <eClassifiers xsi:type="ecore:EClass" name="EsqlContext" abstract="true" interface="true"

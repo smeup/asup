@@ -55,11 +55,13 @@ public class JDBCEsqlContextImpl implements QEsqlContext {
 	@Override
 	public QDescriptorArea allocateDescriptorArea(String name, int numColumns) {
 
-		QDescriptorArea descriptorArea = getDescriptorArea(name);
+		DescriptorAreaImpl descriptorArea = (DescriptorAreaImpl) getDescriptorArea(name);
 		if (descriptorArea != null)
 			throw new DatabaseCoreRuntimeException("Descriptor already defined: " + descriptorArea);
 		
 		descriptorArea = dataContext.getDataFactory().createDataStruct(DescriptorAreaImpl.class, 0, true);
+		descriptorArea.sqld.eval(numColumns);
+		descriptorArea.sqln.eval(numColumns);
 		
 		descriptorAreas.put(name, descriptorArea);
 		

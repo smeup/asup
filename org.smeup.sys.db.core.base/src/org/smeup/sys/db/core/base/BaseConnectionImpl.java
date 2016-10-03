@@ -190,7 +190,7 @@ public class BaseConnectionImpl implements QConnection {
 
 		PreparedStatement sqlPreparedStatement = null;
 		if (updatable)
-			sqlPreparedStatement = getRawConnection().prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			sqlPreparedStatement = getRawConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		else
 			sqlPreparedStatement = getRawConnection().prepareStatement(sql, ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
 
@@ -198,7 +198,6 @@ public class BaseConnectionImpl implements QConnection {
 
 		return statement;
 	}
-
 
 	@Override
 	public void setCatalog(String catalog) throws SQLException {

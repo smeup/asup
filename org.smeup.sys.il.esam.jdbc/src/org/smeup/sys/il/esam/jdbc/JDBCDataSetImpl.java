@@ -268,7 +268,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			String[] tableSplit = getTableSplit(this.tablePath.trimR());
 			if (tableSplit.length == 1) {
 				this.currentTable = this.tableProvider.getTable(null, tableSplit[0].trim());
-				
+
 			} else if (tableSplit.length == 2)
 				this.currentTable = this.tableProvider.getTable(tableSplit[0], tableSplit[1].trim());
 
@@ -289,15 +289,15 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	}
 
 	protected String[] getTableSplit(String tableName) {
-		
+
 		String[] tableSplit = tableName.split("/");
-		
+
 		if (tableSplit.length == 1 && tableSplit[0].length() > 10)
 			tableSplit[0] = tableSplit[0].substring(0, 10);
-		
+
 		return tableSplit;
 	}
-	
+
 	protected void prepareAccess(OperationSet opSet, Object[] keySet, OperationRead opRead, Object[] keyRead, boolean noResultSet) throws SQLException {
 
 		this.currentOpRead = opRead;
@@ -549,9 +549,9 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 				readNext();
 
 				if (!isEndOfData())
-					this.statementUpdate.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
+					this.statementUpdate.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()), false);
 			} else
-				this.statementUpdate.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
+				this.statementUpdate.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()), false);
 
 			this.found = true;
 			this.dataContext.found().eval(true);
@@ -605,7 +605,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			String sqlUpdate = jdbcAccessHelper.buildUpdate(this.currentTable, this.record, this.infoStruct.rrn.asInteger());
 			// System.out.println("sql:\t" + sqlUpdate);
 
-			this.statementUpdate.executeUpdate(sqlUpdate);
+			this.statementUpdate.executeUpdate(sqlUpdate, false);
 
 			this.found = true;
 			this.dataContext.found().eval(true);
@@ -636,7 +636,11 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			String sqlInsert = jdbcAccessHelper.buildWrite(this.currentTable, this.record, this.infoStruct.rrn.asInteger());
 			// System.out.println("sql:\t" + sqlInsert);
 
-			this.statementUpdate.executeUpdate(sqlInsert);
+			this.statementUpdate.executeUpdate(sqlInsert, true);
+			ResultSet generatedKeys = this.statementUpdate.getGeneratedKeys();
+			if(generatedKeys.next())
+				this.infoStruct.rrn.eval(generatedKeys.getInt(1));
+			generatedKeys.close();
 
 			this.found = true;
 			this.dataContext.found().eval(true);

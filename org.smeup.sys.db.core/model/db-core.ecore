@@ -315,12 +315,15 @@
     <eOperations name="executeUpdate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         eExceptions="#//DatabaseException">
       <eParameters name="sql" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="generatedKeys" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="addBatch" eExceptions="#//DatabaseException">
       <eParameters name="sql" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="clearBatch" eExceptions="#//DatabaseException"/>
     <eOperations name="executeBatch" lowerBound="1" eType="#//StatementBatchResult"
+        eExceptions="#//DatabaseException"/>
+    <eOperations name="getGeneratedKeys" lowerBound="1" eType="#//DatabaseResultSet"
         eExceptions="#//DatabaseException"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="StatementBatchResult" instanceClassName="int[]"

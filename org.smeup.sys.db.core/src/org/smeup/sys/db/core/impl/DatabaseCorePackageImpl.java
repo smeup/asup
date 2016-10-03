@@ -1345,6 +1345,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 
 		op = addEOperation(statementEClass, ecorePackage.getEInt(), "executeUpdate", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "sql", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "generatedKeys", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getDatabaseException());
 
 		op = addEOperation(statementEClass, null, "addBatch", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1355,6 +1356,9 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		addEException(op, this.getDatabaseException());
 
 		op = addEOperation(statementEClass, this.getStatementBatchResult(), "executeBatch", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, this.getDatabaseException());
+
+		op = addEOperation(statementEClass, this.getDatabaseResultSet(), "getGeneratedKeys", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getDatabaseException());
 
 		initEClass(tableDefEClass, QTableDef.class, "TableDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

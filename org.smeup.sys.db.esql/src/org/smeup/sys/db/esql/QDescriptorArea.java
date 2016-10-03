@@ -20,4 +20,12 @@ import org.smeup.sys.il.data.QDataStruct;
  * @generated
  */
 public interface QDescriptorArea extends QDataStruct {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	int getColumnsNumber();
 } // QDescriptorArea

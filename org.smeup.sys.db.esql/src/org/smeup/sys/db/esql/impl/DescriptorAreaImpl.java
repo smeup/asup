@@ -28,5 +28,10 @@ public class DescriptorAreaImpl extends QDataStructWrapper implements QDescripto
 	public QBinary sqld;
 	@DataDef(dimension = 10, length = 80)
 	public QArray<QCharacter> sql_var;
+	
+	@Override
+	public int getColumnsNumber() {
+		return sqln.asInteger();
+	}
 
 }

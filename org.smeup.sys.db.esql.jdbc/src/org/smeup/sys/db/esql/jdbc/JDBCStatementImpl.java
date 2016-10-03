@@ -123,6 +123,7 @@ public class JDBCStatementImpl extends JDBCObjectImpl implements QStatement {
 		QDescriptorArea descriptorArea = getEsqlContext().getDescriptorArea(descriptor);
 		if (descriptorArea == null)
 			throw new DatabaseCoreRuntimeException("Descriptor not found: " + descriptor);
+		
 	}
 
 	@Override

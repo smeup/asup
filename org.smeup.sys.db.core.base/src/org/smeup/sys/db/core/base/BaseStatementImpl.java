@@ -21,7 +21,7 @@ import org.smeup.sys.db.core.QStatement;
 public class BaseStatementImpl implements QStatement {
 
 	private QConnection connection;
-	private Statement rawStatement;
+	protected Statement rawStatement;
 	private boolean native_;
 
 	protected BaseStatementImpl(QConnection connection, Statement statement, boolean native_) {
@@ -53,10 +53,14 @@ public class BaseStatementImpl implements QStatement {
 	}
 
 	@Override
-	public int executeUpdate(String sql) throws SQLException {
+	public int executeUpdate(String sql, boolean generatedKeys) throws SQLException {
 		if (!native_)
 			sql = connection.translate(sql);
-		return rawStatement.executeUpdate(sql);
+		
+		if(generatedKeys)
+			return rawStatement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+		else
+			return rawStatement.executeUpdate(sql);
 	}
 
 	@Override
@@ -74,5 +78,10 @@ public class BaseStatementImpl implements QStatement {
 	@Override
 	public int[] executeBatch() throws SQLException {
 		return rawStatement.executeBatch();
+	}
+
+	@Override
+	public ResultSet getGeneratedKeys() throws SQLException {
+		return rawStatement.getGeneratedKeys();
 	}
 }

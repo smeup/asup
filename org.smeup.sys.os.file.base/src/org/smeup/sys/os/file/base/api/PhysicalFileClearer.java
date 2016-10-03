@@ -91,7 +91,7 @@ public class PhysicalFileClearer {
 			String command = definitionWriter.deleteData(table);
 
 			statement = connection.createStatement(true);
-			statement.execute(command);
+			statement.executeUpdate(command, false);
 		} finally {
 			if (statement != null)
 				statement.close();
