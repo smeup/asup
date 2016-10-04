@@ -178,8 +178,8 @@ public class DB2QuerySourceWriter extends SQLQuerySourceWriter {
 			// Manage FETCH FIRST n ROWS ONLY clause --> TOP (n)
 			int rowFetchLimit = select.getRowFetchLimit();
 			if (rowFetchLimit > 0) {
-				appendSQLForFetchFirstClause(rowFetchLimit, sbSelect);
-				appendSpace(sbSelect);
+//				appendSQLForFetchFirstClause(rowFetchLimit, sbSelect);
+//				appendSpace(sbSelect);
 			}
 
 			appendStringBuffer(sb, sbSelect);

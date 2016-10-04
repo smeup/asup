@@ -83,6 +83,16 @@
   <eClassifiers xsi:type="ecore:EClass" name="DescriptorArea" abstract="true" interface="true"
       eSuperTypes="../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct">
     <eOperations name="getColumnsNumber" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eOperations name="getVariable" lowerBound="1" eType="#//DescriptorVariable">
+      <eParameters name="index" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="initialize" lowerBound="1">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="setVariable">
+      <eParameters name="index" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="variable" lowerBound="1" eType="#//DescriptorVariable"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DescriptorVariable" abstract="true"
       interface="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>

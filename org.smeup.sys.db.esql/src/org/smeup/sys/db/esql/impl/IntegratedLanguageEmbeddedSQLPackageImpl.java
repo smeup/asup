@@ -602,6 +602,16 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 
 		addEOperation(descriptorAreaEClass, ecorePackage.getEInt(), "getColumnsNumber", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(descriptorAreaEClass, this.getDescriptorVariable(), "getVariable", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "index", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(descriptorAreaEClass, null, "initialize", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(descriptorAreaEClass, null, "setVariable", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "index", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDescriptorVariable(), "variable", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(descriptorVariableEClass, QDescriptorVariable.class, "DescriptorVariable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(esqlContextEClass, QEsqlContext.class, "EsqlContext", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

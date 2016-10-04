@@ -8,6 +8,7 @@
 package org.smeup.sys.db.core;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -57,6 +58,14 @@ public interface QPreparedStatement extends QStatement {
 	 * @generated
 	 */
 	int executeUpdate() throws SQLException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" dataType="org.smeup.sys.db.core.DatabaseResultSetMetaData" required="true" exceptions="org.smeup.sys.db.core.DatabaseException"
+	 * @generated
+	 */
+	ResultSetMetaData getMetaData() throws SQLException;
 
 	/**
 	 * <!-- begin-user-doc -->

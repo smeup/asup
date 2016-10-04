@@ -15,4 +15,5 @@ Require-Bundle:
  org.smeup.sys.il.esam,
  org.smeup.sys.os.file,
  org.smeup.sys.db.esql,
- org.smeup.sys.il.data.jdbc
+ org.smeup.sys.il.data.jdbc,
+ org.smeup.sys.db.core

@@ -8,6 +8,7 @@
 package org.smeup.sys.db.core.impl;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage;
 import org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage;
@@ -234,6 +235,13 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 	 * @generated
 	 */
 	private EDataType databaseResultSetEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType databaseResultSetMetaDataEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -828,6 +836,15 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getDatabaseResultSetMetaData() {
+		return databaseResultSetMetaDataEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getStatementBatchResult() {
 		return statementBatchResultEDataType;
 	}
@@ -956,10 +973,11 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 
 		// Create data types
 		databaseExceptionEDataType = createEDataType(DATABASE_EXCEPTION);
-		databaseResultSetEDataType = createEDataType(DATABASE_RESULT_SET);
-		statementBatchResultEDataType = createEDataType(STATEMENT_BATCH_RESULT);
 		databaseCoreExceptionEDataType = createEDataType(DATABASE_CORE_EXCEPTION);
 		databaseCoreRuntimeExceptionEDataType = createEDataType(DATABASE_CORE_RUNTIME_EXCEPTION);
+		databaseResultSetEDataType = createEDataType(DATABASE_RESULT_SET);
+		databaseResultSetMetaDataEDataType = createEDataType(DATABASE_RESULT_SET_META_DATA);
+		statementBatchResultEDataType = createEDataType(STATEMENT_BATCH_RESULT);
 	}
 
 	/**
@@ -1297,6 +1315,9 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		op = addEOperation(preparedStatementEClass, ecorePackage.getEInt(), "executeUpdate", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getDatabaseException());
 
+		op = addEOperation(preparedStatementEClass, this.getDatabaseResultSetMetaData(), "getMetaData", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, this.getDatabaseException());
+
 		op = addEOperation(preparedStatementEClass, null, "setDate", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "position", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theEcorePackage.getEDate(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -1389,10 +1410,11 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 
 		// Initialize data types
 		initEDataType(databaseExceptionEDataType, SQLException.class, "DatabaseException", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(databaseResultSetEDataType, ResultSet.class, "DatabaseResultSet", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(statementBatchResultEDataType, int[].class, "StatementBatchResult", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(databaseCoreExceptionEDataType, DatabaseCoreException.class, "DatabaseCoreException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(databaseCoreRuntimeExceptionEDataType, DatabaseCoreRuntimeException.class, "DatabaseCoreRuntimeException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(databaseResultSetEDataType, ResultSet.class, "DatabaseResultSet", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(databaseResultSetMetaDataEDataType, ResultSetMetaData.class, "DatabaseResultSetMetaData", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(statementBatchResultEDataType, int[].class, "StatementBatchResult", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

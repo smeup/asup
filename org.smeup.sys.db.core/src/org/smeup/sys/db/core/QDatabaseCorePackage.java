@@ -820,7 +820,17 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseResultSet()
 	 * @generated
 	 */
-	int DATABASE_RESULT_SET = 23;
+	int DATABASE_RESULT_SET = 25;
+
+	/**
+	 * The meta object id for the '<em>Database Result Set Meta Data</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.sql.ResultSetMetaData
+	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseResultSetMetaData()
+	 * @generated
+	 */
+	int DATABASE_RESULT_SET_META_DATA = 26;
 
 	/**
 	 * The meta object id for the '<em>Statement Batch Result</em>' data type.
@@ -828,7 +838,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getStatementBatchResult()
 	 * @generated
 	 */
-	int STATEMENT_BATCH_RESULT = 24;
+	int STATEMENT_BATCH_RESULT = 27;
 
 	/**
 	 * The meta object id for the '<em>Exception</em>' data type. <!--
@@ -838,7 +848,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseCoreException()
 	 * @generated
 	 */
-	int DATABASE_CORE_EXCEPTION = 25;
+	int DATABASE_CORE_EXCEPTION = 23;
 
 	/**
 	 * The meta object id for the '<em>Runtime Exception</em>' data type. <!--
@@ -848,7 +858,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseCoreRuntimeException()
 	 * @generated
 	 */
-	int DATABASE_CORE_RUNTIME_EXCEPTION = 26;
+	int DATABASE_CORE_RUNTIME_EXCEPTION = 24;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.core.QCatalogContainer <em>Catalog Container</em>}'.
@@ -1431,6 +1441,17 @@ public interface QDatabaseCorePackage extends EPackage {
 	EDataType getDatabaseResultSet();
 
 	/**
+	 * Returns the meta object for data type '{@link java.sql.ResultSetMetaData <em>Database Result Set Meta Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Database Result Set Meta Data</em>'.
+	 * @see java.sql.ResultSetMetaData
+	 * @model instanceClass="java.sql.ResultSetMetaData" serializeable="false"
+	 * @generated
+	 */
+	EDataType getDatabaseResultSetMetaData();
+
+	/**
 	 * Returns the meta object for data type '<em>Statement Batch Result</em>'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Statement Batch Result</em>'.
@@ -1946,6 +1967,16 @@ public interface QDatabaseCorePackage extends EPackage {
 		 * @generated
 		 */
 		EDataType DATABASE_RESULT_SET = eINSTANCE.getDatabaseResultSet();
+
+		/**
+		 * The meta object literal for the '<em>Database Result Set Meta Data</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.sql.ResultSetMetaData
+		 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseResultSetMetaData()
+		 * @generated
+		 */
+		EDataType DATABASE_RESULT_SET_META_DATA = eINSTANCE.getDatabaseResultSetMetaData();
 
 		/**
 		 * The meta object literal for the '<em>Statement Batch Result</em>' data type.

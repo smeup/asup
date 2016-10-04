@@ -14,12 +14,15 @@ package org.smeup.sys.db.esql.jdbc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.smeup.sys.db.core.DatabaseCoreRuntimeException;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.esql.CursorType;
 import org.smeup.sys.db.esql.FetchPositioning;
 import org.smeup.sys.db.esql.QCommunicationArea;
 import org.smeup.sys.db.esql.QCursor;
 import org.smeup.sys.db.esql.QEsqlContext;
+import org.smeup.sys.db.esql.impl.DescriptorAreaImpl;
+import org.smeup.sys.db.esql.impl.DescriptorVariableImpl;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataWriter;
@@ -69,8 +72,19 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 
 	@Override
 	public void next(String descriptor) {
-		// TODO Auto-generated method stub
-		"".toCharArray();
+		
+		DescriptorAreaImpl descriptorArea = (DescriptorAreaImpl) getEsqlContext().getDescriptorArea(descriptor);
+		if (descriptorArea == null)
+			throw new DatabaseCoreRuntimeException("Descriptor not found: " + descriptor);
+
+		int columnsCount = descriptorArea.getColumnsNumber();
+		QBufferedData[] target = new QBufferedData[columnsCount];
+		for(int c = 1; c <= columnsCount; c++) {
+			DescriptorVariableImpl descriptorVariable = (DescriptorVariableImpl)descriptorArea.getVariable(c);
+			target[c-1] = descriptorVariable.getBufferedData();
+		}
+		
+		handleResultSet(FetchPositioning.NEXT, 0, target);
 	}
 
 	@Override

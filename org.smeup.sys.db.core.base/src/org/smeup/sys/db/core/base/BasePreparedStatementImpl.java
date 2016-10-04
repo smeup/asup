@@ -13,6 +13,7 @@ package org.smeup.sys.db.core.base;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -69,6 +70,11 @@ public class BasePreparedStatementImpl extends BaseStatementImpl implements QPre
 	@Override
 	public int executeUpdate() throws SQLException {
 		return getPreparedStatement().executeUpdate();
+	}
+
+	@Override
+	public ResultSetMetaData getMetaData() throws SQLException {
+		return getPreparedStatement().getMetaData();
 	}
 
 	@Override

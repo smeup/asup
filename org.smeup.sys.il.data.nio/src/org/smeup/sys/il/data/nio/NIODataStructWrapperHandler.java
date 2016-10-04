@@ -12,6 +12,7 @@
 package org.smeup.sys.il.data.nio;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -55,6 +56,9 @@ public final class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 		final NIODataStructBuilder dataStructBuilder = new NIODataStructBuilder(dataFactory, this);
 		final List<Field> fields = NIODataStructHelper.getFields(wrapped.getClass());
 		for (final Field field : fields) {
+			if(Modifier.isTransient(field.getModifiers()))
+				continue;
+
 			final QDataDef<?> dataDef = dataFactory.createDataDef(field.getGenericType(), Arrays.asList(field.getAnnotations()));
 			final QBufferedData dataElement = (QBufferedData) dataFactory.createData(dataDef, false);
 			dataStructBuilder.addElement(field, dataElement);

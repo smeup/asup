@@ -181,6 +181,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="DatabaseException" instanceClassName="java.sql.SQLException"
       serializable="false"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="DatabaseCoreException" instanceClassName="org.smeup.sys.db.core.DatabaseCoreException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="DatabaseCoreRuntimeException" instanceClassName="org.smeup.sys.db.core.DatabaseCoreRuntimeException"/>
   <eClassifiers xsi:type="ecore:EClass" name="DatabaseManager" abstract="true" interface="true">
     <eOperations name="createIndex" eType="ecore:EClass ../../org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//constraints/Index"
         eExceptions="#//DatabaseException">
@@ -246,6 +248,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="DatabaseResultSet" instanceClassName="java.sql.ResultSet"
       serializable="false"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="DatabaseResultSetMetaData" instanceClassName="java.sql.ResultSetMetaData"
+      serializable="false"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataSourceFactory" instanceClassName="org.osgi.service.jdbc.DataSourceFactory"
       abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="IndexDef" eSuperTypes="#//DatabaseObjectDef">
@@ -273,6 +277,8 @@
         eExceptions="#//DatabaseException"/>
     <eOperations name="executeQuery" lowerBound="1" eType="#//DatabaseResultSet" eExceptions="#//DatabaseException"/>
     <eOperations name="executeUpdate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        eExceptions="#//DatabaseException"/>
+    <eOperations name="getMetaData" lowerBound="1" eType="#//DatabaseResultSetMetaData"
         eExceptions="#//DatabaseException"/>
     <eOperations name="setDate" eExceptions="#//DatabaseException">
       <eParameters name="position" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -352,6 +358,4 @@
   <eClassifiers xsi:type="ecore:EClass" name="ViewDef" eSuperTypes="#//TableDef">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="querySelect" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="DatabaseCoreException" instanceClassName="org.smeup.sys.db.core.DatabaseCoreException"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="DatabaseCoreRuntimeException" instanceClassName="org.smeup.sys.db.core.DatabaseCoreRuntimeException"/>
 </ecore:EPackage>

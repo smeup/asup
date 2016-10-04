@@ -8,9 +8,8 @@
 package org.smeup.sys.db.esql.impl;
 
 import org.smeup.sys.db.esql.QDescriptorArea;
-import org.smeup.sys.il.data.QArray;
+import org.smeup.sys.db.esql.QDescriptorVariable;
 import org.smeup.sys.il.data.QBinary;
-import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -18,20 +17,31 @@ import org.smeup.sys.il.data.def.BinaryType;
 public class DescriptorAreaImpl extends QDataStructWrapper implements QDescriptorArea {
 
 	private static final long serialVersionUID = 1L;
-	@DataDef(length = 8)
-	public QCharacter sqldaid;
-	@DataDef(binaryType = BinaryType.INTEGER)
-	public QBinary sqldabc;
+
+	private transient QDescriptorVariable[] variables;
+
 	@DataDef(binaryType = BinaryType.SHORT)
-	public QBinary sqln;
-	@DataDef(binaryType = BinaryType.SHORT)
-	public QBinary sqld;
-	@DataDef(dimension = 10, length = 80)
-	public QArray<QCharacter> sql_var;
-	
+	public QBinary columnsNumber;
+
 	@Override
 	public int getColumnsNumber() {
-		return sqln.asInteger();
+		return columnsNumber.asInteger();
 	}
 
+	@Override
+	public void initialize(int value) {
+		variables = new QDescriptorVariable[value];
+
+		columnsNumber.eval(value);
+	}
+
+	@Override
+	public QDescriptorVariable getVariable(int index) {
+		return variables[index - 1];
+	}
+
+	@Override
+	public void setVariable(int index, QDescriptorVariable variable) {
+		variables[index - 1] = variable;
+	}
 }

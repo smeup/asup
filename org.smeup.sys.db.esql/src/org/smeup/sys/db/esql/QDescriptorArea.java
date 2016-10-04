@@ -28,4 +28,28 @@ public interface QDescriptorArea extends QDataStruct {
 	 * @generated
 	 */
 	int getColumnsNumber();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" indexRequired="true"
+	 * @generated
+	 */
+	QDescriptorVariable getVariable(int index);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	void initialize(int value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model indexRequired="true" variableRequired="true"
+	 * @generated
+	 */
+	void setVariable(int index, QDescriptorVariable variable);
 } // QDescriptorArea
