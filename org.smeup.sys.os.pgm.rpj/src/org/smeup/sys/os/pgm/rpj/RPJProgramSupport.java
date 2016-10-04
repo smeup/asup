@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.os.pgm.rpj;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -447,7 +449,14 @@ public class RPJProgramSupport extends RPJModule {
 	}
 
 	public QDecimal qDec(QDatetime date, Integer precision, Integer scale) {
-		return null;
+		// TODO verify me
+		if(precision == null)
+			precision = 20;
+		if(scale == null)
+			scale = 0;
+		QDecimal decimal = dataContext.getDataFactory().createDecimal(precision, scale, DecimalType.PACKED, true);
+		decimal.move(Double.parseDouble(date.toString().replaceAll("[-//:.]", "")));
+		return decimal;
 	}
 
 	public QDecimal qDec(QString string, Integer precision, Integer scale) {
