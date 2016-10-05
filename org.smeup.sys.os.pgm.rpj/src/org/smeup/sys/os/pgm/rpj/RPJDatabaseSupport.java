@@ -22,7 +22,9 @@ import org.smeup.sys.db.esql.impl.CommunicationAreaImpl;
 import org.smeup.sys.db.esql.impl.DescriptorAreaImpl;
 import org.smeup.sys.db.esql.impl.DescriptorVariableImpl;
 import org.smeup.sys.il.data.QBinary;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
+import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -113,11 +115,44 @@ public class RPJDatabaseSupport extends RPJModule {
 			// TODO
 			break;
 		case "DATA":
-			// TODO
+			if(!(value instanceof QBufferedElement))
+				throw new DatabaseCoreRuntimeException("Unknown data type: " + value.getClass());
+
+			QBufferedData data = variable.getBufferedData();
+			if(data == null)
+				"".toCharArray();
+			
+			switch (data.getBufferedDataType()) {
+			case ELEMENT:
+				QBufferedElement bufferedValue = (QBufferedElement)value;
+				switch (bufferedValue.getBufferedElementType()) {
+				case DATETIME:
+					QDatetime datetime = (QDatetime)value;
+					datetime.movel((QBufferedElement)data, true);
+					break;
+				case NUMERIC:
+					QNumeric numeric = (QNumeric)value;
+					if(!(value instanceof QNumeric))
+						throw new DatabaseCoreRuntimeException("Unknown data type: " + value.getClass());
+
+					numeric.eval((QNumeric) data);
+					break;
+				case STRING:
+					if(!(value instanceof QString))
+						throw new DatabaseCoreRuntimeException("Unknown data type: " + value.getClass());
+					
+					QString string = (QString)value;
+					string.eval((QString)data);
+					break;
+				}
+				break;
+			case LIST:
+				break;
+			}
+						
 			break;
 		default:
-			"".toCharArray();
-//			throw new DatabaseCoreRuntimeException("Unknown parameter: " + parameter);
+			throw new DatabaseCoreRuntimeException("Unknown parameter: " + parameter);
 		}		
 	}
 

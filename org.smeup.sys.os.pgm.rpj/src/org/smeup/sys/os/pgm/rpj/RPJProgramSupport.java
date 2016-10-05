@@ -11,8 +11,6 @@
  */
 package org.smeup.sys.os.pgm.rpj;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -403,7 +401,7 @@ public class RPJProgramSupport extends RPJModule {
 	public QString qChar(QCharacter character) {
 		return qChar(character, null);
 	}
-	
+
 	public QString qChar(QCharacter character, String format) {
 		// TODO
 		return character;
@@ -435,7 +433,7 @@ public class RPJProgramSupport extends RPJModule {
 	public QString qChar(QDatetime datetime) {
 		return qChar(datetime, null);
 	}
-	
+
 	public QString qChar(QDatetime datetime, DatetimeFormat format) {
 
 		QCharacter character = dataContext.getDataFactory().createCharacter(19, true, true);
@@ -450,9 +448,9 @@ public class RPJProgramSupport extends RPJModule {
 
 	public QDecimal qDec(QDatetime date, Integer precision, Integer scale) {
 		// TODO verify me
-		if(precision == null)
+		if (precision == null)
 			precision = 20;
-		if(scale == null)
+		if (scale == null)
 			scale = 0;
 		QDecimal decimal = dataContext.getDataFactory().createDecimal(precision, scale, DecimalType.PACKED, true);
 		decimal.move(Double.parseDouble(date.toString().replaceAll("[-//:.]", "")));
@@ -464,14 +462,14 @@ public class RPJProgramSupport extends RPJModule {
 	}
 
 	public QDecimal qDec(String string, Integer precision, Integer scale) {
-		
+
 		QDecimal decimal = dataContext.getDataFactory().createDecimal(precision, scale, DecimalType.PACKED, true);
-		
+
 		// TODO use number format
 		string = string.replaceAll(",", ".").trim();
-		if(!string.isEmpty())
+		if (!string.isEmpty())
 			decimal.eval(Double.parseDouble(string));
-		
+
 		return decimal;
 	}
 
@@ -491,42 +489,47 @@ public class RPJProgramSupport extends RPJModule {
 		// TODO
 		QCharacter character = dataContext.getDataFactory().createCharacter(numeric.getLength(), false, true);
 
-		switch (format) {
-		case "Z":
-			// character.eval(numberFormat.format(numeric.asInteger()));
-			// TODO
-			// remove leading zero
-			character.eval(Integer.toString(numeric.asInteger()).replaceAll("^0+", ""));
-			break;
-		case "X":
-			character.move(numeric);
-			break;
-		case "J":
-			int length = numeric.getLength();
-			int scale = 0;
-			if (numeric instanceof QDecimal) {
-				QDecimal decimal = (QDecimal) numeric;
-				scale = decimal.getScale();
-			}
-			// TODO
-			DecimalFormat numberFormat = (DecimalFormat) NumberFormat.getInstance(Locale.ITALIAN);
-			// verify
-			numberFormat.setMinimumIntegerDigits(length - scale);
-			// numberFormat.setMaximumFractionDigits(scale);
-			numberFormat.setMinimumFractionDigits(scale);
-			numberFormat.setGroupingUsed(false);
+		try {
 
-			if (numeric.lt(0)) {
-				numberFormat.setNegativeSuffix("-");
-				numberFormat.setNegativePrefix("");
-			}
+			switch (format) {
+			case "Z":
+				// character.eval(numberFormat.format(numeric.asInteger()));
+				// TODO
+				// remove leading zero
+				character.eval(Integer.toString(numeric.asInteger()).replaceAll("^0+", ""));
+				break;
+			case "X":
+				character.move(numeric);
+				break;
+			case "J":
+				int length = numeric.getLength();
+				int scale = 0;
+				if (numeric instanceof QDecimal) {
+					QDecimal decimal = (QDecimal) numeric;
+					scale = decimal.getScale();
+				}
+				// TODO
+				DecimalFormat numberFormat = (DecimalFormat) NumberFormat.getInstance(Locale.ITALIAN);
+				// verify
+				numberFormat.setMinimumIntegerDigits(length - scale);
+				// numberFormat.setMaximumFractionDigits(scale);
+				numberFormat.setMinimumFractionDigits(scale);
+				numberFormat.setGroupingUsed(false);
 
-			character.eval(numberFormat.format(numeric.asDouble()).replaceAll("^0+", " "));
-			break;
-		default:
-			System.err.println("Invalid edit format: " + format);
-			character.eval(Integer.toString(numeric.asInteger()).replaceAll("^0+", ""));
-			break;
+				if (numeric.lt(0)) {
+					numberFormat.setNegativeSuffix("-");
+					numberFormat.setNegativePrefix("");
+				}
+
+				character.eval(numberFormat.format(numeric.asDouble()).replaceAll("^0+", " "));
+				break;
+			default:
+				System.err.println("Invalid edit format: " + format);
+				character.eval(Integer.toString(numeric.asInteger()).replaceAll("^0+", ""));
+				break;
+			}
+		} catch (Exception e) {
+			System.err.println("Invalid format: " + format + " " + numeric);
 		}
 
 		return character;
@@ -698,7 +701,7 @@ public class RPJProgramSupport extends RPJModule {
 
 	public QString qCat(QString string1, QString string2) {
 
-//		String str = string1.trimR() + " " + string2.toString();
+		// String str = string1.trimR() + " " + string2.toString();
 		String str = string1 + string2.toString();
 		int length = str.length();
 		QCharacter character = dataContext.getDataFactory().createCharacter(length, false, true);
