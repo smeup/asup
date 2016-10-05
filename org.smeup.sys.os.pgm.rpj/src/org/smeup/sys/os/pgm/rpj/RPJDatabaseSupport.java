@@ -24,6 +24,7 @@ import org.smeup.sys.db.esql.impl.DescriptorVariableImpl;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
+import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
@@ -161,4 +162,11 @@ public class RPJDatabaseSupport extends RPJModule {
 		"".toCharArray();
 	}
 
+	public void qExecute(QCharacter sql) {
+		
+		QStatement statement = esqlContext.getEsqlFactory().createStatement();
+		statement.prepare(sql);
+		statement.execute();
+		statement.close();
+	}
 }
