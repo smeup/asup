@@ -140,16 +140,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			return callableProgram;
 
 		// API
-		String address = null;
-		if (program.getAddress() != null)
-			address = program.getAddress();
-		// Duplicated program
-		else if (program.getBaseProgram() != null) {
-			address = "asup:/omac/com.smeup.erp.pgm.gen/com.smeup.erp.pgm." + program.getApplication() + ".gen." + program.getBaseProgram();
-		}
-		// Program
-		else
-			address = "asup:/omac/com.smeup.erp.pgm.gen/com.smeup.erp.pgm." + program.getApplication() + ".gen." + program.getName();
+		String address = getAddress(job, program);
 
 		Class<?> klass = job.getContext().loadClass(address);
 
@@ -166,6 +157,25 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		activationGroup.getPrograms().add(callableProgram);
 
 		return callableProgram;
+	}
+
+	private String getAddress(QJob job, QProgram program) {
+		
+		String address = null;
+		
+		// specific address
+		if (program.getAddress() != null)
+			address = program.getAddress();
+		// Duplicated program
+		else if (program.getBaseProgram() != null) {
+			QProgram baseProgram = getProgram(job, null, program.getBaseProgram());
+			address = getAddress(job, baseProgram); 
+		}
+		// Program
+		else
+			address = "asup:/omac/com.smeup.erp.pgm.gen/com.smeup.erp.pgm." + program.getApplication() + ".gen." + program.getName();
+
+		return address;
 	}
 
 	@SuppressWarnings("unchecked")
