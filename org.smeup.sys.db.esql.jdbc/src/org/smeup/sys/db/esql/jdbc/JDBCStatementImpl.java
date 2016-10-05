@@ -90,8 +90,6 @@ public class JDBCStatementImpl extends JDBCObjectImpl implements QStatement {
 		}
 
 		try {
-			dbStatement.close();
-			
 			dbStatement.execute();
 		} catch (SQLException e) {
 			handleSQLException(e);
