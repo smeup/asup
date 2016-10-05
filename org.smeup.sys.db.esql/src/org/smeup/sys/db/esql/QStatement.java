@@ -27,6 +27,14 @@ public interface QStatement extends QESqlObject, Closeable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void close();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model descriptorRequired="true"
 	 * @generated
 	 */

@@ -9,7 +9,7 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Cursor" abstract="true" interface="true"
-      eSuperTypes="#//ESqlObject">
+      eSuperTypes="#//ESqlObject ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable">
     <eOperations name="after"/>
     <eOperations name="before"/>
     <eOperations name="close"/>
@@ -158,6 +158,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Statement" abstract="true" interface="true"
       eSuperTypes="#//ESqlObject ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable">
+    <eOperations name="close"/>
     <eOperations name="describe">
       <eParameters name="descriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
