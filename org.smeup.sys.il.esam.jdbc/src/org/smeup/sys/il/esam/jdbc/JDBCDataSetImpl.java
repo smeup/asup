@@ -196,7 +196,8 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		this.error = false;
 		this.equal = false;
 
-		this.infoStruct.rrn.clear();
+		// TODO not necessary
+//		this.infoStruct.rrn.clear();
 
 		this.currentTable = null;
 

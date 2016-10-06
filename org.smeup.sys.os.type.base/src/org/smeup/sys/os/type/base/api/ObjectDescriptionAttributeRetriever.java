@@ -86,8 +86,14 @@ public @ToDo class ObjectDescriptionAttributeRetriever {
 		if (objectNameable instanceof QTypedObject) {
 			QTypedObject typedObject = (QTypedObject) objectNameable;
 			if (typedObject != null) {
-				cLVarForTEXT50.eval(typedObject.getText());
-				cLVarForRTNLIB10.eval(typedObject.getLibrary());
+				if(typedObject.getText() !=null)
+					cLVarForTEXT50.eval(typedObject.getText());
+				else
+					cLVarForTEXT50.clear();
+				if(typedObject.getLibrary() !=null)
+					cLVarForRTNLIB10.eval(typedObject.getLibrary());
+				else
+					cLVarForRTNLIB10.clear();
 				if(typedObject.getAttribute() != null)
 					cLVarForOBJATR10.eval(typedObject.getAttribute());
 				else
