@@ -646,7 +646,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		switchStatement.setExpression(methodInvocation);
 
-		boolean defaultError = false;
+		boolean defaultError = true;
 		boolean caseStatement = false;
 		for (QOnError error : statement.getOnErrors()) {
 			if (error.getBody() == null) 
@@ -657,7 +657,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 				SwitchCase switchCase = ast.newSwitchCase();
 				switchCase.setExpression(null);
 				switchStatement.statements().add(switchCase);
-				defaultError = true;
+				defaultError = false;
 			}
 			else {
 				for(String caseError: error.getErrors()) {
@@ -686,19 +686,18 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 					if(tempBlock.statements().isEmpty())
 						continue;
 				}
-
+				
 				caseStatement = true;				
 				switchStatement.statements().add(temp);
 			}
-
-			BreakStatement switchBreak = ast.newBreakStatement();
-			caseBlock.statements().add(switchBreak);
+			
+			switchStatement.statements().add(ast.newBreakStatement());
 
 			// <- case
 			blocks.pop();
 		}
 
-		if(!defaultError) {
+		if(defaultError) {
 			SwitchCase switchCase = ast.newSwitchCase();
 			switchCase.setExpression(null);			
 			switchStatement.statements().add(switchCase);			
