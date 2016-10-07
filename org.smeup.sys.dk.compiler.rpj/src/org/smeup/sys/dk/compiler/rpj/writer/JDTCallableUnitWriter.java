@@ -1011,10 +1011,6 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 					arrayCreation.setInitializer(arrayInitializer);
 
 					queryStatement = queryParser.parseQuery(cursorTerm.getSql()).getQueryStatement();					
-/*					variables = StatementHelper.getAllVariablesInQueryStatement(queryStatement);
-					for(ValueExpressionVariable variable: variables) {
-						System.out.println(variable);
-					}*/
 					
 					String sql = queryWriter.writeQuery(queryStatement);
 					StringLiteral stringLiteral = getAST().newStringLiteral();

@@ -222,6 +222,8 @@ public class DatabaseSyntaxDMLPackageImpl extends EPackageImpl implements QDatab
 		// Initialize classes and features; add operations and parameters
 		initEClass(extendedQuerySelectEClass, QExtendedQuerySelect.class, "ExtendedQuerySelect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		addEOperation(extendedQuerySelectEClass, ecorePackage.getEString(), "getQuerySelectSQL", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(extendedQueryExpressionBodyEClass, QExtendedQueryExpressionBody.class, "ExtendedQueryExpressionBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getExtendedQueryExpressionBody_OptimizeRecordsNumber(), theEcorePackage.getEInt(), "optimizeRecordsNumber", null, 0, 1, QExtendedQueryExpressionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 	}

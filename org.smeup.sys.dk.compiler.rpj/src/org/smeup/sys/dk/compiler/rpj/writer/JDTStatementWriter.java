@@ -492,7 +492,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		if (statement.getObject() != null) {
 			MethodInvocation methodInvocation = ast.newMethodInvocation();
 			methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(statement.getMethod())));
-
+			
 			QExpression objectExpression = expressionParser.parseExpression(statement.getObject());
 			QNamedNode namedNode = null;
 			if (objectExpression instanceof QTermExpression) {

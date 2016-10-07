@@ -130,6 +130,9 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QMethodExec statement) {
 
+		if(statement.getObject() != null && statement.getObject().equals("*SQL"))
+			programInfo.containsSQLStatement(true);
+		
 		if (statement.getMethod().toUpperCase().startsWith("MOVE")) {
 			for (String parameter : statement.getParameters()) {
 				if (isNumeric(parameter)) {

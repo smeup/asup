@@ -25,12 +25,10 @@ import org.smeup.sys.db.esql.impl.DescriptorVariableImpl;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDatetime;
-import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.QBinaryDef;
-import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.def.QDecimalDef;
@@ -249,7 +247,7 @@ public class JDBCStatementImpl extends JDBCObjectImpl implements QStatement {
 					break;
 				case VARCHAR:
 					characterDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
-					characterDef.setVarying(true);;
+//					characterDef.setVarying(true);;
 					dataDef = characterDef;
 
 					sqlType = 12;

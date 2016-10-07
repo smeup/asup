@@ -309,14 +309,9 @@ public abstract class ResourceReaderImpl<T extends QObjectNameable> extends Reso
 			// TODO
 			QTermExpression leftOperand = (QTermExpression) expression.getLeftOperand();
 			String feature = leftOperand.getValue();
-			EStructuralFeature eFeature = eObject.eClass().getEStructuralFeature(feature);
-			Object object = eObject.eGet(eFeature);
-			String eValue = null;
-			if (object == null)
-				eValue = eFeature.getDefaultValueLiteral();
-			else
-				eValue = object.toString();
-
+			
+			String eValue = getValue(feature);
+			
 			// TODO
 			QTermExpression rightOperand = (QTermExpression) expression.getRightOperand();
 			String value = rightOperand.getValue();
@@ -343,6 +338,33 @@ public abstract class ResourceReaderImpl<T extends QObjectNameable> extends Reso
 			}
 
 			return result;
+		}
+
+		private String getValue(String feature) {
+			
+			String[] features = feature.split("\\.");
+			
+			String eValue = null;
+			EObject tempObject = eObject;
+			for(int f = 0; f < features.length; f++) {
+				EStructuralFeature eFeature = tempObject.eClass().getEStructuralFeature(features[f]);
+				if(eFeature == null)
+					break;
+				Object object = tempObject.eGet(eFeature);
+				if(object instanceof EObject) {
+					tempObject = (EObject) object;
+					continue;
+				}
+				else {
+					if (object == null)
+						eValue = eFeature.getDefaultValueLiteral();
+					else
+						eValue = object.toString();
+					break;
+				}
+			}
+
+			return eValue;
 		}
 
 	}

@@ -196,7 +196,8 @@ public class BaseJobManagerImpl implements QJobManager {
 
 		QJob jobCaller = lookup(contextID);
 
-		QPredicateExpression filter = expressionParser.parsePredicate("jobName *EQ '" + name + "' *AND jobNumber *EQ " + number + " *AND jobUser *EQ '" + user + "'");
+		QPredicateExpression filter = expressionParser
+				.parsePredicate("jobReference.jobName *EQ '" + name + "' *AND jobReference.jobNumber *EQ " + number + " *AND jobReference.jobUser *EQ '" + user + "'");
 
 		QJob jobTarget = null;
 

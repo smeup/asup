@@ -16,7 +16,9 @@ import java.sql.SQLException;
 
 import org.eclipse.datatools.modelbase.sql.query.QueryExpressionBody;
 import org.eclipse.datatools.modelbase.sql.query.QuerySelectStatement;
+import org.eclipse.datatools.modelbase.sql.query.QueryStatement;
 import org.eclipse.datatools.modelbase.sql.query.ValueExpressionVariable;
+import org.eclipse.datatools.modelbase.sql.query.util.SQLQuerySourceWriter;
 import org.eclipse.datatools.modelbase.sql.statements.SQLStatement;
 import org.eclipse.datatools.sqltools.parsers.sql.query.SQLQueryParseResult;
 import org.eclipse.emf.ecore.EObject;
@@ -549,38 +551,34 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 		String[] into = null;
 
-		if (parseQueryResult != null) {
+		QueryStatement queryStatement = parseQueryResult.getQueryStatement();				
 
-			SQLStatement sqlStatement = parseQueryResult.getSQLStatement();
-			if (sqlStatement instanceof QuerySelectStatement) {
-				QuerySelectStatement selectStatement = (QuerySelectStatement) sqlStatement;
+ 		QuerySelectStatement selectStatement = (QuerySelectStatement) queryStatement;
 
-				QueryExpressionBody query = selectStatement.getQueryExpr().getQuery();
-				if (query instanceof QExtendedQuerySelect) {
-					QExtendedQuerySelect extendedQuery = (QExtendedQuerySelect) query;
+		QueryExpressionBody query = selectStatement.getQueryExpr().getQuery();
+		if (query instanceof QExtendedQuerySelect) {
+			QExtendedQuerySelect extendedQuery = (QExtendedQuerySelect) query;
+			
+			if (extendedQuery.getIntoClause().size() > 0) {
+				into = new String[extendedQuery.getIntoClause().size()];
 
-					if (extendedQuery.getIntoClause().size() > 0) {
-						into = new String[extendedQuery.getIntoClause().size()];
+				for (int i = 0; i < extendedQuery.getIntoClause().size(); i++) {
 
-						for (int i = 0; i < extendedQuery.getIntoClause().size(); i++) {
-
-							ValueExpressionVariable elem = (ValueExpressionVariable) extendedQuery.getIntoClause().get(i);
-							into[i] = elem.getName();
-						}
-					}
+					ValueExpressionVariable elem = (ValueExpressionVariable) extendedQuery.getIntoClause().get(i);
+					into[i] = elem.getName();
 				}
-
 			}
-
+			
+			System.out.println(extendedQuery.getQuerySelectSQL());
 		}
-
+		
 		// Create method call
 		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
 
 		methodExec.setObject(QSQL);
 		methodExec.setMethod(SELECT_METHOD);
 
-		methodExec.getParameters().add(dblString);
+		methodExec.getParameters().add("'"+dblString+"'");
 
 		String intoValue = "";
 		for (String value : into) {

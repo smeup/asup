@@ -429,6 +429,15 @@ public class ExtendedQuerySelectImpl extends ExtendedQueryExpressionBodyImpl imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String getQuerySelectSQL() {
+		return super.getSQL();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")

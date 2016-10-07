@@ -20,4 +20,12 @@ import org.eclipse.datatools.modelbase.sql.query.QuerySelect;
  * @generated
  */
 public interface QExtendedQuerySelect extends QExtendedQueryExpressionBody, QuerySelect {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	String getQuerySelectSQL();
 } // QExtendedQuerySelect
