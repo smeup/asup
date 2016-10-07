@@ -546,12 +546,23 @@ public class RPJProgramSupport extends RPJModule {
 	public QCharacter qEditw(QNumeric numeric, String format) {
 		// TODO
 		QCharacter character = null;
+		int scale = 0;
+		if (numeric instanceof QDecimal) {
+			QDecimal decimal = (QDecimal) numeric;
+			scale = decimal.getScale();
+		}
+		
 		if (numeric.getLength() == 1) {
 			character = dataContext.getDataFactory().createCharacter(numeric.getLength(), false, true);
 			character.eval(Integer.toString(numeric.asInteger()));
 		} else {
-			character = dataContext.getDataFactory().createCharacter(numeric.getLength(), true, true);
-			character.eval(Double.toString(numeric.asDouble()).replaceAll("\\.", ""));
+			if(scale == 0){
+				character = dataContext.getDataFactory().createCharacter(numeric.getLength(), false, true);
+				character.eval(Long.toString(numeric.asLong()));
+			}else{
+				character = dataContext.getDataFactory().createCharacter(numeric.getLength(), true, true);
+				character.eval(Double.toString(numeric.asDouble()).replaceAll("\\.", ""));
+			}
 		}
 
 		return character;
