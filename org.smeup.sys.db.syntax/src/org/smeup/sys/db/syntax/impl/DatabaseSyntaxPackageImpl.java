@@ -852,12 +852,12 @@ public class DatabaseSyntaxPackageImpl extends EPackageImpl implements QDatabase
 		addEParameter(op, theSQLTablesPackage.getTable(), "table", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theEcorePackage.getEString(), "fieldNames", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(definitionWriterEClass, ecorePackage.getEString(), "renameTable", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theSQLTablesPackage.getTable(), "table", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theEcorePackage.getEString(), "newName", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = addEOperation(definitionWriterEClass, ecorePackage.getEString(), "renameIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theSQLConstraintsPackage.getIndex(), "index", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEString(), "newName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(definitionWriterEClass, ecorePackage.getEString(), "renameTable", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theSQLTablesPackage.getTable(), "table", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theEcorePackage.getEString(), "newName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(definitionWriterEClass, ecorePackage.getEString(), "selectData", 1, 1, IS_UNIQUE, IS_ORDERED);

@@ -240,13 +240,11 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 		return fields;
 	}
 
-
 	@Override
 	public String renameTable(Table table, String newName) {
 		return "RENAME TABLE " + getQualifiedNameInSQLFormat(table) + " TO " + getNameInSQLFormat(newName);
 	}
-
-
+	
 	@Override
 	public String renameIndex(Index index, String newName) {
 		return "RENAME INDEX " + getQualifiedNameInSQLFormat(asTable(index.getSchema().getName(), index.getName())) + " TO " + getNameInSQLFormat(newName);

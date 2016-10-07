@@ -445,12 +445,13 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 			statement = connection.createStatement(true);
 			statement.execute(command);
 
+			getCatalogContainer(connection).loadTable(table.getSchema(), newName);
+			getCatalogContainer(connection).removeTable(table);
+			
 		} finally {
 			if (statement != null)
 				statement.close();
 		}
-
-//		catalogContainer.removeTable(table);		
 	}
 
 	@Override
@@ -465,6 +466,8 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 			statement = connection.createStatement(true);
 			statement.execute(command);
 
+			getCatalogContainer(connection).loadIndex(index.getTable(), newName);
+			getCatalogContainer(connection).removeIndex(index);
 		} finally {
 			if (statement != null)
 				statement.close();
