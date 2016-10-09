@@ -22,6 +22,9 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.eclipse.datatools.modelbase.sql.query.QueryExpressionBody;
+import org.eclipse.datatools.modelbase.sql.query.QuerySelect;
+import org.eclipse.datatools.modelbase.sql.query.QuerySelectStatement;
 import org.eclipse.datatools.modelbase.sql.query.QueryStatement;
 import org.eclipse.datatools.modelbase.sql.query.ValueExpressionVariable;
 import org.eclipse.datatools.modelbase.sql.query.helper.StatementHelper;
@@ -44,8 +47,8 @@ import org.eclipse.jdt.core.dom.MarkerAnnotation;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.Modifier;
-import org.eclipse.jdt.core.dom.Name;
 import org.eclipse.jdt.core.dom.Modifier.ModifierKeyword;
+import org.eclipse.jdt.core.dom.Name;
 import org.eclipse.jdt.core.dom.ParameterizedType;
 import org.eclipse.jdt.core.dom.ReturnStatement;
 import org.eclipse.jdt.core.dom.SimpleType;
@@ -60,7 +63,6 @@ import org.smeup.sys.db.esql.QStatement;
 import org.smeup.sys.db.esql.QStatementTerm;
 import org.smeup.sys.db.esql.annotation.CursorDef;
 import org.smeup.sys.db.syntax.QQueryParser;
-import org.smeup.sys.db.syntax.QQueryWriter;
 import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
@@ -70,6 +72,7 @@ import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.dk.compiler.rpj.RPJContextHelper;
+import org.smeup.sys.dk.compiler.rpj.dbl.DBLQuerySelectWriter;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.dk.core.annotation.Unsupported;
@@ -121,7 +124,6 @@ import org.smeup.sys.os.file.QExternalFile;
 public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 	private QExpressionParser expressionParser;
-	private QQueryWriter queryWriter;
 	private QQueryParser queryParser;
 	
 	public JDTCallableUnitWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, UnitScope scope) {
@@ -129,7 +131,6 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		expressionParser = getCompilationUnit().getContext().get(QExpressionParser.class);
 		queryParser = getCompilationUnit().getContext().get(QQueryParser.class);
-		queryWriter = getCompilationUnit().getContext().get(QQueryWriter.class);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -1006,18 +1007,20 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 						QExpression expression = expressionParser.parseExpression(getCompilationUnit().normalizeTermName(variable.getName()));
 						Expression jdtExpression = JDTStatementHelper.buildExpression(getAST(), getCompilationUnit(), expression, null);
 						arrayInitializer.expressions().add(jdtExpression);
- 						cursorTerm.setSql(cursorTerm.getSql().replace(":"+variable.getName(), "?"));
 					}
 					arrayCreation.setInitializer(arrayInitializer);
 
+					DBLQuerySelectWriter querySelectWriter = new DBLQuerySelectWriter();
+					QuerySelectStatement selectStatement = (QuerySelectStatement) queryStatement;
+					QueryExpressionBody query = selectStatement.getQueryExpr().getQuery();
 					queryStatement = queryParser.parseQuery(cursorTerm.getSql()).getQueryStatement();					
-					
-					String sql = queryWriter.writeQuery(queryStatement);
+					String newSQLString = querySelectWriter.normalizeQuerySelect((QuerySelect) query);
+
 					StringLiteral stringLiteral = getAST().newStringLiteral();
-					stringLiteral.setLiteralValue(sql);
+					stringLiteral.setLiteralValue(newSQLString);
 					
 					MethodInvocation methodInvocation = getAST().newMethodInvocation();
-					methodInvocation.setName(getAST().newSimpleName("declare"));
+					methodInvocation.setName(getAST().newSimpleName("qCreateCursor"));
 					methodInvocation.setExpression(getAST().newSimpleName("qSQL"));
 					
 					Name labelName = getAST().newName(new String[] { cursorTerm.getCursorType().getClass().getSimpleName(), cursorTerm.getCursorType().name() });

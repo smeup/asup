@@ -13,13 +13,13 @@
 package org.smeup.sys.dk.compiler.rpj.dbl;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.eclipse.datatools.modelbase.sql.query.QueryExpressionBody;
 import org.eclipse.datatools.modelbase.sql.query.QuerySelectStatement;
 import org.eclipse.datatools.modelbase.sql.query.QueryStatement;
 import org.eclipse.datatools.modelbase.sql.query.ValueExpressionVariable;
-import org.eclipse.datatools.modelbase.sql.query.util.SQLQuerySourceWriter;
-import org.eclipse.datatools.modelbase.sql.statements.SQLStatement;
+import org.eclipse.datatools.modelbase.sql.query.helper.StatementHelper;
 import org.eclipse.datatools.sqltools.parsers.sql.query.SQLQueryParseResult;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -186,7 +186,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 			if (bindingStatement instanceof QSetOptionStatement)
 				result = manageSetOptionStatement((QSetOptionStatement) bindingStatement);
-			
+
 			else if (bindingStatement instanceof QSetTransactionStatement)
 				result = manageSetTransactionStatement((QSetTransactionStatement) bindingStatement);
 			else if (bindingStatement instanceof QExecuteStatement)
@@ -544,50 +544,52 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 		return methodExec;
 	}
 
+	@SuppressWarnings("unchecked")
 	private QStatement manageSelectIntoStatement(String dblString) throws SQLException {
 
 		// Extract into values
 		SQLQueryParseResult parseQueryResult = queryParser.parseQuery(dblString);
 
-		String[] into = null;
+		QueryStatement queryStatement = parseQueryResult.getQueryStatement();
 
-		QueryStatement queryStatement = parseQueryResult.getQueryStatement();				
-
- 		QuerySelectStatement selectStatement = (QuerySelectStatement) queryStatement;
+		QuerySelectStatement selectStatement = (QuerySelectStatement) queryStatement;
 
 		QueryExpressionBody query = selectStatement.getQueryExpr().getQuery();
-		if (query instanceof QExtendedQuerySelect) {
-			QExtendedQuerySelect extendedQuery = (QExtendedQuerySelect) query;
-			
-			if (extendedQuery.getIntoClause().size() > 0) {
-				into = new String[extendedQuery.getIntoClause().size()];
-
-				for (int i = 0; i < extendedQuery.getIntoClause().size(); i++) {
-
-					ValueExpressionVariable elem = (ValueExpressionVariable) extendedQuery.getIntoClause().get(i);
-					into[i] = elem.getName();
-				}
-			}
-			
-			System.out.println(extendedQuery.getQuerySelectSQL());
-		}
-		
-		// Create method call
-		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-
-		methodExec.setObject(QSQL);
-		methodExec.setMethod(SELECT_METHOD);
-
-		methodExec.getParameters().add("'"+dblString+"'");
+		QExtendedQuerySelect extendedQuery = (QExtendedQuerySelect) query;
 
 		String intoValue = "";
-		for (String value : into) {
+		List<ValueExpressionVariable> variables = extendedQuery.getIntoClause();
+		for (ValueExpressionVariable variable : variables) {
 			if (intoValue.isEmpty())
-				intoValue = value;
+				intoValue = variable.getName();
 			else
-				intoValue = ": " + value;
+				intoValue += ": " + variable.getName();
 		}
-		methodExec.getParameters().add(intoValue);
+		extendedQuery.getIntoClause().clear();
+		
+		String variableValue = "";
+		variables = StatementHelper.getAllVariablesInQueryStatement(queryStatement);		
+		for (ValueExpressionVariable variable : variables) {
+			if (variableValue.isEmpty())
+				variableValue = variable.getName();
+			else
+				variableValue += ": " + variable.getName();
+		}
+
+		DBLQuerySelectWriter querySelectWriter = new DBLQuerySelectWriter();
+		String newSQLString = querySelectWriter.escapeQuerySelect(extendedQuery);
+
+		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+		methodExec.setObject(QSQL);
+		methodExec.setMethod(SELECT_METHOD);
+		methodExec.getParameters().add("'" + newSQLString + "'");
+		if(!intoValue.isEmpty())
+			methodExec.getParameters().add(intoValue);
+		else
+			methodExec.getParameters().add("*NULL");
+
+		if(!variableValue.isEmpty())
+			methodExec.getParameters().add(variableValue);
 
 		return methodExec;
 	}
@@ -754,14 +756,14 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 		// Using
 		if (bindingStatement.getUsing() != null) {
 			methodExec.getParameters().add(bindingStatement.getUsing().getDescriptorName());
-		} 
+		}
 		// Into
 		else if (bindingStatement.getInto() != null) {
 
 			QInto into = bindingStatement.getInto();
 			methodExec.getParameters().add(into.getDescriptorName());
 
-			if(into.getUsing() != null) {
+			if (into.getUsing() != null) {
 				switch (into.getUsing()) {
 				case ALL:
 					methodExec.getParameters().add(USING.ALL);
@@ -785,11 +787,10 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 					methodExec.getParameters().add(USING.SYSTEM_NAMES);
 					break;
 				}
-			}
-			else
+			} else
 				methodExec.getParameters().add(NONE);
 		}
-		
+
 		return methodExec;
 	}
 

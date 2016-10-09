@@ -45,7 +45,7 @@ public class RPJDatabaseSupport extends RPJModule {
 	public transient CommunicationAreaImpl sqlca;
 	
 	@SuppressWarnings("resource")
-	public QCursor declare(CursorType cursorType, boolean hold, String sql, QBufferedElement[] parameters) {
+	public QCursor qCreateCursor(CursorType cursorType, boolean hold, String sql, QBufferedElement[] parameters) {
 
 		QStatement statement = esqlContext.getEsqlFactory().createStatement();
 		statement.prepare(sql, parameters);
@@ -167,6 +167,33 @@ public class RPJDatabaseSupport extends RPJModule {
 		QStatement statement = esqlContext.getEsqlFactory().createStatement();
 		statement.prepare(sql);
 		statement.execute();
+		statement.close();
+	}
+
+	public void qSelect(String sql, QBufferedElement into) {
+		qSelect(sql, new QBufferedElement[] { into });
+	}
+
+	public void qSelect(String sql, QBufferedElement[] into) {
+		qSelect(sql, into, new QBufferedElement[] {});
+	}
+	
+	public void qSelect(String sql, QBufferedElement into, QBufferedElement parameter) {
+		qSelect(sql, new QBufferedElement[] { into }, new QBufferedElement[] { parameter });
+	}
+	
+	public void qSelect(String sql, QBufferedElement[] into, QBufferedElement parameter) {
+		qSelect(sql, into , new QBufferedElement[] { parameter });
+	}
+	
+	public void qSelect(String sql, QBufferedElement[] into, QBufferedElement[] parameters) {
+
+		QStatement statement = esqlContext.getEsqlFactory().createStatement();
+		statement.prepare(sql, parameters);
+		QCursor cursor = esqlContext.getEsqlFactory().createCursor(CursorType.SCROLLABLE, false, statement);
+		cursor.open();
+		cursor.next(into);
+		cursor.close();
 		statement.close();
 	}
 }
