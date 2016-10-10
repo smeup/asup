@@ -196,14 +196,17 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 		try {
 			if (rebuildNeeded(OperationDirection.FORWARD)) {
 
-				Object[] keySet = null;
-
-				if (isBeforeFirst())
-					keySet = this.currentKeySet;
-				else
-					keySet = buildKeySet();
-
-				prepareAccess(this.currentOpSet, keySet, OperationRead.READ_EQUAL, keyList, false);
+				if (this.currentOpSet == null) {
+					if (this.currentKeySet == null)
+						prepareAccess(OperationSet.SET_LOWER_LIMIT, buildKeySet(), OperationRead.READ_EQUAL, keyList, false);
+					else
+						prepareAccess(OperationSet.SET_LOWER_LIMIT, this.currentKeySet, OperationRead.READ_EQUAL, keyList, false);
+				} else {
+					if (this.currentKeySet == null)
+						prepareAccess(this.currentOpSet, buildKeySet(), OperationRead.READ_EQUAL, keyList, false);
+					else
+						prepareAccess(this.currentOpSet, this.currentKeySet, OperationRead.READ_EQUAL, keyList, false);
+				}
 			}
 
 			readNext();
