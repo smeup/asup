@@ -103,11 +103,17 @@ public final class NIODecimalPackedImpl extends NIODecimalImpl {
 	public final Number _readNumber() {
 
 		Number result = 0;
-		final byte[] bytes = NIOBufferHelper.read(getBuffer(), getPosition(), getSize());
-		if (getScale() > 0)
-			result = _decimalDef.packed.toDouble(bytes);
-		else
-			result = ((Double) _decimalDef.packed.toDouble(bytes)).longValue();
+		
+		try {
+			final byte[] bytes = NIOBufferHelper.read(getBuffer(), getPosition(), getSize());
+			if (getScale() > 0)
+				result = _decimalDef.packed.toDouble(bytes);
+			else
+				result = ((Double) _decimalDef.packed.toDouble(bytes)).longValue();
+		}
+		catch(Exception e) {
+			// TODO
+		}
 
 		return result;
 	}

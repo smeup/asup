@@ -100,10 +100,16 @@ public final class NIODecimalZonedImpl extends NIODecimalImpl {
 	public final Number _readNumber() {
 
 		Number result = 0;
-		if (getScale() > 0)
-			result = _decimalDef.zoned.toDouble(asBytes());
-		else
-			result = ((Double) _decimalDef.zoned.toDouble(asBytes())).longValue();
+		
+		try {
+			if (getScale() > 0)
+				result = _decimalDef.zoned.toDouble(asBytes());
+			else
+				result = ((Double) _decimalDef.zoned.toDouble(asBytes())).longValue();
+		}
+		catch(Exception e) {
+			// TODO
+		}
 
 		return result;
 	}
