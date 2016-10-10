@@ -56,7 +56,6 @@ import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QMultipleCompoundDataDef;
 import org.smeup.sys.il.data.def.QUnaryCompoundDataDef;
-import org.smeup.sys.il.data.term.DataTermType;
 import org.smeup.sys.il.data.term.FormatType;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QFormat;

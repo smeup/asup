@@ -250,7 +250,7 @@ public class JDBCStatementImpl extends JDBCObjectImpl implements QStatement {
 //					characterDef.setVarying(true);;
 					dataDef = characterDef;
 
-					sqlType = 12;
+					sqlType = 1;
 					break;				
 				}
 

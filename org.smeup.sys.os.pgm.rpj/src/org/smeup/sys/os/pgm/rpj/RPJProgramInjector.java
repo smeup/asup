@@ -93,8 +93,6 @@ public class RPJProgramInjector {
 	private Map<String, RPJModule> ownerModules;
 
 	private static boolean SERIALIZATION_ACTIVE = true;
-	private static int GLOBAL_INJECTION_TIME = 0;
-	private static int GLOBAL_INJECTION_IO_TIME = 0;
 	
 	public RPJProgramInjector(QActivationGroup activationGroup, QDataContext dataContext) {
 		this.activationGroup = activationGroup;
@@ -156,8 +154,6 @@ public class RPJProgramInjector {
 
 		Object delegate = null;
 
-		long timeIni = System.currentTimeMillis();
-		long timeIOIni = timeIni;
 		if (SERIALIZATION_ACTIVE && RPJProgram.class.isAssignableFrom(klass)) {
 			delegate = dataContext.deserialize(klass, true, "injector");
 			if(delegate != null) {
@@ -167,7 +163,6 @@ public class RPJProgramInjector {
 				dataContainer.getDatas().putAll(rpjProgram.getDatas());
 			}
 		}
-		long timeIOEnd = System.currentTimeMillis();
 		
 		try {
 
@@ -214,13 +209,6 @@ public class RPJProgramInjector {
 			
 			dataContext.getContext().invoke(delegate, PostConstruct.class);
 			
-			long timeEnd = System.currentTimeMillis();
-			GLOBAL_INJECTION_TIME += (timeEnd - timeIni);
-			GLOBAL_INJECTION_IO_TIME += (timeIOEnd - timeIOIni);
-			if(timeEnd - timeIni > 100) {
-//				System.out.println(klass.getSimpleName() + " time: " + (timeEnd - timeIni) + " IO: " + (timeIOEnd - timeIOIni));
-			}
-//			System.out.println("Global injection time: " + GLOBAL_INJECTION_TIME + " IO: " + GLOBAL_INJECTION_IO_TIME);
 			
 			return delegate;
 		} catch (Exception e) {
