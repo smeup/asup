@@ -7,32 +7,34 @@
  *
  *
  * Contributors:
- *   Mattia Rocchi - Initial API and implementation
+ *   Dario Foresti - Initial API and implementation
  */
 package org.smeup.sys.os.dtaq.base;
 
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
+import java.util.LinkedList;
 
 /**
  * Implementation of a blocking queue, one that always "contains" elements. If
- * it is in fact empty, the poll() and peek() method will block until an item is
- * pushed or a timeout is elapsed.
+ * it is in fact empty, the pop() and peek() method will block until an item is
+ * pushed or a timewait is elapsed.
  */
-public class BaseBlockingFifoQueue<E> {
+public class BaseBlockingFifoQueue_old<E> {
 
-	private BlockingQueue<E> queue = new LinkedBlockingQueue<E>();
-
-	public BaseBlockingFifoQueue() {
-		super();
-	}
+	private final Object PUSH_LOCK = new String("PUSH");
+	private final Object POPLOCK = new String("POP");
+	private LinkedList<E> iList = new LinkedList<E>();
 
 	/**
 	 * Puts object in queue.
 	 */
 	public void put(E o) {
-		queue.offer(o);
+		synchronized (PUSH_LOCK) {
+			iList.addLast(o);
+			synchronized (this) {
+				notify();
+			}
+		}
+
 	}
 
 	/**
@@ -46,7 +48,7 @@ public class BaseBlockingFifoQueue<E> {
 	}
 
 	/**
-	 * Returns the element on top of the queue. Unlike the poll() method, this
+	 * Returns the element on top of the queue. Unlike the pop() method, this
 	 * method does not block for longer than the given amount of milliseconds.
 	 * When the given amount of milliseconds have passed, this method will throw
 	 * an InterruptedException.
@@ -57,19 +59,25 @@ public class BaseBlockingFifoQueue<E> {
 	 * @return
 	 * @throws InterruptedException
 	 */
-	public E poll(long timeout) throws InterruptedException {
+	public E poll(long aTimeout) throws InterruptedException {
+		synchronized (POPLOCK) {
+			synchronized (this) {
+				if (iList.isEmpty()) {
+					if (aTimeout == -1)
+						wait();
+					else
+						wait(aTimeout);
 
-		E element = null;
-		if(timeout == -1)
-			element = queue.take();
-		else			
-			element = queue.poll(timeout, TimeUnit.MILLISECONDS);
-		
-		return element;
+					if (iList.isEmpty())
+						throw new InterruptedException("Timed out");
+				}
+			}
+		}
+		return iList.removeFirst();
 	}
 
 	/**
-	 * Returns the element on top of the queue, without polling it.
+	 * Returns the element on top of the queue, without popping it.
 	 *
 	 * @return
 	 * @throws InterruptedException
@@ -79,7 +87,7 @@ public class BaseBlockingFifoQueue<E> {
 	}
 
 	/**
-	 * Returns the element on top of the queue without polling it. Unlike the
+	 * Returns the element on top of the queue without popping it. Unlike the
 	 * peek() method, this method does not block for longer than the given
 	 * amount of milliseconds. When the given amount of milliseconds have
 	 * passed, this method will throw an InterruptedException.
@@ -87,18 +95,24 @@ public class BaseBlockingFifoQueue<E> {
 	 * If aTimeout = -1 wait until a object is push in queue
 	 */
 
-	public E peek(long timeout) throws InterruptedException {
-		return queue.peek();
+	public E peek(long aTimeout) throws InterruptedException {
+		synchronized (POPLOCK) {
+			synchronized (this) {
+				if (iList.isEmpty()) {
+					if (aTimeout == -1)
+						wait();
+					else
+						wait(aTimeout);
+
+					if (iList.isEmpty())
+						throw new InterruptedException("Timed out");
+				}
+			}
+			return iList.getFirst();
+		}
 	}
 
 	public void clear() {
-		queue.clear();
-	}
-
-	/**
-	 * Returns <code>true</code> if queue is empty, otherwise <code>false</code>
-	 */
-	public boolean isEmpty() {
-		return queue.isEmpty();
+		iList.clear();
 	}
 }

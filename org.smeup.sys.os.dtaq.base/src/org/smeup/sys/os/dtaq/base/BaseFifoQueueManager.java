@@ -9,6 +9,7 @@
  * Contributors:
  *   Dario Foresti - Initial API and implementation
  *   Mattia Rocchi - Implementation
+ *   Mattia Rocchi - http://bugs.java.com/bugdatabase/view_bug.do?bug_id=6653412
  */
 package org.smeup.sys.os.dtaq.base;
 
@@ -30,11 +31,8 @@ public class BaseFifoQueueManager {
 		BaseBlockingFifoQueue<String> queue = getOrCreateQueue(library, name);
 		if (queue == null)
 			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
-
-		// TODO remove synchronized?
-		synchronized (queue) {
-			queue.push(value);
-		}
+		
+		queue.put(value);	
 	}
 
 	public String readFromQueue(String library, String name, long timeOut) throws BaseFifoQueueException {
@@ -46,7 +44,7 @@ public class BaseFifoQueueManager {
 			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
 
 		try {
-			vResult = queue.pop(timeOut);
+			vResult = queue.poll(timeOut);
 			//System.out.println("REAQUE " + name + ": " + vResult);
 		} catch (InterruptedException e) {
 			System.err.println(e.getMessage());
@@ -77,7 +75,7 @@ public class BaseFifoQueueManager {
 		BaseBlockingFifoQueue<String> queue = getOrCreateQueue(library, name);
 		if (queue == null)
 			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
-
+		
 		queue.clear();
 	}
 
@@ -89,7 +87,7 @@ public class BaseFifoQueueManager {
 			synchronized (queueList) {
 				queue = queueList.get(queueKey);
 				if (queue == null) {
-					queue = new BaseBlockingFifoQueue<String>(library, name);
+					queue = new BaseBlockingFifoQueue<String>();
 					queueList.put(queueKey, queue);
 				}
 			}
