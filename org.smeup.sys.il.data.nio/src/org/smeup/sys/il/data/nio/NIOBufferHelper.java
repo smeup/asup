@@ -34,7 +34,8 @@ import org.smeup.sys.il.data.QString;
 public final class NIOBufferHelper {
 
 	private static final char[] hexArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
-	private static final String[] trims = new String[Short.MAX_VALUE/2];
+//	private static final String[] trims = new String[Short.MAX_VALUE/2];
+	private static final String[] trims = new String[128];
 
 	public final static void assign(final QStorable storable, final QBufferedData target) {
 

@@ -43,7 +43,7 @@ public class NIOResourceWriterImpl<T extends QObjectNameable> extends NIOResourc
 	}
 
 	@Override
-	public synchronized void delete(T object) {
+	public void delete(T object) {
 		try {
 			QResourceHelper.firePreDeleteEvent(this, object);
 
@@ -64,12 +64,12 @@ public class NIOResourceWriterImpl<T extends QObjectNameable> extends NIOResourc
 	}
 
 	@Override
-	public synchronized void save(T object) {
+	public void save(T object) {
 		save(object, false);
 	}
 
 	@Override
-	public synchronized void save(T object, boolean replace) {
+	public void save(T object, boolean replace) {
 		try {
 			QResourceHelper.firePreSaveEvent(this, object);
 			
