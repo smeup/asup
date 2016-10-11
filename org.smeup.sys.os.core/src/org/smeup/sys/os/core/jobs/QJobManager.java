@@ -135,6 +135,14 @@ public interface QJobManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model contextIDRequired="true" nameRequired="true" userRequired="true" numberRequired="true"
+	 * @generated
+	 */
+	QJob lookupActiveJob(String contextID, String name, String user, String number);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model capabilityRequired="true"
 	 * @generated
 	 */

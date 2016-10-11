@@ -343,4 +343,16 @@ public class BaseJobManagerImpl implements QJobManager {
 	public Date now(QJob job) {
 		return new Date();
 	}
+
+	@Override
+	public QJob lookupActiveJob(String contextID, String name, String user, String number) {
+
+		for (QJob activeJob : getActiveJobs()) {
+			QJobReference jobReference = activeJob.getJobReference();
+			if (jobReference.getJobName().equals(name) && jobReference.getJobUser().equals(user) && jobReference.getJobNumber() == Integer.parseInt(number))
+				return activeJob;
+		}
+
+		return null;
+	}
 }
