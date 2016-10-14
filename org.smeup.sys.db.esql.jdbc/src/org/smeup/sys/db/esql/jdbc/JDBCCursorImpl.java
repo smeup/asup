@@ -20,8 +20,8 @@ import org.smeup.sys.db.esql.CursorType;
 import org.smeup.sys.db.esql.FetchPositioning;
 import org.smeup.sys.db.esql.QCommunicationArea;
 import org.smeup.sys.db.esql.QCursor;
+import org.smeup.sys.db.esql.QDescriptorArea;
 import org.smeup.sys.db.esql.QEsqlContext;
-import org.smeup.sys.db.esql.impl.DescriptorAreaImpl;
 import org.smeup.sys.db.esql.impl.DescriptorVariableImpl;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataStruct;
@@ -47,12 +47,12 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 
 	@Override
 	public void after() {
-		handleResultSet(FetchPositioning.AFTER, 0, null);
+		handleResultSet(FetchPositioning.AFTER, 0, (QBufferedData[])null);
 	}
 
 	@Override
 	public void before() {
-		handleResultSet(FetchPositioning.BEFORE, 0, null);
+		handleResultSet(FetchPositioning.BEFORE, 0, (QBufferedData[])null);
 	}
 
 	@Override
@@ -71,20 +71,8 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 	}
 
 	@Override
-	public void next(String descriptor) {
-		
-		DescriptorAreaImpl descriptorArea = (DescriptorAreaImpl) getEsqlContext().getDescriptorArea(descriptor);
-		if (descriptorArea == null)
-			throw new DatabaseCoreRuntimeException("Descriptor not found: " + descriptor);
-
-		int columnsCount = descriptorArea.getColumnsNumber();
-		QBufferedData[] target = new QBufferedData[columnsCount];
-		for(int c = 1; c <= columnsCount; c++) {
-			DescriptorVariableImpl descriptorVariable = (DescriptorVariableImpl)descriptorArea.getVariable(c);
-			target[c-1] = descriptorVariable.getBufferedData();
-		}
-		
-		handleResultSet(FetchPositioning.NEXT, 0, target);
+	public void next(String descriptor) {		
+		handleResultSet(FetchPositioning.NEXT, 0, descriptor);
 	}
 
 	@Override
@@ -104,8 +92,7 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 
 	@Override
 	public void prior(String descriptor) {
-		// TODO Auto-generated method stub
-		"".toCharArray();
+		handleResultSet(FetchPositioning.PRIOR, 0, descriptor);
 	}
 
 	@Override
@@ -125,8 +112,7 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 
 	@Override
 	public void first(String descriptor) {
-		// TODO Auto-generated method stub
-		"".toCharArray();
+		handleResultSet(FetchPositioning.FIRST, 0, descriptor);
 	}
 
 	@Override
@@ -146,14 +132,12 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 
 	@Override
 	public void last(String descriptor) {
-		// TODO Auto-generated method stub
-		"".toCharArray();
+		handleResultSet(FetchPositioning.LAST, 0, descriptor);
 	}
 
 	@Override
 	public void relative(QNumeric position, String descriptor) {
-		// TODO Auto-generated method stub
-		"".toCharArray();
+		handleResultSet(FetchPositioning.RELATIVE, position.asInteger(),  descriptor);
 	}
 
 	protected ResultSet getResultSet() {
@@ -185,14 +169,30 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 					dataWriter.set(resultSet.getObject(c));
 					bufferedData.accept(dataWriter);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					throw new DatabaseCoreRuntimeException(e);
 				}
 			}	
 			c++;
 		}
 	}
 
+	protected boolean handleResultSet(FetchPositioning positioning, int rowNumber, String descriptor) {
+		
+		QDescriptorArea descriptorArea = getEsqlContext().getDescriptorArea(descriptor);
+		if (descriptorArea == null)
+			throw new DatabaseCoreRuntimeException("Descriptor not found: " + descriptor);
+
+		int columnsCount = descriptorArea.getColumnsNumber();
+		QBufferedData[] target = new QBufferedData[columnsCount];
+		for(int c = 1; c <= columnsCount; c++) {
+			DescriptorVariableImpl descriptorVariable = (DescriptorVariableImpl)descriptorArea.getVariable(c);
+			target[c-1] = descriptorVariable.getBufferedData();
+		}
+		
+		return handleResultSet(positioning, rowNumber, target);
+	
+	}
+	
 	protected boolean handleResultSet(FetchPositioning positioning, int rowNumber, QBufferedData[] record) {
 
 		QCommunicationArea communicationArea = getEsqlContext().getCommunicationArea();
