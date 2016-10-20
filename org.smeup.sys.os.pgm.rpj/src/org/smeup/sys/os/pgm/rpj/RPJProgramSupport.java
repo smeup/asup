@@ -484,44 +484,79 @@ public class RPJProgramSupport extends RPJModule {
 	public void qDisplay(QString text) {
 		System.out.println(text);
 	}
+	
+	public QCharacter qEditc(double numeric, String format) {
+		return qEditc(qBox(numeric), format);
+	}
+
+	public QCharacter qEditc(int numeric, String format) {
+		return qEditc(qBox(numeric), format);
+	}
 
 	public QCharacter qEditc(QNumeric numeric, String format) {
-		// TODO
 		QCharacter character = dataContext.getDataFactory().createCharacter(numeric.getLength(), false, true);
-
 		try {
 
 			switch (format) {
-			case "Z":
-				// character.eval(numberFormat.format(numeric.asInteger()));
-				// TODO
-				// remove leading zero
-				character.eval(Integer.toString(numeric.asInteger()).replaceAll("^0+", ""));
+			case "J":
+			case "K":
+				character = dataContext.getDataFactory().createCharacter(50, false, true);				
+				if(format.equals("K") && numeric.eq(0)){
+					character.clear();
+					return character;
+				}
+				character.movel(editString(numeric, true, "S"));
+				break;
+			case "L":
+			case "M":
+				character = dataContext.getDataFactory().createCharacter(50, false, true);				
+				if(format.equals("M") && numeric.eq(0)){
+					character.clear();
+					return character;
+				}
+				character.movel(editString(numeric, false, "S"));
+				break;
+			case "N":
+			case "O":
+				character = dataContext.getDataFactory().createCharacter(50, false, true);				
+				if(format.equals("O") && numeric.eq(0)){
+					character.clear();
+					return character;
+				}
+				character.movel(editString(numeric, false, "P"));
+				break;
+			case "P":
+			case "Q":
+				character = dataContext.getDataFactory().createCharacter(50, false, true);				
+				if(format.equals("Q") && numeric.eq(0)){
+					character.clear();
+					return character;
+				}
+				character.movel(editString(numeric, false, "P"));
 				break;
 			case "X":
 				character.move(numeric);
 				break;
-			case "J":
-				int length = numeric.getLength();
-				int scale = 0;
-				if (numeric instanceof QDecimal) {
-					QDecimal decimal = (QDecimal) numeric;
-					scale = decimal.getScale();
+			case "Z":
+				character.eval(Integer.toString(numeric.asInteger()).replaceAll("^0+", ""));
+				break;
+			case "1":
+			case "2":
+				character = dataContext.getDataFactory().createCharacter(50, false, true);				
+				if(format.equals("2") && numeric.eq(0)){
+					character.clear();
+					return character;
 				}
-				// TODO
-				DecimalFormat numberFormat = (DecimalFormat) NumberFormat.getInstance(Locale.ITALIAN);
-				// verify
-				numberFormat.setMinimumIntegerDigits(length - scale);
-				// numberFormat.setMaximumFractionDigits(scale);
-				numberFormat.setMinimumFractionDigits(scale);
-				numberFormat.setGroupingUsed(false);
-
-				if (numeric.lt(0)) {
-					numberFormat.setNegativeSuffix("-");
-					numberFormat.setNegativePrefix("");
+				character.movel(editString(numeric, true, ""));
+				break;
+			case "3":
+			case "4":
+				character = dataContext.getDataFactory().createCharacter(50, false, true);				
+				if(format.equals("4") && numeric.eq(0)){
+					character.clear();
+					return character;
 				}
-
-				character.eval(numberFormat.format(numeric.asDouble()).replaceAll("^0+", " "));
+				character.movel(editString(numeric, false, ""));
 				break;
 			default:
 				System.err.println("Invalid edit format: " + format);
@@ -534,14 +569,67 @@ public class RPJProgramSupport extends RPJModule {
 
 		return character;
 	}
+	
+	private String editString(QNumeric numeric, boolean group, String negative) {
+		int length = numeric.getLength();
+		int scale = 0;
+		if (numeric instanceof QDecimal) {
+			QDecimal decimal = (QDecimal) numeric;
+			scale = decimal.getScale();
+		}
+		// TODO
+		DecimalFormat numberFormat = (DecimalFormat) NumberFormat.getInstance(Locale.ITALIAN);
+		numberFormat.setMinimumIntegerDigits(length - scale);
+		numberFormat.setMinimumFractionDigits(scale);
+		numberFormat.setGroupingUsed(group);
+		numberFormat.setNegativePrefix("");
+		numberFormat.setNegativeSuffix("");
 
-	public QCharacter qEditc(double numeric, String format) {
-		return qEditc(qBox(numeric), format);
+		if (numeric.lt(0)) {
+			switch (negative) {
+			case "S":
+				numberFormat.setNegativeSuffix("-");
+				break;
+			case "P":
+				numberFormat.setNegativePrefix("-");
+				break;
+			}
+		}
+
+		// TODO Regex
+		// Remove leading zeros and separator
+		StringBuffer sb = new StringBuffer();
+		boolean comma = false;
+		boolean separator = false;
+		
+		char[] chars = numberFormat.format(numeric.asDouble()).toCharArray();
+		for(int i=0; i<chars.length; i++){
+			if(chars[i] == '0'){
+				if(!comma && !separator && chars.length!=i+1)
+					sb.append(" ");
+				else
+					sb.append(chars[i]);
+			}
+			else if(chars[i] == numberFormat.getDecimalFormatSymbols().getGroupingSeparator()){
+				if(!separator)
+					sb.append(" ");
+				else
+					sb.append(chars[i]);
+			}
+			else if(chars[i] == numberFormat.getDecimalFormatSymbols().getDecimalSeparator()){
+				comma = true;
+				if(!separator)
+					sb.replace(i-1, i, "0");
+				sb.append(chars[i]);
+			} else{
+				separator = true ;
+				sb.append(chars[i]);
+			}
+		}
+		return sb.toString();
 	}
 
-	public QCharacter qEditc(int numeric, String format) {
-		return qEditc(qBox(numeric), format);
-	}
+	
 
 	public QCharacter qEditw(QNumeric numeric, String format) {
 		// TODO
