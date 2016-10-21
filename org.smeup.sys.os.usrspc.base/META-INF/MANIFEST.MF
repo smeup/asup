@@ -4,7 +4,8 @@ Bundle-Name: As.UP Operating System UserSpace Base
 Bundle-SymbolicName: org.smeup.sys.os.usrspc.base
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: www.smeup.com
-Export-Package: org.smeup.sys.os.usrspc.base
+Export-Package: org.smeup.sys.os.usrspc.base,
+ org.smeup.sys.os.usrspc.base.api
 Require-Bundle: org.smeup.sys.os.usrspc,
  org.smeup.sys.il.memo
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
