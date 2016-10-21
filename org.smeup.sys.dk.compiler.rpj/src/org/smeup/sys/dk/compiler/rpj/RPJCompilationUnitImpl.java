@@ -396,7 +396,8 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			if (tokens.length > 1)
 				pos = Integer.parseInt(tokens[1]);
 			else
-				pos = pfx.length();
+			//	pos = pfx.length();
+				pos = 0;
 
 			dataTerm = findData((List<QDataTerm<?>>) compoundDataDef.getElements(), name, pfx, pos);
 		} else
