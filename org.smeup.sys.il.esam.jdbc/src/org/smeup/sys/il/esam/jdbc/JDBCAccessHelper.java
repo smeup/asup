@@ -20,6 +20,7 @@ import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceReference;
+import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QRecord;
@@ -58,7 +59,7 @@ public class JDBCAccessHelper {
 
 		sbUpdate.append("DELETE");
 		sbUpdate.append(" " + getSQLObjectNameHelper().getQualifiedNameInSQLFormat(table));
-		sbUpdate.append(" WHERE QASRRN=" + recordNumber);
+		sbUpdate.append(" WHERE " + QDatabaseManager.TABLE_COLUMN_RELATIVE_RECORD_NUMBER_NAME + "=" + recordNumber);
 
 		return sbUpdate.toString();
 	}
@@ -67,11 +68,10 @@ public class JDBCAccessHelper {
 
 		StringBuffer querySelect = new StringBuffer();
 
-		if(noResulSet)
+		if (noResulSet)
 			querySelect.append("SELECT '1'");
 		else
-			querySelect.append("SELECT " + getSQLObjectNameHelper().getQualifiedNameInSQLFormat(table) + ".*, digits(QASRRN)");
-
+			querySelect.append("SELECT " + getSQLObjectNameHelper().getQualifiedNameInSQLFormat(table) + ".*, digits(" + QDatabaseManager.TABLE_COLUMN_RELATIVE_RECORD_NUMBER_NAME + ")");
 
 		querySelect.append(" FROM " + getSQLObjectNameHelper().getQualifiedNameInSQLFormat(table));
 
@@ -138,7 +138,7 @@ public class JDBCAccessHelper {
 		for (Column column : (List<Column>) table.getColumns()) {
 
 			String columnName = column.getName().replaceAll("ç", "§").toUpperCase();
-			if (columnName.equalsIgnoreCase("QASRRN"))
+			if (columnName.equalsIgnoreCase(QDatabaseManager.TABLE_COLUMN_RELATIVE_RECORD_NUMBER_NAME))
 				continue;
 
 			if (!first)
@@ -162,7 +162,7 @@ public class JDBCAccessHelper {
 			first = false;
 		}
 
-		sbUpdate.append(" WHERE QASRRN=" + recordNumber);
+		sbUpdate.append(" WHERE " + QDatabaseManager.TABLE_COLUMN_RELATIVE_RECORD_NUMBER_NAME + "=" + recordNumber);
 
 		return sbUpdate.toString();
 	}
@@ -180,7 +180,7 @@ public class JDBCAccessHelper {
 		for (Column column : (List<Column>) table.getColumns()) {
 
 			String columnName = column.getName().replaceAll("ç", "§").toUpperCase();
-			if (columnName.equalsIgnoreCase("QASRRN"))
+			if (columnName.equalsIgnoreCase(QDatabaseManager.TABLE_COLUMN_RELATIVE_RECORD_NUMBER_NAME))
 				continue;
 
 			if (position > 1)
@@ -255,12 +255,12 @@ public class JDBCAccessHelper {
 						sbValues.append(strings.string(indexColumn.getLength(), " "));
 					else
 						throw new IntegratedLanguageEsamRuntimeException("Invalid special " + keySetEnum.name() + " for  column " + indexColumnName);
-					
+
 				} else {
 					bytes = new byte[indexColumn.getLength() - keySet[i].toString().length()];
 					Arrays.fill(bytes, (byte) 32);
 					sbValues.append(keySet[i].toString() + new String(bytes));
-				}				
+				}
 			}
 
 			if (i + 1 < keySet.length)
