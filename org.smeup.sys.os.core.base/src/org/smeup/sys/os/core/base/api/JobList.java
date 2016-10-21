@@ -21,13 +21,13 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
-import org.smeup.sys.il.memo.Scope;
+import org.smeup.sys.os.usrspc.base.api.UserSpaceRef;
 
 @Program(name = "QUSLJOB")
 public class JobList {
 
 	@Main
-	public void main(@DataDef(qualified = true) UserSpaceRef UserSpaceRef, @DataDef(length = 8) QCharacter formatName, @DataDef(qualified = true) JobName jobName,
+	public void main(UserSpaceRef UserSpaceRef, @DataDef(length = 8) QCharacter formatName, @DataDef(qualified = true) JobName jobName,
 			@DataDef(length = 10) QEnum<Status, QCharacter> status, ErrorCode errorCode, @DataDef(length = 1) QCharacter jobType,
 			@DataDef(binaryType = BinaryType.INTEGER, value = " 0") QBinary numberFiedsToReturn,
 			@DataDef(dimension = 100, binaryType = BinaryType.INTEGER, value = " 0") QArray<QBinary> keyOfFiledsToReturn, @DataDef(length = 48) QCharacter continuationHandle) {
@@ -66,14 +66,6 @@ public class JobList {
 		@DataDef(binaryType = BinaryType.INTEGER)
 		public QBinary numberOfFieldReturned;
 		// TODO continue ds... 
-	}
-	
-	public static class UserSpaceRef extends QDataStructWrapper {
-		private static final long serialVersionUID = 1L;
-		@DataDef(length = 10)
-		public QCharacter name;
-		@DataDef(length = 10, value = "*LIBL")
-		public QEnum<Scope, QCharacter> library;
 	}
 	
 	public static enum Status {
