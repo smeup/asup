@@ -74,4 +74,10 @@ public class MySQLDefinitionWriterImpl extends BaseDefinitionWriterImpl {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String resetIdentity(Table table) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

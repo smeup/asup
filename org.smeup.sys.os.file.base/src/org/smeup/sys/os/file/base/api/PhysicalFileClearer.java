@@ -92,10 +92,14 @@ public class PhysicalFileClearer {
 
 			statement = connection.createStatement(true);
 			statement.executeUpdate(command, false);
+			
+			command = definitionWriter.resetIdentity(table);
+			if(command != null)
+				statement.executeUpdate(command, false);
+				
 		} finally {
 			if (statement != null)
 				statement.close();
 		}
 	}
-
 }

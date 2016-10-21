@@ -177,6 +177,14 @@ public interface QDefinitionWriter extends QStatementWriter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" tableRequired="true"
+	 * @generated
+	 */
+	String resetIdentity(Table table);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" indexRequired="true" newNameRequired="true"
 	 * @generated
 	 */

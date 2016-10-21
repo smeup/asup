@@ -20,6 +20,7 @@ import org.eclipse.datatools.modelbase.sql.tables.impl.TableImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.smeup.sys.db.core.OrderingType;
+import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.db.core.QIndexColumnDef;
 import org.smeup.sys.db.core.QIndexDef;
 import org.smeup.sys.db.core.QSchemaDef;
@@ -35,7 +36,6 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 	public DB2DefinitionWriterImpl() {
 		super(new SQLObjectNameHelper());
 	}
-
 
 	@Override
 	public String dropSchema(Schema schema) {
@@ -65,8 +65,8 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 				pkey_name = getNameInSQLFormat(column);
 				break;
 			case CHARACTER:
-				QCharacterDef characterDef = (QCharacterDef)columnDef;
-				if(characterDef.isVarying())
+				QCharacterDef characterDef = (QCharacterDef) columnDef;
+				if (characterDef.isVarying())
 					result.append(getNameInSQLFormat(column) + " VARCHAR(" + characterDef.getLength() + ") DEFAULT '' NOT NULL");
 				else if (characterDef.getLength() <= 254)
 					result.append(getNameInSQLFormat(column) + " CHAR(" + characterDef.getLength() + ") DEFAULT '' NOT NULL");
@@ -74,7 +74,7 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 					result.append(getNameInSQLFormat(column) + " VARCHAR(" + characterDef.getLength() + ") DEFAULT '' NOT NULL");
 				break;
 			case DECIMAL:
-				QDecimalDef decimalDef = (QDecimalDef)columnDef;
+				QDecimalDef decimalDef = (QDecimalDef) columnDef;
 				if (decimalDef.getLength() > 31)
 					result.append(getNameInSQLFormat(column) + " DECFLOAT(34) DEFAULT 0 NOT NULL");
 				else if (decimalDef.getScale() != 0)
@@ -94,18 +94,14 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 
 	@Override
 	public String truncateTable(Table table) {
-		return "TRUNCATE TABLE " + getQualifiedNameInSQLFormat(table) +
-			       " IGNORE DELETE TRIGGERS" +
-			       " DROP STORAGE" +
-			       " IMMEDIATE";
+		return "TRUNCATE TABLE " + getQualifiedNameInSQLFormat(table) + " IGNORE DELETE TRIGGERS" + " DROP STORAGE" + " IMMEDIATE";
 	}
-	
+
 	public String createIndex(Table table, String indexName, QIndexDef index) {
 		StringBuffer result = new StringBuffer("CREATE ");
 		if (index.isUnique())
 			result.append("UNIQUE ");
-		
-		
+
 		result.append("INDEX " + getQualifiedNameInSQLFormat(asTable(table.getSchema().getName(), indexName)));
 		result.append(" ON " + getQualifiedNameInSQLFormat(table) + " (");
 
@@ -125,8 +121,7 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 		}
 		result.append(")");
 		return result.toString();
-	}	
-	
+	}
 
 	// TODO ?!?
 	private Table asTable(final String schemaName, final String indexName) {
@@ -138,12 +133,12 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 					}
 				};
 			}
+
 			public String getName() {
 				return indexName;
 			}
 		};
 	}
-
 
 	@Override
 	public String dropIndex(Index index) {
@@ -156,8 +151,8 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 		if (!ignoreFailOnNonEmpty)
 			return "DROP SCHEMA " + getNameInSQLFormat(schema) + " RESTRICT";
 		else {
-		String sql = "begin " + "  declare l_errschema varchar(128) default 'ERRORSCHEMA';" + "  declare l_errtab varchar(128) default '"+ schema.getName() + "';" + "  CALL SYSPROC.ADMIN_DROP_SCHEMA('"
-					+ schema.getName() + "', NULL, l_errschema, l_errtab);" + " end";
+			String sql = "begin " + "  declare l_errschema varchar(128) default 'ERRORSCHEMA';" + "  declare l_errtab varchar(128) default '" + schema.getName() + "';"
+					+ "  CALL SYSPROC.ADMIN_DROP_SCHEMA('" + schema.getName() + "', NULL, l_errschema, l_errtab);" + " end";
 
 			return sql;
 		}
@@ -166,20 +161,20 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 	private String quoted(String s) {
 		return "'" + s.replace("'", "''") + "'";
 	}
-	
+
 	@Override
 	public String createLabel(String name, QSchemaDef schema) {
 		String label = schema.getLabel();
-		if (label != null && label.trim() != "") 
+		if (label != null && label.trim() != "")
 			return "COMMENT ON SCHEMA  " + name + " IS " + quoted(label);
-		else 
+		else
 			return null;
 	}
 
 	@Override
 	public String createLabel(Schema schema, String name, QTableDef table) {
 		String label = schema.getLabel();
-		if (label != null && label.trim() != "") { 
+		if (label != null && label.trim() != "") {
 			return "COMMENT ON TABLE " + getNameInSQLFormat(schema) + "." + getNameInSQLFormat(name) + " IS " + quoted(label);
 		} else {
 			return null;
@@ -194,12 +189,10 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 			if (label != null && label.trim() != "") {
 				if (result.length() > 0)
 					result.append(", ");
-				result.append(getNameInSQLFormat(column))
-					  .append(" IS ")
-				      .append(quoted(label));
+				result.append(getNameInSQLFormat(column)).append(" IS ").append(quoted(label));
 			}
 		}
-		
+
 		if (result.length() > 0) {
 			return "COMMENT ON " + getNameInSQLFormat(schema) + "." + getNameInSQLFormat(name) + "(" + result.toString() + ")";
 		} else {
@@ -207,29 +200,27 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 		}
 	}
 
-
 	@Override
 	public String hasLogicals(Table table) {
-		return "SELECT * FROM SYSCAT.TABDEP WHERE BSCHEMA = '"+ table.getSchema().getName().trim() + "' AND BNAME = '" + table.getName().trim() + "'";
+		return "SELECT * FROM SYSCAT.TABDEP WHERE BSCHEMA = '" + table.getSchema().getName().trim() + "' AND BNAME = '" + table.getName().trim() + "'";
 	}
 
 	@Override
-	public String copyTableData(Table tableFrom, Table tableTo,	boolean isCreateRelativeRecordNumber) {
+	public String copyTableData(Table tableFrom, Table tableTo, boolean isCreateRelativeRecordNumber) {
 		String fields = fields(tableTo, isCreateRelativeRecordNumber);
-		
-		return "INSERT INTO " + getQualifiedNameInSQLFormat(tableTo) + "(" + fields + ")" +
-			   " SELECT " + fields + " FROM "  + getQualifiedNameInSQLFormat(tableFrom);
+
+		return "INSERT INTO " + getQualifiedNameInSQLFormat(tableTo) + "(" + fields + ")" + " SELECT " + fields + " FROM " + getQualifiedNameInSQLFormat(tableFrom);
 	}
 
 	@SuppressWarnings("unchecked")
 	private String fields(Table tableTo, boolean isCreateRelativeRecordNumber) {
 		int columnsSize = 0;
 		EList<ENamedElement> columns = tableTo.getColumns();
-		if(isCreateRelativeRecordNumber)
+		if (isCreateRelativeRecordNumber)
 			columnsSize = columns.size() - 2;
 		else
 			columnsSize = columns.size() - 1;
-		
+
 		String fields = "";
 		for (int i = 0; i <= columnsSize; i++) {
 			fields += columns.get(i).getName();
@@ -244,9 +235,14 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 	public String renameTable(Table table, String newName) {
 		return "RENAME TABLE " + getQualifiedNameInSQLFormat(table) + " TO " + getNameInSQLFormat(newName);
 	}
-	
+
 	@Override
 	public String renameIndex(Index index, String newName) {
 		return "RENAME INDEX " + getQualifiedNameInSQLFormat(asTable(index.getSchema().getName(), index.getName())) + " TO " + getNameInSQLFormat(newName);
+	}
+
+	@Override
+	public String resetIdentity(Table table) {
+		return "ALTER TABLE " + getQualifiedNameInSQLFormat(table) + " ALTER COLUMN " + QDatabaseManager.TABLE_COLUMN_RELATIVE_RECORD_NUMBER_NAME + " RESTART WITH 1";
 	}
 }

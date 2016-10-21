@@ -16,6 +16,7 @@ import java.sql.SQLException;
 
 import org.smeup.sys.db.core.DatabaseCoreRuntimeException;
 import org.smeup.sys.db.core.QConnection;
+import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.db.esql.CursorType;
 import org.smeup.sys.db.esql.FetchPositioning;
 import org.smeup.sys.db.esql.QCommunicationArea;
@@ -160,8 +161,8 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 				QBufferedData[] bufferedRecord = record.getElements().toArray(new QBufferedData[record.getElements().size()]);
 				completeRecord(bufferedRecord, c);
 				c = c + bufferedRecord.length - 1;
-				// QASRRN
-				if(record.getElement("QASRRN") != null) 
+
+				if(record.getElement(QDatabaseManager.TABLE_COLUMN_RELATIVE_RECORD_NUMBER_NAME) != null) 
 					c++;
 			}
 			else {
