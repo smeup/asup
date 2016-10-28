@@ -40,7 +40,7 @@ public class JobLogTest {
 
 		String lastMessage = null;
 
-		for (QJobLogEntry jobLogEntry : jobLog.getEntries())
+		for (QJobLogEntry jobLogEntry : jobLogManger.getEntries(jobLog))
 			lastMessage = jobLogEntry.getMessage();
 
 		testAsserter.assertEquals("Test JOBLOG", "Test INFO", lastMessage);

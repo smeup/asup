@@ -7,22 +7,14 @@
  */
 package org.smeup.sys.os.core.jobs.impl;
 
-import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.il.core.impl.ObjectNameableImpl;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLog;
-import org.smeup.sys.os.core.jobs.QJobLogEntry;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 
 /**
@@ -32,7 +24,6 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobLogImpl#getEntries <em>Entries</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobLogImpl#getJob <em>Job</em>}</li>
  * </ul>
  *
@@ -43,15 +34,6 @@ public class JobLogImpl extends ObjectNameableImpl implements QJobLog {
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getEntries()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<QJobLogEntry> entries;
 
 	/**
 	 * The cached value of the '{@link #getJob() <em>Job</em>}' reference.
@@ -78,18 +60,6 @@ public class JobLogImpl extends ObjectNameableImpl implements QJobLog {
 	@Override
 	protected EClass eStaticClass() {
 		return QOperatingSystemJobsPackage.Literals.JOB_LOG;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public List<QJobLogEntry> getEntries() {
-		if (entries == null) {
-			entries = new EObjectContainmentEList<QJobLogEntry>(QJobLogEntry.class, this, QOperatingSystemJobsPackage.JOB_LOG__ENTRIES);
-		}
-		return entries;
 	}
 
 	/**
@@ -135,23 +105,8 @@ public class JobLogImpl extends ObjectNameableImpl implements QJobLog {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case QOperatingSystemJobsPackage.JOB_LOG__ENTRIES:
-				return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QOperatingSystemJobsPackage.JOB_LOG__ENTRIES:
-				return getEntries();
 			case QOperatingSystemJobsPackage.JOB_LOG__JOB:
 				if (resolve) return getJob();
 				return basicGetJob();
@@ -167,10 +122,6 @@ public class JobLogImpl extends ObjectNameableImpl implements QJobLog {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QOperatingSystemJobsPackage.JOB_LOG__ENTRIES:
-				getEntries().clear();
-				getEntries().addAll((Collection<? extends QJobLogEntry>)newValue);
-				return;
 			case QOperatingSystemJobsPackage.JOB_LOG__JOB:
 				setJob((QJob)newValue);
 				return;
@@ -185,9 +136,6 @@ public class JobLogImpl extends ObjectNameableImpl implements QJobLog {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemJobsPackage.JOB_LOG__ENTRIES:
-				getEntries().clear();
-				return;
 			case QOperatingSystemJobsPackage.JOB_LOG__JOB:
 				setJob((QJob)null);
 				return;
@@ -202,8 +150,6 @@ public class JobLogImpl extends ObjectNameableImpl implements QJobLog {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemJobsPackage.JOB_LOG__ENTRIES:
-				return entries != null && !entries.isEmpty();
 			case QOperatingSystemJobsPackage.JOB_LOG__JOB:
 				return job != null;
 		}

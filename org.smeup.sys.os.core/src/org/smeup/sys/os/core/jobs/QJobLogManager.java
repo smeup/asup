@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.os.core.jobs;
 
+import org.smeup.sys.il.core.QObjectIterator;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>QJob Log Manager</b></em>'. <!-- end-user-doc -->
@@ -60,6 +62,14 @@ public interface QJobLogManager {
 	 * @generated
 	 */
 	QJobLog lookup(String contextID, String name, String user, int number);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model jobLogRequired="true"
+	 * @generated
+	 */
+	QObjectIterator<QJobLogEntry> getEntries(QJobLog jobLog);
 
 	/**
 	 * <!-- begin-user-doc -->

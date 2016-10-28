@@ -2,7 +2,7 @@
 <feature
       id="org.smeup.sys.gen.ft"
       label="As.UP Feature for system"
-      version="0.8.0.qualifier"
+      version="0.9.0.qualifier"
       provider-name="www.smeup.com">
 
    <description url="http://www.example.com/description">
@@ -437,13 +437,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.smeup.sys.il.lock.cdo"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.smeup.sys.il.lock.hc"
          download-size="0"
          install-size="0"
@@ -452,20 +445,6 @@
 
    <plugin
          id="org.smeup.sys.il.memo"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.smeup.sys.il.memo.cdo"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.smeup.sys.il.memo.cdo.store"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -808,13 +787,6 @@
 
    <plugin
          id="org.smeup.sys.os.usrprf.base"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.smeup.sys.os.usrprf.fb"
          download-size="0"
          install-size="0"
          version="0.0.0"

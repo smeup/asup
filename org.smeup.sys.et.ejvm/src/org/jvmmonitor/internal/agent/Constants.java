@@ -13,7 +13,7 @@ package org.jvmmonitor.internal.agent;
 public class Constants {
 
     /** The version. */
-    static final String VERSION = "0.8.0";
+    static final String VERSION = "0.9.0";
 
     /** The logger name. */
     static final String LOGGER_NAME = "org.jvmmonitor.agent";

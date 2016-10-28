@@ -217,8 +217,6 @@
       </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobLog" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="entries" lowerBound="1"
-          upperBound="-1" eType="#//jobs/JobLogEntry" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="job" lowerBound="1" eType="#//jobs/Job"
           transient="true"/>
     </eClassifiers>
@@ -263,6 +261,12 @@
         <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         <eParameters name="user" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         <eParameters name="number" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eOperations>
+      <eOperations name="getEntries">
+        <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectIterator">
+          <eTypeArguments eClassifier="#//jobs/JobLogEntry"/>
+        </eGenericType>
+        <eParameters name="jobLog" lowerBound="1" eType="#//jobs/JobLog"/>
       </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobManager" abstract="true" interface="true">

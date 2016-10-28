@@ -18,6 +18,7 @@ import java.util.concurrent.ThreadFactory;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -88,8 +89,8 @@ public class BaseJobLogManagerImpl implements QJobLogManager {
 				entry.setMessage(message);
 				entry.setCreationDate(QOperatingSystemCoreHelper.now());
 
-				// add
-				jobLog.getEntries().add(entry);
+				// TODO
+//				jobLog.getEntries().add(entry);
 
 				// save
 				QResourceWriter<QJobLog> jobLogWriter = resourceManager.getResourceWriter(job, QJobLog.class, Scope.SYSTEM_LIBRARY);
@@ -142,5 +143,11 @@ public class BaseJobLogManagerImpl implements QJobLogManager {
 			return thread.getJavaThread();
 		}
 
+	}
+
+	@Override
+	public QObjectIterator<QJobLogEntry> getEntries(QJobLog jobLog) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

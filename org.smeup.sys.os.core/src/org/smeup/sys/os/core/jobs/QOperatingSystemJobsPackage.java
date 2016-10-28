@@ -379,22 +379,13 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB_LISTENER_FEATURE_COUNT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOB_LOG__ENTRIES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Job</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB_LOG__JOB = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+	int JOB_LOG__JOB = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Job Log</em>' class.
@@ -403,7 +394,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB_LOG_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+	int JOB_LOG_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Gravity</b></em>' attribute.
@@ -792,17 +783,6 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getJobLog();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.os.core.jobs.QJobLog#getEntries <em>Entries</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Entries</em>'.
-	 * @see org.smeup.sys.os.core.jobs.QJobLog#getEntries()
-	 * @see #getJobLog()
-	 * @generated
-	 */
-	EReference getJobLog_Entries();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.smeup.sys.os.core.jobs.QJobLog#getJob <em>Job</em>}'.
@@ -1209,14 +1189,6 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass JOB_LOG = eINSTANCE.getJobLog();
-
-		/**
-		 * The meta object literal for the '<em><b>Entries</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JOB_LOG__ENTRIES = eINSTANCE.getJobLog_Entries();
 
 		/**
 		 * The meta object literal for the '<em><b>Job</b></em>' reference feature.

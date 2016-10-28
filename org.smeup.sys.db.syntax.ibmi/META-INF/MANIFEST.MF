@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: As.UP Database Syntax IBMi
 Bundle-SymbolicName: org.smeup.sys.db.syntax.ibmi
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.9.0.qualifier
 Bundle-Vendor: www.smeup.com
 Export-Package: org.smeup.sys.db.syntax.ibmi.parser.dbl,
  org.smeup.sys.db.syntax.ibmi.parser.ddl,
