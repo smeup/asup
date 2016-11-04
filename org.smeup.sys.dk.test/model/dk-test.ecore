@@ -86,12 +86,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="AssertionFailed" eSuperTypes="#//AssertionResult"/>
   <eClassifiers xsi:type="ecore:EClass" name="AssertionResult" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
     <eOperations name="getAssertionState" lowerBound="1" eType="#//AssertionState">
-      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
         <details key="length" value="15"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
         <details key="length" value="128"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -177,42 +177,42 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestResult" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
     <eOperations name="getFailedCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
-      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/DecimalDef">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/DecimalDef">
         <details key="precision" value="5"/>
         <details key="scale" value="0"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getSuccessCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
-      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/DecimalDef">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/DecimalDef">
         <details key="precision" value="5"/>
         <details key="scale" value="0"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="isFailed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
         <details key="length" value="5"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="assertResults" upperBound="-1"
         eType="#//AssertionResult" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
         <details key="length" value="15"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="object" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
         <details key="length" value="15"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="runner" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
         <details key="length" value="25"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
-      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/DecimalDef">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/DecimalDef">
         <details key="precision" value="9"/>
         <details key="scale" value="0"/>
       </eAnnotations>

@@ -7,7 +7,7 @@
         eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobReference"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="outQueue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
         <details key="length" value="10"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -15,12 +15,12 @@
         containment="true" eOpposite="#//SpoolFileRow/spoolFile"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="spoolID" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true">
-      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
         <details key="length" value="36"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="userData" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
         <details key="length" value="48"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -38,8 +38,8 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SpoolFileData">
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//term/DataTerm">
-      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//def/BufferedDataDef">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//term/DataTerm">
+      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/BufferedDataDef">
         <eTypeArguments/>
       </eTypeArguments>
     </eGenericSuperTypes>

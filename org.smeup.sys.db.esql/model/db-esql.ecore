@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="esql" nsURI="http://www.smeup.org/asup/db/esql" nsPrefix="db-esql">
   <eClassifiers xsi:type="ecore:EClass" name="CommunicationArea" abstract="true" interface="true"
-      eSuperTypes="../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct">
+      eSuperTypes="../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct">
     <eOperations name="getSqlCode" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eOperations name="setSqlCode">
       <eParameters name="sqlCode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -14,56 +14,56 @@
     <eOperations name="before"/>
     <eOperations name="close"/>
     <eOperations name="first">
-      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//BufferedData"/>
+      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//BufferedData"/>
     </eOperations>
     <eOperations name="first">
       <eParameters name="target" lowerBound="1" eType="#//CursorRecord"/>
     </eOperations>
     <eOperations name="first">
-      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
+      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct"/>
     </eOperations>
     <eOperations name="first">
       <eParameters name="descriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="last">
-      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//BufferedData"/>
+      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//BufferedData"/>
     </eOperations>
     <eOperations name="last">
       <eParameters name="target" lowerBound="1" eType="#//CursorRecord"/>
     </eOperations>
     <eOperations name="last">
-      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
+      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct"/>
     </eOperations>
     <eOperations name="last">
       <eParameters name="descriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="next">
-      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//BufferedData"/>
+      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//BufferedData"/>
     </eOperations>
     <eOperations name="next">
       <eParameters name="target" lowerBound="1" eType="#//CursorRecord"/>
     </eOperations>
     <eOperations name="next">
-      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
+      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct"/>
     </eOperations>
     <eOperations name="next">
       <eParameters name="descriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="open"/>
     <eOperations name="prior">
-      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//BufferedData"/>
+      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//BufferedData"/>
     </eOperations>
     <eOperations name="prior">
       <eParameters name="target" lowerBound="1" eType="#//CursorRecord"/>
     </eOperations>
     <eOperations name="prior">
-      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
+      <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct"/>
     </eOperations>
     <eOperations name="prior">
       <eParameters name="descriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="relative">
-      <eParameters name="position" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Numeric"/>
+      <eParameters name="position" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Numeric"/>
       <eParameters name="descriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
   </eClassifiers>
@@ -81,7 +81,7 @@
     <eLiterals name="DynamicScroll" value="30" literal="DYNSCROLL"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DescriptorArea" abstract="true" interface="true"
-      eSuperTypes="../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct">
+      eSuperTypes="../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct">
     <eOperations name="getColumnsNumber" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eOperations name="getVariable" lowerBound="1" eType="#//DescriptorVariable">
       <eParameters name="index" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -95,7 +95,7 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DescriptorVariable" abstract="true"
-      interface="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-data.ecore#//DataStruct"/>
+      interface="true" eSuperTypes="../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct"/>
   <eClassifiers xsi:type="ecore:EClass" name="EsqlContext" abstract="true" interface="true"
       eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
     <eOperations name="allocateDescriptorArea" lowerBound="1" eType="#//DescriptorArea">
@@ -106,7 +106,7 @@
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="getCommunicationArea" lowerBound="1" eType="#//CommunicationArea"/>
-    <eOperations name="getDataContext" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataContext"/>
+    <eOperations name="getDataContext" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataContext"/>
     <eOperations name="getDescriptorArea" lowerBound="1" eType="#//DescriptorArea">
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
@@ -138,7 +138,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="ESqlManager" abstract="true" interface="true">
     <eOperations name="createEsqlContext" lowerBound="1" eType="#//EsqlContext">
       <eParameters name="connection" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
-      <eParameters name="dataContext" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataContext"/>
+      <eParameters name="dataContext" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataContext"/>
       <eParameters name="communicationArea" lowerBound="1" eType="#//CommunicationArea"/>
     </eOperations>
   </eClassifiers>
@@ -163,7 +163,7 @@
       <eParameters name="descriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="prepare">
-      <eParameters name="sql" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//String"/>
+      <eParameters name="sql" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//String"/>
     </eOperations>
     <eOperations name="prepare">
       <eParameters name="sql" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

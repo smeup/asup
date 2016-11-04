@@ -17,8 +17,6 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
-
 import org.smeup.sys.rt.repo.QRepository;
 import org.smeup.sys.rt.repo.QRepositoryManager;
 import org.smeup.sys.rt.repo.QRuntimeRepositoryFactory;
@@ -93,7 +91,6 @@ public class RuntimeRepositoryPackageImpl extends EPackageImpl implements QRunti
 
 		// Initialize simple dependencies
 		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theRuntimeRepositoryPackage.createPackageContents();

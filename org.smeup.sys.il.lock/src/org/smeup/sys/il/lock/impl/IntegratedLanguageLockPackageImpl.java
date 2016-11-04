@@ -16,9 +16,6 @@ import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
-import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
-import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.lock.LockType;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockFactory;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
@@ -97,9 +94,6 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 
 		// Initialize simple dependencies
 		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataDefPackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataTermPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theIntegratedLanguageLockPackage.createPackageContents();

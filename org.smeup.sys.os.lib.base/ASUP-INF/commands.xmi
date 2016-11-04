@@ -9,7 +9,7 @@
     xmlns:il-data-term="http://www.smeup.org/asup/il/data/term"
 
     xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/data/term ../../org.smeup.sys.il.core/model/il-data.ecore#//term http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore"
+    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.data/model/il-data.ecore#//def http://www.smeup.org/asup/il/data/term ../../org.smeup.sys.il.data/model/il-data.ecore#//term http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore"
     typeName="*LIB">
   <contents
       xsi:type="os-cmd:Command"

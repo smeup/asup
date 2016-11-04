@@ -3,8 +3,8 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="shell" nsURI="http://www.smeup.org/asup/co/shell" nsPrefix="co-shell">
   <eClassifiers xsi:type="ecore:EClass" name="ShellCredentials" eSuperTypes="../../org.smeup.sys.rt.auth/model/rt-auth.ecore#//AuthenticationUserPassword"/>
   <eClassifiers xsi:type="ecore:EClass" name="ShellData">
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//term/DataTerm">
-      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//def/BufferedDataDef">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//term/DataTerm">
+      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/BufferedDataDef">
         <eTypeArguments/>
       </eTypeArguments>
     </eGenericSuperTypes>
@@ -12,13 +12,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="ShellOutputWrapper" abstract="true"
       interface="true" eSuperTypes="../../org.smeup.sys.co.core/model/co-core.ecore#//OutputWrapper"/>
   <eClassifiers xsi:type="ecore:EClass" name="ShellManager" abstract="true" interface="true">
-    <eOperations name="decodeCommand" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataContainer">
+    <eOperations name="decodeCommand" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataContainer">
       <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
       <eParameters name="command" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="encodeCommand" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eParameters name="capability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
-      <eParameters name="container" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataContainer"/>
+      <eParameters name="container" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataContainer"/>
       <eParameters name="showDefaults" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="executeCommand" lowerBound="1">

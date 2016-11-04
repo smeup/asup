@@ -50,27 +50,4 @@ null
             genModel="model/il-core.genmodel"/>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated il-core -->
-      <package
-            uri="http://www.smeup.org/asup/il/data"
-            class="org.smeup.sys.il.data.QIntegratedLanguageDataPackage"
-            genModel="model/il-core.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated il-core -->
-      <package
-            uri="http://www.smeup.org/asup/il/data/def"
-            class="org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage"
-            genModel="model/il-core.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated il-core -->
-      <package
-            uri="http://www.smeup.org/asup/il/data/term"
-            class="org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage"
-            genModel="model/il-core.genmodel"/>
-   </extension>
 </plugin>

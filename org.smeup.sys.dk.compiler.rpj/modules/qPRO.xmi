@@ -7,7 +7,7 @@
     xmlns:il-data-term="http://www.smeup.org/asup/il/data/term"
 
     xmlns:il-flow="http://www.smeup.org/asup/il/flow"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/data/term ../../org.smeup.sys.il.core/model/il-data.ecore#//term http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il.flow/model/il-flow.ecore"
+    xsi:schemaLocation="http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.data/model/il-data.ecore#//def http://www.smeup.org/asup/il/data/term ../../org.smeup.sys.il.data/model/il-data.ecore#//term http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il.flow/model/il-flow.ecore"
     name="*PRO">
   <flowSection>
     <prototypes

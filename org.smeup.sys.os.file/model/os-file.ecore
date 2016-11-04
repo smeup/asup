@@ -15,8 +15,8 @@
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DatabaseFileFormatDef">
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//def/CompoundDataDef">
-      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Record"/>
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/CompoundDataDef">
+      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
       <eTypeArguments eClassifier="#//DatabaseFileField"/>
     </eGenericSuperTypes>
   </eClassifiers>
@@ -31,8 +31,8 @@
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DisplayFileFormatDef">
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//def/CompoundDataDef">
-      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Record"/>
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/CompoundDataDef">
+      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
       <eTypeArguments eClassifier="#//DisplayFileField"/>
     </eGenericSuperTypes>
   </eClassifiers>
@@ -48,18 +48,18 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FileFormat" abstract="true">
     <eTypeParameters name="DD">
-      <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//def/CompoundDataDef">
+      <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/CompoundDataDef">
         <eTypeArguments/>
         <eTypeArguments/>
       </eBounds>
     </eTypeParameters>
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//term/DataTerm">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//term/DataTerm">
       <eTypeArguments eTypeParameter="#//FileFormat/DD"/>
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FileFormatField" abstract="true">
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//term/DataTerm">
-      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//def/UnaryAtomicBufferedDataDef">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//term/DataTerm">
+      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/UnaryAtomicBufferedDataDef">
         <eTypeArguments/>
       </eTypeArguments>
     </eGenericSuperTypes>
@@ -181,8 +181,8 @@
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PrinterFileFormatDef">
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//def/CompoundDataDef">
-      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//Record"/>
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/CompoundDataDef">
+      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
       <eTypeArguments eClassifier="#//PrinterFileField"/>
     </eGenericSuperTypes>
   </eClassifiers>

@@ -23,7 +23,6 @@ import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.dk.source.QSourceNode;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
@@ -112,7 +111,6 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 
 		// Initialize simple dependencies
 		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theDevelopmentKitSourcePackage.createPackageContents();

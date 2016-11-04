@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
-import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.expr.ArithmeticOperator;
 import org.smeup.sys.il.expr.AssignmentOperator;
 import org.smeup.sys.il.expr.AtomicType;
@@ -252,7 +251,6 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 
 		// Initialize simple dependencies
 		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theIntegratedLanguageExpressionPackage.createPackageContents();

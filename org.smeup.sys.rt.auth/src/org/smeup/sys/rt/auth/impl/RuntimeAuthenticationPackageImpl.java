@@ -18,8 +18,6 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-
-import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.rt.auth.QAuthentication;
 import org.smeup.sys.rt.auth.QAuthenticationManager;
 import org.smeup.sys.rt.auth.QAuthenticationUserPassword;
@@ -102,7 +100,6 @@ public class RuntimeAuthenticationPackageImpl extends EPackageImpl implements QR
 
 		// Initialize simple dependencies
 		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theRuntimeAuthenticationPackage.createPackageContents();

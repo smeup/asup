@@ -33,7 +33,6 @@ public interface QThread extends QObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
-	 *        annotation="il-data precision='10' scale='2'"
 	 * @generated
 	 */
 	double getThreadCPUUsage();
@@ -42,7 +41,6 @@ public interface QThread extends QObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
-	 *        annotation="il-data precision='10'"
 	 * @generated
 	 */
 	long getThreadID();
@@ -51,7 +49,6 @@ public interface QThread extends QObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
-	 *        annotation="il-data length='96'"
 	 * @generated
 	 */
 	String getThreadName();
@@ -60,7 +57,6 @@ public interface QThread extends QObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
-	 *        annotation="il-data precision='10'"
 	 * @generated
 	 */
 	int getThreadPriority();
@@ -69,7 +65,6 @@ public interface QThread extends QObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
-	 *        annotation="il-data length='12'"
 	 * @generated
 	 */
 	ThreadStatus getThreadStatus();
@@ -78,7 +73,6 @@ public interface QThread extends QObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
-	 *        annotation="il-data length='10'"
 	 * @generated
 	 */
 	boolean isInterrupted();
@@ -87,7 +81,6 @@ public interface QThread extends QObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
-	 *        annotation="il-data length='10'"
 	 * @generated
 	 */
 	boolean isNative();
@@ -96,7 +89,6 @@ public interface QThread extends QObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
-	 *        annotation="il-data length='10'"
 	 * @generated
 	 */
 	boolean isSuspended();
@@ -105,7 +97,6 @@ public interface QThread extends QObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
-	 *        annotation="il-data length='10'"
 	 * @generated
 	 */
 	boolean isThreadDaemon();

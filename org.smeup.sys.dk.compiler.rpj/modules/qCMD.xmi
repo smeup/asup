@@ -12,8 +12,8 @@
     xmlns:db-esam="http://www.smeup.org/asup/db/esam"
     xsi:schemaLocation="
     http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore 
-    http://www.smeup.org/asup/il/data ../../org.smeup.sys.il.core/model/il-data.ecore 
-    http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def
+    http://www.smeup.org/asup/il/data ../../org.smeup.sys.il.data/model/il-data.ecore 
+    http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.data/model/il-data.ecore#//def
     http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il-flow/model/il-flow.ecore
     http://www.smeup.org/asup/db/esam ../../org.smeup.sys.db.esam/model/db-esam.ecore"
     name="*CMD">

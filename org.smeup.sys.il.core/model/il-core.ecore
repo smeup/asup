@@ -82,52 +82,15 @@
       eSuperTypes="#//Object">
     <eOperations name="checkRunnable" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="getJavaThread" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaThread"/>
-    <eOperations name="getThreadID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
-      <eAnnotations source="il-data" references="il-data.ecore#//def/DecimalDef">
-        <details key="precision" value="10"/>
-      </eAnnotations>
-    </eOperations>
-    <eOperations name="getThreadName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="il-data" references="il-data.ecore#//def/CharacterDef">
-        <details key="length" value="96"/>
-      </eAnnotations>
-    </eOperations>
-    <eOperations name="getThreadPriority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
-      <eAnnotations source="il-data" references="il-data.ecore#//def/DecimalDef">
-        <details key="precision" value="10"/>
-      </eAnnotations>
-    </eOperations>
-    <eOperations name="getThreadCPUUsage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
-      <eAnnotations source="il-data" references="il-data.ecore#//def/DecimalDef">
-        <details key="precision" value="10"/>
-        <details key="scale" value="2"/>
-      </eAnnotations>
-    </eOperations>
-    <eOperations name="getThreadStatus" eType="#//ThreadStatus">
-      <eAnnotations source="il-data" references="il-data.ecore#//def/CharacterDef">
-        <details key="length" value="12"/>
-      </eAnnotations>
-    </eOperations>
-    <eOperations name="isInterrupted" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="il-data" references="il-data.ecore#//def/CharacterDef">
-        <details key="length" value="10"/>
-      </eAnnotations>
-    </eOperations>
-    <eOperations name="isNative" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="il-data" references="il-data.ecore#//def/CharacterDef">
-        <details key="length" value="10"/>
-      </eAnnotations>
-    </eOperations>
-    <eOperations name="isSuspended" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="il-data" references="il-data.ecore#//def/CharacterDef">
-        <details key="length" value="10"/>
-      </eAnnotations>
-    </eOperations>
-    <eOperations name="isThreadDaemon" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="il-data" references="il-data.ecore#//def/CharacterDef">
-        <details key="length" value="10"/>
-      </eAnnotations>
-    </eOperations>
+    <eOperations name="getThreadID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eOperations name="getThreadName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getThreadPriority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eOperations name="getThreadCPUUsage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eOperations name="getThreadStatus" eType="#//ThreadStatus"/>
+    <eOperations name="isInterrupted" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isNative" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isSuspended" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isThreadDaemon" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ThreadManager" abstract="true" interface="true">
     <eOperations name="createThread" eType="#//Thread">

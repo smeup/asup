@@ -6,7 +6,7 @@
     xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
     xmlns:il-esam="http://www.smeup.org/asup/il/esam"
     xmlns:il-flow="http://www.smeup.org/asup/il/flow"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/il/esam ../../org.smeup.sys.il.esam/model/il-esam.ecore http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il.flow/model/il-flow.ecore"
+    xsi:schemaLocation="http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.data/model/il-data.ecore#//def http://www.smeup.org/asup/il/esam ../../org.smeup.sys.il.esam/model/il-esam.ecore http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il.flow/model/il-flow.ecore"
     name="*RPJ">
   <dataSection>
     <datas xsi:type="il-flow:FlowData"
