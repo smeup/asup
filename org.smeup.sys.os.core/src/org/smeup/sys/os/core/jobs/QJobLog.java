@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.os.core.jobs;
 
+import java.util.List;
 import org.smeup.sys.il.core.QObjectNameable;
 
 /**
@@ -18,6 +19,7 @@ import org.smeup.sys.il.core.QObjectNameable;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJobLog#getJob <em>Job</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJobLog#getEntries <em>Entries</em>}</li>
  * </ul>
  *
  * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJobLog()
@@ -50,5 +52,21 @@ public interface QJobLog extends QObjectNameable {
 	 * @generated
 	 */
 	void setJob(QJob value);
+
+	/**
+	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
+	 * The list contents are of type {@link org.smeup.sys.os.core.jobs.QJobLogEntry}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Entries</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Entries</em>' containment reference list.
+	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJobLog_Entries()
+	 * @model containment="true"
+	 * @generated
+	 */
+	List<QJobLogEntry> getEntries();
 
 } // QJobLog

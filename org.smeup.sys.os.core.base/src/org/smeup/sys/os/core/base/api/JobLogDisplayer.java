@@ -58,7 +58,7 @@ public class JobLogDisplayer {
 
 		objectWriter.initialize();
 		try {
-			for (QJobLogEntry jobLogEntry : jobLogManager.getEntries(jobLog))
+			for (QJobLogEntry jobLogEntry : jobLog.getEntries())
 				objectWriter.write(jobLogEntry);
 		} catch (IOException e) {
 			throw new OperatingSystemRuntimeException(e);

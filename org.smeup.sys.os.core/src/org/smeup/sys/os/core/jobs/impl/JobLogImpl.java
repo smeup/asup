@@ -7,14 +7,21 @@
  */
 package org.smeup.sys.os.core.jobs.impl;
 
+import java.util.Collection;
+import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.il.core.impl.ObjectNameableImpl;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLog;
+import org.smeup.sys.os.core.jobs.QJobLogEntry;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 
 /**
@@ -25,6 +32,7 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobLogImpl#getJob <em>Job</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobLogImpl#getEntries <em>Entries</em>}</li>
  * </ul>
  *
  * @generated
@@ -44,6 +52,16 @@ public class JobLogImpl extends ObjectNameableImpl implements QJobLog {
 	 * @ordered
 	 */
 	protected QJob job;
+
+	/**
+	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntries()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<QJobLogEntry> entries;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -101,6 +119,32 @@ public class JobLogImpl extends ObjectNameableImpl implements QJobLog {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List<QJobLogEntry> getEntries() {
+		if (entries == null) {
+			entries = new EObjectContainmentEList<QJobLogEntry>(QJobLogEntry.class, this, QOperatingSystemJobsPackage.JOB_LOG__ENTRIES);
+		}
+		return entries;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case QOperatingSystemJobsPackage.JOB_LOG__ENTRIES:
+				return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -110,6 +154,8 @@ public class JobLogImpl extends ObjectNameableImpl implements QJobLog {
 			case QOperatingSystemJobsPackage.JOB_LOG__JOB:
 				if (resolve) return getJob();
 				return basicGetJob();
+			case QOperatingSystemJobsPackage.JOB_LOG__ENTRIES:
+				return getEntries();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -118,11 +164,16 @@ public class JobLogImpl extends ObjectNameableImpl implements QJobLog {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case QOperatingSystemJobsPackage.JOB_LOG__JOB:
 				setJob((QJob)newValue);
+				return;
+			case QOperatingSystemJobsPackage.JOB_LOG__ENTRIES:
+				getEntries().clear();
+				getEntries().addAll((Collection<? extends QJobLogEntry>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -138,6 +189,9 @@ public class JobLogImpl extends ObjectNameableImpl implements QJobLog {
 			case QOperatingSystemJobsPackage.JOB_LOG__JOB:
 				setJob((QJob)null);
 				return;
+			case QOperatingSystemJobsPackage.JOB_LOG__ENTRIES:
+				getEntries().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -151,6 +205,8 @@ public class JobLogImpl extends ObjectNameableImpl implements QJobLog {
 		switch (featureID) {
 			case QOperatingSystemJobsPackage.JOB_LOG__JOB:
 				return job != null;
+			case QOperatingSystemJobsPackage.JOB_LOG__ENTRIES:
+				return entries != null && !entries.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

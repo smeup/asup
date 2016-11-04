@@ -110,7 +110,6 @@ public class OperatingSystemEnvironmentPackageImpl extends EPackageImpl implemen
 		isInited = true;
 
 		// Initialize simple dependencies
-		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
 		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies

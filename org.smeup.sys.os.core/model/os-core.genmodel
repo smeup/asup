@@ -5,7 +5,7 @@
     runtimeJar="true" modelName="As.UP Operating System Core" rootExtendsInterface=""
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" suppressEMFTypes="true"
     booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//data ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
+    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>os-core.ecore</foreignModel>
   <genPackages prefix="OperatingSystemCore" basePackage="org.smeup.sys.os" disposableProviderFactory="true"
@@ -157,9 +157,9 @@
         </genOperations>
       </genClasses>
       <genClasses ecoreClass="os-core.ecore#//jobs/JobLog">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//jobs/JobLog/entries"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference os-core.ecore#//jobs/JobLog/job"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//jobs/JobLog/entries"/>
       </genClasses>
       <genClasses ecoreClass="os-core.ecore#//jobs/JobLogEntry">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/JobLogEntry/gravity"/>
@@ -216,13 +216,6 @@
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/create.1/identity"/>
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/create.1/jobName"/>
         </genOperations>
-        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/spawn">
-          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/spawn/parent"/>
-        </genOperations>
-        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/spawn.1">
-          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/spawn.1/parent"/>
-          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/spawn.1/jobName"/>
-        </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/delay">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/delay/millis"/>
         </genOperations>
@@ -250,11 +243,20 @@
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookupActiveJob/contextID"/>
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookupActiveJob/jobID"/>
         </genOperations>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/lookupActiveJob.1">
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookupActiveJob.1/contextID"/>
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookupActiveJob.1/name"/>
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookupActiveJob.1/user"/>
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookupActiveJob.1/number"/>
+        </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/lookup.3">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookup.3/capability"/>
         </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/lookup.4">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookup.4/contextID"/>
+        </genOperations>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/now">
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/now/job"/>
         </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/registerListener">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/registerListener/listener"/>
@@ -267,6 +269,11 @@
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/setDefaultWriter">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/setDefaultWriter/capability"/>
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/setDefaultWriter/name"/>
+        </genOperations>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/spawn">
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/spawn/parent"/>
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/spawn/jobName"/>
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/spawn/copyEnvironmentVariables"/>
         </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/updateStatus">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/updateStatus/job"/>
@@ -302,6 +309,11 @@
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/addVariable/name"/>
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/addVariable/value"/>
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/addVariable/replace"/>
+        </genOperations>
+        <genOperations ecoreOperation="os-core.ecore#//env/EnvironmentVariableManager/addVariables">
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/addVariables/job"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/addVariables/variables"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/addVariables/replace"/>
         </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//env/EnvironmentVariableManager/changeVariable">
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/changeVariable/job"/>

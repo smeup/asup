@@ -388,13 +388,22 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB_LOG__JOB = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_LOG__ENTRIES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Job Log</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB_LOG_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+	int JOB_LOG_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Gravity</b></em>' attribute.
@@ -794,6 +803,17 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getJobLog_Job();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.os.core.jobs.QJobLog#getEntries <em>Entries</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Entries</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobLog#getEntries()
+	 * @see #getJobLog()
+	 * @generated
+	 */
+	EReference getJobLog_Entries();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.jobs.QJobLogEntry <em>Job Log Entry</em>}'.
@@ -1197,6 +1217,14 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference JOB_LOG__JOB = eINSTANCE.getJobLog_Job();
+
+		/**
+		 * The meta object literal for the '<em><b>Entries</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOB_LOG__ENTRIES = eINSTANCE.getJobLog_Entries();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.impl.JobLogEntryImpl <em>Job Log Entry</em>}' class.
