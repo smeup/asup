@@ -32,10 +32,10 @@ import org.smeup.sys.il.mind.QMindTerm;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.mind.impl.GoalImpl#getTerms <em>Terms</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

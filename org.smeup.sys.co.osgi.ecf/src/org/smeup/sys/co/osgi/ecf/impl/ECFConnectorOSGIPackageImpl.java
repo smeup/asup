@@ -15,7 +15,6 @@ import org.smeup.sys.co.osgi.ecf.ECFConnectorOSGIFactory;
 import org.smeup.sys.co.osgi.ecf.ECFConnectorOSGIPackage;
 import org.smeup.sys.co.osgi.ecf.ECFServerContainerConfig;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -79,7 +78,6 @@ public class ECFConnectorOSGIPackageImpl extends EPackageImpl implements ECFConn
 
 		// Initialize simple dependencies
 		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theECFConnectorOSGIPackage.createPackageContents();

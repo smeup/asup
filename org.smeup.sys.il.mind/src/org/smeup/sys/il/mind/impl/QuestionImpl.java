@@ -27,13 +27,13 @@ import org.smeup.sys.il.mind.QQuestion;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.mind.impl.QuestionImpl#getObject <em>Object</em>}</li>
  *   <li>{@link org.smeup.sys.il.mind.impl.QuestionImpl#getSubject <em>Subject</em>}</li>
  *   <li>{@link org.smeup.sys.il.mind.impl.QuestionImpl#getRelation <em>Relation</em>}</li>
  *   <li>{@link org.smeup.sys.il.mind.impl.QuestionImpl#getRule <em>Rule</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

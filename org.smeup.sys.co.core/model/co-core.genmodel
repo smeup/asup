@@ -4,40 +4,11 @@
     modelDirectory="/org.smeup.sys.co.core/src" modelPluginID="org.smeup.sys.co.core"
     modelName="As.UP Communication Core" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//data ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core ../../org.smeup.sys.os.core/model/os-core.genmodel#//core"
+    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>co-core.ecore</foreignModel>
   <genPackages prefix="CommunicationCore" basePackage="org.smeup.sys.co" disposableProviderFactory="true"
       adapterFactory="false" ecorePackage="co-core.ecore#/">
-    <genClasses image="false" ecoreClass="co-core.ecore#//OutputWrapper">
-      <genOperations ecoreOperation="co-core.ecore#//OutputWrapper/flush">
-        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/flush/contextID"/>
-      </genOperations>
-      <genOperations ecoreOperation="co-core.ecore#//OutputWrapper/write">
-        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/write/contextID"/>
-        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/write/value"/>
-      </genOperations>
-      <genOperations ecoreOperation="co-core.ecore#//OutputWrapper/register">
-        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/register/contextID"/>
-        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/register/writer"/>
-      </genOperations>
-      <genOperations ecoreOperation="co-core.ecore#//OutputWrapper/unregister">
-        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/unregister/contextID"/>
-      </genOperations>
-      <genOperations ecoreOperation="co-core.ecore#//OutputWrapper/contains">
-        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/contains/contextID"/>
-      </genOperations>
-    </genClasses>
-    <genClasses ecoreClass="co-core.ecore#//ServerSocketConfig">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute co-core.ecore#//ServerSocketConfig/address"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute co-core.ecore#//ServerSocketConfig/port"/>
-    </genClasses>
-    <genClasses ecoreClass="co-core.ecore#//ServerSocket"/>
-    <genClasses image="false" ecoreClass="co-core.ecore#//ServerSocketManager">
-      <genOperations ecoreOperation="co-core.ecore#//ServerSocketManager/startServerSocket">
-        <genParameters ecoreParameter="co-core.ecore#//ServerSocketManager/startServerSocket/config"/>
-      </genOperations>
-    </genClasses>
     <genClasses image="false" ecoreClass="co-core.ecore#//CommunicationManager">
       <genOperations ecoreOperation="co-core.ecore#//CommunicationManager/find">
         <genParameters ecoreParameter="co-core.ecore#//CommunicationManager/find/contextID"/>
@@ -64,6 +35,35 @@
       <genOperations ecoreOperation="co-core.ecore#//EndPoint/getInterfaces"/>
       <genOperations ecoreOperation="co-core.ecore#//EndPoint/getProperties"/>
       <genOperations ecoreOperation="co-core.ecore#//EndPoint/getServiceID"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="co-core.ecore#//OutputWrapper">
+      <genOperations ecoreOperation="co-core.ecore#//OutputWrapper/contains">
+        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/contains/capability"/>
+      </genOperations>
+      <genOperations ecoreOperation="co-core.ecore#//OutputWrapper/flush">
+        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/flush/capability"/>
+      </genOperations>
+      <genOperations ecoreOperation="co-core.ecore#//OutputWrapper/register">
+        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/register/capability"/>
+        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/register/writer"/>
+      </genOperations>
+      <genOperations ecoreOperation="co-core.ecore#//OutputWrapper/unregister">
+        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/unregister/capability"/>
+      </genOperations>
+      <genOperations ecoreOperation="co-core.ecore#//OutputWrapper/write">
+        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/write/capability"/>
+        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/write/content"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="co-core.ecore#//ServerSocketConfig">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute co-core.ecore#//ServerSocketConfig/address"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute co-core.ecore#//ServerSocketConfig/port"/>
+    </genClasses>
+    <genClasses ecoreClass="co-core.ecore#//ServerSocket"/>
+    <genClasses image="false" ecoreClass="co-core.ecore#//ServerSocketManager">
+      <genOperations ecoreOperation="co-core.ecore#//ServerSocketManager/startServerSocket">
+        <genParameters ecoreParameter="co-core.ecore#//ServerSocketManager/startServerSocket/config"/>
+      </genOperations>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

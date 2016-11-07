@@ -4,7 +4,7 @@
     modelDirectory="/org.smeup.sys.dk.compiler/src" modelPluginID="org.smeup.sys.dk.compiler"
     modelName="As.UP Devolopment Kit Compiler" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="7.0" copyrightFields="false" language="" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//data ../../org.smeup.sys.db.esql/model/db-esql.genmodel#//esql ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.il.flow/model/il-flow.genmodel#//flow ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.file/model/os-file.genmodel#//file ../../org.smeup.sys.os.module/model/os-module.genmodel#//module ../../org.smeup.sys.os.pgm/model/os-pgm.genmodel#//pgm ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.esam/model/il-esam.genmodel#//esam ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core ../../org.smeup.sys.il.memo/model/il-memo.genmodel#//memo ../../org.smeup.sys.dk.core/model/dk.core.genmodel#//core"
+    complianceLevel="7.0" copyrightFields="false" language="" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.db.esql/model/db-esql.genmodel#//esql ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.il.flow/model/il-flow.genmodel#//flow ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.file/model/os-file.genmodel#//file ../../org.smeup.sys.os.module/model/os-module.genmodel#//module ../../org.smeup.sys.os.pgm/model/os-pgm.genmodel#//pgm ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.esam/model/il-esam.genmodel#//esam ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core ../../org.smeup.sys.il.memo/model/il-memo.genmodel#//memo ../../org.smeup.sys.dk.core/model/dk.core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>dk-compiler.ecore</foreignModel>
   <genPackages prefix="DevelopmentKitCompiler" basePackage="org.smeup.sys.dk" disposableProviderFactory="true"
@@ -48,9 +48,6 @@
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getDataSet/name"/>
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getDataSet/deep"/>
       </genOperations>
-      <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/getDataTerms">
-        <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getDataTerms/deep"/>
-      </genOperations>
       <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/getDataTerm">
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getDataTerm/name"/>
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getDataTerm/deep"/>
@@ -64,6 +61,7 @@
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getKeyList/deep"/>
       </genOperations>
       <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/getMethod">
+        <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getMethod/target"/>
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getMethod/name"/>
       </genOperations>
       <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/getModule">
@@ -104,6 +102,9 @@
       </genOperations>
       <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/normalizeModuleName">
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/normalizeModuleName/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/normalizeRoutineName">
+        <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/normalizeRoutineName/name"/>
       </genOperations>
       <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/normalizeTermName">
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/normalizeTermName/name"/>

@@ -19,11 +19,11 @@ import org.smeup.sys.os.module.QOperatingSystemModulePackage;
  * <em><b>Module Source</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.module.impl.ModuleSourceImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.smeup.sys.os.module.impl.ModuleSourceImpl#getContent <em>Content</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

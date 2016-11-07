@@ -14,6 +14,9 @@ import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.term.QTermPackage;
+import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
@@ -101,8 +104,11 @@ public class OperatingSystemLibraryPackageImpl extends EPackageImpl implements Q
 		isInited = true;
 
 		// Initialize simple dependencies
+		QIntegratedLanguageLockPackage.eINSTANCE.eClass();
 		QIntegratedLanguageMemoryPackage.eINSTANCE.eClass();
 		QOperatingSystemTypePackage.eINSTANCE.eClass();
+		QDefPackage.eINSTANCE.eClass();
+		QTermPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theOperatingSystemLibraryPackage.createPackageContents();

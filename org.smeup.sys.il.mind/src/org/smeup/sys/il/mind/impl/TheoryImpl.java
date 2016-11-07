@@ -32,11 +32,11 @@ import org.smeup.sys.il.mind.QTheory;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.mind.impl.TheoryImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.mind.impl.TheoryImpl#getFacts <em>Facts</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -14,6 +14,9 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
+import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.term.QTermPackage;
+import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.os.dtaara.DataAreaType;
 import org.smeup.sys.os.dtaara.QDataArea;
 import org.smeup.sys.os.dtaara.QDataAreaManager;
@@ -92,6 +95,9 @@ public class OperatingSystemDataAreaPackageImpl extends EPackageImpl implements 
 
 		// Initialize simple dependencies
 		QOperatingSystemTypePackage.eINSTANCE.eClass();
+		QIntegratedLanguageLockPackage.eINSTANCE.eClass();
+		QDefPackage.eINSTANCE.eClass();
+		QTermPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theOperatingSystemDataAreaPackage.createPackageContents();

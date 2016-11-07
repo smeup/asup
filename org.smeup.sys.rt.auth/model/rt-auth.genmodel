@@ -4,7 +4,7 @@
     modelDirectory="/org.smeup.sys.rt.auth/src" modelPluginID="org.smeup.sys.rt.auth"
     modelName="As.UP Runtime Authentication" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//data ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
+    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>rt-auth.ecore</foreignModel>
   <genPackages prefix="RuntimeAuthentication" basePackage="org.smeup.sys.rt" disposableProviderFactory="true"

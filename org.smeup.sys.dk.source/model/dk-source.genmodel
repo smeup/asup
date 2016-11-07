@@ -4,7 +4,7 @@
     modelDirectory="/org.smeup.sys.dk.source/src" modelPluginID="org.smeup.sys.dk.source"
     modelName="As.UP Development Kit Source" rootExtendsInterface="" suppressEMFTypes="true"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
-    language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//data"
+    language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}">
   <foreignModel>dk-source.ecore</foreignModel>
   <genPackages prefix="DevelopmentKitSource" basePackage="org.smeup.sys.dk" disposableProviderFactory="true"
@@ -58,16 +58,18 @@
         <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.2/context"/>
         <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.2/project"/>
         <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.2/type"/>
-        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.2/content"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.2/name"/>
         <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.2/replace"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.2/content"/>
         <genTypeParameters ecoreTypeParameter="dk-source.ecore#//SourceManager/createObjectEntry.2/T"/>
       </genOperations>
       <genOperations ecoreOperation="dk-source.ecore#//SourceManager/createObjectEntry.3">
         <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.3/context"/>
         <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.3/project"/>
         <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.3/type"/>
-        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.3/content"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.3/name"/>
         <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.3/replace"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.3/content"/>
         <genTypeParameters ecoreTypeParameter="dk-source.ecore#//SourceManager/createObjectEntry.3/T"/>
       </genOperations>
       <genOperations ecoreOperation="dk-source.ecore#//SourceManager/deleteProject">
@@ -118,13 +120,25 @@
       <genOperations ecoreOperation="dk-source.ecore#//SourceManager/listProjects">
         <genParameters ecoreParameter="dk-source.ecore#//SourceManager/listProjects/context"/>
       </genOperations>
-      <genOperations ecoreOperation="dk-source.ecore#//SourceManager/refreshNode">
-        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/refreshNode/context"/>
-        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/refreshNode/node"/>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceManager/lookupFirstChildEntry">
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/lookupFirstChildEntry/context"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/lookupFirstChildEntry/parent"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceManager/lookupLastChildEntry">
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/lookupLastChildEntry/context"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/lookupLastChildEntry/parent"/>
       </genOperations>
       <genOperations ecoreOperation="dk-source.ecore#//SourceManager/removeEntry">
         <genParameters ecoreParameter="dk-source.ecore#//SourceManager/removeEntry/context"/>
         <genParameters ecoreParameter="dk-source.ecore#//SourceManager/removeEntry/entry"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceManager/deserializeObject">
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/deserializeObject/context"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/deserializeObject/project"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/deserializeObject/type"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/deserializeObject/name"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/deserializeObject/stream"/>
+        <genTypeParameters ecoreTypeParameter="dk-source.ecore#//SourceManager/deserializeObject/T"/>
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="dk-source.ecore#//SourceNode">

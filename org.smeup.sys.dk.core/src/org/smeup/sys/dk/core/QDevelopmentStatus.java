@@ -16,10 +16,10 @@ import org.smeup.sys.il.core.meta.QFacet;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.core.QDevelopmentStatus#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.dk.core.QDevelopmentKitCorePackage#getDevelopmentStatus()
  * @model

@@ -5,7 +5,7 @@
     modelName="As.UP Integrated Language Expression" modelPluginClass="" rootExtendsInterface=""
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" suppressEMFTypes="true"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
-    language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//data"
+    language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" classNamePattern="" importOrganizing="true">
   <foreignModel>il-expr.ecore</foreignModel>
   <genPackages prefix="IntegratedLanguageExpression" basePackage="org.smeup.sys.il"
@@ -51,6 +51,7 @@
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//ExpressionType/Qualified"/>
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//ExpressionType/Function"/>
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//ExpressionType/Block"/>
+      <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//ExpressionType/Array"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-expr.ecore#//LogicalOperator">
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//LogicalOperator/And"/>
@@ -69,6 +70,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-expr.ecore#//ArithmeticExpression/leftOperand"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-expr.ecore#//ArithmeticExpression/operator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-expr.ecore#//ArithmeticExpression/rightOperand"/>
+    </genClasses>
+    <genClasses ecoreClass="il-expr.ecore#//ArrayExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-expr.ecore#//ArrayExpression/expression"/>
     </genClasses>
     <genClasses ecoreClass="il-expr.ecore#//AssignmentExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-expr.ecore#//AssignmentExpression/leftOperand"/>
@@ -148,6 +152,9 @@
       <genOperations ecoreOperation="il-expr.ecore#//ExpressionVisitor/endVisit.8">
         <genParameters ecoreParameter="il-expr.ecore#//ExpressionVisitor/endVisit.8/expression"/>
       </genOperations>
+      <genOperations ecoreOperation="il-expr.ecore#//ExpressionVisitor/endVisit.9">
+        <genParameters ecoreParameter="il-expr.ecore#//ExpressionVisitor/endVisit.9/expression"/>
+      </genOperations>
       <genOperations ecoreOperation="il-expr.ecore#//ExpressionVisitor/visit">
         <genParameters ecoreParameter="il-expr.ecore#//ExpressionVisitor/visit/expression"/>
       </genOperations>
@@ -174,6 +181,9 @@
       </genOperations>
       <genOperations ecoreOperation="il-expr.ecore#//ExpressionVisitor/visit.8">
         <genParameters ecoreParameter="il-expr.ecore#//ExpressionVisitor/visit.8/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-expr.ecore#//ExpressionVisitor/visit.9">
+        <genParameters ecoreParameter="il-expr.ecore#//ExpressionVisitor/visit.9/expression"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="il-expr.ecore#//FunctionTermExpression"/>

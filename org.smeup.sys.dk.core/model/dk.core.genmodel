@@ -17,5 +17,8 @@
     <genClasses ecoreClass="dk.core.ecore#//DevelopmentStatus">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk.core.ecore#//DevelopmentStatus/value"/>
     </genClasses>
+    <genClasses ecoreClass="dk.core.ecore#//Comment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk.core.ecore#//Comment/text"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

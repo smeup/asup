@@ -20,9 +20,8 @@ import org.smeup.sys.co.shell.QShellData;
 import org.smeup.sys.co.shell.QShellManager;
 import org.smeup.sys.co.shell.QShellOutputWrapper;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
-import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
-import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
-import org.smeup.sys.os.core.QOperatingSystemCorePackage;
+import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.term.QTermPackage;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.rt.auth.QRuntimeAuthenticationPackage;
 
@@ -105,7 +104,6 @@ public class CommunicationShellPackageImpl extends EPackageImpl implements QComm
 
 		// Initialize simple dependencies
 		QCommunicationCorePackage.eINSTANCE.eClass();
-		QOperatingSystemCorePackage.eINSTANCE.eClass();
 		QRuntimeAuthenticationPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -221,8 +219,8 @@ public class CommunicationShellPackageImpl extends EPackageImpl implements QComm
 
 		// Obtain other dependent packages
 		QRuntimeAuthenticationPackage theRuntimeAuthenticationPackage = (QRuntimeAuthenticationPackage)EPackage.Registry.INSTANCE.getEPackage(QRuntimeAuthenticationPackage.eNS_URI);
-		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
-		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
+		QTermPackage theTermPackage = (QTermPackage)EPackage.Registry.INSTANCE.getEPackage(QTermPackage.eNS_URI);
+		QDefPackage theDefPackage = (QDefPackage)EPackage.Registry.INSTANCE.getEPackage(QDefPackage.eNS_URI);
 		QCommunicationCorePackage theCommunicationCorePackage = (QCommunicationCorePackage)EPackage.Registry.INSTANCE.getEPackage(QCommunicationCorePackage.eNS_URI);
 		QIntegratedLanguageDataPackage theIntegratedLanguageDataPackage = (QIntegratedLanguageDataPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI);
 		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
@@ -233,8 +231,8 @@ public class CommunicationShellPackageImpl extends EPackageImpl implements QComm
 
 		// Add supertypes to classes
 		shellCredentialsEClass.getESuperTypes().add(theRuntimeAuthenticationPackage.getAuthenticationUserPassword());
-		EGenericType g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
-		EGenericType g2 = createEGenericType(theIntegratedLanguageDataDefPackage.getBufferedDataDef());
+		EGenericType g1 = createEGenericType(theTermPackage.getDataTerm());
+		EGenericType g2 = createEGenericType(theDefPackage.getBufferedDataDef());
 		g1.getETypeArguments().add(g2);
 		EGenericType g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);

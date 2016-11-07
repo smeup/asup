@@ -4,7 +4,7 @@
     modelDirectory="/org.smeup.sys.co.shell/src" modelPluginID="org.smeup.sys.co.shell"
     modelName="As.UP Communication Shell" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     rootImplementsInterface="" suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="7.0" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.co.core/model/co-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//data ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.rt.auth/model/rt-auth.genmodel#//auth"
+    complianceLevel="7.0" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.co.core/model/co-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.rt.auth/model/rt-auth.genmodel#//auth ../../org.smeup.sys.il.data/model/il-data.genmodel#//data"
     interfaceNamePattern="Q{0}">
   <foreignModel>co-shell.ecore</foreignModel>
   <genPackages prefix="CommunicationShell" basePackage="org.smeup.sys.co" disposableProviderFactory="true"
@@ -13,17 +13,12 @@
     <genClasses ecoreClass="co-shell.ecore#//ShellData"/>
     <genClasses image="false" ecoreClass="co-shell.ecore#//ShellOutputWrapper"/>
     <genClasses image="false" ecoreClass="co-shell.ecore#//ShellManager">
-      <genOperations ecoreOperation="co-shell.ecore#//ShellManager/connect">
-        <genParameters ecoreParameter="co-shell.ecore#//ShellManager/connect/identity"/>
-      </genOperations>
       <genOperations ecoreOperation="co-shell.ecore#//ShellManager/decodeCommand">
         <genParameters ecoreParameter="co-shell.ecore#//ShellManager/decodeCommand/capability"/>
         <genParameters ecoreParameter="co-shell.ecore#//ShellManager/decodeCommand/command"/>
       </genOperations>
-      <genOperations ecoreOperation="co-shell.ecore#//ShellManager/disconnect">
-        <genParameters ecoreParameter="co-shell.ecore#//ShellManager/disconnect/capability"/>
-      </genOperations>
       <genOperations ecoreOperation="co-shell.ecore#//ShellManager/encodeCommand">
+        <genParameters ecoreParameter="co-shell.ecore#//ShellManager/encodeCommand/capability"/>
         <genParameters ecoreParameter="co-shell.ecore#//ShellManager/encodeCommand/container"/>
         <genParameters ecoreParameter="co-shell.ecore#//ShellManager/encodeCommand/showDefaults"/>
       </genOperations>

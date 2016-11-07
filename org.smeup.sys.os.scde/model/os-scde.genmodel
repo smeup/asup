@@ -4,7 +4,7 @@
     modelDirectory="/org.smeup.sys.os.scde/src" modelPluginID="org.smeup.sys.os.scde"
     modelName="As.UP Operating System ScheduleEntry" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     rootImplementsInterface="" suppressEMFTypes="true" booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="7.0" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//data ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
+    complianceLevel="7.0" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>os-scde.ecore</foreignModel>
   <genPackages prefix="OperativeSystemScheduleEntry" basePackage="org.smeup.sys.os"
@@ -18,7 +18,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/scheduledDate"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/scheduledDay"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/scheduledTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/system"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/user"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/environment"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

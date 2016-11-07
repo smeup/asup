@@ -23,10 +23,9 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 
-import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
-
-import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
-
+import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.term.QTermPackage;
+import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.splf.QOperatingSystemSpoolFileFactory;
@@ -118,7 +117,10 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 		isInited = true;
 
 		// Initialize simple dependencies
+		QIntegratedLanguageLockPackage.eINSTANCE.eClass();
 		QOperatingSystemCorePackage.eINSTANCE.eClass();
+		QDefPackage.eINSTANCE.eClass();
+		QTermPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theOperatingSystemSpoolFilePackage.createPackageContents();
@@ -315,8 +317,8 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
-		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
-		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
+		QTermPackage theTermPackage = (QTermPackage)EPackage.Registry.INSTANCE.getEPackage(QTermPackage.eNS_URI);
+		QDefPackage theDefPackage = (QDefPackage)EPackage.Registry.INSTANCE.getEPackage(QDefPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -325,8 +327,8 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 		// Add supertypes to classes
 		spoolFileEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		spoolFileRowEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		EGenericType g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
-		EGenericType g2 = createEGenericType(theIntegratedLanguageDataDefPackage.getBufferedDataDef());
+		EGenericType g1 = createEGenericType(theTermPackage.getDataTerm());
+		EGenericType g2 = createEGenericType(theDefPackage.getBufferedDataDef());
 		g1.getETypeArguments().add(g2);
 		EGenericType g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);

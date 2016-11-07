@@ -4,7 +4,7 @@
     modelDirectory="/org.smeup.sys.il.memo/src" modelPluginID="org.smeup.sys.il.memo"
     modelName="As.UP Integrated Language Memory" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    suppressGenModelAnnotations="false" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//data"
+    suppressGenModelAnnotations="false" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>il-memo.ecore</foreignModel>
   <genPackages prefix="IntegratedLanguageMemory" basePackage="org.smeup.sys.il" disposableProviderFactory="true"

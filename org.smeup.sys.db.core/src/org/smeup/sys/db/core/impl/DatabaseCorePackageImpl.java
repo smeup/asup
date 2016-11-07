@@ -57,7 +57,8 @@ import org.smeup.sys.db.core.QTableProvider;
 import org.smeup.sys.db.core.QViewDef;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
+import org.smeup.sys.il.data.def.QDefPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 import org.smeup.sys.rt.auth.QRuntimeAuthenticationPackage;
 
@@ -311,6 +312,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		isInited = true;
 
 		// Initialize simple dependencies
+		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 		QRuntimeAuthenticationPackage.eINSTANCE.eClass();
 		SQLSchemaPackage.eINSTANCE.eClass();
 		SQLConstraintsPackage.eINSTANCE.eClass();
@@ -1012,7 +1014,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
-		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
+		QDefPackage theDefPackage = (QDefPackage)EPackage.Registry.INSTANCE.getEPackage(QDefPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -1387,7 +1389,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 
 		initEClass(tableColumnDefEClass, QTableColumnDef.class, "TableColumnDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTableColumnDef_Default(), theEcorePackage.getEBoolean(), "default", null, 0, 1, QTableColumnDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getDataDef());
+		g1 = createEGenericType(theDefPackage.getDataDef());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		initEReference(getTableColumnDef_Definition(), g1, null, "definition", null, 1, 1, QTableColumnDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

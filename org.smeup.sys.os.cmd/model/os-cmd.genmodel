@@ -8,7 +8,7 @@
     rootImplementsInterface="" suppressEMFTypes="true" testsDirectory="/org.smeup.sys.os.cmd.tests/src"
     testSuiteClass="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
     copyrightFields="false" editPluginID="org.smeup.sys.os.cmd.edit" editorPluginID="org.smeup.sys.os.cmd.editor"
-    language="EN" usedGenPackages="../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//data ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
+    language="EN" usedGenPackages="../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.dk.core/model/dk.core.genmodel#//core"
     interfaceNamePattern="Q{0}">
   <foreignModel>os-cmd.ecore</foreignModel>
   <genPackages prefix="OperatingSystemCommand" basePackage="org.smeup.sys.os" disposableProviderFactory="true"
@@ -58,21 +58,51 @@
     </genClasses>
     <genClasses ecoreClass="os-cmd.ecore#//CommandData"/>
     <genClasses image="false" ecoreClass="os-cmd.ecore#//CommandManager">
-      <genOperations ecoreOperation="os-cmd.ecore#//CommandManager/prepareCommand">
-        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/prepareCommand/contextID"/>
-        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/prepareCommand/command"/>
-        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/prepareCommand/variables"/>
-        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/prepareCommand/defaults"/>
+      <genOperations ecoreOperation="os-cmd.ecore#//CommandManager/decodeCommand">
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/decodeCommand/capability"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/decodeCommand/command"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-cmd.ecore#//CommandManager/decodeCommand.1">
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/decodeCommand.1/job"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/decodeCommand.1/variables"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/decodeCommand.1/command"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-cmd.ecore#//CommandManager/decodeCommand.2">
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/decodeCommand.2/job"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/decodeCommand.2/command"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-cmd.ecore#//CommandManager/encodeCommand">
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/encodeCommand/capability"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/encodeCommand/container"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/encodeCommand/showDefaults"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-cmd.ecore#//CommandManager/encodeCommand.1">
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/encodeCommand.1/job"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/encodeCommand.1/container"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/encodeCommand.1/showDefaults"/>
       </genOperations>
       <genOperations ecoreOperation="os-cmd.ecore#//CommandManager/executeCommand">
-        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/executeCommand/contextID"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/executeCommand/job"/>
         <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/executeCommand/command"/>
       </genOperations>
-      <genOperations ecoreOperation="os-cmd.ecore#//CommandManager/executeCommandImmediate">
-        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/executeCommandImmediate/contextID"/>
-        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/executeCommandImmediate/command"/>
-        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/executeCommandImmediate/variables"/>
-        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/executeCommandImmediate/defaults"/>
+      <genOperations ecoreOperation="os-cmd.ecore#//CommandManager/executeCommand.1">
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/executeCommand.1/capability"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/executeCommand.1/command"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/executeCommand.1/variables"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-cmd.ecore#//CommandManager/prepareCommand">
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/prepareCommand/job"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/prepareCommand/command"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/prepareCommand/variables"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/prepareCommand/controlRequiredParms"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-cmd.ecore#//CommandManager/submitCommand">
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/submitCommand/job"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/submitCommand/caller"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/submitCommand/command"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/submitCommand/jobName"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/submitCommand/hold"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/submitCommand/copyEnvironmentVariables"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="os-cmd.ecore#//CommandParameter">

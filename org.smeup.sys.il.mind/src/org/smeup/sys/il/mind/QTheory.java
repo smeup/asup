@@ -17,11 +17,11 @@ import org.smeup.sys.il.core.QObjectNameable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.mind.QTheory#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.mind.QTheory#getFacts <em>Facts</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.mind.QIntegratedLanguageMindPackage#getTheory()
  * @model

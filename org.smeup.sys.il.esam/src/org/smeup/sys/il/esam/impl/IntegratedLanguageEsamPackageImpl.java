@@ -17,12 +17,11 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
-import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
-import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
+import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.term.QTermPackage;
 import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.OperationDirection;
 import org.smeup.sys.il.esam.OperationRead;
@@ -233,7 +232,6 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		isInited = true;
 
 		// Initialize simple dependencies
-		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
 		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -666,8 +664,8 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QIntegratedLanguageDataPackage theIntegratedLanguageDataPackage = (QIntegratedLanguageDataPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI);
 		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
-		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
-		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
+		QTermPackage theTermPackage = (QTermPackage)EPackage.Registry.INSTANCE.getEPackage(QTermPackage.eNS_URI);
+		QDefPackage theDefPackage = (QDefPackage)EPackage.Registry.INSTANCE.getEPackage(QDefPackage.eNS_URI);
 
 		// Create type parameters
 		ETypeParameter dataSetEClass_R = addETypeParameter(dataSetEClass, "R");
@@ -1160,12 +1158,12 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(fileTermEClass, QFileTerm.class, "FileTerm", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
-		g2 = createEGenericType(theIntegratedLanguageDataDefPackage.getCompoundDataDef());
+		g1 = createEGenericType(theTermPackage.getDataTerm());
+		g2 = createEGenericType(theDefPackage.getCompoundDataDef());
 		g1.getETypeArguments().add(g2);
 		EGenericType g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);
-		g3 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
+		g3 = createEGenericType(theTermPackage.getDataTerm());
 		g2.getETypeArguments().add(g3);
 		EGenericType g4 = createEGenericType();
 		g3.getETypeArguments().add(g4);

@@ -16,13 +16,13 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.mind.QQuestion#getObject <em>Object</em>}</li>
  *   <li>{@link org.smeup.sys.il.mind.QQuestion#getSubject <em>Subject</em>}</li>
  *   <li>{@link org.smeup.sys.il.mind.QQuestion#getRelation <em>Relation</em>}</li>
  *   <li>{@link org.smeup.sys.il.mind.QQuestion#getRule <em>Rule</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.mind.QIntegratedLanguageMindPackage#getQuestion()
  * @model

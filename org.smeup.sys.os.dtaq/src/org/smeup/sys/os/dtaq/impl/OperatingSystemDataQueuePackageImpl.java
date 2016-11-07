@@ -16,6 +16,9 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
+import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.term.QTermPackage;
+import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.dtaq.DataQueueSearchType;
 import org.smeup.sys.os.dtaq.DataQueueSequence;
@@ -117,6 +120,9 @@ public class OperatingSystemDataQueuePackageImpl extends EPackageImpl implements
 
 		// Initialize simple dependencies
 		QOperatingSystemTypePackage.eINSTANCE.eClass();
+		QIntegratedLanguageLockPackage.eINSTANCE.eClass();
+		QDefPackage.eINSTANCE.eClass();
+		QTermPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theOperatingSystemDataQueuePackage.createPackageContents();

@@ -20,11 +20,11 @@ import org.smeup.sys.os.type.impl.TypedContainerImpl;
  * <em><b>Module Container</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.module.impl.ModuleContainerImpl#getBasePackage <em>Base Package</em>}</li>
  *   <li>{@link org.smeup.sys.os.module.impl.ModuleContainerImpl#isScanPackage <em>Scan Package</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

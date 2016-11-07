@@ -25,10 +25,10 @@ import org.smeup.sys.il.core.meta.impl.FacetImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.core.impl.DevelopmentStatusImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

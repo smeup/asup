@@ -18,10 +18,10 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.mind.QGoal#getTerms <em>Terms</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.mind.QIntegratedLanguageMindPackage#getGoal()
  * @model

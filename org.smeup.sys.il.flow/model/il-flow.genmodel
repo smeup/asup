@@ -7,11 +7,17 @@
     rootImplementsInterface="" suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="7.0" copyrightFields="false" editPluginID="org.smeup.sys.il.flow.edit"
     editorPluginID="org.smeup.sys.il.flow.editor" testsPluginID="org.asup.il.flow.tests"
-    language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//data ../../org.smeup.sys.db.esql/model/db-esql.genmodel#//esql ../../org.smeup.sys.il.esam/model/il-esam.genmodel#//esam ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
+    language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.db.esql/model/db-esql.genmodel#//esql ../../org.smeup.sys.il.esam/model/il-esam.genmodel#//esam ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data"
     interfaceNamePattern="Q{0}">
   <foreignModel>il-flow.ecore</foreignModel>
   <genPackages prefix="IntegratedLanguageFlow" basePackage="org.smeup.sys.il" disposableProviderFactory="true"
       adapterFactory="false" ecorePackage="il-flow.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-flow.ecore#//ConversionStatus">
+      <genEnumLiterals ecoreEnumLiteral="il-flow.ecore#//ConversionStatus/Possible"/>
+      <genEnumLiterals ecoreEnumLiteral="il-flow.ecore#//ConversionStatus/Supported"/>
+      <genEnumLiterals ecoreEnumLiteral="il-flow.ecore#//ConversionStatus/Unsupported"/>
+      <genEnumLiterals ecoreEnumLiteral="il-flow.ecore#//ConversionStatus/Todo"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-flow.ecore#//EvalOperator">
       <genEnumLiterals ecoreEnumLiteral="il-flow.ecore#//EvalOperator/Assign"/>
       <genEnumLiterals ecoreEnumLiteral="il-flow.ecore#//EvalOperator/PlusAssign"/>
@@ -56,6 +62,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//CommandExec/statement"/>
     </genClasses>
     <genClasses ecoreClass="il-flow.ecore#//Continue"/>
+    <genClasses ecoreClass="il-flow.ecore#//Conversion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//Conversion/status"/>
+    </genClasses>
     <genClasses ecoreClass="il-flow.ecore#//DataSection">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-flow.ecore#//DataSection/datas"/>
     </genClasses>
@@ -70,7 +79,8 @@
     </genClasses>
     <genClasses ecoreClass="il-flow.ecore#//Eval">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//Eval/assignment"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//Eval/roundingMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//Eval/halfAdjust"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//Eval/maxPrecision"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//Eval/rightAdjust"/>
     </genClasses>
     <genClasses ecoreClass="il-flow.ecore#//FileSection">
@@ -120,7 +130,7 @@
     </genClasses>
     <genClasses ecoreClass="il-flow.ecore#//OnError">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-flow.ecore#//OnError/body"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//OnError/error"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//OnError/errors"/>
     </genClasses>
     <genClasses ecoreClass="il-flow.ecore#//ParameterList">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//ParameterList/name"/>
@@ -137,12 +147,10 @@
     <genClasses ecoreClass="il-flow.ecore#//Program">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-flow.ecore#//Program/entry"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//Program/messages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//Program/text"/>
     </genClasses>
     <genClasses ecoreClass="il-flow.ecore#//Prototype">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-flow.ecore#//Prototype/entry"/>
-    </genClasses>
-    <genClasses ecoreClass="il-flow.ecore#//Reset">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//Reset/object"/>
     </genClasses>
     <genClasses ecoreClass="il-flow.ecore#//Return">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-flow.ecore#//Return/value"/>
@@ -281,12 +289,6 @@
       </genOperations>
       <genOperations ecoreOperation="il-flow.ecore#//StatementVisitor/visit.18">
         <genParameters ecoreParameter="il-flow.ecore#//StatementVisitor/visit.18/statement"/>
-      </genOperations>
-      <genOperations ecoreOperation="il-flow.ecore#//StatementVisitor/endVisit.19">
-        <genParameters ecoreParameter="il-flow.ecore#//StatementVisitor/endVisit.19/statement"/>
-      </genOperations>
-      <genOperations ecoreOperation="il-flow.ecore#//StatementVisitor/visit.19">
-        <genParameters ecoreParameter="il-flow.ecore#//StatementVisitor/visit.19/statement"/>
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="il-flow.ecore#//Unit">

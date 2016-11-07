@@ -4,7 +4,7 @@
     modelDirectory="/org.smeup.sys.db.esql/src" modelPluginID="org.smeup.sys.db.esql"
     modelName="As.UP Integrated Language Embedded SQL" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" language="EN" usedGenPackages="platform:/plugin/org.smeup.sys.il.core/model/il-core.genmodel#//core platform:/plugin/org.smeup.sys.mi.core/model/mi-core.genmodel#//core platform:/plugin/org.smeup.sys.il.core/model/il-core.genmodel#//data"
+    copyrightFields="false" language="EN" usedGenPackages="platform:/plugin/org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data platform:/plugin/org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>db-esql.ecore</foreignModel>
   <genPackages prefix="IntegratedLanguageEmbeddedSQL" basePackage="org.smeup.sys.db"
@@ -24,19 +24,71 @@
       <genEnumLiterals ecoreEnumLiteral="db-esql.ecore#//FetchPositioning/Current"/>
       <genEnumLiterals ecoreEnumLiteral="db-esql.ecore#//FetchPositioning/Relative"/>
     </genEnums>
-    <genClasses image="false" ecoreClass="db-esql.ecore#//CommunicationArea"/>
+    <genDataTypes ecoreDataType="db-esql.ecore#//CursorParameters"/>
+    <genDataTypes ecoreDataType="db-esql.ecore#//CursorRecord"/>
+    <genClasses image="false" ecoreClass="db-esql.ecore#//CommunicationArea">
+      <genOperations ecoreOperation="db-esql.ecore#//CommunicationArea/getSqlCode"/>
+      <genOperations ecoreOperation="db-esql.ecore#//CommunicationArea/setSqlCode">
+        <genParameters ecoreParameter="db-esql.ecore#//CommunicationArea/setSqlCode/sqlCode"/>
+      </genOperations>
+    </genClasses>
     <genClasses image="false" ecoreClass="db-esql.ecore#//Cursor">
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/after"/>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/before"/>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/close"/>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/first">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/first/target"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/first.1">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/first.1/target"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/first.2">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/first.2/target"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/first.3">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/first.3/descriptor"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/last">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/last/target"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/last.1">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/last.1/target"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/last.2">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/last.2/target"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/last.3">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/last.3/descriptor"/>
+      </genOperations>
       <genOperations ecoreOperation="db-esql.ecore#//Cursor/next">
         <genParameters ecoreParameter="db-esql.ecore#//Cursor/next/target"/>
       </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/next.1">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/next.1/target"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/next.2">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/next.2/target"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/next.3">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/next.3/descriptor"/>
+      </genOperations>
       <genOperations ecoreOperation="db-esql.ecore#//Cursor/open"/>
-      <genOperations ecoreOperation="db-esql.ecore#//Cursor/openUsingDescriptor">
-        <genParameters ecoreParameter="db-esql.ecore#//Cursor/openUsingDescriptor/descriptorName"/>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/prior">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/prior/target"/>
       </genOperations>
-      <genOperations ecoreOperation="db-esql.ecore#//Cursor/openUsingVariable">
-        <genParameters ecoreParameter="db-esql.ecore#//Cursor/openUsingVariable/variable"/>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/prior.1">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/prior.1/target"/>
       </genOperations>
-      <genOperations ecoreOperation="db-esql.ecore#//Cursor/close"/>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/prior.2">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/prior.2/target"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/prior.3">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/prior.3/descriptor"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/relative">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/relative/position"/>
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/relative/descriptor"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="db-esql.ecore#//CursorTerm">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-esql.ecore#//CursorTerm/cursorType"/>
@@ -44,40 +96,87 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-esql.ecore#//CursorTerm/sql"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-esql.ecore#//CursorTerm/statementName"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="db-esql.ecore#//DescriptorArea"/>
-    <genClasses image="false" ecoreClass="db-esql.ecore#//ESqlObject">
-      <genOperations ecoreOperation="db-esql.ecore#//ESqlObject/getCommunicationArea"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="db-esql.ecore#//ESqlTerm">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-esql.ecore#//ESqlTerm/name"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="db-esql.ecore#//Statement">
-      <genOperations ecoreOperation="db-esql.ecore#//Statement/prepare">
-        <genParameters ecoreParameter="db-esql.ecore#//Statement/prepare/from"/>
+    <genClasses image="false" ecoreClass="db-esql.ecore#//DescriptorArea">
+      <genOperations ecoreOperation="db-esql.ecore#//DescriptorArea/getColumnsNumber"/>
+      <genOperations ecoreOperation="db-esql.ecore#//DescriptorArea/getVariable">
+        <genParameters ecoreParameter="db-esql.ecore#//DescriptorArea/getVariable/index"/>
       </genOperations>
-      <genOperations ecoreOperation="db-esql.ecore#//Statement/execute"/>
-    </genClasses>
-    <genClasses ecoreClass="db-esql.ecore#//StatementTerm"/>
-    <genClasses image="false" ecoreClass="db-esql.ecore#//ESqlManager">
-      <genOperations ecoreOperation="db-esql.ecore#//ESqlManager/createFactory">
-        <genParameters ecoreParameter="db-esql.ecore#//ESqlManager/createFactory/contextProvider"/>
+      <genOperations ecoreOperation="db-esql.ecore#//DescriptorArea/initialize">
+        <genParameters ecoreParameter="db-esql.ecore#//DescriptorArea/initialize/value"/>
       </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//DescriptorArea/setVariable">
+        <genParameters ecoreParameter="db-esql.ecore#//DescriptorArea/setVariable/index"/>
+        <genParameters ecoreParameter="db-esql.ecore#//DescriptorArea/setVariable/variable"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-esql.ecore#//DescriptorVariable"/>
+    <genClasses image="false" ecoreClass="db-esql.ecore#//EsqlContext">
+      <genOperations ecoreOperation="db-esql.ecore#//EsqlContext/allocateDescriptorArea">
+        <genParameters ecoreParameter="db-esql.ecore#//EsqlContext/allocateDescriptorArea/name"/>
+        <genParameters ecoreParameter="db-esql.ecore#//EsqlContext/allocateDescriptorArea/maxColumns"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//EsqlContext/deallocateDescriptorArea">
+        <genParameters ecoreParameter="db-esql.ecore#//EsqlContext/deallocateDescriptorArea/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//EsqlContext/getCommunicationArea"/>
+      <genOperations ecoreOperation="db-esql.ecore#//EsqlContext/getDataContext"/>
+      <genOperations ecoreOperation="db-esql.ecore#//EsqlContext/getDescriptorArea">
+        <genParameters ecoreParameter="db-esql.ecore#//EsqlContext/getDescriptorArea/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//EsqlContext/getEsqlFactory"/>
     </genClasses>
     <genClasses image="false" ecoreClass="db-esql.ecore#//ESqlFactory">
       <genOperations ecoreOperation="db-esql.ecore#//ESqlFactory/createCursor">
-        <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createCursor/cursorTerm"/>
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createCursor/cursorType"/>
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createCursor/hold"/>
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createCursor/sql"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//ESqlFactory/createCursor.1">
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createCursor.1/cursorType"/>
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createCursor.1/hold"/>
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createCursor.1/statement"/>
       </genOperations>
       <genOperations ecoreOperation="db-esql.ecore#//ESqlFactory/createCursorTerm">
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createCursorTerm/name"/>
         <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createCursorTerm/type"/>
         <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createCursorTerm/annotations"/>
       </genOperations>
-      <genOperations ecoreOperation="db-esql.ecore#//ESqlFactory/createStatement">
-        <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createStatement/statementTerm"/>
-      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//ESqlFactory/createStatement"/>
       <genOperations ecoreOperation="db-esql.ecore#//ESqlFactory/createStatementTerm">
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createStatementTerm/name"/>
         <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createStatementTerm/type"/>
         <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createStatementTerm/annotations"/>
       </genOperations>
     </genClasses>
+    <genClasses image="false" ecoreClass="db-esql.ecore#//ESqlManager">
+      <genOperations ecoreOperation="db-esql.ecore#//ESqlManager/createEsqlContext">
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlManager/createEsqlContext/connection"/>
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlManager/createEsqlContext/dataContext"/>
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlManager/createEsqlContext/communicationArea"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-esql.ecore#//ESqlObject"/>
+    <genClasses image="false" ecoreClass="db-esql.ecore#//ESqlTerm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-esql.ecore#//ESqlTerm/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-esql.ecore#//Statement">
+      <genOperations ecoreOperation="db-esql.ecore#//Statement/close"/>
+      <genOperations ecoreOperation="db-esql.ecore#//Statement/describe">
+        <genParameters ecoreParameter="db-esql.ecore#//Statement/describe/descriptor"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Statement/prepare">
+        <genParameters ecoreParameter="db-esql.ecore#//Statement/prepare/sql"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Statement/prepare.1">
+        <genParameters ecoreParameter="db-esql.ecore#//Statement/prepare.1/sql"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Statement/prepare.2">
+        <genParameters ecoreParameter="db-esql.ecore#//Statement/prepare.2/sql"/>
+        <genParameters ecoreParameter="db-esql.ecore#//Statement/prepare.2/parameters"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Statement/execute"/>
+      <genOperations ecoreOperation="db-esql.ecore#//Statement/executeQuery"/>
+    </genClasses>
+    <genClasses ecoreClass="db-esql.ecore#//StatementTerm"/>
   </genPackages>
 </genmodel:GenModel>

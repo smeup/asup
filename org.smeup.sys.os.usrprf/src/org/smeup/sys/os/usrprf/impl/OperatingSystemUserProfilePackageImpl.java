@@ -12,6 +12,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.term.QTermPackage;
+import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 import org.smeup.sys.os.usrprf.QOperatingSystemUserProfileFactory;
 import org.smeup.sys.os.usrprf.QOperatingSystemUserProfilePackage;
@@ -91,6 +94,9 @@ public class OperatingSystemUserProfilePackageImpl extends EPackageImpl implemen
 
 		// Initialize simple dependencies
 		QOperatingSystemTypePackage.eINSTANCE.eClass();
+		QIntegratedLanguageLockPackage.eINSTANCE.eClass();
+		QDefPackage.eINSTANCE.eClass();
+		QTermPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theOperatingSystemUserProfilePackage.createPackageContents();

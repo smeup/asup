@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
-import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
-import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
+import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.term.QTermPackage;
 import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 
 /**
@@ -332,7 +332,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT_FIELD__FACETS = QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS;
+	int FILE_FORMAT_FIELD__FACETS = QTermPackage.DATA_TERM__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Based</b></em>' attribute.
@@ -341,7 +341,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT_FIELD__BASED = QIntegratedLanguageDataTermPackage.DATA_TERM__BASED;
+	int FILE_FORMAT_FIELD__BASED = QTermPackage.DATA_TERM__BASED;
 
 	/**
 	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
@@ -349,7 +349,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT_FIELD__CARDINALITY = QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY;
+	int FILE_FORMAT_FIELD__CARDINALITY = QTermPackage.DATA_TERM__CARDINALITY;
 
 	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute. <!--
@@ -358,7 +358,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT_FIELD__CONSTANT = QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT;
+	int FILE_FORMAT_FIELD__CONSTANT = QTermPackage.DATA_TERM__CONSTANT;
 
 	/**
 	 * The feature id for the '<em><b>Default</b></em>' containment reference.
@@ -366,7 +366,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT_FIELD__DEFAULT = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT;
+	int FILE_FORMAT_FIELD__DEFAULT = QTermPackage.DATA_TERM__DEFAULT;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -374,7 +374,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT_FIELD__DEFINITION = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION;
+	int FILE_FORMAT_FIELD__DEFINITION = QTermPackage.DATA_TERM__DEFINITION;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -383,7 +383,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT_FIELD__KEY = QIntegratedLanguageDataTermPackage.DATA_TERM__KEY;
+	int FILE_FORMAT_FIELD__KEY = QTermPackage.DATA_TERM__KEY;
 
 	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
@@ -392,7 +392,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT_FIELD__INITIALIZED = QIntegratedLanguageDataTermPackage.DATA_TERM__INITIALIZED;
+	int FILE_FORMAT_FIELD__INITIALIZED = QTermPackage.DATA_TERM__INITIALIZED;
 
 	/**
 	 * The feature id for the '<em><b>Like</b></em>' attribute. <!--
@@ -401,7 +401,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT_FIELD__LIKE = QIntegratedLanguageDataTermPackage.DATA_TERM__LIKE;
+	int FILE_FORMAT_FIELD__LIKE = QTermPackage.DATA_TERM__LIKE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -410,7 +410,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT_FIELD__NAME = QIntegratedLanguageDataTermPackage.DATA_TERM__NAME;
+	int FILE_FORMAT_FIELD__NAME = QTermPackage.DATA_TERM__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Restricted</b></em>' attribute. <!--
@@ -419,7 +419,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT_FIELD__RESTRICTED = QIntegratedLanguageDataTermPackage.DATA_TERM__RESTRICTED;
+	int FILE_FORMAT_FIELD__RESTRICTED = QTermPackage.DATA_TERM__RESTRICTED;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute. <!--
@@ -428,7 +428,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT_FIELD__TEXT = QIntegratedLanguageDataTermPackage.DATA_TERM__TEXT;
+	int FILE_FORMAT_FIELD__TEXT = QTermPackage.DATA_TERM__TEXT;
 
 	/**
 	 * The number of structural features of the '<em>File Format Field</em>' class.
@@ -436,7 +436,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT_FIELD_FEATURE_COUNT = QIntegratedLanguageDataTermPackage.DATA_TERM_FEATURE_COUNT + 0;
+	int FILE_FORMAT_FIELD_FEATURE_COUNT = QTermPackage.DATA_TERM_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.file.impl.DatabaseFileFieldImpl <em>Database File Field</em>}' class.
@@ -566,7 +566,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT__FACETS = QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS;
+	int FILE_FORMAT__FACETS = QTermPackage.DATA_TERM__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Based</b></em>' attribute.
@@ -575,7 +575,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT__BASED = QIntegratedLanguageDataTermPackage.DATA_TERM__BASED;
+	int FILE_FORMAT__BASED = QTermPackage.DATA_TERM__BASED;
 
 	/**
 	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
@@ -583,7 +583,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT__CARDINALITY = QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY;
+	int FILE_FORMAT__CARDINALITY = QTermPackage.DATA_TERM__CARDINALITY;
 
 	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute. <!--
@@ -592,7 +592,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT__CONSTANT = QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT;
+	int FILE_FORMAT__CONSTANT = QTermPackage.DATA_TERM__CONSTANT;
 
 	/**
 	 * The feature id for the '<em><b>Default</b></em>' containment reference.
@@ -600,7 +600,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT__DEFAULT = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT;
+	int FILE_FORMAT__DEFAULT = QTermPackage.DATA_TERM__DEFAULT;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -608,7 +608,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT__DEFINITION = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION;
+	int FILE_FORMAT__DEFINITION = QTermPackage.DATA_TERM__DEFINITION;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -617,7 +617,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT__KEY = QIntegratedLanguageDataTermPackage.DATA_TERM__KEY;
+	int FILE_FORMAT__KEY = QTermPackage.DATA_TERM__KEY;
 
 	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
@@ -626,7 +626,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT__INITIALIZED = QIntegratedLanguageDataTermPackage.DATA_TERM__INITIALIZED;
+	int FILE_FORMAT__INITIALIZED = QTermPackage.DATA_TERM__INITIALIZED;
 
 	/**
 	 * The feature id for the '<em><b>Like</b></em>' attribute. <!--
@@ -635,7 +635,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT__LIKE = QIntegratedLanguageDataTermPackage.DATA_TERM__LIKE;
+	int FILE_FORMAT__LIKE = QTermPackage.DATA_TERM__LIKE;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.file.impl.DisplayFileFieldImpl <em>Display File Field</em>}' class.
@@ -654,7 +654,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT__NAME = QIntegratedLanguageDataTermPackage.DATA_TERM__NAME;
+	int FILE_FORMAT__NAME = QTermPackage.DATA_TERM__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Restricted</b></em>' attribute. <!--
@@ -663,7 +663,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT__RESTRICTED = QIntegratedLanguageDataTermPackage.DATA_TERM__RESTRICTED;
+	int FILE_FORMAT__RESTRICTED = QTermPackage.DATA_TERM__RESTRICTED;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute. <!--
@@ -672,7 +672,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT__TEXT = QIntegratedLanguageDataTermPackage.DATA_TERM__TEXT;
+	int FILE_FORMAT__TEXT = QTermPackage.DATA_TERM__TEXT;
 
 	/**
 	 * The number of structural features of the '<em>File Format</em>' class.
@@ -680,7 +680,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FORMAT_FEATURE_COUNT = QIntegratedLanguageDataTermPackage.DATA_TERM_FEATURE_COUNT + 0;
+	int FILE_FORMAT_FEATURE_COUNT = QTermPackage.DATA_TERM_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.file.impl.DatabaseFileFormatImpl <em>Database File Format</em>}' class.
@@ -829,7 +829,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABASE_FILE_FORMAT_DEF__FORMULAS = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__FORMULAS;
+	int DATABASE_FILE_FORMAT_DEF__FORMULAS = QDefPackage.COMPOUND_DATA_DEF__FORMULAS;
 
 	/**
 	 * The feature id for the '<em><b>Class Delegator</b></em>' attribute. <!--
@@ -838,7 +838,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABASE_FILE_FORMAT_DEF__CLASS_DELEGATOR = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR;
+	int DATABASE_FILE_FORMAT_DEF__CLASS_DELEGATOR = QDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -846,7 +846,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABASE_FILE_FORMAT_DEF__ELEMENTS = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS;
+	int DATABASE_FILE_FORMAT_DEF__ELEMENTS = QDefPackage.COMPOUND_DATA_DEF__ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Prefix</b></em>' attribute. <!--
@@ -855,7 +855,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABASE_FILE_FORMAT_DEF__PREFIX = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__PREFIX;
+	int DATABASE_FILE_FORMAT_DEF__PREFIX = QDefPackage.COMPOUND_DATA_DEF__PREFIX;
 
 	/**
 	 * The feature id for the '<em><b>Qualified</b></em>' attribute. <!--
@@ -864,7 +864,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABASE_FILE_FORMAT_DEF__QUALIFIED = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED;
+	int DATABASE_FILE_FORMAT_DEF__QUALIFIED = QDefPackage.COMPOUND_DATA_DEF__QUALIFIED;
 
 	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute.
@@ -873,7 +873,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABASE_FILE_FORMAT_DEF__INITIALIZED = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__INITIALIZED;
+	int DATABASE_FILE_FORMAT_DEF__INITIALIZED = QDefPackage.COMPOUND_DATA_DEF__INITIALIZED;
 
 	/**
 	 * The number of structural features of the '<em>Database File Format Def</em>' class.
@@ -882,7 +882,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABASE_FILE_FORMAT_DEF_FEATURE_COUNT = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF_FEATURE_COUNT + 0;
+	int DATABASE_FILE_FORMAT_DEF_FEATURE_COUNT = QDefPackage.COMPOUND_DATA_DEF_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Application</b></em>' attribute. <!--
@@ -1185,7 +1185,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISPLAY_FILE_FORMAT_DEF__FORMULAS = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__FORMULAS;
+	int DISPLAY_FILE_FORMAT_DEF__FORMULAS = QDefPackage.COMPOUND_DATA_DEF__FORMULAS;
 
 	/**
 	 * The feature id for the '<em><b>Class Delegator</b></em>' attribute. <!--
@@ -1194,7 +1194,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISPLAY_FILE_FORMAT_DEF__CLASS_DELEGATOR = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR;
+	int DISPLAY_FILE_FORMAT_DEF__CLASS_DELEGATOR = QDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -1202,7 +1202,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISPLAY_FILE_FORMAT_DEF__ELEMENTS = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS;
+	int DISPLAY_FILE_FORMAT_DEF__ELEMENTS = QDefPackage.COMPOUND_DATA_DEF__ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Prefix</b></em>' attribute. <!--
@@ -1211,7 +1211,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISPLAY_FILE_FORMAT_DEF__PREFIX = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__PREFIX;
+	int DISPLAY_FILE_FORMAT_DEF__PREFIX = QDefPackage.COMPOUND_DATA_DEF__PREFIX;
 
 	/**
 	 * The feature id for the '<em><b>Qualified</b></em>' attribute. <!--
@@ -1220,7 +1220,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISPLAY_FILE_FORMAT_DEF__QUALIFIED = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED;
+	int DISPLAY_FILE_FORMAT_DEF__QUALIFIED = QDefPackage.COMPOUND_DATA_DEF__QUALIFIED;
 
 	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute.
@@ -1229,7 +1229,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISPLAY_FILE_FORMAT_DEF__INITIALIZED = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__INITIALIZED;
+	int DISPLAY_FILE_FORMAT_DEF__INITIALIZED = QDefPackage.COMPOUND_DATA_DEF__INITIALIZED;
 
 	/**
 	 * The number of structural features of the '<em>Display File Format Def</em>' class.
@@ -1238,7 +1238,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISPLAY_FILE_FORMAT_DEF_FEATURE_COUNT = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF_FEATURE_COUNT + 0;
+	int DISPLAY_FILE_FORMAT_DEF_FEATURE_COUNT = QDefPackage.COMPOUND_DATA_DEF_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1912,7 +1912,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRINTER_FILE_FORMAT_DEF__FORMULAS = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__FORMULAS;
+	int PRINTER_FILE_FORMAT_DEF__FORMULAS = QDefPackage.COMPOUND_DATA_DEF__FORMULAS;
 
 	/**
 	 * The feature id for the '<em><b>Class Delegator</b></em>' attribute. <!--
@@ -1921,7 +1921,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRINTER_FILE_FORMAT_DEF__CLASS_DELEGATOR = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR;
+	int PRINTER_FILE_FORMAT_DEF__CLASS_DELEGATOR = QDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -1929,7 +1929,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRINTER_FILE_FORMAT_DEF__ELEMENTS = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS;
+	int PRINTER_FILE_FORMAT_DEF__ELEMENTS = QDefPackage.COMPOUND_DATA_DEF__ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Prefix</b></em>' attribute. <!--
@@ -1938,7 +1938,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRINTER_FILE_FORMAT_DEF__PREFIX = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__PREFIX;
+	int PRINTER_FILE_FORMAT_DEF__PREFIX = QDefPackage.COMPOUND_DATA_DEF__PREFIX;
 
 	/**
 	 * The feature id for the '<em><b>Qualified</b></em>' attribute. <!--
@@ -1947,7 +1947,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRINTER_FILE_FORMAT_DEF__QUALIFIED = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED;
+	int PRINTER_FILE_FORMAT_DEF__QUALIFIED = QDefPackage.COMPOUND_DATA_DEF__QUALIFIED;
 
 	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute.
@@ -1956,7 +1956,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRINTER_FILE_FORMAT_DEF__INITIALIZED = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__INITIALIZED;
+	int PRINTER_FILE_FORMAT_DEF__INITIALIZED = QDefPackage.COMPOUND_DATA_DEF__INITIALIZED;
 
 	/**
 	 * The number of structural features of the '<em>Printer File Format Def</em>' class.
@@ -1965,7 +1965,7 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRINTER_FILE_FORMAT_DEF_FEATURE_COUNT = QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF_FEATURE_COUNT + 0;
+	int PRINTER_FILE_FORMAT_DEF_FEATURE_COUNT = QDefPackage.COMPOUND_DATA_DEF_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.

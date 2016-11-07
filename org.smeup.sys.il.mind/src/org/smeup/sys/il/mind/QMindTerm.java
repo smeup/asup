@@ -16,10 +16,10 @@ import org.smeup.sys.il.core.term.QTerm;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.mind.QMindTerm#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.mind.QIntegratedLanguageMindPackage#getMindTerm()
  * @model
