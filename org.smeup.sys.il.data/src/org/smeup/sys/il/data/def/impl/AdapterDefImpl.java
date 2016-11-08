@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QAdapterDef;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -39,7 +39,7 @@ public class AdapterDefImpl extends UnaryAtomicDataDefImpl<QAdapter> implements 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.ADAPTER_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.ADAPTER_DEF;
 	}
 
 	@Override

@@ -22,7 +22,7 @@ import org.smeup.sys.il.data.QDatetime;
  *   <li>{@link org.smeup.sys.il.data.def.QDatetimeDef#getTimeFormat <em>Time Format</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getDatetimeDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDatetimeDef()
  * @model
  * @generated
  */
@@ -39,7 +39,7 @@ public interface QDatetimeDef extends QUnaryAtomicBufferedDataDef<QDatetime> {
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.smeup.sys.il.data.def.DatetimeType
 	 * @see #setType(DatetimeType)
-	 * @see org.smeup.sys.il.data.def.QDefPackage#getDatetimeDef_Type()
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDatetimeDef_Type()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -67,7 +67,7 @@ public interface QDatetimeDef extends QUnaryAtomicBufferedDataDef<QDatetime> {
 	 * @return the value of the '<em>Date Format</em>' attribute.
 	 * @see org.smeup.sys.il.data.def.DateFormat
 	 * @see #setDateFormat(DateFormat)
-	 * @see org.smeup.sys.il.data.def.QDefPackage#getDatetimeDef_DateFormat()
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDatetimeDef_DateFormat()
 	 * @model
 	 * @generated
 	 */
@@ -96,7 +96,7 @@ public interface QDatetimeDef extends QUnaryAtomicBufferedDataDef<QDatetime> {
 	 * @return the value of the '<em>Time Format</em>' attribute.
 	 * @see org.smeup.sys.il.data.def.TimeFormat
 	 * @see #setTimeFormat(TimeFormat)
-	 * @see org.smeup.sys.il.data.def.QDefPackage#getDatetimeDef_TimeFormat()
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDatetimeDef_TimeFormat()
 	 * @model
 	 * @generated
 	 */

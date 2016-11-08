@@ -16,7 +16,7 @@ import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QDataAreaDef;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.def.QUnaryBufferedDataDef;
 import org.smeup.sys.il.data.def.QWrapperDef;
 
@@ -83,7 +83,7 @@ public class DataAreaDefImpl<D extends QBufferedElement> extends UnaryBufferedDa
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.DATA_AREA_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.DATA_AREA_DEF;
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class DataAreaDefImpl<D extends QBufferedElement> extends UnaryBufferedDa
 		QUnaryBufferedDataDef<D> oldArgument = argument;
 		argument = newArgument;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QDefPackage.DATA_AREA_DEF__ARGUMENT, oldArgument, newArgument);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT, oldArgument, newArgument);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -119,14 +119,14 @@ public class DataAreaDefImpl<D extends QBufferedElement> extends UnaryBufferedDa
 		if (newArgument != argument) {
 			NotificationChain msgs = null;
 			if (argument != null)
-				msgs = ((InternalEObject)argument).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QDefPackage.DATA_AREA_DEF__ARGUMENT, null, msgs);
+				msgs = ((InternalEObject)argument).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT, null, msgs);
 			if (newArgument != null)
-				msgs = ((InternalEObject)newArgument).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QDefPackage.DATA_AREA_DEF__ARGUMENT, null, msgs);
+				msgs = ((InternalEObject)newArgument).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT, null, msgs);
 			msgs = basicSetArgument(newArgument, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.DATA_AREA_DEF__ARGUMENT, newArgument, newArgument));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT, newArgument, newArgument));
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class DataAreaDefImpl<D extends QBufferedElement> extends UnaryBufferedDa
 		String oldExternalName = externalName;
 		externalName = newExternalName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.DATA_AREA_DEF__EXTERNAL_NAME, oldExternalName, externalName));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__EXTERNAL_NAME, oldExternalName, externalName));
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class DataAreaDefImpl<D extends QBufferedElement> extends UnaryBufferedDa
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QDefPackage.DATA_AREA_DEF__ARGUMENT:
+			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT:
 				return basicSetArgument(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -172,9 +172,9 @@ public class DataAreaDefImpl<D extends QBufferedElement> extends UnaryBufferedDa
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.DATA_AREA_DEF__ARGUMENT:
+			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT:
 				return getArgument();
-			case QDefPackage.DATA_AREA_DEF__EXTERNAL_NAME:
+			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__EXTERNAL_NAME:
 				return getExternalName();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -189,10 +189,10 @@ public class DataAreaDefImpl<D extends QBufferedElement> extends UnaryBufferedDa
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.DATA_AREA_DEF__ARGUMENT:
+			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT:
 				setArgument((QUnaryBufferedDataDef<D>)newValue);
 				return;
-			case QDefPackage.DATA_AREA_DEF__EXTERNAL_NAME:
+			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__EXTERNAL_NAME:
 				setExternalName((String)newValue);
 				return;
 		}
@@ -207,10 +207,10 @@ public class DataAreaDefImpl<D extends QBufferedElement> extends UnaryBufferedDa
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.DATA_AREA_DEF__ARGUMENT:
+			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT:
 				setArgument((QUnaryBufferedDataDef<D>)null);
 				return;
-			case QDefPackage.DATA_AREA_DEF__EXTERNAL_NAME:
+			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__EXTERNAL_NAME:
 				setExternalName(EXTERNAL_NAME_EDEFAULT);
 				return;
 		}
@@ -225,9 +225,9 @@ public class DataAreaDefImpl<D extends QBufferedElement> extends UnaryBufferedDa
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.DATA_AREA_DEF__ARGUMENT:
+			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT:
 				return argument != null;
-			case QDefPackage.DATA_AREA_DEF__EXTERNAL_NAME:
+			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__EXTERNAL_NAME:
 				return EXTERNAL_NAME_EDEFAULT == null ? externalName != null : !EXTERNAL_NAME_EDEFAULT.equals(externalName);
 		}
 		return super.eIsSet(featureID);
@@ -242,7 +242,7 @@ public class DataAreaDefImpl<D extends QBufferedElement> extends UnaryBufferedDa
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == QWrapperDef.class) {
 			switch (derivedFeatureID) {
-				case QDefPackage.DATA_AREA_DEF__ARGUMENT: return QDefPackage.WRAPPER_DEF__ARGUMENT;
+				case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT: return QIntegratedLanguageDataDefPackage.WRAPPER_DEF__ARGUMENT;
 				default: return -1;
 			}
 		}
@@ -258,7 +258,7 @@ public class DataAreaDefImpl<D extends QBufferedElement> extends UnaryBufferedDa
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == QWrapperDef.class) {
 			switch (baseFeatureID) {
-				case QDefPackage.WRAPPER_DEF__ARGUMENT: return QDefPackage.DATA_AREA_DEF__ARGUMENT;
+				case QIntegratedLanguageDataDefPackage.WRAPPER_DEF__ARGUMENT: return QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT;
 				default: return -1;
 			}
 		}

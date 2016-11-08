@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.smeup.sys.il.data.QBufferedElement;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.def.QUnaryBufferedDataDef;
 import org.smeup.sys.il.data.def.QWrapperDef;
 
@@ -61,7 +61,7 @@ public abstract class WrapperDefImpl<D extends QBufferedElement> extends Minimal
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.WRAPPER_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.WRAPPER_DEF;
 	}
 
 	/**
@@ -82,7 +82,7 @@ public abstract class WrapperDefImpl<D extends QBufferedElement> extends Minimal
 		QUnaryBufferedDataDef<D> oldArgument = argument;
 		argument = newArgument;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QDefPackage.WRAPPER_DEF__ARGUMENT, oldArgument, newArgument);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.WRAPPER_DEF__ARGUMENT, oldArgument, newArgument);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -97,14 +97,14 @@ public abstract class WrapperDefImpl<D extends QBufferedElement> extends Minimal
 		if (newArgument != argument) {
 			NotificationChain msgs = null;
 			if (argument != null)
-				msgs = ((InternalEObject)argument).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QDefPackage.WRAPPER_DEF__ARGUMENT, null, msgs);
+				msgs = ((InternalEObject)argument).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataDefPackage.WRAPPER_DEF__ARGUMENT, null, msgs);
 			if (newArgument != null)
-				msgs = ((InternalEObject)newArgument).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QDefPackage.WRAPPER_DEF__ARGUMENT, null, msgs);
+				msgs = ((InternalEObject)newArgument).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataDefPackage.WRAPPER_DEF__ARGUMENT, null, msgs);
 			msgs = basicSetArgument(newArgument, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.WRAPPER_DEF__ARGUMENT, newArgument, newArgument));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.WRAPPER_DEF__ARGUMENT, newArgument, newArgument));
 	}
 
 	/**
@@ -115,7 +115,7 @@ public abstract class WrapperDefImpl<D extends QBufferedElement> extends Minimal
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QDefPackage.WRAPPER_DEF__ARGUMENT:
+			case QIntegratedLanguageDataDefPackage.WRAPPER_DEF__ARGUMENT:
 				return basicSetArgument(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -129,7 +129,7 @@ public abstract class WrapperDefImpl<D extends QBufferedElement> extends Minimal
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.WRAPPER_DEF__ARGUMENT:
+			case QIntegratedLanguageDataDefPackage.WRAPPER_DEF__ARGUMENT:
 				return getArgument();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -144,7 +144,7 @@ public abstract class WrapperDefImpl<D extends QBufferedElement> extends Minimal
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.WRAPPER_DEF__ARGUMENT:
+			case QIntegratedLanguageDataDefPackage.WRAPPER_DEF__ARGUMENT:
 				setArgument((QUnaryBufferedDataDef<D>)newValue);
 				return;
 		}
@@ -159,7 +159,7 @@ public abstract class WrapperDefImpl<D extends QBufferedElement> extends Minimal
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.WRAPPER_DEF__ARGUMENT:
+			case QIntegratedLanguageDataDefPackage.WRAPPER_DEF__ARGUMENT:
 				setArgument((QUnaryBufferedDataDef<D>)null);
 				return;
 		}
@@ -174,7 +174,7 @@ public abstract class WrapperDefImpl<D extends QBufferedElement> extends Minimal
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.WRAPPER_DEF__ARGUMENT:
+			case QIntegratedLanguageDataDefPackage.WRAPPER_DEF__ARGUMENT:
 				return argument != null;
 		}
 		return super.eIsSet(featureID);

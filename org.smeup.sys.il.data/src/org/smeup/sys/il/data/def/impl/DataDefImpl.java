@@ -17,7 +17,7 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QDataDef;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -59,7 +59,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.DATA_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.DATA_DEF;
 	}
 
 	/**
@@ -69,7 +69,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 	@Override
 	public List<String> getFormulas() {
 		if (formulas == null) {
-			formulas = new EDataTypeUniqueEList<String>(String.class, this, QDefPackage.DATA_DEF__FORMULAS);
+			formulas = new EDataTypeUniqueEList<String>(String.class, this, QIntegratedLanguageDataDefPackage.DATA_DEF__FORMULAS);
 		}
 		return formulas;
 	}
@@ -105,7 +105,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.DATA_DEF__FORMULAS:
+			case QIntegratedLanguageDataDefPackage.DATA_DEF__FORMULAS:
 				return getFormulas();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -119,7 +119,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.DATA_DEF__FORMULAS:
+			case QIntegratedLanguageDataDefPackage.DATA_DEF__FORMULAS:
 				getFormulas().clear();
 				getFormulas().addAll((Collection<? extends String>)newValue);
 				return;
@@ -134,7 +134,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.DATA_DEF__FORMULAS:
+			case QIntegratedLanguageDataDefPackage.DATA_DEF__FORMULAS:
 				getFormulas().clear();
 				return;
 		}
@@ -148,7 +148,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.DATA_DEF__FORMULAS:
+			case QIntegratedLanguageDataDefPackage.DATA_DEF__FORMULAS:
 				return formulas != null && !formulas.isEmpty();
 		}
 		return super.eIsSet(featureID);

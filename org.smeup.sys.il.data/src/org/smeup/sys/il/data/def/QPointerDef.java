@@ -14,7 +14,7 @@ import org.smeup.sys.il.data.QPointer;
  * <em><b>Pointer Def</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getPointerDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getPointerDef()
  * @model
  * @generated
  */

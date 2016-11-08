@@ -21,7 +21,7 @@ import org.smeup.sys.il.core.meta.QFacet;
  *   <li>{@link org.smeup.sys.il.data.term.QRemap#getIndex <em>Index</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.term.QTermPackage#getRemap()
+ * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getRemap()
  * @model
  * @generated
  */

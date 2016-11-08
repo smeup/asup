@@ -20,7 +20,7 @@ import org.smeup.sys.il.data.QList;
  *   <li>{@link org.smeup.sys.il.data.def.QMultipleDataDef#getDimension <em>Dimension</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getMultipleDataDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getMultipleDataDef()
  * @model abstract="true"
  * @generated
  */

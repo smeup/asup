@@ -14,7 +14,7 @@ import org.smeup.sys.il.data.QBufferedElement;
  * <em><b>Unary Atomic Buffered Data Def</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getUnaryAtomicBufferedDataDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getUnaryAtomicBufferedDataDef()
  * @model abstract="true"
  * @generated
  */

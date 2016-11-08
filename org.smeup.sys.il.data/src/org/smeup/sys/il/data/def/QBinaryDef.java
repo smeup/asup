@@ -21,7 +21,7 @@ import org.smeup.sys.il.data.QBinary;
  *   <li>{@link org.smeup.sys.il.data.def.QBinaryDef#isUnsigned <em>Unsigned</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getBinaryDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getBinaryDef()
  * @model
  * @generated
  */
@@ -38,7 +38,7 @@ public interface QBinaryDef extends QUnaryAtomicBufferedDataDef<QBinary> {
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.smeup.sys.il.data.def.BinaryType
 	 * @see #setType(BinaryType)
-	 * @see org.smeup.sys.il.data.def.QDefPackage#getBinaryDef_Type()
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getBinaryDef_Type()
 	 * @model required="true"
 	 * @generated
 	 */

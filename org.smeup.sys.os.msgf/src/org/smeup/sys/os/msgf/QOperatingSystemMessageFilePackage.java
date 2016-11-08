@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.data.term.QTermPackage;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 
 /**
@@ -139,7 +139,7 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_DATA_FIELD__FACETS = QTermPackage.DATA_TERM__FACETS;
+	int MESSAGE_DATA_FIELD__FACETS = QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Based</b></em>' attribute.
@@ -148,7 +148,7 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_DATA_FIELD__BASED = QTermPackage.DATA_TERM__BASED;
+	int MESSAGE_DATA_FIELD__BASED = QIntegratedLanguageDataTermPackage.DATA_TERM__BASED;
 
 	/**
 	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
@@ -157,7 +157,7 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_DATA_FIELD__CARDINALITY = QTermPackage.DATA_TERM__CARDINALITY;
+	int MESSAGE_DATA_FIELD__CARDINALITY = QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY;
 
 	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute.
@@ -166,7 +166,7 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_DATA_FIELD__CONSTANT = QTermPackage.DATA_TERM__CONSTANT;
+	int MESSAGE_DATA_FIELD__CONSTANT = QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT;
 
 	/**
 	 * The feature id for the '<em><b>Default</b></em>' containment reference.
@@ -175,7 +175,7 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_DATA_FIELD__DEFAULT = QTermPackage.DATA_TERM__DEFAULT;
+	int MESSAGE_DATA_FIELD__DEFAULT = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -184,7 +184,7 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_DATA_FIELD__DEFINITION = QTermPackage.DATA_TERM__DEFINITION;
+	int MESSAGE_DATA_FIELD__DEFINITION = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -193,7 +193,7 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_DATA_FIELD__KEY = QTermPackage.DATA_TERM__KEY;
+	int MESSAGE_DATA_FIELD__KEY = QIntegratedLanguageDataTermPackage.DATA_TERM__KEY;
 
 	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute.
@@ -202,7 +202,7 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_DATA_FIELD__INITIALIZED = QTermPackage.DATA_TERM__INITIALIZED;
+	int MESSAGE_DATA_FIELD__INITIALIZED = QIntegratedLanguageDataTermPackage.DATA_TERM__INITIALIZED;
 
 	/**
 	 * The feature id for the '<em><b>Like</b></em>' attribute.
@@ -211,7 +211,7 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_DATA_FIELD__LIKE = QTermPackage.DATA_TERM__LIKE;
+	int MESSAGE_DATA_FIELD__LIKE = QIntegratedLanguageDataTermPackage.DATA_TERM__LIKE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -220,7 +220,7 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_DATA_FIELD__NAME = QTermPackage.DATA_TERM__NAME;
+	int MESSAGE_DATA_FIELD__NAME = QIntegratedLanguageDataTermPackage.DATA_TERM__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Restricted</b></em>' attribute.
@@ -229,7 +229,7 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_DATA_FIELD__RESTRICTED = QTermPackage.DATA_TERM__RESTRICTED;
+	int MESSAGE_DATA_FIELD__RESTRICTED = QIntegratedLanguageDataTermPackage.DATA_TERM__RESTRICTED;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -238,7 +238,7 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_DATA_FIELD__TEXT = QTermPackage.DATA_TERM__TEXT;
+	int MESSAGE_DATA_FIELD__TEXT = QIntegratedLanguageDataTermPackage.DATA_TERM__TEXT;
 
 	/**
 	 * The feature id for the '<em><b>Output Mask</b></em>' attribute.
@@ -247,7 +247,7 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_DATA_FIELD__OUTPUT_MASK = QTermPackage.DATA_TERM_FEATURE_COUNT + 0;
+	int MESSAGE_DATA_FIELD__OUTPUT_MASK = QIntegratedLanguageDataTermPackage.DATA_TERM_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Message Data Field</em>' class.
@@ -256,7 +256,7 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_DATA_FIELD_FEATURE_COUNT = QTermPackage.DATA_TERM_FEATURE_COUNT + 1;
+	int MESSAGE_DATA_FIELD_FEATURE_COUNT = QIntegratedLanguageDataTermPackage.DATA_TERM_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.msgf.impl.MessageFileImpl <em>Message File</em>}' class.

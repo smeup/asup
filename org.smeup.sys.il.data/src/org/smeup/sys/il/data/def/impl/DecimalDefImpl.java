@@ -14,7 +14,7 @@ import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.def.QDecimalDef;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -104,7 +104,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.DECIMAL_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.DECIMAL_DEF;
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 		int oldPrecision = precision;
 		precision = newPrecision;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.DECIMAL_DEF__PRECISION, oldPrecision, precision));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DECIMAL_DEF__PRECISION, oldPrecision, precision));
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 		int oldScale = scale;
 		scale = newScale;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.DECIMAL_DEF__SCALE, oldScale, scale));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DECIMAL_DEF__SCALE, oldScale, scale));
 	}
 
 	/**
@@ -167,7 +167,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 		DecimalType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.DECIMAL_DEF__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DECIMAL_DEF__TYPE, oldType, type));
 	}
 
 	/**
@@ -208,11 +208,11 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.DECIMAL_DEF__PRECISION:
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__PRECISION:
 				return getPrecision();
-			case QDefPackage.DECIMAL_DEF__SCALE:
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__SCALE:
 				return getScale();
-			case QDefPackage.DECIMAL_DEF__TYPE:
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__TYPE:
 				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -225,13 +225,13 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.DECIMAL_DEF__PRECISION:
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__PRECISION:
 				setPrecision((Integer)newValue);
 				return;
-			case QDefPackage.DECIMAL_DEF__SCALE:
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__SCALE:
 				setScale((Integer)newValue);
 				return;
-			case QDefPackage.DECIMAL_DEF__TYPE:
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__TYPE:
 				setType((DecimalType)newValue);
 				return;
 		}
@@ -245,13 +245,13 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.DECIMAL_DEF__PRECISION:
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__PRECISION:
 				setPrecision(PRECISION_EDEFAULT);
 				return;
-			case QDefPackage.DECIMAL_DEF__SCALE:
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__SCALE:
 				setScale(SCALE_EDEFAULT);
 				return;
-			case QDefPackage.DECIMAL_DEF__TYPE:
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
 		}
@@ -265,11 +265,11 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.DECIMAL_DEF__PRECISION:
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__PRECISION:
 				return precision != PRECISION_EDEFAULT;
-			case QDefPackage.DECIMAL_DEF__SCALE:
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__SCALE:
 				return scale != SCALE_EDEFAULT;
-			case QDefPackage.DECIMAL_DEF__TYPE:
+			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF__TYPE:
 				return type != TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

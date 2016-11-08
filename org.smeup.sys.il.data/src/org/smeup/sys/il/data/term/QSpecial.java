@@ -23,7 +23,7 @@ import org.smeup.sys.il.core.meta.QFacet;
  *   <li>{@link org.smeup.sys.il.data.term.QSpecial#getElements <em>Elements</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.term.QTermPackage#getSpecial()
+ * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getSpecial()
  * @model
  * @generated
  */
@@ -65,7 +65,7 @@ public interface QSpecial extends QFacet {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Elements</em>' containment reference list.
-	 * @see org.smeup.sys.il.data.term.QTermPackage#getSpecial_Elements()
+	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getSpecial_Elements()
 	 * @model containment="true"
 	 * @generated
 	 */

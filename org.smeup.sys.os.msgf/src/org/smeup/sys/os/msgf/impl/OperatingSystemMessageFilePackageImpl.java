@@ -18,8 +18,8 @@ import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
-import org.smeup.sys.il.data.def.QDefPackage;
-import org.smeup.sys.il.data.term.QTermPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
@@ -118,8 +118,8 @@ public class OperatingSystemMessageFilePackageImpl extends EPackageImpl implemen
 		// Initialize simple dependencies
 		QOperatingSystemTypePackage.eINSTANCE.eClass();
 		QIntegratedLanguageLockPackage.eINSTANCE.eClass();
-		QDefPackage.eINSTANCE.eClass();
-		QTermPackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataDefPackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataTermPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theOperatingSystemMessageFilePackage.createPackageContents();
@@ -315,8 +315,8 @@ public class OperatingSystemMessageFilePackageImpl extends EPackageImpl implemen
 
 		// Obtain other dependent packages
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
-		QTermPackage theTermPackage = (QTermPackage)EPackage.Registry.INSTANCE.getEPackage(QTermPackage.eNS_URI);
-		QDefPackage theDefPackage = (QDefPackage)EPackage.Registry.INSTANCE.getEPackage(QDefPackage.eNS_URI);
+		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
+		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
 		QOperatingSystemTypePackage theOperatingSystemTypePackage = (QOperatingSystemTypePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemTypePackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
@@ -327,8 +327,8 @@ public class OperatingSystemMessageFilePackageImpl extends EPackageImpl implemen
 
 		// Add supertypes to classes
 		messageDescriptionEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		EGenericType g1 = createEGenericType(theTermPackage.getDataTerm());
-		EGenericType g2 = createEGenericType(theDefPackage.getUnaryAtomicBufferedDataDef());
+		EGenericType g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
+		EGenericType g2 = createEGenericType(theIntegratedLanguageDataDefPackage.getUnaryAtomicBufferedDataDef());
 		g1.getETypeArguments().add(g2);
 		EGenericType g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);

@@ -14,7 +14,7 @@ import org.smeup.sys.il.core.term.QTermContainer;
  * <em><b>Data Term Container</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.term.QTermPackage#getDataTermContainer()
+ * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTermContainer()
  * @model interface="true" abstract="true"
  * @generated
  */

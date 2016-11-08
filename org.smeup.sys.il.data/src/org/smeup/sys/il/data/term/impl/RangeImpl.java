@@ -11,8 +11,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.core.meta.impl.FacetImpl;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.data.term.QRange;
-import org.smeup.sys.il.data.term.QTermPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -87,7 +87,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QTermPackage.Literals.RANGE;
+		return QIntegratedLanguageDataTermPackage.Literals.RANGE;
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 		String oldMin = min;
 		min = newMin;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QTermPackage.RANGE__MIN, oldMin, min));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.RANGE__MIN, oldMin, min));
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 		String oldMax = max;
 		max = newMax;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QTermPackage.RANGE__MAX, oldMax, max));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.RANGE__MAX, oldMax, max));
 	}
 
 	/**
@@ -139,9 +139,9 @@ public class RangeImpl extends FacetImpl implements QRange {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QTermPackage.RANGE__MAX:
+			case QIntegratedLanguageDataTermPackage.RANGE__MAX:
 				return getMax();
-			case QTermPackage.RANGE__MIN:
+			case QIntegratedLanguageDataTermPackage.RANGE__MIN:
 				return getMin();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -154,10 +154,10 @@ public class RangeImpl extends FacetImpl implements QRange {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QTermPackage.RANGE__MAX:
+			case QIntegratedLanguageDataTermPackage.RANGE__MAX:
 				setMax((String)newValue);
 				return;
-			case QTermPackage.RANGE__MIN:
+			case QIntegratedLanguageDataTermPackage.RANGE__MIN:
 				setMin((String)newValue);
 				return;
 		}
@@ -171,10 +171,10 @@ public class RangeImpl extends FacetImpl implements QRange {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QTermPackage.RANGE__MAX:
+			case QIntegratedLanguageDataTermPackage.RANGE__MAX:
 				setMax(MAX_EDEFAULT);
 				return;
-			case QTermPackage.RANGE__MIN:
+			case QIntegratedLanguageDataTermPackage.RANGE__MIN:
 				setMin(MIN_EDEFAULT);
 				return;
 		}
@@ -188,9 +188,9 @@ public class RangeImpl extends FacetImpl implements QRange {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QTermPackage.RANGE__MAX:
+			case QIntegratedLanguageDataTermPackage.RANGE__MAX:
 				return MAX_EDEFAULT == null ? max != null : !MAX_EDEFAULT.equals(max);
-			case QTermPackage.RANGE__MIN:
+			case QIntegratedLanguageDataTermPackage.RANGE__MIN:
 				return MIN_EDEFAULT == null ? min != null : !MIN_EDEFAULT.equals(min);
 		}
 		return super.eIsSet(featureID);

@@ -11,7 +11,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.def.DataDefType;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.def.QScrollerDef;
 
 /**
@@ -40,7 +40,7 @@ public class ScrollerDefImpl<D extends QScroller<?>> extends MultipleAtomicBuffe
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.SCROLLER_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.SCROLLER_DEF;
 	}
 
 	@Override

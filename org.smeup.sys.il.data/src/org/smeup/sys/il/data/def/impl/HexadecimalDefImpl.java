@@ -12,8 +12,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.def.DataDefType;
-import org.smeup.sys.il.data.def.QDefPackage;
 import org.smeup.sys.il.data.def.QHexadecimalDef;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -65,7 +65,7 @@ public class HexadecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QHexadeci
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.HEXADECIMAL_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.HEXADECIMAL_DEF;
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class HexadecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QHexadeci
 		int oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.HEXADECIMAL_DEF__LENGTH, oldLength, length));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF__LENGTH, oldLength, length));
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class HexadecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QHexadeci
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.HEXADECIMAL_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF__LENGTH:
 				return getLength();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -118,7 +118,7 @@ public class HexadecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QHexadeci
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.HEXADECIMAL_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF__LENGTH:
 				setLength((Integer)newValue);
 				return;
 		}
@@ -132,7 +132,7 @@ public class HexadecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QHexadeci
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.HEXADECIMAL_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF__LENGTH:
 				setLength(LENGTH_EDEFAULT);
 				return;
 		}
@@ -146,7 +146,7 @@ public class HexadecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QHexadeci
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.HEXADECIMAL_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF__LENGTH:
 				return length != LENGTH_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

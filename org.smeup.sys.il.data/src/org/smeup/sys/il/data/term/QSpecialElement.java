@@ -23,7 +23,7 @@ import org.smeup.sys.il.core.term.QNamedNode;
  *   <li>{@link org.smeup.sys.il.data.term.QSpecialElement#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.term.QTermPackage#getSpecialElement()
+ * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getSpecialElement()
  * @model
  * @generated
  */

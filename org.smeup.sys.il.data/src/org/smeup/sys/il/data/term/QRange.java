@@ -21,7 +21,7 @@ import org.smeup.sys.il.core.meta.QFacet;
  *   <li>{@link org.smeup.sys.il.data.term.QRange#getMin <em>Min</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.term.QTermPackage#getRange()
+ * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getRange()
  * @model
  * @generated
  */
@@ -63,7 +63,7 @@ public interface QRange extends QFacet {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max</em>' attribute.
 	 * @see #setMax(String)
-	 * @see org.smeup.sys.il.data.term.QTermPackage#getRange_Max()
+	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getRange_Max()
 	 * @model default="1" required="true"
 	 * @generated
 	 */

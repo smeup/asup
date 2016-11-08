@@ -9,7 +9,7 @@ package org.smeup.sys.il.data.def.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.data.QList;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
 
@@ -39,7 +39,7 @@ public abstract class MultipleAtomicDataDefImpl<D extends QList<?>> extends Mult
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.MULTIPLE_ATOMIC_DATA_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.MULTIPLE_ATOMIC_DATA_DEF;
 	}
 
 	/**

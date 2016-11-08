@@ -20,7 +20,7 @@ import org.smeup.sys.il.data.QFloating;
  *   <li>{@link org.smeup.sys.il.data.def.QFloatingDef#getType <em>Type</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getFloatingDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getFloatingDef()
  * @model
  * @generated
  */
@@ -37,7 +37,7 @@ public interface QFloatingDef extends QUnaryAtomicBufferedDataDef<QFloating> {
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.smeup.sys.il.data.def.FloatingType
 	 * @see #setType(FloatingType)
-	 * @see org.smeup.sys.il.data.def.QDefPackage#getFloatingDef_Type()
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getFloatingDef_Type()
 	 * @model required="true"
 	 * @generated
 	 */

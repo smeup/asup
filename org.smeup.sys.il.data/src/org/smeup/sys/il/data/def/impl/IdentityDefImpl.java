@@ -10,8 +10,8 @@ package org.smeup.sys.il.data.def.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.data.QIdentity;
 import org.smeup.sys.il.data.def.DataDefType;
-import org.smeup.sys.il.data.def.QDefPackage;
 import org.smeup.sys.il.data.def.QIdentityDef;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -39,7 +39,7 @@ public class IdentityDefImpl extends UnaryAtomicBufferedDataDefImpl<QIdentity> i
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.IDENTITY_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.IDENTITY_DEF;
 	}
 
 	@Override

@@ -71,10 +71,10 @@ import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.SortDirection;
-import org.smeup.sys.il.data.def.QDefPackage;
-import org.smeup.sys.il.data.def.impl.DefPackageImpl;
-import org.smeup.sys.il.data.term.QTermPackage;
-import org.smeup.sys.il.data.term.impl.TermPackageImpl;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+import org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
+import org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
@@ -465,18 +465,18 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		DefPackageImpl theDefPackage = (DefPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QDefPackage.eNS_URI) instanceof DefPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QDefPackage.eNS_URI) : QDefPackage.eINSTANCE);
-		TermPackageImpl theTermPackage = (TermPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QTermPackage.eNS_URI) instanceof TermPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QTermPackage.eNS_URI) : QTermPackage.eINSTANCE);
+		IntegratedLanguageDataDefPackageImpl theIntegratedLanguageDataDefPackage = (IntegratedLanguageDataDefPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI) instanceof IntegratedLanguageDataDefPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI) : QIntegratedLanguageDataDefPackage.eINSTANCE);
+		IntegratedLanguageDataTermPackageImpl theIntegratedLanguageDataTermPackage = (IntegratedLanguageDataTermPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI) instanceof IntegratedLanguageDataTermPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI) : QIntegratedLanguageDataTermPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theIntegratedLanguageDataPackage.createPackageContents();
-		theDefPackage.createPackageContents();
-		theTermPackage.createPackageContents();
+		theIntegratedLanguageDataDefPackage.createPackageContents();
+		theIntegratedLanguageDataTermPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theIntegratedLanguageDataPackage.initializePackageContents();
-		theDefPackage.initializePackageContents();
-		theTermPackage.initializePackageContents();
+		theIntegratedLanguageDataDefPackage.initializePackageContents();
+		theIntegratedLanguageDataTermPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theIntegratedLanguageDataPackage.freeze();
@@ -1115,15 +1115,15 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		QDefPackage theDefPackage = (QDefPackage)EPackage.Registry.INSTANCE.getEPackage(QDefPackage.eNS_URI);
-		QTermPackage theTermPackage = (QTermPackage)EPackage.Registry.INSTANCE.getEPackage(QTermPackage.eNS_URI);
+		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
+		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 
 		// Add subpackages
-		getESubpackages().add(theDefPackage);
-		getESubpackages().add(theTermPackage);
+		getESubpackages().add(theIntegratedLanguageDataDefPackage);
+		getESubpackages().add(theIntegratedLanguageDataTermPackage);
 
 		// Create type parameters
 		ETypeParameter arrayEClass_D = addETypeParameter(arrayEClass, "D");
@@ -1191,7 +1191,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		bufferedListEClass.getEGenericSuperTypes().add(g1);
 		characterEClass.getESuperTypes().add(this.getString());
 		dataAreaEClass.getESuperTypes().add(this.getBufferedElement());
-		dataContainerEClass.getESuperTypes().add(theTermPackage.getDataTermContainer());
+		dataContainerEClass.getESuperTypes().add(theIntegratedLanguageDataTermPackage.getDataTermContainer());
 		dataContainerEClass.getESuperTypes().add(theMachineInterfaceCorePackage.getJavaCloseable());
 		dataContextEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
 		dataManagerConfigEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
@@ -2606,13 +2606,13 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaAnnotation(), "annotations", 1, -1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(theTermPackage.getDataTerm());
+		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
 		op = addEOperation(dataContainerEClass, null, "addDataTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(theTermPackage.getDataTerm());
+		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "dataTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2625,7 +2625,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEString(), "key", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataContainerEClass, this.getData(), "getData", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(theTermPackage.getDataTerm());
+		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "dataTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2642,7 +2642,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(dataContainerEClass, null, "getDataTerm", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(theTermPackage.getDataTerm());
+		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
@@ -2655,7 +2655,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEString(), "key", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataContainerEClass, null, "removeDataTerm", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(theTermPackage.getDataTerm());
+		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "dataTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2688,9 +2688,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(dataContextEClass, this.getDataFactory(), "getDataFactory", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataContextEClass, theDefPackage.getDateFormat(), "getDateFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(dataContextEClass, theIntegratedLanguageDataDefPackage.getDateFormat(), "getDateFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataContextEClass, theDefPackage.getTimeFormat(), "getTimeFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(dataContextEClass, theIntegratedLanguageDataDefPackage.getTimeFormat(), "getTimeFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataContextEClass, null, "serialize", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEObject(), "object", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2709,7 +2709,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		t1 = addETypeParameter(op, "D");
 		g1 = createEGenericType(this.getBufferedElement());
 		t1.getEBounds().add(g1);
-		g1 = createEGenericType(theDefPackage.getUnaryAtomicBufferedDataDef());
+		g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getUnaryAtomicBufferedDataDef());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2722,7 +2722,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		initEOperation(op, g1);
 
 		op = addEOperation(dataFactoryEClass, this.getBinary(), "createBinary", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theDefPackage.getBinaryType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataDefPackage.getBinaryType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "unsigned", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "allocate", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -2739,7 +2739,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		t1 = addETypeParameter(op, "D");
 		g1 = createEGenericType(this.getData());
 		t1.getEBounds().add(g1);
-		g1 = createEGenericType(theDefPackage.getDataDef());
+		g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getDataDef());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "dataDef", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2748,7 +2748,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		initEOperation(op, g1);
 
 		op = addEOperation(dataFactoryEClass, this.getData(), "createData", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(theTermPackage.getDataTerm());
+		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "dataTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2758,7 +2758,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		t1 = addETypeParameter(op, "D");
 		g1 = createEGenericType(this.getBufferedElement());
 		t1.getEBounds().add(g1);
-		g1 = createEGenericType(theDefPackage.getUnaryBufferedDataDef());
+		g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getUnaryBufferedDataDef());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2772,7 +2772,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(dataFactoryEClass, null, "createDataDef", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaAnnotation(), "annotations", 1, -1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(theDefPackage.getDataDef());
+		g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getDataDef());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
@@ -2781,8 +2781,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		t1 = addETypeParameter(op, "D");
 		g1 = createEGenericType(this.getDataStruct());
 		t1.getEBounds().add(g1);
-		g1 = createEGenericType(theTermPackage.getDataTerm());
-		g2 = createEGenericType(theDefPackage.getBufferedDataDef());
+		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
+		g2 = createEGenericType(theIntegratedLanguageDataDefPackage.getBufferedDataDef());
 		g1.getETypeArguments().add(g2);
 		g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);
@@ -2806,19 +2806,19 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		initEOperation(op, g1);
 
 		op = addEOperation(dataFactoryEClass, this.getDatetime(), "createDate", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theDefPackage.getDatetimeType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theDefPackage.getDateFormat(), "dateFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theDefPackage.getTimeFormat(), "timeFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataDefPackage.getDatetimeType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataDefPackage.getDateFormat(), "dateFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataDefPackage.getTimeFormat(), "timeFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "allocate", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataFactoryEClass, this.getDecimal(), "createDecimal", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "precision", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "scale", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theDefPackage.getDecimalType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataDefPackage.getDecimalType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "allocate", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataFactoryEClass, this.getDecimal(), "createDecimal", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theDefPackage.getDecimalType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataDefPackage.getDecimalType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataFactoryEClass, null, "createEnum", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2842,7 +2842,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		initEOperation(op, g1);
 
 		op = addEOperation(dataFactoryEClass, this.getFloating(), "createFloating", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theDefPackage.getFloatingType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataDefPackage.getFloatingType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "allocate", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataFactoryEClass, this.getGraphic(), "createGraphic", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2860,7 +2860,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		t1 = addETypeParameter(op, "D");
 		g1 = createEGenericType(this.getData());
 		t1.getEBounds().add(g1);
-		g1 = createEGenericType(theDefPackage.getUnaryAtomicDataDef());
+		g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getUnaryAtomicDataDef());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2893,7 +2893,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		t1 = addETypeParameter(op, "D");
 		g1 = createEGenericType(this.getBufferedElement());
 		t1.getEBounds().add(g1);
-		g1 = createEGenericType(theDefPackage.getUnaryAtomicBufferedDataDef());
+		g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getUnaryAtomicBufferedDataDef());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2908,7 +2908,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		t1 = addETypeParameter(op, "D");
 		g1 = createEGenericType(this.getDataStruct());
 		t1.getEBounds().add(g1);
-		g1 = createEGenericType(theDefPackage.getStrollerDef());
+		g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getStrollerDef());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -3107,7 +3107,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEString(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataWriterEClass, this.getDataWriter(), "set", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theTermPackage.getSpecialElement(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataTermPackage.getSpecialElement(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataWriterEClass, this.getDataWriter(), "set", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getBufferedData(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -3174,9 +3174,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getDatetimeFormat(), "format", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(datetimeEClass, ecorePackage.getEString(), "qEditd", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theDefPackage.getDateFormat(), "dateFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataDefPackage.getDateFormat(), "dateFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "dateSeparator", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theDefPackage.getTimeFormat(), "timeFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataDefPackage.getTimeFormat(), "timeFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "timeSeparator", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(datetimeEClass, null, "subdur", 0, 1, IS_UNIQUE, IS_ORDERED);

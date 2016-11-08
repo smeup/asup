@@ -21,7 +21,7 @@ import org.smeup.sys.il.core.meta.QFacet;
  *   <li>{@link org.smeup.sys.il.data.term.QOverlay#getPosition <em>Position</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.term.QTermPackage#getOverlay()
+ * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getOverlay()
  * @model
  * @generated
  */

@@ -15,7 +15,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <em><b>Multiple Compound Data Def</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getMultipleCompoundDataDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getMultipleCompoundDataDef()
  * @model abstract="true"
  * @generated
  */

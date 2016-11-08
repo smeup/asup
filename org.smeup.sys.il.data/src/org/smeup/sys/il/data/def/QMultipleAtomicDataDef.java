@@ -14,7 +14,7 @@ import org.smeup.sys.il.data.QList;
  * <em><b>Multiple Atomic Data Def</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getMultipleAtomicDataDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getMultipleAtomicDataDef()
  * @model abstract="true"
  * @generated
  */

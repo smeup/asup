@@ -22,7 +22,7 @@ import org.smeup.sys.il.data.QBufferedElement;
  *   <li>{@link org.smeup.sys.il.data.def.QWrapperDef#getArgument <em>Argument</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getWrapperDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getWrapperDef()
  * @model abstract="true"
  * @generated
  */
@@ -37,7 +37,7 @@ public interface QWrapperDef<D extends QBufferedElement> {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference.
 	 * @see #setArgument(QUnaryBufferedDataDef)
-	 * @see org.smeup.sys.il.data.def.QDefPackage#getWrapperDef_Argument()
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getWrapperDef_Argument()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */

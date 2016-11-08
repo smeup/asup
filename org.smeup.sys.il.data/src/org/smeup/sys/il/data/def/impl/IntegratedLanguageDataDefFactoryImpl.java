@@ -11,51 +11,30 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QStroller;
+
 import org.smeup.sys.il.data.def.*;
-import org.smeup.sys.il.data.def.BinaryType;
-import org.smeup.sys.il.data.def.DataDefType;
-import org.smeup.sys.il.data.def.DateFormat;
-import org.smeup.sys.il.data.def.DatetimeType;
-import org.smeup.sys.il.data.def.DecimalType;
-import org.smeup.sys.il.data.def.FloatingType;
-import org.smeup.sys.il.data.def.QAdapterDef;
-import org.smeup.sys.il.data.def.QArrayDef;
-import org.smeup.sys.il.data.def.QBinaryDef;
-import org.smeup.sys.il.data.def.QBufferDef;
-import org.smeup.sys.il.data.def.QCharacterDef;
-import org.smeup.sys.il.data.def.QDataStructDef;
-import org.smeup.sys.il.data.def.QDatetimeDef;
-import org.smeup.sys.il.data.def.QDecimalDef;
-import org.smeup.sys.il.data.def.QFloatingDef;
-import org.smeup.sys.il.data.def.QHexadecimalDef;
-import org.smeup.sys.il.data.def.QIdentityDef;
-import org.smeup.sys.il.data.def.QIndicatorDef;
-import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
-import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
-import org.smeup.sys.il.data.def.QListDef;
-import org.smeup.sys.il.data.def.QNumericDef;
-import org.smeup.sys.il.data.def.QPointerDef;
-import org.smeup.sys.il.data.def.QScrollerDef;
-import org.smeup.sys.il.data.def.QStringDef;
-import org.smeup.sys.il.data.def.QStrollerDef;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
- * end-user-doc -->
+ * <!-- begin-user-doc -->
+ * An implementation of the model <b>Factory</b>.
+ * <!-- end-user-doc -->
  * @generated
  */
 public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implements QIntegratedLanguageDataDefFactory {
 	/**
 	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static QIntegratedLanguageDataDefFactory init() {
@@ -73,8 +52,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public IntegratedLanguageDataDefFactoryImpl() {
@@ -82,7 +61,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -114,7 +94,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -140,7 +121,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -166,50 +148,50 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QAdapterDef createAdapterDef() {
 		AdapterDefImpl adapterDef = new AdapterDefImpl();
 		return adapterDef;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public <D extends QArray<?>> QArrayDef<D> createArrayDef() {
 		ArrayDefImpl<D> arrayDef = new ArrayDefImpl<D>();
 		return arrayDef;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QBinaryDef createBinaryDef() {
 		BinaryDefImpl binaryDef = new BinaryDefImpl();
 		return binaryDef;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QBufferDef createBufferDef() {
 		BufferDefImpl bufferDef = new BufferDefImpl();
 		return bufferDef;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QCharacterDef createCharacterDef() {
 		CharacterDefImpl characterDef = new CharacterDefImpl();
 		return characterDef;
@@ -226,40 +208,40 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QDataStructDef createDataStructDef() {
 		DataStructDefImpl dataStructDef = new DataStructDefImpl();
 		return dataStructDef;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QDatetimeDef createDatetimeDef() {
 		DatetimeDefImpl datetimeDef = new DatetimeDefImpl();
 		return datetimeDef;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QDecimalDef createDecimalDef() {
 		DecimalDefImpl decimalDef = new DecimalDefImpl();
 		return decimalDef;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QFloatingDef createFloatingDef() {
 		FloatingDefImpl floatingDef = new FloatingDefImpl();
 		return floatingDef;
@@ -276,97 +258,98 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QHexadecimalDef createHexadecimalDef() {
 		HexadecimalDefImpl hexadecimalDef = new HexadecimalDefImpl();
 		return hexadecimalDef;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QIdentityDef createIdentityDef() {
 		IdentityDefImpl identityDef = new IdentityDefImpl();
 		return identityDef;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QIndicatorDef createIndicatorDef() {
 		IndicatorDefImpl indicatorDef = new IndicatorDefImpl();
 		return indicatorDef;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public <D extends QList<?>> QListDef<D> createListDef() {
 		ListDefImpl<D> listDef = new ListDefImpl<D>();
 		return listDef;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QNumericDef createNumericDef() {
 		NumericDefImpl numericDef = new NumericDefImpl();
 		return numericDef;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QPointerDef createPointerDef() {
 		PointerDefImpl pointerDef = new PointerDefImpl();
 		return pointerDef;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public <D extends QScroller<?>> QScrollerDef<D> createScrollerDef() {
 		ScrollerDefImpl<D> scrollerDef = new ScrollerDefImpl<D>();
 		return scrollerDef;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QStringDef createStringDef() {
 		StringDefImpl stringDef = new StringDefImpl();
 		return stringDef;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public <D extends QStroller<?>> QStrollerDef<D> createStrollerDef() {
 		StrollerDefImpl<D> strollerDef = new StrollerDefImpl<D>();
 		return strollerDef;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public BinaryType createBinaryTypeFromString(EDataType eDataType, String initialValue) {
@@ -376,7 +359,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertBinaryTypeToString(EDataType eDataType, Object instanceValue) {
@@ -384,7 +368,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public DataDefType createDataDefTypeFromString(EDataType eDataType, String initialValue) {
@@ -394,7 +379,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertDataDefTypeToString(EDataType eDataType, Object instanceValue) {
@@ -402,7 +388,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public DatetimeType createDatetimeTypeFromString(EDataType eDataType, String initialValue) {
@@ -412,7 +399,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertDatetimeTypeToString(EDataType eDataType, Object instanceValue) {
@@ -420,7 +408,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public DateFormat createDateFormatFromString(EDataType eDataType, String initialValue) {
@@ -430,7 +419,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertDateFormatToString(EDataType eDataType, Object instanceValue) {
@@ -438,7 +428,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public DecimalType createDecimalTypeFromString(EDataType eDataType, String initialValue) {
@@ -448,7 +439,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertDecimalTypeToString(EDataType eDataType, Object instanceValue) {
@@ -456,7 +448,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public FloatingType createFloatingTypeFromString(EDataType eDataType, String initialValue) {
@@ -466,7 +459,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertFloatingTypeToString(EDataType eDataType, Object instanceValue) {
@@ -494,16 +488,17 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QIntegratedLanguageDataDefPackage getIntegratedLanguageDataDefPackage() {
 		return (QIntegratedLanguageDataDefPackage)getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @deprecated
 	 * @generated
 	 */
@@ -512,4 +507,4 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 		return QIntegratedLanguageDataDefPackage.eINSTANCE;
 	}
 
-} // IntegratedLanguageDataDefFactoryImpl
+} //IntegratedLanguageDataDefFactoryImpl

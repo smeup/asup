@@ -12,8 +12,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.data.QGraphic;
 import org.smeup.sys.il.data.def.DataDefType;
-import org.smeup.sys.il.data.def.QDefPackage;
 import org.smeup.sys.il.data.def.QGraphicDef;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -68,7 +68,7 @@ public class GraphicDefImpl extends UnaryAtomicBufferedDataDefImpl<QGraphic> imp
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.GRAPHIC_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.GRAPHIC_DEF;
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class GraphicDefImpl extends UnaryAtomicBufferedDataDefImpl<QGraphic> imp
 		int oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.GRAPHIC_DEF__LENGTH, oldLength, length));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.GRAPHIC_DEF__LENGTH, oldLength, length));
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class GraphicDefImpl extends UnaryAtomicBufferedDataDefImpl<QGraphic> imp
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.GRAPHIC_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.GRAPHIC_DEF__LENGTH:
 				return getLength();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -114,7 +114,7 @@ public class GraphicDefImpl extends UnaryAtomicBufferedDataDefImpl<QGraphic> imp
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.GRAPHIC_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.GRAPHIC_DEF__LENGTH:
 				setLength((Integer)newValue);
 				return;
 		}
@@ -129,7 +129,7 @@ public class GraphicDefImpl extends UnaryAtomicBufferedDataDefImpl<QGraphic> imp
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.GRAPHIC_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.GRAPHIC_DEF__LENGTH:
 				setLength(LENGTH_EDEFAULT);
 				return;
 		}
@@ -144,7 +144,7 @@ public class GraphicDefImpl extends UnaryAtomicBufferedDataDefImpl<QGraphic> imp
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.GRAPHIC_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.GRAPHIC_DEF__LENGTH:
 				return length != LENGTH_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

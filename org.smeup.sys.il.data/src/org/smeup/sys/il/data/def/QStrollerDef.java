@@ -21,7 +21,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
  *   <li>{@link org.smeup.sys.il.data.def.QStrollerDef#getLength <em>Length</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getStrollerDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getStrollerDef()
  * @model
  * @generated
  */

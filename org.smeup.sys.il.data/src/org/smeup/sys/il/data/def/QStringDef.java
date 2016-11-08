@@ -14,7 +14,7 @@ import org.smeup.sys.il.data.QString;
  * <em><b>String Def</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getStringDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getStringDef()
  * @model
  * @generated
  */

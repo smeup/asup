@@ -14,7 +14,7 @@ import org.smeup.sys.il.data.QNumeric;
  * <em><b>Numeric Def</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getNumericDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getNumericDef()
  * @model
  * @generated
  */

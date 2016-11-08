@@ -15,7 +15,7 @@ import org.smeup.sys.il.data.QBufferedElement;
  * <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getUnaryBufferedDataDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getUnaryBufferedDataDef()
  * @model abstract="true"
  * @generated
  */

@@ -20,7 +20,7 @@ import org.smeup.sys.il.data.QHexadecimal;
  *   <li>{@link org.smeup.sys.il.data.def.QHexadecimalDef#getLength <em>Length</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getHexadecimalDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getHexadecimalDef()
  * @model
  * @generated
  */

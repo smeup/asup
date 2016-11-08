@@ -10,7 +10,7 @@ package org.smeup.sys.co.shell;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.smeup.sys.co.core.QCommunicationCorePackage;
-import org.smeup.sys.il.data.term.QTermPackage;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.rt.auth.QRuntimeAuthenticationPackage;
 
 /**
@@ -131,7 +131,7 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SHELL_DATA__FACETS = QTermPackage.DATA_TERM__FACETS;
+	int SHELL_DATA__FACETS = QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Based</b></em>' attribute.
@@ -140,7 +140,7 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SHELL_DATA__BASED = QTermPackage.DATA_TERM__BASED;
+	int SHELL_DATA__BASED = QIntegratedLanguageDataTermPackage.DATA_TERM__BASED;
 
 	/**
 	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
@@ -149,7 +149,7 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SHELL_DATA__CARDINALITY = QTermPackage.DATA_TERM__CARDINALITY;
+	int SHELL_DATA__CARDINALITY = QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY;
 
 	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute. <!--
@@ -158,7 +158,7 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SHELL_DATA__CONSTANT = QTermPackage.DATA_TERM__CONSTANT;
+	int SHELL_DATA__CONSTANT = QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT;
 
 	/**
 	 * The feature id for the '<em><b>Default</b></em>' containment reference.
@@ -167,7 +167,7 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SHELL_DATA__DEFAULT = QTermPackage.DATA_TERM__DEFAULT;
+	int SHELL_DATA__DEFAULT = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -175,7 +175,7 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SHELL_DATA__DEFINITION = QTermPackage.DATA_TERM__DEFINITION;
+	int SHELL_DATA__DEFINITION = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -184,7 +184,7 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SHELL_DATA__KEY = QTermPackage.DATA_TERM__KEY;
+	int SHELL_DATA__KEY = QIntegratedLanguageDataTermPackage.DATA_TERM__KEY;
 
 	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
@@ -193,7 +193,7 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SHELL_DATA__INITIALIZED = QTermPackage.DATA_TERM__INITIALIZED;
+	int SHELL_DATA__INITIALIZED = QIntegratedLanguageDataTermPackage.DATA_TERM__INITIALIZED;
 
 	/**
 	 * The feature id for the '<em><b>Like</b></em>' attribute. <!--
@@ -202,7 +202,7 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SHELL_DATA__LIKE = QTermPackage.DATA_TERM__LIKE;
+	int SHELL_DATA__LIKE = QIntegratedLanguageDataTermPackage.DATA_TERM__LIKE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -211,7 +211,7 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SHELL_DATA__NAME = QTermPackage.DATA_TERM__NAME;
+	int SHELL_DATA__NAME = QIntegratedLanguageDataTermPackage.DATA_TERM__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Restricted</b></em>' attribute. <!--
@@ -220,7 +220,7 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SHELL_DATA__RESTRICTED = QTermPackage.DATA_TERM__RESTRICTED;
+	int SHELL_DATA__RESTRICTED = QIntegratedLanguageDataTermPackage.DATA_TERM__RESTRICTED;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute. <!--
@@ -229,7 +229,7 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SHELL_DATA__TEXT = QTermPackage.DATA_TERM__TEXT;
+	int SHELL_DATA__TEXT = QIntegratedLanguageDataTermPackage.DATA_TERM__TEXT;
 
 	/**
 	 * The number of structural features of the '<em>Shell Data</em>' class.
@@ -237,7 +237,7 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SHELL_DATA_FEATURE_COUNT = QTermPackage.DATA_TERM_FEATURE_COUNT + 0;
+	int SHELL_DATA_FEATURE_COUNT = QIntegratedLanguageDataTermPackage.DATA_TERM_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Shell Output Wrapper</em>' class.

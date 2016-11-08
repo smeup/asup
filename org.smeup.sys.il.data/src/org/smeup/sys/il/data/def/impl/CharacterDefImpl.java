@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QCharacterDef;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -84,7 +84,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.CHARACTER_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.CHARACTER_DEF;
 	}
 
 	/**
@@ -117,7 +117,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 		int oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.CHARACTER_DEF__LENGTH, oldLength, length));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.CHARACTER_DEF__LENGTH, oldLength, length));
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 		boolean oldVarying = varying;
 		varying = newVarying;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.CHARACTER_DEF__VARYING, oldVarying, varying));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.CHARACTER_DEF__VARYING, oldVarying, varying));
 	}
 
 	/**
@@ -148,9 +148,9 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.CHARACTER_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.CHARACTER_DEF__LENGTH:
 				return getLength();
-			case QDefPackage.CHARACTER_DEF__VARYING:
+			case QIntegratedLanguageDataDefPackage.CHARACTER_DEF__VARYING:
 				return isVarying();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -163,10 +163,10 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.CHARACTER_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.CHARACTER_DEF__LENGTH:
 				setLength((Integer)newValue);
 				return;
-			case QDefPackage.CHARACTER_DEF__VARYING:
+			case QIntegratedLanguageDataDefPackage.CHARACTER_DEF__VARYING:
 				setVarying((Boolean)newValue);
 				return;
 		}
@@ -180,10 +180,10 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.CHARACTER_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.CHARACTER_DEF__LENGTH:
 				setLength(LENGTH_EDEFAULT);
 				return;
-			case QDefPackage.CHARACTER_DEF__VARYING:
+			case QIntegratedLanguageDataDefPackage.CHARACTER_DEF__VARYING:
 				setVarying(VARYING_EDEFAULT);
 				return;
 		}
@@ -197,9 +197,9 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.CHARACTER_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.CHARACTER_DEF__LENGTH:
 				return length != LENGTH_EDEFAULT;
-			case QDefPackage.CHARACTER_DEF__VARYING:
+			case QIntegratedLanguageDataDefPackage.CHARACTER_DEF__VARYING:
 				return varying != VARYING_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

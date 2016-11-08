@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.def.DataDefType;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.def.QListDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
 
@@ -60,7 +60,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.LIST_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.LIST_DEF;
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 		QUnaryAtomicDataDef<?> oldArgument = argument;
 		argument = newArgument;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QDefPackage.LIST_DEF__ARGUMENT, oldArgument, newArgument);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.LIST_DEF__ARGUMENT, oldArgument, newArgument);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -95,14 +95,14 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 		if (newArgument != argument) {
 			NotificationChain msgs = null;
 			if (argument != null)
-				msgs = ((InternalEObject)argument).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QDefPackage.LIST_DEF__ARGUMENT, null, msgs);
+				msgs = ((InternalEObject)argument).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataDefPackage.LIST_DEF__ARGUMENT, null, msgs);
 			if (newArgument != null)
-				msgs = ((InternalEObject)newArgument).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QDefPackage.LIST_DEF__ARGUMENT, null, msgs);
+				msgs = ((InternalEObject)newArgument).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataDefPackage.LIST_DEF__ARGUMENT, null, msgs);
 			msgs = basicSetArgument(newArgument, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.LIST_DEF__ARGUMENT, newArgument, newArgument));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.LIST_DEF__ARGUMENT, newArgument, newArgument));
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QDefPackage.LIST_DEF__ARGUMENT:
+			case QIntegratedLanguageDataDefPackage.LIST_DEF__ARGUMENT:
 				return basicSetArgument(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -125,7 +125,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.LIST_DEF__ARGUMENT:
+			case QIntegratedLanguageDataDefPackage.LIST_DEF__ARGUMENT:
 				return getArgument();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -138,7 +138,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.LIST_DEF__ARGUMENT:
+			case QIntegratedLanguageDataDefPackage.LIST_DEF__ARGUMENT:
 				setArgument((QUnaryAtomicDataDef<?>)newValue);
 				return;
 		}
@@ -152,7 +152,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.LIST_DEF__ARGUMENT:
+			case QIntegratedLanguageDataDefPackage.LIST_DEF__ARGUMENT:
 				setArgument((QUnaryAtomicDataDef<?>)null);
 				return;
 		}
@@ -166,7 +166,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.LIST_DEF__ARGUMENT:
+			case QIntegratedLanguageDataDefPackage.LIST_DEF__ARGUMENT:
 				return argument != null;
 		}
 		return super.eIsSet(featureID);

@@ -14,7 +14,7 @@ import org.smeup.sys.il.data.QData;
  * <em><b>Atomic Data Def</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getAtomicDataDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getAtomicDataDef()
  * @model interface="true" abstract="true"
  * @generated
  */

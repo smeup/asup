@@ -14,7 +14,7 @@ import org.smeup.sys.il.data.QIndicator;
  * <em><b>Indicator Def</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getIndicatorDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getIndicatorDef()
  * @model
  * @generated
  */

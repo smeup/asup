@@ -19,9 +19,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.il.core.meta.impl.FacetImpl;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.data.term.QSpecial;
 import org.smeup.sys.il.data.term.QSpecialElement;
-import org.smeup.sys.il.data.term.QTermPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -85,7 +85,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QTermPackage.Literals.SPECIAL;
+		return QIntegratedLanguageDataTermPackage.Literals.SPECIAL;
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 		String oldClassDelegate = classDelegate;
 		classDelegate = newClassDelegate;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QTermPackage.SPECIAL__CLASS_DELEGATE, oldClassDelegate, classDelegate));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.SPECIAL__CLASS_DELEGATE, oldClassDelegate, classDelegate));
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	@Override
 	public List<QSpecialElement> getElements() {
 		if (elements == null) {
-			elements = new EObjectContainmentEList<QSpecialElement>(QSpecialElement.class, this, QTermPackage.SPECIAL__ELEMENTS);
+			elements = new EObjectContainmentEList<QSpecialElement>(QSpecialElement.class, this, QIntegratedLanguageDataTermPackage.SPECIAL__ELEMENTS);
 		}
 		return elements;
 	}
@@ -128,7 +128,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QTermPackage.SPECIAL__ELEMENTS:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__ELEMENTS:
 				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -141,9 +141,9 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QTermPackage.SPECIAL__CLASS_DELEGATE:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__CLASS_DELEGATE:
 				return getClassDelegate();
-			case QTermPackage.SPECIAL__ELEMENTS:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__ELEMENTS:
 				return getElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -157,10 +157,10 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QTermPackage.SPECIAL__CLASS_DELEGATE:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__CLASS_DELEGATE:
 				setClassDelegate((String)newValue);
 				return;
-			case QTermPackage.SPECIAL__ELEMENTS:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__ELEMENTS:
 				getElements().clear();
 				getElements().addAll((Collection<? extends QSpecialElement>)newValue);
 				return;
@@ -175,10 +175,10 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QTermPackage.SPECIAL__CLASS_DELEGATE:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__CLASS_DELEGATE:
 				setClassDelegate(CLASS_DELEGATE_EDEFAULT);
 				return;
-			case QTermPackage.SPECIAL__ELEMENTS:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__ELEMENTS:
 				getElements().clear();
 				return;
 		}
@@ -192,9 +192,9 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QTermPackage.SPECIAL__CLASS_DELEGATE:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__CLASS_DELEGATE:
 				return CLASS_DELEGATE_EDEFAULT == null ? classDelegate != null : !CLASS_DELEGATE_EDEFAULT.equals(classDelegate);
-			case QTermPackage.SPECIAL__ELEMENTS:
+			case QIntegratedLanguageDataTermPackage.SPECIAL__ELEMENTS:
 				return elements != null && !elements.isEmpty();
 		}
 		return super.eIsSet(featureID);

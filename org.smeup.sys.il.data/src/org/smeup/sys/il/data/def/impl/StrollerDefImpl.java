@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.def.QStrollerDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 
@@ -69,7 +69,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.STROLLER_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.STROLLER_DEF;
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 		int oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.STROLLER_DEF__LENGTH, oldLength, length));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.STROLLER_DEF__LENGTH, oldLength, length));
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.STROLLER_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.STROLLER_DEF__LENGTH:
 				return getLength();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -122,7 +122,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.STROLLER_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.STROLLER_DEF__LENGTH:
 				setLength((Integer)newValue);
 				return;
 		}
@@ -136,7 +136,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.STROLLER_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.STROLLER_DEF__LENGTH:
 				setLength(LENGTH_EDEFAULT);
 				return;
 		}
@@ -150,7 +150,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.STROLLER_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.STROLLER_DEF__LENGTH:
 				return length != LENGTH_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

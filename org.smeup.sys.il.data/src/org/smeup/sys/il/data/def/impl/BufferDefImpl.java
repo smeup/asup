@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QBufferDef;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -41,7 +41,7 @@ public class BufferDefImpl extends UnaryAtomicBufferedDataDefImpl<QBufferedEleme
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.BUFFER_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.BUFFER_DEF;
 	}
 
 	@Override

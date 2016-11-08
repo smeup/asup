@@ -10,7 +10,7 @@ package org.smeup.sys.il.data.def.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.def.DataDefType;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.def.QNumericDef;
 
 /**
@@ -39,7 +39,7 @@ public class NumericDefImpl extends UnaryAtomicBufferedDataDefImpl<QNumeric> imp
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.NUMERIC_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.NUMERIC_DEF;
 	}
 
 	@Override

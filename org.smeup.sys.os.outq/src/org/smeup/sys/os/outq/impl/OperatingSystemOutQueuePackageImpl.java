@@ -12,8 +12,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.smeup.sys.il.data.def.QDefPackage;
-import org.smeup.sys.il.data.term.QTermPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.os.outq.QOperatingSystemOutQueueFactory;
 import org.smeup.sys.os.outq.QOperatingSystemOutQueuePackage;
@@ -99,8 +99,8 @@ public class OperatingSystemOutQueuePackageImpl extends EPackageImpl implements 
 		// Initialize simple dependencies
 		QOperatingSystemTypePackage.eINSTANCE.eClass();
 		QIntegratedLanguageLockPackage.eINSTANCE.eClass();
-		QDefPackage.eINSTANCE.eClass();
-		QTermPackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataDefPackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataTermPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theOperatingSystemOutQueuePackage.createPackageContents();

@@ -10,8 +10,7 @@ package org.smeup.sys.il.data.def.impl;
 import org.eclipse.emf.ecore.EClass;
 
 import org.smeup.sys.il.data.QBufferedElement;
-
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.def.QUnaryBufferedDataDef;
 
 /**
@@ -43,7 +42,7 @@ public abstract class UnaryBufferedDataDefImpl<D extends QBufferedElement> exten
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.UNARY_BUFFERED_DATA_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.UNARY_BUFFERED_DATA_DEF;
 	}
 
 	/**

@@ -10,8 +10,8 @@ package org.smeup.sys.il.data.def.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.def.DataDefType;
-import org.smeup.sys.il.data.def.QDefPackage;
 import org.smeup.sys.il.data.def.QIndicatorDef;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -39,7 +39,7 @@ public class IndicatorDefImpl extends UnaryAtomicBufferedDataDefImpl<QIndicator>
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.INDICATOR_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.INDICATOR_DEF;
 	}
 
 	@Override

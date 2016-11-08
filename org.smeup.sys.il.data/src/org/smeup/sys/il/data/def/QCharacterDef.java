@@ -21,7 +21,7 @@ import org.smeup.sys.il.data.QCharacter;
  *   <li>{@link org.smeup.sys.il.data.def.QCharacterDef#isVarying <em>Varying</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getCharacterDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getCharacterDef()
  * @model
  * @generated
  */

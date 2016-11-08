@@ -27,7 +27,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
  *   <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#isInitialized <em>Initialized</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getCompoundDataDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getCompoundDataDef()
  * @model abstract="true"
  * @generated
  */
@@ -43,7 +43,7 @@ public interface QCompoundDataDef<D extends QStruct<?>, E extends QDataTerm<?>> 
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Class Delegator</em>' attribute.
 	 * @see #setClassDelegator(String)
-	 * @see org.smeup.sys.il.data.def.QDefPackage#getCompoundDataDef_ClassDelegator()
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getCompoundDataDef_ClassDelegator()
 	 * @model
 	 * @generated
 	 */
@@ -68,7 +68,7 @@ public interface QCompoundDataDef<D extends QStruct<?>, E extends QDataTerm<?>> 
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Elements</em>' containment reference list.
-	 * @see org.smeup.sys.il.data.def.QDefPackage#getCompoundDataDef_Elements()
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getCompoundDataDef_Elements()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -139,7 +139,7 @@ public interface QCompoundDataDef<D extends QStruct<?>, E extends QDataTerm<?>> 
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Initialized</em>' attribute.
 	 * @see #setInitialized(boolean)
-	 * @see org.smeup.sys.il.data.def.QDefPackage#getCompoundDataDef_Initialized()
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getCompoundDataDef_Initialized()
 	 * @model
 	 * @generated
 	 */

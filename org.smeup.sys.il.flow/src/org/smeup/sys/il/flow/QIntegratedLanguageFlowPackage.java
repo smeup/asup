@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
-import org.smeup.sys.il.data.term.QTermPackage;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -906,7 +906,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_DATA__FACETS = QTermPackage.DATA_TERM__FACETS;
+	int FLOW_DATA__FACETS = QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Based</b></em>' attribute.
@@ -915,7 +915,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_DATA__BASED = QTermPackage.DATA_TERM__BASED;
+	int FLOW_DATA__BASED = QIntegratedLanguageDataTermPackage.DATA_TERM__BASED;
 
 	/**
 	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
@@ -923,7 +923,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_DATA__CARDINALITY = QTermPackage.DATA_TERM__CARDINALITY;
+	int FLOW_DATA__CARDINALITY = QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY;
 
 	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute. <!--
@@ -932,7 +932,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_DATA__CONSTANT = QTermPackage.DATA_TERM__CONSTANT;
+	int FLOW_DATA__CONSTANT = QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT;
 
 	/**
 	 * The feature id for the '<em><b>Default</b></em>' containment reference.
@@ -940,7 +940,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_DATA__DEFAULT = QTermPackage.DATA_TERM__DEFAULT;
+	int FLOW_DATA__DEFAULT = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -948,7 +948,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_DATA__DEFINITION = QTermPackage.DATA_TERM__DEFINITION;
+	int FLOW_DATA__DEFINITION = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -957,7 +957,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_DATA__KEY = QTermPackage.DATA_TERM__KEY;
+	int FLOW_DATA__KEY = QIntegratedLanguageDataTermPackage.DATA_TERM__KEY;
 
 	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
@@ -966,7 +966,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_DATA__INITIALIZED = QTermPackage.DATA_TERM__INITIALIZED;
+	int FLOW_DATA__INITIALIZED = QIntegratedLanguageDataTermPackage.DATA_TERM__INITIALIZED;
 
 	/**
 	 * The feature id for the '<em><b>Like</b></em>' attribute. <!--
@@ -975,7 +975,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_DATA__LIKE = QTermPackage.DATA_TERM__LIKE;
+	int FLOW_DATA__LIKE = QIntegratedLanguageDataTermPackage.DATA_TERM__LIKE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -984,7 +984,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_DATA__NAME = QTermPackage.DATA_TERM__NAME;
+	int FLOW_DATA__NAME = QIntegratedLanguageDataTermPackage.DATA_TERM__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Restricted</b></em>' attribute. <!--
@@ -993,7 +993,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_DATA__RESTRICTED = QTermPackage.DATA_TERM__RESTRICTED;
+	int FLOW_DATA__RESTRICTED = QIntegratedLanguageDataTermPackage.DATA_TERM__RESTRICTED;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute. <!--
@@ -1002,7 +1002,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_DATA__TEXT = QTermPackage.DATA_TERM__TEXT;
+	int FLOW_DATA__TEXT = QIntegratedLanguageDataTermPackage.DATA_TERM__TEXT;
 
 	/**
 	 * The number of structural features of the '<em>Flow Data</em>' class. <!--
@@ -1011,7 +1011,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_DATA_FEATURE_COUNT = QTermPackage.DATA_TERM_FEATURE_COUNT + 0;
+	int FLOW_DATA_FEATURE_COUNT = QIntegratedLanguageDataTermPackage.DATA_TERM_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.FlowSectionImpl <em>Flow Section</em>}' class.
@@ -1740,7 +1740,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROTOTYPE__FACETS = QTermPackage.DATA_TERM__FACETS;
+	int PROTOTYPE__FACETS = QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Based</b></em>' attribute.
@@ -1749,7 +1749,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROTOTYPE__BASED = QTermPackage.DATA_TERM__BASED;
+	int PROTOTYPE__BASED = QIntegratedLanguageDataTermPackage.DATA_TERM__BASED;
 
 	/**
 	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
@@ -1757,7 +1757,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROTOTYPE__CARDINALITY = QTermPackage.DATA_TERM__CARDINALITY;
+	int PROTOTYPE__CARDINALITY = QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY;
 
 	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute. <!--
@@ -1766,7 +1766,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROTOTYPE__CONSTANT = QTermPackage.DATA_TERM__CONSTANT;
+	int PROTOTYPE__CONSTANT = QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT;
 
 	/**
 	 * The feature id for the '<em><b>Default</b></em>' containment reference.
@@ -1774,7 +1774,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROTOTYPE__DEFAULT = QTermPackage.DATA_TERM__DEFAULT;
+	int PROTOTYPE__DEFAULT = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -1782,7 +1782,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROTOTYPE__DEFINITION = QTermPackage.DATA_TERM__DEFINITION;
+	int PROTOTYPE__DEFINITION = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -1791,7 +1791,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROTOTYPE__KEY = QTermPackage.DATA_TERM__KEY;
+	int PROTOTYPE__KEY = QIntegratedLanguageDataTermPackage.DATA_TERM__KEY;
 
 	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
@@ -1800,7 +1800,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROTOTYPE__INITIALIZED = QTermPackage.DATA_TERM__INITIALIZED;
+	int PROTOTYPE__INITIALIZED = QIntegratedLanguageDataTermPackage.DATA_TERM__INITIALIZED;
 
 	/**
 	 * The feature id for the '<em><b>Like</b></em>' attribute. <!--
@@ -1809,7 +1809,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROTOTYPE__LIKE = QTermPackage.DATA_TERM__LIKE;
+	int PROTOTYPE__LIKE = QIntegratedLanguageDataTermPackage.DATA_TERM__LIKE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1818,7 +1818,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROTOTYPE__NAME = QTermPackage.DATA_TERM__NAME;
+	int PROTOTYPE__NAME = QIntegratedLanguageDataTermPackage.DATA_TERM__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Restricted</b></em>' attribute. <!--
@@ -1827,7 +1827,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROTOTYPE__RESTRICTED = QTermPackage.DATA_TERM__RESTRICTED;
+	int PROTOTYPE__RESTRICTED = QIntegratedLanguageDataTermPackage.DATA_TERM__RESTRICTED;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute. <!--
@@ -1836,7 +1836,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROTOTYPE__TEXT = QTermPackage.DATA_TERM__TEXT;
+	int PROTOTYPE__TEXT = QIntegratedLanguageDataTermPackage.DATA_TERM__TEXT;
 
 	/**
 	 * The feature id for the '<em><b>Entry</b></em>' containment reference.
@@ -1844,7 +1844,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROTOTYPE__ENTRY = QTermPackage.DATA_TERM_FEATURE_COUNT + 0;
+	int PROTOTYPE__ENTRY = QIntegratedLanguageDataTermPackage.DATA_TERM_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Prototype</em>' class. <!--
@@ -1853,7 +1853,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROTOTYPE_FEATURE_COUNT = QTermPackage.DATA_TERM_FEATURE_COUNT + 1;
+	int PROTOTYPE_FEATURE_COUNT = QIntegratedLanguageDataTermPackage.DATA_TERM_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.

@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QDataTermVisitor;
-import org.smeup.sys.il.data.term.QTermPackage;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -34,7 +34,7 @@ public abstract class DataTermVisitorImpl extends MinimalEObjectImpl.Container i
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QTermPackage.Literals.DATA_TERM_VISITOR;
+		return QIntegratedLanguageDataTermPackage.Literals.DATA_TERM_VISITOR;
 	}
 
 	/**

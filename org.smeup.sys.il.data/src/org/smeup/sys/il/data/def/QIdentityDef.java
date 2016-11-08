@@ -14,7 +14,7 @@ import org.smeup.sys.il.data.QIdentity;
  * <em><b>Identity Def</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getIdentityDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getIdentityDef()
  * @model
  * @generated
  */

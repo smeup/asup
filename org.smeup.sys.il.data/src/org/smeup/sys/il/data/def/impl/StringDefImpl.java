@@ -10,7 +10,7 @@ package org.smeup.sys.il.data.def.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.DataDefType;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.def.QStringDef;
 
 /**
@@ -39,7 +39,7 @@ public class StringDefImpl extends UnaryAtomicBufferedDataDefImpl<QString> imple
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.STRING_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.STRING_DEF;
 	}
 
 	@Override

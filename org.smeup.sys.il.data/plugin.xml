@@ -23,7 +23,7 @@
       <!-- @generated il-data -->
       <package
             uri="http://www.smeup.org/asup/il/data/def"
-            class="org.smeup.sys.il.data.def.QDefPackage"
+            class="org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage"
             genModel="model/il-data.genmodel"/>
    </extension>
 
@@ -31,7 +31,7 @@
       <!-- @generated il-data -->
       <package
             uri="http://www.smeup.org/asup/il/data/term"
-            class="org.smeup.sys.il.data.term.QTermPackage"
+            class="org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage"
             genModel="model/il-data.genmodel"/>
    </extension>
 

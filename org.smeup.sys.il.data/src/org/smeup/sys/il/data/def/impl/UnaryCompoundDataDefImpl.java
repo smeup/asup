@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.def.QUnaryCompoundDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 
@@ -145,7 +145,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.UNARY_COMPOUND_DATA_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.UNARY_COMPOUND_DATA_DEF;
 	}
 
 	/**
@@ -166,7 +166,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 		String oldClassDelegator = classDelegator;
 		classDelegator = newClassDelegator;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.UNARY_COMPOUND_DATA_DEF__CLASS_DELEGATOR, oldClassDelegator, classDelegator));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__CLASS_DELEGATOR, oldClassDelegator, classDelegator));
 	}
 
 	/**
@@ -176,7 +176,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 	@Override
 	public List<E> getElements() {
 		if (elements == null) {
-			elements = new EObjectContainmentEList<E>(QDataTerm.class, this, QDefPackage.UNARY_COMPOUND_DATA_DEF__ELEMENTS);
+			elements = new EObjectContainmentEList<E>(QDataTerm.class, this, QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__ELEMENTS);
 		}
 		return elements;
 	}
@@ -199,7 +199,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 		String oldPrefix = prefix;
 		prefix = newPrefix;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.UNARY_COMPOUND_DATA_DEF__PREFIX, oldPrefix, prefix));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__PREFIX, oldPrefix, prefix));
 	}
 
 	/**
@@ -220,7 +220,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 		boolean oldQualified = qualified;
 		qualified = newQualified;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.UNARY_COMPOUND_DATA_DEF__QUALIFIED, oldQualified, qualified));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__QUALIFIED, oldQualified, qualified));
 	}
 
 	/**
@@ -241,7 +241,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 		boolean oldInitialized = initialized;
 		initialized = newInitialized;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.UNARY_COMPOUND_DATA_DEF__INITIALIZED, oldInitialized, initialized));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__INITIALIZED, oldInitialized, initialized));
 	}
 
 	/**
@@ -251,7 +251,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__ELEMENTS:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__ELEMENTS:
 				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -264,15 +264,15 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__CLASS_DELEGATOR:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__CLASS_DELEGATOR:
 				return getClassDelegator();
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__ELEMENTS:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__ELEMENTS:
 				return getElements();
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__PREFIX:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__PREFIX:
 				return getPrefix();
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__QUALIFIED:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__QUALIFIED:
 				return isQualified();
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__INITIALIZED:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__INITIALIZED:
 				return isInitialized();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -286,20 +286,20 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__CLASS_DELEGATOR:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__CLASS_DELEGATOR:
 				setClassDelegator((String)newValue);
 				return;
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__ELEMENTS:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__ELEMENTS:
 				getElements().clear();
 				getElements().addAll((Collection<? extends E>)newValue);
 				return;
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__PREFIX:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__PREFIX:
 				setPrefix((String)newValue);
 				return;
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__QUALIFIED:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__QUALIFIED:
 				setQualified((Boolean)newValue);
 				return;
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__INITIALIZED:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__INITIALIZED:
 				setInitialized((Boolean)newValue);
 				return;
 		}
@@ -313,19 +313,19 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__CLASS_DELEGATOR:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__CLASS_DELEGATOR:
 				setClassDelegator(CLASS_DELEGATOR_EDEFAULT);
 				return;
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__ELEMENTS:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__ELEMENTS:
 				getElements().clear();
 				return;
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__PREFIX:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__PREFIX:
 				setPrefix(PREFIX_EDEFAULT);
 				return;
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__QUALIFIED:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__QUALIFIED:
 				setQualified(QUALIFIED_EDEFAULT);
 				return;
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__INITIALIZED:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__INITIALIZED:
 				setInitialized(INITIALIZED_EDEFAULT);
 				return;
 		}
@@ -339,15 +339,15 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__CLASS_DELEGATOR:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__CLASS_DELEGATOR:
 				return CLASS_DELEGATOR_EDEFAULT == null ? classDelegator != null : !CLASS_DELEGATOR_EDEFAULT.equals(classDelegator);
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__ELEMENTS:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__ELEMENTS:
 				return elements != null && !elements.isEmpty();
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__PREFIX:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__PREFIX:
 				return PREFIX_EDEFAULT == null ? prefix != null : !PREFIX_EDEFAULT.equals(prefix);
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__QUALIFIED:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__QUALIFIED:
 				return qualified != QUALIFIED_EDEFAULT;
-			case QDefPackage.UNARY_COMPOUND_DATA_DEF__INITIALIZED:
+			case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__INITIALIZED:
 				return initialized != INITIALIZED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -361,11 +361,11 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == QCompoundDataDef.class) {
 			switch (derivedFeatureID) {
-				case QDefPackage.UNARY_COMPOUND_DATA_DEF__CLASS_DELEGATOR: return QDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR;
-				case QDefPackage.UNARY_COMPOUND_DATA_DEF__ELEMENTS: return QDefPackage.COMPOUND_DATA_DEF__ELEMENTS;
-				case QDefPackage.UNARY_COMPOUND_DATA_DEF__PREFIX: return QDefPackage.COMPOUND_DATA_DEF__PREFIX;
-				case QDefPackage.UNARY_COMPOUND_DATA_DEF__QUALIFIED: return QDefPackage.COMPOUND_DATA_DEF__QUALIFIED;
-				case QDefPackage.UNARY_COMPOUND_DATA_DEF__INITIALIZED: return QDefPackage.COMPOUND_DATA_DEF__INITIALIZED;
+				case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__CLASS_DELEGATOR: return QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR;
+				case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__ELEMENTS: return QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS;
+				case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__PREFIX: return QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__PREFIX;
+				case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__QUALIFIED: return QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED;
+				case QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__INITIALIZED: return QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__INITIALIZED;
 				default: return -1;
 			}
 		}
@@ -380,11 +380,11 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == QCompoundDataDef.class) {
 			switch (baseFeatureID) {
-				case QDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR: return QDefPackage.UNARY_COMPOUND_DATA_DEF__CLASS_DELEGATOR;
-				case QDefPackage.COMPOUND_DATA_DEF__ELEMENTS: return QDefPackage.UNARY_COMPOUND_DATA_DEF__ELEMENTS;
-				case QDefPackage.COMPOUND_DATA_DEF__PREFIX: return QDefPackage.UNARY_COMPOUND_DATA_DEF__PREFIX;
-				case QDefPackage.COMPOUND_DATA_DEF__QUALIFIED: return QDefPackage.UNARY_COMPOUND_DATA_DEF__QUALIFIED;
-				case QDefPackage.COMPOUND_DATA_DEF__INITIALIZED: return QDefPackage.UNARY_COMPOUND_DATA_DEF__INITIALIZED;
+				case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR: return QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__CLASS_DELEGATOR;
+				case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS: return QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__ELEMENTS;
+				case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__PREFIX: return QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__PREFIX;
+				case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED: return QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__QUALIFIED;
+				case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__INITIALIZED: return QIntegratedLanguageDataDefPackage.UNARY_COMPOUND_DATA_DEF__INITIALIZED;
 				default: return -1;
 			}
 		}

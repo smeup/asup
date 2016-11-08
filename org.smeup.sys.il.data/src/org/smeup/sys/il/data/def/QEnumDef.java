@@ -21,7 +21,7 @@ import org.smeup.sys.il.data.QBufferedElement;
  *   <li>{@link org.smeup.sys.il.data.def.QEnumDef#getKlass <em>Klass</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getEnumDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getEnumDef()
  * @model abstract="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
  * @generated
  */
@@ -36,7 +36,7 @@ public interface QEnumDef<E extends Enum<E>, D extends QBufferedElement> extends
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Delegate</em>' containment reference.
 	 * @see #setDelegate(QBufferedDataDef)
-	 * @see org.smeup.sys.il.data.def.QDefPackage#getEnumDef_Delegate()
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getEnumDef_Delegate()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */

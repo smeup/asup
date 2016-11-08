@@ -14,7 +14,7 @@ import org.smeup.sys.il.data.QBufferedElement;
  * <em><b>Buffer Def</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getBufferDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getBufferDef()
  * @model
  * @generated
  */

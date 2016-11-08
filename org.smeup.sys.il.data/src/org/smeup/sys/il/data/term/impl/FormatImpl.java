@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.core.meta.impl.FacetImpl;
 import org.smeup.sys.il.data.term.FormatType;
 import org.smeup.sys.il.data.term.QFormat;
-import org.smeup.sys.il.data.term.QTermPackage;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -84,7 +84,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QTermPackage.Literals.FORMAT;
+		return QIntegratedLanguageDataTermPackage.Literals.FORMAT;
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 		FormatType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QTermPackage.FORMAT__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.FORMAT__TYPE, oldType, type));
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 		String oldExpression = expression;
 		expression = newExpression;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QTermPackage.FORMAT__EXPRESSION, oldExpression, expression));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.FORMAT__EXPRESSION, oldExpression, expression));
 	}
 
 	/**
@@ -136,9 +136,9 @@ public class FormatImpl extends FacetImpl implements QFormat {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QTermPackage.FORMAT__EXPRESSION:
+			case QIntegratedLanguageDataTermPackage.FORMAT__EXPRESSION:
 				return getExpression();
-			case QTermPackage.FORMAT__TYPE:
+			case QIntegratedLanguageDataTermPackage.FORMAT__TYPE:
 				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -151,10 +151,10 @@ public class FormatImpl extends FacetImpl implements QFormat {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QTermPackage.FORMAT__EXPRESSION:
+			case QIntegratedLanguageDataTermPackage.FORMAT__EXPRESSION:
 				setExpression((String)newValue);
 				return;
-			case QTermPackage.FORMAT__TYPE:
+			case QIntegratedLanguageDataTermPackage.FORMAT__TYPE:
 				setType((FormatType)newValue);
 				return;
 		}
@@ -168,10 +168,10 @@ public class FormatImpl extends FacetImpl implements QFormat {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QTermPackage.FORMAT__EXPRESSION:
+			case QIntegratedLanguageDataTermPackage.FORMAT__EXPRESSION:
 				setExpression(EXPRESSION_EDEFAULT);
 				return;
-			case QTermPackage.FORMAT__TYPE:
+			case QIntegratedLanguageDataTermPackage.FORMAT__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
 		}
@@ -185,9 +185,9 @@ public class FormatImpl extends FacetImpl implements QFormat {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QTermPackage.FORMAT__EXPRESSION:
+			case QIntegratedLanguageDataTermPackage.FORMAT__EXPRESSION:
 				return EXPRESSION_EDEFAULT == null ? expression != null : !EXPRESSION_EDEFAULT.equals(expression);
-			case QTermPackage.FORMAT__TYPE:
+			case QIntegratedLanguageDataTermPackage.FORMAT__TYPE:
 				return type != TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

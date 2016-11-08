@@ -14,7 +14,7 @@ import org.smeup.sys.il.data.QAdapter;
  * <em><b>Adapter Def</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getAdapterDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getAdapterDef()
  * @model
  * @generated
  */

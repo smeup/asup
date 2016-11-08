@@ -16,7 +16,7 @@ import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.SortDirection;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QArrayDef;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -68,7 +68,7 @@ public class ArrayDefImpl<D extends QArray<?>> extends MultipleAtomicBufferedDat
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.ARRAY_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.ARRAY_DEF;
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class ArrayDefImpl<D extends QArray<?>> extends MultipleAtomicBufferedDat
 		SortDirection oldOrder = order;
 		order = newOrder == null ? ORDER_EDEFAULT : newOrder;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.ARRAY_DEF__ORDER, oldOrder, order));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.ARRAY_DEF__ORDER, oldOrder, order));
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class ArrayDefImpl<D extends QArray<?>> extends MultipleAtomicBufferedDat
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.ARRAY_DEF__ORDER:
+			case QIntegratedLanguageDataDefPackage.ARRAY_DEF__ORDER:
 				return getOrder();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -114,7 +114,7 @@ public class ArrayDefImpl<D extends QArray<?>> extends MultipleAtomicBufferedDat
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.ARRAY_DEF__ORDER:
+			case QIntegratedLanguageDataDefPackage.ARRAY_DEF__ORDER:
 				setOrder((SortDirection)newValue);
 				return;
 		}
@@ -129,7 +129,7 @@ public class ArrayDefImpl<D extends QArray<?>> extends MultipleAtomicBufferedDat
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.ARRAY_DEF__ORDER:
+			case QIntegratedLanguageDataDefPackage.ARRAY_DEF__ORDER:
 				setOrder(ORDER_EDEFAULT);
 				return;
 		}
@@ -144,7 +144,7 @@ public class ArrayDefImpl<D extends QArray<?>> extends MultipleAtomicBufferedDat
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.ARRAY_DEF__ORDER:
+			case QIntegratedLanguageDataDefPackage.ARRAY_DEF__ORDER:
 				return order != ORDER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

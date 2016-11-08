@@ -14,7 +14,7 @@ import org.smeup.sys.il.data.QScroller;
  * <em><b>Scroller Data Def</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getScrollerDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getScrollerDef()
  * @model
  * @generated
  */

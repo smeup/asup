@@ -9,7 +9,7 @@ package org.smeup.sys.il.data.def.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.data.QData;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.def.QUnaryDataDef;
 
 /**
@@ -38,7 +38,7 @@ public abstract class UnaryDataDefImpl<D extends QData> extends DataDefImpl<D> i
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.UNARY_DATA_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.UNARY_DATA_DEF;
 	}
 
 } // UnaryDataDefImpl

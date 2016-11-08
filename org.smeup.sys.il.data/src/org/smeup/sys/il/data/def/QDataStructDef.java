@@ -21,7 +21,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
  *   <li>{@link org.smeup.sys.il.data.def.QDataStructDef#getLength <em>Length</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getDataStructDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDataStructDef()
  * @model
  * @generated
  */

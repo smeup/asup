@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.data.QFloating;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.FloatingType;
-import org.smeup.sys.il.data.def.QDefPackage;
 import org.smeup.sys.il.data.def.QFloatingDef;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -66,7 +66,7 @@ public class FloatingDefImpl extends UnaryAtomicBufferedDataDefImpl<QFloating> i
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.FLOATING_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.FLOATING_DEF;
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class FloatingDefImpl extends UnaryAtomicBufferedDataDefImpl<QFloating> i
 		FloatingType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.FLOATING_DEF__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.FLOATING_DEF__TYPE, oldType, type));
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class FloatingDefImpl extends UnaryAtomicBufferedDataDefImpl<QFloating> i
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.FLOATING_DEF__TYPE:
+			case QIntegratedLanguageDataDefPackage.FLOATING_DEF__TYPE:
 				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -110,7 +110,7 @@ public class FloatingDefImpl extends UnaryAtomicBufferedDataDefImpl<QFloating> i
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.FLOATING_DEF__TYPE:
+			case QIntegratedLanguageDataDefPackage.FLOATING_DEF__TYPE:
 				setType((FloatingType)newValue);
 				return;
 		}
@@ -124,7 +124,7 @@ public class FloatingDefImpl extends UnaryAtomicBufferedDataDefImpl<QFloating> i
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.FLOATING_DEF__TYPE:
+			case QIntegratedLanguageDataDefPackage.FLOATING_DEF__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
 		}
@@ -138,7 +138,7 @@ public class FloatingDefImpl extends UnaryAtomicBufferedDataDefImpl<QFloating> i
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.FLOATING_DEF__TYPE:
+			case QIntegratedLanguageDataDefPackage.FLOATING_DEF__TYPE:
 				return type != TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

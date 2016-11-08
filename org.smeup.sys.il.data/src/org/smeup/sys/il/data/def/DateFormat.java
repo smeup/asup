@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Date Format</b></em>', and utility methods for working with them. <!--
  * end-user-doc -->
- * @see org.smeup.sys.il.data.def.QDefPackage#getDateFormat()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDateFormat()
  * @model
  * @generated
  */

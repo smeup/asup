@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
-import org.smeup.sys.il.data.def.QDefPackage;
 import org.smeup.sys.il.data.def.QEnumDef;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -68,7 +68,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedElement>
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.ENUM_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.ENUM_DEF;
 	}
 
 	/**
@@ -88,7 +88,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedElement>
 		QBufferedDataDef<D> oldDelegate = delegate;
 		delegate = newDelegate;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QDefPackage.ENUM_DEF__DELEGATE, oldDelegate, newDelegate);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE, oldDelegate, newDelegate);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -103,14 +103,14 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedElement>
 		if (newDelegate != delegate) {
 			NotificationChain msgs = null;
 			if (delegate != null)
-				msgs = ((InternalEObject)delegate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QDefPackage.ENUM_DEF__DELEGATE, null, msgs);
+				msgs = ((InternalEObject)delegate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE, null, msgs);
 			if (newDelegate != null)
-				msgs = ((InternalEObject)newDelegate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QDefPackage.ENUM_DEF__DELEGATE, null, msgs);
+				msgs = ((InternalEObject)newDelegate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE, null, msgs);
 			msgs = basicSetDelegate(newDelegate, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.ENUM_DEF__DELEGATE, newDelegate, newDelegate));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE, newDelegate, newDelegate));
 	}
 
 	/**
@@ -131,7 +131,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedElement>
 		Class<E> oldKlass = klass;
 		klass = newKlass;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.ENUM_DEF__KLASS, oldKlass, klass));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.ENUM_DEF__KLASS, oldKlass, klass));
 	}
 
 	/**
@@ -141,7 +141,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedElement>
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QDefPackage.ENUM_DEF__DELEGATE:
+			case QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE:
 				return basicSetDelegate(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -154,9 +154,9 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedElement>
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.ENUM_DEF__DELEGATE:
+			case QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE:
 				return getDelegate();
-			case QDefPackage.ENUM_DEF__KLASS:
+			case QIntegratedLanguageDataDefPackage.ENUM_DEF__KLASS:
 				return getKlass();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -170,10 +170,10 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedElement>
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.ENUM_DEF__DELEGATE:
+			case QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE:
 				setDelegate((QBufferedDataDef<D>)newValue);
 				return;
-			case QDefPackage.ENUM_DEF__KLASS:
+			case QIntegratedLanguageDataDefPackage.ENUM_DEF__KLASS:
 				setKlass((Class<E>)newValue);
 				return;
 		}
@@ -187,10 +187,10 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedElement>
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.ENUM_DEF__DELEGATE:
+			case QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE:
 				setDelegate((QBufferedDataDef<D>)null);
 				return;
-			case QDefPackage.ENUM_DEF__KLASS:
+			case QIntegratedLanguageDataDefPackage.ENUM_DEF__KLASS:
 				setKlass((Class<E>)null);
 				return;
 		}
@@ -204,9 +204,9 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedElement>
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.ENUM_DEF__DELEGATE:
+			case QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE:
 				return delegate != null;
-			case QDefPackage.ENUM_DEF__KLASS:
+			case QIntegratedLanguageDataDefPackage.ENUM_DEF__KLASS:
 				return klass != null;
 		}
 		return super.eIsSet(featureID);

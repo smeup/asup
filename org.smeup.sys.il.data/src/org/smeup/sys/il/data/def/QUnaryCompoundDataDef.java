@@ -15,7 +15,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <em><b>Unary Compound Data Def</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getUnaryCompoundDataDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getUnaryCompoundDataDef()
  * @model abstract="true"
  * @generated
  */

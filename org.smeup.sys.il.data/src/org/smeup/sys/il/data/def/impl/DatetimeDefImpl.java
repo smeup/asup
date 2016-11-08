@@ -17,7 +17,7 @@ import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.data.def.QDatetimeDef;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.def.TimeFormat;
 
 /**
@@ -112,7 +112,7 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.DATETIME_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.DATETIME_DEF;
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 		DatetimeType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.DATETIME_DEF__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE, oldType, type));
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 		DateFormat oldDateFormat = dateFormat;
 		dateFormat = newDateFormat == null ? DATE_FORMAT_EDEFAULT : newDateFormat;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.DATETIME_DEF__DATE_FORMAT, oldDateFormat, dateFormat));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATETIME_DEF__DATE_FORMAT, oldDateFormat, dateFormat));
 	}
 
 	/**
@@ -175,7 +175,7 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 		TimeFormat oldTimeFormat = timeFormat;
 		timeFormat = newTimeFormat == null ? TIME_FORMAT_EDEFAULT : newTimeFormat;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.DATETIME_DEF__TIME_FORMAT, oldTimeFormat, timeFormat));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATETIME_DEF__TIME_FORMAT, oldTimeFormat, timeFormat));
 	}
 
 	/**
@@ -185,11 +185,11 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.DATETIME_DEF__TYPE:
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
 				return getType();
-			case QDefPackage.DATETIME_DEF__DATE_FORMAT:
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__DATE_FORMAT:
 				return getDateFormat();
-			case QDefPackage.DATETIME_DEF__TIME_FORMAT:
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TIME_FORMAT:
 				return getTimeFormat();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -202,13 +202,13 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.DATETIME_DEF__TYPE:
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
 				setType((DatetimeType)newValue);
 				return;
-			case QDefPackage.DATETIME_DEF__DATE_FORMAT:
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__DATE_FORMAT:
 				setDateFormat((DateFormat)newValue);
 				return;
-			case QDefPackage.DATETIME_DEF__TIME_FORMAT:
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TIME_FORMAT:
 				setTimeFormat((TimeFormat)newValue);
 				return;
 		}
@@ -222,13 +222,13 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.DATETIME_DEF__TYPE:
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
-			case QDefPackage.DATETIME_DEF__DATE_FORMAT:
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__DATE_FORMAT:
 				setDateFormat(DATE_FORMAT_EDEFAULT);
 				return;
-			case QDefPackage.DATETIME_DEF__TIME_FORMAT:
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TIME_FORMAT:
 				setTimeFormat(TIME_FORMAT_EDEFAULT);
 				return;
 		}
@@ -242,11 +242,11 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.DATETIME_DEF__TYPE:
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
 				return type != TYPE_EDEFAULT;
-			case QDefPackage.DATETIME_DEF__DATE_FORMAT:
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__DATE_FORMAT:
 				return dateFormat != DATE_FORMAT_EDEFAULT;
-			case QDefPackage.DATETIME_DEF__TIME_FORMAT:
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TIME_FORMAT:
 				return timeFormat != TIME_FORMAT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

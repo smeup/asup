@@ -22,7 +22,7 @@ import org.smeup.sys.il.data.QDecimal;
  *   <li>{@link org.smeup.sys.il.data.def.QDecimalDef#getType <em>Type</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getDecimalDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDecimalDef()
  * @model
  * @generated
  */
@@ -95,7 +95,7 @@ public interface QDecimalDef extends QUnaryAtomicBufferedDataDef<QDecimal> {
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.smeup.sys.il.data.def.DecimalType
 	 * @see #setType(DecimalType)
-	 * @see org.smeup.sys.il.data.def.QDefPackage#getDecimalDef_Type()
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDecimalDef_Type()
 	 * @model
 	 * @generated
 	 */

@@ -14,7 +14,7 @@ import org.smeup.sys.il.data.QData;
  * <em><b>Unary Data Def</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getUnaryDataDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getUnaryDataDef()
  * @model abstract="true"
  * @generated
  */

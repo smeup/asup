@@ -21,7 +21,7 @@ import org.smeup.sys.il.data.SortDirection;
  *   <li>{@link org.smeup.sys.il.data.def.QArrayDef#getOrder <em>Order</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getArrayDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getArrayDef()
  * @model
  * @generated
  */
@@ -40,7 +40,7 @@ public interface QArrayDef<D extends QArray<?>> extends QMultipleAtomicBufferedD
 	 * @return the value of the '<em>Order</em>' attribute.
 	 * @see org.smeup.sys.il.data.SortDirection
 	 * @see #setOrder(SortDirection)
-	 * @see org.smeup.sys.il.data.def.QDefPackage#getArrayDef_Order()
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getArrayDef_Order()
 	 * @model default="A"
 	 * @generated
 	 */

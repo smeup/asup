@@ -10,7 +10,7 @@ package org.smeup.sys.il.data.def.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.def.DataDefType;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.def.QPointerDef;
 
 /**
@@ -39,7 +39,7 @@ public class PointerDefImpl extends UnaryAtomicDataDefImpl<QPointer> implements 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.POINTER_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.POINTER_DEF;
 	}
 
 	@Override

@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Format Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.smeup.sys.il.data.term.QTermPackage#getFormatType()
+ * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getFormatType()
  * @model
  * @generated
  */

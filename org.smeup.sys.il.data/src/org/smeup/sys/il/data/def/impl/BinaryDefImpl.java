@@ -14,7 +14,7 @@ import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QBinaryDef;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -85,7 +85,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.BINARY_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.BINARY_DEF;
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 		BinaryType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.BINARY_DEF__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.BINARY_DEF__TYPE, oldType, type));
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 		boolean oldUnsigned = unsigned;
 		unsigned = newUnsigned;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.BINARY_DEF__UNSIGNED, oldUnsigned, unsigned));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.BINARY_DEF__UNSIGNED, oldUnsigned, unsigned));
 	}
 
 	/**
@@ -193,9 +193,9 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.BINARY_DEF__TYPE:
+			case QIntegratedLanguageDataDefPackage.BINARY_DEF__TYPE:
 				return getType();
-			case QDefPackage.BINARY_DEF__UNSIGNED:
+			case QIntegratedLanguageDataDefPackage.BINARY_DEF__UNSIGNED:
 				return isUnsigned();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -208,10 +208,10 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.BINARY_DEF__TYPE:
+			case QIntegratedLanguageDataDefPackage.BINARY_DEF__TYPE:
 				setType((BinaryType)newValue);
 				return;
-			case QDefPackage.BINARY_DEF__UNSIGNED:
+			case QIntegratedLanguageDataDefPackage.BINARY_DEF__UNSIGNED:
 				setUnsigned((Boolean)newValue);
 				return;
 		}
@@ -225,10 +225,10 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.BINARY_DEF__TYPE:
+			case QIntegratedLanguageDataDefPackage.BINARY_DEF__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
-			case QDefPackage.BINARY_DEF__UNSIGNED:
+			case QIntegratedLanguageDataDefPackage.BINARY_DEF__UNSIGNED:
 				setUnsigned(UNSIGNED_EDEFAULT);
 				return;
 		}
@@ -242,9 +242,9 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.BINARY_DEF__TYPE:
+			case QIntegratedLanguageDataDefPackage.BINARY_DEF__TYPE:
 				return type != TYPE_EDEFAULT;
-			case QDefPackage.BINARY_DEF__UNSIGNED:
+			case QIntegratedLanguageDataDefPackage.BINARY_DEF__UNSIGNED:
 				return unsigned != UNSIGNED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

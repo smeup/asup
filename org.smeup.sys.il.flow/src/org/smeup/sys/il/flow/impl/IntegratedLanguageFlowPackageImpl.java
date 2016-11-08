@@ -19,8 +19,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.db.esql.QIntegratedLanguageEmbeddedSQLPackage;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
-import org.smeup.sys.il.data.def.QDefPackage;
-import org.smeup.sys.il.data.term.QTermPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage;
 import org.smeup.sys.il.flow.ConversionStatus;
 import org.smeup.sys.il.flow.EvalOperator;
@@ -1707,11 +1707,11 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 		// Obtain other dependent packages
 		QIntegratedLanguageCoreMetaPackage theIntegratedLanguageCoreMetaPackage = (QIntegratedLanguageCoreMetaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI);
-		QTermPackage theTermPackage = (QTermPackage)EPackage.Registry.INSTANCE.getEPackage(QTermPackage.eNS_URI);
+		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
 		QIntegratedLanguageEsamPackage theIntegratedLanguageEsamPackage = (QIntegratedLanguageEsamPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageEsamPackage.eNS_URI);
 		QIntegratedLanguageEmbeddedSQLPackage theIntegratedLanguageEmbeddedSQLPackage = (QIntegratedLanguageEmbeddedSQLPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageEmbeddedSQLPackage.eNS_URI);
-		QDefPackage theDefPackage = (QDefPackage)EPackage.Registry.INSTANCE.getEPackage(QDefPackage.eNS_URI);
+		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
 
 		// Create type parameters
 		ETypeParameter entryParameterEClass_T = addETypeParameter(entryParameterEClass, "T");
@@ -1737,8 +1737,8 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		entryParameterEClass.getESuperTypes().add(theIntegratedLanguageCoreTermPackage.getNamedNode());
 		evalEClass.getESuperTypes().add(this.getInvoke());
 		fileSectionEClass.getESuperTypes().add(this.getUnitSection());
-		g1 = createEGenericType(theTermPackage.getDataTerm());
-		EGenericType g2 = createEGenericType(theDefPackage.getDataDef());
+		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
+		EGenericType g2 = createEGenericType(theIntegratedLanguageDataDefPackage.getDataDef());
 		g1.getETypeArguments().add(g2);
 		EGenericType g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);
@@ -1758,8 +1758,8 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		procedureEClass.getESuperTypes().add(this.getCallableUnit());
 		procedureExecEClass.getESuperTypes().add(this.getInvoke());
 		programEClass.getESuperTypes().add(this.getCallableUnit());
-		g1 = createEGenericType(theTermPackage.getDataTerm());
-		g2 = createEGenericType(theDefPackage.getDataDef());
+		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
+		g2 = createEGenericType(theIntegratedLanguageDataDefPackage.getDataDef());
 		g1.getETypeArguments().add(g2);
 		g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);
@@ -1815,7 +1815,7 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		initEAttribute(getConversion_Status(), this.getConversionStatus(), "status", null, 1, 1, QConversion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataSectionEClass, QDataSection.class, "DataSection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(theTermPackage.getDataTerm());
+		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		initEReference(getDataSection_Datas(), g1, null, "datas", null, 0, -1, QDataSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1896,7 +1896,7 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 		initEClass(procedureEClass, QProcedure.class, "Procedure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProcedure_Entry(), this.getEntry(), null, "entry", null, 0, 1, QProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		g1 = createEGenericType(theDefPackage.getDataDef());
+		g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getDataDef());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		initEReference(getProcedure_ReturnType(), g1, null, "returnType", null, 0, 1, QProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

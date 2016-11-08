@@ -2506,8 +2506,8 @@
       <genOperations ecoreOperation="il-data.ecore#//Struct/getElements"/>
       <genOperations ecoreOperation="il-data.ecore#//Struct/getElementNames"/>
     </genClasses>
-    <nestedGenPackages prefix="Def" basePackage="org.smeup.sys.il.data" disposableProviderFactory="true"
-        adapterFactory="false" ecorePackage="il-data.ecore#//def">
+    <nestedGenPackages prefix="IntegratedLanguageDataDef" basePackage="org.smeup.sys.il.data"
+        disposableProviderFactory="true" adapterFactory="false" ecorePackage="il-data.ecore#//def">
       <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-data.ecore#//def/BinaryType">
         <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//def/BinaryType/Byte"/>
         <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//def/BinaryType/Short"/>
@@ -2694,8 +2694,8 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-data.ecore#//def/WrapperDef/argument"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Term" basePackage="org.smeup.sys.il.data" disposableProviderFactory="true"
-        adapterFactory="false" ecorePackage="il-data.ecore#//term">
+    <nestedGenPackages prefix="IntegratedLanguageDataTerm" basePackage="org.smeup.sys.il.data"
+        disposableProviderFactory="true" adapterFactory="false" ecorePackage="il-data.ecore#//term">
       <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-data.ecore#//term/DataTermType">
         <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//term/DataTermType/UnaryAtomic"/>
         <genEnumLiterals ecoreEnumLiteral="il-data.ecore#//term/DataTermType/UnaryCompound"/>

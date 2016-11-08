@@ -19,8 +19,8 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
-import org.smeup.sys.il.data.def.QDefPackage;
-import org.smeup.sys.il.data.term.QTermPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
@@ -272,8 +272,8 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		QIntegratedLanguageLockPackage.eINSTANCE.eClass();
 		QIntegratedLanguageMemoryPackage.eINSTANCE.eClass();
 		QOperatingSystemTypePackage.eINSTANCE.eClass();
-		QTermPackage.eINSTANCE.eClass();
-		QDefPackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataTermPackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataDefPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theOperatingSystemFilePackage.createPackageContents();
@@ -898,12 +898,12 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		QDefPackage theDefPackage = (QDefPackage)EPackage.Registry.INSTANCE.getEPackage(QDefPackage.eNS_URI);
+		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
 		QIntegratedLanguageDataPackage theIntegratedLanguageDataPackage = (QIntegratedLanguageDataPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI);
 		QIntegratedLanguageCoreMetaPackage theIntegratedLanguageCoreMetaPackage = (QIntegratedLanguageCoreMetaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI);
 		QOperatingSystemTypePackage theOperatingSystemTypePackage = (QOperatingSystemTypePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemTypePackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
-		QTermPackage theTermPackage = (QTermPackage)EPackage.Registry.INSTANCE.getEPackage(QTermPackage.eNS_URI);
+		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QIntegratedLanguageMemoryPackage theIntegratedLanguageMemoryPackage = (QIntegratedLanguageMemoryPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageMemoryPackage.eNS_URI);
@@ -912,7 +912,7 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		ETypeParameter fileFormatEClass_DD = addETypeParameter(fileFormatEClass, "DD");
 
 		// Set bounds for type parameters
-		EGenericType g1 = createEGenericType(theDefPackage.getCompoundDataDef());
+		EGenericType g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getCompoundDataDef());
 		EGenericType g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		g2 = createEGenericType();
@@ -926,7 +926,7 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		g2 = createEGenericType(this.getDatabaseFileFormatDef());
 		g1.getETypeArguments().add(g2);
 		databaseFileFormatEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(theDefPackage.getCompoundDataDef());
+		g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getCompoundDataDef());
 		g2 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
 		g1.getETypeArguments().add(g2);
 		g2 = createEGenericType(this.getDatabaseFileField());
@@ -938,7 +938,7 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		g2 = createEGenericType(this.getDisplayFileFormatDef());
 		g1.getETypeArguments().add(g2);
 		displayFileFormatEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(theDefPackage.getCompoundDataDef());
+		g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getCompoundDataDef());
 		g2 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
 		g1.getETypeArguments().add(g2);
 		g2 = createEGenericType(this.getDisplayFileField());
@@ -946,12 +946,12 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		displayFileFormatDefEClass.getEGenericSuperTypes().add(g1);
 		externalFileEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		fileEClass.getESuperTypes().add(theOperatingSystemTypePackage.getTypedObject());
-		g1 = createEGenericType(theTermPackage.getDataTerm());
+		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType(fileFormatEClass_DD);
 		g1.getETypeArguments().add(g2);
 		fileFormatEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(theTermPackage.getDataTerm());
-		g2 = createEGenericType(theDefPackage.getUnaryAtomicBufferedDataDef());
+		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
+		g2 = createEGenericType(theIntegratedLanguageDataDefPackage.getUnaryAtomicBufferedDataDef());
 		g1.getETypeArguments().add(g2);
 		EGenericType g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);
@@ -968,7 +968,7 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		g2 = createEGenericType(this.getPrinterFileFormatDef());
 		g1.getETypeArguments().add(g2);
 		printerFileFormatEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(theDefPackage.getCompoundDataDef());
+		g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getCompoundDataDef());
 		g2 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
 		g1.getETypeArguments().add(g2);
 		g2 = createEGenericType(this.getPrinterFileField());

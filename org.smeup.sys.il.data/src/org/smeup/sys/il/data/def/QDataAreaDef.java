@@ -21,7 +21,7 @@ import org.smeup.sys.il.data.QBufferedElement;
  *   <li>{@link org.smeup.sys.il.data.def.QDataAreaDef#getExternalName <em>External Name</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getDataAreaDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDataAreaDef()
  * @model
  * @generated
  */
@@ -37,7 +37,7 @@ public interface QDataAreaDef<D extends QBufferedElement> extends QUnaryBuffered
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>External Name</em>' attribute.
 	 * @see #setExternalName(String)
-	 * @see org.smeup.sys.il.data.def.QDefPackage#getDataAreaDef_ExternalName()
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDataAreaDef_ExternalName()
 	 * @model
 	 * @generated
 	 */

@@ -21,7 +21,7 @@ import org.smeup.sys.il.data.QGraphic;
  *   <li>{@link org.smeup.sys.il.data.def.QGraphicDef#getLength <em>Length</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.def.QDefPackage#getGraphicDef()
+ * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getGraphicDef()
  * @model
  * @generated
  */
@@ -37,7 +37,7 @@ public interface QGraphicDef extends QUnaryAtomicBufferedDataDef<QGraphic> {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Length</em>' attribute.
 	 * @see #setLength(int)
-	 * @see org.smeup.sys.il.data.def.QDefPackage#getGraphicDef_Length()
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getGraphicDef_Length()
 	 * @model required="true"
 	 * @generated
 	 */

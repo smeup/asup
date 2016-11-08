@@ -34,7 +34,7 @@ import org.smeup.sys.il.data.def.QDataDef;
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getText <em>Text</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.term.QTermPackage#getDataTerm()
+ * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTerm()
  * @model abstract="true"
  * @generated
  */
@@ -49,7 +49,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Based</em>' attribute.
 	 * @see #setBased(String)
-	 * @see org.smeup.sys.il.data.term.QTermPackage#getDataTerm_Based()
+	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTerm_Based()
 	 * @model
 	 * @generated
 	 */
@@ -75,7 +75,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cardinality</em>' containment reference.
 	 * @see #setCardinality(QCardinality)
-	 * @see org.smeup.sys.il.data.term.QTermPackage#getDataTerm_Cardinality()
+	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTerm_Cardinality()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -127,7 +127,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Default</em>' containment reference.
 	 * @see #setDefault(QDefault)
-	 * @see org.smeup.sys.il.data.term.QTermPackage#getDataTerm_Default()
+	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTerm_Default()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -152,7 +152,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Definition</em>' containment reference.
 	 * @see #setDefinition(QDataDef)
-	 * @see org.smeup.sys.il.data.term.QTermPackage#getDataTerm_Definition()
+	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTerm_Definition()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -178,7 +178,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Key</em>' attribute.
 	 * @see #setKey(String)
-	 * @see org.smeup.sys.il.data.term.QTermPackage#getDataTerm_Key()
+	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTerm_Key()
 	 * @model
 	 * @generated
 	 */

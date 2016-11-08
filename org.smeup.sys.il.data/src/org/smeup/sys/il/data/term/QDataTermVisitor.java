@@ -12,7 +12,7 @@ package org.smeup.sys.il.data.term;
  * <em><b>Data Term Visitor</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.term.QTermPackage#getDataTermVisitor()
+ * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTermVisitor()
  * @model abstract="true"
  * @generated
  */

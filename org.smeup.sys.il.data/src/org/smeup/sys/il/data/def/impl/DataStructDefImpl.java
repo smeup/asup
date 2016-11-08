@@ -14,7 +14,7 @@ import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.def.QDataStructDef;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.term.QDataTerm;
 
 /**
@@ -65,7 +65,7 @@ public class DataStructDefImpl extends UnaryCompoundDataDefImpl<QDataStruct, QDa
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.DATA_STRUCT_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.DATA_STRUCT_DEF;
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class DataStructDefImpl extends UnaryCompoundDataDefImpl<QDataStruct, QDa
 		int oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.DATA_STRUCT_DEF__LENGTH, oldLength, length));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH, oldLength, length));
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class DataStructDefImpl extends UnaryCompoundDataDefImpl<QDataStruct, QDa
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.DATA_STRUCT_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH:
 				return getLength();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -118,7 +118,7 @@ public class DataStructDefImpl extends UnaryCompoundDataDefImpl<QDataStruct, QDa
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.DATA_STRUCT_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH:
 				setLength((Integer)newValue);
 				return;
 		}
@@ -132,7 +132,7 @@ public class DataStructDefImpl extends UnaryCompoundDataDefImpl<QDataStruct, QDa
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.DATA_STRUCT_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH:
 				setLength(LENGTH_EDEFAULT);
 				return;
 		}
@@ -146,7 +146,7 @@ public class DataStructDefImpl extends UnaryCompoundDataDefImpl<QDataStruct, QDa
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.DATA_STRUCT_DEF__LENGTH:
+			case QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH:
 				return length != LENGTH_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

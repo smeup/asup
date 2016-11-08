@@ -21,7 +21,7 @@ import org.smeup.sys.il.core.meta.QFacet;
  *   <li>{@link org.smeup.sys.il.data.term.QFormat#getType <em>Type</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.il.data.term.QTermPackage#getFormat()
+ * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getFormat()
  * @model
  * @generated
  */

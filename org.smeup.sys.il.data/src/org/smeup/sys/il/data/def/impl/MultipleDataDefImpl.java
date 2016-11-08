@@ -11,7 +11,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.data.QList;
-import org.smeup.sys.il.data.def.QDefPackage;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.def.QMultipleDataDef;
 
 /**
@@ -62,7 +62,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDefPackage.Literals.MULTIPLE_DATA_DEF;
+		return QIntegratedLanguageDataDefPackage.Literals.MULTIPLE_DATA_DEF;
 	}
 
 	/**
@@ -83,7 +83,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 		int oldDimension = dimension;
 		dimension = newDimension;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDefPackage.MULTIPLE_DATA_DEF__DIMENSION, oldDimension, dimension));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.MULTIPLE_DATA_DEF__DIMENSION, oldDimension, dimension));
 	}
 
 	/**
@@ -93,7 +93,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDefPackage.MULTIPLE_DATA_DEF__DIMENSION:
+			case QIntegratedLanguageDataDefPackage.MULTIPLE_DATA_DEF__DIMENSION:
 				return getDimension();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -106,7 +106,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDefPackage.MULTIPLE_DATA_DEF__DIMENSION:
+			case QIntegratedLanguageDataDefPackage.MULTIPLE_DATA_DEF__DIMENSION:
 				setDimension((Integer)newValue);
 				return;
 		}
@@ -120,7 +120,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDefPackage.MULTIPLE_DATA_DEF__DIMENSION:
+			case QIntegratedLanguageDataDefPackage.MULTIPLE_DATA_DEF__DIMENSION:
 				setDimension(DIMENSION_EDEFAULT);
 				return;
 		}
@@ -134,7 +134,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDefPackage.MULTIPLE_DATA_DEF__DIMENSION:
+			case QIntegratedLanguageDataDefPackage.MULTIPLE_DATA_DEF__DIMENSION:
 				return dimension != DIMENSION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
