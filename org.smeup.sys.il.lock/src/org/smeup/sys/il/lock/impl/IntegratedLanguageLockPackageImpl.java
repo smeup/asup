@@ -215,7 +215,7 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 		ETypeParameter t1 = addETypeParameter(op, "N");
 		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
 		t1.getEBounds().add(g1);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaURI(), "address", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getObjectLocker());
 		EGenericType g2 = createEGenericType(t1);
@@ -226,13 +226,18 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 		t1 = addETypeParameter(op, "N");
 		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
 		t1.getEBounds().add(g1);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
 		addEParameter(op, g1, "object", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getObjectLocker());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
+
+		op = addEOperation(lockManagerEClass, theMachineInterfaceCorePackage.getJavaBlockingQueue(), "getQueue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addETypeParameter(op, "E");
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(objectLockerEClass, QObjectLocker.class, "ObjectLocker", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

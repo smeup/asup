@@ -13,11 +13,12 @@
 package org.smeup.sys.il.lock.hc;
 
 import java.net.URI;
+import java.util.concurrent.BlockingQueue;
 
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.QObjectNameable;
-import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.lock.QLockManager;
 import org.smeup.sys.il.lock.QObjectLocker;
 import org.smeup.sys.rt.core.QApplication;
@@ -47,12 +48,17 @@ public class HCLockManagerImpl implements QLockManager {
 	}
 
 	@Override
-	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, URI address) {
-		return new HCObjectLockerImpl<N>(address, context.get(QLogger.class), hazelcastInstance);
+	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContextProvider contextProvider, URI address) {
+		return new HCObjectLockerImpl<N>(address, contextProvider.getContext().get(QLogger.class), hazelcastInstance);
 	}
 
 	@Override
-	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, N object) {
-		return getLocker(context, object.qURI());
+	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContextProvider contextProvider, N object) {
+		return getLocker(contextProvider, object.qURI());
+	}
+
+	@Override
+	public <E> BlockingQueue<E> getQueue(QContextProvider contextProvider, String name) {
+		return hazelcastInstance.getQueue(name);
 	}
 }

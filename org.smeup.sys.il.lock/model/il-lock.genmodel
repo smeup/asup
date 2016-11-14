@@ -24,6 +24,11 @@
         <genParameters ecoreParameter="il-lock.ecore#//LockManager/getLocker.1/object"/>
         <genTypeParameters ecoreTypeParameter="il-lock.ecore#//LockManager/getLocker.1/N"/>
       </genOperations>
+      <genOperations ecoreOperation="il-lock.ecore#//LockManager/getQueue">
+        <genParameters ecoreParameter="il-lock.ecore#//LockManager/getQueue/context"/>
+        <genParameters ecoreParameter="il-lock.ecore#//LockManager/getQueue/name"/>
+        <genTypeParameters ecoreTypeParameter="il-lock.ecore#//LockManager/getQueue/E"/>
+      </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="il-lock.ecore#//ObjectLocker">
       <genTypeParameters ecoreTypeParameter="il-lock.ecore#//ObjectLocker/N"/>

@@ -127,4 +127,9 @@ public class BaseTestContextImpl implements QContext {
 	public <T> void set(String name, T object) {
 		delegate.set(name, object);
 	}
+
+	@Override
+	public QContext getContext() {
+		return this;
+	}
 }

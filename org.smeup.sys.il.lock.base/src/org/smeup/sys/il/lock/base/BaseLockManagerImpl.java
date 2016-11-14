@@ -12,21 +12,28 @@
 package org.smeup.sys.il.lock.base;
 
 import java.net.URI;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import org.smeup.sys.il.core.QObjectNameable;
-import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.lock.QLockManager;
 import org.smeup.sys.il.lock.QObjectLocker;
 
 public class BaseLockManagerImpl implements QLockManager {
 
 	@Override
-	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, URI address) {
+	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContextProvider contextProvider, URI address) {
 		return new BaseLockerImpl<N>(address);
 	}
 
 	@Override
-	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, N object) {
-		return getLocker(context, object.qURI());
+	public <N extends QObjectNameable> QObjectLocker<N> getLocker(QContextProvider contextProvider, N object) {
+		return getLocker(contextProvider, object.qURI());
+	}
+
+	@Override
+	public <E> BlockingQueue<E> getQueue(QContextProvider contextProvider, String name) {
+		return new LinkedBlockingQueue<E>();
 	}
 }

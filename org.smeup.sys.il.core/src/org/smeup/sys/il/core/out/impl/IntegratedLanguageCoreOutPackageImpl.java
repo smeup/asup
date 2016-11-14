@@ -181,11 +181,11 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 		isCreated = true;
 
 		// Create classes and their features
+		outputManagerEClass = createEClass(OUTPUT_MANAGER);
+
 		objectWriterEClass = createEClass(OBJECT_WRITER);
 
 		objectWriterFactoryEClass = createEClass(OBJECT_WRITER_FACTORY);
-
-		outputManagerEClass = createEClass(OUTPUT_MANAGER);
 	}
 
 	/**
@@ -211,9 +211,9 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
+		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
-		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -222,24 +222,9 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 		// Add supertypes to classes
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(objectWriterEClass, QObjectWriter.class, "ObjectWriter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		addEOperation(objectWriterEClass, null, "flush", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(objectWriterEClass, null, "initialize", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		EOperation op = addEOperation(objectWriterEClass, null, "write", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCorePackage.getObject(), "object", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
-
-		initEClass(objectWriterFactoryEClass, QObjectWriterFactory.class, "ObjectWriterFactory", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		op = addEOperation(objectWriterFactoryEClass, this.getObjectWriter(), "createObjectWriter", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(outputManagerEClass, QOutputManager.class, "OutputManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(outputManagerEClass, this.getObjectWriter(), "getDefaultWriter", 1, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(outputManagerEClass, this.getObjectWriter(), "getDefaultWriter", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(outputManagerEClass, this.getObjectWriter(), "getObjectWriter", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -254,6 +239,21 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 		op = addEOperation(outputManagerEClass, null, "setDefaultWriter", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(objectWriterEClass, QObjectWriter.class, "ObjectWriter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(objectWriterEClass, null, "flush", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(objectWriterEClass, null, "initialize", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(objectWriterEClass, null, "write", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCorePackage.getObject(), "object", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
+
+		initEClass(objectWriterFactoryEClass, QObjectWriterFactory.class, "ObjectWriterFactory", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(objectWriterFactoryEClass, this.getObjectWriter(), "createObjectWriter", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 	}
 
 } // IntegratedLanguageCoreOutPackageImpl

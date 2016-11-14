@@ -20,10 +20,10 @@ import java.util.List;
  *
  *
  * @see org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage#getContext()
- * @model abstract="true" superTypes="org.smeup.sys.mi.core.JavaCloseable"
+ * @model abstract="true" superTypes="org.smeup.sys.mi.core.JavaCloseable org.smeup.sys.il.core.ctx.ContextProvider"
  * @generated
  */
-public interface QContext extends Closeable {
+public interface QContext extends Closeable, QContextProvider {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

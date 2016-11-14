@@ -4,6 +4,8 @@
   <eClassifiers xsi:type="ecore:EDataType" name="JavaAnnotation" instanceClassName="java.lang.annotation.Annotation"/>
   <eClassifiers xsi:type="ecore:EClass" name="JavaByteBuffer" instanceClassName="java.nio.ByteBuffer"
       abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaBlockingQueue" instanceTypeName="java.util.concurrent.BlockingQueue&lt;E>"
+      abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="JavaCallable" instanceClassName="java.util.concurrent.Callable"
       abstract="true" interface="true">
     <eTypeParameters name="V"/>

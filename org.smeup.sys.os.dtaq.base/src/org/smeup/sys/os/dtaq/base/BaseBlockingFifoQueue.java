@@ -12,7 +12,6 @@
 package org.smeup.sys.os.dtaq.base;
 
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -22,10 +21,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class BaseBlockingFifoQueue<E> {
 
-	private BlockingQueue<E> queue = new LinkedBlockingQueue<E>();
+	private BlockingQueue<E> queue = null;
 
-	public BaseBlockingFifoQueue() {
+	public BaseBlockingFifoQueue(BlockingQueue<E> queue) {
 		super();
+		this.queue = queue;
 	}
 
 	/**

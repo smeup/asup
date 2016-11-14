@@ -35,6 +35,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 
@@ -62,6 +63,13 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * @generated
 	 */
 	private EClass javaByteBufferEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass javaBlockingQueueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -332,6 +340,15 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 */
 	public EClass getJavaByteBuffer() {
 		return javaByteBufferEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJavaBlockingQueue() {
+		return javaBlockingQueueEClass;
 	}
 
 	/**
@@ -616,6 +633,8 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		// Create classes and their features
 		javaByteBufferEClass = createEClass(JAVA_BYTE_BUFFER);
 
+		javaBlockingQueueEClass = createEClass(JAVA_BLOCKING_QUEUE);
+
 		javaCallableEClass = createEClass(JAVA_CALLABLE);
 
 		javaCharsetEClass = createEClass(JAVA_CHARSET);
@@ -706,6 +725,8 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(javaByteBufferEClass, ByteBuffer.class, "JavaByteBuffer", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(javaBlockingQueueEClass, BlockingQueue.class, "JavaBlockingQueue", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS, "java.util.concurrent.BlockingQueue<E>");
 
 		initEClass(javaCallableEClass, Callable.class, "JavaCallable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 

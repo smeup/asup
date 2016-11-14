@@ -157,7 +157,12 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectURI" lowerBound="1"
           eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaURI"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Context" abstract="true" eSuperTypes="../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable">
+    <eClassifiers xsi:type="ecore:EEnum" name="CapabilityRight">
+      <eLiterals name="Read" value="10" literal="READ"/>
+      <eLiterals name="Write" value="20" literal="WRITE"/>
+      <eLiterals name="Execute" value="30" literal="EXEC"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Context" abstract="true" eSuperTypes="../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable #//ctx/ContextProvider">
       <eOperations name="close" lowerBound="1"/>
       <eOperations name="createChildContext" lowerBound="1" eType="#//ctx/Context">
         <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -278,11 +283,6 @@
       </eTypeParameters>
       <eOperations name="getJavaPrincipal" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaPrincipal"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EEnum" name="CapabilityRight">
-      <eLiterals name="Read" value="10" literal="READ"/>
-      <eLiterals name="Write" value="20" literal="WRITE"/>
-      <eLiterals name="Execute" value="30" literal="EXEC"/>
-    </eClassifiers>
   </eSubpackages>
   <eSubpackages name="meta" nsURI="http://www.smeup.org/asup/il/core/meta" nsPrefix="il-core-meta">
     <eClassifiers xsi:type="ecore:EClass" name="Cardinality" eSuperTypes="#//Object">
@@ -361,19 +361,6 @@
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="out" nsURI="http://www.smeup.org/asup/il/core/out" nsPrefix="il-core-out">
-    <eClassifiers xsi:type="ecore:EClass" name="ObjectWriter" abstract="true" interface="true">
-      <eOperations name="flush"/>
-      <eOperations name="initialize"/>
-      <eOperations name="write" eExceptions="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaIOException">
-        <eParameters name="object" lowerBound="1" eType="#//Object"/>
-      </eOperations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ObjectWriterFactory" abstract="true"
-        interface="true">
-      <eOperations name="createObjectWriter" lowerBound="1" eType="#//out/ObjectWriter">
-        <eParameters name="context" lowerBound="1" eType="#//ctx/Context"/>
-      </eOperations>
-    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OutputManager" abstract="true" interface="true">
       <eOperations name="getDefaultWriter" lowerBound="1" eType="#//out/ObjectWriter">
         <eParameters name="context" lowerBound="1" eType="#//ctx/Context"/>
@@ -390,6 +377,19 @@
       <eOperations name="setDefaultWriter">
         <eParameters name="context" lowerBound="1" eType="#//ctx/Context"/>
         <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ObjectWriter" abstract="true" interface="true">
+      <eOperations name="flush"/>
+      <eOperations name="initialize"/>
+      <eOperations name="write" eExceptions="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaIOException">
+        <eParameters name="object" lowerBound="1" eType="#//Object"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ObjectWriterFactory" abstract="true"
+        interface="true">
+      <eOperations name="createObjectWriter" lowerBound="1" eType="#//out/ObjectWriter">
+        <eParameters name="context" lowerBound="1" eType="#//ctx/Context"/>
       </eOperations>
     </eClassifiers>
   </eSubpackages>

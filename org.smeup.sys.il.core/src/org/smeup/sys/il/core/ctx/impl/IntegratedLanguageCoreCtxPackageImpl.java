@@ -325,6 +325,7 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		// Add supertypes to classes
 		capabilityEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		contextEClass.getESuperTypes().add(theMachineInterfaceCorePackage.getJavaCloseable());
+		contextEClass.getESuperTypes().add(this.getContextProvider());
 		identityEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 
 		// Initialize classes and features; add operations and parameters

@@ -8,8 +8,9 @@
 package org.smeup.sys.il.lock;
 
 import java.net.URI;
+import java.util.concurrent.BlockingQueue;
 import org.smeup.sys.il.core.QObjectNameable;
-import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.QContextProvider;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -24,17 +25,25 @@ public interface QLockManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model contextRequired="true" addressDataType="org.smeup.sys.mi.core.JavaURI"
+	 * @model contextProviderRequired="true" addressDataType="org.smeup.sys.mi.core.JavaURI"
 	 * @generated
 	 */
-	<N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, URI address);
+	<N extends QObjectNameable> QObjectLocker<N> getLocker(QContextProvider contextProvider, URI address);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model contextRequired="true"
+	 * @model contextProviderRequired="true"
 	 * @generated
 	 */
-	<N extends QObjectNameable> QObjectLocker<N> getLocker(QContext context, N object);
+	<N extends QObjectNameable> QObjectLocker<N> getLocker(QContextProvider contextProvider, N object);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaBlockingQueue" contextProviderRequired="true"
+	 * @generated
+	 */
+	<E> BlockingQueue<E> getQueue(QContextProvider contextProvider, String name);
 
 } // QLockManager

@@ -242,4 +242,13 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public QContext getContext() {
+		return this;
+	}
+
 } //ContextImpl

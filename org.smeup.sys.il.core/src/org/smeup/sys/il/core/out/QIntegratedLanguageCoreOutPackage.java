@@ -61,7 +61,34 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getObjectWriter()
 	 * @generated
 	 */
-	int OBJECT_WRITER = 0;
+	int OBJECT_WRITER = 1;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.out.QObjectWriterFactory <em>Object Writer Factory</em>}' class.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @see org.smeup.sys.il.core.out.QObjectWriterFactory
+	 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getObjectWriterFactory()
+	 * @generated
+	 */
+	int OBJECT_WRITER_FACTORY = 2;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.out.QOutputManager <em>Output Manager</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.out.QOutputManager
+	 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getOutputManager()
+	 * @generated
+	 */
+	int OUTPUT_MANAGER = 0;
+
+	/**
+	 * The number of structural features of the '<em>Output Manager</em>' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_MANAGER_FEATURE_COUNT = 0;
 
 	/**
 	 * The number of structural features of the '<em>Object Writer</em>' class.
@@ -72,39 +99,12 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 	int OBJECT_WRITER_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.out.QObjectWriterFactory <em>Object Writer Factory</em>}' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see org.smeup.sys.il.core.out.QObjectWriterFactory
-	 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getObjectWriterFactory()
-	 * @generated
-	 */
-	int OBJECT_WRITER_FACTORY = 1;
-
-	/**
 	 * The number of structural features of the '<em>Object Writer Factory</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int OBJECT_WRITER_FACTORY_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.out.QOutputManager <em>Output Manager</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.out.QOutputManager
-	 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getOutputManager()
-	 * @generated
-	 */
-	int OUTPUT_MANAGER = 2;
-
-	/**
-	 * The number of structural features of the '<em>Output Manager</em>' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OUTPUT_MANAGER_FEATURE_COUNT = 0;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.out.QObjectWriter <em>Object Writer</em>}'.
