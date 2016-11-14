@@ -9,6 +9,7 @@ package org.smeup.sys.il.lock;
 
 import java.net.URI;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentMap;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 
@@ -37,6 +38,14 @@ public interface QLockManager {
 	 * @generated
 	 */
 	<N extends QObjectNameable> QObjectLocker<N> getLocker(QContextProvider contextProvider, N object);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaConcurrentMap" contextProviderRequired="true"
+	 * @generated
+	 */
+	<K, V> ConcurrentMap<K, V> getConcurrentMap(QContextProvider contextProvider, String name);
 
 	/**
 	 * <!-- begin-user-doc -->

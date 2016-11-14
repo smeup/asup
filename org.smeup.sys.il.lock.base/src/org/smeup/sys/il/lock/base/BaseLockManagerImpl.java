@@ -13,6 +13,8 @@ package org.smeup.sys.il.lock.base;
 
 import java.net.URI;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import org.smeup.sys.il.core.QObjectNameable;
@@ -35,5 +37,10 @@ public class BaseLockManagerImpl implements QLockManager {
 	@Override
 	public <E> BlockingQueue<E> getQueue(QContextProvider contextProvider, String name) {
 		return new LinkedBlockingQueue<E>();
+	}
+
+	@Override
+	public <K, V> ConcurrentMap<K, V> getConcurrentMap(QContextProvider contextProvider, String name) {
+		return new ConcurrentHashMap<K, V>();
 	}
 }

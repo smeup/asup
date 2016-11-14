@@ -14,13 +14,15 @@
       abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="JavaCloseable" instanceClassName="java.io.Closeable"
       abstract="true" interface="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="JavaExecutorService" instanceClassName="java.util.concurrent.ExecutorService"
+  <eClassifiers xsi:type="ecore:EClass" name="JavaConcurrentMap" instanceTypeName="java.util.concurrent.ConcurrentMap&lt;K, V>"
       abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EDataType" name="JavaDictionary" instanceClassName="java.util.Dictionary">
     <eTypeParameters name="K"/>
     <eTypeParameters name="V"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="JavaEnum" instanceTypeName="java.lang.Enum&lt;E>"
+      abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaExecutorService" instanceClassName="java.util.concurrent.ExecutorService"
       abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EDataType" name="JavaException" instanceClassName="java.lang.Exception"/>
   <eClassifiers xsi:type="ecore:EDataType" name="JavaInputStream" instanceClassName="java.io.InputStream"/>

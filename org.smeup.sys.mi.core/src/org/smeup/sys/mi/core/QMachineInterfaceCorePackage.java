@@ -155,6 +155,25 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	int JAVA_CLOSEABLE_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link java.util.concurrent.ConcurrentMap<K, V> <em>Java Concurrent Map</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.util.concurrent.ConcurrentMap<K, V>
+	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaConcurrentMap()
+	 * @generated
+	 */
+	int JAVA_CONCURRENT_MAP = 5;
+
+	/**
+	 * The number of structural features of the '<em>Java Concurrent Map</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JAVA_CONCURRENT_MAP_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link java.util.concurrent.ExecutorService <em>Java Executor Service</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -162,7 +181,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaExecutorService()
 	 * @generated
 	 */
-	int JAVA_EXECUTOR_SERVICE = 5;
+	int JAVA_EXECUTOR_SERVICE = 7;
 
 	/**
 	 * The meta object id for the '{@link java.lang.Enum<E> <em>Java Enum</em>}' class.
@@ -175,15 +194,6 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	int JAVA_ENUM = 6;
 
 	/**
-	 * The number of structural features of the '<em>Java Executor Service</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JAVA_EXECUTOR_SERVICE_FEATURE_COUNT = 0;
-
-	/**
 	 * The number of structural features of the '<em>Java Enum</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -193,6 +203,15 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	int JAVA_ENUM_FEATURE_COUNT = 0;
 
 	/**
+	 * The number of structural features of the '<em>Java Executor Service</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JAVA_EXECUTOR_SERVICE_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link java.util.Iterator <em>Java Iterator</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -200,7 +219,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaIterator()
 	 * @generated
 	 */
-	int JAVA_ITERATOR = 8;
+	int JAVA_ITERATOR = 9;
 
 	/**
 	 * The meta object id for the '{@link java.util.List <em>Java List</em>}' class.
@@ -210,7 +229,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaList()
 	 * @generated
 	 */
-	int JAVA_LIST = 9;
+	int JAVA_LIST = 10;
 
 	/**
 	 * The meta object id for the '{@link java.lang.Number <em>Java Number</em>}' class.
@@ -220,7 +239,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaNumber()
 	 * @generated
 	 */
-	int JAVA_NUMBER = 10;
+	int JAVA_NUMBER = 11;
 
 	/**
 	 * The meta object id for the '{@link java.security.Principal <em>Java Principal</em>}' class.
@@ -230,7 +249,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaPrincipal()
 	 * @generated
 	 */
-	int JAVA_PRINCIPAL = 11;
+	int JAVA_PRINCIPAL = 12;
 
 	/**
 	 * The meta object id for the '{@link java.lang.Thread <em>Java Thread</em>}' class.
@@ -240,7 +259,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaThread()
 	 * @generated
 	 */
-	int JAVA_THREAD = 13;
+	int JAVA_THREAD = 14;
 
 	/**
 	 * The meta object id for the '{@link java.lang.ThreadGroup <em>Java Thread Group</em>}' class.
@@ -250,7 +269,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaThreadGroup()
 	 * @generated
 	 */
-	int JAVA_THREAD_GROUP = 14;
+	int JAVA_THREAD_GROUP = 15;
 
 	/**
 	 * The meta object id for the '{@link java.lang.management.ThreadInfo <em>Java Thread Info</em>}' class.
@@ -260,7 +279,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaThreadInfo()
 	 * @generated
 	 */
-	int JAVA_THREAD_INFO = 15;
+	int JAVA_THREAD_INFO = 16;
 
 	/**
 	 * The meta object id for the '<em>Java Annotation</em>' data type.
@@ -270,7 +289,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaAnnotation()
 	 * @generated
 	 */
-	int JAVA_ANNOTATION = 16;
+	int JAVA_ANNOTATION = 17;
 
 	/**
 	 * The meta object id for the '<em>Java Dictionary</em>' data type.
@@ -280,7 +299,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaDictionary()
 	 * @generated
 	 */
-	int JAVA_DICTIONARY = 17;
+	int JAVA_DICTIONARY = 18;
 
 	/**
 	 * The meta object id for the '<em>Java Exception</em>' data type.
@@ -290,7 +309,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaException()
 	 * @generated
 	 */
-	int JAVA_EXCEPTION = 18;
+	int JAVA_EXCEPTION = 19;
 
 	/**
 	 * The meta object id for the '<em>Java Input Stream</em>' data type.
@@ -300,7 +319,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaInputStream()
 	 * @generated
 	 */
-	int JAVA_INPUT_STREAM = 19;
+	int JAVA_INPUT_STREAM = 20;
 
 	/**
 	 * The meta object id for the '<em>Java IO Exception</em>' data type.
@@ -310,7 +329,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaIOException()
 	 * @generated
 	 */
-	int JAVA_IO_EXCEPTION = 20;
+	int JAVA_IO_EXCEPTION = 21;
 
 	/**
 	 * The meta object id for the '{@link java.lang.Iterable <em>Java Iterable</em>}' class.
@@ -320,7 +339,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaIterable()
 	 * @generated
 	 */
-	int JAVA_ITERABLE = 7;
+	int JAVA_ITERABLE = 8;
 
 	/**
 	 * The number of structural features of the '<em>Java Iterable</em>' class.
@@ -375,7 +394,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaMap()
 	 * @generated
 	 */
-	int JAVA_MAP = 21;
+	int JAVA_MAP = 22;
 
 	/**
 	 * The meta object id for the '<em>Java Output Stream</em>' data type.
@@ -385,7 +404,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaOutputStream()
 	 * @generated
 	 */
-	int JAVA_OUTPUT_STREAM = 22;
+	int JAVA_OUTPUT_STREAM = 23;
 
 	/**
 	 * The meta object id for the '<em>Java Properties</em>' data type.
@@ -395,7 +414,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaProperties()
 	 * @generated
 	 */
-	int JAVA_PROPERTIES = 23;
+	int JAVA_PROPERTIES = 24;
 
 	/**
 	 * The meta object id for the '{@link java.lang.Runnable <em>Java Runnable</em>}' class.
@@ -405,7 +424,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaRunnable()
 	 * @generated
 	 */
-	int JAVA_RUNNABLE = 12;
+	int JAVA_RUNNABLE = 13;
 
 	/**
 	 * The number of structural features of the '<em>Java Runnable</em>' class.
@@ -424,7 +443,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaSerializable()
 	 * @generated
 	 */
-	int JAVA_SERIALIZABLE = 29;
+	int JAVA_SERIALIZABLE = 30;
 
 	/**
 	 * The number of structural features of the '<em>Java Thread</em>' class.
@@ -461,7 +480,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaThrowable()
 	 * @generated
 	 */
-	int JAVA_THROWABLE = 24;
+	int JAVA_THROWABLE = 25;
 
 	/**
 	 * The meta object id for the '<em>Java Type</em>' data type.
@@ -471,7 +490,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaType()
 	 * @generated
 	 */
-	int JAVA_TYPE = 25;
+	int JAVA_TYPE = 26;
 
 	/**
 	 * The meta object id for the '<em>Java URI</em>' data type.
@@ -481,7 +500,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaURI()
 	 * @generated
 	 */
-	int JAVA_URI = 26;
+	int JAVA_URI = 27;
 
 	/**
 	 * The meta object id for the '<em>Java URL</em>' data type.
@@ -491,7 +510,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaURL()
 	 * @generated
 	 */
-	int JAVA_URL = 27;
+	int JAVA_URL = 28;
 
 	/**
 	 * The meta object id for the '<em>Java Writer</em>' data type.
@@ -501,7 +520,7 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaWriter()
 	 * @generated
 	 */
-	int JAVA_WRITER = 28;
+	int JAVA_WRITER = 29;
 
 
 	/**
@@ -558,6 +577,17 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getJavaCloseable();
+
+	/**
+	 * Returns the meta object for class '{@link java.util.concurrent.ConcurrentMap<K, V> <em>Java Concurrent Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Java Concurrent Map</em>'.
+	 * @see java.util.concurrent.ConcurrentMap<K, V>
+	 * @model instanceClass="java.util.concurrent.ConcurrentMap<K, V>"
+	 * @generated
+	 */
+	EClass getJavaConcurrentMap();
 
 	/**
 	 * Returns the meta object for class '{@link java.util.concurrent.ExecutorService <em>Java Executor Service</em>}'.
@@ -905,6 +935,16 @@ public interface QMachineInterfaceCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass JAVA_CLOSEABLE = eINSTANCE.getJavaCloseable();
+
+		/**
+		 * The meta object literal for the '{@link java.util.concurrent.ConcurrentMap<K, V> <em>Java Concurrent Map</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.concurrent.ConcurrentMap<K, V>
+		 * @see org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl#getJavaConcurrentMap()
+		 * @generated
+		 */
+		EClass JAVA_CONCURRENT_MAP = eINSTANCE.getJavaConcurrentMap();
 
 		/**
 		 * The meta object literal for the '{@link java.util.concurrent.ExecutorService <em>Java Executor Service</em>}' class.

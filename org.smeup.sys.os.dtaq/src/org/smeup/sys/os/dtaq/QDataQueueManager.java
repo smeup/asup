@@ -50,7 +50,7 @@ public interface QDataQueueManager {
 	 * @model required="true" capabilityRequired="true" libraryRequired="true" nameRequired="true"
 	 * @generated
 	 */
-	String peekDataQueue(QJobCapability capability, String library, String name, long timeout, String key, DataQueueSearchType searchType);
+	String peekDataQueue(QJobCapability capability, String library, String name, String key, DataQueueSearchType searchType);
 
 	/**
 	 * <!-- begin-user-doc -->

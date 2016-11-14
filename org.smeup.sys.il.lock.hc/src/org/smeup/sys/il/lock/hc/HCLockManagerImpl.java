@@ -14,6 +14,7 @@ package org.smeup.sys.il.lock.hc;
 
 import java.net.URI;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentMap;
 
 import javax.inject.Inject;
 
@@ -60,5 +61,10 @@ public class HCLockManagerImpl implements QLockManager {
 	@Override
 	public <E> BlockingQueue<E> getQueue(QContextProvider contextProvider, String name) {
 		return hazelcastInstance.getQueue(name);
+	}
+
+	@Override
+	public <K, V> ConcurrentMap<K, V> getConcurrentMap(QContextProvider contextProvider, String name) {
+		return hazelcastInstance.getMap(name);
 	}
 }

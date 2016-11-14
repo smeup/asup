@@ -24,6 +24,12 @@
         <eGenericType eTypeParameter="#//LockManager/getLocker.1/N"/>
       </eParameters>
     </eOperations>
+    <eOperations name="getConcurrentMap" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaConcurrentMap">
+      <eTypeParameters name="K"/>
+      <eTypeParameters name="V"/>
+      <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
+      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eOperations name="getQueue" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaBlockingQueue">
       <eTypeParameters name="E"/>
       <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
