@@ -11,7 +11,7 @@ public class IntegratedLanguageMemoryRuntimeException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
 	public IntegratedLanguageMemoryRuntimeException(Throwable cause) {
-		this(cause.getMessage(), cause.getCause());
+		this(cause.getMessage(), cause);
 	}
 
 	public IntegratedLanguageMemoryRuntimeException(String message) {

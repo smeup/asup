@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.os.dtaq.base.api;
 
+import java.io.IOException;
+
 import javax.inject.Inject;
 
 import org.smeup.sys.il.data.QBinary;
@@ -20,6 +22,7 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
+import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QExceptionManager;
@@ -53,11 +56,10 @@ public class BaseDataQueueCreator {
 			@DataDef(length = 8) QCharacter mode, @DataDef(length = 8) QCharacter remoteNetworkIdentifier, @DataDef(length = 50) QCharacter textDescription,
 			@DataDef(length = 10) QCharacter authority) {
 
+		
 		QResourceWriter<QDataQueue> resource = resourceManager.getResourceWriter(job, QDataQueue.class, dataQueue.library.trimR());
-		QDataQueue qDataQueue = resource.lookup(dataQueue.name.trimR());
-		if (qDataQueue != null)
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF9870, dataQueue);
-
+		QDataQueue qDataQueue = null;
+		
 		qDataQueue = QOperatingSystemDataQueueFactory.eINSTANCE.createDataQueue();
 		qDataQueue.setName(dataQueue.name.trimR());
 		
@@ -76,7 +78,14 @@ public class BaseDataQueueCreator {
 		qDataQueue.setKeyLength(keyLength.asInteger());
 		qDataQueue.setText(textDescription.trimR());				
 
-		resource.save(qDataQueue);
+		try {
+			resource.save(qDataQueue);
+		}
+		catch(IntegratedLanguageMemoryRuntimeException e) {
+ 			if(e.getCause() instanceof IOException) {
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF9870, dataQueue);				
+			}
+		}
 	}
 	
 	public static enum DataQueueSequenceEnum {

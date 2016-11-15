@@ -36,7 +36,7 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 	@Inject
 	private QJobManager jobManager;
 	
-	private Map<String, BaseBlockingFifoQueue<String>> queueList = new HashMap<String, BaseBlockingFifoQueue<String>>();
+	private Map<String, BaseBlockingQueue<String>> queueList = new HashMap<String, BaseBlockingQueue<String>>();
 
 	@Override
 	public void writeDataQueue(QJobCapability capability, String library, String name, String key, QString value) {
@@ -48,7 +48,7 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 		
 		QJob job = jobManager.lookup(capability);
 		
-		BaseBlockingFifoQueue<String> queue = getOrCreateQueue(job, library, name);
+		BaseBlockingFifoQueue<String> queue = (BaseBlockingFifoQueue<String>) getOrCreateQueue(job, library, name, key);
 		if (queue == null)
 			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
 		
@@ -62,7 +62,7 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 
 		String vResult = null;
 
-		BaseBlockingFifoQueue<String> queue = getOrCreateQueue(job, library, name);
+		BaseBlockingFifoQueue<String> queue = (BaseBlockingFifoQueue<String>) getOrCreateQueue(job, library, name, key);
 		if (queue == null)
 			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
 
@@ -76,18 +76,18 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 	}
 	
 	@Override
-	public String peekDataQueue(QJobCapability capability, String library, String name, long timeOut, String key, DataQueueSearchType searchType) {
+	public String peekDataQueue(QJobCapability capability, String library, String name, String key, DataQueueSearchType searchType) {
 
 		QJob job = jobManager.lookup(capability);
 		
 		String vResult = null;
 
-		BaseBlockingFifoQueue<String> queue = getOrCreateQueue(job, library, name);
+		BaseBlockingQueue<String> queue = getOrCreateQueue(job, library, name, key);
 		if (queue == null)
 			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
 
 		try {
-			vResult = queue.peek(timeOut);
+			vResult = queue.peek();
 		} catch (InterruptedException e) {
 			System.err.println(e.getMessage());
 		}
@@ -100,17 +100,17 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 
 		QJob job = jobManager.lookup(capability);
 		
-		BaseBlockingFifoQueue<String> queue = getOrCreateQueue(job, library, name);
+		BaseBlockingQueue<String> queue = getOrCreateQueue(job, library, name, null);
 		if (queue == null)
 			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
 		
 		queue.clear();
 	}
 
-	private BaseBlockingFifoQueue<String> getOrCreateQueue(QContextProvider contextProvider, String library, String name) throws BaseFifoQueueException {
+	private BaseBlockingQueue<String> getOrCreateQueue(QContextProvider contextProvider, String library, String name, String key) throws BaseFifoQueueException {
 
 		String queueKey = library.toUpperCase() + "/" + name.toUpperCase();
-		BaseBlockingFifoQueue<String> queue = queueList.get(queueKey);
+		BaseBlockingQueue<String> queue = queueList.get(queueKey);
 		if (queue == null) {
 			synchronized (queueList) {
 				queue = queueList.get(queueKey);

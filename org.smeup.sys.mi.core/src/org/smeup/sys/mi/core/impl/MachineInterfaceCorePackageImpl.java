@@ -37,6 +37,7 @@ import java.util.Properties;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ExecutorService;
 
 import org.eclipse.emf.ecore.EClass;
@@ -91,6 +92,13 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * @generated
 	 */
 	private EClass javaCloseableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass javaConcurrentMapEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -383,6 +391,15 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getJavaConcurrentMap() {
+		return javaConcurrentMapEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getJavaExecutorService() {
 		return javaExecutorServiceEClass;
 	}
@@ -641,9 +658,11 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 
 		javaCloseableEClass = createEClass(JAVA_CLOSEABLE);
 
-		javaExecutorServiceEClass = createEClass(JAVA_EXECUTOR_SERVICE);
+		javaConcurrentMapEClass = createEClass(JAVA_CONCURRENT_MAP);
 
 		javaEnumEClass = createEClass(JAVA_ENUM);
+
+		javaExecutorServiceEClass = createEClass(JAVA_EXECUTOR_SERVICE);
 
 		javaIterableEClass = createEClass(JAVA_ITERABLE);
 
@@ -734,9 +753,11 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 
 		initEClass(javaCloseableEClass, Closeable.class, "JavaCloseable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(javaExecutorServiceEClass, ExecutorService.class, "JavaExecutorService", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEClass(javaConcurrentMapEClass, ConcurrentMap.class, "JavaConcurrentMap", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS, "java.util.concurrent.ConcurrentMap<K, V>");
 
 		initEClass(javaEnumEClass, Enum.class, "JavaEnum", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS, "java.lang.Enum<E>");
+
+		initEClass(javaExecutorServiceEClass, ExecutorService.class, "JavaExecutorService", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(javaIterableEClass, Iterable.class, "JavaIterable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 

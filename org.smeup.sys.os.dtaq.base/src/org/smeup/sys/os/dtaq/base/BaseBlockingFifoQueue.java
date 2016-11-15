@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * it is in fact empty, the poll() and peek() method will block until an item is
  * pushed or a timeout is elapsed.
  */
-public class BaseBlockingFifoQueue<E> {
+public class BaseBlockingFifoQueue<E> extends BaseBlockingQueue<E> {
 
 	private BlockingQueue<E> queue = null;
 
@@ -75,19 +75,6 @@ public class BaseBlockingFifoQueue<E> {
 	 * @throws InterruptedException
 	 */
 	public E peek() throws InterruptedException {
-		return peek(0);
-	}
-
-	/**
-	 * Returns the element on top of the queue without polling it. Unlike the
-	 * peek() method, this method does not block for longer than the given
-	 * amount of milliseconds. When the given amount of milliseconds have
-	 * passed, this method will throw an InterruptedException.
-	 *
-	 * If aTimeout = -1 wait until a object is push in queue
-	 */
-
-	public E peek(long timeout) throws InterruptedException {
 		return queue.peek();
 	}
 
