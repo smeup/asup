@@ -25,5 +25,4 @@ Require-Bundle: org.smeup.sys.os.core,
  org.smeup.sys.il.lock,
  org.smeup.sys.rt.repo,
  org.smeup.sys.os.dtaara,
- org.smeup.sys.il.esam,
- com.smeup.erp.file.dbf.gen
+ org.smeup.sys.il.esam

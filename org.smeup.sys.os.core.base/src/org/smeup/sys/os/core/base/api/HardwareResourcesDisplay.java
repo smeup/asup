@@ -4,7 +4,9 @@ import javax.inject.Inject;
 
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
+import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QEnum;
+import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
@@ -16,8 +18,6 @@ import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.jobs.QJob;
 
-import com.smeup.erp.file.dbf.XX.gen.QARZDPRC;
-
 @Program(name = "QRZDHRRT")
 public class HardwareResourcesDisplay {
 	public static enum QCPFMSG {
@@ -27,8 +27,10 @@ public class HardwareResourcesDisplay {
 	private transient QCommandManager commandManager;
 	@Inject
 	private transient QJob job;
-	@FileDef(userOpen = true, info = "dscons")
+	@FileDef(userOpen = true, info = "dscons", externalFile="sysFile")
 	protected transient QRRDataSet<QARZDPRC> qarzdprc;
+	@DataDef(length = 21, value="*LIBL/QARZDPRC")
+	private QCharacter sysFile;
 
 	@Main
 	public void main(@DataDef(length = 4) QEnum<TYPEEnum, 
@@ -134,4 +136,91 @@ public class HardwareResourcesDisplay {
 	public static enum LINETYPEEnum {
 		ALL, DDI, TRN
 	}
+	
+	public class QARZDPRC extends QRecordWrapper {
+		private static final long serialVersionUID = 1L;
+		@DataDef(length = 1)
+		public QCharacter porcen;
+		@DataDef(length = 6)
+		public QCharacter pordat;
+		@DataDef(length = 6)
+		public QCharacter portim;
+		@DataDef(length = 8)
+		public QCharacter posnam;
+		@DataDef(length = 4)
+		public QCharacter postyp;
+		@DataDef(length = 3)
+		public QCharacter posmod;
+		@DataDef(length = 10)
+		public QCharacter posser;
+		@DataDef(length = 1)
+		public QCharacter porecf;
+		@DataDef(length = 6)
+		public QCharacter posvrm;
+		@DataDef(length = 36)
+		public QCharacter porsvd;
+		@DataDef(length = 2)
+		public QCharacter porsvf;
+		@DataDef(length = 1)
+		public QCharacter pocrpf;
+		@DataDef(length = 1)
+		public QCharacter pocsaf;
+		@DataDef(length = 1)
+		public QCharacter pocmnf;
+		@DataDef(length = 1)
+		public QCharacter polwsf;
+		@DataDef(length = 1)
+		public QCharacter postgf;
+		@DataDef(length = 1)
+		public QCharacter poprcf;
+		@DataDef(length = 1)
+		public QCharacter porlvl;
+		@DataDef(length = 2)
+		public QCharacter pordsc;
+		@DataDef(length = 10)
+		public QCharacter pornam;
+		@DataDef(length = 10)
+		public QCharacter porpar;
+		@DataDef(length = 4)
+		public QCharacter portyp;
+		@DataDef(length = 3)
+		public QCharacter pormod;
+		@DataDef(length = 12)
+		public QCharacter porprt;
+		@DataDef(length = 10)
+		public QCharacter porser;
+		@DataDef(length = 1)
+		public QCharacter porsts;
+		@DataDef(length = 2)
+		public QCharacter porrid;
+		@DataDef(length = 2)
+		public QCharacter poreia;
+		@DataDef(length = 3)
+		public QCharacter porcsl;
+		@DataDef(length = 2)
+		public QCharacter poruni;
+		@DataDef(length = 3)
+		public QCharacter pordsl;
+		@DataDef(length = 3)
+		public QCharacter porcps;
+		@DataDef(precision = 10, packed = true)
+		public QDecimal pormsz;
+		@DataDef(length = 4)
+		public QCharacter porafi;
+		@DataDef(length = 5)
+		public QCharacter poracp;
+		@DataDef(length = 4)
+		public QCharacter prcfcd;
+		@DataDef(length = 4)
+		public QCharacter prcfd;
+		@DataDef(length = 4)
+		public QCharacter prcifd;
+		@DataDef(length = 79)
+		public QCharacter loccod;
+		@DataDef(length = 1)
+		public QCharacter swtmod;
+		@DataDef(length = 15)
+		public QCharacter poexsn;
+	}	
+	
 }
