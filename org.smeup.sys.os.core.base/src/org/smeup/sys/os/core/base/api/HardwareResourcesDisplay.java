@@ -27,9 +27,10 @@ public class HardwareResourcesDisplay {
 	private transient QCommandManager commandManager;
 	@Inject
 	private transient QJob job;
-	@FileDef(userOpen = true, info = "dscons", externalFile="sysFile")
+//	@FileDef(userOpen = true, info = "dscons", externalFile="sysFile")
+	@FileDef(userOpen = true, externalFile="sysFile")
 	protected transient QRRDataSet<QARZDPRC> qarzdprc;
-	@DataDef(length = 21, value="*LIBL/QARZDPRC")
+	@DataDef(length = 21)
 	private QCharacter sysFile;
 
 	@Main
@@ -78,6 +79,7 @@ public class HardwareResourcesDisplay {
 			callableCommand.close();
 			
 			// Scrittura (TODO)
+			sysFile.eval(fileToReceiveOutput.library.asData().trimR() + "/" + fileToReceiveOutput.name.trimR());
 			qarzdprc.open();
 			qarzdprc.clear();
 			qarzdprc.get().posnam.eval(job.getSystem().getName());
@@ -137,7 +139,7 @@ public class HardwareResourcesDisplay {
 		ALL, DDI, TRN
 	}
 	
-	public class QARZDPRC extends QRecordWrapper {
+	public static class QARZDPRC extends QRecordWrapper {
 		private static final long serialVersionUID = 1L;
 		@DataDef(length = 1)
 		public QCharacter porcen;
