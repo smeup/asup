@@ -210,9 +210,7 @@
     <module>../org.smeup.sys.ft.type.test</module>
 -->
 
-    <module>../org.smeup.sys.co.core</module>
-    <module>../org.smeup.sys.co.flux</module>
-    <module>../org.smeup.sys.co.flux.base</module>
+    <module>../org.smeup.sys.co.core</module>  
     <module>../org.smeup.sys.co.osgi.ecf</module>
     <module>../org.smeup.sys.co.shell</module>
     <module>../org.smeup.sys.co.shell.base</module>
@@ -222,7 +220,7 @@
     <module>../org.smeup.sys.db.core.ibmi</module>
     <module>../org.smeup.sys.db.core.jtds</module>
     <module>../org.smeup.sys.db.core.mssql</module>
-    <module>../org.smeup.sys.db.core.mysql</module>
+    <!--<module>../org.smeup.sys.db.core.mysql</module>-->
     <module>../org.smeup.sys.db.core.test</module>
     <module>../org.smeup.sys.db.esql</module>    
     <module>../org.smeup.sys.db.esql.jdbc</module>
@@ -276,11 +274,8 @@
     <module>../org.smeup.sys.il.flow</module>
     <module>../org.smeup.sys.il.lock</module>
     <module>../org.smeup.sys.il.lock.base</module>
-    <module>../org.smeup.sys.il.lock.cdo</module>
     <module>../org.smeup.sys.il.lock.hc</module>
-    <module>../org.smeup.sys.il.memo</module>
-    <module>../org.smeup.sys.il.memo.cdo</module>
-    <module>../org.smeup.sys.il.memo.cdo.store</module>
+    <module>../org.smeup.sys.il.memo</module>    
     <module>../org.smeup.sys.il.memo.jdt</module>
     <module>../org.smeup.sys.il.memo.nio</module>
     <module>../org.smeup.sys.il.memo.test</module>
@@ -310,7 +305,6 @@
     <module>../org.smeup.sys.os.jobd.base</module>
     <module>../org.smeup.sys.os.lib</module>
     <module>../org.smeup.sys.os.lib.base</module>
-    <module>../org.smeup.sys.os.lib.flux</module>
     <module>../org.smeup.sys.os.module</module>
     <module>../org.smeup.sys.os.module.base</module>
     <module>../org.smeup.sys.os.msgf</module>
@@ -331,8 +325,7 @@
     <module>../org.smeup.sys.os.type</module>
     <module>../org.smeup.sys.os.type.base</module>
     <module>../org.smeup.sys.os.usrprf</module>
-    <module>../org.smeup.sys.os.usrprf.base</module>
-    <module>../org.smeup.sys.os.usrprf.fb</module>
+    <module>../org.smeup.sys.os.usrprf.base</module>    
     <module>../org.smeup.sys.os.usrspc</module>
     <module>../org.smeup.sys.os.usrspc.base</module>
     <module>../org.smeup.sys.rt.auth</module>
