@@ -180,9 +180,17 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	public boolean visit(QBreak statement) {
 
 		Block block = blocks.peek();
-
-		BreakStatement breakSt = ast.newBreakStatement();
-		block.statements().add(breakSt);
+		if(isParentOnError(statement))  {
+			IfStatement ifSt = ast.newIfStatement();
+			ifSt.setExpression(ast.newName(new String[] { "RPJProgramSupport", "TRUE" }));
+			BreakStatement breakSt = ast.newBreakStatement();
+			ifSt.setThenStatement(breakSt);
+			
+			block.statements().add(ifSt);
+		} else {
+			BreakStatement breakSt = ast.newBreakStatement();
+			block.statements().add(breakSt);
+		}
 
 		return super.visit(statement);
 	}
@@ -263,19 +271,17 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	public boolean visit(QContinue statement) {
 
 		Block block = blocks.peek();
-
-		if(isParentIf(statement))  {
-			ContinueStatement continueSt = ast.newContinueStatement();
-			block.statements().add(continueSt);
-		}
-		else if (isParentFor(statement)) {
-
+		// TODO
+		if(isParentOnError(statement) || isParentFor(statement))  {
 			IfStatement ifSt = ast.newIfStatement();
 			ifSt.setExpression(ast.newName(new String[] { "RPJProgramSupport", "TRUE" }));
 			ContinueStatement continueSt = ast.newContinueStatement();
 			ifSt.setThenStatement(continueSt);
 			
 			block.statements().add(ifSt);
+		} else if(isParentIf(statement))  {
+			ContinueStatement continueSt = ast.newContinueStatement();
+			block.statements().add(continueSt);
 		} else {
 			ContinueStatement continueSt = ast.newContinueStatement();
 			block.statements().add(continueSt);
@@ -1015,6 +1021,18 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		return false;
 	}
 
+	private boolean isParentOnError(QStatement statement) {
+
+		QNode parent = statement.getParent();
+		while (parent != null) {
+			if (parent instanceof QOnError)
+				return true;
+			parent = parent.getParent();
+		}
+
+		return false;
+	}
+	
 	public void writeAssertion(QAnnotationTest annotationTest, String message) {
 
 		Block block = getBlocks().peek();
