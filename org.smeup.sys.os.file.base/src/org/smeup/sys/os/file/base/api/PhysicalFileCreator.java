@@ -44,7 +44,7 @@ import org.smeup.sys.os.file.QPhysicalFile;
 import org.smeup.sys.os.lib.QLibrary;
 
 @Program(name = "QDDCPF")
-public @ToDo class FileCreator {
+public @ToDo class PhysicalFileCreator {
 	public static enum QCPFMSG {
 		CPF5813, //Il file &1 già esiste in &2
 		CPF3204, //Non è possibile trovare l'oggetto necessario per il file &1 in &2
