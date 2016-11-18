@@ -152,7 +152,7 @@ public class BaseJobManagerImpl implements QJobManager {
 
 		QJob jobSpawned = lookup(jobCapability);
 
-		if (copyEnvironmentVariables)
+		if (copyEnvironmentVariables && parent.getVariableContainer() != null)
 			environmentVariableManager.addVariables(jobSpawned, parent.getVariableContainer().getVariables(), false);
 
 		return jobCapability;
