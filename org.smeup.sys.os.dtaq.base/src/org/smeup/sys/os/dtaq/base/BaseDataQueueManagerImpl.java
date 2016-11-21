@@ -41,7 +41,7 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 	@Inject
 	private QResourceManager resourceManager;
 	
-	private Map<String, BaseBlockingQueue<String>> queueList = new HashMap<String, BaseBlockingQueue<String>>();
+	private Map<String, BaseBlockingQueue> queueList = new HashMap<String, BaseBlockingQueue>();
 	
 	@PostConstruct
 	private void init() {
@@ -59,11 +59,22 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 		
 		QJob job = jobManager.lookup(capability);
 		
-		BaseBlockingFifoQueue<String> queue = (BaseBlockingFifoQueue<String>) getOrCreateQueue(job, library, name, key);
-		if (queue == null)
-			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
-		
-		queue.put(value);	
+		if(key != null) {
+			@SuppressWarnings("unchecked")
+			BaseBlockingKeyedQueue<String, String> queue = (BaseBlockingKeyedQueue<String, String>) getOrCreateQueue(job, library, name, key);
+			if (queue == null)
+				throw new BaseBlockingQueueException(BaseBlockingQueueException.QUEUE_DO_NOT_EXISTS);
+			
+			queue.put(key, value);
+		}
+		else {
+			@SuppressWarnings("unchecked")
+			BaseBlockingFifoQueue<String> queue = (BaseBlockingFifoQueue<String>) getOrCreateQueue(job, library, name, key);
+			if (queue == null)
+				throw new BaseBlockingQueueException(BaseBlockingQueueException.QUEUE_DO_NOT_EXISTS);
+			
+			queue.put(value);
+		}
 	}
 	
 	@Override
@@ -71,19 +82,31 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 
 		QJob job = jobManager.lookup(capability);
 
-		String vResult = null;
-
-		BaseBlockingFifoQueue<String> queue = (BaseBlockingFifoQueue<String>) getOrCreateQueue(job, library, name, key);
-		if (queue == null)
-			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
-
+		String result = null;
 		try {
-			vResult = queue.poll(timeOut);
+	
+			if(key != null) {
+				@SuppressWarnings("unchecked")
+				BaseBlockingKeyedQueue<String, String> queue = (BaseBlockingKeyedQueue<String, String>) getOrCreateQueue(job, library, name, key);
+				if (queue == null)
+					throw new BaseBlockingQueueException(BaseBlockingQueueException.QUEUE_DO_NOT_EXISTS);
+
+				result = queue.remove(key);
+			}
+			else {
+				@SuppressWarnings("unchecked")
+				BaseBlockingFifoQueue<String> queue = (BaseBlockingFifoQueue<String>) getOrCreateQueue(job, library, name, key);
+				if (queue == null)
+					throw new BaseBlockingQueueException(BaseBlockingQueueException.QUEUE_DO_NOT_EXISTS);
+				
+				result = queue.poll(timeOut);
+			}
+
 		} catch (InterruptedException e) {
 			System.err.println(e.getMessage());
 		}
 
-		return vResult;
+		return result;
 	}
 	
 	@Override
@@ -91,19 +114,31 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 
 		QJob job = jobManager.lookup(capability);
 		
-		String vResult = null;
-
-		BaseBlockingQueue<String> queue = getOrCreateQueue(job, library, name, key);
-		if (queue == null)
-			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
-
+		String result = null;
 		try {
-			vResult = queue.peek();
+	
+			if(key != null) {
+				@SuppressWarnings("unchecked")
+				BaseBlockingKeyedQueue<String, String> queue = (BaseBlockingKeyedQueue<String, String>) getOrCreateQueue(job, library, name, key);
+				if (queue == null)
+					throw new BaseBlockingQueueException(BaseBlockingQueueException.QUEUE_DO_NOT_EXISTS);
+
+				result = queue.get(key);
+			}
+			else {
+				@SuppressWarnings("unchecked")
+				BaseBlockingFifoQueue<String> queue = (BaseBlockingFifoQueue<String>) getOrCreateQueue(job, library, name, key);
+				if (queue == null)
+					throw new BaseBlockingQueueException(BaseBlockingQueueException.QUEUE_DO_NOT_EXISTS);
+				
+				result = queue.peek();
+			}
+
 		} catch (InterruptedException e) {
 			System.err.println(e.getMessage());
 		}
 
-		return vResult;		
+		return result;
 	}
 
 	@Override
@@ -111,17 +146,17 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 
 		QJob job = jobManager.lookup(capability);
 		
-		BaseBlockingQueue<String> queue = getOrCreateQueue(job, library, name, null);
+		BaseBlockingQueue queue = getOrCreateQueue(job, library, name, null);
 		if (queue == null)
-			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);
+			throw new BaseBlockingQueueException(BaseBlockingQueueException.QUEUE_DO_NOT_EXISTS);
 		
 		queue.clear();
 	}
 
-	private BaseBlockingQueue<String> getOrCreateQueue(QContextProvider contextProvider, String library, String name, String key) throws BaseFifoQueueException {
+	private BaseBlockingQueue getOrCreateQueue(QContextProvider contextProvider, String library, String name, String key) throws BaseBlockingQueueException {
 
 		String queueKey = library.toUpperCase() + "/" + name.toUpperCase();
-		BaseBlockingQueue<String> queue = queueList.get(queueKey);
+		BaseBlockingQueue queue = queueList.get(queueKey);
 		if (queue == null) {
 			synchronized (queueList) {
 				queue = queueList.get(queueKey);
@@ -139,9 +174,10 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 //						queue = new BaseBlockingFifoQueue<String>(new LinkedBlockingQueue<String>());
 						break;
 					case KEYED:
+						queue = new BaseBlockingKeyedQueue<String, String>(lockManager.getConcurrentMap(contextProvider, queueKey));
 						break;
 					case LIFO:
-						break;
+						throw new BaseBlockingQueueException(BaseBlockingQueueException.QUEUE_NOT_SUPPORTED);
 					}
 					queueList.put(queueKey, queue);
 				}

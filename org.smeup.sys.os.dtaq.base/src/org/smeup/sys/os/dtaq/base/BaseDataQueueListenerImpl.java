@@ -19,9 +19,9 @@ import org.smeup.sys.os.dtaq.QDataQueue;
 
 public class BaseDataQueueListenerImpl implements QResourceListener<QDataQueue> {
 
-	private Map<String, BaseBlockingQueue<String>> queueList;
+	private Map<String, BaseBlockingQueue> queueList;
 	
-	public BaseDataQueueListenerImpl(Map<String, BaseBlockingQueue<String>> queueList) {
+	public BaseDataQueueListenerImpl(Map<String, BaseBlockingQueue> queueList) {
 		this.queueList = queueList;
 	}
 	

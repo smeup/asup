@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * it is in fact empty, the poll() and peek() method will block until an item is
  * pushed or a timeout is elapsed.
  */
-public class BaseBlockingFifoQueue<E> extends BaseBlockingQueue<E> {
+public class BaseBlockingFifoQueue<E> extends BaseBlockingQueue {
 
 	private BlockingQueue<E> queue = null;
 
