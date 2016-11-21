@@ -11,7 +11,7 @@
  */
 package org.smeup.sys.os.dtaq.base;
 
-public class BaseFifoQueueException extends RuntimeException {
+public class BaseBlockingQueueException extends RuntimeException {
 	/**
 	 *
 	 */
@@ -21,8 +21,9 @@ public class BaseFifoQueueException extends RuntimeException {
 
 	public final static int QUEUE_ALREADY_EXISTS = 0;
 	public final static int QUEUE_DO_NOT_EXISTS = 1;
+	public final static int QUEUE_NOT_SUPPORTED = 2;
 
-	public BaseFifoQueueException(int aErrorCode) {
+	public BaseBlockingQueueException(int aErrorCode) {
 		super();
 		iErrorCode = aErrorCode;
 	}

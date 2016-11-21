@@ -11,9 +11,8 @@
  */
 package org.smeup.sys.os.dtaq.base;
 
-public abstract class BaseBlockingQueue<E> {
+public abstract class BaseBlockingQueue {
 
 	public abstract void clear();
 	public abstract boolean isEmpty();
-	public abstract E peek() throws InterruptedException;
 }
