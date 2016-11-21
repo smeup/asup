@@ -14,30 +14,41 @@ package org.smeup.sys.os.dtaq.base;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.LinkedBlockingQueue;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.lock.QLockManager;
+import org.smeup.sys.il.memo.QResourceListener;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.dtaq.DataQueueSearchType;
-import org.smeup.sys.os.dtaq.DataQueueSequence;
+import org.smeup.sys.os.dtaq.QDataQueue;
 import org.smeup.sys.os.dtaq.QDataQueueManager;
 
 public class BaseDataQueueManagerImpl implements QDataQueueManager {
 
-	@SuppressWarnings("unused")
 	@Inject
 	private QLockManager lockManager;
 	@Inject
 	private QJobManager jobManager;
+	@Inject
+	private QResourceManager resourceManager;
 	
 	private Map<String, BaseBlockingQueue<String>> queueList = new HashMap<String, BaseBlockingQueue<String>>();
-
+	
+	@PostConstruct
+	private void init() {
+		QResourceListener<QDataQueue> dataQueueListener = new BaseDataQueueListenerImpl(queueList);
+		resourceManager.registerListener(QDataQueue.class, dataQueueListener);
+	}
+	
 	@Override
 	public void writeDataQueue(QJobCapability capability, String library, String name, String key, QString value) {
 		writeDataQueue(capability, library, name, key, value.asString());
@@ -115,13 +126,17 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 			synchronized (queueList) {
 				queue = queueList.get(queueKey);
 				if (queue == null) {
-					// TODO retrieve dataQueue from resources, switch for dataQueue type
-					DataQueueSequence dataQueueSequence = DataQueueSequence.FIFO;
-					switch (dataQueueSequence) {
+					
+					QResourceReader<QDataQueue> dataQueueReader = resourceManager.getResourceReader(contextProvider, QDataQueue.class, Scope.ALL, library);
+					QDataQueue dataQueue = dataQueueReader.lookup(name);
+					if(dataQueue == null)
+						return null;
+									
+					switch (dataQueue.getSequence()) {
 					case FIFO:
 						// TODO distributed queue
-//						queue = new BaseBlockingFifoQueue<String>(lockManager.getQueue(contextProvider, queueKey));
-						queue = new BaseBlockingFifoQueue<String>(new LinkedBlockingQueue<String>());
+						queue = new BaseBlockingFifoQueue<String>(lockManager.getQueue(contextProvider, queueKey));
+//						queue = new BaseBlockingFifoQueue<String>(new LinkedBlockingQueue<String>());
 						break;
 					case KEYED:
 						break;
