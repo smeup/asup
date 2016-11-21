@@ -11,7 +11,10 @@
  */
 package org.smeup.sys.os.type.base.api;
 
+import javax.inject.Inject;
+
 import org.smeup.sys.dk.core.annotation.ToDo;
+import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -22,23 +25,41 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.lock.LockType;
+import org.smeup.sys.il.lock.QLockManager;
+import org.smeup.sys.il.lock.QObjectLocker;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.Scope;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.type.QType;
+import org.smeup.sys.os.type.QTypeRegistry;
 
 @Program(name = "QWCCALOC")
 public class ObjectAllocator {
 
+	@Inject
+	private QJob job;
+	@Inject
+	private QResourceManager resourceManager;
+	@Inject
+	private QTypeRegistry typeRegistry;
+	@Inject
+	private QLockManager lockManager;
+	
+	@SuppressWarnings("unused")
 	@Main
 	public void main(@ToDo @DataDef(dimension = 50) QStroller<ObjectSpecification> objectSpecifications, @ToDo @DataDef(binaryType = BinaryType.SHORT) QEnum<WaitTimeEnum, QBinary> waitTime,
 			@ToDo @DataDef(length = 1) QEnum<LockScopeEnum, QCharacter> lockScope, @ToDo @DataDef(length = 1) QEnum<LockConflictActionEnum, QCharacter> lockConflictAction) {
 
-		int i = 0;
+		// TODO attesa bug 
+		if(true)
+			return;
+		
 		for (ObjectSpecification objectSpecification : objectSpecifications) {
-			i++;
 
 			if (objectSpecification.isEmpty())
 				continue;
-
-			if (!objectSpecification.toString().trim().isEmpty())
-				System.out.println(i + ":" + objectSpecification);
 
 			switch (lockScope.asEnum()) {
 			case JOB:
@@ -48,22 +69,35 @@ public class ObjectAllocator {
 			case THREAD:
 				break;
 			}
+			
+			QType<?> type = typeRegistry.lookup(objectSpecification.objectType.trimR());
+			
+			QResourceReader<?> resourceReader = resourceManager.getResourceReader(job, type.getTypedClass(), objectSpecification.object.library.asEnum(), objectSpecification.object.library.asData().trimR());
+			QObjectNameable objectNameable = resourceReader.lookup(objectSpecification.object.name.trimR());
 
-			if (!objectSpecification.lockState.isEmpty())
-				switch (objectSpecification.lockState.asEnum()) {
-				case EXCL:
-					break;
-				case EXCLRD:
-					break;
-				case SHRNUP:
-					break;
-				case SHRRD:
-					break;
-				case SHRUPD:
-					break;
-				}
+			QObjectLocker<?> objectLocker = lockManager.getLocker(job, objectNameable);
+
+			LockType lockType = null;
+			switch (objectSpecification.lockState.asEnum()) {
+			case EXCL:
+				lockType = LockType.READ;
+				break;
+			case EXCLRD:
+				lockType = LockType.READ;
+				break;
+			case SHRNUP:
+				lockType = LockType.WRITE;
+				break;
+			case SHRRD:
+				lockType = LockType.READ;
+				break;
+			case SHRUPD:
+				lockType = LockType.WRITE;
+				break;
+			}
+
+			objectLocker.tryLock(waitTime.asData().asLong(), lockType);
 		}
-
 	}
 
 	public static class ObjectSpecification extends QDataStructWrapper {
@@ -71,7 +105,7 @@ public class ObjectAllocator {
 		@DataDef(qualified = true)
 		public Object object;
 		@DataDef(length = 7)
-		public QEnum<ObjectTypeEnum, QCharacter> objectType;
+		public QCharacter objectType;
 		@DataDef(binaryType = BinaryType.SHORT)
 		public QEnum<LockStateEnum, QBinary> lockState;
 		@DataDef(length = 10)
@@ -82,67 +116,7 @@ public class ObjectAllocator {
 			@DataDef(length = 10)
 			public QCharacter name;
 			@DataDef(length = 10, value = "*LIBL")
-			public QEnum<LibraryEnum, QCharacter> library;
-
-			public static enum LibraryEnum {
-				LIBL, CURLIB, OTHER
-			}
-		}
-
-		public static enum ObjectTypeEnum {
-			@Special(value = "AUTL")
-			AUTL, @Special(value = "BNDDIR")
-			BNDDIR, @Special(value = "CLD")
-			CLD, @Special(value = "CRQD")
-			CRQD, @Special(value = "CSI")
-			CSI, @Special(value = "CSPMAP")
-			CSPMAP, @Special(value = "CSPTBL")
-			CSPTBL, @Special(value = "DEVD")
-			DEVD, @Special(value = "DTAARA")
-			DTAARA, @Special(value = "DTADCT")
-			DTADCT, @Special(value = "DTAQ")
-			DTAQ, @Special(value = "FCT")
-			FCT, @Special(value = "FILE")
-			FILE, @Special(value = "FNTRSC")
-			FNTRSC, @Special(value = "FNTTBL")
-			FNTTBL, @Special(value = "FORMDF")
-			FORMDF, @Special(value = "IMGCLG")
-			IMGCLG, @Special(value = "IPXD")
-			IPXD, @Special(value = "LIB")
-			LIB, @Special(value = "LOCALE")
-			LOCALE, @Special(value = "MEDDFN")
-			MEDDFN, @Special(value = "MENU")
-			MENU, @Special(value = "MGTCOL")
-			MGTCOL, @Special(value = "MODULE")
-			MODULE, @Special(value = "MSGQ")
-			MSGQ, @Special(value = "NODL")
-			NODL, @Special(value = "NTBD")
-			NTBD, @Special(value = "NWSCFG")
-			NWSCFG, @Special(value = "NWSD")
-			NWSD, @Special(value = "OVL")
-			OVL, @Special(value = "PAGDFN")
-			PAGDFN, @Special(value = "PAGSEG")
-			PAGSEG, @Special(value = "PDFMAP")
-			PDFMAP, @Special(value = "PDG")
-			PDG, @Special(value = "PGM")
-			PGM, @Special(value = "PNLGRP")
-			PNLGRP, @Special(value = "PSFCFG")
-			PSFCFG, @Special(value = "QMFORM")
-			QMFORM, @Special(value = "QMQRY")
-			QMQRY, @Special(value = "QRYDFN")
-			QRYDFN, @Special(value = "SBSD")
-			SBSD, @Special(value = "SCHIDX")
-			SCHIDX, @Special(value = "SQLPKG")
-			SQLPKG, @Special(value = "SRVPGM")
-			SRVPGM, @Special(value = "SSND")
-			SSND, @Special(value = "S36")
-			S36, @Special(value = "TIMZON")
-			TIMZON, @Special(value = "USRIDX")
-			USRIDX, @Special(value = "USRQ")
-			USRQ, @Special(value = "USRSPC")
-			USRSPC, @Special(value = "VLDL")
-			VLDL, @Special(value = "WSCST")
-			WSCST
+			public QEnum<Scope, QCharacter> library;
 		}
 
 		public static enum LockStateEnum {
