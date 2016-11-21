@@ -14,7 +14,9 @@ package org.smeup.sys.dk.compiler.rpj;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -536,14 +538,33 @@ public class RPJCallableUnitLinker {
 
 	private void appendElements(QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> qDataTerm, QFileFormat<?> fileFormat, boolean setDerived) {
 
+		Map<String, QDataTerm<?>> cachedElement = new HashMap<String, QDataTerm<?>>();
+		
+		for(QDataTerm<?> element: qDataTerm.getDefinition().getElements())
+			if(element.getKey() != null)
+				cachedElement.put(element.getKey(), element);
+			else
+				cachedElement.put(element.getName(), element);
+		
 		int pos = 0;
 		for (QDataTerm<?> element : fileFormat.getDefinition().getElements()) {
-
+			
 			element = (QDataTerm<?>) EcoreUtil.copy((EObject) element);
 
 			if (setDerived) {
 				QDerived derived = QDevelopmentKitCompilerFactory.eINSTANCE.createDerived();
 				element.getFacets().add(derived);
+			}
+
+			QDataTerm<?> oldElement = null;
+			if(element.getKey() != null)
+				oldElement = cachedElement.get(element.getKey());
+			else
+				oldElement = cachedElement.get(element.getName());
+			
+			if(oldElement != null) {
+				element.getFacets().addAll(oldElement.getFacets());
+				qDataTerm.getDefinition().getElements().remove(oldElement);
 			}
 
 			qDataTerm.getDefinition().getElements().add(pos, element);
