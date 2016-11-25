@@ -26,6 +26,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QList;
+import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -43,11 +44,12 @@ public class CommandDecoderTester {
 	@Inject
 	public transient QTestAsserter testAsserter;
 
-	private String[] commands = new String[]{"WRKCMD CMD(WRKCMD)", 
-											 "CHGCMD CMD(WRKCMD) ALLOW(*IREXX *IPGM *INTERACT *BMOD)",
-											 "CALL PGM(B£DMSG1) PARM('PIPPO' 'BAS0042' 'MSGBA')",
-											 "CALL PGM(B£DMSG1) PARM(&DMSAZ 'BAS0042' 'MSGBA')"
-											 };
+	private transient static String[] commands = new String[]{"WRKCMD CMD(WRKCMD)", 
+ 															  "CHGCMD CMD(WRKCMD) ALLOW(*IREXX *IPGM *INTERACT *BMOD)",
+															  "CALL PGM(B£DMSG1) PARM('PIPPO' 'BAS0042' 'MSGBA')",
+															  "CALL PGM(B£DMSG1) PARM(&DMSAZ 'BAS0042' 'MSGBA')",
+															  "ALCOBJ OBJ((SMEUP_OBJ/MUTE01_01 *PGM *SHRRD) (SMEUP_OBJ/MUTE01_02 *PGM *EXCLRD))"
+															 };
 
 	@DataDef(length = 2, value = "1 ")
 	private QCharacter dmsaz;
@@ -93,5 +95,42 @@ public class CommandDecoderTester {
 		testAsserter.assertTrue(commands[3]+" PARM(03)='MSGBA'", ((QString)parm.get(3).getDelegate()).eq("MSGBA"));
 		if(dataContainer != null)
 			dataContainer.close();
+		
+		dataContainer = commandManager.decodeCommand(job, commands[4]);
+		testAsserter.assertNotNull("Decode "+commands[4], dataContainer);
+
+		int i = 1;
+		for(QDataStruct objSpecification: (Iterable<QDataStruct>)dataContainer.getData("OBJ")) {
+			QDataStruct obj = (QDataStruct) objSpecification.getElement("object");
+			testAsserter.assertTrue(commands[4]+" OBJ.library=SMEUP_OBJ", ((QCharacter)obj.getElement("library")).eq("SMEUP_OBJ"));
+
+			QCharacter objType = (QCharacter) objSpecification.getElement("objectType");
+			testAsserter.assertTrue(commands[4]+" OBJ.objectType=*PGM", objType.eq("*PGM"));
+
+			QNumeric lockState = (QNumeric) objSpecification.getElement("lockState");
+			switch (i) {
+			case 1:
+				testAsserter.assertTrue(commands[4]+" OBJ.name=MUTE01_01", ((QCharacter)obj.getElement("name")).eq("MUTE01_01"));
+				testAsserter.assertTrue(commands[4]+" OBJ.lockState=*SHRRD", lockState.eq(1));
+
+				break;
+			case 2:				
+				testAsserter.assertTrue(commands[4]+" OBJ.name=MUTE01_02", ((QCharacter)obj.getElement("name")).eq("MUTE01_02"));
+				testAsserter.assertTrue(commands[4]+" OBJ.lockState=*EXCLRD", lockState.eq(4));
+				break;
+			}
+			
+			i++;
+		}
+		
+		QNumeric wait = (QNumeric) dataContainer.getData("WAIT");
+		testAsserter.assertTrue(commands[4]+" wait=*CLS", wait.eq(-1));
+		
+		QCharacter scope = (QCharacter) dataContainer.getData("SCOPE");
+		testAsserter.assertTrue(commands[4]+" scope=*JOB", scope.eq("J"));
+		
+		if(dataContainer != null)
+			dataContainer.close();
+
 	}
 }
