@@ -852,8 +852,14 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				buffer.append("qRPJ.qBox(" + value + ")");
 
 			// buffered
-			else if (target.equals(QBufferedElement.class) && source.equals(String.class))
-				buffer.append("qRPJ.qBox(" + value + ")");
+			else if (target.equals(QBufferedElement.class)) {
+				if(source.equals(String.class))
+					buffer.append("qRPJ.qBox(" + value + ")");
+				else if(Number.class.isAssignableFrom(source))
+					buffer.append("qRPJ.qBox(" + value + ")");
+				else
+					throw new IntegratedLanguageExpressionRuntimeException("Invalid boxing type: " + source.getSimpleName());					
+			}
 			else if (target.equals(QData.class) && Number.class.isAssignableFrom(source))
 				buffer.append("qRPJ.qBox(" + value + ")");
 
