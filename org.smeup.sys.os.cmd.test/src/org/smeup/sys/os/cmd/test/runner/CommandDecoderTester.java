@@ -101,7 +101,11 @@ public class CommandDecoderTester {
 
 		int i = 1;
 		for(QDataStruct objSpecification: (Iterable<QDataStruct>)dataContainer.getData("OBJ")) {
+
 			QDataStruct obj = (QDataStruct) objSpecification.getElement("object");
+			if(obj.isEmpty())
+				break;
+
 			testAsserter.assertTrue(commands[4]+" OBJ.library=SMEUP_OBJ", ((QCharacter)obj.getElement("library")).eq("SMEUP_OBJ"));
 
 			QCharacter objType = (QCharacter) objSpecification.getElement("objectType");
