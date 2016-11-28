@@ -34,6 +34,7 @@ import org.smeup.sys.rt.core.QServiceExecutor;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.smeup.sys.rt.core.impl.ServiceExecutorImpl#getInterfaceName <em>Interface Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceExecutorImpl#isRemoteExport <em>Remote Export</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceExecutorImpl#getServices <em>Services</em>}</li>
  * </ul>
@@ -41,6 +42,26 @@ import org.smeup.sys.rt.core.QServiceExecutor;
  * @generated
  */
 public class ServiceExecutorImpl extends ServiceRefImpl implements QServiceExecutor {
+	/**
+	 * The default value of the '{@link #getInterfaceName() <em>Interface Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInterfaceName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INTERFACE_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInterfaceName() <em>Interface Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInterfaceName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String interfaceName = INTERFACE_NAME_EDEFAULT;
+
 	/**
 	 * 
 	 */
@@ -100,6 +121,27 @@ public class ServiceExecutorImpl extends ServiceRefImpl implements QServiceExecu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getInterfaceName() {
+		return interfaceName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInterfaceName(String newInterfaceName) {
+		String oldInterfaceName = interfaceName;
+		interfaceName = newInterfaceName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_EXECUTOR__INTERFACE_NAME, oldInterfaceName, interfaceName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isRemoteExport() {
 		return remoteExport;
 	}
@@ -150,6 +192,8 @@ public class ServiceExecutorImpl extends ServiceRefImpl implements QServiceExecu
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case QRuntimeCorePackage.SERVICE_EXECUTOR__INTERFACE_NAME:
+				return getInterfaceName();
 			case QRuntimeCorePackage.SERVICE_EXECUTOR__REMOTE_EXPORT:
 				return isRemoteExport();
 			case QRuntimeCorePackage.SERVICE_EXECUTOR__SERVICES:
@@ -167,6 +211,9 @@ public class ServiceExecutorImpl extends ServiceRefImpl implements QServiceExecu
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case QRuntimeCorePackage.SERVICE_EXECUTOR__INTERFACE_NAME:
+				setInterfaceName((String)newValue);
+				return;
 			case QRuntimeCorePackage.SERVICE_EXECUTOR__REMOTE_EXPORT:
 				setRemoteExport((Boolean)newValue);
 				return;
@@ -186,6 +233,9 @@ public class ServiceExecutorImpl extends ServiceRefImpl implements QServiceExecu
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case QRuntimeCorePackage.SERVICE_EXECUTOR__INTERFACE_NAME:
+				setInterfaceName(INTERFACE_NAME_EDEFAULT);
+				return;
 			case QRuntimeCorePackage.SERVICE_EXECUTOR__REMOTE_EXPORT:
 				setRemoteExport(REMOTE_EXPORT_EDEFAULT);
 				return;
@@ -204,6 +254,8 @@ public class ServiceExecutorImpl extends ServiceRefImpl implements QServiceExecu
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case QRuntimeCorePackage.SERVICE_EXECUTOR__INTERFACE_NAME:
+				return INTERFACE_NAME_EDEFAULT == null ? interfaceName != null : !INTERFACE_NAME_EDEFAULT.equals(interfaceName);
 			case QRuntimeCorePackage.SERVICE_EXECUTOR__REMOTE_EXPORT:
 				return remoteExport != REMOTE_EXPORT_EDEFAULT;
 			case QRuntimeCorePackage.SERVICE_EXECUTOR__SERVICES:
@@ -222,7 +274,9 @@ public class ServiceExecutorImpl extends ServiceRefImpl implements QServiceExecu
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (remoteExport: ");
+		result.append(" (interfaceName: ");
+		result.append(interfaceName);
+		result.append(", remoteExport: ");
 		result.append(remoteExport);
 		result.append(')');
 		return result.toString();

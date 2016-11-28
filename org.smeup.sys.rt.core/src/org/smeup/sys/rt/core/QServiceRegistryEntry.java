@@ -16,6 +16,7 @@ package org.smeup.sys.rt.core;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.smeup.sys.rt.core.QServiceRegistryEntry#getInterfaceName <em>Interface Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QServiceRegistryEntry#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QServiceRegistryEntry#getVendor <em>Vendor</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QServiceRegistryEntry#getVersion <em>Version</em>}</li>
@@ -26,6 +27,32 @@ package org.smeup.sys.rt.core;
  * @generated
  */
 public interface QServiceRegistryEntry extends QServiceRef {
+	/**
+	 * Returns the value of the '<em><b>Interface Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Interface Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Interface Name</em>' attribute.
+	 * @see #setInterfaceName(String)
+	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getServiceRegistryEntry_InterfaceName()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getInterfaceName();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.rt.core.QServiceRegistryEntry#getInterfaceName <em>Interface Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Interface Name</em>' attribute.
+	 * @see #getInterfaceName()
+	 * @generated
+	 */
+	void setInterfaceName(String value);
+
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

@@ -42,5 +42,15 @@ public class ServiceHookImpl extends ServiceRefImpl implements QServiceHook {
 	protected EClass eStaticClass() {
 		return QRuntimeCorePackage.Literals.SERVICE_HOOK;
 	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public String getInterfaceName() {
+		return getClassName();
+	}
 
 } //ServiceHookImpl

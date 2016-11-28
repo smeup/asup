@@ -30,6 +30,7 @@ import org.smeup.sys.rt.core.QServiceRegistryEntry;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRegistryImpl#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRegistryImpl#getInterfaceName <em>Interface Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRegistryImpl#getName <em>Name</em>}</li>
  * </ul>
  *
@@ -45,6 +46,24 @@ public class ServiceRegistryImpl extends ServiceRefImpl implements QServiceRegis
 	 * @ordered
 	 */
 	protected EList<QServiceRegistryEntry> entries;
+	/**
+	 * The default value of the '{@link #getInterfaceName() <em>Interface Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInterfaceName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INTERFACE_NAME_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getInterfaceName() <em>Interface Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInterfaceName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String interfaceName = INTERFACE_NAME_EDEFAULT;
 	/**
 	 * 
 	 */
@@ -104,6 +123,27 @@ public class ServiceRegistryImpl extends ServiceRefImpl implements QServiceRegis
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getInterfaceName() {
+		return interfaceName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInterfaceName(String newInterfaceName) {
+		String oldInterfaceName = interfaceName;
+		interfaceName = newInterfaceName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_REGISTRY__INTERFACE_NAME, oldInterfaceName, interfaceName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getName() {
 		return name;
 	}
@@ -144,6 +184,8 @@ public class ServiceRegistryImpl extends ServiceRefImpl implements QServiceRegis
 		switch (featureID) {
 			case QRuntimeCorePackage.SERVICE_REGISTRY__ENTRIES:
 				return getEntries();
+			case QRuntimeCorePackage.SERVICE_REGISTRY__INTERFACE_NAME:
+				return getInterfaceName();
 			case QRuntimeCorePackage.SERVICE_REGISTRY__NAME:
 				return getName();
 		}
@@ -163,6 +205,9 @@ public class ServiceRegistryImpl extends ServiceRefImpl implements QServiceRegis
 				getEntries().clear();
 				getEntries().addAll((Collection<? extends QServiceRegistryEntry>)newValue);
 				return;
+			case QRuntimeCorePackage.SERVICE_REGISTRY__INTERFACE_NAME:
+				setInterfaceName((String)newValue);
+				return;
 			case QRuntimeCorePackage.SERVICE_REGISTRY__NAME:
 				setName((String)newValue);
 				return;
@@ -181,6 +226,9 @@ public class ServiceRegistryImpl extends ServiceRefImpl implements QServiceRegis
 			case QRuntimeCorePackage.SERVICE_REGISTRY__ENTRIES:
 				getEntries().clear();
 				return;
+			case QRuntimeCorePackage.SERVICE_REGISTRY__INTERFACE_NAME:
+				setInterfaceName(INTERFACE_NAME_EDEFAULT);
+				return;
 			case QRuntimeCorePackage.SERVICE_REGISTRY__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -198,6 +246,8 @@ public class ServiceRegistryImpl extends ServiceRefImpl implements QServiceRegis
 		switch (featureID) {
 			case QRuntimeCorePackage.SERVICE_REGISTRY__ENTRIES:
 				return entries != null && !entries.isEmpty();
+			case QRuntimeCorePackage.SERVICE_REGISTRY__INTERFACE_NAME:
+				return INTERFACE_NAME_EDEFAULT == null ? interfaceName != null : !INTERFACE_NAME_EDEFAULT.equals(interfaceName);
 			case QRuntimeCorePackage.SERVICE_REGISTRY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
@@ -214,7 +264,9 @@ public class ServiceRegistryImpl extends ServiceRefImpl implements QServiceRegis
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
+		result.append(" (interfaceName: ");
+		result.append(interfaceName);
+		result.append(", name: ");
 		result.append(name);
 		result.append(')');
 		return result.toString();

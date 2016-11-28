@@ -19,6 +19,7 @@ import java.util.List;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.QServiceRegistry#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.QServiceRegistry#getInterfaceName <em>Interface Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QServiceRegistry#getName <em>Name</em>}</li>
  * </ul>
  *
@@ -42,6 +43,32 @@ public interface QServiceRegistry extends QServiceRef {
 	 * @generated
 	 */
 	List<QServiceRegistryEntry> getEntries();
+
+	/**
+	 * Returns the value of the '<em><b>Interface Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Interface Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Interface Name</em>' attribute.
+	 * @see #setInterfaceName(String)
+	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getServiceRegistry_InterfaceName()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getInterfaceName();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.rt.core.QServiceRegistry#getInterfaceName <em>Interface Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Interface Name</em>' attribute.
+	 * @see #getInterfaceName()
+	 * @generated
+	 */
+	void setInterfaceName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.

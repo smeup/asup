@@ -407,7 +407,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getServiceExecutor_RemoteExport() {
+	public EAttribute getServiceExecutor_InterfaceName() {
 		return (EAttribute)serviceExecutorEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -416,8 +416,17 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getServiceExecutor_RemoteExport() {
+		return (EAttribute)serviceExecutorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getServiceExecutor_Services() {
-		return (EReference)serviceExecutorEClass.getEStructuralFeatures().get(1);
+		return (EReference)serviceExecutorEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -446,18 +455,8 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * @generated
 	 */
 	@Override
-	public EAttribute getServiceRef_InterfaceName() {
-		return (EAttribute)serviceRefEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getServiceRef_Status() {
-		return (EAttribute)serviceRefEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)serviceRefEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -483,8 +482,17 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getServiceRegistry_Name() {
+	public EAttribute getServiceRegistry_InterfaceName() {
 		return (EAttribute)serviceRegistryEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServiceRegistry_Name() {
+		return (EAttribute)serviceRegistryEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -501,7 +509,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getServiceRegistryEntry_Name() {
+	public EAttribute getServiceRegistryEntry_InterfaceName() {
 		return (EAttribute)serviceRegistryEntryEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -510,7 +518,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getServiceRegistryEntry_Vendor() {
+	public EAttribute getServiceRegistryEntry_Name() {
 		return (EAttribute)serviceRegistryEntryEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -519,8 +527,17 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getServiceRegistryEntry_Version() {
+	public EAttribute getServiceRegistryEntry_Vendor() {
 		return (EAttribute)serviceRegistryEntryEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServiceRegistryEntry_Version() {
+		return (EAttribute)serviceRegistryEntryEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -591,19 +608,21 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		serviceHookEClass = createEClass(SERVICE_HOOK);
 
 		serviceExecutorEClass = createEClass(SERVICE_EXECUTOR);
+		createEAttribute(serviceExecutorEClass, SERVICE_EXECUTOR__INTERFACE_NAME);
 		createEAttribute(serviceExecutorEClass, SERVICE_EXECUTOR__REMOTE_EXPORT);
 		createEReference(serviceExecutorEClass, SERVICE_EXECUTOR__SERVICES);
 
 		serviceRefEClass = createEClass(SERVICE_REF);
 		createEAttribute(serviceRefEClass, SERVICE_REF__CLASS_NAME);
-		createEAttribute(serviceRefEClass, SERVICE_REF__INTERFACE_NAME);
 		createEAttribute(serviceRefEClass, SERVICE_REF__STATUS);
 
 		serviceRegistryEClass = createEClass(SERVICE_REGISTRY);
 		createEReference(serviceRegistryEClass, SERVICE_REGISTRY__ENTRIES);
+		createEAttribute(serviceRegistryEClass, SERVICE_REGISTRY__INTERFACE_NAME);
 		createEAttribute(serviceRegistryEClass, SERVICE_REGISTRY__NAME);
 
 		serviceRegistryEntryEClass = createEClass(SERVICE_REGISTRY_ENTRY);
+		createEAttribute(serviceRegistryEntryEClass, SERVICE_REGISTRY_ENTRY__INTERFACE_NAME);
 		createEAttribute(serviceRegistryEntryEClass, SERVICE_REGISTRY_ENTRY__NAME);
 		createEAttribute(serviceRegistryEntryEClass, SERVICE_REGISTRY_ENTRY__VENDOR);
 		createEAttribute(serviceRegistryEntryEClass, SERVICE_REGISTRY_ENTRY__VERSION);
@@ -774,19 +793,23 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		initEClass(serviceHookEClass, QServiceHook.class, "ServiceHook", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(serviceExecutorEClass, QServiceExecutor.class, "ServiceExecutor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getServiceExecutor_InterfaceName(), ecorePackage.getEString(), "interfaceName", null, 1, 1, QServiceExecutor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServiceExecutor_RemoteExport(), ecorePackage.getEBoolean(), "remoteExport", null, 1, 1, QServiceExecutor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getServiceExecutor_Services(), this.getServiceExecutor(), null, "services", null, 0, -1, QServiceExecutor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(serviceRefEClass, QServiceRef.class, "ServiceRef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getServiceRef_ClassName(), ecorePackage.getEString(), "className", null, 1, 1, QServiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getServiceRef_InterfaceName(), ecorePackage.getEString(), "interfaceName", null, 1, 1, QServiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServiceRef_Status(), this.getServiceStatus(), "status", null, 1, 1, QServiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(serviceRefEClass, ecorePackage.getEString(), "getInterfaceName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(serviceRegistryEClass, QServiceRegistry.class, "ServiceRegistry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getServiceRegistry_Entries(), this.getServiceRegistryEntry(), null, "entries", null, 0, -1, QServiceRegistry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getServiceRegistry_InterfaceName(), ecorePackage.getEString(), "interfaceName", null, 1, 1, QServiceRegistry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServiceRegistry_Name(), ecorePackage.getEString(), "name", null, 1, 1, QServiceRegistry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(serviceRegistryEntryEClass, QServiceRegistryEntry.class, "ServiceRegistryEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getServiceRegistryEntry_InterfaceName(), ecorePackage.getEString(), "interfaceName", null, 1, 1, QServiceRegistryEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServiceRegistryEntry_Name(), ecorePackage.getEString(), "name", null, 1, 1, QServiceRegistryEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServiceRegistryEntry_Vendor(), ecorePackage.getEString(), "vendor", null, 0, 1, QServiceRegistryEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServiceRegistryEntry_Version(), ecorePackage.getEString(), "version", null, 0, 1, QServiceRegistryEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

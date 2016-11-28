@@ -24,7 +24,6 @@ import org.smeup.sys.rt.core.ServiceStatus;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getClassName <em>Class Name</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getInterfaceName <em>Interface Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getStatus <em>Status</em>}</li>
  * </ul>
  *
@@ -55,26 +54,6 @@ public abstract class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 	 * @ordered
 	 */
 	protected String className = CLASS_NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getInterfaceName() <em>Interface Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInterfaceName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String INTERFACE_NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getInterfaceName() <em>Interface Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInterfaceName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String interfaceName = INTERFACE_NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
@@ -145,20 +124,9 @@ public abstract class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 	 */
 	@Override
 	public String getInterfaceName() {
-		return interfaceName;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setInterfaceName(String newInterfaceName) {
-		String oldInterfaceName = interfaceName;
-		interfaceName = newInterfaceName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_REF__INTERFACE_NAME, oldInterfaceName, interfaceName));
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -194,8 +162,6 @@ public abstract class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 		switch (featureID) {
 			case QRuntimeCorePackage.SERVICE_REF__CLASS_NAME:
 				return getClassName();
-			case QRuntimeCorePackage.SERVICE_REF__INTERFACE_NAME:
-				return getInterfaceName();
 			case QRuntimeCorePackage.SERVICE_REF__STATUS:
 				return getStatus();
 		}
@@ -212,9 +178,6 @@ public abstract class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 		switch (featureID) {
 			case QRuntimeCorePackage.SERVICE_REF__CLASS_NAME:
 				setClassName((String)newValue);
-				return;
-			case QRuntimeCorePackage.SERVICE_REF__INTERFACE_NAME:
-				setInterfaceName((String)newValue);
 				return;
 			case QRuntimeCorePackage.SERVICE_REF__STATUS:
 				setStatus((ServiceStatus)newValue);
@@ -234,9 +197,6 @@ public abstract class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 			case QRuntimeCorePackage.SERVICE_REF__CLASS_NAME:
 				setClassName(CLASS_NAME_EDEFAULT);
 				return;
-			case QRuntimeCorePackage.SERVICE_REF__INTERFACE_NAME:
-				setInterfaceName(INTERFACE_NAME_EDEFAULT);
-				return;
 			case QRuntimeCorePackage.SERVICE_REF__STATUS:
 				setStatus(STATUS_EDEFAULT);
 				return;
@@ -254,8 +214,6 @@ public abstract class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 		switch (featureID) {
 			case QRuntimeCorePackage.SERVICE_REF__CLASS_NAME:
 				return CLASS_NAME_EDEFAULT == null ? className != null : !CLASS_NAME_EDEFAULT.equals(className);
-			case QRuntimeCorePackage.SERVICE_REF__INTERFACE_NAME:
-				return INTERFACE_NAME_EDEFAULT == null ? interfaceName != null : !INTERFACE_NAME_EDEFAULT.equals(interfaceName);
 			case QRuntimeCorePackage.SERVICE_REF__STATUS:
 				return status != STATUS_EDEFAULT;
 		}
@@ -274,8 +232,6 @@ public abstract class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (className: ");
 		result.append(className);
-		result.append(", interfaceName: ");
-		result.append(interfaceName);
 		result.append(", status: ");
 		result.append(status);
 		result.append(')');

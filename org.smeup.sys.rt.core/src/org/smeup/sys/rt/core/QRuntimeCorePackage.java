@@ -324,22 +324,13 @@ public interface QRuntimeCorePackage extends EPackage {
 	int SERVICE_REF__CLASS_NAME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Interface Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_REF__INTERFACE_NAME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REF__STATUS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
+	int SERVICE_REF__STATUS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Service Ref</em>' class.
@@ -348,7 +339,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REF_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 3;
+	int SERVICE_REF_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.rt.core.impl.ServiceExecutorImpl <em>Service Executor</em>}' class.
@@ -380,15 +371,6 @@ public interface QRuntimeCorePackage extends EPackage {
 	int SERVICE_HOOK__CLASS_NAME = SERVICE_REF__CLASS_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Interface Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_HOOK__INTERFACE_NAME = SERVICE_REF__INTERFACE_NAME;
-
-	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -416,15 +398,6 @@ public interface QRuntimeCorePackage extends EPackage {
 	int SERVICE_EXECUTOR__CLASS_NAME = SERVICE_REF__CLASS_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Interface Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_EXECUTOR__INTERFACE_NAME = SERVICE_REF__INTERFACE_NAME;
-
-	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -434,13 +407,22 @@ public interface QRuntimeCorePackage extends EPackage {
 	int SERVICE_EXECUTOR__STATUS = SERVICE_REF__STATUS;
 
 	/**
+	 * The feature id for the '<em><b>Interface Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_EXECUTOR__INTERFACE_NAME = SERVICE_REF_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Remote Export</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_EXECUTOR__REMOTE_EXPORT = SERVICE_REF_FEATURE_COUNT + 0;
+	int SERVICE_EXECUTOR__REMOTE_EXPORT = SERVICE_REF_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Services</b></em>' containment reference list.
@@ -449,7 +431,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_EXECUTOR__SERVICES = SERVICE_REF_FEATURE_COUNT + 1;
+	int SERVICE_EXECUTOR__SERVICES = SERVICE_REF_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Service Executor</em>' class.
@@ -458,7 +440,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_EXECUTOR_FEATURE_COUNT = SERVICE_REF_FEATURE_COUNT + 2;
+	int SERVICE_EXECUTOR_FEATURE_COUNT = SERVICE_REF_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.rt.core.impl.ServiceRegistryImpl <em>Service Registry</em>}' class.
@@ -480,15 +462,6 @@ public interface QRuntimeCorePackage extends EPackage {
 	int SERVICE_REGISTRY__CLASS_NAME = SERVICE_REF__CLASS_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Interface Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_REGISTRY__INTERFACE_NAME = SERVICE_REF__INTERFACE_NAME;
-
-	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -507,13 +480,22 @@ public interface QRuntimeCorePackage extends EPackage {
 	int SERVICE_REGISTRY__ENTRIES = SERVICE_REF_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Interface Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_REGISTRY__INTERFACE_NAME = SERVICE_REF_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REGISTRY__NAME = SERVICE_REF_FEATURE_COUNT + 1;
+	int SERVICE_REGISTRY__NAME = SERVICE_REF_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Service Registry</em>' class.
@@ -522,7 +504,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REGISTRY_FEATURE_COUNT = SERVICE_REF_FEATURE_COUNT + 2;
+	int SERVICE_REGISTRY_FEATURE_COUNT = SERVICE_REF_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.rt.core.impl.ServiceRegistryEntryImpl <em>Service Registry Entry</em>}' class.
@@ -544,15 +526,6 @@ public interface QRuntimeCorePackage extends EPackage {
 	int SERVICE_REGISTRY_ENTRY__CLASS_NAME = SERVICE_REF__CLASS_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Interface Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_REGISTRY_ENTRY__INTERFACE_NAME = SERVICE_REF__INTERFACE_NAME;
-
-	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -562,13 +535,22 @@ public interface QRuntimeCorePackage extends EPackage {
 	int SERVICE_REGISTRY_ENTRY__STATUS = SERVICE_REF__STATUS;
 
 	/**
+	 * The feature id for the '<em><b>Interface Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_REGISTRY_ENTRY__INTERFACE_NAME = SERVICE_REF_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REGISTRY_ENTRY__NAME = SERVICE_REF_FEATURE_COUNT + 0;
+	int SERVICE_REGISTRY_ENTRY__NAME = SERVICE_REF_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Vendor</b></em>' attribute.
@@ -577,7 +559,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REGISTRY_ENTRY__VENDOR = SERVICE_REF_FEATURE_COUNT + 1;
+	int SERVICE_REGISTRY_ENTRY__VENDOR = SERVICE_REF_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -586,7 +568,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REGISTRY_ENTRY__VERSION = SERVICE_REF_FEATURE_COUNT + 2;
+	int SERVICE_REGISTRY_ENTRY__VERSION = SERVICE_REF_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Service Registry Entry</em>' class.
@@ -595,7 +577,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_REGISTRY_ENTRY_FEATURE_COUNT = SERVICE_REF_FEATURE_COUNT + 3;
+	int SERVICE_REGISTRY_ENTRY_FEATURE_COUNT = SERVICE_REF_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.rt.core.ServiceStatus <em>Service Status</em>}' enum.
@@ -830,6 +812,17 @@ public interface QRuntimeCorePackage extends EPackage {
 	EClass getServiceExecutor();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.core.QServiceExecutor#getInterfaceName <em>Interface Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Interface Name</em>'.
+	 * @see org.smeup.sys.rt.core.QServiceExecutor#getInterfaceName()
+	 * @see #getServiceExecutor()
+	 * @generated
+	 */
+	EAttribute getServiceExecutor_InterfaceName();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.core.QServiceExecutor#isRemoteExport <em>Remote Export</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -873,17 +866,6 @@ public interface QRuntimeCorePackage extends EPackage {
 	EAttribute getServiceRef_ClassName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.core.QServiceRef#getInterfaceName <em>Interface Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Interface Name</em>'.
-	 * @see org.smeup.sys.rt.core.QServiceRef#getInterfaceName()
-	 * @see #getServiceRef()
-	 * @generated
-	 */
-	EAttribute getServiceRef_InterfaceName();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.core.QServiceRef#getStatus <em>Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -916,6 +898,17 @@ public interface QRuntimeCorePackage extends EPackage {
 	EReference getServiceRegistry_Entries();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.core.QServiceRegistry#getInterfaceName <em>Interface Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Interface Name</em>'.
+	 * @see org.smeup.sys.rt.core.QServiceRegistry#getInterfaceName()
+	 * @see #getServiceRegistry()
+	 * @generated
+	 */
+	EAttribute getServiceRegistry_InterfaceName();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.core.QServiceRegistry#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -935,6 +928,17 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getServiceRegistryEntry();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.core.QServiceRegistryEntry#getInterfaceName <em>Interface Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Interface Name</em>'.
+	 * @see org.smeup.sys.rt.core.QServiceRegistryEntry#getInterfaceName()
+	 * @see #getServiceRegistryEntry()
+	 * @generated
+	 */
+	EAttribute getServiceRegistryEntry_InterfaceName();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.core.QServiceRegistryEntry#getName <em>Name</em>}'.
@@ -1189,6 +1193,14 @@ public interface QRuntimeCorePackage extends EPackage {
 		EClass SERVICE_EXECUTOR = eINSTANCE.getServiceExecutor();
 
 		/**
+		 * The meta object literal for the '<em><b>Interface Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVICE_EXECUTOR__INTERFACE_NAME = eINSTANCE.getServiceExecutor_InterfaceName();
+
+		/**
 		 * The meta object literal for the '<em><b>Remote Export</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1223,14 +1235,6 @@ public interface QRuntimeCorePackage extends EPackage {
 		EAttribute SERVICE_REF__CLASS_NAME = eINSTANCE.getServiceRef_ClassName();
 
 		/**
-		 * The meta object literal for the '<em><b>Interface Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SERVICE_REF__INTERFACE_NAME = eINSTANCE.getServiceRef_InterfaceName();
-
-		/**
 		 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1257,6 +1261,14 @@ public interface QRuntimeCorePackage extends EPackage {
 		EReference SERVICE_REGISTRY__ENTRIES = eINSTANCE.getServiceRegistry_Entries();
 
 		/**
+		 * The meta object literal for the '<em><b>Interface Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVICE_REGISTRY__INTERFACE_NAME = eINSTANCE.getServiceRegistry_InterfaceName();
+
+		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1273,6 +1285,14 @@ public interface QRuntimeCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass SERVICE_REGISTRY_ENTRY = eINSTANCE.getServiceRegistryEntry();
+
+		/**
+		 * The meta object literal for the '<em><b>Interface Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVICE_REGISTRY_ENTRY__INTERFACE_NAME = eINSTANCE.getServiceRegistryEntry_InterfaceName();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

@@ -21,6 +21,7 @@ import org.smeup.sys.rt.core.QServiceRegistryEntry;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRegistryEntryImpl#getInterfaceName <em>Interface Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRegistryEntryImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRegistryEntryImpl#getVendor <em>Vendor</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRegistryEntryImpl#getVersion <em>Version</em>}</li>
@@ -29,6 +30,24 @@ import org.smeup.sys.rt.core.QServiceRegistryEntry;
  * @generated
  */
 public class ServiceRegistryEntryImpl extends ServiceRefImpl implements QServiceRegistryEntry {
+	/**
+	 * The default value of the '{@link #getInterfaceName() <em>Interface Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInterfaceName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INTERFACE_NAME_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getInterfaceName() <em>Interface Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInterfaceName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String interfaceName = INTERFACE_NAME_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -111,6 +130,27 @@ public class ServiceRegistryEntryImpl extends ServiceRefImpl implements QService
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getInterfaceName() {
+		return interfaceName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInterfaceName(String newInterfaceName) {
+		String oldInterfaceName = interfaceName;
+		interfaceName = newInterfaceName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__INTERFACE_NAME, oldInterfaceName, interfaceName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getName() {
 		return name;
 	}
@@ -177,6 +217,8 @@ public class ServiceRegistryEntryImpl extends ServiceRefImpl implements QService
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__INTERFACE_NAME:
+				return getInterfaceName();
 			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__NAME:
 				return getName();
 			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__VENDOR:
@@ -195,6 +237,9 @@ public class ServiceRegistryEntryImpl extends ServiceRefImpl implements QService
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__INTERFACE_NAME:
+				setInterfaceName((String)newValue);
+				return;
 			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__NAME:
 				setName((String)newValue);
 				return;
@@ -216,6 +261,9 @@ public class ServiceRegistryEntryImpl extends ServiceRefImpl implements QService
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__INTERFACE_NAME:
+				setInterfaceName(INTERFACE_NAME_EDEFAULT);
+				return;
 			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -237,6 +285,8 @@ public class ServiceRegistryEntryImpl extends ServiceRefImpl implements QService
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__INTERFACE_NAME:
+				return INTERFACE_NAME_EDEFAULT == null ? interfaceName != null : !INTERFACE_NAME_EDEFAULT.equals(interfaceName);
 			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__VENDOR:
@@ -257,7 +307,9 @@ public class ServiceRegistryEntryImpl extends ServiceRefImpl implements QService
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
+		result.append(" (interfaceName: ");
+		result.append(interfaceName);
+		result.append(", name: ");
 		result.append(name);
 		result.append(", vendor: ");
 		result.append(vendor);
