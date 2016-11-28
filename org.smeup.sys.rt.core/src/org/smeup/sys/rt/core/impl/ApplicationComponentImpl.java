@@ -30,6 +30,7 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.rt.core.QApplicationComponent;
 import org.smeup.sys.rt.core.QApplicationModule;
 import org.smeup.sys.rt.core.QRuntimeCorePackage;
+import org.smeup.sys.rt.core.QServiceCommandProvider;
 import org.smeup.sys.rt.core.QServiceHook;
 
 /**
@@ -40,6 +41,7 @@ import org.smeup.sys.rt.core.QServiceHook;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationComponentImpl#getCommands <em>Commands</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationComponentImpl#getConfigs <em>Configs</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationComponentImpl#getHooks <em>Hooks</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationComponentImpl#getModules <em>Modules</em>}</li>
@@ -49,6 +51,16 @@ import org.smeup.sys.rt.core.QServiceHook;
  * @generated
  */
 public class ApplicationComponentImpl extends ObjectImpl implements QApplicationComponent {
+	/**
+	 * The cached value of the '{@link #getCommands() <em>Commands</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCommands()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<QServiceCommandProvider> commands;
+
 	/**
 	 * 
 	 */
@@ -121,6 +133,18 @@ public class ApplicationComponentImpl extends ObjectImpl implements QApplication
 	@Override
 	protected EClass eStaticClass() {
 		return QRuntimeCorePackage.Literals.APPLICATION_COMPONENT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List<QServiceCommandProvider> getCommands() {
+		if (commands == null) {
+			commands = new EObjectContainmentEList<QServiceCommandProvider>(QServiceCommandProvider.class, this, QRuntimeCorePackage.APPLICATION_COMPONENT__COMMANDS);
+		}
+		return commands;
 	}
 
 	/**
@@ -205,6 +229,8 @@ public class ApplicationComponentImpl extends ObjectImpl implements QApplication
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case QRuntimeCorePackage.APPLICATION_COMPONENT__COMMANDS:
+				return ((InternalEList<?>)getCommands()).basicRemove(otherEnd, msgs);
 			case QRuntimeCorePackage.APPLICATION_COMPONENT__CONFIGS:
 				return ((InternalEList<?>)getConfigs()).basicRemove(otherEnd, msgs);
 			case QRuntimeCorePackage.APPLICATION_COMPONENT__HOOKS:
@@ -223,6 +249,8 @@ public class ApplicationComponentImpl extends ObjectImpl implements QApplication
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case QRuntimeCorePackage.APPLICATION_COMPONENT__COMMANDS:
+				return getCommands();
 			case QRuntimeCorePackage.APPLICATION_COMPONENT__CONFIGS:
 				return getConfigs();
 			case QRuntimeCorePackage.APPLICATION_COMPONENT__HOOKS:
@@ -244,6 +272,10 @@ public class ApplicationComponentImpl extends ObjectImpl implements QApplication
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case QRuntimeCorePackage.APPLICATION_COMPONENT__COMMANDS:
+				getCommands().clear();
+				getCommands().addAll((Collection<? extends QServiceCommandProvider>)newValue);
+				return;
 			case QRuntimeCorePackage.APPLICATION_COMPONENT__CONFIGS:
 				getConfigs().clear();
 				getConfigs().addAll((Collection<? extends QObject>)newValue);
@@ -271,6 +303,9 @@ public class ApplicationComponentImpl extends ObjectImpl implements QApplication
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case QRuntimeCorePackage.APPLICATION_COMPONENT__COMMANDS:
+				getCommands().clear();
+				return;
 			case QRuntimeCorePackage.APPLICATION_COMPONENT__CONFIGS:
 				getConfigs().clear();
 				return;
@@ -295,6 +330,8 @@ public class ApplicationComponentImpl extends ObjectImpl implements QApplication
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case QRuntimeCorePackage.APPLICATION_COMPONENT__COMMANDS:
+				return commands != null && !commands.isEmpty();
 			case QRuntimeCorePackage.APPLICATION_COMPONENT__CONFIGS:
 				return configs != null && !configs.isEmpty();
 			case QRuntimeCorePackage.APPLICATION_COMPONENT__HOOKS:

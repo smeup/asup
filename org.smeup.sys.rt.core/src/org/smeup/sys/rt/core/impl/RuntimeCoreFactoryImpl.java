@@ -62,8 +62,11 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 			case QRuntimeCorePackage.APPLICATION: return (EObject)createApplication();
 			case QRuntimeCorePackage.APPLICATION_COMPONENT: return (EObject)createApplicationComponent();
 			case QRuntimeCorePackage.APPLICATION_MODULE: return (EObject)createApplicationModule();
+			case QRuntimeCorePackage.SERVICE_COMMAND_PROVIDER: return (EObject)createServiceCommandProvider();
 			case QRuntimeCorePackage.SERVICE_HOOK: return (EObject)createServiceHook();
 			case QRuntimeCorePackage.SERVICE_EXECUTOR: return (EObject)createServiceExecutor();
+			case QRuntimeCorePackage.SERVICE_RESOURCE_LISTENER: return (EObject)createServiceResourceListener();
+			case QRuntimeCorePackage.SERVICE_RESOURCE_PROVIDER: return (EObject)createServiceResourceProvider();
 			case QRuntimeCorePackage.SERVICE_REGISTRY: return (EObject)createServiceRegistry();
 			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY: return (EObject)createServiceRegistryEntry();
 			case QRuntimeCorePackage.SERVICE_TESTER: return (EObject)createServiceTester();
@@ -140,6 +143,16 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public QServiceCommandProvider createServiceCommandProvider() {
+		ServiceCommandProviderImpl serviceCommandProvider = new ServiceCommandProviderImpl();
+		return serviceCommandProvider;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public QServiceHook createServiceHook() {
 		ServiceHookImpl serviceHook = new ServiceHookImpl();
@@ -154,6 +167,26 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 	public QServiceExecutor createServiceExecutor() {
 		ServiceExecutorImpl serviceExecutor = new ServiceExecutorImpl();
 		return serviceExecutor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QServiceResourceListener createServiceResourceListener() {
+		ServiceResourceListenerImpl serviceResourceListener = new ServiceResourceListenerImpl();
+		return serviceResourceListener;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QServiceResourceProvider createServiceResourceProvider() {
+		ServiceResourceProviderImpl serviceResourceProvider = new ServiceResourceProviderImpl();
+		return serviceResourceProvider;
 	}
 
 	/**

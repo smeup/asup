@@ -40,6 +40,7 @@ import org.smeup.sys.rt.core.ComponentStarting;
 import org.smeup.sys.rt.core.QApplication;
 import org.smeup.sys.rt.core.QApplicationComponent;
 import org.smeup.sys.rt.core.QApplicationModule;
+import org.smeup.sys.rt.core.QServiceCommandProvider;
 import org.smeup.sys.rt.core.QServiceExecutor;
 import org.smeup.sys.rt.core.QServiceHook;
 import org.smeup.sys.rt.core.QServiceRef;
@@ -125,7 +126,14 @@ public class E4ApplicationStarter {
 			Dictionary<String, Object> properties = new Hashtable<String, Object>();
 			properties.put("org.smeup.sys.rt.core.hook.application", application.getText());
 			bundleContext.registerService(hook.getInterfaceName(), service, properties);
-			contextApplication.invoke(service, ApplicationStarting.class);
+		}
+		
+		// hooks
+		messageLevel++;
+
+		for (Object hook : loadHooks(application)) {
+			println("+hook " + hook);
+			contextApplication.invoke(hook, ApplicationStarting.class);
 		}
 
 		messageLevel--;
@@ -154,6 +162,22 @@ public class E4ApplicationStarter {
 		}
 
 		messageLevel--;
+		
+		// commands provider
+		messageLevel++;
+		for (QServiceCommandProvider command : application.getCommands()) {
+
+			// STOPPED
+			if (command.getStatus() == ServiceStatus.STOPPED) {
+				println("-command " + command + " unactive");
+				continue;
+			}
+
+			println("+command " + command);
+			Object service = loadObject(contextApplication, command.getClassName());
+			bundleContext.registerService(command.getInterfaceName(), service, null);
+		}
+		messageLevel--;
 
 		return application;
 	}
@@ -177,7 +201,7 @@ public class E4ApplicationStarter {
 		}
 		messageLevel--;
 
-		// ComponentStarting event
+		// hooks
 		messageLevel++;
 		for (Object hook : loadHooks(component)) {
 			println("!component starting " + hook);
@@ -205,11 +229,27 @@ public class E4ApplicationStarter {
 			messageLevel--;
 		}
 
-		// ComponentStarted event
+		// hooks
 		messageLevel++;
 		for (Object hook : loadHooks(component)) {
 			println("!component started " + hook);
 			contextComponent.invoke(hook, ComponentStarted.class);
+		}
+		messageLevel--;
+		
+		// commands provider
+		messageLevel++;
+		for (QServiceCommandProvider command : component.getCommands()) {
+
+			// STOPPED
+			if (command.getStatus() == ServiceStatus.STOPPED) {
+				println("-command " + command + " unactive");
+				continue;
+			}
+
+			println("+command " + command);
+			Object service = loadObject(contextComponent, command.getClassName());
+			bundleContext.registerService(command.getInterfaceName(), service, null);
 		}
 		messageLevel--;
 	}

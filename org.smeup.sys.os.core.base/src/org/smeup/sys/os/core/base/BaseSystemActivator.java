@@ -49,7 +49,7 @@ public class BaseSystemActivator {
 		
 		QJob jobKernel = systemManager.start(system);
 
-		BaseBundleListener bundleListener = jobKernel.getContext().make(BaseBundleListener.class);
+		BaseBundleListenerImpl bundleListener = jobKernel.getContext().make(BaseBundleListenerImpl.class);
 		bundleListener.init();
 
 		// Library

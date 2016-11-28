@@ -2,6 +2,8 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="core" nsURI="http://www.smeup.org/asup/rt/core" nsPrefix="rt-core">
   <eClassifiers xsi:type="ecore:EClass" name="Application" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="commands" upperBound="-1"
+        eType="#//ServiceCommandProvider" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
         eType="#//ApplicationComponent" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"
@@ -19,6 +21,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hooks" upperBound="-1"
         eType="#//ServiceHook" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="commands" upperBound="-1"
+        eType="#//ServiceCommandProvider" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modules" upperBound="-1"
         eType="#//ApplicationModule" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -124,6 +128,11 @@
       <eParameters name="throwable" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaThrowable"/>
     </eOperations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceCommandProvider" eSuperTypes="#//ServiceRef">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="interfaceName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"
+        defaultValueLiteral="org.eclipse.osgi.framework.console.CommandProvider"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ServiceHook" eSuperTypes="#//ServiceRef"/>
   <eClassifiers xsi:type="ecore:EClass" name="ServiceExecutor" eSuperTypes="#//ServiceRef">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="interfaceName" lowerBound="1"
@@ -138,10 +147,15 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" lowerBound="1"
         eType="#//ServiceStatus"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ServiceStatus">
-    <eLiterals name="Active" literal="ACT"/>
-    <eLiterals name="Stopped" value="20" literal="STP"/>
-    <eLiterals name="Testing" value="30" literal="TST"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceResourceListener" eSuperTypes="#//ServiceRef">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="interfaceName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"
+        defaultValueLiteral="org.smeup.sys.il.memo.QResourceListener"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceResourceProvider" eSuperTypes="#//ServiceRef">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="interfaceName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"
+        defaultValueLiteral="org.smeup.sys.il.memo.QResourceProvider"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ServiceRegistry" eSuperTypes="#//ServiceRef">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
@@ -156,6 +170,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="vendor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ServiceStatus">
+    <eLiterals name="Active" literal="ACT"/>
+    <eLiterals name="Stopped" value="20" literal="STP"/>
+    <eLiterals name="Testing" value="30" literal="TST"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ServiceTester" eSuperTypes="#//ServiceRef">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="interfaceName" lowerBound="1"

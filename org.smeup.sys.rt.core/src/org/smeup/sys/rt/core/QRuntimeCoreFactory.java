@@ -54,6 +54,15 @@ public interface QRuntimeCoreFactory extends EFactory {
 	QApplicationModule createApplicationModule();
 
 	/**
+	 * Returns a new object of class '<em>Service Command Provider</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Service Command Provider</em>'.
+	 * @generated
+	 */
+	QServiceCommandProvider createServiceCommandProvider();
+
+	/**
 	 * Returns a new object of class '<em>Service Hook</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -70,6 +79,24 @@ public interface QRuntimeCoreFactory extends EFactory {
 	 * @generated
 	 */
 	QServiceExecutor createServiceExecutor();
+
+	/**
+	 * Returns a new object of class '<em>Service Resource Listener</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Service Resource Listener</em>'.
+	 * @generated
+	 */
+	QServiceResourceListener createServiceResourceListener();
+
+	/**
+	 * Returns a new object of class '<em>Service Resource Provider</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Service Resource Provider</em>'.
+	 * @generated
+	 */
+	QServiceResourceProvider createServiceResourceProvider();
 
 	/**
 	 * Returns a new object of class '<em>Service Registry</em>'.

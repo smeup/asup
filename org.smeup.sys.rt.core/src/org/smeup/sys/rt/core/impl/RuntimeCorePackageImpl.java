@@ -27,11 +27,14 @@ import org.smeup.sys.rt.core.QBundleVisitor;
 import org.smeup.sys.rt.core.QLogger;
 import org.smeup.sys.rt.core.QRuntimeCoreFactory;
 import org.smeup.sys.rt.core.QRuntimeCorePackage;
+import org.smeup.sys.rt.core.QServiceCommandProvider;
 import org.smeup.sys.rt.core.QServiceExecutor;
 import org.smeup.sys.rt.core.QServiceHook;
 import org.smeup.sys.rt.core.QServiceRef;
 import org.smeup.sys.rt.core.QServiceRegistry;
 import org.smeup.sys.rt.core.QServiceRegistryEntry;
+import org.smeup.sys.rt.core.QServiceResourceListener;
+import org.smeup.sys.rt.core.QServiceResourceProvider;
 import org.smeup.sys.rt.core.QServiceTester;
 import org.smeup.sys.rt.core.ServiceStatus;
 
@@ -96,6 +99,13 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass serviceCommandProviderEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass serviceHookEClass = null;
 
 	/**
@@ -111,6 +121,20 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * @generated
 	 */
 	private EClass serviceRefEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass serviceResourceListenerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass serviceResourceProviderEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -219,8 +243,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EReference getApplication_Components() {
+	public EReference getApplication_Commands() {
 		return (EReference)applicationEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -229,7 +252,8 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getApplication_Context() {
+	@Override
+	public EReference getApplication_Components() {
 		return (EReference)applicationEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -238,8 +262,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EReference getApplication_Hooks() {
+	public EReference getApplication_Context() {
 		return (EReference)applicationEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -249,8 +272,18 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * @generated
 	 */
 	@Override
+	public EReference getApplication_Hooks() {
+		return (EReference)applicationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getApplication_Name() {
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -259,7 +292,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * @generated
 	 */
 	public EAttribute getApplication_Port() {
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -269,7 +302,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 */
 	@Override
 	public EAttribute getApplication_Text() {
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -287,9 +320,8 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EReference getApplicationComponent_Hooks() {
-		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(1);
+	public EReference getApplicationComponent_Commands() {
+		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -298,7 +330,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * @generated
 	 */
 	@Override
-	public EReference getApplicationComponent_Modules() {
+	public EReference getApplicationComponent_Hooks() {
 		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -308,8 +340,18 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * @generated
 	 */
 	@Override
+	public EReference getApplicationComponent_Modules() {
+		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getApplicationComponent_Name() {
-		return (EAttribute)applicationComponentEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)applicationComponentEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -319,7 +361,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 */
 	@Override
 	public EReference getApplicationComponent_Configs() {
-		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(0);
+		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -396,6 +438,24 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getServiceCommandProvider() {
+		return serviceCommandProviderEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServiceCommandProvider_InterfaceName() {
+		return (EAttribute)serviceCommandProviderEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EClass getServiceHook() {
 		return serviceHookEClass;
@@ -456,6 +516,42 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	@Override
 	public EAttribute getServiceRef_Status() {
 		return (EAttribute)serviceRefEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getServiceResourceListener() {
+		return serviceResourceListenerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServiceResourceListener_InterfaceName() {
+		return (EAttribute)serviceResourceListenerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getServiceResourceProvider() {
+		return serviceResourceProviderEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServiceResourceProvider_InterfaceName() {
+		return (EAttribute)serviceResourceProviderEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -597,6 +693,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 
 		// Create classes and their features
 		applicationEClass = createEClass(APPLICATION);
+		createEReference(applicationEClass, APPLICATION__COMMANDS);
 		createEReference(applicationEClass, APPLICATION__COMPONENTS);
 		createEReference(applicationEClass, APPLICATION__CONTEXT);
 		createEReference(applicationEClass, APPLICATION__HOOKS);
@@ -605,6 +702,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		createEAttribute(applicationEClass, APPLICATION__TEXT);
 
 		applicationComponentEClass = createEClass(APPLICATION_COMPONENT);
+		createEReference(applicationComponentEClass, APPLICATION_COMPONENT__COMMANDS);
 		createEReference(applicationComponentEClass, APPLICATION_COMPONENT__CONFIGS);
 		createEReference(applicationComponentEClass, APPLICATION_COMPONENT__HOOKS);
 		createEReference(applicationComponentEClass, APPLICATION_COMPONENT__MODULES);
@@ -622,6 +720,9 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 
 		loggerEClass = createEClass(LOGGER);
 
+		serviceCommandProviderEClass = createEClass(SERVICE_COMMAND_PROVIDER);
+		createEAttribute(serviceCommandProviderEClass, SERVICE_COMMAND_PROVIDER__INTERFACE_NAME);
+
 		serviceHookEClass = createEClass(SERVICE_HOOK);
 
 		serviceExecutorEClass = createEClass(SERVICE_EXECUTOR);
@@ -631,6 +732,12 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		serviceRefEClass = createEClass(SERVICE_REF);
 		createEAttribute(serviceRefEClass, SERVICE_REF__CLASS_NAME);
 		createEAttribute(serviceRefEClass, SERVICE_REF__STATUS);
+
+		serviceResourceListenerEClass = createEClass(SERVICE_RESOURCE_LISTENER);
+		createEAttribute(serviceResourceListenerEClass, SERVICE_RESOURCE_LISTENER__INTERFACE_NAME);
+
+		serviceResourceProviderEClass = createEClass(SERVICE_RESOURCE_PROVIDER);
+		createEAttribute(serviceResourceProviderEClass, SERVICE_RESOURCE_PROVIDER__INTERFACE_NAME);
 
 		serviceRegistryEClass = createEClass(SERVICE_REGISTRY);
 		createEReference(serviceRegistryEClass, SERVICE_REGISTRY__ENTRIES);
@@ -688,15 +795,19 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		applicationComponentEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		applicationComponentEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
 		applicationModuleEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		serviceCommandProviderEClass.getESuperTypes().add(this.getServiceRef());
 		serviceHookEClass.getESuperTypes().add(this.getServiceRef());
 		serviceExecutorEClass.getESuperTypes().add(this.getServiceRef());
 		serviceRefEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		serviceResourceListenerEClass.getESuperTypes().add(this.getServiceRef());
+		serviceResourceProviderEClass.getESuperTypes().add(this.getServiceRef());
 		serviceRegistryEClass.getESuperTypes().add(this.getServiceRef());
 		serviceRegistryEntryEClass.getESuperTypes().add(this.getServiceRef());
 		serviceTesterEClass.getESuperTypes().add(this.getServiceRef());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(applicationEClass, QApplication.class, "Application", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getApplication_Commands(), this.getServiceCommandProvider(), null, "commands", null, 0, -1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_Components(), this.getApplicationComponent(), null, "components", null, 0, -1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_Context(), theIntegratedLanguageCoreCtxPackage.getContext(), null, "context", null, 0, 1, QApplication.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_Hooks(), this.getServiceHook(), null, "hooks", null, 0, -1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -705,6 +816,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		initEAttribute(getApplication_Text(), ecorePackage.getEString(), "text", null, 0, 1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(applicationComponentEClass, QApplicationComponent.class, "ApplicationComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getApplicationComponent_Commands(), this.getServiceCommandProvider(), null, "commands", null, 0, -1, QApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplicationComponent_Configs(), theIntegratedLanguageCorePackage.getObject(), null, "configs", null, 0, -1, QApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplicationComponent_Hooks(), this.getServiceHook(), null, "hooks", null, 0, -1, QApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplicationComponent_Modules(), this.getApplicationModule(), null, "modules", null, 0, -1, QApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -810,6 +922,9 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		addEParameter(op, ecorePackage.getEString(), "message", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaThrowable(), "throwable", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(serviceCommandProviderEClass, QServiceCommandProvider.class, "ServiceCommandProvider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getServiceCommandProvider_InterfaceName(), ecorePackage.getEString(), "interfaceName", "org.eclipse.osgi.framework.console.CommandProvider", 1, 1, QServiceCommandProvider.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(serviceHookEClass, QServiceHook.class, "ServiceHook", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(serviceExecutorEClass, QServiceExecutor.class, "ServiceExecutor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -821,6 +936,12 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		initEAttribute(getServiceRef_Status(), this.getServiceStatus(), "status", null, 1, 1, QServiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(serviceRefEClass, ecorePackage.getEString(), "getInterfaceName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(serviceResourceListenerEClass, QServiceResourceListener.class, "ServiceResourceListener", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getServiceResourceListener_InterfaceName(), ecorePackage.getEString(), "interfaceName", "org.smeup.sys.il.memo.QResourceListener", 1, 1, QServiceResourceListener.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(serviceResourceProviderEClass, QServiceResourceProvider.class, "ServiceResourceProvider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getServiceResourceProvider_InterfaceName(), ecorePackage.getEString(), "interfaceName", "org.smeup.sys.il.memo.QResourceProvider", 1, 1, QServiceResourceProvider.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(serviceRegistryEClass, QServiceRegistry.class, "ServiceRegistry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getServiceRegistry_Entries(), this.getServiceRegistryEntry(), null, "entries", null, 0, -1, QServiceRegistry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

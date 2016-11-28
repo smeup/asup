@@ -21,6 +21,7 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.smeup.sys.rt.core.QApplicationComponent#getCommands <em>Commands</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplicationComponent#getConfigs <em>Configs</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplicationComponent#getHooks <em>Hooks</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplicationComponent#getModules <em>Modules</em>}</li>
@@ -32,6 +33,22 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  * @generated
  */
 public interface QApplicationComponent extends QObject, QContextProvider {
+	/**
+	 * Returns the value of the '<em><b>Commands</b></em>' containment reference list.
+	 * The list contents are of type {@link org.smeup.sys.rt.core.QServiceCommandProvider}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Commands</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Commands</em>' containment reference list.
+	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getApplicationComponent_Commands()
+	 * @model containment="true"
+	 * @generated
+	 */
+	List<QServiceCommandProvider> getCommands();
+
 	/**
 	 * Returns the value of the '<em><b>Hooks</b></em>' containment reference list.
 	 * The list contents are of type {@link org.smeup.sys.rt.core.QServiceHook}.
