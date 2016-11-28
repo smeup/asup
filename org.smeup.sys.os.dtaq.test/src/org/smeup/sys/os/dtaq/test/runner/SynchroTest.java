@@ -51,7 +51,7 @@ public class SynchroTest {
 	@Inject
 	private QJobCapability jobCapability;
 
-	private Object lockWaitObj = new Object();
+	private transient Object lockWaitObj = new Object();
 
 	@TestStarted
 	public void runTest() {

@@ -580,6 +580,52 @@ public interface QRuntimeCorePackage extends EPackage {
 	int SERVICE_REGISTRY_ENTRY_FEATURE_COUNT = SERVICE_REF_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.rt.core.impl.ServiceTesterImpl <em>Service Tester</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.rt.core.impl.ServiceTesterImpl
+	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getServiceTester()
+	 * @generated
+	 */
+	int SERVICE_TESTER = 12;
+
+	/**
+	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_TESTER__CLASS_NAME = SERVICE_REF__CLASS_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_TESTER__STATUS = SERVICE_REF__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Interface Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_TESTER__INTERFACE_NAME = SERVICE_REF_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Service Tester</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_TESTER_FEATURE_COUNT = SERVICE_REF_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.rt.core.ServiceStatus <em>Service Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -587,7 +633,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getServiceStatus()
 	 * @generated
 	 */
-	int SERVICE_STATUS = 12;
+	int SERVICE_STATUS = 13;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.rt.core.QApplication <em>Application</em>}'.
@@ -974,6 +1020,27 @@ public interface QRuntimeCorePackage extends EPackage {
 	EAttribute getServiceRegistryEntry_Version();
 
 	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.rt.core.QServiceTester <em>Service Tester</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Service Tester</em>'.
+	 * @see org.smeup.sys.rt.core.QServiceTester
+	 * @generated
+	 */
+	EClass getServiceTester();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.rt.core.QServiceTester#getInterfaceName <em>Interface Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Interface Name</em>'.
+	 * @see org.smeup.sys.rt.core.QServiceTester#getInterfaceName()
+	 * @see #getServiceTester()
+	 * @generated
+	 */
+	EAttribute getServiceTester_InterfaceName();
+
+	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.rt.core.ServiceStatus <em>Service Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1317,6 +1384,24 @@ public interface QRuntimeCorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SERVICE_REGISTRY_ENTRY__VERSION = eINSTANCE.getServiceRegistryEntry_Version();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.rt.core.impl.ServiceTesterImpl <em>Service Tester</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.rt.core.impl.ServiceTesterImpl
+		 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getServiceTester()
+		 * @generated
+		 */
+		EClass SERVICE_TESTER = eINSTANCE.getServiceTester();
+
+		/**
+		 * The meta object literal for the '<em><b>Interface Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVICE_TESTER__INTERFACE_NAME = eINSTANCE.getServiceTester_InterfaceName();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.rt.core.ServiceStatus <em>Service Status</em>}' enum.

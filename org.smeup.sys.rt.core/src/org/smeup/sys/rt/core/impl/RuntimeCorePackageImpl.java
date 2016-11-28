@@ -32,6 +32,7 @@ import org.smeup.sys.rt.core.QServiceHook;
 import org.smeup.sys.rt.core.QServiceRef;
 import org.smeup.sys.rt.core.QServiceRegistry;
 import org.smeup.sys.rt.core.QServiceRegistryEntry;
+import org.smeup.sys.rt.core.QServiceTester;
 import org.smeup.sys.rt.core.ServiceStatus;
 
 /**
@@ -124,6 +125,13 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * @generated
 	 */
 	private EClass serviceRegistryEntryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass serviceTesterEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -545,6 +553,24 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getServiceTester() {
+		return serviceTesterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServiceTester_InterfaceName() {
+		return (EAttribute)serviceTesterEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EEnum getServiceStatus() {
 		return serviceStatusEEnum;
@@ -627,6 +653,9 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		createEAttribute(serviceRegistryEntryEClass, SERVICE_REGISTRY_ENTRY__VENDOR);
 		createEAttribute(serviceRegistryEntryEClass, SERVICE_REGISTRY_ENTRY__VERSION);
 
+		serviceTesterEClass = createEClass(SERVICE_TESTER);
+		createEAttribute(serviceTesterEClass, SERVICE_TESTER__INTERFACE_NAME);
+
 		// Create enums
 		serviceStatusEEnum = createEEnum(SERVICE_STATUS);
 	}
@@ -674,6 +703,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		serviceRefEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		serviceRegistryEClass.getESuperTypes().add(this.getServiceRef());
 		serviceRegistryEntryEClass.getESuperTypes().add(this.getServiceRef());
+		serviceTesterEClass.getESuperTypes().add(this.getServiceRef());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(applicationEClass, QApplication.class, "Application", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -813,6 +843,9 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		initEAttribute(getServiceRegistryEntry_Name(), ecorePackage.getEString(), "name", null, 1, 1, QServiceRegistryEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServiceRegistryEntry_Vendor(), ecorePackage.getEString(), "vendor", null, 0, 1, QServiceRegistryEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServiceRegistryEntry_Version(), ecorePackage.getEString(), "version", null, 0, 1, QServiceRegistryEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(serviceTesterEClass, QServiceTester.class, "ServiceTester", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getServiceTester_InterfaceName(), ecorePackage.getEString(), "interfaceName", "org.smeup.sys.dk.test.QTestSuiteLauncher", 1, 1, QServiceTester.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(serviceStatusEEnum, ServiceStatus.class, "ServiceStatus");

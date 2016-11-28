@@ -90,6 +90,15 @@ public interface QRuntimeCoreFactory extends EFactory {
 	QServiceRegistryEntry createServiceRegistryEntry();
 
 	/**
+	 * Returns a new object of class '<em>Service Tester</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Service Tester</em>'.
+	 * @generated
+	 */
+	QServiceTester createServiceTester();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

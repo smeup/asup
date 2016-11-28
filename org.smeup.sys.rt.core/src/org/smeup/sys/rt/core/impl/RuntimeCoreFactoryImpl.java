@@ -66,6 +66,7 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 			case QRuntimeCorePackage.SERVICE_EXECUTOR: return (EObject)createServiceExecutor();
 			case QRuntimeCorePackage.SERVICE_REGISTRY: return (EObject)createServiceRegistry();
 			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY: return (EObject)createServiceRegistryEntry();
+			case QRuntimeCorePackage.SERVICE_TESTER: return (EObject)createServiceTester();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -173,6 +174,16 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 	public QServiceRegistryEntry createServiceRegistryEntry() {
 		ServiceRegistryEntryImpl serviceRegistryEntry = new ServiceRegistryEntryImpl();
 		return serviceRegistryEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QServiceTester createServiceTester() {
+		ServiceTesterImpl serviceTester = new ServiceTesterImpl();
+		return serviceTester;
 	}
 
 	/**
