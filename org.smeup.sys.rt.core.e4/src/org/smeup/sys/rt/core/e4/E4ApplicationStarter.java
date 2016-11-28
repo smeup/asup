@@ -29,7 +29,6 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.smeup.sys.il.core.QObject;
-import org.smeup.sys.il.core.QObjectRegistryKey;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.e4.E4ContextRootImpl;
@@ -41,8 +40,11 @@ import org.smeup.sys.rt.core.ComponentStarting;
 import org.smeup.sys.rt.core.QApplication;
 import org.smeup.sys.rt.core.QApplicationComponent;
 import org.smeup.sys.rt.core.QApplicationModule;
+import org.smeup.sys.rt.core.QServiceExecutor;
 import org.smeup.sys.rt.core.QServiceHook;
 import org.smeup.sys.rt.core.QServiceRef;
+import org.smeup.sys.rt.core.QServiceRegistry;
+import org.smeup.sys.rt.core.QServiceRegistryEntry;
 import org.smeup.sys.rt.core.ServiceRegistering;
 import org.smeup.sys.rt.core.ServiceStatus;
 
@@ -65,7 +67,7 @@ public class E4ApplicationStarter {
 	public QApplication start() throws Exception {
 
 		println("");
-		
+
 		println(">application " + application);
 
 		final String name = bundleContext.getBundle().getSymbolicName();
@@ -152,7 +154,7 @@ public class E4ApplicationStarter {
 		}
 
 		messageLevel--;
-		
+
 		return application;
 	}
 
@@ -187,14 +189,17 @@ public class E4ApplicationStarter {
 			messageLevel++;
 			println(">module " + module);
 
-			// Register services
 			messageLevel++;
-			for (QServiceRef serviceRef : module.getServices())
+			
+			// services
+			for (QServiceRef serviceRef : module.getServices()) {
 				try {
 					registerService(application, component, contextComponent, serviceRef);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			}
+			
 			messageLevel--;
 
 			messageLevel--;
@@ -211,6 +216,8 @@ public class E4ApplicationStarter {
 
 	public void registerService(QApplication application, QApplicationComponent component, QContext componentContext, QServiceRef serviceRef) throws ClassNotFoundException {
 
+		boolean remoteExport = false;
+		
 		// STOPPED
 		if (serviceRef.getStatus() == ServiceStatus.STOPPED) {
 			println("-service " + serviceRef + " unactive");
@@ -218,35 +225,50 @@ public class E4ApplicationStarter {
 		}
 
 		println("+service " + serviceRef);
-		// service references
-		for (QServiceRef serviceChildRef : serviceRef.getServices()) {
-			messageLevel++;
-			registerService(application, component, componentContext, serviceChildRef);
-			messageLevel--;
-		}
 
+		if (serviceRef instanceof QServiceExecutor) {
+			QServiceExecutor serviceExecutor = (QServiceExecutor)serviceRef;
+			remoteExport = serviceExecutor.isRemoteExport();
+			
+			// service references
+			for (QServiceExecutor serviceChildRef : serviceExecutor.getServices()) {
+				messageLevel++;
+				registerService(application, component, componentContext, serviceChildRef);
+				messageLevel--;
+			}
+		}
+		
+		if (serviceRef instanceof QServiceRegistry) {
+			QServiceRegistry serviceRegistry = (QServiceRegistry)serviceRef;
+			
+			// service entries
+			for (QServiceRegistryEntry serviceChildRef : serviceRegistry.getEntries()) {
+				messageLevel++;
+				registerService(application, component, componentContext, serviceChildRef);
+				messageLevel--;
+			}
+		}
+		
 		// load service
 		Object service = loadObject(componentContext, serviceRef.getClassName());
 
 		// register on context
 		Dictionary<String, Object> dictionary = new Hashtable<String, Object>();
 
-		if (serviceRef.getRegistryKey() != null) {
-			QObjectRegistryKey plugin = serviceRef.getRegistryKey();
+		if (serviceRef instanceof QServiceRegistryEntry) {
+			QServiceRegistryEntry serviceRegistry = (QServiceRegistryEntry)serviceRef;
 
 			// register on context
-			dictionary.put("org.smeup.sys.il.core.registry.name", plugin.getName());
-			dictionary.put("org.smeup.sys.il.core.registry.text", plugin.getText());
-			dictionary.put("org.smeup.sys.il.core.registry.vendor", plugin.getVendor());
-			dictionary.put("org.smeup.sys.il.core.registry.version", plugin.getVersion());
-
+			dictionary.put("org.smeup.sys.il.core.registry.name", serviceRegistry.getName());
+			dictionary.put("org.smeup.sys.il.core.registry.vendor", serviceRegistry.getVendor());
+			dictionary.put("org.smeup.sys.il.core.registry.version", serviceRegistry.getVersion());	
 		}
 
-		// service registry
+		// service registration
 		if (serviceRef.getInterfaceName() != null)
-			registerService(application, component, componentContext, serviceRef.getInterfaceName(), service, dictionary, serviceRef.isRemoteExport());
+			registerService(application, component, componentContext, serviceRef.getInterfaceName(), service, dictionary, remoteExport);
 		else
-			registerService(application, component, componentContext, serviceRef.getClassName(), service, dictionary, serviceRef.isRemoteExport());
+			registerService(application, component, componentContext, serviceRef.getClassName(), service, dictionary, remoteExport);
 	}
 
 	private void registerService(QApplication application, QApplicationComponent component, QContext componentContext, String name, Object service, Dictionary<String, Object> properties,
@@ -254,7 +276,7 @@ public class E4ApplicationStarter {
 
 		// service properties
 		properties.put("org.smeup.sys.rt.core.application.name", application.getName());
-		properties.put("org.smeup.sys.rt.core.application.port", application.getPort());	
+		properties.put("org.smeup.sys.rt.core.application.port", application.getPort());
 		properties.put("org.smeup.sys.rt.core.component.name", component.getName());
 
 		// context properties
@@ -293,10 +315,10 @@ public class E4ApplicationStarter {
 
 		contextService.invoke(service, ServiceRegistering.class);
 		bundleContext.registerService(name, service, properties);
-		
+
 		// prevent remote injection
 		application.getContext().set(name, service);
-		
+
 		contextService.close();
 	}
 

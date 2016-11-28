@@ -7,17 +7,9 @@
  */
 package org.smeup.sys.rt.core.impl;
 
-import java.util.Collection;
-import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-import org.smeup.sys.il.core.QObjectRegistryKey;
 import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.rt.core.QRuntimeCorePackage;
 import org.smeup.sys.rt.core.QServiceRef;
@@ -33,15 +25,12 @@ import org.smeup.sys.rt.core.ServiceStatus;
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getClassName <em>Class Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getInterfaceName <em>Interface Name</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getRegistryKey <em>Registry Key</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#isRemoteExport <em>Remote Export</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getStatus <em>Status</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getServices <em>Services</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ServiceRefImpl extends ObjectImpl implements QServiceRef {
+public abstract class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 	/**
 	 * 
 	 */
@@ -88,36 +77,6 @@ public class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 	protected String interfaceName = INTERFACE_NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getRegistryKey() <em>Registry Key</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRegistryKey()
-	 * @generated
-	 * @ordered
-	 */
-	protected QObjectRegistryKey registryKey;
-
-	/**
-	 * The default value of the '{@link #isRemoteExport() <em>Remote Export</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isRemoteExport()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean REMOTE_EXPORT_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isRemoteExport() <em>Remote Export</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isRemoteExport()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean remoteExport = REMOTE_EXPORT_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -136,16 +95,6 @@ public class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 	 * @ordered
 	 */
 	protected ServiceStatus status = STATUS_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getServices() <em>Services</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getServices()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<QServiceRef> services;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -217,72 +166,6 @@ public class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QObjectRegistryKey getRegistryKey() {
-		return registryKey;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetRegistryKey(QObjectRegistryKey newRegistryKey, NotificationChain msgs) {
-		QObjectRegistryKey oldRegistryKey = registryKey;
-		registryKey = newRegistryKey;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY, oldRegistryKey, newRegistryKey);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRegistryKey(QObjectRegistryKey newRegistryKey) {
-		if (newRegistryKey != registryKey) {
-			NotificationChain msgs = null;
-			if (registryKey != null)
-				msgs = ((InternalEObject)registryKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY, null, msgs);
-			if (newRegistryKey != null)
-				msgs = ((InternalEObject)newRegistryKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY, null, msgs);
-			msgs = basicSetRegistryKey(newRegistryKey, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY, newRegistryKey, newRegistryKey));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean isRemoteExport() {
-		return remoteExport;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setRemoteExport(boolean newRemoteExport) {
-		boolean oldRemoteExport = remoteExport;
-		remoteExport = newRemoteExport;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_REF__REMOTE_EXPORT, oldRemoteExport, remoteExport));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public ServiceStatus getStatus() {
 		return status;
@@ -307,49 +190,14 @@ public class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 	 * @generated
 	 */
 	@Override
-	public List<QServiceRef> getServices() {
-		if (services == null) {
-			services = new EObjectContainmentEList<QServiceRef>(QServiceRef.class, this, QRuntimeCorePackage.SERVICE_REF__SERVICES);
-		}
-		return services;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY:
-				return basicSetRegistryKey(null, msgs);
-			case QRuntimeCorePackage.SERVICE_REF__SERVICES:
-				return ((InternalEList<?>)getServices()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case QRuntimeCorePackage.SERVICE_REF__CLASS_NAME:
 				return getClassName();
 			case QRuntimeCorePackage.SERVICE_REF__INTERFACE_NAME:
 				return getInterfaceName();
-			case QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY:
-				return getRegistryKey();
-			case QRuntimeCorePackage.SERVICE_REF__REMOTE_EXPORT:
-				return isRemoteExport();
 			case QRuntimeCorePackage.SERVICE_REF__STATUS:
 				return getStatus();
-			case QRuntimeCorePackage.SERVICE_REF__SERVICES:
-				return getServices();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -359,7 +207,6 @@ public class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -369,18 +216,8 @@ public class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 			case QRuntimeCorePackage.SERVICE_REF__INTERFACE_NAME:
 				setInterfaceName((String)newValue);
 				return;
-			case QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY:
-				setRegistryKey((QObjectRegistryKey)newValue);
-				return;
-			case QRuntimeCorePackage.SERVICE_REF__REMOTE_EXPORT:
-				setRemoteExport((Boolean)newValue);
-				return;
 			case QRuntimeCorePackage.SERVICE_REF__STATUS:
 				setStatus((ServiceStatus)newValue);
-				return;
-			case QRuntimeCorePackage.SERVICE_REF__SERVICES:
-				getServices().clear();
-				getServices().addAll((Collection<? extends QServiceRef>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -400,17 +237,8 @@ public class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 			case QRuntimeCorePackage.SERVICE_REF__INTERFACE_NAME:
 				setInterfaceName(INTERFACE_NAME_EDEFAULT);
 				return;
-			case QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY:
-				setRegistryKey((QObjectRegistryKey)null);
-				return;
-			case QRuntimeCorePackage.SERVICE_REF__REMOTE_EXPORT:
-				setRemoteExport(REMOTE_EXPORT_EDEFAULT);
-				return;
 			case QRuntimeCorePackage.SERVICE_REF__STATUS:
 				setStatus(STATUS_EDEFAULT);
-				return;
-			case QRuntimeCorePackage.SERVICE_REF__SERVICES:
-				getServices().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -428,14 +256,8 @@ public class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 				return CLASS_NAME_EDEFAULT == null ? className != null : !CLASS_NAME_EDEFAULT.equals(className);
 			case QRuntimeCorePackage.SERVICE_REF__INTERFACE_NAME:
 				return INTERFACE_NAME_EDEFAULT == null ? interfaceName != null : !INTERFACE_NAME_EDEFAULT.equals(interfaceName);
-			case QRuntimeCorePackage.SERVICE_REF__REGISTRY_KEY:
-				return registryKey != null;
-			case QRuntimeCorePackage.SERVICE_REF__REMOTE_EXPORT:
-				return remoteExport != REMOTE_EXPORT_EDEFAULT;
 			case QRuntimeCorePackage.SERVICE_REF__STATUS:
 				return status != STATUS_EDEFAULT;
-			case QRuntimeCorePackage.SERVICE_REF__SERVICES:
-				return services != null && !services.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -454,8 +276,6 @@ public class ServiceRefImpl extends ObjectImpl implements QServiceRef {
 		result.append(className);
 		result.append(", interfaceName: ");
 		result.append(interfaceName);
-		result.append(", remoteExport: ");
-		result.append(remoteExport);
 		result.append(", status: ");
 		result.append(status);
 		result.append(')');

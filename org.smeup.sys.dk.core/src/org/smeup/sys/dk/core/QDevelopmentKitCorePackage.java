@@ -45,7 +45,7 @@ public interface QDevelopmentKitCorePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.smeup.com/asup/dk/core";
+	String eNS_URI = "http://www.smeup.org/asup/dk/core";
 
 	/**
 	 * The package namespace name.

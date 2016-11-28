@@ -9,58 +9,62 @@ package org.smeup.sys.rt.core.impl;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.smeup.sys.il.core.impl.ObjectImpl;
-import org.smeup.sys.rt.core.QApplicationModule;
+
 import org.smeup.sys.rt.core.QRuntimeCorePackage;
-import org.smeup.sys.rt.core.QServiceRef;
+import org.smeup.sys.rt.core.QServiceExecutor;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Module</b></em>'.
+ * An implementation of the model object '<em><b>Service Executor</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationModuleImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationModuleImpl#getServices <em>Services</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.impl.ServiceExecutorImpl#isRemoteExport <em>Remote Export</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.impl.ServiceExecutorImpl#getServices <em>Services</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ApplicationModuleImpl extends ObjectImpl implements QApplicationModule {
+public class ServiceExecutorImpl extends ServiceRefImpl implements QServiceExecutor {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The default value of the '{@link #isRemoteExport() <em>Remote Export</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #isRemoteExport()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final boolean REMOTE_EXPORT_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #isRemoteExport() <em>Remote Export</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #isRemoteExport()
 	 * @generated
 	 * @ordered
 	 */
-	protected String name = NAME_EDEFAULT;
+	protected boolean remoteExport = REMOTE_EXPORT_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getServices() <em>Services</em>}' containment reference list.
@@ -70,14 +74,14 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<QServiceRef> services;
+	protected EList<QServiceExecutor> services;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ApplicationModuleImpl() {
+	protected ServiceExecutorImpl() {
 		super();
 	}
 
@@ -88,7 +92,7 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QRuntimeCorePackage.Literals.APPLICATION_MODULE;
+		return QRuntimeCorePackage.Literals.SERVICE_EXECUTOR;
 	}
 
 	/**
@@ -96,9 +100,8 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getName() {
-		return name;
+	public boolean isRemoteExport() {
+		return remoteExport;
 	}
 
 	/**
@@ -106,12 +109,11 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
+	public void setRemoteExport(boolean newRemoteExport) {
+		boolean oldRemoteExport = remoteExport;
+		remoteExport = newRemoteExport;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.APPLICATION_MODULE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_EXECUTOR__REMOTE_EXPORT, oldRemoteExport, remoteExport));
 	}
 
 	/**
@@ -119,9 +121,9 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List<QServiceRef> getServices() {
+	public List<QServiceExecutor> getServices() {
 		if (services == null) {
-			services = new EObjectContainmentEList<QServiceRef>(QServiceRef.class, this, QRuntimeCorePackage.APPLICATION_MODULE__SERVICES);
+			services = new EObjectContainmentEList<QServiceExecutor>(QServiceExecutor.class, this, QRuntimeCorePackage.SERVICE_EXECUTOR__SERVICES);
 		}
 		return services;
 	}
@@ -134,7 +136,7 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QRuntimeCorePackage.APPLICATION_MODULE__SERVICES:
+			case QRuntimeCorePackage.SERVICE_EXECUTOR__SERVICES:
 				return ((InternalEList<?>)getServices()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -148,9 +150,9 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QRuntimeCorePackage.APPLICATION_MODULE__NAME:
-				return getName();
-			case QRuntimeCorePackage.APPLICATION_MODULE__SERVICES:
+			case QRuntimeCorePackage.SERVICE_EXECUTOR__REMOTE_EXPORT:
+				return isRemoteExport();
+			case QRuntimeCorePackage.SERVICE_EXECUTOR__SERVICES:
 				return getServices();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -165,12 +167,12 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QRuntimeCorePackage.APPLICATION_MODULE__NAME:
-				setName((String)newValue);
+			case QRuntimeCorePackage.SERVICE_EXECUTOR__REMOTE_EXPORT:
+				setRemoteExport((Boolean)newValue);
 				return;
-			case QRuntimeCorePackage.APPLICATION_MODULE__SERVICES:
+			case QRuntimeCorePackage.SERVICE_EXECUTOR__SERVICES:
 				getServices().clear();
-				getServices().addAll((Collection<? extends QServiceRef>)newValue);
+				getServices().addAll((Collection<? extends QServiceExecutor>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -184,10 +186,10 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QRuntimeCorePackage.APPLICATION_MODULE__NAME:
-				setName(NAME_EDEFAULT);
+			case QRuntimeCorePackage.SERVICE_EXECUTOR__REMOTE_EXPORT:
+				setRemoteExport(REMOTE_EXPORT_EDEFAULT);
 				return;
-			case QRuntimeCorePackage.APPLICATION_MODULE__SERVICES:
+			case QRuntimeCorePackage.SERVICE_EXECUTOR__SERVICES:
 				getServices().clear();
 				return;
 		}
@@ -202,9 +204,9 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QRuntimeCorePackage.APPLICATION_MODULE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case QRuntimeCorePackage.APPLICATION_MODULE__SERVICES:
+			case QRuntimeCorePackage.SERVICE_EXECUTOR__REMOTE_EXPORT:
+				return remoteExport != REMOTE_EXPORT_EDEFAULT;
+			case QRuntimeCorePackage.SERVICE_EXECUTOR__SERVICES:
 				return services != null && !services.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -220,10 +222,10 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
+		result.append(" (remoteExport: ");
+		result.append(remoteExport);
 		result.append(')');
 		return result.toString();
 	}
 
-} //ModuleImpl
+} //ServiceExecutorImpl

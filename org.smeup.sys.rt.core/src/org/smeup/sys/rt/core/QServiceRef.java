@@ -7,10 +7,7 @@
  */
 package org.smeup.sys.rt.core;
 
-import java.util.List;
-
 import org.smeup.sys.il.core.QObject;
-import org.smeup.sys.il.core.QObjectRegistryKey;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,14 +20,11 @@ import org.smeup.sys.il.core.QObjectRegistryKey;
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.QServiceRef#getClassName <em>Class Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QServiceRef#getInterfaceName <em>Interface Name</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.QServiceRef#getRegistryKey <em>Registry Key</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.QServiceRef#isRemoteExport <em>Remote Export</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QServiceRef#getStatus <em>Status</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.QServiceRef#getServices <em>Services</em>}</li>
  * </ul>
  *
  * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getServiceRef()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface QServiceRef extends QObject {
@@ -71,7 +65,7 @@ public interface QServiceRef extends QObject {
 	 * @return the value of the '<em>Interface Name</em>' attribute.
 	 * @see #setInterfaceName(String)
 	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getServiceRef_InterfaceName()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getInterfaceName();
@@ -85,58 +79,6 @@ public interface QServiceRef extends QObject {
 	 * @generated
 	 */
 	void setInterfaceName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Registry Key</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Registry Key</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Registry Key</em>' containment reference.
-	 * @see #setRegistryKey(QObjectRegistryKey)
-	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getServiceRef_RegistryKey()
-	 * @model containment="true"
-	 * @generated
-	 */
-	QObjectRegistryKey getRegistryKey();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.rt.core.QServiceRef#getRegistryKey <em>Registry Key</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Registry Key</em>' containment reference.
-	 * @see #getRegistryKey()
-	 * @generated
-	 */
-	void setRegistryKey(QObjectRegistryKey value);
-
-	/**
-	 * Returns the value of the '<em><b>Remote Export</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Remote Export</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Remote Export</em>' attribute.
-	 * @see #setRemoteExport(boolean)
-	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getServiceRef_RemoteExport()
-	 * @model required="true"
-	 * @generated
-	 */
-	boolean isRemoteExport();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.rt.core.QServiceRef#isRemoteExport <em>Remote Export</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Remote Export</em>' attribute.
-	 * @see #isRemoteExport()
-	 * @generated
-	 */
-	void setRemoteExport(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Status</b></em>' attribute.
@@ -166,21 +108,5 @@ public interface QServiceRef extends QObject {
 	 * @generated
 	 */
 	void setStatus(ServiceStatus value);
-
-	/**
-	 * Returns the value of the '<em><b>Services</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.rt.core.QServiceRef}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Services</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Services</em>' containment reference list.
-	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getServiceRef_Services()
-	 * @model containment="true"
-	 * @generated
-	 */
-	List<QServiceRef> getServices();
 
 } // QServiceRef

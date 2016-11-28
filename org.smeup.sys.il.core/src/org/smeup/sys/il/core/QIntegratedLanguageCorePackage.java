@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.core;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
@@ -196,61 +195,6 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	int OBJECT_REGISTRY_FACTORY_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl <em>Object Registry Key</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl
-	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectRegistryKey()
-	 * @generated
-	 */
-	int OBJECT_REGISTRY_KEY = 7;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECT_REGISTRY_KEY__NAME = OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECT_REGISTRY_KEY__TEXT = OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Vendor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECT_REGISTRY_KEY__VENDOR = OBJECT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Version</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECT_REGISTRY_KEY__VERSION = OBJECT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>Object Registry Key</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECT_REGISTRY_KEY_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 4;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.QThread <em>Thread</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -258,7 +202,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThread()
 	 * @generated
 	 */
-	int THREAD = 8;
+	int THREAD = 7;
 
 	/**
 	 * The number of structural features of the '<em>Thread</em>' class.
@@ -277,7 +221,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThreadManager()
 	 * @generated
 	 */
-	int THREAD_MANAGER = 9;
+	int THREAD_MANAGER = 8;
 
 	/**
 	 * The number of structural features of the '<em>Thread Manager</em>' class.
@@ -296,7 +240,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThreadStatus()
 	 * @generated
 	 */
-	int THREAD_STATUS = 10;
+	int THREAD_STATUS = 9;
 
 	/**
 	 * Returns the meta object for class '
@@ -374,60 +318,6 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getObjectRegistryFactory();
-
-	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.core.QObjectRegistryKey <em>Object Registry Key</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Object Registry Key</em>'.
-	 * @see org.smeup.sys.il.core.QObjectRegistryKey
-	 * @generated
-	 */
-	EClass getObjectRegistryKey();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.QObjectRegistryKey#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.smeup.sys.il.core.QObjectRegistryKey#getName()
-	 * @see #getObjectRegistryKey()
-	 * @generated
-	 */
-	EAttribute getObjectRegistryKey_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.QObjectRegistryKey#getText <em>Text</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see org.smeup.sys.il.core.QObjectRegistryKey#getText()
-	 * @see #getObjectRegistryKey()
-	 * @generated
-	 */
-	EAttribute getObjectRegistryKey_Text();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.QObjectRegistryKey#getVersion <em>Version</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Version</em>'.
-	 * @see org.smeup.sys.il.core.QObjectRegistryKey#getVersion()
-	 * @see #getObjectRegistryKey()
-	 * @generated
-	 */
-	EAttribute getObjectRegistryKey_Version();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.QObjectRegistryKey#getVendor <em>Vendor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Vendor</em>'.
-	 * @see org.smeup.sys.il.core.QObjectRegistryKey#getVendor()
-	 * @see #getObjectRegistryKey()
-	 * @generated
-	 */
-	EAttribute getObjectRegistryKey_Vendor();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.QThread <em>Thread</em>}'.
@@ -556,48 +446,6 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass OBJECT_REGISTRY_FACTORY = eINSTANCE.getObjectRegistryFactory();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl <em>Object Registry Key</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl
-		 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectRegistryKey()
-		 * @generated
-		 */
-		EClass OBJECT_REGISTRY_KEY = eINSTANCE.getObjectRegistryKey();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute OBJECT_REGISTRY_KEY__NAME = eINSTANCE.getObjectRegistryKey_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute OBJECT_REGISTRY_KEY__TEXT = eINSTANCE.getObjectRegistryKey_Text();
-
-		/**
-		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute OBJECT_REGISTRY_KEY__VERSION = eINSTANCE.getObjectRegistryKey_Version();
-
-		/**
-		 * The meta object literal for the '<em><b>Vendor</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute OBJECT_REGISTRY_KEY__VENDOR = eINSTANCE.getObjectRegistryKey_Vendor();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.QThread <em>Thread</em>}' class.

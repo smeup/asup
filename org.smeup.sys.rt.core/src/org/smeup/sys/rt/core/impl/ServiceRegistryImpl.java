@@ -17,31 +17,38 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.smeup.sys.il.core.impl.ObjectImpl;
-import org.smeup.sys.rt.core.QApplicationModule;
 import org.smeup.sys.rt.core.QRuntimeCorePackage;
-import org.smeup.sys.rt.core.QServiceRef;
+import org.smeup.sys.rt.core.QServiceRegistry;
+import org.smeup.sys.rt.core.QServiceRegistryEntry;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Module</b></em>'.
+ * An implementation of the model object '<em><b>Service Registry</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationModuleImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationModuleImpl#getServices <em>Services</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRegistryImpl#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRegistryImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ApplicationModuleImpl extends ObjectImpl implements QApplicationModule {
+public class ServiceRegistryImpl extends ServiceRefImpl implements QServiceRegistry {
+	/**
+	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntries()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<QServiceRegistryEntry> entries;
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -51,7 +58,6 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
-
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -63,21 +69,11 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getServices() <em>Services</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getServices()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<QServiceRef> services;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ApplicationModuleImpl() {
+	protected ServiceRegistryImpl() {
 		super();
 	}
 
@@ -88,7 +84,7 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QRuntimeCorePackage.Literals.APPLICATION_MODULE;
+		return QRuntimeCorePackage.Literals.SERVICE_REGISTRY;
 	}
 
 	/**
@@ -96,7 +92,18 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
+	public List<QServiceRegistryEntry> getEntries() {
+		if (entries == null) {
+			entries = new EObjectContainmentEList<QServiceRegistryEntry>(QServiceRegistryEntry.class, this, QRuntimeCorePackage.SERVICE_REGISTRY__ENTRIES);
+		}
+		return entries;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getName() {
 		return name;
 	}
@@ -106,24 +113,11 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.APPLICATION_MODULE__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public List<QServiceRef> getServices() {
-		if (services == null) {
-			services = new EObjectContainmentEList<QServiceRef>(QServiceRef.class, this, QRuntimeCorePackage.APPLICATION_MODULE__SERVICES);
-		}
-		return services;
+			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_REGISTRY__NAME, oldName, name));
 	}
 
 	/**
@@ -134,8 +128,8 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QRuntimeCorePackage.APPLICATION_MODULE__SERVICES:
-				return ((InternalEList<?>)getServices()).basicRemove(otherEnd, msgs);
+			case QRuntimeCorePackage.SERVICE_REGISTRY__ENTRIES:
+				return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -148,10 +142,10 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QRuntimeCorePackage.APPLICATION_MODULE__NAME:
+			case QRuntimeCorePackage.SERVICE_REGISTRY__ENTRIES:
+				return getEntries();
+			case QRuntimeCorePackage.SERVICE_REGISTRY__NAME:
 				return getName();
-			case QRuntimeCorePackage.APPLICATION_MODULE__SERVICES:
-				return getServices();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -165,12 +159,12 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QRuntimeCorePackage.APPLICATION_MODULE__NAME:
-				setName((String)newValue);
+			case QRuntimeCorePackage.SERVICE_REGISTRY__ENTRIES:
+				getEntries().clear();
+				getEntries().addAll((Collection<? extends QServiceRegistryEntry>)newValue);
 				return;
-			case QRuntimeCorePackage.APPLICATION_MODULE__SERVICES:
-				getServices().clear();
-				getServices().addAll((Collection<? extends QServiceRef>)newValue);
+			case QRuntimeCorePackage.SERVICE_REGISTRY__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -184,11 +178,11 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QRuntimeCorePackage.APPLICATION_MODULE__NAME:
-				setName(NAME_EDEFAULT);
+			case QRuntimeCorePackage.SERVICE_REGISTRY__ENTRIES:
+				getEntries().clear();
 				return;
-			case QRuntimeCorePackage.APPLICATION_MODULE__SERVICES:
-				getServices().clear();
+			case QRuntimeCorePackage.SERVICE_REGISTRY__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -202,10 +196,10 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QRuntimeCorePackage.APPLICATION_MODULE__NAME:
+			case QRuntimeCorePackage.SERVICE_REGISTRY__ENTRIES:
+				return entries != null && !entries.isEmpty();
+			case QRuntimeCorePackage.SERVICE_REGISTRY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case QRuntimeCorePackage.APPLICATION_MODULE__SERVICES:
-				return services != null && !services.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -226,4 +220,4 @@ public class ApplicationModuleImpl extends ObjectImpl implements QApplicationMod
 		return result.toString();
 	}
 
-} //ModuleImpl
+} //ServiceRegistryImpl

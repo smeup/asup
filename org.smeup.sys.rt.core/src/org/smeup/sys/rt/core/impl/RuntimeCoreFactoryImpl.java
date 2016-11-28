@@ -63,7 +63,9 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 			case QRuntimeCorePackage.APPLICATION_COMPONENT: return (EObject)createApplicationComponent();
 			case QRuntimeCorePackage.APPLICATION_MODULE: return (EObject)createApplicationModule();
 			case QRuntimeCorePackage.SERVICE_HOOK: return (EObject)createServiceHook();
-			case QRuntimeCorePackage.SERVICE_REF: return (EObject)createServiceRef();
+			case QRuntimeCorePackage.SERVICE_EXECUTOR: return (EObject)createServiceExecutor();
+			case QRuntimeCorePackage.SERVICE_REGISTRY: return (EObject)createServiceRegistry();
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY: return (EObject)createServiceRegistryEntry();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -148,10 +150,29 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public QServiceRef createServiceRef() {
-		ServiceRefImpl serviceRef = new ServiceRefImpl();
-		return serviceRef;
+	public QServiceExecutor createServiceExecutor() {
+		ServiceExecutorImpl serviceExecutor = new ServiceExecutorImpl();
+		return serviceExecutor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QServiceRegistry createServiceRegistry() {
+		ServiceRegistryImpl serviceRegistry = new ServiceRegistryImpl();
+		return serviceRegistry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QServiceRegistryEntry createServiceRegistryEntry() {
+		ServiceRegistryEntryImpl serviceRegistryEntry = new ServiceRegistryEntryImpl();
+		return serviceRegistryEntry;
 	}
 
 	/**

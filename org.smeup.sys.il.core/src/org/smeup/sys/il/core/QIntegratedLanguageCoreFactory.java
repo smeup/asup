@@ -43,15 +43,6 @@ public interface QIntegratedLanguageCoreFactory extends EFactory {
 	QObjectNameable createObjectNameable();
 
 	/**
-	 * Returns a new object of class '<em>Object Registry Key</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Object Registry Key</em>'.
-	 * @generated
-	 */
-	QObjectRegistryKey createObjectRegistryKey();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

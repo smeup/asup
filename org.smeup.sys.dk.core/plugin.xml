@@ -14,7 +14,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated dk.core -->
       <package
-            uri="http://www.smeup.com/asup/dk/core"
+            uri="http://www.smeup.org/asup/dk/core"
             class="org.smeup.sys.dk.core.QDevelopmentKitCorePackage"
             genModel="model/dk.core.genmodel"/>
    </extension>

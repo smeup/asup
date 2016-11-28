@@ -5,36 +5,30 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.impl;
+package org.smeup.sys.rt.core.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.QObjectRegistryKey;
+import org.smeup.sys.rt.core.QRuntimeCorePackage;
+import org.smeup.sys.rt.core.QServiceRegistryEntry;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Plugin</b></em>'.
+ * An implementation of the model object '<em><b>Service Registry</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl#getText <em>Text</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl#getVendor <em>Vendor</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.impl.ObjectRegistryKeyImpl#getVersion <em>Version</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRegistryEntryImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRegistryEntryImpl#getVendor <em>Vendor</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRegistryEntryImpl#getVersion <em>Version</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistryKey {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+public class ServiceRegistryEntryImpl extends ServiceRefImpl implements QServiceRegistryEntry {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -44,7 +38,6 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
-
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -54,27 +47,6 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getText()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String TEXT_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getText()
-	 * @generated
-	 * @ordered
-	 */
-	protected String text = TEXT_EDEFAULT;
-
 	/**
 	 * The default value of the '{@link #getVendor() <em>Vendor</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -84,7 +56,6 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 	 * @ordered
 	 */
 	protected static final String VENDOR_EDEFAULT = null;
-
 	/**
 	 * The cached value of the '{@link #getVendor() <em>Vendor</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -94,7 +65,6 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 	 * @ordered
 	 */
 	protected String vendor = VENDOR_EDEFAULT;
-
 	/**
 	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -104,7 +74,6 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 	 * @ordered
 	 */
 	protected static final String VERSION_EDEFAULT = null;
-
 	/**
 	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -114,13 +83,16 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 	 * @ordered
 	 */
 	protected String version = VERSION_EDEFAULT;
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ObjectRegistryKeyImpl() {
+	protected ServiceRegistryEntryImpl() {
 		super();
 	}
 
@@ -131,7 +103,7 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QIntegratedLanguageCorePackage.Literals.OBJECT_REGISTRY_KEY;
+		return QRuntimeCorePackage.Literals.SERVICE_REGISTRY_ENTRY;
 	}
 
 	/**
@@ -152,49 +124,7 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getText() {
-		return text;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setText(String newText) {
-		String oldText = text;
-		text = newText;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__TEXT, oldText, text));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getVersion() {
-		return version;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setVersion(String newVersion) {
-		String oldVersion = version;
-		version = newVersion;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION, oldVersion, version));
+			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__NAME, oldName, name));
 	}
 
 	/**
@@ -215,7 +145,28 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 		String oldVendor = vendor;
 		vendor = newVendor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VENDOR, oldVendor, vendor));
+			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__VENDOR, oldVendor, vendor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getVersion() {
+		return version;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVersion(String newVersion) {
+		String oldVersion = version;
+		version = newVersion;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__VERSION, oldVersion, version));
 	}
 
 	/**
@@ -226,13 +177,11 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__NAME:
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__NAME:
 				return getName();
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__TEXT:
-				return getText();
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VENDOR:
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__VENDOR:
 				return getVendor();
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION:
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__VERSION:
 				return getVersion();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -246,16 +195,13 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__NAME:
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__NAME:
 				setName((String)newValue);
 				return;
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__TEXT:
-				setText((String)newValue);
-				return;
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VENDOR:
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__VENDOR:
 				setVendor((String)newValue);
 				return;
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION:
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__VERSION:
 				setVersion((String)newValue);
 				return;
 		}
@@ -270,16 +216,13 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__NAME:
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__TEXT:
-				setText(TEXT_EDEFAULT);
-				return;
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VENDOR:
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__VENDOR:
 				setVendor(VENDOR_EDEFAULT);
 				return;
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION:
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__VERSION:
 				setVersion(VERSION_EDEFAULT);
 				return;
 		}
@@ -294,13 +237,11 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__NAME:
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__TEXT:
-				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VENDOR:
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__VENDOR:
 				return VENDOR_EDEFAULT == null ? vendor != null : !VENDOR_EDEFAULT.equals(vendor);
-			case QIntegratedLanguageCorePackage.OBJECT_REGISTRY_KEY__VERSION:
+			case QRuntimeCorePackage.SERVICE_REGISTRY_ENTRY__VERSION:
 				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
 		}
 		return super.eIsSet(featureID);
@@ -318,8 +259,6 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", text: ");
-		result.append(text);
 		result.append(", vendor: ");
 		result.append(vendor);
 		result.append(", version: ");
@@ -328,4 +267,4 @@ public class ObjectRegistryKeyImpl extends ObjectImpl implements QObjectRegistry
 		return result.toString();
 	}
 
-} //ObjectRegistryKeyImpl
+} //ServiceRegistryImpl

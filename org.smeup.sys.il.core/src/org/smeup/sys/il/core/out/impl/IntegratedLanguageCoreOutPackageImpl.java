@@ -8,6 +8,7 @@
 package org.smeup.sys.il.core.out.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -21,6 +22,7 @@ import org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutFactory;
 import org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QObjectWriterFactory;
+import org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.il.core.term.impl.IntegratedLanguageCoreTermPackageImpl;
@@ -43,6 +45,13 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	private EClass objectWriterFactoryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass objectWriterFactoryRegistryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -146,6 +155,15 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getObjectWriterFactoryRegistry() {
+		return objectWriterFactoryRegistryEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -186,6 +204,8 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 		objectWriterEClass = createEClass(OBJECT_WRITER);
 
 		objectWriterFactoryEClass = createEClass(OBJECT_WRITER_FACTORY);
+
+		objectWriterFactoryRegistryEClass = createEClass(OBJECT_WRITER_FACTORY_REGISTRY);
 	}
 
 	/**
@@ -220,6 +240,10 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		EGenericType g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectRegistry());
+		EGenericType g2 = createEGenericType(this.getObjectWriterFactory());
+		g1.getETypeArguments().add(g2);
+		objectWriterFactoryRegistryEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(outputManagerEClass, QOutputManager.class, "OutputManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -254,6 +278,8 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 
 		op = addEOperation(objectWriterFactoryEClass, this.getObjectWriter(), "createObjectWriter", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(objectWriterFactoryRegistryEClass, QObjectWriterFactoryRegistry.class, "ObjectWriterFactoryRegistry", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 	}
 
 } // IntegratedLanguageCoreOutPackageImpl

@@ -63,13 +63,31 @@ public interface QRuntimeCoreFactory extends EFactory {
 	QServiceHook createServiceHook();
 
 	/**
-	 * Returns a new object of class '<em>Service Ref</em>'.
+	 * Returns a new object of class '<em>Service Executor</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Service Ref</em>'.
+	 * @return a new object of class '<em>Service Executor</em>'.
 	 * @generated
 	 */
-	QServiceRef createServiceRef();
+	QServiceExecutor createServiceExecutor();
+
+	/**
+	 * Returns a new object of class '<em>Service Registry</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Service Registry</em>'.
+	 * @generated
+	 */
+	QServiceRegistry createServiceRegistry();
+
+	/**
+	 * Returns a new object of class '<em>Service Registry Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Service Registry Entry</em>'.
+	 * @generated
+	 */
+	QServiceRegistryEntry createServiceRegistryEntry();
 
 	/**
 	 * Returns the package supported by this factory.
