@@ -7,8 +7,6 @@
  */
 package org.smeup.sys.rt.core;
 
-import java.util.List;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Service Executor</b></em>'.
@@ -20,7 +18,6 @@ import java.util.List;
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.QServiceExecutor#getInterfaceName <em>Interface Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QServiceExecutor#isRemoteExport <em>Remote Export</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.QServiceExecutor#getServices <em>Services</em>}</li>
  * </ul>
  *
  * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getServiceExecutor()
@@ -79,21 +76,5 @@ public interface QServiceExecutor extends QServiceRef {
 	 * @generated
 	 */
 	void setRemoteExport(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Services</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.rt.core.QServiceExecutor}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Services</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Services</em>' containment reference list.
-	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getServiceExecutor_Services()
-	 * @model containment="true"
-	 * @generated
-	 */
-	List<QServiceExecutor> getServices();
 
 } // QServiceExecutor

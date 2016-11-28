@@ -39,7 +39,7 @@ public interface QApplicationModule extends QObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getApplicationModule_Name()
-	 * @model id="true"
+	 * @model
 	 * @generated
 	 */
 	String getName();

@@ -7,22 +7,9 @@
  */
 package org.smeup.sys.rt.core.impl;
 
-import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.smeup.sys.rt.core.QRuntimeCorePackage;
 import org.smeup.sys.rt.core.QServiceExecutor;
 
@@ -36,7 +23,6 @@ import org.smeup.sys.rt.core.QServiceExecutor;
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceExecutorImpl#getInterfaceName <em>Interface Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceExecutorImpl#isRemoteExport <em>Remote Export</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.impl.ServiceExecutorImpl#getServices <em>Services</em>}</li>
  * </ul>
  *
  * @generated
@@ -86,16 +72,6 @@ public class ServiceExecutorImpl extends ServiceRefImpl implements QServiceExecu
 	 * @ordered
 	 */
 	protected boolean remoteExport = REMOTE_EXPORT_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getServices() <em>Services</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getServices()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<QServiceExecutor> services;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,32 +139,6 @@ public class ServiceExecutorImpl extends ServiceRefImpl implements QServiceExecu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List<QServiceExecutor> getServices() {
-		if (services == null) {
-			services = new EObjectContainmentEList<QServiceExecutor>(QServiceExecutor.class, this, QRuntimeCorePackage.SERVICE_EXECUTOR__SERVICES);
-		}
-		return services;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case QRuntimeCorePackage.SERVICE_EXECUTOR__SERVICES:
-				return ((InternalEList<?>)getServices()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -196,8 +146,6 @@ public class ServiceExecutorImpl extends ServiceRefImpl implements QServiceExecu
 				return getInterfaceName();
 			case QRuntimeCorePackage.SERVICE_EXECUTOR__REMOTE_EXPORT:
 				return isRemoteExport();
-			case QRuntimeCorePackage.SERVICE_EXECUTOR__SERVICES:
-				return getServices();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -217,10 +165,6 @@ public class ServiceExecutorImpl extends ServiceRefImpl implements QServiceExecu
 			case QRuntimeCorePackage.SERVICE_EXECUTOR__REMOTE_EXPORT:
 				setRemoteExport((Boolean)newValue);
 				return;
-			case QRuntimeCorePackage.SERVICE_EXECUTOR__SERVICES:
-				getServices().clear();
-				getServices().addAll((Collection<? extends QServiceExecutor>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -239,9 +183,6 @@ public class ServiceExecutorImpl extends ServiceRefImpl implements QServiceExecu
 			case QRuntimeCorePackage.SERVICE_EXECUTOR__REMOTE_EXPORT:
 				setRemoteExport(REMOTE_EXPORT_EDEFAULT);
 				return;
-			case QRuntimeCorePackage.SERVICE_EXECUTOR__SERVICES:
-				getServices().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -258,8 +199,6 @@ public class ServiceExecutorImpl extends ServiceRefImpl implements QServiceExecu
 				return INTERFACE_NAME_EDEFAULT == null ? interfaceName != null : !INTERFACE_NAME_EDEFAULT.equals(interfaceName);
 			case QRuntimeCorePackage.SERVICE_EXECUTOR__REMOTE_EXPORT:
 				return remoteExport != REMOTE_EXPORT_EDEFAULT;
-			case QRuntimeCorePackage.SERVICE_EXECUTOR__SERVICES:
-				return services != null && !services.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

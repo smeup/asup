@@ -231,11 +231,11 @@ public class E4ApplicationStarter {
 			remoteExport = serviceExecutor.isRemoteExport();
 			
 			// service references
-			for (QServiceExecutor serviceChildRef : serviceExecutor.getServices()) {
-				messageLevel++;
-				registerService(application, component, componentContext, serviceChildRef);
-				messageLevel--;
-			}
+//			for (QServiceExecutor serviceChildRef : serviceExecutor.getServices()) {
+//				messageLevel++;
+//				registerService(application, component, componentContext, serviceChildRef);
+//				messageLevel--;
+//			}
 		}
 		
 		if (serviceRef instanceof QServiceRegistry) {

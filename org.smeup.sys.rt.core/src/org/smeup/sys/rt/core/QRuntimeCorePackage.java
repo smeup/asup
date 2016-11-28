@@ -425,22 +425,13 @@ public interface QRuntimeCorePackage extends EPackage {
 	int SERVICE_EXECUTOR__REMOTE_EXPORT = SERVICE_REF_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Services</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_EXECUTOR__SERVICES = SERVICE_REF_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Service Executor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_EXECUTOR_FEATURE_COUNT = SERVICE_REF_FEATURE_COUNT + 3;
+	int SERVICE_EXECUTOR_FEATURE_COUNT = SERVICE_REF_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.rt.core.impl.ServiceRegistryImpl <em>Service Registry</em>}' class.
@@ -880,17 +871,6 @@ public interface QRuntimeCorePackage extends EPackage {
 	EAttribute getServiceExecutor_RemoteExport();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.rt.core.QServiceExecutor#getServices <em>Services</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Services</em>'.
-	 * @see org.smeup.sys.rt.core.QServiceExecutor#getServices()
-	 * @see #getServiceExecutor()
-	 * @generated
-	 */
-	EReference getServiceExecutor_Services();
-
-	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.rt.core.QServiceRef <em>Service Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1274,14 +1254,6 @@ public interface QRuntimeCorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SERVICE_EXECUTOR__REMOTE_EXPORT = eINSTANCE.getServiceExecutor_RemoteExport();
-
-		/**
-		 * The meta object literal for the '<em><b>Services</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SERVICE_EXECUTOR__SERVICES = eINSTANCE.getServiceExecutor_Services();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.rt.core.impl.ServiceRefImpl <em>Service Ref</em>}' class.
