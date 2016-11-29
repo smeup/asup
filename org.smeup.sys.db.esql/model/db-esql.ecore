@@ -9,7 +9,7 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Cursor" abstract="true" interface="true"
-      eSuperTypes="#//ESqlObject platform:/plugin/org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable">
+      eSuperTypes="#//ESqlObject ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable">
     <eOperations name="after"/>
     <eOperations name="before"/>
     <eOperations name="close"/>
@@ -97,7 +97,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="DescriptorVariable" abstract="true"
       interface="true" eSuperTypes="../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct"/>
   <eClassifiers xsi:type="ecore:EClass" name="EsqlContext" abstract="true" interface="true"
-      eSuperTypes="platform:/plugin/org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
+      eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
     <eOperations name="allocateDescriptorArea" lowerBound="1" eType="#//DescriptorArea">
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="maxColumns" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -125,14 +125,14 @@
     </eOperations>
     <eOperations name="createCursorTerm" lowerBound="1" eType="#//CursorTerm">
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="type" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.smeup.sys.mi.core/model/mi-core.ecore#//JavaType"/>
-      <eParameters name="annotations" lowerBound="1" upperBound="-1" eType="ecore:EDataType platform:/plugin/org.smeup.sys.mi.core/model/mi-core.ecore#//JavaAnnotation"/>
+      <eParameters name="type" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaType"/>
+      <eParameters name="annotations" lowerBound="1" upperBound="-1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaAnnotation"/>
     </eOperations>
     <eOperations name="createStatement" lowerBound="1" eType="#//Statement"/>
     <eOperations name="createStatementTerm" lowerBound="1" eType="#//StatementTerm">
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="type" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.smeup.sys.mi.core/model/mi-core.ecore#//JavaType"/>
-      <eParameters name="annotations" lowerBound="1" upperBound="-1" eType="ecore:EDataType platform:/plugin/org.smeup.sys.mi.core/model/mi-core.ecore#//JavaAnnotation"/>
+      <eParameters name="type" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaType"/>
+      <eParameters name="annotations" lowerBound="1" upperBound="-1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaAnnotation"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ESqlManager" abstract="true" interface="true">
@@ -143,7 +143,7 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ESqlObject" abstract="true" interface="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ESqlTerm" abstract="true" eSuperTypes="platform:/plugin/org.smeup.sys.il.core/model/il-core.ecore#//term/Term">
+  <eClassifiers xsi:type="ecore:EClass" name="ESqlTerm" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//term/Term">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="FetchPositioning">
@@ -157,7 +157,7 @@
     <eLiterals name="Relative" value="80" literal="RELATIVE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Statement" abstract="true" interface="true"
-      eSuperTypes="#//ESqlObject platform:/plugin/org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable">
+      eSuperTypes="#//ESqlObject ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable">
     <eOperations name="close"/>
     <eOperations name="describe">
       <eParameters name="descriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

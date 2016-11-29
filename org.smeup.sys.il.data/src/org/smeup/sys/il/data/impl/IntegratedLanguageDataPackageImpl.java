@@ -2540,6 +2540,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g1 = createEGenericType(dataAreaEClass_D);
 		initEOperation(op, g1);
 
+		addEOperation(dataAreaEClass, this.getString(), "getDataAreaPath", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(dataAreaEClass, null, "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getString(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -2594,7 +2596,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getDataContext(), "dataContext", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
 		addEParameter(op, g1, "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "externalName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "externalName", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getDataArea());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
@@ -2762,7 +2764,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "externalName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "externalName", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "allocate", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getDataArea());
 		g2 = createEGenericType(t1);

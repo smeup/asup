@@ -142,7 +142,13 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		// @ExternalDef
 		if (dataTerm.getDefinition() instanceof QDataAreaDef) {
 			QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataTerm.getDefinition();
-			writeAnnotation(field, DataDef.class, "externalName", dataAreaDef.getExternalName());
+			
+			if(dataAreaDef.getExternalName().startsWith("#")) {
+				QDataTerm<?> externalPathTerm = getCompilationUnit().getDataTerm(dataAreaDef.getExternalName().substring(1), true);
+				writeAnnotation(field, DataDef.class, "externalName", "#"+getCompilationUnit().getQualifiedName(externalPathTerm));
+			}
+			else
+				writeAnnotation(field, DataDef.class, "externalName", dataAreaDef.getExternalName());
 			
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.TRANSIENT_KEYWORD));
 		}

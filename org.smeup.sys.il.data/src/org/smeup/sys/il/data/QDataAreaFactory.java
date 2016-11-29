@@ -7,8 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.String;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Data Area Factory</b></em>'.
@@ -26,6 +24,6 @@ public interface QDataAreaFactory {
 	 * @model required="true" dataContextRequired="true" argumentRequired="true" externalNameRequired="true"
 	 * @generated
 	 */
-	<D extends QBufferedElement> QDataArea<D> createDataArea(QDataContext dataContext, D argument, String externalName);
+	<D extends QBufferedElement> QDataArea<D> createDataArea(QDataContext dataContext, D argument, QString externalName);
 
 } // QDataAreaFactory

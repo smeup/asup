@@ -33,12 +33,14 @@ import org.smeup.sys.db.esql.QStatement;
 import org.smeup.sys.db.esql.impl.CommunicationAreaImpl;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QRecord;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Module;
 import org.smeup.sys.il.data.annotation.Procedure;
@@ -450,6 +452,26 @@ public class RPJProgramInjector {
 		for (RPJInjectableField field : datas)
 			RPJInjectionHelper.injectDataBased(dataContainer, field);
 
+		// dataArea external
+		for (RPJInjectableField field : datas) {
+			if(!field.getFieldClass().isAssignableFrom(QDataArea.class)) 
+				continue;
+
+			DataDef dataDef = field.getField().getAnnotation(DataDef.class);
+			if (dataDef == null)
+				continue;
+
+			if(!dataDef.externalName().startsWith("#"))
+				continue;
+			
+			QString externalField = (QString) RPJInjectionHelper.getFieldValue(field.getOwner(), dataDef.externalName().substring(1));
+			if (externalField == null)
+				return;
+
+			QDataArea<?> dataArea = (QDataArea<?>) field.getValue();
+			externalField.assign(dataArea.getDataAreaPath());
+		}
+		
 		// statement
 		for (RPJInjectableField field : statements)
 			RPJDatabaseHelper.injectStatement(esqlContext, field);

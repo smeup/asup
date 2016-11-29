@@ -8,7 +8,6 @@
 package org.smeup.sys.il.data;
 
 import java.lang.Enum;
-import java.lang.String;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.List;
@@ -88,7 +87,7 @@ public interface QDataFactory {
 	 * @model required="true" argumentRequired="true" externalNameRequired="true" allocateRequired="true"
 	 * @generated
 	 */
-	<D extends QBufferedElement> QDataArea<D> createDataArea(QUnaryBufferedDataDef<D> argument, String externalName, boolean allocate);
+	<D extends QBufferedElement> QDataArea<D> createDataArea(QUnaryBufferedDataDef<D> argument, QString externalName, boolean allocate);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

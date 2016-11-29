@@ -407,7 +407,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			scope = Scope.LIBRARY_LIST;
 
 		if (scope == null)
-			scope = Scope.LIBRARY_LIST;
+			scope = Scope.OTHER;
 
 		QResourceReader<QProgram> programReader = resourceManager.getResourceReader(job, QProgram.class, scope, library);
 		QProgram program = programReader.lookup(name);

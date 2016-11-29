@@ -51,6 +51,7 @@ import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QScroller;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.SortDirection;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -198,7 +199,15 @@ public final class NIODataFactoryImpl implements QDataFactory {
 			data = (D) createPointer(0);
 		else if (dataDef instanceof QDataAreaDef) {
 			final QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataDef;
-			data = (D) createDataArea(dataAreaDef.getArgument(), dataAreaDef.getExternalName(), allocate);
+			
+			QString externalName = createCharacter(21, false, true);
+			if(dataAreaDef.getExternalName().startsWith("#")) {
+				
+			}
+			else {
+				externalName.eval(dataAreaDef.getExternalName());
+			}
+			data = (D) createDataArea(dataAreaDef.getArgument(), externalName, allocate);
 		} else
 			throw new IntegratedLanguageCoreRuntimeException("Unknown dataType: " + dataDef);
 
@@ -344,7 +353,7 @@ public final class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public final <D extends QBufferedElement> QDataArea<D> createDataArea(final QUnaryBufferedDataDef<D> argument, final String externalName, final boolean allocate) {
+	public final <D extends QBufferedElement> QDataArea<D> createDataArea(final QUnaryBufferedDataDef<D> argument, QString externalName, final boolean allocate) {
 
 		final D argumentData = createData(argument, allocate);
 		final QDataArea<D> nioDataAreaImpl = dataAreaFactory.createDataArea(getDataContext(), argumentData, externalName);
