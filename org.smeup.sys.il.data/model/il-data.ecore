@@ -590,6 +590,13 @@
         <eTypeArguments eTypeParameter="#//Array/D"/>
       </eGenericType>
       <eParameters name="start" eType="#//Numeric"/>
+      <eParameters name="elements" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="qSubarr" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eTypeParameter="#//Array/D"/>
+      </eGenericType>
+      <eParameters name="start" eType="#//Numeric"/>
       <eParameters name="elements" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="qSubarr" lowerBound="1">

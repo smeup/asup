@@ -42,6 +42,14 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	 * @model required="true"
 	 * @generated
 	 */
+	QArray<D> qSubarr(QNumeric start, int elements);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
 	QArray<D> qSubarr(QNumeric start, QNumeric elements);
 
 	/**

@@ -312,6 +312,11 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 	}
 
 	@Override
+	public final QArray<D> qSubarr(final QNumeric start, final int elements) {
+		return qSubarr(start.asInteger(), elements);
+	}	
+	
+	@Override
 	public final QArray<QCharacter> qSubst(final Number start) {
 		return qSubst(start, getModel().getLength());
 	}
@@ -1211,6 +1216,5 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 		stream.defaultWriteObject();
 		
 		stream.writeInt(_elements.length);
-	}	
-
+	}
 }
