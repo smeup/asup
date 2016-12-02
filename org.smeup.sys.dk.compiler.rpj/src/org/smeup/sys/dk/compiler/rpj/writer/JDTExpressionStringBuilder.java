@@ -192,7 +192,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				case NULL:
 				case OMIT:
 					value = "null";
-					break;
+					writeValue(source, null, value);
+					return false;
 				case ON:
 				case OFF:
 				case BLANK:
@@ -1298,6 +1299,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		// B£G00G
 		if (expressionString.equals("W$DIV+'       '+W£DIV")) {
 			expressionRewrited = "w$div.qPlus(\"       \").qPlus(w£div)";
+		}
+		else if (expressionString.equals("X$AZ+'        '+X£AZ")) {
+			expressionRewrited = "x$az.qPlus(\"        \").qPlus(x£az)";
 		}
 		// B£IR10
 		else if (expressionString.contains("%SUBARR(POG: 1: $CONTD)+' '+%SUBARR(PDE: 1: $CONTD)")) {

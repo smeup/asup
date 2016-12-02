@@ -407,7 +407,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			Iterator<QEntryParameter<?>> entryParameters = prototype.getEntry().getParameters().iterator();
 
 			for (String parameter : statement.getParameters()) {
-
+				
 				QExpression expression = expressionParser.parseExpression(parameter);
 
 				if (entryParameters.hasNext()) {
