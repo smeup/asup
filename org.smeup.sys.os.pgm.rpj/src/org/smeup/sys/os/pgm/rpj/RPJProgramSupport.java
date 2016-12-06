@@ -1031,7 +1031,7 @@ public class RPJProgramSupport extends RPJModule {
 		return null;
 	}
 
-	public QDatetime qDate() {
+	public QNumeric qDate() {
 		// TODO Auto-generated method stub
 		return null;
 	}
