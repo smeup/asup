@@ -309,6 +309,14 @@ public interface QNumeric extends QBufferedElement {
 	QNumeric plus(Number value, boolean halfAdjust);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true" halfAdjustRequired="true" maxPrecisionRequired="true"
+	 * @generated
+	 */
+	QNumeric plus(Number value, boolean halfAdjust, boolean maxPrecision);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -322,6 +330,14 @@ public interface QNumeric extends QBufferedElement {
 	 * @generated
 	 */
 	QNumeric plus(QNumeric value, boolean halfAdjust);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" halfAdjustRequired="true" maxPrecisionRequired="true"
+	 * @generated
+	 */
+	QNumeric plus(QNumeric value, boolean halfAdjust, boolean maxPrecision);
 
 	/**
 	 * <!-- begin-user-doc -->

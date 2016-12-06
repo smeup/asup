@@ -313,25 +313,40 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric plus(final Number value) {
-		return plus(value, false);
+		return plus(value, false, false);
 	}
 
 	@Override
 	public final QNumeric plus(final Number value, final boolean halfAdjust) {
-		eval(asDouble() + value.doubleValue(), halfAdjust);
-		return this;
+		return plus(value, false, false);
 	}
 
 	@Override
+	public final QNumeric plus(final Number value, final boolean halfAdjust, final boolean maxPrecision) {
+		eval(asDouble() + value.doubleValue(), halfAdjust, maxPrecision);
+		return this;
+	}
+	
+	@Override
 	public final QNumeric plus(final QNumeric value) {
-		return plus(value, false);
+		return plus(value, false, false);
 	}
 
 	@Override
 	public final QNumeric plus(final QNumeric value, final boolean halfAdjust) {
-		eval(asDouble() + value.asDouble(), halfAdjust);
+		return plus(value, false, false);
+	}
+	
+
+	@Override
+	public final QNumeric plus(final QNumeric value, final boolean halfAdjust, final boolean maxPrecision) {
+		eval(asDouble() + value.asDouble(), halfAdjust, maxPrecision);
 		return this;
 	}
+	
+	
+	
+	
 
 	@Override
 	public final QNumeric power(final Number value) {
