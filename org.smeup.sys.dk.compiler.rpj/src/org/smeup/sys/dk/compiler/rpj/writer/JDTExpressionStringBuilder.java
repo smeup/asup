@@ -1307,6 +1307,28 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		else if (expressionString.contains("%SUBARR(POG: 1: $CONTD)+' '+%SUBARR(PDE: 1: $CONTD)")) {
 			expressionRewrited = "pog.qSubarr(1, $contd).qPlus(\" \").qPlus(pde.qSubarr(1, $contd))";
 		}
+		// C5CI00A / C5MB00A
+		else if (expressionString.contains("VALORI+A9+DESCRIZIONI")) {
+			expressionRewrited = "valori.qPlus(a9).qPlus(descrizioni)";
+		}
+		// D0CC01
+		else if (expressionString.contains("SK_FACS/SK_FACS($$IG£Q)*SK_FAQC($F)")) {
+			expressionRewrited = "oc_facs.current().sk_facs.qDiv(oc_facs.current().sk_facs.get($$ig£q)).qMult(sk_faqc.get($f))";
+		}
+		// D0CC01A
+		else if (expressionString.contains("SK_FPCS/SK_FPCS($$IG£Q)*D0QTCA")) {
+			expressionRewrited = "sk_fpcs.qDiv(sk_fpcs.get($$ig£q)).qMult(d0coso.d0qtca)";
+		}
+		else if (expressionString.contains("SK_COST*D0PAPR/100")) {
+			expressionRewrited = "sk_cost.qMult(d0coso.d0papr).qDiv(100.0)";
+		}
+		// D0CC01B
+		else if (expressionString.contains("SK_COST*P$PERC/100")) {
+			expressionRewrited = "sk_cost.qMult(p$perc).qDiv(100.0)";
+		}
+		else if (expressionString.contains("SK_FACS+(SK_COST/§§QTXX*SK_FACS($$IG£Q))")) {
+			expressionRewrited = "oc_facs.current().sk_facs.qPlus(sk_cost.qDiv(ççqtxx).qMult(oc_facs.current().sk_facs.get($$ig£q)))";
+		}
 		// MUTE02_01
 		else if (expressionString.contains("AR10+10+AR11")) {
 			expressionRewrited = "ar10.qPlus(10).qPlus(ar11)";
