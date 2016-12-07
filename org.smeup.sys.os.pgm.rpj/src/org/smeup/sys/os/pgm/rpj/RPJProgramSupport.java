@@ -119,7 +119,7 @@ public class RPJProgramSupport extends RPJModule {
 	public QIndicator qINU8;
 
 	@DataDef
-	public Date qDATE;
+	public Date qDATESYS;
 
 	@DataDef(length = 1024)
 	public QCharacter qLDA;
