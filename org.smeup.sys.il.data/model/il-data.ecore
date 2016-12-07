@@ -2036,7 +2036,8 @@
     <eLiterals name="Milliseconds" value="170" literal="*MS"/>
     <eLiterals name="Seconds" value="180" literal="*S"/>
     <eLiterals name="Minutes" value="190" literal="*MN"/>
-    <eLiterals name="Hours" value="190" literal="*H"/>
+    <eLiterals name="Hours" value="200" literal="*H"/>
+    <eLiterals name="ISO0" value="210" literal="*ISO0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Decimal" abstract="true" interface="true"
       eSuperTypes="#//Numeric">

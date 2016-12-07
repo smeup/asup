@@ -214,6 +214,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				case DAYS:
 				case HOURS:
 				case ISO:
+				case ISO0:
 				case MILLISECONDS:
 				case MINUTES:
 				case MONTH:

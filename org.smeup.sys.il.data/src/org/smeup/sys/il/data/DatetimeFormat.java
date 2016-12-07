@@ -127,7 +127,15 @@ public enum DatetimeFormat implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	HOURS(190, "Hours", "*H");
+	HOURS(200, "Hours", "*H"), /**
+	 * The '<em><b>ISO0</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ISO0_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ISO0(210, "ISO0", "*ISO0");
 
 	/**
 	 * The '<em><b>ISO</b></em>' literal value.
@@ -292,7 +300,22 @@ public enum DatetimeFormat implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int HOURS_VALUE = 190;
+	public static final int HOURS_VALUE = 200;
+
+	/**
+	 * The '<em><b>ISO0</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ISO0</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ISO0
+	 * @model literal="*ISO0"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ISO0_VALUE = 210;
 
 	/**
 	 * An array of all the '<em><b>Datetime Format</b></em>' enumerators.
@@ -313,6 +336,7 @@ public enum DatetimeFormat implements Enumerator {
 			SECONDS,
 			MINUTES,
 			HOURS,
+			ISO0,
 		};
 
 	/**
@@ -379,6 +403,8 @@ public enum DatetimeFormat implements Enumerator {
 			case MILLISECONDS_VALUE: return MILLISECONDS;
 			case SECONDS_VALUE: return SECONDS;
 			case MINUTES_VALUE: return MINUTES;
+			case HOURS_VALUE: return HOURS;
+			case ISO0_VALUE: return ISO0;
 		}
 		return null;
 	}

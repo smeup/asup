@@ -4354,6 +4354,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEEnumLiteral(datetimeFormatEEnum, DatetimeFormat.SECONDS);
 		addEEnumLiteral(datetimeFormatEEnum, DatetimeFormat.MINUTES);
 		addEEnumLiteral(datetimeFormatEEnum, DatetimeFormat.HOURS);
+		addEEnumLiteral(datetimeFormatEEnum, DatetimeFormat.ISO0);
 
 		initEEnum(initStrategyEEnum, InitStrategy.class, "InitStrategy");
 		addEEnumLiteral(initStrategyEEnum, InitStrategy.BASE);

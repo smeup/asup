@@ -180,6 +180,7 @@ public class RPJProgramSupport extends RPJModule {
 		public static final DataSpecial HIVAL = DataSpecial.HIVAL;
 
 		public static final DatetimeFormat ISO = DatetimeFormat.ISO;
+		public static final DatetimeFormat ISO0 = DatetimeFormat.ISO0;
 		public static final DatetimeFormat MS = DatetimeFormat.MILLISECONDS;
 		public static final DatetimeFormat Y = DatetimeFormat.YEAR;
 		public static final DatetimeFormat YEARS = DatetimeFormat.YEARS;
@@ -1031,6 +1032,11 @@ public class RPJProgramSupport extends RPJModule {
 		return null;
 	}
 
+	public QDatetime qTimestamp() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	public QNumeric qDate() {
 		// TODO Auto-generated method stub
 		return null;

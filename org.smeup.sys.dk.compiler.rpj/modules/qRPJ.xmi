@@ -822,6 +822,26 @@
       </entry>
     </prototypes>
     <prototypes
+        name="%timestamp">
+      <definition
+          xsi:type="il-data-def:DatetimeDef"
+          type="TIMESTAMP"
+          dateFormat="*ISO"
+          timeFormat="*ISO"/>
+      <entry>
+        <parameters>
+          <delegate
+              xsi:type="il-flow:FlowData"
+              name="expression">
+            <cardinality
+                min="1"/>
+            <definition
+                xsi:type="il-data-def:BufferDef"/>
+          </delegate>
+        </parameters>
+      </entry>
+    </prototypes>
+    <prototypes
         name="%xlate">
       <definition
           xsi:type="il-data-def:StringDef"/>
