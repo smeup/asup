@@ -33,6 +33,7 @@ tokens
 	QUALIFIED;
 	BLOCK;
 	INDICATOR;	
+	ARRAY;
 }
 
 @parser::header {
@@ -56,7 +57,7 @@ tokens
 
     @Override    
     public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
-		String msg = "Lexer error. Input: " + e.input.toString();
+		String msg = "RPGExprLexer error. Input: " + e.input.toString();
         msg += " " + getErrorHeader(e);
         msg += " Msg: " + getErrorMessage(e, tokenNames);
         throw new IntegratedLanguageExpressionRuntimeException(msg , e);
@@ -79,7 +80,7 @@ tokens
 
 	@Override    
     public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
-		String msg = "Parser error. Input: " + e.input.toString();
+		String msg = "RPGExprParser error. Input: " + e.input.toString();
         msg += " " + getErrorHeader(e);
         msg += " Msg: " + getErrorMessage(e, tokenNames);
         throw new IntegratedLanguageExpressionRuntimeException(msg , e);
@@ -143,14 +144,14 @@ qualified
 primaryExpression
 	:	'(' logicalExpression ')' -> ^(BLOCK[$primaryExpression.text] logicalExpression)
 		|		
-		array 
+		array
 		|
 		value
 	;
 
 array
 	:
-	value value+ -> ^(BI_FUNCTION["\%ARRAY"] value value+)
+	'[' qualified (':' qualified)* ']' -> ^(ARRAY qualified qualified*)
 	;	
 
 value
@@ -173,10 +174,15 @@ value
 	|	special
 	|	bi_function
 	|	usr_function
-	|   	indicator
+	|   indicator
+	|   mu_term
 	|	TERM
 
 	;
+	
+mu_term
+	:	MULT TERM -> TERM[$MULT.text + $TERM.text]
+	;	
 	
 indicator
 	:
@@ -204,6 +210,10 @@ usr_function
 	:	TERM params	 -> ^(USER_FUNCTION[$TERM.text] params)
 		|
 		TERM empty	-> ^(USER_FUNCTION[$TERM.text])
+		|
+		SPECIAL params	-> ^(USER_FUNCTION[$SPECIAL.text] params)
+		|
+		IN params	-> ^(USER_FUNCTION[$IN.text] params)
 	;
 bi_function
 	: 	BI_FUN (params)? -> ^(BI_FUNCTION[$BI_FUN.text] (params)?)
@@ -249,6 +259,8 @@ SPECIAL
 		|
 		( P A R M S)
 		|
+		( S I Z E)
+		|
 		( D )
 		|
 		( M S)
@@ -264,6 +276,18 @@ SPECIAL
 		( N E X T)
 		|
 		(I S O)
+		|
+		( E Q)
+		|
+		( L T)
+		|
+		( L E)
+		|
+		( G T)
+		|
+		( G E)
+		|
+		( N E)		
 	;
 
 OR 	: 	'||' | (O R);
@@ -304,7 +328,7 @@ INNU	:
 	|
 	I N M R
 	|
-	I N O (A | G | V | F)
+	I N O (A | B | C | D | E | F | G | V)
 	|
 	I N L ('1'..'9')
 	|
@@ -396,7 +420,7 @@ FLOAT
 	;
 
 DATE
- 	:	('D\''|'d\'') (DIGIT)* '\''
+ 	:	('D\''|'d\'') DIGIT DIGIT DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT '\''
         ;
 
 TIME
@@ -404,7 +428,7 @@ TIME
         ;
 
 TIMESTAMP
- 	:	('Z\''|'z\'') (DIGIT)* '\''
+ 	:	('Z\''|'z\'') DIGIT DIGIT DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT '.' DIGIT DIGIT '.' DIGIT DIGIT '.' DIGIT DIGIT DIGIT DIGIT DIGIT DIGIT '\''
         ;
         
 

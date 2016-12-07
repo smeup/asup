@@ -277,6 +277,8 @@ SPECIAL
 		|
 		(I S O)
 		|
+		(I S O '0')
+		|
 		( E Q)
 		|
 		( L T)
