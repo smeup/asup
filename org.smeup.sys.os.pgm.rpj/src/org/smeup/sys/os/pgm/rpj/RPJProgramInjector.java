@@ -452,7 +452,7 @@ public class RPJProgramInjector {
 		for (RPJInjectableField field : datas)
 			RPJInjectionHelper.injectDataBased(dataContainer, field);
 
-		// dataArea external
+		// dataArea external #
 		for (RPJInjectableField field : datas) {
 			if(!field.getFieldClass().isAssignableFrom(QDataArea.class)) 
 				continue;

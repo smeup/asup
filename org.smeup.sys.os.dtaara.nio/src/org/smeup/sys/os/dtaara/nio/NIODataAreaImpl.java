@@ -33,7 +33,7 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 
 	private static final long serialVersionUID = 1L;
 
-	private transient QString externalName;
+	private QString externalName;
 	private transient String currentDataAreaName;
 	private transient org.smeup.sys.os.dtaara.QDataArea currentDataArea;
 
