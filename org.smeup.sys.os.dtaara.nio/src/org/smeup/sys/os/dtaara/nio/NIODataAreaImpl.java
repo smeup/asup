@@ -111,14 +111,15 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 			else
 				currentDataArea.setContent(new String(asBytes()));
 		} else {
-			if (get() instanceof QString)
-				currentDataArea.setContent(((QString) get()).asString());
-			else
-				currentDataArea.setContent(new String(asBytes()));
-			
 			QResourceManager resourceManager = getDataContext().getContext().get(QResourceManager.class);
 			QResourceWriter<org.smeup.sys.os.dtaara.QDataArea> dataAreaWriter = resourceManager.getResourceWriter(getDataContext(), org.smeup.sys.os.dtaara.QDataArea.class, currentDataArea.getLibrary());
-			dataAreaWriter.save(currentDataArea, true);
+
+			org.smeup.sys.os.dtaara.QDataArea qDataArea = dataAreaWriter.lookup(externalName.trimR());
+			if (get() instanceof QString)
+				qDataArea.setContent(((QString) get()).asString());
+			else
+				qDataArea.setContent(new String(asBytes()));
+			dataAreaWriter.save(qDataArea, true);
 		}
 	}
 
