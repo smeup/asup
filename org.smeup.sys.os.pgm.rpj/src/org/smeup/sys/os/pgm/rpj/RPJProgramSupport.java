@@ -34,7 +34,6 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFiller;
-import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QIndicator;
@@ -119,7 +118,7 @@ public class RPJProgramSupport extends RPJModule {
 	public QIndicator qINU8;
 
 	@DataDef
-	public Date qDATESYS;
+	public RPJProgramDate qDATESYS;
 
 	@DataDef(length = 1024)
 	public QCharacter qLDA;
@@ -1069,17 +1068,6 @@ public class RPJProgramSupport extends RPJModule {
 	public void qExcept(String string) {
 		// TODO Auto-generated method stub
 
-	}
-
-	public static class Date extends QDataStructWrapper {
-
-		private static final long serialVersionUID = 1L;
-
-		@DataDef(precision = 4)
-		public QDecimal uyear4;
-
-		@DataDef(precision = 2)
-		public QDecimal uyear;
 	}
 
 	public QIndicator qSwitch(String string) {

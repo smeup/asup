@@ -27,6 +27,11 @@ import org.smeup.sys.rt.core.QServiceResourceListener;
  */
 public class ServiceResourceListenerImpl extends ServiceRefImpl implements QServiceResourceListener {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * The default value of the '{@link #getInterfaceName() <em>Interface Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

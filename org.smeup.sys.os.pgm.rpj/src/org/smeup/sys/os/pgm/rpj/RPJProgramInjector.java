@@ -16,6 +16,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.WildcardType;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -57,6 +58,7 @@ import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.core.jobs.QJobReference;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileManager;
@@ -72,6 +74,7 @@ public class RPJProgramInjector {
 
 	public static final String NAME_OWNER = "*OWNER";
 
+	private static final String PROGRAM_DATE = "*datesys";
 	private static final String PROGRAM_STATUS = "*pgmstatus";
 	private static final String SQL_COMMUNICATION_AREA = "*sqlca";
 
@@ -85,6 +88,8 @@ public class RPJProgramInjector {
 	private QAccessManager esamManager;
 	@Inject
 	private QESqlManager esqlManager;
+	@Inject
+	private QJobManager jobManager;
 	@Inject
 	private QJob job;
 
@@ -126,10 +131,11 @@ public class RPJProgramInjector {
 			Object delegate = prepareDelegate(dataContainer, program, klass);
 
 			// program status
-			QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(PROGRAM_STATUS);
-			if(programStatus == null)
-				programStatus = addProgramStatus(dataContainer, program);
+			QProgramStatus programStatus = addProgramStatus(dataContainer, program);
 
+			// program date
+			addProgramDate(dataContainer, program);
+			
 			// memory info
 			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();
 			programInfo.setMemorySize(dataContainer.getMemorySize());
@@ -170,6 +176,8 @@ public class RPJProgramInjector {
 
 			QProgramStatus programStatus = addProgramStatus(dataContainer, program);
 
+			RPJProgramDate programDate = addProgramDate(dataContainer, program); 
+					
 			QCommunicationArea communicationArea = addCommunicationArea(dataContainer, program);
 			
 			QAccessContext accessContext = esamManager.createAccessContext(job, dataContext);
@@ -186,6 +194,7 @@ public class RPJProgramInjector {
 					RPJProgram rpjProgram = (RPJProgram)delegate;
 
 					rpjProgram.getRecords().put(PROGRAM_STATUS, programStatus);
+					rpjProgram.getRecords().put(PROGRAM_DATE, programDate);
 					rpjProgram.getRecords().put(SQL_COMMUNICATION_AREA, communicationArea);
 
 					delegate = injectData(delegate, null, klass, dataContainer, accessContext, esqlContext, rpjProgram.getModules(), rpjProgram.getRecords());
@@ -205,12 +214,12 @@ public class RPJProgramInjector {
 				RPJProgram rpjProgram = (RPJProgram)delegate;
 				
 				rpjProgram.getRecords().put(PROGRAM_STATUS, programStatus);
+				rpjProgram.getRecords().put(PROGRAM_DATE, programDate);
 				rpjProgram.getRecords().put(SQL_COMMUNICATION_AREA, communicationArea);
 				delegate = injectData(delegate, null, klass, dataContainer, accessContext, esqlContext, rpjProgram.getModules(), rpjProgram.getRecords());
 			}
 			
 			dataContext.getContext().invoke(delegate, PostConstruct.class);
-			
 			
 			return delegate;
 		} catch (Exception e) {
@@ -222,11 +231,9 @@ public class RPJProgramInjector {
 	private QProgramStatus addProgramStatus(QDataContainer dataContainer, QProgram program) {
 
 		QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(PROGRAM_STATUS);
-
 		if (programStatus == null) {
 			QDataTerm<?> programStatusTerm = dataContainer.addDataTerm(PROGRAM_STATUS, RPJProgramStatus.class, null);
 			programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
-
 		}
 
 		programStatus.getProgramName().eval(program.getName());
@@ -244,15 +251,32 @@ public class RPJProgramInjector {
 	private QCommunicationArea addCommunicationArea(QDataContainer dataContainer, QProgram program) {
 		
 		CommunicationAreaImpl communicationArea = (CommunicationAreaImpl) dataContainer.getData(SQL_COMMUNICATION_AREA);
-
 		if (communicationArea == null) {
 			QDataTerm<?> communicationAreaTerm = dataContainer.addDataTerm(SQL_COMMUNICATION_AREA, CommunicationAreaImpl.class, null);
 			communicationArea = (CommunicationAreaImpl) dataContainer.getData(communicationAreaTerm);
 		}
-		else
-			communicationArea.clear();
+
+		communicationArea.clear();
 
 		return communicationArea;
+	}
+	
+	private RPJProgramDate addProgramDate(QDataContainer dataContainer, QProgram program) {
+		
+		RPJProgramDate programDate = (RPJProgramDate) dataContainer.getData(PROGRAM_DATE);
+		if (programDate == null) {
+			QDataTerm<?> programDateTerm = dataContainer.addDataTerm(PROGRAM_DATE, RPJProgramDate.class, null);
+			programDate = (RPJProgramDate) dataContainer.getData(programDateTerm);
+		}
+
+		programDate.clear();
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(jobManager.now(job));
+		programDate.uyear4.eval(calendar.get(Calendar.YEAR));
+		programDate.uyear.eval(calendar.get(Calendar.YEAR));
+
+		return programDate;
 	}
 	
 	public <P extends Object> P prepareProcedure(Object owner, Class<P> klass) {

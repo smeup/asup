@@ -155,7 +155,6 @@ public class ServiceExecutorImpl extends ServiceRefImpl implements QServiceExecu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {

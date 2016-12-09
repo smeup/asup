@@ -220,6 +220,7 @@ public final class NIODatetimeImpl extends NIOBufferedElementImpl implements QDa
 			number.eval(diff / (24 * 60 * 60 * 1000));
 			break;
 		case ISO:
+		case ISO0:
 			break;
 		case MILLISECONDS:
 			number.eval(diff);

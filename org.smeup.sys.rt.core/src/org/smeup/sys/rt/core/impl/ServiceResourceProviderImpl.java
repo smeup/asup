@@ -27,6 +27,11 @@ import org.smeup.sys.rt.core.QServiceResourceProvider;
  */
 public class ServiceResourceProviderImpl extends ServiceRefImpl implements QServiceResourceProvider {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * The default value of the '{@link #getInterfaceName() <em>Interface Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
