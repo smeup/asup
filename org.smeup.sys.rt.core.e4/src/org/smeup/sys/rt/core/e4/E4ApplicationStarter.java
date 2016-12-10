@@ -140,7 +140,8 @@ public class E4ApplicationStarter {
 
 		for (QApplicationComponent component : application.getComponents()) {
 			QContext contextComponent = contextApplication.createChildContext(component.getName());
-
+			contextComponent.set(QApplicationComponent.class, component);
+			
 			// register configurations
 			for (QObject config : component.getConfigs())
 				contextComponent.set(config.getClass().getInterfaces()[0].getName(), config);
