@@ -5,7 +5,7 @@
     modelName="As.UP Operating System DataArea" editPluginClass="" editorPluginClass=""
     rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" testSuiteClass="" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="7.0" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.core/model/il-core.genmodel#//data ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
+    complianceLevel="7.0" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core ../../org.smeup.sys.dk.core/model/dk.core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data"
     interfaceNamePattern="Q{0}">
   <foreignModel>os-dtaara.ecore</foreignModel>
   <genPackages prefix="OperatingSystemDataArea" basePackage="org.smeup.sys.os" disposableProviderFactory="true"
@@ -24,7 +24,7 @@
     </genClasses>
     <genClasses image="false" ecoreClass="os-dtaara.ecore#//DataAreaManager">
       <genOperations ecoreOperation="os-dtaara.ecore#//DataAreaManager/getLocalDataArea">
-        <genParameters ecoreParameter="os-dtaara.ecore#//DataAreaManager/getLocalDataArea/context"/>
+        <genParameters ecoreParameter="os-dtaara.ecore#//DataAreaManager/getLocalDataArea/contextProvider"/>
       </genOperations>
     </genClasses>
   </genPackages>
