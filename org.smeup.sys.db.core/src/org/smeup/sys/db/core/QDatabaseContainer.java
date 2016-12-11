@@ -103,7 +103,7 @@ public interface QDatabaseContainer extends QObject {
 	 * @return the value of the '<em>Default Catalog Container</em>' reference.
 	 * @see #setDefaultCatalogContainer(QCatalogContainer)
 	 * @see org.smeup.sys.db.core.QDatabaseCorePackage#getDatabaseContainer_DefaultCatalogContainer()
-	 * @model required="true"
+	 * @model keys="name" required="true"
 	 * @generated
 	 */
 	QCatalogContainer getDefaultCatalogContainer();
