@@ -9,3 +9,4 @@ Require-Bundle: org.smeup.sys.il.memo,
  org.smeup.sys.dk.source,
  org.smeup.sys.dk.source.nio,
  org.smeup.sys.rt.core
+Export-Package: org.smeup.sys.il.memo.nio
