@@ -22,6 +22,7 @@ import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.impl.ObjectNameableImpl;
 import org.smeup.sys.rt.core.QApplication;
 import org.smeup.sys.rt.core.QApplicationComponent;
+import org.smeup.sys.rt.core.QConfig;
 import org.smeup.sys.rt.core.QRuntimeCorePackage;
 import org.smeup.sys.rt.core.QServiceCommandProvider;
 import org.smeup.sys.rt.core.QServiceHook;
@@ -36,6 +37,7 @@ import org.smeup.sys.rt.core.QServiceHook;
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationImpl#getCommands <em>Commands</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationImpl#getComponents <em>Components</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationImpl#getConfig <em>Config</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationImpl#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationImpl#getHooks <em>Hooks</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationImpl#getName <em>Name</em>}</li>
@@ -64,6 +66,15 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 	 * @ordered
 	 */
 	protected EList<QApplicationComponent> components;
+	/**
+	 * The cached value of the '{@link #getConfig() <em>Config</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConfig()
+	 * @generated
+	 * @ordered
+	 */
+	protected QConfig config;
 	/**
 	 * The cached value of the '{@link #getContext() <em>Context</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -183,6 +194,49 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 			components = new EObjectContainmentEList<QApplicationComponent>(QApplicationComponent.class, this, QRuntimeCorePackage.APPLICATION__COMPONENTS);
 		}
 		return components;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QConfig getConfig() {
+		return config;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetConfig(QConfig newConfig, NotificationChain msgs) {
+		QConfig oldConfig = config;
+		config = newConfig;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.APPLICATION__CONFIG, oldConfig, newConfig);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConfig(QConfig newConfig) {
+		if (newConfig != config) {
+			NotificationChain msgs = null;
+			if (config != null)
+				msgs = ((InternalEObject)config).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QRuntimeCorePackage.APPLICATION__CONFIG, null, msgs);
+			if (newConfig != null)
+				msgs = ((InternalEObject)newConfig).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QRuntimeCorePackage.APPLICATION__CONFIG, null, msgs);
+			msgs = basicSetConfig(newConfig, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.APPLICATION__CONFIG, newConfig, newConfig));
 	}
 
 	/**
@@ -317,6 +371,8 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 				return ((InternalEList<?>)getCommands()).basicRemove(otherEnd, msgs);
 			case QRuntimeCorePackage.APPLICATION__COMPONENTS:
 				return ((InternalEList<?>)getComponents()).basicRemove(otherEnd, msgs);
+			case QRuntimeCorePackage.APPLICATION__CONFIG:
+				return basicSetConfig(null, msgs);
 			case QRuntimeCorePackage.APPLICATION__HOOKS:
 				return ((InternalEList<?>)getHooks()).basicRemove(otherEnd, msgs);
 		}
@@ -335,6 +391,8 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 				return getCommands();
 			case QRuntimeCorePackage.APPLICATION__COMPONENTS:
 				return getComponents();
+			case QRuntimeCorePackage.APPLICATION__CONFIG:
+				return getConfig();
 			case QRuntimeCorePackage.APPLICATION__CONTEXT:
 				if (resolve) return getContext();
 				return basicGetContext();
@@ -366,6 +424,9 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 			case QRuntimeCorePackage.APPLICATION__COMPONENTS:
 				getComponents().clear();
 				getComponents().addAll((Collection<? extends QApplicationComponent>)newValue);
+				return;
+			case QRuntimeCorePackage.APPLICATION__CONFIG:
+				setConfig((QConfig)newValue);
 				return;
 			case QRuntimeCorePackage.APPLICATION__CONTEXT:
 				setContext((QContext)newValue);
@@ -401,6 +462,9 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 			case QRuntimeCorePackage.APPLICATION__COMPONENTS:
 				getComponents().clear();
 				return;
+			case QRuntimeCorePackage.APPLICATION__CONFIG:
+				setConfig((QConfig)null);
+				return;
 			case QRuntimeCorePackage.APPLICATION__CONTEXT:
 				setContext((QContext)null);
 				return;
@@ -432,6 +496,8 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 				return commands != null && !commands.isEmpty();
 			case QRuntimeCorePackage.APPLICATION__COMPONENTS:
 				return components != null && !components.isEmpty();
+			case QRuntimeCorePackage.APPLICATION__CONFIG:
+				return config != null;
 			case QRuntimeCorePackage.APPLICATION__CONTEXT:
 				return context != null;
 			case QRuntimeCorePackage.APPLICATION__HOOKS:

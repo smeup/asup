@@ -24,6 +24,7 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.QApplication#getCommands <em>Commands</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplication#getComponents <em>Components</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.QApplication#getConfig <em>Config</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplication#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplication#getHooks <em>Hooks</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplication#getName <em>Name</em>}</li>
@@ -68,6 +69,32 @@ public interface QApplication extends QObjectNameable, QContextProvider {
 	 * @generated
 	 */
 	List<QApplicationComponent> getComponents();
+
+	/**
+	 * Returns the value of the '<em><b>Config</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Config</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Config</em>' containment reference.
+	 * @see #setConfig(QConfig)
+	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getApplication_Config()
+	 * @model containment="true"
+	 * @generated
+	 */
+	QConfig getConfig();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.rt.core.QApplication#getConfig <em>Config</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Config</em>' containment reference.
+	 * @see #getConfig()
+	 * @generated
+	 */
+	void setConfig(QConfig value);
 
 	/**
 	 * Returns the value of the '<em><b>Context</b></em>' reference.

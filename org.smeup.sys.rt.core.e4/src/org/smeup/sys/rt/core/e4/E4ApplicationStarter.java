@@ -110,6 +110,12 @@ public class E4ApplicationStarter {
 
 		bundleContext.registerService(QApplication.class, application, null);
 
+		// configuration
+		if (application.getConfig() != null) {
+			for (QObject object : application.getConfig().getObjects())
+				contextApplication.set(object.getClass().getInterfaces()[0].getName(), object);
+		}
+
 		// hooks
 		messageLevel++;
 		for (QServiceHook hook : application.getHooks()) {
@@ -142,7 +148,7 @@ public class E4ApplicationStarter {
 			QContext contextComponent = contextApplication.createChildContext(component.getName());
 			contextComponent.set(QApplicationComponent.class, component);
 
-			// register configurations
+			// configuration
 			if (component.getConfig() != null) {
 				for (QObject object : component.getConfig().getObjects())
 					contextComponent.set(object.getClass().getInterfaces()[0].getName(), object);

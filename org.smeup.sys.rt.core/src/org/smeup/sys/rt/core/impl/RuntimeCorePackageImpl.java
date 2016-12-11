@@ -270,7 +270,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getApplication_Context() {
+	public EReference getApplication_Config() {
 		return (EReference)applicationEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -279,8 +279,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EReference getApplication_Hooks() {
+	public EReference getApplication_Context() {
 		return (EReference)applicationEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -290,8 +289,18 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * @generated
 	 */
 	@Override
+	public EReference getApplication_Hooks() {
+		return (EReference)applicationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getApplication_Name() {
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -300,7 +309,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * @generated
 	 */
 	public EAttribute getApplication_Port() {
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -310,7 +319,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 */
 	@Override
 	public EAttribute getApplication_Text() {
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(6);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -720,6 +729,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		applicationEClass = createEClass(APPLICATION);
 		createEReference(applicationEClass, APPLICATION__COMMANDS);
 		createEReference(applicationEClass, APPLICATION__COMPONENTS);
+		createEReference(applicationEClass, APPLICATION__CONFIG);
 		createEReference(applicationEClass, APPLICATION__CONTEXT);
 		createEReference(applicationEClass, APPLICATION__HOOKS);
 		createEAttribute(applicationEClass, APPLICATION__NAME);
@@ -837,6 +847,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		initEClass(applicationEClass, QApplication.class, "Application", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getApplication_Commands(), this.getServiceCommandProvider(), null, "commands", null, 0, -1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_Components(), this.getApplicationComponent(), null, "components", null, 0, -1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApplication_Config(), this.getConfig(), null, "config", null, 0, 1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_Context(), theIntegratedLanguageCoreCtxPackage.getContext(), null, "context", null, 0, 1, QApplication.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_Hooks(), this.getServiceHook(), null, "hooks", null, 0, -1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Name(), ecorePackage.getEString(), "name", null, 0, 1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

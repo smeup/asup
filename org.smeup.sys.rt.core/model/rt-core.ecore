@@ -6,6 +6,8 @@
         eType="#//ServiceCommandProvider" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
         eType="#//ApplicationComponent" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//Config"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"
         transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hooks" upperBound="-1"
