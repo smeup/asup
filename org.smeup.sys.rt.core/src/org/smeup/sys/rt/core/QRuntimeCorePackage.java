@@ -166,22 +166,13 @@ public interface QRuntimeCorePackage extends EPackage {
 	int APPLICATION_COMPONENT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Commands</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Config</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_COMPONENT__COMMANDS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Configs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION_COMPONENT__CONFIGS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
+	int APPLICATION_COMPONENT__CONFIG = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Hooks</b></em>' containment reference list.
@@ -190,7 +181,16 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_COMPONENT__HOOKS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
+	int APPLICATION_COMPONENT__HOOKS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Commands</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_COMPONENT__COMMANDS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
@@ -304,6 +304,34 @@ public interface QRuntimeCorePackage extends EPackage {
 	int BUNDLE_VISITOR_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.rt.core.impl.ConfigImpl <em>Config</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.rt.core.impl.ConfigImpl
+	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getConfig()
+	 * @generated
+	 */
+	int CONFIG = 6;
+
+	/**
+	 * The feature id for the '<em><b>Objects</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIG__OBJECTS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIG_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.rt.core.QLogger <em>Logger</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -311,7 +339,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getLogger()
 	 * @generated
 	 */
-	int LOGGER = 6;
+	int LOGGER = 7;
 
 	/**
 	 * The number of structural features of the '<em>Logger</em>' class.
@@ -330,7 +358,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getServiceRef()
 	 * @generated
 	 */
-	int SERVICE_REF = 10;
+	int SERVICE_REF = 11;
 
 	/**
 	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
@@ -367,7 +395,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getServiceCommandProvider()
 	 * @generated
 	 */
-	int SERVICE_COMMAND_PROVIDER = 7;
+	int SERVICE_COMMAND_PROVIDER = 8;
 
 	/**
 	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
@@ -413,7 +441,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getServiceExecutor()
 	 * @generated
 	 */
-	int SERVICE_EXECUTOR = 9;
+	int SERVICE_EXECUTOR = 10;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.rt.core.impl.ServiceHookImpl <em>Service Hook</em>}' class.
@@ -423,7 +451,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getServiceHook()
 	 * @generated
 	 */
-	int SERVICE_HOOK = 8;
+	int SERVICE_HOOK = 9;
 
 	/**
 	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
@@ -505,7 +533,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getServiceResourceListener()
 	 * @generated
 	 */
-	int SERVICE_RESOURCE_LISTENER = 11;
+	int SERVICE_RESOURCE_LISTENER = 12;
 
 	/**
 	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
@@ -551,7 +579,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getServiceResourceProvider()
 	 * @generated
 	 */
-	int SERVICE_RESOURCE_PROVIDER = 12;
+	int SERVICE_RESOURCE_PROVIDER = 13;
 
 	/**
 	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
@@ -597,7 +625,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getServiceRegistry()
 	 * @generated
 	 */
-	int SERVICE_REGISTRY = 13;
+	int SERVICE_REGISTRY = 14;
 
 	/**
 	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
@@ -661,7 +689,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getServiceRegistryEntry()
 	 * @generated
 	 */
-	int SERVICE_REGISTRY_ENTRY = 14;
+	int SERVICE_REGISTRY_ENTRY = 15;
 
 	/**
 	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
@@ -734,7 +762,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getServiceTester()
 	 * @generated
 	 */
-	int SERVICE_TESTER = 15;
+	int SERVICE_TESTER = 16;
 
 	/**
 	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
@@ -780,7 +808,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getServiceStatus()
 	 * @generated
 	 */
-	int SERVICE_STATUS = 16;
+	int SERVICE_STATUS = 17;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.rt.core.QApplication <em>Application</em>}'.
@@ -880,6 +908,17 @@ public interface QRuntimeCorePackage extends EPackage {
 	EClass getApplicationComponent();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.smeup.sys.rt.core.QApplicationComponent#getConfig <em>Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Config</em>'.
+	 * @see org.smeup.sys.rt.core.QApplicationComponent#getConfig()
+	 * @see #getApplicationComponent()
+	 * @generated
+	 */
+	EReference getApplicationComponent_Config();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.rt.core.QApplicationComponent#getCommands <em>Commands</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -922,17 +961,6 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getApplicationComponent_Name();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.rt.core.QApplicationComponent#getConfigs <em>Configs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Configs</em>'.
-	 * @see org.smeup.sys.rt.core.QApplicationComponent#getConfigs()
-	 * @see #getApplicationComponent()
-	 * @generated
-	 */
-	EReference getApplicationComponent_Configs();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.rt.core.QApplicationModule <em>Application Module</em>}'.
@@ -995,6 +1023,27 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getBundleVisitor();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.rt.core.QConfig <em>Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Config</em>'.
+	 * @see org.smeup.sys.rt.core.QConfig
+	 * @generated
+	 */
+	EClass getConfig();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.rt.core.QConfig#getObjects <em>Objects</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Objects</em>'.
+	 * @see org.smeup.sys.rt.core.QConfig#getObjects()
+	 * @see #getConfig()
+	 * @generated
+	 */
+	EReference getConfig_Objects();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.rt.core.QLogger <em>Logger</em>}'.
@@ -1371,6 +1420,14 @@ public interface QRuntimeCorePackage extends EPackage {
 		EClass APPLICATION_COMPONENT = eINSTANCE.getApplicationComponent();
 
 		/**
+		 * The meta object literal for the '<em><b>Config</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLICATION_COMPONENT__CONFIG = eINSTANCE.getApplicationComponent_Config();
+
+		/**
 		 * The meta object literal for the '<em><b>Commands</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1401,14 +1458,6 @@ public interface QRuntimeCorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute APPLICATION_COMPONENT__NAME = eINSTANCE.getApplicationComponent_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Configs</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference APPLICATION_COMPONENT__CONFIGS = eINSTANCE.getApplicationComponent_Configs();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.rt.core.impl.ApplicationModuleImpl <em>Application Module</em>}' class.
@@ -1465,6 +1514,24 @@ public interface QRuntimeCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass BUNDLE_VISITOR = eINSTANCE.getBundleVisitor();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.rt.core.impl.ConfigImpl <em>Config</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.rt.core.impl.ConfigImpl
+		 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getConfig()
+		 * @generated
+		 */
+		EClass CONFIG = eINSTANCE.getConfig();
+
+		/**
+		 * The meta object literal for the '<em><b>Objects</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONFIG__OBJECTS = eINSTANCE.getConfig_Objects();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.rt.core.QLogger <em>Logger</em>}' class.

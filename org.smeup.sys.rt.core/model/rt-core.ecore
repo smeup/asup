@@ -16,8 +16,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ApplicationComponent" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="configs" upperBound="-1"
-        eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Object"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//Config"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hooks" upperBound="-1"
         eType="#//ServiceHook" containment="true"/>
@@ -85,6 +84,11 @@
         </eGenericType>
       </eParameters>
     </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Config">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objects" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Object"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Logger" abstract="true" interface="true">
     <eOperations name="debug">

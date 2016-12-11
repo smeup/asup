@@ -127,7 +127,7 @@ public class E4ApplicationStarter {
 			properties.put("org.smeup.sys.rt.core.hook.application", application.getText());
 			bundleContext.registerService(hook.getInterfaceName(), service, properties);
 		}
-		
+
 		// hooks
 		messageLevel++;
 
@@ -141,10 +141,12 @@ public class E4ApplicationStarter {
 		for (QApplicationComponent component : application.getComponents()) {
 			QContext contextComponent = contextApplication.createChildContext(component.getName());
 			contextComponent.set(QApplicationComponent.class, component);
-			
+
 			// register configurations
-			for (QObject config : component.getConfigs())
-				contextComponent.set(config.getClass().getInterfaces()[0].getName(), config);
+			if (component.getConfig() != null) {
+				for (QObject object : component.getConfig().getObjects())
+					contextComponent.set(object.getClass().getInterfaces()[0].getName(), object);
+			}
 
 			messageLevel++;
 			println(">component " + component);
@@ -163,7 +165,7 @@ public class E4ApplicationStarter {
 		}
 
 		messageLevel--;
-		
+
 		// commands provider
 		messageLevel++;
 		for (QServiceCommandProvider command : application.getCommands()) {
@@ -215,7 +217,7 @@ public class E4ApplicationStarter {
 			println(">module " + module);
 
 			messageLevel++;
-			
+
 			// services
 			for (QServiceRef serviceRef : module.getServices()) {
 				try {
@@ -224,7 +226,7 @@ public class E4ApplicationStarter {
 					e.printStackTrace();
 				}
 			}
-			
+
 			messageLevel--;
 
 			messageLevel--;
@@ -237,7 +239,7 @@ public class E4ApplicationStarter {
 			contextComponent.invoke(hook, ComponentStarted.class);
 		}
 		messageLevel--;
-		
+
 		// commands provider
 		messageLevel++;
 		for (QServiceCommandProvider command : component.getCommands()) {
@@ -258,7 +260,7 @@ public class E4ApplicationStarter {
 	public void registerService(QApplication application, QApplicationComponent component, QContext componentContext, QServiceRef serviceRef) throws ClassNotFoundException {
 
 		boolean remoteExport = false;
-		
+
 		// STOPPED
 		if (serviceRef.getStatus() == ServiceStatus.STOPPED) {
 			println("-service " + serviceRef + " unactive");
@@ -268,20 +270,22 @@ public class E4ApplicationStarter {
 		println("+service " + serviceRef);
 
 		if (serviceRef instanceof QServiceExecutor) {
-			QServiceExecutor serviceExecutor = (QServiceExecutor)serviceRef;
+			QServiceExecutor serviceExecutor = (QServiceExecutor) serviceRef;
 			remoteExport = serviceExecutor.isRemoteExport();
-			
+
 			// service references
-//			for (QServiceExecutor serviceChildRef : serviceExecutor.getServices()) {
-//				messageLevel++;
-//				registerService(application, component, componentContext, serviceChildRef);
-//				messageLevel--;
-//			}
+			// for (QServiceExecutor serviceChildRef :
+			// serviceExecutor.getServices()) {
+			// messageLevel++;
+			// registerService(application, component, componentContext,
+			// serviceChildRef);
+			// messageLevel--;
+			// }
 		}
-		
+
 		if (serviceRef instanceof QServiceRegistry) {
-			QServiceRegistry serviceRegistry = (QServiceRegistry)serviceRef;
-			
+			QServiceRegistry serviceRegistry = (QServiceRegistry) serviceRef;
+
 			// service entries
 			for (QServiceRegistryEntry serviceChildRef : serviceRegistry.getEntries()) {
 				messageLevel++;
@@ -289,7 +293,7 @@ public class E4ApplicationStarter {
 				messageLevel--;
 			}
 		}
-		
+
 		// load service
 		Object service = loadObject(componentContext, serviceRef.getClassName());
 
@@ -297,12 +301,12 @@ public class E4ApplicationStarter {
 		Dictionary<String, Object> dictionary = new Hashtable<String, Object>();
 
 		if (serviceRef instanceof QServiceRegistryEntry) {
-			QServiceRegistryEntry serviceRegistry = (QServiceRegistryEntry)serviceRef;
+			QServiceRegistryEntry serviceRegistry = (QServiceRegistryEntry) serviceRef;
 
 			// register on context
 			dictionary.put("org.smeup.sys.il.core.registry.name", serviceRegistry.getName());
 			dictionary.put("org.smeup.sys.il.core.registry.vendor", serviceRegistry.getVendor());
-			dictionary.put("org.smeup.sys.il.core.registry.version", serviceRegistry.getVersion());	
+			dictionary.put("org.smeup.sys.il.core.registry.version", serviceRegistry.getVersion());
 		}
 
 		// service registration

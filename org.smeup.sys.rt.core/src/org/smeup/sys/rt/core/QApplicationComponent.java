@@ -21,9 +21,9 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.rt.core.QApplicationComponent#getCommands <em>Commands</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.QApplicationComponent#getConfigs <em>Configs</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.QApplicationComponent#getConfig <em>Config</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplicationComponent#getHooks <em>Hooks</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.QApplicationComponent#getCommands <em>Commands</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplicationComponent#getModules <em>Modules</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplicationComponent#getName <em>Name</em>}</li>
  * </ul>
@@ -33,6 +33,32 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  * @generated
  */
 public interface QApplicationComponent extends QObject, QContextProvider {
+	/**
+	 * Returns the value of the '<em><b>Config</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Config</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Config</em>' containment reference.
+	 * @see #setConfig(QConfig)
+	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getApplicationComponent_Config()
+	 * @model containment="true"
+	 * @generated
+	 */
+	QConfig getConfig();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.rt.core.QApplicationComponent#getConfig <em>Config</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Config</em>' containment reference.
+	 * @see #getConfig()
+	 * @generated
+	 */
+	void setConfig(QConfig value);
+
 	/**
 	 * Returns the value of the '<em><b>Commands</b></em>' containment reference list.
 	 * The list contents are of type {@link org.smeup.sys.rt.core.QServiceCommandProvider}.
@@ -106,21 +132,5 @@ public interface QApplicationComponent extends QObject, QContextProvider {
 	 * @generated
 	 */
 	void setName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Configs</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.il.core.QObject}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Configs</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Configs</em>' containment reference list.
-	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getApplicationComponent_Configs()
-	 * @model containment="true"
-	 * @generated
-	 */
-	List<QObject> getConfigs();
 
 } // QApplicationComponent

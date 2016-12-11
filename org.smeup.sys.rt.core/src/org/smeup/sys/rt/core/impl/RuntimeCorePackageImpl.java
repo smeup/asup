@@ -24,6 +24,7 @@ import org.smeup.sys.rt.core.QApplicationManager;
 import org.smeup.sys.rt.core.QApplicationModule;
 import org.smeup.sys.rt.core.QBundleManager;
 import org.smeup.sys.rt.core.QBundleVisitor;
+import org.smeup.sys.rt.core.QConfig;
 import org.smeup.sys.rt.core.QLogger;
 import org.smeup.sys.rt.core.QRuntimeCoreFactory;
 import org.smeup.sys.rt.core.QRuntimeCorePackage;
@@ -86,6 +87,13 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * @generated
 	 */
 	private EClass bundleVisitorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass configEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -320,8 +328,17 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getApplicationComponent_Commands() {
+	public EReference getApplicationComponent_Config() {
 		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getApplicationComponent_Commands() {
+		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -331,7 +348,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 */
 	@Override
 	public EReference getApplicationComponent_Hooks() {
-		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(2);
+		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -352,16 +369,6 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	@Override
 	public EAttribute getApplicationComponent_Name() {
 		return (EAttribute)applicationComponentEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getApplicationComponent_Configs() {
-		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -421,6 +428,24 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	@Override
 	public EClass getBundleVisitor() {
 		return bundleVisitorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConfig() {
+		return configEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConfig_Objects() {
+		return (EReference)configEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -702,9 +727,9 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		createEAttribute(applicationEClass, APPLICATION__TEXT);
 
 		applicationComponentEClass = createEClass(APPLICATION_COMPONENT);
-		createEReference(applicationComponentEClass, APPLICATION_COMPONENT__COMMANDS);
-		createEReference(applicationComponentEClass, APPLICATION_COMPONENT__CONFIGS);
+		createEReference(applicationComponentEClass, APPLICATION_COMPONENT__CONFIG);
 		createEReference(applicationComponentEClass, APPLICATION_COMPONENT__HOOKS);
+		createEReference(applicationComponentEClass, APPLICATION_COMPONENT__COMMANDS);
 		createEReference(applicationComponentEClass, APPLICATION_COMPONENT__MODULES);
 		createEAttribute(applicationComponentEClass, APPLICATION_COMPONENT__NAME);
 
@@ -717,6 +742,9 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		bundleManagerEClass = createEClass(BUNDLE_MANAGER);
 
 		bundleVisitorEClass = createEClass(BUNDLE_VISITOR);
+
+		configEClass = createEClass(CONFIG);
+		createEReference(configEClass, CONFIG__OBJECTS);
 
 		loggerEClass = createEClass(LOGGER);
 
@@ -816,9 +844,9 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		initEAttribute(getApplication_Text(), ecorePackage.getEString(), "text", null, 0, 1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(applicationComponentEClass, QApplicationComponent.class, "ApplicationComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getApplicationComponent_Commands(), this.getServiceCommandProvider(), null, "commands", null, 0, -1, QApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getApplicationComponent_Configs(), theIntegratedLanguageCorePackage.getObject(), null, "configs", null, 0, -1, QApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApplicationComponent_Config(), this.getConfig(), null, "config", null, 0, 1, QApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplicationComponent_Hooks(), this.getServiceHook(), null, "hooks", null, 0, -1, QApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApplicationComponent_Commands(), this.getServiceCommandProvider(), null, "commands", null, 0, -1, QApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplicationComponent_Modules(), this.getApplicationModule(), null, "modules", null, 0, -1, QApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplicationComponent_Name(), ecorePackage.getEString(), "name", null, 1, 1, QApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -879,6 +907,9 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "container", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(configEClass, QConfig.class, "Config", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConfig_Objects(), theIntegratedLanguageCorePackage.getObject(), null, "objects", null, 1, -1, QConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(loggerEClass, QLogger.class, "Logger", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

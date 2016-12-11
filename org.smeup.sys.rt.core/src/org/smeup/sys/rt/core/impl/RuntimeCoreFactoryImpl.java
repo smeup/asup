@@ -62,6 +62,7 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 			case QRuntimeCorePackage.APPLICATION: return (EObject)createApplication();
 			case QRuntimeCorePackage.APPLICATION_COMPONENT: return (EObject)createApplicationComponent();
 			case QRuntimeCorePackage.APPLICATION_MODULE: return (EObject)createApplicationModule();
+			case QRuntimeCorePackage.CONFIG: return (EObject)createConfig();
 			case QRuntimeCorePackage.SERVICE_COMMAND_PROVIDER: return (EObject)createServiceCommandProvider();
 			case QRuntimeCorePackage.SERVICE_HOOK: return (EObject)createServiceHook();
 			case QRuntimeCorePackage.SERVICE_EXECUTOR: return (EObject)createServiceExecutor();
@@ -136,6 +137,16 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 	public QApplicationModule createApplicationModule() {
 		ApplicationModuleImpl applicationModule = new ApplicationModuleImpl();
 		return applicationModule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QConfig createConfig() {
+		ConfigImpl config = new ConfigImpl();
+		return config;
 	}
 
 	/**

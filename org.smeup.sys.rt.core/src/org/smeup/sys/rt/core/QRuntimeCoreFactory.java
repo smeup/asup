@@ -54,6 +54,15 @@ public interface QRuntimeCoreFactory extends EFactory {
 	QApplicationModule createApplicationModule();
 
 	/**
+	 * Returns a new object of class '<em>Config</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Config</em>'.
+	 * @generated
+	 */
+	QConfig createConfig();
+
+	/**
 	 * Returns a new object of class '<em>Service Command Provider</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
