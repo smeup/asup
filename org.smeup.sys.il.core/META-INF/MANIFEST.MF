@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.smeup.sys.il.core;singleton:=true
 Bundle-Version: 0.9.0.qualifier
 Bundle-ClassPath: .
-Bundle-Vendor: %prividerName
+Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.smeup.sys.il.core,
  org.smeup.sys.il.core.ctx,
