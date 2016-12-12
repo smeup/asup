@@ -65,7 +65,7 @@ public interface QResourceReader<T extends QObjectNameable> extends QResourceHan
 	 * @model
 	 * @generated
 	 */
-	QObjectIterator<T> find(String nameFilter);
+	QObjectIterator<T> find(String filter);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

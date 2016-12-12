@@ -33,6 +33,10 @@ public class E4FrameHelper {
 		if (_package.getName().startsWith("org.smeup.sys")) {
 			String packgeName = "http://www.smeup.org/asup" + _package.getName().substring(13).replaceAll("\\.", "/");
 			return packgeName.toLowerCase();
+		}
+		else if (_package.getName().startsWith("com.smeup.erp")) {
+			String packgeName = "http://www.smeup.org/erp" + _package.getName().substring(13).replaceAll("\\.", "/");
+			return packgeName.toLowerCase();
 		} else
 			return _package.getName();
 	}
@@ -61,7 +65,10 @@ public class E4FrameHelper {
 		if(_class == null)
 			_class = klass;
 		
-		return _class.getSimpleName().substring(1);
+		if(_class.getSimpleName().startsWith("MU"))
+			return _class.getSimpleName().substring(2);
+		else
+			return _class.getSimpleName().substring(1);
 	}
 
 }

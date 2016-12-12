@@ -596,7 +596,7 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(resourceReaderEClass, null, "find", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "nameFilter", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "filter", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectIterator());
 		g2 = createEGenericType(resourceReaderEClass_T);
 		g1.getETypeArguments().add(g2);

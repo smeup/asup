@@ -126,7 +126,7 @@ public abstract class ResourceReaderImpl<T extends QObjectNameable> extends Reso
 	 * @generated
 	 */
 	@Override
-	public QObjectIterator<T> find(String nameFilter) {
+	public QObjectIterator<T> find(String filter) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

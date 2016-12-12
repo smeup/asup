@@ -217,7 +217,7 @@
       <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectIterator">
         <eTypeArguments eTypeParameter="#//ResourceReader/T"/>
       </eGenericType>
-      <eParameters name="nameFilter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="filter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="findByExpression">
       <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectIterator">
