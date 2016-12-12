@@ -392,7 +392,11 @@ public class NIOSourceManagerImpl implements QSourceManager {
 
 		if (type != null) {
 			location = URIUtil.append(location, relativePath);
-			location = URIUtil.append(location, type.getSimpleName().substring(1));
+			if(type.getSimpleName().startsWith("MU")) {
+				location = URIUtil.append(location, type.getSimpleName().substring(2));				
+			}
+			else
+				location = URIUtil.append(location, type.getSimpleName().substring(1));
 		}
 
 		Path folder = Paths.get(location);

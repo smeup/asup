@@ -35,7 +35,7 @@ public class E4FrameHelper {
 			return packgeName.toLowerCase();
 		}
 		else if (_package.getName().startsWith("com.smeup.erp")) {
-			String packgeName = "http://www.smeup.org/erp" + _package.getName().substring(13).replaceAll("\\.", "/");
+			String packgeName = "http://www.smeup.com/erp" + _package.getName().substring(13).replaceAll("\\.", "/");
 			return packgeName.toLowerCase();
 		} else
 			return _package.getName();

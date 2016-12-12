@@ -198,7 +198,6 @@
     <module>../org.smeup.sys.ft.equinox.p2</module>
     <module>../org.smeup.sys.ft.lang.base</module>
     <module>../org.smeup.sys.ft.lang.test</module>
-    <module>../org.smeup.sys.ft.mind.base</module>
     <module>../org.smeup.sys.ft.netc.base</module>
     <module>../org.smeup.sys.ft.netc.flux</module>
     <module>../org.smeup.sys.ft.oper.base</module>
