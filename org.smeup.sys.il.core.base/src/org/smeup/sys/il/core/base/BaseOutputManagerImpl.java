@@ -35,6 +35,13 @@ public class BaseOutputManagerImpl implements QOutputManager {
 		if (objectWriter == null) {
 			QObjectRegistry<QObjectWriterFactory> objectWriterFactoryRegistry = objectRegistryFactory.createObjectRegistry(QObjectWriterFactory.class);
 			QObjectWriterFactory objectWriterFactory = objectWriterFactoryRegistry.lookup("S");
+			
+			if(objectWriterFactory == null && !objectWriterFactoryRegistry.list().isEmpty())
+				objectWriterFactory = objectWriterFactoryRegistry.list().get(0);
+			
+			if(objectWriterFactory == null)
+				return null;
+			
 			objectWriter = objectWriterFactory.createObjectWriter(context);
 
 			context.set(QObjectWriter.class, objectWriter);
