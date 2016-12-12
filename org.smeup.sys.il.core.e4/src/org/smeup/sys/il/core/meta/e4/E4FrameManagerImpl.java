@@ -12,6 +12,7 @@
 package org.smeup.sys.il.core.meta.e4;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.core.QObject;
@@ -23,10 +24,16 @@ public class E4FrameManagerImpl implements QFrameManager {
 	@Override
 	public <O extends QObject> QFrame<O> getFrame(O object) {
 
-		EPackage ePackage = E4FrameHelper.getEPackage(object.getClass());
-		EClass eClass = E4FrameHelper.getEClass(ePackage, object.getClass());
-		
-		return new E4FrameAdapter<O>(eClass);
+		if(object instanceof EObject) {
+			EObject eObject = (EObject)object;
+			return new E4FrameAdapter<O>(eObject.eClass());
+		}
+		else {
+			EPackage ePackage = E4FrameHelper.getEPackage(object.getClass());
+			EClass eClass = E4FrameHelper.getEClass(ePackage, object.getClass());
+			
+			return new E4FrameAdapter<O>(eClass);
+		}
 	}
 
 	@Override
