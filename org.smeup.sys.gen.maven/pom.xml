@@ -278,10 +278,12 @@
     <module>../org.smeup.sys.il.memo.jdt</module>
     <module>../org.smeup.sys.il.memo.nio</module>
     <module>../org.smeup.sys.il.memo.test</module>
+    <!--
     <module>../org.smeup.sys.il.mind</module>
     <module>../org.smeup.sys.il.mind.base</module>
     <module>../org.smeup.sys.il.mind.gnu</module>
     <module>../org.smeup.sys.il.mind.test</module>
+    -->
     <module>../org.smeup.sys.mi.core</module>
     <module>../org.smeup.sys.os.cmd</module>
     <module>../org.smeup.sys.os.cmd.base</module>
