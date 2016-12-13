@@ -31,7 +31,8 @@
 		<repository>
 			<id>EMF</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/emf-store/releases_16</url>
+			<!--<url>http://download.eclipse.org/emf-store/releases_16</url>-->
+			<url>http://download.eclipse.org/modeling/emf/updates/releases</url>
 		</repository>
 		
 
