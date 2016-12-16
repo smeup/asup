@@ -49,9 +49,12 @@ import org.smeup.sys.il.data.annotation.Module.Scope;
 import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.data.def.DateFormat;
+import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
+import org.smeup.sys.il.data.def.TimeFormat;
 import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QDisplay;
 import org.smeup.sys.il.esam.QPrint;
@@ -1033,7 +1036,10 @@ public class RPJProgramSupport extends RPJModule {
 
 	public QDatetime qTimestamp() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		QDatetime dateTime = dataContext.getDataFactory().createDate(DatetimeType.TIME_STAMP, DateFormat.ISO, TimeFormat.ISO, true);
+		dateTime.time();
+		return dateTime;
 	}
 	
 	public QNumeric qDate() {
