@@ -11,17 +11,13 @@
 package org.smeup.sys.os.dtaara.nio;
 
 import org.smeup.sys.il.data.DataSpecial;
-import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
-import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QIndicator;
-import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.nio.NIOBufferedElementDelegatorImpl;
-import org.smeup.sys.il.data.nio.NIOCharacterFixedImpl;
 import org.smeup.sys.il.data.nio.NIODataImpl;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
@@ -134,85 +130,13 @@ public class NIODataAreaImpl<D extends QBufferedElement> extends NIOBufferedElem
 	}
 
 	@Override
-	public void movea(QArray<? extends QString> value) {
-
-		if (!(get() instanceof QString))
-			throw new UnsupportedOperationException();
-
-		((QString) get()).movea(value);
-	}
-
-	@Override
 	public QBufferedData eval(DataSpecial value) {
 		getDelegate().eval(value);
 		return this;
-	}
-
-	@Override
-	public void eval(QString value) {
-
-		if (!(get() instanceof QString))
-			throw new UnsupportedOperationException();
-
-		((QString) get()).eval(value);
-	}
-
-	@Override
-	public String asString() {
-
-		if (!(get() instanceof QString))
-			throw new UnsupportedOperationException();
-
-		return ((QString) get()).asString();
-	}
-
-	@Override
-	public String s() {
-		return asString();
 	}
 	
 	@Override
 	protected final NIODataImpl _copyDef(final QDataContext dataContext) {
 		return super._copyDef(dataContext);
-	}
-
-	@Override
-	public final QCharacter qSubst(final Number start) {
-		return qSubst(start, (Number) null);
-	}
-
-	@Override
-	public final QCharacter qSubst(Number start, Number length) {
-
-		if (start == null)
-			start = 1;
-
-		if (length == null)
-			length = getLength() - start.intValue() + 1;
-
-		final QCharacter character = new NIOCharacterFixedImpl(getDataContext(), length.intValue(), false);
-		((QString) get()).slice(character, start.intValue());
-
-		return character;
-	}
-
-	@Override
-	public final QCharacter qSubst(final Number start, final QNumeric length) {
-		return qSubst(start, length.i());
-	}
-
-	@Override
-	public final QCharacter qSubst(final QNumeric start) {
-		return qSubst(start.i());
-	}
-
-	@Override
-	public final QCharacter qSubst(final QNumeric start, final Number length) {
-		return qSubst(start.i(), length);
-	}
-
-	@Override
-	public final QCharacter qSubst(final QNumeric start, final QNumeric length) {
-		return qSubst(start.i(), length.i());
 	}
 }

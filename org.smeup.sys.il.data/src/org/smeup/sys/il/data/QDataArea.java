@@ -7,9 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.String;
-
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Data Area</b></em>'.
@@ -27,14 +24,6 @@ public interface QDataArea<D extends QBufferedElement> extends QBufferedElement 
 	 * @model required="true"
 	 * @generated
 	 */
-	String asString();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true"
-	 * @generated
-	 */
 	D get();
 
 	/**
@@ -44,14 +33,6 @@ public interface QDataArea<D extends QBufferedElement> extends QBufferedElement 
 	 * @generated
 	 */
 	QString getDataAreaPath();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void eval(QString value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -75,14 +56,6 @@ public interface QDataArea<D extends QBufferedElement> extends QBufferedElement 
 	 * @model
 	 * @generated
 	 */
-	void movea(QArray<? extends QString> value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
 	void out();
 
 	/**
@@ -92,61 +65,5 @@ public interface QDataArea<D extends QBufferedElement> extends QBufferedElement 
 	 * @generated
 	 */
 	void out(QIndicator error);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" startRequired="true" lengthRequired="true"
-	 * @generated
-	 */
-	QCharacter qSubst(QNumeric start, QNumeric length);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" startRequired="true"
-	 * @generated
-	 */
-	QCharacter qSubst(QNumeric start);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" lengthType="org.smeup.sys.mi.core.JavaNumber" lengthRequired="true"
-	 * @generated
-	 */
-	QCharacter qSubst(Number start, Number length);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
-	 * @generated
-	 */
-	QCharacter qSubst(Number start);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" startRequired="true" lengthType="org.smeup.sys.mi.core.JavaNumber" lengthRequired="true"
-	 * @generated
-	 */
-	QCharacter qSubst(QNumeric start, Number length);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" lengthRequired="true"
-	 * @generated
-	 */
-	QCharacter qSubst(Number start, QNumeric length);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true"
-	 * @generated
-	 */
-	String s();
 
 } // QDataArea

@@ -32,7 +32,7 @@ public interface QList<D extends QData> extends QData, Iterable<D> {
 	 * @model indexRequired="true"
 	 * @generated
 	 */
-	D get(int index);
+	D get(Number index);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

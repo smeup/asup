@@ -1346,54 +1346,18 @@
     <eTypeParameters name="D">
       <eBounds eClassifier="#//BufferedElement"/>
     </eTypeParameters>
-    <eOperations name="asString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="get" lowerBound="1">
       <eGenericType eTypeParameter="#//DataArea/D"/>
     </eOperations>
     <eOperations name="getDataAreaPath" lowerBound="1" eType="#//String"/>
-    <eOperations name="eval">
-      <eParameters name="value" lowerBound="1" eType="#//String"/>
-    </eOperations>
     <eOperations name="in"/>
     <eOperations name="in">
       <eParameters name="error" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="movea">
-      <eParameters name="value">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments>
-            <eUpperBound eClassifier="#//String"/>
-          </eTypeArguments>
-        </eGenericType>
-      </eParameters>
     </eOperations>
     <eOperations name="out"/>
     <eOperations name="out">
       <eParameters name="error" eType="#//Indicator"/>
     </eOperations>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-    </eOperations>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-    </eOperations>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-    </eOperations>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
-      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="s" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataAreaFactory" abstract="true" interface="true">
     <eOperations name="createDataArea" lowerBound="1">
@@ -2123,7 +2087,7 @@
     </eOperations>
     <eOperations name="get">
       <eGenericType eTypeParameter="#//List/D"/>
-      <eParameters name="index" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="index" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="get">
       <eGenericType eTypeParameter="#//List/D"/>

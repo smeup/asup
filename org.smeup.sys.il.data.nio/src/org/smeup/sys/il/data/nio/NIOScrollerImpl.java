@@ -129,21 +129,21 @@ public class NIOScrollerImpl<D extends QBufferedElement> extends NIOBufferedList
 	}
 
 	@Override
-	public final D get(final int index) {
+	public final D get(final Number index) {
 
-		if (_index == index)
+		if (_index == index.intValue())
 			return getModel();
 
 		int position = 0;
 
 		if (getListOwner() == null)
-			position = getModel().getSize() * (index - 1);
+			position = getModel().getSize() * (index.intValue() - 1);
 		else
-			position = getListOwner().getModel().getLength() * (index - 1);
+			position = getListOwner().getModel().getLength() * (index.intValue() - 1);
 
 		slice(getModel(), position + 1);
 
-		_index = index;
+		_index = index.intValue();
 
 		return getModel();
 	}

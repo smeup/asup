@@ -134,9 +134,9 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public final D get(final int index) {
+	public final D get(final Number index) {
 
-		D element = _elements[index - 1];
+		D element = _elements[index.intValue() - 1];
 		if (element != null)
 			return element;
 
@@ -149,11 +149,11 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 		else
 			modelSize = getListOwner().getModel().getSize();
 
-		position = modelSize * (index - 1);
+		position = modelSize * (index.intValue() - 1);
 
 		slice(element, position + 1);
 
-		_elements[index - 1] = element;
+		_elements[index.intValue() - 1] = element;
 
 		return element;
 	}

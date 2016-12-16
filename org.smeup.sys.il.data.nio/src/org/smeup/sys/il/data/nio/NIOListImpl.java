@@ -134,15 +134,15 @@ public final class NIOListImpl<D extends QBufferedData> extends NIODataImpl impl
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public final D get(final int index) {
+	public final D get(final Number index) {
 
 		D element = null;
-		if (_elements.size() >= index)
-			element = _elements.get(index - 1);
+		if (_elements.size() >= index.intValue())
+			element = _elements.get(index.intValue() - 1);
 
 		if (element == null) {
 			element = (D) ((NIODataImpl) _model)._copyDef(getDataContext());
-			_elements.add(index - 1, element);
+			_elements.add(index.intValue() - 1, element);
 
 			return element;
 		} else
