@@ -57,6 +57,11 @@ public abstract class JDBCCursorImpl extends JDBCObjectImpl implements QCursor {
 	}
 
 	@Override
+	public void next() {
+		handleResultSet(FetchPositioning.NEXT, 0, (QBufferedData[])null);
+	}
+
+	@Override
 	public void next(QBufferedData target) {
 		handleResultSet(FetchPositioning.NEXT, 0, new QBufferedData[] { target });
 	}

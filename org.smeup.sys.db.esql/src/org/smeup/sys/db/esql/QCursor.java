@@ -77,6 +77,14 @@ public interface QCursor extends QESqlObject, Closeable {
 	 * @model
 	 * @generated
 	 */
+	void next();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	void open();
 
 	/**

@@ -573,6 +573,8 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 		op = addEOperation(cursorEClass, null, "next", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "descriptor", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(cursorEClass, null, "next", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(cursorEClass, null, "open", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(cursorEClass, null, "prior", 0, 1, IS_UNIQUE, IS_ORDERED);

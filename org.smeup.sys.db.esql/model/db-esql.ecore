@@ -49,6 +49,7 @@
     <eOperations name="next">
       <eParameters name="descriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="next"/>
     <eOperations name="open"/>
     <eOperations name="prior">
       <eParameters name="target" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//BufferedData"/>
