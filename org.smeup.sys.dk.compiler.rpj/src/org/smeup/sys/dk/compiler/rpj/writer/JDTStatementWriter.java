@@ -18,6 +18,7 @@ import java.util.Stack;
 import javax.inject.Inject;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ArrayCreation;
 import org.eclipse.jdt.core.dom.ArrayInitializer;
@@ -50,11 +51,13 @@ import org.smeup.sys.il.core.term.QNode;
 import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QFloating;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
+import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QDataSet;
@@ -407,7 +410,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			Iterator<QEntryParameter<?>> entryParameters = prototype.getEntry().getParameters().iterator();
 
 			for (String parameter : statement.getParameters()) {
-				
+
 				QExpression expression = expressionParser.parseExpression(parameter);
 
 				if (entryParameters.hasNext()) {
@@ -496,6 +499,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		Block block = blocks.peek();
 		if (statement.getObject() != null) {
+			
 			MethodInvocation methodInvocation = ast.newMethodInvocation();
 			methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(statement.getMethod())));
 			
@@ -575,7 +579,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 				methodInvocation.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, objectExpression, target));
 			}
 			// display and print
-			else if ((namedNode != null && (namedNode.getParent() instanceof QDisplayTerm || namedNode.getParent() instanceof QPrintTerm))) {
+			else if (namedNode.getParent() instanceof QDisplayTerm || namedNode.getParent() instanceof QPrintTerm) {
 
 				methodInvocation.setExpression(ast.newName(compilationUnit.getQualifiedName((QNamedNode) namedNode.getParent())));
 
@@ -589,6 +593,17 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			} else {
 				Class<?> target = RPJContextHelper.getTargetClass(compilationUnit, objectExpression, false);
 				methodInvocation.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, objectExpression, target));
+				
+				if(target != null && QDataArea.class.isAssignableFrom(target)) {
+				
+					// unwrap
+					if(!isDataAreaMethod(statement.getMethod())) {						
+						MethodInvocation unwrapMethodInvocation = ast.newMethodInvocation();
+						unwrapMethodInvocation.setName(ast.newSimpleName("get"));
+						unwrapMethodInvocation.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, objectExpression, null));
+						methodInvocation.setExpression(unwrapMethodInvocation);
+					}					
+				} 				
 			}
 
 			if (statement.getParameters() != null) {
@@ -613,6 +628,16 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		for (QAnnotationTest annotationTest : statement.getFacets(QAnnotationTest.class))
 			writeAssertion(annotationTest, statement.toString());
 
+		return false;
+	}
+
+	private boolean isDataAreaMethod(String method) {
+		
+		for(EOperation eOperation: QIntegratedLanguageDataPackage.eINSTANCE.getDataArea().getEOperations()) {
+			if(eOperation.getName().equals(method))
+				return true;
+		}
+		
 		return false;
 	}
 
@@ -951,10 +976,17 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		Expression expression = JDTStatementHelper.buildExpression(ast, compilationUnit, assignmentExpression.getLeftOperand(), null);
 		methodInvocation.setExpression(expression);
-
-		// Class<?> target =
-		// JDTContextHelper.getTargetClass(compilationUnit,
-		// assignmentExpression.getLeftOperand(), false);
+		
+		// TODO verify
+		Class<?> targetLeft = RPJContextHelper.getTargetClass(compilationUnit, assignmentExpression.getLeftOperand(), false);
+		if(targetLeft != null && targetLeft.isAssignableFrom(QDataArea.class)) {
+			// unwrap
+			MethodInvocation unwrapMethodInvocation = ast.newMethodInvocation();
+			unwrapMethodInvocation.setName(ast.newSimpleName("get"));
+			unwrapMethodInvocation.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, assignmentExpression.getLeftOperand(), null));
+			methodInvocation.setExpression(unwrapMethodInvocation);
+		}
+		
 		expression = JDTStatementHelper.buildExpression(ast, compilationUnit, assignmentExpression.getRightOperand(), null);
 		methodInvocation.arguments().add(p, expression);
 
