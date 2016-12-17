@@ -88,7 +88,7 @@ public class BaseDatabaseLoader {
 
 		for (QCatalogContainer catalogContainer : databaseContainer.getCatalogContainers()) {
 			System.out.println(catalogContainer);
-			for (Schema schema : catalogContainer.getMetaData().getSchemas()) {
+			for (Schema schema : catalogContainer.getMetaData().getAllSchemas()) {
 				System.out.println("\t" + schema);
 				for (Table table : (List<Table>) schema.getTables())
 					System.out.println("\t\t" + table);

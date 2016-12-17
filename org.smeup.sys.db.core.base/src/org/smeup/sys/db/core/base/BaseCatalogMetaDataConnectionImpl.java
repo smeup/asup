@@ -46,7 +46,12 @@ public class BaseCatalogMetaDataConnectionImpl implements QCatalogMetaData {
 	}
 
 	@Override
-	public List<Schema> getSchemas() {
+	public List<Schema> getAllSchemas() {	
+		return catalogMetaData.getAllSchemas();
+	}
+	
+	@Override
+	public List<Schema> getCurrentSchemas() {
 		
 		List<Schema> schemas = new ArrayList<Schema>();		
 		for(String library: connection.getContext().getContextDescription().getLibraryPath()) {
@@ -55,7 +60,7 @@ public class BaseCatalogMetaDataConnectionImpl implements QCatalogMetaData {
 		
 		return schemas;
 	}
-
+	
 	@Override
 	public Table getTable(String schema, String table) {
 		
@@ -66,7 +71,7 @@ public class BaseCatalogMetaDataConnectionImpl implements QCatalogMetaData {
 	@Override
 	public Table getTable(String tableName) {
 		
-		for (Schema schema : getSchemas()) {
+		for (Schema schema : getCurrentSchemas()) {
 			Table table = getTable(schema.getName(), tableName);
 			if (table != null)
 				return table;
@@ -85,7 +90,7 @@ public class BaseCatalogMetaDataConnectionImpl implements QCatalogMetaData {
 	@Override
 	public ViewTable getView(String tableName) {
 		
-		for (Schema schema : getSchemas()) {
+		for (Schema schema : getCurrentSchemas()) {
 			ViewTable view = getView(schema.getName(), tableName);
 			if (view != null)
 				return view;

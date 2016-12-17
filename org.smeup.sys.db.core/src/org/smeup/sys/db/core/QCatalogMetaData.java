@@ -35,10 +35,10 @@ public interface QCatalogMetaData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" schemaRequired="true"
+	 * @model kind="operation" required="true"
 	 * @generated
 	 */
-	Schema getSchema(String schema);
+	List<Schema> getAllSchemas();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -46,7 +46,15 @@ public interface QCatalogMetaData {
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
-	List<Schema> getSchemas();
+	List<Schema> getCurrentSchemas();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" schemaRequired="true"
+	 * @generated
+	 */
+	Schema getSchema(String schema);
 
 	/**
 	 * <!-- begin-user-doc -->

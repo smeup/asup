@@ -52,7 +52,7 @@ public class BaseCatalogMetaDataImpl extends CatalogMetaDataImpl {
 	@Override
 	public Table getTable(String tableName) {
 
-		for (Schema schema : getSchemas()) {
+		for (Schema schema : getCurrentSchemas()) {
 			Table table = getTable(schema.getName(), tableName);
 			if (table != null)
 				return table;
@@ -64,7 +64,7 @@ public class BaseCatalogMetaDataImpl extends CatalogMetaDataImpl {
 	@Override
 	public ViewTable getView(String tableName) {
 
-		for (Schema schema : getSchemas()) {
+		for (Schema schema : getCurrentSchemas()) {
 			ViewTable view = getView(schema.getName(), tableName);
 			if (view != null)
 				return view;
@@ -102,7 +102,12 @@ public class BaseCatalogMetaDataImpl extends CatalogMetaDataImpl {
 	}
 
 	@Override
-	public List<Schema> getSchemas() {
+	public List<Schema> getAllSchemas() {
+		return new ArrayList<Schema>(this.schemas.values());
+	}
+
+	@Override
+	public List<Schema> getCurrentSchemas() {
 		return new ArrayList<Schema>(this.schemas.values());
 	}
 }

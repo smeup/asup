@@ -6,6 +6,5 @@ Bundle-Version: 0.9.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.smeup.sys.db.core,
- org.smeup.sys.db.esql,
- org.smeup.sys.il.data.jdbc
+ org.smeup.sys.db.esql
 Export-Package: org.smeup.sys.db.esql.jdbc

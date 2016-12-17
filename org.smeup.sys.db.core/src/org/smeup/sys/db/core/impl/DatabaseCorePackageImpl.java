@@ -1105,10 +1105,12 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		addEParameter(op, ecorePackage.getEString(), "table", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "index", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(catalogMetaDataEClass, theSQLSchemaPackage.getSchema(), "getAllSchemas", 1, -1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(catalogMetaDataEClass, theSQLSchemaPackage.getSchema(), "getCurrentSchemas", 1, -1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(catalogMetaDataEClass, theSQLSchemaPackage.getSchema(), "getSchema", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "schema", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(catalogMetaDataEClass, theSQLSchemaPackage.getSchema(), "getSchemas", 1, -1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(catalogMetaDataEClass, theSQLTablesPackage.getTable(), "getTable", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "table", 1, 1, IS_UNIQUE, IS_ORDERED);
