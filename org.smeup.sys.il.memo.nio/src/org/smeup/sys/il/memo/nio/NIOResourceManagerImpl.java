@@ -22,6 +22,7 @@ import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
+import org.smeup.sys.il.memo.QResourceDef;
 import org.smeup.sys.il.memo.QResourceListener;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceNotifier;
@@ -40,6 +41,12 @@ public class NIOResourceManagerImpl implements QResourceManager {
 
 		notifiers = new HashMap<Class<? extends QObjectNameable>, QResourceNotifier<? extends QObject>>();
 		providers = new HashMap<Class<? extends QObjectNameable>, QResourceProvider>();
+	}
+
+	@Override
+	public void createResource(QContextProvider contextProvider, QResourceDef resource, boolean replace) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@SuppressWarnings("unchecked")

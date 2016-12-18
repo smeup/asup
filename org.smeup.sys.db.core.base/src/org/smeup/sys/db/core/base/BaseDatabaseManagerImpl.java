@@ -130,7 +130,7 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 			if(sql != null)
 				statement.execute(sql);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		}
 	}
 

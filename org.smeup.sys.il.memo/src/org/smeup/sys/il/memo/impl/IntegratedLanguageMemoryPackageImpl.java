@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.memo.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EGenericType;
@@ -21,6 +22,7 @@ import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage;
 import org.smeup.sys.il.memo.QResource;
+import org.smeup.sys.il.memo.QResourceDef;
 import org.smeup.sys.il.memo.QResourceEvent;
 import org.smeup.sys.il.memo.QResourceHandler;
 import org.smeup.sys.il.memo.QResourceListener;
@@ -45,6 +47,12 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass resourceEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass resourceDefEClass = null;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -176,6 +184,33 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 	 */
 	public EClass getResource() {
 		return resourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getResourceDef() {
+		return resourceDefEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getResourceDef_Name() {
+		return (EAttribute)resourceDefEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getResourceDef_Text() {
+		return (EAttribute)resourceDefEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -316,6 +351,10 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		// Create classes and their features
 		resourceEClass = createEClass(RESOURCE);
 
+		resourceDefEClass = createEClass(RESOURCE_DEF);
+		createEAttribute(resourceDefEClass, RESOURCE_DEF__NAME);
+		createEAttribute(resourceDefEClass, RESOURCE_DEF__TEXT);
+
 		resourceEventEClass = createEClass(RESOURCE_EVENT);
 
 		resourceHandlerEClass = createEClass(RESOURCE_HANDLER);
@@ -391,6 +430,7 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 
 		// Add supertypes to classes
 		resourceEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNameable());
+		resourceDefEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		resourceHandlerEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		resourceManagerEClass.getESuperTypes().add(this.getResourceProvider());
 		g1 = createEGenericType(this.getResourceHandler());
@@ -404,6 +444,10 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(resourceEClass, QResource.class, "Resource", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(resourceDefEClass, QResourceDef.class, "ResourceDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getResourceDef_Name(), ecorePackage.getEString(), "name", null, 1, 1, QResourceDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResourceDef_Text(), ecorePackage.getEString(), "text", null, 1, 1, QResourceDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resourceEventEClass, QResourceEvent.class, "ResourceEvent", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -433,6 +477,11 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		addEParameter(op, g1, "event", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(resourceManagerEClass, QResourceManager.class, "ResourceManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(resourceManagerEClass, null, "createResource", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getResourceDef(), "resource", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "replace", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(resourceManagerEClass, null, "registerListener", 0, 1, IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "T");

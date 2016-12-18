@@ -60,6 +60,7 @@ public class IntegratedLanguageMemoryFactoryImpl extends EFactoryImpl implements
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case QIntegratedLanguageMemoryPackage.RESOURCE_DEF: return (EObject)createResourceDef();
 			case QIntegratedLanguageMemoryPackage.RESOURCE_NOTIFIER: return (EObject)createResourceNotifier();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -98,6 +99,16 @@ public class IntegratedLanguageMemoryFactoryImpl extends EFactoryImpl implements
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QResourceDef createResourceDef() {
+		ResourceDefImpl resourceDef = new ResourceDefImpl();
+		return resourceDef;
 	}
 
 	/**

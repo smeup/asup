@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.memo;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
@@ -81,6 +82,43 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	int RESOURCE_FEATURE_COUNT = QIntegratedLanguageCorePackage.NAMEABLE_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.memo.impl.ResourceDefImpl <em>Resource Def</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.memo.impl.ResourceDefImpl
+	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceDef()
+	 * @generated
+	 */
+	int RESOURCE_DEF = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_DEF__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_DEF__TEXT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Resource Def</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_DEF_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.memo.QResourceEvent <em>Resource Event</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -88,7 +126,7 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceEvent()
 	 * @generated
 	 */
-	int RESOURCE_EVENT = 1;
+	int RESOURCE_EVENT = 2;
 
 	/**
 	 * The number of structural features of the '<em>Resource Event</em>' class.
@@ -107,7 +145,7 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceHandler()
 	 * @generated
 	 */
-	int RESOURCE_HANDLER = 2;
+	int RESOURCE_HANDLER = 3;
 
 	/**
 	 * The feature id for the '<em><b>Context Provider</b></em>' reference.
@@ -135,7 +173,7 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceListener()
 	 * @generated
 	 */
-	int RESOURCE_LISTENER = 3;
+	int RESOURCE_LISTENER = 4;
 
 	/**
 	 * The number of structural features of the '<em>Resource Listener</em>' class.
@@ -154,7 +192,7 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceProvider()
 	 * @generated
 	 */
-	int RESOURCE_PROVIDER = 6;
+	int RESOURCE_PROVIDER = 7;
 
 	/**
 	 * The number of structural features of the '<em>Resource Provider</em>' class.
@@ -173,7 +211,7 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceManager()
 	 * @generated
 	 */
-	int RESOURCE_MANAGER = 4;
+	int RESOURCE_MANAGER = 5;
 
 	/**
 	 * The number of structural features of the '<em>Resource Manager</em>' class.
@@ -192,7 +230,7 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceNotifier()
 	 * @generated
 	 */
-	int RESOURCE_NOTIFIER = 5;
+	int RESOURCE_NOTIFIER = 6;
 
 	/**
 	 * The number of structural features of the '<em>Resource Notifier</em>' class.
@@ -211,7 +249,7 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceReader()
 	 * @generated
 	 */
-	int RESOURCE_READER = 7;
+	int RESOURCE_READER = 8;
 
 	/**
 	 * The feature id for the '<em><b>Context Provider</b></em>' reference.
@@ -248,7 +286,7 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceWriter()
 	 * @generated
 	 */
-	int RESOURCE_WRITER = 8;
+	int RESOURCE_WRITER = 9;
 
 	/**
 	 * The feature id for the '<em><b>Context Provider</b></em>' reference.
@@ -285,7 +323,7 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceEventType()
 	 * @generated
 	 */
-	int RESOURCE_EVENT_TYPE = 9;
+	int RESOURCE_EVENT_TYPE = 10;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.memo.Scope <em>Scope</em>}' enum.
@@ -295,7 +333,7 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getScope()
 	 * @generated
 	 */
-	int SCOPE = 10;
+	int SCOPE = 11;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.memo.QResource <em>Resource</em>}'.
@@ -306,6 +344,38 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getResource();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.memo.QResourceDef <em>Resource Def</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Resource Def</em>'.
+	 * @see org.smeup.sys.il.memo.QResourceDef
+	 * @generated
+	 */
+	EClass getResourceDef();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.memo.QResourceDef#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.smeup.sys.il.memo.QResourceDef#getName()
+	 * @see #getResourceDef()
+	 * @generated
+	 */
+	EAttribute getResourceDef_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.memo.QResourceDef#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see org.smeup.sys.il.memo.QResourceDef#getText()
+	 * @see #getResourceDef()
+	 * @generated
+	 */
+	EAttribute getResourceDef_Text();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.memo.QResourceEvent <em>Resource Event</em>}'.
@@ -460,6 +530,29 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 		 * @generated
 		 */
 		EClass RESOURCE = eINSTANCE.getResource();
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.memo.impl.ResourceDefImpl <em>Resource Def</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.memo.impl.ResourceDefImpl
+		 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getResourceDef()
+		 * @generated
+		 */
+		EClass RESOURCE_DEF = eINSTANCE.getResourceDef();
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESOURCE_DEF__NAME = eINSTANCE.getResourceDef_Name();
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESOURCE_DEF__TEXT = eINSTANCE.getResourceDef_Text();
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.memo.QResourceEvent <em>Resource Event</em>}' class.
 		 * <!-- begin-user-doc -->

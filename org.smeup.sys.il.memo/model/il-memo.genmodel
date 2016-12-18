@@ -27,6 +27,10 @@
       <genEnumLiterals ecoreEnumLiteral="il-memo.ecore#//Scope/Other"/>
     </genEnums>
     <genClasses image="false" ecoreClass="il-memo.ecore#//Resource"/>
+    <genClasses ecoreClass="il-memo.ecore#//ResourceDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-memo.ecore#//ResourceDef/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-memo.ecore#//ResourceDef/text"/>
+    </genClasses>
     <genClasses ecoreClass="il-memo.ecore#//ResourceEvent">
       <genTypeParameters ecoreTypeParameter="il-memo.ecore#//ResourceEvent/T"/>
       <genOperations ecoreOperation="il-memo.ecore#//ResourceEvent/getContextProvider"/>
@@ -47,6 +51,11 @@
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="il-memo.ecore#//ResourceManager">
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceManager/createResource">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceManager/createResource/contextProvider"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceManager/createResource/resource"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceManager/createResource/replace"/>
+      </genOperations>
       <genOperations ecoreOperation="il-memo.ecore#//ResourceManager/registerListener">
         <genParameters ecoreParameter="il-memo.ecore#//ResourceManager/registerListener/klass"/>
         <genParameters ecoreParameter="il-memo.ecore#//ResourceManager/registerListener/listener"/>
@@ -121,7 +130,7 @@
         <genParameters ecoreParameter="il-memo.ecore#//ResourceReader/exists/name"/>
       </genOperations>
       <genOperations ecoreOperation="il-memo.ecore#//ResourceReader/find">
-        <genParameters ecoreParameter="il-memo.ecore#//ResourceReader/find/nameFilter"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceReader/find/filter"/>
       </genOperations>
       <genOperations ecoreOperation="il-memo.ecore#//ResourceReader/findByExpression">
         <genParameters ecoreParameter="il-memo.ecore#//ResourceReader/findByExpression/filter"/>
