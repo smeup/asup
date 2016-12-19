@@ -16,7 +16,7 @@ public class ASMProgramLoader implements WeavingHook {
 	@Override
 	public void weave(WovenClass wovenClass) {
 
-		if(wovenClass.getClassName().endsWith("B£G15G"))
+		if(wovenClass.getClassName().endsWith("B£G15G") || wovenClass.getClassName().endsWith("B£DEC0"))
 			return;
 		
 		BundleWiring bundleWiring = wovenClass.getBundleWiring();
