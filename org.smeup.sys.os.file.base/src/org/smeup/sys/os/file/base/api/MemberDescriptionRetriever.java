@@ -32,6 +32,11 @@ public class MemberDescriptionRetriever {
 	public void main(@DataDef(length = 30000) QCharacter $$dati, @DataDef(binaryType = BinaryType.INTEGER) QCharacter $$len, @DataDef(length = 8) QCharacter format, FILE file,
 			@DataDef(length = 10) QCharacter member, @DataDef(length = 1) QCharacter over, QUSEC usec) {
 		
+		if(member.trimR().contains("*")){
+			usec.qusbavl.eval(1);
+			return;
+		}
+		
 		QFileMember fileMember = fileMemberManager.lookup(job, file.library.asEnum(), file.library.asData().trimR(), file.name.trimR(), member.trimR());
 		if(fileMember == null) {
 			usec.qusbavl.eval(1);
