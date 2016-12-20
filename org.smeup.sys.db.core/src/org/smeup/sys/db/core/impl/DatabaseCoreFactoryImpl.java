@@ -101,6 +101,8 @@ public class DatabaseCoreFactoryImpl extends EFactoryImpl implements QDatabaseCo
 		switch (eDataType.getClassifierID()) {
 			case QDatabaseCorePackage.ORDERING_TYPE:
 				return createOrderingTypeFromString(eDataType, initialValue);
+			case QDatabaseCorePackage.SEARCH_STRATEGY:
+				return createSearchStrategyFromString(eDataType, initialValue);
 			case QDatabaseCorePackage.DATABASE_CORE_EXCEPTION:
 				return createDatabaseCoreExceptionFromString(eDataType, initialValue);
 			case QDatabaseCorePackage.DATABASE_CORE_RUNTIME_EXCEPTION:
@@ -119,6 +121,8 @@ public class DatabaseCoreFactoryImpl extends EFactoryImpl implements QDatabaseCo
 		switch (eDataType.getClassifierID()) {
 			case QDatabaseCorePackage.ORDERING_TYPE:
 				return convertOrderingTypeToString(eDataType, instanceValue);
+			case QDatabaseCorePackage.SEARCH_STRATEGY:
+				return convertSearchStrategyToString(eDataType, instanceValue);
 			case QDatabaseCorePackage.DATABASE_CORE_EXCEPTION:
 				return convertDatabaseCoreExceptionToString(eDataType, instanceValue);
 			case QDatabaseCorePackage.DATABASE_CORE_RUNTIME_EXCEPTION:
@@ -273,6 +277,26 @@ public class DatabaseCoreFactoryImpl extends EFactoryImpl implements QDatabaseCo
 	 * @generated
 	 */
 	public String convertOrderingTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SearchStrategy createSearchStrategyFromString(EDataType eDataType, String initialValue) {
+		SearchStrategy result = SearchStrategy.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSearchStrategyToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

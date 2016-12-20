@@ -24,6 +24,7 @@ import org.smeup.sys.db.core.QCatalogGenerationStrategy;
 import org.smeup.sys.db.core.QCatalogMetaData;
 import org.smeup.sys.db.core.QConnectionConfig;
 import org.smeup.sys.db.core.QDatabaseCorePackage;
+import org.smeup.sys.db.core.SearchStrategy;
 import org.smeup.sys.il.core.ctx.QContext;
 
 /**
@@ -38,6 +39,7 @@ import org.smeup.sys.il.core.ctx.QContext;
  *   <li>{@link org.smeup.sys.db.core.impl.CatalogContainerImpl#getConnectionConfig <em>Connection Config</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.CatalogContainerImpl#isSupportsGuestAccess <em>Supports Guest Access</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.CatalogContainerImpl#getGenerationStrategy <em>Generation Strategy</em>}</li>
+ *   <li>{@link org.smeup.sys.db.core.impl.CatalogContainerImpl#getSearchStrategy <em>Search Strategy</em>}</li>
  * </ul>
  *
  * @generated
@@ -118,6 +120,26 @@ public class CatalogContainerImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected QCatalogGenerationStrategy generationStrategy;
+
+	/**
+	 * The default value of the '{@link #getSearchStrategy() <em>Search Strategy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSearchStrategy()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final SearchStrategy SEARCH_STRATEGY_EDEFAULT = SearchStrategy.CURRENT;
+
+	/**
+	 * The cached value of the '{@link #getSearchStrategy() <em>Search Strategy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSearchStrategy()
+	 * @generated
+	 * @ordered
+	 */
+	protected SearchStrategy searchStrategy = SEARCH_STRATEGY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -239,6 +261,27 @@ public class CatalogContainerImpl extends MinimalEObjectImpl.Container implement
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QDatabaseCorePackage.CATALOG_CONTAINER__GENERATION_STRATEGY, newGenerationStrategy, newGenerationStrategy));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SearchStrategy getSearchStrategy() {
+		return searchStrategy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSearchStrategy(SearchStrategy newSearchStrategy) {
+		SearchStrategy oldSearchStrategy = searchStrategy;
+		searchStrategy = newSearchStrategy == null ? SEARCH_STRATEGY_EDEFAULT : newSearchStrategy;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QDatabaseCorePackage.CATALOG_CONTAINER__SEARCH_STRATEGY, oldSearchStrategy, searchStrategy));
 	}
 
 	/**
@@ -447,6 +490,8 @@ public class CatalogContainerImpl extends MinimalEObjectImpl.Container implement
 				return isSupportsGuestAccess();
 			case QDatabaseCorePackage.CATALOG_CONTAINER__GENERATION_STRATEGY:
 				return getGenerationStrategy();
+			case QDatabaseCorePackage.CATALOG_CONTAINER__SEARCH_STRATEGY:
+				return getSearchStrategy();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -472,6 +517,9 @@ public class CatalogContainerImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case QDatabaseCorePackage.CATALOG_CONTAINER__GENERATION_STRATEGY:
 				setGenerationStrategy((QCatalogGenerationStrategy)newValue);
+				return;
+			case QDatabaseCorePackage.CATALOG_CONTAINER__SEARCH_STRATEGY:
+				setSearchStrategy((SearchStrategy)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -499,6 +547,9 @@ public class CatalogContainerImpl extends MinimalEObjectImpl.Container implement
 			case QDatabaseCorePackage.CATALOG_CONTAINER__GENERATION_STRATEGY:
 				setGenerationStrategy((QCatalogGenerationStrategy)null);
 				return;
+			case QDatabaseCorePackage.CATALOG_CONTAINER__SEARCH_STRATEGY:
+				setSearchStrategy(SEARCH_STRATEGY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -520,6 +571,8 @@ public class CatalogContainerImpl extends MinimalEObjectImpl.Container implement
 				return supportsGuestAccess != SUPPORTS_GUEST_ACCESS_EDEFAULT;
 			case QDatabaseCorePackage.CATALOG_CONTAINER__GENERATION_STRATEGY:
 				return generationStrategy != null;
+			case QDatabaseCorePackage.CATALOG_CONTAINER__SEARCH_STRATEGY:
+				return searchStrategy != SEARCH_STRATEGY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -539,6 +592,8 @@ public class CatalogContainerImpl extends MinimalEObjectImpl.Container implement
 		result.append(active);
 		result.append(", supportsGuestAccess: ");
 		result.append(supportsGuestAccess);
+		result.append(", searchStrategy: ");
+		result.append(searchStrategy);
 		result.append(')');
 		return result.toString();
 	}

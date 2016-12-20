@@ -59,6 +59,14 @@ public interface QCatalogMetaData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	SearchStrategy getSearchStrategy();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model tableRequired="true"
 	 * @generated
 	 */

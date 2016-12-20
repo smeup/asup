@@ -294,7 +294,7 @@ public class BaseCatalogContainerImpl extends CatalogContainerImpl {
 					break;
 				}
 
-		this.catalogMetaData = new BaseCatalogMetaDataImpl(schemas);
+		this.catalogMetaData = new BaseCatalogMetaDataImpl(schemas, getSearchStrategy());
 	}
 
 	@Override

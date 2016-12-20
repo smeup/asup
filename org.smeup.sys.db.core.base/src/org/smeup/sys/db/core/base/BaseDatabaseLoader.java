@@ -65,6 +65,7 @@ public class BaseDatabaseLoader {
 				newCatalogContainer.setGenerationStrategy(catalogContainer.getGenerationStrategy());
 				newCatalogContainer.setConnectionConfig(catalogContainer.getConnectionConfig());
 				newCatalogContainer.setSupportsGuestAccess(catalogContainer.isSupportsGuestAccess());
+				newCatalogContainer.setSearchStrategy(catalogContainer.getSearchStrategy());
 				newCatalogContainer.initialize();
 
 				// update references
