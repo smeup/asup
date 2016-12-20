@@ -54,9 +54,11 @@ import org.smeup.sys.db.core.QStatement;
 import org.smeup.sys.db.core.QTableColumnDef;
 import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.core.QTableProvider;
+import org.smeup.sys.db.core.QTableTerm;
 import org.smeup.sys.db.core.QViewDef;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
+import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
@@ -208,6 +210,13 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 	 * @generated
 	 */
 	private EClass tableProviderEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tableTermEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -793,6 +802,33 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTableTerm() {
+		return tableTermEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTableTerm_Name() {
+		return (EAttribute)tableTermEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTableTerm_TableDef() {
+		return (EReference)tableTermEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getViewDef() {
 		return viewDefEClass;
 	}
@@ -967,6 +1003,10 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 
 		tableProviderEClass = createEClass(TABLE_PROVIDER);
 
+		tableTermEClass = createEClass(TABLE_TERM);
+		createEAttribute(tableTermEClass, TABLE_TERM__NAME);
+		createEReference(tableTermEClass, TABLE_TERM__TABLE_DEF);
+
 		viewDefEClass = createEClass(VIEW_DEF);
 		createEAttribute(viewDefEClass, VIEW_DEF__QUERY_SELECT);
 
@@ -1015,6 +1055,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
+		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -1031,6 +1072,8 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		statementEClass.getESuperTypes().add(theMachineInterfaceCorePackage.getJavaCloseable());
 		tableDefEClass.getESuperTypes().add(this.getDatabaseObjectDef());
 		tableColumnDefEClass.getESuperTypes().add(this.getDatabaseObjectDef());
+		tableTermEClass.getESuperTypes().add(theIntegratedLanguageCoreTermPackage.getTerm());
+		tableTermEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		viewDefEClass.getESuperTypes().add(this.getTableDef());
 
 		// Initialize classes and features; add operations and parameters
@@ -1404,6 +1447,10 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		op = addEOperation(tableProviderEClass, theSQLTablesPackage.getTable(), "getTable", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "schema", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "table", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(tableTermEClass, QTableTerm.class, "TableTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTableTerm_Name(), ecorePackage.getEString(), "name", null, 1, 1, QTableTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTableTerm_TableDef(), this.getTableDef(), null, "tableDef", null, 0, 1, QTableTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(viewDefEClass, QViewDef.class, "ViewDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getViewDef_QuerySelect(), ecorePackage.getEString(), "querySelect", null, 0, 1, QViewDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -45,8 +45,9 @@ public class NIOResourceManagerImpl implements QResourceManager {
 
 	@Override
 	public void createResource(QContextProvider contextProvider, QResourceDef resource, boolean replace) {
-		// TODO Auto-generated method stub
 		
+		for(QResourceProvider resourceProvider: providers.values())
+			resourceProvider.createResource(contextProvider, resource, replace);		
 	}
 
 	@SuppressWarnings("unchecked")

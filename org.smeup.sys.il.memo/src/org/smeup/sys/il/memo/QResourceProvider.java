@@ -24,6 +24,14 @@ public interface QResourceProvider {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model contextProviderRequired="true" resourceRequired="true"
+	 * @generated
+	 */
+	void createResource(QContextProvider contextProvider, QResourceDef resource, boolean replace);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model contextProviderRequired="true" klassRequired="true" resourceRequired="true"
 	 * @generated
 	 */

@@ -123,6 +123,15 @@ public interface QDatabaseCoreFactory extends EFactory {
 	QTableColumnDef createTableColumnDef();
 
 	/**
+	 * Returns a new object of class '<em>Table Term</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Table Term</em>'.
+	 * @generated
+	 */
+	QTableTerm createTableTerm();
+
+	/**
 	 * Returns a new object of class '<em>View Def</em>'.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
