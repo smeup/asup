@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.smeup.sys.db.core.*;
 import org.smeup.sys.db.core.DatabaseCoreException;
 import org.smeup.sys.db.core.DatabaseCoreRuntimeException;
 import org.smeup.sys.db.core.OrderingType;
@@ -84,6 +85,7 @@ public class DatabaseCoreFactoryImpl extends EFactoryImpl implements QDatabaseCo
 			case QDatabaseCorePackage.SCHEMA_DEF: return (EObject)createSchemaDef();
 			case QDatabaseCorePackage.TABLE_DEF: return (EObject)createTableDef();
 			case QDatabaseCorePackage.TABLE_COLUMN_DEF: return (EObject)createTableColumnDef();
+			case QDatabaseCorePackage.TABLE_TERM: return (EObject)createTableTerm();
 			case QDatabaseCorePackage.VIEW_DEF: return (EObject)createViewDef();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -234,6 +236,16 @@ public class DatabaseCoreFactoryImpl extends EFactoryImpl implements QDatabaseCo
 	public QTableColumnDef createTableColumnDef() {
 		TableColumnDefImpl tableColumnDef = new TableColumnDefImpl();
 		return tableColumnDef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QTableTerm createTableTerm() {
+		TableTermImpl tableTerm = new TableTermImpl();
+		return tableTerm;
 	}
 
 	/**

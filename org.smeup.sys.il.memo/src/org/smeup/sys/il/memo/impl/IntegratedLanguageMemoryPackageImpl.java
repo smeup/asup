@@ -478,11 +478,6 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 
 		initEClass(resourceManagerEClass, QResourceManager.class, "ResourceManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(resourceManagerEClass, null, "createResource", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getResourceDef(), "resource", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "replace", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = addEOperation(resourceManagerEClass, null, "registerListener", 0, 1, IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "T");
 		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
@@ -589,6 +584,11 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		addEParameter(op, g1, "listener", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(resourceProviderEClass, QResourceProvider.class, "ResourceProvider", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(resourceProviderEClass, null, "createResource", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getResourceDef(), "resource", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "replace", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(resourceProviderEClass, null, "getResourceReader", 0, 1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "T");

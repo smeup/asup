@@ -11,16 +11,21 @@
  */
 package org.smeup.sys.il.memo.nio;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.dk.source.QDevelopmentKitSourceFactory;
 import org.smeup.sys.dk.source.QProject;
+import org.smeup.sys.dk.source.QProjectDef;
 import org.smeup.sys.dk.source.nio.NIOSourceManagerImpl;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
 import org.smeup.sys.il.memo.QResource;
+import org.smeup.sys.il.memo.QResourceDef;
 import org.smeup.sys.il.memo.QResourceHelper;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceProvider;
@@ -40,6 +45,20 @@ public class NIOResourceProviderImpl implements QResourceProvider {
 		resourceManager.registerProvider(QObjectNameable.class, this);
 	}
 
+	@Override
+	public void createResource(QContextProvider contextProvider, QResourceDef resourceDef, boolean replace) {
+		
+		QProjectDef projectDef = QDevelopmentKitSourceFactory.eINSTANCE.createProjectDef();
+		projectDef.setName(resourceDef.getName());
+		projectDef.setText(resourceDef.getText());
+		
+		try {
+			sourceManager.createProject(contextProvider.getContext(), projectDef, replace);
+		} catch (IOException e) {
+			throw new IntegratedLanguageMemoryRuntimeException(e);
+		}
+	}
+	
 	@Override
 	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String resource) {
 

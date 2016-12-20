@@ -50,11 +50,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResourceManager" abstract="true" interface="true"
       eSuperTypes="#//ResourceProvider">
-    <eOperations name="createResource" lowerBound="1">
-      <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
-      <eParameters name="resource" lowerBound="1" eType="#//ResourceDef"/>
-      <eParameters name="replace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
     <eOperations name="registerListener">
       <eTypeParameters name="T">
         <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
@@ -169,6 +164,11 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResourceProvider" abstract="true" interface="true">
+    <eOperations name="createResource" lowerBound="1">
+      <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
+      <eParameters name="resource" lowerBound="1" eType="#//ResourceDef"/>
+      <eParameters name="replace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
     <eOperations name="getResourceReader">
       <eGenericType eClassifier="#//ResourceReader">
         <eTypeArguments eTypeParameter="#//ResourceProvider/getResourceReader/T"/>

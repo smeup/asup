@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
+import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 import org.smeup.sys.rt.auth.QRuntimeAuthenticationPackage;
 
@@ -748,13 +749,59 @@ public interface QDatabaseCorePackage extends EPackage {
 	int TABLE_PROVIDER_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.db.core.impl.TableTermImpl <em>Table Term</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.db.core.impl.TableTermImpl
+	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getTableTerm()
+	 * @generated
+	 */
+	int TABLE_TERM = 20;
+
+	/**
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_TERM__FACETS = QIntegratedLanguageCoreTermPackage.TERM__FACETS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_TERM__NAME = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Table Def</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_TERM__TABLE_DEF = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Table Term</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_TERM_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.core.impl.ViewDefImpl <em>View Def</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.db.core.impl.ViewDefImpl
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getViewDef()
 	 * @generated
 	 */
-	int VIEW_DEF = 20;
+	int VIEW_DEF = 21;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -800,7 +847,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getOrderingType()
 	 * @generated
 	 */
-	int ORDERING_TYPE = 21;
+	int ORDERING_TYPE = 22;
 
 	/**
 	 * The meta object id for the '<em>Database Exception</em>' data type. <!--
@@ -810,7 +857,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseException()
 	 * @generated
 	 */
-	int DATABASE_EXCEPTION = 22;
+	int DATABASE_EXCEPTION = 23;
 
 	/**
 	 * The meta object id for the '<em>Database Result Set</em>' data type. <!--
@@ -820,7 +867,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseResultSet()
 	 * @generated
 	 */
-	int DATABASE_RESULT_SET = 25;
+	int DATABASE_RESULT_SET = 26;
 
 	/**
 	 * The meta object id for the '<em>Database Result Set Meta Data</em>' data type.
@@ -830,7 +877,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseResultSetMetaData()
 	 * @generated
 	 */
-	int DATABASE_RESULT_SET_META_DATA = 26;
+	int DATABASE_RESULT_SET_META_DATA = 27;
 
 	/**
 	 * The meta object id for the '<em>Statement Batch Result</em>' data type.
@@ -838,7 +885,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getStatementBatchResult()
 	 * @generated
 	 */
-	int STATEMENT_BATCH_RESULT = 27;
+	int STATEMENT_BATCH_RESULT = 28;
 
 	/**
 	 * The meta object id for the '<em>Exception</em>' data type. <!--
@@ -848,7 +895,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseCoreException()
 	 * @generated
 	 */
-	int DATABASE_CORE_EXCEPTION = 23;
+	int DATABASE_CORE_EXCEPTION = 24;
 
 	/**
 	 * The meta object id for the '<em>Runtime Exception</em>' data type. <!--
@@ -858,7 +905,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseCoreRuntimeException()
 	 * @generated
 	 */
-	int DATABASE_CORE_RUNTIME_EXCEPTION = 24;
+	int DATABASE_CORE_RUNTIME_EXCEPTION = 25;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.core.QCatalogContainer <em>Catalog Container</em>}'.
@@ -1387,6 +1434,38 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTableProvider();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.db.core.QTableTerm <em>Table Term</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Table Term</em>'.
+	 * @see org.smeup.sys.db.core.QTableTerm
+	 * @generated
+	 */
+	EClass getTableTerm();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.db.core.QTableTerm#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.smeup.sys.db.core.QTableTerm#getName()
+	 * @see #getTableTerm()
+	 * @generated
+	 */
+	EAttribute getTableTerm_Name();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.smeup.sys.db.core.QTableTerm#getTableDef <em>Table Def</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Table Def</em>'.
+	 * @see org.smeup.sys.db.core.QTableTerm#getTableDef()
+	 * @see #getTableTerm()
+	 * @generated
+	 */
+	EReference getTableTerm_TableDef();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.core.QViewDef <em>View Def</em>}'.
@@ -1924,6 +2003,32 @@ public interface QDatabaseCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass TABLE_PROVIDER = eINSTANCE.getTableProvider();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.db.core.impl.TableTermImpl <em>Table Term</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.db.core.impl.TableTermImpl
+		 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getTableTerm()
+		 * @generated
+		 */
+		EClass TABLE_TERM = eINSTANCE.getTableTerm();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TABLE_TERM__NAME = eINSTANCE.getTableTerm_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Table Def</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TABLE_TERM__TABLE_DEF = eINSTANCE.getTableTerm_TableDef();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.db.core.impl.ViewDefImpl <em>View Def</em>}' class.

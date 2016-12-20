@@ -75,10 +75,11 @@
         <genParameters ecoreParameter="db-core.ecore#//CatalogMetaData/getIndex/table"/>
         <genParameters ecoreParameter="db-core.ecore#//CatalogMetaData/getIndex/index"/>
       </genOperations>
+      <genOperations ecoreOperation="db-core.ecore#//CatalogMetaData/getAllSchemas"/>
+      <genOperations ecoreOperation="db-core.ecore#//CatalogMetaData/getCurrentSchemas"/>
       <genOperations ecoreOperation="db-core.ecore#//CatalogMetaData/getSchema">
         <genParameters ecoreParameter="db-core.ecore#//CatalogMetaData/getSchema/schema"/>
       </genOperations>
-      <genOperations ecoreOperation="db-core.ecore#//CatalogMetaData/getSchemas"/>
       <genOperations ecoreOperation="db-core.ecore#//CatalogMetaData/getTable">
         <genParameters ecoreParameter="db-core.ecore#//CatalogMetaData/getTable/table"/>
       </genOperations>
@@ -303,6 +304,9 @@
         <genParameters ecoreParameter="db-core.ecore#//TableProvider/getTable/schema"/>
         <genParameters ecoreParameter="db-core.ecore#//TableProvider/getTable/table"/>
       </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="db-core.ecore#//TableTerm">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference db-core.ecore#//TableTerm/tableDef"/>
     </genClasses>
     <genClasses ecoreClass="db-core.ecore#//ViewDef">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-core.ecore#//ViewDef/querySelect"/>

@@ -23,6 +23,7 @@ import org.osgi.framework.FrameworkUtil;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResourceDef;
 import org.smeup.sys.il.memo.QResourceHelper;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceProvider;
@@ -221,5 +222,11 @@ public class BaseTypeRegistryImpl<TP extends QTypedObject> implements QTypeRegis
 	@Override
 	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String resource) {
 		throw new OperatingSystemRuntimeException("Not writable object: " + QType.class);
+	}
+
+	@Override
+	public void createResource(QContextProvider contextProvider, QResourceDef resource, boolean replace) {
+		// TODO Auto-generated method stub
+		
 	}
 }
