@@ -238,9 +238,21 @@ public class JDBCAccessHelper {
 				sbFields.append("digits(" + getSQLObjectNameHelper().getIdentifierQuoteString() + indexColumnName + getSQLObjectNameHelper().getIdentifierQuoteString() + ")");
 
 				// append value
-				byte[] bytes = new byte[indexColumn.getLength() - keySet[i].toString().length()];
-				Arrays.fill(bytes, (byte) 48);
-				sbValues.append(new String(bytes) + keySet[i].toString());
+				
+				QDecimal decimal = (QDecimal) keySet[i];
+				// TODO Verify me
+				if(decimal.lt(0)){
+					byte[] bytes = new byte[indexColumn.getLength() - keySet[i].toString().length()];
+					Arrays.fill(bytes, (byte) 48);
+					decimal.mult(-1);
+					sbValues.append('-' + new String(bytes) + decimal.toString());
+					
+				}else{
+					byte[] bytes = new byte[indexColumn.getLength() - keySet[i].toString().length()];
+					Arrays.fill(bytes, (byte) 48);
+					sbValues.append(new String(bytes) + keySet[i].toString());
+				}
+				
 			} else {
 
 				sbFields.append(getSQLObjectNameHelper().getIdentifierQuoteString() + indexColumnName + getSQLObjectNameHelper().getIdentifierQuoteString());
