@@ -21,6 +21,7 @@ import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
@@ -34,8 +35,6 @@ import org.smeup.sys.os.type.QTypedObject;
 public class ObjectDescriptionRetriever {
 
 	@Inject
-	QUSD0200 qusd0200;
-	@Inject
 	Object object;
 
 	@Inject
@@ -45,8 +44,11 @@ public class ObjectDescriptionRetriever {
 	@Inject
 	private QJob job;
 
+	public OBJD0200 objd0200;
+	public OBJD0400 objd0400;
+	
 	@Main
-	public void main(@DataDef(length = 180) QCharacter $$dati, @DataDef(binaryType = BinaryType.BYTE) QBinary $dtaln, @DataDef(length = 8) QCharacter $fmtob,
+	public void main(@DataDef(length = 180) QCharacter $$dati, @DataDef(binaryType = BinaryType.BYTE) QBinary $dtaln, @DataDef(length = 8) QEnum<FORMATEnum, QCharacter> $fmtob,
 			@DataDef(length = 20) QCharacter $nomog, @DataDef(length = 10) QCharacter $tipog, QUSEC qusec) {
 
 		QType<?> type = typeRegistry.lookup($tipog.trimR());
@@ -85,15 +87,46 @@ public class ObjectDescriptionRetriever {
 			qusec.qusbavl.eval(1);
 			return;
 		}
-
+		
 		QTypedObject typedObject = (QTypedObject) objectNameable;
-		if (typedObject != null) {
-			if (typedObject.getText() != null)
-				qusd0200.qustd12.eval(typedObject.getText());
-			qusd0200.qusrl02.eval(typedObject.getLibrary());
-			qusd0200.qusobjt01.eval(type.getName());
 
-			$$dati.eval(qusd0200);
+		switch ($fmtob.asEnum()) {
+		case OBJD0100:
+			break;
+		case OBJD0200:
+			objd0200.clear();
+			if (typedObject != null) {
+				if (typedObject.getText() != null)
+					objd0200.qustd12.eval(typedObject.getText());
+				objd0200.qusrl02.eval(typedObject.getLibrary());
+				objd0200.qusobjt01.eval(type.getName());
+
+				$$dati.eval(objd0200);
+			}
+			break;
+		case OBJD0300:
+			break;
+		case OBJD0400:
+			objd0400.clear();
+			if (typedObject != null) {
+				objd0400.qusobjn03.eval(typedObject.getName());
+				objd0400.qusobjln02.eval(typedObject.getLibrary());
+				objd0400.qusrl04.eval(typedObject.getLibrary());
+				objd0400.qusobjt03.eval(type.getName());
+			}
+			objd0400.quscdt16.eval("000000000000");
+			objd0400.quseoa07.clear();
+			objd0400.quscup04.clear();
+			objd0400.qusapar04.clear();
+			objd0400.quslpgm04.clear();
+			objd0400.qusobjo07.clear();
+			objd0400.quscdt17.eval("000000000000");
+			objd0400.quslud.clear();
+			objd0400.qusduc01.clear();
+			
+			$$dati.eval(objd0400);
+			
+			break;
 		}
 	}
 
@@ -109,7 +142,7 @@ public class ObjectDescriptionRetriever {
 		}
 	}
 
-	public static class QUSD0100 extends QDataStructWrapper {
+	public static class OBJD0100 extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
 		@DataDef(binaryType = BinaryType.INTEGER)
 		public QBinary qusbrtn06;
@@ -135,7 +168,7 @@ public class ObjectDescriptionRetriever {
 		public QCharacter quscdt11;
 	}
 
-	public static class QUSD0200 extends QDataStructWrapper {
+	public static class OBJD0200 extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
 		@DataDef(binaryType = BinaryType.INTEGER)
 		public QBinary qusbrtn07;
@@ -171,7 +204,7 @@ public class ObjectDescriptionRetriever {
 		public QCharacter qussfmn03;
 	}
 
-	public static class QUSD0300 extends QDataStructWrapper {
+	public static class OBJD0300 extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
 		@DataDef(binaryType = BinaryType.INTEGER)
 		public QBinary qusbrtn08;
@@ -251,7 +284,7 @@ public class ObjectDescriptionRetriever {
 		public QCharacter qusapar03;
 	}
 
-	public static class QUSD0400 extends QDataStructWrapper {
+	public static class OBJD0400 extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
 		@DataDef(binaryType = BinaryType.INTEGER)
 		public QBinary qusbrtn09;
@@ -370,4 +403,13 @@ public class ObjectDescriptionRetriever {
 		@DataDef(length = 256)
 		public QCharacter qusecsta;
 	}
+	
+	public static enum FORMATEnum {
+		@Special(value = "OBJD0100") OBJD0100, 
+		@Special(value = "OBJD0200") OBJD0200, 
+		@Special(value = "OBJD0300") OBJD0300,
+		@Special(value = "OBJD0400") OBJD0400;
+	}
+	
+	
 }
