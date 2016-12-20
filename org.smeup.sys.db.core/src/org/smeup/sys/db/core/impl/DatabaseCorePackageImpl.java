@@ -56,6 +56,7 @@ import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.core.QTableProvider;
 import org.smeup.sys.db.core.QTableTerm;
 import org.smeup.sys.db.core.QViewDef;
+import org.smeup.sys.db.core.SearchStrategy;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
@@ -237,6 +238,13 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EEnum searchStrategyEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType databaseExceptionEDataType = null;
 
 	/**
@@ -399,6 +407,15 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 	 */
 	public EReference getCatalogContainer_GenerationStrategy() {
 		return (EReference)catalogContainerEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCatalogContainer_SearchStrategy() {
+		return (EAttribute)catalogContainerEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -856,6 +873,15 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getSearchStrategy() {
+		return searchStrategyEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getDatabaseException() {
 		return databaseExceptionEDataType;
 	}
@@ -939,6 +965,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		createEReference(catalogContainerEClass, CATALOG_CONTAINER__CONNECTION_CONFIG);
 		createEAttribute(catalogContainerEClass, CATALOG_CONTAINER__SUPPORTS_GUEST_ACCESS);
 		createEReference(catalogContainerEClass, CATALOG_CONTAINER__GENERATION_STRATEGY);
+		createEAttribute(catalogContainerEClass, CATALOG_CONTAINER__SEARCH_STRATEGY);
 
 		catalogGenerationStrategyEClass = createEClass(CATALOG_GENERATION_STRATEGY);
 		createEAttribute(catalogGenerationStrategyEClass, CATALOG_GENERATION_STRATEGY__CREATE_INDEX_ON_VIEW);
@@ -1012,6 +1039,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 
 		// Create enums
 		orderingTypeEEnum = createEEnum(ORDERING_TYPE);
+		searchStrategyEEnum = createEEnum(SEARCH_STRATEGY);
 
 		// Create data types
 		databaseExceptionEDataType = createEDataType(DATABASE_EXCEPTION);
@@ -1083,6 +1111,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		initEReference(getCatalogContainer_ConnectionConfig(), this.getConnectionConfig(), null, "connectionConfig", null, 1, 1, QCatalogContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCatalogContainer_SupportsGuestAccess(), ecorePackage.getEBoolean(), "supportsGuestAccess", "false", 1, 1, QCatalogContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCatalogContainer_GenerationStrategy(), this.getCatalogGenerationStrategy(), null, "generationStrategy", null, 1, 1, QCatalogContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCatalogContainer_SearchStrategy(), this.getSearchStrategy(), "searchStrategy", "CUR", 1, 1, QCatalogContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = addEOperation(catalogContainerEClass, null, "createConnection", 0, 1, IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "C");
@@ -1154,6 +1183,8 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 
 		op = addEOperation(catalogMetaDataEClass, theSQLSchemaPackage.getSchema(), "getSchema", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "schema", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(catalogMetaDataEClass, this.getSearchStrategy(), "getSearchStrategy", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(catalogMetaDataEClass, theSQLTablesPackage.getTable(), "getTable", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "table", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -1459,6 +1490,10 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		initEEnum(orderingTypeEEnum, OrderingType.class, "OrderingType");
 		addEEnumLiteral(orderingTypeEEnum, OrderingType.ASCEND);
 		addEEnumLiteral(orderingTypeEEnum, OrderingType.DESCEND);
+
+		initEEnum(searchStrategyEEnum, SearchStrategy.class, "SearchStrategy");
+		addEEnumLiteral(searchStrategyEEnum, SearchStrategy.CURRENT);
+		addEEnumLiteral(searchStrategyEEnum, SearchStrategy.ALL);
 
 		// Initialize data types
 		initEDataType(databaseExceptionEDataType, SQLException.class, "DatabaseException", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

@@ -28,6 +28,7 @@ import org.smeup.sys.il.core.ctx.QContext;
  *   <li>{@link org.smeup.sys.db.core.QCatalogContainer#getConnectionConfig <em>Connection Config</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.QCatalogContainer#isSupportsGuestAccess <em>Supports Guest Access</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.QCatalogContainer#getGenerationStrategy <em>Generation Strategy</em>}</li>
+ *   <li>{@link org.smeup.sys.db.core.QCatalogContainer#getSearchStrategy <em>Search Strategy</em>}</li>
  * </ul>
  *
  * @see org.smeup.sys.db.core.QDatabaseCorePackage#getCatalogContainer()
@@ -196,6 +197,36 @@ public interface QCatalogContainer {
 	 * @generated
 	 */
 	void setGenerationStrategy(QCatalogGenerationStrategy value);
+
+	/**
+	 * Returns the value of the '<em><b>Search Strategy</b></em>' attribute.
+	 * The default value is <code>"CUR"</code>.
+	 * The literals are from the enumeration {@link org.smeup.sys.db.core.SearchStrategy}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Search Strategy</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Search Strategy</em>' attribute.
+	 * @see org.smeup.sys.db.core.SearchStrategy
+	 * @see #setSearchStrategy(SearchStrategy)
+	 * @see org.smeup.sys.db.core.QDatabaseCorePackage#getCatalogContainer_SearchStrategy()
+	 * @model default="CUR" required="true"
+	 * @generated
+	 */
+	SearchStrategy getSearchStrategy();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.db.core.QCatalogContainer#getSearchStrategy <em>Search Strategy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Search Strategy</em>' attribute.
+	 * @see org.smeup.sys.db.core.SearchStrategy
+	 * @see #getSearchStrategy()
+	 * @generated
+	 */
+	void setSearchStrategy(SearchStrategy value);
 
 	/**
 	 * <!-- begin-user-doc -->

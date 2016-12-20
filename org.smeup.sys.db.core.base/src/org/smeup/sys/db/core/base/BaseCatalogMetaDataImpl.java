@@ -19,14 +19,17 @@ import org.eclipse.datatools.modelbase.sql.constraints.Index;
 import org.eclipse.datatools.modelbase.sql.schema.Schema;
 import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.eclipse.datatools.modelbase.sql.tables.ViewTable;
+import org.smeup.sys.db.core.SearchStrategy;
 import org.smeup.sys.db.core.impl.CatalogMetaDataImpl;
 
 public class BaseCatalogMetaDataImpl extends CatalogMetaDataImpl {
 
 	private Map<String, Schema> schemas;
-
-	public BaseCatalogMetaDataImpl(Map<String, Schema> schemas) {
+	private SearchStrategy searchStrategy;
+	
+	public BaseCatalogMetaDataImpl(Map<String, Schema> schemas, SearchStrategy searchStategy) {
 		this.schemas = schemas;
+		this.searchStrategy = searchStategy;
 	}
 
 	@Override
@@ -52,7 +55,17 @@ public class BaseCatalogMetaDataImpl extends CatalogMetaDataImpl {
 	@Override
 	public Table getTable(String tableName) {
 
-		for (Schema schema : getCurrentSchemas()) {
+		List<Schema> schemas = null;
+		switch (getSearchStrategy()) {
+		case ALL:
+			schemas = getAllSchemas();
+			break;
+		case CURRENT:
+			schemas = getCurrentSchemas();
+			break;
+		}
+		
+		for (Schema schema : schemas) {
 			Table table = getTable(schema.getName(), tableName);
 			if (table != null)
 				return table;
@@ -64,7 +77,17 @@ public class BaseCatalogMetaDataImpl extends CatalogMetaDataImpl {
 	@Override
 	public ViewTable getView(String tableName) {
 
-		for (Schema schema : getCurrentSchemas()) {
+		List<Schema> schemas = null;
+		switch (getSearchStrategy()) {
+		case ALL:
+			schemas = getAllSchemas();
+			break;
+		case CURRENT:
+			schemas = getCurrentSchemas();
+			break;
+		}
+		
+		for (Schema schema : schemas) {
 			ViewTable view = getView(schema.getName(), tableName);
 			if (view != null)
 				return view;
@@ -109,5 +132,9 @@ public class BaseCatalogMetaDataImpl extends CatalogMetaDataImpl {
 	@Override
 	public List<Schema> getCurrentSchemas() {
 		return new ArrayList<Schema>(this.schemas.values());
+	}
+	
+	public SearchStrategy getSearchStrategy() {
+		return this.searchStrategy;
 	}
 }

@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.smeup.sys.db.core.QCatalogMetaData;
 import org.smeup.sys.db.core.QDatabaseCorePackage;
+import org.smeup.sys.db.core.SearchStrategy;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -81,6 +82,17 @@ public abstract class CatalogMetaDataImpl extends MinimalEObjectImpl.Container i
 	 * @generated
 	 */
 	public Schema getSchema(String schema) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SearchStrategy getSearchStrategy() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

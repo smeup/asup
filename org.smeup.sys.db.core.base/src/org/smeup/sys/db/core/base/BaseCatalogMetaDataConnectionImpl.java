@@ -20,6 +20,7 @@ import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.eclipse.datatools.modelbase.sql.tables.ViewTable;
 import org.smeup.sys.db.core.QCatalogMetaData;
 import org.smeup.sys.db.core.QConnection;
+import org.smeup.sys.db.core.SearchStrategy;
 
 public class BaseCatalogMetaDataConnectionImpl implements QCatalogMetaData {
 
@@ -71,7 +72,17 @@ public class BaseCatalogMetaDataConnectionImpl implements QCatalogMetaData {
 	@Override
 	public Table getTable(String tableName) {
 		
-		for (Schema schema : getCurrentSchemas()) {
+		List<Schema> schemas = null;
+		switch (getSearchStrategy()) {
+		case ALL:
+			schemas = getAllSchemas();
+			break;
+		case CURRENT:
+			schemas = getCurrentSchemas();
+			break;
+		}
+
+		for (Schema schema : schemas) {
 			Table table = getTable(schema.getName(), tableName);
 			if (table != null)
 				return table;
@@ -89,13 +100,28 @@ public class BaseCatalogMetaDataConnectionImpl implements QCatalogMetaData {
 
 	@Override
 	public ViewTable getView(String tableName) {
-		
-		for (Schema schema : getCurrentSchemas()) {
+
+		List<Schema> schemas = null;
+		switch (getSearchStrategy()) {
+		case ALL:
+			schemas = getAllSchemas();
+			break;
+		case CURRENT:
+			schemas = getCurrentSchemas();
+			break;
+		}
+
+		for (Schema schema : schemas) {
 			ViewTable view = getView(schema.getName(), tableName);
 			if (view != null)
 				return view;
 		}
 
 		return null;
+	}
+
+	@Override
+	public SearchStrategy getSearchStrategy() {
+		return catalogMetaData.getSearchStrategy();
 	}
 }

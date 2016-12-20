@@ -116,12 +116,21 @@ public interface QDatabaseCorePackage extends EPackage {
 	int CATALOG_CONTAINER__GENERATION_STRATEGY = 4;
 
 	/**
+	 * The feature id for the '<em><b>Search Strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATALOG_CONTAINER__SEARCH_STRATEGY = 5;
+
+	/**
 	 * The number of structural features of the '<em>Catalog Container</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_CONTAINER_FEATURE_COUNT = 5;
+	int CATALOG_CONTAINER_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.core.impl.CatalogGenerationStrategyImpl <em>Catalog Generation Strategy</em>}' class.
@@ -850,6 +859,16 @@ public interface QDatabaseCorePackage extends EPackage {
 	int ORDERING_TYPE = 22;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.db.core.SearchStrategy <em>Search Strategy</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.db.core.SearchStrategy
+	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getSearchStrategy()
+	 * @generated
+	 */
+	int SEARCH_STRATEGY = 23;
+
+	/**
 	 * The meta object id for the '<em>Database Exception</em>' data type. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -857,7 +876,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseException()
 	 * @generated
 	 */
-	int DATABASE_EXCEPTION = 23;
+	int DATABASE_EXCEPTION = 24;
 
 	/**
 	 * The meta object id for the '<em>Database Result Set</em>' data type. <!--
@@ -867,7 +886,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseResultSet()
 	 * @generated
 	 */
-	int DATABASE_RESULT_SET = 26;
+	int DATABASE_RESULT_SET = 27;
 
 	/**
 	 * The meta object id for the '<em>Database Result Set Meta Data</em>' data type.
@@ -877,7 +896,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseResultSetMetaData()
 	 * @generated
 	 */
-	int DATABASE_RESULT_SET_META_DATA = 27;
+	int DATABASE_RESULT_SET_META_DATA = 28;
 
 	/**
 	 * The meta object id for the '<em>Statement Batch Result</em>' data type.
@@ -885,7 +904,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getStatementBatchResult()
 	 * @generated
 	 */
-	int STATEMENT_BATCH_RESULT = 28;
+	int STATEMENT_BATCH_RESULT = 29;
 
 	/**
 	 * The meta object id for the '<em>Exception</em>' data type. <!--
@@ -895,7 +914,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseCoreException()
 	 * @generated
 	 */
-	int DATABASE_CORE_EXCEPTION = 24;
+	int DATABASE_CORE_EXCEPTION = 25;
 
 	/**
 	 * The meta object id for the '<em>Runtime Exception</em>' data type. <!--
@@ -905,7 +924,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseCoreRuntimeException()
 	 * @generated
 	 */
-	int DATABASE_CORE_RUNTIME_EXCEPTION = 25;
+	int DATABASE_CORE_RUNTIME_EXCEPTION = 26;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.core.QCatalogContainer <em>Catalog Container</em>}'.
@@ -976,6 +995,17 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCatalogContainer_GenerationStrategy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.db.core.QCatalogContainer#getSearchStrategy <em>Search Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Search Strategy</em>'.
+	 * @see org.smeup.sys.db.core.QCatalogContainer#getSearchStrategy()
+	 * @see #getCatalogContainer()
+	 * @generated
+	 */
+	EAttribute getCatalogContainer_SearchStrategy();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.core.QCatalogGenerationStrategy <em>Catalog Generation Strategy</em>}'.
@@ -1496,6 +1526,16 @@ public interface QDatabaseCorePackage extends EPackage {
 	EEnum getOrderingType();
 
 	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.db.core.SearchStrategy <em>Search Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Search Strategy</em>'.
+	 * @see org.smeup.sys.db.core.SearchStrategy
+	 * @generated
+	 */
+	EEnum getSearchStrategy();
+
+	/**
 	 * Returns the meta object for data type '{@link java.sql.SQLException
 	 * <em>Database Exception</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
@@ -1634,6 +1674,14 @@ public interface QDatabaseCorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference CATALOG_CONTAINER__GENERATION_STRATEGY = eINSTANCE.getCatalogContainer_GenerationStrategy();
+
+		/**
+		 * The meta object literal for the '<em><b>Search Strategy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CATALOG_CONTAINER__SEARCH_STRATEGY = eINSTANCE.getCatalogContainer_SearchStrategy();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.db.core.impl.CatalogGenerationStrategyImpl <em>Catalog Generation Strategy</em>}' class.
@@ -2054,6 +2102,16 @@ public interface QDatabaseCorePackage extends EPackage {
 		 * @generated
 		 */
 		EEnum ORDERING_TYPE = eINSTANCE.getOrderingType();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.db.core.SearchStrategy <em>Search Strategy</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.db.core.SearchStrategy
+		 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getSearchStrategy()
+		 * @generated
+		 */
+		EEnum SEARCH_STRATEGY = eINSTANCE.getSearchStrategy();
 
 		/**
 		 * The meta object literal for the '<em>Database Exception</em>' data type.
