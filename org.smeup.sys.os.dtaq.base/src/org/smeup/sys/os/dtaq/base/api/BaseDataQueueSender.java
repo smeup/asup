@@ -31,11 +31,20 @@ public class BaseDataQueueSender {
 	private QJobCapability jobCapability;
 
 	@Main
-	public void main(@DataDef(length = 10) QCharacter name, @DataDef(length = 10) QCharacter library, @DataDef(precision = 5, packed = true) QDecimal dataLength, QPointer data) {
+	public void main(@DataDef(length = 10) QCharacter name, 
+			@DataDef(length = 10) QCharacter library, 
+			@DataDef(precision = 5, packed = true) QDecimal dataLength, 
+			QPointer data,
+			@DataDef(precision = 3, packed = true) QDecimal keyDataLength,
+			QPointer keyData) {
 		
 		String content = data.qStr(dataLength.asInteger()).asString();
-//		System.out.println("dtaq-snd("+name.trimR()+"):\t" + content);
+
+		String key = null;
+		if(keyDataLength.gt(0))
+			key = keyData.qStr(keyDataLength.asInteger()).asString();
+		//		System.out.println("dtaq-snd("+name.trimR()+"):\t" + content);
 		
-		dataQueueManager.writeDataQueue(jobCapability, library.trimR(), name.trimR(), null, content);
+		dataQueueManager.writeDataQueue(jobCapability, library.trimR(), name.trimR(), key, content);
 	}
 }

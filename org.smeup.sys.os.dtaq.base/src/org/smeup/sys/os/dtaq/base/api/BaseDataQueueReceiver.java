@@ -21,6 +21,7 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.os.core.jobs.QJobCapability;
+import org.smeup.sys.os.dtaq.DataQueueSearchType;
 import org.smeup.sys.os.dtaq.QDataQueueManager;
 
 @Program(name = "QRCVDTAQ")
@@ -34,11 +35,23 @@ public class BaseDataQueueReceiver {
 	private QJobCapability jobCapability;
 
 	@Main
-	public void main(@DataDef(length = 10) QCharacter name, @DataDef(length = 10) QCharacter library, @DataDef(precision = 5, packed = true) QDecimal length, QPointer data,
-			@DataDef(precision = 5, packed = true) QDecimal wait) {
+	public void main(@DataDef(length = 10) QCharacter name, 
+			@DataDef(length = 10) QCharacter library, 
+			@DataDef(precision = 5, packed = true) QDecimal length, 
+			QPointer data,
+			@DataDef(precision = 5, packed = true) QDecimal wait,
+			@DataDef(length = 2) QCharacter keyOrder,
+			@DataDef(precision = 3, packed = true) QDecimal keyDataLength,
+			QPointer keyData) {
 
-		// content
-		String content = dataQueueManager.readDataQueue(jobCapability, library.trimR(), name.trimR(), wait.asInteger() * 1000, null, null);
+		String key = null;
+		String content = "";
+		if(keyDataLength.gt(0)){
+			key = keyData.qStr(keyDataLength.asInteger()).asString();
+			content = dataQueueManager.readDataQueue(jobCapability, library.trimR(), name.trimR(), wait.asInteger() * 1000, key, DataQueueSearchType.get("*"+keyOrder.trimR()));
+		}else{
+			content = dataQueueManager.readDataQueue(jobCapability, library.trimR(), name.trimR(), wait.asInteger() * 1000, null, null);
+		}
 
 //		System.out.println("dtaq-rcv("+name.trimR()+"):\t" + content);
 
