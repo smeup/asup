@@ -616,8 +616,12 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	}
 
 	private final QNumeric qIntOperation(final String value, final boolean roundingMode) {
+		
+		String valueNumber = value;
+		if(value.isEmpty())
+			valueNumber="0";
 
-		final QNumeric number = new NIOBinaryImpl(getDataContext(), false, Integer.parseInt(value));
+		final QNumeric number = new NIOBinaryImpl(getDataContext(), false, Integer.parseInt(valueNumber));
 
 		return number;
 	}
