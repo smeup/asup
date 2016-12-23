@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.os.type.base.api;
 
+import java.text.SimpleDateFormat;
+
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.QObjectNameable;
@@ -48,7 +50,7 @@ public class ObjectDescriptionRetriever {
 	public OBJD0400 objd0400;
 	
 	@Main
-	public void main(@DataDef(length = 180) QCharacter $$dati, @DataDef(binaryType = BinaryType.BYTE) QBinary $dtaln, @DataDef(length = 8) QEnum<FORMATEnum, QCharacter> $fmtob,
+	public void main(@DataDef(length = 2000) QCharacter $$dati, @DataDef(binaryType = BinaryType.BYTE) QBinary $dtaln, @DataDef(length = 8) QEnum<FORMATEnum, QCharacter> $fmtob,
 			@DataDef(length = 20) QCharacter $nomog, @DataDef(length = 10) QCharacter $tipog, QUSEC qusec) {
 
 		QType<?> type = typeRegistry.lookup($tipog.trimR());
@@ -113,16 +115,20 @@ public class ObjectDescriptionRetriever {
 				objd0400.qusobjln02.eval(typedObject.getLibrary());
 				objd0400.qusrl04.eval(typedObject.getLibrary());
 				objd0400.qusobjt03.eval(type.getName());
+
+				SimpleDateFormat format = new SimpleDateFormat("yyMMddHHmmss");
+				String dateString = format.format(typedObject.getCreationInfo().getCreationDate());
+				objd0400.quscdt16.eval("1" + dateString);
+				objd0400.quscup04.eval(typedObject.getCreationInfo().getCreationUser());
+				objd0400.quscdt17.eval("1" + dateString);
 			}
-			objd0400.quscdt16.eval("000000000000");
+		
 			objd0400.quseoa07.clear();
-			objd0400.quscup04.clear();
 			objd0400.qusapar04.clear();
 			objd0400.quslpgm04.clear();
 			objd0400.qusobjo07.clear();
-			objd0400.quscdt17.eval("000000000000");
 			objd0400.quslud.clear();
-			objd0400.qusduc01.clear();
+			objd0400.qusduc01.eval(0);
 			
 			$$dati.eval(objd0400);
 			
