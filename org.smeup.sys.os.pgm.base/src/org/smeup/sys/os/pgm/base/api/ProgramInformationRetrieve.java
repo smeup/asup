@@ -74,6 +74,11 @@ public class ProgramInformationRetrieve {
 			pgmi0100.qclpln.eval(qProgram.getLibrary());
 			pgmi0100.qcltext.eval(qProgram.getText());
 			pgmi0100.qclpa.eval(qProgram.getSource().getType());
+			
+			pgmi0100.qclsfiln.eval("SRC");
+			pgmi0100.qclsln.eval(qProgram.getLibrary());
+			pgmi0100.qclsmn.eval(qProgram.getName());
+			
 			receiverVariable.eval(pgmi0100);
 			break;
 		case PGMI0200:
