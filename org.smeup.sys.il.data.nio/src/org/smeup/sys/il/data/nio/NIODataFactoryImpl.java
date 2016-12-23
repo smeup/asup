@@ -632,8 +632,14 @@ public final class NIODataFactoryImpl implements QDataFactory {
 				if (dataDef.packed())
 					if (eObject instanceof QMultipleAtomicBufferedDataDef<?>) {
 						final QMultipleAtomicBufferedDataDef<?> multipleAtomicBufferedDataDef = (QMultipleAtomicBufferedDataDef<?>) eObject;
-						final QDecimalDef decimalDef = (QDecimalDef) multipleAtomicBufferedDataDef.getArgument();
-						decimalDef.setType(DecimalType.PACKED);
+						if (multipleAtomicBufferedDataDef.getArgument() instanceof QEnumDef<?, ?>) {
+							final QEnumDef<?, ?> enumDef = (QEnumDef<?, ?>) multipleAtomicBufferedDataDef.getArgument();
+							final QDecimalDef decimalDef = (QDecimalDef) enumDef.getDelegate();
+							decimalDef.setType(DecimalType.PACKED);
+						}else{
+							final QDecimalDef decimalDef = (QDecimalDef) multipleAtomicBufferedDataDef.getArgument();
+							decimalDef.setType(DecimalType.PACKED);
+						}
 					} else if (eObject instanceof QDataAreaDef<?>) {
 						final QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) eObject;
 						final QDecimalDef decimalDef = (QDecimalDef) dataAreaDef.getArgument();
