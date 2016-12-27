@@ -15,11 +15,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.MarkerAnnotation;
 import org.eclipse.jdt.core.dom.MemberValuePair;
 import org.eclipse.jdt.core.dom.NormalAnnotation;
 import org.eclipse.jdt.core.dom.StringLiteral;
 import org.eclipse.jdt.core.dom.Type;
+import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
+import org.eclipse.jdt.core.dom.Modifier.ModifierKeyword;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
@@ -29,6 +34,9 @@ import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.dk.core.annotation.Unsupported;
+import org.smeup.sys.dk.test.QTestAsserter;
+import org.smeup.sys.dk.test.QTestManager;
+import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.flow.QConversion;
@@ -59,6 +67,12 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		writeImport(OperatingSystemRuntimeException.class);
 		writeImport(OperatingSystemMessageException.class);
 		writeImport(List.class);
+		
+		if(name.startsWith("MUTE")){
+			writeImport(Test.class);
+			writeImport(QTestAsserter.class);
+		}
+		
 	}
 
 	public void writeProgram(QProgram program) throws IOException {
@@ -87,6 +101,11 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 
 		writeProgramAnnotation(program);
 
+		// TEST
+		if(program.getName().startsWith("MUTE"))
+			writeProgramTestAnnotation(program);
+		
+		
 		// unit info
 		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(getCompilationUnit(), program);
 		
@@ -95,6 +114,10 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 //			System.err.println("Unsignificant zeros");
 		
 		writeSupportFields(callableUnitInfo);
+		
+		// TEST
+		if(program.getName().startsWith("MUTE"))
+			writeSupportProgramTestFields(callableUnitInfo);
 
 		writeModuleFields(modules, UnitScope.PRIVATE);
 
@@ -174,6 +197,22 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 	}
 
 	@SuppressWarnings("unchecked")
+	public void writeSupportProgramTestFields(RPJCallableUnitInfo callableUnitInfo) {
+		writeImport(QTestManager.class);
+
+		VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
+		FieldDeclaration field = getAST().newFieldDeclaration(variable);
+		writeAnnotation(field, Inject.class);
+
+		field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+		field.modifiers().add(getAST().newModifier(ModifierKeyword.TRANSIENT_KEYWORD));
+		field.setType(getAST().newSimpleType(getAST().newName(QTestAsserter.class.getSimpleName())));
+		variable.setName(getAST().newSimpleName("testAsserter"));
+		getTarget().bodyDeclarations().add(field);
+	}
+	
+	
+	@SuppressWarnings("unchecked")
 	public void writeProgramAnnotation(QProgram program) {
 		QConversion conversion = program.getFacet(QConversion.class);
 		if (conversion != null) {
@@ -213,4 +252,42 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		getTarget().modifiers().add(0, programAnnotation);
 	}
 
+	@SuppressWarnings("unchecked")
+	public void writeProgramTestAnnotation(QProgram program) {
+		NormalAnnotation programAnnotation = getAST().newNormalAnnotation();
+		StringLiteral stringLiteral = getAST().newStringLiteral();
+		// @Test(category = "", object = "")
+		programAnnotation = getAST().newNormalAnnotation();
+		programAnnotation.setTypeName(getAST().newSimpleName(Test.class.getSimpleName()));
+
+		String categoryName = "IL.DATA";
+		String objectName = program.getName();
+
+		String programText = program.getText();
+		if (programText != null) {
+			String[] tokens = programText.split("[\\s\\-]+");
+			if (tokens.length >= 2) {
+				categoryName = tokens[tokens.length - 1];
+				objectName = tokens[tokens.length - 2];
+			}
+		}
+
+		// category
+		MemberValuePair categoryValuePair = getAST().newMemberValuePair();
+		categoryValuePair.setName(getAST().newSimpleName("category"));
+		stringLiteral = getAST().newStringLiteral();
+		stringLiteral.setLiteralValue(categoryName);
+		categoryValuePair.setValue(stringLiteral);
+		programAnnotation.values().add(categoryValuePair);
+
+		// object
+		MemberValuePair objectValuePair = getAST().newMemberValuePair();
+		objectValuePair.setName(getAST().newSimpleName("object"));
+		stringLiteral = getAST().newStringLiteral();
+		stringLiteral.setLiteralValue(objectName);
+		objectValuePair.setValue(stringLiteral);
+		programAnnotation.values().add(objectValuePair);
+
+		getTarget().modifiers().add(1, programAnnotation);
+	}	
 }

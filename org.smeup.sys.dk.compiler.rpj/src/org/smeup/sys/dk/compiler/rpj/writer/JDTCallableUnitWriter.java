@@ -76,6 +76,7 @@ import org.smeup.sys.dk.compiler.rpj.dbl.DBLQuerySelectWriter;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.dk.core.annotation.Unsupported;
+import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
@@ -105,6 +106,7 @@ import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QTermExpression;
+import org.smeup.sys.il.flow.QAnnotationTest;
 import org.smeup.sys.il.flow.QBlock;
 import org.smeup.sys.il.flow.QCallableUnit;
 import org.smeup.sys.il.flow.QConversion;
@@ -119,6 +121,7 @@ import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.il.flow.QUnit;
+import org.smeup.sys.mi.core.util.QLists;
 import org.smeup.sys.os.file.QExternalFile;
 
 public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
@@ -562,7 +565,13 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			QRoutine routine = QIntegratedLanguageFlowFactory.eINSTANCE.createRoutine();
 			routine.setName("*MAIN");
 			routine.setMain(callableUnit.getMain());
-			writeRoutine(routine);
+			MethodDeclaration methodDeclaration = writeRoutine(routine);
+			if(callableUnit.getName().startsWith("MUTE")){
+				MarkerAnnotation entryAnnotation = getAST().newMarkerAnnotation();
+				entryAnnotation.setTypeName(getAST().newSimpleName(TestStarted.class.getSimpleName()));
+				writeImport(TestStarted.class);
+				writeRoutineTestMain(methodDeclaration, callableUnit);
+			}
 		}
 
 		// snap
@@ -577,7 +586,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				writeRoutine(routine);
 			}
 	}
-
+	
 	public void writeSnapRoutine(QCallableUnit callableUnit, RPJCallableUnitInfo callableUnitInfo) {
 
 		QRoutine routine = QIntegratedLanguageFlowFactory.eINSTANCE.createRoutine();
@@ -1169,6 +1178,35 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	private void writeRoutineTestMain(MethodDeclaration methodDeclaration, QCallableUnit program) {
+		
+		QLists listUtil = getCompilationUnit().getContext().get(QLists.class);
+
+		MarkerAnnotation entryAnnotation = getAST().newMarkerAnnotation();
+		entryAnnotation.setTypeName(getAST().newSimpleName(TestStarted.class.getSimpleName()));
+		writeImport(TestStarted.class);
+
+		listUtil.addFirst(methodDeclaration.modifiers(), entryAnnotation);
+
+		Block assertionBlock = getAST().newBlock();
+
+		JDTStatementWriter statementWriter = getCompilationUnit().getContext().make(JDTStatementWriter.class);
+		statementWriter.setAST(getAST());
+		statementWriter.getBlocks().push(assertionBlock);
+
+		// test annotations
+		for (QDataTerm<?> dataTerm : program.getDataSection().getDatas()) {
+			for (QAnnotationTest annotationTest : dataTerm.getFacets(QAnnotationTest.class))
+				statementWriter.writeAssertion(annotationTest, dataTerm.toString());
+		}
+		
+		if (!assertionBlock.statements().isEmpty())
+			listUtil.addFirst(methodDeclaration.getBody().statements(), assertionBlock);
+
+		statementWriter.getBlocks().pop();
+	}
+	
 	private void addModule(Collection<String> modules, String module) {
 
 		if (!modules.contains(module))

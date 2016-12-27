@@ -41,7 +41,6 @@ import org.smeup.sys.dk.compiler.rpj.writer.JDTDatabaseFileWriter;
 import org.smeup.sys.dk.compiler.rpj.writer.JDTDisplayFileWriter;
 import org.smeup.sys.dk.compiler.rpj.writer.JDTModuleWriter;
 import org.smeup.sys.dk.compiler.rpj.writer.JDTPrinterFileWriter;
-import org.smeup.sys.dk.compiler.rpj.writer.JDTProgramTestWriter;
 import org.smeup.sys.dk.compiler.rpj.writer.JDTProgramWriter;
 import org.smeup.sys.dk.compiler.rpj.writer.JDTStubWriter;
 import org.smeup.sys.dk.source.QSourceEntry;
@@ -454,13 +453,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 	@Override
 	public void writeProgramTest(QCompilationUnit compilationUnit, QCompilationSetup setup, OutputStream output) throws IOException {
-
-		QProgram program = (QProgram) compilationUnit.getNode();
-
-		JDTProgramTestWriter programTestWriter = new JDTProgramTestWriter(null, compilationUnit, setup, compilationUnit.getNode().getName());
-		programTestWriter.writeProgramTest(program);
-
-		programTestWriter.writeOutputStream(output);
+		// TODO Remove me
 	}
 
 	@Override
