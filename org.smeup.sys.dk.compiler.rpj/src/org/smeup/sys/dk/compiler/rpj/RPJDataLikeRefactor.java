@@ -187,7 +187,7 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				if (containsLike(strollerDef))
 					visit(source);
 				setLength(charDefTo, strollerDef);
-				appendDefinition(strollerDef, target);
+//				appendDefinition(strollerDef, target);
 				break;
 			}
 
