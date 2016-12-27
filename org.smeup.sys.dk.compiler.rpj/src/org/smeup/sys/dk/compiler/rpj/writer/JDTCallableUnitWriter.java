@@ -518,6 +518,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			} else {
 //				String argument = printTerm.getName();
 				String argument = "PRT198";
+				writeImport("com.smeup.erp.file.prtf.XX.gen.PRT198");
 				parType.typeArguments().add(getAST().newSimpleType(getAST().newSimpleName(argument)));
 			}
 
