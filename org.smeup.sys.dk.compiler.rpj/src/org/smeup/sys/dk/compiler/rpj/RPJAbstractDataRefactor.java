@@ -33,6 +33,7 @@ import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QDataAreaDef;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.def.QDataStructDef;
+import org.smeup.sys.il.data.def.QDatetimeDef;
 import org.smeup.sys.il.data.def.QDecimalDef;
 import org.smeup.sys.il.data.def.QIndicatorDef;
 import org.smeup.sys.il.data.def.QMultipleAtomicBufferedDataDef;
@@ -109,6 +110,9 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 				target = termTarget.getDefinition();
 			} else if (target instanceof QCharacterDef && source instanceof QBinaryDef) {
 				((QDataTerm<QBinaryDef>) termTarget).setDefinition((QBinaryDef) EcoreUtil.copy((EObject) source));
+				target = termTarget.getDefinition();
+			} else if (target instanceof QCharacterDef && source instanceof QDatetimeDef) {
+				((QDataTerm<QDatetimeDef>) termTarget).setDefinition((QDatetimeDef) EcoreUtil.copy((EObject) source));
 				target = termTarget.getDefinition();
 			} else if (target instanceof QCharacterDef && source instanceof QIndicatorDef) {
 				((QDataTerm<QIndicatorDef>) termTarget).setDefinition((QIndicatorDef) EcoreUtil.copy((EObject) source));
