@@ -26,6 +26,7 @@ import org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QOverlay;
 import org.smeup.sys.il.expr.QExpressionParser;
+import org.smeup.sys.os.file.impl.DisplayFileFormatDefImpl;
 
 public class RPJDataLengthCompleter extends RPJAbstractDataRefactor {
 
@@ -60,6 +61,11 @@ public class RPJDataLengthCompleter extends RPJAbstractDataRefactor {
 			compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
 
 		for (QDataTerm<?> element : new ArrayList<QDataTerm<?>>(compoundDataDef.getElements())) {
+			
+			// TODO C£LIS0D
+			if(element.getDefinition() instanceof DisplayFileFormatDefImpl)
+				continue;
+			
 			QBufferedDataDef<?> bufferedDataDef = (QBufferedDataDef<?>) element.getDefinition();
 			if (bufferedDataDef.getLength() != 0)
 				continue;
