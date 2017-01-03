@@ -508,7 +508,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				return "";
 			}
 
-			byte[] bytes = bufferedElement.asBytes();
+			byte[] bytes = bufferedElement.asBytes();			
+			
 			paramValue = QStrings.qINSTANCE.trimR(new String(bytes, dataContext.getCharset()));
 
 			if (paramValue.length() > 20)
@@ -522,7 +523,13 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 			StringBuffer sb = new StringBuffer();
 			for (QBufferedElement bufferedElement : bufferedList) {
+				if(bufferedElement.isNull()) {
+					sb.append(":" + paramValue);
+					continue;
+				}
+				
 				byte[] bytes = bufferedElement.asBytes();
+
 				paramValue = QStrings.qINSTANCE.trimR(new String(bytes, dataContext.getCharset()));
 
 				if (paramValue.length() > 20)

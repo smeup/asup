@@ -14,6 +14,7 @@ package org.smeup.sys.il.data.nio;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.math.BigDecimal;
 
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
@@ -69,6 +70,22 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 		return null;
 	}
 
+	protected final BigDecimal _toBigDecimal(Number number, boolean halfAdjust) {
+
+		BigDecimal bd = null;
+		if (number instanceof BigDecimal)
+			bd = (BigDecimal) number;
+
+		if (bd == null || bd.precision() > getPrecision() || bd.scale() > getScale()) {
+			if (halfAdjust)
+				bd = new BigDecimal(_decimalDef.formatUP.format(number));
+			else
+				bd = new BigDecimal(_decimalDef.formatDW.format(number));
+		}
+		
+		return bd;
+	}
+
 	@Override
 	public final void accept(final QDataVisitor visitor) {
 		visitor.visit(this);
@@ -94,11 +111,11 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 
 		return number;
 	}
-	
+
 	private final void readObject(final ObjectInputStream stream) throws IOException, ClassNotFoundException {
 
 		stream.defaultReadObject();
-		
+
 		final int precision = stream.readInt();
 		final int scale = stream.readInt();
 		_decimalDef = NIODecimalDef.getInstance(precision, scale);
@@ -107,7 +124,7 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 	private final void writeObject(final ObjectOutputStream stream) throws IOException {
 
 		stream.defaultWriteObject();
-		
+
 		stream.writeInt(getPrecision());
 		stream.writeInt(getScale());
 	}

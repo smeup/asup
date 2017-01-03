@@ -99,7 +99,7 @@ public final class NIODecimalDef implements Serializable {
 	private final static AS400ZonedDecimal createDecimalZoned(final int precision, final int scale) {
 
 		final AS400ZonedDecimal decimal = new AS400ZonedDecimal(precision, scale);
-		decimal.setUseDouble(true);
+		decimal.setUseDouble(false);
 
 		return decimal;
 	}
@@ -107,7 +107,7 @@ public final class NIODecimalDef implements Serializable {
 	private final static AS400PackedDecimal createDecimalPacked(final int precision, final int scale) {
 
 		final AS400PackedDecimal decimal = new AS400PackedDecimal(precision, scale);
-		decimal.setUseDouble(true);
+		decimal.setUseDouble(false);
 
 		return decimal;
 	}

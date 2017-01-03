@@ -450,13 +450,18 @@ public class RPJProgramSupport extends RPJModule {
 	}
 
 	public QDecimal qDec(QDatetime date, Integer precision, Integer scale) {
+
 		// TODO verify me
 		if (precision == null)
 			precision = 20;
+		
 		if (scale == null)
 			scale = 0;
+		
 		QDecimal decimal = dataContext.getDataFactory().createDecimal(precision, scale, DecimalType.PACKED, true);
-		decimal.move(Double.parseDouble(date.toString().replaceAll("[-//:.]", "")));
+		
+		decimal.movel(date.toString().replaceAll("[-//:.]", ""));
+		
 		return decimal;
 	}
 

@@ -13,7 +13,6 @@ package org.smeup.sys.il.data.nio;
 
 import java.math.BigDecimal;
 import java.nio.ByteBuffer;
-import java.text.NumberFormat;
 
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
@@ -99,18 +98,9 @@ public final class NIODecimalZonedImpl extends NIODecimalImpl {
 	@Override
 	public final Number _readNumber() {
 
-		Number result = 0;
+		final byte[] bytes = NIOBufferHelper.read(getBuffer(), getPosition(), getSize());
+		Number result = (Number)_decimalDef.zoned.toObject(bytes);
 		
-		try {
-			if (getScale() > 0)
-				result = _decimalDef.zoned.toDouble(asBytes());
-			else
-				result = ((Double) _decimalDef.zoned.toDouble(asBytes())).longValue();
-		}
-		catch(Exception e) {
-			// TODO
-		}
-
 		return result;
 	}
 
@@ -118,47 +108,14 @@ public final class NIODecimalZonedImpl extends NIODecimalImpl {
 	public final void _writeNumber(final Number number, final boolean halfAdjust) {
 
 		byte[] bytes = null;
+		BigDecimal bd = _toBigDecimal(number, halfAdjust);
 
-		if (halfAdjust) {
-
-			BigDecimal bd = null;
-			if (number instanceof BigDecimal)
-				bd = (BigDecimal) number;
-
-			if (bd == null || bd.precision() > getPrecision()) {
-				final NumberFormat nf = _decimalDef.formatUP;
-				bd = new BigDecimal(nf.format(number));
-			}
-
-			try {
-				bytes = _decimalDef.zoned.toBytes(bd);
-			} catch (final Exception e) {
-				e.toString();
-			}
-		} else {
-
-			try {
-				bytes = _decimalDef.zoned.toBytes(number.doubleValue());
-				NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), bytes, INIT);
-				return;
-			} catch (final Exception e) {
-			}
-
-			BigDecimal bd = null;
-			if (number instanceof BigDecimal)
-				bd = (BigDecimal) number;
-
-			if (bd == null || bd.precision() > getPrecision()) {
-				final NumberFormat nf = _decimalDef.formatDW;
-				bd = new BigDecimal(nf.format(number));
-			}
-
-			try {
-				bytes = _decimalDef.zoned.toBytes(bd);
-			} catch (final Exception e) {
-				e.toString();
-			}
+		try {
+			bytes = _decimalDef.zoned.toBytes(bd);
+		} catch (final Exception e) {
+			e.printStackTrace();
 		}
+
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, INIT);
 	}
 
