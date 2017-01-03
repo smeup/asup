@@ -41,9 +41,8 @@ public class BaseDataQueueSender {
 		String content = data.qStr(dataLength.asInteger()).asString();
 
 		String key = null;
-		if(keyDataLength.gt(0))
+		if(!keyDataLength.isEmpty())
 			key = keyData.qStr(keyDataLength.asInteger()).asString();
-		//		System.out.println("dtaq-snd("+name.trimR()+"):\t" + content);
 		
 		dataQueueManager.writeDataQueue(jobCapability, library.trimR(), name.trimR(), key, content);
 	}

@@ -46,7 +46,7 @@ public class BaseDataQueueReceiver {
 
 		String key = null;
 		String content = "";
-		if(keyDataLength.gt(0)){
+		if(!keyDataLength.isEmpty()){
 			key = keyData.qStr(keyDataLength.asInteger()).asString();
 			content = dataQueueManager.readDataQueue(jobCapability, library.trimR(), name.trimR(), wait.asInteger() * 1000, key, DataQueueSearchType.get("*"+keyOrder.trimR()));
 		}else{
