@@ -133,7 +133,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric divide(final QNumeric value, final QNumeric remainderTarget) {
-		qDivOperation(value.asDouble(), remainderTarget);
+		qDivOperation(value.asNumber(), remainderTarget);
 		return this;
 	}
 
@@ -150,7 +150,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final boolean eq(final QNumeric value) {
-		return compareNumber(value.asDouble()) == 0;
+		return compareNumber(value.asNumber()) == 0;
 	}
 
 	@Override
@@ -180,7 +180,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final void eval(final QNumeric value, final boolean halfAdjust, final boolean maxPrecision) {
-		_writeNumber(value.asDouble(), halfAdjust);
+		_writeNumber(value.asNumber(), halfAdjust);
 	}
 
 	@Override
@@ -195,7 +195,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final boolean ge(final QNumeric value) {
-		return compareNumber(value.asDouble()) >= 0;
+		return compareNumber(value.asNumber()) >= 0;
 	}
 
 	@Override
@@ -210,7 +210,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final boolean gt(final QNumeric value) {
-		return compareNumber(value.asDouble()) > 0;
+		return compareNumber(value.asNumber()) > 0;
 	}
 
 	@Override
@@ -239,7 +239,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final boolean le(final QNumeric value) {
-		return compareNumber(value.asDouble()) <= 0;
+		return compareNumber(value.asNumber()) <= 0;
 	}
 
 	@Override
@@ -249,7 +249,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final boolean lt(final QNumeric value) {
-		return compareNumber(value.asDouble()) < 0;
+		return compareNumber(value.asNumber()) < 0;
 	}
 
 	@Override
@@ -377,12 +377,12 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric qDiv(final QNumeric value) {
-		return qDivOperation(value.asDouble(), null);
+		return qDivOperation(value.asNumber(), null);
 	}
 
 	@Override
 	public final QNumeric qDiv(final QNumeric value, final QNumeric remainderTarget) {
-		return qDivOperation(value.asDouble(), remainderTarget);
+		return qDivOperation(value.asNumber(), remainderTarget);
 	}
 
 	private final QNumeric qDivOperation(final Number value, final QNumeric remainderTarget) {
@@ -398,12 +398,12 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric qInt() {
-		return qIntOperation(this.asDouble(), false);
+		return qIntOperation(this.asNumber(), false);
 	}
 
 	@Override
 	public final QNumeric qInth() {
-		return qIntOperation(this.asDouble(), true);
+		return qIntOperation(this.asNumber(), true);
 	}
 
 	private final QNumeric qIntOperation(final Number value, final boolean roundingMode) {
@@ -421,7 +421,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric qMinus(final QNumeric value) {
-		return qMinusOperation(value.asDouble());
+		return qMinusOperation(value.asNumber());
 	}
 
 	private final QNumeric qMinusOperation(final Number value) {
@@ -438,7 +438,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric qMult(final QNumeric value) {
-		return qMultOperation(value.asDouble());
+		return qMultOperation(value.asNumber());
 	}
 
 	private final QNumeric qMultOperation(final Number value) {
@@ -456,7 +456,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric qPlus(final QNumeric value) {
-		return qPlusOperation(value.asDouble());
+		return qPlusOperation(value.asNumber());
 	}
 
 	private final QNumeric qPlusOperation(final Number value) {
@@ -474,7 +474,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric qRem(final QNumeric value) {
-		return qRemOperation(value.asDouble());
+		return qRemOperation(value.asNumber());
 	}
 
 	private final QNumeric qRemOperation(final Number value) {

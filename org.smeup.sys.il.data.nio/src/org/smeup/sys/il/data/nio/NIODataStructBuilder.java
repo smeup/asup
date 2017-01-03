@@ -73,7 +73,6 @@ public final class NIODataStructBuilder {
 			if (overlayedData == null)
 				throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: s87rfysd8fsd");
 
-
 			QDecimal overlayedNextPos = overlayedToNextPos.get(overlayedData);
 			if (overlayedNextPos == null) {
 				overlayedNextPos = dataFactory.createDecimal(5, 0, DecimalType.PACKED, true);
