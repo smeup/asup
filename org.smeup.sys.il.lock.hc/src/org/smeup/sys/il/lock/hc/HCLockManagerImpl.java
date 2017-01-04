@@ -42,7 +42,7 @@ public class HCLockManagerImpl implements QLockManager {
 
 		NetworkConfig network = cfg.getNetworkConfig();
 		JoinConfig join = network.getJoin();
-//		join.getMulticastConfig().setEnabled(false);
+		join.getMulticastConfig().setEnabled(false);
 		join.getTcpIpConfig().addMember("127.0.0.1");
 		
 		hazelcastInstance = Hazelcast.newHazelcastInstance(cfg);

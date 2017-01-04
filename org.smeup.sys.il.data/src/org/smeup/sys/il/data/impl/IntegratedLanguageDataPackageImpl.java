@@ -3326,6 +3326,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		initEClass(numericEClass, QNumeric.class, "Numeric", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		addEOperation(numericEClass, ecorePackage.getEBigDecimal(), "asBigDecimal", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(numericEClass, ecorePackage.getEDouble(), "asDouble", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(numericEClass, ecorePackage.getEInt(), "asInteger", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -3335,6 +3337,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEOperation(numericEClass, theMachineInterfaceCorePackage.getJavaNumber(), "asNumber", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(numericEClass, ecorePackage.getEShort(), "asShort", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(numericEClass, ecorePackage.getEBigDecimal(), "bd", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(numericEClass, ecorePackage.getEDouble(), "d", 1, 1, IS_UNIQUE, IS_ORDERED);
 

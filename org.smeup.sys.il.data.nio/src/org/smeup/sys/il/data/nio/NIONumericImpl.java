@@ -11,6 +11,9 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -25,7 +28,6 @@ import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QString;
-import org.smeup.sys.il.data.def.DecimalType;
 
 public abstract class NIONumericImpl extends NIOBufferedElementImpl implements QNumeric {
 
@@ -34,6 +36,15 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	public NIONumericImpl(final QDataContext dataContext) {
 		super(dataContext);
+	}
+
+	protected abstract Number _readNumber();
+
+	private BigDecimal _toBigDecimal(Number number) {
+		if(number instanceof BigDecimal)
+			return (BigDecimal)number;
+		else
+			return new BigDecimal(number.toString());
 	}
 
 	@Override
@@ -68,8 +79,13 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	protected abstract void _writeNumber(Number number, boolean halfAdjust);
 
-	protected abstract Number _readNumber();
-
+	@Override
+	public BigDecimal asBigDecimal() {
+		
+		Number number = _readNumber();
+		return _toBigDecimal(number);
+	}
+	
 	@Override
 	public final double asDouble() {
 		return _readNumber().doubleValue();
@@ -95,6 +111,11 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 		return _readNumber().shortValue();
 	}
 
+	@Override
+	public BigDecimal bd() {
+		return asBigDecimal();
+	}
+
 	protected final int compareNumber(final Number value) {
 		final double d1 = asDouble();
 		final double d2 = value.doubleValue();
@@ -116,13 +137,24 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric divide(final Number value, final boolean halfAdjust) {
-		eval(asDouble() / value.doubleValue(), halfAdjust);
+		BigDecimal bd = asBigDecimal();
+		bd = bd.divide(_toBigDecimal(value), MathContext.DECIMAL128);
+
+		/*if(halfAdjust)
+			bd = bd.divide(_toBigDecimal(value), 7, RoundingMode.UP);		
+		else
+			bd = bd.divide(_toBigDecimal(value), 7, RoundingMode.DOWN);*/
+
+		eval(bd, halfAdjust);
 		return this;
 	}
 
 	@Override
 	public final QNumeric divide(final Number value, final QNumeric remainderTarget) {
-		qDivOperation(value, remainderTarget);
+		BigDecimal bd = asBigDecimal();			
+		BigDecimal[] bds = bd.divideAndRemainder(_toBigDecimal(value), MathContext.DECIMAL128);
+		eval(bds[0]);
+		remainderTarget.eval(bds[1]);
 		return this;
 	}
 
@@ -132,15 +164,13 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
-	public final QNumeric divide(final QNumeric value, final QNumeric remainderTarget) {
-		qDivOperation(value.asNumber(), remainderTarget);
-		return this;
+	public final QNumeric divide(final QNumeric value, final boolean halfAdjust) {
+		return divide(value.asNumber(), halfAdjust);
 	}
 
 	@Override
-	public final QNumeric divide(final QNumeric value, final boolean halfAdjust) {
-		eval(asDouble() / value.asDouble(), halfAdjust);
-		return this;
+	public final QNumeric divide(final QNumeric value, final QNumeric remainderTarget) {
+		return divide(value.asNumber(), remainderTarget);
 	}
 
 	@Override
@@ -164,6 +194,11 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	}
 
 	@Override
+	public final void eval(final Number value, final boolean halfAdjust, final boolean maxPrecision) {
+		_writeNumber(value, halfAdjust);
+	}
+
+	@Override
 	public final void eval(final QNumeric value) {
 		eval(value, false);
 	}
@@ -171,11 +206,6 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	@Override
 	public final void eval(final QNumeric value, final boolean halfAdjust) {
 		_writeNumber(value.asNumber(), halfAdjust);
-	}
-
-	@Override
-	public final void eval(final Number value, final boolean halfAdjust, final boolean maxPrecision) {
-		_writeNumber(value, halfAdjust);
 	}
 
 	@Override
@@ -259,7 +289,11 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric minus(final Number value, final boolean halfAdjust) {
-		eval(asDouble() - value.doubleValue());
+
+		BigDecimal bd = asBigDecimal();
+		bd = bd.subtract(_toBigDecimal(value), MathContext.DECIMAL128);		
+		
+		eval(bd, halfAdjust);
 		return this;
 	}
 
@@ -270,8 +304,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric minus(final QNumeric value, final boolean halfAdjust) {
-		eval(asDouble() - value.asDouble(), halfAdjust);
-		return this;
+		return minus(value.asNumber(), halfAdjust);
 	}
 
 	@Override
@@ -281,7 +314,10 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric mult(final Number value, final boolean halfAdjust) {
-		eval(asDouble() * value.doubleValue(), halfAdjust);
+		BigDecimal bd = asBigDecimal();
+		bd = bd.multiply(_toBigDecimal(value), MathContext.DECIMAL128);
+		
+		eval(bd, halfAdjust);
 		return this;
 	}
 
@@ -292,8 +328,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric mult(final QNumeric value, final boolean halfAdjust) {
-		eval(asDouble() * value.asDouble(), halfAdjust);
-		return this;
+		return mult(value.asNumber(), halfAdjust);
 	}
 
 	@Override
@@ -315,7 +350,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	public final QNumeric plus(final Number value) {
 		return plus(value, false, false);
 	}
-
+	
 	@Override
 	public final QNumeric plus(final Number value, final boolean halfAdjust) {
 		return plus(value, false, false);
@@ -323,7 +358,10 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric plus(final Number value, final boolean halfAdjust, final boolean maxPrecision) {
-		eval(asDouble() + value.doubleValue(), halfAdjust, maxPrecision);
+		BigDecimal bd = asBigDecimal();
+		bd = bd.add(_toBigDecimal(value), MathContext.DECIMAL128);
+
+		eval(bd, halfAdjust, maxPrecision);
 		return this;
 	}
 	
@@ -331,33 +369,38 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	public final QNumeric plus(final QNumeric value) {
 		return plus(value, false, false);
 	}
-
+	
 	@Override
 	public final QNumeric plus(final QNumeric value, final boolean halfAdjust) {
-		return plus(value, false, false);
+		return plus(value, halfAdjust, false);
 	}
-	
 
 	@Override
 	public final QNumeric plus(final QNumeric value, final boolean halfAdjust, final boolean maxPrecision) {
-		eval(asDouble() + value.asDouble(), halfAdjust, maxPrecision);
-		return this;
+		return plus(value.asNumber(), halfAdjust, maxPrecision);
 	}
-	
-	
-	
-	
 
 	@Override
 	public final QNumeric power(final Number value) {
-		eval(asLong() ^ value.longValue());
+		BigDecimal bd = asBigDecimal();
+		bd = bd.pow(value.intValue(), MathContext.DECIMAL128);
+		eval(bd);
 		return this;
 	}
 
 	@Override
 	public final QNumeric power(final QNumeric value) {
-		eval(asLong() ^ value.asLong());
-		return this;
+		return power(value.asNumber());
+	}
+
+	@Override
+	public final QDecimal qAbs() {
+
+		QDecimal number = new NIODecimalZonedImpl(getDataContext(), asBigDecimal());
+		if (lt(DataSpecial.ZEROS))
+			number.mult(-1);
+		
+		return number;
 	}
 
 	@Override
@@ -367,7 +410,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric qDiv(final Number value) {
-		return qDivOperation(value, null);
+		return qDivOperation(value, false);
 	}
 
 	@Override
@@ -377,7 +420,7 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	@Override
 	public final QNumeric qDiv(final QNumeric value) {
-		return qDivOperation(value.asNumber(), null);
+		return qDivOperation(value.asNumber(), false);
 	}
 
 	@Override
@@ -385,15 +428,24 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 		return qDivOperation(value.asNumber(), remainderTarget);
 	}
 
-	private final QNumeric qDivOperation(final Number value, final QNumeric remainderTarget) {
+	private final QNumeric qDivOperation(final Number value, boolean halfAdjust) {
+		BigDecimal bd = asBigDecimal();
+		bd = bd.divide(_toBigDecimal(value), MathContext.DECIMAL128);
+		
+/*		if(halfAdjust)
+			bd = bd.divide(_toBigDecimal(value), 7, RoundingMode.UP);		
+		else
+			bd = bd.divide(_toBigDecimal(value), 7, RoundingMode.DOWN);*/
+		
+		return new NIODecimalZonedImpl(getDataContext(), bd);
+	}
 
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
-		number.eval(asDouble() / value.doubleValue());
+	private final QNumeric qDivOperation(final Number value, final QNumeric remainderTarget) {
+		BigDecimal bd = asBigDecimal();			
+		BigDecimal[] bds = bd.divideAndRemainder(_toBigDecimal(value), MathContext.DECIMAL128);
+		remainderTarget.eval(bds[1]);
 		
-		if (remainderTarget != null)
-			remainderTarget.eval(asDouble() % value.doubleValue());
-		
-		return number;
+		return new NIODecimalZonedImpl(getDataContext(), bds[0]);
 	}
 
 	@Override
@@ -406,12 +458,16 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 		return qIntOperation(this.asNumber(), true);
 	}
 
-	private final QNumeric qIntOperation(final Number value, final boolean roundingMode) {
+	private final QNumeric qIntOperation(final Number value, final boolean halfAdjust) {
 
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 0, DecimalType.ZONED, true);
-		number.eval(value.doubleValue());
+		BigDecimal bd = _toBigDecimal(value);
 		
-		return number;
+		if(halfAdjust)
+			bd = bd.setScale(0, RoundingMode.UP);
+		else
+			bd = bd.setScale(0);
+					
+		return new NIODecimalZonedImpl(getDataContext(), bd);
 	}
 
 	@Override
@@ -426,14 +482,26 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	private final QNumeric qMinusOperation(final Number value) {
 
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
-		number.eval(asDouble() - value.doubleValue());
-		return number;
+		BigDecimal bd = asBigDecimal();
+		bd = bd.subtract(_toBigDecimal(value), MathContext.DECIMAL128);
+			
+		return new NIODecimalZonedImpl(getDataContext(), bd);
 	}
 
 	@Override
 	public final QNumeric qMult(final Number value) {
 		return qMultOperation(value);
+	}
+
+	@Override
+	public final <D extends QNumeric> QArray<D> qMult(final QArray<D> value) {
+
+		final NIOArrayImpl<D> arrayValue = (NIOArrayImpl<D>) value;
+		final NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), arrayValue.getModel(), arrayValue.capacity(), arrayValue.getSortDirection(), true);
+		newArray.movea(this);
+		newArray.mult(this);
+
+		return newArray;
 	}
 
 	@Override
@@ -443,10 +511,10 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	private final QNumeric qMultOperation(final Number value) {
 
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);		
-		number.eval(asDouble() * value.doubleValue());
+		BigDecimal bd = asBigDecimal();
+		bd = bd.multiply(_toBigDecimal(value), MathContext.DECIMAL128);
 		
-		return number;
+		return new NIODecimalZonedImpl(getDataContext(), bd);
 	}
 
 	@Override
@@ -461,10 +529,10 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	private final QNumeric qPlusOperation(final Number value) {
 		
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
-		number.eval(asDouble() + value.doubleValue());
+		BigDecimal bd = asBigDecimal();
+		bd = bd.add(_toBigDecimal(value), MathContext.DECIMAL128);
 		
-		return number;
+		return new NIODecimalZonedImpl(getDataContext(), bd);
 	}
 
 	@Override
@@ -479,12 +547,21 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 
 	private final QNumeric qRemOperation(final Number value) {
 
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
-		number.eval(asDouble() % value.doubleValue());
+		BigDecimal bd = asBigDecimal();			
+		BigDecimal[] bds = bd.divideAndRemainder(_toBigDecimal(value), MathContext.DECIMAL128);
 		
-		return number;
+		return new NIODecimalZonedImpl(getDataContext(), bds[1]);
 	}
+	
+	@Override
+	public final void reset() {
 
+		if (_reset != null)
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _reset);
+		else
+			clear();
+	}
+	
 	@Override
 	public final void time() {
 
@@ -518,37 +595,5 @@ public abstract class NIONumericImpl extends NIOBufferedElementImpl implements Q
 	public final void xfoot(final QArray<? extends QNumeric> array, final boolean halfAdjust) {
 		for (final QNumeric numeric : array)
 			this.plus(numeric, halfAdjust);
-	}
-
-	@Override
-	public final QDecimal qAbs() {
-
-		final QDecimal number = new NIODecimalZonedImpl(getDataContext(), getLength(), 0, true);
-		if (ge(DataSpecial.ZEROS))
-			number.eval(this);
-		else
-			number.eval(mult(-1));
-
-		return number;
-	}
-
-	@Override
-	public final <D extends QNumeric> QArray<D> qMult(final QArray<D> value) {
-
-		final NIOArrayImpl<D> arrayValue = (NIOArrayImpl<D>) value;
-		final NIOArrayImpl<D> newArray = new NIOArrayImpl<D>(getDataContext(), arrayValue.getModel(), arrayValue.capacity(), arrayValue.getSortDirection(), true);
-		newArray.movea(this);
-		newArray.mult(this);
-
-		return newArray;
-	}
-	
-	@Override
-	public final void reset() {
-
-		if (_reset != null)
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _reset);
-		else
-			clear();
 	}
 }

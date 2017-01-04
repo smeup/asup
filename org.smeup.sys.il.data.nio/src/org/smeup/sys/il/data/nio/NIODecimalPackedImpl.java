@@ -59,17 +59,17 @@ public final class NIODecimalPackedImpl extends NIODecimalImpl {
 		switch (value) {
 		case ZERO:
 		case ZEROS:
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.packed_init, INIT);
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), _decimalDef.packed_init, INIT);
 			break;
 		case LOVAL:
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.packed_loval, INIT);
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), _decimalDef.packed_loval, INIT);
 			break;
 		case HIVAL:
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.packed_hival, INIT);
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), _decimalDef.packed_hival, INIT);
 			break;
 		case BLANK:
 		case BLANKS:
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.packed_init, INIT);
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), _decimalDef.packed_init, INIT);
 			break;
 		case ON:
 		case OFF:
@@ -83,7 +83,7 @@ public final class NIODecimalPackedImpl extends NIODecimalImpl {
 
 	@Override
 	public final void clear() {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.packed_init, INIT);		
+		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), _decimalDef.packed_init, INIT);		
 	}
 
 	@Override
@@ -119,7 +119,7 @@ public final class NIODecimalPackedImpl extends NIODecimalImpl {
 			e.printStackTrace();
 		}
 
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, INIT);
+		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), bytes, INIT);
 	}
 	
 	@Override

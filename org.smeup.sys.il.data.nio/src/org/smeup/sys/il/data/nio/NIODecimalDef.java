@@ -39,6 +39,8 @@ public final class NIODecimalDef implements Serializable {
 
 	protected final NumberFormat formatUP;
 	protected final NumberFormat formatDW;
+	
+//	protected final QDecimal decimal_length;
 
 	public NIODecimalDef(final int precision, final int scale) {
 
@@ -54,6 +56,9 @@ public final class NIODecimalDef implements Serializable {
 
 		formatUP = createNumberFormatUP(precision, scale);
 		formatDW = createNumberFormatDW(precision, scale);
+		
+//		decimal_length = new NIODecimalPackedImpl(null, 5, 0, true);
+//		decimal_length.eval(precision);		
 	}
 
 	public static NIODecimalDef getInstance(final int precision, final int scale) {

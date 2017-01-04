@@ -22,7 +22,6 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
-import org.smeup.sys.il.data.def.DecimalType;
 
 public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal {
 
@@ -33,7 +32,14 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 	public NIODecimalImpl(final QDataContext dataContext, final int precision, final int scale) {
 		super(dataContext);
 
-		_decimalDef = NIODecimalDef.getInstance(precision, scale);
+		if(scale > precision) {
+			if(precision == 1)
+				_decimalDef = NIODecimalDef.getInstance(precision, 0);
+			else
+				throw new IntegratedLanguageDataRuntimeException("Unexpected condition lr64rsdf89i9nvieasrb8y6ta9r");
+		}
+		else
+			_decimalDef = NIODecimalDef.getInstance(precision, scale);
 	}
 
 	@Override
@@ -105,11 +111,9 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 
 	@Override
 	public final QNumeric qLen() {
-
-		final QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
-		number.eval(getLength());
-
-		return number;
+		QDecimal qLen = new NIODecimalPackedImpl(getDataContext(), 5, 0, true);
+		qLen.eval(getLength());
+		return qLen;
 	}
 
 	private final void readObject(final ObjectInputStream stream) throws IOException, ClassNotFoundException {

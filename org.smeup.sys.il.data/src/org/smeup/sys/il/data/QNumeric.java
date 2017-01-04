@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.data;
 
+import java.math.BigDecimal;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Numeric</b></em>'. <!-- end-user-doc -->
@@ -17,6 +19,14 @@ package org.smeup.sys.il.data;
  * @generated
  */
 public interface QNumeric extends QBufferedElement {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	BigDecimal asBigDecimal();
+
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true"
@@ -37,6 +47,14 @@ public interface QNumeric extends QBufferedElement {
 	 * @generated
 	 */
 	short asShort();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	BigDecimal bd();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

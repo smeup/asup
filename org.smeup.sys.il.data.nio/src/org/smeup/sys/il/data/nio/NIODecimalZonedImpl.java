@@ -36,6 +36,14 @@ public final class NIODecimalZonedImpl extends NIODecimalImpl {
 
 		eval(value);
 	}
+	
+	public NIODecimalZonedImpl(final QDataContext dataContext, final BigDecimal value) {
+		super(dataContext, value.precision(), value.scale());
+		
+		_storage = ByteBuffer.allocate(getSize());
+
+		eval(value);
+	}
 
 	@Override
 	public final int getSize() {
@@ -58,17 +66,17 @@ public final class NIODecimalZonedImpl extends NIODecimalImpl {
 		switch (value) {
 		case ZERO:
 		case ZEROS:
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.zoned_init, INIT);
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), _decimalDef.zoned_init, INIT);
 			break;
 		case LOVAL:
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.zoned_loval, INIT);
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), _decimalDef.zoned_loval, INIT);
 			break;
 		case HIVAL:
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.zoned_hival, INIT);
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), _decimalDef.zoned_hival, INIT);
 			break;
 		case BLANK:
 		case BLANKS:
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.zoned_init, INIT);
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), _decimalDef.zoned_init, INIT);
 			break;
 		case ON:
 		case OFF:
@@ -82,7 +90,7 @@ public final class NIODecimalZonedImpl extends NIODecimalImpl {
 
 	@Override
 	public final void clear() {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), _decimalDef.zoned_init, INIT);		
+		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), _decimalDef.zoned_init, INIT);		
 	}
 	
 	@Override
@@ -107,16 +115,16 @@ public final class NIODecimalZonedImpl extends NIODecimalImpl {
 	@Override
 	public final void _writeNumber(final Number number, final boolean halfAdjust) {
 
-		byte[] bytes = null;
 		BigDecimal bd = _toBigDecimal(number, halfAdjust);
 
+		byte[] bytes = null;
 		try {
 			bytes = _decimalDef.zoned.toBytes(bd);
 		} catch (final Exception e) {
 			e.printStackTrace();
 		}
 
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, INIT);
+		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), bytes, INIT);
 	}
 
 	@Override
