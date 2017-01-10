@@ -27,7 +27,6 @@ import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.def.QDataDef;
 
 public final class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
@@ -169,7 +168,8 @@ public final class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 						NIOBufferHelper.writeDefault(bufferedListImpl, dataDef.value());
 					else if (dataDef.values().length != 0)
 						NIOBufferHelper.writeDefault(bufferedListImpl, dataDef.values());
-					else if (field.getAnnotation(Overlay.class) == null)
+//					else if (field.getAnnotation(Overlay.class) == null)
+					else
 						bufferedListImpl.clear();
 
 				} else if (dataDef.value().isEmpty())
