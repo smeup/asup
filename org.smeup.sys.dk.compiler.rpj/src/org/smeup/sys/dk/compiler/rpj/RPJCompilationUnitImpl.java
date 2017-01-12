@@ -89,7 +89,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 	private Map<String, QDataTerm<?>> cachedTerms = new HashMap<String, QDataTerm<?>>();
 	private Map<String, QPrototype> cachedPrototypes = new HashMap<String, QPrototype>();
-	private ArrayList<String> reservedKeywords = new ArrayList<String>(Arrays.asList("INT", "FOR", "CHAR", "IF", "BREAK", "TRUE", "FALSE", "DO", "FINAL", "DEFAULT", "ENUM", "CALL"));
+	private ArrayList<String> reservedKeywords = new ArrayList<String>(Arrays.asList("INT", "FOR", "CHAR", "IF", "BREAK", "TRUE", "FALSE", "DO", "FINAL", "DEFAULT", "ENUM", "CALL", "DOUBLE", "IMPORT", "NEW", "SWITCH", "VOID", "ELSE"));
 
 	public RPJCompilationUnitImpl(QContext context, QNameable node, QCompilationUnit parentUnit, List<QCompilationUnit> childUnits, CaseSensitiveType caseSensitive) {
 
