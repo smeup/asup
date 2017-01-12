@@ -36,7 +36,8 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 			if(precision == 1)
 				_decimalDef = NIODecimalDef.getInstance(precision, 0);
 			else
-				throw new IntegratedLanguageDataRuntimeException("Unexpected condition lr64rsdf89i9nvieasrb8y6ta9r");
+				_decimalDef = NIODecimalDef.getInstance(scale+1, scale);
+//				throw new IntegratedLanguageDataRuntimeException("Unexpected condition lr64rsdf89i9nvieasrb8y6ta9r");
 		}
 		else
 			_decimalDef = NIODecimalDef.getInstance(precision, scale);
