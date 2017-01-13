@@ -173,7 +173,7 @@ public final class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 						bufferedListImpl.clear();
 					else if (field.getAnnotation(Overlay.class) != null){
 						Overlay overlay = field.getAnnotation(Overlay.class);
-						if(overlay.name().equals("*OWNER"))
+						if(overlay.name().equals(Overlay.NAME_OWNER))
 							bufferedListImpl.clear();
 					}
 
