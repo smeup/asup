@@ -509,7 +509,7 @@ public class RPJProgramSupport extends RPJModule {
 			case "J":
 			case "K":
 				character = dataContext.getDataFactory().createCharacter(50, false, true);				
-				if(format.equals("K") && numeric.eq(0)){
+				if(format.equals("K") && numeric.isEmpty()){
 					character.clear();
 					return character;
 				}
@@ -518,7 +518,7 @@ public class RPJProgramSupport extends RPJModule {
 			case "L":
 			case "M":
 				character = dataContext.getDataFactory().createCharacter(50, false, true);				
-				if(format.equals("M") && numeric.eq(0)){
+				if(format.equals("M") && numeric.isEmpty()){
 					character.clear();
 					return character;
 				}
@@ -527,7 +527,7 @@ public class RPJProgramSupport extends RPJModule {
 			case "N":
 			case "O":
 				character = dataContext.getDataFactory().createCharacter(50, false, true);				
-				if(format.equals("O") && numeric.eq(0)){
+				if(format.equals("O") && numeric.isEmpty()){
 					character.clear();
 					return character;
 				}
@@ -536,7 +536,7 @@ public class RPJProgramSupport extends RPJModule {
 			case "P":
 			case "Q":
 				character = dataContext.getDataFactory().createCharacter(50, false, true);				
-				if(format.equals("Q") && numeric.eq(0)){
+				if(format.equals("Q") && numeric.isEmpty()){
 					character.clear();
 					return character;
 				}
@@ -546,12 +546,17 @@ public class RPJProgramSupport extends RPJModule {
 				character.move(numeric);
 				break;
 			case "Z":
-				character.eval(Integer.toString(numeric.asInteger()).replaceAll("^0+", ""));
+				character = dataContext.getDataFactory().createCharacter(50, false, true);				
+				if(numeric.isEmpty()){
+					character.clear();
+					return character;
+				}
+				character.eval(Integer.toString(numeric.i()).replaceAll("^0+", ""));
 				break;
 			case "1":
 			case "2":
 				character = dataContext.getDataFactory().createCharacter(50, false, true);				
-				if(format.equals("2") && numeric.eq(0)){
+				if(format.equals("2") && numeric.isEmpty()){
 					character.clear();
 					return character;
 				}
@@ -560,7 +565,7 @@ public class RPJProgramSupport extends RPJModule {
 			case "3":
 			case "4":
 				character = dataContext.getDataFactory().createCharacter(50, false, true);				
-				if(format.equals("4") && numeric.eq(0)){
+				if(format.equals("4") && numeric.isEmpty()){
 					character.clear();
 					return character;
 				}
