@@ -95,11 +95,20 @@ public final class NIODataStructBuilder {
 			if (overlayedData instanceof NIOBufferedListImpl<?>) {
 				final NIOBufferedListImpl<?> arrayOverlayed = (NIOBufferedListImpl<?>) overlayedData;
 				final NIOBufferedListImpl<?> arrayData = (NIOBufferedListImpl<?>) dataElement;
-				arrayData.setListOwner(arrayOverlayed);
+//				arrayData.setListOwner(arrayOverlayed);
+				arrayData.setListOwner(getDeepListOwner(arrayOverlayed));
 				arrayOverlayed.slice(arrayData, overlayedNextPos.asInteger());
 				overlayedNextPos.plus(arrayData.getModel().getSize());
 			} else
 				overlayedNextPos.plus(dataElement.getSize());
+		}
+	}
+
+	private NIOBufferedListImpl<?> getDeepListOwner(NIOBufferedListImpl<?> arrayOverlayed) {
+		if(arrayOverlayed.getListOwner()==null){
+			return arrayOverlayed;
+		} else {
+			return getDeepListOwner(arrayOverlayed.getListOwner());
 		}
 	}
 }
