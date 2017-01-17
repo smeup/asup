@@ -28,6 +28,7 @@ import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.data.def.QDecimalDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
@@ -128,6 +129,46 @@ public class FileFieldsLister {
 			userSpaceField.fieldName.eval(fileFormatField.getName());
 			userSpaceField.fieldLength.eval(fileFormatField.getDefinition().getLength());
 			userSpaceField.fieldText.eval(fileFormatField.getText());
+			
+			switch(fileFormatField.getDefinition().getDataDefType()) {
+			case BINARY:
+				userSpaceField.dataType.eval("B");
+				break;
+			case STRING:				
+			case CHARACTER:
+				userSpaceField.dataType.eval("A");
+				break;
+			case DATETIME:
+				userSpaceField.dataType.eval("L");
+				break;
+			case DECIMAL:
+				QDecimalDef decimalDef = (QDecimalDef)fileFormatField.getDefinition();
+				switch (decimalDef.getType()) {
+				case PACKED:
+					userSpaceField.dataType.eval("P");
+					break;
+				case ZONED:
+					userSpaceField.dataType.eval("Z");
+					break;
+				} 
+				break;
+			case ADAPTER:
+			case ARRAY:
+			case BUFFER:
+			case DATA_STRUCT:
+			case FLOATING:
+			case HEXADECIMAL:
+			case IDENTITY:
+			case INDICATOR:
+			case LIST:
+			case POINTER:
+			case SCROLLER:
+			case STROLLER:
+			case STRUCT:
+			case WRAPPER:
+				"".toCharArray();
+			}
+			
 			
 			buffer.put(userSpaceField.asBytes());
 		}
