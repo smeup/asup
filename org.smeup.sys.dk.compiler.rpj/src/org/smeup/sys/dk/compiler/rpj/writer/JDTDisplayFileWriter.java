@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.jdt.core.dom.EnumDeclaration;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.Modifier;
@@ -26,6 +27,8 @@ import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.UnitScope;
+import org.smeup.sys.il.data.def.DecimalType;
+import org.smeup.sys.il.data.def.impl.DecimalDefImpl;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QDisplayFormatWrapper;
 import org.smeup.sys.os.file.QDisplayFile;
@@ -63,9 +66,13 @@ public class JDTDisplayFileWriter extends JDTDataStructureWriter {
 					elementsName.add(field.getName());
 				}
 		}
-		for (QDataTerm<?> element : elementsField)
+		for (QDataTerm<?> element : elementsField){
+			if(element.getDefinition() instanceof DecimalDefImpl){
+				DecimalDefImpl definition = (DecimalDefImpl) element.getDefinition();
+				definition.setType(DecimalType.PACKED);
+			}
 			writeField(element, false, UnitScope.PUBLIC);
-
+		}
 		// Formats
 		for (QDisplayFileFormat fileFormat : displayFile.getDisplayFormats()) {
 			if (fileFormat.getName().equals(displayFile.getName()))
