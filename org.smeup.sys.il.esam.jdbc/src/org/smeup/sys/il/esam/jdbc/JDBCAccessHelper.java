@@ -239,14 +239,18 @@ public class JDBCAccessHelper {
 
 				// append value
 				
-				QDecimal decimal = (QDecimal) keySet[i];
+				int number = 0;
+				if(keySet[i] instanceof QDecimal){
+					number = ((QDecimal) keySet[i]).i();
+				} else {
+					number = (int) keySet[i];
+				}
 				// TODO Verify me
-				if(decimal.lt(0)){
+				if(number <  0){
 					byte[] bytes = new byte[indexColumn.getLength() - keySet[i].toString().length()];
 					Arrays.fill(bytes, (byte) 48);
-					decimal.mult(-1);
-					sbValues.append('-' + new String(bytes) + decimal.toString());
-					
+					number = number *-1;
+					sbValues.append('-' + new String(bytes) + number);
 				}else{
 					byte[] bytes = new byte[indexColumn.getLength() - keySet[i].toString().length()];
 					Arrays.fill(bytes, (byte) 48);
