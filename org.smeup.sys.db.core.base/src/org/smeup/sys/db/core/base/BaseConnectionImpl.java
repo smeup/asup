@@ -82,9 +82,9 @@ public class BaseConnectionImpl implements QConnection {
 		Statement sqlStatement = null;
 		if (updatable)
 			// connection.setTransactionIsolation(Connection.TRANSACTION_READ_UNCOMMITTED);
-			sqlStatement = getRawConnection().createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE);
+			sqlStatement = getRawConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 		else
-			sqlStatement = getRawConnection().createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+			sqlStatement = getRawConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
 		BaseStatementImpl statement = new BaseStatementImpl(this, sqlStatement, native_);
 		return statement;
@@ -192,7 +192,7 @@ public class BaseConnectionImpl implements QConnection {
 		if (updatable)
 			sqlPreparedStatement = getRawConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		else
-			sqlPreparedStatement = getRawConnection().prepareStatement(sql, ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+			sqlPreparedStatement = getRawConnection().prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
 		BasePreparedStatementImpl statement = new BasePreparedStatementImpl(this, sqlPreparedStatement, native_);
 
