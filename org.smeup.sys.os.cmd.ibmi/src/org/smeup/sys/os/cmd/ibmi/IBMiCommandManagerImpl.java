@@ -93,8 +93,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		
 		resourceManager.registerListener(QCommand.class, new IBMiCommandListenerImpl());
 	}
-
-	@SuppressWarnings("resource")
+	
 	@Override
 	public QCallableCommand prepareCommand(QJob job, String command, Map<String, Object> variables, boolean controlRequiredParms) {
 		
@@ -203,7 +202,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 			QData data = null;
 			if (value.isEmpty() == false) {
-				data = assignValue(dataTerm, dataContainer, dataWriter, value, variables);
+				data = assignValue(dataTerm, dataContainer.getData(dataTerm), dataWriter, value, variables);
 			} else {
 				data = dataContainer.getData(dataTerm);
 			}
@@ -218,9 +217,8 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		return callableCommand;
 	}
 	
-	private QData assignValue(QDataTerm<?> dataTerm, QDataContainer dataContainer, QDataWriter writer, String value, Map<String, Object> variables) {
-		
-		QData data = dataContainer.getData(dataTerm);
+	private QData assignValue(QDataTerm<?> dataTerm, QData data, QDataWriter writer, String value, Map<String, Object> variables) {
+				
 
 		if (hasOnlyVariables(dataTerm, value)) {
 			
@@ -356,6 +354,8 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 		case MULTIPLE_COMPOUND:
 
+			//Stroller
+			
 			QMultipleCompoundDataDef<?, ?> multipleCompoundDataDef = (QMultipleCompoundDataDef<?, ?>) dataTerm.getDefinition();
 
 			// Manage Struct specials
@@ -368,28 +368,34 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				multipleParamComp = (CLParmAbstractComponent) clParameterParser.parse(value);
 			} catch (CLScriptException exc) {
 				throw new OperatingSystemRuntimeException("Cannot parse command parameter: " + value, null);
-			}
+			}		
 			
-			CLParmAbstractComponent firstList = multipleParamComp.getChilds().getFirst();
+			LinkedList<CLParmAbstractComponent> childs = multipleParamComp.getChilds();
 			
-
-			Iterator<CLParmAbstractComponent> multipleParmIterator = firstList.getChilds().iterator();
-
 			int i = 1;
-			while (multipleParmIterator.hasNext()) {
-				String tmpValue = multipleParmIterator.next().toString();
+			for (Iterator<CLParmAbstractComponent> iterator = childs.iterator(); iterator.hasNext();) {
+				
+				
+				CLParmAbstractComponent listElem = (CLParmAbstractComponent) iterator.next();
 
-				if (data instanceof QScroller<?>)
-					((QScroller<?>) data).absolute(i);
+				QData  tmpData = ((QScroller<?>) data).absolute(i);				
+
+				String tmpValue = listElem.toString();
 
 				if (isSpecialValue(dataTerm, tmpValue))
-					setValue(writer, data, resolveSpecialValue(dataTerm, tmpValue), variables);
-				else
-					assignStructValue(multipleCompoundDataDef, dataContainer, writer, tmpValue, variables);
-
+					setValue(writer, tmpData, resolveSpecialValue(dataTerm, tmpValue), variables);
+				else {
+					
+					if (listElem instanceof CLParmList) {										
+						assignStructValue(multipleCompoundDataDef, tmpData, writer, tmpValue, variables);
+					} else {
+						throw new OperatingSystemRuntimeException("Cannot parse command parameter : " + value + " as stroller data element", null);
+					}
+				}
+				
 				i++;
 			}
-
+			
 			dbgString = dataTerm.toString();
 			break;
 
@@ -447,7 +453,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			if (isSpecialValue(dataTerm, value))
 				setValue(writer, data, resolveSpecialValue(dataTerm, value), variables);
 			else
-				assignStructValue(unaryCompoundDataDef, dataContainer, writer, value, variables);
+				assignStructValue(unaryCompoundDataDef, data, writer, value, variables);
 
 			dbgString = dataTerm.toString();
 
@@ -457,7 +463,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		return data;
 	}
 
-	private void assignStructValue(QCompoundDataDef<?, ?> compoundDataDef, QDataContainer dataContext, QDataWriter writer, String parmValue, Map<String, Object> variables) {
+	private void assignStructValue(QCompoundDataDef<?, ?> compoundDataDef, QData data, QDataWriter writer, String parmValue, Map<String, Object> variables) {
 
 		CLParmAbstractComponent paramComp;
 
@@ -470,7 +476,10 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			for (int j = values.length; j > 0; j--) {
 
 				// Recursive Call
-				assignValue(compoundDataDef.getElements().get(j - 1), dataContext, writer, values[values.length - j], variables);
+				
+				QDataTerm<?> elemDataTerm = compoundDataDef.getElements().get(j - 1);
+				QData elementData = ((QDataStruct)data).getElement(elemDataTerm.getName());
+				assignValue(elemDataTerm, elementData, writer, values[values.length - j], variables);
 			}
 		} else {
 
@@ -494,7 +503,10 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 					tmpValue = "";
 
 				// Recursive Call
-				assignValue(elementIterator.next(), dataContext, writer, tmpValue, variables);
+				QDataTerm<?> dataTerm = elementIterator.next();	
+				QData elementData = ((QDataStruct)data).getElement(dataTerm.getName());
+				
+				assignValue(dataTerm, elementData, writer, tmpValue, variables);
 			}
 		}		
 	}

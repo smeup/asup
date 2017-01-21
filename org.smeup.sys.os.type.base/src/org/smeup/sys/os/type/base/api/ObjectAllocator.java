@@ -53,8 +53,7 @@ public class ObjectAllocator {
 			@ToDo @DataDef(length = 1) QEnum<LockScopeEnum, QCharacter> lockScope, @ToDo @DataDef(length = 1) QEnum<LockConflictActionEnum, QCharacter> lockConflictAction) {
 
 		// TODO attesa bug 
-		if(true)
-			return;
+		if(true) return;
 		
 		for (ObjectSpecification objectSpecification : objectSpecifications) {
 
