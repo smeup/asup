@@ -25,6 +25,7 @@ import org.smeup.sys.db.esql.QIntegratedLanguageEmbeddedSQLFactory;
 import org.smeup.sys.db.esql.QStatement;
 import org.smeup.sys.db.esql.QStatementTerm;
 import org.smeup.sys.db.esql.annotation.CursorDef;
+import org.smeup.sys.il.data.QBufferedElement;
 
 public class JDBCESqlFactoryImpl implements QESqlFactory {
 
@@ -39,7 +40,15 @@ public class JDBCESqlFactoryImpl implements QESqlFactory {
 	@Override
 	public QCursor createCursor(CursorType cursorType, boolean hold, String sql) {
 		
-		QCursor cursor = new JDBCSqlCursorImpl(connection, esqlContext, cursorType, sql);
+		QCursor cursor = new JDBCSqlCursorImpl(connection, esqlContext, cursorType, sql, null);
+		
+		return cursor;
+	}
+
+	@Override
+	public QCursor createCursor(CursorType cursorType, boolean hold, String sql, QBufferedElement[] parameters) {
+		
+		QCursor cursor = new JDBCSqlCursorImpl(connection, esqlContext, cursorType, sql, parameters);
 		
 		return cursor;
 	}

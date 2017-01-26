@@ -122,6 +122,12 @@
     <eOperations name="createCursor" lowerBound="1" eType="#//Cursor">
       <eParameters name="cursorType" lowerBound="1" eType="#//CursorType"/>
       <eParameters name="hold" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="sql" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="parameters" lowerBound="1" eType="#//CursorParameters"/>
+    </eOperations>
+    <eOperations name="createCursor" lowerBound="1" eType="#//Cursor">
+      <eParameters name="cursorType" lowerBound="1" eType="#//CursorType"/>
+      <eParameters name="hold" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eParameters name="statement" lowerBound="1" eType="#//Statement"/>
     </eOperations>
     <eOperations name="createCursorTerm" lowerBound="1" eType="#//CursorTerm">

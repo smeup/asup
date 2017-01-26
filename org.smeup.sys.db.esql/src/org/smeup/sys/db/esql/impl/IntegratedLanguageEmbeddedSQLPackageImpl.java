@@ -643,6 +643,12 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 		op = addEOperation(eSqlFactoryEClass, this.getCursor(), "createCursor", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCursorType(), "cursorType", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "hold", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "sql", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCursorParameters(), "parameters", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(eSqlFactoryEClass, this.getCursor(), "createCursor", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getCursorType(), "cursorType", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "hold", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getStatement(), "statement", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(eSqlFactoryEClass, this.getCursorTerm(), "createCursorTerm", 1, 1, IS_UNIQUE, IS_ORDERED);

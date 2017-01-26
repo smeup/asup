@@ -12,6 +12,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
 import java.util.List;
+import org.smeup.sys.il.data.QBufferedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,6 +32,14 @@ public interface QESqlFactory {
 	 * @generated
 	 */
 	QCursor createCursor(CursorType cursorType, boolean hold, String sql);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" cursorTypeRequired="true" holdRequired="true" sqlRequired="true" parametersDataType="org.smeup.sys.db.esql.CursorParameters" parametersRequired="true"
+	 * @generated
+	 */
+	QCursor createCursor(CursorType cursorType, boolean hold, String sql, QBufferedElement[] parameters);
 
 	/**
 	 * <!-- begin-user-doc -->

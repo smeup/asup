@@ -50,7 +50,7 @@ public class RPJDatabaseSupport extends RPJModule {
 		QStatement statement = esqlContext.getEsqlFactory().createStatement();
 		statement.prepare(sql, parameters);
 
-		return esqlContext.getEsqlFactory().createCursor(cursorType, hold, statement);
+		return esqlContext.getEsqlFactory().createCursor(cursorType, hold, sql, parameters);
 	}
 
 	public void qSetoption(String key, String value) {
@@ -188,12 +188,9 @@ public class RPJDatabaseSupport extends RPJModule {
 	
 	public void qSelect(String sql, QBufferedElement[] into, QBufferedElement[] parameters) {
 
-		QStatement statement = esqlContext.getEsqlFactory().createStatement();
-		statement.prepare(sql, parameters);
-		QCursor cursor = esqlContext.getEsqlFactory().createCursor(CursorType.SCROLLABLE, false, statement);
+		QCursor cursor = esqlContext.getEsqlFactory().createCursor(CursorType.SCROLLABLE, false, sql, parameters);
 		cursor.open();
 		cursor.next(into);
 		cursor.close();
-		statement.close();
 	}
 }
