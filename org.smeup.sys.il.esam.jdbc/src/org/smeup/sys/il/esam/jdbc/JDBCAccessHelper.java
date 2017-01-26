@@ -238,19 +238,19 @@ public class JDBCAccessHelper {
 				sbFields.append("digits(" + getSQLObjectNameHelper().getIdentifierQuoteString() + indexColumnName + getSQLObjectNameHelper().getIdentifierQuoteString() + ")");
 
 				// append value
-				
-				int number = 0;
-				if(keySet[i] instanceof QDecimal){
-					number = ((QDecimal) keySet[i]).i();
-				} else {
-					number = (int) keySet[i];
-				}
 				// TODO Verify me
-				if(number <  0){
+				QDecimal decimal = null;
+				if(keySet[i] instanceof QDecimal){
+					decimal = (QDecimal) keySet[i];
+				} else {
+					System.err.println("Unexpected condition: q2398475kjbhiytsoipdug");
+				}
+				
+				if(decimal.lt(0)){
 					byte[] bytes = new byte[indexColumn.getLength() - keySet[i].toString().length()];
 					Arrays.fill(bytes, (byte) 48);
-					number = number *-1;
-					sbValues.append('-' + new String(bytes) + number);
+					decimal.mult(-1);
+					sbValues.append('-' + new String(bytes) + decimal.toString());
 				}else{
 					byte[] bytes = new byte[indexColumn.getLength() - keySet[i].toString().length()];
 					Arrays.fill(bytes, (byte) 48);
