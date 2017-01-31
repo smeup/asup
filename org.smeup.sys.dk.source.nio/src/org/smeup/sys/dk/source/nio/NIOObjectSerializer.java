@@ -38,19 +38,24 @@ public class NIOObjectSerializer {
 
 		URI uri = buildURI(project, klass, name);
 
+		// resource object
 		synchronized (uri.toString().intern()) {
-			NIOResourceImpl resource = (NIOResourceImpl) resourceSet.getResource(uri, false);
-			if (resource == null)
-				resource = (NIOResourceImpl) resourceSet.createResource(uri, "asup");
-			else
-				clearResource(resource);
-
-			((BasicEObjectImpl) object).eSetResource(null, null);
-			resource.getContents().add((EObject) object);
+			NIOResourceImpl resource = null;
+			
+			// resourceSet
+			synchronized (resourceSet) {
+				resource = (NIOResourceImpl) resourceSet.getResource(uri, false);
+				if (resource == null)
+					resource = (NIOResourceImpl) resourceSet.createResource(uri, "asup");
+				else
+					clearResource(resource);
+				((BasicEObjectImpl) object).eSetResource(null, null);
+				resource.getContents().add((EObject) object);
+			}
 
 			ByteArrayOutputStream output = new ByteArrayOutputStream();
 			resource.doSave(output, Collections.EMPTY_MAP);
-			
+
 			return output;
 		}
 	}
@@ -73,7 +78,7 @@ public class NIOObjectSerializer {
 				return null;
 
 			EObject eObject = resource.getContents().get(0);
-			
+
 			return (T) eObject;
 		}
 	}
@@ -91,10 +96,10 @@ public class NIOObjectSerializer {
 
 		String uri = "asup://" + application.getName() + "/" + project.getName() + "/" + klass.getSimpleName().toLowerCase().substring(1);
 		URI eURI = URI.createURI(uri);
-		
+
 		// TODO remove me
 		eURI = eURI.appendFragment(name);
-		
+
 		return eURI;
 	}
 }
