@@ -41,7 +41,7 @@ public class NIOObjectSerializer {
 		// resource object
 		synchronized (uri.toString().intern()) {
 			NIOResourceImpl resource = null;
-			
+			ByteArrayOutputStream output = new ByteArrayOutputStream();			
 			// resourceSet
 			synchronized (resourceSet) {
 				resource = (NIOResourceImpl) resourceSet.getResource(uri, false);
@@ -51,10 +51,8 @@ public class NIOObjectSerializer {
 					clearResource(resource);
 				((BasicEObjectImpl) object).eSetResource(null, null);
 				resource.getContents().add((EObject) object);
+				resource.doSave(output, Collections.EMPTY_MAP);
 			}
-
-			ByteArrayOutputStream output = new ByteArrayOutputStream();
-			resource.doSave(output, Collections.EMPTY_MAP);
 
 			return output;
 		}
@@ -67,18 +65,21 @@ public class NIOObjectSerializer {
 
 		synchronized (uri.toString().intern()) {
 			NIOResourceImpl resource = (NIOResourceImpl) resourceSet.getResource(uri, false);
-			if (resource == null)
-				resource = (NIOResourceImpl) resourceSet.createResource(uri, "asup");
-			else {
-				clearResource(resource);
+			
+			EObject eObject = null;
+			synchronized (resourceSet) {
+				if (resource == null)
+					resource = (NIOResourceImpl) resourceSet.createResource(uri, "asup");
+				else {
+					clearResource(resource);
+				}
+
+				resource.doLoad(inputStream, resourceSet.getLoadOptions());
+				if (resource.getContents().isEmpty())
+					return null;
+
+				eObject = resource.getContents().get(0);
 			}
-
-			resource.doLoad(inputStream, resourceSet.getLoadOptions());
-			if (resource.getContents().isEmpty())
-				return null;
-
-			EObject eObject = resource.getContents().get(0);
-
 			return (T) eObject;
 		}
 	}
