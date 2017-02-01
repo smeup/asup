@@ -149,7 +149,8 @@ public class JDBCAccessHelper {
 			// TODO remove me
 			QBufferedData element = record.getElement(columnName.replaceAll("§", "ç").toLowerCase());
 			if (element instanceof QString)
-				sbUpdate.append("'" + element.toString() + "'");
+//				sbUpdate.append("'" + element.toString() + "'");
+				sbUpdate.append("'" + element.toString().replaceAll("'", "''") + "'");
 			else if (element instanceof QDecimal) {
 				QDecimal decimal = (QDecimal) element;
 				if (decimal.getScale() > 0)
