@@ -64,10 +64,10 @@ public class NIOObjectSerializer {
 		URI uri = buildURI(project, klass, name);
 
 		synchronized (uri.toString().intern()) {
-			NIOResourceImpl resource = (NIOResourceImpl) resourceSet.getResource(uri, false);
 			
 			EObject eObject = null;
 			synchronized (resourceSet) {
+				NIOResourceImpl resource = (NIOResourceImpl) resourceSet.getResource(uri, false);
 				if (resource == null)
 					resource = (NIOResourceImpl) resourceSet.createResource(uri, "asup");
 				else {
