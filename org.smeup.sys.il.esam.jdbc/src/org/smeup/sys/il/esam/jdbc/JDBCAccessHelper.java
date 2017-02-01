@@ -243,20 +243,23 @@ public class JDBCAccessHelper {
 				QDecimal decimal = null;
 				if(keySet[i] instanceof QDecimal){
 					decimal = (QDecimal) keySet[i];
+					if(decimal.lt(0)){
+						byte[] bytes = new byte[indexColumn.getLength() - keySet[i].toString().length()];
+						Arrays.fill(bytes, (byte) 48);
+						decimal.mult(-1);
+						sbValues.append('-' + new String(bytes) + decimal.toString());
+					}else{
+						byte[] bytes = new byte[indexColumn.getLength() - keySet[i].toString().length()];
+						Arrays.fill(bytes, (byte) 48);
+						sbValues.append(new String(bytes) + keySet[i].toString());
+					}
 				} else {
-					System.err.println("Unexpected condition: q2398475kjbhiytsoipdug");
-				}
-				
-				if(decimal.lt(0)){
-					byte[] bytes = new byte[indexColumn.getLength() - keySet[i].toString().length()];
-					Arrays.fill(bytes, (byte) 48);
-					decimal.mult(-1);
-					sbValues.append('-' + new String(bytes) + decimal.toString());
-				}else{
+					// primitive 
 					byte[] bytes = new byte[indexColumn.getLength() - keySet[i].toString().length()];
 					Arrays.fill(bytes, (byte) 48);
 					sbValues.append(new String(bytes) + keySet[i].toString());
 				}
+				
 				
 			} else {
 
