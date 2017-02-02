@@ -26,6 +26,7 @@ import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.base.api.JobName.JobNotFoundException;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
 
 @Program(name = "QWTCCCNJ")
@@ -41,6 +42,8 @@ public class JobEnder {
 	private QExceptionManager exceptionManager;
 	@Inject
 	private QJobManager jobManager;
+	@Inject
+	private QJobLogManager jobLogManager;
 
 	@Main
 	public void main(@Supported @DataDef(qualified = true) JobName jobName, @ToDo @DataDef(length = 1) QEnum<HowToEndEnum, QCharacter> howToEnd,
@@ -49,12 +52,22 @@ public class JobEnder {
 			@ToDo @DataDef(length = 7) QEnum<AdditionalInteractiveJobsEnum, QCharacter> additionalInteractiveJobs,
 			@ToDo @DataDef(length = 10) QEnum<DuplicateJobOptionEnum, QCharacter> duplicateJobOption) {
 
-		try {
-			QJob jobToTerminate = jobName.findJob(job, jobManager);
-			jobManager.close(jobToTerminate);
-		} catch (JobNotFoundException e) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, new String[] { jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trimR() });
-		}
+			QJob jobSearch = null;
+			try {
+				jobSearch = jobName.findJob(job, jobManager);
+				if (jobSearch == null)
+					throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, new String[] { jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trimR() });
+				QJob jobToTerminate = jobManager.lookupActiveJob(jobSearch.getJobID(), jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trimR());
+				if (jobToTerminate == null)
+					throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, new String[] { jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trimR() });
+	
+				jobManager.close(jobToTerminate);
+				
+				jobLogManager.info(job, "Job " + jobName.number.trimR() + "/" + jobName.user.trimR() + "/" + jobName.name.asData().trimR() + " has completed.");
+			
+			} catch (JobNotFoundException e) {
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, new String[] { jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trimR() });
+			}
 	}
 
 	public static enum HowToEndEnum {
