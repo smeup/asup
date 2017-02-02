@@ -100,6 +100,15 @@ public class FileOverrideImpl extends ObjectImpl implements QFileOverride {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLibrary() {
+		return fileTo.getLibrary();
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */

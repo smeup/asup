@@ -269,11 +269,8 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		isInited = true;
 
 		// Initialize simple dependencies
-		QIntegratedLanguageLockPackage.eINSTANCE.eClass();
 		QIntegratedLanguageMemoryPackage.eINSTANCE.eClass();
 		QOperatingSystemTypePackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataTermPackage.eINSTANCE.eClass();
-		QIntegratedLanguageDataDefPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theOperatingSystemFilePackage.createPackageContents();
@@ -1110,6 +1107,8 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		initEAttribute(getFileOverride_Name(), ecorePackage.getEString(), "name", null, 1, 1, QFileOverride.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFileOverride_FileTo(), this.getFile(), null, "fileTo", null, 1, 1, QFileOverride.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFileOverride_MemberTo(), ecorePackage.getEString(), "memberTo", null, 1, 1, QFileOverride.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(fileOverrideEClass, ecorePackage.getEString(), "getLibrary", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(logicalFileEClass, QLogicalFile.class, "LogicalFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLogicalFile_CreationStatement(), ecorePackage.getEString(), "creationStatement", null, 0, 1, QLogicalFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

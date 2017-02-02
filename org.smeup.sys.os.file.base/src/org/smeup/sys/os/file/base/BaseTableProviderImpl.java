@@ -34,9 +34,12 @@ public class BaseTableProviderImpl implements QTableProvider {
 	public Table getTable(String container, String name) {
 
 		QFileOverride fileOverride = fileManager.getFileOverride(job.getContext(), name);
-		if (fileOverride != null)
+		if (fileOverride != null){
 			name = fileOverride.getFileTo().getName();
-		
+			if(fileOverride.getLibrary() != null){
+				container = fileOverride.getLibrary();
+			}
+		}
 		QCatalogMetaData catalogMetaData = connection.getCatalogMetaData();
 
 		if (container == null) {
