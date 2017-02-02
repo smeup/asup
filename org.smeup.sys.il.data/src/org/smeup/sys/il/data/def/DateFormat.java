@@ -23,6 +23,14 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum DateFormat implements Enumerator {
 	/**
+	 * The '<em><b>ISO</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @see #ISO_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ISO(5, "ISO", "*ISO"), /**
 	 * The '<em><b>MDY</b></em>' literal object.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -30,9 +38,7 @@ public enum DateFormat implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MDY(10, "MDY", "*MDY"),
-
-	/**
+	MDY(10, "MDY", "*MDY"), /**
 	 * The '<em><b>DMY</b></em>' literal object.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -40,9 +46,7 @@ public enum DateFormat implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	DMY(20, "DMY", "*DMY"),
-
-	/**
+	DMY(20, "DMY", "*DMY"), /**
 	 * The '<em><b>YMD</b></em>' literal object.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -50,9 +54,7 @@ public enum DateFormat implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	YMD(30, "YMD", "*YMD"),
-
-	/**
+	YMD(30, "YMD", "*YMD"), /**
 	 * The '<em><b>YYMD</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -69,16 +71,6 @@ public enum DateFormat implements Enumerator {
 	 * @ordered
 	 */
 	JUL(40, "JUL", "*JUL"),
-
-	/**
-	 * The '<em><b>ISO</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see #ISO_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	ISO(50, "ISO", "*ISO"),
 
 	/**
 	 * The '<em><b>USA</b></em>' literal object.
@@ -119,6 +111,21 @@ public enum DateFormat implements Enumerator {
 	 * @ordered
 	 */
 	JOBRUN(90, "JOBRUN", "*JOBRUN");
+
+	/**
+	 * The '<em><b>ISO</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ISO</b></em>' literal object isn't clear, there
+	 * really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ISO
+	 * @model literal="*ISO"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ISO_VALUE = 5;
 
 	/**
 	 * The '<em><b>MDY</b></em>' literal value.
@@ -196,21 +203,6 @@ public enum DateFormat implements Enumerator {
 	public static final int JUL_VALUE = 40;
 
 	/**
-	 * The '<em><b>ISO</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>ISO</b></em>' literal object isn't clear, there
-	 * really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #ISO
-	 * @model literal="*ISO"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ISO_VALUE = 50;
-
-	/**
 	 * The '<em><b>USA</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -277,12 +269,12 @@ public enum DateFormat implements Enumerator {
 	 * @generated
 	 */
 	private static final DateFormat[] VALUES_ARRAY = new DateFormat[] {
+			ISO,
 			MDY,
 			DMY,
 			YMD,
 			YYMD,
 			JUL,
-			ISO,
 			USA,
 			EUR,
 			JIS,
@@ -339,12 +331,12 @@ public enum DateFormat implements Enumerator {
 	 */
 	public static DateFormat get(int value) {
 		switch (value) {
+			case ISO_VALUE: return ISO;
 			case MDY_VALUE: return MDY;
 			case DMY_VALUE: return DMY;
 			case YMD_VALUE: return YMD;
 			case YYMD_VALUE: return YYMD;
 			case JUL_VALUE: return JUL;
-			case ISO_VALUE: return ISO;
 			case USA_VALUE: return USA;
 			case EUR_VALUE: return EUR;
 			case JIS_VALUE: return JIS;

@@ -66,7 +66,7 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 	 * @generated
 	 * @ordered
 	 */
-	protected static final DateFormat DATE_FORMAT_EDEFAULT = DateFormat.MDY;
+	protected static final DateFormat DATE_FORMAT_EDEFAULT = DateFormat.ISO;
 
 	/**
 	 * The cached value of the '{@link #getDateFormat() <em>Date Format</em>}' attribute.
@@ -86,7 +86,7 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 	 * @generated
 	 * @ordered
 	 */
-	protected static final TimeFormat TIME_FORMAT_EDEFAULT = TimeFormat.HMS;
+	protected static final TimeFormat TIME_FORMAT_EDEFAULT = TimeFormat.ISO;
 
 	/**
 	 * The cached value of the '{@link #getTimeFormat() <em>Time Format</em>}' attribute.

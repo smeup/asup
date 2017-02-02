@@ -1723,12 +1723,12 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		addEEnumLiteral(datetimeTypeEEnum, DatetimeType.TIME_STAMP);
 
 		initEEnum(dateFormatEEnum, DateFormat.class, "DateFormat");
+		addEEnumLiteral(dateFormatEEnum, DateFormat.ISO);
 		addEEnumLiteral(dateFormatEEnum, DateFormat.MDY);
 		addEEnumLiteral(dateFormatEEnum, DateFormat.DMY);
 		addEEnumLiteral(dateFormatEEnum, DateFormat.YMD);
 		addEEnumLiteral(dateFormatEEnum, DateFormat.YYMD);
 		addEEnumLiteral(dateFormatEEnum, DateFormat.JUL);
-		addEEnumLiteral(dateFormatEEnum, DateFormat.ISO);
 		addEEnumLiteral(dateFormatEEnum, DateFormat.USA);
 		addEEnumLiteral(dateFormatEEnum, DateFormat.EUR);
 		addEEnumLiteral(dateFormatEEnum, DateFormat.JIS);
@@ -1743,8 +1743,8 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		addEEnumLiteral(floatingTypeEEnum, FloatingType.DOUBLE);
 
 		initEEnum(timeFormatEEnum, TimeFormat.class, "TimeFormat");
-		addEEnumLiteral(timeFormatEEnum, TimeFormat.HMS);
 		addEEnumLiteral(timeFormatEEnum, TimeFormat.ISO);
+		addEEnumLiteral(timeFormatEEnum, TimeFormat.HMS);
 		addEEnumLiteral(timeFormatEEnum, TimeFormat.USA);
 		addEEnumLiteral(timeFormatEEnum, TimeFormat.EUR);
 		addEEnumLiteral(timeFormatEEnum, TimeFormat.JIS);

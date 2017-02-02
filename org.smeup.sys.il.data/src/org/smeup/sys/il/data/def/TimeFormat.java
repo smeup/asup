@@ -24,6 +24,14 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum TimeFormat implements Enumerator {
 	/**
+	 * The '<em><b>ISO</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ISO_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ISO(5, "ISO", "*ISO"), /**
 	 * The '<em><b>HMS</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -32,16 +40,6 @@ public enum TimeFormat implements Enumerator {
 	 * @ordered
 	 */
 	HMS(10, "HMS", "*HMS"),
-
-	/**
-	 * The '<em><b>ISO</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ISO_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	ISO(20, "ISO", "*ISO"),
 
 	/**
 	 * The '<em><b>USA</b></em>' literal object.
@@ -84,6 +82,21 @@ public enum TimeFormat implements Enumerator {
 	JOBRUN(60, "JOBRUN", "*JOBRUN");
 
 	/**
+	 * The '<em><b>ISO</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ISO</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ISO
+	 * @model literal="*ISO"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ISO_VALUE = 5;
+
+	/**
 	 * The '<em><b>HMS</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -97,21 +110,6 @@ public enum TimeFormat implements Enumerator {
 	 * @ordered
 	 */
 	public static final int HMS_VALUE = 10;
-
-	/**
-	 * The '<em><b>ISO</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>ISO</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #ISO
-	 * @model literal="*ISO"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ISO_VALUE = 20;
 
 	/**
 	 * The '<em><b>USA</b></em>' literal value.
@@ -181,8 +179,8 @@ public enum TimeFormat implements Enumerator {
 	 */
 	private static final TimeFormat[] VALUES_ARRAY =
 		new TimeFormat[] {
-			HMS,
 			ISO,
+			HMS,
 			USA,
 			EUR,
 			JIS,
@@ -243,8 +241,8 @@ public enum TimeFormat implements Enumerator {
 	 */
 	public static TimeFormat get(int value) {
 		switch (value) {
-			case HMS_VALUE: return HMS;
 			case ISO_VALUE: return ISO;
+			case HMS_VALUE: return HMS;
 			case USA_VALUE: return USA;
 			case EUR_VALUE: return EUR;
 			case JIS_VALUE: return JIS;
