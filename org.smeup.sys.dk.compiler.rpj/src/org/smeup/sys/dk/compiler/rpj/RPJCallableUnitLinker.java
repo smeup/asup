@@ -371,6 +371,14 @@ public class RPJCallableUnitLinker {
 					for (QDataTerm<?> recordElement : dataSet.getFormat().getDefinition().getElements())
 						if (compilationUnit.equalsTermName(recordElement.getName(), element.getName())) {
 							recordElement.getFacets().add(remap);
+							// TODO create remap variable for assign
+							QDataTerm<?> remapDataTerm = (QDataTerm<?>) EcoreUtil.copy((EObject) compilationUnit.getDataTerm(remap.getName(), true));
+							if(remapDataTerm == null || remapDataTerm.getName().equals(element.getName())){
+								remapDataTerm.setName(remap.getName());
+								remapDataTerm.getFacets().remove(QRemap.class);
+								QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getNode();
+								callableUnit.getDataSection().getDatas().add(remapDataTerm);
+							}
 							break;
 						}
 				}
