@@ -33,6 +33,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
+import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.def.impl.CompoundDataDefImpl;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QRemap;
@@ -371,14 +372,21 @@ public class RPJCallableUnitLinker {
 					for (QDataTerm<?> recordElement : dataSet.getFormat().getDefinition().getElements())
 						if (compilationUnit.equalsTermName(recordElement.getName(), element.getName())) {
 							recordElement.getFacets().add(remap);
+
 							// TODO create remap variable for assign
-							QDataTerm<?> remapDataTerm = (QDataTerm<?>) EcoreUtil.copy((EObject) compilationUnit.getDataTerm(remap.getName(), true));
-							if(remapDataTerm == null || remapDataTerm.getName().equals(element.getName())){
-								remapDataTerm.setName(remap.getName());
-								remapDataTerm.getFacets().remove(QRemap.class);
-								QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getNode();
-								callableUnit.getDataSection().getDatas().add(remapDataTerm);
+							if(remap.getIndex() == null){
+								QDataTerm<QDataDef<?>> remapDataTerm = (QDataTerm<QDataDef<?>>) EcoreUtil.copy((EObject) compilationUnit.getDataTerm(remap.getName(), true));
+								if(remapDataTerm.getName().equals(element.getName())){
+									remapDataTerm.setName(remap.getName());
+									remapDataTerm.getFacets().remove(QRemap.class);
+									QDataDef<?> remapDataDef = (QDataDef<?>) EcoreUtil.copy((EObject) recordElement.getDefinition());
+									remapDataTerm.setDefinition(remapDataDef);
+									QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getNode();
+									callableUnit.getDataSection().getDatas().add(remapDataTerm);
+								}
+								
 							}
+
 							break;
 						}
 				}
