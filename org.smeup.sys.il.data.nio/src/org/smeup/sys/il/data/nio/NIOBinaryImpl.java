@@ -219,12 +219,25 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 
 	@Override
 	protected final byte[] _toBytes(final DataSpecial value) {
+		
+		byte[] bytes = new byte[getLength()];
 
-		final byte[] bytes = new byte[getLength()];
 		switch (value) {
 		case LOVAL:
-			Arrays.fill(bytes, HIVAL);
-			bytes[bytes.length - 1] = LOVAL;
+			switch (_type) {
+			case BYTE:
+				bytes = _decimalDef.zoned.toBytes(Byte.MIN_VALUE);
+				break;
+			case INTEGER:
+				bytes = _decimalDef.zoned.toBytes(Integer.MIN_VALUE);
+				break;
+			case LONG:
+				bytes = _decimalDef.zoned.toBytes(Long.MIN_VALUE);
+				break;
+			case SHORT:
+				bytes = _decimalDef.zoned.toBytes(Short.MIN_VALUE);
+				break;
+			}
 			break;
 		case BLANK:
 		case BLANKS:
@@ -239,14 +252,26 @@ public final class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 			Arrays.fill(bytes, NIOIndicatorImpl.ON);
 			break;
 		case HIVAL:
-			Arrays.fill(bytes, HIVAL);
+			switch (_type) {
+			case BYTE:
+				bytes = _decimalDef.zoned.toBytes(Byte.MAX_VALUE);
+				break;
+			case INTEGER:
+				bytes = _decimalDef.zoned.toBytes(Integer.MAX_VALUE);
+				break;
+			case LONG:
+				bytes = _decimalDef.zoned.toBytes(Long.MAX_VALUE);
+				break;
+			case SHORT:
+				bytes = _decimalDef.zoned.toBytes(Short.MAX_VALUE);
+				break;
+			}
 			break;
 		case NULL:
 		case OMIT:
 			throw new IntegratedLanguageDataRuntimeException("Unexpected condition 237rvbwe87vb9stf");
 		}
-
-		return bytes;
+			return bytes;
 	}
 
 	@Override
