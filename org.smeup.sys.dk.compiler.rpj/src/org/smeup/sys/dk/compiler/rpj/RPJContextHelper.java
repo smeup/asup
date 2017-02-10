@@ -20,7 +20,9 @@ import org.smeup.sys.il.core.term.QNamedNode;
 import org.smeup.sys.il.data.DataSpecial;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDatetime;
+import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QNumeric;
@@ -367,7 +369,18 @@ public class RPJContextHelper {
 			else
 				target = getModelClass(getTargetClass(compilationUnit, expressionChild, true));
 
-			QPrototype method = compilationUnit.getMethod(target, functionExpression.getValue());
+			QPrototype method = null;
+			
+			if(target.isAssignableFrom(QDataArea.class)) {
+				method = compilationUnit.getMethod(QCharacter.class, functionExpression.getValue());
+				if(method == null)
+					method = compilationUnit.getMethod(QDecimal.class, functionExpression.getValue());
+				if(method == null)
+					method = compilationUnit.getMethod(QIndicator.class, functionExpression.getValue());
+			}
+			else
+				method = compilationUnit.getMethod(target, functionExpression.getValue());
+
 			if (method != null) {
 				if (primitive)
 					return getDataTerm(method).getDefinition().getJavaClass();
