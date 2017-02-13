@@ -21,16 +21,19 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.jobs.QJobCapability;
+import org.smeup.sys.os.core.jobs.QJobManager;
 
 public class BaseSubmittedCommand implements Runnable {
 
+	private QJobManager jobManager;
 	private QCommandManager commandManager;
 	private QJobCapability jobCapability;
 	private QDataContext dataContext;
 	private String commandString;
 	private Object caller;
 
-	protected BaseSubmittedCommand(QCommandManager commandManager, QJobCapability jobCapability, QDataContext dataContext, String commandString, Object caller) {
+	protected BaseSubmittedCommand(QJobManager jobManager, QCommandManager commandManager, QJobCapability jobCapability, QDataContext dataContext, String commandString, Object caller) {
+		this.jobManager = jobManager;
 		this.commandManager = commandManager;
 		this.jobCapability = jobCapability;
 		this.dataContext = dataContext;
@@ -76,5 +79,6 @@ public class BaseSubmittedCommand implements Runnable {
 		}
 
 		commandManager.executeCommand(jobCapability, commandString, variables);
+		jobManager.close(jobCapability);
 	}
 }

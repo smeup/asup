@@ -56,7 +56,6 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 
 		jobLogManager.info(job, callableCommand.getCommandString());
 
-		@SuppressWarnings("resource")
 		QDataContainer dataContainer = callableCommand.getDataContainer();
 
 		QData[] parameters = new QData[callableCommand.getCommand().getParameters().size()];
@@ -94,7 +93,7 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 
 		// Submit command
 		String threadName = "job/" + jobCapability.getObjectName();
-		QThread thread = threadManager.createThread(threadName, new BaseSubmittedCommand(this, jobCapability, dataContext, command, caller));
+		QThread thread = threadManager.createThread(threadName, new BaseSubmittedCommand(jobManager, this, jobCapability, dataContext, command, caller));
 		jobSpawned.setJobThread(thread);
 
 		if(!hold)
@@ -115,7 +114,6 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 		return decodeCommand(job, null, command);
 	}
 
-	@SuppressWarnings("resource")
 	@Override
 	public QDataContainer decodeCommand(QJob job, Map<String, Object> variables, String command) {
 
