@@ -84,6 +84,8 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 	@Override
 	public boolean chain(Object[] keyList, QIndicator notFound, QIndicator error, Boolean lock) {
 
+		// TODO verify me
+		setKeySet(OperationSet.CHAIN, keyList);
 		try {
 			prepareAccess(OperationSet.CHAIN, keyList, OperationRead.CHAIN, keyList, false);
 
