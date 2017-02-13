@@ -29,8 +29,8 @@ public class CronResourceWriterImpl extends CronResourceReaderImpl implements QR
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CronResourceWriterImpl(QContextProvider contextProvider, String resource) {
-		super(contextProvider, resource);
+	public CronResourceWriterImpl(QContextProvider contextProvider, String resource, QCronSchedulerConfig config) {
+		super(contextProvider, resource, config);		
 	}
 
 	@Override
@@ -60,21 +60,24 @@ public class CronResourceWriterImpl extends CronResourceReaderImpl implements QR
 				return;
 			}
 		}
-
-		String cronMap = cronAdapter.getCronTimeMask(scheduleEntry);
-
+		
 		String entryNumber = buildUniqueID(6);
 		scheduleEntry.setEntryNumber(entryNumber);
-
-		cronWrapper.addCronTask(scheduleEntry.getName(), 
-								scheduleEntry.getDescription(), 
-								scheduleEntry.getEntryNumber(), 
-								cronMap,
-								scheduleEntry.getSystem(),
-								scheduleEntry.getUser(),
-								scheduleEntry.getPassword(),
-								scheduleEntry.getEnvironment(),
-								scheduleEntry.getCommandToRun());
+		
+		
+		//TODO: the user is always getted from config, also when is passed in command.
+		
+		cronWrapper.addCronTask(cronAdapter.getCronTimeMask(scheduleEntry),
+								config.getWsip(),
+								config.getWsport(),
+								config.getSystem(),
+								config.getUser(),
+								config.getPassword(),
+								config.getEnvironment(),
+								scheduleEntry.getCommandToRun(),
+								scheduleEntry.getEntryNumber(),
+								scheduleEntry.getName(),
+								scheduleEntry.getDescription());
 
 		QResourceHelper.firePostSaveEvent(this, scheduleEntry);
 	}

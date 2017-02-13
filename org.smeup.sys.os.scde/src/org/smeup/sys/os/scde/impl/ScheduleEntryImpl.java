@@ -34,10 +34,7 @@ import org.smeup.sys.os.scde.QScheduleEntry;
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getScheduledDate <em>Scheduled Date</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getScheduledDay <em>Scheduled Day</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getScheduledTime <em>Scheduled Time</em>}</li>
- *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getSystem <em>System</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getUser <em>User</em>}</li>
- *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getPassword <em>Password</em>}</li>
- *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getEnvironment <em>Environment</em>}</li>
  * </ul>
  *
  * @generated
@@ -199,26 +196,6 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 	protected String scheduledTime = SCHEDULED_TIME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSystem() <em>System</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSystem()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String SYSTEM_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getSystem() <em>System</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSystem()
-	 * @generated
-	 * @ordered
-	 */
-	protected String system = SYSTEM_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getUser() <em>User</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -237,46 +214,6 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 	 * @ordered
 	 */
 	protected String user = USER_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getPassword() <em>Password</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPassword()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String PASSWORD_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getPassword() <em>Password</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPassword()
-	 * @generated
-	 * @ordered
-	 */
-	protected String password = PASSWORD_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getEnvironment() <em>Environment</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnvironment()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ENVIRONMENT_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getEnvironment() <em>Environment</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnvironment()
-	 * @generated
-	 * @ordered
-	 */
-	protected String environment = ENVIRONMENT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -349,27 +286,6 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 		scheduledTime = newScheduledTime;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME, oldScheduledTime, scheduledTime));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getSystem() {
-		return system;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSystem(String newSystem) {
-		String oldSystem = system;
-		system = newSystem;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SYSTEM, oldSystem, system));
 	}
 
 	/**
@@ -503,48 +419,6 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getPassword() {
-		return password;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPassword(String newPassword) {
-		String oldPassword = password;
-		password = newPassword;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__PASSWORD, oldPassword, password));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getEnvironment() {
-		return environment;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEnvironment(String newEnvironment) {
-		String oldEnvironment = environment;
-		environment = newEnvironment;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__ENVIRONMENT, oldEnvironment, environment));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -564,14 +438,8 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 				return getScheduledDay();
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME:
 				return getScheduledTime();
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SYSTEM:
-				return getSystem();
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__USER:
 				return getUser();
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__PASSWORD:
-				return getPassword();
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__ENVIRONMENT:
-				return getEnvironment();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -610,17 +478,8 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME:
 				setScheduledTime((String)newValue);
 				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SYSTEM:
-				setSystem((String)newValue);
-				return;
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__USER:
 				setUser((String)newValue);
-				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__PASSWORD:
-				setPassword((String)newValue);
-				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__ENVIRONMENT:
-				setEnvironment((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -658,17 +517,8 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME:
 				setScheduledTime(SCHEDULED_TIME_EDEFAULT);
 				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SYSTEM:
-				setSystem(SYSTEM_EDEFAULT);
-				return;
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__USER:
 				setUser(USER_EDEFAULT);
-				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__PASSWORD:
-				setPassword(PASSWORD_EDEFAULT);
-				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__ENVIRONMENT:
-				setEnvironment(ENVIRONMENT_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -698,14 +548,8 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 				return scheduledDay != null && !scheduledDay.isEmpty();
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME:
 				return SCHEDULED_TIME_EDEFAULT == null ? scheduledTime != null : !SCHEDULED_TIME_EDEFAULT.equals(scheduledTime);
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SYSTEM:
-				return SYSTEM_EDEFAULT == null ? system != null : !SYSTEM_EDEFAULT.equals(system);
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__USER:
 				return USER_EDEFAULT == null ? user != null : !USER_EDEFAULT.equals(user);
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__PASSWORD:
-				return PASSWORD_EDEFAULT == null ? password != null : !PASSWORD_EDEFAULT.equals(password);
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__ENVIRONMENT:
-				return ENVIRONMENT_EDEFAULT == null ? environment != null : !ENVIRONMENT_EDEFAULT.equals(environment);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -736,14 +580,8 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 		result.append(scheduledDay);
 		result.append(", scheduledTime: ");
 		result.append(scheduledTime);
-		result.append(", system: ");
-		result.append(system);
 		result.append(", user: ");
 		result.append(user);
-		result.append(", password: ");
-		result.append(password);
-		result.append(", environment: ");
-		result.append(environment);
 		result.append(')');
 		return result.toString();
 	}

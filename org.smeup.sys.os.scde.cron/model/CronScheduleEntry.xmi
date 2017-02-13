@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<os-scde-cron:CronScheduleEntry xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:os-scde-cron="http://www.smeup.org/asup/os/scde/cron" xsi:schemaLocation="http://www.smeup.org/asup/os/scde/cron os-scde-cron.ecore"/>

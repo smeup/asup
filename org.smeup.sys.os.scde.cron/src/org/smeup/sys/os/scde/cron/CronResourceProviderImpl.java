@@ -26,16 +26,19 @@ import org.smeup.sys.os.scde.QScheduleEntry;
 
 public class CronResourceProviderImpl implements QResourceProvider {
 	
+	private QCronSchedulerConfig config;
+
 	@PostConstruct
-	private void init(QResourceManager resourceManager) {
+	private void init(QResourceManager resourceManager, QCronSchedulerConfig config) {
 		resourceManager.registerProvider(QScheduleEntry.class, this);
+		this.config = config;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String resource) {
 
-		QResourceReader<T> resourceReader = (QResourceReader<T>) new CronResourceReaderImpl(contextProvider, resource);
+		QResourceReader<T> resourceReader = (QResourceReader<T>) new CronResourceReaderImpl(contextProvider, resource, config);
 		return resourceReader;
 	}
 
@@ -43,7 +46,7 @@ public class CronResourceProviderImpl implements QResourceProvider {
 	@Override
 	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, List<String> resources) {
 
-		QResourceReader<T> resourceReader = (QResourceReader<T>) new CronResourceReaderImpl(contextProvider, null);
+		QResourceReader<T> resourceReader = (QResourceReader<T>) new CronResourceReaderImpl(contextProvider, null, config);
 		return resourceReader;
 	}
 
@@ -51,7 +54,7 @@ public class CronResourceProviderImpl implements QResourceProvider {
 	@Override
 	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String resource) {
 
-		QResourceWriter<T> resourceWriter = (QResourceWriter<T>) new CronResourceWriterImpl(contextProvider, resource);
+		QResourceWriter<T> resourceWriter = (QResourceWriter<T>) new CronResourceWriterImpl(contextProvider, resource, config);
 
 		return resourceWriter;
 	}

@@ -144,40 +144,13 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	int SCHEDULE_ENTRY__SCHEDULED_TIME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 7;
 
 	/**
-	 * The feature id for the '<em><b>System</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCHEDULE_ENTRY__SYSTEM = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 8;
-
-	/**
 	 * The feature id for the '<em><b>User</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULE_ENTRY__USER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 9;
-
-	/**
-	 * The feature id for the '<em><b>Password</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCHEDULE_ENTRY__PASSWORD = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 10;
-
-	/**
-	 * The feature id for the '<em><b>Environment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCHEDULE_ENTRY__ENVIRONMENT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 11;
+	int SCHEDULE_ENTRY__USER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Schedule Entry</em>' class.
@@ -186,7 +159,7 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULE_ENTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 12;
+	int SCHEDULE_ENTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 9;
 
 
 	/**
@@ -231,17 +204,6 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getScheduleEntry_ScheduledTime();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduleEntry#getSystem <em>System</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>System</em>'.
-	 * @see org.smeup.sys.os.scde.QScheduleEntry#getSystem()
-	 * @see #getScheduleEntry()
-	 * @generated
-	 */
-	EAttribute getScheduleEntry_System();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduleEntry#getDescription <em>Description</em>}'.
@@ -310,28 +272,6 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	EAttribute getScheduleEntry_User();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduleEntry#getPassword <em>Password</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Password</em>'.
-	 * @see org.smeup.sys.os.scde.QScheduleEntry#getPassword()
-	 * @see #getScheduleEntry()
-	 * @generated
-	 */
-	EAttribute getScheduleEntry_Password();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduleEntry#getEnvironment <em>Environment</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Environment</em>'.
-	 * @see org.smeup.sys.os.scde.QScheduleEntry#getEnvironment()
-	 * @see #getScheduleEntry()
-	 * @generated
-	 */
-	EAttribute getScheduleEntry_Environment();
-
-	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -388,14 +328,6 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 		EAttribute SCHEDULE_ENTRY__SCHEDULED_TIME = eINSTANCE.getScheduleEntry_ScheduledTime();
 
 		/**
-		 * The meta object literal for the '<em><b>System</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SCHEDULE_ENTRY__SYSTEM = eINSTANCE.getScheduleEntry_System();
-
-		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -442,22 +374,6 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SCHEDULE_ENTRY__USER = eINSTANCE.getScheduleEntry_User();
-
-		/**
-		 * The meta object literal for the '<em><b>Password</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SCHEDULE_ENTRY__PASSWORD = eINSTANCE.getScheduleEntry_Password();
-
-		/**
-		 * The meta object literal for the '<em><b>Environment</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SCHEDULE_ENTRY__ENVIRONMENT = eINSTANCE.getScheduleEntry_Environment();
 
 	}
 

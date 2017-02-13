@@ -30,13 +30,16 @@ public class CronResourceReaderImpl extends ResourceReaderImpl<QScheduleEntry> {
 	protected CronSystemWrapper cronWrapper;
 	protected CronAdapter cronAdapter;
 	private String resource;
+	protected QCronSchedulerConfig config;
 	
-	public CronResourceReaderImpl(QContextProvider contextProvider, String resource) {
+	public CronResourceReaderImpl(QContextProvider contextProvider, String resource, QCronSchedulerConfig config) {
 		setContextProvider(contextProvider);
 		this.resource = resource;
+		this.config = config;
 		
-		this.cronWrapper = new CronSystemWrapper();
 		this.cronAdapter = new CronAdapter();
+		this.cronWrapper = new CronSystemWrapper();
+		
 	}
 
 	public String getResourceName() {

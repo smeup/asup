@@ -15,7 +15,6 @@ package org.smeup.sys.os.scde.cron;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import org.smeup.sys.os.scde.QOperativeSystemScheduleEntryFactory;
 import org.smeup.sys.os.scde.QScheduleEntry;
 
 public class CronAdapter {
@@ -115,13 +114,15 @@ public class CronAdapter {
 	/*
 	 * CronTask format:
 	 * 
-	 *  mm hh dayOfMonth month dayOfWeek sh call_ws server taskID user "command" taskName "taskDescription"
+	 *  mm hh dayOfMonth month dayOfWeek sh call_ws server port user pwd env "command" taskID taskName "taskDescription"
 	 *
 	 */
 	@SuppressWarnings("unused")
 	public QScheduleEntry getScheduleEntry(String cronTask) {
 		
-		QScheduleEntry scheduleEntry = QOperativeSystemScheduleEntryFactory.eINSTANCE.createScheduleEntry();
+		//TODO: è corretto tornare un oggetto QCronScheduleEntry piuttosto che un QScheduleEntry?
+		
+		QCronScheduleEntry scheduleEntry = QOperativeSystemCronScheduleEntryFactory.eINSTANCE.createCronScheduleEntry();
 		
 		StringTokenizer tokenizer = new StringTokenizer(cronTask); 
 		String minute = tokenizer.nextToken();
@@ -131,19 +132,17 @@ public class CronAdapter {
 		String weekDay = tokenizer.nextToken();			
 		String sh	= tokenizer.nextToken();
 		String bash = tokenizer.nextToken();
-		String server = tokenizer.nextToken();
-		String id = tokenizer.nextToken();
+		String server = tokenizer.nextToken();		
+		String port = tokenizer.nextToken();
 		String user = tokenizer.nextToken();
-						
-		String cmd = "";
-		while (!cmd.endsWith("\"")) {
-				cmd += tokenizer.nextToken();
-		}
-	
+		String pwd = tokenizer.nextToken();
+		String env = tokenizer.nextToken();
+		String cmd = tokenizer.nextToken();
+		String id = tokenizer.nextToken();	
 		String name = tokenizer.nextToken();
 		
 		String description = "";
-		while (tokenizer.hasMoreElements() && !cmd.endsWith("\"")) {
+		while (tokenizer.hasMoreElements()) {
 			description += tokenizer.nextToken();
 		} 
 		
@@ -195,8 +194,6 @@ public class CronAdapter {
 			}
 		}
 		
-		
-		
 		scheduleEntry.setEntryNumber(id);
 		scheduleEntry.setUser(user);
 		scheduleEntry.setJobName(name);
@@ -205,5 +202,37 @@ public class CronAdapter {
 
 		return scheduleEntry;
 	}
+	
+	
+	/*
+	public QCronScheduleEntry convertToCron(QScheduleEntry scheduleEntry) {
+		
+		QCronScheduleEntry convertedEntry = QOperativeSystemCronScheduleEntryFactory.eINSTANCE.createCronScheduleEntry();
+		
+		// From origin schedule entry
+		convertedEntry.setCommandToRun(scheduleEntry.getCommandToRun());
+		convertedEntry.setDescription(scheduleEntry.getDescription());
+		convertedEntry.setEntryNumber(scheduleEntry.getEntryNumber());
+		convertedEntry.setFrequency(scheduleEntry.getFrequency());
+		convertedEntry.setJobName(scheduleEntry.getJobName());
+		convertedEntry.setScheduledDate(scheduleEntry.getScheduledDate());
+		
+		for( String day: scheduleEntry.getScheduledDay()) {
+			convertedEntry.getScheduledDay().add(day);
+		}
+		
+		convertedEntry.setScheduledTime(scheduleEntry.getScheduledTime());
+		convertedEntry.setUser(scheduleEntry.getUser());
+		
+		// From setup
+		convertedEntry.setWsip(setup.getWsip());
+		convertedEntry.setWsport(setup.getWsport());
+		convertedEntry.setPassword(setup.getPassword());
+		convertedEntry.setEnvironment(setup.getEnv());
+
+		return convertedEntry;
+	} 
+	*/
+	
 
 }
