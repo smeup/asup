@@ -174,7 +174,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB__LIBRARIES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 10;
 
 	/**
-	 * The feature id for the '<em><b>Messages</b></em>' attribute list.
+	 * The feature id for the '<em><b>Messages</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -460,6 +460,43 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB_MANAGER_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.impl.JobMessageImpl <em>Job Message</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.jobs.impl.JobMessageImpl
+	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobMessage()
+	 * @generated
+	 */
+	int JOB_MESSAGE = 8;
+
+	/**
+	 * The feature id for the '<em><b>Message Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_MESSAGE__MESSAGE_ID = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Message Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_MESSAGE__MESSAGE_TEXT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Job Message</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_MESSAGE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.impl.JobReferenceImpl <em>Job Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -467,7 +504,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobReference()
 	 * @generated
 	 */
-	int JOB_REFERENCE = 8;
+	int JOB_REFERENCE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Job Number</b></em>' attribute.
@@ -513,7 +550,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobRunInfo()
 	 * @generated
 	 */
-	int JOB_RUN_INFO = 9;
+	int JOB_RUN_INFO = 10;
 
 	/**
 	 * The feature id for the '<em><b>Memory Size</b></em>' attribute.
@@ -541,7 +578,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobStatus()
 	 * @generated
 	 */
-	int JOB_STATUS = 11;
+	int JOB_STATUS = 12;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.JobType <em>Job Type</em>}' enum.
@@ -551,7 +588,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobType()
 	 * @generated
 	 */
-	int JOB_TYPE = 12;
+	int JOB_TYPE = 13;
 
 
 	/**
@@ -562,7 +599,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobEventType()
 	 * @generated
 	 */
-	int JOB_EVENT_TYPE = 10;
+	int JOB_EVENT_TYPE = 11;
 
 
 	/**
@@ -675,15 +712,15 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	EAttribute getJob_Libraries();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.smeup.sys.os.core.jobs.QJob#getMessages <em>Messages</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.os.core.jobs.QJob#getMessages <em>Messages</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Messages</em>'.
+	 * @return the meta object for the containment reference list '<em>Messages</em>'.
 	 * @see org.smeup.sys.os.core.jobs.QJob#getMessages()
 	 * @see #getJob()
 	 * @generated
 	 */
-	EAttribute getJob_Messages();
+	EReference getJob_Messages();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJob#getCurrentLibrary <em>Current Library</em>}'.
@@ -877,6 +914,38 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getJobManager();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.os.core.jobs.QJobMessage <em>Job Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Job Message</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobMessage
+	 * @generated
+	 */
+	EClass getJobMessage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJobMessage#getMessageId <em>Message Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message Id</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobMessage#getMessageId()
+	 * @see #getJobMessage()
+	 * @generated
+	 */
+	EAttribute getJobMessage_MessageId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJobMessage#getMessageText <em>Message Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message Text</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobMessage#getMessageText()
+	 * @see #getJobMessage()
+	 * @generated
+	 */
+	EAttribute getJobMessage_MessageText();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.jobs.QJobReference <em>Job Reference</em>}'.
@@ -1119,12 +1188,12 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		EAttribute JOB__LIBRARIES = eINSTANCE.getJob_Libraries();
 
 		/**
-		 * The meta object literal for the '<em><b>Messages</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Messages</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JOB__MESSAGES = eINSTANCE.getJob_Messages();
+		EReference JOB__MESSAGES = eINSTANCE.getJob_Messages();
 
 		/**
 		 * The meta object literal for the '<em><b>Current Library</b></em>' attribute feature.
@@ -1279,6 +1348,32 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass JOB_MANAGER = eINSTANCE.getJobManager();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.impl.JobMessageImpl <em>Job Message</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.core.jobs.impl.JobMessageImpl
+		 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobMessage()
+		 * @generated
+		 */
+		EClass JOB_MESSAGE = eINSTANCE.getJobMessage();
+
+		/**
+		 * The meta object literal for the '<em><b>Message Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOB_MESSAGE__MESSAGE_ID = eINSTANCE.getJobMessage_MessageId();
+
+		/**
+		 * The meta object literal for the '<em><b>Message Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOB_MESSAGE__MESSAGE_TEXT = eINSTANCE.getJobMessage_MessageText();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.impl.JobReferenceImpl <em>Job Reference</em>}' class.

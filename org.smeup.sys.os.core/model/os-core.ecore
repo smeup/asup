@@ -175,8 +175,8 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobType" eType="#//jobs/JobType"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="libraries" upperBound="-1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="messages" upperBound="-1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="messages" upperBound="-1"
+          eType="#//jobs/JobMessage" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="switches" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="00000000">
         <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
@@ -354,6 +354,11 @@
         <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
         <eParameters name="status" lowerBound="1" eType="#//jobs/JobStatus"/>
       </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="JobMessage" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageText" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobReference" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobNumber" lowerBound="1"

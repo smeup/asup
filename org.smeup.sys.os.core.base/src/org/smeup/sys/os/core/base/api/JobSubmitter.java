@@ -37,6 +37,8 @@ import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
+import org.smeup.sys.os.core.jobs.QJobMessage;
+import org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsFactoryImpl;
 import org.smeup.sys.os.dtaara.QDataArea;
 import org.smeup.sys.os.dtaara.QDataAreaManager;
 import org.smeup.sys.os.pgm.QProgramCallable;
@@ -87,7 +89,6 @@ public class JobSubmitter {
 			@ToDo @DataDef(length = 1) QEnum<CopyEnvironmentVariablesEnum, QCharacter> copyEnvironmentVariables,
 			@ToDo @DataDef(length = 1) QEnum<AllowMultipleThreadsEnum, QCharacter> allowMultipleThreads, @ToDo @DataDef(length = 10) QEnum<SpooledFileActionEnum, QCharacter> spooledFileAction) {
 
-		@SuppressWarnings("resource")
 		QProgramCallable callableProgram = programManager.getCaller(job, this);
 		Object caller = null;
 		if (callableProgram != null)
@@ -152,7 +153,11 @@ public class JobSubmitter {
 		lastJobUser.eval(jobCapability.getJobReference().getJobUser());
 		lastJobNumber.eval(new DecimalFormat("000000").format(jobCapability.getJobReference().getJobNumber()));
 
-		job.getMessages().add(lastJobName.s() + lastJobUser.s() + lastJobNumber.s());
+		QJobMessage qJobMessage = OperatingSystemJobsFactoryImpl.eINSTANCE.createJobMessage();
+		qJobMessage.setMessageId("");	
+		qJobMessage.setMessageText(lastJobName.s() + lastJobUser.s() + lastJobNumber.s());
+		
+		job.getMessages().add(qJobMessage);
 
 		jobLogManager.info(job, "Job submitted:" + jobCapability);
 	}

@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.impl.ObjectNameableImpl;
@@ -28,6 +30,7 @@ import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobMessage;
 import org.smeup.sys.os.core.jobs.QJobReference;
 import org.smeup.sys.os.core.jobs.QJobRunInfo;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
@@ -218,13 +221,13 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	protected EList<String> libraries;
 
 	/**
-	 * The cached value of the '{@link #getMessages() <em>Messages</em>}' attribute list.
+	 * The cached value of the '{@link #getMessages() <em>Messages</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getMessages()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> messages;
+	protected EList<QJobMessage> messages;
 
 	/**
 	 * The default value of the '{@link #getSwitches() <em>Switches</em>}' attribute.
@@ -582,9 +585,9 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * @generated
 	 */
 	@Override
-	public List<String> getMessages() {
+	public List<QJobMessage> getMessages() {
 		if (messages == null) {
-			messages = new EDataTypeUniqueEList<String>(String.class, this, QOperatingSystemJobsPackage.JOB__MESSAGES);
+			messages = new EObjectContainmentEList<QJobMessage>(QJobMessage.class, this, QOperatingSystemJobsPackage.JOB__MESSAGES);
 		}
 		return messages;
 	}
@@ -857,6 +860,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return basicSetJobReference(null, msgs);
 			case QOperatingSystemJobsPackage.JOB__JOB_RUN_INFO:
 				return basicSetJobRunInfo(null, msgs);
+			case QOperatingSystemJobsPackage.JOB__MESSAGES:
+				return ((InternalEList<?>)getMessages()).basicRemove(otherEnd, msgs);
 			case QOperatingSystemJobsPackage.JOB__VARIABLE_CONTAINER:
 				return basicSetVariableContainer(null, msgs);
 		}
@@ -951,7 +956,7 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return;
 			case QOperatingSystemJobsPackage.JOB__MESSAGES:
 				getMessages().clear();
-				getMessages().addAll((Collection<? extends String>)newValue);
+				getMessages().addAll((Collection<? extends QJobMessage>)newValue);
 				return;
 			case QOperatingSystemJobsPackage.JOB__SWITCHES:
 				setSwitches((String)newValue);
@@ -1092,8 +1097,6 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 		result.append(jobType);
 		result.append(", libraries: ");
 		result.append(libraries);
-		result.append(", messages: ");
-		result.append(messages);
 		result.append(", switches: ");
 		result.append(switches);
 		result.append(", timeSeparator: ");

@@ -36,6 +36,7 @@ import org.smeup.sys.os.core.jobs.QJobLog;
 import org.smeup.sys.os.core.jobs.QJobLogEntry;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
+import org.smeup.sys.os.core.jobs.QJobMessage;
 import org.smeup.sys.os.core.jobs.QJobReference;
 import org.smeup.sys.os.core.jobs.QJobRunInfo;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
@@ -89,6 +90,13 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	private EClass jobManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass jobMessageEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -314,8 +322,8 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	@Override
-	public EAttribute getJob_Messages() {
-		return (EAttribute)jobEClass.getEStructuralFeatures().get(11);
+	public EReference getJob_Messages() {
+		return (EReference)jobEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -492,6 +500,33 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getJobMessage() {
+		return jobMessageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getJobMessage_MessageId() {
+		return (EAttribute)jobMessageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getJobMessage_MessageText() {
+		return (EAttribute)jobMessageEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getJobReference() {
 		return jobReferenceEClass;
 	}
@@ -647,7 +682,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		createEReference(jobEClass, JOB__JOB_THREAD);
 		createEAttribute(jobEClass, JOB__JOB_TYPE);
 		createEAttribute(jobEClass, JOB__LIBRARIES);
-		createEAttribute(jobEClass, JOB__MESSAGES);
+		createEReference(jobEClass, JOB__MESSAGES);
 		createEAttribute(jobEClass, JOB__SWITCHES);
 		createEReference(jobEClass, JOB__SYSTEM);
 		createEAttribute(jobEClass, JOB__TIME_SEPARATOR);
@@ -675,6 +710,10 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		jobLogManagerEClass = createEClass(JOB_LOG_MANAGER);
 
 		jobManagerEClass = createEClass(JOB_MANAGER);
+
+		jobMessageEClass = createEClass(JOB_MESSAGE);
+		createEAttribute(jobMessageEClass, JOB_MESSAGE__MESSAGE_ID);
+		createEAttribute(jobMessageEClass, JOB_MESSAGE__MESSAGE_TEXT);
 
 		jobReferenceEClass = createEClass(JOB_REFERENCE);
 		createEAttribute(jobReferenceEClass, JOB_REFERENCE__JOB_NUMBER);
@@ -731,6 +770,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		jobCapabilityEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getCapability());
 		jobLogEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		jobLogEntryEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		jobMessageEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		jobReferenceEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		jobRunInfoEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 
@@ -747,7 +787,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		initEReference(getJob_JobThread(), theIntegratedLanguageCorePackage.getThread(), null, "jobThread", null, 0, 1, QJob.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_JobType(), this.getJobType(), "jobType", null, 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_Libraries(), ecorePackage.getEString(), "libraries", null, 0, -1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getJob_Messages(), ecorePackage.getEString(), "messages", null, 0, -1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJob_Messages(), this.getJobMessage(), null, "messages", null, 0, -1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_Switches(), ecorePackage.getEString(), "switches", "00000000", 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJob_System(), theOperatingSystemCorePackage.getSystem(), null, "system", null, 1, 1, QJob.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_TimeSeparator(), ecorePackage.getEString(), "timeSeparator", ":", 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -908,6 +948,10 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		op = addEOperation(jobManagerEClass, null, "updateStatus", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJobStatus(), "status", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(jobMessageEClass, QJobMessage.class, "JobMessage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getJobMessage_MessageId(), ecorePackage.getEString(), "messageId", null, 0, 1, QJobMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJobMessage_MessageText(), ecorePackage.getEString(), "messageText", null, 1, 1, QJobMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jobReferenceEClass, QJobReference.class, "JobReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJobReference_JobNumber(), ecorePackage.getEInt(), "jobNumber", null, 1, 1, QJobReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

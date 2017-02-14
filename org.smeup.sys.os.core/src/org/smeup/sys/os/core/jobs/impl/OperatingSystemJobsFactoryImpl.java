@@ -67,6 +67,7 @@ public class OperatingSystemJobsFactoryImpl extends EFactoryImpl implements QOpe
 			case QOperatingSystemJobsPackage.JOB_EVENT: return (EObject)createJobEvent();
 			case QOperatingSystemJobsPackage.JOB_LOG: return (EObject)createJobLog();
 			case QOperatingSystemJobsPackage.JOB_LOG_ENTRY: return (EObject)createJobLogEntry();
+			case QOperatingSystemJobsPackage.JOB_MESSAGE: return (EObject)createJobMessage();
 			case QOperatingSystemJobsPackage.JOB_REFERENCE: return (EObject)createJobReference();
 			case QOperatingSystemJobsPackage.JOB_RUN_INFO: return (EObject)createJobRunInfo();
 			default:
@@ -153,6 +154,16 @@ public class OperatingSystemJobsFactoryImpl extends EFactoryImpl implements QOpe
 	public QJobLogEntry createJobLogEntry() {
 		JobLogEntryImpl jobLogEntry = new JobLogEntryImpl();
 		return jobLogEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QJobMessage createJobMessage() {
+		JobMessageImpl jobMessage = new JobMessageImpl();
+		return jobMessage;
 	}
 
 	/**

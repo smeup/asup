@@ -49,9 +49,15 @@ public @ToDo class MessageReceiver {
 			@DataDef(precision = 5, packed = true) QDecimal cLVarForTextCCSID50, @DataDef(precision = 5, packed = true) QDecimal cLVarForDataCCSID50) {
 
 		cLVarForMsgData.clear();
+		String lastMessageId = "";
+		String lastMessage = "";
 
 		switch (messageType.asEnum()) {
 		case ANY:
+			lastMessageId = job.getMessages().get(job.getMessages().size() - 1).getMessageId();
+			lastMessage = job.getMessages().get(job.getMessages().size() - 1).getMessageText();
+			cLVarForMsgData.eval(lastMessage);
+			cLVarForMSGID7.eval(lastMessageId);
 			break;
 		case COMP:
 			break;
@@ -68,9 +74,10 @@ public @ToDo class MessageReceiver {
 		case INQ:
 			break;
 		case LAST:
-			String lastMessage = "";
-			lastMessage = job.getMessages().get(job.getMessages().size() - 1);
+			lastMessageId = job.getMessages().get(job.getMessages().size() - 1).getMessageId();
+			lastMessage = job.getMessages().get(job.getMessages().size() - 1).getMessageText();
 			cLVarForMsgData.eval(lastMessage);
+			cLVarForMSGID7.eval(lastMessageId);
 			break;
 		case NEXT:
 			break;

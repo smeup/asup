@@ -245,8 +245,8 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	List<String> getLibraries();
 
 	/**
-	 * Returns the value of the '<em><b>Messages</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+	 * Returns the value of the '<em><b>Messages</b></em>' containment reference list.
+	 * The list contents are of type {@link org.smeup.sys.os.core.jobs.QJobMessage}.
 	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
@@ -254,12 +254,12 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Messages</em>' attribute list.
+	 * @return the value of the '<em>Messages</em>' containment reference list.
 	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_Messages()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	List<String> getMessages();
+	List<QJobMessage> getMessages();
 
 	/**
 	 * Returns the value of the '<em><b>Current Library</b></em>' attribute.

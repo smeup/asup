@@ -63,6 +63,15 @@ public interface QOperatingSystemJobsFactory extends EFactory {
 	QJobLogEntry createJobLogEntry();
 
 	/**
+	 * Returns a new object of class '<em>Job Message</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Job Message</em>'.
+	 * @generated
+	 */
+	QJobMessage createJobMessage();
+
+	/**
 	 * Returns a new object of class '<em>Job Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
