@@ -47,13 +47,10 @@ public class NIOObjectSerializer {
 				resource = (NIOResourceImpl) resourceSet.getResource(uri, false);
 				if (resource == null)
 					resource = (NIOResourceImpl) resourceSet.createResource(uri, "asup");
-				
-				synchronized(resource){
 					clearResource(resource);
 					((BasicEObjectImpl) object).eSetResource(null, null);
 					resource.getContents().add((EObject) object);
 					resource.doSave(output, Collections.EMPTY_MAP);
-				}
 			}
 
 			return output;
@@ -72,12 +69,8 @@ public class NIOObjectSerializer {
 				NIOResourceImpl resource = (NIOResourceImpl) resourceSet.getResource(uri, false);
 				if (resource == null)
 					resource = (NIOResourceImpl) resourceSet.createResource(uri, "asup");
-				
-				synchronized(resource){
 					clearResource(resource);
 					resource.doLoad(inputStream, resourceSet.getLoadOptions());
-				}
-				
 				if (resource.getContents().isEmpty())
 					return null;
 
