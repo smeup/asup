@@ -216,6 +216,19 @@ public class BaseJobManagerImpl implements QJobManager {
 	public List<QJob> getActiveJobs() {
 		return new ArrayList<QJob>(activeJobs.values());
 	}
+	
+	@Override
+	public List<QJob> getUserJobs(String user) {
+
+		ArrayList<QJob> userJobs = new ArrayList<QJob>();
+		for(QJob job: getActiveJobs()){
+
+		if(job.getJobReference().getJobUser().equals(user))
+			userJobs.add(job);	
+			
+		}
+		return userJobs;
+	}
 
 	@Override
 	public void close(QJobCapability jobCapability) {

@@ -103,6 +103,14 @@ public interface QJobManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	List<QJob> getUserJobs(String user);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model contextIDRequired="true" jobReferenceRequired="true"
 	 * @generated
 	 */

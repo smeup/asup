@@ -893,6 +893,9 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 
 		addEOperation(jobManagerEClass, this.getJob(), "getActiveJobs", 1, -1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(jobManagerEClass, this.getJob(), "getUserJobs", 1, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "user", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(jobManagerEClass, this.getJob(), "lookup", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJobReference(), "jobReference", 1, 1, IS_UNIQUE, IS_ORDERED);

@@ -298,6 +298,9 @@
         <eParameters name="resumeTime" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="getActiveJobs" lowerBound="1" upperBound="-1" eType="#//jobs/Job"/>
+      <eOperations name="getUserJobs" lowerBound="1" upperBound="-1" eType="#//jobs/Job">
+        <eParameters name="user" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
       <eOperations name="lookup" eType="#//jobs/Job">
         <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         <eParameters name="jobReference" lowerBound="1" eType="#//jobs/JobReference"/>
