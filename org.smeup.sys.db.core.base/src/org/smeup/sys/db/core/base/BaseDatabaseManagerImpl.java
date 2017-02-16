@@ -319,6 +319,8 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 
 			statement = connection.createStatement(true);
 			statement.execute(command);
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			catalogContainer.removeSchema(schema);
 			
