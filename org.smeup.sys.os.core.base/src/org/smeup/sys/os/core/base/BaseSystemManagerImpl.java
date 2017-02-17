@@ -20,6 +20,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.lock.LockType;
@@ -55,6 +56,8 @@ public class BaseSystemManagerImpl implements QSystemManager {
 	private QLockManager lockManager;
 	@Inject
 	private QResourceManager resourceManager;
+	@Inject
+	private QThreadManager threadManager;
 	
 	@Override
 	public void registerListener(QSystemListener listener) {
@@ -216,6 +219,10 @@ public class BaseSystemManagerImpl implements QSystemManager {
 		QContext jobContext = system.getContext().createChildContext(contextDescription);
 		job.setJobID(jobContext.getID());
 		job.setContext(jobContext);
+		
+		// Thread
+		job.setJobThread(threadManager.currentThread());
+		
 		jobContext.set(QJob.class, job);
 
 		return job;

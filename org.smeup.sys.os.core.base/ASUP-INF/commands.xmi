@@ -2562,6 +2562,108 @@
   </contents>
   <contents
       xsi:type="os-cmd:Command"
+      name="HLDJOB"
+      text="Hold Job"
+      program="QWTCCHDJ"
+      status="POS">
+    <parameters
+        allowVariable="true"
+        name="JOB"
+        position="1"
+        status="TODO">
+      <dataTerm
+          name="jobName">
+        <definition
+            xsi:type="il-data-def:DataStructDef"
+            qualified="true">
+          <elements
+              xsi:type="os-cmd:CommandData"
+              name="name">
+            <facets
+                xsi:type="il-data-term:Format"
+                type="NAME"/>
+            <definition
+                xsi:type="il-data-def:CharacterDef"
+                length="10"/>
+          </elements>
+          <elements
+              xsi:type="os-cmd:CommandData"
+              name="user">
+            <facets
+                xsi:type="il-data-term:Format"
+                type="NAME"/>
+            <definition
+                xsi:type="il-data-def:CharacterDef"
+                length="10"/>
+          </elements>
+          <elements
+              xsi:type="os-cmd:CommandData"
+              name="number">
+            <facets
+                xsi:type="il-data-term:Range"
+                max="999999"
+                min="000000"/>
+            <definition
+                xsi:type="il-data-def:CharacterDef"
+                length="6"/>
+          </elements>
+        </definition>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="SPLFILE"
+        position="2"
+        status="POS">
+      <dataTerm
+          name="holdSpooledFiles"
+          restricted="true">
+        <facets
+            xsi:type="il-data-term:Special">
+          <elements
+              name="*NO"
+              value="N"/>
+          <elements
+              name="*YES"
+              value="Y"/>
+        </facets>
+        <default
+            value="*NO"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="DUPJOBOPT"
+        position="3"
+        status="POS">
+      <dataTerm
+          name="duplicateJobOption"
+          restricted="true">
+        <facets
+            xsi:type="il-data-term:Special">
+          <elements
+              name="*SELECT"
+              value="*SELECT"/>
+          <elements
+              name="*MSG"
+              value="*MSG"/>
+        </facets>
+        <default
+            value="*SELECT"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="10"/>
+      </dataTerm>
+    </parameters>
+    <source
+        type="CMD"
+        content="&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;HLDJOB&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHWTCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;HLDJOB&quot; MaxPos=&quot;2&quot; Prompt=&quot;Hold Job&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;JOB&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;QUAL&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Job name&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Qual Type=&quot;NAME&quot; Min=&quot;1&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;User&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;/Qual>&lt;Qual Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Number&quot; Len=&quot;6&quot; Rstd=&quot;NO&quot; RangeMinVal=&quot;000000&quot; RangeMaxVal=&quot;999999&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;YES&quot; DspInput=&quot;YES&quot; Choice=&quot;000000-999999&quot; >&lt;/Qual>&lt;/Parm>&lt;Parm Kwd=&quot;SPLFILE&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Hold spooled files&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; Dft=&quot;*NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*NO, *YES&quot; >&lt;SpcVal>&lt;Value Val=&quot;*NO&quot; MapTo=&quot;N&quot;/>&lt;Value Val=&quot;*YES&quot; MapTo=&quot;Y&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;DUPJOBOPT&quot; PosNbr=&quot;3&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Duplicate job option&quot; Len=&quot;10&quot; Rstd=&quot;YES&quot; Dft=&quot;*SELECT&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*SELECT, *MSG&quot; >&lt;SpcVal>&lt;Value Val=&quot;*SELECT&quot; MapTo=&quot;*SELECT&quot;/>&lt;Value Val=&quot;*MSG&quot; MapTo=&quot;*MSG&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;/Cmd>&lt;/QcdCLCmd>"/>
+  </contents>
+  <contents
+      xsi:type="os-cmd:Command"
       name="HLDTHD"
       text="Hold Thread"
       program="QASTHDHL">
@@ -2977,8 +3079,7 @@
     <parameters
         allowVariable="true"
         name="JOB"
-        position="1"
-        status="POS">
+        position="1">
       <dataTerm
           name="jobName">
         <definition

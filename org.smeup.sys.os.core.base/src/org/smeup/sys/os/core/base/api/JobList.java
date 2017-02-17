@@ -29,7 +29,6 @@ import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
-import org.smeup.sys.os.core.base.api.JobName.JobNotFoundException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.usrspc.QUserSpace;
