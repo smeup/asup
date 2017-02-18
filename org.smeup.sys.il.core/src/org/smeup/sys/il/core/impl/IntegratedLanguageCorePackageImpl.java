@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.core.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EGenericType;
@@ -25,6 +26,7 @@ import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.QObjectRegistry;
 import org.smeup.sys.il.core.QObjectRegistryFactory;
 import org.smeup.sys.il.core.QThread;
+import org.smeup.sys.il.core.QThreadInfo;
 import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.core.ThreadStatus;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
@@ -94,6 +96,13 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass threadEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass threadInfoEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -272,6 +281,105 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getThreadInfo() {
+		return threadInfoEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getThreadInfo_ThreadName() {
+		return (EAttribute)threadInfoEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getThreadInfo_ThreadId() {
+		return (EAttribute)threadInfoEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getThreadInfo_ThreadPriority() {
+		return (EAttribute)threadInfoEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getThreadInfo_ThreadCPUUsage() {
+		return (EAttribute)threadInfoEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getThreadInfo_ThreadStatus() {
+		return (EAttribute)threadInfoEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getThreadInfo_ThreadRunnable() {
+		return (EAttribute)threadInfoEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getThreadInfo_ThreadInterrupted() {
+		return (EAttribute)threadInfoEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getThreadInfo_ThreadNative() {
+		return (EAttribute)threadInfoEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getThreadInfo_ThreadSuspended() {
+		return (EAttribute)threadInfoEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getThreadInfo_ThreadDaemon() {
+		return (EAttribute)threadInfoEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getThreadManager() {
 		return threadManagerEClass;
 	}
@@ -328,6 +436,18 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		objectRegistryFactoryEClass = createEClass(OBJECT_REGISTRY_FACTORY);
 
 		threadEClass = createEClass(THREAD);
+
+		threadInfoEClass = createEClass(THREAD_INFO);
+		createEAttribute(threadInfoEClass, THREAD_INFO__THREAD_NAME);
+		createEAttribute(threadInfoEClass, THREAD_INFO__THREAD_ID);
+		createEAttribute(threadInfoEClass, THREAD_INFO__THREAD_PRIORITY);
+		createEAttribute(threadInfoEClass, THREAD_INFO__THREAD_CPU_USAGE);
+		createEAttribute(threadInfoEClass, THREAD_INFO__THREAD_STATUS);
+		createEAttribute(threadInfoEClass, THREAD_INFO__THREAD_RUNNABLE);
+		createEAttribute(threadInfoEClass, THREAD_INFO__THREAD_INTERRUPTED);
+		createEAttribute(threadInfoEClass, THREAD_INFO__THREAD_NATIVE);
+		createEAttribute(threadInfoEClass, THREAD_INFO__THREAD_SUSPENDED);
+		createEAttribute(threadInfoEClass, THREAD_INFO__THREAD_DAEMON);
 
 		threadManagerEClass = createEClass(THREAD_MANAGER);
 
@@ -397,6 +517,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		objectNameableEClass.getESuperTypes().add(this.getObject());
 		objectNameableEClass.getESuperTypes().add(this.getNameable());
 		threadEClass.getESuperTypes().add(this.getObject());
+		threadInfoEClass.getESuperTypes().add(this.getObject());
 		g1 = createEGenericType(theMachineInterfaceUtilPackage.getSingleton());
 		g2 = createEGenericType(this.getThreadManager());
 		g1.getETypeArguments().add(g2);
@@ -493,6 +614,18 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 		addEOperation(threadEClass, ecorePackage.getEBoolean(), "isThreadDaemon", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(threadInfoEClass, QThreadInfo.class, "ThreadInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getThreadInfo_ThreadName(), ecorePackage.getEString(), "threadName", null, 1, 1, QThreadInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getThreadInfo_ThreadId(), ecorePackage.getELong(), "threadId", null, 1, 1, QThreadInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getThreadInfo_ThreadPriority(), ecorePackage.getEInt(), "threadPriority", null, 1, 1, QThreadInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getThreadInfo_ThreadCPUUsage(), ecorePackage.getEDouble(), "threadCPUUsage", null, 1, 1, QThreadInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getThreadInfo_ThreadStatus(), this.getThreadStatus(), "threadStatus", null, 1, 1, QThreadInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getThreadInfo_ThreadRunnable(), ecorePackage.getEBoolean(), "threadRunnable", null, 1, 1, QThreadInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getThreadInfo_ThreadInterrupted(), ecorePackage.getEBoolean(), "threadInterrupted", null, 1, 1, QThreadInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getThreadInfo_ThreadNative(), ecorePackage.getEBoolean(), "threadNative", null, 1, 1, QThreadInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getThreadInfo_ThreadSuspended(), ecorePackage.getEBoolean(), "threadSuspended", null, 1, 1, QThreadInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getThreadInfo_ThreadDaemon(), ecorePackage.getEBoolean(), "threadDaemon", null, 1, 1, QThreadInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(threadManagerEClass, QThreadManager.class, "ThreadManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(threadManagerEClass, this.getThread(), "createThread", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -505,6 +638,9 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEBoolean(), "daemon", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(threadManagerEClass, this.getThread(), "currentThread", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(threadManagerEClass, this.getThreadInfo(), "getThreadInfo", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getThread(), "thread", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(threadManagerEClass, this.getThread(), "listThreads", 0, -1, IS_UNIQUE, IS_ORDERED);
 

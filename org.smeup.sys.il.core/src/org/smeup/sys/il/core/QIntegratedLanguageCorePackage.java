@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.core;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
@@ -214,6 +215,115 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	int THREAD_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.ThreadInfoImpl <em>Thread Info</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.impl.ThreadInfoImpl
+	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThreadInfo()
+	 * @generated
+	 */
+	int THREAD_INFO = 8;
+
+	/**
+	 * The feature id for the '<em><b>Thread Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THREAD_INFO__THREAD_NAME = OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Thread Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THREAD_INFO__THREAD_ID = OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Thread Priority</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THREAD_INFO__THREAD_PRIORITY = OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Thread CPU Usage</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THREAD_INFO__THREAD_CPU_USAGE = OBJECT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Thread Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THREAD_INFO__THREAD_STATUS = OBJECT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Thread Runnable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THREAD_INFO__THREAD_RUNNABLE = OBJECT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Thread Interrupted</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THREAD_INFO__THREAD_INTERRUPTED = OBJECT_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Thread Native</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THREAD_INFO__THREAD_NATIVE = OBJECT_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Thread Suspended</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THREAD_INFO__THREAD_SUSPENDED = OBJECT_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Thread Daemon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THREAD_INFO__THREAD_DAEMON = OBJECT_FEATURE_COUNT + 9;
+
+	/**
+	 * The number of structural features of the '<em>Thread Info</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THREAD_INFO_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 10;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.QThreadManager <em>Thread Manager</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -221,7 +331,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThreadManager()
 	 * @generated
 	 */
-	int THREAD_MANAGER = 8;
+	int THREAD_MANAGER = 9;
 
 	/**
 	 * The number of structural features of the '<em>Thread Manager</em>' class.
@@ -240,7 +350,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThreadStatus()
 	 * @generated
 	 */
-	int THREAD_STATUS = 9;
+	int THREAD_STATUS = 10;
 
 	/**
 	 * Returns the meta object for class '
@@ -328,6 +438,126 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getThread();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.core.QThreadInfo <em>Thread Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Thread Info</em>'.
+	 * @see org.smeup.sys.il.core.QThreadInfo
+	 * @generated
+	 */
+	EClass getThreadInfo();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.QThreadInfo#getThreadName <em>Thread Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Thread Name</em>'.
+	 * @see org.smeup.sys.il.core.QThreadInfo#getThreadName()
+	 * @see #getThreadInfo()
+	 * @generated
+	 */
+	EAttribute getThreadInfo_ThreadName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.QThreadInfo#getThreadId <em>Thread Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Thread Id</em>'.
+	 * @see org.smeup.sys.il.core.QThreadInfo#getThreadId()
+	 * @see #getThreadInfo()
+	 * @generated
+	 */
+	EAttribute getThreadInfo_ThreadId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.QThreadInfo#getThreadPriority <em>Thread Priority</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Thread Priority</em>'.
+	 * @see org.smeup.sys.il.core.QThreadInfo#getThreadPriority()
+	 * @see #getThreadInfo()
+	 * @generated
+	 */
+	EAttribute getThreadInfo_ThreadPriority();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.QThreadInfo#getThreadCPUUsage <em>Thread CPU Usage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Thread CPU Usage</em>'.
+	 * @see org.smeup.sys.il.core.QThreadInfo#getThreadCPUUsage()
+	 * @see #getThreadInfo()
+	 * @generated
+	 */
+	EAttribute getThreadInfo_ThreadCPUUsage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.QThreadInfo#getThreadStatus <em>Thread Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Thread Status</em>'.
+	 * @see org.smeup.sys.il.core.QThreadInfo#getThreadStatus()
+	 * @see #getThreadInfo()
+	 * @generated
+	 */
+	EAttribute getThreadInfo_ThreadStatus();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.QThreadInfo#isThreadRunnable <em>Thread Runnable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Thread Runnable</em>'.
+	 * @see org.smeup.sys.il.core.QThreadInfo#isThreadRunnable()
+	 * @see #getThreadInfo()
+	 * @generated
+	 */
+	EAttribute getThreadInfo_ThreadRunnable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.QThreadInfo#isThreadInterrupted <em>Thread Interrupted</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Thread Interrupted</em>'.
+	 * @see org.smeup.sys.il.core.QThreadInfo#isThreadInterrupted()
+	 * @see #getThreadInfo()
+	 * @generated
+	 */
+	EAttribute getThreadInfo_ThreadInterrupted();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.QThreadInfo#isThreadNative <em>Thread Native</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Thread Native</em>'.
+	 * @see org.smeup.sys.il.core.QThreadInfo#isThreadNative()
+	 * @see #getThreadInfo()
+	 * @generated
+	 */
+	EAttribute getThreadInfo_ThreadNative();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.QThreadInfo#isThreadSuspended <em>Thread Suspended</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Thread Suspended</em>'.
+	 * @see org.smeup.sys.il.core.QThreadInfo#isThreadSuspended()
+	 * @see #getThreadInfo()
+	 * @generated
+	 */
+	EAttribute getThreadInfo_ThreadSuspended();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.QThreadInfo#isThreadDaemon <em>Thread Daemon</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Thread Daemon</em>'.
+	 * @see org.smeup.sys.il.core.QThreadInfo#isThreadDaemon()
+	 * @see #getThreadInfo()
+	 * @generated
+	 */
+	EAttribute getThreadInfo_ThreadDaemon();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.QThreadManager <em>Thread Manager</em>}'.
@@ -456,6 +686,96 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass THREAD = eINSTANCE.getThread();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.impl.ThreadInfoImpl <em>Thread Info</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.core.impl.ThreadInfoImpl
+		 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThreadInfo()
+		 * @generated
+		 */
+		EClass THREAD_INFO = eINSTANCE.getThreadInfo();
+
+		/**
+		 * The meta object literal for the '<em><b>Thread Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute THREAD_INFO__THREAD_NAME = eINSTANCE.getThreadInfo_ThreadName();
+
+		/**
+		 * The meta object literal for the '<em><b>Thread Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute THREAD_INFO__THREAD_ID = eINSTANCE.getThreadInfo_ThreadId();
+
+		/**
+		 * The meta object literal for the '<em><b>Thread Priority</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute THREAD_INFO__THREAD_PRIORITY = eINSTANCE.getThreadInfo_ThreadPriority();
+
+		/**
+		 * The meta object literal for the '<em><b>Thread CPU Usage</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute THREAD_INFO__THREAD_CPU_USAGE = eINSTANCE.getThreadInfo_ThreadCPUUsage();
+
+		/**
+		 * The meta object literal for the '<em><b>Thread Status</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute THREAD_INFO__THREAD_STATUS = eINSTANCE.getThreadInfo_ThreadStatus();
+
+		/**
+		 * The meta object literal for the '<em><b>Thread Runnable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute THREAD_INFO__THREAD_RUNNABLE = eINSTANCE.getThreadInfo_ThreadRunnable();
+
+		/**
+		 * The meta object literal for the '<em><b>Thread Interrupted</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute THREAD_INFO__THREAD_INTERRUPTED = eINSTANCE.getThreadInfo_ThreadInterrupted();
+
+		/**
+		 * The meta object literal for the '<em><b>Thread Native</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute THREAD_INFO__THREAD_NATIVE = eINSTANCE.getThreadInfo_ThreadNative();
+
+		/**
+		 * The meta object literal for the '<em><b>Thread Suspended</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute THREAD_INFO__THREAD_SUSPENDED = eINSTANCE.getThreadInfo_ThreadSuspended();
+
+		/**
+		 * The meta object literal for the '<em><b>Thread Daemon</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute THREAD_INFO__THREAD_DAEMON = eINSTANCE.getThreadInfo_ThreadDaemon();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.QThreadManager <em>Thread Manager</em>}' class.

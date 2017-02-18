@@ -17,17 +17,22 @@ import java.io.IOException;
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.Supported;
+import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
+import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QThread;
+import org.smeup.sys.il.core.QThreadInfo;
 import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.impl.OperatingSystemCoreFactoryImpl;
 import org.smeup.sys.os.core.jobs.QJob;
 
 
@@ -53,12 +58,12 @@ public class ActivetThreadsWorker {
 			objectWriter = outputManager.getDefaultWriter(job.getContext());
 			break;
 		}
-
+		
 		objectWriter.initialize();
 		
 		for (QThread thread :threadManager.listThreads())
 			try {
-				objectWriter.write(thread);
+				objectWriter.write(threadManager.getThreadInfo(thread));
 			} catch (IOException e) {
 				throw new OperatingSystemRuntimeException(e);
 			}

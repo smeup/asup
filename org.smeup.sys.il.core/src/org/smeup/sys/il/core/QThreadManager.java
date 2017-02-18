@@ -52,6 +52,14 @@ public interface QThreadManager extends QSingleton<QThreadManager> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model threadRequired="true"
+	 * @generated
+	 */
+	QThreadInfo getThreadInfo(QThread thread);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */

@@ -20,7 +20,9 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QThread;
+import org.smeup.sys.il.core.QThreadInfo;
 import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.mi.core.util.QThreads;
 
@@ -168,5 +170,26 @@ public class BaseThreadManagerImpl implements QThreadManager {
 		}
 
 		this.currentTimes = newTimes;
+	}
+
+	@Override
+	public QThreadInfo getThreadInfo(QThread thread) {
+
+		QThreadInfo threadInfo = QIntegratedLanguageCoreFactory.eINSTANCE.createThreadInfo();
+
+		threadInfo.setThreadName(thread.getThreadName());
+	
+		threadInfo.setThreadId(thread.getThreadID());
+		threadInfo.setThreadPriority(thread.getThreadPriority());
+		threadInfo.setThreadCPUUsage(thread.getThreadCPUUsage());
+		threadInfo.setThreadStatus(thread.getThreadStatus());
+		threadInfo.setThreadRunnable(thread.checkRunnable());
+		threadInfo.setThreadInterrupted(thread.isInterrupted());
+		threadInfo.setThreadNative(thread.isNative());
+		threadInfo.setThreadSuspended(thread.isSuspended());
+		threadInfo.setThreadDaemon(thread.isThreadDaemon());
+
+		return threadInfo;
+		
 	}
 }
