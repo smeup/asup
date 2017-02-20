@@ -49,6 +49,7 @@ public class JobReleaser {
 			threadManager.release(jobToRelease.getJobThread());
 			
 			jobLogManager.info(job, "Job " + jobName.number.trimR() + "/" + jobName.user.trimR() + "/" + jobName.name.asData().trimR() + " has released.");
+			jobLogManager.info(jobToRelease, "Job " + jobName.number.trimR() + "/" + jobName.user.trimR() + "/" + jobName.name.asData().trimR() + " has released.");
 		
 		} catch (JobNotFoundException e) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, new String[] { jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trimR() });

@@ -50,6 +50,7 @@ public class JobHolder {
 			threadManager.suspend(jobToHold.getJobThread());
 			
 			jobLogManager.info(job, "Job " + jobName.number.trimR() + "/" + jobName.user.trimR() + "/" + jobName.name.asData().trimR() + " has held.");
+			jobLogManager.info(jobToHold, "Job " + jobName.number.trimR() + "/" + jobName.user.trimR() + "/" + jobName.name.asData().trimR() + " has held.");
 		
 		} catch (JobNotFoundException e) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, new String[] { jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trimR() });
