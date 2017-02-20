@@ -97,7 +97,6 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		callProgram(job, program, params);
 	}
 
-	@SuppressWarnings("resource")
 	@Override
 	public void callProgram(QJob job, QProgram program, QData[] params) {
 
@@ -342,8 +341,10 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	private void callProgram(QJob job, QProgramCallable callableProgram, QData[] params) {
 
-		if (job.getJobThread() != null && !job.getJobThread().checkRunnable())
-			return;
+		if (job.getJobThread() != null && !job.getJobThread().checkRunnable()){
+			throw new OperatingSystemRuntimeException("Job closed!", null);
+			//return;
+		}
 
 		callableProgram.getProgramInfo().setCallTime(System.currentTimeMillis());
 
