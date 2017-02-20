@@ -20,6 +20,7 @@ import java.util.Map;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.os.cmd.QCommandManager;
+import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobManager;
 
@@ -31,6 +32,7 @@ public class BaseSubmittedCommand implements Runnable {
 	private QDataContext dataContext;
 	private String commandString;
 	private Object caller;
+	private QJob job;
 
 	protected BaseSubmittedCommand(QJobManager jobManager, QCommandManager commandManager, QJobCapability jobCapability, QDataContext dataContext, String commandString, Object caller) {
 		this.jobManager = jobManager;
@@ -39,46 +41,49 @@ public class BaseSubmittedCommand implements Runnable {
 		this.dataContext = dataContext;
 		this.commandString = commandString;
 		this.caller = caller;
+		this.job = jobManager.lookup(jobCapability);
 	}
 
 	@Override
 	public void run() {
-		
-		Map<String, Object> variables = null;
-		if (caller != null) {
 
-			variables = new HashMap<String, Object>();
+		while (job.getJobThread().checkRunnable()) {
 
-			for (Field field : caller.getClass().getDeclaredFields()) {
+			Map<String, Object> variables = null;
+			if (caller != null) {
 
-				Type type = field.getGenericType();
+				variables = new HashMap<>();
 
-				Class<?> fieldKlass = null;
+				for (Field field : caller.getClass().getDeclaredFields()) {
 
-				if (type instanceof ParameterizedType)
-					fieldKlass = (Class<?>) ((ParameterizedType) type).getRawType();
-				else
-					fieldKlass = (Class<?>) type;
+					Type type = field.getGenericType();
 
-				if (QBufferedData.class.isAssignableFrom(fieldKlass)) {
-					QBufferedData variable;
-					try {
-						field.setAccessible(true);
-						variable = (QBufferedData) field.get(caller);
-						variable = dataContext.copy(variable);
-						variables.put(field.getName(), variable);
-					} catch (IllegalArgumentException | IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} finally {
-						field.setAccessible(false);
+					Class<?> fieldKlass = null;
+
+					if (type instanceof ParameterizedType)
+						fieldKlass = (Class<?>) ((ParameterizedType) type).getRawType();
+					else
+						fieldKlass = (Class<?>) type;
+
+					if (QBufferedData.class.isAssignableFrom(fieldKlass)) {
+						QBufferedData variable;
+						try {
+							field.setAccessible(true);
+							variable = (QBufferedData) field.get(caller);
+							variable = dataContext.copy(variable);
+							variables.put(field.getName(), variable);
+						} catch (IllegalArgumentException | IllegalAccessException e) {
+							e.printStackTrace();
+						} finally {
+							field.setAccessible(false);
+						}
+
 					}
-
 				}
 			}
+			commandManager.executeCommand(jobCapability, commandString, variables);
+			jobManager.close(jobCapability);
+			break;
 		}
-
-		commandManager.executeCommand(jobCapability, commandString, variables);
-		jobManager.close(jobCapability);
 	}
 }
