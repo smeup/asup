@@ -25,6 +25,7 @@ import javax.inject.Inject;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.core.QObjectIterator;
+import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.core.ctx.QIdentity;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
@@ -66,6 +67,8 @@ public class BaseJobManagerImpl implements QJobManager {
 	private QExpressionParserRegistry expressionParserRegistry;
 	@Inject
 	private QEnvironmentVariableManager environmentVariableManager;
+	@Inject
+	private QThreadManager threadManager;
 
 	private BaseSystemManagerImpl systemManager;
 	private Map<String, QJob> activeJobs;
@@ -234,7 +237,8 @@ public class BaseJobManagerImpl implements QJobManager {
 	public void close(QJobCapability jobCapability) {
 
 		QJob job = lookup(jobCapability);
-		close(job);
+		if(job!=null)
+			close(job);
 	}
 
 	@Override
@@ -255,6 +259,9 @@ public class BaseJobManagerImpl implements QJobManager {
 			jobListener.handleEvent(jobEvent);
 
 		this.activeJobs.remove(job.getJobID());
+
+		// close thread 
+		threadManager.stop(job.getJobThread());
 	}
 
 	@Override
