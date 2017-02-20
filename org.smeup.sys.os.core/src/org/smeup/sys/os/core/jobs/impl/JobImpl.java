@@ -523,6 +523,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 			
 			// TODO JobStatus.MESSAGE_WAITING
 		case TIMED_WAITING:
+			if(thread.isSuspended())
+				return JobStatus.HOLD;
 			return JobStatus.TIME_WAITING;
 		case BLOCKED:
 			return JobStatus.LOCK_WAITING;
