@@ -13,6 +13,7 @@ package org.smeup.sys.os.core.base.api;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -47,6 +48,7 @@ public class JobList {
 	
 	private USRSPC_HEADER_0100 userSpaceHeader;
 	private JOBL0100 jobl0100;
+	private JOBL0200 jobl0200;
 	@DataDef(length = 6)
 	private QCharacter jobNumber;
 
@@ -81,6 +83,16 @@ public class JobList {
 		userSpaceHeader.entriesNumber.eval(listJobs.size());
 		userSpaceHeader.listSize.eval(userSpaceHeader.entriesNumber.qMult(jobl0100.getSize()));
 
+		switch(formatName.asEnum()){
+		case JOBL0100:
+			userSpaceHeader.listOffset.eval(512);
+			userSpaceHeader.listSize.eval(userSpaceHeader.entriesNumber.qMult(jobl0100.getSize()));
+			break;
+		case JOBL0200:
+			userSpaceHeader.listOffset.eval(390);
+			userSpaceHeader.listSize.eval(userSpaceHeader.entriesNumber.qMult(jobl0200.getSize()));
+			break;
+		}
 		byte[] bytes = new byte[userSpaceHeader.listOffset.i() + userSpaceHeader.listSize.i()];
 		ByteBuffer buffer = ByteBuffer.wrap(bytes);
 		
@@ -90,29 +102,57 @@ public class JobList {
 		for(QJob jobChild: listJobs) {
 
 			jobl0100.clear();
-
-			jobl0100.jobNameUsed.eval(jobChild.getJobReference().getJobName());
-			jobl0100.jobUserUsed.eval(jobChild.getJobReference().getJobUser());
-			jobNumber.move(jobChild.getJobReference().getJobNumber());
-			jobl0100.jobNumberUsed.eval(jobNumber);
-			jobl0100.internalJobIdentifier.eval("");
-			jobl0100.status.eval(jobChild.getJobStatus().getName());
-			jobl0100.jobType.eval(jobChild.getJobType().getName());
-			jobl0100.jobSubtype.eval("");
-			jobl0100.reserved.eval("");
+			jobl0200.clear();
 			
-			buffer.put(jobl0100.asBytes());
+			switch(formatName.asEnum()){
+			case JOBL0100:
+				setJobl0100(jobChild);
+				buffer.put(jobl0100.asBytes());
+				break;
+			case JOBL0200:
+				setJobl0100(jobChild);
+				jobl0200.jobl0100Format.eval(jobl0100);
+				// TODO
+				buffer.put(jobl0200.asBytes());
+				break;
+			}
+
 		}
 			
 		userSpace.setContentArray(bytes);
 		userSpaceWriter.save(userSpace, true);
 	}
 
+	private void setJobl0100(QJob jobChild) {
+		
+		jobl0100.jobNameUsed.eval(jobChild.getJobReference().getJobName());
+		jobl0100.jobUserUsed.eval(jobChild.getJobReference().getJobUser());
+		jobNumber.move(jobChild.getJobReference().getJobNumber());
+		jobl0100.jobNumberUsed.eval(jobNumber);
+		jobl0100.internalJobIdentifier.eval("");
+		jobl0100.status.eval(jobChild.getJobStatus().getName());
+		jobl0100.jobType.eval(jobChild.getJobType().getName());
+		jobl0100.jobSubtype.eval("");
+		jobl0100.reserved.eval("");
+	}
+
 	private ArrayList<QJob> getNumberJob(JobName jobName) {
-		ArrayList<QJob> userJobs = new ArrayList<QJob>();
+		ArrayList<QJob> jobs = new ArrayList<QJob>();
+		List<QJob> jobsChilds = new ArrayList<QJob>();
+
 		
+		switch(jobName.name.asEnum()){
+		case ALL:
+			jobsChilds = jobManager.getActiveJobs();
+			break;
+		case CURRENT:
+		case TERM_STAR:
+		case OTHER:
+			jobManager.getUserJobs(jobName.user.asData().trimR());
+			break;
+		}
 		
-		for(QJob jobChild: jobManager.getUserJobs(jobName.user.asData().trimR())) {
+		for(QJob jobChild: jobsChilds) {
 
 			switch(jobName.name.asEnum()){
 			case ALL:
@@ -147,15 +187,15 @@ public class JobList {
 					continue;
 			}
 			
-			userJobs.add(jobChild);
+			jobs.add(jobChild);
 		}
 		
-		return userJobs;
+		return jobs;
 	}
 	
 	
 	public static enum FORMATEnum {
-		JOBL0100, JOBL0200;
+		@Special(value = "JOBL0100") JOBL0100, @Special(value = "JOBL0200") JOBL0200;
 	}
 
 	public static enum ACCURATEEnum {
@@ -245,6 +285,7 @@ public class JobList {
 		@DataDef(binaryType = BinaryType.INTEGER)
 		@Overlay(position = 137)
 		public QBinary entrySize;
+
 		@DataDef(binaryType = BinaryType.INTEGER)
 		@Overlay(position = 141)
 		public QBinary entryCCSID;
@@ -298,11 +339,9 @@ public class JobList {
 			TERM_STAR, CURRENT, ALL, OTHER
 		}
 		public static enum UserEnum {
-			@Special(value = "*")
 			CURRENT, ALL, OTHER
 		}
 		public static enum NumberEnum {
-			@Special(value = "*")
 			ALL, OTHER
 		}
 	}
