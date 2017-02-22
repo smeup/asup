@@ -133,7 +133,13 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 
 	@Override
 	public final void move(final Number value, final boolean clear) {
-		_move(_toBytes(value), clear);
+
+		if(value instanceof Byte){
+			_move(new byte[] { (byte) value }, clear);
+		} else {
+			_move(_toBytes(value), clear);
+
+		}
 	}
 
 	@Override
@@ -195,7 +201,12 @@ public abstract class NIOBufferedElementImpl extends NIOBufferedDataImpl impleme
 
 	@Override
 	public final void movel(final Number value, final boolean clear) {
-		_movel(_toBytes(value), clear);
+		if(value instanceof Byte){
+			_movel(new byte[] { (byte) value }, clear);
+		} else {
+			_movel(_toBytes(value), clear);
+
+		}
 	}
 
 	@Override
