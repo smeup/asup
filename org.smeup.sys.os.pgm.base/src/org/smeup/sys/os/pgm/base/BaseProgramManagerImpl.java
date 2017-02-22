@@ -297,7 +297,11 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			// pointer
 			if (paramsTo[i] instanceof QPointer) {
 				QPointer pointer = (QPointer) paramsTo[i];
-				pointer.eval(((QBufferedData) paramsFrom[i]).qAddr());
+				if(paramsFrom[i] instanceof QPointer){ 
+					pointer.eval((QPointer) paramsFrom[i]);
+				} else {
+					pointer.eval(((QBufferedData) paramsFrom[i]).qAddr());
+				}
 			}
 			// bufferedData
 			else if (paramsTo[i] instanceof QBufferedData && paramsFrom[i] instanceof QStorable) {
@@ -367,6 +371,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				// call
 				callableProgram.call();
 
+				assignPointerParameters(callableProgram, params);
+				
 			} catch (OperatingSystemMessageException | OperatingSystemRuntimeException e) {
 				System.err.println(e.getMessage());
 				if(e.getMessage().startsWith("java"))
@@ -395,6 +401,29 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				if (programStack.isEmpty())
 					jobManager.updateStatus(job, JobStatus.ACTIVE);
 			}
+		}
+	}
+
+	private void assignPointerParameters(QProgramCallable callableProgram, QData[] paramsFrom) {
+
+		QData[] paramsTo = callableProgram.getParameters();
+
+		int paramsLength = 0;
+
+		if (paramsTo != null && paramsFrom != null)
+			paramsLength = paramsFrom.length < paramsTo.length ? paramsFrom.length : paramsTo.length;
+
+		callableProgram.getProgramStatus().getParametersNumber().eval(paramsLength);
+
+		// assign pointer to pointers
+		for (int i = 0; i < paramsLength; i++) {
+
+			if (paramsFrom[i] == null)
+				continue;
+			if (!(paramsFrom[i] instanceof QPointer && paramsTo[i] instanceof QPointer))
+				continue;
+
+			((QPointer) paramsFrom[i]).eval((QPointer) paramsTo[i]);
 		}
 	}
 
@@ -509,8 +538,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				return "";
 			}
 
-			byte[] bytes = bufferedElement.asBytes();			
-			
+			byte[] bytes = bufferedElement.asBytes();
 			paramValue = QStrings.qINSTANCE.trimR(new String(bytes, dataContext.getCharset()));
 
 			if (paramValue.length() > 20)
@@ -530,7 +558,6 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				}
 				
 				byte[] bytes = bufferedElement.asBytes();
-
 				paramValue = QStrings.qINSTANCE.trimR(new String(bytes, dataContext.getCharset()));
 
 				if (paramValue.length() > 20)
