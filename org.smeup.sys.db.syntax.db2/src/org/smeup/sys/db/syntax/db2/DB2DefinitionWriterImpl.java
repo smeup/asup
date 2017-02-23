@@ -82,6 +82,12 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 				else
 					result.append(getNameInSQLFormat(column) + " DECIMAL(" + decimalDef.getLength() + ", 0) DEFAULT 0 NOT NULL");
 				break;
+			case DATETIME:
+				result.append(getNameInSQLFormat(column) + " TIMESTAMP NOT NULL");
+				break;
+			case BINARY:
+				result.append(getNameInSQLFormat(column) + " SMALLINT");
+				break;
 			default:
 				result.append(getNameInSQLFormat(column) + " " + columnDef.getDataDefType().getName().toUpperCase());
 			}
