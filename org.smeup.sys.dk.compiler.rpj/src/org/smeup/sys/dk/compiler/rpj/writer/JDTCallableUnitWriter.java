@@ -122,6 +122,7 @@ import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.il.flow.QUnit;
 import org.smeup.sys.mi.core.util.QLists;
+import org.smeup.sys.os.file.QDisplayFileFormat;
 import org.smeup.sys.os.file.QExternalFile;
 
 public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
@@ -596,6 +597,11 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		QBlock block = QIntegratedLanguageFlowFactory.eINSTANCE.createBlock();
 		routine.setMain(block);
 		for (String object : callableUnitInfo.getResetObjects()) {
+
+			QDataTerm<?> dataTerm = getCompilationUnit().getDataTerm(object, true);
+			if(dataTerm instanceof QDisplayFileFormat)
+				continue;
+
 			QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
 			methodExec.setObject(object);
 			methodExec.setMethod("snap");
