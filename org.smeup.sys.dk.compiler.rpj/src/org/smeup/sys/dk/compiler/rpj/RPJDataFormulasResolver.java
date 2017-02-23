@@ -204,6 +204,10 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 			if (dataValue == null)
 				throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00107, atomicTermExpression);
 
+			// resolve inner formula
+			if(!dataValue.getDefinition().getFormulas().isEmpty())
+				resolveFormula(dataValue);
+			
 			switch (propertyName.toLowerCase()) {
 			case "dimension":
 
@@ -248,7 +252,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 			QCompoundTermExpression compoundTermExpression = (QCompoundTermExpression) value;
 			switch (compoundTermExpression.getValue().toLowerCase()) {
 			case "%elem":
-
+				
 				if (compoundTermExpression.getElements().size() != 1)
 					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdget9dsagdsa99");
 
