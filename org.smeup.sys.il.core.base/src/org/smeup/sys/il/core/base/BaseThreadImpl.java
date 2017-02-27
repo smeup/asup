@@ -11,8 +11,7 @@
  */
 package org.smeup.sys.il.core.base;
 
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.ThreadStatus;
@@ -20,7 +19,7 @@ import org.smeup.sys.il.core.ThreadStatus;
 public class BaseThreadImpl extends Thread implements QThread {
 
 	private static final long serialVersionUID = 1L;
-	private final ReentrantLock lock = new ReentrantLock();
+	private final AtomicBoolean locked = new AtomicBoolean();
 	private BaseThreadManagerImpl threadManager = null;
 	
 	protected BaseThreadImpl(BaseThreadManagerImpl threadManager, Runnable runnable, String name, boolean daemon) {
@@ -36,23 +35,14 @@ public class BaseThreadImpl extends Thread implements QThread {
 
 	@Override
 	public boolean checkRunnable() {
+		
+		boolean result = true;
 
-		try {
-			while (true) {
-				if (isInterrupted())
-					return false;
-
-				if (!isSuspended())
-					return true;
-
-				if (lock.tryLock(100, TimeUnit.MILLISECONDS)) {
-					lock.unlock();
-					return true;
-				}
-			}
-		} catch (InterruptedException e) {
-			return false;
-		}
+		if (isSuspended() || locked.get())
+			result = false;
+							
+		return result;
+				
 	}
 
 	@Override
@@ -87,16 +77,16 @@ public class BaseThreadImpl extends Thread implements QThread {
 
 	@Override
 	public boolean isSuspended() {
-		return lock.isLocked();
+		return locked.get();
 	}
 
 	protected void unlock() {
-		if(lock.isLocked())
-			lock.unlock();
+		if(locked.get())
+			locked.set(false);
 	}
 
 	protected void lock() {
-		lock.lock();
+		locked.set(true);
 	}
 	
 	@Override

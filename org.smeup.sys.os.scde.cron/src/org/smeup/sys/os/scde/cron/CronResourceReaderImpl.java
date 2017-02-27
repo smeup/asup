@@ -50,8 +50,12 @@ public class CronResourceReaderImpl extends ResourceReaderImpl<QScheduleEntry> {
 	public boolean exists(String name) {
 		
 		boolean result = false;
-		if (cronWrapper.lookupCronTask(name) != null) {
-			result = true;
+		String lookupCronTask = cronWrapper.lookupCronTask(name);
+		if ( lookupCronTask != null) {
+			QScheduleEntry scheduleEntry = cronAdapter.getScheduleEntry(lookupCronTask);
+			if (scheduleEntry != null) {
+				result = true;
+			}
 		}
 		
 		return result;
@@ -64,8 +68,12 @@ public class CronResourceReaderImpl extends ResourceReaderImpl<QScheduleEntry> {
 		
 		List<QScheduleEntry> listScheduleEntry = new ArrayList<QScheduleEntry>();
 		
-		for (String cronTask: listCronTasks) {
-			listScheduleEntry.add(cronAdapter.getScheduleEntry(cronTask));
+		for (String cronTask: listCronTasks) {			
+			
+			QScheduleEntry scheduleEntry = cronAdapter.getScheduleEntry(cronTask);
+			if (scheduleEntry != null) {
+				listScheduleEntry.add(scheduleEntry);
+			}
 		}
 		
 		return QResourceHelper.wrapIterator(listScheduleEntry);	

@@ -9,6 +9,7 @@ package org.smeup.sys.os.scde;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
@@ -144,13 +145,22 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	int SCHEDULE_ENTRY__SCHEDULED_TIME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULE_ENTRY__STATE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 8;
+
+	/**
 	 * The feature id for the '<em><b>User</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULE_ENTRY__USER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 8;
+	int SCHEDULE_ENTRY__USER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Schedule Entry</em>' class.
@@ -159,7 +169,18 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULE_ENTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 9;
+	int SCHEDULE_ENTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 10;
+
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.scde.ScheduleState <em>Schedule State</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.scde.ScheduleState
+	 * @see org.smeup.sys.os.scde.impl.OperativeSystemScheduleEntryPackageImpl#getScheduleState()
+	 * @generated
+	 */
+	int SCHEDULE_STATE = 1;
 
 
 	/**
@@ -204,6 +225,17 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getScheduleEntry_ScheduledTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduleEntry#getState <em>State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>State</em>'.
+	 * @see org.smeup.sys.os.scde.QScheduleEntry#getState()
+	 * @see #getScheduleEntry()
+	 * @generated
+	 */
+	EAttribute getScheduleEntry_State();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduleEntry#getDescription <em>Description</em>}'.
@@ -272,6 +304,16 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	EAttribute getScheduleEntry_User();
 
 	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.os.scde.ScheduleState <em>Schedule State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Schedule State</em>'.
+	 * @see org.smeup.sys.os.scde.ScheduleState
+	 * @generated
+	 */
+	EEnum getScheduleState();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -328,6 +370,14 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 		EAttribute SCHEDULE_ENTRY__SCHEDULED_TIME = eINSTANCE.getScheduleEntry_ScheduledTime();
 
 		/**
+		 * The meta object literal for the '<em><b>State</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCHEDULE_ENTRY__STATE = eINSTANCE.getScheduleEntry_State();
+
+		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -374,6 +424,16 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SCHEDULE_ENTRY__USER = eINSTANCE.getScheduleEntry_User();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.scde.ScheduleState <em>Schedule State</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.scde.ScheduleState
+		 * @see org.smeup.sys.os.scde.impl.OperativeSystemScheduleEntryPackageImpl#getScheduleState()
+		 * @generated
+		 */
+		EEnum SCHEDULE_STATE = eINSTANCE.getScheduleState();
 
 	}
 

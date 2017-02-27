@@ -1,3 +1,3 @@
 #!/bin/bash
-(crontab -l ; echo "$1 sh call_ws $2 $3 $4 $5 $6 $7 $8 \"$9\" $10 \"$11\"") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -
+(crontab -l ; echo "$1 $2 sh call_ws $3 $4 $5 $6 $7 $8 $9 \"$10\" $11 \"$12\"") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -
 

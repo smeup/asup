@@ -140,6 +140,15 @@ public interface QOperativeSystemCronScheduleEntryPackage extends EPackage {
 	int CRON_SCHEDULE_ENTRY__SCHEDULED_TIME = QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME;
 
 	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CRON_SCHEDULE_ENTRY__STATE = QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__STATE;
+
+	/**
 	 * The feature id for the '<em><b>User</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

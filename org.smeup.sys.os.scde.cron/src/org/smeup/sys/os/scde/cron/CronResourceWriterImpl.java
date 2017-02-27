@@ -21,6 +21,7 @@ import org.smeup.sys.il.memo.QResource;
 import org.smeup.sys.il.memo.QResourceHelper;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.scde.QScheduleEntry;
+import org.smeup.sys.os.scde.ScheduleState;
 
 public class CronResourceWriterImpl extends CronResourceReaderImpl implements QResourceWriter<QScheduleEntry> {
 
@@ -63,11 +64,25 @@ public class CronResourceWriterImpl extends CronResourceReaderImpl implements QR
 		
 		String entryNumber = buildUniqueID(6);
 		scheduleEntry.setEntryNumber(entryNumber);
+
+		boolean active = false;
 		
+		switch (scheduleEntry.getState()) {
+		case SCHEDULED:
+		case CHANGED:
+		case SAVED:
+				active = true;
+			break;
+		case HOLDED:
+				active = false;
+			break;
+		default:
+			active = true;
+		}
 		
 		//TODO: the user is always getted from config, also when is passed in command.
-		
-		cronWrapper.addCronTask(cronAdapter.getCronTimeMask(scheduleEntry),
+		cronWrapper.addCronTask(active,
+								cronAdapter.getCronTimeMask(scheduleEntry),
 								config.getWsip(),
 								config.getWsport(),
 								config.getSystem(),

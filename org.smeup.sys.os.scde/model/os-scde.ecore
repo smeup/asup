@@ -43,10 +43,22 @@
         <details key="length" value="8"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//ScheduleState"
+        defaultValueLiteral="HLD">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
+        <details key="length" value="10"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="user" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
         <details key="length" value="10"/>
       </eAnnotations>
     </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ScheduleState">
+    <eLiterals name="Holded" literal="HLD"/>
+    <eLiterals name="Saved" value="1" literal="SAV"/>
+    <eLiterals name="Scheduled" value="2" literal="SCD"/>
+    <eLiterals name="Changed" value="3" literal="CHG"/>
   </eClassifiers>
 </ecore:EPackage>

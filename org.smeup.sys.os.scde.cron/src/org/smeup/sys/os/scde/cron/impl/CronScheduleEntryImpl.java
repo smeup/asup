@@ -32,6 +32,11 @@ import org.smeup.sys.os.scde.impl.ScheduleEntryImpl;
  */
 public class CronScheduleEntryImpl extends ScheduleEntryImpl implements QCronScheduleEntry {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * The default value of the '{@link #getWsip() <em>Wsip</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

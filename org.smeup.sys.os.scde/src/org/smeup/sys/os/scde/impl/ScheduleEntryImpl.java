@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.smeup.sys.il.core.impl.ObjectNameableImpl;
 import org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage;
 import org.smeup.sys.os.scde.QScheduleEntry;
+import org.smeup.sys.os.scde.ScheduleState;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,6 +35,7 @@ import org.smeup.sys.os.scde.QScheduleEntry;
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getScheduledDate <em>Scheduled Date</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getScheduledDay <em>Scheduled Day</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getScheduledTime <em>Scheduled Time</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getState <em>State</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getUser <em>User</em>}</li>
  * </ul>
  *
@@ -196,6 +198,26 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 	protected String scheduledTime = SCHEDULED_TIME_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getState() <em>State</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getState()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ScheduleState STATE_EDEFAULT = ScheduleState.HOLDED;
+
+	/**
+	 * The cached value of the '{@link #getState() <em>State</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getState()
+	 * @generated
+	 * @ordered
+	 */
+	protected ScheduleState state = STATE_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getUser() <em>User</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -286,6 +308,27 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 		scheduledTime = newScheduledTime;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME, oldScheduledTime, scheduledTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ScheduleState getState() {
+		return state;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setState(ScheduleState newState) {
+		ScheduleState oldState = state;
+		state = newState == null ? STATE_EDEFAULT : newState;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__STATE, oldState, state));
 	}
 
 	/**
@@ -438,6 +481,8 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 				return getScheduledDay();
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME:
 				return getScheduledTime();
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__STATE:
+				return getState();
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__USER:
 				return getUser();
 		}
@@ -478,6 +523,9 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME:
 				setScheduledTime((String)newValue);
 				return;
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__STATE:
+				setState((ScheduleState)newValue);
+				return;
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__USER:
 				setUser((String)newValue);
 				return;
@@ -517,6 +565,9 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME:
 				setScheduledTime(SCHEDULED_TIME_EDEFAULT);
 				return;
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__STATE:
+				setState(STATE_EDEFAULT);
+				return;
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__USER:
 				setUser(USER_EDEFAULT);
 				return;
@@ -548,6 +599,8 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 				return scheduledDay != null && !scheduledDay.isEmpty();
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME:
 				return SCHEDULED_TIME_EDEFAULT == null ? scheduledTime != null : !SCHEDULED_TIME_EDEFAULT.equals(scheduledTime);
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__STATE:
+				return state != STATE_EDEFAULT;
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__USER:
 				return USER_EDEFAULT == null ? user != null : !USER_EDEFAULT.equals(user);
 		}
@@ -580,6 +633,8 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 		result.append(scheduledDay);
 		result.append(", scheduledTime: ");
 		result.append(scheduledTime);
+		result.append(", state: ");
+		result.append(state);
 		result.append(", user: ");
 		result.append(user);
 		result.append(')');

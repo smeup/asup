@@ -12,7 +12,8 @@ import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 public class CronSystemWrapper
 {
 	
-	public void addCronTask(String mask,
+	public void addCronTask(boolean active,
+							String mask,
 							String wsip,
 							String wsport,
 							String system,
@@ -26,6 +27,7 @@ public class CronSystemWrapper
 							){
 				
 		executeBashScript("addcron",
+						  active?"":"#",	
 						  mask,
 						  wsip,						  
 						  wsport,	

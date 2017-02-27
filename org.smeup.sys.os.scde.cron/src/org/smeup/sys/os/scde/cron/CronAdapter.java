@@ -13,9 +13,11 @@
 package org.smeup.sys.os.scde.cron;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 
 import org.smeup.sys.os.scde.QScheduleEntry;
+import org.smeup.sys.os.scde.ScheduleState;
 
 public class CronAdapter {
 	
@@ -110,7 +112,6 @@ public class CronAdapter {
 		return cronMask;	
 	}
 	
-	
 	/*
 	 * CronTask format:
 	 * 
@@ -121,84 +122,105 @@ public class CronAdapter {
 	public QScheduleEntry getScheduleEntry(String cronTask) {
 		
 		//TODO: è corretto tornare un oggetto QCronScheduleEntry piuttosto che un QScheduleEntry?
-		
-		QCronScheduleEntry scheduleEntry = QOperativeSystemCronScheduleEntryFactory.eINSTANCE.createCronScheduleEntry();
-		
-		StringTokenizer tokenizer = new StringTokenizer(cronTask); 
-		String minute = tokenizer.nextToken();
-		String hour = tokenizer.nextToken();
-		String monthDay = tokenizer.nextToken();
-		String month = tokenizer.nextToken();
-		String weekDay = tokenizer.nextToken();			
-		String sh	= tokenizer.nextToken();
-		String bash = tokenizer.nextToken();
-		String server = tokenizer.nextToken();		
-		String port = tokenizer.nextToken();
-		String user = tokenizer.nextToken();
-		String pwd = tokenizer.nextToken();
-		String env = tokenizer.nextToken();
-		String cmd = tokenizer.nextToken();
-		String id = tokenizer.nextToken();	
-		String name = tokenizer.nextToken();
-		
-		String description = "";
-		while (tokenizer.hasMoreElements()) {
-			description += tokenizer.nextToken();
-		} 
-		
-		//TODO: manage month, monthDay and special values combinations
 
-		// Manage minute-hour		
-		if (minute.length() == 1) {
-			minute = "0" + minute;
-		}
+		boolean parsed = false;
+		QCronScheduleEntry scheduleEntry = null;
+		boolean holded = false;
 		
-		if (hour.length() == 1) {
-			hour = "0" + hour;
+		if (cronTask.startsWith("#")) {
+			holded = true;
 		}
-		scheduleEntry.setScheduledTime(hour + minute + "00");
-	
-		//Manage dayOfWeek		
-		StringTokenizer dayOfWeekTokenizer= new StringTokenizer(weekDay, ",", false);
-		
-		String wDay = null;
-		while (dayOfWeekTokenizer.hasMoreElements()) {
+
+		StringTokenizer tokenizer = new StringTokenizer(cronTask);
+		try{
+			String minute = tokenizer.nextToken();
+			String hour = tokenizer.nextToken();
+			String monthDay = tokenizer.nextToken();
+			String month = tokenizer.nextToken();
+			String weekDay = tokenizer.nextToken();			
+			String sh	= tokenizer.nextToken();
+			String bash = tokenizer.nextToken();
+			String server = tokenizer.nextToken();		
+			String port = tokenizer.nextToken();
+			String user = tokenizer.nextToken();
+			String pwd = tokenizer.nextToken();
+			String env = tokenizer.nextToken();
+			String cmd = tokenizer.nextToken();
+			String id = tokenizer.nextToken();	
+			String name = tokenizer.nextToken();
 			
-			wDay = dayOfWeekTokenizer.nextToken();
-			
-			if("*".equalsIgnoreCase(wDay)) {
-				//ALL
-				scheduleEntry.getScheduledDay().add("8");
-				break;					
-			} else if("mon".equalsIgnoreCase(wDay)) {
-				//MON
-				scheduleEntry.getScheduledDay().add("1");
-			} else if("tue".equalsIgnoreCase(wDay)) {
-				// TUE
-				scheduleEntry.getScheduledDay().add("2");
-			} else if("wed".equalsIgnoreCase(wDay)) {
-				//WED
-				scheduleEntry.getScheduledDay().add("3");
-			} else if("thu".equalsIgnoreCase(wDay)) {
-				//THU
-				scheduleEntry.getScheduledDay().add("4");
-			} else if("fri".equalsIgnoreCase(wDay)) {
-				//FRI
-				scheduleEntry.getScheduledDay().add("5");
-			} else if("sat".equalsIgnoreCase(wDay)) {
-				//SAT
-				scheduleEntry.getScheduledDay().add("6");
-			} else if("sun".equalsIgnoreCase(wDay)) {
-				//SUN
-				scheduleEntry.getScheduledDay().add("8");
+			String description = "";
+			while (tokenizer.hasMoreElements()) {
+				description += tokenizer.nextToken();
 			}
-		}
+			parsed = true;		
 		
-		scheduleEntry.setEntryNumber(id);
-		scheduleEntry.setUser(user);
-		scheduleEntry.setJobName(name);
-		scheduleEntry.setCommandToRun(cmd);
-		scheduleEntry.setDescription(description);
+			if (parsed) {
+				
+				scheduleEntry = QOperativeSystemCronScheduleEntryFactory.eINSTANCE.createCronScheduleEntry();
+				
+				//TODO: manage month, monthDay and special values combinations
+		
+				// Manage minute-hour		
+				if (minute.length() == 1) {
+					minute = "0" + minute;
+				}
+				
+				if (hour.length() == 1) {
+					hour = "0" + hour;
+				}
+				scheduleEntry.setScheduledTime(hour + minute + "00");
+			
+				//Manage dayOfWeek		
+				StringTokenizer dayOfWeekTokenizer= new StringTokenizer(weekDay, ",", false);
+				
+				String wDay = null;
+				while (dayOfWeekTokenizer.hasMoreElements()) {
+					
+					wDay = dayOfWeekTokenizer.nextToken();
+					
+					if("*".equalsIgnoreCase(wDay)) {
+						//ALL
+						scheduleEntry.getScheduledDay().add("*");
+						break;					
+					} else if("mon".equalsIgnoreCase(wDay)) {
+						//MON
+						scheduleEntry.getScheduledDay().add("1");
+					} else if("tue".equalsIgnoreCase(wDay)) {
+						// TUE
+						scheduleEntry.getScheduledDay().add("2");
+					} else if("wed".equalsIgnoreCase(wDay)) {
+						//WED
+						scheduleEntry.getScheduledDay().add("3");
+					} else if("thu".equalsIgnoreCase(wDay)) {
+						//THU
+						scheduleEntry.getScheduledDay().add("4");
+					} else if("fri".equalsIgnoreCase(wDay)) {
+						//FRI
+						scheduleEntry.getScheduledDay().add("5");
+					} else if("sat".equalsIgnoreCase(wDay)) {
+						//SAT
+						scheduleEntry.getScheduledDay().add("6");
+					} else if("sun".equalsIgnoreCase(wDay)) {
+						//SUN
+						scheduleEntry.getScheduledDay().add("7");
+					}
+				}
+				
+				scheduleEntry.setEntryNumber(id);
+				scheduleEntry.setUser(user);
+				scheduleEntry.setJobName(name);
+				scheduleEntry.setCommandToRun(cmd);
+				scheduleEntry.setDescription(description);
+				if (holded) {
+					scheduleEntry.setState(ScheduleState.HOLDED);
+				} else {
+					scheduleEntry.setState(ScheduleState.SCHEDULED);
+				}
+			}
+		} catch (NoSuchElementException exc) {
+			
+		}
 
 		return scheduleEntry;
 	}

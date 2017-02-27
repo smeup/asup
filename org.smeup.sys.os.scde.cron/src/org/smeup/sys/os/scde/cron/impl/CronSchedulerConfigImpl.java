@@ -33,6 +33,11 @@ import org.smeup.sys.os.scde.cron.QOperativeSystemCronScheduleEntryPackage;
  */
 public class CronSchedulerConfigImpl extends ObjectImpl implements QCronSchedulerConfig {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * The default value of the '{@link #getWsip() <em>Wsip</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
