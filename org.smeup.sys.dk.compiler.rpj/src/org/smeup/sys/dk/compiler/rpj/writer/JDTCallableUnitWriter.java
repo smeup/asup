@@ -485,7 +485,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			else
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 
-			field.modifiers().add(getAST().newModifier(ModifierKeyword.TRANSIENT_KEYWORD));
+//			field.modifiers().add(getAST().newModifier(ModifierKeyword.TRANSIENT_KEYWORD));
 
 			field.setType(parType);
 			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(displayTerm.getName())));
@@ -540,7 +540,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			else
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 
-			field.modifiers().add(getAST().newModifier(ModifierKeyword.TRANSIENT_KEYWORD));
+//			field.modifiers().add(getAST().newModifier(ModifierKeyword.TRANSIENT_KEYWORD));
 			
 			field.setType(parType);
 			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(printTerm.getName())));

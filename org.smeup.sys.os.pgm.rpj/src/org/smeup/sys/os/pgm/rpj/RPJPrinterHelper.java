@@ -85,6 +85,6 @@ public class RPJPrinterHelper {
 		}
 		
 		RPJInfoStruct infoStruct = dataFactory.createDataStruct(RPJInfoStruct.class, 0, true);
-		field.setValue(new RPJPrintDelegator<QRecord>(printer, userOpen, infoStruct));
+		field.setValue(new RPJPrinterDelegator<QRecord>(printer, userOpen, infoStruct));
 	}
 }

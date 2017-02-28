@@ -98,37 +98,6 @@ public class RPJDatabaseHelper {
 		field.setValue(dataSet);
 	}
 	
-
-	@SuppressWarnings("unchecked")
-	public static void injectPrint(QDataFactory dataFactory, Map<String, QRecord> records, RPJInjectableField field) {
-
-		boolean userOpen = false;
-
-		FileDef fileDef = field.getField().getAnnotation(FileDef.class);
-		if (fileDef != null)
-			userOpen = fileDef.userOpen();
-
-		Class<QRecord> classRecord = (Class<QRecord>) field.getArguments()[0];
-		QRecord record = RPJDatabaseHelper.createRecord(dataFactory, field, classRecord, fileDef, records);
-		RPJInfoStruct infoStruct = dataFactory.createDataStruct(RPJInfoStruct.class, 0, true);
-		field.setValue(new RPJPrintDelegator<QRecord>(record, userOpen, infoStruct));
-	}
-
-	@SuppressWarnings("unchecked")
-	public static void injectDisplay(QDataFactory dataFactory, Map<String, QRecord> records, RPJInjectableField field) {
-
-		boolean userOpen = false;
-
-		FileDef fileDef = field.getField().getAnnotation(FileDef.class);
-		if (fileDef != null)
-			userOpen = fileDef.userOpen();
-
-		Class<QRecord> classRecord = (Class<QRecord>) field.getArguments()[0];
-		QRecord record = RPJDatabaseHelper.createRecord(dataFactory, field, classRecord, fileDef, records);
-		RPJInfoStruct infoStruct = dataFactory.createDataStruct(RPJInfoStruct.class, 0, true);
-		field.setValue(new RPJDisplayDelegator<QRecord>(record, userOpen, infoStruct));
-	}
-
 	@SuppressWarnings("resource")
 	public static void injectStatement(QEsqlContext esqlContext, RPJInjectableField field) {
 

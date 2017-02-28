@@ -516,7 +516,7 @@ public class RPJProgramInjector {
 		// print
 		for (RPJInjectableField field : prints)
 //			RPJDatabaseHelper.injectPrint(dataContainer.getDataContext().getDataFactory(), records, field);
-			RPJPrinterHelper.injectPrint(dataContainer.getDataContext().getDataFactory(), records, field);		
+			RPJPrinterHelper.injectPrinter(dataContainer.getDataContext().getDataFactory(), records, field);		
 
 		// dataSet
 		Set<String> dataSetRecords = new HashSet<String>();

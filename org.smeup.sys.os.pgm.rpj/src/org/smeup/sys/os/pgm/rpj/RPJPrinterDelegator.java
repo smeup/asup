@@ -16,7 +16,7 @@ import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.esam.QPrint;
 
-public class RPJPrintDelegator<R extends QRecord> implements QPrint<R> {
+public class RPJPrinterDelegator<R extends QRecord> implements QPrint<R> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -24,7 +24,7 @@ public class RPJPrintDelegator<R extends QRecord> implements QPrint<R> {
 	private boolean isOpen = false;
 	private RPJInfoStruct infoStruct;
 	
-	public RPJPrintDelegator(R delegate, boolean userOpen, RPJInfoStruct infoStruct) {
+	public RPJPrinterDelegator(R delegate, boolean userOpen, RPJInfoStruct infoStruct) {
 		this.delegate = delegate;
 		if(!userOpen)
 			isOpen = true;
