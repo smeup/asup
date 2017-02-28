@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.esam;
 
+import java.io.Serializable;
+
 import org.smeup.sys.il.data.QRecord;
 
 /**
@@ -18,7 +20,7 @@ import org.smeup.sys.il.data.QRecord;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QDisplay<R extends QRecord> extends QFileHandler<R> {
+public interface QDisplay<R extends QRecord> extends QFileHandler<R>, Serializable{
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model formatRequired="true"

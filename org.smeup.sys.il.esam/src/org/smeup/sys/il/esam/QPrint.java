@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.esam;
 
+import java.io.Serializable;
+
 import org.smeup.sys.il.data.QRecord;
 
 /**
@@ -18,6 +20,6 @@ import org.smeup.sys.il.data.QRecord;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QPrint<R extends QRecord> extends QFileHandler<R> {
+public interface QPrint<R extends QRecord> extends QFileHandler<R> , Serializable{
 
 } // QPrint

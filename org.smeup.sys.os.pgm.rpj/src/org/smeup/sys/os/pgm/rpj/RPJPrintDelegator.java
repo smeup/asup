@@ -18,6 +18,8 @@ import org.smeup.sys.il.esam.QPrint;
 
 public class RPJPrintDelegator<R extends QRecord> implements QPrint<R> {
 
+	private static final long serialVersionUID = 1L;
+
 	private R delegate = null;
 	private boolean isOpen = false;
 	private RPJInfoStruct infoStruct;

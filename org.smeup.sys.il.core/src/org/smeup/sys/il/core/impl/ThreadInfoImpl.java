@@ -40,6 +40,9 @@ import org.smeup.sys.il.core.ThreadStatus;
  * @generated
  */
 public class ThreadInfoImpl extends ObjectImpl implements QThreadInfo {
+
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * The default value of the '{@link #getThreadName() <em>Thread Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

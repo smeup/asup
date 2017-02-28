@@ -18,6 +18,8 @@ import org.smeup.sys.il.esam.QDisplay;
 
 public class RPJDisplayDelegator<R extends QRecord> implements QDisplay<R> {
 
+	private static final long serialVersionUID = 1L;
+	
 	private R delegate = null;
 	private boolean isOpen = false;
 	private RPJInfoStruct infoStruct;
