@@ -510,11 +510,13 @@ public class RPJProgramInjector {
 
 		// display
 		for (RPJInjectableField field : displays)
-			RPJDatabaseHelper.injectDisplay(dataContainer.getDataContext().getDataFactory(), records, field);
+//			RPJDatabaseHelper.injectDisplay(dataContainer.getDataContext().getDataFactory(), records, field);
+			RPJDisplayHelper.injectDisplay(dataContainer.getDataContext().getDataFactory(), records, field);
 
 		// print
 		for (RPJInjectableField field : prints)
-			RPJDatabaseHelper.injectPrint(dataContainer.getDataContext().getDataFactory(), records, field);
+//			RPJDatabaseHelper.injectPrint(dataContainer.getDataContext().getDataFactory(), records, field);
+			RPJPrinterHelper.injectPrint(dataContainer.getDataContext().getDataFactory(), records, field);		
 
 		// dataSet
 		Set<String> dataSetRecords = new HashSet<String>();

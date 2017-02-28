@@ -7,15 +7,21 @@
  */
 package org.smeup.sys.il.esam;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QPrinterWrapper;
 
-public abstract class QPrinterFormatWrapper<E extends Enum<E>> {
+public abstract class QPrinterFormatWrapper<E extends Enum<E>> implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
+	private QPrinterWrapper printerWrapper;
 	private Class<E> fieldsEnum;
 
-	public QPrinterFormatWrapper(Class<E> fieldsEnum) {
+	public QPrinterFormatWrapper(QPrinterWrapper printerWrapper, Class<E> fieldsEnum) {
+		this.printerWrapper = printerWrapper;
 		this.fieldsEnum = fieldsEnum;
 	}
 	
@@ -25,8 +31,8 @@ public abstract class QPrinterFormatWrapper<E extends Enum<E>> {
 
 		for (Field field : fieldsEnum.getFields()) {
 			try {
-				Field formatField = this.getClass().getField(field.getName().toLowerCase());
-				Object value = formatField.get(this);
+				Field formatField = printerWrapper.getClass().getField(field.getName().toLowerCase());
+				Object value = formatField.get(printerWrapper);
 				if(value instanceof QData) {
 					QData data = (QData)value;
 					data.clear();

@@ -7,18 +7,24 @@
  */
 package org.smeup.sys.il.esam;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDecimal;
+import org.smeup.sys.il.data.QDisplayWrapper;
 import org.smeup.sys.il.data.QIndicator;
 
-public abstract class QDisplayFormatWrapper<E extends Enum<E>> {
+public class QDisplayFormatWrapper<E extends Enum<E>> implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
+	private QDisplayWrapper displayWrapper;
 	private Class<E> fieldsEnum;
-
-	public QDisplayFormatWrapper(Class<E> fieldsEnum) {
+	
+	public QDisplayFormatWrapper(QDisplayWrapper displayWrapper, Class<E> fieldsEnum) {
+		this.displayWrapper = displayWrapper;
 		this.fieldsEnum = fieldsEnum;
 	}
 	
@@ -26,8 +32,8 @@ public abstract class QDisplayFormatWrapper<E extends Enum<E>> {
 
 		for (Field field : fieldsEnum.getFields()) {
 			try {
-				Field formatField = this.getClass().getField(field.getName().toLowerCase());
-				Object value = formatField.get(this);
+				Field formatField = displayWrapper.getClass().getField(field.getName().toLowerCase());
+				Object value = formatField.get(displayWrapper);
 				if(value instanceof QBufferedData) {
 					QBufferedData bufferedData = (QBufferedData) value;
 					bufferedData.snap();
@@ -41,8 +47,8 @@ public abstract class QDisplayFormatWrapper<E extends Enum<E>> {
 	public void reset() {
 		for (Field field : fieldsEnum.getFields()) {
 			try {
-				Field formatField = this.getClass().getField(field.getName().toLowerCase());
-				Object value = formatField.get(this);
+				Field formatField = displayWrapper.getClass().getField(field.getName().toLowerCase());
+				Object value = formatField.get(displayWrapper);
 				if(value instanceof QBufferedData) {
 					QBufferedData bufferedData = (QBufferedData) value;
 					bufferedData.reset();
@@ -59,8 +65,8 @@ public abstract class QDisplayFormatWrapper<E extends Enum<E>> {
 
 		for (Field field : fieldsEnum.getFields()) {
 			try {
-				Field formatField = this.getClass().getField(field.getName().toLowerCase());
-				Object value = formatField.get(this);
+				Field formatField = displayWrapper.getClass().getField(field.getName().toLowerCase());
+				Object value = formatField.get(displayWrapper);
 				if(value instanceof QData) {
 					QData data = (QData)value;
 					data.clear();
