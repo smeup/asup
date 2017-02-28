@@ -49,6 +49,7 @@ import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QDisplayWrapper;
+import org.smeup.sys.il.data.QPrinterWrapper;
 import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.esam.annotation.Format;
 import org.smeup.sys.il.esam.annotation.Query;
@@ -433,7 +434,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 		QPrinterFile printerFile = (QPrinterFile) compilationUnit.getNode();
 
-		JDTPrinterFileWriter printerFileWriter = new JDTPrinterFileWriter(null, compilationUnit, setup, compilationUnit.getNode().getName());
+		JDTPrinterFileWriter printerFileWriter = new JDTPrinterFileWriter(null, compilationUnit, setup, compilationUnit.getNode().getName(), QPrinterWrapper.class);
 		printerFileWriter.writePrinterFile(printerFile);
 
 		printerFileWriter.writeOutputStream(output);

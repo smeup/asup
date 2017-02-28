@@ -37,8 +37,8 @@ import org.smeup.sys.os.file.QPrinterFileFormat;
 public class JDTPrinterFileWriter extends JDTDataStructureWriter {
 
 	@SuppressWarnings("unchecked")
-	public JDTPrinterFileWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
-		super(root, compilationUnit, compilationSetup, name, QRecordWrapper.class, UnitScope.PUBLIC, false);
+	public JDTPrinterFileWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, Class<?> superClass) {
+		super(root, compilationUnit, compilationSetup, name, superClass, UnitScope.PUBLIC, false);
 
 		// writeFieldSerializer();
 

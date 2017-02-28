@@ -13,7 +13,7 @@ import java.lang.reflect.Field;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QPrinterWrapper;
 
-public abstract class QPrinterFormatWrapper<E extends Enum<E>> implements Serializable {
+public class QPrinterFormatWrapper<E extends Enum<E>> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
