@@ -56,6 +56,7 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 
 		jobLogManager.info(job, callableCommand.getCommandString());
 
+		@SuppressWarnings("resource")
 		QDataContainer dataContainer = callableCommand.getDataContainer();
 
 		QData[] parameters = new QData[callableCommand.getCommand().getParameters().size()];
@@ -115,6 +116,7 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 		return decodeCommand(job, null, command);
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public QDataContainer decodeCommand(QJob job, Map<String, Object> variables, String command) {
 

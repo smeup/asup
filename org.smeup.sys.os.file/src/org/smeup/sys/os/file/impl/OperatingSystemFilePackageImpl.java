@@ -21,7 +21,6 @@ import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
-import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 import org.smeup.sys.os.file.QDatabaseFile;
