@@ -51,8 +51,10 @@ public class ObjectDeleter {
 		@SuppressWarnings("unchecked")
 		QResourceWriter<T> resource = (QResourceWriter<T>) resourceManager.getResourceWriter(job, typeRegistry.lookup(objectType.trimR()).getTypedClass(), library);
 		T qObject = resource.lookup(name);
-		if (qObject == null)
+		if (qObject == null){
+			jobLogManager.error(job, "Object not found: " + name);
 			throw new OperatingSystemRuntimeException("Object not found: " + name);
+		}
 
 		resource.delete(qObject);
 		jobLogManager.info(job, "Object " + object.name.trimR() + " on type " + objectType.trimR() + " deleted");
