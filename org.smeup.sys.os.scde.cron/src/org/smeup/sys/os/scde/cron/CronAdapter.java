@@ -115,7 +115,7 @@ public class CronAdapter {
 	/*
 	 * CronTask format:
 	 * 
-	 *  mm hh dayOfMonth month dayOfWeek sh call_ws server port user pwd env "command" taskID taskName "taskDescription"
+	 *  mm hh dayOfMonth month dayOfWeek sh call_ws wsip wsport system user pwd env "command" taskID taskName "taskDescription"
 	 *
 	 */
 	@SuppressWarnings("unused")
@@ -129,30 +129,42 @@ public class CronAdapter {
 		
 		if (cronTask.startsWith("#")) {
 			holded = true;
+			cronTask = cronTask.substring(1);
 		}
 
 		StringTokenizer tokenizer = new StringTokenizer(cronTask);
 		try{
 			String minute = tokenizer.nextToken();
-			String hour = tokenizer.nextToken();
-			String monthDay = tokenizer.nextToken();
-			String month = tokenizer.nextToken();
-			String weekDay = tokenizer.nextToken();			
-			String sh	= tokenizer.nextToken();
-			String bash = tokenizer.nextToken();
-			String server = tokenizer.nextToken();		
-			String port = tokenizer.nextToken();
-			String user = tokenizer.nextToken();
-			String pwd = tokenizer.nextToken();
-			String env = tokenizer.nextToken();
-			String cmd = tokenizer.nextToken();
-			String id = tokenizer.nextToken();	
-			String name = tokenizer.nextToken();
+			String hour = tokenizer.nextToken().toString();
+			String monthDay = tokenizer.nextToken().toString();
+			String month = tokenizer.nextToken().toString();
+			String weekDay = tokenizer.nextToken().toString();			
+			String sh	= tokenizer.nextToken().toString();
+			String bash = tokenizer.nextToken().toString();
+			String wsip = tokenizer.nextToken().toString();
+			String wsport = tokenizer.nextToken().toString();			
+			String system = tokenizer.nextToken().toString();
+			String user = tokenizer.nextToken().toString();
+			String pwd = tokenizer.nextToken().toString();
+			String env = tokenizer.nextToken().toString();
+			
+			String cmd = tokenizer.nextToken().toString();
+			while (cmd.endsWith("\"") == false) {
+				cmd += " " + tokenizer.nextToken().toString();
+			}
+			
+			String id = tokenizer.nextToken().toString();	
+			String name = tokenizer.nextToken().toString();
 			
 			String description = "";
-			while (tokenizer.hasMoreElements()) {
-				description += tokenizer.nextToken();
+			
+			if (tokenizer.hasMoreElements()) {
+				description = tokenizer.nextToken().toString();
 			}
+			while (tokenizer.hasMoreElements()) {
+				description += " " + tokenizer.nextToken().toString();
+			}
+			
 			parsed = true;		
 		
 			if (parsed) {
@@ -207,10 +219,15 @@ public class CronAdapter {
 					}
 				}
 				
-				scheduleEntry.setEntryNumber(id);
+				scheduleEntry.setWsip(wsip);
+				scheduleEntry.setWsport(wsport);
+				scheduleEntry.setSystem(system);
 				scheduleEntry.setUser(user);
-				scheduleEntry.setJobName(name);
+				scheduleEntry.setPassword(pwd);
+				scheduleEntry.setEnvironment(env);
+				scheduleEntry.setEntryNumber(id);
 				scheduleEntry.setCommandToRun(cmd);
+				scheduleEntry.setJobName(name);				
 				scheduleEntry.setDescription(description);
 				if (holded) {
 					scheduleEntry.setState(ScheduleState.HOLDED);
