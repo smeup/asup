@@ -33,6 +33,9 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  * @generated
  */
 public class JobMessageImpl extends ObjectImpl implements QJobMessage {
+
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * The default value of the '{@link #getMessageId() <em>Message Id</em>}' attribute.
 	 * <!-- begin-user-doc -->

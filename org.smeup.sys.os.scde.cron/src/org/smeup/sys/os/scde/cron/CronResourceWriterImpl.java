@@ -21,7 +21,6 @@ import org.smeup.sys.il.memo.QResource;
 import org.smeup.sys.il.memo.QResourceHelper;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.scde.QScheduleEntry;
-import org.smeup.sys.os.scde.ScheduleState;
 
 public class CronResourceWriterImpl extends CronResourceReaderImpl implements QResourceWriter<QScheduleEntry> {
 
