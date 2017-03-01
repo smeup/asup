@@ -116,6 +116,11 @@
           <details key="scale" value="2"/>
         </eAnnotations>
       </eOperations>
+      <eOperations name="getLastMessage" lowerBound="1" eType="#//jobs/JobMessage">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="20"/>
+        </eAnnotations>
+      </eOperations>
       <eOperations name="getMemorySize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
         <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/DecimalDef">
           <details key="precision" value="10"/>
@@ -128,6 +133,11 @@
         </eAnnotations>
       </eOperations>
       <eOperations name="isActive" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="10"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="isError" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
           <details key="length" value="10"/>
         </eAnnotations>
@@ -155,6 +165,7 @@
           <details key="length" value="1"/>
         </eAnnotations>
       </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="destroyDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobID" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           iD="true">

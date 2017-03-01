@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.os.core.jobs;
 
+import java.util.Date;
 import java.util.List;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.QThread;
@@ -30,6 +31,7 @@ import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getCurrentLibrary <em>Current Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getDateFormat <em>Date Format</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getDateSeparator <em>Date Separator</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getDestroyDate <em>Destroy Date</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobID <em>Job ID</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobReference <em>Job Reference</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobRunInfo <em>Job Run Info</em>}</li>
@@ -376,6 +378,32 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	void setDateSeparator(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Destroy Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Destroy Date</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Destroy Date</em>' attribute.
+	 * @see #setDestroyDate(Date)
+	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_DestroyDate()
+	 * @model
+	 * @generated
+	 */
+	Date getDestroyDate();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getDestroyDate <em>Destroy Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Destroy Date</em>' attribute.
+	 * @see #getDestroyDate()
+	 * @generated
+	 */
+	void setDestroyDate(Date value);
+
+	/**
 	 * Returns the value of the '<em><b>Time Separator</b></em>' attribute.
 	 * The default value is <code>":"</code>.
 	 * <!-- begin-user-doc -->
@@ -467,7 +495,25 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 *        annotation="il-data length='10'"
 	 * @generated
 	 */
+	boolean isError();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 *        annotation="il-data length='10'"
+	 * @generated
+	 */
 	boolean isRouted();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 *        annotation="il-data length='20'"
+	 * @generated
+	 */
+	QJobMessage getLastMessage();
 
 	/**
 	 * Returns the value of the '<em><b>Context</b></em>' containment reference.

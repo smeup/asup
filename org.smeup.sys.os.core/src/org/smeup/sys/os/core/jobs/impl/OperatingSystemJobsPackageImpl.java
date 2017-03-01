@@ -236,7 +236,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 */
 	@Override
 	public EReference getJob_System() {
-		return (EReference)jobEClass.getEStructuralFeatures().get(13);
+		return (EReference)jobEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -266,7 +266,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 */
 	@Override
 	public EAttribute getJob_JobID() {
-		return (EAttribute)jobEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)jobEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -275,15 +275,6 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	public EReference getJob_JobReference() {
-		return (EReference)jobEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getJob_JobRunInfo() {
 		return (EReference)jobEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -292,8 +283,17 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getJob_JobThread() {
+	public EReference getJob_JobRunInfo() {
 		return (EReference)jobEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getJob_JobThread() {
+		return (EReference)jobEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -303,16 +303,6 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 */
 	@Override
 	public EAttribute getJob_JobType() {
-		return (EAttribute)jobEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getJob_Libraries() {
 		return (EAttribute)jobEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -322,8 +312,18 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	@Override
+	public EAttribute getJob_Libraries() {
+		return (EAttribute)jobEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getJob_Messages() {
-		return (EReference)jobEClass.getEStructuralFeatures().get(11);
+		return (EReference)jobEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -350,7 +350,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	public EAttribute getJob_Switches() {
-		return (EAttribute)jobEClass.getEStructuralFeatures().get(12);
+		return (EAttribute)jobEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -367,8 +367,17 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getJob_DestroyDate() {
+		return (EAttribute)jobEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getJob_TimeSeparator() {
-		return (EAttribute)jobEClass.getEStructuralFeatures().get(14);
+		return (EAttribute)jobEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -377,7 +386,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	public EReference getJob_VariableContainer() {
-		return (EReference)jobEClass.getEStructuralFeatures().get(15);
+		return (EReference)jobEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -676,6 +685,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		createEAttribute(jobEClass, JOB__CURRENT_LIBRARY);
 		createEAttribute(jobEClass, JOB__DATE_FORMAT);
 		createEAttribute(jobEClass, JOB__DATE_SEPARATOR);
+		createEAttribute(jobEClass, JOB__DESTROY_DATE);
 		createEAttribute(jobEClass, JOB__JOB_ID);
 		createEReference(jobEClass, JOB__JOB_REFERENCE);
 		createEReference(jobEClass, JOB__JOB_RUN_INFO);
@@ -781,6 +791,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		initEAttribute(getJob_CurrentLibrary(), ecorePackage.getEString(), "currentLibrary", "QGPL", 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_DateFormat(), theIntegratedLanguageDataDefPackage.getDateFormat(), "dateFormat", "*DMY", 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_DateSeparator(), ecorePackage.getEString(), "dateSeparator", "/", 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJob_DestroyDate(), ecorePackage.getEDate(), "destroyDate", null, 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_JobID(), ecorePackage.getEString(), "jobID", null, 1, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJob_JobReference(), this.getJobReference(), null, "jobReference", null, 1, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJob_JobRunInfo(), this.getJobRunInfo(), null, "jobRunInfo", null, 1, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -797,11 +808,15 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 
 		addEOperation(jobEClass, ecorePackage.getEDouble(), "getCPUUsage", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(jobEClass, this.getJobMessage(), "getLastMessage", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(jobEClass, ecorePackage.getELong(), "getMemorySize", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(jobEClass, ecorePackage.getEInt(), "getPriority", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(jobEClass, ecorePackage.getEBoolean(), "isActive", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(jobEClass, ecorePackage.getEBoolean(), "isError", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(jobEClass, ecorePackage.getEBoolean(), "isRouted", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1024,20 +1039,20 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		  (jobEClass.getEOperations().get(2), 
 		   source, 
 		   new String[] {
-			 "precision", "10",
-			 "scale", "0"
+			 "length", "20"
 		   },
 		   new URI[] {
-			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/DecimalDef")
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
 		   });	
 		addAnnotation
 		  (jobEClass.getEOperations().get(3), 
 		   source, 
 		   new String[] {
-			 "length", "10"
+			 "precision", "10",
+			 "scale", "0"
 		   },
 		   new URI[] {
-			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/DecimalDef")
 		   });	
 		addAnnotation
 		  (jobEClass.getEOperations().get(4), 
@@ -1050,6 +1065,24 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		   });	
 		addAnnotation
 		  (jobEClass.getEOperations().get(5), 
+		   source, 
+		   new String[] {
+			 "length", "10"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (jobEClass.getEOperations().get(6), 
+		   source, 
+		   new String[] {
+			 "length", "10"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (jobEClass.getEOperations().get(7), 
 		   source, 
 		   new String[] {
 			 "length", "10"

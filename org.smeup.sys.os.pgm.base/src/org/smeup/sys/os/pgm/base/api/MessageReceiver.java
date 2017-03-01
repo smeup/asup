@@ -25,6 +25,7 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobMessage;
 
 @Program(name = "QMHRCVMS")
 public @ToDo class MessageReceiver {
@@ -51,11 +52,13 @@ public @ToDo class MessageReceiver {
 		cLVarForMsgData.clear();
 		String lastMessageId = "";
 		String lastMessage = "";
+		QJobMessage jobMessage = null;
 
 		switch (messageType.asEnum()) {
 		case ANY:
-			lastMessageId = job.getMessages().get(job.getMessages().size() - 1).getMessageId();
-			lastMessage = job.getMessages().get(job.getMessages().size() - 1).getMessageText();
+			jobMessage = job.getLastMessage();
+			lastMessageId = jobMessage.getMessageId();
+			lastMessage = jobMessage.getMessageText();
 			cLVarForMsgData.eval(lastMessage);
 			cLVarForMSGID7.eval(lastMessageId);
 			break;
@@ -74,8 +77,9 @@ public @ToDo class MessageReceiver {
 		case INQ:
 			break;
 		case LAST:
-			lastMessageId = job.getMessages().get(job.getMessages().size() - 1).getMessageId();
-			lastMessage = job.getMessages().get(job.getMessages().size() - 1).getMessageText();
+			jobMessage = job.getLastMessage();
+			lastMessageId = jobMessage.getMessageId();
+			lastMessage = jobMessage.getMessageText();
 			cLVarForMsgData.eval(lastMessage);
 			cLVarForMSGID7.eval(lastMessageId);
 			break;

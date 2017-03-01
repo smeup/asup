@@ -8,6 +8,7 @@
 package org.smeup.sys.os.core.jobs.impl;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -47,6 +48,7 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getCurrentLibrary <em>Current Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getDateFormat <em>Date Format</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getDateSeparator <em>Date Separator</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getDestroyDate <em>Destroy Date</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobID <em>Job ID</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobReference <em>Job Reference</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobRunInfo <em>Job Run Info</em>}</li>
@@ -144,6 +146,26 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * @ordered
 	 */
 	protected String dateSeparator = DATE_SEPARATOR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDestroyDate() <em>Destroy Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDestroyDate()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Date DESTROY_DATE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDestroyDate() <em>Destroy Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDestroyDate()
+	 * @generated
+	 * @ordered
+	 */
+	protected Date destroyDate = DESTROY_DATE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getJobID() <em>Job ID</em>}' attribute.
@@ -509,6 +531,9 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 		case NEW:
 			return JobStatus.ACTIVE;		
 		case TERMINATED:
+			if(isError())
+				return JobStatus.MESSAGE_WAITING;
+
 			if(isActive())
 				return JobStatus.ACTIVE;
 			else
@@ -676,6 +701,27 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Date getDestroyDate() {
+		return destroyDate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDestroyDate(Date newDestroyDate) {
+		Date oldDestroyDate = destroyDate;
+		destroyDate = newDestroyDate;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemJobsPackage.JOB__DESTROY_DATE, oldDestroyDate, destroyDate));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -755,12 +801,30 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isError() {
+		return getLastMessage().getMessageId().equals("ERRORJOB");
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated NOT
 	 */
 	public boolean isRouted() {
 		return getJobThread() != null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public QJobMessage getLastMessage() {
+		return getMessages().get(getMessages().size()-1);
 	}
 
 	/**
@@ -887,6 +951,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return getDateFormat();
 			case QOperatingSystemJobsPackage.JOB__DATE_SEPARATOR:
 				return getDateSeparator();
+			case QOperatingSystemJobsPackage.JOB__DESTROY_DATE:
+				return getDestroyDate();
 			case QOperatingSystemJobsPackage.JOB__JOB_ID:
 				return getJobID();
 			case QOperatingSystemJobsPackage.JOB__JOB_REFERENCE:
@@ -936,6 +1002,9 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return;
 			case QOperatingSystemJobsPackage.JOB__DATE_SEPARATOR:
 				setDateSeparator((String)newValue);
+				return;
+			case QOperatingSystemJobsPackage.JOB__DESTROY_DATE:
+				setDestroyDate((Date)newValue);
 				return;
 			case QOperatingSystemJobsPackage.JOB__JOB_ID:
 				setJobID((String)newValue);
@@ -998,6 +1067,9 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 			case QOperatingSystemJobsPackage.JOB__DATE_SEPARATOR:
 				setDateSeparator(DATE_SEPARATOR_EDEFAULT);
 				return;
+			case QOperatingSystemJobsPackage.JOB__DESTROY_DATE:
+				setDestroyDate(DESTROY_DATE_EDEFAULT);
+				return;
 			case QOperatingSystemJobsPackage.JOB__JOB_ID:
 				setJobID(JOB_ID_EDEFAULT);
 				return;
@@ -1052,6 +1124,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return dateFormat != DATE_FORMAT_EDEFAULT;
 			case QOperatingSystemJobsPackage.JOB__DATE_SEPARATOR:
 				return DATE_SEPARATOR_EDEFAULT == null ? dateSeparator != null : !DATE_SEPARATOR_EDEFAULT.equals(dateSeparator);
+			case QOperatingSystemJobsPackage.JOB__DESTROY_DATE:
+				return DESTROY_DATE_EDEFAULT == null ? destroyDate != null : !DESTROY_DATE_EDEFAULT.equals(destroyDate);
 			case QOperatingSystemJobsPackage.JOB__JOB_ID:
 				return JOB_ID_EDEFAULT == null ? jobID != null : !JOB_ID_EDEFAULT.equals(jobID);
 			case QOperatingSystemJobsPackage.JOB__JOB_REFERENCE:
@@ -1093,6 +1167,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 		result.append(dateFormat);
 		result.append(", dateSeparator: ");
 		result.append(dateSeparator);
+		result.append(", destroyDate: ");
+		result.append(destroyDate);
 		result.append(", jobID: ");
 		result.append(jobID);
 		result.append(", jobType: ");

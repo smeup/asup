@@ -251,6 +251,11 @@ public class BaseJobManagerImpl implements QJobManager {
 		for (QJobListener jobListener : this.listeners)
 			jobListener.handleEvent(jobEvent);
 
+		// save destroy date job
+		QResourceWriter<QJob> jobWriter = resourceManager.getResourceWriter(job, QJob.class, Scope.SYSTEM_LIBRARY);
+		job.setDestroyDate(new Date());
+		jobWriter.save(job, true);
+		
 		job.getContext().close();
 
 		jobEvent.setType(JobEventType.STOPPED);
