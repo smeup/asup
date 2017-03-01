@@ -766,7 +766,13 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 			QProcedure procedure = (QProcedure) this.compilationUnit.getNode();
 
-			returnSt.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, returnExpression, procedure.getReturnType().getDataClass()));
+			QPrototype prototype = compilationUnit.getPrototype(procedure.getName(), true);
+			if(prototype.getDefinition().getDataClass().equals(procedure.getReturnType().getDataClass())){
+				returnSt.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, returnExpression, procedure.getReturnType().getDataClass()));
+			} else {
+				returnSt.setExpression(JDTStatementHelper.buildExpression(ast, compilationUnit, returnExpression, prototype.getDefinition().getDataClass()));
+			}
+
 			block.statements().add(returnSt);
 		} else {
 			// dummy condition
