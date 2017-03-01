@@ -23,6 +23,8 @@ import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobManager;
+import org.smeup.sys.os.core.jobs.QJobMessage;
+import org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsFactoryImpl;
 
 public class BaseSubmittedCommand implements Runnable {
 
@@ -81,8 +83,18 @@ public class BaseSubmittedCommand implements Runnable {
 					}
 				}
 			}
-			commandManager.executeCommand(jobCapability, commandString, variables);
-			jobManager.close(jobCapability);
+
+			try {
+				commandManager.executeCommand(jobCapability, commandString, variables);
+				jobManager.close(jobCapability);
+
+		} catch (Exception e) {
+				QJobMessage qJobMessage = OperatingSystemJobsFactoryImpl.eINSTANCE.createJobMessage();
+				qJobMessage.setMessageId("ERRORJOB");	
+				qJobMessage.setMessageText(e.getMessage());				
+				job.getMessages().add(qJobMessage);
+				throw(e);
+			}
 			break;
 		}
 	}

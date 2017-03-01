@@ -806,7 +806,10 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * @generated NOT
 	 */
 	public boolean isError() {
-		return getLastMessage().getMessageId().equals("ERRORJOB");
+		if(getMessages().isEmpty())
+			return false;
+		else
+			return getLastMessage().getMessageId().equals("ERRORJOB");
 	}
 
 	/**
@@ -824,6 +827,7 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * @generated NOT
 	 */
 	public QJobMessage getLastMessage() {
+		
 		return getMessages().get(getMessages().size()-1);
 	}
 
