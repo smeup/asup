@@ -59,6 +59,51 @@
       </definition>
     </datas>
     <datas xsi:type="il-flow:FlowData"
+        name="*INH1">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INH2">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INH3">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INH4">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INH5">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INH6">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INH7">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INH8">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*INH9">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </datas>
+    <datas xsi:type="il-flow:FlowData"
         name="*INU1">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
@@ -825,9 +870,7 @@
         name="%timestamp">
       <definition
           xsi:type="il-data-def:DatetimeDef"
-          type="TIMESTAMP"
-          dateFormat="*ISO"
-          timeFormat="*ISO"/>
+          type="TIMESTAMP"/>
       <entry>
         <parameters>
           <delegate

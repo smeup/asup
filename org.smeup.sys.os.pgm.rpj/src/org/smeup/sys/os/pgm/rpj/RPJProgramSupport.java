@@ -121,6 +121,26 @@ public class RPJProgramSupport extends RPJModule {
 	public QIndicator qINU8;
 
 	@DataDef
+	public QIndicator qINH1;
+	@DataDef
+	public QIndicator qINH2;
+	@DataDef
+	public QIndicator qINH3;
+	@DataDef
+	public QIndicator qINH4;
+	@DataDef
+	public QIndicator qINH5;
+	@DataDef
+	public QIndicator qINH6;
+	@DataDef
+	public QIndicator qINH7;
+	@DataDef
+	public QIndicator qINH8;
+	@DataDef
+	public QIndicator qINH9;
+	
+	
+	@DataDef
 	public RPJProgramDate qDATESYS;
 
 	@DataDef(length = 1024)
