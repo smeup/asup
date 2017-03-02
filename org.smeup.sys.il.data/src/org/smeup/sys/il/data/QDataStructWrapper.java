@@ -283,6 +283,16 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedElemen
 	}
 
 	@Override
+	public final void eval(final QString value, final boolean halfAdjust, final boolean maxPrecision) {
+		delegate.eval(value);
+	}
+
+	@Override
+	public final void eval(final String value, final boolean halfAdjust, final boolean maxPrecision) {
+		delegate.eval(value);
+	}
+	
+	@Override
 	public final void evalr(final String value) {
 		delegate.evalr(value);
 	}

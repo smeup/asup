@@ -675,6 +675,16 @@ public final class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImp
 	}
 
 	@Override
+	public void eval(QString value, boolean halfAdjust, boolean maxPrecision) {
+		current().eval(value);
+	}
+
+	@Override
+	public void eval(String value, boolean halfAdjust, boolean maxPrecision) {
+		current().eval(value);
+	}
+	
+	@Override
 	public final void evalr(final QString value) {
 		current().evalr(value);
 	}

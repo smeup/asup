@@ -293,6 +293,16 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 	}
 
 	@Override
+	public final void eval(final QString value, final boolean halfAdjust, final boolean maxPrecision) {
+		eval(value);
+	}
+	
+	@Override
+	public final void eval(final String value, final boolean halfAdjust, final boolean maxPrecision) {
+		eval(value);
+	}	
+	
+	@Override
 	public final void eval(final QDataArea<? extends QString> value) {
 		_write(value.get().asBytes());
 	}
