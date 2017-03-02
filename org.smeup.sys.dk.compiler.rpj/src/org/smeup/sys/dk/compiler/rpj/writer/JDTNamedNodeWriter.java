@@ -76,6 +76,7 @@ import org.smeup.sys.il.data.def.QPointerDef;
 import org.smeup.sys.il.data.def.QScrollerDef;
 import org.smeup.sys.il.data.def.QStrollerDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
+import org.smeup.sys.il.data.def.TimeFormat;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QOverlay;
 import org.smeup.sys.il.data.term.QSpecial;
@@ -493,10 +494,14 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			writeImport(DatetimeType.class);
 			writeImport(DateFormat.class);
 			writeAnnotation(node, DataDef.class, "datetimeType", datetimeDef.getType());
-			if (datetimeDef.getDateFormat() != null)
+			if (datetimeDef.getDateFormat() != null){
+				writeImport(DateFormat.class);
 				writeAnnotation(node, DataDef.class, "dateFormat", datetimeDef.getDateFormat());
-			if (datetimeDef.getTimeFormat() != null)
+			}
+			if (datetimeDef.getTimeFormat() != null) {
+				writeImport(TimeFormat.class);
 				writeAnnotation(node, DataDef.class, "timeFormat", datetimeDef.getTimeFormat());
+			}
 		} else if (QDecimalDef.class.isAssignableFrom(klassDef)) {
 			QDecimalDef decimalDef = (QDecimalDef) dataDef;
 
