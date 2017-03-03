@@ -17,6 +17,7 @@ import java.text.DecimalFormat;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedElement;
 import org.smeup.sys.il.data.QBufferedList;
@@ -25,10 +26,12 @@ import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QList;
+import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
@@ -306,6 +309,32 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			// bufferedData
 			else if (paramsTo[i] instanceof QBufferedData && paramsFrom[i] instanceof QStorable) {
 				QBufferedData bufferedData = (QBufferedData) paramsTo[i];
+
+				// TODO verify Binary
+				if (paramsTo[i] instanceof QBinary && !(paramsFrom[i] instanceof QBinary)) {
+					System.err.println("Verify condition call with binary : oapfy08372q5tvn023yhgf9q3yf9y");
+					BinaryType type = null;
+					
+					switch (((QNumeric) paramsTo[i]).getLength()) {
+						case 3:
+							type = BinaryType.BYTE;
+							break;
+						case 5:
+							type = BinaryType.SHORT;
+							break;
+						case 10:
+							type = BinaryType.INTEGER;
+							break;
+						case 20:
+							type = BinaryType.LONG;
+							break;
+					}
+					QBinary binaryNumber = callableProgram.getDataContext().getDataFactory().createBinary(type, false, true);
+					binaryNumber.clear();
+					binaryNumber.eval((QNumeric) paramsFrom[i]);
+					paramsFrom[i] = binaryNumber;
+				}
+
 				((QStorable) paramsFrom[i]).assign(bufferedData);
 			}
 			// list not buffered (QCLCALL)
