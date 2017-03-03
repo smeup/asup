@@ -49,8 +49,17 @@ public class BaseSubmittedCommand implements Runnable {
 	@Override
 	public void run() {
 
-		while (job.getJobThread().checkRunnable()) {
+		while (true) { 
 
+			if(!job.getJobThread().checkRunnable()){
+				try {
+					Thread.sleep(1000);
+					continue;
+				} catch (InterruptedException e) {
+					break;
+				}
+			}
+			
 			Map<String, Object> variables = null;
 			if (caller != null) {
 
@@ -87,7 +96,7 @@ public class BaseSubmittedCommand implements Runnable {
 			try {
 				commandManager.executeCommand(jobCapability, commandString, variables);
 				jobManager.close(jobCapability);
-
+				break;
 		} catch (Exception e) {
 				QJobMessage qJobMessage = OperatingSystemJobsFactoryImpl.eINSTANCE.createJobMessage();
 				qJobMessage.setMessageId("ERRORJOB");	
@@ -95,7 +104,6 @@ public class BaseSubmittedCommand implements Runnable {
 				job.getMessages().add(qJobMessage);
 				throw(e);
 			}
-			break;
 		}
 	}
 }
