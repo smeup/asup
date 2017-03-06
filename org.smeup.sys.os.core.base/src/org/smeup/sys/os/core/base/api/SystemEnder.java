@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.os.core.base.api;
 
+import java.util.Iterator;
+
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.Supported;
@@ -27,6 +29,7 @@ import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.rt.core.QApplicationManager;
 import org.smeup.sys.rt.repo.QRepositoryManager;
 
@@ -41,6 +44,8 @@ public class SystemEnder {
 	private QSystemManager systemManager;
 	@Inject
 	private QJob job;
+	@Inject
+	private QJobManager jobManager;
 
 	@Main
 	public void main(@ToDo @DataDef(length = 1) QEnum<HOWTOENDEnum, QCharacter> howToEnd,
@@ -60,6 +65,11 @@ public class SystemEnder {
 		case YES:
 			repositoryManager.updateAll(job);
 			break;
+		}
+		
+		// Close all active jobs
+		for (QJob qJob : jobManager.getActiveJobs()) {
+			jobManager.close(qJob);
 		}
 
 		switch (restartOptions.restartAfterPowerDown.asEnum()) {
