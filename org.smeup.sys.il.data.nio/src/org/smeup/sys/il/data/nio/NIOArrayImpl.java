@@ -1020,6 +1020,26 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 		
 		return writeLastIndex(index);
 	}
+	
+	@Override
+	public QBinary qLookup(final QNumeric argument, final QNumeric start, final QNumeric elements) {
+		return writeLastIndex(NIOBufferedListHelper.lookup(this, argument, DataComparator.EQUAL, start.asInteger(), elements.asInteger()));
+	}
+
+	@Override
+	public QBinary qLookup(final QNumeric argument, final Number start, final QNumeric elements) {
+		return writeLastIndex(NIOBufferedListHelper.lookup(this, argument, DataComparator.EQUAL, start.intValue(), elements.asInteger()));
+	}
+
+	@Override
+	public QBinary qLookup(final QNumeric argument, final QNumeric start, final Number elements) {
+		return writeLastIndex(NIOBufferedListHelper.lookup(this, argument, DataComparator.EQUAL, start.asInteger(), elements.intValue()));
+	}
+
+	@Override
+	public QBinary qLookup(final QNumeric argument, final Number start, final Number elements) {
+		return writeLastIndex(NIOBufferedListHelper.lookup(this, argument, DataComparator.EQUAL, start.intValue(), elements.intValue()));
+	}
 
 	@Override
 	public final QBinary qLookup(final String argument, final Number start, final QNumeric elements) {

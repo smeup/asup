@@ -798,6 +798,38 @@ public interface QArray<D extends QBufferedElement> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startRequired="true" elementsRequired="true"
+	 * @generated
+	 */
+	QNumeric qLookup(QNumeric argument, QNumeric start, QNumeric elements);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsRequired="true"
+	 * @generated
+	 */
+	QNumeric qLookup(QNumeric argument, Number start, QNumeric elements);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true"
+	 * @generated
+	 */
+	QNumeric qLookup(QNumeric argument, QNumeric start, Number elements);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true"
+	 * @generated
+	 */
+	QNumeric qLookup(QNumeric argument, Number start, Number elements);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" valueRequired="true"
 	 * @generated
 	 */
