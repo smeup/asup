@@ -76,6 +76,7 @@ import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.mi.core.util.QStrings;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.rt.core.QLogger;
 
 public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
@@ -94,6 +95,11 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Inject
 	private QJob job;
 
+	// TODO remove me	
+	@Inject
+	private QJobLogManager jobLogManager;
+	
+	
 	private AST ast;
 	private StringBuffer buffer = new StringBuffer();
 
@@ -657,10 +663,19 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QBlockExpression expression) {
 
-		buffer.append("(");
-		expression.getExpression().accept(this);
-		buffer.append(")");
-
+		// TODO statement return in procedure
+		if (expression.getParent() == null) {
+			expression.getExpression().accept(this);
+			String bufferA = buffer.toString();
+			buffer.delete(0, buffer.length());
+			writeValue(expression.getExpression().getClass(), target, bufferA);
+			// TODO Remove me
+			jobLogManager.info(job, "Program " +compilationUnit.getNode().getName() + " write new return statement");
+		}else{
+			buffer.append("(");
+			expression.getExpression().accept(this);
+			buffer.append(")");
+		}
 		return false;
 	}
 
