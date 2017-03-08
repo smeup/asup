@@ -94,11 +94,6 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	private QLogger logger;
 	@Inject
 	private QJob job;
-
-	// TODO remove me	
-	@Inject
-	private QJobLogManager jobLogManager;
-	
 	
 	private AST ast;
 	private StringBuffer buffer = new StringBuffer();
@@ -669,8 +664,6 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			String bufferA = buffer.toString();
 			buffer.delete(0, buffer.length());
 			writeValue(expression.getExpression().getClass(), target, bufferA);
-			// TODO Remove me
-			jobLogManager.info(job, "Program " +compilationUnit.getNode().getName() + " write new return statement");
 		}else{
 			buffer.append("(");
 			expression.getExpression().accept(this);
