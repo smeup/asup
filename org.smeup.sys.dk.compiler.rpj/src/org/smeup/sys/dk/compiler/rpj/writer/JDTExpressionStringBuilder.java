@@ -52,6 +52,7 @@ import org.smeup.sys.il.esam.QKeyListTerm;
 import org.smeup.sys.il.esam.QPrintTerm;
 import org.smeup.sys.il.expr.ArithmeticOperator;
 import org.smeup.sys.il.expr.AssignmentOperator;
+import org.smeup.sys.il.expr.ExpressionType;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.LogicalOperator;
 import org.smeup.sys.il.expr.QArithmeticExpression;
@@ -94,6 +95,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	private QLogger logger;
 	@Inject
 	private QJob job;
+
+	// TODO remove me	
+	@Inject
+	private QJobLogManager jobLogManager;
 	
 	private AST ast;
 	private StringBuffer buffer = new StringBuffer();
@@ -659,11 +664,13 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	public boolean visit(QBlockExpression expression) {
 
 		// TODO statement return in procedure
-		if (expression.getParent() == null) {
+		if (expression.getParent() == null && expression.getExpression().getExpressionType().equals(ExpressionType.RELATIONAL)) {
 			expression.getExpression().accept(this);
 			String bufferA = buffer.toString();
 			buffer.delete(0, buffer.length());
 			writeValue(expression.getExpression().getClass(), target, bufferA);
+			// TODO Remove me
+			jobLogManager.info(job, "Program " +compilationUnit.getNode().getName() + " write new return statement");
 		}else{
 			buffer.append("(");
 			expression.getExpression().accept(this);
