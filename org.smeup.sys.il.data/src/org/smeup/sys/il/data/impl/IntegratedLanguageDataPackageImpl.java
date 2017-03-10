@@ -3172,6 +3172,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, theIntegratedLanguageDataDefPackage.getTimeFormat(), "timeFormat", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "timeSeparator", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(datetimeEClass, this.getNumeric(), "qSubdt", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDatetimeFormat(), "format", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(datetimeEClass, null, "subdur", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "duration", 1, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDatetimeFormat(), "format", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -4348,6 +4351,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEEnumLiteral(datetimeFormatEEnum, DatetimeFormat.MONTHS);
 		addEEnumLiteral(datetimeFormatEEnum, DatetimeFormat.YEARS);
 		addEEnumLiteral(datetimeFormatEEnum, DatetimeFormat.MILLISECONDS);
+		addEEnumLiteral(datetimeFormatEEnum, DatetimeFormat.SECOND);
 		addEEnumLiteral(datetimeFormatEEnum, DatetimeFormat.SECONDS);
 		addEEnumLiteral(datetimeFormatEEnum, DatetimeFormat.MINUTES);
 		addEEnumLiteral(datetimeFormatEEnum, DatetimeFormat.HOURS);

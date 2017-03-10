@@ -1988,6 +1988,9 @@
       <eParameters name="timeFormat" lowerBound="1" eType="#//def/TimeFormat"/>
       <eParameters name="timeSeparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="qSubdt" eType="#//Numeric">
+      <eParameters name="format" eType="#//DatetimeFormat"/>
+    </eOperations>
     <eOperations name="subdur">
       <eParameters name="duration" unique="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="format" eType="#//DatetimeFormat"/>
@@ -2018,10 +2021,11 @@
     <eLiterals name="Months" value="150" literal="*MONTHS"/>
     <eLiterals name="Years" value="160" literal="*YEARS"/>
     <eLiterals name="Milliseconds" value="170" literal="*MS"/>
-    <eLiterals name="Seconds" value="180" literal="*S"/>
-    <eLiterals name="Minutes" value="190" literal="*MN"/>
-    <eLiterals name="Hours" value="200" literal="*H"/>
-    <eLiterals name="ISO0" value="210" literal="*ISO0"/>
+    <eLiterals name="Second" value="180" literal="*S"/>
+    <eLiterals name="Seconds" value="190" literal="*SECONDS"/>
+    <eLiterals name="Minutes" value="200" literal="*MN"/>
+    <eLiterals name="Hours" value="210" literal="*H"/>
+    <eLiterals name="ISO0" value="220" literal="*ISO0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Decimal" abstract="true" interface="true"
       eSuperTypes="#//Numeric">

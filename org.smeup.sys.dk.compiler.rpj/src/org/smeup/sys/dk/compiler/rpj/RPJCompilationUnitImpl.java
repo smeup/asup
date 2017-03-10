@@ -451,6 +451,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) compoundDataTerm.getDefinition();
 
 				if (compoundDataDef.isQualified()) {
+					dataTerm = findData(compoundDataDef.getElements(), name, null, 0);					
+					if (dataTerm != null)
+						break;
 					String[] tokens = name.split("\\.");
 					if (tokens.length <= 1)
 						continue;

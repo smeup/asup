@@ -210,6 +210,8 @@ public class RPJProgramSupport extends RPJModule {
 		public static final DatetimeFormat MONTHS = DatetimeFormat.MONTHS;
 		public static final DatetimeFormat D = DatetimeFormat.DAY;
 		public static final DatetimeFormat DAYS = DatetimeFormat.DAYS;
+		public static final DatetimeFormat SECOND = DatetimeFormat.SECOND;
+		public static final DatetimeFormat SECONDS = DatetimeFormat.SECONDS;
 
 		public static final DataComparator EQ = DataComparator.EQUAL;
 		public static final DataComparator LT = DataComparator.LESS_THAN;

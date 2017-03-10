@@ -225,6 +225,7 @@ public final class NIODatetimeImpl extends NIOBufferedElementImpl implements QDa
 		case MILLISECONDS:
 			number.eval(diff);
 			break;
+		case SECOND:
 		case SECONDS:
 			number.eval(diff / 1000);
 			break;
@@ -241,6 +242,8 @@ public final class NIODatetimeImpl extends NIOBufferedElementImpl implements QDa
 		case YEAR:
 		case YEARS:
 			number.eval(diff / (365 * 30 * 24 * 60 * 60 * 1000));
+			break;
+		default:
 			break;
 		}
 
@@ -288,6 +291,12 @@ public final class NIODatetimeImpl extends NIOBufferedElementImpl implements QDa
 		return result;
 	}
 
+	@Override
+	public QNumeric qSubdt(DatetimeFormat format) {
+		return null;
+	}
+	
+	
 	private final SimpleDateFormat getDateFormat(final DatetimeType datetimeType, final DateFormat dateFormat, final String dateSeparator, final TimeFormat timeFormat, final String timeSeparator) {
 
 		SimpleDateFormat simpleDateFormat = null;

@@ -166,6 +166,14 @@ public interface QDatetime extends QBufferedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	QNumeric qSubdt(DatetimeFormat format);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model durationUnique="false" durationRequired="true" valueRequired="true"
 	 * @generated
 	 */

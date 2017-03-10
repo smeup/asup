@@ -104,6 +104,14 @@ public enum DatetimeFormat implements Enumerator {
 	 * @ordered
 	 */
 	MILLISECONDS(170, "Milliseconds", "*MS"), /**
+	 * The '<em><b>Second</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SECOND_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	SECOND(180, "Second", "*S"), /**
 	 * The '<em><b>Seconds</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -111,7 +119,7 @@ public enum DatetimeFormat implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SECONDS(180, "Seconds", "*S"), /**
+	SECONDS(190, "Seconds", "*SECONDS"), /**
 	 * The '<em><b>Minutes</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -119,7 +127,7 @@ public enum DatetimeFormat implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MINUTES(190, "Minutes", "*MN"), /**
+	MINUTES(200, "Minutes", "*MN"), /**
 	 * The '<em><b>Hours</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -127,7 +135,7 @@ public enum DatetimeFormat implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	HOURS(200, "Hours", "*H"), /**
+	HOURS(210, "Hours", "*H"), /**
 	 * The '<em><b>ISO0</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -135,7 +143,7 @@ public enum DatetimeFormat implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ISO0(210, "ISO0", "*ISO0");
+	ISO0(220, "ISO0", "*ISO0");
 
 	/**
 	 * The '<em><b>ISO</b></em>' literal value.
@@ -258,6 +266,21 @@ public enum DatetimeFormat implements Enumerator {
 	public static final int MILLISECONDS_VALUE = 170;
 
 	/**
+	 * The '<em><b>Second</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Second</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #SECOND
+	 * @model name="Second" literal="*S"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SECOND_VALUE = 180;
+
+	/**
 	 * The '<em><b>Seconds</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -266,11 +289,11 @@ public enum DatetimeFormat implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SECONDS
-	 * @model name="Seconds" literal="*S"
+	 * @model name="Seconds" literal="*SECONDS"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SECONDS_VALUE = 180;
+	public static final int SECONDS_VALUE = 190;
 
 	/**
 	 * The '<em><b>Minutes</b></em>' literal value.
@@ -285,7 +308,7 @@ public enum DatetimeFormat implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MINUTES_VALUE = 190;
+	public static final int MINUTES_VALUE = 200;
 
 	/**
 	 * The '<em><b>Hours</b></em>' literal value.
@@ -300,7 +323,7 @@ public enum DatetimeFormat implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int HOURS_VALUE = 200;
+	public static final int HOURS_VALUE = 210;
 
 	/**
 	 * The '<em><b>ISO0</b></em>' literal value.
@@ -315,7 +338,7 @@ public enum DatetimeFormat implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ISO0_VALUE = 210;
+	public static final int ISO0_VALUE = 220;
 
 	/**
 	 * An array of all the '<em><b>Datetime Format</b></em>' enumerators.
@@ -333,6 +356,7 @@ public enum DatetimeFormat implements Enumerator {
 			MONTHS,
 			YEARS,
 			MILLISECONDS,
+			SECOND,
 			SECONDS,
 			MINUTES,
 			HOURS,
@@ -401,6 +425,7 @@ public enum DatetimeFormat implements Enumerator {
 			case MONTHS_VALUE: return MONTHS;
 			case YEARS_VALUE: return YEARS;
 			case MILLISECONDS_VALUE: return MILLISECONDS;
+			case SECOND_VALUE: return SECOND;
 			case SECONDS_VALUE: return SECONDS;
 			case MINUTES_VALUE: return MINUTES;
 			case HOURS_VALUE: return HOURS;

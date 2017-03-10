@@ -33,6 +33,7 @@ import org.smeup.sys.il.expr.QBlockExpression;
 import org.smeup.sys.il.expr.QCompoundTermExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
+import org.smeup.sys.il.expr.QQualifiedTermExpression;
 import org.smeup.sys.il.expr.QTermExpression;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -310,10 +311,16 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 				throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdsf66df6agdsa99");
 
 			QExpression parameterExpression = compoundTermExpression.getElements().get(0);
-			if (!(parameterExpression instanceof QAtomicTermExpression))
+			if (!(parameterExpression instanceof QAtomicTermExpression) && !(parameterExpression instanceof QQualifiedTermExpression))
 				throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdsfwergw8r8wsa99");
 
-			dataValue = getCompilationUnit().getDataTerm(((QAtomicTermExpression) parameterExpression).getValue(), true);
+			
+			if (parameterExpression instanceof QAtomicTermExpression)
+				dataValue = getCompilationUnit().getDataTerm(((QAtomicTermExpression) parameterExpression).getValue(), true);
+			
+			if (parameterExpression instanceof QQualifiedTermExpression)
+				dataValue = getCompilationUnit().getDataTerm(((QQualifiedTermExpression) parameterExpression).getValue(), true);
+			
 			if (dataValue == null)
 				throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdgwefw9def9q");
 

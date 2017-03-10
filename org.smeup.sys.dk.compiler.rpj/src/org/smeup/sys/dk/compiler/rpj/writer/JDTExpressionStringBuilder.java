@@ -216,7 +216,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			DatetimeFormat datetimeFormat = DatetimeFormat.get(expression.getValue().toUpperCase());
 			if (datetimeFormat != null) {
-				switch (datetimeFormat) {
+				switch (datetimeFormat) { 
 				case DAY:
 				case DAYS:
 				case HOURS:
@@ -226,6 +226,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				case MINUTES:
 				case MONTH:
 				case MONTHS:
+				case SECOND:
 				case SECONDS:
 				case YEAR:
 				case YEARS:
@@ -666,9 +667,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		// TODO statement return in procedure
 		if (expression.getParent() == null && expression.getExpression().getExpressionType().equals(ExpressionType.RELATIONAL)) {
 			expression.getExpression().accept(this);
-			String bufferA = buffer.toString();
+			String value = getResult();
 			buffer.delete(0, buffer.length());
-			writeValue(expression.getExpression().getClass(), target, bufferA);
+			writeValue(expression.getExpression().getClass(), target, value);
 			// TODO Remove me
 			jobLogManager.info(job, "Program " +compilationUnit.getNode().getName() + " write new return statement");
 		}else{
@@ -1002,17 +1003,30 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		int i = 0;
 		for (String keyField : keyList.getKeyFields()) {
+			// procedure with constant
+			QNamedNode namedNode = null;
+			namedNode = compilationUnit.getNamedNode(keyField, true);
+			QDataTerm<?> dataTerm = null;
+			if (namedNode != null) {
+				dataTerm = RPJContextHelper.getDataTerm(namedNode);
+			}
 
-			QExpression fieldExpression = expressionParser.parseExpression(keyField);
-
-			fieldBuilder.clear();
-			fieldBuilder.setTarget(null);
-			fieldExpression.accept(fieldBuilder);
-
-			if (i > 0)
-				stringBuffer.append(", ");
-
-			stringBuffer.append(fieldBuilder.getResult());
+			if(dataTerm.isConstant()){
+				String value = compilationUnit.getQualifiedName(namedNode);
+				writeValue(dataTerm.getDefinition().getJavaClass(), dataTerm.getDefinition().getDataClass(), value);				
+				if (i > 0)
+					stringBuffer.append(", ");
+				stringBuffer.append(getResult());
+				buffer.delete(0, buffer.length());
+			}else{
+				QExpression fieldExpression = expressionParser.parseExpression(keyField);
+				fieldBuilder.clear();
+				fieldBuilder.setTarget(null);
+				fieldExpression.accept(fieldBuilder);
+				if (i > 0)
+					stringBuffer.append(", ");
+				stringBuffer.append(fieldBuilder.getResult());
+			}
 
 			i++;
 		}
