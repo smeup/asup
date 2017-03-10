@@ -289,7 +289,9 @@ SPECIAL
 		|
 		( G E)
 		|
-		( N E)		
+		( N E)
+		|
+		( S E C O N D S)		
 	;
 
 OR 	: 	'||' | (O R);
