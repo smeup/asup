@@ -88,6 +88,7 @@ import org.smeup.sys.il.data.annotation.Optional;
 import org.smeup.sys.il.data.annotation.PostMain;
 import org.smeup.sys.il.data.annotation.PreMain;
 import org.smeup.sys.il.data.annotation.Snap;
+import org.smeup.sys.il.data.def.QPointerDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QRemap;
 import org.smeup.sys.il.esam.QDataSet;
@@ -762,7 +763,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				parameterName = getCompilationUnit().normalizeTermName(parameterName);
 
 				// call parameter
-				if (parameterDelegate.isConstant() && !parameterDelegate.getDataTermType().isMultiple()) {
+				if (parameterDelegate.isConstant() && !parameterDelegate.getDataTermType().isMultiple() && !(parameterDelegate.getDefinition() instanceof QPointerDef)) {
 					ASTParser parser = ASTParser.newParser(AST.JLS8);
 					parser.setKind(ASTParser.K_EXPRESSION);
 					parser.setSource(("qRPJ.qBox(" + parameterName + ")").toCharArray());
