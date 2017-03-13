@@ -17,8 +17,10 @@ import javax.inject.Inject;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.il.core.term.QNode;
 import org.smeup.sys.il.data.annotation.Overlay;
 import org.smeup.sys.il.data.def.QCharacterDef;
+import org.smeup.sys.il.data.def.QDataStructDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
 import org.smeup.sys.il.data.def.QMultipleAtomicBufferedDataDef;
 import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
@@ -44,7 +46,8 @@ public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean visit(QDataTerm<?> dataTerm) {
-
+		
+		QNode parent = dataTerm.getParent();
 		QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 		if (overlay == null)
 			return super.visit(dataTerm);
@@ -61,6 +64,16 @@ public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
 			overlayName = RPJDataStructureHelper.getNameFromElement(dataTerm);
 		
 		QDataTerm<?> overlayTerm = getCompilationUnit().getDataTerm(overlayName, true);
+		if (overlayTerm == null && parent != null){
+			if(parent instanceof QDataTerm<?>){
+				QDataTerm<?> parentTerm = (QDataTerm<?>) parent;
+				if (parentTerm.getDefinition() instanceof QDataStructDef) {
+					QDataStructDef dataStructDef = (QDataStructDef) parentTerm.getDefinition();
+					if(dataStructDef.isQualified())
+						overlayTerm = getCompilationUnit().getDataTerm(parentTerm.getName().trim() + "." + overlayName, true);
+				}
+			}
+		}
 		if (overlayTerm == null)
 			throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00109, new String[] { overlay.getName() });
 

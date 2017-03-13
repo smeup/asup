@@ -1067,11 +1067,13 @@ public class RPJProgramSupport extends RPJModule {
 	}
 
 	public QDatetime qTimestamp() {
-		// TODO Auto-generated method stub
-		
 		QDatetime dateTime = dataContext.getDataFactory().createDate(DatetimeType.TIME_STAMP, DateFormat.ISO, TimeFormat.ISO, true);
 		dateTime.time();
 		return dateTime;
+	}
+
+	public QDatetime qTimestamp(QNumeric datetime) {
+		return null;
 	}
 	
 	public QNumeric qDate() {
