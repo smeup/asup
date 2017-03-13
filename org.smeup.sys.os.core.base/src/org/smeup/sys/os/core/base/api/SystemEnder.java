@@ -11,7 +11,7 @@
  */
 package org.smeup.sys.os.core.base.api;
 
-import java.util.Iterator;
+import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -27,6 +27,9 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobManager;
@@ -46,6 +49,8 @@ public class SystemEnder {
 	private QJob job;
 	@Inject
 	private QJobManager jobManager;
+	@Inject
+	private QResourceManager resourceManager;
 
 	@Main
 	public void main(@ToDo @DataDef(length = 1) QEnum<HOWTOENDEnum, QCharacter> howToEnd,
@@ -69,7 +74,13 @@ public class SystemEnder {
 		
 		// Close all active jobs
 		for (QJob qJob : jobManager.getActiveJobs()) {
-			jobManager.close(qJob);
+			if(!qJob.equals(job))
+				jobManager.close(qJob);
+			else {
+				QResourceWriter<QJob> jobWriter = resourceManager.getResourceWriter(qJob, QJob.class, Scope.SYSTEM_LIBRARY);
+				job.setDestroyDate(new Date());
+				jobWriter.save(job, true);
+			}
 		}
 
 		switch (restartOptions.restartAfterPowerDown.asEnum()) {
