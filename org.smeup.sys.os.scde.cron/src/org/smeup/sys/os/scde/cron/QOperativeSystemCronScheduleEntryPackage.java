@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+
 import org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage;
 
 /**
@@ -113,31 +114,31 @@ public interface QOperativeSystemCronScheduleEntryPackage extends EPackage {
 	int CRON_SCHEDULE_ENTRY__JOB_NAME = QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__JOB_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Scheduled Date</b></em>' attribute.
+	 * The feature id for the '<em><b>Schedule Date</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CRON_SCHEDULE_ENTRY__SCHEDULED_DATE = QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DATE;
+	int CRON_SCHEDULE_ENTRY__SCHEDULE_DATE = QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_DATE;
 
 	/**
-	 * The feature id for the '<em><b>Scheduled Day</b></em>' attribute list.
+	 * The feature id for the '<em><b>Schedule Day</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CRON_SCHEDULE_ENTRY__SCHEDULED_DAY = QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DAY;
+	int CRON_SCHEDULE_ENTRY__SCHEDULE_DAY = QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_DAY;
 
 	/**
-	 * The feature id for the '<em><b>Scheduled Time</b></em>' attribute.
+	 * The feature id for the '<em><b>Schedule Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CRON_SCHEDULE_ENTRY__SCHEDULED_TIME = QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME;
+	int CRON_SCHEDULE_ENTRY__SCHEDULE_TIME = QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_TIME;
 
 	/**
 	 * The feature id for the '<em><b>State</b></em>' attribute.
@@ -210,7 +211,6 @@ public interface QOperativeSystemCronScheduleEntryPackage extends EPackage {
 	 * @ordered
 	 */
 	int CRON_SCHEDULE_ENTRY_FEATURE_COUNT = QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY_FEATURE_COUNT + 5;
-
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.scde.cron.impl.CronSchedulerConfigImpl <em>Cron Scheduler Config</em>}' class.

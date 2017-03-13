@@ -9,6 +9,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+import org.smeup.sys.os.core.env.QOperatingSystemEnvironmentPackage;
+import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage;
 
 import org.smeup.sys.os.scde.cron.QCronScheduleEntry;
@@ -85,6 +87,8 @@ public class OperativeSystemCronScheduleEntryPackageImpl extends EPackageImpl im
 
 		// Initialize simple dependencies
 		QOperativeSystemScheduleEntryPackage.eINSTANCE.eClass();
+		QOperatingSystemJobsPackage.eINSTANCE.eClass();
+		QOperatingSystemEnvironmentPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theOperativeSystemCronScheduleEntryPackage.createPackageContents();

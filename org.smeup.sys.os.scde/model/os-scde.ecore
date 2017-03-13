@@ -30,14 +30,26 @@
         <details key="length" value="10"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scheduledDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scheduledDay" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scheduleDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scheduleDay" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
         <details key="length" value="8"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scheduledTime" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="omitDate" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
+        <details key="length" value="8"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relativeDayOfMonth" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
+        <details key="length" value="8"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scheduleTime" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
         <details key="length" value="8"/>
@@ -60,5 +72,43 @@
     <eLiterals name="Saved" value="1" literal="SAV"/>
     <eLiterals name="Scheduled" value="2" literal="SCD"/>
     <eLiterals name="Changed" value="3" literal="CHG"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScheduleManager" abstract="true" interface="true">
+    <eOperations name="create" lowerBound="1" eType="#//ScheduleEntry">
+      <eParameters name="jobCapability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
+      <eParameters name="jobName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="user" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="description" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="scheduleDate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="scheduleDay" lowerBound="1">
+        <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaList">
+          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="scheduleTime" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="omitDate" lowerBound="1">
+        <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaList">
+          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="relativeDayOfMonth" lowerBound="1">
+        <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaList">
+          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="frequency" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="commadToRun" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="lookup" lowerBound="1">
+      <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaList">
+        <eTypeArguments eClassifier="#//ScheduleEntry"/>
+      </eGenericType>
+      <eParameters name="jobCapability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
+      <eParameters name="jobName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="delete" lowerBound="1">
+      <eParameters name="jobCapability" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/JobCapability"/>
+      <eParameters name="jobName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
   </eClassifiers>
 </ecore:EPackage>

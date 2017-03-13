@@ -1,9 +1,10 @@
 package org.smeup.sys.os.scde.base.api;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.QObject;
-import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QCharacter;
@@ -16,27 +17,30 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.DatetimeType;
-import org.smeup.sys.il.memo.QResourceManager;
-import org.smeup.sys.il.memo.QResourceReader;
-import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobCapability;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
+import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.scde.QScheduleEntry;
+import org.smeup.sys.os.scde.QScheduleManager;
 
 @Program(name = "QWCCWRYC")
 public class ScheduleEntryWorker {
 	
 	@Inject
-	QJob job;
+	QJobCapability jobCapability;
+	
+	@Inject
+	QJobManager jobManager;
 	
 	@Inject
 	private QOutputManager outputManager;
 	
 	@Inject
 	private QJobLogManager jobLogManager;
-	
+		
 	@Inject
-	private QResourceManager resourceManager;
+	private QScheduleManager scheduleManager;
 	
 	public static enum QCPFMSG {
 		//TODO: manage command CPF
@@ -51,6 +55,8 @@ public class ScheduleEntryWorker {
 			@DataDef(length = 10) QEnum<SCHEDULEDBYUSEREnum, QCharacter> scheduledByUser,
 			@DataDef(datetimeType = DatetimeType.DATE) QEnum<SUBMITDATEEnum, QDatetime> submitDate,
 			@DataDef(qualified = true) QEnum<JOBQUEUEEnum, JOBQUEUE> jobQueue) {
+		
+		QJob job = jobManager.lookup(jobCapability);
 		
 		QObjectWriter objectWriter = null;
 
@@ -75,26 +81,22 @@ public class ScheduleEntryWorker {
 		default:
 			break;
 		
-		}
-		
+		}		
 
 		objectWriter.initialize();
 		
-		QResourceReader<QScheduleEntry> resourceReader = resourceManager.getResourceReader(job, QScheduleEntry.class, Scope.SYSTEM_LIBRARY);
-		QObjectIterator<QScheduleEntry> objectIterator = resourceReader.find(strJobName);
+		List<QScheduleEntry> entries = scheduleManager.lookup(jobCapability, strJobName);
 
 		QObject qObject = null;
-		while (objectIterator.hasNext()) {
-			try {
-				qObject = objectIterator.next();
-				objectWriter.write(qObject);
+		for (QScheduleEntry entry: entries) {
+			try {				
+				objectWriter.write(entry);
 			} catch (Exception e) {
 				jobLogManager.error(job, qObject + " " + e.getMessage());
 			}
 		}
 
-		objectWriter.flush();
-		objectIterator.close();		
+		objectWriter.flush();		
 	}
 
 	public static enum JOBNAMEEnum {

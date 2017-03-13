@@ -32,9 +32,11 @@ import org.smeup.sys.os.scde.ScheduleState;
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getEntryNumber <em>Entry Number</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getFrequency <em>Frequency</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getJobName <em>Job Name</em>}</li>
- *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getScheduledDate <em>Scheduled Date</em>}</li>
- *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getScheduledDay <em>Scheduled Day</em>}</li>
- *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getScheduledTime <em>Scheduled Time</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getScheduleDate <em>Schedule Date</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getScheduleDay <em>Schedule Day</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getOmitDate <em>Omit Date</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getRelativeDayOfMonth <em>Relative Day Of Month</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getScheduleTime <em>Schedule Time</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getState <em>State</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getUser <em>User</em>}</li>
  * </ul>
@@ -148,54 +150,74 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 	protected String jobName = JOB_NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getScheduledDate() <em>Scheduled Date</em>}' attribute.
+	 * The default value of the '{@link #getScheduleDate() <em>Schedule Date</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getScheduledDate()
+	 * @see #getScheduleDate()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SCHEDULED_DATE_EDEFAULT = null;
+	protected static final String SCHEDULE_DATE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getScheduledDate() <em>Scheduled Date</em>}' attribute.
+	 * The cached value of the '{@link #getScheduleDate() <em>Schedule Date</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getScheduledDate()
+	 * @see #getScheduleDate()
 	 * @generated
 	 * @ordered
 	 */
-	protected String scheduledDate = SCHEDULED_DATE_EDEFAULT;
+	protected String scheduleDate = SCHEDULE_DATE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getScheduledDay() <em>Scheduled Day</em>}' attribute list.
+	 * The cached value of the '{@link #getScheduleDay() <em>Schedule Day</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getScheduledDay()
+	 * @see #getScheduleDay()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> scheduledDay;
+	protected EList<String> scheduleDay;
 
 	/**
-	 * The default value of the '{@link #getScheduledTime() <em>Scheduled Time</em>}' attribute.
+	 * The cached value of the '{@link #getOmitDate() <em>Omit Date</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getScheduledTime()
+	 * @see #getOmitDate()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SCHEDULED_TIME_EDEFAULT = null;
+	protected EList<String> omitDate;
 
 	/**
-	 * The cached value of the '{@link #getScheduledTime() <em>Scheduled Time</em>}' attribute.
+	 * The cached value of the '{@link #getRelativeDayOfMonth() <em>Relative Day Of Month</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getScheduledTime()
+	 * @see #getRelativeDayOfMonth()
 	 * @generated
 	 * @ordered
 	 */
-	protected String scheduledTime = SCHEDULED_TIME_EDEFAULT;
+	protected EList<String> relativeDayOfMonth;
+
+	/**
+	 * The default value of the '{@link #getScheduleTime() <em>Schedule Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getScheduleTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SCHEDULE_TIME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getScheduleTime() <em>Schedule Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getScheduleTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected String scheduleTime = SCHEDULE_TIME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getState() <em>State</em>}' attribute.
@@ -254,60 +276,6 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 	@Override
 	protected EClass eStaticClass() {
 		return QOperativeSystemScheduleEntryPackage.Literals.SCHEDULE_ENTRY;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getScheduledDate() {
-		return scheduledDate;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setScheduledDate(String newScheduledDate) {
-		String oldScheduledDate = scheduledDate;
-		scheduledDate = newScheduledDate;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DATE, oldScheduledDate, scheduledDate));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public List<String> getScheduledDay() {
-		if (scheduledDay == null) {
-			scheduledDay = new EDataTypeUniqueEList<String>(String.class, this, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DAY);
-		}
-		return scheduledDay;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getScheduledTime() {
-		return scheduledTime;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setScheduledTime(String newScheduledTime) {
-		String oldScheduledTime = scheduledTime;
-		scheduledTime = newScheduledTime;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME, oldScheduledTime, scheduledTime));
 	}
 
 	/**
@@ -420,6 +388,84 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getScheduleDate() {
+		return scheduleDate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setScheduleDate(String newScheduleDate) {
+		String oldScheduleDate = scheduleDate;
+		scheduleDate = newScheduleDate;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_DATE, oldScheduleDate, scheduleDate));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List<String> getScheduleDay() {
+		if (scheduleDay == null) {
+			scheduleDay = new EDataTypeUniqueEList<String>(String.class, this, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_DAY);
+		}
+		return scheduleDay;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List<String> getOmitDate() {
+		if (omitDate == null) {
+			omitDate = new EDataTypeUniqueEList<String>(String.class, this, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__OMIT_DATE);
+		}
+		return omitDate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List<String> getRelativeDayOfMonth() {
+		if (relativeDayOfMonth == null) {
+			relativeDayOfMonth = new EDataTypeUniqueEList<String>(String.class, this, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__RELATIVE_DAY_OF_MONTH);
+		}
+		return relativeDayOfMonth;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getScheduleTime() {
+		return scheduleTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setScheduleTime(String newScheduleTime) {
+		String oldScheduleTime = scheduleTime;
+		scheduleTime = newScheduleTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_TIME, oldScheduleTime, scheduleTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getCommandToRun() {
 		return commandToRun;
 	}
@@ -475,12 +521,16 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 				return getFrequency();
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__JOB_NAME:
 				return getJobName();
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DATE:
-				return getScheduledDate();
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DAY:
-				return getScheduledDay();
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME:
-				return getScheduledTime();
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_DATE:
+				return getScheduleDate();
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_DAY:
+				return getScheduleDay();
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__OMIT_DATE:
+				return getOmitDate();
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__RELATIVE_DAY_OF_MONTH:
+				return getRelativeDayOfMonth();
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_TIME:
+				return getScheduleTime();
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__STATE:
 				return getState();
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__USER:
@@ -513,15 +563,23 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__JOB_NAME:
 				setJobName((String)newValue);
 				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DATE:
-				setScheduledDate((String)newValue);
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_DATE:
+				setScheduleDate((String)newValue);
 				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DAY:
-				getScheduledDay().clear();
-				getScheduledDay().addAll((Collection<? extends String>)newValue);
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_DAY:
+				getScheduleDay().clear();
+				getScheduleDay().addAll((Collection<? extends String>)newValue);
 				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME:
-				setScheduledTime((String)newValue);
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__OMIT_DATE:
+				getOmitDate().clear();
+				getOmitDate().addAll((Collection<? extends String>)newValue);
+				return;
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__RELATIVE_DAY_OF_MONTH:
+				getRelativeDayOfMonth().clear();
+				getRelativeDayOfMonth().addAll((Collection<? extends String>)newValue);
+				return;
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_TIME:
+				setScheduleTime((String)newValue);
 				return;
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__STATE:
 				setState((ScheduleState)newValue);
@@ -556,14 +614,20 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__JOB_NAME:
 				setJobName(JOB_NAME_EDEFAULT);
 				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DATE:
-				setScheduledDate(SCHEDULED_DATE_EDEFAULT);
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_DATE:
+				setScheduleDate(SCHEDULE_DATE_EDEFAULT);
 				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DAY:
-				getScheduledDay().clear();
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_DAY:
+				getScheduleDay().clear();
 				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME:
-				setScheduledTime(SCHEDULED_TIME_EDEFAULT);
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__OMIT_DATE:
+				getOmitDate().clear();
+				return;
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__RELATIVE_DAY_OF_MONTH:
+				getRelativeDayOfMonth().clear();
+				return;
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_TIME:
+				setScheduleTime(SCHEDULE_TIME_EDEFAULT);
 				return;
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__STATE:
 				setState(STATE_EDEFAULT);
@@ -593,12 +657,16 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 				return FREQUENCY_EDEFAULT == null ? frequency != null : !FREQUENCY_EDEFAULT.equals(frequency);
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__JOB_NAME:
 				return JOB_NAME_EDEFAULT == null ? jobName != null : !JOB_NAME_EDEFAULT.equals(jobName);
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DATE:
-				return SCHEDULED_DATE_EDEFAULT == null ? scheduledDate != null : !SCHEDULED_DATE_EDEFAULT.equals(scheduledDate);
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DAY:
-				return scheduledDay != null && !scheduledDay.isEmpty();
-			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME:
-				return SCHEDULED_TIME_EDEFAULT == null ? scheduledTime != null : !SCHEDULED_TIME_EDEFAULT.equals(scheduledTime);
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_DATE:
+				return SCHEDULE_DATE_EDEFAULT == null ? scheduleDate != null : !SCHEDULE_DATE_EDEFAULT.equals(scheduleDate);
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_DAY:
+				return scheduleDay != null && !scheduleDay.isEmpty();
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__OMIT_DATE:
+				return omitDate != null && !omitDate.isEmpty();
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__RELATIVE_DAY_OF_MONTH:
+				return relativeDayOfMonth != null && !relativeDayOfMonth.isEmpty();
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULE_TIME:
+				return SCHEDULE_TIME_EDEFAULT == null ? scheduleTime != null : !SCHEDULE_TIME_EDEFAULT.equals(scheduleTime);
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__STATE:
 				return state != STATE_EDEFAULT;
 			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__USER:
@@ -627,12 +695,16 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 		result.append(frequency);
 		result.append(", jobName: ");
 		result.append(jobName);
-		result.append(", scheduledDate: ");
-		result.append(scheduledDate);
-		result.append(", scheduledDay: ");
-		result.append(scheduledDay);
-		result.append(", scheduledTime: ");
-		result.append(scheduledTime);
+		result.append(", scheduleDate: ");
+		result.append(scheduleDate);
+		result.append(", scheduleDay: ");
+		result.append(scheduleDay);
+		result.append(", omitDate: ");
+		result.append(omitDate);
+		result.append(", relativeDayOfMonth: ");
+		result.append(relativeDayOfMonth);
+		result.append(", scheduleTime: ");
+		result.append(scheduleTime);
 		result.append(", state: ");
 		result.append(state);
 		result.append(", user: ");

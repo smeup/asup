@@ -10,7 +10,7 @@ Export-Package: org.smeup.sys.os.scde.cron,
  org.smeup.sys.os.scde.cron.impl
 Bundle-ClassPath: .
 Require-Bundle: org.smeup.sys.il.memo,
- org.smeup.sys.os.core,
+ org.smeup.sys.os.core;visibility:=reexport,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.smeup.sys.il.core;visibility:=reexport,

@@ -4,11 +4,17 @@
     modelDirectory="/org.smeup.sys.os.scde/src" modelPluginID="org.smeup.sys.os.scde"
     modelName="As.UP Operating System ScheduleEntry" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     rootImplementsInterface="" suppressEMFTypes="true" booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="7.0" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
+    complianceLevel="7.0" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core ../../org.smeup.sys.os.core/model/os-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>os-scde.ecore</foreignModel>
   <genPackages prefix="OperativeSystemScheduleEntry" basePackage="org.smeup.sys.os"
       disposableProviderFactory="true" adapterFactory="false" ecorePackage="os-scde.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="os-scde.ecore#//ScheduleState">
+      <genEnumLiterals ecoreEnumLiteral="os-scde.ecore#//ScheduleState/Holded"/>
+      <genEnumLiterals ecoreEnumLiteral="os-scde.ecore#//ScheduleState/Saved"/>
+      <genEnumLiterals ecoreEnumLiteral="os-scde.ecore#//ScheduleState/Scheduled"/>
+      <genEnumLiterals ecoreEnumLiteral="os-scde.ecore#//ScheduleState/Changed"/>
+    </genEnums>
     <genClasses ecoreClass="os-scde.ecore#//ScheduleEntry">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/commandToRun"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/description"/>
@@ -18,10 +24,29 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/scheduledDate"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/scheduledDay"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/scheduledTime"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/system"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/state"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/user"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/password"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-scde.ecore#//ScheduleEntry/environment"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="os-scde.ecore#//ScheduleManager">
+      <genOperations ecoreOperation="os-scde.ecore#//ScheduleManager/create">
+        <genParameters ecoreParameter="os-scde.ecore#//ScheduleManager/create/jobCapability"/>
+        <genParameters ecoreParameter="os-scde.ecore#//ScheduleManager/create/jobName"/>
+        <genParameters ecoreParameter="os-scde.ecore#//ScheduleManager/create/user"/>
+        <genParameters ecoreParameter="os-scde.ecore#//ScheduleManager/create/description"/>
+        <genParameters ecoreParameter="os-scde.ecore#//ScheduleManager/create/scheduledDate"/>
+        <genParameters ecoreParameter="os-scde.ecore#//ScheduleManager/create/scheduledDay"/>
+        <genParameters ecoreParameter="os-scde.ecore#//ScheduleManager/create/scheduledTime"/>
+        <genParameters ecoreParameter="os-scde.ecore#//ScheduleManager/create/frequency"/>
+        <genParameters ecoreParameter="os-scde.ecore#//ScheduleManager/create/commadToRun"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-scde.ecore#//ScheduleManager/lookup">
+        <genParameters ecoreParameter="os-scde.ecore#//ScheduleManager/lookup/jobCapability"/>
+        <genParameters ecoreParameter="os-scde.ecore#//ScheduleManager/lookup/jobName"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-scde.ecore#//ScheduleManager/delete">
+        <genParameters ecoreParameter="os-scde.ecore#//ScheduleManager/delete/jobCapability"/>
+        <genParameters ecoreParameter="os-scde.ecore#//ScheduleManager/delete/jobName"/>
+      </genOperations>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

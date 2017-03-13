@@ -16,19 +16,20 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.DatetimeType;
-import org.smeup.sys.il.memo.QResourceManager;
-import org.smeup.sys.il.memo.QResourceWriter;
-import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.scde.QOperativeSystemScheduleEntryFactory;
-import org.smeup.sys.os.scde.QScheduleEntry;
+import org.smeup.sys.os.core.jobs.QJobCapability;
+import org.smeup.sys.os.scde.QScheduleManager;
 
 @Program(name = "QWCCAAYC")
 @ToDo
 public class ScheduleEntryCreator {
 
 	@Inject
-	private QResourceManager resourceManager;
+	private QJobCapability jobCapability;
+	
+	@Inject
+	private QScheduleManager scheduleManager;
+	
 
 	@Inject
 	private QJob job;
@@ -55,23 +56,22 @@ public class ScheduleEntryCreator {
 			@ToDo @DataDef(qualified = true) QEnum<MESSAGEQUEUEEnum, MESSAGEQUEUE> messageQueue,
 			@ToDo @DataDef(length = 50) QEnum<TEXTDESCRIPTIONEnum, QCharacter> textDescription) {
 
-		QResourceWriter<QScheduleEntry> resourceWriter = resourceManager.getResourceWriter(job, QScheduleEntry.class, Scope.SYSTEM_LIBRARY);
-
-		QScheduleEntry scheduleEntry = QOperativeSystemScheduleEntryFactory.eINSTANCE.createScheduleEntry();
-
-		scheduleEntry.setJobName(jobName.asData().trimR());
-		scheduleEntry.setFrequency(frequency.asData().trimR());
-		scheduleEntry.setScheduledDate(scheduleDate.asData().toString().trim());
+		
+		String _jobName = jobName.asData().trimR();
+		String _frequency = frequency.asData().trimR();
+		String _scheduleDate = scheduleDate.asData().toString().trim();
+		List<String> _scheduleDay = new ArrayList<String>();
 		
 		for (QEnum<SCHEDULEDAYEnum, QCharacter> enumElem : scheduleDay) {
 
 			if (enumElem.asData().isEmpty())
 				continue;
 			
-			scheduleEntry.getScheduledDay().add(enumElem.asData().trimR());	
+			_scheduleDay.add(enumElem.asData().trimR());	
 		}
-				
-		List<String> omitDatesList = new ArrayList<String>();
+		
+		//TODO: da implementare nel manager
+		List<String> _omitDatesList = new ArrayList<String>();
 		for (QEnum<OMITDATEEnum, QDatetime> omitDate: omitDates) {
 			if (omitDate.isEmpty())
 				break; // TODO or continue?
@@ -80,12 +80,13 @@ public class ScheduleEntryCreator {
 			case NONE:
 				break;
 			case OTHER:	
-				omitDatesList.add(omitDate.asData().toString());
+				_omitDatesList.add(omitDate.asData().toString());
 				break;
 			}
 		}
 		
-		List<String> relativeDays = new ArrayList<String>();
+		//TODO: da implementare nel manager
+		List<String> _relativeDayOfMonth = new ArrayList<String>();
 		
 		for (QEnum<RELATIVEDAYOFMONTHEnum, QCharacter> relativeDay :relativeDayOfMonth) {
 			if (relativeDay.isEmpty())
@@ -93,54 +94,65 @@ public class ScheduleEntryCreator {
 		
 			switch(relativeDay.asEnum()) {
 			case LAST:
-					relativeDays.add(relativeDay.asData().asString());
+					_relativeDayOfMonth.add(relativeDay.asData().asString());
 				break;
 			case NUM_1:
-				relativeDays.add("1");
+				_relativeDayOfMonth.add("1");
 				break;
 			case NUM_2:
-				relativeDays.add("2");
+				_relativeDayOfMonth.add("2");
 				break;
 			case NUM_3:
-				relativeDays.add("3");
+				_relativeDayOfMonth.add("3");
 				break;
 			case NUM_4:
-				relativeDays.add("4");
+				_relativeDayOfMonth.add("4");
 				break;
 			case NUM_5:
-				relativeDays.add("5");
+				_relativeDayOfMonth.add("5");
 				break;
 			default:
 				break;
 			}
 		}
 
-		scheduleEntry.setScheduledTime(scheduleTime.asData().toString());
+		String _scheduleTime = scheduleTime.asData().toString();
 		
-		scheduleEntry.setCommandToRun(commandToRun.asString().trim());
+		String _commandToRun = commandToRun.asString().trim();
 				
 		
-		String userName = "";
+		String _user = "";
 		switch(user.asEnum()) {
 		case CURRENT:
-				userName = job.getJobReference().getJobUser();
+				_user = job.getJobReference().getJobUser();
 			break;
 		case JOBD:
 				//TODO: estrarre user dalla jobd (per ora come CURRENT)
-			userName = job.getJobReference().getJobUser();
+				_user = job.getJobReference().getJobUser();
 			break;
 		case OTHER:
-				userName = user.asData().asString(); 
+				_user = user.asData().asString(); 
 			break;
 		default:
 			break;
 			
 		}		
-		scheduleEntry.setUser(userName);
 		
-		scheduleEntry.setDescription(textDescription.asData().asString().trim());
-
-		resourceWriter.save(scheduleEntry);
+		
+		String _description = textDescription.asData().asString().trim();
+		
+		scheduleManager.create(jobCapability, 
+							   _jobName, 
+							   _user, 
+							   _description, 
+							   _scheduleDate, 
+							   _scheduleDay, 
+							   _scheduleTime, 
+							   _omitDatesList,
+							   _relativeDayOfMonth,
+							   _frequency, 
+							   _commandToRun);
+		
 	}
 
 	public static enum JOBNAMEEnum {

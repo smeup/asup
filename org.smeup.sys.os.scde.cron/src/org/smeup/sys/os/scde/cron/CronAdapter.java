@@ -30,6 +30,7 @@ public class CronAdapter {
 	public static String MIDNIGHT = "@midnight";	// come @daily
 	public static String HOURLY = "@hourly";		// Lancia il comando una volta all'ora. Uguale a "0 * * * *"
 	
+	//TODO: da completare
 	public String getCronTimeMask(QScheduleEntry scheduleEntry){
 
 		String minute 	= "*";
@@ -39,32 +40,32 @@ public class CronAdapter {
 		String weekDay	= "*";
 		
 		
-		if (/*NONE*/ !"0000003".equalsIgnoreCase(scheduleEntry.getScheduledDate())) {
+		if (/*NONE*/ !"0000003".equalsIgnoreCase(scheduleEntry.getScheduleDate())) {
 			
-			if ("0000001".equalsIgnoreCase(scheduleEntry.getScheduledDate())) {
+			if ("0000001".equalsIgnoreCase(scheduleEntry.getScheduleDate())) {
 				//CURRENT
-			} else if ("0000002".equalsIgnoreCase(scheduleEntry.getScheduledDate())) {
+			} else if ("0000002".equalsIgnoreCase(scheduleEntry.getScheduleDate())) {
 				//MONTHSTR
 				monthDay = "L";
 				month = "*";
 				weekDay = "*";
-			} else if ("0000003".equalsIgnoreCase(scheduleEntry.getScheduledDate())) {
+			} else if ("0000003".equalsIgnoreCase(scheduleEntry.getScheduleDate())) {
 				monthDay = "1";
 				month = "*";
 				weekDay = "*";
-			} else if(scheduleEntry.getScheduledDate().trim().length() == 6){
-				String data = scheduleEntry.getScheduledDate();
+			} else if(scheduleEntry.getScheduleDate().trim().length() == 6){
+				String data = scheduleEntry.getScheduleDate();
 				monthDay = data.substring(0, 2);
 				month = data.substring(2,4);
 				weekDay = "*";
 			}
 
 		} else {
-			List<String> scheduledDays = scheduleEntry.getScheduledDay();
+			List<String> ScheduleDays = scheduleEntry.getScheduleDay();
 
 			boolean first = true;
 			
-			for(String day: scheduledDays) {
+			for(String day: ScheduleDays) {
 				
 				if("8".equalsIgnoreCase(day)) {
 					//ALL
@@ -97,11 +98,11 @@ public class CronAdapter {
 			}
 		}
 		
-		if ("999999".equalsIgnoreCase(scheduleEntry.getScheduledTime())){
+		if ("999999".equalsIgnoreCase(scheduleEntry.getScheduleTime())){
 			//CURRENT
-		} else if (scheduleEntry.getScheduledTime().length() == 6){
+		} else if (scheduleEntry.getScheduleTime().length() == 6){
 			//HHMMSS
-			String time = scheduleEntry.getScheduledTime();
+			String time = scheduleEntry.getScheduleTime();
 			
 			hour 	= time.substring(0, 2);
 			minute 	= time.substring(2, 4);			
@@ -181,7 +182,7 @@ public class CronAdapter {
 				if (hour.length() == 1) {
 					hour = "0" + hour;
 				}
-				scheduleEntry.setScheduledTime(hour + minute + "00");
+				scheduleEntry.setScheduleTime(hour + minute + "00");
 			
 				//Manage dayOfWeek		
 				StringTokenizer dayOfWeekTokenizer= new StringTokenizer(weekDay, ",", false);
@@ -193,29 +194,29 @@ public class CronAdapter {
 					
 					if("*".equalsIgnoreCase(wDay)) {
 						//ALL
-						scheduleEntry.getScheduledDay().add("*");
+						scheduleEntry.getScheduleDay().add("*");
 						break;					
 					} else if("mon".equalsIgnoreCase(wDay)) {
 						//MON
-						scheduleEntry.getScheduledDay().add("1");
+						scheduleEntry.getScheduleDay().add("1");
 					} else if("tue".equalsIgnoreCase(wDay)) {
 						// TUE
-						scheduleEntry.getScheduledDay().add("2");
+						scheduleEntry.getScheduleDay().add("2");
 					} else if("wed".equalsIgnoreCase(wDay)) {
 						//WED
-						scheduleEntry.getScheduledDay().add("3");
+						scheduleEntry.getScheduleDay().add("3");
 					} else if("thu".equalsIgnoreCase(wDay)) {
 						//THU
-						scheduleEntry.getScheduledDay().add("4");
+						scheduleEntry.getScheduleDay().add("4");
 					} else if("fri".equalsIgnoreCase(wDay)) {
 						//FRI
-						scheduleEntry.getScheduledDay().add("5");
+						scheduleEntry.getScheduleDay().add("5");
 					} else if("sat".equalsIgnoreCase(wDay)) {
 						//SAT
-						scheduleEntry.getScheduledDay().add("6");
+						scheduleEntry.getScheduleDay().add("6");
 					} else if("sun".equalsIgnoreCase(wDay)) {
 						//SUN
-						scheduleEntry.getScheduledDay().add("7");
+						scheduleEntry.getScheduleDay().add("7");
 					}
 				}
 				
@@ -241,37 +242,4 @@ public class CronAdapter {
 
 		return scheduleEntry;
 	}
-	
-	
-	/*
-	public QCronScheduleEntry convertToCron(QScheduleEntry scheduleEntry) {
-		
-		QCronScheduleEntry convertedEntry = QOperativeSystemCronScheduleEntryFactory.eINSTANCE.createCronScheduleEntry();
-		
-		// From origin schedule entry
-		convertedEntry.setCommandToRun(scheduleEntry.getCommandToRun());
-		convertedEntry.setDescription(scheduleEntry.getDescription());
-		convertedEntry.setEntryNumber(scheduleEntry.getEntryNumber());
-		convertedEntry.setFrequency(scheduleEntry.getFrequency());
-		convertedEntry.setJobName(scheduleEntry.getJobName());
-		convertedEntry.setScheduledDate(scheduleEntry.getScheduledDate());
-		
-		for( String day: scheduleEntry.getScheduledDay()) {
-			convertedEntry.getScheduledDay().add(day);
-		}
-		
-		convertedEntry.setScheduledTime(scheduleEntry.getScheduledTime());
-		convertedEntry.setUser(scheduleEntry.getUser());
-		
-		// From setup
-		convertedEntry.setWsip(setup.getWsip());
-		convertedEntry.setWsport(setup.getWsport());
-		convertedEntry.setPassword(setup.getPassword());
-		convertedEntry.setEnvironment(setup.getEnv());
-
-		return convertedEntry;
-	} 
-	*/
-	
-
 }
