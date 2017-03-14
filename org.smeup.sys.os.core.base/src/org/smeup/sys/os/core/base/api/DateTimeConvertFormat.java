@@ -24,6 +24,7 @@ public class DateTimeConvertFormat {
 		
 			// TODO verificare fusi orari oggetto *TIMZON
 			outputVariable.eval(inputVariable);
+			qusec.qusbavl.eval(0);
 	}
 
 	public static enum TIMEZONEEnum {
