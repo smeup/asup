@@ -100,7 +100,7 @@ public class BaseSubmittedCommand implements Runnable {
 		} catch (Exception e) {
 				QJobMessage qJobMessage = OperatingSystemJobsFactoryImpl.eINSTANCE.createJobMessage();
 				qJobMessage.setMessageId("ERRORJOB");	
-				qJobMessage.setMessageText(e.getMessage());				
+				qJobMessage.setMessageText(e.getMessage() + " " + e.getStackTrace().toString());				
 				job.getMessages().add(qJobMessage);
 				throw(e);
 			}
