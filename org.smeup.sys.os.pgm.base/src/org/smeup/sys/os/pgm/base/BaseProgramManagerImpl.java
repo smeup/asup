@@ -432,7 +432,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 					programStack.pop();
 				} catch (Exception e){
 					jobLogManager.error(job, "Error in return call program:  " + callableProgram.getProgram().getName());
-					jobLogManager.error(job, "Stack push: " + idStack + "  ---->  " + programStack.getClass().hashCode());
+					jobLogManager.error(job, "Stack push: " + stackId + "  ---->  " + programStack.getClass().hashCode());
 					e.printStackTrace();
 					throw e;
 				}
