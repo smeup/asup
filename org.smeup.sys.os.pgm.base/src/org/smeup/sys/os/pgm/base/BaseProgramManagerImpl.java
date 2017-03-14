@@ -388,7 +388,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			if (programStack.isEmpty())
 				jobManager.updateStatus(job, JobStatus.RUN);
 
-			String idStack = "";
+			int stackId = 0;
 			
 			// call
 			try {
@@ -397,7 +397,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 				programStack.push(callableProgram);
 
-				idStack = programStack.getClass().toString();
+				stackId = programStack.getClass().hashCode();
 				
 //				printSendStack(job, programStack, callableProgram);
 
@@ -432,7 +432,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 					programStack.pop();
 				} catch (Exception e){
 					jobLogManager.error(job, "Error in return call program:  " + callableProgram.getProgram().getName());
-					jobLogManager.error(job, "Stack push: " + idStack + "  ---->  " + programStack.getClass().toString());
+					jobLogManager.error(job, "Stack push: " + idStack + "  ---->  " + programStack.getClass().hashCode());
 					e.printStackTrace();
 					throw e;
 				}
