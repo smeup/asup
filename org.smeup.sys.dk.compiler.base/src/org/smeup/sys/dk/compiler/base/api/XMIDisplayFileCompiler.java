@@ -60,7 +60,10 @@ public class XMIDisplayFileCompiler {
 	private QLibraryManager libraryManager;
 
 	@Main
-	public void main(FileRef fileRef, @DataDef(length = 1) QEnum<YesNo, QCharacter> replace, @DataDef(length = 10) QCharacter libraryTo, @DataDef(length = 1) QEnum<YesNo, QCharacter> format) {
+	public void main(FileRef fileRef, 
+			@DataDef(length = 1) QEnum<YesNo, QCharacter> replace, 
+			@DataDef(length = 10) QCharacter libraryTo, 
+			@DataDef(length = 1) QEnum<YesNo, QCharacter> format) {
 
 		try (QObjectIterator<QFile> files = buildIterator(fileRef);) {
 

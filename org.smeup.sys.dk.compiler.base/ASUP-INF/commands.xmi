@@ -15,8 +15,7 @@
       program="QASCRTXB">
     <parameters
         name="FILE"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="file">
         <cardinality
@@ -106,6 +105,27 @@
         <definition
             xsi:type="il-data-def:CharacterDef"
             length="10"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        name="FORMAT"
+        position="4">
+      <dataTerm
+          name="format">
+        <facets
+            xsi:type="il-data-term:Special">
+          <elements
+              name="*YES"
+              value="Y"/>
+          <elements
+              name="*NO"
+              value="N"/>
+        </facets>
+        <default
+            value="*YES"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
       </dataTerm>
     </parameters>
   </contents>
@@ -209,6 +229,27 @@
             length="10"/>
       </dataTerm>
     </parameters>
+    <parameters
+        name="FORMAT"
+        position="4">
+      <dataTerm
+          name="format">
+        <facets
+            xsi:type="il-data-term:Special">
+          <elements
+              name="*YES"
+              value="Y"/>
+          <elements
+              name="*NO"
+              value="N"/>
+        </facets>
+        <default
+            value="*YES"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
+      </dataTerm>
+    </parameters>
   </contents>
   <contents
       xsi:type="os-cmd:Command"
@@ -309,6 +350,27 @@
         <definition
             xsi:type="il-data-def:CharacterDef"
             length="10"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        name="FORMAT"
+        position="4">
+      <dataTerm
+          name="format">
+        <facets
+            xsi:type="il-data-term:Special">
+          <elements
+              name="*YES"
+              value="Y"/>
+          <elements
+              name="*NO"
+              value="N"/>
+        </facets>
+        <default
+            value="*YES"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
       </dataTerm>
     </parameters>
   </contents>

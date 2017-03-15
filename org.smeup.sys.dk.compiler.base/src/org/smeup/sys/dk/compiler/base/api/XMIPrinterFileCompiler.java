@@ -60,7 +60,10 @@ public class XMIPrinterFileCompiler {
 	private QLibraryManager libraryManager;
 
 	@Main
-	public void main(FileRef fileRef, @DataDef(length = 1) QEnum<YesNo, QCharacter> replace, @DataDef(length = 10) QCharacter libraryTo, @DataDef(length = 1) QEnum<YesNo, QCharacter> format) throws IOException {
+	public void main(FileRef fileRef, 
+			@DataDef(length = 1) QEnum<YesNo, QCharacter> replace, 
+			@DataDef(length = 10) QCharacter libraryTo, 
+			@DataDef(length = 1) QEnum<YesNo, QCharacter> format) throws IOException {
 
 		// file
 		QResourceReader<QFile> fileReader = null;
