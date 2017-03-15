@@ -380,6 +380,30 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 	}
 
 	@Override
+	public final void movea(final String value, final boolean clear) {
+		movea(1, value, clear);
+	}
+	
+	@Override
+	public void movea(final Number value) {
+		movea(value, false);
+	}
+
+	@Override
+	public void movea(final Number value, final boolean clear) {
+		// TODO verify
+		final byte[] bytes = value.toString().getBytes(getDataContext().getCharset());
+		if (clear)
+			movea(1, bytes, NIONumericImpl.INIT);
+		else
+			movea(1, bytes, null);
+	
+	
+	
+	}
+	
+	
+	@Override
 	public final void movea(final QNumeric targetIndex, final QBufferedElement value) {
 		movea(targetIndex.i(), value);
 	}
@@ -477,11 +501,6 @@ public final class NIOArrayImpl<D extends QBufferedElement> extends NIOBufferedL
 	@Override
 	public final void movea(final int targetIndex, final QArray<?> value, final boolean clear) {
 		movea(targetIndex, value, 1, clear);
-	}
-
-	@Override
-	public final void movea(final String value, final boolean clear) {
-		movea(1, value, clear);
 	}
 
 	@Override
