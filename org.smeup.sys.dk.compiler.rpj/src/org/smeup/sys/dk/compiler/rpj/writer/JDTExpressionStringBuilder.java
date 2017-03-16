@@ -174,6 +174,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			}
 			break;
 		case FLOATING:
+			source = Number.class;
 			value = expression.getValue();
 			value = value.replaceAll("\\,", "\\.");
 			break;
