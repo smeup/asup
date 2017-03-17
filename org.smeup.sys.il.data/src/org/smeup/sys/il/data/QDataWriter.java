@@ -9,6 +9,7 @@ package org.smeup.sys.il.data;
 
 import java.lang.String;
 
+import java.util.Date;
 import org.smeup.sys.il.data.term.QSpecialElement;
 
 /**
@@ -63,5 +64,13 @@ public interface QDataWriter extends QDataVisitor {
 	 * @generated
 	 */
 	QDataWriter set(DataSpecial value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	QDataWriter set(Date value);
 
 } // QDataWriter

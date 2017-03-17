@@ -7,8 +7,8 @@
  */
 package org.smeup.sys.il.data.impl;
 
-import java.lang.String;
 import java.math.BigDecimal;
+import java.util.Date;
 
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.data.DataSpecial;
@@ -124,6 +124,16 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 	 * @generated NOT
 	 */
 	public QDataWriter set(DataSpecial value) {
+		this.object = value;
+		return this;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public QDataWriter set(Date value) {
 		this.object = value;
 		return this;
 	}
@@ -255,8 +265,10 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 	}
 
 	private void visitDateData(QDatetime data) {
-		// TODO Auto-generated method stub
-		
+		if (object instanceof Date)
+			data.eval((Date)object);
+		else 
+			data.clear();		
 	}
 
 } // DataWriterImpl
