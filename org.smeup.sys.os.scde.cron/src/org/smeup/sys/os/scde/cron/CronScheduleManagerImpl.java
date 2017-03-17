@@ -17,7 +17,7 @@ import org.smeup.sys.os.scde.QOperativeSystemScheduleEntryFactory;
 import org.smeup.sys.os.scde.QScheduleEntry;
 import org.smeup.sys.os.scde.QScheduleManager;
 
-public class CronScheduleManager implements QScheduleManager {
+public class CronScheduleManagerImpl implements QScheduleManager {
 	
 	@Inject
 	private QResourceManager resourceManager;
