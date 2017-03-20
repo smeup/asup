@@ -413,17 +413,16 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				jobManager.updateStatus(job, JobStatus.RUN);
 
 			int stackId = 0;
-			boolean stackEmpty = false;
+			int stackElemets = 0;
 			
 			// call
 			try {
 
 				assignParameters(callableProgram, params);
-
 				
 				programStack.push(callableProgram);
 
-				stackEmpty = programStack.isEmpty();
+				stackElemets = programStack.list(ProgramStackOrder.DESCEND).size();	
 				stackId = programStack.getClass().hashCode();
 				
 //				printSendStack(job, programStack, callableProgram);
@@ -457,8 +456,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 //				printReceiveStack(job, programStack, callableProgram);
 				try{
 					
-					if(stackEmpty != programStack.isEmpty()){
-						jobLogManager.error(job, "Difference with stack in call program " + callableProgram.getProgram().getName());
+					if(stackElemets != programStack.list(ProgramStackOrder.DESCEND).size()){
+						jobLogManager.error(job, "Difference with stack size in call program " + callableProgram.getProgram().getName());
 					}
 					
 					
