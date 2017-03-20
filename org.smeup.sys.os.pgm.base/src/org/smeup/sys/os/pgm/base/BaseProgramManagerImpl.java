@@ -146,6 +146,10 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 		Class<?> klass = job.getContext().loadClass(address);
 
+		if (klass == null){
+			address = getAddressNew(job, program);
+			klass = job.getContext().loadClass(address);
+		}
 		if (klass == null)
 			throw new OperatingSystemRuntimeException("Class not found: " + address);
 
@@ -180,6 +184,26 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		return address;
 	}
 
+	private String getAddressNew(QJob job, QProgram program) {
+		
+		String address = null;
+		
+		// specific address
+		if (program.getAddress() != null)
+			address = program.getAddress();
+		// Duplicated program
+		else if (program.getBaseProgram() != null) {
+			QProgram baseProgram = getProgram(job, null, program.getBaseProgram());
+			address = getAddressNew(job, baseProgram); 
+		}
+		// Program
+		else
+			address = "asup:/omac/com.smeup.erp.pgm.gen." + program.getApplication().replace("£", "_") + "/com.smeup.erp.pgm." + program.getApplication() + ".gen." + program.getName();
+
+		return address;
+	}
+	
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public <P> P loadProgram(QJob job, Class<P> klass) {
@@ -389,14 +413,17 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				jobManager.updateStatus(job, JobStatus.RUN);
 
 			int stackId = 0;
+			boolean stackEmpty = false;
 			
 			// call
 			try {
 
 				assignParameters(callableProgram, params);
 
+				
 				programStack.push(callableProgram);
 
+				stackEmpty = programStack.isEmpty();
 				stackId = programStack.getClass().hashCode();
 				
 //				printSendStack(job, programStack, callableProgram);
@@ -429,6 +456,12 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 //				printReceiveStack(job, programStack, callableProgram);
 				try{
+					
+					if(stackEmpty != programStack.isEmpty()){
+						jobLogManager.error(job, "Difference with stack in call program " + callableProgram.getProgram().getName());
+					}
+					
+					
 					programStack.pop();
 				} catch (Exception e){
 					jobLogManager.error(job, "Error in return call program:  " + callableProgram.getProgram().getName());
