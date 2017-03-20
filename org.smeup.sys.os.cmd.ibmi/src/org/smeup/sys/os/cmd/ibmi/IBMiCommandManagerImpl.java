@@ -12,8 +12,11 @@
 package org.smeup.sys.os.cmd.ibmi;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -46,6 +49,7 @@ import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataWriter;
+import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
@@ -53,9 +57,13 @@ import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStruct;
+import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
+import org.smeup.sys.il.data.def.QDataDef;
+import org.smeup.sys.il.data.def.QDatetimeDef;
 import org.smeup.sys.il.data.def.QMultipleCompoundDataDef;
 import org.smeup.sys.il.data.def.QUnaryCompoundDataDef;
+import org.smeup.sys.il.data.def.TimeFormat;
 import org.smeup.sys.il.data.term.FormatType;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QFormat;
@@ -202,7 +210,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 			QData data = null;
 			if (value.isEmpty() == false) {
-				data = assignValue(dataTerm, dataContainer.getData(dataTerm), dataWriter, value, variables);
+				data = assignValue(job, dataTerm, dataContainer.getData(dataTerm), dataWriter, value, variables);
 			} else {
 				data = dataContainer.getData(dataTerm);
 			}
@@ -217,9 +225,8 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		return callableCommand;
 	}
 	
-	private QData assignValue(QDataTerm<?> dataTerm, QData data, QDataWriter writer, String value, Map<String, Object> variables) {
-				
-
+	private QData assignValue(QJob job, QDataTerm<?> dataTerm, QData data, QDataWriter writer, String value, Map<String, Object> variables) {
+						
 		if (hasOnlyVariables(dataTerm, value)) {
 			
 			// If value contains only variables, don't parse the string but assign value using directly the variables
@@ -311,7 +318,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				QFormat format = dataTerm.getFacet(QFormat.class);
 				if (format != null && format.getType() == FormatType.COMMAND_STRING){
 					value = paramComp.getText();
-					setValue(writer, data, value, variables);
+					setValue(job, dataTerm, writer, data, value, variables);
 				}else{
 					if (paramComp.getComponentType() == CLParmComponentType.LIST) {
 
@@ -329,7 +336,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 							QData listItem = listAtomic.get(counter);
 
-							setValue(writer, listItem, value, variables);
+							setValue(job, dataTerm, writer, listItem, value, variables);
 
 							counter++;
 						}
@@ -343,7 +350,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 				for (int i = 1; i < capacity; i++) {
 					QData listItem = listAtomic.get(i);
-					setValue(writer, listItem, "", variables);
+					setValue(job, dataTerm, writer, listItem, "", variables);
 				}
 
 			}
@@ -383,11 +390,11 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				String tmpValue = listElem.toString();
 
 				if (isSpecialValue(dataTerm, tmpValue))
-					setValue(writer, tmpData, resolveSpecialValue(dataTerm, tmpValue), variables);
+					setValue(job, dataTerm, writer, tmpData, resolveSpecialValue(dataTerm, tmpValue), variables);
 				else {
 					
 					if (listElem instanceof CLParmList) {										
-						assignStructValue(multipleCompoundDataDef, tmpData, writer, tmpValue, variables);
+						assignStructValue(job, multipleCompoundDataDef, tmpData, writer, tmpValue, variables);
 					} else {
 						throw new OperatingSystemRuntimeException("Cannot parse command parameter : " + value + " as stroller data element", null);
 					}
@@ -431,7 +438,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 			} 
 
-			setValue(writer, data, value, variables);
+			setValue(job, dataTerm, writer, data, value, variables);
 			
 			dbgString = dataTerm.toString();
 
@@ -451,9 +458,9 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			// assignValue(struct, structValue);
 
 			if (isSpecialValue(dataTerm, value))
-				setValue(writer, data, resolveSpecialValue(dataTerm, value), variables);
+				setValue(job, dataTerm,  writer, data, resolveSpecialValue(dataTerm, value), variables);
 			else
-				assignStructValue(unaryCompoundDataDef, data, writer, value, variables);
+				assignStructValue(job, unaryCompoundDataDef, data, writer, value, variables);
 
 			dbgString = dataTerm.toString();
 
@@ -463,7 +470,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		return data;
 	}
 
-	private void assignStructValue(QCompoundDataDef<?, ?> compoundDataDef, QData data, QDataWriter writer, String parmValue, Map<String, Object> variables) {
+	private void assignStructValue(QJob job, QCompoundDataDef<?, ?> compoundDataDef, QData data, QDataWriter writer, String parmValue, Map<String, Object> variables) {
 
 		CLParmAbstractComponent paramComp;
 
@@ -479,7 +486,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				
 				QDataTerm<?> elemDataTerm = compoundDataDef.getElements().get(j - 1);
 				QData elementData = ((QDataStruct)data).getElement(elemDataTerm.getName());
-				assignValue(elemDataTerm, elementData, writer, values[values.length - j], variables);
+				assignValue(job, elemDataTerm, elementData, writer, values[values.length - j], variables);
 			}
 		} else {
 
@@ -506,7 +513,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				QDataTerm<?> dataTerm = elementIterator.next();	
 				QData elementData = ((QDataStruct)data).getElement(dataTerm.getName());
 				
-				assignValue(dataTerm, elementData, writer, tmpValue, variables);
+				assignValue(job, dataTerm, elementData, writer, tmpValue, variables);
 			}
 		}		
 	}
@@ -663,7 +670,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 
 	}
 
-	private void setValue(QDataWriter writer, QData data, Object value, Map<String, Object> variables) {
+	private void setValue(QJob job, QDataTerm dataTerm, QDataWriter writer, QData data, Object value, Map<String, Object> variables) {
 		
 		if (isSingleVariable(value.toString())) {
 			
@@ -697,6 +704,55 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			} else if (data instanceof QAdapter) {
 				QAdapter adapter = (QAdapter) data;
 				adapter.eval(value);
+			} else if (data instanceof QDatetime) {
+								
+				QDataDef<?> definition = dataTerm.getDefinition();
+				
+				String format = null;
+				
+				if (definition instanceof QDatetimeDef) {
+					
+					QDatetimeDef datetimeDef = (QDatetimeDef)definition;					
+					
+					String separator = null;
+					
+					switch(datetimeDef.getType()){
+					
+					case DATE:						
+												
+						format = toJavaFormat(job.getDateFormat(), job.getDateSeparator());						
+												
+					case TIME:
+
+						format = toJavaFormat(job.getDateFormat(), job.getTimeSeparator());
+						
+						break;						
+					case TIME_STAMP:
+						
+						format = toJavaFormat(job.getDateFormat(), job.getDateSeparator()) 
+									+ 
+									"-" 
+									+ 
+									toJavaFormat(job.getDateFormat(), job.getTimeSeparator()) 
+									+ 
+									".SSSSSS";
+						
+						break;
+					default:
+						break;
+					
+					}
+				}
+				
+				Date date;
+				try {
+					date = new SimpleDateFormat(format).parse(value.toString());
+					data.accept(writer.set(date));
+				} catch (ParseException e) {
+					data.clear();
+				} 
+								
+				
 			} else
 				data.accept(writer.set(value.toString()));
 		}
@@ -738,6 +794,81 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 		
 		return result;
 	}
+	
+	private final String toJavaFormat(final DateFormat dateFormat, final String separator) {
+
+		String format = null;
+
+		switch (dateFormat) {
+		case DMY:
+			format = "dd/MM/yy";
+			break;
+		case EUR:
+			format = "dd.MM.yyyy";
+			break;
+		case ISO:
+			format = "yyyy-MM-dd";
+			break;
+		case JIS:
+			format = "yyyy-MM-dd";
+			break;
+		case JOBRUN:
+			format = "yy-MM-dd";
+			break;
+		case JUL:
+			format = "yy-D";
+			break;
+		case MDY:
+			format = "MM/dd/yy";
+			break;
+		case USA:
+			format = "MM/dd/yyyy";
+			break;
+		case YMD:
+			format = "yy/MM/dd";
+			break;
+		case YYMD:
+			format = "yyyy/MM/dd";
+			break;
+		}
+
+		if (separator != null)
+			format = format.replaceAll("-", separator);
+
+		return format;
+	}
+	
+	private final String toJavaFormat(final TimeFormat timeFormat, final String separator) {
+
+		String format = null;
+
+		switch (timeFormat) {
+		case EUR:
+			format = "HH.mm.ss";
+			break;
+		case HMS:
+			format = "HH:mm:ss";
+			break;
+		case ISO:
+			format = "HH.mm.ss";
+			break;
+		case JIS:
+			format = "HH:mm:ss";
+			break;
+		case JOBRUN:
+			format = "HH.mm.ss";
+			break;
+		case USA:
+			format = "HH:mm a";
+			break;
+		}
+
+		if (separator != null)
+			format = format.replaceAll(".", separator);
+
+		return format;
+	}
+
 	
 	
 }

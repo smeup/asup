@@ -14,7 +14,7 @@ package org.smeup.sys.il.data.nio;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 
 import org.eclipse.emf.common.util.Enumerator;
 import org.smeup.sys.il.data.DataSpecial;
@@ -82,7 +82,8 @@ public final class NIOEnumImpl<E extends Enum<E>, D extends QBufferedElement> ex
 					
 					switch (getDelegate().getBufferedElementType()) {
 					case DATETIME:
-						if(((QDatetime)getDelegate()).eq(Date.valueOf(special.value())))
+						//TODO: gestione sbagliata!
+						if(((QDatetime)getDelegate()).eq(new Date(special.value())))
 							return Enum.valueOf(_klass, field.getName());
 						break;
 					case NUMERIC:

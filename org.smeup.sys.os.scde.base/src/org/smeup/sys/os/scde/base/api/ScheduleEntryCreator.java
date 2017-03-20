@@ -59,7 +59,36 @@ public class ScheduleEntryCreator {
 		
 		String _jobName = jobName.asData().trimR();
 		String _frequency = frequency.asData().trimR();
+		
 		String _scheduleDate = scheduleDate.asData().toString().trim();
+		
+		/*
+		if (scheduleDate.isEmpty() == false) {
+			
+			switch(scheduleDate.asEnum()){
+			case CURRENT:
+				
+				break;
+			case MONTHEND:
+				
+				break;
+			case MONTHSTR:
+				
+				break;
+			case NONE:
+				
+				break;
+			case OTHER:
+				_scheduleDate = scheduleDate.asData().toString().trim();
+				break;
+			default:
+				break;
+			
+			}
+		}
+		*/
+		
+		 
 		List<String> _scheduleDay = new ArrayList<String>();
 		
 		for (QEnum<SCHEDULEDAYEnum, QCharacter> enumElem : scheduleDay) {
@@ -118,8 +147,23 @@ public class ScheduleEntryCreator {
 
 		String _scheduleTime = scheduleTime.asData().toString();
 		
+		/*
+		if (scheduleTime.isEmpty() == false) {
+		
+			switch(scheduleTime.asEnum()){
+			case CURRENT:
+				break;
+			case OTHER:
+				_scheduleTime = scheduleTime.asData().toString();
+				break;
+			default:
+				break;
+			
+			}
+		}
+		*/
+		
 		String _commandToRun = commandToRun.asString().trim();
-				
 		
 		String _user = "";
 		switch(user.asEnum()) {
