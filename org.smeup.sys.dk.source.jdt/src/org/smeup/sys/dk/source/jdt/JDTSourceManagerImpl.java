@@ -245,6 +245,11 @@ public class JDTSourceManagerImpl implements QSourceManager {
 		}
 	}
 
+	@Override
+	public void removeEntry(QContext context, QSourceNode parent) throws IOException {
+		// TODO
+	}
+	
 	private <T extends QObjectNameable> QSourceEntry createEntry(QContext context, QSourceNode parent, Class<T> type, String name, boolean replace, InputStream content) throws IOException {
 
 		IFolder folder = getFolder(parent, type, true);
@@ -440,4 +445,5 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	public <T extends QObjectNameable> T deserializeObject(QContext context, QProject project, Class<T> type, String name, InputStream stream) throws IOException {
 		return getObjectSerializer(context).deserialize(project, type, name, stream);
 	}
+
 }

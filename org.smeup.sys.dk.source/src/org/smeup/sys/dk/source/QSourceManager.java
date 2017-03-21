@@ -166,6 +166,14 @@ public interface QSourceManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException" contextRequired="true" parentRequired="true"
+	 * @generated
+	 */
+	void removeEntry(QContext context, QSourceNode parent) throws IOException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException" contextRequired="true" projectRequired="true" typeRequired="true" nameRequired="true" streamDataType="org.smeup.sys.mi.core.JavaInputStream" streamRequired="true"
 	 * @generated
 	 */

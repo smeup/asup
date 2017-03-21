@@ -13,6 +13,7 @@ package org.smeup.sys.dk.source.nio;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
@@ -279,6 +280,17 @@ public class NIOSourceManagerImpl implements QSourceManager {
 		}
 
 	}
+	
+	@Override
+	public void removeEntry(QContext context, QSourceNode parent) throws IOException {
+		Path path = getFolder(context, parent, null, false);
+		if (path != null){
+		    for (File file : path.toFile().listFiles())
+				Files.delete(file.toPath());
+		}
+			Files.delete(path);
+	}
+	
 
 	private <T extends QObjectNameable> QSourceEntry createEntry(QContext context, QSourceNode parent, Class<T> type, String name, boolean replace, InputStream content) throws IOException {
 		
