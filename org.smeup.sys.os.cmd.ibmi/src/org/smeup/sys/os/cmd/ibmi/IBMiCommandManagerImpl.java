@@ -681,81 +681,85 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 				if (variable != null && variable instanceof QBufferedData) {
 					((QBufferedData)variable).assign((QBufferedData)data);
 				}
+			} else
+				setValueNoVariable(job, dataTerm, writer, data, value, variables);
+		} else {	
+			setValueNoVariable(job, dataTerm, writer, data, value, variables);
+		}
+	}
+	
+	private void setValueNoVariable(QJob job, QDataTerm dataTerm, QDataWriter writer, QData data, Object value, Map<String, Object> variables) {
+		if (data instanceof QEnum) {
+			@SuppressWarnings("unchecked")
+			QEnum<?, QBufferedElement> enumerator = (QEnum<?, QBufferedElement>) data;
+
+			QBufferedElement element = enumerator.asData();
+			switch (element.getBufferedElementType()) {
+			case DATETIME:
+				element.movel(value.toString(), true);
+				break;
+			case NUMERIC:
+				((QNumeric)element).eval(new BigDecimal(value.toString()));
+				break;
+			case STRING:
+				((QString)element).eval(value.toString());
+				break;
+			}
+
+		} else if (data instanceof QAdapter) {
+			QAdapter adapter = (QAdapter) data;
+			adapter.eval(value);
+		} else if (data instanceof QDatetime) {
+							
+			QDataDef<?> definition = dataTerm.getDefinition();
+			
+			String format = null;
+			
+			if (definition instanceof QDatetimeDef) {
+				
+				QDatetimeDef datetimeDef = (QDatetimeDef)definition;					
+				
+				String separator = null;
+				
+				switch(datetimeDef.getType()){
+				
+				case DATE:						
+											
+					format = toJavaFormat(job.getDateFormat(), job.getDateSeparator());						
+											
+				case TIME:
+
+					format = toJavaFormat(job.getDateFormat(), job.getTimeSeparator());
+					
+					break;						
+				case TIME_STAMP:
+					
+					format = toJavaFormat(job.getDateFormat(), job.getDateSeparator()) 
+								+ 
+								"-" 
+								+ 
+								toJavaFormat(job.getDateFormat(), job.getTimeSeparator()) 
+								+ 
+								".SSSSSS";
+					
+					break;
+				default:
+					break;
+				
+				}
 			}
 			
-		} else {	
-			if (data instanceof QEnum) {
-				@SuppressWarnings("unchecked")
-				QEnum<?, QBufferedElement> enumerator = (QEnum<?, QBufferedElement>) data;
-	
-				QBufferedElement element = enumerator.asData();
-				switch (element.getBufferedElementType()) {
-				case DATETIME:
-					element.movel(value.toString(), true);
-					break;
-				case NUMERIC:
-					((QNumeric)element).eval(new BigDecimal(value.toString()));
-					break;
-				case STRING:
-					((QString)element).eval(value.toString());
-					break;
-				}
-	
-			} else if (data instanceof QAdapter) {
-				QAdapter adapter = (QAdapter) data;
-				adapter.eval(value);
-			} else if (data instanceof QDatetime) {
-								
-				QDataDef<?> definition = dataTerm.getDefinition();
-				
-				String format = null;
-				
-				if (definition instanceof QDatetimeDef) {
-					
-					QDatetimeDef datetimeDef = (QDatetimeDef)definition;					
-					
-					String separator = null;
-					
-					switch(datetimeDef.getType()){
-					
-					case DATE:						
-												
-						format = toJavaFormat(job.getDateFormat(), job.getDateSeparator());						
-												
-					case TIME:
-
-						format = toJavaFormat(job.getDateFormat(), job.getTimeSeparator());
-						
-						break;						
-					case TIME_STAMP:
-						
-						format = toJavaFormat(job.getDateFormat(), job.getDateSeparator()) 
-									+ 
-									"-" 
-									+ 
-									toJavaFormat(job.getDateFormat(), job.getTimeSeparator()) 
-									+ 
-									".SSSSSS";
-						
-						break;
-					default:
-						break;
-					
-					}
-				}
-				
-				Date date;
-				try {
-					date = new SimpleDateFormat(format).parse(value.toString());
-					data.accept(writer.set(date));
-				} catch (ParseException e) {
-					data.clear();
-				} 
-								
-				
-			} else
-				data.accept(writer.set(value.toString()));
-		}
+			Date date;
+			try {
+				date = new SimpleDateFormat(format).parse(value.toString());
+				data.accept(writer.set(date));
+			} catch (ParseException e) {
+				data.clear();
+			} 
+							
+			
+		} else
+			data.accept(writer.set(value.toString()));
 	}
 	
 	private boolean isEmptyString(String value) {
