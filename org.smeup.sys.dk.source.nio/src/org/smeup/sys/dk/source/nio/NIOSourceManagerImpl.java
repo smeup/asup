@@ -254,12 +254,12 @@ public class NIOSourceManagerImpl implements QSourceManager {
 
 	@Override
 	public <T extends QObjectNameable> List<QSourceEntry> listObjectEntries(QContext context, QProject project, Class<T> type, String nameFilter) {
-		return listChildEntries(context, project, type, nameFilter);
+		return listChildEntries(context, project, type, nameFilter, false);
 	}
 
 	@Override
 	public List<QSourceEntry> listChildEntries(QContext context, QSourceNode parent) {
-		return listChildEntries(context, parent, null, null);
+		return listChildEntries(context, parent, null, null, false);
 	}
 
 	@Override
@@ -283,15 +283,12 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	
 	@Override
 	public void removeWorkEntry(QContext context, QSourceNode parent) throws IOException {
-		Path path = getFolder(context, parent, null, false);
-		if (path != null){
-		    for (File file : path.toFile().listFiles())
-				Files.delete(file.toPath());
 
-		    Files.delete(path);
-		}
+	    for (QSourceEntry entry : listChildEntries(context, parent, null, null, true)){
+	    	removeEntry(context, entry);	    	
+	    }
+
 	}
-	
 
 	private <T extends QObjectNameable> QSourceEntry createEntry(QContext context, QSourceNode parent, Class<T> type, String name, boolean replace, InputStream content) throws IOException {
 		
@@ -342,7 +339,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 		return new NIOSourceEntryFileAdapter(getObjectSerializer(context), parent.getProject(), file);
 	}
 
-	private <T extends QObjectNameable> List<QSourceEntry> listChildEntries(QContext context, QSourceNode parent, Class<T> type, String nameFilter) {
+	private <T extends QObjectNameable> List<QSourceEntry> listChildEntries(QContext context, QSourceNode parent, Class<T> type, String nameFilter, boolean workEntries) {
 
 		List<QSourceEntry> entries = new ArrayList<QSourceEntry>();
 		Path folder = getFolder(context, parent, type, false);
@@ -356,10 +353,15 @@ public class NIOSourceManagerImpl implements QSourceManager {
 
 				String resourceName = path.getFileName().toString();
 
-				// XMI extension
-				if (!resourceName.endsWith(".XMI"))
-					continue;
-
+				if(workEntries){
+					// XMI-XML upper lower extension
+					if (!resourceName.toUpperCase().endsWith(".XMI") && !resourceName.toUpperCase().endsWith(".XML"))
+						continue;
+				} else {
+					// XMI extension
+					if (!resourceName.endsWith(".XMI"))
+						continue;
+				}		
 				// remove extension
 				resourceName = resourceName.substring(0, resourceName.length() - 4);
 
