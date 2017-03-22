@@ -246,7 +246,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	}
 
 	@Override
-	public void removeEntry(QContext context, QSourceNode parent) throws IOException {
+	public void removeWorkEntry(QContext context, QSourceNode parent) throws IOException {
 		// TODO
 	}
 	

@@ -282,13 +282,14 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	}
 	
 	@Override
-	public void removeEntry(QContext context, QSourceNode parent) throws IOException {
+	public void removeWorkEntry(QContext context, QSourceNode parent) throws IOException {
 		Path path = getFolder(context, parent, null, false);
 		if (path != null){
 		    for (File file : path.toFile().listFiles())
 				Files.delete(file.toPath());
+
+		    Files.delete(path);
 		}
-			Files.delete(path);
 	}
 	
 

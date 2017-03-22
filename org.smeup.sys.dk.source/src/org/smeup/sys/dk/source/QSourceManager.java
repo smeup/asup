@@ -169,7 +169,7 @@ public interface QSourceManager {
 	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException" contextRequired="true" parentRequired="true"
 	 * @generated
 	 */
-	void removeEntry(QContext context, QSourceNode parent) throws IOException;
+	void removeWorkEntry(QContext context, QSourceNode parent) throws IOException;
 
 	/**
 	 * <!-- begin-user-doc -->
