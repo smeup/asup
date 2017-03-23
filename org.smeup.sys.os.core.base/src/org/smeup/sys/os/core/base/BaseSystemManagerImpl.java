@@ -75,9 +75,21 @@ public class BaseSystemManagerImpl implements QSystemManager {
 		return this.jobKernel;
 	}
 	
-	protected synchronized int nextJobID() {
-		nextJobNumber++;
-		return nextJobNumber;
+	protected synchronized int nextJobID(JobType jobType, QSystem system, QJob job) {
+
+		int lastNumber = 0;
+		
+		if(jobType.equals(jobType.KERNEL)){
+			lastNumber = nextJobNumber++;
+		} else {
+			lastNumber = system.getLastJobNumber();
+			lastNumber++;
+
+			QResourceWriter<QSystem> systemWriter = resourceManager.getResourceWriter(job, QSystem.class, Scope.SYSTEM_LIBRARY);
+			system.setLastJobNumber(lastNumber);
+			systemWriter.save(system, true);
+		}
+		return lastNumber;
 	}
 
 	@Override
@@ -109,6 +121,8 @@ public class BaseSystemManagerImpl implements QSystemManager {
 				QEnvironmentVariableContainer variableContainer = persistedSystem.getVariableContainer();
 				if (variableContainer != null) 
 					system.setVariableContainer(variableContainer);
+
+				system.setLastJobNumber(persistedSystem.getLastJobNumber());
 			}
 			system.setStatus(SystemStatus.STARTED);
 			systemWriter.save(system, true);
@@ -172,7 +186,7 @@ public class BaseSystemManagerImpl implements QSystemManager {
 		// reference
 		QJobReference jobReference = QOperatingSystemJobsFactory.eINSTANCE.createJobReference();
 		jobReference.setJobUser(principal.getName());
-		jobReference.setJobNumber(nextJobID());
+		jobReference.setJobNumber(nextJobID(jobType, system, jobKernel));
 		if (jobName == null)
 			jobReference.setJobName("QAS" + new DecimalFormat("000000").format(jobReference.getJobNumber()));
 		else
