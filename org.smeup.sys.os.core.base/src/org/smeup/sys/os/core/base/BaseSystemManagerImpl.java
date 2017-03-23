@@ -84,6 +84,9 @@ public class BaseSystemManagerImpl implements QSystemManager {
 		} else {
 			lastNumber = system.getLastJobNumber();
 			lastNumber++;
+			// 
+			if(lastNumber==1000000)
+				lastNumber=1;
 
 			QResourceWriter<QSystem> systemWriter = resourceManager.getResourceWriter(job, QSystem.class, Scope.SYSTEM_LIBRARY);
 			system.setLastJobNumber(lastNumber);
