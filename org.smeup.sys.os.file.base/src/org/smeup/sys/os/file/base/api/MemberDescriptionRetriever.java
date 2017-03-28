@@ -32,6 +32,10 @@ public class MemberDescriptionRetriever {
 	public void main(@DataDef(length = 30000) QCharacter $$dati, @DataDef(binaryType = BinaryType.INTEGER) QCharacter $$len, @DataDef(length = 8) QCharacter format, FILE file,
 			@DataDef(length = 10) QCharacter member, @DataDef(length = 1) QCharacter over, QUSEC usec) {
 		
+		// TODO
+		if(member.trimR().startsWith("NTSTRU"))
+			member.clear();
+		
 		if(member.trimR().contains("*")){
 			usec.qusbavl.eval(1);
 			return;
