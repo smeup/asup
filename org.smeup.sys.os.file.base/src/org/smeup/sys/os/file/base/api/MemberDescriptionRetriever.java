@@ -11,10 +11,15 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileMember;
 import org.smeup.sys.os.file.QFileMemberManager;
+import org.smeup.sys.os.file.QFileMembered;
+import org.smeup.sys.os.file.QOperatingSystemFileFactory;
 
 @Program(name = "QUSRMBRD")
 public class MemberDescriptionRetriever {
@@ -23,6 +28,8 @@ public class MemberDescriptionRetriever {
 	private QFileMemberManager fileMemberManager;
 	@Inject
 	private QJob job;
+	@Inject
+	private QResourceManager resourceManager;
 
 	public QUSM0100 qusm0100;
 	public QUSM0200 qusm0200;
@@ -32,27 +39,43 @@ public class MemberDescriptionRetriever {
 	public void main(@DataDef(length = 30000) QCharacter $$dati, @DataDef(binaryType = BinaryType.INTEGER) QCharacter $$len, @DataDef(length = 8) QCharacter format, FILE file,
 			@DataDef(length = 10) QCharacter member, @DataDef(length = 1) QCharacter over, QUSEC usec) {
 		
-		// TODO
-		if(member.trimR().startsWith("NTSTRU"))
-			member.clear();
+		QResourceReader<QFile> fileReader = resourceManager.getResourceReader(job, QFile.class, file.library.asEnum(), file.library.asData().trimR());
+		QFile qFile = fileReader.lookup(file.name.trimR());
 		
 		if(member.trimR().contains("*")){
 			usec.qusbavl.eval(1);
 			return;
 		}
+
+		QFileMember fileMember = null;
+		String library = "";
 		
-		QFileMember fileMember = fileMemberManager.lookup(job, file.library.asEnum(), file.library.asData().trimR(), file.name.trimR(), member.trimR());
-		if(fileMember == null) {
-			usec.qusbavl.eval(1);
-			return;
+		if(qFile == null || qFile instanceof QFileMembered){
+			fileMember = fileMemberManager.lookup(job, file.library.asEnum(), file.library.asData().trimR(), file.name.trimR(), member.trimR());
+			if(fileMember == null) {
+				usec.qusbavl.eval(1);
+				return;
+			}
+			library = fileMember.getFile().getLibrary();
+		} else {
+			if(!member.trimR().equals(file.name.trimR())){
+				usec.qusbavl.eval(1);
+				return;
+			}
+			fileMember = QOperatingSystemFileFactory.eINSTANCE.createFileMember();
+			fileMember.setName(file.name.trimR());
+			fileMember.setText(qFile.getText());
+			fileMember.setType("PF");
+			library = file.library.asData().trimR();
 		}
+		
 		
 		switch (format.trimR()) {
 		case "MBRD0100":
 			qusm0100.clear();
 
 			qusm0100.qusdfiln.eval(fileMember.getName());
-			qusm0100.qusdfill.eval(fileMember.getFile().getLibrary());
+			qusm0100.qusdfill.eval(library);
 			qusm0100.qusmn02.eval(member.trimR());
 			qusm0100.qusst00.eval(fileMember.getType());
 			qusm0100.qustd03.eval(fileMember.getText());
@@ -68,7 +91,7 @@ public class MemberDescriptionRetriever {
 			qusm0300.clear();
 
 			qusm0300.qusdfiln01.eval(fileMember.getName());
-			qusm0300.qusdfill01.eval(fileMember.getFile().getLibrary());
+			qusm0300.qusdfill01.eval(library);
 			qusm0300.qusmn04.eval(member.trimR());
 			qusm0300.qusst02.eval(fileMember.getType());
 			qusm0300.qustd05.eval(fileMember.getText());
