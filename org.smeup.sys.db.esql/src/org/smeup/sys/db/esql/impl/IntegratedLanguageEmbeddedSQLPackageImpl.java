@@ -593,6 +593,9 @@ public class IntegratedLanguageEmbeddedSQLPackageImpl extends EPackageImpl imple
 		addEParameter(op, theIntegratedLanguageDataPackage.getNumeric(), "position", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "descriptor", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(cursorEClass, null, "relative", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getNumeric(), "position", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(cursorTermEClass, QCursorTerm.class, "CursorTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCursorTerm_CursorType(), this.getCursorType(), "cursorType", null, 0, 1, QCursorTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCursorTerm_Hold(), ecorePackage.getEBoolean(), "hold", null, 1, 1, QCursorTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

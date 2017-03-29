@@ -78,6 +78,7 @@ import org.smeup.sys.mi.core.util.QStrings;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
+import org.smeup.sys.os.pgm.rpj.RPJProgramSupport.Specials;
 import org.smeup.sys.rt.core.QLogger;
 
 public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
@@ -137,6 +138,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QAtomicTermExpression expression) {
 
+		if (mockExpression(expression))
+			return false;
+		
 		Class<?> source = null;
 
 		String value = null;
@@ -316,6 +320,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QAssignmentExpression expression) {
 
+		if (mockExpression(expression))
+			return false;
+		
 		expression.getLeftOperand().accept(this);		
 		buffer.append(toJavaPrimitive(expression.getOperator()));
 		expression.getRightOperand().accept(this);
@@ -464,6 +471,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QBooleanExpression expression) {
 
+		if (mockExpression(expression))
+			return false;
+		
 		if (expression.getOperand() != null) {
 
 			if (expression.getOperand() instanceof QAtomicTermExpression) {
@@ -493,6 +503,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QLogicalExpression expression) {
 
+		if (mockExpression(expression))
+			return false;
+		
 		JDTExpressionStringBuilder builder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
 		builder.setAST(getAST());
 
@@ -558,6 +571,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QRelationalExpression expression) {
 
+		if (mockExpression(expression))
+			return false;
+		
 		// normalize arithmetic left
 		if (expression.getLeftOperand() instanceof QArithmeticExpression) {
 			QBlockExpression blockExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createBlockExpression();
@@ -665,6 +681,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QBlockExpression expression) {
 
+		if (mockExpression(expression))
+			return false;
+		
 		// TODO statement return in procedure
 		if (expression.getParent() == null && expression.getExpression().getExpressionType().equals(ExpressionType.RELATIONAL)) {
 			expression.getExpression().accept(this);
@@ -1039,7 +1058,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 	@Override
 	public boolean visit(QQualifiedTermExpression expression) {
-
+		
+		if (mockExpression(expression))
+			return false;
+		
 		QDataTerm<?> dataTerm = compilationUnit.getDataTerm(expression.getValue(), true);
 		if (dataTerm == null)
 			throw new IntegratedLanguageExpressionRuntimeException("Invalid term: " + expression.getValue());
@@ -1097,6 +1119,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QFunctionTermExpression expression) {
 
+		if (mockExpression(expression))
+			return false;
+		
 		QPrototype prototype = null;
 
 		// search object method
@@ -1301,6 +1326,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QArrayExpression expression) {
 
+		if (mockExpression(expression))
+			return false;
+
 		if (expression.getExpression().isEmpty()) {
 			buffer.append("new QBufferedData[] {}");
 		} else if (expression.getExpression().size() == 1) {
@@ -1362,6 +1390,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		String expressionString = expression.toString();
 		String expressionRewrited = null;
+		
+//		System.out.println(expressionString);
 
 		// B£G00G
 		if (expressionString.equals("W$DIV+'       '+W£DIV")) {
@@ -1374,10 +1404,19 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		else if (expressionString.contains("%SUBARR(POG: 1: $CONTD)+' '+%SUBARR(PDE: 1: $CONTD)")) {
 			expressionRewrited = "pog.qSubarr(1, $contd).qPlus(\" \").qPlus(pde.qSubarr(1, $contd))";
 		}
+		// B£SER_26
+		else if(expressionString.equals("P_RxATT(£UIBPA: 'Scp(': *HIVAL)")){
+			expressionRewrited = "£Jax.p_rxatt(£Uib.£uibds.£uibpa.s(), \"Scp(\", \"999999999999999\", null, null)";
+		}
 		// C5CI00A / C5MB00A
 		else if (expressionString.contains("VALORI+A9+DESCRIZIONI")) {
 			expressionRewrited = "valori.qPlus(a9).qPlus(descrizioni)";
 		}
+		// C5SER_50
+		else if(expressionString.equals("P_RXATT(STRPAR: 'FF': *HIVAL)")){
+			expressionRewrited = "£Jax.p_rxatt(strpar.s(), \"FF\", \"999999999999999\", null, null)";
+		}
+
 		// D0CC01
 		else if (expressionString.contains("SK_FACS/SK_FACS($$IG£Q)*SK_FAQC($F)")) {
 			expressionRewrited = "oc_facs.current().sk_facs.qDiv(oc_facs.current().sk_facs.get($$ig£q)).qMult(sk_faqc.get($f))";
@@ -1395,6 +1434,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		}
 		else if (expressionString.contains("SK_FACS+(SK_COST/§§QTXX*SK_FACS($$IG£Q))")) {
 			expressionRewrited = "oc_facs.current().sk_facs.qPlus(sk_cost.qDiv(ççqtxx).qMult(oc_facs.current().sk_facs.get($$ig£q)))";
+		}
+		// MTI£SAR
+		else if (expressionString.equals("%runnable() and (%EQUAL())")) {
+			expressionRewrited = "qRPJ.qRunnable() && (qRPJ.qEqual(brdist0).b())";
 		}
 		// MUTE02_01
 		else if (expressionString.contains("AR10+10+AR11")) {

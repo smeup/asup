@@ -130,6 +130,14 @@ public interface QCursor extends QESqlObject, Closeable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model positionRequired="true"
+	 * @generated
+	 */
+	void relative(QNumeric position);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */

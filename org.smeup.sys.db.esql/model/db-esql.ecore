@@ -67,6 +67,9 @@
       <eParameters name="position" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Numeric"/>
       <eParameters name="descriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="relative">
+      <eParameters name="position" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Numeric"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="CursorParameters" instanceClassName="org.smeup.sys.il.data.QBufferedElement[]"/>
   <eClassifiers xsi:type="ecore:EDataType" name="CursorRecord" instanceClassName="org.smeup.sys.il.data.QBufferedData[]"/>
