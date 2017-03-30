@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.il.core.term.QTerm;
+import org.smeup.sys.il.flow.*;
 import org.smeup.sys.il.flow.ConversionStatus;
 import org.smeup.sys.il.flow.EvalOperator;
 import org.smeup.sys.il.flow.PassingType;

@@ -16,6 +16,7 @@ package org.smeup.sys.il.flow;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QAnnotationCommand#getCommand <em>Command</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QAnnotationCommand#isPostCompile <em>Post Compile</em>}</li>
  * </ul>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getAnnotationCommand()
@@ -53,4 +54,30 @@ public interface QAnnotationCommand extends QAnnotation {
 	 * @generated
 	 */
 	void setCommand(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Post Compile</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Post Compile</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Post Compile</em>' attribute.
+	 * @see #setPostCompile(boolean)
+	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getAnnotationCommand_PostCompile()
+	 * @model
+	 * @generated
+	 */
+	boolean isPostCompile();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QAnnotationCommand#isPostCompile <em>Post Compile</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Post Compile</em>' attribute.
+	 * @see #isPostCompile()
+	 * @generated
+	 */
+	void setPostCompile(boolean value);
 } // QAnnotationCommand

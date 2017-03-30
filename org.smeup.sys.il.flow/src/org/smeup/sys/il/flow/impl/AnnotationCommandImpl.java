@@ -21,6 +21,7 @@ import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
  * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.AnnotationCommandImpl#getCommand <em>Command</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.AnnotationCommandImpl#isPostCompile <em>Post Compile</em>}</li>
  * </ul>
  *
  * @generated
@@ -46,6 +47,25 @@ public class AnnotationCommandImpl extends AnnotationImpl implements QAnnotation
 	 * @ordered
 	 */
 	protected String command = COMMAND_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isPostCompile() <em>Post Compile</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isPostCompile()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean POST_COMPILE_EDEFAULT = false;
+	/**
+	 * The cached value of the '{@link #isPostCompile() <em>Post Compile</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isPostCompile()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean postCompile = POST_COMPILE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -86,6 +106,27 @@ public class AnnotationCommandImpl extends AnnotationImpl implements QAnnotation
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isPostCompile() {
+		return postCompile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPostCompile(boolean newPostCompile) {
+		boolean oldPostCompile = postCompile;
+		postCompile = newPostCompile;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__POST_COMPILE, oldPostCompile, postCompile));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -94,6 +135,8 @@ public class AnnotationCommandImpl extends AnnotationImpl implements QAnnotation
 		switch (featureID) {
 			case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__COMMAND:
 				return getCommand();
+			case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__POST_COMPILE:
+				return isPostCompile();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -107,6 +150,9 @@ public class AnnotationCommandImpl extends AnnotationImpl implements QAnnotation
 		switch (featureID) {
 			case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__COMMAND:
 				setCommand((String)newValue);
+				return;
+			case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__POST_COMPILE:
+				setPostCompile((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,6 +168,9 @@ public class AnnotationCommandImpl extends AnnotationImpl implements QAnnotation
 			case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__COMMAND:
 				setCommand(COMMAND_EDEFAULT);
 				return;
+			case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__POST_COMPILE:
+				setPostCompile(POST_COMPILE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -135,6 +184,8 @@ public class AnnotationCommandImpl extends AnnotationImpl implements QAnnotation
 		switch (featureID) {
 			case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__COMMAND:
 				return COMMAND_EDEFAULT == null ? command != null : !COMMAND_EDEFAULT.equals(command);
+			case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__POST_COMPILE:
+				return postCompile != POST_COMPILE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -150,6 +201,8 @@ public class AnnotationCommandImpl extends AnnotationImpl implements QAnnotation
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (command: ");
 		result.append(command);
+		result.append(", postCompile: ");
+		result.append(postCompile);
 		result.append(')');
 		return result.toString();
 	}

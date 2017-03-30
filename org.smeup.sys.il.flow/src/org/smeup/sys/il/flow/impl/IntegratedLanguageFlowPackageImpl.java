@@ -461,6 +461,15 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAnnotationCommand_PostCompile() {
+		return (EAttribute)annotationCommandEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAnnotationScope() {
 		return annotationScopeEClass;
 	}
@@ -1522,6 +1531,7 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 		annotationCommandEClass = createEClass(ANNOTATION_COMMAND);
 		createEAttribute(annotationCommandEClass, ANNOTATION_COMMAND__COMMAND);
+		createEAttribute(annotationCommandEClass, ANNOTATION_COMMAND__POST_COMPILE);
 
 		annotationScopeEClass = createEClass(ANNOTATION_SCOPE);
 		createEAttribute(annotationScopeEClass, ANNOTATION_SCOPE__NAME);
@@ -1779,6 +1789,7 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 		initEClass(annotationCommandEClass, QAnnotationCommand.class, "AnnotationCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAnnotationCommand_Command(), ecorePackage.getEString(), "command", null, 1, 1, QAnnotationCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnnotationCommand_PostCompile(), ecorePackage.getEBoolean(), "postCompile", null, 0, 1, QAnnotationCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(annotationScopeEClass, QAnnotationScope.class, "AnnotationScope", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAnnotationScope_Name(), ecorePackage.getEString(), "name", null, 0, 1, QAnnotationScope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
