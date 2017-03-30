@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Runtime Core Felix
+Bundle-SymbolicName: org.smeup.sys.rt.core.felix
+Bundle-Version: 0.9.0.qualifier
+Bundle-Activator: org.smeup.sys.rt.core.felix.FelixActivator
+Bundle-Vendor: www.smeup.com
+Require-Bundle: org.eclipse.core.runtime,
+ org.smeup.sys.rt.core,
+ org.smeup.sys.il.core.e4
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy

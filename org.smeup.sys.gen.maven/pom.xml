@@ -334,6 +334,7 @@
     <module>../org.smeup.sys.rt.auth.base</module>
     <module>../org.smeup.sys.rt.core</module>
     <module>../org.smeup.sys.rt.core.e4</module>
+    <module>../org.smeup.sys.rt.core.felix</module>
     <module>../org.smeup.sys.rt.core.test</module>
     <module>../org.smeup.sys.rt.repo</module>
     <module>../org.smeup.sys.rt.repo.e4</module>
