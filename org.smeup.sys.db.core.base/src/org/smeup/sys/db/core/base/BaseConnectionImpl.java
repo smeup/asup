@@ -91,6 +91,17 @@ public class BaseConnectionImpl implements QConnection {
 
 	}
 
+	@SuppressWarnings("resource")
+	@Override
+	public QStatement createStatementCursorInsensitive(boolean native_) throws SQLException {
+
+		Statement sqlStatement = null;
+		sqlStatement = getRawConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+		BaseStatementImpl statement = new BaseStatementImpl(this, sqlStatement, native_);
+		return statement;
+	}
+	
 	@Override
 	public String getCatalog() throws SQLException {
 		return virtualCatalog;

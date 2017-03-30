@@ -103,6 +103,14 @@ public interface QConnection extends QContextProvider {
 	QStatement createStatement(boolean native_, boolean updatable) throws SQLException;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" exceptions="org.smeup.sys.db.core.DatabaseException" nativeRequired="true"
+	 * @generated
+	 */
+	QStatement createStatementCursorInsensitive(boolean native_) throws SQLException;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation" exceptions="org.smeup.sys.db.core.DatabaseException"
 	 * @generated

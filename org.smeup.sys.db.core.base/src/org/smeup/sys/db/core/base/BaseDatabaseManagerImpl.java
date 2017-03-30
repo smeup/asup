@@ -402,7 +402,7 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 			QDefinitionWriter definitionWriter = catalogContainer.getCatalogContext().get(QDefinitionWriter.class);
 			String command = definitionWriter.hasLogicals(table);
 
-			statement = connection.createStatement(true);
+			statement = connection.createStatementCursorInsensitive(true);
 			resultSet = statement.executeQuery(command);
 			return resultSet.next();
 		} finally {
