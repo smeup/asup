@@ -134,7 +134,7 @@ public class XMIDatabaseFileCompiler {
 		compilerManager.writeDatabaseFile(compilationUnit, setup, output);
 		
 		// format code
-		if (format.equals(YesNo.YES)) {
+		if (format.asEnum().equals(YesNo.YES)) {
 			ByteArrayOutputStream formattedOutput = SourceHelper.format(new ByteArrayInputStream(output.toByteArray()));		
 			sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(formattedOutput.toByteArray()));
 			formattedOutput.close();
