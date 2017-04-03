@@ -520,8 +520,13 @@ public final class NIODataContainerImpl extends ObjectImpl implements QDataConta
 
 		if (special != null)
 			for (final QSpecialElement specialElem : special.getElements())
-				if (specialElem.getName().equals(value))
+				if (specialElem.getName().equals(value)) {
+					if(specialElem.getValue() == null){
+						System.err.println("Unexpected condition: p98rt727uv2yto48ytfoghiu");
+						specialElem.setValue(specialElem.getName());
+					}
 					return specialElem;
+				}
 
 		return null;
 	}
