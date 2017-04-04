@@ -215,13 +215,22 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	int SYSTEM__TEMPORARY_LIBRARY = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Path Osgi Log</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__PATH_OSGI_LOG = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 8;
+
+	/**
 	 * The feature id for the '<em><b>Variable Container</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__VARIABLE_CONTAINER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 8;
+	int SYSTEM__VARIABLE_CONTAINER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>System</em>' class.
@@ -230,7 +239,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 9;
+	int SYSTEM_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.impl.SystemEventImpl <em>System Event</em>}' class.
@@ -474,6 +483,17 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	EAttribute getSystem_TemporaryLibrary();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.QSystem#getPathOsgiLog <em>Path Osgi Log</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Path Osgi Log</em>'.
+	 * @see org.smeup.sys.os.core.QSystem#getPathOsgiLog()
+	 * @see #getSystem()
+	 * @generated
+	 */
+	EAttribute getSystem_PathOsgiLog();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link org.smeup.sys.os.core.QSystem#getVariableContainer <em>Variable Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -712,6 +732,14 @@ public interface QOperatingSystemCorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SYSTEM__TEMPORARY_LIBRARY = eINSTANCE.getSystem_TemporaryLibrary();
+
+		/**
+		 * The meta object literal for the '<em><b>Path Osgi Log</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SYSTEM__PATH_OSGI_LOG = eINSTANCE.getSystem_PathOsgiLog();
 
 		/**
 		 * The meta object literal for the '<em><b>Variable Container</b></em>' containment reference feature.

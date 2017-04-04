@@ -38,6 +38,7 @@ import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getSystemLibrary <em>System Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getSystemUser <em>System User</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getTemporaryLibrary <em>Temporary Library</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getPathOsgiLog <em>Path Osgi Log</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getVariableContainer <em>Variable Container</em>}</li>
  * </ul>
  *
@@ -188,6 +189,26 @@ public class SystemImpl extends ObjectNameableImpl implements QSystem {
 	 * @ordered
 	 */
 	protected String temporaryLibrary = TEMPORARY_LIBRARY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPathOsgiLog() <em>Path Osgi Log</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPathOsgiLog()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PATH_OSGI_LOG_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPathOsgiLog() <em>Path Osgi Log</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPathOsgiLog()
+	 * @generated
+	 * @ordered
+	 */
+	protected String pathOsgiLog = PATH_OSGI_LOG_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getVariableContainer() <em>Variable Container</em>}' containment reference.
@@ -449,6 +470,27 @@ public class SystemImpl extends ObjectNameableImpl implements QSystem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getPathOsgiLog() {
+		return pathOsgiLog;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPathOsgiLog(String newPathOsgiLog) {
+		String oldPathOsgiLog = pathOsgiLog;
+		pathOsgiLog = newPathOsgiLog;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemCorePackage.SYSTEM__PATH_OSGI_LOG, oldPathOsgiLog, pathOsgiLog));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public QEnvironmentVariableContainer getVariableContainer() {
 		return variableContainer;
 	}
@@ -547,6 +589,8 @@ public class SystemImpl extends ObjectNameableImpl implements QSystem {
 				return getSystemUser();
 			case QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY:
 				return getTemporaryLibrary();
+			case QOperatingSystemCorePackage.SYSTEM__PATH_OSGI_LOG:
+				return getPathOsgiLog();
 			case QOperatingSystemCorePackage.SYSTEM__VARIABLE_CONTAINER:
 				return getVariableContainer();
 		}
@@ -584,6 +628,9 @@ public class SystemImpl extends ObjectNameableImpl implements QSystem {
 				return;
 			case QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY:
 				setTemporaryLibrary((String)newValue);
+				return;
+			case QOperatingSystemCorePackage.SYSTEM__PATH_OSGI_LOG:
+				setPathOsgiLog((String)newValue);
 				return;
 			case QOperatingSystemCorePackage.SYSTEM__VARIABLE_CONTAINER:
 				setVariableContainer((QEnvironmentVariableContainer)newValue);
@@ -624,6 +671,9 @@ public class SystemImpl extends ObjectNameableImpl implements QSystem {
 			case QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY:
 				setTemporaryLibrary(TEMPORARY_LIBRARY_EDEFAULT);
 				return;
+			case QOperatingSystemCorePackage.SYSTEM__PATH_OSGI_LOG:
+				setPathOsgiLog(PATH_OSGI_LOG_EDEFAULT);
+				return;
 			case QOperatingSystemCorePackage.SYSTEM__VARIABLE_CONTAINER:
 				setVariableContainer((QEnvironmentVariableContainer)null);
 				return;
@@ -655,6 +705,8 @@ public class SystemImpl extends ObjectNameableImpl implements QSystem {
 				return SYSTEM_USER_EDEFAULT == null ? systemUser != null : !SYSTEM_USER_EDEFAULT.equals(systemUser);
 			case QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY:
 				return TEMPORARY_LIBRARY_EDEFAULT == null ? temporaryLibrary != null : !TEMPORARY_LIBRARY_EDEFAULT.equals(temporaryLibrary);
+			case QOperatingSystemCorePackage.SYSTEM__PATH_OSGI_LOG:
+				return PATH_OSGI_LOG_EDEFAULT == null ? pathOsgiLog != null : !PATH_OSGI_LOG_EDEFAULT.equals(pathOsgiLog);
 			case QOperatingSystemCorePackage.SYSTEM__VARIABLE_CONTAINER:
 				return variableContainer != null;
 		}
@@ -683,6 +735,8 @@ public class SystemImpl extends ObjectNameableImpl implements QSystem {
 		result.append(systemUser);
 		result.append(", temporaryLibrary: ");
 		result.append(temporaryLibrary);
+		result.append(", pathOsgiLog: ");
+		result.append(pathOsgiLog);
 		result.append(')');
 		return result.toString();
 	}

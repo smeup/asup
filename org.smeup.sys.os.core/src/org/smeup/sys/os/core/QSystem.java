@@ -29,6 +29,7 @@ import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
  *   <li>{@link org.smeup.sys.os.core.QSystem#getSystemLibrary <em>System Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getSystemUser <em>System User</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getTemporaryLibrary <em>Temporary Library</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.QSystem#getPathOsgiLog <em>Path Osgi Log</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getVariableContainer <em>Variable Container</em>}</li>
  * </ul>
  *
@@ -253,6 +254,32 @@ public interface QSystem extends QObjectNameable, QContextProvider {
 	 * @generated
 	 */
 	void setTemporaryLibrary(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Path Osgi Log</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Path Osgi Log</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Path Osgi Log</em>' attribute.
+	 * @see #setPathOsgiLog(String)
+	 * @see org.smeup.sys.os.core.QOperatingSystemCorePackage#getSystem_PathOsgiLog()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getPathOsgiLog();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.QSystem#getPathOsgiLog <em>Path Osgi Log</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Path Osgi Log</em>' attribute.
+	 * @see #getPathOsgiLog()
+	 * @generated
+	 */
+	void setPathOsgiLog(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Variable Container</b></em>' containment reference.
