@@ -50,6 +50,8 @@ public abstract class RPJProgram extends ProgramCallableImpl {
 	
 	private boolean isOpen = false;
 	private QIndicator _inlr = null;
+	private Field £mubField = null;
+	private Object £mub;
 	
 	protected void _init(QJob job, QDataContext dataContext, QProgram program, QProgramInfo programInfo, QProgramStatus programStatus) {
 		this._job = job;
@@ -132,9 +134,9 @@ public abstract class RPJProgram extends ProgramCallableImpl {
 			}
 			else {
 				try {
-					Field £mubField = this.getClass().getDeclaredField("£Mub");
+					£mubField = this.getClass().getDeclaredField("£Mub");
 					£mubField.setAccessible(true);
-					Object £mub = £mubField.get(this);
+					£mub = £mubField.get(this);
 					InitStrategy initStrategy = InitStrategy.BASE;
 					Program programAnnotation = this.getClass().getAnnotation(Program.class);
 					if (programAnnotation != null)
@@ -190,8 +192,11 @@ public abstract class RPJProgram extends ProgramCallableImpl {
 
 		_exit();
 		
-		if (_inlr != null && _inlr.asBoolean())
+		if (_inlr != null && _inlr.asBoolean()){
+			if(£mub!=null)
+				£mub.getClass().getMethod("£mu_endpgm").invoke(£mub);
 			close();
+		}
 
 		return _params();
 	}
