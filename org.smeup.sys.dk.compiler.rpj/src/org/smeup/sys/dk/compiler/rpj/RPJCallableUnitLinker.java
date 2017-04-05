@@ -267,6 +267,8 @@ public class RPJCallableUnitLinker {
 				continue;
 
 			QModule module = getModule(moduleName);
+			if(moduleName.equalsIgnoreCase("*C2LE"))
+				continue;
 			if (module == null)
 				throw new OperatingSystemRuntimeException("Module not found: " + moduleName);
 

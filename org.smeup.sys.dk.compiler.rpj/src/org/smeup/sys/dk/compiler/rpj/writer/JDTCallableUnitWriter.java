@@ -1168,8 +1168,10 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 	protected void loadModules(Collection<String> modules, String module, boolean recursive) {
 
-		addModule(modules, module);
+		if(module.equalsIgnoreCase("*C2LE"))
+			return;
 
+		addModule(modules, module);
 		QModule qModule = getCompilationUnit().getModule(module, true);
 		for (String moduleName : qModule.getSetupSection().getModules()) {
 			if (recursive)

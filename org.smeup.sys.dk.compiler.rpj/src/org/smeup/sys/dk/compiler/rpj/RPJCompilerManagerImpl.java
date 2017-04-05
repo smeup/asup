@@ -275,6 +275,9 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		if (callableUnitInfo.containsPRTStatement())
 			moduleContexts.add(loadInternalModule(job, caseSensitive, "*PRT"));
 
+		if (callableUnitInfo.containsC2LEStatement())
+			moduleContexts.add(loadInternalModule(job, caseSensitive, "*C2LE"));
+		
 		if (callableUnit.getSetupSection() != null) {
 			for (String moduleName : new ArrayList<String>(callableUnit.getSetupSection().getModules())) {
 				
