@@ -247,7 +247,11 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (fields.contains(getCompilationUnit().normalizeTermName(dataTerm.getName())))
 				continue;
 
-			writeField(dataTerm, false, scope);
+			if(dataTerm.getDefinition() instanceof QPointerDef){
+				writeField(dataTerm, false, UnitScope.PROTECTED);
+			} else {
+				writeField(dataTerm, false, scope);
+			}
 
 			fields.add(getCompilationUnit().normalizeTermName(dataTerm.getName()));
 		}
