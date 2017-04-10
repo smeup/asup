@@ -277,6 +277,10 @@ public class RPJProgramSupport extends RPJModule {
 		return binary;
 	}
 
+	public QDecimal qBox(Short decimal) {
+		return qBox((long) decimal);
+	}
+	
 	public QDecimal qBox(Integer decimal) {
 		return qBox((long) decimal);
 	}
