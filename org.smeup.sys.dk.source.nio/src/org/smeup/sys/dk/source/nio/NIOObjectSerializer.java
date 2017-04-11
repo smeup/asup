@@ -85,7 +85,8 @@ public class NIOObjectSerializer {
 		
 		if (resource.isLoaded() && !resource.getContents().isEmpty()) {
 			oldObject = (BasicEObjectImpl) resource.getContents().get(0);
-			resource.getContents().clear();
+			if(resource.getContents() != null)
+				resource.getContents().clear();
 			oldObject.eSetResource(resource, null);
 		}
 	}
