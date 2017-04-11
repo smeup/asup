@@ -126,8 +126,8 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 
 	protected void appendDefinition(QDataDef<?> source, QDataDef<?> target) {
 
-		if (!source.getClass().equals(target.getClass()))
-			throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: v9ant6tvb9ar9btva");
+//		if (!source.getClass().equals(target.getClass()))
+//			throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: v9ant6tvb9ar9btva");
 
 		EObject eObjectSource = ((EObject) source);
 		EObject eObjectTarget = ((EObject) target);
