@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.os.core.base.api;
 
+import javax.inject.Inject;
+
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
@@ -19,15 +21,24 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobLogManager;
 
 @Program(name = "QWCRTVCA")
 public class CurrentAttributesRetriever {
 
+	@Inject
+	private QJob job;
+	@Inject
+	private QJobLogManager jobLogManager;
+	
 	@Main
 	public void main(@DataDef(length = 1000) QCharacter rcvvar, @DataDef(binaryType = BinaryType.BYTE, value = "1000") QBinary rcvlen, @DataDef(length = 8) QCharacter format,
 			@DataDef(binaryType = BinaryType.BYTE) QBinary numval, @DataDef(dimension = 100, binaryType = BinaryType.BYTE) QArray<QBinary> $ky, QUSEC qusec) {
 
 		"".toCharArray();
+		jobLogManager.error(job, "***TODO*** Implement API - QWCRTVCA - CurrentAttributesRetriever");
+		System.err.println("***TODO*** Implement API - QWCRTVCA - CurrentAttributesRetriever");
 	}
 
 	public static class QUSEC extends QDataStructWrapper {

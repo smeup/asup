@@ -74,10 +74,10 @@ public class JobList {
 		userSpaceHeader.reset();
 
 		userSpaceHeader.formatName.eval(formatName.asData());
-		userSpaceHeader.apiUsed.eval("QUSLFLD");
+		userSpaceHeader.apiUsed.eval("QUSLJOB");
 		userSpaceHeader.dateTimeCreated.eval(Long.toString(jobManager.now(job).getTime()));
 		userSpaceHeader.informationStatus.eval(ACCURATEEnum.PARTIAL);
-		userSpaceHeader.entrySize.eval(jobl0100.getSize());
+
 
 		ArrayList<QJob> listJobs = getNumberJob(jobName);
 		userSpaceHeader.entriesNumber.eval(listJobs.size());
@@ -87,10 +87,12 @@ public class JobList {
 		case JOBL0100:
 			userSpaceHeader.listOffset.eval(512);
 			userSpaceHeader.listSize.eval(userSpaceHeader.entriesNumber.qMult(jobl0100.getSize()));
+			userSpaceHeader.entrySize.eval(jobl0100.getSize());
 			break;
 		case JOBL0200:
 			userSpaceHeader.listOffset.eval(390);
 			userSpaceHeader.listSize.eval(userSpaceHeader.entriesNumber.qMult(jobl0200.getSize()));
+			userSpaceHeader.entrySize.eval(jobl0200.getSize());
 			break;
 		}
 		byte[] bytes = new byte[userSpaceHeader.listOffset.i() + userSpaceHeader.listSize.i()];

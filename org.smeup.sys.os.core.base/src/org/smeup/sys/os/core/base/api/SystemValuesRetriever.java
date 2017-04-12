@@ -12,6 +12,8 @@
  */
 package org.smeup.sys.os.core.base.api;
 
+import javax.inject.Inject;
+
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -19,15 +21,26 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobLogManager;
 
 @Program(name = "QWCRSVAL")
 public class SystemValuesRetriever {
 
+	
+	@Inject
+	private QJob job;
+	@Inject
+	private QJobLogManager jobLogManager;
+	
 	@Main
 	public void main(@DataDef(length = 10) QCharacter variable, @DataDef(binaryType = BinaryType.INTEGER) QBinary length, @DataDef(binaryType = BinaryType.INTEGER) QBinary number,
 			@DataDef(length = 10) QCharacter names, QUSEC error) {
 		// TODO
 		error.qusbavl.eval(1);
+		jobLogManager.error(job, "***TODO*** Implement API - QWCRSVAL - SystemValuesRetriever");
+		System.err.println("***TODO*** Implement API - QWCRSVAL - SystemValuesRetriever");
+	
 	}
 
 	public static class QUSEC extends QDataStructWrapper {
