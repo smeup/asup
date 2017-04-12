@@ -46,7 +46,7 @@ public class AntHelper {
         File buildFile = new File(buildXmlFileFullPath);
         project.setUserProperty("ant.file", buildFile.getAbsolutePath());
         project.addBuildListener(consoleLogger);
-        
+
         //Set properties
         if (properties != null && properties.size() > 0) {
         	
