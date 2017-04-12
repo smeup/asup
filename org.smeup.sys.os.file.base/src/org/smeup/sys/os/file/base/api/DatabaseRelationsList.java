@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.os.file.base.api;
 
+import javax.inject.Inject;
+
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -18,11 +20,18 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.usrspc.base.api.UserSpaceRef;
 
 @Program(name = "QDBLDBR")
 public class DatabaseRelationsList {
 
+	@Inject
+	private QJob job;
+	@Inject
+	private QJobLogManager jobLogManager;	
+	
 	@Main
 	public void main(UserSpaceRef qualifiedUserSpaceName, 
 			@DataDef(length = 8) QCharacter formatName, 
@@ -32,6 +41,9 @@ public class DatabaseRelationsList {
 			ErrorCode errorCode) {
 
 		"".toCharArray();
+		
+		jobLogManager.error(job, "***TODO*** Implement API - QDBLDBR - DatabaseRelationsList");
+		System.err.println("***TODO*** Implement API - QDBLDBR - DatabaseRelationsList");
 
 	}
 

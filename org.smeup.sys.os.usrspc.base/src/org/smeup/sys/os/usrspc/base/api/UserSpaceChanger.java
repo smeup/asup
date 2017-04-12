@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.os.usrspc.base.api;
 
+import javax.inject.Inject;
+
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -18,10 +20,17 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobLogManager;
 
 @Program(name = "QUSCUSAT")
 public class UserSpaceChanger {
 
+	@Inject
+	private QJob job;
+	@Inject
+	private QJobLogManager jobLogManager;
+	
 	@Main
 	public void main(@DataDef(length = 10) QCharacter returnedLibrary, 
 					 @DataDef(qualified = true) UserSpaceRef userSpaceRef, 
@@ -29,6 +38,8 @@ public class UserSpaceChanger {
 					 ErrorCode errorCode) {
 		
 		"".toCharArray();
+		jobLogManager.error(job, "***TODO*** Implement API - QUSCUSAT - UserSpaceChanger");
+		System.out.println("***TODO*** Implement API - QUSCUSAT - UserSpaceChanger");
 	}
 
 	public static class AttributeToChange extends QDataStructWrapper {
