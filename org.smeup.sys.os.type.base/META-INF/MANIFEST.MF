@@ -14,6 +14,9 @@ Require-Bundle: org.smeup.sys.il.data,
  org.smeup.sys.db.syntax,
  org.smeup.sys.dk.source,
  org.smeup.sys.os.lib,
- org.smeup.sys.il.memo
+ org.smeup.sys.il.memo,
+ org.smeup.sys.os.core.base,
+ org.smeup.sys.os.usrspc,
+ org.smeup.sys.os.usrspc.base
 Export-Package: org.smeup.sys.os.type.base,
  org.smeup.sys.os.type.base.api

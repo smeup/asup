@@ -10,6 +10,7 @@ Export-Package: org.smeup.sys.os.usrprf.base,
  org.smeup.sys.os.usrprf.base.api
 Require-Bundle: org.smeup.sys.os.usrprf,
  org.smeup.sys.dk.core,
- org.smeup.sys.il.memo
+ org.smeup.sys.il.memo,
+ org.smeup.sys.os.core.base
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
