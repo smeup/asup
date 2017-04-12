@@ -53,6 +53,9 @@ public class UserSpaceRetriever {
 					 QPointer receiverPointer, 
 					 ERROR errorCode) {
 
+		
+		errorCode.clear();
+		
 		if(startPosition.eq(1))
 			lastUserSpace = null;
 		
