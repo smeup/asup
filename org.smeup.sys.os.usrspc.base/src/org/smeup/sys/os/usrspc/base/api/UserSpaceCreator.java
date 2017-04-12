@@ -48,6 +48,7 @@ public class UserSpaceCreator {
 					 @DataDef(length = 1) QCharacter optimumSpaceAlignement) {
 				
 		try {
+			errorCode.clear();
 			QResourceWriter<QUserSpace> userSpaceWriter = resourceManager.getResourceWriter(job, QUserSpace.class, userSpaceRef.library.asEnum(), userSpaceRef.library.asData().trimR());
 			
 			QUserSpace userSpace = QOperatingSystemUserSpaceFactory.eINSTANCE.createUserSpace();
@@ -56,7 +57,7 @@ public class UserSpaceCreator {
 			userSpace.setText(textDescription.trimR());
 
 			userSpaceWriter.save(userSpace, replace.trimR().equalsIgnoreCase("*YES"));
-			errorCode.£$01e2.eval(1);
+//			errorCode.£$01e2.eval(1);
 		}
 		catch(Exception e) {
 			errorCode.£$01e2.eval(43);			
