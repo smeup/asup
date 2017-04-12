@@ -7,6 +7,7 @@ Bundle-Activator: org.smeup.sys.rt.core.felix.FelixActivator
 Bundle-Vendor: www.smeup.com
 Require-Bundle: org.eclipse.core.runtime,
  org.smeup.sys.rt.core,
- org.smeup.sys.il.core.e4
+ org.smeup.sys.il.core.e4,
+ org.eclipse.emf.ecore.xmi
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
