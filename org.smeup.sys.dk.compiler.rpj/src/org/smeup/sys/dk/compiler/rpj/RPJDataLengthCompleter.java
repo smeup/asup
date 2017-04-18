@@ -116,11 +116,15 @@ public class RPJDataLengthCompleter extends RPJAbstractDataRefactor {
 			if (targetOverlay != null)
 				targetNextPosition += targetOverlay.getPosition() + 1;
 
-			if (elementOverlay.getPosition() >= 1) {
+			if (elementOverlay.getPosition() == 1) {
 				if (elementOverlay.getPosition() + bufferedDataDef.getSize() > targetNextPosition)
 					targetNextPosition = elementOverlay.getPosition();
 				else
 					continue;
+			}
+			if (elementOverlay.getPosition() > 1) {
+				targetNextPosition += elementOverlay.getPosition() + bufferedDataDef.getSize();
+				continue;
 			}
 
 			targetNextPosition += bufferedDataDef.getSize();
