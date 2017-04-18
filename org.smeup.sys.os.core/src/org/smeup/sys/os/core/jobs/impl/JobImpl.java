@@ -827,8 +827,16 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * @generated NOT
 	 */
 	public QJobMessage getLastMessage() {
+
+		QJobMessage jobMessage = null;
 		
-		return getMessages().get(getMessages().size()-1);
+		if(getMessages().size()-1 < 0){
+			jobMessage = OperatingSystemJobsFactoryImpl.eINSTANCE.createJobMessage();
+		} else {
+			jobMessage = getMessages().get(getMessages().size()-1);
+		}
+		
+		return jobMessage;
 	}
 
 	/**
