@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.os.usrspc.base.api;
 
+import java.text.DecimalFormat;
+
 import javax.inject.Inject;
 
 import org.smeup.sys.il.data.QBinary;
@@ -51,9 +53,17 @@ public class UserSpacePointerRetrieve {
 		}
 
 		byte[] bytes = userSpace.getContentArray();
-//		bytes = Arrays.copyOfRange(bytes, 0, 0);
-		QString receiverVariable = dataContext.getDataFactory().createCharacter(bytes.length, false, true);
-		receiverVariable.eval(new String(bytes, dataContext.getCharset()));
+		QString receiverVariable = null;
+
+		if(bytes == null) {
+			bytes = new byte[userSpace.getContent().length()];
+			receiverVariable = dataContext.getDataFactory().createCharacter(bytes.length, false, true);
+			receiverVariable.eval(new DecimalFormat("0000000000").format(userSpace.getContent().trim().length()) +  userSpace.getContent());
+		} else {
+			receiverVariable = dataContext.getDataFactory().createCharacter(bytes.length, false, true);
+			receiverVariable.eval(new String(bytes, dataContext.getCharset()));
+		}
+
 		returnPointer.eval(receiverVariable.qAddr());
 	}
 
