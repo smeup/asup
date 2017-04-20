@@ -71,6 +71,9 @@ public class NIOObjectSerializer {
 					resource = (NIOResourceImpl) resourceSet.createResource(uri, "asup");
 					clearResource(resource);
 					resource.doLoad(inputStream, resourceSet.getLoadOptions());
+					// TODO Verify me
+					inputStream.close();
+					
 				if (resource.getContents().isEmpty())
 					return null;
 
