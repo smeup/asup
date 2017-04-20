@@ -393,8 +393,14 @@ public class RPJProgramSupport extends RPJModule {
 			if (error != null)
 				error.eval(true);
 			else {
-				System.err.println(e.getMessage());
-				throw new OperatingSystemMessageException("00211", e.getMessage(), 40);
+				if(e.getCause() != null){
+					System.err.println(e.getMessage() + " - " +  e.getCause().getMessage());
+					throw new OperatingSystemMessageException("00211", e.getMessage() + " - " +  e.getCause().getMessage(), 40);
+				}else{
+					System.err.println(e.getMessage());
+					throw new OperatingSystemMessageException("00211", e.getMessage(), 40);
+				}
+				
 			}
 		}
 	}
