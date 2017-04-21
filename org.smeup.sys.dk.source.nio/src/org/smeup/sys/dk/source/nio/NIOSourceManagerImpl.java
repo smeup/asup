@@ -224,10 +224,15 @@ public class NIOSourceManagerImpl implements QSourceManager {
 
 		try {
 			List<QProject> projects = new ArrayList<QProject>();
-			for (Path path : Files.newDirectoryStream(Paths.get(path))) {
+			
+			DirectoryStream<Path> dirStream = Files.newDirectoryStream(Paths.get(path));
+			
+			for (Path path : dirStream) {
 				if (Files.isDirectory(path))
 					projects.add(new NIOProjectAdapter(path));
 			}
+			
+			dirStream.close();
 
 			Collections.sort(projects, new Comparator<QProject>() {
 				@Override
