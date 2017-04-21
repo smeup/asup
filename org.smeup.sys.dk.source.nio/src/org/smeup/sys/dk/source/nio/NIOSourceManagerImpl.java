@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.nio.charset.Charset;
+import java.nio.file.DirectoryStream;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
@@ -346,7 +347,9 @@ public class NIOSourceManagerImpl implements QSourceManager {
 			return entries;
 
 		try {
-			for (Path path : Files.newDirectoryStream(folder)) {
+			DirectoryStream<Path> dirStream = Files.newDirectoryStream(folder);
+			
+			for (Path path : dirStream) {
 				if (Files.isDirectory(path))
 					continue;
 
@@ -383,6 +386,7 @@ public class NIOSourceManagerImpl implements QSourceManager {
 				entries.add(new NIOSourceEntryFileAdapter(getObjectSerializer(context), parent.getProject(), path));
 
 			}
+			dirStream.close();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
