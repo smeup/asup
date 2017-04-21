@@ -99,6 +99,12 @@ public class RPJDataLengthCompleter extends RPJAbstractDataRefactor {
 		int targetNextPosition = 1;
 		QOverlay targetOverlay = targetTerm.getFacet(QOverlay.class);
 
+		int dimension = 0;
+		if (targetTerm.getDefinition() instanceof QMultipleAtomicBufferedDataDef<?>) {
+			QMultipleAtomicBufferedDataDef<?> multipleAtomicBufferedDataDef = (QMultipleAtomicBufferedDataDef<?>)targetTerm.getDefinition();
+			dimension = multipleAtomicBufferedDataDef.getDimension();
+		}
+		
 		QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) structTerm.getDefinition();
 		for (QDataTerm<?> dataElement : new ArrayList<QDataTerm<?>>(compoundDataDef.getElements())) {
 			if (dataElement.equals(targetTerm))
@@ -116,15 +122,30 @@ public class RPJDataLengthCompleter extends RPJAbstractDataRefactor {
 			if (targetOverlay != null)
 				targetNextPosition += targetOverlay.getPosition() + 1;
 
-			if (elementOverlay.getPosition() == 1) {
-				if (elementOverlay.getPosition() + bufferedDataDef.getSize() > targetNextPosition)
-					targetNextPosition = elementOverlay.getPosition();
-				else
+			
+			if(dimension > 0 ){
+
+				if (elementOverlay.getPosition() == 1) {
+					if (elementOverlay.getPosition() + bufferedDataDef.getSize() > targetNextPosition)
+						targetNextPosition = elementOverlay.getPosition();
+					else
+						continue;
+				}
+				if (elementOverlay.getPosition() > 1) {
+					int initBuffer = ((elementOverlay.getPosition() - 1) * dimension) + elementOverlay.getPosition(); 
+					if (initBuffer > targetNextPosition) {
+						targetNextPosition += bufferedDataDef.getSize();
+					}
 					continue;
-			}
-			if (elementOverlay.getPosition() > 1) {
-				targetNextPosition += elementOverlay.getPosition() + bufferedDataDef.getSize();
-				continue;
+				}
+				
+			} else {
+				if (elementOverlay.getPosition() >= 1) {
+					if (elementOverlay.getPosition() + bufferedDataDef.getSize() > targetNextPosition)
+						targetNextPosition = elementOverlay.getPosition();
+					else
+						continue;
+				}
 			}
 
 			targetNextPosition += bufferedDataDef.getSize();
