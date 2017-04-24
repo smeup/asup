@@ -197,15 +197,20 @@ public class RPJProgramInjector {
 					rpjProgram.getRecords().put(PROGRAM_DATE, programDate);
 					rpjProgram.getRecords().put(SQL_COMMUNICATION_AREA, communicationArea);
 
-					delegate = injectData(delegate, null, klass, dataContainer, accessContext, esqlContext, rpjProgram.getModules(), rpjProgram.getRecords());
+					delegate = injectData(delegate, null, klass, dataContainer, accessContext, esqlContext, rpjProgram.getModules(), rpjProgram.getRecords(), rpjProgram.getDataSets());
 					
 					if (SERIALIZATION_ACTIVE) {
+						List<QDataSet<?>> list = new ArrayList<QDataSet<?>>(rpjProgram.getDataSets());
+						rpjProgram.getDataSets().clear();
 						rpjProgram.getDatas().putAll(dataContainer.getDatas());
 						dataContext.serialize(delegate, true, "injector");
-					}
+						rpjProgram.getDataSets().addAll(new ArrayList<QDataSet<?>>(list));
+						list.clear();					}
 				}
-				else
-					delegate = injectData(delegate, null, klass, dataContainer, accessContext, esqlContext, new HashMap<String, RPJModule>(), new HashMap<String, QRecord>());
+				else {
+					List<QDataSet<?>> programDataSets = new ArrayList<QDataSet<?>>();
+					delegate = injectData(delegate, null, klass, dataContainer, accessContext, esqlContext, new HashMap<String, RPJModule>(), new HashMap<String, QRecord>(), programDataSets);
+				}
 				
 			}
 			// serialized
@@ -216,7 +221,7 @@ public class RPJProgramInjector {
 				rpjProgram.getRecords().put(PROGRAM_STATUS, programStatus);
 				rpjProgram.getRecords().put(PROGRAM_DATE, programDate);
 				rpjProgram.getRecords().put(SQL_COMMUNICATION_AREA, communicationArea);
-				delegate = injectData(delegate, null, klass, dataContainer, accessContext, esqlContext, rpjProgram.getModules(), rpjProgram.getRecords());
+				delegate = injectData(delegate, null, klass, dataContainer, accessContext, esqlContext, rpjProgram.getModules(), rpjProgram.getRecords(), rpjProgram.getDataSets());
 			}
 			
 			dataContext.getContext().invoke(delegate, PostConstruct.class);
@@ -294,7 +299,7 @@ public class RPJProgramInjector {
 
 			dataContainer = dataManager.createDataContainer(dataContext.getContext(), callable);
 
-			injectFields(owner, klass, callable, dataContainer, null, null, unitModules, records);
+			injectFields(owner, klass, callable, dataContainer, null, null, unitModules, records, null);
 
 			return callable;
 		} catch (Exception e) {
@@ -308,7 +313,7 @@ public class RPJProgramInjector {
 	}
 
 	private Object injectData(Object callable, Object owner, Class<?> klass, QDataContainer dataContainer, QAccessContext accessContext, QEsqlContext esqlContext, Map<String, RPJModule> unitModules,
-			Map<String, QRecord> records) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
+			Map<String, QRecord> records, List<QDataSet<?>> programDataSets) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		if(callable == null) 
 			callable = klass.newInstance();
@@ -316,17 +321,17 @@ public class RPJProgramInjector {
 		if (owner == null)
 			owner = callable;
 
-		injectFields(owner, klass, callable, dataContainer, accessContext, esqlContext, unitModules, records);
+		injectFields(owner, klass, callable, dataContainer, accessContext, esqlContext, unitModules, records, programDataSets);
 
 		return callable;
 	}
 
 	private void injectFields(Object owner, Class<?> klass, Object callable, QDataContainer dataContainer, QAccessContext accessContext, QEsqlContext esqlContext, Map<String, RPJModule> unitModules,
-			Map<String, QRecord> records) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
+			Map<String, QRecord> records, List<QDataSet<?>> programDataSets) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		// recursively on superClass
 		if (klass.getSuperclass().getAnnotation(Program.class) != null)
-			injectFields(owner, klass.getSuperclass(), callable, dataContainer, accessContext, esqlContext, unitModules, records);
+			injectFields(owner, klass.getSuperclass(), callable, dataContainer, accessContext, esqlContext, unitModules, records, programDataSets);
 
 		List<RPJInjectableField> modules = new ArrayList<RPJInjectableField>();
 		List<RPJInjectableField> dataStructures = new ArrayList<RPJInjectableField>();
@@ -449,7 +454,7 @@ public class RPJProgramInjector {
 			RPJModule module = (RPJModule) field.getValue();
 			field.getField().setAccessible(false);
 
-			injectModule(module, callable, owner, dataContainer, accessContext, esqlContext, unitModules, records, field);
+			injectModule(module, callable, owner, dataContainer, accessContext, esqlContext, unitModules, records, programDataSets, field);
 		}
 
 		// pointers no default
@@ -506,7 +511,7 @@ public class RPJProgramInjector {
 
 		// dataSet
 		for (RPJInjectableField field : dataSets)
-			RPJDatabaseHelper.injectDataSet(accessContext, dataContainer.getDataContext().getDataFactory(), records, field);
+			RPJDatabaseHelper.injectDataSet(accessContext, dataContainer.getDataContext().getDataFactory(), records, field, programDataSets);
 
 		// display
 		for (RPJInjectableField field : displays)
@@ -567,7 +572,7 @@ public class RPJProgramInjector {
 	}
 
 	private void injectModule(RPJModule object, Object callable, Object owner, QDataContainer dataContainer, QAccessContext accessContext, QEsqlContext esqlContext, Map<String, RPJModule> unitModules,
-			Map<String, QRecord> records, RPJInjectableField field) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
+			Map<String, QRecord> records, List<QDataSet<?>> programDataSets, RPJInjectableField field) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		Module module = field.getFieldClass().getAnnotation(Module.class);
 
@@ -592,7 +597,7 @@ public class RPJProgramInjector {
 			}
 		}
 
-		object = (RPJModule) injectData(object, owner, field.getFieldClass(), dataContainer, accessContext, esqlContext, unitModules, records);
+		object = (RPJModule) injectData(object, owner, field.getFieldClass(), dataContainer, accessContext, esqlContext, unitModules, records, programDataSets);
 		dataContext.getContext().invoke(object, PostConstruct.class);
 
 		switch (module.scope()) {

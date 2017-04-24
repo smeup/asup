@@ -16,13 +16,15 @@ import java.util.List;
 import java.util.Map;
 
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QActivationGroupManager;
-import org.smeup.sys.os.pgm.QProgramCallable;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
+import org.smeup.sys.os.pgm.QProgramCallable;
 import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.os.pgm.QProgramStack;
+import org.smeup.sys.os.pgm.rpj.RPJProgram;
 
 public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 
@@ -109,9 +111,15 @@ public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 		if(active)
 			return false;
 		
-		for (QProgramCallable callableProgram : new ArrayList<QProgramCallable>(activationGroup.getPrograms()))
+		for (QProgramCallable callableProgram : new ArrayList<QProgramCallable>(activationGroup.getPrograms())) {
+			RPJProgram rpjProgram = (RPJProgram) callableProgram;
+			for (QDataSet<?> file : rpjProgram.getDataSets()){
+//				System.out.println("Activatiob Group: " + activationGroup.getName() + " File closed: " + file.getFilePath());
+				if(file.isOpen())
+					file.close();
+			}
 			callableProgram.close();
-		
+		}		
 		return true;
 	}
 }

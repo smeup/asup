@@ -16,6 +16,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.smeup.sys.il.data.InitStrategy;
@@ -24,6 +25,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -47,6 +49,7 @@ public abstract class RPJProgram extends ProgramCallableImpl {
 	private Map<String, RPJModule> _programModules = new HashMap<String, RPJModule>();
 	private Map<String, QRecord> _programRecords = new HashMap<String, QRecord>();
 	private Map<String, QData> _programDatas = new HashMap<String, QData>();
+	private List<QDataSet<?>> _programDataSets = new ArrayList<QDataSet<?>>();
 	
 	private boolean isOpen = false;
 	private QIndicator _inlr = null;
@@ -73,6 +76,12 @@ public abstract class RPJProgram extends ProgramCallableImpl {
 		return _programDatas;
 	}
 	
+	public List<QDataSet<?>> getDataSets() {
+		if(_programDataSets == null)
+			_programDataSets = new ArrayList<QDataSet<?>>();
+		return _programDataSets;
+	}
+ 
 	@Override
 	public QDataContext getDataContext() {
 		return _dataContext;
@@ -219,6 +228,11 @@ public abstract class RPJProgram extends ProgramCallableImpl {
 			}
 		}
 		finally {
+			for(QDataSet<?> dataSet : _programDataSets)
+				if(dataSet.isOpen()){
+//					System.out.println("Program: " + this.getProgram().getName() + " File closed: " + dataSet.getFilePath());
+					dataSet.close();
+				}
 			isOpen = false;
 		}
 	}

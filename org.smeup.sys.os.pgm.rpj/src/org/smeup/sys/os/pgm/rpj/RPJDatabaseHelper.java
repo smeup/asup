@@ -70,7 +70,7 @@ public class RPJDatabaseHelper {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static void injectDataSet(QAccessContext accessContext, QDataFactory dataFactory, Map<String, QRecord> records, RPJInjectableField field) {
+	public static void injectDataSet(QAccessContext accessContext, QDataFactory dataFactory, Map<String, QRecord> records, RPJInjectableField field, List<QDataSet<?>> programDataSets) {
 
 		boolean userOpen = false;
 
@@ -90,6 +90,8 @@ public class RPJDatabaseHelper {
 		} else {
 			dataSet = accessContext.getAccessFactory().createRelativeRecordDataSet(classRecord, record, AccessMode.UPDATE, userOpen, null);
 		}
+
+		programDataSets.add(dataSet);
 
 		if (fileDef != null && !fileDef.name().isEmpty())
 			dataSet.getFilePath().eval(fileDef.name());
