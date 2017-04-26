@@ -32,28 +32,62 @@ public class SystemValuesRetriever {
 	private QJob job;
 	@Inject
 	private QJobLogManager jobLogManager;
+
+	private DATAHEADER dataHeader;
+	private DATAVALUE dataValue;
 	
 	@Main
-	public void main(@DataDef(length = 10) QCharacter variable, @DataDef(binaryType = BinaryType.INTEGER) QBinary length, @DataDef(binaryType = BinaryType.INTEGER) QBinary number,
-			@DataDef(length = 10) QCharacter names, QUSEC error) {
-		// TODO
-		error.qusbavl.eval(1);
-		jobLogManager.error(job, "***TODO*** Implement API - QWCRSVAL - SystemValuesRetriever");
-		System.err.println("***TODO*** Implement API - QWCRSVAL - SystemValuesRetriever");
+	public void main(@DataDef(length = 1024) QCharacter variable, 
+			@DataDef(binaryType = BinaryType.INTEGER) QBinary length, 
+			@DataDef(binaryType = BinaryType.INTEGER) QBinary number,
+			@DataDef(length = 10) QCharacter names, 
+			ErrorCodeRef error) {
+
 	
+		if(names.eq("QSYSLIBL")){
+			dataValue.clear();
+			dataValue.systemValue.eval(names);
+			dataValue.typeData.eval("C");
+			dataValue.dataV.eval(job.getSystem().getSystemLibrary());
+			dataValue.dataLength.eval(dataValue.dataV.qTrimr().getSize());
+
+			//
+			dataHeader.clear();
+			dataHeader.numberValuesReturned.eval(1);
+			dataHeader.offsetValue.eval(8);
+			dataHeader.dataH.eval(dataValue);
+			
+			variable.eval(dataHeader);
+		} else {
+			error.bytesAvailable.eval(1);
+			jobLogManager.error(job, "QWCRSVAL - SystemValuesRetriever - value: " + names.trimR() + " not implemented");
+		}
 	}
 
-	public static class QUSEC extends QDataStructWrapper {
+	
+	public static class DATAHEADER extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
 		@DataDef(binaryType = BinaryType.INTEGER)
-		public QBinary qusbprv;
+		public QBinary numberValuesReturned;
 		@DataDef(binaryType = BinaryType.INTEGER)
-		public QBinary qusbavl;
-		@DataDef(length = 7)
-		public QCharacter qusei;
-		@DataDef(length = 1)
-		public QCharacter quserved;
-		@DataDef(length = 256)
-		public QCharacter qusecsta;
+		public QBinary offsetValue;
+		@DataDef(length = 1000)
+		public QCharacter dataH;
 	}
+	
+	public static class DATAVALUE extends QDataStructWrapper {
+		private static final long serialVersionUID = 1L;
+		@DataDef(length = 10)
+		public QCharacter systemValue;
+		@DataDef(length = 1)
+		public QCharacter typeData;
+		@DataDef(length = 1)
+		public QCharacter informationStatus;
+		@DataDef(binaryType = BinaryType.INTEGER)
+		public QBinary dataLength;
+		@DataDef(length = 500)
+		public QCharacter dataV;
+	}
+	
+	
 }
