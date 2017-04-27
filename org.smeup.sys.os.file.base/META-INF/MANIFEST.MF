@@ -21,7 +21,8 @@ Require-Bundle:
  org.smeup.sys.il.memo,
  org.smeup.sys.os.usrspc,
  org.smeup.sys.os.usrspc.base,
- org.smeup.sys.os.core.base
+ org.smeup.sys.os.core.base,
+ org.smeup.sys.os.cmd.base
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.smeup.sys.dk.source

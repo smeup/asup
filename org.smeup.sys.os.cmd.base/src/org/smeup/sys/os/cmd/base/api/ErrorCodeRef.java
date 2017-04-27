@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.os.core.base.api;
+package org.smeup.sys.os.cmd.base.api;
 
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;

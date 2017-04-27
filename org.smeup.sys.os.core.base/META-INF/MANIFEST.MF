@@ -9,8 +9,7 @@ Bundle-Localization: plugin
 Export-Package: org.smeup.sys.os.core.base,
  org.smeup.sys.os.core.base.api
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Import-Package: javax.inject,
- org.smeup.sys.os.usrspc.base.api
+Import-Package: javax.inject
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.smeup.sys.os.core,
  org.smeup.sys.os.lib,
@@ -26,4 +25,6 @@ Require-Bundle: org.smeup.sys.os.core,
  org.smeup.sys.rt.repo,
  org.smeup.sys.os.dtaara,
  org.smeup.sys.il.esam,
- org.smeup.sys.os.usrspc
+ org.smeup.sys.os.usrspc,
+ org.smeup.sys.os.cmd.base,
+ org.smeup.sys.os.usrspc.base

@@ -7,7 +7,8 @@ Bundle-Vendor: www.smeup.com
 Export-Package: org.smeup.sys.os.usrspc.base,
  org.smeup.sys.os.usrspc.base.api
 Require-Bundle: org.smeup.sys.os.usrspc,
- org.smeup.sys.il.memo
+ org.smeup.sys.il.memo,
+ org.smeup.sys.os.cmd.base
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .
 Bundle-ActivationPolicy: lazy

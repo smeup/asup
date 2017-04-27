@@ -20,8 +20,11 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.os.cmd.base.api.ErrorCodeRef;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.jobs.QJobLogManager;
+import org.smeup.sys.os.usrspc.QUserSpace;
 
 @Program(name = "QUSCUSAT")
 public class UserSpaceChanger {
@@ -29,42 +32,34 @@ public class UserSpaceChanger {
 	@Inject
 	private QJob job;
 	@Inject
-	private QJobLogManager jobLogManager;
+	private QResourceManager resourceManager;
 	
 	@Main
 	public void main(@DataDef(length = 10) QCharacter returnedLibrary, 
 					 @DataDef(qualified = true) UserSpaceRef userSpaceRef, 
 					 AttributeToChange attributeToChange, 
-					 ErrorCode errorCode) {
+					 ErrorCodeRef errorCode) {
+
+		errorCode.clear();
+		QResourceReader<QUserSpace> userSpaceReader = resourceManager.getResourceReader(job, QUserSpace.class, userSpaceRef.library.asEnum(), userSpaceRef.library.asData().trimR());
+		QUserSpace userSpace = userSpaceReader.lookup(userSpaceRef.name.trimR());
 		
-		"".toCharArray();
-		jobLogManager.error(job, "***TODO*** Implement API - QUSCUSAT - UserSpaceChanger");
-		System.out.println("***TODO*** Implement API - QUSCUSAT - UserSpaceChanger");
+		
+		if(userSpace.getLibrary().startsWith("QTMP"))
+			returnedLibrary.eval("QTEMP");
+		else
+			returnedLibrary.eval(userSpace.getLibrary());
 	}
 
 	public static class AttributeToChange extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
-		@DataDef(binaryType = BinaryType.BYTE, value = "1")
-		public QBinary £$01d1;
-		@DataDef(binaryType = BinaryType.BYTE, value = "3")
-		public QBinary £$01d2;
-		@DataDef(binaryType = BinaryType.BYTE, value = "1")
-		public QBinary £$01d3;
-		@DataDef(length = 1, value = "'1'")
-		public QCharacter £$01d4;
-	}
-
-	public static class ErrorCode extends QDataStructWrapper {
-		private static final long serialVersionUID = 1L;
-		@DataDef(binaryType = BinaryType.INTEGER, value = "272")
-		public QBinary £$01e1;
 		@DataDef(binaryType = BinaryType.INTEGER)
-		public QBinary £$01e2;
-		@DataDef(length = 7)
-		public QCharacter £$01e3;
+		public QBinary £$01d1;
+		@DataDef(binaryType = BinaryType.INTEGER)
+		public QBinary £$01d2;
+		@DataDef(binaryType = BinaryType.INTEGER)
+		public QBinary £$01d3;
 		@DataDef(length = 1)
-		public QCharacter £$01e4;
-		@DataDef(length = 256)
-		public QCharacter £$01e5;
+		public QCharacter £$01d4;
 	}
 }
