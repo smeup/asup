@@ -454,7 +454,7 @@ public class RPJProgramInjector {
 			RPJModule module = (RPJModule) field.getValue();
 			field.getField().setAccessible(false);
 
-			injectModule(module, callable, owner, dataContainer, accessContext, esqlContext, unitModules, records, programDataSets, field);
+			injectModule(module, callable, owner, dataContainer, accessContext, esqlContext, unitModules, records, field);
 		}
 
 		// pointers no default
@@ -572,7 +572,7 @@ public class RPJProgramInjector {
 	}
 
 	private void injectModule(RPJModule object, Object callable, Object owner, QDataContainer dataContainer, QAccessContext accessContext, QEsqlContext esqlContext, Map<String, RPJModule> unitModules,
-			Map<String, QRecord> records, List<QDataSet<?>> programDataSets, RPJInjectableField field) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
+			Map<String, QRecord> records, RPJInjectableField field) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		Module module = field.getFieldClass().getAnnotation(Module.class);
 
@@ -597,7 +597,7 @@ public class RPJProgramInjector {
 			}
 		}
 
-		object = (RPJModule) injectData(object, owner, field.getFieldClass(), dataContainer, accessContext, esqlContext, unitModules, records, programDataSets);
+		object = (RPJModule) injectData(object, owner, field.getFieldClass(), dataContainer, accessContext, esqlContext, unitModules, records, null);
 		dataContext.getContext().invoke(object, PostConstruct.class);
 
 		switch (module.scope()) {
