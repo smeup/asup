@@ -45,6 +45,11 @@ public class DatabaseFileDescriptionRetriever {
 			@DataDef(length = 10) QCharacter formatType, 
 			ErrorCode errorCode) {
 
+		
+		errorCode.clear();
+		errorCode.£$01e2.eval(1);
+		
+		
 		"".toCharArray();
 		jobLogManager.error(job, "***TODO*** Implement API - QDBRTVFD - DatabaseFileDescriptionRetriever");
 		System.err.println("***TODO*** Implement API - QDBRTVFD - DatabaseFileDescriptionRetriever");
