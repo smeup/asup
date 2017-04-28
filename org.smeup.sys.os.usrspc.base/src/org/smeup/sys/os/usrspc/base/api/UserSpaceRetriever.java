@@ -27,6 +27,7 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.os.cmd.base.api.ErrorCodeRef;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.usrspc.QUserSpace;
 
@@ -51,10 +52,13 @@ public class UserSpaceRetriever {
 					 @DataDef(binaryType = BinaryType.INTEGER) QBinary startPosition,
 					 @DataDef(binaryType = BinaryType.INTEGER) QBinary dataLength, 
 					 QPointer receiverPointer, 
-					 ERROR errorCode) {
+					 ErrorCodeRef errorCode) {
 
 		
-		errorCode.clear();
+		try{
+			errorCode.clear();
+		} catch (Exception e) {
+		}
 		
 		if(startPosition.eq(1))
 			lastUserSpace = null;
