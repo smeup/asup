@@ -138,13 +138,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ecf.provider.discovery"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ecf.provider.jmdns"
          download-size="0"
          install-size="0"
