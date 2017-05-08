@@ -99,8 +99,6 @@ public class RPJProgramInjector {
 	private QResourceReader<QFile> fileReader;
 	private Map<String, RPJModule> ownerModules;
 
-	private static boolean SERIALIZATION_ACTIVE = true;
-	
 	public RPJProgramInjector(QActivationGroup activationGroup, QDataContext dataContext) {
 		this.activationGroup = activationGroup;
 		this.dataContext = dataContext;
@@ -162,7 +160,7 @@ public class RPJProgramInjector {
 
 		Object delegate = null;
 
-		if (SERIALIZATION_ACTIVE && RPJProgram.class.isAssignableFrom(klass)) {
+		if (RPJProgram.class.isAssignableFrom(klass)) {
 			delegate = dataContext.deserialize(klass, true, "injector");
 			if(delegate != null) {
 				@SuppressWarnings("resource")
@@ -199,13 +197,14 @@ public class RPJProgramInjector {
 
 					delegate = injectData(delegate, null, klass, dataContainer, accessContext, esqlContext, rpjProgram.getModules(), rpjProgram.getRecords(), rpjProgram.getDataSets());
 					
-					if (SERIALIZATION_ACTIVE) {
-						List<QDataSet<?>> list = new ArrayList<QDataSet<?>>(rpjProgram.getDataSets());
-						rpjProgram.getDataSets().clear();
-						rpjProgram.getDatas().putAll(dataContainer.getDatas());
-						dataContext.serialize(delegate, true, "injector");
-						rpjProgram.getDataSets().addAll(new ArrayList<QDataSet<?>>(list));
-						list.clear();					}
+
+					List<QDataSet<?>> list = new ArrayList<QDataSet<?>>(rpjProgram.getDataSets());
+					rpjProgram.getDataSets().clear();
+					rpjProgram.getDatas().putAll(dataContainer.getDatas());
+					dataContext.serialize(delegate, true, "injector");
+					rpjProgram.getDataSets().addAll(new ArrayList<QDataSet<?>>(list));
+					list.clear();	
+
 				}
 				else {
 					List<QDataSet<?>> programDataSets = new ArrayList<QDataSet<?>>();
