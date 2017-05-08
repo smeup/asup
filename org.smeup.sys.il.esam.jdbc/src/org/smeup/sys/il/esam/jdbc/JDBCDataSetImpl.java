@@ -69,8 +69,6 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 	private QDataContext dataContext;
 
-	private QActivationGroupManager activationGroupManager;
-
 	protected JDBCDataSetImpl(QConnection databaseConnection, QString tablePath, QIndex index, R record, AccessMode accessMode, boolean userOpen, QDataSetInfo infoStruct, QDataContext dataContext) {
 
 		this.databaseConnection = databaseConnection;
@@ -89,7 +87,6 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		this.jdbcAccessHelper = new JDBCAccessHelper();
 		this.dataReader = new JDBCDataReaderImpl();
 		this.dataWriter = new JDBCDataWriterImpl();
-		this.activationGroupManager = databaseConnection.getContext().get(QActivationGroupManager.class);
 
 		init();
 
