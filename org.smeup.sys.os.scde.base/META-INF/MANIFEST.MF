@@ -8,8 +8,8 @@ Bundle-ClassPath: .
 Bundle-Vendor: www.smeup.com
 Require-Bundle: org.smeup.sys.il.data,
  org.smeup.sys.dk.core,
- javax.inject,
  org.smeup.sys.os.scde,
  org.smeup.sys.il.memo,
  org.smeup.sys.os.core
+Import-Package: javax.inject
 Export-Package: org.smeup.sys.os.scde.base.api

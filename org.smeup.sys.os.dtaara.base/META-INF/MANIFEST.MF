@@ -8,7 +8,6 @@ Export-Package: org.smeup.sys.os.dtaara.base
 Require-Bundle: org.smeup.sys.os.dtaara;visibility:=reexport,
  org.smeup.sys.os.pgm,
  org.smeup.sys.dk.core,
- javax.inject,
  org.smeup.sys.il.memo,
  org.eclipse.jdt.core,
  org.smeup.sys.os.core,
@@ -16,4 +15,4 @@ Require-Bundle: org.smeup.sys.os.dtaara;visibility:=reexport,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .
 Bundle-ActivationPolicy: lazy
-Import-Package: org.smeup.sys.os.lib
+Import-Package: javax.inject, org.smeup.sys.os.lib

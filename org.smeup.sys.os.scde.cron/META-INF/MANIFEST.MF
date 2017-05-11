@@ -15,6 +15,6 @@ Require-Bundle: org.smeup.sys.il.memo,
  org.smeup.sys.il.core;visibility:=reexport,
  org.smeup.sys.il.data;visibility:=reexport,
  org.smeup.sys.mi.core;visibility:=reexport,
- org.smeup.sys.os.scde;visibility:=reexport,
- javax.inject
+ org.smeup.sys.os.scde;visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Import-Package: javax.inject
