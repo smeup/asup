@@ -16,8 +16,7 @@ Export-Package: org.smeup.sys.il.core,
  org.smeup.sys.il.core.out.impl,
  org.smeup.sys.il.core.term,
  org.smeup.sys.il.core.term.impl
-Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
- org.eclipse.emf.ecore;visibility:=reexport,
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
  org.smeup.sys.mi.core;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

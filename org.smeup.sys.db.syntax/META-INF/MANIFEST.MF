@@ -14,7 +14,7 @@ Export-Package: org.smeup.sys.db.syntax,
  org.smeup.sys.db.syntax.dml,
  org.smeup.sys.db.syntax.dml.impl,
  org.smeup.sys.db.syntax.impl
-Require-Bundle: org.eclipse.core.runtime,
+Require-Bundle: 
  org.eclipse.emf.ecore;visibility:=reexport,
  org.smeup.sys.il.core;visibility:=reexport,
  org.smeup.sys.il.data;visibility:=reexport,

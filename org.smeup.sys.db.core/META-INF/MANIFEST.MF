@@ -8,7 +8,7 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.smeup.sys.db.core,
  org.smeup.sys.db.core.impl
-Require-Bundle: org.eclipse.core.runtime,
+Require-Bundle: 
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.datatools.modelbase.sql;visibility:=reexport,
  org.smeup.sys.mi.core;visibility:=reexport,

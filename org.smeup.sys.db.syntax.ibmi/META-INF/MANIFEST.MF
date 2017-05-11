@@ -11,6 +11,7 @@ Require-Bundle: org.smeup.sys.db.syntax.base,
  net.sourceforge.lpg.lpgjavaruntime;bundle-version="1.1.0",
  org.eclipse.datatools.sqltools.parsers.sql.lexer;bundle-version="1.0.1",
  org.smeup.sys.db.syntax,
- org.smeup.sys.et.antlr
+ org.smeup.sys.et.antlr,
+ javax.inject
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .
