@@ -24,5 +24,7 @@ Require-Bundle: org.eclipse.equinox.common,
  org.eclipse.ecf.provider.filetransfer
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Import-Package: org.osgi.framework,
- org.osgi.service.remoteserviceadmin
+Import-Package: javax.inject;version="1.0.0",
+ org.osgi.framework,
+ org.osgi.service.remoteserviceadmin,
+ org.osgi.util.tracker;version="1.5.1"

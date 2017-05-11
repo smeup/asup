@@ -15,3 +15,4 @@ Require-Bundle: org.smeup.sys.co.core;visibility:=reexport,
  org.smeup.sys.rt.auth,
  org.smeup.sys.os.cmd
 Bundle-ActivationPolicy: lazy
+Import-Package: javax.inject

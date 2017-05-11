@@ -14,5 +14,6 @@ Require-Bundle: org.smeup.sys.il.esam,
  org.smeup.sys.os.file.base,
  org.smeup.sys.os.core,
  org.smeup.sys.os.pgm
-Import-Package: javax.inject
+Import-Package: javax.inject,
+ org.osgi.framework;version="1.8.0"
 Export-Package: org.smeup.sys.il.esam.jdbc

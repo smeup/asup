@@ -9,3 +9,4 @@ Bundle-ClassPath: .
 Require-Bundle: org.smeup.sys.dk.test,
  org.smeup.sys.os.core,
  org.smeup.sys.dk.test.base
+Import-Package: javax.inject

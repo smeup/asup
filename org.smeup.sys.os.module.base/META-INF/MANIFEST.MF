@@ -11,3 +11,4 @@ Require-Bundle: org.smeup.sys.os.module,
  org.smeup.sys.il.memo
 Export-Package: org.smeup.sys.os.module.base,
  org.smeup.sys.os.module.base.api
+Import-Package: javax.inject

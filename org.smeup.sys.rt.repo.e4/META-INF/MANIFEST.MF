@@ -14,5 +14,7 @@ Require-Bundle: org.smeup.sys.rt.repo,
  org.eclipse.equinox.p2.operations,
  org.eclipse.equinox.p2.director,
  org.eclipse.equinox.p2.engine,
- org.smeup.sys.il.memo
+ org.smeup.sys.il.memo,
+ org.eclipse.core.runtime
 Export-Package: org.smeup.sys.rt.repo.e4
+Import-Package: javax.inject

@@ -11,3 +11,4 @@ Bundle-ClassPath: .
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.smeup.sys.os.jobd,
  org.smeup.sys.il.memo
+Import-Package: javax.inject

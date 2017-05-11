@@ -11,3 +11,4 @@ Bundle-ClassPath: .
 Export-Package: org.smeup.sys.os.msgf.base,
  org.smeup.sys.os.msgf.base.api
 Bundle-ActivationPolicy: lazy
+Import-Package: javax.inject

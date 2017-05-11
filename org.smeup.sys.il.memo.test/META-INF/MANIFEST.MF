@@ -16,3 +16,4 @@ Require-Bundle:
  org.smeup.sys.dk.test.base,
  org.smeup.sys.rt.core
 Bundle-ActivationPolicy: lazy
+Import-Package: javax.inject

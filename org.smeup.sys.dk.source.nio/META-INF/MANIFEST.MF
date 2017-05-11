@@ -10,3 +10,4 @@ Require-Bundle: org.smeup.sys.dk.source,
  org.eclipse.emf.ecore.xmi,
  org.smeup.sys.il.lock
 Export-Package: org.smeup.sys.dk.source.nio
+Import-Package: javax.inject

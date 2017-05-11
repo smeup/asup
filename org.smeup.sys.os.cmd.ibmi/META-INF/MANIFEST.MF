@@ -12,3 +12,4 @@ Require-Bundle: org.smeup.sys.os.cmd,
  org.smeup.sys.os.cmd.base,
  org.smeup.sys.il.memo
 Export-Package: org.smeup.sys.os.cmd.ibmi
+Import-Package: javax.inject

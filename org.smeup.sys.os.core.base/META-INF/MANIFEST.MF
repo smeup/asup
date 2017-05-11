@@ -9,7 +9,9 @@ Bundle-Localization: plugin
 Export-Package: org.smeup.sys.os.core.base,
  org.smeup.sys.os.core.base.api
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Import-Package: javax.inject
+Import-Package: javax.inject,
+ org.osgi.framework;version="1.8.0",
+ org.osgi.framework.wiring;version="1.2.0"
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.smeup.sys.os.core,
  org.smeup.sys.os.lib,

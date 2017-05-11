@@ -12,3 +12,4 @@ Require-Bundle: org.smeup.sys.il.core,
  org.smeup.sys.os.file,
  org.smeup.sys.os.core,
  org.smeup.sys.il.memo
+Import-Package: javax.inject

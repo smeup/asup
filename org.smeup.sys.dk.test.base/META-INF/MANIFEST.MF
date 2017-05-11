@@ -10,6 +10,5 @@ Import-Package: javax.inject,
  org.osgi.framework;version="1.8.0",
  org.osgi.framework.wiring;version="1.2.0"
 Require-Bundle: org.smeup.sys.dk.core,
- org.smeup.sys.dk.test;visibility:=reexport,
- org.eclipse.osgi
+ org.smeup.sys.dk.test;visibility:=reexport
 Export-Package: org.smeup.sys.dk.test.base

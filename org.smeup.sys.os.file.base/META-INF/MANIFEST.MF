@@ -25,4 +25,5 @@ Require-Bundle:
  org.smeup.sys.os.cmd.base
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Import-Package: org.smeup.sys.dk.source
+Import-Package: javax.inject;version="1.0.0",
+ org.smeup.sys.dk.source

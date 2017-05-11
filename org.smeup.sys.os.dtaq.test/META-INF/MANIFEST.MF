@@ -13,3 +13,4 @@ Require-Bundle: org.smeup.sys.os.dtaq,
  org.smeup.sys.il.memo
 Export-Package: org.smeup.sys.os.dtaq.test,
  org.smeup.sys.os.dtaq.test.runner
+Import-Package: javax.inject

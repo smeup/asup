@@ -9,7 +9,6 @@ Require-Bundle: org.smeup.sys.os.dtaara;visibility:=reexport,
  org.smeup.sys.os.pgm,
  org.smeup.sys.dk.core,
  org.smeup.sys.il.memo,
- org.eclipse.jdt.core,
  org.smeup.sys.os.core,
  org.smeup.sys.il.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

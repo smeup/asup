@@ -35,7 +35,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import org.eclipse.core.runtime.URIUtil;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
@@ -504,4 +504,10 @@ public class NIOSourceManagerImpl implements QSourceManager {
 	public <T extends QObjectNameable> T deserializeObject(QContext context, QProject project, Class<T> type, String name, InputStream stream) throws IOException {
 		return getObjectSerializer(context).deserialize(project, type, name, stream);
 	}
+	
+	
+	
+	
+	
+	
 }

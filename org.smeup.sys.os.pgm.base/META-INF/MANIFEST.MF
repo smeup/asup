@@ -17,3 +17,4 @@ Require-Bundle:
  org.smeup.sys.il.esam.jdbc
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
+Import-Package: javax.inject

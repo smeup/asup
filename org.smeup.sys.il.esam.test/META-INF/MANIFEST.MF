@@ -9,8 +9,7 @@ Bundle-ClassPath: .
 Require-Bundle: org.smeup.sys.il.esam,
  org.smeup.sys.il.core,
  org.smeup.sys.dk.test.base,
- org.smeup.sys.db.core,
- org.eclipse.osgi
+ org.smeup.sys.db.core
 Import-Package: javax.inject
 Export-Package: org.smeup.sys.il.esam.test,
  org.smeup.sys.il.esam.test.dbf,

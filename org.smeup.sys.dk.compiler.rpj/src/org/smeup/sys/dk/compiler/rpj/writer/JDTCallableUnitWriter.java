@@ -22,6 +22,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.datatools.modelbase.sql.query.QueryExpressionBody;
 import org.eclipse.datatools.modelbase.sql.query.QuerySelect;
 import org.eclipse.datatools.modelbase.sql.query.QuerySelectStatement;
@@ -771,7 +772,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 					ASTParser parser = ASTParser.newParser(AST.JLS8);
 					parser.setKind(ASTParser.K_EXPRESSION);
 					parser.setSource(("qRPJ.qBox(" + parameterName + ")").toCharArray());
-					ASTNode node = parser.createAST(null);
+					ASTNode node = parser.createAST(new NullProgressMonitor());
 					arrayInitializer.expressions().add((Expression) ASTNode.copySubtree(getAST(), (Expression) node));
 				} else
 					arrayInitializer.expressions().add(getAST().newName(parameterName));

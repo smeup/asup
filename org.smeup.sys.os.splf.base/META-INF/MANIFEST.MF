@@ -14,3 +14,4 @@ Require-Bundle: org.smeup.sys.os.core,
  org.smeup.sys.il.memo
 Export-Package: org.smeup.sys.os.splf.base,
  org.smeup.sys.os.splf.base.api
+Import-Package: javax.inject

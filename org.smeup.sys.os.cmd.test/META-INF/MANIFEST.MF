@@ -9,3 +9,4 @@ Require-Bundle: org.smeup.sys.os.cmd,
  org.smeup.sys.dk.test.base
 Export-Package: org.smeup.sys.os.cmd.test,
  org.smeup.sys.os.cmd.test.runner
+Import-Package: javax.inject

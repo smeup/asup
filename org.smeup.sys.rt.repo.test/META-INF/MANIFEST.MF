@@ -14,6 +14,7 @@ Require-Bundle: org.smeup.sys.rt.repo,
  org.eclipse.equinox.p2.repository,
  org.eclipse.equinox.p2.metadata,
  org.eclipse.equinox.p2.metadata.repository,
- org.eclipse.osgi
+ org.eclipse.core.runtime
 Export-Package: org.smeup.sys.rt.repo.test,
  org.smeup.sys.rt.repo.test.runner
+Import-Package: javax.inject

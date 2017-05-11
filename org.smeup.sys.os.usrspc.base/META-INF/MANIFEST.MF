@@ -12,3 +12,4 @@ Require-Bundle: org.smeup.sys.os.usrspc,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .
 Bundle-ActivationPolicy: lazy
+Import-Package: javax.inject

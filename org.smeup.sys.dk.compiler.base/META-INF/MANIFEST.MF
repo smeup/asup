@@ -14,10 +14,12 @@ Require-Bundle: org.smeup.sys.dk.compiler,
  org.eclipse.text
 Export-Package: org.smeup.sys.dk.compiler.base,
  org.smeup.sys.dk.compiler.base.api
-Import-Package: org.apache.commons.io,
+Import-Package: javax.inject;version="1.0.0",
+ org.apache.commons.io,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.ecore.xmi.impl,
  org.eclipse.jdt.core,
  org.eclipse.jdt.core.dom,
  org.eclipse.jdt.core.formatter,
- org.eclipse.text.edits
+ org.eclipse.text.edits,
+ org.osgi.framework;version="1.8.0"

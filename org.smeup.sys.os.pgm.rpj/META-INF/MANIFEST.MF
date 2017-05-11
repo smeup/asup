@@ -16,4 +16,5 @@ Require-Bundle:
  org.smeup.sys.os.file,
  org.smeup.sys.db.esql,
  org.smeup.sys.il.data.jdbc,
- org.smeup.sys.db.core
+ org.smeup.sys.db.core,
+ javax.inject;visibility:=reexport

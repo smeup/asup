@@ -14,3 +14,4 @@ Require-Bundle: org.smeup.sys.os.lib,
  org.smeup.sys.dk.source,
  org.smeup.sys.il.memo
 Bundle-ActivationPolicy: lazy
+Import-Package: javax.inject
