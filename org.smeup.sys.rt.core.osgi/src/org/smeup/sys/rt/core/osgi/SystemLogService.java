@@ -9,7 +9,7 @@
  * Contributors: 
  *   Mattia Rocchi - Initial API and implementation 
  */
-package org.smeup.sys.rt.core.e4;
+package org.smeup.sys.rt.core.osgi;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
