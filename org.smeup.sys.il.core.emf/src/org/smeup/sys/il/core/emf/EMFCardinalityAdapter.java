@@ -9,18 +9,18 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.core.meta.e4;
+package org.smeup.sys.il.core.emf;
 
 import org.eclipse.emf.ecore.ETypedElement;
 import org.smeup.sys.il.core.meta.QCardinality;
 
-public class E4CardinalityAdapter implements QCardinality {
+public class EMFCardinalityAdapter implements QCardinality {
 
 	private static final long serialVersionUID = 1L;
 
 	private ETypedElement element;
 
-	public E4CardinalityAdapter(ETypedElement element) {
+	public EMFCardinalityAdapter(ETypedElement element) {
 		this.element = element;
 	}
 

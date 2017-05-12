@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.core.meta.e4;
+package org.smeup.sys.il.core.emf;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
@@ -21,16 +21,16 @@ import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.meta.QCardinality;
 import org.smeup.sys.il.core.meta.QSlot;
 
-public class E4SlotAdapter implements QSlot {
+public class EMFSlotAdapter implements QSlot {
 
 	private ETypedElement element;
 	private String name;
 
-	public E4SlotAdapter(ETypedElement element) {
+	public EMFSlotAdapter(ETypedElement element) {
 		this(element, null);
 	}
 	
-	public E4SlotAdapter(ETypedElement element, String name) {
+	public EMFSlotAdapter(ETypedElement element, String name) {
 		this.element = element;
 		this.name = name;
 	}
@@ -45,7 +45,7 @@ public class E4SlotAdapter implements QSlot {
 
 	@Override
 	public QCardinality getCardinality() {
-		return new E4CardinalityAdapter(this.element);
+		return new EMFCardinalityAdapter(this.element);
 	}
 
 	@Override

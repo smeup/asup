@@ -9,18 +9,18 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.core.meta.e4;
+package org.smeup.sys.il.core.emf;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.smeup.sys.il.core.meta.QFacet;
 
-public class E4FacetAdapter implements QFacet {
+public class EMFFacetAdapter implements QFacet {
 
 	private static final long serialVersionUID = 1L;
 	@SuppressWarnings("unused")
 	private EAnnotation annotation;
 	
-	public E4FacetAdapter(EAnnotation annotation) {
+	public EMFFacetAdapter(EAnnotation annotation) {
 		this.annotation = annotation;
 	}
 }

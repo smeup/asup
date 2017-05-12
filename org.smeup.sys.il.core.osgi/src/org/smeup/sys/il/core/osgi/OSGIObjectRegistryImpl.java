@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.core.e4;
+package org.smeup.sys.il.core.osgi;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,12 +21,12 @@ import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.smeup.sys.il.core.QObjectRegistry;
 
-public class E4ObjectRegistryImpl<T> implements QObjectRegistry<T> {
+public class OSGIObjectRegistryImpl<T> implements QObjectRegistry<T> {
 
 	private BundleContext bundleContext;
 	private Class<T> klass;
 
-	public E4ObjectRegistryImpl(Class<T> klass) {
+	public OSGIObjectRegistryImpl(Class<T> klass) {
 		this.bundleContext = FrameworkUtil.getBundle(klass).getBundleContext();
 		this.klass = klass;
 	}

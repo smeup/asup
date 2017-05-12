@@ -9,8 +9,8 @@ Bundle-ClassPath: .
 Require-Bundle: org.smeup.sys.il.core,
  org.eclipse.core.runtime,
  org.eclipse.e4.core.contexts,
- org.eclipse.e4.core.di
+ org.eclipse.e4.core.di,
+ org.smeup.sys.il.core.osgi
 Import-Package: org.osgi.framework,
  org.osgi.service.log;version="1.3.0"
-Export-Package: org.smeup.sys.il.core.e4,
- org.smeup.sys.il.core.meta.e4
+Export-Package: org.smeup.sys.il.core.e4

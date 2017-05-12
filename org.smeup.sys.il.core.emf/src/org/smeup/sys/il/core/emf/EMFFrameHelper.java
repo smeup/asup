@@ -9,13 +9,13 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.core.meta.e4;
+package org.smeup.sys.il.core.emf;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.smeup.sys.il.core.QObject;
 
-public class E4FrameHelper {
+public class EMFFrameHelper {
 
 	public static String getPackageURI(Class<? extends QObject> klass) {
 		

@@ -9,16 +9,17 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.core.e4;
+package org.smeup.sys.il.core.osgi;
 
 import org.smeup.sys.il.core.QObjectRegistry;
 import org.smeup.sys.il.core.QObjectRegistryFactory;
+import org.smeup.sys.il.core.osgi.OSGIObjectRegistryImpl;
 
-public class E4ObjectRegistryFactoryImpl implements QObjectRegistryFactory {
+public class OSGIObjectRegistryFactoryImpl implements QObjectRegistryFactory {
 
 	@Override
 	public <T> QObjectRegistry<T> createObjectRegistry(Class<T> klass) {
-		return new E4ObjectRegistryImpl<T>(klass);
+		return new OSGIObjectRegistryImpl<T>(klass);
 	}
 
 }

@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.core.meta.e4;
+package org.smeup.sys.il.core.emf;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -19,35 +19,35 @@ import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.meta.QFrame;
 import org.smeup.sys.il.core.meta.QFrameManager;
 
-public class E4FrameManagerImpl implements QFrameManager {
+public class EMFFrameManagerImpl implements QFrameManager {
 
 	@Override
 	public <O extends QObject> QFrame<O> getFrame(O object) {
 
 		if(object instanceof EObject) {
 			EObject eObject = (EObject)object;
-			return new E4FrameAdapter<O>(eObject.eClass());
+			return new EMFFrameAdapter<O>(eObject.eClass());
 		}
 		else {
-			EPackage ePackage = E4FrameHelper.getEPackage(object.getClass());
-			EClass eClass = E4FrameHelper.getEClass(ePackage, object.getClass());
+			EPackage ePackage = EMFFrameHelper.getEPackage(object.getClass());
+			EClass eClass = EMFFrameHelper.getEClass(ePackage, object.getClass());
 			
-			return new E4FrameAdapter<O>(eClass);
+			return new EMFFrameAdapter<O>(eClass);
 		}
 	}
 
 	@Override
 	public QFrame<?> getFrame(EClass eClass) {
 
-		return new E4FrameAdapter<QObject>(eClass);
+		return new EMFFrameAdapter<QObject>(eClass);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public <O extends QObject> O createObject(QFrame<O> frame) {
 
-		if (frame instanceof E4FrameAdapter)
-			return (O) EcoreUtil.create(((E4FrameAdapter<O>) frame).getEClass());
+		if (frame instanceof EMFFrameAdapter)
+			return (O) EcoreUtil.create(((EMFFrameAdapter<O>) frame).getEClass());
 		else
 			return null;
 	}

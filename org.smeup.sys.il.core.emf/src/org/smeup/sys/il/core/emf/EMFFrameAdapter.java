@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.core.meta.e4;
+package org.smeup.sys.il.core.emf;
 
 import java.lang.reflect.Method;
 import java.net.URI;
@@ -27,7 +27,7 @@ import org.smeup.sys.il.core.meta.QFrame;
 import org.smeup.sys.il.core.meta.QSlot;
 import org.smeup.sys.mi.core.util.QStrings;
 
-public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
+public class EMFFrameAdapter<O extends QObject> implements QFrame<O> {
 
 	/**
 	 * 
@@ -38,7 +38,7 @@ public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
 
 	private static final String nsPrefix = "il-data";
 
-	public E4FrameAdapter(EClass eClass) {
+	public EMFFrameAdapter(EClass eClass) {
 		super();
 		this.eClass = eClass;
 	}
@@ -57,7 +57,7 @@ public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
 					this.slots = new ArrayList<QSlot>();
 
 					for (EStructuralFeature structuralFeature : eClass.getEAllStructuralFeatures())
-						this.slots.add(new E4SlotAdapter(structuralFeature));
+						this.slots.add(new EMFSlotAdapter(structuralFeature));
 
 					for (EOperation operation : eClass.getEAllOperations()) {
 						
@@ -68,12 +68,12 @@ public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
 						if (operation.getName().length() > 3 && operation.getName().startsWith("get") && operation.getEParameters().isEmpty()) {
 							String name = operation.getName().substring(3);				
 							name = QStrings.qINSTANCE.firstToLower(name);
-							this.slots.add(new E4SlotAdapter(operation, name));
+							this.slots.add(new EMFSlotAdapter(operation, name));
 							
 							continue;
 						}
 
-						this.slots.add(new E4SlotAdapter(operation));
+						this.slots.add(new EMFSlotAdapter(operation));
 					}
 				}
 			}
@@ -86,7 +86,7 @@ public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
 	public QFrame<?> ako() {
 
 		EClass eAko = this.eClass.getESuperTypes().get(0);
-		return new E4FrameAdapter(eAko);
+		return new EMFFrameAdapter(eAko);
 	}
 
 	protected EClass getEClass() {
