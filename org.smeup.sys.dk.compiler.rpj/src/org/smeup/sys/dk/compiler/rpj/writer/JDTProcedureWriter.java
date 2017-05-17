@@ -73,9 +73,14 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 		// modules
 		List<String> modules = new ArrayList<>();
 		if (procedure.getSetupSection() != null) {
-			for (String module : procedure.getSetupSection().getModules())
-				loadModules(modules, module, true);
-
+			
+			
+			// TODO Verify me
+//			for (String module : procedure.getSetupSection().getModules())
+//				loadModules(modules, module, true);
+			// TODO Verify me
+			modules.addAll(procedure.getSetupSection().getModules());
+	
 			for (String module : modules) {
 
 				QModule flowModule = getCompilationUnit().getModule(module, true);
