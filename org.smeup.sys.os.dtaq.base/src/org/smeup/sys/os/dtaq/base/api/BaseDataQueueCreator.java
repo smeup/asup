@@ -22,6 +22,7 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
+import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
@@ -49,8 +50,10 @@ public class BaseDataQueueCreator {
 		CPF9870;
 	}
 	@Main
-	public void main(@DataDef() DataQueue dataQueue, @DataDef(length = 1) QCharacter type, @DataDef() QBinary maximumEntryLength, @DataDef(length = 1) QCharacter forceToAuxiliaryStorage,
-			@DataDef(length = 1) QEnum<DataQueueSequenceEnum, QCharacter> sequence, @DataDef() QBinary keyLength, @DataDef(length = 1) QCharacter includeSenderID, @DataDef() QueueSize queueSize,
+	public void main(@DataDef() DataQueue dataQueue, @DataDef(length = 1) QCharacter type, 
+			@DataDef(binaryType = BinaryType.INTEGER) QBinary maximumEntryLength, 
+			@DataDef(length = 1) QCharacter forceToAuxiliaryStorage,
+			@DataDef(length = 1) QEnum<DataQueueSequenceEnum, QCharacter> sequence, @DataDef(binaryType = BinaryType.SHORT) QBinary keyLength, @DataDef(length = 1) QCharacter includeSenderID, @DataDef() QueueSize queueSize,
 			@DataDef(length = 1) QCharacter automaticReclaim, @DataDef() RemoteDataQueue remoteDataQueue, @DataDef(length = 8) QCharacter remoteLocation,
 			@DataDef(length = 18) QCharacter relationalDatabase, @DataDef(length = 10) QCharacter aPPCDeviceDescription, @DataDef(length = 8) QCharacter localLocation,
 			@DataDef(length = 8) QCharacter mode, @DataDef(length = 8) QCharacter remoteNetworkIdentifier, @DataDef(length = 50) QCharacter textDescription,
