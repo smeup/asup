@@ -25,6 +25,7 @@ import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataManager;
+import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QPointer;
@@ -32,6 +33,8 @@ import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.data.def.DecimalType;
+import org.smeup.sys.il.data.nio.NIODecimalPackedImpl;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
@@ -359,6 +362,11 @@ public class BaseProgramManagerImpl implements QProgramManager {
 					paramsFrom[i] = binaryNumber;
 				}
 
+				if (paramsTo[i] instanceof NIODecimalPackedImpl && !(paramsFrom[i] instanceof NIODecimalPackedImpl)) {
+					QDecimal decimal = callableProgram.getDataContext().getDataFactory().createDecimal(((NIODecimalPackedImpl) paramsTo[i]).getPrecision(), ((NIODecimalPackedImpl) paramsTo[i]).getScale(), DecimalType.PACKED, true);
+					decimal.eval((QNumeric) paramsFrom[i]);
+					paramsFrom[i] = decimal;
+				}
 				((QStorable) paramsFrom[i]).assign(bufferedData);
 			}
 			// list not buffered (QCLCALL)

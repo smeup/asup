@@ -14,7 +14,8 @@ Require-Bundle:
  org.smeup.sys.os.pgm.rpj,
  org.smeup.sys.os.file,
  org.smeup.sys.il.esam,
- org.smeup.sys.il.esam.jdbc
+ org.smeup.sys.il.esam.jdbc,
+ org.smeup.sys.il.data.nio
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: javax.inject
