@@ -105,6 +105,8 @@ public class RPJProgramDelegator extends ProgramCallableImpl {
 				try {
 					entry = (QData[]) method.invoke(delegate);
 				} catch (InvocationTargetException e) {
+					if (e.getTargetException() instanceof OperatingSystemMessageException)
+						throw (OperatingSystemMessageException) e.getTargetException();
 					if (e.getTargetException() instanceof OperatingSystemRuntimeException)
 						throw (OperatingSystemRuntimeException) e.getTargetException();
 					else
