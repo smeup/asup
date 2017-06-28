@@ -87,4 +87,12 @@ public interface QStatement extends Closeable {
 	 */
 	ResultSet getGeneratedKeys() throws SQLException;
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void setQueryTimeout(int seconds);
+
 } // QStatement

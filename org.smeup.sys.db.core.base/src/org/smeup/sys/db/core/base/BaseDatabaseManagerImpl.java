@@ -318,6 +318,7 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 			String command = definitionWriter.dropSchema(schema, ignoreFailOnNonEmpty);
 
 			statement = connection.createStatement(true);
+			statement.setQueryTimeout(60);
 			statement.execute(command);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -340,6 +341,7 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 			String command = definitionWriter.dropTable(table);
 
 			statement = connection.createStatement(true);
+			statement.setQueryTimeout(60);
 			statement.execute(command);
 
 		} finally {
@@ -361,6 +363,7 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 			String command = definitionWriter.dropView(view);
 
 			statement = connection.createStatement(true);
+			statement.setQueryTimeout(60);
 			statement.execute(command);
 
 		} finally {
@@ -382,8 +385,10 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 			String command = definitionWriter.dropIndex(index);
 
 			statement = connection.createStatement(true);
+			statement.setQueryTimeout(60);
 			statement.execute(command);
-
+		}catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			if (statement != null)
 				statement.close();
@@ -445,6 +450,7 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 			String command = definitionWriter.renameTable(table, newName);
 
 			statement = connection.createStatement(true);
+			statement.setQueryTimeout(60);
 			statement.execute(command);
 
 			getCatalogContainer(connection).loadTable(table.getSchema(), newName);
@@ -466,6 +472,7 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 			String command = definitionWriter.renameIndex(index, newName);
 
 			statement = connection.createStatement(true);
+			statement.setQueryTimeout(60);
 			statement.execute(command);
 
 			getCatalogContainer(connection).loadIndex(index.getTable(), newName);

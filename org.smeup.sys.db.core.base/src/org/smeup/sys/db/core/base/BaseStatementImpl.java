@@ -84,4 +84,13 @@ public class BaseStatementImpl implements QStatement {
 	public ResultSet getGeneratedKeys() throws SQLException {
 		return rawStatement.getGeneratedKeys();
 	}
+
+	@Override
+	public void setQueryTimeout(int seconds) {
+		try {
+			rawStatement.setQueryTimeout(seconds);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

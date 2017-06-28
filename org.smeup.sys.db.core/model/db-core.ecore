@@ -344,6 +344,9 @@
         eExceptions="#//DatabaseException"/>
     <eOperations name="getGeneratedKeys" lowerBound="1" eType="#//DatabaseResultSet"
         eExceptions="#//DatabaseException"/>
+    <eOperations name="setQueryTimeout" lowerBound="1">
+      <eParameters name="seconds" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="StatementBatchResult" instanceClassName="int[]"
       serializable="false"/>
