@@ -79,7 +79,6 @@ public class BaseFileListenerImpl implements QResourceListener<QFile> {
 		try {
 			switch (event.getEventType()) {
 			case PRE_SAVE:
-				deleteFile(jobContext, file, connection, schema);
 				createFile(jobContext, file, connection, schema);
 				break;
 			case PRE_RENAME:
