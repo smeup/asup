@@ -760,7 +760,7 @@ public abstract class NIOStringImpl extends NIOBufferedElementImpl implements QS
 		// TODO cache ?
 		final QCharacter character = new NIOCharacterFixedImpl(getDataContext(), length.intValue(), false);
 		if (isVarying())
-			this.slice(character, start.intValue() + 2);
+			this.slice(character, start.intValue() + 4);
 		else
 			this.slice(character, start.intValue());
 
